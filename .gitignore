@@ -1,0 +1,8 @@
+# Created by .gitignore support plugin (hsz.mobi)
+.*.swp
+.*.swo
+node_modules/
+coverage/
+npm-debug.log
+build/
+.npm

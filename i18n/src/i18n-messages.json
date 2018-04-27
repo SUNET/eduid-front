@@ -1,0 +1,10 @@
+[
+  {
+    "id": "error_in_form",
+    "defaultMessage": "Check the form below for errors."
+  },
+  {
+    "id": "pd.choose-language",
+    "defaultMessage": "Choose language"
+  }
+]
