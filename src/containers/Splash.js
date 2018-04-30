@@ -6,7 +6,7 @@ import i18n from 'i18n-messages';
 
 const mapStateToProps = (state, props) => {
     return {
-        is_app_loaded: state.config.is_app_loaded
+        is_app_loaded: state.main.is_app_loaded
     }
 };
 

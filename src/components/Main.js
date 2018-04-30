@@ -14,14 +14,9 @@ import 'style/Main.scss';
 
 export const history = createHistory()
 
-/* SubMain is the main component, before internationalization */
-
 class Main extends Component {
 
     render () {
-
-        let tabsElem = '',
-            profElem = '';
 
         return ([
           <SplashContainer key="0" />,

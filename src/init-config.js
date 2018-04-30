@@ -12,6 +12,7 @@ module.exports = {
     initialConfigPlugin: new webpack.DefinePlugin({
         EDUID_COOKIE_NAME: JSON.stringify("sessid"),
         AVAILABLE_LANGUAGES: JSON.stringify(langs),
-        LOCALIZED_MESSAGES: JSON.stringify(messages)
+        LOCALIZED_MESSAGES: JSON.stringify(messages),
+        SIGNUP_SERVICE_URL: "https://signup.eduid.local.emergya.info/"
     })
 };

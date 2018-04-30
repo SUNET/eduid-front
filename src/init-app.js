@@ -20,6 +20,7 @@ import { updateIntl } from 'react-intl-redux';
 import { createStore, applyMiddleware, compose } from "redux";
 import eduIDApp from "./store";
 
+import { appLoaded, getCodeStatus } from "actions/Main";
 import { history } from "components/Main";
 
 
@@ -45,7 +46,20 @@ sagaMiddleware.run(rootSaga);
 
 /* render app */
 
+const findCode = function (path) {
+    const segments = path.split('/');
+    if (segments.length === 5) {return segments[3]}
+    return '';
+};
+
 const getConfig = function () {
+    const path = window.location.pathname;
+    const code = findCode(path);
+    if (code) {
+        store.dispatch(getCodeStatus(code));
+    } else {
+        store.dispatch(appLoaded());
+    }
 };
 
 const init_app = function (target, component) {
