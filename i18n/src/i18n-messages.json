@@ -4,6 +4,18 @@
     "defaultMessage": "Check the form below for errors."
   },
   {
+    "id": "main.welcome",
+    "defaultMessage": "Welcome to eduID!"
+  },
+  {
+    "id": "main.create-account",
+    "defaultMessage": "Create an account for use with Swedish Universities."
+  },
+  {
+    "id": "email.sign-up-email",
+    "defaultMessage": "Sign up with your email address"
+  },
+  {
     "id": "pd.choose-language",
     "defaultMessage": "Choose language"
   }

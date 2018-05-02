@@ -93,6 +93,21 @@ const msgs = {
             id="error_in_form"
             defaultMessage={`Check the form below for errors.`} />),
 
+    'main.welcome': (
+        <FormattedMessage
+            id="main.welcome"
+            defaultMessage={`Welcome to eduID!`} />),
+
+    'main.create-account': (
+        <FormattedMessage
+            id="main.create-account"
+            defaultMessage={`Create an account for use with Swedish Universities.`} />),
+
+    'email.sign-up-email': (
+        <FormattedMessage
+            id="email.sign-up-email"
+            defaultMessage={`Sign up with your email address`} />),
+
 };
 
 const unformatted = defineMessages({

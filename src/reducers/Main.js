@@ -4,7 +4,11 @@ import * as actions from "actions/Main";
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
     window_size: actions.getWindowSize(),
+    email: '',
+    captcha: '',
+    code: '',
     is_app_loaded: false,
+    is_fetching: false,
     code: '',
     DEBUG: true
 };
@@ -22,6 +26,11 @@ let mainReducer = (state=configData, action) => {
           ...action.payload
       };
     case actions.RESIZE_WINDOW:
+      return {
+          ...state,
+          ...action.payload
+      };
+    case actions.ADD_EMAIL:
       return {
           ...state,
           ...action.payload

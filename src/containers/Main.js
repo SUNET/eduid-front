@@ -6,6 +6,9 @@ import Main from 'components/Main';
 
 const mapStateToProps = (state, props) => {
     return {
+        code: state.main.code,
+        email: state.main.email,
+        captcha: state.main.captcha
     }
 };
 
