@@ -4,7 +4,9 @@ import * as actions from "actions/Main";
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
     window_size: actions.getWindowSize(),
+    csrf_token: '',
     email: '',
+    recaptcha_public_key: '',
     captcha: '',
     code: '',
     is_app_loaded: false,

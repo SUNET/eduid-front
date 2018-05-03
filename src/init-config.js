@@ -13,6 +13,6 @@ module.exports = {
         EDUID_COOKIE_NAME: JSON.stringify("sessid"),
         AVAILABLE_LANGUAGES: JSON.stringify(langs),
         LOCALIZED_MESSAGES: JSON.stringify(messages),
-        SIGNUP_SERVICE_URL: "https://signup.eduid.local.emergya.info/"
+        SIGNUP_SERVICE_URL: JSON.stringify("https://signup.eduid.local.emergya.info/service/")
     })
 };

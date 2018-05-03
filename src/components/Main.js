@@ -38,7 +38,6 @@ class Main extends Component {
                     <Route exact path="/" component={() => (<Redirect to={redirect} />)} />
                     <Route path="/email" component={EmailContainer} />
                     <Route path="/trycaptcha" component={CaptchaContainer} />
-                {this.props.email}
                 </div>
             </ConnectedRouter>
         ]);

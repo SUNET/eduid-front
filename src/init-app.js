@@ -20,7 +20,7 @@ import { updateIntl } from 'react-intl-redux';
 import { createStore, applyMiddleware, compose } from "redux";
 import eduIDApp from "./store";
 
-import { appLoaded, getCodeStatus } from "actions/Main";
+import { getConfig, getCodeStatus } from "actions/Main";
 import { history } from "components/Main";
 
 
@@ -52,19 +52,19 @@ const findCode = function (path) {
     return '';
 };
 
-const getConfig = function () {
+const initState = function () {
     const path = window.location.pathname;
     const code = findCode(path);
     if (code) {
         store.dispatch(getCodeStatus(code));
     } else {
-        store.dispatch(appLoaded());
+        store.dispatch(getConfig());
     }
 };
 
 const init_app = function (target, component) {
     let app, action;
-    action = getConfig;
+    action = initState;
     const language = navigator.languages
                      ? navigator.languages[0]
                      : (navigator.language || navigator.userLanguage);

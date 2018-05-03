@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Email from 'components/Email';
 import * as actions from "actions/Email";
 import i18n from 'i18n-messages';
+import { history } from "components/Main";
 
 
 const mapStateToProps = (state, props) => {
@@ -18,6 +19,7 @@ const mapDispatchToProps = (dispatch, props) => {
       e.preventDefault();
       const email = document.getElementById('email-input').value;
       dispatch(actions.addEmail(email));
+      history.push("/trycaptcha");
     },
   }
 };
