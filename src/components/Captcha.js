@@ -3,29 +3,44 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Form, FormGroup, Label, Input, FormFeedback, FormText, Button } from 'reactstrap';
+import ScriptLoader from 'react-script-loader-hoc';
+import { Button } from 'reactstrap';
+import Recaptcha from "react-recaptcha";
 
 import 'style/Captcha.scss';
 
+let recaptchaInstance;
 
 class Captcha extends Component {
 
   render () {
 
     return ([
-        <div className="col-lg-3" key="0"></div>,
-        <div className="col-lg-6" key="1">
-             CAPTCHA
+        <div className="row" key="0">
+          <div className="col-lg-3"></div>
+          <div className="col-lg-6">
+               <Recaptcha
+                   sitekey={this.props.recaptcha_key}
+                   render="explicit"
+                   onloadCallback={this.props.loadedCaptcha}
+                   verifyCallback={this.props.handleCaptcha} />
+          </div>
+          <div className="col-lg-3"></div>
         </div>,
-        <div className="col-lg-3" key="2"></div>
+        <div className="row" key="1">
+          <div className="col-lg-6">
+              <Button>button</Button>
+          </div>
+          <div className="col-lg-6"></div>
+        </div>
     ]);
   }
 }
 
 Captcha.propTypes = {
-  is_fetching: PropTypes.bool
+  is_fetching: PropTypes.bool,
+  recaptcha_key: PropTypes.string,
+  handleCaptcha: PropTypes.func
 }
 
-export default Captcha;
-
-
+export default ScriptLoader('https://www.google.com/recaptcha/api.js?render=explicit')(Captcha);

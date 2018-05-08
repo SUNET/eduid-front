@@ -4,10 +4,12 @@ import { intlReducer } from 'react-intl-redux'
 import { reducer as formReducer } from 'redux-form';
 import { routerReducer } from 'react-router-redux';
 
+import captchaReducer from 'reducers/Captcha';
 import mainReducer from 'reducers/Main';
 
 const eduIDApp = combineReducers({
     main: mainReducer,
+    captcha: captchaReducer,
     router: routerReducer,
     form: formReducer,
     intl: intlReducer
