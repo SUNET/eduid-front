@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch, props) => {
     handleCaptcha: (response) => {
       dispatch(actions.verifyCaptcha(response));
     },
+    sendCaptcha: (e) => {
+      dispatch(actions.postCaptcha());
+    },
   }
 };
 

@@ -29,7 +29,7 @@ class Captcha extends Component {
         </div>,
         <div className="row" key="1">
           <div className="col-lg-6">
-              <Button>button</Button>
+              <Button onClick={this.props.sendCaptcha}>button</Button>
           </div>
           <div className="col-lg-6"></div>
         </div>
