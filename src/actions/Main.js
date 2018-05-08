@@ -24,7 +24,7 @@ export function getCodeStatus (code) {
 }
 
 
-export function appLoaded (err) {
+export function appLoaded () {
   return {
     type: APP_LOADED
   };

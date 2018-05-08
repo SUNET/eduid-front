@@ -30,6 +30,7 @@ export function* requestConfig () {
         console.log('Getting config from ' + signup_url);
         const config = yield call(fetchConfig, signup_url);
         yield put(config);
+        yield put(actions.appLoaded());
     } catch(error) {
         yield put(actions.getConfigFail(error.toString()));
     }

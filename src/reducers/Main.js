@@ -37,6 +37,11 @@ let mainReducer = (state=configData, action) => {
           ...state,
           ...action.payload
       };
+    case actions.GET_SIGNUP_CONFIG_SUCCESS:
+      return {
+          ...state,
+          ...action.payload
+      };
     default:
       return state;
   }
