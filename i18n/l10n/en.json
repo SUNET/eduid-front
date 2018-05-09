@@ -1,2 +1,12 @@
 {
+  "captcha.cancel": "Cancel",
+  "captcha.one-step-left": "Only one more step left!",
+  "captcha.submit": "Submit",
+  "captcha.verify-human": "eduID needs to verify that you are a human and not a machine.",
+  "email.sign-up-email": "Sign up with your email address",
+  "error_in_form": "Check the form below for errors.",
+  "footer.copyright": "SUNET 2013-2018",
+  "main.create-account": "Create an account for use with Swedish Universities.",
+  "main.welcome": "Welcome to eduID!",
+  "pd.choose-language": "Choose language"
 }

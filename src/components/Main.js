@@ -6,6 +6,7 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter } from 'react-router-redux';
 
 import SplashContainer from "containers/Splash";
+import FooterContainer from "containers/Footer";
 import EmailContainer from "containers/Email";
 import CaptchaContainer from "containers/Captcha";
 
@@ -39,7 +40,8 @@ class Main extends Component {
                     <Route path="/email" component={EmailContainer} />
                     <Route path="/trycaptcha" component={CaptchaContainer} />
                 </div>
-            </ConnectedRouter>
+            </ConnectedRouter>,
+            <FooterContainer key="3" />
         ]);
     }
 }
