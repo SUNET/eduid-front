@@ -1,3 +1,4 @@
+import { newCsrfToken } from "actions/Main";
 
 
 export const checkStatus = function (response) {
@@ -33,3 +34,13 @@ export const getRequest = {
     credentials: 'include',
     headers: ajaxHeaders,
 }
+
+export const putCsrfToken = function (action) {
+  const token = action.payload.csrf_token;
+  if (token !== undefined) {
+    delete(action.payload.csrf_token);
+    return newCsrfToken(token);
+  } else {
+    return {type: 'NOOP_ACTION'};
+  }
+};

@@ -1,6 +1,7 @@
 
 import { put, call, select } from "redux-saga/effects";
-import { ajaxHeaders, checkStatus, postRequest } from "sagas/common";
+import { ajaxHeaders, checkStatus, postRequest,
+         putCsrfToken } from "sagas/common";
 
 import * as actions from "actions/Captcha";
 

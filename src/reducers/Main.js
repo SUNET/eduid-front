@@ -42,6 +42,11 @@ let mainReducer = (state=configData, action) => {
           ...state,
           ...action.payload
       };
+    case actions.NEW_CSRF_TOKEN:
+      return {
+          ...state,
+          ...action.payload
+      };
     default:
       return state;
   }
