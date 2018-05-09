@@ -32,6 +32,10 @@
     "defaultMessage": "Cancel"
   },
   {
+    "id": "footer.copyright",
+    "defaultMessage": "SUNET 2013-2018"
+  },
+  {
     "id": "pd.choose-language",
     "defaultMessage": "Choose language"
   }

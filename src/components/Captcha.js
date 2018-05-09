@@ -40,8 +40,15 @@ class Captcha extends Component {
       <div className="row text-center" key="2">
         <div className="col-lg-3"></div>
         <div className="col-lg-6">
-            <Button color="primary" onClick={this.props.sendCaptcha}>{this.props.l10n('captcha.submit')}</Button>
-            <Button color="light">{this.props.l10n('captcha.cancel')}</Button>
+            <Button className="btn-in-row"
+                    color="primary"
+                    onClick={this.props.sendCaptcha}>
+                {this.props.l10n('captcha.submit')}
+            </Button>
+            <Button className="btn-in-row"
+                    color="light">
+                {this.props.l10n('captcha.cancel')}
+            </Button>
         </div>
         <div className="col-lg-3"></div>
       </div>

@@ -8,6 +8,12 @@ div.jumbotron {
     background-image:url(../../img/texture.png);
 }
 
+.jumbotron {
+    margin: 60px 0;
+    text-align: center;
+    clear: both;
+}
+
 h1, h2, h3, h4 {
     font-family: $font;
     color: $hcolor;
@@ -19,12 +25,19 @@ h1 {
     font-weight: 800;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 input {
     height: 45px;
 }
 
 button {
     text-transform: uppercase;
+}
+
+button.btn-in-row {
     padding: 10px 40px !important;
     margin: 20px 25px;
 }

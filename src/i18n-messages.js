@@ -128,6 +128,11 @@ const msgs = {
             id="captcha.cancel"
             defaultMessage={`Cancel`} />),
 
+    'footer.copyright': (
+        <FormattedMessage
+            id="footer.copyright"
+            defaultMessage={` SUNET 2013-2018`} />),
+
 };
 
 const unformatted = defineMessages({

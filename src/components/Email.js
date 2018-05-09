@@ -63,10 +63,10 @@ class Email extends Component {
 
   render () {
 
-    return ([
+    return (
       <div className="row text-center">
         <div className="col-lg-3"></div>
-        <div className="col-lg-6">
+        <div className="col-lg-6 jumbotron">
             <div id="clouds"></div>
             <h1>{this.props.l10n('main.welcome')}</h1>
 
@@ -76,7 +76,7 @@ class Email extends Component {
         </div>
         <div className="col-lg-3"></div>
       </div>
-    ]);
+    );
   }
 }
 

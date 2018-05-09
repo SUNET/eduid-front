@@ -1,0 +1,58 @@
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import 'style/Footer.scss';
+
+
+class Footer extends Component {
+
+  render () {
+    let langElems;
+    if (this.props.is_configured) {
+        const langs = Object.getOwnPropertyNames(this.props.languages);
+        langElems = langs.map((lang, index) => {
+            if (lang === this.props.language) {
+                return (<span className="langselector" key={index}>
+                          <span>{this.props.languages[lang]}</span>
+                        </span>);
+            } else {
+                return (<span className="langselector"
+                              data-lang={lang}
+                              key={index}>
+                          <a onClick={this.props.changeLanguage}>{this.props.languages[lang]}</a>
+                        </span>);
+            }
+        });
+    } else {
+        langElems = (<span />);
+    }
+
+    return (<div id="footer">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-lg-1"></div>
+                    <div className="col-lg-10" id="footer-content">
+                      <p>
+                        &copy;{this.props.l10n('footer.copyright')}
+                        <span className="float-right">
+                          {langElems}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="col-lg-1"></div>
+                  </div>
+                </div>
+            </div>);
+  }
+}
+
+Footer.propTypes = {
+  is_configured: PropTypes.bool,
+  language: PropTypes.string,
+  languages: PropTypes.object,
+  changeLanguage: PropTypes.func
+}
+
+export default Footer;
+
