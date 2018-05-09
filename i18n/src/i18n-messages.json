@@ -16,6 +16,22 @@
     "defaultMessage": "Sign up with your email address"
   },
   {
+    "id": "captcha.one-step-left",
+    "defaultMessage": "Only one more step left!"
+  },
+  {
+    "id": "captcha.verify-human",
+    "defaultMessage": "eduID needs to verify that you are a human and not a machine."
+  },
+  {
+    "id": "captcha.submit",
+    "defaultMessage": "Submit"
+  },
+  {
+    "id": "captcha.cancel",
+    "defaultMessage": "Cancel"
+  },
+  {
     "id": "pd.choose-language",
     "defaultMessage": "Choose language"
   }

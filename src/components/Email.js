@@ -64,16 +64,18 @@ class Email extends Component {
   render () {
 
     return ([
-        <div className="col-lg-3" key="0"></div>,
-        <div className="col-lg-6" key="1">
+      <div className="row text-center">
+        <div className="col-lg-3"></div>
+        <div className="col-lg-6">
             <div id="clouds"></div>
             <h1>{this.props.l10n('main.welcome')}</h1>
 
             <p className="lead">{this.props.l10n('main.create-account')}</p>
 
             <EmailForm {...this.props} />
-        </div>,
-        <div className="col-lg-3" key="2"></div>
+        </div>
+        <div className="col-lg-3"></div>
+      </div>
     ]);
   }
 }

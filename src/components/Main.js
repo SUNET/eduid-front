@@ -34,7 +34,7 @@ class Main extends Component {
         return ([
             <SplashContainer key="0" />,
             <ConnectedRouter history={history} key="1">
-                <div className="row text-center">
+                <div  className="container-fluid">
                     <Route exact path="/" component={() => (<Redirect to={redirect} />)} />
                     <Route path="/email" component={EmailContainer} />
                     <Route path="/trycaptcha" component={CaptchaContainer} />
