@@ -6,13 +6,15 @@ import { routerReducer } from 'react-router-redux';
 
 import captchaReducer from 'reducers/Captcha';
 import mainReducer from 'reducers/Main';
+import notificationsReducer from 'reducers/Notifications';
 
 const eduIDApp = combineReducers({
     main: mainReducer,
     captcha: captchaReducer,
     router: routerReducer,
     form: formReducer,
-    intl: intlReducer
+    intl: intlReducer,
+    notifications: notificationsReducer
 });
 
 export default eduIDApp;

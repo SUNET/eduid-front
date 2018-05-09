@@ -18,8 +18,9 @@ import { createLogger } from 'redux-logger';
 import { Provider } from 'react-intl-redux'
 import { updateIntl } from 'react-intl-redux';
 import { createStore, applyMiddleware, compose } from "redux";
-import eduIDApp from "./store";
 
+import eduIDApp from "./store";
+import notifyAndDispatch from "./notify-middleware";
 import { getConfig, getCodeStatus } from "actions/Main";
 import { history } from "components/Main";
 
@@ -37,6 +38,7 @@ export const store = createStore(
       applyMiddleware(
           sagaMiddleware,
           routerMiddleware(history),
+          notifyAndDispatch,
           createLogger()
           )
     )
