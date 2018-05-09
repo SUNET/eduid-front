@@ -1,0 +1,32 @@
+﻿
+@import '../variables.scss';
+
+body,
+div.jumbotron {
+    height: 100%;
+    background-color: $background-color;
+    background-image:url(../../img/texture.png);
+}
+
+h1, h2, h3, h4 {
+    font-family: $font;
+    color: $hcolor;
+}
+
+h1 {
+    font-size: 72px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+button.btn-primary {
+    background-color: $primary-btn-color;
+    border-color: $primary-btn-border-color;
+}
+
+p.lead {
+    font-size: 24px;
+    color: $lead-color;
+    margin-top: 30px;
+    margin-bottom: 75px;
+}

@@ -1,0 +1,21 @@
+
+@import '../variables.scss';
+
+div#clouds {
+    width: 100%;
+    height: 170px;
+    background-image: url(../../img/clouds.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 0;
+}
+
+input#email-input {
+    height: 45px;
+}
+
+button#email-button {
+    text-transform: uppercase;
+    padding: 0 40px;
+}
