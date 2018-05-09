@@ -108,6 +108,26 @@ const msgs = {
             id="email.sign-up-email"
             defaultMessage={`Sign up with your email address`} />),
 
+    'captcha.one-step-left': (
+        <FormattedMessage
+            id="captcha.one-step-left"
+            defaultMessage={`Only one more step left!`} />),
+
+    'captcha.verify-human': (
+        <FormattedMessage
+            id="captcha.verify-human"
+            defaultMessage={`eduID needs to verify that you are a human and not a machine.`} />),
+
+    'captcha.submit': (
+        <FormattedMessage
+            id="captcha.submit"
+            defaultMessage={`Submit`} />),
+
+    'captcha.cancel': (
+        <FormattedMessage
+            id="captcha.cancel"
+            defaultMessage={`Cancel`} />),
+
 };
 
 const unformatted = defineMessages({
