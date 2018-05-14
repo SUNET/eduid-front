@@ -133,6 +133,21 @@ const msgs = {
             id="footer.copyright"
             defaultMessage={` SUNET 2013-2018`} />),
 
+    'created.account-created': (
+        <FormattedMessage
+            id="created.account-created"
+            defaultMessage={`Account created successfully`} />),
+
+    'created.confirm-registration': (
+        <FormattedMessage
+            id="created.confirm-registration"
+            defaultMessage={`Confirm registration`} />),
+
+    'created.email-sent': (values) => (
+        <FormattedMessage
+            id="created.email-sent"
+            defaultMessage={`An email with instructions on how to proceed has been sent to {email}`}
+            values={values} />),
 };
 
 const unformatted = defineMessages({

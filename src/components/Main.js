@@ -8,6 +8,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
 import EmailContainer from "containers/Email";
+import AccountCreatedContainer from "containers/AccountCreated";
 import CaptchaContainer from "containers/Captcha";
 import NotificationsContainer from 'containers/Notifications';
 
@@ -41,6 +42,7 @@ class Main extends Component {
                     <Route exact path="/" component={() => (<Redirect to={redirect} />)} />
                     <Route path="/email" component={EmailContainer} />
                     <Route path="/trycaptcha" component={CaptchaContainer} />
+                    <Route path="/new" component={AccountCreatedContainer} />
                 </div>
             </ConnectedRouter>,
             <FooterContainer key="3" />

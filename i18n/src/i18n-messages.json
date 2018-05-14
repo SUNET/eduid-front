@@ -36,6 +36,18 @@
     "defaultMessage": "SUNET 2013-2018"
   },
   {
+    "id": "created.account-created",
+    "defaultMessage": "Account created successfully"
+  },
+  {
+    "id": "created.confirm-registration",
+    "defaultMessage": "Confirm registration"
+  },
+  {
+    "id": "created.email-sent",
+    "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
+  },
+  {
     "id": "pd.choose-language",
     "defaultMessage": "Choose language"
   }
