@@ -1,13 +1,15 @@
 
-import { put, call } from "redux-saga/effects";
+import { put, call, select } from "redux-saga/effects";
 import { ajaxHeaders, checkStatus, getRequest } from "sagas/common";
 
 import * as actions from "actions/Main";
 
 
 export function* requestCodeStatus () {
-    const url = SIGNUP_SERVICE_URL + 'code/';
+    const url = SIGNUP_SERVICE_URL + 'verify-link/';
     try {
+        const state = yield select(state => state),
+              url = url + state.main.code;
         const config = yield call(fetchCodeStatus, url);
         yield put(config);
     } catch(error) {

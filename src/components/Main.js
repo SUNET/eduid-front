@@ -9,6 +9,7 @@ import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
+import CodeVerifiedContainer from "containers/CodeVerified";
 import CaptchaContainer from "containers/Captcha";
 import NotificationsContainer from 'containers/Notifications';
 
@@ -43,6 +44,7 @@ class Main extends Component {
                     <Route path="/email" component={EmailContainer} />
                     <Route path="/trycaptcha" component={CaptchaContainer} />
                     <Route path="/new" component={AccountCreatedContainer} />
+                    <Route path="/code-verified" component={CodeVerifiedContainer} />
                 </div>
             </ConnectedRouter>,
             <FooterContainer key="3" />

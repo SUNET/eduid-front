@@ -49,8 +49,11 @@ sagaMiddleware.run(rootSaga);
 /* render app */
 
 const findCode = function (path) {
-    const segments = path.split('/');
-    if (segments.length === 5) {return segments[3]}
+    const re = new RegExp('/code/(.+)$'),
+          match = re.exec(path);
+    if (match !== null) {
+        return match[1];
+    }
     return '';
 };
 
