@@ -7,6 +7,21 @@ import 'style/Notifications.scss';
 
 class Notifications extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: true
+    };
+
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  onDismiss(e) {
+    this.setState({ visible: false });
+    this.props.handleRMNotification(e);
+  }
+
   render () {
     let toShow = this.props.errors.map( (err, index) => {
         let err_msg = this.props.l10n(err.msg);
@@ -20,7 +35,8 @@ class Notifications extends Component {
                        color="danger"
                        data-level="errors"
                        data-index={index}
-                       onDismiss={this.props.handleRMNotification}>
+                       isOpen={this.state.visible}
+                       toggle={this.onDismiss}>
                    {err_msg}
                 </Alert>);
     });
@@ -38,7 +54,8 @@ class Notifications extends Component {
                            color="success"
                            data-level="messages"
                            data-index={index}
-                           onDismiss={this.props.handleRMNotification}>
+													 isOpen={this.state.visible}
+													 toggle={this.onDismiss}>
                        {success_msg}
                     </Alert>);
         });
@@ -54,7 +71,8 @@ class Notifications extends Component {
                            color="warning"
                            data-level="warnings"
                            data-index={index}
-                           onDismiss={this.props.handleRMNotification}>
+													 isOpen={this.state.visible}
+													 toggle={this.onDismiss}>
                        {warn}
                     </Alert>);
         }));
