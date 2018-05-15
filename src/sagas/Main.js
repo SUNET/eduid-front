@@ -3,15 +3,26 @@ import { put, call, select } from "redux-saga/effects";
 import { ajaxHeaders, checkStatus, getRequest } from "sagas/common";
 
 import * as actions from "actions/Main";
+import { history } from "components/Main";
+import { eduidNotify } from "actions/Notifications";
 
 
 export function* requestCodeStatus () {
-    const url = SIGNUP_SERVICE_URL + 'verify-link/';
     try {
         const state = yield select(state => state),
-              url = url + state.main.code;
-        const config = yield call(fetchCodeStatus, url);
-        yield put(config);
+              url = SIGNUP_SERVICE_URL + 'verify-link/' + state.main.code;
+        const codeStatus = yield call(fetchCodeStatus, url);
+        yield* requestConfig();
+        if (codeStatus.payload.status === 'unknown-code') {
+            history.push("/email");
+            yield put(eduidNotify('code.unknown-code', 'messages'));
+        } else if (codeStatus.payload.status === 'already-verified') {
+            history.push("/resend-code");
+            yield put(eduidNotify('code.already-verified', 'messages'));
+        } else if (codeStatus.payload.status === 'verified') {
+            yield put(codeStatus);
+            history.push("/code-verified");
+        }
     } catch(error) {
         yield put(actions.getCodeStatusFail(error.toString()));
     }

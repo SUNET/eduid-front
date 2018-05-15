@@ -17,8 +17,8 @@ export function* sendCaptcha () {
               };
         const resp = yield call(requestSendCaptcha, data);
         yield put(putCsrfToken(resp));
-        history.push(resp.payload.status)
-        delete resp.payload.status;
+        history.push(resp.payload.next)
+        delete resp.payload.next;
         yield put(resp);
     } catch(error) {
         yield put(actions.postCaptchaFail(error.toString()));

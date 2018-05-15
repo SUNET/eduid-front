@@ -10,6 +10,7 @@ import FooterContainer from "containers/Footer";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";
+import ResendCodeContainer from "containers/ResendCode";
 import CaptchaContainer from "containers/Captcha";
 import NotificationsContainer from 'containers/Notifications';
 
@@ -45,6 +46,7 @@ class Main extends Component {
                     <Route path="/trycaptcha" component={CaptchaContainer} />
                     <Route path="/new" component={AccountCreatedContainer} />
                     <Route path="/code-verified" component={CodeVerifiedContainer} />
+                    <Route path="/resend-code" component={ResendCodeContainer} />
                 </div>
             </ConnectedRouter>,
             <FooterContainer key="3" />
