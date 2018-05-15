@@ -143,6 +143,21 @@ const msgs = {
             id="created.confirm-registration"
             defaultMessage={`Confirm registration`} />),
 
+    'tou.header': (
+        <FormattedMessage
+            id="tou.header"
+            defaultMessage={`General rules for usage of user accounts at eduID.se`} />),
+
+    'tou.reject': (
+        <FormattedMessage
+            id="tou.reject"
+            defaultMessage={`Reject`} />),
+
+    'tou.accept': (
+        <FormattedMessage
+            id="tou.accept"
+            defaultMessage={`Accept`} />),
+
     'created.email-sent': (values) => (
         <FormattedMessage
             id="created.email-sent"

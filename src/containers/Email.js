@@ -8,7 +8,9 @@ import { history } from "components/Main";
 
 const mapStateToProps = (state, props) => {
   return {
-    is_fetching: state.main.is_fetching
+    is_fetching: state.email.is_fetching,
+    acceptingTOU: state.email.acceptingTOU,
+    tou: state.main.tou
   }
 };
 
@@ -19,8 +21,16 @@ const mapDispatchToProps = (dispatch, props) => {
       e.preventDefault();
       const email = document.getElementById('email-input').value;
       dispatch(actions.addEmail(email));
+    },
+    handleAccept: (e) => {
+      e.preventDefault();
+      dispatch(actions.acceptTOU());
       history.push("/trycaptcha");
     },
+    handleReject: (e) => {
+      e.preventDefault();
+      dispatch(actions.rejectTOU());
+    }
   }
 };
 

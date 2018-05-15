@@ -3,8 +3,6 @@ export const GET_CODE_STATUS = 'GET_CODE_STATUS';
 export const APP_LOADED = 'APP_LOADED';
 export const RESIZE_WINDOW = 'RESIZE_WINDOW';
 
-export const ADD_EMAIL = 'ADD_EMAIL';
-
 export const GET_SIGNUP_CODESTATUS = 'GET_SIGNUP_CODESTATUS';
 export const GET_SIGNUP_CODESTATUS_SUCCESS = 'GET_SIGNUP_CODESTATUS_SUCCESS';
 export const GET_SIGNUP_CODESTATUS_FAIL = 'GET_SIGNUP_CODESTATUS_FAIL';
@@ -40,15 +38,6 @@ export function resizeWindow () {
     };
 }
 
-
-export function addEmail (email) {
-    return {
-        type: ADD_EMAIL,
-        payload: {
-            email: email
-        }
-    };
-}
 
 export function getCodeStatusFail (err) {
   return {

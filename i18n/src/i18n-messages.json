@@ -44,6 +44,18 @@
     "defaultMessage": "Confirm registration"
   },
   {
+    "id": "tou.header",
+    "defaultMessage": "General rules for usage of user accounts at eduID.se"
+  },
+  {
+    "id": "tou.reject",
+    "defaultMessage": "Reject"
+  },
+  {
+    "id": "tou.accept",
+    "defaultMessage": "Accept"
+  },
+  {
     "id": "created.email-sent",
     "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
   },

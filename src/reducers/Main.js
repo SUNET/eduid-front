@@ -5,13 +5,12 @@ import * as actions from "actions/Main";
 const configData = {
     window_size: actions.getWindowSize(),
     csrf_token: '',
-    email: '',
     recaptcha_public_key: '',
     captcha: '',
     code: '',
+    tou: '',
     is_app_loaded: false,
     is_fetching: false,
-    code: '',
     DEBUG: true
 };
 
@@ -28,11 +27,6 @@ let mainReducer = (state=configData, action) => {
           ...action.payload
       };
     case actions.RESIZE_WINDOW:
-      return {
-          ...state,
-          ...action.payload
-      };
-    case actions.ADD_EMAIL:
       return {
           ...state,
           ...action.payload
