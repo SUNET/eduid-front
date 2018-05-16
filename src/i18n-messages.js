@@ -158,6 +158,39 @@ const msgs = {
             id="tou.accept"
             defaultMessage={`Accept`} />),
 
+    'header.student': (
+        <FormattedMessage
+            id="header.student"
+            defaultMessage={`STUDENT`} />),
+
+    'header.technician': (
+        <FormattedMessage
+            id="header.technician"
+            defaultMessage={`TECHNICIAN`} />),
+
+    'header.staff': (
+        <FormattedMessage
+            id="header.staff"
+            defaultMessage={`STAFF`} />),
+
+    'header.faq': (
+        <FormattedMessage
+            id="header.faq"
+            defaultMessage={`FAQ`} />),
+
+    'header.signup': (
+        <FormattedMessage
+            id="header.signup"
+            defaultMessage={`SIGN UP`} />),
+
+    'header.signin': (
+        <FormattedMessage
+            id="header.signin"
+            defaultMessage={`SIGN IN`} />),
+
+
+// messages with parameters
+
     'created.email-sent': (values) => (
         <FormattedMessage
             id="created.email-sent"

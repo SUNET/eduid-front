@@ -2,13 +2,10 @@
 import { connect } from 'react-redux';
 
 import i18n from 'i18n-messages';
-import Main from 'components/Main';
+import Header from 'components/Header';
 
 const mapStateToProps = (state, props) => {
     return {
-        code: state.main.code,
-        email: state.email.email,
-        captcha: state.main.captcha
     }
 };
 
@@ -18,9 +15,9 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 };
 
-const MainContainer = connect(
+const HeaderContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main);
+)(Header);
 
-export default i18n(MainContainer);
+export default i18n(HeaderContainer);

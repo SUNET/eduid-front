@@ -56,6 +56,30 @@
     "defaultMessage": "Accept"
   },
   {
+    "id": "header.student",
+    "defaultMessage": "STUDENT"
+  },
+  {
+    "id": "header.technician",
+    "defaultMessage": "TECHNICIAN"
+  },
+  {
+    "id": "header.staff",
+    "defaultMessage": "STAFF"
+  },
+  {
+    "id": "header.faq",
+    "defaultMessage": "FAQ"
+  },
+  {
+    "id": "header.signup",
+    "defaultMessage": "SIGN UP"
+  },
+  {
+    "id": "header.signin",
+    "defaultMessage": "SIGN IN"
+  },
+  {
     "id": "created.email-sent",
     "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
   },

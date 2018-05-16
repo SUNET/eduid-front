@@ -11,10 +11,10 @@ export function* sendCaptcha () {
     try {
         const state = yield select(state => state),
               data = {
-                email: state.main.email,
+                email: state.email.email,
                 recaptcha_response: state.captcha.captcha_verification,
                 csrf_token: state.main.csrf_token,
-                tou_accepted: state.main.tou_accepted
+                tou_accepted: state.email.tou_accepted
               };
         const resp = yield call(requestSendCaptcha, data);
         yield put(putCsrfToken(resp));

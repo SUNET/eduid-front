@@ -6,7 +6,7 @@ import AccountCreated from 'components/AccountCreated';
 
 const mapStateToProps = (state, props) => {
     return {
-        email: state.main.email,
+        email: state.email.email,
     }
 };
 

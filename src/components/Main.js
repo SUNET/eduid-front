@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
+import HeaderContainer from "containers/Header";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";
@@ -38,7 +39,8 @@ class Main extends Component {
 
         return ([
             <SplashContainer key="0" />,
-            <ConnectedRouter history={history} key="1">
+            <HeaderContainer key="1" />,
+            <ConnectedRouter history={history} key="2">
                 <div  className="container-fluid">
                     <NotificationsContainer />
                     <Route exact path="/" component={() => (<Redirect to={redirect} />)} />
