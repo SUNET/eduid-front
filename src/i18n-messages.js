@@ -188,6 +188,45 @@ const msgs = {
             id="header.signin"
             defaultMessage={`SIGN IN`} />),
 
+    'finish.write-password': (
+        <FormattedMessage
+            id="finish.write-password"
+            defaultMessage={`Write down this password and store it in a safe place.`} />),
+
+    'finish.got-it': (
+        <FormattedMessage
+            id="finish.got-it"
+            defaultMessage={`OK, got it`} />),
+
+    'finish.can-now-login': (
+        <FormattedMessage
+            id="finish.can-now-login"
+            defaultMessage={`You can now log in`} />),
+
+    'finish.accept-unconfirmed': (
+        <FormattedMessage
+            id="finish.accept-unconfirmed"
+            defaultMessage={`Your account is now ready for use with sites that accept <strong>unconfirmed identities</strong>.`} />),
+
+    'finish.finish': (
+        <FormattedMessage
+            id="finish.finish"
+            defaultMessage={`FINISH`} />),
+
+    'finish.access-more': (
+        <FormattedMessage
+            id="finish.access-more"
+            defaultMessage={`Access more`} />),
+
+    'finish.to-dashboard': (
+        <FormattedMessage
+            id="finish.to-dashboard"
+            defaultMessage={`To get access to additional sites that require a confirmed identity, proceed to the dashboard.`} />),
+
+    'finish.confirm-identity': (
+        <FormattedMessage
+            id="finish.confirm-identity"
+            defaultMessage={`CONFIRM IDENTITY`} />),
 
 // messages with parameters
 
@@ -195,6 +234,12 @@ const msgs = {
         <FormattedMessage
             id="created.email-sent"
             defaultMessage={`An email with instructions on how to proceed has been sent to {email}`}
+            values={values} />),
+
+    'finish.registration-complete': (values) => (
+        <FormattedMessage
+            id="finish.registration-complete"
+            defaultMessage={`Registration of {email} completed`}
             values={values} />),
 };
 

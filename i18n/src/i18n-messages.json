@@ -80,8 +80,44 @@
     "defaultMessage": "SIGN IN"
   },
   {
+    "id": "finish.write-password",
+    "defaultMessage": "Write down this password and store it in a safe place."
+  },
+  {
+    "id": "finish.got-it",
+    "defaultMessage": "OK, got it"
+  },
+  {
+    "id": "finish.can-now-login",
+    "defaultMessage": "You can now log in"
+  },
+  {
+    "id": "finish.accept-unconfirmed",
+    "defaultMessage": "Your account is now ready for use with sites that accept <strong>unconfirmed identities</strong>."
+  },
+  {
+    "id": "finish.finish",
+    "defaultMessage": "FINISH"
+  },
+  {
+    "id": "finish.access-more",
+    "defaultMessage": "Access more"
+  },
+  {
+    "id": "finish.to-dashboard",
+    "defaultMessage": "To get access to additional sites that require a confirmed identity, proceed to the dashboard."
+  },
+  {
+    "id": "finish.confirm-identity",
+    "defaultMessage": "CONFIRM IDENTITY"
+  },
+  {
     "id": "created.email-sent",
     "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
+  },
+  {
+    "id": "finish.registration-complete",
+    "defaultMessage": "Registration of {email} completed"
   },
   {
     "id": "pd.choose-language",

@@ -13,6 +13,7 @@ const eduIDApp = combineReducers({
     main: mainReducer,
     email: emailReducer,
     captcha: captchaReducer,
+    verified: verifiedReducer,
     router: routerReducer,
     form: formReducer,
     intl: intlReducer,
