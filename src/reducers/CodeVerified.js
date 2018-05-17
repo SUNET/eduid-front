@@ -7,12 +7,15 @@ const verifiedData = {
     eppn: '',
     nonce: '',
     timestamp: '',
-    token: '',
+    auth_token: '',
+    email: '',
+    status: '',
+    dashboard_url: ''
 };
 
 let verifiedReducer = (state=verifiedData, action) => {
   switch (action.type) {
-    case actions.GET_SIGNUP_CODESTATUS_SUCCESS:
+    case actions.GET_SIGNUP_VERIFY_LINK_SUCCESS:
       return {
           ...state, 
           ...action.payload
