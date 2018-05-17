@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import EduIDButton from 'components/EduIDButton';
 
 import 'style/Header.scss';
 
@@ -22,11 +22,11 @@ class Header extends Component {
                       <a className="nav-link" href="https://www.eduid.se/faq.html">{this.props.l10n('header.faq')}</a>
                     </div>
                     <div className="col-lg-2 d-flex flex-row-reverse">
-                      <Button color="primary"
+                      <EduIDButton color="primary"
                               id="signin-button"
                               onClick="">
                          {this.props.l10n('header.signin')}
-                      </Button>
+                      </EduIDButton>
                       <a color="primary"
                          className="button"
                               id="signup-button"

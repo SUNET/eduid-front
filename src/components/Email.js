@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Form, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Form, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+import EduIDButton from "components/EduIDButton";
 
 import 'style/Email.scss';
 
@@ -19,9 +21,6 @@ const validate = values => {
 }
 
 let EmailForm = props => {
-  let spinning = false,
-      error = false;
-  if (props.is_fetching) spinning = true;
 
   return (
     <div id="email-register">
@@ -34,11 +33,11 @@ let EmailForm = props => {
                      name="email"
                      id="email-input"
                      placeholder="name@example.edu" />
-              <Button color="primary"
+              <EduIDButton color="primary"
                       id="email-button"
                       onClick={props.handleEmail}>
                  {props.l10n('email.sign-up-email')}
-              </Button>
+              </EduIDButton>
           </div>
       </Form>
     </div>
@@ -81,8 +80,8 @@ class Email extends Component {
           <ModalHeader>{this.props.l10n('tou.header')}</ModalHeader>
           <ModalBody>{this.props.tou}</ModalBody>
           <ModalFooter>
-            <Button color="danger" onClick={this.props.handleReject}>{this.props.l10n('tou.reject')}</Button>
-            <Button color="primary" onClick={this.props.handleAccept}>{this.props.l10n('tou.accept')}</Button>
+            <EduIDButton color="danger" onClick={this.props.handleReject}>{this.props.l10n('tou.reject')}</EduIDButton>
+            <EduIDButton color="primary" onClick={this.props.handleAccept}>{this.props.l10n('tou.accept')}</EduIDButton>
           </ModalFooter>
         </Modal>
       </div>
@@ -91,7 +90,6 @@ class Email extends Component {
 }
 
 Email.propTypes = {
-  is_fetching: PropTypes.bool,
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
   l10n: PropTypes.func,

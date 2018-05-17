@@ -8,7 +8,6 @@ import { history } from "components/Main";
 
 const mapStateToProps = (state, props) => {
   return {
-    is_fetching: state.email.is_fetching,
     acceptingTOU: state.email.acceptingTOU,
     tou: state.main.tou
   }

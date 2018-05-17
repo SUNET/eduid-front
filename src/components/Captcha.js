@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import ScriptLoader from 'react-script-loader-hoc';
-import { Button } from 'reactstrap';
+import EduIDButton from 'components/EduIDButton';
 import Recaptcha from "react-recaptcha";
 
 import 'style/Captcha.scss';
@@ -40,15 +40,15 @@ class Captcha extends Component {
       <div className="row text-center" key="2">
         <div className="col-lg-3"></div>
         <div className="col-lg-6">
-            <Button className="btn-in-row"
+            <EduIDButton className="btn-in-row"
                     color="primary"
                     onClick={this.props.sendCaptcha}>
                 {this.props.l10n('captcha.submit')}
-            </Button>
-            <Button className="btn-in-row"
+            </EduIDButton>
+            <EduIDButton className="btn-in-row"
                     color="light">
                 {this.props.l10n('captcha.cancel')}
-            </Button>
+            </EduIDButton>
         </div>
         <div className="col-lg-3"></div>
       </div>
@@ -57,7 +57,6 @@ class Captcha extends Component {
 }
 
 Captcha.propTypes = {
-  is_fetching: PropTypes.bool,
   recaptcha_key: PropTypes.string,
   handleCaptcha: PropTypes.func
 }

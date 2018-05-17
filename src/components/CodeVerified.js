@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button } from "reactstrap";
+import { EduIDButton } from 'components/EduIDButton';
 
 import 'style/CodeVerified.scss';
 
@@ -20,10 +20,10 @@ class CodeVerified extends Component {
               <p className="lead">{this.props.l10n('finish.registration-complete')({email: this.props.email})}</p>
               <p className="lead">{this.props.l10n('finish.write-password')}</p>
               <p>{this.props.password}</p>
-              <Button color="primary"
+              <EduIDButton color="primary"
                       onClick={this.props.gotIt}>
                 {this.props.l10n('finish.got-it')}
-              </Button>
+              </EduIDButton>
           </div>
           <div className="col-lg-3"></div>
         </div>
@@ -37,12 +37,12 @@ class CodeVerified extends Component {
             <div className="col-lg-4">
               <h4>{this.props.l10n('finish.can-now-login')}</h4>
               <p>{this.props.l10n('finish.accept-unconfirmed')}</p>
-              <Button color="primary">{this.props.l10n('finish.finish')}</Button>
+              <EduIDButton color="primary">{this.props.l10n('finish.finish')}</EduIDButton>
             </div>
             <div className="col-lg-4">
               <h4>{this.props.l10n('finish.access-more')}</h4>
               <p>{this.props.l10n('finish.to-dashboard')}</p>
-              <Button color="primary">{this.props.l10n('finish.confirm-identity')}</Button>
+              <EduIDButton color="primary">{this.props.l10n('finish.confirm-identity')}</EduIDButton>
             </div>
             <div className="col-lg-2"></div>
           </form>
