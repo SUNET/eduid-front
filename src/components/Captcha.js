@@ -7,6 +7,8 @@ import ScriptLoader from 'react-script-loader-hoc';
 import EduIDButton from 'components/EduIDButton';
 import Recaptcha from "react-recaptcha";
 
+import { FetchingContext } from "components/Main";
+
 import 'style/Captcha.scss';
 
 let recaptchaInstance;
@@ -14,6 +16,10 @@ let recaptchaInstance;
 class Captcha extends Component {
 
   render () {
+
+    if (this.props.fetching === this.props.scriptsLoadedSuccessfully) {
+    	this.props.setFetching(!(this.props.scriptsLoadedSuccessfully));
+    } 
 
     return ([
       <div className="row text-center" key="0">
@@ -61,4 +67,10 @@ Captcha.propTypes = {
   handleCaptcha: PropTypes.func
 }
 
-export default ScriptLoader('https://www.google.com/recaptcha/api.js?render=explicit')(Captcha);
+const LoadingCaptcha = ScriptLoader('https://www.goppppogle.com/recaptcha/api.js?render=explicit')(Captcha);
+
+export default props => (
+      <FetchingContext.Consumer>
+        {({fetching, setFetching}) => <LoadingCaptcha {...props} fetching={fetching} setFetching={setFetching} />}
+      </FetchingContext.Consumer>
+);

@@ -16,7 +16,7 @@ class EduIDButton extends Component {
   render () {
     return (
         <FetchingContext.Consumer>
-            {fetching => {
+            {({fetching, toggleFetching}) => {
                 if (fetching) {
                     return (
         				<Button className="active has-spinner"

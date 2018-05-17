@@ -21,9 +21,27 @@ import 'style/Main.scss';
 
 export const history = createHistory()
 
-export const FetchingContext = React.createContext(false);
+export const FetchingContext = React.createContext({
+    fetching: false,
+    setFetching: () => {}
+});
 
 class Main extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.setFetching = (fetching) => {
+            this.setState(state => ({
+                fetching: fetching
+            }));
+        };
+
+        this.state = {
+            fetching: props.is_fetching,
+            setFetching: this.setFetching,
+        };
+    }
 
     render () {
 
@@ -40,7 +58,7 @@ class Main extends Component {
         }
 
         return (
-            <FetchingContext.Provider value={this.props.is_fetching}>
+            <FetchingContext.Provider value={this.state}>
                 <SplashContainer />
                 <HeaderContainer />
                 <ConnectedRouter history={history}>
