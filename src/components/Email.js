@@ -33,9 +33,9 @@ let EmailForm = props => {
                      name="email"
                      id="email-input"
                      placeholder="name@example.edu" />
-              <EduIDButton color="primary"
-                      id="email-button"
-                      onClick={props.handleEmail}>
+              <EduIDButton className="btn-in-row"
+                           id="email-button"
+                           onClick={props.handleEmail}>
                  {props.l10n('email.sign-up-email')}
               </EduIDButton>
           </div>

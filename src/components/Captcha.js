@@ -47,12 +47,10 @@ class Captcha extends Component {
         <div className="col-lg-3"></div>
         <div className="col-lg-6">
             <EduIDButton className="btn-in-row"
-                    color="primary"
                     onClick={this.props.sendCaptcha}>
                 {this.props.l10n('captcha.submit')}
             </EduIDButton>
-            <EduIDButton className="btn-in-row"
-                    color="light">
+            <EduIDButton className="btn-in-row">
                 {this.props.l10n('captcha.cancel')}
             </EduIDButton>
         </div>

@@ -21,22 +21,20 @@ class Header extends Component {
                       <a className="nav-link" href="https://www.eduid.se/personal.html">{this.props.l10n('header.staff')}</a>
                       <a className="nav-link" href="https://www.eduid.se/faq.html">{this.props.l10n('header.faq')}</a>
                     </div>
-                    <div className="col-lg-2 d-flex flex-row-reverse"
+                    <div className="col-lg-3 d-flex flex-row-reverse"
                          data-dashboard_url={this.props.dashboard_url}>
-                      <Button color="primary"
-                              className="eduid-btn"
+                      <button className="eduid-btn white"
                               id="signin-button"
                               onClick={this.props.gotoSignin}>
                          {this.props.l10n('header.signin')}
-                      </Button>
-                      <Button color="warning"
-                              className="eduid-btn"
+                      </button>
+                      <button className="eduid-btn orange"
                               id="signup-button"
                               onClick={this.props.gotoSignup}>
                          {this.props.l10n('header.signup')}
-                      </Button>
+                      </button>
                     </div>
-                    <div className="col-lg-3"></div>
+                    <div className="col-lg-2"></div>
                   </div>
                 </div>
             </header>);

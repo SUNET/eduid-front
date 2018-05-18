@@ -34,17 +34,32 @@ input {
 }
 
 button {
+    cursor: pointer;
     text-transform: uppercase;
+    color: white;
+    padding: 10px 40px;
+    margin: 20px 25px;
+    background-color: $primary-btn-color;
+    border-width: 0;
+    font-family: Roboto-Medium;
+    font-size:14px;
+    font-weight: 400;
 }
 
 button.btn-in-row {
-    padding: 10px 40px !important;
-    margin: 20px 25px;
+    margin: 0;
 }
 
-button.btn-primary {
-    background-color: $primary-btn-color;
-    border-color: $primary-btn-border-color;
+button.white {
+    padding: 6px 36px;
+    border-width: 4px;
+    background-color: transparent;
+    border-color: white;
+    border-style: solid;
+}
+
+button.orange {
+    background-color: $orange;
 }
 
 p.lead {
@@ -52,4 +67,53 @@ p.lead {
     color: $lead-color;
     margin-top: 30px;
     margin-bottom: 75px;
+}
+
+
+/* Fontface */
+@font-face {
+	font-family: 'Roboto-Light';
+	src: url('../fonts/roboto-light-webfont.eot');
+	src: url('../fonts/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/roboto-light-webfont.woff') format('woff'),
+         url('../fonts/roboto-light-webfont.svg#webfontZam02nTh') format('svg'),
+	     url('../fonts/roboto-light-webfont.ttf') format('truetype');
+
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Roboto-Regular';
+	src: url('../fonts/roboto-regular-webfont.eot');
+	src: url('../fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/roboto-regular-webfont.woff') format('woff'),
+         url('../fonts/roboto-regular-webfont.svg#webfontZam02nTh') format('svg'),
+	     url('../fonts/roboto-regular-webfont.ttf') format('truetype');
+
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Black';
+	src: url('../fonts/roboto-black-webfont.eot');
+	src: url('../fonts/roboto-black-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/roboto-black-webfont.woff') format('woff'),
+         url('../fonts/roboto-black-webfont.svg#webfontZam02nTh') format('svg'),
+	     url('../fonts/roboto-black-webfont.ttf') format('truetype');
+
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Medium';
+	src: url('../fonts/roboto-medium-webfont.eot');
+	src: url('../fonts/roboto-medium-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/roboto-medium-webfont.woff') format('woff'),
+         url('../fonts/roboto-medium-webfont.svg#webfontZam02nTh') format('svg'),
+	     url('../fonts/roboto-medium-webfont.ttf') format('truetype');
+
+	font-weight: normal;
+	font-style: normal;
 }
