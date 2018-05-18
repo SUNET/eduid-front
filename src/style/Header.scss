@@ -2,6 +2,30 @@
 @import '../variables.scss';
 
 
+div#eduid-logo-large {
+    width: 141px;
+    height: 47px;
+    background-image:url(../../img/logo-large.png);
+}    
+
+.header-links {
+    margin: 20px 40px;
+}
+
+.header-buttons {
+    margin-top: 20px;
+    margin-right: 60px;
+}
+
+.header-links .header-link {
+    color: white;
+    font-family: Roboto-Regular;
+    font-size: 14px;
+    margin: 0 20px;
+    padding-top: 17px;
+    padding-left: 1em;
+}
+
 li.nav-item {
     margin: 0 20px;
 }

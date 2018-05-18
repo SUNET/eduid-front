@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faSpinner from '@fortawesome/fontawesome-free-solid/faSpinner'
 
