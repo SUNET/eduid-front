@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import EduIDButton from 'components/EduIDButton';
+import { Button } from 'reactstrap';
 
 import 'style/Header.scss';
 
@@ -21,18 +21,20 @@ class Header extends Component {
                       <a className="nav-link" href="https://www.eduid.se/personal.html">{this.props.l10n('header.staff')}</a>
                       <a className="nav-link" href="https://www.eduid.se/faq.html">{this.props.l10n('header.faq')}</a>
                     </div>
-                    <div className="col-lg-2 d-flex flex-row-reverse">
-                      <EduIDButton color="primary"
+                    <div className="col-lg-2 d-flex flex-row-reverse"
+                         data-dashboard_url={this.props.dashboard_url}>
+                      <Button color="primary"
+                              className="eduid-btn"
                               id="signin-button"
-                              onClick="">
+                              onClick={this.props.gotoSignin}>
                          {this.props.l10n('header.signin')}
-                      </EduIDButton>
-                      <a color="primary"
-                         className="button"
+                      </Button>
+                      <Button color="warning"
+                              className="eduid-btn"
                               id="signup-button"
-                              onClick="">
+                              onClick={this.props.gotoSignup}>
                          {this.props.l10n('header.signup')}
-                      </a>
+                      </Button>
                     </div>
                     <div className="col-lg-3"></div>
                   </div>
@@ -42,7 +44,9 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  l10n: PropTypes.func
+  l10n: PropTypes.func,
+  gotoSignup: PropTypes.func,
+  gotoSignin: PropTypes.func,
 }
 
 export default Header;
