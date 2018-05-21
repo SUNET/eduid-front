@@ -193,6 +193,18 @@
     div#eduid-logo-large {
         display: none;
     }
+
+    #eduid-menu {
+        display: block;
+        opacity: 1;
+        height: 260px;
+        transition: .5s all linear;
+    }
+
+    #eduid-menu.collapsed {
+        opacity: 0;
+        height: 0;
+    }
 }
 
 @media only screen and (min-width: 768px) {
