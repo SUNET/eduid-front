@@ -60,19 +60,21 @@ class Main extends Component {
         return (
             <FetchingContext.Provider value={this.state}>
                 <SplashContainer />
-                <HeaderContainer />
-                <ConnectedRouter history={history}>
-                    <div  className="container-fluid">
-                        <NotificationsContainer />
-                        <Route exact path="/" component={() => (<Redirect to={redirect} />)} />
-                        <Route path="/email" component={EmailContainer} />
-                        <Route path="/trycaptcha" component={CaptchaContainer} />
-                        <Route path="/new" component={AccountCreatedContainer} />
-                        <Route path="/code-verified" component={CodeVerifiedContainer} />
-                        <Route path="/resend-code" component={ResendCodeContainer} />
-                    </div>
-                </ConnectedRouter>
-                <FooterContainer />
+                <div className="container-fluid">
+                    <HeaderContainer />
+                    <ConnectedRouter history={history}>
+                        <div  className="container-fluid">
+                            <NotificationsContainer />
+                            <Route exact path="/" component={() => (<Redirect to={redirect} />)} />
+                            <Route path="/email" component={EmailContainer} />
+                            <Route path="/trycaptcha" component={CaptchaContainer} />
+                            <Route path="/new" component={AccountCreatedContainer} />
+                            <Route path="/code-verified" component={CodeVerifiedContainer} />
+                            <Route path="/resend-code" component={ResendCodeContainer} />
+                        </div>
+                    </ConnectedRouter>
+                    <FooterContainer />
+                </div>
             </FetchingContext.Provider>
         );
     }
