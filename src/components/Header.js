@@ -12,15 +12,15 @@ class Header extends Component {
     return (<header id="header" className="header">
                 <div className="container-fluid">
                   <div className="row">
-                    <div className="col-lg-2"></div>
-                    <div className="col-lg-5 d-flex flex-row header-links">
+                    <div className="col-xl-2"></div>
+                    <div className="col-xl-5 d-flex flex-row header-links">
                       <div className="logo" id="eduid-logo-large"></div> 
                       <a className="header-link" href="https://www.eduid.se/index.html">{this.props.l10n('header.student')}</a>
                       <a className="header-link" href="https://www.eduid.se/tekniker.html">{this.props.l10n('header.technician')}</a>
                       <a className="header-link" href="https://www.eduid.se/personal.html">{this.props.l10n('header.staff')}</a>
                       <a className="header-link" href="https://www.eduid.se/faq.html">{this.props.l10n('header.faq')}</a>
                     </div>
-                    <div className="col-lg-3 d-flex flex-row-reverse header-buttons"
+                    <div className="col-xl-3 d-flex flex-row-reverse header-buttons"
                          data-dashboard_url={this.props.dashboard_url}>
                       <button className="eduid-btn white"
                               id="signin-button"
@@ -33,7 +33,7 @@ class Header extends Component {
                          {this.props.l10n('header.signup')}
                       </button>
                     </div>
-                    <div className="col-lg-2"></div>
+                    <div className="col-xl-2"></div>
                   </div>
                 </div>
             </header>);

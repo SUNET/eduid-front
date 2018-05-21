@@ -10,3 +10,11 @@ div#clouds {
     background-position: center;
     z-index: 0;
 }
+
+input#email-input {
+    min-width: 300px;
+}
+
+button#signup-button, button#signin-button {
+    min-width: 135px;
+}

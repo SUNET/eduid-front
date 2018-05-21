@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Form, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope'
 
 import EduIDButton from "components/EduIDButton";
 
@@ -27,7 +29,9 @@ let EmailForm = props => {
       <Form>
           <div className="input-group">
               <div className="input-group-prepend">
-                <div className="input-group-text">@</div>
+                <div className="input-group-text">
+								  <FontAwesomeIcon icon={faEnvelope} />
+                </div>
               </div>
               <Input type="email"
                      name="email"
@@ -64,8 +68,8 @@ class Email extends Component {
 
     return ([
       <div key="0" className="row text-center">
-        <div className="col-lg-3"></div>
-        <div className="col-lg-6 jumbotron">
+        <div className="col-xl-2"></div>
+        <div className="col-xl-8">
             <div id="clouds"></div>
             <h1>{this.props.l10n('main.welcome')}</h1>
 
@@ -73,7 +77,7 @@ class Email extends Component {
 
             <EmailForm {...this.props} />
         </div>
-        <div className="col-lg-3"></div>
+        <div className="col-xl-2"></div>
       </div>,
       <div key="1" className="row text-center">
         <Modal isOpen={this.props.acceptingTOU}>
