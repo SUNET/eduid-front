@@ -8,6 +8,7 @@ import { history } from "components/Main";
 
 const mapStateToProps = (state, props) => {
   return {
+    size: state.main.window_size,
     acceptingTOU: state.email.acceptingTOU,
     tou: state.main.tou
   }

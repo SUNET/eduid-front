@@ -10,11 +10,14 @@ div#clouds {
     background-position: center;
     z-index: 0;
 }
-
-input#email-input {
-    min-width: 300px;
+.clouds:first-child {
+    margin-top: -40px;
 }
 
-button#signup-button, button#signin-button {
-    min-width: 135px;
+
+@media only screen and (max-width: 767px) {
+
+    div#clouds {
+        display: none;
+    }
 }
