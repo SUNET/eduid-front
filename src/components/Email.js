@@ -27,7 +27,7 @@ const getEmailForm = (size) => {
 
     let EmailForm;
 
-    if (size == 'cm') {
+    if (size !== 'xs') {
         EmailForm = props => {
 
           return (

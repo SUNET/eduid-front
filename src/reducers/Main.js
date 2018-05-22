@@ -6,6 +6,7 @@ import * as verifiedActions from "actions/CodeVerified";
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
     dashboard_url: '',
+    resize_timeout: 0,
     window_size: actions.getWindowSize(),
     csrf_token: '',
     recaptcha_public_key: '',
@@ -30,6 +31,11 @@ let mainReducer = (state=configData, action) => {
           ...state, 
           ...action.payload,
           is_fetching: true
+      };
+    case actions.RESIZE_TIMEOUT:
+      return {
+          ...state,
+          ...action.payload
       };
     case actions.RESIZE_WINDOW:
       return {

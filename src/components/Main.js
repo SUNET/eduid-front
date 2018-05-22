@@ -43,6 +43,13 @@ class Main extends Component {
         };
     }
 
+    componentWillMount() {
+        window.addEventListener('resize', this.props.handleWindowSizeChange.bind(this));
+    }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.props.handleWindowSizeChange);
+    }
+
     render () {
 
         let redirect = '/email';
@@ -81,6 +88,8 @@ class Main extends Component {
 }
 
 Main.propTypes = {
+    handleWindowSizeChange: PropTypes.func,
+    resize_timeout: PropTypes.integer,
     is_fetching: PropTypes.bool
 }
 

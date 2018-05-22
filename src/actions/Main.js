@@ -2,6 +2,7 @@
 export const GET_CODE_STATUS = 'GET_CODE_STATUS';
 export const APP_LOADED = 'APP_LOADED';
 export const RESIZE_WINDOW = 'RESIZE_WINDOW';
+export const RESIZE_TIMEOUT = 'RESIZE_TIMEOUT';
 
 export const GET_SIGNUP_CONFIG = 'GET_SIGNUP_CONFIG';
 export const GET_SIGNUP_CONFIG_SUCCESS = 'GET_SIGNUP_CONFIG_SUCCESS';
@@ -24,6 +25,14 @@ export function appLoaded () {
   };
 }
 
+export function resizeTimeout (t) {
+    return {
+        type: RESIZE_TIMEOUT,
+        payload: {
+            resize_timeout: t
+        }
+    };
+}
 
 export function resizeWindow () {
     return {
