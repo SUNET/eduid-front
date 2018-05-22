@@ -89,7 +89,7 @@ class Main extends Component {
 
 Main.propTypes = {
     handleWindowSizeChange: PropTypes.func,
-    resize_timeout: PropTypes.integer,
+    resize_timeout: PropTypes.number,
     is_fetching: PropTypes.bool
 }
 
