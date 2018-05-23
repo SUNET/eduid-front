@@ -29,7 +29,7 @@ class EduIDButton extends Component {
                     );
                 } else {
 					return (
-						<button className="has-spinner"
+						<button className="eduid-button has-spinner"
                                 {...this.props}>
 							{this.props.children}
 						</button>

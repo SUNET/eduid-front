@@ -20,4 +20,14 @@ div#clouds {
     div#clouds {
         display: none;
     }
+
+
+    input#email-input {
+        margin: 20px 0;
+        min-width: 100%;
+    }
+
+    button#email-button {
+        min-width: 100%;
+    }
 }

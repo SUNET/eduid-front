@@ -11,6 +11,7 @@ const mapStateToProps = (state, props) => {
         technicians_link: state.main.technicians_link,
         staff_link: state.main.staff_link,
         faq_link: state.main.faq_link,
+        size: state.main.window_size
     }
 };
 
@@ -27,11 +28,6 @@ const mapDispatchToProps = (dispatch, props) => {
                   url = dataNode.dataset.dashboard_url;
             document.location.href = url;
         },
-        toggleMenu: function (e) {
-            e.preventDefault();
-            const menu = document.getElementById('eduid-menu');
-            menu.classList.toggle('collapsed');
-        }
     }
 };
 
