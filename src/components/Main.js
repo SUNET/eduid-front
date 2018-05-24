@@ -31,16 +31,16 @@ class Main extends Component {
     constructor(props) {
         super(props);
 
-        this.setFetching = (fetching) => {
-            this.setState(state => ({
-                fetching: fetching
-            }));
-        };
-
         this.state = {
             fetching: props.is_fetching,
-            setFetching: this.setFetching,
+            setFetching: this.setFetching.bind(this),
         };
+    }
+
+    setFetching(fetching) {
+        this.setState({
+            fetching: fetching
+        });
     }
 
     componentWillMount() {

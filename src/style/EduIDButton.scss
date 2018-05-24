@@ -32,6 +32,10 @@
   animation: spin 1s infinite linear;
 }
 
+button.eduid-button.btn-warning {
+    background-color: $btn-grey;
+}
+
 @-moz-keyframes spin {
   from {
     -moz-transform: rotate(0deg);

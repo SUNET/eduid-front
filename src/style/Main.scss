@@ -25,6 +25,12 @@ h1 {
     font-weight: 800;
 }
 
+h2 {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 400;
+}
+
 a:hover {
     text-decoration: underline;
 }
@@ -118,8 +124,7 @@ p.lead {
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 
-    .jumbotron h1,
-    .jumbotron h2 {
+    .jumbotron h1 {
           font-size: 54px;
           margin: 20px 0;
     }
@@ -127,8 +132,7 @@ p.lead {
 
 @media only screen and (max-width: 767px) {
 
-    .jumbotron h1,
-    .jumbotron h2 {
+    .jumbotron h1 {
         font-size: 46px;
         margin: 20px 0;
         font-weight: 400;

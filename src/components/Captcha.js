@@ -16,12 +16,13 @@ let recaptchaInstance;
 class Captcha extends Component {
 
   componentWillMount () {
-    if (this.props.fetching === this.props.scriptsLoadedSuccessfully) {
-    	this.props.setFetching(!(this.props.scriptsLoadedSuccessfully));
-    } 
   }
 
   render () {
+
+    if (this.props.fetching === this.props.scriptsLoadedSuccessfully) {
+    	this.props.setFetching(!(this.props.scriptsLoadedSuccessfully));
+    } 
 
     return ([
       <div className="row text-center" key="0">
@@ -46,7 +47,7 @@ class Captcha extends Component {
             <EduIDButton onClick={this.props.sendCaptcha}>
                 {this.props.l10n('captcha.submit')}
             </EduIDButton>
-            <EduIDButton>
+            <EduIDButton className="eduid-button btn-warning">
                 {this.props.l10n('captcha.cancel')}
             </EduIDButton>
         </div>
