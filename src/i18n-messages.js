@@ -228,6 +228,21 @@ const msgs = {
             id="finish.confirm-identity"
             defaultMessage={`CONFIRM IDENTITY`} />),
 
+    'resend.title': (
+        <FormattedMessage
+            id="resend.title"
+            defaultMessage={`Email address already in use`} />),
+
+    'resend.subtitle': (
+        <FormattedMessage
+            id="resend.subtitle"
+            defaultMessage={`Send a new verification email to this address`} />),
+
+    'resend.button': (
+        <FormattedMessage
+            id="resend.button"
+            defaultMessage={`Resend verification email`} />),
+
 // messages with parameters
 
     'created.email-sent': (values) => (

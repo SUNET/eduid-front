@@ -112,6 +112,18 @@
     "defaultMessage": "CONFIRM IDENTITY"
   },
   {
+    "id": "resend.title",
+    "defaultMessage": "Email address already in use"
+  },
+  {
+    "id": "resend.subtitle",
+    "defaultMessage": "Send a new verification email to this address"
+  },
+  {
+    "id": "resend.button",
+    "defaultMessage": "Resend verification email"
+  },
+  {
     "id": "created.email-sent",
     "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
   },
