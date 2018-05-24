@@ -23,16 +23,12 @@
 .header ul {
     margin: 0;
 }
-.header nav li {
-    list-style: none;
-    margin: 0 18px;
-    line-height: 40px;
-}
 .header nav li.current-menu-item a {
     color: #fff;
     border-bottom: 3px solid #fff;
 }
-.header nav li a {
+.header nav li.nav-item a.nav-link span {
+    color: rgba(255,255,255,.5);;
     line-height: 20px;
     font-family: 'Roboto-Medium';
     font-size: 14px;
@@ -46,6 +42,7 @@
     float: right;
 }
 .header .buttons .button {
+    color: #fff;
     float: left;
     height: 40px;
     padding-top: 0;
@@ -66,7 +63,8 @@
     border-color: #fff;
 }
 .header .buttons a {
-    color: #fff;
+    font-family: 'Roboto-Medium';
+    font-size: 14px;
     line-height: 32px;
     padding: 20px 40px;
 }

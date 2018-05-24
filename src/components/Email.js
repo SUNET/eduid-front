@@ -43,7 +43,7 @@ const getEmailForm = (size) => {
                              name="email"
                              id="email-input"
                              placeholder="name@example.edu" />
-                      <EduIDButton className="btn-in-row"
+                      <EduIDButton className="btn-in-row eduid-button"
                                    id="email-button"
                                    onClick={props.handleEmail}>
                          {props.l10n('email.sign-up-email')}
