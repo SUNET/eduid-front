@@ -14,6 +14,22 @@ div#clouds {
     margin-top: -40px;
 }
 
+.modal .modal-content {
+    margin-top: 100px;
+    background-color: $background-color;
+    background-image:url(../../img/texture.png);
+}
+
+.modal .modal-content .modal-header h5.modal-title {
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Roboto-Light';
+}
+
+.modal .modal-content .modal-footer {
+    display: block;
+    text-align: center;
+}
 
 @media only screen and (max-width: 767px) {
 
@@ -29,5 +45,9 @@ div#clouds {
 
     button#email-button {
         min-width: 100%;
+    }
+
+    .modal-footer button {
+        margin: .25rem;
     }
 }

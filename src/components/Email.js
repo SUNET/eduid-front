@@ -115,8 +115,13 @@ class Email extends Component {
           <ModalHeader>{this.props.l10n('tou.header')}</ModalHeader>
           <ModalBody>{this.props.tou}</ModalBody>
           <ModalFooter>
-            <EduIDButton color="danger" onClick={this.props.handleReject}>{this.props.l10n('tou.reject')}</EduIDButton>
-            <EduIDButton color="primary" onClick={this.props.handleAccept}>{this.props.l10n('tou.accept')}</EduIDButton>
+            <EduIDButton className="btn-danger eduid-button"
+                         onClick={this.props.handleReject}>
+                  {this.props.l10n('tou.reject')}
+            </EduIDButton>
+            <EduIDButton onClick={this.props.handleAccept}>
+                  {this.props.l10n('tou.accept')}
+            </EduIDButton>
           </ModalFooter>
         </Modal>
       </div>
