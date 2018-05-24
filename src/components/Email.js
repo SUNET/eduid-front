@@ -100,7 +100,7 @@ class Email extends Component {
     return ([
       <div key="0" className="row text-center">
         <div className="col-xl-2"></div>
-        <div className="col-xl-8 jumbotron">
+        <div className="col-xl-8">
             <div id="clouds"></div>
             <h1>{this.props.l10n('main.welcome')}</h1>
 

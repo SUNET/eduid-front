@@ -70,7 +70,7 @@ class Main extends Component {
                 <div className="container-fluid">
                     <HeaderContainer />
                     <ConnectedRouter history={history}>
-                        <div  className="container-fluid">
+                        <div  className="container-fluid jumbotron">
                             <NotificationsContainer />
                             <Route exact path="/" component={() => (<Redirect to={redirect} />)} />
                             <Route path="/email" component={EmailContainer} />

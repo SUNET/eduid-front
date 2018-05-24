@@ -45,8 +45,8 @@ button {
     font-weight: 400;
 }
 
-button.btn-in-row {
-    margin: 0;
+#captcha-buttons button {
+    margin: .25rem .5rem;
 }
 
 button.white {
@@ -129,8 +129,9 @@ p.lead {
 
     .jumbotron h1,
     .jumbotron h2 {
-          font-size: 46px;
-          margin: 20px 0;
+        font-size: 46px;
+        margin: 20px 0;
+        font-weight: 400;
     }
     .jumbotron p.lead {
         font-size:18px;

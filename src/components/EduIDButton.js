@@ -18,22 +18,22 @@ class EduIDButton extends Component {
             {({fetching, toggleFetching}) => {
                 if (fetching) {
                     return (
-        				<button className="eduid-button active has-spinner"
-                                disabled={true}
-                                {...this.props}>
-            				{this.props.children}
-							<div className="spin-holder">
-								<FontAwesomeIcon icon={faSpinner} />
-							</div>
-        				</button>
+                      <button className="eduid-button"
+                                      disabled={true}
+                                      {...this.props}>
+                          {this.props.children}
+                        <div className="spin-holder">
+                          <FontAwesomeIcon icon={faSpinner} />
+                        </div>
+                      </button>
                     );
                 } else {
-					return (
-						<button className="eduid-button has-spinner"
-                                {...this.props}>
-							{this.props.children}
-						</button>
-					);
+                    return (
+                      <button className="eduid-button"
+                                          {...this.props}>
+                        {this.props.children}
+                      </button>
+                    );
                 }
             }}
         </FetchingContext.Consumer>
