@@ -2,6 +2,7 @@
 import * as actions from "actions/Main";
 import * as captchaActions from "actions/Captcha";
 import * as verifiedActions from "actions/CodeVerified";
+import * as resendActions from "actions/ResendCode";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
@@ -76,6 +77,24 @@ let mainReducer = (state=configData, action) => {
           error: false
       };
     case verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL:
+      return {
+          ...state,
+          is_fetching: false,
+          error: true
+      };
+    case resendActions.POST_SIGNUP_RESEND_VERIFICATION:
+      return {
+          ...state,
+          is_fetching: true,
+          error: false
+      };
+    case resendActions.POST_SIGNUP_RESEND_VERIFICATION_SUCCESS:
+      return {
+          ...state,
+          is_fetching: false,
+          error: false
+      };
+    case resendActions.POST_SIGNUP_RESEND_VERIFICATION_FAIL:
       return {
           ...state,
           is_fetching: false,
