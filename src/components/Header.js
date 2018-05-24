@@ -56,7 +56,7 @@ class Header extends Component {
                   </button>
                 </nav>
                 <Collapse isOpen={!this.state.collapse} className="text-center" id="eduid-menu">
-                  <nav className="navbar" id="eduid-navbar">
+                  <nav className="navbar navbar-dark bg-dark" id="eduid-navbar">
                     {linksAndButtons}
                   </nav>
                 </Collapse>
