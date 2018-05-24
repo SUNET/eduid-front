@@ -30,9 +30,7 @@ class Footer extends Component {
 
     return (<div id="footer">
                 <div className="container">
-                  <div className="row">
-                    <div className="col-lg-1"></div>
-                    <div className="col-lg-10" id="footer-content">
+                    <div id="footer-content">
                       <p>
                         &copy;{this.props.l10n('footer.copyright')}
                         <span className="float-right">
@@ -40,8 +38,6 @@ class Footer extends Component {
                         </span>
                       </p>
                     </div>
-                    <div className="col-lg-1"></div>
-                  </div>
                 </div>
             </div>);
   }
