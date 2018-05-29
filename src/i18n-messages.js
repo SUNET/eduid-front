@@ -88,6 +88,11 @@ const msgs = {
     /* Generic Messages *****/
     /************************/
 
+    'required': (
+        <FormattedMessage
+            id="required"
+            defaultMessage={`Required`} />),
+
     'error_in_form': (
         <FormattedMessage
             id="error_in_form"
@@ -107,6 +112,11 @@ const msgs = {
         <FormattedMessage
             id="email.sign-up-email"
             defaultMessage={`Sign up with your email address`} />),
+
+    'email.invalid_email': (
+        <FormattedMessage
+            id="email.invalid_email"
+            defaultMessage={`The entered email is invalid`} />),
 
     'captcha.one-step-left': (
         <FormattedMessage

@@ -1,5 +1,9 @@
 [
   {
+    "id": "required",
+    "defaultMessage": "Required"
+  },
+  {
     "id": "error_in_form",
     "defaultMessage": "Check the form below for errors."
   },
@@ -14,6 +18,10 @@
   {
     "id": "email.sign-up-email",
     "defaultMessage": "Sign up with your email address"
+  },
+  {
+    "id": "email.invalid_email",
+    "defaultMessage": "The entered email is invalid"
   },
   {
     "id": "captcha.one-step-left",

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Form, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Form, FormGroup, FormFeedback, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope'
 
@@ -15,87 +15,90 @@ import 'style/Email.scss';
 /* FORM */
 
 const validate = values => {
-    const errors = {};
-    if (!values['email']) {
-        errors['email'] = 'required'
+    const errors = {},
+          email = values.email,
+          pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (!email) {
+        errors.email = 'required';
+    } else if (!pattern.test(email)) {
+        errors.email = 'email.invalid_email'
     }
-    return errors
+    return errors;
+};
+
+const renderLargeField = ({ input, id, type, placeholder, handleEmail, l10n, meta: { touched, error } }) => (
+    <div className="input-group">
+      <div className="input-group-prepend">
+        <div className="input-group-text">
+          <FontAwesomeIcon icon={faEnvelope} />
+        </div>
+      </div>
+      <Input {...input}
+             id={id}
+             invalid={Boolean(error)}
+             valid={!Boolean(error)}
+             placeholder={placeholder}
+             type={type}/>
+      <EduIDButton className="btn-in-row eduid-button"
+                   id="email-button"
+                   onClick={handleEmail}>
+         {l10n('email.sign-up-email')}
+      </EduIDButton>
+      <FormFeedback className="float-left">{touched && l10n(error)}</FormFeedback>
+    </div>
+)
+
+const renderSmallField = ({ input, id, type, placeholder, handleEmail, l10n, meta: { touched, error } }) => (
+    <div className="input-group">
+      <Input {...input}
+             id={id}
+             invalid={Boolean(error)}
+             valid={!Boolean(error)}
+             placeholder={placeholder}
+             type={type}/>
+      <EduIDButton id="email-button"
+                   onClick={handleEmail}>
+         {l10n('email.sign-up-email')}
+      </EduIDButton>
+      <span className="float-left"><FormFeedback className="float-left">{touched && l10n(error)}</FormFeedback></span>
+    </div>
+)
+
+const getField = (size) => {
+    if (size === 'xs') return renderSmallField;
+    return renderLargeField;
 }
 
+let EmailForm = props => (
+    <div id="email-register">
+      <Form className={(props.size === 'xs') && 'form-horizontal' || ''}>
+        <Field type="email"
+               name="email"
+               id="email-input"
+               component={getField(props.size)}
+               handleEmail={props.handleEmail.bind(props)}
+               l10n={props.l10n}
+               placeholder="name@example.edu" />
+      </Form>
+    </div>
+  );
 
-const getEmailForm = (size) => {
+EmailForm = reduxForm({
+  form: 'emailForm',
+  validate
+})(EmailForm)
 
-    let EmailForm;
-
-    if (size !== 'xs') {
-        EmailForm = props => {
-
-          return (
-            <div id="email-register">
-              <Form>
-                  <div className="input-group">
-                      <div className="input-group-prepend">
-                        <div className="input-group-text">
-                          <FontAwesomeIcon icon={faEnvelope} />
-                        </div>
-                      </div>
-                      <Input type="email"
-                             name="email"
-                             id="email-input"
-                             placeholder="name@example.edu" />
-                      <EduIDButton className="btn-in-row eduid-button"
-                                   id="email-button"
-                                   onClick={props.handleEmail}>
-                         {props.l10n('email.sign-up-email')}
-                      </EduIDButton>
-                  </div>
-              </Form>
-            </div>
-          )
-        };
-    } else {
-        EmailForm = props => {
-
-          return (
-            <div id="email-register">
-              <Form className="form-horizontal">
-                  <div className="input-group">
-                      <Input type="email"
-                             name="email"
-                             id="email-input"
-                             placeholder="name@example.edu" />
-                      <EduIDButton id="email-button"
-                                   onClick={props.handleEmail}>
-                         {props.l10n('email.sign-up-email')}
-                      </EduIDButton>
-                  </div>
-              </Form>
-            </div>
-          )
-        };
-    }
-
-    EmailForm = reduxForm({
-      form: 'email',
-      validate
-    })(EmailForm)
-
-    EmailForm = connect(
-      state => ({
-        enableReinitialize: true
-      })
-    )(EmailForm)
-
-    return EmailForm;
-}
+EmailForm = connect(
+  state => ({
+    enableReinitialize: true
+  })
+)(EmailForm)
 
 /* COMPONENT */
 
 class Email extends Component {
 
   render () {
-
-    const EmailForm = getEmailForm(this.props.size);
 
     return ([
       <div key="0" className="row text-center">

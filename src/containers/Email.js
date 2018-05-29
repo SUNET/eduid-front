@@ -17,10 +17,14 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleEmail: (e) => {
+    handleEmail: function (e) {
       e.preventDefault();
-      const email = document.getElementById('email-input').value;
-      dispatch(actions.addEmail(email));
+      if (this.anyTouched && this.valid) {
+          const email = document.getElementById('email-input').value;
+          dispatch(actions.addEmail(email));
+      } else {
+          this.touch('email');
+      }
     },
     handleAccept: (e) => {
       e.preventDefault();
