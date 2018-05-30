@@ -144,6 +144,14 @@
     "defaultMessage": "There was a problem verifying that you are a human. Please try again"
   },
   {
+    "id": "signup.verification-resent",
+    "defaultMessage": "Verification email resent"
+  },
+  {
+    "id": "code.unknown-code",
+    "defaultMessage": "Unknown verification code"
+  },
+  {
     "id": "used.email-in-use",
     "defaultMessage": "Email address already in use"
   },

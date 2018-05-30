@@ -268,6 +268,16 @@ const msgs = {
             id="signup.recaptcha-not-verified"
             defaultMessage={`There was a problem verifying that you are a human. Please try again`} />),
 
+    'signup.verification-resent': (
+        <FormattedMessage
+            id="signup.verification-resent"
+            defaultMessage={`Verification email resent`} />),
+
+    'code.unknown-code': (
+        <FormattedMessage
+            id="code.unknown-code"
+            defaultMessage={`Unknown verification code`} />),
+
     'used.email-in-use': (
         <FormattedMessage
             id="used.email-in-use"
