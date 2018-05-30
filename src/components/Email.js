@@ -35,8 +35,8 @@ const renderLargeField = ({ input, id, type, placeholder, handleEmail, l10n, met
       </div>
       <Input {...input}
              id={id}
-             invalid={Boolean(error)}
-             valid={!Boolean(error)}
+             invalid={touched && Boolean(error)}
+             valid={!touched || !Boolean(error)}
              placeholder={placeholder}
              type={type}/>
       <EduIDButton className="btn-in-row eduid-button"
@@ -52,8 +52,8 @@ const renderSmallField = ({ input, id, type, placeholder, handleEmail, l10n, met
     <div className="input-group">
       <Input {...input}
              id={id}
-             invalid={Boolean(error)}
-             valid={!Boolean(error)}
+             invalid={touched && Boolean(error)}
+             valid={!touched || !Boolean(error)}
              placeholder={placeholder}
              type={type}/>
       <EduIDButton id="email-button"
