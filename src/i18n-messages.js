@@ -253,6 +253,36 @@ const msgs = {
             id="resend.button"
             defaultMessage={`Resend verification email`} />),
 
+    'signup.registering-address-used': (
+        <FormattedMessage
+            id="signup.registering-address-used"
+            defaultMessage={`The email address you entered is already in use`} />),
+
+    'signup.registering-new': (
+        <FormattedMessage
+            id="signup.registering-new"
+            defaultMessage={`Email address successfully registered`} />),
+
+    'signup.recaptcha-not-verified': (
+        <FormattedMessage
+            id="signup.recaptcha-not-verified"
+            defaultMessage={`There was a problem verifying that you are a human. Please try again`} />),
+
+    'used.email-in-use': (
+        <FormattedMessage
+            id="used.email-in-use"
+            defaultMessage={`Email address already in use`} />),
+
+    'used.forgot-password': (
+        <FormattedMessage
+            id="used.forgot-password"
+            defaultMessage={`Forgot your password?`} />),
+
+    'used.reset-password': (
+        <FormattedMessage
+            id="used.reset-password"
+            defaultMessage={`RESET YOUR PASSWORD`} />),
+
 // messages with parameters
 
     'created.email-sent': (values) => (

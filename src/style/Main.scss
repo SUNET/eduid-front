@@ -35,11 +35,15 @@ a:hover {
     text-decoration: underline;
 }
 
+a.button:hover {
+    text-decoration: none;
+}
+
 input {
     height: 45px;
 }
 
-button {
+button, a.button {
     cursor: pointer;
     text-transform: uppercase;
     color: white;

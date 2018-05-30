@@ -14,6 +14,7 @@ import CodeVerifiedContainer from "containers/CodeVerified";
 import ResendCodeContainer from "containers/ResendCode";
 import CaptchaContainer from "containers/Captcha";
 import NotificationsContainer from 'containers/Notifications';
+import EmailInUseContainer from "containers/EmailInUse";
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'style/Main.scss';
@@ -78,6 +79,7 @@ class Main extends Component {
                             <Route path="/new" component={AccountCreatedContainer} />
                             <Route path="/code-verified" component={CodeVerifiedContainer} />
                             <Route path="/resend-code" component={ResendCodeContainer} />
+                            <Route path="/address-used" component={EmailInUseContainer} />
                         </div>
                     </ConnectedRouter>
                     <FooterContainer />
