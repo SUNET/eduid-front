@@ -1,8 +1,10 @@
 
 import { connect } from 'react-redux';
 
+import * as actions from "actions/CodeVerified";
 import i18n from 'i18n-messages';
 import CodeVerified from 'components/CodeVerified';
+
 
 const mapStateToProps = (state, props) => {
     const url = '';
@@ -14,14 +16,16 @@ const mapStateToProps = (state, props) => {
         ts: state.verified.timestamp,
         token: state.verified.auth_token,
         email: state.verified.email,
-        status: state.verified.status
+        status: state.verified.status,
+        gotten: state.verified.gotten
     }
 };
 
-
 const mapDispatchToProps = (dispatch, props) => {
     return {
-      gotIt: (e) =>{},
+      gotIt: (e) =>{
+          dispatch(actions.showExits());
+      },
     }
 };
 

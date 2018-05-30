@@ -11,43 +11,56 @@ class CodeVerified extends Component {
 
   render () {
 
-    return (
-      <div className="container-fluid">
-        <div className="row text-center">
-          <div className="col-lg-3"></div>
-          <div className="col-lg-6 jumbotron">
-              <h1>{this.props.l10n('main.welcome')}</h1>
-              <p className="lead">{this.props.l10n('finish.registration-complete')({email: this.props.email})}</p>
-              <p className="lead">{this.props.l10n('finish.write-password')}</p>
-              <p>{this.props.password}</p>
-              <EduIDButton color="primary"
+    let exits;
+
+    if (this.props.gotten) {
+        exits = (
+            <div className="container-fluid">
+              <div className="row text-center">
+                <div className="col-lg-2"></div>
+                <form method="POST" action={this.props.dashboard_url}>
+                  <input type="hidden" name="eppn" value={this.props.eppn} />
+                  <input type="hidden" name="nonce" value={this.props.nonce} />
+                  <input type="hidden" name="ts" value={this.props.ts} />
+                  <input type="hidden" name="token" value={this.props.token} />
+                  <div className="col-lg-4 finish-action">
+                    <h4>{this.props.l10n('finish.can-now-login')}</h4>
+                    <p dangerouslySetInnerHTML={{__html: this.props.l10n('finish.accept-unconfirmed')}}></p>
+                    <EduIDButton color="primary">{this.props.l10n('finish.finish')}</EduIDButton>
+                  </div>
+                  <div className="col-lg-4 finish-action">
+                    <h4>{this.props.l10n('finish.access-more')}</h4>
+                    <p>{this.props.l10n('finish.to-dashboard')}</p>
+                    <EduIDButton type="submit" color="primary">{this.props.l10n('finish.confirm-identity')}</EduIDButton>
+                  </div>
+                </form>
+                <div className="col-lg-2"></div>
+              </div>
+            </div>
+        );
+    } else {
+        exits = ([
+              <p key="0" className="lead">{this.props.l10n('finish.write-password')}</p>,
+              <pre className="pre-big text-center" key="1">{this.props.password}</pre>,
+              <EduIDButton key="2" color="primary"
                       onClick={this.props.gotIt}>
                 {this.props.l10n('finish.got-it')}
               </EduIDButton>
+        ]);
+    }
+
+    return (
+        <div key="0" className="row text-center">
+          <div className="col-lg-1"></div>
+          <div className="col-lg-10">
+              <h1>{this.props.l10n('main.welcome')}</h1>
+              <p className="lead registration-completed">
+                 {this.props.l10n('finish.registration-complete')({email: this.props.email})}
+              </p>
+              {exits}
           </div>
-          <div className="col-lg-3"></div>
+          <div className="col-lg-1"></div>
         </div>
-        <div className="row text-center hidden">
-          <form method="POST" action={this.props.dashboard_url}>
-            <input type="hidden" name="eppn" value={this.props.eppn} />
-            <input type="hidden" name="nonce" value={this.props.nonce} />
-            <input type="hidden" name="ts" value={this.props.ts} />
-            <input type="hidden" name="token" value={this.props.token} />
-            <div className="col-lg-2"></div>
-            <div className="col-lg-4">
-              <h4>{this.props.l10n('finish.can-now-login')}</h4>
-              <p>{this.props.l10n('finish.accept-unconfirmed')}</p>
-              <EduIDButton color="primary">{this.props.l10n('finish.finish')}</EduIDButton>
-            </div>
-            <div className="col-lg-4">
-              <h4>{this.props.l10n('finish.access-more')}</h4>
-              <p>{this.props.l10n('finish.to-dashboard')}</p>
-              <EduIDButton color="primary">{this.props.l10n('finish.confirm-identity')}</EduIDButton>
-            </div>
-            <div className="col-lg-2"></div>
-          </form>
-        </div>
-      </div>
     );
   }
 }

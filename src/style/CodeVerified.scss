@@ -1,3 +1,17 @@
 
 @import '../variables.scss';
 
+
+.pre-big {
+    font-size: 150%;
+}
+
+.finish-action {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 40px;
+}
+
+.jumbotron p.lead.registration-completed {
+    margin-bottom: 100px;
+}
