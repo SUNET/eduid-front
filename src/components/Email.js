@@ -39,7 +39,7 @@ const renderLargeField = ({ input, id, type, placeholder, handleEmail, l10n, met
              valid={!touched || !Boolean(error)}
              placeholder={placeholder}
              type={type}/>
-      <EduIDButton className="btn-in-row eduid-button"
+      <EduIDButton className="btn-in-row"
                    id="email-button"
                    onClick={handleEmail}>
          {l10n('email.sign-up-email')}

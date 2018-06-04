@@ -1,12 +1,12 @@
 
 @import '../variables.scss';
 
-.has-spinner.active {
+.has-spinner {
   cursor:progress;
   position: relative;
 }
 
-.has-spinner.active .spin-holder {
+.has-spinner .spin-holder {
   width: 100%;
   height: 80%;
   position: absolute;
@@ -16,20 +16,16 @@
   color: #ccc;
 }
 
-.fa-spinner {
-  display: none;
-}
-
-.has-spinner.active .fa-spinner {
+.has-spinner .fa-spinner {
   display: inline-block;
   width: 26px;
   height: 80%;
   opacity: 1;
   font-size: 2em;
-  -webkit-animation: spin 1s infinite linear;
-  -moz-animation: spin 1s infinite linear;
-  -o-animation: spin 1s infinite linear;
-  animation: spin 1s infinite linear;
+  -webkit-animation: spin 1.5s infinite linear;
+  -moz-animation: spin 1.5s infinite linear;
+  -o-animation: spin 1.5s infinite linear;
+  animation: spin 1.5s infinite linear;
 }
 
 button.eduid-button.btn-warning {

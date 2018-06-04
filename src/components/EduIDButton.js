@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Button } from "reactstrap";
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faSpinner from '@fortawesome/fontawesome-free-solid/faSpinner'
 
@@ -17,10 +18,11 @@ class EduIDButton extends Component {
         <FetchingContext.Consumer>
             {({fetching, toggleFetching}) => {
                 if (fetching) {
+                    const classes = `${this.props.className} eduid-button has-spinner`;
                     return (
-                      <button className="eduid-button"
-                                      disabled={true}
-                                      {...this.props}>
+                      <button {...this.props}
+                              disabled={true}
+                              className={classes}>
                           {this.props.children}
                         <div className="spin-holder">
                           <FontAwesomeIcon icon={faSpinner} />
@@ -28,9 +30,10 @@ class EduIDButton extends Component {
                       </button>
                     );
                 } else {
+                    const classes = `${this.props.className} eduid-button`;
                     return (
-                      <button className="eduid-button"
-                                          {...this.props}>
+                      <button {...this.props}
+                              className={classes}>
                         {this.props.children}
                       </button>
                     );
