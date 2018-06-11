@@ -17,7 +17,7 @@ const fakeStore = (state) => ({
 
 function setupComponent(loaded) {
     const store = fakeStore({
-        config: {
+        main: {
             is_app_loaded: loaded
         }
     });
