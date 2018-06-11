@@ -2,7 +2,7 @@
 const mock = require('jest-mock');
 import React from 'react';
 import { Provider } from 'react-intl-redux';
-import { mount } from 'enzyme';
+import { mount } from '@pisano/enzyme';
 import expect from "expect";
 
 import SplashContainer from 'containers/Splash';
