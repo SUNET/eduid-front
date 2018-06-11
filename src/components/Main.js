@@ -53,7 +53,7 @@ class Main extends Component {
 
     render () {
 
-        let redirect = '/email';
+        let redirect = `${BASE_PATH}/email`;
 
         if (this.props.email) {
             if (this.props.captcha) {
@@ -61,7 +61,7 @@ class Main extends Component {
                 } else {
                 }
             } else {
-                redirect = '/trycaptcha';
+                redirect = `${BASE_PATH}/trycaptcha`;
             }
         }
 
@@ -79,13 +79,13 @@ class Main extends Component {
                                 </div>
                                 <div className="col-lg-2"></div>
                             </div>
-                            <Route exact path="/" component={() => (<Redirect to={redirect} />)} />
-                            <Route path="/email" component={EmailContainer} />
-                            <Route path="/trycaptcha" component={CaptchaContainer} />
-                            <Route path="/new" component={AccountCreatedContainer} />
-                            <Route path="/code-verified" component={CodeVerifiedContainer} />
-                            <Route path="/resend-code" component={ResendCodeContainer} />
-                            <Route path="/address-used" component={EmailInUseContainer} />
+                            <Route exact path={`${BASE_PATH}`} component={() => (<Redirect to={redirect} />)} />
+                            <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
+                            <Route path={`${BASE_PATH}/trycaptcha`} component={CaptchaContainer} />
+                            <Route path={`${BASE_PATH}/new`} component={AccountCreatedContainer} />
+                            <Route path={`${BASE_PATH}/code-verified`} component={CodeVerifiedContainer} />
+                            <Route path={`${BASE_PATH}/resend-code`} component={ResendCodeContainer} />
+                            <Route path={`${BASE_PATH}/address-used`} component={EmailInUseContainer} />
                         </div>
                     </ConnectedRouter>
                     <FooterContainer />
