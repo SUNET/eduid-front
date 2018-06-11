@@ -23,7 +23,7 @@ const fakeStore = (state) => ({
     getState: () => ({ ...state })
 });
 
-function setupComponent(overrides={}) {
+export function setupComponent(component, overrides={}) {
     const fakeState = {
         main: {
             dashboard_url: '',
@@ -83,7 +83,7 @@ function setupComponent(overrides={}) {
     });
     const store = fakeStore(fakeState);
     const wrapper = mount(<Provider store={ store }>
-                              <MainContainer />
+                            {component}
                           </Provider>);
     return wrapper;
 }
@@ -91,18 +91,16 @@ function setupComponent(overrides={}) {
 describe("Main Component", () => {
 
     it("Renders the splash screen", () => {
-        const wrapper = setupComponent({main: {is_app_loaded: false}}),
+        const wrapper = setupComponent(<MainContainer />, {main: {is_app_loaded: false}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(1);
     });
 
     it("Doesn't Render the splash screen", () => {
-        const wrapper = setupComponent(),
+        const wrapper = setupComponent(<MainContainer />),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(0);
     });
 });
-
-
