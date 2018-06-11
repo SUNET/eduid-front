@@ -17,7 +17,8 @@ const configData = {
     is_app_loaded: false,
     is_fetching: false,
     error: false,
-    DEBUG: true
+    DEBUG: true,
+    available_languages: {}
 };
 
 let mainReducer = (state=configData, action) => {
