@@ -34,7 +34,7 @@ function setupComponent(overrides={}) {
             captcha: '',
             code: '',
             tou: '',
-            is_app_loaded: false,
+            is_app_loaded: true,
             is_fetching: false,
             error: false,
             DEBUG: true,
@@ -90,15 +90,15 @@ function setupComponent(overrides={}) {
 
 describe("Main Component", () => {
 
-    it("Renders", () => {
+    it("Renders the splash screen", () => {
         const wrapper = setupComponent({main: {is_app_loaded: false}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(1);
     });
 
-    it("Doesn't Render", () => {
-        const wrapper = setupComponent({main: {is_app_loaded: true}}),
+    it("Doesn't Render the splash screen", () => {
+        const wrapper = setupComponent(),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(0);
