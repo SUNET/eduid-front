@@ -83,7 +83,7 @@ export function setupComponent(component, overrides={}) {
     });
     const store = fakeStore(fakeState);
     const wrapper = mount(<Provider store={ store }>
-                            {component}
+                              {component}
                           </Provider>);
     return wrapper;
 }
@@ -92,9 +92,13 @@ describe("Main Component", () => {
 
     it("Renders the splash screen", () => {
         const wrapper = setupComponent(<MainContainer />, {main: {is_app_loaded: false}}),
-              splash = wrapper.find('div#eduid-splash-screen');
+              splash = wrapper.find('div#eduid-splash-screen'),
+              router = wrapper.find('ConnectedRouter'),
+              routes = wrapper.find('Route');
 
         expect(splash.length).toEqual(1);
+        expect(router.length).toEqual(1);
+        expect(routes.length).toEqual(7);
     });
 
     it("Doesn't Render the splash screen", () => {
@@ -102,5 +106,16 @@ describe("Main Component", () => {
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(0);
+    });
+
+    it("Renders the email form", () => {
+        const wrapper = setupComponent(<MainContainer />),
+              splash = wrapper.find('div#eduid-splash-screen'),
+              router = wrapper.find('ConnectedRouter'),
+              routes = wrapper.find('Route');
+
+        expect(splash.length).toEqual(0);
+        expect(router.length).toEqual(1);
+        expect(routes.length).toEqual(7);
     });
 });
