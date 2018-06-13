@@ -11,7 +11,6 @@ import { FetchingContext } from "components/Main";
 
 import 'style/Captcha.scss';
 
-let recaptchaInstance;
 
 class Captcha extends Component {
 
