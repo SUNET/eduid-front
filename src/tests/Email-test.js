@@ -2,8 +2,9 @@
 import React from 'react';
 import expect from "expect";
 
-import EmailContainer from "containers/Email";
 import { setupComponent } from "tests/Main-test";
+import EmailContainer from "containers/Email";
+import * as actions from "actions/Email";
 
 
 describe("Email Component", () => {
@@ -31,3 +32,30 @@ describe("Email Component", () => {
     });
 });
 
+
+describe("Email Actions", () => {
+
+    it("Should add an email ", () => {
+        const expectedAction = {
+            type: actions.ADD_EMAIL,
+            payload: {
+                email: 'dummy@example.com'               
+            }
+        };
+        expect(actions.addEmail('dummy@example.com')).toEqual(expectedAction);
+    });
+
+    it("Should accept tou", () => {
+      const expectedAction = {
+        type: actions.ACCEPT_TOU,
+      };
+      expect(actions.acceptTOU()).toEqual(expectedAction);
+    });
+
+    it("Should reject tou", () => {
+      const expectedAction = {
+        type: actions.REJECT_TOU,
+      };
+      expect(actions.rejectTOU()).toEqual(expectedAction);
+    });
+});
