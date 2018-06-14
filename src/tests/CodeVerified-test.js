@@ -5,6 +5,7 @@ import expect from "expect";
 import { setupComponent } from "tests/Main-test";
 import CodeVerifiedContainer from "containers/CodeVerified";
 import * as actions from "actions/CodeVerified";
+import verifiedReducer from "reducers/CodeVerified";
 
 
 describe("CodeVerified Component", () => {
@@ -84,5 +85,79 @@ describe("CodeVerified Actions", () => {
         type: actions.SHOW_EXITS,
       };
       expect(actions.showExits()).toEqual(expectedAction);
+    });
+});
+
+describe("Code verification reducer", () => {
+
+    const mockState = {
+        password: '',
+        eppn: '',
+        nonce: '',
+        timestamp: '',
+        auth_token: '',
+        email: '',
+        status: '',
+        dashboard_url: '',
+        gotten: false
+    };
+
+    it("Receives a successful verification action", () => {
+        expect(
+            verifiedReducer(
+                mockState,
+                {
+                    type: actions.GET_SIGNUP_VERIFY_LINK_SUCCESS,
+                    payload:{
+                        status: 'verified',
+                        password: 'dummy password',
+                        email: 'dummy@example.com',
+                        eppn: 'dummy-eppn',
+                        nonce: 'dummy nonce',
+                        timestamp: 'dummy timestamp',
+                        auth_token: 'dummy auth_token',
+                        dashboard_url: 'http://example.com'
+                    }
+                }
+            )
+        ).toEqual(
+          {
+              password: 'dummy password',
+              eppn: 'dummy-eppn',
+              nonce: 'dummy nonce',
+              timestamp: 'dummy timestamp',
+              auth_token: 'dummy auth_token',
+              email: 'dummy@example.com',
+              status: 'verified',
+              dashboard_url: 'http://example.com',
+              gotten: false
+          }
+        );
+    });
+
+    it("Receives a show exits action", () => {
+        expect(
+            verifiedReducer(
+                mockState,
+                {
+                    type: actions.SHOW_EXITS,
+                    payload:{
+                        gotten: true
+                    }
+                }
+            )
+        ).toEqual(
+          {
+              password: '',
+              eppn: '',
+              nonce: '',
+              timestamp: '',
+              auth_token: '',
+              email: '',
+              status: '',
+              dashboard_url: '',
+              gotten: true
+          }
+        );
     });
 });
