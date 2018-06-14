@@ -2,7 +2,7 @@
 import React from 'react';
 import expect from "expect";
 
-import { setupComponent } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/Main-test";
 import NotificationsContainer from "containers/Notifications";
 import * as actions from "actions/Notifications";
 
@@ -127,5 +127,34 @@ describe("Notification Actions", () => {
             type: actions.RM_ALL_NOTIFICATION,
         };
         expect(actions.eduidRMAllNotify()).toEqual(expectedAction);
+    });
+});
+
+describe("Test Notifications Container", () => {
+    let wrapper,
+        dispatch;
+
+    beforeEach(() => {
+        const store = fakeStore(getState({notifications: {
+                                             messages: [{msg: 'dummy',
+                                                         vals: null}],
+                                             warnings: [],
+                                             errors: []
+                                         }}));
+        dispatch = store.dispatch;
+        wrapper = setupComponent({component: <NotificationsContainer />,
+                                  store: store});
+    });
+
+    it("Clicks a language selector button", () => {
+        const numCalls = dispatch.mock.calls.length;
+        const mockEvent = {
+            preventDefault: () => {},
+            target: {
+              closest: () => {return {dataset: { level: 'messages', index: 0 }}}
+            }
+        };
+        wrapper.find('button').props().onClick(mockEvent);
+        expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
     });
 });
