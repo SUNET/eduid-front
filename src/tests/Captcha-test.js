@@ -6,6 +6,7 @@ import fetchMock from 'fetch-mock';
 import { setupComponent } from "tests/Main-test";
 import CaptchaContainer from "containers/Captcha";
 import * as actions from "actions/Captcha";
+import captchaReducer from "reducers/Captcha";
 
 
 describe("Captcha Component", () => {
@@ -59,5 +60,30 @@ describe("Captcha Actions", () => {
         type: actions.POST_SIGNUP_TRYCAPTCHA,
       };
       expect(actions.postCaptcha()).toEqual(expectedAction);
+    });
+});
+
+describe("Captcha reducer", () => {
+
+    const mockState = {
+        captcha_verification: ''
+    };
+
+    it("Receives a captcha verification action", () => {
+        expect(
+            captchaReducer(
+                mockState,
+                {
+                    type: actions.CAPTCHA_VERIFICATION,
+                    payload:{
+                        response: 'dummy verification'
+                    }
+                }
+            )
+        ).toEqual(
+          {
+              captcha_verification: 'dummy verification'
+          }
+        );
     });
 });
