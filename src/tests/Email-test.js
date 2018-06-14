@@ -5,6 +5,7 @@ import expect from "expect";
 import { setupComponent } from "tests/Main-test";
 import EmailContainer from "containers/Email";
 import * as actions from "actions/Email";
+import emailReducer from "reducers/Email";
 
 
 describe("Email Component", () => {
@@ -57,5 +58,68 @@ describe("Email Actions", () => {
         type: actions.REJECT_TOU,
       };
       expect(actions.rejectTOU()).toEqual(expectedAction);
+    });
+});
+
+describe("Email reducer", () => {
+
+    const mockState = {
+        email: '',
+        acceptingTOU: false,
+        tou_accepted: false,
+    };
+
+    it("Receives add email action", () => {
+        expect(
+            emailReducer(
+                mockState,
+                {
+                    type: actions.ADD_EMAIL,
+                    payload:{
+                        email: 'dummy@example.com'
+                    }
+                }
+            )
+        ).toEqual(
+          {
+              email: 'dummy@example.com',
+              acceptingTOU: true,
+              tou_accepted: false,
+          }
+        );
+    });
+
+    it("Receives an accept tou action", () => {
+        expect(
+            emailReducer(
+                mockState,
+                {
+                    type: actions.ACCEPT_TOU,
+                }
+            )
+        ).toEqual(
+          {
+              email: '',
+              acceptingTOU: false,
+              tou_accepted: true,
+          }
+        );
+    });
+
+    it("Receives a reject tou action", () => {
+        expect(
+            emailReducer(
+                mockState,
+                {
+                    type: actions.REJECT_TOU,
+                }
+            )
+        ).toEqual(
+          {
+              email: '',
+              acceptingTOU: false,
+              tou_accepted: false,
+          }
+        );
     });
 });
