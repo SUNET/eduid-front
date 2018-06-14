@@ -2,7 +2,7 @@
 import React from 'react';
 import expect from "expect";
 
-import { setupComponent } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/Main-test";
 import CodeVerifiedContainer from "containers/CodeVerified";
 import * as actions from "actions/CodeVerified";
 import verifiedReducer from "reducers/CodeVerified";
@@ -161,5 +161,23 @@ describe("Code verification reducer", () => {
               gotten: true
           }
         );
+    });
+});
+
+describe("Test code verified Container", () => {
+    let wrapper,
+        dispatch;
+
+    beforeEach(() => {
+        const store = fakeStore(getState());
+        dispatch = store.dispatch;
+        wrapper = setupComponent({component: <CodeVerifiedContainer />,
+                                  store: store});
+    });
+
+    it("Clicks the confirm identity button", () => {
+        const numCalls = dispatch.mock.calls.length;
+        wrapper.find('EduIDButton#gotit-button').props().onClick();
+        expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
     });
 });
