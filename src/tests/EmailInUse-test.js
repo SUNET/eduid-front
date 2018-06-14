@@ -16,7 +16,8 @@ describe("EmailInUse Component", () => {
 
     it("Renders the email in use component", () => {
 
-        const wrapper = setupComponent(<EmailInUseContainer />, state),
+        const wrapper = setupComponent({component: <EmailInUseContainer />,
+                                        overrides: state}),
               lead = wrapper.find('p.lead'),
               link = wrapper.find('a');
 

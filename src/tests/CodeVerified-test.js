@@ -26,7 +26,8 @@ describe("CodeVerified Component", () => {
 
     it("Renders the code verified component", () => {
 
-        const wrapper = setupComponent(<CodeVerifiedContainer />, state),
+        const wrapper = setupComponent({component: <CodeVerifiedContainer />,
+                                        overrides: state}),
               lead = wrapper.find('p.lead'),
               completed = wrapper.find('p.registration-completed'),
               passwd = wrapper.find('pre.pre-big'),
@@ -50,7 +51,8 @@ describe("CodeVerified Component", () => {
 
     it("Renders the code verified component - passwd gotten", () => {
 
-        const wrapper = setupComponent(<CodeVerifiedContainer />, gottenState),
+        const wrapper = setupComponent({component: <CodeVerifiedContainer />,
+                                        overrides: gottenState}),
               lead = wrapper.find('p.lead'),
               passwd = wrapper.find('pre.pre-big'),
               buttons = wrapper.find('EduIDButton'),

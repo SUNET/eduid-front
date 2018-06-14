@@ -22,7 +22,8 @@ describe("Notifications Component", () => {
 
     it("Renders the notifications component", () => {
 
-        const wrapper = setupComponent(<NotificationsContainer />, state),
+        const wrapper = setupComponent({component: <NotificationsContainer />,
+                                        overrides: state}),
               alertElem = wrapper.find('Alert');
 
         expect(alertElem.length).toEqual(1);
@@ -41,7 +42,8 @@ describe("Notifications Component", () => {
 
     it("Renders the notifications component - prod", () => {
 
-        const wrapper = setupComponent(<NotificationsContainer />, prodState),
+        const wrapper = setupComponent({component: <NotificationsContainer />,
+                                        overrides: prodState}),
               alertElem = wrapper.find('Alert');
 
         expect(alertElem.length).toEqual(1);
@@ -62,7 +64,8 @@ describe("Notifications Component", () => {
 
     it("Renders the notifications component - warning", () => {
 
-        const wrapper = setupComponent(<NotificationsContainer />, warnState),
+        const wrapper = setupComponent({component: <NotificationsContainer />,
+                                        overrides: warnState}),
               alertElem = wrapper.find('Alert');
 
         expect(alertElem.length).toEqual(1);
@@ -83,7 +86,8 @@ describe("Notifications Component", () => {
 
     it("Renders the notifications component - error", () => {
 
-        const wrapper = setupComponent(<NotificationsContainer />, errorState),
+        const wrapper = setupComponent({component: <NotificationsContainer />,
+                                        overrides: errorState}),
               alertElem = wrapper.find('Alert');
 
         expect(alertElem.length).toEqual(1);

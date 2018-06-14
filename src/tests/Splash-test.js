@@ -5,42 +5,25 @@ import { Provider } from 'react-intl-redux';
 import { mount } from '@pisano/enzyme';
 import expect from "expect";
 
+import { setupComponent } from "tests/Main-test";
 import SplashContainer from 'containers/Splash';
 
-
-const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state })
-});
-
-function setupComponent(loaded) {
-    const store = fakeStore({
-        main: {
-            is_app_loaded: loaded
-        }
-    });
-    const wrapper = mount(<Provider store={ store }>
-                              <SplashContainer />
-                          </Provider>);
-    return wrapper;
-}
 
 describe("Splash Component", () => {
 
     it("Renders", () => {
-        const wrapper = setupComponent(false),
+        const wrapper = setupComponent({component: <SplashContainer />,
+                                        overrides: {main: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(1);
     });
 
     it("Doesn't Render", () => {
-        const wrapper = setupComponent(true),
+        const wrapper = setupComponent({component: <SplashContainer />,
+                                        overrides: {main: {is_app_loaded: true}}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(0);
     });
 });
-

@@ -23,7 +23,8 @@ describe("Footer Component", () => {
 
     it("Renders the footer component", () => {
 
-        const wrapper = setupComponent(<FooterContainer />, state),
+        const wrapper = setupComponent({component: <FooterContainer />,
+                                        overrides: state}),
               span = wrapper.find('span.langselector'),
               link = wrapper.find('span.langselector').find('a');
 

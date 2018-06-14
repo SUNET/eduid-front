@@ -20,72 +20,81 @@ import sv from 'react-intl/locale-data/sv';
 addLocaleData([...en, ...sv])
 
 
-const fakeStore = (state) => ({
+const fakeState = {
+    main: {
+        dashboard_url: '',
+        resize_timeout: 0,
+        window_size: actions.getWindowSize(),
+        csrf_token: '',
+        recaptcha_public_key: '',
+        captcha: '',
+        code: '',
+        tou: '',
+        is_app_loaded: true,
+        is_fetching: false,
+        error: false,
+        DEBUG: true,
+        available_languages: {}
+    },
+    captcha: {
+        captcha_verification: ''
+    },
+    verified: {
+        password: '',
+        eppn: '',
+        nonce: '',
+        timestamp: '',
+        auth_token: '',
+        email: '',
+        status: '',
+        dashboard_url: '',
+        gotten: false
+    },
+    email: {
+        email: '',
+        acceptingTOU: false,
+        tou_accepted: false
+    },
+    notifications: {
+        messages: [],
+        warnings: [],
+        errors: []
+    },
+    intl: {
+        locale: 'en',
+        messages: {
+            'en': en,
+            'sv': sv
+        }
+    }
+};
+
+export const getState = (overrides={}) => {
+    const refakeState = { ...fakeState };
+    Object.getOwnPropertyNames(fakeState).forEach(propName => {
+        const overriddenProps = Object.getOwnPropertyNames(overrides);
+        if (overriddenProps.includes(propName)) {
+            refakeState[propName] = {
+                ...fakeState[propName],
+                ...overrides[propName]
+            }
+        }
+    });
+    return refakeState;
+}
+
+export const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
     getState: () => ({ ...state })
 });
 
-export function setupComponent(component, overrides={}) {
-    const fakeState = {
-        main: {
-            dashboard_url: '',
-            resize_timeout: 0,
-            window_size: actions.getWindowSize(),
-            csrf_token: '',
-            recaptcha_public_key: '',
-            captcha: '',
-            code: '',
-            tou: '',
-            is_app_loaded: true,
-            is_fetching: false,
-            error: false,
-            DEBUG: true,
-            available_languages: {}
-        },
-        captcha: {
-            captcha_verification: ''
-        },
-        verified: {
-            password: '',
-            eppn: '',
-            nonce: '',
-            timestamp: '',
-            auth_token: '',
-            email: '',
-            status: '',
-            dashboard_url: '',
-            gotten: false
-        },
-        email: {
-            email: '',
-            acceptingTOU: false,
-            tou_accepted: false
-        },
-        notifications: {
-            messages: [],
-            warnings: [],
-            errors: []
-        },
-        intl: {
-            locale: 'en',
-            messages: {
-                'en': en,
-                'sv': sv
-            }
-        }
-    };
-    Object.getOwnPropertyNames(fakeState).forEach(propName => {
-        const overriddenProps = Object.getOwnPropertyNames(overrides);
-        if (overriddenProps.includes(propName)) {
-            fakeState[propName] = {
-                ...fakeState[propName],
-                ...overrides[propName]
-            }
-        }
-    });
-    const store = fakeStore(fakeState);
+export function setupComponent({component, overrides, store}={}) {
+    if (store === undefined) {
+        if (overrides===undefined) {overrides = {}}
+        store = fakeStore(getState(overrides));
+    }
     const wrapper = mount(<Provider store={ store }>
                               {component}
                           </Provider>);
@@ -95,7 +104,8 @@ export function setupComponent(component, overrides={}) {
 describe("Main Component", () => {
 
     it("Renders the splash screen", () => {
-        const wrapper = setupComponent(<MainContainer />, {main: {is_app_loaded: false}}),
+        const wrapper = setupComponent({component: <MainContainer />,
+                                        overrides: {main: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen'),
               router = wrapper.find('ConnectedRouter'),
               routes = wrapper.find('Route');
@@ -106,14 +116,14 @@ describe("Main Component", () => {
     });
 
     it("Doesn't Render the splash screen", () => {
-        const wrapper = setupComponent(<MainContainer />),
+        const wrapper = setupComponent({component: <MainContainer />}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(0);
     });
 
     it("Renders the email form", () => {
-        const wrapper = setupComponent(<MainContainer />),
+        const wrapper = setupComponent({component: <MainContainer />}),
               splash = wrapper.find('div#eduid-splash-screen'),
               router = wrapper.find('ConnectedRouter'),
               routes = wrapper.find('Route');

@@ -1,9 +1,10 @@
 
+import mock from 'jest-mock';
 import React from 'react';
 import expect from "expect";
 import fetchMock from 'fetch-mock';
 
-import { setupComponent } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/Main-test";
 import CaptchaContainer from "containers/Captcha";
 import * as actions from "actions/Captcha";
 import captchaReducer from "reducers/Captcha";
@@ -18,7 +19,8 @@ describe("Captcha Component", () => {
     it("Renders the captcha component", () => {
 
         fetchMock.get('https://www.google.com/recaptcha/api.js', 'dummy-script');
-        const wrapper = setupComponent(<CaptchaContainer />, {main: {recaptcha_public_key: 'dummy-key'}}),
+        const wrapper = setupComponent({component: <CaptchaContainer />,
+                                        overrides: {main: {recaptcha_public_key: 'dummy-key'}}}),
               lead = wrapper.find('p.lead'),
               captcha = wrapper.find('div.recaptcha-holder'),
               buttons = wrapper.find('EduIDButton');
@@ -85,5 +87,23 @@ describe("Captcha reducer", () => {
               captcha_verification: 'dummy verification'
           }
         );
+    });
+});
+
+describe("Test captcha Container", () => {
+    let wrapper,
+        dispatch;
+
+    beforeEach(() => {
+        const store = fakeStore(getState());
+        dispatch = store.dispatch;
+        wrapper = setupComponent({component: <CaptchaContainer />,
+                                  store: store});
+    });
+
+    it("Clicks the send captcha button", () => {
+        const numCalls = dispatch.mock.calls.length;
+        wrapper.find('EduIDButton#send-captcha-button').props().onClick();
+        expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
     });
 });

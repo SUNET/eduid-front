@@ -21,7 +21,8 @@ describe("Header Component", () => {
 
     it("Renders the header component", () => {
 
-        const wrapper = setupComponent(<HeaderContainer />, state),
+        const wrapper = setupComponent({component: <HeaderContainer />,
+                                        overrides: state}),
               link = wrapper.find('a.nav-link'),
               logoLarge = wrapper.find('div#eduid-logo-large'),
               logoSmall = wrapper.find('div#eduid-logo-small');
@@ -40,7 +41,8 @@ describe("Header Component", () => {
 
     it("Renders the header component - small", () => {
 
-        const wrapper = setupComponent(<HeaderContainer />, smallState),
+        const wrapper = setupComponent({component: <HeaderContainer />,
+                                        overrides: smallState}),
               link = wrapper.find('a.nav-link'),
               logoLarge = wrapper.find('div#eduid-logo-large'),
               logoSmall = wrapper.find('div#eduid-logo-small');

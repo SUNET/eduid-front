@@ -11,7 +11,8 @@ import emailReducer from "reducers/Email";
 describe("Email Component", () => {
 
     it("Renders the email component", () => {
-        const wrapper = setupComponent(<EmailContainer />, {main: {window_size: 'lg'}}),
+        const wrapper = setupComponent({component: <EmailContainer />,
+                                        overrides: {main: {window_size: 'lg'}}}),
               input = wrapper.find('input#email-input'),
               button = wrapper.find('button#email-button'),
               faIcon = wrapper.find('FontAwesomeIcon');
@@ -22,7 +23,8 @@ describe("Email Component", () => {
     });
 
     it("Renders the small email component", () => {
-        const wrapper = setupComponent(<EmailContainer />, {main: {window_size: 'xs'}}),
+        const wrapper = setupComponent({component: <EmailContainer />,
+                                        overrides: {main: {window_size: 'xs'}}}),
               input = wrapper.find('input#email-input'),
               button = wrapper.find('button#email-button'),
               faIcon = wrapper.find('FontAwesomeIcon');

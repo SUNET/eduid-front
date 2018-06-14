@@ -11,7 +11,7 @@ describe("ResendCode Component", () => {
 
     it("Renders the resend code component", () => {
 
-        const wrapper = setupComponent(<ResendCodeContainer />),
+        const wrapper = setupComponent({component: <ResendCodeContainer />}),
               lead = wrapper.find('p.lead'),
               button = wrapper.find('EduIDButton');
 

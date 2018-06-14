@@ -9,7 +9,8 @@ import { setupComponent } from "tests/Main-test";
 describe("Account Component", () => {
 
     it("Renders the account created component", () => {
-        const wrapper = setupComponent(<AccountCreatedContainer />, {email: {email: 'dummy@example.com'}}),
+        const wrapper = setupComponent({component: <AccountCreatedContainer />,
+                                        overrides: {email: {email: 'dummy@example.com'}}}),
               lead = wrapper.find('h2.lead'),
               p = wrapper.find('p');
 
