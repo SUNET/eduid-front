@@ -2,7 +2,7 @@
 import React from 'react';
 import expect from "expect";
 
-import { setupComponent } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/Main-test";
 import ResendCodeContainer from "containers/ResendCode";
 import * as actions from "actions/ResendCode";
 
@@ -40,5 +40,23 @@ describe("Resend code Actions", () => {
             }
         };
         expect(actions.postResendCodeFail(err)).toEqual(expectedAction);
+    });
+});
+
+describe("Test Resend code Container", () => {
+    let wrapper,
+        dispatch;
+
+    beforeEach(() => {
+        const store = fakeStore(getState());
+        dispatch = store.dispatch;
+        wrapper = setupComponent({component: <ResendCodeContainer />,
+                                  store: store});
+    });
+
+    it("Clicks resend code button", () => {
+        const numCalls = dispatch.mock.calls.length;
+        wrapper.find('EduIDButton#resend-button').props().onClick();
+        expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
     });
 });
