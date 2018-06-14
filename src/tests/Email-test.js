@@ -2,7 +2,7 @@
 import React from 'react';
 import expect from "expect";
 
-import { setupComponent } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/Main-test";
 import EmailContainer from "containers/Email";
 import * as actions from "actions/Email";
 import emailReducer from "reducers/Email";
@@ -123,5 +123,49 @@ describe("Email reducer", () => {
               tou_accepted: false,
           }
         );
+    });
+});
+
+describe("Test email Container", () => {
+    let wrapper,
+        dispatch;
+
+    beforeEach(() => {
+        const store = fakeStore(getState());
+        dispatch = store.dispatch;
+        wrapper = setupComponent({component: <EmailContainer />,
+                                  store: store});
+    });
+
+    it("Clicks the email button", () => {
+        wrapper.find('input#email-input').value = 'dummy@example.com';
+        const numCalls = dispatch.mock.calls.length;
+        const mockEvent = {preventDefault: () => {}}
+        wrapper.find('EduIDButton#email-button').props().onClick(mockEvent);
+        expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+    });
+
+    it("Clicks the accept tou button", () => {
+        const store = fakeStore(getState({email: {acceptingTOU: true}}));
+        dispatch = store.dispatch;
+        wrapper = setupComponent({component: <EmailContainer />,
+                                  store: store});
+        wrapper.find('input#email-input').value = 'dummy@example.com';
+        const numCalls = dispatch.mock.calls.length;
+        const mockEvent = {preventDefault: () => {}}
+        wrapper.find('EduIDButton#accept-tou-button').props().onClick(mockEvent);
+        expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+    });
+
+    it("Clicks the reject tou button", () => {
+        const store = fakeStore(getState({email: {acceptingTOU: true}}));
+        dispatch = store.dispatch;
+        wrapper = setupComponent({component: <EmailContainer />,
+                                  store: store});
+        wrapper.find('input#email-input').value = 'dummy@example.com';
+        const numCalls = dispatch.mock.calls.length;
+        const mockEvent = {preventDefault: () => {}}
+        wrapper.find('EduIDButton#reject-tou-button').props().onClick(mockEvent);
+        expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
     });
 });

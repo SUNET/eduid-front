@@ -119,10 +119,12 @@ class Email extends Component {
           <ModalBody>{this.props.tou}</ModalBody>
           <ModalFooter>
             <EduIDButton className="btn-danger eduid-button"
+                         id="reject-tou-button"
                          onClick={this.props.handleReject}>
                   {this.props.l10n('tou.reject')}
             </EduIDButton>
-            <EduIDButton onClick={this.props.handleAccept}>
+            <EduIDButton id="accept-tou-button"
+                         onClick={this.props.handleAccept}>
                   {this.props.l10n('tou.accept')}
             </EduIDButton>
           </ModalFooter>
