@@ -7,6 +7,10 @@ import expect from "expect";
 
 import MainContainer from "containers/Main";
 import * as actions from "actions/Main";
+import * as captchaActions from "actions/Captcha";
+import * as verifiedActions from "actions/CodeVerified";
+import * as resendActions from "actions/ResendCode";
+import mainReducer from "reducers/Main";
 
 import { addLocaleData } from 'react-intl';
 
@@ -187,5 +191,285 @@ describe("Main Actions", () => {
             }
         };
         expect(actions.newCsrfToken('dummy token')).toEqual(expectedAction);
+    });
+});
+
+describe("Main reducer", () => {
+
+    const mockState = {
+        dashboard_url: '',
+        resize_timeout: 0,
+        window_size: 'lg',
+        csrf_token: '',
+        recaptcha_public_key: '',
+        captcha: '',
+        code: '',
+        tou: '',
+        is_app_loaded: false,
+        is_fetching: false,
+        error: false,
+        DEBUG: true,
+        available_languages: {}
+    };
+
+    it("Receives app loaded action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: actions.APP_LOADED,
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_app_loaded: true
+          }
+        );
+    });
+
+    it("Receives get code status action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: actions.GET_CODE_STATUS,
+                    payload: {
+                        code: 'dummy code'
+                    }
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              code: 'dummy code',
+              is_fetching: true
+          }
+        );
+    });
+
+    it("Receives resize timeout action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: actions.RESIZE_TIMEOUT,
+                        payload: {
+                            resize_timeout: 'dummy timeout'
+                        }
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              resize_timeout: 'dummy timeout',
+          }
+        );
+    });
+
+    it("Receives resize action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: actions.RESIZE_WINDOW,
+                        payload: {
+                            window_size: 'dummy size'
+                        }
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              window_size: 'dummy size'
+          }
+        );
+    });
+
+    it("Receives get config sucessful action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: actions.GET_SIGNUP_CONFIG_SUCCESS,
+                        payload: {
+                            csrf_token: 'dummy token',
+                            recaptcha_public_key: 'dummy public key',
+                            available_languages: [{sv: 'Svenska'}, {en: 'English'}],
+                            debug: false,
+                            tou: 'dummy tou',
+                            dashboard_url: 'http://example.com',
+                            students_link: 'http://example.com',
+                            technicians_link: 'http://example.com',
+                            staff_link: 'http://example.com',
+                            faq_link: 'http://example.com'
+                        }
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              csrf_token: 'dummy token',
+              recaptcha_public_key: 'dummy public key',
+              available_languages: [{sv: 'Svenska'}, {en: 'English'}],
+              debug: false,
+              tou: 'dummy tou',
+              dashboard_url: 'http://example.com',
+              students_link: 'http://example.com',
+              technicians_link: 'http://example.com',
+              staff_link: 'http://example.com',
+              faq_link: 'http://example.com'
+          }
+        );
+    });
+
+    it("Receives get config failure action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: actions.NEW_CSRF_TOKEN,
+                        payload: {
+                            csrf_token: 'dummy token'
+                        }
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              csrf_token: 'dummy token'
+          }
+        );
+    });
+
+    it("Receives post captcha action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: captchaActions.POST_SIGNUP_TRYCAPTCHA,
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: true
+          }
+        );
+    });
+
+    it("Receives post captcha success action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: captchaActions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: false
+          }
+        );
+    });
+
+    it("Receives post captcha failure action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: captchaActions.POST_SIGNUP_TRYCAPTCHA_FAIL
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: false,
+              error: true
+          }
+        );
+    });
+
+    it("Receives verify link success action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS,
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: false
+          }
+        );
+    });
+
+    it("Receives verify link failure action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: false,
+              error: true
+          }
+        );
+    });
+
+    it("Receives resend code action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: resendActions.POST_SIGNUP_RESEND_VERIFICATION
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: true
+          }
+        );
+    });
+
+    it("Receives resend code success action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: resendActions.POST_SIGNUP_RESEND_VERIFICATION_SUCCESS
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: false
+          }
+        );
+    });
+
+    it("Receives resend code failure action", () => {
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: resendActions.POST_SIGNUP_RESEND_VERIFICATION_FAIL
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: false,
+              error: true
+          }
+        );
     });
 });
