@@ -2,8 +2,9 @@
 import React from 'react';
 import expect from "expect";
 
-import CodeVerifiedContainer from "containers/CodeVerified";
 import { setupComponent } from "tests/Main-test";
+import CodeVerifiedContainer from "containers/CodeVerified";
+import * as actions from "actions/CodeVerified";
 
 
 describe("CodeVerified Component", () => {
@@ -63,3 +64,25 @@ describe("CodeVerified Component", () => {
 });
 
 
+describe("CodeVerified Actions", () => {
+
+    it("Should fail when trying to verify the code", () => {
+        const err = new Error('CodeVerified error');
+        const expectedAction = {
+            type: actions.GET_SIGNUP_VERIFY_LINK_FAIL,
+            error: true,
+            payload: {
+              error: err,
+              message: err
+            }
+        };
+        expect(actions.getCodeStatusFail(err)).toEqual(expectedAction);
+    });
+
+    it("Should remove nin", () => {
+      const expectedAction = {
+        type: actions.SHOW_EXITS,
+      };
+      expect(actions.showExits()).toEqual(expectedAction);
+    });
+});

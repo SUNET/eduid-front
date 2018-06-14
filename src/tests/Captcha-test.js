@@ -41,7 +41,7 @@ describe("Captcha Actions", () => {
         expect(actions.verifyCaptcha('dummy response')).toEqual(expectedAction);
     });
  
-    it("Should fail when trying to get the nins", () => {
+    it("Should fail when trying to post the captcha", () => {
         const err = new Error('Captcha error');
         const expectedAction = {
             type: actions.POST_SIGNUP_TRYCAPTCHA_FAIL,
@@ -54,7 +54,7 @@ describe("Captcha Actions", () => {
         expect(actions.postCaptchaFail(err)).toEqual(expectedAction);
     });
 
-    it("Should remove nin", () => {
+    it("Should post the captcha", () => {
       const expectedAction = {
         type: actions.POST_SIGNUP_TRYCAPTCHA,
       };
