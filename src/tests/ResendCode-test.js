@@ -2,8 +2,9 @@
 import React from 'react';
 import expect from "expect";
 
-import ResendCodeContainer from "containers/ResendCode";
 import { setupComponent } from "tests/Main-test";
+import ResendCodeContainer from "containers/ResendCode";
+import * as actions from "actions/ResendCode";
 
 
 describe("ResendCode Component", () => {
@@ -16,5 +17,28 @@ describe("ResendCode Component", () => {
 
         expect(lead.length).toEqual(1);
         expect(button.length).toEqual(1);
+    });
+});
+
+describe("Resend code Actions", () => {
+
+    it("Should trigger resending a verification code ", () => {
+        const expectedAction = {
+            type: actions.POST_SIGNUP_RESEND_VERIFICATION,
+        };
+        expect(actions.postResendCode()).toEqual(expectedAction);
+    });
+ 
+    it("Should fail when trying to trigger resending a verification code", () => {
+        const err = new Error('Resending error');
+        const expectedAction = {
+            type: actions.POST_SIGNUP_RESEND_VERIFICATION_FAIL,
+            error: true,
+            payload: {
+              error: err,
+              message: err
+            }
+        };
+        expect(actions.postResendCodeFail(err)).toEqual(expectedAction);
     });
 });
