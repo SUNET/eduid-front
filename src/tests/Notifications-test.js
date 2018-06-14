@@ -2,8 +2,9 @@
 import React from 'react';
 import expect from "expect";
 
-import NotificationsContainer from "containers/Notifications";
 import { setupComponent } from "tests/Main-test";
+import NotificationsContainer from "containers/Notifications";
+import * as actions from "actions/Notifications";
 
 
 describe("Notifications Component", () => {
@@ -91,3 +92,36 @@ describe("Notifications Component", () => {
     });
 });
 
+
+describe("Notification Actions", () => {
+
+    it("Should add new notification ", () => {
+        const expectedAction = {
+            type: actions.NEW_NOTIFICATION,
+            payload: {
+                message: 'dummy message',
+                level: 'dummy level',
+                values: null
+            }
+        };
+        expect(actions.eduidNotify('dummy message', 'dummy level')).toEqual(expectedAction);
+    });
+
+    it("Should remove a notification ", () => {
+        const expectedAction = {
+            type: actions.RM_NOTIFICATION,
+            payload: {
+                level: 'dummy level',
+                index: 0
+            }
+        };
+        expect(actions.eduidRMNotify('dummy level', 0)).toEqual(expectedAction);
+    });
+
+    it("Should remove all notifications", () => {
+        const expectedAction = {
+            type: actions.RM_ALL_NOTIFICATION,
+        };
+        expect(actions.eduidRMAllNotify()).toEqual(expectedAction);
+    });
+});
