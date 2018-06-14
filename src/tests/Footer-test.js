@@ -3,7 +3,7 @@ import React from 'react';
 import expect from "expect";
 
 import FooterContainer from "containers/Footer";
-import { setupComponent } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/Main-test";
 
 
 describe("Footer Component", () => {
@@ -34,3 +34,32 @@ describe("Footer Component", () => {
     });
 });
 
+describe("Test footer Container", () => {
+    let wrapper,
+        dispatch;
+
+    beforeEach(() => {
+        const store = fakeStore(getState({main: {
+                                              is_app_loaded: true,
+                                              available_languages: {
+                                                  en: 'English',
+                                                  sv: 'Svenska'
+                                              }
+                                         }}));
+        dispatch = store.dispatch;
+        wrapper = setupComponent({component: <FooterContainer />,
+                                  store: store});
+    });
+
+    it("Clicks a language selector button", () => {
+        const numCalls = dispatch.mock.calls.length;
+        const mockEvent = {
+            preventDefault: () => {},
+            target: {
+                closest: () => {return {dataset: { lang: 'sv' }}}
+            }
+        };
+        wrapper.find('span.langselector').find('a').props().onClick(mockEvent);
+        expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+    });
+});
