@@ -9,6 +9,7 @@ import { setupComponent, fakeStore, getState } from "tests/Main-test";
 import CaptchaContainer from "containers/Captcha";
 import * as actions from "actions/Captcha";
 import captchaReducer from "reducers/Captcha";
+import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
 
 
 describe("Captcha Component", () => {
@@ -109,8 +110,6 @@ describe("Test captcha Container", () => {
     });
 });
 
-import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
-
 describe("Async actions for captcha", () => {
 
     it("Tests the send captcha saga", () => {
@@ -131,19 +130,19 @@ describe("Async actions for captcha", () => {
         let next = generator.next();
 
         const data = {
-                 email: 'dummy@example.com',
-                 recaptcha_response: 'dummy response',
-                 csrf_token: 'dummy-token',
-                 tou_accepted: true
-               };
+            email: 'dummy@example.com',
+            recaptcha_response: 'dummy response',
+            csrf_token: 'dummy-token',
+            tou_accepted: true
+        };
         const resp = generator.next(state);
         expect(resp.value).toEqual(call(requestSendCaptcha, data));
 
         const action = {
-          type: actions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
-          payload: {
-            csrf_token: 'csrf-token',
-          }
+            type: actions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
+            payload: {
+                csrf_token: 'csrf-token',
+            }
         }
         next = generator.next(action);
         expect(next.value.PUT.action.type).toEqual('NEW_CSRF_TOKEN');

@@ -4,6 +4,7 @@ import React from 'react';
 import { Provider } from 'react-intl-redux';
 import { mount } from '@pisano/enzyme';
 import expect from "expect";
+import { put, call, select } from "redux-saga/effects";
 
 import MainContainer from "containers/Main";
 import * as actions from "actions/Main";
@@ -11,6 +12,8 @@ import * as captchaActions from "actions/Captcha";
 import * as verifiedActions from "actions/CodeVerified";
 import * as resendActions from "actions/ResendCode";
 import mainReducer from "reducers/Main";
+import { requestCodeStatus, fetchCodeStatus,
+         requestConfig, fetchConfig } from "sagas/Main";
 
 import { addLocaleData } from 'react-intl';
 
@@ -481,5 +484,75 @@ describe("Main reducer", () => {
               error: true
           }
         );
+    });
+});
+
+describe("Main async actions", () => {
+
+    it("Tests the request config saga", () => {
+
+        const state = getState({
+            main: {
+                csrf_token: "dummy-token"
+            }
+        });
+        const url = SIGNUP_SERVICE_URL + 'config';
+        const generator = requestConfig();
+        let resp = generator.next();
+        expect(resp.value).toEqual(call(fetchConfig, url));
+
+        const action = {
+            type: actions.GET_SIGNUP_CONFIG_SUCCESS,
+            payload: {
+                csrf_token: 'csrf-token'
+            }
+        };
+        resp = generator.next(action);
+        expect(resp.value.PUT.action.type).toEqual(actions.GET_SIGNUP_CONFIG_SUCCESS);
+        resp = generator.next();
+        delete action.payload.csrf_token;
+        expect(resp.value).toEqual(put(actions.appLoaded()));
+    });
+
+    it("Tests the request code status saga", () => {
+
+        const state = getState({
+            main: {
+                csrf_token: "dummy-token",
+                code: 'dummy-code'
+            }
+        });
+        const url = SIGNUP_SERVICE_URL + 'verify-link/' + state.main.code;
+        const generator = requestCodeStatus();
+        generator.next();
+        let resp = generator.next(state);
+        expect(resp.value).toEqual(call(fetchCodeStatus, url));
+
+        const action = {
+          type: verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS,
+            payload: {
+                csrf_token: 'csrf-token',
+                status: 'verified'
+            }
+        }
+        resp = generator.next(action);
+
+        const url2 = SIGNUP_SERVICE_URL + 'config';
+        expect(resp.value).toEqual(call(fetchConfig, url2));
+
+        const action2 = {
+            type: actions.GET_SIGNUP_CONFIG_SUCCESS,
+            payload: {
+                csrf_token: 'csrf-token'
+            }
+        };
+        resp = generator.next(action2);
+        expect(resp.value.PUT.action.type).toEqual(actions.GET_SIGNUP_CONFIG_SUCCESS);
+        resp = generator.next();
+        delete action.payload.csrf_token;
+        expect(resp.value).toEqual(put(actions.appLoaded()));
+
+        resp = generator.next();
+        expect(resp.value.PUT.action.type).toEqual(verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS);
     });
 });
