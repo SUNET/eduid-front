@@ -6,6 +6,7 @@ var initialConfigPlugin = require('./src/init-config').initialConfigPlugin;
 var path = require('path');
 
 var webpackKarma = {
+  mode: 'development',
   resolve: webpackConfig.resolve,
   module: webpackConfig.module,
   plugins: [ initialConfigPlugin ]

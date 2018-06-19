@@ -14,14 +14,14 @@ export function* requestCodeStatus () {
         const codeStatus = yield call(fetchCodeStatus, url);
         yield* requestConfig();
         if (codeStatus.payload.status === 'unknown-code') {
-            history.push("/email");
+            history.push("email");
             yield put(eduidNotify('code.unknown-code', 'messages'));
         } else if (codeStatus.payload.status === 'already-verified') {
-            history.push("/resend-code");
+            history.push("resend-code");
             yield put(eduidNotify('code.already-verified', 'messages'));
         } else if (codeStatus.payload.status === 'verified') {
             yield put(codeStatus);
-            history.push("/code-verified");
+            history.push("code-verified");
         }
     } catch(error) {
         yield put(actions.getCodeStatusFail(error.toString()));

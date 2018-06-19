@@ -9,6 +9,7 @@ export const GET_SIGNUP_CONFIG_SUCCESS = 'GET_SIGNUP_CONFIG_SUCCESS';
 export const GET_SIGNUP_CONFIG_FAIL = 'GET_SIGNUP_CONFIG_FAIL';
 export const NEW_CSRF_TOKEN = 'NEW_CSRF_TOKEN';
 
+
 export function getCodeStatus (code) {
     return {
         type: GET_CODE_STATUS,
@@ -17,7 +18,6 @@ export function getCodeStatus (code) {
         }            
     };
 }
-
 
 export function appLoaded () {
   return {
@@ -34,11 +34,11 @@ export function resizeTimeout (t) {
     };
 }
 
-export function resizeWindow () {
+export function resizeWindow (testing=false) {
     return {
         type: RESIZE_WINDOW,
         payload: {
-            window_size: getWindowSize()
+            window_size: getWindowSize(testing)
         }
     };
 }
@@ -69,10 +69,12 @@ export function newCsrfToken(token) {
     };
 }
 
-
 /* Helper functions */
 
-export function getWindowSize() {
+export function getWindowSize(testing=false) {
+    if (testing) {
+        return 'dummy size';
+    }
     if (window.innerWidth < 768) {
         return 'xs';
     } else if (window.innerWidth < 992) {

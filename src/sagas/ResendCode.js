@@ -16,7 +16,7 @@ export function* resendCode () {
               };
         const resp = yield call(requestResendCode, data);
         yield put(putCsrfToken(resp));
-        history.push('/new')
+        history.push('new')
         yield put(resp);
     } catch(error) {
         yield put(actions.postResendCodeFail(error.toString()));

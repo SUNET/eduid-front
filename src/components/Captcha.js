@@ -11,7 +11,6 @@ import { FetchingContext } from "components/Main";
 
 import 'style/Captcha.scss';
 
-let recaptchaInstance;
 
 class Captcha extends Component {
 
@@ -44,10 +43,12 @@ class Captcha extends Component {
                  verifyCallback={this.props.handleCaptcha} />
         </div>
         <div id="captcha-buttons">
-            <EduIDButton onClick={this.props.sendCaptcha}>
+            <EduIDButton onClick={this.props.sendCaptcha}
+                         id ="send-captcha-button">
                 {this.props.l10n('captcha.submit')}
             </EduIDButton>
-            <EduIDButton className="eduid-button btn-warning">
+            <EduIDButton className="eduid-button btn-warning"
+                         id ="cancel-captcha-button">
                 {this.props.l10n('captcha.cancel')}
             </EduIDButton>
         </div>

@@ -8,6 +8,7 @@ const path = require('path');
 process.env.CHROME_BIN = "chromium"
 
 var webpackKarma = {
+  mode: 'development',
   resolve: webpackConfig.resolve,
   module: webpackConfig.module,
   plugins: [ initialConfigPlugin ]

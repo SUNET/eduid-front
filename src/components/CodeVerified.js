@@ -31,7 +31,11 @@ class CodeVerified extends Component {
                   <div className="col-lg-4 finish-action">
                     <h4>{this.props.l10n('finish.access-more')}</h4>
                     <p>{this.props.l10n('finish.to-dashboard')}</p>
-                    <EduIDButton type="submit" color="primary">{this.props.l10n('finish.confirm-identity')}</EduIDButton>
+                    <EduIDButton type="submit"
+                                 id="confirm-id-button"
+                                 color="primary">
+                        {this.props.l10n('finish.confirm-identity')}
+                    </EduIDButton>
                   </div>
                 </form>
                 <div className="col-lg-2"></div>
@@ -42,8 +46,10 @@ class CodeVerified extends Component {
         exits = ([
               <p key="0" className="lead">{this.props.l10n('finish.write-password')}</p>,
               <pre className="pre-big text-center" key="1">{this.props.password}</pre>,
-              <EduIDButton key="2" color="primary"
-                      onClick={this.props.gotIt}>
+              <EduIDButton key="2"
+                           id="gotit-button"
+                           color="primary"
+                           onClick={this.props.gotIt}>
                 {this.props.l10n('finish.got-it')}
               </EduIDButton>
         ]);
