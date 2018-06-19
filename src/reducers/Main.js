@@ -7,6 +7,7 @@ import * as resendActions from "actions/ResendCode";
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
     dashboard_url: '',
+    reset_passwd_url: '',
     resize_timeout: 0,
     window_size: actions.getWindowSize(),
     csrf_token: '',
