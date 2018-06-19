@@ -1,0 +1,12 @@
+
+@import '../variables.scss';
+
+
+@media only screen and (min-width: 991px) {
+
+    div.notifications-area {
+        height: 80px;
+        overflow: hidden;
+    }
+
+}

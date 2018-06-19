@@ -1,0 +1,223 @@
+
+@import '../variables.scss';
+
+
+/* Header */
+.header {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 9998;
+    padding: 20px 35px 0;
+}
+.header .logo {
+    float: left;
+    margin: 0;
+    width: 145px;
+    height: 50px;
+    background: url(../../img/logo-large.png) 1px 0 no-repeat;
+}
+.header ul {
+    margin: 0;
+}
+.header nav li.current-menu-item a {
+    color: #fff;
+    border-bottom: 3px solid #fff;
+}
+.header nav li.nav-item a.nav-link span {
+    color: rgba(255,255,255,.5);;
+    line-height: 20px;
+    font-family: 'Roboto-Medium';
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.header nav a:hover {
+    color: #fff;
+    text-decoration:none;
+}
+.header .buttons {
+    float: right;
+}
+.header .buttons .button {
+    color: #fff;
+    float: left;
+    height: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0 10px;
+    border:4px solid transparent;
+}
+.header .buttons .button.orange {
+    background:#dd650e;
+    border-color:#dd650e;
+}
+.header .buttons .button.orange:hover {
+    background:#c85c0e;
+    border-color:#c85c0e;
+}
+.header .buttons .button.white-border {
+    background: transparent;
+    border-color: #fff;
+}
+.header .buttons a {
+    font-family: 'Roboto-Medium';
+    font-size: 14px;
+    line-height: 32px;
+    padding: 20px 40px;
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1053px) {
+
+    .header nav li {
+        margin:0 8px;
+    }
+    .header .logo {
+        margin:12px 0 0 0;
+        width: 90px;
+        height: 30px;
+        background-size: 90px;
+    }
+}
+
+@media only screen and (min-width: 1054px) and (max-width: 1179px) {
+    .header nav li {
+        margin:0 10px;
+    }
+    .header .logo {
+        margin:12px 0 0 0;
+        width: 90px;
+        height: 30px;
+        background-size: 90px;
+    }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1053px) {
+    .header {
+        padding-left:23px;
+        padding-right:20px;
+    }
+    .header nav li.button {
+        padding:0 20px;
+    }
+    .header nav li a {
+        font-size:14px;
+    }
+
+    .buttons .button a {
+        font-size:14px;
+        padding:25px;
+    }
+    .header nav li {
+        margin:0 13px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    .header {
+        padding-left:23px;
+        padding-right:20px;
+    }
+    .header .logo {
+        margin:12px 0 0 0;
+        width: 80px;
+        height: 27px;
+        background-size: 78px;
+    }
+    .header nav li {
+        margin:0 10px;
+    }
+    .header nav li.button {
+        padding:0 20px;
+    }
+    .header nav li a {
+        font-size:12px;
+    }
+    .header .buttons {
+        margin-top:6px;
+    }
+    .header .buttons .button {
+        margin:0 5px;
+        height:34px;
+    }
+    .buttons .button a {
+        font-size:12px;
+        padding:10px;
+        line-height:22px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    #header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: block;
+        background: rgba(0,0,0,0.8);
+        height: 50px;
+        z-index: 9999;
+        padding:0;
+    }
+
+    #header ul {
+        width: 100%;
+    }
+
+    #header .logo {
+        width:80px;
+        height:26px;
+        background-size:78px;
+    }
+
+    #header .buttons {
+        padding: 0 60px;
+        width:100%;
+        float:none;
+        margin-top: 10px;
+        margin: 7.5px 0px;
+    }
+    #header .buttons .button {
+        margin-bottom:10px;
+        text-align:center;
+        padding:0;
+        float:none;
+        height:auto;
+    }
+    #header .buttons a {
+        display:block;
+        padding:10px 0;
+        line-height:1em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .header nav li:first-child {
+      margin-left: 0;
+    }
+    .header nav li:last-child {
+      margin-right: 0;
+    }
+
+    header > nav.navbar {
+        background-color: transparent !important;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+
+    .header nav li {
+        margin:0 16px;
+    }
+}
+
+
+@media only screen and (min-width: 1280px) {
+
+    .header nav li {
+        margin:0 20px;
+    }
+}

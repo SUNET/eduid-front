@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Form, FormGroup, Label, Input, FormFeedback, FormText, Button } from 'reactstrap';
+import { Form, FormGroup, FormFeedback, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope'
+
+import EduIDButton from "components/EduIDButton";
 
 import 'style/Email.scss';
 
@@ -11,42 +15,76 @@ import 'style/Email.scss';
 /* FORM */
 
 const validate = values => {
-    const errors = {};
-    if (!values['email']) {
-        errors['email'] = 'required'
+    const errors = {},
+          email = values.email,
+          pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (!email) {
+        errors.email = 'required';
+    } else if (!pattern.test(email)) {
+        errors.email = 'email.invalid_email'
     }
-    return errors
-}
-
-let EmailForm = props => {
-  let spinning = false,
-      error = false;
-  if (props.is_fetching) spinning = true;
-
-  return (
-    <div id="email-register">
-      <Form>
-          <div className="input-group">
-              <div className="input-group-prepend">
-                <div className="input-group-text">@</div>
-              </div>
-              <Input type="email"
-                     name="email"
-                     id="email-input"
-                     placeholder="name@example.edu" />
-              <Button color="primary"
-                      id="email-button"
-                      onClick={props.handleEmail}>
-                 {props.l10n('email.sign-up-email')}
-              </Button>
-          </div>
-      </Form>
-    </div>
-  )
+    return errors;
 };
 
+const renderLargeField = ({ input, id, type, placeholder, handleEmail, l10n, meta: { touched, error } }) => (
+    <div className="input-group">
+      <div className="input-group-prepend">
+        <div className="input-group-text">
+          <FontAwesomeIcon icon={faEnvelope} />
+        </div>
+      </div>
+      <Input {...input}
+             id={id}
+             invalid={touched && Boolean(error)}
+             valid={!touched || !Boolean(error)}
+             placeholder={placeholder}
+             type={type}/>
+      <EduIDButton className="btn-in-row"
+                   id="email-button"
+                   onClick={handleEmail}>
+         {l10n('email.sign-up-email')}
+      </EduIDButton>
+      <FormFeedback className="float-left">{touched && l10n(error)}</FormFeedback>
+    </div>
+)
+
+const renderSmallField = ({ input, id, type, placeholder, handleEmail, l10n, meta: { touched, error } }) => (
+    <div className="input-group">
+      <Input {...input}
+             id={id}
+             invalid={touched && Boolean(error)}
+             valid={!touched || !Boolean(error)}
+             placeholder={placeholder}
+             type={type}/>
+      <EduIDButton id="email-button"
+                   onClick={handleEmail}>
+         {l10n('email.sign-up-email')}
+      </EduIDButton>
+      <span className="float-left"><FormFeedback className="float-left">{touched && l10n(error)}</FormFeedback></span>
+    </div>
+)
+
+const getField = (size) => {
+    if (size === 'xs') return renderSmallField;
+    return renderLargeField;
+}
+
+let EmailForm = props => (
+    <div id="email-register">
+      <Form className={(props.size === 'xs') && 'form-horizontal' || ''}>
+        <Field type="email"
+               name="email"
+               id="email-input"
+               component={getField(props.size)}
+               handleEmail={props.handleEmail.bind(props)}
+               l10n={props.l10n}
+               placeholder="name@example.edu" />
+      </Form>
+    </div>
+  );
+
 EmailForm = reduxForm({
-  form: 'email',
+  form: 'emailForm',
   validate
 })(EmailForm)
 
@@ -56,17 +94,16 @@ EmailForm = connect(
   })
 )(EmailForm)
 
-
 /* COMPONENT */
 
 class Email extends Component {
 
   render () {
 
-    return (
-      <div className="row text-center">
-        <div className="col-lg-3"></div>
-        <div className="col-lg-6 jumbotron">
+    return ([
+      <div key="0" className="row text-center">
+        <div className="col-xl-2"></div>
+        <div className="col-xl-8">
             <div id="clouds"></div>
             <h1>{this.props.l10n('main.welcome')}</h1>
 
@@ -74,14 +111,34 @@ class Email extends Component {
 
             <EmailForm {...this.props} />
         </div>
-        <div className="col-lg-3"></div>
+        <div className="col-xl-2"></div>
+      </div>,
+      <div key="1" className="row text-center">
+        <Modal isOpen={this.props.acceptingTOU}>
+          <ModalHeader>{this.props.l10n('tou.header')}</ModalHeader>
+          <ModalBody>{this.props.tou}</ModalBody>
+          <ModalFooter>
+            <EduIDButton className="btn-danger eduid-button"
+                         onClick={this.props.handleReject}>
+                  {this.props.l10n('tou.reject')}
+            </EduIDButton>
+            <EduIDButton onClick={this.props.handleAccept}>
+                  {this.props.l10n('tou.accept')}
+            </EduIDButton>
+          </ModalFooter>
+        </Modal>
       </div>
-    );
+    ]);
   }
 }
 
 Email.propTypes = {
-  is_fetching: PropTypes.bool
+  acceptingTOU: PropTypes.bool,
+  tou: PropTypes.string,
+  size: PropTypes.string,
+  l10n: PropTypes.func,
+  handleAccept: PropTypes.func,
+  handleReject: PropTypes.func,
 }
 
 export default Email;

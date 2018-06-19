@@ -1,5 +1,9 @@
 [
   {
+    "id": "required",
+    "defaultMessage": "Required"
+  },
+  {
     "id": "error_in_form",
     "defaultMessage": "Check the form below for errors."
   },
@@ -14,6 +18,10 @@
   {
     "id": "email.sign-up-email",
     "defaultMessage": "Sign up with your email address"
+  },
+  {
+    "id": "email.invalid_email",
+    "defaultMessage": "The entered email is invalid"
   },
   {
     "id": "captcha.one-step-left",
@@ -34,6 +42,134 @@
   {
     "id": "footer.copyright",
     "defaultMessage": "SUNET 2013-2018"
+  },
+  {
+    "id": "created.account-created",
+    "defaultMessage": "Account created successfully"
+  },
+  {
+    "id": "created.confirm-registration",
+    "defaultMessage": "Confirm registration"
+  },
+  {
+    "id": "tou.header",
+    "defaultMessage": "General rules for usage of user accounts at eduID.se"
+  },
+  {
+    "id": "tou.reject",
+    "defaultMessage": "Reject"
+  },
+  {
+    "id": "tou.accept",
+    "defaultMessage": "Accept"
+  },
+  {
+    "id": "header.student",
+    "defaultMessage": "STUDENT"
+  },
+  {
+    "id": "header.technician",
+    "defaultMessage": "TECHNICIAN"
+  },
+  {
+    "id": "header.staff",
+    "defaultMessage": "STAFF"
+  },
+  {
+    "id": "header.faq",
+    "defaultMessage": "FAQ"
+  },
+  {
+    "id": "header.signup",
+    "defaultMessage": "SIGN UP"
+  },
+  {
+    "id": "header.signin",
+    "defaultMessage": "SIGN IN"
+  },
+  {
+    "id": "finish.write-password",
+    "defaultMessage": "Write down this password and store it in a safe place."
+  },
+  {
+    "id": "finish.got-it",
+    "defaultMessage": "OK, got it"
+  },
+  {
+    "id": "finish.can-now-login",
+    "defaultMessage": "You can now log in"
+  },
+  {
+    "id": "finish.accept-unconfirmed",
+    "defaultMessage": "Your account is now ready for use with sites that accept <strong>unconfirmed identities</strong>."
+  },
+  {
+    "id": "finish.finish",
+    "defaultMessage": "FINISH"
+  },
+  {
+    "id": "finish.access-more",
+    "defaultMessage": "Access more"
+  },
+  {
+    "id": "finish.to-dashboard",
+    "defaultMessage": "To get access to additional sites that require a confirmed identity, proceed to the dashboard."
+  },
+  {
+    "id": "finish.confirm-identity",
+    "defaultMessage": "CONFIRM IDENTITY"
+  },
+  {
+    "id": "resend.title",
+    "defaultMessage": "Email address already in use"
+  },
+  {
+    "id": "resend.subtitle",
+    "defaultMessage": "Send a new verification email to this address"
+  },
+  {
+    "id": "resend.button",
+    "defaultMessage": "Resend verification email"
+  },
+  {
+    "id": "signup.registering-address-used",
+    "defaultMessage": "The email address you entered is already in use"
+  },
+  {
+    "id": "signup.registering-new",
+    "defaultMessage": "Email address successfully registered"
+  },
+  {
+    "id": "signup.recaptcha-not-verified",
+    "defaultMessage": "There was a problem verifying that you are a human. Please try again"
+  },
+  {
+    "id": "signup.verification-resent",
+    "defaultMessage": "Verification email resent"
+  },
+  {
+    "id": "code.unknown-code",
+    "defaultMessage": "Unknown verification code"
+  },
+  {
+    "id": "used.email-in-use",
+    "defaultMessage": "Email address already in use"
+  },
+  {
+    "id": "used.forgot-password",
+    "defaultMessage": "Forgot your password?"
+  },
+  {
+    "id": "used.reset-password",
+    "defaultMessage": "RESET YOUR PASSWORD"
+  },
+  {
+    "id": "created.email-sent",
+    "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
+  },
+  {
+    "id": "finish.registration-complete",
+    "defaultMessage": "Registration of {email} completed"
   },
   {
     "id": "pd.choose-language",

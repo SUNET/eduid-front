@@ -4,9 +4,6 @@ import { newCsrfToken } from "actions/Main";
 export const checkStatus = function (response) {
     if (response.status >= 200 && response.status < 300) {
         return response;
-    } else if (response.status === 0) {
-        const next = document.location.href;
-        document.location.assign(TOKEN_SERVICE_URL + '?next=' + next);
     } else {
         throw new Error(response.statusText);
     }

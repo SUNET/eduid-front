@@ -8,19 +8,33 @@ import { history } from "components/Main";
 
 const mapStateToProps = (state, props) => {
   return {
-    is_fetching: state.main.is_fetching
+    size: state.main.window_size,
+    acceptingTOU: state.email.acceptingTOU,
+    tou: state.main.tou
   }
 };
 
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleEmail: (e) => {
+    handleEmail: function (e) {
       e.preventDefault();
-      const email = document.getElementById('email-input').value;
-      dispatch(actions.addEmail(email));
+      if (this.anyTouched && this.valid) {
+          const email = document.getElementById('email-input').value;
+          dispatch(actions.addEmail(email));
+      } else {
+          this.touch('email');
+      }
+    },
+    handleAccept: (e) => {
+      e.preventDefault();
+      dispatch(actions.acceptTOU());
       history.push("/trycaptcha");
     },
+    handleReject: (e) => {
+      e.preventDefault();
+      dispatch(actions.rejectTOU());
+    }
   }
 };
 

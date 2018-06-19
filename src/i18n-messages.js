@@ -88,6 +88,11 @@ const msgs = {
     /* Generic Messages *****/
     /************************/
 
+    'required': (
+        <FormattedMessage
+            id="required"
+            defaultMessage={`Required`} />),
+
     'error_in_form': (
         <FormattedMessage
             id="error_in_form"
@@ -107,6 +112,11 @@ const msgs = {
         <FormattedMessage
             id="email.sign-up-email"
             defaultMessage={`Sign up with your email address`} />),
+
+    'email.invalid_email': (
+        <FormattedMessage
+            id="email.invalid_email"
+            defaultMessage={`The entered email is invalid`} />),
 
     'captcha.one-step-left': (
         <FormattedMessage
@@ -133,6 +143,169 @@ const msgs = {
             id="footer.copyright"
             defaultMessage={` SUNET 2013-2018`} />),
 
+    'created.account-created': (
+        <FormattedMessage
+            id="created.account-created"
+            defaultMessage={`Account created successfully`} />),
+
+    'created.confirm-registration': (
+        <FormattedMessage
+            id="created.confirm-registration"
+            defaultMessage={`Confirm registration`} />),
+
+    'tou.header': (
+        <FormattedMessage
+            id="tou.header"
+            defaultMessage={`General rules for usage of user accounts at eduID.se`} />),
+
+    'tou.reject': (
+        <FormattedMessage
+            id="tou.reject"
+            defaultMessage={`Reject`} />),
+
+    'tou.accept': (
+        <FormattedMessage
+            id="tou.accept"
+            defaultMessage={`Accept`} />),
+
+    'header.student': (
+        <FormattedMessage
+            id="header.student"
+            defaultMessage={`STUDENT`} />),
+
+    'header.technician': (
+        <FormattedMessage
+            id="header.technician"
+            defaultMessage={`TECHNICIAN`} />),
+
+    'header.staff': (
+        <FormattedMessage
+            id="header.staff"
+            defaultMessage={`STAFF`} />),
+
+    'header.faq': (
+        <FormattedMessage
+            id="header.faq"
+            defaultMessage={`FAQ`} />),
+
+    'header.signup': (
+        <FormattedMessage
+            id="header.signup"
+            defaultMessage={`SIGN UP`} />),
+
+    'header.signin': (
+        <FormattedMessage
+            id="header.signin"
+            defaultMessage={`SIGN IN`} />),
+
+    'finish.write-password': (
+        <FormattedMessage
+            id="finish.write-password"
+            defaultMessage={`Write down this password and store it in a safe place.`} />),
+
+    'finish.got-it': (
+        <FormattedMessage
+            id="finish.got-it"
+            defaultMessage={`OK, got it`} />),
+
+    'finish.can-now-login': (
+        <FormattedMessage
+            id="finish.can-now-login"
+            defaultMessage={`You can now log in`} />),
+
+    'finish.accept-unconfirmed': (
+        <FormattedMessage
+            id="finish.accept-unconfirmed"
+            defaultMessage={`Your account is now ready for use with sites that accept <strong>unconfirmed identities</strong>.`} />),
+
+    'finish.finish': (
+        <FormattedMessage
+            id="finish.finish"
+            defaultMessage={`FINISH`} />),
+
+    'finish.access-more': (
+        <FormattedMessage
+            id="finish.access-more"
+            defaultMessage={`Access more`} />),
+
+    'finish.to-dashboard': (
+        <FormattedMessage
+            id="finish.to-dashboard"
+            defaultMessage={`To get access to additional sites that require a confirmed identity, proceed to the dashboard.`} />),
+
+    'finish.confirm-identity': (
+        <FormattedMessage
+            id="finish.confirm-identity"
+            defaultMessage={`CONFIRM IDENTITY`} />),
+
+    'resend.title': (
+        <FormattedMessage
+            id="resend.title"
+            defaultMessage={`Email address already in use`} />),
+
+    'resend.subtitle': (
+        <FormattedMessage
+            id="resend.subtitle"
+            defaultMessage={`Send a new verification email to this address`} />),
+
+    'resend.button': (
+        <FormattedMessage
+            id="resend.button"
+            defaultMessage={`Resend verification email`} />),
+
+    'signup.registering-address-used': (
+        <FormattedMessage
+            id="signup.registering-address-used"
+            defaultMessage={`The email address you entered is already in use`} />),
+
+    'signup.registering-new': (
+        <FormattedMessage
+            id="signup.registering-new"
+            defaultMessage={`Email address successfully registered`} />),
+
+    'signup.recaptcha-not-verified': (
+        <FormattedMessage
+            id="signup.recaptcha-not-verified"
+            defaultMessage={`There was a problem verifying that you are a human. Please try again`} />),
+
+    'signup.verification-resent': (
+        <FormattedMessage
+            id="signup.verification-resent"
+            defaultMessage={`Verification email resent`} />),
+
+    'code.unknown-code': (
+        <FormattedMessage
+            id="code.unknown-code"
+            defaultMessage={`Unknown verification code`} />),
+
+    'used.email-in-use': (
+        <FormattedMessage
+            id="used.email-in-use"
+            defaultMessage={`Email address already in use`} />),
+
+    'used.forgot-password': (
+        <FormattedMessage
+            id="used.forgot-password"
+            defaultMessage={`Forgot your password?`} />),
+
+    'used.reset-password': (
+        <FormattedMessage
+            id="used.reset-password"
+            defaultMessage={`RESET YOUR PASSWORD`} />),
+
+// messages with parameters
+
+    'created.email-sent': (values) => (
+        <FormattedMessage
+            id="created.email-sent"
+            defaultMessage={`An email with instructions on how to proceed has been sent to {email}`}
+            values={values} />),
+
+    'finish.registration-complete': (values) => (
+        <FormattedMessage
+            id="finish.registration-complete"
+            defaultMessage={`Registration of {email} completed`}
+            values={values} />),
 };
 
 const unformatted = defineMessages({
