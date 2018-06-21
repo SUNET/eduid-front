@@ -37,14 +37,6 @@ webpackProd.plugins = [
   }),
   new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
   new webpack.optimize.OccurrenceOrderPlugin(true),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-    },
-      output: {
-      comments: false,
-    },
-  }),
   new CompressionPlugin({
     asset: "[path].gz[query]",
     algorithm: "gzip",
