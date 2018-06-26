@@ -11,6 +11,7 @@ div.jumbotron {
 .jumbotron {
     margin: 0;
     padding: 0;
+    padding-bottom: 8em;
     text-align: center;
     clear: both;
 }
@@ -130,8 +131,9 @@ p.lead {
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 
     .jumbotron h1 {
-          font-size: 54px;
-          margin: 0;
+        font-size: 54px;
+        margin: 0;
+        padding-bottom: 6em;
     }
 }
 
@@ -141,6 +143,7 @@ p.lead {
         font-size: 46px;
         margin: 0;
         padding-top: 3em;
+        padding-bottom: 4em;
         font-weight: 400;
     }
     .jumbotron p.lead {
