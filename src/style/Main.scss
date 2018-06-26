@@ -9,7 +9,8 @@ div.jumbotron {
 }
 
 .jumbotron {
-    margin: 60px 0;
+    margin: 0;
+    padding: 0;
     text-align: center;
     clear: both;
 }
@@ -130,7 +131,7 @@ p.lead {
 
     .jumbotron h1 {
           font-size: 54px;
-          margin: 20px 0;
+          margin: 0;
     }
 }
 
@@ -138,7 +139,8 @@ p.lead {
 
     .jumbotron h1 {
         font-size: 46px;
-        margin: 20px 0;
+        margin: 0;
+        padding-top: 3em;
         font-weight: 400;
     }
     .jumbotron p.lead {
