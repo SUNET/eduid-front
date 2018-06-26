@@ -1,5 +1,6 @@
 
 export const GET_CODE_STATUS = 'GET_CODE_STATUS';
+export const GET_CODE_STATUS_FAIL = 'GET_CODE_STATUS_FAIL';
 export const APP_LOADED = 'APP_LOADED';
 export const RESIZE_WINDOW = 'RESIZE_WINDOW';
 export const RESIZE_TIMEOUT = 'RESIZE_TIMEOUT';
@@ -16,6 +17,17 @@ export function getCodeStatus (code) {
         payload: {
             code: code
         }            
+    };
+}
+
+export function getCodeStatusFail (err) {
+    return {
+        type: GET_CODE_STATUS_FAIL,
+        error: true,
+        payload: {
+            error: err,
+            message: err
+        }
     };
 }
 
