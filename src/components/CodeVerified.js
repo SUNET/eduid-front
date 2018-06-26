@@ -18,7 +18,7 @@ class CodeVerified extends Component {
             <div className="container-fluid">
               <div className="row text-center">
                 <div className="col-lg-2"></div>
-                <form method="POST" action={this.props.dashboard_url}>
+                <form method="GET" action={this.props.dashboard_url}>
                   <input type="hidden" name="eppn" value={this.props.eppn} />
                   <input type="hidden" name="nonce" value={this.props.nonce} />
                   <input type="hidden" name="ts" value={this.props.ts} />
