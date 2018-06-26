@@ -50,8 +50,12 @@ export function* requestConfig () {
 }
 
 export function fetchConfig (url) {
+    const request = {
+        ...getRequest,
+        redirect: 'follow'
+    };
     return window.fetch(url, {
-        ...getRequest
+        ...request
     })
     .then(checkStatus)
     .then(response => response.json())
