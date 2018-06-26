@@ -17,8 +17,7 @@ var exec = require('child_process').exec;
  *
  */
 
-filesystem.readdirSync('plugins').forEach(function(plugin) {
-    var comm = "webpack --config plugins/" + plugin + "/webpack.config.js --mode development";
+function execute (comm, rm) {
     exec(comm,
         function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
@@ -26,5 +25,30 @@ filesystem.readdirSync('plugins').forEach(function(plugin) {
             if (error !== null) {
                  console.log('exec error: ' + error);
             }
+            if (rm !== undefined) {
+                execute("rm " + rm);
+            }
         });
+}
+
+filesystem.readdirSync('plugins').forEach(function(plugin) {
+    var config = plugin + ".webpack.config.js";
+    var fileContent = `
+
+const path = require('path');
+const webpackConfig = require('./webpack.config.js');
+
+var pluginName = "${plugin}";
+
+webpackConfig.entry = {
+    tou: './plugins/' + pluginName + '/js/index.js'
+}
+
+webpackConfig.resolve.modules.push(path.resolve(__dirname, 'plugins/' + pluginName + '/js'));
+
+module.exports = webpackConfig;
+
+    `;
+    filesystem.writeFileSync(config, fileContent);
+    execute("webpack --config " + config + " --mode development", config);
 });
