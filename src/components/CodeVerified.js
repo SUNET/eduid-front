@@ -25,7 +25,10 @@ class CodeVerified extends Component {
                   <input type="hidden" name="token" value={this.props.token} />
                   <div className="col-lg-4 finish-action">
                     <h4>{this.props.l10n('finish.can-now-login')}</h4>
-                    <p dangerouslySetInnerHTML={{__html: this.props.l10n('finish.accept-unconfirmed')}}></p>
+                    <p>{this.props.l10n('finish.sites-accept')}
+                      &nbsp;
+                      <strong>{this.props.l10n('finish.unconfirmed-identities')}</strong>
+                    </p>
                     <EduIDButton color="primary">{this.props.l10n('finish.finish')}</EduIDButton>
                   </div>
                   <div className="col-lg-4 finish-action">

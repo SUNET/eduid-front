@@ -213,10 +213,15 @@ const msgs = {
             id="finish.can-now-login"
             defaultMessage={`You can now log in`} />),
 
-    'finish.accept-unconfirmed': (
+    'finish.sites-accept': (
         <FormattedMessage
-            id="finish.accept-unconfirmed"
-            defaultMessage={`Your account is now ready for use with sites that accept <strong>unconfirmed identities</strong>.`} />),
+            id="finish.sites-accept"
+            defaultMessage={`Your account is now ready for use with sites that accept`} />),
+
+    'finish.unconfirmed-identities': (
+        <FormattedMessage
+            id="finish.unconfirmed-identities"
+            defaultMessage={`unconfirmed identities`} />),
 
     'finish.finish': (
         <FormattedMessage

@@ -100,8 +100,12 @@
     "defaultMessage": "You can now log in"
   },
   {
-    "id": "finish.accept-unconfirmed",
-    "defaultMessage": "Your account is now ready for use with sites that accept <strong>unconfirmed identities</strong>."
+    "id": "finish.sites-accept",
+    "defaultMessage": "Your account is now ready for use with sites that accept"
+  },
+  {
+    "id": "finish.unconfirmed-identities",
+    "defaultMessage": "unconfirmed identities"
   },
   {
     "id": "finish.finish",
