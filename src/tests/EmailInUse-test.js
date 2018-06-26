@@ -10,7 +10,7 @@ describe("EmailInUse Component", () => {
 
     const state = {
         main: {
-          dashboard_url: 'http://dummy.example.com/',
+          reset_passwd_url: 'http://dummy.example.com/reset-password',
         }
     };
 

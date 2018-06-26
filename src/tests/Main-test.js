@@ -149,6 +149,19 @@ describe("Main Actions", () => {
         expect(actions.getCodeStatus('dummy code')).toEqual(expectedAction);
     });
 
+    it("Should fail when trying to get the code status", () => {
+        const err = new Error('Get code status error');
+        const expectedAction = {
+            type: actions.GET_CODE_STATUS_FAIL,
+            error: true,
+            payload: {
+                error: err,
+                message: err
+            }
+        };
+        expect(actions.getCodeStatusFail(err)).toEqual(expectedAction);
+    });
+
     it("Should signal the app has loaded", () => {
         const expectedAction = {
             type: actions.APP_LOADED,
@@ -257,6 +270,28 @@ describe("Main reducer", () => {
               ...mockState,
               code: 'dummy code',
               is_fetching: true
+          }
+        );
+    });
+
+    it("Receives get code status failed action", () => {
+        const err = 'failed';
+        expect(
+            mainReducer(
+                mockState,
+                {
+                    type: actions.GET_CODE_STATUS_FAIL,
+                    error: true,
+                    payload: {
+                        error: err,
+                        message: err
+                    }
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              error: true
           }
         );
     });

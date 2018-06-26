@@ -35,6 +35,12 @@ let mainReducer = (state=configData, action) => {
           ...action.payload,
           is_fetching: true
       };
+    case actions.GET_CODE_STATUS_FAIL:
+      return {
+          ...state, 
+          error: true,
+          is_fetching: false
+      };
     case actions.RESIZE_TIMEOUT:
       return {
           ...state,
