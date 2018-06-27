@@ -18,26 +18,35 @@ class CodeVerified extends Component {
             <div className="container-fluid">
               <div className="row text-center">
                 <div className="col-lg-2"></div>
-                <form method="POST" action={this.props.dashboard_url}>
-                  <input type="hidden" name="eppn" value={this.props.eppn} />
-                  <input type="hidden" name="nonce" value={this.props.nonce} />
-                  <input type="hidden" name="ts" value={this.props.ts} />
-                  <input type="hidden" name="token" value={this.props.token} />
-                  <div className="col-lg-4 finish-action">
-                    <h4>{this.props.l10n('finish.can-now-login')}</h4>
-                    <p dangerouslySetInnerHTML={{__html: this.props.l10n('finish.accept-unconfirmed')}}></p>
-                    <EduIDButton color="primary">{this.props.l10n('finish.finish')}</EduIDButton>
-                  </div>
-                  <div className="col-lg-4 finish-action">
-                    <h4>{this.props.l10n('finish.access-more')}</h4>
-                    <p>{this.props.l10n('finish.to-dashboard')}</p>
-                    <EduIDButton type="submit"
-                                 id="confirm-id-button"
-                                 color="primary">
-                        {this.props.l10n('finish.confirm-identity')}
-                    </EduIDButton>
+                <div className="col-lg-8">
+                <form method="GET" action={this.props.dashboard_url}>
+                  <div className="row">
+                    <div className="col-lg-1"></div>
+                    <input type="hidden" name="eppn" value={this.props.eppn} />
+                    <input type="hidden" name="nonce" value={this.props.nonce} />
+                    <input type="hidden" name="ts" value={this.props.ts} />
+                    <input type="hidden" name="token" value={this.props.token} />
+                    <div className="col-lg-5 finish-action">
+                      <h4>{this.props.l10n('finish.can-now-login')}</h4>
+                      <p>{this.props.l10n('finish.sites-accept')}
+                        &nbsp;
+                        <strong>{this.props.l10n('finish.unconfirmed-identities')}</strong>
+                      </p>
+                      <EduIDButton color="primary">{this.props.l10n('finish.finish')}</EduIDButton>
+                    </div>
+                    <div className="col-lg-5 finish-action">
+                      <h4>{this.props.l10n('finish.access-more')}</h4>
+                      <p>{this.props.l10n('finish.to-dashboard')}</p>
+                      <EduIDButton type="submit"
+                                   id="confirm-id-button"
+                                   color="primary">
+                          {this.props.l10n('finish.confirm-identity')}
+                      </EduIDButton>
+                    </div>
+                    <div className="col-lg-1"></div>
                   </div>
                 </form>
+                </div>
                 <div className="col-lg-2"></div>
               </div>
             </div>
