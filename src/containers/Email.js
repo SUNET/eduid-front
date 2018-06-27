@@ -7,11 +7,16 @@ import { history } from "components/Main";
 
 
 const mapStateToProps = (state, props) => {
-  return {
-    size: state.main.window_size,
-    acceptingTOU: state.email.acceptingTOU,
-    tou: state.main.tou
-  }
+    const lang = state.intl.locale;
+    let tou = '';
+    if (state.main.tous !== undefined) {
+        tou = state.main.tous[lang];
+    }
+    return {
+        size: state.main.window_size,
+        acceptingTOU: state.email.acceptingTOU,
+        tou: tou
+    }
 };
 
 
