@@ -40,9 +40,7 @@ const webpackConfig = require('./webpack.config.js');
 
 var pluginName = "${plugin}";
 
-webpackConfig.entry = {
-    tou: './plugins/' + pluginName + '/js/index.js'
-}
+webpackConfig.entry[pluginName] = './plugins/' + pluginName + '/js/index.js'
 
 webpackConfig.resolve.modules.push(path.resolve(__dirname, 'plugins/' + pluginName + '/js'));
 
