@@ -19,7 +19,7 @@ class CodeVerified extends Component {
               <div className="row text-center">
                 <div className="col-lg-2"></div>
                 <div className="col-lg-8">
-                <form method="GET" action={this.props.dashboard_url}>
+                <form method="POST" action={this.props.dashboard_url}>
                   <div className="row">
                     <div className="col-lg-1"></div>
                     <input type="hidden" name="eppn" value={this.props.eppn} />
