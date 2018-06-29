@@ -5,6 +5,10 @@ export const RESIZE_TIMEOUT = 'RESIZE_TIMEOUT';
 export const NEW_CSRF_TOKEN = 'NEW_CSRF_TOKEN';
 export const REDIRECT = 'REDIRECT';
 
+export const GET_ACTIONS_CONFIG = 'GET_ACTIONS_CONFIG';
+export const GET_ACTIONS_CONFIG_SUCCESS = 'GET_ACTIONS_CONFIG_SUCCESS';
+export const GET_ACTIONS_CONFIG_FAIL = 'GET_ACTIONS_CONFIG_FAIL';
+
 
 export function appLoaded () {
   return {
@@ -46,6 +50,23 @@ export function redirect(path) {
             path: path
         }
     };
+}
+
+export function getConfig () {
+  return {
+    type: GET_ACTIONS_CONFIG
+  };
+}
+
+export function getConfigFail (err) {
+  return {
+    type: GET_ACTIONS_CONFIG_FAIL,
+    error: true,
+    payload: {
+      error: err,
+      message: err
+    }
+  };
 }
 
 /* Helper functions */

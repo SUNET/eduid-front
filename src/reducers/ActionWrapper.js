@@ -40,6 +40,11 @@ let actionWrapperReducer = (state=configData, action) => {
           ...state,
           redirect: action.payload.path
       };
+    case actions.GET_ACTIONS_CONFIG_SUCCESS:
+      return {
+          ...state,
+          ...action.payload
+      };
     default:
       return state;
   }

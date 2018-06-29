@@ -49,11 +49,16 @@ function init_plugin (app, rootSaga, target, component, action) {
             messages: LOCALIZED_MESSAGES[lang_code]
         }));
     }
+
+    const dispatchAction = (a) => {
+        store.dispatch(action);
+    };
+
     app = (
       <Provider store={store}>
           {component}
       </Provider>);
-    ReactDOM.render(app, target, action);
+    ReactDOM.render(app, target, dispatchAction);
 }
 
 export default init_plugin;

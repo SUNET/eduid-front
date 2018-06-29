@@ -11,6 +11,7 @@ import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'style/Main.scss';
 
 
 export const history = createHistory()
