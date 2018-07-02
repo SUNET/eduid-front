@@ -3,6 +3,7 @@ export const GET_CODE_STATUS = 'GET_CODE_STATUS';
 export const GET_CODE_STATUS_FAIL = 'GET_CODE_STATUS_FAIL';
 export const APP_LOADED = 'APP_LOADED';
 export const APP_LOADING = 'APP_LOADING';
+export const APP_FETCHING = 'APP_FETCHING';
 export const RESIZE_WINDOW = 'RESIZE_WINDOW';
 export const RESIZE_TIMEOUT = 'RESIZE_TIMEOUT';
 
@@ -32,15 +33,21 @@ export function getCodeStatusFail (err) {
     };
 }
 
+export function appLoaded () {
+  return {
+    type: APP_LOADED
+  };
+}
+
 export function appLoading () {
   return {
     type: APP_LOADING
   };
 }
 
-export function appLoaded () {
+export function appFetching () {
   return {
-    type: APP_LOADED
+    type: APP_FETCHING
   };
 }
 

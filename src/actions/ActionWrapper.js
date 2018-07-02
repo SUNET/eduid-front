@@ -1,5 +1,7 @@
 
 export const APP_LOADED = 'APP_LOADED';
+export const APP_LOADING = 'APP_LOADING';
+export const APP_FETCHING = 'APP_FETCHING';
 export const RESIZE_WINDOW = 'RESIZE_WINDOW';
 export const RESIZE_TIMEOUT = 'RESIZE_TIMEOUT';
 export const NEW_CSRF_TOKEN = 'NEW_CSRF_TOKEN';
@@ -13,6 +15,18 @@ export const GET_ACTIONS_CONFIG_FAIL = 'GET_ACTIONS_CONFIG_FAIL';
 export function appLoaded () {
   return {
     type: APP_LOADED
+  };
+}
+
+export function appLoading () {
+  return {
+    type: APP_LOADING
+  };
+}
+
+export function appFetching () {
+  return {
+    type: APP_FETCHING
   };
 }
 

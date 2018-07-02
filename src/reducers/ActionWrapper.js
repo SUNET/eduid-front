@@ -15,10 +15,20 @@ const configData = {
 
 let actionWrapperReducer = (state=configData, action) => {
   switch (action.type) {
+    case actions.APP_LOADING:
+      return {
+          ...state, 
+          is_app_loading: true
+      };
     case actions.APP_LOADED:
       return {
           ...state, 
           is_app_loaded: true
+      };
+    case actions.APP_FETCHING:
+      return {
+          ...state, 
+          is_fetching: true
       };
     case actions.RESIZE_TIMEOUT:
       return {
