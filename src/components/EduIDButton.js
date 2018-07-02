@@ -18,7 +18,10 @@ class EduIDButton extends Component {
         <FetchingContext.Consumer>
             {({fetching, toggleFetching}) => {
                 if (fetching) {
-                    const classes = `${this.props.className} eduid-button has-spinner`;
+                    let classes = " eduid-button has-spinner";
+                    if (this.props.className !== undefined) {
+                        classes = this.props.className + classes;
+                    }
                     return (
                       <button {...this.props}
                               disabled={true}
@@ -30,7 +33,10 @@ class EduIDButton extends Component {
                       </button>
                     );
                 } else {
-                    const classes = `${this.props.className} eduid-button`;
+                    let classes = "eduid-button";
+                    if (this.props.className !== undefined) {
+                        classes = this.props.className + classes;
+                    }
                     return (
                       <button {...this.props}
                               className={classes}>
