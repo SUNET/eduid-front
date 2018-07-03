@@ -11,6 +11,10 @@ export const GET_ACTIONS_CONFIG = 'GET_ACTIONS_CONFIG';
 export const GET_ACTIONS_CONFIG_SUCCESS = 'GET_ACTIONS_CONFIG_SUCCESS';
 export const GET_ACTIONS_CONFIG_FAIL = 'GET_ACTIONS_CONFIG_FAIL';
 
+export const POST_ACTIONS_ACTION = 'POST_ACTIONS_ACTION';
+export const POST_ACTIONS_ACTION_SUCCESS = 'POST_ACTIONS_ACTION_SUCCESS';
+export const POST_ACTIONS_ACTION_FAIL = 'POST_ACTIONS_ACTION_FAIL';
+
 
 export function appLoaded () {
   return {
@@ -75,6 +79,23 @@ export function getConfig () {
 export function getConfigFail (err) {
   return {
     type: GET_ACTIONS_CONFIG_FAIL,
+    error: true,
+    payload: {
+      error: err,
+      message: err
+    }
+  };
+}
+
+export function postAction () {
+  return {
+    type: POST_ACTIONS_ACTION
+  };
+}
+
+export function postActionFail (err) {
+  return {
+    type: POST_ACTIONS_ACTION_FAIL,
     error: true,
     payload: {
       error: err,
