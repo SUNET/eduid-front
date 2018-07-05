@@ -25,7 +25,7 @@ export function* requestNextAction () {
     try {
         const nextAction = yield call(fetchActions, actions_url);
         if (nextAction.action === false) {
-            document.location = nextAction.idp_url;
+            document.location = nextAction.url;
         } else {
             document.location.reload();
         }
