@@ -1,6 +1,6 @@
 
 import { put, call, select } from "redux-saga/effects";
-import { ajaxHeaders, checkStatus, getRequest } from "sagas/common";
+import { ajaxHeaders, checkStatus, getRequest, putCsrfToken } from "sagas/common";
 
 import * as actions from "actions/ActionWrapper";
 import { history } from "components/ActionWrapper";
@@ -12,6 +12,7 @@ export function* requestConfig () {
     try {
         console.log('Getting config from ' + actions_url);
         const config = yield call(fetchActions, actions_url);
+        yield put(putCsrfToken(config));
         yield put(config);
         yield put(actions.appLoaded());
     } catch(error) {
@@ -24,6 +25,7 @@ export function* requestNextAction () {
     const actions_url = ACTIONS_SERVICE_URL + 'get-actions';
     try {
         const nextAction = yield call(fetchActions, actions_url);
+        yield put(putCsrfToken(nextAction));
         if (nextAction.action === false) {
             document.location = nextAction.url;
         } else {

@@ -6,6 +6,7 @@ const configData = {
     resize_timeout: 0,
     window_size: actions.getWindowSize(),
     csrf_token: '',
+    is_app_loading: false,
     is_app_loaded: false,
     redirect: '/',
     is_fetching: false,
