@@ -69,7 +69,7 @@ class Main extends Component {
             <FetchingContext.Provider value={this.state}>
                 <SplashContainer />
                 <div className="container-fluid">
-                    <HeaderContainer />
+                    <HeaderContainer withButtons={true} />
                     <ConnectedRouter history={history}>
                         <div  className="jumbotron">
                             <div className="row">

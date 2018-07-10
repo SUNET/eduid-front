@@ -19,8 +19,19 @@ class Header extends Component {
     }
 
     render () {
-        const linksAndButtons = ([
-            <ul key="0" className="navbar-nav mr-auto">
+        let buttons = '';
+        if (this.props.withButtons) {
+            buttons = (<div className="buttons nav navbar-nav float-right">
+                         <div className="button orange">
+                           <a onClick={this.props.gotoSignup}>{this.props.l10n('header.signup')}</a>
+                         </div>
+                         <div className="button white-border">
+                           <a onClick={this.props.gotoSignin}>{this.props.l10n('header.signin')}</a>
+                         </div>
+                       </div>);
+        }
+        const links = (
+            <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <a className="nav-link" href={this.props.students_link}>{this.props.l10n('header.student')}</a>
               </li>
@@ -33,16 +44,8 @@ class Header extends Component {
               <li className="nav-item">
                 <a className="nav-link" href={this.props.faq_link}>{this.props.l10n('header.faq')}</a>
               </li>
-            </ul>,
-            <div key="1" className="buttons nav navbar-nav float-right">
-              <div className="button orange">
-                <a onClick={this.props.gotoSignup}>{this.props.l10n('header.signup')}</a>
-              </div>
-              <div className="button white-border">
-                <a onClick={this.props.gotoSignin}>{this.props.l10n('header.signin')}</a>
-              </div>
-            </div>
-        ]);
+            </ul>
+        );
 
         if (this.props.size === 'xs') {
             return (
@@ -57,7 +60,8 @@ class Header extends Component {
                 </nav>
                 <Collapse isOpen={!this.state.collapse} className="text-center" id="eduid-menu">
                   <nav className="navbar navbar-dark bg-dark" id="eduid-navbar">
-                    {linksAndButtons}
+                    {links}
+                    {buttons}
                   </nav>
                 </Collapse>
               </header>
@@ -68,7 +72,8 @@ class Header extends Component {
                 <div className="logo" id="eduid-logo-large"></div>
                 <nav className="navbar navbar-expand-md" id="eduid-navbar">
                   <div className="collapsed navbar-collapse text-center" id="eduid-menu">
-                    {linksAndButtons}
+                    {links}
+                    {buttons}
                   </div>
                 </nav>
               </header>
@@ -79,6 +84,7 @@ class Header extends Component {
 
 
 Header.propTypes = {
+  withButtons: PropTypes.bool,
   size: PropTypes.string,
   l10n: PropTypes.func,
   gotoSignup: PropTypes.func,

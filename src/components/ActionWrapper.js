@@ -51,7 +51,7 @@ class ActionWrapper extends Component {
             <FetchingContext.Provider value={this.state}>
                 <SplashContainer />
                 <div className="container-fluid">
-                    <HeaderContainer />
+                    <HeaderContainer withButtons={false} />
                     <ConnectedRouter history={history}>
                         <div  className="jumbotron">
                             <div className="row">
