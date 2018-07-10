@@ -98,6 +98,44 @@ describe("ActionWrapper Component", () => {
     });
 });
 
+describe("Get window size", () => {
+
+    it("Small window", () => {
+
+        window.innerWidth = 500;
+
+        expect(
+            actions.getWindowSize()
+        ).toEqual(
+            'xs'
+        );
+
+        window.innerWidth = 800;
+
+        expect(
+            actions.getWindowSize()
+        ).toEqual(
+            'sm'
+        );
+
+        window.innerWidth = 1000;
+
+        expect(
+            actions.getWindowSize()
+        ).toEqual(
+            'md'
+        );
+
+        window.innerWidth = 1300;
+
+        expect(
+            actions.getWindowSize()
+        ).toEqual(
+            'lg'
+        );
+    });
+});
+
 describe("ActionWrapper Actions", () => {
 
     it("Should signal the app has loaded", () => {
@@ -182,6 +220,16 @@ describe("ActionWrapper Actions", () => {
             }
         };
         expect(actions.newCsrfToken('dummy token')).toEqual(expectedAction);
+    });
+
+    it("Should redirect", () => {
+        const expectedAction = {
+            type: actions.REDIRECT,
+            payload: {
+                path: 'dummy/path'
+            }
+        };
+        expect(actions.redirect('dummy/path')).toEqual(expectedAction);
     });
 });
 

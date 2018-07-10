@@ -169,6 +169,20 @@ describe("Main Actions", () => {
         expect(actions.appLoaded()).toEqual(expectedAction);
     });
 
+    it("Should signal the app is loading", () => {
+        const expectedAction = {
+            type: actions.APP_LOADING,
+        };
+        expect(actions.appLoading()).toEqual(expectedAction);
+    });
+
+    it("Should signal the app is fetching data", () => {
+        const expectedAction = {
+            type: actions.APP_FETCHING,
+        };
+        expect(actions.appFetching()).toEqual(expectedAction);
+    });
+
     it("Should timeout the resizing", () => {
       const expectedAction = {
           type: actions.RESIZE_TIMEOUT,
@@ -218,6 +232,46 @@ describe("Main Actions", () => {
         };
         expect(actions.newCsrfToken('dummy token')).toEqual(expectedAction);
     });
+});
+
+describe("Get window size", () => {
+
+    it("Small window", () => {
+
+        window.innerWidth = 500;
+
+        expect(
+            actions.getWindowSize()
+        ).toEqual(
+            'xs'
+        );
+
+        window.innerWidth = 800;
+
+        expect(
+            actions.getWindowSize()
+        ).toEqual(
+            'sm'
+        );
+
+        window.innerWidth = 1000;
+
+        expect(
+            actions.getWindowSize()
+        ).toEqual(
+            'md'
+        );
+
+        window.innerWidth = 1300;
+
+        expect(
+            actions.getWindowSize()
+        ).toEqual(
+            'lg'
+        );
+    });
+    
+
 });
 
 describe("Main reducer", () => {
