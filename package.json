@@ -12,7 +12,6 @@
     "build-pro": "webpack --config webpack.prod.config.js --mode production",
     "manage:translations": "node ./translationRunner.js",
     "manage:plugins": "node ./buildPlugins.js",
-    "touplugin": "webpack --config plugins/eduid_action.tou/webpack.config.js --mode development",
     "serve": "webpack-dev-server --open"
   },
   "babel": {
