@@ -273,7 +273,7 @@ describe("ActionWrapper reducer", () => {
         ).toEqual(
           {
               ...mockState,
-              is_app_loading: true
+              is_app_loaded: false
           }
         );
     });

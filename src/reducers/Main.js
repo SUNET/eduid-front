@@ -27,7 +27,7 @@ let mainReducer = (state=configData, action) => {
     case actions.APP_LOADING:
       return {
           ...state, 
-          is_app_loading: true
+          is_app_loaded: false
       };
     case actions.APP_LOADED:
       return {

@@ -6,7 +6,6 @@ const configData = {
     resize_timeout: 0,
     window_size: actions.getWindowSize(),
     csrf_token: '',
-    is_app_loading: false,
     is_app_loaded: false,
     redirect: '/',
     is_fetching: false,
@@ -19,7 +18,7 @@ let actionWrapperReducer = (state=configData, action) => {
     case actions.APP_LOADING:
       return {
           ...state, 
-          is_app_loading: true
+          is_app_loaded: false
       };
     case actions.APP_LOADED:
       return {
