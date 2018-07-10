@@ -33,7 +33,7 @@ class EduIDButton extends Component {
                       </button>
                     );
                 } else {
-                    let classes = "eduid-button";
+                    let classes = " eduid-button";
                     if (this.props.className !== undefined) {
                         classes = this.props.className + classes;
                     }

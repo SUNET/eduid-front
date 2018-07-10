@@ -6,10 +6,11 @@ import { mount } from '@pisano/enzyme';
 import expect from "expect";
 import { put, call, select } from "redux-saga/effects";
 
+import EduIDButton from "components/EduIDButton";
 import ActionWrapperContainer from "containers/ActionWrapper";
 import * as actions from "actions/ActionWrapper";
 import actionWrapperReducer from "reducers/ActionWrapper";
-import { requestConfig, fetchActions } from "sagas/ActionWrapper";
+import { requestConfig, requestNextAction, fetchActions } from "sagas/ActionWrapper";
 
 import { addLocaleData } from 'react-intl';
 
@@ -92,10 +93,25 @@ describe("ActionWrapper Component", () => {
 
     it("Doesn't Render the splash screen", () => {
         const wrapper = setupComponent({component: <ActionWrapperContainer />}),
-              splash = wrapper.find('div#eduid-splash-screen');
+              splash = wrapper.find('div#eduid-splash-screen'),
+              spinner = wrapper.find('div.spin-holder');
 
         expect(splash.length).toEqual(0);
+        expect(spinner.length).toEqual(0);
     });
+
+    //it("Is fetching", () => {
+        //const button = mount(<EduIDButton id="test-button">button</EduIDButton>),
+              //comp = (<ActionWrapperContainer>
+                        //{button}
+                      //</ActionWrapperContainer>),
+              //params = {component: comp,
+                        //overrides: {main: {is_fetching: true}}},
+              //wrapper = setupComponent(params),
+              //spinner = wrapper.find('div.spin-holder');
+
+        //expect(spinner.length).toEqual(1);
+    //});
 });
 
 describe("Get window size", () => {
@@ -262,6 +278,22 @@ describe("ActionWrapper reducer", () => {
         );
     });
 
+    it("Receives app fetching action", () => {
+        expect(
+            actionWrapperReducer(
+                mockState,
+                {
+                    type: actions.APP_FETCHING,
+                }
+            )
+        ).toEqual(
+          {
+              ...mockState,
+              is_fetching: true
+          }
+        );
+    });
+
     it("Receives app loaded action", () => {
         expect(
             actionWrapperReducer(
@@ -403,5 +435,28 @@ describe("ActionWrapper async actions", () => {
         expect(resp.value.PUT.action.type).toEqual(actions.GET_ACTIONS_CONFIG_SUCCESS);
         resp = generator.next();
         expect(resp.value).toEqual(put(actions.appLoaded()));
+    });
+
+    it("Tests the request next action saga", () => {
+
+        const state = getState({
+            main: {
+                csrf_token: "dummy-token"
+            }
+        });
+        const url = ACTIONS_SERVICE_URL + 'get-actions';
+        const generator = requestNextAction();
+        let resp = generator.next();
+        expect(resp.value).toEqual(call(fetchActions, url));
+
+        const action = {
+            action: false,
+            url: 'http://example.com',
+            payload: {
+                csrf_token: 'csrf-token'
+            }
+        };
+        resp = generator.next(action);
+        expect(resp.value.PUT.action.type).toEqual(actions.NEW_CSRF_TOKEN);
     });
 });

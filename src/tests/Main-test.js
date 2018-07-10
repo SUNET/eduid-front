@@ -270,8 +270,6 @@ describe("Get window size", () => {
             'lg'
         );
     });
-    
-
 });
 
 describe("Main reducer", () => {
