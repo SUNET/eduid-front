@@ -21,15 +21,26 @@ describe("Header Component", () => {
 
     it("Renders the header component", () => {
 
-        const wrapper = setupComponent({component: <HeaderContainer />,
+        const wrapper = setupComponent({component: <HeaderContainer withButtons={true} />,
                                         overrides: state}),
+              buttons = wrapper.find('div.buttons'),
               link = wrapper.find('a.nav-link'),
               logoLarge = wrapper.find('div#eduid-logo-large'),
               logoSmall = wrapper.find('div#eduid-logo-small');
 
+        expect(buttons.length).toEqual(1);
         expect(link.length).toEqual(4);
         expect(logoLarge.length).toEqual(1);
         expect(logoSmall.length).toEqual(0);
+    });
+
+    it("Renders the header component without login signup buttons", () => {
+
+        const wrapper = setupComponent({component: <HeaderContainer withButtons={false} />,
+                                        overrides: state}),
+              buttons = wrapper.find('div.buttons');
+
+        expect(buttons.length).toEqual(0);
     });
 
     const smallState = {
@@ -41,7 +52,7 @@ describe("Header Component", () => {
 
     it("Renders the header component - small", () => {
 
-        const wrapper = setupComponent({component: <HeaderContainer />,
+        const wrapper = setupComponent({component: <HeaderContainer withButtons={true} />,
                                         overrides: smallState}),
               link = wrapper.find('a.nav-link'),
               logoLarge = wrapper.find('div#eduid-logo-large'),

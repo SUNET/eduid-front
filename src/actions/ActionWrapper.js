@@ -1,37 +1,20 @@
 
-export const GET_CODE_STATUS = 'GET_CODE_STATUS';
-export const GET_CODE_STATUS_FAIL = 'GET_CODE_STATUS_FAIL';
 export const APP_LOADED = 'APP_LOADED';
 export const APP_LOADING = 'APP_LOADING';
 export const APP_FETCHING = 'APP_FETCHING';
 export const RESIZE_WINDOW = 'RESIZE_WINDOW';
 export const RESIZE_TIMEOUT = 'RESIZE_TIMEOUT';
-
-export const GET_SIGNUP_CONFIG = 'GET_SIGNUP_CONFIG';
-export const GET_SIGNUP_CONFIG_SUCCESS = 'GET_SIGNUP_CONFIG_SUCCESS';
-export const GET_SIGNUP_CONFIG_FAIL = 'GET_SIGNUP_CONFIG_FAIL';
 export const NEW_CSRF_TOKEN = 'NEW_CSRF_TOKEN';
+export const REDIRECT = 'REDIRECT';
 
+export const GET_ACTIONS_CONFIG = 'GET_ACTIONS_CONFIG';
+export const GET_ACTIONS_CONFIG_SUCCESS = 'GET_ACTIONS_CONFIG_SUCCESS';
+export const GET_ACTIONS_CONFIG_FAIL = 'GET_ACTIONS_CONFIG_FAIL';
 
-export function getCodeStatus (code) {
-    return {
-        type: GET_CODE_STATUS,
-        payload: {
-            code: code
-        }            
-    };
-}
+export const POST_ACTIONS_ACTION = 'POST_ACTIONS_ACTION';
+export const POST_ACTIONS_ACTION_SUCCESS = 'POST_ACTIONS_POST_ACTION_SUCCESS';
+export const POST_ACTIONS_ACTION_FAIL = 'POST_ACTIONS_POST_ACTION_FAIL';
 
-export function getCodeStatusFail (err) {
-    return {
-        type: GET_CODE_STATUS_FAIL,
-        error: true,
-        payload: {
-            error: err,
-            message: err
-        }
-    };
-}
 
 export function appLoaded () {
   return {
@@ -69,15 +52,33 @@ export function resizeWindow (testing=false) {
     };
 }
 
+export function newCsrfToken(token) {
+    return {
+        type: NEW_CSRF_TOKEN,
+        payload: {
+            csrf_token: token
+        }
+    };
+}
+
+export function redirect(path) {
+    return {
+        type: REDIRECT,
+        payload: {
+            path: path
+        }
+    };
+}
+
 export function getConfig () {
   return {
-    type: GET_SIGNUP_CONFIG
+    type: GET_ACTIONS_CONFIG
   };
 }
 
 export function getConfigFail (err) {
   return {
-    type: GET_SIGNUP_CONFIG_FAIL,
+    type: GET_ACTIONS_CONFIG_FAIL,
     error: true,
     payload: {
       error: err,
@@ -86,13 +87,21 @@ export function getConfigFail (err) {
   };
 }
 
-export function newCsrfToken(token) {
-    return {
-        type: NEW_CSRF_TOKEN,
-        payload: {
-            csrf_token: token
-        }
-    };
+export function postAction () {
+  return {
+    type: POST_ACTIONS_ACTION
+  };
+}
+
+export function postActionFail (err) {
+  return {
+    type: POST_ACTIONS_ACTION_FAIL,
+    error: true,
+    payload: {
+      error: err,
+      message: err
+    }
+  };
 }
 
 /* Helper functions */
@@ -110,3 +119,4 @@ export function getWindowSize(testing=false) {
     }
     return 'lg';
 }
+

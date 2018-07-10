@@ -24,10 +24,20 @@ const configData = {
 
 let mainReducer = (state=configData, action) => {
   switch (action.type) {
+    case actions.APP_LOADING:
+      return {
+          ...state, 
+          is_app_loaded: false
+      };
     case actions.APP_LOADED:
       return {
           ...state, 
           is_app_loaded: true
+      };
+    case actions.APP_FETCHING:
+      return {
+          ...state, 
+          is_fetching: true
       };
     case actions.GET_CODE_STATUS:
       return {

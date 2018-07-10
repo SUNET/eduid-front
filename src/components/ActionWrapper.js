@@ -6,15 +6,9 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter } from 'react-router-redux';
 
 import SplashContainer from "containers/Splash";
+import NotificationsContainer from "containers/Notifications";
 import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
-import EmailContainer from "containers/Email";
-import AccountCreatedContainer from "containers/AccountCreated";
-import CodeVerifiedContainer from "containers/CodeVerified";
-import ResendCodeContainer from "containers/ResendCode";
-import CaptchaContainer from "containers/Captcha";
-import NotificationsContainer from 'containers/Notifications';
-import EmailInUseContainer from "containers/EmailInUse";
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'style/Main.scss';
@@ -27,7 +21,7 @@ export const FetchingContext = React.createContext({
     setFetching: () => {}
 });
 
-class Main extends Component {
+class ActionWrapper extends Component {
 
     constructor(props) {
         super(props);
@@ -53,23 +47,11 @@ class Main extends Component {
 
     render () {
 
-        let redirect = `${BASE_PATH}/email`;
-
-        if (this.props.email) {
-            if (this.props.captcha) {
-                if (this.props.code) {
-                } else {
-                }
-            } else {
-                redirect = `${BASE_PATH}/trycaptcha`;
-            }
-        }
-
         return (
             <FetchingContext.Provider value={this.state}>
                 <SplashContainer />
                 <div className="container-fluid">
-                    <HeaderContainer withButtons={true} />
+                    <HeaderContainer withButtons={false} />
                     <ConnectedRouter history={history}>
                         <div  className="jumbotron">
                             <div className="row">
@@ -79,13 +61,8 @@ class Main extends Component {
                                 </div>
                                 <div className="col-lg-2"></div>
                             </div>
-                            <Route exact path={`${BASE_PATH}`} component={() => (<Redirect to={redirect} />)} />
-                            <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
-                            <Route path={`${BASE_PATH}/trycaptcha`} component={CaptchaContainer} />
-                            <Route path={`${BASE_PATH}/new`} component={AccountCreatedContainer} />
-                            <Route path={`${BASE_PATH}/code-verified`} component={CodeVerifiedContainer} />
-                            <Route path={`${BASE_PATH}/resend-code`} component={ResendCodeContainer} />
-                            <Route path={`${BASE_PATH}/address-used`} component={EmailInUseContainer} />
+                            <Route exact path={`${BASE_PATH}`} component={() => (<Redirect to={this.props.redirect} />)} />
+                            {this.props.children}
                         </div>
                     </ConnectedRouter>
                     <FooterContainer />
@@ -95,10 +72,12 @@ class Main extends Component {
     }
 }
 
-Main.propTypes = {
+ActionWrapper.propTypes = {
     handleWindowSizeChange: PropTypes.func,
+    redirect: PropTypes.string,
     resize_timeout: PropTypes.number,
     is_fetching: PropTypes.bool
 }
 
-export default Main;
+export default ActionWrapper;
+
