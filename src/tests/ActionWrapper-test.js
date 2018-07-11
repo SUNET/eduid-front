@@ -42,6 +42,8 @@ const fakeState = {
             'en': en,
             'sv': sv
         }
+    },
+    plugin: {
     }
 };
 
