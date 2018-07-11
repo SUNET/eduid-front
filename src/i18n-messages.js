@@ -168,6 +168,11 @@ const msgs = {
             id="tou.accept"
             defaultMessage={`Accept`} />),
 
+    'tou.must-accept': (
+        <FormattedMessage
+            id="tou.must-accept"
+            defaultMessage={`You must accept the new terms of use before continuing`} />),
+
     'header.student': (
         <FormattedMessage
             id="header.student"

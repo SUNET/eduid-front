@@ -64,6 +64,10 @@
     "defaultMessage": "Accept"
   },
   {
+    "id": "tou.must-accept",
+    "defaultMessage": "You must accept the new terms of use before continuing"
+  },
+  {
     "id": "header.student",
     "defaultMessage": "STUDENT"
   },
