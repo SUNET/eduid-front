@@ -68,16 +68,31 @@ export const fakeStore = (state) => ({
     getState: () => ({ ...state })
 });
 
-export function setupComponent({component, overrides, store}={}) {
-    if (store === undefined) {
-        if (overrides===undefined) {overrides = {}}
-        store = fakeStore(getState(overrides));
+export function genSetupComponent(pluginState) {
+    const setupComponent = function ({component, overrides, store}={}) {
+        if (store === undefined) {
+            if (overrides===undefined) {overrides = {}}
+            if (pluginState !== undefined) {
+                if (overrides.plugin === undefined) {
+                    overrides.plugin = pluginState;
+                } else {
+                    overrides.plugin = {
+                        ...pluginState,
+                        ...overrides.plugin
+                    };
+                }
+            }
+            store = fakeStore(getState(overrides));
+        }
+        const wrapper = mount(<Provider store={ store }>
+                                  {component}
+                              </Provider>);
+        return wrapper;
     }
-    const wrapper = mount(<Provider store={ store }>
-                              {component}
-                          </Provider>);
-    return wrapper;
+    return setupComponent;
 }
+
+export const setupComponent = genSetupComponent();
 
 describe("ActionWrapper Component", () => {
 
