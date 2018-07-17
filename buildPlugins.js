@@ -40,11 +40,11 @@ const webpackConfig = require('./webpack.config.js');
 
 var pluginName = "${plugin}";
 
-const initialConfigPlugin = require('./plugins/' + pluginName + '/js/init-config').initialConfigPlugin;
+const initialConfigPlugin = require('./plugins/' + pluginName + '/init-config').initialConfigPlugin;
 
-webpackConfig.entry[pluginName] = './plugins/' + pluginName + '/js/index.js';
+webpackConfig.entry[pluginName] = './plugins/' + pluginName + '/index.js';
 
-webpackConfig.resolve.modules.push(path.resolve(__dirname, 'plugins/' + pluginName + '/js'));
+webpackConfig.resolve.modules.push(path.resolve(__dirname, 'plugins/' + pluginName));
 
 webpackConfig.plugins.unshift(initialConfigPlugin);
 
