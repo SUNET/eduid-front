@@ -28,7 +28,7 @@ class Notifications extends Component {
         if (err.vals !== null) {
             err_msg = err_msg(err.vals);
         }
-        if (!this.props.debug && err_msg.indexOf('UNKNOWN MESSAGE ID (') !== -1) {
+        if (!this.props.debug && err_msg.indexOf !== undefined && err_msg.indexOf('UNKNOWN MESSAGE ID (') !== -1) {
             err_msg = this.props.l10n('unexpected-problem');
         }
         return (<Alert key={index}
@@ -47,7 +47,7 @@ class Notifications extends Component {
             if (msg.vals !== null) {
                 success_msg = success_msg(msg.vals);
             }
-            if (!this.props.debug && success_msg.indexOf('UNKNOWN MESSAGE ID (') !== -1) {
+            if (!this.props.debug && success_msg.indexOf !== undefined && success_msg.indexOf('UNKNOWN MESSAGE ID (') !== -1) {
                 success_msg = this.props.l10n('unexpected-success');
             }
             return (<Alert key={index}
@@ -64,7 +64,7 @@ class Notifications extends Component {
             if (warning.vals !== null) {
                 warn = warn(warning.vals);
             }
-            if (!this.props.debug && warn.indexOf('UNKNOWN MESSAGE ID (') !== -1) {
+            if (!this.props.debug && warn.indexOf !== undefined && warn.indexOf('UNKNOWN MESSAGE ID (') !== -1) {
                 return '';
             }
             return (<Alert key={index}
