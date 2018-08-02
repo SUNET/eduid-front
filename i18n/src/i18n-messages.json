@@ -172,6 +172,22 @@
     "defaultMessage": "RESET YOUR PASSWORD"
   },
   {
+    "id": "mfa.two-factor-authn",
+    "defaultMessage": "Two-factor authentication"
+  },
+  {
+    "id": "mfa.extra-security-enabled",
+    "defaultMessage": "Extra security enabled for this account"
+  },
+  {
+    "id": "mfa.login-tapit",
+    "defaultMessage": "Use your Security Key to log in. If it has a button, tap it"
+  },
+  {
+    "id": "mfa.fake-authn",
+    "defaultMessage": "Fake authn while testing"
+  },
+  {
     "id": "created.email-sent",
     "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
   },

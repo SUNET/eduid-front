@@ -303,6 +303,26 @@ const msgs = {
             id="used.reset-password"
             defaultMessage={`RESET YOUR PASSWORD`} />),
 
+    'mfa.two-factor-authn': (
+        <FormattedMessage
+            id="mfa.two-factor-authn"
+            defaultMessage={`Two-factor authentication`} />),
+
+    'mfa.extra-security-enabled': (
+        <FormattedMessage
+            id="mfa.extra-security-enabled"
+            defaultMessage={`Extra security enabled for this account`} />),
+
+    'mfa.login-tapit': (
+        <FormattedMessage
+            id="mfa.login-tapit"
+            defaultMessage={`Use your Security Key to log in. If it has a button, tap it`} />),
+
+    'mfa.fake-authn': (
+        <FormattedMessage
+            id="mfa.fake-authn"
+            defaultMessage={`Fake authn while testing`} />),
+
 // messages with parameters
 
     'created.email-sent': (values) => (
