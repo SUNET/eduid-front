@@ -22,7 +22,7 @@ module.exports = {
     },
     output: {
       path: path.join(__dirname, 'build'),
-      publicPath: 'http://html.eduid.docker/static/build/',
+      publicPath: 'https://dashboard.eduid.local.emergya.info/static/build/',
       filename: '[name]-bundle.dev.js'
     },
     devtool: 'source-map',
@@ -79,6 +79,10 @@ module.exports = {
         {
           test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
           loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+        },
+        { 
+          test: /\.gif$/,
+          loader: "file-loader"
         }
       ]
     },

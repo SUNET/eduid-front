@@ -1,2 +1,8 @@
 
-// SASS
+@import '../../src/variables.scss';
+
+div.key-animation {
+    height: 100%;
+    background-color: $background-color;
+    background-image:url(../../img/computer_animation.gif);
+}

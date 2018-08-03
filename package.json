@@ -47,6 +47,7 @@
     "@fortawesome/react-fontawesome": "0.0.20",
     "@pisano/enzyme": "^3.3.0-pisano.public.1",
     "@pisano/enzyme-adapter-react-16": "^1.1.1-pisano.public.1",
+    "animation-loader": "0.0.5",
     "bootstrap": "^4.1.0",
     "intl": "^1.2.5",
     "invariant": "^2.2.4",

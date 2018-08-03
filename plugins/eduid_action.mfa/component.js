@@ -9,6 +9,7 @@ import ActionWrapperContainer from "containers/ActionWrapper";
 
 import './style.scss';
 
+const img = require('../../img/computer_animation.gif');
 
 class Main extends Component {
 
@@ -28,13 +29,15 @@ class Main extends Component {
 
         return (
             <ActionWrapperContainer>
-              <div className="row col-xs-12 center-block">
+              <div className="row col-xs-12 text-center">
                 <div className="page-header col-xs-8 col-xs-offset-2">
                   <div className="u2f-title">
                     <h2>{this.props.l10n('mfa.two-factor-authn')} </h2>
                   </div>
                   <div className="u2f-subtitle">
                     <h3>{this.props.l10n('mfa.extra-security-enabled')}</h3>
+                  </div>
+                  <div className="key-animation">
                   </div>
                   <div>
                     <p className="lead u2f-text"><strong>{this.props.l10n('mfa.login-tapit')}</strong></p>
