@@ -98,6 +98,11 @@ const msgs = {
             id="error_in_form"
             defaultMessage={`Check the form below for errors.`} />),
 
+    'unexpected-problem': (
+        <FormattedMessage
+            id="unexpected-problem"
+            defaultMessage={`There was an unexpected problem, please contact the site administrators.`} />),
+
     'main.welcome': (
         <FormattedMessage
             id="main.welcome"
@@ -172,6 +177,11 @@ const msgs = {
         <FormattedMessage
             id="tou.must-accept"
             defaultMessage={`You must accept the new terms of use before continuing`} />),
+
+    'tou.not-tou': (
+        <FormattedMessage
+            id="tou.not-tou"
+            defaultMessage={`There were problems retrieving the current ToU, please contact the site administrators.`} />),
 
     'header.student': (
         <FormattedMessage
