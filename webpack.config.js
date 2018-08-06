@@ -22,7 +22,7 @@ module.exports = {
     },
     output: {
       path: path.join(__dirname, 'build'),
-      publicPath: 'https://dashboard.eduid.local.emergya.info/static/build/',
+      publicPath: 'https://dashboard.eduid.local.emergya.info/static/front-build/',
       filename: '[name]-bundle.dev.js'
     },
     devtool: 'source-map',
@@ -82,7 +82,7 @@ module.exports = {
         },
         { 
           test: /\.gif$/,
-          loader: "file-loader"
+          loader: 'file-loader'
         }
       ]
     },
