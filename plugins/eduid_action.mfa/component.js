@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { sign } from 'u2f-api';
 
 import i18n from 'i18n-messages';
 import { appFetching, postAction } from "actions/ActionWrapper";
@@ -13,8 +14,11 @@ const img = require('../../img/computer_animation.gif');
 
 class Main extends Component {
 
-    render () {
+    componentDidUpdate () {
+        this.props.signU2FData.bind(this)();
+    }
 
+    render () {
         let button = '';
         if (this.props.testing) {
             button = (<div id="tou-form-buttons" className="form-group">
@@ -57,17 +61,38 @@ class Main extends Component {
 Main.propTypes = {
     testing: PropTypes.bool,
     u2fdata: PropTypes.string,
-    l10n: PropTypes.func
+    l10n: PropTypes.func,
+    signU2FData: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => {
     return {
-        testing: state.main.testing
+        testing: state.main.testing,
+        u2fdata: state.main.u2fdata
     }
 };
 
+export const U2FDATA_SIGNED = "U2FDATA_SIGNED";
+
+const u2fSigned = (data) => ({
+    type: U2FDATA_SIGNED,
+    payload: {
+        data: data
+    }
+});
+
 const mapDispatchToProps = (dispatch, props) => {
     return {
+        signU2FData: function () {
+            let u2fdata = this.props.u2fdata;
+            if (u2fdata) {
+                u2fdata = JSON.parse(u2fdata);
+                console.log("sign: ", u2fdata);
+                sign(u2fdata);
+            } else {
+                console.log("U2F data not available yet");
+            }
+        }
     }
 };
 
