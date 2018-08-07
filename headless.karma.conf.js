@@ -90,6 +90,11 @@ webpackKarma.module.rules = [
     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
     use: {loader: "file-loader"},
     enforce: 'pre'
+  },
+  { 
+    test: /\.gif$/,
+    use: {loader: "file-loader"},
+    enforce: 'pre'
   }
 ];
 
