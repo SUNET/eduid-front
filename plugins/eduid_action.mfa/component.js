@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { sign } from 'u2f-api';
 
 import i18n from 'i18n-messages';
-import { appFetching, postAction } from "actions/ActionWrapper";
+import { appFetching, postAction, postActionFail } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
 
 import './style.scss';
@@ -35,7 +35,7 @@ class Main extends Component {
             <ActionWrapperContainer>
               <div className="col-xs-12 text-center">
                 <div className="u2f-title">
-                  <h2>{this.props.l10n('mfa.two-factor-authn')} </h2>
+                  <h2>{this.props.l10n('mfa.two-factor-authn')}</h2>
                 </div>
                 <div className="u2f-subtitle">
                   <h3>{this.props.l10n('mfa.extra-security-enabled')}</h3>
@@ -86,12 +86,16 @@ const mapDispatchToProps = (dispatch, props) => {
         signU2FData: function () {
             let u2fdata = this.props.u2fdata;
             if (u2fdata) {
-                u2fdata = JSON.parse(u2fdata);
-                console.log("sign: ", u2fdata);
-                sign(u2fdata, 5000)
-                .then( (data) => {
-                    dispatch(u2fSigned(data));
-                });
+                try {
+                    u2fdata = JSON.parse(u2fdata);
+                    console.log("sign: ", u2fdata);
+                    sign(u2fdata, 10000)
+                    .then( (data) => {
+                        dispatch(u2fSigned(data));
+                    });
+                } catch(error) {
+                    dispatch(postActionFail(error.toString()));
+                }
             } else {
                 console.log("U2F data not available yet");
             }
