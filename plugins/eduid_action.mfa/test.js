@@ -11,6 +11,7 @@ import MainContainer from "./component";
 import { actionReducer } from "./store";
 import * as actions from "actions/ActionWrapper";
 import { U2FDATA_SIGNED } from "./component";
+import { postTokenResponse, requestPostTokenResponse } from "./root-saga";
 
 const pluginState = {
     token_response: {}
@@ -71,7 +72,34 @@ describe("Some action reducer", () => {
 
 describe("Some plugin async actions", () => {
 
-    it("Tests some saga", () => {
+    it("Tests post U2F response saga", () => {
 
+        const state = getState({
+            main: {
+                csrf_token: 'dummy-token'
+            },
+            plugin: {
+                token_response: "dummy response"
+            }
+        });
+        const data = {
+            tokenResponse: state.plugin.token_response,
+            csrf_token: state.main.csrf_token,
+        };
+        const generator = postTokenResponse();
+        generator.next();
+        let resp = generator.next(state);
+        expect(resp.value).toEqual(call(requestPostTokenResponse, data));
+
+        const action = {
+            type: actions.POST_ACTIONS_ACTION_SUCCESS,
+            payload: {
+                csrf_token: 'csrf-token'
+            }
+        };
+        generator.next(action);
+        delete action.payload.csrf_token;
+        resp = generator.next();
+        expect(resp.value).toEqual(put(action));
     });
 });
