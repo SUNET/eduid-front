@@ -7,16 +7,20 @@ import actionWrapperReducer from 'reducers/ActionWrapper';
 import notificationsReducer from 'reducers/Notifications';
 
 import * as actions from "actions/ActionWrapper";
+import { U2FDATA_SIGNED } from "./component";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const actionData = {
-    // central state particular for this plugin, kept under state.plugin
+    token_response: {}
 };
 
 export const actionReducer = (state=actionData, action) => {
   switch (action.type) {
-    // modify the central state according to the particular actions defined in
-    // this plugin.
+    case U2FDATA_SIGNED:
+      return {
+          ...state,
+          token_response: action.payload.data
+      };
     default:
       return state;
   }

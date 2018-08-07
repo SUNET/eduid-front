@@ -88,7 +88,10 @@ const mapDispatchToProps = (dispatch, props) => {
             if (u2fdata) {
                 u2fdata = JSON.parse(u2fdata);
                 console.log("sign: ", u2fdata);
-                sign(u2fdata);
+                sign(u2fdata, 5000)
+                .then( (data) => {
+                    dispatch(u2fSigned(data));
+                });
             } else {
                 console.log("U2F data not available yet");
             }
