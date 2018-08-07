@@ -10,9 +10,10 @@ import { genSetupComponent, getState } from "tests/ActionWrapper-test";
 import MainContainer from "./component";
 import { actionReducer } from "./store";
 import * as actions from "actions/ActionWrapper";
+import { U2FDATA_SIGNED } from "./component";
 
 const pluginState = {
-    // central state.plugin for testing
+    token_response: {}
 };
 
 const setupComponent = genSetupComponent(pluginState);
@@ -28,12 +29,24 @@ describe("Some Component", () => {
     });
 
     it("Renders", () => {
+        const wrapper = setupComponent({component: <MainContainer />}),
+              splash = wrapper.find('div#eduid-splash-screen'),
+              title = wrapper.find('div.u2f-title'),
+              subtitle = wrapper.find('div.u2f-subtitle'),
+              animation = wrapper.find('div.key-animation');
+
+        expect(splash.length).toEqual(0);
+        expect(title.length).toEqual(1);
+        expect(subtitle.length).toEqual(1);
+        expect(animation.length).toEqual(1);
+        expect(title.text()).toEqual('Two-factor authentication');
     });
 });
 
 describe("Some action reducer", () => {
 
     const mockState = {
+        token_response: ''
     };
 
     it("Receives plugin config loaded action", () => {
@@ -41,16 +54,16 @@ describe("Some action reducer", () => {
             actionReducer(
                 mockState,
                 {
-                    type: actions.GET_ACTIONS_CONFIG_SUCCESS,
+                    type: "U2FDATA_SIGNED",
                     payload: {
-                        // some payload
+                        data: 'dummy response'
                     }
                 }
             )
         ).toEqual(
           {
               ...mockState,
-              // whatever the payload is reduced to
+              token_response: 'dummy response'
           }
         );
     });
