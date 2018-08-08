@@ -423,7 +423,7 @@ describe("ActionWrapper reducer", () => {
     });
 });
 
-window.ACTIONS_SERVICE_URL = "/services/actions/";
+window.ACTIONS_SERVICE_URL = "/services/actions2/";
 
 describe("ActionWrapper async actions", () => {
 
