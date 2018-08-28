@@ -1,0 +1,16 @@
+
+@import '../../src/variables.scss';
+
+div.key-animation {
+    height: 150px;
+    background-image:url(../../img/computer_animation.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@media only screen and (min-width: 992px) {
+    div.key-animation {
+        height: 200px;
+    }
+}

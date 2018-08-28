@@ -98,6 +98,11 @@ const msgs = {
             id="error_in_form"
             defaultMessage={`Check the form below for errors.`} />),
 
+    'unexpected-problem': (
+        <FormattedMessage
+            id="unexpected-problem"
+            defaultMessage={`There was an unexpected problem, please contact the site administrators.`} />),
+
     'main.welcome': (
         <FormattedMessage
             id="main.welcome"
@@ -172,6 +177,11 @@ const msgs = {
         <FormattedMessage
             id="tou.must-accept"
             defaultMessage={`You must accept the new terms of use before continuing`} />),
+
+    'tou.not-tou': (
+        <FormattedMessage
+            id="tou.not-tou"
+            defaultMessage={`There were problems retrieving the current ToU, please contact the site administrators.`} />),
 
     'header.student': (
         <FormattedMessage
@@ -302,6 +312,26 @@ const msgs = {
         <FormattedMessage
             id="used.reset-password"
             defaultMessage={`RESET YOUR PASSWORD`} />),
+
+    'mfa.two-factor-authn': (
+        <FormattedMessage
+            id="mfa.two-factor-authn"
+            defaultMessage={`Two-factor authentication`} />),
+
+    'mfa.extra-security-enabled': (
+        <FormattedMessage
+            id="mfa.extra-security-enabled"
+            defaultMessage={`Extra security enabled for this account`} />),
+
+    'mfa.login-tapit': (
+        <FormattedMessage
+            id="mfa.login-tapit"
+            defaultMessage={`Use your Security Key to log in. If it has a button, tap it`} />),
+
+    'mfa.fake-authn': (
+        <FormattedMessage
+            id="mfa.fake-authn"
+            defaultMessage={`Fake authn while testing`} />),
 
 // messages with parameters
 

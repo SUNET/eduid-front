@@ -8,6 +8,10 @@
     "defaultMessage": "Check the form below for errors."
   },
   {
+    "id": "unexpected-problem",
+    "defaultMessage": "There was an unexpected problem, please contact the site administrators."
+  },
+  {
     "id": "main.welcome",
     "defaultMessage": "Welcome to eduID!"
   },
@@ -66,6 +70,10 @@
   {
     "id": "tou.must-accept",
     "defaultMessage": "You must accept the new terms of use before continuing"
+  },
+  {
+    "id": "tou.not-tou",
+    "defaultMessage": "There were problems retrieving the current ToU, please contact the site administrators."
   },
   {
     "id": "header.student",
@@ -170,6 +178,22 @@
   {
     "id": "used.reset-password",
     "defaultMessage": "RESET YOUR PASSWORD"
+  },
+  {
+    "id": "mfa.two-factor-authn",
+    "defaultMessage": "Two-factor authentication"
+  },
+  {
+    "id": "mfa.extra-security-enabled",
+    "defaultMessage": "Extra security enabled for this account"
+  },
+  {
+    "id": "mfa.login-tapit",
+    "defaultMessage": "Use your Security Key to log in. If it has a button, tap it"
+  },
+  {
+    "id": "mfa.fake-authn",
+    "defaultMessage": "Fake authn while testing"
   },
   {
     "id": "created.email-sent",
