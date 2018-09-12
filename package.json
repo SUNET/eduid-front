@@ -12,6 +12,8 @@
     "build-pro": "webpack --config webpack.prod.config.js --mode production",
     "manage:translations": "node ./translationRunner.js",
     "manage:plugins": "node ./buildPlugins.js",
+    "manage:plugins:staging": "node ./buildPlugins.staging.js",
+    "manage:plugins:pro": "node ./buildPlugins.prod.js",
     "serve": "webpack-dev-server --open"
   },
   "babel": {
