@@ -3,13 +3,13 @@ builders:
 build_in_docker:
   image: docker.sunet.se/sunet/docker-jenkins-node-job
 script:
-  - unset LD_LIBRARY_PATH
-  - node --version
-  - npm --version
-  - npm install
-  - npm run-script test-headless
-  - npm run build && npm run build-pro
-  - npm run manage:plugins && npm run manage:plugins:staging && npm run manage:plugins:pro
+  - "unset LD_LIBRARY_PATH"
+  - "node --version"
+  - "npm --version"
+  - "npm install"
+  - "npm run-script test-headless"
+  - "npm run build && npm run build-pro"
+  - "npm run manage:plugins && npm run manage:plugins:staging && npm run manage:plugins:pro"
 clean_workspace: true
 archive_artifacts:
   include: "build/*"
