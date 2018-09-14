@@ -20,7 +20,7 @@ delete webpackProd.devtool;
 
 webpackProd.output = {
   filename: '[name].js',
-  publicPath: 'https://www.eduid.se/static/build/',
+  publicPath: 'https://www.eduid.se/static/front-build/',
   path: path.join(__dirname, 'build')
 }
 

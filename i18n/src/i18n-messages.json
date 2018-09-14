@@ -12,6 +12,10 @@
     "defaultMessage": "There was an unexpected problem, please contact the site administrators."
   },
   {
+    "id": "unexpected-success",
+    "defaultMessage": "Success"
+  },
+  {
     "id": "main.welcome",
     "defaultMessage": "Welcome to eduID!"
   },
@@ -189,11 +193,15 @@
   },
   {
     "id": "mfa.login-tapit",
-    "defaultMessage": "Use your Security Key to log in. If it has a button, tap it"
+    "defaultMessage": "Use your Security Key to log in. If it has a button, tap it."
   },
   {
     "id": "mfa.fake-authn",
     "defaultMessage": "Fake authn while testing"
+  },
+  {
+    "id": "actions.action-completed",
+    "defaultMessage": "Success"
   },
   {
     "id": "created.email-sent",
