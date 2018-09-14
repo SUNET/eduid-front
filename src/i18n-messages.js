@@ -331,7 +331,7 @@ const msgs = {
     'mfa.login-tapit': (
         <FormattedMessage
             id="mfa.login-tapit"
-            defaultMessage={`Use your Security Key to log in. If it has a button, tap it`} />),
+            defaultMessage={`Use your Security Key to log in. If it has a button, tap it.`} />),
 
     'mfa.fake-authn': (
         <FormattedMessage
@@ -341,7 +341,7 @@ const msgs = {
     'actions.action-completed': (
         <FormattedMessage
             id="actions.action-completed"
-            defaultMessage={`The action has been completed successfully`} />),
+            defaultMessage={`Success`} />),
 
 // messages with parameters
 

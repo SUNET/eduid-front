@@ -193,7 +193,7 @@
   },
   {
     "id": "mfa.login-tapit",
-    "defaultMessage": "Use your Security Key to log in. If it has a button, tap it"
+    "defaultMessage": "Use your Security Key to log in. If it has a button, tap it."
   },
   {
     "id": "mfa.fake-authn",
@@ -201,7 +201,7 @@
   },
   {
     "id": "actions.action-completed",
-    "defaultMessage": "The action has been completed successfully"
+    "defaultMessage": "Success"
   },
   {
     "id": "created.email-sent",
