@@ -12,6 +12,10 @@
     "defaultMessage": "There was an unexpected problem, please contact the site administrators."
   },
   {
+    "id": "unexpected-success",
+    "defaultMessage": "Success"
+  },
+  {
     "id": "main.welcome",
     "defaultMessage": "Welcome to eduID!"
   },
@@ -194,6 +198,10 @@
   {
     "id": "mfa.fake-authn",
     "defaultMessage": "Fake authn while testing"
+  },
+  {
+    "id": "actions.action-completed",
+    "defaultMessage": "The action has been completed successfully"
   },
   {
     "id": "created.email-sent",

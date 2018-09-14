@@ -1,4 +1,5 @@
 {
+  "actions.action-completed": "The action has been completed successfully",
   "captcha.cancel": "Cancel",
   "captcha.one-step-left": "Only one more step left!",
   "captcha.submit": "Submit",
@@ -29,6 +30,10 @@
   "header.technician": "TECHNICIAN",
   "main.create-account": "Create an account for use with Swedish Universities.",
   "main.welcome": "Välkommen till eduID!",
+  "mfa.extra-security-enabled": "Extra security enabled for this account",
+  "mfa.fake-authn": "Fake authn while testing",
+  "mfa.login-tapit": "Use your Security Key to log in. If it has a button, tap it",
+  "mfa.two-factor-authn": "Two-factor authentication",
   "pd.choose-language": "Choose language",
   "required": "Required",
   "resend.button": "Resend verification email",
@@ -40,7 +45,11 @@
   "signup.verification-resent": "Verification email resent",
   "tou.accept": "Accept",
   "tou.header": "General rules for usage of user accounts at eduID.se",
+  "tou.must-accept": "You must accept the new terms of use before continuing",
+  "tou.not-tou": "There were problems retrieving the current ToU, please contact the site administrators.",
   "tou.reject": "Reject",
+  "unexpected-problem": "There was an unexpected problem, please contact the site administrators.",
+  "unexpected-success": "Success",
   "used.email-in-use": "Email address already in use",
   "used.forgot-password": "Forgot your password?",
   "used.reset-password": "RESET YOUR PASSWORD"

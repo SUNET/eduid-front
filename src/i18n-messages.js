@@ -103,6 +103,11 @@ const msgs = {
             id="unexpected-problem"
             defaultMessage={`There was an unexpected problem, please contact the site administrators.`} />),
 
+    'unexpected-success': (
+        <FormattedMessage
+            id="unexpected-success"
+            defaultMessage={`Success`} />),
+
     'main.welcome': (
         <FormattedMessage
             id="main.welcome"
@@ -332,6 +337,11 @@ const msgs = {
         <FormattedMessage
             id="mfa.fake-authn"
             defaultMessage={`Fake authn while testing`} />),
+
+    'actions.action-completed': (
+        <FormattedMessage
+            id="actions.action-completed"
+            defaultMessage={`The action has been completed successfully`} />),
 
 // messages with parameters
 
