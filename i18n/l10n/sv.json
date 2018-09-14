@@ -1,5 +1,5 @@
 {
-  "actions.action-completed": "The action has been completed successfully",
+  "actions.action-completed": "Success",
   "captcha.cancel": "Cancel",
   "captcha.one-step-left": "Only one more step left!",
   "captcha.submit": "Submit",
@@ -32,7 +32,7 @@
   "main.welcome": "Välkommen till eduID!",
   "mfa.extra-security-enabled": "Extra security enabled for this account",
   "mfa.fake-authn": "Fake authn while testing",
-  "mfa.login-tapit": "Use your Security Key to log in. If it has a button, tap it",
+  "mfa.login-tapit": "Use your Security Key to log in. If it has a button, tap it.",
   "mfa.two-factor-authn": "Two-factor authentication",
   "pd.choose-language": "Choose language",
   "required": "Required",
