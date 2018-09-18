@@ -21,8 +21,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 
 import eduIDApp from "./store";
 import notifyAndDispatch from "./notify-middleware";
-import { getConfig, getCodeStatus } from "actions/Main";
-import { history } from "components/Main";
+import { getConfig, getCodeStatus } from "actions/SignupMain";
+import { history } from "components/SignupMain";
 
 
 /* for redux dev tools */

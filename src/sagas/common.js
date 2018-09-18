@@ -1,4 +1,4 @@
-import { newCsrfToken } from "actions/Main";
+import { newCsrfToken } from "actions/SignupMain";
 
 
 export const checkStatus = function (response) {

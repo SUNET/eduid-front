@@ -2,7 +2,7 @@
 import React from 'react';
 import expect from "expect";
 
-import { setupComponent, fakeStore, getState } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import EmailContainer from "containers/Email";
 import * as actions from "actions/Email";
 import emailReducer from "reducers/Email";

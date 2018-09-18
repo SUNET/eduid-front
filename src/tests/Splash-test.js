@@ -5,7 +5,7 @@ import { Provider } from 'react-intl-redux';
 import { mount } from '@pisano/enzyme';
 import expect from "expect";
 
-import { setupComponent } from "tests/Main-test";
+import { setupComponent } from "tests/SignupMain-test";
 import SplashContainer from 'containers/Splash';
 
 

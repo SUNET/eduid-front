@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Email from 'components/Email';
 import * as actions from "actions/Email";
 import i18n from 'i18n-messages';
-import { history } from "components/Main";
+import { history } from "components/SignupMain";
 
 
 const mapStateToProps = (state, props) => {

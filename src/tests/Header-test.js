@@ -3,7 +3,7 @@ import React from 'react';
 import expect from "expect";
 
 import HeaderContainer from "containers/Header";
-import { setupComponent } from "tests/Main-test";
+import { setupComponent } from "tests/SignupMain-test";
 
 
 describe("Header Component", () => {

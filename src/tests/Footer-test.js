@@ -3,7 +3,7 @@ import React from 'react';
 import expect from "expect";
 
 import FooterContainer from "containers/Footer";
-import { setupComponent, fakeStore, getState } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 
 
 describe("Footer Component", () => {

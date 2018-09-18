@@ -17,7 +17,7 @@ import NotificationsContainer from 'containers/Notifications';
 import EmailInUseContainer from "containers/EmailInUse";
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'style/Main.scss';
+import 'style/SignupMain.scss';
 
 
 export const history = createHistory()
@@ -27,7 +27,7 @@ export const FetchingContext = React.createContext({
     setFetching: () => {}
 });
 
-class Main extends Component {
+class SignupMain extends Component {
 
     constructor(props) {
         super(props);
@@ -95,10 +95,10 @@ class Main extends Component {
     }
 }
 
-Main.propTypes = {
+SignupMain.propTypes = {
     handleWindowSizeChange: PropTypes.func,
     resize_timeout: PropTypes.number,
     is_fetching: PropTypes.bool
 }
 
-export default Main;
+export default SignupMain;

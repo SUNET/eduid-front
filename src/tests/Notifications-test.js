@@ -2,7 +2,7 @@
 import React from 'react';
 import expect from "expect";
 
-import { setupComponent, fakeStore, getState } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import NotificationsContainer from "containers/Notifications";
 import * as actions from "actions/Notifications";
 

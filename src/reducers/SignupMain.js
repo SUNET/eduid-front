@@ -1,5 +1,5 @@
 
-import * as actions from "actions/Main";
+import * as actions from "actions/SignupMain";
 import * as captchaActions from "actions/Captcha";
 import * as verifiedActions from "actions/CodeVerified";
 import * as resendActions from "actions/ResendCode";
@@ -22,7 +22,7 @@ const configData = {
     available_languages: {}
 };
 
-let mainReducer = (state=configData, action) => {
+let signupReducer = (state=configData, action) => {
   switch (action.type) {
     case actions.APP_LOADING:
       return {
@@ -123,4 +123,4 @@ let mainReducer = (state=configData, action) => {
   }
 };
 
-export default mainReducer;
+export default signupReducer;

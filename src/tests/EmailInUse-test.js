@@ -3,7 +3,7 @@ import React from 'react';
 import expect from "expect";
 
 import EmailInUseContainer from "containers/EmailInUse";
-import { setupComponent } from "tests/Main-test";
+import { setupComponent } from "tests/SignupMain-test";
 
 
 describe("EmailInUse Component", () => {

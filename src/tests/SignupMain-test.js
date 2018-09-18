@@ -6,14 +6,14 @@ import { mount } from '@pisano/enzyme';
 import expect from "expect";
 import { put, call, select } from "redux-saga/effects";
 
-import MainContainer from "containers/Main";
-import * as actions from "actions/Main";
+import SignupMainContainer from "containers/SignupMain";
+import * as signupActions from "actions/SignupMain";
 import * as captchaActions from "actions/Captcha";
 import * as verifiedActions from "actions/CodeVerified";
 import * as resendActions from "actions/ResendCode";
-import mainReducer from "reducers/Main";
+import signupReducer from "reducers/SignupMain";
 import { requestCodeStatus, fetchCodeStatus,
-         requestConfig, fetchConfig } from "sagas/Main";
+         requestConfig, fetchConfig } from "sagas/SignupMain";
 
 import { addLocaleData } from 'react-intl';
 
@@ -27,7 +27,7 @@ const fakeState = {
     main: {
         dashboard_url: '',
         resize_timeout: 0,
-        window_size: actions.getWindowSize(),
+        window_size: signupActions.getWindowSize(),
         csrf_token: '',
         recaptcha_public_key: '',
         captcha: '',
@@ -104,10 +104,10 @@ export function setupComponent({component, overrides, store}={}) {
     return wrapper;
 }
 
-describe("Main Component", () => {
+describe("SignupMain Component", () => {
 
     it("Renders the splash screen", () => {
-        const wrapper = setupComponent({component: <MainContainer />,
+        const wrapper = setupComponent({component: <SignupMainContainer />,
                                         overrides: {main: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen'),
               router = wrapper.find('ConnectedRouter'),
@@ -119,14 +119,14 @@ describe("Main Component", () => {
     });
 
     it("Doesn't Render the splash screen", () => {
-        const wrapper = setupComponent({component: <MainContainer />}),
+        const wrapper = setupComponent({component: <SignupMainContainer />}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(0);
     });
 
     it("Renders the email form", () => {
-        const wrapper = setupComponent({component: <MainContainer />}),
+        const wrapper = setupComponent({component: <SignupMainContainer />}),
               splash = wrapper.find('div#eduid-splash-screen'),
               router = wrapper.find('ConnectedRouter'),
               routes = wrapper.find('Route');
@@ -137,100 +137,100 @@ describe("Main Component", () => {
     });
 });
 
-describe("Main Actions", () => {
+describe("SignupMain Actions", () => {
 
     it("Should get code status ", () => {
         const expectedAction = {
-            type: actions.GET_CODE_STATUS,
+            type:signupActions.GET_CODE_STATUS,
             payload: {
                 code: 'dummy code'               
             }
         };
-        expect(actions.getCodeStatus('dummy code')).toEqual(expectedAction);
+        expect(signupActions.getCodeStatus('dummy code')).toEqual(expectedAction);
     });
 
     it("Should fail when trying to get the code status", () => {
         const err = new Error('Get code status error');
         const expectedAction = {
-            type: actions.GET_CODE_STATUS_FAIL,
+            type: signupActions.GET_CODE_STATUS_FAIL,
             error: true,
             payload: {
                 error: err,
                 message: err
             }
         };
-        expect(actions.getCodeStatusFail(err)).toEqual(expectedAction);
+        expect(signupActions.getCodeStatusFail(err)).toEqual(expectedAction);
     });
 
     it("Should signal the app has loaded", () => {
         const expectedAction = {
-            type: actions.APP_LOADED,
+            type: signupActions.APP_LOADED,
         };
-        expect(actions.appLoaded()).toEqual(expectedAction);
+        expect(signupActions.appLoaded()).toEqual(expectedAction);
     });
 
     it("Should signal the app is loading", () => {
         const expectedAction = {
-            type: actions.APP_LOADING,
+            type: signupActions.APP_LOADING,
         };
-        expect(actions.appLoading()).toEqual(expectedAction);
+        expect(signupActions.appLoading()).toEqual(expectedAction);
     });
 
     it("Should signal the app is fetching data", () => {
         const expectedAction = {
-            type: actions.APP_FETCHING,
+            type: signupActions.APP_FETCHING,
         };
-        expect(actions.appFetching()).toEqual(expectedAction);
+        expect(signupActions.appFetching()).toEqual(expectedAction);
     });
 
     it("Should timeout the resizing", () => {
       const expectedAction = {
-          type: actions.RESIZE_TIMEOUT,
+          type: signupActions.RESIZE_TIMEOUT,
           payload: {
               resize_timeout: 'dummy timeout'
           }
       };
-      expect(actions.resizeTimeout('dummy timeout')).toEqual(expectedAction);
+      expect(signupActions.resizeTimeout('dummy timeout')).toEqual(expectedAction);
     });
 
     it("Should resize the app", () => {
       const expectedAction = {
-          type: actions.RESIZE_WINDOW,
+          type: signupActions.RESIZE_WINDOW,
           payload: {
               window_size: 'dummy size'
           }
       };
-      expect(actions.resizeWindow(true)).toEqual(expectedAction);
+      expect(signupActions.resizeWindow(true)).toEqual(expectedAction);
     });
 
     it("Should get the config", () => {
         const expectedAction = {
-            type: actions.GET_SIGNUP_CONFIG,
+            type: signupActions.GET_SIGNUP_CONFIG,
         };
-        expect(actions.getConfig()).toEqual(expectedAction);
+        expect(signupActions.getConfig()).toEqual(expectedAction);
     });
 
     it("Should fail when trying to get the config", () => {
         const err = new Error('Get config error');
         const expectedAction = {
-            type: actions.GET_SIGNUP_CONFIG_FAIL,
+            type: signupActions.GET_SIGNUP_CONFIG_FAIL,
             error: true,
             payload: {
                 error: err,
                 message: err
             }
         };
-        expect(actions.getConfigFail(err)).toEqual(expectedAction);
+        expect(signupActions.getConfigFail(err)).toEqual(expectedAction);
     });
 
     it("Should store a new csrf token", () => {
         const expectedAction = {
-            type: actions.NEW_CSRF_TOKEN,
+            type: signupActions.NEW_CSRF_TOKEN,
             payload: {
                 csrf_token: 'dummy token'
             }
         };
-        expect(actions.newCsrfToken('dummy token')).toEqual(expectedAction);
+        expect(signupActions.newCsrfToken('dummy token')).toEqual(expectedAction);
     });
 });
 
@@ -241,7 +241,7 @@ describe("Get window size", () => {
         window.innerWidth = 500;
 
         expect(
-            actions.getWindowSize()
+            signupActions.getWindowSize()
         ).toEqual(
             'xs'
         );
@@ -249,7 +249,7 @@ describe("Get window size", () => {
         window.innerWidth = 800;
 
         expect(
-            actions.getWindowSize()
+            signupActions.getWindowSize()
         ).toEqual(
             'sm'
         );
@@ -257,7 +257,7 @@ describe("Get window size", () => {
         window.innerWidth = 1000;
 
         expect(
-            actions.getWindowSize()
+            signupActions.getWindowSize()
         ).toEqual(
             'md'
         );
@@ -265,14 +265,14 @@ describe("Get window size", () => {
         window.innerWidth = 1300;
 
         expect(
-            actions.getWindowSize()
+            signupActions.getWindowSize()
         ).toEqual(
             'lg'
         );
     });
 });
 
-describe("Main reducer", () => {
+describe("SignupMain reducer", () => {
 
     const mockState = {
         dashboard_url: '',
@@ -292,10 +292,10 @@ describe("Main reducer", () => {
 
     it("Receives app loaded action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
-                    type: actions.APP_LOADED,
+                    type: signupActions.APP_LOADED,
                 }
             )
         ).toEqual(
@@ -308,10 +308,10 @@ describe("Main reducer", () => {
 
     it("Receives get code status action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
-                    type: actions.GET_CODE_STATUS,
+                    type: signupActions.GET_CODE_STATUS,
                     payload: {
                         code: 'dummy code'
                     }
@@ -329,10 +329,10 @@ describe("Main reducer", () => {
     it("Receives get code status failed action", () => {
         const err = 'failed';
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
-                    type: actions.GET_CODE_STATUS_FAIL,
+                    type: signupActions.GET_CODE_STATUS_FAIL,
                     error: true,
                     payload: {
                         error: err,
@@ -350,10 +350,10 @@ describe("Main reducer", () => {
 
     it("Receives resize timeout action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
-                    type: actions.RESIZE_TIMEOUT,
+                    type: signupActions.RESIZE_TIMEOUT,
                         payload: {
                             resize_timeout: 'dummy timeout'
                         }
@@ -369,10 +369,10 @@ describe("Main reducer", () => {
 
     it("Receives resize action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
-                    type: actions.RESIZE_WINDOW,
+                    type: signupActions.RESIZE_WINDOW,
                         payload: {
                             window_size: 'dummy size'
                         }
@@ -388,10 +388,10 @@ describe("Main reducer", () => {
 
     it("Receives get config sucessful action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
-                    type: actions.GET_SIGNUP_CONFIG_SUCCESS,
+                    type: signupActions.GET_SIGNUP_CONFIG_SUCCESS,
                         payload: {
                             csrf_token: 'dummy token',
                             recaptcha_public_key: 'dummy public key',
@@ -425,10 +425,10 @@ describe("Main reducer", () => {
 
     it("Receives get config failure action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
-                    type: actions.NEW_CSRF_TOKEN,
+                    type: signupActions.NEW_CSRF_TOKEN,
                         payload: {
                             csrf_token: 'dummy token'
                         }
@@ -444,7 +444,7 @@ describe("Main reducer", () => {
 
     it("Receives post captcha action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
                     type: captchaActions.POST_SIGNUP_TRYCAPTCHA,
@@ -460,7 +460,7 @@ describe("Main reducer", () => {
 
     it("Receives post captcha success action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
                     type: captchaActions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
@@ -476,7 +476,7 @@ describe("Main reducer", () => {
 
     it("Receives post captcha failure action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
                     type: captchaActions.POST_SIGNUP_TRYCAPTCHA_FAIL
@@ -493,7 +493,7 @@ describe("Main reducer", () => {
 
     it("Receives verify link success action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
                     type: verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS,
@@ -509,7 +509,7 @@ describe("Main reducer", () => {
 
     it("Receives verify link failure action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
                     type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL
@@ -526,7 +526,7 @@ describe("Main reducer", () => {
 
     it("Receives resend code action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
                     type: resendActions.POST_SIGNUP_RESEND_VERIFICATION
@@ -542,7 +542,7 @@ describe("Main reducer", () => {
 
     it("Receives resend code success action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
                     type: resendActions.POST_SIGNUP_RESEND_VERIFICATION_SUCCESS
@@ -558,7 +558,7 @@ describe("Main reducer", () => {
 
     it("Receives resend code failure action", () => {
         expect(
-            mainReducer(
+            signupReducer(
                 mockState,
                 {
                     type: resendActions.POST_SIGNUP_RESEND_VERIFICATION_FAIL
@@ -574,7 +574,7 @@ describe("Main reducer", () => {
     });
 });
 
-describe("Main async actions", () => {
+describe("SignupMain async actions", () => {
 
     it("Tests the request config saga", () => {
 
@@ -589,16 +589,16 @@ describe("Main async actions", () => {
         expect(resp.value).toEqual(call(fetchConfig, url));
 
         const action = {
-            type: actions.GET_SIGNUP_CONFIG_SUCCESS,
+            type: signupActions.GET_SIGNUP_CONFIG_SUCCESS,
             payload: {
                 csrf_token: 'csrf-token'
             }
         };
         resp = generator.next(action);
-        expect(resp.value.PUT.action.type).toEqual(actions.GET_SIGNUP_CONFIG_SUCCESS);
+        expect(resp.value.PUT.action.type).toEqual(signupActions.GET_SIGNUP_CONFIG_SUCCESS);
         resp = generator.next();
         delete action.payload.csrf_token;
-        expect(resp.value).toEqual(put(actions.appLoaded()));
+        expect(resp.value).toEqual(put(signupActions.appLoaded()));
     });
 
     it("Tests the request code status saga", () => {
@@ -628,16 +628,16 @@ describe("Main async actions", () => {
         expect(resp.value).toEqual(call(fetchConfig, url2));
 
         const action2 = {
-            type: actions.GET_SIGNUP_CONFIG_SUCCESS,
+            type: signupActions.GET_SIGNUP_CONFIG_SUCCESS,
             payload: {
                 csrf_token: 'csrf-token'
             }
         };
         resp = generator.next(action2);
-        expect(resp.value.PUT.action.type).toEqual(actions.GET_SIGNUP_CONFIG_SUCCESS);
+        expect(resp.value.PUT.action.type).toEqual(signupActions.GET_SIGNUP_CONFIG_SUCCESS);
         resp = generator.next();
         delete action.payload.csrf_token;
-        expect(resp.value).toEqual(put(actions.appLoaded()));
+        expect(resp.value).toEqual(put(signupActions.appLoaded()));
 
         resp = generator.next();
         expect(resp.value.PUT.action.type).toEqual(verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS);

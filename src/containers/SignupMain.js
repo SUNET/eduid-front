@@ -2,8 +2,8 @@
 import { connect } from 'react-redux';
 
 import i18n from 'i18n-messages';
-import Main from 'components/Main';
-import * as actions from "actions/Main";
+import SignupMain from 'components/SignupMain';
+import * as actions from "actions/SignupMain";
 
 const mapStateToProps = (state, props) => {
     return {
@@ -32,9 +32,9 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 };
 
-const MainContainer = connect(
+const SignupMainContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main);
+)(SignupMain);
 
-export default i18n(MainContainer);
+export default i18n(SignupMainContainer);

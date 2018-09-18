@@ -4,7 +4,7 @@ import { ajaxHeaders, checkStatus, postRequest,
          putCsrfToken } from "sagas/common";
 
 import * as actions from "actions/Captcha";
-import { history } from "components/Main";
+import { history } from "components/SignupMain";
 
 
 export function* sendCaptcha () {

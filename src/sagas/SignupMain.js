@@ -2,8 +2,8 @@
 import { put, call, select } from "redux-saga/effects";
 import { ajaxHeaders, checkStatus, getRequest } from "sagas/common";
 
-import * as actions from "actions/Main";
-import { history } from "components/Main";
+import * as actions from "actions/SignupMain";
+import { history } from "components/SignupMain";
 import { eduidNotify } from "actions/Notifications";
 
 
