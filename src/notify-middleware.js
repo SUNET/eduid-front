@@ -9,7 +9,7 @@ const notifyAndDispatch = store => next => action => {
                 const msg = 'csrf.try-again';
                 next(actions.eduidNotify(msg, 'errors'));
             } else {
-                const msg = action.payload.errorMsg || action.payload.message || 'error_in_form';
+                const msg = action.payload.errorMsg || action.payload.message || 'unexpected-problem';
                 next(actions.eduidNotify(msg, 'errors'));
             }
             setTimeout( () => {window.scroll(0,0)}, 100)
