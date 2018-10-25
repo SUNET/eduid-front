@@ -8,12 +8,36 @@
     "defaultMessage": "Check the form below for errors."
   },
   {
+    "id": "Error: NOT FOUND",
+    "defaultMessage": "There was an error (404) servicing your request. The administrator has been alerted. Please try again later."
+  },
+  {
+    "id": "Error: Internal Server Error",
+    "defaultMessage": "There was an error (500) servicing your request. The administrator has been alerted. Please try again later."
+  },
+  {
+    "id": "Error: Service Unavailable",
+    "defaultMessage": "Service Unavailable. Check your internet connection."
+  },
+  {
     "id": "unexpected-problem",
-    "defaultMessage": "There was an unexpected problem, please contact the site administrators."
+    "defaultMessage": "There was an unexpected problem. Please try again."
+  },
+  {
+    "id": "Temporary technical problems",
+    "defaultMessage": "Temporary technical problems, please try again later"
+  },
+  {
+    "id": "user-out-of-sync",
+    "defaultMessage": "User data is out of sync. Reload page to re-sync."
   },
   {
     "id": "unexpected-success",
     "defaultMessage": "Success"
+  },
+  {
+    "id": "csrf.try-again",
+    "defaultMessage": "There was a problem with your submission, please try again"
   },
   {
     "id": "main.welcome",
@@ -58,6 +82,10 @@
   {
     "id": "created.confirm-registration",
     "defaultMessage": "Confirm registration"
+  },
+  {
+    "id": "created.back_to_signup",
+    "defaultMessage": "Back to signup"
   },
   {
     "id": "tou.header",
@@ -141,7 +169,7 @@
   },
   {
     "id": "resend.title",
-    "defaultMessage": "Email address already in use"
+    "defaultMessage": "Registration not complete"
   },
   {
     "id": "resend.subtitle",
@@ -165,6 +193,10 @@
   },
   {
     "id": "signup.verification-resent",
+    "defaultMessage": "Verification email resent"
+  },
+  {
+    "id": "signup.registering-resend-code",
     "defaultMessage": "Verification email resent"
   },
   {

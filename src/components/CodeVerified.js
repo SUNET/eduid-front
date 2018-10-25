@@ -54,7 +54,7 @@ class CodeVerified extends Component {
     } else {
         exits = ([
               <p key="0" className="lead">{this.props.l10n('finish.write-password')}</p>,
-              <pre className="pre-big text-center" key="1">{this.props.password}</pre>,
+              <pre className="pre-big text-center force-select-all" key="1"><mark>{this.props.password}</mark></pre>,
               <EduIDButton key="2"
                            id="gotit-button"
                            color="primary"
