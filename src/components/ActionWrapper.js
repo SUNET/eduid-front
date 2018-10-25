@@ -8,7 +8,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import SplashContainer from "containers/Splash";
 import NotificationsContainer from "containers/Notifications";
 import FooterContainer from "containers/Footer";
-import HeaderContainer from "containers/Header";
+import HeaderContainer from "containers/HeaderAnon";
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'style/SignupMain.scss';

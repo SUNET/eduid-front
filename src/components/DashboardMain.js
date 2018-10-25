@@ -156,14 +156,6 @@ class Main extends Component {
                     <div className="tab-content info-container col-md-8 col-md-offset-1">
                       <div className="tab-pane active">
                         <NotificationsContainer />
-                        // <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
-                        // <Route path="/profile/personaldata" component={PersonalDataContainer} />
-                        // <Route path="/profile/nins" component={NinsContainer} />
-                        // <Route path="/profile/emails" component={EmailsContainer} />
-                        // <Route path="/profile/phones" component={MobileContainer} />
-                        // <Route path="/profile/accountlinking" component={AccountLinkingContainer} />
-                        // <Route path="/profile/security" component={SecurityContainer} />
-                        // <Route path="/profile/chpass" component={ChangePasswordContainer} />
                       </div>
                     </div>
                     {profElem}

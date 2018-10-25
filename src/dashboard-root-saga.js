@@ -45,9 +45,9 @@ function* rootSaga() {
   yield [
     takeLatest(configActions.GET_JSCONFIG_CONFIG, requestConfig),
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSpaSaga),
-    takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
-    takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
-    takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),
+    // takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
+    // takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
+    // takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),
     // takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     // takeLatest(openidActions.SHOW_OIDC_SELEG_MODAL, sagasOpenid.checkNINAndShowSelegModal),
     // takeLatest(openidActions.POST_OIDC_PROOFING_PROOFING, sagasOpenid.requestOpenidQRcode),

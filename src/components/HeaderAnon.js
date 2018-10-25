@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
 
-import 'style/Header.scss';
+import 'style/HeaderAnon.scss';
 
 
 class Header extends Component {
