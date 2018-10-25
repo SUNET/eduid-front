@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Route, NavLink, Redirect } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter } from 'react-router-redux';
-import Collapse from 'react-bootstrap/lib/Collapse';
+import { Collapse } from 'reactstrap';
 
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
@@ -23,7 +23,7 @@ import ProfileFilledContainer from 'containers/ProfileFilled';
 import PendingActionsContainer from 'containers/PendingActions';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'style/base.scss';
+// import 'style/base.scss';
 import 'style/DashboardMain.scss';
 
 
@@ -122,7 +122,7 @@ class Main extends Component {
                            </a>
                          </div>
   
-                         <Collapse in={this.state.openTabs}>
+                         <Collapse isOpen={this.state.openTabs}>
                            <ul className="nav nav-stacked nav-tabs navbar-nav">
                             {tabsElems('main-nav-tabs btn btn-block')}
                            </ul>

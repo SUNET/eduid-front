@@ -1,7 +1,7 @@
 
 import { put, call } from "redux-saga/effects";
-import { ajaxHeaders, checkStatus, getRequest, failRequest } from "actions/common";
-import { getConfigFail } from "actions/Config";
+import { ajaxHeaders, checkStatus, getRequest, failRequest } from "sagas/common";
+import { getDashboardConfigFail } from "actions/DashboardConfig";
 
 
 export function* requestConfig () {

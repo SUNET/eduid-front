@@ -13,7 +13,7 @@ import ReactDOM from 'react-dom';
 import { routerMiddleware } from 'react-router-redux';
 
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './root-saga';
+import rootSaga from './signup-root-saga';
 import { createLogger } from 'redux-logger';
 import { Provider } from 'react-intl-redux'
 import { updateIntl } from 'react-intl-redux';

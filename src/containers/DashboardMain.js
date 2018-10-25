@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import i18n from 'i18n-messages';
 import Main from 'components/DashboardMain';
-import { resizeWindow } from "actions/Config";
+import { resizeWindow } from "actions/DashboardConfig";
 
 const mapStateToProps = (state, props) => {
     return {

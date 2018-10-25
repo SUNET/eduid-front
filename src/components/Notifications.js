@@ -54,8 +54,8 @@ class Notifications extends Component {
                            color="success"
                            data-level="messages"
                            data-index={index}
-													 isOpen={this.state.visible}
-													 toggle={this.onDismiss}>
+                           isOpen={this.state.visible}
+                           toggle={this.onDismiss}>
                        {success_msg}
                     </Alert>);
         });
@@ -71,8 +71,8 @@ class Notifications extends Component {
                            color="warning"
                            data-level="warnings"
                            data-index={index}
-													 isOpen={this.state.visible}
-													 toggle={this.onDismiss}>
+                           isOpen={this.state.visible}
+                           toggle={this.onDismiss}>
                        {warn}
                     </Alert>);
         }));

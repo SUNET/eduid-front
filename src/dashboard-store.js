@@ -4,7 +4,7 @@ import { intlReducer } from 'react-intl-redux'
 
 // import personalDataReducer from 'reducers/PersonalData';
 // import emailsReducer from 'reducers/Emails';
-import configReducer from 'reducers/Config';
+import configReducer from 'reducers/DashboardConfig';
 // import openidConnectReducer from 'reducers/OpenidConnect';
 // import lookupMobileProofingReducer from 'reducers/LookupMobileProofing';
 // import openidConnectFrejaReducer from 'reducers/OpenidConnectFreja';
