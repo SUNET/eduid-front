@@ -98,15 +98,45 @@ const msgs = {
             id="error_in_form"
             defaultMessage={`Check the form below for errors.`} />),
 
+    'Error: NOT FOUND': (
+        <FormattedMessage
+            id="Error: NOT FOUND"
+            defaultMessage={`There was an error (404) servicing your request. The administrator has been alerted. Please try again later.`} />),
+
+    'Error: Internal Server Error': (
+        <FormattedMessage
+            id="Error: Internal Server Error"
+            defaultMessage={`There was an error (500) servicing your request. The administrator has been alerted. Please try again later.`} />),
+
+    'Error: Service Unavailable': (
+        <FormattedMessage
+            id="Error: Service Unavailable"
+            defaultMessage={`Service Unavailable. Check your internet connection.`} />),
+
     'unexpected-problem': (
         <FormattedMessage
             id="unexpected-problem"
-            defaultMessage={`There was an unexpected problem, please contact the site administrators.`} />),
+            defaultMessage={`There was an unexpected problem. Please try again.`} />),
+
+    'Temporary technical problems': (
+        <FormattedMessage
+            id="Temporary technical problems"
+            defaultMessage={`Temporary technical problems, please try again later`} />),
+
+    'user-out-of-sync': (
+        <FormattedMessage
+            id="user-out-of-sync"
+            defaultMessage={`User data is out of sync. Reload page to re-sync.`} />),
 
     'unexpected-success': (
         <FormattedMessage
             id="unexpected-success"
             defaultMessage={`Success`} />),
+
+    'csrf.try-again': (
+        <FormattedMessage
+          id="csrf.try-again"
+          defaultMessage={`There was a problem with your submission, please try again`} />),
 
     'main.welcome': (
         <FormattedMessage
@@ -162,6 +192,11 @@ const msgs = {
         <FormattedMessage
             id="created.confirm-registration"
             defaultMessage={`Confirm registration`} />),
+
+    'created.back_to_signup': (
+        <FormattedMessage
+            id="created.back_to_signup"
+            defaultMessage={`Back to signup`} />),
 
     'tou.header': (
         <FormattedMessage
@@ -266,7 +301,7 @@ const msgs = {
     'resend.title': (
         <FormattedMessage
             id="resend.title"
-            defaultMessage={`Email address already in use`} />),
+            defaultMessage={`Registration not complete`} />),
 
     'resend.subtitle': (
         <FormattedMessage
@@ -296,6 +331,11 @@ const msgs = {
     'signup.verification-resent': (
         <FormattedMessage
             id="signup.verification-resent"
+            defaultMessage={`Verification email resent`} />),
+
+    'signup.registering-resend-code': (
+        <FormattedMessage
+            id="signup.registering-resend-code"
             defaultMessage={`Verification email resent`} />),
 
     'code.unknown-code': (

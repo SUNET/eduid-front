@@ -116,7 +116,7 @@ class Email extends Component {
       <div key="1" className="row text-center">
         <Modal isOpen={this.props.acceptingTOU}>
           <ModalHeader>{this.props.l10n('tou.header')}</ModalHeader>
-          <ModalBody>{this.props.tou}</ModalBody>
+          <ModalBody dangerouslySetInnerHTML={{__html: this.props.tou}}></ModalBody>
           <ModalFooter>
             <EduIDButton className="btn-danger eduid-button"
                          id="reject-tou-button"
