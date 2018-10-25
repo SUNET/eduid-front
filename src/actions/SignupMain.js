@@ -69,13 +69,13 @@ export function resizeWindow (testing=false) {
     };
 }
 
-export function getConfig () {
+export function getSignupConfig () {
   return {
     type: GET_SIGNUP_CONFIG
   };
 }
 
-export function getConfigFail (err) {
+export function getSignupConfigFail (err) {
   return {
     type: GET_SIGNUP_CONFIG_FAIL,
     error: true,

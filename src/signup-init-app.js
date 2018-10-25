@@ -19,9 +19,9 @@ import { Provider } from 'react-intl-redux'
 import { updateIntl } from 'react-intl-redux';
 import { createStore, applyMiddleware, compose } from "redux";
 
-import eduIDApp from "./store";
+import eduIDApp from "./signup-store";
 import notifyAndDispatch from "./notify-middleware";
-import { getConfig, getCodeStatus } from "actions/SignupMain";
+import { getSignupConfig, getCodeStatus } from "actions/SignupMain";
 import { history } from "components/SignupMain";
 
 
@@ -63,7 +63,7 @@ const initState = function () {
     if (code) {
         store.dispatch(getCodeStatus(code));
     } else {
-        store.dispatch(getConfig());
+        store.dispatch(getSignupConfig());
     }
 };
 
