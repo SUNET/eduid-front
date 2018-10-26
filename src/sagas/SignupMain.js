@@ -10,7 +10,7 @@ import { eduidNotify } from "actions/Notifications";
 export function* requestCodeStatus () {
     try {
         const state = yield select(state => state),
-              url = SIGNUP_SERVICE_URL + 'verify-link/' + state.main.code;
+              url = SIGNUP_SERVICE_URL + 'verify-link/' + state.config.code;
         const codeStatus = yield call(fetchCodeStatus, url);
         yield* requestConfig();
         if (codeStatus.payload.status === 'unknown-code') {

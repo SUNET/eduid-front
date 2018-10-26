@@ -9,7 +9,7 @@ import { setupComponent } from "tests/SignupMain-test";
 describe("Header Component", () => {
 
     const state = {
-        main: {
+        config: {
             dashboard_url: 'http://example.com',
             students_link: 'http://example.com/student',
             technicians_link: 'http://example.com',
@@ -44,8 +44,8 @@ describe("Header Component", () => {
     });
 
     const smallState = {
-        main: {
-            ...state.main,
+        config: {
+            ...state.config,
             window_size: 'xs'
         }
     };

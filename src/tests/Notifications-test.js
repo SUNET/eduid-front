@@ -10,7 +10,7 @@ import * as actions from "actions/Notifications";
 describe("Notifications Component", () => {
 
     const state = {
-        main: {
+        config: {
             debug: true
         },
         notifications: {
@@ -32,7 +32,7 @@ describe("Notifications Component", () => {
     });
 
     const prodState = {
-        main: {
+        config: {
           debug: false,
         },
         notifications: {
@@ -52,8 +52,8 @@ describe("Notifications Component", () => {
     });
 
     const warnState = {
-        main: {
-            ...state.main,
+        config: {
+            ...state.config,
         },
         notifications: {
             messages: [],
@@ -74,8 +74,8 @@ describe("Notifications Component", () => {
     });
 
     const errorState = {
-        main: {
-            ...state.main,
+        config: {
+            ...state.config,
         },
         notifications: {
             messages: [],

@@ -9,7 +9,7 @@ import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 describe("Footer Component", () => {
 
     const state = {
-        main: {
+        config: {
           is_app_loaded: true,
           available_languages: {
             en: 'English',
@@ -39,7 +39,7 @@ describe("Test footer Container", () => {
         dispatch;
 
     beforeEach(() => {
-        const store = fakeStore(getState({main: {
+        const store = fakeStore(getState({config: {
                                               is_app_loaded: true,
                                               available_languages: {
                                                   en: 'English',

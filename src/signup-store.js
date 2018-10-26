@@ -11,7 +11,7 @@ import verifiedReducer from "reducers/CodeVerified";
 import notificationsReducer from 'reducers/Notifications';
 
 const eduIDApp = combineReducers({
-    main: signupReducer,
+    config: signupReducer,
     email: emailReducer,
     captcha: captchaReducer,
     verified: verifiedReducer,

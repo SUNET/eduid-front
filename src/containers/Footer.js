@@ -9,9 +9,9 @@ import i18n from 'i18n-messages';
 
 const mapStateToProps = (state, props) => {
   return {
-    is_configured: state.main.is_app_loaded,
+    is_configured: state.config.is_app_loaded,
     language: state.intl.locale,
-    languages: state.main.available_languages
+    languages: state.config.available_languages
   }
 };
 

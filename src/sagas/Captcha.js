@@ -13,7 +13,7 @@ export function* sendCaptcha () {
               data = {
                 email: state.email.email,
                 recaptcha_response: state.captcha.captcha_verification,
-                csrf_token: state.main.csrf_token,
+                csrf_token: state.config.csrf_token,
                 tou_accepted: state.email.tou_accepted
               };
         const resp = yield call(requestSendCaptcha, data);

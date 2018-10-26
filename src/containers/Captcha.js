@@ -7,7 +7,7 @@ import i18n from 'i18n-messages';
 
 const mapStateToProps = (state, props) => {
   return {
-    recaptcha_key: state.main.recaptcha_public_key
+    recaptcha_key: state.config.recaptcha_public_key
   }
 };
 

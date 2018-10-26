@@ -24,7 +24,7 @@ addLocaleData([...en, ...sv])
 
 
 const fakeState = {
-    main: {
+    config: {
         dashboard_url: '',
         resize_timeout: 0,
         window_size: signupActions.getWindowSize(),
@@ -108,7 +108,7 @@ describe("SignupMain Component", () => {
 
     it("Renders the splash screen", () => {
         const wrapper = setupComponent({component: <SignupMainContainer />,
-                                        overrides: {main: {is_app_loaded: false}}}),
+                                        overrides: {config: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen'),
               router = wrapper.find('ConnectedRouter'),
               routes = wrapper.find('Route');
@@ -579,7 +579,7 @@ describe("SignupMain async actions", () => {
     it("Tests the request config saga", () => {
 
         const state = getState({
-            main: {
+            config: {
                 csrf_token: "dummy-token"
             }
         });
@@ -604,12 +604,12 @@ describe("SignupMain async actions", () => {
     it("Tests the request code status saga", () => {
 
         const state = getState({
-            main: {
+            config: {
                 csrf_token: "dummy-token",
                 code: 'dummy-code'
             }
         });
-        const url = SIGNUP_SERVICE_URL + 'verify-link/' + state.main.code;
+        const url = SIGNUP_SERVICE_URL + 'verify-link/' + state.config.code;
         const generator = requestCodeStatus();
         generator.next();
         let resp = generator.next(state);

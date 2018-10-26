@@ -7,9 +7,9 @@ import * as actions from "actions/ActionWrapper";
 
 const mapStateToProps = (state, props) => {
     return {
-        redirect: state.main.redirect,
-        resize_timeout: state.main.resize_timeout,
-        is_fetching: state.main.is_fetching
+        redirect: state.config.redirect,
+        resize_timeout: state.config.resize_timeout,
+        is_fetching: state.config.is_fetching
     }
 };
 

@@ -6,7 +6,7 @@ import EmailInUse from 'components/EmailInUse';
 
 const mapStateToProps = (state, props) => {
     return {
-        reset_url: state.main.reset_passwd_url,
+        reset_url: state.config.reset_passwd_url,
     }
 };
 

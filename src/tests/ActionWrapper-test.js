@@ -21,7 +21,7 @@ addLocaleData([...en, ...sv])
 
 
 const fakeState = {
-    main: {
+    config: {
         resize_timeout: 0,
         window_size: 'lg',
         csrf_token: '',
@@ -98,7 +98,7 @@ describe("ActionWrapper Component", () => {
 
     it("Renders the splash screen", () => {
         const wrapper = setupComponent({component: <ActionWrapperContainer />,
-                                        overrides: {main: {is_app_loaded: false}}}),
+                                        overrides: {config: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen'),
               router = wrapper.find('ConnectedRouter'),
               routes = wrapper.find('Route');
@@ -123,7 +123,7 @@ describe("ActionWrapper Component", () => {
                         //{button}
                       //</ActionWrapperContainer>),
               //params = {component: comp,
-                        //overrides: {main: {is_fetching: true}}},
+                        //overrides: {config: {is_fetching: true}}},
               //wrapper = setupComponent(params),
               //spinner = wrapper.find('div.spin-holder');
 
@@ -430,7 +430,7 @@ describe("ActionWrapper async actions", () => {
     it("Tests the request config saga", () => {
 
         const state = getState({
-            main: {
+            config: {
                 csrf_token: "dummy-token"
             }
         });
@@ -457,7 +457,7 @@ describe("ActionWrapper async actions", () => {
     it("Tests the request next action saga", () => {
 
         const state = getState({
-            main: {
+            config: {
                 csrf_token: "dummy-token"
             }
         });

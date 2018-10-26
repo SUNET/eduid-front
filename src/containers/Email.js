@@ -9,11 +9,11 @@ import { history } from "components/SignupMain";
 const mapStateToProps = (state, props) => {
     const lang = state.intl.locale;
     let tou = '';
-    if (state.main.tous !== undefined) {
-        tou = state.main.tous[lang];
+    if (state.config.tous !== undefined) {
+        tou = state.config.tous[lang];
     }
     return {
-        size: state.main.window_size,
+        size: state.config.window_size,
         acceptingTOU: state.email.acceptingTOU,
         tou: tou
     }

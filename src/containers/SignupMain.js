@@ -7,11 +7,11 @@ import * as actions from "actions/SignupMain";
 
 const mapStateToProps = (state, props) => {
     return {
-        resize_timeout: state.main.resize_timeout,
-        is_fetching: state.main.is_fetching,
-        code: state.main.code,
+        resize_timeout: state.config.resize_timeout,
+        is_fetching: state.config.is_fetching,
+        code: state.config.code,
         email: state.email.email,
-        captcha: state.main.captcha
+        captcha: state.config.captcha
     }
 };
 
