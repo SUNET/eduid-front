@@ -15,7 +15,7 @@ import configReducer from 'reducers/DashboardConfig';
 // import ninsReducer from 'reducers/Nins';
 // import letterProofingReducer from 'reducers/LetterProofing';
 import notificationsReducer from 'reducers/Notifications';
-// import profileReducer from 'reducers/Profile';
+import profileReducer from 'reducers/Profile';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
@@ -34,7 +34,7 @@ const eduIDApp = combineReducers({
   notifications: notificationsReducer,
   // account_linking: accountLinkingReducer,
   // security: securityReducer,
-  // profile: profileReducer,
+  profile: profileReducer,
   form: formReducer,
   intl: intlReducer
 });
