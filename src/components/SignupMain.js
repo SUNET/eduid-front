@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
-import HeaderContainer from "containers/Header";
+import HeaderContainer from "containers/HeaderAnon";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";

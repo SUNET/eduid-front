@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 import i18n from 'i18n-messages';
-import Header from 'components/Header';
+import Header from 'components/HeaderAnon';
 
 const mapStateToProps = (state, props) => {
     return {
