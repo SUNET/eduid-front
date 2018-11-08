@@ -25,7 +25,8 @@ class Header extends Component {
                          <div className="button orange">
                            <a onClick={this.props.gotoSignup}>{this.props.l10n('header.signup')}</a>
                          </div>
-                         <div className="button white-border">
+                         <div className="button white-border"
+                              data-dashboard_url={this.props.dashboard_url}>
                            <a onClick={this.props.gotoSignin}>{this.props.l10n('header.signin')}</a>
                          </div>
                        </div>);

@@ -8,8 +8,8 @@ var intl = require('intl');  // intl polyfill
 var babel = require("babel-polyfill");  // babel polyfill
 
 // https://github.com/airbnb/enzyme/pull/1513#issuecomment-384577007
-var enzyme = require('@pisano/enzyme');
-var Adapter = require('@pisano/enzyme-adapter-react-16');
+var enzyme = require('enzyme');
+var Adapter = require('enzyme-adapter-react-16');
 
 enzyme.configure({ adapter: new Adapter() });
 
