@@ -16,30 +16,6 @@
     "manage:plugins:pro": "node ./buildPlugins.prod.js",
     "serve": "webpack-dev-server --open"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-transform-runtime",
-        {
-          "regenerator": true
-        }
-      ],
-      [
-        "react-intl",
-        {
-          "messagesDir": "./i18n/",
-          "enforceDescriptions": false
-        }
-      ],
-      "transform-object-rest-spread",
-      "transform-flow-strip-types",
-      "react-hot-loader/babel"
-    ]
-  },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
   "dependencies": {
@@ -72,8 +48,8 @@
     "autoprefixer": "^8.3.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-react-intl": "^3.0.1",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^1.1.11",
     "css-loader": "^0.28.11",
@@ -121,8 +97,8 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "react-spinkit": "^3.0.0",
     "react-test-renderer": "^16.3.2",
-    "redux": "^3.7.2",
-    "redux-form": "^7.3.0",
+    "redux": "^4.0.1",
+    "redux-form": "^7.4.2",
     "redux-logger": "^3.0.6",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
