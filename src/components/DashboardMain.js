@@ -11,10 +11,10 @@ import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
-// import PersonalDataContainer from 'containers/PersonalData';
-// import NinsContainer from 'containers/Nins';
-// import EmailsContainer from 'containers/Emails';
-// import MobileContainer from 'containers/Mobile';
+import PersonalDataContainer from 'containers/PersonalData';
+import NinsContainer from 'containers/Nins';
+import EmailsContainer from 'containers/Emails';
+import MobileContainer from 'containers/Mobile';
 // import AccountLinkingContainer from 'containers/AccountLinking';
 // import SecurityContainer from 'containers/Security';
 // import ChangePasswordContainer from 'containers/ChangePassword';
@@ -156,6 +156,12 @@ class Main extends Component {
                     <div className="tab-content info-container col-md-8 col-md-offset-1">
                       <div className="tab-pane active">
                         <NotificationsContainer />
+                        <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
+                        <Route path="/profile/personaldata" component={PersonalDataContainer} />
+                        <Route path="/profile/nins" component={NinsContainer} />
+                        <Route path="/profile/emails" component={EmailsContainer} />
+                        <Route path="/profile/phones" component={MobileContainer} />
+
                       </div>
                     </div>
                     {profElem}

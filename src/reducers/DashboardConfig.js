@@ -48,11 +48,6 @@ let configReducer = (state=configData, action) => {
           ...state,
           ...action.payload
       };
-    case actions.SET_LANGUAGE:
-      return {
-          ...state,
-          ...action.payload
-      };
     case actions.RESIZE_WINDOW:
       return {
           ...state,

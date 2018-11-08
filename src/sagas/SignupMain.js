@@ -45,7 +45,7 @@ export function* requestConfig () {
         yield put(config);
         yield put(actions.appLoaded());
     } catch(error) {
-        yield put(actions.getConfigFail(error.toString()));
+        yield put(actions.getSignupConfigFail(error.toString()));
     }
 }
 

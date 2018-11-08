@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import HelpBlock from 'react-bootstrap/lib/HelpBlock';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import FormText from 'reactstrap';
+import FormGroup from 'reactstrap';
+import Input from 'reactstrap';
+import Label from 'reactstrap';
 import i18n from 'i18n-messages';
 
 
@@ -40,32 +40,31 @@ const textInput = (props) => {
                     </option>);
         });
         field = (
-            <FormControl componentClass={componentClass}
-                         disabled={disabled}
-                         placeholder={placeholder}
-                         {...input}>
+            <Input type={componentClass}
+                   disabled={disabled}
+                   placeholder={placeholder}
+                   {...input}>
                 {children}
-            </FormControl>
+            </Input>
         );
     } else {
-        field = <FormControl componentClass={componentClass}
-                             type={type}
-                             disabled={disabled}
-                             placeholder={placeholder}
-                             {...input} /> ;
+        field = <Input type={componentClass}
+                       disabled={disabled}
+                       placeholder={placeholder}
+                       {...input} /> ;
     }
 
     if (helpBlock === undefined) {
         help = [(<FormControl.Feedback key="0" />),
           (<div className="form-field-error-area" key="1">
-            <HelpBlock>{errmsg}</HelpBlock>
+            <FormText>{errmsg}</FormText>
           </div>)];
     } else {help = helpBlock}
 
     return (
         <FormGroup controlId={input.name}
                    validationState={validationState}>
-          <ControlLabel>{label}</ControlLabel>
+          <Label>{label}</Label>
           {field }
           {help}
         </FormGroup>

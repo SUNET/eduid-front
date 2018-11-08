@@ -1,0 +1,61 @@
+
+@import '../variables.scss';
+
+
+body {
+/*  background-color: $blue; */
+}
+
+@media only screen and (min-width: 992px) {
+
+  label {
+    text-align: left !important;
+    display: block;
+    margin-bottom: 5px !important;
+    color: #6d6d6d !important;
+    font-family: 'Roboto-Regular';
+  }
+
+  .form-group {
+    float: left !important;
+    width: 46% !important;
+    margin-right: 2% !important;
+    margin-left: 0% !important;
+  }
+
+  .form-control {
+    font-size: 14px;
+    line-height: 1.42857143 !important;
+    color: #555 !important;
+    border: 1px solid #ccc !important;
+  }
+
+  .form-control-feedback {
+    top: 39px !important;
+    right: 8px !important;
+  }
+
+  #personal-data-button {
+    margin-top: 20px;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .form-group .form-control-feedback {
+    top: 32px !important;
+    right: 11px !important;
+  }
+
+  #personal-data-button {
+    margin-left: auto!important;
+    margin-right: auto !important;
+    margin-top: 20px !important;
+    display: block !important;
+  }
+}
+
+.form-control-feedback {
+  top: 39px !important;
+  right: 15px !important;
+}
