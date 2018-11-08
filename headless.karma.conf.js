@@ -27,8 +27,8 @@ webpackKarma.module.rules = [
     test: /\.js$/,
     use: {
         loader: 'istanbul-instrumenter-loader',
-        options: {
-          //esModules: true,
+        query: {
+          esModules: true,
           //produceSourceMap: true
         }
     },
