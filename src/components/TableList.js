@@ -27,7 +27,7 @@ class TableList extends Component {
                         <span className="nobutton">{this.props.l10n('tl.primary')}</span>
                     </td>
                     <td className="non-identifier">
-                    <EduIDButton bsStyle="link"
+                    <EduIDButton className="btn-link"
                                  onClick={this.props.handleRemove}>
                       {this.props.l10n('tl.remove')}
                       </EduIDButton>
@@ -40,13 +40,13 @@ class TableList extends Component {
                         key={key}>
                     <td className="identifier">{key}</td>
                     <td className="non-identifier">
-                        <EduIDButton bsStyle="link"
+                        <EduIDButton className="btn-link"
                         onClick={this.props.handleMakePrimary}>
                                     {this.props.l10n('tl.make_primary')}
                         </EduIDButton>
                     </td>
                     <td className="non-identifier">
-                        <EduIDButton bsStyle="link"
+                        <EduIDButton className="btn-link"
                         onClick={this.props.handleRemove}>
                             {this.props.l10n('tl.remove')}
                         </EduIDButton>
@@ -59,13 +59,13 @@ class TableList extends Component {
                         key={key}>
                     <td className="identifier">{key}</td>
                     <td className="non-identifier">
-                        <EduIDButton bsStyle="link"
+                        <EduIDButton className="btn-link"
                                      onClick={this.props.handleStartConfirmation}>
                             {this.props.l10n('tl.pending')}
                         </EduIDButton>
                     </td>
                     <td className="non-identifier">
-                        <EduIDButton bsStyle="link"
+                        <EduIDButton className="btn-link"
                                      onClick={this.props.handleRemove}>
                             {this.props.l10n('tl.remove')}
                         </EduIDButton>

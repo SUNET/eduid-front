@@ -39,7 +39,7 @@ let EmailForm = props => {
                    name="email"
                    placeholder="example@example.com"
                    helpBlock={props.l10n('emails.input_help_text')} />
-            <EduIDButton bsStyle="primary"
+            <EduIDButton className="btn-primary"
                          id="email-button"
                          spinning={spinning}
                          disabled={!props.valid_email}
@@ -84,7 +84,7 @@ class Emails extends Component {
             </div>
             <ConfirmModal
                 modalId="emailConfirmDialog"
-                controlId="emailConfirmDialogControl"
+                id="emailConfirmDialogControl"
                 title={this.props.l10n('emails.confirm_title', {email: this.props.confirming})}
                 resendLabel={this.props.l10n('cm.enter_code')}
                 resendHelp={this.props.l10n('cm.lost_code')}

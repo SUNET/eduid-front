@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import FormText from 'reactstrap';
-import FormGroup from 'reactstrap';
-import Input from 'reactstrap';
-import Label from 'reactstrap';
+import { FormText } from 'reactstrap';
+import { FormGroup } from 'reactstrap';
+import { Input } from 'reactstrap';
+import { Label } from 'reactstrap';
 import i18n from 'i18n-messages';
 
 
@@ -21,9 +21,9 @@ const textInput = (props) => {
         helpBlock,
         placeholder
     } = props;
-    let validationState = null;
+    let validationState = '';
     if (meta.touched || meta.submitFailed) {
-        validationState = meta.error && 'error' || 'success';
+        validationState = meta.error && 'invalid' || 'valid';
     }
     const errmsg = validationState === 'error' && l10n(meta.error) || '';
     let help, field;
@@ -43,6 +43,7 @@ const textInput = (props) => {
             <Input type={componentClass}
                    disabled={disabled}
                    placeholder={placeholder}
+                   {...validationState}
                    {...input}>
                 {children}
             </Input>
@@ -51,19 +52,18 @@ const textInput = (props) => {
         field = <Input type={componentClass}
                        disabled={disabled}
                        placeholder={placeholder}
+                       {...validationState}
                        {...input} /> ;
     }
 
     if (helpBlock === undefined) {
-        help = [(<FormControl.Feedback key="0" />),
-          (<div className="form-field-error-area" key="1">
-            <FormText>{errmsg}</FormText>
-          </div>)];
+        help = (<div className="form-field-error-area">
+                    <FormText>{errmsg}</FormText>
+                </div>);
     } else {help = helpBlock}
 
     return (
-        <FormGroup controlId={input.name}
-                   validationState={validationState}>
+        <FormGroup id={input.name}>
           <Label>{label}</Label>
           {field }
           {help}

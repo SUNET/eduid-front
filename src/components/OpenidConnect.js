@@ -4,11 +4,8 @@ import PropTypes from 'prop-types';
 
 import EduIDButton from 'components/EduIDButton';
 import NotificationsContainer from 'containers/Notifications';
-import Button from 'react-bootstrap/lib/Button';
-import Modal from 'react-bootstrap/lib/Modal';
-import Well from 'react-bootstrap/lib/Well';
-import Image from 'react-bootstrap/lib/Image';
-import HelpBlock from 'react-bootstrap/lib/HelpBlock';
+import { Button, FormText } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import CookieChecker from "components/CookieChecker";
 
 import 'style/OpenidConnect.scss';
@@ -22,13 +19,13 @@ class OpenidConnect extends Component {
     if (this.props.is_fetching) spinning = true;
 
     const seleg_instructions = (
-      <Well id="openid-connect-seleg-instructions">
+      <div className="well" id="openid-connect-seleg-instructions">
         <ol>
           <li>{this.props.l10n('oc.instructions_step_1')}</li>
           <li>{this.props.l10n('oc.instructions_step_2')}</li>
           <li>{this.props.l10n('oc.instructions_step_3')}</li>
         </ol>
-      </Well>
+      </div>
     );
 
     return (
@@ -38,14 +35,14 @@ class OpenidConnect extends Component {
               className="form-horizontal"
               role="form">
           <fieldset id="openid-connect">
-            <EduIDButton bsStyle="primary"
+            <EduIDButton className="btn-primary"
                          spinning={spinning}
                          disabled={this.props.disabled}
                          onClick={this.props.handleShowModal}
                          block>
               {this.props.l10n('oc.initialize_proofing')}
             </EduIDButton>
-            <HelpBlock>{this.props.l10n('oc.initialize_proofing_help_text')}</HelpBlock>
+            <FormText color="muted">{this.props.l10n('oc.initialize_proofing_help_text')}</FormText>
           </fieldset>
         </form>
 
@@ -56,27 +53,27 @@ class OpenidConnect extends Component {
              aria-hidden="true"
              data-backdrop="true">
 
-          <Modal show={this.props.showModal} id="openid-connect-seleg-modal">
-            <Modal.Header>
-              <Modal.Title>{this.props.l10n('oc.modal_title')}</Modal.Title>
-            </Modal.Header>
+          <Modal isOpen={this.props.showModal} id="openid-connect-seleg-modal">
+            <ModalHeader>
+              {this.props.l10n('oc.modal_title')}
+            </ModalHeader>
 
-            <Modal.Body>
+            <ModalBody>
               <h4>{this.props.l10n('oc.instructions_title')}</h4>
               {seleg_instructions}
               <NotificationsContainer/>
 
-              <Image src={this.props.qr_img} className="img-responsive center-block" alt={this.props.qr_code} />
+              <img src={this.props.qr_img} className="img-responsive center-block" alt={this.props.qr_code} />
 
-            </Modal.Body>
+            </ModalBody>
 
-            <Modal.Footer>
+            <ModalFooter>
               <Button className="finish-button"
                       id="openid-connect-seleg-hide-modal"
                       onClick={this.props.handleHideModal}>
                 {this.props.l10n('cm.close')}
               </Button>
-            </Modal.Footer>
+            </ModalFooter>
 
           </Modal>
         </div>

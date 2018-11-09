@@ -6,11 +6,9 @@ import { withUserAgent } from 'react-useragent';
 import EduIDButton from 'components/EduIDButton';
 import NotificationsContainer from 'containers/Notifications';
 
-import ButtonGroup from 'react-bootstrap/lib/ButtonGroup';
-import Button from 'react-bootstrap/lib/Button';
-import Modal from 'react-bootstrap/lib/Modal';
-import Well from 'react-bootstrap/lib/Well';
-import HelpBlock from 'react-bootstrap/lib/HelpBlock';
+import { FormText } from "reactstrap";
+import { Button, ButtonGroup } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import 'style/OpenidConnect.scss';
 
@@ -33,7 +31,7 @@ class OpenidConnectFreja extends Component {
     const supportedDevices = ['AndroidOS', 'iOS'];
     const isMobile = supportedDevices.includes(this.props.ua.os);
     const freja_instructions = (
-      <Well id="openid-connect-freja-instructions">
+      <div className="well" id="openid-connect-freja-instructions">
         <ol>
           <li>{this.props.l10n('ocf.freja_instructions_step_1')}</li>
           <li>{this.props.l10n('ocf.freja_instructions_step_2')}</li>
@@ -41,7 +39,7 @@ class OpenidConnectFreja extends Component {
           <li>{this.props.l10n('ocf.freja_instructions_step_4')}</li>
           <li>{this.props.l10n('ocf.freja_instructions_step_5')}</li>
         </ol>
-      </Well>
+      </div>
     );
 
     let spinning = false, notOnMobileMsg, frejaButton, showModalButton, buttonGroup;
@@ -56,7 +54,7 @@ class OpenidConnectFreja extends Component {
       );
     } else {
       frejaButton = (
-          <EduIDButton bsStyle="link"
+          <EduIDButton className="btn-link"
                        spinning={spinning}
                        onClick={this.props.handleInitializeFrejaProofing}>
             {this.props.l10n('ocf.open_app')}
@@ -64,7 +62,7 @@ class OpenidConnectFreja extends Component {
       );
       if (this.props.iaRequestData) {
         frejaButton = (
-          <EduIDButton bsStyle="link"
+          <EduIDButton className="btn-link"
                        spinning={spinning}
                        href={"frejaeid://identify?iaRequestData=" + this.props.iaRequestData}>
             {this.props.l10n('ocf.open_app')}
@@ -73,7 +71,7 @@ class OpenidConnectFreja extends Component {
       }
       buttonGroup = (
         <ButtonGroup vertical block>
-          <Button bsStyle="link"
+          <Button className="btn-link"
                   href="https://frejaeid.com/skaffa-freja-eid/"
                   target="_blank">
             {this.props.l10n('ocf.freja_instructions_install_link')}
@@ -85,7 +83,7 @@ class OpenidConnectFreja extends Component {
     }
 
     showModalButton = (
-      <EduIDButton bsStyle="primary"
+      <EduIDButton className="btn-primary"
               id="openid-connect-freja-show-modal"
               onClick={this.props.handleShowModal}
               block>
@@ -100,7 +98,7 @@ class OpenidConnectFreja extends Component {
               role="form">
           <fieldset id="openid-connect-freja">
             {showModalButton}
-            <HelpBlock>{this.props.l10n('ocf.initialize_proofing_help_text')}</HelpBlock>
+            <FormText color="muted">{this.props.l10n('ocf.initialize_proofing_help_text')}</FormText>
           </fieldset>
         </form>
 

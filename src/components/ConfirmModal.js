@@ -42,11 +42,11 @@ const getConfirmForm = inputName => {
             <form id={inputName + '-form'}
                   className="form-horizontal"
                   role="form">
-                <Modal.Header>
-                    <Modal.Title>{props.title}</Modal.Title>
-                </Modal.Header>
+                <ModalHeader>
+                    {props.title}
+                </ModalHeader>
 
-                <Modal.Body>
+                <ModalBody>
                     <NotificationsContainer />
                     <div id="confirmation-code-area">
                         <Field component={TextInput}
@@ -54,25 +54,25 @@ const getConfirmForm = inputName => {
                                type="text"
                                label={props.resendLabel}
                                placeholder={props.placeholder}
-                               controlId={inputName}
+                               id={inputName}
                                name={inputName} />
                         {resendMarkup}
                     </div>
-                </Modal.Body>
+                </ModalBody>
 
-                <Modal.Footer>
+                <ModalFooter>
                     <Button className="cancel-button"
                             onClick={props.closeModal} >
                          {props.l10n('cm.cancel')}
                     </Button>
-                    <EduIDButton bsStyle="primary"
+                    <EduIDButton className="btn-primary"
                           className="ok-button"
                           spinning={spinning}
                           disabled={props.invalid}
                           onClick={props.handleConfirm} >
                         {props.l10n('cm.ok')}
                     </EduIDButton>
-                </Modal.Footer>
+                </ModalFooter>
             </form>
         );
     };
@@ -97,7 +97,7 @@ class ConfirmModal extends Component {
            aria-labelledby="askDialogPrompt"
            aria-hidden="true"
            data-backdrop="true">
-          <Modal show={this.props.showModal}>
+          <Modal isOpen={this.props.showModal}>
               <ConfirmForm {...this.props} />
           </Modal>
       </div>

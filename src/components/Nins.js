@@ -106,7 +106,7 @@ class Nins extends Component {
             return (
                <div className="nin-holder" id="eduid-unconfirmed-nin" key={index} data-ninnumber={nin.number}>
                   <strong>{nin.number}</strong>
-                  <EduIDButton bsStyle="danger"
+                  <EduIDButton className="btn-danger"
                                id={'button-rm-nin-'+nin.number}
                                className="btn-xs"
                                spinning={spinning}

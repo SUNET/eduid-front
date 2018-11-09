@@ -34,7 +34,7 @@ class GenericConfirmModal extends Component {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <EduIDButton bsStyle="primary"
+                    <EduIDButton className="btn-primary"
                           className="ok-button"
                           onClick={this.props.acceptModal.bind(this)} >
                         {this.props.l10n('cm.accept')}

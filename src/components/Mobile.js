@@ -46,7 +46,7 @@ let PhoneForm = props => {
                    placeholder={props.l10n('phones.input_placeholder')}
                    helpBlock={props.l10n('phones.input_help_text')}/>
 
-            <EduIDButton bsStyle="primary"
+            <EduIDButton className="btn-primary"
                          id="mobile-button"
                          spinning={spinning}
                          disabled={!props.valid_phone}
@@ -90,7 +90,7 @@ class Mobile extends Component {
             </div>
             <ConfirmModal
                 modalId="phoneConfirmDialog"
-                controlId="phoneConfirmDialogControl"
+                id="phoneConfirmDialogControl"
                 title={this.props.l10n('mobile.confirm_title', {phone: this.props.confirming})}
                 resendLabel={this.props.l10n('cm.enter_code')}
                 resendHelp={this.props.l10n('cm.lost_code')}

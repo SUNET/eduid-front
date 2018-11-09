@@ -56,9 +56,8 @@ let PdataForm = props => {
                selectOptions={props.langs}
                label={props.l10n('pd.language')} />
       </fieldset>
-      <EduIDButton bsStyle="primary"
+      <EduIDButton className="btn-primary"
               id="personal-data-button"
-              spinning={spinning}
               disabled={props.pristine || props.submitting || props.invalid}
               onClick={props.handleSave}>
             {props.l10n('button_save')}
