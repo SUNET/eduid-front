@@ -2,7 +2,7 @@
 import { put, select, call } from "redux-saga/effects";
 import { updateIntl } from 'react-intl-redux';
 import { checkStatus, ajaxHeaders, putCsrfToken,
-         getRequest, postRequest, saveData, failRequest } from "actions/common";
+         getRequest, postRequest, saveData, failRequest } from "sagas/common";
 import { getAllUserdata, getAllUserdataFail, postUserdataFail } from "actions/PersonalData";
 
 import * as ninActions from "actions/Nins";

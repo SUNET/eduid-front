@@ -15,7 +15,7 @@ import * as configActions from "actions/DashboardConfig";
 // import * as lmpActions from "actions/LookupMobileProofing";
 import * as headerActions from "actions/Header";
 
-// import { requestAllPersonalData, savePersonalData } from "sagas/PersonalData";
+import { requestAllPersonalData, savePersonalData } from "sagas/PersonalData";
 // import { saveEmail, requestResendEmailCode,
 //          requestVerifyEmail, requestRemoveEmail,
 //          requestMakePrimaryEmail } from "sagas/Emails";
@@ -45,7 +45,7 @@ function* rootSaga() {
   yield [
     takeLatest(configActions.GET_JSCONFIG_CONFIG, requestConfig),
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSpaSaga),
-    // takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
+    takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     // takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
     // takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),
     // takeLatest(pdataActions.POST_USERDATA, savePersonalData),

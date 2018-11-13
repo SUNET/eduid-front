@@ -11,7 +11,7 @@ const mapStateToProps = (state, props) => {
   return {
     is_configured: state.config.is_app_loaded,
     language: state.intl.locale,
-    languages: state.config.available_languages
+    languages: state.config.AVAILABLE_LANGUAGES
   }
 };
 
