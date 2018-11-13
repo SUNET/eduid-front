@@ -108,7 +108,7 @@ class Nins extends Component {
                   <strong>{nin.number}</strong>
                   <EduIDButton className="btn-danger"
                                id={'button-rm-nin-'+nin.number}
-                               className="btn-xs"
+                               className="btn-sm"
                                spinning={spinning}
                                onClick={this.props.handleDelete}>
                       {this.props.l10n('nins.button_delete')}

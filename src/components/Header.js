@@ -62,7 +62,7 @@ class Header extends Component {
                     </button>
 
                   </div>
-                  <div className="loa-big hidden-xs" id="eduid-header-loa">
+                  <div className="loa-big hidden-sm" id="eduid-header-loa">
                     {email} ({this.props.l10n(this.props.confirmed)})
                   </div>
                 </div>

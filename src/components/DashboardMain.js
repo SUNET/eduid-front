@@ -15,15 +15,15 @@ import PersonalDataContainer from 'containers/PersonalData';
 import NinsContainer from 'containers/Nins';
 import EmailsContainer from 'containers/Emails';
 import MobileContainer from 'containers/Mobile';
-// import AccountLinkingContainer from 'containers/AccountLinking';
-// import SecurityContainer from 'containers/Security';
-// import ChangePasswordContainer from 'containers/ChangePassword';
+import AccountLinkingContainer from 'containers/AccountLinking';
+import SecurityContainer from 'containers/Security';
+import ChangePasswordContainer from 'containers/ChangePassword';
 import NotificationsContainer from 'containers/Notifications';
 import ProfileFilledContainer from 'containers/ProfileFilled';
 import PendingActionsContainer from 'containers/PendingActions';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import 'style/base.scss';
+import 'style/base.scss';
 import 'style/DashboardMain.scss';
 
 
@@ -55,7 +55,7 @@ class Main extends Component {
         if (this.props.show_sidebar) {
 
             const size = this.props.window_size,
-                  sm = size === 'sm',
+                  sm = size === 'md',
                   tabs = [{id: 'personaldata', label: sm ? 'main.personal_data_label_sm' : 'main.personal_data'},
                           {id: 'nins', label: sm ? 'main.nins_label_sm' : 'main.nins'},
                           {id: 'emails', label: sm ? 'main.emails_label_sm' : 'main.emails'},
@@ -77,9 +77,9 @@ class Main extends Component {
                           );
                       });
                   };
-            if (size === 'lg' || size === 'md') {
+            if (size === 'xl' || size === 'lg') {
                 tabsElem = (
-                    <div className='col-md-3'>
+                    <div className='col-lg-3'>
                       <div className="profile-head">
                         <h3>{this.props.l10n('main.profile_title')}</h3>
                         <PendingActionsContainer history={history} />
@@ -100,7 +100,7 @@ class Main extends Component {
                 );
             } else {
                 tabsElem = [(
-                    <div key="1" className='col-md-3'>
+                    <div key="1" className='col-lg-3'>
                       <div className="profile-head">
                         <h3>{this.props.l10n('main.profile_title')}</h3>
                         <PendingActionsContainer history={history} />
@@ -153,7 +153,7 @@ class Main extends Component {
 
                   <div className='profile-combo tabbable well row' id="profile-content-area">
                     {tabsElem}
-                    <div className="tab-content info-container col-md-8 col-md-offset-1">
+                    <div className="tab-content info-container col-lg-8 col-lg-offset-1">
                       <div className="tab-pane active">
                         <NotificationsContainer />
                         <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
@@ -161,7 +161,9 @@ class Main extends Component {
                         <Route path="/profile/nins" component={NinsContainer} />
                         <Route path="/profile/emails" component={EmailsContainer} />
                         <Route path="/profile/phones" component={MobileContainer} />
-
+                        <Route path="/profile/accountlinking" component={AccountLinkingContainer} />
+                        <Route path="/profile/security" component={SecurityContainer} />
+                        <Route path="/profile/chpass" component={ChangePasswordContainer} />
                       </div>
                     </div>
                     {profElem}

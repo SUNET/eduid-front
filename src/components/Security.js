@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Modal from 'react-bootstrap/lib/Modal';
-import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import EduIDButton from 'components/EduIDButton';
 import DeleteModal from 'components/DeleteModal';
@@ -28,20 +27,20 @@ class Security extends Component {
             let btnRemove = '';
             let btnVerify = '';
             if (cred.credential_type === 'security.u2f_credential_type') {
-                btnRemove = (<div className="btn-group btn-group-xs" role="group">
+                btnRemove = (<div className="btn-group btn-group-sm" role="group">
                               <button className="btn btn-link btn-remove-u2f"
                                    onClick={this.props.handleRemoveU2FToken}>
                               {this.props.l10n('security.remove')}
                               </button>
                             </div>);
                 if (cred.verified) {
-                  btnVerify = (<div className="btn-group btn-group-xs" role="group">
+                  btnVerify = (<div className="btn-group btn-group-sm" role="group">
                                 <button className="btn btn-link btn-verified-u2f" disabled>
                                 {this.props.l10n('security.verified')}
                                 </button>
                               </div>);
                 } else if (cred.used_for_login && !cred.verified) {
-                  btnVerify = (<div className="btn-group btn-group-xs" role="group">
+                  btnVerify = (<div className="btn-group btn-group-sm" role="group">
                            <button className="btn btn-link btn-verify-u2f"
                                    onClick={this.props.handleVerifyU2FToken}>
                              {this.props.l10n('security.verify')}
@@ -141,22 +140,22 @@ class Security extends Component {
               handleConfirm={this.props.handleStartU2fRegistration}
               is_fetching={false} />
 
-          <Modal show={this.props.u2f_is_enrolled}>
-              <Modal.Header>
-                  <Modal.Title>{this.props.l10n('u2f.action-required')}</Modal.Title>
-              </Modal.Header>
+          <Modal isOpen={this.props.u2f_is_enrolled}>
+              <ModalHeader>
+                  {this.props.l10n('u2f.action-required')}
+              </ModalHeader>
 
-              <Modal.Body>
+              <ModalBody>
                   <p>{this.props.l10n('u2f.push-the-button')}</p>
-              </Modal.Body>
+              </ModalBody>
 
-              <Modal.Footer>
+              <ModalFooter>
                   <EduIDButton className="cancel-button"
                           id="cancel-u2f"
                           onClick={this.props.handleCloseU2fModal} >
                        {this.props.l10n('cm.cancel')}
                   </EduIDButton>
-              </Modal.Footer>
+              </ModalFooter>
           </Modal>
         </div>
     );
