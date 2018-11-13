@@ -11,6 +11,7 @@ const configData = {
     failed: false,
     is_spa: false,
     is_app_loaded: false,
+    AVAILABLE_LANGUAGES: [],
     DEBUG: true
 };
 
