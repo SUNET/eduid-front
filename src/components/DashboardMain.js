@@ -156,17 +156,17 @@ class Main extends Component {
             <div className="container-fluid">
               <HeaderContainer />
               <ConnectedRouter history={history}>
-                  <div  className="jumbotron" id="content-block">
+                  <div id="content-block">
                       <div className="row">
-                          <div className="col-lg-2"></div>
-                          <div className="col-lg-8">
+                          <div className="col-lg-1"></div>
+                          <div className="col-lg-10">
                               <NotificationsContainer />
                           </div>
-                          <div className="col-lg-2"></div>
+                          <div className="col-lg-1"></div>
                       </div>
                       <div className="row" id="profile-content-area">
                         {tabsElem}
-                        <div className="tab-content col-lg-8 col-lg-offset-1">
+                        <div className="tab-content col-lg-9 col-lg-offset-1">
                           <div className="tab-pane active">
                             <NotificationsContainer />
                             <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />

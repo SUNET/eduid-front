@@ -27,10 +27,11 @@ class Header extends Component {
       const buttons = (
                 <div className="buttons nav navbar-nav float-right">
                   <div className="button log-out">
-                    <a id="logout-button"
-                       onClick={this.props.handleLogout}>
+                    <button id="logout-button"
+                            className="button"	  
+                            onClick={this.props.handleLogout}>
                       {this.props.l10n('header.logout')}
-                    </a>
+                    </button>
                   </div>
                   <div className="loa-big hidden-sm" id="eduid-header-loa">
                     {email} ({this.props.l10n(this.props.confirmed)})
