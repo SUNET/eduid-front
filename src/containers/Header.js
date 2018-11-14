@@ -24,7 +24,8 @@ const mapStateToProps = (state, props) => {
         studentsLink: state.config.STATIC_STUDENTS_URL,
         techniciansLink: state.config.STATIC_TECHNICIANS_URL,
         staffLink: state.config.STATIC_STAFF_URL,
-        faqLink: state.config.STATIC_FAQ_URL
+        faqLink: state.config.STATIC_FAQ_URL,
+        size: state.config.window_size
     }
 };
 
