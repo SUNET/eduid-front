@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 
-export default FetchingContext = React.createContext({
+const FetchingContext = React.createContext({
     fetching: false,
     setFetching: () => {}
 });
+
+export default FetchingContext;
