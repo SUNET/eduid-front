@@ -362,31 +362,6 @@ div.table-responsive {
     overflow-x: inherit;
 }
 
-/* Footer */
-#footer .container {
-    padding-top:20px;
-    padding-bottom:10px;
-    border-top:1px solid #629c92;
-}
-#footer p {
-    font-family:'Roboto-Regular';
-    font-size:14px;
-}
-#footer .langselector {
-    padding:0 10px;
-    border-right:1px solid #9f958c;
-}
-#footer .langselector:last-child {
-    border-right:none;
-}
-#footer .langselector span {
-    color:#fff;
-}
-#footer .langselector a {
-    color:#000;
-    cursor: pointer;
-}
-
 
 #personaldataview-formsave {
     background-color:#58b78b;

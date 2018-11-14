@@ -561,51 +561,6 @@ ul.nav.navbar-nav li a {
     color: #3F5C57;
 }
 
-/* Footer */
-#footer {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-#footer, .push {
-  height: 3em;
-}
-#footer .container {
-    padding-top:20px;
-    padding-bottom:10px;
-    border-top:1px solid #629c92;
-}
-#footer p {
-    font-family:'Roboto-Regular';
-    font-size:14px;
-}
-
-div#footer span.langselector {
-  color: rgb(85, 85, 85);
-  display: inline-block;
-  height: 14px;
-  line-height: 14px;
-  margin-bottom: 2px;
-  margin-right: 2px;
-  margin-top: 2px;
-  text-align: left;
-}
-#footer .langselector {
-    padding:0 10px;
-    border-right:1px solid #9f958c;
-    display:inline;
-    margin-right:0;
-    margin-left:0;
-}
-#footer .langselector:last-child {
-    border-right:none;
-}
-#footer .langselector span {
-    color:#fff;
-}
-#footer .langselector a {
-    color:#000;
-}
 
 /* Fontface */
 @font-face {
