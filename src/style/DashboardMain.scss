@@ -86,17 +86,12 @@ div#content-block {
     padding-top: 30px;
 }
 
-#profile-menu-large {
-    padding-left:0;
-    padding-right:0;
-}
 #profile-menu-large ul {
     border-right:none;
+    max-width: 200px;
 }
 #profile-menu-large li {
-    position:relative;
-    color:#000;
-    padding-left:0;
+    width: 100%;
     border-bottom: 1px solid #629c92;
 }
 
@@ -120,15 +115,9 @@ div#content-block {
 
 #profile-menu-large li a {
     padding-left:10px;
-    border-radius:0;
     font-family:'Roboto-Black';
     font-size:15px;
     color:#4d4d4d;
-}
-
-#profile-menu-large li#profile-menu-help a {
-    padding-left:38px;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 #profile-menu-large li > a.active,
@@ -138,7 +127,7 @@ div#content-block {
     position:relative;
     background-color:#fff;
 }
-.nav-tabs>li>a:hover {
+.nav-link:hover {
     border-color:transparent;
 }
 .nav-stacked>li+li {
@@ -155,8 +144,8 @@ div#content-block {
     right:-20px;
     width: 0;
 	height: 0;
-	border-top: 22px solid transparent;
-	border-bottom: 22px solid transparent;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
 	border-left: 20px solid #fff;
 }
 
@@ -169,8 +158,8 @@ div#content-block {
       right:-20px;
       width: 0;
       height: 0;
-      border-top: 22px solid transparent;
-      border-bottom: 22px solid transparent;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
       border-left: 20px solid #fff;
   }
 }
@@ -184,8 +173,8 @@ div#content-block {
       right:-20px;
       width: 0;
       height: 0;
-      border-top: 22px solid transparent;
-      border-bottom: 22px solid transparent;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
       border-left: 20px solid #fff;
   }
 }
@@ -199,8 +188,8 @@ div#content-block {
       right:-20px;
       width: 0;
     height: 0;
-    border-top: 22px solid transparent;
-    border-bottom: 22px solid transparent;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
     border-left: 20px solid #fff;
   }
 }

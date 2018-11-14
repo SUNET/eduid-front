@@ -72,7 +72,7 @@ class Main extends Component {
                   tabsElems = (classes) => {
                       return tabs.map( (tab, index) => {
                           return (
-                              <li key={index}>
+                              <li className="nav-item" key={index}>
                                 <NavLink className={classes}
                                       activeClassName="active"
                                       onClick={() => this.setState({openTabs: false})}
@@ -94,7 +94,7 @@ class Main extends Component {
 
                       <div className="tabs-left" role="navigation" id="profile-menu-large">
                         <ul className='nav nav-tabs nav-stacked'>
-                          {tabsElems('main-nav-tabs')}
+                          {tabsElems('main-nav-tabs nav-link')}
                           <ProfileFilledContainer />
                           <li id="profile-menu-eppn-li">
                             <div className="profile-menu-eppn">
@@ -113,11 +113,11 @@ class Main extends Component {
                         <PendingActionsContainer history={history} />
                       </div>
                     </div>),
-                    (<nav key="2" className="navbar navbar-default" role="navigation">
+                    (<nav key="2" className="navbar navbar-toggleable-md navbar-light" role="navigation">
                        <div className="container-fluid">
                          <div className="navbar-header">
                            <button type="button"
-                                   className="navbar-toggle collapsed"
+                                   className="navbar-toggler collapsed"
                                    onClick={() => this.setState({openTabs: !this.state.openTabs})}>
                              <span className="sr-only">{this.props.l10n('main.toggle-navigation')}</span>
                              <span className="icon-bar"></span>
@@ -131,7 +131,7 @@ class Main extends Component {
   
                          <Collapse isOpen={this.state.openTabs}>
                            <ul className="nav nav-stacked nav-tabs navbar-nav">
-                            {tabsElems('main-nav-tabs btn btn-block')}
+                            {tabsElems('main-nav-tabs tab-link btn btn-block')}
                            </ul>
                          </Collapse>
                        </div>
