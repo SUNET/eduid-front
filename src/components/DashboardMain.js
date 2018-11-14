@@ -7,6 +7,7 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter } from 'react-router-redux';
 import { Collapse } from 'reactstrap';
 
+import FetchingContext from 'components/FetchingContext';
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
@@ -29,15 +30,21 @@ import 'style/DashboardMain.scss';
 
 export const history = createHistory()
 
-/* SubMain is the main component, before internationalization */
-
 class Main extends Component {
 
-    constructor(...args) {
-        super(...args);
+    constructor(props) {
+        super(props);
         this.state = {
+            fetching: props.is_fetching,
+            setFetching: this.setFetching.bind(this),
             openTabs: false
         };
+    }
+
+    setFetching(fetching) {
+        this.setState({
+            fetching: fetching
+        });
     }
 
     componentWillMount() {
@@ -85,7 +92,7 @@ class Main extends Component {
                         <PendingActionsContainer history={history} />
                       </div>
 
-                    <div className="tabs-left" role="navigation" id="profile-menu-large">
+                      <div className="tabs-left" role="navigation" id="profile-menu-large">
                         <ul className='nav nav-tabs nav-stacked'>
                           {tabsElems('main-nav-tabs')}
                           <ProfileFilledContainer />
@@ -143,37 +150,42 @@ class Main extends Component {
             }
         }
 
-        return ([
-          <SplashContainer key="0" />,
-          <HeaderContainer key="1" />,
-            <ConnectedRouter history={history} key="2">
-              <div className="container position-relative">
-                <noscript><div id="no-script"><h3>{this.props.l10n('main.noscript')}</h3></div></noscript>
-                <div id="content-block">
-
-                  <div className='profile-combo tabbable well row' id="profile-content-area">
-                    {tabsElem}
-                    <div className="tab-content info-container col-lg-8 col-lg-offset-1">
-                      <div className="tab-pane active">
-                        <NotificationsContainer />
-                        <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
-                        <Route path="/profile/personaldata" component={PersonalDataContainer} />
-                        <Route path="/profile/nins" component={NinsContainer} />
-                        <Route path="/profile/emails" component={EmailsContainer} />
-                        <Route path="/profile/phones" component={MobileContainer} />
-                        <Route path="/profile/accountlinking" component={AccountLinkingContainer} />
-                        <Route path="/profile/security" component={SecurityContainer} />
-                        <Route path="/profile/chpass" component={ChangePasswordContainer} />
+        return (
+          <FetchingContext.Provider value={this.state}>
+            <SplashContainer />
+            <div className="container-fluid">
+              <HeaderContainer />
+              <ConnectedRouter history={history}>
+                  <div  className="jumbotron" id="content-block">
+                      <div className="row">
+                          <div className="col-lg-2"></div>
+                          <div className="col-lg-8">
+                              <NotificationsContainer />
+                          </div>
+                          <div className="col-lg-2"></div>
                       </div>
-                    </div>
-                    {profElem}
+                      <div className="row" id="profile-content-area">
+                        {tabsElem}
+                        <div className="tab-content col-lg-8 col-lg-offset-1">
+                          <div className="tab-pane active">
+                            <NotificationsContainer />
+                            <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
+                            <Route path="/profile/personaldata" component={PersonalDataContainer} />
+                            <Route path="/profile/nins" component={NinsContainer} />
+                            <Route path="/profile/emails" component={EmailsContainer} />
+                            <Route path="/profile/phones" component={MobileContainer} />
+                            <Route path="/profile/accountlinking" component={AccountLinkingContainer} />
+                            <Route path="/profile/security" component={SecurityContainer} />
+                            <Route path="/profile/chpass" component={ChangePasswordContainer} />
+                          </div>
+                        </div>
+                        {profElem}
+                      </div>
                   </div>
-                </div>
-                <div className='push'></div>
-              </div>
-            </ConnectedRouter>,
-          <FooterContainer key="3" />
-        ]);
+              </ConnectedRouter>
+            </div>
+            <FooterContainer />
+          </FetchingContext.Provider>);
     }
 }
 

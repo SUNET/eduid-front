@@ -5,6 +5,7 @@ import { Route, NavLink, Redirect } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter } from 'react-router-redux';
 
+import FetchingContext from 'components/FetchingContext';
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/HeaderAnon";
@@ -21,11 +22,6 @@ import 'style/SignupMain.scss';
 
 
 export const history = createHistory()
-
-export const FetchingContext = React.createContext({
-    fetching: false,
-    setFetching: () => {}
-});
 
 class SignupMain extends Component {
 

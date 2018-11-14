@@ -6,7 +6,7 @@ import { Button } from "reactstrap";
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faSpinner from '@fortawesome/fontawesome-free-solid/faSpinner'
 
-import { FetchingContext } from "components/SignupMain";
+import FetchingContext from 'components/FetchingContext';
 
 import 'style/EduIDButton.scss';
 
