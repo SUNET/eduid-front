@@ -7,7 +7,7 @@ import ScriptLoader from 'react-script-loader-hoc';
 import EduIDButton from 'components/EduIDButton';
 import Recaptcha from "react-recaptcha";
 
-import { FetchingContext } from "components/SignupMain";
+import FetchingContext from "components/FetchingContext";
 
 import 'style/Captcha.scss';
 
