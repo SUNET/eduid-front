@@ -25,35 +25,6 @@
     background-color: #ffffff; 
 }
 
-/* Header */
-.profile-head {
-    padding-bottom:30px;
-}
-.profile-head h3 {
-    font-size:72px;
-    font-family: 'Roboto-Black';
-}
-
-.header .buttons .button.orange:hover {
-    background:#c85c0e;
-    border-color:#c85c0e;
-}
-
-.header .buttons .button.white-border {
-  background: transparent;
-  border-color: #fff;
-}
-
-.header .buttons a {
-      color: #fff;
-      line-height: 32px; }
-
-.logo {
-    width: 145px;
-    height: 50px;
-    background: url(../../img/sprite.png) 1px 0 no-repeat;
-}
-
 .container-fluid .jumbotron {
     color: #fff;
 }
@@ -67,6 +38,15 @@ div#no-script {
 div#content-block {
     display: block;
 }
+
+.profile-head {
+    padding-bottom:30px;
+}
+.profile-head h3 {
+    font-size:72px;
+    font-family: 'Roboto-Black';
+}
+
 .profile-head a {
     color:#59856b;
 }

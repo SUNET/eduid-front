@@ -98,99 +98,6 @@ input:focus {
   margin-top: 10px;
 }
 
-/* Header */
-.header {
-  position: static;
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  z-index: 9998;
-  padding: 20px 35px 0; }
-
-.header .container {
-    padding: 0; }
-.header ul {
-    margin: 0; }
-.header .logo {
-    float: left;
-    margin: 0; }
-.header nav li {
-    list-style: none;
-    margin: 0 12px;
-    line-height: 40px; }
-
-.header nav li.current-menu-item a {
-      color: #fff;
-      border-bottom: 3px solid #fff; }
-.header nav li.button {
-      float: right;
-      height: 40px;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin: 0 10px; }
-.header nav li.button a {
-        color: #fff;
-        line-height: 32px; }
-.header nav li a {
-      line-height: 20px; }
-.header nav li ul {
-      display: none; }
-.header nav a {
-    font-family: 'Roboto-Medium';
-    font-size: 14px;
-    text-transform: uppercase;
-    color:#3f5c57;
-  }
-.header nav a:hover {
-      color: #fff;
-        text-decoration:none;}
-.header .buttons {
-    float: right; }
-.header .buttons .button {
-      float: left;
-      height: 40px;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin: 0 10px;
-      border:4px solid transparent;
-    }
-
-.header .buttons .button.log-out {
-  background-color:#747474;
-  border-color:#747474;
-}
-.header .buttons .button.log-out button#logout-button{
-    background-color: transparent;
-    margin-top: -5px;
-}
-
-.header .buttons .button.orange {
-  background:#dd650e;
-  border-color:#dd650e;
-}
-
-.header .buttons .button.orange:hover {
-    background:#c85c0e;
-    border-color:#c85c0e;
-}
-
-.header .buttons .button.white-border {
-  background: transparent;
-  border-color: #fff;
-}
-
-.header .buttons a {
-      color: #fff;
-      line-height: 32px; }
-
-.logo {
-    width: 145px;
-    height: 50px;
-    background: url(../../img/sprite.png) 1px 0 no-repeat;
-}
-
 .container-fluid .jumbotron {
     color: #fff;
 }
@@ -611,33 +518,6 @@ ul.nav.navbar-nav li a {
 }
 
 
-
-
-@media only screen and (min-width: 960px) and (max-width: 1053px) {
-
-    .header nav li {
-        margin:0 8px;
-    }
-    .header .logo {
-        margin:12px 0 0 0;
-        width: 90px;
-        height: 30px;
-        background-size: 90px;
-    }
-}
-
-@media only screen and (min-width: 1054px) and (max-width: 1179px) {
-    .header nav li {
-        margin:0 10px;
-    }
-    .header .logo {
-        margin:12px 0 0 0;
-        width: 90px;
-        height: 30px;
-        background-size: 90px;
-    }
-}
-
 @media only screen and (min-width: 960px) {
 
   .jumbotron h1 {
@@ -669,19 +549,6 @@ ul.nav.navbar-nav li a {
 }
 
 @media only screen and (min-width: 960px) and (max-width: 1023px) {
-    .header {
-        padding-left:23px;
-        padding-right:20px;
-    }
-    .header .container {
-        width:700px;
-    }
-    .header nav li.button {
-        padding:0 20px;
-    }
-    .header nav li a {
-        font-size:14px;
-    }
 
     .buttons .button a {
         font-size:14px;
@@ -697,40 +564,6 @@ ul.nav.navbar-nav li a {
   .jumbotron .form-inline .form-group {
       margin: 10px;
   }
-    .header {
-        padding-left:23px;
-        padding-right:20px;
-    }
-    .header .container {
-        width:700px;
-    }
-    .header .logo {
-        margin:12px 0 0 0;
-        width: 80px;
-        height: 27px;
-        background-size: 80px;
-    }
-    .header nav li {
-        margin:0 10px;
-    }
-    .header nav li.button {
-        padding:0 20px;
-    }
-    .header nav li a {
-        font-size:12px;
-    }
-    .header .buttons {
-        margin-top:6px;
-    }
-    .header .buttons .button {
-        margin:0 5px;
-        height:30px;
-    }
-    .buttons .button a {
-        font-size:12px;
-        padding:10px;
-        line-height:22px;
-    }
     #eduid-header-loa {
         padding: 0 10px;
         font-size: 10px;
@@ -802,44 +635,6 @@ ul.nav.navbar-nav li a {
   .jumbotron .form-inline .form-group {
       margin: 10px;
   }
-
-    #header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: block;
-        background: rgba(0,0,0,0.8);
-        height: 50px;
-        z-index: 9999;
-        padding:0;
-    }
-    #header .container {
-        padding:0;
-    }
-
-    #header .logo {
-        width:80px;
-        height:26px;
-        background-size:80px;
-    }
-
-    #header .buttons {
-        padding: 0 60px;
-        width:100%;
-    }
-    #header .buttons .button {
-        margin-bottom:10px;
-        text-align:center;
-        padding:0;
-        float:none;
-        height:auto;
-    }
-    #header .buttons a {
-        display:block;
-        padding:10px 0;
-        line-height:1em;
-    }
 
     /* Paddings */
     .container-fluid .jumbotron {
@@ -970,12 +765,6 @@ ul.nav.navbar-nav li a {
 }
 
 @media only screen and (min-width: 768px) {
-  .header nav li:first-child {
-    margin-left: 0;
-  }
-  .header nav li:last-child {
-    margin-right: 0;
-  }
     nav.navbar.navbar-default#eduid-navbar {
         background-color: transparent;
         border-color: transparent;

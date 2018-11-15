@@ -63,6 +63,7 @@
     border-color: #fff;
 }
 .header .buttons a {
+    color: #fff;
     font-family: 'Roboto-Medium';
     font-size: 14px;
     line-height: 32px;
@@ -99,16 +100,14 @@
         padding-left:23px;
         padding-right:20px;
     }
+    .header .container {
+        width:700px;
+    }
     .header nav li.button {
         padding:0 20px;
     }
     .header nav li a {
         font-size:14px;
-    }
-
-    .buttons .button a {
-        font-size:14px;
-        padding:25px;
     }
     .header nav li {
         margin:0 13px;
@@ -118,6 +117,9 @@
     .header {
         padding-left:23px;
         padding-right:20px;
+    }
+    .header .container {
+        width:700px;
     }
     .header .logo {
         margin:12px 0 0 0;
@@ -159,6 +161,10 @@
         background: rgba(0,0,0,0.8);
         height: 50px;
         z-index: 9999;
+        padding:0;
+    }
+
+    #header .container {
         padding:0;
     }
 
@@ -220,4 +226,41 @@
     .header nav li {
         margin:0 20px;
     }
+}
+
+/* Header */
+.header .container {
+    padding: 0; }
+.header nav li {
+    list-style: none;
+    margin: 0 12px;
+    line-height: 40px; }
+
+.header nav li.button {
+      float: right;
+      height: 40px;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin: 0 10px; }
+.header nav li.button a {
+        color: #fff;
+        line-height: 32px; }
+.header nav li a {
+      line-height: 20px; }
+.header nav li ul {
+      display: none; }
+.header nav a {
+    font-family: 'Roboto-Medium';
+    font-size: 14px;
+    text-transform: uppercase;
+    color:#3f5c57;
+  }
+
+.header .buttons .button.log-out {
+  background-color:#747474;
+  border-color:#747474;
+}
+.header .buttons .button.log-out button#logout-button{
+    background-color: transparent;
+    margin-top: -5px;
 }

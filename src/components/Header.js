@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { Collapse } from 'reactstrap';
+
+import 'style/Header.scss';
 
 
 class Header extends Component {
@@ -17,43 +18,43 @@ class Header extends Component {
         this.setState({ collapse: !this.state.collapse });
     }
 
-  render () {
-
-      let email = this.props.email;
-      if (email === '') {
-	  email = this.props.l10n("main.no-email-yet")
-      }
-
-      const buttons = (
-                <div className="buttons nav navbar-nav float-right">
-                  <div className="button log-out">
-                    <button id="logout-button"
-                            className="button"	  
-                            onClick={this.props.handleLogout}>
-                      {this.props.l10n('header.logout')}
-                    </button>
-                  </div>
-                  <div className="loa-big hidden-sm" id="eduid-header-loa">
-                    {email} ({this.props.l10n(this.props.confirmed)})
-                  </div>
-              </div>);
-
-      const links = (
-                  <ul  className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                      <a className="nav-link" href={this.props.studentsLink}>{this.props.l10n('header.students')}</a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href={this.props.techniciansLink}>{this.props.l10n('header.technicians')}</a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href={this.props.staffLink}>{this.props.l10n('header.staff')}</a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href={this.props.faqLink}>{this.props.l10n('header.faq')}</a>
-                    </li>
-              </ul>);
-
+    render () {
+  
+        let email = this.props.email;
+        if (email === '') {
+  	  email = this.props.l10n("main.no-email-yet")
+        }
+  
+        const buttons = (
+                  <div className="buttons nav navbar-nav float-right">
+                    <div className="button log-out">
+                      <button id="logout-button"
+                              className="button"	  
+                              onClick={this.props.handleLogout}>
+                        {this.props.l10n('header.logout')}
+                      </button>
+                    </div>
+                    <div className="loa-big hidden-sm" id="eduid-header-loa">
+                      {email} ({this.props.l10n(this.props.confirmed)})
+                    </div>
+                </div>);
+  
+        const links = (
+                    <ul  className="navbar-nav mr-auto">
+                      <li className="nav-item">
+                        <a className="nav-link" href={this.props.studentsLink}>{this.props.l10n('header.students')}</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href={this.props.techniciansLink}>{this.props.l10n('header.technicians')}</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href={this.props.staffLink}>{this.props.l10n('header.staff')}</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href={this.props.faqLink}>{this.props.l10n('header.faq')}</a>
+                      </li>
+                </ul>);
+  
         if (this.props.size === 'xs') {
             return (
               <header id="header" className="header">
@@ -86,7 +87,7 @@ class Header extends Component {
               </header>
           );
         }
-  }
+    }
 }
 
 Header.propTypes = {
