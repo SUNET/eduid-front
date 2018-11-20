@@ -1,25 +1,45 @@
 
 @import '../variables.scss';
 
+#emailsview-form {
+  height: 100%;
+  overflow: hidden;
+}
+
+#emailsview-form .form-group {
+  float: left;
+  margin-right: 10px;
+}
+
+#emailsview-form .form-group input{
+  min-width: 300px;
+}
+
+#emailsview-formadd {
+  float: left;
+  margin-top: 0;
+}
+
 @media only screen and (min-width: 992px) {
 
-  #confirmation-code-area div {
-    float: none !important;
-    width: 100% !important;
-  }
+    #confirmation-code-area div {
+	float: none !important;
+	width: 100% !important;
+    }
 
-  #confirmation-code-area .form-control-feedback {
-    top: 6px !important;
-    right: 6px !important;
-  }
+    #confirmation-code-area .form-control-feedback {
+	top: 6px !important;
+	right: 6px !important;
+    }
 
-  #emails-form .form-control-feedback {
-    top: 6px !important;
-    right: 6px !important;
-  }
-  body {
-    /*  background-color: $blue; */
-  }
+    #emails-form .form-control-feedback {
+	top: 6px !important;
+	right: 6px !important;
+    }
+
+    div.confirmation-code-area > div.form-group {
+        width: 100% !important;
+    }
 
 }
 

@@ -170,11 +170,6 @@ div.form-content {
   margin-top: 10px;
 }
 
-.progress {
-  margin-top: 10px;
-  height: 10px;
-}
-
 .form-horizontal .form-group {
     margin-left:0;
 }
@@ -210,25 +205,35 @@ div.position-relative {
     clear: both;
 }
 
-/* custom inclusion of right, left and below tabs
-   taken from http://www.bootply.com/100014 */
-
-.tabs-left > .nav-tabs {
-  border-bottom: 0;
-}
-
-.tab-content > .tab-pane {
-  display: none;
-}
-
-.tab-content > .active {
-  display: block;
-}
 
 ul.nav.navbar-nav li a {
     color: #3F5C57;
 }
 
+
+/* Mobile scrollbar */
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 12px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;  
+    background-color: #ffffff; 
+}
 
 /* Fontface */
 @font-face {
@@ -293,80 +298,29 @@ ul.nav.navbar-nav li a {
 
 }
 
-@media only screen and (min-width: 960px) and (max-width: 1023px) {
-
-    .buttons .button a {
-        font-size:14px;
-        padding:25px;
-    }
-    #eduid-header-loa {
-        padding: 0 15px;
-        font-size: 10px;
-    }
-}
 @media only screen and (min-width: 768px) and (max-width: 959px) {
 
-  .jumbotron .form-inline .form-group {
-      margin: 10px;
-  }
-    #eduid-header-loa {
-        padding: 0 10px;
-        font-size: 10px;
-        line-height:30px;
-        height:30px;
+    .jumbotron .form-inline .form-group {
+	margin: 10px;
     }
 
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 
-  .jumbotron h1,
-  .jumbotron h2 {
+    .jumbotron h1,
+    .jumbotron h2 {
         font-size: 54px;
         margin: 20px 0;
-  }
-
-    .tab-content.info-container {
-        padding-top: 72px;
     }
 
 }
 
 @media only screen and (max-width: 767px) {
-  .jumbotron h1,
-  .jumbotron h2 {
+    .jumbotron h1,
+    .jumbotron h2 {
         font-size: 32px;
         margin: 20px 0;
-  }
-
-  #eduid-header-loa {
-      display: block;
-      position: relative;
-      top: 2px;
-      margin-bottom: 15px;
-  }
-
-  #eduid-header-logos {
-      display: block;
-      position: relative;
-  }
-
-    div#eduid-menu ul.nav.navbar-nav li a {
-        color: #eee;
-        display: block;
-        padding: 10px 0;
-        width: 100%;
-        border-bottom: 1px solid #CCC;
-    }
-
-    div#eduid-menu ul.nav.navbar-nav li a:hover {
-        color: #aaa;
-    }
-
-    div#eduid-menu > div.buttons.nav {
-        float:none;
-        margin-top: 10px;
-        margin: 7.5px 0px;
     }
 
     /* Texts */
@@ -376,9 +330,9 @@ ul.nav.navbar-nav li a {
       font-weight: 400;
     }
 
-  .jumbotron .form-inline .form-group {
-      margin: 10px;
-  }
+    .jumbotron .form-inline .form-group {
+	margin: 10px;
+    }
 
     /* Paddings */
     .container-fluid .jumbotron {
@@ -389,11 +343,6 @@ ul.nav.navbar-nav li a {
         padding:0;
     }
 
-    #content-block {
-        margin-top:70px;
-        max-width: 1200px;
-    }
-
     /* Buttons */
     .btn {
         margin-left: auto!important;
@@ -402,24 +351,7 @@ ul.nav.navbar-nav li a {
         font-size: 13px;
     }
 
-    /* Footer */
-    #footer,
-    .footer {
-        padding:20px 0;
-        height:auto;
-    }
-
     /* Pages */
-
-    .tab-content {
-        padding-right:0;
-        padding-left:0;
-        padding-top:20px;
-    }
-    .profile-combo {
-        margin-right:0;
-        margin-left:0;
-    }
     .form-group {
         width:100%;
     }
@@ -436,166 +368,17 @@ ul.nav.navbar-nav li a {
     .table-responsive {
         border:none;
     }
-
-    div#eduid-logo-small {
-        margin-left: -90px;
-        margin-top: -4px;
-    }
-
-    /* main menu in small devices */
-
-    nav.navbar.navbar-default#eduid-navbar {
-        background-color: #333;
-        border-color: #333;
-    }
-
-    #eduid-navbar div.navbar-header > span,
-    #eduid-navbar div.navbar-header > span:before,
-    #eduid-navbar div.navbar-header > span:after {
-        cursor: pointer;
-        border-radius: 2px;
-        height: 5px;
-        width: 35px;
-        right: 0;
-        background: white;
-        position: absolute;
-        display: block;
-        content: '';
-        border-color: transparent;
-        padding: 0;
-        margin-left: -15px;
-        border: 0;
-
-        -webkit-transition: all 250ms;
-        -moz-transition: all 250ms;
-        -o-transition: all 250ms;
-        transition: all 250ms;
-    }
-    #eduid-navbar div.navbar-header > span {
-        top:14px;
-    }
-    #eduid-navbar div.navbar-header > span:before {
-        top: -10px;
-    }
-    #eduid-navbar div.navbar-header > span:after {
-        bottom: -10px;
-    }
-    #eduid-navbar div.navbar-header > span.open {
-        background-color: transparent;
-    }
-    #eduid-navbar div.navbar-header > span.open:before {
-        top: 0;
-
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg);
-    }
-    #eduid-navbar div.navbar-header > span.open:after {
-        bottom:0;
-
-        -webkit-transform: rotate(-45deg);
-        -moz-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-        -o-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-
-    }
-
     .text-xs-center {
         text-align: center;
     }
 }
 
 @media only screen and (min-width: 768px) {
-    nav.navbar.navbar-default#eduid-navbar {
-        background-color: transparent;
-        border-color: transparent;
-    }
 
     .jumbotron p.lead {
         font-size:24px;
     }
-
-    div#eduid-logo-small {
-        display: none;
-    }
-
-    .tabs-left > .nav-tabs > li,
-    .tabs-right > .nav-tabs > li {
-      float: none;
-    }
-
-    .tabs-left > .nav-tabs > li > a,
-    .tabs-right > .nav-tabs > li > a {
-      min-width: 74px;
-      margin-right: 0;
-    }
-
-    .tabs-left > .nav-tabs {
-      float: left;
-      margin-right: 19px;
-      border-right: 1px solid #ddd;
-    }
-
-    .tabs-left > .nav-tabs > li > a {
-      margin-right: -1px;
-      -webkit-border-radius: 4px 0 0 4px;
-         -moz-border-radius: 4px 0 0 4px;
-              border-radius: 4px 0 0 4px;
-    }
-
-    .tabs-left > .nav-tabs > li > a:hover,
-    .tabs-left > .nav-tabs > li > a:focus {
-      border-color: #eeeeee #dddddd #eeeeee #eeeeee;
-    }
-
-    .tabs-left > .nav-tabs > a.active,
-    .tabs-left > .nav-tabs > a.active:hover,
-    .tabs-left > .nav-tabs > a.active:focus {
-      border-color: #ddd transparent #ddd #ddd;
-      *border-right-color: #ffffff;
-    }
-
-    .tabs-right > .nav-tabs {
-      float: right;
-      margin-left: 19px;
-      border-left: 1px solid #ddd;
-    }
-
-    .tabs-right > .nav-tabs > li > a {
-      margin-left: -1px;
-      -webkit-border-radius: 0 4px 4px 0;
-         -moz-border-radius: 0 4px 4px 0;
-              border-radius: 0 4px 4px 0;
-    }
-
-    .tabs-right > .nav-tabs > li > a:hover,
-    .tabs-right > .nav-tabs > li > a:focus {
-      border-color: #eeeeee #eeeeee #eeeeee #dddddd;
-    }
-
-    .tabs-right > .nav-tabs > a.active,
-    .tabs-right > .nav-tabs > a.active:hover,
-    .tabs-right > .nav-tabs > a.active:focus {
-      border-color: #ddd #ddd #ddd transparent;
-      *border-left-color: #ffffff;
-    }
-
-  .btn-facebook {
-    float: left;
-  }
-  .btn-google {
-    float: right;
-  }
-
 }
-
-p.eduid-strong {
-    font-weight: 600;
-}
-
 
 /* Modals
 -------------------------------------------------- */
@@ -630,25 +413,4 @@ div.modal-dialog div.modal-footer a {
 .modal {z-index: 10000 !important;}
 
 /* End of Modals
--------------------------------------------------- */
-
-/* Flash messages
--------------------------------------------------- */
-
-.messages-center-block {
-    float: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.alert-danger {
-    color: #a94442;
-    background-color: transparent;
-    border-color: #ebccd1;
-    border: 2px solid #a94442;
-    padding: .3em 1em;
-}
-
-/* End of Messages
 -------------------------------------------------- */

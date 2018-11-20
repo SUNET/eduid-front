@@ -28,3 +28,12 @@ div#footer span.langselector {
     cursor: pointer;
     color: #000;
 }
+
+@media only screen and (max-width: 767px) {
+
+    #footer,
+    .footer {
+        padding:20px 0;
+        height:auto;
+    }
+}

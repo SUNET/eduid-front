@@ -1,44 +1,6 @@
 ﻿
 @import '../variables.scss';
 
-/* Mobile scrollbar */
-::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
-
-::-webkit-scrollbar:vertical {
-    width: 12px;
-}
-
-::-webkit-scrollbar:horizontal {
-    height: 12px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 10px;
-    border: 2px solid #ffffff;
-}
-
-::-webkit-scrollbar-track {
-    border-radius: 10px;  
-    background-color: #ffffff; 
-}
-
-.container-fluid .jumbotron {
-    color: #fff;
-}
-
-/* No javascript */
-div#no-script {
-    text-align: center;
-    color: #CC3732;
-}
-
-div#content-block {
-    display: block;
-}
-
 .profile-head {
     padding-bottom:30px;
 }
@@ -49,14 +11,6 @@ div#content-block {
 
 .profile-head a {
     color:#59856b;
-}
-
-#eduid-header-loa {
-    float:left;
-    height:40px;
-    background:#fff;
-    line-height:40px;
-    padding:0 40px;
 }
 
 /*
@@ -185,63 +139,28 @@ div#content-block {
     border-bottom:none;
 }
 
-/*
-   Progress bar
-*/
-.progress-striped .progress-bar,
-.progress-bar-striped {
-    background:#58b78b;
+/* custom inclusion of right, left and below tabs
+   taken from http://www.bootply.com/100014 */
+
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
 }
-.progress {
-    background-color:#797979;
-    box-shadow:none;
-    border-radius:0;
-    height:10px;
+
+.tab-content {
+  padding-top: 16px;
+  padding-left: 75px;
 }
-.profile-filled .title {
-    font-family:'Roboto-Black';
-    font-size:18px;
-    margin-bottom:10px;
+
+.tab-content > .tab-pane {
+  display: none;
 }
-.progress-bar {
-    box-shadow:none;
-}
-div.profile-filled div.title {
-    color:#44484b;
-}
-div.profile-filled div.title span.percentage {
-    color:#fff;
-}
-ul.nav-tabs > li#profile-filled-li {
-    border-bottom: 0;
+
+.tab-content > .active {
+  display: block;
 }
 
 .eppn-text-muted {
     color: #777;
-}
-
-/*--------------------------------------------------*/
-
-#ninsview-form .btn {
-    display:block;
-}
-
-#ninsview-form label,
-#mobilesview-form label,
-#emailsview-form label {
-  display: none;
-}
-
-#ninsview-formNoMM {
-    pointer-events: auto;
-}
-
-table.postal-addresses {
-  width: 100%;
-}
-
-.popover-title {
-    color: black;
 }
 
 .table > tbody > tr.emailrow td,
@@ -279,24 +198,6 @@ table.table-striped tr > td:first-child {
     padding-left: 10px;
 }
 
-div.profile-filled-small {
-    padding-top: 40px;
-}
-
-div.profile-filled div.title {
-  font-weight: bold;
-}
-
-div.profile-combo {
-  margin-top: -20px;
-}
-
-.profile-combo {
-    box-shadow:none;
-    -webkit-box-shadow:none;
-    background-color: #bbded9;
-    border:none;
-}
 .table-form.emails .nobutton,
 .table-form.mobiles .nobutton,
 .table-form.nins .nobutton {
@@ -309,246 +210,6 @@ div.profile-combo {
 
 div.table-responsive {
     overflow-x: inherit;
-}
-
-
-#personaldataview-formsave {
-    background-color:#58b78b;
-}
-
-
-/* Password view styles
--------------------------------------------------- */
-
-.password-verdict {
-  margin-left: 10px;
-  font-size: 10px;
-}
-
-.reset-password-form-container .controls {
-  margin-left: 0px;
-  display: block;
-}
-
-.reset-password-form-container .control-label {
-  width: 200px;
-}
-
-div.reset-password-buttons p {
-  text-align: center;
-}
-
-table.passwords {
-  background-color: white;
-}
-
-#changePasswordDialog .modal-body {
-  max-height: 500px;
-  overflow-y: auto;
-  margin-bottom: 3px;
-}
-
-#changePasswordDialog .modal-body p {
-  max-width: 510px;
-}
-
-#changePasswordDialog .suggested-password, #resetPassword .suggested-password {
-  background-color: #fff;
-  color: #555;
-  border: none;
-  font-weight: bold;
-  font-size: 18px;
-
-}
-
-#changePasswordDialog .form-actions {
-  right: 10px;
-  float: right;
-  padding: 0;
-  background: none;
-  padding-right: 5px;
-  margin: 5px;
-}
-
-.reset-password-form-container .form-actions {
-  right: 10px;
-  background: none;
-  padding: 0;
-  border: none;
-}
-
-.reset-password-form-container label.control-label {
-    font-weight: 700;
-}
-
-.reset-password-form-container .intro {
-    padding-bottom: 10px;
-}
-
-form#start-password-change-form {
-    float: left;
-    margin-right: 50px;
-}
-
-form#passwordsview-form div#item-deformField3 > label.control-label,
-form#resetpasswordstep2view-form div#item-deformField2 > label.control-label {
-    float: left;
-}
-form#passwordsview-form div.checkbox,
-form#resetpasswordstep2view-form div.checkbox {
-    display: inline-block;
-    margin-left: 15px;
-    padding-top: 6px;
-}
-
-/* End of reset password view styles
--------------------------------------------------- */
-
-/*  Forms  */
-
-#chpass-form-buttons {
-    text-align: center;
-    width: 100%;
-}
-
-#chpass-form-buttons button,
-#chpass-form-buttons a {
-    display: inline-block;
-    margin: 10px auto 0;
-}
-
-.profile-combo {
-  min-height: 400px;
-}
-
-.circles-widget .bar {
-  height: 32px;
-  background-color: #0088cc;
-  z-index: 0;
-}
-
-
-.circles-widget.level-1 .bar {
-  width: 19px;
-}
-
-.circles-widget.level-2 .bar {
-  width: 90px;
-}
-
-.circles-widget.level-3 .bar {
-  width: 175px;
-}
-
-.circles-widget.level-4 .bar {
-  width: 237px;
-}
-
-.circles-widget.max-level-1 div.img {
-  width: 10px;
-}
-
-.circles-widget.max-level-2 div.img {
-  width: 90px;
-}
-
-.circles-widget.max-level-3 div.img {
-  width: 161px;
-}
-
-
-.circles-widget div.img {
-  background: url(/static/img/circle-bar.png) no-repeat 0 0;
-  float: right;
-  position: absolute;
-  overflow: hidden;
-  height: 32px;
-  z-index: 10;
-}
-
-.circles-widget {
-  margin: 0 20px;
-  height: 32px;
-  width: 237px;
-}
-
-.circles-widget-labels {
-  height: 20px;
-  margin: 0 0;
-}
-
-ul.circles-widget-labels {
-  margin-left: 0;
-  list-style: none;
-}
-
-ul.circles-widget-labels li {
-  float: left;
-  width: 70px;
-  margin-left: 4px;
-}
-
-.loa-big {
-  float:  right;
-  width: auto;
-  height: 20px;
-  font-size: 14px;
-  text-align: center;
-  padding-top: 7px;
-  padding-left: 5px;
-  vertical-align: middle;
-}
-
-.userinfo {
-  float: right;
-  width: auto;
-  height: 30px;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  padding-top: 8px;
-  margin-left: 50px;
-  padding-right: 5px;
-  border-right: 1px solid #ccc;
-}
-
-.tab-content {
-  padding-top: 16px;
-  padding-left: 75px;
-}
-
-#emailsview-form,
-#mobilesview-form {
-  height: 100%;
-  overflow: hidden;
-}
-
-#emailsview-form .form-group {
-  float: left;
-  margin-right: 10px;
-}
-
-#emailsview-form .form-group input{
-  min-width: 300px;
-}
-
-#emailsview-formadd {
-  float: left;
-  margin-top: 0;
-}
-
-#mobilesview-form .form-group {
-  float: left;
-  margin-right: 10px;
-}
-
-#mobilesview-form .form-group input{
-  min-width: 300px;
-}
-
-#mobilesview-formadd {
-  float: left;
-  margin-top: 0;
 }
 
 /*Accordion FAQ*/
@@ -621,6 +282,69 @@ meter {
     color: #58b78b;
 }
 
+@media only screen and (min-width: 768px) {
+
+    .tabs-left > .nav-tabs > li,
+    .tabs-right > .nav-tabs > li {
+      float: none;
+    }
+
+    .tabs-left > .nav-tabs > li > a,
+    .tabs-right > .nav-tabs > li > a {
+      min-width: 74px;
+      margin-right: 0;
+    }
+
+    .tabs-left > .nav-tabs {
+      float: left;
+      margin-right: 19px;
+      border-right: 1px solid #ddd;
+    }
+
+    .tabs-left > .nav-tabs > li > a {
+      margin-right: -1px;
+      -webkit-border-radius: 4px 0 0 4px;
+         -moz-border-radius: 4px 0 0 4px;
+              border-radius: 4px 0 0 4px;
+    }
+
+    .tabs-left > .nav-tabs > li > a:hover,
+    .tabs-left > .nav-tabs > li > a:focus {
+      border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+    }
+
+    .tabs-left > .nav-tabs > a.active,
+    .tabs-left > .nav-tabs > a.active:hover,
+    .tabs-left > .nav-tabs > a.active:focus {
+      border-color: #ddd transparent #ddd #ddd;
+      *border-right-color: #ffffff;
+    }
+
+    .tabs-right > .nav-tabs {
+      float: right;
+      margin-left: 19px;
+      border-left: 1px solid #ddd;
+    }
+
+    .tabs-right > .nav-tabs > li > a {
+      margin-left: -1px;
+      -webkit-border-radius: 0 4px 4px 0;
+         -moz-border-radius: 0 4px 4px 0;
+              border-radius: 0 4px 4px 0;
+    }
+
+    .tabs-right > .nav-tabs > li > a:hover,
+    .tabs-right > .nav-tabs > li > a:focus {
+      border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+    }
+
+    .tabs-right > .nav-tabs > a.active,
+    .tabs-right > .nav-tabs > a.active:hover,
+    .tabs-right > .nav-tabs > a.active:focus {
+      border-color: #ddd #ddd #ddd transparent;
+      *border-left-color: #ffffff;
+    }
+}
 
 @media only screen and (min-width: 991px) {
 
@@ -642,50 +366,21 @@ meter {
         margin-bottom: 0;
         min-height: 108px;
     }
-
-    div.confirmation-code-area > div.form-group {
-        width: 100% !important;
-    }
-
-    div.profile-filled-large {
-        padding-top: 80px;
-    }
-
-}
-
-
-@media only screen and (max-width: 991px) {
-
-    div#profile-menu-large {
-        display: none;
-    }
-
-    div.profile-filled-large {
-        padding-top: 40px;
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-
-    div#profile-menu-large ul {
-        margin-bottom: 50px;
-    }
 }
 
 @media only screen and (max-width: 767px) {
 
-    .profile-combo > .col-md-3 {
-        padding:0;
-    }
     .profile-head h3 {
         margin-top:0;
     }
-    button#changePassword.btn {
-        margin-left: 0 !important;
+    #content-block {
+        margin-top:70px;
+        max-width: 1200px;
     }
-    form#passwordsview-form div.checkbox,
-    form#resetpasswordstep2view-form div.checkbox {
-        padding-top: 0px;
+    .tab-content {
+        padding-right:0;
+        padding-left:0;
+        padding-top:20px;
     }
 }
 
@@ -706,6 +401,9 @@ meter {
         display: block;
     }
 
+    .tab-content.info-container {
+        padding-top: 72px;
+    }
 }
 
 a#go-to-mobiles-tab {

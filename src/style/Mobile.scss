@@ -1,6 +1,28 @@
 
 @import '../variables.scss';
 
+
+
+#mobilesview-form {
+  height: 100%;
+  overflow: hidden;
+}
+
+#mobilesview-form .form-group {
+  float: left;
+  margin-right: 10px;
+}
+
+#mobilesview-form .form-group input{
+  min-width: 300px;
+}
+
+#mobilesview-formadd {
+  float: left;
+  margin-top: 0;
+}
+
+
 @media only screen and (min-width: 992px) {
 
   #mobile-form .form-control-feedback {
