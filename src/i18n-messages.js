@@ -1723,7 +1723,7 @@ const msgs = {
 
 const unformatted = defineMessages({
 
-    'choose-language': {
+    'pd.choose-language': {
           id: "pd.choose-language",
           defaultMessage: `Choose language`
     },

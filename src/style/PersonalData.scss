@@ -9,7 +9,25 @@ body {
 @media only screen and (min-width: 992px) {
 
     #personal-data-button {
-      margin-top: 20px;
+        margin-top: 20px;
+    }
+
+    #personaldataview-form .form-group {
+	width: 46%;
+	display: inline-block;
+	vertical-align: top;
+    }
+
+    #personaldataview-form .form-control {
+	width: 92%;
+    }
+
+    #personaldataview-form label {
+	justify-content: left;
+    }
+
+    #personaldataview-form small.form-text {
+	min-height: 40px;
     }
 
 }

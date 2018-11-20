@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
+import { Form } from 'reactstrap';
 import TextInput from 'components/EduIDTextInput';
 import EduIDButton from 'components/EduIDButton';
 import { GET_USERDATA_SUCCESS } from "actions/PersonalData";
@@ -26,12 +27,10 @@ const validate = values => {
 let PdataForm = props => {
 
   return (
-    <form id="personaldataview-form"
-          className="form-horizontal"
+    <Form id="personaldataview-form"
+          inline={true}
           role="form">
       <fieldset id="personal-data-form" className="tabpane">
-       <div className="row">
-       <div className="col-lg-6">
         <Field component={TextInput}
                componentClass='text'
                name="given_name"
@@ -40,8 +39,6 @@ let PdataForm = props => {
                componentClass='text'
                name="surname"
                label={props.l10n('pd.surname')} />
-       </div>
-       <div className="col-lg-6">
         <Field component={TextInput}
                componentClass='text'
                name="display_name"
@@ -53,8 +50,6 @@ let PdataForm = props => {
                name="language"
                selectOptions={props.langs}
                label={props.l10n('pd.language')} />
-       </div>
-       </div>
       </fieldset>
       <EduIDButton className="btn-primary"
               id="personal-data-button"
@@ -62,7 +57,7 @@ let PdataForm = props => {
               onClick={props.handleSave}>
             {props.l10n('button_save')}
       </EduIDButton>
-    </form>
+    </Form>
   )
 };
 

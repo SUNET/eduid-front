@@ -32,8 +32,14 @@ const textInput = (props) => {
 	}
     }
     const errmsg = invalid && l10n(meta.error) || '';
-    const feedback = <FormFeedback valid={valid} invalid={invalid}>{errmsg}</FormFeedback>;
-    const help = <FormText>{helpBlock}</FormText>;
+    let feedback = '',
+	help;
+    if (errmsg !== '') {
+        feedback = <span className="eduid-field-error">{errmsg}</span>;
+        help = <FormText>{feedback} | {helpBlock}</FormText>;
+    } else {
+        help = <FormText>{helpBlock}</FormText>;
+    }
 
     let field;
 
@@ -72,9 +78,8 @@ const textInput = (props) => {
     return (
         <FormGroup id={input.name}>
           <Label for={name}>{label}</Label>
-	  {help}
           {field }
-          {feedback}
+	  {help}
         </FormGroup>
     );
 }
