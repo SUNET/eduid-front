@@ -30,29 +30,31 @@ let PdataForm = props => {
           className="form-horizontal"
           role="form">
       <fieldset id="personal-data-form" className="tabpane">
+       <div className="row">
+       <div className="col-lg-6">
         <Field component={TextInput}
-               componentClass='input'
-               type='text'
+               componentClass='text'
                name="given_name"
                label={props.l10n('pd.given_name')} />
         <Field component={TextInput}
-               componentClass='input'
-               type='text'
+               componentClass='text'
                name="surname"
                label={props.l10n('pd.surname')} />
+       </div>
+       <div className="col-lg-6">
         <Field component={TextInput}
-               componentClass='input'
-               type='text'
+               componentClass='text'
                name="display_name"
                label={props.l10n('pd.display_name')}
                placeholder={props.l10n('pd.display_name_input_placeholder')}
                helpBlock={props.l10n('pd.display_name_input_help_text')} />
         <Field component={TextInput}
                componentClass="select"
-               type='text'
                name="language"
                selectOptions={props.langs}
                label={props.l10n('pd.language')} />
+       </div>
+       </div>
       </fieldset>
       <EduIDButton className="btn-primary"
               id="personal-data-button"

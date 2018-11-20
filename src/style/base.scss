@@ -65,6 +65,11 @@ input:focus {
     outline:0;
 }
 
+.clear-right {
+    float: right;
+    clear: right;
+}
+
 .help {
     padding-top:10px;
 }
@@ -87,19 +92,9 @@ input:focus {
     left:0;
 }
 
-#wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -3em;
-}
-
-.push {
-  margin-top: 10px;
-}
-
-.container-fluid .jumbotron {
-    color: #fff;
+.intro h4 {
+    font-family: 'Roboto-Black';
+    font-size: 36px;
 }
 
 /* No javascript */
@@ -118,6 +113,10 @@ div#content-block {
 #content-block > h3:first-child{
     font-weight: bold;
     font-size: 32px;
+}
+
+.container-fluid .jumbotron {
+    color: #fff;
 }
 
 .jumbotron {
@@ -152,49 +151,6 @@ div#content-block {
     font-size: 14px;
 }
 
-/* Help */
-
-.jumbotron.eduid-help .panel-body,
-.jumbotron.eduid-help p {
-    font-size: 16px;
-    color: #222;
-}
-
-.jumbotron.eduid-help .panel-heading a {
-    font-size: 18px;
-}
-
-.jumbotron.eduid-help > h2,
-.jumbotron.eduid-error > h2,
-.jumbotron.eduid-notfound > h2,
-.jumbotron.eduid-success > h2 {
-    font-size: 40px;
-}
-
-/* Navigation
--------------------------------------------------- */
-
-div#eduid-dashboard-menu ul.nav.navbar-nav li a {
-    padding: 15px 0;
-}
-
-.masthead {
-  padding-top: 10px;
-  padding-bottom: 5px;
-}
-
-.masthead img {
-  max-width: 108px;
-  max-height: 110px;
-}
-
-.nav-pills li.nav-separator {
-  height: 34px;
-  width: 0px;
-  border-left: solid rgb(0, 136, 204) 1px;
-  display: inline-block;
-}
-
 /* forms ---------------*/
 
 form.form-inline div.alert {
@@ -203,10 +159,6 @@ form.form-inline div.alert {
 
 form.form-horizontal label {
   font-weight: 400;
-}
-
-.table-thin {
-  width: 50%;
 }
 
 .table-form .btn-link {
@@ -218,18 +170,22 @@ div.form-content {
   margin-top: 10px;
 }
 
-.askdialog-extra-info {
-  display: none;
-}
-
 .progress {
   margin-top: 10px;
   height: 10px;
 }
 
+.form-horizontal .form-group {
+    margin-left:0;
+}
 
 div.controls > span.uneditable-input {
     padding-top: 18px;
+}
+
+.form-group.has-error .help-block {
+    border: 2px solid #a94442;
+    padding: .3em 1em;
 }
 
 .form-control {
@@ -241,27 +197,6 @@ div.controls > span.uneditable-input {
 .form-control:focus {
     border-color:#fff;
     box-shadow:none;
-}
-.form-horizontal .form-group {
-    margin-left:0;
-}
-.intro h4 {
-    font-family: 'Roboto-Black';
-    font-size: 36px;
-}
-
-.form-group.has-error .help-block {
-    border: 2px solid #a94442;
-    padding: .3em 1em;
-}
-
-#askDialogInput {
-  min-width: 220px;
-}
-
-.clear-right {
-    float: right;
-    clear: right;
 }
 
 /* removing inlines */
@@ -352,22 +287,6 @@ ul.nav.navbar-nav li a {
       margin: 30px;
   }
 
-}
-
-@media only screen and (min-width: 992px) {
-
-    #personaldataview-form .form-group {
-      float: left;
-      width: 48%;
-    }
-
-    #personaldataview-form .form-group:nth-child(odd) {
-      margin-left: 2%;
-    }
-
-    #personaldataview-form .form-group:nth-child(even) {
-      margin-right: 2%;
-    }
 }
 
 @media only screen and (min-width: 960px) and (max-width: 1023px) {
@@ -725,18 +644,6 @@ div.modal-dialog div.modal-footer a {
     border-color: #ebccd1;
     border: 2px solid #a94442;
     padding: .3em 1em;
-}
-
-@media only screen and (max-width: 991px) {
-}
-
-@media only screen and (min-width: 992px) {
-}
-
-@media only screen and (max-width: 768px) {
-}
-
-@media only screen and (min-width: 768px) {
 }
 
 /* End of Messages

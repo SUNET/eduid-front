@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { FormText } from 'reactstrap';
 import { FormGroup } from 'reactstrap';
+import { FormFeedback } from 'reactstrap';
 import { Input } from 'reactstrap';
 import { Label } from 'reactstrap';
 import i18n from 'i18n-messages';
@@ -12,7 +13,7 @@ const textInput = (props) => {
     const {
         input,
         label,
-        type,
+        name,
         meta,
         selectOptions,
         componentClass,
@@ -21,12 +22,20 @@ const textInput = (props) => {
         helpBlock,
         placeholder
     } = props;
-    let validationState = '';
+    let valid = false,
+	invalid = false;
     if (meta.touched || meta.submitFailed) {
-        validationState = meta.error && 'invalid' || 'valid';
+	if (meta.error) {
+	    invalid = true;
+	} else {
+	    valid = true;
+	}
     }
-    const errmsg = validationState === 'invalid' && l10n(meta.error) || '';
-    let help, field;
+    const errmsg = invalid && l10n(meta.error) || '';
+    const feedback = <FormFeedback valid={valid} invalid={invalid}>{errmsg}</FormFeedback>;
+    const help = <FormText>{helpBlock}</FormText>;
+
+    let field;
 
     if (componentClass === 'select') {
         let options = [];
@@ -43,7 +52,9 @@ const textInput = (props) => {
             <Input type={componentClass}
                    disabled={disabled}
                    placeholder={placeholder}
-                   {...validationState}
+	           id={name}
+                   valid={valid}
+	           invalid={invalid}
                    {...input}>
                 {children}
             </Input>
@@ -52,19 +63,18 @@ const textInput = (props) => {
         field = <Input type={componentClass}
                        disabled={disabled}
                        placeholder={placeholder}
-                       {...validationState}
+	               id={name}
+		       valid={valid}
+		       invalid={invalid}
                        {...input} /> ;
     }
 
-    if (helpBlock === undefined) {
-        help = (<FormText>{errmsg}</FormText>);
-    } else {help = helpBlock}
-
     return (
         <FormGroup id={input.name}>
-          <Label>{label}</Label>
+          <Label for={name}>{label}</Label>
+	  {help}
           {field }
-          {help}
+          {feedback}
         </FormGroup>
     );
 }
