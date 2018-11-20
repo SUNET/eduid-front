@@ -157,13 +157,6 @@ class Main extends Component {
               <HeaderContainer />
               <ConnectedRouter history={history}>
                   <div id="content-block">
-                      <div className="row">
-                          <div className="col-lg-1"></div>
-                          <div className="col-lg-10">
-                              <NotificationsContainer />
-                          </div>
-                          <div className="col-lg-1"></div>
-                      </div>
                       <div className="row" id="profile-content-area">
                         {tabsElem}
                         <div className="tab-content col-lg-9 col-lg-offset-1">
