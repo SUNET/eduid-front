@@ -25,7 +25,7 @@ const textInput = (props) => {
     if (meta.touched || meta.submitFailed) {
         validationState = meta.error && 'invalid' || 'valid';
     }
-    const errmsg = validationState === 'error' && l10n(meta.error) || '';
+    const errmsg = validationState === 'invalid' && l10n(meta.error) || '';
     let help, field;
 
     if (componentClass === 'select') {
@@ -57,9 +57,7 @@ const textInput = (props) => {
     }
 
     if (helpBlock === undefined) {
-        help = (<div className="form-field-error-area">
-                    <FormText>{errmsg}</FormText>
-                </div>);
+        help = (<FormText>{errmsg}</FormText>);
     } else {help = helpBlock}
 
     return (

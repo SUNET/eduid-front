@@ -23,14 +23,14 @@ class EduIDButton extends Component {
                         classes = this.props.className + classes;
                     }
                     return (
-                      <button {...this.props}
+                      <Button {...this.props}
                               disabled={true}
                               className={classes}>
                           {this.props.children}
                         <div className="spin-holder">
                           <FontAwesomeIcon icon={faSpinner} />
                         </div>
-                      </button>
+                      </Button>
                     );
                 } else {
                     let classes = " eduid-button";
@@ -38,10 +38,10 @@ class EduIDButton extends Component {
                         classes = this.props.className + classes;
                     }
                     return (
-                      <button {...this.props}
+                      <Button {...this.props}
                               className={classes}>
                         {this.props.children}
-                      </button>
+                      </Button>
                     );
                 }
             }}

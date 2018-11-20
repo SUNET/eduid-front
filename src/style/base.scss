@@ -258,158 +258,11 @@ div.controls > span.uneditable-input {
 #askDialogInput {
   min-width: 220px;
 }
-/* Buttons
-    -------------------------------------------------------------------------------------- */
-
-.buttons .button {
-    padding: 0;
-}
-.buttons .button a {
-    padding:20px 40px;
-}
-
-.btn {
-    height:45px;
-    line-height:45px;
-    border-radius: 0;
-    padding: 0 40px;
-    text-transform:uppercase;
-    margin-bottom:10px;
-}
-.btn:hover {
-    text-decoration:none;
-}
-.btn-primary,
-.btn-success {
-    background:#58b78c;
-    border-color:#58b78c;
-}
-.btn-primary:hover,
-.btn-success:hover {
-    background:#4a9c77;
-    border-color:#4a9c77;
-}
-
-.btn-warning,
-.btn-warning:hover {
-    background:#dd650d;
-    border-color:#dd650d;
-}
-.btn-primary.disabled,
-.btn-primary.disabled:hover,
-.btn-primary.disabled:active,
-.btn-primary.disabled:focus {
-    background: #8ccbb5;
-    border-color:#8ccbb5;
-}
-input[type=submit].btn,
-button[type=submit].btn {
-    display: block;
-    margin-top: 20px;
-}
-
-.btn-social {
-    display: block;
-    color: white;
-    text-decoration: none;
-}
-
-.btn-social:hover {
-    color: white;
-    text-decoration: none;
-}
-
-.btn-icon {
-    display: inline-block;
-    vertical-align: middle;
-    width: 40px;
-    height: 40px;
-}
-
-.btn-text {
-    display: inline-block;
-    vertical-align: middle;
-    padding: 0 14px 0 10px;
-    margin: 0 0 0 4px;
-}
-
-.pre-big {
-    font-size: 150%;
-}
 
 .clear-right {
     float: right;
     clear: right;
 }
-
-/* Spinner on buttons */
-
-.spinner {
-  display: inline-block;
-  opacity: 0;
-  width: 0;
-
-  -webkit-transition: opacity 0.25s, width 0.25s;
-  -moz-transition: opacity 0.25s, width 0.25s;
-  -o-transition: opacity 0.25s, width 0.25s;
-  transition: opacity 0.25s, width 0.25s;
-}
-
-.has-spinner.loading {
-  opacity: 1;
-}
-
-.has-spinner.loading .spinner {
-  opacity: 1;
-  width: auto; /* This doesn't work, just fix for unkown width elements */
-}
-
-.has-spinner.btn-mini.active .spinner {
-    width: 10px;
-}
-
-.has-spinner.btn-sm.active .spinner {
-    width: 13px;
-}
-
-.has-spinner.btn.loading .spinner {
-    width: 16px;
-}
-
-.has-spinner.btn-lg.loading .spinner {
-    width: 19px;
-}
-
-/* Spinner
--------------------------------------------------- */
-
-.glyphicon-spin {
-  -webkit-animation: spin 1000ms infinite linear;
-  animation: spin 1000ms infinite linear;
-}
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-
-/* End Spinner
--------------------------------------------------- */
 
 /* removing inlines */
 
@@ -421,47 +274,16 @@ div.position-relative {
 /* custom inclusion of right, left and below tabs
    taken from http://www.bootply.com/100014 */
 
-.tabs-below > .nav-tabs,
-.tabs-right > .nav-tabs,
 .tabs-left > .nav-tabs {
   border-bottom: 0;
 }
 
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
+.tab-content > .tab-pane {
   display: none;
 }
 
-.tab-content > .active,
-.pill-content > .active {
+.tab-content > .active {
   display: block;
-}
-
-.tabs-below > .nav-tabs {
-  border-top: 1px solid #ddd;
-}
-
-.tabs-below > .nav-tabs > li {
-  margin-top: -1px;
-  margin-bottom: 0;
-}
-
-.tabs-below > .nav-tabs > li > a {
-  -webkit-border-radius: 0 0 4px 4px;
-     -moz-border-radius: 0 0 4px 4px;
-          border-radius: 0 0 4px 4px;
-}
-
-.tabs-below > .nav-tabs > li > a:hover,
-.tabs-below > .nav-tabs > li > a:focus {
-  border-top-color: #ddd;
-  border-bottom-color: transparent;
-}
-
-.tabs-below > .nav-tabs > a.active,
-.tabs-below > .nav-tabs > a.active:hover,
-.tabs-below > .nav-tabs > a.active:focus {
-  border-color: transparent #ddd #ddd #ddd;
 }
 
 ul.nav.navbar-nav li a {
@@ -601,7 +423,6 @@ ul.nav.navbar-nav li a {
       margin-bottom: 15px;
   }
 
-  #eduid-header-pills,
   #eduid-header-logos {
       display: block;
       position: relative;

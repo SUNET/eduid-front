@@ -279,39 +279,8 @@ table.table-striped tr > td:first-child {
     padding-left: 10px;
 }
 
-.text-muted {
-    background-color: #dd0d0d;
-    color: white;
-    padding: 0 25px;
-    height: 38px;
-    display: inline-block;
-    line-height: 38px;
-    text-transform:uppercase;
-    float:right;
-    cursor:pointer;
-}
-
 div.profile-filled-small {
     padding-top: 40px;
-}
-
-span.deformOrderbutton {
-    padding-right: 0.4em;
-    float:right;
-}
-
-span.deformClosebutton {
-    padding-right: 0.4em;
-}
-
-span.deformSeqItem.form-inline div {
-    display: inline-block;
-    margin-right: 1em;
-}
-
-span.deformOrderbuttonActive:before {
-    content:"\2195";
-    margin-right: 5px;
 }
 
 div.profile-filled div.title {

@@ -24,8 +24,6 @@ const validate = values => {
 }
 
 let PdataForm = props => {
-  let spinning = false;
-  if (props.is_fetching) spinning = true;
 
   return (
     <form id="personaldataview-form"

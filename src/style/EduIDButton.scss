@@ -1,6 +1,71 @@
 
 @import '../variables.scss';
 
+.buttons .button {
+    padding: 0;
+}
+.buttons .button a {
+    padding:20px 40px;
+}
+
+.btn.eduid-button {
+    height:45px;
+    line-height:45px;
+    border-radius: 0;
+    padding: 0 40px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+.btn.eduid-button:hover {
+    text-decoration:none;
+}
+.btn-primary.eduid-button,
+.btn-success.eduid-button {
+    background:#58b78c;
+    border-color:#58b78c;
+}
+.btn-primary.eduid-button:hover,
+.btn-success.eduid-button:hover {
+    background:#4a9c77;
+    border-color:#4a9c77;
+}
+
+.btn-warning.eduid-button,
+.btn-warning.eduid-button:hover {
+    background:#dd650d;
+    border-color:#dd650d;
+}
+.btn-primary.eduid-button.disabled,
+.btn-primary.eduid-button.disabled:hover,
+.btn-primary.eduid-button.disabled:active,
+.btn-primary.eduid-button.disabled:focus {
+    background: #8ccbb5;
+    border-color:#8ccbb5;
+}
+input[type=submit].btn.eduid-button,
+button[type=submit].btn.eduid-button {
+    display: block;
+    margin-top: 20px;
+}
+
+.btn-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+}
+
+.btn-text {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 14px 0 10px;
+    margin: 0 0 0 4px;
+}
+
+.pre-big {
+    font-size: 150%;
+}
+
 .has-spinner {
   cursor:progress;
   position: relative;
