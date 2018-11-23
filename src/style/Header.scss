@@ -114,7 +114,20 @@
   vertical-align: middle;
 }
 
-@media only screen and (min-width: 960px) and (max-width: 1053px) {
+@media only screen and (min-width: 960px) and (max-width: 1221px) {
+    .header {
+        padding-left:23px;
+        padding-right:20px;
+    }
+    .header nav li.button {
+        padding:0 20px;
+    }
+    .header nav li a {
+        font-size:14px;
+    }
+    .header nav li {
+        margin:0 13px;
+    }
 
     .header nav li {
         margin:0 8px;
@@ -144,25 +157,6 @@
         width: 90px;
         height: 30px;
         background-size: 90px;
-    }
-}
-
-@media only screen and (min-width: 960px) and (max-width: 1053px) {
-    .header {
-        padding-left:23px;
-        padding-right:20px;
-    }
-    .header .container {
-        width:700px;
-    }
-    .header nav li.button {
-        padding:0 20px;
-    }
-    .header nav li a {
-        font-size:14px;
-    }
-    .header nav li {
-        margin:0 13px;
     }
 }
 @media only screen and (min-width: 768px) and (max-width: 959px) {
