@@ -62,15 +62,19 @@ let PdataForm = props => {
 };
 
 PdataForm = reduxForm({
-  form: 'personal_data',
-  validate
+    form: 'personal_data',
+    destroyOnUnmount: false,
+    enableReinitialize: true,
+    keepDirtyOnReinitialize: true,
+    keepValuesOnReinitialize: true,
+    updateUnregisteredFields: true,
+    validate: validate
 })(PdataForm)
 
 PdataForm = connect(
-  state => ({
-    initialValues: state.personal_data.data,
-    enableReinitialize: true
-  })
+    state => ({
+	initialValues: state.personal_data.data
+    })
 )(PdataForm)
 
 
