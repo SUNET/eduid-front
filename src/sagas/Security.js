@@ -2,7 +2,7 @@
 import { put, select, call } from "redux-saga/effects";
 import { register } from 'u2f-api'
 import { checkStatus, ajaxHeaders, putCsrfToken,
-         getRequest, postRequest, failRequest } from "actions/common";
+         getRequest, postRequest, failRequest } from "sagas/common";
 import { getCredentials, getCredentialsFail,
          stopConfirmationPassword, getPasswordChangeFail,
          postConfirmDeletion, accountRemovedFail,

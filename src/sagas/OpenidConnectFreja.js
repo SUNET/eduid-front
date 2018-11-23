@@ -1,7 +1,7 @@
 
 import { put, select, call } from "redux-saga/effects";
 import { checkStatus, ajaxHeaders, putCsrfToken,
-         getRequest, failRequest } from "actions/common";
+         getRequest, failRequest } from "sagas/common";
 import * as actions from "actions/OpenidConnectFreja";
 
 export function* checkNINAndShowFrejaModal () {
