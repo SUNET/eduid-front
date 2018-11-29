@@ -296,6 +296,10 @@ ul.nav.navbar-nav li a {
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 
+    div.wrap.container#root {
+	max-width: 96%;
+    }
+
     .jumbotron h1,
     .jumbotron h2 {
         font-size: 54px;

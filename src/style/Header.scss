@@ -20,7 +20,7 @@
     background: url(../../img/logo-large.png) 1px 0 no-repeat;
 }
 .header ul {
-    margin: 0;
+    margin: 0 0 0 12px;
 }
 .header nav li {
     list-style: none;
@@ -161,8 +161,8 @@
 }
 @media only screen and (min-width: 768px) and (max-width: 959px) {
     .header {
-        padding-left:23px;
-        padding-right:20px;
+        padding-left:0;
+        padding-right:0;
     }
     .header .container {
         width:700px;
@@ -228,11 +228,6 @@
         width:80px;
         height:26px;
         background-size:78px;
-    }
-
-    div#eduid-logo-small {
-        margin-left: -90px;
-        margin-top: -4px;
     }
 
     #header .buttons {
@@ -360,6 +355,12 @@
         background-color: transparent;
         border-color: transparent;
     }
+
+    nav#eduid-navbar .navbar-nav .nav-item .nav-link {
+	padding-right: 0;
+        padding-left: 0;
+	padding-bottom: 10px;
+    }
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1279px) {
@@ -373,6 +374,6 @@
 @media only screen and (min-width: 1280px) {
 
     .header nav li {
-        margin:0 20px;
+        margin:0 14px;
     }
 }
