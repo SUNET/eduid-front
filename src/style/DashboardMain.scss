@@ -9,7 +9,9 @@
     font-family: 'Roboto-Black';
 }
 
-.profile-head a {
+.profile-head a,
+.profile-head a:not([href]):not([tabindex])
+{
     color:#59856b;
 }
 
@@ -386,19 +388,32 @@ meter {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 
-    div#profile-menu-small {
-        margin-left: -15px !important;
-        margin-right: -15px !important;
+    nav#profile-menu-small.navbar {
         padding-left: 0 !important;
         padding-right: 0 !important;
+	background-color: #f8f8f8;
+        border-color: #e7e7e7;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: .4rem 0;
+	margin-left: 25px;
     }
 
-    div.container-fluid .navbar-header {
-        display: none;
+    nav#profile-menu-small a.nav-link {
+	color: #495057;
+	font-size: 11pt;
+	padding: .5rem .7rem;
     }
 
-    ul.nav.navbar-nav.collapse {
-        display: block;
+    nav#profile-menu-small a.nav-link.active {
+	background-color: #f0f0f0;
+        border-color: #e0e0e0;
+	box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    }
+
+    div.profile-head,
+    div.tab-content {
+	padding-left: 40px;
     }
 
     .tab-content.info-container {

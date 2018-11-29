@@ -62,7 +62,7 @@ class Main extends Component {
         if (this.props.show_sidebar) {
 
             const size = this.props.window_size,
-                  sm = size === 'md',
+                  sm = size === 'sm',
                   tabs = [{id: 'personaldata', label: sm ? 'main.personal_data_label_sm' : 'main.personal_data'},
                           {id: 'nins', label: sm ? 'main.nins_label_sm' : 'main.nins'},
                           {id: 'emails', label: sm ? 'main.emails_label_sm' : 'main.emails'},
@@ -84,7 +84,7 @@ class Main extends Component {
                           );
                       });
                   };
-            if (size === 'xl' || size === 'lg') {
+            if (size === 'xl' || size === 'lg' || size === 'md') {
                 tabsElem = (
                     <div className='col-lg-3'>
                       <div className="profile-head">
@@ -105,16 +105,27 @@ class Main extends Component {
                       </div>
                     </div>
                 );
+            } else if (size === 'sm') {
+                tabsElem = ([
+                    <div className="col-sm-10 profile-head">
+                      <h3>{this.props.l10n('main.profile_title')}</h3>
+                      <PendingActionsContainer history={history} />
+                    </div>,
+                    <nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
+                      <ul className='nav nav-tabs'>
+                        {tabsElems('main-nav-tabs nav-link')}
+                      </ul>
+                    </nav>
+                ]);
             } else {
                 tabsElem = [(
-                    <div key="1" className='col-lg-3'>
+                    <div key="1">
                       <div className="profile-head">
                         <h3>{this.props.l10n('main.profile_title')}</h3>
                         <PendingActionsContainer history={history} />
                       </div>
                     </div>),
-                    (<nav key="2" className="navbar navbar-toggleable-md navbar-light" role="navigation">
-                       <div className="container-fluid">
+                    (<nav key="2" className="navbar navbar-light" role="navigation">
                          <div className="navbar-header">
                            <button type="button"
                                    className="navbar-toggler collapsed"
@@ -134,9 +145,10 @@ class Main extends Component {
                             {tabsElems('main-nav-tabs tab-link btn btn-block')}
                            </ul>
                          </Collapse>
-                       </div>
                      </nav>)];
                 
+            }
+            if (size === 'sm' || size === 'xs') {
                 profElem = (
                       <ul className="nav nav-stacked nav-tabs navbar-nav">
                         <ProfileFilledContainer />
@@ -157,7 +169,7 @@ class Main extends Component {
               <HeaderContainer />
               <ConnectedRouter history={history}>
                   <div id="content-block">
-                      <div className="row" id="profile-content-area">
+                      <div className="row tabbable well profile-combo" id="profile-content-area">
                         {tabsElem}
                         <div className="tab-content col-lg-9 col-lg-offset-1">
                           <div className="tab-pane active">
