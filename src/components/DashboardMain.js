@@ -119,33 +119,27 @@ class Main extends Component {
                 ]);
             } else {
                 tabsElem = [(
-                    <div key="1">
-                      <div className="profile-head">
-                        <h3>{this.props.l10n('main.profile_title')}</h3>
-                        <PendingActionsContainer history={history} />
-                      </div>
+                    <div className="col-xs-10 profile-head">
+                      <h3>{this.props.l10n('main.profile_title')}</h3>
+                      <PendingActionsContainer history={history} />
                     </div>),
-                    (<nav key="2" className="navbar navbar-light" role="navigation">
-                         <div className="navbar-header">
-                           <button type="button"
-                                   className="navbar-toggler collapsed"
-                                   onClick={() => this.setState({openTabs: !this.state.openTabs})}>
-                             <span className="sr-only">{this.props.l10n('main.toggle-navigation')}</span>
-                             <span className="icon-bar"></span>
-                             <span className="icon-bar"></span>
-                             <span className="icon-bar"></span>
-                           </button>
-                           <a className="navbar-brand" href="#">
-                            {this.props.l10n('main.menu')}
-                           </a>
-                         </div>
-  
-                         <Collapse isOpen={this.state.openTabs}>
-                           <ul className="nav nav-stacked nav-tabs navbar-nav">
-                            {tabsElems('main-nav-tabs tab-link btn btn-block')}
-                           </ul>
-                         </Collapse>
-                     </nav>)];
+                    (<nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
+                       <a className="navbar-brand" href="#">
+                        {this.props.l10n('main.menu')}
+                       </a>
+                       <button className="navbar-toggler"
+		               type="button"
+                               onClick={() => this.setState({openTabs: !this.state.openTabs})}>
+                         <span className="navbar-toggler-icon"></span>
+                       </button>
+                     </nav>),
+		     (<Collapse isOpen={this.state.openTabs} className="text-center">
+                       <nav className="navbar navbar-light bg-light">
+                         <ul className="nav nav-stacked nav-tabs navbar-nav">
+                           {tabsElems('main-nav-tabs tab-link btn btn-block')}
+                         </ul>
+                       </nav>
+                     </Collapse>)];
                 
             }
             if (size === 'sm' || size === 'xs') {
