@@ -123,17 +123,19 @@ class Main extends Component {
                       <h3>{this.props.l10n('main.profile_title')}</h3>
                       <PendingActionsContainer history={history} />
                     </div>),
-                    (<nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
-                       <a className="navbar-brand" href="#">
-                        {this.props.l10n('main.menu')}
-                       </a>
-                       <button className="navbar-toggler"
-		               type="button"
-                               onClick={() => this.setState({openTabs: !this.state.openTabs})}>
-                         <span className="navbar-toggler-icon"></span>
-                       </button>
-                     </nav>),
-		     (<Collapse isOpen={this.state.openTabs} className="text-center">
+                    (<div id="profile-navbar-xs">
+                      <nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
+                        <a className="navbar-brand" href="#">
+                          {this.props.l10n('main.menu')}
+		        </a>
+                        <button className="navbar-toggler"
+                                type="button"
+                                onClick={() => this.setState({openTabs: !this.state.openTabs})}>
+                          <span className="navbar-toggler-icon"></span>
+                        </button>
+                      </nav>
+		    </div>),
+                    (<Collapse isOpen={this.state.openTabs} className="text-center">
                        <nav className="navbar navbar-light bg-light">
                          <ul className="nav nav-stacked nav-tabs navbar-nav">
                            {tabsElems('main-nav-tabs tab-link btn btn-block')}

@@ -384,6 +384,11 @@ meter {
         padding-left:0;
         padding-top:20px;
     }
+    div#profile-navbar-xs {
+	width: 100%;
+	background-color: #f8f8f8;
+        border-color: #e7e7e7;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
