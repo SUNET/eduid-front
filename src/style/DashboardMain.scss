@@ -310,6 +310,17 @@ meter {
 	background-color: #f8f8f8;
         border-color: #e7e7e7;
     }
+    div#eduid-menu-items-xs {
+        width: 100%;
+    }
+    nav.navbar ul.nav li.nav-item{
+	text-transform: uppercase;
+	font-size: 10pt;
+    }
+    nav.navbar ul.nav li.nav-item a.active {
+        -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+        box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    }
 }
 
 @media only screen and (max-width: 991px) {
