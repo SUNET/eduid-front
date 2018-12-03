@@ -57,7 +57,8 @@ class Main extends Component {
     render () {
 
         let tabsElem = '',
-            profElem = '';
+            profElem = '',
+	    notsElem = '';
 
         if (this.props.show_sidebar) {
 
@@ -105,23 +106,30 @@ class Main extends Component {
                       </div>
                     </div>
                 );
+		notsElem = <NotificationsContainer />;
             } else if (size === 'sm') {
                 tabsElem = ([
-                    <div className="col-sm-10 profile-head">
+                    <div className="col-sm-3 profile-head">
                       <h3>{this.props.l10n('main.profile_title')}</h3>
                       <PendingActionsContainer history={history} />
                     </div>,
+                    (<div className="col-sm-7 profile-head">
+                      <NotificationsContainer />
+                    </div>),
                     <nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
                       <ul className='nav nav-tabs'>
                         {tabsElems('main-nav-tabs nav-link')}
                       </ul>
                     </nav>
                 ]);
-            } else {
+            } else if (size === 'xs') {
                 tabsElem = [(
-                    <div className="col-xs-10 profile-head">
+                    <div className="col-xs-3 profile-head">
                       <h3>{this.props.l10n('main.profile_title')}</h3>
                       <PendingActionsContainer history={history} />
+                    </div>),
+                    (<div className="col-xs-7 profile-head">
+                      <NotificationsContainer />
                     </div>),
                     (<div id="profile-navbar-xs">
                       <nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
@@ -169,7 +177,7 @@ class Main extends Component {
                         {tabsElem}
                         <div className="tab-content col-lg-9 col-lg-offset-1">
                           <div className="tab-pane active">
-                            <NotificationsContainer />
+                            { notsElem }
                             <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
                             <Route path="/profile/personaldata" component={PersonalDataContainer} />
                             <Route path="/profile/nins" component={NinsContainer} />
