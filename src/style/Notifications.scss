@@ -8,14 +8,22 @@
         height: 80px;
         overflow: hidden;
     }
+}
 
+@media only screen and (min-width: 768) and (max-width: 991px) {
+
+    div.notifications-area {
+        margin-left: 15%;
+	margin-top: 0;
+	margin-bottom: 0;
+    }
 }
 
 @media only screen and (max-width: 767px) {
 
     div.notifications-area {
-        margin-top: 80px;
-        min-height: 48px;
+        margin-left: 10%;
+	margin-top: 0;
+	margin-bottom: 0;
     }
-
 }

@@ -58,7 +58,7 @@ class Main extends Component {
 
         let tabsElem = '',
             profElem = '',
-	    notsElem = '';
+            notsElem = '';
 
         if (this.props.show_sidebar) {
 
@@ -106,16 +106,18 @@ class Main extends Component {
                       </div>
                     </div>
                 );
-		notsElem = <NotificationsContainer />;
+                notsElem = <NotificationsContainer />;
             } else if (size === 'sm') {
                 tabsElem = ([
                     <div className="col-sm-3 profile-head">
                       <h3>{this.props.l10n('main.profile_title')}</h3>
-                      <PendingActionsContainer history={history} />
                     </div>,
-                    (<div className="col-sm-7 profile-head">
+                    (<div className="col-sm-7">
                       <NotificationsContainer />
                     </div>),
+                    <div className="col-sm-10">
+                      <PendingActionsContainer history={history} />
+                    </div>,
                     <nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
                       <ul className='nav nav-tabs'>
                         {tabsElems('main-nav-tabs nav-link')}
@@ -123,26 +125,28 @@ class Main extends Component {
                     </nav>
                 ]);
             } else if (size === 'xs') {
-                tabsElem = [(
-                    <div className="col-xs-3 profile-head">
+                tabsElem = [
+                    (<div className="col-xs-3 profile-head">
                       <h3>{this.props.l10n('main.profile_title')}</h3>
-                      <PendingActionsContainer history={history} />
                     </div>),
                     (<div className="col-xs-7 profile-head">
                       <NotificationsContainer />
                     </div>),
+                    (<div className="col-xs-10 pending-actions-container">
+                      <PendingActionsContainer history={history} />
+                     </div>),
                     (<div id="profile-navbar-xs">
                       <nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
                         <a className="navbar-brand" href="#">
                           {this.props.l10n('main.menu')}
-		        </a>
+                        </a>
                         <button className="navbar-toggler"
                                 type="button"
                                 onClick={() => this.setState({openTabs: !this.state.openTabs})}>
                           <span className="navbar-toggler-icon"></span>
                         </button>
                       </nav>
-		    </div>),
+                    </div>),
                     (<Collapse isOpen={this.state.openTabs} className="text-center">
                        <nav className="navbar navbar-light bg-light">
                          <ul className="nav nav-stacked nav-tabs navbar-nav">

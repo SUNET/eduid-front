@@ -314,6 +314,17 @@ meter {
 
 @media only screen and (max-width: 991px) {
 
+    div.profile-head {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    div.notifications-area {
+        margin-left: 10%;
+	margin-top: 0;
+	margin-bottom: 0;
+    }
+
     div#content-block {
 	max-width: 98%;
     }
