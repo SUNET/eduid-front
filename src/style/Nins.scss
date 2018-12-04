@@ -2,12 +2,27 @@
 @import '../variables.scss';
 
 
-body {
-/*  background-color: $blue; */
-}
-
 div.nin-holder > button.btn-xs {
     height: 2em;
     line-height: 2em;
     margin-left: 30px;
+}
+.proofing-btn-help {
+    margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 767px) {
+
+    fieldset#nins-form div#norEduPersonNin input,
+    div.proofing-buttons button.eduid-button.proofing-button {
+	max-width: 500px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    fieldset#nins-form div#norEduPersonNin input,
+    div.proofing-buttons button.eduid-button.proofing-button {
+	width: 500px;
+    }
 }

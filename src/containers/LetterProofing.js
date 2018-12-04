@@ -15,8 +15,7 @@ const mapStateToProps = (state, props) => {
     confirmingLetter: confirmingLetter,
     verifyingLetter: state.letter_proofing.verifyingLetter,
     valid_nin: isValid('nins')(state),
-    nin: state.nins.nin,
-    is_fetching: state.letter_proofing.is_fetching
+    nin: state.nins.nin
   }
 };
 

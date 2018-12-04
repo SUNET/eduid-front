@@ -42,8 +42,7 @@ class OpenidConnectFreja extends Component {
       </div>
     );
 
-    let spinning = false, notOnMobileMsg, frejaButton, showModalButton, buttonGroup;
-    if (this.props.is_fetching) spinning = true;
+    let notOnMobileMsg, frejaButton, showModalButton, buttonGroup;
 
     if (!isMobile) {
       notOnMobileMsg = (
@@ -55,7 +54,6 @@ class OpenidConnectFreja extends Component {
     } else {
       frejaButton = (
           <EduIDButton className="btn-link"
-                       spinning={spinning}
                        onClick={this.props.handleInitializeFrejaProofing}>
             {this.props.l10n('ocf.open_app')}
             </EduIDButton>
@@ -63,7 +61,6 @@ class OpenidConnectFreja extends Component {
       if (this.props.iaRequestData) {
         frejaButton = (
           <EduIDButton className="btn-link"
-                       spinning={spinning}
                        href={"frejaeid://identify?iaRequestData=" + this.props.iaRequestData}>
             {this.props.l10n('ocf.open_app')}
             </EduIDButton>
@@ -83,7 +80,7 @@ class OpenidConnectFreja extends Component {
     }
 
     showModalButton = (
-      <EduIDButton className="btn-primary"
+      <EduIDButton className="btn-primary proofing-button"
               id="openid-connect-freja-show-modal"
               onClick={this.props.handleShowModal}
               block>
@@ -98,7 +95,7 @@ class OpenidConnectFreja extends Component {
               role="form">
           <fieldset id="openid-connect-freja">
             {showModalButton}
-            <FormText color="muted">{this.props.l10n('ocf.initialize_proofing_help_text')}</FormText>
+            <FormText className="proofing-btn-help" color="muted">{this.props.l10n('ocf.initialize_proofing_help_text')}</FormText>
           </fieldset>
         </form>
 
@@ -137,7 +134,6 @@ class OpenidConnectFreja extends Component {
 
 OpenidConnectFreja.propTypes = {
   iaRequestData: PropTypes.string,
-  is_fetching: PropTypes.bool,
   handleInitializeFrejaProofing: PropTypes.func,
   handleShowModal: PropTypes.func,
   handleHideModal: PropTypes.func,

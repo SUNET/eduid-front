@@ -9,7 +9,6 @@ import i18n from 'i18n-messages';
 const mapStateToProps = (state, props) => {
   return {
     iaRequestData: state.openid_freja_data.iaRequestData,
-    is_fetching: state.openid_freja_data.is_fetching,
     nin: state.openid_freja_data.nin,
     showModal: state.openid_freja_data.showModal,
     error: state.openid_freja_data.error,

@@ -12,7 +12,6 @@ const mapStateToProps = (state, props) => {
     qr_img: state.openid_data.qr_img,
     qr_code: state.openid_data.qr_code,
     nin: state.openid_data.nin,
-    is_fetching: state.openid_data.is_fetching,
     showModal: state.openid_data.showModal,
     error: state.openid_data.error
   }

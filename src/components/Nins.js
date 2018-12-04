@@ -48,13 +48,14 @@ let NinForm = props => {
                  componentClass="input"
                  type="text"
                  name="norEduPersonNin"
+	         className="nin-proofing-input"
                  placeholder={props.l10n('nins.input_placeholder')}
                  helpBlock={props.l10n('nins.input_help_text')} />
         </fieldset>
-        <ButtonGroup vertical="true">
-          {props.buttons}
-        </ButtonGroup>
-      </form>)
+      </form>),
+      (<ButtonGroup vertical="true">
+        {props.buttons}
+      </ButtonGroup>)
     ]
 };
 
@@ -96,7 +97,7 @@ class Nins extends Component {
     }
     if (ninStatus === 'nonin') {
         ninInput = (
-            <div>
+            <div className="proofing-buttons">
               <p>{this.props.l10n('nins.help_text')}</p>
               <NinForm buttons={vettingButtons} {...this.props} />
             </div>
@@ -140,7 +141,7 @@ class Nins extends Component {
     }
 
     return (
-        <div>
+        <div className="proofing-buttons">
           <div className="intro">
               <h4>{this.props.l10n('nins.main_title')}</h4>
                 <p>{this.props.l10n('nins.justification')}</p>

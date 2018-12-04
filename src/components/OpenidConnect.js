@@ -14,9 +14,6 @@ import 'style/OpenidConnect.scss';
 class OpenidConnect extends Component {
 
   render () {
-    let spinning = false;
-
-    if (this.props.is_fetching) spinning = true;
 
     const seleg_instructions = (
       <div className="well" id="openid-connect-seleg-instructions">
@@ -35,14 +32,13 @@ class OpenidConnect extends Component {
               className="form-horizontal"
               role="form">
           <fieldset id="openid-connect">
-            <EduIDButton className="btn-primary"
-                         spinning={spinning}
+            <EduIDButton className="btn-primary proofing-button"
                          disabled={this.props.disabled}
                          onClick={this.props.handleShowModal}
                          block>
               {this.props.l10n('oc.initialize_proofing')}
             </EduIDButton>
-            <FormText color="muted">{this.props.l10n('oc.initialize_proofing_help_text')}</FormText>
+            <FormText className="proofing-btn-help" color="muted">{this.props.l10n('oc.initialize_proofing_help_text')}</FormText>
           </fieldset>
         </form>
 
@@ -87,7 +83,6 @@ OpenidConnect.propTypes = {
   disabled: PropTypes.bool,
   qr_img: PropTypes.string,
   qr_code: PropTypes.string,
-  is_fetching: PropTypes.bool,
   handleShowModal: PropTypes.func,
   handleHideModal: PropTypes.func,
   showModal: PropTypes.bool
