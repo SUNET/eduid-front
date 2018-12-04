@@ -8,16 +8,12 @@ import i18n from 'i18n-messages';
 
 
 const mapStateToProps = (state, props) => {
-  const pdata_fetching = state.personal_data ?
-                         state.personal_data.is_fetching :
-                         false;
   return {
      nins: state.nins.nins,
      is_configured: state.config.is_configured,
      proofing_methods: state.config.PROOFING_METHODS,
      valid_nin: isValid('nins')(state),
      nin: state.nins.nin,
-     is_fetching: state.nins.is_fetching || pdata_fetching,
      message: state.nins.message
   }
 };

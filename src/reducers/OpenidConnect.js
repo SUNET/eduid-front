@@ -3,7 +3,6 @@ import * as actions from "actions/OpenidConnect";
 
 
 const openidData = {
-    is_fetching: false,
     failed: false,
     error: "",
     // as default, a gif with a single pixel.
@@ -19,7 +18,6 @@ let openidConnectReducer = (state=openidData, action) => {
     case actions.POST_OIDC_PROOFING_PROOFING:
       return {
         ...state,
-        is_fetching: true,
         failed: false,
         nin: action.payload.nin
       };
@@ -28,13 +26,11 @@ let openidConnectReducer = (state=openidData, action) => {
         ...state,
         qr_img: action.payload.qr_img,
         qr_code: action.payload.qr_code,
-        is_fetching: false,
         failed: false
       };
     case actions.POST_OIDC_PROOFING_PROOFING_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         error: true,
         message: action.payload.message

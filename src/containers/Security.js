@@ -14,11 +14,9 @@ const mapStateToProps = (state, props) => {
      credentials: state.security.credentials,
      confirming_change: state.security.confirming_change,
      confirming_deletion: state.security.confirming_deletion,
-     is_fetching: state.security.is_fetching,
      redirect_to: state.security.location,
      deleted: state.security.deleted,
      u2f_asking_description: state.security.u2f_asking_description,
-     u2f_is_fetching: state.security.u2f_is_fetching,
      u2f_is_enrolled: state.security.u2f_is_enrolled
   }
 };

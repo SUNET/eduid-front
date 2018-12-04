@@ -22,8 +22,7 @@ class Security extends Component {
         window.location.href = 'https://eduid.se';
         return null
     }
-    let spinning = false,
-        creds_table = this.props.credentials.map((cred, index) => {
+    let creds_table = this.props.credentials.map((cred, index) => {
             let btnRemove = '';
             let btnVerify = '';
             if (cred.credential_type === 'security.u2f_credential_type') {
@@ -64,7 +63,6 @@ class Security extends Component {
             );
         }, this);
 
-    if (this.props.is_fetching || this.props.u2f_is_fetching) spinning = true;
     return (
         <div>
           <div className="intro">
@@ -87,7 +85,6 @@ class Security extends Component {
           <div id="change-password">
             <EduIDButton bsStyle="primary"
                         id="security-change-button"
-                        spinning={spinning}
                         onClick={this.props.handleStartConfirmationPassword}>
                       {this.props.l10n('security.change_password')}
             </EduIDButton>
@@ -95,7 +92,6 @@ class Security extends Component {
           <div id="add-u2f-token">
             <EduIDButton bsStyle="primary"
                         id="security-u2f-button"
-                        spinning={spinning}
                         onClick={this.props.handleStartAskingU2FDescription}>
                       {this.props.l10n('security.add_u2f_token')}
             </EduIDButton>
@@ -107,7 +103,6 @@ class Security extends Component {
               </div>
               <EduIDButton className="btn btn-danger"
                            id="delete-button"
-                           spinning={spinning}
                            onClick={this.props.handleStartConfirmationDeletion}>
                         {this.props.l10n('security.delete_account')}
               </EduIDButton>
@@ -137,8 +132,7 @@ class Security extends Component {
               with_resend_link={false}
               showModal={Boolean(this.props.u2f_asking_description)}
               closeModal={this.props.handleStopAskingU2FDescription}
-              handleConfirm={this.props.handleStartU2fRegistration}
-              is_fetching={false} />
+              handleConfirm={this.props.handleStartU2fRegistration} />
 
           <Modal isOpen={this.props.u2f_is_enrolled}>
               <ModalHeader>
@@ -167,8 +161,6 @@ Security.propTypes = {
   creation_date: PropTypes.string,
   last_used: PropTypes.string,
   langs: PropTypes.array,
-  is_fetching: PropTypes.bool,
-  u2f_is_fetching: PropTypes.bool,
   confirming_change: PropTypes.bool,
   deleted: PropTypes.bool,
   handleStartConfirmationPassword: PropTypes.func,

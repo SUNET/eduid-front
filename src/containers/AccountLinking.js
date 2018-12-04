@@ -7,13 +7,9 @@ import i18n from 'i18n-messages';
 
 
 const mapStateToProps = (state, props) => {
-  const pdata_fetching = state.personal_data ?
-                         state.personal_data.is_fetching :
-                         false;
   return {
      orcid: state.account_linking.orcid,
      is_configured: state.config.is_configured,
-     is_fetching: state.account_linking.is_fetching || pdata_fetching,
      message: state.account_linking.message
   }
 };

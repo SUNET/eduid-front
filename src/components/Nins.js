@@ -79,7 +79,6 @@ class Nins extends Component {
         credsTable = '',
         vettingButtons = '',
         ninInput = '',
-        spinning = false,
         verifiedNin = '';
     if (this.props.is_configured) {
         const vettingBtns = vettingRegistry(!this.props.valid_nin);
@@ -110,7 +109,6 @@ class Nins extends Component {
                   <EduIDButton className="btn-danger"
                                id={'button-rm-nin-'+nin.number}
                                className="btn-sm"
-                               spinning={spinning}
                                onClick={this.props.handleDelete}>
                       {this.props.l10n('nins.button_delete')}
                   </EduIDButton>

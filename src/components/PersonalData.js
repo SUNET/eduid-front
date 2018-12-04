@@ -100,7 +100,6 @@ class PersonalData extends Component {
 PersonalData.propTypes = {
   data: PropTypes.object,
   langs: PropTypes.array,
-  is_fetching: PropTypes.bool
 }
 
 export default PersonalData;

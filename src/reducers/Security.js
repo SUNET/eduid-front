@@ -3,7 +3,6 @@ import * as actions from "actions/Security";
 
 
 const security = {
-    is_fetching: false,
     failed: false,
     error: '',
     message: '',
@@ -15,7 +14,6 @@ const security = {
     deleted: false,
     u2f_asking_description: false,
     u2f_token_description: '',
-    u2f_is_fetching: false,
     u2f_failed: false,
     u2f_is_enrolled: false,
     u2f_request: {},
@@ -26,21 +24,14 @@ const security = {
 
 let securityReducer = (state=security, action) => {
   switch (action.type) {
-    case actions.GET_CREDENTIALS:
-      return {
-        ...state,
-        is_fetching: true
-      };
     case actions.GET_CREDENTIALS_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        is_fetching: false
       };
     case actions.GET_CREDENTIALS_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         error: action.payload.error,
         message: action.payload.message
@@ -53,19 +44,16 @@ let securityReducer = (state=security, action) => {
     case actions.STOP_CHANGE_PASSWORD:
       return {
         ...state,
-        is_fetching: false,
         confirming_change: false
       };
     case actions.GET_CHANGE_PASSWORD:
       return {
         ...state,
         confirming_change: false,
-        is_fetching: true
       };
     case actions.GET_CHANGE_PASSWORD_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         error: action.payload.error,
         message: action.payload.message
@@ -83,7 +71,6 @@ let securityReducer = (state=security, action) => {
     case actions.POST_DELETE_ACCOUNT:
       return {
         ...state,
-        is_fetching: true,
         failed: false,
         confirming_deletion: false
       };
@@ -91,14 +78,12 @@ let securityReducer = (state=security, action) => {
       return {
         ...state,
         confirming_deletion: false,
-        is_fetching: false,
         failed: false,
         location: action.payload.location
       };
     case actions.POST_DELETE_ACCOUNT_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         error: action.payload.error,
         message: action.payload.message
@@ -106,7 +91,6 @@ let securityReducer = (state=security, action) => {
     case actions.GET_DELETE_ACCOUNT:
       return {
         ...state,
-        is_fetching: true,
         failed: false,
         confirming_deletion: false
       };
@@ -114,14 +98,12 @@ let securityReducer = (state=security, action) => {
       return {
         ...state,
         confirming_deletion: false,
-        is_fetching: false,
         failed: false,
         deleted: true
       };
     case actions.GET_DELETE_ACCOUNT_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         error: action.payload.error,
         message: action.payload.message
@@ -129,21 +111,18 @@ let securityReducer = (state=security, action) => {
     case actions.START_U2F_REGISTRATION:
       return {
         ...state,
-        u2f_is_fetching: true,
         u2f_failed: false,
         u2f_token_description: action.payload.description
       };
     case actions.STOP_U2F_REGISTRATION:
       return {
         ...state,
-        u2f_is_fetching: false,
         u2f_is_enrolled: false,
         u2f_failed: false
       };
     case actions.START_ASK_U2F_DESCRIPTION:
       return {
         ...state,
-        u2f_is_fetching: false,
         u2f_failed: false,
         u2f_is_enrolled: false,
         u2f_asking_description: true
@@ -151,7 +130,6 @@ let securityReducer = (state=security, action) => {
     case actions.STOP_ASK_U2F_DESCRIPTION:
       return {
         ...state,
-        u2f_is_fetching: false,
         u2f_failed: false,
         u2f_is_enrolled: false,
         u2f_asking_description: false
@@ -159,7 +137,6 @@ let securityReducer = (state=security, action) => {
     case actions.GET_U2F_ENROLL_FAIL:
       return {
         ...state,
-        u2f_is_fetching: false,
         u2f_failed: true,
         u2f_is_enrolled: false,
         error: action.payload.error,
@@ -171,7 +148,6 @@ let securityReducer = (state=security, action) => {
       });
       return {
         ...state,
-        u2f_is_fetching: false,
         u2f_failed: false,
         u2f_is_enrolled: true,
         u2f_request: action.payload
@@ -179,7 +155,6 @@ let securityReducer = (state=security, action) => {
     case actions.GET_U2F_REGISTER_FAIL:
       return {
         ...state,
-        u2f_is_fetching: false,
         u2f_failed: true,
         u2f_is_enrolled: false,
         error: action.payload.error,
@@ -191,8 +166,6 @@ let securityReducer = (state=security, action) => {
         ...action.payload,
         u2f_failed: false,
         u2f_is_enrolled: false,
-        u2f_is_fetching: false,
-        is_fetching: false
       };
     case actions.POST_U2F_REMOVE:
       return {
@@ -200,16 +173,12 @@ let securityReducer = (state=security, action) => {
         u2f_token_remove: action.payload.token,
         u2f_failed: false,
         u2f_is_enrolled: false,
-        u2f_is_fetching: true,
-        is_fetching: false
       };
     case actions.POST_U2F_REMOVE_FAIL:
       return {
         ...state,
         u2f_failed: true,
         u2f_is_enrolled: false,
-        u2f_is_fetching: false,
-        is_fetching: false
       };
     case actions.POST_U2F_REMOVE_SUCCESS:
       return {
@@ -217,8 +186,6 @@ let securityReducer = (state=security, action) => {
         ...action.payload,
         u2f_failed: false,
         u2f_is_enrolled: false,
-        u2f_is_fetching: false,
-        is_fetching: false
       };
     case actions.POST_U2F_VERIFY:
       return {
@@ -226,16 +193,12 @@ let securityReducer = (state=security, action) => {
         u2f_token_verify: action.payload.token,
         u2f_failed: false,
         u2f_is_enrolled: false,
-        u2f_is_fetching: true,
-        is_fetching: false
       };
     case actions.POST_U2F_VERIFY_FAIL:
       return {
         ...state,
         u2f_failed: true,
         u2f_is_enrolled: false,
-        u2f_is_fetching: false,
-        is_fetching: false
       };
     default:
       return state;

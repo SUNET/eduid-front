@@ -9,7 +9,6 @@ const letterData = {
     letter_sent: '',
     letter_expires: '',
     letter_expired: false,
-    is_fetching: false,
     failed: false,
     error: "",
     message: ''
@@ -33,7 +32,6 @@ let letterProofingReducer = (state=letterData, action) => {
     case actions.GET_LETTER_PROOFING_PROOFING:
       return {
         ...state,
-        is_fetching: true,
         failed: false
       };
     case actions.GET_LETTER_PROOFING_PROOFING_SUCCESS:
@@ -47,7 +45,6 @@ let letterProofingReducer = (state=letterData, action) => {
       return {
         ...state,
         ...action.payload,
-        is_fetching: false,
         failed: false,
         verifyingLetter: verifying,
         confirmingLetter: confirming
@@ -55,7 +52,6 @@ let letterProofingReducer = (state=letterData, action) => {
     case actions.GET_LETTER_PROOFING_PROOFING_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         verifyingLetter: false,
         confirmingLetter: false
@@ -63,14 +59,12 @@ let letterProofingReducer = (state=letterData, action) => {
     case actions.POST_LETTER_PROOFING_PROOFING:
       return {
         ...state,
-        is_fetching: true,
         failed: false
       };
     case actions.POST_LETTER_PROOFING_PROOFING_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        is_fetching: false,
         failed: false,
         confirmingLetter: false,
         verifyingLetter: false
@@ -78,7 +72,6 @@ let letterProofingReducer = (state=letterData, action) => {
     case actions.POST_LETTER_PROOFING_PROOFING_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         confirmingLetter: false,
         verifyingLetter: false
@@ -87,14 +80,12 @@ let letterProofingReducer = (state=letterData, action) => {
       return {
         ...state,
         ...action.payload,
-        is_fetching: true,
         failed: false
       };
     case actions.POST_LETTER_PROOFING_CODE_SUCCESS:
       return {
         ...state,
         message: action.payload.message,
-        is_fetching: false,
         failed: false,
         confirmingLetter: false,
         verifyingLetter: false
@@ -102,7 +93,6 @@ let letterProofingReducer = (state=letterData, action) => {
     case actions.POST_LETTER_PROOFING_CODE_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         confirmingLetter: false,
         verifyingLetter: false

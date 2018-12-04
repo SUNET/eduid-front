@@ -13,8 +13,7 @@ const mapStateToProps = (state, props) => {
   }
   return {
     data: state.personal_data.data,
-    langs: langs,
-    is_fetching: state.personal_data.is_fetching
+    langs: langs
   }
 };
 

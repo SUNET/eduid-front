@@ -11,8 +11,6 @@ import 'style/AccountLinking.scss';
 class AccountLinking extends Component {
 
   render () {
-    let spinning = false;
-    if (this.props.is_fetching) spinning = true;
     return (
         <div>
           <div className="intro">
@@ -33,7 +31,6 @@ AccountLinking.propTypes = {
   handleOrcidConnect: PropTypes.func,
   handleOrcidDelete: PropTypes.func,
   langs: PropTypes.array,
-  is_fetching: PropTypes.bool,
 };
 
 export default AccountLinking;
