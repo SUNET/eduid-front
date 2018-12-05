@@ -12,10 +12,6 @@ import * as chpassActions from "actions/ChangePassword";
 import * as frejaActions from "actions/OpenidConnectFreja";
 import * as emailsActions from "actions/Emails";
 
-// see the config params in eduid-developer/etcd/conf.yaml
-const configData = {
-    window_size: actions.getWindowSize(),
-    show_sidebar: true,
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
