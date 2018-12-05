@@ -13,9 +13,6 @@ import NotificationsContainer from 'containers/Notifications';
 class DeleteModal extends Component {
 
   render () {
-    let spinning = false;
-    // if (this.props.is_fetching) spinning = true;
-    // if (this.props.resending.is_fetching) spinning = true;
 
     return (
       <div id="securityDeleteDialog"
@@ -38,7 +35,6 @@ class DeleteModal extends Component {
                          <EduIDButton className="btn btn-danger btn-default"
                               id="confirm-delete-account-button"
                               ref={(button) => {this.deleteButton = button}}
-                              spinning={spinning}
                               onClick={this.props.handleConfirm} >
                             {this.props.l10n('security.confirm_button')}
                         </EduIDButton>
@@ -62,7 +58,6 @@ DeleteModal.propTypes = {
   showModal: PropTypes.bool,
   closeModal: PropTypes.func,
   handleConfirm: PropTypes.func,
-  is_fetching: PropTypes.bool,
 }
 
 export default i18n(DeleteModal);

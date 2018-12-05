@@ -10,10 +10,7 @@ import 'style/AccountLinking.scss';
 class Orcid extends Component {
 
   render () {
-    let spinning = false;
     let orcidData;
-
-    if (this.props.is_fetching) spinning = true;
 
     const orcidIntro = (
         <div className="orcid-intro">
@@ -42,7 +39,7 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <div className="orcid-data">
-          <EduIDButton bsStyle="primary" id="connect-orcid-button" onClick={this.props.handleOrcidConnect} spinning={spinning}>
+          <EduIDButton bsStyle="primary" id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
             <div className="orcid-logo-container"><span className="orcid-logo" /></div> {this.props.l10n('orc.connect')}
           </EduIDButton>
           <p>{this.props.l10n('orc.about_link')}</p>
@@ -63,7 +60,6 @@ Orcid.propTypes = {
   handleOrcidConnect: PropTypes.func,
   handleOrcidDelete: PropTypes.func,
   langs: PropTypes.array,
-  is_fetching: PropTypes.bool,
 };
 
 export default Orcid;

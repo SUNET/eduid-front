@@ -26,9 +26,6 @@ const getConfirmForm = inputName => {
 
     let ConfirmForm = props => {
 
-        let spinning = false;
-        if (props.is_fetching) spinning = true;
-
         let resendMarkup = '';
         if (props.with_resend_link) {
             resendMarkup = (
@@ -67,7 +64,6 @@ const getConfirmForm = inputName => {
                     </Button>
                     <EduIDButton className="btn-primary"
                           className="ok-button"
-                          spinning={spinning}
                           disabled={props.invalid}
                           onClick={props.handleConfirm} >
                         {props.l10n('cm.ok')}
@@ -112,7 +108,6 @@ ConfirmModal.propTypes = {
   handleResend: PropTypes.func,
   closeModal: PropTypes.func,
   showModal: PropTypes.bool,
-  is_fetching: PropTypes.bool,
   with_resend_link: PropTypes.bool
 };
 
