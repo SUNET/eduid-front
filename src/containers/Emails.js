@@ -8,14 +8,10 @@ import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from 'i18n-messages';
 
 const mapStateToProps = (state, props) => {
-  const pdata_fetching = state.personal_data ?
-                         state.personal_data.is_fetching :
-                         false;
   return {
     emails: state.emails.emails,
     valid_email: isValid('emails')(state),
     email: state.emails.email,
-    is_fetching: state.emails.is_fetching || pdata_fetching,
     confirming: state.emails.confirming,
     resending: state.emails.resending,
   }

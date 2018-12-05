@@ -3,7 +3,6 @@ import * as actions from "actions/OpenidConnectFreja";
 
 
 const openidFrejaData = {
-  is_fetching: false,
   failed: false,
   error: null,
   iaRequestData: "",
@@ -16,20 +15,17 @@ let openidConnectFrejaReducer = (state=openidFrejaData, action) => {
     case actions.GET_OIDC_PROOFING_FREJA_PROOFING:
       return {
         ...state,
-        is_fetching: true,
         failed: false
       };
     case actions.GET_OIDC_PROOFING_FREJA_PROOFING_SUCCESS:
       return {
         ...state,
-        is_fetching: false,
         failed: false,
         iaRequestData: action.payload.iaRequestData,
       };
     case actions.GET_OIDC_PROOFING_FREJA_PROOFING_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         error: true,
         message: action.payload.message
@@ -37,20 +33,17 @@ let openidConnectFrejaReducer = (state=openidFrejaData, action) => {
     case actions.POST_OIDC_PROOFING_FREJA_PROOFING:
       return {
         ...state,
-        is_fetching: true,
         failed: false
       };
     case actions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS:
       return {
         ...state,
-        is_fetching: false,
         failed: false,
         iaRequestData: action.payload.iaRequestData,
       };
     case actions.POST_OIDC_PROOFING_FREJA_PROOFING_FAIL:
       return {
         ...state,
-        is_fetching: false,
         failed: true,
         error: true,
         message: action.payload.message

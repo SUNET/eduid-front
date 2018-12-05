@@ -3,7 +3,6 @@ import * as actions from "actions/ChangePassword";
 
 
 const chpass = {
-    is_fetching: false,
     failed: false,
     error: '',
     message: '',
@@ -20,20 +19,17 @@ let chpassReducer = (state=chpass, action) => {
     case actions.GET_SUGGESTED_PASSWORD:
       return {
         ...state,
-        is_fetching: true
       };
     case actions.GET_SUGGESTED_PASSWORD_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        is_fetching: false
       };
     case actions.GET_SUGGESTED_PASSWORD_FAIL:
       return {
         ...state,
         error: action.payload.error,
         message: action.payload.message,
-        is_fetching: false,
         failed: true
       };
     case actions.CHOOSE_SUGGESTED_PASSWORD:
@@ -56,7 +52,6 @@ let chpassReducer = (state=chpass, action) => {
     case actions.PASSWORD_NOT_READY:
       return {
         ...state,
-        is_fetching: false,
         failed: false,
         error: action.payload.error,
         message: action.payload.message,
@@ -71,21 +66,18 @@ let chpassReducer = (state=chpass, action) => {
     case actions.START_PASSWORD_CHANGE:
       return {
         ...state,
-        is_fetching: true,
         failed: false,
       };
     case actions.POST_SECURITY_CHANGE_PASSWORD_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        is_fetching: false,
         failed: false
       };
     case actions.POST_SECURITY_CHANGE_PASSWORD_FAIL:
       return {
         ...state,
         error: action.payload.message,
-        is_fetching: false,
         failed: true
       };
     case actions.SET_ZXCVBN:

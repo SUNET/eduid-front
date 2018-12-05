@@ -6,7 +6,16 @@ import * as lmobileActions from "actions/LookupMobileProofing";
 import * as ninsActions from "actions/Nins";
 import * as letterActions from "actions/LetterProofing";
 import * as secActions from "actions/Security";
-import * as orcidActions from "actions/Orcid";
+import * as orcidActions from "actions/AccountLinking";
+import * as phoneActions from "actions/Mobile";
+import * as chpassActions from "actions/ChangePassword";
+import * as frejaActions from "actions/OpenidConnectFreja";
+import * as emailsActions from "actions/Emails";
+
+// see the config params in eduid-developer/etcd/conf.yaml
+const configData = {
+    window_size: actions.getWindowSize(),
+    show_sidebar: true,
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
@@ -36,15 +45,27 @@ const fetchingActions = [
     secActions.POST_DELETE_ACCOUNT,
     secActions.GET_DELETE_ACCOUNT,
     secActions.START_U2F_REGISTRATION,
-    secActions.GET_U2F_ENROLL,
-    secActions.GET_U2F_REGISTER,
-    secActions.POST_U2F_BIND,
     secActions.POST_U2F_REMOVE,
     secActions.POST_U2F_VERIFY,
     orcidActions.GET_ORCID,
-    orcidActions.GET_PERSONAL_DATA_ORCID,
     orcidActions.GET_ORCID_CONNECT,
     orcidActions.POST_ORCID_REMOVE,
+    phoneActions.POST_MOBILE,
+    phoneActions.START_CONFIRMATION,
+    phoneActions.START_RESEND_MOBILE_CODE,
+    phoneActions.START_VERIFY,
+    phoneActions.POST_MOBILE_REMOVE,
+    phoneActions.POST_MOBILE_PRIMARY,
+    chpassActions.GET_SUGGESTED_PASSWORD,
+    chpassActions.START_PASSWORD_CHANGE,
+    frejaActions.GET_OIDC_PROOFING_FREJA_PROOFING,
+    frejaActions.POST_OIDC_PROOFING_FREJA_PROOFING,
+    emailsActions.POST_EMAIL,
+    emailsActions.START_CONFIRMATION,
+    emailsActions.START_RESEND_EMAIL_CODE,
+    emailsActions.START_VERIFY,
+    emailsActions.POST_EMAIL_REMOVE,
+    emailsActions.POST_EMAIL_PRIMARY,
 ];
 
 const unFetchingActions = [
@@ -79,22 +100,53 @@ const unFetchingActions = [
     secActions.STOP_ASK_U2F_DESCRIPTION,
     secActions.GET_U2F_ENROLL_SUCCESS,
     secActions.GET_U2F_ENROLL_FAIL,
-    secActions.GET_U2F_REGISTER_SUCCESS,
     secActions.GET_U2F_REGISTER_FAIL,
     secActions.POST_U2F_BIND_SUCCESS,
     secActions.POST_U2F_BIND_FAIL,
     secActions.POST_U2F_REMOVE_SUCCESS,
     secActions.POST_U2F_REMOVE_FAIL,
-    secActions.POST_U2F_VERIFY_SUCCESS,
     secActions.POST_U2F_VERIFY_FAIL,
     orcidActions.GET_ORCID_SUCCESS,
     orcidActions.GET_ORCID_FAIL,
     orcidActions.GET_PERSONAL_DATA_ORCID_SUCCESS,
-    orcidActions.GET_PERSONAL_DATA_ORCID_FAIL,
-    orcidActions.GET_ORCID_CONNECT_SUCCESS,
     orcidActions.GET_ORCID_CONNECT_FAIL,
     orcidActions.POST_ORCID_REMOVE_SUCCESS,
     orcidActions.POST_ORCID_REMOVE_FAIL,
+    phoneActions.GET_MOBILES_SUCCESS,
+    phoneActions.POST_MOBILE_SUCCESS,
+    phoneActions.POST_MOBILE_FAIL,
+    phoneActions.STOP_CONFIRMATION,
+    phoneActions.START_RESEND_MOBILE_CODE_SUCCESS,
+    phoneActions.START_RESEND_MOBILE_CODE_FAIL,
+    phoneActions.POST_PHONE_VERIFY_SUCCESS,
+    phoneActions.POST_PHONE_VERIFY_FAIL,
+    phoneActions.START_VERIFY_FAIL,
+    phoneActions.POST_PHONE_REMOVE_SUCCESS,
+    phoneActions.POST_MOBILE_REMOVE_FAIL,
+    phoneActions.POST_MOBILE_PRIMARY_SUCCESS,
+    phoneActions.POST_MOBILE_PRIMARY_FAIL,
+    chpassActions.GET_SUGGESTED_PASSWORD_SUCCESS,
+    chpassActions.GET_SUGGESTED_PASSWORD_FAIL,
+    chpassActions.PASSWORD_NOT_READY,
+    chpassActions.POST_SECURITY_CHANGE_PASSWORD_SUCCESS,
+    chpassActions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
+    frejaActions.GET_OIDC_PROOFING_FREJA_PROOFING_SUCCESS,
+    frejaActions.GET_OIDC_PROOFING_FREJA_PROOFING_FAIL,
+    frejaActions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS,
+    frejaActions.POST_OIDC_PROOFING_FREJA_PROOFING_FAIL,
+    emailsActions.GET_EMAILS_SUCCESS,
+    emailsActions.POST_EMAIL_SUCCESS,
+    emailsActions.POST_EMAIL_FAIL,
+    emailsActions.STOP_CONFIRMATION,
+    emailsActions.START_RESEND_EMAIL_CODE_SUCCESS,
+    emailsActions.START_RESEND_EMAIL_CODE_FAIL,
+    emailsActions.POST_EMAIL_VERIFY_SUCCESS,
+    emailsActions.POST_EMAIL_VERIFY_FAIL,
+    emailsActions.START_VERIFY_FAIL,
+    emailsActions.POST_EMAIL_REMOVE_SUCCESS,
+    emailsActions.POST_EMAIL_REMOVE_FAIL,
+    emailsActions.POST_EMAIL_PRIMARY_SUCCESS,
+    emailsActions.POST_EMAIL_PRIMARY_FAIL,
 ];
 
 const urls_with_no_sidebar = [
@@ -154,7 +206,14 @@ let configReducer = (state=configData, action) => {
           show_sidebar: show_sidebar
       };
     default:
-      if (fetchingActions.includes(action.type)) {
+      if ((action.type.endsWith('_SUCCESS')) ||
+	  (action.type.endsWith('_FAIL'))) {
+	  return {
+	      ...state,
+	      is_fetching: false
+	  };
+      }
+      else if (fetchingActions.includes(action.type)) {
 	  return {
 	      ...state,
 	      is_fetching: true

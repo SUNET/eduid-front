@@ -25,8 +25,6 @@ const validate = values => {
 };
 
 let EmailForm = props => {
-    let spinning = false;
-    if (props.is_fetching) spinning = true;
     return (
         <form id="emailsview-form"
               className="form-horizontal"
@@ -41,7 +39,6 @@ let EmailForm = props => {
                    helpBlock={props.l10n('emails.input_help_text')} />
             <EduIDButton className="btn-primary"
                          id="email-button"
-                         spinning={spinning}
                          disabled={!props.valid_email}
                          onClick={props.handleAdd}>
                 {props.l10n('emails.button_add')}
@@ -93,8 +90,7 @@ class Emails extends Component {
                 showModal={Boolean(this.props.confirming)}
                 closeModal={this.props.handleStopConfirmation}
                 handleResend={this.props.handleResend}
-                handleConfirm={this.props.handleConfirm}
-                is_fetching={this.props.resending.is_fetching} />
+                handleConfirm={this.props.handleConfirm} />
         </div>
     );
   }

@@ -9,14 +9,10 @@ import i18n from 'i18n-messages';
 
 
 const mapStateToProps = (state, props) => {
-  const pdata_fetching = state.personal_data ?
-                         state.personal_data.is_fetching :
-                         false;
   return {
     phones: state.phones.phones,
     valid_phone: isValid('phones')(state),
     phone: state.phones.phone,
-    is_fetching: state.phones.is_fetching || pdata_fetching,
     confirming: state.phones.confirming,
     resending: state.phones.resending,
     default_country_code: state.config.DEFAULT_COUNTRY_CODE,

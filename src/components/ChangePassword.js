@@ -49,10 +49,7 @@ class ChpassForm extends Component {
   render () {
 
     let form,
-        helpCustom = "",
-        spinning = false;
-
-    if (this.props.is_fetching) spinning = true;
+        helpCustom = "";
 
     if (this.props.choose_custom) {
         const meterHelpBlock = [(
@@ -133,7 +130,6 @@ class ChpassForm extends Component {
               <fieldset id="chpass-form" className="tabpane">
                   <EduIDButton className="btn btn-primary"
                                id="chpass-button"
-                               spinning={spinning}
                                onClick={this.props.handleStartPasswordChange.bind(this)}
                                disabled={this.props.invalid}>
                             {this.props.l10n('chpass.change-password')}
@@ -195,7 +191,6 @@ class ChangePassword extends Component {
 }
 
 ChangePassword.propTypes = {
-  is_fetching: PropTypes.bool,
   choose_custom: PropTypes.bool,
   user_input: PropTypes.array,
   next_url: PropTypes.string,

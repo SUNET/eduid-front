@@ -24,7 +24,6 @@ const mapStateToProps = (state, props) => {
     userInput.push(state.personal_data.data.surname);
     userInput.push(state.personal_data.data.display_name);
     userInput.concat(state.emails.emails);
-    let is_fetching = state.chpass.is_fetching || state.security.is_fetching;
     const customPassword = state.form && state.form.chpass && state.form.chpass.values[comp.pwFieldCustomName] || '';
     let score = 0,
         configEntropy = state.config.PASSWORD_ENTROPY,
@@ -38,12 +37,9 @@ const mapStateToProps = (state, props) => {
             score = n;
             minEntropy += stepEntropy;
         }
-    } else {
-        is_fetching = true;
     }
 
     return {
-        is_fetching: is_fetching,
         suggested_password: state.chpass.suggested_password,
         choose_custom: state.chpass.choose_custom,
         next_url: state.chpass.next_url,

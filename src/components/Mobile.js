@@ -31,8 +31,6 @@ const validate = (values, props) => {
 };
 
 let PhoneForm = props => {
-    let spinning = false;
-    if (props.is_fetching) spinning = true;
     return (
         <form id="mobilesview-form"
               className="form-horizontal"
@@ -48,7 +46,6 @@ let PhoneForm = props => {
 
             <EduIDButton className="btn-primary"
                          id="mobile-button"
-                         spinning={spinning}
                          disabled={!props.valid_phone}
                          onClick={props.handleAdd}>
                 {props.l10n('mobile.button_add')}
@@ -99,8 +96,7 @@ class Mobile extends Component {
                 showModal={Boolean(this.props.confirming)}
                 closeModal={this.props.handleStopConfirmation}
                 handleResend={this.props.handleResend}
-                handleConfirm={this.props.handleConfirm}
-                is_fetching={this.props.resending.is_fetching} />
+                handleConfirm={this.props.handleConfirm} />
         </div>
     );
   }
