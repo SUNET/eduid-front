@@ -7,19 +7,32 @@ import actionWrapperReducer from 'reducers/ActionWrapper';
 import notificationsReducer from 'reducers/Notifications';
 
 import * as actions from "actions/ActionWrapper";
-import { U2FDATA_SIGNED } from "./component";
+import { BEGIN_WEBAUTHN_SUCCESS, BEGIN_WEBAUTHN_FAIL, WEBAUTHN_CREDS_GOT } from "./component";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const actionData = {
-    token_response: {}
+    webauthn_ready: false,
+    webauthn_options: {},
+    webauthn_assertion: {}
 };
 
 export const actionReducer = (state=actionData, action) => {
   switch (action.type) {
-    case U2FDATA_SIGNED:
+    case BEGIN_WEBAUTHN_SUCCESS:
       return {
           ...state,
-          token_response: action.payload.data
+          webauthn_ready: true,
+          webauthn_options: action.payload
+      };
+    case BEGIN_WEBAUTHN_FAIL:
+      return {
+          ...state,
+          webauthn_ready: false
+      };
+    case WEBAUTHN_CREDS_GOT:
+      return {
+          ...state,
+          webauthn_assertion: action.payload
       };
     default:
       return state;
