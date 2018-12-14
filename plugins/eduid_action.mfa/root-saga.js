@@ -11,7 +11,11 @@ import { WEBAUTHN_CREDS_GOT } from "./component";
 
 export function* beginAuthentication () {
     try {
-        const resp = yield call(requestBeginAuthentication);
+        const state = yield select(state => state),
+              data = {
+                  csrf_token: state.main.csrf_token
+              };
+        const resp = yield call(requestBeginAuthentication, data);
         yield put(putCsrfToken(resp));
         yield put(resp);
     } catch(error) {
@@ -30,14 +34,15 @@ export function requestBeginAuthentication () {
 
 export function* postCompleteWebauthn () {
     try {
-        const assertion = yield select(state => state.plugin.webauthn_assertion),
-            data = {
-                credentialId: assertion.rawId,
-                authenticatorData: assertion.response.authenticatorData,
-                clientDataJSON: assertion.response.clientDataJSON,
-                signature: assertion.response.signature,
-                csrf_token: state.main.csrf_token,
-            };
+        const state = yield select(state => state),
+              assertion = state.plugin.webauthn_assertion,
+              data = {
+                  credentialId: assertion.rawId,
+                  authenticatorData: assertion.response.authenticatorData,
+                  clientDataJSON: assertion.response.clientDataJSON,
+                  signature: assertion.response.signature,
+                  csrf_token: state.main.csrf_token,
+              };
         const resp = yield call(requestCompleteWebauthn, data);
         yield put(putCsrfToken(resp));
         yield put(resp);

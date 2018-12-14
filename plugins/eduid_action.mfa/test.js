@@ -10,11 +10,12 @@ import { genSetupComponent, getState } from "tests/ActionWrapper-test";
 import MainContainer from "./component";
 import { actionReducer } from "./store";
 import * as actions from "actions/ActionWrapper";
-import { U2FDATA_SIGNED } from "./component";
-import { postTokenResponse, requestPostTokenResponse } from "./root-saga";
+import { postCompleteWebauthn, requestCompleteWebauthn } from "./root-saga";
 
 const pluginState = {
-    token_response: {}
+    webauthn_ready: false,
+    webauthn_options: {},
+    webauthn_assertion: {}
 };
 
 const setupComponent = genSetupComponent(pluginState);
@@ -32,8 +33,8 @@ describe("Some Component", () => {
     it("Renders", () => {
         const wrapper = setupComponent({component: <MainContainer />}),
               splash = wrapper.find('div#eduid-splash-screen'),
-              title = wrapper.find('div.u2f-title'),
-              subtitle = wrapper.find('div.u2f-subtitle'),
+              title = wrapper.find('div.webauthn-title'),
+              subtitle = wrapper.find('div.webauthn-subtitle'),
               animation = wrapper.find('div.key-animation');
 
         expect(splash.length).toEqual(0);
@@ -47,7 +48,9 @@ describe("Some Component", () => {
 describe("Some action reducer", () => {
 
     const mockState = {
-        token_response: ''
+        webauthn_ready: false,
+        webauthn_options: {},
+        webauthn_assertion: {}
     };
 
     it("Receives plugin config loaded action", () => {
@@ -55,16 +58,16 @@ describe("Some action reducer", () => {
             actionReducer(
                 mockState,
                 {
-                    type: "U2FDATA_SIGNED",
+                    type: "WEBAUTHN_CREDS_GOT",
                     payload: {
-                        data: 'dummy response'
+                        dummy: 'assertion'
                     }
                 }
             )
         ).toEqual(
           {
               ...mockState,
-              token_response: 'dummy response'
+              webauthn_assertion: {dummy: 'assertion'},
           }
         );
     });
@@ -72,24 +75,37 @@ describe("Some action reducer", () => {
 
 describe("Some plugin async actions", () => {
 
-    it("Tests post U2F response saga", () => {
+    it("Tests post webauthn response saga", () => {
 
-        const state = getState({
-            main: {
-                csrf_token: 'dummy-token'
-            },
-            plugin: {
-                token_response: "dummy response"
+        const assertion = {
+            rawId: 'dummy-id',
+            response: {
+                authenticatorData: 'dummy authn data',
+                clientDataJSON: 'dummy json',
+                signature: 'dummy signature'
             }
-        });
+        },
+              state = getState({
+                  main: {
+                      csrf_token: 'dummy-token'
+                  },
+                  plugin: {
+                      webauthn_ready: false,
+                      webauthn_options: {},
+                      webauthn_assertion: assertion
+                  }
+              });
         const data = {
-            tokenResponse: state.plugin.token_response,
             csrf_token: state.main.csrf_token,
+            credentialId: assertion.rawId,
+            authenticatorData: assertion.response.authenticatorData,
+            clientDataJSON: assertion.response.clientDataJSON,
+            signature: assertion.response.signature
         };
-        const generator = postTokenResponse();
+        const generator = postCompleteWebauthn();
         generator.next();
         let resp = generator.next(state);
-        expect(resp.value).toEqual(call(requestPostTokenResponse, data));
+        expect(resp.value).toEqual(call(requestCompleteWebauthn, data));
 
         const action = {
             type: actions.POST_ACTIONS_ACTION_SUCCESS,
