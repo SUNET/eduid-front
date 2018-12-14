@@ -13,8 +13,6 @@ import * as actions from "actions/ActionWrapper";
 import { postCompleteWebauthn, requestCompleteWebauthn } from "./root-saga";
 
 const pluginState = {
-    webauthn_ready: false,
-    webauthn_options: {},
     webauthn_assertion: {}
 };
 
@@ -48,8 +46,6 @@ describe("Some Component", () => {
 describe("Some action reducer", () => {
 
     const mockState = {
-        webauthn_ready: false,
-        webauthn_options: {},
         webauthn_assertion: {}
     };
 
@@ -87,11 +83,10 @@ describe("Some plugin async actions", () => {
         },
               state = getState({
                   main: {
-                      csrf_token: 'dummy-token'
+                      csrf_token: 'dummy-token',
+                      webauthn_options: '',
                   },
                   plugin: {
-                      webauthn_ready: false,
-                      webauthn_options: {},
                       webauthn_assertion: assertion
                   }
               });

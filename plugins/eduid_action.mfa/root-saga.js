@@ -9,29 +9,6 @@ import { postRequest, checkStatus, putCsrfToken } from "sagas/common";
 import { WEBAUTHN_CREDS_GOT } from "./component";
 
 
-export function* beginAuthentication () {
-    try {
-        const state = yield select(state => state),
-              data = {
-                  csrf_token: state.main.csrf_token
-              };
-        const resp = yield call(requestBeginAuthentication, data);
-        yield put(putCsrfToken(resp));
-        yield put(resp);
-    } catch(error) {
-        yield put(actions.postActionFail(error.toString()));
-    }
-}
-
-export function requestBeginAuthentication () {
-    const url = 'post-action';
-    return window.fetch(url, {
-        ...postRequest
-    })
-    .then(checkStatus)
-    .then(response => response.json())
-}
-
 export function* postCompleteWebauthn () {
     try {
         const state = yield select(state => state),
@@ -64,7 +41,6 @@ export function requestCompleteWebauthn (data) {
 function* rootSaga() {
     yield [
         ...defaultSaga,
-        takeLatest(actions.APP_LOADED, beginAuthentication),
         takeLatest(WEBAUTHN_CREDS_GOT, postCompleteWebauthn),
     ];
 }

@@ -14,9 +14,7 @@ const img = require('../../img/computer_animation.gif');
 class Main extends Component {
 
     componentDidUpdate () {
-        if (this.props.webauthn_ready) {
-            this.props.getCredentials.bind(this)();
-        }
+        this.props.getCredentials.bind(this)();
     }
 
     render () {
@@ -53,14 +51,14 @@ class Main extends Component {
                   </form>
                 </div>
               </div>
+              <span className="dataholder" id="u2f-data" data-u2fdata={this.props.u2fdata}></span>
             </ActionWrapperContainer>
         );
     }
 }
 
 Main.propTypes = {
-    webauthn_ready: PropTypes.bool,
-    webauthn_options: PropTypes.object,
+    webauthn_options: PropTypes.string,
     testing: PropTypes.bool,
     l10n: PropTypes.func,
     getCredentials: PropTypes.func
@@ -68,14 +66,11 @@ Main.propTypes = {
 
 const mapStateToProps = (state, props) => {
     return {
-        webauthn_ready: state.plugin.webauthn_ready,
-        webauthn_options: state.plugin.webauthn_options,
+        webauthn_options: state.main.webauthn_options,
         testing: state.main.testing,
     }
 };
 
-export const BEGIN_WEBAUTHN_SUCCESS = "BEGIN_WEBAUTHN_SUCCESS";
-export const BEGIN_WEBAUTHN_FAIL = "BEGIN_WEBAUTHN_FAIL";
 export const WEBAUTHN_CREDS_GOT = "WEBAUTHN_CREDS_GOT";
 
 const credentialsGot = (assertion) => ({
@@ -86,9 +81,10 @@ const credentialsGot = (assertion) => ({
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getCredentials: function () {
-            const options = this.props.webauthn_options;
+            let options = this.props.webauthn_options;
             if (options) {
                 try {
+                    options = JSON.parse(options);
                     navigator.credentials.get(options)
                     .then( (assertion) => {
                         dispatch(credentialsGot(assertion));
