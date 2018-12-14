@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { sign } from 'u2f-api';
 
 import i18n from 'i18n-messages';
 import { appFetching, postAction, postActionFail } from "actions/ActionWrapper";
@@ -15,7 +14,7 @@ const img = require('../../img/computer_animation.gif');
 class Main extends Component {
 
     componentDidUpdate () {
-        this.props.signU2FData.bind(this)();
+        this.props.getCredentials.bind(this)();
     }
 
     render () {
@@ -34,16 +33,16 @@ class Main extends Component {
         return (
             <ActionWrapperContainer>
               <div className="col-xs-12 text-center">
-                <div className="u2f-title">
+                <div className="webauthn-title">
                   <h2>{this.props.l10n('mfa.two-factor-authn')}</h2>
                 </div>
-                <div className="u2f-subtitle">
+                <div className="webauthn-subtitle">
                   <h3>{this.props.l10n('mfa.extra-security-enabled')}</h3>
                 </div>
                 <div className="key-animation">
                 </div>
                 <div>
-                  <p className="lead u2f-text"><strong>{this.props.l10n('mfa.login-tapit')}</strong></p>
+                  <p className="lead webauthn-text"><strong>{this.props.l10n('mfa.login-tapit')}</strong></p>
                 </div>
                 <div>
                   <form method="POST" action="#" id="form" className="form-inline">
@@ -59,45 +58,42 @@ class Main extends Component {
 }
 
 Main.propTypes = {
+    webauthn_options: PropTypes.string,
     testing: PropTypes.bool,
-    u2fdata: PropTypes.string,
     l10n: PropTypes.func,
-    signU2FData: PropTypes.func
+    getCredentials: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => {
     return {
+        webauthn_options: state.main.webauthn_options,
         testing: state.main.testing,
-        u2fdata: state.main.u2fdata
     }
 };
 
-export const U2FDATA_SIGNED = "U2FDATA_SIGNED";
+export const WEBAUTHN_CREDS_GOT = "WEBAUTHN_CREDS_GOT";
 
-const u2fSigned = (data) => ({
-    type: U2FDATA_SIGNED,
-    payload: {
-        data: data
-    }
+const credentialsGot = (assertion) => ({
+    type: WEBAUTHN_CREDS_GOT,
+    payload: assertion
 });
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        signU2FData: function () {
-            let u2fdata = this.props.u2fdata;
-            if (u2fdata) {
+        getCredentials: function () {
+            let options = this.props.webauthn_options;
+            if (options) {
                 try {
-                    u2fdata = JSON.parse(u2fdata);
-                    console.log("sign: ", u2fdata);
-                    sign(u2fdata, 10000)
-                    .then( (data) => {
-                        dispatch(u2fSigned(data));
+                    options = JSON.parse(options);
+                    navigator.credentials.get(options)
+                    .then( (assertion) => {
+                        dispatch(credentialsGot(assertion));
                     });
                 } catch(error) {
                     dispatch(postActionFail(error.toString()));
                 }
             } else {
-                console.log("U2F data not available yet");
+                console.log("Webauthn data not available yet");
             }
         }
     }
