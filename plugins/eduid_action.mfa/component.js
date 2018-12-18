@@ -101,7 +101,9 @@ const mapDispatchToProps = (dispatch, props) => {
                     const optarr = new Uint8Array(options);
                     navigator.credentials.get(optarr)
                     .then( (assertion) => {
-                        dispatch(credentialsGot(assertion));
+                        if (assertion !== null) {
+                            dispatch(credentialsGot(assertion));
+                        }
                     })
                     .catch( (error) => console.log(error) );
                 } catch(error) {
