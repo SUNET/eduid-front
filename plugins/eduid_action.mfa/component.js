@@ -51,22 +51,36 @@ class Main extends Component {
                   </form>
                 </div>
               </div>
-              <span className="dataholder" id="u2f-data" data-u2fdata={this.props.u2fdata}></span>
             </ActionWrapperContainer>
         );
     }
 }
 
 Main.propTypes = {
-    webauthn_options: PropTypes.string,
+    webauthn_options: PropTypes.object,
     testing: PropTypes.bool,
     l10n: PropTypes.func,
     getCredentials: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => {
+    let options = {};
+    if (state.main.webauthn_options !== undefined) {
+        options = { ... state.main.webauthn_options};
+        options.publicKey = {
+            ...options.publicKey,
+            challenge: atob(options.publicKey.challenge)
+        };
+        const allowCreds = options.publicKey.allowCredentials.map((v) => {
+            return {
+                ...v,
+                id: atob(v.id)
+            }
+        });
+        options.publicKey.allowCredentials = allowCreds;
+    }
     return {
-        webauthn_options: state.main.webauthn_options,
+        webauthn_options: options,
         testing: state.main.testing,
     }
 };
@@ -82,13 +96,14 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         getCredentials: function () {
             let options = this.props.webauthn_options;
-            if (options) {
+            if (options.publicKey !== undefined) {
                 try {
-                    options = JSON.parse(options);
-                    navigator.credentials.get(options)
+                    const optarr = new Uint8Array(options);
+                    navigator.credentials.get(optarr)
                     .then( (assertion) => {
                         dispatch(credentialsGot(assertion));
-                    });
+                    })
+                    .catch( (error) => console.log(error) );
                 } catch(error) {
                     dispatch(postActionFail(error.toString()));
                 }

@@ -1,5 +1,5 @@
 
-import { takeLatest, takeEvery } from 'redux-saga';
+import { takeLatest, takeEvery } from 'redux-saga/effects';
 import { put, select } from "redux-saga/effects";
 
 import * as mainActions from "actions/Main";
