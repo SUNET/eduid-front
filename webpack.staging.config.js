@@ -12,4 +12,6 @@ webpackStaging.output = {
   path: path.join(__dirname, 'build')
 }
 
+webpackStaging.devtool = 'source-map';
+
 module.exports = webpackStaging;
