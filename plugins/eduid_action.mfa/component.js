@@ -67,14 +67,24 @@ const mapStateToProps = (state, props) => {
     let options = {};
     if (state.main.webauthn_options !== undefined) {
         options = { ... state.main.webauthn_options};
+        const challBin = atob(options.publicKey.challenge);
+        const challArr = new Uint8Array(challBin.length);
+        for (let i = 0; i < challBin.length; i += 1) {
+            challArr[i] = challBin.charCodeAt(i);
+        }
         options.publicKey = {
             ...options.publicKey,
-            challenge: new Uint8Array(atob(options.publicKey.challenge))
+            challenge: challArr
         };
         const allowCreds = options.publicKey.allowCredentials.map((v) => {
+            const idBin = atob(v.id);
+            const idArr = new Uint8Array(idBin.length);
+            for (let i = 0; i < idBin.length; i += 1) {
+                idArr[i] = idBin.charCodeAt(i);
+            }
             return {
                 ...v,
-                id: new Uint8Array(atob(v.id))
+                id: idArr
             }
         });
         options.publicKey.allowCredentials = allowCreds;
@@ -100,7 +110,7 @@ const mapDispatchToProps = (dispatch, props) => {
                 try {
                     navigator.credentials.get(options)
                     .then( (assertion) => {
-                        if (assertion !== null) {
+                        if (assertion !== null && assertion !== undefined) {
                             dispatch(credentialsGot(assertion));
                         }
                     })
