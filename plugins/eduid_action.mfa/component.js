@@ -69,12 +69,12 @@ const mapStateToProps = (state, props) => {
         options = { ... state.main.webauthn_options};
         options.publicKey = {
             ...options.publicKey,
-            challenge: new Uint8Array(atob(options.publicKey.challenge))
+            challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge), function(x) { return x.charCodeAt(0); }))
         };
         const allowCreds = options.publicKey.allowCredentials.map((v) => {
             return {
                 ...v,
-                id: new Uint8Array(atob(v.id))
+                id: Uint8Array.from(Array.prototype.map.call(atob(v.id), function(x) { return x.charCodeAt(0); }))
             }
         });
         options.publicKey.allowCredentials = allowCreds;
