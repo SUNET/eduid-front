@@ -14,10 +14,10 @@ export function* postCompleteWebauthn () {
         const state = yield select(state => state),
               assertion = state.plugin.webauthn_assertion,
               data = {
-                  credentialId: assertion.rawId,
-                  authenticatorData: assertion.response.authenticatorData,
-                  clientDataJSON: assertion.response.clientDataJSON,
-                  signature: assertion.response.signature,
+                  credentialId: btoa(assertion.rawId),
+                  authenticatorData: btoa(assertion.response.authenticatorData),
+                  clientDataJSON: btoa(assertion.response.clientDataJSON),
+                  signature: btoa(assertion.response.signature),
                   csrf_token: state.main.csrf_token,
               };
         const resp = yield call(requestCompleteWebauthn, data);
