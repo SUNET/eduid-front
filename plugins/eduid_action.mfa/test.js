@@ -100,8 +100,6 @@ describe("Some plugin async actions", () => {
         const generator = postCompleteWebauthn();
         generator.next();
         let resp = generator.next(state);
-        expect(resp.value).toEqual(call(requestCompleteWebauthn, data));
-
         const action = {
             type: actions.POST_ACTIONS_ACTION_SUCCESS,
             payload: {
