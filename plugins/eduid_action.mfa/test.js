@@ -74,11 +74,11 @@ describe("Some plugin async actions", () => {
     it("Tests post webauthn response saga", () => {
 
         const assertion = {
-            rawId: 'dummy-id',
+            rawId: ArrayBuffer(1),
             response: {
-                authenticatorData: 'dummy authn data',
-                clientDataJSON: 'dummy json',
-                signature: 'dummy signature'
+                authenticatorData: ArrayBuffer(2),
+                clientDataJSON: ArrayBuffer(3),
+                signature: ArrayBuffer(5)
             }
         },
               state = getState({
