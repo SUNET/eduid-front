@@ -74,11 +74,11 @@ describe("Some plugin async actions", () => {
     it("Tests post webauthn response saga", () => {
 
         const assertion = {
-            rawId: btoa('dummy-id'),
+            rawId: 'dummy-id',
             response: {
-                authenticatorData: btoa('dummy authn data'),
-                clientDataJSON: btoa('dummy json'),
-                signature: btoa('dummy signature')
+                authenticatorData: 'dummy authn data',
+                clientDataJSON: 'dummy json',
+                signature: 'dummy signature'
             }
         },
               state = getState({
@@ -111,6 +111,10 @@ describe("Some plugin async actions", () => {
         generator.next(action);
         delete action.payload.csrf_token;
         resp = generator.next();
+        resp.value.rawId = atob(resp.value.rawId);
+        resp.value.response.authenticatorData = atob(resp.value.response.authenticatorData);
+        resp.value.response.clientDataJSON = atob(resp.value.response.clientDataJSON);
+        resp.value.response.signature = atob(resp.value.response.signature);
         expect(resp.value).toEqual(put(action));
     });
 });
