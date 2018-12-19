@@ -78,7 +78,7 @@ describe("Some plugin async actions", () => {
             response: {
                 authenticatorData: new TextEncoder("utf-8").encode('dummy authn data').buffer,
                 clientDataJSON: new TextEncoder("utf-8").encode('dummy json').buffer,
-                signature: new TextEncoder("utf-8").encode('dummy signature).buffer'
+                signature: new TextEncoder("utf-8").encode('dummy signature').buffer
             }
         },
               state = getState({
