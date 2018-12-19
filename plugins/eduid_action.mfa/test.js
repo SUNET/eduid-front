@@ -111,10 +111,14 @@ describe("Some plugin async actions", () => {
         generator.next(action);
         delete action.payload.csrf_token;
         resp = generator.next();
-        resp.value.rawId = atob(resp.value.rawId);
-        resp.value.response.authenticatorData = atob(resp.value.response.authenticatorData);
-        resp.value.response.clientDataJSON = atob(resp.value.response.clientDataJSON);
-        resp.value.response.signature = atob(resp.value.response.signature);
-        expect(resp.value).toEqual(put(action));
+        const expected = {
+            rawId: atob(resp.value.rawId),
+            response: {
+                authenticatorData: atob(resp.value.response.authenticatorData),
+                clientDataJSON: atob(resp.value.response.clientDataJSON),
+                signature: atob(resp.value.response.signature)
+            }
+        };
+        expect(expected).toEqual(put(action));
     });
 });
