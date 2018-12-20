@@ -83,14 +83,14 @@ class Security extends Component {
               </tbody>
           </table>
           <div id="change-password">
-            <EduIDButton bsStyle="primary"
+            <EduIDButton className="btn-primary"
                         id="security-change-button"
                         onClick={this.props.handleStartConfirmationPassword}>
                       {this.props.l10n('security.change_password')}
             </EduIDButton>
           </div>
           <div id="add-u2f-token">
-            <EduIDButton bsStyle="primary"
+            <EduIDButton className="btn-primary"
                         id="security-u2f-button"
                         onClick={this.props.handleStartAskingU2FDescription}>
                       {this.props.l10n('security.add_u2f_token')}

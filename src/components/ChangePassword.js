@@ -28,7 +28,7 @@ const validate = (values, props) => {
     if (!values[pwFieldOldName]) {
         errors[pwFieldOldName] = 'required'
     }
-    if (props.choose_custom) {
+    if (values.hasOwnProperty(pwFieldCustomName)) {
         if (!values[pwFieldCustomName]) {
             errors[pwFieldCustomName] = 'required';
         } else if (props.custom_ready) {
@@ -46,12 +46,22 @@ const validate = (values, props) => {
 
 class ChpassForm extends Component {
 
+  constructor (props) {
+    super(props);
+    this.state = { rSelected: 'suggested' };
+    this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
+  }
+
+  onRadioBtnClick(rSelected) {
+    this.setState({ rSelected });
+  }
+
   render () {
 
     let form,
         helpCustom = "";
 
-    if (this.props.choose_custom) {
+    if (this.state.rSelected === 'custom') {
         const meterHelpBlock = [(
                     <meter max="4"
                            value={this.props.password_score}
@@ -107,17 +117,19 @@ class ChpassForm extends Component {
                   <Label>
                     {this.props.l10n('chpass.use-custom-label')}
                   </Label>
-                    <ButtonGroup
-                         name={pwFieldChooser}
-                         type="radio"
-                         defaultValue="suggested"
-                         onChange={this.props.handleChoice}>
-                      <Button value="custom">
+                    <ButtonGroup>
+                      <EduIDButton value="custom"
+                                   className="btn btn-primary"
+                                   onClick={() => this.onRadioBtnClick('custom')}
+                                   disabled={this.state.rSelected === 'custom'}>
                         {this.props.l10n('chpass.use-custom')}
-                      </Button>
-                      <Button value="suggested">
+                      </EduIDButton>
+                      <EduIDButton value="suggested"
+                                   className="btn btn-primary"
+                                   onClick={() => this.onRadioBtnClick('suggested')}
+                                   disabled={this.state.rSelected === 'suggested'}>
                         {this.props.l10n('chpass.use-suggested')}
-                      </Button>
+                      </EduIDButton>
                     </ButtonGroup>
                   <div className="form-field-error-area">
                     <FormText></FormText>
@@ -128,16 +140,16 @@ class ChpassForm extends Component {
                   {form}
               </fieldset>
               <fieldset id="chpass-form" className="tabpane">
+                  <EduIDButton className="cancel-button eduid-cancel-button btn-primary"
+                        onClick={this.props.handleStopPasswordChange.bind(this)} >
+                     {this.props.l10n('cm.cancel')}
+                  </EduIDButton>
                   <EduIDButton className="btn btn-primary"
                                id="chpass-button"
                                onClick={this.props.handleStartPasswordChange.bind(this)}
                                disabled={this.props.invalid}>
                             {this.props.l10n('chpass.change-password')}
                   </EduIDButton>
-                  <Button className="cancel-button eduid-cancel-button"
-                        onClick={this.props.handleStopPasswordChange.bind(this)} >
-                     {this.props.l10n('cm.cancel')}
-                  </Button>
               </fieldset>
           </form>
     );
@@ -191,11 +203,11 @@ class ChangePassword extends Component {
 }
 
 ChangePassword.propTypes = {
-  choose_custom: PropTypes.bool,
   user_input: PropTypes.array,
   next_url: PropTypes.string,
   password_entropy: PropTypes.number,
   handleChoice: PropTypes.func,
+  noop: PropTypes.func,
   handleStartPasswordChange: PropTypes.func,
   cancel_to: PropTypes.string
 }

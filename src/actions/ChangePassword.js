@@ -4,9 +4,6 @@ export const GET_SUGGESTED_PASSWORD = 'GET_SUGGESTED_PASSWORD';
 export const GET_SUGGESTED_PASSWORD_SUCCESS = 'GET_SECURITY_SUGGESTED_PASSWORD_SUCCESS';
 export const GET_SUGGESTED_PASSWORD_FAIL = 'GET_SECURITY_SUGGESTED_PASSWORD_FAIL';
 
-export const CHOOSE_CUSTOM_PASSWORD = 'CHOOSE_CUSTOM_PASSWORD';
-export const CHOOSE_SUGGESTED_PASSWORD = 'CHOOSE_SUGGESTED_PASSWORD';
-
 export const POST_PASSWORD_CHANGE = 'POST_PASSWORD_CHANGE';
 export const PASSWORD_NOT_READY = 'PASSWORD_NOT_READY';
 export const VALID_CUSTOM_PASSWORD = 'VALID_CUSTOM_PASSWORD';
@@ -33,22 +30,6 @@ export function getSuggestedPasswordFail (err) {
     }
   };
 }
-
-
-export function chooseSuggestedPassword (pw) {
-  return {
-    type: CHOOSE_SUGGESTED_PASSWORD,
-    payload: pw
-  };
-}
-
-
-export function chooseCustomPassword () {
-  return {
-    type: CHOOSE_CUSTOM_PASSWORD,
-  };
-}
-
 
 export function postPasswordChange (oldPassword, newPassword) {
   return {

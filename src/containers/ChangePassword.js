@@ -41,7 +41,6 @@ const mapStateToProps = (state, props) => {
 
     return {
         suggested_password: state.chpass.suggested_password,
-        choose_custom: state.chpass.choose_custom,
         next_url: state.chpass.next_url,
         password_entropy: configEntropy,
         password_score: score,
@@ -54,19 +53,15 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        handleChoice: function (value) {
-          if (value === 'custom') {
-            dispatch(actions.chooseCustomPassword());
-          } else {
-            dispatch(actions.chooseSuggestedPassword(props.suggested_password));
-          }
+        noop: function (event) {
+            event.preventDefault();
         },
 
         handleStartPasswordChange: function (event) {
             event.preventDefault();
             const oldPassword = this.refs[comp.pwFieldOldName].value;
             let newPassword = this.props.suggested_password;
-            if (this.props.choose_custom) {
+            if (this.state.rSelected === 'custom') {
                 newPassword = this.refs[comp.pwFieldCustomName].value;
             }
             dispatch(actions.postPasswordChange(oldPassword, newPassword));

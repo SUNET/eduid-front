@@ -22,7 +22,7 @@ class GenericConfirmModal extends Component {
            aria-hidden="true"
            data-backdrop="true">
 
-            <Modal show={this.props.showModal}>
+            <Modal isOpen={this.props.showModal}>
                 <ModalHeader>
                     {this.props.title}
                 </ModalHeader>
@@ -34,15 +34,14 @@ class GenericConfirmModal extends Component {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <EduIDButton className="btn-primary"
-                          className="ok-button"
+                    <EduIDButton className="cancel-button btn-primary"
+                            onClick={this.props.closeModal.bind(this)} >
+                         {this.props.l10n('cm.cancel')}
+                    </EduIDButton>
+                    <EduIDButton className="ok-button btn-primary"
                           onClick={this.props.acceptModal.bind(this)} >
                         {this.props.l10n('cm.accept')}
                     </EduIDButton>
-                    <Button className="cancel-button"
-                            onClick={this.props.closeModal.bind(this)} >
-                         {this.props.l10n('cm.cancel')}
-                    </Button>
                 </ModalFooter>
 
             </Modal>

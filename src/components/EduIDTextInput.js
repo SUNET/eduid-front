@@ -17,6 +17,7 @@ const textInput = (props) => {
         meta,
         selectOptions,
         componentClass,
+        type,
         l10n,
         disabled,
         helpBlock,
@@ -55,7 +56,7 @@ const textInput = (props) => {
                     </option>);
         });
         field = (
-            <Input type={componentClass}
+            <Input type={type}
                    disabled={disabled}
                    placeholder={placeholder}
 	           id={name}
