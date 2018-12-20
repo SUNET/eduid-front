@@ -351,6 +351,10 @@ meter {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 
     nav#profile-menu-small.navbar {
+        width: 100%;
+    }
+    
+    nav#profile-menu-small.navbar {
         padding-left: 0 !important;
         padding-right: 0 !important;
 	background-color: #f8f8f8;
