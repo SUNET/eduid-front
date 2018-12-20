@@ -67,8 +67,8 @@ Main.propTypes = {
 
 const mapStateToProps = (state, props) => {
     return {
-        testing: state.main.testing,
-        u2fdata: state.main.u2fdata
+        testing: state.config.testing,
+        u2fdata: state.config.u2fdata
     }
 };
 

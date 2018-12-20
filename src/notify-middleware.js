@@ -48,8 +48,11 @@ const notifyAndDispatch = store => next => action => {
             delete(action.payload.errorMsg);
         }
         if (!action.error) {
-            const filled = calculateProfileFilled(store.getState());
-            next(profileFilled(filled.max, filled.cur, filled.pending, filled.pending_confirm));
+            const state = store.getState();
+            if (state.personal_data !== undefined) {
+                const filled = calculateProfileFilled(state);
+                next(profileFilled(filled.max, filled.cur, filled.pending, filled.pending_confirm));
+            }
         }
     }
     return next(action);

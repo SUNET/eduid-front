@@ -8,12 +8,17 @@ import i18n from 'i18n-messages';
 
 
 const mapStateToProps = (state, props) => {
-    const langs = {};
-    state.config.AVAILABLE_LANGUAGES.forEach((l)=>{langs[l[0]] = l[1]});
+    let langs = [];
+    const languages = {};
+    if (state.config.AVAILABLE_LANGUAGES !== undefined) {
+        langs = [ ...state.config.AVAILABLE_LANGUAGES ];
+        langs.unshift(['', props.l10n('pd.choose-language')]);
+        state.config.AVAILABLE_LANGUAGES.forEach((l)=>{languages[l[0]] = l[1]});
+    }
     return {
         is_configured: state.config.is_configured,
         language: state.intl.locale,
-        languages: langs,
+        languages: languages,
         reload_to: state.config.DASHBOARD_URL
     }
 };

@@ -24,7 +24,7 @@ export function* postTokenResponse () {
         const state = yield select(state => state),
             data = {
                 tokenResponse: state.plugin.token_response,
-                csrf_token: state.main.csrf_token,
+                csrf_token: state.config.csrf_token,
             };
         const resp = yield call(requestPostTokenResponse, data);
         yield put(putCsrfToken(resp));

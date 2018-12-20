@@ -102,7 +102,7 @@ describe("ToU plugin async actions", () => {
         const data = {
             accept: true,
             version: state.plugin.version,
-            csrf_token: state.main.csrf_token,
+            csrf_token: state.config.csrf_token,
         };
         const generator = postAcceptTOU();
         generator.next();

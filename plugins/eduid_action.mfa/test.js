@@ -84,7 +84,7 @@ describe("Some plugin async actions", () => {
         });
         const data = {
             tokenResponse: state.plugin.token_response,
-            csrf_token: state.main.csrf_token,
+            csrf_token: state.config.csrf_token,
         };
         const generator = postTokenResponse();
         generator.next();

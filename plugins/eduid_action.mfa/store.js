@@ -30,7 +30,7 @@ export const actionReducer = (state=actionData, action) => {
 const App = combineReducers({
     router: routerReducer,
     intl: intlReducer,
-    main: actionWrapperReducer,
+    config: actionWrapperReducer,
     plugin: actionReducer,
     notifications: notificationsReducer
 });
