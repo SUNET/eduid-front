@@ -1,6 +1,10 @@
 
 @import '../variables.scss';
 
+button#email.button {
+    margin-top: 5px;
+}
+
 #emailsview-form {
   height: 100%;
   overflow: hidden;

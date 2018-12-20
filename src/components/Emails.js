@@ -33,7 +33,6 @@ let EmailForm = props => {
             <Field component={TextInput}
                    componentClass="input"
                    type="text"
-                   label={props.l10n('emails.email_label')}
                    name="email"
                    placeholder="example@example.com"
                    helpBlock={props.l10n('emails.input_help_text')} />

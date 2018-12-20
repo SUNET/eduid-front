@@ -74,10 +74,14 @@ const textInput = (props) => {
 		       invalid={invalid}
                        {...input} /> ;
     }
+    let labelElem = '';
+    if (label) {
+        labelElem = (<Label for={name}>{label}</Label>);
+    }
 
     return (
         <FormGroup id={input.name}>
-          <Label for={name}>{label}</Label>
+          {labelElem}
           {field }
 	  {help}
         </FormGroup>
