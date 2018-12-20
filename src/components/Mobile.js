@@ -39,7 +39,6 @@ let PhoneForm = props => {
             <Field component={TextInput}
                    componentClass="input"
                    type="text"
-                   label={props.l10n('phones.phone_label')}
                    name="number"
                    placeholder={props.l10n('phones.input_placeholder')}
                    helpBlock={props.l10n('phones.input_help_text')}/>
