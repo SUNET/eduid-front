@@ -58,12 +58,11 @@ const getConfirmForm = inputName => {
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button className="cancel-button"
+                    <EduIDButton className="cancel-button btn-primary"
                             onClick={props.closeModal} >
                          {props.l10n('cm.cancel')}
-                    </Button>
-                    <EduIDButton className="btn-primary"
-                          className="ok-button"
+                    </EduIDButton>
+                    <EduIDButton className="ok-button btn-primary"
                           disabled={props.invalid}
                           onClick={props.handleConfirm} >
                         {props.l10n('cm.ok')}
