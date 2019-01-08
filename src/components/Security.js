@@ -25,10 +25,10 @@ class Security extends Component {
     let creds_table = this.props.credentials.map((cred, index) => {
             let btnRemove = '';
             let btnVerify = '';
-            if (cred.credential_type === 'security.u2f_credential_type') {
+            if (cred.credential_type === 'security.webauthn_credential_type') {
                 btnRemove = (<div className="btn-group btn-group-sm" role="group">
-                              <button className="btn btn-link btn-remove-u2f"
-                                   onClick={this.props.handleRemoveU2FToken}>
+                              <button className="btn btn-link btn-remove-webauthn"
+                                   onClick={this.props.handleRemoveWebauthnToken}>
                               {this.props.l10n('security.remove')}
                               </button>
                             </div>);
@@ -40,8 +40,8 @@ class Security extends Component {
                               </div>);
                 } else if (cred.used_for_login && !cred.verified) {
                   btnVerify = (<div className="btn-group btn-group-sm" role="group">
-                           <button className="btn btn-link btn-verify-u2f"
-                                   onClick={this.props.handleVerifyU2FToken}>
+                           <button className="btn btn-link btn-verify-webauthn"
+                                   onClick={this.props.handleVerifyWebauthnToken}>
                              {this.props.l10n('security.verify')}
                            </button>
                          </div>);
@@ -52,7 +52,7 @@ class Security extends Component {
             if (cred.success_ts) {
                 date_success = new Date(cred.success_ts).toISOString().split('T')[0];
             }
-            return (<tr key={index} className="u2f-token-holder" data-token={cred.key}>
+            return (<tr key={index} className="webauthn-token-holder" data-token={cred.key}>
                         <td>{this.props.l10n(cred.credential_type)}</td>
                         <td data-toggle="tooltip" data-placement="top" title={new Date(cred.created_ts).toString()}>{date_created}</td>
                         <td data-toggle="tooltip" data-placement="top" title={new Date(cred.success_ts).toString()}>{date_success}</td>
@@ -89,11 +89,11 @@ class Security extends Component {
                       {this.props.l10n('security.change_password')}
             </EduIDButton>
           </div>
-          <div id="add-u2f-token">
+          <div id="add-webauthn-token">
             <EduIDButton className="btn-primary"
-                        id="security-u2f-button"
-                        onClick={this.props.handleStartAskingU2FDescription}>
-                      {this.props.l10n('security.add_u2f_token')}
+                        id="security-webauthn-button"
+                        onClick={this.props.handleStartAskingWebauthnDescription}>
+                      {this.props.l10n('security.add_webauthn_token')}
             </EduIDButton>
           </div>
           <div className="second-block">
@@ -122,31 +122,31 @@ class Security extends Component {
                 handleConfirm={this.props.handleConfirmationDeletion}
           />
           <ConfirmModal
-              modalId="describeU2FTokenDialog"
-              controlId="describeU2FTokenDialogControl"
-              title={this.props.l10n('security.u2f-describe-title')}
+              modalId="describeWebauthnTokenDialog"
+              controlId="describeWebauthnTokenDialogControl"
+              title={this.props.l10n('security.webauthn-describe-title')}
               resendLabel=""
               resendHelp=""
               resendText=""
               placeholder=""
               with_resend_link={false}
-              showModal={Boolean(this.props.u2f_asking_description)}
-              closeModal={this.props.handleStopAskingU2FDescription}
-              handleConfirm={this.props.handleStartU2fRegistration} />
+              showModal={Boolean(this.props.webauthn_asking_description)}
+              closeModal={this.props.handleStopAskingWebauthnDescription}
+              handleConfirm={this.props.handleStartWebauthnRegistration} />
 
-          <Modal isOpen={this.props.u2f_is_enrolled}>
+          <Modal isOpen={this.props.webauthn_begun}>
               <ModalHeader>
-                  {this.props.l10n('u2f.action-required')}
+                  {this.props.l10n('webauthn.action-required')}
               </ModalHeader>
 
               <ModalBody>
-                  <p>{this.props.l10n('u2f.push-the-button')}</p>
+                  <p>{this.props.l10n('webauthn.push-the-button')}</p>
               </ModalBody>
 
               <ModalFooter>
                   <EduIDButton className="cancel-button"
-                          id="cancel-u2f"
-                          onClick={this.props.handleCloseU2fModal} >
+                          id="cancel-webauthn"
+                          onClick={this.props.handleCloseWebauthnModal} >
                        {this.props.l10n('cm.cancel')}
                   </EduIDButton>
               </ModalFooter>
@@ -167,14 +167,11 @@ Security.propTypes = {
   handleStopConfirmationPassword: PropTypes.func,
   handleConfirmationPassword: PropTypes.func,
   confirming_deletion: PropTypes.bool,
-  u2f_asking_description: PropTypes.bool,
-  handleStartAskingU2FDescription: PropTypes.func,
-  handleStopAskingU2FDescription: PropTypes.func,
   handleStartConfirmationDeletion: PropTypes.func,
   handleStopConfirmationDeletion: PropTypes.func,
   handleConfirmationDeletion: PropTypes.func,
-  handleStartU2fRegistration: PropTypes.func,
-  handleCloseU2fModal: PropTypes.func
+  handleStartWebauthnRegistration: PropTypes.func,
+  handleCloseWebauthnModal: PropTypes.func
 }
 
 export default Security;

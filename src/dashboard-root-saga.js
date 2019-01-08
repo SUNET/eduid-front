@@ -25,7 +25,8 @@ import * as sagasOpenid from "sagas/OpenidConnect";
 import { requestConfig } from "sagas/DashboardConfig";
 import { requestRemoveOrcid, requestOrcid, requestConnectOrcid } from "sagas/AccountLinking";
 import { requestCredentials, requestPasswordChange, postDeleteAccount,
-         getU2FEnroll, registerU2F, removeU2FToken, verifyU2FToken } from "sagas/Security";
+         beginRegisterWebauthn, registerWebauthn,
+         removeWebauthnToken, verifyWebauthnToken } from "sagas/Security";
 import { requestSuggestedPassword, postPasswordChange } from "sagas/ChangePassword";
 import { requestNins, requestRemoveNin } from "sagas/Nins";
 import { sendLetterProofing, sendGetLetterProofing, sendLetterCode } from "sagas/LetterProofing";
@@ -82,10 +83,10 @@ function* rootSaga() {
     takeEvery(openidActions.POST_OIDC_PROOFING_PROOFING_SUCCESS, requestNins),
     takeEvery(openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS, requestNins),
     takeEvery(headerActions.POST_LOGOUT, requestLogout),
-    takeLatest(securityActions.START_U2F_REGISTRATION, getU2FEnroll),
-    takeLatest(securityActions.GET_U2F_ENROLL_SUCCESS, registerU2F),
-    takeLatest(securityActions.POST_U2F_REMOVE, removeU2FToken),
-    takeLatest(securityActions.POST_U2F_VERIFY, verifyU2FToken),
+    takeLatest(securityActions.START_WEBAUTHN_REGISTRATION, beginRegisterWebauthn),
+    takeLatest(securityActions.GET_WEBAUTHN_BEGIN_SUCCESS, registerWebauthn),
+    takeLatest(securityActions.POST_WEBAUTHN_REMOVE, removeWebauthnToken),
+    takeLatest(securityActions.POST_WEBAUTHN_VERIFY, verifyWebauthnToken),
     takeEvery(accountLinkingActions.POST_ORCID_REMOVE, requestRemoveOrcid),
     takeEvery(accountLinkingActions.POST_ORCID_REMOVE_SUCCESS, requestOrcid),
     takeEvery(accountLinkingActions.GET_ORCID_CONNECT, requestConnectOrcid),
