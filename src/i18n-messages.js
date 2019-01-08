@@ -868,6 +868,70 @@ const msgs = {
           defaultMessage={`Temporary technical difficulties, please try again later`} />),
 
     /************************/
+    /* EIDAS ****************/
+    /************************/
+
+    'eidas.freja_eid': (
+        <FormattedMessage
+          id="eidas.freja_eid"
+          defaultMessage={`FREJA EID`} />),
+
+    'eidas.initialize_proofing_help_text': (
+        <FormattedHTMLMessage
+          id="eidas.initialize_proofing_help_text"
+          defaultMessage={`To use this option you need to have <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID+</a>.`} />),
+
+    'eidas.modal_title': (
+        <FormattedMessage
+          id="eidas.modal_title"
+          defaultMessage={`Confirm using Freja eID+`} />),
+
+    'eidas.freja_instructions_title': (
+        <FormattedMessage
+          id="eidas.freja_instructions_title"
+          defaultMessage={`How to confirm your account using Freja eID+`} />),
+
+    'eidas.freja_instructions_step_1': (
+        <FormattedMessage
+          id="eidas.freja_instructions_step_1"
+          defaultMessage={`Install the Freja eID app on your mobile device.`} />),
+
+    'eidas.freja_instructions_step_2': (
+        <FormattedMessage
+          id="eidas.freja_instructions_step_2"
+          defaultMessage={`Follow the instructions in the app to reach Freja eID+ status.`} />),
+
+    'eidas.freja_instructions_step_3': (
+        <FormattedMessage
+          id="eidas.freja_instructions_step_3"
+          defaultMessage={`Click the link "I have Freja eID installed" and follow the instructions on the Freja eID login page that opens.`} />),
+
+    'eidas.freja_instructions_step_4': (
+        <FormattedMessage
+          id="eidas.freja_instructions_step_4"
+          defaultMessage={`You will be returned to the eduID dashboard after you complete the Freja eID+ login.`} />),
+
+    'eidas.freja_instructions_install_link': (
+        <FormattedMessage
+          id="eidas.freja_instructions_install_link"
+          defaultMessage={`I need to install Freja eID`} />),
+
+    'eidas.freja_eid_ready': (
+        <FormattedMessage
+          id="eidas.freja_eid_ready"
+          defaultMessage={`I have Freja eID installed`} />),
+
+    'eidas.error_missing_nin': (
+        <FormattedMessage
+          id="eidas.error_missing_nin"
+          defaultMessage={`Please add a national identity number and try again`} />),
+
+    'eidas.error_unknown_error': (
+        <FormattedMessage
+          id="eidas.error_unknown_error"
+          defaultMessage={`Temporary technical difficulties, please try again later`} />),
+
+    /************************/
     /* ACCOUNT LINKING ******/
     /************************/
 

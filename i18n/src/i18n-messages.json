@@ -592,6 +592,54 @@
     "defaultMessage": "Temporary technical difficulties, please try again later"
   },
   {
+    "id": "eidas.freja_eid",
+    "defaultMessage": "FREJA EID"
+  },
+  {
+    "id": "eidas.initialize_proofing_help_text",
+    "defaultMessage": "To use this option you need to have <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID+</a>."
+  },
+  {
+    "id": "eidas.modal_title",
+    "defaultMessage": "Confirm using Freja eID+"
+  },
+  {
+    "id": "eidas.freja_instructions_title",
+    "defaultMessage": "How to confirm your account using Freja eID+"
+  },
+  {
+    "id": "eidas.freja_instructions_step_1",
+    "defaultMessage": "Install the Freja eID app on your mobile device."
+  },
+  {
+    "id": "eidas.freja_instructions_step_2",
+    "defaultMessage": "Follow the instructions in the app to reach Freja eID+ status."
+  },
+  {
+    "id": "eidas.freja_instructions_step_3",
+    "defaultMessage": "Click the link \"I have Freja eID installed\" and follow the instructions on the Freja eID login page that opens."
+  },
+  {
+    "id": "eidas.freja_instructions_step_4",
+    "defaultMessage": "You will be returned to the eduID dashboard after you complete the Freja eID+ login."
+  },
+  {
+    "id": "eidas.freja_instructions_install_link",
+    "defaultMessage": "I need to install Freja eID"
+  },
+  {
+    "id": "eidas.freja_eid_ready",
+    "defaultMessage": "I have Freja eID installed"
+  },
+  {
+    "id": "eidas.error_missing_nin",
+    "defaultMessage": "Please add a national identity number and try again"
+  },
+  {
+    "id": "eidas.error_unknown_error",
+    "defaultMessage": "Temporary technical difficulties, please try again later"
+  },
+  {
     "id": "account_linking.main_title",
     "defaultMessage": "Account Linking"
   },
