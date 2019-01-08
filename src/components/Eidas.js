@@ -5,11 +5,8 @@ import PropTypes from 'prop-types';
 import EduIDButton from 'components/EduIDButton';
 import NotificationsContainer from 'containers/Notifications';
 
-import ButtonGroup from 'react-bootstrap/lib/ButtonGroup';
-import Button from 'react-bootstrap/lib/Button';
-import Modal from 'react-bootstrap/lib/Modal';
-import Well from 'react-bootstrap/lib/Well';
-import HelpBlock from 'react-bootstrap/lib/HelpBlock';
+import { Button, ButtonGroup, FormText } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
 class Eidas extends Component {
@@ -17,23 +14,20 @@ class Eidas extends Component {
   render () {
     // Temporary instructions until Sweden Connect has more alternatives and we have a DS
     const freja_instructions = (
-      <Well id="freja-instructions">
+      <div className="well" id="freja-instructions">
         <ol>
           <li>{this.props.l10n('eidas.freja_instructions_step_1')}</li>
           <li>{this.props.l10n('eidas.freja_instructions_step_2')}</li>
           <li>{this.props.l10n('eidas.freja_instructions_step_3')}</li>
           <li>{this.props.l10n('eidas.freja_instructions_step_4')}</li>
         </ol>
-      </Well>
+      </div>
     );
 
-    let spinning = false, eidasButton, showModalButton, buttonGroup;
-    if (this.props.is_fetching) spinning = true;
-
+    let eidasButton, showModalButton, buttonGroup;
 
     eidasButton = (
-        <EduIDButton bsStyle="link"
-                     spinning={spinning}
+        <EduIDButton className="btn-link"
                      href={this.props.eidas_sp_freja_idp_url}>
           {this.props.l10n('eidas.freja_eid_ready')}
           </EduIDButton>
@@ -41,7 +35,7 @@ class Eidas extends Component {
 
     buttonGroup = (
       <ButtonGroup vertical block>
-        <Button bsStyle="link"
+        <Button className="btn-link"
                 href="https://frejaeid.com/skaffa-freja-eid/"
                 target="_blank">
           {this.props.l10n('eidas.freja_instructions_install_link')}
@@ -67,7 +61,7 @@ class Eidas extends Component {
               role="form">
           <fieldset id="eidas">
             {showModalButton}
-            <HelpBlock>{this.props.l10n('eidas.initialize_proofing_help_text')}</HelpBlock>
+            <FormText>{this.props.l10n('eidas.initialize_proofing_help_text')}</FormText>
           </fieldset>
         </form>
 
@@ -78,25 +72,25 @@ class Eidas extends Component {
              aria-hidden="true"
              data-backdrop="true">
 
-          <Modal show={this.props.showModal} id="eidas-modal">
-            <Modal.Header>
-              <Modal.Title>{this.props.l10n('eidas.modal_title')}</Modal.Title>
-            </Modal.Header>
+          <Modal isOpen={this.props.showModal} id="eidas-modal">
+            <ModalHeader>
+              {this.props.l10n('eidas.modal_title')}
+            </ModalHeader>
 
-            <Modal.Body>
+            <ModalBody>
               <h4>{this.props.l10n('eidas.freja_instructions_title')}</h4>
               {freja_instructions}
-              <NotificationsContainer />
+              <NotificationsContainer/>
               {buttonGroup}
-            </Modal.Body>
+            </ModalBody>
 
-            <Modal.Footer>
+            <ModalFooter>
               <Button className="finish-button"
                       id="eidas-hide-modal"
                       onClick={this.props.handleHideModal}>
                 {this.props.l10n('cm.close')}
               </Button>
-            </Modal.Footer>
+            </ModalFooter>
           </Modal>
         </div>
       </div>
@@ -105,7 +99,6 @@ class Eidas extends Component {
 }
 
 Eidas.propTypes = {
-  is_fetching: PropTypes.bool,
   handleShowModal: PropTypes.func,
   handleHideModal: PropTypes.func,
   showModal: PropTypes.bool,

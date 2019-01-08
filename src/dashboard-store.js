@@ -16,6 +16,7 @@ import ninsReducer from 'reducers/Nins';
 import letterProofingReducer from 'reducers/LetterProofing';
 import notificationsReducer from 'reducers/Notifications';
 import profileReducer from 'reducers/Profile';
+import eidasReducer from 'reducers/Eidas';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
@@ -35,6 +36,7 @@ const eduIDApp = combineReducers({
   account_linking: accountLinkingReducer,
   security: securityReducer,
   profile: profileReducer,
+  eidas_data: eidasReducer,
   form: formReducer,
   intl: intlReducer
 });
