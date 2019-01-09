@@ -115,7 +115,7 @@ describe("Async actions for captcha", () => {
     it("Tests the send captcha saga", () => {
 
         const state = getState({
-            main: {
+            config: {
                 csrf_token: "dummy-token",
             },
             email: {

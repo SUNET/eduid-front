@@ -9,7 +9,7 @@ import { setupComponent } from "tests/SignupMain-test";
 describe("EmailInUse Component", () => {
 
     const state = {
-        main: {
+        config: {
           reset_passwd_url: 'http://dummy.example.com/reset-password',
         }
     };

@@ -69,6 +69,12 @@ const fakeState = {
             'en': en,
             'sv': sv
         }
+    },
+    emails: {
+        nins: []
+    },
+    nins: {
+        emails: []
     }
 };
 
@@ -207,7 +213,7 @@ describe("SignupMain Actions", () => {
         const expectedAction = {
             type: signupActions.GET_SIGNUP_CONFIG,
         };
-        expect(signupActions.getConfig()).toEqual(expectedAction);
+        expect(signupActions.getSignupConfig()).toEqual(expectedAction);
     });
 
     it("Should fail when trying to get the config", () => {
@@ -220,7 +226,7 @@ describe("SignupMain Actions", () => {
                 message: err
             }
         };
-        expect(signupActions.getConfigFail(err)).toEqual(expectedAction);
+        expect(signupActions.getSignupConfigFail(err)).toEqual(expectedAction);
     });
 
     it("Should store a new csrf token", () => {

@@ -2,7 +2,7 @@
 import React from 'react';
 import expect from "expect";
 
-import HeaderContainer from "containers/Header";
+import HeaderContainer from "containers/HeaderAnon";
 import { setupComponent } from "tests/SignupMain-test";
 
 
@@ -11,11 +11,22 @@ describe("Header Component", () => {
     const state = {
         config: {
             dashboard_url: 'http://example.com',
-            students_link: 'http://example.com/student',
-            technicians_link: 'http://example.com',
-            staff_link: 'http://example.com',
-            faq_link: 'http://example.com',
+            STATIC_STUDENTS_URL: 'http://example.com/student',
+            STATIC_TECHNICIANS_URL: 'http://example.com',
+            STATIC_STAFF_URL: 'http://example.com',
+            STATIC_FAQ_URL: 'http://example.com',
             window_size: 'lg'
+        },
+        emails: {
+            emails: [
+                {email: 'dummy@em.ail',
+                 primary: true}
+            ]
+        },
+        nins: {
+            nins: [
+                {verified: true}
+            ]
         }
     };
 

@@ -23,7 +23,7 @@ describe("Some Component", () => {
 
     it("Renders the splash screen", () => {
         const wrapper = setupComponent({component: <MainContainer />,
-                                        overrides: {main: {is_app_loaded: false}}}),
+                                        overrides: {config: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(1);
@@ -75,7 +75,7 @@ describe("Some plugin async actions", () => {
     it("Tests post U2F response saga", () => {
 
         const state = getState({
-            main: {
+            config: {
                 csrf_token: 'dummy-token'
             },
             plugin: {

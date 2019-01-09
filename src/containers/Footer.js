@@ -8,11 +8,8 @@ import i18n from 'i18n-messages';
 
 
 const mapStateToProps = (state, props) => {
-    let langs = [];
     const languages = {};
     if (state.config.AVAILABLE_LANGUAGES !== undefined) {
-        langs = [ ...state.config.AVAILABLE_LANGUAGES ];
-        langs.unshift(['', props.l10n('pd.choose-language')]);
         state.config.AVAILABLE_LANGUAGES.forEach((l)=>{languages[l[0]] = l[1]});
     }
     return {

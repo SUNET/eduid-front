@@ -71,7 +71,7 @@ describe("Resend code async actions", () => {
             email: {
                 email: 'dummy@example.com'
             },
-            main: {
+            config: {
                 csrf_token: "dummy-token"
             }
         });

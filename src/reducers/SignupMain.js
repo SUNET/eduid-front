@@ -19,7 +19,6 @@ const configData = {
     is_fetching: false,
     error: false,
     DEBUG: true,
-    available_languages: {}
 };
 
 let signupReducer = (state=configData, action) => {
