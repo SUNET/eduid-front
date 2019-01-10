@@ -44,22 +44,6 @@ describe("ChangePassword Actions", () => {
     expect(actions.getSuggestedPasswordFail(err)).toEqual(expectedAction);
   });
 
-  it("Should choose the suggested password", () => {
-     const passwd = '1234',
-           expectedAction = {
-             type: actions.CHOOSE_SUGGESTED_PASSWORD,
-             payload: passwd
-           };
-     expect(actions.chooseSuggestedPassword(passwd)).toEqual(expectedAction);
-  });
-
-  it("Should choose a custom password", () => {
-     const expectedAction = {
-             type: actions.CHOOSE_CUSTOM_PASSWORD
-           };
-     expect(actions.chooseCustomPassword()).toEqual(expectedAction);
-  });
-
   it("Post password change (new and old)", () => {
     const passwd1 = '1234',
           passwd2 = '5678',
@@ -98,7 +82,6 @@ describe("ChangePassword Actions", () => {
 describe("Reducers", () => {
 
   const mockState = {
-    is_fetching: false,
     failed: false,
     error: '',
     message: '',
@@ -118,7 +101,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
@@ -144,7 +126,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
@@ -173,7 +154,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: err,
         message: errMsg,
@@ -181,52 +161,6 @@ describe("Reducers", () => {
         old_password: '',
         new_password: '',
         choose_custom: false,
-      }
-    );
-  });
-
-  it("Receives a CHOOSE_SUGGESTED_PASSWORD action", () => {
-    const passwd = '1234';
-    expect(
-      chpassReducer(
-        mockState,
-        {
-          type: actions.CHOOSE_SUGGESTED_PASSWORD,
-          payload: passwd
-        }
-      )
-    ).toEqual(
-      {
-        is_fetching: false,
-        failed: false,
-        error: '',
-        message: '',
-        suggested_password: '',
-        old_password: '',
-        new_password: passwd,
-        choose_custom: false,
-      }
-    );
-  });
-
-  it("Receives a CHOOSE_CUSTOM_PASSWORD action", () => {
-    expect(
-      chpassReducer(
-        mockState,
-        {
-          type: actions.CHOOSE_CUSTOM_PASSWORD
-        }
-      )
-    ).toEqual(
-      {
-        is_fetching: false,
-        failed: false,
-        error: '',
-        message: '',
-        suggested_password: '',
-        old_password: '',
-        new_password: '',
-        choose_custom: true,
       }
     );
   });
@@ -243,7 +177,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
@@ -271,7 +204,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
@@ -293,7 +225,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
@@ -319,7 +250,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: msg,
@@ -347,7 +277,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: err,
         message: '',
@@ -453,11 +382,7 @@ const fakeStore = (state) => ({
 });
 
 const fakeState = (custom) => ({
-    security: {
-        is_fetching: false,
-    },
     chpass: {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
@@ -491,7 +416,6 @@ const fakeState = (custom) => ({
 
 function setupComponent(store, custom=false) {
   const props = {
-    is_fetching: false,
     choose_custom: custom,
     user_input: [],
     password_entropy: 0,
@@ -551,7 +475,6 @@ describe("ChangePassword Container", () => {
   beforeEach(() => {
 
     mockProps = {
-        is_fetching: false,
         choose_custom: false,
         suggested_password: 'abcd',
         new_password: 'defg',
@@ -600,7 +523,6 @@ describe("ChangePassword Container", () => {
 
   it("Clicks change custom", () => {
     const newProps = {
-            is_fetching: false,
             choose_custom: true,
             new_password: 'abcd',
             user_input: [],
@@ -620,7 +542,6 @@ describe("ChangePassword Container", () => {
 
   it("Clicks change custom", () => {
     const newProps = {
-            is_fetching: false,
             choose_custom: true,
             new_password: '',
             user_input: [],
