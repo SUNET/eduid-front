@@ -46,7 +46,6 @@ describe("lookup mobile proofing Actions", () => {
 describe("Reducers", () => {
 
   const mockState = {
-    is_fetching: false,
     failed: false,
     error: ''
   };
@@ -61,7 +60,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: ''
       }
@@ -78,7 +76,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false
       }
     );
@@ -98,7 +95,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: "Bad error"
       }
@@ -116,7 +112,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: ''
       }
@@ -134,7 +129,6 @@ const fakeStore = (state) => ({
 
 const fakeState = {
     lookup_mobile: {
-        is_fetching: false,
         failed: false,
         error: ''
     },
