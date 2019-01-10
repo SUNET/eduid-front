@@ -7,7 +7,7 @@ import expect, { createSpy } from "expect";
 import { addLocaleData } from 'react-intl';
 import { MemoryRouter } from "react-router-dom";
 
-import MainContainer from 'containers/Main';
+import MainContainer from 'containers/DashboardMain';
 
 const messages = require('../../i18n/l10n/en');
 addLocaleData('react-intl/locale-data/en');
