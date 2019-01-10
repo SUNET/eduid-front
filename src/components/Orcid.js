@@ -30,7 +30,7 @@ class Orcid extends Component {
                 <tbody>
                     <tr className="emailrow">
                       <td>{orcidAuthor} <a href={this.props.orcid.id}><div className="orcid-logo-container"><span className="orcid-logo" /></div> {this.props.orcid.id}</a></td>
-                      <td><EduIDButton bsStyle="link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>{this.props.l10n('tl.remove')}</EduIDButton></td>
+                      <td><EduIDButton className="btn-link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>{this.props.l10n('tl.remove')}</EduIDButton></td>
                     </tr>
                 </tbody>
             </table>
@@ -39,7 +39,7 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <div className="orcid-data">
-          <EduIDButton bsStyle="primary" id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
+          <EduIDButton className="btn-primary" id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
             <div className="orcid-logo-container"><span className="orcid-logo" /></div> {this.props.l10n('orc.connect')}
           </EduIDButton>
           <p>{this.props.l10n('orc.about_link')}</p>
