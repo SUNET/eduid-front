@@ -144,12 +144,10 @@ describe("Mobile Actions", () => {
 describe("", () => {
 
     const mockState = {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -173,43 +171,10 @@ describe("", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
-          failed: false,
-          error: {},
-          message: ''
-        },
-        confirming: '',
-        mobiles: [],
-        phone: 999123123,
-        code: '',
-      }
-    );
-  });
-
- it("Receives a CHANGE_MOBILE action", () => {
-    expect(
-      mobileReducer(
-        mockState,
-        {
-          type: actions.CHANGE_MOBILE,
-          payload:{
-              phone: 999123123,
-          }
-        }
-      )
-    ).toEqual(
-      {
-        is_fetching: false,
-        failed: false,
-        error: '',
-        message: '',
-        resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -232,12 +197,10 @@ it("Receives a POST_MOBILE action", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -260,12 +223,10 @@ it("Receives a POST_MOBILE action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -291,12 +252,10 @@ it("Receives a POST_MOBILE action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: {error:"Bad error"},
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -322,12 +281,10 @@ it("Receives a START_CONFIRMATION action", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -350,12 +307,10 @@ it("Receives a START_CONFIRMATION action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -380,12 +335,10 @@ it("Receives a START_CONFIRMATION action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: true,
           failed: false,
           error: {},
           message: ''
@@ -409,12 +362,10 @@ it("Receives a START_RESEND_MOBILE_CODE_SUCCESS action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: 'mobile.resend_success'
@@ -440,12 +391,10 @@ it("Receives a START_RESEND_MOBILE_CODE_FAIL action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: true,
           error: {error:"Bad error"},
           message: ''
@@ -471,12 +420,10 @@ it("Receives a START_VERIFY action", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -502,12 +449,10 @@ it("Receives a START_VERIFY_FAIL action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: {error:"Bad error"},
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -533,12 +478,10 @@ it("Receives a POST_MOBILE_REMOVE action", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -546,35 +489,6 @@ it("Receives a POST_MOBILE_REMOVE action", () => {
         confirming: '',
         mobiles: [],
         phone: 999123123,
-        code: '',
-      }
-    );
-  });
-
-it("Receives a POST_MOBILE_REMOVE_SUCCESS action", () => {
-    expect(
-      mobileReducer(
-        mockState,
-        {
-          type: actions.POST_MOBILE_REMOVE_SUCCESS,
-            message: 'mobile.resend_success'
-        }
-      )
-    ).toEqual(
-      {
-        is_fetching: false,
-        failed: false,
-        error: '',
-        message: '',
-        resending: {
-          is_fetching: false,
-          failed: false,
-          error: {},
-          message: ''
-        },
-        confirming: '',
-        mobiles: [],
-        phone: '',
         code: '',
       }
     );
@@ -593,12 +507,10 @@ it("Receives a POST_MOBILE_REMOVE_FAIL action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: {error:"Bad error"},
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -625,12 +537,10 @@ it("Receives a POST_MOBILE_REMOVE_FAIL action", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -654,12 +564,10 @@ it("Receives a POST_MOBILE_PRIMARY_SUCCESS action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -685,12 +593,10 @@ it("Receives a POST_MOBILE_PRIMARY_FAIL action", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: {error:"Bad error"},
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -707,12 +613,10 @@ it("Receives a POST_MOBILE_PRIMARY_FAIL action", () => {
 const getState = () => state;
 const state = {
     phones: {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
