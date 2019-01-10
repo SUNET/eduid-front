@@ -85,7 +85,6 @@ describe("Reducers", () => {
     letter_sent: '',
     letter_expires: '',
     letter_expired: false,
-    is_fetching: false,
     failed: false,
     error: "",
     message: ''
@@ -176,7 +175,6 @@ describe("Reducers", () => {
     ).toEqual(
       {
           ...mockState,
-          is_fetching: true,
           code: 'dummy-code'
       }
     );
@@ -227,13 +225,11 @@ describe("Reducers", () => {
 
 const fakeState = {
     letter_proofing: {
-        is_fetching: false,
         failed: false,
         message: '',
         errMsg: '',
         letter_sent: '',
         resending: {
-            is_fetching: false,
             failed: false
         }
     },
@@ -263,7 +259,6 @@ function setupComponent(store) {
     handleConfirmationLetter: mock.fn(),
     handleStopConfirmationLetter: mock.fn(),
     resending: {
-        is_fetching: false,
         failed: false
     }
   };
