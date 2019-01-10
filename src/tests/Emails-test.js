@@ -159,12 +159,10 @@ describe("Email Actions", () => {
 describe("Reducers", () => {
 
   const mockState = {
-    is_fetching: false,
     failed: false,
     error: '',
     message: '',
     resending: {
-      is_fetching: false,
       failed: false,
       error: {},
       message: ''
@@ -187,12 +185,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -217,12 +213,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -244,12 +238,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -271,12 +263,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -301,12 +291,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: {error:"Bad error"},
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -331,12 +319,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -358,12 +344,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -385,12 +369,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: true,
           failed: false,
           error: {},
           message: ''
@@ -413,12 +395,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: 'emails.resend_success'
@@ -443,12 +423,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: true,
           error: {error:"Bad error"},
           message: ''
@@ -473,12 +451,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -504,12 +480,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: {error:"Bad error"},
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -534,12 +508,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -562,12 +534,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -592,12 +562,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: {error:"Bad error"},
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -623,12 +591,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -651,12 +617,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -681,12 +645,10 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: {error:"Bad error"},
         message: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
@@ -703,7 +665,6 @@ describe("Reducers", () => {
 
 const state = {
     emails: {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
@@ -711,7 +672,6 @@ const state = {
         emails: [],
         email: '',
         resending: {
-          is_fetching: false,
           failed: false,
           error: {},
           message: ''
