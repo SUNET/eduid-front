@@ -51,7 +51,6 @@ describe("OIDC Actions", () => {
 describe("Reducers", () => {
 
   const mockState = {
-    is_fetching: false,
     failed: false,
     error: "",
     qr_img: "code",
@@ -75,7 +74,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         error: "",
         qr_img: "code",
@@ -97,7 +95,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: "",
         qr_img: "new code",
@@ -123,7 +120,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         error: true,
         message: "Bad error",
@@ -146,7 +142,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         error: "",
         nin: "",
@@ -168,7 +163,6 @@ const fakeStore = (state) => ({
 
 const fakeState = {
     openid_data: {
-        is_fetching: false,
         failed: false,
         error: "",
         qr_img: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
