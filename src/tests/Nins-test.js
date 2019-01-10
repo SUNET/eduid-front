@@ -66,7 +66,6 @@ describe("Nin Actions", () => {
 describe("Reducers", () => {
 
   const mockState = {
-    is_fetching: false,
     failed: false,
     error: '',
     message: '',
@@ -87,7 +86,6 @@ describe("Reducers", () => {
     ).toEqual(
       {
         ...mockState,
-        is_fetching: true
       }
     );
   });
@@ -152,7 +150,6 @@ describe("Reducers", () => {
     ).toEqual(
       {
         ...mockState,
-        is_fetching: true,
         rmNin: nin
       }
     );
@@ -215,7 +212,6 @@ const fakeStore = (state) => ({
 
 const fakeState = {
       nins: {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',
@@ -291,7 +287,6 @@ describe("Nins Container", () => {
       nin: '',
       valid_nin: true,
       proofing_methods: [],
-      is_fetching: false,
       message: ''
     };
 
@@ -332,7 +327,6 @@ const mockState = {
         csrf_token: 'csrf-token'
     },
     nins: {
-        is_fetching: false,
         failed: false,
         error: '',
         message: '',

@@ -42,7 +42,7 @@ let NinForm = props => {
     return [(
       <form id="nins-form"
             role="form"
-            key="-1">
+            key="1">
         <fieldset id="nins-form" className="tabpane">
           <Field component={TextInput}
                  componentClass="input"
@@ -54,7 +54,7 @@ let NinForm = props => {
                  helpBlock={props.l10n('nins.input_help_text')} />
         </fieldset>
       </form>),
-      (<ButtonGroup vertical="true" id="nins-btn-group">
+      (<ButtonGroup vertical={true} id="nins-btn-group" key="2">
         {props.buttons}
       </ButtonGroup>)
     ]
@@ -97,8 +97,8 @@ class Nins extends Component {
     }
     if (ninStatus === 'nonin') {
         ninInput = ([
-            <div>{this.props.l10n('nins.help_text')}</div>,
-            <div className="proofing-buttons">
+            <div key="1">{this.props.l10n('nins.help_text')}</div>,
+            <div key="2" className="proofing-buttons">
               <NinForm buttons={vettingButtons} {...this.props} />
             </div>
         ]);
