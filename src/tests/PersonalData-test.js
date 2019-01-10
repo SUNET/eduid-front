@@ -94,7 +94,6 @@ describe("Personal Data Actions", () => {
 describe("Reducers", () => {
 
   const mockState = {
-      is_fetching: false,
       failed: false,
       data: {
           given_name: 'John',
@@ -115,7 +114,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         data: {
             given_name: 'John',
@@ -142,7 +140,6 @@ describe("Reducers", () => {
         data: {
             surname: 'Surname'
         },
-        is_fetching: false,
         failed: false
       }
     );
@@ -162,7 +159,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         data: {
             given_name: 'John',
@@ -191,7 +187,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: false,
         data: {
             given_name: 'Jonna',
@@ -212,7 +207,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: true,
         failed: false,
         data: {
             given_name: 'John',
@@ -240,7 +234,6 @@ describe("Reducers", () => {
               surname: 'Surname',
               eppn: 'dummy-eppn'
           },
-          is_fetching: false,
           failed: false
       }
     );
@@ -260,7 +253,6 @@ describe("Reducers", () => {
       )
     ).toEqual(
       {
-        is_fetching: false,
         failed: true,
         data: {
             given_name: 'John',
@@ -287,7 +279,6 @@ const fakeStore = (state) => ({
 
 const fakeState = {
   personal_data: {
-      is_fetching: false,
       failed: false,
       data: {
           given_name: '',
@@ -300,7 +291,6 @@ const fakeState = {
   config : {
       csrf_token: '',
       is_configured : true,
-      is_fetching: false,
       failed: false,
       PERSONAL_DATA_URL: 'http://localhost/services/personal-data/user'
   },
@@ -309,7 +299,6 @@ const fakeState = {
       messagers: messages
   },
     form: {personal_data: {values: {
-      is_fetching: false,
       failed: false,
       given_name: '',
       surname: '',
@@ -426,7 +415,6 @@ describe("Async component", () => {
 
        const config = fakeState.config;
        const data = {
-          is_fetching: false,
           failed: false,
           given_name: '',
           surname: '',
