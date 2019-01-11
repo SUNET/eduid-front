@@ -18,7 +18,7 @@ export function* postCompleteWebauthn () {
                   authenticatorData: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.authenticatorData))),
                   clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.clientDataJSON))),
                   signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature))),
-                  csrf_token: state.main.csrf_token,
+                  csrf_token: state.config.csrf_token,
               };
         const resp = yield call(requestCompleteWebauthn, data);
         yield put(putCsrfToken(resp));

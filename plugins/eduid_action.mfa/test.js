@@ -82,7 +82,7 @@ describe("Some plugin async actions", () => {
             }
         },
               state = getState({
-                  main: {
+                  config: {
                       csrf_token: 'dummy-token',
                       webauthn_options: '',
                   },
@@ -91,7 +91,7 @@ describe("Some plugin async actions", () => {
                   }
               });
         const data = {
-            csrf_token: state.main.csrf_token,
+            csrf_token: state.config.csrf_token,
             credentialId: assertion.rawId,
             authenticatorData: assertion.response.authenticatorData,
             clientDataJSON: assertion.response.clientDataJSON,
@@ -100,6 +100,7 @@ describe("Some plugin async actions", () => {
         const generator = postCompleteWebauthn();
         generator.next();
         let resp = generator.next(state);
+        expect(resp.value).toEqual(call(requestCompleteWebauthn, data));
         const action = {
             type: actions.POST_ACTIONS_ACTION_SUCCESS,
             payload: {
@@ -107,6 +108,7 @@ describe("Some plugin async actions", () => {
             }
         };
         generator.next(action);
+        resp = generator.next();
         delete action.payload.csrf_token;
         resp = generator.next();
         expect(resp.value).toEqual(put(action));

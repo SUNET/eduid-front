@@ -65,8 +65,8 @@ Main.propTypes = {
 
 const mapStateToProps = (state, props) => {
     let options = {};
-    if (state.main.webauthn_options !== undefined) {
-        options = { ... state.main.webauthn_options};
+    if (state.config.webauthn_options !== undefined) {
+        options = { ... state.config.webauthn_options};
         options.publicKey = {
             ...options.publicKey,
             challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge), function(x) { return x.charCodeAt(0); }))
