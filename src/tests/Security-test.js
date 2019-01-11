@@ -1053,7 +1053,7 @@ describe("Async component", () => {
 
   it("Sagas WEBAUTHN remove token", () => {
 
-    const generator = postRemoveWebauthnToken();
+    const generator = removeWebauthnToken();
     let next = generator.next();
     expect(next.value.SELECT.args).toEqual([]);
 
