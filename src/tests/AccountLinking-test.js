@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 
 const mock = require('jest-mock');
 import React from 'react';
-import { register } from 'u2f-api'
 import { shallow, mount, render } from 'enzyme';
 import { put, select, call } from "redux-saga/effects";
 import expect, { createSpy, spyOn, isSpy } from "expect";
