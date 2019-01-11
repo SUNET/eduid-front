@@ -1,15 +1,34 @@
 
-import { takeLatest, takeEvery } from 'redux-saga';
+import { takeLatest, takeEvery } from 'redux-saga/effects';
 import { call, put, select } from "redux-saga/effects";
 
 import defaultSaga from "plugins-saga";
 import * as actions from "actions/ActionWrapper";
 import { postRequest, checkStatus, putCsrfToken } from "sagas/common";
 
-import { U2FDATA_SIGNED } from "./component";
+import { WEBAUTHN_CREDS_GOT } from "./component";
 
 
-export function requestPostTokenResponse (data) {
+export function* postCompleteWebauthn () {
+    try {
+        const state = yield select(state => state),
+              assertion = state.plugin.webauthn_assertion,
+              data = {
+                  credentialId: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))),
+                  authenticatorData: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.authenticatorData))),
+                  clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.clientDataJSON))),
+                  signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature))),
+                  csrf_token: state.main.csrf_token,
+              };
+        const resp = yield call(requestCompleteWebauthn, data);
+        yield put(putCsrfToken(resp));
+        yield put(resp);
+    } catch(error) {
+        yield put(actions.postActionFail(error.toString()));
+    }
+}
+
+export function requestCompleteWebauthn (data) {
     const url = 'post-action';
     return window.fetch(url, {
         ...postRequest,
@@ -19,25 +38,10 @@ export function requestPostTokenResponse (data) {
     .then(response => response.json())
 }
 
-export function* postTokenResponse () {
-    try {
-        const state = yield select(state => state),
-            data = {
-                tokenResponse: state.plugin.token_response,
-                csrf_token: state.config.csrf_token,
-            };
-        const resp = yield call(requestPostTokenResponse, data);
-        yield put(putCsrfToken(resp));
-        yield put(resp);
-    } catch(error) {
-        yield put(actions.postActionFail(error.toString()));
-    }
-}
-
 function* rootSaga() {
     yield [
         ...defaultSaga,
-        takeLatest(U2FDATA_SIGNED, postTokenResponse),
+        takeLatest(WEBAUTHN_CREDS_GOT, postCompleteWebauthn),
     ];
 }
 
