@@ -11,7 +11,7 @@ import { WEBAUTHN_CREDS_GOT } from "./component";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const actionData = {
-    webauthn_assertion: {}
+    webauthn_assertion: null
 };
 
 export const actionReducer = (state=actionData, action) => {
