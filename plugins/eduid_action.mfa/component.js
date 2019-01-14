@@ -13,11 +13,39 @@ const img = require('../../img/computer_animation.gif');
 
 class Main extends Component {
 
+    hasWebauthnSupport () {
+        if ('credentials' in navigator) {
+            return 'preventSilentAccess' in navigator.credentials;
+        }
+        return false
+    }
+
     componentDidUpdate () {
-        this.props.getCredentials.bind(this)();
+        if (this.hasWebauthnSupport()) {
+            this.props.getCredentials.bind(this)();
+        }
     }
 
     render () {
+
+        if (! this.hasWebauthnSupport()) {
+            return (
+                <ActionWrapperContainer>
+                <div className="col-xs-12 text-center">
+                    <div className="webauthn-title">
+                    <h2>{this.props.l10n('mfa.no-webauthn-support')}</h2>
+                    </div>
+                    <div className="webauthn-subtitle">
+                    <h3>{this.props.l10n('mfa.no-webauthn-support-desc')}</h3>
+                    </div>
+                    <div>
+                    <p className="lead webauthn-text">{this.props.l10n('mfa.no-webauthn-support-text')}</p>
+                    </div>
+                </div>
+                </ActionWrapperContainer>
+            );
+        }
+
         let button = '';
         if (this.props.testing) {
             button = (<div id="tou-form-buttons" className="form-group">

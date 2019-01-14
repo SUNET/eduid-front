@@ -232,6 +232,18 @@
     "defaultMessage": "Fake authn while testing"
   },
   {
+    "id": "mfa.no-webauthn-support",
+    "defaultMessage": "No support for security keys"
+  },
+  {
+    "id": "mfa.no-webauthn-support-desc",
+    "defaultMessage": "Your browser has no support for security keys"
+  },
+  {
+    "id": "mfa.no-webauthn-support-text",
+    "defaultMessage": "You have registered a security key for authentication, but your browser does not support them. Please upgrade to a modern browser to use your security keys."
+  },
+  {
     "id": "actions.action-completed",
     "defaultMessage": "Success"
   },
