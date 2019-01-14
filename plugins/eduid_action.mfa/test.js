@@ -41,6 +41,25 @@ describe("Some Component", () => {
         expect(animation.length).toEqual(1);
         expect(title.text()).toEqual('Two-factor authentication');
     });
+
+    it("Renders no webauthn", () => {
+        const creds = window.navigator.credentials;
+        Object.defineProperty(window.navigator, 'credentials', {value: undefined, configurable: true});
+
+        const wrapper = setupComponent({component: <MainContainer />}),
+              splash = wrapper.find('div#eduid-splash-screen'),
+              title = wrapper.find('div.webauthn-title'),
+              subtitle = wrapper.find('div.webauthn-subtitle'),
+              animation = wrapper.find('div.key-animation');
+
+        expect(splash.length).toEqual(0);
+        expect(title.length).toEqual(1);
+        expect(subtitle.length).toEqual(1);
+        expect(animation.length).toEqual(0);
+        expect(title.text()).toEqual('No support for security keys');
+
+        Object.defineProperty(window.navigator, 'credentials', {value: creds, configurable: true});
+    });
 });
 
 describe("Some action reducer", () => {
