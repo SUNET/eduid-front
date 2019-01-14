@@ -82,6 +82,7 @@ const mapStateToProps = (state, props) => {
     return {
         webauthn_options: options,
         testing: state.main.testing,
+        assertion: state.plugin.webauthn_assertion
     }
 };
 
@@ -95,21 +96,25 @@ const credentialsGot = (assertion) => ({
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getCredentials: function () {
-            let options = this.props.webauthn_options;
-            if (options.publicKey !== undefined) {
-                try {
-                    navigator.credentials.get(options)
-                    .then( (assertion) => {
-                        if (assertion !== null) {
-                            dispatch(credentialsGot(assertion));
-                        }
-                    })
-                    .catch( (error) => console.log(error) );
-                } catch(error) {
-                    dispatch(postActionFail(error.toString()));
+            if (this.props.assertion === null) {
+                let options = this.props.webauthn_options;
+                if (options.publicKey !== undefined) {
+                    try {
+                        navigator.credentials.get(options)
+                        .then( (assertion) => {
+                            if (assertion !== null) {
+                                dispatch(credentialsGot(assertion));
+                            }
+                        })
+                        .catch( (error) => console.log(error) );
+                    } catch(error) {
+                        dispatch(postActionFail(error.toString()));
+                    }
+                } else {
+                    console.log("Webauthn data not available yet");
                 }
             } else {
-                console.log("Webauthn data not available yet");
+                console.log("Webauthn assertion already gotten");
             }
         }
     }
