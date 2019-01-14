@@ -408,6 +408,21 @@ const msgs = {
             id="mfa.fake-authn"
             defaultMessage={`Fake authn while testing`} />),
 
+    'mfa.no-webauthn-support': (
+        <FormattedMessage
+            id="mfa.no-webauthn-support"
+            defaultMessage={`No support for security keys`} />),
+
+    'mfa.no-webauthn-support-desc': (
+        <FormattedMessage
+            id="mfa.no-webauthn-support-desc"
+            defaultMessage={`Your browser has no support for security keys`} />),
+
+    'mfa.no-webauthn-support-text': (
+        <FormattedMessage
+            id="mfa.no-webauthn-support-text"
+            defaultMessage={`You have registered a security key for authentication, but your browser does not support them. Please upgrade to a modern browser to use your security keys.`} />),
+
     'actions.action-completed': (
         <FormattedMessage
             id="actions.action-completed"

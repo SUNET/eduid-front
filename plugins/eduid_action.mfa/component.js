@@ -13,11 +13,39 @@ const img = require('../../img/computer_animation.gif');
 
 class Main extends Component {
 
+    hasWebauthnSupport () {
+        if (navigator.credentials && navigator.credentials.preventSilentAccess) {
+            return true;
+        }
+        return false
+    }
+
     componentDidUpdate () {
-        this.props.getCredentials.bind(this)();
+        if (this.hasWebauthnSupport()) {
+            this.props.getCredentials.bind(this)();
+        }
     }
 
     render () {
+
+        if (! this.hasWebauthnSupport()) {
+            return (
+                <ActionWrapperContainer>
+                <div className="col-xs-12 text-center">
+                    <div className="webauthn-title">
+                    <h2>{this.props.l10n('mfa.no-webauthn-support')}</h2>
+                    </div>
+                    <div className="webauthn-subtitle">
+                    <h3>{this.props.l10n('mfa.no-webauthn-support-desc')}</h3>
+                    </div>
+                    <div>
+                    <p className="lead webauthn-text">{this.props.l10n('mfa.no-webauthn-support-text')}</p>
+                    </div>
+                </div>
+                </ActionWrapperContainer>
+            );
+        }
+
         let button = '';
         if (this.props.testing) {
             button = (<div id="tou-form-buttons" className="form-group">
@@ -82,6 +110,7 @@ const mapStateToProps = (state, props) => {
     return {
         webauthn_options: options,
         testing: state.config.testing,
+        assertion: state.plugin.webauthn_assertion
     }
 };
 
@@ -95,21 +124,25 @@ const credentialsGot = (assertion) => ({
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getCredentials: function () {
-            let options = this.props.webauthn_options;
-            if (options.publicKey !== undefined) {
-                try {
-                    navigator.credentials.get(options)
-                    .then( (assertion) => {
-                        if (assertion !== null) {
-                            dispatch(credentialsGot(assertion));
-                        }
-                    })
-                    .catch( (error) => console.log(error) );
-                } catch(error) {
-                    dispatch(postActionFail(error.toString()));
+            if (this.props.assertion === null) {
+                let options = this.props.webauthn_options;
+                if (options.publicKey !== undefined) {
+                    try {
+                        navigator.credentials.get(options)
+                        .then( (assertion) => {
+                            if (assertion !== null) {
+                                dispatch(credentialsGot(assertion));
+                            }
+                        })
+                        .catch( (error) => console.log(error) );
+                    } catch(error) {
+                        dispatch(postActionFail(error.toString()));
+                    }
+                } else {
+                    console.log("Webauthn data not available yet");
                 }
             } else {
-                console.log("Webauthn data not available yet");
+                console.log("Webauthn assertion already gotten");
             }
         }
     }
