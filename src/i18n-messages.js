@@ -391,7 +391,7 @@ const msgs = {
     'mfa.no-webauthn-support-text': (
         <FormattedMessage
             id="mfa.no-webauthn-support-text"
-            defaultMessage={`You have registered a security key for authentication, but your browser does not support them. Please upgrade to a modern browser to use your security keys.`} />),
+            defaultMessage={`You have registered a security key for authentication, but your browser does not support them. Please use another browser to use your security keys.`} />),
 
     'actions.action-completed': (
         <FormattedMessage
