@@ -95,17 +95,6 @@ const mapStateToProps = (state, props) => {
     let options = {};
     if (state.config.webauthn_options !== undefined) {
         options = { ... state.config.webauthn_options};
-        options.publicKey = {
-            ...options.publicKey,
-            challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge), function(x) { return x.charCodeAt(0); }))
-        };
-        const allowCreds = options.publicKey.allowCredentials.map((v) => {
-            return {
-                ...v,
-                id: Uint8Array.from(Array.prototype.map.call(atob(v.id), function(x) { return x.charCodeAt(0); }))
-            }
-        });
-        options.publicKey.allowCredentials = allowCreds;
     }
     return {
         webauthn_options: options,
@@ -136,6 +125,7 @@ const mapDispatchToProps = (dispatch, props) => {
                         })
                         .catch( (error) => console.log(error) );
                     } catch(error) {
+                        console.log("Error getting credentials:", error);
                         dispatch(postActionFail(error.toString()));
                     }
                 } else {

@@ -5,19 +5,43 @@ import { ajaxHeaders, checkStatus, getRequest, putCsrfToken } from "sagas/common
 import * as actions from "actions/ActionWrapper";
 import { history } from "components/ActionWrapper";
 import { eduidNotify } from "actions/Notifications";
+import * as CBOR from "sagas/cbor";
+import { newCsrfToken } from "actions/DashboardConfig";
 
 
 export function* requestConfig () {
     const actions_url = ACTIONS_SERVICE_URL + 'config';
     try {
         console.log('Getting config from ' + actions_url);
-        const config = yield call(fetchActions, actions_url);
-        yield put(putCsrfToken(config));
-        yield put(config);
+        const config = yield call(fetchConfig, actions_url);
+        yield put(newCsrfToken(config.csrf_token));
+        yield put(actions.getConfigSuccess(config));
         yield put(actions.appLoaded());
     } catch(error) {
         yield put(actions.getConfigFail(error.toString()));
     }
+}
+
+export function fetchConfig (url) {
+    const request = {
+        ...getRequest,
+        redirect: 'follow'
+    };
+    request.headers.Accept = 'application/cbor';
+    return window.fetch(url, {
+        ...request
+    })
+    .then(checkStatus)
+    .then(response => {
+        const resp = response.arrayBuffer();
+        console.log("Array Buffer config: ", resp);
+        return resp;
+    })
+    .then(config => {
+        const conf = CBOR.decode(config);
+        console.log('Config: ', conf);    
+        return conf;
+    })
 }
 
 
