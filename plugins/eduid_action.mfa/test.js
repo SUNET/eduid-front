@@ -93,13 +93,13 @@ describe("Some plugin async actions", () => {
     it("Tests post webauthn response saga", () => {
 
         const assertion = {
-            rawId: new TextEncoder("utf-8").encode('dummy-id').buffer,
-            response: {
-                authenticatorData: new TextEncoder("utf-8").encode('dummy authn data').buffer,
-                clientDataJSON: new TextEncoder("utf-8").encode('dummy json').buffer,
-                signature: new TextEncoder("utf-8").encode('dummy signature').buffer
-            }
-        },
+                  rawId: 'dummy-id',
+                  response: {
+                      authenticatorData: new ArrayBuffer('dummy authn data'),
+                      clientDataJSON: new ArrayBuffer('dummy json'),
+                      signature: new ArrayBuffer('dummy signature')
+                  }
+              },
               state = getState({
                   config: {
                       csrf_token: 'dummy-token',
@@ -111,10 +111,10 @@ describe("Some plugin async actions", () => {
               });
         const data = {
             csrf_token: state.config.csrf_token,
-            credentialId: assertion.rawId,
-            authenticatorData: assertion.response.authenticatorData,
-            clientDataJSON: assertion.response.clientDataJSON,
-            signature: assertion.response.signature
+            credentialId: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))),
+            authenticatorData: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.authenticatorData))),
+            clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.clientDataJSON))),
+            signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature)))
         };
         const generator = postCompleteWebauthn();
         generator.next();
@@ -127,7 +127,6 @@ describe("Some plugin async actions", () => {
             }
         };
         generator.next(action);
-        resp = generator.next();
         delete action.payload.csrf_token;
         resp = generator.next();
         expect(resp.value).toEqual(put(action));
