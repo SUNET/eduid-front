@@ -1702,6 +1702,16 @@ const msgs = {
     /* Header ******** ******/
     /************************/
 
+   'header.student': (
+        <FormattedMessage
+          id="header.student"
+          defaultMessage={`Student`} />),
+
+   'header.technician': (
+        <FormattedMessage
+          id="header.technicican"
+          defaultMessage={`Technician`} />),
+
    'header.students': (
         <FormattedMessage
           id="header.students"

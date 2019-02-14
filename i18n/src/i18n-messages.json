@@ -1220,6 +1220,14 @@
     "defaultMessage": "Successfully verified NIN"
   },
   {
+    "id": "header.student",
+    "defaultMessage": "Student"
+  },
+  {
+    "id": "header.technicican",
+    "defaultMessage": "Technician"
+  },
+  {
     "id": "header.students",
     "defaultMessage": "Students"
   },
