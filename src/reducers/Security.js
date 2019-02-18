@@ -16,7 +16,7 @@ const security = {
     webauthn_token_description: '',
     webauthn_failed: false,
     webauthn_begun: false,
-    webauthn_options: {},
+    webauthn_attestation: {},
     webauthn_token_remove: '',
     webauthn_token_verify: ''
 };
@@ -161,7 +161,7 @@ let securityReducer = (state=security, action) => {
         ...state,
         webauthn_failed: false,
         webauthn_begun: true,
-        webauthn_options: action.payload
+        webauthn_attestation: action.payload.attestation
       };
     case actions.POST_WEBAUTHN_REMOVE:
       return {

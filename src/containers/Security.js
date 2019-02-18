@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch, props) => {
         dispatch(stopAskWebauthnDescription());
     },
     handleStartWebauthnRegistration: function (e) {
-        const description = document.getElementById('describeWebauthnTokenDialogControl').value;
+        const description = document.getElementById('describeWebauthnTokenDialogControl').children[0];
         dispatch(stopAskWebauthnDescription());
         dispatch(startWebauthnRegistration(description));
     },

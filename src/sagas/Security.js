@@ -10,6 +10,7 @@ import { getCredentials, getCredentialsFail,
 import { eduidNotify } from "actions/Notifications";
 import {tokenVerifyFail} from "../actions/Security";
 
+import * as CBOR from "sagas/cbor";
 
 
 export function* requestCredentials () {
@@ -130,29 +131,50 @@ export function* verifyWebauthnToken (win) {
 export function* beginRegisterWebauthn () {
     try {
         const state = yield select(state => state);
-        const result = yield call(beginWebauthnRegistration, state.config);
-        yield put(result);
+        //if (state.security.webauthn_options.hasOwnProperty('publicKey')) {return}
+        const attestation = yield call(beginWebauthnRegistration, state.config);
+        const action = {
+            type: GET_WEBAUTHN_BEGIN_SUCCESS,
+            payload: {
+                attestation: attestation
+            }
+        };
+        yield put(action);
     } catch(error) {
+        console.log('Problem begining webauthn registration', error);
         yield* failRequest(error, registerWebauthnFail);
     }
 }
 
+
 export function beginWebauthnRegistration (config) {
     return window.fetch(config.SECURITY_URL + 'webauthn/register/begin', {
-        ...postRequest
+        ...getRequest
     })
     .then(checkStatus)
-    .then(response => response.json())
+    .then(response => {
+        const resp = response.arrayBuffer();
+        console.log("Array Buffer options: ", resp);
+        return resp;
+    })
+    .then(CBOR.decode)
+    .then(options => {
+        console.log('Options ', options);    
+        return navigator.credentials.create(options);
+    })
 }
 
 
 export function* registerWebauthn () {
     try {
         const state = yield select(state => state);
-        const attestation = yield call(navigator.credentials.create, state.security.webauthn_options);
+        const attestation = state.security.webauthn_attestation;
         const data = {
+            csrf_token: state.config.csrf_token,
             attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
-            clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON)))
+            clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
+            credentialId:  attestation.id,
+            description:  state.security.webauthn_token_description,
         }
         const result = yield call(webauthnRegistration, state.config, data);
         yield put(result);
