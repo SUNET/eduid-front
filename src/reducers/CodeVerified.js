@@ -11,7 +11,6 @@ const verifiedData = {
     email: '',
     status: '',
     dashboard_url: '',
-    gotten: false
 };
 
 let verifiedReducer = (state=verifiedData, action) => {
@@ -20,11 +19,6 @@ let verifiedReducer = (state=verifiedData, action) => {
       return {
           ...state, 
           ...action.payload
-      };
-    case actions.SHOW_EXITS:
-      return {
-          ...state, 
-          gotten: true
       };
     default:
       return state;

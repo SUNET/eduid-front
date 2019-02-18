@@ -17,16 +17,10 @@ const mapStateToProps = (state, props) => {
         token: state.verified.auth_token,
         email: state.verified.email,
         status: state.verified.status,
-        gotten: state.verified.gotten
     }
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-    return {
-      gotIt: (e) =>{
-          dispatch(actions.showExits());
-      },
-    }
 };
 
 const CodeVerifiedContainer = connect(
