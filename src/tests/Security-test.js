@@ -188,7 +188,7 @@ describe("Reducers", () => {
     webauthn_asking_description: false,
     webauthn_token_description: '',
     webauthn_failed: false,
-    webauthn_options: {},
+    webauthn_attestation: {},
     webauthn_token_remove: '',
     webauthn_token_verify: ''
   };
@@ -215,7 +215,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -254,7 +254,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -290,7 +290,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -319,7 +319,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -348,7 +348,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -377,7 +377,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -413,7 +413,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -442,7 +442,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -471,7 +471,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -500,7 +500,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -529,7 +529,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -562,7 +562,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -598,7 +598,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -627,7 +627,7 @@ describe("Reducers", () => {
         webauthn_asking_description: true,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -656,7 +656,7 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -688,7 +688,7 @@ describe("Reducers", () => {
         webauthn_token_description: 'description',
         webauthn_asking_description: false,
         webauthn_failed: false,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -724,7 +724,7 @@ describe("Reducers", () => {
         webauthn_token_description: '',
         webauthn_asking_description: false,
         webauthn_failed: true,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -742,8 +742,7 @@ describe("Reducers", () => {
         {
           type: actions.GET_WEBAUTHN_BEGIN_SUCCESS,
           payload: {
-            registerRequests: registerRequests,
-            appId: appId
+              attestation: 'dummy-attestation'
           }
         }
       )
@@ -761,9 +760,7 @@ describe("Reducers", () => {
         webauthn_token_description: '',
         webauthn_asking_description: false,
         webauthn_failed: false,
-        webauthn_options: {registerRequests: [{challenge: challenge,
-                                           version: version}],
-                           appId: appId},
+        webauthn_attestation: 'dummy-attestation',
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -799,7 +796,7 @@ describe("Reducers", () => {
         webauthn_token_description: '',
         webauthn_asking_description: false,
         webauthn_failed: true,
-        webauthn_options: {},
+        webauthn_attestation: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
       }
@@ -809,30 +806,37 @@ describe("Reducers", () => {
 
 
 const fakeStore = (state) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...state })
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
 });
 
 const mockState = {
-  security: {
-    location: 'dummy-location',
-    webauthn_options:{
-      registerRequests: [ 'dummy' ]
+    security: {
+        location: 'dummy-location',
+        webauthn_attestation: {
+            id: 'dummy-id',
+            rawId: 'dummy-raw-id',
+            response: {
+                attestationObject: 'dummy-attestation-object',
+                clientDataJSON: 'dummy-client-data'
+            },
+            type: 'public-key'
+        },
+        webauthn_token_remove: 'dummy-key',
+        webauthn_token_description: 'dummy-description',
     },
-    webauthn_token_remove: 'dummy-key'
-  },
-  config: {
-    csrf_token: 'csrf-token',
-    DASHBOARD_URL: '/dummy-dash-url/',
-    TOKEN_SERVICE_URL: '/dummy-tok-url/',
-    SECURITY_URL: '/dummy-sec-url'
-  },
-  intl: {
-    locale: 'en',
-    messages: messages
-  }
+    config: {
+        csrf_token: 'csrf-token',
+        DASHBOARD_URL: '/dummy-dash-url/',
+        TOKEN_SERVICE_URL: '/dummy-tok-url/',
+        SECURITY_URL: '/dummy-sec-url'
+    },
+    intl: {
+        locale: 'en',
+        messages: messages
+    }
 };
 
 describe("Async component", () => {
@@ -930,7 +934,7 @@ describe("Async component", () => {
         type: actions.GET_WEBAUTHN_BEGIN_SUCCESS,
         payload: {
           csrf_token: 'csrf-token',
-          webauthn_options: 'dummy'
+          webauthn_attestation: 'dummy'
         }
       }
       next = generator.next(action);
@@ -942,28 +946,25 @@ describe("Async component", () => {
       const generator = registerWebauthn();
       generator.next();
       let next = generator.next(mockState);
-      expect(next.value).toEqual(call(navigator.credentials.create, mockState.security.webauthn_options));      
-      const attestation = {
-          response: {
-              attestationObject: 'dummy-attestation',
-              clientDataJSON: 'dummy-client-data'
-          }
-      };
-      next = generator.next(attestation);
-      const dummyData = {
-          attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
-          clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON)))
-      }
-      expect(next.value).toEqual(call(webauthnRegistration, mockState.config, dummyData));
+      const attestation = mockState.security.webauthn_attestation,
+            data = {
+                csrf_token: 'csrf-token',
+                attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
+                clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
+                credentialId:  attestation.id,
+                description: mockState.security.webauthn_token_description,
+            };
+      expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
+
       const result = {
-          type: 'POST_WEBAUTHN_WEBAUTHN_REGISTRATION_SUCCESS',
+          type: actions.GET_WEBAUTHN_REGISTER_SUCCESS,
           payload: {
               message: 'dummy',
               credentials: ['c1', 'c2']
           }
       };
       next = generator.next(result);
-      expect(next.value.PUT.action.type).toEqual('POST_WEBAUTHN_WEBAUTHN_REGISTRATION_SUCCESS');
+      expect(next.value.PUT.action.type).toEqual(actions.GET_WEBAUTHN_REGISTER_SUCCESS);
   });
 
   it("Sagas WEBAUTHN register error", () => {
@@ -971,27 +972,25 @@ describe("Async component", () => {
       const generator = registerWebauthn();
       generator.next();
       let next = generator.next(mockState);
-      expect(next.value).toEqual(call(navigator.credentials.create, mockState.security.webauthn_options));      
-      const attestation = {
-          response: {
-              errorCode: 1
-          }
-      };
-      next = generator.next(attestation);
-      const dummyData = {
-          attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(undefined))),
-          clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(undefined)))
-      }
-      expect(next.value).toEqual(call(webauthnRegistration, mockState.config, dummyData));
+      const attestation = mockState.security.webauthn_attestation,
+            data = {
+                csrf_token: 'csrf-token',
+                attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
+                clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
+                credentialId:  attestation.id,
+                description: mockState.security.webauthn_token_description,
+            };
+      expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
+
       const result = {
-          type: 'POST_WEBAUTHN_WEBAUTHN_REGISTRATION_FAIL',
+          type: actions.GET_WEBAUTHN_REGISTER_SUCCESS,
           error: true,
           payload: {
               message: 'error'
           }
       };
       next = generator.next(result);
-      expect(next.value.PUT.action.type).toEqual('POST_WEBAUTHN_WEBAUTHN_REGISTRATION_FAIL');
+      expect(next.value.PUT.action.type).toEqual(actions.GET_WEBAUTHN_REGISTER_SUCCESS);
   });
 
   it("Sagas WEBAUTHN remove token", () => {
@@ -1002,7 +1001,7 @@ describe("Async component", () => {
 
     const data = {
         csrf_token: 'csrf-token',
-        keyHandle: 'dummy-key'
+        credential_key: 'dummy-key'
     };
 
     next = generator.next(mockState);
@@ -1097,7 +1096,7 @@ describe("Security Container", () => {
             webauthn_asking_description: askingDescription,
             webauthn_token_description: '',
             webauthn_failed: false,
-            webauthn_options: {},
+            webauthn_attestation: {},
             webauthn_token_remove: 'dummy-token'
         },
         config: {
