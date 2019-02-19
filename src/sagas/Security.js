@@ -88,7 +88,7 @@ export function* removeWebauthnToken () {
         const state = yield select(state => state);
         const data = {
             csrf_token: state.config.csrf_token,
-            keyHandle: state.security.webauthn_token_remove
+            credential_key: state.security.webauthn_token_remove
         };
         const resp = yield call(removeToken, state.config, data);
         yield put(putCsrfToken(resp));
@@ -97,7 +97,6 @@ export function* removeWebauthnToken () {
         yield* failRequest(error, tokenRemovedFail);
     }
 }
-
 
 export function removeToken(config, data) {
     return window.fetch(config.SECURITY_URL + 'webauthn/remove', {
