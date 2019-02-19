@@ -1425,6 +1425,31 @@ const msgs = {
           id="security.u2f-describe-title"
           defaultMessage={`Enter a description for the U2F token you are about to register`} />),
 
+    'security.webauthn_credential_type': (
+        <FormattedMessage
+          id="security.webauthn_credential_type"
+          defaultMessage={`Webauthn Key`} />),
+
+    'security.add_webauthn_token': (
+        <FormattedMessage
+          id="security.add_webauthn_token"
+          defaultMessage={`Add Webauthn Token`} />),
+
+    'security.webauthn-describe-title': (
+        <FormattedMessage
+          id="security.webauthn-describe-title"
+          defaultMessage={`Enter a name for your security key`} />),
+
+    'security.webauthn.max_allowed_tokens': (
+        <FormattedMessage
+          id="security.webauthn.max_allowed_tokens"
+          defaultMessage={`You are not allowed to register more tokens.`} />),
+
+    'security.webauthn_register_success': (
+        <FormattedMessage
+          id="security.webauthn_register_success"
+          defaultMessage={`Security key successfully registered`} />),
+
     'chpass.suggested_password': (
         <FormattedMessage
           id="chpass.suggested_password"

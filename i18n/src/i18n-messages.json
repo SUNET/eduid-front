@@ -1008,6 +1008,26 @@
     "defaultMessage": "Enter a description for the U2F token you are about to register"
   },
   {
+    "id": "security.webauthn_credential_type",
+    "defaultMessage": "Webauthn Key"
+  },
+  {
+    "id": "security.add_webauthn_token",
+    "defaultMessage": "Add Webauthn Token"
+  },
+  {
+    "id": "security.webauthn-describe-title",
+    "defaultMessage": "Enter a name for your security key"
+  },
+  {
+    "id": "security.webauthn.max_allowed_tokens",
+    "defaultMessage": "You are not allowed to register more tokens."
+  },
+  {
+    "id": "security.webauthn_register_success",
+    "defaultMessage": "Security key successfully registered"
+  },
+  {
     "id": "chpass.suggested_password",
     "defaultMessage": "Suggested password"
   },
