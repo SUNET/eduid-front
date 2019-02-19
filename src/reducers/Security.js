@@ -15,7 +15,6 @@ const security = {
     webauthn_asking_description: false,
     webauthn_token_description: '',
     webauthn_failed: false,
-    webauthn_begun: false,
     webauthn_attestation: {},
     webauthn_token_remove: '',
     webauthn_token_verify: ''
@@ -114,45 +113,34 @@ let securityReducer = (state=security, action) => {
         webauthn_failed: false,
         webauthn_token_description: action.payload.description
       };
-    case actions.STOP_WEBAUTHN_REGISTRATION:
-      return {
-        ...state,
-        webauthn_begun: false,
-        webauthn_failed: false
-      };
     case actions.GET_WEBAUTHN_REGISTER_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        webauthn_begun: false,
         webauthn_failed: false
       };
     case actions.GET_WEBAUTHN_REGISTER_FAIL:
       return {
         ...state,
         ...action.payload,
-        webauthn_begun: false,
         webauthn_failed: true
       };
     case actions.START_ASK_WEBAUTHN_DESCRIPTION:
       return {
         ...state,
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_asking_description: true
       };
     case actions.STOP_ASK_WEBAUTHN_DESCRIPTION:
       return {
         ...state,
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_asking_description: false
       };
     case actions.GET_WEBAUTHN_BEGIN_FAIL:
       return {
         ...state,
         webauthn_failed: true,
-        webauthn_begun: false,
         error: action.payload.error,
         message: action.payload.message
       };
@@ -160,7 +148,6 @@ let securityReducer = (state=security, action) => {
       return {
         ...state,
         webauthn_failed: false,
-        webauthn_begun: true,
         webauthn_attestation: action.payload.attestation
       };
     case actions.POST_WEBAUTHN_REMOVE:
@@ -168,33 +155,28 @@ let securityReducer = (state=security, action) => {
         ...state,
         webauthn_token_remove: action.payload.token,
         webauthn_failed: false,
-        webauthn_begun: false,
       };
     case actions.POST_WEBAUTHN_REMOVE_FAIL:
       return {
         ...state,
         webauthn_failed: true,
-        webauthn_begun: false,
       };
     case actions.POST_WEBAUTHN_REMOVE_SUCCESS:
       return {
         ...state,
         ...action.payload,
         webauthn_failed: false,
-        webauthn_begun: false,
       };
     case actions.POST_WEBAUTHN_VERIFY:
       return {
         ...state,
         webauthn_token_verify: action.payload.token,
         webauthn_failed: false,
-        webauthn_begun: false,
       };
     case actions.POST_WEBAUTHN_VERIFY_FAIL:
       return {
         ...state,
         webauthn_failed: true,
-        webauthn_begun: false,
       };
     default:
       return state;

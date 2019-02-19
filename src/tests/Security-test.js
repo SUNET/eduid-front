@@ -146,13 +146,6 @@ describe("Security Actions", () => {
     expect(actions.startWebauthnRegistration('description')).toEqual(expectedAction);
   });
 
-  it("Should stop WEBAUTHN registration", () => {
-    const expectedAction = {
-      type: actions.STOP_WEBAUTHN_REGISTRATION,
-    };
-    expect(actions.stopWebauthnRegistration()).toEqual(expectedAction);
-  });
-
   it("Should signal failure when trying to enroll for WEBAUTHN", () => {
     const err = 'Bad error';
     const expectedAction = {
@@ -195,7 +188,6 @@ describe("Reducers", () => {
     webauthn_asking_description: false,
     webauthn_token_description: '',
     webauthn_failed: false,
-    webauthn_begun: false,
     webauthn_options: {},
     webauthn_token_remove: '',
     webauthn_token_verify: ''
@@ -223,7 +215,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -263,7 +254,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -300,7 +290,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -330,7 +319,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -360,7 +348,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -390,7 +377,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -427,7 +413,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -457,7 +442,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -487,7 +471,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -517,7 +500,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -547,7 +529,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -581,7 +562,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -618,7 +598,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -648,7 +627,6 @@ describe("Reducers", () => {
         webauthn_asking_description: true,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -678,7 +656,6 @@ describe("Reducers", () => {
         webauthn_asking_description: false,
         webauthn_token_description: '',
         webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -711,37 +688,6 @@ describe("Reducers", () => {
         webauthn_token_description: 'description',
         webauthn_asking_description: false,
         webauthn_failed: false,
-        webauthn_begun: false,
-        webauthn_options: {},
-        webauthn_token_remove: '',
-        webauthn_token_verify: ''
-      }
-    );
-  });
-
-  it("Receives a STOP_WEBAUTHN_REGISTRATION action", () => {
-    expect(
-      securityReducer(
-        mockState,
-        {
-          type: actions.STOP_WEBAUTHN_REGISTRATION
-        }
-      )
-    ).toEqual(
-      {
-        failed: false,
-        error: '',
-        message: '',
-        credentials: [],
-        code: '',
-        confirming_change: false,
-        confirming_deletion: false,
-        location: '',
-        deleted: false,
-        webauthn_token_description: '',
-        webauthn_asking_description: false,
-        webauthn_failed: false,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -778,7 +724,6 @@ describe("Reducers", () => {
         webauthn_token_description: '',
         webauthn_asking_description: false,
         webauthn_failed: true,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -816,7 +761,6 @@ describe("Reducers", () => {
         webauthn_token_description: '',
         webauthn_asking_description: false,
         webauthn_failed: false,
-        webauthn_begun: true,
         webauthn_options: {registerRequests: [{challenge: challenge,
                                            version: version}],
                            appId: appId},
@@ -855,7 +799,6 @@ describe("Reducers", () => {
         webauthn_token_description: '',
         webauthn_asking_description: false,
         webauthn_failed: true,
-        webauthn_begun: false,
         webauthn_options: {},
         webauthn_token_remove: '',
         webauthn_token_verify: ''
@@ -1090,7 +1033,6 @@ function setupComponent() {
     langs: [],
     confirming_change: false,
     confirming_deletion: false,
-    webauthn_begun: false,
     handleStartConfirmationPassword: mock.fn(),
     handleStopConfirmationPassword: mock.fn(),
     handleConfirmationPassword: mock.fn(),
@@ -1155,7 +1097,6 @@ describe("Security Container", () => {
             webauthn_asking_description: askingDescription,
             webauthn_token_description: '',
             webauthn_failed: false,
-            webauthn_begun: false,
             webauthn_options: {},
             webauthn_token_remove: 'dummy-token'
         },

@@ -134,23 +134,6 @@ class Security extends Component {
               closeModal={this.props.handleStopAskingWebauthnDescription}
               handleConfirm={this.props.handleStartWebauthnRegistration} />
 
-          <Modal isOpen={this.props.webauthn_begun}>
-              <ModalHeader>
-                  {this.props.l10n('webauthn.action-required')}
-              </ModalHeader>
-
-              <ModalBody>
-                  <p>{this.props.l10n('webauthn.push-the-button')}</p>
-              </ModalBody>
-
-              <ModalFooter>
-                  <EduIDButton className="cancel-button"
-                          id="cancel-webauthn"
-                          onClick={this.props.handleCloseWebauthnModal} >
-                       {this.props.l10n('cm.cancel')}
-                  </EduIDButton>
-              </ModalFooter>
-          </Modal>
         </div>
     );
   }

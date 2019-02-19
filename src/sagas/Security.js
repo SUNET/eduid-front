@@ -159,8 +159,10 @@ export function beginWebauthnRegistration (config) {
     })
     .then(CBOR.decode)
     .then(options => {
-        console.log('Options ', options);    
-        return navigator.credentials.create(options);
+        console.log('Options ', options);
+        const attestation = navigator.credentials.create(options);
+        console.log('Attestation created', attestation);
+        return attestation;
     })
 }
 

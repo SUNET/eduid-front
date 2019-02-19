@@ -66,7 +66,6 @@ const fetchingActions = [
 
 const unFetchingActions = [
     secActions.STOP_CHANGE_PASSWORD,
-    secActions.STOP_WEBAUTHN_REGISTRATION,
     secActions.START_ASK_WEBAUTHN_DESCRIPTION,
     secActions.STOP_ASK_WEBAUTHN_DESCRIPTION,
     phoneActions.STOP_CONFIRMATION,

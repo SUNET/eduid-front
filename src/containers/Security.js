@@ -4,8 +4,8 @@ import Security from 'components/Security';
 import { confirmPasswordChange, startConfirmationPassword, stopConfirmationPassword,
          confirmDeletion, stopConfirmationDeletion, startConfirmationDeletion,
          postRemoveWebauthnToken, postVerifyWebauthnToken,
-         startWebauthnRegistration, stopWebauthnRegistration,
-         startAskWebauthnDescription, stopAskWebauthnDescription} from "actions/Security";
+         startWebauthnRegistration, startAskWebauthnDescription,
+         stopAskWebauthnDescription} from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from 'i18n-messages';
 
@@ -18,7 +18,6 @@ const mapStateToProps = (state, props) => {
         redirect_to: state.security.location,
         deleted: state.security.deleted,
         webauthn_asking_description: state.security.webauthn_asking_description,
-        webauthn_begun: state.security.webauthn_begun
     }
 };
 
@@ -53,12 +52,9 @@ const mapDispatchToProps = (dispatch, props) => {
         dispatch(stopAskWebauthnDescription());
     },
     handleStartWebauthnRegistration: function (e) {
-        const description = document.getElementById('describeWebauthnTokenDialogControl').children[0];
+        const description = document.getElementById('describeWebauthnTokenDialogControl').children[0].value;
         dispatch(stopAskWebauthnDescription());
         dispatch(startWebauthnRegistration(description));
-    },
-    handleCloseWebauthnModal: function (e) {
-        dispatch(stopWebauthnRegistration());
     },
     handleRemoveWebauthnToken: function (e) {
         const token = e.target.closest('.webauthn-token-holder').dataset.token;
