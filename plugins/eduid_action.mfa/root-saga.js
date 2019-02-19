@@ -20,10 +20,12 @@ export function* postCompleteWebauthn () {
                   signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature))),
                   csrf_token: state.main.csrf_token,
               };
+        console.log(data);
         const resp = yield call(requestCompleteWebauthn, data);
         yield put(putCsrfToken(resp));
         yield put(resp);
     } catch(error) {
+        console.log('Probelm cmpleting webauthn', error);
         yield put(actions.postActionFail(error.toString()));
     }
 }

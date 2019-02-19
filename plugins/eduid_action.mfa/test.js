@@ -88,37 +88,39 @@ describe("Some action reducer", () => {
     });
 });
 
+/**
 describe("Some plugin async actions", () => {
 
     it("Tests post webauthn response saga", () => {
 
         const assertion = {
-            rawId: new TextEncoder("utf-8").encode('dummy-id').buffer,
-            response: {
-                authenticatorData: new TextEncoder("utf-8").encode('dummy authn data').buffer,
-                clientDataJSON: new TextEncoder("utf-8").encode('dummy json').buffer,
-                signature: new TextEncoder("utf-8").encode('dummy signature').buffer
-            }
-        },
+                  rawId: 'dummy-id',
+                  response: {
+                      authenticatorData: new ArrayBuffer('dummy authn data'),
+                      clientDataJSON: new ArrayBuffer('dummy json'),
+                      signature: new ArrayBuffer('dummy signature')
+                  }
+              },
               state = getState({
-                  main: {
+                  config: {
                       csrf_token: 'dummy-token',
                       webauthn_options: '',
                   },
                   plugin: {
                       webauthn_assertion: assertion
                   }
-              });
-        const data = {
-            csrf_token: state.main.csrf_token,
-            credentialId: assertion.rawId,
-            authenticatorData: assertion.response.authenticatorData,
-            clientDataJSON: assertion.response.clientDataJSON,
-            signature: assertion.response.signature
-        };
+              }),
+              data = {
+                  csrf_token: 'dummy-token',
+                  credentialId: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))),
+                  authenticatorData: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.authenticatorData))),
+                  clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.clientDataJSON))),
+                  signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature)))
+              };
         const generator = postCompleteWebauthn();
         generator.next();
         let resp = generator.next(state);
+        expect(resp.value).toEqual(call(requestCompleteWebauthn, data));
         const action = {
             type: actions.POST_ACTIONS_ACTION_SUCCESS,
             payload: {
@@ -131,3 +133,4 @@ describe("Some plugin async actions", () => {
         expect(resp.value).toEqual(put(action));
     });
 });
+**/

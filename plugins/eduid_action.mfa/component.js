@@ -136,6 +136,7 @@ const mapDispatchToProps = (dispatch, props) => {
                         })
                         .catch( (error) => console.log(error) );
                     } catch(error) {
+                        console.log("Error getting credentials:", error);
                         dispatch(postActionFail(error.toString()));
                     }
                 } else {
