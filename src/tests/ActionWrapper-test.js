@@ -10,7 +10,8 @@ import EduIDButton from "components/EduIDButton";
 import ActionWrapperContainer from "containers/ActionWrapper";
 import * as actions from "actions/ActionWrapper";
 import actionWrapperReducer from "reducers/ActionWrapper";
-import { requestConfig, requestNextAction, fetchActions } from "sagas/ActionWrapper";
+import { requestConfig, requestNextAction,
+         fetchActions, fetchConfig } from "sagas/ActionWrapper";
 
 import { addLocaleData } from 'react-intl';
 
@@ -437,7 +438,7 @@ describe("ActionWrapper async actions", () => {
         const url = ACTIONS_SERVICE_URL + 'config';
         const generator = requestConfig();
         let resp = generator.next();
-        expect(resp.value).toEqual(call(fetchActions, url));
+        expect(resp.value).toEqual(call(fetchConfig, url));
 
         const action = {
             type: actions.GET_ACTIONS_CONFIG_SUCCESS,

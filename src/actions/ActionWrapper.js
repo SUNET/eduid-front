@@ -76,6 +76,16 @@ export function getConfig () {
   };
 }
 
+export function getConfigSuccess (config) {
+  return {
+    type: GET_ACTIONS_CONFIG_SUCCESS,
+    error: false,
+    payload: {
+      ...config
+    }
+  };
+}
+
 export function getConfigFail (err) {
   return {
     type: GET_ACTIONS_CONFIG_FAIL,

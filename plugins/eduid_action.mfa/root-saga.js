@@ -24,6 +24,7 @@ export function* postCompleteWebauthn () {
         yield put(putCsrfToken(resp));
         yield put(resp);
     } catch(error) {
+        console.log('Problem completing webauthn', error);
         yield put(actions.postActionFail(error.toString()));
     }
 }
