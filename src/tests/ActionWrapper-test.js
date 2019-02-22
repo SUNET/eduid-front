@@ -10,7 +10,8 @@ import EduIDButton from "components/EduIDButton";
 import ActionWrapperContainer from "containers/ActionWrapper";
 import * as actions from "actions/ActionWrapper";
 import actionWrapperReducer from "reducers/ActionWrapper";
-import { requestConfig, requestNextAction, fetchActions, fetchConfig } from "sagas/ActionWrapper";
+import { requestConfig, requestNextAction,
+         fetchActions, fetchConfig } from "sagas/ActionWrapper";
 
 import { addLocaleData } from 'react-intl';
 
