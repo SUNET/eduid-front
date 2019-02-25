@@ -93,9 +93,9 @@ Main.propTypes = {
 
 const mapStateToProps = (state, props) => {
     let options = {};
-    if (state.main.webauthn_options !== undefined) {
+    if (state.config.webauthn_options !== undefined) {
         try {
-            options = { ... state.main.webauthn_options};
+            options = { ... state.config.webauthn_options};
             options.publicKey = {
                 ...options.publicKey,
                 challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge), function(x) { return x.charCodeAt(0); }))
@@ -109,7 +109,7 @@ const mapStateToProps = (state, props) => {
             options.publicKey.allowCredentials = allowCreds;
         } catch(error) {
             // the credentials were registered as webauthn (not U2F)
-            options = { ... state.main.webauthn_options};
+            options = { ... state.config.webauthn_options};
         }
     }
     return {
