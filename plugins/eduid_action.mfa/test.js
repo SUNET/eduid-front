@@ -33,13 +33,15 @@ describe("Some Component", () => {
               splash = wrapper.find('div#eduid-splash-screen'),
               title = wrapper.find('div.webauthn-title'),
               subtitle = wrapper.find('div.webauthn-subtitle'),
-              animation = wrapper.find('div.key-animation');
+              animation = wrapper.find('div.key-animation'),
+              fallback = wrapper.find('div#mfa-try-another-way');
 
         expect(splash.length).toEqual(0);
         expect(title.length).toEqual(1);
         expect(subtitle.length).toEqual(1);
         expect(animation.length).toEqual(1);
         expect(title.text()).toEqual('Two-factor authentication');
+        expect(fallback.length).toEqual(1);
     });
 
     it("Renders no webauthn", () => {
@@ -49,12 +51,12 @@ describe("Some Component", () => {
         const wrapper = setupComponent({component: <MainContainer />}),
               splash = wrapper.find('div#eduid-splash-screen'),
               title = wrapper.find('div.webauthn-title'),
-              subtitle = wrapper.find('div.webauthn-subtitle'),
+              fallback = wrapper.find('div#mfa-try-another-way'),
               animation = wrapper.find('div.key-animation');
 
         expect(splash.length).toEqual(0);
         expect(title.length).toEqual(1);
-        expect(subtitle.length).toEqual(1);
+        expect(fallback.length).toEqual(1);
         expect(animation.length).toEqual(0);
         expect(title.text()).toEqual('No support for security keys');
 
