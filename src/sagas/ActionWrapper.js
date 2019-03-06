@@ -8,14 +8,16 @@ import { eduidNotify } from "actions/Notifications";
 import * as CBOR from "sagas/cbor";
 import { newCsrfToken } from "actions/Main";
 
+window.CBOR = CBOR;
+
 
 export function* requestConfig () {
     const actions_url = ACTIONS_SERVICE_URL + 'config';
     try {
         console.log('Getting config from ' + actions_url);
-        const config = yield call(fetchConfig, actions_url);
-        yield put(newCsrfToken(config.csrf_token));
-        yield put(actions.getConfigSuccess(config));
+        const action = yield call(fetchConfig, actions_url);
+        yield put(putCsrfToken(action));
+        yield put(action);
         yield put(actions.appLoaded());
     } catch(error) {
         yield put(actions.getConfigFail(error.toString()));
@@ -27,20 +29,18 @@ export function fetchConfig (url) {
         ...getRequest,
         redirect: 'follow'
     };
-    request.headers.Accept = 'application/cbor';
     return window.fetch(url, {
         ...request
     })
     .then(checkStatus)
+    .then(response => response.json())
     .then(response => {
-        const resp = response.arrayBuffer();
-        console.log("Array Buffer config: ", resp);
-        return resp;
-    })
-    .then(config => {
-        const conf = CBOR.decode(config);
-        console.log('Config: ', conf);    
-        return conf;
+        const raw_options = response.payload.webauthn_options;
+        const options = atob(raw_options);
+        const byte_options = Uint8Array.from(options, c => c.charCodeAt(0));
+        response.payload.webauthn_options = CBOR.decode(byte_options.buffer);
+        console.log('Action config: ', response);    
+        return response;
     })
 }
 
