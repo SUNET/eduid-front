@@ -35,10 +35,12 @@ export function fetchConfig (url) {
     .then(checkStatus)
     .then(response => response.json())
     .then(response => {
-        const raw_options = response.payload.webauthn_options;
-        const options = atob(raw_options);
-        const byte_options = Uint8Array.from(options, c => c.charCodeAt(0));
-        response.payload.webauthn_options = CBOR.decode(byte_options.buffer);
+        if (response.payload && response.payload.webauthn_options !== undefined) {
+            const raw_options = response.payload.webauthn_options;
+            const options = atob(raw_options);
+            const byte_options = Uint8Array.from(options, c => c.charCodeAt(0));
+            response.payload.webauthn_options = CBOR.decode(byte_options.buffer);
+        }
         console.log('Action config: ', response);    
         return response;
     })

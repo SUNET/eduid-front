@@ -16,6 +16,7 @@ import { updateIntl } from 'react-intl-redux';
 import { createStore, applyMiddleware, compose } from "redux";
 
 import notifyAndDispatch from "./notify-middleware";
+import { eduidNotify } from "actions/Notifications";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -50,15 +51,26 @@ function init_plugin (app, rootSaga, target, component, action) {
         }));
     }
 
-    const dispatchAction = (a) => {
+    const afterRendering = () => {
         store.dispatch(action);
+        let params = new URLSearchParams(document.location.search);
+        if (params) {
+            let msg = params.get("msg");
+            if (msg !== null) {
+                if (msg.indexOf(':ERROR:') === 0) {
+                    store.dispatch(eduidNotify(msg.substr(7), 'errors'));
+                } else {
+                    store.dispatch(eduidNotify(msg, 'messages'));
+                }
+            }
+        }
     };
 
     app = (
       <Provider store={store}>
           {component}
       </Provider>);
-    ReactDOM.render(app, target, dispatchAction);
+    ReactDOM.render(app, target, afterRendering);
 }
 
 export default init_plugin;
