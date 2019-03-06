@@ -39,10 +39,15 @@ export function requestCompleteWebauthn (data) {
     .then(response => response.json())
 }
 
+export function handleRetry () {
+    document.location.reload();
+}
+
 function* rootSaga() {
     yield [
         ...defaultSaga,
         takeLatest(WEBAUTHN_CREDS_GOT, postCompleteWebauthn),
+        takeLatest(actions.RETRY, handleRetry),
     ];
 }
 

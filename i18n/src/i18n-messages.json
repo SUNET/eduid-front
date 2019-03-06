@@ -236,12 +236,20 @@
     "defaultMessage": "No support for security keys"
   },
   {
-    "id": "mfa.no-webauthn-support-desc",
-    "defaultMessage": "Your browser has no support for security keys"
+    "id": "mfa.no-webauthn-support-text",
+    "defaultMessage": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys."
   },
   {
-    "id": "mfa.no-webauthn-support-text",
-    "defaultMessage": "You have registered a security key for authentication, but your browser does not support them. Please use another browser to use your security keys."
+    "id": "mfa.problems-heading",
+    "defaultMessage": "Problems?"
+  },
+  {
+    "id": "mfa.try-again",
+    "defaultMessage": "Try again"
+  },
+  {
+    "id": "mfa.freja-eid",
+    "defaultMessage": "Use Freja eID instead"
   },
   {
     "id": "actions.action-completed",

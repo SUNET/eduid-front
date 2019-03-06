@@ -19,7 +19,9 @@ const configData = {
     is_fetching: false,
     error: false,
     DEBUG: true,
-    available_languages: {}
+    available_languages: {},
+    eidas_url: '',
+    mfa_authn_idp: ''
 };
 
 let mainReducer = (state=configData, action) => {
