@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import i18n from 'i18n-messages';
-import { appFetching, postAction, postActionFail } from "actions/ActionWrapper";
+import { appFetching, postAction, postActionFail, retry } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
 
 import './style.scss';
@@ -26,7 +26,25 @@ class Main extends Component {
         }
     }
 
+    handleExternalMFAClick () {
+        window.location = this.props.external_mfa_url;
+    }
+
     render () {
+        let mfa_fallback = (
+          <div className="row justify-content-center">
+            <div className="col-2">
+                <div className="card" id="mfa-try-another-way">
+                    <div className="card-header">
+                        {this.props.l10n('mfa.problems-heading')}
+                    </div>
+                    <div className="card-body">
+                        <button className="btn-link" onClick={this.props.retry}>{this.props.l10n('mfa.try-again')}</button>
+                        <button className="btn-link" onClick={this.handleExternalMFAClick.bind(this)}>{this.props.l10n('mfa.freja-eid')}</button>
+                    </div>
+                </div>
+            </div>
+          </div>);
 
         if (! this.hasWebauthnSupport()) {
             return (
@@ -35,13 +53,11 @@ class Main extends Component {
                     <div className="webauthn-title">
                     <h2>{this.props.l10n('mfa.no-webauthn-support')}</h2>
                     </div>
-                    <div className="webauthn-subtitle">
-                    <h3>{this.props.l10n('mfa.no-webauthn-support-desc')}</h3>
-                    </div>
                     <div>
                     <p className="lead webauthn-text">{this.props.l10n('mfa.no-webauthn-support-text')}</p>
                     </div>
                 </div>
+                {mfa_fallback}
                 </ActionWrapperContainer>
             );
         }
@@ -79,6 +95,7 @@ class Main extends Component {
                   </form>
                 </div>
               </div>
+              {mfa_fallback}
             </ActionWrapperContainer>
         );
     }
@@ -88,34 +105,55 @@ Main.propTypes = {
     webauthn_options: PropTypes.object,
     testing: PropTypes.bool,
     l10n: PropTypes.func,
-    getCredentials: PropTypes.func
-}
+    getCredentials: PropTypes.func,
+    retry: PropTypes.func,
+    external_mfa_url: PropTypes.string
+};
 
 const mapStateToProps = (state, props) => {
     let options = {};
     if (state.config.webauthn_options !== undefined) {
         try {
-            options = { ... state.config.webauthn_options};
+            options = {...state.config.webauthn_options};
             options.publicKey = {
                 ...options.publicKey,
-                challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge), function(x) { return x.charCodeAt(0); }))
+                challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge), function (x) {
+                    return x.charCodeAt(0);
+                }))
             };
             const allowCreds = options.publicKey.allowCredentials.map((v) => {
                 return {
                     ...v,
-                    id: Uint8Array.from(Array.prototype.map.call(atob(v.id), function(x) { return x.charCodeAt(0); }))
+                    id: Uint8Array.from(Array.prototype.map.call(atob(v.id), function (x) {
+                        return x.charCodeAt(0);
+                    }))
                 }
             });
             options.publicKey.allowCredentials = allowCreds;
-        } catch(error) {
+        } catch (error) {
             // the credentials were registered as webauthn (not U2F)
-            options = { ... state.config.webauthn_options};
+            options = {...state.config.webauthn_options};
         }
+    }
+    let external_mfa_url = '';
+    if (state.config.eidas_url !== undefined && state.config.mfa_authn_idp !== undefined) {
+        let eidas_sp_url = state.config.eidas_url;
+        let mfa_auth_idp_url = state.config.mfa_authn_idp;
+        let verify_path = "mfa-authentication";
+        if (!eidas_sp_url.endsWith("/")) {
+            eidas_sp_url.concat("/")
+        }
+        // base64 encode next argument to avoid our request sanitation
+        let next = btoa(window.location);
+        external_mfa_url = eidas_sp_url + verify_path + "?idp=" + mfa_auth_idp_url + "&next=" + next;
+        console.log(external_mfa_url);
     }
     return {
         webauthn_options: options,
         testing: state.config.testing,
-        assertion: state.plugin.webauthn_assertion
+        testing: state.config.testing,
+        assertion: state.plugin.webauthn_assertion,
+        external_mfa_url: external_mfa_url
     }
 };
 
@@ -150,7 +188,11 @@ const mapDispatchToProps = (dispatch, props) => {
             } else {
                 console.log("Webauthn assertion already gotten");
             }
-        }
+        },
+        retry: function (e) {
+            e.preventDefault();
+            dispatch(retry());
+        },
     }
 };
 

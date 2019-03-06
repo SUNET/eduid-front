@@ -6,6 +6,7 @@ export const RESIZE_WINDOW = 'RESIZE_WINDOW';
 export const RESIZE_TIMEOUT = 'RESIZE_TIMEOUT';
 export const NEW_CSRF_TOKEN = 'NEW_CSRF_TOKEN';
 export const REDIRECT = 'REDIRECT';
+export const RETRY = 'RETRY';
 
 export const GET_ACTIONS_CONFIG = 'GET_ACTIONS_CONFIG';
 export const GET_ACTIONS_CONFIG_SUCCESS = 'GET_ACTIONS_CONFIG_SUCCESS';
@@ -111,6 +112,12 @@ export function postActionFail (err) {
       error: err,
       message: err
     }
+  };
+}
+
+export function retry () {
+  return {
+    type: RETRY
   };
 }
 

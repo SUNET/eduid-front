@@ -413,15 +413,25 @@ const msgs = {
             id="mfa.no-webauthn-support"
             defaultMessage={`No support for security keys`} />),
 
-    'mfa.no-webauthn-support-desc': (
-        <FormattedMessage
-            id="mfa.no-webauthn-support-desc"
-            defaultMessage={`Your browser has no support for security keys`} />),
-
     'mfa.no-webauthn-support-text': (
         <FormattedMessage
             id="mfa.no-webauthn-support-text"
-            defaultMessage={`You have registered a security key for authentication, but your browser does not support them. Please use another browser to use your security keys.`} />),
+            defaultMessage={`You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys.`} />),
+
+    'mfa.problems-heading': (
+        <FormattedMessage
+            id="mfa.problems-heading"
+            defaultMessage={`Problems?`} />),
+
+    'mfa.try-again': (
+        <FormattedMessage
+            id="mfa.try-again"
+            defaultMessage={`Try again`} />),
+
+    'mfa.freja-eid': (
+        <FormattedMessage
+            id="mfa.freja-eid"
+            defaultMessage={`Use Freja eID instead`} />),
 
     'actions.action-completed': (
         <FormattedMessage

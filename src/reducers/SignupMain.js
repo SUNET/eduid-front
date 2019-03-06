@@ -19,6 +19,9 @@ const configData = {
     is_fetching: false,
     error: false,
     DEBUG: true,
+    available_languages: {},
+    eidas_url: '',
+    mfa_authn_idp: ''
 };
 
 let signupReducer = (state=configData, action) => {
