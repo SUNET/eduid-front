@@ -6,7 +6,8 @@ import { getCredentials, getCredentialsFail,
          stopConfirmationPassword, getPasswordChangeFail,
          postConfirmDeletion, accountRemovedFail,
          tokenRemovedFail, registerWebauthnFail,
-         GET_WEBAUTHN_BEGIN_SUCCESS } from "actions/Security";
+         GET_WEBAUTHN_BEGIN_SUCCESS,
+         GET_WEBAUTHN_BEGIN_FAIL} from "actions/Security";
 import { eduidNotify } from "actions/Notifications";
 import {tokenVerifyFail} from "../actions/Security";
 
@@ -131,11 +132,15 @@ export function* beginRegisterWebauthn () {
     try {
         const state = yield select(state => state);
         //if (state.security.webauthn_options.hasOwnProperty('publicKey')) {return}
-        const attestation = yield call(beginWebauthnRegistration, state.config);
-        const action = {
-            type: GET_WEBAUTHN_BEGIN_SUCCESS,
-            payload: {
-                attestation: attestation
+        let action = yield call(beginWebauthnRegistration, state.config);
+        yield put(putCsrfToken(action));
+        if (action.payload.registration_data !== undefined) {
+            const attestation = yield call(navigator.credentials.create.bind(navigator.credentials), action.payload.registration_data);
+            action = {
+                type: GET_WEBAUTHN_BEGIN_SUCCESS,
+                payload: {
+                    attestation: attestation
+                }
             }
         };
         yield put(action);
@@ -151,17 +156,16 @@ export function beginWebauthnRegistration (config) {
         ...getRequest
     })
     .then(checkStatus)
+    .then(response => response.json())
     .then(response => {
-        const resp = response.arrayBuffer();
-        console.log("Array Buffer options: ", resp);
-        return resp;
-    })
-    .then(CBOR.decode)
-    .then(options => {
-        console.log('Options ', options);
-        const attestation = navigator.credentials.create(options);
-        console.log('Attestation created', attestation);
-        return attestation;
+        if (response.payload.registration_data !== undefined) {
+            const raw_rdata = response.payload.registration_data;
+            const rdata = atob(raw_rdata);
+            const byte_rdata = Uint8Array.from(rdata, c => c.charCodeAt(0));
+            response.payload.registration_data = CBOR.decode(byte_rdata.buffer);
+        }
+        console.log('Action config: ', response);    
+        return response;
     })
 }
 
@@ -178,6 +182,7 @@ export function* registerWebauthn () {
             description:  state.security.webauthn_token_description,
         }
         const result = yield call(webauthnRegistration, state.config, data);
+        yield put(putCsrfToken(result));
         yield put(result);
     } catch(error) {
         yield* failRequest(error, registerWebauthnFail);

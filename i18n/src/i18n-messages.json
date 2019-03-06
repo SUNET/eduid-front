@@ -856,6 +856,14 @@
     "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits."
   },
   {
+    "id": "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.",
+    "defaultMessage": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
+  },
+  {
+    "id": "cred.credential_type",
+    "defaultMessage": "Credential type."
+  },
+  {
     "id": "security.long_description",
     "defaultMessage": "Your eduID account password can be changed below."
   },
@@ -1034,6 +1042,14 @@
   {
     "id": "security.webauthn_register_success",
     "defaultMessage": "Security key successfully registered"
+  },
+  {
+    "id": "security.webauthn-token-removed",
+    "defaultMessage": "Security key successfully removed"
+  },
+  {
+    "id": "security.webauthn-missing-pdata",
+    "defaultMessage": "You should add your personal data before adding a security token"
   },
   {
     "id": "chpass.suggested_password",

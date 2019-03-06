@@ -1232,6 +1232,16 @@ const msgs = {
     /* Security ************/
     /***********************/
 
+    'InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.': (
+        <FormattedMessage
+          id="InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
+          defaultMessage={`You are attempting to register an authenticator that contains one of the credentials already registered with the relying party`} />),
+
+    'cred.credential_type': (
+        <FormattedMessage
+          id="cred.credential_type"
+          defaultMessage={`Credential type.`} />),
+
     'security.long_description': (
         <FormattedMessage
           id="security.long_description"
@@ -1459,6 +1469,16 @@ const msgs = {
         <FormattedMessage
           id="security.webauthn_register_success"
           defaultMessage={`Security key successfully registered`} />),
+
+    'security.webauthn-token-removed': (
+        <FormattedMessage
+          id="security.webauthn-token-removed"
+          defaultMessage={`Security key successfully removed`} />),
+
+    'security.webauthn-missing-pdata': (
+        <FormattedMessage
+          id="security.webauthn-missing-pdata"
+          defaultMessage={`You should add your personal data before adding a security token`} />),
 
     'chpass.suggested_password': (
         <FormattedMessage
