@@ -408,6 +408,23 @@ const msgs = {
             id="actions.action-completed"
             defaultMessage={`Success`} />),
 
+    'eidas.nin_not_matching': (
+          <FormattedMessage
+            id="eidas.nin_not_matching"
+            defaultMessage={`Asserted identity not matching the current accounts verified identity`} />),
+
+    'eidas.authn_context_mismatch': (
+      <FormattedMessage
+        id="eidas.authn_context_mismatch"
+        defaultMessage={`Wrong authentication context received`} />),
+
+    'eidas.reauthn_expired': (
+      <FormattedMessage
+        id="eidas.reauthn_expired"
+        defaultMessage={`Authentication has expired. Please try again.`} />),
+
+
+
 // messages with parameters
 
     'created.email-sent': (values) => (

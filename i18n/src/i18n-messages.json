@@ -256,6 +256,18 @@
     "defaultMessage": "Success"
   },
   {
+    "id": "eidas.nin_not_matching",
+    "defaultMessage": "Asserted identity not matching the current accounts verified identity"
+  },
+  {
+    "id": "eidas.authn_context_mismatch",
+    "defaultMessage": "Wrong authentication context received"
+  },
+  {
+    "id": "eidas.reauthn_expired",
+    "defaultMessage": "Authentication has expired. Please try again."
+  },
+  {
     "id": "created.email-sent",
     "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
   },
