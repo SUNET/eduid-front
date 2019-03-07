@@ -938,59 +938,65 @@ describe("Async component", () => {
         }
       }
       next = generator.next(action);
+      expect(next.value.PUT.action.type).toEqual('NEW_CSRF_TOKEN');
+      next = generator.next();
       expect(next.value.PUT.action.type).toEqual('GET_WEBAUTHN_WEBAUTHN_BEGIN_SUCCESS');
   });
 
   it("Sagas WEBAUTHN register", () => {
-
       const generator = registerWebauthn();
       generator.next();
       let next = generator.next(mockState);
-      const attestation = mockState.security.webauthn_attestation,
-            data = {
-                csrf_token: 'csrf-token',
-                attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
-                clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
-                credentialId:  attestation.id,
-                description: mockState.security.webauthn_token_description,
-            };
-      expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
-
-      const result = {
-          type: actions.GET_WEBAUTHN_REGISTER_SUCCESS,
-          payload: {
-              message: 'dummy',
-              credentials: ['c1', 'c2']
-          }
+      const attestation = mockState.security.webauthn_attestation;
+      const data = {
+          attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
+          clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
+          credentialId:  attestation.id,
+          description: mockState.security.webauthn_token_description,
+          csrf_token: mockState.config.csrf_token
       };
-      next = generator.next(result);
-      expect(next.value.PUT.action.type).toEqual(actions.GET_WEBAUTHN_REGISTER_SUCCESS);
+      expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
+      const action = {
+          type: actions.POST_WEBAUTHN_REGISTER_SUCCESS,
+          payload: {
+              csrf_token: mockState.config.csrf_token,
+              credentials: [ 'dummy-credentials' ]
+          }
+      }
+      next = generator.next(action);
+      expect(next.value.PUT.action.type).toEqual('NEW_CSRF_TOKEN');
+      expect(next.value.PUT.action.payload.csrf_token).toEqual('csrf-token');
+      delete(action.payload.csrf_token);
+      next = generator.next();
+      expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_REGISTER_SUCCESS);
   });
 
   it("Sagas WEBAUTHN register error", () => {
-
       const generator = registerWebauthn();
       generator.next();
       let next = generator.next(mockState);
-      const attestation = mockState.security.webauthn_attestation,
-            data = {
-                csrf_token: 'csrf-token',
-                attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
-                clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
-                credentialId:  attestation.id,
-                description: mockState.security.webauthn_token_description,
-            };
+      const attestation = mockState.security.webauthn_attestation;
+      const data = {
+          attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
+          clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
+          credentialId:  attestation.id,
+          description: mockState.security.webauthn_token_description,
+          csrf_token: mockState.config.csrf_token
+      };
       expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
-
-      const result = {
+      const action = {
           type: actions.GET_WEBAUTHN_REGISTER_SUCCESS,
           error: true,
           payload: {
+              csrf_token: mockState.config.csrf_token,
               message: 'error'
           }
       };
-      next = generator.next(result);
-      expect(next.value.PUT.action.type).toEqual(actions.GET_WEBAUTHN_REGISTER_SUCCESS);
+      next = generator.next(action);
+      expect(next.value.PUT.action.type).toEqual('NEW_CSRF_TOKEN');
+      delete(action.payload.csrf_token);
+      next = generator.next();
+      expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_REGISTER_SUCCESS);
   });
 
   it("Sagas WEBAUTHN remove token", () => {
