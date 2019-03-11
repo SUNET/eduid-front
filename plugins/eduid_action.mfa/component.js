@@ -117,16 +117,18 @@ const mapStateToProps = (state, props) => {
             options = {...state.main.webauthn_options};
             options.publicKey = {
                 ...options.publicKey,
-                challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge), function (x) {
-                    return x.charCodeAt(0);
-                }))
+                challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge),
+                                                                    function (x) {
+                                                                        return x.charCodeAt(0);
+                                                                    }))
             };
             const allowCreds = options.publicKey.allowCredentials.map((v) => {
                 return {
                     ...v,
-                    id: Uint8Array.from(Array.prototype.map.call(atob(v.id), function (x) {
-                        return x.charCodeAt(0);
-                    }))
+                    id: Uint8Array.from(Array.prototype.map.call(atob(v.id),
+                                                                 function (x) {
+                                                                     return x.charCodeAt(0);
+                                                                 }))
                 }
             });
             options.publicKey.allowCredentials = allowCreds;
@@ -172,14 +174,19 @@ const mapDispatchToProps = (dispatch, props) => {
                     try {
                         navigator.credentials.get(options)
                         .then( (assertion) => {
-                            if (assertion !== null) {
+                            if (assertion === null) {
+                                dispatch(postActionFail("mfa.error-getting-token"));
+                            } else {
                                 dispatch(credentialsGot(assertion));
                             }
                         })
-                        .catch( (error) => console.log(error) );
+                        .catch( (error) => {
+                            console.log('Problem getting MFA credentials:', error)
+                            dispatch(postActionFail("mfa.error-getting-token"));
+                        });
                     } catch(error) {
                         console.log("Error getting credentials:", error);
-                        dispatch(postActionFail(error.toString()));
+                        dispatch(postActionFail("mfa.error-getting-token"));
                     }
                 } else {
                     console.log("Webauthn data not available yet");

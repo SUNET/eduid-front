@@ -403,6 +403,11 @@ const msgs = {
             id="mfa.freja-eid"
             defaultMessage={`Use Freja eID instead`} />),
 
+    'mfa.error-getting-token': (
+        <FormattedMessage
+            id="mfa.error-getting-token"
+            defaultMessage={`There was a problem getting yor credentials. You may try using Freja eID instead`} />),
+
     'actions.action-completed': (
         <FormattedMessage
             id="actions.action-completed"
