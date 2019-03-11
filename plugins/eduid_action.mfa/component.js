@@ -32,8 +32,7 @@ class Main extends Component {
 
     render () {
         let mfa_fallback = (
-          <div className="row justify-content-center">
-            <div className="col-2">
+          <div className="text-center">
                 <div className="card" id="mfa-try-another-way">
                     <div className="card-header">
                         {this.props.l10n('mfa.problems-heading')}
@@ -42,7 +41,6 @@ class Main extends Component {
                         <button className="btn-link" onClick={this.props.retry}>{this.props.l10n('mfa.try-again')}</button>
                         <button className="btn-link" onClick={this.handleExternalMFAClick.bind(this)}>{this.props.l10n('mfa.freja-eid')}</button>
                     </div>
-                </div>
             </div>
           </div>);
 
