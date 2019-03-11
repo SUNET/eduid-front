@@ -252,6 +252,10 @@
     "defaultMessage": "Use Freja eID instead"
   },
   {
+    "id": "mfa.error-getting-token",
+    "defaultMessage": "There was a problem getting yor credentials. You may try using Freja eID instead"
+  },
+  {
     "id": "actions.action-completed",
     "defaultMessage": "Success"
   },

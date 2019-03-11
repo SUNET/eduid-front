@@ -39,6 +39,7 @@
   "header.technician": "TEKNIKER",
   "main.create-account": "Skapa en identitet för svenska universitet och högskolor.",
   "main.welcome": "Välkommen till eduID!",
+  "mfa.error-getting-token": "There was a problem getting yor credentials. You may try using Freja eID instead",
   "mfa.extra-security-enabled": "Extra säkerhet påslaget för det här kontot",
   "mfa.fake-authn": "Fejkad authn vid testning",
   "mfa.freja-eid": "Använd Freja eID i stället",
