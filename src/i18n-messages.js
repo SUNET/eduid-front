@@ -381,12 +381,12 @@ const msgs = {
     'mfa.no-webauthn-support': (
         <FormattedMessage
             id="mfa.no-webauthn-support"
-            defaultMessage={`No support for security keys`} />),
+            defaultMessage={`No support for Security Keys`} />),
 
     'mfa.no-webauthn-support-text': (
         <FormattedMessage
             id="mfa.no-webauthn-support-text"
-            defaultMessage={`You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys.`} />),
+            defaultMessage={`You have registered a Security Key for authentication, but this browser does not support them. Please use another browser to use your Security Keys.`} />),
 
     'mfa.problems-heading': (
         <FormattedMessage
@@ -406,7 +406,7 @@ const msgs = {
     'mfa.error-getting-token': (
         <FormattedMessage
             id="mfa.error-getting-token"
-            defaultMessage={`There was a problem getting yor credentials. You may try using Freja eID instead`} />),
+            defaultMessage={`There was a problem using your Security Key`} />),
 
     'actions.action-completed': (
         <FormattedMessage

@@ -233,11 +233,11 @@
   },
   {
     "id": "mfa.no-webauthn-support",
-    "defaultMessage": "No support for security keys"
+    "defaultMessage": "No support for Security Keys"
   },
   {
     "id": "mfa.no-webauthn-support-text",
-    "defaultMessage": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys."
+    "defaultMessage": "You have registered a Security Key for authentication, but this browser does not support them. Please use another browser to use your Security Keys."
   },
   {
     "id": "mfa.problems-heading",
