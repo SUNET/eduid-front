@@ -180,7 +180,6 @@ const mapDispatchToProps = (dispatch, props) => {
                         })
                         .catch( (error) => {
                             console.log('Problem getting MFA credentials:', error)
-                            dispatch(postActionFail("mfa.error-getting-token"));
                         });
                     } catch(error) {
                         console.log("Error getting credentials:", error);
