@@ -14,7 +14,8 @@ const img = require('../../img/computer_animation.gif');
 class Main extends Component {
 
     hasWebauthnSupport () {
-        if (navigator.credentials && navigator.credentials.preventSilentAccess) {
+        if (navigator.credentials && navigator.credentials.get !== undefined
+                                  && navigator.credentials.create !== undefined) {
             return true;
         }
         return false
