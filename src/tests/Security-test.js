@@ -940,7 +940,7 @@ describe("Async component", () => {
       next = generator.next(action);
       expect(next.value.PUT.action.type).toEqual('NEW_CSRF_TOKEN');
       next = generator.next();
-      expect(next.value.PUT.action.type).toEqual('GET_WEBAUTHN_WEBAUTHN_BEGIN_SUCCESS');
+      expect(next.value.PUT.action.type).toEqual('GET_WEBAUTHN_WEBAUTHN_REGISTER_BEGIN_SUCCESS');
   });
 
   it("Sagas WEBAUTHN register", () => {
