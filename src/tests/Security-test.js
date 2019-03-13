@@ -1093,6 +1093,12 @@ describe("Security Container", () => {
                 description: "",
                 key: "dummy-key",
                 success_ts: "2018-03-28T09:39:11.001371"
+            },{
+                created_ts: "2018-03-28T09:39:11.001371",
+                credential_type: "security.webauthn_credential_type",
+                description: "",
+                key: "dummy-key-2",
+                success_ts: "2018-03-28T09:39:11.001371"
             }],
             code: '',
             confirming_change: false,
@@ -1209,6 +1215,12 @@ describe("Security Container", () => {
             description: "",
             key: "dummy-key",
             success_ts: "2018-03-28T09:39:11.001371"
+        },{
+            created_ts: "2018-03-28T09:39:11.001371",
+            credential_type: "security.webauthn_credential_type",
+            description: "",
+            key: "dummy-key-2",
+            success_ts: "2018-03-28T09:39:11.001371"
         }],
         language: 'en',
         confirming_deletion: false
@@ -1216,7 +1228,7 @@ describe("Security Container", () => {
 
     expect(dispatch.mock.calls.length).toEqual(0);
     const wrapper = getWrapper(true, newProps);
-    const btn = wrapper.find('button.btn-remove-webauthn');
+    const btn = wrapper.find('button.btn-remove-webauthn').first();
     btn.simulate('click');
     expect(dispatch.mock.calls.length).toEqual(1);
     expect(dispatch.mock.calls[0][0].type).toEqual("POST_WEBAUTHN_WEBAUTHN_REMOVE");

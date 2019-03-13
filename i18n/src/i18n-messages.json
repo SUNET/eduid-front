@@ -1052,6 +1052,14 @@
     "defaultMessage": "You should add your personal data before adding a security token"
   },
   {
+    "id": "security.webauthn-token-notfound",
+    "defaultMessage": "Security token not found"
+  },
+  {
+    "id": "security.webauthn-noremove-last",
+    "defaultMessage": "You are not allowed to remove your only security token"
+  },
+  {
     "id": "chpass.suggested_password",
     "defaultMessage": "Suggested password"
   },
