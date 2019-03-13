@@ -99,13 +99,13 @@ export function saveData (getData, formName, startAction, fetcher, failAction) {
 }
 
 
-function safeDecodeCBOR (str) {
+export function safeDecodeCBOR (str) {
     const bytes = atob(str.replace(/_/g, '/').replace(/-/g, '+'));
     const buff = Uint8Array.from(bytes, c => c.charCodeAt(0));
     return CBOR.decode(buff.buffer);
 }
 
-function safeEncode (obj) {
+export function safeEncode (obj) {
     const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
     const unsafeObj = btoa(bytesObj);
     return unsafeObj.replace(/\//g, '_').replace(/\+/g, '-').replace(/=*$/, "");
