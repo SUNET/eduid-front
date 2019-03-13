@@ -411,12 +411,12 @@ const msgs = {
     'mfa.no-webauthn-support': (
         <FormattedMessage
             id="mfa.no-webauthn-support"
-            defaultMessage={`No support for security keys`} />),
+            defaultMessage={`No support for Security Keys`} />),
 
     'mfa.no-webauthn-support-text': (
         <FormattedMessage
             id="mfa.no-webauthn-support-text"
-            defaultMessage={`You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys.`} />),
+            defaultMessage={`You have registered a Security Key for authentication, but this browser does not support them. Please use another browser to use your Security Keys.`} />),
 
     'mfa.problems-heading': (
         <FormattedMessage
@@ -433,10 +433,32 @@ const msgs = {
             id="mfa.freja-eid"
             defaultMessage={`Use Freja eID instead`} />),
 
+    'mfa.error-getting-token': (
+        <FormattedMessage
+            id="mfa.error-getting-token"
+            defaultMessage={`There was a problem using your Security Key`} />),
+
     'actions.action-completed': (
         <FormattedMessage
             id="actions.action-completed"
             defaultMessage={`Success`} />),
+
+    'eidas.nin_not_matching': (
+          <FormattedMessage
+            id="eidas.nin_not_matching"
+            defaultMessage={`Asserted identity not matching the current accounts verified identity`} />),
+
+    'eidas.authn_context_mismatch': (
+      <FormattedMessage
+        id="eidas.authn_context_mismatch"
+        defaultMessage={`Wrong authentication context received`} />),
+
+    'eidas.reauthn_expired': (
+      <FormattedMessage
+        id="eidas.reauthn_expired"
+        defaultMessage={`Authentication has expired. Please try again.`} />),
+
+
 
 // messages with parameters
 

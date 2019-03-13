@@ -9,6 +9,11 @@ div.key-animation {
     background-position: center center;
 }
 
+div.card#mfa-try-another-way {
+    width: 300px;
+    margin: auto;
+}
+
 @media only screen and (min-width: 992px) {
     div.key-animation {
         height: 200px;
