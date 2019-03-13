@@ -132,17 +132,15 @@ export function* beginRegisterWebauthn () {
     try {
         const state = yield select(state => state);
         //if (state.security.webauthn_options.hasOwnProperty('publicKey')) {return}
-        let action = yield call(beginWebauthnRegistration, state.config);
-        yield put(putCsrfToken(action));
-        if (action.payload.registration_data !== undefined) {
-            const attestation = yield call(navigator.credentials.create.bind(navigator.credentials), action.payload.registration_data);
-            action = {
-                type: GET_WEBAUTHN_BEGIN_SUCCESS,
-                payload: {
-                    attestation: attestation
-                }
+        const action = yield call(beginWebauthnRegistration, state.config);
+        if (action.type === GET_WEBAUTHN_BEGIN_SUCCESS) {
+            yield put(putCsrfToken(action));
+            if (action.payload.registration_data !== undefined) {
+                const attestation = yield call(navigator.credentials.create.bind(navigator.credentials),
+                                               action.payload.registration_data);
+                action.payload.attestation = attestation;
             }
-        };
+        }
         yield put(action);
     } catch(error) {
         console.log('Problem begining webauthn registration', error);
