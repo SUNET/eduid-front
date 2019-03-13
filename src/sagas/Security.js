@@ -12,7 +12,7 @@ import { eduidNotify } from "actions/Notifications";
 import {tokenVerifyFail} from "../actions/Security";
 
 import * as CBOR from "sagas/cbor";
-import { safeEncode, safeDecodeCBOR } from "sagas/Security";
+import { safeEncode, safeDecodeCBOR } from "sagas/common";
 
 
 export function* requestCredentials () {
