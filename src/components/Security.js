@@ -35,7 +35,7 @@ class Security extends Component {
                               </button>
                             </div>);
             }
-            if (cred.credential_type === 'security.webauthn_credential_type') {
+            if (cred.credential_type !== 'security.password_credential_type') {
                 if (cred.verified) {
                   btnVerify = (<div className="btn-group btn-group-sm" role="group">
                                 <button className="btn btn-link btn-verified-webauthn" disabled>
