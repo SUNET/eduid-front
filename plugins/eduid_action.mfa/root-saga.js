@@ -24,7 +24,7 @@ export function* postCompleteWebauthn () {
                   authenticatorData: safeEncode(assertion.response.authenticatorData),
                   clientDataJSON: safeEncode(assertion.response.clientDataJSON),
                   signature: safeEncode(assertion.response.signature),
-                  csrf_token: state.main.csrf_token,
+                  csrf_token: state.config.csrf_token,
               };
         const resp = yield call(requestCompleteWebauthn, data);
         yield put(putCsrfToken(resp));
