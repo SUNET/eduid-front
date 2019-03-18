@@ -13,6 +13,19 @@ import 'style/Security.scss';
 
 class Security extends Component {
 
+    checkWebauthnDevice () {
+        if (window.PublicKeyCredential === undefined ||
+            typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable !== "function") {
+            return false;
+        }
+        PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+        .then( available => (available) )
+        .catch( error => {
+            console.log('Error checking for platform authenticator:', error);
+            return false;
+        });
+    }
+
     render () {
         if (this.props.redirect_to !== '') {
             window.location.href = this.props.redirect_to;
@@ -24,7 +37,7 @@ class Security extends Component {
         }
         const tokens = this.props.credentials.filter((cred) =>
                       (cred.credential_type !== 'security.password_credential_type'));
-        let creds_table = this.props.credentials.map((cred, index) => {
+        const creds_table = this.props.credentials.map((cred, index) => {
                 let btnRemove = '';
                 let btnVerify = '';
                 if (tokens.length > 1 && cred.credential_type !== 'security.password_credential_type') {
@@ -67,6 +80,19 @@ class Security extends Component {
                 );
             }, this);
 
+        let platformAuthenticatorButton = '';
+        if ( this.checkWebauthnDevice() ) {
+            platformAuthenticatorButton = (
+                <div id="add-webauthn-token-platform">
+                    <EduIDButton className="btn-primary"
+                                id="security-webauthn-platform-button"
+                                onClick={this.props.handleStartAskingDeviceWebauthnDescription}>
+                            {this.props.l10n('security.add_webauthn_token_device')}
+                    </EduIDButton>
+                </div>
+            );
+        }
+
         return (
             <div>
               <div className="intro">
@@ -102,13 +128,7 @@ class Security extends Component {
                             {this.props.l10n('security.add_webauthn_token_key')}
                     </EduIDButton>
                 </div>
-                <div id="add-webauthn-token-platform">
-                    <EduIDButton className="btn-primary"
-                                id="security-webauthn-platform-button"
-                                onClick={this.props.handleStartAskingDeviceWebauthnDescription}>
-                            {this.props.l10n('security.add_webauthn_token_device')}
-                    </EduIDButton>
-                </div>
+                { platformAuthenticatorButton }
               </div>
               <div className="second-block">
                   <div className="intro">
