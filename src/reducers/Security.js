@@ -17,7 +17,8 @@ const security = {
     webauthn_failed: false,
     webauthn_attestation: {},
     webauthn_token_remove: '',
-    webauthn_token_verify: ''
+    webauthn_token_verify: '',
+    webauthn_authenticator: 'cross-platform'
 };
 
 
@@ -113,18 +114,6 @@ let securityReducer = (state=security, action) => {
         webauthn_failed: false,
         webauthn_token_description: action.payload.description
       };
-    case actions.GET_WEBAUTHN_REGISTER_SUCCESS:
-      return {
-        ...state,
-        ...action.payload,
-        webauthn_failed: false
-      };
-    case actions.GET_WEBAUTHN_REGISTER_FAIL:
-      return {
-        ...state,
-        ...action.payload,
-        webauthn_failed: true
-      };
     case actions.START_ASK_WEBAUTHN_DESCRIPTION:
       return {
         ...state,
@@ -137,14 +126,14 @@ let securityReducer = (state=security, action) => {
         webauthn_failed: false,
         webauthn_asking_description: false
       };
-    case actions.GET_WEBAUTHN_BEGIN_FAIL:
+    case actions.POST_WEBAUTHN_BEGIN_FAIL:
       return {
         ...state,
         webauthn_failed: true,
         error: action.payload.error,
         message: action.payload.message
       };
-    case actions.GET_WEBAUTHN_BEGIN_SUCCESS:
+    case actions.POST_WEBAUTHN_BEGIN_SUCCESS:
       return {
         ...state,
         webauthn_failed: false,
@@ -159,7 +148,7 @@ let securityReducer = (state=security, action) => {
         webauthn_is_fetching: false,
         is_fetching: false
       };
-    case actions.GET_WEBAUTHN_REGISTER_FAIL:
+    case actions.POST_WEBAUTHN_REGISTER_FAIL:
       return {
         ...state,
         ...action.payload,
@@ -195,6 +184,11 @@ let securityReducer = (state=security, action) => {
       return {
         ...state,
         webauthn_failed: true,
+      };
+    case actions.AUTHENTICATOR:
+      return {
+        ...state,
+        webauthn_authenticator: action.payload.choice,
       };
     default:
       return state;

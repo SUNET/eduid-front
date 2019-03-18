@@ -1472,10 +1472,20 @@ const msgs = {
           id="security.webauthn_credential_type"
           defaultMessage={`Webauthn Key`} />),
 
-    'security.add_webauthn_token': (
+    'security.add_webauthn_token_key': (
         <FormattedMessage
-          id="security.add_webauthn_token"
-          defaultMessage={`Add Webauthn Token`} />),
+          id="security.add_webauthn_token_key"
+          defaultMessage={`Register a portable Security Key`} />),
+
+    'security.add_webauthn_token_device': (
+        <FormattedMessage
+          id="security.add_webauthn_token_device"
+          defaultMessage={`Register this device as Security Key`} />),
+
+    'security.for-second-factor': (
+        <FormattedMessage
+          id="security.for-second-factor"
+          defaultMessage={`Use the buttons below to register 2nd factors for authentication with eduID`} />),
 
     'security.webauthn-describe-title': (
         <FormattedMessage

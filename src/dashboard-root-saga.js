@@ -84,7 +84,7 @@ function* rootSaga() {
     takeEvery(openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS, requestNins),
     takeEvery(headerActions.POST_LOGOUT, requestLogout),
     takeLatest(securityActions.START_WEBAUTHN_REGISTRATION, beginRegisterWebauthn),
-    takeLatest(securityActions.GET_WEBAUTHN_BEGIN_SUCCESS, registerWebauthn),
+    takeLatest(securityActions.POST_WEBAUTHN_BEGIN_SUCCESS, registerWebauthn),
     takeLatest(securityActions.POST_WEBAUTHN_REMOVE, removeWebauthnToken),
     takeLatest(securityActions.POST_WEBAUTHN_VERIFY, verifyWebauthnToken),
     takeEvery(accountLinkingActions.POST_ORCID_REMOVE, requestRemoveOrcid),

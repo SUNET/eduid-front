@@ -277,7 +277,7 @@
   },
   {
     "id": "mfa.error-getting-token",
-    "defaultMessage": "There was a problem getting yor credentials. You may try using Freja eID instead"
+    "defaultMessage": "There was a problem using your Security Key"
   },
   {
     "id": "actions.action-completed",
@@ -728,10 +728,6 @@
     "defaultMessage": "U2F token not used for login"
   },
   {
-    "id": "eidas.nin_not_matching",
-    "defaultMessage": "Asserted identity not matching the current accounts verified identity"
-  },
-  {
     "id": "eidas.nin_already_verified",
     "defaultMessage": "You have already verified your identity"
   },
@@ -742,10 +738,6 @@
   {
     "id": "eidas.token_verify_success",
     "defaultMessage": "U2F token verified successfully"
-  },
-  {
-    "id": "eidas.authn_context_mismatch",
-    "defaultMessage": "Wrong authentication context received"
   },
   {
     "id": "pd.long_description",
@@ -1044,8 +1036,16 @@
     "defaultMessage": "Webauthn Key"
   },
   {
-    "id": "security.add_webauthn_token",
-    "defaultMessage": "Add Webauthn Token"
+    "id": "security.add_webauthn_token_key",
+    "defaultMessage": "Register a portable Security Key"
+  },
+  {
+    "id": "security.add_webauthn_token_device",
+    "defaultMessage": "Register this device as Security Key"
+  },
+  {
+    "id": "security.for-second-factor",
+    "defaultMessage": "Use the buttons below to register 2nd factors for authentication with eduID"
   },
   {
     "id": "security.webauthn-describe-title",

@@ -6,8 +6,8 @@ import { getCredentials, getCredentialsFail,
          stopConfirmationPassword, getPasswordChangeFail,
          postConfirmDeletion, accountRemovedFail,
          tokenRemovedFail, registerWebauthnFail,
-         GET_WEBAUTHN_BEGIN_SUCCESS,
-         GET_WEBAUTHN_BEGIN_FAIL} from "actions/Security";
+         beginWebauthnFail,
+         POST_WEBAUTHN_BEGIN_SUCCESS } from "actions/Security";
 import { eduidNotify } from "actions/Notifications";
 import {tokenVerifyFail} from "../actions/Security";
 
@@ -133,8 +133,12 @@ export function* beginRegisterWebauthn () {
     try {
         const state = yield select(state => state);
         //if (state.security.webauthn_options.hasOwnProperty('publicKey')) {return}
-        const action = yield call(beginWebauthnRegistration, state.config);
-        if (action.type === GET_WEBAUTHN_BEGIN_SUCCESS) {
+        const data = {
+            csrf_token: state.config.csrf_token,
+            authenticator: state.security.webauthn_authenticator,
+        };
+        const action = yield call(beginWebauthnRegistration, state.config, data);
+        if (action.type === POST_WEBAUTHN_BEGIN_SUCCESS) {
             yield put(putCsrfToken(action));
             if (action.payload.registration_data !== undefined) {
                 const attestation = yield call(navigator.credentials.create.bind(navigator.credentials),
@@ -145,14 +149,15 @@ export function* beginRegisterWebauthn () {
         yield put(action);
     } catch(error) {
         console.log('Problem begining webauthn registration', error);
-        yield* failRequest(error, registerWebauthnFail);
+        yield* failRequest(error, beginWebauthnFail);
     }
 }
 
 
-export function beginWebauthnRegistration (config) {
+export function beginWebauthnRegistration (config, data) {
     return window.fetch(config.SECURITY_URL + 'webauthn/register/begin', {
-        ...getRequest
+        ...postRequest,
+        body: JSON.stringify(data)
     })
     .then(checkStatus)
     .then(response => response.json())

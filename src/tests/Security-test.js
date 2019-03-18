@@ -149,7 +149,7 @@ describe("Security Actions", () => {
   it("Should signal failure when trying to enroll for WEBAUTHN", () => {
     const err = 'Bad error';
     const expectedAction = {
-      type: actions.GET_WEBAUTHN_BEGIN_FAIL,
+      type: actions.POST_WEBAUTHN_BEGIN_FAIL,
       error: true,
       payload: {
         error: new Error(err),
@@ -162,7 +162,7 @@ describe("Security Actions", () => {
   it("Should signal failure when trying to register for WEBAUTHN", () => {
     const err = 'Bad error';
     const expectedAction = {
-      type: actions.GET_WEBAUTHN_REGISTER_FAIL,
+      type: actions.POST_WEBAUTHN_REGISTER_FAIL,
       error: true,
       payload: {
         error: new Error(err),
@@ -695,14 +695,14 @@ describe("Reducers", () => {
     );
   });
 
-  it("Receives a GET_WEBAUTHN_BEGIN_FAIL action", () => {
+  it("Receives a POST_WEBAUTHN_BEGIN_FAIL action", () => {
     const err = 'Error',
           error = new Error(err);
     expect(
       securityReducer(
         mockState,
         {
-          type: actions.GET_WEBAUTHN_BEGIN_FAIL,
+          type: actions.POST_WEBAUTHN_BEGIN_FAIL,
           error: true,
           payload: {
             error: error,
@@ -731,7 +731,7 @@ describe("Reducers", () => {
     );
   });
 
-  it("Receives a GET_WEBAUTHN_BEGIN_SUCCESS action", () => {
+  it("Receives a POST_WEBAUTHN_BEGIN_SUCCESS action", () => {
     const challenge = 'dummy',
           version = 'v2',
           registerRequests = [{challenge: challenge, version: version}],
@@ -740,7 +740,7 @@ describe("Reducers", () => {
       securityReducer(
         mockState,
         {
-          type: actions.GET_WEBAUTHN_BEGIN_SUCCESS,
+          type: actions.POST_WEBAUTHN_BEGIN_SUCCESS,
           payload: {
               attestation: 'dummy-attestation'
           }
@@ -767,14 +767,14 @@ describe("Reducers", () => {
     );
   });
 
-  it("Receives a GET_WEBAUTHN_REGISTER_FAIL action", () => {
+  it("Receives a POST_WEBAUTHN_REGISTER_FAIL action", () => {
     const err = 'Error',
           error = new Error(err);
     expect(
       securityReducer(
         mockState,
         {
-          type: actions.GET_WEBAUTHN_REGISTER_FAIL,
+          type: actions.POST_WEBAUTHN_REGISTER_FAIL,
           error: true,
           payload: {
             error: error,
@@ -826,6 +826,7 @@ const mockState = {
         },
         webauthn_token_remove: 'dummy-key',
         webauthn_token_description: 'dummy-description',
+        webauthn_authenticator: 'cross-platform'
     },
     config: {
         csrf_token: 'csrf-token',
@@ -929,9 +930,13 @@ describe("Async component", () => {
       const generator = beginRegisterWebauthn();
       generator.next();
       let next = generator.next(mockState);
-      expect(next.value).toEqual(call(beginWebauthnRegistration, mockState.config));      
+      const data = {
+          csrf_token: 'csrf-token',
+          authenticator: 'cross-platform'
+      };
+      expect(next.value).toEqual(call(beginWebauthnRegistration, mockState.config, data));
       const action = {
-        type: actions.GET_WEBAUTHN_BEGIN_SUCCESS,
+        type: actions.POST_WEBAUTHN_BEGIN_SUCCESS,
         payload: {
           csrf_token: 'csrf-token',
           webauthn_attestation: 'dummy'
@@ -940,7 +945,7 @@ describe("Async component", () => {
       next = generator.next(action);
       expect(next.value.PUT.action.type).toEqual('NEW_CSRF_TOKEN');
       next = generator.next();
-      expect(next.value.PUT.action.type).toEqual('GET_WEBAUTHN_WEBAUTHN_REGISTER_BEGIN_SUCCESS');
+      expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_BEGIN_SUCCESS);
   });
 
   it("Sagas WEBAUTHN register", () => {
@@ -985,7 +990,7 @@ describe("Async component", () => {
       };
       expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
       const action = {
-          type: actions.GET_WEBAUTHN_REGISTER_SUCCESS,
+          type: actions.POST_WEBAUTHN_REGISTER_SUCCESS,
           error: true,
           payload: {
               csrf_token: mockState.config.csrf_token,
@@ -1173,7 +1178,7 @@ describe("Security Container", () => {
     expect(dispatch.mock.calls.length).toEqual(0);
     const wrapper = getWrapper();
     wrapper.find('EduIDButton#security-webauthn-button').simulate('click');
-    expect(dispatch.mock.calls.length).toEqual(2);
+    expect(dispatch.mock.calls.length).toEqual(3);
     expect(dispatch.mock.calls[0][0].type).toEqual(notifyActions.RM_ALL_NOTIFICATION);
     expect(dispatch.mock.calls[1][0].type).toEqual(actions.START_ASK_WEBAUTHN_DESCRIPTION);
   });
@@ -1184,7 +1189,8 @@ describe("Security Container", () => {
     getWrapper().find('EduIDButton#delete-button').props().onClick();
     expect(dispatch.mock.calls.length).toEqual(2);
     expect(dispatch.mock.calls[0][0].type).toEqual(notifyActions.RM_ALL_NOTIFICATION);
-    expect(dispatch.mock.calls[1][0].type).toEqual(actions.START_DELETE_ACCOUNT);
+    expect(dispatch.mock.calls[1][0].type).toEqual(actions.AUTHENTICATOR);
+    expect(dispatch.mock.calls[2][0].type).toEqual(actions.START_DELETE_ACCOUNT);
   });
 
   it("Clicks confirm delete", () => {

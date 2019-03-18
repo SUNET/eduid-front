@@ -93,17 +93,27 @@ class Security extends Component {
                       {this.props.l10n('security.change_password')}
             </EduIDButton>
           </div>
-          <div id="add-webauthn-token">
-            <EduIDButton className="btn-primary"
-                        id="security-webauthn-button"
-                        onClick={this.props.handleStartAskingWebauthnDescription}>
-                      {this.props.l10n('security.add_webauthn_token')}
-            </EduIDButton>
+          <p className="eduid-text-muted">{this.props.l10n('security.for-second-factor')}</p>
+          <div id="register-webauthn-tokens-area">
+            <div id="add-webauthn-token">
+                <EduIDButton className="btn-primary"
+                            id="security-webauthn-button"
+                            onClick={this.props.handleStartAskingKeyWebauthnDescription}>
+                        {this.props.l10n('security.add_webauthn_token_key')}
+                </EduIDButton>
+            </div>
+            <div id="add-webauthn-token-platform">
+                <EduIDButton className="btn-primary"
+                            id="security-webauthn-platform-button"
+                            onClick={this.props.handleStartAskingDeviceWebauthnDescription}>
+                        {this.props.l10n('security.add_webauthn_token_device')}
+                </EduIDButton>
+            </div>
           </div>
           <div className="second-block">
               <div className="intro">
                  <h4>{this.props.l10n('security.account_title')}</h4>
-                 <p>{this.props.l10n('security.account_description')}</p>
+                 <p className="eduid-text-muted">{this.props.l10n('security.account_description')}</p>
               </div>
               <EduIDButton className="btn btn-danger"
                            id="delete-button"
