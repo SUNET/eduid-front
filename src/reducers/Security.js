@@ -144,18 +144,12 @@ let securityReducer = (state=security, action) => {
         ...state,
         ...action.payload,
         webauthn_failed: false,
-        webauthn_begun: false,
-        webauthn_is_fetching: false,
-        is_fetching: false
       };
     case actions.POST_WEBAUTHN_REGISTER_FAIL:
       return {
         ...state,
         ...action.payload,
         webauthn_failed: true,
-        webauthn_begun: false,
-        webauthn_is_fetching: false,
-        is_fetching: false
       };
     case actions.POST_WEBAUTHN_REMOVE:
       return {

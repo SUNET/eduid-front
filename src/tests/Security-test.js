@@ -1180,7 +1180,8 @@ describe("Security Container", () => {
     wrapper.find('EduIDButton#security-webauthn-button').simulate('click');
     expect(dispatch.mock.calls.length).toEqual(3);
     expect(dispatch.mock.calls[0][0].type).toEqual(notifyActions.RM_ALL_NOTIFICATION);
-    expect(dispatch.mock.calls[1][0].type).toEqual(actions.START_ASK_WEBAUTHN_DESCRIPTION);
+    expect(dispatch.mock.calls[1][0].type).toEqual(actions.AUTHENTICATOR);
+    expect(dispatch.mock.calls[2][0].type).toEqual(actions.START_ASK_WEBAUTHN_DESCRIPTION);
   });
 
   it("Clicks delete", () => {
@@ -1189,8 +1190,7 @@ describe("Security Container", () => {
     getWrapper().find('EduIDButton#delete-button').props().onClick();
     expect(dispatch.mock.calls.length).toEqual(2);
     expect(dispatch.mock.calls[0][0].type).toEqual(notifyActions.RM_ALL_NOTIFICATION);
-    expect(dispatch.mock.calls[1][0].type).toEqual(actions.AUTHENTICATOR);
-    expect(dispatch.mock.calls[2][0].type).toEqual(actions.START_DELETE_ACCOUNT);
+    expect(dispatch.mock.calls[1][0].type).toEqual(actions.START_DELETE_ACCOUNT);
   });
 
   it("Clicks confirm delete", () => {
