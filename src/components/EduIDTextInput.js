@@ -56,7 +56,7 @@ const textInput = (props) => {
                     </option>);
         });
         field = (
-            <Input type={type}
+            <Input type="select"
                    disabled={disabled}
                    placeholder={placeholder}
 	           id={name}
