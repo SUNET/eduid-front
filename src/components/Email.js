@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Form, FormGroup, FormFeedback, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import faEnvelope from '@fortawesome/free-solid-svg-icons/faEnvelope'
 
 import EduIDButton from "components/EduIDButton";
 
