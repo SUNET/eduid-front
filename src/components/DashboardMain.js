@@ -218,7 +218,7 @@ class Main extends Component {
                 ]);
             }
         } else {
-            contentElem = routesElem('');
+            contentElem = routesElem((<NotificationsContainer />));
         }
 
         return (
