@@ -56,9 +56,7 @@ class Main extends Component {
 
     render () {
 
-        let tabsElem = '',
-            profElem = '',
-            notsElem = '';
+        let tabsElem = '';
 
         if (this.props.show_sidebar) {
 
@@ -69,7 +67,20 @@ class Main extends Component {
                           {id: 'emails', label: sm ? 'main.emails_label_sm' : 'main.emails'},
                           {id: 'phones', label: sm ? 'main.phones_label_sm' : 'main.phones'},
                           {id: 'accountlinking', label: sm ? 'main.account_linking_label_sm' : 'main.account_linking'},
-                          {id: 'security', label: sm ? 'main.security_label_sm' : 'main.security'}],
+                          {id: 'security', label: sm ? 'main.security_label_sm' : 'main.security'}
+                  ],
+                  profElem = (
+                    <div className="col-sm-12">
+                      <ul className="nav nav-stacked nav-tabs navbar-nav">
+                          <ProfileFilledContainer />
+                          <li id="profile-menu-eppn-li">
+                          <div className="profile-menu-eppn">
+                              <p className="eppn-text-muted">{this.props.l10n('main.eduid_id')}: {this.props.eppn}</p>
+                          </div>
+                          </li>
+                      </ul>
+                    </div>
+                  ),
                   tabsElems = (classes) => {
                       return tabs.map( (tab, index) => {
                           return (
@@ -84,10 +95,26 @@ class Main extends Component {
                               </li>
                           );
                       });
-                  };
+                  },
+                  routesElem = (notsElem) => (
+                     <div className="tab-content col-md-9 col-md-offset-1 col-sm-12">
+                       <div className="tab-pane active">
+                         { notsElem }
+                         <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
+                         <Route path="/profile/personaldata" component={PersonalDataContainer} />
+                         <Route path="/profile/nins" component={NinsContainer} />
+                         <Route path="/profile/emails" component={EmailsContainer} />
+                         <Route path="/profile/phones" component={MobileContainer} />
+                         <Route path="/profile/accountlinking" component={AccountLinkingContainer} />
+                         <Route path="/profile/security" component={SecurityContainer} />
+                         <Route path="/profile/chpass" component={ChangePasswordContainer} />
+                       </div>
+                     </div>
+                  );
             if (size === 'xl' || size === 'lg' || size === 'md') {
                 tabsElem = (
-                    <div className='col-lg-3'>
+                  <div className="row">
+                    <div className='col-md-3'>
                       <div className="profile-head">
                         <h3>{this.props.l10n('main.profile_title')}</h3>
                         <PendingActionsContainer history={history} />
@@ -105,37 +132,67 @@ class Main extends Component {
                         </ul>
                       </div>
                     </div>
+                    {routesElem((<NotificationsContainer />))}
+                  </div>
                 );
-                notsElem = <NotificationsContainer />;
             } else if (size === 'sm') {
                 tabsElem = ([
-                    <div className="col-sm-3 profile-head">
-                      <h3>{this.props.l10n('main.profile_title')}</h3>
-                    </div>,
-                    (<div className="col-sm-7">
-                      <NotificationsContainer />
-                    </div>),
-                    <div className="col-sm-10">
-                      <PendingActionsContainer history={history} />
-                    </div>,
-                    <nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
-                      <ul className='nav nav-tabs'>
-                        {tabsElems('main-nav-tabs nav-link')}
-                      </ul>
-                    </nav>
+                  <div className="profile-head">
+                    <div className="row">
+                      <div className="col-sm-4">
+                        <h3>{this.props.l10n('main.profile_title')}</h3>
+                      </div>
+                      <div className="col-sm-1">
+                      </div>
+                      <div className="col-sm-7">
+                        <NotificationsContainer />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-sm-1">
+                      </div>
+                      <div className="col-sm-11">
+                        <PendingActionsContainer history={history} />
+                      </div>
+                    </div>
+                  </div>,
+                  <div className="row">
+                    <div className="col-sm-12">
+                      <nav id="profile-menu-small"
+                           className="navbar navbar-light col-sm-10 col-sm-offset-2"
+                           role="navigation">
+                        <ul className='nav nav-tabs'>
+                          {tabsElems('main-nav-tabs nav-link')}
+                        </ul>
+                      </nav>
+                    </div>
+                    {routesElem('')}
+                    { profElem }
+                  </div>
                 ]);
             } else if (size === 'xs') {
-                tabsElem = [
-                    (<div className="col-xs-3 profile-head">
-                      <h3>{this.props.l10n('main.profile_title')}</h3>
-                    </div>),
-                    (<div className="col-xs-7 profile-head">
-                      <NotificationsContainer />
-                    </div>),
-                    (<div className="col-xs-10 pending-actions-container">
-                      <PendingActionsContainer history={history} />
-                     </div>),
-                    (<div id="profile-navbar-xs">
+                tabsElem = ([
+                  <div className="profile-head">
+                    <div className="row">
+                      <div className="col-xs-4 profile-head">
+                        <h3>{this.props.l10n('main.profile_title')}</h3>
+                      </div>
+                      <div className="col-xs-1">
+                      </div>
+                      <div className="col-xs-7 profile-head">
+                        <NotificationsContainer />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-xs-1">
+                      </div>
+                      <div className="col-xs-11 pending-actions-container">
+                        <PendingActionsContainer history={history} />
+                      </div>
+                    </div>
+                  </div>,
+                  <div className="row">
+                    <div id="col-xs-12 profile-navbar-xs">
                       <nav id="profile-menu-small" className="navbar navbar-light" role="navigation">
                         <a className="navbar-brand" href="#">
                           {this.props.l10n('main.menu')}
@@ -146,27 +203,18 @@ class Main extends Component {
                           <span className="navbar-toggler-icon"></span>
                         </button>
                       </nav>
-                    </div>),
-                    (<Collapse id="eduid-menu-items-xs" isOpen={this.state.openTabs} className="text-center">
+                    </div>
+                    <Collapse id="eduid-menu-items-xs" isOpen={this.state.openTabs} className="text-center">
                        <nav className="navbar navbar-light bg-light">
                          <ul className="nav nav-stacked nav-tabs navbar-nav">
                            {tabsElems('main-nav-tabs tab-link btn btn-block')}
                          </ul>
                        </nav>
-                     </Collapse>)];
-                
-            }
-            if (size === 'sm' || size === 'xs') {
-                profElem = (
-                      <ul className="nav nav-stacked nav-tabs navbar-nav">
-                        <ProfileFilledContainer />
-                        <li id="profile-menu-eppn-li">
-                          <div className="profile-menu-eppn">
-                            <p className="eppn-text-muted">{this.props.l10n('main.eduid_id')}: {this.props.eppn}</p>
-                          </div>
-                        </li>
-                      </ul>
-                );
+                     </Collapse>
+                    {routesElem('')}
+                    { profElem }
+                  </div>
+                ]);
             }
         }
 
@@ -177,22 +225,8 @@ class Main extends Component {
               <HeaderContainer />
               <ConnectedRouter history={history}>
                   <div id="content-block">
-                      <div className="row tabbable well profile-combo" id="profile-content-area">
+                      <div className="tabbable well profile-combo" id="profile-content-area">
                         {tabsElem}
-                        <div className="tab-content col-lg-9 col-lg-offset-1">
-                          <div className="tab-pane active">
-                            { notsElem }
-                            <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
-                            <Route path="/profile/personaldata" component={PersonalDataContainer} />
-                            <Route path="/profile/nins" component={NinsContainer} />
-                            <Route path="/profile/emails" component={EmailsContainer} />
-                            <Route path="/profile/phones" component={MobileContainer} />
-                            <Route path="/profile/accountlinking" component={AccountLinkingContainer} />
-                            <Route path="/profile/security" component={SecurityContainer} />
-                            <Route path="/profile/chpass" component={ChangePasswordContainer} />
-                          </div>
-                        </div>
-                        {profElem}
                       </div>
                   </div>
               </ConnectedRouter>
