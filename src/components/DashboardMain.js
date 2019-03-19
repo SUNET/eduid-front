@@ -56,7 +56,23 @@ class Main extends Component {
 
     render () {
 
-        let tabsElem = '';
+        let contentElem = '';
+
+        const routesElem = (notsElem) => (
+           <div className="tab-content col-md-9 col-md-offset-1 col-sm-12">
+             <div className="tab-pane active">
+               { notsElem }
+               <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
+               <Route path="/profile/personaldata" component={PersonalDataContainer} />
+               <Route path="/profile/nins" component={NinsContainer} />
+               <Route path="/profile/emails" component={EmailsContainer} />
+               <Route path="/profile/phones" component={MobileContainer} />
+               <Route path="/profile/accountlinking" component={AccountLinkingContainer} />
+               <Route path="/profile/security" component={SecurityContainer} />
+               <Route path="/profile/chpass" component={ChangePasswordContainer} />
+             </div>
+           </div>
+        );
 
         if (this.props.show_sidebar) {
 
@@ -95,24 +111,9 @@ class Main extends Component {
                               </li>
                           );
                       });
-                  },
-                  routesElem = (notsElem) => (
-                     <div className="tab-content col-md-9 col-md-offset-1 col-sm-12">
-                       <div className="tab-pane active">
-                         { notsElem }
-                         <Route exact path="/profile/" component={() => (<Redirect to="/profile/personaldata" />)} />
-                         <Route path="/profile/personaldata" component={PersonalDataContainer} />
-                         <Route path="/profile/nins" component={NinsContainer} />
-                         <Route path="/profile/emails" component={EmailsContainer} />
-                         <Route path="/profile/phones" component={MobileContainer} />
-                         <Route path="/profile/accountlinking" component={AccountLinkingContainer} />
-                         <Route path="/profile/security" component={SecurityContainer} />
-                         <Route path="/profile/chpass" component={ChangePasswordContainer} />
-                       </div>
-                     </div>
-                  );
+                  };
             if (size === 'xl' || size === 'lg' || size === 'md') {
-                tabsElem = (
+                contentElem = (
                   <div className="row">
                     <div className='col-md-3'>
                       <div className="profile-head">
@@ -136,7 +137,7 @@ class Main extends Component {
                   </div>
                 );
             } else if (size === 'sm') {
-                tabsElem = ([
+                contentElem = ([
                   <div className="profile-head">
                     <div className="row">
                       <div className="col-sm-4">
@@ -171,7 +172,7 @@ class Main extends Component {
                   </div>
                 ]);
             } else if (size === 'xs') {
-                tabsElem = ([
+                contentElem = ([
                   <div className="profile-head">
                     <div className="row">
                       <div className="col-xs-4 profile-head">
@@ -216,6 +217,8 @@ class Main extends Component {
                   </div>
                 ]);
             }
+        } else {
+            contentElem = routesElem('');
         }
 
         return (
@@ -226,7 +229,7 @@ class Main extends Component {
               <ConnectedRouter history={history}>
                   <div id="content-block">
                       <div className="tabbable well profile-combo" id="profile-content-area">
-                        {tabsElem}
+                        {contentElem}
                       </div>
                   </div>
               </ConnectedRouter>

@@ -24,7 +24,7 @@ const mapStateToProps = (state, props) => {
     userInput.push(state.personal_data.data.surname);
     userInput.push(state.personal_data.data.display_name);
     userInput.concat(state.emails.emails);
-    const customPassword = state.form && state.form.chpass && state.form.chpass.values[comp.pwFieldCustomName] || '';
+    const customPassword = state.form && state.form.chpass && state.form.chpass.values && state.form.chpass.values[comp.pwFieldCustomName] || '';
     let score = 0,
         configEntropy = state.config.PASSWORD_ENTROPY,
         minEntropy = configEntropy / 5,
