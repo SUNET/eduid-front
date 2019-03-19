@@ -9,15 +9,21 @@ import { postRequest, checkStatus, putCsrfToken } from "sagas/common";
 import { WEBAUTHN_CREDS_GOT } from "./component";
 
 
+function safeEncode (obj) {
+    const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
+    const unsafeObj = btoa(bytesObj);
+    return unsafeObj.replace(/\//g, '_').replace(/\+/g, '-').replace(/=*$/, "");
+}
+
 export function* postCompleteWebauthn () {
     try {
         const state = yield select(state => state),
               assertion = state.plugin.webauthn_assertion,
               data = {
-                  credentialId: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))),
-                  authenticatorData: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.authenticatorData))),
-                  clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.clientDataJSON))),
-                  signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature))),
+                  credentialId: safeEncode(assertion.rawId),
+                  authenticatorData: safeEncode(assertion.response.authenticatorData),
+                  clientDataJSON: safeEncode(assertion.response.clientDataJSON),
+                  signature: safeEncode(assertion.response.signature),
                   csrf_token: state.main.csrf_token,
               };
         const resp = yield call(requestCompleteWebauthn, data);
