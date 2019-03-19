@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, props) => {
     handleGoToPending: function (missing) {
       return function (e) {
           e.preventDefault();
-          this.props.history.push(this.props.dashboard_url + missing);
+          this.props.history.push('/profile/' + missing);
       }
     },
   }
