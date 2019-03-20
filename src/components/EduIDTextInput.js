@@ -44,7 +44,7 @@ const textInput = (props) => {
 
     let field;
 
-    if (componentClass === 'select') {
+    if (type === 'select') {
         let options = [];
         if (selectOptions) {
             options = selectOptions.slice();
@@ -56,7 +56,7 @@ const textInput = (props) => {
                     </option>);
         });
         field = (
-            <Input type="select"
+            <Input type={type}
                    disabled={disabled}
                    placeholder={placeholder}
 	           id={name}
@@ -67,7 +67,7 @@ const textInput = (props) => {
             </Input>
         );
     } else {
-        field = <Input type={componentClass}
+        field = <Input type={type}
                        disabled={disabled}
                        placeholder={placeholder}
 	               id={name}
