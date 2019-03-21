@@ -49,6 +49,9 @@ export function* postPasswordChange () {
                 delete change.payload.error.new_password;
             }
         }
+        if (change.payload.message === 'chpass.stale_reauthn') {
+            yield put(push('security'));
+        }
         yield put(change);
     } catch(error) {
         yield* failRequest(error, actions.postPasswordChangeFail);
