@@ -47,7 +47,8 @@ class Captcha extends Component {
                          id ="send-captcha-button">
                 {this.props.l10n('captcha.submit')}
             </EduIDButton>
-            <EduIDButton className="eduid-button btn-warning"
+            <EduIDButton onClick={this.props.cancelCaptcha}
+                         className="eduid-button btn-warning"
                          id ="cancel-captcha-button">
                 {this.props.l10n('captcha.cancel')}
             </EduIDButton>

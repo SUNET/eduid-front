@@ -1,6 +1,7 @@
 
 import { connect } from 'react-redux';
 import Captcha from 'components/Captcha';
+import { history } from "components/SignupMain";
 import * as actions from "actions/Captcha";
 import i18n from 'i18n-messages';
 
@@ -22,6 +23,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     sendCaptcha: (e) => {
       dispatch(actions.postCaptcha());
+    },
+    cancelCaptcha: (e) => {
+        dispatch(history.push('email'));
     },
   }
 };
