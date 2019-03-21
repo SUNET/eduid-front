@@ -1144,6 +1144,10 @@
     "defaultMessage": "There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator"
   },
   {
+    "id": "chpass.low-password-entropy",
+    "defaultMessage": "Please provide a stronger password"
+  },
+  {
     "id": "pwfield.enter_password",
     "defaultMessage": "Enter password"
   },

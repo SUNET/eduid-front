@@ -21,6 +21,7 @@
   "chpass.different-repeat": "Lösenorden är olika",
   "chpass.help-text-general": "Här kan du ändra ditt lösenord. Ett säkert lösenord har genererats till dig. Du väljer att använda det genererade lösenordet genom att klicka \"Byt lösenord\". Vill du använda ett eget lösenord så gör du det genom att klicka i rutan för eget lösenord.",
   "chpass.help-text-newpass": "<p>Välj ett säkert lösenord. Några tips:</p>\n<ul>\n<li>Använd stora och små bokstäver (inte bara första bokstaven)</li>\n<li>Lägg till en eller flera siffror någonstans i mitten av lösenordet</li> \n<li>Använd specialtecken som &#64; &#36; &#92; &#43; &#95; &#37;</li>\n<li>Blanksteg (mellanslag) ignoreras</li>\n</ul>",
+  "chpass.low-password-entropy": "Please provide a stronger password",
   "chpass.no_old_pw": "Skriv in ditt nuvarande lösenord",
   "chpass.no_reauthn": "Du måste logga in igen för att ändra ditt lösenord",
   "chpass.old_password": "Nuvarande lösenord",

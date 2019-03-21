@@ -21,6 +21,7 @@
   "chpass.different-repeat": "Passwords differ",
   "chpass.help-text-general": "You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking \"Change password\" or you can opt to choose your own password using the checkbox.",
   "chpass.help-text-newpass": "<p>Choose a strong password. Some tips:</p>\n            <ul>\n\t            <li>Use upper- and lowercase characters (preferably not in the beginning or end)</li>\n\t            <li>Add digits somewhere else than at the end of the password</li>\n                <li>Add special characters, such as &#64; &#36; &#92; &#43; &#95; &#37;</li>\n\t            <li>Spaces are ignored</li>\n            </ul>",
+  "chpass.low-password-entropy": "Please provide a stronger password",
   "chpass.no_old_pw": "Please enter the old password",
   "chpass.no_reauthn": "You must re-authenticate to change your password",
   "chpass.old_password": "Current password",
