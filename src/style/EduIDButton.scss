@@ -16,6 +16,11 @@
     text-transform:uppercase;
     margin-bottom:10px;
 }
+
+.btn.eduid-button.btn-in-row {
+    height: calc(2.25rem + 2px);
+    line-height: calc(2.25rem + 2px);
+}
 .btn.eduid-button:hover {
     text-decoration:none;
 }
