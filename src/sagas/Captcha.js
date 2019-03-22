@@ -6,6 +6,9 @@ import { ajaxHeaders, checkStatus, postRequest,
 import * as actions from "actions/Captcha";
 import { history } from "components/SignupMain";
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export function* sendCaptcha () {
     try {
@@ -16,6 +19,7 @@ export function* sendCaptcha () {
                 csrf_token: state.config.csrf_token,
                 tou_accepted: state.email.tou_accepted
               };
+        //await sleep(10000);
         const resp = yield call(requestSendCaptcha, data);
         yield put(putCsrfToken(resp));
         history.push(resp.payload.next)

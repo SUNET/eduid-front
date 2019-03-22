@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Button } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import faSpinner from '@fortawesome/free-solid-svg-icons/faSpinner'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 import FetchingContext from 'components/FetchingContext';
 

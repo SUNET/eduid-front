@@ -59,8 +59,10 @@ class Captcha extends Component {
 }
 
 Captcha.propTypes = {
-  recaptcha_key: PropTypes.string,
-  handleCaptcha: PropTypes.func
+    recaptcha_key: PropTypes.string,
+    handleCaptcha: PropTypes.func,
+    fetching: PropTypes.bool,
+    setFetching: PropTypes.func
 }
 
 const LoadingCaptcha = ScriptLoader('https://www.google.com/recaptcha/api.js?render=explicit')(Captcha);

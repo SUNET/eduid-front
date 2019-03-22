@@ -128,6 +128,11 @@ const msgs = {
             id="CSRF failed to validate"
             defaultMessage={`CSRF failed to validate, please reload the page`} />),
 
+    'Error: Gateway Time-out': (
+        <FormattedMessage
+            id="Error: Gateway Time-out"
+            defaultMessage={`The remote service is taking too long to respond, please try again`} />),
+
    'error_navet_task': (
         <FormattedMessage
           id="error_navet_task"

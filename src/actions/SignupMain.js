@@ -11,7 +11,15 @@ export const GET_SIGNUP_CONFIG = 'GET_SIGNUP_CONFIG';
 export const GET_SIGNUP_CONFIG_SUCCESS = 'GET_SIGNUP_CONFIG_SUCCESS';
 export const GET_SIGNUP_CONFIG_FAIL = 'GET_SIGNUP_CONFIG_FAIL';
 export const NEW_CSRF_TOKEN = 'NEW_CSRF_TOKEN';
+export const SPIN = "SPIN";
 
+
+
+export function spin () {
+    return {
+        type: SPIN,
+    };
+}
 
 export function getCodeStatus (code) {
     return {

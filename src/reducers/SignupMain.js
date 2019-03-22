@@ -24,16 +24,26 @@ const configData = {
     mfa_authn_idp: ''
 };
 
+const fetchingActions = [
+    actions.GET_SIGNUP_CONFIG,
+    actions.SPIN,
+];
+
+const unFetchingActions = [
+];
+
 let signupReducer = (state=configData, action) => {
   switch (action.type) {
     case actions.APP_LOADING:
       return {
           ...state, 
+          is_fetching: true,
           is_app_loaded: false
       };
     case actions.APP_LOADED:
       return {
-          ...state, 
+          ...state,
+          is_fetching: false,
           is_app_loaded: true
       };
     case actions.APP_FETCHING:
@@ -66,7 +76,8 @@ let signupReducer = (state=configData, action) => {
     case actions.GET_SIGNUP_CONFIG_SUCCESS:
       return {
           ...state,
-          ...action.payload
+          ...action.payload,
+          is_fetching: false
       };
     case actions.NEW_CSRF_TOKEN:
       return {
@@ -121,6 +132,24 @@ let signupReducer = (state=configData, action) => {
           error: true
       };
     default:
+      if ((action.type.endsWith('_SUCCESS')) ||
+	  (action.type.endsWith('_FAIL'))) {
+	  return {
+	      ...state,
+	      is_fetching: false
+	  };
+      }
+      else if (fetchingActions.includes(action.type)) {
+	  return {
+	      ...state,
+	      is_fetching: true
+	  };
+      } else if (unFetchingActions.includes(action.type)) {
+	  return {
+	      ...state,
+	      is_fetching: false
+	  };
+      }
       return state;
   }
 };
