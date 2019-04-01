@@ -443,6 +443,11 @@ const msgs = {
             id="mfa.error-getting-token"
             defaultMessage={`There was a problem using your Security Key`} />),
 
+    'mfa.edge-no-u2f': (
+        <FormattedMessage
+            id="mfa.edge-no-u2f"
+            defaultMessage={`There is a problem with the Edge browser and U2F Security Keys. Please try with Firefox or Chrome.`} />),
+
     'actions.action-completed': (
         <FormattedMessage
             id="actions.action-completed"

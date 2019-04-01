@@ -163,6 +163,7 @@
   "main.security_label_sm": "Säkerhet",
   "main.unconfirmed": "Obekräftad",
   "main.welcome": "Välkommen till eduID!",
+  "mfa.edge-no-u2f": "There is a problem with the Edge browser and U2F Security Keys. Please try with Firefox or Chrome.",
   "mfa.error-getting-token": "Det uppstod ett problem med din Säkerhetsnyckel",
   "mfa.extra-security-enabled": "Extra säkerhet påslaget för det här kontot",
   "mfa.fake-authn": "Fejkad authn vid testning",
