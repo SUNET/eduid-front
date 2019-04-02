@@ -184,8 +184,7 @@ const mapDispatchToProps = (dispatch, props) => {
                             console.log('Problem getting MFA credentials:', error)
                             if (navigator.appVersion.indexOf("Edge") != -1) {
                                 dispatch(postActionFail("mfa.edge-no-u2f"));
-                            } else {
-                                dispatch(postActionFail("mfa.error-getting-token"));
+                                return;
                             }
                         });
                     } catch(error) {
