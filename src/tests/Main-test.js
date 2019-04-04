@@ -45,7 +45,6 @@ const fakeState = {
     verified: {
         password: '',
         eppn: '',
-        nonce: '',
         timestamp: '',
         auth_token: '',
         email: '',

@@ -12,7 +12,6 @@ const mapStateToProps = (state, props) => {
         dashboard_url: state.verified.dashboard_url,
         password: state.verified.password,
         eppn: state.verified.eppn,
-        nonce: state.verified.nonce,
         ts: state.verified.timestamp,
         token: state.verified.auth_token,
         email: state.verified.email,

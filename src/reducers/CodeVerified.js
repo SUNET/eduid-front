@@ -5,7 +5,6 @@ import * as actions from "actions/CodeVerified";
 const verifiedData = {
     password: '',
     eppn: '',
-    nonce: '',
     timestamp: '',
     auth_token: '',
     email: '',

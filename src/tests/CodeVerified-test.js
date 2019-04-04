@@ -15,7 +15,6 @@ describe("CodeVerified Component", () => {
           dashboard_url: 'http://dummy.example.com',
           password: 'dummy-passwd',
           eppn: 'hubba-bubba',
-          nonce: 'dummy-nonce',
           timestamp: 'dummy-ts',
           auth_token: 'dummy-token',
           email: 'dummy@example.com',
@@ -65,7 +64,6 @@ describe("Code verification reducer", () => {
     const mockState = {
         password: '',
         eppn: '',
-        nonce: '',
         timestamp: '',
         auth_token: '',
         email: '',
@@ -84,7 +82,6 @@ describe("Code verification reducer", () => {
                         password: 'dummy password',
                         email: 'dummy@example.com',
                         eppn: 'dummy-eppn',
-                        nonce: 'dummy nonce',
                         timestamp: 'dummy timestamp',
                         auth_token: 'dummy auth_token',
                         dashboard_url: 'http://example.com'
@@ -95,7 +92,6 @@ describe("Code verification reducer", () => {
           {
               password: 'dummy password',
               eppn: 'dummy-eppn',
-              nonce: 'dummy nonce',
               timestamp: 'dummy timestamp',
               auth_token: 'dummy auth_token',
               email: 'dummy@example.com',

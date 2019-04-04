@@ -14,7 +14,6 @@ class CodeVerified extends Component {
     return (
       <form key="2" method="POST" action={this.props.dashboard_url}>
           <input type="hidden" name="eppn" value={this.props.eppn} />
-          <input type="hidden" name="nonce" value={this.props.nonce} />
           <input type="hidden" name="ts" value={this.props.ts} />
           <input type="hidden" name="token" value={this.props.token} />
         <div key="0" className="row text-center">
@@ -45,7 +44,6 @@ CodeVerified.propTypes = {
     dashboard_url: PropTypes.string,
     password: PropTypes.string,
     eppn: PropTypes.string,
-    nonce: PropTypes.string,
     ts: PropTypes.string,
     token: PropTypes.string,
     email: PropTypes.string,
