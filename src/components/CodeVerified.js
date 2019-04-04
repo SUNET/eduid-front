@@ -12,10 +12,7 @@ class CodeVerified extends Component {
   render () {
 
     return (
-      <form key="2" method="POST" action={this.props.dashboard_url}>
-          <input type="hidden" name="eppn" value={this.props.eppn} />
-          <input type="hidden" name="ts" value={this.props.ts} />
-          <input type="hidden" name="token" value={this.props.token} />
+      <form key="2" method="GET" action={this.props.dashboard_url}>
         <div key="0" className="row text-center">
           <div className="col-lg-1"></div>
             <div className="col-lg-10">
@@ -43,9 +40,6 @@ class CodeVerified extends Component {
 CodeVerified.propTypes = {
     dashboard_url: PropTypes.string,
     password: PropTypes.string,
-    eppn: PropTypes.string,
-    ts: PropTypes.string,
-    token: PropTypes.string,
     email: PropTypes.string,
     l10n: PropTypes.func,
 }

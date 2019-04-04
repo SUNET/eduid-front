@@ -44,9 +44,6 @@ const fakeState = {
     },
     verified: {
         password: '',
-        eppn: '',
-        timestamp: '',
-        auth_token: '',
         email: '',
         status: '',
         dashboard_url: '',

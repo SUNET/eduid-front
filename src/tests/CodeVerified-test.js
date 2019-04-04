@@ -14,9 +14,6 @@ describe("CodeVerified Component", () => {
         verified: {
           dashboard_url: 'http://dummy.example.com',
           password: 'dummy-passwd',
-          eppn: 'hubba-bubba',
-          timestamp: 'dummy-ts',
-          auth_token: 'dummy-token',
           email: 'dummy@example.com',
           status: 'verified',
           gotten: false
@@ -30,15 +27,13 @@ describe("CodeVerified Component", () => {
               lead = wrapper.find('p.lead'),
               completed = wrapper.find('p.registration-completed'),
               passwd = wrapper.find('pre.pre-big'),
-              buttons = wrapper.find('EduIDButton'),
-              inputs = wrapper.find('input');
+              buttons = wrapper.find('EduIDButton');
 
         expect(lead.length).toEqual(2);
         expect(completed.text()).toContain('dummy@example.com');
         expect(passwd.length).toEqual(1);
         expect(passwd.text()).toContain('dummy-passwd');
         expect(buttons.length).toEqual(1);
-        expect(inputs.length).toEqual(4);
     });
 });
 
@@ -63,9 +58,6 @@ describe("Code verification reducer", () => {
 
     const mockState = {
         password: '',
-        eppn: '',
-        timestamp: '',
-        auth_token: '',
         email: '',
         status: '',
         dashboard_url: '',
@@ -81,9 +73,6 @@ describe("Code verification reducer", () => {
                         status: 'verified',
                         password: 'dummy password',
                         email: 'dummy@example.com',
-                        eppn: 'dummy-eppn',
-                        timestamp: 'dummy timestamp',
-                        auth_token: 'dummy auth_token',
                         dashboard_url: 'http://example.com'
                     }
                 }
@@ -91,9 +80,6 @@ describe("Code verification reducer", () => {
         ).toEqual(
           {
               password: 'dummy password',
-              eppn: 'dummy-eppn',
-              timestamp: 'dummy timestamp',
-              auth_token: 'dummy auth_token',
               email: 'dummy@example.com',
               status: 'verified',
               dashboard_url: 'http://example.com',
