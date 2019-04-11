@@ -9,7 +9,7 @@ import CodeVerified from 'components/CodeVerified';
 const mapStateToProps = (state, props) => {
     const url = '';
     return {
-        dashboard_url: state.verified.dashboard_url,
+        dashboard_url: state.main.dashboard_url,
         password: state.verified.password,
         email: state.verified.email,
         status: state.verified.status,

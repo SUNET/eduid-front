@@ -6,7 +6,6 @@ const verifiedData = {
     password: '',
     email: '',
     status: '',
-    dashboard_url: '',
 };
 
 let verifiedReducer = (state=verifiedData, action) => {
