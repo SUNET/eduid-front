@@ -168,11 +168,11 @@ div.controls > span.uneditable-input {
 
 /* valid form input*/
 
-.form-control.is-invalid {
+.form-control.is-valid {
   border: 2px solid $light-green;
 }
 
-.form-control.is-invalid:focus {
+.form-control.is-valid:focus {
   border-color: $light-green;
   box-shadow: 0 0 0 0.2rem $light-green-shadow;
 }
