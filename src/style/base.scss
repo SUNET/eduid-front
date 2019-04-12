@@ -166,9 +166,20 @@ div.controls > span.uneditable-input {
     padding-top: 18px;
 }
 
-.form-group.has-error .help-block {
-    border: 2px solid #a94442;
-    padding: .3em 1em;
+/* invalid form input */
+
+.form-control.is-invalid {
+  border: 2px solid $error-red;
+}
+
+.form-control.is-invalid:focus {
+  border-color: $error-red;
+  box-shadow: 0 0 0 0.2rem $error-red-shadow;
+}
+
+.eduid-field-error {
+  color: $error-red;
+  font-weight: 500;
 }
 
 .form-control {
@@ -180,10 +191,6 @@ div.controls > span.uneditable-input {
 .form-control:focus {
     border-color:#fff;
     box-shadow:none;
-}
-
-.eduid-field-error {
-    color: #dc3545;
 }
 
 /* removing inlines */
