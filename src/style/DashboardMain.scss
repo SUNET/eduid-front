@@ -31,8 +31,13 @@ div#root.wrap.container {
     max-width: 200px;
 }
 #profile-menu-large li {
-    width: 100%;
-    border-bottom: 1px solid #629c92;
+  width: 100%;
+  border-bottom: 1px solid #629c92;
+  border-top: 1px solid #629c92;
+}
+
+#profile-menu-large li:first-child {
+  border-top: none;
 }
 
 #profile-menu-large li:last-child {
