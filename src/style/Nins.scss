@@ -1,11 +1,14 @@
 
-@import '../variables.scss';
+.nin-holder button {
+  background-color: $error-red;
+  margin-left: 30px;
+  border: none;
+}
 
-
-div.nin-holder > button.btn-xs {
-    height: 2em;
-    line-height: 2em;
-    margin-left: 30px;
+.nin-holder > button.btn-xs {
+  height: 2em;
+  line-height: 2em;
+  margin-left: 30px;
 }
 .proofing-btn-help {
     margin-bottom: 30px;
