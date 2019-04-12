@@ -403,6 +403,10 @@ h3.modal-title {
   color: $text-color;
 }
 
+h5.modal-title {
+  font-family: $font;
+}
+
 div.modal-content > div.modal-header,
 div.modal-content > div.modal-body,
 div.modal-content > div.modal-footer {
@@ -421,12 +425,31 @@ div.modal-dialog div.modal-footer a {
     margin: 5px;
 }
 
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-footer button.cancel-button {
+  background-color: $cancel-color;
+  color: $text-color;
+  border: none;
+}
+
+.modal-footer button.cancel-button:hover,
+.btn-secondary:not(:disabled):not(.disabled):active {
+  background-color: #e6e6e6;
+  color: $text-color;
+}
+
 .modal-footer .btn {
     margin-bottom: 0px;
 }
 
 /* raise modal over menu */
-.modal {z-index: 10000 !important;}
+.modal {
+  z-index: 10000;
+}
 
 /* End of Modals
 -------------------------------------------------- */
