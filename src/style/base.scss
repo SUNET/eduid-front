@@ -65,6 +65,11 @@ input:focus {
     outline:0;
 }
 
+a {
+  color: $link-color;
+  font-weight: 500;
+}
+
 .clear-right {
     float: right;
     clear: right;
