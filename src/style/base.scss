@@ -9,8 +9,9 @@ body,
 .well,
 .container-fluid .jumbotron,
 div.modal-dialog .modal-content {
-    background-color:#bbded9;
-    background-image:url(../../img/texture.png);
+  background-color: #bbded9;
+  background-image: url(../../img/texture.png);
+  color: $text-color;
 }
 html, body {
   height: 100%;
