@@ -29,13 +29,13 @@
 }
 .btn-primary.eduid-button,
 .btn-success.eduid-button {
-    background:#58b78c;
-    border-color:#58b78c;
+  background: $light-green;
+  border-color: $light-green;
 }
 .btn-primary.eduid-button:hover,
 .btn-success.eduid-button:hover {
-    background:#4a9c77;
-    border-color:#4a9c77;
+  background: $light-green-hover;
+  border-color: $light-green-hover;
 }
 
 .btn-warning.eduid-button,
@@ -47,8 +47,13 @@
 .btn-primary.eduid-button.disabled:hover,
 .btn-primary.eduid-button.disabled:active,
 .btn-primary.eduid-button.disabled:focus {
+<<<<<<< HEAD
     background: #8ccbb5;
     border-color:#8ccbb5;
+=======
+  background: $light-green-disabled;
+  border-color: $light-green-disabled;
+>>>>>>> 18543a3... adds .scss variables to btn-primary stylesheet
 }
 
 button.eduid-cancel-button {
