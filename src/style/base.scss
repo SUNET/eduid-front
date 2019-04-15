@@ -410,8 +410,10 @@ h5.modal-title {
 div.modal-content > div.modal-header,
 div.modal-content > div.modal-body,
 div.modal-content > div.modal-footer {
-    background-color:#bbded9;
-    background-image:url(../../img/texture.png);
+  background-color: #bbded9;
+  background-image: url(../../img/texture.png);
+  display: flex;
+  flex-direction: column;
 }
 div.modal-dialog {
     margin-top: 70px;
@@ -423,6 +425,15 @@ div.modal-dialog div.modal-footer {
 
 div.modal-dialog div.modal-footer a {
     margin: 5px;
+it
+#freja-instructions ol {
+  padding-left: 30px;
+  margin: 15px 15px 15px 0;
+}
+
+#freja-instructions li {
+  padding-left: 5px;
+  margin: 5px 0;
 }
 
 .modal-footer {
@@ -430,16 +441,34 @@ div.modal-dialog div.modal-footer a {
   justify-content: center;
 }
 
+.modal-footer .btn-secondary,
 .modal-footer button.cancel-button {
   background-color: $cancel-color;
   color: $text-color;
   border: none;
+  border-radius: 0;
 }
 
+.modal-footer .btn-secondary:hover,
 .modal-footer button.cancel-button:hover,
 .btn-secondary:not(:disabled):not(.disabled):active {
   background-color: #e6e6e6;
   color: $text-color;
+}
+
+.btn-group-vertical {
+  text-transform: uppercase;
+  color: $link-color;
+}
+
+.btn-group-vertical a {
+  border: none;
+  margin: 20px 0;
+  color: $link-color;
+}
+
+.btn-group-vertical a:hover {
+  text-decoration: none;
 }
 
 .modal-footer .btn {
