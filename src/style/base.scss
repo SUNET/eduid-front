@@ -455,6 +455,16 @@ it
   color: $text-color;
 }
 
+.modal-footer button.ok-button {
+  background-color: $light-green;
+  color: #fff;
+}
+
+.modal-footer button.ok-button:hover {
+  background-color: #4a9c77;
+  color: #fff;
+}
+
 .btn-group-vertical {
   text-transform: uppercase;
   color: $link-color;
