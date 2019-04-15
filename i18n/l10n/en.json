@@ -8,7 +8,7 @@
   "No connection to authorization endpoint": "No connection to authorization endpoint, please try again later",
   "Not a valid email address.": "Not a valid email address.",
   "Temporary technical problems": "Temporary technical problems, please try again later",
-  "account_linking.long_description": "You can link other accounts with you eduID account.",
+  "account_linking.long_description": "Here you can link other accounts with you eduID account.",
   "account_linking.main_title": "Account Linking",
   "actions.action-completed": "Success",
   "button_save": "Save",
