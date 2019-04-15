@@ -480,6 +480,21 @@ it
   text-decoration: none;
 }
 
+/* delete button */
+.btn-danger {
+  background-color: $error-red;
+  border-color: $error-red;
+}
+
+.btn-danger:hover,
+.btn-danger:not(:disabled):not(.disabled):active,
+.btn-danger:not(:disabled):not(.disabled):focus {
+  background-color: $error-red-hover;
+  border-color: $error-red-hover;
+  box-shadow: $error-red-shadow;
+  color: #fff;
+}
+
 .modal-footer .btn {
     margin-bottom: 0px;
 }
