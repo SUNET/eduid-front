@@ -15,7 +15,6 @@ class EduIDButton extends Component {
 
   render () {
     return (
-<<<<<<< HEAD
         <FetchingContext.Consumer>
             {({fetching, toggleFetching}) => {
                 if (fetching) {
@@ -26,7 +25,8 @@ class EduIDButton extends Component {
                     return (
                       <Button {...this.props}
                               disabled={true}
-                              className={classes}>
+                              className={classes}
+                              color="primary">
                           {this.props.children}
                         <div className="spin-holder">
                           <FontAwesomeIcon icon={faSpinner} />
@@ -40,52 +40,14 @@ class EduIDButton extends Component {
                     }
                     return (
                       <Button {...this.props}
-                              className={classes}>
+                              className={classes}
+                              color="primary">
                         {this.props.children}
                       </Button>
                     );
                 }
             }}
         </FetchingContext.Consumer>
-=======
-      <FetchingContext.Consumer>
-        {({ fetching, toggleFetching }) => {
-          if (fetching) {
-            let classes = " eduid-button has-spinner";
-            if (this.props.className !== undefined) {
-              classes = this.props.className + classes;
-            }
-            return (
-              <Button
-                {...this.props}
-                disabled={true}
-                className={classes}
-                color="primary"
-              >
-                {this.props.children}
-                <div className="spin-holder">
-                  <FontAwesomeIcon icon={faSpinner} />
-                </div>
-              </Button>
-            );
-          } else {
-            let classes = " eduid-button";
-            if (this.props.className !== undefined) {
-              classes = this.props.className + classes;
-            }
-            return (
-              <Button
-                {...this.props}
-                className={classes}
-                color="primary"
-              >
-                {this.props.children}
-              </Button>
-            );
-          }
-        }}
-      </FetchingContext.Consumer>
->>>>>>> 19651b7... sets color='primary' on EduIDButton component
     );
   }
 }
