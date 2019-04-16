@@ -47,13 +47,8 @@
 .btn-primary.eduid-button.disabled:hover,
 .btn-primary.eduid-button.disabled:active,
 .btn-primary.eduid-button.disabled:focus {
-<<<<<<< HEAD
-    background: #8ccbb5;
-    border-color:#8ccbb5;
-=======
   background: $light-green-disabled;
   border-color: $light-green-disabled;
->>>>>>> 18543a3... adds .scss variables to btn-primary stylesheet
 }
 
 button.eduid-cancel-button {
