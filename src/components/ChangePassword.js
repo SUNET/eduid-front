@@ -119,13 +119,11 @@ class ChpassForm extends Component {
                   </Label>
                     <ButtonGroup>
                       <EduIDButton value="custom"
-                                   className="btn btn-primary"
                                    onClick={() => this.onRadioBtnClick('custom')}
                                    disabled={this.state.rSelected === 'custom'}>
                         {this.props.l10n('chpass.use-custom')}
                       </EduIDButton>
                       <EduIDButton value="suggested"
-                                   className="btn btn-primary"
                                    onClick={() => this.onRadioBtnClick('suggested')}
                                    disabled={this.state.rSelected === 'suggested'}>
                         {this.props.l10n('chpass.use-suggested')}
@@ -140,11 +138,11 @@ class ChpassForm extends Component {
                   {form}
               </fieldset>
               <fieldset id="chpass-form" className="tabpane">
-                  <EduIDButton className="cancel-button eduid-cancel-button btn-primary"
+                  <EduIDButton className="cancel-button eduid-cancel-button"
                         onClick={this.props.handleStopPasswordChange.bind(this)} >
                      {this.props.l10n('cm.cancel')}
                   </EduIDButton>
-                  <EduIDButton className="btn btn-primary"
+                  <EduIDButton
                                id="chpass-button"
                                onClick={this.props.handleStartPasswordChange.bind(this)}
                                disabled={this.props.invalid}>

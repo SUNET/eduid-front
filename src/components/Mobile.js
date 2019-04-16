@@ -43,7 +43,7 @@ let PhoneForm = props => {
                    placeholder={props.l10n('phones.input_placeholder')}
                    helpBlock={props.l10n('phones.input_help_text')}/>
 
-            <EduIDButton className="btn-primary"
+            <EduIDButton
                          id="mobile-button"
                          disabled={!props.valid_phone}
                          onClick={props.handleAdd}>

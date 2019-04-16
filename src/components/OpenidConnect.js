@@ -32,7 +32,7 @@ class OpenidConnect extends Component {
               className="form-horizontal"
               role="form">
           <fieldset id="openid-connect">
-            <EduIDButton className="btn-primary proofing-button"
+            <EduIDButton className="proofing-button"
                          disabled={this.props.disabled}
                          onClick={this.props.handleShowModal}
                          block>

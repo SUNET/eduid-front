@@ -80,7 +80,7 @@ class OpenidConnectFreja extends Component {
     }
 
     showModalButton = (
-      <EduIDButton className="btn-primary proofing-button"
+      <EduIDButton className="proofing-button"
               id="openid-connect-freja-show-modal"
               onClick={this.props.handleShowModal}
               block>

@@ -208,7 +208,7 @@ class Main extends Component {
                     <Collapse id="eduid-menu-items-xs" isOpen={this.state.openTabs} className="text-center">
                        <nav className="navbar navbar-light bg-light">
                          <ul className="nav nav-stacked nav-tabs navbar-nav">
-                           {tabsElems('main-nav-tabs tab-link btn btn-block')}
+                           {tabsElems('main-nav-tabs tab-link btn-block')}
                          </ul>
                        </nav>
                      </Collapse>

@@ -18,7 +18,7 @@ class LookupMobileProofing extends Component {
                 className="form-horizontal"
                 role="form">
             <fieldset id="lookup-mobile-proofing">
-              <EduIDButton className="btn-primary proofing-button"
+              <EduIDButton className="proofing-button"
                       disabled={this.props.disabled}
                       onClick={this.props.handleLookupMobile}
                       block>

@@ -46,7 +46,7 @@ class Eidas extends Component {
     );
 
     showModalButton = (
-      <EduIDButton className="btn-primary"
+      <EduIDButton 
               id="eidas-show-modal"
               onClick={this.props.handleShowModal}
               block>

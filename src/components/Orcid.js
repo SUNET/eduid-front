@@ -39,7 +39,7 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <div className="orcid-data">
-          <EduIDButton className="btn-primary" id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
+          <EduIDButton id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
             <div className="orcid-logo-container"><span className="orcid-logo" /></div> {this.props.l10n('orc.connect')}
           </EduIDButton>
           <p>{this.props.l10n('orc.about_link')}</p>

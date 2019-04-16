@@ -48,7 +48,7 @@ class Security extends Component {
         btnRemove = (
           <div className="btn-group btn-group-sm" role="group">
             <button
-              className="btn btn-link btn-remove-webauthn"
+              className="btn-link btn-remove-webauthn"
               onClick={this.props.handleRemoveWebauthnToken}
             >
               {this.props.l10n("security.remove")}
@@ -60,7 +60,7 @@ class Security extends Component {
         if (cred.verified) {
           btnVerify = (
             <div className="btn-group btn-group-sm" role="group">
-              <button className="btn btn-link btn-verified-webauthn" disabled>
+              <button className="btn-link btn-verified-webauthn" disabled>
                 {this.props.l10n("security.verified")}
               </button>
             </div>
@@ -69,7 +69,7 @@ class Security extends Component {
           btnVerify = (
             <div className="btn-group btn-group-sm" role="group">
               <button
-                className="btn btn-link btn-verify-webauthn"
+                className="btn-link btn-verify-webauthn"
                 onClick={this.props.handleVerifyWebauthnToken}
               >
                 {this.props.l10n("security.verify")}
@@ -114,7 +114,6 @@ class Security extends Component {
       platformAuthenticatorButton = (
         <div id="add-webauthn-token-platform">
           <EduIDButton
-            className="btn-primary"
             id="security-webauthn-platform-button"
             onClick={this.props.handleStartAskingDeviceWebauthnDescription}
           >
@@ -145,7 +144,6 @@ class Security extends Component {
         </table>
         <div id="change-password">
           <EduIDButton
-            className="btn-primary"
             id="security-change-button"
             onClick={this.props.handleStartConfirmationPassword}
           >
@@ -156,7 +154,6 @@ class Security extends Component {
         <div id="register-webauthn-tokens-area">
           <div id="add-webauthn-token">
             <EduIDButton
-              className="btn-primary"
               id="security-webauthn-button"
               onClick={this.props.handleStartAskingKeyWebauthnDescription}
             >
@@ -171,7 +168,7 @@ class Security extends Component {
             <p>{this.props.l10n("security.account_description")}</p>
           </div>
           <EduIDButton
-            className="btn btn-danger"
+            className="btn-danger"
             id="delete-button"
             onClick={this.props.handleStartConfirmationDeletion}
           >

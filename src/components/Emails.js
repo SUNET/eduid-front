@@ -36,7 +36,7 @@ let EmailForm = props => {
                    name="email"
                    placeholder="example@example.com"
                    helpBlock={props.l10n('emails.input_help_text')} />
-            <EduIDButton className="btn-primary"
+            <EduIDButton
                          id="email-button"
                          disabled={!props.valid_email}
                          onClick={props.handleAdd}>

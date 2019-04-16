@@ -20,7 +20,7 @@ class LetterProofingButton extends Component {
                 className="form-horizontal"
                 role="form">
             <fieldset id="letter-proofing">
-              <EduIDButton className="btn-primary proofing-button"
+              <EduIDButton className="proofing-button"
                       disabled={this.props.disabled}
                       onClick={this.props.handleLetterProofing}
                       block>
