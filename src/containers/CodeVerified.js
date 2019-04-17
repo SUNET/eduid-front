@@ -16,12 +16,8 @@ const mapStateToProps = (state, props) => {
     }
 };
 
-const mapDispatchToProps = (dispatch, props) => {
-};
-
 const CodeVerifiedContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(CodeVerified);
 
 export default i18n(CodeVerifiedContainer);
