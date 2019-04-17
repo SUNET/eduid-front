@@ -215,9 +215,10 @@ div.controls > span.uneditable-input {
 }
 
 .form-control {
-    height: 45px;
-    border-radius: 0;
-    box-shadow: none;
+  height: 45px;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
 }
 
 .form-control:focus {
