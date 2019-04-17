@@ -44,7 +44,7 @@ const getConfirmForm = inputName => {
                 </ModalHeader>
 
                 <ModalBody>
-                    <NotificationsContainer />
+                    {/* <NotificationsContainer /> */}
                     <div id="confirmation-code-area">
                         <Field component={TextInput}
                                componentClass="input"

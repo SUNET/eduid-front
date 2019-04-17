@@ -80,7 +80,7 @@ class Eidas extends Component {
             <ModalBody>
               <h4>{this.props.l10n('eidas.freja_instructions_title')}</h4>
               {freja_instructions}
-              <NotificationsContainer/>
+              {/* <NotificationsContainer/> */}
               {buttonGroup}
             </ModalBody>
 

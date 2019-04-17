@@ -114,7 +114,7 @@ class OpenidConnectFreja extends Component {
             <Modal.Body>
               <h4>{this.props.l10n('ocf.freja_instructions_title')}</h4>
               {freja_instructions}
-              <NotificationsContainer />
+              {/* <NotificationsContainer /> */}
               {buttonGroup || notOnMobileMsg}
             </Modal.Body>
 

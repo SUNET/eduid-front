@@ -57,7 +57,7 @@ class OpenidConnect extends Component {
             <ModalBody>
               <h4>{this.props.l10n('oc.instructions_title')}</h4>
               {seleg_instructions}
-              <NotificationsContainer/>
+              {/* <NotificationsContainer/> */}
 
               <img src={this.props.qr_img} className="img-responsive center-block" alt={this.props.qr_code} />
 

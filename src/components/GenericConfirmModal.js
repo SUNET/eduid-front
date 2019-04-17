@@ -28,7 +28,7 @@ class GenericConfirmModal extends Component {
                 </ModalHeader>
 
                 <ModalBody>
-                    <NotificationsContainer />
+                    {/* <NotificationsContainer /> */}
                     <div>
                         <p>{this.props.mainText}</p>
                     </div>

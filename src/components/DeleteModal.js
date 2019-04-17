@@ -28,7 +28,7 @@ class DeleteModal extends Component {
                 </ModalHeader>
 
                 <ModalBody>
-                    <NotificationsContainer />
+                    {/* <NotificationsContainer /> */}
                     <div id="delete-account">
                         <p>{this.props.l10n('security.modal_info')}</p>
                         <p>{this.props.l10n('security.modal_notes')}</p>
