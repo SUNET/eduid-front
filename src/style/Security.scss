@@ -5,6 +5,16 @@
   font-size: 14px;
 }
 
+.second-block {
+  margin-top: 20px;
+}
+
+#connect-orcid-button,
+#delete-button,
+#security-webauthn-button {
+  width: 100%;
+}
+
 button.btn-remove-u2f {
     height: 25px;
     width: 50px;
