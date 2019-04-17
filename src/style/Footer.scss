@@ -2,14 +2,16 @@
 
 @import '../variables.scss';
 
-div#footer {
-    padding-top: 20px;
+#footer {
+  padding: 20px 0 10px 0;
+  border-top: 1px solid $dark-green;
+  margin-top: 50px;
 }
-#footer .container {
-    padding-top:20px;
-    padding-bottom:10px;
-    border-top:1px solid #629c92;
+
+#footer-content {
+  padding: 0 20px;
 }
+
 div#footer p {
     font-size:14px;
 }

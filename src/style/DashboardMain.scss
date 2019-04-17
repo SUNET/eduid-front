@@ -1,9 +1,9 @@
 ﻿
 @import '../variables.scss';
 
-div#root.wrap.container {
-    max-width: 1200px;
-}
+// div#root.wrap.container {
+//   max-width: 1200px;
+// }
 
 .profile-head {
     padding-bottom:30px;
@@ -59,10 +59,11 @@ div#root.wrap.container {
 }
 
 #profile-menu-large li a {
-    padding-left:10px;
-    font-family:'Roboto-Black';
-    font-size:15px;
-    color:#4d4d4d;
+  padding-left: 10px;
+  font-family: "Roboto-Black";
+  font-size: 15px;
+  color: #4d4d4d;
+  width: 200px;
 }
 
 #profile-menu-large li > a.active,
@@ -171,7 +172,8 @@ div#root.wrap.container {
 }
 
 .eppn-text-muted {
-    color: #777;
+  color: #777;
+  font-size: 14px;
 }
 
 .eduid-text-muted {
