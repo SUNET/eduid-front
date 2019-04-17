@@ -103,6 +103,29 @@ button.btn.btn-danger {
 >>>>>>> 813748e... moves button styling to EduIDButton.scss (primary buttons, cancel/close, remove/delete, :hover/:active/:focus), adds cancel color varibles and comments out modal button styles in base.scss
 }
 
+/* styles for links that are also buttons
+(incl. :hover, :active and :focus ) */
+
+button.btn-link {
+  background-color: transparent;
+  color: $link-color;
+  font-weight: 500;
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: $link-hover;
+    text-decoration: none;
+  }
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: transparent;
+    border-color: transparent;
+    color: $link-color;
+    box-shadow: 0 0 0 0.2rem $link-shadow;
+  }
+}
+
 .btn.eduid-button.btn-in-row {
     height: calc(2.25rem + 2px);
     line-height: calc(2.25rem + 2px);
