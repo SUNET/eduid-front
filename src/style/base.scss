@@ -455,6 +455,17 @@ div.modal-dialog div.modal-footer a {
   margin: 5px 0;
 }
 
+/* styles for delete account modal text */
+#delete-account {
+  display: flex;
+  flex-direction: column;
+}
+
+/* styles for confirm button in delete account modal */
+#confirm-delete-account-button {
+  margin-top: 20px;
+}
+
 .modal-footer {
   display: flex;
   justify-content: center;
