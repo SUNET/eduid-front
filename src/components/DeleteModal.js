@@ -22,7 +22,7 @@ class DeleteModal extends Component {
            aria-hidden="true"
            data-backdrop="true">
 
-            <Modal show={this.props.showModal}>
+            <Modal isOpen={this.props.showModal}>
                 <ModalHeader>
                     {this.props.title}
                 </ModalHeader>
@@ -41,10 +41,10 @@ class DeleteModal extends Component {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button className="cancel-button"
+                    <EduIDButton className="cancel-button"
                             onClick={this.props.closeModal} >
                          {this.props.l10n('cm.cancel')}
-                    </Button>
+                    </EduIDButton>
                 </ModalFooter>
 
             </Modal>
