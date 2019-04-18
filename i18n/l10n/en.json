@@ -305,7 +305,7 @@
   "security.credential": "Credential",
   "security.delete_account": "Delete eduID account",
   "security.description": "Description",
-  "security.for-second-factor": "Use the buttons below to register 2nd factors for authentication with eduID",
+  "security.for-second-factor": "Use the button below to register 2nd factors for authentication with eduID",
   "security.last_used": "Last used",
   "security.long_description": "Your eduID account password can be changed below.",
   "security.main_title": "Security",
