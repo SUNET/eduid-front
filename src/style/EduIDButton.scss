@@ -8,15 +8,6 @@
     padding:20px 40px;
 }
 
-<<<<<<< HEAD
-.btn.eduid-button {
-    height:45px;
-    line-height:45px;
-    border-radius: 0;
-    padding: 0 40px;
-    text-transform:uppercase;
-    margin-bottom:10px;
-=======
 /* generic styles for all buttons 
 (incl. :hover, :active, :focus and :disabled) */
 button.btn {
@@ -100,7 +91,6 @@ button.btn.btn-danger {
     border-color: $error-red-hover;
     box-shadow: 0 0 0 0.2rem $error-red-shadow;
   }
->>>>>>> 813748e... moves button styling to EduIDButton.scss (primary buttons, cancel/close, remove/delete, :hover/:active/:focus), adds cancel color varibles and comments out modal button styles in base.scss
 }
 
 /* styles for links that are also buttons
@@ -130,13 +120,6 @@ button.btn-link {
     height: calc(2.25rem + 2px);
     line-height: calc(2.25rem + 2px);
 }
-<<<<<<< HEAD
-.btn.eduid-button:hover {
-    text-decoration:none;
-}
-=======
-
->>>>>>> 813748e... moves button styling to EduIDButton.scss (primary buttons, cancel/close, remove/delete, :hover/:active/:focus), adds cancel color varibles and comments out modal button styles in base.scss
 .btn-link.eduid-button {
     border: 0;
 }
@@ -146,20 +129,6 @@ button.btn-link {
     background:#dd650d;
     border-color:#dd650d;
 }
-<<<<<<< HEAD
-.btn-primary.eduid-button.disabled,
-.btn-primary.eduid-button.disabled:hover,
-.btn-primary.eduid-button.disabled:active,
-.btn-primary.eduid-button.disabled:focus {
-  background: $light-green-disabled;
-  border-color: $light-green-disabled;
-}
-
-button.eduid-cancel-button {
-    margin-right: 20px;
-}
-=======
->>>>>>> 813748e... moves button styling to EduIDButton.scss (primary buttons, cancel/close, remove/delete, :hover/:active/:focus), adds cancel color varibles and comments out modal button styles in base.scss
 
 input[type=submit].btn.eduid-button,
 button[type=submit].btn.eduid-button {
