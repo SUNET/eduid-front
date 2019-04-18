@@ -29,29 +29,10 @@ class CodeVerified extends Component {
                 <mark>{this.props.password}</mark>
               </pre>
               <EduIDButton id="gotit-button"
-                           color="primary"
                            type="submit">
                 {this.props.l10n('finish.got-it')}
               </EduIDButton>
             </div>
-          <div className="col-lg-1"></div>
-          <div className="col-lg-1" />
-          <div className="col-lg-10">
-            <h1>{this.props.l10n("main.welcome")}</h1>
-            <p className="lead registration-completed">
-              {this.props.l10n("finish.registration-complete")({
-                email: this.props.email
-              })}
-            </p>
-            <p className="lead">{this.props.l10n("finish.write-password")}</p>
-            <pre className="pre-big text-center force-select-all">
-              <mark>{this.props.password}</mark>
-            </pre>
-            <EduIDButton id="gotit-button" type="submit">
-              {this.props.l10n("finish.got-it")}
-            </EduIDButton>
-          </div>
-          <div className="col-lg-1" />
         </div>
       </form>
     );
