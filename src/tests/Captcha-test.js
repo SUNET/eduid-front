@@ -5,7 +5,7 @@ import expect from "expect";
 import fetchMock from 'fetch-mock';
 import { put, call, select } from "redux-saga/effects";
 
-import { setupComponent, fakeStore, getState } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import CaptchaContainer from "containers/Captcha";
 import * as actions from "actions/Captcha";
 import captchaReducer from "reducers/Captcha";
@@ -115,7 +115,7 @@ describe("Async actions for captcha", () => {
     it("Tests the send captcha saga", () => {
 
         const state = getState({
-            main: {
+            config: {
                 csrf_token: "dummy-token",
             },
             email: {

@@ -3,19 +3,22 @@ import React from 'react';
 import expect from "expect";
 
 import FooterContainer from "containers/Footer";
-import { setupComponent, fakeStore, getState } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 
+
+const config = {
+    is_app_loaded: true,
+    is_configured: true,
+    AVAILABLE_LANGUAGES: [
+        ['en', 'English'],
+        ['sv', 'Svenska']
+    ]
+};
 
 describe("Footer Component", () => {
 
     const state = {
-        main: {
-          is_app_loaded: true,
-          available_languages: {
-            en: 'English',
-            sv: 'Svenska'
-          }
-        },
+        config: config,
         intl: {
           locale: 'en'
         }
@@ -39,13 +42,7 @@ describe("Test footer Container", () => {
         dispatch;
 
     beforeEach(() => {
-        const store = fakeStore(getState({main: {
-                                              is_app_loaded: true,
-                                              available_languages: {
-                                                  en: 'English',
-                                                  sv: 'Svenska'
-                                              }
-                                         }}));
+        const store = fakeStore(getState({config: config}));
         dispatch = store.dispatch;
         wrapper = setupComponent({component: <FooterContainer />,
                                   store: store});

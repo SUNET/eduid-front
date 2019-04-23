@@ -3,37 +3,22 @@
 @import '../variables.scss';
 
 #footer {
-    padding-top: 20px;
-    padding-bottom: 10px;
+  padding: 20px 0 10px 0;
+  border-top: 1px solid $dark-green;
+  margin-top: 50px;
 }
 
 #footer-content {
-    border-top: 1px solid $lead-color;
-    max-width: 1200px;
-    padding-top: 20px;
+  padding: 0 20px;
 }
 
-#footer p {
-    font-family: 'Roboto-Regular';
-    font-size: 14px;
+div#footer p {
+    font-size:14px;
 }
-
 div#footer span.langselector {
-    color: rgb(85, 85, 85);
-    display: inline-block;
-    height: 14px;
-    line-height: 14px;
-    margin-bottom: 2px;
     margin-right: 2px;
-    margin-top: 2px;
-    text-align: left;
-}
-#footer .langselector {
     padding:0 10px;
     border-right:1px solid #9f958c;
-    display:inline;
-    margin-right:0;
-    margin-left:0;
 }
 #footer .langselector:last-child {
     border-right:none;
@@ -44,4 +29,13 @@ div#footer span.langselector {
 #footer .langselector a {
     cursor: pointer;
     color: #000;
+}
+
+@media only screen and (max-width: 767px) {
+
+    #footer,
+    .footer {
+        padding:20px 0;
+        height:auto;
+    }
 }

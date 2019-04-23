@@ -19,35 +19,42 @@ class Header extends Component {
     }
 
     render () {
-        let buttons = '';
-        if (this.props.withButtons) {
-            buttons = (<div className="buttons nav navbar-nav float-right">
-                         <div className="button orange">
-                           <a onClick={this.props.gotoSignup}>{this.props.l10n('header.signup')}</a>
-                         </div>
-                         <div className="button white-border"
-                           data-dashboard_url={this.props.dashboard_url}>
-                           <a onClick={this.props.gotoSignin}>{this.props.l10n('header.signin')}</a>
-                         </div>
-                       </div>);
+  
+        let email = this.props.email;
+        if (email === '') {
+  	  email = this.props.l10n("main.no-email-yet")
         }
+  
+        const buttons = (
+                  <div className="buttons nav navbar-nav float-right">
+                    <div className="button log-out">
+                      <button id="logout-button"
+                              className="button"	  
+                              onClick={this.props.handleLogout}>
+                        {this.props.l10n('header.logout')}
+                      </button>
+                    </div>
+                    <div className="loa-big hidden-sm" id="eduid-header-loa">
+                      {email} ({this.props.l10n(this.props.confirmed)})
+                    </div>
+                </div>);
+  
         const links = (
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <a className="nav-link" href={this.props.students_link}>{this.props.l10n('header.student')}</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href={this.props.technicians_link}>{this.props.l10n('header.technician')}</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href={this.props.staff_link}>{this.props.l10n('header.staff')}</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href={this.props.faq_link}>{this.props.l10n('header.faq')}</a>
-              </li>
-            </ul>
-        );
-
+                    <ul  className="navbar-nav mr-auto">
+                      <li className="nav-item">
+                        <a className="nav-link" href={this.props.studentsLink}>{this.props.l10n('header.students')}</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href={this.props.techniciansLink}>{this.props.l10n('header.technicians')}</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href={this.props.staffLink}>{this.props.l10n('header.staff')}</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href={this.props.faqLink}>{this.props.l10n('header.faq')}</a>
+                      </li>
+                </ul>);
+  
         if (this.props.size === 'xs') {
             return (
               <header id="header" className="header">
@@ -83,13 +90,13 @@ class Header extends Component {
     }
 }
 
-
 Header.propTypes = {
-  withButtons: PropTypes.bool,
-  size: PropTypes.string,
-  l10n: PropTypes.func,
-  gotoSignup: PropTypes.func,
-  gotoSignin: PropTypes.func,
-}
+  email: PropTypes.string,
+  confirmed: PropTypes.string,
+  studentsLink: PropTypes.string,
+  techniciansLink: PropTypes.string,
+  staffLink: PropTypes.string,
+  faqLink: PropTypes.string
+};
 
 export default Header;

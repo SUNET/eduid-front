@@ -8,11 +8,16 @@ import i18n from 'i18n-messages';
 
 
 const mapStateToProps = (state, props) => {
-  return {
-    is_configured: state.main.is_app_loaded,
-    language: state.intl.locale,
-    languages: state.main.available_languages
-  }
+    const languages = {};
+    if (state.config.AVAILABLE_LANGUAGES !== undefined) {
+        state.config.AVAILABLE_LANGUAGES.forEach((l)=>{languages[l[0]] = l[1]});
+    }
+    return {
+        is_configured: state.config.is_configured,
+        language: state.intl.locale,
+        languages: languages,
+        reload_to: state.config.DASHBOARD_URL
+    }
 };
 
 
@@ -25,6 +30,14 @@ const mapDispatchToProps = (dispatch, props) => {
               locale: lang,
               messages : msgs
           }));
+      },
+      changeDashboardSession: function (reload_to) {
+          return (e) => {
+              e.preventDefault();
+              Cookies.remove('eduid-dashboard-version');
+              Cookies.set('eduid-dashboard-version', '1');
+              window.location = reload_to;
+          }
       }
   }
 };

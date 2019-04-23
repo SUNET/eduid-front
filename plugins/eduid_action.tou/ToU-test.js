@@ -26,7 +26,7 @@ describe("ToU Component", () => {
 
     it("Renders the splash screen", () => {
         const wrapper = setupComponent({component: <MainContainer />,
-                                        overrides: {main: {is_app_loaded: false}}}),
+                                        overrides: {config: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(1);
@@ -92,7 +92,7 @@ describe("ToU plugin async actions", () => {
     it("Tests the post ToU accepted saga", () => {
 
         const state = getState({
-            main: {
+            config: {
                 csrf_token: 'dummy-token'
             },
             plugin: {
@@ -102,7 +102,7 @@ describe("ToU plugin async actions", () => {
         const data = {
             accept: true,
             version: state.plugin.version,
-            csrf_token: state.main.csrf_token,
+            csrf_token: state.config.csrf_token,
         };
         const generator = postAcceptTOU();
         generator.next();

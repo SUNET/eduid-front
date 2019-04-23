@@ -3,13 +3,13 @@ import React from 'react';
 import expect from "expect";
 
 import EmailInUseContainer from "containers/EmailInUse";
-import { setupComponent } from "tests/Main-test";
+import { setupComponent } from "tests/SignupMain-test";
 
 
 describe("EmailInUse Component", () => {
 
     const state = {
-        main: {
+        config: {
           reset_passwd_url: 'http://dummy.example.com/reset-password',
         }
     };

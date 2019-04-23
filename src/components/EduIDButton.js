@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from "reactstrap";
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faSpinner from '@fortawesome/fontawesome-free-solid/faSpinner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-import { FetchingContext } from "components/Main";
+import FetchingContext from 'components/FetchingContext';
 
 import 'style/EduIDButton.scss';
 
@@ -23,14 +23,15 @@ class EduIDButton extends Component {
                         classes = this.props.className + classes;
                     }
                     return (
-                      <button {...this.props}
+                      <Button {...this.props}
                               disabled={true}
-                              className={classes}>
+                              className={classes}
+                              color="primary">
                           {this.props.children}
                         <div className="spin-holder">
                           <FontAwesomeIcon icon={faSpinner} />
                         </div>
-                      </button>
+                      </Button>
                     );
                 } else {
                     let classes = " eduid-button";
@@ -38,10 +39,11 @@ class EduIDButton extends Component {
                         classes = this.props.className + classes;
                     }
                     return (
-                      <button {...this.props}
-                              className={classes}>
+                      <Button {...this.props}
+                              className={classes}
+                              color="primary">
                         {this.props.children}
-                      </button>
+                      </Button>
                     );
                 }
             }}

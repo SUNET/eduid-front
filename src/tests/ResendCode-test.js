@@ -3,7 +3,7 @@ import React from 'react';
 import expect from "expect";
 import { put, call, select } from "redux-saga/effects";
 
-import { setupComponent, fakeStore, getState } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import ResendCodeContainer from "containers/ResendCode";
 import * as actions from "actions/ResendCode";
 import { resendCode, requestResendCode } from "sagas/ResendCode";
@@ -71,7 +71,7 @@ describe("Resend code async actions", () => {
             email: {
                 email: 'dummy@example.com'
             },
-            main: {
+            config: {
                 csrf_token: "dummy-token"
             }
         });

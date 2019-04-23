@@ -29,7 +29,7 @@ class Footer extends Component {
     }
 
     return (<div id="footer">
-                <div className="container">
+                <div>
                     <div id="footer-content">
                       <p>
                         &copy;{this.props.l10n('footer.copyright')}

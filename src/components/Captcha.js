@@ -7,7 +7,7 @@ import ScriptLoader from 'react-script-loader-hoc';
 import EduIDButton from 'components/EduIDButton';
 import Recaptcha from "react-recaptcha";
 
-import { FetchingContext } from "components/Main";
+import FetchingContext from "components/FetchingContext";
 
 import 'style/Captcha.scss';
 
@@ -47,7 +47,8 @@ class Captcha extends Component {
                          id ="send-captcha-button">
                 {this.props.l10n('captcha.submit')}
             </EduIDButton>
-            <EduIDButton className="eduid-button btn-warning"
+            <EduIDButton onClick={this.props.cancelCaptcha}
+                         className="eduid-button btn-warning"
                          id ="cancel-captcha-button">
                 {this.props.l10n('captcha.cancel')}
             </EduIDButton>
@@ -58,8 +59,10 @@ class Captcha extends Component {
 }
 
 Captcha.propTypes = {
-  recaptcha_key: PropTypes.string,
-  handleCaptcha: PropTypes.func
+    recaptcha_key: PropTypes.string,
+    handleCaptcha: PropTypes.func,
+    fetching: PropTypes.bool,
+    setFetching: PropTypes.func
 }
 
 const LoadingCaptcha = ScriptLoader('https://www.google.com/recaptcha/api.js?render=explicit')(Captcha);

@@ -22,7 +22,7 @@ describe("Some Component", () => {
 
     it("Renders the splash screen", () => {
         const wrapper = setupComponent({component: <MainContainer />,
-                                        overrides: {main: {is_app_loaded: false}}}),
+                                        overrides: {config: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(1);
@@ -90,7 +90,6 @@ describe("Some action reducer", () => {
     });
 });
 
-/**
 describe("Some plugin async actions", () => {
 
     it("Tests post webauthn response saga", () => {
@@ -111,14 +110,14 @@ describe("Some plugin async actions", () => {
                   plugin: {
                       webauthn_assertion: assertion
                   }
-              }),
-              data = {
-                  csrf_token: 'dummy-token',
-                  credentialId: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))),
-                  authenticatorData: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.authenticatorData))),
-                  clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.clientDataJSON))),
-                  signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature)))
-              };
+              });
+        const data = {
+            csrf_token: state.config.csrf_token,
+            credentialId: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))),
+            authenticatorData: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.authenticatorData))),
+            clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.clientDataJSON))),
+            signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature)))
+        };
         const generator = postCompleteWebauthn();
         generator.next();
         let resp = generator.next(state);
@@ -135,4 +134,3 @@ describe("Some plugin async actions", () => {
         expect(resp.value).toEqual(put(action));
     });
 });
-**/

@@ -2,7 +2,7 @@
 import React from 'react';
 import expect from "expect";
 
-import { setupComponent, fakeStore, getState } from "tests/Main-test";
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import EmailContainer from "containers/Email";
 import * as actions from "actions/Email";
 import emailReducer from "reducers/Email";
@@ -12,7 +12,7 @@ describe("Email Component", () => {
 
     it("Renders the email component", () => {
         const wrapper = setupComponent({component: <EmailContainer />,
-                                        overrides: {main: {window_size: 'lg'}}}),
+                                        overrides: {config: {window_size: 'lg'}}}),
               input = wrapper.find('input#email-input'),
               button = wrapper.find('button#email-button'),
               faIcon = wrapper.find('FontAwesomeIcon');
@@ -24,7 +24,7 @@ describe("Email Component", () => {
 
     it("Renders the small email component", () => {
         const wrapper = setupComponent({component: <EmailContainer />,
-                                        overrides: {main: {window_size: 'xs'}}}),
+                                        overrides: {config: {window_size: 'xs'}}}),
               input = wrapper.find('input#email-input'),
               button = wrapper.find('button#email-button'),
               faIcon = wrapper.find('FontAwesomeIcon');

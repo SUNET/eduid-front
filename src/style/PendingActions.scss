@@ -1,0 +1,16 @@
+
+@import '../variables.scss';
+
+
+li.pending-action-item a {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 991px) {
+
+    div.pending-actions-container {
+        display: block;
+	min-width: 80%;
+    }
+}
+

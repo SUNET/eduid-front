@@ -4,7 +4,7 @@ import { ajaxHeaders, checkStatus, postRequest,
          putCsrfToken } from "sagas/common";
 
 import * as actions from "actions/ResendCode";
-import { history } from "components/Main";
+import { history } from "components/SignupMain";
 
 
 export function* resendCode () {
@@ -12,7 +12,7 @@ export function* resendCode () {
         const state = yield select(state => state),
               data = {
                 email: state.email.email,
-                csrf_token: state.main.csrf_token,
+                csrf_token: state.config.csrf_token,
               };
         const resp = yield call(requestResendCode, data);
         yield put(putCsrfToken(resp));

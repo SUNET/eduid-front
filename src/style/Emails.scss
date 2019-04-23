@@ -1,0 +1,80 @@
+
+@import '../variables.scss';
+
+button#email.button {
+    margin-top: 5px;
+}
+
+#emailsview-form {
+  height: 100%;
+  overflow: hidden;
+}
+
+#emailsview-form .form-group {
+  float: left;
+  margin-right: 10px;
+}
+
+#emailsview-form .form-group input{
+  min-width: 300px;
+}
+
+#emailsview-formadd {
+  float: left;
+  margin-top: 0;
+}
+
+@media only screen and (min-width: 992px) {
+
+    #confirmation-code-area div {
+	float: none !important;
+	width: 100% !important;
+    }
+
+    #confirmation-code-area .form-control-feedback {
+	top: 6px !important;
+	right: 6px !important;
+    }
+
+    #emails-form .form-control-feedback {
+	top: 6px !important;
+	right: 6px !important;
+    }
+
+    div.confirmation-code-area > div.form-group {
+        width: 100% !important;
+    }
+
+}
+
+@media (max-width: 992px) {
+  #emails-form .form-control-feedback {
+    top: 6px !important;
+    right: 6px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #emails-form .form-control-feedback {
+    top: 8px !important;
+    right: 11px !important;
+  }
+
+  #personal-data-button {
+    margin-left: auto!important;
+    margin-right: auto !important;
+    margin-top: 20px !important;
+    display: block !important;
+  }
+}
+
+
+  .nobutton {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .help-block .alert-warning {
+    border: 2px solid #faebcc !important;
+    background-color: transparent !important;
+  }

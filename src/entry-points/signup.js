@@ -31,8 +31,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { addLocaleData } from 'react-intl';
 
-import init_app from "init-app";
-import MainContainer from "containers/Main";
+import init_app from "signup-init-app";
+import SignupMainContainer from "containers/SignupMain";
 
 const locales = [];
 
@@ -59,5 +59,5 @@ addLocaleData([...en, ...sv])
 
 init_app(
   document.getElementById('root'),
-  <MainContainer />
+  <SignupMainContainer />
 );

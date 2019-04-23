@@ -3,7 +3,7 @@ import React from 'react';
 import expect from "expect";
 
 import AccountCreatedContainer from "containers/AccountCreated";
-import { setupComponent } from "tests/Main-test";
+import { setupComponent } from "tests/SignupMain-test";
 
 
 describe("Account Component", () => {

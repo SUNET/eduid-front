@@ -6,7 +6,7 @@ import * as actions from "actions/ActionWrapper";
 import { history } from "components/ActionWrapper";
 import { eduidNotify } from "actions/Notifications";
 import * as CBOR from "sagas/cbor";
-import { newCsrfToken } from "actions/Main";
+import { newCsrfToken } from "actions/DashboardConfig";
 
 window.CBOR = CBOR;
 
@@ -45,6 +45,7 @@ export function fetchConfig (url) {
         return response;
     })
 }
+
 
 export function* requestNextAction () {
     const actions_url = ACTIONS_SERVICE_URL + 'get-actions';

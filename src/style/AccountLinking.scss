@@ -1,0 +1,19 @@
+
+@import '../variables.scss';
+
+.orcid-logo {
+    display: inline-flex;
+    align-self: center;
+    height: 1em;
+    width: 1em;
+    top: .125em;
+    position: relative;
+    background: url(../../img/vector_iD_icon.svg);
+}
+
+.orcid-logo-container {
+    display: inline-flex;
+    padding-left: .25em;
+    padding-right: .25em;
+    fill: currentColor;
+}

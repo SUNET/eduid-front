@@ -1,0 +1,49 @@
+
+.nin-holder {
+  margin: 20px 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.nin-holder > button.btn-xs {
+  height: 2em;
+  line-height: 2em;
+  margin-left: 30px;
+}
+.proofing-btn-help {
+    margin-bottom: 30px;
+}
+
+div.proofing-buttons {
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 991px) {
+
+    div.btn-group-vertical#nins-btn-group div {
+        width: 100%;
+    }
+    div.proofing-buttons {
+        text-align: center;
+    }
+    div#norEduPersonNin,
+    div#norEduPersonNin input {
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    fieldset#nins-form div#norEduPersonNin input,
+    div.proofing-buttons button.eduid-button.proofing-button {
+        max-width: 500px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    fieldset#nins-form div#norEduPersonNin input,
+    div.proofing-buttons button.eduid-button.proofing-button {
+        width: 500px;
+    }
+}

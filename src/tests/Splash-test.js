@@ -5,7 +5,7 @@ import { Provider } from 'react-intl-redux';
 import { mount } from 'enzyme';
 import expect from "expect";
 
-import { setupComponent } from "tests/Main-test";
+import { setupComponent } from "tests/SignupMain-test";
 import SplashContainer from 'containers/Splash';
 
 
@@ -13,7 +13,7 @@ describe("Splash Component", () => {
 
     it("Renders", () => {
         const wrapper = setupComponent({component: <SplashContainer />,
-                                        overrides: {main: {is_app_loaded: false}}}),
+                                        overrides: {config: {is_app_loaded: false}}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(1);
@@ -21,7 +21,7 @@ describe("Splash Component", () => {
 
     it("Doesn't Render", () => {
         const wrapper = setupComponent({component: <SplashContainer />,
-                                        overrides: {main: {is_app_loaded: true}}}),
+                                        overrides: {config: {is_app_loaded: true}}}),
               splash = wrapper.find('div#eduid-splash-screen');
 
         expect(splash.length).toEqual(0);

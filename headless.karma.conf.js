@@ -45,7 +45,8 @@ webpackKarma.module.rules = [
     test: /\.json$/,
     use: {loader: 'json-loader'},
     enforce: 'pre',
-    exclude: /node_modules/,
+    exclude: /(node_modules|i18n)/,
+    include: /src/,
   },
   {
     test: /\.scss$/,

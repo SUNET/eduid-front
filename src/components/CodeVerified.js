@@ -29,12 +29,10 @@ class CodeVerified extends Component {
                 <mark>{this.props.password}</mark>
               </pre>
               <EduIDButton id="gotit-button"
-                           color="primary"
                            type="submit">
                 {this.props.l10n('finish.got-it')}
               </EduIDButton>
             </div>
-          <div className="col-lg-1"></div>
         </div>
       </form>
     );

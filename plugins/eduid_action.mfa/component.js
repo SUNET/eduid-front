@@ -111,9 +111,9 @@ Main.propTypes = {
 
 const mapStateToProps = (state, props) => {
     let options = {};
-    if (state.main.webauthn_options !== undefined) {
+    if (state.config.webauthn_options !== undefined) {
         try {
-            options = {...state.main.webauthn_options};
+            options = {...state.config.webauthn_options};
             options.publicKey = {
                 ...options.publicKey,
                 challenge: Uint8Array.from(Array.prototype.map.call(atob(options.publicKey.challenge),
@@ -133,13 +133,13 @@ const mapStateToProps = (state, props) => {
             options.publicKey.allowCredentials = allowCreds;
         } catch (error) {
             // the credentials were registered as webauthn (not U2F)
-            options = {...state.main.webauthn_options};
+            options = {...state.config.webauthn_options};
         }
     }
     let external_mfa_url = '';
-    if (state.main.eidas_url !== undefined && state.main.mfa_authn_idp !== undefined) {
-        let eidas_sp_url = state.main.eidas_url;
-        let mfa_auth_idp_url = state.main.mfa_authn_idp;
+    if (state.config.eidas_url !== undefined && state.config.mfa_authn_idp !== undefined) {
+        let eidas_sp_url = state.config.eidas_url;
+        let mfa_auth_idp_url = state.config.mfa_authn_idp;
         let verify_path = "mfa-authentication";
         if (!eidas_sp_url.endsWith("/")) {
             eidas_sp_url.concat("/")
@@ -151,7 +151,8 @@ const mapStateToProps = (state, props) => {
     }
     return {
         webauthn_options: options,
-        testing: state.main.testing,
+        testing: state.config.testing,
+        testing: state.config.testing,
         assertion: state.plugin.webauthn_assertion,
         external_mfa_url: external_mfa_url
     }

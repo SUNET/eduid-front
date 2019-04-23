@@ -31,6 +31,10 @@ div#clouds {
     text-align: center;
 }
 
+div#email-register div.input-group > div.input-group-prepend > div.input-group-text {
+    height: calc(2.25rem + 2px);
+}
+
 @media only screen and (max-width: 767px) {
 
     div#clouds {
