@@ -453,23 +453,6 @@ const msgs = {
             id="actions.action-completed"
             defaultMessage={`Success`} />),
 
-    'eidas.nin_not_matching': (
-          <FormattedMessage
-            id="eidas.nin_not_matching"
-            defaultMessage={`Asserted identity not matching the current accounts verified identity`} />),
-
-    'eidas.authn_context_mismatch': (
-      <FormattedMessage
-        id="eidas.authn_context_mismatch"
-        defaultMessage={`Wrong authentication context received`} />),
-
-    'eidas.reauthn_expired': (
-      <FormattedMessage
-        id="eidas.reauthn_expired"
-        defaultMessage={`Authentication has expired. Please try again.`} />),
-
-
-
 // messages with parameters
 
     'created.email-sent': (values) => (
@@ -1090,6 +1073,11 @@ const msgs = {
             id="eidas.authn_context_mismatch"
             defaultMessage={`Wrong authentication context received`} />),
 
+    'eidas.reauthn_expired': (
+      <FormattedMessage
+        id="eidas.reauthn_expired"
+        defaultMessage={`Authentication has expired. Please try again.`} />),
+
     /************************/
     /* PERSONAL DATA ********/
     /************************/
@@ -1480,12 +1468,12 @@ const msgs = {
     'security.webauthn_credential_type': (
         <FormattedMessage
           id="security.webauthn_credential_type"
-          defaultMessage={`Webauthn Key`} />),
+          defaultMessage={`Security Key`} />),
 
     'security.add_webauthn_token_key': (
         <FormattedMessage
           id="security.add_webauthn_token_key"
-          defaultMessage={`Register a portable Security Key`} />),
+          defaultMessage={`Register a Security Key`} />),
 
     'security.add_webauthn_token_device': (
         <FormattedMessage
@@ -1495,32 +1483,32 @@ const msgs = {
     'security.for-second-factor': (
         <FormattedMessage
           id="security.for-second-factor"
-          defaultMessage={`Use the buttons below to register 2nd factors for authentication with eduID`} />),
+          defaultMessage={`Use the buttons below to register a Security Key for authentication with eduID`} />),
 
     'security.webauthn-describe-title': (
         <FormattedMessage
           id="security.webauthn-describe-title"
-          defaultMessage={`Enter a name for your security key`} />),
+          defaultMessage={`Enter a nickname for the Security Key`} />),
 
     'security.webauthn.max_allowed_tokens': (
         <FormattedMessage
           id="security.webauthn.max_allowed_tokens"
-          defaultMessage={`You are not allowed to register more tokens.`} />),
+          defaultMessage={`You are not allowed to register more Security Keys`} />),
 
     'security.webauthn_register_success': (
         <FormattedMessage
           id="security.webauthn_register_success"
-          defaultMessage={`Security key successfully registered`} />),
+          defaultMessage={`Security Key successfully registered`} />),
 
     'security.webauthn-token-removed': (
         <FormattedMessage
           id="security.webauthn-token-removed"
-          defaultMessage={`Security key successfully removed`} />),
+          defaultMessage={`Security Key successfully removed`} />),
 
     'security.webauthn-missing-pdata': (
         <FormattedMessage
           id="security.webauthn-missing-pdata"
-          defaultMessage={`You should add your personal data before adding a security token`} />),
+          defaultMessage={`You should add your personal data before adding a Security Key`} />),
 
     'security.webauthn-token-notfound': (
         <FormattedMessage
@@ -1530,7 +1518,7 @@ const msgs = {
     'security.webauthn-noremove-last': (
         <FormattedMessage
           id="security.webauthn-noremove-last"
-          defaultMessage={`You are not allowed to remove your only security token`} />),
+          defaultMessage={`You are not allowed to remove your only Security Key`} />),
 
     'chpass.suggested_password': (
         <FormattedMessage
@@ -1912,14 +1900,6 @@ const msgs = {
         <FormattedMessage
           id="pfilled.completion"
           defaultMessage={`Completion`} />),
-
-   'csrf.try-again': (
-        <FormattedMessage
-          id="csrf.try-again"
-          defaultMessage={`There was a problem with your submission, please try again`} />),
-
-
-    
 };
 
 const unformatted = defineMessages({
