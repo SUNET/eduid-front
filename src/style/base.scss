@@ -29,8 +29,9 @@ h6 {
 /* Text */
 h1,
 h2 {
-  font-size: 72px;
+  font-size: 36px;
   color: $text-color;
+  margin: 0 0 20px 0;
 }
 h3,
 p.lead {
@@ -43,7 +44,7 @@ h4 {
 h1,
 h2,
 h4 {
-  font-family: "Roboto-Black";
+    font-family: "Roboto-Light";
 }
 p,
 li {
