@@ -1,11 +1,10 @@
-
-@import '../variables.scss';
+@import "../variables.scss";
 
 .buttons .button {
-    padding: 0;
+  padding: 0;
 }
 .buttons .button a {
-    padding:20px 40px;
+  padding: 20px 40px;
 }
 
 /* generic styles for all buttons 
@@ -117,45 +116,45 @@ button.btn-link {
 }
 
 .btn.eduid-button.btn-in-row {
-    height: calc(2.25rem + 2px);
-    line-height: calc(2.25rem + 2px);
+  height: calc(2.25rem + 2px);
+  line-height: calc(2.25rem + 2px);
 }
 .btn-link.eduid-button {
-    border: 0;
+  border: 0;
 }
 
 .btn-warning.eduid-button,
 .btn-warning.eduid-button:hover {
-    background:#dd650d;
-    border-color:#dd650d;
+  background: #dd650d;
+  border-color: #dd650d;
 }
 
-input[type=submit].btn.eduid-button,
-button[type=submit].btn.eduid-button {
-    display: block;
-    margin-top: 20px;
+input[type="submit"].btn.eduid-button,
+button[type="submit"].btn.eduid-button {
+  display: block;
+  margin-top: 20px;
 }
 
 .btn-icon {
-    display: inline-block;
-    vertical-align: middle;
-    width: 40px;
-    height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
 }
 
 .btn-text {
-    display: inline-block;
-    vertical-align: middle;
-    padding: 0 14px 0 10px;
-    margin: 0 0 0 4px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 14px 0 10px;
+  margin: 0 0 0 4px;
 }
 
 .pre-big {
-    font-size: 150%;
+  font-size: 150%;
 }
 
 .has-spinner {
-  cursor:progress;
+  cursor: progress;
   position: relative;
 }
 
@@ -182,7 +181,7 @@ button[type=submit].btn.eduid-button {
 }
 
 button.eduid-button.btn-warning {
-    background-color: $btn-grey;
+  background-color: $btn-grey;
 }
 
 @-moz-keyframes spin {
@@ -213,8 +212,7 @@ button.eduid-button.btn-warning {
 }
 
 @media only screen and (min-width: 767px) {
-
-    button.eduid-button {
-        max-height: 45px;
-    }
+  button.eduid-button {
+    max-height: 45px;
+  }
 }

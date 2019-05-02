@@ -1,9 +1,7 @@
-
-@import '../variables.scss';
-
+@import "../variables.scss";
 
 .pre-big {
-    font-size: 150%;
+  font-size: 150%;
 }
 
 .force-select-all {
@@ -14,15 +12,15 @@
 }
 
 .finish-action {
-    display: inline-block;
-    vertical-align: top;
-    margin-bottom: 40px;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 40px;
 }
 
 button#gotit-button {
-    margin: auto;
+  margin: auto;
 }
 
 .jumbotron p.lead.registration-completed {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }

@@ -1,136 +1,166 @@
-
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-import { Form, FormGroup, FormFeedback, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Field, reduxForm } from "redux-form";
+import {
+  Form,
+  FormGroup,
+  FormFeedback,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 import EduIDButton from "components/EduIDButton";
 
-import 'style/Email.scss';
-
+import "style/Email.scss";
 
 /* FORM */
 
 const validate = values => {
-    const errors = {},
-          email = values.email,
-          pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (!email) {
-        errors.email = 'required';
-    } else if (!pattern.test(email)) {
-        errors.email = 'email.invalid_email'
-    }
-    return errors;
+  const errors = {},
+    email = values.email,
+    pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  if (!email) {
+    errors.email = "required";
+  } else if (!pattern.test(email)) {
+    errors.email = "email.invalid_email";
+  }
+  return errors;
 };
 
-const renderLargeField = ({ input, id, type, placeholder, handleEmail, l10n, meta: { touched, error } }) => (
-    <div className="input-group">
-      <div className="input-group-prepend">
-        <div className="input-group-text">
-          <FontAwesomeIcon icon={faEnvelope} />
-        </div>
+const renderLargeField = ({
+  input,
+  id,
+  type,
+  placeholder,
+  handleEmail,
+  l10n,
+  meta: { touched, error }
+}) => (
+  <div className="input-group">
+    <div className="input-group-prepend">
+      <div className="input-group-text">
+        <FontAwesomeIcon icon={faEnvelope} />
       </div>
-      <Input {...input}
-             id={id}
-             invalid={touched && Boolean(error)}
-             valid={!touched || !Boolean(error)}
-             placeholder={placeholder}
-             type={type}/>
-      <EduIDButton className="btn-in-row"
-                   id="email-button"
-                   onClick={handleEmail}>
-         {l10n('email.sign-up-email')}
-      </EduIDButton>
-      <FormFeedback className="float-left">{touched && l10n(error)}</FormFeedback>
     </div>
-)
+    <Input
+      {...input}
+      id={id}
+      invalid={touched && Boolean(error)}
+      valid={!touched || !Boolean(error)}
+      placeholder={placeholder}
+      type={type}
+    />
+    <EduIDButton className="btn-in-row" id="email-button" onClick={handleEmail}>
+      {l10n("email.sign-up-email")}
+    </EduIDButton>
+    <FormFeedback className="float-left">{touched && l10n(error)}</FormFeedback>
+  </div>
+);
 
-const renderSmallField = ({ input, id, type, placeholder, handleEmail, l10n, meta: { touched, error } }) => (
-    <div className="input-group">
-      <Input {...input}
-             id={id}
-             invalid={touched && Boolean(error)}
-             valid={!touched || !Boolean(error)}
-             placeholder={placeholder}
-             type={type}/>
-      <EduIDButton id="email-button"
-                   onClick={handleEmail}>
-         {l10n('email.sign-up-email')}
-      </EduIDButton>
-      <span className="float-left"><FormFeedback className="float-left">{touched && l10n(error)}</FormFeedback></span>
-    </div>
-)
+const renderSmallField = ({
+  input,
+  id,
+  type,
+  placeholder,
+  handleEmail,
+  l10n,
+  meta: { touched, error }
+}) => (
+  <div className="input-group">
+    <Input
+      {...input}
+      id={id}
+      invalid={touched && Boolean(error)}
+      valid={!touched || !Boolean(error)}
+      placeholder={placeholder}
+      type={type}
+    />
+    <EduIDButton id="email-button" onClick={handleEmail}>
+      {l10n("email.sign-up-email")}
+    </EduIDButton>
+    <span className="float-left">
+      <FormFeedback className="float-left">
+        {touched && l10n(error)}
+      </FormFeedback>
+    </span>
+  </div>
+);
 
-const getField = (size) => {
-    if (size === 'xs') return renderSmallField;
-    return renderLargeField;
-}
+const getField = size => {
+  if (size === "xs") return renderSmallField;
+  return renderLargeField;
+};
 
 let EmailForm = props => (
-    <div id="email-register">
-      <Form className={(props.size === 'xs') && 'form-horizontal' || ''}>
-        <Field type="email"
-               name="email"
-               id="email-input"
-               component={getField(props.size)}
-               handleEmail={props.handleEmail.bind(props)}
-               l10n={props.l10n}
-               placeholder="name@example.edu" />
-      </Form>
-    </div>
-  );
+  <div id="email-register">
+    <Form className={(props.size === "xs" && "form-horizontal") || ""}>
+      <Field
+        type="email"
+        name="email"
+        id="email-input"
+        component={getField(props.size)}
+        handleEmail={props.handleEmail.bind(props)}
+        l10n={props.l10n}
+        placeholder="name@example.edu"
+      />
+    </Form>
+  </div>
+);
 
 EmailForm = reduxForm({
-  form: 'emailForm',
+  form: "emailForm",
   validate
-})(EmailForm)
+})(EmailForm);
 
-EmailForm = connect(
-  state => ({
-    enableReinitialize: true
-  })
-)(EmailForm)
+EmailForm = connect(state => ({
+  enableReinitialize: true
+}))(EmailForm);
 
 /* COMPONENT */
 
 class Email extends Component {
-
-  render () {
-
-    return ([
+  render() {
+    return [
       <div key="0" className="row text-center">
-        <div className="col-xl-2"></div>
+        <div className="col-xl-2" />
         <div className="col-xl-8">
-            <div id="clouds"></div>
-            <h1>{this.props.l10n('main.welcome')}</h1>
+          <div id="clouds" />
+          <h1>{this.props.l10n("main.welcome")}</h1>
 
-            <p className="lead">{this.props.l10n('main.create-account')}</p>
+          <p className="lead">{this.props.l10n("main.create-account")}</p>
 
-            <EmailForm {...this.props} />
+          <EmailForm {...this.props} />
         </div>
-        <div className="col-xl-2"></div>
+        <div className="col-xl-2" />
       </div>,
       <div key="1" className="row text-center">
         <Modal isOpen={this.props.acceptingTOU}>
-          <ModalHeader>{this.props.l10n('tou.header')}</ModalHeader>
-          <ModalBody dangerouslySetInnerHTML={{__html: this.props.tou}}></ModalBody>
+          <ModalHeader>{this.props.l10n("tou.header")}</ModalHeader>
+          <ModalBody dangerouslySetInnerHTML={{ __html: this.props.tou }} />
           <ModalFooter>
-            <EduIDButton className="btn-danger eduid-button"
-                         id="reject-tou-button"
-                         onClick={this.props.handleReject}>
-                  {this.props.l10n('tou.reject')}
+            <EduIDButton
+              className="btn-danger eduid-button"
+              id="reject-tou-button"
+              onClick={this.props.handleReject}
+            >
+              {this.props.l10n("tou.reject")}
             </EduIDButton>
-            <EduIDButton id="accept-tou-button"
-                         onClick={this.props.handleAccept}>
-                  {this.props.l10n('tou.accept')}
+            <EduIDButton
+              id="accept-tou-button"
+              onClick={this.props.handleAccept}
+            >
+              {this.props.l10n("tou.accept")}
             </EduIDButton>
           </ModalFooter>
         </Modal>
       </div>
-    ]);
+    ];
   }
 }
 
@@ -140,8 +170,7 @@ Email.propTypes = {
   size: PropTypes.string,
   l10n: PropTypes.func,
   handleAccept: PropTypes.func,
-  handleReject: PropTypes.func,
-}
+  handleReject: PropTypes.func
+};
 
 export default Email;
-
