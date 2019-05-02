@@ -11,6 +11,7 @@ import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
+import SettingsComponent from "./Settings";
 // import PersonalDataContainer from "containers/PersonalData";
 // import NinsContainer from "containers/Nins";
 // import EmailsContainer from "containers/Emails";
@@ -32,9 +33,13 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // fetching: props.is_fetching,
-      // setFetching: this.setFetching.bind(this),
-      // openTabs: false
+      fetching: props.is_fetching,
+      setFetching: this.setFetching.bind(this),
+      show_settings: false,
+      openTabs: false,
+      show_sidebar: true,
+      show_settings: false,
+      window_size: "lg"
     };
   }
 
@@ -45,7 +50,12 @@ class Main extends Component {
   }
 
   showSettings() {
-    console.log("you clicked the settings button");
+    this.setState(
+      prevState => ({
+        show_settings: !prevState.show_settings
+      }),
+      console.log("you clicked the settings button")
+    );
   }
 
   // componentWillMount() {
@@ -265,19 +275,24 @@ class Main extends Component {
         <SplashContainer />
         <div className="container-fluid">
           <HeaderContainer />
-          <ConnectedRouter history={history}>
-            <div id="content-block">
-              <div
+          <div id="content-block">
+            <h1>this is dashboard</h1>
+            <button type="submit" onClick={() => this.showSettings()}>
+              Settings
+            </button>
+            {/* <div
                 className="tabbable well profile-combo"
                 id="profile-content-area"
               >
-                <button type="submit" onClick={() => this.showSettings()}>
-                  Settings
-                </button>
-                <h1>this is dashboard</h1>
-                {/* {contentElem} */}
-              </div>
-            </div>
+                {/* {contentElem} 
+              </div> */}
+          </div>
+          <ConnectedRouter history={history}>
+            <SettingsComponent
+              show={this.state.show_settings}
+              show_sidebar={this.state.show_sidebar}
+              window_size={this.state.window_size}
+            />
           </ConnectedRouter>
         </div>
         <FooterContainer />
