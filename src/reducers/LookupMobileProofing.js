@@ -1,14 +1,11 @@
-
 import * as actions from "actions/LookupMobileProofing";
 
-
 const lookupMobileData = {
-    failed: false,
-    error: "",
+  failed: false,
+  error: ""
 };
 
-
-let lookupMobileProofingReducer = (state=lookupMobileData, action) => {
+let lookupMobileProofingReducer = (state = lookupMobileData, action) => {
   switch (action.type) {
     case actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING:
       return {
@@ -32,5 +29,3 @@ let lookupMobileProofingReducer = (state=lookupMobileData, action) => {
 };
 
 export default lookupMobileProofingReducer;
-
-

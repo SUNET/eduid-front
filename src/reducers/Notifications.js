@@ -1,15 +1,12 @@
-
 import * as actions from "actions/Notifications";
 
-
 const notifications = {
-    messages: [],
-    warnings: [],
-    errors: []
+  messages: [],
+  warnings: [],
+  errors: []
 };
 
-
-const notificationsReducer = (state=notifications, action) => {
+const notificationsReducer = (state = notifications, action) => {
   switch (action.type) {
     case actions.NEW_NOTIFICATION:
       switch (action.payload.level) {
@@ -17,18 +14,25 @@ const notificationsReducer = (state=notifications, action) => {
           return {
             messages: [],
             warnings: [],
-            errors: [ { msg: action.payload.message, vals: action.payload.values } ]
+            errors: [
+              { msg: action.payload.message, vals: action.payload.values }
+            ]
           };
         case "warnings":
           const warnings = state.warnings.slice();
-          warnings.push({ msg: action.payload.message, vals: action.payload.values });
+          warnings.push({
+            msg: action.payload.message,
+            vals: action.payload.values
+          });
           return {
             ...state,
             warnings: warnings
           };
         case "messages":
           return {
-            messages: [ { msg: action.payload.message, vals: action.payload.values } ],
+            messages: [
+              { msg: action.payload.message, vals: action.payload.values }
+            ],
             warnings: [],
             errors: []
           };
@@ -38,7 +42,7 @@ const notificationsReducer = (state=notifications, action) => {
     case actions.RM_NOTIFICATION:
       const msgs = state[action.payload.level].slice();
       msgs.splice(action.payload.index, 1);
-      let newState = {...state};
+      let newState = { ...state };
       newState[action.payload.level] = msgs;
       return newState;
     case actions.RM_ALL_NOTIFICATION:
@@ -58,4 +62,3 @@ const notificationsReducer = (state=notifications, action) => {
   }
 };
 export default notificationsReducer;
-
