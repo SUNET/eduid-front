@@ -61,21 +61,35 @@ class Settings extends Component {
           <Route
             exact
             path="/profile/"
-            component={() => <Redirect to="/profile/personaldata" />}
+            component={() => (
+              <Redirect to="/profile/settings/personaldata" />
+            )}
           />
           <Route
-            path="/profile/personaldata"
+            path="/profile/settings/personaldata"
             component={PersonalDataContainer}
           />
-          <Route path="/profile/nins" component={NinsContainer} />
-          <Route path="/profile/emails" component={EmailsContainer} />
-          <Route path="/profile/phones" component={MobileContainer} />
+          <Route path="/profile/settings/nins" component={NinsContainer} />
           <Route
-            path="/profile/accountlinking"
+            path="/profile/settings/emails"
+            component={EmailsContainer}
+          />
+          <Route
+            path="/profile/settings/phones"
+            component={MobileContainer}
+          />
+          <Route
+            path="/profile/settings/accountlinking"
             component={AccountLinkingContainer}
           />
-          <Route path="/profile/security" component={SecurityContainer} />
-          <Route path="/profile/chpass" component={ChangePasswordContainer} />
+          <Route
+            path="/profile/settings/security"
+            component={SecurityContainer}
+          />
+          <Route
+            path="/profile/settings/chpass"
+            component={ChangePasswordContainer}
+          />
         </div>
       </div>
     );
