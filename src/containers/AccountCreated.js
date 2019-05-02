@@ -1,19 +1,16 @@
+import { connect } from "react-redux";
 
-import { connect } from 'react-redux';
-
-import i18n from 'i18n-messages';
-import AccountCreated from 'components/AccountCreated';
+import i18n from "i18n-messages";
+import AccountCreated from "components/AccountCreated";
 
 const mapStateToProps = (state, props) => {
-    return {
-        email: state.email.email,
-    }
+  return {
+    email: state.email.email
+  };
 };
 
-
 const mapDispatchToProps = (dispatch, props) => {
-    return {
-    }
+  return {};
 };
 
 const AccountCreatedContainer = connect(
@@ -22,4 +19,3 @@ const AccountCreatedContainer = connect(
 )(AccountCreated);
 
 export default i18n(AccountCreatedContainer);
-
