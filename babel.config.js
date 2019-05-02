@@ -1,30 +1,27 @@
-module.exports = function (api) {
+module.exports = function(api) {
   api.cache(false);
-  const presets = [
-      "@babel/preset-env",
-      "@babel/preset-react"
-  ];
+  const presets = ["@babel/preset-env", "@babel/preset-react"];
   const plugins = [
-      [
-        "@babel/plugin-transform-runtime",
-        {
-          "regenerator": true
-        }
-      ],
-      [
-        "react-intl",
-        {
-          "messagesDir": "./i18n/",
-          "enforceDescriptions": false
-        }
-      ],
-      "transform-object-rest-spread",
-      "@babel/plugin-transform-flow-strip-types",
-      "react-hot-loader/babel"
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        regenerator: true
+      }
+    ],
+    [
+      "react-intl",
+      {
+        messagesDir: "./i18n/",
+        enforceDescriptions: false
+      }
+    ],
+    "transform-object-rest-spread",
+    "@babel/plugin-transform-flow-strip-types",
+    "react-hot-loader/babel"
   ];
 
   return {
     presets,
     plugins
   };
-}
+};

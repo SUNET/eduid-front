@@ -1,10 +1,9 @@
-
-const path = require('path');
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config');
-const CompressionPlugin = require('compression-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const webpackConfig = require("./webpack.config");
+const CompressionPlugin = require("compression-webpack-plugin");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const initialConfigPlugin = require('./src/init-config').initialConfigPlugin;
+const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 
 var webpackProd = {
   entry: webpackConfig.entry,
@@ -19,23 +18,23 @@ delete webpackProd.entry.hot;
 delete webpackProd.devtool;
 
 webpackProd.output = {
-  filename: '[name].js',
-  publicPath: 'https://www.eduid.se/static/front-build/',
-  path: path.join(__dirname, 'build')
-}
+  filename: "[name].js",
+  publicPath: "https://www.eduid.se/static/front-build/",
+  path: path.join(__dirname, "build")
+};
 
 webpackProd.plugins = [
   initialConfigPlugin,
   new webpack.DefinePlugin({
-    'process.env':{
-      'NODE_ENV': JSON.stringify('production')
+    "process.env": {
+      NODE_ENV: JSON.stringify("production")
     }
   }),
   new webpack.ProvidePlugin({
-    'Promise': 'exports-loader?global.Promise!es6-promise',
-    'window.fetch': 'exports-loader?self.fetch!whatwg-fetch'
+    Promise: "exports-loader?global.Promise!es6-promise",
+    "window.fetch": "exports-loader?self.fetch!whatwg-fetch"
   }),
-  new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
+  new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new webpack.optimize.OccurrenceOrderPlugin(true),
   new CompressionPlugin({
     asset: "[path].gz[query]",
@@ -43,7 +42,7 @@ webpackProd.plugins = [
     test: /\.js$|\.css$|\.html$/,
     threshold: 10240,
     minRatio: 0.8
-  }),
+  })
   // new BundleAnalyzerPlugin()
 ];
 

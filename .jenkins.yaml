@@ -17,4 +17,3 @@ triggers:
   cron: "@weekly"
 slack:
   room: eduid-builds
-
