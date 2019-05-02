@@ -268,20 +268,17 @@ class Settings extends Component {
       <FetchingContext.Provider value={this.state}>
         <SplashContainer />
         <div className="container-fluid">
-          <HeaderContainer />
           <ConnectedRouter history={history}>
             <div id="content-block">
               <div
                 className="tabbable well profile-combo"
                 id="profile-content-area"
               >
-                <h1>This is settings component</h1>
                 {contentElem}
               </div>
             </div>
           </ConnectedRouter>
         </div>
-        <FooterContainer />
       </FetchingContext.Provider>
     );
   }
