@@ -1,24 +1,23 @@
+import { combineReducers } from "redux";
+import { intlReducer } from "react-intl-redux";
 
-import { combineReducers } from 'redux';
-import { intlReducer } from 'react-intl-redux'
-
-import personalDataReducer from 'reducers/PersonalData';
-import emailsReducer from 'reducers/Emails';
-import configReducer from 'reducers/DashboardConfig';
-import openidConnectReducer from 'reducers/OpenidConnect';
-import lookupMobileProofingReducer from 'reducers/LookupMobileProofing';
-import openidConnectFrejaReducer from 'reducers/OpenidConnectFreja';
-import mobileReducer from 'reducers/Mobile';
-import accountLinkingReducer from 'reducers/AccountLinking';
-import securityReducer from 'reducers/Security';
-import chpassReducer from 'reducers/ChangePassword';
-import ninsReducer from 'reducers/Nins';
-import letterProofingReducer from 'reducers/LetterProofing';
-import notificationsReducer from 'reducers/Notifications';
-import profileReducer from 'reducers/Profile';
-import eidasReducer from 'reducers/Eidas';
-import { routerReducer } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form';
+import personalDataReducer from "reducers/PersonalData";
+import emailsReducer from "reducers/Emails";
+import configReducer from "reducers/DashboardConfig";
+import openidConnectReducer from "reducers/OpenidConnect";
+import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
+import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
+import mobileReducer from "reducers/Mobile";
+import accountLinkingReducer from "reducers/AccountLinking";
+import securityReducer from "reducers/Security";
+import chpassReducer from "reducers/ChangePassword";
+import ninsReducer from "reducers/Nins";
+import letterProofingReducer from "reducers/LetterProofing";
+import notificationsReducer from "reducers/Notifications";
+import profileReducer from "reducers/Profile";
+import eidasReducer from "reducers/Eidas";
+import { routerReducer } from "react-router-redux";
+import { reducer as formReducer } from "redux-form";
 
 const eduIDApp = combineReducers({
   router: routerReducer,
