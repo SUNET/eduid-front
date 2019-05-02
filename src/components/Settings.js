@@ -60,24 +60,16 @@ class Settings extends Component {
           {notsElem}
           <Route
             exact
-            path="/profile/"
-            component={() => (
-              <Redirect to="/profile/settings/personaldata" />
-            )}
+            path="/profile/settings/"
+            component={() => <Redirect to="/profile/settings/personaldata" />}
           />
           <Route
             path="/profile/settings/personaldata"
             component={PersonalDataContainer}
           />
           <Route path="/profile/settings/nins" component={NinsContainer} />
-          <Route
-            path="/profile/settings/emails"
-            component={EmailsContainer}
-          />
-          <Route
-            path="/profile/settings/phones"
-            component={MobileContainer}
-          />
+          <Route path="/profile/settings/emails" component={EmailsContainer} />
+          <Route path="/profile/settings/phones" component={MobileContainer} />
           <Route
             path="/profile/settings/accountlinking"
             component={AccountLinkingContainer}
@@ -94,9 +86,9 @@ class Settings extends Component {
       </div>
     );
 
-    if (this.props.show !== true) {
-      return <div />;
-    }
+    // if (this.props.show !== true) {
+    //   return <div />;
+    // }
     if (this.props.show_sidebar) {
       const size = this.props.window_size,
         sm = size === "sm",
@@ -183,100 +175,11 @@ class Settings extends Component {
           </div>
         );
       }
-      // } else if (size === "sm") {
-      //   contentElem = [
-      //     <div className="profile-head">
-      //       <div className="row">
-      //         <div className="col-sm-4">
-      //           <h3>{this.props.l10n("main.profile_title")}</h3>
-      //         </div>
-      //         <div className="col-sm-1" />
-      //         <div className="col-sm-7">
-      //           <NotificationsContainer />
-      //         </div>
-      //       </div>
-      //       <div className="row">
-      //         <div className="col-sm-1" />
-      //         <div className="col-sm-11">
-      //           <PendingActionsContainer history={history} />
-      //         </div>
-      //       </div>
-      //     </div>,
-      //     <div className="row">
-      //       <div className="col-sm-12">
-      //         <nav
-      //           id="profile-menu-small"
-      //           className="navbar navbar-light col-sm-10 col-sm-offset-2"
-      //           role="navigation"
-      //         >
-      //           <ul className="nav nav-tabs">
-      //             {tabsElems("main-nav-tabs nav-link")}
-      //           </ul>
-      //         </nav>
-      //       </div>
-      //       {routesElem("")}
-      //       {profElem}
-      //     </div>
-      //   ];
-      // } else if (size === "xs") {
-      //   contentElem = [
-      //     <div className="profile-head">
-      //       <div className="row">
-      //         <div className="col-xs-4 profile-head">
-      //           <h3>{this.props.l10n("main.profile_title")}</h3>
-      //         </div>
-      //         <div className="col-xs-1" />
-      //         <div className="col-xs-7 profile-head">
-      //           <NotificationsContainer />
-      //         </div>
-      //       </div>
-      //       <div className="row">
-      //         <div className="col-xs-1" />
-      //         <div className="col-xs-11 pending-actions-container">
-      //           <PendingActionsContainer history={history} />
-      //         </div>
-      //       </div>
-      //     </div>,
-      //     <div className="row">
-      //       <div id="col-xs-12 profile-navbar-xs">
-      //         <nav
-      //           id="profile-menu-small"
-      //           className="navbar navbar-light"
-      //           role="navigation"
-      //         >
-      //           <a className="navbar-brand" href="#">
-      //             {this.props.l10n("main.menu")}
-      //           </a>
-      //           <button
-      //             className="navbar-toggler"
-      //             type="button"
-      //             onClick={() =>
-      //               this.setState({ openTabs: !this.state.openTabs })
-      //             }
-      //           >
-      //             <span className="navbar-toggler-icon" />
-      //           </button>
-      //         </nav>
-      //       </div>
-      //       <Collapse
-      //         id="eduid-menu-items-xs"
-      //         isOpen={this.state.openTabs}
-      //         className="text-center"
-      //       >
-      //         <nav className="navbar navbar-light bg-light">
-      //           <ul className="nav nav-stacked nav-tabs navbar-nav">
-      //             {tabsElems("main-nav-tabs tab-link btn-block")}
-      //           </ul>
-      //         </nav>
-      //       </Collapse>
-      //       {routesElem("")}
-      //       {profElem}
-      //     </div>
-      //   ];
-      // }
-    } else {
-      contentElem = routesElem(<NotificationsContainer />);
     }
+
+    // else {
+    //   contentElem = routesElem(<NotificationsContainer />);
+    // }
 
     return (
       <FetchingContext.Provider value={this.state}>

@@ -35,7 +35,7 @@ class Main extends Component {
     this.state = {
       fetching: props.is_fetching,
       setFetching: this.setFetching.bind(this),
-      show_settings: false,
+      // show_settings: false,
       openTabs: false,
       show_sidebar: true,
       show_settings: false,
@@ -49,14 +49,9 @@ class Main extends Component {
     });
   }
 
-  showSettings() {
-    this.setState(
-      prevState => ({
-        show_settings: !prevState.show_settings
-      }),
-      console.log("you clicked the settings button")
-    );
-  }
+  // showSettings() {
+  //   console.log("you clicked the settings button");
+  // }
 
   render() {
     return (
@@ -70,19 +65,19 @@ class Main extends Component {
                 className="button"
                 // activeClassName="active"
                 id="submit-button-link"
-                to={`/profile/settings`}
+                to={`/profile/settings/`}
               >
                 <button
                   id="settings-button"
                   type="submit"
-                  onClick={() => this.showSettings()}
+                  // onClick={() => this.showSettings()}
                 >
                   Settings
                 </button>
               </Link>
               <div id="dashboard-text">
                 <SettingsComponent
-                  show={this.state.show_settings}
+                  // show={this.state.show_settings}
                   show_sidebar={this.state.show_sidebar}
                   window_size={this.state.window_size}
                 />
