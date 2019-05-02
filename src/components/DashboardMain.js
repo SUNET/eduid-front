@@ -35,11 +35,6 @@ class Main extends Component {
     this.state = {
       fetching: props.is_fetching,
       setFetching: this.setFetching.bind(this),
-      // show_settings: false,
-      openTabs: false,
-      show_sidebar: true,
-      show_settings: false,
-      window_size: "lg"
     };
   }
 
@@ -48,10 +43,6 @@ class Main extends Component {
       fetching: fetching
     });
   }
-
-  // showSettings() {
-  //   console.log("you clicked the settings button");
-  // }
 
   render() {
     return (
@@ -63,24 +54,17 @@ class Main extends Component {
             <div id="content-block">
               <Link
                 className="button"
-                // activeClassName="active"
                 id="submit-button-link"
                 to={`/profile/settings/`}
               >
                 <button
                   id="settings-button"
                   type="submit"
-                  // onClick={() => this.showSettings()}
                 >
                   Settings
                 </button>
               </Link>
               <div id="dashboard-text">
-                {/* <SettingsComponent
-                  // show={this.state.show_settings}
-                  show_sidebar={this.state.show_sidebar}
-                  window_size={this.state.window_size}
-                /> */}
                 <h1>eduID for email@email.com</h1>
                 <p>
                   {" "}
@@ -145,10 +129,8 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  // window_size: PropTypes.string,
   show_sidebar: PropTypes.bool,
   eppn: PropTypes.string,
-  // handleWindowSizeChange: PropTypes.func,
   messages: PropTypes.object
 };
 

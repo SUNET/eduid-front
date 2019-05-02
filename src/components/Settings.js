@@ -29,102 +29,13 @@ import "style/DashboardMain.scss";
 export const history = createHistory();
 
 class Settings extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // fetching: props.is_fetching,
-      // setFetching: this.setFetching.bind(this),
-      // openTabs: false
-    };
-  }
-
-  // setFetching(fetching) {
-  //   this.setState({
-  //     fetching: fetching
-  //   });
-  // }
-
-  // componentWillMount() {
-  //   window.addEventListener("resize", this.props.handleWindowSizeChange);
-  // }
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.props.handleWindowSizeChange);
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //   };
   // }
 
   render() {
-    // let contentElem = "";
-
-    // const routesElem = notsElem => (
-
-    // );
-
-    // if (this.props.show !== true) {
-    //   return <div />;
-    // }
-    // if (this.props.show_sidebar) {
-    // const size = this.props.window_size,
-    //   sm = size === "sm",
-    // tabs = [
-    //   {
-    //     id: "personaldata",
-    //     label: sm ? "main.personal_data_label_sm" : "main.personal_data"
-    //   },
-    //   { id: "nins", label: sm ? "main.nins_label_sm" : "main.nins" },
-    //   { id: "emails", label: sm ? "main.emails_label_sm" : "main.emails" },
-    //   { id: "phones", label: sm ? "main.phones_label_sm" : "main.phones" },
-    //   {
-    //     id: "accountlinking",
-    //     label: sm ? "main.account_linking_label_sm" : "main.account_linking"
-    //   },
-    //   {
-    //     id: "security",
-    //     label: sm ? "main.security_label_sm" : "main.security"
-    //   }
-    // ],
-    // profElem = (
-    //   <div className="col-sm-12">
-    //     <ul className="nav nav-stacked nav-tabs navbar-nav">
-    //       <ProfileFilledContainer />
-    //       <li id="profile-menu-eppn-li">
-    //         <div className="profile-menu-eppn">
-    //           <p className="eppn-text-muted">
-    //             {/* {this.props.l10n("main.eduid_id")}: {this.props.eppn} */}
-    //             main.eduid_id: eppn
-    //           </p>
-    //         </div>
-    //       </li>
-    //     </ul>
-    //   </div>
-    // ),
-    // tabsElems = classes => {
-    //   return tabs.map((tab, index) => {
-    //     return (
-    //       <li className="nav-item" key={index}>
-    //         <NavLink
-    //           className={classes}
-    //           activeClassName="active"
-    //           onClick={() => this.setState({ openTabs: false })}
-    //           to={`/profile/${tab.id}`}
-    //           id={`${tab.id}-router-link`}
-    //         >
-    //           {/* {this.props.l10n(tab.label)} */}
-    //           tab.label
-    //         </NavLink>
-    //       </li>
-    //     );
-    //   });
-    // };
-    // if (size === "xl" || size === "lg" || size === "md") {
-    //   contentElem = (
-
-    //   );
-    // }
-    //  }
-
-    // else {
-    //   contentElem = routesElem(<NotificationsContainer />);
-    // }
-
     return (
       <div>
         <SplashContainer />
@@ -182,13 +93,5 @@ class Settings extends Component {
     );
   }
 }
-
-// Main.propTypes = {
-//   window_size: PropTypes.string,
-//   show_sidebar: PropTypes.bool,
-//   eppn: PropTypes.string,
-//   handleWindowSizeChange: PropTypes.func,
-//   messages: PropTypes.object
-// };
 
 export default Settings;
