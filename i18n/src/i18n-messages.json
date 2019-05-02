@@ -292,18 +292,6 @@
     "defaultMessage": "Success"
   },
   {
-    "id": "eidas.nin_not_matching",
-    "defaultMessage": "Asserted identity not matching the current accounts verified identity"
-  },
-  {
-    "id": "eidas.authn_context_mismatch",
-    "defaultMessage": "Wrong authentication context received"
-  },
-  {
-    "id": "eidas.reauthn_expired",
-    "defaultMessage": "Authentication has expired. Please try again."
-  },
-  {
     "id": "created.email-sent",
     "defaultMessage": "An email with instructions on how to proceed has been sent to {email}"
   },
@@ -736,6 +724,10 @@
     "defaultMessage": "U2F token not used for login"
   },
   {
+    "id": "eidas.nin_not_matching",
+    "defaultMessage": "Asserted identity not matching the current accounts verified identity"
+  },
+  {
     "id": "eidas.nin_already_verified",
     "defaultMessage": "You have already verified your identity"
   },
@@ -746,6 +738,14 @@
   {
     "id": "eidas.token_verify_success",
     "defaultMessage": "U2F token verified successfully"
+  },
+  {
+    "id": "eidas.authn_context_mismatch",
+    "defaultMessage": "Wrong authentication context received"
+  },
+  {
+    "id": "eidas.reauthn_expired",
+    "defaultMessage": "Authentication has expired. Please try again."
   },
   {
     "id": "pd.long_description",
@@ -1041,11 +1041,11 @@
   },
   {
     "id": "security.webauthn_credential_type",
-    "defaultMessage": "Webauthn Key"
+    "defaultMessage": "Security Key"
   },
   {
     "id": "security.add_webauthn_token_key",
-    "defaultMessage": "Register a portable Security Key"
+    "defaultMessage": "Register a Security Key"
   },
   {
     "id": "security.add_webauthn_token_device",
@@ -1053,27 +1053,27 @@
   },
   {
     "id": "security.for-second-factor",
-    "defaultMessage": "Use the buttons below to register 2nd factors for authentication with eduID"
+    "defaultMessage": "Use the buttons below to register a Security Key for authentication with eduID"
   },
   {
     "id": "security.webauthn-describe-title",
-    "defaultMessage": "Enter a name for your security key"
+    "defaultMessage": "Enter a nickname for the Security Key"
   },
   {
     "id": "security.webauthn.max_allowed_tokens",
-    "defaultMessage": "You are not allowed to register more tokens."
+    "defaultMessage": "You are not allowed to register more Security Keys"
   },
   {
     "id": "security.webauthn_register_success",
-    "defaultMessage": "Security key successfully registered"
+    "defaultMessage": "Security Key successfully registered"
   },
   {
     "id": "security.webauthn-token-removed",
-    "defaultMessage": "Security key successfully removed"
+    "defaultMessage": "Security Key successfully removed"
   },
   {
     "id": "security.webauthn-missing-pdata",
-    "defaultMessage": "You should add your personal data before adding a security token"
+    "defaultMessage": "You should add your personal data before adding a Security Key"
   },
   {
     "id": "security.webauthn-token-notfound",
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "security.webauthn-noremove-last",
-    "defaultMessage": "You are not allowed to remove your only security token"
+    "defaultMessage": "You are not allowed to remove your only Security Key"
   },
   {
     "id": "chpass.suggested_password",
