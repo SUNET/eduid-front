@@ -44,6 +44,10 @@ class Main extends Component {
     });
   }
 
+  showSettings() {
+    console.log("you clicked the settings button");
+  }
+
   // componentWillMount() {
   //   window.addEventListener("resize", this.props.handleWindowSizeChange);
   // }
@@ -267,6 +271,9 @@ class Main extends Component {
                 className="tabbable well profile-combo"
                 id="profile-content-area"
               >
+                <button type="submit" onClick={() => this.showSettings()}>
+                  Settings
+                </button>
                 <h1>this is dashboard</h1>
                 {/* {contentElem} */}
               </div>
