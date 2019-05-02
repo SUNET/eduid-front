@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 // import { connect } from "react-redux";
-// import { Route, NavLink, Redirect } from "react-router-dom";
+import { Route, Link, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { ConnectedRouter } from "react-router-redux";
 // import { Collapse } from "reactstrap";
@@ -13,7 +13,7 @@ import FooterContainer from "containers/Footer";
 
 import SettingsComponent from "./Settings";
 // import PersonalDataContainer from "containers/PersonalData";
-// import NinsContainer from "containers/Nins";
+import NinsContainer from "containers/Nins";
 // import EmailsContainer from "containers/Emails";
 // import MobileContainer from "containers/Mobile";
 // import AccountLinkingContainer from "containers/AccountLinking";
@@ -64,46 +64,60 @@ class Main extends Component {
         <SplashContainer />
         <div className="container-fluid">
           <HeaderContainer />
-          <div id="content-block">
-            <button
-              id="settings-button"
-              type="submit"
-              onClick={() => this.showSettings()}
-            >
-              Settings
-            </button>
+          <ConnectedRouter history={history}>
+            <div id="content-block">
+              <Link
+                className="button"
+                // activeClassName="active"
+                id="submit-button-link"
+                to={`/profile/settings`}
+              >
+                <button
+                  id="settings-button"
+                  type="submit"
+                  onClick={() => this.showSettings()}
+                >
+                  Settings
+                </button>
+              </Link>
+              <div id="dashboard-text">
+                <SettingsComponent
+                  show={this.state.show_settings}
+                  show_sidebar={this.state.show_sidebar}
+                  window_size={this.state.window_size}
+                />
 
-            <div id="dashboard-text">
-              <h1>eduID for email@email.com</h1>
-              <p>
-                {" "}
-                Welcome to your eduid account. To be able to use it you need to
-                provide some more information.
-              </p>
-              <div id="content">
-                <div id="welcome">
-                  <div id="verify-identity-prompt">
-                    <h3>
-                      {" "}
-                      You're almost done, the next step is to verify your
-                      identity{" "}
-                    </h3>
-                    <p>
-                      {" "}
-                      Choose a suitable way to verify your identity and follow
-                      the instuctions to start using eduID. You can change any
-                      of your personal information in Settings.
-                    </p>
-                    <div id="verify-identity-button">
-                      <button
-                        id="verify-button"
-                        type="submit"
-                        // onClick={() => this.showVerifyIdentity()}
-                      >
+                <h1>eduID for email@email.com</h1>
+                <p>
+                  {" "}
+                  Welcome to your eduid account. To be able to use it you need
+                  to provide some more information.
+                </p>
+                <div id="content">
+                  <div id="welcome">
+                    <div id="verify-identity-prompt">
+                      <h3>
                         {" "}
-                        I want to verify my identity
-                      </button>
-                      {/* {this.props.l10n(tab.label)} */}
+                        You're almost done, the next step is to verify your
+                        identity{" "}
+                      </h3>
+                      <p>
+                        {" "}
+                        Choose a suitable way to verify your identity and follow
+                        the instuctions to start using eduID. You can change any
+                        of your personal information in Settings.
+                      </p>
+                      <div id="verify-identity-button">
+                        <button
+                          id="verify-button"
+                          type="submit"
+                          // onClick={() => this.showVerifyIdentity()}
+                        >
+                          {" "}
+                          I want to verify my identity
+                        </button>
+                        {/* {this.props.l10n(tab.label)} */}
+                      </div>
                     </div>
                   </div>
                   <div>
@@ -124,13 +138,6 @@ class Main extends Component {
                 </div>
               </div>
             </div>
-          </div>
-          <ConnectedRouter history={history}>
-            <SettingsComponent
-              show={this.state.show_settings}
-              show_sidebar={this.state.show_sidebar}
-              window_size={this.state.window_size}
-            />
           </ConnectedRouter>
         </div>
         <FooterContainer />
