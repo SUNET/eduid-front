@@ -1,7 +1,4 @@
-
-@import '../variables.scss';
-
-
+@import "../variables.scss";
 
 #mobilesview-form {
   height: 100%;
@@ -13,7 +10,7 @@
   margin-right: 10px;
 }
 
-#mobilesview-form .form-group input{
+#mobilesview-form .form-group input {
   min-width: 300px;
 }
 
@@ -22,9 +19,7 @@
   margin-top: 0;
 }
 
-
 @media only screen and (min-width: 992px) {
-
   #mobile-form .form-control-feedback {
     top: 6px !important;
     right: 6px !important;
@@ -32,11 +27,9 @@
   body {
     /*  background-color: $blue; */
   }
-
 }
 
 @media only screen and (min-width: 992px) {
-
   .nobutton {
     text-transform: uppercase;
     font-weight: bold;
@@ -51,19 +44,15 @@
     top: 6px !important;
     right: 6px !important;
   }
-
 }
-
 
 @media (max-width: 767px) {
   #mobile-form .form-control-feedback {
     top: 8px !important;
     right: 11px !important;
   }
-
 }
 
-  .emailrow .text-muted {
-    padding: 0 25px !important;
-  }
-
+.emailrow .text-muted {
+  padding: 0 25px !important;
+}

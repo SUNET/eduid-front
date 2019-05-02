@@ -1,6 +1,4 @@
-
-@import '../variables.scss';
-
+@import "../variables.scss";
 
 .progress {
   margin-top: 10px;
@@ -8,53 +6,50 @@
 }
 .progress-striped .progress-bar,
 .progress-bar-striped {
-    background:#58b78b;
+  background: #58b78b;
 }
 .progress {
-    background-color:#797979;
-    box-shadow:none;
-    border-radius:0;
-    height:10px;
+  background-color: #797979;
+  box-shadow: none;
+  border-radius: 0;
+  height: 10px;
 }
 .profile-filled .title {
-    font-family:'Roboto-Black';
-    font-size:18px;
-    margin-bottom:10px;
+  font-family: "Roboto-Black";
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 .progress-bar {
-    box-shadow:none;
+  box-shadow: none;
 }
 div.profile-filled div.title {
-    color:#44484b;
+  color: #44484b;
 }
 div.profile-filled div.title span.percentage {
-    color:#fff;
+  color: #fff;
 }
 ul.nav-tabs > li#profile-filled-li {
-    border-bottom: 0;
+  border-bottom: 0;
 }
 
 @media only screen and (min-width: 991px) {
-
-    div.profile-filled-large {
-        padding-top: 80px;
-    }
+  div.profile-filled-large {
+    padding-top: 80px;
+  }
 }
 
 @media only screen and (max-width: 991px) {
+  div#profile-menu-large {
+    display: none;
+  }
 
-    div#profile-menu-large {
-        display: none;
-    }
-
-    div.profile-filled-large {
-        padding-top: 40px;
-    }
+  div.profile-filled-large {
+    padding-top: 40px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-
-    div#profile-menu-large ul {
-        margin-bottom: 50px;
-    }
+  div#profile-menu-large ul {
+    margin-bottom: 50px;
+  }
 }

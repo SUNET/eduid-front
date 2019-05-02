@@ -1,8 +1,7 @@
-
-@import '../variables.scss';
+@import "../variables.scss";
 
 body {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body,
@@ -13,7 +12,8 @@ div.modal-dialog .modal-content {
   background-image: url(../../img/texture.png);
   color: $text-color;
 }
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -23,27 +23,27 @@ h3,
 h4,
 h5,
 h6 {
-    color:#fff;
+  color: #fff;
 }
 
 /* Text */
 h1,
 h2 {
-    font-size:72px;
-    color:#fff;
+  font-size: 72px;
+  color: #fff;
 }
 h3,
 p.lead {
-    font-size:24px;
-    font-family:'Roboto-Light';
+  font-size: 24px;
+  font-family: "Roboto-Light";
 }
 h4 {
-    font-size:18px;
+  font-size: 18px;
 }
 h1,
 h2,
 h4 {
-    font-family:'Roboto-Black';
+  font-family: "Roboto-Black";
 }
 p,
 li {
@@ -57,19 +57,19 @@ p {
 }
 
 label {
-    text-align:left!important;
-    display:block;
-    margin-bottom:5px!important;
-    color:#6d6d6d;
-    font-family:'Roboto-Regular';
+  text-align: left !important;
+  display: block;
+  margin-bottom: 5px !important;
+  color: #6d6d6d;
+  font-family: "Roboto-Regular";
 }
 input {
-    padding:0 20px;
-    border-radius: 0;
-    box-shadow: none;
+  padding: 0 20px;
+  border-radius: 0;
+  box-shadow: none;
 }
 input:focus {
-    outline:0;
+  outline: 0;
 }
 
 a {
@@ -78,41 +78,41 @@ a {
 }
 
 .clear-right {
-    float: right;
-    clear: right;
+  float: right;
+  clear: right;
 }
 
 .help {
-    padding-top:10px;
+  padding-top: 10px;
 }
 .help a {
-    position:relative;
-    padding-left:38px;
-    color:#000;
+  position: relative;
+  padding-left: 38px;
+  color: #000;
 }
 .help a:hover {
-    text-decoration:none;
+  text-decoration: none;
 }
 .help a:before {
-    content:'';
-    display:block;
-    width:28px;
-    height:28px;
-    background:url(../../img/sprite.png) -9px -53px no-repeat;
-    position:absolute;
-    top:-6px;
-    left:0;
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  background: url(../../img/sprite.png) -9px -53px no-repeat;
+  position: absolute;
+  top: -6px;
+  left: 0;
 }
 
 .intro h4 {
-    font-family: 'Roboto-Black';
-    font-size: 36px;
+  font-family: "Roboto-Black";
+  font-size: 36px;
 }
 
 /* Main marketing message and sign up button */
-#content-block > h3:first-child{
-    font-weight: bold;
-    font-size: 32px;
+#content-block > h3:first-child {
+  font-weight: bold;
+  font-size: 32px;
 }
 
 .row {
@@ -120,39 +120,39 @@ a {
 }
 
 .container-fluid .jumbotron {
-    color: #fff;
+  color: #fff;
 }
 
 .jumbotron {
-    margin: 60px 0;
-    text-align: center;
-    clear: both;
+  margin: 60px 0;
+  text-align: center;
+  clear: both;
 }
 
 .jumbotron h1,
 .jumbotron p.lead {
-    text-align: center;
+  text-align: center;
 }
 
 .jumbotron h1 {
-    font-size: 72px;
-    line-height: 1;
+  font-size: 72px;
+  line-height: 1;
 }
 
 .jumbotron .lead {
-    margin: 1em 0 2em 0;
+  margin: 1em 0 2em 0;
 }
 
 .jumbotron p {
-    color: #3f5c57;
+  color: #3f5c57;
 }
 
 .jumbotron input {
-    height: 30px;
+  height: 30px;
 }
 
 .input-group .help-block {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 /* forms ---------------*/
@@ -179,7 +179,7 @@ div.form-content {
 }
 
 .form-horizontal .form-group {
-    margin-left:0;
+  margin-left: 0;
 }
 
 div.controls > span.uneditable-input {
@@ -226,194 +226,188 @@ div.controls > span.uneditable-input {
 }
 
 .form-control:focus {
-    border-color:#fff;
-    box-shadow:none;
+  border-color: #fff;
+  box-shadow: none;
 }
 
 /* removing inlines */
 
 div.position-relative {
-    position: relative;
-    clear: both;
+  position: relative;
+  clear: both;
 }
-
 
 ul.nav.navbar-nav li a {
-    color: #3F5C57;
+  color: #3f5c57;
 }
-
 
 /* Mobile scrollbar */
 ::-webkit-scrollbar {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 ::-webkit-scrollbar:vertical {
-    width: 12px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar:horizontal {
-    height: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 10px;
-    border: 2px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 2px solid #ffffff;
 }
 
 ::-webkit-scrollbar-track {
-    border-radius: 10px;  
-    background-color: #ffffff; 
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 /* Fontface */
 @font-face {
-	font-family: 'Roboto-Light';
-	src: url('../fonts/roboto-light-webfont.eot');
-	src: url('../fonts/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
-	     url('../fonts/roboto-light-webfont.woff') format('woff'),
-         url('../fonts/roboto-light-webfont.svg#webfontZam02nTh') format('svg'),
-	     url('../fonts/roboto-light-webfont.ttf') format('truetype');
+  font-family: "Roboto-Light";
+  src: url("../fonts/roboto-light-webfont.eot");
+  src: url("../fonts/roboto-light-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/roboto-light-webfont.woff") format("woff"),
+    url("../fonts/roboto-light-webfont.svg#webfontZam02nTh") format("svg"),
+    url("../fonts/roboto-light-webfont.ttf") format("truetype");
 
-	font-weight: normal;
-	font-style: normal;
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-	font-family: 'Roboto-Regular';
-	src: url('../fonts/roboto-regular-webfont.eot');
-	src: url('../fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
-	     url('../fonts/roboto-regular-webfont.woff') format('woff'),
-         url('../fonts/roboto-regular-webfont.svg#webfontZam02nTh') format('svg'),
-	     url('../fonts/roboto-regular-webfont.ttf') format('truetype');
+  font-family: "Roboto-Regular";
+  src: url("../fonts/roboto-regular-webfont.eot");
+  src: url("../fonts/roboto-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/roboto-regular-webfont.woff") format("woff"),
+    url("../fonts/roboto-regular-webfont.svg#webfontZam02nTh") format("svg"),
+    url("../fonts/roboto-regular-webfont.ttf") format("truetype");
 
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Roboto-Black';
-	src: url('../fonts/roboto-black-webfont.eot');
-	src: url('../fonts/roboto-black-webfont.eot?#iefix') format('embedded-opentype'),
-	     url('../fonts/roboto-black-webfont.woff') format('woff'),
-         url('../fonts/roboto-black-webfont.svg#webfontZam02nTh') format('svg'),
-	     url('../fonts/roboto-black-webfont.ttf') format('truetype');
-
-	font-weight: normal;
-	font-style: normal;
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Roboto-Medium';
-	src: url('../fonts/roboto-medium-webfont.eot');
-	src: url('../fonts/roboto-medium-webfont.eot?#iefix') format('embedded-opentype'),
-	     url('../fonts/roboto-medium-webfont.woff') format('woff'),
-         url('../fonts/roboto-medium-webfont.svg#webfontZam02nTh') format('svg'),
-	     url('../fonts/roboto-medium-webfont.ttf') format('truetype');
+  font-family: "Roboto-Black";
+  src: url("../fonts/roboto-black-webfont.eot");
+  src: url("../fonts/roboto-black-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/roboto-black-webfont.woff") format("woff"),
+    url("../fonts/roboto-black-webfont.svg#webfontZam02nTh") format("svg"),
+    url("../fonts/roboto-black-webfont.ttf") format("truetype");
 
-	font-weight: normal;
-	font-style: normal;
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("../fonts/roboto-medium-webfont.eot");
+  src: url("../fonts/roboto-medium-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/roboto-medium-webfont.woff") format("woff"),
+    url("../fonts/roboto-medium-webfont.svg#webfontZam02nTh") format("svg"),
+    url("../fonts/roboto-medium-webfont.ttf") format("truetype");
+
+  font-weight: normal;
+  font-style: normal;
+}
 
 @media only screen and (min-width: 960px) {
-
   .jumbotron h1 {
-      font-size: 72px;
-      line-height: 1;
-      font-weight: 800;
+    font-size: 72px;
+    line-height: 1;
+    font-weight: 800;
   }
 
   .jumbotron .form-inline .form-group {
-      margin: 30px;
+    margin: 30px;
   }
-
 }
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-
-    .jumbotron .form-inline .form-group {
-	margin: 10px;
-    }
-
+  .jumbotron .form-inline .form-group {
+    margin: 10px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
+  div.wrap.container#root {
+    max-width: 96%;
+  }
 
-    div.wrap.container#root {
-	max-width: 96%;
-    }
-
-    .jumbotron h1,
-    .jumbotron h2 {
-        font-size: 54px;
-        margin: 20px 0;
-    }
-
+  .jumbotron h1,
+  .jumbotron h2 {
+    font-size: 54px;
+    margin: 20px 0;
+  }
 }
 
 @media only screen and (max-width: 767px) {
-    .jumbotron h1,
-    .jumbotron h2 {
-        font-size: 32px;
-        margin: 20px 0;
-    }
+  .jumbotron h1,
+  .jumbotron h2 {
+    font-size: 32px;
+    margin: 20px 0;
+  }
 
-    /* Texts */
-    .jumbotron h1 {
-      font-size: 36px;
-      line-height: 1;
-      font-weight: 400;
-    }
+  /* Texts */
+  .jumbotron h1 {
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 400;
+  }
 
-    .jumbotron .form-inline .form-group {
-	margin: 10px;
-    }
+  .jumbotron .form-inline .form-group {
+    margin: 10px;
+  }
 
-    /* Paddings */
-    .container-fluid .jumbotron {
-        padding-top:0!important;
-        padding-bottom:0;
-    }
-    .jumbotron {
-        padding:0;
-    }
+  /* Paddings */
+  .container-fluid .jumbotron {
+    padding-top: 0 !important;
+    padding-bottom: 0;
+  }
+  .jumbotron {
+    padding: 0;
+  }
 
-    /* Buttons */
-    .btn {
-        margin-left: auto!important;
-        margin-right: auto;
-        max-width: 100%;
-        font-size: 13px;
-    }
+  /* Buttons */
+  .btn {
+    margin-left: auto !important;
+    margin-right: auto;
+    max-width: 100%;
+    font-size: 13px;
+  }
 
-    /* Pages */
-    .form-group {
-        width:100%;
-    }
-    .table-responsive td {
-        padding-right:20px;
-        padding-left:20px;
-    }
-    .intro h4 {
-        font-size:24px;
-    }
-    .table > tbody > tr.emailrow td {
-        padding:10px 15px;
-    }
-    .table-responsive {
-        border:none;
-    }
-    .text-xs-center {
-        text-align: center;
-    }
+  /* Pages */
+  .form-group {
+    width: 100%;
+  }
+  .table-responsive td {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .intro h4 {
+    font-size: 24px;
+  }
+  .table > tbody > tr.emailrow td {
+    padding: 10px 15px;
+  }
+  .table-responsive {
+    border: none;
+  }
+  .text-xs-center {
+    text-align: center;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-
-    .jumbotron p.lead {
-        font-size:24px;
-    }
+  .jumbotron p.lead {
+    font-size: 24px;
+  }
 }
 
 /* Modals
@@ -435,15 +429,15 @@ div.modal-content > div.modal-body {
   flex-direction: column;
 }
 div.modal-dialog {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 
 div.modal-dialog div.modal-footer {
-    text-align: center;
+  text-align: center;
 }
 
 div.modal-dialog div.modal-footer a {
-    margin: 5px;
+  margin: 5px;
 }
 #freja-instructions ol {
   padding-left: 30px;
@@ -486,9 +480,8 @@ div.modal-dialog div.modal-footer a {
   text-decoration: none;
 }
 
-
 .modal-footer .btn {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 /* raise modal over menu */
