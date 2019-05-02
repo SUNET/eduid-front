@@ -1,45 +1,46 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
-import 'style/Footer.scss';
-
+import "style/Footer.scss";
 
 class Footer extends Component {
-
-  render () {
+  render() {
     let langElems;
     if (this.props.is_configured) {
-        const langs = Object.getOwnPropertyNames(this.props.languages);
-        langElems = langs.map((lang, index) => {
-            if (lang === this.props.language) {
-                return (<span className="langselector" key={index}>
-                          <span>{this.props.languages[lang]}</span>
-                        </span>);
-            } else {
-                return (<span className="langselector"
-                              data-lang={lang}
-                              key={index}>
-                          <a onClick={this.props.changeLanguage}>{this.props.languages[lang]}</a>
-                        </span>);
-            }
-        });
+      const langs = Object.getOwnPropertyNames(this.props.languages);
+      langElems = langs.map((lang, index) => {
+        if (lang === this.props.language) {
+          return (
+            <span className="langselector" key={index}>
+              <span>{this.props.languages[lang]}</span>
+            </span>
+          );
+        } else {
+          return (
+            <span className="langselector" data-lang={lang} key={index}>
+              <a onClick={this.props.changeLanguage}>
+                {this.props.languages[lang]}
+              </a>
+            </span>
+          );
+        }
+      });
     } else {
-        langElems = (<span />);
+      langElems = <span />;
     }
 
-    return (<div id="footer">
-                <div>
-                    <div id="footer-content">
-                      <p>
-                        &copy;{this.props.l10n('footer.copyright')}
-                        <span className="float-right">
-                          {langElems}
-                        </span>
-                      </p>
-                    </div>
-                </div>
-            </div>);
+    return (
+      <div id="footer">
+        <div>
+          <div id="footer-content">
+            <p>
+              &copy;{this.props.l10n("footer.copyright")}
+              <span className="float-right">{langElems}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
@@ -48,7 +49,6 @@ Footer.propTypes = {
   language: PropTypes.string,
   languages: PropTypes.object,
   changeLanguage: PropTypes.func
-}
+};
 
 export default Footer;
-
