@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Route, NavLink, Redirect } from "react-router-dom";
+// import { connect } from "react-redux";
+// import { Route, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { ConnectedRouter } from "react-router-redux";
-import { Collapse } from "reactstrap";
+// import { Collapse } from "reactstrap";
 
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
-import PersonalDataContainer from "containers/PersonalData";
-import NinsContainer from "containers/Nins";
-import EmailsContainer from "containers/Emails";
-import MobileContainer from "containers/Mobile";
-import AccountLinkingContainer from "containers/AccountLinking";
-import SecurityContainer from "containers/Security";
-import ChangePasswordContainer from "containers/ChangePassword";
-import NotificationsContainer from "containers/Notifications";
-import ProfileFilledContainer from "containers/ProfileFilled";
-import PendingActionsContainer from "containers/PendingActions";
+// import PersonalDataContainer from "containers/PersonalData";
+// import NinsContainer from "containers/Nins";
+// import EmailsContainer from "containers/Emails";
+// import MobileContainer from "containers/Mobile";
+// import AccountLinkingContainer from "containers/AccountLinking";
+// import SecurityContainer from "containers/Security";
+// import ChangePasswordContainer from "containers/ChangePassword";
+// import NotificationsContainer from "containers/Notifications";
+// import ProfileFilledContainer from "containers/ProfileFilled";
+// import PendingActionsContainer from "containers/PendingActions";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -32,9 +32,9 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fetching: props.is_fetching,
-      setFetching: this.setFetching.bind(this),
-      openTabs: false
+      // fetching: props.is_fetching,
+      // setFetching: this.setFetching.bind(this),
+      // openTabs: false
     };
   }
 
@@ -287,10 +287,10 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  window_size: PropTypes.string,
+  // window_size: PropTypes.string,
   show_sidebar: PropTypes.bool,
   eppn: PropTypes.string,
-  handleWindowSizeChange: PropTypes.func,
+  // handleWindowSizeChange: PropTypes.func,
   messages: PropTypes.object
 };
 
