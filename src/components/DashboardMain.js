@@ -76,19 +76,22 @@ class Main extends Component {
                 </button>
               </Link>
               <div id="dashboard-text">
-                <SettingsComponent
+                {/* <SettingsComponent
                   // show={this.state.show_settings}
                   show_sidebar={this.state.show_sidebar}
                   window_size={this.state.window_size}
-                />
-
+                /> */}
                 <h1>eduID for email@email.com</h1>
                 <p>
                   {" "}
-                  Welcome to your eduid account. To be able to use it you need
-                  to provide some more information.
+                  Welcome to your eduid account. To be able to use it you
+                  need to provide some more information.
                 </p>
                 <div id="content">
+                  <Route
+                    path="/profile/settings/"
+                    component={SettingsComponent}
+                  />
                   <div id="welcome">
                     <div id="verify-identity-prompt">
                       <h3>
@@ -98,9 +101,9 @@ class Main extends Component {
                       </h3>
                       <p>
                         {" "}
-                        Choose a suitable way to verify your identity and follow
-                        the instuctions to start using eduID. You can change any
-                        of your personal information in Settings.
+                        Choose a suitable way to verify your identity and
+                        follow the instuctions to start using eduID. You can
+                        change any of your personal information in Settings.
                       </p>
                       <div id="verify-identity-button">
                         <button
@@ -119,15 +122,15 @@ class Main extends Component {
                     <h3>Why do I need eduID?</h3>
                     <p>
                       eduID kan användas för inloggning inom flera olika
-                      organisationer. eduID har utvecklats för att kunna ge alla
-                      studenter en identitet online utan att kräva ett svenskt
-                      personnummer.
+                      organisationer. eduID har utvecklats för att kunna ge
+                      alla studenter en identitet online utan att kräva ett
+                      svenskt personnummer.
                     </p>
                     <h3>How to use eduID</h3>
                     <p>
-                      När möjlighet finns, välj "Logga in med eduID". Du kommer
-                      att bli skickad till eduIDs login där du anger din
-                      e-postadress och ditt lösenord.
+                      När möjlighet finns, välj "Logga in med eduID". Du
+                      kommer att bli skickad till eduIDs login där du anger
+                      din e-postadress och ditt lösenord.
                     </p>
                   </div>
                 </div>
