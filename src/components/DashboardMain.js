@@ -63,7 +63,7 @@ class Main extends Component {
                   to provide some more information.
                 </p>
                 <div id="content">
-                  <div id="welcome">
+                
                     <Route exact path="/profile/" component={VerifyIdentity} />
                     <Route
                       path="/profile/settings/"
@@ -72,7 +72,6 @@ class Main extends Component {
                   </div>
                 </div>
               </div>
-            </div>
           </ConnectedRouter>
         </div>
         <FooterContainer />

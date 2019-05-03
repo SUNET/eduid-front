@@ -37,58 +37,32 @@ class Settings extends Component {
 
   render() {
     return (
-      <div>
-        <SplashContainer />
-        <div className="container-fluid">
-          <NotificationsContainer />
-
-          <div id="content-block">
-            <div
-              className="tabbable well profile-combo"
-              id="profile-content-area"
-            >
-              <div className="row">
-                <div className="tab-content col-md-9 col-md-offset-1 col-sm-12">
-                  <Route
-                    exact
-                    path="/profile/settings/"
-                    component={() => (
-                      <Redirect to="/profile/settings/personaldata" />
-                    )}
-                  />
-                  <Route
-                    path="/profile/settings/personaldata"
-                    component={PersonalDataContainer}
-                  />
-                  <Route
-                    path="/profile/settings/nins"
-                    component={NinsContainer}
-                  />
-                  <Route
-                    path="/profile/settings/emails"
-                    component={EmailsContainer}
-                  />
-                  <Route
-                    path="/profile/settings/phones"
-                    component={MobileContainer}
-                  />
-                  <Route
-                    path="/profile/settings/accountlinking"
-                    component={AccountLinkingContainer}
-                  />
-                  <Route
-                    path="/profile/settings/security"
-                    component={SecurityContainer}
-                  />
-                  <Route
-                    path="/profile/settings/chpass"
-                    component={ChangePasswordContainer}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div id="settings">
+        <NotificationsContainer />
+        <Route
+          exact
+          path="/profile/settings/"
+          component={() => <Redirect to="/profile/settings/personaldata" />}
+        />
+        <Route
+          path="/profile/settings/personaldata"
+          component={PersonalDataContainer}
+        />
+        <Route path="/profile/settings/nins" component={NinsContainer} />
+        <Route path="/profile/settings/emails" component={EmailsContainer} />
+        <Route path="/profile/settings/phones" component={MobileContainer} />
+        <Route
+          path="/profile/settings/accountlinking"
+          component={AccountLinkingContainer}
+        />
+        <Route
+          path="/profile/settings/security"
+          component={SecurityContainer}
+        />
+        <Route
+          path="/profile/settings/chpass"
+          component={ChangePasswordContainer}
+        />
       </div>
     );
   }
