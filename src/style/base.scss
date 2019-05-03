@@ -58,11 +58,19 @@ p {
 }
 
 label {
-  text-align: left !important;
-  display: block;
-  margin-bottom: 5px !important;
-  color: #6d6d6d;
-  font-family: "Roboto-Regular";
+  // text-align: left !important;
+  // display: block;
+  // margin-bottom: 5px !important;
+  // color: #6d6d6d;
+  // font-family: "Roboto-Regular";
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: "Roboto-Medium";
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: #3f5c57;
+  padding: 0 0 0 2px;
+  margin: 0;
 }
 input {
   padding: 0 20px;
