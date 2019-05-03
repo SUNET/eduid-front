@@ -78,6 +78,33 @@ div#root.wrap.container {
   border-bottom: solid 2px rgb(63, 92, 87);
 }
 
+/* styles for tables displaying userinfo on settings page */
+.table {
+  margin-bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: #3f5c57;
+}
+
+.table td {
+  padding: 0 0 0 20px;
+  vertical-align: baseline;
+  border-top: none;
+}
+
+td {
+  width: 33%;
+}
+
+.table,
+.form-control {
+  font-size: 14px;
+}
+
+
+
+
+/*
 .profile-head {
   padding-bottom: 30px;
 }
@@ -91,9 +118,9 @@ div#root.wrap.container {
   color: #59856b;
 }
 
-/*
+
    Sidemenu
-*/
+
 .profile-filled-small {
   padding-top: 30px;
 }
@@ -223,8 +250,8 @@ div#root.wrap.container {
   border-bottom: none;
 }
 
-/* custom inclusion of right, left and below tabs
-   taken from http://www.bootply.com/100014 */
+custom inclusion of right, left and below tabs
+   taken from http://www.bootply.com/100014 
 
 .tabs-left > .nav-tabs {
   border-bottom: 0;
@@ -242,7 +269,7 @@ div#root.wrap.container {
 .tab-content > .active {
   display: block;
 }
-
+*/
 .eppn-text-muted {
   color: #777;
   font-size: 14px;
@@ -251,7 +278,7 @@ div#root.wrap.container {
 .eduid-text-muted {
   color: #777;
 }
-
+/*
 .table > tbody > tr.emailrow td,
 .table > tbody > tr.mobile-row td,
 .table > tbody > tr.ninrow td {
@@ -300,7 +327,7 @@ table.table-striped tr > td:first-child {
 div.table-responsive {
   overflow-x: inherit;
 }
-
+*/
 /*Accordion FAQ*/
 .panel-default,
 .panel,
@@ -366,6 +393,7 @@ div.table-responsive {
 }
 /*END: Accordion FAQ*/
 
+/*
 meter {
   width: 100%;
   color: #58b78b;
@@ -541,6 +569,8 @@ meter {
     min-height: 108px;
   }
 }
+
+*/
 
 a#go-to-mobiles-tab {
   cursor: pointer;
