@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 
+import NinsContainer from "containers/Nins";
+
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
@@ -21,16 +23,20 @@ class VerifyIdentity extends Component {
             personal information in Settings.
           </p>
           <div id="verify-identity-button">
-            <button
-              id="verify-button"
-              type="submit"
-              // onClick={() => this.showVerifyIdentity()}
+            <Link
+              // className="button"
+              id="verify-button-link"
+              to={`/profile/verify-identity`}
             >
-              {" "}
-              I want to verify my identity
-            </button>
-            {/* {this.props.l10n(tab.label)} */}
+              <button id="verify-button" type="submit">
+                {" "}
+                I want to verify my identity
+              </button>
+            </Link>
           </div>
+        </div>
+        <div>
+          <Route path="/profile/verify-identity" component={NinsContainer} />
         </div>
         <h3>Why do I need eduID?</h3>
         <p>
