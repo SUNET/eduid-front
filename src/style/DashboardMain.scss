@@ -101,7 +101,9 @@ td {
   font-size: 14px;
 }
 
+/* styles for forms displaying userinfo on settings page */
 .form-group {
+  background: yellow;
   padding: 0 10px 10px 0;
   margin: 0;
 }
@@ -111,9 +113,6 @@ td {
   padding: 0 0 0 2px;
 }
 
-.form-content {
-  width: 100%;
-}
 
 /*
 .profile-head {
