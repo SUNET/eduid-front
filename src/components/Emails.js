@@ -9,6 +9,7 @@ import TableList from "components/TableList";
 import ConfirmModal from "components/ConfirmModal";
 
 import "style/Emails.scss";
+import "style/DashboardMain.scss";
 
 const validate = values => {
   const errors = {},

@@ -9,6 +9,7 @@ import EduIDButton from "components/EduIDButton";
 import { GET_USERDATA_SUCCESS } from "actions/PersonalData";
 
 import "style/PersonalData.scss";
+import "style/DashboardMain.scss";
 
 /* FORM */
 
@@ -24,9 +25,11 @@ const validate = values => {
 
 let PdataForm = props => {
   return (
-    <Form id="personaldataview-form" 
-    // inline={true} 
-    role="form">
+    <Form
+      id="personaldataview-form"
+      // inline={true}
+      role="form"
+    >
       <fieldset id="personal-data-form" className="tabpane">
         <Field
           component={TextInput}
