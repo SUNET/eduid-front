@@ -13,6 +13,7 @@ import FooterContainer from "containers/Footer";
 
 import SettingsComponent from "./Settings";
 import SettingsButton from "./SettingsButton";
+import VerifyIdentity from "./VerifyIdentity";
 // import PersonalDataContainer from "containers/PersonalData";
 import NinsContainer from "containers/Nins";
 // import EmailsContainer from "containers/Emails";
@@ -58,8 +59,8 @@ class Main extends Component {
                 <h1>eduID for email@email.com</h1>
                 <p>
                   {" "}
-                  Welcome to your eduid account. To be able to use it you
-                  need to provide some more information.
+                  Welcome to your eduid account. To be able to use it you need
+                  to provide some more information.
                 </p>
                 <div id="content">
                   <Route
@@ -67,7 +68,7 @@ class Main extends Component {
                     component={SettingsComponent}
                   />
                   <div id="welcome">
-                   
+                    <VerifyIdentity />
                   </div>
                 </div>
               </div>
