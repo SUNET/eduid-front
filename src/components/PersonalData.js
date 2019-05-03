@@ -94,10 +94,10 @@ class PersonalData extends Component {
         <div className="intro">
           <h4>{this.props.l10n("pd.main_title")}</h4>
           <p>{this.props.l10n("pd.long_description")}</p>
-          <p>
+          {/* <p>
             {this.props.l10n("faq_link")}{" "}
             <a href="https://www.eduid.se/faq.html">FAQ</a>
-          </p>
+          </p> */}
         </div>
         <PdataForm {...this.props} />
       </div>
