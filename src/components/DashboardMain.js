@@ -63,12 +63,12 @@ class Main extends Component {
                   to provide some more information.
                 </p>
                 <div id="content">
-                  <Route
-                    path="/profile/settings/"
-                    component={SettingsComponent}
-                  />
                   <div id="welcome">
-                    <VerifyIdentity />
+                    <Route exact path="/profile/" component={VerifyIdentity} />
+                    <Route
+                      path="/profile/settings/"
+                      component={SettingsComponent}
+                    />
                   </div>
                 </div>
               </div>
