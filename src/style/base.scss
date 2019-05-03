@@ -170,6 +170,10 @@ a {
 
 /* forms ---------------*/
 
+form {
+  display: flex;
+}
+
 form.form-inline div.alert {
   display: block;
 }
@@ -187,9 +191,9 @@ form.form-horizontal label {
   margin-bottom: 0;
 }
 
-div.form-content {
-  margin-top: 10px;
-}
+// div.form-content {
+//   margin-top: 10px;
+// }
 
 .form-horizontal .form-group {
   margin-left: 0;
