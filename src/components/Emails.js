@@ -34,14 +34,14 @@ let EmailForm = props => {
           placeholder="example@example.com"
           helpBlock={props.l10n("emails.input_help_text")}
         />
-        <EduIDButton
-          id="email-button"
-          disabled={!props.valid_email}
-          onClick={props.handleAdd}
-        >
-          {props.l10n("emails.button_add")}
-        </EduIDButton>
       </fieldset>
+      <EduIDButton
+        id="email-button"
+        disabled={!props.valid_email}
+        onClick={props.handleAdd}
+      >
+        {props.l10n("emails.button_add")}
+      </EduIDButton>
     </form>
   );
 };
@@ -68,14 +68,16 @@ class Emails extends Component {
             <a href="https://www.eduid.se/faq.html">FAQ</a>
           </p> */}
         </div>
-        <TableList
-          entries={this.props.emails}
-          handleStartConfirmation={this.props.handleStartConfirmation}
-          handleRemove={this.props.handleRemove}
-          handleMakePrimary={this.props.handleMakePrimary}
-        />
-        <div className="form-content">
-          <EmailForm {...this.props} />
+        <div id="email-display">
+          <TableList
+            entries={this.props.emails}
+            handleStartConfirmation={this.props.handleStartConfirmation}
+            handleRemove={this.props.handleRemove}
+            handleMakePrimary={this.props.handleMakePrimary}
+          />
+          <div className="form-content">
+            <EmailForm {...this.props} />
+          </div>
         </div>
         <ConfirmModal
           modalId="emailConfirmDialog"
