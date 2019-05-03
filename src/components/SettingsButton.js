@@ -7,8 +7,18 @@ import "style/DashboardMain.scss";
 
 class SettingsButton extends Component {
   render() {
+    return (
+      <Link
+        className="button"
+        id="submit-button-link"
+        to={`/profile/settings/`}
+      >
+        <button id="settings-button" type="submit">
+          Settings
+        </button>
+      </Link>
+    );
   }
 }
-
 
 export default SettingsButton;
