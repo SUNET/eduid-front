@@ -11,6 +11,7 @@ import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
+import SettingsNav from "./SettingsNav";
 import PersonalDataContainer from "containers/PersonalData";
 import NinsContainer from "containers/Nins";
 import EmailsContainer from "containers/Emails";
@@ -38,31 +39,44 @@ class Settings extends Component {
   render() {
     return (
       <div id="settings">
+        <SettingsNav />
         <NotificationsContainer />
-        <Route
-          exact
-          path="/profile/settings/"
-          component={() => <Redirect to="/profile/settings/personaldata" />}
-        />
-        <Route
-          path="/profile/settings/personaldata"
-          component={PersonalDataContainer}
-        />
-        <Route path="/profile/settings/nins" component={NinsContainer} />
-        <Route path="/profile/settings/emails" component={EmailsContainer} />
-        <Route path="/profile/settings/phones" component={MobileContainer} />
-        <Route
-          path="/profile/settings/accountlinking"
-          component={AccountLinkingContainer}
-        />
-        <Route
-          path="/profile/settings/security"
-          component={SecurityContainer}
-        />
-        <Route
-          path="/profile/settings/chpass"
-          component={ChangePasswordContainer}
-        />
+        <div id="settings-content">
+          <Route
+            exact
+            path="/profile/settings/"
+            component={() => <Redirect to="/profile/settings/personaldata" />}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={PersonalDataContainer}
+          />
+
+          <Route
+            path="/profile/settings/personaldata"
+            component={EmailsContainer}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={MobileContainer}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={NinsContainer}
+          />
+          <Route
+            path="/profile/settings/advanced-settings"
+            component={AccountLinkingContainer}
+          />
+          <Route
+            path="/profile/settings/advanced-settings"
+            component={SecurityContainer}
+          />
+          <Route
+            path="/profile/settings/chpass"
+            component={ChangePasswordContainer}
+          />
+        </div>
       </div>
     );
   }
