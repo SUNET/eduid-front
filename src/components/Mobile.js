@@ -9,6 +9,7 @@ import TableList from "components/TableList";
 import ConfirmModal from "components/ConfirmModal";
 
 import "style/Mobile.scss";
+import "style/DashboardMain.scss";
 
 const validate = (values, props) => {
   let phone = values.number;
@@ -40,15 +41,14 @@ let PhoneForm = props => {
           placeholder={props.l10n("phones.input_placeholder")}
           helpBlock={props.l10n("phones.input_help_text")}
         />
-
-        <EduIDButton
-          id="mobile-button"
-          disabled={!props.valid_phone}
-          onClick={props.handleAdd}
-        >
-          {props.l10n("mobile.button_add")}
-        </EduIDButton>
       </fieldset>
+      <EduIDButton
+        id="mobile-button"
+        disabled={!props.valid_phone}
+        onClick={props.handleAdd}
+      >
+        {props.l10n("mobile.button_add")}
+      </EduIDButton>
     </form>
   );
 };
@@ -75,14 +75,16 @@ class Mobile extends Component {
             <a href="https://www.eduid.se/faq.html">FAQ</a>
           </p> */}
         </div>
-        <TableList
-          entries={this.props.phones}
-          handleStartConfirmation={this.props.handleStartConfirmation}
-          handleRemove={this.props.handleRemove}
-          handleMakePrimary={this.props.handleMakePrimary}
-        />
-        <div className="form-content">
-          <PhoneForm {...this.props} />
+        <div id="phone-display">
+          <TableList
+            entries={this.props.phones}
+            handleStartConfirmation={this.props.handleStartConfirmation}
+            handleRemove={this.props.handleRemove}
+            handleMakePrimary={this.props.handleMakePrimary}
+          />
+          <div className="form-content">
+            <PhoneForm {...this.props} />
+          </div>
         </div>
         <ConfirmModal
           modalId="phoneConfirmDialog"
