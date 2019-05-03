@@ -12,6 +12,7 @@ import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
 import SettingsComponent from "./Settings";
+import SettingsButton from "./SettingsButton";
 // import PersonalDataContainer from "containers/PersonalData";
 import NinsContainer from "containers/Nins";
 // import EmailsContainer from "containers/Emails";
@@ -34,7 +35,7 @@ class Main extends Component {
     super(props);
     this.state = {
       fetching: props.is_fetching,
-      setFetching: this.setFetching.bind(this),
+      setFetching: this.setFetching.bind(this)
     };
   }
 
@@ -52,24 +53,13 @@ class Main extends Component {
           <HeaderContainer />
           <ConnectedRouter history={history}>
             <div id="content-block">
-              <Link
-                className="button"
-                id="submit-button-link"
-                to={`/profile/settings/`}
-              >
-                <button
-                  id="settings-button"
-                  type="submit"
-                >
-                  Settings
-                </button>
-              </Link>
+              <SettingsButton />
               <div id="dashboard-text">
                 <h1>eduID for email@email.com</h1>
                 <p>
                   {" "}
-                  Welcome to your eduid account. To be able to use it you
-                  need to provide some more information.
+                  Welcome to your eduid account. To be able to use it you need
+                  to provide some more information.
                 </p>
                 <div id="content">
                   <Route
@@ -85,9 +75,9 @@ class Main extends Component {
                       </h3>
                       <p>
                         {" "}
-                        Choose a suitable way to verify your identity and
-                        follow the instuctions to start using eduID. You can
-                        change any of your personal information in Settings.
+                        Choose a suitable way to verify your identity and follow
+                        the instuctions to start using eduID. You can change any
+                        of your personal information in Settings.
                       </p>
                       <div id="verify-identity-button">
                         <button
@@ -106,15 +96,15 @@ class Main extends Component {
                     <h3>Why do I need eduID?</h3>
                     <p>
                       eduID kan användas för inloggning inom flera olika
-                      organisationer. eduID har utvecklats för att kunna ge
-                      alla studenter en identitet online utan att kräva ett
-                      svenskt personnummer.
+                      organisationer. eduID har utvecklats för att kunna ge alla
+                      studenter en identitet online utan att kräva ett svenskt
+                      personnummer.
                     </p>
                     <h3>How to use eduID</h3>
                     <p>
-                      När möjlighet finns, välj "Logga in med eduID". Du
-                      kommer att bli skickad till eduIDs login där du anger
-                      din e-postadress och ditt lösenord.
+                      När möjlighet finns, välj "Logga in med eduID". Du kommer
+                      att bli skickad till eduIDs login där du anger din
+                      e-postadress och ditt lösenord.
                     </p>
                   </div>
                 </div>
