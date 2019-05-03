@@ -11,32 +11,34 @@ class VerifyIdentity extends Component {
   render() {
     return (
       <div id="welcome">
-        <div id="verify-identity-prompt">
-          <h3>
-            {" "}
-            You're almost done, the next step is to verify your identity{" "}
-          </h3>
-          <p>
-            {" "}
-            Choose a suitable way to verify your identity and follow the
-            instuctions to start using eduID. You can change any of your
-            personal information in Settings.
-          </p>
-          <div id="verify-identity-button">
-            <Link
-              // className="button"
-              id="verify-button-link"
-              to={`/profile/verify-identity`}
-            >
-              <button id="verify-button" type="submit">
-                {" "}
-                I want to verify my identity
-              </button>
-            </Link>
+        <div id="verify-identity-process">
+          <div id="verify-identity-prompt">
+            <h3>
+              {" "}
+              You're almost done, the next step is to verify your identity{" "}
+            </h3>
+            <p>
+              {" "}
+              Choose a suitable way to verify your identity and follow the
+              instuctions to start using eduID. You can change any of your
+              personal information in Settings.
+            </p>
+            <div id="verify-identity-button">
+              <Link
+                // className="button"
+                id="verify-button-link"
+                to={`/profile/verify-identity`}
+              >
+                <button id="verify-button" type="submit">
+                  {" "}
+                  I want to verify my identity
+                </button>
+              </Link>
+            </div>
           </div>
-        </div>
-        <div>
-          <Route path="/profile/verify-identity" component={NinsContainer} />
+          <div id="national-id">
+            <Route path="/profile/verify-identity" component={NinsContainer} />
+          </div>
         </div>
         <h3>Why do I need eduID?</h3>
         <p>
