@@ -11,6 +11,7 @@ import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
+import SettingsNav from "./SettingsNav";
 import PersonalDataContainer from "containers/PersonalData";
 import NinsContainer from "containers/Nins";
 import EmailsContainer from "containers/Emails";
@@ -38,79 +39,13 @@ class Settings extends Component {
   render() {
     return (
       <div id="settings">
+        <SettingsNav />
         <NotificationsContainer />
-
-        <nav id="settings-nav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                // id="settings-personal-info"
-                to={`/profile/settings/personaldata`}
-              >
-                <h5>Personal information</h5>
-              </NavLink>
-            </li>
-            {/* <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-emails"
-                to={`/profile/settings/emails`}
-              >
-                <h5>Email address</h5>
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-phone"
-                to={`/profile/settings/phones`}
-              >
-                <h5>Phone</h5>
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-nin"
-                to={`/profile/settings/nins`}
-              >
-                <h5>National identity number</h5>
-              </NavLink>
-            </li> */}
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-account-linking"
-                to={`/profile/settings/advanced-settings`}
-              >
-                <h5>Advanced settings</h5>
-              </NavLink>
-            </li>
-            {/* <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-security"
-                to={`/profile/settings/security`}
-              >
-                <h5>Add Security</h5>
-              </NavLink>
-            </li> */}
-          </ul>
-        </nav>
         <div id="settings-content">
           <Route
             exact
             path="/profile/settings/"
-            component={() => (
-              <Redirect to="/profile/settings/personaldata" />
-            )}
+            component={() => <Redirect to="/profile/settings/personaldata" />}
           />
           <Route
             path="/profile/settings/personaldata"
