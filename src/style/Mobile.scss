@@ -1,23 +1,18 @@
 @import "../variables.scss";
 
+#phone-display {
+  display: flex;
+}
+
 #mobilesview-form {
-  height: 100%;
   overflow: hidden;
+  justify-content: space-between;
 }
 
-#mobilesview-form .form-group {
-  float: left;
-  margin-right: 10px;
-}
-
-#mobilesview-form .form-group input {
+#mobilesview-form input {
   min-width: 300px;
 }
 
-#mobilesview-formadd {
-  float: left;
-  margin-top: 0;
-}
 
 @media only screen and (min-width: 992px) {
   #mobile-form .form-control-feedback {

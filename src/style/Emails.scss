@@ -4,24 +4,24 @@ button#email.button {
   margin-top: 5px;
 }
 
-#emailsview-form {
-  height: 100%;
-  overflow: hidden;
+#email-display {
+  display: flex;
+  width: 100%;
 }
 
-#emailsview-form .form-group {
-  float: left;
-  margin-right: 10px;
+#emailsview-form {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 }
+
+
 
 #emailsview-form .form-group input {
   min-width: 300px;
 }
 
-#emailsview-formadd {
-  float: left;
-  margin-top: 0;
-}
+
 
 @media only screen and (min-width: 992px) {
   #confirmation-code-area div {

@@ -9,6 +9,7 @@ import TableList from "components/TableList";
 import ConfirmModal from "components/ConfirmModal";
 
 import "style/Emails.scss";
+import "style/DashboardMain.scss";
 
 const validate = values => {
   const errors = {},
@@ -34,14 +35,14 @@ let EmailForm = props => {
           placeholder="example@example.com"
           helpBlock={props.l10n("emails.input_help_text")}
         />
-        <EduIDButton
-          id="email-button"
-          disabled={!props.valid_email}
-          onClick={props.handleAdd}
-        >
-          {props.l10n("emails.button_add")}
-        </EduIDButton>
       </fieldset>
+      <EduIDButton
+        id="email-button"
+        disabled={!props.valid_email}
+        onClick={props.handleAdd}
+      >
+        {props.l10n("emails.button_add")}
+      </EduIDButton>
     </form>
   );
 };
@@ -63,19 +64,21 @@ class Emails extends Component {
         <div className="intro">
           <h4>{this.props.l10n("emails.main_title")}</h4>
           <p>{this.props.l10n("emails.long_description")}</p>
-          <p>
+          {/* <p>
             {this.props.l10n("faq_link")}{" "}
             <a href="https://www.eduid.se/faq.html">FAQ</a>
-          </p>
+          </p> */}
         </div>
-        <TableList
-          entries={this.props.emails}
-          handleStartConfirmation={this.props.handleStartConfirmation}
-          handleRemove={this.props.handleRemove}
-          handleMakePrimary={this.props.handleMakePrimary}
-        />
-        <div className="form-content">
-          <EmailForm {...this.props} />
+        <div id="email-display">
+          <TableList
+            entries={this.props.emails}
+            handleStartConfirmation={this.props.handleStartConfirmation}
+            handleRemove={this.props.handleRemove}
+            handleMakePrimary={this.props.handleMakePrimary}
+          />
+          <div className="form-content">
+            <EmailForm {...this.props} />
+          </div>
         </div>
         <ConfirmModal
           modalId="emailConfirmDialog"
