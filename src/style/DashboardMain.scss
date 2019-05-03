@@ -47,9 +47,35 @@ div#root.wrap.container {
   letter-spacing: 0.5;
 }
 
-/* styles for settings button */
+// ----- SETTINGS PAGE ----- //
 #settings-button {
   float: right;
+}
+
+#settings-nav ul {
+  flex-direction: row;
+  text-decoration: none;
+}
+
+#settings-nav ul li {
+  margin: 0 50px 0 0;
+}
+
+#settings-nav h5 {
+  color: #333;
+  font-family: "Roboto-Medium";
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: solid 2px transparent;
+}
+#settings-nav .active h5,
+#settings-nav h5:hover {
+  margin: 0;
+  color: #3f5c57;
+  padding-bottom: 0px;
+  border-bottom: solid 2px rgb(63, 92, 87);
 }
 
 .profile-head {
