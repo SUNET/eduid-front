@@ -52,7 +52,7 @@ class Settings extends Component {
                 <h5>Personal information</h5>
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink
                 className="nav-link"
                 activeClassName="active"
@@ -81,18 +81,18 @@ class Settings extends Component {
               >
                 <h5>National identity number</h5>
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-item">
               <NavLink
                 className="nav-link"
                 activeClassName="active"
                 id="settings-account-linking"
-                to={`/profile/settings/accountlinking`}
+                to={`/profile/settings/advanced-settings`}
               >
-                <h5>Account linking</h5>
+                <h5>Advanced settings</h5>
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink
                 className="nav-link"
                 activeClassName="active"
@@ -101,34 +101,47 @@ class Settings extends Component {
               >
                 <h5>Add Security</h5>
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </nav>
+        <div id="settings-content">
+          <Route
+            exact
+            path="/profile/settings/"
+            component={() => (
+              <Redirect to="/profile/settings/personaldata" />
+            )}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={PersonalDataContainer}
+          />
 
-        <Route
-          exact
-          path="/profile/settings/"
-          component={() => <Redirect to="/profile/settings/personaldata" />}
-        />
-        <Route
-          path="/profile/settings/personaldata"
-          component={PersonalDataContainer}
-        />
-        <Route path="/profile/settings/nins" component={NinsContainer} />
-        <Route path="/profile/settings/emails" component={EmailsContainer} />
-        <Route path="/profile/settings/phones" component={MobileContainer} />
-        <Route
-          path="/profile/settings/accountlinking"
-          component={AccountLinkingContainer}
-        />
-        <Route
-          path="/profile/settings/security"
-          component={SecurityContainer}
-        />
-        <Route
-          path="/profile/settings/chpass"
-          component={ChangePasswordContainer}
-        />
+          <Route
+            path="/profile/settings/personaldata"
+            component={EmailsContainer}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={MobileContainer}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={NinsContainer}
+          />
+          <Route
+            path="/profile/settings/advanced-settings"
+            component={AccountLinkingContainer}
+          />
+          <Route
+            path="/profile/settings/advanced-settings"
+            component={SecurityContainer}
+          />
+          <Route
+            path="/profile/settings/chpass"
+            component={ChangePasswordContainer}
+          />
+        </div>
       </div>
     );
   }
