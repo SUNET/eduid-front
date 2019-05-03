@@ -4,6 +4,7 @@ export const GET_NINS_FAIL = "GET_PERSONAL_DATA_NINS_FAIL";
 export const POST_NIN_REMOVE = "POST_NIN_REMOVE";
 export const POST_NIN_REMOVE_SUCCESS = "POST_SECURITY_REMOVE_NIN_SUCCESS";
 export const POST_NIN_REMOVE_FAIL = "POST_SECURITY_REMOVE_NIN_FAIL";
+export const CHANGE_NINDATA = "CHANGE_NINDATA"
 
 export function getNins() {
   return {
@@ -39,5 +40,12 @@ export function startRemoveFail(err) {
       error: err,
       message: err.toString()
     }
+  };
+}
+
+export function changeNindata(data) {
+  return {
+    type: CHANGE_NINDATA,
+    payload: data
   };
 }

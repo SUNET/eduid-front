@@ -42,6 +42,11 @@ let ninsReducer = (state = ninState, action) => {
         failed: true,
         error: action.payload.error
       };
+    case actions.CHANGE_NINDATA:
+      return {
+        ...state,
+        data: { ...action.payload }
+      };
     case "@@redux-form/CHANGE":
       const form = {};
       if (

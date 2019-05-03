@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
+import { Form } from "reactstrap";
 import { ButtonGroup } from "reactstrap";
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
@@ -38,20 +39,19 @@ const validate = values => {
 
 let NinForm = props => {
   return [
-    <form id="nins-form" role="form" key="1">
+    <Form id="nins-form" role="form" key="1">
       <fieldset id="nins-form" className="tabpane">
         <Field
           component={TextInput}
           componentClass="input"
           type="text"
           name="norEduPersonNin"
-          id="norEduPersonNin-input"
           className="nin-proofing-input"
           placeholder={props.l10n("nins.input_placeholder")}
           helpBlock={props.l10n("nins.input_help_text")}
         />
       </fieldset>
-    </form>,
+    </Form>,
     <ButtonGroup vertical={true} id="nins-btn-group" key="2">
       {props.buttons}
     </ButtonGroup>
@@ -60,12 +60,16 @@ let NinForm = props => {
 
 NinForm = reduxForm({
   form: "nins",
-  validate
+  destroyOnUnmount: false,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
+  keepValuesOnReinitialize: true,
+  updateUnregisteredFields: true,
+  validate: validate
 })(NinForm);
 
 NinForm = connect(state => ({
-  initialValues: { norEduPersonNin: state.nins.nin },
-  enableReinitialize: true
+  initialValues: { norEduPersonNin: state.nins.nin }
 }))(NinForm);
 
 class Nins extends Component {
