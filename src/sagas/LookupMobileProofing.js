@@ -17,7 +17,7 @@ export function* requestLookupMobileProof() {
       unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
       nin = input ? input.value : unconfirmed ? state.nins.nin : "testing",
       data = {
-//        norEduPersonNin: nin,
+        norEduPersonNin: nin,
         csrf_token: state.config.csrf_token
       };
 
