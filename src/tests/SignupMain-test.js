@@ -115,7 +115,7 @@ describe("SignupMain Component", () => {
         overrides: { config: { is_app_loaded: false } }
       }),
       splash = wrapper.find("div#eduid-splash-screen"),
-      router = wrapper.find("ConnectedRouter"),
+      router = wrapper.find("Router"),
       routes = wrapper.find("Route");
 
     expect(splash.length).toEqual(1);
@@ -133,7 +133,7 @@ describe("SignupMain Component", () => {
   it("Renders the email form", () => {
     const wrapper = setupComponent({ component: <SignupMainContainer /> }),
       splash = wrapper.find("div#eduid-splash-screen"),
-      router = wrapper.find("ConnectedRouter"),
+      router = wrapper.find("Router"),
       routes = wrapper.find("Route");
 
     expect(splash.length).toEqual(0);
