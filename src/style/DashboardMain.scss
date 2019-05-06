@@ -18,6 +18,12 @@ div#root.wrap.container {
 }
 
 // ----- LANDING PAGE ----- //
+
+#verify-identity-process {
+  // background: yellow;
+  padding: -15px;
+}
+
 #verify-identity-prompt,
 #settings {
   // background-color: rgba(236, 236, 236, 0.5);
@@ -47,6 +53,28 @@ div#root.wrap.container {
   letter-spacing: 0.5;
 }
 
+//-------ADD NIN ----------//
+
+#national-id:empty {
+  display: none;
+}
+
+#national-id {
+  // background: hotpink;
+  padding: 15px;
+}
+
+#national-id .intro {
+  margin-top: 0;
+}
+
+#national-id h4 {
+  font-family: "Roboto-Light";
+}
+
+#national-id .nin-holder {
+  justify-content: space-between;
+}
 // ----- SETTINGS PAGE ----- //
 #settings-button {
   float: right;

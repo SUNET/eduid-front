@@ -63,15 +63,19 @@ class Main extends Component {
                   to provide some more information.
                 </p>
                 <div id="content">
-                
-                    <Route exact path="/profile/" component={VerifyIdentity} />
-                    <Route
-                      path="/profile/settings/"
-                      component={SettingsComponent}
-                    />
-                  </div>
+                  <Route exact path="/profile/" component={VerifyIdentity} />
+                  <Route
+                    exact
+                    path="/profile/verify-identity"
+                    component={VerifyIdentity}
+                  />
+                  <Route
+                    path="/profile/settings/"
+                    component={SettingsComponent}
+                  />
                 </div>
               </div>
+            </div>
           </ConnectedRouter>
         </div>
         <FooterContainer />
