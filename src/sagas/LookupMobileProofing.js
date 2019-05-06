@@ -13,11 +13,11 @@ import * as ninActions from "actions/Nins";
 export function* requestLookupMobileProof() {
   try {
     const state = yield select(state => state),
-      input = document.getElementsByName("norEduPersonNin")[0],
+      input = document.getElementsByName("nin")[0],
       unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
       nin = input ? input.value : unconfirmed ? state.nins.nin : "testing",
       data = {
-        norEduPersonNin: nin,
+        nin: nin,
         csrf_token: state.config.csrf_token
       };
 

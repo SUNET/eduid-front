@@ -221,7 +221,7 @@ describe("Nins Component", () => {
   it("Renders", () => {
     const { wrapper, props } = setupComponent(),
       form = wrapper.find("form"),
-      ninInput = wrapper.find("#norEduPersonNin"),
+      ninInput = wrapper.find("#nin"),
       fieldset = wrapper.find("fieldset");
 
     expect(form.contains(fieldset.get(0))).toBeTruthy();

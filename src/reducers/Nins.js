@@ -51,7 +51,7 @@ let ninsReducer = (state = ninState, action) => {
       const form = {};
       if (
         action.meta.form === "nins" &&
-        action.meta.field === "norEduPersonNin"
+        action.meta.field === "nin"
       ) {
         form.nin = action.payload;
       }
