@@ -208,6 +208,13 @@ const msgs = {
     />
   ),
 
+  "Missing data for required field.": (
+    <FormattedMessage
+      id="Missing data for required field."
+      defaultMessage={`Missing data for required field`}
+    />
+  ),
+
   "user-out-of-sync": (
     <FormattedMessage
       id="user-out-of-sync"

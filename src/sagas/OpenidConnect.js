@@ -13,7 +13,7 @@ export function* checkNINAndShowSelegModal() {
   try {
     let nin;
     const state = yield select(state => state),
-      input = document.getElementById("norEduPersonNin"),
+      input = document.getElementById("nin"),
       unconfirmed = document.getElementById("eduid-unconfirmed-nin");
 
     // Check if there is a pending NIN before trying form input

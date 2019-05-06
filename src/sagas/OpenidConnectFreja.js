@@ -11,7 +11,7 @@ import * as actions from "actions/OpenidConnectFreja";
 export function* checkNINAndShowFrejaModal() {
   try {
     let nin;
-    const input = document.getElementById("norEduPersonNin"),
+    const input = document.getElementById("nin"),
       unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
       state = yield select(state => state);
 

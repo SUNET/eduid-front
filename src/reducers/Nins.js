@@ -42,11 +42,16 @@ let ninsReducer = (state = ninState, action) => {
         failed: true,
         error: action.payload.error
       };
+    case actions.CHANGE_NINDATA:
+      return {
+        ...state,
+        data: { ...action.payload }
+      };
     case "@@redux-form/CHANGE":
       const form = {};
       if (
         action.meta.form === "nins" &&
-        action.meta.field === "norEduPersonNin"
+        action.meta.field === "nin"
       ) {
         form.nin = action.payload;
       }

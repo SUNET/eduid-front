@@ -51,7 +51,7 @@ import {
   sendLetterCode
 } from "sagas/LetterProofing";
 import { requestLogout } from "sagas/Header";
-import { requestLookupMobileProof } from "sagas/LookupMobileProofing";
+import { saveLMPNinData } from "sagas/LookupMobileProofing";
 
 function* configSpaSaga() {
   const state = yield select(state => state);
@@ -78,7 +78,7 @@ function* rootSaga() {
     ),
     takeLatest(
       lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING,
-      requestLookupMobileProof
+      saveLMPNinData
     ),
     takeLatest(
       openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING,

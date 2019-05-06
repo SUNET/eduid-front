@@ -1,6 +1,6 @@
 import { put, select, call } from "redux-saga/effects";
 import { updateIntl } from "react-intl-redux";
-import { startSubmit, setSubmitSucceeded, setSubmitFailed } from "redux-form";
+import { startSubmit, stopSubmit, setSubmitSucceeded, setSubmitFailed } from "redux-form";
 import { startAsyncValidation, stopAsyncValidation } from "redux-form";
 
 import { newCsrfToken } from "actions/DashboardConfig";
@@ -77,8 +77,8 @@ export function saveData(getData, formName, startAction, fetcher, failAction) {
       yield put(putCsrfToken(resp));
       if (resp.type.endsWith("FAIL")) {
         if (resp.payload.error) {
-          yield put(setSubmitFailed(formName, ...resp.payload.error));
-          yield put(stopAsyncValidation(formName, resp.payload.error));
+          yield put(setSubmitFailed(formName, resp.payload.error));
+          yield put(stopSubmit(formName, resp.payload.error));
         }
       } else {
         yield put(setSubmitSucceeded(formName));

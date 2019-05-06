@@ -4,15 +4,16 @@ import {
   ajaxHeaders,
   putCsrfToken,
   postRequest,
+  saveData,
   failRequest
 } from "sagas/common";
 import { postLookupMobileFail } from "actions/LookupMobileProofing";
+import * as ninActions from "actions/Nins";
 
 export function* requestLookupMobileProof() {
   try {
     const state = yield select(state => state),
-      url = state.config.LOOKUP_MOBILE_PROOFING_URL,
-      input = document.getElementById("norEduPersonNin"),
+      input = document.getElementsByName("nin")[0],
       unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
       nin = input ? input.value : unconfirmed ? state.nins.nin : "testing",
       data = {
@@ -20,7 +21,7 @@ export function* requestLookupMobileProof() {
         csrf_token: state.config.csrf_token
       };
 
-    const lookupMobileData = yield call(fetchLookupMobileProof, url, data);
+    const lookupMobileData = yield call(fetchLookupMobileProof, state.config, data);
     yield put(putCsrfToken(lookupMobileData));
     yield put(lookupMobileData);
   } catch (error) {
@@ -28,7 +29,8 @@ export function* requestLookupMobileProof() {
   }
 }
 
-export function fetchLookupMobileProof(url, data) {
+export function fetchLookupMobileProof(config, data) {
+  const url = config.LOOKUP_MOBILE_PROOFING_URL;
   return window
     .fetch(url, {
       ...postRequest,
@@ -37,3 +39,17 @@ export function fetchLookupMobileProof(url, data) {
     .then(checkStatus)
     .then(response => response.json());
 }
+const getData = state => {
+  return {
+    ...state.form.nins.values,
+    csrf_token: state.config.csrf_token
+  };
+};
+
+export const saveLMPNinData = saveData(
+  getData,
+  "nins",
+  ninActions.changeNindata,
+  fetchLookupMobileProof,
+  postLookupMobileFail
+);

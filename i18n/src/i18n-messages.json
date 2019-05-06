@@ -72,6 +72,10 @@
     "defaultMessage": "Temporary technical problems, please try again later"
   },
   {
+    "id": "Missing data for required field.",
+    "defaultMessage": "Missing data for required field"
+  },
+  {
     "id": "user-out-of-sync",
     "defaultMessage": "User data is out of sync. Reload page to re-sync."
   },
