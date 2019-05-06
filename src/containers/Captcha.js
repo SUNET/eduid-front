@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(actions.postCaptcha());
     },
     cancelCaptcha: e => {
-      dispatch(history.push("email"));
+      history.push("email");
     }
   };
 };

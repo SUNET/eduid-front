@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Route, NavLink, Redirect } from "react-router-dom";
+import { Router, Route, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
-import { ConnectedRouter } from "react-router-redux";
 import { Collapse } from "reactstrap";
 
 import FetchingContext from "components/FetchingContext";
@@ -261,7 +260,7 @@ class Main extends Component {
         <SplashContainer />
         <div className="container-fluid">
           <HeaderContainer />
-          <ConnectedRouter history={history}>
+          <Router history={history}>
             <div id="content-block">
               <div
                 className="tabbable well profile-combo"
@@ -270,7 +269,7 @@ class Main extends Component {
                 {contentElem}
               </div>
             </div>
-          </ConnectedRouter>
+          </Router>
         </div>
         <FooterContainer />
       </FetchingContext.Provider>

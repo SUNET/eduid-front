@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Route, NavLink, Redirect } from "react-router-dom";
+import { Router, Route, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
-import { ConnectedRouter } from "react-router-redux";
 
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
@@ -65,7 +64,7 @@ class SignupMain extends Component {
         <SplashContainer />
         <div className="container-fluid">
           <HeaderContainer withButtons={true} />
-          <ConnectedRouter history={history}>
+          <Router history={history}>
             <div className="jumbotron">
               <div className="row">
                 <div className="col-lg-2" />
@@ -101,7 +100,7 @@ class SignupMain extends Component {
                 component={EmailInUseContainer}
               />
             </div>
-          </ConnectedRouter>
+          </Router>
           <FooterContainer />
         </div>
       </FetchingContext.Provider>

@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch, props) => {
     handleAccept: e => {
       e.preventDefault();
       dispatch(actions.acceptTOU());
-      history.push("trycaptcha");
+      history.push(BASE_PATH + "/trycaptcha");
     },
     handleReject: e => {
       e.preventDefault();
