@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Route, NavLink, Redirect } from "react-router-dom";
+import { Router, Route, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
-import { ConnectedRouter } from "react-router-redux";
 
 import SplashContainer from "containers/Splash";
 import NotificationsContainer from "containers/Notifications";
@@ -51,7 +50,7 @@ class ActionWrapper extends Component {
         <SplashContainer />
         <div className="container-fluid">
           <HeaderContainer withButtons={false} />
-          <ConnectedRouter history={history}>
+          <Router history={history}>
             <div className="jumbotron">
               <div className="row">
                 <div className="col-lg-2" />
@@ -67,7 +66,7 @@ class ActionWrapper extends Component {
               />
               {this.props.children}
             </div>
-          </ConnectedRouter>
+          </Router>
           <FooterContainer />
         </div>
       </FetchingContext.Provider>
