@@ -1062,8 +1062,7 @@ describe("Security Container", () => {
         },
         notifications: {
           messages: [],
-          errors: [],
-          warnings: []
+          errors: []
         }
       };
     };

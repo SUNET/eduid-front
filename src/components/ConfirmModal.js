@@ -80,7 +80,7 @@ const getConfirmForm = inputName => {
 
 class ConfirmModal extends Component {
   render() {
-    const ConfirmForm = getConfirmForm(this.props.controlId);
+    const ConfirmForm = getConfirmForm(this.props.id);
     return (
       <div
         id={this.props.modalId}

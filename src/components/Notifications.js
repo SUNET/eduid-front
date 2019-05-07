@@ -5,20 +5,6 @@ import { Alert } from "reactstrap";
 import "style/Notifications.scss";
 
 class Notifications extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      visible: true
-    };
-
-    this.onDismiss = this.onDismiss.bind(this);
-  }
-
-  onDismiss(e) {
-    this.setState({ visible: false });
-    this.props.handleRMNotification(e);
-  }
 
   render() {
     let toShow = this.props.errors.map((err, index) => {
@@ -39,8 +25,8 @@ class Notifications extends Component {
           color="danger"
           data-level="errors"
           data-index={index}
-          isOpen={this.state.visible}
-          toggle={this.onDismiss}
+          isOpen={true}
+          toggle={this.props.handleRMNotification}
         >
           {err_msg}
         </Alert>
@@ -66,49 +52,20 @@ class Notifications extends Component {
             color="success"
             data-level="messages"
             data-index={index}
-            isOpen={this.state.visible}
-            toggle={this.onDismiss}
+            isOpen={true}
+            toggle={this.props.handleRMNotification}
           >
             {success_msg}
           </Alert>
         );
       });
-      toShow = toShow.concat(
-        this.props.warnings.map((warning, index) => {
-          let warn = this.props.l10n(warning.msg);
-          if (warning.vals !== null) {
-            warn = warn(warning.vals);
-          }
-          if (
-            !this.props.debug &&
-            warn.indexOf !== undefined &&
-            warn.indexOf("UNKNOWN MESSAGE ID (") !== -1
-          ) {
-            return "";
-          }
-          return (
-            <Alert
-              key={index}
-              color="warning"
-              data-level="warnings"
-              data-index={index}
-              isOpen={this.state.visible}
-              toggle={this.onDismiss}
-            >
-              {warn}
-            </Alert>
-          );
-        })
-      );
     }
-
     return <div className="notifications-area">{toShow}</div>;
   }
 }
 
 Notifications.propTypes = {
   messages: PropTypes.array,
-  warnings: PropTypes.array,
   errors: PropTypes.array,
   debug: PropTypes.bool,
   handleRMNotification: PropTypes.func,
