@@ -1,6 +1,4 @@
-
-
-@import '../variables.scss';
+@import "../variables.scss";
 
 #footer {
   padding: 20px 0 10px 0;
@@ -13,29 +11,28 @@
 }
 
 div#footer p {
-    font-size:14px;
+  font-size: 14px;
 }
 div#footer span.langselector {
-    margin-right: 2px;
-    padding:0 10px;
-    border-right:1px solid #9f958c;
+  margin-right: 2px;
+  padding: 0 10px;
+  border-right: 1px solid #9f958c;
 }
 #footer .langselector:last-child {
-    border-right:none;
+  border-right: none;
 }
 #footer .langselector span {
-    color: #fff;
+  color: #fff;
 }
 #footer .langselector a {
-    cursor: pointer;
-    color: #000;
+  cursor: pointer;
+  color: #000;
 }
 
 @media only screen and (max-width: 767px) {
-
-    #footer,
-    .footer {
-        padding:20px 0;
-        height:auto;
-    }
+  #footer,
+  .footer {
+    padding: 20px 0;
+    height: auto;
+  }
 }

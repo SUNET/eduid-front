@@ -1,10 +1,13 @@
-
-import { connect } from 'react-redux';
-import OpenidConnectFreja from 'components/OpenidConnectFreja';
-import { postOpenidFreja, getOpenidFreja, showOpenidFrejaModal, hideOpenidFrejaModal } from "actions/OpenidConnectFreja";
+import { connect } from "react-redux";
+import OpenidConnectFreja from "components/OpenidConnectFreja";
+import {
+  postOpenidFreja,
+  getOpenidFreja,
+  showOpenidFrejaModal,
+  hideOpenidFrejaModal
+} from "actions/OpenidConnectFreja";
 import { eduidRMAllNotify } from "actions/Notifications";
-import i18n from 'i18n-messages';
-
+import i18n from "i18n-messages";
 
 const mapStateToProps = (state, props) => {
   return {
@@ -14,25 +17,25 @@ const mapStateToProps = (state, props) => {
     error: state.openid_freja_data.error,
     // Used until we deploy the nin component
     proofing_methods: state.config.PROOFING_METHODS
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleInitializeFrejaProofing: function (e) {
+    handleInitializeFrejaProofing: function(e) {
       dispatch(postOpenidFreja());
     },
-    handleFetchFrejaProofing: function (e) {
+    handleFetchFrejaProofing: function(e) {
       dispatch(getOpenidFreja());
     },
-    handleShowModal: function (e) {
+    handleShowModal: function(e) {
       dispatch(eduidRMAllNotify());
       dispatch(showOpenidFrejaModal());
     },
-    handleHideModal: function (e) {
+    handleHideModal: function(e) {
       dispatch(hideOpenidFrejaModal());
-    },
-  }
+    }
+  };
 };
 
 const OpenidConnectFrejaContainer = connect(

@@ -1,16 +1,14 @@
-
 import * as actions from "actions/OpenidConnectFreja";
-
 
 const openidFrejaData = {
   failed: false,
   error: null,
   iaRequestData: "",
   showModal: false,
-  nin: "",
+  nin: ""
 };
 
-let openidConnectFrejaReducer = (state=openidFrejaData, action) => {
+let openidConnectFrejaReducer = (state = openidFrejaData, action) => {
   switch (action.type) {
     case actions.GET_OIDC_PROOFING_FREJA_PROOFING:
       return {
@@ -21,7 +19,7 @@ let openidConnectFrejaReducer = (state=openidFrejaData, action) => {
       return {
         ...state,
         failed: false,
-        iaRequestData: action.payload.iaRequestData,
+        iaRequestData: action.payload.iaRequestData
       };
     case actions.GET_OIDC_PROOFING_FREJA_PROOFING_FAIL:
       return {
@@ -39,7 +37,7 @@ let openidConnectFrejaReducer = (state=openidFrejaData, action) => {
       return {
         ...state,
         failed: false,
-        iaRequestData: action.payload.iaRequestData,
+        iaRequestData: action.payload.iaRequestData
       };
     case actions.POST_OIDC_PROOFING_FREJA_PROOFING_FAIL:
       return {
@@ -58,7 +56,7 @@ let openidConnectFrejaReducer = (state=openidFrejaData, action) => {
         ...state,
         nin: action.payload.nin,
         error: null,
-        showModal: true,
+        showModal: true
       };
     case actions.SHOW_OIDC_FREJA_MODAL_FAIL:
       return {
@@ -69,7 +67,7 @@ let openidConnectFrejaReducer = (state=openidFrejaData, action) => {
       };
     case actions.HIDE_OIDC_FREJA_MODAL:
       return {
-        ...state,
+        ...state
       };
     case actions.HIDE_OIDC_FREJA_MODAL_SUCCESS:
       return {
@@ -82,4 +80,3 @@ let openidConnectFrejaReducer = (state=openidFrejaData, action) => {
 };
 
 export default openidConnectFrejaReducer;
-

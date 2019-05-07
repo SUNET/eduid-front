@@ -1,33 +1,30 @@
-
 import * as actions from "actions/Security";
 
-
 const security = {
-    failed: false,
-    error: '',
-    message: '',
-    credentials: [],
-    code: '',
-    confirming_change: false,
-    confirming_deletion: false,
-    location: '',
-    deleted: false,
-    webauthn_asking_description: false,
-    webauthn_token_description: '',
-    webauthn_failed: false,
-    webauthn_attestation: {},
-    webauthn_token_remove: '',
-    webauthn_token_verify: '',
-    webauthn_authenticator: 'cross-platform'
+  failed: false,
+  error: "",
+  message: "",
+  credentials: [],
+  code: "",
+  confirming_change: false,
+  confirming_deletion: false,
+  location: "",
+  deleted: false,
+  webauthn_asking_description: false,
+  webauthn_token_description: "",
+  webauthn_failed: false,
+  webauthn_attestation: {},
+  webauthn_token_remove: "",
+  webauthn_token_verify: "",
+  webauthn_authenticator: "cross-platform"
 };
 
-
-let securityReducer = (state=security, action) => {
+let securityReducer = (state = security, action) => {
   switch (action.type) {
     case actions.GET_CREDENTIALS_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     case actions.GET_CREDENTIALS_FAIL:
       return {
@@ -49,7 +46,7 @@ let securityReducer = (state=security, action) => {
     case actions.GET_CHANGE_PASSWORD:
       return {
         ...state,
-        confirming_change: false,
+        confirming_change: false
       };
     case actions.GET_CHANGE_PASSWORD_FAIL:
       return {
@@ -143,46 +140,46 @@ let securityReducer = (state=security, action) => {
       return {
         ...state,
         ...action.payload,
-        webauthn_failed: false,
+        webauthn_failed: false
       };
     case actions.POST_WEBAUTHN_REGISTER_FAIL:
       return {
         ...state,
         ...action.payload,
-        webauthn_failed: true,
+        webauthn_failed: true
       };
     case actions.POST_WEBAUTHN_REMOVE:
       return {
         ...state,
         webauthn_token_remove: action.payload.token,
-        webauthn_failed: false,
+        webauthn_failed: false
       };
     case actions.POST_WEBAUTHN_REMOVE_FAIL:
       return {
         ...state,
-        webauthn_failed: true,
+        webauthn_failed: true
       };
     case actions.POST_WEBAUTHN_REMOVE_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        webauthn_failed: false,
+        webauthn_failed: false
       };
     case actions.POST_WEBAUTHN_VERIFY:
       return {
         ...state,
         webauthn_token_verify: action.payload.token,
-        webauthn_failed: false,
+        webauthn_failed: false
       };
     case actions.POST_WEBAUTHN_VERIFY_FAIL:
       return {
         ...state,
-        webauthn_failed: true,
+        webauthn_failed: true
       };
     case actions.AUTHENTICATOR:
       return {
         ...state,
-        webauthn_authenticator: action.payload.choice,
+        webauthn_authenticator: action.payload.choice
       };
     default:
       return state;

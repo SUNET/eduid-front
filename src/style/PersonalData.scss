@@ -1,40 +1,36 @@
-
-@import '../variables.scss';
-
+@import "../variables.scss";
 
 #personal-data-button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #personaldataview-form .form-group {
-    width: 46%;
-    display: inline-block;
-    vertical-align: top;
+  width: 46%;
+  display: inline-block;
+  vertical-align: top;
 }
 
 #personaldataview-form .form-control {
-    width: 92%;
+  width: 92%;
 }
 
 #personaldataview-form label {
-    justify-content: left;
+  justify-content: left;
 }
 
 #personaldataview-form small.form-text {
-    min-height: 40px;
+  min-height: 40px;
 }
 
 @media only screen and (max-width: 992px) {
-
-    #personaldataview-form .form-group {
-        width: 100%;
-    }
+  #personaldataview-form .form-group {
+    width: 100%;
+  }
 }
 
 @media (max-width: 767px) {
-
   #personal-data-button {
-    margin-left: auto!important;
+    margin-left: auto !important;
     margin-right: auto !important;
     margin-top: 20px !important;
     display: block !important;

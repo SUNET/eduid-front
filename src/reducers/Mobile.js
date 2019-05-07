@@ -1,58 +1,58 @@
 import * as actions from "actions/Mobile";
 
 const mobileData = {
+  failed: false,
+  error: "",
+  message: "",
+  resending: {
     failed: false,
-    error: '',
-    message: '',
-    resending: {
-      failed: false,
-      error: {},
-      message: ''
-    },
-    confirming: '',
-    phones: [],
-    phone: '',
-    code: '',
-}
+    error: {},
+    message: ""
+  },
+  confirming: "",
+  phones: [],
+  phone: "",
+  code: ""
+};
 
-let mobileReducer = (state=mobileData, action) => {
-    switch (action.type) {
+let mobileReducer = (state = mobileData, action) => {
+  switch (action.type) {
     case actions.GET_MOBILES_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     case actions.POST_MOBILE:
       return {
-        ...state,
+        ...state
       };
     case actions.POST_MOBILE_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     case actions.POST_MOBILE_FAIL:
       return {
         ...state,
         failed: true,
-        error: action.payload.error,
+        error: action.payload.error
       };
     case actions.START_CONFIRMATION:
       return {
         ...state,
-        confirming: action.payload.phone,
+        confirming: action.payload.phone
       };
 
     case actions.STOP_CONFIRMATION:
       return {
         ...state,
-        confirming: '',
+        confirming: "",
         failed: false,
         resending: {
           failed: false,
           error: {},
-          message: ''
-        },
+          message: ""
+        }
       };
     case actions.START_RESEND_MOBILE_CODE:
       return {
@@ -60,7 +60,7 @@ let mobileReducer = (state=mobileData, action) => {
         resending: {
           failed: false,
           error: {},
-          message: ''
+          message: ""
         }
       };
     case actions.START_RESEND_MOBILE_CODE_SUCCESS:
@@ -70,7 +70,7 @@ let mobileReducer = (state=mobileData, action) => {
         resending: {
           failed: false,
           error: {},
-          message: 'mobile.resend_success'
+          message: "mobile.resend_success"
         }
       };
     case actions.START_RESEND_MOBILE_CODE_FAIL:
@@ -79,75 +79,74 @@ let mobileReducer = (state=mobileData, action) => {
         resending: {
           failed: true,
           error: action.payload.error,
-          message: ''
+          message: ""
         }
       };
     case actions.START_VERIFY:
-        return {
-          ...state,
-          code: action.payload.code,
-        };
+      return {
+        ...state,
+        code: action.payload.code
+      };
 
     case actions.POST_PHONE_VERIFY_SUCCESS:
-        return {
-            ...state,
-            ...state.payload,
-            phones: action.payload.phones
-        };
+      return {
+        ...state,
+        ...state.payload,
+        phones: action.payload.phones
+      };
 
     case actions.POST_PHONE_VERIFY_FAIL:
       return {
-          ...state,
-          ...state.payload,
-          resending: {
-              failed: true
-            },
+        ...state,
+        ...state.payload,
+        resending: {
+          failed: true
+        }
       };
 
     case actions.START_VERIFY_FAIL:
       return {
         ...state,
         failed: true,
-        error: action.payload.error,
-
+        error: action.payload.error
       };
 
     case actions.POST_MOBILE_REMOVE:
       return {
         ...state,
-        phone: action.payload.phone,
+        phone: action.payload.phone
       };
     case actions.POST_PHONE_REMOVE_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     case actions.POST_MOBILE_REMOVE_FAIL:
       return {
         ...state,
         failed: true,
-        error: action.payload.error,
+        error: action.payload.error
       };
     case actions.POST_MOBILE_PRIMARY:
       return {
         ...state,
-        phone: action.payload.phone,
-      }
+        phone: action.payload.phone
+      };
     case actions.POST_MOBILE_PRIMARY_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     case actions.POST_MOBILE_PRIMARY_FAIL:
       return {
         ...state,
         failed: true,
-        error: action.payload.error,
+        error: action.payload.error
       };
     case "@@redux-form/CHANGE":
       const form = {};
-      if (action.meta.form === 'phones' && action.meta.field === 'number') {
-          form.phone = action.payload;
+      if (action.meta.form === "phones" && action.meta.field === "number") {
+        form.phone = action.payload;
       }
       return {
         ...state,

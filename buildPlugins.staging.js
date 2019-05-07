@@ -1,7 +1,6 @@
-
 var filesystem = require("fs");
-var webpack = require('webpack');
-var exec = require('child_process').exec;
+var webpack = require("webpack");
+var exec = require("child_process").exec;
 
 /*
  * each plugin has a python dir and a js dir. they are placed in 2 sites:
@@ -9,7 +8,7 @@ var exec = require('child_process').exec;
  * actions app.
  *
  * in eduid-front there is a script, executed from package.json, that inspects
- * the plugins directory, and executes webpack on them. 
+ * the plugins directory, and executes webpack on them.
  *
  * The python part of the plugin, rather than providing a template to be
  * rendered by the actions app, provides the route to the plugin's js bundle,
@@ -17,23 +16,22 @@ var exec = require('child_process').exec;
  *
  */
 
-function execute (comm, rm) {
-    exec(comm,
-        function (error, stdout, stderr) {
-            console.log('stdout: ' + stdout);
-            console.log('stderr: ' + stderr);
-            if (error !== null) {
-                 console.log('exec error: ' + error);
-            }
-            if (rm !== undefined) {
-                execute("rm " + rm);
-            }
-        });
+function execute(comm, rm) {
+  exec(comm, function(error, stdout, stderr) {
+    console.log("stdout: " + stdout);
+    console.log("stderr: " + stderr);
+    if (error !== null) {
+      console.log("exec error: " + error);
+    }
+    if (rm !== undefined) {
+      execute("rm " + rm);
+    }
+  });
 }
 
-filesystem.readdirSync('plugins').forEach(function(plugin) {
-    var config = plugin + ".webpack.staging.config.js";
-    var fileContent = `
+filesystem.readdirSync("plugins").forEach(function(plugin) {
+  var config = plugin + ".webpack.staging.config.js";
+  var fileContent = `
 
 const path = require('path');
 const webpackConfig = require('./webpack.staging.config.js');
@@ -51,7 +49,6 @@ webpackConfig.plugins.unshift(initialConfigPlugin);
 module.exports = webpackConfig;
 
     `;
-    filesystem.writeFileSync(config, fileContent);
-    execute("webpack --config " + config + " --mode production", config);
+  filesystem.writeFileSync(config, fileContent);
+  execute("webpack --config " + config + " --mode production", config);
 });
-

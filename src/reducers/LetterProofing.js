@@ -1,21 +1,18 @@
-
 import * as actions from "actions/LetterProofing";
 
-
 const letterData = {
-    confirmingLetter: false,
-    verifyingLetter: false,
-    code: '',
-    letter_sent: '',
-    letter_expires: '',
-    letter_expired: false,
-    failed: false,
-    error: "",
-    message: ''
+  confirmingLetter: false,
+  verifyingLetter: false,
+  code: "",
+  letter_sent: "",
+  letter_expires: "",
+  letter_expired: false,
+  failed: false,
+  error: "",
+  message: ""
 };
 
-
-let letterProofingReducer = (state=letterData, action) => {
+let letterProofingReducer = (state = letterData, action) => {
   switch (action.type) {
     case actions.STOP_LETTER_CONFIRMATION:
       return {
@@ -36,7 +33,7 @@ let letterProofingReducer = (state=letterData, action) => {
       };
     case actions.GET_LETTER_PROOFING_PROOFING_SUCCESS:
       let verifying = false,
-          confirming = false;
+        confirming = false;
       if (action.payload.letter_sent === undefined) {
         confirming = true;
       } else {

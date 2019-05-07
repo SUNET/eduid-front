@@ -1,11 +1,12 @@
-
-import { connect } from 'react-redux';
-import OpenidConnect from 'components/OpenidConnect';
-import i18n from 'i18n-messages';
-import {eduidRMAllNotify} from "../actions/Notifications";
-import {showOpenidSelegModal, hideOpenidSelegModal} from "../actions/OpenidConnect";
-import {getNins} from "../actions/Nins";
-
+import { connect } from "react-redux";
+import OpenidConnect from "components/OpenidConnect";
+import i18n from "i18n-messages";
+import { eduidRMAllNotify } from "../actions/Notifications";
+import {
+  showOpenidSelegModal,
+  hideOpenidSelegModal
+} from "../actions/OpenidConnect";
+import { getNins } from "../actions/Nins";
 
 const mapStateToProps = (state, props) => {
   return {
@@ -14,20 +15,19 @@ const mapStateToProps = (state, props) => {
     nin: state.openid_data.nin,
     showModal: state.openid_data.showModal,
     error: state.openid_data.error
-  }
+  };
 };
-
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleShowModal: function (e) {
+    handleShowModal: function(e) {
       dispatch(showOpenidSelegModal());
       dispatch(eduidRMAllNotify());
     },
-    handleHideModal: function (e) {
+    handleHideModal: function(e) {
       dispatch(hideOpenidSelegModal());
     }
-  }
+  };
 };
 
 const OpenidConnectContainer = connect(

@@ -1,21 +1,20 @@
-
-@import '../../src/variables.scss';
+@import "../../src/variables.scss";
 
 div.key-animation {
-    height: 150px;
-    background-image:url(../../img/computer_animation.gif);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+  height: 150px;
+  background-image: url(../../img/computer_animation.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 div.card#mfa-try-another-way {
-    width: 300px;
-    margin: auto;
+  width: 300px;
+  margin: auto;
 }
 
 @media only screen and (min-width: 992px) {
-    div.key-animation {
-        height: 200px;
-    }
+  div.key-animation {
+    height: 200px;
+  }
 }
