@@ -31,15 +31,25 @@ div.proofing-buttons {
 }
 
 @media only screen and (max-width: 767px) {
-  fieldset#nins-form div#nin input,
-  div.proofing-buttons button.eduid-button.proofing-button {
+  fieldset#nins-form div#nin input {
     max-width: 500px;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  fieldset#nins-form div#nin input,
-  div.proofing-buttons button.eduid-button.proofing-button {
+  fieldset#nins-form div#nin input {
     width: 500px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  div.proofing-buttons button.eduid-button.proofing-button {
+    max-width: 250px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  div.proofing-buttons button.eduid-button.proofing-button {
+    width: 250px;
   }
 }
