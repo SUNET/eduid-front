@@ -8,7 +8,7 @@ body,
 .well,
 .container-fluid .jumbotron,
 div.modal-dialog .modal-content {
-  background-color: #bbded9;
+  background-color: white;
   background-image: url(../../img/texture.png);
   color: $text-color;
 }
@@ -23,14 +23,15 @@ h3,
 h4,
 h5,
 h6 {
-  color: #fff;
+  color: $text-color;
 }
 
 /* Text */
 h1,
 h2 {
-  font-size: 72px;
-  color: #fff;
+  font-size: 36px;
+  color: $text-color;
+  margin: 0 0 20px 0;
 }
 h3,
 p.lead {
@@ -43,7 +44,7 @@ h4 {
 h1,
 h2,
 h4 {
-  font-family: "Roboto-Black";
+  font-family: "Roboto-Light";
 }
 p,
 li {
@@ -57,11 +58,19 @@ p {
 }
 
 label {
-  text-align: left !important;
-  display: block;
-  margin-bottom: 5px !important;
-  color: #6d6d6d;
-  font-family: "Roboto-Regular";
+  // text-align: left !important;
+  // display: block;
+  // margin-bottom: 5px !important;
+  // color: #6d6d6d;
+  // font-family: "Roboto-Regular";
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: "Roboto-Medium";
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: #3f5c57;
+  padding: 0 0 0 2px;
+  margin: 0;
 }
 input {
   padding: 0 20px;
@@ -77,19 +86,19 @@ a {
   font-weight: 500;
 }
 
-.clear-right {
-  float: right;
-  clear: right;
-}
+// .clear-right {
+//   float: right;
+//   clear: right;
+// }
 
 .help {
   padding-top: 10px;
 }
-.help a {
-  position: relative;
-  padding-left: 38px;
-  color: #000;
-}
+// .help a {
+//   position: relative;
+//   padding-left: 38px;
+//   color: #000;
+// }
 .help a:hover {
   text-decoration: none;
 }
@@ -106,7 +115,11 @@ a {
 
 .intro h4 {
   font-family: "Roboto-Black";
-  font-size: 36px;
+  font-size: 24px;
+}
+
+.intro {
+  margin: 30px 0 0 0;
 }
 
 /* Main marketing message and sign up button */
@@ -157,6 +170,10 @@ a {
 
 /* forms ---------------*/
 
+form {
+  display: flex;
+}
+
 form.form-inline div.alert {
   display: block;
 }
@@ -174,9 +191,9 @@ form.form-horizontal label {
   margin-bottom: 0;
 }
 
-div.form-content {
-  margin-top: 10px;
-}
+// div.form-content {
+//   margin-top: 10px;
+// }
 
 .form-horizontal .form-group {
   margin-left: 0;
@@ -185,11 +202,11 @@ div.form-content {
 div.controls > span.uneditable-input {
   padding-top: 18px;
 }
-.form-text {
-  margin-top: 5px;
-  margin-bottom: 10px;
-  padding: 0px 20px 0 0;
-}
+// .form-text {
+//   margin-top: 5px;
+//   margin-bottom: 10px;
+//   padding: 0px 20px 0 0;
+// }
 
 /* valid form input*/
 
@@ -230,12 +247,12 @@ div.controls > span.uneditable-input {
   box-shadow: none;
 }
 
-/* removing inlines */
+// /* removing inlines */
 
-div.position-relative {
-  position: relative;
-  clear: both;
-}
+// div.position-relative {
+//   position: relative;
+//   clear: both;
+// }
 
 ul.nav.navbar-nav li a {
   color: #3f5c57;
