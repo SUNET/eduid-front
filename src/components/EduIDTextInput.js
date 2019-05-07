@@ -65,6 +65,7 @@ const textInput = props => {
         disabled={disabled}
         placeholder={placeholder}
         id={name}
+        name={name}
         valid={valid}
         invalid={invalid}
         {...input}
@@ -79,6 +80,7 @@ const textInput = props => {
         disabled={disabled}
         placeholder={placeholder}
         id={name}
+        name={name}
         valid={valid}
         invalid={invalid}
         {...input}

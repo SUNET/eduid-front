@@ -39,7 +39,6 @@ const loadPersistedState = () => {
       ...JSON.parse(serializedState),
       notifications: {
         errors: [],
-        warnings: [],
         messages: []
       }
     };

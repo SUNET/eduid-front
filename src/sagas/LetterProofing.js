@@ -8,7 +8,7 @@ import {
   failRequest
 } from "sagas/common";
 import * as actions from "actions/LetterProofing";
-import { eduidRMNotify } from "actions/Notifications";
+import { eduidRMAllNotify } from "actions/Notifications";
 
 export function* sendGetLetterProofing() {
   try {
@@ -17,7 +17,7 @@ export function* sendGetLetterProofing() {
     const response = yield call(fetchGetLetterProofing, state.config, nin);
     yield put(putCsrfToken(response));
     yield put(response);
-    yield put(eduidRMNotify("messages", 0));
+    yield put(eduidRMAllNotify());
   } catch (error) {
     yield* failRequest(error, actions.getLetterProofingStateFail);
   }

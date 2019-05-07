@@ -341,8 +341,7 @@ describe("AccountLinking Container", () => {
         },
         notifications: {
           messages: [],
-          errors: [],
-          warnings: []
+          errors: []
         }
       };
     };
