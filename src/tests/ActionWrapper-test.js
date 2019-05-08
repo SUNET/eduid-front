@@ -36,7 +36,6 @@ const fakeState = {
   },
   notifications: {
     messages: [],
-    warnings: [],
     errors: []
   },
   intl: {

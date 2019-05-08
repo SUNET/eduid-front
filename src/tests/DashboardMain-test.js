@@ -43,7 +43,6 @@ function setupComponent() {
     },
     notifications: {
       messages: [],
-      warnings: [],
       errors: []
     },
     intl: {
