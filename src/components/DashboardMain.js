@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 // import { connect } from "react-redux";
-import { Route, Link, NavLink, Redirect } from "react-router-dom";
+import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { ConnectedRouter } from "react-router-redux";
 // import { Collapse } from "reactstrap";
