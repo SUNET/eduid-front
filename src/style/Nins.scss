@@ -20,30 +20,14 @@
 }
 
 /*--- styles for nin digits ---*/
-// #nin-number-container {
-//   background: red;
-// }
-
 #nin-number {
-  font-size: 36px;
+  font-size: 24px;
 }
 
 /*--- styles for nin buttons ---*/
 #nin-buttons {
   display: flex;
 }
-
-// #verify-button button {
-//   background: #3f5c57;
-//   border: none;
-//   color: white;
-//   font-family: "Roboto-Black";
-//   text-transform: uppercase;
-// }
-
-// #verify-button button {
-//   font-size: 14px;
-// }
 
 #verify-button button {
   background-color: white;
@@ -64,6 +48,7 @@
 
 #nins-btn-group {
   display: flex;
+  margin-top: 30px;
 }
 
 .vetting-button {

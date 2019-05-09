@@ -142,7 +142,7 @@ class Nins extends Component {
     let ninUnverified = [
       <div id="add-nin-number">
         <div key="1">
-          <label>{this.props.l10n("nins.unconfirmed_nin")}</label>
+          {/* <label>{this.props.l10n("nins.unconfirmed_nin")}</label> */}
           <NinNumber {...this.props} />
         </div>
         <div id="nin-buttons">
@@ -159,7 +159,7 @@ class Nins extends Component {
     let ninVerified = [
       <div id="add-nin-number">
         <div key="1">
-          <label>{this.props.l10n("nins.confirmed_nin")}</label>
+          {/* <label>{this.props.l10n("nins.confirmed_nin")}</label> */}
           <NinNumber {...this.props} />
         </div>
         <div id="nin-buttons">
