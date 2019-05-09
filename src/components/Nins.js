@@ -63,7 +63,8 @@ let NinButtons = props => {
 };
 
 let NinNumber = props => {
-  // console.log("ninNum props:", props);
+  console.log("ninNum props:", props);
+  // look at a way to see verified status <span>{verifiedNin}</span>
   return (
     <div data-ninnumber={props.nins[0].number} id="eduid-unconfirmed-nin">
       <p id="nin-number">{props.nins[0].number}</p>
@@ -148,6 +149,20 @@ class Nins extends Component {
       </div>
     ];
 
+    let ninVerified = [
+      <div id="add-nin-number-container">
+        <div id="add-nin-number">
+          <div key="1">
+            <label>{this.props.l10n("nins.confirmed_nin")}</label>
+            <NinNumber {...this.props} />
+          </div>
+          <div key="2">
+            <RemoveButton {...this.props} />
+          </div>
+        </div>
+      </div>
+    ];
+
     if (ninStatus === "nonin") {
       ninInput = noNin;
     } else if (ninStatus === "unverified") {
@@ -156,16 +171,7 @@ class Nins extends Component {
         ninInput = this.props.l10n("nins.only_one_to_verify");
       } 
     } else if (ninStatus === "verified") {
-      credsTable = (
-        <div>
-          <p>
-            <strong>{this.props.l10n("nins.confirmed_nin")}</strong>
-          </p>
-          <p>
-            <span>{verifiedNin}</span>
-          </p>
-        </div>
-      );
+      ninInput = ninVerified
     }
 
     return (
@@ -177,7 +183,7 @@ class Nins extends Component {
             {this.props.l10n("faq_link")}{" "}
             <a href="https://www.eduid.se/faq.html">FAQ</a>
           </p> */}
-          {credsTable}
+          {/* {credsTable} */}
         </div>
         {ninInput}
       </div>
