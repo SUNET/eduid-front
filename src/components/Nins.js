@@ -71,6 +71,21 @@ let NinNumber = props => {
   );
 };
 
+let RemoveButton = props => {
+  // console.log("removeButton props:", props);
+  return (
+    <EduIDButton
+      className="btn-danger"
+      className="btn-sm"
+      id={"button-rm-nin-" + props.nins[0].number}
+      onClick={props.handleDelete}
+    >
+      {props.l10n("nins.button_delete")}
+    </EduIDButton>
+  );
+};
+
+
 class Nins extends Component {
   render() {
     let ninStatus = "nonin",
@@ -105,14 +120,7 @@ class Nins extends Component {
         return (
           <div>
             <NinNumber {...this.props} />
-            <EduIDButton
-              className="btn-danger"
-              id={"button-rm-nin-" + nin.number}
-              className="btn-sm"
-              onClick={this.props.handleDelete}
-            >
-              {this.props.l10n("nins.button_delete")}
-            </EduIDButton>
+            <RemoveButton {...this.props} />
           </div>
         );
       });
