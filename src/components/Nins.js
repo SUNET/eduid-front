@@ -62,6 +62,15 @@ let NinButtons = props => {
   );
 };
 
+let NinNumber = props => {
+  // console.log("ninNum props:", props);
+  return (
+    <div data-ninnumber={props.nins[0].number} id="eduid-unconfirmed-nin">
+      <p id="nin-number">{props.nins[0].number}</p>
+    </div>
+  );
+};
+
 class Nins extends Component {
   render() {
     let ninStatus = "nonin",
@@ -94,13 +103,8 @@ class Nins extends Component {
     } else if (ninStatus === "unverified") {
       const ninList = this.props.nins.map((nin, index) => {
         return (
-          <div
-            className="nin-holder"
-            id="eduid-unconfirmed-nin"
-            key={index}
-            data-ninnumber={nin.number}
-          >
-            <strong>{nin.number}</strong>
+          <div>
+            <NinNumber {...this.props} />
             <EduIDButton
               className="btn-danger"
               id={"button-rm-nin-" + nin.number}
