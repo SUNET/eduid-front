@@ -191,7 +191,7 @@ class Security extends Component {
         />
         <ConfirmModal
           modalId="describeWebauthnTokenDialog"
-          controlId="describeWebauthnTokenDialogControl"
+          id="describeWebauthnTokenDialogControl"
           title={this.props.l10n("security.webauthn-describe-title")}
           resendLabel=""
           resendHelp=""

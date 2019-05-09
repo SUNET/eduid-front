@@ -60,10 +60,10 @@ const mapDispatchToProps = (dispatch, props) => {
 
     handleStartPasswordChange: function(event) {
       event.preventDefault();
-      const oldPassword = this.refs[comp.pwFieldOldName].value;
+      const oldPassword = document.getElementsByName(comp.pwFieldOldName)[0].value;
       let newPassword = this.props.suggested_password;
       if (this.state.rSelected === "custom") {
-        newPassword = this.refs[comp.pwFieldCustomName].value;
+        newPassword = document.getElementsByName(comp.pwFieldCustomName)[0].value;
       }
       dispatch(actions.postPasswordChange(oldPassword, newPassword));
     },
