@@ -99,10 +99,13 @@ let VerifyButton = props => {
 
 class Nins extends Component {
   render() {
+    const url = window.location.href;
     let ninStatus = "nonin",
-      credsTable = "",
+      // credsTable = "",
+      ninHeading = "",
       vettingButtons = "",
       ninInput = "",
+      ninButtons = "",
       verifiedNin = "";
 
     if (this.props.is_configured) {
@@ -169,23 +172,39 @@ class Nins extends Component {
       ninInput = ninUnverified;
       if (this.props.nins.length > 1) {
         ninInput = this.props.l10n("nins.only_one_to_verify");
-      } 
+      }
     } else if (ninStatus === "verified") {
-      ninInput = ninVerified
+      ninInput = ninVerified;
     }
+
+    let verifyIdentityStyle = [
+      <div className="intro">
+        <h3> Step 1. Add your national identity number</h3>
+      </div>
+    ];
+
+
+    let settingsStyle = [
+      <div className="intro">
+        <h4>{this.props.l10n("nins.main_title")}</h4>
+        <p>{this.props.l10n("nins.justification")}</p>
+      </div>
+    ];
+
+    if (url.includes("settings")) {
+      ninHeading = settingsStyle;
+    } else {
+      ninHeading = verifyIdentityStyle;
+    }
+
 
     return (
       <div>
-        <div className="intro">
-          <h4>{this.props.l10n("nins.main_title")}</h4>
-          <p>{this.props.l10n("nins.justification")}</p>
-          {/* <p>
-            {this.props.l10n("faq_link")}{" "}
-            <a href="https://www.eduid.se/faq.html">FAQ</a>
-          </p> */}
-          {/* {credsTable} */}
+        {ninHeading}
+        <div id="nin-process">
+          <div id="add-nin-number-container">{ninInput}</div>
+          <div id="connect-nin-number-container">{ninButtons}</div>
         </div>
-        {ninInput}
       </div>
     );
   }
