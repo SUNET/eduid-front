@@ -133,31 +133,28 @@ class Nins extends Component {
       </div>
     ];
 
-    if (ninStatus === "nonin") {
-      ninInput = noNin,
-    } else if (ninStatus === "unverified") {
-      const ninList = this.props.nins.map((nin, index) => {
-        return (
-          <div>
-            <NinNumber {...this.props} />
-            <VerifyButton {...this.props} />
-            <RemoveButton {...this.props} />
-          </div>
-        );
-      });
-      credsTable = (
-        <div>
-          <p>
-            <strong>{this.props.l10n("nins.unconfirmed_nin")}</strong>
-          </p>
-          {ninList}
+    let ninUnverified = [
+      <div id="add-nin-number">
+        <div key="1">
+          <label>{this.props.l10n("nins.unconfirmed_nin")}</label>
+          <NinNumber {...this.props} />
         </div>
-      );
+        <div key="2">
+          <VerifyButton {...this.props} />
+        </div>
+        <div key="3">
+          <RemoveButton {...this.props} />
+        </div>
+      </div>
+    ];
+
+    if (ninStatus === "nonin") {
+      ninInput = noNin;
+    } else if (ninStatus === "unverified") {
+      ninInput = ninUnverified;
       if (this.props.nins.length > 1) {
         ninInput = this.props.l10n("nins.only_one_to_verify");
-      } else {
-        ninInput = vettingButtons;
-      }
+      } 
     } else if (ninStatus === "verified") {
       credsTable = (
         <div>
