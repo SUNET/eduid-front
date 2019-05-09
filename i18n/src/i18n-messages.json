@@ -400,6 +400,10 @@
     "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits."
   },
   {
+    "id": "still-valid-code",
+    "defaultMessage": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one."
+  },
+  {
     "id": "mail_duplicated",
     "defaultMessage": "Added email is duplicated"
   },
