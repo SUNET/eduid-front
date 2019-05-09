@@ -105,8 +105,15 @@ class Nins extends Component {
 
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
-      vettingButtons = this.props.proofing_methods.map((key, index) => {
-        return <div key={index}>{vettingBtns[key]}</div>;
+      const verifyOptions = this.props.proofing_methods.filter(
+        option => option !== "oidc"
+      );
+      vettingButtons = verifyOptions.map((key, index) => {
+        return (
+          <div className="vetting-button" key={index}>
+            {vettingBtns[key]}
+          </div>
+        );
       });
     }
 
@@ -166,6 +173,7 @@ class Nins extends Component {
     let verifyIdentityStyle = [
       <div className="intro">
         <h3> Step 1. Add your national identity number</h3>
+        <p>Your number can be used to connect eduID to your person.</p>
       </div>
     ];
 
@@ -178,7 +186,11 @@ class Nins extends Component {
 
     vettingButtons = [
       <div id="connect-nin-number">
-        <h3> Step 2. Add your national identity number</h3>
+        <h3> Step 2. Connect your national identity number to eduID</h3>
+        <p>
+          Choose a way below to verify that the given identity number belongs to
+          you.
+        </p>
         <div>
           <NinButtons buttons={vettingButtons} {...this.props} />
         </div>

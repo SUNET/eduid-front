@@ -498,6 +498,7 @@ div.modal-dialog div.modal-footer a {
 .btn-group-vertical {
   color: $link-color;
   display: block;
+  flex-direction: row;
 }
 
 .btn-group-vertical a {
