@@ -38,8 +38,8 @@ const validate = values => {
 };
 
 let NinForm = props => {
-  return [
-    <Form id="nin-form" role="form" key="1">
+  return (
+    <Form id="nin-form" role="form">
       <Field
         component={TextInput}
         componentClass="input"
@@ -50,7 +50,7 @@ let NinForm = props => {
         helpBlock={props.l10n("nins.input_help_text")}
       />
     </Form>
-  ];
+  );
 };
 
 let NinButtons = props => {
@@ -127,29 +127,27 @@ class Nins extends Component {
     }
 
     let noNin = [
-      <div id="add-nin-number">
-        <div key="1">{this.props.l10n("nins.help_text")}</div>,
+      <div key="1" id="add-nin-number">
+        <div key="1">{this.props.l10n("nins.help_text")}</div>
         <div key="2" id="nin-form-container">
           <NinForm {...this.props} />
         </div>
-        ,
         <div key="3">
-          <button>ADD FUNCTIONALITY HERE</button>
+          <button key="1">ADD FUNCTIONALITY HERE</button>
         </div>
       </div>
     ];
 
     let ninUnverified = [
-      <div id="add-nin-number">
-        <div key="1">
-          {/* <label>{this.props.l10n("nins.unconfirmed_nin")}</label> */}
+      <div key="1" id="add-nin-number">
+        <div>
           <NinNumber {...this.props} />
         </div>
         <div id="nin-buttons">
-          <div key="2">
+          <div>
             <VerifyButton {...this.props} />
           </div>
-          <div key="3">
+          <div>
             <RemoveButton {...this.props} />
           </div>
         </div>
@@ -157,13 +155,12 @@ class Nins extends Component {
     ];
 
     let ninVerified = [
-      <div id="add-nin-number">
-        <div key="1">
-          {/* <label>{this.props.l10n("nins.confirmed_nin")}</label> */}
+      <div key="1" id="add-nin-number">
+        <div>
           <NinNumber {...this.props} />
         </div>
         <div id="nin-buttons">
-          <div key="2">
+          <div>
             <RemoveButton {...this.props} />
           </div>
         </div>
@@ -171,7 +168,7 @@ class Nins extends Component {
     ];
 
     let verifyIdentityStyle = [
-      <div className="intro">
+      <div key="1" className="intro">
         <h3> Step 1. Add your national identity number</h3>
         <p>Your number can be used to connect eduID to your person.</p>
       </div>
@@ -185,7 +182,7 @@ class Nins extends Component {
     ];
 
     vettingButtons = [
-      <div id="connect-nin-number">
+      <div key="1" id="connect-nin-number">
         <h3> Step 2. Connect your national identity number to eduID</h3>
         <p>
           Choose a way below to verify that the given identity number belongs to
