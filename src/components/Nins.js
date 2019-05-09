@@ -40,24 +40,27 @@ const validate = values => {
 let NinForm = props => {
   return [
     <Form id="nins-form" role="form" key="1">
-      <fieldset id="nins-form" className="tabpane">
-        <Field
-          component={TextInput}
-          componentClass="input"
-          type="text"
-          name="nin"
-          className="nin-proofing-input"
-          placeholder={props.l10n("nins.input_placeholder")}
-          helpBlock={props.l10n("nins.input_help_text")}
-        />
-      </fieldset>
-    </Form>,
-    <ButtonGroup vertical={true} id="nins-btn-group" key="2">
-      {props.buttons}
-    </ButtonGroup>
+      <Field
+        component={TextInput}
+        componentClass="input"
+        type="text"
+        name="nin"
+        className="nin-proofing-input"
+        placeholder={props.l10n("nins.input_placeholder")}
+        helpBlock={props.l10n("nins.input_help_text")}
+      />
+    </Form>
   ];
 };
 
+let NinButtons = props => {
+  // console.log(props);
+  return (
+    <ButtonGroup vertical={true} id="nins-btn-group">
+      {props.buttons}
+    </ButtonGroup>
+  );
+};
 
 class Nins extends Component {
   render() {
@@ -85,6 +88,7 @@ class Nins extends Component {
         <div key="1">{this.props.l10n("nins.help_text")}</div>,
         <div key="2" className="proofing-buttons">
           <NinForm buttons={vettingButtons} {...this.props} />
+          <NinButtons {...this.props} />
         </div>
       ];
     } else if (ninStatus === "unverified") {
@@ -150,7 +154,6 @@ class Nins extends Component {
     );
   }
 }
-
 
 NinForm = reduxForm({
   form: "nins",
