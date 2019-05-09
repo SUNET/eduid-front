@@ -23,13 +23,13 @@ class VerifyIdentity extends Component {
               instuctions to start using eduID. You can change any of your
               personal information in Settings.
             </p>
-            <div id="verify-identity-button">
+            <div id="verify-identity-prompt-button">
               <Link
                 // className="button"
-                id="verify-button-link"
+                id="verify-button-prompt-link"
                 to={`/profile/verify-identity/step1`}
               >
-                <button id="verify-button" type="submit">
+                <button id="verify-button-prompt" type="submit">
                   {" "}
                   I want to verify my identity
                 </button>

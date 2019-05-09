@@ -1,14 +1,62 @@
+//--- STEP 1. ADD NIN STYLES ---//
+
+#add-nin-number {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .nin-holder {
   margin: 20px 0;
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
+}
+/*--- styles for form ---*/
+#nin-form-container {
 }
 
-.nin-holder > button.btn-xs {
-  height: 2em;
-  line-height: 2em;
-  margin-left: 30px;
+.nin-input {
+  border: solid 30px green;
 }
+
+/*--- styles for nin digits ---*/
+// #nin-number-container {
+//   background: red;
+// }
+
+#nin-number {
+  font-size: 24px;
+}
+
+/*--- styles for nin buttons ---*/
+#nin-buttons {
+  display: flex;
+}
+
+// #verify-button button {
+//   background: #3f5c57;
+//   border: none;
+//   color: white;
+//   font-family: "Roboto-Black";
+//   text-transform: uppercase;
+// }
+
+// #verify-button button {
+//   font-size: 14px;
+// }
+
+#verify-button button p {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+//--- STEP 2. CONNECT NIN STYLES ---//
+
+#connect-nin-number-container {
+  margin-top: 30px;
+}
+
 .proofing-btn-help {
   margin-bottom: 30px;
 }

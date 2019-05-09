@@ -39,13 +39,13 @@ const validate = values => {
 
 let NinForm = props => {
   return [
-    <Form id="nins-form" role="form" key="1">
+    <Form id="nin-form" role="form" key="1">
       <Field
         component={TextInput}
         componentClass="input"
         type="text"
         name="nin"
-        className="nin-proofing-input"
+        className="nin-input"
         placeholder={props.l10n("nins.input_placeholder")}
         helpBlock={props.l10n("nins.input_help_text")}
       />
@@ -64,7 +64,7 @@ let NinButtons = props => {
 let NinNumber = props => {
   // look at a way to see verified status here? <span>{verifiedNin}</span>
   return (
-    <div data-ninnumber={props.nins[0].number} id="eduid-unconfirmed-nin">
+    <div data-ninnumber={props.nins[0].number} id="nin-number-container">
       <p id="nin-number">{props.nins[0].number}</p>
     </div>
   );
@@ -85,7 +85,7 @@ let RemoveButton = props => {
 
 let VerifyButton = props => {
   return (
-    <Link to="/profile/verify-identity/step2">
+    <Link id="verify-button" to="/profile/verify-identity/step2">
       <button>
         <p>{props.l10n("nins.unconfirmed_nin")}</p>
       </button>
@@ -122,7 +122,7 @@ class Nins extends Component {
     let noNin = [
       <div id="add-nin-number">
         <div key="1">{this.props.l10n("nins.help_text")}</div>,
-        <div key="2" className="proofing-buttons">
+        <div key="2" id="nin-form-container">
           <NinForm {...this.props} />
         </div>
         ,
@@ -138,22 +138,24 @@ class Nins extends Component {
           <label>{this.props.l10n("nins.unconfirmed_nin")}</label>
           <NinNumber {...this.props} />
         </div>
-        <div key="2">
-          <VerifyButton {...this.props} />
-        </div>
-        <div key="3">
-          <RemoveButton {...this.props} />
+        <div id="nin-buttons">
+          <div key="2">
+            <VerifyButton {...this.props} />
+          </div>
+          <div key="3">
+            <RemoveButton {...this.props} />
+          </div>
         </div>
       </div>
     ];
 
     let ninVerified = [
-      <div id="add-nin-number-container">
-        <div id="add-nin-number">
-          <div key="1">
-            <label>{this.props.l10n("nins.confirmed_nin")}</label>
-            <NinNumber {...this.props} />
-          </div>
+      <div id="add-nin-number">
+        <div key="1">
+          <label>{this.props.l10n("nins.confirmed_nin")}</label>
+          <NinNumber {...this.props} />
+        </div>
+        <div id="nin-buttons">
           <div key="2">
             <RemoveButton {...this.props} />
           </div>
