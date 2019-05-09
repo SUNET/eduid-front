@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-
+import { Link } from "react-router-dom";
 import { Form } from "reactstrap";
 import { ButtonGroup } from "reactstrap";
 import TextInput from "components/EduIDTextInput";
@@ -85,6 +85,16 @@ let RemoveButton = props => {
   );
 };
 
+let VerifyButton = props => {
+  // console.log("ninNum props:", props);
+  return (
+    <Link to="/profile/verify-identity/step2">
+      <button>
+        <p>{props.l10n("nins.unconfirmed_nin")}</p>
+      </button>
+    </Link>
+  );
+};
 
 class Nins extends Component {
   render() {
@@ -120,6 +130,7 @@ class Nins extends Component {
         return (
           <div>
             <NinNumber {...this.props} />
+            <VerifyButton {...this.props} />
             <RemoveButton {...this.props} />
           </div>
         );
