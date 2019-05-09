@@ -103,12 +103,14 @@ class Nins extends Component {
       vettingButtons = "",
       ninInput = "",
       verifiedNin = "";
+
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
       vettingButtons = this.props.proofing_methods.map((key, index) => {
         return <div key={index}>{vettingBtns[key]}</div>;
       });
     }
+
     if (this.props.nins.length) {
       ninStatus = "unverified";
       const nins = this.props.nins.filter(nin => nin.verified);
@@ -117,14 +119,22 @@ class Nins extends Component {
         verifiedNin = nins[0].number;
       }
     }
-    if (ninStatus === "nonin") {
-      ninInput = [
+
+    let noNin = [
+      <div id="add-nin-number">
         <div key="1">{this.props.l10n("nins.help_text")}</div>,
         <div key="2" className="proofing-buttons">
-          <NinForm buttons={vettingButtons} {...this.props} />
-          <NinButtons {...this.props} />
+          <NinForm {...this.props} />
         </div>
-      ];
+        ,
+        <div key="3">
+          <button>ADD FUNCTIONALITY HERE</button>
+        </div>
+      </div>
+    ];
+
+    if (ninStatus === "nonin") {
+      ninInput = noNin,
     } else if (ninStatus === "unverified") {
       const ninList = this.props.nins.map((nin, index) => {
         return (
