@@ -190,6 +190,15 @@ class Nins extends Component {
       </div>
     ];
 
+    vettingButtons = [
+      <div id="connect-nin-number">
+        <h3> Step 2. Add your national identity number</h3>
+        <div key="4">
+          <NinButtons buttons={vettingButtons} {...this.props} />
+        </div>
+      </div>
+    ];
+
     if (url.includes("settings")) {
       ninHeading = settingsStyle;
     } else if (url.includes("step2")) {
