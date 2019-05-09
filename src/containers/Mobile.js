@@ -33,6 +33,7 @@ const mapDispatchToProps = (dispatch, props) => {
     handleResend: function(e) {
       e.preventDefault();
       dispatch(startResendMobileCode());
+      dispatch(stopConfirmation());
     },
     handleStartConfirmation: function(e) {
       dispatch(eduidRMAllNotify());

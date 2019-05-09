@@ -692,6 +692,13 @@ const msgs = {
     />
   ),
 
+  "still-valid-code": (
+    <FormattedMessage
+      id="still-valid-code"
+      defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
+    />
+  ),
+
   mail_duplicated: (
     <FormattedMessage
       id="mail_duplicated"

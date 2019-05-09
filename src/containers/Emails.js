@@ -34,6 +34,7 @@ const mapDispatchToProps = (dispatch, props) => {
     handleResend: function(e) {
       e.preventDefault();
       dispatch(startResendEmailCode());
+      dispatch(stopConfirmation());
     },
     handleStartConfirmation: function(e) {
       dispatch(eduidRMAllNotify());
