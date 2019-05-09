@@ -58,19 +58,6 @@ let NinForm = props => {
   ];
 };
 
-NinForm = reduxForm({
-  form: "nins",
-  destroyOnUnmount: false,
-  enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
-  keepValuesOnReinitialize: true,
-  updateUnregisteredFields: true,
-  validate: validate
-})(NinForm);
-
-NinForm = connect(state => ({
-  initialValues: { nin: state.nins.nin }
-}))(NinForm);
 
 class Nins extends Component {
   render() {
@@ -163,6 +150,21 @@ class Nins extends Component {
     );
   }
 }
+
+
+NinForm = reduxForm({
+  form: "nins",
+  destroyOnUnmount: false,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
+  keepValuesOnReinitialize: true,
+  updateUnregisteredFields: true,
+  validate: validate
+})(NinForm);
+
+NinForm = connect(state => ({
+  initialValues: { nin: state.nins.nin }
+}))(NinForm);
 
 Nins.propTypes = {
   nin: PropTypes.string,
