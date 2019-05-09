@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import { Form } from "reactstrap";
-import { ButtonGroup } from "reactstrap";
+import { ButtonGroup, Form } from "reactstrap";
+
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import vettingRegistry from "vetting-registry";
@@ -54,7 +54,6 @@ let NinForm = props => {
 };
 
 let NinButtons = props => {
-  // console.log(props);
   return (
     <ButtonGroup vertical={true} id="nins-btn-group">
       {props.buttons}
@@ -63,8 +62,7 @@ let NinButtons = props => {
 };
 
 let NinNumber = props => {
-  console.log("ninNum props:", props);
-  // look at a way to see verified status <span>{verifiedNin}</span>
+  // look at a way to see verified status here? <span>{verifiedNin}</span>
   return (
     <div data-ninnumber={props.nins[0].number} id="eduid-unconfirmed-nin">
       <p id="nin-number">{props.nins[0].number}</p>
@@ -73,7 +71,6 @@ let NinNumber = props => {
 };
 
 let RemoveButton = props => {
-  // console.log("removeButton props:", props);
   return (
     <EduIDButton
       className="btn-danger"
@@ -87,7 +84,6 @@ let RemoveButton = props => {
 };
 
 let VerifyButton = props => {
-  // console.log("ninNum props:", props);
   return (
     <Link to="/profile/verify-identity/step2">
       <button>
@@ -101,7 +97,6 @@ class Nins extends Component {
   render() {
     const url = window.location.href;
     let ninStatus = "nonin",
-      // credsTable = "",
       ninHeading = "",
       vettingButtons = "",
       ninInput = "",
@@ -166,17 +161,6 @@ class Nins extends Component {
       </div>
     ];
 
-    if (ninStatus === "nonin") {
-      ninInput = noNin;
-    } else if (ninStatus === "unverified") {
-      ninInput = ninUnverified;
-      if (this.props.nins.length > 1) {
-        ninInput = this.props.l10n("nins.only_one_to_verify");
-      }
-    } else if (ninStatus === "verified") {
-      ninInput = ninVerified;
-    }
-
     let verifyIdentityStyle = [
       <div className="intro">
         <h3> Step 1. Add your national identity number</h3>
@@ -193,11 +177,22 @@ class Nins extends Component {
     vettingButtons = [
       <div id="connect-nin-number">
         <h3> Step 2. Add your national identity number</h3>
-        <div key="4">
+        <div>
           <NinButtons buttons={vettingButtons} {...this.props} />
         </div>
       </div>
     ];
+
+    if (ninStatus === "nonin") {
+      ninInput = noNin;
+    } else if (ninStatus === "unverified") {
+      ninInput = ninUnverified;
+      if (this.props.nins.length > 1) {
+        ninInput = this.props.l10n("nins.only_one_to_verify");
+      }
+    } else if (ninStatus === "verified") {
+      ninInput = ninVerified;
+    }
 
     if (url.includes("settings")) {
       ninHeading = settingsStyle;
