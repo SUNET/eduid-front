@@ -183,7 +183,6 @@ class Nins extends Component {
       </div>
     ];
 
-
     let settingsStyle = [
       <div className="intro">
         <h4>{this.props.l10n("nins.main_title")}</h4>
@@ -193,10 +192,12 @@ class Nins extends Component {
 
     if (url.includes("settings")) {
       ninHeading = settingsStyle;
+    } else if (url.includes("step2")) {
+      ninButtons = vettingButtons;
+      ninHeading = verifyIdentityStyle;
     } else {
       ninHeading = verifyIdentityStyle;
     }
-
 
     return (
       <div>

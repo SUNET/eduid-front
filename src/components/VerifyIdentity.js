@@ -27,7 +27,7 @@ class VerifyIdentity extends Component {
               <Link
                 // className="button"
                 id="verify-button-link"
-                to={`/profile/verify-identity`}
+                to={`/profile/verify-identity/step1`}
               >
                 <button id="verify-button" type="submit">
                   {" "}
@@ -37,7 +37,8 @@ class VerifyIdentity extends Component {
             </div>
           </div>
           <div id="national-id">
-            <Route path="/profile/verify-identity" component={NinsContainer} />
+            <Route path="/profile/verify-identity/step1" component={NinsContainer} />
+            <Route path="/profile/verify-identity/step2" component={NinsContainer} />
           </div>
         </div>
         <h3>Why do I need eduID?</h3>
