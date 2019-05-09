@@ -87,7 +87,7 @@ let VerifyButton = props => {
   return (
     <Link id="verify-button" to="/profile/verify-identity/step2">
       <button>
-        <p>{props.l10n("nins.unconfirmed_nin")}</p>
+        <p>connect eduid to my person</p>
       </button>
     </Link>
   );
@@ -219,9 +219,11 @@ class Nins extends Component {
 
     return (
       <div>
-        {ninHeading}
         <div id="nin-process">
-          <div id="add-nin-number-container">{ninInput}</div>
+          <div id="add-nin-number-container">
+            {ninHeading}
+            {ninInput}
+          </div>
           <div id="connect-nin-number-container">{ninButtons}</div>
         </div>
       </div>
