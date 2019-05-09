@@ -79,14 +79,14 @@ class ChpassForm extends Component {
             type="password"
             label={this.props.l10n("pwfield.enter_password")}
             helpBlock={meterHelpBlock}
-            ref={pwFieldCustomName}
+            id={pwFieldCustomName}
             name={pwFieldCustomName}
           />
           <Field
             component={TextInput}
             componentClass="input"
             type="password"
-            ref={pwFieldRepeatName}
+            id={pwFieldRepeatName}
             label={this.props.l10n("pwfield.repeat_password")}
             name={pwFieldRepeatName}
           />
@@ -108,7 +108,7 @@ class ChpassForm extends Component {
           componentClass="input"
           type="text"
           name={pwFieldSuggestedName}
-          ref={pwFieldSuggestedName}
+          id={pwFieldSuggestedName}
           label={this.props.l10n("chpass.suggested_password")}
           disabled={true}
         />
@@ -122,7 +122,7 @@ class ChpassForm extends Component {
             component={TextInput}
             componentClass="input"
             type="password"
-            ref={pwFieldOldName}
+            id={pwFieldOldName}
             label={this.props.l10n("chpass.old_password")}
             name={pwFieldOldName}
           />
