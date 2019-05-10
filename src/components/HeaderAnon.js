@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Collapse } from "reactstrap/lib/Collapse";
+import Collapse from "reactstrap/lib/Collapse";
 
 import "style/Header.scss";
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { FormText } from "reactstrap/lib/FormText";
+import FormText from "reactstrap/lib/FormText";
 
 import EduIDButton from "components/EduIDButton";
 import ConfirmModal from "components/ConfirmModal";

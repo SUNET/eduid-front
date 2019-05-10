@@ -5,13 +5,13 @@ import { withUserAgent } from "react-useragent";
 import EduIDButton from "components/EduIDButton";
 import NotificationsContainer from "containers/Notifications";
 
-import { FormText } from "reactstrap/lib/FormText";
-import { Button } from "reactstrap/lib/Button";
-import { ButtonGroup } from "reactstrap/lib/ButtonGroup";
-import { Modal } from "reactstrap/lib/Modal";
-import { ModalHeader } from "reactstrap/lib/ModalHeader";
-import { ModalBody } from "reactstrap/lib/ModalBody";
-import { ModalFooter } from "reactstrap/lib/ModalFooter";
+import FormText from "reactstrap/lib/FormText";
+import Button from "reactstrap/lib/Button";
+import ButtonGroup from "reactstrap/lib/ButtonGroup";
+import Modal from "reactstrap/lib/Modal";
+import ModalHeader from "reactstrap/lib/ModalHeader";
+import ModalBody from "reactstrap/lib/ModalBody";
+import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import "style/OpenidConnect.scss";
 

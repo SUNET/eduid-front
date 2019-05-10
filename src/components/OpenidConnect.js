@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 
 import EduIDButton from "components/EduIDButton";
 import NotificationsContainer from "containers/Notifications";
-import { Button } from "reactstrap/lib/Button";
-import { FormText } from "reactstrap/lib/FormText";
-import { Modal } from "reactstrap/lib/Modal";
-import { ModalHeader } from "reactstrap/lib/ModalHeader";
-import { ModalBody } from "reactstrap/lib/ModalBody";
-import { ModalFooter } from "reactstrap/lib/ModalFooter";
+import Button from "reactstrap/lib/Button";
+import FormText from "reactstrap/lib/FormText";
+import Modal from "reactstrap/lib/Modal";
+import ModalHeader from "reactstrap/lib/ModalHeader";
+import ModalBody from "reactstrap/lib/ModalBody";
+import ModalFooter from "reactstrap/lib/ModalFooter";
 import CookieChecker from "components/CookieChecker";
 
 import "style/OpenidConnect.scss";

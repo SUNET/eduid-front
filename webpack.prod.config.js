@@ -2,8 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config");
 const CompressionPlugin = require("compression-webpack-plugin");
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 var webpackProd = {
   entry: webpackConfig.entry,
@@ -42,8 +43,16 @@ webpackProd.plugins = [
     test: /\.js$|\.css$|\.html$/,
     threshold: 10240,
     minRatio: 0.8
-  })
-  // new BundleAnalyzerPlugin()
+  }),
+  new BundleAnalyzerPlugin()
 ];
+
+webpackProd.mode = 'production';
+
+webpackProd.optimization = {
+  minimizer: [
+    new UglifyJsPlugin()
+  ]
+};
 
 module.exports = webpackProd;

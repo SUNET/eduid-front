@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Alert } from "reactstrap/lib/Alert";
+import Alert from "reactstrap/lib/Alert";
 
 import "style/Notifications.scss";
 
