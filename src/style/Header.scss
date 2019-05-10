@@ -37,13 +37,22 @@ header {
 }
 
 #eduid-menu ul {
-  flex-direction: row;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  background-color: lightgreen;
   text-decoration: none;
+  margin-bottom: 0;
 }
 
-#eduid-menu ul li {
-  margin: 0 50px 0 0;
+#eduid-nav-buttons {
+  display: flex;
+  background-color: lightyellow;
 }
+
+// #eduid-menu ul li {
+//   margin: 0 50px 0 0;
+// }
 
 // .header ul {
 //   // margin: 0 0 0 12px;

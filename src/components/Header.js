@@ -22,7 +22,7 @@ class Header extends Component {
     }
 
     const buttons = (
-      <div className="buttons nav navbar-nav float-right">
+      <div id="eduid-nav-buttons">
         <div className="button log-out">
           <button
             id="logout-button"
@@ -39,7 +39,7 @@ class Header extends Component {
     );
 
     const links = (
-      <ul className="navbar-nav mr-auto">
+      <ul>
         <li className="nav-item">
           <a className="nav-link" href={this.props.studentsLink}>
             {this.props.l10n("header.students")}
