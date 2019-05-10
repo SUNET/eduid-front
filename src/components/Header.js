@@ -63,49 +63,48 @@ class Header extends Component {
       </ul>
     );
 
-    if (this.props.size === "xs") {
-      return (
-        <header id="header" className="header">
-          <nav className="navbar navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">
-              <div id="eduid-logo-small" className="logo" />
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              onClick={this.toggle}
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-          </nav>
-          <Collapse
-            isOpen={!this.state.collapse}
-            className="text-center"
+    // if (this.props.size === "xs") {
+    //   return (
+    //     <header className="header">
+    //       <nav className="navbar navbar-dark bg-dark">
+    //         <a className="navbar-brand" href="#">
+    //           <div id="eduid-logo" />
+    //         </a>
+    //         <button
+    //           className="navbar-toggler"
+    //           type="button"
+    //           onClick={this.toggle}
+    //         >
+    //           <span className="navbar-toggler-icon" />
+    //         </button>
+    //       </nav>
+    //       <Collapse
+    //         isOpen={!this.state.collapse}
+    //         className="text-center"
+    //         id="eduid-menu"
+    //       >
+    //         <nav className="navbar navbar-dark bg-dark" id="eduid-navbar">
+    //           {links}
+    //           {buttons}
+    //         </nav>
+    //       </Collapse>
+    //     </header>
+    //   );
+    // } else {
+    return (
+      <header>
+        <div id="eduid-logo" />
+        <nav id="eduid-nav">
+          <div
             id="eduid-menu"
           >
-            <nav className="navbar navbar-dark bg-dark" id="eduid-navbar">
-              {links}
-              {buttons}
-            </nav>
-          </Collapse>
-        </header>
-      );
-    } else {
-      return (
-        <header id="header" className="header">
-          <div className="logo" id="eduid-logo-large" />
-          <nav className="navbar navbar-expand-md" id="eduid-navbar">
-            <div
-              className="collapsed navbar-collapse text-center"
-              id="eduid-menu"
-            >
-              {links}
-              {buttons}
-            </div>
-          </nav>
-        </header>
-      );
-    }
+            {links}
+            {buttons}
+          </div>
+        </nav>
+      </header>
+    );
+    //   }
   }
 }
 
