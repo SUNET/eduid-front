@@ -25,6 +25,8 @@ div#root.wrap.container {
 }
 
 #verify-identity-prompt,
+#add-nin-number-container,
+#connect-nin-number-container,
 #settings {
   // background-color: rgba(236, 236, 236, 0.5);
   background-color: rgba(63, 92, 87, 0.1);
@@ -42,15 +44,15 @@ div#root.wrap.container {
 }
 
 #verify-identity-prompt button {
-  background-color: rgb(63, 92, 87);
-  color: white;
-  text-transform: uppercase;
-  font-size: 14px;
-  padding: 10px 30px;
-  outline: none;
-  border: none;
-  font-weight: 700;
-  letter-spacing: 0.5;
+  // background-color: rgb(63, 92, 87);
+  // color: white;
+  // text-transform: uppercase;
+  // font-size: 14px;
+  // padding: 10px 30px;
+  // outline: none;
+  // border: none;
+  // font-weight: 700;
+  // letter-spacing: 0.5;
 }
 
 //-------ADD NIN ----------//
@@ -61,7 +63,7 @@ div#root.wrap.container {
 
 #national-id {
   // background: hotpink;
-  padding: 15px;
+  // padding: 15px;
 }
 
 #national-id .intro {

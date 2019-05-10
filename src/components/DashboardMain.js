@@ -70,6 +70,16 @@ class Main extends Component {
                     component={VerifyIdentity}
                   />
                   <Route
+                    exact
+                    path="/profile/verify-identity/step1"
+                    component={VerifyIdentity}
+                  />
+                  <Route
+                    exact
+                    path="/profile/verify-identity/step2"
+                    component={VerifyIdentity}
+                  />
+                  <Route
                     path="/profile/settings/"
                     component={SettingsComponent}
                   />
