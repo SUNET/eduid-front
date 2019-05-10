@@ -9,7 +9,7 @@
     "test-headless": "karma start headless.karma.conf.js",
     "debug": "karma start --single-run=false --debug --browser Chrome",
     "build": "webpack --config webpack.staging.config.js --mode development",
-    "build-pro": "webpack --watch --config webpack.prod.config.js --mode production",
+    "build-pro": "webpack --config webpack.prod.config.js --mode production",
     "manage:translations": "node ./translationRunner.js",
     "manage:plugins": "node ./buildPlugins.js",
     "manage:plugins:staging": "node ./buildPlugins.staging.js",
