@@ -36,7 +36,8 @@ class Main extends Component {
     super(props);
     this.state = {
       fetching: props.is_fetching,
-      setFetching: this.setFetching.bind(this)
+      setFetching: this.setFetching.bind(this),
+      email: this.getEmail.bind(this)
     };
   }
 
@@ -44,6 +45,15 @@ class Main extends Component {
     this.setState({
       fetching: fetching
     });
+  }
+
+  getEmail() {
+    this.setState(
+      {
+        email: store.getState()
+      },
+      console.log("You've got mail")
+    );
   }
 
   render() {
