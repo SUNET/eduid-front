@@ -4,8 +4,13 @@ import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 import NotificationsContainer from "containers/Notifications";
 
-import { Button, ButtonGroup, FormText } from "reactstrap";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import FormText from "reactstrap/lib/FormText";
+import Button from "reactstrap/lib/Button";
+import ButtonGroup from "reactstrap/lib/ButtonGroup";
+import Modal from "reactstrap/lib/Modal";
+import ModalHeader from "reactstrap/lib/ModalHeader";
+import ModalBody from "reactstrap/lib/ModalBody";
+import ModalFooter from "reactstrap/lib/ModalFooter";
 
 class Eidas extends Component {
   render() {

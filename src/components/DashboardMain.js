@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Router, Route, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
-import { Collapse } from "reactstrap";
+import Collapse from "reactstrap/lib/Collapse";
 
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";

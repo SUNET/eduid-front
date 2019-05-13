@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-import { Form } from "reactstrap";
-import { ButtonGroup } from "reactstrap";
+import Form from "reactstrap/lib/Form";
+import ButtonGroup from "reactstrap/lib/ButtonGroup";
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import vettingRegistry from "vetting-registry";
