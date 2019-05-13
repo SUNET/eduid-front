@@ -1,24 +1,14 @@
 @import "../variables.scss";
 
 header {
-  // background-color: yellow;
-  display: flex;
-  // position: static;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // max-width: 1200px;
-  // margin: 0 auto;
-  // z-index: 9998;
-  // padding: 20px 0 40px 0;
+  display: grid;
+  grid-template-columns: 15% auto 15%;
+  grid-template-rows: 100%;
 }
 
 #eduid-logo {
-  // background-color: hotpink;
-  // float: left;
-  // margin: 0;
-  min-width: 160px;
-  min-height: 60px;
+  width: 160px;
+  height: 55px;
   background-image: url(../../img/ds-eduID-logo-black320x120px.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -27,53 +17,84 @@ header {
 #eduid-nav {
   display: flex;
   flex: 1;
-  // background-color: lightpink;
 }
 
-#eduid-menu {
+#eduid-nav {
   display: flex;
-  flex-wrap: wrap;
   flex: 1;
-  // border: solid 2px red;
   justify-content: space-between;
   align-items: center;
 }
 
-#eduid-menu ul {
+#eduid-nav ul {
   display: flex;
-  flex-wrap: wrap;
-  // background-color: lightgreen;
   margin: 0 0 0 40px;
   padding: 0;
 }
 
-#eduid-menu li {
-  // display: flex;
-  flex-wrap: wrap;
-  // background-color: yellow;
-}
-
-#eduid-menu a {
+#eduid-nav a {
   color: #3f5c57;
   text-decoration: none;
   letter-spacing: 0.5px;
   font-weight: 900;
   font-size: 16px;
   text-transform: uppercase;
-  display: block;
-  padding: 0.5rem 1rem;
+  padding: 16px 15px;
 }
 
-#eduid-menu span:hover {
+#eduid-nav span:hover {
   border-bottom: solid 2px #3f5c57;
 }
 
-// @media (max-width: 890px) {
+#eduid-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
-//   #eduid-menu ul {
-//     display: block;
-//   }
-// }
+@media (max-width: 750px) {
+  header {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, auto);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #3f5c57;
+  }
+
+  #eduid-logo {
+    margin-left: 15px;
+  }
+
+  #eduid-nav ul {
+    // flex: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  #eduid-nav li {
+    display: flex;
+    // flex: 1;
+     width: 100%;
+    background-color:  #333333;
+    // justify-content: space-around;
+  }
+
+  #eduid-nav a {
+    color: white;
+  }
+
+  #logout {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+  }
+
+  #content-block {
+    margin-top: 140px;
+  }
+}
 
 // #eduid-menu ul li {
 //   margin: 0 50px 0 0;

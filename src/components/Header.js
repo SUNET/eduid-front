@@ -22,16 +22,14 @@ class Header extends Component {
     // }
 
     const logout = (
-      <div>
-        <div>
-          <button
-            id="logout-button"
-            // className="button"
-            onClick={this.props.handleLogout}
-          >
-            {this.props.l10n("header.logout")}
-          </button>
-        </div>
+      <div id="eduid-button">
+        <button
+          id="logout"
+          // className="button"
+          onClick={this.props.handleLogout}
+        >
+          {this.props.l10n("header.logout")}
+        </button>
         {/* <div className="loa-big hidden-sm" id="eduid-header-loa">
           {email} ({this.props.l10n(this.props.confirmed)})
         </div>  */}
@@ -41,24 +39,20 @@ class Header extends Component {
     const navMenu = (
       <ul>
         <li>
-          <a className="nav-link" href={this.props.studentsLink}>
+          <a href={this.props.studentsLink}>
             {this.props.l10n("header.students")}
           </a>
         </li>
         <li>
-          <a className="nav-link" href={this.props.techniciansLink}>
+          <a href={this.props.techniciansLink}>
             {this.props.l10n("header.technicians")}
           </a>
         </li>
         <li>
-          <a className="nav-link" href={this.props.staffLink}>
-            {this.props.l10n("header.staff")}
-          </a>
+          <a href={this.props.staffLink}>{this.props.l10n("header.staff")}</a>
         </li>
         <li>
-          <a className="nav-link" href={this.props.faqLink}>
-            {this.props.l10n("header.faq")}
-          </a>
+          <a href={this.props.faqLink}>{this.props.l10n("header.faq")}</a>
         </li>
       </ul>
     );
@@ -94,12 +88,8 @@ class Header extends Component {
     return (
       <header>
         <div id="eduid-logo" />
-        <nav id="eduid-nav">
-          <div id="eduid-menu">
-            {navMenu}
-            {logout}
-          </div>
-        </nav>
+        <nav id="eduid-nav">{navMenu}</nav>
+        {logout}
       </header>
     );
     //   }
