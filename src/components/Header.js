@@ -5,57 +5,57 @@ import { Collapse } from "reactstrap";
 import "style/Header.scss";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = { collapse: true };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.toggle = this.toggle.bind(this);
+  //   this.state = { collapse: true };
+  // }
 
-  toggle() {
-    this.setState({ collapse: !this.state.collapse });
-  }
+  // toggle() {
+  //   this.setState({ collapse: !this.state.collapse });
+  // }
 
   render() {
-    let email = this.props.email;
-    if (email === "") {
-      email = this.props.l10n("main.no-email-yet");
-    }
+    // let email = this.props.email;
+    // if (email === "") {
+    //   email = this.props.l10n("main.no-email-yet");
+    // }
 
-    const buttons = (
-      <div id="eduid-nav-buttons">
-        <div className="button log-out">
+    const logout = (
+      <div>
+        <div>
           <button
             id="logout-button"
-            className="button"
+            // className="button"
             onClick={this.props.handleLogout}
           >
             {this.props.l10n("header.logout")}
           </button>
         </div>
-        <div className="loa-big hidden-sm" id="eduid-header-loa">
+        {/* <div className="loa-big hidden-sm" id="eduid-header-loa">
           {email} ({this.props.l10n(this.props.confirmed)})
-        </div>
+        </div>  */}
       </div>
     );
 
-    const links = (
+    const navMenu = (
       <ul>
-        <li className="nav-item">
+        <li>
           <a className="nav-link" href={this.props.studentsLink}>
             {this.props.l10n("header.students")}
           </a>
         </li>
-        <li className="nav-item">
+        <li>
           <a className="nav-link" href={this.props.techniciansLink}>
             {this.props.l10n("header.technicians")}
           </a>
         </li>
-        <li className="nav-item">
+        <li>
           <a className="nav-link" href={this.props.staffLink}>
             {this.props.l10n("header.staff")}
           </a>
         </li>
-        <li className="nav-item">
+        <li>
           <a className="nav-link" href={this.props.faqLink}>
             {this.props.l10n("header.faq")}
           </a>
@@ -95,11 +95,9 @@ class Header extends Component {
       <header>
         <div id="eduid-logo" />
         <nav id="eduid-nav">
-          <div
-            id="eduid-menu"
-          >
-            {links}
-            {buttons}
+          <div id="eduid-menu">
+            {navMenu}
+            {logout}
           </div>
         </nav>
       </header>

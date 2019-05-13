@@ -34,20 +34,33 @@ header {
   display: flex;
   flex: 1;
   border: solid 2px red;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #eduid-menu ul {
   display: flex;
   background-color: lightgreen;
-  text-decoration: none;
   margin-bottom: 0;
   padding: 0;
 }
 
-#logout-button {
-  display: flex;
-  flex: 1;
-  background-color: lightyellow;
+#eduid-menu li {
+  // display: flex;
+  background-color: lightgreen;
+}
+
+#eduid-menu a {
+  color: #3f5c57;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  font-weight: 900;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#eduid-menu span:hover {
+  border-bottom: solid 2px #3f5c57;
 }
 
 // #eduid-menu ul li {
