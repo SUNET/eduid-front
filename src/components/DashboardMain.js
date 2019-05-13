@@ -36,8 +36,7 @@ class Main extends Component {
     super(props);
     this.state = {
       fetching: props.is_fetching,
-      setFetching: this.setFetching.bind(this),
-      email: this.getEmail.bind(this)
+      setFetching: this.setFetching.bind(this)
     };
   }
 
@@ -45,15 +44,6 @@ class Main extends Component {
     this.setState({
       fetching: fetching
     });
-  }
-
-  getEmail() {
-    this.setState(
-      {
-        email: store.getState()
-      },
-      console.log("You've got mail")
-    );
   }
 
   render() {
@@ -66,7 +56,7 @@ class Main extends Component {
             <div id="content-block">
               <SettingsButton />
               <div id="dashboard-text">
-                <h1>eduID for email@email.com</h1>
+                <h1>eduID for {this.props.email}</h1>
                 <p>
                   {" "}
                   Welcome to your eduid account. To be able to use it you need
@@ -105,7 +95,6 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  show_sidebar: PropTypes.bool,
   eppn: PropTypes.string,
   messages: PropTypes.object
 };
