@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { FormText } from "reactstrap";
-import { FormGroup } from "reactstrap";
-import { FormFeedback } from "reactstrap";
-import { Input } from "reactstrap";
-import { Label } from "reactstrap";
+import FormText from "reactstrap/lib/FormText";
+import FormGroup from "reactstrap/lib/FormGroup";
+import FormFeedback from "reactstrap/lib/FormFeedback";
+import Input from "reactstrap/lib/Input";
+import Label from "reactstrap/lib/Label";
 import i18n from "i18n-messages";
 
 const textInput = props => {

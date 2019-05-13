@@ -4,9 +4,10 @@ import ReactDom from "react-dom";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-import { FormText } from "reactstrap";
-import { Label } from "reactstrap";
-import { Button, ButtonGroup } from "reactstrap";
+import FormText from "reactstrap/lib/FormText";
+import Label from "reactstrap/lib/Label";
+import Button from "reactstrap/lib/Button";
+import ButtonGroup from "reactstrap/lib/ButtonGroup";
 
 import i18n from "i18n-messages";
 
