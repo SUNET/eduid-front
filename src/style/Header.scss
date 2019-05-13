@@ -1,7 +1,7 @@
 @import "../variables.scss";
 
 header {
-  background-color: yellow;
+  // background-color: yellow;
   display: flex;
   // position: static;
   // top: 0;
@@ -14,7 +14,7 @@ header {
 }
 
 #eduid-logo {
-  background-color: hotpink;
+  // background-color: hotpink;
   // float: left;
   // margin: 0;
   min-width: 160px;
@@ -27,27 +27,30 @@ header {
 #eduid-nav {
   display: flex;
   flex: 1;
-  background-color: lightpink;
+  // background-color: lightpink;
 }
 
 #eduid-menu {
   display: flex;
+  flex-wrap: wrap;
   flex: 1;
-  border: solid 2px red;
+  // border: solid 2px red;
   justify-content: space-between;
   align-items: center;
 }
 
 #eduid-menu ul {
   display: flex;
-  background-color: lightgreen;
-  margin-bottom: 0;
+  flex-wrap: wrap;
+  // background-color: lightgreen;
+  margin: 0 0 0 40px;
   padding: 0;
 }
 
 #eduid-menu li {
   // display: flex;
-  background-color: lightgreen;
+  flex-wrap: wrap;
+  // background-color: yellow;
 }
 
 #eduid-menu a {
@@ -55,13 +58,22 @@ header {
   text-decoration: none;
   letter-spacing: 0.5px;
   font-weight: 900;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
+  display: block;
+  padding: 0.5rem 1rem;
 }
 
 #eduid-menu span:hover {
   border-bottom: solid 2px #3f5c57;
 }
+
+// @media (max-width: 890px) {
+
+//   #eduid-menu ul {
+//     display: block;
+//   }
+// }
 
 // #eduid-menu ul li {
 //   margin: 0 50px 0 0;
