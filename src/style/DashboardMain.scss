@@ -4,6 +4,10 @@ div#root.wrap.container {
   max-width: 1200px;
 }
 
+.container {
+  padding: 0;
+}
+
 #content-block {
   background-color: white;
 }
@@ -14,7 +18,13 @@ div#root.wrap.container {
 }
 
 #welcome {
-  max-width: 55vw;
+  max-width: 75%;
+}
+
+@media (max-width: 1000px) {
+  #welcome {
+    max-width: 100%;
+  }
 }
 
 // ----- LANDING PAGE ----- //

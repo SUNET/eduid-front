@@ -16,7 +16,11 @@ html,
 body {
   height: 100%;
   font-family: "Roboto-Regular";
-   line-height: 1.42857143;
+  line-height: 1.42857143;
+}
+
+header {
+  display: grid;
 }
 
 h1,
@@ -92,6 +96,14 @@ input {
 }
 input:focus {
   outline: 0;
+}
+
+nav li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
 }
 
 a {
