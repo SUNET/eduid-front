@@ -40,8 +40,11 @@ export function fetchLookupMobileProof(config, data) {
     .then(response => response.json());
 }
 const getData = state => {
+  const input = document.getElementsByName("nin")[0],
+        unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
+        nin = input ? input.value : unconfirmed ? state.nins.nin : "testing";
   return {
-    ...state.form.nins.values,
+    nin: nin,
     csrf_token: state.config.csrf_token
   };
 };
