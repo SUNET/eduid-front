@@ -231,11 +231,9 @@ const mapDispatchToProps = (dispatch, props) => {
           }
         } else {
           console.log("Webauthn data not available yet");
-          return;
         }
       } else {
         console.log("Webauthn assertion already gotten");
-        return;
       }
     },
     retry: function(e) {
