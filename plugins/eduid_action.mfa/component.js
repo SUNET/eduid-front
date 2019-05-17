@@ -184,7 +184,6 @@ const mapStateToProps = (state, props) => {
   return {
     webauthn_options: options,
     testing: state.config.testing,
-    testing: state.config.testing,
     assertion: state.plugin.webauthn_assertion,
     external_mfa_url: external_mfa_url
   };
@@ -197,13 +196,16 @@ const credentialsGot = assertion => ({
   payload: assertion
 });
 
+let credentials_locked = false;
+
 const mapDispatchToProps = (dispatch, props) => {
   return {
     getCredentials: function() {
-      if (this.props.assertion === null) {
+      if (this.props.assertion === null && !credentials_locked) {
         let options = this.props.webauthn_options;
         if (options.publicKey !== undefined) {
           try {
+            credentials_locked = true;
             navigator.credentials
               .get(options)
               .then(assertion => {
@@ -212,8 +214,10 @@ const mapDispatchToProps = (dispatch, props) => {
                 } else {
                   dispatch(credentialsGot(assertion));
                 }
+                credentials_locked = false;
               })
               .catch(error => {
+                credentials_locked = false;
                 console.log("Problem getting MFA credentials:", error);
                 if (navigator.appVersion.indexOf("Edge") != -1) {
                   dispatch(postActionFail("mfa.edge-no-u2f"));
@@ -221,14 +225,17 @@ const mapDispatchToProps = (dispatch, props) => {
                 }
               });
           } catch (error) {
+            credentials_locked = false;
             console.log("Error getting credentials:", error);
             dispatch(postActionFail("mfa.error-getting-token"));
           }
         } else {
           console.log("Webauthn data not available yet");
+          return;
         }
       } else {
         console.log("Webauthn assertion already gotten");
+        return;
       }
     },
     retry: function(e) {
