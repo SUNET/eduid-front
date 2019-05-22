@@ -7,7 +7,7 @@ import { ButtonGroup, Form } from "reactstrap";
 
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
-import vettingRegistry from "vetting-registry";
+// import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
 
@@ -53,13 +53,13 @@ let NinForm = props => {
   );
 };
 
-let NinButtons = props => {
-  return (
-    <ButtonGroup vertical={true} id="nins-btn-group">
-      {props.buttons}
-    </ButtonGroup>
-  );
-};
+// let NinButtons = props => {
+//   return (
+//     <ButtonGroup vertical={true} id="nins-btn-group">
+//       {props.buttons}
+//     </ButtonGroup>
+//   );
+// };
 
 let NinNumber = props => {
   // look at a way to see verified status here? <span>{verifiedNin}</span>
@@ -103,19 +103,19 @@ class AddNin extends Component {
       ninButtons = "",
       verifiedNin = "";
 
-    if (this.props.is_configured) {
-      const vettingBtns = vettingRegistry(!this.props.valid_nin);
-      const verifyOptions = this.props.proofing_methods.filter(
-        option => option !== "oidc"
-      );
-      vettingButtons = verifyOptions.map((key, index) => {
-        return (
-          <div className="vetting-button" key={index}>
-            {vettingBtns[key]}
-          </div>
-        );
-      });
-    }
+    // if (this.props.is_configured) {
+    //   const vettingBtns = vettingRegistry(!this.props.valid_nin);
+    //   const verifyOptions = this.props.proofing_methods.filter(
+    //     option => option !== "oidc"
+    //   );
+    //   vettingButtons = verifyOptions.map((key, index) => {
+    //     return (
+    //       <div className="vetting-button" key={index}>
+    //         {vettingBtns[key]}
+    //       </div>
+    //     );
+    //   });
+    // }
 
     if (this.props.nins.length) {
       ninStatus = "unverified";
@@ -174,25 +174,25 @@ class AddNin extends Component {
       </div>
     ];
 
-    let settingsStyle = [
-      <div className="intro">
-        <h4>{this.props.l10n("nins.main_title")}</h4>
-        <p>{this.props.l10n("nins.justification")}</p>
-      </div>
-    ];
+    // let settingsStyle = [
+    //   <div className="intro">
+    //     <h4>{this.props.l10n("nins.main_title")}</h4>
+    //     <p>{this.props.l10n("nins.justification")}</p>
+    //   </div>
+    // ];
 
-    vettingButtons = [
-      <div key="1" id="connect-nin-number">
-        <h3> Step 2. Connect your national identity number to eduID</h3>
-        <p>
-          Choose a way below to verify that the given identity number belongs to
-          you.
-        </p>
-        <div>
-          <NinButtons buttons={vettingButtons} {...this.props} />
-        </div>
-      </div>
-    ];
+    // vettingButtons = [
+    //   <div key="1" id="connect-nin-number">
+    //     <h3> Step 2. Connect your national identity number to eduID</h3>
+    //     <p>
+    //       Choose a way below to verify that the given identity number belongs to
+    //       you.
+    //     </p>
+    //     <div>
+    //       <NinButtons buttons={vettingButtons} {...this.props} />
+    //     </div>
+    //   </div>
+    // ];
 
     if (ninStatus === "nonin") {
       ninInput = noNin;
@@ -216,12 +216,9 @@ class AddNin extends Component {
 
     return (
       <div>
-        <div id="nin-process">
-          <div id="add-nin-number-container">
-            {ninHeading}
-            {ninInput}
-          </div>
-          <div id="connect-nin-number-container">{ninButtons}</div>
+        <div id="add-nin-number-container">
+          {ninHeading}
+          {ninInput}
         </div>
       </div>
     );
