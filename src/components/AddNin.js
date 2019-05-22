@@ -5,7 +5,6 @@ import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import { ButtonGroup, Form } from "reactstrap";
 
-import AddNin from "./AddNin";
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import vettingRegistry from "vetting-registry";
@@ -94,7 +93,7 @@ let VerifyButton = props => {
   );
 };
 
-class Nins extends Component {
+class AddNin extends Component {
   render() {
     const url = window.location.href;
     let ninStatus = "nonin",
@@ -218,11 +217,10 @@ class Nins extends Component {
     return (
       <div>
         <div id="nin-process">
-          <AddNin {...this.props}/>
-          {/* <div id="add-nin-number-container">
+          <div id="add-nin-number-container">
             {ninHeading}
             {ninInput}
-          </div> */}
+          </div>
           <div id="connect-nin-number-container">{ninButtons}</div>
         </div>
       </div>
@@ -244,7 +242,7 @@ NinForm = connect(state => ({
   initialValues: { nin: state.nins.nin }
 }))(NinForm);
 
-Nins.propTypes = {
+AddNin.propTypes = {
   nin: PropTypes.string,
   nins: PropTypes.array,
   validateNin: PropTypes.func,
@@ -252,4 +250,4 @@ Nins.propTypes = {
   proofing_methods: PropTypes.array
 };
 
-export default Nins;
+export default AddNin;
