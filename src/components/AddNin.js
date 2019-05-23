@@ -140,8 +140,6 @@ class AddNin extends Component {
         <div key="1">{this.props.l10n("nins.help_text")}</div>
         <div key="2" id="nin-form-container">
           <NinForm {...this.props} />
-        </div>
-        <div key="3">
           <button key="1">ADD FUNCTIONALITY HERE</button>
         </div>
       </div>
@@ -149,29 +147,19 @@ class AddNin extends Component {
 
     let ninUnverified = [
       <div key="1" id="add-nin-number">
-        <div>
-          <NinNumber {...this.props} />
-        </div>
+        <NinNumber {...this.props} />
         <div id="nin-buttons">
-          <div>
-            <VerifyButton {...this.props} />
-          </div>
-          <div>
-            <RemoveButton {...this.props} />
-          </div>
+          <VerifyButton {...this.props} />
+          <RemoveButton {...this.props} />
         </div>
       </div>
     ];
 
     let ninVerified = [
       <div key="1" id="add-nin-number">
-        <div>
           <NinNumber {...this.props} />
-        </div>
         <div id="nin-buttons">
-          <div>
             <RemoveButton {...this.props} />
-          </div>
         </div>
       </div>
     ];
