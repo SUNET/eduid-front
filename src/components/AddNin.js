@@ -95,6 +95,17 @@ let VerifyButton = props => {
 };
 
 class AddNin extends Component {
+  addNin(validNin) {
+    console.log("youre back in AddNin");
+    console.log("and this is validNin:", validNin);
+    
+
+    //   console.log("this is ninInput", e.target);
+    //   const ninInput = e.target.previousSibling.firstChild.children[0];
+    //   // console.log("this is ninInput", ninInput)
+    //   const ninValue = ninInput.value;
+    //   console.log("this is ninInput", ninValue);
+  }
   render() {
     const url = window.location.href;
     let ninStatus = "nonin",
@@ -198,12 +209,12 @@ class AddNin extends Component {
 
     if (true) {
       return (
-          <div key="1" id="add-nin-number">
-            <div key="1">{this.props.l10n("nins.help_text")}</div>
-            <div key="2" id="nin-form-container">
-              <NinForm {...this.props} />
-            </div>
+        <div key="1" id="add-nin-number">
+          <div key="1">{this.props.l10n("nins.help_text")}</div>
+          <div key="2" id="nin-form-container">
+            <NinForm addNin={this.addNin} {...this.props} />
           </div>
+        </div>
       );
     } else if (ninStatus === "unverified") {
       ninInput = ninUnverified;

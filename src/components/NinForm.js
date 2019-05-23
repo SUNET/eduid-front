@@ -12,7 +12,9 @@ import EduIDButton from "components/EduIDButton";
 import "style/Nins.scss";
 
 const validate = values => {
+  console.log("values to be validated", values);
   let value = values.nin;
+  console.log("value in validation", values);
   // accept only digits
   if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
   if (value.length !== 12) return { nin: "nins.wrong_length" };
@@ -38,14 +40,6 @@ const validate = values => {
 };
 
 class NinForm extends Component {
-  addNin(e) {
-    console.log("you've clicked the button");
-  //   console.log("this is ninInput", e.target);
-  //   const ninInput = e.target.previousSibling.firstChild.children[0];
-  //   // console.log("this is ninInput", ninInput)
-  //   const ninValue = ninInput.value;
-  //   console.log("this is ninInput", ninValue);
-   }
   render() {
     // const url = window.location.href;
     // let ninStatus = "nonin",
@@ -63,9 +57,9 @@ class NinForm extends Component {
 
     if (this.props.valid_nin) {
       console.log("is the nin valid? (AddNin.js)", this.props.valid_nin);
-      // validNin = this.props.nin;
+       validNin = this.props.nin;
       formButton = [
-        <button onClick={this.addNin} key="1">
+        <button onClick={() => this.props.addNin(validNin)} key="1">
           ADD
         </button>
       ];
@@ -100,9 +94,9 @@ NinForm = reduxForm({
   validate: validate
 })(NinForm);
 
-// NinForm = connect(state => ({
-//   initialValues: { nin: state.nins.nin }
-// }))(NinForm);
+NinForm = connect(state => ({
+  initialValues: { nin: state.nins.nin }
+}))(NinForm);
 
 NinForm.propTypes = {
   nin: PropTypes.string,
