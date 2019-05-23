@@ -140,7 +140,9 @@ class AddNin extends Component {
         <div key="1">{this.props.l10n("nins.help_text")}</div>
         <div key="2" id="nin-form-container">
           <NinForm {...this.props} />
-          <button key="1">ADD FUNCTIONALITY HERE</button>
+          <button onClick={this.addNin} key="1">
+            ADD
+          </button>
         </div>
       </div>
     ];
@@ -157,9 +159,9 @@ class AddNin extends Component {
 
     let ninVerified = [
       <div key="1" id="add-nin-number">
-          <NinNumber {...this.props} />
+        <NinNumber {...this.props} />
         <div id="nin-buttons">
-            <RemoveButton {...this.props} />
+          <RemoveButton {...this.props} />
         </div>
       </div>
     ];
