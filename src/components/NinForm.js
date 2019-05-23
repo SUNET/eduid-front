@@ -45,7 +45,7 @@ class NinForm extends Component {
   //   // console.log("this is ninInput", ninInput)
   //   const ninValue = ninInput.value;
   //   console.log("this is ninInput", ninValue);
-  // }
+   }
   render() {
     // const url = window.location.href;
     // let ninStatus = "nonin",
