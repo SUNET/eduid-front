@@ -1,69 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import { ButtonGroup, Form } from "reactstrap";
 
 import NinForm from "./NinForm";
-import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
-// import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
 
-const validate = values => {
-  let value = values.nin;
-  // accept only digits
-  if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
-  if (value.length !== 12) return { nin: "nins.wrong_length" };
-
-  // The Luhn Algorithm. It's so pretty.
-  // taken from https://gist.github.com/DiegoSalazar/4075533/
-  let nCheck = 0,
-    bEven = false;
-  value = value.slice(2); // To pass the Luhn check only use the 10 last digits
-  for (let n = value.length - 1; n >= 0; n--) {
-    let cDigit = value.charAt(n),
-      nDigit = parseInt(cDigit, 10);
-    if (bEven) {
-      if ((nDigit *= 2) > 9) nDigit -= 9;
-    }
-    nCheck += nDigit;
-    bEven = !bEven;
-  }
-  if (nCheck % 10 !== 0) {
-    return { nin: "nins.invalid_nin" };
-  }
-  return {};
-};
-
-// let NinForm = props => {
-//   return (
-//     <Form id="nin-form" role="form">
-//       <Field
-//         component={TextInput}
-//         componentClass="input"
-//         type="text"
-//         name="nin"
-//         className="nin-input"
-//         placeholder={props.l10n("nins.input_placeholder")}
-//         helpBlock={props.l10n("nins.input_help_text")}
-//       />
-//     </Form>
-//   );
-// };
-
-// let NinButtons = props => {
-//   return (
-//     <ButtonGroup vertical={true} id="nins-btn-group">
-//       {props.buttons}
-//     </ButtonGroup>
-//   );
-// };
-
 let NinNumber = props => {
-  // look at a way to see verified status here? <span>{verifiedNin}</span>
   return (
     <div data-ninnumber={props.nins[0].number} id="nin-number-container">
       <p id="nin-number">{props.nins[0].number}</p>
