@@ -101,8 +101,8 @@ class AddNin extends Component {
       vettingButtons = "",
       ninInput = "",
       ninButtons = "",
-      verifiedNin = "";
-
+      verifiedNin = "",
+      validNin = "";
     // if (this.props.is_configured) {
     //   const vettingBtns = vettingRegistry(!this.props.valid_nin);
     //   const verifyOptions = this.props.proofing_methods.filter(
