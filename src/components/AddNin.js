@@ -74,6 +74,9 @@ class AddNin extends Component {
     //     </div>
     //   </div>
     // ];
+    if (this.props.nins.length) {
+      return <NinDisplay {...this.props} />
+    }
 
     if (this.state.nin === null) {
       return (
