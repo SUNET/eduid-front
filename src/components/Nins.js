@@ -5,53 +5,54 @@ import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import { ButtonGroup, Form } from "reactstrap";
 
+import AddNin from "./AddNin";
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
 
-const validate = values => {
-  let value = values.nin;
-  // accept only digits
-  if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
-  if (value.length !== 12) return { nin: "nins.wrong_length" };
+// const validate = values => {
+//   let value = values.nin;
+//   // accept only digits
+//   if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
+//   if (value.length !== 12) return { nin: "nins.wrong_length" };
 
   // The Luhn Algorithm. It's so pretty.
   // taken from https://gist.github.com/DiegoSalazar/4075533/
-  let nCheck = 0,
-    bEven = false;
-  value = value.slice(2); // To pass the Luhn check only use the 10 last digits
-  for (let n = value.length - 1; n >= 0; n--) {
-    let cDigit = value.charAt(n),
-      nDigit = parseInt(cDigit, 10);
-    if (bEven) {
-      if ((nDigit *= 2) > 9) nDigit -= 9;
-    }
-    nCheck += nDigit;
-    bEven = !bEven;
-  }
-  if (nCheck % 10 !== 0) {
-    return { nin: "nins.invalid_nin" };
-  }
-  return {};
-};
+//   let nCheck = 0,
+//     bEven = false;
+//   value = value.slice(2); // To pass the Luhn check only use the 10 last digits
+//   for (let n = value.length - 1; n >= 0; n--) {
+//     let cDigit = value.charAt(n),
+//       nDigit = parseInt(cDigit, 10);
+//     if (bEven) {
+//       if ((nDigit *= 2) > 9) nDigit -= 9;
+//     }
+//     nCheck += nDigit;
+//     bEven = !bEven;
+//   }
+//   if (nCheck % 10 !== 0) {
+//     return { nin: "nins.invalid_nin" };
+//   }
+//   return {};
+// };
 
-let NinForm = props => {
-  return (
-    <Form id="nin-form" role="form">
-      <Field
-        component={TextInput}
-        componentClass="input"
-        type="text"
-        name="nin"
-        className="nin-input"
-        placeholder={props.l10n("nins.input_placeholder")}
-        helpBlock={props.l10n("nins.input_help_text")}
-      />
-    </Form>
-  );
-};
+// let NinForm = props => {
+//   return (
+//     <Form id="nin-form" role="form">
+//       <Field
+//         component={TextInput}
+//         componentClass="input"
+//         type="text"
+//         name="nin"
+//         className="nin-input"
+//         placeholder={props.l10n("nins.input_placeholder")}
+//         helpBlock={props.l10n("nins.input_help_text")}
+//       />
+//     </Form>
+//   );
+// };
 
 let NinButtons = props => {
   return (
@@ -61,37 +62,37 @@ let NinButtons = props => {
   );
 };
 
-let NinNumber = props => {
-  // look at a way to see verified status here? <span>{verifiedNin}</span>
-  return (
-    <div data-ninnumber={props.nins[0].number} id="nin-number-container">
-      <p id="nin-number">{props.nins[0].number}</p>
-    </div>
-  );
-};
+// let NinNumber = props => {
+//   // look at a way to see verified status here? <span>{verifiedNin}</span>
+//   return (
+//     <div data-ninnumber={props.nins[0].number} id="nin-number-container">
+//       <p id="nin-number">{props.nins[0].number}</p>
+//     </div>
+//   );
+// };
 
-let RemoveButton = props => {
-  return (
-    <EduIDButton
-      className="btn-danger"
-      className="btn-sm"
-      id={"button-rm-nin-" + props.nins[0].number}
-      onClick={props.handleDelete}
-    >
-      {props.l10n("nins.button_delete")}
-    </EduIDButton>
-  );
-};
+// let RemoveButton = props => {
+//   return (
+//     <EduIDButton
+//       className="btn-danger"
+//       className="btn-sm"
+//       id={"button-rm-nin-" + props.nins[0].number}
+//       onClick={props.handleDelete}
+//     >
+//       {props.l10n("nins.button_delete")}
+//     </EduIDButton>
+//   );
+// };
 
-let VerifyButton = props => {
-  return (
-    <Link id="verify-button" to="/profile/verify-identity/step2">
-      <button>
-        <p>connect eduid to my person</p>
-      </button>
-    </Link>
-  );
-};
+// let VerifyButton = props => {
+//   return (
+//     <Link id="verify-button" to="/profile/verify-identity/step2">
+//       <button>
+//         <p>connect eduid to my person</p>
+//       </button>
+//     </Link>
+//   );
+// };
 
 class Nins extends Component {
   render() {
@@ -117,55 +118,55 @@ class Nins extends Component {
       });
     }
 
-    if (this.props.nins.length) {
-      ninStatus = "unverified";
-      const nins = this.props.nins.filter(nin => nin.verified);
-      if (nins.length === 1) {
-        ninStatus = "verified";
-        verifiedNin = nins[0].number;
-      }
-    }
+    // if (this.props.nins.length) {
+    //   ninStatus = "unverified";
+    //   const nins = this.props.nins.filter(nin => nin.verified);
+    //   if (nins.length === 1) {
+    //     ninStatus = "verified";
+    //     verifiedNin = nins[0].number;
+    //   }
+    // }
 
-    let noNin = [
-      <div key="1" id="add-nin-number">
-        <div key="1">{this.props.l10n("nins.help_text")}</div>
-        <div key="2" id="nin-form-container">
-          <NinForm {...this.props} />
-        </div>
-        <div key="3">
-          <button key="1">ADD FUNCTIONALITY HERE</button>
-        </div>
-      </div>
-    ];
+    // let noNin = [
+    //   <div key="1" id="add-nin-number">
+    //     <div key="1">{this.props.l10n("nins.help_text")}</div>
+    //     <div key="2" id="nin-form-container">
+    //       <NinForm {...this.props} />
+    //     </div>
+    //     <div key="3">
+    //       <button key="1">ADD FUNCTIONALITY HERE</button>
+    //     </div>
+    //   </div>
+    // ];
 
-    let ninUnverified = [
-      <div key="1" id="add-nin-number">
-        <div>
-          <NinNumber {...this.props} />
-        </div>
-        <div id="nin-buttons">
-          <div>
-            <VerifyButton {...this.props} />
-          </div>
-          <div>
-            <RemoveButton {...this.props} />
-          </div>
-        </div>
-      </div>
-    ];
+    // let ninUnverified = [
+    //   <div key="1" id="add-nin-number">
+    //     <div>
+    //       <NinNumber {...this.props} />
+    //     </div>
+    //     <div id="nin-buttons">
+    //       <div>
+    //         <VerifyButton {...this.props} />
+    //       </div>
+    //       <div>
+    //         <RemoveButton {...this.props} />
+    //       </div>
+    //     </div>
+    //   </div>
+    // ];
 
-    let ninVerified = [
-      <div key="1" id="add-nin-number">
-        <div>
-          <NinNumber {...this.props} />
-        </div>
-        <div id="nin-buttons">
-          <div>
-            <RemoveButton {...this.props} />
-          </div>
-        </div>
-      </div>
-    ];
+    // let ninVerified = [
+    //   <div key="1" id="add-nin-number">
+    //     <div>
+    //       <NinNumber {...this.props} />
+    //     </div>
+    //     <div id="nin-buttons">
+    //       <div>
+    //         <RemoveButton {...this.props} />
+    //       </div>
+    //     </div>
+    //   </div>
+    // ];
 
     let verifyIdentityStyle = [
       <div key="1" className="intro">
@@ -194,16 +195,16 @@ class Nins extends Component {
       </div>
     ];
 
-    if (ninStatus === "nonin") {
-      ninInput = noNin;
-    } else if (ninStatus === "unverified") {
-      ninInput = ninUnverified;
-      if (this.props.nins.length > 1) {
-        ninInput = this.props.l10n("nins.only_one_to_verify");
-      }
-    } else if (ninStatus === "verified") {
-      ninInput = ninVerified;
-    }
+    // if (ninStatus === "nonin") {
+    //   ninInput = noNin;
+    // } else if (ninStatus === "unverified") {
+    //   ninInput = ninUnverified;
+    //   if (this.props.nins.length > 1) {
+    //     ninInput = this.props.l10n("nins.only_one_to_verify");
+    //   }
+    // } else if (ninStatus === "verified") {
+    //   ninInput = ninVerified;
+    // }
 
     if (url.includes("settings")) {
       ninHeading = settingsStyle;
@@ -219,7 +220,8 @@ class Nins extends Component {
         <div id="nin-process">
           <div id="add-nin-number-container">
             {ninHeading}
-            {ninInput}
+            <AddNin {...this.props} />
+            {/* {ninInput} */}
           </div>
           <div id="connect-nin-number-container">{ninButtons}</div>
         </div>
@@ -228,19 +230,19 @@ class Nins extends Component {
   }
 }
 
-NinForm = reduxForm({
-  form: "nins",
-  destroyOnUnmount: false,
-  enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
-  keepValuesOnReinitialize: true,
-  updateUnregisteredFields: true,
-  validate: validate
-})(NinForm);
+// NinForm = reduxForm({
+//   form: "nins",
+//   destroyOnUnmount: false,
+//   enableReinitialize: true,
+//   keepDirtyOnReinitialize: true,
+//   keepValuesOnReinitialize: true,
+//   updateUnregisteredFields: true,
+//   validate: validate
+// })(NinForm);
 
-NinForm = connect(state => ({
-  initialValues: { nin: state.nins.nin }
-}))(NinForm);
+// NinForm = connect(state => ({
+//   initialValues: { nin: state.nins.nin }
+// }))(NinForm);
 
 Nins.propTypes = {
   nin: PropTypes.string,
