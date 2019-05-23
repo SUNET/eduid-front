@@ -194,7 +194,9 @@ class AddNin extends Component {
     //   </div>
     // ];
 
-    if (ninStatus === "nonin") {
+    ninStatus === "nonin";
+
+    if (true) {
       ninInput = noNin;
     } else if (ninStatus === "unverified") {
       ninInput = ninUnverified;
