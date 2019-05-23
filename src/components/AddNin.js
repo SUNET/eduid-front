@@ -95,48 +95,18 @@ let VerifyButton = props => {
 };
 
 class AddNin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { nin: null };
+    this.addNin = this.addNin.bind(this);
+  }
   addNin(validNin) {
-    console.log("youre back in AddNin");
-    console.log("and this is validNin:", validNin);
-    
-
-    //   console.log("this is ninInput", e.target);
-    //   const ninInput = e.target.previousSibling.firstChild.children[0];
-    //   // console.log("this is ninInput", ninInput)
-    //   const ninValue = ninInput.value;
-    //   console.log("this is ninInput", ninValue);
+    this.setState((state, props) => {
+      return { nin: validNin };
+    }, console.log("this is state in AddNin:", this.state.nin));
   }
   render() {
-    const url = window.location.href;
-    let ninStatus = "nonin",
-      ninHeading = "",
-      vettingButtons = "",
-      ninInput = "",
-      ninButtons = "",
-      verifiedNin = "",
-      validNin = "";
-    // if (this.props.is_configured) {
-    //   const vettingBtns = vettingRegistry(!this.props.valid_nin);
-    //   const verifyOptions = this.props.proofing_methods.filter(
-    //     option => option !== "oidc"
-    //   );
-    //   vettingButtons = verifyOptions.map((key, index) => {
-    //     return (
-    //       <div className="vetting-button" key={index}>
-    //         {vettingBtns[key]}
-    //       </div>
-    //     );
-    //   });
-    // }
-
-    console.log("these are props (AddNin.js)", this.props);
-    console.log("this is nins array (AddNin.js)", this.props.nins);
-    console.log("this is nin (AddNin.js)", this.props.nin);
-
-    if (this.props.valid_nin) {
-      console.log("is the nin valid? (AddNin.js)", this.props.valid_nin);
-      validNin = this.props.nin;
-    }
+    let ninStatus = "nonin";
 
     if (this.props.nins.length) {
       ninStatus = "unverified";
@@ -147,28 +117,6 @@ class AddNin extends Component {
       }
     }
 
-    // let noNin = [
-    //   <div key="1" id="add-nin-number">
-    //     <div key="1">{this.props.l10n("nins.help_text")}</div>
-    //     <div key="2" id="nin-form-container">
-    //       <NinForm {...this.props} />
-    //       <button onClick={this.addNin} key="1">
-    //         ADD
-    //       </button>
-    //     </div>
-    //   </div>
-    // ];
-
-    let ninUnverified = [
-      <div key="1" id="add-nin-number">
-        <NinNumber {...this.props} />
-        <div id="nin-buttons">
-          <VerifyButton {...this.props} />
-          <RemoveButton {...this.props} />
-        </div>
-      </div>
-    ];
-
     let ninVerified = [
       <div key="1" id="add-nin-number">
         <NinNumber {...this.props} />
@@ -178,36 +126,7 @@ class AddNin extends Component {
       </div>
     ];
 
-    let verifyIdentityStyle = [
-      <div key="1" className="intro">
-        <h3> Step 1. Add your national identity number</h3>
-        <p>Your number can be used to connect eduID to your person.</p>
-      </div>
-    ];
-
-    // let settingsStyle = [
-    //   <div className="intro">
-    //     <h4>{this.props.l10n("nins.main_title")}</h4>
-    //     <p>{this.props.l10n("nins.justification")}</p>
-    //   </div>
-    // ];
-
-    // vettingButtons = [
-    //   <div key="1" id="connect-nin-number">
-    //     <h3> Step 2. Connect your national identity number to eduID</h3>
-    //     <p>
-    //       Choose a way below to verify that the given identity number belongs to
-    //       you.
-    //     </p>
-    //     <div>
-    //       <NinButtons buttons={vettingButtons} {...this.props} />
-    //     </div>
-    //   </div>
-    // ];
-
-    ninStatus === "nonin";
-
-    if (true) {
+    if (this.state.nin === null) {
       return (
         <div key="1" id="add-nin-number">
           <div key="1">{this.props.l10n("nins.help_text")}</div>
@@ -216,48 +135,31 @@ class AddNin extends Component {
           </div>
         </div>
       );
-    } else if (ninStatus === "unverified") {
-      ninInput = ninUnverified;
+    } else if (this.state.nin !== null) {
+      return (
+        <div key="1" id="add-nin-number">
+          <NinNumber {...this.props} />
+          <div id="nin-buttons">
+            <VerifyButton {...this.props} />
+            <RemoveButton {...this.props} />
+          </div>
+        </div>
+      );
       if (this.props.nins.length > 1) {
         ninInput = this.props.l10n("nins.only_one_to_verify");
       }
     } else if (ninStatus === "verified") {
       ninInput = ninVerified;
     }
-
-    if (url.includes("settings")) {
-      ninHeading = settingsStyle;
-    } else if (url.includes("step2")) {
-      ninButtons = vettingButtons;
-      ninHeading = verifyIdentityStyle;
-    } else {
-      ninHeading = verifyIdentityStyle;
-    }
-
-    // return <div>{ninInput}</div>;
   }
 }
 
-// NinForm = reduxForm({
-//   form: "nins",
-//   destroyOnUnmount: false,
-//   enableReinitialize: true,
-//   keepDirtyOnReinitialize: true,
-//   keepValuesOnReinitialize: true,
-//   updateUnregisteredFields: true,
-//   validate: validate
-// })(NinForm);
-
-// NinForm = connect(state => ({
-//   initialValues: { nin: state.nins.nin }
-// }))(NinForm);
-
-AddNin.propTypes = {
-  nin: PropTypes.string,
-  nins: PropTypes.array,
-  validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
-  proofing_methods: PropTypes.array
-};
+// AddNin.propTypes = {
+//   nin: PropTypes.string,
+//   nins: PropTypes.array,
+//   validateNin: PropTypes.func,
+//   handleDelete: PropTypes.func,
+//   proofing_methods: PropTypes.array
+// };
 
 export default AddNin;

@@ -2,19 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { Link } from "react-router-dom";
-import { ButtonGroup, Form } from "reactstrap";
+import { Form } from "reactstrap";
 
 import TextInput from "components/EduIDTextInput";
-import EduIDButton from "components/EduIDButton";
-// import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
 
 const validate = values => {
-  console.log("values to be validated", values);
   let value = values.nin;
-  console.log("value in validation", values);
   // accept only digits
   if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
   if (value.length !== 12) return { nin: "nins.wrong_length" };
@@ -41,23 +36,11 @@ const validate = values => {
 
 class NinForm extends Component {
   render() {
-    // const url = window.location.href;
-    // let ninStatus = "nonin",
-    //   ninHeading = "",
-    //   vettingButtons = "",
-    //   ninInput = "",
-    //   ninButtons = "",
-    //   verifiedNin = "",
     let validNin = "",
       formButton = "";
 
-    console.log("these are props (AddNin.js)", this.props);
-    console.log("this is nins array (AddNin.js)", this.props.nins);
-    console.log("this is nin (AddNin.js)", this.props.nin);
-
     if (this.props.valid_nin) {
-      console.log("is the nin valid? (AddNin.js)", this.props.valid_nin);
-       validNin = this.props.nin;
+      validNin = this.props.nin;
       formButton = [
         <button onClick={() => this.props.addNin(validNin)} key="1">
           ADD
@@ -98,12 +81,12 @@ NinForm = connect(state => ({
   initialValues: { nin: state.nins.nin }
 }))(NinForm);
 
-NinForm.propTypes = {
-  nin: PropTypes.string,
-  nins: PropTypes.array,
-  validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
-  proofing_methods: PropTypes.array
-};
+// NinForm.propTypes = {
+//   nin: PropTypes.string,
+//   nins: PropTypes.array,
+//   validateNin: PropTypes.func,
+//   handleDelete: PropTypes.func,
+//   proofing_methods: PropTypes.array
+// };
 
 export default NinForm;
