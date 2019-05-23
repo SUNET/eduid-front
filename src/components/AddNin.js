@@ -214,14 +214,7 @@ class AddNin extends Component {
       ninHeading = verifyIdentityStyle;
     }
 
-    return (
-      <div>
-        <div id="add-nin-number-container">
-          {ninHeading}
-          {ninInput}
-        </div>
-      </div>
-    );
+    return <div>{ninInput}</div>;
   }
 }
 

@@ -218,11 +218,11 @@ class Nins extends Component {
     return (
       <div>
         <div id="nin-process">
-          <AddNin {...this.props}/>
-          {/* <div id="add-nin-number-container">
+          <div id="add-nin-number-container">
             {ninHeading}
-            {ninInput}
-          </div> */}
+            <AddNin {...this.props} />
+            {/* {ninInput} */}
+          </div>
           <div id="connect-nin-number-container">{ninButtons}</div>
         </div>
       </div>
