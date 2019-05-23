@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import NinForm from "./NinForm";
+import NinDisplay from "./NinDisplay";
 import EduIDButton from "components/EduIDButton";
 
 import "style/Nins.scss";
@@ -83,10 +84,8 @@ class AddNin extends Component {
     } else if (this.state.nin !== null) {
       return (
         <div key="1" id="add-nin-number">
-          <NinNumber {...this.props} />
-          <div id="nin-buttons">
-            <VerifyButton {...this.props} />
-            <RemoveButton {...this.props} />
+          <div key="1" id="nin-form-container">
+            <NinDisplay addNin={this.addNin} {...this.props} />
           </div>
         </div>
       );
