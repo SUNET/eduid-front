@@ -121,6 +121,11 @@ class AddNin extends Component {
     console.log("this is nins array (AddNin.js)", this.props.nins);
     console.log("this is nin (AddNin.js)", this.props.nin);
 
+    if (this.props.valid_nin) {
+      console.log("is the nin valid? (AddNin.js)", this.props.valid_nin);
+      validNin = this.props.nin;
+    }
+
     if (this.props.nins.length) {
       ninStatus = "unverified";
       const nins = this.props.nins.filter(nin => nin.verified);
