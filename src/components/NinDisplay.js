@@ -32,9 +32,7 @@ let RemoveButton = props => {
 let VerifyButton = props => {
   return (
     <Link id="verify-button" to="/profile/verify-identity/step2">
-      <button>
-        <p>connect eduid to my person</p>
-      </button>
+      <p>connect eduid to my person</p>
     </Link>
   );
 };
@@ -75,13 +73,17 @@ class NinDisplay extends Component {
       return (
         <div key="1" className="intro">
           <h3> Step 1. Add your national id number</h3>
-          <p>Your id number has been added, but you still need to connect it to your person</p>
+          <p>
+            Your id number has been added,
+            <Link id="verify-id-link" to="/profile/verify-identity/step2">
+              but you still need to connect it to your person
+            </Link>
+          </p>
           <div key="1" id="add-nin-number">
             <div key="1" id="nin-form-container">
               <div key="1" id="add-nin-number">
                 <NinNumber {...this.props} />
                 <div id="nin-buttons">
-                  <VerifyButton {...this.props} />
                   <RemoveButton {...this.props} />
                 </div>
               </div>

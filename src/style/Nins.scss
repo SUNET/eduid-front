@@ -25,25 +25,29 @@
 }
 
 /*--- styles for nin buttons ---*/
-#nin-buttons {
-  display: flex;
+// #nin-buttons {
+//   display: flex;
+// }
+
+#verify-id-link {
+  margin-left: 5px;
 }
 
-#verify-button button {
-  background-color: transparent;
-}
+// #verify-button button {
+//   background-color: transparent;
+// }
 
-#verify-button button p {
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  color: #3f5c57;
-  border-bottom: 2px solid transparent;
-}
+// #verify-button button p {
+//   margin: 0;
+//   padding: 0;
+//   font-size: 14px;
+//   color: #3f5c57;
+//   border-bottom: 2px solid transparent;
+// }
 
-#verify-button p:hover {
-  border-bottom: 2px solid #3f5c57;
-}
+// #verify-button p:hover {
+//   border-bottom: 2px solid #3f5c57;
+// }
 
 //--- STEP 2. CONNECT NIN STYLES ---//
 
