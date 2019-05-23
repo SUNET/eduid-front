@@ -37,8 +37,15 @@ const validate = values => {
   return {};
 };
 
-
 class NinForm extends Component {
+  addNin(e) {
+    console.log("you've clicked the button");
+  //   console.log("this is ninInput", e.target);
+  //   const ninInput = e.target.previousSibling.firstChild.children[0];
+  //   // console.log("this is ninInput", ninInput)
+  //   const ninValue = ninInput.value;
+  //   console.log("this is ninInput", ninValue);
+  // }
   render() {
     // const url = window.location.href;
     // let ninStatus = "nonin",
@@ -47,7 +54,8 @@ class NinForm extends Component {
     //   ninInput = "",
     //   ninButtons = "",
     //   verifiedNin = "",
-    let validNin = "";
+    let validNin = "",
+      formButton = "";
 
     console.log("these are props (AddNin.js)", this.props);
     console.log("this is nins array (AddNin.js)", this.props.nins);
@@ -55,7 +63,12 @@ class NinForm extends Component {
 
     if (this.props.valid_nin) {
       console.log("is the nin valid? (AddNin.js)", this.props.valid_nin);
-      validNin = this.props.nin;
+      // validNin = this.props.nin;
+      formButton = [
+        <button onClick={this.addNin} key="1">
+          ADD
+        </button>
+      ];
     }
 
     return (
@@ -71,9 +84,7 @@ class NinForm extends Component {
             helpBlock={this.props.l10n("nins.input_help_text")}
           />
         </Form>
-        <button onClick={this.addNin} key="1">
-          ADD
-        </button>
+        {formButton}
       </div>
     );
   }
