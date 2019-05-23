@@ -73,20 +73,36 @@ class NinDisplay extends Component {
 
     if (true) {
       return (
-        <div key="1" id="add-nin-number">
-          <NinNumber {...this.props} />
-          <div id="nin-buttons">
-            <VerifyButton {...this.props} />
-            <RemoveButton {...this.props} />
+        <div key="1" className="intro">
+          <h3> Step 1. Add your national id number</h3>
+          <p>Your id number has been added, but you still need to connect it to your person</p>
+          <div key="1" id="add-nin-number">
+            <div key="1" id="nin-form-container">
+              <div key="1" id="add-nin-number">
+                <NinNumber {...this.props} />
+                <div id="nin-buttons">
+                  <VerifyButton {...this.props} />
+                  <RemoveButton {...this.props} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       );
     } else {
       return (
-        <div key="1" id="add-nin-number">
-          <NinNumber {...this.props} />
-          <div id="nin-buttons">
-            <RemoveButton {...this.props} />
+        <div key="1" className="intro">
+          <h3> Step 1. Add your national identity number</h3>
+          <p>Your id number has been added and connected to your person.</p>
+          <div key="1" id="add-nin-number">
+            <div key="1" id="nin-form-container">
+              <div key="1" id="add-nin-number">
+                <NinNumber {...this.props} />
+                <div id="nin-buttons">
+                  <RemoveButton {...this.props} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       );

@@ -18,8 +18,8 @@ import "style/Nins.scss";
 //   if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
 //   if (value.length !== 12) return { nin: "nins.wrong_length" };
 
-  // The Luhn Algorithm. It's so pretty.
-  // taken from https://gist.github.com/DiegoSalazar/4075533/
+// The Luhn Algorithm. It's so pretty.
+// taken from https://gist.github.com/DiegoSalazar/4075533/
 //   let nCheck = 0,
 //     bEven = false;
 //   value = value.slice(2); // To pass the Luhn check only use the 10 last digits
@@ -168,12 +168,12 @@ class Nins extends Component {
     //   </div>
     // ];
 
-    let verifyIdentityStyle = [
-      <div key="1" className="intro">
-        <h3> Step 1. Add your national identity number</h3>
-        <p>Your number can be used to connect eduID to your person.</p>
-      </div>
-    ];
+    // let verifyIdentityStyle = [
+    //   <div key="1" className="intro">
+    //     <h3> Step 1. Add your national identity number</h3>
+    //     <p>Your number can be used to connect eduID to your person.</p>
+    //   </div>
+    // ];
 
     let settingsStyle = [
       <div className="intro">
@@ -207,24 +207,22 @@ class Nins extends Component {
     // }
 
     if (url.includes("settings")) {
-      ninHeading = settingsStyle;
+      // ninHeading = settingsStyle;
     } else if (url.includes("step2")) {
       ninButtons = vettingButtons;
-      ninHeading = verifyIdentityStyle;
+      // ninHeading = verifyIdentityStyle;
     } else {
-      ninHeading = verifyIdentityStyle;
+      // ninHeading = verifyIdentityStyle;
     }
 
     return (
-      <div>
-        <div id="nin-process">
-          <div id="add-nin-number-container">
-            {ninHeading}
-            <AddNin {...this.props} />
-            {/* {ninInput} */}
-          </div>
-          <div id="connect-nin-number-container">{ninButtons}</div>
+      <div id="nin-process">
+        <div id="add-nin-number-container">
+          {/* {ninHeading} */}
+          <AddNin {...this.props} />
+          {/* {ninInput} */}
         </div>
+        <div id="connect-nin-number-container">{ninButtons}</div>
       </div>
     );
   }
