@@ -77,21 +77,21 @@ const validate = values => {
 //   );
 // };
 
-let NinInput = props => {
-  return (
-    <Form id="nin-form" role="form">
-      <Field
-        component={TextInput}
-        componentClass="input"
-        type="text"
-        name="nin"
-        className="nin-input"
-        placeholder={props.l10n("nins.input_placeholder")}
-        helpBlock={props.l10n("nins.input_help_text")}
-      />
-    </Form>
-  );
-};
+// let NinInput = props => {
+//   return (
+//     <Form id="nin-form" role="form">
+//       <Field
+//         component={TextInput}
+//         componentClass="input"
+//         type="text"
+//         name="nin"
+//         className="nin-input"
+//         placeholder={props.l10n("nins.input_placeholder")}
+//         helpBlock={props.l10n("nins.input_help_text")}
+//       />
+//     </Form>
+//   );
+// };
 
 class NinForm extends Component {
   render() {
@@ -210,7 +210,18 @@ class NinForm extends Component {
 
     return (
       <div key="2" id="nin-form-container">
-        <NinInput {...this.props} />
+        {/* <NinInput {...this.props} /> */}
+        <Form id="nin-form" role="form">
+          <Field
+            component={TextInput}
+            componentClass="input"
+            type="text"
+            name="nin"
+            className="nin-input"
+            placeholder={this.props.l10n("nins.input_placeholder")}
+            helpBlock={this.props.l10n("nins.input_help_text")}
+          />
+        </Form>
         <button onClick={this.addNin} key="1">
           ADD
         </button>
@@ -219,7 +230,7 @@ class NinForm extends Component {
   }
 }
 
-NinInput = reduxForm({
+NinForm = reduxForm({
   form: "nins"
   // destroyOnUnmount: false,
   // enableReinitialize: true,
@@ -227,7 +238,7 @@ NinInput = reduxForm({
   // keepValuesOnReinitialize: true,
   // updateUnregisteredFields: true,
   // validate: validate
-})(NinInput);
+})(NinForm);
 
 // NinForm = connect(state => ({
 //   initialValues: { nin: state.nins.nin }
