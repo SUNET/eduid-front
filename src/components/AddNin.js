@@ -87,10 +87,15 @@ class AddNin extends Component {
       return <NinDisplay {...this.props} />
     }
 
-    if (this.state.nin === null) {
-      console.log("is state.nin null?", this.state.nin === null)
-      console.log("show form!")
-      console.log("these are the props (AddNin):", this.props)
+    if (this.state.nin) {
+      console.log("is state.nin?", this.state.nin);
+      console.log("show number!");
+      console.log("these are the props (AddNin):", this.props);
+      return <NinDisplay removeNin={this.removeNin} {...this.props} />;
+    } else {
+      console.log("is state.nin?", this.state.nin);
+      console.log("show form!");
+      console.log("these are the props (AddNin):", this.props);
       return (
         <div key="1" className="intro">
           <h3> Step 1. Add your national identity number</h3>
@@ -103,11 +108,6 @@ class AddNin extends Component {
           </div>
         </div>
       );
-    } else {
-      console.log("is state.nin null?", this.state.nin === null)
-      console.log("show number!")
-      console.log("these are the props (AddNin):", this.props)
-      return <NinDisplay removeNin={this.removeNin} {...this.props} />;
     }
   }
 }
