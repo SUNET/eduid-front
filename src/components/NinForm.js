@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Form } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import TextInput from "components/EduIDTextInput";
 
@@ -42,9 +43,11 @@ class NinForm extends Component {
     if (this.props.valid_nin) {
       validNin = this.props.nin;
       formButton = [
-        <button onClick={() => this.props.addNin(validNin)} key="1">
-          ADD
-        </button>
+        <Link id="verify-button" to="/profile/verify-identity/step2">
+          <button onClick={() => this.props.addNin(validNin)} key="1">
+            ADD
+          </button>
+        </Link>
       ];
     }
 

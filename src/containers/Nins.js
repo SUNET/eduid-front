@@ -17,11 +17,11 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    // handleDelete: function(e) {
-    //   console.log("you came here through nins.js")
-    //   const nin = e.target.closest(".nin-holder").dataset.ninnumber;
-    //   dispatch(actions.startRemove(nin));
-    // }
+    handleDelete: function(e) {
+      console.log("you came here through nins.js")
+      const nin = e.target.closest(".nin-holder").dataset.ninnumber;
+      dispatch(actions.startRemove(nin));
+    }
   };
 };
 
