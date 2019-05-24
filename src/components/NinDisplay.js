@@ -12,8 +12,8 @@ import "style/Nins.scss";
 
 let NinNumber = props => {
   return (
-    <div data-ninnumber={props.nins[0].number} id="nin-number-container">
-      <p id="nin-number">{props.nins[0].number}</p>
+    <div data-ninnumber={props.nin} id="nin-number-container">
+      <p id="nin-number">{props.nin}</p>
     </div>
   );
 };
@@ -21,10 +21,9 @@ let NinNumber = props => {
 let RemoveButton = props => {
   return (
     <EduIDButton
-      className="btn-danger"
-      className="btn-sm"
-      id={"button-rm-nin-" + props.nins[0].number}
-      onClick={props.handleDelete}
+      className="btn-danger btn-sm"
+      // id={"button-rm-nin-" + props.nin}
+      onClick={() => props.removeNin()}
     >
       X
     </EduIDButton>
@@ -50,6 +49,7 @@ class NinDisplay extends Component {
   //     return { nin: validNin };
   //   }, console.log("this is state in AddNin:", this.state.nin));
   // }
+
   render() {
     let ninStatus = "nonin";
 
@@ -118,32 +118,32 @@ class NinDisplay extends Component {
 //   proofing_methods: PropTypes.array
 // };
 
-const mapStateToProps = (state, props) => {
-  return {
-    nins: state.nins.nins,
-    // is_configured: state.config.is_configured,
-    // proofing_methods: state.config.PROOFING_METHODS,
-    // valid_nin: isValid("nins")(state),
-    nin: state.nins.nin,
-    message: state.nins.message
-  };
-};
+// const mapStateToProps = (state, props) => {
+//   return {
+//     nins: state.nins.nins,
+//     // is_configured: state.config.is_configured,
+//     // proofing_methods: state.config.PROOFING_METHODS,
+//     // valid_nin: isValid("nins")(state),
+//     nin: state.nins.nin,
+//     message: state.nins.message
+//   };
+// };
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    handleDelete: function(e) {
-      console.log("you're in hansleDelete through ninDisplay!")
-      const ninNumber = e.target.previousSibling.dataset.ninnumber;
-      dispatch(actions.startRemove(ninNumber));
-    }
-  };
-};
+// const mapDispatchToProps = (dispatch, props) => {
+//   // return {
+//   //   handleDelete: function(e) {
+//   //     console.log("you're in hansleDelete through ninDisplay!")
+//   //     const ninNumber = e.target.previousSibling.dataset.ninnumber;
+//   //     dispatch(actions.startRemove(ninNumber));
+//   //   }
+//   // };
+// };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NinDisplay);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(NinDisplay);
 
 // export default i18n(NinDisplay);
 
-// export default NinDisplay;
+export default NinDisplay;

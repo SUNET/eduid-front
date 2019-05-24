@@ -45,11 +45,19 @@ class AddNin extends Component {
     super(props);
     this.state = { nin: null };
     this.addNin = this.addNin.bind(this);
+    this.removeNin = this.removeNin.bind(this);
   }
   addNin(validNin) {
     this.setState((state, props) => {
       return { nin: validNin };
-    }, console.log("this is state in AddNin:", this.state.nin));
+    }, console.log("this is state in addNin() in AddNin:", this.state.nin));
+  }
+
+  removeNin() {
+    console.log("you  clicked removeNin")
+    this.setState((state, props) => {
+      return { nin: null };
+    }, console.log("this is state in removeNin() in AddNin:", this.state.nin));
   }
   render() {
     // let ninStatus = "nonin";
@@ -75,10 +83,14 @@ class AddNin extends Component {
     //   </div>
     // ];
     if (this.props.nins.length) {
+      console.log("show number beacsue nin arraaaaayyyyyy!")
       return <NinDisplay {...this.props} />
     }
 
     if (this.state.nin === null) {
+      console.log("is state.nin null?", this.state.nin === null)
+      console.log("show form!")
+      console.log("these are the props (AddNin):", this.props)
       return (
         <div key="1" className="intro">
           <h3> Step 1. Add your national identity number</h3>
@@ -92,7 +104,10 @@ class AddNin extends Component {
         </div>
       );
     } else {
-      return <NinDisplay {...this.props} />;
+      console.log("is state.nin null?", this.state.nin === null)
+      console.log("show number!")
+      console.log("these are the props (AddNin):", this.props)
+      return <NinDisplay removeNin={this.removeNin} {...this.props} />;
     }
   }
 }
