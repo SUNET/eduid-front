@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import * as actions from "actions/Nins";
-// import i18n from "i18n-messages";
+import * as actions from "actions/Nins";
+import i18n from "i18n-messages";
 
 import EduIDButton from "components/EduIDButton";
 
@@ -23,7 +23,10 @@ let RemoveButton = props => {
     <EduIDButton
       className="btn-danger btn-sm"
       // id={"button-rm-nin-" + props.nin}
-      onClick={() => props.removeNin()}
+      onClick={e => {
+        props.removeNin();
+        props.handleDelete(e);
+      }}
     >
       X
     </EduIDButton>
@@ -100,5 +103,23 @@ class NinDisplay extends Component {
 //   proofing_methods: PropTypes.array
 // };
 
+const mapStateToProps = (state, props) => {
+  return {};
+};
 
-export default NinDisplay;
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    handleDelete: function (e) {
+      console.log("you're in handleDelete through ninDisplay!");
+      const ninNumber = e.target.previousSibling.dataset.ninnumber;
+      dispatch(actions.startRemove(ninNumber));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NinDisplay);
+
+// export default NinDisplay;
