@@ -99,12 +99,6 @@ NinForm = connect(state => ({
 const mapStateToProps = (state, props) => {
   return {
     initialValues: { nin: state.nins.nin },
-    // nins: state.nins.nins,
-    // // // is_configured: state.config.is_configured,
-    // // // proofing_methods: state.config.PROOFING_METHODS,
-    // // // valid_nin: isValid("nins")(state),
-    // nin: state.nins.nin,
-    // message: state.nins.message
   };
 };
 
@@ -123,4 +117,3 @@ export default connect(
   mapDispatchToProps
 )(NinForm);
 
-// export default NinForm;

@@ -22,7 +22,6 @@ let RemoveButton = props => {
   return (
     <EduIDButton
       className="btn-danger btn-sm"
-      // id={"button-rm-nin-" + props.nin}
       onClick={e => {
         props.removeNin();
         props.handleDelete(e);
@@ -33,26 +32,8 @@ let RemoveButton = props => {
   );
 };
 
-let VerifyButton = props => {
-  return (
-    <Link id="verify-button" to="/profile/verify-identity/step2">
-      <p>connect eduid to my person</p>
-    </Link>
-  );
-};
-
 class NinDisplay extends Component {
   render() {
-    let ninStatus = "nonin";
-
-    // if (this.props.nins.length) {
-    //   ninStatus = "unverified";
-    //   const nins = this.props.nins.filter(nin => nin.verified);
-    //   if (nins.length === 1) {
-    //     ninStatus = "verified";
-    //     verifiedNin = nins[0].number;
-    //   }
-    // }
     if (this.props.nins) {
       if (this.props.nins[0].verified) {
         console.log(this.props.nins.verified);
@@ -120,5 +101,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(NinDisplay);
-
-// export default NinDisplay;

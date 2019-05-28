@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { isValid } from "redux-form";
-// import Nins from "components/Nins";
-import * as actions from "actions/Nins";
-import i18n from "i18n-messages";
-// import { Link } from "react-router-dom";
 
 import NinForm from "./NinForm";
 import NinDisplay from "./NinDisplay";
-// import EduIDButton from "components/EduIDButton";
 
 import "style/Nins.scss";
 
@@ -69,7 +62,6 @@ class AddNin extends Component {
   }
 }
 
-// export default i18n(NinsContainer);
 
 // AddNin.propTypes = {
 //   nin: PropTypes.string,
