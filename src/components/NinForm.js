@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Form } from "reactstrap";
 import { Link } from "react-router-dom";
-
+import * as letterActions from "actions/LetterProofing";
 import TextInput from "components/EduIDTextInput";
 
 import "style/Nins.scss";
@@ -44,7 +44,13 @@ class NinForm extends Component {
       validNin = this.props.nin;
       formButton = [
         <Link id="verify-button" to="/profile/verify-identity/step2">
-          <button onClick={() => this.props.addNin(validNin)} key="1">
+          <button
+            onClick={e => {
+              this.props.addNin(validNin);
+              this.props.confirmLetterProofing(e);
+            }}
+            key="1"
+          >
             ADD
           </button>
         </Link>
@@ -92,4 +98,31 @@ NinForm = connect(state => ({
 //   proofing_methods: PropTypes.array
 // };
 
-export default NinForm;
+const mapStateToProps = (state, props) => {
+  return {
+    initialValues: { nin: state.nins.nin },
+    // nins: state.nins.nins,
+    // // // is_configured: state.config.is_configured,
+    // // // proofing_methods: state.config.PROOFING_METHODS,
+    // // // valid_nin: isValid("nins")(state),
+    // nin: state.nins.nin,
+    // message: state.nins.message
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    confirmLetterProofing: function (e) {
+      console.log("you're in confirmLetterProofing!");
+      dispatch(letterActions.postLetterProofingSendLetter());
+      dispatch(letterActions.stopLetterConfirmation());
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NinForm);
+
+// export default NinForm;
