@@ -43,6 +43,10 @@ class AddNin extends Component {
   }
   
   render() {
+    if (this.props.nins.length) {
+      console.log("show number! because nin arraaaaayyyy!");
+      return <NinDisplay removeNin={this.removeNin} {...this.props} />;
+    }
     if (this.state.nin === null) {
       console.log("show form! because nin is null!");
       console.log("these are the props (AddNin):", this.props);
