@@ -210,7 +210,7 @@ class Nins extends Component {
     // console.log("is state nin null:", this.state.nin === null);
     // console.log("is state nin something else:", this.state.nin !== null);
     // !this.props.nin === ""
-    if (url.includes("step2")) {
+    if (this.props.nins.length) {
       connectNin = [
         <div key="1" id="connect-nin-number">
           <h3> Step 2. Connect your national identity number to eduID</h3>

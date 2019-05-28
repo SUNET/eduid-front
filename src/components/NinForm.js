@@ -43,8 +43,7 @@ class NinForm extends Component {
     if (this.props.valid_nin) {
       validNin = this.props.nin;
       formButton = [
-        <Link id="verify-button" to="/profile/verify-identity/step2">
-          <button
+          <button id="verify-button" 
             onClick={e => {
               this.props.addNin(validNin);
               this.props.confirmLetterProofing(e);
@@ -53,7 +52,6 @@ class NinForm extends Component {
           >
             ADD
           </button>
-        </Link>
       ];
     }
 
