@@ -4,7 +4,7 @@ import { ButtonGroup } from "reactstrap";
 
 import AddNin from "./AddNin";
 import vettingRegistry from "vetting-registry";
-
+import NotificationsContainer from "containers/Notifications";
 import "style/Nins.scss";
 
 class Nins extends Component {
@@ -45,6 +45,7 @@ class Nins extends Component {
   
     return (
       <div id="nin-process">
+        <NotificationsContainer />
         <div id="add-nin-number-container">
           <AddNin {...this.props} />
         </div>
