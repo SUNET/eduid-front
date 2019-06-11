@@ -120,19 +120,27 @@ class AddNin extends Component {
 
     console.log("show form! because nin is null!");
     console.log("these are the props (AddNin):", this.props);
-    return (
-      <div key="1" className="intro">
-        <h3> Step 1. Add your national identity number</h3>
-        <p>Your number can be used to connect eduID to your person.</p>
-        <div key="1" id="add-nin-number">
-          <div key="1">{this.props.l10n("nins.help_text")}</div>
-          <div key="2" id="nin-form-container">
-            <NinForm addNin={this.addNin} {...this.props} />
+    if (this.props.nins.length) {
+      return (
+        <div key="1" className="intro">
+          <h3> Step 1. Add your national identity number</h3>
+          <p>nin array has a number!</p>
+        </div>
+      );
+    } else {
+      return (
+        <div key="1" className="intro">
+          <h3> Step 1. Add your national identity number</h3>
+          <p>Your number can be used to connect eduID to your person.</p>
+          <div key="1" id="add-nin-number">
+            <div key="1">{this.props.l10n("nins.help_text")}</div>
+            <div key="2" id="nin-form-container">
+              <NinForm addNin={this.addNin} {...this.props} />
+            </div>
           </div>
         </div>
-      </div>
-    );
-   
+      );
+    }
 
     // if (this.props.valid_nin) {
     //   console.log("is the nin valid? (AddNin.js)", this.props.valid_nin);
