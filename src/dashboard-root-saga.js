@@ -44,7 +44,7 @@ import {
   requestSuggestedPassword,
   postPasswordChange
 } from "sagas/ChangePassword";
-import { requestNins, requestRemoveNin, postNin } from "sagas/Nins”;
+import { requestNins, requestRemoveNin, postNin } from "sagas/Nins";
 import {
   sendLetterProofing,
   sendGetLetterProofing,
@@ -76,10 +76,7 @@ function* rootSaga() {
       openidActions.POST_OIDC_PROOFING_PROOFING,
       sagasOpenid.requestOpenidQRcode
     ),
-    takeLatest(
-      lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING,
-      saveLMPNinData
-    ),
+    takeLatest(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING, saveLMPNinData),
     takeLatest(
       openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING,
       sagasOpenidFreja.initializeOpenidFrejaData
