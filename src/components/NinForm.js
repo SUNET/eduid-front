@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 // import { Link } from "react-router-dom";
 import { ButtonGroup, Form } from "reactstrap";
+import * as actions from "actions/Nins";
 
 import TextInput from "components/EduIDTextInput";
 // import EduIDButton from "components/EduIDButton";
@@ -122,13 +123,14 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    addNin: function (e) {
+    addNin: function(e) {
       console.log("you're in addNin!");
       console.log(
         "this is the nin from component",
         e.target.previousElementSibling.firstElementChild.children[0].value
       );
-      const nin = e.target.previousElementSibling.firstElementChild.children[0].value
+      const nin =
+        e.target.previousElementSibling.firstElementChild.children[0].value;
       // console.log("this is valid nin:", validNin);
       dispatch(actions.postNin(nin));
       // dispatch(letterActions.stopLetterConfirmation());
