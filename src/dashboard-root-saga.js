@@ -44,7 +44,7 @@ import {
   requestSuggestedPassword,
   postPasswordChange
 } from "sagas/ChangePassword";
-import { requestNins, requestRemoveNin } from "sagas/Nins";
+import { requestNins, requestRemoveNin, postNin } from "sagas/Nins”;
 import {
   sendLetterProofing,
   sendGetLetterProofing,
@@ -124,6 +124,8 @@ function* rootSaga() {
       sendGetLetterProofing
     ),
     takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
+    takeLatest(ninActions.POST_NIN, postNin),
+    takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
     takeLatest(ninActions.POST_NIN_REMOVE, requestRemoveNin),
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
     takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestNins),
