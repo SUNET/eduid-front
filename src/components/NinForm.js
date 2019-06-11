@@ -112,4 +112,23 @@ NinForm.propTypes = {
   proofing_methods: PropTypes.array
 };
 
-export default NinForm;
+// export default NinForm;
+
+const mapStateToProps = (state, props) => {
+  return {
+    initialValues: { nin: state.nins.nin }
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    addNin: function (e) {
+      console.log("you're in addNin!");
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NinForm);
