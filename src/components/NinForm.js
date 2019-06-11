@@ -100,9 +100,9 @@ NinForm = reduxForm({
   validate: validate
 })(NinForm);
 
-// NinForm = connect(state => ({
-//   initialValues: { nin: state.nins.nin }
-// }))(NinForm);
+NinForm = connect(state => ({
+  initialValues: { nin: state.nins.nin }
+}))(NinForm);
 
 NinForm.propTypes = {
   nin: PropTypes.string,
