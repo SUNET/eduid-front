@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { ButtonGroup, Form } from "reactstrap";
 
 import TextInput from "components/EduIDTextInput";
-import EduIDButton from "components/EduIDButton";
+// import EduIDButton from "components/EduIDButton";
 // import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";

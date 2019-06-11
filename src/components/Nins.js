@@ -206,14 +206,14 @@ class Nins extends Component {
     //   ninInput = ninVerified;
     // }
 
-    if (url.includes("settings")) {
-      ninHeading = settingsStyle;
-    } else if (url.includes("step2")) {
-      ninButtons = vettingButtons;
-      ninHeading = verifyIdentityStyle;
-    } else {
-      ninHeading = verifyIdentityStyle;
-    }
+    // if (url.includes("settings")) {
+    //   ninHeading = settingsStyle;
+    // } else if (url.includes("step2")) {
+    //   ninButtons = vettingButtons;
+    //   ninHeading = verifyIdentityStyle;
+    // } else {
+    //   ninHeading = verifyIdentityStyle;
+    // }
 
     return (
       <div>
