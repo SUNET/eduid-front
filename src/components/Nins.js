@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import { connect } from "react-redux";
-// import { Field, reduxForm } from "redux-form";
-// import { Link } from "react-router-dom";
-import { ButtonGroup, Form } from "reactstrap";
+import { ButtonGroup } from "reactstrap";
 
 import AddNin from "./AddNin";
-// import TextInput from "components/EduIDTextInput";
-// import EduIDButton from "components/EduIDButton";
 import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
@@ -38,7 +33,7 @@ class Nins extends Component {
           <p>
             Choose a way below to verify that the given identity number belongs
             to you.
-</p>
+          </p>
           <div>
             <ButtonGroup vertical={true} id="nins-btn-group">
               {vettingButtons}
@@ -61,26 +56,12 @@ class Nins extends Component {
   }
 }
 
-// NinForm = reduxForm({
-//   form: "nins",
-//   destroyOnUnmount: false,
-//   enableReinitialize: true,
-//   keepDirtyOnReinitialize: true,
-//   keepValuesOnReinitialize: true,
-//   updateUnregisteredFields: true,
-//   validate: validate
-// })(NinForm);
-
-// NinForm = connect(state => ({
-//   initialValues: { nin: state.nins.nin }
-// }))(NinForm);
-
-Nins.propTypes = {
-  nin: PropTypes.string,
-  nins: PropTypes.array,
-  validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
-  proofing_methods: PropTypes.array
-};
+// Nins.propTypes = {
+//   nin: PropTypes.string,
+//   nins: PropTypes.array,
+//   validateNin: PropTypes.func,
+//   handleDelete: PropTypes.func,
+//   proofing_methods: PropTypes.array
+// };
 
 export default Nins;
