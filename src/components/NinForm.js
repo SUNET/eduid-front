@@ -39,32 +39,12 @@ const validate = values => {
 };
 
 class NinForm extends Component {
-  // addNin(e) {
-  //   console.log("you've clicked the button");
-  //   console.log("this is ninInput", e.target);
-  //   const ninInput = e.target.previousSibling.firstChild.children[0];
-  //   // console.log("this is ninInput", ninInput)
-  //   const ninValue = ninInput.value;
-  //   console.log("this is ninInput", ninValue);
-  // }
   render() {
-    // const url = window.location.href;
-    // let ninStatus = "nonin",
-    //   ninHeading = "",
-    //   vettingButtons = "",
-    //   ninInput = "",
-    //   ninButtons = "",
-    //   verifiedNin = "",
     let validNin = "",
       formButton = "";
 
-    console.log("these are props (AddNin.js)", this.props);
-    console.log("this is nins array (AddNin.js)", this.props.nins);
-    console.log("this is nin (AddNin.js)", this.props.nin);
-
     if (this.props.valid_nin) {
-      console.log("is the nin valid? (AddNin.js)", this.props.valid_nin);
-      // validNin = this.props.nin;
+      validNin = this.props.nin;
       formButton = [
         <button onClick={this.props.addNin} key="1">
           ADD
@@ -101,17 +81,17 @@ NinForm = reduxForm({
   validate: validate
 })(NinForm);
 
-NinForm = connect(state => ({
-  initialValues: { nin: state.nins.nin }
-}))(NinForm);
+// NinForm = connect(state => ({
+//   initialValues: { nin: state.nins.nin }
+// }))(NinForm);
 
-NinForm.propTypes = {
-  nin: PropTypes.string,
-  nins: PropTypes.array,
-  validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
-  proofing_methods: PropTypes.array
-};
+// NinForm.propTypes = {
+//   nin: PropTypes.string,
+//   nins: PropTypes.array,
+//   validateNin: PropTypes.func,
+//   handleDelete: PropTypes.func,
+//   proofing_methods: PropTypes.array
+// };
 
 // export default NinForm;
 
@@ -131,9 +111,7 @@ const mapDispatchToProps = (dispatch, props) => {
       );
       const nin =
         e.target.previousElementSibling.firstElementChild.children[0].value;
-      // console.log("this is valid nin:", validNin);
       dispatch(actions.postNin(nin));
-      // dispatch(letterActions.stopLetterConfirmation());
     }
   };
 };

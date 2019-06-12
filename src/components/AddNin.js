@@ -32,12 +32,12 @@ class AddNin extends Component {
   }
 }
 
-AddNin.propTypes = {
-  nin: PropTypes.string,
-  nins: PropTypes.array,
-  validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
-  proofing_methods: PropTypes.array
-};
+// AddNin.propTypes = {
+//   nin: PropTypes.string,
+//   nins: PropTypes.array,
+//   validateNin: PropTypes.func,
+//   handleDelete: PropTypes.func,
+//   proofing_methods: PropTypes.array
+// };
 
 export default AddNin;
