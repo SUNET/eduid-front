@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { ButtonGroup } from "reactstrap";
 
 import AddNin from "./AddNin";
+import NotificationsContainer from "containers/Notifications";
 import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
@@ -45,6 +46,7 @@ class Nins extends Component {
 
     return (
       <div>
+        <NotificationsContainer />
         <div id="nin-process">
           <div id="add-nin-number-container">
             <AddNin {...this.props} />
