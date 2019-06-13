@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { Form } from "reactstrap";
+// import { Link } from "react-router-dom";
+import { ButtonGroup, Form } from "reactstrap";
+import * as actions from "actions/Nins";
 
 import TextInput from "components/EduIDTextInput";
+// import EduIDButton from "components/EduIDButton";
+// import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
 
@@ -42,7 +46,7 @@ class NinForm extends Component {
     if (this.props.valid_nin) {
       validNin = this.props.nin;
       formButton = [
-        <button onClick={() => this.props.addNin(validNin)} key="1">
+        <button onClick={this.props.addNin} key="1">
           ADD
         </button>
       ];
@@ -77,9 +81,9 @@ NinForm = reduxForm({
   validate: validate
 })(NinForm);
 
-NinForm = connect(state => ({
-  initialValues: { nin: state.nins.nin }
-}))(NinForm);
+// NinForm = connect(state => ({
+//   initialValues: { nin: state.nins.nin }
+// }))(NinForm);
 
 // NinForm.propTypes = {
 //   nin: PropTypes.string,
@@ -89,4 +93,30 @@ NinForm = connect(state => ({
 //   proofing_methods: PropTypes.array
 // };
 
-export default NinForm;
+// export default NinForm;
+
+const mapStateToProps = (state, props) => {
+  return {
+    initialValues: { nin: state.nins.nin }
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    addNin: function(e) {
+      console.log("you're in addNin!");
+      console.log(
+        "this is the nin from component",
+        e.target.previousElementSibling.firstElementChild.children[0].value
+      );
+      const nin =
+        e.target.previousElementSibling.firstElementChild.children[0].value;
+      dispatch(actions.postNin(nin));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NinForm);

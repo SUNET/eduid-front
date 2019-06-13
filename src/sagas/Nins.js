@@ -30,6 +30,38 @@ export function fetchNins(config) {
     .then(response => response.json());
 }
 
+// function to post nins
+export function* postNin() {
+  console.log("you're in postNin");
+  try {
+    const state = yield select(state => state),
+      data = {
+        nin: state.nins.nin,
+        csrf_token: state.config.csrf_token
+      };
+    console.log("this is data in postNin:", data);
+    const resp = yield call(postNinFetch, state.config, data);
+    console.log("this is resp in postNin:", resp);
+    console.log("this is token in resp postNin:", resp.payload.csrf_token);
+    yield put(putCsrfToken(resp));
+    yield put(resp);
+  } catch (error) {
+    yield* failRequest(error, actions.postNinFail);
+  }
+}
+
+// function to reach endpoint to post nin
+export function postNinFetch(config, data) {
+  console.log("this is data in postNinFetch:", data);
+  return window
+    .fetch("/services/security/" + "add-nin", {
+      ...postRequest,
+      body: JSON.stringify(data)
+    })
+    .then(checkStatus)
+    .then(response => response.json());
+}
+
 export function* requestRemoveNin() {
   try {
     const state = yield select(state => state),
