@@ -2399,6 +2399,19 @@ const unformatted = defineMessages({
     defaultMessage: `Resend confirmation code`,
     description: "Lost code problem solution"
   },
+  "lmp.confirm_title": {
+    id: "lmp.confirm_title",
+    defaultMessage: `A code will be sent to your mobile phone`,
+    description: "Title for mobile proofing confirm dialog"
+  },
+  "lmp.confirm_info": {
+    id: "lmp.confirm_info",
+    defaultMessage: `This is the modal for phone numbers. It needs to point out that: 1. Clicking ACCEPT will check if the phone number you have given matches the nin in the phone number registry 
+    2. The check is only as good as the registry
+    3. You can have a number in your name (and nin) but not be included in this registry...`,
+    // `If you click "accept" below, you will be sent a letter by physical mail with a confirmation code. Once you receive it come back here and click again on "confirm using letter", and you will be offered a form to enter your code and verify your identity. The code sent to you will expire in 2 weeks starting now.`,
+    description: "Explanation for mobile proofing confirm dialog"
+  },
   "letter.confirm_title": {
     id: "letter.confirm_title",
     defaultMessage: `Confirm identity with code sent by letter`,

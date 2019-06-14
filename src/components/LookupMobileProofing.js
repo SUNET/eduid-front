@@ -33,8 +33,8 @@ class LookupMobileProofing extends Component {
         </form>
         <GenericConfirmModal
           modalId="mobileGenericConfirmDialog"
-          title={this.props.l10n("letter.confirm_title")}
-          mainText={this.props.l10n("letter.confirm_info")}
+          title={this.props.l10n("lmp.confirm_title")}
+          mainText={this.props.l10n("lmp.confirm_info")}
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleLookupMobile}
