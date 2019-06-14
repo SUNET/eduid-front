@@ -2,25 +2,37 @@ import { connect } from "react-redux";
 import { isValid } from "redux-form";
 import LookupMobileProofing from "components/LookupMobileProofing";
 import { eduidRMAllNotify } from "actions/Notifications";
-import { postLookupMobile } from "actions/LookupMobileProofing";
+import {
+  showModal,
+  closeModal,
+  postLookupMobile
+} from "actions/LookupMobileProofing";
 import i18n from "i18n-messages";
 
 const mapStateToProps = (state, props) => {
+  console.log("this is the state", state);
   return {
-    disabled: !isValid("nins")(state)
+    disabled: !isValid("nins")(state),
+    showModal: state.lookup_mobile.showModal
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    handleShowModal: function(e) {
+      dispatch(eduidRMAllNotify());
+      dispatch(showModal());
+      // dispatch(postLookupMobile());
+    },
+    handleCloseModal: function(e) {
+      dispatch(eduidRMAllNotify());
+      dispatch(closeModal());
+      // dispatch(postLookupMobile());
+    },
     handleLookupMobile: function(e) {
       dispatch(eduidRMAllNotify());
-      // dispatch(postLookupMobile());
+      dispatch(postLookupMobile());
     }
-    // handleLetterProofing: function (e) {
-    //   dispatch(eduidRMAllNotify());
-    //   dispatch(actions.getLetterProofingState());
-    // },
   };
 };
 

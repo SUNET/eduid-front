@@ -20,7 +20,8 @@ class LookupMobileProofing extends Component {
             <EduIDButton
               className="proofing-button"
               disabled={this.props.disabled}
-              onClick={this.props.handleLookupMobile}
+              onClick={this.props.handleShowModal}
+              // onClick={this.props.handleLookupMobile}
               block
             >
               {this.props.l10n("lmp.confirm-lookup-mobile")}
@@ -31,12 +32,12 @@ class LookupMobileProofing extends Component {
           </fieldset>
         </form>
         <GenericConfirmModal
-          modalId="letterGenericConfirmDialog"
+          modalId="mobileGenericConfirmDialog"
           title={this.props.l10n("letter.confirm_title")}
           mainText={this.props.l10n("letter.confirm_info")}
-          showModal={true}
-          closeModal={this.props.handleStopConfirmationLetter}
-          acceptModal={this.props.confirmLetterProofing}
+          showModal={this.props.showModal}
+          closeModal={this.props.handleCloseModal}
+          acceptModal={this.props.handleLookupMobile}
         />
         {/* <ConfirmModal
           modalId="letterConfirmDialog"
