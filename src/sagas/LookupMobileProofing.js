@@ -13,15 +13,21 @@ import * as ninActions from "actions/Nins";
 export function* requestLookupMobileProof() {
   try {
     const state = yield select(state => state),
-      input = document.getElementsByName("nin")[0],
-      unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
-      nin = input ? input.value : unconfirmed ? state.nins.nin : "testing",
+      // input = document.getElementsByName("nin")[0],
+      unconfirmed = document.getElementById("nin-number"),
+      // console.log("this is unconfirmed", unconfirmed);
+      // nin = input ? input.value : unconfirmed ? state.nins.nin : "testing",
+      nin = unconfirmed ? state.nins.nin : "testing",
       data = {
         nin: nin,
         csrf_token: state.config.csrf_token
       };
 
-    const lookupMobileData = yield call(fetchLookupMobileProof, state.config, data);
+    const lookupMobileData = yield call(
+      fetchLookupMobileProof,
+      state.config,
+      data
+    );
     yield put(putCsrfToken(lookupMobileData));
     yield put(lookupMobileData);
   } catch (error) {
@@ -40,9 +46,11 @@ export function fetchLookupMobileProof(config, data) {
     .then(response => response.json());
 }
 const getData = state => {
-  const input = document.getElementsByName("nin")[0],
-        unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
-        nin = input ? input.value : unconfirmed ? state.nins.nin : "testing";
+  // const input = document.getElementsByName("nin")[0],
+  // unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
+  const unconfirmed = document.getElementById("nin-number"),
+    // nin = input ? input.value : unconfirmed ? state.nins.nin : "testing";
+    nin = unconfirmed ? state.nins.nin : "testing";
   return {
     nin: nin,
     csrf_token: state.config.csrf_token
