@@ -21,7 +21,6 @@ let lookupMobileProofingReducer = (state = lookupMobileData, action) => {
         showModal: true
       };
     case actions.CLOSE_MOBILE_MODAL:
-      console.log("close the modal");
       return {
         ...state,
         failed: false,

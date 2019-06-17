@@ -10,7 +10,6 @@ import {
 import i18n from "i18n-messages";
 
 const mapStateToProps = (state, props) => {
-  console.log("this is the state", state);
   return {
     disabled: !isValid("nins")(state),
     showModal: state.lookup_mobile.showModal,
@@ -24,12 +23,10 @@ const mapDispatchToProps = (dispatch, props) => {
     handleShowModal: function(e) {
       dispatch(eduidRMAllNotify());
       dispatch(showModal());
-      // dispatch(postLookupMobile());
     },
     handleCloseModal: function(e) {
       dispatch(eduidRMAllNotify());
       dispatch(closeModal());
-      // dispatch(postLookupMobile());
     },
     handleLookupMobile: function(e) {
       dispatch(closeModal());
