@@ -10,7 +10,7 @@ import EduIDButton from "components/EduIDButton";
 import "style/Nins.scss";
 
 let RemoveButton = props => {
-  console.log("these are the props in remove button:", props);
+  // console.log("these are the props in remove button:", props);
   return (
     <EduIDButton className="btn-danger btn-sm" onClick={props.handleDelete}>
       X
@@ -21,7 +21,7 @@ let RemoveButton = props => {
 class NinDisplay extends Component {
   render() {
     if (this.props.nins[0].verified) {
-      console.log(this.props.nins[0].verified);
+      // console.log(this.props.nins[0].verified);
       return (
         <div key="1" className="intro">
           <h3> Step 1. Add your national identity number</h3>
@@ -77,7 +77,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handleDelete: function(e) {
-      console.log("you're in handleDelete through ninDisplay!");
+      // console.log("you're in handleDelete through ninDisplay!");
       const ninNumber = e.target.previousSibling.dataset.ninnumber;
       dispatch(actions.startRemove(ninNumber));
     }
