@@ -9,6 +9,37 @@ import "style/LookupMobileProofing.scss";
 
 class LookupMobileProofing extends Component {
   render() {
+    let modalPrompt = "";
+    console.log(
+      "these are the props in LookupMobileProofing:",
+      this.props.phoneNumbers
+    );
+    if (this.props.phoneNumbers.length) {
+      console.log("there are numbers!!!");
+      modalPrompt = [
+        <GenericConfirmModal
+          modalId="mobileGenericConfirmDialog"
+          title={this.props.l10n("lmp.confirm_title")}
+          mainText={this.props.l10n("lmp.confirm_info")}
+          showModal={this.props.showModal}
+          closeModal={this.props.handleCloseModal}
+          acceptModal={this.props.handleLookupMobile}
+        />
+      ];
+    } else {
+      console.log("there are NO numbers!!! GO ADD NUMBERssszzz!!!");
+      modalPrompt = [
+        <GenericConfirmModal
+          modalId="mobileGenericConfirmDialog"
+          title={this.props.l10n("lmp.add_number_title")}
+          mainText={this.props.l10n("lmp.add_number_info")}
+          showModal={this.props.showModal}
+          closeModal={this.props.handleCloseModal}
+          acceptModal={this.props.handleCloseModal}
+        />
+      ];
+    }
+
     return (
       <div>
         <form
@@ -20,6 +51,7 @@ class LookupMobileProofing extends Component {
             <EduIDButton
               className="proofing-button"
               disabled={this.props.disabled}
+              // onClick={this.props.logoutparams}
               onClick={this.props.handleShowModal}
               // onClick={this.props.handleLookupMobile}
               block
@@ -31,14 +63,7 @@ class LookupMobileProofing extends Component {
             </FormText>
           </fieldset>
         </form>
-        <GenericConfirmModal
-          modalId="mobileGenericConfirmDialog"
-          title={this.props.l10n("lmp.confirm_title")}
-          mainText={this.props.l10n("lmp.confirm_info")}
-          showModal={this.props.showModal}
-          closeModal={this.props.handleCloseModal}
-          acceptModal={this.props.handleCloseModal}
-        />
+        {modalPrompt}
         {/* <ConfirmModal
           modalId="letterConfirmDialog"
           id="letterConfirmDialogControl"

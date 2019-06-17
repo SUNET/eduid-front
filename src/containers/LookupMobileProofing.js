@@ -13,7 +13,9 @@ const mapStateToProps = (state, props) => {
   console.log("this is the state", state);
   return {
     disabled: !isValid("nins")(state),
-    showModal: state.lookup_mobile.showModal
+    showModal: state.lookup_mobile.showModal,
+    phoneNumbers: state.phones.phones,
+    nins: state.nins.nins
   };
 };
 
@@ -30,7 +32,7 @@ const mapDispatchToProps = (dispatch, props) => {
       // dispatch(postLookupMobile());
     },
     handleLookupMobile: function(e) {
-      dispatch(eduidRMAllNotify());
+      dispatch(closeModal());
       dispatch(postLookupMobile());
     }
   };

@@ -2399,15 +2399,25 @@ const unformatted = defineMessages({
     defaultMessage: `Resend confirmation code`,
     description: "Lost code problem solution"
   },
+  "lmp.add_number_title": {
+    id: "lmp.add_number_title",
+    defaultMessage: `Add your mobile number to continue`,
+    description: "Title for add mobile number dialog"
+  },
+  "lmp.add_number_info": {
+    id: "lmp.add_number_info",
+    defaultMessage: `This option will be available once you have added your number and entered the confirmation code in Settings.`,
+    description: "Explanation for add mobile number dialog"
+  },
   "lmp.confirm_title": {
     id: "lmp.confirm_title",
-    defaultMessage: `Add your mobile number to continue`,
+    defaultMessage: `Check if your phone number is connected to your id number`,
     description: "Title for mobile proofing confirm dialog"
   },
   "lmp.confirm_info": {
     id: "lmp.confirm_info",
-    defaultMessage: `This option will be available once you have added your number and entered the confirmation code in Settings.`,
-    description: "Explanation for mobile proofing confirm dialog"
+    defaultMessage: `Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry.`,
+    description: "Explanation for mobile confirm dialog"
   },
   "letter.confirm_title": {
     id: "letter.confirm_title",
