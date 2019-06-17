@@ -37,7 +37,7 @@ class LookupMobileProofing extends Component {
           mainText={this.props.l10n("lmp.confirm_info")}
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
-          acceptModal={this.props.handleLookupMobile}
+          acceptModal={this.props.handleCloseModal}
         />
         {/* <ConfirmModal
           modalId="letterConfirmDialog"
