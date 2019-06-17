@@ -2402,22 +2402,32 @@ const unformatted = defineMessages({
   "lmp.add_number_title": {
     id: "lmp.add_number_title",
     defaultMessage: `Add your mobile number to continue`,
-    description: "Title for add mobile number dialog"
+    description: "Title for adding mobile number dialog"
   },
   "lmp.add_number_info": {
     id: "lmp.add_number_info",
     defaultMessage: `This option will be available once you have added your number and entered the confirmation code in Settings.`,
-    description: "Explanation for add mobile number dialog"
+    description: "Explanation for adding mobile number dialog"
+  },
+  "lmp.reminder_to_confirm_title": {
+    id: "lmp.reminder_to_confirm_title",
+    defaultMessage: `Your number is added but not confirmed`,
+    description: "Title for confirming mobile number dialog"
+  },
+  "lmp.reminder_to_confirm_info": {
+    id: "lmp.reminder_to_confirm_info",
+    defaultMessage: `You can confirm your number in Settings. This option will be available once your number is confirmed`,
+    description: "Explanation for confirming mobile number dialog"
   },
   "lmp.confirm_title": {
     id: "lmp.confirm_title",
     defaultMessage: `Check if your phone number is connected to your id number`,
-    description: "Title for mobile proofing confirm dialog"
+    description: "Title for mobile vetting dialog"
   },
   "lmp.confirm_info": {
     id: "lmp.confirm_info",
     defaultMessage: `Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry.`,
-    description: "Explanation for mobile confirm dialog"
+    description: "Explanation for mobile vetting dialog"
   },
   "letter.confirm_title": {
     id: "letter.confirm_title",
