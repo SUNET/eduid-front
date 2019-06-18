@@ -93,14 +93,14 @@ class Nins extends Component {
         verifiedNin = nins[0].number;
       }
     }
-    if (ninStatus === "nonin") {
+    if (ninStatus === "nonin" && !this.props.confirmingLetter) {
       ninInput = [
         <div key="1">{this.props.l10n("nins.help_text")}</div>,
         <div key="2" className="proofing-buttons">
           <NinForm buttons={vettingButtons} {...this.props} />
         </div>
       ];
-    } else if (ninStatus === "unverified") {
+    } else if (ninStatus === "unverified" || this.props.confirmingLetter) {
       const ninList = this.props.nins.map((nin, index) => {
         return (
           <div
