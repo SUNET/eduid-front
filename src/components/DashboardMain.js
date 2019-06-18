@@ -47,6 +47,24 @@ class Main extends Component {
   }
 
   render() {
+    let welcomeGreeting = "";
+
+    if (this.props.nins) {
+      welcomeGreeting = [
+        <p>
+          Welcome back to eduID. You can change any of your personal details in
+          Settings.
+        </p>
+      ];
+    } else {
+      welcomeGreeting = [
+        <p>
+          Welcome to your eduID. To be able to use it you need to provide some
+          more information.
+        </p>
+      ];
+    }
+
     return (
       <FetchingContext.Provider value={this.state}>
         <SplashContainer />
@@ -57,12 +75,9 @@ class Main extends Component {
               <SettingsButton />
               <div id="dashboard-text">
                 <h1>eduID for {this.props.email}</h1>
-                <p>
-                  {" "}
-                  Welcome to your eduid account. To be able to use it you need
-                  to provide some more information.
-                </p>
+                {welcomeGreeting}
                 <div id="content">
+                  
                   <Route exact path="/profile/" component={VerifyIdentity} />
                   <Route
                     exact
