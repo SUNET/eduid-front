@@ -492,7 +492,7 @@ describe("SignupMain async actions", () => {
         csrf_token: "dummy-token"
       }
     });
-    const url = SIGNUP_SERVICE_URL + "config";
+    const url = SIGNUP_CONFIG_URL;
     const generator = requestConfig();
     let resp = generator.next();
     expect(resp.value).toEqual(call(fetchConfig, url));
@@ -534,7 +534,7 @@ describe("SignupMain async actions", () => {
     };
     resp = generator.next(action);
 
-    const url2 = SIGNUP_SERVICE_URL + "config";
+    const url2 = SIGNUP_CONFIG_URL;
     expect(resp.value).toEqual(call(fetchConfig, url2));
 
     const action2 = {
