@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
-
+import DashboardNav from "./DashboardNav";
 import NinsContainer from "containers/Nins";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -11,6 +11,7 @@ class VerifyIdentity extends Component {
   render() {
     return (
       <div id="welcome">
+        <DashboardNav />
         <div id="verify-identity-process">
           <div id="verify-identity-prompt">
             <h3>

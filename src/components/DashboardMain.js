@@ -16,6 +16,7 @@ import SettingsButton from "./SettingsButton";
 import VerifyIdentity from "./VerifyIdentity";
 // import PersonalDataContainer from "containers/PersonalData";
 import NinsContainer from "containers/Nins";
+import DashboardNav from "./DashboardNav";
 // import EmailsContainer from "containers/Emails";
 // import MobileContainer from "containers/Mobile";
 // import AccountLinkingContainer from "containers/AccountLinking";
@@ -77,26 +78,16 @@ class Main extends Component {
                 <h1>eduID for {this.props.email}</h1>
                 {welcomeGreeting}
                 <div id="content">
-                  
-                  <Route exact path="/profile/" component={VerifyIdentity} />
                   <Route
-                    exact
-                    path="/profile/verify-identity"
-                    component={VerifyIdentity}
+                    path="/profile/settings/"
+                    component={SettingsComponent}
                   />
+                  {/* <DashboardNav /> */}
+                  <Route exact path="/profile/" component={VerifyIdentity} />
                   <Route
                     exact
                     path="/profile/verify-identity/step1"
                     component={VerifyIdentity}
-                  />
-                  <Route
-                    exact
-                    path="/profile/verify-identity/step2"
-                    component={VerifyIdentity}
-                  />
-                  <Route
-                    path="/profile/settings/"
-                    component={SettingsComponent}
                   />
                 </div>
               </div>
