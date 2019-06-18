@@ -151,40 +151,40 @@ function setupComponent(store) {
 //   // });
 // });
 
-describe("LookupMobileProofing Container", () => {
-  let fulltext, mockProps, wrapper, dispatch;
+// describe("LookupMobileProofing Container", () => {
+//   let fulltext, mockProps, wrapper, dispatch;
 
-  beforeEach(() => {
-    const store = fakeStore(fakeState);
+//   beforeEach(() => {
+//     const store = fakeStore(fakeState);
 
-    wrapper = mount(
-      <Provider store={store}>
-        <LookupMobileProofingContainer />
-      </Provider>
-    );
+//     wrapper = mount(
+//       <Provider store={store}>
+//         <LookupMobileProofingContainer />
+//       </Provider>
+//     );
 
-    fulltext = wrapper.find(LookupMobileProofingContainer).text();
-    dispatch = store.dispatch;
-  });
+//     fulltext = wrapper.find(LookupMobileProofingContainer).text();
+//     dispatch = store.dispatch;
+//   });
 
-  afterEach(() => {
-    fetchMock.restore();
-  });
+//   afterEach(() => {
+//     fetchMock.restore();
+//   });
 
-  it("Clicks", () => {
-    fetchMock.post("http://localhost/lookup-mobile", {
-      type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
-      payload: {}
-    });
+//   it("Clicks", () => {
+//     fetchMock.post("http://localhost/lookup-mobile", {
+//       type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
+//       payload: {}
+//     });
 
-    expect(dispatch.mock.calls.length).toEqual(0);
-    wrapper
-      .find("Button")
-      .props()
-      .onClick();
-    expect(dispatch.mock.calls.length).toEqual(1);
-  });
-});
+//     expect(dispatch.mock.calls.length).toEqual(0);
+//     wrapper
+//       .find("Button")
+//       .props()
+//       .onClick();
+//     expect(dispatch.mock.calls.length).toEqual(1);
+//   });
+// });
 
 import {
   requestLookupMobileProof,
