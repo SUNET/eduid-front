@@ -22,7 +22,7 @@ import DashboardNav from "./DashboardNav";
 // import AccountLinkingContainer from "containers/AccountLinking";
 // import SecurityContainer from "containers/Security";
 // import ChangePasswordContainer from "containers/ChangePassword";
-// import NotificationsContainer from "containers/Notifications";
+import NotificationsContainer from "containers/Notifications";
 // import ProfileFilledContainer from "containers/ProfileFilled";
 // import PendingActionsContainer from "containers/PendingActions";
 
@@ -78,17 +78,17 @@ class Main extends Component {
                 <h1>eduID for {this.props.email}</h1>
                 {welcomeGreeting}
                 <div id="content">
+                  <NotificationsContainer />
                   <Route
                     path="/profile/settings/"
                     component={SettingsComponent}
                   />
-                  {/* <DashboardNav /> */}
                   <Route exact path="/profile/" component={VerifyIdentity} />
                   <Route
                     exact
-                    path="/profile/verify-identity/step1"
-                    component={VerifyIdentity}
-                  />
+                    path="/profile/verify-identity"
+                    component={NinsContainer}
+                  /> 
                 </div>
               </div>
             </div>

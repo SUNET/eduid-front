@@ -40,7 +40,6 @@ class Settings extends Component {
     return (
       <div id="settings">
         <SettingsNav />
-        <NotificationsContainer />
         <div id="settings-content">
           <Route
             exact

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
-import DashboardNav from "./DashboardNav";
+import { connect } from "react-redux";
+
 import NinsContainer from "containers/Nins";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +12,6 @@ class VerifyIdentity extends Component {
   render() {
     return (
       <div id="welcome">
-        <DashboardNav />
         <div id="verify-identity-process">
           <div id="verify-identity-prompt">
             <h3>
@@ -19,7 +19,6 @@ class VerifyIdentity extends Component {
               You're almost done, the next step is to verify your identity{" "}
             </h3>
             <p>
-              {" "}
               Choose a suitable way to verify your identity and follow the
               instuctions to start using eduID. You can change any of your
               personal information in Settings.
@@ -28,7 +27,7 @@ class VerifyIdentity extends Component {
               <Link
                 // className="button"
                 id="verify-button-prompt-link"
-                to={`/profile/verify-identity/step1`}
+                to={`/profile/verify-identity/`}
               >
                 <button id="verify-button-prompt" type="submit">
                   {" "}
@@ -37,10 +36,17 @@ class VerifyIdentity extends Component {
               </Link>
             </div>
           </div>
-          <div id="national-id">
-            <Route path="/profile/verify-identity/step1" component={NinsContainer} />
-            <Route path="/profile/verify-identity/step2" component={NinsContainer} />
-          </div>
+          {/* <div id="national-id">
+            <Route
+              exact
+              path="/profile/verify-identity/"
+              component={NinsContainer}
+            />
+            {/* <Route
+              path="/profile/verify-identity"
+              component={NinsContainer}
+            /> 
+          </div> */}
         </div>
         <h3>Why do I need eduID?</h3>
         <p>
@@ -59,4 +65,31 @@ class VerifyIdentity extends Component {
   }
 }
 
-export default VerifyIdentity;
+// export default VerifyIdentity;
+
+const mapStateToProps = (state, props) => {
+  let confirmed;
+  const nins = state.nins.nins.filter(nin => nin.verified);
+  if (nins.length >= 1) {
+    confirmed = "main.confirmed";
+  } else {
+    confirmed = "main.unconfirmed";
+  }
+  return {
+    nins: state.nins.nins, // verified nin to see where to prompt user
+    confirmed: confirmed // could be a boolean? to show what colour to display nin
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    handleThingy: function(e) {
+      console.log("do you need a function here?");
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VerifyIdentity);

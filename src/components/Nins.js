@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { ButtonGroup } from "reactstrap";
-
+import { connect } from "react-redux";
+import DashboardNav from "./DashboardNav";
 import AddNin from "./AddNin";
 import NotificationsContainer from "containers/Notifications";
 import vettingRegistry from "vetting-registry";
@@ -46,8 +47,9 @@ class Nins extends Component {
 
     return (
       <div>
-        <NotificationsContainer />
+        {/* <NotificationsContainer /> */}
         <div id="nin-process">
+          <DashboardNav {...this.props} />
           <div id="add-nin-number-container">
             <AddNin {...this.props} />
           </div>
@@ -67,3 +69,4 @@ class Nins extends Component {
 // };
 
 export default Nins;
+
