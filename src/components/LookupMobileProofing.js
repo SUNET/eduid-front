@@ -10,10 +10,10 @@ import "style/LookupMobileProofing.scss";
 class LookupMobileProofing extends Component {
   render() {
     let modalPrompt = "";
-    console.log(
-      "these are the props in LookupMobileProofing:",
-      this.props.phoneNumbers
-    );
+    // console.log(
+    //   "these are the props in LookupMobileProofing:",
+    //   this.props.phoneNumbers
+    // );
 
     if (this.props.phoneNumbers.length) {
       modalPrompt = [
