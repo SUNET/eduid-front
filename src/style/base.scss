@@ -197,6 +197,7 @@ a {
 
 form {
   display: flex;
+  flex-direction: column;
 }
 
 form.form-inline div.alert {
