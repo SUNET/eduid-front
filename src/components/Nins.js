@@ -28,7 +28,7 @@ class Nins extends Component {
       });
     }
 
-    if (this.props.nins.length) {
+    if (this.props.nins.length && !this.props.nins[0].verified) {
       connectNin = [
         <div key="1" id="connect-nin-number">
           <h3> Step 2. Connect your national identity number to eduID</h3>
@@ -46,8 +46,6 @@ class Nins extends Component {
     }
 
     return (
-      <div>
-        {/* <NotificationsContainer /> */}
         <div id="nin-process">
           <DashboardNav {...this.props} />
           <div id="add-nin-number-container">
@@ -55,7 +53,6 @@ class Nins extends Component {
           </div>
           <div id="connect-nin-number-container">{connectNin}</div>
         </div>
-      </div>
     );
   }
 }
@@ -69,4 +66,3 @@ class Nins extends Component {
 // };
 
 export default Nins;
-
