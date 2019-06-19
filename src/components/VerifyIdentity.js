@@ -50,18 +50,6 @@ class VerifyIdentity extends Component {
             /> 
           </div> */}
         </div>
-        <h3>Why do I need eduID?</h3>
-        <p>
-          eduID kan användas för inloggning inom flera olika organisationer.
-          eduID har utvecklats för att kunna ge alla studenter en identitet
-          online utan att kräva ett svenskt personnummer.
-        </p>
-        <h3>How to use eduID</h3>
-        <p>
-          När möjlighet finns, välj "Logga in med eduID". Du kommer att bli
-          skickad till eduIDs login där du anger din e-postadress och ditt
-          lösenord.
-        </p>
       </div>
     );
   }
