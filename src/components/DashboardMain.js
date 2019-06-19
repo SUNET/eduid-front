@@ -17,6 +17,9 @@ import VerifyIdentity from "./VerifyIdentity";
 // import PersonalDataContainer from "containers/PersonalData";
 import NinsContainer from "containers/Nins";
 import DashboardNav from "./DashboardNav";
+import AccountLinkingContainer from "containers/AccountLinking";
+import SecurityContainer from "containers/Security";
+import ChangePasswordContainer from "containers/ChangePassword";
 // import EmailsContainer from "containers/Emails";
 // import MobileContainer from "containers/Mobile";
 // import AccountLinkingContainer from "containers/AccountLinking";
@@ -89,6 +92,18 @@ class Main extends Component {
                     path="/profile/verify-identity"
                     component={NinsContainer}
                   /> 
+                  <Route
+                    path="/profile/security"
+                    component={AccountLinkingContainer}
+                  />
+                  <Route
+                    path="/profile/security"
+                    component={SecurityContainer}
+                  />
+                  <Route
+                    path="/profile/settings/chpass"
+                    component={ChangePasswordContainer}
+                  />
                 </div>
               </div>
             </div>
