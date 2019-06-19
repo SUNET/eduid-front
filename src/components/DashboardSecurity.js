@@ -14,12 +14,11 @@ import "style/Nins.scss";
 class DashboardSecurity extends Component {
   render() {
     return (
-      <div id="dashboard-security">
+      <div id="dashboard">
         <DashboardNav {...this.props} />
         <div id="add-nin-number-container">
           <AccountLinkingContainer />
           <SecurityContainer />
-          />
         </div>
       </div>
     );
