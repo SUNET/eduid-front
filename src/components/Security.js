@@ -296,10 +296,11 @@ class Security extends Component {
       return (
         <div>
           <div className="intro">
-            <h4>{this.props.l10n("security.main_title")}</h4>
-            <p>{this.props.l10n("security.long_description")}</p>
-          </div>
-          <table className="table table-bordered table-form passwords">
+            {/* <h3>{this.props.l10n("security.main_title")}</h3> */}
+            <h3>Increase security by regestering security keys to eduID</h3>
+            {/* <p>{this.props.l10n("security.long_description")}</p> */}
+
+            {/* <table className="table table-bordered table-form passwords">
             <tbody>
               <tr>
                 <th>{this.props.l10n("security.credential")}</th>
@@ -311,16 +312,21 @@ class Security extends Component {
               </tr>
               {creds_table}
             </tbody>
-          </table>
-          <div id="change-password">
+          </table> */}
+            {/* <div id="change-password">
             <EduIDButton
               id="security-change-button"
               onClick={this.props.handleStartConfirmationPassword}
             >
               {this.props.l10n("security.change_password")}
             </EduIDButton>
+          </div> */}
+            <p>
+              {this.props.l10n("security.for-second-factor")}. If you have been
+              given a security key to access sensitive data, don't forget to
+              register it here.
+            </p>
           </div>
-          <p>{this.props.l10n("security.for-second-factor")}</p>
           <div id="register-webauthn-tokens-area">
             <div id="add-webauthn-token">
               <EduIDButton
