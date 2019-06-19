@@ -1,5 +1,9 @@
 @import "../variables.scss";
 
+html {
+  margin-left: calc(100vw - 100%);
+}
+
 body {
   scroll-behavior: smooth;
 }
@@ -96,6 +100,10 @@ input {
 }
 input:focus {
   outline: 0;
+}
+
+nav {
+  margin: 0 0 30px 0;
 }
 
 nav li {
@@ -379,9 +387,9 @@ ul.nav.navbar-nav li a {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-  div.wrap.container#root {
-    max-width: 96%;
-  }
+  // div.wrap.container#root {
+  //   max-width: 96%;
+  // }
 
   .jumbotron h1,
   .jumbotron h2 {
