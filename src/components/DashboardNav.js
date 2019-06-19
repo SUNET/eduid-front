@@ -26,7 +26,7 @@ class DashboardNav extends Component {
                 className="nav-link"
                 activeClassName="active"
                 id="settings-account-linking"
-                to={`/profile/settings/security/`}
+                to={`/profile/security/`}
               >
                 <h5>Added security</h5>
               </NavLink>
