@@ -7,11 +7,13 @@ import NinsContainer from "containers/Nins";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
+import DashboardNav from "./DashboardNav";
 
 class VerifyIdentity extends Component {
   render() {
     return (
-      <div id="welcome">
+      <div id="verify-identity">
+        < DashboardNav />
         <div id="verify-identity-process">
           <div id="verify-identity-prompt">
             <h3>

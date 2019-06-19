@@ -46,7 +46,7 @@ class Nins extends Component {
     }
 
     return (
-        <div id="nin-process">
+        <div id="dashboard">
           <DashboardNav {...this.props} />
           <div id="add-nin-number-container">
             <AddNin {...this.props} />

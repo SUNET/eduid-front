@@ -7,7 +7,24 @@ import "style/DashboardMain.scss";
 
 class DashboardNav extends Component {
   render() {
-    if (this.props.confirmed) {
+    if (!this.props.confirmed) {
+      return (
+        <nav id="settings-nav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                // id="settings-personal-info"
+                to={`/profile/verify-identity/`}
+              >
+                <h5>Verify identity</h5>
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      );
+    } else {
       return (
         <nav id="settings-nav">
           <ul className="navbar-nav">
@@ -29,23 +46,6 @@ class DashboardNav extends Component {
                 to={`/profile/security/`}
               >
                 <h5>Added security</h5>
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      );
-    } else {
-      return (
-        <nav id="settings-nav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                // id="settings-personal-info"
-                to={`/profile/verify-identity/`}
-              >
-                <h5>Verify identity</h5>
               </NavLink>
             </li>
           </ul>

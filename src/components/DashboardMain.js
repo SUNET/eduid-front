@@ -32,6 +32,7 @@ import NotificationsContainer from "containers/Notifications";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
+import DashboardSecurity from "./DashboardSecurity";
 
 export const history = createHistory();
 
@@ -94,15 +95,7 @@ class Main extends Component {
                   /> 
                   <Route
                     path="/profile/security"
-                    component={AccountLinkingContainer}
-                  />
-                  <Route
-                    path="/profile/security"
-                    component={SecurityContainer}
-                  />
-                  <Route
-                    path="/profile/settings/chpass"
-                    component={ChangePasswordContainer}
+                    component={DashboardSecurity}
                   />
                 </div>
               </div>

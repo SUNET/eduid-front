@@ -17,12 +17,12 @@ div#root.wrap.container {
   padding: 30px 0;
 }
 
-#welcome {
+#verify-identity {
   max-width: 75%;
 }
 
 @media (max-width: 1000px) {
-  #welcome {
+  #verify-identity {
     max-width: 100%;
   }
 }
@@ -34,10 +34,13 @@ div#root.wrap.container {
   padding: -15px;
 }
 
-#verify-identity-prompt,
-#add-nin-number-container,
-#connect-nin-number-container,
-#settings {
+// #verify-identity-prompt,
+// #add-nin-number-container,
+// #connect-nin-number-container,
+#settings,
+#dashboard,
+#verify-identity,
+#dashboard-security {
   // background-color: rgba(236, 236, 236, 0.5);
   background-color: rgba(63, 92, 87, 0.1);
   border-radius: 5px;
