@@ -75,7 +75,7 @@ const getConfirmForm = inputName => {
 
   ConfirmForm = reduxForm({
     form: inputName + "-form",
-    validate
+    validate: validate
   })(ConfirmForm);
 
   return ConfirmForm;
@@ -83,7 +83,12 @@ const getConfirmForm = inputName => {
 
 class ConfirmModal extends Component {
   render() {
-    const ConfirmForm = getConfirmForm(this.props.id);
+    let ConfirmForm = getConfirmForm(this.props.id);
+
+    ConfirmForm = connect(state => ({
+      initialValues: {}
+    }))(ConfirmForm);
+
     return (
       <div
         id={this.props.modalId}
