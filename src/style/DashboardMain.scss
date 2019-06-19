@@ -8,16 +8,19 @@
   padding: 0;
 }
 
-#dashboard-wrapper {
-  background-color: yellow;
+.dashboard-wrapper {
+  margin: 0 15px;
 }
 
 #dashboard-container {
-  background-color: hotpink;
+  background-color: white;
+  padding: 0 15px 0 0;
 }
 
 #content-block {
   background-color: white;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 #dashboard-text {

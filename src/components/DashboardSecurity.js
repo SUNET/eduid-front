@@ -17,7 +17,7 @@ class DashboardSecurity extends Component {
       <div id="dashboard">
         <DashboardNav {...this.props} />
         <div id="add-nin-number-container">
-          <AccountLinkingContainer />
+          {/* <AccountLinkingContainer /> */}
           <SecurityContainer />
         </div>
       </div>
