@@ -9,15 +9,6 @@ import EduIDButton from "components/EduIDButton";
 
 import "style/Nins.scss";
 
-let RemoveButton = props => {
-  // console.log("these are the props in remove button:", props);
-  return (
-    <EduIDButton className="btn-danger btn-sm" onClick={props.handleDelete}>
-      X
-    </EduIDButton>
-  );
-};
-
 class NinDisplay extends Component {
   render() {
     if (this.props.nins[0].verified) {
@@ -32,7 +23,6 @@ class NinDisplay extends Component {
                 <div data-ninnumber={this.props.nin} id="nin-number-container">
                   <p id="nin-number">{this.props.nin}</p>
                 </div>
-                <RemoveButton {...this.props} />
               </div>
             </div>
           </div>
@@ -44,7 +34,7 @@ class NinDisplay extends Component {
           <h3> Step 1. Add your national id number</h3>
           <p>
             Your id number has been added, but you still need to connect it to
-            your person
+            your person.
           </p>
           <div key="1" id="add-nin-number">
             <div key="1" id="nin-form-container">
@@ -52,7 +42,12 @@ class NinDisplay extends Component {
                 <div data-ninnumber={this.props.nin} id="nin-number-container">
                   <p id="nin-number">{this.props.nin}</p>
                 </div>
-                <RemoveButton {...this.props} />
+                <EduIDButton
+                  className="btn-danger btn-sm"
+                  onClick={thisprops.handleDelete}
+                >
+                  X
+                </EduIDButton>
               </div>
             </div>
           </div>
