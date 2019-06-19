@@ -31,6 +31,8 @@ class Security extends Component {
   }
 
   render() {
+    const url = window.location.href;
+
     if (this.props.redirect_to !== "") {
       window.location.href = this.props.redirect_to;
       return null;
@@ -127,87 +129,252 @@ class Security extends Component {
       );
     }
 
-    return (
-      <div>
-        <div className="intro">
-          <h4>{this.props.l10n("security.main_title")}</h4>
-          <p>{this.props.l10n("security.long_description")}</p>
-        </div>
-        <table className="table table-bordered table-form passwords">
-          <tbody>
-            <tr>
-              <th>{this.props.l10n("security.credential")}</th>
-              <th>{this.props.l10n("security.creation_date")}</th>
-              <th>{this.props.l10n("security.last_used")}</th>
-              <th>{this.props.l10n("security.description")}</th>
-              <th>{this.props.l10n("security.verify")}</th>
-              <th>{this.props.l10n("security.remove")}</th>
-            </tr>
-            {creds_table}
-          </tbody>
-        </table>
-        <div id="change-password">
-          <EduIDButton
-            id="security-change-button"
-            onClick={this.props.handleStartConfirmationPassword}
-          >
-            {this.props.l10n("security.change_password")}
-          </EduIDButton>
-        </div>
-        <p>{this.props.l10n("security.for-second-factor")}</p>
-        <div id="register-webauthn-tokens-area">
-          <div id="add-webauthn-token">
+    // return (
+    //   <div>
+    //     <div className="intro">
+    //       <h4>{this.props.l10n("security.main_title")}</h4>
+    //       <p>{this.props.l10n("security.long_description")}</p>
+    //     </div>
+    //     <table className="table table-bordered table-form passwords">
+    //       <tbody>
+    //         <tr>
+    //           <th>{this.props.l10n("security.credential")}</th>
+    //           <th>{this.props.l10n("security.creation_date")}</th>
+    //           <th>{this.props.l10n("security.last_used")}</th>
+    //           <th>{this.props.l10n("security.description")}</th>
+    //           <th>{this.props.l10n("security.verify")}</th>
+    //           <th>{this.props.l10n("security.remove")}</th>
+    //         </tr>
+    //         {creds_table}
+    //       </tbody>
+    //     </table>
+    //     <div id="change-password">
+    //       <EduIDButton
+    //         id="security-change-button"
+    //         onClick={this.props.handleStartConfirmationPassword}
+    //       >
+    //         {this.props.l10n("security.change_password")}
+    //       </EduIDButton>
+    //     </div>
+    //     <p>{this.props.l10n("security.for-second-factor")}</p>
+    //     <div id="register-webauthn-tokens-area">
+    //       <div id="add-webauthn-token">
+    //         <EduIDButton
+    //           id="security-webauthn-button"
+    //           onClick={this.props.handleStartAskingKeyWebauthnDescription}
+    //         >
+    //           {this.props.l10n("security.add_webauthn_token_key")}
+    //         </EduIDButton>
+    //       </div>
+    //       {platformAuthenticatorButton}
+    //     </div>
+    //     {/* <div className="second-block">
+    //       <div className="intro">
+    //         <h4>{this.props.l10n("security.account_title")}</h4>
+    //         <p>{this.props.l10n("security.account_description")}</p>
+    //       </div>
+    //       <EduIDButton
+    //         className="btn-danger"
+    //         id="delete-button"
+    //         onClick={this.props.handleStartConfirmationDeletion}
+    //       >
+    //         {this.props.l10n("security.delete_account")}
+    //       </EduIDButton>
+    //     </div> */}
+    //     <GenericConfirmModal
+    //       modalId="securityConfirmDialog"
+    //       title={this.props.l10n("security.confirm_title_chpass")}
+    //       mainText={this.props.l10n("security.change_info")}
+    //       showModal={this.props.confirming_change}
+    //       closeModal={this.props.handleStopConfirmationPassword}
+    //       acceptModal={this.props.handleConfirmationPassword}
+    //     />
+    //     {/* <DeleteModal
+    //       title={this.props.l10n("security.confirm_title_deletion")}
+    //       showModal={this.props.confirming_deletion}
+    //       closeModal={this.props.handleStopConfirmationDeletion}
+    //       handleConfirm={this.props.handleConfirmationDeletion}
+    //     /> */}
+    //     <ConfirmModal
+    //       modalId="describeWebauthnTokenDialog"
+    //       id="describeWebauthnTokenDialogControl"
+    //       title={this.props.l10n("security.webauthn-describe-title")}
+    //       resendLabel=""
+    //       resendHelp=""
+    //       resendText=""
+    //       placeholder=""
+    //       with_resend_link={false}
+    //       showModal={Boolean(this.props.webauthn_asking_description)}
+    //       closeModal={this.props.handleStopAskingWebauthnDescription}
+    //       handleConfirm={this.props.handleStartWebauthnRegistration}
+    //     />
+    //   </div>
+    // );
+    if (url.includes("settings")) {
+      return (
+        <div>
+          <div className="intro">
+            <h4>{this.props.l10n("security.main_title")}</h4>
+            <p>{this.props.l10n("security.long_description")}</p>
+          </div>
+          <table className="table table-bordered table-form passwords">
+            <tbody>
+              <tr>
+                <th>{this.props.l10n("security.credential")}</th>
+                <th>{this.props.l10n("security.creation_date")}</th>
+                <th>{this.props.l10n("security.last_used")}</th>
+                <th>{this.props.l10n("security.description")}</th>
+                <th>{this.props.l10n("security.verify")}</th>
+                <th>{this.props.l10n("security.remove")}</th>
+              </tr>
+              {creds_table}
+            </tbody>
+          </table>
+          <div id="change-password">
             <EduIDButton
-              id="security-webauthn-button"
-              onClick={this.props.handleStartAskingKeyWebauthnDescription}
+              id="security-change-button"
+              onClick={this.props.handleStartConfirmationPassword}
             >
-              {this.props.l10n("security.add_webauthn_token_key")}
+              {this.props.l10n("security.change_password")}
             </EduIDButton>
           </div>
-          {platformAuthenticatorButton}
-        </div>
-        <div className="second-block">
-          <div className="intro">
-            <h4>{this.props.l10n("security.account_title")}</h4>
-            <p>{this.props.l10n("security.account_description")}</p>
+          <p>{this.props.l10n("security.for-second-factor")}</p>
+          <div id="register-webauthn-tokens-area">
+            <div id="add-webauthn-token">
+              <EduIDButton
+                id="security-webauthn-button"
+                onClick={this.props.handleStartAskingKeyWebauthnDescription}
+              >
+                {this.props.l10n("security.add_webauthn_token_key")}
+              </EduIDButton>
+            </div>
+            {platformAuthenticatorButton}
           </div>
-          <EduIDButton
-            className="btn-danger"
-            id="delete-button"
-            onClick={this.props.handleStartConfirmationDeletion}
-          >
-            {this.props.l10n("security.delete_account")}
-          </EduIDButton>
+          <div className="second-block">
+            <div className="intro">
+              <h4>{this.props.l10n("security.account_title")}</h4>
+              <p>{this.props.l10n("security.account_description")}</p>
+            </div>
+            <EduIDButton
+              className="btn-danger"
+              id="delete-button"
+              onClick={this.props.handleStartConfirmationDeletion}
+            >
+              {this.props.l10n("security.delete_account")}
+            </EduIDButton>
+          </div>
+          <GenericConfirmModal
+            modalId="securityConfirmDialog"
+            title={this.props.l10n("security.confirm_title_chpass")}
+            mainText={this.props.l10n("security.change_info")}
+            showModal={this.props.confirming_change}
+            closeModal={this.props.handleStopConfirmationPassword}
+            acceptModal={this.props.handleConfirmationPassword}
+          />
+          <DeleteModal
+            title={this.props.l10n("security.confirm_title_deletion")}
+            showModal={this.props.confirming_deletion}
+            closeModal={this.props.handleStopConfirmationDeletion}
+            handleConfirm={this.props.handleConfirmationDeletion}
+          />
+          <ConfirmModal
+            modalId="describeWebauthnTokenDialog"
+            id="describeWebauthnTokenDialogControl"
+            title={this.props.l10n("security.webauthn-describe-title")}
+            resendLabel=""
+            resendHelp=""
+            resendText=""
+            placeholder=""
+            with_resend_link={false}
+            showModal={Boolean(this.props.webauthn_asking_description)}
+            closeModal={this.props.handleStopAskingWebauthnDescription}
+            handleConfirm={this.props.handleStartWebauthnRegistration}
+          />
         </div>
-        <GenericConfirmModal
-          modalId="securityConfirmDialog"
-          title={this.props.l10n("security.confirm_title_chpass")}
-          mainText={this.props.l10n("security.change_info")}
-          showModal={this.props.confirming_change}
-          closeModal={this.props.handleStopConfirmationPassword}
-          acceptModal={this.props.handleConfirmationPassword}
-        />
-        <DeleteModal
-          title={this.props.l10n("security.confirm_title_deletion")}
-          showModal={this.props.confirming_deletion}
-          closeModal={this.props.handleStopConfirmationDeletion}
-          handleConfirm={this.props.handleConfirmationDeletion}
-        />
-        <ConfirmModal
-          modalId="describeWebauthnTokenDialog"
-          id="describeWebauthnTokenDialogControl"
-          title={this.props.l10n("security.webauthn-describe-title")}
-          resendLabel=""
-          resendHelp=""
-          resendText=""
-          placeholder=""
-          with_resend_link={false}
-          showModal={Boolean(this.props.webauthn_asking_description)}
-          closeModal={this.props.handleStopAskingWebauthnDescription}
-          handleConfirm={this.props.handleStartWebauthnRegistration}
-        />
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <div className="intro">
+            <h4>{this.props.l10n("security.main_title")}</h4>
+            <p>{this.props.l10n("security.long_description")}</p>
+          </div>
+          <table className="table table-bordered table-form passwords">
+            <tbody>
+              <tr>
+                <th>{this.props.l10n("security.credential")}</th>
+                <th>{this.props.l10n("security.creation_date")}</th>
+                <th>{this.props.l10n("security.last_used")}</th>
+                <th>{this.props.l10n("security.description")}</th>
+                <th>{this.props.l10n("security.verify")}</th>
+                <th>{this.props.l10n("security.remove")}</th>
+              </tr>
+              {creds_table}
+            </tbody>
+          </table>
+          <div id="change-password">
+            <EduIDButton
+              id="security-change-button"
+              onClick={this.props.handleStartConfirmationPassword}
+            >
+              {this.props.l10n("security.change_password")}
+            </EduIDButton>
+          </div>
+          <p>{this.props.l10n("security.for-second-factor")}</p>
+          <div id="register-webauthn-tokens-area">
+            <div id="add-webauthn-token">
+              <EduIDButton
+                id="security-webauthn-button"
+                onClick={this.props.handleStartAskingKeyWebauthnDescription}
+              >
+                {this.props.l10n("security.add_webauthn_token_key")}
+              </EduIDButton>
+            </div>
+            {platformAuthenticatorButton}
+          </div>
+          {/* <div className="second-block">
+            <div className="intro">
+              <h4>{this.props.l10n("security.account_title")}</h4>
+              <p>{this.props.l10n("security.account_description")}</p>
+            </div>
+            <EduIDButton
+              className="btn-danger"
+              id="delete-button"
+              onClick={this.props.handleStartConfirmationDeletion}
+            >
+              {this.props.l10n("security.delete_account")}
+            </EduIDButton>
+          </div> */}
+          <GenericConfirmModal
+            modalId="securityConfirmDialog"
+            title={this.props.l10n("security.confirm_title_chpass")}
+            mainText={this.props.l10n("security.change_info")}
+            showModal={this.props.confirming_change}
+            closeModal={this.props.handleStopConfirmationPassword}
+            acceptModal={this.props.handleConfirmationPassword}
+          />
+          {/* <DeleteModal
+            title={this.props.l10n("security.confirm_title_deletion")}
+            showModal={this.props.confirming_deletion}
+            closeModal={this.props.handleStopConfirmationDeletion}
+            handleConfirm={this.props.handleConfirmationDeletion}
+          /> */}
+          <ConfirmModal
+            modalId="describeWebauthnTokenDialog"
+            id="describeWebauthnTokenDialogControl"
+            title={this.props.l10n("security.webauthn-describe-title")}
+            resendLabel=""
+            resendHelp=""
+            resendText=""
+            placeholder=""
+            with_resend_link={false}
+            showModal={Boolean(this.props.webauthn_asking_description)}
+            closeModal={this.props.handleStopAskingWebauthnDescription}
+            handleConfirm={this.props.handleStartWebauthnRegistration}
+          />
+        </div>
+      );
+    }
   }
 }
 
