@@ -38,7 +38,7 @@ class Settings extends Component {
 
   render() {
     return (
-      <div id="settings">
+      <div id="dashboard" className="settings">
         <SettingsNav />
         <div id="settings-content">
           <Route

@@ -14,7 +14,7 @@ import "style/Nins.scss";
 class DashboardSecurity extends Component {
   render() {
     return (
-      <div id="dashboard">
+      <div id="dashboard" className="dashboard-security">
         <DashboardNav {...this.props} />
         <div id="add-nin-number-container">
           {/* <AccountLinkingContainer /> */}
@@ -51,7 +51,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleThingy: function (e) {
+    handleThingy: function(e) {
       console.log("do you need a function here?");
     }
   };
@@ -61,5 +61,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(DashboardSecurity);
-
-

@@ -8,27 +8,29 @@ import "style/DashboardMain.scss";
 class SettingsButton extends Component {
   render() {
     const url = window.location.href;
+    let linkTo = "";
+    let text = "";
+
     if (url.includes("settings")) {
-      return (
-        <Link className="button" id="submit-button-link" to={`/profile/`}>
-          <button id="settings-button" type="submit">
-            Back
-          </button>
-        </Link>
-      );
+      console.log("this is props in settings button:", this.props.nins);
+      if (this.props.confirmed) {
+        linkTo = `/profile/verify-identity`;
+      } else {
+        linkTo = `/profile/`;
+      }
+      text = "Back";
     } else {
-      return (
-        <Link
-          className="button"
-          id="submit-button-link"
-          to={`/profile/settings/`}
-        >
-          <button id="settings-button" type="submit">
-            Settings
-          </button>
-        </Link>
-      );
+      linkTo = `/profile/settings/`;
+      text = "Settings";
     }
+
+    return (
+      <Link className="button" id="submit-button-link" to={linkTo}>
+        <button id="settings-button" type="submit">
+          {text}
+        </button>
+      </Link>
+    );
   }
 }
 

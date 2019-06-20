@@ -46,13 +46,13 @@ class Nins extends Component {
     }
 
     return (
-        <div id="dashboard">
-          <DashboardNav {...this.props} />
-          <div id="add-nin-number-container">
-            <AddNin {...this.props} />
-          </div>
-          <div id="connect-nin-number-container">{connectNin}</div>
+      <div id="dashboard" className="verify-identity">
+        <DashboardNav {...this.props} />
+        <div id="add-nin-number-container">
+          <AddNin {...this.props} />
         </div>
+        <div id="connect-nin-number-container">{connectNin}</div>
+      </div>
     );
   }
 }

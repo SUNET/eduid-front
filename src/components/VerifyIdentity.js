@@ -12,13 +12,12 @@ import DashboardNav from "./DashboardNav";
 class VerifyIdentity extends Component {
   render() {
     return (
-      <div id="verify-identity">
-        < DashboardNav />
+      <div id="dashboard" className="verify-identity">
+        <DashboardNav />
         <div id="verify-identity-process">
           <div id="verify-identity-prompt">
             <h3>
-              {" "}
-              You're almost done, the next step is to verify your identity{" "}
+              You're almost done, the next step is to verify your identity
             </h3>
             <p>
               Choose a suitable way to verify your identity and follow the
@@ -32,7 +31,6 @@ class VerifyIdentity extends Component {
                 to={`/profile/verify-identity/`}
               >
                 <button id="verify-button-prompt" type="submit">
-                  {" "}
                   I want to verify my identity
                 </button>
               </Link>
