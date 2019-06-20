@@ -90,16 +90,8 @@ class Main extends Component {
                     component={SettingsComponent}
                   />
                   <Route exact path="/profile/" component={Profile} />
-                  <Route
-                    exact
-                    path="/profile/verify-identity"
-                    component={Profile}
-                  />
-                  <Route
-                    exact
-                    path="/profile/security/"
-                    component={DashboardSecurity}
-                  />
+                  <Route path="/profile/verify-identity/" component={Profile} />
+                  <Route path="/profile/security/" component={Profile} />
                 </div>
                 <h3>Why do I need eduID?</h3>
                 <p>

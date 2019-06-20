@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import NinsContainer from "containers/Nins";
 import DashboardSecurity from "./DashboardSecurity";
+import NinDisplay from "./NinDisplay";
 import VerifyIdentity from "./VerifyIdentity";
 import SecurityContainer from "containers/Security";
 
@@ -19,35 +20,20 @@ class Profile extends Component {
 
     if (url.includes("security")) {
       profileSection = [<SecurityContainer />];
-    } else if (url.includes("verify-identity")){
+    } else if (url.includes("verify-identity")) {
       profileSection = [<NinsContainer />];
     } else {
       if (this.props.nins.length) {
-        profileSection = [<NinsContainer />];
+        profileSection = [<NinDisplay {...this.props} />];
       } else {
         profileSection = [<VerifyIdentity />];
       }
-      // if (!this.props.verifiedNin) {
-
-      // } else {
-      //   profileSection = [<NinsContainer />];
-      // }
     }
 
     return (
       <div id="dashboard" className="profile">
         <DashboardNav {...this.props} />
-        <div id="verify-identity-process">
-          {profileSection}
-          {/* <h3>
-              You're almost done, the next step is to verify your identity
-            </h3>
-            <p>
-              Choose a suitable way to verify your identity and follow the
-              instuctions to start using eduID. You can change any of your
-              personal information in Settings.
-            </p> */}
-        </div>
+        <div id="verify-identity-process">{profileSection}</div>
       </div>
     );
   }

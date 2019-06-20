@@ -14,42 +14,11 @@ class SettingsNav extends Component {
             <NavLink
               className="nav-link"
               activeClassName="active"
-              // id="settings-personal-info"
               to={`/profile/settings/personaldata`}
             >
               <h5>Personal information</h5>
             </NavLink>
           </li>
-          {/* <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-emails"
-                to={`/profile/settings/emails`}
-              >
-                <h5>Email address</h5>
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-phone"
-                to={`/profile/settings/phones`}
-              >
-                <h5>Phone</h5>
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-nin"
-                to={`/profile/settings/nins`}
-              >
-                <h5>National identity number</h5>
-              </NavLink>
-            </li> */}
           <li className="nav-item">
             <NavLink
               className="nav-link"
@@ -60,16 +29,6 @@ class SettingsNav extends Component {
               <h5>Advanced settings</h5>
             </NavLink>
           </li>
-          {/* <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                id="settings-security"
-                to={`/profile/settings/security`}
-              >
-                <h5>Add Security</h5>
-              </NavLink>
-            </li> */}
         </ul>
       </nav>
     );

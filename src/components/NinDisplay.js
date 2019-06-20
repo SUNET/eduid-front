@@ -19,8 +19,11 @@ class NinDisplay extends Component {
           <div key="1" id="add-nin-number">
             <div key="1" id="nin-form-container">
               <div key="1" id="add-nin-number" className="verified">
-                <div data-ninnumber={this.props.nin} id="nin-number-container">
-                  <p id="nin-number">{this.props.nin}</p>
+                <div
+                  data-ninnumber={this.props.nins[0].number}
+                  id="nin-number-container"
+                >
+                  <p id="nin-number">{this.props.nins[0].number}</p>
                 </div>
               </div>
             </div>
@@ -30,13 +33,16 @@ class NinDisplay extends Component {
     } else {
       return (
         <div key="1" className="intro">
-          <h3> Step 1. Add your national identity number</h3>
+          <h3> Add your national identity number</h3>
           <p>Your id number has been added and connected to your person.</p>
           <div key="1" id="add-nin-number">
             <div key="1" id="nin-form-container">
               <div key="1" id="add-nin-number" className="unverified">
-                <div data-ninnumber={this.props.nin} id="nin-number-container">
-                  <p id="nin-number">{this.props.nin}</p>
+                <div
+                  data-ninnumber={this.props.nins[0].number}
+                  id="nin-number-container"
+                >
+                  <p id="nin-number">{this.props.nins[0].number}</p>
                 </div>
                 <EduIDButton
                   className="btn-danger btn-sm"

@@ -15,7 +15,6 @@ class DashboardNav extends Component {
               <NavLink
                 className="nav-link"
                 activeClassName="active"
-                // id="settings-personal-info"
                 to={`/profile/`}
               >
                 <h5>Account details</h5>
@@ -31,8 +30,7 @@ class DashboardNav extends Component {
             <li className="nav-item">
               <NavLink
                 className="nav-link"
-                activeClassName="active"
-                // id="settings-personal-info"
+                exact activeClassName="active"
                 to={`/profile/`}
               >
                 <h5>Account details</h5>
@@ -42,7 +40,6 @@ class DashboardNav extends Component {
               <NavLink
                 className="nav-link"
                 activeClassName="active"
-                id="settings-account-linking"
                 to={`/profile/security/`}
               >
                 <h5>Added security</h5>
