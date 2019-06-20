@@ -8,9 +8,9 @@ const mapStateToProps = (state, props) => {
   let confirmed;
   const nins = state.nins.nins.filter(nin => nin.verified);
   if (nins.length >= 1) {
-    confirmed = "main.confirmed";
+    confirmed = true;
   } else {
-    confirmed = "main.unconfirmed";
+    confirmed = false;
   }
   return {
     nins: state.nins.nins,

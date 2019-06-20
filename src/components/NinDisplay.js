@@ -40,7 +40,7 @@ class NinDisplay extends Component {
                 </div>
                 <EduIDButton
                   className="btn-danger btn-sm"
-                  onClick={thisprops.handleDelete}
+                  onClick={this.props.handleDelete}
                 >
                   X
                 </EduIDButton>

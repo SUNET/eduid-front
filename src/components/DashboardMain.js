@@ -13,9 +13,10 @@ import FooterContainer from "containers/Footer";
 
 import SettingsComponent from "./Settings";
 import SettingsButton from "./SettingsButton";
+import Profile from "./Profile";
+import Nins from "./Nins";
 import VerifyIdentity from "./VerifyIdentity";
 // import PersonalDataContainer from "containers/PersonalData";
-import NinsContainer from "containers/Nins";
 import DashboardNav from "./DashboardNav";
 import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
@@ -26,6 +27,7 @@ import ChangePasswordContainer from "containers/ChangePassword";
 // import SecurityContainer from "containers/Security";
 // import ChangePasswordContainer from "containers/ChangePassword";
 import NotificationsContainer from "containers/Notifications";
+// import NotificationsContainer from "components/VerifyIdentity";
 // import ProfileFilledContainer from "containers/ProfileFilled";
 // import PendingActionsContainer from "containers/PendingActions";
 
@@ -87,14 +89,15 @@ class Main extends Component {
                     path="/profile/settings/"
                     component={SettingsComponent}
                   />
-                  <Route exact path="/profile/" component={VerifyIdentity} />
+                  <Route exact path="/profile/" component={Profile} />
                   <Route
                     exact
                     path="/profile/verify-identity"
-                    component={NinsContainer}
+                    component={Profile}
                   />
                   <Route
-                    path="/profile/security"
+                    exact
+                    path="/profile/security/"
                     component={DashboardSecurity}
                   />
                 </div>

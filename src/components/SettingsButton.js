@@ -13,10 +13,10 @@ class SettingsButton extends Component {
 
     if (url.includes("settings")) {
       console.log("this is props in settings button:", this.props.nins);
-      if (this.props.confirmed) {
-        linkTo = `/profile/verify-identity`;
-      } else {
+      if (this.props.verifiedNin) {
         linkTo = `/profile/`;
+      } else {
+        linkTo = `/profile/verify-identity`;
       }
       text = "Back";
     } else {

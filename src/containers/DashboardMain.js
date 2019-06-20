@@ -21,7 +21,7 @@ import Main from "components/DashboardMain";
 // };
 
 const mapStateToProps = (state, props) => {
-  let email, confirmed;
+  let email, verifiedNin;
   if (state.emails.emails.length >= 1) {
     email = state.emails.emails.filter(mail => mail.primary)[0].email;
   } else {
@@ -29,22 +29,22 @@ const mapStateToProps = (state, props) => {
   }
   const nins = state.nins.nins.filter(nin => nin.verified);
   if (nins.length >= 1) {
-    confirmed = "main.confirmed";
+    verifiedNin = true;
   } else {
-    confirmed = "main.unconfirmed";
+    verifiedNin = false;
   }
   return {
-    email: email,   // email for heading 
-    nins: nins,     // nin to see where to prompt user
+    email: email, // email for heading
+    nins: nins, // nin to see where to prompt user
     eppn: state.personal_data.data.eppn, // this should go to SETTINGS
-    confirmed: confirmed // could be a boolean? to show what colour to display nin
+    verifiedNin: verifiedNin // could be a boolean? to show what colour to display nin
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handleWindowSizeChange: function(e) {
-      console.log("hello! you are in handleWindowSizeChange") 
+      console.log("hello! you are in handleWindowSizeChange");
     }
   };
 };

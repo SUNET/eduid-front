@@ -7,7 +7,7 @@ import "style/DashboardMain.scss";
 
 class DashboardNav extends Component {
   render() {
-    if (!this.props.confirmed) {
+    if (!this.props.verifiedNin) {
       return (
         <nav id="settings-nav">
           <ul className="navbar-nav">
@@ -16,9 +16,9 @@ class DashboardNav extends Component {
                 className="nav-link"
                 activeClassName="active"
                 // id="settings-personal-info"
-                to={`/profile/verify-identity/`}
+                to={`/profile/`}
               >
-                <h5>Verify identity</h5>
+                <h5>Account details</h5>
               </NavLink>
             </li>
           </ul>
@@ -33,9 +33,9 @@ class DashboardNav extends Component {
                 className="nav-link"
                 activeClassName="active"
                 // id="settings-personal-info"
-                to={`/profile/verify-identity/`}
+                to={`/profile/`}
               >
-                <h5>Verify identity</h5>
+                <h5>Account details</h5>
               </NavLink>
             </li>
             <li className="nav-item">
