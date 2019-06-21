@@ -7,15 +7,15 @@ import "style/Nins.scss";
 
 class AddNin extends Component {
   render() {
-    console.log("show form! because nin is null!");
-    console.log("these are the props (AddNin):", this.props);
+    // console.log("show form! because nin is null!");
+    // console.log("these are the props (AddNin):", this.props);
 
     if (this.props.nins.length) {
-      console.log("show number! because nin arraaaaayyyy!");
+      // console.log("show number! because nin arraaaaayyyy!");
       return <NinDisplay removeNin={this.removeNin} {...this.props} />;
     } else {
-      console.log("show form! because nin is null!");
-      console.log("these are the props (AddNin):", this.props);
+      // console.log("show form! because nin is null!");
+      // console.log("these are the props (AddNin):", this.props);
       return (
         <div key="1" className="intro">
           <h3> Step 1. Add your national identity number</h3>

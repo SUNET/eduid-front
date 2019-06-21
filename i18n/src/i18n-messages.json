@@ -1413,6 +1413,36 @@
     "defaultMessage": "Resend confirmation code"
   },
   {
+    "id": "lmp.add_number_title",
+    "description": "Title for adding mobile number dialog",
+    "defaultMessage": "Add your mobile number to continue"
+  },
+  {
+    "id": "lmp.add_number_info",
+    "description": "Explanation for adding mobile number dialog",
+    "defaultMessage": "This option will be available once you have added your number and entered the confirmation code in Settings."
+  },
+  {
+    "id": "lmp.reminder_to_confirm_title",
+    "description": "Title for confirming mobile number dialog",
+    "defaultMessage": "Your number is added but not confirmed"
+  },
+  {
+    "id": "lmp.reminder_to_confirm_info",
+    "description": "Explanation for confirming mobile number dialog",
+    "defaultMessage": "You can confirm your number in Settings. This option will be available once your number is confirmed"
+  },
+  {
+    "id": "lmp.confirm_title",
+    "description": "Title for mobile vetting dialog",
+    "defaultMessage": "Check if your phone number is connected to your id number"
+  },
+  {
+    "id": "lmp.confirm_info",
+    "description": "Explanation for mobile vetting dialog",
+    "defaultMessage": "Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry."
+  },
+  {
     "id": "letter.confirm_title",
     "description": "Title for letter proofing confirm dialog",
     "defaultMessage": "Confirm identity with code sent by letter"

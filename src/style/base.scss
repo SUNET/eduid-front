@@ -197,6 +197,7 @@ a {
 
 form {
   display: flex;
+  flex-direction: column;
 }
 
 form.form-inline div.alert {
@@ -465,7 +466,7 @@ h5.modal-title {
 
 div.modal-content > div.modal-header,
 div.modal-content > div.modal-body {
-  background-color: #bbded9;
+  background-color: white;
   background-image: url(../../img/texture.png);
   display: flex;
   flex-direction: column;

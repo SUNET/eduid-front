@@ -3,11 +3,54 @@ import PropTypes from "prop-types";
 import FormText from "reactstrap/lib/FormText";
 
 import EduIDButton from "components/EduIDButton";
-
+import ConfirmModal from "components/ConfirmModal";
+import GenericConfirmModal from "components/GenericConfirmModal";
 import "style/LookupMobileProofing.scss";
 
 class LookupMobileProofing extends Component {
   render() {
+    let modalPrompt = "";
+    // console.log(
+    //   "these are the props in LookupMobileProofing:",
+    //   this.props.phoneNumbers
+    // );
+
+    if (this.props.phoneNumbers.length) {
+      modalPrompt = [
+        <GenericConfirmModal
+          modalId="mobileGenericConfirmDialog"
+          title={this.props.l10n("lmp.reminder_to_confirm_title")}
+          mainText={this.props.l10n("lmp.reminder_to_confirm_info")}
+          showModal={this.props.showModal}
+          closeModal={this.props.handleCloseModal}
+          acceptModal={this.props.handleCloseModal}
+        />
+      ];
+      if (this.props.phoneNumbers[0].verified) {
+        modalPrompt = [
+          <GenericConfirmModal
+            modalId="mobileGenericConfirmDialog"
+            title={this.props.l10n("lmp.confirm_title")}
+            mainText={this.props.l10n("lmp.confirm_info")}
+            showModal={this.props.showModal}
+            closeModal={this.props.handleCloseModal}
+            acceptModal={this.props.handleLookupMobile}
+          />
+        ];
+      }
+    } else {
+      modalPrompt = [
+        <GenericConfirmModal
+          modalId="mobileGenericConfirmDialog"
+          title={this.props.l10n("lmp.add_number_title")}
+          mainText={this.props.l10n("lmp.add_number_info")}
+          showModal={this.props.showModal}
+          closeModal={this.props.handleCloseModal}
+          acceptModal={this.props.handleCloseModal}
+        />
+      ];
+    }
+
     return (
       <div>
         <form
@@ -19,7 +62,7 @@ class LookupMobileProofing extends Component {
             <EduIDButton
               className="proofing-button"
               disabled={this.props.disabled}
-              onClick={this.props.handleLookupMobile}
+              onClick={this.props.handleShowModal}
               block
             >
               {this.props.l10n("lmp.confirm-lookup-mobile")}
@@ -29,6 +72,7 @@ class LookupMobileProofing extends Component {
             </FormText>
           </fieldset>
         </form>
+        {modalPrompt}
       </div>
     );
   }
