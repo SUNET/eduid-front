@@ -6,6 +6,7 @@ import i18n from "i18n-messages";
 
 const mapStateToProps = (state, props) => {
   return {
+    verifyingLetter: state.letter_proofing.verifyingLetter,
     nins: state.nins.nins,
     is_configured: state.config.is_configured,
     proofing_methods: state.config.PROOFING_METHODS,

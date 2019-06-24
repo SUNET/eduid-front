@@ -185,6 +185,9 @@ const fakeState = {
     nin: "",
     rmNin: ""
   },
+  letter_proofing: {
+    verifyingLetter: false
+  },
   config: {
     LETTER_PROOFING_URL: "http://localhost/services/letter-proofing/",
     PROOFING_METHODS: []
@@ -200,6 +203,7 @@ function setupComponent() {
     nins: [],
     nin: "",
     valid_nin: true,
+    verifyingLetter: false,
     proofing_methods: [],
     validateNin: mock.fn(),
     handleChange: mock.fn(),
