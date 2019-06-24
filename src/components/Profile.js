@@ -5,8 +5,9 @@ import i18n from "i18n-messages";
 import NinsContainer from "containers/Nins";
 import DashboardSecurity from "./DashboardSecurity";
 import NinDisplay from "./NinDisplay";
-import VerifyIdentity from "./VerifyIdentity";
+import ProfilePrompt from "./ProfilePrompt";
 import SecurityContainer from "containers/Security";
+import VerifyIdentityProcess from "./VerifyIdentityProcess";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -17,23 +18,30 @@ class Profile extends Component {
   render() {
     const url = window.location.href;
     let profileSection = "";
+    let stylingClass = "";
 
     if (url.includes("security")) {
+      stylingClass = "profile";
       profileSection = [<SecurityContainer />];
     } else if (url.includes("verify-identity")) {
-      profileSection = [<NinsContainer />];
+      stylingClass = "verify-identity";
+      profileSection = [<VerifyIdentityProcess {...this.props} />];
     } else {
       if (this.props.nins.length) {
-        profileSection = [<NinDisplay {...this.props} />];
+        stylingClass = "verify-identity";
+        profileSection = [
+            <NinDisplay {...this.props} />
+        ];
       } else {
-        profileSection = [<VerifyIdentity />];
+        stylingClass = "profile";
+        profileSection = [<ProfilePrompt {...this.props} />];
       }
     }
 
     return (
-      <div id="dashboard" className="profile">
+      <div id="dashboard" className={stylingClass}>
         <DashboardNav {...this.props} />
-        <div id="verify-identity-process">{profileSection}</div>
+        <div id="profile-grid">{profileSection}</div>
       </div>
     );
   }

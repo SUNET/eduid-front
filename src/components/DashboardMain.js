@@ -15,7 +15,7 @@ import SettingsComponent from "./Settings";
 import SettingsButton from "./SettingsButton";
 import Profile from "./Profile";
 import Nins from "./Nins";
-import VerifyIdentity from "./VerifyIdentity";
+import VerifyIdentityPrompt from "./ProfilePrompt";
 // import PersonalDataContainer from "containers/PersonalData";
 import DashboardNav from "./DashboardNav";
 import AccountLinkingContainer from "containers/AccountLinking";

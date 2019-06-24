@@ -43,7 +43,7 @@ class NinForm extends Component {
     let validNin = "",
       formButton = "";
 
-    if (this.props.valid_nin) {
+    if (this.props.valid) {
       validNin = this.props.nin;
       formButton = [
         <button onClick={this.props.addNin} key="1">
@@ -60,7 +60,6 @@ class NinForm extends Component {
             componentClass="input"
             type="text"
             name="nin"
-            className="nin-input"
             placeholder={this.props.l10n("nins.input_placeholder")}
             helpBlock={this.props.l10n("nins.input_help_text")}
           />
@@ -104,11 +103,6 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     addNin: function(e) {
-      console.log("you're in addNin!");
-      console.log(
-        "this is the nin from component",
-        e.target.previousElementSibling.firstElementChild.children[0].value
-      );
       const nin =
         e.target.previousElementSibling.firstElementChild.children[0].value;
       dispatch(actions.postNin(nin));

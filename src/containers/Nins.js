@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
-import Nins from "components/Nins";
+import VerifyIdentityProcess from "components/VerifyIdentityProcess";
 import * as actions from "actions/Nins";
 import i18n from "i18n-messages";
 
@@ -35,6 +35,6 @@ const mapDispatchToProps = (dispatch, props) => {
 const NinsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Nins);
+)(VerifyIdentityProcess);
 
 export default i18n(NinsContainer);

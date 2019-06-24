@@ -2,10 +2,42 @@
 
 //--- STEP 1. ADD NIN STYLES ---//
 
+.form-control {
+}
+
+#add-nin-number-container,
+#add-nin-number-container h3 {
+  color: #6b9080;
+}
+
 #add-nin-number {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  margin: 15px 0;
+}
+
+#nin input {
+  background-color: #fffffa;
+  font-family: "Roboto-Light";
+  border: none;
+  color: #6b9080;
+  font-size: 24px;
+  width: 100%;
+  border-bottom: solid #6b9080 3px;
+}
+
+#nin input::placeholder {
+  font-size: 24px;
+}
+
+#add-nin-number.unverified {
+  flex-direction: row;
+}
+
+#add-nin-number.unverified button {
+  color: #db5461;
+  background-color: transparent;
 }
 
 .nin-holder {
@@ -14,8 +46,9 @@
   align-items: flex-end;
 }
 /*--- styles for form ---*/
-// #nin-form-container {
-// }
+#nin-form-container {
+  display: flex;
+}
 
 .nin-input {
   border: solid 30px green;
