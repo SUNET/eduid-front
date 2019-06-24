@@ -211,7 +211,7 @@ class Security extends Component {
           />
         </div>
       );
-    } else {
+    } else if (url.includes("security")) {
       return (
         <div>
           <div className="intro">
@@ -257,19 +257,6 @@ class Security extends Component {
             </div>
             {platformAuthenticatorButton}
           </div>
-          {/* <div className="second-block">
-            <div className="intro">
-              <h4>{this.props.l10n("security.account_title")}</h4>
-              <p>{this.props.l10n("security.account_description")}</p>
-            </div>
-            <EduIDButton
-              className="btn-danger"
-              id="delete-button"
-              onClick={this.props.handleStartConfirmationDeletion}
-            >
-              {this.props.l10n("security.delete_account")}
-            </EduIDButton>
-          </div> */}
           <GenericConfirmModal
             modalId="securityConfirmDialog"
             title={this.props.l10n("security.confirm_title_chpass")}
@@ -278,12 +265,6 @@ class Security extends Component {
             closeModal={this.props.handleStopConfirmationPassword}
             acceptModal={this.props.handleConfirmationPassword}
           />
-          {/* <DeleteModal
-            title={this.props.l10n("security.confirm_title_deletion")}
-            showModal={this.props.confirming_deletion}
-            closeModal={this.props.handleStopConfirmationDeletion}
-            handleConfirm={this.props.handleConfirmationDeletion}
-          /> */}
           <ConfirmModal
             modalId="describeWebauthnTokenDialog"
             id="describeWebauthnTokenDialogControl"
@@ -297,6 +278,27 @@ class Security extends Component {
             closeModal={this.props.handleStopAskingWebauthnDescription}
             handleConfirm={this.props.handleStartWebauthnRegistration}
           />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div className="intro">
+            <label>Passwords</label>
+            <table className="table table-bordered table-form passwords">
+              <tbody>
+                <tr>
+                  <th>{this.props.l10n("security.credential")}</th>
+                  <th>{this.props.l10n("security.creation_date")}</th>
+                  <th>{this.props.l10n("security.last_used")}</th>
+                  <th>{this.props.l10n("security.description")}</th>
+                  <th>{this.props.l10n("security.verify")}</th>
+                  <th>{this.props.l10n("security.remove")}</th>
+                </tr>
+                {creds_table}
+              </tbody>
+            </table>
+          </div>
         </div>
       );
     }
