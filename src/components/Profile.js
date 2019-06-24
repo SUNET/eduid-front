@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+import i18n from "i18n-messages";
 import NinsContainer from "containers/Nins";
 import DashboardSecurity from "./DashboardSecurity";
 import NinDisplay from "./NinDisplay";
@@ -40,7 +40,6 @@ class Profile extends Component {
 }
 
 // export default VerifyIdentity;
-
 const mapStateToProps = (state, props) => {
   let verifiedNin;
   const nins = state.nins.nins.filter(nin => nin.verified);
@@ -63,7 +62,9 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-export default connect(
+const ProfileContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Profile);
+
+export default i18n(ProfileContainer);
