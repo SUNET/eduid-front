@@ -10,6 +10,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
 import DashboardNav from "./DashboardNav";
+import NinDisplay from "./NinDisplay";
 
 class ProfilePrompt extends Component {
   render() {
@@ -17,11 +18,8 @@ class ProfilePrompt extends Component {
     if (this.props.nins.length) {
       return (
         <div id="profile-card">
-          <div id="verify-identity-box">
-            <Link
-              // id="verify-identity-link"
-              to={`/profile/security/`}
-            >
+          <div id="verify-identity-prompt">
+            <Link to={`/profile/security/`}>
               <label>Make eduID more secure</label>
               <p>
                 Choose a suitable way to verify your identity and follow the
@@ -31,15 +29,15 @@ class ProfilePrompt extends Component {
           </div>
         </div>
       );
-    } else if (!this.props.nins.length) {
+    } else if (this.props.nins.length === 0) {
       return (
         <div id="profile-card">
-          <div id="verify-identity-box">
+          <div id="verify-identity-prompt">
             <Link
               // id="verify-identity-link"
-              to={`/profile/security/`}
+              to={`/profile/verify-identity/`}
             >
-              <label>Make eduID more secure</label>
+            <label>start using eduID</label>
               <p>
                 Choose a suitable way to verify your identity and follow the
                 instuctions to start using eduID.
@@ -50,7 +48,7 @@ class ProfilePrompt extends Component {
       );
     } else {
       return (
-        <div id="verify-identity-box">
+        <div id="verify-identity-prompt">
           <NinDisplay />
         </div>
       );
