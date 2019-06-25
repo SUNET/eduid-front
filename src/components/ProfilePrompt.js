@@ -18,12 +18,12 @@ class ProfilePrompt extends Component {
     if (this.props.nins.length) {
       return (
         <div id="profile-card">
-          <div id="verify-identity-prompt">
+          <div id="profile-prompt" className="verify-identity-prompt">
             <Link to={`/profile/security/`}>
               <label>Make eduID more secure</label>
               <p>
                 Choose a suitable way to verify your identity and follow the
-                instuctions to start using eduID.
+                instructions to start using eduID.
               </p>
             </Link>
           </div>
@@ -31,24 +31,23 @@ class ProfilePrompt extends Component {
       );
     } else if (this.props.nins.length === 0) {
       return (
-        <div id="profile-card">
-          <div id="verify-identity-prompt">
-            <Link
-              // id="verify-identity-link"
-              to={`/profile/verify-identity/`}
-            >
-            <label>start using eduID</label>
-              <p>
-                Choose a suitable way to verify your identity and follow the
-                instuctions to start using eduID.
-              </p>
-            </Link>
+        <Link
+          id="profile-card"
+          className="verify-identity-prompt"
+          to={`/profile/verify-identity/`}
+        >
+          <div id="profile-prompt" className="verify-identity-prompt">
+            <h3 className="verify-identity-prompt">Start using eduID</h3>
+            <p>
+              Add your national id number and choose a suitable way to confirm
+              that it belongs to you.
+            </p>
           </div>
-        </div>
+        </Link>
       );
     } else {
       return (
-        <div id="verify-identity-prompt">
+        <div id="profile-prompt" className="verify-identity-prompt">
           <NinDisplay />
         </div>
       );

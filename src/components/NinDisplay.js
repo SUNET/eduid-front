@@ -11,29 +11,36 @@ import "style/Nins.scss";
 
 class NinDisplay extends Component {
   render() {
-    if (this.props.nins[0].verified) {
-      // console.log(this.props.nins[0].verified);
+    if (this.props.nins.length === 0) {
       return (
-        <div key="1" className="intro">
+        <div key="1" className="profile-card">
+          <label>National id number</label>
+          <div id="nin-number-container">
+            <p id="nin-number" className="unverified">
+              No number added yet
+            </p>
+          </div>
+        </div>
+      );
+    } else if (this.props.nins[0].verified) {
+      return (
+        <div key="1" className="profile-card">
           <label>national id number</label>
-          <div key="1" id="nin-form-container">
-            <div key="1" id="add-nin-number" className="verified">
-              <div
-                data-ninnumber={this.props.nins[0].number}
-                id="nin-number-container"
-              >
-                <p id="nin-number">{this.props.nins[0].number}</p>
-              </div>
-            </div>
+          <div
+            id="nin-number-container"
+            data-ninnumber={this.props.nins[0].number}
+          >
+            <p id="nin-number" className="verified">
+              {this.props.nins[0].number}
+            </p>
           </div>
         </div>
       );
     } else {
       return (
-        <div key="1" className="intro">
-          <h3> 1. Add your national identity number</h3>
+        <div key="1" className="profile-card">
+          <h3> 1. Add your national id number</h3>
           <label>national id number</label>
-
           <div key="1" id="nin-form-container">
             <div key="1" id="add-nin-number" className="unverified">
               <div

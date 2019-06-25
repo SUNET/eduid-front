@@ -31,12 +31,13 @@ class VerifyIdentityProcess extends Component {
     if (this.props.nins.length && !this.props.nins[0].verified) {
       connectNin = [
         <div key="1" id="connect-nin-number">
-          <h3> Step 2. Connect your national identity number to eduID</h3>
+          <h3> 2. Connect your id number to eduID</h3>
           <p>
             Choose a way below to verify that the given identity number belongs
             to you.
           </p>
           <div>
+            <label>Request a confirmation code to your:</label>
             <ButtonGroup vertical={true} id="nins-btn-group">
               {vettingButtons}
             </ButtonGroup>
@@ -46,7 +47,7 @@ class VerifyIdentityProcess extends Component {
     }
 
     return (
-      <div id="verify-identity-box" className="verify-identity">
+      <div id="verify-identity-form" className="verify-identity">
         <div id="add-nin-number-container">
           <AddNin {...this.props} />
         </div>
