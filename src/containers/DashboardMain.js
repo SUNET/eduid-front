@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-
+import { isValid } from "redux-form";
+import * as actions from "actions/Nins";
 import i18n from "i18n-messages";
 import Main from "components/DashboardMain";
 // import { resizeWindow } from "actions/DashboardConfig";
@@ -35,17 +36,17 @@ const mapStateToProps = (state, props) => {
   }
   return {
     email: email, // email for heading
-    nins: nins, // nin to see where to prompt user
-    eppn: state.personal_data.data.eppn, // this should go to SETTINGS
-    verifiedNin: verifiedNin // could be a boolean? to show what colour to display nin
+    nin: state.nins.nin, // nin to see where to prompt user
+    eppn: state.personal_data.data.eppn,
+    verifiedNin: verifiedNin
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleWindowSizeChange: function(e) {
-      console.log("hello! you are in handleWindowSizeChange");
-    }
+    // handleWindowSizeChange: function(e) {
+    //   console.log("hello! you are in handleWindowSizeChange");
+    // }
   };
 };
 

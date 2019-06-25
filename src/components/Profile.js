@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import i18n from "i18n-messages";
+import { isValid } from "redux-form";
+import * as actions from "actions/Nins";
 import NinsContainer from "containers/Nins";
 import DashboardSecurity from "./DashboardSecurity";
 import NinDisplay from "./NinDisplay";
@@ -58,7 +60,12 @@ const mapStateToProps = (state, props) => {
   }
   return {
     nins: state.nins.nins, // verified nin to see where to prompt user
-    verifiedNin: verifiedNin // could be a boolean? to show what colour to display nin
+    verifiedNin: verifiedNin, // could be a boolean? to show what colour to display nin
+    is_configured: state.config.is_configured,
+    proofing_methods: state.config.PROOFING_METHODS,
+    valid_nin: isValid("nins")(state),
+    message: state.nins.message,
+
   };
 };
 
