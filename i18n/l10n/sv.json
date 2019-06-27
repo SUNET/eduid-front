@@ -62,7 +62,7 @@
   "eidas.freja_instructions_step_3": "Klicka på länken \"Jag har Freja eID-appen installerad\" och följ instruktionerna på inloggningsidan för Freja eID som öppnas.",
   "eidas.freja_instructions_step_4": "Du kommer att skickas tillbaka till eduID dashboard efter att du loggat in med Freja eID+.",
   "eidas.freja_instructions_title": "Hur du verifierar ditt konto med Freja eID+",
-  "eidas.initialize_proofing_help_text": "För att använda det här alternativet så behöver du <a href=\\\"https://frejaeid.com/skaffa-freja-eid/\\\" target=\\\"_blank\\\">Freja eID+</a>.",
+  "eidas.initialize_proofing_help_text": "För att använda det här alternativet så behöver du <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID+</a>.",
   "eidas.modal_title": "Verifiera med Freja eID+",
   "eidas.nin_already_verified": "Du har redan bekräftat din identitet",
   "eidas.nin_not_matching": "Den mottagna identiteten motsvarar inte den bekräftade identiteten på kontot",

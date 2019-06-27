@@ -36,10 +36,9 @@ export function fetchCodeStatus(url) {
 }
 
 export function* requestConfig() {
-  const signup_url = SIGNUP_SERVICE_URL + "config";
   try {
-    console.log("Getting config from " + signup_url);
-    const config = yield call(fetchConfig, signup_url);
+    console.log("Getting config from " + SIGNUP_CONFIG_URL);
+    const config = yield call(fetchConfig, SIGNUP_CONFIG_URL);
     yield put(config);
     yield put(actions.appLoaded());
   } catch (error) {
