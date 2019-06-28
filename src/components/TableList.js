@@ -18,20 +18,20 @@ class TableList extends Component {
         if (entry.primary) {
           return (
             <tr
-              className="emailrow"
+              className="emailrow primary"
               data-identifier={index}
               data-object={key}
               key={key}
             >
               <td className="identifier">{key}</td>
               <td className="non-identifier">
-                <span className="nobutton">
+                <span className="nobutton verify-status-label">
                   {this.props.l10n("tl.primary")}
                 </span>
               </td>
               <td className="non-identifier">
                 <EduIDButton
-                  className="btn-link"
+                  className="btn-link remove"
                   onClick={this.props.handleRemove}
                 >
                   {this.props.l10n("tl.remove")}
@@ -42,7 +42,7 @@ class TableList extends Component {
         } else if (entry.verified) {
           return (
             <tr
-              className="emailrow"
+              className="emailrow make-primary"
               data-identifier={index}
               data-object={key}
               key={key}
@@ -50,15 +50,15 @@ class TableList extends Component {
               <td className="identifier">{key}</td>
               <td className="non-identifier">
                 <EduIDButton
-                  className="btn-link"
+                  className="btn-link verify-label verify-status-label"
                   onClick={this.props.handleMakePrimary}
                 >
                   {this.props.l10n("tl.make_primary")}
                 </EduIDButton>
               </td>
-              <td className="non-identifier">
+              <td className="non-identifier ">
                 <EduIDButton
-                  className="btn-link"
+                  className="btn-link remove"
                   onClick={this.props.handleRemove}
                 >
                   {this.props.l10n("tl.remove")}
@@ -69,15 +69,15 @@ class TableList extends Component {
         } else {
           return (
             <tr
-              className="emailrow"
+              className="emailrow make-primary"
               data-identifier={index}
               data-object={key}
               key={key}
             >
               <td className="identifier">{key}</td>
-              <td className="non-identifier">
+              <td className="non-identifier ">
                 <EduIDButton
-                  className="btn-link"
+                  className="btn-link verify-status-label"
                   onClick={this.props.handleStartConfirmation}
                 >
                   {this.props.l10n("tl.pending")}
@@ -85,7 +85,7 @@ class TableList extends Component {
               </td>
               <td className="non-identifier">
                 <EduIDButton
-                  className="btn-link"
+                  className="btn-link  remove"
                   onClick={this.props.handleRemove}
                 >
                   {this.props.l10n("tl.remove")}
@@ -98,7 +98,7 @@ class TableList extends Component {
     }
     return (
       <div className="table-responsive">
-        <table className="table table-striped table-form">
+        <table className="table-form">
           <tbody>{rows}</tbody>
         </table>
       </div>

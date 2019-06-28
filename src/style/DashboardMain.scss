@@ -198,24 +198,63 @@
 }
 
 /* styles for tables displaying userinfo on settings page */
-.table {
+table {
   margin-bottom: 0;
   width: 100%;
   background-color: white;
-  color: #3f5c57;
+  color: gray;
+  font-size: 24px;
+  font-family: "Roboto-Light";
 }
 
-.table td {
-  padding: 0 0 0 20px;
-  vertical-align: baseline;
-  border-top: none;
+table td {
+  padding: 0.75rem;
 }
 
+table .btn-link {
+  color: gray;
+}
+
+tbody {
+  margin-bottom: 10px;
+}
 td {
-  width: 33%;
+  border: solid 3px red;
 }
 
-.table,
+span.nobutton,
+.primary button.remove,
+tr.primary {
+  font-weight: 900;
+  font-family: "Roboto-Regular";
+  color: #333;
+}
+
+span.nobutton,
+button.verify-status-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: "Roboto-Medium";
+  letter-spacing: 0.5px;
+  line-height: 1;
+  font-weight: 700;
+  padding: 0 0 0 2px;
+  margin: 0;
+}
+
+span.nobutton {
+  height: 48px;
+}
+
+button.remove {
+  font-size: 24px;
+  font-family: "Roboto-Light";
+  float: right;
+}
+button.remove:hover {
+  color: red;
+}
+
 .form-control {
   font-size: 14px;
 }
@@ -226,6 +265,15 @@ td {
   margin: 0;
 }
 
+fieldset {
+  width: 100%;
+}
+
+// span.verify-status-label,
+// .verify-status-label button {
+
+// }
+
 .form-text {
   margin-top: 2px 0;
   padding: 0 0 0 2px;
@@ -234,10 +282,6 @@ td {
 .eppn-text-muted {
   color: #777;
   font-size: 14px;
-}
-
-.eduid-text-muted {
-  color: #777;
 }
 
 /*Accordion FAQ*/

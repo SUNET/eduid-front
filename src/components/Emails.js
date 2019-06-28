@@ -25,7 +25,7 @@ const validate = values => {
 
 let EmailForm = props => {
   return (
-    <form id="emailsview-form" className="form-horizontal" role="form">
+    <form id="emailsview-form" role="form">
       <fieldset id="emails-form" className="tabpane">
         <Field
           component={TextInput}
@@ -65,9 +65,9 @@ class Emails extends Component {
           <h4>{this.props.l10n("emails.main_title")}</h4>
           <p>{this.props.l10n("emails.long_description")}</p>
           {/* <p>
-            {this.props.l10n("faq_link")}{" "}
-            <a href="https://www.eduid.se/faq.html">FAQ</a>
-          </p> */}
+{this.props.l10n("faq_link")}{" "}
+<a href="https://www.eduid.se/faq.html">FAQ</a>
+</p> */}
         </div>
         <div id="email-display">
           <TableList
