@@ -58,6 +58,28 @@ EmailForm = connect(state => ({
 }))(EmailForm);
 
 class Emails extends Component {
+  constructor(props) {
+    super(props);
+    this.showEmailForm = this.showEmailForm.bind(this);
+    this.state = { formClass: "hide", addLinkClass: "btn-link" };
+  }
+
+  showEmailForm() {
+    console.log("hellow, you're showing the form");
+    this.setState(
+      (state, props) => {
+        return {
+          formClass: "add-email-container",
+          addLinkClass: "hide"
+        };
+      },
+      () => {
+        console.log(this.state.formClass);
+      }
+    );
+    console.log("state updated:", this.state.formClass);
+  }
+
   render() {
     return (
       <div className="emailsview-form-container ">
@@ -76,9 +98,15 @@ class Emails extends Component {
             handleRemove={this.props.handleRemove}
             handleMakePrimary={this.props.handleMakePrimary}
           />
-          <div className="form-content">
+          <div className={this.state.formClass}>
             <EmailForm {...this.props} />
           </div>
+          <EduIDButton
+            className={this.state.addLinkClass}
+            onClick={this.showEmailForm}
+          >
+            + add more
+          </EduIDButton>
         </div>
         <ConfirmModal
           modalId="emailConfirmDialog"
