@@ -5,7 +5,6 @@ button#email.button {
 }
 
 #email-display {
-  display: flex;
   width: 100%;
   flex-direction: column;
 }
@@ -20,6 +19,20 @@ button#email.button {
   background-color: white;
   border: none;
   border-bottom: solid 3px #333;
+}
+
+#add-more-button {
+  margin: 0;
+  padding: 0.75rem;
+  font-family: "Roboto-Medium";
+  font-size: 16px;
+}
+.hide {
+  display: none;
+}
+
+.form-content {
+  width: 100%;
 }
 
 // #emailsview-form .form-group input {

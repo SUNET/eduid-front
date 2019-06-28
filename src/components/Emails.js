@@ -69,20 +69,20 @@ class Emails extends Component {
     this.setState(
       (state, props) => {
         return {
-          formClass: "add-email-container",
+          formClass: "form-content",
           addLinkClass: "hide"
         };
       },
       () => {
-        console.log(this.state.formClass);
+        console.log("formClass:",this.state.formClass);
       }
     );
-    console.log("state updated:", this.state.formClass);
+    console.log("formClass state updated:", this.state.formClass);
   }
 
   render() {
     return (
-      <div className="emailsview-form-container ">
+      <div className="emailsview-form-container">
         <div className="intro">
           <h4>{this.props.l10n("emails.main_title")}</h4>
           <p>{this.props.l10n("emails.long_description")}</p>
@@ -102,6 +102,7 @@ class Emails extends Component {
             <EmailForm {...this.props} />
           </div>
           <EduIDButton
+            id="add-more-button"
             className={this.state.addLinkClass}
             onClick={this.showEmailForm}
           >
