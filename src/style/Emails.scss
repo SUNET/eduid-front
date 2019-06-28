@@ -1,26 +1,33 @@
 @import "../variables.scss";
 
 button#email.button {
-margin-top: 5px;
+  margin-top: 5px;
 }
 
 #email-display {
-display: flex;
-width: 100%;
-flex-direction: column;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }
 
 #emailsview-form {
-flex-direction: row;
-margin-top: 10px;
+  flex-direction: row;
+  margin-top: 10px;
 }
 
-#emailsview-form .form-group input {
-min-width: 300px;
+#email input,
+#phone input {
+  background-color: white;
+  border: none;
+  border-bottom: solid 3px #333;
 }
+
+// #emailsview-form .form-group input {
+// min-width: 300px;
+// }
 
 .emailsview-form-container {
-margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 // @media only screen and (min-width: 992px) {

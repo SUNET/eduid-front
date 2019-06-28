@@ -95,10 +95,21 @@ label {
   padding: 0 0 0 2px;
   margin: 0;
 }
+
 input {
-  padding: 0 20px;
+  padding: 0.75rem;
   border-radius: 0;
   box-shadow: none;
+  font-family: "Roboto-Regular";
+  background-color: white;
+  font-size: 24px;
+  color: #333;
+  border-bottom: 3px solid #333;
+}
+
+input::placeholder {
+  color: gray;
+  font-size: 24px;
 }
 input:focus {
   outline: 0;
