@@ -78,13 +78,13 @@
   max-width: 95%;
 }
 
-#profile-grid {
-  display: grid;
-  // grid-gap: 20px;
-  grid-template-columns: 75% 25%;
-  grid-template-rows: repeat(3, auto);
-  // width: calc(100% - 40px);
-}
+// #profile-grid {
+//   display: grid;
+//   // grid-gap: 20px;
+//   grid-template-columns: 75% 25%;
+//   grid-template-rows: repeat(3, auto);
+//   // width: calc(100% - 40px);
+// }
 
 .profile-card p {
   padding-left: 5px;

@@ -80,7 +80,7 @@ class Main extends Component {
           <HeaderContainer />
           <Router history={history}>
             <div id="dashboard-container">
-              <SettingsButton {...this.props} />
+              {/* <SettingsButton {...this.props} /> */}
               <div id="dashboard-text">
                 <h1>eduID for {this.props.email}</h1>
                 {welcomeGreeting}
