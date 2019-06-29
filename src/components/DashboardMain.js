@@ -30,6 +30,7 @@ import NotificationsContainer from "containers/Notifications";
 // import NotificationsContainer from "components/VerifyIdentity";
 // import ProfileFilledContainer from "containers/ProfileFilled";
 // import PendingActionsContainer from "containers/PendingActions";
+import Questions from "./Questions";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -93,19 +94,7 @@ class Main extends Component {
                   <Route path="/profile/verify-identity/" component={Profile} />
                   <Route path="/profile/security/" component={Profile} />
                 </div>
-                <h3>Why do I need eduID?</h3>
-                <p>
-                  eduID kan användas för inloggning inom flera olika
-                  organisationer. eduID har utvecklats för att kunna ge alla
-                  studenter en identitet online utan att kräva ett svenskt
-                  personnummer.
-                </p>
-                <h3>How to use eduID</h3>
-                <p>
-                  När möjlighet finns, välj "Logga in med eduID". Du kommer att
-                  bli skickad till eduIDs login där du anger din e-postadress
-                  och ditt lösenord.
-                </p>
+                <Questions />
               </div>
             </div>
           </Router>
