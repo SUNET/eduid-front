@@ -14,11 +14,16 @@ button#email.button {
   margin-top: 10px;
 }
 
+#personal-data-form input,
 #emails-form input,
 #phone-form input {
   background-color: white;
   border: none;
   border-bottom: solid 3px #333;
+  font-family: "Roboto-Light";
+  color: gray;
+  font-weight: 900;
+  font-size: 24px;
 }
 
 #add-more-button {
@@ -39,6 +44,7 @@ button#email.button {
 // #emailsview-form .form-group input {
 // min-width: 300px;
 // }
+.personaldataview-form,
 .phoneview-form-container,
 .emailsview-form-container {
   margin-bottom: 30px;
