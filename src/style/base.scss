@@ -88,29 +88,28 @@ label {
   // font-family: "Roboto-Regular";
   font-size: 12px;
   text-transform: uppercase;
-  font-family: "Roboto-Regular";
+  font-family: "Roboto-Medium";
   letter-spacing: 0.5px;
   line-height: 1;
-  color: #3f5c57;
+  // color: #3f5c57;
+  font-weight: 700;
+  color: #333;
   padding: 0 0 0 2px;
   margin: 0;
 }
-
 input {
-  padding: 0.75rem;
+  padding: 0 20px;
   border-radius: 0;
   box-shadow: none;
-  font-family: "Roboto-Regular";
-  background-color: white;
+  font-family: "Roboto-Light";
+  // font-weight: 900;
   font-size: 24px;
-  color: #333;
-  border-bottom: 3px solid #333;
 }
+// input::placeholder {
+//   font-family: "Roboto-Medium";
+//   color: blue;
+// }
 
-input::placeholder {
-  color: gray;
-  font-size: 24px;
-}
 input:focus {
   outline: 0;
 }
@@ -159,8 +158,13 @@ a {
   left: 0;
 }
 
+small,
+.small {
+  font-size: 100%;
+}
+
 .intro h4 {
-  font-family: "Roboto-Black";
+  font-family: "Roboto-Medium";
   font-size: 24px;
 }
 
@@ -283,15 +287,20 @@ div.controls > span.uneditable-input {
 }
 
 .form-control {
-  height: 45px;
+  height: 48px;
   border-radius: 0;
   box-shadow: none;
-  font-size: 14px;
+  font-size: 24px;
+  font-family: "Roboto-Regular";
 }
 
 .form-control:focus {
   border-color: #fff;
   box-shadow: none;
+}
+
+fieldset {
+  width: 100%;
 }
 
 // /* removing inlines */
