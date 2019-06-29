@@ -11,7 +11,7 @@ import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
-import SettingsNav from "./SettingsNav";
+import DashboardNav from "./DashboardNav";
 import PersonalDataContainer from "containers/PersonalData";
 import NinsContainer from "containers/Nins";
 import EmailsContainer from "containers/Emails";
@@ -39,7 +39,7 @@ class Settings extends Component {
   render() {
     return (
       <div id="dashboard" className="settings">
-        <SettingsNav />
+        <DashboardNav />
         <div id="settings-content">
           <Route
             exact
