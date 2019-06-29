@@ -34,7 +34,7 @@ class TableList extends Component {
                   className="btn-link remove"
                   onClick={this.props.handleRemove}
                 >
-                  {this.props.l10n("tl.remove")}
+                  X
                 </EduIDButton>
               </td>
             </tr>
@@ -61,7 +61,7 @@ class TableList extends Component {
                   className="btn-link remove"
                   onClick={this.props.handleRemove}
                 >
-                  {this.props.l10n("tl.remove")}
+                  X
                 </EduIDButton>
               </td>
             </tr>
@@ -88,7 +88,7 @@ class TableList extends Component {
                   className="btn-link  remove"
                   onClick={this.props.handleRemove}
                 >
-                  {this.props.l10n("tl.remove")}
+                  X
                 </EduIDButton>
               </td>
             </tr>
