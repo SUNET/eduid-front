@@ -3,12 +3,12 @@
 button#email.button {
   margin-top: 5px;
 }
-
+#phone-display,
 #email-display {
-  width: 100%;
   flex-direction: column;
 }
 
+#phonesview-form,
 #emailsview-form {
   flex-direction: row;
   margin-top: 10px;
@@ -27,6 +27,7 @@ button#email.button {
   font-family: "Roboto-Medium";
   font-size: 16px;
 }
+
 .hide {
   display: none;
 }
@@ -38,7 +39,7 @@ button#email.button {
 // #emailsview-form .form-group input {
 // min-width: 300px;
 // }
-
+.phoneview-form-container,
 .emailsview-form-container {
   margin-bottom: 30px;
 }

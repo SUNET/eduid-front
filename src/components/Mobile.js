@@ -8,6 +8,7 @@ import EduIDButton from "components/EduIDButton";
 import TableList from "components/TableList";
 import ConfirmModal from "components/ConfirmModal";
 
+import "style/Emails.scss";
 import "style/Mobile.scss";
 import "style/DashboardMain.scss";
 
@@ -31,8 +32,8 @@ const validate = (values, props) => {
 
 let PhoneForm = props => {
   return (
-    <form id="mobilesview-form" className="form-horizontal" role="form">
-      <fieldset id="mobile-form" className="tabpane">
+    <form id="phonesview-form" role="form">
+      <fieldset id="phone-form" className="tabpane">
         <Field
           component={TextInput}
           componentClass="input"
@@ -64,16 +65,34 @@ PhoneForm = connect(state => ({
 }))(PhoneForm);
 
 class Mobile extends Component {
+  constructor(props) {
+    super(props);
+    this.showEmailForm = this.showEmailForm.bind(this);
+    this.state = { formClass: "hide", addLinkClass: "btn-link" };
+  }
+
+  showEmailForm() {
+    console.log("hellow, you're showing the form");
+    this.setState(
+      (state, props) => {
+        return {
+          formClass: "form-content",
+          addLinkClass: "hide"
+        };
+      },
+      () => {
+        console.log("formClass:", this.state.formClass);
+      }
+    );
+    console.log("formClass state updated:", this.state.formClass);
+  }
+
   render() {
     return (
-      <div className="mobileview-form-container ">
+      <div className="phoneview-form-container">
         <div className="intro">
           <h4>{this.props.l10n("phones.main_title")}</h4>
           <p>{this.props.l10n("phones.long_description")}</p>
-          {/* <p>
-            {this.props.l10n("faq_link")}{" "}
-            <a href="https://www.eduid.se/faq.html">FAQ</a>
-          </p> */}
         </div>
         <div id="phone-display">
           <TableList
@@ -82,9 +101,16 @@ class Mobile extends Component {
             handleRemove={this.props.handleRemove}
             handleMakePrimary={this.props.handleMakePrimary}
           />
-          <div className="form-content">
+          <div className={this.state.formClass}>
             <PhoneForm {...this.props} />
           </div>
+          <EduIDButton
+            id="add-more-button"
+            className={this.state.addLinkClass}
+            onClick={this.showEmailForm}
+          >
+            + add more
+          </EduIDButton>
         </div>
         <ConfirmModal
           modalId="phoneConfirmDialog"
