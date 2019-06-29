@@ -135,21 +135,21 @@ class Profile extends Component {
         </p>
       ];
     } else {
-      if (this.props.nins.length) {
-        stylingClass = "verify-identity";
-        profileSection = [<NinDisplay {...this.props} />];
-      } else {
-        stylingClass = "profile";
-        profileSection = [<ProfilePrompt {...this.props} />];
-        accountDetails = [
-          <NameDisplay {...this.props} />,
-          <NinDisplay {...this.props} />,
-          <LetterProofingDisplay {...this.props} />,
-          <PhoneDisplay {...this.props} />,
-          <EmailDisplay {...this.props} />,
-          // <LetterProofingDisplay {...this.props} />,
-        ];
-      }
+      // if (this.props.nins.length) {
+      //   stylingClass = "verify-identity";
+      //   profileSection = [<NinDisplay {...this.props} />];
+      // } else {
+      stylingClass = "profile";
+      profileSection = [<ProfilePrompt {...this.props} />];
+      accountDetails = [
+        <NameDisplay {...this.props} />,
+        <NinDisplay {...this.props} />,
+        <LetterProofingDisplay {...this.props} />,
+        <PhoneDisplay {...this.props} />,
+        <EmailDisplay {...this.props} />
+        // <LetterProofingDisplay {...this.props} />,
+      ];
+      // }
     }
 
     return (
