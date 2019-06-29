@@ -1,8 +1,8 @@
 @import "../variables.scss";
 
 #personaldataview-form {
-  display: flex;
-  align-items: flex-end;
+  // display: flex;
+   align-items: flex-start;
 }
 
 #personal-data-button {
@@ -10,27 +10,27 @@
 }
 
 #personaldataview-form .form-group {
-  width: 46%;
-  display: inline-block;
-  vertical-align: top;
+  // width: 46%;
+  // display: inline-block;
+  // vertical-align: top;
 }
 
-#personaldataview-form button {
-  margin: 0 0 49px 0;
-}
+// #personaldataview-form button {
+//   margin: 0 0 49px 0;
+// }
 
 
-@media only screen and (max-width: 992px) {
-  #personaldataview-form .form-group {
-    width: 100%;
-  }
-}
+// @media only screen and (max-width: 992px) {
+//   #personaldataview-form .form-group {
+//     width: 100%;
+//   }
+// }
 
-@media (max-width: 767px) {
-  #personal-data-button {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-top: 20px !important;
-    display: block !important;
-  }
-}
+// @media (max-width: 767px) {
+//   #personal-data-button {
+//     margin-left: auto !important;
+//     margin-right: auto !important;
+//     margin-top: 20px !important;
+//     display: block !important;
+//   }
+// }

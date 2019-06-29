@@ -3,6 +3,16 @@
 button#email.button {
   margin-top: 5px;
 }
+
+#personaldataview-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#personal-data-form {
+  display: contents;
+}
+
 #phone-display,
 #email-display {
   flex-direction: column;
@@ -41,10 +51,7 @@ button#email.button {
   width: 100%;
 }
 
-// #emailsview-form .form-group input {
-// min-width: 300px;
-// }
-.personaldataview-form,
+.namesview-form-container,
 .phoneview-form-container,
 .emailsview-form-container {
   margin-bottom: 30px;

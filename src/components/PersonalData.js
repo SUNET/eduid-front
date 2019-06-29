@@ -94,7 +94,7 @@ PdataForm = connect(state => ({
 class PersonalData extends Component {
   render() {
     return (
-      <div>
+      <div className="namesview-form-container">
         <div className="intro">
           <h4>{this.props.l10n("pd.main_title")}</h4>
           <p>{this.props.l10n("pd.long_description")}</p>
