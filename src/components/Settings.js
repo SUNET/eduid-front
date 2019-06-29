@@ -60,10 +60,6 @@ class Settings extends Component {
             component={MobileContainer}
           />
           <Route
-            path="/profile/settings/personaldata"
-            component={NinsContainer}
-          />
-          <Route
             path="/profile/settings/advanced-settings"
             component={AccountLinkingContainer}
           />
