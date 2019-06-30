@@ -132,7 +132,7 @@ class Security extends Component {
     if (url.includes("settings")) {
       return (
         <div>
-          <div id="change-password-container">
+          {/* <div id="change-password-container">
             <div className="intro">
               <h4>Change password</h4>
               <p>{this.props.l10n("security.long_description")}</p>
@@ -159,7 +159,7 @@ class Security extends Component {
                 {this.props.l10n("security.change_password")}
               </EduIDButton>
             </div>
-          </div>
+          </div> */}
           <div id="register-securitykey-container">
             <div className="intro">
               <h4>Register Security Key</h4>
@@ -291,28 +291,29 @@ class Security extends Component {
           />
         </div>
       );
-    } else {
-      return (
-        <div>
-          <div className="intro">
-            <label>Passwords</label>
-            <table className="table table-bordered table-form passwords">
-              <tbody>
-                <tr>
-                  <th>{this.props.l10n("security.credential")}</th>
-                  <th>{this.props.l10n("security.creation_date")}</th>
-                  <th>{this.props.l10n("security.last_used")}</th>
-                  <th>{this.props.l10n("security.description")}</th>
-                  <th>{this.props.l10n("security.verify")}</th>
-                  <th>{this.props.l10n("security.remove")}</th>
-                </tr>
-                {creds_table}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      );
     }
+    // } else {
+    //   return (
+    //     <div>
+    //       <div className="intro">
+    //         <label>Passwords</label>
+    //         <table className="table table-bordered table-form passwords">
+    //           <tbody>
+    //             <tr>
+    //               <th>{this.props.l10n("security.credential")}</th>
+    //               <th>{this.props.l10n("security.creation_date")}</th>
+    //               <th>{this.props.l10n("security.last_used")}</th>
+    //               <th>{this.props.l10n("security.description")}</th>
+    //               <th>{this.props.l10n("security.verify")}</th>
+    //               <th>{this.props.l10n("security.remove")}</th>
+    //             </tr>
+    //             {creds_table}
+    //           </tbody>
+    //         </table>
+    //       </div>
+    //     </div>
+    //   );
+    // }
   }
 }
 
