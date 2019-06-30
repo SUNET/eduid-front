@@ -22,6 +22,7 @@ import ChangePasswordContainer from "containers/ChangePassword";
 import NotificationsContainer from "containers/Notifications";
 import ProfileFilledContainer from "containers/ProfileFilled";
 import PendingActionsContainer from "containers/PendingActions";
+import PasswordChange from "components/PasswordChange";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -60,6 +61,14 @@ class Settings extends Component {
             component={MobileContainer}
           />
           <Route
+            path="/profile/settings/personaldata"
+            component={PasswordChange}
+          />
+          <Route
+            path="/profile/settings/personaldata/chpass"
+            component={ChangePasswordContainer}
+          />
+          <Route
             path="/profile/settings/advanced-settings"
             component={AccountLinkingContainer}
           />
@@ -67,10 +76,10 @@ class Settings extends Component {
             path="/profile/settings/advanced-settings"
             component={SecurityContainer}
           />
-          <Route
+          {/* <Route
             path="/profile/settings/chpass"
             component={ChangePasswordContainer}
-          />
+          /> */}
         </div>
       </div>
     );
