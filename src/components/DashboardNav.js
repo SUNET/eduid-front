@@ -32,8 +32,8 @@ class DashboardNav extends Component {
               </NavLink>
             </li>
           </ul>
-          <ul className="navbar-nav">
-            <li className="nav-item">
+          <ul className="navbar-nav sub-nav">
+            <li className="nav-item personal-info">
               <NavLink
                 className="nav-link"
                 activeClassName="active"
@@ -42,7 +42,7 @@ class DashboardNav extends Component {
                 <h5> > Personal information</h5>
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item advanced-settings">
               <NavLink
                 className="nav-link"
                 activeClassName="active"

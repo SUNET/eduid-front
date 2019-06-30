@@ -2,10 +2,11 @@
 
 .table {
   font-size: 14px;
+  margin-bottom: 10px;
 }
-
-.second-block {
-  margin-top: 20px;
+#register-securitykey-container,
+#delete-account-container {
+  margin-top: 30px;
 }
 
 #connect-orcid-button,
@@ -14,11 +15,15 @@
   width: 100%;
 }
 
-#security-change-button {
-  height: 2rem;
-  line-height: 2rem;
+#orcid {
   margin-bottom: 30px;
 }
+
+// #security-change-button {
+//   height: 2rem;
+//   line-height: 2rem;
+//   margin-bottom: 30px;
+// }
 
 button.btn-remove-u2f {
   height: 25px;

@@ -132,44 +132,52 @@ class Security extends Component {
     if (url.includes("settings")) {
       return (
         <div>
-          <div className="intro">
-            <h4>{this.props.l10n("security.main_title")}</h4>
-            <p>{this.props.l10n("security.long_description")}</p>
-          </div>
-          <table className="table table-bordered table-form passwords">
-            <tbody>
-              <tr>
-                <th>{this.props.l10n("security.credential")}</th>
-                <th>{this.props.l10n("security.creation_date")}</th>
-                <th>{this.props.l10n("security.last_used")}</th>
-                <th>{this.props.l10n("security.description")}</th>
-                <th>{this.props.l10n("security.verify")}</th>
-                <th>{this.props.l10n("security.remove")}</th>
-              </tr>
-              {creds_table}
-            </tbody>
-          </table>
-          <div id="change-password">
-            <EduIDButton
-              id="security-change-button"
-              onClick={this.props.handleStartConfirmationPassword}
-            >
-              {this.props.l10n("security.change_password")}
-            </EduIDButton>
-          </div>
-          <p>{this.props.l10n("security.for-second-factor")}</p>
-          <div id="register-webauthn-tokens-area">
-            <div id="add-webauthn-token">
+          <div id="change-password-container">
+            <div className="intro">
+              <h4>Change password</h4>
+              <p>{this.props.l10n("security.long_description")}</p>
+            </div>
+            <table className="table table-bordered table-form passwords">
+              <tbody>
+                <tr>
+                  <th>{this.props.l10n("security.credential")}</th>
+                  <th>{this.props.l10n("security.creation_date")}</th>
+                  <th>{this.props.l10n("security.last_used")}</th>
+                  <th>{this.props.l10n("security.description")}</th>
+                  <th>{this.props.l10n("security.verify")}</th>
+                  <th>{this.props.l10n("security.remove")}</th>
+                </tr>
+                {creds_table}
+              </tbody>
+            </table>
+            <div id="change-password">
               <EduIDButton
-                id="security-webauthn-button"
-                onClick={this.props.handleStartAskingKeyWebauthnDescription}
+                id="security-change-button"
+                className="btn-link"
+                onClick={this.props.handleStartConfirmationPassword}
               >
-                {this.props.l10n("security.add_webauthn_token_key")}
+                {this.props.l10n("security.change_password")}
               </EduIDButton>
             </div>
-            {platformAuthenticatorButton}
           </div>
-          <div className="second-block">
+          <div id="register-securitykey-container">
+            <div className="intro">
+              <h4>Register Security Key</h4>
+              <p>{this.props.l10n("security.for-second-factor")}</p>
+            </div>
+            <div id="register-webauthn-tokens-area">
+              <div id="add-webauthn-token">
+                <EduIDButton
+                  id="security-webauthn-button"
+                  onClick={this.props.handleStartAskingKeyWebauthnDescription}
+                >
+                  {this.props.l10n("security.add_webauthn_token_key")}
+                </EduIDButton>
+              </div>
+              {platformAuthenticatorButton}
+            </div>
+          </div>
+          <div id="delete-account-container">
             <div className="intro">
               <h4>{this.props.l10n("security.account_title")}</h4>
               <p>{this.props.l10n("security.account_description")}</p>
@@ -182,6 +190,7 @@ class Security extends Component {
               {this.props.l10n("security.delete_account")}
             </EduIDButton>
           </div>
+
           <GenericConfirmModal
             modalId="securityConfirmDialog"
             title={this.props.l10n("security.confirm_title_chpass")}
@@ -190,12 +199,14 @@ class Security extends Component {
             closeModal={this.props.handleStopConfirmationPassword}
             acceptModal={this.props.handleConfirmationPassword}
           />
+
           <DeleteModal
             title={this.props.l10n("security.confirm_title_deletion")}
             showModal={this.props.confirming_deletion}
             closeModal={this.props.handleStopConfirmationDeletion}
             handleConfirm={this.props.handleConfirmationDeletion}
           />
+
           <ConfirmModal
             modalId="describeWebauthnTokenDialog"
             id="describeWebauthnTokenDialogControl"
