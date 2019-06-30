@@ -34,17 +34,26 @@ button#email.button {
   font-weight: 900;
   font-size: 24px;
 }
-
+#delete-account-container,
 #change-password-container {
   margin-bottom: 30px;
 }
 
+#delete-button,
 #security-change-button,
 #add-more-button {
   margin: 0;
-  padding: 0.75rem;
+  padding: 0 0 0.75rem 0.75rem;
   font-family: "Roboto-Medium";
   font-size: 16px;
+}
+
+#delete-button {
+  color: red;
+}
+
+#delete-account-container .intro {
+  margin-bottom: 0;
 }
 
 .hide {

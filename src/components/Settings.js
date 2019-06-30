@@ -23,6 +23,7 @@ import NotificationsContainer from "containers/Notifications";
 import ProfileFilledContainer from "containers/ProfileFilled";
 import PendingActionsContainer from "containers/PendingActions";
 import PasswordChange from "components/PasswordChange";
+import DeleteAccount from "components/DeleteAccount";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -63,6 +64,10 @@ class Settings extends Component {
           <Route
             path="/profile/settings/personaldata"
             component={PasswordChange}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={DeleteAccount}
           />
           <Route
             path="/profile/settings/personaldata/chpass"
