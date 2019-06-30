@@ -19,7 +19,6 @@
 }
 
 #dashboard {
-  // background-color: rgba(236, 236, 236, 0.5);
   border-radius: 5px;
   margin: 30px 0;
   padding: 15px;
@@ -34,8 +33,11 @@
 
 .profile,
 .verify-identity {
-  // background-color: rgba(245, 249, 233, 0.5);
   max-width: 85%;
+}
+
+.settings {
+  max-width: 90%;
 }
 
 @media (max-width: 1000px) {
@@ -47,30 +49,8 @@
 // ----- LANDING PAGE ----- //
 
 #verify-identity-process {
-  // background: yellow;
   padding: -15px;
 }
-
-.profile,
-.verify-identity {
-  // background-color: rgba(245, 249, 233, 0.5);
-  max-width: 75%;
-}
-
-.settings {
-  // background-color: rgba(245, 249, 233, 0.5);
-  max-width: 90%;
-}
-
-
-// #profile-grid {
-//   display: grid;
-//   grid-gap: 20px;
-//   grid-template-columns: 100%;
-//   grid-template-rows: repeat(3, auto);
-//   width: calc(100% - 40px);
-// }
-
 
 /* styles for profile */
 
@@ -78,32 +58,9 @@
   max-width: 95%;
 }
 
-// #profile-grid {
-//   display: grid;
-//   // grid-gap: 20px;
-//   grid-template-columns: 75% 25%;
-//   grid-template-rows: repeat(3, auto);
-//   // width: calc(100% - 40px);
-// }
-
 .profile-card p {
   padding-left: 5px;
 }
-
-// #account-detail-grid {
-//   display: grid;
-//   grid-gap: 30px;
-//   grid-template-columns: 33% 33% 33%;
-//   grid-template-rows: repeat(2, auto);
-//   margin: 30px 0;
-//   // width: calc(75% - 20px);
-// }
-// #verify-identity-form {
-//   grid-column-start: 1;
-//   grid-column-end: 3;
-//   grid-row-start: 1;
-//   grid-row-end: 2;
-// }
 
 .profile-data {
   font-size: 24px;
@@ -162,43 +119,6 @@
   color: #333;
 }
 
-// #profile-prompt-link:hover {
-//   text-decoration: none;
-//   cursor: pointer;
-// }
-
-// #profile-prompt {
-//   width: 75%;
-//   height: auto;
-//   padding: 20px;
-//   border-radius: 5px;
-//   box-shadow: 5px 5px 0px 0px;
-//   // border: solid #333 4px;
-// }
-
-// #profile-prompt:hover {
-//   transform: translate(5px, 5px);
-//   box-shadow: 0px 0px 0px 0px;
-// }
-
-// #profile-prompt h3 {
-//   font-family: "Roboto-Medium";
-// }
-
-// #profile-prompt p {
-//   max-width: 75%;
-// }
-
-// .verify-identity-prompt,
-// .verify-identity-prompt a:hover {
-//   // color: #6b9080;
-//   // background-color: #f5f9e9;
-//   // background-color: #e1ad8c;
-//   // background-color: #bab3a7;
-//   background-color: lightgray;
-//   color: #333;
-// }
-
 /* colours for profile sections */
 .profile {
   // background-color: rgba(63, 92, 87, 0.1);
@@ -231,40 +151,6 @@ h3.verify-identity-header {
 
 /* styles for verify identity page */
 
-// #profile-card a:hover,
-// #profile-card a:hover {
-//   text-decoration: none;
-//   cursor: pointer;
-// }
-
-// #profile-prompt {
-//   height: auto;
-//   padding: 20px;
-//   border-radius: 5px;
-//   box-shadow: 5px 5px 0px 0px;
-// }
-
-// #profile-prompt:hover {
-//   transform: translate(3px, 3px);
-//   box-shadow: 0px 0px 0px 0px #6b9080;
-// }
-
-// #profile-prompt label {
-//   font-weight: 900;
-//   margin-bottom: 20px;
-// }
-
-// #profile-prompt p {
-//   text-transform: none;
-//   font-weight: 400;
-// }
-
-// .verify-identity-prompt,
-// .verify-identity-prompt a:hover {
-//   color: #6b9080;
-//   background-color: #f5f9e9;
-// }
-
 /* styles for back navigation */
 .nav-back {
   display: flex;
@@ -281,37 +167,9 @@ h3.verify-identity-header {
   display: none;
 }
 
+//-------ADD NIN styles are in nins.scss ----------//
 
-// .verify-identity a:hover {
-//   text-decoration: none;
-// }
-
-//-------ADD NIN styles in nins.scss ----------//
-
-// #national-id:empty {
-//   display: none;
-// }
-
-// #national-id {
-//   // background: hotpink;
-//   // padding: 15px;
-// }
-
-// #national-id .intro {
-//   margin-top: 0;
-// }
-
-// #national-id h4 {
-//   font-family: "Roboto-Light";
-// }
-
-// #national-id .nin-holder {
-//   justify-content: space-between;
-// }
 // ----- SETTINGS PAGE ----- //
-// #settings-button {
-//   float: right;
-// }
 
 #settings-nav ul {
   flex-direction: row;
@@ -411,11 +269,6 @@ fieldset {
   width: 100%;
 }
 
-// span.verify-status-label,
-// .verify-status-label button {
-
-// }
-
 .form-text {
   margin-top: 2px 0;
   padding: 0 0 0 2px;
@@ -495,8 +348,6 @@ a#go-to-mobiles-tab {
   cursor: pointer;
 }
 
-
-
 /* styles for the questions at the bottom of screen */
 #questions-container {
   display: grid;
@@ -517,5 +368,4 @@ a#go-to-mobiles-tab {
 }
 .question-card p {
   font-size: 14px;
-  // color: gray;
 }
