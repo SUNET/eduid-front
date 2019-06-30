@@ -23,13 +23,13 @@ class TableList extends Component {
               data-object={key}
               key={key}
             >
-              <td className="identifier">{key}</td>
-              <td className="non-identifier">
+              <td className="identifier data">{key}</td>
+              <td className="non-identifier status-label">
                 <span className="nobutton verify-status-label">
                   {this.props.l10n("tl.primary")}
                 </span>
               </td>
-              <td className="non-identifier">
+              <td className="non-identifier data-remove-button">
                 <EduIDButton
                   className="btn-link remove"
                   onClick={this.props.handleRemove}

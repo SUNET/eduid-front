@@ -152,7 +152,7 @@ h3.verify-identity-header {
 
 #settings-nav ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 20% 30% 80%;
 }
 
 .personal-info {
@@ -205,6 +205,15 @@ table td {
   padding: 0.75rem;
 }
 
+td.data {
+  width: 80%;
+}
+
+td.data-remove-button,
+td.status-label {
+  width: 10%;
+}
+
 table th {
   font-size: 12px;
   text-transform: uppercase;
@@ -218,9 +227,9 @@ table .btn-link {
 tbody {
   margin-bottom: 10px;
 }
-td {
-  border: solid 3px red;
-}
+// td {
+//   border: solid 3px red;
+// }
 
 span.nobutton,
 .primary button.remove,
