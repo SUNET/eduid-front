@@ -14,25 +14,11 @@ import NinDisplay from "./NinDisplay";
 
 class ProfilePrompt extends Component {
   render() {
-    const url = window.location.href;
-    if (this.props.nins.length) {
-      return (
-        <div id="profile-card">
-          <div id="profile-prompt" className="verify-identity-prompt">
-            <Link to={`/profile/security/`}>
-              <label>Make eduID more secure</label>
-              <p>
-                Choose a suitable way to verify your identity and follow the
-                instructions to start using eduID.
-              </p>
-            </Link>
-          </div>
-        </div>
-      );
-    } else if (this.props.nins.length === 0) {
+    // const url = window.location.href;
+    if (this.props.nins.length === 0) {
       return (
         <Link
-          id="profile-card"
+          id="profile-prompt-link"
           className="verify-identity-prompt"
           to={`/profile/verify-identity/`}
         >
@@ -46,40 +32,45 @@ class ProfilePrompt extends Component {
         </Link>
       );
     } else {
-      return (
-        <div id="profile-prompt" className="verify-identity-prompt">
-          <NinDisplay />
-        </div>
-      );
+      if (this.props.nins[0].verified) {
+        return (
+          <Link
+            id="profile-prompt-link"
+            className="verify-identity-prompt"
+            to={`/profile/security/`}
+          >
+            <div id="profile-prompt" className="verify-identity-prompt">
+              <h3 className="verify-identity-prompt">Make eduID more secure</h3>
+              <p>
+                Choose a suitable way to verify your identity and follow the
+                instructions to start using eduID.
+              </p>
+            </div>
+          </Link>
+        );
+      } else {
+        return (
+          <Link
+            id="profile-prompt-link"
+            className="verify-identity-prompt"
+            to={`/profile/verify-identity/`}
+          >
+            <div id="profile-prompt" className="verify-identity-prompt">
+              <h3 className="verify-identity-prompt">
+                Don't forget to verify you id number
+              </h3>
+              <p>
+                Your national id number has been added, but you still need to
+                verify that it is yours.
+              </p>
+            </div>
+          </Link>
+        );
+      }
     }
   }
 }
 
 export default ProfilePrompt;
 
-// const mapStateToProps = (state, props) => {
-//   let verifiedNin;
-//   const nins = state.nins.nins.filter(nin => nin.verified);
-//   if (nins.length >= 1) {
-//     verifiedNin = true;
-//   } else {
-//     verifiedNin = false;
-//   }
-//   return {
-//     nins: state.nins.nins, // verified nin to see where to prompt user
-//     verifiedNin: verifiedNin // could be a boolean? to show what colour to display nin
-//   };
-// };
 
-// const mapDispatchToProps = (dispatch, props) => {
-//   return {
-//     handleThingy: function (e) {
-//       console.log("do you need a function here?");
-//     }
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Profile);
