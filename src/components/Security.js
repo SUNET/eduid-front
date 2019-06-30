@@ -177,7 +177,7 @@ class Security extends Component {
               {platformAuthenticatorButton}
             </div>
           </div>
-          <div id="delete-account-container">
+          {/* <div id="delete-account-container">
             <div className="intro">
               <h4>{this.props.l10n("security.account_title")}</h4>
               <p>{this.props.l10n("security.account_description")}</p>
@@ -189,7 +189,7 @@ class Security extends Component {
             >
               {this.props.l10n("security.delete_account")}
             </EduIDButton>
-          </div>
+          </div> */}
 
           <GenericConfirmModal
             modalId="securityConfirmDialog"
@@ -200,12 +200,12 @@ class Security extends Component {
             acceptModal={this.props.handleConfirmationPassword}
           />
 
-          <DeleteModal
+          {/* <DeleteModal
             title={this.props.l10n("security.confirm_title_deletion")}
             showModal={this.props.confirming_deletion}
             closeModal={this.props.handleStopConfirmationDeletion}
             handleConfirm={this.props.handleConfirmationDeletion}
-          />
+          /> */}
 
           <ConfirmModal
             modalId="describeWebauthnTokenDialog"
