@@ -177,13 +177,23 @@ h3.verify-identity-header {
   display: inline-block;
   border-bottom: solid 2px transparent;
 }
+
 #settings-nav .active h5,
 #settings-nav h5:hover {
   margin: 0;
   color: gray;
   padding-bottom: 0px;
-  border-bottom: solid 2px gray;
+  // border-bottom: solid 2px gray;
   display: inline-block;
+}
+
+#settings-nav .sub-nav .active h5,
+#settings-nav .sub-nav h5:hover {
+  margin: 0;
+  padding-bottom: 0px;
+  color: gray;
+  border-bottom: solid 2px transparent;
+  // display: inline-block;
 }
 
 /* styles for tables displaying userinfo on settings page */
