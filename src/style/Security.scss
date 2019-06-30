@@ -1,8 +1,12 @@
 @import "../variables.scss";
 
 .table {
-  font-size: 14px;
+  font-size: 24px;
   margin-bottom: 10px;
+}
+
+.table td {
+  color: #333;
 }
 #register-securitykey-container,
 #delete-account-container {
