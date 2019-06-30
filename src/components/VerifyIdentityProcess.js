@@ -47,11 +47,10 @@ class VerifyIdentityProcess extends Component {
     }
 
     return (
-      <div id="verify-identity-form" className="verify-identity">
-        <div id="add-nin-number-container">
-          <AddNin {...this.props} />
-        </div>
-        <div id="connect-nin-number-container">{connectNin}</div>
+      <div id="verify-identity-container">
+        <h3 className="verify-identity-header">Start using eduID</h3>
+        <AddNin {...this.props} />
+        {connectNin}
       </div>
     );
   }
