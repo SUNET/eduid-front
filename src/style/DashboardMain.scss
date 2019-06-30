@@ -90,14 +90,14 @@
   padding-left: 5px;
 }
 
-#account-detail-grid {
-  display: grid;
-  grid-gap: 30px;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: repeat(2, auto);
-  margin: 30px 0;
-  // width: calc(75% - 20px);
-}
+// #account-detail-grid {
+//   display: grid;
+//   grid-gap: 30px;
+//   grid-template-columns: 33% 33% 33%;
+//   grid-template-rows: repeat(2, auto);
+//   margin: 30px 0;
+//   // width: calc(75% - 20px);
+// }
 // #verify-identity-form {
 //   grid-column-start: 1;
 //   grid-column-end: 3;
@@ -121,6 +121,7 @@
   grid-template-rows: repeat(2, auto);
   margin: 30px 0;
   width: calc(100% - 60px);
+  font-family: "Roboto-Light";
 }
 
 /* styles for prompt cards */
@@ -161,6 +162,43 @@
   color: #333;
 }
 
+// #profile-prompt-link:hover {
+//   text-decoration: none;
+//   cursor: pointer;
+// }
+
+// #profile-prompt {
+//   width: 75%;
+//   height: auto;
+//   padding: 20px;
+//   border-radius: 5px;
+//   box-shadow: 5px 5px 0px 0px;
+//   // border: solid #333 4px;
+// }
+
+// #profile-prompt:hover {
+//   transform: translate(5px, 5px);
+//   box-shadow: 0px 0px 0px 0px;
+// }
+
+// #profile-prompt h3 {
+//   font-family: "Roboto-Medium";
+// }
+
+// #profile-prompt p {
+//   max-width: 75%;
+// }
+
+// .verify-identity-prompt,
+// .verify-identity-prompt a:hover {
+//   // color: #6b9080;
+//   // background-color: #f5f9e9;
+//   // background-color: #e1ad8c;
+//   // background-color: #bab3a7;
+//   background-color: lightgray;
+//   color: #333;
+// }
+
 /* colours for profile sections */
 .profile {
   // background-color: rgba(63, 92, 87, 0.1);
@@ -193,39 +231,39 @@ h3.verify-identity-header {
 
 /* styles for verify identity page */
 
-#profile-card a:hover,
-#profile-card a:hover {
-  text-decoration: none;
-  cursor: pointer;
-}
+// #profile-card a:hover,
+// #profile-card a:hover {
+//   text-decoration: none;
+//   cursor: pointer;
+// }
 
-#profile-prompt {
-  height: auto;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 0px 0px;
-}
+// #profile-prompt {
+//   height: auto;
+//   padding: 20px;
+//   border-radius: 5px;
+//   box-shadow: 5px 5px 0px 0px;
+// }
 
-#profile-prompt:hover {
-  transform: translate(3px, 3px);
-  box-shadow: 0px 0px 0px 0px #6b9080;
-}
+// #profile-prompt:hover {
+//   transform: translate(3px, 3px);
+//   box-shadow: 0px 0px 0px 0px #6b9080;
+// }
 
-#profile-prompt label {
-  font-weight: 900;
-  margin-bottom: 20px;
-}
+// #profile-prompt label {
+//   font-weight: 900;
+//   margin-bottom: 20px;
+// }
 
-#profile-prompt p {
-  text-transform: none;
-  font-weight: 400;
-}
+// #profile-prompt p {
+//   text-transform: none;
+//   font-weight: 400;
+// }
 
-.verify-identity-prompt,
-.verify-identity-prompt a:hover {
-  color: #6b9080;
-  background-color: #f5f9e9;
-}
+// .verify-identity-prompt,
+// .verify-identity-prompt a:hover {
+//   color: #6b9080;
+//   background-color: #f5f9e9;
+// }
 
 /* styles for back navigation */
 .nav-back {

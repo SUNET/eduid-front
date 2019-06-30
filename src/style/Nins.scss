@@ -7,7 +7,7 @@
 
 #add-nin-number-container,
 #add-nin-number-container h3 {
-  color: #6b9080;
+  color: #333;
 }
 
 #add-nin-number {
@@ -61,9 +61,6 @@
   grid-row-end: 2;
   background-color: yellow;
 }
-// .nin-input {
-//   border: solid 30px green;
-// }
 
 /*--- styles for nin digits ---*/
 #nin-number {
@@ -71,11 +68,12 @@
 }
 
 .unverified {
-  color: $error-red;
+  color: gray;
+  font-family: "Roboto-Regular";
 }
 
 .verified {
-  color: #3f5c57;
+  color: #333;
 }
 
 /*--- styles for nin buttons ---*/
@@ -121,9 +119,6 @@
   margin-right: 15px;
   width: 100%;
 }
-// #connect-nin-number-buttons {
-//   display: flex;
-// }
 
 .proofing-btn-help {
   margin-bottom: 30px;

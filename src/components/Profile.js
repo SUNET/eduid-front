@@ -129,16 +129,7 @@ class Profile extends Component {
     } else if (url.includes("verify-identity")) {
       stylingClass = "verify-identity";
       profileSection = [<VerifyIdentityProcess {...this.props} />];
-      ninHelper = [
-        <p className="nin-helper">
-          Your number can be used to connect eduID to your person.
-        </p>
-      ];
     } else {
-      // if (this.props.nins.length) {
-      //   stylingClass = "verify-identity";
-      //   profileSection = [<NinDisplay {...this.props} />];
-      // } else {
       stylingClass = "profile";
       profileSection = [<ProfilePrompt {...this.props} />];
       accountDetails = [
@@ -157,8 +148,9 @@ class Profile extends Component {
         <DashboardNav {...this.props} />
         <div id="profile-grid">
           <div id="profile-section">{profileSection}</div>
-          <div id="nin-helper">{ninHelper}</div>
-          <div id="account-detail-grid">{accountDetails}</div>
+          <div id="profile-detail-grid" className="profile-data">
+            {accountDetails}
+          </div>
         </div>
       </div>
     );
