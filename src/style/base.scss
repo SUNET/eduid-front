@@ -9,55 +9,76 @@ body {
   scroll-behavior: smooth;
 }
 
+// body,
+// .well,
+// .container-fluid .jumbotron,
+// div.modal-dialog .modal-content {
+//   background-color: #fffffe;
+//   // background-image: url(../../img/texture.png);
+//   color: $black;
+// }
+
+html,
 body,
 .well,
 .container-fluid .jumbotron,
 div.modal-dialog .modal-content {
-  background-color: #fffffe;
-  background-image: url(../../img/texture.png);
-  color: $text-color;
-}
-html,
-body {
   height: 100%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   // font-family: "Roboto-Regular";
-  line-height: 1.42857143;
+  line-height: 1.5;
 }
 
 header {
   display: grid;
 }
 
-h1,
-h2,
-h3,
+/* Typography */
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 42px;
+  margin-top: 24;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 34px;
+  margin-top: 56px;
+}
+
 h4,
 h5,
 h6 {
-  color: $text-color;
+  color: $black;
 }
 
-/* Text */
-h1,
-h2 {
-  font-size: 36px;
-  color: $text-color;
-  margin: 0 0 20px 0;
-}
-h3,
-p.lead {
-  font-size: 24px;
-  font-family: "Roboto-Light";
+// h1,
+// h2 {
+//   font-size: 36px;
+//   color: $text-color;
+//   margin: 0 0 20px 0;
+// }
+
+p {
+  font-size: 20px;
+  line-height: 32px;
+  margin-top: 24px;
 }
 h4 {
   font-size: 18px;
 }
-h1,
-h2,
-h4 {
-  font-family: "Roboto-Light";
-}
+
+// h1,
+// h2,
+// h4 {
+//   font-family: "Roboto-Light";
+// }
 p,
 li {
   font-size: 16px;
@@ -68,17 +89,17 @@ p {
 }
 
 button {
-  font-family: Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  line-height: 1;
-  letter-spacing: 0.5px;
+  font-family: "Montserrat", sans-serif;
+  color: $black;
+  background-color: $white;
   font-weight: 700;
-  font-size: 14px;
-  padding: 15px 30px;
-  color: white;
-  background-color: #3f5c57;
+  font-size: 16px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
   border: none;
-  height: 48px;
+  padding: 10px 20px;
+  transition: all 0.5s ease;
 }
 
 label {

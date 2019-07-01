@@ -10,21 +10,24 @@
 /* generic styles for all buttons 
 (incl. :hover, :active, :focus and :disabled) */
 button.btn {
-  height: 45px;
-  background-color: gray;
-  border-color: gray;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.25px;
-  line-height: 45px;
-  text-transform: uppercase;
-  padding: 0 40px;
-  margin-bottom: 10px;
-  border-radius: 0;
+  font-family: "Montserrat", sans-serif;
+  color: $white;
+  background-color: $orange-highlight;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
+  border: none;
+  padding: 10px 20px;
+  transition: all 0.5s ease;
   border: none;
   &:hover {
-    background: $light-green-hover;
-    border-color: $light-green-hover;
+    color: $orange-highlight;
+    background-color: $orange-opaque;
+    // background: $light-green-hover;
+    // border-color: $light-green-hover;
+    // border: solid 1px $orange-highlight;
   }
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
