@@ -34,6 +34,11 @@
   // padding: 30px 0;
 }
 
+#content {
+  display: flex;
+  flex-direction: column;
+}
+
 #profile-grid,
 #settings-content {
   max-width: 90%;
@@ -157,63 +162,73 @@ h3.verify-identity-header {
 
 // ----- SETTINGS PAGE ----- //
 
-#settings-nav {
-  max-width: 85%;
+// .nav-link,
+// .nav-link:hover {
+//   padding: 0;
+// }
+
+#dashboard-nav {
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+}
+
+#dashboard-nav ul {
+  flex-direction: row;
+}
+
+
+#dashboard-nav .nav-link {
   padding: 10px 20px;
-  background-color: #fff;
+  background-color: $white;
   border-radius: 20px;
   box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
-  font-weight: 700;
-  font-size: 16px;
-  border: 1px solid #fff;
+  margin: 0 6px;
   transition: all 0.5s ease;
 }
 
-#settings-nav ul {
-  display: grid;
-  grid-template-columns: 20% 30% 80%;
-}
-
-.personal-info {
-  grid-column-start: 2;
-}
-
-#settings-nav ul.sub-nav {
-  // background-color: yellow;
-}
-
-#settings-nav ul li {
-  margin: 0 50px 0 0;
-}
-
-#settings-nav h5 {
-  color: #333;
-  font-family: "Roboto-Medium";
-  font-size: 14px;
-  text-transform: uppercase;
-  margin: 0;
-  padding-bottom: 0;
+#dashboard-nav h5 {
+  font-weight: 700;
+  font-size: 16px;
+  color: $black;
   display: inline-block;
   border-bottom: solid 2px transparent;
+  transition: all 0.5s ease;
+}
+// #dashboard-nav li:hover,
+// #dashboard-nav .active {
+//   margin: 0 6px;
+// }
+
+#dashboard-nav .active,
+#dashboard-nav .nav-link:hover {
+  border: 1px solid #ff4500;
 }
 
-#settings-nav .active h5,
-#settings-nav h5:hover {
-  margin: 0;
-  color: gray;
-  padding-bottom: 0px;
-  // border-bottom: solid 2px gray;
-  display: inline-block;
+#dashboard-nav .active h5,
+#dashboard-nav h5:hover {
+  color: #ff4500;
 }
 
-#settings-nav .sub-nav .active h5,
-#settings-nav .sub-nav h5:hover {
-  margin: 0;
-  padding-bottom: 0px;
-  color: gray;
-  border-bottom: solid 2px transparent;
-  // display: inline-block;
-}
+// #settings-nav li:hover,
+// #settings-nav li .active,
+// #dashboard-nav .active {
+//   // border: 1px solid #ff4500;
+//   color: #ff4500;
+// }
+
+// #settings-nav .active h5,
+// #settings-nav h5:hover {
+//   color: #ff4500;
+// }
+
+// #settings-nav .sub-nav .active h5,
+// #settings-nav .sub-nav h5:hover {
+//   margin: 0;
+//   padding-bottom: 0px;
+//   color: gray;
+//   border-bottom: solid 2px transparent;
+//   // display: inline-block;
+// }
 
 /* styles for tables displaying userinfo on settings page */
 

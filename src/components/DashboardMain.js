@@ -11,6 +11,7 @@ import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
+import DashboardNav from "./DashboardNav";
 import SettingsComponent from "./Settings";
 import Profile from "./Profile";
 import NotificationsContainer from "containers/Notifications";
@@ -63,6 +64,7 @@ class Main extends Component {
                 </div>
                 <div id="content">
                   <NotificationsContainer />
+                  <DashboardNav />
                   <Route
                     path="/profile/settings/"
                     component={SettingsComponent}

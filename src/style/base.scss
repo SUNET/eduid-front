@@ -54,7 +54,11 @@ h3 {
 }
 
 h4,
-h5,
+h5 {
+  padding: 0;
+  margin: 0;
+}
+
 h6 {
   color: $black;
 }
@@ -85,9 +89,9 @@ li {
   font-size: 16px;
 }
 
-p {
-  margin: 0 0 10px;
-}
+// p {
+//   margin: 0 0 10px;
+// }
 
 button {
   font-family: "Montserrat", sans-serif;

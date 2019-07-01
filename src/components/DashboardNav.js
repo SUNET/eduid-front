@@ -10,90 +10,79 @@ class DashboardNav extends Component {
     const url = window.location.href;
     if (url.includes("settings")) {
       return (
-        <nav id="settings-nav">
+        <nav id="dashboard-nav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                exact
-                activeClassName="active"
-                to={`/profile/`}
-              >
+            <NavLink exact activeClassName="active" to={`/profile/`}>
+              <li className="nav-item">
                 <h5>eduid Profile</h5>
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to={`/profile/settings/`}
-              >
+              </li>
+            </NavLink>
+            <NavLink activeClassName="active" to={`/profile/settings/`}>
+              <li className="nav-item">
                 <h5>Settings</h5>
-              </NavLink>
-            </li>
+              </li>
+            </NavLink>
           </ul>
           <ul className="navbar-nav sub-nav">
-            <li className="nav-item personal-info">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to={`/profile/settings/personaldata`}
-              >
+            <NavLink
+              activeClassName="active"
+              to={`/profile/settings/personaldata`}
+            >
+              <li className="nav-item personal-info">
                 <h5> > Personal information</h5>
-              </NavLink>
-            </li>
-            <li className="nav-item advanced-settings">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to={`/profile/settings/advanced-settings`}
-              >
+              </li>
+            </NavLink>
+            <NavLink
+              activeClassName="active"
+              to={`/profile/settings/advanced-settings`}
+            >
+              <li className="nav-item advanced-settings">
                 <h5> > Advanced settings</h5>
-              </NavLink>
-            </li>
+              </li>
+            </NavLink>
           </ul>
         </nav>
       );
     } else if (url.includes("verify-identity")) {
       return (
-        <nav id="settings-nav" className="nav-back">
+        <nav id="dashboard-nav" className="nav-back">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                exact
-                activeClassName="active"
-                to={`/profile/`}
-              >
+            <NavLink
+              exact
+              activeClassName="active"
+              className="nav-link"
+              to={`/profile/`}
+            >
+              <li className="nav-item">
                 <h5> back > </h5>
-              </NavLink>
-            </li>
+              </li>
+            </NavLink>
           </ul>
         </nav>
       );
     } else {
       return (
-        <nav id="settings-nav">
+        <nav id="dashboard-nav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                exact
-                activeClassName="active"
-                to={`/profile/`}
-              >
+            <NavLink
+              exact
+              activeClassName="active"
+              className="nav-link"
+              to={`/profile/`}
+            >
+              <li className="nav-item">
                 <h5>eduid Profile</h5>
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to={`/profile/settings/`}
-              >
+              </li>
+            </NavLink>
+            <NavLink
+              activeClassName="active"
+              className="nav-link"
+              to={`/profile/settings/`}
+            >
+              <li className="nav-item">
                 <h5>Settings</h5>
-              </NavLink>
-            </li>
+              </li>
+            </NavLink>
           </ul>
         </nav>
       );
