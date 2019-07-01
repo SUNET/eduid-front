@@ -11,7 +11,7 @@ class AccountLinking extends Component {
     return (
       <div>
         <div className="intro">
-          <h4>{this.props.l10n("account_linking.main_title")}</h4>
+          <h4>For reseachers</h4>
           <p>{this.props.l10n("account_linking.long_description")}</p>
           {/* <p>
             {this.props.l10n("faq_link")}{" "}

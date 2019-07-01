@@ -75,16 +75,12 @@ class Settings extends Component {
           />
           <Route
             path="/profile/settings/advanced-settings"
-            component={AccountLinkingContainer}
+            component={SecurityContainer}
           />
           <Route
             path="/profile/settings/advanced-settings"
-            component={SecurityContainer}
+            component={AccountLinkingContainer}
           />
-          {/* <Route
-            path="/profile/settings/chpass"
-            component={ChangePasswordContainer}
-          /> */}
         </div>
       </div>
     );
