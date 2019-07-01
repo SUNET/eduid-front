@@ -8,12 +8,16 @@
   top: 0.125em;
   position: relative;
   background: url(../../img/vector_iD_icon.svg);
-  margin-bottom: 30px;
 }
 
 .orcid-logo-container {
   display: inline-flex;
+  align-items: center;
   padding-left: 0.25em;
   padding-right: 0.25em;
   fill: currentColor;
+}
+
+.orcid-logo-container label {
+  margin: 0 0 0 10px;
 }

@@ -11,11 +11,12 @@ class Orcid extends Component {
 
     const orcidIntro = (
       <div className="orcid-intro">
-        <div className="orcid-logo-container">
+        {/* <div className="orcid-logo-container">
           <span className="orcid-logo" />
-        </div>
-        <label>{this.props.l10n("orc.title")}</label>
-        <p>{this.props.l10n("orc.long_description")}</p>
+        </div> */}
+        <p>Simplify login by connecting your ORCID ID to eduID</p>
+        {/* <label>{this.props.l10n("orc.title")}</label> */}
+        {/* <p>{this.props.l10n("orc.long_description")}</p> */}
       </div>
     );
 

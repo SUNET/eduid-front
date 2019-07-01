@@ -12,7 +12,11 @@ class AccountLinking extends Component {
       <div>
         <div className="intro">
           <h4>For reseachers</h4>
-          <p>{this.props.l10n("account_linking.long_description")}</p>
+          <div className="orcid-logo-container">
+            <span className="orcid-logo" />
+            <label>{this.props.l10n("orc.title")}</label>
+          </div>
+       
           {/* <p>
             {this.props.l10n("faq_link")}{" "}
             <a href="https://www.eduid.se/faq.html">FAQ</a>
