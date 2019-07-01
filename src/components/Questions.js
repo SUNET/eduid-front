@@ -14,24 +14,26 @@ class Questions extends Component {
     let question2 = "";
     let answer2 = "";
     if (url.includes("settings")) {
-      question1 = "add in relevant settings question?";
+      question1 = "Why do I need to add my phone number?";
       answer1 =
-        "Super well-worded answer about all the settings to question here.";
-      question2 = "Are settings relevant?";
-      answer2 = "World's best answer to question about settings here.";
-    } else if (url.includes("verify-identity")) {
-      question1 = "Am I in the verify identity section?";
-      answer1 = "Yes of course you are.";
-      question2 = "Is it ok if I love verifying my identity?";
+        "By adding a phone number you are making it possible to check that it connects to your given.";
+      question2 = "Is my eduID account ever removed due to inactivity?";
       answer2 =
-        "Oh, yes. This section was developed to make people fall in love with eduID. World's best answer to question about settings here.";
-    } else {
-      question1 = "Why do I need eduID?";
+        "Only you can delete your account by clickling 'Delete eduID account', it will not be removed due to inactivity.";
+    } else if (url.includes("verify-identity")) {
+      question1 = "Why do I need add my swedish national id number?";
       answer1 =
-        "eduID kan användas för inloggning inom flera olika organisationer. eduID har utvecklats för att kunna ge alla studenter en identitet online utan att kräva ett svenskt personnummer.";
+        "The national id number ensures that each eduID is unique to one specific person.";
+      question2 = "What does 'verify my national id number' mean?";
+      answer2 =
+        "Becasue the national id number is registered with other official services, it is possible to check details given to eduID against 3rd party information and thereby connect a physical person to the online eduID account.";
+    } else {
+      question1 = "Why should I get eduID?";
+      answer1 =
+        "eduID is a set of login details that be used to access multiple organisations. eduID has been developed to provide students with a swedish national id number an additional identity online.";
       question2 = "How do I use eduID?";
       answer2 =
-        "När möjlighet finns, välj 'Logga in med eduID'. Du kommer att bli skickad till eduIDs login där du anger din e-postadress och ditt lösenord.";
+        "When possible, ckick 'log in with eduID'. You will be redirected to eduIDs login where you provide your email address and your password.";
     }
     return (
       <div id="questions-container">
