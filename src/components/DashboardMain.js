@@ -12,30 +12,13 @@ import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
 import SettingsComponent from "./Settings";
-import SettingsButton from "./SettingsButton";
 import Profile from "./Profile";
-import Nins from "./Nins";
-import VerifyIdentityPrompt from "./ProfilePrompt";
-// import PersonalDataContainer from "containers/PersonalData";
-import DashboardNav from "./DashboardNav";
-import AccountLinkingContainer from "containers/AccountLinking";
-import SecurityContainer from "containers/Security";
-import ChangePasswordContainer from "containers/ChangePassword";
-// import EmailsContainer from "containers/Emails";
-// import MobileContainer from "containers/Mobile";
-// import AccountLinkingContainer from "containers/AccountLinking";
-// import SecurityContainer from "containers/Security";
-// import ChangePasswordContainer from "containers/ChangePassword";
 import NotificationsContainer from "containers/Notifications";
-// import NotificationsContainer from "components/VerifyIdentity";
-// import ProfileFilledContainer from "containers/ProfileFilled";
-// import PendingActionsContainer from "containers/PendingActions";
 import Questions from "./Questions";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
-import DashboardSecurity from "./DashboardSecurity";
 
 export const history = createHistory();
 
@@ -58,19 +41,11 @@ class Main extends Component {
     let welcomeGreeting = "";
 
     if (this.props.nins) {
-      welcomeGreeting = [
-        <p>
-          Welcome back to eduID. You can change any of your personal details in
-          Settings.
-        </p>
-      ];
+      welcomeGreeting =
+        "Welcome back to eduID. You can change any of your personal details in Settings.";
     } else {
-      welcomeGreeting = [
-        <p>
-          Welcome to your eduID. To be able to use it you need to provide some
-          more information.
-        </p>
-      ];
+      welcomeGreeting =
+        "Welcome to your eduID. To be able to use it you need to provide some more information.";
     }
 
     return (
@@ -82,8 +57,10 @@ class Main extends Component {
             <div id="dashboard-container">
               {/* <SettingsButton {...this.props} /> */}
               <div id="dashboard-text">
-                <h1>eduID for {this.props.email}</h1>
-                {welcomeGreeting}
+                <div id="welcome">
+                  <h1>eduID for {this.props.email}</h1>
+                  <h2>{welcomeGreeting}</h2>
+                </div>
                 <div id="content">
                   <NotificationsContainer />
                   <Route

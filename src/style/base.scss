@@ -25,7 +25,7 @@ body,
 div.modal-dialog .modal-content {
   height: 100%;
   font-family: "Montserrat", sans-serif;
-  // font-family: "Roboto-Regular";
+  font-weight: 400;
   line-height: 1.5;
 }
 
@@ -35,7 +35,8 @@ header {
 
 /* Typography */
 h1 {
-  font-size: 36px;
+  font-size: 28px;
+  font-weight: 700;
   line-height: 44px;
   margin-top: 0;
 }

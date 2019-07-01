@@ -19,7 +19,7 @@
 }
 
 #dashboard {
-  border-radius: 5px;
+  // border-radius: 5px;
   margin: 30px 0;
   padding: 15px;
   display: flex;
@@ -39,8 +39,9 @@
 
 // ----- LANDING PAGE ----- //
 
-#verify-identity-process {
-  padding: -15px;
+#welcome {
+  margin-bottom: 7rem;
+  margin-top: 5rem;
 }
 
 /* styles for profile */
@@ -55,6 +56,7 @@
 .profile-data {
   font-size: 24px;
   font-family: "Roboto-Light";
+  font-weight:300;
 }
 
 #profile-detail-grid {
@@ -102,7 +104,7 @@
 
 /* colours for profile sections */
 .profile {
-  background-color: #f8f9fa;
+  background-color: #f4f4f4;
 }
 
 .settings {
