@@ -16,7 +16,7 @@ class Questions extends Component {
     if (url.includes("settings")) {
       question1 = "Why do I need to add my phone number?";
       answer1 =
-        "By adding a phone number you are making it possible to check that it connects to your given.";
+        "By adding a phone number you are making it possible to check that it connects to your given national id number.";
       question2 = "Is my eduID account ever removed due to inactivity?";
       answer2 =
         "Only you can delete your account by clickling 'Delete eduID account', it will not be removed due to inactivity.";
