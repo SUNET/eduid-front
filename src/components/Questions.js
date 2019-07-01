@@ -13,7 +13,7 @@ class Questions extends Component {
     let answer1 = "";
     let question2 = "";
     let answer2 = "";
-    if (url.includes("settings")) {
+    if (url.includes("personaldata")) {
       question1 = "Why do I need to add my phone number?";
       answer1 =
         "By adding a phone number you are making it possible to check that it connects to your given national id number.";
@@ -27,6 +27,13 @@ class Questions extends Component {
       question2 = "What does 'verify my national id number' mean?";
       answer2 =
         "Becasue the national id number is registered with other official services, it is possible to check details given to eduID against 3rd party information and thereby connect a physical person to the online eduID account.";
+    } else if (url.includes("advanced-settings")) {
+      question1 = "Do I need to register a security key?";
+      answer1 =
+        "For those who use eduID to access sensitive data a security key is required, however those users will have been infromed if and how to do this.";
+      question2 = "What is ORCID?";
+      answer2 =
+        "ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.";
     } else {
       question1 = "Why should I get eduID?";
       answer1 =
