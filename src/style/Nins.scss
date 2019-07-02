@@ -33,7 +33,7 @@
 
 #nin-number-container button {
   color: #333;
-  font-family: "Roboto-Light";
+    font-family: "Montserrat", sans-serif;
   font-size: 28px;
   background-color: transparent;
   margin: 0 10px;
@@ -66,7 +66,7 @@
 
 #nin input {
   background-color: #ffffff;
-  font-family: "Roboto-Light";
+  font-family: "Montserrat", sans-serif;
   border: none;
   // color: #6b9080;
   color: #333;
@@ -111,12 +111,13 @@
 }
 
 .unverified {
-  color: gray;
-  font-family: "Roboto-Regular";
+  color: #ff4500;
+  font-weight: 300;
+    font-family: "Montserrat", sans-serif;
 }
 
 .verified {
-  color: #333;
+  color: #161616;
 }
 
 /*--- styles for nin buttons ---*/

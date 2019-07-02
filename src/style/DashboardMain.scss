@@ -2,21 +2,23 @@
 
 /* styles for scaffolding  */
 #root {
-  max-width: 1200px;
+  // max-width: 1200px;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
   padding: 0;
 }
 
-.dashboard-wrapper {
-  margin: 0 15px;
-}
+// .dashboard-wrapper {
+//   margin: 0 15px;
+// }
 
-#dashboard-container {
-  background-color: #fffffe;
-  padding: 0 15px 0 0;
-}
+// #dashboard-container {
+//   background-color: #fffffe;
+//   padding: 0 15px 0 0;
+// }
 
 #dashboard {
   // border-radius: 5px;
@@ -30,6 +32,7 @@
 #dashboard-text {
   display: flex;
   flex-direction: column;
+  background-color: yellow;
   // margin: 30px;
   // padding: 30px 0;
 }
@@ -39,16 +42,17 @@
   flex-direction: column;
 }
 
-#profile-grid,
-#settings-content {
-  max-width: 90%;
-}
+// #profile-container,
+// #settings-content {
+//   max-width: 90%;
+// }
 
 // ----- LANDING PAGE ----- //
 
 #welcome {
   margin: 7rem auto 5rem;
   max-width: 58.3333333333%;
+  background-color: orange;
 }
 
 #welcome p {
@@ -59,8 +63,12 @@
 }
 
 /* styles for profile */
-#profile-section {
-  max-width: 95%;
+// #profile-section {
+//   max-width: 95%;
+// }
+
+#profile-container {
+  display: flex;
 }
 
 .profile-card p {
@@ -69,7 +77,6 @@
 
 .profile-data {
   font-size: 24px;
-  font-family: "Roboto-Light";
   font-weight: 300;
 }
 
@@ -79,8 +86,11 @@
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: repeat(2, auto);
   margin: 30px 0;
-  width: calc(100% - 60px);
-  font-family: "Roboto-Light";
+  width: calc(58.3333333333% - 60px);
+}
+
+#profile-detail-grid label {
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* styles for prompt cards */
@@ -90,11 +100,24 @@
 }
 
 #profile-prompt {
-  width: 75%;
-  height: auto;
+  background-color: #ffe7dd;
+  color: #ff4500;
+  // width: 32%;
+  // margin-bottom: 50px;
+  padding: 30px;
+  // -ms-flex-direction: column;
+  // flex-direction: column;
+  // height: 300px;
+  // box-shadow: 0 4px 14px #ffe7dd;
+  // border-radius: 10px;
+  border: 1px solid transparent;
+  margin: 7rem auto 5rem;
+  max-width: 58.3333333333%;
+  // height: auto;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 0px 0px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 0px 0px #ff4500;
+  transition: border-color 0.5s ease;
 }
 
 #profile-prompt:hover {
@@ -103,18 +126,19 @@
 }
 
 #profile-prompt h3 {
-  font-family: "Roboto-Medium";
+  // font-family: "Roboto-Medium";
+  margin-top: 0;
 }
 
 #profile-prompt p {
   max-width: 75%;
 }
 
-.verify-identity-prompt,
-.verify-identity-prompt a:hover {
-  background-color: lightgray;
-  color: #333;
-}
+// .verify-identity-prompt,
+// .verify-identity-prompt a:hover {
+//   background-color: lightgray;
+//   color: #333;
+// }
 
 /* colours for profile sections */
 .profile {
@@ -176,7 +200,6 @@ h3.verify-identity-header {
   flex-direction: row;
 }
 
-
 #dashboard-nav .nav-link {
   padding: 10px 20px;
   background-color: $white;
@@ -232,9 +255,9 @@ h3.verify-identity-header {
 
 /* styles for tables displaying userinfo on settings page */
 
-#settings-content {
-  max-width: 85%;
-}
+// #settings-content {
+//   max-width: 85%;
+// }
 
 table {
   margin-bottom: 0;
@@ -242,7 +265,7 @@ table {
   background-color: white;
   color: gray;
   font-size: 24px;
-  font-family: "Roboto-Light";
+      font-family: "Montserrat", sans-serif;
 }
 
 table td {
@@ -261,7 +284,7 @@ td.status-label {
 table th {
   font-size: 12px;
   text-transform: uppercase;
-  font-family: "Roboto-Medium";
+  font-weight: 700;
 }
 
 table .btn-link {
@@ -279,7 +302,7 @@ span.nobutton,
 .primary button.remove,
 tr.primary {
   font-weight: 900;
-  font-family: "Roboto-Regular";
+  // font-family: "Roboto-Regular";
   color: #333;
 }
 
@@ -287,7 +310,7 @@ span.nobutton,
 button.verify-status-label {
   font-size: 12px;
   text-transform: uppercase;
-  font-family: "Roboto-Medium";
+  // font-family: "Roboto-Medium";
   letter-spacing: 0.5px;
   line-height: 1;
   font-weight: 700;
@@ -301,7 +324,8 @@ span.nobutton {
 
 button.remove {
   font-size: 24px;
-  font-family: "Roboto-Light";
+  // font-family: "Roboto-Light";
+  font-weight: 300;
   // float: right;
 }
 button.remove:hover {
@@ -427,7 +451,7 @@ a#go-to-mobiles-tab {
   body {
     background-color: gray;
   }
-  #profile-grid,
+  #profile-container,
   #profile-section,
   #settings-content,
   #settings-nav {

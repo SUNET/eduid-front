@@ -146,7 +146,7 @@ class Profile extends Component {
     return (
       <div id="dashboard" className={stylingClass}>
         {/* <DashboardNav {...this.props} /> */}
-        <div id="profile-grid">
+        <div id="profile-container">
           <div id="profile-section">{profileSection}</div>
           <div id="profile-detail-grid" className="profile-data">
             {accountDetails}
