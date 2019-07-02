@@ -131,7 +131,7 @@ class Profile extends Component {
       profileSection = [<VerifyIdentityProcess {...this.props} />];
     } else {
       stylingClass = "profile";
-      profileSection = [<ProfilePrompt {...this.props} />];
+      // profileSection = [<ProfilePrompt {...this.props} />];
       accountDetails = [
         <NameDisplay {...this.props} />,
         <NinDisplay {...this.props} />,
@@ -145,7 +145,6 @@ class Profile extends Component {
 
     return (
       <div id="dashboard" className={stylingClass}>
-        {/* <ProfilePrompt {...this.props} /> */}
         <DashboardNav {...this.props} />
         <div id="profile-container">
           <div id="profile-section">{profileSection}</div>

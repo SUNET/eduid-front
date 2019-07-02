@@ -16,31 +16,12 @@ class Header extends Component {
       </div>
     );
 
-    const navMenu = (
-      <ul>
-        <li>
-          <a href={this.props.studentsLink}>
-            {this.props.l10n("header.students")}
-          </a>
-        </li>
-        <li>
-          <a href={this.props.techniciansLink}>
-            {this.props.l10n("header.technicians")}
-          </a>
-        </li>
-        <li>
-          <a href={this.props.staffLink}>{this.props.l10n("header.staff")}</a>
-        </li>
-        <li>
-          <a href={this.props.faqLink}>{this.props.l10n("header.faq")}</a>
-        </li>
-      </ul>
-    );
+
 
     return (
       <header>
         <div id="eduid-logo" />
-        <nav id="eduid-nav">{navMenu}</nav>
+       
         {logout}
       </header>
     );

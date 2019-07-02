@@ -28,11 +28,31 @@ class Footer extends Component {
     } else {
       langElems = <span />;
     }
-
+    const navMenu = (
+      <ul>
+        <li>
+          <a href={this.props.studentsLink}>
+            {this.props.l10n("header.students")}
+          </a>
+        </li>
+        <li>
+          <a href={this.props.techniciansLink}>
+            {this.props.l10n("header.technicians")}
+          </a>
+        </li>
+        <li>
+          <a href={this.props.staffLink}>{this.props.l10n("header.staff")}</a>
+        </li>
+        <li>
+          <a href={this.props.faqLink}>{this.props.l10n("header.faq")}</a>
+        </li>
+      </ul>
+    );
     return (
       <div id="footer">
         <div>
           <div id="footer-content">
+            <nav id="eduid-nav">{navMenu}</nav>
             <p>
               &copy;{this.props.l10n("footer.copyright")}
               <span className="float-right">{langElems}</span>

@@ -5,7 +5,7 @@ import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { ConnectedRouter } from "react-router-redux";
 // import { Collapse } from "reactstrap";
-
+import ProfilePrompt from "./ProfilePrompt";
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
@@ -52,9 +52,11 @@ class Main extends Component {
     return (
       <FetchingContext.Provider value={this.state}>
         <SplashContainer />
-        <div className="dashboard-wrapper">
-          <HeaderContainer />
-          <Router history={history}>
+        <Router history={history}>
+          <div className="dashboard-wrapper">
+            <ProfilePrompt {...this.props} />
+            <HeaderContainer />
+
             <div id="dashboard-container">
               {/* <SettingsButton {...this.props} /> */}
               <div id="dashboard-text">
@@ -75,8 +77,9 @@ class Main extends Component {
                 <Questions />
               </div>
             </div>
-          </Router>
-        </div>
+          </div>
+        </Router>
+
         <FooterContainer />
       </FetchingContext.Provider>
     );

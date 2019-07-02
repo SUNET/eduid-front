@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+import i18n from "i18n-messages";
+import { isValid } from "redux-form";
+import * as actions from "actions/Nins";
 import NinsContainer from "containers/Nins";
 import DashboardSecurity from "./DashboardSecurity";
 import SecurityContainer from "containers/Security";
@@ -71,6 +73,46 @@ class ProfilePrompt extends Component {
   }
 }
 
-export default ProfilePrompt;
+// export default ProfilePrompt;
 
 
+// export default VerifyIdentity;
+const mapStateToProps = (state, props) => {
+  let verifiedNin;
+  const nins = state.nins.nins.filter(nin => nin.verified);
+  if (nins.length >= 1) {
+    verifiedNin = true;
+  } else {
+    verifiedNin = false;
+  }
+  const phoneNumber = state.phones.phones.filter(phone => phone.primary);
+  const emailAddress = state.emails.emails.filter(email => email.primary);
+  return {
+    nins: state.nins.nins, // verified nin to see where to prompt user
+    verifiedNin: verifiedNin, // could be a boolean? to show what colour to display nin
+    phones: phoneNumber,
+    emails: emailAddress,
+    letter_verification: state.letter_proofing.confirmingLetter,
+    is_configured: state.config.is_configured,
+    firstName: state.personal_data.data.given_name,
+    lastName: state.personal_data.data.surname,
+    proofing_methods: state.config.PROOFING_METHODS,
+    valid_nin: isValid("nins")(state),
+    message: state.nins.message
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    handleThingy: function (e) {
+      console.log("do you need a function here?");
+    }
+  };
+};
+
+const ProfilePropmptContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfilePrompt);
+
+export default i18n(ProfilePropmptContainer);

@@ -69,6 +69,7 @@
 
 #profile-container {
   display: flex;
+  flex-direction: column;
 }
 
 .profile-card p {
@@ -82,6 +83,8 @@
 }
 
 #profile-detail-grid {
+  //  height: 300px;
+  margin: 7rem auto 5rem;
   display: grid;
   grid-row-gap: 30px;
   grid-template-columns: 33% 33% 33%;
@@ -108,16 +111,16 @@
   padding: 30px;
   // -ms-flex-direction: column;
   // flex-direction: column;
-  // height: 300px;
   // box-shadow: 0 4px 14px #ffe7dd;
   // border-radius: 10px;
   border: 1px solid transparent;
-  margin: 7rem auto 5rem;
-  max-width: 58.3333333333%;
+  // height: 300px;
+  // margin: 7rem auto 5rem;
+  // max-width: 58.3333333333%;
   // height: auto;
   padding: 20px;
-  border-radius: 20px;
-  box-shadow: 5px 5px 0px 0px #ff4500;
+  // border-radius: 20px;
+  // box-shadow: 5px 5px 0px 0px #ff4500;
   transition: border-color 0.5s ease;
 }
 
