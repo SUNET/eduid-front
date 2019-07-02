@@ -64,7 +64,6 @@ class Main extends Component {
                 </div>
                 <div id="content">
                   <NotificationsContainer />
-                  <DashboardNav />
                   <Route
                     path="/profile/settings/"
                     component={SettingsComponent}

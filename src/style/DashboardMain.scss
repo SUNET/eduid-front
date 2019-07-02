@@ -22,8 +22,8 @@
 
 #dashboard {
   // border-radius: 5px;
-  margin: 30px 0;
-  padding: 15px;
+  // margin: 30px 0;
+  // padding: 15px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -32,7 +32,7 @@
 #dashboard-text {
   display: flex;
   flex-direction: column;
-  background-color: yellow;
+  // background-color: yellow;
   // margin: 30px;
   // padding: 30px 0;
 }
@@ -52,7 +52,7 @@
 #welcome {
   margin: 7rem auto 5rem;
   max-width: 58.3333333333%;
-  background-color: orange;
+  // background-color: orange;
 }
 
 #welcome p {
@@ -73,6 +73,7 @@
 
 .profile-card p {
   padding-left: 5px;
+  margin: 0;
 }
 
 .profile-data {
@@ -85,12 +86,12 @@
   grid-row-gap: 30px;
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: repeat(2, auto);
-  margin: 30px 0;
+  // margin: 30px 0;
   width: calc(58.3333333333% - 60px);
 }
 
 #profile-detail-grid label {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Courier New", Courier, monospace;
 }
 
 /* styles for prompt cards */
@@ -141,13 +142,14 @@
 // }
 
 /* colours for profile sections */
-.profile {
+.profile,
+.settings {
   background-color: #f4f4f4;
 }
 
-.settings {
-  background-color: #f8f9fa;
-}
+// .settings {
+//   background-color: #f8f9fa;
+// }
 
 .settings-button {
   background-color: rgb(30, 92, 111);
@@ -192,12 +194,20 @@ h3.verify-identity-header {
 // }
 
 #dashboard-nav {
-  margin: 0 auto;
+  // margin: 0 auto;
   font-family: "Montserrat", sans-serif;
+  // max-width: 58%;
+  // align-items: center;
+  // font-family: "Montserrat", sans-serif;
+  width: 58%;
+  /* align-items: center; */
+  margin: 100px auto 50px;
 }
 
 #dashboard-nav ul {
-  flex-direction: row;
+  // flex-direction: row;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
 }
 
 #dashboard-nav .nav-link {
@@ -232,6 +242,12 @@ h3.verify-identity-header {
   color: #ff4500;
 }
 
+// #dashboard-nav .advanced-setting,
+// #dashboard-nav .advanced-setting h5 {
+//   background-color: #ffe7dd;
+//   color: #ff4500;
+// }
+
 // #settings-nav li:hover,
 // #settings-nav li .active,
 // #dashboard-nav .active {
@@ -265,7 +281,7 @@ table {
   background-color: white;
   color: gray;
   font-size: 24px;
-      font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 table td {

@@ -12,31 +12,42 @@ class DashboardNav extends Component {
       return (
         <nav id="dashboard-nav">
           <ul className="navbar-nav">
-            <NavLink exact activeClassName="active" to={`/profile/`}>
+            <NavLink
+              exact
+              activeClassName="active"
+              className="nav-link"
+              to={`/profile/`}
+            >
               <li className="nav-item">
-                <h5>eduid Profile</h5>
+                <h5>Profile</h5>
               </li>
             </NavLink>
-            <NavLink activeClassName="active" to={`/profile/settings/`}>
+            <NavLink
+              activeClassName="active"
+              className="nav-link"
+              to={`/profile/settings/`}
+            >
               <li className="nav-item">
                 <h5>Settings</h5>
               </li>
             </NavLink>
-          </ul>
-          <ul className="navbar-nav sub-nav">
+          {/* </ul> */}
+          {/* <ul className="navbar-nav sub-nav">
             <NavLink
               activeClassName="active"
+              className="nav-link personal-info"
               to={`/profile/settings/personaldata`}
             >
-              <li className="nav-item personal-info">
+              <li className="nav-item">
                 <h5> > Personal information</h5>
               </li>
-            </NavLink>
+            </NavLink> */}
             <NavLink
               activeClassName="active"
+              className="nav-link advanced-setting"
               to={`/profile/settings/advanced-settings`}
             >
-              <li className="nav-item advanced-settings">
+              <li className="nav-item">
                 <h5> > Advanced settings</h5>
               </li>
             </NavLink>
