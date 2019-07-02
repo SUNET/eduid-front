@@ -1,5 +1,14 @@
 @import "../variables.scss";
 
+.namesview-form-container,
+.phoneview-form-container,
+.emailsview-form-container,
+#delete-account-container,
+#change-password-container {
+  margin: 0 auto 30px;
+  max-width: 58.3333333333%;
+}
+
 button#email.button {
   margin-top: 5px;
 }
@@ -34,10 +43,11 @@ button#email.button {
   font-weight: 900;
   font-size: 24px;
 }
-#delete-account-container,
-#change-password-container {
-  margin-bottom: 30px;
-}
+// #delete-account-container,
+// #change-password-container {
+//   margin-bottom: 30px;
+//   max-width: 58.3333333333%;
+// }
 
 #delete-button,
 #security-change-button,
@@ -62,10 +72,4 @@ button#email.button {
 
 .form-content {
   width: 100%;
-}
-
-.namesview-form-container,
-.phoneview-form-container,
-.emailsview-form-container {
-  margin-bottom: 30px;
 }

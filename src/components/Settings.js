@@ -41,7 +41,7 @@ class Settings extends Component {
   render() {
     return (
       <div id="dashboard" className="settings">
-        <DashboardNav />
+        {/* <DashboardNav /> */}
         <div id="settings-content">
           <Route
             exact
