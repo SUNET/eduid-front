@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+import Questions from "./Questions";
 import "style/Footer.scss";
 
 class Footer extends Component {
@@ -50,14 +50,13 @@ class Footer extends Component {
     );
     return (
       <div id="footer">
-        <div>
-          <div id="footer-content">
-            <nav id="eduid-nav">{navMenu}</nav>
-            <p>
-              &copy;{this.props.l10n("footer.copyright")}
-              <span className="float-right">{langElems}</span>
-            </p>
-          </div>
+        <Questions />
+        <div id="footer-content">
+          <nav id="eduid-nav">{navMenu}</nav>
+          <p>
+            &copy;{this.props.l10n("footer.copyright")}
+            <span className="float-right">{langElems}</span>
+          </p>
         </div>
       </div>
     );

@@ -43,16 +43,66 @@ class Questions extends Component {
         "When possible, ckick 'log in with eduID'. You will be redirected to eduIDs login where you provide your email address and your password.";
     }
     return (
-      <div id="questions-container">
-        <div className="question-card">
-          <label>{question1}</label>
-          <p>{answer1}</p>
-        </div>
-        <div className="question-card">
-          <label>{question2}</label>
-          <p>{answer2}</p>
-        </div>
-      </div>
+      <ul id="questions-container">
+        <li activeClassName="active" className="question-list">
+          <div className="accordion">
+            <p className="question">{question1}</p>
+            <i class="plus">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path fill="#FF500D" d="M7 0h2v16H7z" />
+                <path fill="#FF500D" d="M0 9V7h16v2z" />
+              </svg>
+            </i>
+            <i class="minus">
+              <svg
+                width="16"
+                height="2"
+                viewBox="0 0 16 2"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path fill="#FF500D" d="M0 2V0h16v2z" />
+              </svg>
+            </i>
+          </div>
+          <p className="answer">{answer1}</p>
+        </li>
+        <li className="question-list">
+          <div className="accordion">
+            <p className="question">{question2}</p>
+            <i class="plus">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path fill="#FF500D" d="M7 0h2v16H7z" />
+                <path fill="#FF500D" d="M0 9V7h16v2z" />
+              </svg>
+            </i>
+            <i class="minus">
+              <svg
+                width="16"
+                height="2"
+                viewBox="0 0 16 2"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path fill="#FF500D" d="M0 2V0h16v2z" />
+              </svg>
+            </i>
+          </div>
+          <p className="answer">{answer2}</p>
+        </li>
+      </ul>
     );
   }
 }

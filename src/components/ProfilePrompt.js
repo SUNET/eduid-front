@@ -25,7 +25,7 @@ class ProfilePrompt extends Component {
           to={`/profile/verify-identity/`}
         >
           <div id="profile-prompt" className="verify-identity-prompt">
-            <h3 className="verify-identity-prompt">Start using eduID</h3>
+            <span className="verify-identity-prompt">Start using eduID</span>
             <p>
               Add your national id number and choose a suitable way to confirm
               that it belongs to you.
@@ -58,13 +58,13 @@ class ProfilePrompt extends Component {
             to={`/profile/verify-identity/`}
           >
             <div id="profile-prompt" className="verify-identity-prompt">
-              <h3 className="verify-identity-prompt">
-                Don't forget to verify you id number
-              </h3>
-              <p>
+              <span className="verify-identity-prompt">
+                Your id number has been added. Click here to verify it.
+              </span>
+              {/* <p>
                 Your national id number has been added, but you still need to
                 verify that it is yours.
-              </p>
+              </p> */}
             </div>
           </Link>
         );
@@ -74,7 +74,6 @@ class ProfilePrompt extends Component {
 }
 
 // export default ProfilePrompt;
-
 
 // export default VerifyIdentity;
 const mapStateToProps = (state, props) => {
@@ -104,7 +103,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleThingy: function (e) {
+    handleThingy: function(e) {
       console.log("do you need a function here?");
     }
   };

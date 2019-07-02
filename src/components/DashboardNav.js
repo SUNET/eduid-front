@@ -82,7 +82,7 @@ class DashboardNav extends Component {
               to={`/profile/`}
             >
               <li className="nav-item">
-                <h5>eduid Profile</h5>
+                <h5>Profile</h5>
               </li>
             </NavLink>
             <NavLink

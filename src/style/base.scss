@@ -613,6 +613,9 @@ div.modal-dialog div.modal-footer a {
   }
 }
 @media (min-width: 768px) {
+   body {
+    background-color: inherit;
+  }
   .container {
     max-width: 100%;
   }
@@ -622,3 +625,9 @@ div.modal-dialog div.modal-footer a {
     max-width: 100%;
   }
 }
+
+// @media (max-width: 750px) {
+//   body {
+//     background-color: inherit;
+//   }
+// }

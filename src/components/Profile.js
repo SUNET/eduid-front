@@ -135,7 +135,7 @@ class Profile extends Component {
       accountDetails = [
         <NameDisplay {...this.props} />,
         <NinDisplay {...this.props} />,
-        <LetterProofingDisplay {...this.props} />,
+        // <LetterProofingDisplay {...this.props} />,
         <PhoneDisplay {...this.props} />,
         <EmailDisplay {...this.props} />
         // <LetterProofingDisplay {...this.props} />,

@@ -15,7 +15,7 @@ import DashboardNav from "./DashboardNav";
 import SettingsComponent from "./Settings";
 import Profile from "./Profile";
 import NotificationsContainer from "containers/Notifications";
-import Questions from "./Questions";
+
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -74,7 +74,6 @@ class Main extends Component {
                   <Route path="/profile/verify-identity/" component={Profile} />
                   <Route path="/profile/security/" component={Profile} />
                 </div>
-                <Questions />
               </div>
             </div>
           </div>
