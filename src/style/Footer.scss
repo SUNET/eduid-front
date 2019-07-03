@@ -44,35 +44,34 @@
   color: #161616;
 }
 
- /* styles for moving questions to footer */
-  #questions-container {
-    display: block;
-  }
-  #footer ul {
-    margin: 0 auto;
-    // display: grid;
-    // grid-template-columns: 50% 50%;
-    // grid-template-rows: auto;
-    // grid-gap: 30px;
-    width: 70%;
-  }
+/* styles for moving questions to footer */
+#questions-container {
+  display: block;
+}
+#footer ul {
+  margin: 50px auto;
+  // display: grid;
+  // grid-template-columns: 50% 50%;
+  // grid-template-rows: auto;
+  // grid-gap: 30px;
+  width: 70%;
+}
 
-  #footer li {
-    cursor: pointer;
-    // background-color: yellow;
-    list-style: none;
-    border-bottom: solid 1px #d8d8d8;
-  }
+#footer li {
+  cursor: pointer;
+  // background-color: yellow;
+  list-style: none;
+  border-bottom: solid 1px #d8d8d8;
+}
 
-  .accordion {
-    // line-height: 1.5;
-    padding: 30px 0;
-    margin-top: 0;
-    display: flex;
-    justify-content: space-between;
-  }
+.accordion {
+  // line-height: 1.5;
+  padding: 30px 0;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+}
 
-  #footer .answer {
-    margin-bottom: 30px;
-  }
-
+#footer .answer {
+  margin-bottom: 30px;
+}

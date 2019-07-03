@@ -26,18 +26,25 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 30px;
 }
 
 #dashboard-text {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   flex: 1;
 }
 
+// #content-container {
+//   display: flex;
+//   flex-direction: column;
+//   background-color: #f4f4f4;
+// }
+
 #content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  // display: flex;
+  // flex-direction: column;
+  // flex: 1;
   background-color: #f4f4f4;
 }
 
@@ -59,6 +66,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 5rem 0;
 }
 
 .profile-card p {
@@ -123,18 +131,18 @@
 }
 
 /* colours for profile sections */
-.profile,
-.settings {
-  background-color: #f4f4f4;
-}
+// .profile,
+// .settings {
+//   background-color: #f4f4f4;
+// }
 
-.settings-button {
-  background-color: rgb(30, 92, 111);
-}
+// .settings-button {
+//   background-color: rgb(30, 92, 111);
+// }
 
-.verify-identity {
-  background-color: #f8f9fa;
-}
+// .verify-identity {
+//   background-color: #f8f9fa;
+// }
 
 h3.verify-identity-header {
   display: inline-block;
@@ -146,13 +154,13 @@ h3.verify-identity-header {
 }
 
 #settings-content {
-  margin: 5rem 0 7rem;
+  margin: 0 0 7rem;
 }
 
 /* styles for sidebar nav on settings page */
 aside {
   position: absolute;
-  top: calc(17rem + 50px);
+  top: calc(12rem);
   left: 30px;
   z-index: 100;
   max-width: 20%;
@@ -201,7 +209,7 @@ aside li:hover a {
 #dashboard-nav {
   font-family: "Montserrat", sans-serif;
   width: 58%;
-  margin: 100px auto 50px;
+  margin: 100px auto 0;
 }
 
 #dashboard-nav ul {

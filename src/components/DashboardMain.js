@@ -60,6 +60,7 @@ class Main extends Component {
             <div id="dashboard-container">
               {/* <SettingsButton {...this.props} /> */}
               <div id="dashboard-text">
+                {/* <div id="content-container"> */}
                 <div id="welcome">
                   <h1>eduID for {this.props.email}</h1>
                   <h2>{welcomeGreeting}</h2>
@@ -73,10 +74,10 @@ class Main extends Component {
                   <Route exact path="/profile/" component={Profile} />
                   <Route path="/profile/verify-identity/" component={Profile} />
                   <Route path="/profile/security/" component={Profile} />
+                  <FooterContainer />
                 </div>
               </div>
             </div>
-            <FooterContainer />
           </div>
         </Router>
       </FetchingContext.Provider>
