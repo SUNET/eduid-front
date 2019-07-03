@@ -74,8 +74,8 @@ class Questions extends Component {
         <li activeClassName="active" className="question-list">
           <div className="accordion">
             <p className="question">{question1}</p>
-            <div className="plus">
-              <svg
+            <div >
+              <svg className="plus"
                 width="16"
                 height="16"
                 viewBox="0 0 16 16"
@@ -87,7 +87,7 @@ class Questions extends Component {
               </svg>
             </div>
             <i className="minus collapse">
-              <svg
+              <svg className="minus"
                 width="16"
                 height="2"
                 viewBox="0 0 16 2"
@@ -104,7 +104,7 @@ class Questions extends Component {
           <div className="accordion">
             <p className="question">{question2}</p>
             <i className="plus">
-              <svg
+              <svg className="plus"
                 width="16"
                 height="16"
                 viewBox="0 0 16 16"
@@ -116,7 +116,7 @@ class Questions extends Component {
               </svg>
             </i>
             <i className="minus collapse">
-              <svg
+              <svg className="minus"
                 width="16"
                 height="2"
                 viewBox="0 0 16 2"

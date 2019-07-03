@@ -56,7 +56,7 @@ class NinDisplay extends Component {
           <div key="1" className="profile-card">
             <label>National id number</label>
             <div id="nin-number-container">
-              <p className="unverified profile-data">No number added</p>
+              <p className="unverified profile-data">Add your number</p>
             </div>
           </div>
         );
@@ -90,7 +90,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleDelete: function (e) {
+    handleDelete: function(e) {
       const ninNumber = e.target.parentNode.dataset.ninnumber;
       dispatch(actions.startRemove(ninNumber));
     }

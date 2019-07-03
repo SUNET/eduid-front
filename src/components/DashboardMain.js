@@ -39,14 +39,18 @@ class Main extends Component {
   }
 
   render() {
+    let promptLink = ``;
     let welcomeGreeting = "";
-
     if (this.props.nins) {
-      welcomeGreeting =
-        "Welcome back to eduID. You can change any of your personal details in Settings.";
+      promptLink = `/profile/verify-identity/`;
+      welcomeGreeting = "Don't forget to verify your national id number.";
+      if (this.props.nins[0].verified) {
+        promptLink = `/profile/settings/advanced-settings`;
+        welcomeGreeting = "Make eduID more secure.";
+      }
     } else {
-      welcomeGreeting =
-        "Welcome to your eduID. To be able to use it you need to provide some more information.";
+      promptLink = `/profile/verify-identity/`;
+      welcomeGreeting = "Add your national id number to start using eduID.";
     }
 
     return (
@@ -54,17 +58,23 @@ class Main extends Component {
         <SplashContainer />
         <Router history={history}>
           <div className="dashboard-wrapper">
-            <ProfilePrompt {...this.props} />
+            {/* <ProfilePrompt {...this.props} /> */}
             <HeaderContainer />
-
             <div id="dashboard-container">
               {/* <SettingsButton {...this.props} /> */}
               <div id="dashboard-text">
                 {/* <div id="content-container"> */}
                 <div id="welcome">
                   <h1>eduID for {this.props.email}</h1>
-                  <h2>{welcomeGreeting}</h2>
+                  <Link
+                    id="profile-prompt-link"
+                    // className="verify-identity-prompt"
+                    to={promptLink}
+                  >
+                    <h2>{welcomeGreeting}</h2>
+                  </Link>
                 </div>
+
                 <div id="content">
                   <NotificationsContainer />
                   <Route

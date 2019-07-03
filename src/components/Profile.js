@@ -46,7 +46,7 @@ class Profile extends Component {
             <label>Name</label>
             <div id="nin-number-container">
               <p id="nin-number" className="verified">
-                No name added yet
+                No name added 
               </p>
             </div>
           </div>
@@ -72,7 +72,7 @@ class Profile extends Component {
             <label>Phone number</label>
             <div id="nin-number-container">
               <p id="nin-number" className="verified">
-                No phone number added yet
+                No phone number added 
               </p>
             </div>
           </div>
@@ -98,7 +98,7 @@ class Profile extends Component {
             <label>Email Address</label>
             <div id="nin-number-container">
               <p id="nin-number" className="verified">
-                No email added yet
+                No email added 
               </p>
             </div>
           </div>

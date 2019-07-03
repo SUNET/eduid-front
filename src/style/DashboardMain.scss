@@ -45,14 +45,15 @@
   // display: flex;
   // flex-direction: column;
   // flex: 1;
+  height: 100%;
   background-color: #f4f4f4;
 }
 
 // ----- LANDING PAGE ----- //
 #welcome {
-  margin: 7rem auto 5rem;
+  padding: 7rem 0 5rem;
   max-width: 58.3333333333%;
-  // background-color: orange;
+  margin: 0 auto 70px;
 }
 
 #welcome p {
@@ -74,11 +75,6 @@
   margin: 0;
 }
 
-.profile-data {
-  font-size: 36px;
-  font-weight: 300;
-}
-
 #profile-detail-grid {
   // margin: 0 auto 7rem;
   display: grid;
@@ -93,19 +89,23 @@
   font-family: "Courier New", Courier, monospace;
 }
 
-/* styles for prompt cards */
-#profile-prompt-link:hover {
-  text-decoration: none;
-  cursor: pointer;
+.profile-data {
+  font-size: 36px;
+  font-weight: 300;
 }
 
+/* styles for prompt cards */
 #profile-prompt-link {
-  background-color: #ffe7dd;
   color: #161616;
-  display: flex;
-  justify-content: center;
-  padding: 16px;
+  border-bottom: transparent solid 1px;
+  cursor: pointer;
   transition: border-color 0.5s ease;
+}
+
+#profile-prompt-link:hover {
+  // text-decoration: none;
+  color: $orange-highlight;
+  border-bottom: $orange-highlight solid 1px;
 }
 
 #profile-prompt p {
@@ -317,6 +317,8 @@ button.remove:hover {
 svg.remove {
   transform-origin: center;
   transform: rotate(45deg);
+  margin: 0;
+  padding: 0;
 }
 
 .form-control {
