@@ -2,7 +2,6 @@
 
 /* styles for scaffolding  */
 #root {
-  // max-width: 1200px;
   display: flex;
   flex-direction: column;
 }
@@ -11,19 +10,19 @@
   padding: 0;
 }
 
-// .dashboard-wrapper {
-//   margin: 0 15px;
-// }
+.dashboard-wrapper {
+  // flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-// #dashboard-container {
-//   background-color: #fffffe;
-//   padding: 0 15px 0 0;
-// }
+#dashboard-container {
+  display: flex;
+  flex: 1;
+}
 
 #dashboard {
-  // border-radius: 5px;
-  // margin: 30px 0;
-  // padding: 15px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -32,23 +31,17 @@
 #dashboard-text {
   display: flex;
   flex-direction: column;
-  // background-color: yellow;
-  // margin: 30px;
-  // padding: 30px 0;
+  flex: 1;
 }
 
 #content {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  background-color: #f4f4f4;
 }
 
-// #profile-container,
-// #settings-content {
-//   max-width: 90%;
-// }
-
 // ----- LANDING PAGE ----- //
-
 #welcome {
   margin: 7rem auto 5rem;
   max-width: 58.3333333333%;
@@ -62,15 +55,9 @@
   letter-spacing: 0.3px;
 }
 
-/* styles for profile */
-// #profile-section {
-//   max-width: 95%;
-// }
-
 #profile-container {
   display: flex;
   flex-direction: column;
-  // padding-bottom: 30px;
 }
 
 .profile-card p {
@@ -84,13 +71,11 @@
 }
 
 #profile-detail-grid {
-  //  height: 300px;
   margin: 0 auto 7rem;
   display: grid;
-  grid-row-gap: 30px;
+  grid-row-gap: 50px;
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(2, auto);
-  // margin: 30px 0;
   width: 58.3333333333%;
 }
 
@@ -106,26 +91,10 @@
 
 #profile-prompt-link {
   background-color: #ffe7dd;
-  // font-size: 16px;
   color: #161616;
   display: flex;
   justify-content: center;
-
-  // width: 32%;
-  // margin-bottom: 50px;
-  // padding: 30px;
-  // -ms-flex-direction: column;
-  // flex-direction: column;
-  // box-shadow: 0 4px 14px #ffe7dd;
-  // border-radius: 10px;
-  // border: 1px solid transparent;
-  // height: 300px;
-  // margin: 7rem auto 5rem;
-  // max-width: 58.3333333333%;
-  // height: auto;
   padding: 16px;
-  // border-radius: 20px;
-  // box-shadow: 5px 5px 0px 0px #ff4500;
   transition: border-color 0.5s ease;
 }
 
@@ -149,34 +118,13 @@
 
 #profile-prompt:hover {
   border: solid #ff4500 1px;
-  // transform: translate(5px, 5px);
-  // box-shadow: 0px 0px 0px 0px;
 }
-
-// #profile-prompt h3 {
-//   // font-family: "Roboto-Medium";
-//   margin-top: 0;
-// }
-
-// #profile-prompt p {
-//   max-width: 75%;
-// }
-
-// .verify-identity-prompt,
-// .verify-identity-prompt a:hover {
-//   background-color: lightgray;
-//   color: #333;
-// }
 
 /* colours for profile sections */
 .profile,
 .settings {
   background-color: #f4f4f4;
 }
-
-// .settings {
-//   background-color: #f8f9fa;
-// }
 
 .settings-button {
   background-color: rgb(30, 92, 111);
@@ -214,25 +162,13 @@ h3.verify-identity-header {
 //-------(ADD NIN styles are in nins.scss)----------//
 
 // ----- SETTINGS PAGE ----- //
-
-// .nav-link,
-// .nav-link:hover {
-//   padding: 0;
-// }
-
 #dashboard-nav {
-  // margin: 0 auto;
   font-family: "Montserrat", sans-serif;
-  // max-width: 58%;
-  // align-items: center;
-  // font-family: "Montserrat", sans-serif;
   width: 58%;
-  /* align-items: center; */
   margin: 100px auto 50px;
 }
 
 #dashboard-nav ul {
-  // flex-direction: row;
   display: grid;
   grid-template-columns: 33% 33% 33%;
 }
@@ -254,10 +190,6 @@ h3.verify-identity-header {
   border-bottom: solid 2px transparent;
   transition: all 0.5s ease;
 }
-// #dashboard-nav li:hover,
-// #dashboard-nav .active {
-//   margin: 0 6px;
-// }
 
 #dashboard-nav .active,
 #dashboard-nav .nav-link:hover {
@@ -269,38 +201,7 @@ h3.verify-identity-header {
   color: #ff4500;
 }
 
-// #dashboard-nav .advanced-setting,
-// #dashboard-nav .advanced-setting h5 {
-//   background-color: #ffe7dd;
-//   color: #ff4500;
-// }
-
-// #settings-nav li:hover,
-// #settings-nav li .active,
-// #dashboard-nav .active {
-//   // border: 1px solid #ff4500;
-//   color: #ff4500;
-// }
-
-// #settings-nav .active h5,
-// #settings-nav h5:hover {
-//   color: #ff4500;
-// }
-
-// #settings-nav .sub-nav .active h5,
-// #settings-nav .sub-nav h5:hover {
-//   margin: 0;
-//   padding-bottom: 0px;
-//   color: gray;
-//   border-bottom: solid 2px transparent;
-//   // display: inline-block;
-// }
-
 /* styles for tables displaying userinfo on settings page */
-
-// #settings-content {
-//   max-width: 85%;
-// }
 
 table {
   margin-bottom: 0;
@@ -337,15 +238,11 @@ table .btn-link {
 tbody {
   margin-bottom: 10px;
 }
-// td {
-//   border: solid 3px red;
-// }
 
 span.nobutton,
 .primary button.remove,
 tr.primary {
   font-weight: 900;
-  // font-family: "Roboto-Regular";
   color: #333;
 }
 
@@ -353,7 +250,6 @@ span.nobutton,
 button.verify-status-label {
   font-size: 12px;
   text-transform: uppercase;
-  // font-family: "Roboto-Medium";
   letter-spacing: 0.5px;
   line-height: 1;
   font-weight: 700;
@@ -367,9 +263,7 @@ span.nobutton {
 
 button.remove {
   font-size: 24px;
-  // font-family: "Roboto-Light";
   font-weight: 300;
-  // float: right;
 }
 button.remove:hover {
   color: red;
@@ -467,21 +361,6 @@ fieldset {
 a#go-to-mobiles-tab {
   cursor: pointer;
 }
-
-
-
-// .question-card label,
-// .question-card p {
-//   color: #888;
-// }
-
-// .question-card label {
-//   padding: 0 0 10px 0;
-//   font-weight: 400;
-// }
-// .question-card p {
-//   font-size: 14px;
-// }
 
 @media (max-width: 750px) {
   body {

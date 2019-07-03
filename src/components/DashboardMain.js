@@ -15,7 +15,7 @@ import DashboardNav from "./DashboardNav";
 import SettingsComponent from "./Settings";
 import Profile from "./Profile";
 import NotificationsContainer from "containers/Notifications";
-
+import Questions from "./Questions";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -76,10 +76,9 @@ class Main extends Component {
                 </div>
               </div>
             </div>
+            <FooterContainer />
           </div>
         </Router>
-
-        <FooterContainer />
       </FetchingContext.Provider>
     );
   }

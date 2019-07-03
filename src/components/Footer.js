@@ -52,10 +52,10 @@ class Footer extends Component {
       <div id="footer">
         <Questions />
         <div id="footer-content">
-          <nav id="eduid-nav">{navMenu}</nav>
+          {/* <nav id="eduid-nav">{navMenu}</nav> */}
           <p>
-            &copy;{this.props.l10n("footer.copyright")}
-            <span className="float-right">{langElems}</span>
+            <span>&copy;{this.props.l10n("footer.copyright")}</span>
+            <span id="language-selector">{langElems}</span>
           </p>
         </div>
       </div>

@@ -3,10 +3,37 @@ import React, { Component } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
-import DashboardNav from "./DashboardNav";
-import AddNin from "./AddNin";
+// import DashboardNav from "./DashboardNav";
+// import AddNin from "./AddNin";
 
 class Questions extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.showAnswer = this.showAnswer.bind(this);
+  //   this.state = {
+  //     answer: "hide",
+  //    symbol: "show"
+  //   };
+  // }
+
+  showAnswer() {
+    console.log("hello, you clicked the list item");
+
+    // this.setState(
+    //   (state, props) => {
+    //     return {
+    //       answer: "hide",
+    //       symbol: "show"
+    //     };
+    //   },
+    //   () => {
+    //     console.log("answer should be hidden:", this.state.answer);
+    //     console.log("+ shuold be visible:", this.state.symbol);;
+    //   }
+    // );
+    // console.log("class shoudl be updated to show", this.state.answer);
+  }
+
   render() {
     const url = window.location.href;
     let question1 = "";
@@ -40,14 +67,14 @@ class Questions extends Component {
         "eduID is a set of login details that be used to access multiple organisations. eduID has been developed to provide students with a swedish national id number an additional identity online.";
       question2 = "How do I use eduID?";
       answer2 =
-        "When possible, ckick 'log in with eduID'. You will be redirected to eduIDs login where you provide your email address and your password.";
+        "When possible, click 'log in with eduID'. You will be redirected to eduIDs login where you provide your email address and your password.";
     }
     return (
       <ul id="questions-container">
         <li activeClassName="active" className="question-list">
           <div className="accordion">
             <p className="question">{question1}</p>
-            <i class="plus">
+            <div className="plus">
               <svg
                 width="16"
                 height="16"
@@ -58,8 +85,8 @@ class Questions extends Component {
                 <path fill="#FF500D" d="M7 0h2v16H7z" />
                 <path fill="#FF500D" d="M0 9V7h16v2z" />
               </svg>
-            </i>
-            <i class="minus">
+            </div>
+            <i className="minus collapse">
               <svg
                 width="16"
                 height="2"
@@ -71,12 +98,12 @@ class Questions extends Component {
               </svg>
             </i>
           </div>
-          <p className="answer">{answer1}</p>
+          <p className="answer collapse">{answer1}</p>
         </li>
         <li className="question-list">
           <div className="accordion">
             <p className="question">{question2}</p>
-            <i class="plus">
+            <i className="plus">
               <svg
                 width="16"
                 height="16"
@@ -88,7 +115,7 @@ class Questions extends Component {
                 <path fill="#FF500D" d="M0 9V7h16v2z" />
               </svg>
             </i>
-            <i class="minus">
+            <i className="minus collapse">
               <svg
                 width="16"
                 height="2"
@@ -100,7 +127,7 @@ class Questions extends Component {
               </svg>
             </i>
           </div>
-          <p className="answer">{answer2}</p>
+          <p className="answer collapse">{answer2}</p>
         </li>
       </ul>
     );
