@@ -71,7 +71,7 @@ class Orcid extends Component {
       );
     }
     return (
-      <div>
+      <div id="orcid-connect">
         {orcidIntro}
         {orcidData}
       </div>

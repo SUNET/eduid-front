@@ -9,7 +9,7 @@ import "style/AccountLinking.scss";
 class AccountLinking extends Component {
   render() {
     return (
-      <div>
+      <div id="orcid-connect-container">
         <div className="intro">
           <h4>For reseachers</h4>
           <div className="orcid-logo-container">

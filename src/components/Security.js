@@ -131,7 +131,7 @@ class Security extends Component {
 
     if (url.includes("settings")) {
       return (
-        <div>
+        <div id="security-container">
           {/* <div id="change-password-container">
             <div className="intro">
               <h4>Change password</h4>
@@ -224,7 +224,7 @@ class Security extends Component {
       );
     } else if (url.includes("security")) {
       return (
-        <div>
+        <div id="security-container">
           <div className="intro">
             {/* <h3>{this.props.l10n("security.main_title")}</h3> */}
             <h3>Increase security by regestering security keys to eduID</h3>

@@ -145,10 +145,14 @@ h3.verify-identity-header {
   top: 20px;
 }
 
-/* styles for settings page */
+#settings-content {
+  margin: 5rem 0 7rem;
+}
+
+/* styles for sidebar nav on settings page */
 aside {
   position: absolute;
-  top: 255px;
+  top: calc(17rem + 50px);
   left: 30px;
   z-index: 100;
   max-width: 20%;
@@ -181,9 +185,9 @@ aside li:hover a {
   justify-content: flex-end;
 }
 
-#settings-nav.nav-back .nav-item {
-  margin-right: 0;
-}
+// #settings-nav.nav-back .nav-item {
+//   margin-right: 0;
+// }
 
 /* styles for profile elements in settings */
 .settings .nin-holder,
