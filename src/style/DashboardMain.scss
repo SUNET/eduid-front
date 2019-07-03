@@ -58,6 +58,7 @@
 #profile-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .profile-card p {
@@ -71,12 +72,13 @@
 }
 
 #profile-detail-grid {
-  margin: 0 auto 7rem;
-  display: grid;
-  grid-row-gap: 50px;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: repeat(2, auto);
-  width: 58.3333333333%;
+  // margin: 0 auto 7rem;
+      display: grid;
+    grid-row-gap: 50px;
+    grid-column-gap: 30px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(2, auto);
+    width: calc(58.3333333333% - 30px);
 }
 
 #profile-detail-grid label {
