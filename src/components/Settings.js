@@ -39,52 +39,93 @@ class Settings extends Component {
   // }
 
   render() {
-    return (
-      <div id="dashboard" 
-      className="settings">
-         <DashboardNav />
-        <div id="settings-content">
-          <Route
-            exact
-            path="/profile/settings/"
-            component={() => <Redirect to="/profile/settings/personaldata" />}
-          />
-          <Route
-            path="/profile/settings/personaldata"
-            component={PersonalDataContainer}
-          />
+    let SideBarMenu = "";
+    const url = window.location.href;
+    if (url.includes("personaldata")) {
+      SideBarMenu = [
+        <aside>
+          <section>
+            <div>
+              <ul id="menu-about">
+                <li
+                  id="menu-item-21"
+                >
+                  <a href="#">Name</a>
+                </li>
+                <li
+                  id="menu-item-19"
+                >
+                  <a href="#">Email address</a>
+                </li>
+                <li
+                  id="menu-item-20"
+                >
+                  <a href="#">Phone number</a>
+                </li>
+                <li
+                  id="menu-item-22"
+                >
+                  <a href="#">Change password</a>
+                </li>
+                <li
+                  id="menu-item-23"
+                >
+                  <a href="#">Delete account</a>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </aside>
+      ];
+    } else {
+      SideBarMenu = "";
+    }
+      return (
+        <div id="dashboard" className="settings">
+          <DashboardNav />
+          {SideBarMenu}
+          <div id="settings-content">
+            <Route
+              exact
+              path="/profile/settings/"
+              component={() => <Redirect to="/profile/settings/personaldata" />}
+            />
+            <Route
+              path="/profile/settings/personaldata"
+              component={PersonalDataContainer}
+            />
 
-          <Route
-            path="/profile/settings/personaldata"
-            component={EmailsContainer}
-          />
-          <Route
-            path="/profile/settings/personaldata"
-            component={MobileContainer}
-          />
-          <Route
-            path="/profile/settings/personaldata"
-            component={PasswordChange}
-          />
-          <Route
-            path="/profile/settings/personaldata"
-            component={DeleteAccount}
-          />
-          <Route
-            path="/profile/settings/personaldata/chpass"
-            component={ChangePasswordContainer}
-          />
-          <Route
-            path="/profile/settings/advanced-settings"
-            component={SecurityContainer}
-          />
-          <Route
-            path="/profile/settings/advanced-settings"
-            component={AccountLinkingContainer}
-          />
+            <Route
+              path="/profile/settings/personaldata"
+              component={EmailsContainer}
+            />
+            <Route
+              path="/profile/settings/personaldata"
+              component={MobileContainer}
+            />
+            <Route
+              path="/profile/settings/personaldata"
+              component={PasswordChange}
+            />
+            <Route
+              path="/profile/settings/personaldata"
+              component={DeleteAccount}
+            />
+            <Route
+              path="/profile/settings/personaldata/chpass"
+              component={ChangePasswordContainer}
+            />
+            <Route
+              path="/profile/settings/advanced-settings"
+              component={SecurityContainer}
+            />
+            <Route
+              path="/profile/settings/advanced-settings"
+              component={AccountLinkingContainer}
+            />
+          </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 

@@ -37,10 +37,10 @@ button#email.button {
 #phone-form input {
   background-color: white;
   border: none;
-  border-bottom: solid 3px #333;
-  font-family: "Roboto-Light";
-  color: gray;
-  font-weight: 900;
+  border-bottom: solid 1px #161616;
+  // font-family: "Roboto-Light";
+  color: #161616;
+  // font-weight: #ebebeb;
   font-size: 24px;
 }
 // #delete-account-container,
@@ -54,7 +54,8 @@ button#email.button {
 #add-more-button {
   margin: 0;
   padding: 0 0 0.75rem 0.75rem;
-  font-family: "Roboto-Medium";
+  font-family: "Montserrat", sans-serif;
+  // font-family: "Roboto-Medium";
   font-size: 16px;
 }
 

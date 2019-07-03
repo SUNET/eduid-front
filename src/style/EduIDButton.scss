@@ -100,21 +100,22 @@ button.btn.btn-danger {
 
 button.btn-link {
   background-color: transparent;
-  color: $link-color;
-  font-weight: 500;
+  color: $orange-highlight;
+  font-weight: 400;
+  border-radius: 0;
+  box-shadow: none;
   &:hover {
     background-color: transparent;
-    border-color: transparent;
-    color: $link-hover;
-    text-decoration: none;
+    // border-bottom: solid 1px $orange-highlight;
+    color: $orange-highlight;
+    // text-decoration: none;
   }
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     background-color: transparent;
     border-color: transparent;
-    color: $link-color;
-    box-shadow: 0 0 0 0.2rem $link-shadow;
+    color: gray;
   }
 }
 

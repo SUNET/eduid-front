@@ -44,16 +44,7 @@
   color: #161616;
 }
 
-// @media only screen and (max-width: 767px) {
-//   #footer,
-//   .footer {
-//     padding: 20px 0;
-//     height: auto;
-//   }
-// }
-
-@media only screen and (max-width: 1000px) {
-  /* styles for moving questions to footer */
+ /* styles for moving questions to footer */
   #questions-container {
     display: block;
   }
@@ -84,4 +75,4 @@
   #footer .answer {
     margin-bottom: 30px;
   }
-}
+
