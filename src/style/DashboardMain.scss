@@ -63,6 +63,17 @@
   letter-spacing: 0.3px;
 }
 
+#welcome h2 {
+  display: inline-block;
+  text-decoration: none;
+  // border-bottom: solid transparent 2px;
+}
+
+#welcome h2:hover {
+  // border-bottom: solid #ff4500 2px;
+  transition: all 0.5s ease;
+}
+
 #profile-container {
   display: flex;
   flex-direction: column;

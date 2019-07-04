@@ -22,7 +22,7 @@
 }
 
 #add-nin-number.unverified button {
-  color: #db5461;
+  color: $orange-highlight;
   background-color: transparent;
 }
 
@@ -32,7 +32,7 @@
 }
 
 #nin-number-container button {
-  color: #333;
+  color: #161616;
   font-family: "Montserrat", sans-serif;
   font-size: 28px;
   background-color: transparent;
@@ -41,7 +41,7 @@
 }
 
 #nin-number-container button:hover {
-  color: red;
+  color: #ff4500;
 }
 
 .nin-holder {
@@ -113,10 +113,7 @@
 }
 
 #nin-number-container a:hover {
-  color: $orange-highlight;
-  // letter-spacing: 0.3px;
   text-decoration: none;
-  font-weight: 300;
   border-bottom: solid #ff4500 2px;
 }
 
@@ -128,7 +125,7 @@
 
 .unverified {
   color: #ff4500;
-  font-weight: 300;
+  // font-weight: 300;
   font-family: "Montserrat", sans-serif;
 }
 

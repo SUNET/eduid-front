@@ -36,13 +36,9 @@ class NinDisplay extends Component {
                 data-ninnumber={this.props.nins[0].number}
                 id="nin-number-container"
               >
-                <Link
-                  to={`/profile/verify-identity/`}
-                  id="nin-number"
-                  className="unverified"
-                >
+                <p id="nin-number" className="unverified">
                   {this.props.nins[0].number}
-                </Link>
+                </p>
                 <EduIDButton
                   className="btn-danger btn-sm"
                   onClick={this.props.handleDelete}
@@ -74,9 +70,13 @@ class NinDisplay extends Component {
           <div key="1" className="profile-card">
             <label>National id number</label>
             <div id="nin-number-container">
-              <p className=" unverified profile-data">
+              <Link
+                to={`/profile/verify-identity/`}
+                id="nin-number"
+                className="unverified profile-data"
+              >
                 {this.props.nins[0].number}
-              </p>
+              </Link>
             </div>
           </div>
         );

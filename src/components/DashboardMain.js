@@ -41,15 +41,19 @@ class Main extends Component {
   render() {
     let promptLink = ``;
     let welcomeGreeting = "";
-    if (this.props.nins) {
+    let styling = "unverified"
+    if (this.props.nin) {
       promptLink = `/profile/verify-identity/`;
+      styling ="unverified"
       welcomeGreeting = "Don't forget to verify your national id number.";
-      if (this.props.nins[0].verified) {
+      if (this.props.verifiedNin) {
         promptLink = `/profile/settings/advanced-settings`;
+        styling ="verified"
         welcomeGreeting = "Make eduID more secure.";
       }
     } else {
       promptLink = `/profile/verify-identity/`;
+      styling = "unverified"
       welcomeGreeting = "Add your national id number to start using eduID.";
     }
 
@@ -71,7 +75,7 @@ class Main extends Component {
                     // className="verify-identity-prompt"
                     to={promptLink}
                   >
-                    <h2>{welcomeGreeting}</h2>
+                    <h2 className={styling}>{welcomeGreeting}</h2>
                   </Link>
                 </div>
 
