@@ -53,87 +53,87 @@ class PasswordChange extends Component {
   render() {
     const url = window.location.href;
 
-    if (this.props.redirect_to !== "") {
-      window.location.href = this.props.redirect_to;
-      return null;
-    }
-    if (this.props.deleted) {
-      window.location.href = "https://eduid.se";
-      return null;
-    }
-    const tokens = this.props.credentials.filter(
-      cred => cred.credential_type !== "security.password_credential_type"
-    );
-    const creds_table = this.props.credentials.map((cred, index) => {
-      let btnRemove = "";
-      let btnVerify = "";
-      if (
-        tokens.length > 1 &&
-        cred.credential_type !== "security.password_credential_type"
-      ) {
-        btnRemove = (
-          <div className="btn-group btn-group-sm" role="group">
-            <button
-              className="btn-link btn-remove-webauthn"
-              onClick={this.props.handleRemoveWebauthnToken}
-            >
-              {this.props.l10n("security.remove")}
-            </button>
-          </div>
-        );
-      }
-      if (cred.credential_type !== "security.password_credential_type") {
-        if (cred.verified) {
-          btnVerify = (
-            <div className="btn-group btn-group-sm" role="group">
-              <button className="btn-link btn-verified-webauthn" disabled>
-                {this.props.l10n("security.verified")}
-              </button>
-            </div>
-          );
-        } else if (cred.used_for_login && !cred.verified) {
-          btnVerify = (
-            <div className="btn-group btn-group-sm" role="group">
-              <button
-                className="btn-link btn-verify-webauthn"
-                onClick={this.props.handleVerifyWebauthnToken}
-              >
-                {this.props.l10n("security.verify")}
-              </button>
-            </div>
-          );
-        }
-      }
-      const date_created = new Date(cred.created_ts)
-        .toISOString()
-        .split("T")[0];
-      let date_success = "";
-      if (cred.success_ts) {
-        date_success = new Date(cred.success_ts).toISOString().split("T")[0];
-      }
-      return (
-        <tr key={index} className="webauthn-token-holder" data-token={cred.key}>
-          <td>{this.props.l10n(cred.credential_type)}</td>
-          <td
-            data-toggle="tooltip"
-            data-placement="top"
-            title={new Date(cred.created_ts).toString()}
-          >
-            {date_created}
-          </td>
-          <td
-            data-toggle="tooltip"
-            data-placement="top"
-            title={new Date(cred.success_ts).toString()}
-          >
-            {date_success}
-          </td>
-          <td>{cred.description}</td>
-          <td>{btnVerify}</td>
-          <td>{btnRemove}</td>
-        </tr>
-      );
-    }, this);
+    // if (this.props.redirect_to !== "") {
+    //   window.location.href = this.props.redirect_to;
+    //   return null;
+    // }
+    // if (this.props.deleted) {
+    //   window.location.href = "https://eduid.se";
+    //   return null;
+    // }
+    // const tokens = this.props.credentials.filter(
+    //   cred => cred.credential_type !== "security.password_credential_type"
+    // );
+    // const creds_table = this.props.credentials.map((cred, index) => {
+    //   let btnRemove = "";
+    //   let btnVerify = "";
+    //   if (
+    //     tokens.length > 1 &&
+    //     cred.credential_type !== "security.password_credential_type"
+    //   ) {
+    //     btnRemove = (
+    //       <div className="btn-group btn-group-sm" role="group">
+    //         <button
+    //           className="btn-link btn-remove-webauthn"
+    //           onClick={this.props.handleRemoveWebauthnToken}
+    //         >
+    //           {this.props.l10n("security.remove")}
+    //         </button>
+    //       </div>
+    //     );
+    //   }
+    //   if (cred.credential_type !== "security.password_credential_type") {
+    //     if (cred.verified) {
+    //       btnVerify = (
+    //         <div className="btn-group btn-group-sm" role="group">
+    //           <button className="btn-link btn-verified-webauthn" disabled>
+    //             {this.props.l10n("security.verified")}
+    //           </button>
+    //         </div>
+    //       );
+    //     } else if (cred.used_for_login && !cred.verified) {
+    //       btnVerify = (
+    //         <div className="btn-group btn-group-sm" role="group">
+    //           <button
+    //             className="btn-link btn-verify-webauthn"
+    //             onClick={this.props.handleVerifyWebauthnToken}
+    //           >
+    //             {this.props.l10n("security.verify")}
+    //           </button>
+    //         </div>
+    //       );
+    //     }
+    //   }
+    //   const date_created = new Date(cred.created_ts)
+    //     .toISOString()
+    //     .split("T")[0];
+    //   let date_success = "";
+    //   if (cred.success_ts) {
+    //     date_success = new Date(cred.success_ts).toISOString().split("T")[0];
+    //   }
+    //   return (
+    //     <tr key={index} className="webauthn-token-holder" data-token={cred.key}>
+    //       <td>{this.props.l10n(cred.credential_type)}</td>
+    //       <td
+    //         data-toggle="tooltip"
+    //         data-placement="top"
+    //         title={new Date(cred.created_ts).toString()}
+    //       >
+    //         {date_created}
+    //       </td>
+    //       <td
+    //         data-toggle="tooltip"
+    //         data-placement="top"
+    //         title={new Date(cred.success_ts).toString()}
+    //       >
+    //         {date_success}
+    //       </td>
+    //       <td>{cred.description}</td>
+    //       <td>{btnVerify}</td>
+    //       <td>{btnRemove}</td>
+    //     </tr>
+    //   );
+    // }, this);
 
     // let platformAuthenticatorButton = "";
     // if (this.checkWebauthnDevice()) {
@@ -156,7 +156,7 @@ class PasswordChange extends Component {
             <h4>Change password</h4>
             <p>{this.props.l10n("security.long_description")}</p>
           </div>
-          <table className="table table-bordered table-form passwords">
+          {/* <table className="table table-bordered table-form passwords">
             <tbody>
               <tr>
                 <th>{this.props.l10n("security.credential")}</th>
@@ -168,7 +168,7 @@ class PasswordChange extends Component {
               </tr>
               {creds_table}
             </tbody>
-          </table>
+          </table> */}
           <div id="change-password">
             <EduIDButton
               id="security-change-button"

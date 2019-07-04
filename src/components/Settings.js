@@ -18,11 +18,10 @@ import EmailsContainer from "containers/Emails";
 import MobileContainer from "containers/Mobile";
 import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
-import ChangePasswordContainer from "containers/ChangePassword";
+import PasswordChange from "components/PasswordChange";
 import NotificationsContainer from "containers/Notifications";
 import ProfileFilledContainer from "containers/ProfileFilled";
 import PendingActionsContainer from "containers/PendingActions";
-import PasswordChange from "components/PasswordChange";
 import DeleteAccount from "components/DeleteAccount";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -47,29 +46,19 @@ class Settings extends Component {
           <section>
             <div>
               <ul id="menu-about">
-                <li
-                  id="menu-item-21"
-                >
+                <li id="menu-item-21">
                   <a href="#">Name</a>
                 </li>
-                <li
-                  id="menu-item-19"
-                >
+                <li id="menu-item-19">
                   <a href="#">Email address</a>
                 </li>
-                <li
-                  id="menu-item-20"
-                >
+                <li id="menu-item-20">
                   <a href="#">Phone number</a>
                 </li>
-                <li
-                  id="menu-item-22"
-                >
+                <li id="menu-item-22">
                   <a href="#">Change password</a>
                 </li>
-                <li
-                  id="menu-item-23"
-                >
+                <li id="menu-item-23">
                   <a href="#">Delete account</a>
                 </li>
               </ul>
@@ -80,52 +69,48 @@ class Settings extends Component {
     } else {
       SideBarMenu = "";
     }
-      return (
-        <div id="dashboard" className="settings">
-          <DashboardNav />
-          {SideBarMenu}
-          <div id="settings-content">
-            <Route
-              exact
-              path="/profile/settings/"
-              component={() => <Redirect to="/profile/settings/personaldata" />}
-            />
-            <Route
-              path="/profile/settings/personaldata"
-              component={PersonalDataContainer}
-            />
+    return (
+      <div id="dashboard">
+        <DashboardNav />
+        {SideBarMenu}
+        <div id="settings-content">
+          <Route
+            exact
+            path="/profile/settings/"
+            component={() => <Redirect to="/profile/settings/personaldata" />}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={PersonalDataContainer}
+          />
 
-            <Route
-              path="/profile/settings/personaldata"
-              component={EmailsContainer}
-            />
-            <Route
-              path="/profile/settings/personaldata"
-              component={MobileContainer}
-            />
-            <Route
-              path="/profile/settings/personaldata"
-              component={PasswordChange}
-            />
-            <Route
-              path="/profile/settings/personaldata"
-              component={DeleteAccount}
-            />
-            <Route
-              path="/profile/settings/personaldata/chpass"
-              component={ChangePasswordContainer}
-            />
-            <Route
-              path="/profile/settings/advanced-settings"
-              component={SecurityContainer}
-            />
-            <Route
-              path="/profile/settings/advanced-settings"
-              component={AccountLinkingContainer}
-            />
-          </div>
+          <Route
+            path="/profile/settings/personaldata"
+            component={EmailsContainer}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={MobileContainer}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={PasswordChange}
+          />
+          <Route
+            path="/profile/settings/personaldata"
+            component={DeleteAccount}
+          />
+          <Route
+            path="/profile/settings/advanced-settings"
+            component={SecurityContainer}
+          />
+          <Route
+            path="/profile/settings/advanced-settings"
+            component={AccountLinkingContainer}
+          />
         </div>
-      );
+      </div>
+    );
   }
 }
 

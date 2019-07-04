@@ -12,6 +12,8 @@ import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
 import DashboardNav from "./DashboardNav";
+import ChangePassword from "./ChangePassword";
+import PasswordChange from "./PasswordChange";
 import SettingsComponent from "./Settings";
 import Profile from "./Profile";
 import NotificationsContainer from "containers/Notifications";
@@ -41,19 +43,19 @@ class Main extends Component {
   render() {
     let promptLink = ``;
     let welcomeGreeting = "";
-    let styling = "unverified"
+    let styling = "unverified";
     if (this.props.nin) {
       promptLink = `/profile/verify-identity/`;
-      styling ="unverified"
+      styling = "unverified";
       welcomeGreeting = "Don't forget to verify your national id number.";
       if (this.props.verifiedNin) {
         promptLink = `/profile/settings/advanced-settings`;
-        styling ="verified"
+        styling = "verified";
         welcomeGreeting = "Make eduID more secure.";
       }
     } else {
       promptLink = `/profile/verify-identity/`;
-      styling = "unverified"
+      styling = "unverified";
       welcomeGreeting = "Add your national id number to start using eduID.";
     }
 
@@ -88,6 +90,7 @@ class Main extends Component {
                   <Route exact path="/profile/" component={Profile} />
                   <Route path="/profile/verify-identity/" component={Profile} />
                   <Route path="/profile/security/" component={Profile} />
+                  <Route path="/profile/chpass" component={ChangePassword} />
                   <FooterContainer />
                 </div>
               </div>
