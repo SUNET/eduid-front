@@ -14,7 +14,7 @@ import PersonalData from "containers/PersonalData";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
-import "style/DashboardMain.scss";
+import "style/DashboardMain.scss"; //styling in DashboardMain
 import DashboardNav from "./DashboardNav";
 import AddNin from "./AddNin";
 
@@ -28,6 +28,7 @@ class Profile extends Component {
     let accountDetails = ""; // determines the userdetailks displayed in the profile
     let ninHelper = ""; // determines what the helper box says
 
+    // the below are the small data displays on the profile page (they render cases whener there is data or not)
     let NameDisplay = props => {
       if (props.firstName) {
         return (
@@ -123,14 +124,15 @@ class Profile extends Component {
       }
     };
 
+     //
     if (url.includes("security")) {
-      stylingClass = "profile";
+      // stylingClass = "profile";
       profileSection = [<SecurityContainer />];
     } else if (url.includes("verify-identity")) {
-      stylingClass = "verify-identity";
+      // stylingClass = "verify-identity";
       profileSection = [<VerifyIdentityProcess {...this.props} />];
     } else {
-      stylingClass = "profile";
+      // stylingClass = "profile";
       // profileSection = [<ProfilePrompt {...this.props} />];
       accountDetails = [
         <NameDisplay {...this.props} />,
@@ -144,7 +146,7 @@ class Profile extends Component {
     }
 
     return (
-      <div id="dashboard" className={stylingClass}>
+      <div id="dashboard" >
         <DashboardNav {...this.props} />
         <div id="profile-container">
           <div id="profile-section">{profileSection}</div>

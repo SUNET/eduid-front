@@ -33,7 +33,7 @@
 
 #nin-number-container button {
   color: #333;
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 28px;
   background-color: transparent;
   margin: 0 10px;
@@ -104,6 +104,22 @@
   align-items: center;
 }
 
+#nin-number-container a {
+  color: $orange-highlight;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  border-bottom: solid transparent 2px;
+}
+
+#nin-number-container a:hover {
+  color: $orange-highlight;
+  // letter-spacing: 0.3px;
+  text-decoration: none;
+  font-weight: 300;
+  border-bottom: solid #ff4500 2px;
+}
+
 #nin-number {
   font-size: 36px;
   margin-bottom: 0;
@@ -113,7 +129,7 @@
 .unverified {
   color: #ff4500;
   font-weight: 300;
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .verified {
