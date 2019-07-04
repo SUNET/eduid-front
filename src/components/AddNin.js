@@ -12,8 +12,8 @@ class AddNin extends Component {
       return <NinDisplay removeNin={this.removeNin} {...this.props} />;
     } else {
       return (
-        <div key="1" className="intro">
-          <h3>1. Add your national id number</h3>
+        <div key="1">
+          <label>1. Add your national id number</label>
           <div key="1" id="add-nin-number">
             <NinForm addNin={this.addNin} {...this.props} />
           </div>

@@ -112,7 +112,8 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handleDelete: function(e) {
-      const ninNumber = e.target.parentNode.dataset.ninnumber;
+      const ninNumber = e.target.closest("#nin-display-container").firstChild
+        .dataset.ninnumber;
       dispatch(actions.startRemove(ninNumber));
     }
   };

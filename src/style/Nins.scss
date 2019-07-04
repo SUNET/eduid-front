@@ -59,13 +59,14 @@
   margin-bottom: 30px;
 }
 
-#verify-identity-container .profile-card label {
+#verify-identity-container label {
+// #verify-identity-container .profile-card label {
   margin: 0 0 10px 0;
 }
 
 /*--- styles for form ---*/
 #nin-form-container {
-  display: flex;
+  // display: flex;
   margin-right: 5px;
 }
 
@@ -74,9 +75,8 @@
   font-family: "Montserrat", sans-serif;
   border: none;
   // color: #6b9080;
-  color: #333;
+  color: #161616;
   font-size: 24px;
-  max-width: 380px;
   border-bottom: solid #333 3px;
 }
 
