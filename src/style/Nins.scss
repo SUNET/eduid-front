@@ -34,6 +34,7 @@
 #nin-number-container button {
   color: #161616;
   font-family: "Montserrat", sans-serif;
+  font-weight: 300;
   font-size: 28px;
   background-color: transparent;
   margin: 0 10px;
@@ -50,12 +51,16 @@
   align-items: flex-end;
 }
 
-#verify-identity-container {
-  padding-left: 5px;
-}
+// #verify-identity-container {
+//   padding-left: 5px;
+// }
 
 #verify-identity-container .profile-card {
   margin-bottom: 30px;
+}
+
+#verify-identity-container .profile-card label {
+  margin: 0 0 10px 0;
 }
 
 /*--- styles for form ---*/
@@ -164,20 +169,32 @@
   margin-top: 30px;
 }
 
+#connect-nin-number {
+  margin-top: 5rem;
+}
+
 #nins-btn-group {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-row: auto;
-  grid-column-gap: 10px;
+  // grid-template-row: auto;
+  // grid-column-gap: 30px;
   margin-top: 10px;
 }
 
-// .vetting-button {
-//   margin-right: 15px;
-//   width: 100%;
-// }
+.vetting-button {
+  padding-right: 50px;
+  // width: 100%;
+}
+
+.vetting-button button {
+  height: 52px;
+}
+.vetting-button-text {
+  font-size: 28px;
+}
 
 .proofing-btn-help {
+  margin-left: 10px;
   margin-bottom: 30px;
 }
 

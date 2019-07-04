@@ -81,6 +81,16 @@
   margin: 5rem 0;
 }
 
+#profile-container-verifyId {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+#profile-section {
+  width: 58.33333%;
+}
+
 .profile-card p {
   padding-left: 5px;
   margin: 0;
@@ -101,6 +111,7 @@
 }
 
 .profile-data {
+  color:#161616;
   font-size: 36px;
   font-weight: 300;
 }
@@ -141,27 +152,18 @@
   border: solid #ff4500 1px;
 }
 
-/* colours for profile sections */
-// .profile,
-// .settings {
-//   background-color: #f4f4f4;
-// }
-
-// .settings-button {
-//   background-color: rgb(30, 92, 111);
-// }
-
-// .verify-identity {
-//   background-color: #f8f9fa;
-// }
-
 h3.verify-identity-header {
   display: inline-block;
+  margin-top: 52px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 0;
+  font-size: 22px;
   // font-family: "Roboto-Medium";
   padding-bottom: 0;
   margin-bottom: 0;
   position: absolute;
-  top: 20px;
+  top: 0px;
 }
 #dashboard,
 #settings-content {
@@ -198,16 +200,6 @@ aside li:hover a {
   transition: color 0.5s ease;
 }
 
-/* styles for back navigation */
-.nav-back {
-  display: flex;
-  justify-content: flex-end;
-}
-
-// #settings-nav.nav-back .nav-item {
-//   margin-right: 0;
-// }
-
 /* styles for profile elements in settings */
 .settings .nin-holder,
 #profile-detail-grid:empty {
@@ -234,6 +226,7 @@ aside li:hover a {
   border-radius: 20px;
   box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
   margin: 0 6px;
+  border: solid 1px transparent;
   transition: all 0.5s ease;
 }
 
@@ -242,7 +235,7 @@ aside li:hover a {
   font-size: 16px;
   color: $black;
   display: inline-block;
-  border-bottom: solid 2px transparent;
+  border-bottom: solid 1px transparent;
   transition: all 0.5s ease;
 }
 
@@ -256,6 +249,19 @@ aside li:hover a {
   color: #ff4500;
 }
 
+/* styles for back navigation */
+#dashboard-nav.nav-back {
+  display: flex;
+  justify-content: flex-end;
+  margin: 50px auto 0;
+}
+
+#dashboard-nav.nav-back ul {
+  display: flex;
+  border-bottom: solid 2px transparent;
+  transition: all 0.5s ease;
+  // justify-content: flex-end;
+}
 /* styles for tables displaying userinfo on settings page */
 
 table {

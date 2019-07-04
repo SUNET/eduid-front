@@ -43,7 +43,19 @@ class NinDisplay extends Component {
                   className="btn-danger btn-sm"
                   onClick={this.props.handleDelete}
                 >
-                  X
+                  <div>
+                    <svg
+                      class="remove"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path fill="#FF500D" d="M7 0h2v16H7z" />
+                      <path fill="#FF500D" d="M0 9V7h16v2z" />
+                    </svg>
+                  </div>
                 </EduIDButton>
               </div>
             </div>

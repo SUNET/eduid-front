@@ -13,15 +13,21 @@ class VerifyIdentityProcess extends Component {
   render() {
     let vettingButtons = "",
       connectNin = "";
-
+    let buttonTextArray = [
+      "Recieve a confirmation code in the mail",
+      "Recieve a confirmation code to your mobile phone",
+      "Use the FrejaID app"
+    ];
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
       const verifyOptions = this.props.proofing_methods.filter(
         option => option !== "oidc"
       );
       vettingButtons = verifyOptions.map((key, index) => {
+        let text = buttonTextArray[index];
         return (
           <div className="vetting-button" key={index}>
+            {/* <p className="vetting-button-text">{text}</p> */}
             {vettingBtns[key]}
           </div>
         );
@@ -31,13 +37,13 @@ class VerifyIdentityProcess extends Component {
     if (this.props.nins.length && !this.props.nins[0].verified) {
       connectNin = [
         <div key="1" id="connect-nin-number">
-          <h3> 2. Connect your id number to eduID</h3>
-          <p>
-            Choose a way below to verify that the given identity number belongs
-            to you.
-          </p>
+          <label>
+            {" "}
+            2. Choose a way below to verify that the given identity number
+            belongs to you.
+          </label>
+          {/* <p className="profile-data">Request a confirmation code to</p>*/}
           <div>
-            <label>Request a confirmation code to your:</label>
             <ButtonGroup vertical={true} id="nins-btn-group">
               {vettingButtons}
             </ButtonGroup>
@@ -48,7 +54,9 @@ class VerifyIdentityProcess extends Component {
 
     return (
       <div id="verify-identity-container">
-        <h3 className="verify-identity-header">Start using eduID</h3>
+        <h3 className="verify-identity-header">
+          Add and verify your id number here
+        </h3>
         <AddNin {...this.props} />
         {connectNin}
       </div>

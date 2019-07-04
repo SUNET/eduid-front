@@ -24,7 +24,7 @@ class Profile extends Component {
   render() {
     const url = window.location.href;
     let profileSection = ""; // determines the interactive content (if any)
-    let stylingClass = ""; // changes styling depending on profileSection
+    let stylingId = "profile-container"; // changes styling depending on profileSection
     let accountDetails = ""; // determines the userdetailks displayed in the profile
     let ninHelper = ""; // determines what the helper box says
 
@@ -126,13 +126,11 @@ class Profile extends Component {
 
      //
     if (url.includes("security")) {
-      // stylingClass = "profile";
       profileSection = [<SecurityContainer />];
     } else if (url.includes("verify-identity")) {
-      // stylingClass = "verify-identity";
+      stylingId = "profile-container-verifyId";
       profileSection = [<VerifyIdentityProcess {...this.props} />];
     } else {
-      // stylingClass = "profile";
       // profileSection = [<ProfilePrompt {...this.props} />];
       accountDetails = [
         <NameDisplay {...this.props} />,
@@ -148,7 +146,7 @@ class Profile extends Component {
     return (
       <div id="dashboard" >
         <DashboardNav {...this.props} />
-        <div id="profile-container">
+        <div id={stylingId}>
           <div id="profile-section">{profileSection}</div>
           <div id="profile-detail-grid" className="profile-data">
             {accountDetails}
