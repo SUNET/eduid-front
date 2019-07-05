@@ -11,6 +11,7 @@ module.exports = {
     EDUID_COOKIE_NAME: JSON.stringify("sessid"),
     TOKEN_SERVICE_URL: JSON.stringify("/services/authn/login"),
     EDUID_CONFIG_URL: JSON.stringify("/services/jsconfig/config"),
+    SIGNUP_CONFIG_URL: JSON.stringify("/services/jsconfig/signup/config"),
     AVAILABLE_LANGUAGES: JSON.stringify(langs),
     LOCALIZED_MESSAGES: JSON.stringify(messages),
     SIGNUP_SERVICE_URL: JSON.stringify("/services/signup/"),
