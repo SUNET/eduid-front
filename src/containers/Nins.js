@@ -13,6 +13,7 @@ const mapStateToProps = (state, props) => {
     confirmed = false;
   }
   return {
+    verifyingLetter: state.letter_proofing.verifyingLetter,
     nins: state.nins.nins,
     is_configured: state.config.is_configured,
     proofing_methods: state.config.PROOFING_METHODS,
