@@ -11,12 +11,13 @@ class AccountLinking extends Component {
     return (
       <div id="orcid-connect-container">
         <div className="intro">
-          <h4>For reseachers</h4>
+          <h4>Connect other accounts</h4>
+          <p>Simplify login by connecting your eduID to other accounts</p>
           <div className="orcid-logo-container">
             <span className="orcid-logo" />
             <label>{this.props.l10n("orc.title")}</label>
           </div>
-       
+
           {/* <p>
             {this.props.l10n("faq_link")}{" "}
             <a href="https://www.eduid.se/faq.html">FAQ</a>
