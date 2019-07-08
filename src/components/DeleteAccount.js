@@ -35,6 +35,15 @@ import "style/Security.scss";
 
 class DeleteAccount extends Component {
   render() {
+    if (this.props.redirect_to !== "") {
+      window.location.href = this.props.redirect_to;
+      return null;
+    }
+    if (this.props.deleted) {
+      window.location.href = "https://eduid.se";
+      return null;
+    }
+
     const url = window.location.href;
     return (
       <div>
@@ -96,27 +105,27 @@ const mapStateToProps = (state, props) => {
   // const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
     credentials: state.security.credentials,
-    confirming_change: state.security.confirming_change,
+    // confirming_change: state.security.confirming_change,
     confirming_deletion: state.security.confirming_deletion,
     redirect_to: state.security.location,
     deleted: state.security.deleted,
-    webauthn_asking_description: state.security.webauthn_asking_description,
-    authenticator: state.security.webauthn_authenticator
+    // webauthn_asking_description: state.security.webauthn_asking_description,
+    // authenticator: state.security.webauthn_authenticator
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleStartConfirmationPassword: function(e) {
-      dispatch(eduidRMAllNotify());
-      dispatch(startConfirmationPassword());
-    },
-    handleStopConfirmationPassword: function(e) {
-      dispatch(stopConfirmationPassword());
-    },
-    handleConfirmationPassword: e => {
-      dispatch(confirmPasswordChange());
-    },
+    // handleStartConfirmationPassword: function(e) {
+    //   dispatch(eduidRMAllNotify());
+    //   dispatch(startConfirmationPassword());
+    // },
+    // handleStopConfirmationPassword: function(e) {
+    //   dispatch(stopConfirmationPassword());
+    // },
+    // handleConfirmationPassword: e => {
+    //   dispatch(confirmPasswordChange());
+    // },
     handleStartConfirmationDeletion: function(e) {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationDeletion());
@@ -127,34 +136,34 @@ const mapDispatchToProps = (dispatch, props) => {
     handleConfirmationDeletion: function(e) {
       dispatch(confirmDeletion());
     },
-    handleStartAskingKeyWebauthnDescription: function(e) {
-      dispatch(eduidRMAllNotify());
-      dispatch(chooseAuthenticator("cross-platform"));
-      dispatch(startAskWebauthnDescription());
-    },
-    handleStartAskingDeviceWebauthnDescription: function(e) {
-      dispatch(eduidRMAllNotify());
-      dispatch(chooseAuthenticator("platform"));
-      dispatch(startAskWebauthnDescription());
-    },
-    handleStopAskingWebauthnDescription: function(e) {
-      dispatch(stopAskWebauthnDescription());
-    },
-    handleStartWebauthnRegistration: function(e) {
-      const description = document.getElementById(
-        "describeWebauthnTokenDialogControl"
-      ).children[0].value;
-      dispatch(stopAskWebauthnDescription());
-      dispatch(startWebauthnRegistration(description));
-    },
-    handleRemoveWebauthnToken: function(e) {
-      const token = e.target.closest(".webauthn-token-holder").dataset.token;
-      dispatch(postRemoveWebauthnToken(token));
-    },
-    handleVerifyWebauthnToken: function(e) {
-      const token = e.target.closest(".webauthn-token-holder").dataset.token;
-      dispatch(postVerifyWebauthnToken(token));
-    }
+    // handleStartAskingKeyWebauthnDescription: function(e) {
+    //   dispatch(eduidRMAllNotify());
+    //   dispatch(chooseAuthenticator("cross-platform"));
+    //   dispatch(startAskWebauthnDescription());
+    // },
+    // handleStartAskingDeviceWebauthnDescription: function(e) {
+    //   dispatch(eduidRMAllNotify());
+    //   dispatch(chooseAuthenticator("platform"));
+    //   dispatch(startAskWebauthnDescription());
+    // },
+    // handleStopAskingWebauthnDescription: function(e) {
+    //   dispatch(stopAskWebauthnDescription());
+    // },
+    // handleStartWebauthnRegistration: function(e) {
+    //   const description = document.getElementById(
+    //     "describeWebauthnTokenDialogControl"
+    //   ).children[0].value;
+    //   dispatch(stopAskWebauthnDescription());
+    //   dispatch(startWebauthnRegistration(description));
+    // },
+    // handleRemoveWebauthnToken: function(e) {
+    //   const token = e.target.closest(".webauthn-token-holder").dataset.token;
+    //   dispatch(postRemoveWebauthnToken(token));
+    // },
+    // handleVerifyWebauthnToken: function(e) {
+    //   const token = e.target.closest(".webauthn-token-holder").dataset.token;
+    //   dispatch(postVerifyWebauthnToken(token));
+    // }
   };
 };
 
