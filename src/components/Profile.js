@@ -3,20 +3,20 @@ import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import i18n from "i18n-messages";
 import { isValid } from "redux-form";
-import * as actions from "actions/Nins";
-import NinsContainer from "containers/Nins";
-import DashboardSecurity from "./DashboardSecurity";
+// import * as actions from "actions/Nins";
+// import NinsContainer from "containers/Nins";
+// import DashboardSecurity from "./DashboardSecurity";
 import NinDisplay from "./NinDisplay";
-import ProfilePrompt from "./ProfilePrompt";
+// import ProfilePrompt from "./ProfilePrompt";
 import SecurityContainer from "containers/Security";
 import VerifyIdentityProcess from "./VerifyIdentityProcess";
-import PersonalData from "containers/PersonalData";
+// import PersonalData from "containers/PersonalData";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss"; //styling in DashboardMain
 import DashboardNav from "./DashboardNav";
-import AddNin from "./AddNin";
+// import AddNin from "./AddNin";
 
 class Profile extends Component {
   // this component is repsonsible for rendering a summary of user info
@@ -30,6 +30,7 @@ class Profile extends Component {
 
     // the below are the small data displays on the profile page (they render cases whener there is data or not)
     let NameDisplay = props => {
+      console.log()
       if (props.firstName) {
         return (
           <div key="1" className="profile-card">
@@ -46,7 +47,7 @@ class Profile extends Component {
           <div key="1" className="profile-card">
             <label>Name</label>
             <div id="nin-number-container">
-              <p id="nin-number" className="verified">
+              <p id="nin-number" className="no-data">
                 No name added 
               </p>
             </div>
@@ -72,7 +73,7 @@ class Profile extends Component {
           <div key="1" className="profile-card">
             <label>Phone number</label>
             <div id="nin-number-container">
-              <p id="nin-number" className="verified">
+              <p id="nin-number" className="no-data">
                 No phone number added 
               </p>
             </div>
@@ -98,7 +99,7 @@ class Profile extends Component {
           <div key="1" className="profile-card">
             <label>Email Address</label>
             <div id="nin-number-container">
-              <p id="nin-number" className="verified">
+              <p id="nin-number" className="no-data">
                 No email added 
               </p>
             </div>
@@ -169,6 +170,7 @@ const mapStateToProps = (state, props) => {
   const phoneNumber = state.phones.phones.filter(phone => phone.primary);
   const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
+    data: state.personal_data.data,
     nins: state.nins.nins, // verified nin to see where to prompt user
     verifiedNin: verifiedNin, // could be a boolean? to show what colour to display nin
     phones: phoneNumber,

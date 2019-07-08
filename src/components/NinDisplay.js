@@ -72,12 +72,24 @@ class NinDisplay extends Component {
                 to={`/profile/verify-identity/`}
                 className="unverified profile-data"
               >
-                Add your number
+                Add number
               </Link>
             </div>
           </div>
         );
       } else {
+        if (this.props.nins[0].verified) {
+          return (
+            <div key="1" className="profile-card">
+              <label>national id number</label>
+              <div data-ninnumber={this.props.nins[0].number}>
+                <p id="nin-number" className="verified">
+                  {this.props.nins[0].number}
+                </p>
+              </div>
+            </div>
+          );
+        }
         return (
           <div key="1" className="profile-card">
             <label>National id number</label>
