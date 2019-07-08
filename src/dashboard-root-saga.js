@@ -130,7 +130,7 @@ function* rootSaga() {
     takeEvery(letterActions.POST_LETTER_PROOFING_CODE_SUCCESS, requestNins),
     takeEvery(
       lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
-      requestNins
+      requestAllPersonalData
     ),
     takeEvery(
       lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
