@@ -48,14 +48,13 @@ class ChangePasswordForm extends Component {
     this.state = {
       customPassword: true
     };
-    this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
+    this.togglePasswordType = this.togglePasswordType.bind(this);
   }
 
-  onRadioBtnClick() {
+  togglePasswordType() {
     this.setState(prevState => ({
       customPassword: !prevState.customPassword
     }));
-    // this.setState({ buttonText: "Suggest a password for me" });
   }
 
   render() {
@@ -82,9 +81,7 @@ class ChangePasswordForm extends Component {
         <EduIDButton
           value="custom"
           className="btn-link"
-          onClick={() => this.onRadioBtnClick("custom")}
-
-          // disabled={this.state.rSelected === "custom"}
+          onClick={() => this.togglePasswordType()}
         >
           Suggest a password for me
         </EduIDButton>
@@ -136,7 +133,7 @@ class ChangePasswordForm extends Component {
         <EduIDButton
           value="custom"
           className="btn-link"
-          onClick={() => this.onRadioBtnClick("custom")}
+          onClick={() => this.togglePasswordType()}
         >
           I don't want a suggested password
         </EduIDButton>
@@ -154,8 +151,6 @@ class ChangePasswordForm extends Component {
             label={this.props.l10n("chpass.old_password")}
             name={pwFieldOldName}
           />
-          {/* <p>Choose You can accept the generated password by clicking "Change password" or you can opt to choose your own password using the checkbox.</p> */}
-
           <div className="form-field-error-area">
             <FormText />
           </div>
@@ -163,22 +158,12 @@ class ChangePasswordForm extends Component {
         {helpCustom}
         <fieldset>{form}</fieldset>
         <div id="password-suggestion">
-          <ButtonGroup>
-            {/* <EduIDButton
-                value="suggested"
-                onClick={() => this.onRadioBtnClick("suggested")}
-                disabled={this.state.rSelected === "suggested"}
-              >
-                Suggested
-              </EduIDButton> */}
-            {button}
-          </ButtonGroup>
+          <ButtonGroup>{button}</ButtonGroup>
         </div>
         <fieldset id="chpass-form" className="tabpane">
           <EduIDButton
             id="chpass-button"
             onClick={this.props.handleStartPasswordChange.bind(this)}
-            // disabled={this.props.invalid}
           >
             {this.props.l10n("chpass.change-password")}
           </EduIDButton>
