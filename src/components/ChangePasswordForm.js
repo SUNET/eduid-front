@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ReactDom from "react-dom";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
@@ -46,7 +45,7 @@ class ChangePasswordForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      customPassword: true
+      customPassword: false
     };
     this.togglePasswordType = this.togglePasswordType.bind(this);
   }

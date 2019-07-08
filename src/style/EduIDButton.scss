@@ -21,13 +21,9 @@ button.btn {
   border: none;
   padding: 10px 20px;
   transition: all 0.5s ease;
-  border: none;
   &:hover {
     color: $orange-highlight;
-    background-color: $orange-opaque;
-    // background: $light-green-hover;
-    // border-color: $light-green-hover;
-    // border: solid 1px $orange-highlight;
+    background-color: $white;
   }
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
