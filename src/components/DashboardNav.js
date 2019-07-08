@@ -31,8 +31,8 @@ class DashboardNav extends Component {
                 <h5>Settings</h5>
               </li>
             </NavLink>
-          {/* </ul> */}
-          {/* <ul className="navbar-nav sub-nav">
+            {/* </ul> */}
+            {/* <ul className="navbar-nav sub-nav">
             <NavLink
               activeClassName="active"
               className="nav-link personal-info"
@@ -54,7 +54,7 @@ class DashboardNav extends Component {
           </ul>
         </nav>
       );
-    } else if (url.includes("verify-identity")) {
+    } else if (url.includes("verify-identity") || url.includes("chpass")) {
       return (
         <nav id="dashboard-nav" className="nav-back">
           <ul className="navbar-nav">

@@ -37,8 +37,8 @@ button.btn {
     box-shadow: 0 0 0 0.2rem $light-green-shadow;
   }
   &:disabled {
-    background-color: lightgray;
-    border-color: lightgray;
+    background-color: $dark-gray;
+    border-color: $dark-gray;
   }
 }
 

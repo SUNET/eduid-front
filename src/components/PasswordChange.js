@@ -223,19 +223,9 @@ class PasswordChange extends Component {
 //   handleCloseWebauthnModal: PropTypes.func
 // };
 
-// export default PasswordChange;
+//  export default PasswordChange;
 
-// export default VerifyIdentity;
 const mapStateToProps = (state, props) => {
-  // let verifiedNin;
-  // const nins = state.nins.nins.filter(nin => nin.verified);
-  // if (nins.length >= 1) {
-  //   verifiedNin = true;
-  // } else {
-  //   verifiedNin = false;
-  // }
-  // const phoneNumber = state.phones.phones.filter(phone => phone.primary);
-  // const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
     credentials: state.security.credentials,
     confirming_change: state.security.confirming_change,
@@ -249,60 +239,60 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleStartConfirmationPassword: function(e) {
+    handleStartConfirmationPassword: function (e) {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationPassword());
     },
-    handleStopConfirmationPassword: function(e) {
+    handleStopConfirmationPassword: function (e) {
       dispatch(stopConfirmationPassword());
     },
     handleConfirmationPassword: e => {
       dispatch(confirmPasswordChange());
     },
-    handleStartConfirmationDeletion: function(e) {
-      dispatch(eduidRMAllNotify());
-      dispatch(startConfirmationDeletion());
-    },
-    handleStopConfirmationDeletion: function(e) {
-      dispatch(stopConfirmationDeletion());
-    },
-    handleConfirmationDeletion: function(e) {
-      dispatch(confirmDeletion());
-    },
-    handleStartAskingKeyWebauthnDescription: function(e) {
-      dispatch(eduidRMAllNotify());
-      dispatch(chooseAuthenticator("cross-platform"));
-      dispatch(startAskWebauthnDescription());
-    },
-    handleStartAskingDeviceWebauthnDescription: function(e) {
-      dispatch(eduidRMAllNotify());
-      dispatch(chooseAuthenticator("platform"));
-      dispatch(startAskWebauthnDescription());
-    },
-    handleStopAskingWebauthnDescription: function(e) {
-      dispatch(stopAskWebauthnDescription());
-    },
-    handleStartWebauthnRegistration: function(e) {
-      const description = document.getElementById(
-        "describeWebauthnTokenDialogControl"
-      ).children[0].value;
-      dispatch(stopAskWebauthnDescription());
-      dispatch(startWebauthnRegistration(description));
-    },
-    handleRemoveWebauthnToken: function(e) {
-      const token = e.target.closest(".webauthn-token-holder").dataset.token;
-      dispatch(postRemoveWebauthnToken(token));
-    },
-    handleVerifyWebauthnToken: function(e) {
-      const token = e.target.closest(".webauthn-token-holder").dataset.token;
-      dispatch(postVerifyWebauthnToken(token));
-    }
-  };
+    // handleStartConfirmationDeletion: function (e) {
+    //   dispatch(eduidRMAllNotify());
+    //   dispatch(startConfirmationDeletion());
+    // },
+    // handleStopConfirmationDeletion: function (e) {
+    //   dispatch(stopConfirmationDeletion());
+    // },
+    // handleConfirmationDeletion: function (e) {
+    //   dispatch(confirmDeletion());
+    // },
+  //   handleStartAskingKeyWebauthnDescription: function (e) {
+  //     dispatch(eduidRMAllNotify());
+  //     dispatch(chooseAuthenticator("cross-platform"));
+  //     dispatch(startAskWebauthnDescription());
+  //   },
+  //   handleStartAskingDeviceWebauthnDescription: function (e) {
+  //     dispatch(eduidRMAllNotify());
+  //     dispatch(chooseAuthenticator("platform"));
+  //     dispatch(startAskWebauthnDescription());
+  //   },
+  //   handleStopAskingWebauthnDescription: function (e) {
+  //     dispatch(stopAskWebauthnDescription());
+  //   },
+  //   handleStartWebauthnRegistration: function (e) {
+  //     const description = document.getElementById(
+  //       "describeWebauthnTokenDialogControl"
+  //     ).children[0].value;
+  //     dispatch(stopAskWebauthnDescription());
+  //     dispatch(startWebauthnRegistration(description));
+  //   },
+  //   handleRemoveWebauthnToken: function (e) {
+  //     const token = e.target.closest(".webauthn-token-holder").dataset.token;
+  //     dispatch(postRemoveWebauthnToken(token));
+  //   },
+  //   handleVerifyWebauthnToken: function (e) {
+  //     const token = e.target.closest(".webauthn-token-holder").dataset.token;
+  //     dispatch(postVerifyWebauthnToken(token));
+  //   }
+   };
 };
 
-const PasswordContainer = connect(
+const PasswordDisplayContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(PasswordChange);
 
-export default i18n(PasswordContainer);
+export default i18n(PasswordDisplayContainer);

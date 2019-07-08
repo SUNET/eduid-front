@@ -90,7 +90,7 @@ class Main extends Component {
                   <Route exact path="/profile/" component={Profile} />
                   <Route path="/profile/verify-identity/" component={Profile} />
                   <Route path="/profile/security/" component={Profile} />
-                  <Route path="/profile/chpass" component={ChangePassword} />
+                  <Route path="/profile/chpass/" component={ChangePassword} />
                   <FooterContainer />
                 </div>
               </div>
