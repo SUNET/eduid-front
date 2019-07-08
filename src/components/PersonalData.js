@@ -55,14 +55,14 @@ let PdataForm = props => {
           placeholder={props.l10n("pd.display_name_input_placeholder")}
           helpBlock={props.l10n("pd.display_name_input_help_text")}
         />
-        <Field
+        {/* <Field
           component={TextInput}
           componentClass="input"
           type="select"
           name="language"
           selectOptions={props.langs}
           label={props.l10n("pd.language")}
-        />
+        /> */}
       </fieldset>
       <EduIDButton
         id="personal-data-button"
