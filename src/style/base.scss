@@ -31,8 +31,13 @@ div.modal-dialog .modal-content {
 }
 
 header {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
 }
+// header {
+//   display: grid;
+// }
 
 /* typography */
 h1 {
