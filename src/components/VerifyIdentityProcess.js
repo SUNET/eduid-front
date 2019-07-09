@@ -34,7 +34,8 @@ class VerifyIdentityProcess extends Component {
       });
     }
 
-    if (this.props.nins.length && !this.props.nins[0].verified) {
+    
+    if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
         <div key="1" id="connect-nin-number">
           <label>

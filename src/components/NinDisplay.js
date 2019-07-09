@@ -14,13 +14,13 @@ class NinDisplay extends Component {
     const url = window.location.href;
     if (url.includes("verify-identity")) {
       // VERIFY ID PROCESS: this is the display of a verified number (on the verify-identity page)
-      if (this.props.verifiedNin) {
+      if (this.props.verifiedNinStatus) {
         return (
           <div key="1" className="profile-card">
             <label>national id number</label>
-            <div data-ninnumber={this.props.nins[0].number}>
+            <div data-ninnumber={this.props.verifiedNin[0].number}>
               <p id="nin-number" className="verified">
-                {this.props.nins[0].number}
+                {this.props.verifiedNin[0].number}
               </p>
             </div>
           </div>
@@ -78,13 +78,13 @@ class NinDisplay extends Component {
           </div>
         );
       } else {
-        if (this.props.verifiedNin) {
+        if (this.props.verifiedNinStatus) {
           return (
             <div key="1" className="profile-card">
               <label>national id number</label>
-              <div data-ninnumber={this.props.nins[0].number}>
+              <div data-ninnumber={this.props.verifiedNin[0].number}>
                 <p id="nin-number" className="verified">
-                  {this.props.nins[0].number}
+                  {this.props.verifiedNin[0].number}
                 </p>
               </div>
             </div>

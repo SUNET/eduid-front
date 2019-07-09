@@ -172,13 +172,13 @@ class Profile extends Component {
 
 // export default VerifyIdentity;
 const mapStateToProps = (state, props) => {
-  let verifiedNin = "";
+  let verifiedNinStatus = "";
   let verifiedPhone = "";
   const nins = state.nins.nins.filter(nin => nin.verified);
   if (nins.length >= 1) {
-    verifiedNin = true;
+    verifiedNinStatus = true;
   } else {
-    verifiedNin = false;
+    verifiedNinStatus = false;
   }
   const phones = state.phones.phones.filter(phoneNum => phoneNum.verified);
   if (phones.length >= 1) {
@@ -189,13 +189,15 @@ const mapStateToProps = (state, props) => {
   const phoneNumber = state.phones.phones.filter(phone => phone.primary);
   const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
-    // is_configured: state.config.is_configured,
+    is_configured: state.config.is_configured,
     // data: state.personal_data.data,
     nins: state.nins.nins, // all nin info
-    verifiedNin: verifiedNin, // is the added nin verified?
+    verifiedNin: nins, // all verified nin info
+    verifiedNinStatus: verifiedNinStatus, // is the added nin verified?
     phones: state.phones.phones, // all phone info
     // primaryPhoneNum: phoneNumber, // all info about primary number
     // phoneNum: state.phones.phone, // has an unverified phone number been added?
+    // verifiedPhone: phones,
     verifiedPhone: verifiedPhone,
     emails: emailAddress, // all info about primary email
     letter_verification: state.letter_proofing.confirmingLetter,
