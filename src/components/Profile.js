@@ -30,7 +30,7 @@ class Profile extends Component {
 
     // the below are the small data displays on the profile page (they render cases whener there is data or not)
     let NameDisplay = props => {
-      console.log()
+      console.log();
       if (props.firstName) {
         return (
           <div key="1" className="profile-card">
@@ -48,7 +48,7 @@ class Profile extends Component {
             <label>Name</label>
             <div id="nin-number-container">
               <p id="nin-number" className="no-data">
-                No name added 
+                No name added
               </p>
             </div>
           </div>
@@ -58,12 +58,24 @@ class Profile extends Component {
 
     let PhoneDisplay = props => {
       if (props.phones.length) {
+        if (props.verifiedPhone) {
+          return (
+            <div key="1" className="profile-card">
+              <label>Phone number</label>
+              <div id="nin-number-container">
+                <p id="nin-number" className="verified">
+                  {props.phones[0].number}
+                </p>
+              </div>
+            </div>
+          );
+        }
         return (
           <div key="1" className="profile-card">
             <label>Phone number</label>
             <div id="nin-number-container">
-              <p id="nin-number" className="verified">
-                {props.phones[0].number}
+              <p id="nin-number" className="no-data">
+                Verify added number
               </p>
             </div>
           </div>
@@ -74,7 +86,7 @@ class Profile extends Component {
             <label>Phone number</label>
             <div id="nin-number-container">
               <p id="nin-number" className="no-data">
-                No phone number added 
+                No phone number added
               </p>
             </div>
           </div>
@@ -100,7 +112,7 @@ class Profile extends Component {
             <label>Email Address</label>
             <div id="nin-number-container">
               <p id="nin-number" className="no-data">
-                No email added 
+                No email added
               </p>
             </div>
           </div>
@@ -125,7 +137,7 @@ class Profile extends Component {
       }
     };
 
-     //
+    //
     if (url.includes("security")) {
       profileSection = [<SecurityContainer />];
     } else if (url.includes("verify-identity")) {
@@ -145,7 +157,7 @@ class Profile extends Component {
     }
 
     return (
-      <div id="dashboard" >
+      <div id="dashboard">
         <DashboardNav {...this.props} />
         <div id={stylingId}>
           <div id="profile-section">{profileSection}</div>
@@ -160,23 +172,33 @@ class Profile extends Component {
 
 // export default VerifyIdentity;
 const mapStateToProps = (state, props) => {
-  let verifiedNin;
+  let verifiedNin = "";
+  let verifiedPhone = "";
   const nins = state.nins.nins.filter(nin => nin.verified);
   if (nins.length >= 1) {
     verifiedNin = true;
   } else {
     verifiedNin = false;
   }
+  const phones = state.phones.phones.filter(phoneNum => phoneNum.verified);
+  if (phones.length >= 1) {
+    verifiedPhone = true;
+  } else {
+    verifiedPhone = false;
+  }
   const phoneNumber = state.phones.phones.filter(phone => phone.primary);
   const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
-    data: state.personal_data.data,
-    nins: state.nins.nins, // verified nin to see where to prompt user
-    verifiedNin: verifiedNin, // could be a boolean? to show what colour to display nin
-    phones: phoneNumber,
-    emails: emailAddress,
+    // is_configured: state.config.is_configured,
+    // data: state.personal_data.data,
+    nins: state.nins.nins, // all nin info
+    verifiedNin: verifiedNin, // is the added nin verified?
+    phones: state.phones.phones, // all phone info
+    // primaryPhoneNum: phoneNumber, // all info about primary number
+    // phoneNum: state.phones.phone, // has an unverified phone number been added?
+    verifiedPhone: verifiedPhone,
+    emails: emailAddress, // all info about primary email
     letter_verification: state.letter_proofing.confirmingLetter,
-    is_configured: state.config.is_configured,
     firstName: state.personal_data.data.given_name,
     lastName: state.personal_data.data.surname,
     proofing_methods: state.config.PROOFING_METHODS,
