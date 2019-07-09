@@ -14,7 +14,7 @@ class NinDisplay extends Component {
     const url = window.location.href;
     if (url.includes("verify-identity")) {
       // VERIFY ID PROCESS: this is the display of a verified number (on the verify-identity page)
-      if (this.props.nins[0].verified) {
+      if (this.props.verifiedNin) {
         return (
           <div key="1" className="profile-card">
             <label>national id number</label>
@@ -78,7 +78,7 @@ class NinDisplay extends Component {
           </div>
         );
       } else {
-        if (this.props.nins[0].verified) {
+        if (this.props.verifiedNin) {
           return (
             <div key="1" className="profile-card">
               <label>national id number</label>
