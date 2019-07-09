@@ -25,8 +25,7 @@ body,
 .container-fluid .jumbotron,
 div.modal-dialog .modal-content {
   height: 100%;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
+  font-family: "ProximaNova-Regular";
   line-height: 1.5;
 }
 
@@ -41,10 +40,11 @@ header {
 
 /* typography */
 h1 {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 36px;
+  // font-weight: 700;
   line-height: 44px;
   margin-top: 0;
+  font-family: "ProximaNova-Light";
 }
 
 h2 {
@@ -104,7 +104,7 @@ p {
 
 /* Button */
 button {
-  font-family: "Montserrat", sans-serif;
+  font-family: "ProximaNova-Bold";
   color: $black;
   background-color: $white;
   font-weight: 700;
@@ -125,7 +125,7 @@ label {
   // font-family: "Roboto-Regular";
   font-size: 12px;
   text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
+  font-family: "ProximaNova-Bold";
   letter-spacing: 0.5px;
   line-height: 1;
   // color: #3f5c57;
@@ -140,7 +140,7 @@ input {
   padding: 0 20px;
   border-radius: 0;
   box-shadow: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: "ProximaNova-Regular";
   // font-weight: 900;
   color: #161616;
   font-size: 24px;
@@ -382,56 +382,85 @@ ul.nav.navbar-nav li a {
 }
 
 /* Fontface */
-@font-face {
-  font-family: "Roboto-Light";
-  src: url("../fonts/roboto-light-webfont.eot");
-  src: url("../fonts/roboto-light-webfont.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/roboto-light-webfont.woff") format("woff"),
-    url("../fonts/roboto-light-webfont.svg#webfontZam02nTh") format("svg"),
-    url("../fonts/roboto-light-webfont.ttf") format("truetype");
 
-  font-weight: normal;
-  font-style: normal;
-}
 @font-face {
-  font-family: "Roboto-Regular";
-  src: url("../fonts/roboto-regular-webfont.eot");
-  src: url("../fonts/roboto-regular-webfont.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/roboto-regular-webfont.woff") format("woff"),
-    url("../fonts/roboto-regular-webfont.svg#webfontZam02nTh") format("svg"),
-    url("../fonts/roboto-regular-webfont.ttf") format("truetype");
-
+  font-family: "Akkurat";
+  src: url("../fonts/Akkurat-Mono.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Roboto-Black";
-  src: url("../fonts/roboto-black-webfont.eot");
-  src: url("../fonts/roboto-black-webfont.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/roboto-black-webfont.woff") format("woff"),
-    url("../fonts/roboto-black-webfont.svg#webfontZam02nTh") format("svg"),
-    url("../fonts/roboto-black-webfont.ttf") format("truetype");
-
+  font-family: "ProximaNova-Light";
+  src: url("../fonts/ProximaNova-Light.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Roboto-Medium";
-  src: url("../fonts/roboto-medium-webfont.eot");
-  src: url("../fonts/roboto-medium-webfont.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/roboto-medium-webfont.woff") format("woff"),
-    url("../fonts/roboto-medium-webfont.svg#webfontZam02nTh") format("svg"),
-    url("../fonts/roboto-medium-webfont.ttf") format("truetype");
-
+  font-family: "ProximaNova-Regular";
+  src: url("../fonts/ProximaNova-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "ProximaNova-Bold";
+  src: url("../fonts/ProximaNova-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// @font-face {
+//   font-family: "Roboto-Light";
+//   src: url("../fonts/roboto-light-webfont.eot");
+//   src: url("../fonts/roboto-light-webfont.eot?#iefix")
+//       format("embedded-opentype"),
+//     url("../fonts/roboto-light-webfont.woff") format("woff"),
+//     url("../fonts/roboto-light-webfont.svg#webfontZam02nTh") format("svg"),
+//     url("../fonts/roboto-light-webfont.ttf") format("truetype");
+
+//   font-weight: normal;
+//   font-style: normal;
+// }
+// @font-face {
+//   font-family: "Roboto-Regular";
+//   src: url("../fonts/roboto-regular-webfont.eot");
+//   src: url("../fonts/roboto-regular-webfont.eot?#iefix")
+//       format("embedded-opentype"),
+//     url("../fonts/roboto-regular-webfont.woff") format("woff"),
+//     url("../fonts/roboto-regular-webfont.svg#webfontZam02nTh") format("svg"),
+//     url("../fonts/roboto-regular-webfont.ttf") format("truetype");
+
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Roboto-Black";
+//   src: url("../fonts/roboto-black-webfont.eot");
+//   src: url("../fonts/roboto-black-webfont.eot?#iefix")
+//       format("embedded-opentype"),
+//     url("../fonts/roboto-black-webfont.woff") format("woff"),
+//     url("../fonts/roboto-black-webfont.svg#webfontZam02nTh") format("svg"),
+//     url("../fonts/roboto-black-webfont.ttf") format("truetype");
+
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "Roboto-Medium";
+//   src: url("../fonts/roboto-medium-webfont.eot");
+//   src: url("../fonts/roboto-medium-webfont.eot?#iefix")
+//       format("embedded-opentype"),
+//     url("../fonts/roboto-medium-webfont.woff") format("woff"),
+//     url("../fonts/roboto-medium-webfont.svg#webfontZam02nTh") format("svg"),
+//     url("../fonts/roboto-medium-webfont.ttf") format("truetype");
+
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 @media only screen and (min-width: 960px) {
   .jumbotron h1 {

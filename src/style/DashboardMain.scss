@@ -66,6 +66,8 @@
 #welcome h2 {
   display: inline-block;
   text-decoration: none;
+  font-family: "ProximaNova-Regular";
+  color: $orange-highlight;
   // border-bottom: solid transparent 2px;
 }
 
@@ -107,13 +109,13 @@
 }
 
 #profile-detail-grid label {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Akkurat";
 }
 
 .profile-data {
   color: #161616;
   font-size: 36px;
-  font-weight: 300;
+  font-family: "ProximaNova-Light";
 }
 
 .no-data {
@@ -188,7 +190,7 @@ aside li {
 }
 
 aside li a {
-  font-family: "Montserrat", sans-serif;
+  font-family: "ProximaNova-Bold";
   color: #161616;
   font-size: 18px;
   line-height: 34px;
@@ -214,7 +216,7 @@ aside li:hover a {
 
 // ----- SETTINGS PAGE ----- //
 #dashboard-nav {
-  font-family: "Montserrat", sans-serif;
+  font-family: "ProximaNova-Bold";
   width: 58%;
   margin: 100px auto 0;
 }
@@ -275,8 +277,7 @@ table {
   background-color: white;
   color: gray;
   font-size: 24px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
+  font-family: "ProximaNova-Light";
 }
 
 table td {
