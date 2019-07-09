@@ -71,7 +71,7 @@ class Questions extends Component {
     }
     return (
       <ul id="questions-container">
-        <li activeClassName="active" className="question-list">
+        <li className="question-list">
           <div className="accordion">
             <p className="question">{question1}</p>
             <div >
