@@ -125,9 +125,9 @@ function* rootSaga() {
     takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
     takeLatest(ninActions.POST_NIN_REMOVE, requestRemoveNin),
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
-    takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestNins),
-    takeEvery(letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS, requestNins),
-    takeEvery(letterActions.POST_LETTER_PROOFING_CODE_SUCCESS, requestNins),
+    takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestAllPersonalData),
+    takeEvery(letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
+    takeEvery(letterActions.POST_LETTER_PROOFING_CODE_SUCCESS, requestAllPersonalData),
     takeEvery(
       lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
       requestAllPersonalData

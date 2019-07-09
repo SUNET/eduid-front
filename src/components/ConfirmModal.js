@@ -8,86 +8,32 @@ import Modal from "reactstrap/lib/Modal";
 import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
+import ConfirmModalForm from "./ConfirmModalForm";
 
 import i18n from "i18n-messages";
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import NotificationsContainer from "containers/Notifications";
 
-const getConfirmForm = inputName => {
-  const validate = values => {
-    const errors = {},
-      code = values[inputName];
-    if (!code) {
-      errors[inputName] = "required";
-    }
-    return errors;
-  };
 
-  let ConfirmForm = props => {
+class ConfirmModal extends Component {
+  render() {
+    console.log("this is this-props.id:", this.props.id);
+    // let ConfirmForm = getConfirmForm(this.props.id);
+
+
     let resendMarkup = "";
-    if (props.with_resend_link) {
+    // let inputName = "";
+    if (this.props.with_resend_link) {
       resendMarkup = (
         <div>
-          {props.resendHelp}{" "}
-          <a href="#" onClick={props.handleResend} className="resend-code">
-            {props.resendText}
+          {this.props.resendHelp}
+          <a href="#" onClick={this.props.handleResend} className="resend-code">
+            {this.props.resendText}
           </a>
         </div>
       );
     }
-
-    return (
-      <form id={inputName + "-form"} className="form-horizontal" role="form">
-        <ModalHeader>{props.title}</ModalHeader>
-
-        <ModalBody>
-          {/* <NotificationsContainer /> */}
-          <div id="confirmation-code-area">
-            <Field
-              component={TextInput}
-              componentClass="input"
-              type="text"
-              label={props.resendLabel}
-              placeholder={props.placeholder}
-              id={inputName}
-              name={inputName}
-            />
-            {resendMarkup}
-          </div>
-        </ModalBody>
-
-        <ModalFooter>
-          <EduIDButton className="cancel-button" onClick={props.closeModal}>
-            {props.l10n("cm.cancel")}
-          </EduIDButton>
-          <EduIDButton
-            className="ok-button"
-            disabled={props.invalid}
-            onClick={props.handleConfirm}
-          >
-            {props.l10n("cm.ok")}
-          </EduIDButton>
-        </ModalFooter>
-      </form>
-    );
-  };
-
-  ConfirmForm = reduxForm({
-    form: inputName + "-form",
-    validate: validate
-  })(ConfirmForm);
-
-  return ConfirmForm;
-};
-
-class ConfirmModal extends Component {
-  render() {
-    let ConfirmForm = getConfirmForm(this.props.id);
-
-    ConfirmForm = connect(state => ({
-      initialValues: {}
-    }))(ConfirmForm);
 
     return (
       <div
@@ -98,8 +44,31 @@ class ConfirmModal extends Component {
         aria-hidden="true"
         data-backdrop="true"
       >
-        <Modal isOpen={this.props.showModal}>
-          <ConfirmForm {...this.props} />
+        <Modal
+          isOpen={this.props.showModal}
+          handleConfirm={this.props.handleConfirm}
+        >
+          <ModalHeader>{this.props.title}</ModalHeader>
+          <ModalBody>
+            {/* <NotificationsContainer />  */}
+            <ConfirmModalForm inputName={this.props.id} {...this.props} />
+            {resendMarkup}
+          </ModalBody>
+          <ModalFooter>
+            <EduIDButton
+              className="ok-button"
+              disabled={this.props.invalid}
+              onClick={this.props.handleConfirm}
+            >
+              {this.props.l10n("cm.ok")}
+            </EduIDButton>
+            <EduIDButton
+              className="cancel-button"
+              onClick={this.props.closeModal}
+            >
+              {this.props.l10n("cm.cancel")}
+            </EduIDButton>
+          </ModalFooter>
         </Modal>
       </div>
     );
