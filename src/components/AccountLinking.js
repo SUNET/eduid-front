@@ -13,15 +13,15 @@ class AccountLinking extends Component {
         <div className="intro">
           <h4>Connect other accounts</h4>
           <p>Simplify login by connecting your eduID to other accounts</p>
-          <div className="orcid-logo-container">
+          {/*<<div className="orcid-logo-container">
             <span className="orcid-logo" />
             <label>{this.props.l10n("orc.title")}</label>
           </div>
 
-          {/* <p>
+          p>
             {this.props.l10n("faq_link")}{" "}
-            <a href="https://www.eduid.se/faq.html">FAQ</a>
-          </p> */}
+            <a href="https://www.eduid.se/faq.html">FAQ</a> 
+          </p>*/}
         </div>
         <div id="orcid">
           <Orcid {...this.props} />
