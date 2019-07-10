@@ -1609,12 +1609,20 @@ const msgs = {
     />
   ),
 
-  "orc.connect": (
+ "orc.button_connect": (
     <FormattedMessage
-      id="orc.connect"
-      defaultMessage={`Connect ORCID account`}
+     id="  orc.button_connect"
+     defaultMessage={`Connect ORCID account`}
     />
   ),
+
+
+  // "orc.connect": (
+  //   <FormattedMessage
+  //     id="orc.connect"
+  //     defaultMessage={`Connect ORCID account`}
+  //   />
+  // ),
 
   "orc.authorization_fail": (
     <FormattedMessage

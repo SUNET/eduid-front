@@ -844,7 +844,7 @@
     "defaultMessage": "Learn more about ORCID in eduID from our <a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>."
   },
   {
-    "id": "orc.connect",
+    "id": "orc.button_connect",
     "defaultMessage": "Connect ORCID account"
   },
   {

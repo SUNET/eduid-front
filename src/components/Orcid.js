@@ -14,10 +14,8 @@ class Orcid extends Component {
         {/* <div className="orcid-logo-container">
           <span className="orcid-logo" />
     </div>*/}
-
-        <label>{this.props.l10n("orc.title")}</label>
-
-        <p>{this.props.l10n("orc.long_description")}</p>
+{/* 
+        <label>{this.props.l10n("orc.title")}</label> */}
       </div>
     );
 
@@ -33,11 +31,11 @@ class Orcid extends Component {
             <tbody>
               <tr className="emailrow">
                 <td>
-                  {orcidAuthor}{" "}
+                  {orcidAuthor}
                   <a href={this.props.orcid.id}>
                     <div className="orcid-logo-container">
                       <span className="orcid-logo" />
-                    </div>{" "}
+                    </div>
                     {this.props.orcid.id}
                   </a>
                 </td>
@@ -65,9 +63,10 @@ class Orcid extends Component {
             <div className="orcid-logo-container">
               <span className="orcid-logo" />
             </div>
-            Connect account
+            {this.props.l10n("orc.button_connect")}
           </EduIDButton>
           {/* <p>{this.props.l10n("orc.about_link")}</p> */}
+          <p>{this.props.l10n("orc.long_description")}</p>
         </div>
       );
     }
