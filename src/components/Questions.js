@@ -41,81 +41,25 @@ class Questions extends Component {
     let question2 = "";
     let answer2 = "";
     if (url.includes("personaldata")) {
-      question1 = (
-        <p className="question">{this.props.l10n("questions.settings_1")}</p>
-      );
-      answer1 = (
-        <p className="answer collapse">
-          {this.props.l10n("questions.settings_1_answer")}
-        </p>
-      );
-      question2 = (
-        <p className="question">{this.props.l10n("questions.settings_2")}</p>
-      );
-      answer2 = (
-        <p className="answer collapse">
-          {this.props.l10n("questions.settings_2_answer")}
-        </p>
-      );
+      question1 = this.props.l10n("questions.settings_1");
+      answer1 = this.props.l10n("questions.settings_1_answer");
+      question2 = this.props.l10n("questions.settings_2");
+      answer2 = this.props.l10n("questions.settings_2_answer");
     } else if (url.includes("verify-identity")) {
-      question1 = (
-        <p className="question">
-          {this.props.l10n("questions.verify_identity_1")}
-        </p>
-      );
-      answer1 = (
-        <p className="answer collapse">
-          {this.props.l10n("questions.verify_identity_1_answer")}
-        </p>
-      );
-      question2 = (
-        <p className="question">
-          {this.props.l10n("questions.verify_identity_2")}
-        </p>
-      );
-      answer2 = (
-        <p className="answer collapse">
-          {this.props.l10n("questions.verify_identity_2_answer")}
-        </p>
-      );
+      question1 = this.props.l10n("questions.verify_identity_1");
+      answer1 = this.props.l10n("questions.verify_identity_1_answer");
+      question2 = this.props.l10n("questions.verify_identity_2");
+      answer2 = this.props.l10n("questions.verify_identity_2_answer");
     } else if (url.includes("advanced-settings")) {
-      question1 = (
-        <p className="question">
-          {this.props.l10n("questions.settings_advanced_1")}
-        </p>
-      );
-      answer1 = (
-        <p className="answer collapse">
-          {this.props.l10n("questions.settings_advanced_1_answer")}
-        </p>
-      );
-      question2 = (
-        <p className="question">
-          {this.props.l10n("questions.settings_advanced_2")}
-        </p>
-      );
-      answer2 = (
-        <p className="answer collapse">
-          {this.props.l10n("questions.settings_advanced_2_answer")}
-        </p>
-      );
+      question1 = this.props.l10n("questions.settings_advanced_1");
+      answer1 = this.props.l10n("questions.settings_advanced_1_answer");
+      question2 = this.props.l10n("questions.settings_advanced_2");
+      answer2 = this.props.l10n("questions.settings_advanced_2_answer");
     } else {
-      question1 = (
-        <p className="question">{this.props.l10n("questions.profile_1")}</p>
-      );
-      answer1 = (
-        <p className="answer collapse">
-          {this.props.l10n("questions.profile_1_answer")}
-        </p>
-      );
-      question2 = (
-        <p className="question">{this.props.l10n("questions.profile_2")}</p>
-      );
-      answer2 = (
-        <p className="answer collapse">
-          {this.props.l10n("questions.profile_2_answer")}
-        </p>
-      );
+      question1 = this.props.l10n("questions.profile_1");
+      answer1 = this.props.l10n("questions.profile_1_answer");
+      question2 = this.props.l10n("questions.profile_2");
+      answer2 = this.props.l10n("questions.profile_2_answer");
     }
     return (
       <div id="questions-container">

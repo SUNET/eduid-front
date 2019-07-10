@@ -19,7 +19,7 @@ class DashboardNav extends Component {
               to={`/profile/`}
             >
               <li className="nav-item">
-                <h5>Profile</h5>
+                <h5>{this.props.l10n("dashboard_nav.profile")}</h5>
               </li>
             </NavLink>
             <NavLink
@@ -28,27 +28,16 @@ class DashboardNav extends Component {
               to={`/profile/settings/`}
             >
               <li className="nav-item">
-                <h5>Settings</h5>
+                <h5>{this.props.l10n("dashboard_nav.settings")}</h5>
               </li>
             </NavLink>
-            {/* </ul> */}
-            {/* <ul className="navbar-nav sub-nav">
-            <NavLink
-              activeClassName="active"
-              className="nav-link personal-info"
-              to={`/profile/settings/personaldata`}
-            >
-              <li className="nav-item">
-                <h5> > Personal information</h5>
-              </li>
-            </NavLink> */}
             <NavLink
               activeClassName="active"
               className="nav-link advanced-setting"
               to={`/profile/settings/advanced-settings`}
             >
               <li className="nav-item">
-                <h5> > Advanced settings</h5>
+                <h5>{this.props.l10n("dashboard_nav.advanced-settings")}</h5>
               </li>
             </NavLink>
           </ul>
@@ -65,7 +54,7 @@ class DashboardNav extends Component {
               to={`/profile/`}
             >
               <li className="nav-item">
-                <h5> back > </h5>
+                <h5>{this.props.l10n("dashboard_nav.back")}</h5>
               </li>
             </NavLink>
           </ul>
@@ -82,7 +71,7 @@ class DashboardNav extends Component {
               to={`/profile/`}
             >
               <li className="nav-item">
-                <h5>Profile</h5>
+                <h5>{this.props.l10n("dashboard_nav.profile")}</h5>
               </li>
             </NavLink>
             <NavLink
@@ -91,7 +80,7 @@ class DashboardNav extends Component {
               to={`/profile/settings/`}
             >
               <li className="nav-item">
-                <h5>Settings</h5>
+                <h5>{this.props.l10n("dashboard_nav.settings")}</h5>
               </li>
             </NavLink>
           </ul>

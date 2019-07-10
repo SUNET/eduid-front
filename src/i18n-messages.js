@@ -661,6 +661,33 @@ const msgs = {
   /***** GENERAL  ******/
   /*********************/
 
+  /* ----- DASHBOARDNAV  ------- */
+  "dashboard_nav.profile": (
+    <FormattedMessage
+      id="dashboard_nav.profile"
+      defaultMessage={`Profile`}
+    />
+  ),
+  "dashboard_nav.settings": (
+    <FormattedMessage
+      id="dashboard_nav.settings"
+      defaultMessage={`Settings`}
+    />
+  ),
+  "dashboard_nav.advanced-settings": (
+    <FormattedMessage
+      id="dashboard_nav.advanced-settings"
+      defaultMessage={`> Advanced settings`}
+    />
+  ),
+  "dashboard_nav.back": (
+    <FormattedMessage
+      id="dashboard_nav.back"
+      defaultMessage={`Back`}
+    />
+  ),
+
+ 
   /* ----- ConfirmModal  ------- */
 
   "cm.ok": <FormattedMessage id="cm.ok" defaultMessage={`OK`} />,
@@ -1280,7 +1307,6 @@ const msgs = {
   "security.last_used": (
     <FormattedMessage id="security.last_used" defaultMessage={`Last used`} />
   ),
-
 
   "security.account_description": (
     <FormattedMessage
@@ -2071,15 +2097,14 @@ const msgs = {
     />
   ),
 
-  // "security.password_credential_type": (
-  //   <FormattedMessage
-  //     id="security.password_credential_type"
-  //     defaultMessage={`Password`}
-  //   />
-  // ),
+  "security.password_credential_type": (
+    <FormattedMessage
+      id="security.password_credential_type"
+      defaultMessage={`Password`}
+    />
+  ),
 
-
-/* ----- /chpass ChangePassword ------- */
+  /* ----- /chpass ChangePassword ------- */
   "chpass.main_title": (
     <FormattedMessage
       id="chpass.main_title"
@@ -2087,7 +2112,7 @@ const msgs = {
     />
   ),
 
-/* ----- /chpass ChangePasswordForm ------- */
+  /* ----- /chpass ChangePasswordForm ------- */
 
   "chpass.old_password": (
     <FormattedMessage
@@ -2103,14 +2128,12 @@ const msgs = {
     />
   ),
 
-
   "chpass.button_custom_password": (
     <FormattedMessage
       id="chpass.button_custom_password"
       defaultMessage={`I don't want a suggested password`}
     />
   ),
-
 
   "chpass.form_custom_password": (
     <FormattedMessage
@@ -2119,13 +2142,12 @@ const msgs = {
     />
   ),
 
-
   "chpass.form_custom_password_repeat": (
     <FormattedMessage
       id="chpass.form_custom_password_repeat"
       defaultMessage={`Repeat new password`}
     />
-  ),  
+  ),
 
   "chpass.button_suggest_password": (
     <FormattedMessage
@@ -2133,7 +2155,6 @@ const msgs = {
       defaultMessage={`Suggest a password for me`}
     />
   ),
-
 
   // "chpass.custom_password": (
   //   <FormattedMessage
@@ -2163,8 +2184,6 @@ const msgs = {
       defaultMessage={`You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking "Change password" or you can opt to choose your own password using the checkbox.`}
     />
   ),
-
- 
 
   // "chpass.use-custom-label": (
   //   <FormattedMessage
@@ -2242,7 +2261,6 @@ const msgs = {
       defaultMessage={`Please provide a stronger password`}
     />
   ),
-
 
   "pwfield.terrible": (
     <FormattedMessage

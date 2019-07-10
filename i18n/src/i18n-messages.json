@@ -312,6 +312,22 @@
     "defaultMessage": "Menu"
   },
   {
+    "id": "dashboard_nav.profile",
+    "defaultMessage": "Profile"
+  },
+  {
+    "id": "dashboard_nav.settings",
+    "defaultMessage": "Settings"
+  },
+  {
+    "id": "dashboard_nav.advanced-settings",
+    "defaultMessage": "> Advanced settings"
+  },
+  {
+    "id": "dashboard_nav.back",
+    "defaultMessage": "Back"
+  },
+  {
     "id": "cm.ok",
     "defaultMessage": "OK"
   },
@@ -1134,6 +1150,10 @@
   {
     "id": "settings.change_info",
     "defaultMessage": "You will need to log in again to change your password."
+  },
+  {
+    "id": "security.password_credential_type",
+    "defaultMessage": "Password"
   },
   {
     "id": "chpass.main_title",

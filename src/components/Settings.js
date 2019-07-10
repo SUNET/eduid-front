@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { Route, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
+import i18n from "i18n-messages";
 // import { ConnectedRouter } from "react-router-redux";
 // import { Collapse } from "reactstrap";
 
@@ -60,7 +61,7 @@ class Settings extends Component {
     // }
     return (
       <div id="dashboard">
-        <DashboardNav />
+        <DashboardNav {...this.props} />
         {/* {SideBarMenu} */}
         <div id="settings-content">
           <Route
@@ -103,4 +104,18 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+// export default Settings;
+const mapStateToProps = (state, props) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {};
+};
+
+const SettingsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Settings);
+
+export default i18n(SettingsContainer);
