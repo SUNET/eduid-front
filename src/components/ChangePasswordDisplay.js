@@ -22,8 +22,8 @@ class ChangePasswordDisplay extends Component {
       <div>
         <div id="change-password-container">
           <div className="intro">
-            <h4>Change password</h4>
-            <p>{this.props.l10n("security.long_description")}</p>
+            <h4>{this.props.l10n("settings.main_title")} </h4>
+            <p>{this.props.l10n("settings.long_description")}</p>
           </div>
           <div id="change-password">
             <EduIDButton
@@ -31,30 +31,17 @@ class ChangePasswordDisplay extends Component {
               className="btn-link"
               onClick={this.props.handleStartConfirmationPassword}
             >
-              {this.props.l10n("security.change_password")}
+              {this.props.l10n("settings.change_password")}
             </EduIDButton>
           </div>
         </div>
         <GenericConfirmModal
           modalId="securityConfirmDialog"
-          title={this.props.l10n("security.confirm_title_chpass")}
-          mainText={this.props.l10n("security.change_info")}
+          title={this.props.l10n("settings.confirm_title_chpass")}
+          mainText={this.props.l10n("settings.change_info")}
           showModal={this.props.confirming_change}
           closeModal={this.props.handleStopConfirmationPassword}
           acceptModal={this.props.handleConfirmationPassword}
-        />
-        <ConfirmModal
-          modalId="describeWebauthnTokenDialog"
-          id="describeWebauthnTokenDialogControl"
-          title={this.props.l10n("security.webauthn-describe-title")}
-          resendLabel=""
-          resendHelp=""
-          resendText=""
-          placeholder=""
-          with_resend_link={false}
-          showModal={Boolean(this.props.webauthn_asking_description)}
-          closeModal={this.props.handleStopAskingWebauthnDescription}
-          handleConfirm={this.props.handleStartWebauthnRegistration}
         />
       </div>
     );

@@ -657,13 +657,11 @@ const msgs = {
 
   "main.menu": <FormattedMessage id="main.menu" defaultMessage={`Menu`} />,
 
+  /**********************/
+  /***** GENERAL  ******/
+  /*********************/
 
-
-/**********************/
-/***** GENERAL  ******/
-/*********************/
-
-/* ----- ConfirmModal  ------- */
+  /* ----- ConfirmModal  ------- */
 
   "cm.ok": <FormattedMessage id="cm.ok" defaultMessage={`OK`} />,
 
@@ -682,7 +680,7 @@ const msgs = {
     />
   ),
 
-/* ----- TABLE LIST  ------- */
+  /* ----- TABLE LIST  ------- */
 
   "phone.phone_duplicated": (
     <FormattedMessage
@@ -725,16 +723,13 @@ const msgs = {
     <FormattedMessage id="tl.pending" defaultMessage={`PENDING CONFIRMATION`} />
   ),
 
-
-
   /**********************/
   /***** VETTING  ******/
   /*********************/
 
+  /* ----- NINS ------- */
 
-/* ----- NINS ------- */
-
-/* ----- ADD NIN ------- */
+  /* ----- ADD NIN ------- */
   "add_nin.main_title": (
     <FormattedMessage
       id="add_nin.main_title"
@@ -742,7 +737,7 @@ const msgs = {
     />
   ),
 
-/* ----- NINFORM ------- */
+  /* ----- NINFORM ------- */
   "nins.main_title": (
     <FormattedMessage
       id="nins.main_title"
@@ -750,7 +745,7 @@ const msgs = {
     />
   ),
 
-/* ----- NINDISPLAY ------- */
+  /* ----- NINDISPLAY ------- */
   "nins.justification": (
     <FormattedMessage
       id="nins.justification"
@@ -850,8 +845,7 @@ const msgs = {
     />
   ),
 
- 
-/* ----- LETTER PROOFING  ------- */
+  /* ----- LETTER PROOFING  ------- */
   "letter.letter_button_text": (
     <FormattedMessage
       id="letter.letter_button_text"
@@ -1249,13 +1243,6 @@ const msgs = {
     />
   ),
 
-  "security.long_description": (
-    <FormattedMessage
-      id="security.long_description"
-      defaultMessage={`Your eduID account password can be changed below.`}
-    />
-  ),
-
   "security.description": (
     <FormattedMessage
       id="security.description"
@@ -1294,12 +1281,6 @@ const msgs = {
     <FormattedMessage id="security.last_used" defaultMessage={`Last used`} />
   ),
 
-  "security.change_password": (
-    <FormattedMessage
-      id="security.change_password"
-      defaultMessage={`Change password`}
-    />
-  ),
 
   "security.account_description": (
     <FormattedMessage
@@ -1314,9 +1295,6 @@ const msgs = {
       defaultMessage={`Account deletion`}
     />
   ),
-
-
-
 
   "security.u2f.max_allowed_tokens": (
     <FormattedMessage
@@ -1526,173 +1504,6 @@ const msgs = {
     <FormattedMessage
       id="security.webauthn-noremove-last"
       defaultMessage={`You are not allowed to remove your only Security Key`}
-    />
-  ),
-
-  "chpass.suggested_password": (
-    <FormattedMessage
-      id="chpass.suggested_password"
-      defaultMessage={`Suggested password`}
-    />
-  ),
-
-  "chpass.custom_password": (
-    <FormattedMessage
-      id="chpass.custom_password"
-      defaultMessage={`Custom password`}
-    />
-  ),
-
-  "chpass.use-custom": (
-    <FormattedMessage id="chpass.use-custom" defaultMessage={`Custom`} />
-  ),
-
-  "chpass.use-suggested": (
-    <FormattedMessage id="chpass.use-suggested" defaultMessage={`Suggested`} />
-  ),
-
-  "chpass.repeat_password": (
-    <FormattedMessage
-      id="chpass.repeat_password"
-      defaultMessage={`Repeat your custom password`}
-    />
-  ),
-
-  "chpass.help-text-general": (
-    <FormattedMessage
-      id="chpass.help-text-general"
-      defaultMessage={`You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking "Change password" or you can opt to choose your own password using the checkbox.`}
-    />
-  ),
-
-  "chpass.old_password": (
-    <FormattedMessage
-      id="chpass.old_password"
-      defaultMessage={`Current password`}
-    />
-  ),
-
-  "chpass.use-custom-label": (
-    <FormattedMessage
-      id="chpass.use-custom-label"
-      defaultMessage={`Use my own password`}
-    />
-  ),
-
-  "chpass.title-general": (
-    <FormattedMessage
-      id="chpass.title-general"
-      defaultMessage={`Change your password`}
-    />
-  ),
-
-  "chpass.change-password": (
-    <FormattedMessage
-      id="chpass.change-password"
-      defaultMessage={`Change password`}
-    />
-  ),
-
-  "chpass.no_old_pw": (
-    <FormattedMessage
-      id="chpass.no_old_pw"
-      defaultMessage={`Please enter the old password`}
-    />
-  ),
-
-  "chpass.no_reauthn": (
-    <FormattedMessage
-      id="chpass.no_reauthn"
-      defaultMessage={`You must re-authenticate to change your password`}
-    />
-  ),
-
-  "chpass.stale_reauthn": (
-    <FormattedMessage
-      id="chpass.stale_reauthn"
-      defaultMessage={`Stale re-authentication. Please re-initiate the process.`}
-    />
-  ),
-
-  "chpass.stale_authn_info": (
-    <FormattedMessage
-      id="chpass.stale_authn_info"
-      defaultMessage={`Stale re-authentication. Please re-initiate the process.`}
-    />
-  ),
-
-  "chpass.password-changed": (
-    <FormattedMessage
-      id="chpass.password-changed"
-      defaultMessage={`Password successfully changed`}
-    />
-  ),
-
-  "chpass.different-repeat": (
-    <FormattedMessage
-      id="chpass.different-repeat"
-      defaultMessage={`Passwords differ`}
-    />
-  ),
-
-  "chpass.unable-to-verify-old-password": (
-    <FormattedMessage
-      id="chpass.unable-to-verify-old-password"
-      defaultMessage={`There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator`}
-    />
-  ),
-
-  "chpass.low-password-entropy": (
-    <FormattedMessage
-      id="chpass.low-password-entropy"
-      defaultMessage={`Please provide a stronger password`}
-    />
-  ),
-
-  "pwfield.enter_password": (
-    <FormattedMessage
-      id="pwfield.enter_password"
-      defaultMessage={`Enter password`}
-    />
-  ),
-
-  "pwfield.repeat_password": (
-    <FormattedMessage
-      id="pwfield.repeat_password"
-      defaultMessage={`Repeat password`}
-    />
-  ),
-
-  "pwfield.terrible": (
-    <FormattedMessage
-      id="pwfield.terrible"
-      defaultMessage={`Extremely weak password`}
-    />
-  ),
-
-  "pwfield.bad": (
-    <FormattedMessage id="pwfield.bad" defaultMessage={`Very weak password`} />
-  ),
-
-  "pwfield.weak": (
-    <FormattedMessage id="pwfield.weak" defaultMessage={`Weak password`} />
-  ),
-
-  "pwfield.good": (
-    <FormattedMessage
-      id="pwfield.good"
-      defaultMessage={`Fairly strong password`}
-    />
-  ),
-
-  "pwfield.strong": (
-    <FormattedMessage id="pwfield.strong" defaultMessage={`Strong password`} />
-  ),
-
-  "pwfield.repeat_different": (
-    <FormattedMessage
-      id="pwfield.repeat_different"
-      defaultMessage={`Repeated pasword is different`}
     />
   ),
 
@@ -2223,6 +2034,249 @@ const msgs = {
     />
   ),
 
+  /* ----- /settings ChangePasswordDisplay ------- */
+
+  "settings.main_title": (
+    <FormattedMessage
+      id="settings.main_title"
+      defaultMessage={`Change password`}
+    />
+  ),
+
+  "settings.long_description": (
+    <FormattedMessage
+      id="settings.long_description"
+      defaultMessage={`Click the link to change your eduID password.`}
+    />
+  ),
+
+  "settings.change_password": (
+    <FormattedMessage
+      id="settings.change_password"
+      defaultMessage={`I want to change my password`}
+    />
+  ),
+
+  "settings.confirm_title_chpass": (
+    <FormattedMessage
+      id="settings.confirm_title_chpass"
+      defaultMessage={`For security reasons...`}
+    />
+  ),
+
+  "settings.change_info": (
+    <FormattedMessage
+      id="settings.change_info"
+      defaultMessage={`You will need to log in again to change your password.`}
+    />
+  ),
+
+  // "security.password_credential_type": (
+  //   <FormattedMessage
+  //     id="security.password_credential_type"
+  //     defaultMessage={`Password`}
+  //   />
+  // ),
+
+
+/* ----- /chpass ChangePassword ------- */
+  "chpass.main_title": (
+    <FormattedMessage
+      id="chpass.main_title"
+      defaultMessage={`Change your current password`}
+    />
+  ),
+
+/* ----- /chpass ChangePasswordForm ------- */
+
+  "chpass.old_password": (
+    <FormattedMessage
+      id="chpass.old_password"
+      defaultMessage={`Current password`}
+    />
+  ),
+
+  "chpass.suggested_password": (
+    <FormattedMessage
+      id="chpass.suggested_password"
+      defaultMessage={`Suggested password`}
+    />
+  ),
+
+
+  "chpass.button_custom_password": (
+    <FormattedMessage
+      id="chpass.button_custom_password"
+      defaultMessage={`I don't want a suggested password`}
+    />
+  ),
+
+
+  "chpass.form_custom_password": (
+    <FormattedMessage
+      id="chpass.form_custom_password"
+      defaultMessage={`Enter new password`}
+    />
+  ),
+
+
+  "chpass.form_custom_password_repeat": (
+    <FormattedMessage
+      id="chpass.form_custom_password_repeat"
+      defaultMessage={`Repeat new password`}
+    />
+  ),  
+
+  "chpass.button_suggest_password": (
+    <FormattedMessage
+      id="chpass.button_suggest_password"
+      defaultMessage={`Suggest a password for me`}
+    />
+  ),
+
+
+  // "chpass.custom_password": (
+  //   <FormattedMessage
+  //     id="chpass.custom_password"
+  //     defaultMessage={`Custom password`}
+  //   />
+  // ),
+
+  // "chpass.use-custom": (
+  //   <FormattedMessage id="chpass.use-custom" defaultMessage={`Custom`} />
+  // ),
+
+  // "chpass.use-suggested": (
+  //   <FormattedMessage id="chpass.use-suggested" defaultMessage={`Suggested`} />
+  // ),
+
+  // "chpass.repeat_password": (
+  //   <FormattedMessage
+  //     id="chpass.repeat_password"
+  //     defaultMessage={`Repeat your custom password`}
+  //   />
+  // ),
+
+  "chpass.help-text-general": (
+    <FormattedMessage
+      id="chpass.help-text-general"
+      defaultMessage={`You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking "Change password" or you can opt to choose your own password using the checkbox.`}
+    />
+  ),
+
+ 
+
+  // "chpass.use-custom-label": (
+  //   <FormattedMessage
+  //     id="chpass.use-custom-label"
+  //     defaultMessage={`Use my own password`}
+  //   />
+  // ),
+
+  // "chpass.title-general": (
+  //   <FormattedMessage
+  //     id="chpass.title-general"
+  //     defaultMessage={`Change your password`}
+  //   />
+  // ),
+
+  "chpass.button_save_password": (
+    <FormattedMessage
+      id="chpass.button_save_password"
+      defaultMessage={`Save new password`}
+    />
+  ),
+
+  "chpass.no_old_pw": (
+    <FormattedMessage
+      id="chpass.no_old_pw"
+      defaultMessage={`Please enter your old password`}
+    />
+  ),
+
+  "chpass.no_reauthn": (
+    <FormattedMessage
+      id="chpass.no_reauthn"
+      defaultMessage={`You must re-authenticate to change your password`}
+    />
+  ),
+
+  "chpass.stale_reauthn": (
+    <FormattedMessage
+      id="chpass.stale_reauthn"
+      defaultMessage={`Stale re-authentication. Please re-initiate the process.`}
+    />
+  ),
+
+  "chpass.stale_authn_info": (
+    <FormattedMessage
+      id="chpass.stale_authn_info"
+      defaultMessage={`Stale re-authentication. Please re-initiate the process.`}
+    />
+  ),
+
+  "chpass.password-changed": (
+    <FormattedMessage
+      id="chpass.password-changed"
+      defaultMessage={`Your password has been changed`}
+    />
+  ),
+
+  "chpass.different-repeat": (
+    <FormattedMessage
+      id="chpass.different-repeat"
+      defaultMessage={`The two passwords are different`}
+    />
+  ),
+
+  "chpass.unable-to-verify-old-password": (
+    <FormattedMessage
+      id="chpass.unable-to-verify-old-password"
+      defaultMessage={`There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator`}
+    />
+  ),
+
+  "chpass.low-password-entropy": (
+    <FormattedMessage
+      id="chpass.low-password-entropy"
+      defaultMessage={`Please provide a stronger password`}
+    />
+  ),
+
+
+  "pwfield.terrible": (
+    <FormattedMessage
+      id="pwfield.terrible"
+      defaultMessage={`Extremely weak password`}
+    />
+  ),
+
+  "pwfield.bad": (
+    <FormattedMessage id="pwfield.bad" defaultMessage={`Very weak password`} />
+  ),
+
+  "pwfield.weak": (
+    <FormattedMessage id="pwfield.weak" defaultMessage={`Weak password`} />
+  ),
+
+  "pwfield.good": (
+    <FormattedMessage
+      id="pwfield.good"
+      defaultMessage={`Fairly strong password`}
+    />
+  ),
+
+  "pwfield.strong": (
+    <FormattedMessage id="pwfield.strong" defaultMessage={`Strong password`} />
+  ),
+
+  "pwfield.repeat_different": (
+    <FormattedMessage
+      id="pwfield.repeat_different"
+      defaultMessage={`The repeated password is different from the first`}
+    />
+  ),
+
   /* -----  DELETE ACCOUNT ------- */
   "security.delete_account": (
     <FormattedMessage
@@ -2267,36 +2321,6 @@ const msgs = {
       defaultMessage={`Account deletion`}
     />
   ),
-
-
-
-
-
-
-
-  "security.change_info": (
-    <FormattedMessage
-      id="security.change_info"
-      defaultMessage={`For security reasons we will ask you to log in again before changing your password.`}
-    />
-  ),
-
-
-  "security.password_credential_type": (
-    <FormattedMessage
-      id="security.password_credential_type"
-      defaultMessage={`Password`}
-    />
-  ),
-
-  "security.confirm_title_chpass": (
-    <FormattedMessage
-      id="security.confirm_title_chpass"
-      defaultMessage={`Secure password change`}
-    />
-  ),
-
-
 
   /************************/
   /* Header ******** ******/
@@ -2541,10 +2565,10 @@ const unformatted = defineMessages({
   },
   "chpass.help-text-newpass": {
     id: "chpass.help-text-newpass",
-    defaultMessage: `<p>Choose a strong password. Some tips:</p>
-            <ul>
-	            <li>Use upper- and lowercase characters (preferably not in the beginning or end)</li>
-	            <li>Add digits somewhere else than at the end of the password</li>
+    defaultMessage: `<label>Tip: Choose a strong password</label>
+            <ul id="password-custom-help">
+	            <li>Use upper- and lowercase characters, but not at the beginning or end</li>
+	            <li>Add digits somewhere, but not at the beginning or end</li>
                 <li>Add special characters, such as &#64; &#36; &#92; &#43; &#95; &#37;</li>
 	            <li>Spaces are ignored</li>
             </ul>`,

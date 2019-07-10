@@ -32,17 +32,18 @@ class GenericConfirmModal extends Component {
           </ModalBody>
           <ModalFooter>
             <EduIDButton
-              className="cancel-button"
-              onClick={this.props.closeModal}
-            >
-              {this.props.l10n("cm.cancel")}
-            </EduIDButton>
-            <EduIDButton
               className="ok-button"
               onClick={this.props.acceptModal}
             >
               {this.props.l10n("cm.accept")}
             </EduIDButton>
+            <EduIDButton
+              className="cancel-button"
+              onClick={this.props.closeModal}
+            >
+              {this.props.l10n("cm.cancel")}
+            </EduIDButton>
+ 
           </ModalFooter>
         </Modal>
       </div>

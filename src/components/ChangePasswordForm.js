@@ -82,7 +82,7 @@ class ChangePasswordForm extends Component {
           className="btn-link"
           onClick={() => this.togglePasswordType()}
         >
-          Suggest a password for me
+          {this.props.l10n("chpass.button_suggest_password")} 
         </EduIDButton>
       );
 
@@ -92,7 +92,7 @@ class ChangePasswordForm extends Component {
             component={TextInput}
             componentClass="input"
             type="password"
-            label={this.props.l10n("pwfield.enter_password")}
+            label={this.props.l10n("chpass.form_custom_password")}
             helpBlock={meterHelpBlock}
             id={pwFieldCustomName}
             name={pwFieldCustomName}
@@ -102,7 +102,7 @@ class ChangePasswordForm extends Component {
             componentClass="input"
             type="password"
             id={pwFieldRepeatName}
-            label={this.props.l10n("pwfield.repeat_password")}
+            label={this.props.l10n("chpass.form_custom_password_repeat")}
             name={pwFieldRepeatName}
           />
         </div>
@@ -134,7 +134,7 @@ class ChangePasswordForm extends Component {
           className="btn-link"
           onClick={() => this.togglePasswordType()}
         >
-          I don't want a suggested password
+          {this.props.l10n("chpass.button_custom_password")}
         </EduIDButton>
       );
     }
@@ -164,7 +164,7 @@ class ChangePasswordForm extends Component {
             id="chpass-button"
             onClick={this.props.handleStartPasswordChange.bind(this)}
           >
-            {this.props.l10n("chpass.change-password")}
+            {this.props.l10n("chpass.button_save_password")}
           </EduIDButton>
           <EduIDButton
             className="cancel-button eduid-cancel-button"

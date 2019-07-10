@@ -660,10 +660,6 @@
     "defaultMessage": "Credential type."
   },
   {
-    "id": "security.long_description",
-    "defaultMessage": "Your eduID account password can be changed below."
-  },
-  {
     "id": "security.description",
     "defaultMessage": "Description"
   },
@@ -694,10 +690,6 @@
   {
     "id": "security.last_used",
     "defaultMessage": "Last used"
-  },
-  {
-    "id": "security.change_password",
-    "defaultMessage": "Change password"
   },
   {
     "id": "security.account_description",
@@ -826,110 +818,6 @@
   {
     "id": "security.webauthn-noremove-last",
     "defaultMessage": "You are not allowed to remove your only Security Key"
-  },
-  {
-    "id": "chpass.suggested_password",
-    "defaultMessage": "Suggested password"
-  },
-  {
-    "id": "chpass.custom_password",
-    "defaultMessage": "Custom password"
-  },
-  {
-    "id": "chpass.use-custom",
-    "defaultMessage": "Custom"
-  },
-  {
-    "id": "chpass.use-suggested",
-    "defaultMessage": "Suggested"
-  },
-  {
-    "id": "chpass.repeat_password",
-    "defaultMessage": "Repeat your custom password"
-  },
-  {
-    "id": "chpass.help-text-general",
-    "defaultMessage": "You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking \"Change password\" or you can opt to choose your own password using the checkbox."
-  },
-  {
-    "id": "chpass.old_password",
-    "defaultMessage": "Current password"
-  },
-  {
-    "id": "chpass.use-custom-label",
-    "defaultMessage": "Use my own password"
-  },
-  {
-    "id": "chpass.title-general",
-    "defaultMessage": "Change your password"
-  },
-  {
-    "id": "chpass.change-password",
-    "defaultMessage": "Change password"
-  },
-  {
-    "id": "chpass.no_old_pw",
-    "defaultMessage": "Please enter the old password"
-  },
-  {
-    "id": "chpass.no_reauthn",
-    "defaultMessage": "You must re-authenticate to change your password"
-  },
-  {
-    "id": "chpass.stale_reauthn",
-    "defaultMessage": "Stale re-authentication. Please re-initiate the process."
-  },
-  {
-    "id": "chpass.stale_authn_info",
-    "defaultMessage": "Stale re-authentication. Please re-initiate the process."
-  },
-  {
-    "id": "chpass.password-changed",
-    "defaultMessage": "Password successfully changed"
-  },
-  {
-    "id": "chpass.different-repeat",
-    "defaultMessage": "Passwords differ"
-  },
-  {
-    "id": "chpass.unable-to-verify-old-password",
-    "defaultMessage": "There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator"
-  },
-  {
-    "id": "chpass.low-password-entropy",
-    "defaultMessage": "Please provide a stronger password"
-  },
-  {
-    "id": "pwfield.enter_password",
-    "defaultMessage": "Enter password"
-  },
-  {
-    "id": "pwfield.repeat_password",
-    "defaultMessage": "Repeat password"
-  },
-  {
-    "id": "pwfield.terrible",
-    "defaultMessage": "Extremely weak password"
-  },
-  {
-    "id": "pwfield.bad",
-    "defaultMessage": "Very weak password"
-  },
-  {
-    "id": "pwfield.weak",
-    "defaultMessage": "Weak password"
-  },
-  {
-    "id": "pwfield.good",
-    "defaultMessage": "Fairly strong password"
-  },
-  {
-    "id": "pwfield.strong",
-    "defaultMessage": "Strong password"
-  },
-  {
-    "id": "pwfield.repeat_different",
-    "defaultMessage": "Repeated pasword is different"
   },
   {
     "id": "account_linking.main_title",
@@ -1228,6 +1116,118 @@
     "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits."
   },
   {
+    "id": "settings.main_title",
+    "defaultMessage": "Change password"
+  },
+  {
+    "id": "settings.long_description",
+    "defaultMessage": "Click the link to change your eduID password."
+  },
+  {
+    "id": "settings.change_password",
+    "defaultMessage": "I want to change my password"
+  },
+  {
+    "id": "settings.confirm_title_chpass",
+    "defaultMessage": "For security reasons..."
+  },
+  {
+    "id": "settings.change_info",
+    "defaultMessage": "You will need to log in again to change your password."
+  },
+  {
+    "id": "chpass.main_title",
+    "defaultMessage": "Change your current password"
+  },
+  {
+    "id": "chpass.old_password",
+    "defaultMessage": "Current password"
+  },
+  {
+    "id": "chpass.suggested_password",
+    "defaultMessage": "Suggested password"
+  },
+  {
+    "id": "chpass.button_custom_password",
+    "defaultMessage": "I don't want a suggested password"
+  },
+  {
+    "id": "chpass.form_custom_password",
+    "defaultMessage": "Enter new password"
+  },
+  {
+    "id": "chpass.form_custom_password_repeat",
+    "defaultMessage": "Repeat new password"
+  },
+  {
+    "id": "chpass.button_suggest_password",
+    "defaultMessage": "Suggest a password for me"
+  },
+  {
+    "id": "chpass.help-text-general",
+    "defaultMessage": "You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking \"Change password\" or you can opt to choose your own password using the checkbox."
+  },
+  {
+    "id": "chpass.button_save_password",
+    "defaultMessage": "Save new password"
+  },
+  {
+    "id": "chpass.no_old_pw",
+    "defaultMessage": "Please enter your old password"
+  },
+  {
+    "id": "chpass.no_reauthn",
+    "defaultMessage": "You must re-authenticate to change your password"
+  },
+  {
+    "id": "chpass.stale_reauthn",
+    "defaultMessage": "Stale re-authentication. Please re-initiate the process."
+  },
+  {
+    "id": "chpass.stale_authn_info",
+    "defaultMessage": "Stale re-authentication. Please re-initiate the process."
+  },
+  {
+    "id": "chpass.password-changed",
+    "defaultMessage": "Your password has been changed"
+  },
+  {
+    "id": "chpass.different-repeat",
+    "defaultMessage": "The two passwords are different"
+  },
+  {
+    "id": "chpass.unable-to-verify-old-password",
+    "defaultMessage": "There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator"
+  },
+  {
+    "id": "chpass.low-password-entropy",
+    "defaultMessage": "Please provide a stronger password"
+  },
+  {
+    "id": "pwfield.terrible",
+    "defaultMessage": "Extremely weak password"
+  },
+  {
+    "id": "pwfield.bad",
+    "defaultMessage": "Very weak password"
+  },
+  {
+    "id": "pwfield.weak",
+    "defaultMessage": "Weak password"
+  },
+  {
+    "id": "pwfield.good",
+    "defaultMessage": "Fairly strong password"
+  },
+  {
+    "id": "pwfield.strong",
+    "defaultMessage": "Strong password"
+  },
+  {
+    "id": "pwfield.repeat_different",
+    "defaultMessage": "The repeated password is different from the first"
+  },
+  {
     "id": "security.delete_account",
     "defaultMessage": "Delete eduID account"
   },
@@ -1250,18 +1250,6 @@
   {
     "id": "security.confirm_title_deletion",
     "defaultMessage": "Account deletion"
-  },
-  {
-    "id": "security.change_info",
-    "defaultMessage": "For security reasons we will ask you to log in again before changing your password."
-  },
-  {
-    "id": "security.password_credential_type",
-    "defaultMessage": "Password"
-  },
-  {
-    "id": "security.confirm_title_chpass",
-    "defaultMessage": "Secure password change"
   },
   {
     "id": "header.student",
@@ -1420,7 +1408,7 @@
   {
     "id": "chpass.help-text-newpass",
     "description": "help text for custom password",
-    "defaultMessage": "<p>Choose a strong password. Some tips:</p>\n            <ul>\n\t            <li>Use upper- and lowercase characters (preferably not in the beginning or end)</li>\n\t            <li>Add digits somewhere else than at the end of the password</li>\n                <li>Add special characters, such as &#64; &#36; &#92; &#43; &#95; &#37;</li>\n\t            <li>Spaces are ignored</li>\n            </ul>"
+    "defaultMessage": "<label>Tip: Choose a strong password</label>\n            <ul id=\"password-custom-help\">\n\t            <li>Use upper- and lowercase characters, but not at the beginning or end</li>\n\t            <li>Add digits somewhere, but not at the beginning or end</li>\n                <li>Add special characters, such as &#64; &#36; &#92; &#43; &#95; &#37;</li>\n\t            <li>Spaces are ignored</li>\n            </ul>"
   },
   {
     "id": "cm.lost_code",
