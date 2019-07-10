@@ -2323,12 +2323,124 @@ const msgs = {
     />
   ),
 
+/************************/
+/* Footer > Questions ******/
+/************************/
+
+ // ---- Questions for /profile ---- //
+  "questions.profile_1": (
+    <FormattedMessage
+      id="questions.profile_1"
+      defaultMessage={`Why should I get eduID?`}
+    />
+  ),
+
+  "questions.profile_1_answer": (
+    <FormattedMessage
+      id="questions.profile_1_answer"
+      defaultMessage={`eduID is a set of login details that be used to access multiple organisations. eduID has been developed to provide students with a swedish national id number an additional identity online.`}
+    />
+  ),
+  "questions.profile_2": (
+    <FormattedMessage
+      id="questions.profile_2"
+      defaultMessage={`How do I use eduID?`}
+    />
+  ),
+
+  "questions.profile_2_answer": (
+    <FormattedMessage
+      id="questions.profile_2_answer"
+      defaultMessage={`When possible, click 'log in with eduID'. You will be redirected to eduIDs login where you provide your email address and your password.`}
+    />
+  ),
+
+  // ---- Questions for /verify-identity  ---- //
+  "questions.verify_identity_1": (
+    <FormattedMessage
+      id="questions.verify_identity_1"
+      defaultMessage={`Why do I need add my swedish national id number?`}
+    />
+  ),
+
+  "questions.verify_identity_1_answer": (
+    <FormattedMessage
+      id="questions.verify_identity_1_answer"
+      defaultMessage={`The national id number ensures that each eduID is unique to one specific person.`}
+    />
+  ),
+  "questions.verify_identity_2": (
+    <FormattedMessage
+      id="questions.verify_identity_2"
+      defaultMessage={`What does 'verify my national id number' mean?`}
+    />
+  ),
+
+  "questions.verify_identity_2_answer": (
+    <FormattedMessage
+      id="questions.verify_identity_2_answer"
+      defaultMessage={`Becasue the national id number is registered with other official services, it is possible to check details given to eduID against 3rd party information and thereby connect a physical person to the online eduID account.`}
+    />
+  ),
+
+// ---- Questions for /settings  ---- //
   "questions.settings_1": (
     <FormattedMessage
       id="questions.settings_1"
       defaultMessage={`Why do I need to add my phone number?`}
     />
   ),
+
+  "questions.settings_1_answer": (
+    <FormattedMessage
+      id="questions.settings_1_answer"
+      defaultMessage={`By adding a phone number you are making it possible to check that it connects to your given national id number.`}
+    />
+  ),
+  "questions.settings_2": (
+    <FormattedMessage
+      id="questions.settings_2"
+      defaultMessage={`Is my eduID account ever removed due to inactivity?`}
+    />
+  ),
+
+  "questions.settings_2_answer": (
+    <FormattedMessage
+      id="questions.settings_2_answer"
+      defaultMessage={`Only you can delete your account by clickling 'Delete eduID account', it will not be removed due to inactivity.`}
+    />
+  ),
+  
+  // ---- Questions for /advanced-settings  ---- //
+  "questions.settings_advanced_1": (
+    <FormattedMessage
+      id="questions.settings_advanced_1"
+      defaultMessage={`Do I need to register a security key?`}
+    />
+  ),
+
+  "questions.settings_advanced_1_answer": (
+    <FormattedMessage
+      id="questions.settings_advanced_1_answer"
+      defaultMessage={`For those who use eduID to access sensitive data a security key is required, however those users will have been infromed if and how to do this.`}
+    />
+  ),
+  "questions.settings_advanced_2": (
+    <FormattedMessage
+      id="questions.settings_advanced_2"
+      defaultMessage={`What is ORCID?`}
+    />
+  ),
+
+  "questions.settings_advanced_2_answer": (
+    <FormattedMessage
+      id="questions.settings_advanced_2_answer"
+      defaultMessage={`ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.`}
+    />
+  ),
+
+ 
+
 
   "pending.pdata": (
     <FormattedMessage
