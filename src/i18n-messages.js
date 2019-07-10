@@ -579,76 +579,80 @@ const msgs = {
   /* Main *****************/
   /************************/
 
-  "main.profile_title": (
-    <FormattedMessage id="main.profile_title" defaultMessage={`Profile`} />
-  ),
+  // "main.profile_title": (
+  //   <FormattedMessage id="main.profile_title" defaultMessage={`Profile`} />
+  // ),
 
-  "main.personal_data": (
-    <FormattedMessage
-      id="main.personal_data"
-      defaultMessage={`Personal Information`}
-    />
-  ),
+  // "main.personal_data": (
+  //   <FormattedMessage
+  //     id="main.personal_data"
+  //     defaultMessage={`Personal Information`}
+  //   />
+  // ),
 
-  "main.nins": (
-    <FormattedMessage id="main.nins" defaultMessage={`Confirm Identity`} />
-  ),
+  // "main.nins": (
+  //   <FormattedMessage id="main.nins" defaultMessage={`Confirm Identity`} />
+  // ),
 
-  "main.emails": (
-    <FormattedMessage id="main.emails" defaultMessage={`Email Addresses`} />
-  ),
+  // "main.emails": (
+  //   <FormattedMessage id="main.emails" defaultMessage={`Email Addresses`} />
+  // ),
 
-  "main.phones": (
-    <FormattedMessage id="main.phones" defaultMessage={`Phone Numbers`} />
-  ),
+  // "main.phones": (
+  //   <FormattedMessage id="main.phones" defaultMessage={`Phone Numbers`} />
+  // ),
 
-  "main.account_linking": (
-    <FormattedMessage
-      id="main.account_linking"
-      defaultMessage={`Account Linking`}
-    />
-  ),
+  // "main.account_linking": (
+  //   <FormattedMessage
+  //     id="main.account_linking"
+  //     defaultMessage={`Account Linking`}
+  //   />
+  // ),
 
-  "main.security": (
-    <FormattedMessage id="main.security" defaultMessage={`Security`} />
-  ),
+  // "main.security": (
+  //   <FormattedMessage id="main.security" defaultMessage={`Security`} />
+  // ),
 
-  "main.personal_data_label_sm": (
-    <FormattedMessage
-      id="main.personal_data_label_sm"
-      defaultMessage={`Personal`}
-    />
-  ),
+  // "main.personal_data_label_sm": (
+  //   <FormattedMessage
+  //     id="main.personal_data_label_sm"
+  //     defaultMessage={`Personal`}
+  //   />
+  // ),
 
-  "main.nins_label_sm": (
-    <FormattedMessage id="main.nins_label_sm" defaultMessage={`Identity`} />
-  ),
+  // "main.nins_label_sm": (
+  //   <FormattedMessage id="main.nins_label_sm" defaultMessage={`Identity`} />
+  // ),
 
-  "main.emails_label_sm": (
-    <FormattedMessage id="main.emails_label_sm" defaultMessage={`Emails`} />
-  ),
+  // "main.emails_label_sm": (
+  //   <FormattedMessage id="main.emails_label_sm" defaultMessage={`Emails`} />
+  // ),
 
-  "main.phones_label_sm": (
-    <FormattedMessage id="main.phones_label_sm" defaultMessage={`Phones`} />
-  ),
+  // "main.phones_label_sm": (
+  //   <FormattedMessage id="main.phones_label_sm" defaultMessage={`Phones`} />
+  // ),
 
-  "main.account_linking_label_sm": (
-    <FormattedMessage
-      id="main.account_linking_label_sm"
-      defaultMessage={`Account Linking`}
-    />
-  ),
+  // "main.account_linking_label_sm": (
+  //   <FormattedMessage
+  //     id="main.account_linking_label_sm"
+  //     defaultMessage={`Account Linking`}
+  //   />
+  // ),
 
-  "main.security_label_sm": (
-    <FormattedMessage id="main.security_label_sm" defaultMessage={`Security`} />
-  ),
+  // "main.security_label_sm": (
+  //   <FormattedMessage id="main.security_label_sm" defaultMessage={`Security`} />
+  // ),
 
-  "main.eduid_id": (
-    <FormattedMessage id="main.eduid_id" defaultMessage={`eduID identifier`} />
-  ),
+  // "main.eduid_id": (
+  //   <FormattedMessage id="main.eduid_id" defaultMessage={`eduID identifier`} />
+  // ),
+
+/************************/
+/* Main > Profile ******/
+/************************/
 
   "main.copyright": (
-    <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2018`} />
+    <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
   ),
 
   "main.menu": <FormattedMessage id="main.menu" defaultMessage={`Menu`} />,

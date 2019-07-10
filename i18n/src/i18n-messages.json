@@ -304,64 +304,8 @@
     "defaultMessage": "Registration of {email} completed"
   },
   {
-    "id": "main.profile_title",
-    "defaultMessage": "Profile"
-  },
-  {
-    "id": "main.personal_data",
-    "defaultMessage": "Personal Information"
-  },
-  {
-    "id": "main.nins",
-    "defaultMessage": "Confirm Identity"
-  },
-  {
-    "id": "main.emails",
-    "defaultMessage": "Email Addresses"
-  },
-  {
-    "id": "main.phones",
-    "defaultMessage": "Phone Numbers"
-  },
-  {
-    "id": "main.account_linking",
-    "defaultMessage": "Account Linking"
-  },
-  {
-    "id": "main.security",
-    "defaultMessage": "Security"
-  },
-  {
-    "id": "main.personal_data_label_sm",
-    "defaultMessage": "Personal"
-  },
-  {
-    "id": "main.nins_label_sm",
-    "defaultMessage": "Identity"
-  },
-  {
-    "id": "main.emails_label_sm",
-    "defaultMessage": "Emails"
-  },
-  {
-    "id": "main.phones_label_sm",
-    "defaultMessage": "Phones"
-  },
-  {
-    "id": "main.account_linking_label_sm",
-    "defaultMessage": "Account Linking"
-  },
-  {
-    "id": "main.security_label_sm",
-    "defaultMessage": "Security"
-  },
-  {
-    "id": "main.eduid_id",
-    "defaultMessage": "eduID identifier"
-  },
-  {
     "id": "main.copyright",
-    "defaultMessage": "SUNET 2013-2018"
+    "defaultMessage": "SUNET 2013-2019"
   },
   {
     "id": "main.menu",
