@@ -41,7 +41,7 @@ class Questions extends Component {
     let question2 = "";
     let answer2 = "";
     if (url.includes("personaldata")) {
-      question1 = "Why do I need to add my phone number?";
+      question1 =  "Why do I need to add my phone number?";
       answer1 =
         "By adding a phone number you are making it possible to check that it connects to your given national id number.";
       question2 = "Is my eduID account ever removed due to inactivity?";
@@ -73,7 +73,7 @@ class Questions extends Component {
       <ul id="questions-container">
         <li className="question-list">
           <div className="accordion">
-            <p className="question">{question1}</p>
+            <p className="question">{this.props.l10n("questions.settings_1")}</p>
             <div >
               <svg className="plus"
                 width="16"

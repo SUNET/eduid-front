@@ -50,7 +50,7 @@ class Footer extends Component {
     );
     return (
       <div id="footer">
-        <Questions />
+        <Questions {...this.props} />
         <div id="footer-content">
           {/* <nav id="eduid-nav">{navMenu}</nav> */}
           <p>

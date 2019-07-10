@@ -17,11 +17,14 @@ class Eidas extends Component {
     // Temporary instructions until Sweden Connect has more alternatives and we have a DS
     const freja_instructions = (
       <div className="well" id="freja-instructions">
+        <label>{this.props.l10n("eidas.freja_instructions_step_6")}</label>
         <ol>
           <li>{this.props.l10n("eidas.freja_instructions_step_1")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_2")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_3")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_4")}</li>
+          <label>{this.props.l10n("eidas.freja_instructions_tip_1")}</label>
+          <li>{this.props.l10n("eidas.freja_instructions_step_5")}</li>
         </ol>
       </div>
     );
@@ -38,7 +41,7 @@ class Eidas extends Component {
     );
 
     buttonGroup = (
-      <ButtonGroup vertical block>
+      <ButtonGroup block>
         <Button
           className="btn-link"
           href="https://frejaeid.com/skaffa-freja-eid/"
@@ -84,7 +87,7 @@ class Eidas extends Component {
             <ModalHeader>{this.props.l10n("eidas.modal_title")}</ModalHeader>
 
             <ModalBody>
-              <h4>{this.props.l10n("eidas.freja_instructions_title")}</h4>
+              {/* <h4>{this.props.l10n("eidas.freja_instructions_title")}</h4> */}
               {freja_instructions}
               {/* <NotificationsContainer/> */}
               {buttonGroup}

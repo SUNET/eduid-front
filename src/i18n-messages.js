@@ -1097,7 +1097,7 @@ const msgs = {
   /************************/
 
   "eidas.freja_eid": (
-    <FormattedMessage id="eidas.freja_eid" defaultMessage={`FREJA EID`} />
+    <FormattedMessage id="eidas.freja_eid" defaultMessage={`Freja eID`} />
   ),
 
   "eidas.initialize_proofing_help_text": (
@@ -1110,56 +1110,78 @@ const msgs = {
   "eidas.modal_title": (
     <FormattedMessage
       id="eidas.modal_title"
-      defaultMessage={`Confirm using Freja eID+`}
+      defaultMessage={`Use Freja eID+ and pass a local authorised agent`}
     />
   ),
 
-  "eidas.freja_instructions_title": (
-    <FormattedMessage
-      id="eidas.freja_instructions_title"
-      defaultMessage={`How to confirm your account using Freja eID+`}
-    />
-  ),
+  // "eidas.freja_instructions_title": (
+  //   <FormattedMessage
+  //     id="eidas.freja_instructions_title"
+  //     defaultMessage={`How to confirm your account using Freja eID+`}
+  //     defaultMessage={``}
+  //   />
+  // ),
 
   "eidas.freja_instructions_step_1": (
     <FormattedMessage
       id="eidas.freja_instructions_step_1"
-      defaultMessage={`Install the Freja eID app on your mobile device.`}
+      defaultMessage={`Install the app`}
     />
   ),
 
   "eidas.freja_instructions_step_2": (
     <FormattedMessage
       id="eidas.freja_instructions_step_2"
-      defaultMessage={`Follow the instructions in the app to reach Freja eID+ status.`}
+      defaultMessage={`Make a Freja eID+ (Plus) account`}
     />
   ),
 
   "eidas.freja_instructions_step_3": (
     <FormattedMessage
       id="eidas.freja_instructions_step_3"
-      defaultMessage={`Click the link "I have Freja eID installed" and follow the instructions on the Freja eID login page that opens.`}
+      defaultMessage={`The app will generate a QR-code`}
     />
   ),
 
   "eidas.freja_instructions_step_4": (
     <FormattedMessage
       id="eidas.freja_instructions_step_4"
-      defaultMessage={`You will be returned to the eduID dashboard after you complete the Freja eID+ login.`}
+      defaultMessage={`Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity`}
+    />
+  ),
+
+  "eidas.freja_instructions_tip_1": (
+    <FormattedMessage
+      id="eidas.freja_instructions_tip_1"
+      defaultMessage={`Tip: Use the app to find your nearest agent`}
+    />
+  ),
+
+  "eidas.freja_instructions_step_5": (
+    <FormattedMessage
+      id="eidas.freja_instructions_step_5"
+      defaultMessage={`Return to eduID (on your mobile device) and allow Freja eID to share your id number with eduID`}
+    />
+  ),
+
+  "eidas.freja_instructions_step_6": (
+    <FormattedMessage
+      id="eidas.freja_instructions_step_6"
+      defaultMessage={`If you want a quick verification and are able to pass by one of the authorized agents`}
     />
   ),
 
   "eidas.freja_instructions_install_link": (
     <FormattedMessage
       id="eidas.freja_instructions_install_link"
-      defaultMessage={`I need to install Freja eID`}
+      defaultMessage={`I have Freja eID`}
     />
   ),
 
   "eidas.freja_eid_ready": (
     <FormattedMessage
       id="eidas.freja_eid_ready"
-      defaultMessage={`I have Freja eID installed`}
+      defaultMessage={`I do not have Freja eID`}
     />
   ),
 
@@ -2298,6 +2320,13 @@ const msgs = {
     <FormattedMessage
       id="foot.change-version-tip"
       defaultMessage={`This is an experimental version. If you experience any problem while using the app, you can switch to the old version.`}
+    />
+  ),
+
+  "questions.settings_1": (
+    <FormattedMessage
+      id="questions.settings_1"
+      defaultMessage={`Why do I need to add my phone number?`}
     />
   ),
 
