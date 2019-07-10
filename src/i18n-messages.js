@@ -652,10 +652,7 @@ const msgs = {
   /************************/
 
   "profile.name_display_title": (
-    <FormattedMessage
-      id="profile.name_display_title"
-      defaultMessage={`Name`}
-    />
+    <FormattedMessage id="profile.name_display_title" defaultMessage={`Name`} />
   ),
   "profile.name_display_no_data": (
     <FormattedMessage
@@ -698,7 +695,6 @@ const msgs = {
       defaultMessage={`no email added`}
     />
   ),
- 
 
   "main.copyright": (
     <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
@@ -789,9 +785,23 @@ const msgs = {
     <FormattedMessage id="tl.pending" defaultMessage={`PENDING CONFIRMATION`} />
   ),
 
-  /**********************/
-  /***** VETTING  ******/
-  /*********************/
+  /******************************/
+  /* VERIFY IDENTITY > NIN ******/
+  /******************************/
+
+  "verify-identity.unverified_main_title": (
+    <FormattedMessage
+      id="verify-identity.unverified_main_title"
+      defaultMessage={`Add and verify your id number here`}
+    />
+  ),
+
+  "verify-identity.verified_main_title": (
+    <FormattedMessage
+      id="verify-identity.verified_main_title"
+      defaultMessage={`Your eduID is ready to use`}
+    />
+  ),
 
   /* ----- NINS ------- */
 
@@ -944,6 +954,11 @@ const msgs = {
       defaultMessage={`You cannot remove your verified national id number`}
     />
   ),
+
+
+  /***************************************/
+  /***** VERIFY IDENTITY > VETTING  ******/
+  /***************************************/
 
   /* ----- LETTER PROOFING  ------- */
   "letter.letter_button_text": (

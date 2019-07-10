@@ -412,6 +412,14 @@
     "defaultMessage": "PENDING CONFIRMATION"
   },
   {
+    "id": "verify-identity.unverified_main_title",
+    "defaultMessage": "Add and verify your id number here"
+  },
+  {
+    "id": "verify-identity.verified_main_title",
+    "defaultMessage": "Your eduID is ready to use"
+  },
+  {
     "id": "add_nin.main_title",
     "defaultMessage": "1. Add your national id number"
   },

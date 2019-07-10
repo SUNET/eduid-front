@@ -12,7 +12,8 @@ import "style/Nins.scss";
 class VerifyIdentityProcess extends Component {
   render() {
     let vettingButtons = "",
-      connectNin = "";
+      connectNin = "",
+      headerText = "";
     let buttonTextArray = [
       "Recieve a confirmation code in the mail",
       "Recieve a confirmation code to your mobile phone",
@@ -34,7 +35,6 @@ class VerifyIdentityProcess extends Component {
       });
     }
 
-    
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
         <div key="1" id="connect-nin-number">
@@ -52,12 +52,15 @@ class VerifyIdentityProcess extends Component {
         </div>
       ];
     }
+    if (this.props.verifiedNinStatus) {
+      headerText = this.props.l10n("verify-identity.verified_main_title");
+    } else {
+      headerText = this.props.l10n("verify-identity.unverified_main_title");
+    }
 
     return (
       <div id="verify-identity-container">
-        <h3 className="verify-identity-header">
-          Add and verify your id number here
-        </h3>
+        <h3 className="verify-identity-header">{headerText}</h3>
         <AddNin {...this.props} />
         {connectNin}
       </div>
