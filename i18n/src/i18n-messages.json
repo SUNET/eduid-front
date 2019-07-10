@@ -352,22 +352,6 @@
     "defaultMessage": "Added email is duplicated"
   },
   {
-    "id": "emails.cannot_remove_primary",
-    "defaultMessage": "You can not delete the primary email"
-  },
-  {
-    "id": "emails.invalid_email",
-    "defaultMessage": "The entered value does not look like an email"
-  },
-  {
-    "id": "emails.missing",
-    "defaultMessage": "You must provide an email address"
-  },
-  {
-    "id": "emails.unknown_email",
-    "defaultMessage": "We have no record of the email address you provided"
-  },
-  {
     "id": "tl.primary",
     "defaultMessage": "PRIMARY"
   },
@@ -384,84 +368,116 @@
     "defaultMessage": "PENDING CONFIRMATION"
   },
   {
-    "id": "emails.resend_success",
-    "defaultMessage": "New code successfully sent to {email}"
+    "id": "nins.main_title",
+    "defaultMessage": "National identity number"
   },
   {
-    "id": "emails.email",
-    "defaultMessage": "Email"
+    "id": "nins.justification",
+    "defaultMessage": "Some service providers (e.g. Antagning.se) require a confirmed identity."
   },
   {
-    "id": "emails.input_help_text",
-    "defaultMessage": "A valid email address"
+    "id": "nins.nin",
+    "defaultMessage": "Number"
   },
   {
-    "id": "emails.code_invalid",
-    "defaultMessage": "The confirmation code is invalid, please try again or request a new code"
+    "id": "nins.input_help_text",
+    "defaultMessage": "National identity number with 12 digits"
   },
   {
-    "id": "emails.code_invalid_or_expired",
-    "defaultMessage": "The confirmation code is invalid or it has expired, please try again or request a new code"
+    "id": "nins.verified",
+    "defaultMessage": "Verified"
   },
   {
-    "id": "emails.button_add",
-    "defaultMessage": "Add"
+    "id": "nins.primary",
+    "defaultMessage": "Primary"
   },
   {
-    "id": "emails.confirm_title",
-    "defaultMessage": "Check your email inbox for {email} for further instructions"
+    "id": "nins.help_text",
+    "defaultMessage": "Add your Swedish national identity number and initiate the confirmation process using one of the buttons below."
   },
   {
-    "id": "emails.long_description",
-    "defaultMessage": "You can connect one or more email addresses with your eduID \n          account and select one to be your primary email address."
+    "id": "nins.invalid_nin",
+    "defaultMessage": "Invalid NIN"
   },
   {
-    "id": "emails.main_title",
-    "defaultMessage": "Email addresses"
+    "id": "nins.wrong_length",
+    "defaultMessage": "NINs must have 12 digits"
   },
   {
-    "id": "emails.get-success",
-    "defaultMessage": "Successfully retrieved Email addresses"
+    "id": "nins.illegal_chars",
+    "defaultMessage": "NINs can only have digits"
   },
   {
-    "id": "emails.duplicated",
-    "defaultMessage": "That email address is already in use, please choose another"
+    "id": "nins.valid_nin",
+    "defaultMessage": "Valid NIN"
   },
   {
-    "id": "emails.save-success",
-    "defaultMessage": "Email address saved successfully"
+    "id": "nins.confirmed_nin",
+    "defaultMessage": "NIN (Confirmed)"
   },
   {
-    "id": "emails.unconfirmed_address_not_primary",
-    "defaultMessage": "An unconfirmed mail address cannot be set as primary"
+    "id": "nins.unconfirmed_nin",
+    "defaultMessage": "Unconfirmed NIN"
   },
   {
-    "id": "emails.primary-success",
-    "defaultMessage": "Email address successfully set as primary"
+    "id": "nins.button_delete",
+    "defaultMessage": "Remove"
   },
   {
-    "id": "emails.code_expired_send_new",
-    "defaultMessage": "Expired verification code, sending another"
+    "id": "nins.only_one_to_verify",
+    "defaultMessage": "You can only have one unverified NIN to verify it. Please remove the unwanted ones."
   },
   {
-    "id": "emails.verification-success",
-    "defaultMessage": "Successfully verified email address"
+    "id": "nins.success_removal",
+    "defaultMessage": "Successfully removed NIN"
   },
   {
-    "id": "emails.cannot_remove_unique",
-    "defaultMessage": "You must have at least one email address"
+    "id": "nins.no-mobile-match",
+    "defaultMessage": "No phone number matching NIN"
   },
   {
-    "id": "emails.cannot_remove_unique_verified",
-    "defaultMessage": "You must have at least one verified email address"
+    "id": "nins.verified_no_rm",
+    "defaultMessage": "You cannot remove your verified National identity number"
   },
   {
-    "id": "emails.removal-success",
-    "defaultMessage": "Successfully removed email address"
+    "id": "letter.letter_button_text",
+    "defaultMessage": "Confirm using letter"
   },
   {
-    "id": "emails.code-sent",
-    "defaultMessage": "Successfully sent verification code"
+    "id": "letter.initialize_proofing_help_text",
+    "defaultMessage": "To use this option you will have to wait for a letter sent to your official address."
+  },
+  {
+    "id": "letter.no_state_found",
+    "defaultMessage": "No state found"
+  },
+  {
+    "id": "letter.letter_sent_msg",
+    "defaultMessage": "You have been sent a verification letter"
+  },
+  {
+    "id": "letter.already-sent",
+    "defaultMessage": "You have already been sent a verification letter"
+  },
+  {
+    "id": "letter.no-address-found",
+    "defaultMessage": "No postal address found"
+  },
+  {
+    "id": "letter.bad-postal-address",
+    "defaultMessage": "The postal address is incomprehensible"
+  },
+  {
+    "id": "letter.saved-unconfirmed",
+    "defaultMessage": "Saved unconfirmed NIN"
+  },
+  {
+    "id": "letter.wrong-code",
+    "defaultMessage": "Incorrect verification code"
+  },
+  {
+    "id": "letter.verification_success",
+    "defaultMessage": "Successfully verified NIN"
   },
   {
     "id": "lmp.confirm-lookup-mobile",
@@ -478,6 +494,62 @@
   {
     "id": "lmp.verification_success",
     "defaultMessage": "Your NIN has been successfully verified"
+  },
+  {
+    "id": "eidas.freja_eid",
+    "defaultMessage": "Freja eID"
+  },
+  {
+    "id": "eidas.initialize_proofing_help_text",
+    "defaultMessage": "To use this option you need to have <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID+</a>."
+  },
+  {
+    "id": "eidas.modal_title",
+    "defaultMessage": "Use Freja eID+ and pass a local authorised agent"
+  },
+  {
+    "id": "eidas.freja_instructions_step_1",
+    "defaultMessage": "Install the app"
+  },
+  {
+    "id": "eidas.freja_instructions_step_2",
+    "defaultMessage": "Make a Freja eID+ (Plus) account"
+  },
+  {
+    "id": "eidas.freja_instructions_step_3",
+    "defaultMessage": "The app will generate a QR-code"
+  },
+  {
+    "id": "eidas.freja_instructions_step_4",
+    "defaultMessage": "Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity"
+  },
+  {
+    "id": "eidas.freja_instructions_tip_1",
+    "defaultMessage": "Tip: Use the app to find your nearest agent"
+  },
+  {
+    "id": "eidas.freja_instructions_step_5",
+    "defaultMessage": "Return to eduID (on your mobile device) and allow Freja eID to share your id number with eduID"
+  },
+  {
+    "id": "eidas.freja_instructions_step_6",
+    "defaultMessage": "If you want a quick verification and are able to pass by one of the authorized agents"
+  },
+  {
+    "id": "eidas.freja_instructions_install_link",
+    "defaultMessage": "I have Freja eID"
+  },
+  {
+    "id": "eidas.freja_eid_ready",
+    "defaultMessage": "I do not have Freja eID"
+  },
+  {
+    "id": "eidas.error_missing_nin",
+    "defaultMessage": "Please add a national identity number and try again"
+  },
+  {
+    "id": "eidas.error_unknown_error",
+    "defaultMessage": "Temporary technical difficulties, please try again later"
   },
   {
     "id": "oc.initialize_proofing",
@@ -576,262 +648,6 @@
     "defaultMessage": "Temporary technical difficulties, please try again later"
   },
   {
-    "id": "eidas.freja_eid",
-    "defaultMessage": "Freja eID"
-  },
-  {
-    "id": "eidas.initialize_proofing_help_text",
-    "defaultMessage": "To use this option you need to have <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID+</a>."
-  },
-  {
-    "id": "eidas.modal_title",
-    "defaultMessage": "Use Freja eID+ and pass a local authorised agent"
-  },
-  {
-    "id": "eidas.freja_instructions_step_1",
-    "defaultMessage": "Install the app"
-  },
-  {
-    "id": "eidas.freja_instructions_step_2",
-    "defaultMessage": "Make a Freja eID+ (Plus) account"
-  },
-  {
-    "id": "eidas.freja_instructions_step_3",
-    "defaultMessage": "The app will generate a QR-code"
-  },
-  {
-    "id": "eidas.freja_instructions_step_4",
-    "defaultMessage": "Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity"
-  },
-  {
-    "id": "eidas.freja_instructions_tip_1",
-    "defaultMessage": "Tip: Use the app to find your nearest agent"
-  },
-  {
-    "id": "eidas.freja_instructions_step_5",
-    "defaultMessage": "Return to eduID (on your mobile device) and allow Freja eID to share your id number with eduID"
-  },
-  {
-    "id": "eidas.freja_instructions_step_6",
-    "defaultMessage": "If you want a quick verification and are able to pass by one of the authorized agents"
-  },
-  {
-    "id": "eidas.freja_instructions_install_link",
-    "defaultMessage": "I have Freja eID"
-  },
-  {
-    "id": "eidas.freja_eid_ready",
-    "defaultMessage": "I do not have Freja eID"
-  },
-  {
-    "id": "eidas.error_missing_nin",
-    "defaultMessage": "Please add a national identity number and try again"
-  },
-  {
-    "id": "eidas.error_unknown_error",
-    "defaultMessage": "Temporary technical difficulties, please try again later"
-  },
-  {
-    "id": "account_linking.main_title",
-    "defaultMessage": "Connect other accounts"
-  },
-  {
-    "id": "account_linking.long_description",
-    "defaultMessage": "Simplify login by connecting your eduID to other accounts."
-  },
-  {
-    "id": "orc.authorization_success",
-    "defaultMessage": "ORCID connected successfully"
-  },
-  {
-    "id": "orc.already_connected",
-    "defaultMessage": "ORCID already connected to this account"
-  },
-  {
-    "id": "orc.unknown_state",
-    "defaultMessage": "State was unknown when trying to connect ORCID account"
-  },
-  {
-    "id": "orc.sub_missmatch",
-    "defaultMessage": "Subject mismatch when trying to connect ORCID account"
-  },
-  {
-    "id": "orc.title",
-    "defaultMessage": "ORCID"
-  },
-  {
-    "id": "orc.long_description",
-    "defaultMessage": "ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with."
-  },
-  {
-    "id": "orc.about_link",
-    "defaultMessage": "Learn more about ORCID in eduID from our <a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>."
-  },
-  {
-    "id": "orc.connect",
-    "defaultMessage": "Connect ORCID account"
-  },
-  {
-    "id": "orc.authorization_fail",
-    "defaultMessage": "ORCID authentication failed"
-  },
-  {
-    "id": "eidas.token_not_found",
-    "defaultMessage": "U2F token not found"
-  },
-  {
-    "id": "eidas.token_not_in_credentials_used",
-    "defaultMessage": "U2F token not used for login"
-  },
-  {
-    "id": "eidas.nin_not_matching",
-    "defaultMessage": "Asserted identity not matching the current accounts verified identity"
-  },
-  {
-    "id": "eidas.nin_already_verified",
-    "defaultMessage": "You have already verified your identity"
-  },
-  {
-    "id": "eidas.nin_verify_success",
-    "defaultMessage": "Identity verified successfully"
-  },
-  {
-    "id": "eidas.token_verify_success",
-    "defaultMessage": "U2F token verified successfully"
-  },
-  {
-    "id": "eidas.authn_context_mismatch",
-    "defaultMessage": "Wrong authentication context received"
-  },
-  {
-    "id": "eidas.reauthn_expired",
-    "defaultMessage": "Authentication has expired. Please try again."
-  },
-  {
-    "id": "pd.long_description",
-    "defaultMessage": "This information is sent to service providers\n           when you log in using eduID in order to personalize those services for you."
-  },
-  {
-    "id": "pd.main_title",
-    "defaultMessage": "Personal information"
-  },
-  {
-    "id": "pd.all-data-success",
-    "defaultMessage": "Successfully retrieved personal information"
-  },
-  {
-    "id": "pd.pdata-success",
-    "defaultMessage": "Successfully retrieved personal information"
-  },
-  {
-    "id": "pd.save-success",
-    "defaultMessage": "Successfully saved personal information"
-  },
-  {
-    "id": "pdata.field_required",
-    "defaultMessage": "This field is required"
-  },
-  {
-    "id": "pd.display_name_input_help_text",
-    "defaultMessage": "Some services will show this instead of your given name and surname."
-  },
-  {
-    "id": "mobile.resend_success",
-    "defaultMessage": "New code successfully sent to {email}"
-  },
-  {
-    "id": "mobile.mobile",
-    "defaultMessage": "mobile"
-  },
-  {
-    "id": "mobile.button_add",
-    "defaultMessage": "Add"
-  },
-  {
-    "id": "mobile.confirm_title",
-    "defaultMessage": "Check your mobile inbox for {phone} for further instructions"
-  },
-  {
-    "id": "phones.long_description",
-    "defaultMessage": "You can connect one or more mobile phone numbers with\n           your eduID account, and select which one is the primary one."
-  },
-  {
-    "id": "phones.input_help_text",
-    "defaultMessage": "Phone number starting with 0 or +"
-  },
-  {
-    "id": "phones.main_title",
-    "defaultMessage": "Mobile phone numbers"
-  },
-  {
-    "id": "phones.get-success",
-    "defaultMessage": "Successfully retrieved phone numbers"
-  },
-  {
-    "id": "phones.duplicated",
-    "defaultMessage": "That phone number is already in use, please choose another"
-  },
-  {
-    "id": "phones.save-success",
-    "defaultMessage": "phone number saved successfully"
-  },
-  {
-    "id": "phones.unconfirmed_number_not_primary",
-    "defaultMessage": "An unconfirmed phone number cannot be set as primary"
-  },
-  {
-    "id": "phones.primary-success",
-    "defaultMessage": "phone number successfully set as primary"
-  },
-  {
-    "id": "phones.code_expired_send_new",
-    "defaultMessage": "Expired verification code, sending another"
-  },
-  {
-    "id": "phones.code_invalid",
-    "defaultMessage": "Invalid verification code"
-  },
-  {
-    "id": "phones.invalid_phone",
-    "defaultMessage": "Invalid phone number"
-  },
-  {
-    "id": "phones.unknown_phone",
-    "defaultMessage": "We have no record of the phone number you provided"
-  },
-  {
-    "id": "phones.code_invalid_or_expired",
-    "defaultMessage": "The confirmation code is invalid or it has expired, please try again or request a new code"
-  },
-  {
-    "id": "phones.verification-success",
-    "defaultMessage": "Successfully verified phone number"
-  },
-  {
-    "id": "phones.cannot_remove_unique",
-    "defaultMessage": "You must have at least one phone number"
-  },
-  {
-    "id": "phones.cannot_remove_primary",
-    "defaultMessage": "You cannot remove your primary phone number"
-  },
-  {
-    "id": "phones.removal-success",
-    "defaultMessage": "Successfully removed phone number"
-  },
-  {
-    "id": "phones.code-sent",
-    "defaultMessage": "Successfully sent verification code"
-  },
-  {
-    "id": "phone.e164_format",
-    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits."
-  },
-  {
-    "id": "phone.swedish_mobile_format",
-    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits."
-  },
-  {
     "id": "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.",
     "defaultMessage": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
   },
@@ -885,42 +701,6 @@
   },
   {
     "id": "security.account_title",
-    "defaultMessage": "Account deletion"
-  },
-  {
-    "id": "security.delete_account",
-    "defaultMessage": "Delete eduID account"
-  },
-  {
-    "id": "security.confirm_title",
-    "defaultMessage": "Delete account"
-  },
-  {
-    "id": "security.modal_info",
-    "defaultMessage": "Are you sure that you wish to delete your eduID account? This action will\n                           permanently remove all the data associated with the account from our database."
-  },
-  {
-    "id": "security.modal_notes",
-    "defaultMessage": "Note that for security reasons if you choose to delete your account,\n                           you will be asked to log in again."
-  },
-  {
-    "id": "security.change_info",
-    "defaultMessage": "For security reasons we will ask you to log in again before changing your password."
-  },
-  {
-    "id": "security.confirm_button",
-    "defaultMessage": "Confirm deletion of eduID account"
-  },
-  {
-    "id": "security.password_credential_type",
-    "defaultMessage": "Password"
-  },
-  {
-    "id": "security.confirm_title_chpass",
-    "defaultMessage": "Secure password change"
-  },
-  {
-    "id": "security.confirm_title_deletion",
     "defaultMessage": "Account deletion"
   },
   {
@@ -1148,116 +928,336 @@
     "defaultMessage": "Repeated pasword is different"
   },
   {
-    "id": "nins.main_title",
-    "defaultMessage": "National identity number"
+    "id": "account_linking.main_title",
+    "defaultMessage": "Connect other accounts"
   },
   {
-    "id": "nins.justification",
-    "defaultMessage": "Some service providers (e.g. Antagning.se) require a confirmed identity."
+    "id": "account_linking.long_description",
+    "defaultMessage": "Simplify login by connecting your eduID to other accounts."
   },
   {
-    "id": "nins.nin",
-    "defaultMessage": "Number"
+    "id": "orc.authorization_success",
+    "defaultMessage": "ORCID connected successfully"
   },
   {
-    "id": "nins.input_help_text",
-    "defaultMessage": "National identity number with 12 digits"
+    "id": "orc.already_connected",
+    "defaultMessage": "ORCID already connected to this account"
   },
   {
-    "id": "nins.verified",
-    "defaultMessage": "Verified"
+    "id": "orc.unknown_state",
+    "defaultMessage": "State was unknown when trying to connect ORCID account"
   },
   {
-    "id": "nins.primary",
-    "defaultMessage": "Primary"
+    "id": "orc.sub_missmatch",
+    "defaultMessage": "Subject mismatch when trying to connect ORCID account"
   },
   {
-    "id": "nins.help_text",
-    "defaultMessage": "Add your Swedish national identity number and initiate the confirmation process using one of the buttons below."
+    "id": "orc.title",
+    "defaultMessage": "ORCID"
   },
   {
-    "id": "nins.invalid_nin",
-    "defaultMessage": "Invalid NIN"
+    "id": "orc.long_description",
+    "defaultMessage": "ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with."
   },
   {
-    "id": "nins.wrong_length",
-    "defaultMessage": "NINs must have 12 digits"
+    "id": "orc.about_link",
+    "defaultMessage": "Learn more about ORCID in eduID from our <a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>."
   },
   {
-    "id": "nins.illegal_chars",
-    "defaultMessage": "NINs can only have digits"
+    "id": "orc.connect",
+    "defaultMessage": "Connect ORCID account"
   },
   {
-    "id": "nins.valid_nin",
-    "defaultMessage": "Valid NIN"
+    "id": "orc.authorization_fail",
+    "defaultMessage": "ORCID authentication failed"
   },
   {
-    "id": "nins.confirmed_nin",
-    "defaultMessage": "NIN (Confirmed)"
+    "id": "eidas.token_not_found",
+    "defaultMessage": "U2F token not found"
   },
   {
-    "id": "nins.unconfirmed_nin",
-    "defaultMessage": "Unconfirmed NIN"
+    "id": "eidas.token_not_in_credentials_used",
+    "defaultMessage": "U2F token not used for login"
   },
   {
-    "id": "nins.button_delete",
-    "defaultMessage": "Remove"
+    "id": "eidas.nin_not_matching",
+    "defaultMessage": "Asserted identity not matching the current accounts verified identity"
   },
   {
-    "id": "nins.only_one_to_verify",
-    "defaultMessage": "You can only have one unverified NIN to verify it. Please remove the unwanted ones."
+    "id": "eidas.nin_already_verified",
+    "defaultMessage": "You have already verified your identity"
   },
   {
-    "id": "nins.success_removal",
-    "defaultMessage": "Successfully removed NIN"
+    "id": "eidas.nin_verify_success",
+    "defaultMessage": "Identity verified successfully"
   },
   {
-    "id": "nins.no-mobile-match",
-    "defaultMessage": "No phone number matching NIN"
+    "id": "eidas.token_verify_success",
+    "defaultMessage": "U2F token verified successfully"
   },
   {
-    "id": "nins.verified_no_rm",
-    "defaultMessage": "You cannot remove your verified National identity number"
+    "id": "eidas.authn_context_mismatch",
+    "defaultMessage": "Wrong authentication context received"
   },
   {
-    "id": "letter.letter_button_text",
-    "defaultMessage": "Confirm using letter"
+    "id": "eidas.reauthn_expired",
+    "defaultMessage": "Authentication has expired. Please try again."
   },
   {
-    "id": "letter.initialize_proofing_help_text",
-    "defaultMessage": "To use this option you will have to wait for a letter sent to your official address."
+    "id": "pd.long_description",
+    "defaultMessage": "This information is sent to service providers\n           when you log in using eduID in order to personalize those services for you."
   },
   {
-    "id": "letter.no_state_found",
-    "defaultMessage": "No state found"
+    "id": "pd.main_title",
+    "defaultMessage": "Personal information"
   },
   {
-    "id": "letter.letter_sent_msg",
-    "defaultMessage": "You have been sent a verification letter"
+    "id": "pd.all-data-success",
+    "defaultMessage": "Successfully retrieved personal information"
   },
   {
-    "id": "letter.already-sent",
-    "defaultMessage": "You have already been sent a verification letter"
+    "id": "pd.pdata-success",
+    "defaultMessage": "Successfully retrieved personal information"
   },
   {
-    "id": "letter.no-address-found",
-    "defaultMessage": "No postal address found"
+    "id": "pd.save-success",
+    "defaultMessage": "Successfully saved personal information"
   },
   {
-    "id": "letter.bad-postal-address",
-    "defaultMessage": "The postal address is incomprehensible"
+    "id": "pdata.field_required",
+    "defaultMessage": "This field is required"
   },
   {
-    "id": "letter.saved-unconfirmed",
-    "defaultMessage": "Saved unconfirmed NIN"
+    "id": "pd.display_name_input_help_text",
+    "defaultMessage": "Some services will show this instead of your given name and surname."
   },
   {
-    "id": "letter.wrong-code",
-    "defaultMessage": "Incorrect verification code"
+    "id": "emails.resend_success",
+    "defaultMessage": "New code successfully sent to {email}"
   },
   {
-    "id": "letter.verification_success",
-    "defaultMessage": "Successfully verified NIN"
+    "id": "emails.email",
+    "defaultMessage": "Email"
+  },
+  {
+    "id": "emails.input_help_text",
+    "defaultMessage": "A valid email address"
+  },
+  {
+    "id": "emails.code_invalid",
+    "defaultMessage": "The confirmation code is invalid, please try again or request a new code"
+  },
+  {
+    "id": "emails.code_invalid_or_expired",
+    "defaultMessage": "The confirmation code is invalid or it has expired, please try again or request a new code"
+  },
+  {
+    "id": "emails.button_add",
+    "defaultMessage": "Add"
+  },
+  {
+    "id": "emails.confirm_title",
+    "defaultMessage": "Check your email inbox for {email} for further instructions"
+  },
+  {
+    "id": "emails.long_description",
+    "defaultMessage": "You can connect one or more email addresses with your eduID \n          account and select one to be your primary email address."
+  },
+  {
+    "id": "emails.main_title",
+    "defaultMessage": "Email addresses"
+  },
+  {
+    "id": "emails.get-success",
+    "defaultMessage": "Successfully retrieved Email addresses"
+  },
+  {
+    "id": "emails.duplicated",
+    "defaultMessage": "That email address is already in use, please choose another"
+  },
+  {
+    "id": "emails.save-success",
+    "defaultMessage": "Email address saved successfully"
+  },
+  {
+    "id": "emails.unconfirmed_address_not_primary",
+    "defaultMessage": "An unconfirmed mail address cannot be set as primary"
+  },
+  {
+    "id": "emails.primary-success",
+    "defaultMessage": "Email address successfully set as primary"
+  },
+  {
+    "id": "emails.code_expired_send_new",
+    "defaultMessage": "Expired verification code, sending another"
+  },
+  {
+    "id": "emails.verification-success",
+    "defaultMessage": "Successfully verified email address"
+  },
+  {
+    "id": "emails.cannot_remove_unique",
+    "defaultMessage": "You must have at least one email address"
+  },
+  {
+    "id": "emails.cannot_remove_unique_verified",
+    "defaultMessage": "You must have at least one verified email address"
+  },
+  {
+    "id": "emails.removal-success",
+    "defaultMessage": "Successfully removed email address"
+  },
+  {
+    "id": "emails.code-sent",
+    "defaultMessage": "Successfully sent verification code"
+  },
+  {
+    "id": "emails.cannot_remove_primary",
+    "defaultMessage": "You can not delete the primary email"
+  },
+  {
+    "id": "emails.invalid_email",
+    "defaultMessage": "The entered value does not look like an email"
+  },
+  {
+    "id": "emails.missing",
+    "defaultMessage": "You must provide an email address"
+  },
+  {
+    "id": "emails.unknown_email",
+    "defaultMessage": "We have no record of the email address you provided"
+  },
+  {
+    "id": "mobile.resend_success",
+    "defaultMessage": "New code successfully sent to {email}"
+  },
+  {
+    "id": "mobile.mobile",
+    "defaultMessage": "mobile"
+  },
+  {
+    "id": "mobile.button_add",
+    "defaultMessage": "Add"
+  },
+  {
+    "id": "mobile.confirm_title",
+    "defaultMessage": "Check your mobile inbox for {phone} for further instructions"
+  },
+  {
+    "id": "phones.long_description",
+    "defaultMessage": "You can connect one or more mobile phone numbers with\n           your eduID account, and select which one is the primary one."
+  },
+  {
+    "id": "phones.input_help_text",
+    "defaultMessage": "Phone number starting with 0 or +"
+  },
+  {
+    "id": "phones.main_title",
+    "defaultMessage": "Mobile phone numbers"
+  },
+  {
+    "id": "phones.get-success",
+    "defaultMessage": "Successfully retrieved phone numbers"
+  },
+  {
+    "id": "phones.duplicated",
+    "defaultMessage": "That phone number is already in use, please choose another"
+  },
+  {
+    "id": "phones.save-success",
+    "defaultMessage": "phone number saved successfully"
+  },
+  {
+    "id": "phones.unconfirmed_number_not_primary",
+    "defaultMessage": "An unconfirmed phone number cannot be set as primary"
+  },
+  {
+    "id": "phones.primary-success",
+    "defaultMessage": "phone number successfully set as primary"
+  },
+  {
+    "id": "phones.code_expired_send_new",
+    "defaultMessage": "Expired verification code, sending another"
+  },
+  {
+    "id": "phones.code_invalid",
+    "defaultMessage": "Invalid verification code"
+  },
+  {
+    "id": "phones.invalid_phone",
+    "defaultMessage": "Invalid phone number"
+  },
+  {
+    "id": "phones.unknown_phone",
+    "defaultMessage": "We have no record of the phone number you provided"
+  },
+  {
+    "id": "phones.code_invalid_or_expired",
+    "defaultMessage": "The confirmation code is invalid or it has expired, please try again or request a new code"
+  },
+  {
+    "id": "phones.verification-success",
+    "defaultMessage": "Successfully verified phone number"
+  },
+  {
+    "id": "phones.cannot_remove_unique",
+    "defaultMessage": "You must have at least one phone number"
+  },
+  {
+    "id": "phones.cannot_remove_primary",
+    "defaultMessage": "You cannot remove your primary phone number"
+  },
+  {
+    "id": "phones.removal-success",
+    "defaultMessage": "Successfully removed phone number"
+  },
+  {
+    "id": "phones.code-sent",
+    "defaultMessage": "Successfully sent verification code"
+  },
+  {
+    "id": "phone.e164_format",
+    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits."
+  },
+  {
+    "id": "phone.swedish_mobile_format",
+    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits."
+  },
+  {
+    "id": "security.delete_account",
+    "defaultMessage": "Delete eduID account"
+  },
+  {
+    "id": "security.confirm_title",
+    "defaultMessage": "Delete account"
+  },
+  {
+    "id": "security.modal_info",
+    "defaultMessage": "Are you sure that you wish to delete your eduID account? This action will\n                           permanently remove all the data associated with the account from our database."
+  },
+  {
+    "id": "security.modal_notes",
+    "defaultMessage": "Note that for security reasons if you choose to delete your account,\n                           you will be asked to log in again."
+  },
+  {
+    "id": "security.confirm_button",
+    "defaultMessage": "Confirm deletion of eduID account"
+  },
+  {
+    "id": "security.confirm_title_deletion",
+    "defaultMessage": "Account deletion"
+  },
+  {
+    "id": "security.change_info",
+    "defaultMessage": "For security reasons we will ask you to log in again before changing your password."
+  },
+  {
+    "id": "security.password_credential_type",
+    "defaultMessage": "Password"
+  },
+  {
+    "id": "security.confirm_title_chpass",
+    "defaultMessage": "Secure password change"
   },
   {
     "id": "header.student",

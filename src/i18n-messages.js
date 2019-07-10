@@ -647,9 +647,9 @@ const msgs = {
   //   <FormattedMessage id="main.eduid_id" defaultMessage={`eduID identifier`} />
   // ),
 
-/************************/
-/* Main > Profile ******/
-/************************/
+  /************************/
+  /* Main > Profile ******/
+  /************************/
 
   "main.copyright": (
     <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
@@ -657,9 +657,13 @@ const msgs = {
 
   "main.menu": <FormattedMessage id="main.menu" defaultMessage={`Menu`} />,
 
-  /************************/
-  /* ConfirmModal *********/
-  /************************/
+
+  
+/**********************/
+/***** GENERAL  ******/
+/*********************/
+
+/* ----- ConfirmModal  ------- */
 
   "cm.ok": <FormattedMessage id="cm.ok" defaultMessage={`OK`} />,
 
@@ -678,9 +682,8 @@ const msgs = {
     />
   ),
 
-  /************************/
-  /* TABLE LIST ***********/
-  /************************/
+/* ----- TABLE LIST  ------- */
+
   "phone.phone_duplicated": (
     <FormattedMessage
       id="phone_duplicated"
@@ -710,34 +713,6 @@ const msgs = {
     />
   ),
 
-  "emails.cannot_remove_primary": (
-    <FormattedMessage
-      id="emails.cannot_remove_primary"
-      defaultMessage={`You can not delete the primary email`}
-    />
-  ),
-
-  "emails.invalid_email": (
-    <FormattedMessage
-      id="emails.invalid_email"
-      defaultMessage={`The entered value does not look like an email`}
-    />
-  ),
-
-  "emails.missing": (
-    <FormattedMessage
-      id="emails.missing"
-      defaultMessage={`You must provide an email address`}
-    />
-  ),
-
-  "emails.unknown_email": (
-    <FormattedMessage
-      id="emails.unknown_email"
-      defaultMessage={`We have no record of the email address you provided`}
-    />
-  ),
-
   "tl.primary": <FormattedMessage id="tl.primary" defaultMessage={`PRIMARY`} />,
 
   "tl.make_primary": (
@@ -750,150 +725,194 @@ const msgs = {
     <FormattedMessage id="tl.pending" defaultMessage={`PENDING CONFIRMATION`} />
   ),
 
-  /************************/
-  /* Emails ***************/
-  /************************/
 
-  "emails.resend_success": values => (
+
+  /**********************/
+  /***** VETTING  ******/
+  /*********************/
+
+
+/* ----- NINS ------- */
+
+  "nins.main_title": (
     <FormattedMessage
-      id="emails.resend_success"
-      defaultMessage={`New code successfully sent to {email}`}
-      values={values}
+      id="nins.main_title"
+      defaultMessage={`National identity number`}
     />
   ),
 
-  "emails.email_label": (
-    <FormattedMessage id="emails.email" defaultMessage={`Email`} />
-  ),
-
-  "emails.input_help_text": (
+  "nins.justification": (
     <FormattedMessage
-      id="emails.input_help_text"
-      defaultMessage={"A valid email address"}
+      id="nins.justification"
+      defaultMessage={`Some service providers (e.g. Antagning.se) require a confirmed identity.`}
     />
   ),
 
-  "emails.code_invalid": (
+  "nins.nin": <FormattedMessage id="nins.nin" defaultMessage={"Number"} />,
+
+  "nins.input_help_text": (
     <FormattedMessage
-      id="emails.code_invalid"
-      defaultMessage={`The confirmation code is invalid, please try again or request a new code`}
+      id="nins.input_help_text"
+      defaultMessage={"National identity number with 12 digits"}
     />
   ),
 
-  "emails.code_invalid_or_expired": (
+  "nins.verified": (
+    <FormattedMessage id="nins.verified" defaultMessage={`Verified`} />
+  ),
+
+  "nins.primary": (
+    <FormattedMessage id="nins.primary" defaultMessage={`Primary`} />
+  ),
+
+  "nins.help_text": (
     <FormattedMessage
-      id="emails.code_invalid_or_expired"
-      defaultMessage={`The confirmation code is invalid or it has expired, please try again or request a new code`}
+      id="nins.help_text"
+      defaultMessage={`Add your Swedish national identity number and initiate the confirmation process using one of the buttons below.`}
     />
   ),
 
-  "emails.button_add": (
-    <FormattedMessage id="emails.button_add" defaultMessage={`Add`} />
+  "nins.invalid_nin": (
+    <FormattedMessage id="nins.invalid_nin" defaultMessage={`Invalid NIN`} />
   ),
 
-  "emails.confirm_title": values => (
+  "nins.wrong_length": (
     <FormattedMessage
-      id="emails.confirm_title"
-      defaultMessage={`Check your email inbox for {email} for further instructions`}
-      values={values}
+      id="nins.wrong_length"
+      defaultMessage={`NINs must have 12 digits`}
     />
   ),
 
-  "emails.long_description": (
+  "nins.illegal_chars": (
     <FormattedMessage
-      id="emails.long_description"
-      defaultMessage={`You can connect one or more email addresses with your eduID 
-          account and select one to be your primary email address.`}
+      id="nins.illegal_chars"
+      defaultMessage={`NINs can only have digits`}
     />
   ),
 
-  "emails.main_title": (
+  "nins.valid_nin": (
+    <FormattedMessage id="nins.valid_nin" defaultMessage={`Valid NIN`} />
+  ),
+
+  "nins.confirmed_nin": (
     <FormattedMessage
-      id="emails.main_title"
-      defaultMessage={`Email addresses`}
+      id="nins.confirmed_nin"
+      defaultMessage={`NIN (Confirmed)`}
     />
   ),
 
-  "emails.get-success": (
+  "nins.unconfirmed_nin": (
     <FormattedMessage
-      id="emails.get-success"
-      defaultMessage={`Successfully retrieved Email addresses`}
+      id="nins.unconfirmed_nin"
+      defaultMessage={`Unconfirmed NIN`}
     />
   ),
 
-  "emails.duplicated": (
+  "nins.button_delete": (
+    <FormattedMessage id="nins.button_delete" defaultMessage={`Remove`} />
+  ),
+
+  "nins.only_one_to_verify": (
     <FormattedMessage
-      id="emails.duplicated"
-      defaultMessage={`That email address is already in use, please choose another`}
+      id="nins.only_one_to_verify"
+      defaultMessage={`You can only have one unverified NIN to verify it. Please remove the unwanted ones.`}
     />
   ),
 
-  "emails.save-success": (
+  "nins.success_removal": (
     <FormattedMessage
-      id="emails.save-success"
-      defaultMessage={`Email address saved successfully`}
+      id="nins.success_removal"
+      defaultMessage={`Successfully removed NIN`}
     />
   ),
 
-  "emails.unconfirmed_address_not_primary": (
+  "nins.no-mobile-match": (
     <FormattedMessage
-      id="emails.unconfirmed_address_not_primary"
-      defaultMessage={`An unconfirmed mail address cannot be set as primary`}
+      id="nins.no-mobile-match"
+      defaultMessage={`No phone number matching NIN`}
     />
   ),
 
-  "emails.primary-success": (
+  "nins.verified_no_rm": (
     <FormattedMessage
-      id="emails.primary-success"
-      defaultMessage={`Email address successfully set as primary`}
+      id="nins.verified_no_rm"
+      defaultMessage={`You cannot remove your verified National identity number`}
     />
   ),
 
-  "emails.code_expired_send_new": (
+ 
+/* ----- LETTER PROOFING  ------- */
+  "letter.letter_button_text": (
     <FormattedMessage
-      id="emails.code_expired_send_new"
-      defaultMessage={`Expired verification code, sending another`}
+      id="letter.letter_button_text"
+      defaultMessage={`Confirm using letter`}
     />
   ),
 
-  "emails.verification-success": (
+  "letter.initialize_proofing_help_text": (
     <FormattedMessage
-      id="emails.verification-success"
-      defaultMessage={`Successfully verified email address`}
+      id="letter.initialize_proofing_help_text"
+      defaultMessage={`To use this option you will have to wait for a letter sent to your official address.`}
     />
   ),
 
-  "emails.cannot_remove_unique": (
+  "letter.no_state_found": (
     <FormattedMessage
-      id="emails.cannot_remove_unique"
-      defaultMessage={`You must have at least one email address`}
+      id="letter.no_state_found"
+      defaultMessage={`No state found`}
     />
   ),
 
-  "emails.cannot_remove_unique_verified": (
+  "letter.letter_sent_msg": (
     <FormattedMessage
-      id="emails.cannot_remove_unique_verified"
-      defaultMessage={`You must have at least one verified email address`}
+      id="letter.letter_sent_msg"
+      defaultMessage={`You have been sent a verification letter`}
     />
   ),
 
-  "emails.removal-success": (
+  "letter.already-sent": (
     <FormattedMessage
-      id="emails.removal-success"
-      defaultMessage={`Successfully removed email address`}
+      id="letter.already-sent"
+      defaultMessage={`You have already been sent a verification letter`}
     />
   ),
 
-  "emails.code-sent": (
+  "letter.no-address-found": (
     <FormattedMessage
-      id="emails.code-sent"
-      defaultMessage={`Successfully sent verification code`}
+      id="letter.no-address-found"
+      defaultMessage={`No postal address found`}
     />
   ),
 
-  /************************/
-  /* Phone Subscription ***/
-  /************************/
+  "letter.bad-postal-address": (
+    <FormattedMessage
+      id="letter.bad-postal-address"
+      defaultMessage={`The postal address is incomprehensible`}
+    />
+  ),
+
+  "letter.saved-unconfirmed": (
+    <FormattedMessage
+      id="letter.saved-unconfirmed"
+      defaultMessage={`Saved unconfirmed NIN`}
+    />
+  ),
+
+  "letter.wrong-code": (
+    <FormattedMessage
+      id="letter.wrong-code"
+      defaultMessage={`Incorrect verification code`}
+    />
+  ),
+
+  "letter.verification_success": (
+    <FormattedMessage
+      id="letter.verification_success"
+      defaultMessage={`Successfully verified NIN`}
+    />
+  ),
+
+  /* ----- Phone Subscription ------- */
 
   "lmp.confirm-lookup-mobile": (
     <FormattedMessage
@@ -923,9 +942,115 @@ const msgs = {
     />
   ),
 
-  /************************/
-  /* OIDC SELEG ***********/
-  /************************/
+  /* ----- EIDAS ------- */
+  "eidas.freja_eid": (
+    <FormattedMessage id="eidas.freja_eid" defaultMessage={`Freja eID`} />
+  ),
+
+  "eidas.initialize_proofing_help_text": (
+    <FormattedHTMLMessage
+      id="eidas.initialize_proofing_help_text"
+      defaultMessage={`To use this option you need to have <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID+</a>.`}
+    />
+  ),
+
+  "eidas.modal_title": (
+    <FormattedMessage
+      id="eidas.modal_title"
+      defaultMessage={`Use Freja eID+ and pass a local authorised agent`}
+    />
+  ),
+
+  // "eidas.freja_instructions_title": (
+  //   <FormattedMessage
+  //     id="eidas.freja_instructions_title"
+  //     defaultMessage={`How to confirm your account using Freja eID+`}
+  //     defaultMessage={``}
+  //   />
+  // ),
+
+  "eidas.freja_instructions_step_1": (
+    <FormattedMessage
+      id="eidas.freja_instructions_step_1"
+      defaultMessage={`Install the app`}
+    />
+  ),
+
+  "eidas.freja_instructions_step_2": (
+    <FormattedMessage
+      id="eidas.freja_instructions_step_2"
+      defaultMessage={`Make a Freja eID+ (Plus) account`}
+    />
+  ),
+
+  "eidas.freja_instructions_step_3": (
+    <FormattedMessage
+      id="eidas.freja_instructions_step_3"
+      defaultMessage={`The app will generate a QR-code`}
+    />
+  ),
+
+  "eidas.freja_instructions_step_4": (
+    <FormattedMessage
+      id="eidas.freja_instructions_step_4"
+      defaultMessage={`Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity`}
+    />
+  ),
+
+  "eidas.freja_instructions_tip_1": (
+    <FormattedMessage
+      id="eidas.freja_instructions_tip_1"
+      defaultMessage={`Tip: Use the app to find your nearest agent`}
+    />
+  ),
+
+  "eidas.freja_instructions_step_5": (
+    <FormattedMessage
+      id="eidas.freja_instructions_step_5"
+      defaultMessage={`Return to eduID (on your mobile device) and allow Freja eID to share your id number with eduID`}
+    />
+  ),
+
+  "eidas.freja_instructions_step_6": (
+    <FormattedMessage
+      id="eidas.freja_instructions_step_6"
+      defaultMessage={`If you want a quick verification and are able to pass by one of the authorized agents`}
+    />
+  ),
+
+  "eidas.freja_instructions_install_link": (
+    <FormattedMessage
+      id="eidas.freja_instructions_install_link"
+      defaultMessage={`I have Freja eID`}
+    />
+  ),
+
+  "eidas.freja_eid_ready": (
+    <FormattedMessage
+      id="eidas.freja_eid_ready"
+      defaultMessage={`I do not have Freja eID`}
+    />
+  ),
+
+  "eidas.error_missing_nin": (
+    <FormattedMessage
+      id="eidas.error_missing_nin"
+      defaultMessage={`Please add a national identity number and try again`}
+    />
+  ),
+
+  "eidas.error_unknown_error": (
+    <FormattedMessage
+      id="eidas.error_unknown_error"
+      defaultMessage={`Temporary technical difficulties, please try again later`}
+    />
+  ),
+
+  /*********************************************/
+  /***** VETTING > SPECIAL CIRCUMSTANCES  ******/
+  /*********************************************/
+
+  /* ----- OIDC SE-LEG ------- */
 
   "oc.initialize_proofing": (
     <FormattedMessage id="oc.initialize_proofing" defaultMessage={`SE-LEG`} />
@@ -987,9 +1112,7 @@ const msgs = {
     />
   ),
 
-  /************************/
-  /* OIDC FREJA ***********/
-  /************************/
+  /* ----- OIDC FREJA------- */
 
   "ocf.initialize_proofing": (
     <FormattedMessage
@@ -1096,481 +1219,11 @@ const msgs = {
     />
   ),
 
-  /************************/
-  /* EIDAS ****************/
-  /************************/
-
-  "eidas.freja_eid": (
-    <FormattedMessage id="eidas.freja_eid" defaultMessage={`Freja eID`} />
-  ),
-
-  "eidas.initialize_proofing_help_text": (
-    <FormattedHTMLMessage
-      id="eidas.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to have <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID+</a>.`}
-    />
-  ),
-
-  "eidas.modal_title": (
-    <FormattedMessage
-      id="eidas.modal_title"
-      defaultMessage={`Use Freja eID+ and pass a local authorised agent`}
-    />
-  ),
-
-  // "eidas.freja_instructions_title": (
-  //   <FormattedMessage
-  //     id="eidas.freja_instructions_title"
-  //     defaultMessage={`How to confirm your account using Freja eID+`}
-  //     defaultMessage={``}
-  //   />
-  // ),
-
-  "eidas.freja_instructions_step_1": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step_1"
-      defaultMessage={`Install the app`}
-    />
-  ),
-
-  "eidas.freja_instructions_step_2": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step_2"
-      defaultMessage={`Make a Freja eID+ (Plus) account`}
-    />
-  ),
-
-  "eidas.freja_instructions_step_3": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step_3"
-      defaultMessage={`The app will generate a QR-code`}
-    />
-  ),
-
-  "eidas.freja_instructions_step_4": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step_4"
-      defaultMessage={`Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity`}
-    />
-  ),
-
-  "eidas.freja_instructions_tip_1": (
-    <FormattedMessage
-      id="eidas.freja_instructions_tip_1"
-      defaultMessage={`Tip: Use the app to find your nearest agent`}
-    />
-  ),
-
-  "eidas.freja_instructions_step_5": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step_5"
-      defaultMessage={`Return to eduID (on your mobile device) and allow Freja eID to share your id number with eduID`}
-    />
-  ),
-
-  "eidas.freja_instructions_step_6": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step_6"
-      defaultMessage={`If you want a quick verification and are able to pass by one of the authorized agents`}
-    />
-  ),
-
-  "eidas.freja_instructions_install_link": (
-    <FormattedMessage
-      id="eidas.freja_instructions_install_link"
-      defaultMessage={`I have Freja eID`}
-    />
-  ),
-
-  "eidas.freja_eid_ready": (
-    <FormattedMessage
-      id="eidas.freja_eid_ready"
-      defaultMessage={`I do not have Freja eID`}
-    />
-  ),
-
-  "eidas.error_missing_nin": (
-    <FormattedMessage
-      id="eidas.error_missing_nin"
-      defaultMessage={`Please add a national identity number and try again`}
-    />
-  ),
-
-  "eidas.error_unknown_error": (
-    <FormattedMessage
-      id="eidas.error_unknown_error"
-      defaultMessage={`Temporary technical difficulties, please try again later`}
-    />
-  ),
-
-  /************************/
-  /* ACCOUNT LINKING ******/
-  /************************/
-
-  "account_linking.main_title": (
-    <FormattedMessage
-      id="account_linking.main_title"
-      defaultMessage={`Connect other accounts`}
-    />
-  ),
-
-  "account_linking.long_description": (
-    <FormattedMessage
-      id="account_linking.long_description"
-      defaultMessage={`Simplify login by connecting your eduID to other accounts.`}
-    />
-  ),
-
-  /************************/
-  /* ORCID ****************/
-  /************************/
-
-  "orc.authorization_success": (
-    <FormattedMessage
-      id="orc.authorization_success"
-      defaultMessage={`ORCID connected successfully`}
-    />
-  ),
-
-  "orc.already_connected": (
-    <FormattedMessage
-      id="orc.already_connected"
-      defaultMessage={`ORCID already connected to this account`}
-    />
-  ),
-
-  "orc.unknown_state": (
-    <FormattedMessage
-      id="orc.unknown_state"
-      defaultMessage={`State was unknown when trying to connect ORCID account`}
-    />
-  ),
-
-  "orc.sub_mismatch": (
-    <FormattedMessage
-      id="orc.sub_missmatch"
-      defaultMessage={`Subject mismatch when trying to connect ORCID account`}
-    />
-  ),
-
-  "orc.title": <FormattedMessage id="orc.title" defaultMessage={`ORCID`} />,
-
-  "orc.long_description": (
-    <FormattedMessage
-      id="orc.long_description"
-      defaultMessage={`ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.`}
-    />
-  ),
-
-  "orc.about_link": (
-    <FormattedHTMLMessage
-      id="orc.about_link"
-      defaultMessage={`Learn more about ORCID in eduID from our <a href="https://www.eduid.se/en/faq.html">FAQ</a>.`}
-    />
-  ),
-
-  "orc.connect": (
-    <FormattedMessage
-      id="orc.connect"
-      defaultMessage={`Connect ORCID account`}
-    />
-  ),
-
-  "orc.authorization_fail": (
-    <FormattedMessage
-      id="orc.authorization_fail"
-      defaultMessage={`ORCID authentication failed`}
-    />
-  ),
-
-  /************************/
-  /* EIDAS ****************/
-  /************************/
-
-  "eidas.token_not_found": (
-    <FormattedMessage
-      id="eidas.token_not_found"
-      defaultMessage={`U2F token not found`}
-    />
-  ),
-
-  "eidas.token_not_in_credentials_used": (
-    <FormattedMessage
-      id="eidas.token_not_in_credentials_used"
-      defaultMessage={`U2F token not used for login`}
-    />
-  ),
-
-  "eidas.nin_not_matching": (
-    <FormattedMessage
-      id="eidas.nin_not_matching"
-      defaultMessage={`Asserted identity not matching the current accounts verified identity`}
-    />
-  ),
-
-  "eidas.nin_already_verified": (
-    <FormattedMessage
-      id="eidas.nin_already_verified"
-      defaultMessage={`You have already verified your identity`}
-    />
-  ),
-
-  "eidas.nin_verify_success": (
-    <FormattedMessage
-      id="eidas.nin_verify_success"
-      defaultMessage={`Identity verified successfully`}
-    />
-  ),
-
-  "eidas.token_verify_success": (
-    <FormattedMessage
-      id="eidas.token_verify_success"
-      defaultMessage={`U2F token verified successfully`}
-    />
-  ),
-
-  "eidas.authn_context_mismatch": (
-    <FormattedMessage
-      id="eidas.authn_context_mismatch"
-      defaultMessage={`Wrong authentication context received`}
-    />
-  ),
-
-  "eidas.reauthn_expired": (
-    <FormattedMessage
-      id="eidas.reauthn_expired"
-      defaultMessage={`Authentication has expired. Please try again.`}
-    />
-  ),
-
-  /************************/
-  /* PERSONAL DATA ********/
-  /************************/
-
-  "pd.long_description": (
-    <FormattedMessage
-      id="pd.long_description"
-      defaultMessage={`This information is sent to service providers
-           when you log in using eduID in order to personalize those services for you.`}
-    />
-  ),
-
-  "pd.main_title": (
-    <FormattedMessage
-      id="pd.main_title"
-      defaultMessage={`Personal information`}
-    />
-  ),
-
-  "pd.all-data-success": (
-    <FormattedMessage
-      id="pd.all-data-success"
-      defaultMessage={`Successfully retrieved personal information`}
-    />
-  ),
-
-  "pd.pdata-success": (
-    <FormattedMessage
-      id="pd.pdata-success"
-      defaultMessage={`Successfully retrieved personal information`}
-    />
-  ),
-
-  "pd.save-success": (
-    <FormattedMessage
-      id="pd.save-success"
-      defaultMessage={`Successfully saved personal information`}
-    />
-  ),
-
-  "pdata.field_required": (
-    <FormattedMessage
-      id="pdata.field_required"
-      defaultMessage={`This field is required`}
-    />
-  ),
-
-  "pd.display_name_input_help_text": (
-    <FormattedMessage
-      id="pd.display_name_input_help_text"
-      defaultMessage={`Some services will show this instead of your given name and surname.`}
-    />
-  ),
-
-  /************************/
-  /* Mobile ***************/
-  /************************/
-
-  "mobile.resend_success": values => (
-    <FormattedMessage
-      id="mobile.resend_success"
-      defaultMessage={`New code successfully sent to {email}`}
-      values={values}
-    />
-  ),
-
-  "mobile.email_label": (
-    <FormattedMessage id="mobile.mobile" defaultMessage={`mobile`} />
-  ),
-
-  "mobile.button_add": (
-    <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />
-  ),
-
-  "mobile.confirm_title": values => (
-    <FormattedMessage
-      id="mobile.confirm_title"
-      defaultMessage={`Check your mobile inbox for {phone} for further instructions`}
-      values={values}
-    />
-  ),
-
-  "phones.long_description": (
-    <FormattedMessage
-      id="phones.long_description"
-      defaultMessage={`You can connect one or more mobile phone numbers with
-           your eduID account, and select which one is the primary one.`}
-    />
-  ),
-
-  "phones.input_help_text": (
-    <FormattedMessage
-      id="phones.input_help_text"
-      defaultMessage={"Phone number starting with 0 or +"}
-    />
-  ),
-
-  "phones.main_title": (
-    <FormattedMessage
-      id="phones.main_title"
-      defaultMessage={`Mobile phone numbers`}
-    />
-  ),
-
-  "phones.get-success": (
-    <FormattedMessage
-      id="phones.get-success"
-      defaultMessage={`Successfully retrieved phone numbers`}
-    />
-  ),
-
-  "phones.duplicated": (
-    <FormattedMessage
-      id="phones.duplicated"
-      defaultMessage={`That phone number is already in use, please choose another`}
-    />
-  ),
-
-  "phones.save-success": (
-    <FormattedMessage
-      id="phones.save-success"
-      defaultMessage={`phone number saved successfully`}
-    />
-  ),
-
-  "phones.unconfirmed_number_not_primary": (
-    <FormattedMessage
-      id="phones.unconfirmed_number_not_primary"
-      defaultMessage={`An unconfirmed phone number cannot be set as primary`}
-    />
-  ),
-
-  "phones.primary-success": (
-    <FormattedMessage
-      id="phones.primary-success"
-      defaultMessage={`phone number successfully set as primary`}
-    />
-  ),
-
-  "phones.code_expired_send_new": (
-    <FormattedMessage
-      id="phones.code_expired_send_new"
-      defaultMessage={`Expired verification code, sending another`}
-    />
-  ),
-
-  "phones.code_invalid": (
-    <FormattedMessage
-      id="phones.code_invalid"
-      defaultMessage={`Invalid verification code`}
-    />
-  ),
-
-  "phones.invalid_phone": (
-    <FormattedMessage
-      id="phones.invalid_phone"
-      defaultMessage={`Invalid phone number`}
-    />
-  ),
-
-  "phones.unknown_phone": (
-    <FormattedMessage
-      id="phones.unknown_phone"
-      defaultMessage={`We have no record of the phone number you provided`}
-    />
-  ),
-
-  "phones.code_invalid_or_expired": (
-    <FormattedMessage
-      id="phones.code_invalid_or_expired"
-      defaultMessage={`The confirmation code is invalid or it has expired, please try again or request a new code`}
-    />
-  ),
-
-  "phones.verification-success": (
-    <FormattedMessage
-      id="phones.verification-success"
-      defaultMessage={`Successfully verified phone number`}
-    />
-  ),
-
-  "phones.cannot_remove_unique": (
-    <FormattedMessage
-      id="phones.cannot_remove_unique"
-      defaultMessage={`You must have at least one phone number`}
-    />
-  ),
-
-  "phones.cannot_remove_primary": (
-    <FormattedMessage
-      id="phones.cannot_remove_primary"
-      defaultMessage={`You cannot remove your primary phone number`}
-    />
-  ),
-
-  "phones.removal-success": (
-    <FormattedMessage
-      id="phones.removal-success"
-      defaultMessage={`Successfully removed phone number`}
-    />
-  ),
-
-  "phones.code-sent": (
-    <FormattedMessage
-      id="phones.code-sent"
-      defaultMessage={`Successfully sent verification code`}
-    />
-  ),
-
-  "phone.e164_format": (
-    <FormattedMessage
-      id="phone.e164_format"
-      defaultMessage={`Invalid telephone number. It must be a valid Swedish number, or written
-                            using international notation, starting with '+' and followed by 10-20 digits.`}
-    />
-  ),
-
-  "phone.swedish_mobile_format": (
-    <FormattedMessage
-      id="phone.swedish_mobile_format"
-      defaultMessage={`Invalid telephone number. It must be a valid Swedish number, or written
-                            using international notation, starting with '+' and followed by 10-20 digits.`}
-    />
-  ),
-
-  /***********************/
-  /* Security ************/
-  /***********************/
+  /*******************************************/
+  /******* SETTINGS > ADVANCED SETTINGS ******/
+  /*******************************************/
+
+  /* -----  SECURITY ------- */
 
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": (
     <FormattedMessage
@@ -1652,70 +1305,8 @@ const msgs = {
     />
   ),
 
-  "security.delete_account": (
-    <FormattedMessage
-      id="security.delete_account"
-      defaultMessage={`Delete eduID account`}
-    />
-  ),
 
-  "security.confirm_title": (
-    <FormattedMessage
-      id="security.confirm_title"
-      defaultMessage={`Delete account`}
-    />
-  ),
 
-  "security.modal_info": (
-    <FormattedMessage
-      id="security.modal_info"
-      defaultMessage={`Are you sure that you wish to delete your eduID account? This action will
-                           permanently remove all the data associated with the account from our database. `}
-    />
-  ),
-
-  "security.modal_notes": (
-    <FormattedMessage
-      id="security.modal_notes"
-      defaultMessage={`Note that for security reasons if you choose to delete your account,
-                           you will be asked to log in again.`}
-    />
-  ),
-
-  "security.change_info": (
-    <FormattedMessage
-      id="security.change_info"
-      defaultMessage={`For security reasons we will ask you to log in again before changing your password.`}
-    />
-  ),
-
-  "security.confirm_button": (
-    <FormattedMessage
-      id="security.confirm_button"
-      defaultMessage={`Confirm deletion of eduID account`}
-    />
-  ),
-
-  "security.password_credential_type": (
-    <FormattedMessage
-      id="security.password_credential_type"
-      defaultMessage={`Password`}
-    />
-  ),
-
-  "security.confirm_title_chpass": (
-    <FormattedMessage
-      id="security.confirm_title_chpass"
-      defaultMessage={`Secure password change`}
-    />
-  ),
-
-  "security.confirm_title_deletion": (
-    <FormattedMessage
-      id="security.confirm_title_deletion"
-      defaultMessage={`Account deletion`}
-    />
-  ),
 
   "security.u2f.max_allowed_tokens": (
     <FormattedMessage
@@ -2095,189 +1686,607 @@ const msgs = {
     />
   ),
 
-  /************************/
-  /* Nins *****************/
-  /************************/
+  /* ----- ACCOUNT LINKING ------- */
 
-  "nins.main_title": (
+  "account_linking.main_title": (
     <FormattedMessage
-      id="nins.main_title"
-      defaultMessage={`National identity number`}
+      id="account_linking.main_title"
+      defaultMessage={`Connect other accounts`}
     />
   ),
 
-  "nins.justification": (
+  "account_linking.long_description": (
     <FormattedMessage
-      id="nins.justification"
-      defaultMessage={`Some service providers (e.g. Antagning.se) require a confirmed identity.`}
+      id="account_linking.long_description"
+      defaultMessage={`Simplify login by connecting your eduID to other accounts.`}
     />
   ),
 
-  "nins.nin": <FormattedMessage id="nins.nin" defaultMessage={"Number"} />,
+  /* ----- ORCID ------- */
 
-  "nins.input_help_text": (
+  "orc.authorization_success": (
     <FormattedMessage
-      id="nins.input_help_text"
-      defaultMessage={"National identity number with 12 digits"}
+      id="orc.authorization_success"
+      defaultMessage={`ORCID connected successfully`}
     />
   ),
 
-  "nins.verified": (
-    <FormattedMessage id="nins.verified" defaultMessage={`Verified`} />
-  ),
-
-  "nins.primary": (
-    <FormattedMessage id="nins.primary" defaultMessage={`Primary`} />
-  ),
-
-  "nins.help_text": (
+  "orc.already_connected": (
     <FormattedMessage
-      id="nins.help_text"
-      defaultMessage={`Add your Swedish national identity number and initiate the confirmation process using one of the buttons below.`}
+      id="orc.already_connected"
+      defaultMessage={`ORCID already connected to this account`}
     />
   ),
 
-  "nins.invalid_nin": (
-    <FormattedMessage id="nins.invalid_nin" defaultMessage={`Invalid NIN`} />
-  ),
-
-  "nins.wrong_length": (
+  "orc.unknown_state": (
     <FormattedMessage
-      id="nins.wrong_length"
-      defaultMessage={`NINs must have 12 digits`}
+      id="orc.unknown_state"
+      defaultMessage={`State was unknown when trying to connect ORCID account`}
     />
   ),
 
-  "nins.illegal_chars": (
+  "orc.sub_mismatch": (
     <FormattedMessage
-      id="nins.illegal_chars"
-      defaultMessage={`NINs can only have digits`}
+      id="orc.sub_missmatch"
+      defaultMessage={`Subject mismatch when trying to connect ORCID account`}
     />
   ),
 
-  "nins.valid_nin": (
-    <FormattedMessage id="nins.valid_nin" defaultMessage={`Valid NIN`} />
-  ),
+  "orc.title": <FormattedMessage id="orc.title" defaultMessage={`ORCID`} />,
 
-  "nins.confirmed_nin": (
+  "orc.long_description": (
     <FormattedMessage
-      id="nins.confirmed_nin"
-      defaultMessage={`NIN (Confirmed)`}
+      id="orc.long_description"
+      defaultMessage={`ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.`}
     />
   ),
 
-  "nins.unconfirmed_nin": (
-    <FormattedMessage
-      id="nins.unconfirmed_nin"
-      defaultMessage={`Unconfirmed NIN`}
+  "orc.about_link": (
+    <FormattedHTMLMessage
+      id="orc.about_link"
+      defaultMessage={`Learn more about ORCID in eduID from our <a href="https://www.eduid.se/en/faq.html">FAQ</a>.`}
     />
   ),
 
-  "nins.button_delete": (
-    <FormattedMessage id="nins.button_delete" defaultMessage={`Remove`} />
-  ),
-
-  "nins.only_one_to_verify": (
+  "orc.connect": (
     <FormattedMessage
-      id="nins.only_one_to_verify"
-      defaultMessage={`You can only have one unverified NIN to verify it. Please remove the unwanted ones.`}
+      id="orc.connect"
+      defaultMessage={`Connect ORCID account`}
     />
   ),
 
-  "nins.success_removal": (
+  "orc.authorization_fail": (
     <FormattedMessage
-      id="nins.success_removal"
-      defaultMessage={`Successfully removed NIN`}
-    />
-  ),
-
-  "nins.no-mobile-match": (
-    <FormattedMessage
-      id="nins.no-mobile-match"
-      defaultMessage={`No phone number matching NIN`}
-    />
-  ),
-
-  "nins.verified_no_rm": (
-    <FormattedMessage
-      id="nins.verified_no_rm"
-      defaultMessage={`You cannot remove your verified National identity number`}
+      id="orc.authorization_fail"
+      defaultMessage={`ORCID authentication failed`}
     />
   ),
 
   /************************/
-  /* Letter proofing ******/
+  /* EIDAS ****************/
   /************************/
 
-  "letter.letter_button_text": (
+  "eidas.token_not_found": (
     <FormattedMessage
-      id="letter.letter_button_text"
-      defaultMessage={`Confirm using letter`}
+      id="eidas.token_not_found"
+      defaultMessage={`U2F token not found`}
     />
   ),
 
-  "letter.initialize_proofing_help_text": (
+  "eidas.token_not_in_credentials_used": (
     <FormattedMessage
-      id="letter.initialize_proofing_help_text"
-      defaultMessage={`To use this option you will have to wait for a letter sent to your official address.`}
+      id="eidas.token_not_in_credentials_used"
+      defaultMessage={`U2F token not used for login`}
     />
   ),
 
-  "letter.no_state_found": (
+  "eidas.nin_not_matching": (
     <FormattedMessage
-      id="letter.no_state_found"
-      defaultMessage={`No state found`}
+      id="eidas.nin_not_matching"
+      defaultMessage={`Asserted identity not matching the current accounts verified identity`}
     />
   ),
 
-  "letter.letter_sent_msg": (
+  "eidas.nin_already_verified": (
     <FormattedMessage
-      id="letter.letter_sent_msg"
-      defaultMessage={`You have been sent a verification letter`}
+      id="eidas.nin_already_verified"
+      defaultMessage={`You have already verified your identity`}
     />
   ),
 
-  "letter.already-sent": (
+  "eidas.nin_verify_success": (
     <FormattedMessage
-      id="letter.already-sent"
-      defaultMessage={`You have already been sent a verification letter`}
+      id="eidas.nin_verify_success"
+      defaultMessage={`Identity verified successfully`}
     />
   ),
 
-  "letter.no-address-found": (
+  "eidas.token_verify_success": (
     <FormattedMessage
-      id="letter.no-address-found"
-      defaultMessage={`No postal address found`}
+      id="eidas.token_verify_success"
+      defaultMessage={`U2F token verified successfully`}
     />
   ),
 
-  "letter.bad-postal-address": (
+  "eidas.authn_context_mismatch": (
     <FormattedMessage
-      id="letter.bad-postal-address"
-      defaultMessage={`The postal address is incomprehensible`}
+      id="eidas.authn_context_mismatch"
+      defaultMessage={`Wrong authentication context received`}
     />
   ),
 
-  "letter.saved-unconfirmed": (
+  "eidas.reauthn_expired": (
     <FormattedMessage
-      id="letter.saved-unconfirmed"
-      defaultMessage={`Saved unconfirmed NIN`}
+      id="eidas.reauthn_expired"
+      defaultMessage={`Authentication has expired. Please try again.`}
     />
   ),
 
-  "letter.wrong-code": (
+  /************************/
+  /****** SETTINGS********/
+  /************************/
+
+  /* ----- PERSONAL DATA------- */
+
+  "pd.long_description": (
     <FormattedMessage
-      id="letter.wrong-code"
-      defaultMessage={`Incorrect verification code`}
+      id="pd.long_description"
+      defaultMessage={`This information is sent to service providers
+           when you log in using eduID in order to personalize those services for you.`}
     />
   ),
 
-  "letter.verification_success": (
+  "pd.main_title": (
     <FormattedMessage
-      id="letter.verification_success"
-      defaultMessage={`Successfully verified NIN`}
+      id="pd.main_title"
+      defaultMessage={`Personal information`}
     />
   ),
+
+  "pd.all-data-success": (
+    <FormattedMessage
+      id="pd.all-data-success"
+      defaultMessage={`Successfully retrieved personal information`}
+    />
+  ),
+
+  "pd.pdata-success": (
+    <FormattedMessage
+      id="pd.pdata-success"
+      defaultMessage={`Successfully retrieved personal information`}
+    />
+  ),
+
+  "pd.save-success": (
+    <FormattedMessage
+      id="pd.save-success"
+      defaultMessage={`Successfully saved personal information`}
+    />
+  ),
+
+  "pdata.field_required": (
+    <FormattedMessage
+      id="pdata.field_required"
+      defaultMessage={`This field is required`}
+    />
+  ),
+
+  "pd.display_name_input_help_text": (
+    <FormattedMessage
+      id="pd.display_name_input_help_text"
+      defaultMessage={`Some services will show this instead of your given name and surname.`}
+    />
+  ),
+
+  /* ----- EMAILS------- */
+  "emails.resend_success": values => (
+    <FormattedMessage
+      id="emails.resend_success"
+      defaultMessage={`New code successfully sent to {email}`}
+      values={values}
+    />
+  ),
+
+  "emails.email_label": (
+    <FormattedMessage id="emails.email" defaultMessage={`Email`} />
+  ),
+
+  "emails.input_help_text": (
+    <FormattedMessage
+      id="emails.input_help_text"
+      defaultMessage={"A valid email address"}
+    />
+  ),
+
+  "emails.code_invalid": (
+    <FormattedMessage
+      id="emails.code_invalid"
+      defaultMessage={`The confirmation code is invalid, please try again or request a new code`}
+    />
+  ),
+
+  "emails.code_invalid_or_expired": (
+    <FormattedMessage
+      id="emails.code_invalid_or_expired"
+      defaultMessage={`The confirmation code is invalid or it has expired, please try again or request a new code`}
+    />
+  ),
+
+  "emails.button_add": (
+    <FormattedMessage id="emails.button_add" defaultMessage={`Add`} />
+  ),
+
+  "emails.confirm_title": values => (
+    <FormattedMessage
+      id="emails.confirm_title"
+      defaultMessage={`Check your email inbox for {email} for further instructions`}
+      values={values}
+    />
+  ),
+
+  "emails.long_description": (
+    <FormattedMessage
+      id="emails.long_description"
+      defaultMessage={`You can connect one or more email addresses with your eduID 
+          account and select one to be your primary email address.`}
+    />
+  ),
+
+  "emails.main_title": (
+    <FormattedMessage
+      id="emails.main_title"
+      defaultMessage={`Email addresses`}
+    />
+  ),
+
+  "emails.get-success": (
+    <FormattedMessage
+      id="emails.get-success"
+      defaultMessage={`Successfully retrieved Email addresses`}
+    />
+  ),
+
+  "emails.duplicated": (
+    <FormattedMessage
+      id="emails.duplicated"
+      defaultMessage={`That email address is already in use, please choose another`}
+    />
+  ),
+
+  "emails.save-success": (
+    <FormattedMessage
+      id="emails.save-success"
+      defaultMessage={`Email address saved successfully`}
+    />
+  ),
+
+  "emails.unconfirmed_address_not_primary": (
+    <FormattedMessage
+      id="emails.unconfirmed_address_not_primary"
+      defaultMessage={`An unconfirmed mail address cannot be set as primary`}
+    />
+  ),
+
+  "emails.primary-success": (
+    <FormattedMessage
+      id="emails.primary-success"
+      defaultMessage={`Email address successfully set as primary`}
+    />
+  ),
+
+  "emails.code_expired_send_new": (
+    <FormattedMessage
+      id="emails.code_expired_send_new"
+      defaultMessage={`Expired verification code, sending another`}
+    />
+  ),
+
+  "emails.verification-success": (
+    <FormattedMessage
+      id="emails.verification-success"
+      defaultMessage={`Successfully verified email address`}
+    />
+  ),
+
+  "emails.cannot_remove_unique": (
+    <FormattedMessage
+      id="emails.cannot_remove_unique"
+      defaultMessage={`You must have at least one email address`}
+    />
+  ),
+
+  "emails.cannot_remove_unique_verified": (
+    <FormattedMessage
+      id="emails.cannot_remove_unique_verified"
+      defaultMessage={`You must have at least one verified email address`}
+    />
+  ),
+
+  "emails.removal-success": (
+    <FormattedMessage
+      id="emails.removal-success"
+      defaultMessage={`Successfully removed email address`}
+    />
+  ),
+
+  "emails.code-sent": (
+    <FormattedMessage
+      id="emails.code-sent"
+      defaultMessage={`Successfully sent verification code`}
+    />
+  ),
+
+  "emails.cannot_remove_primary": (
+    <FormattedMessage
+      id="emails.cannot_remove_primary"
+      defaultMessage={`You can not delete the primary email`}
+    />
+  ),
+
+  "emails.invalid_email": (
+    <FormattedMessage
+      id="emails.invalid_email"
+      defaultMessage={`The entered value does not look like an email`}
+    />
+  ),
+
+  "emails.missing": (
+    <FormattedMessage
+      id="emails.missing"
+      defaultMessage={`You must provide an email address`}
+    />
+  ),
+
+  "emails.unknown_email": (
+    <FormattedMessage
+      id="emails.unknown_email"
+      defaultMessage={`We have no record of the email address you provided`}
+    />
+  ),
+
+  /* -----  MOBILE ------- */
+
+  "mobile.resend_success": values => (
+    <FormattedMessage
+      id="mobile.resend_success"
+      defaultMessage={`New code successfully sent to {email}`}
+      values={values}
+    />
+  ),
+
+  "mobile.email_label": (
+    <FormattedMessage id="mobile.mobile" defaultMessage={`mobile`} />
+  ),
+
+  "mobile.button_add": (
+    <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />
+  ),
+
+  "mobile.confirm_title": values => (
+    <FormattedMessage
+      id="mobile.confirm_title"
+      defaultMessage={`Check your mobile inbox for {phone} for further instructions`}
+      values={values}
+    />
+  ),
+
+  "phones.long_description": (
+    <FormattedMessage
+      id="phones.long_description"
+      defaultMessage={`You can connect one or more mobile phone numbers with
+           your eduID account, and select which one is the primary one.`}
+    />
+  ),
+
+  "phones.input_help_text": (
+    <FormattedMessage
+      id="phones.input_help_text"
+      defaultMessage={"Phone number starting with 0 or +"}
+    />
+  ),
+
+  "phones.main_title": (
+    <FormattedMessage
+      id="phones.main_title"
+      defaultMessage={`Mobile phone numbers`}
+    />
+  ),
+
+  "phones.get-success": (
+    <FormattedMessage
+      id="phones.get-success"
+      defaultMessage={`Successfully retrieved phone numbers`}
+    />
+  ),
+
+  "phones.duplicated": (
+    <FormattedMessage
+      id="phones.duplicated"
+      defaultMessage={`That phone number is already in use, please choose another`}
+    />
+  ),
+
+  "phones.save-success": (
+    <FormattedMessage
+      id="phones.save-success"
+      defaultMessage={`phone number saved successfully`}
+    />
+  ),
+
+  "phones.unconfirmed_number_not_primary": (
+    <FormattedMessage
+      id="phones.unconfirmed_number_not_primary"
+      defaultMessage={`An unconfirmed phone number cannot be set as primary`}
+    />
+  ),
+
+  "phones.primary-success": (
+    <FormattedMessage
+      id="phones.primary-success"
+      defaultMessage={`phone number successfully set as primary`}
+    />
+  ),
+
+  "phones.code_expired_send_new": (
+    <FormattedMessage
+      id="phones.code_expired_send_new"
+      defaultMessage={`Expired verification code, sending another`}
+    />
+  ),
+
+  "phones.code_invalid": (
+    <FormattedMessage
+      id="phones.code_invalid"
+      defaultMessage={`Invalid verification code`}
+    />
+  ),
+
+  "phones.invalid_phone": (
+    <FormattedMessage
+      id="phones.invalid_phone"
+      defaultMessage={`Invalid phone number`}
+    />
+  ),
+
+  "phones.unknown_phone": (
+    <FormattedMessage
+      id="phones.unknown_phone"
+      defaultMessage={`We have no record of the phone number you provided`}
+    />
+  ),
+
+  "phones.code_invalid_or_expired": (
+    <FormattedMessage
+      id="phones.code_invalid_or_expired"
+      defaultMessage={`The confirmation code is invalid or it has expired, please try again or request a new code`}
+    />
+  ),
+
+  "phones.verification-success": (
+    <FormattedMessage
+      id="phones.verification-success"
+      defaultMessage={`Successfully verified phone number`}
+    />
+  ),
+
+  "phones.cannot_remove_unique": (
+    <FormattedMessage
+      id="phones.cannot_remove_unique"
+      defaultMessage={`You must have at least one phone number`}
+    />
+  ),
+
+  "phones.cannot_remove_primary": (
+    <FormattedMessage
+      id="phones.cannot_remove_primary"
+      defaultMessage={`You cannot remove your primary phone number`}
+    />
+  ),
+
+  "phones.removal-success": (
+    <FormattedMessage
+      id="phones.removal-success"
+      defaultMessage={`Successfully removed phone number`}
+    />
+  ),
+
+  "phones.code-sent": (
+    <FormattedMessage
+      id="phones.code-sent"
+      defaultMessage={`Successfully sent verification code`}
+    />
+  ),
+
+  "phone.e164_format": (
+    <FormattedMessage
+      id="phone.e164_format"
+      defaultMessage={`Invalid telephone number. It must be a valid Swedish number, or written
+                            using international notation, starting with '+' and followed by 10-20 digits.`}
+    />
+  ),
+
+  "phone.swedish_mobile_format": (
+    <FormattedMessage
+      id="phone.swedish_mobile_format"
+      defaultMessage={`Invalid telephone number. It must be a valid Swedish number, or written
+                            using international notation, starting with '+' and followed by 10-20 digits.`}
+    />
+  ),
+
+  /* -----  DELETE ACCOUNT ------- */
+  "security.delete_account": (
+    <FormattedMessage
+      id="security.delete_account"
+      defaultMessage={`Delete eduID account`}
+    />
+  ),
+
+  "security.confirm_title": (
+    <FormattedMessage
+      id="security.confirm_title"
+      defaultMessage={`Delete account`}
+    />
+  ),
+
+  "security.modal_info": (
+    <FormattedMessage
+      id="security.modal_info"
+      defaultMessage={`Are you sure that you wish to delete your eduID account? This action will
+                           permanently remove all the data associated with the account from our database. `}
+    />
+  ),
+
+  "security.modal_notes": (
+    <FormattedMessage
+      id="security.modal_notes"
+      defaultMessage={`Note that for security reasons if you choose to delete your account,
+                           you will be asked to log in again.`}
+    />
+  ),
+
+  "security.confirm_button": (
+    <FormattedMessage
+      id="security.confirm_button"
+      defaultMessage={`Confirm deletion of eduID account`}
+    />
+  ),
+
+  "security.confirm_title_deletion": (
+    <FormattedMessage
+      id="security.confirm_title_deletion"
+      defaultMessage={`Account deletion`}
+    />
+  ),
+
+
+
+
+
+
+
+  "security.change_info": (
+    <FormattedMessage
+      id="security.change_info"
+      defaultMessage={`For security reasons we will ask you to log in again before changing your password.`}
+    />
+  ),
+
+
+  "security.password_credential_type": (
+    <FormattedMessage
+      id="security.password_credential_type"
+      defaultMessage={`Password`}
+    />
+  ),
+
+  "security.confirm_title_chpass": (
+    <FormattedMessage
+      id="security.confirm_title_chpass"
+      defaultMessage={`Secure password change`}
+    />
+  ),
+
+
 
   /************************/
   /* Header ******** ******/
@@ -2327,11 +2336,11 @@ const msgs = {
     />
   ),
 
-/************************/
-/* Footer > Questions ******/
-/************************/
+  /************************/
+  /* Footer > Questions ******/
+  /************************/
 
- // ---- Questions for /profile ---- //
+  // ---- Questions for /profile ---- //
   "questions.profile_1": (
     <FormattedMessage
       id="questions.profile_1"
@@ -2387,7 +2396,7 @@ const msgs = {
     />
   ),
 
-// ---- Questions for /settings  ---- //
+  // ---- Questions for /settings  ---- //
   "questions.settings_1": (
     <FormattedMessage
       id="questions.settings_1"
@@ -2414,7 +2423,7 @@ const msgs = {
       defaultMessage={`Only you can delete your account by clickling 'Delete eduID account', it will not be removed due to inactivity.`}
     />
   ),
-  
+
   // ---- Questions for /advanced-settings  ---- //
   "questions.settings_advanced_1": (
     <FormattedMessage
@@ -2442,9 +2451,6 @@ const msgs = {
       defaultMessage={`ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.`}
     />
   ),
-
- 
-
 
   "pending.pdata": (
     <FormattedMessage
