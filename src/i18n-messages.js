@@ -1210,14 +1210,14 @@ const msgs = {
   "account_linking.main_title": (
     <FormattedMessage
       id="account_linking.main_title"
-      defaultMessage={`Account Linking`}
+      defaultMessage={`Connect other accounts`}
     />
   ),
 
   "account_linking.long_description": (
     <FormattedMessage
       id="account_linking.long_description"
-      defaultMessage={`You can link other accounts with you eduID account.`}
+      defaultMessage={`Simplify login by connecting your eduID to other accounts.`}
     />
   ),
 

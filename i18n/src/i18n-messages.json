@@ -633,11 +633,11 @@
   },
   {
     "id": "account_linking.main_title",
-    "defaultMessage": "Account Linking"
+    "defaultMessage": "Connect other accounts"
   },
   {
     "id": "account_linking.long_description",
-    "defaultMessage": "You can link other accounts with you eduID account."
+    "defaultMessage": "Simplify login by connecting your eduID to other accounts."
   },
   {
     "id": "orc.authorization_success",
