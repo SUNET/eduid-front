@@ -304,6 +304,34 @@
     "defaultMessage": "Registration of {email} completed"
   },
   {
+    "id": "profile.name_display_title",
+    "defaultMessage": "Name"
+  },
+  {
+    "id": "profile.name_display_no_data",
+    "defaultMessage": "no name added"
+  },
+  {
+    "id": "profile.phone_display_title",
+    "defaultMessage": "Phone number"
+  },
+  {
+    "id": "profile.phone_display_unconfirmed_data",
+    "defaultMessage": "confirm added number"
+  },
+  {
+    "id": "profile.phone_display_no_data",
+    "defaultMessage": "no phone number added"
+  },
+  {
+    "id": "profile.email_display_title",
+    "defaultMessage": "Email address"
+  },
+  {
+    "id": "profile.email_display_no_data",
+    "defaultMessage": "no email added"
+  },
+  {
     "id": "main.copyright",
     "defaultMessage": "SUNET 2013-2019"
   },

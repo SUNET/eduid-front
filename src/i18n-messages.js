@@ -651,6 +651,55 @@ const msgs = {
   /* Main > Profile ******/
   /************************/
 
+  "profile.name_display_title": (
+    <FormattedMessage
+      id="profile.name_display_title"
+      defaultMessage={`Name`}
+    />
+  ),
+  "profile.name_display_no_data": (
+    <FormattedMessage
+      id="profile.name_display_no_data"
+      defaultMessage={`no name added`}
+    />
+  ),
+
+  "profile.phone_display_title": (
+    <FormattedMessage
+      id="profile.phone_display_title"
+      defaultMessage={`Phone number`}
+    />
+  ),
+
+  "profile.phone_display_unconfirmed_data": (
+    <FormattedMessage
+      id="profile.phone_display_unconfirmed_data"
+      defaultMessage={`confirm added number`}
+    />
+  ),
+
+  "profile.phone_display_no_data": (
+    <FormattedMessage
+      id="profile.phone_display_no_data"
+      defaultMessage={`no phone number added`}
+    />
+  ),
+
+  "profile.email_display_title": (
+    <FormattedMessage
+      id="profile.email_display_title"
+      defaultMessage={`Email address`}
+    />
+  ),
+
+  "profile.email_display__no_data": (
+    <FormattedMessage
+      id="profile.email_display_no_data"
+      defaultMessage={`no email added`}
+    />
+  ),
+ 
+
   "main.copyright": (
     <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
   ),
@@ -999,7 +1048,7 @@ const msgs = {
     />
   ),
 
-/* ----- no number > reminder to add a number ------- */
+  /* ----- no number > reminder to add a number ------- */
   "lmp.modal_add_number_title": {
     id: "lmp.add_number_title",
     defaultMessage: `Add your mobile number to continue`,
@@ -1012,7 +1061,7 @@ const msgs = {
     description: "Explanation for adding mobile number dialog"
   },
 
-/* ----- added number but not confirmed > reminder to confirm number------- */
+  /* ----- added number but not confirmed > reminder to confirm number------- */
 
   "lmp.modal_reminder_to_confirm_title": {
     id: "lmp.reminder_to_confirm_title",
@@ -1025,7 +1074,7 @@ const msgs = {
     description: "Explanation for confirming mobile number dialog"
   },
 
-/* ----- confirmed number > ready for vetting------- */
+  /* ----- confirmed number > ready for vetting------- */
   "lmp.modal_confirm_info": (
     <FormattedMessage
       id="lmp.confirm_info"

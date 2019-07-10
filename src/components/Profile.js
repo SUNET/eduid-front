@@ -34,7 +34,7 @@ class Profile extends Component {
       if (props.firstName) {
         return (
           <div key="1" className="profile-card">
-            <label>Name</label>
+            <label> {this.props.l10n("profile.name_display_title")}</label>
             <div id="nin-number-container">
               <p id="nin-number" className="verified">
                 {props.firstName} {props.lastName}
@@ -45,10 +45,10 @@ class Profile extends Component {
       } else {
         return (
           <div key="1" className="profile-card">
-            <label>Name</label>
+            <label> {this.props.l10n("profile.name_display_title")}</label>
             <div id="nin-number-container">
               <p id="nin-number" className="no-data">
-                No name added
+                {this.props.l10n("profile.name_display_no_data")}
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@ class Profile extends Component {
         if (props.verifiedPhone) {
           return (
             <div key="1" className="profile-card">
-              <label>Phone number</label>
+              <label> {this.props.l10n("profile.phone_display_title")}</label>
               <div id="nin-number-container">
                 <p id="nin-number" className="verified">
                   {props.phones[0].number}
@@ -72,10 +72,10 @@ class Profile extends Component {
         }
         return (
           <div key="1" className="profile-card">
-            <label>Phone number</label>
+            <label>{this.props.l10n("profile.phone_display_title")}</label>
             <div id="nin-number-container">
               <p id="nin-number" className="no-data">
-                Verify added number
+                {this.props.l10n("profile.phone_display_unconfirmed_data")}
               </p>
             </div>
           </div>
@@ -83,10 +83,10 @@ class Profile extends Component {
       } else {
         return (
           <div key="1" className="profile-card">
-            <label>Phone number</label>
+            <label>{this.props.l10n("profile.phone_display_title")}</label>
             <div id="nin-number-container">
               <p id="nin-number" className="no-data">
-                No phone number added
+                {this.props.l10n("profile.phone_display_no_data")}
               </p>
             </div>
           </div>
@@ -98,7 +98,7 @@ class Profile extends Component {
       if (props.emails.length) {
         return (
           <div key="1" className="profile-card">
-            <label>Email Address</label>
+            <label>{this.props.l10n("profile.email_display_title")}</label>
             <div id="nin-number-container">
               <p id="nin-number" className="verified">
                 {props.emails[0].email}
@@ -109,10 +109,10 @@ class Profile extends Component {
       } else {
         return (
           <div key="1" className="profile-card">
-            <label>Email Address</label>
+            <label>{this.props.l10n("profile.email_display_title")}</label>
             <div id="nin-number-container">
               <p id="nin-number" className="no-data">
-                No email added
+                {this.props.l10n("profile.email_display_no_data")}
               </p>
             </div>
           </div>
@@ -120,22 +120,22 @@ class Profile extends Component {
       }
     };
 
-    let LetterProofingDisplay = props => {
-      if (props.letter_proofing) {
-        return (
-          <div key="1" className="profile-card">
-            <label>Email Address</label>
-            <div id="nin-number-container">
-              <p id="nin-number" className="verified">
-                A letter was sent to your home
-              </p>
-            </div>
-          </div>
-        );
-      } else {
-        return <div />;
-      }
-    };
+    // let LetterProofingDisplay = props => {
+    //   if (props.letter_proofing) {
+    //     return (
+    //       <div key="1" className="profile-card">
+    //         <label>Email Address</label>
+    //         <div id="nin-number-container">
+    //           <p id="nin-number" className="verified">
+    //             A letter was sent to your home
+    //           </p>
+    //         </div>
+    //       </div>
+    //     );
+    //   } else {
+    //     return <div />;
+    //   }
+    // };
 
     //
     if (url.includes("security")) {
@@ -144,7 +144,6 @@ class Profile extends Component {
       stylingId = "profile-container-verifyId";
       profileSection = [<VerifyIdentityProcess {...this.props} />];
     } else {
-      // profileSection = [<ProfilePrompt {...this.props} />];
       accountDetails = [
         <NameDisplay {...this.props} />,
         <NinDisplay {...this.props} />,
@@ -190,14 +189,10 @@ const mapStateToProps = (state, props) => {
   const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
     is_configured: state.config.is_configured,
-    // data: state.personal_data.data,
     nins: state.nins.nins, // all nin info
     verifiedNin: nins, // all verified nin info
     verifiedNinStatus: verifiedNinStatus, // is the added nin verified?
     phones: state.phones.phones, // all phone info
-    // primaryPhoneNum: phoneNumber, // all info about primary number
-    // phoneNum: state.phones.phone, // has an unverified phone number been added?
-    // verifiedPhone: phones,
     verifiedPhone: verifiedPhone,
     emails: emailAddress, // all info about primary email
     letter_verification: state.letter_proofing.confirmingLetter,
@@ -210,11 +205,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-  return {
-    handleThingy: function(e) {
-      console.log("do you need a function here?");
-    }
-  };
+  return {};
 };
 
 const ProfileContainer = connect(
