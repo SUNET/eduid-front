@@ -10,10 +10,12 @@ import "style/LookupMobileProofing.scss";
 class LookupMobileProofing extends Component {
   render() {
     let modalPrompt = "";
-    // console.log(
-    //   "these are the props in LookupMobileProofing:",
-    //   this.props.phoneNumbers
-    // );
+    // let buttonText = "";
+    // if (true) {
+    //   buttonText = this.props.l10n("lmp.button_text_code");
+    // } else {
+    //   buttonText = this.props.l10n("lmp.button_text_request");
+    // }
 
     if (this.props.phoneNumbers.length) {
       modalPrompt = [
@@ -65,11 +67,14 @@ class LookupMobileProofing extends Component {
               onClick={this.props.handleShowModal}
               block
             >
-              {this.props.l10n("lmp.confirm-lookup-mobile")}
+              {this.props.l10n("lmp.button_text_request")}
             </EduIDButton>
             <FormText className="proofing-btn-help" color="muted">
               {this.props.l10n("lmp.initialize_proofing_help_text")}
             </FormText>
+            <label>
+              {this.props.l10n("lmp.initialize_proofing_help_text_tip_1")}
+            </label>
           </fieldset>
         </form>
         {modalPrompt}

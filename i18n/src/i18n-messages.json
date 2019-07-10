@@ -476,12 +476,20 @@
     "defaultMessage": "You cannot remove your verified national id number"
   },
   {
-    "id": "letter.letter_button_text",
-    "defaultMessage": "Confirm using letter"
+    "id": "letter.button_text_request",
+    "defaultMessage": "By post"
+  },
+  {
+    "id": "letter.button_text_code",
+    "defaultMessage": "Enter confirmation code here"
+  },
+  {
+    "id": "letter.initialize_proofing_help_text_tip_1",
+    "defaultMessage": "Tip: You can register at addresses outside of Sweden"
   },
   {
     "id": "letter.initialize_proofing_help_text",
-    "defaultMessage": "To use this option you will have to wait for a letter sent to your official address."
+    "defaultMessage": "Get a confirmation code sent by post to your registered address."
   },
   {
     "id": "letter.no_state_found",
@@ -501,11 +509,11 @@
   },
   {
     "id": "letter.bad-postal-address",
-    "defaultMessage": "The postal address is incomprehensible"
+    "defaultMessage": "The registered postal address is not a valid address"
   },
   {
     "id": "letter.saved-unconfirmed",
-    "defaultMessage": "Saved unconfirmed NIN"
+    "defaultMessage": "A letter is on it's way to your house"
   },
   {
     "id": "letter.wrong-code",
@@ -513,19 +521,59 @@
   },
   {
     "id": "letter.verification_success",
-    "defaultMessage": "Successfully verified NIN"
+    "defaultMessage": "Successfully verified national id number"
   },
   {
-    "id": "lmp.confirm-lookup-mobile",
+    "id": "letter.modal_confirm_title",
+    "defaultMessage": "Use a confirmation code sent by post to your house"
+  },
+  {
+    "id": "letter.confirm_info",
+    "defaultMessage": "If you click \"accept\" below, you will be sent a letter by physical mail with a confirmation code. Once you receive it come back here and click again on \"confirm using letter\", and you will be offered a form to enter your code and verify your identity. The code sent to you will expire in 2 weeks starting now"
+  },
+  {
+    "id": "letter.verify_title",
+    "defaultMessage": "Add the code you have received by post"
+  },
+  {
+    "id": "lmp.button_text_request",
     "defaultMessage": "By Phone"
   },
   {
+    "id": "lmp.button_text_code",
+    "defaultMessage": "Enter confirmation code here"
+  },
+  {
     "id": "lmp.initialize_proofing_help_text",
-    "defaultMessage": "To use this option you need to have your phone number subscription under your own name."
+    "defaultMessage": "Get a confirmation code sent to a mobile phone number registered in your name."
+  },
+  {
+    "id": "lmp.initialize_proofing_help_text_tip_1",
+    "defaultMessage": "Tip: The registry is updated by phone operators at their conveninece and may not include all registered phone numbers"
+  },
+  {
+    "id": "lmp.modal_add_number_title",
+    "defaultMessage": "Add your mobile number to continue"
+  },
+  {
+    "id": "lmp.modal_add_number_info",
+    "defaultMessage": "This option will be available once you have added your number and entered the confirmation code in Settings."
+  },
+  {
+    "id": "lmp.modal_reminder_to_confirm_title",
+    "defaultMessage": "Your number is added but not confirmed"
+  },
+  {
+    "id": "lmp.modal_reminder_to_confirm_info",
+    "defaultMessage": "You can confirm your number in Settings. This option will be available once your number is confirmed."
   },
   {
     "id": "lmp.confirm_info",
-    "defaultMessage": "Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry."
+    "defaultMessage": "Click ACCEPT to check if your phone number is connected to your id number in the phone registry. The phone operators are responsible for keeping the registry up to date and you could have a phone number in your name, but not be included in the registry."
+  },
+  {
+    "id": "lmp.modal_confirm_title",
+    "defaultMessage": "Check if your phone number is connected to your id number."
   },
   {
     "id": "lmp.verification_success",
@@ -533,11 +581,11 @@
   },
   {
     "id": "eidas.freja_eid",
-    "defaultMessage": "Freja eID"
+    "defaultMessage": "With Freja eID"
   },
   {
     "id": "eidas.initialize_proofing_help_text",
-    "defaultMessage": "To use this option you need to have <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID+</a>."
+    "defaultMessage": "Download the Freja eID app and have your identity verified at selected local vendors."
   },
   {
     "id": "eidas.modal_title",

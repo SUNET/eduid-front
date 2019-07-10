@@ -17,13 +17,14 @@ class Eidas extends Component {
     // Temporary instructions until Sweden Connect has more alternatives and we have a DS
     const freja_instructions = (
       <div className="well" id="freja-instructions">
+        {" "}
         <label>{this.props.l10n("eidas.freja_instructions_step_6")}</label>
         <ol>
           <li>{this.props.l10n("eidas.freja_instructions_step_1")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_2")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_3")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_4")}</li>
-          <label>{this.props.l10n("eidas.freja_instructions_tip_1")}</label>
+
           <li>{this.props.l10n("eidas.freja_instructions_step_5")}</li>
         </ol>
       </div>
@@ -69,9 +70,20 @@ class Eidas extends Component {
         <form id="eidas-form" className="form-horizontal" role="form">
           <fieldset id="eidas">
             {showModalButton}
+
             <FormText>
               {this.props.l10n("eidas.initialize_proofing_help_text")}
+              {/* <ul>
+                <li>
+                  {this.props.l10n("eidas.initialize_proofing_help_text_step_1")}
+                </li>
+                <li>
+                  {this.props.l10n("eidas.initialize_proofing_help_text_step_2")}
+                </li>
+              </ul> */}
             </FormText>
+
+            <label>{this.props.l10n("eidas.freja_instructions_tip_1")}</label>
           </fieldset>
         </form>
 

@@ -955,23 +955,50 @@ const msgs = {
     />
   ),
 
-
   /***************************************/
   /***** VERIFY IDENTITY > VETTING  ******/
   /***************************************/
 
   /* ----- LETTER PROOFING  ------- */
-  "letter.letter_button_text": (
+  "letter.button_text_request": (
     <FormattedMessage
-      id="letter.letter_button_text"
-      defaultMessage={`Confirm using letter`}
+      id="letter.button_text_request"
+      defaultMessage={`By post`}
+    />
+  ),
+
+  "letter.button_text_code": (
+    <FormattedMessage
+      id="letter.button_text_code"
+      defaultMessage={`Enter confirmation code here`}
+    />
+  ),
+
+  // "letter.initialize_proofing_help_text_step_1": (
+  //   <FormattedMessage
+  //     id="letter.initialize_proofing_help_text_step_1"
+  //     defaultMessage={`You need to be registerd at the correct address`}
+  //   />
+  // ),
+
+  // "letter.initialize_proofing_help_text_step_2": (
+  //   <FormattedMessage
+  //     id="letter.initialize_proofing_help_text_step_2"
+  //     defaultMessage={`You need to recieve the letter before the code expires`}
+  //   />
+  // ),
+
+  "letter.initialize_proofing_help_text_tip_1": (
+    <FormattedMessage
+      id="letter.initialize_proofing_help_text_tip_1"
+      defaultMessage={`Tip: You can register at addresses outside of Sweden`}
     />
   ),
 
   "letter.initialize_proofing_help_text": (
     <FormattedMessage
       id="letter.initialize_proofing_help_text"
-      defaultMessage={`To use this option you will have to wait for a letter sent to your official address.`}
+      defaultMessage={`Get a confirmation code sent by post to your registered address.`}
     />
   ),
 
@@ -1006,14 +1033,14 @@ const msgs = {
   "letter.bad-postal-address": (
     <FormattedMessage
       id="letter.bad-postal-address"
-      defaultMessage={`The postal address is incomprehensible`}
+      defaultMessage={`The registered postal address is not a valid address`}
     />
   ),
 
   "letter.saved-unconfirmed": (
     <FormattedMessage
       id="letter.saved-unconfirmed"
-      defaultMessage={`Saved unconfirmed NIN`}
+      defaultMessage={`A letter is on it's way to your house`}
     />
   ),
 
@@ -1027,81 +1054,107 @@ const msgs = {
   "letter.verification_success": (
     <FormattedMessage
       id="letter.verification_success"
-      defaultMessage={`Successfully verified NIN`}
+      defaultMessage={`Successfully verified national id number`}
     />
   ),
 
-  "letter.confirm_title": {
-    id: "letter.confirm_title",
-    defaultMessage: `Verify your identity with a confirmation code sent by post to your house`,
-    description: "Title for letter proofing confirm dialog"
-  },
-  "letter.confirm_info": {
-    id: "letter.confirm_info",
-    defaultMessage: `If you click "accept" below, you will be sent a letter by physical mail with a confirmation code. Once you receive it come back here and click again on "confirm using letter", and you will be offered a form to enter your code and verify your identity. The code sent to you will expire in 2 weeks starting now.`,
-    description: "Explanation for letter proofing confirm dialog"
-  },
-  "letter.verify_title": {
-    id: "letter.verify_title",
-    defaultMessage: `Verify your identity with the code you have received by post`,
-    description: "Title for letter proofing verify dialog"
-  },
+  "letter.modal_confirm_title": (
+    <FormattedMessage
+      id="letter.modal_confirm_title"
+      defaultMessage={`Use a confirmation code sent by post to your house`}
+    />
+  ),
+
+  "letter.confirm_info": (
+    <FormattedMessage
+      id="letter.confirm_info"
+      defaultMessage={`If you click "accept" below, you will be sent a letter by physical mail with a confirmation code. Once you receive it come back here and click again on "confirm using letter", and you will be offered a form to enter your code and verify your identity. The code sent to you will expire in 2 weeks starting now`}
+    />
+  ),
+
+  "letter.verify_title": (
+    <FormattedMessage
+      id="letter.verify_title"
+      defaultMessage={`Add the code you have received by post`}
+    />
+  ),
 
   /* ----- Phone Subscription ------- */
 
-  "lmp.confirm-lookup-mobile": (
+  "lmp.button_text_request": (
     <FormattedMessage
-      id="lmp.confirm-lookup-mobile"
+      id="lmp.button_text_request"
       defaultMessage={`By Phone`}
+    />
+  ),
+
+  "lmp.button_text_code": (
+    <FormattedMessage
+      id="lmp.button_text_code"
+      defaultMessage={`Enter confirmation code here`}
     />
   ),
 
   "lmp.initialize_proofing_help_text": (
     <FormattedMessage
       id="lmp.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to have your phone number subscription under your own name.`}
+      defaultMessage={`Get a confirmation code sent to a mobile phone number registered in your name.`}
     />
   ),
 
-  /* ----- no number > reminder to add a number ------- */
-  "lmp.modal_add_number_title": {
-    id: "lmp.add_number_title",
-    defaultMessage: `Add your mobile number to continue`,
-    description: "Title for adding mobile number dialog"
-  },
+  "lmp.initialize_proofing_help_text_tip_1": (
+    <FormattedMessage
+      id="lmp.initialize_proofing_help_text_tip_1"
+      defaultMessage={`Tip: The registry is updated by phone operators at their conveninece and may not include all registered phone numbers`}
+    />
+  ),
 
-  "lmp.modal_add_number_info": {
-    id: "lmp.add_number_info",
-    defaultMessage: `This option will be available once you have added your number and entered the confirmation code in Settings.`,
-    description: "Explanation for adding mobile number dialog"
-  },
+
+  /* ----- no number > reminder to add a number ------- */
+
+  "lmp.modal_add_number_title": (
+    <FormattedMessage
+      id="lmp.modal_add_number_title"
+      defaultMessage={`Add your mobile number to continue`}
+    />
+  ),
+
+  "lmp.modal_add_number_info": (
+    <FormattedMessage
+      id="lmp.modal_add_number_info"
+      defaultMessage={`This option will be available once you have added your number and entered the confirmation code in Settings.`}
+    />
+  ),
 
   /* ----- added number but not confirmed > reminder to confirm number------- */
 
-  "lmp.modal_reminder_to_confirm_title": {
-    id: "lmp.reminder_to_confirm_title",
-    defaultMessage: `Your number is added but not confirmed`,
-    description: "Title for confirming mobile number dialog"
-  },
-  "lmp.modal_reminder_to_confirm_info": {
-    id: "lmp.reminder_to_confirm_info",
-    defaultMessage: `You can confirm your number in Settings. This option will be available once your number is confirmed`,
-    description: "Explanation for confirming mobile number dialog"
-  },
+  "lmp.modal_reminder_to_confirm_title": (
+    <FormattedMessage
+      id="lmp.modal_reminder_to_confirm_title"
+      defaultMessage={`Your number is added but not confirmed`}
+    />
+  ),
+
+  "lmp.modal_reminder_to_confirm_info": (
+    <FormattedMessage
+      id="lmp.modal_reminder_to_confirm_info"
+      defaultMessage={`You can confirm your number in Settings. This option will be available once your number is confirmed.`}
+    />
+  ),
 
   /* ----- confirmed number > ready for vetting------- */
   "lmp.modal_confirm_info": (
     <FormattedMessage
       id="lmp.confirm_info"
-      defaultMessage={`Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry.`}
+      defaultMessage={`Click ACCEPT to check if your phone number is connected to your id number in the phone registry. The phone operators are responsible for keeping the registry up to date and you could have a phone number in your name, but not be included in the registry.`}
     />
   ),
-
-  "lmp.modal_confirm_title": {
-    id: "lmp.confirm_title",
-    defaultMessage: `Check if your phone number is connected to your id number`,
-    description: "Title for mobile vetting dialog"
-  },
+  "lmp.modal_confirm_title": (
+    <FormattedMessage
+      id="lmp.modal_confirm_title"
+      defaultMessage={`Check if your phone number is connected to your id number.`}
+    />
+  ),
 
   // no_phone: (
   //   <FormattedMessage
@@ -1119,15 +1172,29 @@ const msgs = {
 
   /* ----- EIDAS ------- */
   "eidas.freja_eid": (
-    <FormattedMessage id="eidas.freja_eid" defaultMessage={`Freja eID`} />
+    <FormattedMessage id="eidas.freja_eid" defaultMessage={`With Freja eID`} />
   ),
+
+  // "eidas.initialize_proofing_help_text_step_1": (
+  //   <FormattedHTMLMessage
+  //     id="eidas.initialize_proofing_help_text_step_1"
+  //     defaultMessage={`Download the Freja eID app and have your identity verified at selected vendors`}
+  //   />
+  // ),
 
   "eidas.initialize_proofing_help_text": (
     <FormattedHTMLMessage
       id="eidas.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to have <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID+</a>.`}
+      defaultMessage={`Download the Freja eID app and have your identity verified at selected local vendors.`}
     />
   ),
+
+  // "eidas.initialize_proofing_help_text_step_2": (
+  //   <FormattedHTMLMessage
+  //     id="eidas.initialize_proofing_help_text_step_2"
+  //     defaultMessage={`You need to visit a local shop authorised in verifying identities for eduID`}
+  //   />
+  // ),
 
   "eidas.modal_title": (
     <FormattedMessage
