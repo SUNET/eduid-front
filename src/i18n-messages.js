@@ -765,22 +765,50 @@ const msgs = {
   ),
 
   /* ----- NINFORM ------- */
-  "nins.main_title": (
-    <FormattedMessage
-      id="nins.main_title"
-      defaultMessage={`National identity number`}
-    />
-  ),
+  // "nins.main_title": (
+  //   <FormattedMessage
+  //     id="nins.main_title"
+  //     defaultMessage={`National identity number`}
+  //   />
+  // ),
 
   /* ----- NINDISPLAY ------- */
-  "nins.justification": (
+  "nin_display.verify-identity_unverified_main_title": (
     <FormattedMessage
-      id="nins.justification"
-      defaultMessage={`Some service providers (e.g. Antagning.se) require a confirmed identity.`}
+      id="nin_display.verify-identity_unverified_main_title"
+      defaultMessage={`1. Your national id number has been added`}
     />
   ),
 
-  "nins.nin": <FormattedMessage id="nins.nin" defaultMessage={"Number"} />,
+  "nin_display.verify-identity_verified_main_title": (
+    <FormattedMessage
+      id="nin_display.verify-identity_verified_main_title"
+      defaultMessage={`National id number`}
+    />
+  ),
+
+  "nin_display.profile.main_title": (
+    <FormattedMessage
+      id="nin_display.profile.main_title"
+      defaultMessage={`National id number`}
+    />
+  ),
+
+  "nin_display.profile.no_nin": (
+    <FormattedMessage
+      id="nin_display.profile.no_nin"
+      defaultMessage={`Add number`}
+    />
+  ),
+
+  // "nins.justification": (
+  //   <FormattedMessage
+  //     id="nins.justification"
+  //     defaultMessage={`Some service providers (e.g. Antagning.se) require a confirmed identity.`}
+  //   />
+  // ),
+
+  // "nins.nin": <FormattedMessage id="nins.nin" defaultMessage={"Number"} />,
 
   "nins.input_help_text": (
     <FormattedMessage
@@ -789,86 +817,86 @@ const msgs = {
     />
   ),
 
-  "nins.verified": (
-    <FormattedMessage id="nins.verified" defaultMessage={`Verified`} />
-  ),
+  // "nins.verified": (
+  //   <FormattedMessage id="nins.verified" defaultMessage={`Verified`} />
+  // ),
 
-  "nins.primary": (
-    <FormattedMessage id="nins.primary" defaultMessage={`Primary`} />
-  ),
+  // "nins.primary": (
+  //   <FormattedMessage id="nins.primary" defaultMessage={`Primary`} />
+  // ),
 
-  "nins.help_text": (
-    <FormattedMessage
-      id="nins.help_text"
-      defaultMessage={`Add your Swedish national identity number and initiate the confirmation process using one of the buttons below.`}
-    />
-  ),
+  // "nins.help_text": (
+  //   <FormattedMessage
+  //     id="nins.help_text"
+  //     defaultMessage={`Add your Swedish national identity number and initiate the confirmation process using one of the buttons below.`}
+  //   />
+  // ),
 
   "nins.invalid_nin": (
-    <FormattedMessage id="nins.invalid_nin" defaultMessage={`Invalid NIN`} />
+    <FormattedMessage id="nins.invalid_nin" defaultMessage={`Invalid national id number`} />
   ),
 
   "nins.wrong_length": (
     <FormattedMessage
       id="nins.wrong_length"
-      defaultMessage={`NINs must have 12 digits`}
+      defaultMessage={`A national id number must have 12 digits`}
     />
   ),
 
   "nins.illegal_chars": (
     <FormattedMessage
       id="nins.illegal_chars"
-      defaultMessage={`NINs can only have digits`}
+      defaultMessage={`A national id number can only have digits`}
     />
   ),
 
   "nins.valid_nin": (
-    <FormattedMessage id="nins.valid_nin" defaultMessage={`Valid NIN`} />
+    <FormattedMessage id="nins.valid_nin" defaultMessage={`Valid national id number`} />
   ),
 
-  "nins.confirmed_nin": (
-    <FormattedMessage
-      id="nins.confirmed_nin"
-      defaultMessage={`NIN (Confirmed)`}
-    />
-  ),
+  // "nins.confirmed_nin": (
+  //   <FormattedMessage
+  //     id="nins.confirmed_nin"
+  //     defaultMessage={`National id number (Confirmed)`}
+  //   />
+  // ),
 
-  "nins.unconfirmed_nin": (
-    <FormattedMessage
-      id="nins.unconfirmed_nin"
-      defaultMessage={`Unconfirmed NIN`}
-    />
-  ),
+  // "nins.unconfirmed_nin": (
+  //   <FormattedMessage
+  //     id="nins.unconfirmed_nin"
+  //     defaultMessage={`Unconfirmed national id number`}
+  //   />
+  // ),
 
-  "nins.button_delete": (
-    <FormattedMessage id="nins.button_delete" defaultMessage={`Remove`} />
-  ),
+  // "nins.button_delete": (
+  //   <FormattedMessage id="nins.button_delete" defaultMessage={`Remove`} />
+  // ),
 
   "nins.only_one_to_verify": (
     <FormattedMessage
       id="nins.only_one_to_verify"
-      defaultMessage={`You can only have one unverified NIN to verify it. Please remove the unwanted ones.`}
+      defaultMessage={`You can only have one unverified national id number to verify it. Please remove the unwanted ones.`}
     />
   ),
 
   "nins.success_removal": (
     <FormattedMessage
       id="nins.success_removal"
-      defaultMessage={`Successfully removed NIN`}
+      defaultMessage={`Successfully removed national id number`}
     />
   ),
 
   "nins.no-mobile-match": (
     <FormattedMessage
       id="nins.no-mobile-match"
-      defaultMessage={`No phone number matching NIN`}
+      defaultMessage={`No phone number matching the given national id number`}
     />
   ),
 
   "nins.verified_no_rm": (
     <FormattedMessage
       id="nins.verified_no_rm"
-      defaultMessage={`You cannot remove your verified National identity number`}
+      defaultMessage={`You cannot remove your verified national id number`}
     />
   ),
 

@@ -17,7 +17,7 @@ class NinDisplay extends Component {
       if (this.props.verifiedNinStatus) {
         return (
           <div key="1" className="profile-card">
-            <label>national id number</label>
+            <label>{this.props.l10n("nin_display.verify-identity_verified_main_title")}</label>
             <div data-ninnumber={this.props.verifiedNin[0].number}>
               <p id="nin-number" className="verified">
                 {this.props.verifiedNin[0].number}
@@ -29,7 +29,7 @@ class NinDisplay extends Component {
         // VERIFY ID PROCESS: this is the display of an unverified number (on the verify-identity page)
         return (
           <div key="1" className="profile-card">
-            <label> 1. Your national id number has been added</label>
+            <label>{this.props.l10n("nin_display.verify-identity_unverified_main_title")}</label>
 
             <div key="1" id="nin-display-container">
               <div
@@ -66,13 +66,13 @@ class NinDisplay extends Component {
       if (this.props.nins.length === 0) {
         return (
           <div key="1" className="profile-card">
-            <label>National id number</label>
+            <label>{this.props.l10n("nin_display.profile.main_title")}</label> 
             <div id="nin-number-container">
               <Link
                 to={`/profile/verify-identity/`}
                 className="unverified profile-data"
               >
-                Add number
+                {this.props.l10n("nin_display.profile.no_nin")}
               </Link>
             </div>
           </div>
@@ -81,7 +81,7 @@ class NinDisplay extends Component {
         if (this.props.verifiedNinStatus) {
           return (
             <div key="1" className="profile-card">
-              <label>national id number</label>
+              <label>{this.props.l10n("nin_display.profile.main_title")}</label>
               <div data-ninnumber={this.props.verifiedNin[0].number}>
                 <p id="nin-number" className="verified">
                   {this.props.verifiedNin[0].number}
@@ -92,7 +92,7 @@ class NinDisplay extends Component {
         }
         return (
           <div key="1" className="profile-card">
-            <label>National id number</label>
+            <label>{this.props.l10n("nin_display.profile.main_title")}</label>
             <div id="nin-number-container">
               <Link
                 to={`/profile/verify-identity/`}

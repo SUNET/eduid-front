@@ -388,76 +388,56 @@
     "defaultMessage": "1. Add your national id number"
   },
   {
-    "id": "nins.main_title",
-    "defaultMessage": "National identity number"
+    "id": "nin_display.verify-identity_unverified_main_title",
+    "defaultMessage": "1. Your national id number has been added"
   },
   {
-    "id": "nins.justification",
-    "defaultMessage": "Some service providers (e.g. Antagning.se) require a confirmed identity."
+    "id": "nin_display.verify-identity_verified_main_title",
+    "defaultMessage": "National id number"
   },
   {
-    "id": "nins.nin",
-    "defaultMessage": "Number"
+    "id": "nin_display.profile.main_title",
+    "defaultMessage": "National id number"
+  },
+  {
+    "id": "nin_display.profile.no_nin",
+    "defaultMessage": "Add number"
   },
   {
     "id": "nins.input_help_text",
     "defaultMessage": "National identity number with 12 digits"
   },
   {
-    "id": "nins.verified",
-    "defaultMessage": "Verified"
-  },
-  {
-    "id": "nins.primary",
-    "defaultMessage": "Primary"
-  },
-  {
-    "id": "nins.help_text",
-    "defaultMessage": "Add your Swedish national identity number and initiate the confirmation process using one of the buttons below."
-  },
-  {
     "id": "nins.invalid_nin",
-    "defaultMessage": "Invalid NIN"
+    "defaultMessage": "Invalid national id number"
   },
   {
     "id": "nins.wrong_length",
-    "defaultMessage": "NINs must have 12 digits"
+    "defaultMessage": "A national id number must have 12 digits"
   },
   {
     "id": "nins.illegal_chars",
-    "defaultMessage": "NINs can only have digits"
+    "defaultMessage": "A national id number can only have digits"
   },
   {
     "id": "nins.valid_nin",
-    "defaultMessage": "Valid NIN"
-  },
-  {
-    "id": "nins.confirmed_nin",
-    "defaultMessage": "NIN (Confirmed)"
-  },
-  {
-    "id": "nins.unconfirmed_nin",
-    "defaultMessage": "Unconfirmed NIN"
-  },
-  {
-    "id": "nins.button_delete",
-    "defaultMessage": "Remove"
+    "defaultMessage": "Valid national id number"
   },
   {
     "id": "nins.only_one_to_verify",
-    "defaultMessage": "You can only have one unverified NIN to verify it. Please remove the unwanted ones."
+    "defaultMessage": "You can only have one unverified national id number to verify it. Please remove the unwanted ones."
   },
   {
     "id": "nins.success_removal",
-    "defaultMessage": "Successfully removed NIN"
+    "defaultMessage": "Successfully removed national id number"
   },
   {
     "id": "nins.no-mobile-match",
-    "defaultMessage": "No phone number matching NIN"
+    "defaultMessage": "No phone number matching the given national id number"
   },
   {
     "id": "nins.verified_no_rm",
-    "defaultMessage": "You cannot remove your verified National identity number"
+    "defaultMessage": "You cannot remove your verified national id number"
   },
   {
     "id": "letter.letter_button_text",
