@@ -658,7 +658,7 @@ const msgs = {
   "main.menu": <FormattedMessage id="main.menu" defaultMessage={`Menu`} />,
 
 
-  
+
 /**********************/
 /***** GENERAL  ******/
 /*********************/
@@ -734,6 +734,15 @@ const msgs = {
 
 /* ----- NINS ------- */
 
+/* ----- ADD NIN ------- */
+  "add_nin.main_title": (
+    <FormattedMessage
+      id="add_nin.main_title"
+      defaultMessage={`1. Add your national id number`}
+    />
+  ),
+
+/* ----- NINFORM ------- */
   "nins.main_title": (
     <FormattedMessage
       id="nins.main_title"
@@ -741,6 +750,7 @@ const msgs = {
     />
   ),
 
+/* ----- NINDISPLAY ------- */
   "nins.justification": (
     <FormattedMessage
       id="nins.justification"

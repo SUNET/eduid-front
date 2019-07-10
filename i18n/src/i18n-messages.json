@@ -368,6 +368,10 @@
     "defaultMessage": "PENDING CONFIRMATION"
   },
   {
+    "id": "add_nin.main_title",
+    "defaultMessage": "1. Add your national id number"
+  },
+  {
     "id": "nins.main_title",
     "defaultMessage": "National identity number"
   },
