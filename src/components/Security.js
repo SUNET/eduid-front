@@ -36,10 +36,10 @@ class Security extends Component {
       window.location.href = this.props.redirect_to;
       return null;
     }
-    if (this.props.deleted) {
-      window.location.href = "https://eduid.se";
-      return null;
-    }
+    // if (this.props.deleted) {
+    //   window.location.href = "https://eduid.se";
+    //   return null;
+    // }
     // filter out passwords from table and only display security keys if avaliable (no table until there is one security key)
     const tokens = this.props.credentials.filter(
       cred => cred.credential_type !== "security.password_credential_type"
@@ -133,7 +133,7 @@ class Security extends Component {
       );
     }
 
-    if (url.includes("settings")) {
+    // if (url.includes("settings")) {
       return (
         <div id="security-container">
           <div id="register-securitykey-container">
@@ -192,53 +192,53 @@ class Security extends Component {
           />
         </div>
       );
-    } else if (url.includes("security")) {
-      return (
-        <div id="security-container">
-          <div className="intro">
-            <h3>Increase security by regestering security keys to eduID</h3>
-            <p>
-              {this.props.l10n("security.for-second-factor")}. If you have been
-              given a security key to access sensitive data, don't forget to
-              register it here.
-            </p>
-          </div>
-          <div id="register-webauthn-tokens-area">
-            <div id="add-webauthn-token">
+    // } else if (url.includes("security")) {
+    //   return (
+    //     <div id="security-container">
+    //       <div className="intro">
+    //         <h3>Increase security by regestering security keys to eduID</h3>
+    //         <p>
+    //           {this.props.l10n("security.for-second-factor")}. If you have been
+    //           given a security key to access sensitive data, don't forget to
+    //           register it here.
+    //         </p>
+    //       </div>
+    //       <div id="register-webauthn-tokens-area">
+    //         <div id="add-webauthn-token">
 
-              <EduIDButton
-                id="security-webauthn-button"
-                onClick={this.props.handleStartAskingKeyWebauthnDescription}
-              >
-                {this.props.l10n("security.add_webauthn_token_key")}
-              </EduIDButton>
-            </div>
-            {platformAuthenticatorButton}
-          </div>
-          <GenericConfirmModal
-            modalId="securityConfirmDialog"
-            title={this.props.l10n("security.confirm_title_chpass")}
-            mainText={this.props.l10n("security.change_info")}
-            showModal={this.props.confirming_change}
-            closeModal={this.props.handleStopConfirmationPassword}
-            acceptModal={this.props.handleConfirmationPassword}
-          />
-          <ConfirmModal
-            modalId="describeWebauthnTokenDialog"
-            id="describeWebauthnTokenDialogControl"
-            title={this.props.l10n("security.webauthn-describe-title")}
-            resendLabel=""
-            resendHelp=""
-            resendText=""
-            placeholder=""
-            with_resend_link={false}
-            showModal={Boolean(this.props.webauthn_asking_description)}
-            closeModal={this.props.handleStopAskingWebauthnDescription}
-            handleConfirm={this.props.handleStartWebauthnRegistration}
-          />
-        </div>
-      );
-    }
+    //           <EduIDButton
+    //             id="security-webauthn-button"
+    //             onClick={this.props.handleStartAskingKeyWebauthnDescription}
+    //           >
+    //             {this.props.l10n("security.add_webauthn_token_key")}
+    //           </EduIDButton>
+    //         </div>
+    //         {platformAuthenticatorButton}
+    //       </div>
+    //       <GenericConfirmModal
+    //         modalId="securityConfirmDialog"
+    //         title={this.props.l10n("security.confirm_title_chpass")}
+    //         mainText={this.props.l10n("security.change_info")}
+    //         showModal={this.props.confirming_change}
+    //         closeModal={this.props.handleStopConfirmationPassword}
+    //         acceptModal={this.props.handleConfirmationPassword}
+    //       />
+    //       <ConfirmModal
+    //         modalId="describeWebauthnTokenDialog"
+    //         id="describeWebauthnTokenDialogControl"
+    //         title={this.props.l10n("security.webauthn-describe-title")}
+    //         resendLabel=""
+    //         resendHelp=""
+    //         resendText=""
+    //         placeholder=""
+    //         with_resend_link={false}
+    //         showModal={Boolean(this.props.webauthn_asking_description)}
+    //         closeModal={this.props.handleStopAskingWebauthnDescription}
+    //         handleConfirm={this.props.handleStartWebauthnRegistration}
+    //       />
+    //     </div>
+    //   );
+    // }
   }
 }
 
