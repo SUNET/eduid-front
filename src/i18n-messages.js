@@ -1932,6 +1932,13 @@ const msgs = {
     />
   ),
 
+  "phones.button_add_more": (
+    <FormattedMessage
+      id="phones.button_add_more"
+      defaultMessage={`+ add more`}
+    />
+  ),
+
   "phones.get-success": (
     <FormattedMessage
       id="phones.get-success"

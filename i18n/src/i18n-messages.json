@@ -1060,6 +1060,10 @@
     "defaultMessage": "Mobile phone numbers"
   },
   {
+    "id": "phones.button_add_more",
+    "defaultMessage": "+ add more"
+  },
+  {
     "id": "phones.get-success",
     "defaultMessage": "Successfully retrieved phone numbers"
   },

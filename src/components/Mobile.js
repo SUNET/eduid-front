@@ -109,7 +109,7 @@ class Mobile extends Component {
             className={this.state.addLinkClass}
             onClick={this.showEmailForm}
           >
-            + add more
+            {this.props.l10n("phones.button_add_more")}
           </EduIDButton>
         </div>
         <ConfirmModal
