@@ -18,12 +18,7 @@ import NotificationsContainer from "containers/Notifications";
 
 class ConfirmModal extends Component {
   render() {
-    console.log("this is this-props.id:", this.props.id);
-    // let ConfirmForm = getConfirmForm(this.props.id);
-
-
     let resendMarkup = "";
-    // let inputName = "";
     if (this.props.with_resend_link) {
       resendMarkup = (
         <div>
@@ -50,7 +45,6 @@ class ConfirmModal extends Component {
         >
           <ModalHeader>{this.props.title}</ModalHeader>
           <ModalBody>
-            {/* <NotificationsContainer />  */}
             <ConfirmModalForm inputName={this.props.id} {...this.props} />
             {resendMarkup}
           </ModalBody>
