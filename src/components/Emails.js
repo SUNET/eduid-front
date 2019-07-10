@@ -65,19 +65,12 @@ class Emails extends Component {
   }
 
   showEmailForm() {
-    console.log("hellow, you're showing the form");
-    this.setState(
-      (state, props) => {
-        return {
-          formClass: "form-content",
-          addLinkClass: "hide"
-        };
-      },
-      () => {
-        console.log("formClass:",this.state.formClass);
-      }
-    );
-    console.log("formClass state updated:", this.state.formClass);
+    this.setState((state, props) => {
+      return {
+        formClass: "form-content",
+        addLinkClass: "hide"
+      };
+    });
   }
 
   render() {
@@ -86,10 +79,6 @@ class Emails extends Component {
         <div className="intro">
           <h4>{this.props.l10n("emails.main_title")}</h4>
           <p>{this.props.l10n("emails.long_description")}</p>
-          {/* <p>
-{this.props.l10n("faq_link")}{" "}
-<a href="https://www.eduid.se/faq.html">FAQ</a>
-</p> */}
         </div>
         <div id="email-display">
           <TableList
@@ -106,7 +95,7 @@ class Emails extends Component {
             className={this.state.addLinkClass}
             onClick={this.showEmailForm}
           >
-            + add more
+            {this.props.l10n("emails.button_add_more")}
           </EduIDButton>
         </div>
         <ConfirmModal

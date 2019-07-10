@@ -968,6 +968,10 @@
     "defaultMessage": "Email addresses"
   },
   {
+    "id": "emails.button_add_more",
+    "defaultMessage": "+ add more"
+  },
+  {
     "id": "emails.get-success",
     "defaultMessage": "Successfully retrieved Email addresses"
   },

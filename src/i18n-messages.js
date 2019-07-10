@@ -1772,6 +1772,13 @@ const msgs = {
     />
   ),
 
+  "emails.button_add_more": (
+    <FormattedMessage
+      id="emails.button_add_more"
+      defaultMessage={`+ add more`}
+    />
+  ),
+
   "emails.get-success": (
     <FormattedMessage
       id="emails.get-success"
