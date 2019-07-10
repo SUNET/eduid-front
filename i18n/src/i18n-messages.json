@@ -481,19 +481,19 @@
   },
   {
     "id": "lmp.confirm-lookup-mobile",
-    "defaultMessage": "Phone Subscription"
+    "defaultMessage": "By Phone"
   },
   {
     "id": "lmp.initialize_proofing_help_text",
     "defaultMessage": "To use this option you need to have your phone number subscription under your own name."
   },
   {
-    "id": "no_phone",
-    "defaultMessage": "You must add a phone number to be able to use this vetting method"
+    "id": "lmp.confirm_info",
+    "defaultMessage": "Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry."
   },
   {
     "id": "lmp.verification_success",
-    "defaultMessage": "Your NIN has been successfully verified"
+    "defaultMessage": "Your national id number has been successfully verified"
   },
   {
     "id": "eidas.freja_eid",
@@ -885,11 +885,11 @@
   },
   {
     "id": "pd.long_description",
-    "defaultMessage": "This information is sent to service providers\n           when you log in using eduID in order to personalize those services for you."
+    "defaultMessage": "Your name and preferred language will be used to personalise some services that you access with eduID."
   },
   {
     "id": "pd.main_title",
-    "defaultMessage": "Personal information"
+    "defaultMessage": "Name & language"
   },
   {
     "id": "pd.all-data-success",
@@ -909,7 +909,7 @@
   },
   {
     "id": "pd.display_name_input_help_text",
-    "defaultMessage": "Some services will show this instead of your given name and surname."
+    "defaultMessage": "Some services will show this instead of your first and last name."
   },
   {
     "id": "emails.resend_success",
@@ -1356,34 +1356,6 @@
     "defaultMessage": "ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with."
   },
   {
-    "id": "pending.pdata",
-    "defaultMessage": "Add personal information"
-  },
-  {
-    "id": "pending.emails",
-    "defaultMessage": "Add an email address"
-  },
-  {
-    "id": "pending.nins",
-    "defaultMessage": "Add a national identity number"
-  },
-  {
-    "id": "pending.phones",
-    "defaultMessage": "Add a phone number"
-  },
-  {
-    "id": "pending_confirm.emails",
-    "defaultMessage": "Confirm email address"
-  },
-  {
-    "id": "pending_confirm.nins",
-    "defaultMessage": "Confirm national identity number"
-  },
-  {
-    "id": "pending_confirm.phones",
-    "defaultMessage": "Confirm phone number"
-  },
-  {
     "id": "main.unconfirmed",
     "defaultMessage": "Unconfirmed"
   },
@@ -1425,54 +1397,9 @@
     "defaultMessage": "Resend confirmation code"
   },
   {
-    "id": "lmp.add_number_title",
-    "description": "Title for adding mobile number dialog",
-    "defaultMessage": "Add your mobile number to continue"
-  },
-  {
-    "id": "lmp.add_number_info",
-    "description": "Explanation for adding mobile number dialog",
-    "defaultMessage": "This option will be available once you have added your number and entered the confirmation code in Settings."
-  },
-  {
-    "id": "lmp.reminder_to_confirm_title",
-    "description": "Title for confirming mobile number dialog",
-    "defaultMessage": "Your number is added but not confirmed"
-  },
-  {
-    "id": "lmp.reminder_to_confirm_info",
-    "description": "Explanation for confirming mobile number dialog",
-    "defaultMessage": "You can confirm your number in Settings. This option will be available once your number is confirmed"
-  },
-  {
-    "id": "lmp.confirm_title",
-    "description": "Title for mobile vetting dialog",
-    "defaultMessage": "Check if your phone number is connected to your id number"
-  },
-  {
-    "id": "lmp.confirm_info",
-    "description": "Explanation for mobile vetting dialog",
-    "defaultMessage": "Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry."
-  },
-  {
-    "id": "letter.confirm_title",
-    "description": "Title for letter proofing confirm dialog",
-    "defaultMessage": "Confirm identity with code sent by letter"
-  },
-  {
-    "id": "letter.confirm_info",
-    "description": "Explanation for letter proofing confirm dialog",
-    "defaultMessage": "If you click \"accept\" below, you will be sent a letter by physical mail with a confirmation code. Once you receive it come back here and click again on \"confirm using letter\", and you will be offered a form to enter your code and verify your identity. The code sent to you will expire in 2 weeks starting now."
-  },
-  {
-    "id": "letter.verify_title",
-    "description": "Title for letter proofing verify dialog",
-    "defaultMessage": "Verify your identity with the code you have received by physical mail"
-  },
-  {
     "id": "letter.lost_code",
     "description": "Text for letter proofing confirm dialog",
-    "defaultMessage": "When you click on the \"Send code\" link a letter with a verification code will be sent to your official postal address."
+    "defaultMessage": "When you click on the \"Send code\" link a letter with a verification code will be sent to your official post address."
   },
   {
     "id": "letter.resend_code",
@@ -1486,11 +1413,11 @@
   },
   {
     "id": "pd.given_name",
-    "defaultMessage": "Given Name"
+    "defaultMessage": "First name"
   },
   {
     "id": "pd.surname",
-    "defaultMessage": "Surname"
+    "defaultMessage": "Last name"
   },
   {
     "id": "pd.display_name",
@@ -1502,7 +1429,7 @@
   },
   {
     "id": "pd.display_name_inputplaceholder",
-    "defaultMessage": "Given name Surname"
+    "defaultMessage": "First and last name"
   },
   {
     "id": "nins.input_placeholder",
@@ -1510,6 +1437,6 @@
   },
   {
     "id": "phones.input_placeholder",
-    "defaultMessage": "Phone number"
+    "defaultMessage": "phone number"
   }
 ]

@@ -19,8 +19,8 @@ class LookupMobileProofing extends Component {
       modalPrompt = [
         <GenericConfirmModal
           modalId="mobileGenericConfirmDialog"
-          title={this.props.l10n("lmp.reminder_to_confirm_title")}
-          mainText={this.props.l10n("lmp.reminder_to_confirm_info")}
+          title={this.props.l10n("lmp.modal_reminder_to_confirm_title")}
+          mainText={this.props.l10n("lmp.modal_reminder_to_confirm_info")}
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
@@ -30,8 +30,8 @@ class LookupMobileProofing extends Component {
         modalPrompt = [
           <GenericConfirmModal
             modalId="mobileGenericConfirmDialog"
-            title={this.props.l10n("lmp.confirm_title")}
-            mainText={this.props.l10n("lmp.confirm_info")}
+            title={this.props.l10n("lmp.modal_confirm_title")}
+            mainText={this.props.l10n("lmp.modal_confirm_info")}
             showModal={this.props.showModal}
             closeModal={this.props.handleCloseModal}
             acceptModal={this.props.handleLookupMobile}
@@ -42,8 +42,8 @@ class LookupMobileProofing extends Component {
       modalPrompt = [
         <GenericConfirmModal
           modalId="mobileGenericConfirmDialog"
-          title={this.props.l10n("lmp.add_number_title")}
-          mainText={this.props.l10n("lmp.add_number_info")}
+          title={this.props.l10n("lmp.modal_add_number_title")}
+          mainText={this.props.l10n("lmp.modal_add_number_info")}
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}

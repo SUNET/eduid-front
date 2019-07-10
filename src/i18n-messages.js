@@ -663,16 +663,10 @@ const msgs = {
 
   /* ----- DASHBOARDNAV  ------- */
   "dashboard_nav.profile": (
-    <FormattedMessage
-      id="dashboard_nav.profile"
-      defaultMessage={`Profile`}
-    />
+    <FormattedMessage id="dashboard_nav.profile" defaultMessage={`Profile`} />
   ),
   "dashboard_nav.settings": (
-    <FormattedMessage
-      id="dashboard_nav.settings"
-      defaultMessage={`Settings`}
-    />
+    <FormattedMessage id="dashboard_nav.settings" defaultMessage={`Settings`} />
   ),
   "dashboard_nav.advanced-settings": (
     <FormattedMessage
@@ -681,13 +675,9 @@ const msgs = {
     />
   ),
   "dashboard_nav.back": (
-    <FormattedMessage
-      id="dashboard_nav.back"
-      defaultMessage={`Back`}
-    />
+    <FormattedMessage id="dashboard_nav.back" defaultMessage={`Back`} />
   ),
 
- 
   /* ----- ConfirmModal  ------- */
 
   "cm.ok": <FormattedMessage id="cm.ok" defaultMessage={`OK`} />,
@@ -833,7 +823,10 @@ const msgs = {
   // ),
 
   "nins.invalid_nin": (
-    <FormattedMessage id="nins.invalid_nin" defaultMessage={`Invalid national id number`} />
+    <FormattedMessage
+      id="nins.invalid_nin"
+      defaultMessage={`Invalid national id number`}
+    />
   ),
 
   "nins.wrong_length": (
@@ -851,7 +844,10 @@ const msgs = {
   ),
 
   "nins.valid_nin": (
-    <FormattedMessage id="nins.valid_nin" defaultMessage={`Valid national id number`} />
+    <FormattedMessage
+      id="nins.valid_nin"
+      defaultMessage={`Valid national id number`}
+    />
   ),
 
   // "nins.confirmed_nin": (
@@ -971,12 +967,28 @@ const msgs = {
     />
   ),
 
+  "letter.confirm_title": {
+    id: "letter.confirm_title",
+    defaultMessage: `Verify your identity with a confirmation code sent by post to your house`,
+    description: "Title for letter proofing confirm dialog"
+  },
+  "letter.confirm_info": {
+    id: "letter.confirm_info",
+    defaultMessage: `If you click "accept" below, you will be sent a letter by physical mail with a confirmation code. Once you receive it come back here and click again on "confirm using letter", and you will be offered a form to enter your code and verify your identity. The code sent to you will expire in 2 weeks starting now.`,
+    description: "Explanation for letter proofing confirm dialog"
+  },
+  "letter.verify_title": {
+    id: "letter.verify_title",
+    defaultMessage: `Verify your identity with the code you have received by post`,
+    description: "Title for letter proofing verify dialog"
+  },
+
   /* ----- Phone Subscription ------- */
 
   "lmp.confirm-lookup-mobile": (
     <FormattedMessage
       id="lmp.confirm-lookup-mobile"
-      defaultMessage={`Phone Subscription`}
+      defaultMessage={`By Phone`}
     />
   ),
 
@@ -987,17 +999,57 @@ const msgs = {
     />
   ),
 
-  no_phone: (
+/* ----- no number > reminder to add a number ------- */
+  "lmp.modal_add_number_title": {
+    id: "lmp.add_number_title",
+    defaultMessage: `Add your mobile number to continue`,
+    description: "Title for adding mobile number dialog"
+  },
+
+  "lmp.modal_add_number_info": {
+    id: "lmp.add_number_info",
+    defaultMessage: `This option will be available once you have added your number and entered the confirmation code in Settings.`,
+    description: "Explanation for adding mobile number dialog"
+  },
+
+/* ----- added number but not confirmed > reminder to confirm number------- */
+
+  "lmp.modal_reminder_to_confirm_title": {
+    id: "lmp.reminder_to_confirm_title",
+    defaultMessage: `Your number is added but not confirmed`,
+    description: "Title for confirming mobile number dialog"
+  },
+  "lmp.modal_reminder_to_confirm_info": {
+    id: "lmp.reminder_to_confirm_info",
+    defaultMessage: `You can confirm your number in Settings. This option will be available once your number is confirmed`,
+    description: "Explanation for confirming mobile number dialog"
+  },
+
+/* ----- confirmed number > ready for vetting------- */
+  "lmp.modal_confirm_info": (
     <FormattedMessage
-      id="no_phone"
-      defaultMessage={`You must add a phone number to be able to use this vetting method`}
+      id="lmp.confirm_info"
+      defaultMessage={`Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry.`}
     />
   ),
+
+  "lmp.modal_confirm_title": {
+    id: "lmp.confirm_title",
+    defaultMessage: `Check if your phone number is connected to your id number`,
+    description: "Title for mobile vetting dialog"
+  },
+
+  // no_phone: (
+  //   <FormattedMessage
+  //     id="no_phone"
+  //     defaultMessage={`You must add a phone number to be able to use this vetting method`}
+  //   />
+  // ),
 
   "lmp.verification_success": (
     <FormattedMessage
       id="lmp.verification_success"
-      defaultMessage={`Your NIN has been successfully verified`}
+      defaultMessage={`Your national id number has been successfully verified`}
     />
   ),
 
@@ -1609,13 +1661,12 @@ const msgs = {
     />
   ),
 
- "orc.button_connect": (
+  "orc.button_connect": (
     <FormattedMessage
-     id="  orc.button_connect"
-     defaultMessage={`Connect ORCID account`}
+      id="  orc.button_connect"
+      defaultMessage={`Connect ORCID account`}
     />
   ),
-
 
   // "orc.connect": (
   //   <FormattedMessage
@@ -1700,16 +1751,12 @@ const msgs = {
   "pd.long_description": (
     <FormattedMessage
       id="pd.long_description"
-      defaultMessage={`This information is sent to service providers
-           when you log in using eduID in order to personalize those services for you.`}
+      defaultMessage={`Your name and preferred language will be used to personalise some services that you access with eduID.`}
     />
   ),
 
   "pd.main_title": (
-    <FormattedMessage
-      id="pd.main_title"
-      defaultMessage={`Personal information`}
-    />
+    <FormattedMessage id="pd.main_title" defaultMessage={`Name & language`} />
   ),
 
   "pd.all-data-success": (
@@ -1743,7 +1790,7 @@ const msgs = {
   "pd.display_name_input_help_text": (
     <FormattedMessage
       id="pd.display_name_input_help_text"
-      defaultMessage={`Some services will show this instead of your given name and surname.`}
+      defaultMessage={`Some services will show this instead of your first and last name.`}
     />
   ),
 
@@ -2396,7 +2443,6 @@ const msgs = {
     />
   ),
 
-
   /************************/
   /* Header ******** ******/
   /************************/
@@ -2561,54 +2607,54 @@ const msgs = {
     />
   ),
 
-  "pending.pdata": (
-    <FormattedMessage
-      id="pending.pdata"
-      defaultMessage={`Add personal information`}
-    />
-  ),
+  // "pending.pdata": (
+  //   <FormattedMessage
+  //     id="pending.pdata"
+  //     defaultMessage={`Add personal information`}
+  //   />
+  // ),
 
-  "pending.emails": (
-    <FormattedMessage
-      id="pending.emails"
-      defaultMessage={`Add an email address`}
-    />
-  ),
+  // "pending.emails": (
+  //   <FormattedMessage
+  //     id="pending.emails"
+  //     defaultMessage={`Add an email address`}
+  //   />
+  // ),
 
-  "pending.nins": (
-    <FormattedMessage
-      id="pending.nins"
-      defaultMessage={`Add a national identity number`}
-    />
-  ),
+  // "pending.nins": (
+  //   <FormattedMessage
+  //     id="pending.nins"
+  //     defaultMessage={`Add a national identity number`}
+  //   />
+  // ),
 
-  "pending.phones": (
-    <FormattedMessage
-      id="pending.phones"
-      defaultMessage={`Add a phone number`}
-    />
-  ),
+  // "pending.phones": (
+  //   <FormattedMessage
+  //     id="pending.phones"
+  //     defaultMessage={`Add a phone number`}
+  //   />
+  // ),
 
-  "pending_confirm.emails": (
-    <FormattedMessage
-      id="pending_confirm.emails"
-      defaultMessage={`Confirm email address`}
-    />
-  ),
+  // "pending_confirm.emails": (
+  //   <FormattedMessage
+  //     id="pending_confirm.emails"
+  //     defaultMessage={`Confirm email address`}
+  //   />
+  // // ),
 
-  "pending_confirm.nins": (
-    <FormattedMessage
-      id="pending_confirm.nins"
-      defaultMessage={`Confirm national identity number`}
-    />
-  ),
+  // "pending_confirm.nins": (
+  //   <FormattedMessage
+  //     id="pending_confirm.nins"
+  //     defaultMessage={`Confirm national identity number`}
+  //   />
+  // ),
 
-  "pending_confirm.phones": (
-    <FormattedMessage
-      id="pending_confirm.phones"
-      defaultMessage={`Confirm phone number`}
-    />
-  ),
+  // "pending_confirm.phones": (
+  //   <FormattedMessage
+  //     id="pending_confirm.phones"
+  //     defaultMessage={`Confirm phone number`}
+  //   />
+  // ),
 
   "main.unconfirmed": (
     <FormattedMessage id="main.unconfirmed" defaultMessage={`Unconfirmed`} />
@@ -2659,54 +2705,9 @@ const unformatted = defineMessages({
     defaultMessage: `Resend confirmation code`,
     description: "Lost code problem solution"
   },
-  "lmp.add_number_title": {
-    id: "lmp.add_number_title",
-    defaultMessage: `Add your mobile number to continue`,
-    description: "Title for adding mobile number dialog"
-  },
-  "lmp.add_number_info": {
-    id: "lmp.add_number_info",
-    defaultMessage: `This option will be available once you have added your number and entered the confirmation code in Settings.`,
-    description: "Explanation for adding mobile number dialog"
-  },
-  "lmp.reminder_to_confirm_title": {
-    id: "lmp.reminder_to_confirm_title",
-    defaultMessage: `Your number is added but not confirmed`,
-    description: "Title for confirming mobile number dialog"
-  },
-  "lmp.reminder_to_confirm_info": {
-    id: "lmp.reminder_to_confirm_info",
-    defaultMessage: `You can confirm your number in Settings. This option will be available once your number is confirmed`,
-    description: "Explanation for confirming mobile number dialog"
-  },
-  "lmp.confirm_title": {
-    id: "lmp.confirm_title",
-    defaultMessage: `Check if your phone number is connected to your id number`,
-    description: "Title for mobile vetting dialog"
-  },
-  "lmp.confirm_info": {
-    id: "lmp.confirm_info",
-    defaultMessage: `Click ACCEPT to check if your phone number is connected to your id number in the phone registry. Note that the registry is updated by phone operators at their conveninece and you could have a phone number in your own name, but not be included in the registry.`,
-    description: "Explanation for mobile vetting dialog"
-  },
-  "letter.confirm_title": {
-    id: "letter.confirm_title",
-    defaultMessage: `Confirm identity with code sent by letter`,
-    description: "Title for letter proofing confirm dialog"
-  },
-  "letter.confirm_info": {
-    id: "letter.confirm_info",
-    defaultMessage: `If you click "accept" below, you will be sent a letter by physical mail with a confirmation code. Once you receive it come back here and click again on "confirm using letter", and you will be offered a form to enter your code and verify your identity. The code sent to you will expire in 2 weeks starting now.`,
-    description: "Explanation for letter proofing confirm dialog"
-  },
-  "letter.verify_title": {
-    id: "letter.verify_title",
-    defaultMessage: `Verify your identity with the code you have received by physical mail`,
-    description: "Title for letter proofing verify dialog"
-  },
   "letter.lost_code": {
     id: "letter.lost_code",
-    defaultMessage: `When you click on the "Send code" link a letter with a verification code will be sent to your official postal address.`,
+    defaultMessage: `When you click on the "Send code" link a letter with a verification code will be sent to your official post address.`,
     description: "Text for letter proofing confirm dialog"
   },
   "letter.resend_code": {
@@ -2722,12 +2723,12 @@ const unformatted = defineMessages({
 
   "pd.given_name": {
     id: "pd.given_name",
-    defaultMessage: `Given Name`
+    defaultMessage: `First name`
   },
 
   "pd.surname": {
     id: "pd.surname",
-    defaultMessage: `Surname`
+    defaultMessage: `Last name`
   },
 
   "pd.display_name": {
@@ -2742,7 +2743,7 @@ const unformatted = defineMessages({
 
   "pd.display_name_input_placeholder": {
     id: "pd.display_name_inputplaceholder",
-    defaultMessage: `Given name Surname`
+    defaultMessage: `First and last name`
   },
 
   "nins.input_placeholder": {
@@ -2752,6 +2753,6 @@ const unformatted = defineMessages({
 
   "phones.input_placeholder": {
     id: "phones.input_placeholder",
-    defaultMessage: `Phone number`
+    defaultMessage: `phone number`
   }
 });
