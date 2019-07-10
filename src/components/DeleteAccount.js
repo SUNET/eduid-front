@@ -1,35 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
-import Modal from "reactstrap/lib/Modal";
-import ModalHeader from "reactstrap/lib/ModalHeader";
-import ModalBody from "reactstrap/lib/ModalBody";
-import ModalFooter from "reactstrap/lib/ModalFooter";
-
 import { connect } from "react-redux";
 import i18n from "i18n-messages";
 import { isValid } from "redux-form";
-// import * as actions from "actions/Security";
 import {
-  confirmPasswordChange,
-  startConfirmationPassword,
-  stopConfirmationPassword,
   confirmDeletion,
   stopConfirmationDeletion,
   startConfirmationDeletion,
-  postRemoveWebauthnToken,
-  postVerifyWebauthnToken,
-  startWebauthnRegistration,
-  startAskWebauthnDescription,
-  stopAskWebauthnDescription,
-  chooseAuthenticator
 } from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
 
 import EduIDButton from "components/EduIDButton";
 import DeleteModal from "components/DeleteModal";
-import GenericConfirmModal from "components/GenericConfirmModal";
-import ConfirmModal from "components/ConfirmModal";
 
 import "style/Security.scss";
 
@@ -49,20 +31,20 @@ class DeleteAccount extends Component {
       <div>
         <div id="delete-account-container">
           <div className="intro">
-            <h4>{this.props.l10n("security.account_title")}</h4>
-            <p>{this.props.l10n("security.account_description")}</p>
+            <h4>{this.props.l10n("settings.account_title")}</h4>
+            <p>{this.props.l10n("settings.account_description")}</p>
           </div>
           <EduIDButton
             className="btn-link"
             id="delete-button"
             onClick={this.props.handleStartConfirmationDeletion}
           >
-            {this.props.l10n("security.delete_account")}
+            {this.props.l10n("settings.button_delete_account")}
           </EduIDButton>
         </div>
 
         <DeleteModal
-          title={this.props.l10n("security.confirm_title_deletion")}
+          title={this.props.l10n("settings.modal_delete_title")}
           showModal={this.props.confirming_deletion}
           closeModal={this.props.handleStopConfirmationDeletion}
           handleConfirm={this.props.handleConfirmationDeletion}

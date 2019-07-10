@@ -28,8 +28,9 @@ class DeleteModal extends Component {
           <ModalBody>
             {/* <NotificationsContainer /> */}
             <div id="delete-account">
-              <p>{this.props.l10n("security.modal_info")}</p>
-              <p>{this.props.l10n("security.modal_notes")}</p>
+              <p>{this.props.l10n("delete.modal_info")}</p>
+              {/* <p>{this.props.l10n("security.modal_notes")}</p> */}
+               <label>{this.props.l10n("delete.modal_tip")}</label> 
               <EduIDButton
                 className="btn-danger btn-default"
                 id="confirm-delete-account-button"
@@ -38,7 +39,7 @@ class DeleteModal extends Component {
                 }}
                 onClick={this.props.handleConfirm}
               >
-                {this.props.l10n("security.confirm_button")}
+                {this.props.l10n("delete.confirm_button")}
               </EduIDButton>
             </div>
           </ModalBody>

@@ -1308,20 +1308,6 @@ const msgs = {
     <FormattedMessage id="security.last_used" defaultMessage={`Last used`} />
   ),
 
-  "security.account_description": (
-    <FormattedMessage
-      id="security.account_description"
-      defaultMessage={`Use the button below to permanently delete your eduID account.`}
-    />
-  ),
-
-  "security.account_title": (
-    <FormattedMessage
-      id="security.account_title"
-      defaultMessage={`Account deletion`}
-    />
-  ),
-
   "security.u2f.max_allowed_tokens": (
     <FormattedMessage
       id="security.u2f.max_allowed_tokens"
@@ -2296,49 +2282,70 @@ const msgs = {
   ),
 
   /* -----  DELETE ACCOUNT ------- */
-  "security.delete_account": (
+
+  "settings.account_title": (
     <FormattedMessage
-      id="security.delete_account"
-      defaultMessage={`Delete eduID account`}
+      id="settings.account_title"
+      defaultMessage={`Delete eduID`}
     />
   ),
 
-  "security.confirm_title": (
+  "settings.account_description": (
     <FormattedMessage
-      id="security.confirm_title"
-      defaultMessage={`Delete account`}
+      id="settings.account_description"
+      defaultMessage={`Click the link to permanently delete your eduID.`}
     />
   ),
 
-  "security.modal_info": (
+  "settings.button_delete_account": (
     <FormattedMessage
-      id="security.modal_info"
-      defaultMessage={`Are you sure that you wish to delete your eduID account? This action will
-                           permanently remove all the data associated with the account from our database. `}
+      id="security.button_delete_account"
+      defaultMessage={`I want to delete my eduID`}
     />
   ),
 
-  "security.modal_notes": (
+  "settings.modal_delete_title": (
     <FormattedMessage
-      id="security.modal_notes"
-      defaultMessage={`Note that for security reasons if you choose to delete your account,
-                           you will be asked to log in again.`}
+      id="settings.modal_delete_title"
+      defaultMessage={`Are you sure want to delete eduID?`}
     />
   ),
 
-  "security.confirm_button": (
+  // "security.confirm_title": (
+  //   <FormattedMessage
+  //     id="security.confirm_title"
+  //     defaultMessage={`Delete eduID`}
+  //   />
+  // ),
+
+  "delete.modal_info": (
     <FormattedMessage
-      id="security.confirm_button"
-      defaultMessage={`Confirm deletion of eduID account`}
+      id="delete.modal_info"
+      defaultMessage={`Deleting your eduID will permanently remove all your saved information.`}
     />
   ),
 
-  "security.confirm_title_deletion": (
+  "delete.modal_tip": (
     <FormattedMessage
-      id="security.confirm_title_deletion"
-      defaultMessage={`Account deletion`}
+      id="delete.modal_tip"
+      defaultMessage={`To complete deletion you need to use your log in details one final time.`}
     />
   ),
+
+  // "security.modal_notes": (
+  //   <FormattedMessage
+  //     id="security.modal_notes"
+  //     defaultMessage={`To complete deleting your eduID you need to use your log in details one final time.`}
+  //   />
+  // ),
+
+  "delete.confirm_button": (
+    <FormattedMessage
+      id="delete.confirm_button"
+      defaultMessage={`I want to delete eduID`}
+    />
+  ),
+
 
   /************************/
   /* Header ******** ******/
