@@ -25,7 +25,7 @@ body,
 .container-fluid .jumbotron,
 div.modal-dialog .modal-content {
   height: 100%;
-  font-family: "ProximaNova-Regular";
+  font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
   line-height: 1.5;
 }
 
@@ -155,6 +155,10 @@ input:focus {
   outline: 0;
 }
 
+// option {
+//   font-family: "ProximaNova-Regular";
+// }
+
 /* Nav */
 nav {
   margin: 0 0 30px 0;
@@ -174,8 +178,7 @@ img {
 }
 
 a {
-  color: $link-color;
-  font-weight: 500;
+  color: $orange-highlight;
 }
 
 .help {
@@ -186,9 +189,10 @@ a {
 //   padding-left: 38px;
 //   color: #000;
 // }
-.help a:hover {
+a:hover {
   text-decoration: none;
 }
+
 .help a:before {
   content: "";
   display: block;
@@ -200,10 +204,10 @@ a {
   left: 0;
 }
 
-small,
-.small {
-  font-size: 100%;
-}
+// small,
+// .small {
+//   font-size: 100%;
+// }
 
 .intro h4 {
   font-size: 24px;
@@ -254,9 +258,9 @@ small,
   color: #3f5c57;
 }
 
-.jumbotron input {
-  height: 30px;
-}
+// .jumbotron input {
+//   height: 30px;
+// }
 
 .input-group .help-block {
   font-size: 14px;
@@ -604,6 +608,7 @@ div.modal-dialog div.modal-footer a {
 /* styles for confirm button in delete account modal */
 #confirm-delete-account-button {
   margin-top: 20px;
+  font-family: "ProximaNova-Regular";
 }
 
 .modal-footer {

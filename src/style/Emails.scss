@@ -48,25 +48,18 @@ button#email.button {
   background-color: white;
   border: none;
   border-bottom: solid 1px #161616;
-  // font-family: "Roboto-Light";
+  font-family: "ProximaNova-Regular";
   color: #161616;
-  // font-weight: #ebebeb;
   font-size: 24px;
 }
-// #delete-account-container,
-// #change-password-container {
-//   margin-bottom: 30px;
-//   max-width: 58.3333333333%;
-// }
 
 #delete-button,
 #security-change-button,
 #add-more-button {
   margin: 0;
   padding: 0 0 0.75rem 0.75rem;
-  font-family: "Montserrat", sans-serif;
-  // font-family: "Roboto-Medium";
   font-size: 16px;
+  font-family: "ProximaNova-Regular";
 }
 
 #delete-button {

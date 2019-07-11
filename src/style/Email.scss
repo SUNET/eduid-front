@@ -37,21 +37,21 @@ div#email-register
   height: calc(2.25rem + 2px);
 }
 
-@media only screen and (max-width: 767px) {
-  div#clouds {
-    display: none;
-  }
+// @media only screen and (max-width: 767px) {
+//   div#clouds {
+//     display: none;
+//   }
 
-  input#email-input {
-    margin: 20px 0;
-    min-width: 100%;
-  }
+//   input#email-input {
+//     margin: 20px 0;
+//     min-width: 100%;
+//   }
 
-  button#email-button {
-    min-width: 100%;
-  }
+//   button#email-button {
+//     min-width: 100%;
+//   }
 
-  .modal-footer button {
-    margin: 0.25rem;
-  }
-}
+//   .modal-footer button {
+//     margin: 0.25rem;
+//   }
+// }
