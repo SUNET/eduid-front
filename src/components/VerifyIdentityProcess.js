@@ -15,9 +15,9 @@ class VerifyIdentityProcess extends Component {
       connectNin = "",
       headerText = "";
     let buttonTextArray = [
-      "Recieve a confirmation code in the mail",
-      "Recieve a confirmation code to your mobile phone",
-      "Use the FrejaID app"
+      this.props.l10n("verify-identity.vetting_post_tagline"),
+      this.props.l10n("verify-identity.vetting_phone_tagline"),
+      this.props.l10n("verify-identity.vetting_freja_tagline")
     ];
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
@@ -28,8 +28,10 @@ class VerifyIdentityProcess extends Component {
         let text = buttonTextArray[index];
         return (
           <div className="vetting-button" key={index}>
-            {/* <p className="vetting-button-text">{text}</p> */}
+            <p className="vetting-button-text">{text}</p>
             {vettingBtns[key]}
+            {/* <FormText> */}
+            {/* </FormText> */}
           </div>
         );
       });
@@ -38,16 +40,19 @@ class VerifyIdentityProcess extends Component {
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
         <div key="1" id="connect-nin-number">
-          <label>
-            {" "}
-            2. Choose a way below to verify that the given identity number
-            belongs to you.
-          </label>
+          <label>{this.props.l10n("verify-identity.connect_nin_title")}</label>
           {/* <p className="profile-data">Request a confirmation code to</p>*/}
-          <div>
-            <ButtonGroup vertical={true} id="nins-btn-group">
-              {vettingButtons}
-            </ButtonGroup>
+          <div id="nins-btn-group">
+            {vettingButtons}
+            <p className="proofing-btn-help">
+              {this.props.l10n("letter.initialize_proofing_help_text")}
+            </p>{" "}
+            <p className="proofing-btn-help">
+              {this.props.l10n("lmp.initialize_proofing_help_text")}
+            </p>
+            <p className="proofing-btn-help">
+              {this.props.l10n("eidas.initialize_proofing_help_text")}
+            </p>
           </div>
         </div>
       ];

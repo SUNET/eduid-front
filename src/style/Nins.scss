@@ -33,7 +33,7 @@
 
 #nin-number-container button {
   color: #161616;
-  font-family: "Montserrat", sans-serif;
+  // font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 28px;
   background-color: transparent;
@@ -60,7 +60,7 @@
 }
 
 #verify-identity-container label {
-// #verify-identity-container .profile-card label {
+  // #verify-identity-container .profile-card label {
   margin: 0 0 10px 0;
 }
 
@@ -72,16 +72,16 @@
 
 #nin input {
   background-color: #ffffff;
-  font-family: "Montserrat", sans-serif;
+  font-family: "ProximaNova-Regular";
   border: none;
   // color: #6b9080;
   color: #161616;
-  font-size: 24px;
+  font-size: 36px;
   border-bottom: solid #333 3px;
 }
 
 #nin input::placeholder {
-  font-size: 24px;
+  font-size: 36px;
 }
 
 .nin-holder {
@@ -111,7 +111,7 @@
 
 #nin-number-container a {
   color: $orange-highlight;
-  font-family: "Montserrat", sans-serif;
+  // font-family: "Montserrat", sans-serif;
   transition: all 0.5s ease;
   cursor: pointer;
   border-bottom: solid transparent 2px;
@@ -131,7 +131,7 @@
 .unverified {
   color: #ff4500;
   // font-weight: 300;
-  font-family: "Montserrat", sans-serif;
+  // font-family: "Montserrat", sans-serif;
 }
 
 .verified {
@@ -175,27 +175,61 @@
 
 #nins-btn-group {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 33% 33% 33%;
   // grid-template-row: auto;
-  // grid-column-gap: 30px;
+  grid-column-gap: 30px;
   margin-top: 10px;
 }
 
 .vetting-button {
-  padding-right: 50px;
+  // padding-right: 50px;
+  /* padding-right: 50px; */
+  margin: 0 30px 30px 0;
+  padding: 0 20px;
+  background-color: white;
+  border-radius: 20px;
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   // width: 100%;
 }
 
 .vetting-button button {
-  height: 52px;
-}
-.vetting-button-text {
+  // height: 64px;
+  // font-family: "ProximaNova-Bold";
+  // font-size: 22px;
+  // line-height: 1;
+  font-family: "ProximaNova-Bold";
   font-size: 28px;
+  line-height: 1;
+  text-align: right;
+  color: #161616;
+  box-shadow: none;
+  margin-bottom: 5px;
+  background-color: white;
+  // margin: 10px 0;
+  // background-color: red;
+}
+
+.vetting-button-text {
+  font-size: 12px;
+  font-family: "Akkurat";
+  line-height: 1.2;
+  color: #161616;
+  text-transform: uppercase;
+  margin-left: 10px;
 }
 
 .proofing-btn-help {
   margin-left: 10px;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
+  line-height: 1.2;
+  color: #7c7c7c;
+  font-size: 14px;
+  margin-top: 15px;
 }
 
 div.proofing-buttons {

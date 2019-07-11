@@ -69,14 +69,17 @@ class LookupMobileProofing extends Component {
             >
               {this.props.l10n("lmp.button_text_request")}
             </EduIDButton>
-            <FormText className="proofing-btn-help" color="muted">
-              {this.props.l10n("lmp.initialize_proofing_help_text")}
-            </FormText>
-            <label>
+
+            {/* <label>
               {this.props.l10n("lmp.initialize_proofing_help_text_tip_1")}
-            </label>
+            </label> */}
           </fieldset>
         </form>
+        {/* <FormText>
+          <p className="proofing-btn-help">
+            {this.props.l10n("lmp.initialize_proofing_help_text")}
+          </p>
+        </FormText> */}
         {modalPrompt}
       </div>
     );

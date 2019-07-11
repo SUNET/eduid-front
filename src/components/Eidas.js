@@ -70,20 +70,12 @@ class Eidas extends Component {
         <form id="eidas-form" className="form-horizontal" role="form">
           <fieldset id="eidas">
             {showModalButton}
-
             <FormText>
-              {this.props.l10n("eidas.initialize_proofing_help_text")}
-              {/* <ul>
-                <li>
-                  {this.props.l10n("eidas.initialize_proofing_help_text_step_1")}
-                </li>
-                <li>
-                  {this.props.l10n("eidas.initialize_proofing_help_text_step_2")}
-                </li>
-              </ul> */}
+              {/* <p className="proofing-btn-help">
+                {this.props.l10n("eidas.initialize_proofing_help_text")}
+              </p> */}
             </FormText>
-
-            <label>{this.props.l10n("eidas.freja_instructions_tip_1")}</label>
+            {/* <label>{this.props.l10n("eidas.freja_instructions_tip_1")}</label> */}
           </fieldset>
         </form>
 

@@ -803,6 +803,38 @@ const msgs = {
     />
   ),
 
+  "verify-identity.vetting_post_tagline": (
+    <FormattedMessage
+      id="verify-identity.vetting_post_tagline"
+      defaultMessage={`For those registered at thier current address`}
+    />
+  ),
+
+  "verify-identity.vetting_phone_tagline": (
+    <FormattedMessage
+      id="verify-identity.vetting_phone_tagline"
+      defaultMessage={`For those with a phone registered in ther name`}
+    />
+  ),
+
+  
+
+
+  "verify-identity.vetting_freja_tagline": (
+    <FormattedMessage
+      id="verify-identity.vetting_freja_tagline"
+      defaultMessage={`For those with the app able to pass by one of the authorised agents`}
+    />
+  ),
+
+  "verify-identity.connect_nin_title": (
+    <FormattedMessage
+      id="verify-identity.connect_nin_title"
+      defaultMessage={`2. Choose a way below to verify that the given identity number
+            belongs to you`}
+    />
+  ),
+
   /* ----- NINS ------- */
 
   /* ----- ADD NIN ------- */
