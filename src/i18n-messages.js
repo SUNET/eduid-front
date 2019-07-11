@@ -1292,14 +1292,14 @@ const msgs = {
   "eidas.freja_instructions_install_link": (
     <FormattedMessage
       id="eidas.freja_instructions_install_link"
-      defaultMessage={`I have Freja eID`}
+      defaultMessage={`I do not have Freja eID`}
     />
   ),
 
   "eidas.freja_eid_ready": (
     <FormattedMessage
       id="eidas.freja_eid_ready"
-      defaultMessage={`I do not have Freja eID`}
+      defaultMessage={`I have Freja eID`}
     />
   ),
 

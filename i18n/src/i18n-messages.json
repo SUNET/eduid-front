@@ -637,11 +637,11 @@
   },
   {
     "id": "eidas.freja_instructions_install_link",
-    "defaultMessage": "I have Freja eID"
+    "defaultMessage": "I do not have Freja eID"
   },
   {
     "id": "eidas.freja_eid_ready",
-    "defaultMessage": "I do not have Freja eID"
+    "defaultMessage": "I have Freja eID"
   },
   {
     "id": "eidas.error_missing_nin",

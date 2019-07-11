@@ -26,14 +26,7 @@ class VerifyIdentityProcess extends Component {
       );
       vettingButtons = verifyOptions.map((key, index) => {
         let text = buttonTextArray[index];
-        return (
-          <div className="vetting-button" key={index}>
-            <p className="vetting-button-text">{text}</p>
-            {vettingBtns[key]}
-            {/* <FormText> */}
-            {/* </FormText> */}
-          </div>
-        );
+        return <div key={index}>{vettingBtns[key]}</div>;
       });
     }
 

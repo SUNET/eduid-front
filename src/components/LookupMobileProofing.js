@@ -55,31 +55,19 @@ class LookupMobileProofing extends Component {
 
     return (
       <div>
-        <form
-          id="lookup-mobile-proofing-form"
-          className="form-horizontal"
-          role="form"
-        >
-          <fieldset id="lookup-mobile-proofing">
-            <EduIDButton
-              className="proofing-button"
-              disabled={this.props.disabled}
-              onClick={this.props.handleShowModal}
-              block
-            >
-              {this.props.l10n("lmp.button_text_request")}
-            </EduIDButton>
-
-            {/* <label>
-              {this.props.l10n("lmp.initialize_proofing_help_text_tip_1")}
-            </label> */}
-          </fieldset>
-        </form>
-        {/* <FormText>
-          <p className="proofing-btn-help">
-            {this.props.l10n("lmp.initialize_proofing_help_text")}
-          </p>
-        </FormText> */}
+        <div className="vetting-button">
+          <button
+            className="proofing-button"
+            disabled={this.props.disabled}
+            onClick={this.props.handleShowModal}
+            block
+          >
+            <span className="vetting-button-text">
+              {this.props.l10n("verify-identity.vetting_phone_tagline")}
+            </span>
+            {this.props.l10n("lmp.button_text_request")}
+          </button>
+        </div>
         {modalPrompt}
       </div>
     );

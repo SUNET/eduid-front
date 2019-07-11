@@ -17,22 +17,20 @@ class Eidas extends Component {
     // Temporary instructions until Sweden Connect has more alternatives and we have a DS
     const freja_instructions = (
       <div className="well" id="freja-instructions">
-        {" "}
-        <label>{this.props.l10n("eidas.freja_instructions_step_6")}</label>
         <ol>
           <li>{this.props.l10n("eidas.freja_instructions_step_1")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_2")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_3")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_4")}</li>
-
+          <label>{this.props.l10n("eidas.freja_instructions_tip_1")}</label>
           <li>{this.props.l10n("eidas.freja_instructions_step_5")}</li>
         </ol>
       </div>
     );
 
-    let eidasButton, showModalButton, buttonGroup;
+    let have_freja, install_freja;
 
-    eidasButton = (
+    have_freja = (
       <EduIDButton
         className="btn-link"
         href={this.props.eidas_sp_freja_idp_url}
@@ -41,44 +39,31 @@ class Eidas extends Component {
       </EduIDButton>
     );
 
-    buttonGroup = (
-      <ButtonGroup block>
-        <Button
-          className="btn-link"
-          href="https://frejaeid.com/skaffa-freja-eid/"
-          target="_blank"
-        >
-          {this.props.l10n("eidas.freja_instructions_install_link")}
-        </Button>
-
-        {eidasButton}
-      </ButtonGroup>
-    );
-
-    showModalButton = (
-      <EduIDButton
-        id="eidas-show-modal"
-        onClick={this.props.handleShowModal}
-        block
+    install_freja = (
+      <Button
+        className="btn-link"
+        href="https://frejaeid.com/skaffa-freja-eid/"
+        target="_blank"
       >
-        {this.props.l10n("eidas.freja_eid")}
-      </EduIDButton>
+        {this.props.l10n("eidas.freja_instructions_install_link")}
+      </Button>
     );
 
     return (
       <div>
-        <form id="eidas-form" className="form-horizontal" role="form">
-          <fieldset id="eidas">
-            {showModalButton}
-            <FormText>
-              {/* <p className="proofing-btn-help">
-                {this.props.l10n("eidas.initialize_proofing_help_text")}
-              </p> */}
-            </FormText>
-            {/* <label>{this.props.l10n("eidas.freja_instructions_tip_1")}</label> */}
-          </fieldset>
-        </form>
-
+        <div className="vetting-button">
+          <button
+            id="eidas-show-modal"
+            disabled={this.props.disabled}
+            onClick={this.props.handleShowModal}
+            block
+          >
+            <span className="vetting-button-text">
+              {this.props.l10n("verify-identity.vetting_freja_tagline")}
+            </span>
+            {this.props.l10n("eidas.freja_eid")}
+          </button>
+        </div>
         <div
           id="eidas-info-dialog"
           tabIndex="-1"
@@ -93,8 +78,10 @@ class Eidas extends Component {
             <ModalBody>
               {/* <h4>{this.props.l10n("eidas.freja_instructions_title")}</h4> */}
               {freja_instructions}
-              {/* <NotificationsContainer/> */}
-              {buttonGroup}
+              <ButtonGroup block>
+                {have_freja}
+                {install_freja}
+              </ButtonGroup>
             </ModalBody>
 
             <ModalFooter>

@@ -18,8 +18,8 @@ class LetterProofingButton extends Component {
     // }
     return (
       <div>
-        <div>
-          <EduIDButton
+        <div className="vetting-button">
+          <button
             className="proofing-button"
             disabled={this.props.disabled}
             onClick={this.props.handleLetterProofing}
@@ -31,14 +31,16 @@ class LetterProofingButton extends Component {
             role="form"
           > */}
             {/* <fieldset id="letter-proofing"> */}
-
+            <span className="vetting-button-text">
+              {this.props.l10n("verify-identity.vetting_post_tagline")}
+            </span>
             {this.props.l10n("letter.button_text_request")}
 
             {/* <label>
               {this.props.l10n("letter.initialize_proofing_help_text_tip_1")}
             </label> */}
             {/* </fieldset> */}
-          </EduIDButton>
+          </button>
           {/* </form> */}
         </div>
         <GenericConfirmModal
