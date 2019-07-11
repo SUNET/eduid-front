@@ -493,7 +493,7 @@
   },
   {
     "id": "letter.button_text_request",
-    "defaultMessage": "By post"
+    "defaultMessage": "by post"
   },
   {
     "id": "letter.button_text_code",
@@ -553,7 +553,7 @@
   },
   {
     "id": "lmp.button_text_request",
-    "defaultMessage": "By Phone"
+    "defaultMessage": "by phone"
   },
   {
     "id": "lmp.button_text_code",
@@ -597,7 +597,7 @@
   },
   {
     "id": "eidas.freja_eid",
-    "defaultMessage": "With Freja eID"
+    "defaultMessage": "with Freja eID"
   },
   {
     "id": "eidas.initialize_proofing_help_text",

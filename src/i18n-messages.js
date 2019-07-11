@@ -817,9 +817,6 @@ const msgs = {
     />
   ),
 
-  
-
-
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
@@ -995,7 +992,7 @@ const msgs = {
   "letter.button_text_request": (
     <FormattedMessage
       id="letter.button_text_request"
-      defaultMessage={`By post`}
+      defaultMessage={`by post`}
     />
   ),
 
@@ -1116,7 +1113,7 @@ const msgs = {
   "lmp.button_text_request": (
     <FormattedMessage
       id="lmp.button_text_request"
-      defaultMessage={`By Phone`}
+      defaultMessage={`by phone`}
     />
   ),
 
@@ -1204,7 +1201,7 @@ const msgs = {
 
   /* ----- EIDAS ------- */
   "eidas.freja_eid": (
-    <FormattedMessage id="eidas.freja_eid" defaultMessage={`With Freja eID`} />
+    <FormattedMessage id="eidas.freja_eid" defaultMessage={`with Freja eID`} />
   ),
 
   // "eidas.initialize_proofing_help_text_step_1": (
