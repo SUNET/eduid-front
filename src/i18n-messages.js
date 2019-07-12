@@ -239,17 +239,24 @@ const msgs = {
     <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID!`} />
   ),
 
-  "main.create-account": (
+  "register.create-account": (
     <FormattedMessage
-      id="main.create-account"
-      defaultMessage={`Create an account for use with Swedish Universities.`}
+      id="register.create-account"
+      defaultMessage={`Sign up with your email address to start.`}
+    />
+  ),
+
+  "register.why-account": (
+    <FormattedMessage
+      id="register.why-account"
+      defaultMessage={`eduID allows you to log into multiple organisations associated with Swedish Universities using only one set of details.`}
     />
   ),
 
   "email.sign-up-email": (
     <FormattedMessage
       id="email.sign-up-email"
-      defaultMessage={`Sign up with your email address`}
+      defaultMessage={`Register for eduID`}
     />
   ),
 
@@ -275,7 +282,7 @@ const msgs = {
   ),
 
   "captcha.submit": (
-    <FormattedMessage id="captcha.submit" defaultMessage={`Submit`} />
+    <FormattedMessage id="captcha.submit" defaultMessage={`Done`} />
   ),
 
   "captcha.cancel": (
@@ -285,7 +292,7 @@ const msgs = {
   "footer.copyright": (
     <FormattedMessage
       id="footer.copyright"
-      defaultMessage={` SUNET 2013-2018`}
+      defaultMessage={` SUNET 2013-2019`}
     />
   ),
 
@@ -313,11 +320,12 @@ const msgs = {
   "tou.header": (
     <FormattedMessage
       id="tou.header"
-      defaultMessage={`General rules for usage of user accounts at eduID.se`}
+      defaultMessage={`General rules for users of eduID`}
     />
   ),
 
-  "tou.reject": <FormattedMessage id="tou.reject" defaultMessage={`Reject`} />,
+  // "tou.reject": <FormattedMessage id="tou.reject" defaultMessage={`Reject`} />,
+  "tou.cancel": <FormattedMessage id="tou.reject" defaultMessage={`Cancel`} />,
 
   "tou.accept": <FormattedMessage id="tou.accept" defaultMessage={`Accept`} />,
 
@@ -783,9 +791,7 @@ const msgs = {
 
   // "tl.remove": <FormattedMessage id="tl.remove" defaultMessage={`REMOVE`} />,
 
-  "tl.pending": (
-    <FormattedMessage id="tl.pending" defaultMessage={`confirm`} />
-  ),
+  "tl.pending": <FormattedMessage id="tl.pending" defaultMessage={`confirm`} />,
 
   /******************************/
   /* VERIFY IDENTITY > NIN ******/

@@ -91,6 +91,7 @@ class Header extends Component {
     } else {
       return (
         <header id="header" className="header">
+          <div id="eduid-logo" />
           <div className="logo" id="eduid-logo-large" />
           <nav className="navbar navbar-expand-md" id="eduid-navbar">
             <div

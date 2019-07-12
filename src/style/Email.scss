@@ -1,57 +1,57 @@
-@import "../variables.scss";
+// @import "../variables.scss";
 
-div#clouds {
-  width: 100%;
-  height: 170px;
-  background-image: url(../../img/clouds.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  z-index: 0;
-}
-.clouds:first-child {
-  margin-top: -40px;
-}
-
-.modal .modal-content {
-  margin-top: 100px;
-  background-color: $background-color;
-  background-image: url(../../img/texture.png);
-}
-
-.modal .modal-content .modal-header h5.modal-title {
-  color: #fff;
-  font-size: 24px;
-  font-family: "Roboto-Light";
-}
-
-.modal .modal-content .modal-footer {
-  display: block;
-  text-align: center;
-}
-
-div#email-register
-  div.input-group
-  > div.input-group-prepend
-  > div.input-group-text {
-  height: calc(2.25rem + 2px);
-}
-
-// @media only screen and (max-width: 767px) {
-//   div#clouds {
-//     display: none;
-//   }
-
-//   input#email-input {
-//     margin: 20px 0;
-//     min-width: 100%;
-//   }
-
-//   button#email-button {
-//     min-width: 100%;
-//   }
-
-//   .modal-footer button {
-//     margin: 0.25rem;
-//   }
+// div#clouds {
+//   width: 100%;
+//   height: 170px;
+//   background-image: url(../../img/clouds.png);
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   background-position: center;
+//   z-index: 0;
 // }
+// .clouds:first-child {
+//   margin-top: -40px;
+// }
+
+// .modal .modal-content {
+//   margin-top: 100px;
+//   background-color: $background-color;
+//   background-image: url(../../img/texture.png);
+// }
+
+// .modal .modal-content .modal-header h5.modal-title {
+//   color: #fff;
+//   font-size: 24px;
+//   font-family: "Roboto-Light";
+// }
+
+// .modal .modal-content .modal-footer {
+//   display: block;
+//   text-align: center;
+// }
+
+// div#email-register
+//   div.input-group
+//   > div.input-group-prepend
+//   > div.input-group-text {
+//   height: calc(2.25rem + 2px);
+// }
+
+// // @media only screen and (max-width: 767px) {
+// //   div#clouds {
+// //     display: none;
+// //   }
+
+// //   input#email-input {
+// //     margin: 20px 0;
+// //     min-width: 100%;
+// //   }
+
+// //   button#email-button {
+// //     min-width: 100%;
+// //   }
+
+// //   .modal-footer button {
+// //     margin: 0.25rem;
+// //   }
+// // }

@@ -21,7 +21,6 @@ class Header extends Component {
     return (
       <header>
         <div id="eduid-logo" />
-       
         {logout}
       </header>
     );
