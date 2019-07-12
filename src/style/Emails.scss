@@ -61,7 +61,9 @@ button#email.button {
   font-size: 16px;
   // font-family: "ProximaNova-Regular";
 }
-
+#add-more-button {
+  text-transform: lowercase;
+}
 #delete-button {
   color: red;
 }

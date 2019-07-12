@@ -270,8 +270,8 @@ aside li:hover a {
   transition: all 0.5s ease;
   // justify-content: flex-end;
 }
-/* styles for tables displaying userinfo on settings page */
 
+/* styles for tables displaying userinfo on settings page */
 table {
   margin-bottom: 10px;
   width: 100%;
@@ -297,11 +297,6 @@ td.status-label {
 table th {
   font-size: 12px;
   text-transform: uppercase;
-  // font-weight: 700;
-}
-
-table .btn-link {
-  color: gray;
 }
 
 tbody {
@@ -309,7 +304,7 @@ tbody {
 }
 
 span.nobutton,
-.primary button.remove,
+.primary,
 tr.primary {
   font-weight: 300;
   color: $black;
@@ -318,27 +313,15 @@ tr.primary {
 span.nobutton,
 button.verify-status-label {
   font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 1;
-  font-weight: 700;
-  padding: 0 0 0 2px;
-  margin: 0;
 }
 
 span.nobutton {
-  height: 48px;
+  font-family: "ProximaNova-Regular";
+  font-weight: 900;
 }
 
-// button.remove {
-//   font-size: 24px;
-//   font-weight: 300;
-// }
 
-// button.remove:hover {
-//   color: $orange-highlight;
-// }
-
+/* styles for remove svg icon */
 svg {
   transform-origin: center;
   transform: rotate(45deg);
@@ -353,9 +336,9 @@ svg.remove:hover {
   fill: #ff500d;
 }
 
-.form-control {
-  font-size: 24px;
-}
+// .form-control {
+//   font-size: 24px;
+// }
 
 /* styles for forms displaying userinfo on settings page */
 .form-group {

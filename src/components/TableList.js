@@ -34,17 +34,17 @@ class TableList extends Component {
                   className="icon-button"
                   onClick={this.props.handleRemove}
                 >
-                    <svg
-                      class="remove"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M7 0h2v16H7z" />
-                      <path d="M0 9V7h16v2z" />
-                    </svg>
+                  <svg
+                    class="remove"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M7 0h2v16H7z" />
+                    <path d="M0 9V7h16v2z" />
+                  </svg>
                 </EduIDButton>
               </td>
             </tr>
@@ -57,7 +57,7 @@ class TableList extends Component {
               data-object={key}
               key={key}
             >
-              <td className="identifier">{key}</td>
+              <td className="identifier data">{key}</td>
               <td className="non-identifier">
                 <EduIDButton
                   className="btn-link verify-label verify-status-label"
@@ -71,17 +71,17 @@ class TableList extends Component {
                   className="icon-button"
                   onClick={this.props.handleRemove}
                 >
-                    <svg
-                      class="remove"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M7 0h2v16H7z" />
-                      <path d="M0 9V7h16v2z" />
-                    </svg>
+                  <svg
+                    class="remove"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M7 0h2v16H7z" />
+                    <path d="M0 9V7h16v2z" />
+                  </svg>
                 </EduIDButton>
               </td>
             </tr>
@@ -94,7 +94,7 @@ class TableList extends Component {
               data-object={key}
               key={key}
             >
-              <td className="identifier">{key}</td>
+              <td className="identifier data">{key}</td>
               <td className="non-identifier ">
                 <EduIDButton
                   className="btn-link verify-status-label"
@@ -108,17 +108,17 @@ class TableList extends Component {
                   className="icon-button"
                   onClick={this.props.handleRemove}
                 >
-                    <svg
-                      class="remove"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M7 0h2v16H7z" />
-                      <path d="M0 9V7h16v2z" />
-                    </svg>
+                  <svg
+                    class="remove"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M7 0h2v16H7z" />
+                    <path d="M0 9V7h16v2z" />
+                  </svg>
                 </EduIDButton>
               </td>
             </tr>

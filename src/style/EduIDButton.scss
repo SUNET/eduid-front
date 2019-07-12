@@ -135,21 +135,20 @@ button.btn-link {
   background-color: transparent;
   color: $orange-highlight;
   border-radius: 0;
-  border: solid 1px transparent;
+  border: none;
+  // border: solid 1px transparent;
   box-shadow: none;
-  &:hover {
-    background-color: transparent;
-    color: $orange-highlight;
-    border: solid 1px $orange-highlight;
-    box-shadow: none;
-  }
+  // &:hover {
+  //   background-color: transparent;
+  //   color: $orange-highlight;
+  //   border-bottom: solid 1px transparent;
+  //   box-shadow: none;
+  // }
+  &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    background-color: transparent;
     color: $orange-highlight;
-    border: solid 1px $orange-highlight;
-    box-shadow: none;
   }
 }
 
