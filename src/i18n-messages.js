@@ -702,7 +702,7 @@ const msgs = {
     <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
   ),
 
-  "main.menu": <FormattedMessage id="main.menu" defaultMessage={`Menu`} />,
+  // "main.menu": <FormattedMessage id="main.menu" defaultMessage={`Menu`} />,
 
   /**********************/
   /***** GENERAL  ******/
@@ -1096,10 +1096,10 @@ const msgs = {
     />
   ),
 
-  "letter.confirm_info": (
+  "letter.modal_confirm_info": (
     <FormattedMessage
-      id="letter.confirm_info"
-      defaultMessage={`If you click "accept" below, you will be sent a letter by physical mail with a confirmation code. Once you receive it come back here and click again on "confirm using letter", and you will be offered a form to enter your code and verify your identity. The code sent to you will expire in 2 weeks starting now`}
+      id="letter.modal_confirm_info"
+      defaultMessage={`Accept to have a letter sent to your registered address. The letter will contain a code that you ender here to verify your identity. The code sent to you will expire in 2 weeks starting now`}
     />
   ),
 
@@ -1140,7 +1140,6 @@ const msgs = {
     />
   ),
 
-
   /* ----- no number > reminder to add a number ------- */
 
   "lmp.modal_add_number_title": (
@@ -1153,7 +1152,7 @@ const msgs = {
   "lmp.modal_add_number_info": (
     <FormattedMessage
       id="lmp.modal_add_number_info"
-      defaultMessage={`This option will be available once you have added your number and entered the confirmation code in Settings.`}
+      defaultMessage={`Go to Settings to add your phone number. Do not forget to also confirm it! You can only use this option with a confirmed number!`}
     />
   ),
 
@@ -1162,14 +1161,14 @@ const msgs = {
   "lmp.modal_reminder_to_confirm_title": (
     <FormattedMessage
       id="lmp.modal_reminder_to_confirm_title"
-      defaultMessage={`Your number is added but not confirmed`}
+      defaultMessage={`Your number also needs to be confrimed`}
     />
   ),
 
   "lmp.modal_reminder_to_confirm_info": (
     <FormattedMessage
       id="lmp.modal_reminder_to_confirm_info"
-      defaultMessage={`You can confirm your number in Settings. This option will be available once your number is confirmed.`}
+      defaultMessage={`Go to Settings to confirm your number. You can only use this option with a confirmed number.`}
     />
   ),
 
@@ -1177,7 +1176,7 @@ const msgs = {
   "lmp.modal_confirm_info": (
     <FormattedMessage
       id="lmp.confirm_info"
-      defaultMessage={`Click ACCEPT to check if your phone number is connected to your id number in the phone registry. The phone operators are responsible for keeping the registry up to date and you could have a phone number in your name, but not be included in the registry.`}
+      defaultMessage={`Accept to have your phone number checked against your id number in the phone registry. The phone operators are responsible for updating the registry, so keep in mind that you could have a phone number in your name, but not be included in the registry.`}
     />
   ),
   "lmp.modal_confirm_title": (
