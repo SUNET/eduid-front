@@ -64,38 +64,34 @@ class Main extends Component {
         <SplashContainer />
         <Router history={history}>
           <div className="dashboard-wrapper">
-            {/* <ProfilePrompt {...this.props} /> */}
             <HeaderContainer />
-            <div id="dashboard-container">
-              {/* <SettingsButton {...this.props} /> */}
-              <div id="dashboard-text">
-                {/* <div id="content-container"> */}
-                <div id="welcome">
+            {/* <div id="dashboard-container"> */}
+            <div id="dashboard-text">
+              {/* <div id="welcome-container"> */}
+              <div id="welcome">
+                {/* <div id="welcome-text"> */}
                   <h1>eduID for {this.props.email}</h1>
-                  <Link
-                    id="profile-prompt-link"
-                    // className="verify-identity-prompt"
-                    to={promptLink}
-                  >
+                  <Link id="profile-prompt-link" to={promptLink}>
                     <h2 className={styling}>{welcomeGreeting}</h2>
                   </Link>
-                </div>
-
-                <div id="content">
-                  <NotificationsContainer />
-                  <Route
-                    path="/profile/settings/"
-                    component={SettingsComponent}
-                  />
-                  <Route exact path="/profile/" component={Profile} />
-                  <Route path="/profile/verify-identity/" component={Profile} />
-                  <Route path="/profile/security/" component={Profile} />
-                  <Route path="/profile/chpass/" component={ChangePassword} />
-                  <FooterContainer {...this.props} />
-                </div>
+                {/* </div> */}
+              </div>
+              {/* </div> */}
+              <div id="content">
+                <NotificationsContainer />
+                <Route
+                  path="/profile/settings/"
+                  component={SettingsComponent}
+                />
+                <Route exact path="/profile/" component={Profile} />
+                <Route path="/profile/verify-identity/" component={Profile} />
+                <Route path="/profile/security/" component={Profile} />
+                <Route path="/profile/chpass/" component={ChangePassword} />
               </div>
             </div>
+            <FooterContainer {...this.props} />
           </div>
+          {/* </div> */}
         </Router>
       </FetchingContext.Provider>
     );

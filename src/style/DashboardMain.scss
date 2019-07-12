@@ -2,64 +2,36 @@
 
 /* styles for scaffolding  */
 #root {
-  display: flex;
-  flex-direction: column;
+  height: 100%;
 }
 
 .container {
+  width: 100%;
   padding: 0;
 }
 
 .dashboard-wrapper {
-  // flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
-
-#dashboard-container {
-  display: flex;
-  flex: 1;
-}
-
-#dashboard {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-bottom: 30px;
-}
-
-#dashboard,
-#settings-content {
-  margin: 0 0 3rem;
-}
-
 
 #dashboard-text {
-  // display: flex;
-  // flex-direction: column;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#content {
+  background-color: #f4f4f4;
   flex: 1;
 }
 
-// #content-container {
-//   display: flex;
-//   flex-direction: column;
-//   background-color: #f4f4f4;
-// }
-
-#content {
-  // display: flex;
-  // flex-direction: column;
-  // flex: 1;
-  // height: 100%;
-  background-color: #f4f4f4;
-}
-
-// ----- LANDING PAGE ----- //
 #welcome {
   padding: 7rem 0 5rem;
-  max-width: 58.3333333333%;
-  margin: 0 auto 70px;
+  width: 58.3333333333%;
+  margin: 0 auto;
 }
 
 #welcome p {
@@ -75,7 +47,7 @@
   font-family: "ProximaNova-Regular";
   // font-family: "Akkurat";
   color: $orange-highlight;
-  // border-bottom: solid transparent 2px;
+  border-bottom: solid transparent 2px;
 }
 
 #welcome h2:hover {
@@ -321,7 +293,6 @@ span.nobutton {
   font-family: "ProximaNova-Regular";
   font-weight: 900;
 }
-
 
 /* styles for remove svg icon */
 svg {
