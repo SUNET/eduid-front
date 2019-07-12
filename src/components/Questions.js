@@ -62,68 +62,15 @@ class Questions extends Component {
       answer2 = this.props.l10n("questions.profile_2_answer");
     }
     return (
-      <div id="questions-container">
-        <div className="question1">
+      <div id="question-wrapper">
+        <div className="question-container">
           <p className="question">{question1}</p>
-          {/* <p className="question">
-              {this.props.l10n("questions.settings_1")}
-            </p> */}
-          {/* <div>
-              <svg
-                className="plus"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path fill="#FF500D" d="M7 0h2v16H7z" />
-                <path fill="#FF500D" d="M0 9V7h16v2z" />
-              </svg>
-            </div>
-            <i className="minus collapse">
-              <svg
-                className="minus"
-                width="16"
-                height="2"
-                viewBox="0 0 16 2"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path fill="#FF500D" d="M0 2V0h16v2z" />
-              </svg>
-            </i> */}
-          <p className="question"> {answer1}</p>
+          <p className="answer"> {answer1}</p>
         </div>
 
-        <div className="question2">
+        <div className="question-container">
           <p className="question">{question2}</p>
-          {/* <i className="plus">
-              <svg
-                className="plus"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path fill="#FF500D" d="M7 0h2v16H7z" />
-                <path fill="#FF500D" d="M0 9V7h16v2z" />
-              </svg>
-            </i>
-            <i className="minus ">
-              <svg
-                className="minus"
-                width="16"
-                height="2"
-                viewBox="0 0 16 2"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path fill="#FF500D" d="M0 2V0h16v2z" />
-              </svg>
-            </i> */}
-          <p className="question"> {answer2}</p>
+          <p className="answer"> {answer2}</p>
         </div>
       </div>
     );

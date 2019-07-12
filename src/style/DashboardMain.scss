@@ -29,6 +29,12 @@
   margin-bottom: 30px;
 }
 
+#dashboard,
+#settings-content {
+  margin: 0 0 3rem;
+}
+
+
 #dashboard-text {
   // display: flex;
   // flex-direction: column;
@@ -171,10 +177,6 @@ h3.verify-identity-header {
   margin-bottom: 0;
   position: absolute;
   top: 0px;
-}
-#dashboard,
-#settings-content {
-  margin: 0 0 7rem;
 }
 
 /* styles for sidebar nav on settings page */
