@@ -22,10 +22,10 @@
   flex-direction: column;
 }
 
-
 #content {
   background-color: #f4f4f4;
   flex: 1;
+  position: relative;
 }
 
 #welcome {
@@ -54,12 +54,15 @@
   // border-bottom: solid #ff4500 2px;
   transition: all 0.5s ease;
 }
+#settings-content,
+#profile-container {
+  margin: 5rem 0;
+}
 
 #profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5rem 0;
 }
 
 #profile-container-verifyId {
@@ -144,11 +147,14 @@ h3.verify-identity-header {
   font-weight: 700;
   margin-bottom: 0;
   font-size: 22px;
-  // font-family: "Roboto-Medium";
   padding-bottom: 0;
   margin-bottom: 0;
   position: absolute;
   top: 0px;
+}
+
+#verify-identity-container label {
+  font-size: 1rem;
 }
 
 /* styles for sidebar nav on settings page */
