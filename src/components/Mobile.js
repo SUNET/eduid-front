@@ -45,6 +45,7 @@ let PhoneForm = props => {
       </fieldset>
       <EduIDButton
         id="mobile-button"
+        className="settings-button"
         disabled={!props.valid_phone}
         onClick={props.handleAdd}
       >

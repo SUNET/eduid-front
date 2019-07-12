@@ -22,8 +22,9 @@ body {
 html,
 body,
 .well,
-.container-fluid .jumbotron,
-div.modal-dialog .modal-content {
+.container-fluid .jumbotron
+// div.modal-dialog .modal-content 
+ {
   height: 100%;
   font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
   line-height: 1.5;
@@ -105,7 +106,8 @@ p {
 
 /* Button */
 button {
-  font-family: "ProximaNova-Bold";
+  // font-family: "ProximaNova-Bold";
+  font-family: "Akkurat";
   color: $black;
   background-color: $white;
   font-weight: 700;
@@ -179,6 +181,7 @@ img {
 
 a {
   color: $orange-highlight;
+  font-family: "Akkurat";
 }
 
 .help {
@@ -339,7 +342,7 @@ div.controls > span.uneditable-input {
   border-radius: 0;
   box-shadow: none;
   font-size: 24px;
-  font-family: "Roboto-Regular";
+  font-family: "ProximaNova-Regular";
 }
 
 .form-control:focus {
@@ -563,40 +566,74 @@ ul.nav.navbar-nav li a {
 /* Modals
 -------------------------------------------------- */
 
-h3.modal-title {
-  color: $text-color;
+.modal {
+  display: flex !important;
+  justify-content: center;
+}
+
+.modal-header {
+  padding: 30px;
 }
 
 h5.modal-title {
-  font-family: "ProximaNova-Bold";
+  font-family: "Akkurat";
+  line-height: 1.2;
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
-div.modal-content > div.modal-header,
-div.modal-content > div.modal-body {
+.modal-content {
   background-color: white;
-  background-image: url(../../img/texture.png);
+  border-radius: 20px;
+}
+
+.modal-body {
+  background-color: #f4f4f4;
+  padding: 30px;
   display: flex;
   flex-direction: column;
 }
-div.modal-dialog {
+
+.modal-dialog {
   margin-top: 70px;
+  background-color: white;
+  border-radius: 20px;
+  max-width: 50vw;
+  margin: auto;
 }
 
-div.modal-dialog div.modal-footer {
-  text-align: center;
+#eidas-modal {
+  max-width: 50vw;
+  margin: auto;
 }
 
-div.modal-dialog div.modal-footer a {
-  margin: 5px;
+#freja-instructions,
+#freja-instructions label {
+  color: #7c7c7c;
 }
 #freja-instructions ol {
   padding-left: 30px;
-  margin: 15px 15px 15px 0;
+  line-height: 1.2;
+  font-size: 1.25rem;
 }
 
 #freja-instructions li {
   padding-left: 5px;
-  margin: 5px 0;
+  margin: 15px 0;
+}
+
+#freja-links {
+  margin: 50px 0 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#freja-links a {
+  border: none;
+  color: #ff4500;
+  line-height: 1.2;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 /* styles for delete account modal text */
@@ -617,7 +654,7 @@ div.modal-dialog div.modal-footer a {
 }
 
 .btn-group-vertical {
-  color: $link-color;
+  // color: $link-color;
   display: block;
   flex-direction: row;
 }
@@ -625,7 +662,7 @@ div.modal-dialog div.modal-footer a {
 .btn-group-vertical a {
   border: none;
   margin: 20px 0;
-  color: $link-color;
+  // color: $link-color;
 }
 
 .btn-group-vertical a:hover {
@@ -637,9 +674,9 @@ div.modal-dialog div.modal-footer a {
 }
 
 /* raise modal over menu */
-.modal {
-  z-index: 10000;
-}
+// .modal {
+//   z-index: 10000;
+// }
 
 /* End of Modals
 -------------------------------------------------- */

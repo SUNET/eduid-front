@@ -66,10 +66,11 @@ let PdataForm = props => {
       </fieldset>
       <EduIDButton
         id="personal-data-button"
+        className="settings-button"
         disabled={props.pristine || props.submitting || props.invalid}
         onClick={props.handleSave}
       >
-        {props.l10n("button_save")}
+        {props.l10n("button_add")}
       </EduIDButton>
     </Form>
   );

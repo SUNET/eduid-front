@@ -67,6 +67,7 @@
   display: inline-block;
   text-decoration: none;
   font-family: "ProximaNova-Regular";
+  // font-family: "Akkurat";
   color: $orange-highlight;
   // border-bottom: solid transparent 2px;
 }
@@ -216,7 +217,7 @@ aside li:hover a {
 
 // ----- SETTINGS PAGE ----- //
 #dashboard-nav {
-  font-family: "ProximaNova-Bold";
+  // font-family: "ProximaNova-Bold";
   width: 58%;
   margin: 100px auto 0;
 }
@@ -231,7 +232,7 @@ aside li:hover a {
   background-color: $white;
   border-radius: 20px;
   box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
-  margin: 0 6px;
+  margin-right: 6px;
   border: solid 1px transparent;
   transition: all 0.5s ease;
 }
@@ -329,19 +330,27 @@ span.nobutton {
   height: 48px;
 }
 
-button.remove {
-  font-size: 24px;
-  font-weight: 300;
-}
-button.remove:hover {
-  color: $orange-highlight;
-}
+// button.remove {
+//   font-size: 24px;
+//   font-weight: 300;
+// }
 
-svg.remove {
+// button.remove:hover {
+//   color: $orange-highlight;
+// }
+
+svg {
   transform-origin: center;
   transform: rotate(45deg);
   margin: 0;
   padding: 0;
+}
+
+svg.remove {
+  fill: #ff500d;
+}
+svg.remove:hover {
+  fill: #ff500d;
 }
 
 .form-control {

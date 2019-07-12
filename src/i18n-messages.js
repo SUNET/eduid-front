@@ -108,6 +108,8 @@ const msgs = {
 
   button_save: <FormattedMessage id="button_save" defaultMessage={`Save`} />,
 
+  button_add: <FormattedMessage id="button_add" defaultMessage={`Add`} />,
+
   faq_link: (
     <FormattedMessage
       id="faq_link"
@@ -1278,7 +1280,7 @@ const msgs = {
   "eidas.freja_instructions_step_5": (
     <FormattedMessage
       id="eidas.freja_instructions_step_5"
-      defaultMessage={`Return to eduID (on your mobile device) and allow Freja eID to share your id number with eduID`}
+      defaultMessage={`Return to eduID and allow Freja eID to share your id number`}
     />
   ),
 

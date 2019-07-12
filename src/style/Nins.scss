@@ -21,29 +21,29 @@
   flex-direction: row;
 }
 
-#add-nin-number.unverified button {
-  color: $orange-highlight;
-  background-color: transparent;
-}
+// #add-nin-number.unverified button {
+//   color: $orange-highlight;
+//   background-color: transparent;
+// }
 
 /*--- styles for remove nin button ---*/
 #nin-number.unverified {
   display: inline-block;
 }
 
-#nin-number-container button {
-  color: #161616;
-  // font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-  font-size: 28px;
-  background-color: transparent;
-  margin: 0 10px;
-  padding: 0;
-}
+// #nin-number-container button {
+//   // color: #161616;
+//   // font-family: "Montserrat", sans-serif;
+//   // font-weight: 300;
+//   // font-size: 28px;
+//   background-color: transparent;
+//   // margin: 0 10px;
+//   // padding: 0;
+// }
 
-#nin-number-container button:hover {
-  color: #ff4500;
-}
+// #nin-number-container button:hover {
+//   color: #ff4500;
+// }
 
 .nin-holder {
   margin: 20px 0;

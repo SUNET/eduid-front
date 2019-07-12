@@ -30,9 +30,9 @@ class DeleteModal extends Component {
             <div id="delete-account">
               <p>{this.props.l10n("delete.modal_info")}</p>
               {/* <p>{this.props.l10n("security.modal_notes")}</p> */}
-               <label>{this.props.l10n("delete.modal_tip")}</label> 
+              <label>{this.props.l10n("delete.modal_tip")}</label>
               <EduIDButton
-                className="btn-danger btn-default"
+                className="settings-button"
                 id="confirm-delete-account-button"
                 ref={button => {
                   this.deleteButton = button;

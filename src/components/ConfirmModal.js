@@ -15,7 +15,6 @@ import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import NotificationsContainer from "containers/Notifications";
 
-
 class ConfirmModal extends Component {
   render() {
     let resendMarkup = "";
@@ -50,14 +49,14 @@ class ConfirmModal extends Component {
           </ModalBody>
           <ModalFooter>
             <EduIDButton
-              className="ok-button"
+              className="modal-button ok-button"
               disabled={this.props.invalid}
               onClick={this.props.handleConfirm}
             >
               {this.props.l10n("cm.ok")}
             </EduIDButton>
             <EduIDButton
-              className="cancel-button"
+              className="modal-button cancel-button"
               onClick={this.props.closeModal}
             >
               {this.props.l10n("cm.cancel")}

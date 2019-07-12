@@ -16,7 +16,7 @@ class Eidas extends Component {
   render() {
     // Temporary instructions until Sweden Connect has more alternatives and we have a DS
     const freja_instructions = (
-      <div className="well" id="freja-instructions">
+      <div id="freja-instructions">
         <ol>
           <li>{this.props.l10n("eidas.freja_instructions_step_1")}</li>
           <li>{this.props.l10n("eidas.freja_instructions_step_2")}</li>
@@ -40,13 +40,13 @@ class Eidas extends Component {
     );
 
     install_freja = (
-      <Button
+      <EduIDButton
         className="btn-link"
         href="https://frejaeid.com/skaffa-freja-eid/"
         target="_blank"
       >
         {this.props.l10n("eidas.freja_instructions_install_link")}
-      </Button>
+      </EduIDButton>
     );
 
     return (
@@ -78,20 +78,20 @@ class Eidas extends Component {
             <ModalBody>
               {/* <h4>{this.props.l10n("eidas.freja_instructions_title")}</h4> */}
               {freja_instructions}
-              <ButtonGroup block>
+              <div id="freja-links">
                 {have_freja}
                 {install_freja}
-              </ButtonGroup>
+              </div>
             </ModalBody>
 
             <ModalFooter>
-              <Button
-                className="finish-button"
+              <EduIDButton
+                className="modal-button cancel-button"
                 id="eidas-hide-modal"
                 onClick={this.props.handleHideModal}
               >
                 {this.props.l10n("cm.close")}
-              </Button>
+              </EduIDButton>
             </ModalFooter>
           </Modal>
         </div>

@@ -31,10 +31,9 @@ class TableList extends Component {
               </td>
               <td className="non-identifier data-remove-button">
                 <EduIDButton
-                  className="btn-link remove"
+                  className="icon-button"
                   onClick={this.props.handleRemove}
                 >
-                  <div>
                     <svg
                       class="remove"
                       width="16"
@@ -43,10 +42,9 @@ class TableList extends Component {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path fill="#FF500D" d="M7 0h2v16H7z" />
-                      <path fill="#FF500D" d="M0 9V7h16v2z" />
+                      <path d="M7 0h2v16H7z" />
+                      <path d="M0 9V7h16v2z" />
                     </svg>
-                  </div>
                 </EduIDButton>
               </td>
             </tr>
@@ -70,10 +68,9 @@ class TableList extends Component {
               </td>
               <td className="non-identifier ">
                 <EduIDButton
-                  className="btn-link remove"
+                  className="icon-button"
                   onClick={this.props.handleRemove}
                 >
-                  <div>
                     <svg
                       class="remove"
                       width="16"
@@ -82,10 +79,9 @@ class TableList extends Component {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path fill="#FF500D" d="M7 0h2v16H7z" />
-                      <path fill="#FF500D" d="M0 9V7h16v2z" />
+                      <path d="M7 0h2v16H7z" />
+                      <path d="M0 9V7h16v2z" />
                     </svg>
-                  </div>
                 </EduIDButton>
               </td>
             </tr>
@@ -109,10 +105,9 @@ class TableList extends Component {
               </td>
               <td className="non-identifier">
                 <EduIDButton
-                  className="btn-link  remove"
+                  className="icon-button"
                   onClick={this.props.handleRemove}
                 >
-                  <div>
                     <svg
                       class="remove"
                       width="16"
@@ -121,10 +116,9 @@ class TableList extends Component {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path fill="#FF500D" d="M7 0h2v16H7z" />
-                      <path fill="#FF500D" d="M0 9V7h16v2z" />
+                      <path d="M7 0h2v16H7z" />
+                      <path d="M0 9V7h16v2z" />
                     </svg>
-                  </div>
                 </EduIDButton>
               </td>
             </tr>

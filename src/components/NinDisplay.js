@@ -17,7 +17,11 @@ class NinDisplay extends Component {
       if (this.props.verifiedNinStatus) {
         return (
           <div key="1" className="profile-card">
-            <label>{this.props.l10n("nin_display.verify-identity_verified_main_title")}</label>
+            <label>
+              {this.props.l10n(
+                "nin_display.verify-identity_verified_main_title"
+              )}
+            </label>
             <div data-ninnumber={this.props.verifiedNin[0].number}>
               <p id="nin-number" className="verified">
                 {this.props.verifiedNin[0].number}
@@ -29,7 +33,11 @@ class NinDisplay extends Component {
         // VERIFY ID PROCESS: this is the display of an unverified number (on the verify-identity page)
         return (
           <div key="1" className="profile-card">
-            <label>{this.props.l10n("nin_display.verify-identity_unverified_main_title")}</label>
+            <label>
+              {this.props.l10n(
+                "nin_display.verify-identity_unverified_main_title"
+              )}
+            </label>
 
             <div key="1" id="nin-display-container">
               <div
@@ -40,10 +48,9 @@ class NinDisplay extends Component {
                   {this.props.nins[0].number}
                 </p>
                 <EduIDButton
-                  className="btn-danger btn-sm"
+                  className="icon-button"
                   onClick={this.props.handleDelete}
                 >
-                  <div>
                     <svg
                       class="remove"
                       width="16"
@@ -52,10 +59,10 @@ class NinDisplay extends Component {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path fill="#FF500D" d="M7 0h2v16H7z" />
-                      <path fill="#FF500D" d="M0 9V7h16v2z" />
+                      <path d="M7 0h2v16H7z" />
+                      <path d="M0 9V7h16v2z" />
                     </svg>
-                  </div>
+              
                 </EduIDButton>
               </div>
             </div>
@@ -66,7 +73,7 @@ class NinDisplay extends Component {
       if (this.props.nins.length === 0) {
         return (
           <div key="1" className="profile-card">
-            <label>{this.props.l10n("nin_display.profile.main_title")}</label> 
+            <label>{this.props.l10n("nin_display.profile.main_title")}</label>
             <div id="nin-number-container">
               <Link
                 to={`/profile/verify-identity/`}

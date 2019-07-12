@@ -12,6 +12,10 @@
     "defaultMessage": "Save"
   },
   {
+    "id": "button_add",
+    "defaultMessage": "Add"
+  },
+  {
     "id": "faq_link",
     "defaultMessage": "For more information see the"
   },
@@ -629,7 +633,7 @@
   },
   {
     "id": "eidas.freja_instructions_step_5",
-    "defaultMessage": "Return to eduID (on your mobile device) and allow Freja eID to share your id number with eduID"
+    "defaultMessage": "Return to eduID and allow Freja eID to share your id number"
   },
   {
     "id": "eidas.freja_instructions_step_6",

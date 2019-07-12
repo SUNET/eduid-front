@@ -46,7 +46,11 @@ class NinForm extends Component {
     if (this.props.valid) {
       validNin = this.props.nin;
       formButton = [
-        <button className="btn" onClick={this.props.addNin} key="1">
+        <button
+          className="btn settings-button"
+          onClick={this.props.addNin}
+          key="1"
+        >
           ADD
         </button>
       ];
