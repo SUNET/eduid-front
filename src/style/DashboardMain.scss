@@ -150,7 +150,7 @@ h3.verify-identity-header {
   padding-bottom: 0;
   margin-bottom: 0;
   position: absolute;
-  top: 0px;
+  top: 100px;
 }
 
 #verify-identity-container label {
@@ -199,7 +199,7 @@ aside li:hover a {
 #dashboard-nav {
   // font-family: "ProximaNova-Bold";
   width: 58%;
-  margin: 100px auto 0;
+  margin: 70px auto;
 }
 
 #dashboard-nav ul {
@@ -240,7 +240,6 @@ aside li:hover a {
 #dashboard-nav.nav-back {
   display: flex;
   justify-content: flex-end;
-  margin: 50px auto 0;
   max-width: 58.33333%;
 }
 

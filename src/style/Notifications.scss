@@ -1,15 +1,40 @@
 @import "../variables.scss";
 
-.notifications-area:empty {
-  display: none;
-}
-
 .notifications-area {
-  // max-width: 75%;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  color: transparent;
+  background-color: transparent;
+  height: 53px;
+  width: 100%;
 }
 
+// .notifications-text {
+//   // max-width: 75%;
+//   // padding-top: 16px;
+//   // padding-bottom: 16px;
+//   width: 58.3333%;
+//   margin: 0 auto;
+// }
+
+.alert {
+  // position: relative;
+  padding: 0.75rem 1.25rem;
+  margin: 0;
+  // border-bottom: 5px solid black;
+  border: none;
+  border-radius: 0;
+  display: flex;
+}
+
+.alert span {
+  font-size: 1.25rem;
+  width: 58.3333%;
+  margin: 0 auto;
+}
+.alert-danger,
+.alert-success {
+  color: $orange-highlight;
+  background-color: #ffe7dd;
+}
 // @media only screen and (min-width: 991px) {
 //   div.notifications-area {
 //     height: 80px;

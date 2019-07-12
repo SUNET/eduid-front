@@ -1201,8 +1201,11 @@ const msgs = {
   ),
 
   /* ----- EIDAS ------- */
-  "eidas.freja_eid": (
-    <FormattedMessage id="eidas.freja_eid" defaultMessage={`with Freja eID`} />
+  "eidas.vetting_button_freja": (
+    <FormattedMessage
+      id="eidas.vetting_button_freja"
+      defaultMessage={`with Freja eID`}
+    />
   ),
 
   // "eidas.initialize_proofing_help_text_step_1": (
@@ -1389,7 +1392,7 @@ const msgs = {
   "ocf.initialize_proofing": (
     <FormattedMessage
       id="ocf.initialize_proofing"
-      defaultMessage={`FREJA EID`}
+      defaultMessage={`with Freja eID`}
     />
   ),
 

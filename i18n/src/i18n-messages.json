@@ -596,7 +596,7 @@
     "defaultMessage": "Your national id number has been successfully verified"
   },
   {
-    "id": "eidas.freja_eid",
+    "id": "eidas.vetting_button_freja",
     "defaultMessage": "with Freja eID"
   },
   {
@@ -689,7 +689,7 @@
   },
   {
     "id": "ocf.initialize_proofing",
-    "defaultMessage": "FREJA EID"
+    "defaultMessage": "with Freja eID"
   },
   {
     "id": "ocf.initialize_proofing_help_text",
