@@ -781,10 +781,10 @@ const msgs = {
     <FormattedMessage id="tl.make_primary" defaultMessage={`MAKE PRIMARY`} />
   ),
 
-  "tl.remove": <FormattedMessage id="tl.remove" defaultMessage={`REMOVE`} />,
+  // "tl.remove": <FormattedMessage id="tl.remove" defaultMessage={`REMOVE`} />,
 
   "tl.pending": (
-    <FormattedMessage id="tl.pending" defaultMessage={`PENDING CONFIRMATION`} />
+    <FormattedMessage id="tl.pending" defaultMessage={`confirm`} />
   ),
 
   /******************************/

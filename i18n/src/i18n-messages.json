@@ -404,12 +404,8 @@
     "defaultMessage": "MAKE PRIMARY"
   },
   {
-    "id": "tl.remove",
-    "defaultMessage": "REMOVE"
-  },
-  {
     "id": "tl.pending",
-    "defaultMessage": "PENDING CONFIRMATION"
+    "defaultMessage": "confirm"
   },
   {
     "id": "verify-identity.unverified_main_title",
