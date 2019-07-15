@@ -361,15 +361,25 @@ const msgs = {
     />
   ),
 
-  "finish.write-password": (
+  "finish.registration-complete": (
     <FormattedMessage
-      id="finish.write-password"
-      defaultMessage={`Write down this password and store it in a safe place.`}
+      id="finish.registration-complete"
+      defaultMessage={`You have completed the registration for eduID.`}
+    />
+  ),
+
+  "finish.registration-details": (
+    <FormattedMessage
+      id="finish.registration-details"
+      defaultMessage={`Log in with these details and verify your identity to start using eduID.`}
     />
   ),
 
   "finish.got-it": (
-    <FormattedMessage id="finish.got-it" defaultMessage={`OK, got it`} />
+    <FormattedMessage
+      id="finish.got-it"
+      defaultMessage={`Ok, take me to the login`}
+    />
   ),
 
   "finish.can-now-login": (
@@ -615,13 +625,13 @@ const msgs = {
     />
   ),
 
-  "finish.registration-complete": values => (
-    <FormattedMessage
-      id="finish.registration-complete"
-      defaultMessage={`Registration of {email} completed`}
-      values={values}
-    />
-  ),
+  // "finish.registration-complete": values => (
+  //   <FormattedMessage
+  //     id="finish.registration-complete"
+  //     defaultMessage={`Registration of {email} completed`}
+  //     values={values}
+  //   />
+  // ),
 
   // "resend.link-sent": values => (
   //   <FormattedMessage

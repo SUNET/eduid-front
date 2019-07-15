@@ -176,12 +176,16 @@
     "defaultMessage": "I already have eduID"
   },
   {
-    "id": "finish.write-password",
-    "defaultMessage": "Write down this password and store it in a safe place."
+    "id": "finish.registration-complete",
+    "defaultMessage": "You have completed the registration for eduID."
+  },
+  {
+    "id": "finish.registration-details",
+    "defaultMessage": "Log in with these details and verify your identity to start using eduID."
   },
   {
     "id": "finish.got-it",
-    "defaultMessage": "OK, got it"
+    "defaultMessage": "Ok, take me to the login"
   },
   {
     "id": "finish.can-now-login",
@@ -314,10 +318,6 @@
   {
     "id": "created.email-sent",
     "defaultMessage": "Click the confirmation link sent to {email} to be able log in to eduID"
-  },
-  {
-    "id": "finish.registration-complete",
-    "defaultMessage": "Registration of {email} completed"
   },
   {
     "id": "profile.name_display_title",
