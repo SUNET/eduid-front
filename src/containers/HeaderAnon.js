@@ -5,12 +5,12 @@ import Header from "components/HeaderAnon";
 
 const mapStateToProps = (state, props) => {
   return {
-    dashboard_url: state.config.dashboard_url,
+    // dashboard_url: state.config.dashboard_url,
     students_link: state.config.students_link,
     technicians_link: state.config.technicians_link,
     staff_link: state.config.staff_link,
     faq_link: state.config.faq_link,
-    size: state.config.window_size
+    // size: state.config.window_size
   };
 };
 

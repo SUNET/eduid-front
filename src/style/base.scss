@@ -26,12 +26,6 @@ body {
 //   line-height: 1.5;
 // }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 15px;
-}
-
 /* typography */
 h1 {
   font-size: 36px;
@@ -122,14 +116,13 @@ input:focus {
 }
 
 /* Nav */
-nav {
-  margin: 0 0 30px 0;
-}
+// nav {
+//   margin: 0 0 30px 0;
+// }
 
 nav li {
   list-style: none;
 }
-
 img {
   width: 100%;
 }
@@ -539,9 +532,9 @@ h5.modal-title {
   max-width: 50vw;
   margin: auto;
 }
-
+#register-modal,
 #eidas-modal {
-  max-width: 50vw;
+  width: 50vw;
   margin: auto;
 }
 

@@ -85,7 +85,7 @@ class SignupMain extends Component {
         <SplashContainer />
         <Router history={history}>
           <div className="dashboard-wrapper">
-            <HeaderContainer />
+            <HeaderContainer withButtons={true}/>
             <div id="dashboard-text">
               <div id="welcome">
                 <h1>Welcome to eduID</h1>

@@ -277,7 +277,7 @@ const msgs = {
   "captcha.verify-human": (
     <FormattedMessage
       id="captcha.verify-human"
-      defaultMessage={`eduID needs to verify that you are a human and not a machine.`}
+      defaultMessage={`Confirm that you are a human.`}
     />
   ),
 
@@ -299,14 +299,21 @@ const msgs = {
   "created.account-created": (
     <FormattedMessage
       id="created.account-created"
-      defaultMessage={`Account created successfully`}
+      defaultMessage={`A link has been sent to your email address.`}
+    />
+  ),
+
+  "created.email-label": (
+    <FormattedMessage
+      id="reated.email-label"
+      defaultMessage={`Complete registration by clicking the link sent to:`}
     />
   ),
 
   "created.confirm-registration": (
     <FormattedMessage
       id="created.confirm-registration"
-      defaultMessage={`Confirm registration`}
+      defaultMessage={`Confirm your email to log in to eduID.`}
     />
   ),
 
@@ -320,7 +327,7 @@ const msgs = {
   "tou.header": (
     <FormattedMessage
       id="tou.header"
-      defaultMessage={`General rules for users of eduID`}
+      defaultMessage={`General rules for eduID users`}
     />
   ),
 
@@ -348,7 +355,10 @@ const msgs = {
   ),
 
   "header.signin": (
-    <FormattedMessage id="header.signin" defaultMessage={`SIGN IN`} />
+    <FormattedMessage
+      id="header.signin"
+      defaultMessage={`I already have eduID`}
+    />
   ),
 
   "finish.write-password": (
@@ -405,24 +415,45 @@ const msgs = {
     />
   ),
 
-  "resend.title": (
+  // "resend.tip": (
+  //   <FormattedMessage
+  //     id="resend.tip"
+  //     defaultMessage={`You might have already recived confirmation links to this email`}
+  //   />
+  // ),
+
+  // "resend.tip": (
+  //   <FormattedMessage
+  //     id="resend.tip"
+  //     defaultMessage={`You might have already recived confirmation links to this email`}
+  //   />
+  // ),
+
+  // "resend.title": (
+  //   <FormattedMessage
+  //     id="resend.title"
+  //     defaultMessage={`Send a new verification email to this address`}
+  //   />
+  // ),
+
+  "resend.link-sent": (
     <FormattedMessage
-      id="resend.title"
-      defaultMessage={`Registration not complete`}
+      id="resend.link-sent"
+      defaultMessage={`A link has been sent to your email address.`}
     />
   ),
 
-  "resend.subtitle": (
+  "resend.email-label": (
     <FormattedMessage
-      id="resend.subtitle"
-      defaultMessage={`Send a new verification email to this address`}
+      id="esend.email-label"
+      defaultMessage={`Complete registration by clicking the link sent to:`}
     />
   ),
 
   "resend.button": (
     <FormattedMessage
       id="resend.button"
-      defaultMessage={`Resend verification email`}
+      defaultMessage={`Send a new confirmation link to my email`}
     />
   ),
 
@@ -471,7 +502,14 @@ const msgs = {
   "used.email-in-use": (
     <FormattedMessage
       id="used.email-in-use"
-      defaultMessage={`Email address already in use`}
+      defaultMessage={`The email address is already registered.`}
+    />
+  ),
+
+  "used.email-label": (
+    <FormattedMessage
+      id="used.email-label"
+      defaultMessage={`Is this the email address to your eduID?`}
     />
   ),
 
@@ -485,7 +523,7 @@ const msgs = {
   "used.reset-password": (
     <FormattedMessage
       id="used.reset-password"
-      defaultMessage={`RESET YOUR PASSWORD`}
+      defaultMessage={`Reset your password for an existing eduID`}
     />
   ),
 
@@ -572,7 +610,7 @@ const msgs = {
   "created.email-sent": values => (
     <FormattedMessage
       id="created.email-sent"
-      defaultMessage={`An email with instructions on how to proceed has been sent to {email}`}
+      defaultMessage={`Click the confirmation link sent to {email} to be able log in to eduID`}
       values={values}
     />
   ),
@@ -584,6 +622,14 @@ const msgs = {
       values={values}
     />
   ),
+
+  // "resend.link-sent": values => (
+  //   <FormattedMessage
+  //     id="resend.link-sent"
+  //     defaultMessage={`A confirmation link has been sent to your email address:`}
+  //     values={values}
+  //   />
+  // ),
 
   /************************/
   /* Main *****************/

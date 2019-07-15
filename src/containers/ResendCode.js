@@ -5,7 +5,9 @@ import ResendCode from "components/ResendCode";
 import * as actions from "actions/ResendCode";
 
 const mapStateToProps = (state, props) => {
-  return {};
+  return {
+    email: state.email.email
+  };
 };
 
 const mapDispatchToProps = (dispatch, props) => {

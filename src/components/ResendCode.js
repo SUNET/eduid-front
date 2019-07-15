@@ -9,10 +9,22 @@ import "style/ResendCode.scss";
 class ResendCode extends Component {
   render() {
     return (
-      <div className="text-center">
-        <h1>{this.props.l10n("resend.title")}</h1>
-        <p className="lead">{this.props.l10n("resend.subtitle")}</p>
-        <EduIDButton id="resend-button" onClick={this.props.handleResend}>
+      <div id="register-container">
+        <h3 className="register-header">
+          {this.props.l10n("resend.link-sent")}
+        </h3>
+        <div id="email-display">
+          <label>{this.props.l10n("resend.email-label")}</label>
+          <h3 className="register-header registered-email">
+            {this.props.email}
+          </h3>
+        </div>
+
+        <EduIDButton
+          id="resend-button"
+          className="btn-link"
+          onClick={this.props.handleResend}
+        >
           {this.props.l10n("resend.button")}
         </EduIDButton>
       </div>

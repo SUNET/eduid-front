@@ -7,13 +7,17 @@ import "style/EmailInUse.scss";
 class EmailInUse extends Component {
   render() {
     return (
-      <div className="text-center">
+      <div id="register-container">
         <div>
-          <h1>{this.props.l10n("main.welcome")}</h1>
-          <p className="lead">{this.props.l10n("used.email-in-use")}</p>
-          <h2 className="subtitle">
-            {this.props.l10n("used.forgot-password")}
-          </h2>
+          <h3 className="register-header">
+            {this.props.l10n("used.email-in-use")}
+          </h3>
+          <div id="email-display">
+            <label>{this.props.l10n("used.email-label")}</label>
+            <h3 className="register-header registered-email">
+              {this.props.email}
+            </h3>
+          </div>
           <a href={this.props.reset_url} className="button">
             {this.props.l10n("used.reset-password")}
           </a>

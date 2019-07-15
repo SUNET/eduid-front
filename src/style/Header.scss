@@ -9,6 +9,13 @@
 //   padding: 0 15px;
 // }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  align-items: center;
+}
+
 #eduid-logo {
   width: 160px;
   height: 50px;
@@ -54,6 +61,21 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+#eduid-navbar ul {
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+#eduid-navbar li {
+  margin-right: 20px;
+}
+
+#eduid-navbar a:hover {
+  color: $orange-highlight;
+  border-bottom: solid 1px $orange-highlight;
 }
 
 // @media (max-width: 750px) {

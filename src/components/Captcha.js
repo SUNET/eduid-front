@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import ScriptLoader from "react-script-loader-hoc";
 import EduIDButton from "components/EduIDButton";
+import DashboardNav from "components/DashboardNav";
 import Recaptcha from "react-recaptcha";
 
 import FetchingContext from "components/FetchingContext";
@@ -19,38 +20,37 @@ class Captcha extends Component {
     }
 
     return [
-      <div className="row text-center" key="0">
-        <div className="col-lg-1" />
-        <div className="col-lg-10">
-          <h1>{this.props.l10n("captcha.one-step-left")}</h1>
-
-          <p className="lead">{this.props.l10n("captcha.verify-human")}</p>
-        </div>
-        <div className="col-lg-1" />
-      </div>,
-      <div className="text-center" key="1">
-        <div className="recaptcha-holder">
-          <Recaptcha
-            sitekey={this.props.recaptcha_key}
-            render="explicit"
-            onloadCallback={this.props.loadedCaptcha}
-            verifyCallback={this.props.handleCaptcha}
-          />
-        </div>
-        <div id="captcha-buttons">
-          <EduIDButton
-            onClick={this.props.sendCaptcha}
-            id="send-captcha-button"
-          >
-            {this.props.l10n("captcha.submit")}
-          </EduIDButton>
-          <EduIDButton
-            onClick={this.props.cancelCaptcha}
-            className="eduid-button cancel-button"
-            id="cancel-captcha-button"
-          >
-            {this.props.l10n("captcha.cancel")}
-          </EduIDButton>
+      <div key="0" id="register-container">
+        {/* <div> */}
+        {/* <h1>{this.props.l10n("captcha.one-step-left")}</h1> */}
+        {/* <DashboardNav {...this.props} /> */}
+        <h3 className="register-header">
+          {this.props.l10n("captcha.verify-human")}
+        </h3>
+        ,
+        <div key="1">
+          <div id="captcha-buttons" className=" text-center">
+            <Recaptcha
+              sitekey={this.props.recaptcha_key}
+              render="explicit"
+              onloadCallback={this.props.loadedCaptcha}
+              verifyCallback={this.props.handleCaptcha}
+            />
+            <EduIDButton
+              className="modal-button captcha ok-button"
+              onClick={this.props.sendCaptcha}
+              id="send-captcha-button"
+            >
+              {this.props.l10n("captcha.submit")}
+            </EduIDButton>
+            <EduIDButton
+              onClick={this.props.cancelCaptcha}
+              className="modal-button captcha cancel-button"
+              id="cancel-captcha-button"
+            >
+              {this.props.l10n("captcha.cancel")}
+            </EduIDButton>
+          </div>
         </div>
       </div>
     ];
