@@ -88,7 +88,7 @@ class SignupMain extends Component {
             <HeaderContainer withButtons={true}/>
             <div id="dashboard-text">
               <div id="welcome">
-                <h1>Welcome to eduID</h1>
+                <h1>{this.props.l10n("main.welcome")}</h1>
                 <h2>{this.props.l10n("register.create-account")}</h2>
               </div>
               <div id="content">

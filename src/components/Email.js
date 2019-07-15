@@ -168,7 +168,7 @@ class Email extends Component {
             {this.props.l10n("header.signin")}
           </EduIDButton>
         </div>
-        <p>{this.props.l10n("register.why-account")}</p>
+        {/* <p>{this.props.l10n("register.why-account")}</p> */}
       </div>,
       <div key="1">
         <Modal isOpen={this.props.acceptingTOU} id="register-modal">

@@ -69,6 +69,13 @@ p {
   margin-top: 24px;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  align-items: center;
+}
+
 /* Button */
 button {
   font-family: "Akkurat";
