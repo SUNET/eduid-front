@@ -7,20 +7,17 @@ class Header extends Component {
   render() {
     const logout = (
       <div id="eduid-button">
-        <button
-          id="logout"
-          onClick={this.props.handleLogout}
-        >
+        <button id="logout" onClick={this.props.handleLogout}>
           {this.props.l10n("header.logout")}
         </button>
       </div>
     );
 
-
-
     return (
       <header>
-        <div id="eduid-logo" />
+        <a href="http://html.eduid.docker/">
+          <div id="eduid-logo" />
+        </a>
         {logout}
       </header>
     );

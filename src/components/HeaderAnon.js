@@ -74,7 +74,7 @@ class Header extends Component {
         id="header"
         // className="header"
       >
-        <div id="eduid-logo" />
+        <a href="http://html.eduid.docker/"><div id="eduid-logo" /></a>
         {/* <div className="logo" id="eduid-logo-large" /> */}
         <nav id="eduid-navbar">
           {/* <div
