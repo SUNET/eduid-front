@@ -99,7 +99,6 @@
 #nins-btn-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
   grid-column-gap: 30px;
   margin-top: 10px;
 }

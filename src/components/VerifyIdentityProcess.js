@@ -14,10 +14,10 @@ class VerifyIdentityProcess extends Component {
     let vettingButtons = "",
       connectNin = "",
       headerText = "";
-    let buttonTextArray = [
-      this.props.l10n("verify-identity.vetting_post_tagline"),
-      this.props.l10n("verify-identity.vetting_phone_tagline"),
-      this.props.l10n("verify-identity.vetting_freja_tagline")
+    let buttonTaglineArray = [
+      this.props.l10n("letter.initialize_proofing_help_text"),
+      this.props.l10n("lmp.initialize_proofing_help_text"),
+      this.props.l10n("eidas.initialize_proofing_help_text")
     ];
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
@@ -25,8 +25,13 @@ class VerifyIdentityProcess extends Component {
         option => option !== "oidc"
       );
       vettingButtons = verifyOptions.map((key, index) => {
-        let text = buttonTextArray[index];
-        return <div key={index}>{vettingBtns[key]}</div>;
+        let text = buttonTaglineArray[index];
+        return (
+          <div key={index}>
+            {vettingBtns[key]}
+            <p className="proofing-btn-help">{text}</p>
+          </div>
+        );
       });
     }
 
@@ -37,15 +42,6 @@ class VerifyIdentityProcess extends Component {
           {/* <p className="profile-data">Request a confirmation code to</p>*/}
           <div id="nins-btn-group">
             {vettingButtons}
-            <p className="proofing-btn-help">
-              {this.props.l10n("letter.initialize_proofing_help_text")}
-            </p>{" "}
-            <p className="proofing-btn-help">
-              {this.props.l10n("lmp.initialize_proofing_help_text")}
-            </p>
-            <p className="proofing-btn-help">
-              {this.props.l10n("eidas.initialize_proofing_help_text")}
-            </p>
           </div>
         </div>
       ];
