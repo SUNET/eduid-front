@@ -92,3 +92,16 @@ button#email.button {
     max-width: 75%;
   }
 }
+
+@media (max-width: 768px) {
+  #orcid-connect-container,
+  #register-securitykey-container,
+  .namesview-form-container,
+  .phoneview-form-container,
+  .emailsview-form-container,
+  #delete-account-container,
+  #change-password-container {
+    // margin: calc(90% - 20px);
+    max-width: calc(100% - 40px);
+  }
+}

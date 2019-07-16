@@ -95,8 +95,6 @@
 }
 
 .profile-data {
-  color: #161616;
-  font-size: 36px;
   font-family: "ProximaNova-Light";
 }
 
@@ -448,6 +446,7 @@ a#go-to-mobiles-tab {
   #profile-prompt span {
     max-width: 75%;
   }
+
   #dashboard-nav {
     width: 75%;
     margin: 20px auto;
@@ -465,14 +464,6 @@ a#go-to-mobiles-tab {
     top: 18px;
     max-width: 70%;
   }
-
-  // h3.verify-identity-header {
-  //   top: 28px;
-  // }
-
-  // .vetting-button button {
-  //   width: 100%;
-  // }
 }
 
 @media (max-width: 768px) {
@@ -489,6 +480,7 @@ a#go-to-mobiles-tab {
   }
   #profile-detail-grid {
     width: calc(100% - 30px);
+    grid-template-columns: 100%;
     padding: 0 20px;
   }
   #profile-prompt span {
@@ -503,4 +495,18 @@ a#go-to-mobiles-tab {
     max-width: calc(100% - 15px);
     padding: 0;
   }
+}
+
+@media (max-width: 414px) {
+  // body {
+  //   background: hotpink;
+  // }
+ #dashboard-nav ul {
+  display: grid;
+  grid-template-columns: auto;
+}
+  // #dashboard-nav.nav-back {
+  //   max-width: calc(100% - 15px);
+  //   padding: 0;
+  // }
 }
