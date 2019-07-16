@@ -83,6 +83,17 @@ class DashboardNav extends Component {
                 <h5>{this.props.l10n("dashboard_nav.settings")}</h5>
               </li>
             </NavLink>
+            <NavLink
+              activeClassName="active"
+              className="nav-link advanced-setting transparent"
+              to={`/profile/settings/advanced-settings`}
+            >
+              <li className="transparent">
+                <h5 className="transparent">
+                  {this.props.l10n("dashboard_nav.advanced-settings")}
+                </h5>
+              </li>
+            </NavLink>
           </ul>
         </nav>
       );

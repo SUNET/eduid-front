@@ -204,7 +204,7 @@ aside li:hover a {
 
 #dashboard-nav ul {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: auto auto auto;
 }
 
 #dashboard-nav .nav-link {
@@ -248,6 +248,12 @@ aside li:hover a {
   border-bottom: solid 2px transparent;
   transition: all 0.5s ease;
   // justify-content: flex-end;
+}
+
+#dashboard-nav .transparent {
+  color: transparent;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 /* styles for tables displaying userinfo on settings page */
