@@ -2024,7 +2024,7 @@ const msgs = {
   "emails.resend_success": values => (
     <FormattedMessage
       id="emails.resend_success"
-      defaultMessage={`New code successfully sent to {email}`}
+      defaultMessage={`New code sent to {email}`}
       values={values}
     />
   ),
@@ -2050,7 +2050,7 @@ const msgs = {
   "emails.code_invalid_or_expired": (
     <FormattedMessage
       id="emails.code_invalid_or_expired"
-      defaultMessage={`The confirmation code is invalid or it has expired, please try again or request a new code`}
+      defaultMessage={`The confirmation code is invalid or has expired, please try again or request a new code`}
     />
   ),
 
@@ -2061,7 +2061,7 @@ const msgs = {
   "emails.confirm_title": values => (
     <FormattedMessage
       id="emails.confirm_title"
-      defaultMessage={`Check your email inbox for {email} for further instructions`}
+      defaultMessage={`An email has been sent to {email}`}
       values={values}
     />
   ),
@@ -2105,21 +2105,21 @@ const msgs = {
   "emails.save-success": (
     <FormattedMessage
       id="emails.save-success"
-      defaultMessage={`Email address saved successfully`}
+      defaultMessage={`The email address was saved`}
     />
   ),
 
   "emails.unconfirmed_address_not_primary": (
     <FormattedMessage
       id="emails.unconfirmed_address_not_primary"
-      defaultMessage={`An unconfirmed mail address cannot be set as primary`}
+      defaultMessage={`You need to confim and email address before it can be made primary`}
     />
   ),
 
   "emails.primary-success": (
     <FormattedMessage
       id="emails.primary-success"
-      defaultMessage={`Email address successfully set as primary`}
+      defaultMessage={`The primary email address was updated `}
     />
   ),
 
@@ -2198,7 +2198,7 @@ const msgs = {
   "mobile.resend_success": values => (
     <FormattedMessage
       id="mobile.resend_success"
-      defaultMessage={`New code successfully sent to {email}`}
+      defaultMessage={`New code sent to {email}`}
       values={values}
     />
   ),
@@ -2214,7 +2214,7 @@ const msgs = {
   "mobile.confirm_title": values => (
     <FormattedMessage
       id="mobile.confirm_title"
-      defaultMessage={`Check your mobile inbox for {phone} for further instructions`}
+      defaultMessage={`A message has been sent to {phone}`}
       values={values}
     />
   ),
@@ -2651,7 +2651,7 @@ const msgs = {
   "delete.modal_tip": (
     <FormattedMessage
       id="delete.modal_tip"
-      defaultMessage={`To complete deletion you need to use your log in details one final time.`}
+      defaultMessage={`After clicking the button you need to use your log in details one final time.`}
     />
   ),
 
@@ -2923,12 +2923,12 @@ const unformatted = defineMessages({
   },
   "cm.lost_code": {
     id: "cm.lost_code",
-    defaultMessage: `Lost your confirmation code?`,
+    defaultMessage: `Is the code not working?`,
     description: "Lost code problem description"
   },
   "cm.resend_code": {
     id: "cm.resend_code",
-    defaultMessage: `Resend confirmation code`,
+    defaultMessage: `Send a new confirmation code`,
     description: "Lost code problem solution"
   },
   "letter.lost_code": {

@@ -1021,7 +1021,7 @@
   },
   {
     "id": "emails.resend_success",
-    "defaultMessage": "New code successfully sent to {email}"
+    "defaultMessage": "New code sent to {email}"
   },
   {
     "id": "emails.email",
@@ -1037,7 +1037,7 @@
   },
   {
     "id": "emails.code_invalid_or_expired",
-    "defaultMessage": "The confirmation code is invalid or it has expired, please try again or request a new code"
+    "defaultMessage": "The confirmation code is invalid or has expired, please try again or request a new code"
   },
   {
     "id": "emails.button_add",
@@ -1045,7 +1045,7 @@
   },
   {
     "id": "emails.confirm_title",
-    "defaultMessage": "Check your email inbox for {email} for further instructions"
+    "defaultMessage": "An email has been sent to {email}"
   },
   {
     "id": "emails.long_description",
@@ -1069,15 +1069,15 @@
   },
   {
     "id": "emails.save-success",
-    "defaultMessage": "Email address saved successfully"
+    "defaultMessage": "The email address was saved"
   },
   {
     "id": "emails.unconfirmed_address_not_primary",
-    "defaultMessage": "An unconfirmed mail address cannot be set as primary"
+    "defaultMessage": "You need to confim and email address before it can be made primary"
   },
   {
     "id": "emails.primary-success",
-    "defaultMessage": "Email address successfully set as primary"
+    "defaultMessage": "The primary email address was updated"
   },
   {
     "id": "emails.code_expired_send_new",
@@ -1121,7 +1121,7 @@
   },
   {
     "id": "mobile.resend_success",
-    "defaultMessage": "New code successfully sent to {email}"
+    "defaultMessage": "New code sent to {email}"
   },
   {
     "id": "mobile.mobile",
@@ -1133,7 +1133,7 @@
   },
   {
     "id": "mobile.confirm_title",
-    "defaultMessage": "Check your mobile inbox for {phone} for further instructions"
+    "defaultMessage": "A message has been sent to {phone}"
   },
   {
     "id": "phones.long_description",
@@ -1357,7 +1357,7 @@
   },
   {
     "id": "delete.modal_tip",
-    "defaultMessage": "To complete deletion you need to use your log in details one final time."
+    "defaultMessage": "After clicking the button you need to use your log in details one final time."
   },
   {
     "id": "delete.confirm_button",
@@ -1497,12 +1497,12 @@
   {
     "id": "cm.lost_code",
     "description": "Lost code problem description",
-    "defaultMessage": "Lost your confirmation code?"
+    "defaultMessage": "Is the code not working?"
   },
   {
     "id": "cm.resend_code",
     "description": "Lost code problem solution",
-    "defaultMessage": "Resend confirmation code"
+    "defaultMessage": "Send a new confirmation code"
   },
   {
     "id": "letter.lost_code",

@@ -21,7 +21,7 @@ class ConfirmModal extends Component {
     if (this.props.with_resend_link) {
       resendMarkup = (
         <div>
-          {this.props.resendHelp}
+          {/* <p className="modal-help-text">{this.props.resendHelp}</p> */}
           <a href="#" onClick={this.props.handleResend} className="resend-code">
             {this.props.resendText}
           </a>
@@ -39,6 +39,7 @@ class ConfirmModal extends Component {
         data-backdrop="true"
       >
         <Modal
+          id="confirm-user-data-modal"
           isOpen={this.props.showModal}
           handleConfirm={this.props.handleConfirm}
         >
