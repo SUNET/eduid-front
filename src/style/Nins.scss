@@ -2,75 +2,16 @@
 
 //--- STEP 1. ADD NIN STYLES ---//
 
-.form-control {
-}
-
-// #add-nin-number-container,
-// #add-nin-number-container h3 {
-//   color: #333;
-// }
-
-#add-nin-number {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  // margin: 15px 0;
-}
-
-#add-nin-number.unverified {
-  flex-direction: row;
-}
-
-// #add-nin-number.unverified button {
-//   color: $orange-highlight;
-//   background-color: transparent;
-// }
-
-#add-nin-header {
-  margin-top: 0px;
-}
-
-/*--- styles for remove nin button ---*/
-#nin-number.unverified {
-  display: inline-block;
-}
-
-// #nin-number-container button {
-//   // color: #161616;
-//   // font-family: "Montserrat", sans-serif;
-//   // font-weight: 300;
-//   // font-size: 28px;
-//   background-color: transparent;
-//   // margin: 0 10px;
-//   // padding: 0;
-// }
-
-// #nin-number-container button:hover {
-//   color: #ff4500;
-// }
-
-.nin-holder {
-  margin: 20px 0;
-  display: flex;
-  align-items: flex-end;
-}
-
-// #verify-identity-container {
-//   padding-left: 5px;
-// }
-
 #verify-identity-container .profile-card {
   margin-bottom: 30px;
 }
 
 #verify-identity-container label {
-  // #verify-identity-container .profile-card label {
   margin: 0 0 10px 0;
 }
 
-/*--- styles for form ---*/
+/*--- styles for nin form ---*/
 #nin-form-container {
-  // display: flex;
   margin-right: 5px;
 }
 
@@ -78,7 +19,6 @@
   background-color: #ffffff;
   font-family: "ProximaNova-Regular";
   border: none;
-  // color: #6b9080;
   color: #161616;
   font-size: 36px;
   border-bottom: solid #333 3px;
@@ -94,17 +34,19 @@
   align-items: flex-end;
 }
 
-// .nin-helper:empty {
-//   background: transparent;
-// }
+#add-nin-number {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-// .nin-helper {
-//   grid-column-start: 2;
-//   grid-column-end: 4;
-//   grid-row-start: 1;
-//   grid-row-end: 2;
-//   background-color: yellow;
-// }
+#add-nin-number.unverified {
+  flex-direction: row;
+}
+
+#add-nin-header {
+  margin-top: 0px;
+}
 
 /*--- styles for nin digits ---*/
 #nin-number-container {
@@ -134,34 +76,11 @@
 
 .unverified {
   color: #ff4500;
-  // font-weight: 300;
-  // font-family: "Montserrat", sans-serif;
 }
 
 .verified {
   color: #161616;
 }
-
-/*--- styles for nin buttons ---*/
-// #nin-buttons {
-//   display: flex;
-// // }
-
-// #verify-button button {
-//   background-color: transparent;
-// }
-
-// #verify-button button p {
-//   margin: 0;
-//   padding: 0;
-//   font-size: 14px;
-//   color: #3f5c57;
-//   border-bottom: 2px solid transparent;
-// }
-
-// #verify-button p:hover {
-//   border-bottom: 2px solid #3f5c57;
-// }
 
 //--- STEP 2. CONNECT NIN STYLES ---//
 
@@ -180,13 +99,8 @@
 #nins-btn-group {
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  // grid-template-row: auto;
   grid-column-gap: 30px;
   margin-top: 10px;
-}
-
-.vetting-button {
-  // width: 100%;
 }
 
 .vetting-button button {
@@ -208,8 +122,6 @@
   justify-content: space-between;
   align-items: flex-end;
   cursor: pointer;
-  // margin: 10px 0;
-  // background-color: red;
 }
 
 .vetting-button button:hover {
@@ -229,13 +141,12 @@
 
 .proofing-btn-help {
   margin-left: 10px;
-  // margin-bottom: 30px;
   line-height: 1.2;
   color: #7c7c7c;
   font-size: 14px;
   margin-top: 15px;
 }
 
-div.proofing-buttons {
+.proofing-buttons {
   margin-top: 30px;
 }
