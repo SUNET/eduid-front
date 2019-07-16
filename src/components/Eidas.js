@@ -52,17 +52,19 @@ class Eidas extends Component {
     return (
       <div>
         <div className="vetting-button">
-           <button
+          <button
             id="eidas-show-modal"
             disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
             block
           >
-            <span className="vetting-button-text">
+            <div className="vetting-button-text">
               {this.props.l10n("verify-identity.vetting_freja_tagline")}
-            </span>
-            {this.props.l10n("eidas.vetting_button_freja")} 
-          </button> 
+            </div>
+            <div className="vetting-button-name">
+              {this.props.l10n("eidas.vetting_button_freja")}
+            </div>
+          </button>
         </div>
         <div
           id="eidas-info-dialog"

@@ -14,7 +14,7 @@ class VerifyIdentityProcess extends Component {
     let vettingButtons = "",
       connectNin = "",
       headerText = "";
-    let buttonTaglineArray = [
+    let buttonHelpTextArray = [
       this.props.l10n("letter.initialize_proofing_help_text"),
       this.props.l10n("lmp.initialize_proofing_help_text"),
       this.props.l10n("eidas.initialize_proofing_help_text")
@@ -25,11 +25,11 @@ class VerifyIdentityProcess extends Component {
         option => option !== "oidc"
       );
       vettingButtons = verifyOptions.map((key, index) => {
-        let text = buttonTaglineArray[index];
+        let helpText = buttonHelpTextArray[index];
         return (
           <div key={index}>
             {vettingBtns[key]}
-            <p className="proofing-btn-help">{text}</p>
+            <p className="proofing-btn-help">{helpText}</p>
           </div>
         );
       });

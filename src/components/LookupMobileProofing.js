@@ -62,10 +62,12 @@ class LookupMobileProofing extends Component {
             onClick={this.props.handleShowModal}
             block
           >
-            <span className="vetting-button-text">
+            <div className="vetting-button-text">
               {this.props.l10n("verify-identity.vetting_phone_tagline")}
-            </span>
-            {this.props.l10n("lmp.button_text_request")}
+            </div>
+            <div className="vetting-button-name">
+              {this.props.l10n("lmp.button_text_request")}
+            </div>
           </button>
         </div>
         {modalPrompt}

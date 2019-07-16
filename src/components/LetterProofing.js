@@ -31,11 +31,12 @@ class LetterProofingButton extends Component {
             role="form"
           > */}
             {/* <fieldset id="letter-proofing"> */}
-            <span className="vetting-button-text">
+            <div className="vetting-button-text">
               {this.props.l10n("verify-identity.vetting_post_tagline")}
-            </span>
-            {this.props.l10n("letter.button_text_request")}
-
+            </div>
+            <div className="vetting-button-name">
+              {this.props.l10n("letter.button_text_request")}
+            </div>
             {/* <label>
               {this.props.l10n("letter.initialize_proofing_help_text_tip_1")}
             </label> */}
