@@ -856,7 +856,7 @@ const msgs = {
   "verify-identity.unverified_main_title": (
     <FormattedMessage
       id="verify-identity.unverified_main_title"
-      defaultMessage={`Add and verify your id number here`}
+      defaultMessage={`Add and verify your id number`}
     />
   ),
 
@@ -891,7 +891,7 @@ const msgs = {
   "verify-identity.connect_nin_title": (
     <FormattedMessage
       id="verify-identity.connect_nin_title"
-      defaultMessage={`2. Choose a way below to verify that the given identity number
+      defaultMessage={`Choose a way to verify that the id number
             belongs to you`}
     />
   ),
@@ -902,7 +902,7 @@ const msgs = {
   "add_nin.main_title": (
     <FormattedMessage
       id="add_nin.main_title"
-      defaultMessage={`1. Add your national id number`}
+      defaultMessage={`Add your id number`}
     />
   ),
 
@@ -918,7 +918,7 @@ const msgs = {
   "nin_display.verify-identity_unverified_main_title": (
     <FormattedMessage
       id="nin_display.verify-identity_unverified_main_title"
-      defaultMessage={`1. Your national id number has been added`}
+      defaultMessage={`Your added id number`}
     />
   ),
 
@@ -939,7 +939,7 @@ const msgs = {
   "nin_display.profile.no_nin": (
     <FormattedMessage
       id="nin_display.profile.no_nin"
-      defaultMessage={`Add number`}
+      defaultMessage={`Add id number`}
     />
   ),
 
@@ -2630,7 +2630,7 @@ const msgs = {
   "settings.modal_delete_title": (
     <FormattedMessage
       id="settings.modal_delete_title"
-      defaultMessage={`Are you sure want to delete eduID?`}
+      defaultMessage={`Are you sure you want to delete eduID?`}
     />
   ),
 

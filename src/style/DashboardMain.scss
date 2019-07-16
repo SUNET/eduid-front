@@ -141,20 +141,23 @@
 }
 
 h3.verify-identity-header {
-  display: inline-block;
-  margin-top: 52px;
+  font-family: "ProximaNova-Bold";
+  margin-top: 0;
   line-height: 1.2;
-  font-weight: 700;
-  margin-bottom: 0;
   font-size: 22px;
   padding-bottom: 0;
   margin-bottom: 0;
+  margin-top: 53px;
   position: absolute;
   top: 100px;
+  width: 70%;
 }
 
 #verify-identity-container label {
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-family: "ProximaNova-Regular";
+  text-transform: none;
+  line-height: 1.2;
 }
 
 /* styles for sidebar nav on settings page */
@@ -417,17 +420,89 @@ a#go-to-mobiles-tab {
 
 // }
 
-@media (max-width: 750px) {
-  // body {
-  //   background-color: gray;
-  // }
-  #profile-container,
-  #profile-section,
-  #settings-content,
-  #settings-nav {
-    max-width: 100%;
+// @media (max-width: 750px) {
+//   // body {
+//   //   background-color: gray;
+//   // }
+//   #profile-container,
+//   #profile-section,
+//   #settings-content,
+//   #settings-nav {
+//     max-width: 100%;
+//   }
+//   #profile-prompt {
+//     width: 100%;
+//   }
+// }
+
+@media (max-width: 812px) {
+  #welcome {
+    padding: 3rem 0 2rem;
+    width: 75%;
   }
-  #profile-prompt {
+  #profile-section {
+    width: 75%;
+  }
+  #profile-detail-grid {
+    width: calc(75% - 30px);
+  }
+  #profile-prompt span {
+    max-width: 75%;
+  }
+  #dashboard-nav {
+    width: 75%;
+    margin: 20px auto;
+  }
+  #dashboard-nav.nav-back {
+    max-width: 75%;
+  }
+
+  #settings-content,
+  #profile-container {
+    margin: 3rem 0 2rem;
+  }
+
+  h3.verify-identity-header {
+    top: 28px;
+  }
+
+  .vetting-button button {
     width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  // body {
+  //   background: hotpink;
+  // }
+  #welcome {
+    padding: 3rem 0 2rem;
+    width: 100%;
+    margin: 0 0 0 20px;
+  }
+  #profile-section {
+    width: 100%;
+    padding: 0 20px;
+  }
+  #profile-detail-grid {
+    width: calc(100% - 30px);
+    padding: 0 20px;
+  }
+  #profile-prompt span {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  #dashboard-nav {
+    width: 100%;
+    padding: 0 20px;
+  }
+  #dashboard-nav.nav-back {
+    max-width: 100%;
+    padding: 0 10px 0 0;
+  }
+
+  h3.verify-identity-header {
+    top: 18px;
+    width: 60%;
   }
 }

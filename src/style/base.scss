@@ -168,7 +168,7 @@ small,
 }
 
 .intro h4 {
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 34px;
   margin-top: 56px;
   font-weight: 700;
@@ -649,8 +649,51 @@ h5.modal-title {
   }
 }
 
-// @media (max-width: 750px) {
-//   body {
-//     background-color: inherit;
-//   }
-// }
+@media (max-width: 812px) {
+  // ---- modals ----- //
+
+  .modal-header {
+    padding: 20px;
+  }
+
+  h5.modal-title {
+    font-size: 1rem;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .modal-footer {
+    padding: 0;
+  }
+
+  .resend-code {
+    font-size: 0.9rem;
+  }
+
+  .form-control {
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  #delete-account {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  #delete-account-modal label {
+    margin-bottom: 20px;
+  }
+
+  .intro h4 {
+    font-size: 1.5rem;
+    line-height: 34px;
+    margin-top: 34px;
+    font-weight: 700;
+  }
+  p {
+    margin-top: 10px;
+  }
+}

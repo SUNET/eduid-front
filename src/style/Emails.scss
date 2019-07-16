@@ -79,3 +79,16 @@ button#email.button {
 .form-content {
   width: 100%;
 }
+
+@media (max-width: 812px) {
+  #orcid-connect-container,
+  #register-securitykey-container,
+  .namesview-form-container,
+  .phoneview-form-container,
+  .emailsview-form-container,
+  #delete-account-container,
+  #change-password-container {
+    margin: 0 auto 20px;
+    max-width: 75%;
+  }
+}

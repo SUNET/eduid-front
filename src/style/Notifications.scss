@@ -35,6 +35,19 @@
   color: $orange-highlight;
   background-color: #ffe7dd;
 }
+
+@media (max-width: 812px) {
+  .notifications-area {
+    height: 49px;
+  }
+  .alert {
+    padding: 0.5rem 1rem;
+  }
+  .alert span {
+    font-size: 1rem;
+    width: 75%;
+  }
+}
 // @media only screen and (min-width: 991px) {
 //   div.notifications-area {
 //     height: 80px;
