@@ -14,7 +14,7 @@ class Orcid extends Component {
         {/* <div className="orcid-logo-container">
           <span className="orcid-logo" />
     </div>*/}
-{/* 
+        {/* 
         <label>{this.props.l10n("orc.title")}</label> */}
       </div>
     );
@@ -56,8 +56,10 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <div className="orcid-data">
+          <p>{this.props.l10n("orc.long_description")}</p>
           <EduIDButton
             id="connect-orcid-button"
+            className="settings-button ok-button"
             onClick={this.props.handleOrcidConnect}
           >
             <div className="orcid-logo-container">
@@ -66,7 +68,6 @@ class Orcid extends Component {
             {this.props.l10n("orc.button_connect")}
           </EduIDButton>
           {/* <p>{this.props.l10n("orc.about_link")}</p> */}
-          <p>{this.props.l10n("orc.long_description")}</p>
         </div>
       );
     }
