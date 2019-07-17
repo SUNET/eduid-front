@@ -14,9 +14,11 @@
   margin-top: 0;
 }
 
-#footer-content p {
+#footer-content {
   display: flex;
   justify-content: space-between;
+}
+#footer-content p {
   margin-bottom: 0;
 }
 
@@ -37,7 +39,6 @@
   cursor: pointer;
   color: #161616;
 }
-
 
 // #eduid-nav {
 //   display: flex;
