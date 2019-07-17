@@ -82,7 +82,7 @@ class ChangePasswordForm extends Component {
           className="btn-link"
           onClick={() => this.togglePasswordType()}
         >
-          {this.props.l10n("chpass.button_suggest_password")} 
+          {this.props.l10n("chpass.button_suggest_password")}
         </EduIDButton>
       );
 
@@ -162,12 +162,13 @@ class ChangePasswordForm extends Component {
         <fieldset id="chpass-form" className="tabpane">
           <EduIDButton
             id="chpass-button"
+            className="settings-button ok-button"
             onClick={this.props.handleStartPasswordChange.bind(this)}
           >
             {this.props.l10n("chpass.button_save_password")}
           </EduIDButton>
           <EduIDButton
-            className="cancel-button eduid-cancel-button"
+            className="modal-button cancel-button eduid-cancel-button"
             onClick={this.props.handleStopPasswordChange.bind(this)}
           >
             {this.props.l10n("cm.cancel")}

@@ -70,10 +70,10 @@ class Main extends Component {
               {/* <div id="welcome-container"> */}
               <div id="welcome">
                 {/* <div id="welcome-text"> */}
-                  <h1>eduID for {this.props.email}</h1>
-                  <Link id="profile-prompt-link" to={promptLink}>
-                    <h2 className={styling}>{welcomeGreeting}</h2>
-                  </Link>
+                <h1>eduID for {this.props.email}</h1>
+                <Link id="profile-prompt-link" to={promptLink}>
+                  <h2 className={styling}>{welcomeGreeting}</h2>
+                </Link>
                 {/* </div> */}
               </div>
               {/* </div> */}
@@ -85,7 +85,13 @@ class Main extends Component {
                 />
                 <Route exact path="/profile/" component={Profile} />
                 <Route path="/profile/verify-identity/" component={Profile} />
-                <Route path="/profile/security/" component={Profile} />
+                <Route
+                  exact
+                  path="/profile/security/"
+                  component={() => (
+                    <Redirect to="/profile/settings/" />
+                  )}
+                />
                 <Route path="/profile/chpass/" component={ChangePassword} />
               </div>
             </div>

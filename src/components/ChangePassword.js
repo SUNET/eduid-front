@@ -87,7 +87,7 @@ const mapStateToProps = (state, props) => {
     password_score: score,
     password_strength_msg: pwStrengthMessages[score],
     custom_ready: configEntropy > entropy,
-    cancel_to: "security"
+    cancel_to: "settings"
   };
 };
 
