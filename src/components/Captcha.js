@@ -27,17 +27,18 @@ class Captcha extends Component {
         <h3 className="register-header">
           {this.props.l10n("captcha.verify-human")}
         </h3>
-        ,
-        <div key="1">
-          <div id="captcha-buttons" className=" text-center">
+        <div key="1" id="captcha-container">
+          <div id="captcha">
             <Recaptcha
               sitekey={this.props.recaptcha_key}
               render="explicit"
               onloadCallback={this.props.loadedCaptcha}
               verifyCallback={this.props.handleCaptcha}
             />
+          </div>
+          <div id="captcha-buttons">
             <EduIDButton
-              className="modal-button captcha ok-button"
+              className="settings-button captcha ok-button"
               onClick={this.props.sendCaptcha}
               id="send-captcha-button"
             >

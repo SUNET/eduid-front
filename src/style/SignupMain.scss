@@ -43,20 +43,26 @@
   padding-left: 0;
 }
 
-// .captcha-container {
-//   max-width: 58.3333%;
-//   margin: 50px auto 5rem;
-// }
-
-#captcha-buttons {
-  max-width: 58.3333%;
-  margin: 0 auto;
-  // display: flex;
+#captcha-container {
+  margin: 50px auto 5rem;
+  // align-items: center;
 }
+
+#captcha {
+  transform: scale(1.2);
+  transform-origin: 0 0;
+  margin-bottom: 30px;
+}
+
+// #captcha-buttons {
+//   // display: flex;
+//   // justify-content: center;
+// }
 
 .register-header {
   font-family: "ProximaNova-Bold";
   margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 .captcha {
@@ -71,6 +77,28 @@
 }
 .registered-email {
   color: $orange-highlight;
+}
+
+@media (max-width: 823px) {
+  body {
+    background: lightgreen;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background: lightblue;
+  }
+}
+
+@media (max-width: 414px) {
+  body {
+    background: lightyellow;
+  }
+  // #dashboard-nav.nav-back {
+  //   max-width: calc(100% - 15px);
+  //   padding: 0;
+  // }
 }
 
 // body,
