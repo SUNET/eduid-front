@@ -870,14 +870,14 @@ const msgs = {
   "verify-identity.vetting_post_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_post_tagline"
-      defaultMessage={`For those registered at thier current address`}
+      defaultMessage={`For those registered at their current address`}
     />
   ),
 
   "verify-identity.vetting_phone_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_phone_tagline"
-      defaultMessage={`For those with a phone registered in ther name`}
+      defaultMessage={`For those with a phone registered in their name`}
     />
   ),
 
