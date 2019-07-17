@@ -332,7 +332,7 @@ const msgs = {
   ),
 
   // "tou.reject": <FormattedMessage id="tou.reject" defaultMessage={`Reject`} />,
-  "tou.cancel": <FormattedMessage id="tou.reject" defaultMessage={`Cancel`} />,
+  "tou.cancel": <FormattedMessage id="tou.cancel" defaultMessage={`Cancel`} />,
 
   "tou.accept": <FormattedMessage id="tou.accept" defaultMessage={`Accept`} />,
 

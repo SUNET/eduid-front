@@ -30,18 +30,18 @@ class Main extends Component {
         </div>
         <div id="buttons">
           <EduIDButton
-            className="tou-button"
+            className="settings-button ok-button tou-button"
             onClick={this.props.acceptTOU}
             id="accept-tou-button"
           >
             {this.props.l10n("tou.accept")}
           </EduIDButton>
           <EduIDButton
-            className="tou-button btn-danger"
+            className="modal-button cancel-button"
             onClick={this.props.rejectTOU}
             id="reject-tou-button"
           >
-            {this.props.l10n("tou.reject")}
+            {this.props.l10n("tou.cancel")}
           </EduIDButton>
         </div>
       </ActionWrapperContainer>
