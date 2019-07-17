@@ -13,7 +13,9 @@ class AddNin extends Component {
     } else {
       return (
         <div key="1">
-          <h3 id="add-nin-header">{this.props.l10n("add_nin.main_title")}</h3>
+          <h3 key="0" id="add-nin-header">
+            {this.props.l10n("add_nin.main_title")}
+          </h3>
           <div key="1" id="add-nin-number">
             <NinForm addNin={this.addNin} {...this.props} />
           </div>

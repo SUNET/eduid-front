@@ -29,7 +29,9 @@ class VerifyIdentityProcess extends Component {
         return (
           <div key={index}>
             {vettingBtns[key]}
-            <p className="proofing-btn-help">{helpText}</p>
+            <p key={index} className="proofing-btn-help">
+              {helpText}
+            </p>
           </div>
         );
       });
@@ -38,9 +40,11 @@ class VerifyIdentityProcess extends Component {
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
         <div key="1" id="connect-nin-number">
-          <label>{this.props.l10n("verify-identity.connect_nin_title")}</label>
+          <label key="0">
+            {this.props.l10n("verify-identity.connect_nin_title")}
+          </label>
           {/* <p className="profile-data">Request a confirmation code to</p>*/}
-          <div id="nins-btn-group">
+          <div key="1" id="nins-btn-group">
             {vettingButtons}
           </div>
         </div>
@@ -53,8 +57,10 @@ class VerifyIdentityProcess extends Component {
     }
 
     return (
-      <div id="verify-identity-container">
-        <h3 className="verify-identity-header">{headerText}</h3>
+      <div key="0" id="verify-identity-container">
+        <h3 key="0" className="verify-identity-header">
+          {headerText}
+        </h3>
         <AddNin {...this.props} />
         {connectNin}
       </div>

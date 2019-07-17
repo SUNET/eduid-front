@@ -56,7 +56,6 @@ class Eidas extends Component {
             id="eidas-show-modal"
             disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
-            block
           >
             <div className="vetting-button-text">
               {this.props.l10n("verify-identity.vetting_freja_tagline")}

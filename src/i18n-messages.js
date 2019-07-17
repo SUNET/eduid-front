@@ -1917,14 +1917,6 @@ const msgs = {
     />
   ),
 
-
-  "accountId.accountId_display_title": (
-    <FormattedMessage
-      id="accountId.accountId_display_title"
-      defaultMessage={`Unique ID`}
-    />
-  ),
-
   // "orc.connect": (
   //   <FormattedMessage
   //     id="orc.connect"

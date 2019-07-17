@@ -30,13 +30,12 @@ class Profile extends Component {
 
     // the below are the small data displays on the profile page (they render cases whener there is data or not)
     let NameDisplay = props => {
-      console.log();
       if (props.firstName) {
         return (
-          <div key="1" className="profile-card">
-            <label> {this.props.l10n("profile.name_display_title")}</label>
-            <div id="nin-number-container">
-              <p id="nin-number" className="verified">
+          <div key="0" className="profile-card">
+            <label key="0">{props.l10n("profile.name_display_title")}</label>
+            <div key="1" id="nin-number-container">
+              <p key="0" id="nin-number" className="verified">
                 {props.firstName} {props.lastName}
               </p>
             </div>
@@ -44,11 +43,11 @@ class Profile extends Component {
         );
       } else {
         return (
-          <div key="1" className="profile-card">
-            <label> {this.props.l10n("profile.name_display_title")}</label>
-            <div id="nin-number-container">
-              <p id="nin-number" className="no-data">
-                {this.props.l10n("profile.name_display_no_data")}
+          <div key="0" className="profile-card">
+            <label key="0">{props.l10n("profile.name_display_title")}</label>
+            <div key="1" id="nin-number-container">
+              <p key="0" id="nin-number" className="no-data">
+                {props.l10n("profile.name_display_no_data")}
               </p>
             </div>
           </div>
@@ -60,33 +59,33 @@ class Profile extends Component {
       if (props.phones.length) {
         if (props.verifiedPhone) {
           return (
-            <div key="1" className="profile-card">
-              <label> {this.props.l10n("profile.phone_display_title")}</label>
-              <div id="nin-number-container">
-                <p id="nin-number" className="verified">
-                  {props.phones[0].number}
+            <div key="2" className="profile-card">
+              <label key="0">{props.l10n("profile.phone_display_title")}</label>
+              <div key="1" id="nin-number-container">
+                <p key="0" id="nin-number" className="verified">
+                  {phones[0].number}
                 </p>
               </div>
             </div>
           );
         }
         return (
-          <div key="1" className="profile-card">
-            <label>{this.props.l10n("profile.phone_display_title")}</label>
-            <div id="nin-number-container">
-              <p id="nin-number" className="no-data">
-                {this.props.l10n("profile.phone_display_unconfirmed_data")}
+          <div key="2" className="profile-card">
+            <label key="0">{props.l10n("profile.phone_display_title")}</label>
+            <div key="1" id="nin-number-container">
+              <p key="0" id="nin-number" className="no-data">
+                {props.l10n("profile.phone_display_unconfirmed_data")}
               </p>
             </div>
           </div>
         );
       } else {
         return (
-          <div key="1" className="profile-card">
-            <label>{this.props.l10n("profile.phone_display_title")}</label>
-            <div id="nin-number-container">
-              <p id="nin-number" className="no-data">
-                {this.props.l10n("profile.phone_display_no_data")}
+          <div key="2" className="profile-card">
+            <label key="0">{props.l10n("profile.phone_display_title")}</label>
+            <div key="1" id="nin-number-container">
+              <p key="0" id="nin-number" className="no-data">
+                {props.l10n("profile.phone_display_no_data")}
               </p>
             </div>
           </div>
@@ -97,10 +96,10 @@ class Profile extends Component {
     let EmailDisplay = props => {
       if (props.emails.length) {
         return (
-          <div key="1" className="profile-card">
-            <label>{this.props.l10n("profile.email_display_title")}</label>
-            <div id="nin-number-container">
-              <p id="nin-number" className="verified">
+          <div key="3" className="profile-card">
+            <label key="0">{props.l10n("profile.email_display_title")}</label>
+            <div key="1" id="nin-number-container">
+              <p key="0" id="nin-number" className="verified">
                 {props.emails[0].email}
               </p>
             </div>
@@ -108,10 +107,10 @@ class Profile extends Component {
         );
       } else {
         return (
-          <div key="1" className="profile-card">
-            <label>{this.props.l10n("profile.email_display_title")}</label>
-            <div id="nin-number-container">
-              <p id="nin-number" className="no-data">
+          <div key="3" className="profile-card">
+            <label key="0">{props.l10n("profile.email_display_title")}</label>
+            <div key="1" id="nin-number-container">
+              <p key="0" id="nin-number" className="no-data">
                 {this.props.l10n("profile.email_display_no_data")}
               </p>
             </div>
@@ -142,25 +141,26 @@ class Profile extends Component {
       profileSection = [<SecurityContainer />];
     } else if (url.includes("verify-identity")) {
       stylingId = "profile-container-verifyId";
-      profileSection = [<VerifyIdentityProcess {...this.props} />];
+      profileSection = [<VerifyIdentityProcess key="0" {...this.props} />];
     } else {
       accountDetails = [
-        <NameDisplay {...this.props} />,
-        <NinDisplay {...this.props} />,
-        // <LetterProofingDisplay {...this.props} />,
-        <PhoneDisplay {...this.props} />,
-        <EmailDisplay {...this.props} />
+        <NameDisplay key="0" {...this.props} />,
+        <NinDisplay key="1" {...this.props} />,
+        <PhoneDisplay key="2" {...this.props} />,
+        <EmailDisplay key="3" {...this.props} />
         // <LetterProofingDisplay {...this.props} />,
       ];
       // }
     }
 
     return (
-      <div id="dashboard">
+      <div key="0" id="dashboard">
         <DashboardNav {...this.props} />
-        <div id={stylingId}>
-          <div id="profile-section">{profileSection}</div>
-          <div id="profile-detail-grid" className="profile-data">
+        <div key="0" id={stylingId}>
+          <div key="0" id="profile-section">
+            {profileSection}
+          </div>
+          <div key="1" id="profile-detail-grid" className="profile-data">
             {accountDetails}
           </div>
         </div>

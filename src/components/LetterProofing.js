@@ -23,7 +23,6 @@ class LetterProofingButton extends Component {
             className="proofing-button"
             disabled={this.props.disabled}
             onClick={this.props.handleLetterProofing}
-            block
           >
             {/* <form
             id="letter-proofing-form"

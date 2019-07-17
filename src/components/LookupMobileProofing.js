@@ -19,7 +19,8 @@ class LookupMobileProofing extends Component {
 
     if (this.props.phoneNumbers.length) {
       modalPrompt = [
-        <GenericConfirmModal key="0"
+        <GenericConfirmModal
+          key="0"
           modalId="mobileGenericConfirmDialog"
           title={this.props.l10n("lmp.modal_reminder_to_confirm_title")}
           mainText={this.props.l10n("lmp.modal_reminder_to_confirm_info")}
@@ -30,7 +31,8 @@ class LookupMobileProofing extends Component {
       ];
       if (this.props.phoneNumbers[0].verified) {
         modalPrompt = [
-          <GenericConfirmModal key="0"
+          <GenericConfirmModal
+            key="0"
             modalId="mobileGenericConfirmDialog"
             title={this.props.l10n("lmp.modal_confirm_title")}
             mainText={this.props.l10n("lmp.modal_confirm_info")}
@@ -42,7 +44,8 @@ class LookupMobileProofing extends Component {
       }
     } else {
       modalPrompt = [
-        <GenericConfirmModal key="0"
+        <GenericConfirmModal
+          key="0"
           modalId="mobileGenericConfirmDialog"
           title={this.props.l10n("lmp.modal_add_number_title")}
           mainText={this.props.l10n("lmp.modal_add_number_info")}
@@ -60,7 +63,6 @@ class LookupMobileProofing extends Component {
             className="proofing-button"
             disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
-            block
           >
             <div key="1" className="vetting-button-text">
               {this.props.l10n("verify-identity.vetting_phone_tagline")}
