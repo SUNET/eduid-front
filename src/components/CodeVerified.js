@@ -26,13 +26,13 @@ class CodeVerified extends Component {
             <div id="email-display">
               <label>Email</label>
               <h3 className="register-header">
-                {this.props.email} njons17@test.com
+                {this.props.email} 
               </h3>
               <label>Password</label>
               <h3 className="register-header registered-email">
                 {/* {this.props.email} */}
                 <mark className="force-select-all">
-                  {this.props.password} tyu yui 89h{" "}
+                  {this.props.password}
                 </mark>
               </h3>
             </div>

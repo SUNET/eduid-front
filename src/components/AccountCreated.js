@@ -12,7 +12,7 @@ class AccountCreated extends Component {
           {this.props.l10n("created.account-created")}
         </h3>
         <div id="email-display">
-          <label>{this.props.l10n("created.email-label")}</label>
+          <p>{this.props.l10n("created.email-label")}</p>
           <h3 className="register-header registered-email">
             {this.props.email}
           </h3>
