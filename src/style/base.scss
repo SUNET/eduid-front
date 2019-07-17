@@ -540,11 +540,15 @@ h5.modal-title {
   margin: auto;
 }
 
-#delete-account-modal,
 #confirm-user-data-modal,
 #register-modal,
 #eidas-modal {
   width: 50vw;
+  margin: auto;
+}
+
+#delete-account-modal {
+  width: 30vw;
   margin: auto;
 }
 
@@ -588,6 +592,10 @@ h5.modal-title {
 #delete-account-modal label {
   margin-bottom: 30px;
   color: #7c7c7c;
+  font-size: 1rem;
+  text-transform: none;
+  line-height: 1.5;
+  font-weight: 700;
 }
 
 /* styles for confirm button in delete account modal */
