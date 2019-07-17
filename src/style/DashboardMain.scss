@@ -255,6 +255,12 @@ aside li:hover a {
   background-color: transparent;
   box-shadow: none;
 }
+#dashboard-nav .transparent:hover {
+  color: transparent;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: default;
+}
 
 /* styles for tables displaying userinfo on settings page */
 table {
@@ -501,10 +507,10 @@ a#go-to-mobiles-tab {
   // body {
   //   background: hotpink;
   // }
- #dashboard-nav ul {
-  display: grid;
-  grid-template-columns: auto;
-}
+  #dashboard-nav ul {
+    display: grid;
+    grid-template-columns: auto;
+  }
   // #dashboard-nav.nav-back {
   //   max-width: calc(100% - 15px);
   //   padding: 0;

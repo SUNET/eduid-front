@@ -86,7 +86,7 @@ class DashboardNav extends Component {
             <NavLink
               activeClassName="active"
               className="nav-link advanced-setting transparent"
-              to={`/profile/settings/advanced-settings`}
+              to={`#`}
             >
               <li className="transparent">
                 <h5 className="transparent">
