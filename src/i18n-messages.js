@@ -509,17 +509,10 @@ const msgs = {
     />
   ),
 
-  "used.email-in-use": (
-    <FormattedMessage
-      id="used.email-in-use"
-      defaultMessage={`The email address is already registered.`}
-    />
-  ),
-
   "used.email-label": (
     <FormattedMessage
       id="used.email-label"
-      defaultMessage={`Is this the email address to your eduID?`}
+      defaultMessage={`If this is your eduID, you can reset your password to log back in.`}
     />
   ),
 
@@ -621,6 +614,14 @@ const msgs = {
     <FormattedMessage
       id="created.email-sent"
       defaultMessage={`Click the confirmation link sent to {email} to be able log in to eduID`}
+      values={values}
+    />
+  ),
+
+  "used.email-in-use": values => (
+    <FormattedMessage
+      id="used.email-in-use"
+      defaultMessage={`An eduID is already using {email}`}
       values={values}
     />
   ),

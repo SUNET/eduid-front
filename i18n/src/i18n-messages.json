@@ -252,12 +252,8 @@
     "defaultMessage": "Unknown verification code"
   },
   {
-    "id": "used.email-in-use",
-    "defaultMessage": "The email address is already registered."
-  },
-  {
     "id": "used.email-label",
-    "defaultMessage": "Is this the email address to your eduID?"
+    "defaultMessage": "If this is your eduID, you can reset your password to log back in."
   },
   {
     "id": "used.forgot-password",
@@ -318,6 +314,10 @@
   {
     "id": "created.email-sent",
     "defaultMessage": "Click the confirmation link sent to {email} to be able log in to eduID"
+  },
+  {
+    "id": "used.email-in-use",
+    "defaultMessage": "An eduID is already using {email}"
   },
   {
     "id": "profile.name_display_title",

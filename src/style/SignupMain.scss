@@ -54,6 +54,10 @@
   margin-bottom: 30px;
 }
 
+#send-captcha-button {
+  margin-right: 20px;
+}
+
 // #captcha-buttons {
 //   // display: flex;
 //   // justify-content: center;
@@ -70,9 +74,9 @@
   //   justify-content: center;
 }
 
-#email-display {
-  /* margin-top: 56px; */
-
+#email-display p {
+  text-transform: none;
+  font-size: 1.25rem;
   margin: 30px 0;
 }
 .registered-email {

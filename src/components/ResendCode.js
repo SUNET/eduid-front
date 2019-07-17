@@ -15,6 +15,7 @@ class ResendCode extends Component {
         </h3>
         <div id="email-display">
           <label>{this.props.l10n("resend.email-label")}</label>
+          {this.props.l10n("created.email-sent")({ email: this.props.email })}
           <h3 className="register-header registered-email">
             {this.props.email}
           </h3>
