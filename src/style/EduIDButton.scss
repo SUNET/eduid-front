@@ -7,6 +7,9 @@
   padding: 20px 40px;
 }
 
+#logout {
+  text-transform: none;
+}
 /* EDUIDBUTTONS */
 button.btn {
   font-family: "Akkurat";
@@ -19,6 +22,7 @@ button.btn {
   padding: 10px 20px;
   box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 /* SETTINGS (incl. :hover, :active, :focus and :disabled) */
