@@ -19,7 +19,7 @@ class LookupMobileProofing extends Component {
 
     if (this.props.phoneNumbers.length) {
       modalPrompt = [
-        <GenericConfirmModal
+        <GenericConfirmModal key="0"
           modalId="mobileGenericConfirmDialog"
           title={this.props.l10n("lmp.modal_reminder_to_confirm_title")}
           mainText={this.props.l10n("lmp.modal_reminder_to_confirm_info")}
@@ -30,7 +30,7 @@ class LookupMobileProofing extends Component {
       ];
       if (this.props.phoneNumbers[0].verified) {
         modalPrompt = [
-          <GenericConfirmModal
+          <GenericConfirmModal key="0"
             modalId="mobileGenericConfirmDialog"
             title={this.props.l10n("lmp.modal_confirm_title")}
             mainText={this.props.l10n("lmp.modal_confirm_info")}
@@ -42,7 +42,7 @@ class LookupMobileProofing extends Component {
       }
     } else {
       modalPrompt = [
-        <GenericConfirmModal
+        <GenericConfirmModal key="0"
           modalId="mobileGenericConfirmDialog"
           title={this.props.l10n("lmp.modal_add_number_title")}
           mainText={this.props.l10n("lmp.modal_add_number_info")}
@@ -54,18 +54,18 @@ class LookupMobileProofing extends Component {
     }
 
     return (
-      <div>
-        <div className="vetting-button">
+      <div key="0">
+        <div key="0" className="vetting-button">
           <button
             className="proofing-button"
             disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
             block
           >
-            <div className="vetting-button-text">
+            <div key="1" className="vetting-button-text">
               {this.props.l10n("verify-identity.vetting_phone_tagline")}
             </div>
-            <div className="vetting-button-name">
+            <div key="2" className="vetting-button-name">
               {this.props.l10n("lmp.button_text_request")}
             </div>
           </button>
