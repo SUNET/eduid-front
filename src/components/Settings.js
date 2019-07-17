@@ -21,6 +21,7 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import ChangePasswordDisplay from "./ChangePasswordDisplay";
 import DeleteAccount from "components/DeleteAccount";
+import AccountId from "./AccountId";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -97,6 +98,10 @@ class Settings extends Component {
           <Route
             path="/profile/settings/advanced-settings"
             component={AccountLinkingContainer}
+          />
+          <Route
+            path="/profile/settings/advanced-settings"
+            component={AccountId}
           />
         </div>
       </div>

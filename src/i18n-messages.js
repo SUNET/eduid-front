@@ -783,7 +783,7 @@ const msgs = {
   "dashboard_nav.advanced-settings": (
     <FormattedMessage
       id="dashboard_nav.advanced-settings"
-      defaultMessage={`> Advanced settings`}
+      defaultMessage={`Advanced settings`}
     />
   ),
   "dashboard_nav.back": (
@@ -1892,6 +1892,36 @@ const msgs = {
     <FormattedMessage
       id="  orc.button_connect"
       defaultMessage={`Connect ORCID account`}
+    />
+  ),
+
+// -------- account id ------- //
+
+  "accountId.main_title": (
+    <FormattedMessage
+      id="accountId.main_title"
+      defaultMessage={`Unique ID`}
+    />
+  ),
+  "accountId.long_description": (
+    <FormattedMessage
+      id="accountId.long_description"
+      defaultMessage={`This is an automatically generated unique identifier for your eduID. You might be asked by local IT staff to share this if you need support.`}
+    />
+  ),
+
+  "accountId.accountId_display_title": (
+    <FormattedMessage
+      id="accountId.accountId_display_title"
+      defaultMessage={`Unique ID`}
+    />
+  ),
+
+
+  "accountId.accountId_display_title": (
+    <FormattedMessage
+      id="accountId.accountId_display_title"
+      defaultMessage={`Unique ID`}
     />
   ),
 

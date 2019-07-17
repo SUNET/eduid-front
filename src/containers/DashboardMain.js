@@ -37,7 +37,7 @@ const mapStateToProps = (state, props) => {
   return {
     email: email, // email for heading
     nin: state.nins.nin, // nin to see where to prompt user
-    eppn: state.personal_data.data.eppn,
+    // eppn: state.personal_data.data.eppn,
     verifiedNin: verifiedNin
   };
 };

@@ -361,7 +361,7 @@
   },
   {
     "id": "dashboard_nav.advanced-settings",
-    "defaultMessage": "> Advanced settings"
+    "defaultMessage": "Advanced settings"
   },
   {
     "id": "dashboard_nav.back",
@@ -954,6 +954,18 @@
   {
     "id": "orc.button_connect",
     "defaultMessage": "Connect ORCID account"
+  },
+  {
+    "id": "accountId.main_title",
+    "defaultMessage": "Unique ID"
+  },
+  {
+    "id": "accountId.long_description",
+    "defaultMessage": "This is an automatically generated unique identifier for your eduID. You might be asked by local IT staff to share this if you need support."
+  },
+  {
+    "id": "accountId.accountId_display_title",
+    "defaultMessage": "Unique ID"
   },
   {
     "id": "orc.authorization_fail",
