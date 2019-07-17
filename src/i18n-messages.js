@@ -357,7 +357,7 @@ const msgs = {
   "header.signin": (
     <FormattedMessage
       id="header.signin"
-      defaultMessage={`I want to login with my existing eduID`}
+      defaultMessage={`Log in`}
     />
   ),
 

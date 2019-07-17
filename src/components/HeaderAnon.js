@@ -16,29 +16,31 @@ class Header extends Component {
   // }
 
   render() {
-    // const url = window.location.href;
-    // let buttons = "";
-    // if (this.props.withButtons) {
-    //   if (url.includes("register")) {
-    //     buttons = (
-    //       <div data-dashboard_url={this.props.dashboard_url}>
-    //         <a onClick={this.props.gotoSignin}>
-    //           {this.props.l10n("header.signin")}
-    //         </a>
-    //       </div>
-    //     );
-    //   } else {
-    //     buttons = (
-    //       <div className="button orange">
-    //         <a onClick={this.props.gotoSignup}>
-    //           {this.props.l10n("header.signup")}
-    //         </a>
-    //       </div>
-    //     );
-    //   }
-    // }
+    const url = window.location.href;
+    let buttons = "";
+    if (this.props.withButtons) {
+      // if (url.includes("register")) {
+      buttons = (
+        <div data-dashboard_url={this.props.dashboard_url}>
+          <a onClick={this.props.gotoSignin}>
+            <button id="login" className="btn">
+              {this.props.l10n("header.signin")}
+            </button>
+          </a>
+        </div>
+      );
+      //   } else {
+      //     buttons = (
+      //       <div className="button orange">
+      //         <a onClick={this.props.gotoSignup}>
+      //           {this.props.l10n("header.signup")}
+      //         </a>
+      //       </div>
+      //     );
+      //   }
+    }
     // const links = (
-    
+
     // );
 
     // if (this.props.size === "xs") {
@@ -76,11 +78,11 @@ class Header extends Component {
       >
         <a href="http://html.eduid.docker/"><div id="eduid-logo" /></a>
         {/* <div className="logo" id="eduid-logo-large" /> */}
-        <nav id="eduid-navbar">
-          {/* <div
+        {/* <nav id="eduid-navbar">
+          <div
             className=""
             id="eduid-menu"
-          > */}
+          > 
           <ul>
             <li>
               <a href={this.props.students_link}>
@@ -100,9 +102,9 @@ class Header extends Component {
             </li>
           </ul>
 
-          {/* </div> */}
-        </nav>
-          {/* {buttons}  */}
+           </div> 
+        </nav>*/}
+          {buttons} 
       </header>
     );
     // }

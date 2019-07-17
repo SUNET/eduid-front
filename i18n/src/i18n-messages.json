@@ -173,7 +173,7 @@
   },
   {
     "id": "header.signin",
-    "defaultMessage": "I want to login with my existing eduID"
+    "defaultMessage": "Log in"
   },
   {
     "id": "finish.registration-complete",

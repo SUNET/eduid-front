@@ -5,7 +5,9 @@ import "style/Footer.scss";
 
 class Footer extends Component {
   render() {
+    const url = window.location.href;
     let langElems;
+    let navMenu = "";
     if (this.props.is_configured) {
       const langs = Object.getOwnPropertyNames(this.props.languages);
       langElems = langs.map((lang, index) => {
@@ -28,34 +30,40 @@ class Footer extends Component {
     } else {
       langElems = <span />;
     }
-    const navMenu = (
-      <ul>
-        <li>
-          <a href={this.props.studentsLink}>
-            {this.props.l10n("header.students")}
-          </a>
-        </li>
-        <li>
-          <a href={this.props.techniciansLink}>
-            {this.props.l10n("header.technicians")}
-          </a>
-        </li>
-        <li>
-          <a href={this.props.staffLink}>{this.props.l10n("header.staff")}</a>
-        </li>
-        <li>
-          <a href={this.props.faqLink}>{this.props.l10n("header.faq")}</a>
-        </li>
-      </ul>
-    );
+    if (url.includes("register")) {
+      navMenu = (
+        // <div id="eduid-navbar">
+        <ul>
+          <li>
+            <a href={this.props.students_link}>
+              {this.props.l10n("header.students")}
+            </a>
+          </li>
+          <li>
+            <a href={this.props.technicians_link}>
+              {this.props.l10n("header.technicians")}
+            </a>
+          </li>
+          <li>
+            <a href={this.props.staff_link}>
+              {this.props.l10n("header.staff")}
+            </a>
+          </li>
+          <li>
+            <a href={this.props.faq_link}>{this.props.l10n("header.faq")}</a>
+          </li>
+        </ul>
+        // </div>
+      );
+    }
     return (
       <div id="footer">
         {/* <Questions {...this.props} /> */}
         <div id="footer-content">
-          {/* <nav id="eduid-nav">{navMenu}</nav> */}
           <p>
             <span>&copy;{this.props.l10n("main.copyright")}</span>
             <span id="language-selector">{langElems}</span>
+            <nav id="eduid-navbar">{navMenu}</nav>
           </p>
         </div>
       </div>

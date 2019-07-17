@@ -159,7 +159,7 @@ class Email extends Component {
       <div key="0" id="register-container">
         <label>Email address</label>
         <EmailForm {...this.props} />
-        <div data-dashboard_url={this.props.dashboard_url}>
+        {/* <div data-dashboard_url={this.props.dashboard_url}>
           <EduIDButton
             id="login-button"
             className="btn-link"
@@ -167,7 +167,7 @@ class Email extends Component {
           >
             {this.props.l10n("header.signin")}
           </EduIDButton>
-        </div>
+        </div> */}
         {/* <p>{this.props.l10n("register.why-account")}</p> */}
       </div>,
       <div key="1">
