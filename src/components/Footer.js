@@ -33,26 +33,28 @@ class Footer extends Component {
     if (url.includes("register")) {
       navMenu = (
         // <div id="eduid-navbar">
-        <ul>
-          <li>
-            <a href={this.props.students_link}>
-              {this.props.l10n("header.students")}
-            </a>
-          </li>
-          <li>
-            <a href={this.props.technicians_link}>
-              {this.props.l10n("header.technicians")}
-            </a>
-          </li>
-          <li>
-            <a href={this.props.staff_link}>
-              {this.props.l10n("header.staff")}
-            </a>
-          </li>
-          <li>
-            <a href={this.props.faq_link}>{this.props.l10n("header.faq")}</a>
-          </li>
-        </ul>
+        <nav id="eduid-navbar">
+          <ul>
+            <li>
+              <a href={this.props.students_link}>
+                {this.props.l10n("header.students")}
+              </a>
+            </li>
+            <li>
+              <a href={this.props.technicians_link}>
+                {this.props.l10n("header.technicians")}
+              </a>
+            </li>
+            <li>
+              <a href={this.props.staff_link}>
+                {this.props.l10n("header.staff")}
+              </a>
+            </li>
+            <li>
+              <a href={this.props.faq_link}>{this.props.l10n("header.faq")}</a>
+            </li>
+          </ul>
+        </nav>
         // </div>
       );
     }
@@ -66,7 +68,7 @@ class Footer extends Component {
           <p>
             <span id="language-selector">{langElems}</span>
           </p>
-          <nav id="eduid-navbar">{navMenu}</nav>
+          {navMenu}
         </div>
       </div>
     );
