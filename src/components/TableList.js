@@ -35,7 +35,7 @@ class TableList extends Component {
                   onClick={this.props.handleRemove}
                 >
                   <svg
-                    class="remove"
+                    className="remove"
                     width="16"
                     height="16"
                     viewBox="0 0 16 16"
@@ -72,7 +72,7 @@ class TableList extends Component {
                   onClick={this.props.handleRemove}
                 >
                   <svg
-                    class="remove"
+                    className="remove"
                     width="16"
                     height="16"
                     viewBox="0 0 16 16"
@@ -109,7 +109,7 @@ class TableList extends Component {
                   onClick={this.props.handleRemove}
                 >
                   <svg
-                    class="remove"
+                    className="remove"
                     width="16"
                     height="16"
                     viewBox="0 0 16 16"
