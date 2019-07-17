@@ -463,7 +463,7 @@ const msgs = {
   "resend.button": (
     <FormattedMessage
       id="resend.button"
-      defaultMessage={`Send a new confirmation link to my email`}
+      defaultMessage={`Send a new confirmation link`}
     />
   ),
 
@@ -526,7 +526,7 @@ const msgs = {
   "used.reset-password": (
     <FormattedMessage
       id="used.reset-password"
-      defaultMessage={`Reset your password for an existing eduID`}
+      defaultMessage={`Reset your password`}
     />
   ),
 

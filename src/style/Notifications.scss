@@ -48,6 +48,15 @@
     width: 75%;
   }
 }
+@media (max-width: 414px) {
+  .alert span {
+    width: 100%;
+  }
+  .alert-dismissible .close {
+    padding: 0.25rem 0.75rem;
+  }
+}
+
 // @media only screen and (min-width: 991px) {
 //   div.notifications-area {
 //     height: 80px;

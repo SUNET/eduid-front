@@ -17,7 +17,9 @@
 #footer-content {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap-reverse;
 }
+
 #footer-content p {
   margin-bottom: 0;
 }
@@ -40,41 +42,11 @@
   color: #161616;
 }
 
-// #eduid-nav {
+// #eduid-button {
 //   display: flex;
-//   flex: 1;
-// }
-
-// #eduid-nav {
-//   display: flex;
-//   flex: 1;
-//   justify-content: space-between;
+//   justify-content: flex-end;
 //   align-items: center;
 // }
-
-// #eduid-nav ul {
-//   display: flex;
-//   margin: 0 0 0 40px;
-//   padding: 0;
-// }
-
-// #eduid-nav a {
-//   color: $orange-highlight;
-//   letter-spacing: 0.5px;
-//   font-size: 1rem;
-//   // text-transform: uppercase;
-//   // padding: 16px 15px;
-// }
-
-// #eduid-nav span:hover {
-//   border-bottom: solid 2px #3f5c57;
-// }
-
-#eduid-button {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
 
 #eduid-navbar ul {
   display: flex;
@@ -136,3 +108,18 @@
 // #footer .answer {
 //   margin-bottom: 30px;
 // }
+
+@media (max-width: 414px) {
+  #footer-content p {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 375px) {
+  #footer-content p {
+    font-size: 0.8rem;
+  }
+
+  #footer-content {
+    font-size: 0.8rem;
+  }
+}

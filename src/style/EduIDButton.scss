@@ -257,3 +257,10 @@ button.eduid-button.btn-warning {
 //     max-height: 45px;
 //   }
 // }
+
+@media (max-width: 414px) {
+  button.btn {
+    // font-size: 1rem;
+    width: 100%;
+  }
+}

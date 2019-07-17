@@ -716,4 +716,18 @@ h5.modal-title {
     line-height: 30px;
     margin-top: 10px;
   }
+  #register-modal,
+  .modal-dialog {
+    width: calc(100% - 40px);
+    margin: auto 20px;
+  }
+  .modal-dialog {
+    max-width: calc(100% - 40px);
+  }
+  
+  // #register-modal {
+  //   width: calc(100% - 40px);
+  //   margin: auto 20px;
+  //   background: orange;
+  // }
 }
