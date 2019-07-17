@@ -355,10 +355,7 @@ const msgs = {
   ),
 
   "header.signin": (
-    <FormattedMessage
-      id="header.signin"
-      defaultMessage={`Log in`}
-    />
+    <FormattedMessage id="header.signin" defaultMessage={`Log in`} />
   ),
 
   "finish.registration-complete": (
@@ -376,10 +373,7 @@ const msgs = {
   ),
 
   "finish.got-it": (
-    <FormattedMessage
-      id="finish.got-it"
-      defaultMessage={`Ok, take me to the login`}
-    />
+    <FormattedMessage id="finish.got-it" defaultMessage={`go to my eduid`} />
   ),
 
   "finish.can-now-login": (
@@ -1895,13 +1889,10 @@ const msgs = {
     />
   ),
 
-// -------- account id ------- //
+  // -------- account id ------- //
 
   "accountId.main_title": (
-    <FormattedMessage
-      id="accountId.main_title"
-      defaultMessage={`Unique ID`}
-    />
+    <FormattedMessage id="accountId.main_title" defaultMessage={`Unique ID`} />
   ),
   "accountId.long_description": (
     <FormattedMessage

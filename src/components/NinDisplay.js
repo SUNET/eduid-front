@@ -107,7 +107,7 @@ class NinDisplay extends Component {
             <label key="0">
               {this.props.l10n("nin_display.profile.main_title")}
             </label>
-            <div key="1" id="nin-number-container">
+            <div key="1" id="nin-number" id="nin-number-container">
               <Link
                 key="2"
                 to={`/profile/verify-identity/`}
