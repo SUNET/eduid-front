@@ -305,7 +305,7 @@ const msgs = {
 
   "created.email-label": (
     <FormattedMessage
-      id="reated.email-label"
+      id="created.email-label"
       defaultMessage={`Complete registration by clicking the link sent to:`}
     />
   ),
