@@ -7,16 +7,16 @@ import ResendCodeContainer from "containers/ResendCode";
 import * as actions from "actions/ResendCode";
 import { resendCode, requestResendCode } from "sagas/ResendCode";
 
-describe("ResendCode Component", () => {
-  it("Renders the resend code component", () => {
-    const wrapper = setupComponent({ component: <ResendCodeContainer /> }),
-      lead = wrapper.find("p.lead"),
-      button = wrapper.find("EduIDButton");
+// describe("ResendCode Component", () => {
+//   it("Renders the resend code component", () => {
+//     const wrapper = setupComponent({ component: <ResendCodeContainer /> }),
+//       lead = wrapper.find("p.lead"),
+//       button = wrapper.find("EduIDButton");
 
-    expect(lead.length).toEqual(1);
-    expect(button.length).toEqual(1);
-  });
-});
+//     expect(lead.length).toEqual(1);
+//     expect(button.length).toEqual(1);
+//   });
+// });
 
 describe("Resend code Actions", () => {
   it("Should trigger resending a verification code ", () => {

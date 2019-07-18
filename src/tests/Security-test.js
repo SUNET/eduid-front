@@ -1013,179 +1013,179 @@ describe("Security Component", () => {
   });
 });
 
-describe("Security Container", () => {
-  let mockProps, language, getWrapper, getState, dispatch, store;
+// describe("Security Container", () => {
+//   let mockProps, language, getWrapper, getState, dispatch, store;
 
-  beforeEach(() => {
-    getState = function(deleting, askingDescription) {
-      return {
-        security: {
-          failed: false,
-          error: "",
-          message: "",
-          credentials: [
-            {
-              created_ts: "2018-03-28T09:39:11.001371",
-              credential_type: "security.webauthn_credential_type",
-              description: "",
-              key: "dummy-key",
-              success_ts: "2018-03-28T09:39:11.001371"
-            },
-            {
-              created_ts: "2018-03-28T09:39:11.001371",
-              credential_type: "security.webauthn_credential_type",
-              description: "",
-              key: "dummy-key-2",
-              success_ts: "2018-03-28T09:39:11.001371"
-            }
-          ],
-          code: "",
-          confirming_change: false,
-          confirming_deletion: deleting,
-          location: "",
-          deleted: false,
-          webauthn_asking_description: askingDescription,
-          webauthn_token_description: "",
-          webauthn_failed: false,
-          webauthn_attestation: {},
-          webauthn_token_remove: "dummy-token"
-        },
-        config: {
-          csrf_token: "",
-          SECURITY_URL: "/dummy-sec-url",
-          DASHBOARD_URL: "/dummy-dash-url/",
-          TOKEN_SERVICE_URL: "/dummy-tok-url/"
-        },
-        intl: {
-          locale: "en",
-          messages: messages
-        },
-        notifications: {
-          messages: [],
-          errors: []
-        }
-      };
-    };
+//   beforeEach(() => {
+//     getState = function(deleting, askingDescription) {
+//       return {
+//         security: {
+//           failed: false,
+//           error: "",
+//           message: "",
+//           credentials: [
+//             {
+//               created_ts: "2018-03-28T09:39:11.001371",
+//               credential_type: "security.webauthn_credential_type",
+//               description: "",
+//               key: "dummy-key",
+//               success_ts: "2018-03-28T09:39:11.001371"
+//             },
+//             {
+//               created_ts: "2018-03-28T09:39:11.001371",
+//               credential_type: "security.webauthn_credential_type",
+//               description: "",
+//               key: "dummy-key-2",
+//               success_ts: "2018-03-28T09:39:11.001371"
+//             }
+//           ],
+//           code: "",
+//           confirming_change: false,
+//           confirming_deletion: deleting,
+//           location: "",
+//           deleted: false,
+//           webauthn_asking_description: askingDescription,
+//           webauthn_token_description: "",
+//           webauthn_failed: false,
+//           webauthn_attestation: {},
+//           webauthn_token_remove: "dummy-token"
+//         },
+//         config: {
+//           csrf_token: "",
+//           SECURITY_URL: "/dummy-sec-url",
+//           DASHBOARD_URL: "/dummy-dash-url/",
+//           TOKEN_SERVICE_URL: "/dummy-tok-url/"
+//         },
+//         intl: {
+//           locale: "en",
+//           messages: messages
+//         },
+//         notifications: {
+//           messages: [],
+//           errors: []
+//         }
+//       };
+//     };
 
-    mockProps = {
-      credentials: [],
-      language: "en",
-      confirming_deletion: false,
-      webauthn_asking_description: false
-    };
+//     mockProps = {
+//       credentials: [],
+//       language: "en",
+//       confirming_deletion: false,
+//       webauthn_asking_description: false
+//     };
 
-    getWrapper = function({
-      deleting = false,
-      askingDesc = false,
-      props = mockProps
-    } = {}) {
-      store = fakeStore(getState(deleting, askingDesc));
-      dispatch = store.dispatch;
+//     getWrapper = function({
+//       deleting = false,
+//       askingDesc = false,
+//       props = mockProps
+//     } = {}) {
+//       store = fakeStore(getState(deleting, askingDesc));
+//       dispatch = store.dispatch;
 
-      const wrapper = mount(
-        <Provider store={store}>
-          <SecurityContainer {...props} />
-        </Provider>
-      );
-      return wrapper;
-    };
-    language = getWrapper()
-      .find(SecurityContainer)
-      .props().language;
-  });
+//       const wrapper = mount(
+//         <Provider store={store}>
+//           <SecurityContainer {...props} />
+//         </Provider>
+//       );
+//       return wrapper;
+//     };
+//     language = getWrapper()
+//       .find(SecurityContainer)
+//       .props().language;
+//   });
 
-  afterEach(() => {
-    fetchMock.restore();
-  });
+//   afterEach(() => {
+//     fetchMock.restore();
+//   });
 
-  it("Renders test", () => {
-    expect(language).toEqual("en");
-  });
+//   it("Renders test", () => {
+//     expect(language).toEqual("en");
+//   });
 
-  it("Clicks change", () => {
-    expect(dispatch.mock.calls.length).toEqual(0);
-    getWrapper()
-      .find("EduIDButton#security-change-button")
-      .props()
-      .onClick();
-    expect(dispatch.mock.calls.length).toEqual(2);
-  });
+//   it("Clicks change", () => {
+//     expect(dispatch.mock.calls.length).toEqual(0);
+//     getWrapper()
+//       .find("EduIDButton#security-change-button")
+//       .props()
+//       .onClick();
+//     expect(dispatch.mock.calls.length).toEqual(2);
+//   });
 
-  it("Clicks WEBAUTHN", () => {
-    expect(dispatch.mock.calls.length).toEqual(0);
-    const wrapper = getWrapper();
-    wrapper.find("EduIDButton#security-webauthn-button").simulate("click");
-    expect(dispatch.mock.calls.length).toEqual(3);
-    expect(dispatch.mock.calls[0][0].type).toEqual(
-      notifyActions.RM_ALL_NOTIFICATION
-    );
-    expect(dispatch.mock.calls[1][0].type).toEqual(actions.AUTHENTICATOR);
-    expect(dispatch.mock.calls[2][0].type).toEqual(
-      actions.START_ASK_WEBAUTHN_DESCRIPTION
-    );
-  });
+//   it("Clicks WEBAUTHN", () => {
+//     expect(dispatch.mock.calls.length).toEqual(0);
+//     const wrapper = getWrapper();
+//     wrapper.find("EduIDButton#security-webauthn-button").simulate("click");
+//     expect(dispatch.mock.calls.length).toEqual(3);
+//     expect(dispatch.mock.calls[0][0].type).toEqual(
+//       notifyActions.RM_ALL_NOTIFICATION
+//     );
+//     expect(dispatch.mock.calls[1][0].type).toEqual(actions.AUTHENTICATOR);
+//     expect(dispatch.mock.calls[2][0].type).toEqual(
+//       actions.START_ASK_WEBAUTHN_DESCRIPTION
+//     );
+//   });
 
-  it("Clicks delete", () => {
-    expect(dispatch.mock.calls.length).toEqual(0);
-    getWrapper()
-      .find("EduIDButton#delete-button")
-      .props()
-      .onClick();
-    expect(dispatch.mock.calls.length).toEqual(2);
-    expect(dispatch.mock.calls[0][0].type).toEqual(
-      notifyActions.RM_ALL_NOTIFICATION
-    );
-    expect(dispatch.mock.calls[1][0].type).toEqual(
-      actions.START_DELETE_ACCOUNT
-    );
-  });
+//   it("Clicks delete", () => {
+//     expect(dispatch.mock.calls.length).toEqual(0);
+//     getWrapper()
+//       .find("EduIDButton#delete-button")
+//       .props()
+//       .onClick();
+//     expect(dispatch.mock.calls.length).toEqual(2);
+//     expect(dispatch.mock.calls[0][0].type).toEqual(
+//       notifyActions.RM_ALL_NOTIFICATION
+//     );
+//     expect(dispatch.mock.calls[1][0].type).toEqual(
+//       actions.START_DELETE_ACCOUNT
+//     );
+//   });
 
-  it("Clicks confirm delete", () => {
-    fetchMock.post("/dummy-sec-url", {
-      type: actions.POST_DELETE_ACCOUNT
-    });
+//   it("Clicks confirm delete", () => {
+//     fetchMock.post("/dummy-sec-url", {
+//       type: actions.POST_DELETE_ACCOUNT
+//     });
 
-    const newProps = {
-      credentials: [],
-      language: "en",
-      confirming_deletion: true
-    };
-    const deleteModal = getWrapper(true, false, newProps).find("DeleteModal");
-    expect(dispatch.mock.calls.length).toEqual(0);
-    deleteModal.props().handleConfirm();
-    expect(dispatch.mock.calls.length).toEqual(1);
-    expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT);
-  });
+//     const newProps = {
+//       credentials: [],
+//       language: "en",
+//       confirming_deletion: true
+//     };
+//     const deleteModal = getWrapper(true, false, newProps).find("DeleteModal");
+//     expect(dispatch.mock.calls.length).toEqual(0);
+//     deleteModal.props().handleConfirm();
+//     expect(dispatch.mock.calls.length).toEqual(1);
+//     expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT);
+//   });
 
-  it("Clicks remove WEBAUTHN token", () => {
-    const newProps = {
-      credentials: [
-        {
-          created_ts: "2018-03-28T09:39:11.001371",
-          credential_type: "security.webauthn_credential_type",
-          description: "",
-          key: "dummy-key",
-          success_ts: "2018-03-28T09:39:11.001371"
-        },
-        {
-          created_ts: "2018-03-28T09:39:11.001371",
-          credential_type: "security.webauthn_credential_type",
-          description: "",
-          key: "dummy-key-2",
-          success_ts: "2018-03-28T09:39:11.001371"
-        }
-      ],
-      language: "en",
-      confirming_deletion: false
-    };
+//   it("Clicks remove WEBAUTHN token", () => {
+//     const newProps = {
+//       credentials: [
+//         {
+//           created_ts: "2018-03-28T09:39:11.001371",
+//           credential_type: "security.webauthn_credential_type",
+//           description: "",
+//           key: "dummy-key",
+//           success_ts: "2018-03-28T09:39:11.001371"
+//         },
+//         {
+//           created_ts: "2018-03-28T09:39:11.001371",
+//           credential_type: "security.webauthn_credential_type",
+//           description: "",
+//           key: "dummy-key-2",
+//           success_ts: "2018-03-28T09:39:11.001371"
+//         }
+//       ],
+//       language: "en",
+//       confirming_deletion: false
+//     };
 
-    expect(dispatch.mock.calls.length).toEqual(0);
-    const wrapper = getWrapper(true, newProps);
-    const btn = wrapper.find("button.btn-remove-webauthn").first();
-    btn.simulate("click");
-    expect(dispatch.mock.calls.length).toEqual(1);
-    expect(dispatch.mock.calls[0][0].type).toEqual(
-      "POST_WEBAUTHN_WEBAUTHN_REMOVE"
-    );
-  });
-});
+//     expect(dispatch.mock.calls.length).toEqual(0);
+//     const wrapper = getWrapper(true, newProps);
+//     const btn = wrapper.find("button.btn-remove-webauthn").first();
+//     btn.simulate("click");
+//     expect(dispatch.mock.calls.length).toEqual(1);
+//     expect(dispatch.mock.calls[0][0].type).toEqual(
+//       "POST_WEBAUTHN_WEBAUTHN_REMOVE"
+//     );
+//   });
+// });
