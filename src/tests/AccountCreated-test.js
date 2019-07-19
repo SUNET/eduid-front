@@ -3,11 +3,10 @@ import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import AccountCreatedContainer from "containers/AccountCreated";
-import { setupComponent } from "tests/SignupMain-test";
-
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 
 describe("Account Component", () => {
-  it("Component exists", () => {
+  it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
         <AccountCreatedContainer />
@@ -30,7 +29,13 @@ describe("Account Component", () => {
     });
 
     const userEmail = fullWrapper.find(".registered-email");
-    expect(userEmail.exists());
+    expect(userEmail.exists()).toEqual(true);
     expect(userEmail.text()).toContain("@");
   });
 });
+
+// beforeEach(() => {
+//   const store = fakeStore(getState());
+//   dispatch = store.dispatch;
+//   wrapper = setupComponent({ component: <CaptchaContainer />, store: store });
+// });

@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
 import ScriptLoader from "react-script-loader-hoc";
 import EduIDButton from "components/EduIDButton";
-import DashboardNav from "components/DashboardNav";
 import Recaptcha from "react-recaptcha";
-
 import FetchingContext from "components/FetchingContext";
 
 import "style/Captcha.scss";
@@ -21,9 +17,6 @@ class Captcha extends Component {
 
     return [
       <div key="0" id="register-container">
-        {/* <div> */}
-        {/* <h1>{this.props.l10n("captcha.one-step-left")}</h1> */}
-        {/* <DashboardNav {...this.props} /> */}
         <h3 className="register-header">
           {this.props.l10n("captcha.verify-human")}
         </h3>
