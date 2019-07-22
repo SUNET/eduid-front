@@ -7,7 +7,12 @@ import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 const config = {
   is_app_loaded: true,
   is_configured: true,
-  AVAILABLE_LANGUAGES: [["en", "English"], ["sv", "Svenska"]]
+  AVAILABLE_LANGUAGES: [["en", "English"], ["sv", "Svenska"]],
+  dashboard_url: "http://example.com",
+  STATIC_STUDENTS_URL: "http://example.com/student",
+  STATIC_TECHNICIANS_URL: "http://example.com",
+  STATIC_STAFF_URL: "http://example.com",
+  STATIC_FAQ_URL: "http://example.com",
 };
 
 describe("Footer Component", () => {
@@ -58,4 +63,18 @@ describe("Test footer Container", () => {
       .onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
+
+   // it("Renders the copyright and the information links", () => {
+  //   const wrapper = setupComponent({
+  //       component: <HeaderContainer withButtons={true} />,
+  //       overrides: smallState
+  //     }),
+  //     link = wrapper.find("a.nav-link"),
+  //     logoLarge = wrapper.find("div#eduid-logo-large"),
+  //     logoSmall = wrapper.find("div#eduid-logo-small");
+
+  //   expect(link.length).toEqual(4);
+  //   expect(logoLarge.length).toEqual(0);
+  //   expect(logoSmall.length).toEqual(1);
+  // });
 });
