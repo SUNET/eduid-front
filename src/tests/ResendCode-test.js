@@ -7,16 +7,46 @@ import ResendCodeContainer from "containers/ResendCode";
 import * as actions from "actions/ResendCode";
 import { resendCode, requestResendCode } from "sagas/ResendCode";
 
-// describe("ResendCode Component", () => {
-//   it("Renders the resend code component", () => {
-//     const wrapper = setupComponent({ component: <ResendCodeContainer /> }),
-//       lead = wrapper.find("p.lead"),
-//       button = wrapper.find("EduIDButton");
+describe("ResendCode Component", () => {
+  it("Renders the email in use component", () => {
+    it("The component does not render 'false' or 'null'", () => {
+      const wrapper = shallow(
+        <IntlProvider locale="en">
+          <ResendCodeContainer />
+        </IntlProvider>
+      );
+      expect(wrapper.isEmptyRender()).toEqual(false);
+    });
 
-//     expect(lead.length).toEqual(1);
-//     expect(button.length).toEqual(1);
-//   });
-// });
+    it("Component conveys offer to resend link", () => {
+      const fullWrapper = setupComponent({
+        component: <ResendCodeContainer />
+      });
+      const p = fullWrapper.find("p");
+      expect(p.text().includes("link")).toEqual(true);
+    });
+    it("Component renders user email (text inlcudes '@')", () => {
+      const fullWrapper = setupComponent({
+        component: <ResendCodeContainer />,
+        overrides: { email: { email: "dummy@example.com" } }
+      });
+
+      const userEmail = fullWrapper.find(".registered-email");
+      expect(userEmail.exists()).toEqual(true);
+      expect(userEmail.text()).toContain("@");
+    });
+
+    it("Component renders the SEND A NEW LINK button", () => {
+      const fullWrapper = setupComponent({
+        component: <ResendCodeContainer />
+      });
+      const button = fullWrapper.find("EduIDButton");
+      expect(button.exists()).toEqual(true);
+      expect(button.length).toEqual(1);
+      expect(button.text()).toContain("reset your password");
+    });
+  });
+});
 
 describe("Resend code Actions", () => {
   it("Should trigger resending a verification code ", () => {
