@@ -10,7 +10,7 @@ class AccountId extends Component {
       <div>
         <div id="change-password-container">
           <div className="intro">
-            <h4>{this.props.l10n("accountId.main_title")} </h4>
+            <h4>{this.props.l10n("accountId.main_title")}</h4>
             <p>{this.props.l10n("accountId.long_description")}</p>
           </div>
           <div key="1" className="profile-card">
@@ -29,23 +29,9 @@ class AccountId extends Component {
   }
 }
 
-// Security.propTypes = {
-//   credentials: PropTypes.array,
-//   creation_date: PropTypes.string,
-//   last_used: PropTypes.string,
-//   langs: PropTypes.array,
-//   confirming_change: PropTypes.bool,
-//   deleted: PropTypes.bool,
-//   handleStartConfirmationPassword: PropTypes.func,
-//   handleStopConfirmationPassword: PropTypes.func,
-//   handleConfirmationPassword: PropTypes.func,
-//   confirming_deletion: PropTypes.bool,
-//   handleStartConfirmationDeletion: PropTypes.func,
-//   handleStopConfirmationDeletion: PropTypes.func,
-//   handleConfirmationDeletion: PropTypes.func,
-//   handleStartWebauthnRegistration: PropTypes.func,
-//   handleCloseWebauthnModal: PropTypes.func
-// };
+AccountId.propTypes = {
+  eppn: PropTypes.string,
+};
 
 //  export default PasswordChange;
 
