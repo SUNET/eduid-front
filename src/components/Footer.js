@@ -6,29 +6,37 @@ import "style/Footer.scss";
 class Footer extends Component {
   render() {
     const url = window.location.href;
-    let langElems;
+    let langElems = "";
     let navMenu = "";
     if (this.props.is_configured) {
       const langs = Object.getOwnPropertyNames(this.props.languages);
       langElems = langs.map((lang, index) => {
         if (lang === this.props.language) {
           return (
-            <span className="langselector" key={index}>
-              <span>{this.props.languages[lang]}</span>
-            </span>
+            <p>
+              <span id="language-selector">
+                <span className="langselector" key={index}>
+                  <span>{this.props.languages[lang]}</span>
+                </span>
+              </span>
+            </p>
           );
         } else {
           return (
-            <span className="langselector" data-lang={lang} key={index}>
-              <a onClick={this.props.changeLanguage}>
-                {this.props.languages[lang]}
-              </a>
-            </span>
+            <p>
+              <span id="language-selector">
+                <span className="langselector" data-lang={lang} key={index}>
+                  <a onClick={this.props.changeLanguage}>
+                    {this.props.languages[lang]}
+                  </a>
+                </span>
+              </span>
+            </p>
           );
         }
       });
     } else {
-      langElems = <span />;
+      langElems = "";
     }
     if (url.includes("register")) {
       navMenu = (
@@ -45,6 +53,7 @@ class Footer extends Component {
                 {this.props.l10n("header.technicians")}
               </a>
             </li>
+
             <li>
               <a href={this.props.staff_link}>
                 {this.props.l10n("header.staff")}
@@ -65,9 +74,7 @@ class Footer extends Component {
           <p>
             <span>&copy;{this.props.l10n("main.copyright")}</span>
           </p>
-          <p>
-            <span id="language-selector">{langElems}</span>
-          </p>
+          {langElems}
           {navMenu}
         </div>
       </div>
