@@ -243,69 +243,62 @@ function setupComponent(store) {
   };
 }
 
-// describe("LetterProofingButton Component", () => {
-//   it("Renders", () => {
-//     const store = fakeStore(fakeState),
-//       { wrapper, props } = setupComponent(store),
-//       form = wrapper.find("form"),
-//       fieldset = wrapper.find("fieldset"),
-//       button = wrapper.find("EduIDButton");
+describe("LetterProofingButton Component", () => {
+  it("Renders", () => {
+    const store = fakeStore(fakeState);
+    const { wrapper, props } = setupComponent(store);
+    const button = wrapper.find("button");
 
-//     expect(form.hasClass("form-horizontal")).toBeTruthy();
-//     expect(form.contains(fieldset.get(0))).toBeTruthy();
-//     expect(fieldset.contains(button.get(0))).toBeTruthy();
+    expect(button.hasClass("proofing-button")).toEqual(true);
+    expect(button.exists()).toEqual(true);
+    expect(store.dispatch.mock.calls.length).toEqual(0);
+    button.props().onClick();
+    expect(store.dispatch.mock.calls.length).toEqual(2);
+  });
+});
 
-//     expect(form.props()).toMatchObject({ role: "form" });
-//     expect(fieldset.props()).toMatchObject({ id: "letter-proofing" });
+describe("LetterProofing Container", () => {
+  let mockProps, wrapper, buttontext, dispatch;
 
-//     expect(store.dispatch.mock.calls.length).toEqual(0);
-//     button.props().onClick();
-//     expect(store.dispatch.mock.calls.length).toEqual(2);
-//   });
-// });
+  beforeEach(() => {
+    const store = fakeStore(fakeState);
 
-// describe("LetterProofing Container", () => {
-//   let mockProps, wrapper, buttontext, dispatch;
+    mockProps = {
+      resending: {}
+    };
 
-//   beforeEach(() => {
-//     const store = fakeStore(fakeState);
+    wrapper = mount(
+      <Provider store={store}>
+        <LetterProofingContainer {...mockProps} />
+      </Provider>
+    );
 
-//     mockProps = {
-//       resending: {}
-//     };
+    buttontext = wrapper.find("button").exists();
+    dispatch = store.dispatch;
+  });
 
-//     wrapper = mount(
-//       <Provider store={store}>
-//         <LetterProofingContainer {...mockProps} />
-//       </Provider>
-//     );
+  afterEach(() => {
+    fetchMock.restore();
+  });
 
-//     buttontext = wrapper.find("EduIDButton").text();
-//     dispatch = store.dispatch;
-//   });
+  it("Renders", () => {
+    expect(buttontext).toEqual(true);
+  });
 
-//   afterEach(() => {
-//     fetchMock.restore();
-//   });
+  it("Clicks", () => {
+    fetchMock.post("http://localhost/letter", {
+      type: actions.POST_LETTER_PROOFING_PROOFING_SUCCESS,
+      payload: { message: "success" }
+    });
 
-//   it("Renders", () => {
-//     expect(buttontext).toEqual("Confirm using letter");
-//   });
-
-//   it("Clicks", () => {
-//     fetchMock.post("http://localhost/letter", {
-//       type: actions.POST_LETTER_PROOFING_PROOFING_SUCCESS,
-//       payload: { message: "success" }
-//     });
-
-//     expect(dispatch.mock.calls.length).toEqual(0);
-//     wrapper
-//       .find("Button")
-//       .props()
-//       .onClick();
-//     expect(dispatch.mock.calls.length).toEqual(2);
-//   });
-// });
+    expect(dispatch.mock.calls.length).toEqual(0);
+    wrapper
+      .find("button")
+      .props()
+      .onClick();
+    expect(dispatch.mock.calls.length).toEqual(2);
+  });
+});
 
 const state = {
   config: {
