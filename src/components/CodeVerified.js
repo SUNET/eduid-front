@@ -10,36 +10,25 @@ class CodeVerified extends Component {
     return (
       <form key="2" method="GET" action={this.props.dashboard_url}>
         <div key="0" id="register-container">
-          {/* <div className="col-lg-1" /> */}
           <div>
-            {/* <h1>{this.props.l10n("main.welcome")}</h1> */}
             <h3 className="register-header">
               {this.props.l10n("finish.registration-complete")}
             </h3>
             <p className="lead">
               {this.props.l10n("finish.registration-details")}
             </p>
-            {/* {this.props.l10n("finish.registration-details")({
-              email: this.props.email
-            })} */}
-
             <div id="email-display">
               <label>Email</label>
-              <h3 className="register-header">
+              <h3 id="user-email" className="register-header">
                 {this.props.email} 
               </h3>
               <label>Password</label>
               <h3 className="register-header registered-email">
-                {/* {this.props.email} */}
-                <mark className="force-select-all">
+                <mark id="user-password" className="force-select-all">
                   {this.props.password}
                 </mark>
               </h3>
             </div>
-            {/* <p className="lead">{this.props.l10n("finish.write-password")}</p>
-            <pre className="pre-big text-center force-select-all">
-              <mark>{this.props.password}</mark>
-            </pre> */}
             <EduIDButton
               id="gotit-button"
               className="settings-button"

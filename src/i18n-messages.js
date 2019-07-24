@@ -368,7 +368,7 @@ const msgs = {
   "finish.registration-details": (
     <FormattedMessage
       id="finish.registration-details"
-      defaultMessage={`Log in with these details and verify your identity to start using eduID.`}
+      defaultMessage={`These are your login details for eduID. Use them to verify your `}
     />
   ),
 
