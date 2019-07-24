@@ -62,7 +62,7 @@ class Footer extends Component {
       <div id="footer">
         {/* <Questions {...this.props} /> */}
         <div id="footer-content">
-          <p>
+          <p id="copyright">
             <span>&copy;{this.props.l10n("main.copyright")}</span>
           </p>
           <p>
