@@ -16,14 +16,14 @@ class Footer extends Component {
       langElems = langs.map((lang, index) => {
         if (lang === this.props.language) {
           return (
-            <p className="langselector" key={index}>
-              <span>{this.props.languages[lang]}</span>
+            <p key="0" className="langselector" key={index}>
+              <span key="0" >{this.props.languages[lang]}</span>
             </p>
           );
         } else {
           return (
-            <p className="langselector" data-lang={lang} key={index}>
-              <a onClick={this.props.changeLanguage}>
+            <p key="0"  className="langselector" data-lang={lang} key={index}>
+              <a key="0" onClick={this.props.changeLanguage}>
                 {this.props.languages[lang]}
               </a>
             </p>
@@ -33,12 +33,12 @@ class Footer extends Component {
     } else {
       langElems = "";
     }
-    languageSelect = [<div id="language-selector">{langElems}</div>];
+    languageSelect = [<div key="1" id="language-selector">{langElems}</div>];
 
     if (url.includes("register")) {
       navMenu = (
         // <div id="eduid-navbar">
-        <nav id="eduid-navbar">
+        <nav key="2" id="eduid-navbar">
           <ul>
             <li>
               <a href={this.props.students_link}>
@@ -65,11 +65,11 @@ class Footer extends Component {
       );
     }
     return (
-      <div id="footer">
+      <div key="0" id="footer">
         {/* <Questions {...this.props} /> */}
-        <div id="footer-content">
-          <p>
-            <span>&copy;{this.props.l10n("main.copyright")}</span>
+        <div key="0" id="footer-content">
+          <p key="0">
+            <span key="0">&copy;{this.props.l10n("main.copyright")}</span>
           </p>
           {languageSelect}
           {navMenu}

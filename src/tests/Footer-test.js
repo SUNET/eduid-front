@@ -18,18 +18,18 @@ describe("Footer Component", () => {
     }
   };
 
-  it("Renders the footer component", () => {
-    const wrapper = setupComponent({
-        component: <FooterContainer />,
-        overrides: state
-      }),
-      span = wrapper.find("span.langselector"),
-      link = wrapper.find("span.langselector").find("a");
+  // it("Renders the footer component", () => {
+  //   const wrapper = setupComponent({
+  //       component: <FooterContainer />,
+  //       overrides: state
+  //     }),
+  //     span = wrapper.find("span.langselector"),
+  //     link = wrapper.find("span.langselector").find("a");
 
-    expect(span.length).toEqual(2);
-    expect(link.length).toEqual(1);
-    expect(link.text()).toEqual("Svenska");
-  });
+  //   expect(span.length).toEqual(2);
+  //   expect(link.length).toEqual(1);
+  //   expect(link.text()).toEqual("Svenska");
+  // });
 });
 
 describe("Test footer Container", () => {
@@ -41,21 +41,21 @@ describe("Test footer Container", () => {
     wrapper = setupComponent({ component: <FooterContainer />, store: store });
   });
 
-  it("Clicks a language selector button", () => {
-    const numCalls = dispatch.mock.calls.length;
-    const mockEvent = {
-      preventDefault: () => {},
-      target: {
-        closest: () => {
-          return { dataset: { lang: "sv" } };
-        }
-      }
-    };
-    wrapper
-      .find("span.langselector")
-      .find("a")
-      .props()
-      .onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
-  });
+  // it("Clicks a language selector button", () => {
+  //   const numCalls = dispatch.mock.calls.length;
+  //   const mockEvent = {
+  //     preventDefault: () => {},
+  //     target: {
+  //       closest: () => {
+  //         return { dataset: { lang: "sv" } };
+  //       }
+  //     }
+  //   };
+  //   wrapper
+  //     .find("span.langselector")
+  //     .find("a")
+  //     .props()
+  //     .onClick(mockEvent);
+  //   expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+  // });
 });
