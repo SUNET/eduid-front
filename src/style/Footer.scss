@@ -24,7 +24,11 @@
   margin-bottom: 0;
 }
 
-#footer span.langselector {
+#language-selector {
+  display: flex;
+}
+
+#footer .langselector {
   font-family: "Akkurat";
   margin-right: 2px;
   padding: 0 10px;
@@ -140,6 +144,10 @@
   }
   #footer-content p {
     margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  #footer .langselector {
+    padding: 0 5px;
   }
 }
 

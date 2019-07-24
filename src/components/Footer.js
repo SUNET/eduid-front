@@ -7,30 +7,25 @@ class Footer extends Component {
   render() {
     const url = window.location.href;
     let langElems = "";
+    let languageSelect = "";
     let navMenu = "";
+
     if (this.props.is_configured) {
       const langs = Object.getOwnPropertyNames(this.props.languages);
+
       langElems = langs.map((lang, index) => {
         if (lang === this.props.language) {
           return (
-            <p>
-              <span id="language-selector">
-                <span className="langselector" key={index}>
-                  <span>{this.props.languages[lang]}</span>
-                </span>
-              </span>
+            <p className="langselector" key={index}>
+              <span>{this.props.languages[lang]}</span>
             </p>
           );
         } else {
           return (
-            <p>
-              <span id="language-selector">
-                <span className="langselector" data-lang={lang} key={index}>
-                  <a onClick={this.props.changeLanguage}>
-                    {this.props.languages[lang]}
-                  </a>
-                </span>
-              </span>
+            <p className="langselector" data-lang={lang} key={index}>
+              <a onClick={this.props.changeLanguage}>
+                {this.props.languages[lang]}
+              </a>
             </p>
           );
         }
@@ -38,6 +33,8 @@ class Footer extends Component {
     } else {
       langElems = "";
     }
+    languageSelect = [<div id="language-selector">{langElems}</div>];
+
     if (url.includes("register")) {
       navMenu = (
         // <div id="eduid-navbar">
@@ -74,7 +71,7 @@ class Footer extends Component {
           <p>
             <span>&copy;{this.props.l10n("main.copyright")}</span>
           </p>
-          {langElems}
+          {languageSelect}
           {navMenu}
         </div>
       </div>
