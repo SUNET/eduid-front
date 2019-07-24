@@ -24,24 +24,13 @@ class LetterProofingButton extends Component {
             disabled={this.props.disabled}
             onClick={this.props.handleLetterProofing}
           >
-            {/* <form
-            id="letter-proofing-form"
-            className="form-horizontal"
-            role="form"
-          > */}
-            {/* <fieldset id="letter-proofing"> */}
             <div className="vetting-button-text">
               {this.props.l10n("verify-identity.vetting_post_tagline")}
             </div>
             <div className="vetting-button-name">
               {this.props.l10n("letter.button_text_request")}
             </div>
-            {/* <label>
-              {this.props.l10n("letter.initialize_proofing_help_text_tip_1")}
-            </label> */}
-            {/* </fieldset> */}
           </button>
-          {/* </form> */}
         </div>
         <GenericConfirmModal
           modalId="letterGenericConfirmDialog"
