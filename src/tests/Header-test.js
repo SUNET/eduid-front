@@ -15,7 +15,7 @@ describe("Header Component", () => {
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
-  it("Component the eduID logo", () => {
+  it("Component renders the eduID logo", () => {
     const wrapper = setupComponent({
       component: <HeaderContainer />
     });
@@ -44,7 +44,7 @@ describe("HeaderAnon Component", () => {
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
-  it("Component the eduID logo", () => {
+  it("Component renders the eduID logo", () => {
     const wrapper = setupComponent({
         component: <HeaderAnonContainer />
       }),
