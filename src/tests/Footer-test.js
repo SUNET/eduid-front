@@ -1,6 +1,7 @@
 import React from "react";
 import expect from "expect";
-
+import { shallow } from "../../node_modules/enzyme";
+import { IntlProvider } from "react-intl";
 import FooterContainer from "containers/Footer";
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 
@@ -12,18 +13,49 @@ const config = {
   STATIC_STUDENTS_URL: "http://example.com/student",
   STATIC_TECHNICIANS_URL: "http://example.com",
   STATIC_STAFF_URL: "http://example.com",
-  STATIC_FAQ_URL: "http://example.com",
+  STATIC_FAQ_URL: "http://example.com"
+};
+
+const state = {
+  config: config,
+  intl: {
+    locale: "en"
+  }
 };
 
 describe("Footer Component", () => {
-  const state = {
-    config: config,
-    intl: {
-      locale: "en"
-    }
-  };
+  it("Component does not render 'false' or 'null'", () => {
+    const wrapper = shallow(
+      <IntlProvider locale="en">
+        <FooterContainer />
+      </IntlProvider>
+    );
+    expect(wrapper.isEmptyRender()).toEqual(false);
+  });
 
-  it("Renders the footer component", () => {
+  it("Component renders copyright", () => {
+    const wrapper = setupComponent({
+      component: <FooterContainer />
+    });
+    const copyright = wrapper.find("#copyright");
+    expect(copyright.exists()).toEqual(true);
+    expect(copyright.text().includes("SUNET")).toEqual(true);
+  });
+
+  // it("Renders the footer links ", () => {
+  //   const wrapper = setupComponent({
+  //     component: <FooterContainer />,
+  //     overrides: state
+  //   });
+  //   const nav = wrapper.find("nav");
+  //   console.log(wrapper.debug());
+  //   expect(nav.exists()).toEqual(true);
+
+  //   const link = wrapper.find("a");
+  //   expect(link.length).toEqual(4);
+  // });
+
+  it("Renders the lanuage selector component", () => {
     const wrapper = setupComponent({
         component: <FooterContainer />,
         overrides: state
@@ -63,18 +95,4 @@ describe("Test footer Container", () => {
       .onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
-
-   // it("Renders the copyright and the information links", () => {
-  //   const wrapper = setupComponent({
-  //       component: <HeaderContainer withButtons={true} />,
-  //       overrides: smallState
-  //     }),
-  //     link = wrapper.find("a.nav-link"),
-  //     logoLarge = wrapper.find("div#eduid-logo-large"),
-  //     logoSmall = wrapper.find("div#eduid-logo-small");
-
-  //   expect(link.length).toEqual(4);
-  //   expect(logoLarge.length).toEqual(0);
-  //   expect(logoSmall.length).toEqual(1);
-  // });
 });
