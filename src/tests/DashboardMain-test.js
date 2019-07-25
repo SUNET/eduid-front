@@ -4,12 +4,69 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount, render } from "enzyme";
 import expect, { createSpy } from "expect";
 import { addLocaleData, IntlProvider } from "react-intl";
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import { MemoryRouter } from "react-router-dom";
 import Header from "containers/Header";
 import Footer from "containers/Footer";
 import MainContainer from "containers/DashboardMain";
 import Notifications from "containers/Notifications";
+
+const messages = require("../../i18n/l10n/en");
+addLocaleData("react-intl/locale-data/en");
+
+const fakeStore = state => ({
+  default: () => { },
+  dispatch: mock.fn(),
+  subscribe: mock.fn(),
+  getState: () => ({ ...state })
+});
+
+function setupComponent() {
+  const store = fakeStore({
+    config: {
+      window_size: "lg",
+      language: "en"
+    },
+    personal_data: {
+      data: {
+        eppn: "test-eppn"
+      }
+    },
+    emails: {
+      emails: []
+    },
+    nins: {
+      nins: []
+    },
+    phones: {
+      phones: []
+    },
+    profile: {
+      pending: []
+    },
+    notifications: {
+      messages: [],
+      errors: []
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  });
+  const props = {
+    window_size: "lg",
+    show_sidebar: true,
+    eppn: "eppn-eppn"
+  };
+  const wrapper = mount(
+    <Provider store={store}>
+      <MainContainer {...props} />
+    </Provider>
+  );
+  return {
+    props,
+    wrapper
+  };
+}
 
 describe("Main Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -34,4 +91,5 @@ describe("Main Component", () => {
     const notifications = wrapper.find(Notifications);
     expect(notifications.exists()).toEqual(true);
   });
+
 });
