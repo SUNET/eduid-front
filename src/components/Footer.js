@@ -6,34 +6,39 @@ import "style/Footer.scss";
 class Footer extends Component {
   render() {
     const url = window.location.href;
-    let langElems;
+    let langElems = "";
+    let languageSelect = "";
     let navMenu = "";
+
     if (this.props.is_configured) {
       const langs = Object.getOwnPropertyNames(this.props.languages);
+
       langElems = langs.map((lang, index) => {
         if (lang === this.props.language) {
           return (
-            <span className="langselector" key={index}>
-              <span>{this.props.languages[lang]}</span>
-            </span>
+            <p key="0" className="langselector" key={index}>
+              <span key="0" >{this.props.languages[lang]}</span>
+            </p>
           );
         } else {
           return (
-            <span className="langselector" data-lang={lang} key={index}>
-              <a onClick={this.props.changeLanguage}>
+            <p key="0"  className="langselector" data-lang={lang} key={index}>
+              <a key="0" onClick={this.props.changeLanguage}>
                 {this.props.languages[lang]}
               </a>
-            </span>
+            </p>
           );
         }
       });
     } else {
-      langElems = <span />;
+      langElems = "";
     }
+    languageSelect = [<div key="1" id="language-selector">{langElems}</div>];
+
     if (url.includes("register")) {
       navMenu = (
         // <div id="eduid-navbar">
-        <nav id="eduid-navbar">
+        <nav key="2" id="eduid-navbar">
           <ul>
             <li>
               <a href={this.props.students_link}>
@@ -45,6 +50,7 @@ class Footer extends Component {
                 {this.props.l10n("header.technicians")}
               </a>
             </li>
+
             <li>
               <a href={this.props.staff_link}>
                 {this.props.l10n("header.staff")}
@@ -59,15 +65,16 @@ class Footer extends Component {
       );
     }
     return (
-      <div id="footer">
+      <div key="0" id="footer">
         {/* <Questions {...this.props} /> */}
         <div id="footer-content">
           <p id="copyright">
             <span>&copy;{this.props.l10n("main.copyright")}</span>
           </p>
-          <p>
+          {/* <p>
             <span id="language-selector">{langElems}</span>
-          </p>
+          </p> */}
+          {languageSelect}
           {navMenu}
         </div>
       </div>
