@@ -1,11 +1,11 @@
-import React from "react";
-import expect from "expect";
-import { put, call, select } from "redux-saga/effects";
+// import React from "react";
+// import expect from "expect";
+// import { put, call, select } from "redux-saga/effects";
 
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
-import ResendCodeContainer from "containers/ResendCode";
-import * as actions from "actions/ResendCode";
-import { resendCode, requestResendCode } from "sagas/ResendCode";
+// import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
+// import ResendCodeContainer from "containers/ResendCode";
+// import * as actions from "actions/ResendCode";
+// import { resendCode, requestResendCode } from "sagas/ResendCode";
 
 describe("ResendCode Component", () => {
   it("Renders the email in use component", () => {

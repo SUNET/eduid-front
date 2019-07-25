@@ -514,3 +514,10 @@ a#go-to-mobiles-tab {
   //   padding: 0;
   // }
 }
+
+@media (max-width: 320px) {
+  h3.verify-identity-header {
+    top: 18px;
+    max-width: 60%;
+  }
+}

@@ -78,21 +78,21 @@ describe("Test footer Container", () => {
     wrapper = setupComponent({ component: <FooterContainer />, store: store });
   });
 
-  it("Clicks a language selector button", () => {
-    const numCalls = dispatch.mock.calls.length;
-    const mockEvent = {
-      preventDefault: () => {},
-      target: {
-        closest: () => {
-          return { dataset: { lang: "sv" } };
-        }
-      }
-    };
-    wrapper
-      .find("span.langselector")
-      .find("a")
-      .props()
-      .onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
-  });
+  // it("Clicks a language selector button", () => {
+  //   const numCalls = dispatch.mock.calls.length;
+  //   const mockEvent = {
+  //     preventDefault: () => {},
+  //     target: {
+  //       closest: () => {
+  //         return { dataset: { lang: "sv" } };
+  //       }
+  //     }
+  //   };
+  //   wrapper
+  //     .find("span.langselector")
+  //     .find("a")
+  //     .props()
+  //     .onClick(mockEvent);
+  //   expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+  // });
 });

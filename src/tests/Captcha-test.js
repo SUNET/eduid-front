@@ -12,9 +12,9 @@ import captchaReducer from "reducers/Captcha";
 import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
 
 describe("Captcha Component", () => {
-  afterEach(() => {
-    fetchMock.restore();
-  });
+  //   afterEach(() => {
+  //     fetchMock.restore();
+  //   });
 
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
