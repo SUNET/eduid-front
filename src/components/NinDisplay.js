@@ -9,7 +9,7 @@ import EduIDButton from "components/EduIDButton";
 
 import "style/Nins.scss";
 
-class NinDisplay extends Component {
+export class NinDisplay extends Component {
   render() {
     const url = window.location.href;
     if (url.includes("verify-identity")) {
@@ -146,7 +146,9 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-export default connect(
+const NinDisplayContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(NinDisplay);
+
+export default i18n(NinDisplayContainer);
