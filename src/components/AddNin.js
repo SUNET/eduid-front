@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NinForm from "./NinForm";
 import NinDisplay from "./NinDisplay";
+import { connect } from "react-redux";
+import i18n from "i18n-messages";
 
 import "style/DashboardMain.scss";
 import "style/Nins.scss";
@@ -33,4 +35,21 @@ class AddNin extends Component {
 //   proofing_methods: PropTypes.array
 // };
 
-export default AddNin;
+// export default AddNin;
+
+const mapStateToProps = (state, props) => {
+  return {
+    nins: state.nins.nins, // all nin info
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {};
+};
+
+const AddNinContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddNin);
+
+export default i18n(AddNinContainer);
