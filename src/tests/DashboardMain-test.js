@@ -4,6 +4,7 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount, render } from "enzyme";
 import expect, { createSpy } from "expect";
 import { addLocaleData, IntlProvider } from "react-intl";
+import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import { MemoryRouter } from "react-router-dom";
 import Header from "containers/Header";
 import Footer from "containers/Footer";
@@ -33,5 +34,4 @@ describe("Main Component", () => {
     const notifications = wrapper.find(Notifications);
     expect(notifications.exists()).toEqual(true);
   });
-  
 });
