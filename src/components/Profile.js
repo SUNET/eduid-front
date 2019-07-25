@@ -63,7 +63,7 @@ class Profile extends Component {
               <label key="0">{props.l10n("profile.phone_display_title")}</label>
               <div key="1" id="nin-number-container">
                 <p key="0" id="nin-number" className="verified">
-                  {phones[0].number}
+                  {props.phones[0].number}
                 </p>
               </div>
             </div>

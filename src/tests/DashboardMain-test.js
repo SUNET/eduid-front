@@ -14,7 +14,7 @@ const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
 const fakeStore = state => ({
-  default: () => {},
+  default: () => { },
   dispatch: mock.fn(),
   subscribe: mock.fn(),
   getState: () => ({ ...state })
@@ -91,5 +91,5 @@ describe("Main Component", () => {
     const notifications = wrapper.find(Notifications);
     expect(notifications.exists()).toEqual(true);
   });
-  
+
 });
