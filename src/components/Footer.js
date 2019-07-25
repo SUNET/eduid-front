@@ -71,9 +71,9 @@ class Footer extends Component {
           <p id="copyright">
             <span>&copy;{this.props.l10n("main.copyright")}</span>
           </p>
-          <p>
+          {/* <p>
             <span id="language-selector">{langElems}</span>
-          </p>
+          </p> */}
           {languageSelect}
           {navMenu}
         </div>

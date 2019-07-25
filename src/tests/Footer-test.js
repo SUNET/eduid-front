@@ -60,10 +60,10 @@ describe("Footer Component", () => {
         component: <FooterContainer />,
         overrides: state
       }),
-      span = wrapper.find("span.langselector"),
-      link = wrapper.find("span.langselector").find("a");
+      p = wrapper.find("p.langselector"),
+      link = wrapper.find("p.langselector").find("a");
 
-    expect(span.length).toEqual(2);
+    expect(p.length).toEqual(2);
     expect(link.length).toEqual(1);
     expect(link.text()).toEqual("Svenska");
   });
