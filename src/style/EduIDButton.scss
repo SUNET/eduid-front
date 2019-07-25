@@ -6,112 +6,153 @@
 .buttons .button a {
   padding: 20px 40px;
 }
-
-/* generic styles for all buttons 
-(incl. :hover, :active, :focus and :disabled) */
+#login,
+#logout {
+  text-transform: none;
+}
+/* EDUIDBUTTONS */
 button.btn {
-  height: 45px;
-  background-color: $light-green;
-  border-color: $light-green;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.25px;
-  line-height: 45px;
+  font-family: "Akkurat";
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border-radius: 20px;
   text-transform: uppercase;
-  padding: 0 40px;
-  margin-bottom: 10px;
-  border-radius: 0;
-  border: none;
-  &:hover {
-    background: $light-green-hover;
-    border-color: $light-green-hover;
+  height: 48px;
+  padding: 10px 20px;
+  box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+/* SETTINGS (incl. :hover, :active, :focus and :disabled) */
+// ----- Buttons that add data ----  //
+button.btn.settings-button {
+  background-color: $orange-highlight;
+  color: white;
+  border: solid 1px transparent;
+  &:not(:disabled):hover {
+    color: $orange-highlight;
+    background-color: $orange-opaque;
+    transform: scale(0.95);
+    // background-color: $orange-opaque;
+    border: solid 1px $orange-highlight;
   }
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    background-color: $light-green-hover;
-    border-color: $light-green-hover;
-    box-shadow: 0 0 0 0.2rem $light-green-shadow;
+    color: $orange-highlight;
+    background-color: $orange-opaque;
+    transform: scale(0.95);
+    border: solid 1px $orange-highlight;
   }
   &:disabled {
-    background-color: $light-green-disabled;
-    border-color: $light-green-disabled;
+    background-color: $dark-gray;
+    border-color: $dark-gray;
   }
 }
 
-/* styles for success and ok-button buttons */
-button.btn-success:hover,
-button.ok-button:hover {
-  background: $light-green-hover;
-  border-color: $light-green-hover;
+/* MODALS */
+button.btn.modal-button {
+  // height: 48px;
+  // font-family: "Akkurat";
+  // font-weight: 700;
+  // font-size: 1rem;
+  // border-radius: 20px;
+  // letter-spacing: 0.5px;
+  box-shadow: none;
+  border: solid 1px transparent;
+  background-color: transparent;
+  // padding: 10px 20px;
+  // transition: all 0.5s ease;
 }
 
-/* styles for cancel and close buttons */
-button.cancel-button,
-button.finish-button {
-  background-color: $cancel-color;
-  border-color: $cancel-color;
-  color: $text-color;
-  &:hover {
-    background: $cancel-color-hover;
-    border-color: $cancel-color-hover;
-    color: $text-color;
-  }
+/* color for OK and ACCEPT buttons in modals */
+// ----- buttons with actions in modals ----  //
+button.ok-button {
+  color: $orange-highlight;
+  &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    background-color: $cancel-color-hover;
-    border-color: $cancel-color-hover;
-    box-shadow: 0 0 0 0.2rem $cancel-color-shadow;
-    color: $text-color;
+    background-color: $orange-opaque;
+    border: solid 1px $orange-highlight;
+    color: $orange-highlight;
   }
 }
 
-/* styles for remove and delete buttons
-(incl. :hover, :active and :focus ) */
-button.btn.btn-sm {
-  margin-left: 30px;
-  height: 2rem;
-  line-height: 2rem;
-}
-
-button.btn.btn-sm,
-button.btn.btn-danger {
-  background-color: $error-red;
-  border-color: $error-red;
-  &:hover {
-    background-color: $error-red-hover;
-    border-color: $error-red-hover;
-  }
+/* color for CANCEL and CLOSE buttons in modals */
+// ----- buttons that close modals ----  //
+button.cancel-button {
+  color: #161616;
+  &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    background-color: $error-red-hover;
-    border-color: $error-red-hover;
-    box-shadow: 0 0 0 0.2rem $error-red-shadow;
+    color: #7c7c7c;
+    border: #7c7c7c solid 1px;
+    background-color: transparent;
+    box-shadow: none;
   }
 }
 
-/* styles for links that are also buttons
-(incl. :hover, :active and :focus ) */
+/* styles for REMOVE icons */
+// ----- buttons that remove data ----  //
+// button.btn.btn-sm,
+button.btn.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 1px transparent;
+  box-shadow: none;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: transparent;
+    border: solid 1px #ff500d;
+  }
+}
 
+/* styles for DELETE button */
+// --- button that deletes user --- //
+button.btn.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 1px transparent;
+  box-shadow: none;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: transparent;
+    border: solid 1px #ff500d;
+  }
+}
+
+/* styles for links that are also buttons */
+// -----  ----  //
 button.btn-link {
   background-color: transparent;
-  color: $link-color;
-  font-weight: 500;
-  &:hover {
-    background-color: transparent;
-    border-color: transparent;
-    color: $link-hover;
-    text-decoration: none;
-  }
+  color: $orange-highlight;
+  border-radius: 0;
+  border: none;
+  // border: solid 1px transparent;
+  box-shadow: none;
+  // &:hover {
+  //   background-color: transparent;
+  //   color: $orange-highlight;
+  //   border-bottom: solid 1px transparent;
+  //   box-shadow: none;
+  // }
+  &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    background-color: transparent;
-    border-color: transparent;
-    color: $link-color;
-    box-shadow: 0 0 0 0.2rem $link-shadow;
+    color: $orange-highlight;
   }
 }
 
@@ -211,8 +252,15 @@ button.eduid-button.btn-warning {
   }
 }
 
-@media only screen and (min-width: 767px) {
-  button.eduid-button {
-    max-height: 45px;
+// @media only screen and (min-width: 767px) {
+//   button.eduid-button {
+//     max-height: 45px;
+//   }
+// }
+
+@media (max-width: 414px) {
+  button.btn {
+    // font-size: 1rem;
+    width: 100%;
   }
 }

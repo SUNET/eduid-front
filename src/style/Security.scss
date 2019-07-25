@@ -1,22 +1,25 @@
 @import "../variables.scss";
 
 .table {
-  font-size: 14px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.second-block {
-  margin-top: 20px;
+.table td {
+  color: #333;
+}
+#register-securitykey-container,
+#delete-account-container {
+  margin-bottom: 30px;
 }
 
 #connect-orcid-button,
 #delete-button,
 #security-webauthn-button {
-  width: 100%;
+  // width: 50%;
 }
 
-#security-change-button {
-  height: 2rem;
-  line-height: 2rem;
+#orcid {
   margin-bottom: 30px;
 }
 

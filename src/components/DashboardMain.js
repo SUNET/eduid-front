@@ -5,25 +5,19 @@ import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { ConnectedRouter } from "react-router-redux";
 // import { Collapse } from "reactstrap";
-
+// import ProfilePrompt from "./ProfilePrompt";
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
+// import DashboardNav from "./DashboardNav";
+import ChangePassword from "./ChangePassword";
+// import PasswordChange from "./PasswordChange";
 import SettingsComponent from "./Settings";
-import SettingsButton from "./SettingsButton";
-import VerifyIdentity from "./VerifyIdentity";
-// import PersonalDataContainer from "containers/PersonalData";
-import NinsContainer from "containers/Nins";
-// import EmailsContainer from "containers/Emails";
-// import MobileContainer from "containers/Mobile";
-// import AccountLinkingContainer from "containers/AccountLinking";
-// import SecurityContainer from "containers/Security";
-// import ChangePasswordContainer from "containers/ChangePassword";
-// import NotificationsContainer from "containers/Notifications";
-// import ProfileFilledContainer from "containers/ProfileFilled";
-// import PendingActionsContainer from "containers/PendingActions";
+import Profile from "./Profile";
+import NotificationsContainer from "containers/Notifications";
+// import Questions from "./Questions";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -47,48 +41,64 @@ class Main extends Component {
   }
 
   render() {
+    let promptLink = ``;
+    let welcomeGreeting = "";
+    let styling = "unverified";
+    if (this.props.nin) {
+      promptLink = `/profile/verify-identity/`;
+      styling = "unverified";
+      welcomeGreeting = "Don't forget to verify your national id number.";
+      if (this.props.verifiedNin) {
+        promptLink = `/profile/settings/advanced-settings`;
+        styling = "verified";
+        welcomeGreeting = "Make eduID more secure.";
+      }
+    } else {
+      promptLink = `/profile/verify-identity/`;
+      styling = "unverified";
+      welcomeGreeting = "Add your national id number to start using eduID.";
+    }
+
     return (
       <FetchingContext.Provider value={this.state}>
         <SplashContainer />
-        <div className="container-fluid">
-          <HeaderContainer />
-          <Router history={history}>
-            <div id="content-block">
-              <SettingsButton />
-              <div id="dashboard-text">
+        <Router history={history}>
+          <div className="dashboard-wrapper">
+            <HeaderContainer />
+            {/* <div id="dashboard-container"> */}
+            <div id="dashboard-text">
+              {/* <div id="welcome-container"> */}
+              <div id="welcome">
+                {/* <div id="welcome-text"> */}
                 <h1>eduID for {this.props.email}</h1>
-                <p>
-                  {" "}
-                  Welcome to your eduid account. To be able to use it you need
-                  to provide some more information.
-                </p>
-                <div id="content">
-                  <Route exact path="/profile/" component={VerifyIdentity} />
-                  <Route
-                    exact
-                    path="/profile/verify-identity"
-                    component={VerifyIdentity}
-                  />
-                  <Route
-                    exact
-                    path="/profile/verify-identity/step1"
-                    component={VerifyIdentity}
-                  />
-                  <Route
-                    exact
-                    path="/profile/verify-identity/step2"
-                    component={VerifyIdentity}
-                  />
-                  <Route
-                    path="/profile/settings/"
-                    component={SettingsComponent}
-                  />
-                </div>
+                <Link id="profile-prompt-link" to={promptLink}>
+                  <h2 className={styling}>{welcomeGreeting}</h2>
+                </Link>
+                {/* </div> */}
+              </div>
+              {/* </div> */}
+              <div id="content">
+                <NotificationsContainer />
+                <Route
+                  path="/profile/settings/"
+                  component={SettingsComponent}
+                />
+                <Route exact path="/profile/" component={Profile} />
+                <Route path="/profile/verify-identity/" component={Profile} />
+                <Route
+                  exact
+                  path="/profile/security/"
+                  component={() => (
+                    <Redirect to="/profile/settings/" />
+                  )}
+                />
+                <Route path="/profile/chpass/" component={ChangePassword} />
               </div>
             </div>
-          </Router>
-        </div>
-        <FooterContainer />
+            <FooterContainer {...this.props} />
+          </div>
+          {/* </div> */}
+        </Router>
       </FetchingContext.Provider>
     );
   }

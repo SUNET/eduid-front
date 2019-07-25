@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import i18n from "i18n-messages";
 import ChangePassword from "components/ChangePassword";
-import * as comp from "components/ChangePassword";
+import * as comp from "components/ChangePasswordForm";
 import * as actions from "actions/ChangePassword";
 import { stopConfirmationPassword } from "actions/Security";
 
@@ -60,10 +60,12 @@ const mapDispatchToProps = (dispatch, props) => {
 
     handleStartPasswordChange: function(event) {
       event.preventDefault();
-      const oldPassword = document.getElementsByName(comp.pwFieldOldName)[0].value;
+      const oldPassword = document.getElementsByName(comp.pwFieldOldName)[0]
+        .value;
       let newPassword = this.props.suggested_password;
       if (this.state.rSelected === "custom") {
-        newPassword = document.getElementsByName(comp.pwFieldCustomName)[0].value;
+        newPassword = document.getElementsByName(comp.pwFieldCustomName)[0]
+          .value;
       }
       dispatch(actions.postPasswordChange(oldPassword, newPassword));
     },

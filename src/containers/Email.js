@@ -11,6 +11,7 @@ const mapStateToProps = (state, props) => {
     tou = state.config.tous[lang];
   }
   return {
+    dashboard_url: state.config.dashboard_url,
     size: state.config.window_size,
     acceptingTOU: state.email.acceptingTOU,
     tou: tou
@@ -21,12 +22,10 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     handleEmail: function(e) {
       e.preventDefault();
-      if (this.anyTouched && this.valid) {
-        const email = document.getElementById("email-input").value;
-        dispatch(actions.addEmail(email));
-      } else {
-        this.touch("email");
-      }
+      const email = e.target.closest("#content").children[1].children[1]
+        .firstChild.firstChild.children[0].value;
+      console.log("this is email:", email);
+      dispatch(actions.addEmail(email));
     },
     handleAccept: e => {
       e.preventDefault();
@@ -36,6 +35,16 @@ const mapDispatchToProps = (dispatch, props) => {
     handleReject: e => {
       e.preventDefault();
       dispatch(actions.rejectTOU());
+    },
+    gotoSignup: function(e) {
+      e.preventDefault();
+      document.location.href = "/";
+    },
+    gotoSignin: function(e) {
+      e.preventDefault();
+      const dataNode = e.target.closest("div"),
+        url = dataNode.dataset.dashboard_url;
+      document.location.href = url;
     }
   };
 };

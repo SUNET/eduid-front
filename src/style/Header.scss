@@ -1,10 +1,13 @@
 @import "../variables.scss";
 
-header {
-  display: grid;
-  grid-template-columns: 15% auto 15%;
-  grid-template-rows: 100%;
-}
+// header {
+//   display: flex;
+//   justify-content: space-between;
+//   // display: grid;
+//   // grid-template-columns: 15% auto 15%;
+//   // grid-template-rows: 100%;
+//   padding: 0 15px;
+// }
 
 #eduid-logo {
   width: 160px;
@@ -15,89 +18,110 @@ header {
   margin: 5px 0;
 }
 
-#eduid-nav {
-  display: flex;
-  flex: 1;
-}
-
-#eduid-nav {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#eduid-nav ul {
-  display: flex;
-  margin: 0 0 0 40px;
-  padding: 0;
-}
-
-#eduid-nav a {
-  color: #3f5c57;
-  text-decoration: none;
-  letter-spacing: 0.5px;
-  font-weight: 900;
-  font-size: 16px;
-  text-transform: uppercase;
-  padding: 16px 15px;
-}
-
-#eduid-nav span:hover {
-  border-bottom: solid 2px #3f5c57;
-}
-
-#eduid-button {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-@media (max-width: 750px) {
-  header {
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(2, auto);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #3f5c57;
-  }
-
+@media (max-width: 414px) {
   #eduid-logo {
-    margin-left: 15px;
-  }
-
-  #eduid-nav {
-    margin-left: 0;
-  }
-
-  #eduid-nav ul {
-    background-color: #333333;
-    width: 100%;
-    margin: 0;
-  }
-
-  #eduid-nav li {
-    display: flex;
-    width: auto;
-  }
-
-  #eduid-nav a {
-    color: white;
-  }
-
-  #eduid-nav span:hover {
-    border-bottom: solid 2px white;
-  }
-
-  #logout {
-    position: absolute;
-    top: 7px;
-    right: 15px;
-  }
-
-  #content-block {
-    margin-top: 140px;
+    width: 105px;
+    height: 36px;
   }
 }
+
+// #eduid-nav {
+//   display: flex;
+//   flex: 1;
+// }
+
+// #eduid-nav {
+//   display: flex;
+//   flex: 1;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+// #eduid-nav ul {
+//   display: flex;
+//   margin: 0 0 0 40px;
+//   padding: 0;
+// }
+
+// #eduid-nav a {
+//   color: $orange-highlight;
+//   letter-spacing: 0.5px;
+//   font-size: 1rem;
+//   // text-transform: uppercase;
+//   // padding: 16px 15px;
+// }
+
+// // #eduid-nav span:hover {
+// //   border-bottom: solid 2px #3f5c57;
+// // }
+
+// #eduid-button {
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: center;
+// }
+
+// #eduid-navbar ul {
+//   display: flex;
+//   padding-left: 0;
+//   margin-bottom: 0;
+// }
+
+// #eduid-navbar li {
+//   margin-right: 20px;
+// }
+
+// #eduid-navbar a:hover {
+//   color: $orange-highlight;
+//   border-bottom: solid 1px $orange-highlight;
+// }
+
+// @media (max-width: 750px) {
+//   header {
+//     display: grid;
+//     grid-template-columns: 100%;
+//     grid-template-rows: repeat(2, auto);
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     background-color: #3f5c57;
+//   }
+
+//   #eduid-logo {
+//     margin-left: 15px;
+//   }
+
+//   #eduid-nav {
+//     margin-left: 0;
+//   }
+
+//   #eduid-nav ul {
+//     background-color: #333333;
+//     width: 100%;
+//     margin: 0;
+//   }
+
+//   #eduid-nav li {
+//     display: flex;
+//     width: auto;
+//   }
+
+//   #eduid-nav a {
+//     color: white;
+//   }
+
+//   #eduid-nav span:hover {
+//     border-bottom: solid 2px white;
+//   }
+
+//   #logout {
+//     position: absolute;
+//     top: 7px;
+//     right: 15px;
+//   }
+
+//   #content-block {
+//     margin-top: 140px;
+//   }
+// }

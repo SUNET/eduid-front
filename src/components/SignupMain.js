@@ -7,6 +7,7 @@ import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/HeaderAnon";
+// import HeaderContainer from "containers/Header";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";
@@ -36,15 +37,15 @@ class SignupMain extends Component {
     });
   }
 
-  componentWillMount() {
-    window.addEventListener(
-      "resize",
-      this.props.handleWindowSizeChange.bind(this)
-    );
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.props.handleWindowSizeChange);
-  }
+  // componentWillMount() {
+  //   window.addEventListener(
+  //     "resize",
+  //     this.props.handleWindowSizeChange.bind(this)
+  //   );
+  // }
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.props.handleWindowSizeChange);
+  // }
 
   render() {
     let redirect = `${BASE_PATH}/email`;
@@ -59,50 +60,71 @@ class SignupMain extends Component {
       }
     }
 
+    // return (
+    //   <FetchingContext.Provider value={this.state}>
+    //     <SplashContainer />
+    //     <div className="container-fluid">
+    //       <HeaderContainer withButtons={true} />
+    //       <Router history={history}>
+    //         <div className="jumbotron">
+    //           <div className="row">
+    //             <div className="col-lg-2" />
+    //             <div className="col-lg-8">
+    //               <NotificationsContainer />
+    //             </div>
+    //             <div className="col-lg-2" />
+    //
+    //       </Router>
+    //       <FooterContainer />
+    //     </div>
+    //   </FetchingContext.Provider>
+    // );
+
     return (
       <FetchingContext.Provider value={this.state}>
         <SplashContainer />
-        <div className="container-fluid">
-          <HeaderContainer withButtons={true} />
-          <Router history={history}>
-            <div className="jumbotron">
-              <div className="row">
-                <div className="col-lg-2" />
-                <div className="col-lg-8">
-                  <NotificationsContainer />
-                </div>
-                <div className="col-lg-2" />
+        <Router history={history}>
+          <div className="dashboard-wrapper">
+            <HeaderContainer withButtons={true}/>
+            <div id="dashboard-text">
+              <div id="welcome">
+                <h1>{this.props.l10n("main.welcome")}</h1>
+                <h2>{this.props.l10n("register.create-account")}</h2>
               </div>
-              <Route
-                exact
-                path={`${BASE_PATH}`}
-                component={() => <Redirect to={redirect} />}
-              />
-              <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
-              <Route
-                path={`${BASE_PATH}/trycaptcha`}
-                component={CaptchaContainer}
-              />
-              <Route
-                path={`${BASE_PATH}/new`}
-                component={AccountCreatedContainer}
-              />
-              <Route
-                path={`${BASE_PATH}/code-verified`}
-                component={CodeVerifiedContainer}
-              />
-              <Route
-                path={`${BASE_PATH}/resend-code`}
-                component={ResendCodeContainer}
-              />
-              <Route
-                path={`${BASE_PATH}/address-used`}
-                component={EmailInUseContainer}
-              />
+              <div id="content">
+                <NotificationsContainer />
+                <Route
+                  exact
+                  path={`${BASE_PATH}`}
+                  component={() => <Redirect to={redirect} />}
+                />
+                <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
+                <Route
+                  path={`${BASE_PATH}/trycaptcha`}
+                  component={CaptchaContainer}
+                />
+                <Route
+                  path={`${BASE_PATH}/new`}
+                  component={AccountCreatedContainer}
+                />
+                <Route
+                  path={`${BASE_PATH}/code-verified`}
+                  component={CodeVerifiedContainer}
+                />
+                <Route
+                  path={`${BASE_PATH}/resend-code`}
+                  component={ResendCodeContainer}
+                />
+                <Route
+                  path={`${BASE_PATH}/address-used`}
+                  component={EmailInUseContainer}
+                />
+              </div>
             </div>
-          </Router>
-          <FooterContainer />
-        </div>
+            <FooterContainer {...this.props} />
+          </div>
+          {/* </div> */}
+        </Router>
       </FetchingContext.Provider>
     );
   }

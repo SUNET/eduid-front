@@ -25,7 +25,7 @@ const validate = values => {
 
 let EmailForm = props => {
   return (
-    <form id="emailsview-form" className="form-horizontal" role="form">
+    <form id="emailsview-form" role="form">
       <fieldset id="emails-form" className="tabpane">
         <Field
           component={TextInput}
@@ -38,6 +38,7 @@ let EmailForm = props => {
       </fieldset>
       <EduIDButton
         id="email-button"
+        className="settings-button"
         disabled={!props.valid_email}
         onClick={props.handleAdd}
       >
@@ -58,16 +59,27 @@ EmailForm = connect(state => ({
 }))(EmailForm);
 
 class Emails extends Component {
+  constructor(props) {
+    super(props);
+    this.showEmailForm = this.showEmailForm.bind(this);
+    this.state = { formClass: "hide", addLinkClass: "btn-link" };
+  }
+
+  showEmailForm() {
+    this.setState((state, props) => {
+      return {
+        formClass: "form-content",
+        addLinkClass: "hide"
+      };
+    });
+  }
+
   render() {
     return (
-      <div className="emailsview-form-container ">
+      <div className="emailsview-form-container">
         <div className="intro">
           <h4>{this.props.l10n("emails.main_title")}</h4>
           <p>{this.props.l10n("emails.long_description")}</p>
-          {/* <p>
-            {this.props.l10n("faq_link")}{" "}
-            <a href="https://www.eduid.se/faq.html">FAQ</a>
-          </p> */}
         </div>
         <div id="email-display">
           <TableList
@@ -76,9 +88,16 @@ class Emails extends Component {
             handleRemove={this.props.handleRemove}
             handleMakePrimary={this.props.handleMakePrimary}
           />
-          <div className="form-content">
+          <div className={this.state.formClass}>
             <EmailForm {...this.props} />
           </div>
+          <EduIDButton
+            id="add-more-button"
+            className={this.state.addLinkClass}
+            onClick={this.showEmailForm}
+          >
+            {this.props.l10n("emails.button_add_more")}
+          </EduIDButton>
         </div>
         <ConfirmModal
           modalId="emailConfirmDialog"

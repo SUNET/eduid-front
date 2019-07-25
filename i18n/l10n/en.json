@@ -346,7 +346,7 @@
   "signup.registering-resend-code": "Verification email resent",
   "signup.verification-resent": "Verification email resent",
   "tl.make_primary": "MAKE PRIMARY",
-  "tl.pending": "PENDING CONFIRMATION",
+  "tl.pending": "CONFIRM",
   "tl.primary": "PRIMARY",
   "tl.remove": "REMOVE",
   "tou.accept": "Accept",

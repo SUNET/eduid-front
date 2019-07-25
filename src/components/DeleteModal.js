@@ -22,29 +22,30 @@ class DeleteModal extends Component {
         aria-hidden="true"
         data-backdrop="true"
       >
-        <Modal isOpen={this.props.showModal}>
+        <Modal isOpen={this.props.showModal} id="delete-account-modal" >
           <ModalHeader>{this.props.title}</ModalHeader>
 
           <ModalBody>
             {/* <NotificationsContainer /> */}
-            <div id="delete-account">
-              <p>{this.props.l10n("security.modal_info")}</p>
-              <p>{this.props.l10n("security.modal_notes")}</p>
+            {/* <div id="delete-account"> */}
+            <p id="delete-account">{this.props.l10n("delete.modal_info")}</p>
+              {/* <p>{this.props.l10n("security.modal_notes")}</p> */}
+              <label>{this.props.l10n("delete.modal_tip")}</label>
               <EduIDButton
-                className="btn-danger btn-default"
+                className="settings-button delete-button"
                 id="confirm-delete-account-button"
                 ref={button => {
                   this.deleteButton = button;
                 }}
                 onClick={this.props.handleConfirm}
               >
-                {this.props.l10n("security.confirm_button")}
+                {this.props.l10n("delete.confirm_button")}
               </EduIDButton>
-            </div>
+            {/* </div> */}
           </ModalBody>
           <ModalFooter>
             <EduIDButton
-              className="cancel-button"
+              className="modal-button cancel-button"
               onClick={this.props.closeModal}
             >
               {this.props.l10n("cm.cancel")}

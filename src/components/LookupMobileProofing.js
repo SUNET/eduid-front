@@ -10,17 +10,20 @@ import "style/LookupMobileProofing.scss";
 class LookupMobileProofing extends Component {
   render() {
     let modalPrompt = "";
-    // console.log(
-    //   "these are the props in LookupMobileProofing:",
-    //   this.props.phoneNumbers
-    // );
+    // let buttonText = "";
+    // if (true) {
+    //   buttonText = this.props.l10n("lmp.button_text_code");
+    // } else {
+    //   buttonText = this.props.l10n("lmp.button_text_request");
+    // }
 
     if (this.props.phoneNumbers.length) {
       modalPrompt = [
         <GenericConfirmModal
+          key="0"
           modalId="mobileGenericConfirmDialog"
-          title={this.props.l10n("lmp.reminder_to_confirm_title")}
-          mainText={this.props.l10n("lmp.reminder_to_confirm_info")}
+          title={this.props.l10n("lmp.modal_reminder_to_confirm_title")}
+          mainText={this.props.l10n("lmp.modal_reminder_to_confirm_info")}
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
@@ -29,9 +32,10 @@ class LookupMobileProofing extends Component {
       if (this.props.phoneNumbers[0].verified) {
         modalPrompt = [
           <GenericConfirmModal
+            key="0"
             modalId="mobileGenericConfirmDialog"
-            title={this.props.l10n("lmp.confirm_title")}
-            mainText={this.props.l10n("lmp.confirm_info")}
+            title={this.props.l10n("lmp.modal_confirm_title")}
+            mainText={this.props.l10n("lmp.modal_confirm_info")}
             showModal={this.props.showModal}
             closeModal={this.props.handleCloseModal}
             acceptModal={this.props.handleLookupMobile}
@@ -41,9 +45,10 @@ class LookupMobileProofing extends Component {
     } else {
       modalPrompt = [
         <GenericConfirmModal
+          key="0"
           modalId="mobileGenericConfirmDialog"
-          title={this.props.l10n("lmp.add_number_title")}
-          mainText={this.props.l10n("lmp.add_number_info")}
+          title={this.props.l10n("lmp.modal_add_number_title")}
+          mainText={this.props.l10n("lmp.modal_add_number_info")}
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
@@ -52,26 +57,21 @@ class LookupMobileProofing extends Component {
     }
 
     return (
-      <div>
-        <form
-          id="lookup-mobile-proofing-form"
-          className="form-horizontal"
-          role="form"
-        >
-          <fieldset id="lookup-mobile-proofing">
-            <EduIDButton
-              className="proofing-button"
-              disabled={this.props.disabled}
-              onClick={this.props.handleShowModal}
-              block
-            >
-              {this.props.l10n("lmp.confirm-lookup-mobile")}
-            </EduIDButton>
-            <FormText className="proofing-btn-help" color="muted">
-              {this.props.l10n("lmp.initialize_proofing_help_text")}
-            </FormText>
-          </fieldset>
-        </form>
+      <div key="0">
+        <div key="0" className="vetting-button">
+          <button
+            className="proofing-button"
+            disabled={this.props.disabled}
+            onClick={this.props.handleShowModal}
+          >
+            <div key="1" className="vetting-button-text">
+              {this.props.l10n("verify-identity.vetting_phone_tagline")}
+            </div>
+            <div key="2" className="vetting-button-name">
+              {this.props.l10n("lmp.button_text_request")}
+            </div>
+          </button>
+        </div>
         {modalPrompt}
       </div>
     );

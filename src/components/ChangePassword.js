@@ -1,192 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ReactDom from "react-dom";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
-
-import FormText from "reactstrap/lib/FormText";
-import Label from "reactstrap/lib/Label";
-import Button from "reactstrap/lib/Button";
-import ButtonGroup from "reactstrap/lib/ButtonGroup";
+import * as comp from "components/ChangePasswordForm";
+import * as actions from "actions/ChangePassword";
+import { stopConfirmationPassword } from "actions/Security";
 
 import i18n from "i18n-messages";
-
-import EduIDButton from "components/EduIDButton";
-import TextInput from "components/EduIDTextInput";
+import ChangePasswordForm from "./ChangePasswordForm";
+import DashboardNav from "./DashboardNav";
 
 import "style/ChangePassword.scss";
-
-export const pwFieldCustomName = "custom-password-field",
-  pwFieldRepeatName = "repeat-password-field",
-  pwFieldOldName = "old-password-field",
-  pwFieldSuggestedName = "suggested-password-field",
-  pwFieldChooser = "choose-custom-field";
-
-const validate = (values, props) => {
-  const errors = {};
-  if (!values[pwFieldOldName]) {
-    errors[pwFieldOldName] = "required";
-  }
-  if (values.hasOwnProperty(pwFieldCustomName)) {
-    if (!values[pwFieldCustomName]) {
-      errors[pwFieldCustomName] = "required";
-    } else if (props.custom_ready) {
-      errors[pwFieldCustomName] = "chpass.low-password-entropy";
-    }
-    if (!values[pwFieldRepeatName]) {
-      errors[pwFieldRepeatName] = "required";
-    } else if (values[pwFieldRepeatName] !== values[pwFieldCustomName]) {
-      errors[pwFieldRepeatName] = "chpass.different-repeat";
-    }
-  }
-  return errors;
-};
-
-class ChpassForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { rSelected: "suggested" };
-    this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
-  }
-
-  onRadioBtnClick(rSelected) {
-    this.setState({ rSelected });
-  }
-
-  render() {
-    let form,
-      helpCustom = "";
-
-    if (this.state.rSelected === "custom") {
-      const meterHelpBlock = [
-        <meter
-          max="4"
-          value={this.props.password_score}
-          id="password-strength-meter"
-          key="0"
-        />,
-        <div className="form-field-error-area" key="1">
-          <FormText>
-            {this.props.l10n(this.props.password_strength_msg)}
-          </FormText>
-        </div>
-      ];
-
-      form = (
-        <div>
-          <Field
-            component={TextInput}
-            componentClass="input"
-            type="password"
-            label={this.props.l10n("pwfield.enter_password")}
-            helpBlock={meterHelpBlock}
-            id={pwFieldCustomName}
-            name={pwFieldCustomName}
-          />
-          <Field
-            component={TextInput}
-            componentClass="input"
-            type="password"
-            id={pwFieldRepeatName}
-            label={this.props.l10n("pwfield.repeat_password")}
-            name={pwFieldRepeatName}
-          />
-        </div>
-      );
-
-      helpCustom = (
-        <div
-          className="password-format"
-          dangerouslySetInnerHTML={{
-            __html: this.props.l10n("chpass.help-text-newpass")
-          }}
-        />
-      );
-    } else {
-      form = (
-        <Field
-          component={TextInput}
-          componentClass="input"
-          type="text"
-          name={pwFieldSuggestedName}
-          id={pwFieldSuggestedName}
-          label={this.props.l10n("chpass.suggested_password")}
-          disabled={true}
-        />
-      );
-    }
-
-    return (
-      <form id="passwordsview-form" role="form">
-        <fieldset>
-          <Field
-            component={TextInput}
-            componentClass="input"
-            type="password"
-            id={pwFieldOldName}
-            label={this.props.l10n("chpass.old_password")}
-            name={pwFieldOldName}
-          />
-
-          <Label>{this.props.l10n("chpass.use-custom-label")}</Label>
-          <ButtonGroup>
-            <EduIDButton
-              value="custom"
-              onClick={() => this.onRadioBtnClick("custom")}
-              disabled={this.state.rSelected === "custom"}
-            >
-              {this.props.l10n("chpass.use-custom")}
-            </EduIDButton>
-            <EduIDButton
-              value="suggested"
-              onClick={() => this.onRadioBtnClick("suggested")}
-              disabled={this.state.rSelected === "suggested"}
-            >
-              {this.props.l10n("chpass.use-suggested")}
-            </EduIDButton>
-          </ButtonGroup>
-          <div className="form-field-error-area">
-            <FormText />
-          </div>
-        </fieldset>
-        {helpCustom}
-        <fieldset>{form}</fieldset>
-        <fieldset id="chpass-form" className="tabpane">
-          <EduIDButton
-            className="cancel-button eduid-cancel-button"
-            onClick={this.props.handleStopPasswordChange.bind(this)}
-          >
-            {this.props.l10n("cm.cancel")}
-          </EduIDButton>
-          <EduIDButton
-            id="chpass-button"
-            onClick={this.props.handleStartPasswordChange.bind(this)}
-            disabled={this.props.invalid}
-          >
-            {this.props.l10n("chpass.change-password")}
-          </EduIDButton>
-        </fieldset>
-      </form>
-    );
-  }
-}
-
-ChpassForm = reduxForm({
-  form: "chpass",
-  validate
-})(ChpassForm);
-
-ChpassForm = connect(state => {
-  const initialValues = {};
-  initialValues[pwFieldSuggestedName] = state.chpass.suggested_password;
-  return {
-    initialValues: initialValues,
-    enableReinitialize: true
-  };
-})(ChpassForm);
-
-ChpassForm = i18n(ChpassForm);
-
 class ChangePassword extends Component {
   componentWillMount() {
     this.props.loadZxcvbn();
@@ -194,13 +17,17 @@ class ChangePassword extends Component {
 
   render() {
     return (
-      <div>
-        <h3>{this.props.l10n("chpass.title-general")}</h3>
-
-        <div id="changePasswordDialog" className="well">
-          <p>{this.props.l10n("chpass.help-text-general")}</p>
-
-          <ChpassForm {...this.props} />
+      <div id="dashboard">
+        <div id="password-wrapper">
+          <DashboardNav {...this.props} />
+          <div id="password-container">
+            <h3 className="verify-identity-header">
+              {this.props.l10n("chpass.main_title")}
+            </h3>
+            <div id="changePasswordDialog">
+              <ChangePasswordForm {...this.props} />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -217,4 +44,92 @@ ChangePassword.propTypes = {
   cancel_to: PropTypes.string
 };
 
-export default ChangePassword;
+// export default ChangePassword;
+
+const pwStrengthMessages = [
+  "pwfield.terrible",
+  "pwfield.bad",
+  "pwfield.weak",
+  "pwfield.good",
+  "pwfield.strong"
+];
+
+const mapStateToProps = (state, props) => {
+  let userInput = [];
+  userInput.push(state.personal_data.data.given_name);
+  userInput.push(state.personal_data.data.surname);
+  userInput.push(state.personal_data.data.display_name);
+  userInput.concat(state.emails.emails);
+  const customPassword =
+    (state.form &&
+      state.form.chpass &&
+      state.form.chpass.values &&
+      state.form.chpass.values[comp.pwFieldCustomName]) ||
+    "";
+  let score = 0,
+    configEntropy = state.config.PASSWORD_ENTROPY,
+    minEntropy = configEntropy / 5,
+    stepEntropy = minEntropy,
+    entropy = 0;
+  if (state.chpass.zxcvbn_module) {
+    const result = state.chpass.zxcvbn_module(customPassword, userInput);
+    entropy = Math.log(result.guesses, 2);
+    for (let n = 0; n < 5 && entropy > minEntropy; n++) {
+      score = n;
+      minEntropy += stepEntropy;
+    }
+  }
+
+  return {
+    suggested_password: state.chpass.suggested_password,
+    next_url: state.chpass.next_url,
+    password_entropy: configEntropy,
+    password_score: score,
+    password_strength_msg: pwStrengthMessages[score],
+    custom_ready: configEntropy > entropy,
+    cancel_to: "settings"
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    noop: function(event) {
+      event.preventDefault();
+    },
+
+    handleStartPasswordChange: function(event) {
+      event.preventDefault();
+      const oldPassword = document.getElementsByName(comp.pwFieldOldName)[0]
+        .value;
+      let newPassword = this.props.suggested_password;
+      if (this.state.rSelected === "custom") {
+        newPassword = document.getElementsByName(comp.pwFieldCustomName)[0]
+          .value;
+      }
+      dispatch(actions.postPasswordChange(oldPassword, newPassword));
+    },
+
+    handleStopPasswordChange: function(event) {
+      event.preventDefault();
+      this.props.history.push(this.props.cancel_to);
+      dispatch(stopConfirmationPassword());
+    },
+
+    loadZxcvbn: function() {
+      return new Promise(resolve => {
+        require.ensure([], () => {
+          const module = require("zxcvbn");
+          dispatch(actions.setZxcvbn(module));
+          resolve();
+        });
+      });
+    }
+  };
+};
+
+const ChangePasswordContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ChangePassword);
+
+export default i18n(ChangePasswordContainer);

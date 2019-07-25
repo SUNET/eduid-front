@@ -27,6 +27,7 @@ let lookupMobileProofingReducer = (state = lookupMobileData, action) => {
         showModal: false
       };
     case actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING:
+      console.log("this is state -- POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL", state)
       return {
         ...state,
         failed: false

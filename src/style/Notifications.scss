@@ -1,29 +1,82 @@
 @import "../variables.scss";
 
-.notifications-area:empty {
-  display: none;
+.notifications-area {
+  color: transparent;
+  background-color: transparent;
+  height: 53px;
+  width: 100%;
 }
 
-@media only screen and (min-width: 991px) {
-  div.notifications-area {
-    height: 80px;
-    overflow: hidden;
+// .notifications-text {
+//   // max-width: 75%;
+//   // padding-top: 16px;
+//   // padding-bottom: 16px;
+//   width: 58.3333%;
+//   margin: 0 auto;
+// }
+
+.alert {
+  // position: relative;
+  padding: 0.75rem 1.25rem;
+  margin: 0;
+  // border-bottom: 5px solid black;
+  border: none;
+  border-radius: 0;
+  display: flex;
+}
+
+.alert span {
+  font-size: 1.25rem;
+  width: 58.3333%;
+  margin: 0 auto;
+}
+.alert-danger,
+.alert-success {
+  color: $orange-highlight;
+  background-color: #ffe7dd;
+}
+
+@media (max-width: 812px) {
+  .notifications-area {
+    height: 49px;
+  }
+  .alert {
+    padding: 0.5rem 1rem;
+  }
+  .alert span {
+    font-size: 1rem;
+    width: 75%;
+  }
+}
+@media (max-width: 414px) {
+  .alert span {
+    width: 100%;
+  }
+  .alert-dismissible .close {
+    padding: 0.25rem 0.75rem;
   }
 }
 
-@media only screen and (min-width: 768) and (max-width: 991px) {
-  div.notifications-area {
-    margin-left: 25%;
-    margin-right: -25%;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
+// @media only screen and (min-width: 991px) {
+//   div.notifications-area {
+//     height: 80px;
+//     overflow: hidden;
+//   }
+// }
 
-@media only screen and (max-width: 767px) {
-  div.notifications-area {
-    margin-left: 10%;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
+// @media only screen and (min-width: 768) and (max-width: 991px) {
+//   div.notifications-area {
+//     margin-left: 25%;
+//     margin-right: -25%;
+//     margin-top: 0;
+//     margin-bottom: 0;
+//   }
+// }
+
+// @media only screen and (max-width: 767px) {
+//   div.notifications-area {
+//     margin-left: 10%;
+//     margin-top: 0;
+//     margin-bottom: 0;
+//   }
+// }
