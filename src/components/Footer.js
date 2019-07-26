@@ -67,10 +67,13 @@ class Footer extends Component {
     return (
       <div key="0" id="footer">
         {/* <Questions {...this.props} /> */}
-        <div key="0" id="footer-content">
-          <p key="0">
-            <span key="0">&copy;{this.props.l10n("main.copyright")}</span>
+        <div id="footer-content">
+          <p id="copyright">
+            <span>&copy;{this.props.l10n("main.copyright")}</span>
           </p>
+          {/* <p>
+            <span id="language-selector">{langElems}</span>
+          </p> */}
           {languageSelect}
           {navMenu}
         </div>

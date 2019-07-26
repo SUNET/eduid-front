@@ -24,7 +24,6 @@ const mapDispatchToProps = (dispatch, props) => {
       e.preventDefault();
       const email = e.target.closest("#content").children[1].children[1]
         .firstChild.firstChild.children[0].value;
-      console.log("this is email:", email);
       dispatch(actions.addEmail(email));
     },
     handleAccept: e => {

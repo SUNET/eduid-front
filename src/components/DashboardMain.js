@@ -1,23 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import { connect } from "react-redux";
 import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 import { ConnectedRouter } from "react-router-redux";
-// import { Collapse } from "reactstrap";
-// import ProfilePrompt from "./ProfilePrompt";
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
-
-// import DashboardNav from "./DashboardNav";
 import ChangePassword from "./ChangePassword";
-// import PasswordChange from "./PasswordChange";
 import SettingsComponent from "./Settings";
 import Profile from "./Profile";
 import NotificationsContainer from "containers/Notifications";
-// import Questions from "./Questions";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
@@ -65,18 +58,13 @@ class Main extends Component {
         <Router history={history}>
           <div className="dashboard-wrapper">
             <HeaderContainer />
-            {/* <div id="dashboard-container"> */}
             <div id="dashboard-text">
-              {/* <div id="welcome-container"> */}
               <div id="welcome">
-                {/* <div id="welcome-text"> */}
                 <h1>eduID for {this.props.email}</h1>
                 <Link id="profile-prompt-link" to={promptLink}>
                   <h2 className={styling}>{welcomeGreeting}</h2>
                 </Link>
-                {/* </div> */}
               </div>
-              {/* </div> */}
               <div id="content">
                 <NotificationsContainer />
                 <Route
@@ -97,7 +85,6 @@ class Main extends Component {
             </div>
             <FooterContainer {...this.props} />
           </div>
-          {/* </div> */}
         </Router>
       </FetchingContext.Provider>
     );

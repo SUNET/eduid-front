@@ -305,7 +305,7 @@ const msgs = {
 
   "created.email-label": (
     <FormattedMessage
-      id="reated.email-label"
+      id="created.email-label"
       defaultMessage={`Complete registration by clicking the link sent to:`}
     />
   ),
@@ -368,7 +368,7 @@ const msgs = {
   "finish.registration-details": (
     <FormattedMessage
       id="finish.registration-details"
-      defaultMessage={`Log in with these details and verify your identity to start using eduID.`}
+      defaultMessage={`These are your login details for eduID. Use them to verify your `}
     />
   ),
 

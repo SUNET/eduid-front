@@ -23,7 +23,6 @@ import "style/Email.scss";
 /* FORM */
 
 const validate = values => {
-  console.log("these are values is validate", values);
   const errors = {},
     email = values.email,
     pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -35,69 +34,10 @@ const validate = values => {
   return errors;
 };
 
-// const registerEmailField = ({
-//   input,
-//   id,
-//   type,
-//   placeholder,
-//   handleEmail,
-//   l10n,
-//   meta: { touched, error }
-// }) => (
-//   <Input
-//     {...input}
-//     id={id}
-//     invalid={touched && Boolean(error)}
-//     valid={!touched || !Boolean(error)}
-//     placeholder={placeholder}
-//     type={type}
-//   />
-// );
-
-// const renderSmallField = ({
-//   input,
-//   id,
-//   type,
-//   placeholder,
-//   handleEmail,
-//   l10n,
-//   meta: { touched, error }
-// }) => (
-//   <div className="input-group">
-//     <Input
-//       {...input}
-//       id={id}
-//       invalid={touched && Boolean(error)}
-//       valid={!touched || !Boolean(error)}
-//       placeholder={placeholder}
-//       type={type}
-//     />
-//     <EduIDButton id="email-button" onClick={handleEmail}>
-//       {l10n("email.sign-up-email")}
-//     </EduIDButton>
-//     <span className="float-left">
-//       <FormFeedback className="float-left">
-//         {touched && l10n(error)}
-//       </FormFeedback>
-//     </span>
-//   </div>
-// );
-
-// const getField = size => {
-//   if (size === "xs") return renderSmallField;
-//   return renderLargeField;
-// };
-
 let EmailForm = props => (
   <div id="register-input-group">
     <Form id="register-form">
       <Field
-        //   component={TextInput}
-        // componentClass="input"
-        // type="text"
-        // name="email"
-        // placeholder="example@example.com"
-        // helpBlock={props.l10n("emails.input_help_text")}
         type="email"
         name="email"
         componentClass="input"
@@ -176,6 +116,7 @@ class Email extends Component {
           <ModalBody dangerouslySetInnerHTML={{ __html: this.props.tou }} />
           <ModalFooter>
             <EduIDButton
+              id="accept-tou-button"
               className="modal-button ok-button"
               onClick={this.props.handleAccept}
             >

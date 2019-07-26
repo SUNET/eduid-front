@@ -113,16 +113,22 @@ const fakeState = {
   intl: {
     locale: "en",
     messages: messages
+  },
+  phones: {
+    phones: []
+  },
+  nins: {
+    nins: []
   }
 };
 
-function setupComponent(store) {
+function setupComponent() {
   const props = {
     handleLookupMobile: mock.fn()
   };
 
   const wrapper = mount(
-    <Provider store={store}>
+    <Provider store={fakeStore(fakeState)}>
       <LookupMobileProofingContainer {...props} />
     </Provider>
   );
@@ -132,27 +138,22 @@ function setupComponent(store) {
   };
 }
 
-// describe("LookupMobileProofing Component", () => {
-//   // it("Renders", () => {
-//   //   const store = fakeStore(fakeState),
-//   //     { wrapper, props } = setupComponent(store),
-//   //     // form = wrapper.find("form"),
-//   //     // fieldset = wrapper.find("fieldset"),
-//   //     // button = wrapper.find("EduIDButton");
+describe("LookupMobileProofing Component", () => {
+  it("Renders a vetting button", () => {
+    const { wrapper } = setupComponent();
+    const button = wrapper.find("button");
 
-//   //   // expect(form.hasClass("form-horizontal")).toBeTruthy();
-//   //   // expect(form.contains(fieldset.get(0))).toBeTruthy();
-//   //   // expect(fieldset.contains(button.get(0))).toBeTruthy();
+    expect(button.hasClass("proofing-button")).toEqual(true);
+    expect(button.exists()).toEqual(true);
+  });
+});
 
-//   //   // expect(form.props()).toMatchObject({ role: "form" });
-//   //   // expect(store.dispatch.mock.calls.length).toEqual(0);
-//   //   // button.props().onClick();
-//   //   // expect(store.dispatch.mock.calls.length).toEqual(1);
-//   // });
-// });
+// DOES THIS TEST STILL APPLY? the mock calls to dispatch results in 2 -- not sure why
+
+/* this component does have 3 functions to dispatch, but the button in this test only dispatches showModal (and does not have handlelookupMobile although it's passed in the props)... ShowModal never posts to the URL so the action is never triggered (its the button generated in the modal that does that, IF under the condition that you have a confirmed phoen number) */
 
 // describe("LookupMobileProofing Container", () => {
-//   let fulltext, mockProps, wrapper, dispatch;
+//   let wrapper, dispatch, button;
 
 //   beforeEach(() => {
 //     const store = fakeStore(fakeState);
@@ -162,8 +163,7 @@ function setupComponent(store) {
 //         <LookupMobileProofingContainer />
 //       </Provider>
 //     );
-
-//     fulltext = wrapper.find(LookupMobileProofingContainer).text();
+//     button = wrapper.find("button");
 //     dispatch = store.dispatch;
 //   });
 
@@ -176,12 +176,9 @@ function setupComponent(store) {
 //       type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
 //       payload: {}
 //     });
-
 //     expect(dispatch.mock.calls.length).toEqual(0);
-//     wrapper
-//       .find("Button")
-//       .props()
-//       .onClick();
+//     // button.props().onClick();
+//     console.log(button.props())
 //     expect(dispatch.mock.calls.length).toEqual(1);
 //   });
 // });

@@ -44,10 +44,10 @@ class Security extends Component {
     const tokens = this.props.credentials.filter(
       cred => cred.credential_type !== "security.password_credential_type"
     );
-    console.log("tokens:", tokens);
+    // console.log("tokens:", tokens);
     const creds_table = this.props.credentials.map((cred, index) => {
-      console.log("cred:", cred);
-      console.log("i:", index);
+      // console.log("cred:", cred);
+      // console.log("i:", index);
       let btnRemove = "";
       let btnVerify = "";
       if (
