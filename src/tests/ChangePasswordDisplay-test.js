@@ -6,11 +6,14 @@ import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import GenericConfirmModal from "components/GenericConfirmModal";
 import ChangePasswordDisplay from "components/ChangePasswordDisplay";
+import * as actions from "actions/Security";
+import securityReducer from "reducers/Security";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
-// my job is to: display a button that starts the password change process (in settings). I render a button that has to trigger a modal and the modal has to render two buttons (each with their own functionality)
+// I am the component that: displays the "Change password" button (in settings) that triggers the logout modal.
+// My job is to: I render a button > that triggers a modal (the modal has to render two buttons, each with their own functionality).
 
 describe("ChangePasswordDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {
@@ -95,6 +98,7 @@ describe("ChangePasswordDisplay component, when confirming_change is (false)", (
     };
   }
   const state = { ...fakeState };
+  // leave confirming_change as false
   it("does not render a modal", () => {
     const { wrapper } = setupComponent();
     const modal = wrapper.find(GenericConfirmModal);
@@ -131,10 +135,94 @@ describe("ChangePasswordDisplay component, when confirming_change is (true)", ()
     };
   }
   const state = { ...fakeState };
+  // set confirming_change to true
   state.security.confirming_change = true;
   it("renders a modal", () => {
     const { wrapper } = setupComponent();
     const modal = wrapper.find(GenericConfirmModal);
     expect(modal.props().showModal).toEqual(true);
+  });
+});
+
+describe("ChangePasswordDisplay redux functionality", () => {
+  // const mockState = {
+  //   confirming_change: false
+  // };
+
+  it("ChangePasswordDisplay button dispatches handlestartConfirmationPassword()", () => {
+    // TEST: prove that this EduIDButton triggers handleStartConfirmationPassword() > dispatches startConfirmationPassword()
+    // const expectedAction = {
+    //   type: actions.START_CHANGE_PASSWORD
+    // };
+    // expect(actions.startConfirmationPassword()).toEqual(expectedAction);
+  });
+
+  it("startConfirmationPassword() should trigger the action START_CHANGE_PASSWORD", () => {
+    const expectedAction = {
+      type: actions.START_CHANGE_PASSWORD
+    };
+    expect(actions.startConfirmationPassword()).toEqual(expectedAction);
+  });
+
+  it("START_CHANGE_PASSWORD retuns confirming_change: true", () => {
+    const mockState = {
+      confirming_change: false
+    };
+    expect(
+      securityReducer(mockState, {
+        type: actions.START_CHANGE_PASSWORD
+      })
+    ).toEqual({
+      confirming_change: true
+    });
+  });
+});
+
+// ----- MODAL STUFF ----- //
+describe("Logout modal redux functionality", () => {
+  // TEST: 1. Can we prove render of both buttons?
+  // TEST: 2. Can we prove this modal redirects?
+  it("Modal ACCEPT button triggers handleConfirmationPassword()", () => {
+    // TEST: 3. Can we prove that the ACCEPT button triggers handleConfirmationPassword() > dispatches confirmPasswordChange()
+  });
+  it("Modal ACCEPT button should trigger the GET_CHANGE_PASSWORD action ", () => {
+    const expectedAction = {
+      type: actions.GET_CHANGE_PASSWORD
+    };
+    expect(actions.confirmPasswordChange()).toEqual(expectedAction);
+  });
+  it("GET_CHANGE_PASSWORD action retuns the current state", () => {
+    const mockState = {
+      confirming_change: false
+    };
+    expect(
+      securityReducer(mockState, {
+        type: actions.GET_CHANGE_PASSWORD
+      })
+    ).toEqual({
+      confirming_change: false
+    });
+  });
+
+  it("Modal CANCEL button triggers handleStopConfirmationPassword", () => {
+    // TEST: can we prove that the CANCEL button triggers handleStopConfirmationPassword > dispatches stopConfirmationPassword()
+  });
+  it("Modal CANCEL button should trigger the STOP_CHANGE_PASSWORD action ", () => {
+    const expectedAction = {
+      type: actions.STOP_CHANGE_PASSWORD
+    };
+    expect(actions.stopConfirmationPassword()).toEqual(expectedAction);
+  });
+  it("STOP_CHANGE_PASSWORD action retuns confirming_change: false", () => {
+    const mockState = {
+      confirming_change: false
+    };
+    expect(
+      securityReducer(mockState, {
+        type: actions.STOP_CHANGE_PASSWORD
+      })
+    ).toEqual({
+      confirming_change: false
+    });
   });
 });
