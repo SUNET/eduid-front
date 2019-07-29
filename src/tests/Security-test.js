@@ -54,19 +54,19 @@ describe("Security Actions", () => {
     expect(actions.getCredentialsFail(err)).toEqual(expectedAction);
   });
 
-  it("Should start password change ", () => {
-    const expectedAction = {
-      type: actions.START_CHANGE_PASSWORD
-    };
-    expect(actions.startConfirmationPassword()).toEqual(expectedAction);
-  });
+  // it("Should start password change ", () => {
+  //   const expectedAction = {
+  //     type: actions.START_CHANGE_PASSWORD
+  //   };
+  //   expect(actions.startConfirmationPassword()).toEqual(expectedAction);
+  // });
 
-  it("Should stop password change ", () => {
-    const expectedAction = {
-      type: actions.STOP_CHANGE_PASSWORD
-    };
-    expect(actions.stopConfirmationPassword()).toEqual(expectedAction);
-  });
+  // it("Should stop password change ", () => {
+  //   const expectedAction = {
+  //     type: actions.STOP_CHANGE_PASSWORD
+  //   };
+  //   expect(actions.stopConfirmationPassword()).toEqual(expectedAction);
+  // });
 
   it("Should really start password change ", () => {
     const expectedAction = {
@@ -88,46 +88,46 @@ describe("Security Actions", () => {
     expect(actions.getPasswordChangeFail(err)).toEqual(expectedAction);
   });
 
-  it("Should start account deletion", () => {
-    const expectedAction = {
-      type: actions.START_DELETE_ACCOUNT
-    };
-    expect(actions.startConfirmationDeletion()).toEqual(expectedAction);
-  });
+  // it("Should start account deletion", () => {
+  //   const expectedAction = {
+  //     type: actions.START_DELETE_ACCOUNT
+  //   };
+  //   expect(actions.startConfirmationDeletion()).toEqual(expectedAction);
+  // });
 
-  it("Should stop account deletion", () => {
-    const expectedAction = {
-      type: actions.STOP_DELETE_ACCOUNT
-    };
-    expect(actions.stopConfirmationDeletion()).toEqual(expectedAction);
-  });
+  // it("Should stop account deletion", () => {
+  //   const expectedAction = {
+  //     type: actions.STOP_DELETE_ACCOUNT
+  //   };
+  //   expect(actions.stopConfirmationDeletion()).toEqual(expectedAction);
+  // });
 
-  it("Should start confirmed account deletion", () => {
-    const expectedAction = {
-      type: actions.POST_DELETE_ACCOUNT
-    };
-    expect(actions.confirmDeletion()).toEqual(expectedAction);
-  });
+  // it("Should start confirmed account deletion", () => {
+  //   const expectedAction = {
+  //     type: actions.POST_DELETE_ACCOUNT
+  //   };
+  //   expect(actions.confirmDeletion()).toEqual(expectedAction);
+  // });
 
-  it("Should POST confirmed account deletion", () => {
-    const expectedAction = {
-      type: actions.SEND_POST_DELETE_ACCOUNT
-    };
-    expect(actions.postConfirmDeletion()).toEqual(expectedAction);
-  });
+  // it("Should POST confirmed account deletion", () => {
+  //   const expectedAction = {
+  //     type: actions.SEND_POST_DELETE_ACCOUNT
+  //   };
+  //   expect(actions.postConfirmDeletion()).toEqual(expectedAction);
+  // });
 
-  it("Should signal failure when trying to remove the account", () => {
-    const err = "Bad error";
-    const expectedAction = {
-      type: actions.POST_DELETE_ACCOUNT_FAIL,
-      error: true,
-      payload: {
-        error: new Error(err),
-        message: err
-      }
-    };
-    expect(actions.removeAccountFail(err)).toEqual(expectedAction);
-  });
+  // it("Should signal failure when trying to remove the account", () => {
+  //   const err = "Bad error";
+  //   const expectedAction = {
+  //     type: actions.POST_DELETE_ACCOUNT_FAIL,
+  //     error: true,
+  //     payload: {
+  //       error: new Error(err),
+  //       message: err
+  //     }
+  //   };
+  //   expect(actions.removeAccountFail(err)).toEqual(expectedAction);
+  // });
 
   it("Should start asking WEBAUTHN description", () => {
     const expectedAction = {
@@ -290,53 +290,53 @@ describe("Reducers", () => {
     });
   });
 
-  it("Receives a START_CHANGE_PASSWORD action", () => {
-    expect(
-      securityReducer(mockState, {
-        type: actions.START_CHANGE_PASSWORD
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      credentials: [],
-      code: "",
-      confirming_change: true,
-      confirming_deletion: false,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a START_CHANGE_PASSWORD action", () => {
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.START_CHANGE_PASSWORD
+  //     })
+  //   ).toEqual({
+  //     failed: false,
+  //     error: "",
+  //     message: "",
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: true,
+  //     confirming_deletion: false,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
-  it("Receives a STOP_CHANGE_PASSWORD action", () => {
-    expect(
-      securityReducer(mockState, {
-        type: actions.STOP_CHANGE_PASSWORD
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: false,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a STOP_CHANGE_PASSWORD action", () => {
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.STOP_CHANGE_PASSWORD
+  //     })
+  //   ).toEqual({
+  //     failed: false,
+  //     error: "",
+  //     message: "",
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: false,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
   it("Receives a GET_CHANGE_PASSWORD action", () => {
     expect(
