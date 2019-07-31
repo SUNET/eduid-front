@@ -11,15 +11,15 @@ import i18n from "i18n-messages";
 // import SplashContainer from "containers/Splash";
 // import HeaderContainer from "containers/Header";
 // import FooterContainer from "containers/Footer";
-
+import ChangePasswordDisplay from "components/ChangePasswordDisplay";
 import DashboardNav from "./DashboardNav";
 import PersonalDataContainer from "containers/PersonalData";
-import NinsContainer from "containers/Nins";
+// import NinsContainer from "containers/Nins";
 import EmailsContainer from "containers/Emails";
 import MobileContainer from "containers/Mobile";
 import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
-import ChangePasswordDisplay from "./ChangePasswordDisplay";
+// import ChangePasswordDisplay from "./ChangePasswordDisplay";
 import DeleteAccount from "components/DeleteAccount";
 import AccountId from "./AccountId";
 
