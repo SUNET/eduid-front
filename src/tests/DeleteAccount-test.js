@@ -67,7 +67,6 @@ describe("DeleteAccount component", () => {
   const state = { ...fakeState };
   it("has a button", () => {
     const { wrapper } = setupComponent();
-    console.log(wrapper.debug());
     const button = wrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
     expect(button.length).toEqual(1);
@@ -169,7 +168,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
   });
 });
 
-// describe("ChangePasswordDisplay Container ", () => {
+// describe("DeleteAccount Container ", () => {
 //   let mockProps, wrapper, button, dispatch;
 
 //   const fakeStore = state => ({
@@ -181,7 +180,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 
 //   const fakeState = {
 //     security: {
-//       confirming_change: false
+//       confirming_deletion: false
 //     },
 //     intl: {
 //       locale: "en",
@@ -194,7 +193,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 
 //     const wrapper = mount(
 //       <Provider store={fakeStore(fakeState)}>
-//         <ChangePasswordDisplay {...mockProps} />
+//         <DeleteAccount {...mockProps} />
 //       </Provider>
 //     );
 //     return {
