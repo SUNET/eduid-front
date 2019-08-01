@@ -1,0 +1,114 @@
+import React from "react";
+import expect from "expect";
+import { Provider } from "react-intl-redux";
+import { shallow, mount } from "enzyme";
+import { MemoryRouter } from "react-router-dom";
+import { addLocaleData, IntlProvider } from "react-intl";
+import Profile from "components/Profile";
+import NinDisplay from "components/NinDisplay";
+import NameDisplay from "components/NameDisplay";
+import PhoneDisplay from "components/PhoneDisplay";
+import EmailDisplay from "components/EmailDisplay";
+import VerifyIdentityProcess from "components/VerifyIdentityProcess";
+const mock = require("jest-mock");
+const messages = require("../../i18n/l10n/en");
+addLocaleData("react-intl/locale-data/en");
+
+// my job is to: control what data is displyed on the profile landing page
+// if url is verify-identity: display the verifyIdentity process
+// else: display one of multiple states for the following data:
+// Name (none/added)
+// National ID Number (none/added unverified/ added verified)
+// Phone (none/added unverified/added verified)
+// Email (added at signup)
+
+describe("Profile component", () => {
+  it("Does not render 'false' or 'null'", () => {
+    const wrapper = shallow(
+      <IntlProvider locale="en">
+        <Profile />
+      </IntlProvider>
+    );
+    expect(wrapper.isEmptyRender()).toEqual(false);
+  });
+});
+
+describe("Profile component", () => {
+  const fakeStore = state => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
+  });
+
+  const fakeState = {
+    config: {
+      language: "en"
+    },
+    personal_data: {
+      data: {
+        given_name: "",
+        surname: ""
+      }
+    },
+    emails: {
+      emails: []
+    },
+    nins: {
+      nins: []
+    },
+    phones: {
+      phones: []
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  };
+
+  function setupComponent() {
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <MemoryRouter>
+          <Profile />
+        </MemoryRouter>
+      </Provider>
+    );
+    return {
+      wrapper
+    };
+  }
+  const state = { ...fakeState };
+
+  it("Renders <NameDisplay/> ", () => {
+    const { wrapper } = setupComponent();
+    const nameDisplay = wrapper.find(NameDisplay);
+    expect(nameDisplay.exists()).toEqual(true);
+  });
+
+  it("Does renders <NinDisplay/> ", () => {
+    const { wrapper } = setupComponent();
+    const ninDisplay = wrapper.find(NinDisplay);
+    expect(ninDisplay.exists()).toEqual(true);
+  });
+
+  it("Renders <PhoneDisplay/> ", () => {
+    const { wrapper } = setupComponent();
+    const phoneDisplay = wrapper.find(PhoneDisplay);
+    expect(phoneDisplay.exists()).toEqual(true);
+  });
+
+  it("Renders <EmailDisplay/> ", () => {
+    const { wrapper } = setupComponent();
+    const emailDisplay = wrapper.find(EmailDisplay);
+    expect(emailDisplay.exists()).toEqual(true);
+  });
+
+  it("Does not render <VerifyIdentityProcess /> ", () => {
+    const { wrapper } = setupComponent();
+    const verifyIdentity = wrapper.find(VerifyIdentityProcess);
+    expect(verifyIdentity.exists()).toEqual(false);
+  });
+});
+
+
