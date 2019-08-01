@@ -1,123 +1,25 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import i18n from "i18n-messages";
-import { isValid } from "redux-form";
-// import * as actions from "actions/Nins";
-// import NinsContainer from "containers/Nins";
-// import DashboardSecurity from "./DashboardSecurity";
-import NinDisplay from "./NinDisplay";
-// import ProfilePrompt from "./ProfilePrompt";
-import SecurityContainer from "containers/Security";
+
+import DashboardNav from "./DashboardNav";
 import VerifyIdentityProcess from "./VerifyIdentityProcess";
-// import PersonalData from "containers/PersonalData";
+import NameDisplay from "components/NameDisplay";
+import NinDisplay from "components/NinDisplay";
+import PhoneDisplay from "components/PhoneDisplay";
+import EmailDisplay from "components/EmailDisplay";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss"; //styling in DashboardMain
-import DashboardNav from "./DashboardNav";
-// import AddNin from "./AddNin";
 
 class Profile extends Component {
-  // this component is repsonsible for rendering a summary of user info
-  // (it also acts as a prompt for the user to fill in info)
   render() {
     const url = window.location.href;
     let profileSection = ""; // determines the interactive content (if any)
     let stylingId = "profile-container"; // changes styling depending on profileSection
     let accountDetails = ""; // determines the userdetailks displayed in the profile
-    let ninHelper = ""; // determines what the helper box says
-
-    // the below are the small data displays on the profile page (they render cases whener there is data or not)
-    let NameDisplay = props => {
-      if (props.firstName) {
-        return (
-          <div key="0" className="profile-card">
-            <label key="0">{props.l10n("profile.name_display_title")}</label>
-            <div key="1" id="nin-number-container">
-              <p key="0" id="nin-number" className="verified">
-                {props.firstName} {props.lastName}
-              </p>
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <div key="0" className="profile-card">
-            <label key="0">{props.l10n("profile.name_display_title")}</label>
-            <div key="1" id="nin-number-container">
-              <p key="0" id="nin-number" className="no-data">
-                {props.l10n("profile.name_display_no_data")}
-              </p>
-            </div>
-          </div>
-        );
-      }
-    };
-
-    let PhoneDisplay = props => {
-      if (props.phones.length) {
-        if (props.verifiedPhone) {
-          return (
-            <div key="2" className="profile-card">
-              <label key="0">{props.l10n("profile.phone_display_title")}</label>
-              <div key="1" id="nin-number-container">
-                <p key="0" id="nin-number" className="verified">
-                  {props.phones[0].number}
-                </p>
-              </div>
-            </div>
-          );
-        }
-        return (
-          <div key="2" className="profile-card">
-            <label key="0">{props.l10n("profile.phone_display_title")}</label>
-            <div key="1" id="nin-number-container">
-              <p key="0" id="nin-number" className="no-data">
-                {props.l10n("profile.phone_display_unconfirmed_data")}
-              </p>
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <div key="2" className="profile-card">
-            <label key="0">{props.l10n("profile.phone_display_title")}</label>
-            <div key="1" id="nin-number-container">
-              <p key="0" id="nin-number" className="no-data">
-                {props.l10n("profile.phone_display_no_data")}
-              </p>
-            </div>
-          </div>
-        );
-      }
-    };
-
-    let EmailDisplay = props => {
-      if (props.emails.length) {
-        return (
-          <div key="3" className="profile-card">
-            <label key="0">{props.l10n("profile.email_display_title")}</label>
-            <div key="1" id="nin-number-container">
-              <p key="0" id="nin-number" className="verified">
-                {props.emails[0].email}
-              </p>
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <div key="3" className="profile-card">
-            <label key="0">{props.l10n("profile.email_display_title")}</label>
-            <div key="1" id="nin-number-container">
-              <p key="0" id="nin-number" className="no-data">
-                {this.props.l10n("profile.email_display_no_data")}
-              </p>
-            </div>
-          </div>
-        );
-      }
-    };
 
     // let LetterProofingDisplay = props => {
     //   if (props.letter_proofing) {
@@ -137,9 +39,7 @@ class Profile extends Component {
     // };
 
     //
-    if (url.includes("security")) {
-      profileSection = [<SecurityContainer />];
-    } else if (url.includes("verify-identity")) {
+    if (url.includes("verify-identity")) {
       stylingId = "profile-container-verifyId";
       profileSection = [<VerifyIdentityProcess key="0" {...this.props} />];
     } else {
@@ -150,7 +50,6 @@ class Profile extends Component {
         <EmailDisplay key="3" {...this.props} />
         // <LetterProofingDisplay {...this.props} />,
       ];
-      // }
     }
 
     return (
@@ -169,37 +68,44 @@ class Profile extends Component {
   }
 }
 
-// export default VerifyIdentity;
+Profile.propTypes = {
+  nin: PropTypes.string,
+  nins: PropTypes.array,
+  validateNin: PropTypes.func,
+  handleDelete: PropTypes.func,
+  // proofing_methods: PropTypes.array
+};
+
+// export default Profile;
 const mapStateToProps = (state, props) => {
   let verifiedNinStatus = "";
   let verifiedPhone = "";
   const nins = state.nins.nins.filter(nin => nin.verified);
-  if (nins.length >= 1) {
-    verifiedNinStatus = true;
-  } else {
-    verifiedNinStatus = false;
-  }
+  nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
+  // if (nins.length >= 1) {
+  //   verifiedNinStatus = true;
+  // } else {
+  //   verifiedNinStatus = false;
+  // }
   const phones = state.phones.phones.filter(phoneNum => phoneNum.verified);
-  if (phones.length >= 1) {
-    verifiedPhone = true;
-  } else {
-    verifiedPhone = false;
-  }
-  const phoneNumber = state.phones.phones.filter(phone => phone.primary);
+  phones.length >= 1 ? (verifiedPhone = true) : (verifiedPhone = false);
+  // if (phones.length >= 1) {
+  //   verifiedPhone = true;
+  // } else {
+  //   verifiedPhone = false;
+  // }
+  // const phoneNumber = state.phones.phones.filter(phone => phone.primary);
   const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
-    is_configured: state.config.is_configured,
     nins: state.nins.nins, // all nin info
     verifiedNin: nins, // all verified nin info
     verifiedNinStatus: verifiedNinStatus, // is the added nin verified?
     phones: state.phones.phones, // all phone info
     verifiedPhone: verifiedPhone,
     emails: emailAddress, // all info about primary email
-    letter_verification: state.letter_proofing.confirmingLetter,
     firstName: state.personal_data.data.given_name,
     lastName: state.personal_data.data.surname,
-    proofing_methods: state.config.PROOFING_METHODS,
-    valid_nin: isValid("nins")(state),
+    // valid_nin: isValid("nins")(state),
     message: state.nins.message
   };
 };
