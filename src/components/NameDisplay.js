@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import i18n from "i18n-messages";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
@@ -30,4 +32,22 @@ class NameDisplay extends Component {
   }
 }
 
-export default NameDisplay;
+// export default NameDisplay;
+
+const mapStateToProps = (state, props) => {
+  return {
+    firstName: state.personal_data.data.given_name,
+    lastName: state.personal_data.data.surname
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {};
+};
+
+const NameDisplayContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NameDisplay);
+
+export default i18n(NameDisplayContainer);
