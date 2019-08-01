@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { ButtonGroup } from "reactstrap";
 import { connect } from "react-redux";
-import DashboardNav from "./DashboardNav";
+import i18n from "i18n-messages";
+
 import AddNin from "./AddNin";
-import NotificationsContainer from "containers/Notifications";
 import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
@@ -68,7 +67,7 @@ class VerifyIdentityProcess extends Component {
   }
 }
 
-// Nins.propTypes = {
+// VerifyIdentityProcess;.propTypes = {
 //   nin: PropTypes.string,
 //   nins: PropTypes.array,
 //   validateNin: PropTypes.func,
@@ -76,4 +75,24 @@ class VerifyIdentityProcess extends Component {
 //   proofing_methods: PropTypes.array
 // };
 
-export default VerifyIdentityProcess;
+// export default VerifyIdentityProcess;
+
+const mapStateToProps = (state, props) => {
+  return {
+    is_configured: state.config.is_configured,
+    letter_verification: state.letter_proofing.confirmingLetter,
+    proofing_methods: state.config.PROOFING_METHODS,
+    message: state.nins.message
+  };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {};
+};
+
+const VerifyIdentityProcessContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VerifyIdentityProcess);
+
+export default i18n(VerifyIdentityProcessContainer);
