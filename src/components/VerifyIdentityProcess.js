@@ -10,9 +10,9 @@ import "style/Nins.scss";
 
 class VerifyIdentityProcess extends Component {
   render() {
-    let vettingButtons = "",
-      connectNin = "",
-      headerText = "";
+    let vettingButtons = "";
+    let connectNin = "";
+    let headerText = "";
     let buttonHelpTextArray = [
       this.props.l10n("letter.initialize_proofing_help_text"),
       this.props.l10n("lmp.initialize_proofing_help_text"),
@@ -78,7 +78,13 @@ class VerifyIdentityProcess extends Component {
 // export default VerifyIdentityProcess;
 
 const mapStateToProps = (state, props) => {
+  let verifiedNinStatus = "";
+  const nins = state.nins.nins.filter(nin => nin.verified);
+  nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
   return {
+    nins: state.nins.nins,
+    verifiedNin: nins,
+    verifiedNinStatus: verifiedNinStatus,
     is_configured: state.config.is_configured,
     letter_verification: state.letter_proofing.confirmingLetter,
     proofing_methods: state.config.PROOFING_METHODS,

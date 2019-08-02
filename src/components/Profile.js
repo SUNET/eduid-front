@@ -79,12 +79,12 @@ Profile.propTypes = {
 // export default Profile;
 const mapStateToProps = (state, props) => {
   let verifiedNinStatus = "";
-  let verifiedPhone = "";
+  // let verifiedPhone = "";
   const nins = state.nins.nins.filter(nin => nin.verified);
   nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
-  const phones = state.phones.phones.filter(phoneNum => phoneNum.verified);
-  phones.length >= 1 ? (verifiedPhone = true) : (verifiedPhone = false);
-  const phoneNumber = state.phones.phones.filter(phone => phone.primary);
+  // const phones = state.phones.phones.filter(phoneNum => phoneNum.verified);
+  // phones.length >= 1 ? (verifiedPhone = true) : (verifiedPhone = false);
+  // const phoneNumber = state.phones.phones.filter(phone => phone.primary);
   return {
     nins: state.nins.nins, // all nin info
     verifiedNin: nins, // all verified nin info
