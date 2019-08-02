@@ -6,7 +6,9 @@ import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import VerifyIdentityProcess from "components/VerifyIdentityProcess";
 import AddNin from "components/AddNin";
-import vettingRegistry from "vetting-registry";
+import LetterProofing from "components/LetterProofing";
+import LookupMobileProofing from "components/LookupMobileProofing";
+import Eidas from "components/Eidas";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
@@ -52,7 +54,9 @@ describe("VerifyIdentityProcess component, no nin added ", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <VerifyIdentityProcess />
+        <MemoryRouter>
+          <VerifyIdentityProcess />
+        </MemoryRouter>
       </Provider>
     );
     return {
@@ -62,8 +66,8 @@ describe("VerifyIdentityProcess component, no nin added ", () => {
   const state = { ...fakeState };
   it("Renders a header", () => {
     const { wrapper } = setupComponent();
-    const vettingH3 = wrapper.find("h3");
-    expect(vettingH3.exists()).toEqual(true);
+    const header = wrapper.find("h3");
+    expect(header.exists()).toEqual(true);
   });
 
   it("Renders <AddNin /> to control logic of displaying nin form or added nin number", () => {
@@ -79,105 +83,167 @@ describe("VerifyIdentityProcess component, no nin added ", () => {
   });
 });
 
-// describe("VerifyIdentityProcess component, when email is saved", () => {
-//   const fakeStore = state => ({
-//     default: () => {},
-//     dispatch: mock.fn(),
-//     subscribe: mock.fn(),
-//     getState: () => ({ ...state })
-//   });
+describe("VerifyIdentityProcess component, when nin is saved", () => {
+  const fakeStore = state => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
+  });
 
-//   const fakeState = {
-//     nins: {
-//       nins: []
-//     },
-//     config: {
-//       is_configured: false,
-//       PROOFING_METHODS: ["letter", "lookup_mobile", "oidc", "eidas"]
-//     },
-//     letter_proofing: {
-//       confirmingLetter: false
-//     },
-//     intl: {
-//       locale: "en",
-//       messages: messages
-//     }
-//   };
+  const fakeState = {
+    nins: {
+      nins: []
+    },
+    phones: {
+      phones: []
+    },
+    config: {
+      is_configured: false,
+      PROOFING_METHODS: ["letter", "lookup_mobile", "oidc", "eidas"],
+      TOKEN_VERIFY_IDP: "http://dev.test.swedenconnect.se/idp",
+      EIDAS_URL: "http://eidas.eduid.docker:8080/"
+    },
+    letter_proofing: {
+      confirmingLetter: false
+    },
+    lookup_mobile: {
+      showModal: false
+    },
+    eidas_data: {
+      showModal: false
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  };
 
-//   function setupComponent() {
-//     const wrapper = mount(
-//       <Provider store={fakeStore(fakeState)}>
-//         <VerifyIdentityProcess />
-//       </Provider>
-//     );
-//     return {
-//       wrapper
-//     };
-//   }
-//   const state = { ...fakeState };
-//   state.config.is_configured = true;
-//   state.nins.nins = [
-//     { number: "196701100006", verified: false, primary: false }
-//   ];
-//   it("Renders the primary email (even if multiple verified)", () => {
-//     const { wrapper } = setupComponent();
-//     const nin = wrapper.find("p");
-//     expect(primaryEmail.exists()).toEqual(true);
-//     expect(primaryEmail.text()).toContain("njons-test@test.com");
-//     expect(primaryEmail.text()).not.toContain("njons-testing@email.com");
-//     expect(primaryEmail.text()).not.toContain("njons-best-test@email.com");
-//   });
+  function setupComponent() {
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <MemoryRouter>
+          <VerifyIdentityProcess />
+        </MemoryRouter>
+      </Provider>
+    );
+    return {
+      wrapper
+    };
+  }
+  const state = { ...fakeState };
+  state.config.is_configured = true;
+  state.nins.nins = [
+    { number: "196701100006", verified: false, primary: false }
+  ];
+  state.verifiedNinStatus = false;
+  it("Renders number when added", () => {
+    const { wrapper } = setupComponent();
+    const addNin = wrapper.find(AddNin);
+    const ninNumber = addNin.find("#nin-number");
+    expect(ninNumber.exists()).toEqual(true);
+  });
 
-//   it("Renders different headers depending on verifiedNinStatus", () => {
-//     const { wrapper } = setupComponent();
-//     const nin = wrapper.find("p");
-//     expect(primaryEmail.exists()).toEqual(true);
-//     expect(primaryEmail.text()).toContain("njons-test@test.com");
-//     expect(primaryEmail.text()).not.toContain("njons-testing@email.com");
-//     expect(primaryEmail.text()).not.toContain("njons-best-test@email.com");
-//   });
-// });
+  it("Renders buttons when app is configured", () => {
+    const { wrapper } = setupComponent();
+    const vettingButton = wrapper.find("button");
+    expect(vettingButton.exists()).toEqual(true);
+    expect(vettingButton.length).toEqual(3);
+  });
 
-// describe("EmailDisplay component, when email is saved", () => {
-//   const fakeStore = state => ({
-//     default: () => { },
-//     dispatch: mock.fn(),
-//     subscribe: mock.fn(),
-//     getState: () => ({ ...state })
-//   });
+  it("Renders <LetterProofing /> <LookupMobileProofing /> and <Eidas/>", () => {
+    const { wrapper } = setupComponent();
+    const letterProofing = wrapper.find(LetterProofing);
+    const mobileProofing = wrapper.find(LookupMobileProofing);
+    const eidasProofing = wrapper.find(Eidas);
+    expect(letterProofing.exists()).toEqual(true);
+    expect(mobileProofing.exists()).toEqual(true);
+    expect(eidasProofing.exists()).toEqual(true);
+  });
 
-//   const fakeState = {
-//     emails: {
-//       emails: []
-//     },
-//     intl: {
-//       locale: "en",
-//       messages: messages
-//     }
-//   };
+  it("Renders header prompting user to add and verify nin (verifiedNinStatus = false)", () => {
+    const { wrapper } = setupComponent();
+    const header = wrapper.find("h3");
+    expect(header.exists()).toEqual(true);
+    expect(header.text()).toContain("Add and verify your id number");
+    expect(header.text()).not.toContain("Your eduID is ready to use");
+  });
+});
 
-//   function setupComponent() {
-//     const wrapper = mount(
-//       <Provider store={fakeStore(fakeState)}>
-//         <EmailDisplay />
-//       </Provider>
-//     );
-//     return {
-//       wrapper
-//     };
-//   }
-//   const state = { ...fakeState };
-//   state.emails.emails = [
-//     { email: "njons-test@test.com", primary: false, verified: true },
-//     { email: "njons-testing@email.com", primary: false, verified: true },
-//     { email: "njons-best-test@email.com", primary: true, verified: true }
-//   ];
-//   it("Renders the primary phone (even if multiple verified and new phone set as primary)", () => {
-//     const { wrapper } = setupComponent();
-//     const primaryEmail = wrapper.find("p");
-//     expect(primaryEmail.exists()).toEqual(true);
-//     expect(primaryEmail.text()).toContain("njons-best-test@email.com");
-//     expect(primaryEmail.text()).not.toContain("njons-testing@email.com");
-//     expect(primaryEmail.text()).not.toContain("njons-test@test.com");
-//   });
-// });
+describe("VerifyIdentityProcess component, when nin is saved", () => {
+  const fakeStore = state => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
+  });
+
+  const fakeState = {
+    nins: {
+      nins: []
+    },
+    phones: {
+      phones: []
+    },
+    config: {
+      is_configured: false,
+      PROOFING_METHODS: ["letter", "lookup_mobile", "oidc", "eidas"],
+      TOKEN_VERIFY_IDP: "http://dev.test.swedenconnect.se/idp",
+      EIDAS_URL: "http://eidas.eduid.docker:8080/"
+    },
+    letter_proofing: {
+      confirmingLetter: false
+    },
+    lookup_mobile: {
+      showModal: false
+    },
+    eidas_data: {
+      showModal: false
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  };
+
+  function setupComponent() {
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <MemoryRouter>
+          <VerifyIdentityProcess />
+        </MemoryRouter>
+      </Provider>
+    );
+    return {
+      wrapper
+    };
+  }
+  const state = { ...fakeState };
+  state.config.is_configured = true;
+  state.nins.nins = [
+    { number: "196701100456", verified: true, primary: true },
+    { number: "196701100678", verified: true, primary: false }
+  ];
+  state.verifiedNinStatus = true;
+  it("Renders number when verified", () => {
+    const { wrapper } = setupComponent();
+    const addNin = wrapper.find(AddNin);
+    const ninNumber = addNin.find("#nin-number");
+    expect(ninNumber.exists()).toEqual(true);
+    expect(ninNumber.text()).toEqual("196701100456");
+  });
+
+  it("Renders header informing user that eduID is ready to use (verifiedNinStatus = true)", () => {
+    const { wrapper } = setupComponent();
+    const header = wrapper.find("h3");
+    expect(header.exists()).toEqual(true);
+    expect(header.text()).toContain("Your eduID is ready to use");
+    expect(header.text()).not.toContain("Add and verify your id number");
+  });
+
+  it("Does not renders buttons when app (verifiedNinStatus = true)", () => {
+    const { wrapper } = setupComponent();
+    const vettingButton = wrapper.find("button");
+    expect(vettingButton.exists()).toEqual(false);
+  });
+});
