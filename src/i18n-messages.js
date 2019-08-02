@@ -736,6 +736,13 @@ const msgs = {
     />
   ),
 
+  "profile.phone_display_non-primary_data": (
+    <FormattedMessage
+      id="profile.phone_display_non-primary_data"
+      defaultMessage={`make number primary`}
+    />
+  ),
+
   "profile.phone_display_no_data": (
     <FormattedMessage
       id="profile.phone_display_no_data"

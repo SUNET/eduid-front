@@ -336,6 +336,10 @@
     "defaultMessage": "confirm added number"
   },
   {
+    "id": "profile.phone_display_non-primary_data",
+    "defaultMessage": "make number primary"
+  },
+  {
     "id": "profile.phone_display_no_data",
     "defaultMessage": "no phone number added"
   },

@@ -145,7 +145,7 @@ describe("EmailDisplay component, when email is saved", () => {
     { email: "njons-testing@email.com", primary: false, verified: true },
     { email: "njons-best-test@email.com", primary: true, verified: true }
   ];
-  it("Renders the primary email (even if multiple verified and new email set as primary)", () => {
+  it("Renders the primary phone (even if multiple verified and new phone set as primary)", () => {
     const { wrapper } = setupComponent();
     const primaryEmail = wrapper.find("p");
     expect(primaryEmail.exists()).toEqual(true);
