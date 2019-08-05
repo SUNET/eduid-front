@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import i18n from "i18n-messages";
 import DashboardNav from "./DashboardNav";
 import AddNin from "containers/AddNin";
 import NotificationsContainer from "containers/Notifications";
