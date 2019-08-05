@@ -54,7 +54,7 @@ class Eidas extends Component {
         <div className="vetting-button">
           <button
             id="eidas-show-modal"
-            disabled={this.props.disabled}
+            // disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
           >
             <div className="vetting-button-text">

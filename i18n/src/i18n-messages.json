@@ -557,7 +557,7 @@
   },
   {
     "id": "letter.modal_confirm_info",
-    "defaultMessage": "Accept to have a letter sent to your registered address. The letter will contain a code that you ender here to verify your identity. The code sent to you will expire in 2 weeks starting now"
+    "defaultMessage": "The letter will contain a code that you ender here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
   },
   {
     "id": "letter.verify_title",
@@ -597,7 +597,7 @@
   },
   {
     "id": "lmp.confirm_info",
-    "defaultMessage": "Accept to have your phone number checked against your id number in the phone registry. The phone operators are responsible for updating the registry, so keep in mind that you could have a phone number in your name, but not be included in the registry."
+    "defaultMessage": "The phone operators are responsible for keeping this registry up to date. If you get an error despite knowing your number is valid, you might be missing and you need to choose another way to verify your identity."
   },
   {
     "id": "lmp.modal_confirm_title",

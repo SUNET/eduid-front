@@ -21,7 +21,7 @@ class LetterProofingButton extends Component {
         <div className="vetting-button">
           <button
             className="proofing-button"
-            disabled={this.props.disabled}
+            // disabled={this.props.disabled}
             onClick={this.props.handleLetterProofing}
           >
             <div className="vetting-button-text">
