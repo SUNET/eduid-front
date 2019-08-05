@@ -12,7 +12,7 @@ const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
-// I am the component that: allows users to delete tehir account in settings.
+// I am the component that: allows users to delete their account in settings.
 // My job is to: I render a "Delete account" button > that triggers a modal (the modal has to render two buttons, each with their own functionality).
 
 describe("Delete Account component", () => {
