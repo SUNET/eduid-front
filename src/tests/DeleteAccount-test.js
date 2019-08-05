@@ -5,7 +5,7 @@ import { shallow, mount } from "enzyme";
 import fetchMock from "fetch-mock";
 import { addLocaleData, IntlProvider } from "react-intl";
 import DeleteModal from "components/DeleteModal";
-import DeleteAccount from "components/DeleteAccount";
+import DeleteAccount from "containers/DeleteAccount";
 import * as actions from "actions/Security";
 import securityReducer from "reducers/Security";
 const mock = require("jest-mock");

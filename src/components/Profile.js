@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DashboardNav from "./DashboardNav";
 import VerifyIdentity from "containers/VerifyIdentity";
-import NameDisplay from "components/NameDisplay";
-import NinDisplay from "components/NinDisplay";
+import NameDisplay from "containers/NameDisplay";
+import NinDisplay from "containers/NinDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";
 

@@ -4,15 +4,15 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
-import AddNin from "components/AddNin";
+import AddNin from "containers/AddNin";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: displays the nin input form or the added nin in the vetting process.
-// My job is to: 
-  // if no nin is saved: render <NinForm /> to take a nin
-  // if nin is saved: render <NinDisplay /> to show added nin
+// My job is to:
+// if no nin is saved: render <NinForm /> to take a nin
+// if nin is saved: render <NinDisplay /> to show added nin
 
 describe("AddNin component", () => {
   it("Does not render 'false' or 'null'", () => {

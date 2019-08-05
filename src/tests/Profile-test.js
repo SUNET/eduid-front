@@ -4,22 +4,22 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
-import Profile from "components/Profile";
-import NinDisplay from "components/NinDisplay";
-import NameDisplay from "components/NameDisplay";
-import PhoneDisplay from "components/PhoneDisplay";
-import EmailDisplay from "components/EmailDisplay";
-import VerifyIdentityProcess from "components/VerifyIdentityProcess";
+import Profile from "containers/Profile";
+import NinDisplay from "containers/NinDisplay";
+import NameDisplay from "containers/NameDisplay";
+import PhoneDisplay from "containers/PhoneDisplay";
+import EmailDisplay from "containers/EmailDisplay";
+import VerifyIdentity from "containers/VerifyIdentity";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: populates the profile landing page with user data.
 // My job is to: display one of multiple states for the following user data:
-  // Name (none/added)
-  // National ID Number (none/added unverified/ added verified)
-  // Phone (none/added unverified/added verified or new one made primary)
-  // Email (added at signup or new one made primary)
+// Name (none/added)
+// National ID Number (none/added unverified/ added verified)
+// Phone (none/added unverified/added verified or new one made primary)
+// Email (added at signup or new one made primary)
 
 describe("Profile component", () => {
   it("Does not render 'false' or 'null'", () => {
@@ -103,11 +103,9 @@ describe("Profile component", () => {
     expect(emailDisplay.exists()).toEqual(true);
   });
 
-  it("Does not render <VerifyIdentityProcess /> ", () => {
+  it("Does not render <VerifyIdentity /> ", () => {
     const { wrapper } = setupComponent();
-    const verifyIdentity = wrapper.find(VerifyIdentityProcess);
+    const verifyIdentity = wrapper.find(VerifyIdentity);
     expect(verifyIdentity.exists()).toEqual(false);
   });
 });
-
-

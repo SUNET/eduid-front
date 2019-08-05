@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 // import { connect } from "react-redux";
 // import i18n from "i18n-messages";
 
-import AddNin from "./AddNin";
+import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
