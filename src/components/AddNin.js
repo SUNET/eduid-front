@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NinForm from "./NinForm";
-import NinDisplay from "./NinDisplay";
+import NinDisplay from "containers/NinDisplay";
 // import { connect } from "react-redux";
 // import i18n from "i18n-messages";
 
@@ -29,8 +29,8 @@ class AddNin extends Component {
 
 AddNin.propTypes = {
   nins: PropTypes.array,
-  validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
+  validateNin: PropTypes.func
+  // handleDelete: PropTypes.func
 };
 
 export default AddNin;
