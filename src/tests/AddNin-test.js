@@ -9,7 +9,11 @@ const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
-// my job is to: control if <NinForm />  or <NinDisplay> are shown based on the prenesce of a nin (verify-identity)
+// I am the component that: displays the nin input form or the added nin in the vetting process.
+// My job is to: 
+  // if no nin is saved: render <NinForm /> to take a nin
+  // if nin is saved: render <NinDisplay /> to show added nin
+
 describe("AddNin component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(
