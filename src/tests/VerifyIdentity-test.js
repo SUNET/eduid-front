@@ -14,7 +14,7 @@ const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
 // I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
-// My job is to: if there sis a nin: display vetting buttons, if nin is verified: remove buttons
+// My job is to: if there is a nin: display vetting buttons, if nin is verified: remove buttons
 
 describe("VerifyIdentity component", () => {
   it("Does not render 'false' or 'null'", () => {
