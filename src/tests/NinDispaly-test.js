@@ -9,7 +9,14 @@ const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
-// my job is to: control how the nin looks depening on its url (verify-identity or profile) and its verification status (true of false)
+// I am the component that: displays the saved nin and clarifies it's status (both in profile and vetting process).
+// My job is to: 
+  // URL: '/profile/'
+    // if saved nin is unverified: render number as orange link (href: /profile/verify-identity/)
+    // saved nin is verified: render number as text in black
+  // URL: '/profile/verify-identity/'
+    // if saved nin is unverified: render number in orange with possibility to remove it
+    // saved nin is verified: render number as text in black
 
 describe("NinDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {
