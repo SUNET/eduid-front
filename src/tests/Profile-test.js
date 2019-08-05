@@ -14,6 +14,8 @@ const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
+
+
 // my job is to: control what data is displyed on the profile landing page
 // if url is verify-identity: display the verifyIdentity process
 // else: display one of multiple states for the following data:

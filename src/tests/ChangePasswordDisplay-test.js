@@ -12,8 +12,8 @@ const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
-// I am the component that: displays the "Change password" button (in settings) that triggers the logout modal.
-// My job is to: I render a button > that triggers a modal (the modal has to render two buttons, each with their own functionality).
+// I am the component that: allows users to chaneg password in settings.
+// My job is to: I render a  "change password" button > that triggers a modal (the modal has to render two buttons, each with their own functionality)
 
 describe("ChangePasswordDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import i18n from "i18n-messages";
-
-import AddNin from "./AddNin";
+import DashboardNav from "./DashboardNav";
+import AddNin from "containers/AddNin";
+import NotificationsContainer from "containers/Notifications";
 import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
