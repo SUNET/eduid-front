@@ -1153,7 +1153,7 @@
   },
   {
     "id": "phones.long_description",
-    "defaultMessage": "You can connect one or more mobile phone numbers with\n           your eduID account, and select which one is the primary one."
+    "defaultMessage": "You can connect one or more mobile phone numbers to\n           your eduID, but one has to be set as the primary one."
   },
   {
     "id": "phones.input_help_text",
@@ -1177,7 +1177,7 @@
   },
   {
     "id": "phones.save-success",
-    "defaultMessage": "phone number saved successfully"
+    "defaultMessage": "The phone number was saved"
   },
   {
     "id": "phones.unconfirmed_number_not_primary",
@@ -1185,7 +1185,7 @@
   },
   {
     "id": "phones.primary-success",
-    "defaultMessage": "phone number successfully set as primary"
+    "defaultMessage": "The phone number was set as primary"
   },
   {
     "id": "phones.code_expired_send_new",

@@ -2243,8 +2243,8 @@ const msgs = {
   "phones.long_description": (
     <FormattedMessage
       id="phones.long_description"
-      defaultMessage={`You can connect one or more mobile phone numbers with
-           your eduID account, and select which one is the primary one.`}
+      defaultMessage={`You can connect one or more mobile phone numbers to
+           your eduID, but one has to be set as the primary one.`}
     />
   ),
 
@@ -2286,7 +2286,7 @@ const msgs = {
   "phones.save-success": (
     <FormattedMessage
       id="phones.save-success"
-      defaultMessage={`phone number saved successfully`}
+      defaultMessage={`The phone number was saved`}
     />
   ),
 
@@ -2300,7 +2300,7 @@ const msgs = {
   "phones.primary-success": (
     <FormattedMessage
       id="phones.primary-success"
-      defaultMessage={`phone number successfully set as primary`}
+      defaultMessage={`The phone number was set as primary`}
     />
   ),
 
