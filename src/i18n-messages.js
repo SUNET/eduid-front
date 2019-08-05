@@ -1163,7 +1163,7 @@ const msgs = {
   "letter.modal_confirm_info": (
     <FormattedMessage
       id="letter.modal_confirm_info"
-      defaultMessage={`The letter will contain a code that you ender here to verify your identity. The code sent to you will expire in 2 weeks starting from now`}
+      defaultMessage={`The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now`}
     />
   ),
 
@@ -1237,16 +1237,18 @@ const msgs = {
   ),
 
   /* ----- confirmed number > ready for vetting------- */
-  "lmp.modal_confirm_info": (
-    <FormattedMessage
-      id="lmp.confirm_info"
-      defaultMessage={`The phone operators are responsible for keeping this registry up to date. If you get an error despite knowing your number is valid, you might be missing and you need to choose another way to verify your identity.`}
-    />
-  ),
+
   "lmp.modal_confirm_title": (
     <FormattedMessage
       id="lmp.modal_confirm_title"
       defaultMessage={`Check if your phone number is connected to your id number.`}
+    />
+  ),
+
+  "lmp.modal_confirm_info": (
+    <FormattedMessage
+      id="lmp.confirm_info"
+      defaultMessage={`This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity.`}
     />
   ),
 

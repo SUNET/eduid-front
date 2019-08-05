@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import i18n from "i18n-messages";
+// import { connect } from "react-redux";
+// import i18n from "i18n-messages";
 
 import AddNin from "./AddNin";
 import vettingRegistry from "vetting-registry";
@@ -18,6 +18,7 @@ class VerifyIdentity extends Component {
       this.props.l10n("lmp.initialize_proofing_help_text"),
       this.props.l10n("eidas.initialize_proofing_help_text")
     ];
+    // this.props.is_configured
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
       const verifyOptions = this.props.proofing_methods.filter(
@@ -35,7 +36,7 @@ class VerifyIdentity extends Component {
         );
       });
     }
-
+    // this.props.nins.length && !this.props.verifiedNinStatus
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
         <div key="1" id="connect-nin-number">
@@ -67,38 +68,38 @@ class VerifyIdentity extends Component {
   }
 }
 
-// VerifyIdentityProcess;.propTypes = {
-//   nin: PropTypes.string,
-//   nins: PropTypes.array,
-//   validateNin: PropTypes.func,
-//   handleDelete: PropTypes.func,
-//   proofing_methods: PropTypes.array
+VerifyIdentity.propTypes = {
+  nin: PropTypes.string,
+  nins: PropTypes.array,
+  validateNin: PropTypes.func,
+  handleDelete: PropTypes.func,
+  proofing_methods: PropTypes.array
+};
+
+export default VerifyIdentity;
+
+// const mapStateToProps = (state, props) => {
+//   let verifiedNinStatus = "";
+//   const nins = state.nins.nins.filter(nin => nin.verified);
+//   nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
+//   return {
+//     nins: state.nins.nins,
+//     verifiedNin: nins,
+//     verifiedNinStatus: verifiedNinStatus,
+//     is_configured: state.config.is_configured,
+//     letter_verification: state.letter_proofing.confirmingLetter,
+//     proofing_methods: state.config.PROOFING_METHODS,
+//     message: state.nins.message
+//   };
 // };
 
-// export default VerifyIdentityProcess;
+// const mapDispatchToProps = (dispatch, props) => {
+//   return {};
+// };
 
-const mapStateToProps = (state, props) => {
-  let verifiedNinStatus = "";
-  const nins = state.nins.nins.filter(nin => nin.verified);
-  nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
-  return {
-    nins: state.nins.nins,
-    verifiedNin: nins,
-    verifiedNinStatus: verifiedNinStatus,
-    is_configured: state.config.is_configured,
-    letter_verification: state.letter_proofing.confirmingLetter,
-    proofing_methods: state.config.PROOFING_METHODS,
-    message: state.nins.message
-  };
-};
+// const VerifyIdentityContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(VerifyIdentity);
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {};
-};
-
-const VerifyIdentityContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(VerifyIdentity);
-
-export default i18n(VerifyIdentityContainer);
+// export default i18n(VerifyIdentityContainer);

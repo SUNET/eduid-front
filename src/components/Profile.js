@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import i18n from "i18n-messages";
 
 import DashboardNav from "./DashboardNav";
-import VerifyIdentity from "./VerifyIdentity";
+import VerifyIdentity from "containers/VerifyIdentity";
 import NameDisplay from "components/NameDisplay";
 import NinDisplay from "components/NinDisplay";
 import PhoneDisplay from "components/PhoneDisplay";
