@@ -8,7 +8,7 @@ import VerifyIdentityProcess from "./VerifyIdentityProcess";
 import NameDisplay from "components/NameDisplay";
 import NinDisplay from "components/NinDisplay";
 import PhoneDisplay from "components/PhoneDisplay";
-import EmailDisplay from "components/EmailDisplay";
+import EmailDisplay from "containers/EmailDisplay";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";

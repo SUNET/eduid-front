@@ -32,22 +32,6 @@ class EmailDisplay extends Component {
   }
 }
 
-// export default EmailDisplay;
+export default EmailDisplay;
 
-const mapStateToProps = (state, props) => {
-  const emailAddress = state.emails.emails.filter(email => email.primary);
-  return {
-    emails: emailAddress // all info about primary email
-  };
-};
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {};
-};
-
-const EmailDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EmailDisplay);
-
-export default i18n(EmailDisplayContainer);
