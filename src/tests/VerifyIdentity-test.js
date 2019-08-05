@@ -16,7 +16,7 @@ addLocaleData("react-intl/locale-data/en");
 // I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
 // My job is to: if there sis a nin: display vetting buttons, if nin is verified: remove buttons
 
-describe("VerifyIdentityProcess component", () => {
+describe("VerifyIdentity component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
@@ -27,7 +27,7 @@ describe("VerifyIdentityProcess component", () => {
   });
 });
 
-describe("VerifyIdentityProcess component, no nin added ", () => {
+describe("VerifyIdentity component, no nin added ", () => {
   const fakeStore = state => ({
     default: () => {},
     dispatch: mock.fn(),
@@ -84,7 +84,7 @@ describe("VerifyIdentityProcess component, no nin added ", () => {
   });
 });
 
-describe("VerifyIdentityProcess component, when nin is saved", () => {
+describe("VerifyIdentity component, when nin is saved", () => {
   const fakeStore = state => ({
     default: () => {},
     dispatch: mock.fn(),
@@ -171,7 +171,7 @@ describe("VerifyIdentityProcess component, when nin is saved", () => {
   });
 });
 
-describe("VerifyIdentityProcess component, when nin is saved", () => {
+describe("VerifyIdentity component, when nin is saved", () => {
   const fakeStore = state => ({
     default: () => {},
     dispatch: mock.fn(),
