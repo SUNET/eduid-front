@@ -4,6 +4,9 @@ import { shallow } from "enzyme";
 import AccountId from "components/AccountId";
 import { IntlProvider } from "react-intl";
 
+// I am the component that: displays unique id to user in Advanced settings.
+// My job is to: I render text and the eppn (from store).
+
 describe("AccountId component renders", () => {
   const props = {
     data: {
