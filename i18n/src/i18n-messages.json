@@ -888,6 +888,10 @@
     "defaultMessage": "Register this device as Security Key"
   },
   {
+    "id": "security.security-key_title",
+    "defaultMessage": "Register a Security Key"
+  },
+  {
     "id": "security.for-second-factor",
     "defaultMessage": "Use the buttons below to register a Security Key for authentication with eduID"
   },
@@ -965,7 +969,7 @@
   },
   {
     "id": "accountId.long_description",
-    "defaultMessage": "This is an automatically generated unique identifier for your eduID. You might be asked by local IT staff to share this if you need support."
+    "defaultMessage": "This is an automatically generated unique identifier for your eduID. You might be asked to share this information if you need support."
   },
   {
     "id": "accountId.accountId_display_title",
@@ -1025,7 +1029,7 @@
   },
   {
     "id": "pd.save-success",
-    "defaultMessage": "Successfully saved personal information"
+    "defaultMessage": "Personal information updated"
   },
   {
     "id": "pdata.field_required",
@@ -1153,7 +1157,7 @@
   },
   {
     "id": "phones.long_description",
-    "defaultMessage": "You can connect one or more mobile phone numbers with\n           your eduID account, and select which one is the primary one."
+    "defaultMessage": "You can connect one or more mobile phone numbers to\n           your eduID, but one has to be set as the primary one."
   },
   {
     "id": "phones.input_help_text",
@@ -1177,7 +1181,7 @@
   },
   {
     "id": "phones.save-success",
-    "defaultMessage": "phone number saved successfully"
+    "defaultMessage": "The phone number was saved"
   },
   {
     "id": "phones.unconfirmed_number_not_primary",
@@ -1185,7 +1189,7 @@
   },
   {
     "id": "phones.primary-success",
-    "defaultMessage": "phone number successfully set as primary"
+    "defaultMessage": "The phone number was set as primary"
   },
   {
     "id": "phones.code_expired_send_new",

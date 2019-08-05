@@ -77,29 +77,3 @@ VerifyIdentity.propTypes = {
 };
 
 export default VerifyIdentity;
-
-// const mapStateToProps = (state, props) => {
-//   let verifiedNinStatus = "";
-//   const nins = state.nins.nins.filter(nin => nin.verified);
-//   nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
-//   return {
-//     nins: state.nins.nins,
-//     verifiedNin: nins,
-//     verifiedNinStatus: verifiedNinStatus,
-//     is_configured: state.config.is_configured,
-//     letter_verification: state.letter_proofing.confirmingLetter,
-//     proofing_methods: state.config.PROOFING_METHODS,
-//     message: state.nins.message
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch, props) => {
-//   return {};
-// };
-
-// const VerifyIdentityContainer = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(VerifyIdentity);
-
-// export default i18n(VerifyIdentityContainer);

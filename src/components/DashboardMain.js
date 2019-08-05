@@ -9,7 +9,7 @@ import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 import ChangePassword from "./ChangePassword";
 import SettingsComponent from "./Settings";
-import Profile from "./Profile";
+import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -76,9 +76,7 @@ class Main extends Component {
                 <Route
                   exact
                   path="/profile/security/"
-                  component={() => (
-                    <Redirect to="/profile/settings/" />
-                  )}
+                  component={() => <Redirect to="/profile/settings/" />}
                 />
                 <Route path="/profile/chpass/" component={ChangePassword} />
               </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import i18n from "i18n-messages";
+// import { connect } from "react-redux";
+// import i18n from "i18n-messages";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
@@ -41,28 +41,4 @@ class PhoneDisplay extends Component {
   }
 }
 
-// export default PhoneDisplay;
-
-const mapStateToProps = (state, props) => {
-  let primaryPhoneStatus = "";
-  const primaryPhone = state.phones.phones.filter(phone => phone.primary);
-  primaryPhone.length === 1
-    ? (primaryPhoneStatus = true)
-    : (primaryPhoneStatus = false);
-  return {
-    phones: state.phones.phones,
-    primaryPhone,
-    primaryPhoneStatus
-  };
-};
-
-const mapDispatchToProps = (dispatch, props) => {
-  return {};
-};
-
-const PhoneDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PhoneDisplay);
-
-export default i18n(PhoneDisplayContainer);
+export default PhoneDisplay;
