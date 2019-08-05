@@ -2023,7 +2023,7 @@ const msgs = {
   "pd.save-success": (
     <FormattedMessage
       id="pd.save-success"
-      defaultMessage={`Successfully saved personal information`}
+      defaultMessage={`Personal information updated`}
     />
   ),
 

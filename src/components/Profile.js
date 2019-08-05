@@ -5,7 +5,7 @@ import i18n from "i18n-messages";
 
 import DashboardNav from "./DashboardNav";
 import VerifyIdentityProcess from "./VerifyIdentityProcess";
-import NameDisplay from "components/NameDisplay";
+import NameDisplay from "containers/NameDisplay";
 import NinDisplay from "components/NinDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";

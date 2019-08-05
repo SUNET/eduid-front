@@ -1025,7 +1025,7 @@
   },
   {
     "id": "pd.save-success",
-    "defaultMessage": "Successfully saved personal information"
+    "defaultMessage": "Personal information updated"
   },
   {
     "id": "pdata.field_required",
