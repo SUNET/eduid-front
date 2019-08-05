@@ -4,7 +4,7 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
-import VerifyIdentityProcess from "components/VerifyIdentityProcess";
+import VerifyIdentity from "components/VerifyIdentity";
 import AddNin from "components/AddNin";
 import LetterProofing from "components/LetterProofing";
 import LookupMobileProofing from "components/LookupMobileProofing";
@@ -13,13 +13,14 @@ const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
-// my job is to: control the display of the email address registered at signup in the profile
+// I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
+// My job is to: if there sis a nin: display vetting buttons, if nin is verified: remove buttons
 
 describe("VerifyIdentityProcess component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <VerifyIdentityProcess />
+        <VerifyIdentity />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -55,7 +56,7 @@ describe("VerifyIdentityProcess component, no nin added ", () => {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
         <MemoryRouter>
-          <VerifyIdentityProcess />
+          <VerifyIdentity />
         </MemoryRouter>
       </Provider>
     );
@@ -123,7 +124,7 @@ describe("VerifyIdentityProcess component, when nin is saved", () => {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
         <MemoryRouter>
-          <VerifyIdentityProcess />
+          <VerifyIdentity />
         </MemoryRouter>
       </Provider>
     );
@@ -210,7 +211,7 @@ describe("VerifyIdentityProcess component, when nin is saved", () => {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
         <MemoryRouter>
-          <VerifyIdentityProcess />
+          <VerifyIdentity />
         </MemoryRouter>
       </Provider>
     );

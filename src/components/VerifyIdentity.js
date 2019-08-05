@@ -8,7 +8,7 @@ import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
 
-class VerifyIdentityProcess extends Component {
+class VerifyIdentity extends Component {
   render() {
     let vettingButtons = "";
     let connectNin = "";
@@ -96,9 +96,9 @@ const mapDispatchToProps = (dispatch, props) => {
   return {};
 };
 
-const VerifyIdentityProcessContainer = connect(
+const VerifyIdentityContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(VerifyIdentityProcess);
+)(VerifyIdentity);
 
-export default i18n(VerifyIdentityProcessContainer);
+export default i18n(VerifyIdentityContainer);
