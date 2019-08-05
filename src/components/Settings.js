@@ -11,7 +11,7 @@ import i18n from "i18n-messages";
 // import SplashContainer from "containers/Splash";
 // import HeaderContainer from "containers/Header";
 // import FooterContainer from "containers/Footer";
-import ChangePasswordDisplay from "components/ChangePasswordDisplay";
+import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
 import DashboardNav from "./DashboardNav";
 import PersonalDataContainer from "containers/PersonalData";
 // import NinsContainer from "containers/Nins";
