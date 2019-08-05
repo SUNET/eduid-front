@@ -20,7 +20,7 @@ import MobileContainer from "containers/Mobile";
 import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 // import ChangePasswordDisplay from "./ChangePasswordDisplay";
-import DeleteAccount from "components/DeleteAccount";
+import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";

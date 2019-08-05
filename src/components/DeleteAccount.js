@@ -1,15 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import i18n from "i18n-messages";
-import { isValid } from "redux-form";
-import {
-  confirmDeletion,
-  stopConfirmationDeletion,
-  startConfirmationDeletion
-} from "actions/Security";
-import { eduidRMAllNotify } from "actions/Notifications";
-
 import EduIDButton from "components/EduIDButton";
 import DeleteModal from "components/DeleteModal";
 
@@ -62,35 +52,5 @@ DeleteAccount.propTypes = {
   handleConfirmationDeletion: PropTypes.func
 };
 
-// export default DeleteAccount;
+export default DeleteAccount;
 
-const mapStateToProps = (state, props) => {
-  return {
-    credentials: state.security.credentials,
-    confirming_deletion: state.security.confirming_deletion,
-    redirect_to: state.security.location,
-    deleted: state.security.deleted
-  };
-};
-
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    handleStartConfirmationDeletion: function(e) {
-      dispatch(eduidRMAllNotify());
-      dispatch(startConfirmationDeletion());
-    },
-    handleStopConfirmationDeletion: function(e) {
-      dispatch(stopConfirmationDeletion());
-    },
-    handleConfirmationDeletion: function(e) {
-      dispatch(confirmDeletion());
-    }
-  };
-};
-
-const DeleteAccountContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DeleteAccount);
-
-export default i18n(DeleteAccountContainer);
