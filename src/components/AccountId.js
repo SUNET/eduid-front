@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import i18n from "i18n-messages";
+// import { connect } from "react-redux";
+// import i18n from "i18n-messages";
 import "style/Security.scss";
 
 class AccountId extends Component {
@@ -33,21 +33,5 @@ AccountId.propTypes = {
   eppn: PropTypes.string,
 };
 
-//  export default PasswordChange;
+export default AccountId;
 
-const mapStateToProps = (state, props) => {
-  return {
-    eppn: state.personal_data.data.eppn
-  };
-};
-
-const mapDispatchToProps = (dispatch, props) => {
-  return {};
-};
-
-const AccountIdContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AccountId);
-
-export default i18n(AccountIdContainer);

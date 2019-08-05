@@ -21,7 +21,7 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import ChangePasswordDisplay from "./ChangePasswordDisplay";
 import DeleteAccount from "components/DeleteAccount";
-import AccountId from "./AccountId";
+import AccountId from "containers/AccountId";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
