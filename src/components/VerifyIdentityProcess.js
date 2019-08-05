@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ButtonGroup } from "reactstrap";
 import { connect } from "react-redux";
 import DashboardNav from "./DashboardNav";
-import AddNin from "./AddNin";
+import AddNin from "containers/AddNin";
 import NotificationsContainer from "containers/Notifications";
 import vettingRegistry from "vetting-registry";
 
