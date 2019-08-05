@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import i18n from "i18n-messages";
-
 import DashboardNav from "./DashboardNav";
 import VerifyIdentityProcess from "./VerifyIdentityProcess";
 import NameDisplay from "containers/NameDisplay";
@@ -72,34 +69,7 @@ Profile.propTypes = {
   nin: PropTypes.string,
   nins: PropTypes.array,
   validateNin: PropTypes.func,
-  handleDelete: PropTypes.func
-  // proofing_methods: PropTypes.array
+  handleDelete: PropTypes.func,
 };
 
-// export default Profile;
-const mapStateToProps = (state, props) => {
-  let verifiedNinStatus = "";
-  let verifiedPhone = "";
-  const nins = state.nins.nins.filter(nin => nin.verified);
-  nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
-  const phones = state.phones.phones.filter(phoneNum => phoneNum.verified);
-  phones.length >= 1 ? (verifiedPhone = true) : (verifiedPhone = false);
-  const phoneNumber = state.phones.phones.filter(phone => phone.primary);
-  return {
-    nins: state.nins.nins, // all nin info
-    verifiedNin: nins, // all verified nin info
-    verifiedNinStatus: verifiedNinStatus, // is the added nin verified?
-    message: state.nins.message
-  };
-};
-
-const mapDispatchToProps = (dispatch, props) => {
-  return {};
-};
-
-const ProfileContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Profile);
-
-export default i18n(ProfileContainer);
+export default Profile;

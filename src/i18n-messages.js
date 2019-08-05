@@ -1771,6 +1771,13 @@ const msgs = {
     />
   ),
 
+  "security.security-key_title": (
+    <FormattedMessage
+      id="security.security-key_title"
+      defaultMessage={`Register a Security Key`}
+    />
+  ),
+
   "security.for-second-factor": (
     <FormattedMessage
       id="security.for-second-factor"
@@ -1904,7 +1911,7 @@ const msgs = {
   "accountId.long_description": (
     <FormattedMessage
       id="accountId.long_description"
-      defaultMessage={`This is an automatically generated unique identifier for your eduID. You might be asked by local IT staff to share this if you need support.`}
+      defaultMessage={`This is an automatically generated unique identifier for your eduID. You might be asked to share this information if you need support.`}
     />
   ),
 

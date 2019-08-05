@@ -888,6 +888,10 @@
     "defaultMessage": "Register this device as Security Key"
   },
   {
+    "id": "security.security-key_title",
+    "defaultMessage": "Register a Security Key"
+  },
+  {
     "id": "security.for-second-factor",
     "defaultMessage": "Use the buttons below to register a Security Key for authentication with eduID"
   },
@@ -965,7 +969,7 @@
   },
   {
     "id": "accountId.long_description",
-    "defaultMessage": "This is an automatically generated unique identifier for your eduID. You might be asked by local IT staff to share this if you need support."
+    "defaultMessage": "This is an automatically generated unique identifier for your eduID. You might be asked to share this information if you need support."
   },
   {
     "id": "accountId.accountId_display_title",

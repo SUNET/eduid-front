@@ -14,13 +14,12 @@ const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
-// my job is to: control what data is displyed on the profile landing page
-// if url is verify-identity: display the verifyIdentity process
-// else: display one of multiple states for the following data:
-// Name (none/added)
-// National ID Number (none/added unverified/ added verified)
-// Phone (none/added unverified/added verified)
-// Email (added at signup)
+// I am the component that: populates the profile landing page with user data.
+// My job is to: display one of multiple states for the following user data:
+  // Name (none/added)
+  // National ID Number (none/added unverified/ added verified)
+  // Phone (none/added unverified/added verified or new one made primary)
+  // Email (added at signup or new one made primary)
 
 describe("Profile component", () => {
   it("Does not render 'false' or 'null'", () => {
