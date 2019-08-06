@@ -14,6 +14,8 @@ addLocaleData("react-intl/locale-data/en");
   // if no nin is saved: render <NinForm /> to take a nin
   // if nin is saved: render <NinDisplay /> to show added nin
 
+// Comment N: This component controls the nin rendering (either a form to add nin or a display of the added number), so I think these rendering test might be enough    
+
 describe("AddNin component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(
