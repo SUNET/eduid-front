@@ -2,18 +2,29 @@ import React from "react";
 import expect, { createSpy, spyOn, isSpy } from "expect";
 import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
+import { put, select, call } from "redux-saga/effects";
 import fetchMock from "fetch-mock";
 import { addLocaleData, IntlProvider } from "react-intl";
 import DeleteModal from "components/DeleteModal";
+import DeleteAccountContainer from "containers/DeleteAccount";
 import DeleteAccount from "components/DeleteAccount";
 import * as actions from "actions/Security";
+import * as notifyActions from "actions/Notifications";
 import securityReducer from "reducers/Security";
+import { postDeleteAccount, deleteAccount } from "sagas/Security";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: allows users to delete their account in settings.
 // My job is to: I render a "Delete account" button > that triggers a modal (the modal has to render two buttons, each with their own functionality).
+
+// Comment N:
+// - WARNING! APP CURRENTLY BROKEN: window.href.location redirect has been commented out in app to make tests run
+// - how was this handled before? the redirect in this component causes issues for testing (currently commented out). Does this component not act the same as ChangePasswordDisplay? If not, how are they different? Can they be built the same?
+// click button > triggers modal > ACCEPT triggers redirect to login.
+// What happens when state.security.delete = true and how to test it?
+// test of modal at bottom (are they ok here or should they be in a separate modal file)
 
 describe("Delete Account component", () => {
   it("Does not render 'false' or 'null'", () => {
@@ -56,7 +67,7 @@ describe("DeleteAccount component", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <DeleteAccount />
+        <DeleteAccountContainer />
       </Provider>
     );
     return {
@@ -102,7 +113,7 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <DeleteAccount />
+        <DeleteAccountContainer />
       </Provider>
     );
     return {
@@ -145,7 +156,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <DeleteAccount />
+        <DeleteAccountContainer />
       </Provider>
     );
     return {
@@ -168,6 +179,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
   });
 });
 
+// failed attempt at tests
 // describe("DeleteAccount Container ", () => {
 //   let mockProps, wrapper, button, dispatch;
 
@@ -193,7 +205,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 
 //     const wrapper = mount(
 //       <Provider store={fakeStore(fakeState)}>
-//         <DeleteAccount {...mockProps} />
+//         <DeleteAccountContainer {...mockProps} />
 //       </Provider>
 //     );
 //     return {
@@ -203,7 +215,9 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 //   }
 
 //   it("Renders", () => {
-//     // expect(button.length).toEqual(1);
+//     const { wrapper } = setupComponent();
+//     const button = wrapper.find("EduIDButton");
+//     expect(button.length).toEqual(1);
 //   });
 
 //   it("Clicks", () => {
@@ -211,22 +225,21 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 //     const { wrapper } = setupComponent();
 //     // console.log(wrapper.debug());
 //     const button = wrapper.find("EduIDButton");
-//     // expect(button.exists()).toEqual(true);
-//     // expect(state.security.confirming_change).toEqual(false);
-//     // button.simulate("click");
-//     // wrapper.update();
+//     expect(button.exists()).toEqual(true);
+//     expect(state.security.confirming_deletion).toEqual(false);
+//     button.simulate("click");
+//     wrapper.update();
 //     // console.log(wrapper.debug());
-//     // expect(state.security.confirming_change).toEqual(true);
+//     // expect(state.security.confirming_deletion).toEqual(true);
 //   });
 // });
 
 describe("DeleteAccount redux functionality", () => {
   it("DeleteAccount button triggers handleStartConfirmationDeletion()", () => {
-    // TEST: prove that this EduIDButton triggers handleStartConfirmationPassword() > dispatches startConfirmationPassword()
-    // const expectedAction = {
-    //   type: actions.START_CHANGE_PASSWORD
-    // };
-    // expect(actions.startConfirmationPassword()).toEqual(expectedAction);
+    // TEST: can we prove that this EduIDButton triggers handleStartConfirmationPassword() > dispatches startConfirmationPassword()
+
+    // maybe this is what happens at the bottom of the file in the test stolen from the old files? 
+      // expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT)
   });
 
   it("startConfirmationDeletion() should trigger the action START_DELETE_ACCOUNT", () => {
@@ -253,7 +266,7 @@ describe("DeleteAccount redux functionality", () => {
 // ----- MODAL STUFF ----- //
 describe("Logout modal redux functionality", () => {
   it("Modal ACCEPT button triggers handleConfirmationPassword()", () => {
-    //     // TEST: 3. Can we prove that the ACCEPT button triggers handleConfirmationPassword() > dispatches confirmDeletion()
+    // TEST: Can we prove that the ACCEPT button triggers handleConfirmationPassword() > dispatches confirmDeletion()
   });
   it("Modal ACCEPT button should trigger the POST_DELETE_ACCOUNT action ", () => {
     const expectedAction = {
@@ -275,7 +288,7 @@ describe("Logout modal redux functionality", () => {
   });
 
   it("Modal CANCEL button triggers handleStopConfirmationDeletion()", () => {
-    //     // TEST: can we prove that the CANCEL button triggers handleStopConfirmationDeletion() > dispatches stopConfirmationDeletion()
+    // TEST: can we prove that the CANCEL button triggers handleStopConfirmationDeletion() > dispatches stopConfirmationDeletion()
   });
   it("Modal CANCEL button should trigger the STOP_DELETE_ACCOUNT action ", () => {
     const expectedAction = {
@@ -294,5 +307,158 @@ describe("Logout modal redux functionality", () => {
     ).toEqual({
       confirming_deletion: false
     });
+  });
+});
+
+// ----- TAKEN FROM OLD FILES: SECURTIY TESTS ----- //
+// container and saga test
+
+describe("DeleteAccount Container", () => {
+  let mockProps, language, getWrapper, getState, dispatch, store;
+
+  const fakeStore = state => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
+  });
+
+  beforeEach(() => {
+    getState = function(deleting, askingDescription) {
+      return {
+        security: {
+          failed: false,
+          error: "",
+          message: "",
+          code: "",
+          confirming_deletion: deleting,
+          location: "",
+          deleted: false
+        },
+        config: {
+          csrf_token: "",
+          DASHBOARD_URL: "/dummy-dash-url/",
+          TOKEN_SERVICE_URL: "/dummy-tok-url/"
+        },
+        intl: {
+          locale: "en",
+          messages: messages
+        },
+        notifications: {
+          messages: [],
+          errors: []
+        }
+      };
+    };
+
+    mockProps = {
+      credentials: [],
+      language: "en",
+      confirming_deletion: false
+    };
+
+    getWrapper = function({
+      deleting = false,
+      askingDesc = false,
+      props = mockProps
+    } = {}) {
+      store = fakeStore(getState(deleting, askingDesc));
+      dispatch = store.dispatch;
+
+      const wrapper = mount(
+        <Provider store={store}>
+          <DeleteAccountContainer {...props} />
+        </Provider>
+      );
+      return wrapper;
+    };
+    language = getWrapper()
+      .find(DeleteAccountContainer)
+      .props().language;
+  });
+
+  afterEach(() => {
+    fetchMock.restore();
+  });
+
+  it("Renders test", () => {
+    expect(language).toEqual("en");
+  });
+
+  it("Clicks delete", () => {
+    expect(dispatch.mock.calls.length).toEqual(0);
+    getWrapper()
+      .find("EduIDButton#delete-button")
+      .props()
+      .onClick();
+    expect(dispatch.mock.calls.length).toEqual(2);
+    expect(dispatch.mock.calls[0][0].type).toEqual(
+      notifyActions.RM_ALL_NOTIFICATION
+    );
+    expect(dispatch.mock.calls[1][0].type).toEqual(
+      actions.START_DELETE_ACCOUNT
+    );
+  });
+
+  it("Clicks confirm delete", () => {
+    fetchMock.post("/dummy-sec-url", {
+      type: actions.POST_DELETE_ACCOUNT
+    });
+
+    const newProps = {
+      credentials: [],
+      language: "en",
+      confirming_deletion: true
+    };
+    const deleteModal = getWrapper(true, false, newProps).find("DeleteModal");
+    expect(dispatch.mock.calls.length).toEqual(0);
+    deleteModal.props().handleConfirm();
+    expect(dispatch.mock.calls.length).toEqual(1);
+    expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT);
+  });
+});
+
+describe("Async component", () => {
+  const mockState = {
+    security: {
+      location: "dummy-location"
+    },
+    config: {
+      csrf_token: "csrf-token",
+      DASHBOARD_URL: "/dummy-dash-url/",
+      TOKEN_SERVICE_URL: "/dummy-tok-url/",
+      SECURITY_URL: "/dummy-sec-url"
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  };
+  it("Sagas postDeleteAccount", () => {
+    const generator = postDeleteAccount();
+    let next = generator.next();
+    expect(next.value).toEqual(put(actions.postConfirmDeletion()));
+
+    next = generator.next();
+    expect(next.value.SELECT.args).toEqual([]);
+
+    const data = {
+      csrf_token: "csrf-token"
+    };
+
+    next = generator.next(mockState);
+    expect(next.value).toEqual(call(deleteAccount, mockState.config, data));
+
+    const action = {
+      type: actions.POST_DELETE_ACCOUNT_SUCCESS,
+      payload: {
+        csrf_token: "csrf-token"
+      }
+    };
+    next = generator.next(action);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    next = generator.next();
+    delete action.payload.csrf_token;
+    expect(next.value).toEqual(put(action));
   });
 });

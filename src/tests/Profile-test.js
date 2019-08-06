@@ -4,7 +4,7 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
-import Profile from "components/Profile";
+import Profile from "containers/Profile";
 import NinDisplay from "components/NinDisplay";
 import NameDisplay from "components/NameDisplay";
 import PhoneDisplay from "components/PhoneDisplay";
@@ -20,6 +20,8 @@ addLocaleData("react-intl/locale-data/en");
   // National ID Number (none/added unverified/ added verified)
   // Phone (none/added unverified/added verified or new one made primary)
   // Email (added at signup or new one made primary)
+
+// Comments N: this component renders different things depending on URL. These tests default to the profile and does not show that add and verify nin display at 'profile/evrify-identity'
 
 describe("Profile component", () => {
   it("Does not render 'false' or 'null'", () => {
@@ -109,5 +111,4 @@ describe("Profile component", () => {
     expect(verifyIdentity.exists()).toEqual(false);
   });
 });
-
 
