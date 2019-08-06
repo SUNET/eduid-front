@@ -11,6 +11,8 @@ addLocaleData("react-intl/locale-data/en");
 
 // my job is to: control the display of the name (either retrieved on vetting) or added by user in the profile
 
+// Comment N: This component controls rendering of name only in profile, so I think these rendering test might be enough
+
 describe("NameDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(

@@ -21,6 +21,8 @@ addLocaleData("react-intl/locale-data/en");
 // Phone (none/added unverified/added verified or new one made primary)
 // Email (added at signup or new one made primary)
 
+// Comments N: this component renders different things depending on URL. These tests default to the profile and does not show that add and verify nin display at 'profile/evrify-identity'
+
 describe("Profile component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(

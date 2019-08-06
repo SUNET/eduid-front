@@ -393,160 +393,160 @@ describe("Reducers", () => {
     });
   });
 
-  it("Receives a START_DELETE_ACCOUNT action", () => {
-    expect(
-      securityReducer(mockState, {
-        type: actions.START_DELETE_ACCOUNT
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: true,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a START_DELETE_ACCOUNT action", () => {
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.START_DELETE_ACCOUNT
+  //     })
+  //   ).toEqual({
+  //     failed: false,
+  //     error: "",
+  //     message: "",
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: true,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
-  it("Receives a STOP_DELETE_ACCOUNT action", () => {
-    expect(
-      securityReducer(mockState, {
-        type: actions.STOP_DELETE_ACCOUNT
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: false,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a STOP_DELETE_ACCOUNT action", () => {
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.STOP_DELETE_ACCOUNT
+  //     })
+  //   ).toEqual({
+  //     failed: false,
+  //     error: "",
+  //     message: "",
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: false,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
-  it("Receives a POST_DELETE_ACCOUNT action", () => {
-    expect(
-      securityReducer(mockState, {
-        type: actions.POST_DELETE_ACCOUNT
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: false,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a POST_DELETE_ACCOUNT action", () => {
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.POST_DELETE_ACCOUNT
+  //     })
+  //   ).toEqual({
+  //     failed: false,
+  //     error: "",
+  //     message: "",
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: false,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
-  it("Receives a POST_DELETE_ACCOUNT action", () => {
-    expect(
-      securityReducer(mockState, {
-        type: actions.POST_DELETE_ACCOUNT
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: false,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a POST_DELETE_ACCOUNT action", () => {
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.POST_DELETE_ACCOUNT
+  //     })
+  //   ).toEqual({
+  //     failed: false,
+  //     error: "",
+  //     message: "",
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: false,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
-  it("Receives a POST_DELETE_ACCOUNT_SUCCESS action", () => {
-    const location = "dummy-location";
-    expect(
-      securityReducer(mockState, {
-        type: actions.POST_DELETE_ACCOUNT_SUCCESS,
-        payload: {
-          location: location
-        }
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: false,
-      location: location,
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a POST_DELETE_ACCOUNT_SUCCESS action", () => {
+  //   const location = "dummy-location";
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.POST_DELETE_ACCOUNT_SUCCESS,
+  //       payload: {
+  //         location: location
+  //       }
+  //     })
+  //   ).toEqual({
+  //     failed: false,
+  //     error: "",
+  //     message: "",
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: false,
+  //     location: location,
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
-  it("Receives a POST_DELETE_ACCOUNT_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
-    expect(
-      securityReducer(mockState, {
-        type: actions.POST_DELETE_ACCOUNT_FAIL,
-        error: true,
-        payload: {
-          error: error,
-          message: err
-        }
-      })
-    ).toEqual({
-      failed: true,
-      error: error,
-      message: err,
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: false,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a POST_DELETE_ACCOUNT_FAIL action", () => {
+  //   const err = "Error",
+  //     error = new Error(err);
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.POST_DELETE_ACCOUNT_FAIL,
+  //       error: true,
+  //       payload: {
+  //         error: error,
+  //         message: err
+  //       }
+  //     })
+  //   ).toEqual({
+  //     failed: true,
+  //     error: error,
+  //     message: err,
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: false,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
   it("Receives a START_ASK_WEBAUTHN_DESCRIPTION action", () => {
     expect(

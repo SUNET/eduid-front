@@ -11,6 +11,8 @@ addLocaleData("react-intl/locale-data/en");
 
 // my job is to: control the display of the phone number in the profile registered by user in settings
 
+// Comment N: This component controls rendering of phone number only in profile, so I think these rendering test might be enough
+
 describe("PhoneDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(
