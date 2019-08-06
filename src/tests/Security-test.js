@@ -338,60 +338,60 @@ describe("Reducers", () => {
   //   });
   // });
 
-  it("Receives a GET_CHANGE_PASSWORD action", () => {
-    expect(
-      securityReducer(mockState, {
-        type: actions.GET_CHANGE_PASSWORD
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: false,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a GET_CHANGE_PASSWORD action", () => {
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.GET_CHANGE_PASSWORD
+  //     })
+  //   ).toEqual({
+  //     failed: false,
+  //     error: "",
+  //     message: "",
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: false,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
-  it("Receives a GET_CHANGE_PASSWORD_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
-    expect(
-      securityReducer(mockState, {
-        type: actions.GET_CHANGE_PASSWORD_FAIL,
-        error: true,
-        payload: {
-          error: error,
-          message: err
-        }
-      })
-    ).toEqual({
-      failed: true,
-      error: error,
-      message: err,
-      credentials: [],
-      code: "",
-      confirming_change: false,
-      confirming_deletion: false,
-      location: "",
-      deleted: false,
-      webauthn_asking_description: false,
-      webauthn_token_description: "",
-      webauthn_failed: false,
-      webauthn_attestation: {},
-      webauthn_token_remove: "",
-      webauthn_token_verify: ""
-    });
-  });
+  // it("Receives a GET_CHANGE_PASSWORD_FAIL action", () => {
+  //   const err = "Error",
+  //     error = new Error(err);
+  //   expect(
+  //     securityReducer(mockState, {
+  //       type: actions.GET_CHANGE_PASSWORD_FAIL,
+  //       error: true,
+  //       payload: {
+  //         error: error,
+  //         message: err
+  //       }
+  //     })
+  //   ).toEqual({
+  //     failed: true,
+  //     error: error,
+  //     message: err,
+  //     credentials: [],
+  //     code: "",
+  //     confirming_change: false,
+  //     confirming_deletion: false,
+  //     location: "",
+  //     deleted: false,
+  //     webauthn_asking_description: false,
+  //     webauthn_token_description: "",
+  //     webauthn_failed: false,
+  //     webauthn_attestation: {},
+  //     webauthn_token_remove: "",
+  //     webauthn_token_verify: ""
+  //   });
+  // });
 
   it("Receives a START_DELETE_ACCOUNT action", () => {
     expect(
@@ -784,27 +784,27 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(action));
   });
 
-  it("Sagas requestPasswordChange", () => {
-    const oldLoc = window.location.href;
-    let mockWindow = {
-      location: {
-        href: oldLoc
-      }
-    };
+  // it("Sagas requestPasswordChange", () => {
+  //   const oldLoc = window.location.href;
+  //   let mockWindow = {
+  //     location: {
+  //       href: oldLoc
+  //     }
+  //   };
 
-    const generator = requestPasswordChange(mockWindow);
+  //   const generator = requestPasswordChange(mockWindow);
 
-    let next = generator.next();
-    expect(next.value).toEqual(put(actions.stopConfirmationPassword()));
+  //   let next = generator.next();
+  //   expect(next.value).toEqual(put(actions.stopConfirmationPassword()));
 
-    next = generator.next();
-    expect(next.value.SELECT.args).toEqual([]);
+  //   next = generator.next();
+  //   expect(next.value.SELECT.args).toEqual([]);
 
-    generator.next(mockState.config);
-    expect(mockWindow.location.href).toEqual(
-      "/dummy-tok-url/chpass?next=%2Fdummy-dash-url%2Fchpass"
-    );
-  });
+  //   generator.next(mockState.config);
+  //   expect(mockWindow.location.href).toEqual(
+  //     "/dummy-tok-url/chpass?next=%2Fdummy-dash-url%2Fchpass"
+  //   );
+  // });
 
   it("Sagas postDeleteAccount", () => {
     const generator = postDeleteAccount();
