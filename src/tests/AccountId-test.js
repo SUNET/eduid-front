@@ -7,6 +7,8 @@ import { IntlProvider } from "react-intl";
 // I am the component that: displays unique id to user in Advanced settings.
 // My job is to: I render text and the eppn (from store).
 
+// Comments N: This component gets data from the store and displays it, so I think these rendering tests might be enough
+
 describe("AccountId component renders", () => {
   const props = {
     data: {
