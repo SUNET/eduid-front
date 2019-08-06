@@ -78,7 +78,7 @@ describe("DeleteAccount component", () => {
   const state = { ...fakeState };
   it("has a button", () => {
     const { wrapper } = setupComponent();
-    console.log(wrapper.debug());
+    // console.log(wrapper.debug());
     const button = wrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
     expect(button.length).toEqual(1);
@@ -238,9 +238,8 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 describe("DeleteAccount redux functionality", () => {
   it("DeleteAccount button triggers handleStartConfirmationDeletion()", () => {
     // TEST: can we prove that this EduIDButton triggers handleStartConfirmationPassword() > dispatches startConfirmationPassword()
-
-    // maybe this is what happens at the bottom of the file in the test stolen from the old files? 
-      // expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT)
+    // maybe this is what happens at the bottom of the file in the test stolen from the old files?
+    // expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT)
   });
 
   it("startConfirmationDeletion() should trigger the action START_DELETE_ACCOUNT", () => {
@@ -277,13 +276,63 @@ describe("Logout modal redux functionality", () => {
   });
   it("POST_DELETE_ACCOUNT action retuns the current state", () => {
     const mockState = {
-      confirming_change: false
+      confirming_deletion: false
     };
     expect(
       securityReducer(mockState, {
         type: actions.GET_CHANGE_PASSWORD
       })
     ).toEqual({
+      confirming_deletion: false
+    });
+  });
+
+  it("POST_DELETE_ACCOUNT_SUCCESS action returns the updated state", () => {
+    const mockState = {
+      failed: false,
+      error: "",
+      message: "",
+      confirming_deletion: false,
+      location: ""
+    };
+    const location = "dummy-location";
+    expect(
+      securityReducer(mockState, {
+        type: actions.POST_DELETE_ACCOUNT_SUCCESS,
+        payload: {
+          location: location
+        }
+      })
+    ).toEqual({
+      failed: false,
+      error: "",
+      message: "",
+      location: "dummy-location",
+      confirming_deletion: false
+    });
+  });
+
+  it("POST_DELETE_ACCOUNT_FAIL action returns an error state", () => {
+    const mockState = {
+      failed: false,
+      error: false,
+      confirming_change: false
+    };
+    const err = "Error";
+    const error = new Error(err);
+    expect(
+      securityReducer(mockState, {
+        type: actions.POST_DELETE_ACCOUNT_FAIL,
+        error: true,
+        payload: {
+          error: error,
+          message: err
+        }
+      })
+    ).toEqual({
+      failed: true,
+      error: error,
+      message: err,
       confirming_change: false
     });
   });
