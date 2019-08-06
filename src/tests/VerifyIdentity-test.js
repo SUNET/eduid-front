@@ -16,6 +16,8 @@ addLocaleData("react-intl/locale-data/en");
 // I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
 // My job is to: if there is a nin: display vetting buttons, if nin is verified: remove buttons
 
+// Comment N: This component just renders <AddNin /> and displays the vetting buttons, so I think these rendering test might be enough
+
 describe("VerifyIdentity component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(
