@@ -4,12 +4,14 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
-import EmailDisplay from "components/EmailDisplay";
+import EmailDisplay from "containers/EmailDisplay";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
 // my job is to: control the display of the email address registered at signup in the profile
+
+// Comment N: This component controls rendering of email only in profile, so I think these rendering test might be enough
 
 describe("EmailDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {

@@ -4,12 +4,14 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
-import PhoneDisplay from "components/PhoneDisplay";
+import PhoneDisplay from "containers/PhoneDisplay";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
 // my job is to: control the display of the phone number in the profile registered by user in settings
+
+// Comment N: This component controls rendering of phone number only in profile, so I think these rendering test might be enough
 
 describe("PhoneDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {
