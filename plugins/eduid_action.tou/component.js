@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 import i18n from "i18n-messages";
 import { appFetching, postAction } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
+import HeaderContainer from "containers/HeaderAnon";
+import FooterContainer from "containers/Footer";
+import NotificationsContainer from "containers/Notifications";
+
 import EduIDButton from "components/EduIDButton";
 import { eduidNotify } from "actions/Notifications";
 
@@ -14,20 +18,14 @@ class Main extends Component {
   render() {
     return (
       <ActionWrapperContainer>
-        <h2>{this.props.l10n("tou.header")}</h2>
-        <div className="row">
-          <div className="col-1 col-lg-3" />
-          <div className="col-10 col-lg-6 card tou-card">
-            <div
-              className="card-body"
-              id="eduid-tou"
-              dangerouslySetInnerHTML={{
-                __html: this.props.tous[this.props.lang]
-              }}
-            />
-          </div>
-          <div className="col-1 col-lg-3" />
-        </div>
+        <h2 className="tou-title">{this.props.l10n("tou.header")}</h2>
+        <div
+          // className="card-body"
+          id="eduid-tou"
+          dangerouslySetInnerHTML={{
+            __html: this.props.tous[this.props.lang]
+          }}
+        />
         <div id="buttons">
           <EduIDButton
             className="settings-button ok-button tou-button"
