@@ -53,4 +53,3 @@ DeleteAccount.propTypes = {
 };
 
 export default DeleteAccount;
-

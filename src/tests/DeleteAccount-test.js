@@ -60,7 +60,8 @@ describe("DeleteAccount component", () => {
       credentials: [],
       confirming_deletion: false,
       deleted: false,
-      redirect_to: ""
+      redirect_to: "",
+      location: "dummy-location"
     },
     intl: {
       locale: "en",
@@ -80,10 +81,9 @@ describe("DeleteAccount component", () => {
   }
 
   const state = { ...fakeState };
-  // state.security.location = "";
+  state.security.location = "";
   it("has a button", () => {
     const { wrapper } = setupComponent();
-    console.log(wrapper.debug());
     const button = wrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
     expect(button.length).toEqual(1);
@@ -108,7 +108,8 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
       credentials: [],
       confirming_deletion: false,
       deleted: false,
-      redirect_to: ""
+      redirect_to: "",
+      location: "dummy-location"
     },
     intl: {
       locale: "en",
@@ -128,8 +129,10 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
   }
   const state = { ...fakeState };
   // leave confirming_change as false
+  state.security.location = "";
   it("does not render a modal", () => {
     const { wrapper } = setupComponent();
+    console.log(wrapper.debug());
     const modal = wrapper.find(DeleteModal);
     expect(modal.props().showModal).toEqual(false);
   });
@@ -151,7 +154,8 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 
   const fakeState = {
     security: {
-      confirming_deletion: false
+      confirming_deletion: false,
+      location: "dummy-location"
     },
     intl: {
       locale: "en",
@@ -171,6 +175,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
   }
   const state = { ...fakeState };
   // set confirming_change to true
+  state.security.location = "";
   state.security.confirming_deletion = true;
   it("renders a modal", () => {
     const { wrapper } = setupComponent();
@@ -478,7 +483,7 @@ describe("DeleteAccount Container", () => {
 describe("Async component", () => {
   const mockState = {
     security: {
-      location: "dummy-location"
+      location: ""
     },
     config: {
       csrf_token: "csrf-token",
@@ -493,51 +498,30 @@ describe("Async component", () => {
   };
 
   it("Sagas request DeleteAccount", () => {
-    const oldLoc = window.location.href;
-    let mockWindow = {
-      location: {
-        href: oldLoc
-      }
+    const generator = postDeleteAccount();
+    let next = generator.next();
+    expect(next.value).toEqual(put(actions.postConfirmDeletion()));
+
+    next = generator.next();
+    expect(next.value.SELECT.args).toEqual([]);
+
+    const data = {
+      csrf_token: "csrf-token"
     };
 
-    const generator = requestDeleteAccount(mockWindow);
+    next = generator.next(mockState);
+    expect(next.value).toEqual(call(deleteAccount, mockState.config, data));
 
-    let next = generator.next();
-    console.log(generator.debug());
-    // expect(next.value).toEqual(put(actions.stopConfirmationDeletion()));
-
-    // next = generator.next();
-    // expect(next.value.SELECT.args).toEqual([]);
-
-    // generator.next(mockState.config);
-    // expect(mockWindow.location.href).toEqual(
-    //   ""
-    // );
-
-    // const generator = postDeleteAccount();
-    // let next = generator.next();
-    // expect(next.value).toEqual(put(actions.postConfirmDeletion()));
-
-    // next = generator.next();
-    // expect(next.value.SELECT.args).toEqual([]);
-
-    // const data = {
-    //   csrf_token: "csrf-token"
-    // };
-
-    // next = generator.next(mockState);
-    // expect(next.value).toEqual(call(deleteAccount, mockState.config, data));
-
-    // const action = {
-    //   type: actions.POST_DELETE_ACCOUNT_SUCCESS,
-    //   payload: {
-    //     csrf_token: "csrf-token"
-    //   }
-    // };
-    // next = generator.next(action);
-    // expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    // next = generator.next();
-    // delete action.payload.csrf_token;
-    // expect(next.value).toEqual(put(action));
+    const action = {
+      type: actions.POST_DELETE_ACCOUNT_SUCCESS,
+      payload: {
+        csrf_token: "csrf-token"
+      }
+    };
+    next = generator.next(action);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    next = generator.next();
+    delete action.payload.csrf_token;
+    expect(next.value).toEqual(put(action));
   });
 });

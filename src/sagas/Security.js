@@ -66,23 +66,23 @@ export function* requestPasswordChange(win) {
   }
 }
 
-export function* requestDeleteAccount(win) {
-  try {
-    yield put(stopConfirmationDeletion());
-    const config = yield select(state => state.config);
-    let tsURL = config.TOKEN_SERVICE_URL;
-    let nextURL = "delete-account";
-    let url = tsURL + "?next=" + nextURL;
+// export function* requestDeleteAccount(win) {
+//   try {
+//     yield put(stopConfirmationDeletion());
+//     const config = yield select(state => state.config);
+//     let tsURL = config.TOKEN_SERVICE_URL;
+//     let nextURL = "delete-account";
+//     let url = tsURL + "?next=" + nextURL;
 
-    if (win !== undefined && win.location !== undefined) {
-      win.location.href = url;
-    } else {
-      window.location.href = url;
-    }
-  } catch (error) {
-    yield* failRequest(error, removeAccountFail);
-  }
-}
+//     if (win !== undefined && win.location !== undefined) {
+//       win.location.href = url;
+//     } else {
+//       window.location.href = url;
+//     }
+//   } catch (error) {
+//     yield* failRequest(error, removeAccountFail);
+//   }
+// }
 
 export function* postDeleteAccount() {
   try {
