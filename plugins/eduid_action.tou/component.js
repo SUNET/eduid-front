@@ -26,7 +26,7 @@ class Main extends Component {
             __html: this.props.tous[this.props.lang]
           }}
         />
-        <div id="buttons">
+        <div id="tou-buttons">
           <EduIDButton
             className="settings-button ok-button tou-button"
             onClick={this.props.acceptTOU}
