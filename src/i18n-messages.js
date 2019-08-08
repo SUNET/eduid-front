@@ -1574,7 +1574,7 @@ const msgs = {
   "security.description": (
     <FormattedMessage
       id="security.description"
-      defaultMessage={`Description`}
+      defaultMessage={`Name`}
     />
   ),
 
@@ -1583,7 +1583,7 @@ const msgs = {
   ),
 
   "security.verify": (
-    <FormattedMessage id="security.verify" defaultMessage={`Verify`} />
+    <FormattedMessage id="security.verify" defaultMessage={`Verify key`} />
   ),
 
   "security.verified": (
@@ -1598,15 +1598,20 @@ const msgs = {
     <FormattedMessage id="security.credential" defaultMessage={`Credential`} />
   ),
 
+  "security.last-used.date": (
+    <FormattedMessage id="security.last-used.date" defaultMessage={`Never used`} />
+  ),
+
+
   "security.creation_date": (
     <FormattedMessage
       id="security.creation_date"
-      defaultMessage={`Creation date`}
+      defaultMessage={`Created on`}
     />
   ),
 
   "security.last_used": (
-    <FormattedMessage id="security.last_used" defaultMessage={`Last used`} />
+    <FormattedMessage id="security.last_used" defaultMessage={`Used on`} />
   ),
 
   "security.u2f.max_allowed_tokens": (
