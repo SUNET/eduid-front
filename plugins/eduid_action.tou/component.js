@@ -7,7 +7,6 @@ import { appFetching, postAction } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
 import HeaderContainer from "containers/HeaderAnon";
 import FooterContainer from "containers/Footer";
-import NotificationsContainer from "containers/Notifications";
 
 import EduIDButton from "components/EduIDButton";
 import { eduidNotify } from "actions/Notifications";
@@ -18,7 +17,9 @@ class Main extends Component {
   render() {
     return (
       <ActionWrapperContainer>
-        <h2 className="tou-title">{this.props.l10n("tou.header")}</h2>
+        <h3 key="0" className="tou-title">
+          {this.props.l10n("tou.header")}
+        </h3>
         <div
           // className="card-body"
           id="eduid-tou"
