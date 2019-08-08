@@ -30,12 +30,12 @@ class Security extends Component {
   }
 
   render() {
-    const url = window.location.href;
+    // const url = window.location.href;
 
-    if (this.props.redirect_to !== "") {
-      window.location.href = this.props.redirect_to;
-      return null;
-    }
+    // if (this.props.redirect_to !== "") {
+    //   window.location.href = this.props.redirect_to;
+    //   return null;
+    // }
     // if (this.props.deleted) {
     //   window.location.href = "https://eduid.se";
     //   return null;
@@ -51,7 +51,7 @@ class Security extends Component {
       let btnRemove = "";
       let btnVerify = "";
       if (
-        tokens.length > 1 &&
+        tokens.length > 0 &&
         cred.credential_type !== "security.password_credential_type"
       ) {
         btnRemove = (
