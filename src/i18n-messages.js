@@ -1572,10 +1572,7 @@ const msgs = {
   ),
 
   "security.description": (
-    <FormattedMessage
-      id="security.description"
-      defaultMessage={`Name`}
-    />
+    <FormattedMessage id="security.description" defaultMessage={`Name`} />
   ),
 
   "security.remove": (
@@ -1599,9 +1596,11 @@ const msgs = {
   ),
 
   "security.last-used.date": (
-    <FormattedMessage id="security.last-used.date" defaultMessage={`Never used`} />
+    <FormattedMessage
+      id="security.last-used.date"
+      defaultMessage={`Never used`}
+    />
   ),
-
 
   "security.creation_date": (
     <FormattedMessage
@@ -1909,7 +1908,14 @@ const msgs = {
   "accountId.long_description": (
     <FormattedMessage
       id="accountId.long_description"
-      defaultMessage={`This is an automatically generated unique identifier for your eduID. You might be asked to share this information if you need support.`}
+      defaultMessage={`This is an automatically generated unique identifier for your eduID.`}
+    />
+  ),
+
+  "accountId.short_description": (
+    <FormattedMessage
+      id="accountId.short_description"
+      defaultMessage={` You might be asked to share this information if you need support.`}
     />
   ),
 

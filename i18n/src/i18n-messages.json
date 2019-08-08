@@ -969,7 +969,11 @@
   },
   {
     "id": "accountId.long_description",
-    "defaultMessage": "This is an automatically generated unique identifier for your eduID. You might be asked to share this information if you need support."
+    "defaultMessage": "This is an automatically generated unique identifier for your eduID."
+  },
+  {
+    "id": "accountId.short_description",
+    "defaultMessage": "You might be asked to share this information if you need support."
   },
   {
     "id": "accountId.accountId_display_title",
