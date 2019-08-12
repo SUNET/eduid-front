@@ -1,5 +1,10 @@
 @import "../variables.scss";
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   height: 100%;
   width: 100vw;
@@ -37,7 +42,7 @@ h1 {
 h2 {
   font-size: 28px;
   line-height: 42px;
-  margin-top: 24;
+  margin-top: 24px;
 }
 
 h3 {
