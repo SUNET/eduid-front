@@ -13,7 +13,7 @@ import "style/DashboardMain.scss"; //styling in DashboardMain
 
 class Profile extends Component {
   render() {
-    const url = window.location.href;
+    const url = props.history.location;
     let profileSection = ""; // determines the interactive content (if any)
     let stylingId = "profile-container"; // changes styling depending on profileSection
     let accountDetails = ""; // determines the userdetailks displayed in the profile

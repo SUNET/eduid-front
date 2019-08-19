@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
 import EduIDButton from "components/EduIDButton";
 import "style/Nins.scss";
 
 export class NinDisplay extends Component {
   render() {
-    const url = window.location.href;
+    const url = props.history.location;
     if (url.includes("verify-identity")) {
       // VERIFY ID PROCESS: this is the display of a verified number (on the verify-identity page)
       if (this.props.verifiedNinStatus) {

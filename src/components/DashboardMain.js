@@ -71,8 +71,13 @@ class Main extends Component {
                   path="/profile/settings/"
                   component={SettingsComponent}
                 />
-                <Route exact path="/profile/" component={Profile} />
-                <Route path="/profile/verify-identity/" component={Profile} />
+                <Route
+                  exact
+                  path="/profile/"
+                  component={Profile}
+                  history={history}
+                />
+                <Route path="/profile/verify-identity/" component={Profile} history={history} />
                 <Route
                   exact
                   path="/profile/security/"
