@@ -11,7 +11,11 @@ import DeleteAccount from "components/DeleteAccount";
 import * as actions from "actions/Security";
 import * as notifyActions from "actions/Notifications";
 import securityReducer from "reducers/Security";
-import { postDeleteAccount, deleteAccount } from "sagas/Security";
+import {
+  requestDeleteAccount,
+  postDeleteAccount,
+  deleteAccount
+} from "sagas/Security";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
@@ -56,7 +60,8 @@ describe("DeleteAccount component", () => {
       credentials: [],
       confirming_deletion: false,
       deleted: false,
-      redirect_to: ""
+      redirect_to: "",
+      location: "dummy-location"
     },
     intl: {
       locale: "en",
@@ -76,6 +81,7 @@ describe("DeleteAccount component", () => {
   }
 
   const state = { ...fakeState };
+  state.security.location = "";
   it("has a button", () => {
     const { wrapper } = setupComponent();
     const button = wrapper.find("EduIDButton");
@@ -102,7 +108,8 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
       credentials: [],
       confirming_deletion: false,
       deleted: false,
-      redirect_to: ""
+      redirect_to: "",
+      location: "dummy-location"
     },
     intl: {
       locale: "en",
@@ -122,8 +129,10 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
   }
   const state = { ...fakeState };
   // leave confirming_change as false
+  state.security.location = "";
   it("does not render a modal", () => {
     const { wrapper } = setupComponent();
+    console.log(wrapper.debug());
     const modal = wrapper.find(DeleteModal);
     expect(modal.props().showModal).toEqual(false);
   });
@@ -145,7 +154,8 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 
   const fakeState = {
     security: {
-      confirming_deletion: false
+      confirming_deletion: false,
+      location: "dummy-location"
     },
     intl: {
       locale: "en",
@@ -165,6 +175,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
   }
   const state = { ...fakeState };
   // set confirming_change to true
+  state.security.location = "";
   state.security.confirming_deletion = true;
   it("renders a modal", () => {
     const { wrapper } = setupComponent();
@@ -237,9 +248,8 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 describe("DeleteAccount redux functionality", () => {
   it("DeleteAccount button triggers handleStartConfirmationDeletion()", () => {
     // TEST: can we prove that this EduIDButton triggers handleStartConfirmationPassword() > dispatches startConfirmationPassword()
-
-    // maybe this is what happens at the bottom of the file in the test stolen from the old files? 
-      // expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT)
+    // maybe this is what happens at the bottom of the file in the test stolen from the old files?
+    // expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT)
   });
 
   it("startConfirmationDeletion() should trigger the action START_DELETE_ACCOUNT", () => {
@@ -276,14 +286,66 @@ describe("Logout modal redux functionality", () => {
   });
   it("POST_DELETE_ACCOUNT action retuns the current state", () => {
     const mockState = {
-      confirming_change: false
+      confirming_deletion: false,
+      failed: false
     };
     expect(
       securityReducer(mockState, {
-        type: actions.GET_CHANGE_PASSWORD
+        type: actions.POST_DELETE_ACCOUNT
       })
     ).toEqual({
-      confirming_change: false
+      confirming_deletion: false,
+      failed: false
+    });
+  });
+
+  it("POST_DELETE_ACCOUNT_SUCCESS action returns the updated state", () => {
+    const mockState = {
+      failed: false,
+      error: "",
+      message: "",
+      confirming_deletion: false,
+      location: ""
+    };
+    const location = "dummy-location";
+    expect(
+      securityReducer(mockState, {
+        type: actions.POST_DELETE_ACCOUNT_SUCCESS,
+        payload: {
+          location: location
+        }
+      })
+    ).toEqual({
+      failed: false,
+      error: "",
+      message: "",
+      location: "dummy-location",
+      confirming_deletion: false
+    });
+  });
+
+  it("POST_DELETE_ACCOUNT_FAIL action returns an error state", () => {
+    const mockState = {
+      failed: false,
+      error: false,
+      confirming_deletion: false
+    };
+    const err = "Error";
+    const error = new Error(err);
+    expect(
+      securityReducer(mockState, {
+        type: actions.POST_DELETE_ACCOUNT_FAIL,
+        error: true,
+        payload: {
+          error: error,
+          message: err
+        }
+      })
+    ).toEqual({
+      failed: true,
+      error: error,
+      message: err,
+      confirming_deletion: false
     });
   });
 
@@ -421,7 +483,7 @@ describe("DeleteAccount Container", () => {
 describe("Async component", () => {
   const mockState = {
     security: {
-      location: "dummy-location"
+      location: ""
     },
     config: {
       csrf_token: "csrf-token",
@@ -434,7 +496,8 @@ describe("Async component", () => {
       messages: messages
     }
   };
-  it("Sagas postDeleteAccount", () => {
+
+  it("Sagas request DeleteAccount", () => {
     const generator = postDeleteAccount();
     let next = generator.next();
     expect(next.value).toEqual(put(actions.postConfirmDeletion()));

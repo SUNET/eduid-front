@@ -7,10 +7,10 @@ import "style/Security.scss";
 
 class DeleteAccount extends Component {
   render() {
-    // if (this.props.redirect_to !== "") {
-    // window.location.href = this.props.redirect_to;
-    //   return null;
-    // }
+    if (this.props.redirect_to !== "") {
+    window.location.href = this.props.redirect_to;
+      return null;
+    }
     if (this.props.deleted) {
       window.location.href = "https://eduid.se";
       return null;
@@ -53,4 +53,3 @@ DeleteAccount.propTypes = {
 };
 
 export default DeleteAccount;
-
