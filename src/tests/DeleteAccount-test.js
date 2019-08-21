@@ -132,7 +132,7 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
   state.security.location = "";
   it("does not render a modal", () => {
     const { wrapper } = setupComponent();
-    console.log(wrapper.debug());
+    // console.log(wrapper.debug());
     const modal = wrapper.find(DeleteModal);
     expect(modal.props().showModal).toEqual(false);
   });

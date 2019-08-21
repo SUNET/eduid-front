@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NinForm from "./NinForm";
 import NinDisplay from "containers/NinDisplay";
+import { withRouter } from "react-router-dom";
 // import { connect } from "react-redux";
 // import i18n from "i18n-messages";
 
@@ -33,4 +34,4 @@ AddNin.propTypes = {
   // handleDelete: PropTypes.func
 };
 
-export default AddNin;
+export default withRouter(AddNin);

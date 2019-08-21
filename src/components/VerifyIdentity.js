@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 // import { connect } from "react-redux";
 // import i18n from "i18n-messages";
-
+import { withRouter } from "react-router-dom";
 import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
 
@@ -76,4 +76,4 @@ VerifyIdentity.propTypes = {
   proofing_methods: PropTypes.array
 };
 
-export default VerifyIdentity;
+export default withRouter(VerifyIdentity);

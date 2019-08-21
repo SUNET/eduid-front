@@ -6,14 +6,14 @@ import NameDisplay from "containers/NameDisplay";
 import NinDisplay from "containers/NinDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";
-
+import { withRouter } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss"; //styling in DashboardMain
 
 class Profile extends Component {
   render() {
-    const url = props.history.location;
+    const url = this.props.history.location.pathname;
     let profileSection = ""; // determines the interactive content (if any)
     let stylingId = "profile-container"; // changes styling depending on profileSection
     let accountDetails = ""; // determines the userdetailks displayed in the profile
@@ -69,7 +69,7 @@ Profile.propTypes = {
   nin: PropTypes.string,
   nins: PropTypes.array,
   validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
+  handleDelete: PropTypes.func
 };
 
-export default Profile;
+export default withRouter(Profile);

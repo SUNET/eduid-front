@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+// import createHistory from "history/createBrowserHistory";
+
+// const createBrowserHistory = require("history").createBrowserHistory;
+import { createBrowserHistory } from "history";
 import { ConnectedRouter } from "react-router-redux";
+
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
@@ -15,8 +19,7 @@ import NotificationsContainer from "containers/Notifications";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
-
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 class Main extends Component {
   constructor(props) {
@@ -74,10 +77,12 @@ class Main extends Component {
                 <Route
                   exact
                   path="/profile/"
-                  component={Profile}
-                  history={history}
+                  render={props => <Profile {...props} />}
                 />
-                <Route path="/profile/verify-identity/" component={Profile} history={history} />
+                <Route
+                  path="/profile/verify-identity/"
+                  render={props => <Profile {...props} />}
+                />
                 <Route
                   exact
                   path="/profile/security/"

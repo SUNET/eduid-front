@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import EduIDButton from "components/EduIDButton";
 import "style/Nins.scss";
 
 export class NinDisplay extends Component {
   render() {
-    const url = props.history.location;
+    const url = this.props.history.location.pathname;
+    console.log("these are nins in ninDisplay;", this.props.nins);
+    console.log(
+      "this is verified status in ninDisplay;",
+      this.props.verifiedNinStatus
+    );
+    console.log("this is verifiedNin in ninDisplay;", this.props.verifiedNin);
+
+    console.log(
+      "this is history in ninDisplay;",
+      this.props.history.location.pathname
+    );
+    // const url = window.location.href;
     if (url.includes("verify-identity")) {
       // VERIFY ID PROCESS: this is the display of a verified number (on the verify-identity page)
       if (this.props.verifiedNinStatus) {
@@ -123,7 +136,7 @@ NinDisplay.propTypes = {
   nins: PropTypes.array,
   verifiedNin: PropTypes.array,
   verifiedNinStatus: PropTypes.bool,
-  handleDelete: PropTypes.func,
+  handleDelete: PropTypes.func
 };
 
-export default NinDisplay;
+export default withRouter(NinDisplay);
