@@ -1,13 +1,24 @@
 import React from "react";
 import expect from "expect";
-import { shallow } from "enzyme";
-import AccountId from "components/AccountId";
-import { IntlProvider } from "react-intl";
+import { shallow, mount } from "enzyme";
+import AccountIdComponent from "components/AccountId";
+import AccountIdContainer from "containers/AccountId";
+import { addLocaleData, IntlProvider } from "react-intl";
+import { Provider } from "react-intl-redux";
+const messages = require("../../i18n/l10n/en");
+const mock = require("jest-mock");
+addLocaleData("react-intl/locale-data/en");
 
-// I am the component that: displays unique id to user in Advanced settings.
-// My job is to: I render text and the eppn (from store).
-
-// Comments N: This component gets data from the store and displays it, so I think these rendering tests might be enough
+describe("NameDisplay component", () => {
+  it("Does not render 'false' or 'null'", () => {
+    const wrapper = shallow(
+      <IntlProvider locale="en">
+        <AccountIdContainer />
+      </IntlProvider>
+    );
+    expect(wrapper.isEmptyRender()).toEqual(false);
+  });
+});
 
 describe("AccountId component renders", () => {
   const props = {
@@ -21,7 +32,7 @@ describe("AccountId component renders", () => {
   };
   const wrapper = shallow(
     <IntlProvider locale="en">
-      <AccountId {...props} />
+      <AccountIdContainer {...props} />
     </IntlProvider>
   );
   it("Component does not render 'null' or 'false'", () => {
@@ -39,4 +50,71 @@ describe("AccountId component renders", () => {
     });
   });
   expect(wrapper.props().data.eppn).toEqual("dummy-eppn");
+});
+
+describe("AccountId component renders", () => {
+  const fakeStore = state => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
+  });
+  const fakeState = {
+    personal_data: {
+      data: {
+        eppn: "dummy-eppn"
+      }
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  };
+
+  function setupComponent() {
+    // const props = {
+    // data: {
+    //   eppn: "eppn-dummy"{...props}
+    // }
+    // };
+
+    // history.push({
+    //   pathname: "/verify-identity"
+    // });
+    // const state = { ...fakeState };
+    // state.personal_data.data.given_name = "";
+    // state.personal_data.data.surname = "";
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        {/* <Router history={history}> */}
+        <AccountIdContainer />
+        {/* </Router> */}
+      </Provider>
+    );
+    return {
+      // props,
+      wrapper
+    };
+  }
+
+  it("Component renders h4 heading", () => {
+    const { wrapper } = setupComponent();
+    const heading = wrapper.find("h4");
+    expect(heading.exists()).toBe(true);
+    expect(heading.text()).toContain("Unique ID");
+  });
+
+  it("Component renders label", () => {
+    const { wrapper } = setupComponent();
+    const label = wrapper.find("label");
+    expect(label.exists()).toBe(true);
+    expect(label.text()).toContain("Unique ID");
+  });
+
+  it("Component renders eppn", () => {
+    const { wrapper } = setupComponent();
+    const eppn = wrapper.find("#nin-number");
+    expect(eppn.exists()).toBe(true);
+    expect(eppn.text()).toContain("dummy-eppn");
+  });
 });
