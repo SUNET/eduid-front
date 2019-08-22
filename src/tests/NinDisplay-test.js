@@ -11,14 +11,9 @@ const messages = require("../../i18n/l10n/en");
 addLocaleData("react-intl/locale-data/en");
 
 history.push("/verify-identity");
-console.log(
-  "this is history in test(/verify-identity):",
-  history.location.pathname
-);
-
 describe("NinDisplay component (/verify-identity), when nin is saved and unverified ", () => {
   const fakeStore = state => ({
-    default: () => { },
+    default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
     getState: () => ({ ...state })
@@ -65,7 +60,6 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
 
   it("Renders the saved number", () => {
     const { wrapper } = setupComponent();
-    // console.log(wrapper.debug());
     const number = wrapper.find("p");
     expect(number.text()).toBe("199901100006");
   });
@@ -80,7 +74,7 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
 
 describe("NinDisplay component (/verify-identity), when a nin is saved and verified ", () => {
   const fakeStore = state => ({
-    default: () => { },
+    default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
     getState: () => ({ ...state })
@@ -129,10 +123,7 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
   });
 });
 
-
 history.push("/profile");
-console.log("this is history in test(profile):", history.location.pathname);
-
 describe("NinDisplay component", () => {
   it("Does not render 'false' or 'null'", () => {
     const wrapper = shallow(

@@ -8,20 +8,7 @@ import "style/Nins.scss";
 export class NinDisplay extends Component {
   render() {
     const url = this.props.history.location.pathname;
-    console.log("these are nins in ninDisplay;", this.props.nins);
-    console.log(
-      "this is verified status in ninDisplay;",
-      this.props.verifiedNinStatus
-    );
-    console.log("this is verifiedNin in ninDisplay;", this.props.verifiedNin);
-
-    console.log(
-      "this is history in ninDisplay;",
-      this.props.history.location.pathname
-    );
-    // const url = window.location.href;
     if (url.includes("verify-identity")) {
-      // VERIFY ID PROCESS: this is the display of a verified number (on the verify-identity page)
       if (this.props.verifiedNinStatus) {
         return (
           <div key="1" className="profile-card">
@@ -38,7 +25,6 @@ export class NinDisplay extends Component {
           </div>
         );
       } else {
-        // VERIFY ID PROCESS: this is the display of an unverified number (on the verify-identity page)
         return (
           <div key="1" className="profile-card">
             <label key="0">
