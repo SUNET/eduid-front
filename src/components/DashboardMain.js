@@ -18,7 +18,8 @@ import NotificationsContainer from "containers/Notifications";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
-// export default history = createBrowserHistory();
+
+export const history = createBrowserHistory();
 
 class Main extends Component {
   constructor(props) {
