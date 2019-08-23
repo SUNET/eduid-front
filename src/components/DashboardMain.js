@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 // import createHistory from "history/createBrowserHistory";
-
 // const createBrowserHistory = require("history").createBrowserHistory;
 import { createBrowserHistory } from "history";
 import { ConnectedRouter } from "react-router-redux";
@@ -19,7 +18,7 @@ import NotificationsContainer from "containers/Notifications";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
-export const history = createBrowserHistory();
+// export default history = createBrowserHistory();
 
 class Main extends Component {
   constructor(props) {

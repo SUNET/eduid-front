@@ -4,7 +4,7 @@ import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { Router } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
-import { history } from "components/DashboardMain";
+// import { history } from "components/DashboardMain";
 import NinDisplay from "containers/NinDisplay";
 const mock = require("jest-mock");
 const messages = require("../../i18n/l10n/en");

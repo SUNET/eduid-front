@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, Redirect } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
-
+// import createHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
@@ -19,7 +19,7 @@ import EmailInUseContainer from "containers/EmailInUse";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/SignupMain.scss";
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 class SignupMain extends Component {
   constructor(props) {
