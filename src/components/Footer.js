@@ -35,7 +35,7 @@ class Footer extends Component {
     }
     languageSelect = [<div key="1" id="language-selector">{langElems}</div>];
 
-    if (url.includes("register")) {
+    if (url.includes("register") || url.includes("services")) {
       navMenu = (
         // <div id="eduid-navbar">
         <nav key="2" id="eduid-navbar">

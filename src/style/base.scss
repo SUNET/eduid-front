@@ -177,42 +177,42 @@ small,
 }
 
 /* Main marketing message and sign up button */
-#content-block > h3:first-child {
-  font-weight: bold;
-  font-size: 32px;
-}
+// #content-block > h3:first-child {
+//   font-weight: bold;
+//   font-size: 32px;
+// }
 
 .row {
   margin: 0;
 }
 
-.container-fluid .jumbotron {
-  color: #fff;
-}
+// .container-fluid .jumbotron {
+//   color: #fff;
+// }
 
-.jumbotron {
-  margin: 60px 0;
-  text-align: center;
-  clear: both;
-}
+// .jumbotron {
+//   margin: 60px 0;
+//   text-align: center;
+//   clear: both;
+// }
 
-.jumbotron h1,
-.jumbotron p.lead {
-  text-align: center;
-}
+// .jumbotron h1,
+// .jumbotron p.lead {
+//   text-align: center;
+// }
 
-.jumbotron h1 {
-  font-size: 72px;
-  line-height: 1;
-}
+// .jumbotron h1 {
+//   font-size: 72px;
+//   line-height: 1;
+// }
 
-.jumbotron .lead {
-  margin: 1em 0 2em 0;
-}
+// .jumbotron .lead {
+//   margin: 1em 0 2em 0;
+// }
 
-.jumbotron p {
-  color: #3f5c57;
-}
+// .jumbotron p {
+//   color: #3f5c57;
+// }
 
 // .jumbotron input {
 //   height: 30px;
@@ -224,35 +224,35 @@ small,
 
 /* forms ---------------*/
 
-form {
-  display: flex;
-  flex-direction: column;
-}
+// form {
+//   display: flex;
+//   flex-direction: column;
+// }
 
-form.form-inline div.alert {
-  display: block;
-}
+// form.form-inline div.alert {
+//   display: block;
+// }
 
-.form-inline {
-  margin: 30px 0;
-}
+// .form-inline {
+//   margin: 30px 0;
+// }
 
-form.form-horizontal label {
-  font-weight: 400;
-}
+// form.form-horizontal label {
+//   font-weight: 400;
+// }
 
-.table-form .btn-link {
-  padding: 0;
-  margin-bottom: 0;
-}
+// .table-form .btn-link {
+//   padding: 0;
+//   margin-bottom: 0;
+// }
 
-.form-horizontal .form-group {
-  margin-left: 0;
-}
+// .form-horizontal .form-group {
+//   margin-left: 0;
+// }
 
-div.controls > span.uneditable-input {
-  padding-top: 18px;
-}
+// div.controls > span.uneditable-input {
+//   padding-top: 18px;
+// }
 
 /* valid form input*/
 .form-control.is-valid {
@@ -413,98 +413,98 @@ ul.nav.navbar-nav li a {
 //   font-style: normal;
 // }
 
-@media only screen and (min-width: 960px) {
-  .jumbotron h1 {
-    font-size: 72px;
-    line-height: 1;
-    font-weight: 800;
-  }
+// @media only screen and (min-width: 960px) {
+//   .jumbotron h1 {
+//     font-size: 72px;
+//     line-height: 1;
+//     font-weight: 800;
+//   }
 
-  .jumbotron .form-inline .form-group {
-    margin: 30px;
-  }
-}
+//   .jumbotron .form-inline .form-group {
+//     margin: 30px;
+//   }
+// }
 
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-  .jumbotron .form-inline .form-group {
-    margin: 10px;
-  }
-}
+// @media only screen and (min-width: 768px) and (max-width: 959px) {
+//   .jumbotron .form-inline .form-group {
+//     margin: 10px;
+//   }
+// }
 
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  // div.wrap.container#root {
-  //   max-width: 96%;
-  // }
+// @media only screen and (min-width: 768px) and (max-width: 992px) {
+//   // div.wrap.container#root {
+//   //   max-width: 96%;
+//   // }
 
-  .jumbotron h1,
-  .jumbotron h2 {
-    font-size: 54px;
-    margin: 20px 0;
-  }
-}
+//   .jumbotron h1,
+//   .jumbotron h2 {
+//     font-size: 54px;
+//     margin: 20px 0;
+//   }
+// }
 
-@media only screen and (max-width: 767px) {
-  .jumbotron h1,
-  .jumbotron h2 {
-    font-size: 32px;
-    margin: 20px 0;
-  }
+// @media only screen and (max-width: 767px) {
+//   .jumbotron h1,
+//   .jumbotron h2 {
+//     font-size: 32px;
+//     margin: 20px 0;
+//   }
 
-  /* Texts */
-  .jumbotron h1 {
-    font-size: 36px;
-    line-height: 1;
-    font-weight: 400;
-  }
+//   /* Texts */
+//   .jumbotron h1 {
+//     font-size: 36px;
+//     line-height: 1;
+//     font-weight: 400;
+//   }
 
-  .jumbotron .form-inline .form-group {
-    margin: 10px;
-  }
+//   .jumbotron .form-inline .form-group {
+//     margin: 10px;
+//   }
 
-  /* Paddings */
-  .container-fluid .jumbotron {
-    padding-top: 0 !important;
-    padding-bottom: 0;
-  }
-  .jumbotron {
-    padding: 0;
-  }
+//   /* Paddings */
+//   .container-fluid .jumbotron {
+//     padding-top: 0 !important;
+//     padding-bottom: 0;
+//   }
+//   .jumbotron {
+//     padding: 0;
+//   }
 
-  /* Buttons */
-  .btn {
-    margin-left: auto !important;
-    margin-right: auto;
-    max-width: 100%;
-    font-size: 13px;
-  }
+//   /* Buttons */
+//   .btn {
+//     margin-left: auto !important;
+//     margin-right: auto;
+//     max-width: 100%;
+//     font-size: 13px;
+//   }
 
-  /* Pages */
-  .form-group {
-    width: 100%;
-  }
-  .table-responsive td {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  .intro h4 {
-    font-size: 24px;
-  }
-  .table > tbody > tr.emailrow td {
-    padding: 10px 15px;
-  }
-  .table-responsive {
-    border: none;
-  }
-  .text-xs-center {
-    text-align: center;
-  }
-}
+//   /* Pages */
+//   .form-group {
+//     width: 100%;
+//   }
+//   .table-responsive td {
+//     padding-right: 20px;
+//     padding-left: 20px;
+//   }
+//   .intro h4 {
+//     font-size: 24px;
+//   }
+//   .table > tbody > tr.emailrow td {
+//     padding: 10px 15px;
+//   }
+//   .table-responsive {
+//     border: none;
+//   }
+//   .text-xs-center {
+//     text-align: center;
+//   }
+// }
 
-@media only screen and (min-width: 768px) {
-  .jumbotron p.lead {
-    font-size: 24px;
-  }
-}
+// @media only screen and (min-width: 768px) {
+//   .jumbotron p.lead {
+//     font-size: 24px;
+//   }
+// }
 
 /* Modals
 -------------------------------------------------- */
