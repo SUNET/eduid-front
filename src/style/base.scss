@@ -1,5 +1,10 @@
 @import "../variables.scss";
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   height: 100%;
   width: 100vw;
@@ -37,7 +42,7 @@ h1 {
 h2 {
   font-size: 28px;
   line-height: 42px;
-  margin-top: 24;
+  margin-top: 24px;
 }
 
 h3 {
@@ -610,6 +615,83 @@ h5.modal-title {
   display: flex;
   justify-content: center;
 }
+
+/* styles for tables displaying userinfo on settings page */
+table {
+  margin-bottom: 10px;
+  width: 100%;
+  // background-color: white;
+  color: gray;
+  font-size: 24px;
+  font-family: "ProximaNova-Light";
+  // border-collapse: collapse;
+}
+
+// table th {
+//   // border-bottom: #7c7c7c 1px solid;
+// }
+
+table th,
+table td {
+  padding: 0.75rem;
+  background-color: white;
+}
+
+td.data {
+  width: 80%;
+}
+
+td.data-remove-button,
+td.status-label {
+  width: 10%;
+}
+
+table th {
+  color: #171717;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 0.75rem;
+  background-color: transparent;
+}
+
+tbody {
+  margin-bottom: 10px;
+}
+
+span.nobutton,
+.primary,
+tr.primary {
+  font-weight: 300;
+  color: $black;
+}
+
+span.nobutton,
+button.verify-status-label {
+  font-size: 12px;
+}
+
+span.nobutton {
+  font-family: "ProximaNova-Regular";
+}
+
+/* styles for remove svg icon */
+svg {
+  transform-origin: center;
+  transform: rotate(45deg);
+  margin: 0;
+  padding: 0;
+}
+
+svg.remove {
+  fill: #ff500d;
+}
+svg.remove:hover {
+  fill: #ff500d;
+}
+
+// .form-control {
+//   font-size: 24px;
+// }
 
 // .btn-group-vertical {
 //   // color: $link-color;

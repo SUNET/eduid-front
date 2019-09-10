@@ -1,30 +1,20 @@
 @import "../variables.scss";
 
-.table {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.table td {
-  color: #333;
-}
 #register-securitykey-container,
 #delete-account-container {
   margin-bottom: 30px;
-}
-
-#connect-orcid-button,
-#delete-button,
-#security-webauthn-button {
-  // width: 50%;
 }
 
 #orcid {
   margin-bottom: 30px;
 }
 
-#security-webauthn-button {
-  padding-left: 0;
+#add-webauthn-token {
+  margin-top: 20px;
+}
+
+td .passwords {
+  background-color: white;
 }
 
 button.btn-remove-u2f {
@@ -45,6 +35,4 @@ button.btn-verified-u2f {
   margin-bottom: 0;
 }
 
-table.passwords {
-  background-color: white;
-}
+
