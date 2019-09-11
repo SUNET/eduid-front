@@ -736,6 +736,13 @@ const msgs = {
     />
   ),
 
+  "profile.phone_display_non-primary_data": (
+    <FormattedMessage
+      id="profile.phone_display_non-primary_data"
+      defaultMessage={`make number primary`}
+    />
+  ),
+
   "profile.phone_display_no_data": (
     <FormattedMessage
       id="profile.phone_display_no_data"
@@ -1156,7 +1163,7 @@ const msgs = {
   "letter.modal_confirm_info": (
     <FormattedMessage
       id="letter.modal_confirm_info"
-      defaultMessage={`Accept to have a letter sent to your registered address. The letter will contain a code that you ender here to verify your identity. The code sent to you will expire in 2 weeks starting now`}
+      defaultMessage={`The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now`}
     />
   ),
 
@@ -1230,16 +1237,18 @@ const msgs = {
   ),
 
   /* ----- confirmed number > ready for vetting------- */
-  "lmp.modal_confirm_info": (
-    <FormattedMessage
-      id="lmp.confirm_info"
-      defaultMessage={`Accept to have your phone number checked against your id number in the phone registry. The phone operators are responsible for updating the registry, so keep in mind that you could have a phone number in your name, but not be included in the registry.`}
-    />
-  ),
+
   "lmp.modal_confirm_title": (
     <FormattedMessage
       id="lmp.modal_confirm_title"
       defaultMessage={`Check if your phone number is connected to your id number.`}
+    />
+  ),
+
+  "lmp.modal_confirm_info": (
+    <FormattedMessage
+      id="lmp.confirm_info"
+      defaultMessage={`This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity.`}
     />
   ),
 
@@ -2034,7 +2043,7 @@ const msgs = {
   "pd.save-success": (
     <FormattedMessage
       id="pd.save-success"
-      defaultMessage={`Successfully saved personal information`}
+      defaultMessage={`Personal information updated`}
     />
   ),
 
@@ -2254,8 +2263,8 @@ const msgs = {
   "phones.long_description": (
     <FormattedMessage
       id="phones.long_description"
-      defaultMessage={`You can connect one or more mobile phone numbers with
-           your eduID account, and select which one is the primary one.`}
+      defaultMessage={`You can connect one or more mobile phone numbers to
+           your eduID, but one has to be set as the primary one.`}
     />
   ),
 
@@ -2297,7 +2306,7 @@ const msgs = {
   "phones.save-success": (
     <FormattedMessage
       id="phones.save-success"
-      defaultMessage={`phone number saved successfully`}
+      defaultMessage={`The phone number was saved`}
     />
   ),
 
@@ -2311,7 +2320,7 @@ const msgs = {
   "phones.primary-success": (
     <FormattedMessage
       id="phones.primary-success"
-      defaultMessage={`phone number successfully set as primary`}
+      defaultMessage={`The phone number was set as primary`}
     />
   ),
 

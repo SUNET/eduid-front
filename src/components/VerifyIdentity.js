@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { ButtonGroup } from "reactstrap";
-import { connect } from "react-redux";
-import DashboardNav from "./DashboardNav";
-import AddNin from "./AddNin";
-import NotificationsContainer from "containers/Notifications";
+// import { connect } from "react-redux";
+// import i18n from "i18n-messages";
+import { withRouter } from "react-router-dom";
+import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
 
-class VerifyIdentityProcess extends Component {
+class VerifyIdentity extends Component {
   render() {
-    let vettingButtons = "",
-      connectNin = "",
-      headerText = "";
+    let vettingButtons = "";
+    let connectNin = "";
+    let headerText = "";
     let buttonHelpTextArray = [
       this.props.l10n("letter.initialize_proofing_help_text"),
       this.props.l10n("lmp.initialize_proofing_help_text"),
       this.props.l10n("eidas.initialize_proofing_help_text")
     ];
+    // this.props.is_configured
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
       const verifyOptions = this.props.proofing_methods.filter(
@@ -36,7 +36,7 @@ class VerifyIdentityProcess extends Component {
         );
       });
     }
-
+    // this.props.nins.length && !this.props.verifiedNinStatus
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
         <div key="1" id="connect-nin-number">
@@ -68,12 +68,12 @@ class VerifyIdentityProcess extends Component {
   }
 }
 
-// Nins.propTypes = {
-//   nin: PropTypes.string,
-//   nins: PropTypes.array,
-//   validateNin: PropTypes.func,
-//   handleDelete: PropTypes.func,
-//   proofing_methods: PropTypes.array
-// };
+VerifyIdentity.propTypes = {
+  nin: PropTypes.string,
+  nins: PropTypes.array,
+  validateNin: PropTypes.func,
+  handleDelete: PropTypes.func,
+  proofing_methods: PropTypes.array
+};
 
-export default VerifyIdentityProcess;
+export default withRouter(VerifyIdentity);

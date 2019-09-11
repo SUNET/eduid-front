@@ -1,19 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import * as actions from "actions/Nins";
-import i18n from "i18n-messages";
-
+import { withRouter } from "react-router-dom";
 import EduIDButton from "components/EduIDButton";
-
 import "style/Nins.scss";
 
-class NinDisplay extends Component {
+export class NinDisplay extends Component {
   render() {
-    const url = window.location.href;
+     const url = this.props.history.location.pathname;
+    // const url = window.location.href;
     if (url.includes("verify-identity")) {
-      // VERIFY ID PROCESS: this is the display of a verified number (on the verify-identity page)
       if (this.props.verifiedNinStatus) {
         return (
           <div key="1" className="profile-card">
@@ -30,7 +26,6 @@ class NinDisplay extends Component {
           </div>
         );
       } else {
-        // VERIFY ID PROCESS: this is the display of an unverified number (on the verify-identity page)
         return (
           <div key="1" className="profile-card">
             <label key="0">
@@ -124,29 +119,11 @@ class NinDisplay extends Component {
   }
 }
 
-// NinDisplay.propTypes = {
-// nin: PropTypes.string,
-// nins: PropTypes.array,
-// validateNin: PropTypes.func,
-// handleDelete: PropTypes.func,
-// proofing_methods: PropTypes.array
-// };
-
-const mapStateToProps = (state, props) => {
-  return {};
+NinDisplay.propTypes = {
+  nins: PropTypes.array,
+  verifiedNin: PropTypes.array,
+  verifiedNinStatus: PropTypes.bool,
+  handleDelete: PropTypes.func
 };
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    handleDelete: function(e) {
-      const ninNumber = e.target.closest("#nin-display-container").firstChild
-        .dataset.ninnumber;
-      dispatch(actions.startRemove(ninNumber));
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NinDisplay);
+export default withRouter(NinDisplay);

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import i18n from "i18n-messages";
 import { Field, reduxForm } from "redux-form";
 // import { Link } from "react-router-dom";
 import { ButtonGroup, Form } from "reactstrap";
@@ -114,7 +115,9 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-export default connect(
+const NinFormContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(NinForm);
+
+export default i18n(NinFormContainer);

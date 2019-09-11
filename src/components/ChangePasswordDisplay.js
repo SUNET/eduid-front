@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
-import { connect } from "react-redux";
-import i18n from "i18n-messages";
-import {
-  confirmPasswordChange,
-  startConfirmationPassword,
-  stopConfirmationPassword
-} from "actions/Security";
-import { eduidRMAllNotify } from "actions/Notifications";
-
 import EduIDButton from "components/EduIDButton";
 import GenericConfirmModal from "components/GenericConfirmModal";
-import ConfirmModal from "components/ConfirmModal";
 
 import "style/Security.scss";
 
@@ -48,56 +37,11 @@ class ChangePasswordDisplay extends Component {
   }
 }
 
-// Security.propTypes = {
-//   credentials: PropTypes.array,
-//   creation_date: PropTypes.string,
-//   last_used: PropTypes.string,
-//   langs: PropTypes.array,
-//   confirming_change: PropTypes.bool,
-//   deleted: PropTypes.bool,
-//   handleStartConfirmationPassword: PropTypes.func,
-//   handleStopConfirmationPassword: PropTypes.func,
-//   handleConfirmationPassword: PropTypes.func,
-//   confirming_deletion: PropTypes.bool,
-//   handleStartConfirmationDeletion: PropTypes.func,
-//   handleStopConfirmationDeletion: PropTypes.func,
-//   handleConfirmationDeletion: PropTypes.func,
-//   handleStartWebauthnRegistration: PropTypes.func,
-//   handleCloseWebauthnModal: PropTypes.func
-// };
-
-//  export default PasswordChange;
-
-const mapStateToProps = (state, props) => {
-  return {
-    credentials: state.security.credentials,
-    confirming_change: state.security.confirming_change,
-    confirming_deletion: state.security.confirming_deletion,
-    redirect_to: state.security.location,
-    deleted: state.security.deleted,
-    webauthn_asking_description: state.security.webauthn_asking_description,
-    authenticator: state.security.webauthn_authenticator
-  };
+ChangePasswordDisplay.propTypes = {
+  confirming_change: PropTypes.bool,
+  handleStartConfirmationPassword: PropTypes.func,
+  handleStopConfirmationPassword: PropTypes.func,
+  handleConfirmationPassword: PropTypes.func
 };
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    handleStartConfirmationPassword: function(e) {
-      dispatch(eduidRMAllNotify());
-      dispatch(startConfirmationPassword());
-    },
-    handleStopConfirmationPassword: function(e) {
-      dispatch(stopConfirmationPassword());
-    },
-    handleConfirmationPassword: e => {
-      dispatch(confirmPasswordChange());
-    }
-  };
-};
-
-const ChangePasswordDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChangePasswordDisplay);
-
-export default i18n(ChangePasswordDisplayContainer);
+export default ChangePasswordDisplay;

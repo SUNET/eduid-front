@@ -336,6 +336,10 @@
     "defaultMessage": "confirm added number"
   },
   {
+    "id": "profile.phone_display_non-primary_data",
+    "defaultMessage": "make number primary"
+  },
+  {
     "id": "profile.phone_display_no_data",
     "defaultMessage": "no phone number added"
   },
@@ -553,7 +557,7 @@
   },
   {
     "id": "letter.modal_confirm_info",
-    "defaultMessage": "Accept to have a letter sent to your registered address. The letter will contain a code that you ender here to verify your identity. The code sent to you will expire in 2 weeks starting now"
+    "defaultMessage": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
   },
   {
     "id": "letter.verify_title",
@@ -592,12 +596,12 @@
     "defaultMessage": "Go to Settings to confirm your number. You can only use this option with a confirmed number."
   },
   {
-    "id": "lmp.confirm_info",
-    "defaultMessage": "Accept to have your phone number checked against your id number in the phone registry. The phone operators are responsible for updating the registry, so keep in mind that you could have a phone number in your name, but not be included in the registry."
-  },
-  {
     "id": "lmp.modal_confirm_title",
     "defaultMessage": "Check if your phone number is connected to your id number."
+  },
+  {
+    "id": "lmp.confirm_info",
+    "defaultMessage": "This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity."
   },
   {
     "id": "lmp.verification_success",
@@ -1033,7 +1037,7 @@
   },
   {
     "id": "pd.save-success",
-    "defaultMessage": "Successfully saved personal information"
+    "defaultMessage": "Personal information updated"
   },
   {
     "id": "pdata.field_required",
@@ -1161,7 +1165,7 @@
   },
   {
     "id": "phones.long_description",
-    "defaultMessage": "You can connect one or more mobile phone numbers with\n           your eduID account, and select which one is the primary one."
+    "defaultMessage": "You can connect one or more mobile phone numbers to\n           your eduID, but one has to be set as the primary one."
   },
   {
     "id": "phones.input_help_text",
@@ -1185,7 +1189,7 @@
   },
   {
     "id": "phones.save-success",
-    "defaultMessage": "phone number saved successfully"
+    "defaultMessage": "The phone number was saved"
   },
   {
     "id": "phones.unconfirmed_number_not_primary",
@@ -1193,7 +1197,7 @@
   },
   {
     "id": "phones.primary-success",
-    "defaultMessage": "phone number successfully set as primary"
+    "defaultMessage": "The phone number was set as primary"
   },
   {
     "id": "phones.code_expired_send_new",

@@ -1,22 +1,25 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+// import createHistory from "history/createBrowserHistory";
+// const createBrowserHistory = require("history").createBrowserHistory;
+import { createBrowserHistory } from "history";
 import { ConnectedRouter } from "react-router-redux";
+
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 import ChangePassword from "./ChangePassword";
 import SettingsComponent from "./Settings";
-import Profile from "./Profile";
+import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 class Main extends Component {
   constructor(props) {
@@ -71,14 +74,19 @@ class Main extends Component {
                   path="/profile/settings/"
                   component={SettingsComponent}
                 />
-                <Route exact path="/profile/" component={Profile} />
-                <Route path="/profile/verify-identity/" component={Profile} />
+                <Route
+                  exact
+                  path="/profile/"
+                  render={props => <Profile {...props} />}
+                />
+                <Route
+                  path="/profile/verify-identity/"
+                  render={props => <Profile {...props} />}
+                />
                 <Route
                   exact
                   path="/profile/security/"
-                  component={() => (
-                    <Redirect to="/profile/settings/" />
-                  )}
+                  component={() => <Redirect to="/profile/settings/" />}
                 />
                 <Route path="/profile/chpass/" component={ChangePassword} />
               </div>
