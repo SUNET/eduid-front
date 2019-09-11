@@ -14,14 +14,17 @@ class AccountId extends Component {
             <p>{this.props.l10n("accountId.long_description")}</p>
           </div>
           <div key="1" className="profile-card">
-            <label>
+            {/* <label>
               {this.props.l10n("accountId.accountId_display_title")}
-            </label>
+            </label> */}
             <div id="nin-number-container">
               <p id="nin-number" className="verified">
                 {this.props.eppn}
               </p>
             </div>
+            <p className="orcid-btn-help">
+              {this.props.l10n("accountId.short_description")}
+            </p>
           </div>
         </div>
       </div>

@@ -769,7 +769,7 @@
   },
   {
     "id": "security.description",
-    "defaultMessage": "Description"
+    "defaultMessage": "Name"
   },
   {
     "id": "security.remove",
@@ -777,7 +777,7 @@
   },
   {
     "id": "security.verify",
-    "defaultMessage": "Verify"
+    "defaultMessage": "Verify key"
   },
   {
     "id": "security.verified",
@@ -792,12 +792,16 @@
     "defaultMessage": "Credential"
   },
   {
+    "id": "security.last-used.date",
+    "defaultMessage": "Never used"
+  },
+  {
     "id": "security.creation_date",
-    "defaultMessage": "Creation date"
+    "defaultMessage": "Created on"
   },
   {
     "id": "security.last_used",
-    "defaultMessage": "Last used"
+    "defaultMessage": "Used on"
   },
   {
     "id": "security.u2f.max_allowed_tokens",
@@ -969,7 +973,11 @@
   },
   {
     "id": "accountId.long_description",
-    "defaultMessage": "This is an automatically generated unique identifier for your eduID. You might be asked to share this information if you need support."
+    "defaultMessage": "This is an automatically generated unique identifier for your eduID."
+  },
+  {
+    "id": "accountId.short_description",
+    "defaultMessage": "You might be asked to share this information if you need support."
   },
   {
     "id": "accountId.accountId_display_title",
