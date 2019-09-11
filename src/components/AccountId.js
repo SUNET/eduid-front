@@ -14,9 +14,6 @@ class AccountId extends Component {
             <p>{this.props.l10n("accountId.long_description")}</p>
           </div>
           <div key="1" className="profile-card">
-            {/* <label>
-              {this.props.l10n("accountId.accountId_display_title")}
-            </label> */}
             <div id="nin-number-container">
               <p id="nin-number" className="verified">
                 {this.props.eppn}
@@ -33,8 +30,7 @@ class AccountId extends Component {
 }
 
 AccountId.propTypes = {
-  eppn: PropTypes.string,
+  eppn: PropTypes.string
 };
 
 export default AccountId;
-
