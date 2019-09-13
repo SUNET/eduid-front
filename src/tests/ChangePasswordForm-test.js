@@ -1,4 +1,3 @@
-
 import React from "react";
 import expect from "expect";
 import { shallow, mount } from "enzyme/build";
@@ -23,7 +22,7 @@ describe("ChangePasswordForm Component", () => {
 
 describe("ChangePasswordForm renders", () => {
   const fakeStore = state => ({
-    default: () => { },
+    default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
     getState: () => ({ ...state })
@@ -39,13 +38,13 @@ describe("ChangePasswordForm renders", () => {
     intl: {
       locale: "en",
       messages: messages
-    },
+    }
   };
 
   const props = {
     handleStartPasswordChange: mock.fn(),
     handleStopPasswordChange: mock.fn()
-  }
+  };
 
   function setupComponent() {
     const wrapper = mount(
