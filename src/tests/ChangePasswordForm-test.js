@@ -33,7 +33,7 @@ describe("ChangePasswordForm renders", () => {
       confirming_change: false
     },
     chpass: {
-      suggested_password: true
+      suggested_password: "h3u r6 lo9"
     },
     intl: {
       locale: "en",
