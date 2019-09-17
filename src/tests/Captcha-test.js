@@ -3,7 +3,8 @@ import React from "react";
 import expect from "expect";
 import fetchMock from "fetch-mock";
 import { put, call, select } from "redux-saga/effects";
-
+import { shallow } from "../../node_modules/enzyme";
+import { IntlProvider } from "react-intl";
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import CaptchaContainer from "containers/Captcha";
 import * as actions from "actions/Captcha";
@@ -11,23 +12,36 @@ import captchaReducer from "reducers/Captcha";
 import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
 
 describe("Captcha Component", () => {
-  afterEach(() => {
-    fetchMock.restore();
+    afterEach(() => {
+      fetchMock.restore();
+    });
+
+  it("The component does not render 'false' or 'null'", () => {
+    const wrapper = shallow(
+      <IntlProvider locale="en">
+        <CaptchaContainer />
+      </IntlProvider>
+    );
+    expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
-  it("Renders the captcha component", () => {
+  it("The captcha <div> element renders", () => {
     fetchMock.get("https://www.google.com/recaptcha/api.js", "dummy-script");
-    const wrapper = setupComponent({
-        component: <CaptchaContainer />,
-        overrides: { main: { recaptcha_public_key: "dummy-key" } }
-      }),
-      lead = wrapper.find("p.lead"),
-      captcha = wrapper.find("div.recaptcha-holder"),
-      buttons = wrapper.find("EduIDButton");
+    const fullWrapper = setupComponent({
+      component: <CaptchaContainer />
+    });
+    const captcha = fullWrapper.find("#captcha");
+    expect(captcha.exists()).toEqual(true);
+  });
 
-    expect(lead.length).toEqual(1);
-    expect(captcha.length).toEqual(1);
-    expect(buttons.length).toEqual(2);
+  it("Renders the OK and CANCEL buttons", () => {
+    fetchMock.get("https://www.google.com/recaptcha/api.js", "dummy-script");
+    const fullWrapper = setupComponent({
+      component: <CaptchaContainer />
+    });
+    const button = fullWrapper.find("EduIDButton");
+    expect(button.exists()).toEqual(true);
+    expect(button.length).toEqual(2);
   });
 });
 

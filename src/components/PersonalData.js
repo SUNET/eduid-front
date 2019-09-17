@@ -8,7 +8,9 @@ import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import { GET_USERDATA_SUCCESS } from "actions/PersonalData";
 
+import "style/Emails.scss";
 import "style/PersonalData.scss";
+import "style/DashboardMain.scss";
 
 /* FORM */
 
@@ -24,7 +26,11 @@ const validate = values => {
 
 let PdataForm = props => {
   return (
-    <Form id="personaldataview-form" inline={true} role="form">
+    <Form
+      id="personaldataview-form"
+      // inline={true}
+      role="form"
+    >
       <fieldset id="personal-data-form" className="tabpane">
         <Field
           component={TextInput}
@@ -60,10 +66,11 @@ let PdataForm = props => {
       </fieldset>
       <EduIDButton
         id="personal-data-button"
+        className="settings-button"
         disabled={props.pristine || props.submitting || props.invalid}
         onClick={props.handleSave}
       >
-        {props.l10n("button_save")}
+        {props.l10n("button_add")}
       </EduIDButton>
     </Form>
   );
@@ -88,14 +95,10 @@ PdataForm = connect(state => ({
 class PersonalData extends Component {
   render() {
     return (
-      <div>
+      <div className="namesview-form-container">
         <div className="intro">
           <h4>{this.props.l10n("pd.main_title")}</h4>
           <p>{this.props.l10n("pd.long_description")}</p>
-          <p>
-            {this.props.l10n("faq_link")}{" "}
-            <a href="https://www.eduid.se/faq.html">FAQ</a>
-          </p>
         </div>
         <PdataForm {...this.props} />
       </div>

@@ -1,45 +1,179 @@
-.nin-holder {
-  margin: 20px 0;
-  display: flex;
-  align-items: baseline;
-}
+@import "../variables.scss";
 
-.nin-holder > button.btn-xs {
-  height: 2em;
-  line-height: 2em;
-  margin-left: 30px;
-}
-.proofing-btn-help {
+//--- STEP 1. ADD NIN STYLES ---//
+
+#verify-identity-container .profile-card {
   margin-bottom: 30px;
 }
 
-div.proofing-buttons {
+#verify-identity-container label {
+  margin: 0 0 10px 0;
+}
+
+/*--- styles for nin form ---*/
+#nin-form-container {
+  margin-right: 5px;
+}
+
+#nin input {
+  background-color: #ffffff;
+  font-family: "ProximaNova-Regular";
+  border: none;
+  color: #161616;
+  font-size: 36px;
+  border-bottom: solid #333 3px;
+}
+
+#nin input::placeholder {
+  font-size: 36px;
+}
+
+.nin-holder {
+  margin: 20px 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+#add-nin-number {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#add-nin-number.unverified {
+  flex-direction: row;
+}
+
+#add-nin-header {
+  margin-top: 0px;
+}
+
+/*--- styles for nin digits ---*/
+#nin-number-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#nin-number-container a {
+  color: $orange-highlight;
+  // font-family: "Montserrat", sans-serif;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  border-bottom: solid transparent 2px;
+}
+
+#nin-number-container a:hover {
+  text-decoration: none;
+  border-bottom: solid #ff4500 2px;
+}
+
+#nin-number {
+  font-size: 36px;
+  line-height: 1.5;
+  margin-bottom: 0;
+  padding-right: 5px;
+}
+
+.unverified {
+  color: #ff4500;
+}
+
+.verified {
+  color: #161616;
+}
+
+//--- STEP 2. CONNECT NIN STYLES ---//
+
+#connect-nin-number-container:empty {
+  display: none;
+}
+
+#connect-nin-number-container {
   margin-top: 30px;
 }
 
-// @media only screen and (max-width: 991px) {
-//   div.btn-group-vertical#nins-btn-group div {
-//     width: 100%;
-//   }
-//   div.proofing-buttons {
-//     text-align: center;
-//   }
-//   div#nin,
-//   div#nin input {
-//     display: inline-block;
-//   }
-// }
+#connect-nin-number {
+  margin-top: 5rem;
+}
 
-// @media only screen and (max-width: 767px) {
-//   fieldset#nins-form div#nin input,
-//   div.proofing-buttons button.eduid-button.proofing-button {
-//     max-width: 500px;
-//   }
-// }
+#nins-btn-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-column-gap: 30px;
+  margin-top: 10px;
+}
 
-// @media only screen and (min-width: 768px) {
-//   fieldset#nins-form div#nin input,
-//   div.proofing-buttons button.eduid-button.proofing-button {
-//     width: 500px;
-//   }
-// }
+.vetting-button button {
+  font-family: "ProximaNova-Bold";
+  font-size: 28px;
+  line-height: 1;
+  color: #161616;
+  background-color: white;
+
+  margin: 0 20px 20px 0;
+  padding: 20px;
+  border-radius: 20px;
+  width: 100%;
+  height: 300px;
+  box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+
+  cursor: pointer;
+}
+
+.vetting-button button:hover {
+  transform: scale(0.99);
+  border: solid #ff4500 1px;
+  color: #ff4500;
+  transition: all 0.5s ease;
+}
+
+.vetting-button-text {
+  font-size: 12px;
+  font-family: "Akkurat";
+  line-height: 1.2;
+  text-transform: uppercase;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.vetting-button-name {
+  align-self: flex-end;
+}
+
+.proofing-btn-help {
+  margin-left: 10px;
+  line-height: 1.2;
+  color: #7c7c7c;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.proofing-buttons {
+  margin-top: 30px;
+}
+
+@media (max-width: 1024px) {
+  .vetting-button button {
+    width: 100%;
+    width: 100%;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  #connect-nin-number {
+    margin-top: 3rem;
+  }
+  #connect-nin-number .btn.icon-button {
+    padding: 0;
+  }
+  #nin-number {
+    font-size: 32px;
+  }
+}

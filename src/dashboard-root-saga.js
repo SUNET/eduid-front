@@ -44,7 +44,7 @@ import {
   requestSuggestedPassword,
   postPasswordChange
 } from "sagas/ChangePassword";
-import { requestNins, requestRemoveNin } from "sagas/Nins";
+import { requestNins, requestRemoveNin, postNin } from "sagas/Nins";
 import {
   sendLetterProofing,
   sendGetLetterProofing,
@@ -76,10 +76,7 @@ function* rootSaga() {
       openidActions.POST_OIDC_PROOFING_PROOFING,
       sagasOpenid.requestOpenidQRcode
     ),
-    takeLatest(
-      lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING,
-      saveLMPNinData
-    ),
+    takeLatest(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING, saveLMPNinData),
     takeLatest(
       openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING,
       sagasOpenidFreja.initializeOpenidFrejaData
@@ -124,14 +121,16 @@ function* rootSaga() {
       sendGetLetterProofing
     ),
     takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
+    takeLatest(ninActions.POST_NIN, postNin),
+    takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
     takeLatest(ninActions.POST_NIN_REMOVE, requestRemoveNin),
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
-    takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestNins),
-    takeEvery(letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS, requestNins),
-    takeEvery(letterActions.POST_LETTER_PROOFING_CODE_SUCCESS, requestNins),
+    takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestAllPersonalData),
+    takeEvery(letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
+    takeEvery(letterActions.POST_LETTER_PROOFING_CODE_SUCCESS, requestAllPersonalData),
     takeEvery(
       lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
-      requestNins
+      requestAllPersonalData
     ),
     takeEvery(
       lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,

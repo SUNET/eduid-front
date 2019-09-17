@@ -10,27 +10,32 @@ import "style/LetterProofing.scss";
 
 class LetterProofingButton extends Component {
   render() {
+    // let buttonText = "";
+    // if (!this.props.confirmingLetter) {
+    //   buttonText = this.props.l10n("letter.button_text_code");
+    // } else {
+    //   buttonText = this.props.l10n("letter.button_text_request");
+    // }
     return (
       <div>
-        <form id="letter-proofing-form" className="form-horizontal" role="form">
-          <fieldset id="letter-proofing">
-            <EduIDButton
-              className="proofing-button"
-              disabled={this.props.disabled}
-              onClick={this.props.handleLetterProofing}
-              block
-            >
-              {this.props.l10n("letter.letter_button_text")}
-            </EduIDButton>
-            <FormText className="proofing-btn-help" color="muted">
-              {this.props.l10n("letter.initialize_proofing_help_text")}
-            </FormText>
-          </fieldset>
-        </form>
+        <div className="vetting-button">
+          <button
+            className="proofing-button"
+            // disabled={this.props.disabled}
+            onClick={this.props.handleLetterProofing}
+          >
+            <div className="vetting-button-text">
+              {this.props.l10n("verify-identity.vetting_post_tagline")}
+            </div>
+            <div className="vetting-button-name">
+              {this.props.l10n("letter.button_text_request")}
+            </div>
+          </button>
+        </div>
         <GenericConfirmModal
           modalId="letterGenericConfirmDialog"
-          title={this.props.l10n("letter.confirm_title")}
-          mainText={this.props.l10n("letter.confirm_info")}
+          title={this.props.l10n("letter.modal_confirm_title")}
+          mainText={this.props.l10n("letter.modal_confirm_info")}
           showModal={this.props.confirmingLetter}
           closeModal={this.props.handleStopConfirmationLetter}
           acceptModal={this.props.confirmLetterProofing}

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, NavLink, Redirect } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
-
+// import createHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import SplashContainer from "containers/Splash";
 import NotificationsContainer from "containers/Notifications";
 import FooterContainer from "containers/Footer";
@@ -11,7 +11,7 @@ import HeaderContainer from "containers/HeaderAnon";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/SignupMain.scss";
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 export const FetchingContext = React.createContext({
   fetching: false,
@@ -48,27 +48,29 @@ class ActionWrapper extends Component {
     return (
       <FetchingContext.Provider value={this.state}>
         <SplashContainer />
-        <div className="container-fluid">
-          <HeaderContainer withButtons={false} />
-          <Router history={history}>
-            <div className="jumbotron">
-              <div className="row">
-                <div className="col-lg-2" />
-                <div className="col-lg-8">
-                  <NotificationsContainer />
-                </div>
-                <div className="col-lg-2" />
+        <Router history={history}>
+          <div className="dashboard-wrapper">
+            <HeaderContainer />
+            <div id="dashboard-text">
+              <div id="welcome">
+                <h1>{this.props.l10n("main.welcome")}</h1>
+                <h2>{this.props.l10n("register.create-account")}</h2>
               </div>
-              <Route
-                exact
-                path={`${BASE_PATH}`}
-                component={() => <Redirect to={this.props.redirect} />}
-              />
-              {this.props.children}
+
+              <div id="content">
+                <NotificationsContainer />
+                {/* <h2>{this.props.l10n("tou.header")}</h2> */}
+                <Route
+                  exact
+                  path={`${BASE_PATH}`}
+                  component={() => <Redirect to={this.props.redirect} />}
+                />
+                {this.props.children}
+              </div>
             </div>
-          </Router>
-          <FooterContainer />
-        </div>
+            <FooterContainer {...this.props} />
+          </div>
+        </Router>
       </FetchingContext.Provider>
     );
   }

@@ -1,38 +1,36 @@
 import React from "react";
 import expect from "expect";
-
+import { shallow } from "../../node_modules/enzyme";
+import { IntlProvider } from "react-intl";
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import EmailContainer from "containers/Email";
 import * as actions from "actions/Email";
 import emailReducer from "reducers/Email";
 
 describe("Email Component", () => {
-  it("Renders the email component", () => {
-    const wrapper = setupComponent({
-        component: <EmailContainer />,
-        overrides: { config: { window_size: "lg" } }
-      }),
-      input = wrapper.find("input#email-input"),
-      button = wrapper.find("button#email-button"),
-      faIcon = wrapper.find("FontAwesomeIcon");
-
-    expect(input.length).toEqual(1);
-    expect(button.length).toEqual(1);
-    expect(faIcon.length).toEqual(1);
+  it("The component does not render 'false' or 'null'", () => {
+    const wrapper = shallow(
+      <IntlProvider locale="en">
+        <EmailContainer />
+      </IntlProvider>
+    );
+    expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
-  it("Renders the small email component", () => {
-    const wrapper = setupComponent({
-        component: <EmailContainer />,
-        overrides: { config: { window_size: "xs" } }
-      }),
-      input = wrapper.find("input#email-input"),
-      button = wrapper.find("button#email-button"),
-      faIcon = wrapper.find("FontAwesomeIcon");
-
-    expect(input.length).toEqual(1);
-    expect(button.length).toEqual(1);
-    expect(faIcon.length).toEqual(0);
+  it("Email address input renders", () => {
+    const fullWrapper = setupComponent({
+      component: <EmailContainer />
+    });
+    const input = fullWrapper.find("input");
+    expect(input.exists()).toEqual(true);
+  });
+  it("'Register for eduID' button renders", () => {
+    const fullWrapper = setupComponent({
+      component: <EmailContainer />
+    });
+    const button = fullWrapper.find("EduIDButton");
+    expect(button.exists()).toEqual(true);
+    expect(button.text()).toContain("eduID");
   });
 });
 
@@ -116,16 +114,13 @@ describe("Test email Container", () => {
     const store = fakeStore(getState());
     dispatch = store.dispatch;
     wrapper = setupComponent({ component: <EmailContainer />, store: store });
-  });
-
+ 
   it("Clicks the email button", () => {
     wrapper.find("input#email-input").value = "dummy@example.com";
     const numCalls = dispatch.mock.calls.length;
-    const mockEvent = { preventDefault: () => {} };
-    wrapper
-      .find("EduIDButton#email-button")
-      .props()
-      .onClick(mockEvent);
+    const mockEvent = { preventDefault: e => {} };
+    wrapper.find("EduIDButton#register-button").props().onClick(mockEvent);
+   
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
 
@@ -155,5 +150,6 @@ describe("Test email Container", () => {
       .props()
       .onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+  });
   });
 });

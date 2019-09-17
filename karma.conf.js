@@ -6,6 +6,8 @@ const path = require("path");
 
 process.env.CHROME_BIN = "chromium";
 
+//"/Applications/Google\ Chrome.app / Contents / MacOS / Google\ Chrome"
+
 var webpackKarma = {
   mode: "development",
   resolve: webpackConfig.resolve,

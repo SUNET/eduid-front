@@ -245,19 +245,12 @@ function setupComponent(store) {
 
 describe("LetterProofingButton Component", () => {
   it("Renders", () => {
-    const store = fakeStore(fakeState),
-      { wrapper, props } = setupComponent(store),
-      form = wrapper.find("form"),
-      fieldset = wrapper.find("fieldset"),
-      button = wrapper.find("EduIDButton");
+    const store = fakeStore(fakeState);
+    const { wrapper, props } = setupComponent(store);
+    const button = wrapper.find("button");
 
-    expect(form.hasClass("form-horizontal")).toBeTruthy();
-    expect(form.contains(fieldset.get(0))).toBeTruthy();
-    expect(fieldset.contains(button.get(0))).toBeTruthy();
-
-    expect(form.props()).toMatchObject({ role: "form" });
-    expect(fieldset.props()).toMatchObject({ id: "letter-proofing" });
-
+    expect(button.hasClass("proofing-button")).toEqual(true);
+    expect(button.exists()).toEqual(true);
     expect(store.dispatch.mock.calls.length).toEqual(0);
     button.props().onClick();
     expect(store.dispatch.mock.calls.length).toEqual(2);
@@ -280,7 +273,7 @@ describe("LetterProofing Container", () => {
       </Provider>
     );
 
-    buttontext = wrapper.find("EduIDButton").text();
+    buttontext = wrapper.find("button").exists();
     dispatch = store.dispatch;
   });
 
@@ -289,7 +282,7 @@ describe("LetterProofing Container", () => {
   });
 
   it("Renders", () => {
-    expect(buttontext).toEqual("Confirm using letter");
+    expect(buttontext).toEqual(true);
   });
 
   it("Clicks", () => {
@@ -300,7 +293,7 @@ describe("LetterProofing Container", () => {
 
     expect(dispatch.mock.calls.length).toEqual(0);
     wrapper
-      .find("Button")
+      .find("button")
       .props()
       .onClick();
     expect(dispatch.mock.calls.length).toEqual(2);

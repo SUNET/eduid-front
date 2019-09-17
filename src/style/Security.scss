@@ -1,23 +1,20 @@
 @import "../variables.scss";
 
-.table {
-  font-size: 14px;
+#register-securitykey-container,
+#delete-account-container {
+  margin-bottom: 30px;
 }
 
-.second-block {
+#orcid {
+  margin-bottom: 30px;
+}
+
+#add-webauthn-token {
   margin-top: 20px;
 }
 
-#connect-orcid-button,
-#delete-button,
-#security-webauthn-button {
-  width: 100%;
-}
-
-#security-change-button {
-  height: 2rem;
-  line-height: 2rem;
-  margin-bottom: 30px;
+td .passwords {
+  background-color: white;
 }
 
 button.btn-remove-u2f {
@@ -38,6 +35,4 @@ button.btn-verified-u2f {
   margin-bottom: 0;
 }
 
-table.passwords {
-  background-color: white;
-}
+

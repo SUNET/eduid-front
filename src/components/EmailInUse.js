@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import EduIDButton from "./EduIDButton";
 import { connect } from "react-redux";
 
 import "style/EmailInUse.scss";
@@ -7,15 +8,19 @@ import "style/EmailInUse.scss";
 class EmailInUse extends Component {
   render() {
     return (
-      <div className="text-center">
+      <div id="register-container">
         <div>
-          <h1>{this.props.l10n("main.welcome")}</h1>
-          <p className="lead">{this.props.l10n("used.email-in-use")}</p>
-          <h2 className="subtitle">
-            {this.props.l10n("used.forgot-password")}
-          </h2>
-          <a href={this.props.reset_url} className="button">
-            {this.props.l10n("used.reset-password")}
+          <h3 className="register-header">
+            {this.props.l10n("used.email-in-use")({ email: this.props.email })}
+          </h3>
+          <div id="email-display">
+            <p>{this.props.l10n("used.email-label")}</p>
+          </div>
+
+          <a href={this.props.reset_url}>
+            <EduIDButton className="settings-button ok-button">
+              {this.props.l10n("used.reset-password")}
+            </EduIDButton>
           </a>
         </div>
       </div>

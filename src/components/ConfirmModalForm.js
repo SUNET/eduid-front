@@ -1,0 +1,79 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Field, reduxForm } from "redux-form";
+import { ButtonGroup, Form } from "reactstrap";
+import Button from "reactstrap/lib/Button";
+import Modal from "reactstrap/lib/Modal";
+import ModalHeader from "reactstrap/lib/ModalHeader";
+import ModalBody from "reactstrap/lib/ModalBody";
+import ModalFooter from "reactstrap/lib/ModalFooter";
+
+import i18n from "i18n-messages";
+import TextInput from "components/EduIDTextInput";
+import EduIDButton from "components/EduIDButton";
+import NotificationsContainer from "containers/Notifications";
+
+const validate = (values, props) => {
+  console.log("validate - values", values);
+  console.log("valiadate - props.inputName", props.inputName);
+  console.log("valiadate - this.props.inputName", props.inputName);
+  let inputName = props.inputName;
+  console.log("valiadate - inputName", inputName);
+  const errors = {};
+  const code = values[inputName];
+  if (!code) {
+    errors[inputName] = "required";
+  }
+  return errors;
+};
+
+class ConfirmModalForm extends Component {
+  render() {
+    return (
+      <div id="modal-form">
+        <Form
+          id={this.props.inputName + "-form"}
+          role="form"
+        >
+          <div id="confirmation-code-area">
+            <Field
+              component={TextInput}
+              componentClass="input"
+              type="text"
+              label={this.props.resendLabel}
+              placeholder={this.props.placeholder}
+              id={this.props.inputName}
+              name={this.props.inputName}
+            />
+          </div>
+        </Form>
+      </div>
+    );
+  }
+}
+
+ConfirmModalForm = reduxForm({
+  form: "modal-form",
+  validate: validate
+})(ConfirmModalForm);
+
+ConfirmModalForm = connect(state => ({
+  initialValues: {}
+}))(ConfirmModalForm);
+
+// ConfirmModalForm.propTypes = {
+//   placeholder: PropTypes.string,
+//   handleConfirm: PropTypes.func,
+//   confirming: PropTypes.string,
+//   handleResend: PropTypes.func,
+//   closeModal: PropTypes.func,
+//   showModal: PropTypes.bool,
+//   with_resend_link: PropTypes.bool
+// };
+
+// ConfirmModalForm.defaultProps = {
+//   with_resend_link: true
+// };
+
+export default i18n(ConfirmModalForm);

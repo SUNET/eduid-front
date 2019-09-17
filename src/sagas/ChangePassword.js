@@ -9,7 +9,7 @@ import {
   failRequest
 } from "sagas/common";
 import * as actions from "actions/ChangePassword";
-import * as comp from "components/ChangePassword";
+import * as comp from "components/ChangePasswordForm";
 
 export function* requestSuggestedPassword() {
   try {

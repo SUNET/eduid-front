@@ -1,76 +1,107 @@
 @import "../variables.scss";
 
+// #orcid-connect-container {
+//   background: yellow;
+// }
+
+// #orcid-connect {
+//   background: hotpink;
+// }
+
+#orcid-connect-container,
+#register-securitykey-container,
+.namesview-form-container,
+.phoneview-form-container,
+.emailsview-form-container,
+#delete-account-container,
+#change-password-container {
+  margin: 0 auto 30px;
+  max-width: 58.3333333333%;
+}
+
 button#email.button {
   margin-top: 5px;
 }
 
+#personaldataview-form {
+  display: block;
+}
+
+#personal-data-form {
+  display: contents;
+}
+
+#phone-display,
+#email-display {
+  flex-direction: column;
+}
+
+#phonesview-form,
 #emailsview-form {
-  height: 100%;
-  overflow: hidden;
+  flex-direction: row;
+  margin-top: 10px;
 }
 
-#emailsview-form .form-group {
-  float: left;
-  margin-right: 10px;
+#personal-data-form input,
+#emails-form input,
+#phone-form input {
+  background-color: white;
+  border: none;
+  border-bottom: solid 1px #161616;
+  font-family: "ProximaNova-Regular";
+  color: #161616;
+  font-size: 24px;
 }
 
-#emailsview-form .form-group input {
-  min-width: 300px;
+#delete-button,
+#security-change-button,
+#add-more-button {
+  margin: 0;
+  padding: 0 0 0.75rem 0.75rem;
+  font-size: 16px;
+  // font-family: "ProximaNova-Regular";
+}
+#add-more-button {
+  text-transform: lowercase;
+}
+#delete-button {
+  color: red;
 }
 
-#emailsview-formadd {
-  float: left;
-  margin-top: 0;
+#delete-account-container .intro {
+  margin-bottom: 0;
 }
 
-@media only screen and (min-width: 992px) {
-  #confirmation-code-area div {
-    float: none !important;
-    width: 100% !important;
-  }
-
-  #confirmation-code-area .form-control-feedback {
-    top: 6px !important;
-    right: 6px !important;
-  }
-
-  #emails-form .form-control-feedback {
-    top: 6px !important;
-    right: 6px !important;
-  }
-
-  div.confirmation-code-area > div.form-group {
-    width: 100% !important;
-  }
+.hide {
+  display: none;
 }
 
-@media (max-width: 992px) {
-  #emails-form .form-control-feedback {
-    top: 6px !important;
-    right: 6px !important;
-  }
+.form-content {
+  width: 100%;
 }
 
-@media (max-width: 767px) {
-  #emails-form .form-control-feedback {
-    top: 8px !important;
-    right: 11px !important;
-  }
-
-  #personal-data-button {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-top: 20px !important;
-    display: block !important;
+@media (max-width: 823px) {
+  #orcid-connect-container,
+  #register-securitykey-container,
+  .namesview-form-container,
+  .phoneview-form-container,
+  .emailsview-form-container,
+  #delete-account-container,
+  #change-password-container {
+    margin: 0 auto 20px;
+    max-width: 75%;
   }
 }
 
-.nobutton {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.help-block .alert-warning {
-  border: 2px solid #faebcc !important;
-  background-color: transparent !important;
+@media (max-width: 768px) {
+  #orcid-connect-container,
+  #register-securitykey-container,
+  .namesview-form-container,
+  .phoneview-form-container,
+  .emailsview-form-container,
+  #delete-account-container,
+  #change-password-container {
+    // margin: calc(90% - 20px);
+    max-width: calc(100% - 40px);
+  }
 }

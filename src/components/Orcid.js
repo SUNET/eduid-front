@@ -11,8 +11,11 @@ class Orcid extends Component {
 
     const orcidIntro = (
       <div className="orcid-intro">
-        <h4>{this.props.l10n("orc.title")}</h4>
-        <p>{this.props.l10n("orc.long_description")}</p>
+        {/* <div className="orcid-logo-container">
+          <span className="orcid-logo" />
+    </div>*/}
+        {/* 
+        <label>{this.props.l10n("orc.title")}</label> */}
       </div>
     );
 
@@ -28,11 +31,11 @@ class Orcid extends Component {
             <tbody>
               <tr className="emailrow">
                 <td>
-                  {orcidAuthor}{" "}
+                  {orcidAuthor}
                   <a href={this.props.orcid.id}>
                     <div className="orcid-logo-container">
                       <span className="orcid-logo" />
-                    </div>{" "}
+                    </div>
                     {this.props.orcid.id}
                   </a>
                 </td>
@@ -52,22 +55,26 @@ class Orcid extends Component {
       );
     } else {
       orcidData = (
-        <div className="orcid-data">
+        <div id="orcid-data">
           <EduIDButton
             id="connect-orcid-button"
+            className="settings-button ok-button"
             onClick={this.props.handleOrcidConnect}
           >
             <div className="orcid-logo-container">
               <span className="orcid-logo" />
-            </div>{" "}
-            {this.props.l10n("orc.connect")}
+            </div>
+            {this.props.l10n("orc.button_connect")}
           </EduIDButton>
-          <p>{this.props.l10n("orc.about_link")}</p>
+          <p className="orcid-btn-help" >
+            {this.props.l10n("orc.long_description")}
+          </p>
+          {/* <p>{this.props.l10n("orc.about_link")}</p> */}
         </div>
       );
     }
     return (
-      <div>
+      <div id="orcid-connect">
         {orcidIntro}
         {orcidData}
       </div>

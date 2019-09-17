@@ -22,6 +22,7 @@ export function* sendCaptcha() {
         csrf_token: state.config.csrf_token,
         tou_accepted: state.email.tou_accepted
       };
+      
     //await sleep(10000);
     const resp = yield call(requestSendCaptcha, data);
     yield put(putCsrfToken(resp));

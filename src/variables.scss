@@ -2,15 +2,28 @@
  * Colors
  * ========================================================================== */
 
-$background-color: #bbded9;
+// $background-color: #bbded9;
+$background-color: #fffffa;
 $text-color: #333;
 $hcolor: #fff;
+
+$white: #fff;
+$black: #161616;
+
+$orange-highlight: #ff4500;
+$orange-opaque: #ffe7dd;
+
+$light-gray: #f4f4f4;
+$dark-gray: #d8d8d8;
+$mid-gray: #ebebeb;
 
 $lead-color: #3f5c57;
 
 $primary-btn-color: #58b78c;
 $primary-btn-border-color: #1c7430;
 
+$light-orange: #b79158;
+$light-green-shadow: rgba(221, 101, 14, 0.1);
 $orange: #dd650e;
 $btn-grey: #f8f9fa;
 
@@ -20,10 +33,15 @@ $light-green-hover: #4a9c77;
 $light-green-disabled: #8ccbb5;
 
 $dark-green: #629c92;
+$highligt-orange: rgba(219, 157, 71, 0.1);
+$highligt-green: rgba(245, 249, 233, 0.9);
 
 $link-color: #337ab7;
 $link-hover: #4a679c;
 $link-shadow: rgba(88, 126, 183, 0.25);
+
+$dark-blue: rgb(30, 92, 111);
+$dark-blue-shadow: rgba(30, 92, 111, 0.1);
 
 $error-red: #b75865;
 $error-red-shadow: rgba(183, 88, 101, 0.25);
@@ -31,6 +49,20 @@ $error-red-hover: #9c4a5e;
 $cancel-color: #fff;
 $cancel-color-hover: #e6e6e6;
 $cancel-color-shadow: rgba(183, 183, 183, 0.25);
+
+// light-blue: #177E89
+// muted-blue: #457EAC
+// dark-blue: #1E5C6F
+// washedout-blue: #A0C1B9
+
+// sand: #F4E8C1
+// light-sand: #F5F9E9
+// offwhite: #fffffa
+// white: #FFF
+
+// sharp-orange: #DB9D47
+// dark-red: #8E3B46
+// muted-green: #6b9080
 
 /*
  * Typography

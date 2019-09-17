@@ -3,6 +3,7 @@ import React from "react";
 import { shallow, mount, render } from "enzyme";
 import { put, select, call } from "redux-saga/effects";
 import expect, { createSpy, spyOn, isSpy } from "expect";
+import { BrowserRouter as Router } from 'react-router-dom';
 import ChangePassword from "components/ChangePassword";
 import DeleteModal from "components/DeleteModal";
 import ChangePasswordContainer from "containers/ChangePassword";
@@ -436,7 +437,9 @@ describe("ChangePassword Container", () => {
       dispatch = store.dispatch;
       const wrapper = mount(
         <Provider store={store}>
-          <ChangePasswordContainer {...props} />
+          <Router>
+            <ChangePasswordContainer {...props} />
+          </Router>
         </Provider>
       );
       return wrapper;
@@ -452,7 +455,7 @@ describe("ChangePassword Container", () => {
   });
 
   it("Renders test", () => {
-    expect(chooseCustom).toEqual(false);
+     expect(chooseCustom).toEqual(false);
   });
 
   /* TODO - fix these tests
