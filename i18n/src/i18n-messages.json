@@ -885,7 +885,7 @@
   },
   {
     "id": "security.add_webauthn_token_key",
-    "defaultMessage": "Register a Security Key"
+    "defaultMessage": "Add a security key"
   },
   {
     "id": "security.add_webauthn_token_device",
@@ -893,15 +893,15 @@
   },
   {
     "id": "security.security-key_title",
-    "defaultMessage": "Register a Security Key"
+    "defaultMessage": "Make your eduID more secure"
   },
   {
-    "id": "security.for-second-factor",
-    "defaultMessage": "Use the buttons below to register a Security Key for authentication with eduID"
+    "id": "security.security-key_description",
+    "defaultMessage": "Add a security key as a second layer of identification, beyond email and password, to prove you are \n    the owner of your eduID."
   },
   {
     "id": "security.webauthn-describe-title",
-    "defaultMessage": "Enter a nickname for the Security Key"
+    "defaultMessage": "Add a name for your Security Key"
   },
   {
     "id": "security.webauthn.max_allowed_tokens",
@@ -909,11 +909,11 @@
   },
   {
     "id": "security.webauthn_register_success",
-    "defaultMessage": "Security Key successfully registered"
+    "defaultMessage": "Security Key added"
   },
   {
     "id": "security.webauthn-token-removed",
-    "defaultMessage": "Security Key successfully removed"
+    "defaultMessage": "Security Key removed"
   },
   {
     "id": "security.webauthn-missing-pdata",
@@ -929,11 +929,11 @@
   },
   {
     "id": "account_linking.main_title",
-    "defaultMessage": "Connect other accounts"
+    "defaultMessage": "Connect an ORCID account"
   },
   {
     "id": "account_linking.long_description",
-    "defaultMessage": "Simplify login by connecting your eduID to other accounts."
+    "defaultMessage": "If you are a reseacher with an ORCID iD, you can connect it to eduID and only use one set of login details for both services."
   },
   {
     "id": "orc.authorization_success",
@@ -957,7 +957,7 @@
   },
   {
     "id": "orc.long_description",
-    "defaultMessage": "ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with."
+    "defaultMessage": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
   {
     "id": "orc.about_link",
@@ -965,7 +965,7 @@
   },
   {
     "id": "orc.button_connect",
-    "defaultMessage": "Connect ORCID account"
+    "defaultMessage": "Add your ORCID account"
   },
   {
     "id": "accountId.main_title",
@@ -977,7 +977,7 @@
   },
   {
     "id": "accountId.short_description",
-    "defaultMessage": "You might be asked to share this information if you need support."
+    "defaultMessage": "You might be asked to share this information if you need technical support."
   },
   {
     "id": "accountId.accountId_display_title",

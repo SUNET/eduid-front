@@ -1766,7 +1766,7 @@ const msgs = {
   "security.add_webauthn_token_key": (
     <FormattedMessage
       id="security.add_webauthn_token_key"
-      defaultMessage={`Register a Security Key`}
+      defaultMessage={`Add a security key`}
     />
   ),
 
@@ -1780,21 +1780,22 @@ const msgs = {
   "security.security-key_title": (
     <FormattedMessage
       id="security.security-key_title"
-      defaultMessage={`Register a Security Key`}
+      defaultMessage={`Make your eduID more secure`}
     />
   ),
 
-  "security.for-second-factor": (
+  "security.security-key_description": (
     <FormattedMessage
-      id="security.for-second-factor"
-      defaultMessage={`Use the buttons below to register a Security Key for authentication with eduID`}
+      id="security.security-key_description"
+      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are 
+    the owner of your eduID.`}
     />
   ),
 
   "security.webauthn-describe-title": (
     <FormattedMessage
       id="security.webauthn-describe-title"
-      defaultMessage={`Enter a nickname for the Security Key`}
+      defaultMessage={`Add a name for your Security Key`}
     />
   ),
 
@@ -1808,14 +1809,14 @@ const msgs = {
   "security.webauthn_register_success": (
     <FormattedMessage
       id="security.webauthn_register_success"
-      defaultMessage={`Security Key successfully registered`}
+      defaultMessage={`Security Key added`}
     />
   ),
 
   "security.webauthn-token-removed": (
     <FormattedMessage
       id="security.webauthn-token-removed"
-      defaultMessage={`Security Key successfully removed`}
+      defaultMessage={`Security Key removed`}
     />
   ),
 
@@ -1845,14 +1846,14 @@ const msgs = {
   "account_linking.main_title": (
     <FormattedMessage
       id="account_linking.main_title"
-      defaultMessage={`Connect other accounts`}
+      defaultMessage={`Connect an ORCID account`}
     />
   ),
 
   "account_linking.long_description": (
     <FormattedMessage
       id="account_linking.long_description"
-      defaultMessage={`Simplify login by connecting your eduID to other accounts.`}
+      defaultMessage={`If you are a reseacher with an ORCID iD, you can connect it to eduID and only use one set of login details for both services.`}
     />
   ),
 
@@ -1891,7 +1892,7 @@ const msgs = {
   "orc.long_description": (
     <FormattedMessage
       id="orc.long_description"
-      defaultMessage={`ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.`}
+      defaultMessage={` ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with.`}
     />
   ),
 
@@ -1905,7 +1906,7 @@ const msgs = {
   "orc.button_connect": (
     <FormattedMessage
       id="  orc.button_connect"
-      defaultMessage={`Connect ORCID account`}
+      defaultMessage={`Add your ORCID account`}
     />
   ),
 
@@ -1924,7 +1925,7 @@ const msgs = {
   "accountId.short_description": (
     <FormattedMessage
       id="accountId.short_description"
-      defaultMessage={` You might be asked to share this information if you need support.`}
+      defaultMessage={` You might be asked to share this information if you need technical support.`}
     />
   ),
 
