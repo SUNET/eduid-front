@@ -2662,7 +2662,7 @@ const msgs = {
     />
   ),
 
-  "settings.button_delete_account": (
+  "security.button_delete_account": (
     <FormattedMessage
       id="security.button_delete_account"
       defaultMessage={`I want to delete my eduID`}
