@@ -352,6 +352,10 @@
     "defaultMessage": "no email added"
   },
   {
+    "id": "main.copyright",
+    "defaultMessage": "SUNET 2013-2019"
+  },
+  {
     "id": "dashboard_nav.profile",
     "defaultMessage": "Profile"
   },
@@ -893,7 +897,7 @@
   },
   {
     "id": "security.second-factor",
-    "defaultMessage": "Add a Security Key as a second layer of identification, beyond email and password, to prove you are the owner of your eduID."
+    "defaultMessage": "Add a Security Key as a second layer of identification, beyond email and password, to prove you are \n    the owner of your eduID."
   },
   {
     "id": "security.webauthn-describe-title",

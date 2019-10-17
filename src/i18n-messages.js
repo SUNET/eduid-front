@@ -764,9 +764,9 @@ const msgs = {
     />
   ),
 
-  // "main.copyright": (
-  //   <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
-  // ),
+  "main.copyright": (
+    <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
+  ),
 
   // "main.menu": <FormattedMessage id="main.menu" defaultMessage={`Menu`} />,
 
@@ -1905,7 +1905,7 @@ const msgs = {
 
   "orc.button_connect": (
     <FormattedMessage
-      id="  orc.button_connect"
+      id="orc.button_connect"
       defaultMessage={`Add your ORCID account`}
     />
   ),
