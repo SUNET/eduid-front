@@ -764,9 +764,9 @@ const msgs = {
     />
   ),
 
-  "main.copyright": (
-    <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
-  ),
+  // "main.copyright": (
+  //   <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
+  // ),
 
   // "main.menu": <FormattedMessage id="main.menu" defaultMessage={`Menu`} />,
 
@@ -1766,7 +1766,7 @@ const msgs = {
   "security.add_webauthn_token_key": (
     <FormattedMessage
       id="security.add_webauthn_token_key"
-      defaultMessage={`Add a security key`}
+      defaultMessage={`Add a second layer of security`}
     />
   ),
 
@@ -1784,10 +1784,10 @@ const msgs = {
     />
   ),
 
-  "security.security-key_description": (
+  "security.second-factor": (
     <FormattedMessage
-      id="security.security-key_description"
-      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are 
+      id="security.second-factor"
+      defaultMessage={`Add a Security Key as a second layer of identification, beyond email and password, to prove you are 
     the owner of your eduID.`}
     />
   ),
