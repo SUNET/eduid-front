@@ -1305,7 +1305,7 @@
   },
   {
     "id": "chpass.button_save_password",
-    "defaultMessage": "Save new password"
+    "defaultMessage": "Save"
   },
   {
     "id": "chpass.no_old_pw",

@@ -2553,7 +2553,7 @@ const msgs = {
   "chpass.button_save_password": (
     <FormattedMessage
       id="chpass.button_save_password"
-      defaultMessage={`Save new password`}
+      defaultMessage={`Save`}
     />
   ),
 

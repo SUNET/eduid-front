@@ -124,7 +124,7 @@ class ChangePasswordForm extends Component {
           type="text"
           name={pwFieldSuggestedName}
           id={pwFieldSuggestedName}
-          label={"Suggested password"}
+          label={this.props.l10n("chpass.suggested_password")}
           disabled={true}
         />
       );
