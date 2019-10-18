@@ -4,6 +4,7 @@ build_in_docker:
   image: docker.sunet.se/sunet/docker-jenkins-node-job
 script:
   - "unset LD_LIBRARY_PATH"
+  - "export HOME=$WORKSPACE"
   - "node --version"
   - "npm --version"
   - "npm install"
