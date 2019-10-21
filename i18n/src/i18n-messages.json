@@ -93,7 +93,7 @@
   },
   {
     "id": "main.welcome",
-    "defaultMessage": "Welcome to eduID!"
+    "defaultMessage": "Welcome to eduID"
   },
   {
     "id": "register.create-account",
@@ -318,6 +318,22 @@
   {
     "id": "used.email-in-use",
     "defaultMessage": "An eduID is already using {email}"
+  },
+  {
+    "id": "dashboard.welcome",
+    "defaultMessage": "eduID for"
+  },
+  {
+    "id": "dashboard.tagline_unverified",
+    "defaultMessage": "Don't forget to verify your national id number."
+  },
+  {
+    "id": "dashboard.tagline_verified",
+    "defaultMessage": "Make eduID more secure."
+  },
+  {
+    "id": "dashboard.tagline_verification",
+    "defaultMessage": "Add your national id number to start using eduID."
   },
   {
     "id": "profile.name_display_title",

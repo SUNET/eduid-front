@@ -236,8 +236,11 @@ const msgs = {
   ),
 
   "main.welcome": (
-    <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID!`} />
+    <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID`} />
   ),
+
+ 
+
 
   "register.create-account": (
     <FormattedMessage
@@ -708,6 +711,27 @@ const msgs = {
   //   <FormattedMessage id="main.eduid_id" defaultMessage={`eduID identifier`} />
   // ),
 
+
+/************************/
+/* Main > Dashboard *****/
+/************************/
+
+  "dashboard.welcome": (
+    <FormattedMessage id="dashboard.welcome" defaultMessage={`eduID for`} />
+  ),
+
+  "dashboard.tagline_unverified": (
+    <FormattedMessage id="dashboard.tagline_unverified" defaultMessage={`Don't forget to verify your national id number.`} />
+  ),
+
+  "dashboard.tagline_verified": (
+    <FormattedMessage id="dashboard.tagline_verified" defaultMessage={`Make eduID more secure.`} />
+  ),
+
+  "dashboard.tagline_verification": (
+    <FormattedMessage id="dashboard.tagline_verification" defaultMessage={`Add your national id number to start using eduID.`} />
+  ),
+
   /************************/
   /* Main > Profile ******/
   /************************/
@@ -790,6 +814,7 @@ const msgs = {
   "dashboard_nav.back": (
     <FormattedMessage id="dashboard_nav.back" defaultMessage={`Back`} />
   ),
+
 
   /* ----- ConfirmModal  ------- */
 
