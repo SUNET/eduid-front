@@ -350,7 +350,7 @@
   "tl.pending": "Bekräfta",
   "tl.primary": "Primär",
   "tou.accept": "Godkänn",
-  "tou.cancel": "Cancel",
+  "tou.cancel": "Avbryt",
   "tou.header": "Användarvillkor för eduID.se",
   "tou.must-accept": "Du måste godkänna användarvillkoren innan du kan fortsätta",
   "tou.not-tou": "Ett problem att hämta användarvillkoren uppstod. Var god försök senare.",
