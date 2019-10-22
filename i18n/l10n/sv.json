@@ -59,7 +59,6 @@
   "cred.credential_type": "Inloggningsuppgiftstyp",
   "csrf.try-again": "Ett problem uppstod, var vänlig försök igen",
   "dashboard.tagline_unverified": "Glöm inte att koppla din identitet till ditt eduID",
-  "dashboard.tagline_verification": "Lägg till ditt personnummer för att börja använda eduID",
   "dashboard.tagline_verified": "Gör ditt eduID säkrare",
   "dashboard.welcome": "eduID för",
   "dashboard_nav.advanced-settings": "Avancerade inställningar",
@@ -367,7 +366,7 @@
   "verify-identity.connect_nin_title": "Välj en metod för att bevisa att personnumret är ditt",
   "verify-identity.unverified_main_title": "Koppla din identitet till ditt eduID",
   "verify-identity.verified_main_title": "Ditt eduID är redo att användas",
-  "verify-identity.vetting_freja_tagline": "För de som kan skapa Freja eID och besöka ett ombud i Sverige",
+  "verify-identity.vetting_freja_tagline": "För de som kan skapa Freja eID genom att besöka ett ombud i Sverige",
   "verify-identity.vetting_phone_tagline": "För de som har ett telefonabonnemang i sitt eget namn",
   "verify-identity.vetting_post_tagline": "För de som har tillgång till sin folkbokföringsaddress"
 }

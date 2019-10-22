@@ -52,7 +52,7 @@ class Main extends Component {
     } else {
       promptLink = `/profile/verify-identity/`;
       styling = "unverified";
-      welcomeGreeting = this.props.l10n("dashboard.tagline_verification");
+      welcomeGreeting = this.props.l10n("dashboard.tagline_unverified");
     }
 
     return (
@@ -63,7 +63,9 @@ class Main extends Component {
             <HeaderContainer />
             <div id="dashboard-text">
               <div id="welcome">
-                <h1>{this.props.l10n("dashboard.welcome")} {this.props.email}</h1>
+                <h1>
+                  {this.props.l10n("dashboard.welcome")} {this.props.email}
+                </h1>
                 <Link id="profile-prompt-link" to={promptLink}>
                   <h2 className={styling}>{welcomeGreeting}</h2>
                 </Link>

@@ -719,23 +719,23 @@ const msgs = {
   "dashboard.tagline_unverified": (
     <FormattedMessage
       id="dashboard.tagline_unverified"
-      defaultMessage={`Don't forget to verify your national id number.`}
+      defaultMessage={`Don't forget to connect your identity to eduID`}
     />
   ),
 
   "dashboard.tagline_verified": (
     <FormattedMessage
       id="dashboard.tagline_verified"
-      defaultMessage={`Make eduID more secure.`}
+      defaultMessage={`Make eduID more secure`}
     />
   ),
 
-  "dashboard.tagline_verification": (
-    <FormattedMessage
-      id="dashboard.tagline_verification"
-      defaultMessage={`Add your national id number to start using eduID.`}
-    />
-  ),
+  // "dashboard.tagline_verification": (
+  //   <FormattedMessage
+  //     id="dashboard.tagline_verification"
+  //     defaultMessage={`connect your identity to eduID`}
+  //   />
+  // ),
 
   /************************/
   /* Main > Profile ******/
@@ -887,7 +887,7 @@ const msgs = {
   "verify-identity.unverified_main_title": (
     <FormattedMessage
       id="verify-identity.unverified_main_title"
-      defaultMessage={`Add and verify your id number`}
+      defaultMessage={`Connect your identity to your eduID`}
     />
   ),
 
@@ -915,7 +915,7 @@ const msgs = {
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
-      defaultMessage={`For those with the app able to pass by one of the authorised agents`}
+      defaultMessage={`For those able to create a Freja eID by passing by one of the authorised agents`}
     />
   ),
 
@@ -1122,7 +1122,7 @@ const msgs = {
   "letter.initialize_proofing_help_text": (
     <FormattedMessage
       id="letter.initialize_proofing_help_text"
-      defaultMessage={`Get a confirmation code sent by post to your registered address.`}
+      defaultMessage={`The letter will contain a code that for security reasons expire in two weeks.`}
     />
   ),
 
@@ -1222,7 +1222,7 @@ const msgs = {
   "lmp.initialize_proofing_help_text": (
     <FormattedMessage
       id="lmp.initialize_proofing_help_text"
-      defaultMessage={`Get a confirmation code sent to a mobile phone number registered in your name.`}
+      defaultMessage={`The phone number registry is maintained by phone operators at their conveninece and may not include all registered phone numbers.`}
     />
   ),
 
@@ -1299,7 +1299,7 @@ const msgs = {
   "eidas.vetting_button_freja": (
     <FormattedMessage
       id="eidas.vetting_button_freja"
-      defaultMessage={`with Freja eID`}
+      defaultMessage={`with a digital ID-card`}
     />
   ),
 
@@ -1313,7 +1313,7 @@ const msgs = {
   "eidas.initialize_proofing_help_text": (
     <FormattedHTMLMessage
       id="eidas.initialize_proofing_help_text"
-      defaultMessage={`Download the Freja eID app and have your identity verified at selected local vendors.`}
+      defaultMessage={`To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app.`}
     />
   ),
 
