@@ -239,9 +239,6 @@ const msgs = {
     <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID`} />
   ),
 
- 
-
-
   "register.create-account": (
     <FormattedMessage
       id="register.create-account"
@@ -711,25 +708,33 @@ const msgs = {
   //   <FormattedMessage id="main.eduid_id" defaultMessage={`eduID identifier`} />
   // ),
 
-
-/************************/
-/* Main > Dashboard *****/
-/************************/
+  /************************/
+  /* Main > Dashboard *****/
+  /************************/
 
   "dashboard.welcome": (
     <FormattedMessage id="dashboard.welcome" defaultMessage={`eduID for`} />
   ),
 
   "dashboard.tagline_unverified": (
-    <FormattedMessage id="dashboard.tagline_unverified" defaultMessage={`Don't forget to verify your national id number.`} />
+    <FormattedMessage
+      id="dashboard.tagline_unverified"
+      defaultMessage={`Don't forget to verify your national id number.`}
+    />
   ),
 
   "dashboard.tagline_verified": (
-    <FormattedMessage id="dashboard.tagline_verified" defaultMessage={`Make eduID more secure.`} />
+    <FormattedMessage
+      id="dashboard.tagline_verified"
+      defaultMessage={`Make eduID more secure.`}
+    />
   ),
 
   "dashboard.tagline_verification": (
-    <FormattedMessage id="dashboard.tagline_verification" defaultMessage={`Add your national id number to start using eduID.`} />
+    <FormattedMessage
+      id="dashboard.tagline_verification"
+      defaultMessage={`Add your national id number to start using eduID.`}
+    />
   ),
 
   /************************/
@@ -814,7 +819,6 @@ const msgs = {
   "dashboard_nav.back": (
     <FormattedMessage id="dashboard_nav.back" defaultMessage={`Back`} />
   ),
-
 
   /* ----- ConfirmModal  ------- */
 
@@ -1335,51 +1339,51 @@ const msgs = {
   //   />
   // ),
 
-  "eidas.freja_instructions_step_1": (
+  "eidas.freja_instructions_step1": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_1"
+      id="eidas.freja_instructions_step1"
       defaultMessage={`Install the app`}
     />
   ),
 
-  "eidas.freja_instructions_step_2": (
+  "eidas.freja_instructions_step2": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_2"
-      defaultMessage={`Make a Freja eID+ (Plus) account`}
+      id="eidas.freja_instructions_step2"
+      defaultMessage={`Create a Freja eID Plus account (awarded the ‘Svensk e-legitimation’ quality mark)`}
     />
   ),
 
-  "eidas.freja_instructions_step_3": (
+  "eidas.freja_instructions_step3": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_3"
+      id="eidas.freja_instructions_step3"
       defaultMessage={`The app will generate a QR-code`}
     />
   ),
 
-  "eidas.freja_instructions_step_4": (
+  "eidas.freja_instructions_step4": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_4"
-      defaultMessage={`Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity`}
+      id="eidas.freja_instructions_step4"
+      defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity`}
     />
   ),
 
-  "eidas.freja_instructions_tip_1": (
+  "eidas.freja_instructions_tip1": (
     <FormattedMessage
       id="eidas.freja_instructions_tip_1"
       defaultMessage={`Tip: Use the app to find your nearest agent`}
     />
   ),
 
-  "eidas.freja_instructions_step_5": (
+  "eidas.freja_instructions_step5": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_5"
+      id="eidas.freja_instructions_step5"
       defaultMessage={`Return to eduID and allow Freja eID to share your id number`}
     />
   ),
 
-  "eidas.freja_instructions_step_6": (
+  "eidas.freja_instructions_step6": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_6"
+      id="eidas.freja_instructions_step6"
       defaultMessage={`If you want a quick verification and are able to pass by one of the authorized agents`}
     />
   ),
@@ -1387,14 +1391,14 @@ const msgs = {
   "eidas.freja_instructions_install_link": (
     <FormattedMessage
       id="eidas.freja_instructions_install_link"
-      defaultMessage={`I do not have Freja eID`}
+      defaultMessage={`What is Freja eID?`}
     />
   ),
 
   "eidas.freja_eid_ready": (
     <FormattedMessage
       id="eidas.freja_eid_ready"
-      defaultMessage={`I have Freja eID`}
+      defaultMessage={`Use my Freja eID`}
     />
   ),
 

@@ -18,12 +18,12 @@ class Eidas extends Component {
     const freja_instructions = (
       <div id="freja-instructions">
         <ol>
-          <li>{this.props.l10n("eidas.freja_instructions_step_1")}</li>
-          <li>{this.props.l10n("eidas.freja_instructions_step_2")}</li>
-          <li>{this.props.l10n("eidas.freja_instructions_step_3")}</li>
-          <li>{this.props.l10n("eidas.freja_instructions_step_4")}</li>
-          <label>{this.props.l10n("eidas.freja_instructions_tip_1")}</label>
-          <li>{this.props.l10n("eidas.freja_instructions_step_5")}</li>
+          <li>{this.props.l10n("eidas.freja_instructions_step1")}</li>
+          <li>{this.props.l10n("eidas.freja_instructions_step2")}</li>
+          <li>{this.props.l10n("eidas.freja_instructions_step3")}</li>
+          <li>{this.props.l10n("eidas.freja_instructions_step4")}</li>
+          <label>{this.props.l10n("eidas.freja_instructions_tip1")}</label>
+          <li>{this.props.l10n("eidas.freja_instructions_step5")}</li>
         </ol>
       </div>
     );

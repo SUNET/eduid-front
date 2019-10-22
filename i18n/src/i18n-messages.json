@@ -636,40 +636,40 @@
     "defaultMessage": "Use Freja eID+ and pass a local authorised agent"
   },
   {
-    "id": "eidas.freja_instructions_step_1",
+    "id": "eidas.freja_instructions_step1",
     "defaultMessage": "Install the app"
   },
   {
-    "id": "eidas.freja_instructions_step_2",
-    "defaultMessage": "Make a Freja eID+ (Plus) account"
+    "id": "eidas.freja_instructions_step2",
+    "defaultMessage": "Create a Freja eID Plus account (awarded the ‘Svensk e-legitimation’ quality mark)"
   },
   {
-    "id": "eidas.freja_instructions_step_3",
+    "id": "eidas.freja_instructions_step3",
     "defaultMessage": "The app will generate a QR-code"
   },
   {
-    "id": "eidas.freja_instructions_step_4",
-    "defaultMessage": "Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity"
+    "id": "eidas.freja_instructions_step4",
+    "defaultMessage": "Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity"
   },
   {
     "id": "eidas.freja_instructions_tip_1",
     "defaultMessage": "Tip: Use the app to find your nearest agent"
   },
   {
-    "id": "eidas.freja_instructions_step_5",
+    "id": "eidas.freja_instructions_step5",
     "defaultMessage": "Return to eduID and allow Freja eID to share your id number"
   },
   {
-    "id": "eidas.freja_instructions_step_6",
+    "id": "eidas.freja_instructions_step6",
     "defaultMessage": "If you want a quick verification and are able to pass by one of the authorized agents"
   },
   {
     "id": "eidas.freja_instructions_install_link",
-    "defaultMessage": "I do not have Freja eID"
+    "defaultMessage": "What is Freja eID?"
   },
   {
     "id": "eidas.freja_eid_ready",
-    "defaultMessage": "I have Freja eID"
+    "defaultMessage": "Use my Freja eID"
   },
   {
     "id": "eidas.error_missing_nin",
