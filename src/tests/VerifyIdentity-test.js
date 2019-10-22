@@ -168,7 +168,7 @@ describe("VerifyIdentity component, when nin is saved", () => {
     const { wrapper } = setupComponent();
     const header = wrapper.find("h3");
     expect(header.exists()).toEqual(true);
-    expect(header.text()).toContain("Add and verify your id number");
+    expect(header.text()).toContain("identity");
     expect(header.text()).not.toContain("Your eduID is ready to use");
   });
 });
