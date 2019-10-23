@@ -1051,6 +1051,13 @@ const msgs = {
   //   <FormattedMessage id="nins.button_delete" defaultMessage={`Remove`} />
   // ),
 
+  "nins.successfully_added": (
+    <FormattedMessage
+      id="nins.successfully_added"
+      defaultMessage={`Your id number was added.`}
+    />
+  ),
+
   "nins.only_one_to_verify": (
     <FormattedMessage
       id="nins.only_one_to_verify"
