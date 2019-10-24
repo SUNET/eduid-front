@@ -9,7 +9,7 @@ const mapStateToProps = (state, props) => {
   let freja_idp_url = state.config.TOKEN_VERIFY_IDP;
   let verify_path = "verify-nin";
   if (!eidas_sp_url.endsWith("/")) {
-    eidas_sp_url.concat("/");
+    eidas_sp_url = eidas_sp_url.concat("/");
   }
   let eidas_sp_freja_idp_url =
     eidas_sp_url + verify_path + "?idp=" + freja_idp_url;
