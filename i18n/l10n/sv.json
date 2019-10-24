@@ -345,7 +345,7 @@
   "signup.registering-new": "E-postaddressen har registrerats",
   "signup.registering-resend-code": "Ett nytt verifieringsmeddelande har skickats",
   "signup.verification-resent": "Ett nytt verifieringsmeddelande har skickats",
-  "still-valid-code": "Vi kan bara skicka en kod var 5:e minut, var god vänta tills du ber om en ny kod.",
+  "still-valid-code": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod.",
   "tl.make_primary": "Sätt som primär",
   "tl.pending": "Bekräfta",
   "tl.primary": "Primär",
