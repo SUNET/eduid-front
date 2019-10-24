@@ -40,7 +40,7 @@ class Footer extends Component {
         // <div id="eduid-navbar">
         <nav key="2" id="eduid-navbar">
           <ul>
-            <li>
+            {/* <li>
               <a href={this.props.students_link}>
                 {this.props.l10n("header.students")}
               </a>
@@ -55,7 +55,7 @@ class Footer extends Component {
               <a href={this.props.staff_link}>
                 {this.props.l10n("header.staff")}
               </a>
-            </li>
+            </li> */}
             <li>
               <a href={this.props.faq_link}>{this.props.l10n("header.faq")}</a>
             </li>

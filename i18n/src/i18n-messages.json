@@ -265,7 +265,7 @@
   },
   {
     "id": "mfa.login-tapit",
-    "defaultMessage": "Use your Security Key to log in. If it has a button, tap it."
+    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
   },
   {
     "id": "mfa.fake-authn",
@@ -273,11 +273,11 @@
   },
   {
     "id": "mfa.no-webauthn-support",
-    "defaultMessage": "No support for Security Keys"
+    "defaultMessage": "No support for security keys"
   },
   {
     "id": "mfa.no-webauthn-support-text",
-    "defaultMessage": "You have registered a Security Key for authentication, but this browser does not support them. Please use another browser to use your Security Keys."
+    "defaultMessage": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys."
   },
   {
     "id": "mfa.problems-heading",
@@ -293,11 +293,11 @@
   },
   {
     "id": "mfa.error-getting-token",
-    "defaultMessage": "There was a problem using your Security Key"
+    "defaultMessage": "There was a problem using your security key"
   },
   {
     "id": "mfa.edge-no-u2f",
-    "defaultMessage": "There is a problem with the Edge browser and U2F Security Keys. Please try with Firefox or Chrome."
+    "defaultMessage": "There is a problem with the Edge browser and U2F security keys. Please try with Firefox or Chrome."
   },
   {
     "id": "actions.action-completed",
@@ -445,11 +445,11 @@
   },
   {
     "id": "verify-identity.vetting_freja_tagline",
-    "defaultMessage": "For those able to create a Freja eID by passing by one of the authorised agents"
+    "defaultMessage": "For those able to create a Freja eID by passing one of the authorised agents"
   },
   {
     "id": "verify-identity.connect_nin_title",
-    "defaultMessage": "Choose a way to verify that the id number\n            belongs to you"
+    "defaultMessage": "Choose a way to verify that the id number belongs to you"
   },
   {
     "id": "add_nin.main_title",
@@ -492,6 +492,10 @@
     "defaultMessage": "Valid national id number"
   },
   {
+    "id": "nins.successfully_added",
+    "defaultMessage": "Your id number was added."
+  },
+  {
     "id": "nins.only_one_to_verify",
     "defaultMessage": "You can only have one unverified national id number to verify it. Please remove the unwanted ones."
   },
@@ -517,7 +521,7 @@
   },
   {
     "id": "letter.initialize_proofing_help_text",
-    "defaultMessage": "The letter will contain a code that for security reasons expire in two weeks."
+    "defaultMessage": "The letter will contain a code that for security reasons expires in two weeks."
   },
   {
     "id": "letter.no_state_found",
@@ -573,11 +577,11 @@
   },
   {
     "id": "lmp.initialize_proofing_help_text",
-    "defaultMessage": "The phone number registry is maintained by phone operators at their conveninece and may not include all registered phone numbers."
+    "defaultMessage": "The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers."
   },
   {
     "id": "lmp.initialize_proofing_help_text_tip_1",
-    "defaultMessage": "Tip: The registry is updated by phone operators at their conveninece and may not include all registered phone numbers"
+    "defaultMessage": "Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers"
   },
   {
     "id": "lmp.modal_add_number_title",
@@ -877,7 +881,7 @@
   },
   {
     "id": "security.webauthn_credential_type",
-    "defaultMessage": "Security Key"
+    "defaultMessage": "Security key"
   },
   {
     "id": "security.add_webauthn_token_key",
@@ -885,7 +889,7 @@
   },
   {
     "id": "security.add_webauthn_token_device",
-    "defaultMessage": "Register this device as Security Key"
+    "defaultMessage": "Register this device as security key"
   },
   {
     "id": "security.security-key_title",
@@ -893,27 +897,27 @@
   },
   {
     "id": "security.second-factor",
-    "defaultMessage": "Add a Security Key as a second layer of identification, beyond email and password, to prove you are \n    the owner of your eduID."
+    "defaultMessage": "Add a security key as a second layer of identification, beyond email and password, to prove you are \n    the owner of your eduID."
   },
   {
     "id": "security.webauthn-describe-title",
-    "defaultMessage": "Add a name for your Security Key"
+    "defaultMessage": "Add a name for your security key"
   },
   {
     "id": "security.webauthn.max_allowed_tokens",
-    "defaultMessage": "You are not allowed to register more Security Keys"
+    "defaultMessage": "You are not allowed to register more security keys"
   },
   {
     "id": "security.webauthn_register_success",
-    "defaultMessage": "Security Key added"
+    "defaultMessage": "Security key added"
   },
   {
     "id": "security.webauthn-token-removed",
-    "defaultMessage": "Security Key removed"
+    "defaultMessage": "Security key removed"
   },
   {
     "id": "security.webauthn-missing-pdata",
-    "defaultMessage": "You should add your personal data before adding a Security Key"
+    "defaultMessage": "You should add your personal data before adding a security key"
   },
   {
     "id": "security.webauthn-token-notfound",
@@ -921,15 +925,15 @@
   },
   {
     "id": "security.webauthn-noremove-last",
-    "defaultMessage": "You are not allowed to remove your only Security Key"
+    "defaultMessage": "You are not allowed to remove your only security key"
   },
   {
     "id": "account_linking.main_title",
-    "defaultMessage": "Connect an ORCID account"
+    "defaultMessage": "ORCID account"
   },
   {
     "id": "account_linking.long_description",
-    "defaultMessage": "If you are a reseacher with an ORCID iD, you can connect it to eduID and only use one set of login details for both services."
+    "defaultMessage": "If you are a reseacher with an ORCID iD you can share it with your eduID."
   },
   {
     "id": "orc.authorization_success",
@@ -1373,7 +1377,7 @@
   },
   {
     "id": "settings.modal_delete_title",
-    "defaultMessage": "Are you sure you want to delete eduID?"
+    "defaultMessage": "Are you sure you want to delete your eduID?"
   },
   {
     "id": "delete.modal_info",
