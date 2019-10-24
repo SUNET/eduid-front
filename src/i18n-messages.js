@@ -915,7 +915,7 @@ const msgs = {
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
-      defaultMessage={`For those able to create a Freja eID by passing by one of the authorised agents`}
+      defaultMessage={`For those able to create a Freja eID by passing one of the authorised agents`}
     />
   ),
 
