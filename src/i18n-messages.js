@@ -2708,7 +2708,7 @@ const msgs = {
   "settings.modal_delete_title": (
     <FormattedMessage
       id="settings.modal_delete_title"
-      defaultMessage={`Are you sure you want to delete eduID?`}
+      defaultMessage={`Are you sure you want to delete your eduID?`}
     />
   ),
 
