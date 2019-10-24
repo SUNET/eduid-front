@@ -1129,7 +1129,7 @@ const msgs = {
   "letter.initialize_proofing_help_text": (
     <FormattedMessage
       id="letter.initialize_proofing_help_text"
-      defaultMessage={`The letter will contain a code that for security reasons expire in two weeks.`}
+      defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
     />
   ),
 
