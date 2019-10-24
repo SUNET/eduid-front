@@ -19,9 +19,9 @@ class AccountId extends Component {
                 {this.props.eppn}
               </p>
             </div>
-            <p className="orcid-btn-help">
+             <p className="orcid-btn-help">
               {this.props.l10n("accountId.short_description")}
-            </p>
+            </p> 
           </div>
         </div>
       </div>

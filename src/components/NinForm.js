@@ -52,7 +52,7 @@ class NinForm extends Component {
           onClick={this.props.addNin}
           key="1"
         >
-          ADD
+          {this.props.l10n("emails.button_add")}
         </button>
       ];
     }

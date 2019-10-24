@@ -147,7 +147,7 @@ class Security extends Component {
         <div id="register-securitykey-container">
           <div className="intro">
             <h4>{this.props.l10n("security.security-key_title")}</h4>
-            <p>{this.props.l10n("security.for-second-factor")}</p>
+            <p>{this.props.l10n("security.second-factor")}</p>
           </div>
           <div id="register-webauthn-tokens-area">
             {securitykey_table}

@@ -45,7 +45,7 @@
   },
   {
     "id": "error_lookup_mobile_task",
-    "defaultMessage": "Problem looking up the phone number"
+    "defaultMessage": "Your phone number could not be found in the registry. Please try another method."
   },
   {
     "id": "unexpected-problem",
@@ -93,15 +93,11 @@
   },
   {
     "id": "main.welcome",
-    "defaultMessage": "Welcome to eduID!"
+    "defaultMessage": "Welcome to eduID"
   },
   {
     "id": "register.create-account",
     "defaultMessage": "Sign up with your email address to start."
-  },
-  {
-    "id": "register.why-account",
-    "defaultMessage": "eduID allows you to log into multiple organisations associated with Swedish Universities using only one set of details."
   },
   {
     "id": "email.sign-up-email",
@@ -126,10 +122,6 @@
   {
     "id": "captcha.cancel",
     "defaultMessage": "Cancel"
-  },
-  {
-    "id": "footer.copyright",
-    "defaultMessage": "SUNET 2013-2019"
   },
   {
     "id": "created.account-created",
@@ -181,7 +173,7 @@
   },
   {
     "id": "finish.registration-details",
-    "defaultMessage": "These are your login details for eduID. Use them to verify your"
+    "defaultMessage": "These are your login details for eduID."
   },
   {
     "id": "finish.got-it",
@@ -220,7 +212,7 @@
     "defaultMessage": "A link has been sent to your email address."
   },
   {
-    "id": "esend.email-label",
+    "id": "resend.email-label",
     "defaultMessage": "Complete registration by clicking the link sent to:"
   },
   {
@@ -318,6 +310,18 @@
   {
     "id": "used.email-in-use",
     "defaultMessage": "An eduID is already using {email}"
+  },
+  {
+    "id": "dashboard.welcome",
+    "defaultMessage": "eduID for"
+  },
+  {
+    "id": "dashboard.tagline_unverified",
+    "defaultMessage": "Don't forget to connect your identity to eduID"
+  },
+  {
+    "id": "dashboard.tagline_verified",
+    "defaultMessage": "Make eduID more secure"
   },
   {
     "id": "profile.name_display_title",
@@ -425,7 +429,7 @@
   },
   {
     "id": "verify-identity.unverified_main_title",
-    "defaultMessage": "Add and verify your id number"
+    "defaultMessage": "Connect your identity to your eduID"
   },
   {
     "id": "verify-identity.verified_main_title",
@@ -441,7 +445,7 @@
   },
   {
     "id": "verify-identity.vetting_freja_tagline",
-    "defaultMessage": "For those with the app able to pass by one of the authorised agents"
+    "defaultMessage": "For those able to create a Freja eID by passing by one of the authorised agents"
   },
   {
     "id": "verify-identity.connect_nin_title",
@@ -512,12 +516,8 @@
     "defaultMessage": "Enter confirmation code here"
   },
   {
-    "id": "letter.initialize_proofing_help_text_tip_1",
-    "defaultMessage": "Tip: You can register at addresses outside of Sweden"
-  },
-  {
     "id": "letter.initialize_proofing_help_text",
-    "defaultMessage": "Get a confirmation code sent by post to your registered address."
+    "defaultMessage": "The letter will contain a code that for security reasons expire in two weeks."
   },
   {
     "id": "letter.no_state_found",
@@ -573,7 +573,7 @@
   },
   {
     "id": "lmp.initialize_proofing_help_text",
-    "defaultMessage": "Get a confirmation code sent to a mobile phone number registered in your name."
+    "defaultMessage": "The phone number registry is maintained by phone operators at their conveninece and may not include all registered phone numbers."
   },
   {
     "id": "lmp.initialize_proofing_help_text_tip_1",
@@ -609,51 +609,47 @@
   },
   {
     "id": "eidas.vetting_button_freja",
-    "defaultMessage": "with Freja eID"
+    "defaultMessage": "with a digital ID-card"
   },
   {
     "id": "eidas.initialize_proofing_help_text",
-    "defaultMessage": "Download the Freja eID app and have your identity verified at selected local vendors."
+    "defaultMessage": "To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app."
   },
   {
     "id": "eidas.modal_title",
     "defaultMessage": "Use Freja eID+ and pass a local authorised agent"
   },
   {
-    "id": "eidas.freja_instructions_step_1",
+    "id": "eidas.freja_instructions_step1",
     "defaultMessage": "Install the app"
   },
   {
-    "id": "eidas.freja_instructions_step_2",
-    "defaultMessage": "Make a Freja eID+ (Plus) account"
+    "id": "eidas.freja_instructions_step2",
+    "defaultMessage": "Create a Freja eID Plus account (awarded the ‘Svensk e-legitimation’ quality mark)"
   },
   {
-    "id": "eidas.freja_instructions_step_3",
+    "id": "eidas.freja_instructions_step3",
     "defaultMessage": "The app will generate a QR-code"
   },
   {
-    "id": "eidas.freja_instructions_step_4",
-    "defaultMessage": "Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity"
+    "id": "eidas.freja_instructions_step4",
+    "defaultMessage": "Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity"
   },
   {
     "id": "eidas.freja_instructions_tip_1",
     "defaultMessage": "Tip: Use the app to find your nearest agent"
   },
   {
-    "id": "eidas.freja_instructions_step_5",
-    "defaultMessage": "Return to eduID and allow Freja eID to share your id number"
-  },
-  {
-    "id": "eidas.freja_instructions_step_6",
-    "defaultMessage": "If you want a quick verification and are able to pass by one of the authorized agents"
+    "id": "eidas.freja_instructions_step5",
+    "defaultMessage": "Freja eID is now ready to be used with your eduID"
   },
   {
     "id": "eidas.freja_instructions_install_link",
-    "defaultMessage": "I do not have Freja eID"
+    "defaultMessage": "What is Freja eID?"
   },
   {
     "id": "eidas.freja_eid_ready",
-    "defaultMessage": "I have Freja eID"
+    "defaultMessage": "Use my Freja eID"
   },
   {
     "id": "eidas.error_missing_nin",
@@ -885,7 +881,7 @@
   },
   {
     "id": "security.add_webauthn_token_key",
-    "defaultMessage": "Register a Security Key"
+    "defaultMessage": "Add a second layer of security"
   },
   {
     "id": "security.add_webauthn_token_device",
@@ -893,15 +889,15 @@
   },
   {
     "id": "security.security-key_title",
-    "defaultMessage": "Register a Security Key"
+    "defaultMessage": "Make your eduID more secure"
   },
   {
-    "id": "security.for-second-factor",
-    "defaultMessage": "Use the buttons below to register a Security Key for authentication with eduID"
+    "id": "security.second-factor",
+    "defaultMessage": "Add a Security Key as a second layer of identification, beyond email and password, to prove you are \n    the owner of your eduID."
   },
   {
     "id": "security.webauthn-describe-title",
-    "defaultMessage": "Enter a nickname for the Security Key"
+    "defaultMessage": "Add a name for your Security Key"
   },
   {
     "id": "security.webauthn.max_allowed_tokens",
@@ -909,11 +905,11 @@
   },
   {
     "id": "security.webauthn_register_success",
-    "defaultMessage": "Security Key successfully registered"
+    "defaultMessage": "Security Key added"
   },
   {
     "id": "security.webauthn-token-removed",
-    "defaultMessage": "Security Key successfully removed"
+    "defaultMessage": "Security Key removed"
   },
   {
     "id": "security.webauthn-missing-pdata",
@@ -929,11 +925,11 @@
   },
   {
     "id": "account_linking.main_title",
-    "defaultMessage": "Connect other accounts"
+    "defaultMessage": "Connect an ORCID account"
   },
   {
     "id": "account_linking.long_description",
-    "defaultMessage": "Simplify login by connecting your eduID to other accounts."
+    "defaultMessage": "If you are a reseacher with an ORCID iD, you can connect it to eduID and only use one set of login details for both services."
   },
   {
     "id": "orc.authorization_success",
@@ -957,7 +953,7 @@
   },
   {
     "id": "orc.long_description",
-    "defaultMessage": "ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with."
+    "defaultMessage": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
   {
     "id": "orc.about_link",
@@ -965,7 +961,7 @@
   },
   {
     "id": "orc.button_connect",
-    "defaultMessage": "Connect ORCID account"
+    "defaultMessage": "Add your ORCID account"
   },
   {
     "id": "accountId.main_title",
@@ -977,7 +973,7 @@
   },
   {
     "id": "accountId.short_description",
-    "defaultMessage": "You might be asked to share this information if you need support."
+    "defaultMessage": "You might be asked to share this information if you need technical support."
   },
   {
     "id": "accountId.accountId_display_title",
@@ -1305,7 +1301,7 @@
   },
   {
     "id": "chpass.button_save_password",
-    "defaultMessage": "Save new password"
+    "defaultMessage": "Save"
   },
   {
     "id": "chpass.no_old_pw",
@@ -1392,26 +1388,6 @@
     "defaultMessage": "I want to delete eduID"
   },
   {
-    "id": "header.student",
-    "defaultMessage": "Student"
-  },
-  {
-    "id": "header.technicican",
-    "defaultMessage": "Technician"
-  },
-  {
-    "id": "header.students",
-    "defaultMessage": "Students"
-  },
-  {
-    "id": "header.technicicans",
-    "defaultMessage": "Technicians"
-  },
-  {
-    "id": "header.staff",
-    "defaultMessage": "Staff"
-  },
-  {
     "id": "header.faq",
     "defaultMessage": "FAQ"
   },
@@ -1426,70 +1402,6 @@
   {
     "id": "foot.change-version-tip",
     "defaultMessage": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
-  },
-  {
-    "id": "questions.profile_1",
-    "defaultMessage": "Why should I get eduID?"
-  },
-  {
-    "id": "questions.profile_1_answer",
-    "defaultMessage": "eduID is a set of login details that be used to access multiple organisations. eduID has been developed to provide students with a swedish national id number an additional identity online."
-  },
-  {
-    "id": "questions.profile_2",
-    "defaultMessage": "How do I use eduID?"
-  },
-  {
-    "id": "questions.profile_2_answer",
-    "defaultMessage": "When possible, click 'log in with eduID'. You will be redirected to eduIDs login where you provide your email address and your password."
-  },
-  {
-    "id": "questions.verify_identity_1",
-    "defaultMessage": "Why do I need add my swedish national id number?"
-  },
-  {
-    "id": "questions.verify_identity_1_answer",
-    "defaultMessage": "The national id number ensures that each eduID is unique to one specific person."
-  },
-  {
-    "id": "questions.verify_identity_2",
-    "defaultMessage": "What does 'verify my national id number' mean?"
-  },
-  {
-    "id": "questions.verify_identity_2_answer",
-    "defaultMessage": "Becasue the national id number is registered with other official services, it is possible to check details given to eduID against 3rd party information and thereby connect a physical person to the online eduID account."
-  },
-  {
-    "id": "questions.settings_1",
-    "defaultMessage": "Why do I need to add my phone number?"
-  },
-  {
-    "id": "questions.settings_1_answer",
-    "defaultMessage": "By adding a phone number you are making it possible to check that it connects to your given national id number."
-  },
-  {
-    "id": "questions.settings_2",
-    "defaultMessage": "Is my eduID account ever removed due to inactivity?"
-  },
-  {
-    "id": "questions.settings_2_answer",
-    "defaultMessage": "Only you can delete your account by clickling 'Delete eduID account', it will not be removed due to inactivity."
-  },
-  {
-    "id": "questions.settings_advanced_1",
-    "defaultMessage": "Do I need to register a security key?"
-  },
-  {
-    "id": "questions.settings_advanced_1_answer",
-    "defaultMessage": "For those who use eduID to access sensitive data a security key is required, however those users will have been infromed if and how to do this."
-  },
-  {
-    "id": "questions.settings_advanced_2",
-    "defaultMessage": "What is ORCID?"
-  },
-  {
-    "id": "questions.settings_advanced_2_answer",
-    "defaultMessage": "ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with."
   },
   {
     "id": "main.unconfirmed",

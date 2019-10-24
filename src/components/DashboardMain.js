@@ -43,16 +43,16 @@ class Main extends Component {
     if (this.props.nin) {
       promptLink = `/profile/verify-identity/`;
       styling = "unverified";
-      welcomeGreeting = "Don't forget to verify your national id number.";
+      welcomeGreeting = this.props.l10n("dashboard.tagline_unverified");
       if (this.props.verifiedNin) {
         promptLink = `/profile/settings/advanced-settings`;
         styling = "verified";
-        welcomeGreeting = "Make eduID more secure.";
+        welcomeGreeting = this.props.l10n("dashboard.tagline_verified");
       }
     } else {
       promptLink = `/profile/verify-identity/`;
       styling = "unverified";
-      welcomeGreeting = "Add your national id number to start using eduID.";
+      welcomeGreeting = this.props.l10n("dashboard.tagline_unverified");
     }
 
     return (
@@ -63,7 +63,9 @@ class Main extends Component {
             <HeaderContainer />
             <div id="dashboard-text">
               <div id="welcome">
-                <h1>eduID for {this.props.email}</h1>
+                <h1>
+                  {this.props.l10n("dashboard.welcome")} {this.props.email}
+                </h1>
                 <Link id="profile-prompt-link" to={promptLink}>
                   <h2 className={styling}>{welcomeGreeting}</h2>
                 </Link>

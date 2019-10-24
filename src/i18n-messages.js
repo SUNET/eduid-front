@@ -162,7 +162,7 @@ const msgs = {
   error_lookup_mobile_task: (
     <FormattedMessage
       id="error_lookup_mobile_task"
-      defaultMessage={`Problem looking up the phone number`}
+      defaultMessage={`Your phone number could not be found in the registry. Please try another method.`}
     />
   ),
 
@@ -236,7 +236,7 @@ const msgs = {
   ),
 
   "main.welcome": (
-    <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID!`} />
+    <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID`} />
   ),
 
   "register.create-account": (
@@ -246,12 +246,12 @@ const msgs = {
     />
   ),
 
-  "register.why-account": (
-    <FormattedMessage
-      id="register.why-account"
-      defaultMessage={`eduID allows you to log into multiple organisations associated with Swedish Universities using only one set of details.`}
-    />
-  ),
+  // "register.why-account": (
+  //   <FormattedMessage
+  //     id="register.why-account"
+  //     defaultMessage={`eduID allows you to log into multiple organisations associated with Swedish Universities using only one set of details.`}
+  //   />
+  // ),
 
   "email.sign-up-email": (
     <FormattedMessage
@@ -289,12 +289,12 @@ const msgs = {
     <FormattedMessage id="captcha.cancel" defaultMessage={`Cancel`} />
   ),
 
-  "footer.copyright": (
-    <FormattedMessage
-      id="footer.copyright"
-      defaultMessage={` SUNET 2013-2019`}
-    />
-  ),
+  // "footer.copyright": (
+  //   <FormattedMessage
+  //     id="footer.copyright"
+  //     defaultMessage={` SUNET 2013-2019`}
+  //   />
+  // ),
 
   "created.account-created": (
     <FormattedMessage
@@ -368,7 +368,7 @@ const msgs = {
   "finish.registration-details": (
     <FormattedMessage
       id="finish.registration-details"
-      defaultMessage={`These are your login details for eduID. Use them to verify your `}
+      defaultMessage={`These are your login details for eduID.`}
     />
   ),
 
@@ -449,7 +449,7 @@ const msgs = {
 
   "resend.email-label": (
     <FormattedMessage
-      id="esend.email-label"
+      id="resend.email-label"
       defaultMessage={`Complete registration by clicking the link sent to:`}
     />
   ),
@@ -541,7 +541,7 @@ const msgs = {
   "mfa.login-tapit": (
     <FormattedMessage
       id="mfa.login-tapit"
-      defaultMessage={`Use your Security Key to log in. If it has a button, tap it.`}
+      defaultMessage={`Use your security key to log in. If it has a button, tap it.`}
     />
   ),
 
@@ -555,14 +555,14 @@ const msgs = {
   "mfa.no-webauthn-support": (
     <FormattedMessage
       id="mfa.no-webauthn-support"
-      defaultMessage={`No support for Security Keys`}
+      defaultMessage={`No support for security keys`}
     />
   ),
 
   "mfa.no-webauthn-support-text": (
     <FormattedMessage
       id="mfa.no-webauthn-support-text"
-      defaultMessage={`You have registered a Security Key for authentication, but this browser does not support them. Please use another browser to use your Security Keys.`}
+      defaultMessage={`You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys.`}
     />
   ),
 
@@ -584,14 +584,14 @@ const msgs = {
   "mfa.error-getting-token": (
     <FormattedMessage
       id="mfa.error-getting-token"
-      defaultMessage={`There was a problem using your Security Key`}
+      defaultMessage={`There was a problem using your security key`}
     />
   ),
 
   "mfa.edge-no-u2f": (
     <FormattedMessage
       id="mfa.edge-no-u2f"
-      defaultMessage={`There is a problem with the Edge browser and U2F Security Keys. Please try with Firefox or Chrome.`}
+      defaultMessage={`There is a problem with the Edge browser and U2F security keys. Please try with Firefox or Chrome.`}
     />
   ),
 
@@ -706,6 +706,35 @@ const msgs = {
 
   // "main.eduid_id": (
   //   <FormattedMessage id="main.eduid_id" defaultMessage={`eduID identifier`} />
+  // ),
+
+  /************************/
+  /* Main > Dashboard *****/
+  /************************/
+
+  "dashboard.welcome": (
+    <FormattedMessage id="dashboard.welcome" defaultMessage={`eduID for`} />
+  ),
+
+  "dashboard.tagline_unverified": (
+    <FormattedMessage
+      id="dashboard.tagline_unverified"
+      defaultMessage={`Don't forget to connect your identity to eduID`}
+    />
+  ),
+
+  "dashboard.tagline_verified": (
+    <FormattedMessage
+      id="dashboard.tagline_verified"
+      defaultMessage={`Make eduID more secure`}
+    />
+  ),
+
+  // "dashboard.tagline_verification": (
+  //   <FormattedMessage
+  //     id="dashboard.tagline_verification"
+  //     defaultMessage={`connect your identity to eduID`}
+  //   />
   // ),
 
   /************************/
@@ -858,7 +887,7 @@ const msgs = {
   "verify-identity.unverified_main_title": (
     <FormattedMessage
       id="verify-identity.unverified_main_title"
-      defaultMessage={`Add and verify your id number`}
+      defaultMessage={`Connect your identity to your eduID`}
     />
   ),
 
@@ -886,15 +915,14 @@ const msgs = {
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
-      defaultMessage={`For those with the app able to pass by one of the authorised agents`}
+      defaultMessage={`For those able to create a Freja eID by passing one of the authorised agents`}
     />
   ),
 
   "verify-identity.connect_nin_title": (
     <FormattedMessage
       id="verify-identity.connect_nin_title"
-      defaultMessage={`Choose a way to verify that the id number
-            belongs to you`}
+      defaultMessage={`Choose a way to verify that the id number belongs to you`}
     />
   ),
 
@@ -1022,6 +1050,13 @@ const msgs = {
   //   <FormattedMessage id="nins.button_delete" defaultMessage={`Remove`} />
   // ),
 
+  "nins.successfully_added": (
+    <FormattedMessage
+      id="nins.successfully_added"
+      defaultMessage={`Your id number was added.`}
+    />
+  ),
+
   "nins.only_one_to_verify": (
     <FormattedMessage
       id="nins.only_one_to_verify"
@@ -1083,17 +1118,17 @@ const msgs = {
   //   />
   // ),
 
-  "letter.initialize_proofing_help_text_tip_1": (
-    <FormattedMessage
-      id="letter.initialize_proofing_help_text_tip_1"
-      defaultMessage={`Tip: You can register at addresses outside of Sweden`}
-    />
-  ),
+  // "letter.initialize_proofing_help_text_tip_1": (
+  //   <FormattedMessage
+  //     id="letter.initialize_proofing_help_text_tip_1"
+  //     defaultMessage={`Tip: You can register at addresses outside of Sweden`}
+  //   />
+  // ),
 
   "letter.initialize_proofing_help_text": (
     <FormattedMessage
       id="letter.initialize_proofing_help_text"
-      defaultMessage={`Get a confirmation code sent by post to your registered address.`}
+      defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
     />
   ),
 
@@ -1193,14 +1228,14 @@ const msgs = {
   "lmp.initialize_proofing_help_text": (
     <FormattedMessage
       id="lmp.initialize_proofing_help_text"
-      defaultMessage={`Get a confirmation code sent to a mobile phone number registered in your name.`}
+      defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers.`}
     />
   ),
 
   "lmp.initialize_proofing_help_text_tip_1": (
     <FormattedMessage
       id="lmp.initialize_proofing_help_text_tip_1"
-      defaultMessage={`Tip: The registry is updated by phone operators at their conveninece and may not include all registered phone numbers`}
+      defaultMessage={`Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers`}
     />
   ),
 
@@ -1270,7 +1305,7 @@ const msgs = {
   "eidas.vetting_button_freja": (
     <FormattedMessage
       id="eidas.vetting_button_freja"
-      defaultMessage={`with Freja eID`}
+      defaultMessage={`with a digital ID-card`}
     />
   ),
 
@@ -1284,7 +1319,7 @@ const msgs = {
   "eidas.initialize_proofing_help_text": (
     <FormattedHTMLMessage
       id="eidas.initialize_proofing_help_text"
-      defaultMessage={`Download the Freja eID app and have your identity verified at selected local vendors.`}
+      defaultMessage={`To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app.`}
     />
   ),
 
@@ -1310,66 +1345,66 @@ const msgs = {
   //   />
   // ),
 
-  "eidas.freja_instructions_step_1": (
+  "eidas.freja_instructions_step1": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_1"
+      id="eidas.freja_instructions_step1"
       defaultMessage={`Install the app`}
     />
   ),
 
-  "eidas.freja_instructions_step_2": (
+  "eidas.freja_instructions_step2": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_2"
-      defaultMessage={`Make a Freja eID+ (Plus) account`}
+      id="eidas.freja_instructions_step2"
+      defaultMessage={`Create a Freja eID Plus account (awarded the ‘Svensk e-legitimation’ quality mark)`}
     />
   ),
 
-  "eidas.freja_instructions_step_3": (
+  "eidas.freja_instructions_step3": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_3"
+      id="eidas.freja_instructions_step3"
       defaultMessage={`The app will generate a QR-code`}
     />
   ),
 
-  "eidas.freja_instructions_step_4": (
+  "eidas.freja_instructions_step4": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_4"
-      defaultMessage={`Find a local authorized agent, bring a form of ID and the QR-code and they will verify your identity`}
+      id="eidas.freja_instructions_step4"
+      defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity`}
     />
   ),
 
-  "eidas.freja_instructions_tip_1": (
+  "eidas.freja_instructions_tip1": (
     <FormattedMessage
       id="eidas.freja_instructions_tip_1"
       defaultMessage={`Tip: Use the app to find your nearest agent`}
     />
   ),
 
-  "eidas.freja_instructions_step_5": (
+  "eidas.freja_instructions_step5": (
     <FormattedMessage
-      id="eidas.freja_instructions_step_5"
-      defaultMessage={`Return to eduID and allow Freja eID to share your id number`}
+      id="eidas.freja_instructions_step5"
+      defaultMessage={`Freja eID is now ready to be used with your eduID`}
     />
   ),
 
-  "eidas.freja_instructions_step_6": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step_6"
-      defaultMessage={`If you want a quick verification and are able to pass by one of the authorized agents`}
-    />
-  ),
+  // "eidas.freja_instructions_step6": (
+  //   <FormattedMessage
+  //     id="eidas.freja_instructions_step6"
+  //     defaultMessage={`If you want a quick verification and are able to pass by one of the authorized agents`}
+  //   />
+  // ),
 
   "eidas.freja_instructions_install_link": (
     <FormattedMessage
       id="eidas.freja_instructions_install_link"
-      defaultMessage={`I do not have Freja eID`}
+      defaultMessage={`What is Freja eID?`}
     />
   ),
 
   "eidas.freja_eid_ready": (
     <FormattedMessage
       id="eidas.freja_eid_ready"
-      defaultMessage={`I have Freja eID`}
+      defaultMessage={`Use my Freja eID`}
     />
   ),
 
@@ -1759,70 +1794,71 @@ const msgs = {
   "security.webauthn_credential_type": (
     <FormattedMessage
       id="security.webauthn_credential_type"
-      defaultMessage={`Security Key`}
+      defaultMessage={`Security key`}
     />
   ),
 
   "security.add_webauthn_token_key": (
     <FormattedMessage
       id="security.add_webauthn_token_key"
-      defaultMessage={`Register a Security Key`}
+      defaultMessage={`Add a second layer of security`}
     />
   ),
 
   "security.add_webauthn_token_device": (
     <FormattedMessage
       id="security.add_webauthn_token_device"
-      defaultMessage={`Register this device as Security Key`}
+      defaultMessage={`Register this device as security key`}
     />
   ),
 
   "security.security-key_title": (
     <FormattedMessage
       id="security.security-key_title"
-      defaultMessage={`Register a Security Key`}
+      defaultMessage={`Make your eduID more secure`}
     />
   ),
 
-  "security.for-second-factor": (
+  "security.second-factor": (
     <FormattedMessage
-      id="security.for-second-factor"
-      defaultMessage={`Use the buttons below to register a Security Key for authentication with eduID`}
+      id="security.second-factor"
+      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are 
+    the owner of your eduID.`}
     />
   ),
 
   "security.webauthn-describe-title": (
     <FormattedMessage
       id="security.webauthn-describe-title"
-      defaultMessage={`Enter a nickname for the Security Key`}
+      defaultMessage={`Add a name for your security key`}
     />
   ),
 
   "security.webauthn.max_allowed_tokens": (
     <FormattedMessage
       id="security.webauthn.max_allowed_tokens"
-      defaultMessage={`You are not allowed to register more Security Keys`}
+      defaultMessage={`You are not allowed to register more security keys`}
     />
   ),
 
   "security.webauthn_register_success": (
     <FormattedMessage
       id="security.webauthn_register_success"
-      defaultMessage={`Security Key successfully registered`}
+      defaultMessage={`Security key added`}
     />
   ),
 
   "security.webauthn-token-removed": (
     <FormattedMessage
       id="security.webauthn-token-removed"
-      defaultMessage={`Security Key successfully removed`}
+      defaultMessage={`Security key removed`}
     />
   ),
 
   "security.webauthn-missing-pdata": (
     <FormattedMessage
       id="security.webauthn-missing-pdata"
-      defaultMessage={`You should add your personal data before adding a Security Key`}
+      defaultMessage={`You should add your personal data before adding a security key`}
     />
   ),
 
@@ -1836,7 +1872,7 @@ const msgs = {
   "security.webauthn-noremove-last": (
     <FormattedMessage
       id="security.webauthn-noremove-last"
-      defaultMessage={`You are not allowed to remove your only Security Key`}
+      defaultMessage={`You are not allowed to remove your only security key`}
     />
   ),
 
@@ -1845,14 +1881,14 @@ const msgs = {
   "account_linking.main_title": (
     <FormattedMessage
       id="account_linking.main_title"
-      defaultMessage={`Connect other accounts`}
+      defaultMessage={` ORCID account`}
     />
   ),
 
   "account_linking.long_description": (
     <FormattedMessage
       id="account_linking.long_description"
-      defaultMessage={`Simplify login by connecting your eduID to other accounts.`}
+      defaultMessage={`If you are a reseacher with an ORCID iD you can share it with your eduID.`}
     />
   ),
 
@@ -1891,7 +1927,7 @@ const msgs = {
   "orc.long_description": (
     <FormattedMessage
       id="orc.long_description"
-      defaultMessage={`ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.`}
+      defaultMessage={` ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with.`}
     />
   ),
 
@@ -1904,8 +1940,8 @@ const msgs = {
 
   "orc.button_connect": (
     <FormattedMessage
-      id="  orc.button_connect"
-      defaultMessage={`Connect ORCID account`}
+      id="orc.button_connect"
+      defaultMessage={`Add your ORCID account`}
     />
   ),
 
@@ -1924,7 +1960,7 @@ const msgs = {
   "accountId.short_description": (
     <FormattedMessage
       id="accountId.short_description"
-      defaultMessage={` You might be asked to share this information if you need support.`}
+      defaultMessage={` You might be asked to share this information if you need technical support.`}
     />
   ),
 
@@ -2552,7 +2588,7 @@ const msgs = {
   "chpass.button_save_password": (
     <FormattedMessage
       id="chpass.button_save_password"
-      defaultMessage={`Save new password`}
+      defaultMessage={`Save`}
     />
   ),
 
@@ -2661,7 +2697,7 @@ const msgs = {
     />
   ),
 
-  "settings.button_delete_account": (
+  "security.button_delete_account": (
     <FormattedMessage
       id="security.button_delete_account"
       defaultMessage={`I want to delete my eduID`}
@@ -2671,7 +2707,7 @@ const msgs = {
   "settings.modal_delete_title": (
     <FormattedMessage
       id="settings.modal_delete_title"
-      defaultMessage={`Are you sure you want to delete eduID?`}
+      defaultMessage={`Are you sure you want to delete your eduID?`}
     />
   ),
 
@@ -2714,25 +2750,25 @@ const msgs = {
   /* Header ******** ******/
   /************************/
 
-  "header.student": (
-    <FormattedMessage id="header.student" defaultMessage={`Student`} />
-  ),
+  // "header.student": (
+  //   <FormattedMessage id="header.student" defaultMessage={`Student`} />
+  // ),
 
-  "header.technician": (
-    <FormattedMessage id="header.technicican" defaultMessage={`Technician`} />
-  ),
+  // "header.technician": (
+  //   <FormattedMessage id="header.technicican" defaultMessage={`Technician`} />
+  // ),
 
-  "header.students": (
-    <FormattedMessage id="header.students" defaultMessage={`Students`} />
-  ),
+  // "header.students": (
+  //   <FormattedMessage id="header.students" defaultMessage={`Students`} />
+  // ),
 
-  "header.technicians": (
-    <FormattedMessage id="header.technicicans" defaultMessage={`Technicians`} />
-  ),
+  // "header.technicians": (
+  //   <FormattedMessage id="header.technicicans" defaultMessage={`Technicians`} />
+  // ),
 
-  "header.staff": (
-    <FormattedMessage id="header.staff" defaultMessage={`Staff`} />
-  ),
+  // "header.staff": (
+  //   <FormattedMessage id="header.staff" defaultMessage={`Staff`} />
+  // ),
 
   "header.faq": <FormattedMessage id="header.faq" defaultMessage={`FAQ`} />,
 
@@ -2763,116 +2799,116 @@ const msgs = {
   /************************/
 
   // ---- Questions for /profile ---- //
-  "questions.profile_1": (
-    <FormattedMessage
-      id="questions.profile_1"
-      defaultMessage={`Why should I get eduID?`}
-    />
-  ),
+  // "questions.profile_1": (
+  //   <FormattedMessage
+  //     id="questions.profile_1"
+  //     defaultMessage={`Why should I get eduID?`}
+  //   />
+  // ),
 
-  "questions.profile_1_answer": (
-    <FormattedMessage
-      id="questions.profile_1_answer"
-      defaultMessage={`eduID is a set of login details that be used to access multiple organisations. eduID has been developed to provide students with a swedish national id number an additional identity online.`}
-    />
-  ),
-  "questions.profile_2": (
-    <FormattedMessage
-      id="questions.profile_2"
-      defaultMessage={`How do I use eduID?`}
-    />
-  ),
+  // "questions.profile_1_answer": (
+  //   <FormattedMessage
+  //     id="questions.profile_1_answer"
+  //     defaultMessage={`eduID is a set of login details that be used to access multiple organisations. eduID has been developed to provide students with a swedish national id number an additional identity online.`}
+  //   />
+  // ),
+  // "questions.profile_2": (
+  //   <FormattedMessage
+  //     id="questions.profile_2"
+  //     defaultMessage={`How do I use eduID?`}
+  //   />
+  // ),
 
-  "questions.profile_2_answer": (
-    <FormattedMessage
-      id="questions.profile_2_answer"
-      defaultMessage={`When possible, click 'log in with eduID'. You will be redirected to eduIDs login where you provide your email address and your password.`}
-    />
-  ),
+  // "questions.profile_2_answer": (
+  //   <FormattedMessage
+  //     id="questions.profile_2_answer"
+  //     defaultMessage={`When possible, click 'log in with eduID'. You will be redirected to eduIDs login where you provide your email address and your password.`}
+  //   />
+  // ),
 
-  // ---- Questions for /verify-identity  ---- //
-  "questions.verify_identity_1": (
-    <FormattedMessage
-      id="questions.verify_identity_1"
-      defaultMessage={`Why do I need add my swedish national id number?`}
-    />
-  ),
+  // // ---- Questions for /verify-identity  ---- //
+  // "questions.verify_identity_1": (
+  //   <FormattedMessage
+  //     id="questions.verify_identity_1"
+  //     defaultMessage={`Why do I need add my swedish national id number?`}
+  //   />
+  // ),
 
-  "questions.verify_identity_1_answer": (
-    <FormattedMessage
-      id="questions.verify_identity_1_answer"
-      defaultMessage={`The national id number ensures that each eduID is unique to one specific person.`}
-    />
-  ),
-  "questions.verify_identity_2": (
-    <FormattedMessage
-      id="questions.verify_identity_2"
-      defaultMessage={`What does 'verify my national id number' mean?`}
-    />
-  ),
+  // "questions.verify_identity_1_answer": (
+  //   <FormattedMessage
+  //     id="questions.verify_identity_1_answer"
+  //     defaultMessage={`The national id number ensures that each eduID is unique to one specific person.`}
+  //   />
+  // ),
+  // "questions.verify_identity_2": (
+  //   <FormattedMessage
+  //     id="questions.verify_identity_2"
+  //     defaultMessage={`What does 'verify my national id number' mean?`}
+  //   />
+  // ),
 
-  "questions.verify_identity_2_answer": (
-    <FormattedMessage
-      id="questions.verify_identity_2_answer"
-      defaultMessage={`Becasue the national id number is registered with other official services, it is possible to check details given to eduID against 3rd party information and thereby connect a physical person to the online eduID account.`}
-    />
-  ),
+  // "questions.verify_identity_2_answer": (
+  //   <FormattedMessage
+  //     id="questions.verify_identity_2_answer"
+  //     defaultMessage={`Becasue the national id number is registered with other official services, it is possible to check details given to eduID against 3rd party information and thereby connect a physical person to the online eduID account.`}
+  //   />
+  // ),
 
-  // ---- Questions for /settings  ---- //
-  "questions.settings_1": (
-    <FormattedMessage
-      id="questions.settings_1"
-      defaultMessage={`Why do I need to add my phone number?`}
-    />
-  ),
+  // // ---- Questions for /settings  ---- //
+  // "questions.settings_1": (
+  //   <FormattedMessage
+  //     id="questions.settings_1"
+  //     defaultMessage={`Why do I need to add my phone number?`}
+  //   />
+  // ),
 
-  "questions.settings_1_answer": (
-    <FormattedMessage
-      id="questions.settings_1_answer"
-      defaultMessage={`By adding a phone number you are making it possible to check that it connects to your given national id number.`}
-    />
-  ),
-  "questions.settings_2": (
-    <FormattedMessage
-      id="questions.settings_2"
-      defaultMessage={`Is my eduID account ever removed due to inactivity?`}
-    />
-  ),
+  // "questions.settings_1_answer": (
+  //   <FormattedMessage
+  //     id="questions.settings_1_answer"
+  //     defaultMessage={`By adding a phone number you are making it possible to check that it connects to your given national id number.`}
+  //   />
+  // ),
+  // "questions.settings_2": (
+  //   <FormattedMessage
+  //     id="questions.settings_2"
+  //     defaultMessage={`Is my eduID account ever removed due to inactivity?`}
+  //   />
+  // ),
 
-  "questions.settings_2_answer": (
-    <FormattedMessage
-      id="questions.settings_2_answer"
-      defaultMessage={`Only you can delete your account by clickling 'Delete eduID account', it will not be removed due to inactivity.`}
-    />
-  ),
+  // "questions.settings_2_answer": (
+  //   <FormattedMessage
+  //     id="questions.settings_2_answer"
+  //     defaultMessage={`Only you can delete your account by clickling 'Delete eduID account', it will not be removed due to inactivity.`}
+  //   />
+  // ),
 
-  // ---- Questions for /advanced-settings  ---- //
-  "questions.settings_advanced_1": (
-    <FormattedMessage
-      id="questions.settings_advanced_1"
-      defaultMessage={`Do I need to register a security key?`}
-    />
-  ),
+  // // ---- Questions for /advanced-settings  ---- //
+  // "questions.settings_advanced_1": (
+  //   <FormattedMessage
+  //     id="questions.settings_advanced_1"
+  //     defaultMessage={`Do I need to register a security key?`}
+  //   />
+  // ),
 
-  "questions.settings_advanced_1_answer": (
-    <FormattedMessage
-      id="questions.settings_advanced_1_answer"
-      defaultMessage={`For those who use eduID to access sensitive data a security key is required, however those users will have been infromed if and how to do this.`}
-    />
-  ),
-  "questions.settings_advanced_2": (
-    <FormattedMessage
-      id="questions.settings_advanced_2"
-      defaultMessage={`What is ORCID?`}
-    />
-  ),
+  // "questions.settings_advanced_1_answer": (
+  //   <FormattedMessage
+  //     id="questions.settings_advanced_1_answer"
+  //     defaultMessage={`For those who use eduID to access sensitive data a security key is required, however those users will have been infromed if and how to do this.`}
+  //   />
+  // ),
+  // "questions.settings_advanced_2": (
+  //   <FormattedMessage
+  //     id="questions.settings_advanced_2"
+  //     defaultMessage={`What is ORCID?`}
+  //   />
+  // ),
 
-  "questions.settings_advanced_2_answer": (
-    <FormattedMessage
-      id="questions.settings_advanced_2_answer"
-      defaultMessage={`ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.`}
-    />
-  ),
+  // "questions.settings_advanced_2_answer": (
+  //   <FormattedMessage
+  //     id="questions.settings_advanced_2_answer"
+  //     defaultMessage={`ORCID provides a persistent identifier – an ORCID iD – that distinguishes you from other researchers and a mechanism for linking your research outputs and activities to your ORCID iD regardless of which organization you are working with.`}
+  //   />
+  // ),
 
   // "pending.pdata": (
   //   <FormattedMessage

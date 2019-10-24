@@ -28,7 +28,7 @@ class DeleteAccount extends Component {
             id="delete-button"
             onClick={this.props.handleStartConfirmationDeletion}
           >
-            {this.props.l10n("settings.button_delete_account")}
+            {this.props.l10n("security.button_delete_account")}
           </EduIDButton>
         </div>
 
