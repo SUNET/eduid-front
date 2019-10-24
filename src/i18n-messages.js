@@ -541,7 +541,7 @@ const msgs = {
   "mfa.login-tapit": (
     <FormattedMessage
       id="mfa.login-tapit"
-      defaultMessage={`Use your Security Key to log in. If it has a button, tap it.`}
+      defaultMessage={`Use your security key to log in. If it has a button, tap it.`}
     />
   ),
 
@@ -555,14 +555,14 @@ const msgs = {
   "mfa.no-webauthn-support": (
     <FormattedMessage
       id="mfa.no-webauthn-support"
-      defaultMessage={`No support for Security Keys`}
+      defaultMessage={`No support for security keys`}
     />
   ),
 
   "mfa.no-webauthn-support-text": (
     <FormattedMessage
       id="mfa.no-webauthn-support-text"
-      defaultMessage={`You have registered a Security Key for authentication, but this browser does not support them. Please use another browser to use your Security Keys.`}
+      defaultMessage={`You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys.`}
     />
   ),
 
@@ -584,14 +584,14 @@ const msgs = {
   "mfa.error-getting-token": (
     <FormattedMessage
       id="mfa.error-getting-token"
-      defaultMessage={`There was a problem using your Security Key`}
+      defaultMessage={`There was a problem using your security key`}
     />
   ),
 
   "mfa.edge-no-u2f": (
     <FormattedMessage
       id="mfa.edge-no-u2f"
-      defaultMessage={`There is a problem with the Edge browser and U2F Security Keys. Please try with Firefox or Chrome.`}
+      defaultMessage={`There is a problem with the Edge browser and U2F security keys. Please try with Firefox or Chrome.`}
     />
   ),
 
@@ -1794,7 +1794,7 @@ const msgs = {
   "security.webauthn_credential_type": (
     <FormattedMessage
       id="security.webauthn_credential_type"
-      defaultMessage={`Security Key`}
+      defaultMessage={`Security key`}
     />
   ),
 
@@ -1808,7 +1808,7 @@ const msgs = {
   "security.add_webauthn_token_device": (
     <FormattedMessage
       id="security.add_webauthn_token_device"
-      defaultMessage={`Register this device as Security Key`}
+      defaultMessage={`Register this device as security key`}
     />
   ),
 
@@ -1822,7 +1822,7 @@ const msgs = {
   "security.second-factor": (
     <FormattedMessage
       id="security.second-factor"
-      defaultMessage={`Add a Security Key as a second layer of identification, beyond email and password, to prove you are 
+      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are 
     the owner of your eduID.`}
     />
   ),
@@ -1830,35 +1830,35 @@ const msgs = {
   "security.webauthn-describe-title": (
     <FormattedMessage
       id="security.webauthn-describe-title"
-      defaultMessage={`Add a name for your Security Key`}
+      defaultMessage={`Add a name for your security key`}
     />
   ),
 
   "security.webauthn.max_allowed_tokens": (
     <FormattedMessage
       id="security.webauthn.max_allowed_tokens"
-      defaultMessage={`You are not allowed to register more Security Keys`}
+      defaultMessage={`You are not allowed to register more security keys`}
     />
   ),
 
   "security.webauthn_register_success": (
     <FormattedMessage
       id="security.webauthn_register_success"
-      defaultMessage={`Security Key added`}
+      defaultMessage={`Security key added`}
     />
   ),
 
   "security.webauthn-token-removed": (
     <FormattedMessage
       id="security.webauthn-token-removed"
-      defaultMessage={`Security Key removed`}
+      defaultMessage={`Security key removed`}
     />
   ),
 
   "security.webauthn-missing-pdata": (
     <FormattedMessage
       id="security.webauthn-missing-pdata"
-      defaultMessage={`You should add your personal data before adding a Security Key`}
+      defaultMessage={`You should add your personal data before adding a security key`}
     />
   ),
 
@@ -1872,7 +1872,7 @@ const msgs = {
   "security.webauthn-noremove-last": (
     <FormattedMessage
       id="security.webauthn-noremove-last"
-      defaultMessage={`You are not allowed to remove your only Security Key`}
+      defaultMessage={`You are not allowed to remove your only security key`}
     />
   ),
 
