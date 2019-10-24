@@ -922,8 +922,7 @@ const msgs = {
   "verify-identity.connect_nin_title": (
     <FormattedMessage
       id="verify-identity.connect_nin_title"
-      defaultMessage={`Choose a way to verify that the id number
-            belongs to you`}
+      defaultMessage={`Choose a way to verify that the id number belongs to you`}
     />
   ),
 
