@@ -54,7 +54,7 @@
   "created.account-created": "Kontot skapades",
   "created.back_to_signup": "Tillbaka till registreringen",
   "created.confirm-registration": "Bekräfta registrering",
-  "created.email-label": "Slutför skapandet av eduID genom att klicka länken skickad till:",
+  "created.email-label": "Slutför skapandet av ditt eduID genom att klicka länken skickad till:",
   "created.email-sent": "Ett e-postmeddelande med instruktioner för hur du kommer vidare har skickats till {email}",
   "cred.credential_type": "Inloggningsuppgiftstyp",
   "csrf.try-again": "Ett problem uppstod, var vänlig försök igen",
