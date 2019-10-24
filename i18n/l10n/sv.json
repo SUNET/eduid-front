@@ -144,7 +144,7 @@
   "letter.initialize_proofing_help_text": "Brevet innehåller en bekräftelsekod som av säkehetsskäl går ut efter två veckor.",
   "letter.letter_sent_msg": "Ett brev med en kod har skickats till din folkbokföringsadress",
   "letter.lost_code": "Om du klickar på \"Skicka\"-knappen kommer en kod att skickas till din folkbokföringsadress.",
-  "letter.modal_confirm_info": "Om du accepterar att få etr brev hem måste du skriva in bekräfelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor.",
+  "letter.modal_confirm_info": "Om du accepterar att få ett brev hem måste du skriva in bekräfelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor.",
   "letter.modal_confirm_title": "Få en bekräftelsekod via post",
   "letter.no-address-found": "Ingen postadress hittades",
   "letter.no_state_found": "Ingen pågående bekräftning hittades",
