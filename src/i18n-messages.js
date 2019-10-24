@@ -2770,7 +2770,7 @@ const msgs = {
   //   <FormattedMessage id="header.staff" defaultMessage={`Staff`} />
   // ),
 
-  "header.faq": <FormattedMessage id="header.faq" defaultMessage={`FAQ`} />,
+  "header.faq": <FormattedMessage id="header.faq" defaultMessage={`Help`} />,
 
   "header.logout": (
     <FormattedMessage id="header.logout" defaultMessage={`Logout`} />
