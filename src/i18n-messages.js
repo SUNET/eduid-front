@@ -1229,14 +1229,14 @@ const msgs = {
   "lmp.initialize_proofing_help_text": (
     <FormattedMessage
       id="lmp.initialize_proofing_help_text"
-      defaultMessage={`The phone number registry is maintained by phone operators at their conveninece and may not include all registered phone numbers.`}
+      defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers.`}
     />
   ),
 
   "lmp.initialize_proofing_help_text_tip_1": (
     <FormattedMessage
       id="lmp.initialize_proofing_help_text_tip_1"
-      defaultMessage={`Tip: The registry is updated by phone operators at their conveninece and may not include all registered phone numbers`}
+      defaultMessage={`Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers`}
     />
   ),
 
