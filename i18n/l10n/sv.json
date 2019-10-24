@@ -14,7 +14,7 @@
   "accountId.long_description": "Detta är ett autogenererat unikt id för ditt eduID som du kan behöva ange när du ber om tekninsk support.",
   "accountId.main_title": "Unikt ID",
   "accountId.short_description": " ",
-  "account_linking.long_description": "Om du är forskare med ett ORCID iD, kan du länka det till ditt eduID och bara använda ett konto för att nå båda tjänsterna.",
+  "account_linking.long_description": "Om du är forskare med ett ORCID iD kan du dela det med ditt eduID.",
   "account_linking.main_title": "Länka till ditt ORCID konto",
   "actions.action-completed": "Klart",
   "add_nin.main_title": "Lägg till ditt personnummer",

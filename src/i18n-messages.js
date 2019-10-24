@@ -1881,14 +1881,14 @@ const msgs = {
   "account_linking.main_title": (
     <FormattedMessage
       id="account_linking.main_title"
-      defaultMessage={`Connect an ORCID account`}
+      defaultMessage={` ORCID account`}
     />
   ),
 
   "account_linking.long_description": (
     <FormattedMessage
       id="account_linking.long_description"
-      defaultMessage={`If you are a reseacher with an ORCID iD, you can connect it to eduID and only use one set of login details for both services.`}
+      defaultMessage={`If you are a reseacher with an ORCID iD you can share it with your eduID.`}
     />
   ),
 
