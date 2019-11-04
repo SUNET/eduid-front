@@ -114,8 +114,8 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     addNin: function(e) {
-      const nin =
-        e.target.previousElementSibling.firstElementChild.children[0].value;
+      const nin = e.target.closest("#nin-form-container").firstElementChild
+        .firstElementChild.children[0].value;
       dispatch(actions.postNin(nin));
     }
   };
