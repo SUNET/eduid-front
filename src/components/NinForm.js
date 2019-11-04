@@ -59,7 +59,13 @@ class NinForm extends Component {
 
     return (
       <div key="2" id="nin-form-container">
-        <Form id="nin-form" role="form">
+        <Form
+          id="nin-form"
+          role="form"
+          onSubmit={e => {
+            e.preventDefault();
+          }}
+        >
           <Field
             component={TextInput}
             componentClass="input"
@@ -68,8 +74,8 @@ class NinForm extends Component {
             placeholder={this.props.l10n("nins.input_placeholder")}
             helpBlock={this.props.l10n("nins.input_help_text")}
           />
+          {formButton}
         </Form>
-        {formButton}
       </div>
     );
   }
