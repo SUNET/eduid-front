@@ -915,7 +915,7 @@ const msgs = {
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
-      defaultMessage={`For those able to create a Freja eID by passing one of the authorised agents`}
+      defaultMessage={`For those able to create a Freja eID by visiting one of the authorised agents`}
     />
   ),
 
@@ -2770,7 +2770,7 @@ const msgs = {
   //   <FormattedMessage id="header.staff" defaultMessage={`Staff`} />
   // ),
 
-  "header.faq": <FormattedMessage id="header.faq" defaultMessage={`FAQ`} />,
+  "header.faq": <FormattedMessage id="header.faq" defaultMessage={`Help`} />,
 
   "header.logout": (
     <FormattedMessage id="header.logout" defaultMessage={`Logout`} />
