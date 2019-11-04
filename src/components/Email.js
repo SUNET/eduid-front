@@ -5,19 +5,14 @@ import TextInput from "components/EduIDTextInput";
 import { Field, reduxForm } from "redux-form";
 import {
   Form,
-  FormGroup,
   FormFeedback,
-  Input,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter
 } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 
 import EduIDButton from "components/EduIDButton";
-
 import "style/Email.scss";
 
 /* FORM */
@@ -36,7 +31,7 @@ const validate = values => {
 
 let EmailForm = props => (
   <div id="register-input-group">
-    <Form id="register-form">
+    <fieldset id="register-form">
       <Field
         type="email"
         name="email"
@@ -46,7 +41,7 @@ let EmailForm = props => (
         l10n={props.l10n}
         placeholder="example@email.com"
       />
-    </Form>
+    </fieldset>
     <EduIDButton
       className="settings-button"
       id="register-button"
@@ -72,43 +67,10 @@ EmailForm = connect(state => ({
 
 class Email extends Component {
   render() {
-    // const url = window.location.href;
-    // let buttons = "";
-    // if (this.props.withButtons) {  onClick={this.props.gotoSignin} onClick={this.props.gotoSignup} {this.props.l10n("header.signup")} data-dashboard_url={this.props.dashboard_url}
-    // if (url.includes("register")) {
-    //   buttons = (
-    //     <div data-dashboard_url={this.props.dashboard_url}>
-    //       <EduIDButton
-    //         className="btn-link "
-    //         onClick={this.props.gotoSignin}
-    //       >
-    //         {this.props.l10n("header.signin")}
-    //       </EduIDButton>
-    //     </div>
-    //   );
-    // } else {
-    //   buttons = (
-    //     <div>
-    //       <a onClick={this.props.gotoSignup}>
-    //         {this.props.l10n("header.signup")}
-    //       </a>
-    //     </div>
-    //   );
-    // }
     return [
       <div key="0" id="register-container">
         <label>Email address</label>
         <EmailForm {...this.props} />
-        {/* <div data-dashboard_url={this.props.dashboard_url}>
-          <EduIDButton
-            id="login-button"
-            className="btn-link"
-            onClick={this.props.gotoSignin}
-          >
-            {this.props.l10n("header.signin")}
-          </EduIDButton>
-        </div> */}
-        {/* <p>{this.props.l10n("register.why-account")}</p> */}
       </div>,
       <div key="1">
         <Modal isOpen={this.props.acceptingTOU} id="register-modal">

@@ -36,6 +36,12 @@
   font-size: 24px;
 }
 
+#email {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 #login-button {
   cursor: pointer;
   padding-left: 0;
@@ -120,10 +126,10 @@
   // }
 }
 @media (max-width: 375px) {
- #resend-button {
+  #resend-button {
     font-size: 0.8rem;
   }
- }
+}
 
 // body,
 // div.jumbotron {
