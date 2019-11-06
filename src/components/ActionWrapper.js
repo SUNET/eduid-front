@@ -50,7 +50,7 @@ class ActionWrapper extends Component {
         <SplashContainer />
         <Router history={history}>
           <div className="dashboard-wrapper">
-            <HeaderContainer />
+            <HeaderContainer {...this.props} />
             <div id="dashboard-text">
               <div id="welcome">
                 <h1>{this.props.l10n("main.welcome")}</h1>

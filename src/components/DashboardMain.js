@@ -60,7 +60,7 @@ class Main extends Component {
         <SplashContainer />
         <Router history={history}>
           <div className="dashboard-wrapper">
-            <HeaderContainer />
+            <HeaderContainer {...this.props} />
             <div id="dashboard-text">
               <div id="welcome">
                 <h1>
