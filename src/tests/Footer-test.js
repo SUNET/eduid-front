@@ -55,15 +55,15 @@ describe("Footer Component", () => {
   //   expect(link.length).toEqual(4);
   // });
 
-  it("Renders the lanuage selector component", () => {
+  it("Renders the language selector component", () => {
     const wrapper = setupComponent({
         component: <FooterContainer />,
         overrides: state
       }),
-      p = wrapper.find("p.langselector"),
-      link = wrapper.find("p.langselector").find("a");
+      p = wrapper.find("p.lang-selected"),
+      link = wrapper.find("p.lang-selected").find("a");
 
-    expect(p.length).toEqual(2);
+    expect(p.length).toEqual(1);
     expect(link.length).toEqual(1);
     expect(link.text()).toEqual("Svenska");
   });

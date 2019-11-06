@@ -17,19 +17,14 @@ const mapStateToProps = (state, props) => {
     language: state.intl.locale,
     languages: languages,
     reload_to: state.config.DASHBOARD_URL,
-    // dashboard_url: state.config.dashboard_url,
-    students_link: state.config.students_link,
-    technicians_link: state.config.technicians_link,
-    staff_link: state.config.staff_link,
     faq_link: state.config.faq_link
-    // size: state.config.window_size
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
     changeLanguage: function(e) {
-      const lang = e.target.closest(".langselector").dataset.lang;
+      const lang = e.target.closest(".lang-selected").dataset.lang;
       const msgs = LOCALIZED_MESSAGES[lang];
       dispatch(
         updateIntl({

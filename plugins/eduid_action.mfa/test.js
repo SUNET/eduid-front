@@ -61,7 +61,7 @@ describe("Some Component", () => {
     expect(title.length).toEqual(1);
     expect(fallback.length).toEqual(1);
     expect(animation.length).toEqual(0);
-    expect(title.text()).toEqual("No support for Security Keys");
+    expect(title.text()).toEqual("No support for security keys");
 
     Object.defineProperty(window.navigator, "credentials", {
       value: creds,
