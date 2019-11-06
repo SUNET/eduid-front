@@ -144,6 +144,10 @@
     "defaultMessage": "General rules for eduID users"
   },
   {
+    "id": "banner.tagline",
+    "defaultMessage": "eduID is easier and safer login."
+  },
+  {
     "id": "tou.cancel",
     "defaultMessage": "Cancel"
   },
