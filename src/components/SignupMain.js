@@ -6,7 +6,7 @@ import { createBrowserHistory } from "history";
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
-import HeaderContainer from "containers/HeaderAnon";
+import HeaderContainer from "containers/Header";
 // import HeaderContainer from "containers/Header";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
