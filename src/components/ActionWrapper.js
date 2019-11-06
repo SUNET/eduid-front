@@ -34,15 +34,15 @@ class ActionWrapper extends Component {
     });
   }
 
-  componentWillMount() {
-    window.addEventListener(
-      "resize",
-      this.props.handleWindowSizeChange.bind(this)
-    );
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.props.handleWindowSizeChange);
-  }
+  // componentWillMount() {
+  //   window.addEventListener(
+  //     "resize",
+  //     this.props.handleWindowSizeChange.bind(this)
+  //   );
+  // }
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.props.handleWindowSizeChange);
+  // }
 
   render() {
     return (
