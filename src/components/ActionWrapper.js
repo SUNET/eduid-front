@@ -52,9 +52,9 @@ class ActionWrapper extends Component {
           <div className="dashboard-wrapper">
             <HeaderContainer {...this.props} />
             <div id="dashboard-text">
-              <div id="welcome">
-                <h1>{this.props.l10n("main.welcome")}</h1>
-                <h2>{this.props.l10n("register.create-account")}</h2>
+              <div id="banner">
+                <h1 className="banner-tagline">{this.props.l10n("banner.tagline")}</h1>
+                {/* <h2>{this.props.l10n("register.create-account")}</h2> */}
               </div>
 
               <div id="content">
