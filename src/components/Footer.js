@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Questions from "./Questions";
 import "style/Footer.scss";
 
 class Footer extends Component {
@@ -9,17 +10,15 @@ class Footer extends Component {
     if (this.props.is_configured) {
       const langs = Object.getOwnPropertyNames(this.props.languages);
       langElems = langs.map((lang, index) => {
-        console.lo;
         if (lang === this.props.language) {
-          // the non-chosen language is hidden with css for now 
           return (
-            <p className="non-selected" key={index}>
+            <p key="0" className="non-selected" key={index}>
               <span key="0">{this.props.languages[lang]}</span>
             </p>
           );
         } else {
           return (
-            <p className="lang-selected" data-lang={lang} key={index}>
+            <p key="0" className="lang-selected" data-lang={lang} key={index}>
               <a key="0" onClick={this.props.changeLanguage}>
                 {this.props.languages[lang]}
               </a>
