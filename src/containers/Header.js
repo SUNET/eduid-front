@@ -39,10 +39,10 @@ const mapDispatchToProps = (dispatch, props) => {
     handleLogout: function(e) {
       dispatch(startLogout());
     },
-    gotoSignup: function (e) {
-      e.preventDefault();
-      document.location.href = "/";
-    },
+    // gotoSignup: function (e) {
+    //   e.preventDefault();
+    //   document.location.href = "/";
+    // },
     gotoSignin: function (e) {
       e.preventDefault();
       const dataNode = e.target.closest("div"),
