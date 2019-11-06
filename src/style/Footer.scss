@@ -3,6 +3,7 @@
 #footer {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   padding: 16px;
   border-top: 8px solid #ff4500;
   background-color: #f4f4f4;
@@ -49,38 +50,5 @@ footer nav .lang-selected {
 
 .non-selected {
   margin: 0;
-
   display: none;
 }
-
-// @media (max-width: 765px) {
-//   #eduid-navbar {
-//     // margin: 5px 0 15px 0;
-//   }
-//   #eduid-navbar ul {
-//     justify-content: space-between;
-//   }
-// }
-
-// @media (max-width: 414px) {
-//   #eduid-navbar {
-//     margin: 5px 0;
-//   }
-//   #eduid-navbar ul {
-//     justify-content: space-between;
-//     flex-direction: row;
-//     flex-wrap: wrap;
-//   }
-//   #eduid-navbar li {
-//     flex: 50%;
-//     margin-right: 0;
-//     margin-bottom: 10px;
-//   }
-//   #footer-content p {
-//     margin-top: 10px;
-//     font-size: 0.9rem;
-//   }
-//   #footer .langselector {
-//     padding: 0 5px;
-//   }
-// }

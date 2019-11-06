@@ -11,7 +11,7 @@ class Footer extends Component {
       langElems = langs.map((lang, index) => {
         console.lo;
         if (lang === this.props.language) {
-          // the non-chosen language is hidden with css for now className="non-selected"
+          // the non-chosen language is hidden with css for now 
           return (
             <p className="non-selected" key={index}>
               <span key="0">{this.props.languages[lang]}</span>
@@ -33,7 +33,6 @@ class Footer extends Component {
 
     return (
       <footer key="0" id="footer">
-        {/* <div key="0" id="footer-content"> */}
         <p key="0" id="copyright">
           <span>&copy;{this.props.l10n("main.copyright")}</span>
         </p>
@@ -50,7 +49,6 @@ class Footer extends Component {
           </ul>
         </nav>
       </footer>
-      // </div>
     );
   }
 }
