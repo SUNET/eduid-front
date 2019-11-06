@@ -5,6 +5,16 @@ import "style/Header.scss";
 
 class Header extends Component {
   render() {
+    let login = (
+      <div data-dashboard_url={this.props.dashboard_url}>
+        <a onClick={this.props.gotoSignin}>
+          <button id="login" className="btn">
+            {this.props.l10n("header.signin")}
+          </button>
+        </a>
+      </div>
+    );
+
     const logout = (
       <div id="eduid-button">
         <button id="logout" className="btn" onClick={this.props.handleLogout}>
@@ -25,11 +35,16 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  confirmed: PropTypes.string,
-  studentsLink: PropTypes.string,
-  techniciansLink: PropTypes.string,
-  staffLink: PropTypes.string,
-  faqLink: PropTypes.string
+  withButtons: PropTypes.bool,
+  size: PropTypes.string,
+  // gotoSignup: PropTypes.func,
+  gotoSignin: PropTypes.func,
+  l10n: PropTypes.func,
+  confirmed: PropTypes.string
+  // studentsLink: PropTypes.string,
+  // techniciansLink: PropTypes.string,
+  // staffLink: PropTypes.string,
+  // faqLink: PropTypes.string
 };
 
 export default Header;
