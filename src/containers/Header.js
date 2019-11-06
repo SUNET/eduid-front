@@ -20,17 +20,17 @@ const mapStateToProps = (state, props) => {
 
   return {
     dashboard_url: state.config.dashboard_url,
-    students_link: state.config.students_link,
-    technicians_link: state.config.technicians_link,
-    staff_link: state.config.staff_link,
-    faq_link: state.config.faq_link,
+    // students_link: state.config.students_link,
+    // technicians_link: state.config.technicians_link,
+    // staff_link: state.config.staff_link,
+    // faq_link: state.config.faq_link,
     // email: email,
     confirmed: confirmed,
-    studentsLink: state.config.STATIC_STUDENTS_URL,
-    techniciansLink: state.config.STATIC_TECHNICIANS_URL,
-    staffLink: state.config.STATIC_STAFF_URL,
-    faqLink: state.config.STATIC_FAQ_URL,
-    size: state.config.window_size
+    // studentsLink: state.config.STATIC_STUDENTS_URL,
+    // techniciansLink: state.config.STATIC_TECHNICIANS_URL,
+    // staffLink: state.config.STATIC_STAFF_URL,
+    // faqLink: state.config.STATIC_FAQ_URL,
+    // size: state.config.window_size
   };
 };
 
