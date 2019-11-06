@@ -29,7 +29,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     changeLanguage: function(e) {
-      const lang = e.target.closest(".langselector").dataset.lang;
+      const lang = e.target.closest(".lang-selected").dataset.lang;
       const msgs = LOCALIZED_MESSAGES[lang];
       dispatch(
         updateIntl({
