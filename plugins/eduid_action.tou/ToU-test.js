@@ -36,13 +36,13 @@ describe("ToU Component", () => {
     const wrapper = setupComponent({ component: <MainContainer /> }),
       splash = wrapper.find("div#eduid-splash-screen"),
       tou = wrapper.find("div#eduid-tou"),
-      buttonAccept = wrapper.find("button#accept-tou-button"),
-      buttonReject = wrapper.find("button#reject-tou-button");
+      buttonAccept = wrapper.find("button#accept-tou-button");
+      // buttonReject = wrapper.find("button#reject-tou-button");
 
     expect(splash.length).toEqual(0);
     expect(tou.length).toEqual(1);
     expect(buttonAccept.length).toEqual(1);
-    expect(buttonReject.length).toEqual(1);
+    // expect(buttonReject.length).toEqual(1);
     expect(tou.text()).toEqual("Testing ToU");
   });
 
