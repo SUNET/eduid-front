@@ -54,12 +54,10 @@ class ActionWrapper extends Component {
             <div id="dashboard-text">
               <div id="banner">
                 <h1 className="banner-tagline">{this.props.l10n("banner.tagline")}</h1>
-                {/* <h2>{this.props.l10n("register.create-account")}</h2> */}
               </div>
 
               <div id="content">
                 <NotificationsContainer />
-                {/* <h2>{this.props.l10n("tou.header")}</h2> */}
                 <Route
                   exact
                   path={`${BASE_PATH}`}
