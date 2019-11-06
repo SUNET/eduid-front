@@ -16,7 +16,14 @@ const mapStateToProps = (state, props) => {
   // } else {
   //   confirmed = "main.unconfirmed";
   // }
+
+
   return {
+    dashboard_url: state.config.dashboard_url,
+    students_link: state.config.students_link,
+    technicians_link: state.config.technicians_link,
+    staff_link: state.config.staff_link,
+    faq_link: state.config.faq_link,
     // email: email,
     confirmed: confirmed,
     studentsLink: state.config.STATIC_STUDENTS_URL,
@@ -31,6 +38,16 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     handleLogout: function(e) {
       dispatch(startLogout());
+    },
+    gotoSignup: function (e) {
+      e.preventDefault();
+      document.location.href = "/";
+    },
+    gotoSignin: function (e) {
+      e.preventDefault();
+      const dataNode = e.target.closest("div"),
+        url = dataNode.dataset.dashboard_url;
+      document.location.href = url;
     }
   };
 };
@@ -41,3 +58,4 @@ const HeaderContainer = connect(
 )(Header);
 
 export default i18n(HeaderContainer);
+
