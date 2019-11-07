@@ -553,13 +553,9 @@ h5.modal-title {
 
 #confirm-user-data-modal,
 #register-modal,
-#eidas-modal {
-  width: 50vw;
-  margin: auto;
-}
-
+#eidas-modal,
 #delete-account-modal {
-  width: 30vw;
+  width: 70vw;
   margin: auto;
 }
 
@@ -743,11 +739,20 @@ svg.remove:hover {
   .container {
     max-width: 100%;
   }
+  .modal-dialog {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 823px) {
   // ---- modals ----- //
-
+  #register-modal,
+  #delete-account-modal,
+  #eidas-modal,
+  .modal-dialog {
+    width: calc(100% - 40px);
+    margin: auto 20px;
+  }
   .modal-header {
     padding: 20px;
   }
@@ -803,11 +808,6 @@ svg.remove:hover {
     font-size: 25px;
     line-height: 30px;
     margin-top: 10px;
-  }
-  #register-modal,
-  .modal-dialog {
-    width: calc(100% - 40px);
-    margin: auto 20px;
   }
   .modal-dialog {
     max-width: calc(100% - 40px);
