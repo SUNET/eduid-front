@@ -35,13 +35,13 @@ class Main extends Component {
           >
             {this.props.l10n("tou.accept")}
           </EduIDButton>
-          <EduIDButton
+          {/* <EduIDButton
             className="modal-button cancel-button"
             onClick={this.props.rejectTOU}
             id="reject-tou-button"
           >
             {this.props.l10n("tou.cancel")}
-          </EduIDButton>
+          </EduIDButton> */}
         </div>
       </ActionWrapperContainer>
     );

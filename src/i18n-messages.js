@@ -331,6 +331,10 @@ const msgs = {
     />
   ),
 
+  "banner.tagline": (
+    <FormattedMessage id="banner.tagline" defaultMessage={`eduID is easier and safer login.`} />
+  ),
+
   // "tou.reject": <FormattedMessage id="tou.reject" defaultMessage={`Reject`} />,
   "tou.cancel": <FormattedMessage id="tou.cancel" defaultMessage={`Cancel`} />,
 
