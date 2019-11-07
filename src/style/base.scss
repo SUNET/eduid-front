@@ -552,14 +552,14 @@ h5.modal-title {
 }
 
 #confirm-user-data-modal,
-#register-modal,
-#eidas-modal {
+#register-modal {
   width: 50vw;
   margin: auto;
 }
 
+#eidas-modal,
 #delete-account-modal {
-  width: 30vw;
+  width: 70vw;
   margin: auto;
 }
 
