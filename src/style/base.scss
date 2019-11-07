@@ -743,6 +743,9 @@ svg.remove:hover {
   .container {
     max-width: 100%;
   }
+  .modal-dialog {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 823px) {
