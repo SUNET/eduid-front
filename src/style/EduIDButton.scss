@@ -35,7 +35,6 @@ button.btn.settings-button {
     color: $orange-highlight;
     background-color: $orange-opaque;
     transform: scale(0.95);
-    // background-color: $orange-opaque;
     border: solid 1px $orange-highlight;
   }
   &:not(:disabled):not(.disabled):active,
@@ -54,17 +53,9 @@ button.btn.settings-button {
 
 /* MODALS */
 button.btn.modal-button {
-  // height: 48px;
-  // font-family: "Akkurat";
-  // font-weight: 700;
-  // font-size: 1rem;
-  // border-radius: 20px;
-  // letter-spacing: 0.5px;
   box-shadow: none;
   border: solid 1px transparent;
   background-color: transparent;
-  // padding: 10px 20px;
-  // transition: all 0.5s ease;
 }
 
 /* color for OK and ACCEPT buttons in modals */
@@ -140,14 +131,7 @@ button.btn-link {
   color: $orange-highlight;
   border-radius: 0;
   border: none;
-  // border: solid 1px transparent;
   box-shadow: none;
-  // &:hover {
-  //   background-color: transparent;
-  //   color: $orange-highlight;
-  //   border-bottom: solid 1px transparent;
-  //   box-shadow: none;
-  // }
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
@@ -156,10 +140,17 @@ button.btn-link {
   }
 }
 
-.btn.eduid-button.btn-in-row {
-  height: calc(2.25rem + 2px);
-  line-height: calc(2.25rem + 2px);
+a.btn-primary,
+button.btn-primary {
+  background-color: transparent;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: transparent;
+  }
 }
+
 .btn-link.eduid-button {
   border: 0;
   padding: 0;
@@ -253,15 +244,9 @@ button.eduid-button.btn-warning {
   }
 }
 
-// @media only screen and (min-width: 767px) {
-//   button.eduid-button {
-//     max-height: 45px;
-//   }
-// }
 
 @media (max-width: 414px) {
   button.btn {
-    // font-size: 1rem;
     width: 100%;
   }
 }
