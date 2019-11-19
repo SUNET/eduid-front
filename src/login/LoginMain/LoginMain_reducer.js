@@ -3,8 +3,6 @@ import * as actions from "login/LoginMain/LoginMain_actions";
 // see the config params in eduid-developer/etcd/conf.yaml
 const loginData = {
   reset_passwd_url: "",
-  resize_timeout: 0,
-  window_size: actions.getWindowSize(),
   csrf_token: "",
   is_fetching: false,
   error: false,
@@ -22,16 +20,6 @@ let loginReducer = (state = loginData, action) => {
       return {
         ...state,
         is_fetching: true
-      };
-    case actions.RESIZE_TIMEOUT:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case actions.RESIZE_WINDOW:
-      return {
-        ...state,
-        ...action.payload
       };
     case actions.NEW_CSRF_TOKEN:
       return {

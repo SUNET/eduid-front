@@ -139,8 +139,12 @@ export function* verifyWebauthnToken(win) {
     const state = yield select(state => state);
     const keyHandle = state.security.webauthn_token_verify;
 
+    let baseUrl = state.config.EIDAS_URL;
+    if (!baseUrl.endsWith('/')) {
+        baseUrl += '/';
+    }
     let idpParam = "?idp=" + state.config.TOKEN_VERIFY_IDP;
-    let url = state.config.EIDAS_URL + "verify-token/" + keyHandle + idpParam;
+    let url = baseUrl + "verify-token/" + keyHandle + idpParam;
 
     if (win !== undefined && win.location !== undefined) {
       win.location.href = url;
