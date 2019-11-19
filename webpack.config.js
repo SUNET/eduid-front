@@ -18,6 +18,7 @@ module.exports = {
     // WebpackDevServer host and port:
     // server: 'webpack-dev-server/client?http://localhost:8080',
     signup: "./src/entry-points/signup",
+    login: "./src/entry-points/login",
     dashboard: "./src/entry-points/dashboard"
   },
   output: {
