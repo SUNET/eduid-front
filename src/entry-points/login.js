@@ -32,7 +32,7 @@ import ReactDOM from "react-dom";
 import { addLocaleData } from "react-intl";
 
 import init_app from "login-init-app";
-import LoginMainContainer from "containers/LoginMain";
+import LoginMainContainer from "login/LoginMain/LoginMain_container";
 
 const locales = [];
 

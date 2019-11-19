@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 
 import i18n from "i18n-messages";
-import LoginMain from "components/LoginMain";
-import * as actions from "actions/LoginMain";
+import LoginMain from "login/LoginMain/LoginMain";
+import * as actions from "login/LoginMain/LoginMain_actions";
 
 const mapStateToProps = (state, props) => {
   return {

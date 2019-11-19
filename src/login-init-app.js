@@ -12,7 +12,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import eduIDLoginApp from "./login-store";
 import notifyAndDispatch from "./notify-middleware";
 
-import { history } from "components/LoginMain";
+import { history } from "login/LoginMain/LoginMain";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -8,9 +8,9 @@ import SplashContainer from "containers/Splash";
 import NotificationsContainer from "containers/Notifications";
 import FooterContainer from "containers/Footer";
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
-import "style/LoginMain.scss";
+import "login/LoginMain/LoginMain.scss";
 
 export const history = createBrowserHistory();
 

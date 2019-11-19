@@ -1,4 +1,4 @@
-import * as actions from "actions/LoginMain";
+import * as actions from "login/LoginMain/LoginMain_actions";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const loginData = {
