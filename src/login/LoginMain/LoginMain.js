@@ -41,7 +41,7 @@ class Main extends Component {
                 <NotificationsContainer />
                 <Route
                   exact
-                  path="/login/"
+                  path="/"
                   render={props => <div {...props} ></div>}
                 />
               </div>
