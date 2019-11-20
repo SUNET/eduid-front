@@ -6,7 +6,7 @@ import * as actions from "login/LoginMain/LoginMain_actions";
 
 const mapStateToProps = (state, props) => {
   return {
-    is_fetching: state.app.is_fetching,
+    is_fetching: state.config.is_fetching,
   };
 };
 

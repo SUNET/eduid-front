@@ -7,7 +7,7 @@ import { reducer as formReducer } from "redux-form";
 import { intlReducer } from "react-intl-redux";
 
 const eduIDLoginApp = combineReducers({
-  app: loginReducer,
+  config: loginReducer,
   notifications: notificationsReducer,
   router: routerReducer,
   form: formReducer,
