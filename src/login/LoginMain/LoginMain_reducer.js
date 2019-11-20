@@ -2,6 +2,7 @@ import * as actions from "login/LoginMain/LoginMain_actions";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const loginData = {
+  is_app_loaded: false,
   reset_passwd_url: "",
   csrf_token: "",
   is_fetching: false,
@@ -20,6 +21,11 @@ let loginReducer = (state = loginData, action) => {
       return {
         ...state,
         is_fetching: true
+      };
+    case actions.APP_LOADED:
+      return {
+        ...state,
+        is_app_loaded: true
       };
     case actions.NEW_CSRF_TOKEN:
       return {

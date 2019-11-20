@@ -1,11 +1,17 @@
 export const APP_FETCHING = "APP_FETCHING";
-
+export const APP_LOADED = "APP_LOADED";
 export const NEW_CSRF_TOKEN = "NEW_CSRF_TOKEN";
 
 
 export function appFetching() {
   return {
     type: APP_FETCHING
+  };
+}
+
+export function appLoaded() {
+  return {
+    type: APP_LOADED
   };
 }
 
