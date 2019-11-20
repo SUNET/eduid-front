@@ -55,7 +55,7 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  is_fetching: PropTypes.boolean,
+  is_fetching: PropTypes.bool,
 };
 
 export default Main;
