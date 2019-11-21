@@ -11,7 +11,9 @@ const loginData = {
   available_languages: {},
 };
 
-const fetchingActions = [];
+const fetchingActions = [
+    actions.GET_LOGIN_CONFIG,
+];
 
 const unFetchingActions = [];
 
@@ -31,6 +33,12 @@ let loginReducer = (state = loginData, action) => {
       return {
         ...state,
         ...action.payload
+      };
+    case actions.GET_LOGIN_CONFIG_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        is_fetching: false
       };
     default:
       if (action.type.endsWith("_SUCCESS") || action.type.endsWith("_FAIL")) {
