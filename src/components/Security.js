@@ -1,11 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
-import Modal from "reactstrap/lib/Modal";
-import ModalHeader from "reactstrap/lib/ModalHeader";
-import ModalBody from "reactstrap/lib/ModalBody";
-import ModalFooter from "reactstrap/lib/ModalFooter";
-
 import EduIDButton from "components/EduIDButton";
 import GenericConfirmModal from "components/GenericConfirmModal";
 import ConfirmModal from "components/ConfirmModal";
@@ -196,15 +190,6 @@ Security.propTypes = {
   creation_date: PropTypes.string,
   last_used: PropTypes.string,
   langs: PropTypes.array,
-  // confirming_change: PropTypes.bool,
-  // deleted: PropTypes.bool,
-  // handleStartConfirmationPassword: PropTypes.func,
-  // handleStopConfirmationPassword: PropTypes.func,
-  // handleConfirmationPassword: PropTypes.func,
-  // confirming_deletion: PropTypes.bool,
-  // handleStartConfirmationDeletion: PropTypes.func,
-  // handleStopConfirmationDeletion: PropTypes.func,
-  // handleConfirmationDeletion: PropTypes.func,
   handleStartWebauthnRegistration: PropTypes.func,
   handleCloseWebauthnModal: PropTypes.func
 };
