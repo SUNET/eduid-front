@@ -11,9 +11,7 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import ConfirmModalForm from "./ConfirmModalForm";
 
 import i18n from "i18n-messages";
-import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
-import NotificationsContainer from "containers/Notifications";
 
 class ConfirmModal extends Component {
   render() {
@@ -21,7 +19,6 @@ class ConfirmModal extends Component {
     if (this.props.with_resend_link) {
       resendMarkup = (
         <div>
-          {/* <p className="modal-help-text">{this.props.resendHelp}</p> */}
           <a href="#" onClick={this.props.handleResend} className="resend-code">
             {this.props.resendText}
           </a>
