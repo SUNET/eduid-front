@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import i18n from "i18n-messages";
+import { ButtonGroup, Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
