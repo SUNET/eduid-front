@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import TextInput from "components/EduIDTextInput";
 import { Field, reduxForm } from "redux-form";
 import {
-  Form,
   FormFeedback,
   Modal,
   ModalHeader,
