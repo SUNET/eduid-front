@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Router, Route, NavLink, Redirect } from "react-router-dom";
-// import createHistory from "history/createBrowserHistory";
+import { Router, Route, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import SplashContainer from "containers/Splash";
 import NotificationsContainer from "containers/Notifications";
@@ -33,16 +32,6 @@ class ActionWrapper extends Component {
       fetching: fetching
     });
   }
-
-  // componentWillMount() {
-  //   window.addEventListener(
-  //     "resize",
-  //     this.props.handleWindowSizeChange.bind(this)
-  //   );
-  // }
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.props.handleWindowSizeChange);
-  // }
 
   render() {
     return (
