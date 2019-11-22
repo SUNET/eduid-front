@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
-// import createHistory from "history/createBrowserHistory";
-// const createBrowserHistory = require("history").createBrowserHistory;
 import { createBrowserHistory } from "history";
-import { ConnectedRouter } from "react-router-redux";
 
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
