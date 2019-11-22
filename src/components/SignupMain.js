@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, Redirect } from "react-router-dom";
-// import createHistory from "history/createBrowserHistory";
 import { createBrowserHistory } from "history";
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
-// import HeaderContainer from "containers/Header";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";
@@ -37,16 +35,6 @@ class SignupMain extends Component {
     });
   }
 
-  // componentWillMount() {
-  //   window.addEventListener(
-  //     "resize",
-  //     this.props.handleWindowSizeChange.bind(this)
-  //   );
-  // }
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.props.handleWindowSizeChange);
-  // }
-
   render() {
     let redirect = `${BASE_PATH}/email`;
 
@@ -59,26 +47,6 @@ class SignupMain extends Component {
         redirect = `${BASE_PATH}/trycaptcha`;
       }
     }
-
-    // return (
-    //   <FetchingContext.Provider value={this.state}>
-    //     <SplashContainer />
-    //     <div className="container-fluid">
-    //       <HeaderContainer withButtons={true} />
-    //       <Router history={history}>
-    //         <div className="jumbotron">
-    //           <div className="row">
-    //             <div className="col-lg-2" />
-    //             <div className="col-lg-8">
-    //               <NotificationsContainer />
-    //             </div>
-    //             <div className="col-lg-2" />
-    //
-    //       </Router>
-    //       <FooterContainer />
-    //     </div>
-    //   </FetchingContext.Provider>
-    // );
 
     return (
       <FetchingContext.Provider value={this.state}>
@@ -123,7 +91,6 @@ class SignupMain extends Component {
             </div>
             <FooterContainer {...this.props} />
           </div>
-          {/* </div> */}
         </Router>
       </FetchingContext.Provider>
     );
