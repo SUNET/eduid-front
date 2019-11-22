@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Questions from "./Questions";
 import "style/Footer.scss";
 
 class Footer extends Component {
