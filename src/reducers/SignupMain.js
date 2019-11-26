@@ -23,7 +23,9 @@ const configData = {
   mfa_authn_idp: ""
 };
 
-const fetchingActions = [actions.GET_SIGNUP_CONFIG, actions.SPIN];
+const fetchingActions = [
+  actions.GET_SIGNUP_CONFIG,
+];
 
 const unFetchingActions = [];
 
