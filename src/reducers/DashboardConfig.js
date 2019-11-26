@@ -75,6 +75,12 @@ const urls_with_no_sidebar = ["chpass"];
 
 let configReducer = (state = configData, action) => {
   switch (action.type) {
+    case actions.APP_LOADED:
+      return {
+        ...state,
+        is_fetching: false,
+        is_app_loaded: true
+      };
     case actions.GET_JSCONFIG_CONFIG:
       return {
         ...state,
@@ -111,11 +117,6 @@ let configReducer = (state = configData, action) => {
       return {
         ...state,
         is_spa: true
-      };
-    case pdataActions.GET_USERDATA_SUCCESS:
-      return {
-        ...state,
-        is_app_loaded: true
       };
     case "@@router/LOCATION_CHANGE":
       let show_sidebar = true;

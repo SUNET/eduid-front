@@ -14,11 +14,6 @@ const configData = {
 
 let actionWrapperReducer = (state = configData, action) => {
   switch (action.type) {
-    case actions.APP_LOADING:
-      return {
-        ...state,
-        is_app_loaded: false
-      };
     case actions.APP_LOADED:
       return {
         ...state,
