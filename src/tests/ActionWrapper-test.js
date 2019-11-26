@@ -30,7 +30,7 @@ const fakeState = {
     csrf_token: "",
     is_app_loaded: true,
     redirect: "/",
-    is_fetching: false,
+    //is_fetching: false,
     error: false,
     available_languages: {}
   },
@@ -161,12 +161,12 @@ describe("ActionWrapper Actions", () => {
     expect(actions.appLoading()).toEqual(expectedAction);
   });
 
-  it("Should signal the app is fetching data", () => {
-    const expectedAction = {
-      type: actions.APP_FETCHING
-    };
-    expect(actions.appFetching()).toEqual(expectedAction);
-  });
+  //it("Should signal the app is fetching data", () => {
+    //const expectedAction = {
+      //type: actions.APP_FETCHING
+    //};
+    //expect(actions.appFetching()).toEqual(expectedAction);
+  //});
 
   it("Should timeout the resizing", () => {
     const expectedAction = {
@@ -256,7 +256,7 @@ describe("ActionWrapper reducer", () => {
     csrf_token: "",
     is_app_loaded: false,
     redirect: "/",
-    is_fetching: false,
+    //is_fetching: false,
     error: false,
     available_languages: {}
   };
@@ -272,16 +272,16 @@ describe("ActionWrapper reducer", () => {
     });
   });
 
-  it("Receives app fetching action", () => {
-    expect(
-      actionWrapperReducer(mockState, {
-        type: actions.APP_FETCHING
-      })
-    ).toEqual({
-      ...mockState,
-      is_fetching: true
-    });
-  });
+  //it("Receives app fetching action", () => {
+    //expect(
+      //actionWrapperReducer(mockState, {
+        //type: actions.APP_FETCHING
+      //})
+    //).toEqual({
+      //...mockState,
+      ////is_fetching: true
+    //});
+  //});
 
   it("Receives app loaded action", () => {
     expect(

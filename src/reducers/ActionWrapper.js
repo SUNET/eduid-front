@@ -7,7 +7,7 @@ const configData = {
   csrf_token: "",
   is_app_loaded: false,
   redirect: "/",
-  is_fetching: false,
+  //is_fetching: false,
   error: false,
   available_languages: {}
 };
@@ -24,11 +24,11 @@ let actionWrapperReducer = (state = configData, action) => {
         ...state,
         is_app_loaded: true
       };
-    case actions.APP_FETCHING:
-      return {
-        ...state,
-        is_fetching: true
-      };
+    //case actions.APP_FETCHING:
+      //return {
+        //...state,
+        //is_fetching: true
+      //};
     case actions.RESIZE_TIMEOUT:
       return {
         ...state,

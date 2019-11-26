@@ -35,7 +35,7 @@ describe("Config Actions", () => {
 describe("Config reducers", () => {
   const mockState = {
     csrf_token: "",
-    is_fetching: false,
+    //is_fetching: false,
     failed: false,
     param1: "old value"
   };
@@ -48,7 +48,7 @@ describe("Config reducers", () => {
     ).toEqual({
       csrf_token: "",
       param1: "old value",
-      is_fetching: true,
+      //is_fetching: true,
       is_configured: false,
       failed: false
     });
@@ -66,7 +66,7 @@ describe("Config reducers", () => {
     ).toEqual({
       csrf_token: "",
       param1: "new value",
-      is_fetching: false,
+      //is_fetching: false,
       failed: false,
       is_configured: true
     });
@@ -85,7 +85,7 @@ describe("Config reducers", () => {
     ).toEqual({
       csrf_token: "",
       param1: "old value",
-      is_fetching: false,
+      //is_fetching: false,
       failed: true,
       is_configured: false
     });
@@ -99,7 +99,7 @@ describe("Config reducers", () => {
       })
     ).toEqual({
       csrf_token: "",
-      is_fetching: false,
+      //is_fetching: false,
       failed: false,
       param1: "old value"
     });
@@ -108,7 +108,7 @@ describe("Config reducers", () => {
 
 const mockState = {
   personal_data: {
-    is_fetching: false,
+    //is_fetching: false,
     failed: false,
     given_name: "",
     surname: "",
@@ -118,7 +118,7 @@ const mockState = {
   config: {
     csrf_token: "",
     is_configured: false,
-    is_fetching: false,
+    //is_fetching: false,
     failed: false,
     PERSONAL_DATA_URL: "http://localhost/services/personal-data/user"
   }

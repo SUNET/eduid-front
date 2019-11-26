@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import i18n from "i18n-messages";
-import { appFetching, postAction } from "actions/ActionWrapper";
+//import { appFetching, postAction } from "actions/ActionWrapper";
+import { postAction } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
 import HeaderContainer from "containers/HeaderAnon";
 import FooterContainer from "containers/Footer";
@@ -65,7 +66,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     acceptTOU: function(e) {
       e.preventDefault();
-      dispatch(appFetching());
+      //dispatch(appFetching());
       dispatch(postAction());
     },
     rejectTOU: function(e) {

@@ -8,7 +8,7 @@ const mapStateToProps = (state, props) => {
   return {
     redirect: state.config.redirect,
     resize_timeout: state.config.resize_timeout,
-    is_fetching: state.config.is_fetching
+    //is_fetching: state.config.is_fetching
   };
 };
 
