@@ -22,7 +22,6 @@ let actionWrapperReducer = (state = configData, action) => {
         ...state,
         is_app_loaded: true
       };
-      };
     case actions.NEW_CSRF_TOKEN:
       return {
         ...state,
