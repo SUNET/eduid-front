@@ -70,10 +70,11 @@ class SignupMain extends Component {
     //   </FetchingContext.Provider>
     // );
 
-    return (
-      <div>
-      {/*<FetchingContext.Provider value={this.state}>*/}
-        <SplashContainer />
+    // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
+    // should wrap the splash container and router once we get back to using
+    // it.
+    return ([
+        <SplashContainer />,
         <Router history={history}>
           <div className="dashboard-wrapper">
             <HeaderContainer {...this.props} />
@@ -116,9 +117,7 @@ class SignupMain extends Component {
           </div>
           {/* </div> */}
         </Router>
-      {/*</FetchingContext.Provider>*/}
-      </div>
-    );
+    ]);
   }
 }
 
