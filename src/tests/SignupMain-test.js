@@ -28,8 +28,6 @@ addLocaleData([...en, ...sv]);
 const fakeState = {
   config: {
     dashboard_url: "",
-    resize_timeout: 0,
-    window_size: signupActions.getWindowSize(),
     csrf_token: "",
     recaptcha_public_key: "",
     captcha: "",
@@ -186,35 +184,6 @@ describe("SignupMain Actions", () => {
     //expect(signupActions.appFetching()).toEqual(expectedAction);
   //});
 
-  it("Should timeout the resizing", () => {
-    const expectedAction = {
-      type: signupActions.RESIZE_TIMEOUT,
-      payload: {
-        resize_timeout: "dummy timeout"
-      }
-    };
-    expect(signupActions.resizeTimeout("dummy timeout")).toEqual(
-      expectedAction
-    );
-  });
-
-  it("Should resize the app", () => {
-    const expectedAction = {
-      type: signupActions.RESIZE_WINDOW,
-      payload: {
-        window_size: "dummy size"
-      }
-    };
-    expect(signupActions.resizeWindow(true)).toEqual(expectedAction);
-  });
-
-  it("Should get the config", () => {
-    const expectedAction = {
-      type: signupActions.GET_SIGNUP_CONFIG
-    };
-    expect(signupActions.getSignupConfig()).toEqual(expectedAction);
-  });
-
   it("Should fail when trying to get the config", () => {
     const err = new Error("Get config error");
     const expectedAction = {
@@ -239,31 +208,9 @@ describe("SignupMain Actions", () => {
   });
 });
 
-describe("Get window size", () => {
-  it("Small window", () => {
-    window.innerWidth = 500;
-
-    expect(signupActions.getWindowSize()).toEqual("xs");
-
-    window.innerWidth = 800;
-
-    expect(signupActions.getWindowSize()).toEqual("sm");
-
-    window.innerWidth = 1000;
-
-    expect(signupActions.getWindowSize()).toEqual("md");
-
-    window.innerWidth = 1300;
-
-    expect(signupActions.getWindowSize()).toEqual("lg");
-  });
-});
-
 describe("SignupMain reducer", () => {
   const mockState = {
     dashboard_url: "",
-    resize_timeout: 0,
-    window_size: "lg",
     csrf_token: "",
     recaptcha_public_key: "",
     captcha: "",
@@ -316,34 +263,6 @@ describe("SignupMain reducer", () => {
     ).toEqual({
       ...mockState,
       error: true
-    });
-  });
-
-  it("Receives resize timeout action", () => {
-    expect(
-      signupReducer(mockState, {
-        type: signupActions.RESIZE_TIMEOUT,
-        payload: {
-          resize_timeout: "dummy timeout"
-        }
-      })
-    ).toEqual({
-      ...mockState,
-      resize_timeout: "dummy timeout"
-    });
-  });
-
-  it("Receives resize action", () => {
-    expect(
-      signupReducer(mockState, {
-        type: signupActions.RESIZE_WINDOW,
-        payload: {
-          window_size: "dummy size"
-        }
-      })
-    ).toEqual({
-      ...mockState,
-      window_size: "dummy size"
     });
   });
 

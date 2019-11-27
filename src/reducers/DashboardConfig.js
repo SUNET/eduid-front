@@ -13,12 +13,10 @@ import * as emailsActions from "actions/Emails";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
-  window_size: actions.getWindowSize(),
   show_sidebar: true,
   is_configured: false,
   //is_fetching: false,
   failed: false,
-  is_spa: false,
   is_app_loaded: false,
   AVAILABLE_LANGUAGES: [],
   DEBUG: true
@@ -99,16 +97,6 @@ let configReducer = (state = configData, action) => {
       return {
         ...state,
         ...action.payload
-      };
-    case actions.RESIZE_WINDOW:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case actions.CONFIG_SPA:
-      return {
-        ...state,
-        is_spa: true
       };
     case pdataActions.GET_USERDATA_SUCCESS:
       return {

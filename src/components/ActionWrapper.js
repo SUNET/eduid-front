@@ -34,16 +34,6 @@ class ActionWrapper extends Component {
     //});
   //}
 
-  // componentWillMount() {
-  //   window.addEventListener(
-  //     "resize",
-  //     this.props.handleWindowSizeChange.bind(this)
-  //   );
-  // }
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.props.handleWindowSizeChange);
-  // }
-
   render() {
     return (
       <div>
@@ -77,10 +67,7 @@ class ActionWrapper extends Component {
 }
 
 ActionWrapper.propTypes = {
-  handleWindowSizeChange: PropTypes.func,
   redirect: PropTypes.string,
-  resize_timeout: PropTypes.number,
-  //is_fetching: PropTypes.bool
 };
 
 export default ActionWrapper;

@@ -7,8 +7,6 @@ import * as resendActions from "actions/ResendCode";
 const configData = {
   dashboard_url: "",
   reset_passwd_url: "",
-  resize_timeout: 0,
-  window_size: actions.getWindowSize(),
   csrf_token: "",
   recaptcha_public_key: "",
   captcha: "",
@@ -58,16 +56,6 @@ let signupReducer = (state = configData, action) => {
       return {
         ...state,
         error: true,
-      };
-    case actions.RESIZE_TIMEOUT:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case actions.RESIZE_WINDOW:
-      return {
-        ...state,
-        ...action.payload
       };
     case actions.GET_SIGNUP_CONFIG_SUCCESS:
       return {

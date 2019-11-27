@@ -2,8 +2,6 @@ import * as actions from "actions/ActionWrapper";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
-  resize_timeout: 0,
-  window_size: actions.getWindowSize(),
   csrf_token: "",
   is_app_loaded: false,
   redirect: "/",
@@ -24,20 +22,6 @@ let actionWrapperReducer = (state = configData, action) => {
         ...state,
         is_app_loaded: true
       };
-    //case actions.APP_FETCHING:
-      //return {
-        //...state,
-        //is_fetching: true
-      //};
-    case actions.RESIZE_TIMEOUT:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case actions.RESIZE_WINDOW:
-      return {
-        ...state,
-        ...action.payload
       };
     case actions.NEW_CSRF_TOKEN:
       return {

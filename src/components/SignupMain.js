@@ -37,16 +37,6 @@ class SignupMain extends Component {
     //});
   //}
 
-  // componentWillMount() {
-  //   window.addEventListener(
-  //     "resize",
-  //     this.props.handleWindowSizeChange.bind(this)
-  //   );
-  // }
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.props.handleWindowSizeChange);
-  // }
-
   render() {
     let redirect = `${BASE_PATH}/email`;
 
@@ -133,9 +123,6 @@ class SignupMain extends Component {
 }
 
 SignupMain.propTypes = {
-  handleWindowSizeChange: PropTypes.func,
-  resize_timeout: PropTypes.number,
-  //is_fetching: PropTypes.bool
 };
 
 export default SignupMain;
