@@ -83,11 +83,6 @@ sagaMiddleware.run(rootSaga);
 
 const getConfig = function() {
   store.dispatch(configActions.getConfig());
-};
-
-const getConfigSpa = function() {
-  store.dispatch(configActions.getConfig());
-  store.dispatch(configActions.configSpa());
   let params = new URLSearchParams(document.location.search);
   if (params) {
     let msg = params.get("msg");
@@ -103,39 +98,24 @@ const getConfigSpa = function() {
 
 /* render app */
 
-const init_app = function(target, component, intl = false) {
-  let app, action;
-  if (intl) {
-    const lang_code = document.getElementById("eduid-lang-selected").dataset
-      .lang;
+const init_app = function(target, component) {
+  const language = navigator.languages
+    ? navigator.languages[0]
+    : navigator.language || navigator.userLanguage;
+  const supported = AVAILABLE_LANGUAGES.map(lang => lang[0]);
+
+  if (supported.includes(language)) {
+    const lang_code = language.substring(0, 2);
     store.dispatch(
       updateIntl({
         locale: lang_code,
         messages: LOCALIZED_MESSAGES[lang_code]
       })
     );
-
-    action = getConfig;
-    app = <Provider store={store}>{component}</Provider>;
-  } else {
-    action = getConfigSpa;
-    const language = navigator.languages
-      ? navigator.languages[0]
-      : navigator.language || navigator.userLanguage;
-    const supported = AVAILABLE_LANGUAGES.map(lang => lang[0]);
-
-    if (supported.includes(language)) {
-      const lang_code = language.substring(0, 2);
-      store.dispatch(
-        updateIntl({
-          locale: lang_code,
-          messages: LOCALIZED_MESSAGES[lang_code]
-        })
-      );
-    }
-    app = <Provider store={store}>{component}</Provider>;
   }
-  ReactDOM.render(app, target, action);
+  const app = <Provider store={store}>{component}</Provider>;
+  
+  ReactDOM.render(app, target, getConfig);
 };
 
 export default init_app;

@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
-// import createHistory from "history/createBrowserHistory";
-// const createBrowserHistory = require("history").createBrowserHistory;
 import { createBrowserHistory } from "history";
 import { ConnectedRouter } from "react-router-redux";
 
-import FetchingContext from "components/FetchingContext";
+//import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
@@ -22,19 +20,19 @@ import "style/DashboardMain.scss";
 export const history = createBrowserHistory();
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fetching: props.is_fetching,
-      setFetching: this.setFetching.bind(this)
-    };
-  }
+  //constructor(props) {
+    //super(props);
+    //this.state = {
+      //fetching: props.is_fetching,
+      //setFetching: this.setFetching.bind(this)
+    //};
+  //}
 
-  setFetching(fetching) {
-    this.setState({
-      fetching: fetching
-    });
-  }
+  //setFetching(fetching) {
+    //this.setState({
+      //fetching: fetching
+    //});
+  //}
 
   render() {
     let promptLink = ``;
@@ -56,7 +54,8 @@ class Main extends Component {
     }
 
     return (
-      <FetchingContext.Provider value={this.state}>
+      <div>
+      {/*<FetchingContext.Provider value={this.state}>*/}
         <SplashContainer />
         <Router history={history}>
           <div className="dashboard-wrapper">
@@ -96,7 +95,8 @@ class Main extends Component {
             <FooterContainer {...this.props} />
           </div>
         </Router>
-      </FetchingContext.Provider>
+      {/*</FetchingContext.Provider>*/}
+      </div>
     );
   }
 }

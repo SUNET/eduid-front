@@ -13,40 +13,31 @@ import "style/SignupMain.scss";
 
 export const history = createBrowserHistory();
 
-export const FetchingContext = React.createContext({
-  fetching: false,
-  setFetching: () => {}
-});
+//export const FetchingContext = React.createContext({
+  //fetching: false,
+  //setFetching: () => {}
+//});
 
 class ActionWrapper extends Component {
-  constructor(props) {
-    super(props);
+  //constructor(props) {
+    //super(props);
 
-    this.state = {
-      fetching: props.is_fetching,
-      setFetching: this.setFetching.bind(this)
-    };
-  }
+    //this.state = {
+      //fetching: props.is_fetching,
+      //setFetching: this.setFetching.bind(this)
+    //};
+  //}
 
-  setFetching(fetching) {
-    this.setState({
-      fetching: fetching
-    });
-  }
-
-  // componentWillMount() {
-  //   window.addEventListener(
-  //     "resize",
-  //     this.props.handleWindowSizeChange.bind(this)
-  //   );
-  // }
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.props.handleWindowSizeChange);
-  // }
+  //setFetching(fetching) {
+    //this.setState({
+      //fetching: fetching
+    //});
+  //}
 
   render() {
     return (
-      <FetchingContext.Provider value={this.state}>
+      <div>
+      {/* <FetchingContext.Provider value={this.state}> */}
         <SplashContainer />
         <Router history={history}>
           <div className="dashboard-wrapper">
@@ -69,16 +60,14 @@ class ActionWrapper extends Component {
             <FooterContainer {...this.props} />
           </div>
         </Router>
-      </FetchingContext.Provider>
+      {/*</FetchingContext.Provider>*/}
+      </div>
     );
   }
 }
 
 ActionWrapper.propTypes = {
-  handleWindowSizeChange: PropTypes.func,
   redirect: PropTypes.string,
-  resize_timeout: PropTypes.number,
-  is_fetching: PropTypes.bool
 };
 
 export default ActionWrapper;
