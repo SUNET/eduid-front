@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Router, Route, Redirect } from "react-router-dom";
 // import createHistory from "history/createBrowserHistory";
 import { createBrowserHistory } from "history";
-import FetchingContext from "components/FetchingContext";
+//import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
@@ -22,20 +22,20 @@ import "style/SignupMain.scss";
 export const history = createBrowserHistory();
 
 class SignupMain extends Component {
-  constructor(props) {
-    super(props);
+  //constructor(props) {
+    //super(props);
 
-    this.state = {
-      fetching: props.is_fetching,
-      setFetching: this.setFetching.bind(this)
-    };
-  }
+    //this.state = {
+      //fetching: props.is_fetching,
+      //setFetching: this.setFetching.bind(this)
+    //};
+  //}
 
-  setFetching(fetching) {
-    this.setState({
-      fetching: fetching
-    });
-  }
+  //setFetching(fetching) {
+    //this.setState({
+      //fetching: fetching
+    //});
+  //}
 
   render() {
     let redirect = `${BASE_PATH}/email`;
@@ -70,9 +70,11 @@ class SignupMain extends Component {
     //   </FetchingContext.Provider>
     // );
 
-    return (
-      <FetchingContext.Provider value={this.state}>
-        <SplashContainer />
+    // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
+    // should wrap the splash container and router once we get back to using
+    // it.
+    return ([
+        <SplashContainer />,
         <Router history={history}>
           <div className="dashboard-wrapper">
             <HeaderContainer {...this.props} />
@@ -115,13 +117,11 @@ class SignupMain extends Component {
           </div>
           {/* </div> */}
         </Router>
-      </FetchingContext.Provider>
-    );
+    ]);
   }
 }
 
 SignupMain.propTypes = {
-  is_fetching: PropTypes.bool
 };
 
 export default SignupMain;

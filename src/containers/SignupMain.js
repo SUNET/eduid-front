@@ -6,7 +6,6 @@ import * as actions from "actions/SignupMain";
 
 const mapStateToProps = (state, props) => {
   return {
-    is_fetching: state.config.is_fetching,
     code: state.config.code,
     email: state.email.email,
     captcha: state.config.captcha

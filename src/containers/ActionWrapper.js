@@ -7,7 +7,6 @@ import * as actions from "actions/ActionWrapper";
 const mapStateToProps = (state, props) => {
   return {
     redirect: state.config.redirect,
-    is_fetching: state.config.is_fetching
   };
 };
 
