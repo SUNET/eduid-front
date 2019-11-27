@@ -13,7 +13,6 @@ import * as emailsActions from "actions/Emails";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
-  window_size: actions.getWindowSize(),
   show_sidebar: true,
   is_configured: false,
   is_fetching: false,
@@ -97,11 +96,6 @@ let configReducer = (state = configData, action) => {
         failed: true
       };
     case actions.NEW_CSRF_TOKEN:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case actions.RESIZE_WINDOW:
       return {
         ...state,
         ...action.payload
