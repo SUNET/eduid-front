@@ -18,7 +18,6 @@ const configData = {
   is_configured: false,
   is_fetching: false,
   failed: false,
-  is_spa: false,
   is_app_loaded: false,
   AVAILABLE_LANGUAGES: [],
   DEBUG: true
@@ -106,11 +105,6 @@ let configReducer = (state = configData, action) => {
       return {
         ...state,
         ...action.payload
-      };
-    case actions.CONFIG_SPA:
-      return {
-        ...state,
-        is_spa: true
       };
     case pdataActions.GET_USERDATA_SUCCESS:
       return {
