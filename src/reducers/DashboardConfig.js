@@ -100,7 +100,6 @@ let configReducer = (state = configData, action) => {
         ...state,
         ...action.payload
       };
-      };
     case pdataActions.GET_USERDATA_SUCCESS:
       return {
         ...state,
