@@ -7,3 +7,4 @@ npm-debug.log
 build/
 dist/
 .npm
+.DS_Store

@@ -100,7 +100,6 @@ class Email extends Component {
 Email.propTypes = {
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
-  size: PropTypes.string,
   l10n: PropTypes.func,
   handleAccept: PropTypes.func,
   handleReject: PropTypes.func

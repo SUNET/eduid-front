@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import i18n from "i18n-messages";
 import {
-  appFetching,
   postAction,
   postActionFail,
   retry

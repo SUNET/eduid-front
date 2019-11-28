@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
-import FetchingContext from "components/FetchingContext";
+//import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
@@ -19,19 +19,19 @@ import "style/DashboardMain.scss";
 export const history = createBrowserHistory();
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fetching: props.is_fetching,
-      setFetching: this.setFetching.bind(this)
-    };
-  }
+  //constructor(props) {
+    //super(props);
+    //this.state = {
+      //fetching: props.is_fetching,
+      //setFetching: this.setFetching.bind(this)
+    //};
+  //}
 
-  setFetching(fetching) {
-    this.setState({
-      fetching: fetching
-    });
-  }
+  //setFetching(fetching) {
+    //this.setState({
+      //fetching: fetching
+    //});
+  //}
 
   render() {
     let promptLink = ``;
@@ -52,9 +52,11 @@ class Main extends Component {
       welcomeGreeting = this.props.l10n("dashboard.tagline_unverified");
     }
 
-    return (
-      <FetchingContext.Provider value={this.state}>
-        <SplashContainer />
+    // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
+    // should wrap the splash container and router once we get back to using
+    // it.
+    return ([
+        <SplashContainer />,
         <Router history={history}>
           <div className="dashboard-wrapper">
             <HeaderContainer {...this.props} />
@@ -93,8 +95,7 @@ class Main extends Component {
             <FooterContainer {...this.props} />
           </div>
         </Router>
-      </FetchingContext.Provider>
-    );
+    ]);
   }
 }
 
