@@ -53,17 +53,14 @@ import {
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
 
-function* configSpaSaga() {
-  const state = yield select(state => state);
-  if (state.config.is_spa) {
-    yield put(configActions.getInitialUserdata());
-  }
+function* configSaga() {
+  yield put(configActions.getInitialUserdata());
 }
 
 function* rootSaga() {
   yield [
     takeLatest(configActions.GET_JSCONFIG_CONFIG, requestConfig),
-    takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSpaSaga),
+    takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSaga),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),

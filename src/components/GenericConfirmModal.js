@@ -57,7 +57,7 @@ GenericConfirmModal.propTypes = {
   closeModal: PropTypes.func,
   acceptModal: PropTypes.func,
   showModal: PropTypes.bool,
-  is_fetching: PropTypes.bool,
+  //is_fetching: PropTypes.bool,
   confirming: PropTypes.bool
 };
 

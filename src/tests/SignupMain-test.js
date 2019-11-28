@@ -28,15 +28,13 @@ addLocaleData([...en, ...sv]);
 const fakeState = {
   config: {
     dashboard_url: "",
-    resize_timeout: 0,
-    window_size: signupActions.getWindowSize(),
     csrf_token: "",
     recaptcha_public_key: "",
     captcha: "",
     code: "",
     tou: "",
     is_app_loaded: true,
-    is_fetching: false,
+    //is_fetching: false,
     error: false,
     DEBUG: true,
     available_languages: {}
@@ -172,41 +170,12 @@ describe("SignupMain Actions", () => {
     expect(signupActions.appLoaded()).toEqual(expectedAction);
   });
 
-  it("Should signal the app is fetching data", () => {
-    const expectedAction = {
-      type: signupActions.APP_FETCHING
-    };
-    expect(signupActions.appFetching()).toEqual(expectedAction);
-  });
-
-  it("Should timeout the resizing", () => {
-    const expectedAction = {
-      type: signupActions.RESIZE_TIMEOUT,
-      payload: {
-        resize_timeout: "dummy timeout"
-      }
-    };
-    expect(signupActions.resizeTimeout("dummy timeout")).toEqual(
-      expectedAction
-    );
-  });
-
-  it("Should resize the app", () => {
-    const expectedAction = {
-      type: signupActions.RESIZE_WINDOW,
-      payload: {
-        window_size: "dummy size"
-      }
-    };
-    expect(signupActions.resizeWindow(true)).toEqual(expectedAction);
-  });
-
-  it("Should get the config", () => {
-    const expectedAction = {
-      type: signupActions.GET_SIGNUP_CONFIG
-    };
-    expect(signupActions.getSignupConfig()).toEqual(expectedAction);
-  });
+  //it("Should signal the app is fetching data", () => {
+    //const expectedAction = {
+      //type: signupActions.APP_FETCHING
+    //};
+    //expect(signupActions.appFetching()).toEqual(expectedAction);
+  //});
 
   it("Should fail when trying to get the config", () => {
     const err = new Error("Get config error");
@@ -232,38 +201,16 @@ describe("SignupMain Actions", () => {
   });
 });
 
-describe("Get window size", () => {
-  it("Small window", () => {
-    window.innerWidth = 500;
-
-    expect(signupActions.getWindowSize()).toEqual("xs");
-
-    window.innerWidth = 800;
-
-    expect(signupActions.getWindowSize()).toEqual("sm");
-
-    window.innerWidth = 1000;
-
-    expect(signupActions.getWindowSize()).toEqual("md");
-
-    window.innerWidth = 1300;
-
-    expect(signupActions.getWindowSize()).toEqual("lg");
-  });
-});
-
 describe("SignupMain reducer", () => {
   const mockState = {
     dashboard_url: "",
-    resize_timeout: 0,
-    window_size: "lg",
     csrf_token: "",
     recaptcha_public_key: "",
     captcha: "",
     code: "",
     tou: "",
     is_app_loaded: false,
-    is_fetching: false,
+    //is_fetching: false,
     error: false,
     DEBUG: true,
     available_languages: {}
@@ -291,7 +238,7 @@ describe("SignupMain reducer", () => {
     ).toEqual({
       ...mockState,
       code: "dummy code",
-      is_fetching: true
+      //is_fetching: true
     });
   });
 
@@ -309,34 +256,6 @@ describe("SignupMain reducer", () => {
     ).toEqual({
       ...mockState,
       error: true
-    });
-  });
-
-  it("Receives resize timeout action", () => {
-    expect(
-      signupReducer(mockState, {
-        type: signupActions.RESIZE_TIMEOUT,
-        payload: {
-          resize_timeout: "dummy timeout"
-        }
-      })
-    ).toEqual({
-      ...mockState,
-      resize_timeout: "dummy timeout"
-    });
-  });
-
-  it("Receives resize action", () => {
-    expect(
-      signupReducer(mockState, {
-        type: signupActions.RESIZE_WINDOW,
-        payload: {
-          window_size: "dummy size"
-        }
-      })
-    ).toEqual({
-      ...mockState,
-      window_size: "dummy size"
     });
   });
 
@@ -386,16 +305,16 @@ describe("SignupMain reducer", () => {
     });
   });
 
-  it("Receives post captcha action", () => {
-    expect(
-      signupReducer(mockState, {
-        type: captchaActions.POST_SIGNUP_TRYCAPTCHA
-      })
-    ).toEqual({
-      ...mockState,
-      is_fetching: true
-    });
-  });
+  //it("Receives post captcha action", () => {
+    //expect(
+      //signupReducer(mockState, {
+        //type: captchaActions.POST_SIGNUP_TRYCAPTCHA
+      //})
+    //).toEqual({
+      //...mockState,
+      ////is_fetching: true
+    //});
+  //});
 
   it("Receives post captcha success action", () => {
     expect(
@@ -404,7 +323,7 @@ describe("SignupMain reducer", () => {
       })
     ).toEqual({
       ...mockState,
-      is_fetching: false
+      //is_fetching: false
     });
   });
 
@@ -415,7 +334,7 @@ describe("SignupMain reducer", () => {
       })
     ).toEqual({
       ...mockState,
-      is_fetching: false,
+      //is_fetching: false,
       error: true
     });
   });
@@ -427,7 +346,7 @@ describe("SignupMain reducer", () => {
       })
     ).toEqual({
       ...mockState,
-      is_fetching: false
+      //is_fetching: false
     });
   });
 
@@ -438,7 +357,7 @@ describe("SignupMain reducer", () => {
       })
     ).toEqual({
       ...mockState,
-      is_fetching: false,
+      //is_fetching: false,
       error: true
     });
   });
@@ -450,7 +369,7 @@ describe("SignupMain reducer", () => {
       })
     ).toEqual({
       ...mockState,
-      is_fetching: true
+      //is_fetching: true
     });
   });
 
@@ -461,7 +380,7 @@ describe("SignupMain reducer", () => {
       })
     ).toEqual({
       ...mockState,
-      is_fetching: false
+      //is_fetching: false
     });
   });
 
@@ -472,7 +391,7 @@ describe("SignupMain reducer", () => {
       })
     ).toEqual({
       ...mockState,
-      is_fetching: false,
+      //is_fetching: false,
       error: true
     });
   });
