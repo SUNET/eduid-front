@@ -1,5 +1,4 @@
 export const APP_LOADED = "APP_LOADED";
-export const APP_LOADING = "APP_LOADING";
 export const NEW_CSRF_TOKEN = "NEW_CSRF_TOKEN";
 export const REDIRECT = "REDIRECT";
 export const RETRY = "RETRY";
@@ -12,15 +11,10 @@ export const POST_ACTIONS_ACTION = "POST_ACTIONS_ACTION";
 export const POST_ACTIONS_ACTION_SUCCESS = "POST_ACTIONS_POST_ACTION_SUCCESS";
 export const POST_ACTIONS_ACTION_FAIL = "POST_ACTIONS_POST_ACTION_FAIL";
 
+
 export function appLoaded() {
   return {
     type: APP_LOADED
-  };
-}
-
-export function appLoading() {
-  return {
-    type: APP_LOADING
   };
 }
 

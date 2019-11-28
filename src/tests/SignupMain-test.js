@@ -170,13 +170,6 @@ describe("SignupMain Actions", () => {
     expect(signupActions.appLoaded()).toEqual(expectedAction);
   });
 
-  it("Should signal the app is loading", () => {
-    const expectedAction = {
-      type: signupActions.APP_LOADING
-    };
-    expect(signupActions.appLoading()).toEqual(expectedAction);
-  });
-
   //it("Should signal the app is fetching data", () => {
     //const expectedAction = {
       //type: signupActions.APP_FETCHING

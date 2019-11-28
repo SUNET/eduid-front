@@ -132,12 +132,6 @@ describe("ActionWrapper Component", () => {
 });
 
 describe("ActionWrapper Actions", () => {
-  it("Should signal the app has loaded", () => {
-    const expectedAction = {
-      type: actions.APP_LOADING
-    };
-    expect(actions.appLoading()).toEqual(expectedAction);
-  });
 
   //it("Should signal the app is fetching data", () => {
     //const expectedAction = {
