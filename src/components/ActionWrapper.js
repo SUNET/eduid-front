@@ -34,11 +34,12 @@ class ActionWrapper extends Component {
     //});
   //}
 
+  // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
+  // should wrap the splash container and router once we get back to using
+  // it.
   render() {
-    return (
-      <div>
-      {/* <FetchingContext.Provider value={this.state}> */}
-        <SplashContainer />
+    return ([
+        <SplashContainer />,
         <Router history={history}>
           <div className="dashboard-wrapper">
             <HeaderContainer {...this.props} />
@@ -60,9 +61,7 @@ class ActionWrapper extends Component {
             <FooterContainer {...this.props} />
           </div>
         </Router>
-      {/*</FetchingContext.Provider>*/}
-      </div>
-    );
+    ]);
   }
 }
 
