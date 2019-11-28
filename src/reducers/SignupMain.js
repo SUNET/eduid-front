@@ -23,7 +23,6 @@ const configData = {
 
 //const fetchingActions = [
   //actions.GET_SIGNUP_CONFIG,
-  //actions.SPIN,
   //actions.APP_LOADING,
   //actions.APP_FETCHING,
   //actions.GET_CODE_STATUS,
