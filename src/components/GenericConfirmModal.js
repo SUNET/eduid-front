@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import Button from "reactstrap/lib/Button";
 import Modal from "reactstrap/lib/Modal";
 import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
@@ -9,7 +8,6 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import i18n from "i18n-messages";
 import EduIDButton from "components/EduIDButton";
-import NotificationsContainer from "containers/Notifications";
 
 class GenericConfirmModal extends Component {
   render() {
@@ -25,7 +23,6 @@ class GenericConfirmModal extends Component {
           <ModalHeader>{this.props.title}</ModalHeader>
 
           <ModalBody>
-            {/* <NotificationsContainer /> */}
             <div>
               <p>{this.props.mainText}</p>
             </div>

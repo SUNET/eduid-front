@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import FormText from "reactstrap/lib/FormText";
 
-import EduIDButton from "components/EduIDButton";
 import ConfirmModal from "components/ConfirmModal";
 import GenericConfirmModal from "components/GenericConfirmModal";
 
@@ -10,18 +8,11 @@ import "style/LetterProofing.scss";
 
 class LetterProofingButton extends Component {
   render() {
-    // let buttonText = "";
-    // if (!this.props.confirmingLetter) {
-    //   buttonText = this.props.l10n("letter.button_text_code");
-    // } else {
-    //   buttonText = this.props.l10n("letter.button_text_request");
-    // }
     return (
       <div>
         <div className="vetting-button">
           <button
             className="proofing-button"
-            // disabled={this.props.disabled}
             onClick={this.props.handleLetterProofing}
           >
             <div className="vetting-button-text">
@@ -57,7 +48,6 @@ class LetterProofingButton extends Component {
 }
 
 LetterProofingButton.propTypes = {
-  disabled: PropTypes.bool,
   confirmingLetter: PropTypes.bool,
   sendConfirmationCode: PropTypes.func,
   handleLetterProofing: PropTypes.func,

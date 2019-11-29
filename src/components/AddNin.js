@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import NinForm from "./NinForm";
 import NinDisplay from "containers/NinDisplay";
 import { withRouter } from "react-router-dom";
-// import { connect } from "react-redux";
-// import i18n from "i18n-messages";
 
 import "style/DashboardMain.scss";
 import "style/Nins.scss";
@@ -31,7 +29,6 @@ class AddNin extends Component {
 AddNin.propTypes = {
   nins: PropTypes.array,
   validateNin: PropTypes.func
-  // handleDelete: PropTypes.func
 };
 
 export default withRouter(AddNin);

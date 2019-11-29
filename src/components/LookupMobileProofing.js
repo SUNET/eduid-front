@@ -1,22 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import FormText from "reactstrap/lib/FormText";
-
-import EduIDButton from "components/EduIDButton";
-import ConfirmModal from "components/ConfirmModal";
 import GenericConfirmModal from "components/GenericConfirmModal";
 import "style/LookupMobileProofing.scss";
 
 class LookupMobileProofing extends Component {
   render() {
     let modalPrompt = "";
-    // let buttonText = "";
-    // if (true) {
-    //   buttonText = this.props.l10n("lmp.button_text_code");
-    // } else {
-    //   buttonText = this.props.l10n("lmp.button_text_request");
-    // }
-
     if (this.props.phoneNumbers.length) {
       modalPrompt = [
         <GenericConfirmModal
@@ -79,7 +68,6 @@ class LookupMobileProofing extends Component {
 }
 
 LookupMobileProofing.propTypes = {
-  disabled: PropTypes.bool,
   handleLookupMobile: PropTypes.func
 };
 

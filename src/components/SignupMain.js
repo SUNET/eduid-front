@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Router, Route, Redirect } from "react-router-dom";
-// import createHistory from "history/createBrowserHistory";
 import { createBrowserHistory } from "history";
 //import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
-// import HeaderContainer from "containers/Header";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";
@@ -115,7 +113,6 @@ class SignupMain extends Component {
             </div>
             <FooterContainer {...this.props} />
           </div>
-          {/* </div> */}
         </Router>
     ]);
   }

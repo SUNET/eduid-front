@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import EduIDButton from "components/EduIDButton";
-import NotificationsContainer from "containers/Notifications";
 import Button from "reactstrap/lib/Button";
 import FormText from "reactstrap/lib/FormText";
 import Modal from "reactstrap/lib/Modal";
@@ -65,7 +64,6 @@ class OpenidConnect extends Component {
               <ModalBody>
                 <h4>{this.props.l10n("oc.instructions_title")}</h4>
                 {seleg_instructions}
-                {/* <NotificationsContainer/> */}
 
                 <img
                   src={this.props.qr_img}

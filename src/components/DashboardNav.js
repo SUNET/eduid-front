@@ -84,7 +84,6 @@ class DashboardNav extends Component {
               </li>
             </NavLink>
             <NavLink
-              // activeClassName="active"
               className="nav-link advanced-setting transparent"
               to={`#`}
             >
