@@ -38,8 +38,8 @@ class ActionWrapper extends Component {
   // it.
   render() {
     return ([
-        <SplashContainer />,
-        <Router history={history}>
+        <SplashContainer key="0" />,
+        <Router key="1" history={history}>
           <div className="dashboard-wrapper">
             <HeaderContainer {...this.props} />
             <div id="dashboard-text">

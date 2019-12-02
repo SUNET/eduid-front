@@ -17,6 +17,11 @@ let actionWrapperReducer = (state = configData, action) => {
         ...state,
         is_app_loaded: true
       };
+    case actions.GET_ACTIONS_CONFIG_SUCCESS:
+      return {
+        ...state,
+        ...action.payload
+      };
     case actions.NEW_CSRF_TOKEN:
       return {
         ...state,
@@ -26,11 +31,6 @@ let actionWrapperReducer = (state = configData, action) => {
       return {
         ...state,
         redirect: action.payload.path
-      };
-    case actions.GET_ACTIONS_CONFIG_SUCCESS:
-      return {
-        ...state,
-        ...action.payload
       };
     default:
       return state;

@@ -99,7 +99,7 @@ describe("Reducers", () => {
     });
   });
 
-  it("Receives a GET_ORCID_SUCCESS action", () => {
+  it("Receives a GET_PERSONAL_DATA_ORCID_SUCCESS action", () => {
     const orcid = {
       id: "https://sandbox.orcid.org/0000-0000-0000-0000",
       name: null,
@@ -108,7 +108,7 @@ describe("Reducers", () => {
     };
     expect(
       accountlinkingReducer(mockState, {
-        type: actions.GET_ORCID_SUCCESS,
+        type: actions.GET_PERSONAL_DATA_ORCID_SUCCESS,
         payload: {
           orcid: orcid
         }
@@ -225,7 +225,7 @@ describe("Async component", () => {
     expect(orcid.value).toEqual(call(fetchOrcid, config));
 
     const action = {
-      type: actions.GET_ORCID_SUCCESS,
+      type: actions.GET_PERSONAL_DATA_ORCID_SUCCESS,
       payload: {
         csrf_token: "csrf-token",
         orcid: {

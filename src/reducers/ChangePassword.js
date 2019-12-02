@@ -28,29 +28,16 @@ let chpassReducer = (state = chpass, action) => {
         message: action.payload.message,
         failed: true
       };
-    case actions.VALID_CUSTOM_PASSWORD:
+    case actions.START_PASSWORD_CHANGE:
       return {
         ...state,
-        new_password: action.payload
-      };
-    case actions.PASSWORD_NOT_READY:
-      return {
-        ...state,
-        failed: false,
-        error: action.payload.error,
-        message: action.payload.message,
-        new_password: ""
+        failed: false
       };
     case actions.POST_PASSWORD_CHANGE:
       return {
         ...state,
         old_password: action.payload.old,
         new_password: action.payload.next
-      };
-    case actions.START_PASSWORD_CHANGE:
-      return {
-        ...state,
-        failed: false
       };
     case actions.POST_SECURITY_CHANGE_PASSWORD_SUCCESS:
       return {

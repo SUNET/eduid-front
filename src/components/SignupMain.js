@@ -72,8 +72,8 @@ class SignupMain extends Component {
     // should wrap the splash container and router once we get back to using
     // it.
     return ([
-        <SplashContainer />,
-        <Router history={history}>
+        <SplashContainer key="0" />,
+        <Router key="1" history={history}>
           <div className="dashboard-wrapper">
             <HeaderContainer {...this.props} />
             <div id="dashboard-text">

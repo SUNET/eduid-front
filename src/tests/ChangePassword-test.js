@@ -152,24 +152,6 @@ describe("Reducers", () => {
     });
   });
 
-  it("Receives a VALID_CUSTOM_PASSWORD action", () => {
-    const passwd = "1234";
-    expect(
-      chpassReducer(mockState, {
-        type: actions.VALID_CUSTOM_PASSWORD,
-        payload: passwd
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      suggested_password: "",
-      old_password: "",
-      new_password: passwd,
-      choose_custom: false
-    });
-  });
-
   it("Receives a POST_PASSWORD_CHANGE action", () => {
     const passwd1 = "1234",
       passwd2 = "5678";
