@@ -44,7 +44,6 @@ export function getConfigFail(err) {
     type: GET_ACTIONS_CONFIG_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err
     }
   };
@@ -61,7 +60,6 @@ export function postActionFail(err) {
     type: POST_ACTIONS_ACTION_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err
     }
   };

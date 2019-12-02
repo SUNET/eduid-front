@@ -6,7 +6,6 @@ const configData = {
   is_app_loaded: false,
   redirect: "/",
   //is_fetching: false,
-  error: false,
   available_languages: {}
 };
 

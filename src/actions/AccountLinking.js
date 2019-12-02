@@ -22,7 +22,6 @@ export function getOrcidFail(err) {
     type: GET_ORCID_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };
@@ -39,7 +38,6 @@ export function startOrcidRemoveFail(err) {
     type: POST_ORCID_REMOVE_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };
@@ -56,7 +54,6 @@ export function startOrcidConnectFail(err) {
     type: GET_ORCID_CONNECT_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };

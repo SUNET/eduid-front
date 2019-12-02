@@ -16,7 +16,6 @@ const configData = {
   show_sidebar: true,
   is_configured: false,
   //is_fetching: false,
-  failed: false,
   is_app_loaded: false,
   AVAILABLE_LANGUAGES: [],
   DEBUG: true
@@ -83,20 +82,17 @@ let configReducer = (state = configData, action) => {
       return {
         ...state,
         is_configured: false,
-        failed: false
       };
     case actions.GET_JSCONFIG_CONFIG_SUCCESS:
       return {
         ...state,
         ...action.payload,
         is_configured: true,
-        failed: false
       };
     case actions.GET_JSCONFIG_CONFIG_FAIL:
       return {
         ...state,
         is_configured: false,
-        failed: true
       };
     case actions.NEW_CSRF_TOKEN:
       return {

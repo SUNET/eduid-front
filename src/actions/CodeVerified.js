@@ -17,7 +17,6 @@ export function getCodeStatusFail(err) {
     type: GET_SIGNUP_VERIFY_LINK_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err
     }
   };

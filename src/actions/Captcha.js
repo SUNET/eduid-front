@@ -24,7 +24,6 @@ export function postCaptchaFail(err) {
     type: POST_SIGNUP_TRYCAPTCHA_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err
     }
   };

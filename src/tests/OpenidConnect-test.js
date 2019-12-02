@@ -47,7 +47,6 @@ describe("OIDC Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    failed: false,
     error: "",
     qr_img: "code",
     qr_code: "nonce",
@@ -66,7 +65,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
       error: "",
       qr_img: "code",
       qr_code: "nonce",
@@ -82,7 +80,6 @@ describe("Reducers", () => {
         payload: { qr_img: "new code", qr_code: "new nonce" }
       })
     ).toEqual({
-      failed: false,
       error: "",
       qr_img: "new code",
       qr_code: "new nonce",
@@ -102,7 +99,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: true,
       error: true,
       message: "Bad error",
       nin: "",
@@ -119,7 +115,6 @@ describe("Reducers", () => {
         payload: "dummy payload"
       })
     ).toEqual({
-      failed: false,
       error: "",
       nin: "",
       qr_img: "code",
@@ -138,7 +133,6 @@ const fakeStore = state => ({
 
 const fakeState = {
   openid_data: {
-    failed: false,
     error: "",
     qr_img:
       "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",

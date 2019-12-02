@@ -28,7 +28,9 @@ export function postMobileFail(err) {
   return {
     type: POST_MOBILE_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -54,7 +56,9 @@ export function resendMobileCodeFail(err) {
   return {
     type: START_RESEND_MOBILE_CODE_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -69,7 +73,9 @@ export function startVerifyFail(err) {
   return {
     type: POST_PHONE_VERIFY_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -84,7 +90,9 @@ export function startRemoveFail(err) {
   return {
     type: POST_MOBILE_REMOVE_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -99,6 +107,8 @@ export function makePrimaryFail(err) {
   return {
     type: POST_MOBILE_PRIMARY_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }

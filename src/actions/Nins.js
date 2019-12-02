@@ -22,7 +22,6 @@ export function getNinsFail(err) {
     type: GET_NINS_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };
@@ -42,7 +41,6 @@ export function postNinFail(err) {
     type: POST_NIN_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };
@@ -63,7 +61,6 @@ export function startRemoveFail(err) {
     type: POST_NIN_REMOVE_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };

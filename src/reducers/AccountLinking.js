@@ -1,8 +1,6 @@
 import * as actions from "actions/AccountLinking";
 
 const accountLinkingState = {
-  failed: false,
-  error: "",
   message: "",
   orcid: null
 };
@@ -21,8 +19,6 @@ let accountLinkingReducer = (state = accountLinkingState, action) => {
     case actions.GET_ORCID_FAIL:
       return {
         ...state,
-        failed: true,
-        error: action.payload.error,
         message: action.payload.message
       };
     case actions.POST_ORCID_REMOVE_SUCCESS:
@@ -34,8 +30,6 @@ let accountLinkingReducer = (state = accountLinkingState, action) => {
     case actions.POST_ORCID_REMOVE_FAIL:
       return {
         ...state,
-        failed: true,
-        error: action.payload.error,
         message: action.payload.message
       };
     default:

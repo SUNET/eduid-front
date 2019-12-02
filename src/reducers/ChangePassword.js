@@ -1,8 +1,6 @@
 import * as actions from "actions/ChangePassword";
 
 const chpass = {
-  failed: false,
-  error: "",
   message: "",
   suggested_password: "",
   old_password: "",
@@ -24,14 +22,7 @@ let chpassReducer = (state = chpass, action) => {
     case actions.GET_SUGGESTED_PASSWORD_FAIL:
       return {
         ...state,
-        error: action.payload.error,
         message: action.payload.message,
-        failed: true
-      };
-    case actions.START_PASSWORD_CHANGE:
-      return {
-        ...state,
-        failed: false
       };
     case actions.POST_PASSWORD_CHANGE:
       return {
@@ -43,13 +34,6 @@ let chpassReducer = (state = chpass, action) => {
       return {
         ...state,
         ...action.payload,
-        failed: false
-      };
-    case actions.POST_SECURITY_CHANGE_PASSWORD_FAIL:
-      return {
-        ...state,
-        error: action.payload.message,
-        failed: true
       };
     case actions.SET_ZXCVBN:
       return {
