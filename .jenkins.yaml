@@ -1,16 +1,25 @@
 builders:
   - script
+git:
+  branches:
+    - master
+    - stable
+  extensions:
+    # Check out a local branch named as remote branch for use with "${GIT_LOCAL_BRANCH}"
+    checkout_local_branch: true
 build_in_docker:
   image: docker.sunet.se/sunet/docker-jenkins-node-job
 script:
   - "unset LD_LIBRARY_PATH"
-  - "export HOME=$WORKSPACE"
   - "node --version"
   - "npm --version"
+  - "echo '------> Building branch ${GIT_LOCAL_BRANCH} <------'"
   - "npm install"
   - "npm run-script test-headless"
   - "npm run build && npm run build-pro"
   - "npm run manage:plugins && npm run manage:plugins:staging && npm run manage:plugins:pro"
+  - "echo ${GIT_LOCAL_BRANCH} > build/revision.txt"
+  - "git describe --always >> build/revision.txt; git log -n 1 >> build/revision.txt"
 clean_workspace: true
 archive_artifacts:
   include: "build/*"
