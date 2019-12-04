@@ -13,7 +13,7 @@ script:
   - "unset LD_LIBRARY_PATH"
   - "node --version"
   - "npm --version"
-  - "echo '------> Building branch ${GIT_LOCAL_BRANCH} <------'"
+  - "echo Building branch ${GIT_LOCAL_BRANCH}"
   - "npm install"
   - "npm run-script test-headless"
   - "npm run build && npm run build-pro"
