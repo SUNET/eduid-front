@@ -1405,7 +1405,7 @@
   },
   {
     "id": "foot.change-version",
-    "defaultMessage": "Use old version of the app"
+    "defaultMessage": "Switch to previous version"
   },
   {
     "id": "foot.change-version-tip",
