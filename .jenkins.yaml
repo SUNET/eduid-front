@@ -36,7 +36,7 @@ extra_jobs:
         # Check out a local branch named as remote branch for use with "${GIT_LOCAL_BRANCH}"
         checkout_local_branch: true
     build_in_docker:
-    image: docker.sunet.se/sunet/docker-jenkins-node-job
+      image: docker.sunet.se/sunet/docker-jenkins-node-job
     script:
       - "unset LD_LIBRARY_PATH"
       - "node --version"
@@ -52,6 +52,6 @@ extra_jobs:
     archive_artifacts:
       include: "build/*"
     triggers:
-    cron: "@weekly"
+      cron: "@weekly"
     slack:
-    room: eduid-builds
+      room: eduid-builds
