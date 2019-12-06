@@ -86,7 +86,6 @@ class Header extends Component {
             <nav className="navbar navbar-dark bg-dark" id="eduid-navbar">
               {links}
               {buttons}
-              <a href='/feature/beta'>Try our Beta!!!</a>
             </nav>
           </Collapse>
         </header>
@@ -101,7 +100,6 @@ class Header extends Component {
               id="eduid-menu"
             >
               {links}
-              <a href='/feature/beta'>Try our Beta!!!</a>
               {buttons}
             </div>
           </nav>

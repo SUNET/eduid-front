@@ -35,7 +35,10 @@ class Footer extends Component {
           <div id="footer-content">
             <p>
               &copy;{this.props.l10n("footer.copyright")}
-              <span className="float-right">{langElems}</span>
+              <span className="float-right">
+                <a href='/feature/beta'>{this.props.l10n("foot.change-version")}</a>
+                {langElems}
+              </span>
             </p>
           </div>
         </div>

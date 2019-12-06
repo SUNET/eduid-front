@@ -2290,14 +2290,14 @@ const msgs = {
   "foot.change-version": (
     <FormattedMessage
       id="foot.change-version"
-      defaultMessage={`Use old version of the app`}
+      defaultMessage={`Try the new version`}
     />
   ),
 
   "foot.change-version-tip": (
     <FormattedMessage
       id="foot.change-version-tip"
-      defaultMessage={`This is an experimental version. If you experience any problem while using the app, you can switch to the old version.`}
+      defaultMessage={`If you experience any problem while using the app, you can switch to the old version.`}
     />
   ),
 
