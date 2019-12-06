@@ -54,4 +54,4 @@ extra_jobs:
     triggers:
     cron: "@weekly"
     slack:
-  room: eduid-builds
+    room: eduid-builds
