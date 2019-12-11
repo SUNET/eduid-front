@@ -2,6 +2,7 @@ import { put, call, select } from "redux-saga/effects";
 import { ajaxHeaders, checkStatus, getRequest } from "sagas/common";
 
 import * as actions from "actions/SignupMain";
+import * as verifiedActions from "actions/CodeVerified";
 import { history } from "components/SignupMain";
 import { eduidNotify } from "actions/Notifications";
 
@@ -22,7 +23,7 @@ export function* requestCodeStatus() {
       history.push(BASE_PATH + "/code-verified");
     }
   } catch (error) {
-    yield put(actions.getCodeStatusFail(error.toString()));
+    yield put(verifiedActions.getCodeStatusFail(error.toString()));
   }
 }
 

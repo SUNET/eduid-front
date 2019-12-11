@@ -25,7 +25,7 @@ const configData = {
   //actions.GET_SIGNUP_CONFIG,
   //actions.APP_LOADING,
   //actions.APP_FETCHING,
-  //actions.GET_CODE_STATUS,
+  //verifiedActions.GET_CODE_STATUS,
   //captchaActions.POST_SIGNUP_TRYCAPTCHA,
   //resendActions.POST_SIGNUP_RESEND_VERIFICATION,
 //];
@@ -41,12 +41,12 @@ let signupReducer = (state = configData, action) => {
         ...state,
         is_app_loaded: true
       };
-    case actions.GET_CODE_STATUS:
+    case verifiedActions.GET_CODE_STATUS:
       return {
         ...state,
         ...action.payload,
       };
-    case actions.GET_CODE_STATUS_FAIL:
+    case verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL:
       return {
         ...state,
         error: true,

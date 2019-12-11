@@ -211,17 +211,6 @@ describe("ActionWrapper reducer", () => {
     available_languages: {}
   };
 
-  it("Receives app loading action", () => {
-    expect(
-      actionWrapperReducer(mockState, {
-        type: actions.APP_LOADING
-      })
-    ).toEqual({
-      ...mockState,
-      is_app_loaded: false
-    });
-  });
-
   //it("Receives app fetching action", () => {
     //expect(
       //actionWrapperReducer(mockState, {

@@ -9,7 +9,6 @@ export const START_RESEND_MOBILE_CODE_SUCCESS =
   "POST_PHONE_RESEND_CODE_SUCCESS";
 export const START_RESEND_MOBILE_CODE_FAIL = "START_RESEND_MOBILE_CODE_FAIL";
 export const START_VERIFY = "START_VERIFY_PHONE";
-export const START_VERIFY_FAIL = "START_VERIFY_PHONE_FAIL";
 export const POST_PHONE_VERIFY_SUCCESS = "POST_PHONE_VERIFY_SUCCESS";
 export const POST_PHONE_VERIFY_FAIL = "POST_PHONE_VERIFY_FAIL";
 export const POST_MOBILE_REMOVE = "POST_MOBILE_REMOVE";
@@ -68,7 +67,7 @@ export function startVerify(data) {
 
 export function startVerifyFail(err) {
   return {
-    type: START_VERIFY_FAIL,
+    type: POST_PHONE_VERIFY_FAIL,
     error: true,
     payload: new Error(err)
   };

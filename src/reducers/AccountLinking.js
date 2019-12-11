@@ -18,11 +18,6 @@ let accountLinkingReducer = (state = accountLinkingState, action) => {
         ...state,
         ...action.payload
       };
-    case actions.GET_ORCID_SUCCESS:
-      return {
-        ...state,
-        ...action.payload
-      };
     case actions.GET_ORCID_FAIL:
       return {
         ...state,

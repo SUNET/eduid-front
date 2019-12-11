@@ -66,7 +66,6 @@ const configData = {
   //secActions.START_ASK_WEBAUTHN_DESCRIPTION,
   //secActions.STOP_ASK_WEBAUTHN_DESCRIPTION,
   //phoneActions.STOP_CONFIRMATION,
-  //chpassActions.PASSWORD_NOT_READY,
   //emailsActions.STOP_CONFIRMATION
 //];
 

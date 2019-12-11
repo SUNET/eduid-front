@@ -99,7 +99,7 @@ describe("Mobile Actions", () => {
   it("Should fail when start the verify process ", () => {
     const err = "Bad error";
     const expectedAction = {
-      type: actions.START_VERIFY_FAIL,
+      type: actions.POST_PHONE_VERIFY_FAIL,
       error: true,
       payload: new Error(err)
     };
@@ -393,13 +393,11 @@ describe("", () => {
     });
   });
 
-  it("Receives a START_VERIFY_FAIL action", () => {
+  it("Receives a POST_PHONE_VERIFY_FAIL action", () => {
     expect(
       mobileReducer(mockState, {
-        type: actions.START_VERIFY_FAIL,
-        payload: {
-          error: { error: "Bad error" }
-        }
+        type: actions.POST_PHONE_VERIFY_FAIL,
+        payload: { error: "Bad error" }
       })
     ).toEqual({
       failed: true,

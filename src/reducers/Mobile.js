@@ -98,19 +98,9 @@ let mobileReducer = (state = mobileData, action) => {
     case actions.POST_PHONE_VERIFY_FAIL:
       return {
         ...state,
-        ...state.payload,
-        resending: {
-          failed: true
-        }
-      };
-
-    case actions.START_VERIFY_FAIL:
-      return {
-        ...state,
         failed: true,
-        error: action.payload.error
+        error: action.payload,
       };
-
     case actions.POST_MOBILE_REMOVE:
       return {
         ...state,

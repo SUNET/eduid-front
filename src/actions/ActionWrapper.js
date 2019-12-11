@@ -1,15 +1,14 @@
 export const APP_LOADED = "APP_LOADED";
-export const NEW_CSRF_TOKEN = "NEW_CSRF_TOKEN";
-export const REDIRECT = "REDIRECT";
-export const RETRY = "RETRY";
-
+// export const APP_FETCHING = "APP_FETCHING"
 export const GET_ACTIONS_CONFIG = "GET_ACTIONS_CONFIG";
 export const GET_ACTIONS_CONFIG_SUCCESS = "GET_ACTIONS_CONFIG_SUCCESS";
 export const GET_ACTIONS_CONFIG_FAIL = "GET_ACTIONS_CONFIG_FAIL";
-
 export const POST_ACTIONS_ACTION = "POST_ACTIONS_ACTION";
 export const POST_ACTIONS_ACTION_SUCCESS = "POST_ACTIONS_POST_ACTION_SUCCESS";
 export const POST_ACTIONS_ACTION_FAIL = "POST_ACTIONS_POST_ACTION_FAIL";
+export const NEW_CSRF_TOKEN = "NEW_CSRF_TOKEN";
+export const REDIRECT = "REDIRECT";
+export const RETRY = "RETRY";
 
 
 export function appLoaded() {
@@ -23,24 +22,6 @@ export function appLoaded() {
     //type: APP_FETCHING
   //};
 //}
-
-export function newCsrfToken(token) {
-  return {
-    type: NEW_CSRF_TOKEN,
-    payload: {
-      csrf_token: token
-    }
-  };
-}
-
-export function redirect(path) {
-  return {
-    type: REDIRECT,
-    payload: {
-      path: path
-    }
-  };
-}
 
 export function getConfig() {
   return {
@@ -82,6 +63,24 @@ export function postActionFail(err) {
     payload: {
       error: err,
       message: err
+    }
+  };
+}
+
+export function newCsrfToken(token) {
+  return {
+    type: NEW_CSRF_TOKEN,
+    payload: {
+      csrf_token: token
+    }
+  };
+}
+
+export function redirect(path) {
+  return {
+    type: REDIRECT,
+    payload: {
+      path: path
     }
   };
 }

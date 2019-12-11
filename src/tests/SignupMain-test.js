@@ -142,25 +142,25 @@ describe("SignupMain Component", () => {
 describe("SignupMain Actions", () => {
   it("Should get code status ", () => {
     const expectedAction = {
-      type: signupActions.GET_CODE_STATUS,
+      type: verifiedActions.GET_CODE_STATUS,
       payload: {
         code: "dummy code"
       }
     };
-    expect(signupActions.getCodeStatus("dummy code")).toEqual(expectedAction);
+    expect(verifiedActions.getCodeStatus("dummy code")).toEqual(expectedAction);
   });
 
   it("Should fail when trying to get the code status", () => {
     const err = new Error("Get code status error");
     const expectedAction = {
-      type: signupActions.GET_CODE_STATUS_FAIL,
+      type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL,
       error: true,
       payload: {
         error: err,
         message: err
       }
     };
-    expect(signupActions.getCodeStatusFail(err)).toEqual(expectedAction);
+    expect(verifiedActions.getCodeStatusFail(err)).toEqual(expectedAction);
   });
 
   it("Should signal the app has loaded", () => {
@@ -230,7 +230,7 @@ describe("SignupMain reducer", () => {
   it("Receives get code status action", () => {
     expect(
       signupReducer(mockState, {
-        type: signupActions.GET_CODE_STATUS,
+        type: verifiedActions.GET_CODE_STATUS,
         payload: {
           code: "dummy code"
         }
@@ -246,7 +246,7 @@ describe("SignupMain reducer", () => {
     const err = "failed";
     expect(
       signupReducer(mockState, {
-        type: signupActions.GET_CODE_STATUS_FAIL,
+        type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL,
         error: true,
         payload: {
           error: err,
