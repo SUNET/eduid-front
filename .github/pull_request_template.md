@@ -1,5 +1,5 @@
 #### Description:
-[Replace this with a description of what you've done]
+[Replace this with a description of what you've done - if styling-related work please include a screenshot]
 
 #### For reviewer:
 - [ ] Read the above description
