@@ -123,7 +123,6 @@ Emails.propTypes = {
   longDescription: PropTypes.string,
   emails: PropTypes.array,
   confirming: PropTypes.string,
-  resending: PropTypes.object,
   handleResend: PropTypes.func,
   handleAdd: PropTypes.func,
   handleStartConfirmation: PropTypes.func,

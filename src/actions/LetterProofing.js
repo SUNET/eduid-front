@@ -39,7 +39,6 @@ export function getLetterProofingStateFail(err) {
     type: GET_LETTER_PROOFING_PROOFING_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };
@@ -56,7 +55,6 @@ export function postLetterProofingSendLetterFail(err) {
     type: POST_LETTER_PROOFING_PROOFING_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };
@@ -76,7 +74,6 @@ export function postLetterProofingVerificationCodeFail(err) {
     type: POST_LETTER_PROOFING_CODE_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };

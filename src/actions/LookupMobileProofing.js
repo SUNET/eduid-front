@@ -35,7 +35,6 @@ export function postLookupMobileFail(err) {
     type: POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err
     }
   };

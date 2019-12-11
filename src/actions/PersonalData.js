@@ -18,7 +18,9 @@ export function getAllUserdataFail(err) {
   return {
     type: GET_ALL_USERDATA_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -39,6 +41,8 @@ export function postUserdataFail(err) {
   return {
     type: POST_USERDATA_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }

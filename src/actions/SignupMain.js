@@ -29,7 +29,6 @@ export function getSignupConfigFail(err) {
     type: GET_SIGNUP_CONFIG_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err
     }
   };

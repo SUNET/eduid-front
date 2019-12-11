@@ -35,7 +35,6 @@ const fakeState = {
     tou: "",
     is_app_loaded: true,
     //is_fetching: false,
-    error: false,
     DEBUG: true,
     available_languages: {}
   },
@@ -151,12 +150,11 @@ describe("SignupMain Actions", () => {
   });
 
   it("Should fail when trying to get the code status", () => {
-    const err = new Error("Get code status error");
+    const err = "Get code status error";
     const expectedAction = {
       type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err
       }
     };
@@ -178,12 +176,11 @@ describe("SignupMain Actions", () => {
   //});
 
   it("Should fail when trying to get the config", () => {
-    const err = new Error("Get config error");
+    const err = "Get config error";
     const expectedAction = {
       type: signupActions.GET_SIGNUP_CONFIG_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err
       }
     };
@@ -211,7 +208,6 @@ describe("SignupMain reducer", () => {
     tou: "",
     is_app_loaded: false,
     //is_fetching: false,
-    error: false,
     DEBUG: true,
     available_languages: {}
   };
@@ -249,13 +245,11 @@ describe("SignupMain reducer", () => {
         type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL,
         error: true,
         payload: {
-          error: err,
           message: err
         }
       })
     ).toEqual({
       ...mockState,
-      error: true
     });
   });
 
@@ -335,7 +329,6 @@ describe("SignupMain reducer", () => {
     ).toEqual({
       ...mockState,
       //is_fetching: false,
-      error: true
     });
   });
 
@@ -358,7 +351,6 @@ describe("SignupMain reducer", () => {
     ).toEqual({
       ...mockState,
       //is_fetching: false,
-      error: true
     });
   });
 
@@ -392,7 +384,6 @@ describe("SignupMain reducer", () => {
     ).toEqual({
       ...mockState,
       //is_fetching: false,
-      error: true
     });
   });
 });

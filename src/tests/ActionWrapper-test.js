@@ -29,7 +29,6 @@ const fakeState = {
     is_app_loaded: true,
     redirect: "/",
     //is_fetching: false,
-    error: false,
     available_languages: {}
   },
   notifications: {
@@ -148,12 +147,11 @@ describe("ActionWrapper Actions", () => {
   });
 
   it("Should fail when trying to get the config", () => {
-    const err = new Error("Get config error");
+    const err = "Get config error";
     const expectedAction = {
       type: actions.GET_ACTIONS_CONFIG_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err
       }
     };
@@ -168,12 +166,11 @@ describe("ActionWrapper Actions", () => {
   });
 
   it("Should fail when trying to post action data", () => {
-    const err = new Error("Post action error");
+    const err = "Post action error";
     const expectedAction = {
       type: actions.POST_ACTIONS_ACTION_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err
       }
     };
@@ -207,7 +204,6 @@ describe("ActionWrapper reducer", () => {
     is_app_loaded: false,
     redirect: "/",
     //is_fetching: false,
-    error: false,
     available_languages: {}
   };
 

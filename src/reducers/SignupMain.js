@@ -14,7 +14,6 @@ const configData = {
   tou: "",
   is_app_loaded: false,
   //is_fetching: false,
-  error: false,
   DEBUG: true,
   available_languages: {},
   eidas_url: "",
@@ -46,11 +45,6 @@ let signupReducer = (state = configData, action) => {
         ...state,
         ...action.payload,
       };
-    case verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL:
-      return {
-        ...state,
-        error: true,
-      };
     case actions.GET_SIGNUP_CONFIG_SUCCESS:
       return {
         ...state,
@@ -60,41 +54,6 @@ let signupReducer = (state = configData, action) => {
       return {
         ...state,
         ...action.payload
-      };
-    case captchaActions.POST_SIGNUP_TRYCAPTCHA_SUCCESS:
-      return {
-        ...state,
-        error: false
-      };
-    case captchaActions.POST_SIGNUP_TRYCAPTCHA_FAIL:
-      return {
-        ...state,
-        error: true
-      };
-    case verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS:
-      return {
-        ...state,
-        error: false
-      };
-    case verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL:
-      return {
-        ...state,
-        error: true
-      };
-    case resendActions.POST_SIGNUP_RESEND_VERIFICATION:
-      return {
-        ...state,
-        error: false
-      };
-    case resendActions.POST_SIGNUP_RESEND_VERIFICATION_SUCCESS:
-      return {
-        ...state,
-        error: false
-      };
-    case resendActions.POST_SIGNUP_RESEND_VERIFICATION_FAIL:
-      return {
-        ...state,
-        error: true
       };
     default:
       //if (action.type.endsWith("_SUCCESS") || action.type.endsWith("_FAIL")) {

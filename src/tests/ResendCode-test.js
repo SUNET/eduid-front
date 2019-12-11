@@ -62,7 +62,6 @@ describe("Resend code Actions", () => {
       type: actions.POST_SIGNUP_RESEND_VERIFICATION_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err
       }
     };

@@ -23,7 +23,6 @@ export function getConfigFail(err) {
     type: GET_JSCONFIG_CONFIG_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err
     }
   };

@@ -36,7 +36,9 @@ export function postEmailFail(err) {
   return {
     type: POST_EMAIL_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -63,7 +65,9 @@ export function resendEmailCodeFail(err) {
   return {
     type: START_RESEND_EMAIL_CODE_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -78,7 +82,9 @@ export function startVerifyFail(err) {
   return {
     type: START_VERIFY_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -93,7 +99,9 @@ export function startRemoveFail(err) {
   return {
     type: POST_EMAIL_REMOVE_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -108,6 +116,8 @@ export function makePrimaryFail(err) {
   return {
     type: POST_EMAIL_PRIMARY_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }

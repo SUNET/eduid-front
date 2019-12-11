@@ -1,14 +1,7 @@
 import * as actions from "actions/Emails";
 
 const emailsData = {
-  failed: false,
-  error: "",
   message: "",
-  resending: {
-    failed: false,
-    error: {},
-    message: ""
-  },
   confirming: "",
   emails: [],
   email: "",
@@ -36,12 +29,6 @@ let emailsReducer = (state = emailsData, action) => {
         ...state,
         ...action.payload
       };
-    case actions.POST_EMAIL_FAIL:
-      return {
-        ...state,
-        failed: true,
-        error: action.payload.error
-      };
     case actions.START_CONFIRMATION:
       return {
         ...state,
@@ -51,40 +38,11 @@ let emailsReducer = (state = emailsData, action) => {
       return {
         ...state,
         confirming: "",
-        failed: false,
-        resending: {
-          failed: false,
-          error: {},
-          message: ""
-        }
-      };
-    case actions.START_RESEND_EMAIL_CODE:
-      return {
-        ...state,
-        resending: {
-          failed: false,
-          error: {},
-          message: ""
-        }
       };
     case actions.START_RESEND_EMAIL_CODE_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        resending: {
-          failed: false,
-          error: {},
-          message: "emails.resend_success"
-        }
-      };
-    case actions.START_RESEND_EMAIL_CODE_FAIL:
-      return {
-        ...state,
-        resending: {
-          failed: true,
-          error: action.payload.error,
-          message: ""
-        }
       };
     case actions.START_VERIFY:
       return {
@@ -100,15 +58,6 @@ let emailsReducer = (state = emailsData, action) => {
       return {
         ...state,
         ...state.payload,
-        resending: {
-          failed: true
-        }
-      };
-    case actions.START_VERIFY_FAIL:
-      return {
-        ...state,
-        failed: true,
-        error: action.payload.error
       };
     case actions.POST_EMAIL_REMOVE:
       return {
@@ -120,12 +69,6 @@ let emailsReducer = (state = emailsData, action) => {
         ...state,
         ...action.payload
       };
-    case actions.POST_EMAIL_REMOVE_FAIL:
-      return {
-        ...state,
-        failed: true,
-        error: action.payload.error
-      };
     case actions.POST_EMAIL_PRIMARY:
       return {
         ...state,
@@ -135,12 +78,6 @@ let emailsReducer = (state = emailsData, action) => {
       return {
         ...state,
         ...action.payload
-      };
-    case actions.POST_EMAIL_PRIMARY_FAIL:
-      return {
-        ...state,
-        failed: true,
-        error: action.payload.error
       };
     case "@@redux-form/CHANGE":
       const form = {};

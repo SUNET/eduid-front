@@ -7,8 +7,6 @@ const letterData = {
   letter_sent: "",
   letter_expires: "",
   letter_expired: false,
-  failed: false,
-  error: "",
   message: ""
 };
 
@@ -26,11 +24,6 @@ let letterProofingReducer = (state = letterData, action) => {
         confirmingLetter: false,
         verifyingLetter: false
       };
-    case actions.GET_LETTER_PROOFING_PROOFING:
-      return {
-        ...state,
-        failed: false
-      };
     case actions.GET_LETTER_PROOFING_PROOFING_SUCCESS:
       let verifying = false,
         confirming = false;
@@ -42,34 +35,25 @@ let letterProofingReducer = (state = letterData, action) => {
       return {
         ...state,
         ...action.payload,
-        failed: false,
         verifyingLetter: verifying,
         confirmingLetter: confirming
       };
     case actions.GET_LETTER_PROOFING_PROOFING_FAIL:
       return {
         ...state,
-        failed: true,
         verifyingLetter: false,
         confirmingLetter: false
-      };
-    case actions.POST_LETTER_PROOFING_PROOFING:
-      return {
-        ...state,
-        failed: false
       };
     case actions.POST_LETTER_PROOFING_PROOFING_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        failed: false,
         confirmingLetter: false,
         verifyingLetter: false
       };
     case actions.POST_LETTER_PROOFING_PROOFING_FAIL:
       return {
         ...state,
-        failed: true,
         confirmingLetter: false,
         verifyingLetter: false
       };
@@ -77,20 +61,17 @@ let letterProofingReducer = (state = letterData, action) => {
       return {
         ...state,
         ...action.payload,
-        failed: false
       };
     case actions.POST_LETTER_PROOFING_CODE_SUCCESS:
       return {
         ...state,
         message: action.payload.message,
-        failed: false,
         confirmingLetter: false,
         verifyingLetter: false
       };
     case actions.POST_LETTER_PROOFING_CODE_FAIL:
       return {
         ...state,
-        failed: true,
         confirmingLetter: false,
         verifyingLetter: false
       };
