@@ -3,15 +3,20 @@
 #beta-link {
   font-size: 14px;
   color: white;
-  letter-spacing: 0.5;
   background-color: #58b78b;
   border-radius: 3px;
   // margin-bottom: 20px;
   padding: 3px 7px;
 }
 
+#beta-link:hover {
+  background-color: #629c92;
+  text-decoration: none;
+  color: #c7c7c7;
+}
+
 ul.pending-actions {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 li.pending-action-item a {
