@@ -43,10 +43,15 @@ class PendingActions extends Component {
       });
 
     return (
-      <ul className="list-unstyled pending-actions">
-        {toShow}
-        {toConfirm}
-      </ul>
+      <div>
+        <a id="beta-link" href="/feature/beta">
+          {this.props.l10n("foot.change-version")}
+        </a>
+        <ul className="list-unstyled pending-actions">
+          {toShow}
+          {toConfirm}
+        </ul>
+      </div>
     );
   }
 }
