@@ -1336,8 +1336,8 @@
     "defaultMessage": "Logout"
   },
   {
-    "id": "foot.change-version",
-    "defaultMessage": "Try the new version"
+    "id": "beta-link.change-version",
+    "defaultMessage": "Try the new eduID"
   },
   {
     "id": "foot.change-version-tip",

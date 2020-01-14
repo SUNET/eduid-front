@@ -45,7 +45,7 @@ class PendingActions extends Component {
     return (
       <div>
         <a id="beta-link" href="/feature/beta">
-          {this.props.l10n("foot.change-version")}
+          {this.props.l10n("beta-link.change-version")}
         </a>
         <ul className="list-unstyled pending-actions">
           {toShow}
