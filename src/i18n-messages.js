@@ -2287,10 +2287,10 @@ const msgs = {
   /* Footer ******** ******/
   /************************/
 
-  "foot.change-version": (
+  "beta-link.change-version": (
     <FormattedMessage
-      id="foot.change-version"
-      defaultMessage={`Try the new version`}
+      id="beta-link.change-version"
+      defaultMessage={`Try the new eduID`}
     />
   ),
 
