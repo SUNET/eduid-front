@@ -1404,7 +1404,7 @@
     "defaultMessage": "Logout"
   },
   {
-    "id": "foot.change-version",
+    "id": "beta-link.to-stable",
     "defaultMessage": "Switch to previous version"
   },
   {

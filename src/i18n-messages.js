@@ -332,7 +332,10 @@ const msgs = {
   ),
 
   "banner.tagline": (
-    <FormattedMessage id="banner.tagline" defaultMessage={`eduID is easier and safer login.`} />
+    <FormattedMessage
+      id="banner.tagline"
+      defaultMessage={`eduID is easier and safer login.`}
+    />
   ),
 
   // "tou.reject": <FormattedMessage id="tou.reject" defaultMessage={`Reject`} />,
@@ -2784,9 +2787,9 @@ const msgs = {
   /* Footer ******** ******/
   /************************/
 
-  "foot.change-version": (
+  "beta-link.to-stable": (
     <FormattedMessage
-      id="foot.change-version"
+      id="beta-link.to-stable"
       defaultMessage={`Switch to previous version`}
     />
   ),
