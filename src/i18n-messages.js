@@ -2790,7 +2790,7 @@ const msgs = {
   "beta-link.to-stable": (
     <FormattedMessage
       id="beta-link.to-stable"
-      defaultMessage={`Switch to previous version`}
+      defaultMessage={`The new eduID is under development, click here to go back to the stable version`}
     />
   ),
 

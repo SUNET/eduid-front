@@ -59,7 +59,7 @@ class Main extends Component {
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
         <div className="dashboard-wrapper">
-          <a id="beta-link" href="/feature/beta">
+          <a id="stable-link" href="/feature/no-beta">
             {this.props.l10n("beta-link.to-stable")}
           </a>
           <HeaderContainer {...this.props} />
