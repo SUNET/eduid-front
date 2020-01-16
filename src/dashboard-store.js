@@ -14,6 +14,7 @@ import chpassReducer from "reducers/ChangePassword";
 import ninsReducer from "reducers/Nins";
 import letterProofingReducer from "reducers/LetterProofing";
 import notificationsReducer from "reducers/Notifications";
+import pendingActionsReducer from "reducers/PendingActions";
 import profileReducer from "reducers/Profile";
 import eidasReducer from "reducers/Eidas";
 import { routerReducer } from "react-router-redux";
@@ -30,6 +31,7 @@ const eduIDApp = combineReducers({
   personal_data: personalDataReducer,
   phones: mobileReducer,
   nins: ninsReducer,
+  pendingActions: pendingActionsReducer,
   letter_proofing: letterProofingReducer,
   notifications: notificationsReducer,
   account_linking: accountLinkingReducer,
