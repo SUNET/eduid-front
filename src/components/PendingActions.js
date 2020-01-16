@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import GenericConfirmModal from "components/GenericConfirmModal";
 
 import "style/PendingActions.scss";
 
 class PendingActions extends Component {
   render() {
+    console.log("these are the props in pending actions:", this.props);
+    let modalPrompt = "";
     let pdataMissing = true,
       toShow = this.props.pending.map((missing, index) => {
         if (
@@ -42,15 +45,30 @@ class PendingActions extends Component {
         );
       });
 
+    if (this.props.showModal) {
+      modalPrompt = [
+        <GenericConfirmModal
+          key="1"
+          title={"this is modal title"}
+          mainText={"this is mainText"}
+          showModal={this.props.showModal}
+          closeModal={this.props.handleCloseModal}
+          acceptModal={this.props.handleCloseModal}
+        />
+      ];
+    }
+
     return (
       <div>
-        <a id="beta-link" href="/feature/beta">
+        <button id="beta-link" onClick={this.props.handleShowModal}>
+          {/* href="/feature/beta" */}
           {this.props.l10n("beta-link.change-version")}
-        </a>
+        </button>
         <ul className="list-unstyled pending-actions">
           {toShow}
           {toConfirm}
         </ul>
+        {modalPrompt}
       </div>
     );
   }
