@@ -5,8 +5,7 @@ import { Field, reduxForm } from "redux-form";
 
 import Form from "reactstrap/lib/Form";
 import TextInput from "components/EduIDTextInput";
-import EduIDButton from "components/EduIDButton";
-import { GET_USERDATA_SUCCESS } from "actions/PersonalData";
+import EduIDButton from "components/EduIDButton";;
 
 import "style/Emails.scss";
 import "style/PersonalData.scss";
@@ -28,7 +27,6 @@ let PdataForm = props => {
   return (
     <Form
       id="personaldataview-form"
-      // inline={true}
       role="form"
     >
       <fieldset id="personal-data-form" className="tabpane">

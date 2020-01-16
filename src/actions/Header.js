@@ -13,7 +13,6 @@ export function postLogoutFail(err) {
     type: POST_AUTHN_LOGOUT_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err.toString()
     }
   };

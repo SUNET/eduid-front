@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Questions from "./Questions";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/Footer.scss";
+import "style/base.scss";
+import "style/DashboardMain.scss";
 
 class Footer extends Component {
   render() {
@@ -37,6 +39,11 @@ class Footer extends Component {
         </p>
         <nav key="1">
           <ul>
+            <li key="10" id="language-selector">
+              <a className="help-link" href="/feature/no-beta">
+                {this.props.l10n("foot.change-version")}
+              </a>
+            </li>
             <li key="0" className="langselector">
               <a className="help-link" href={this.props.faq_link}>
                 {this.props.l10n("header.faq")}

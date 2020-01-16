@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import { connect } from "react-redux";
-// import i18n from "i18n-messages";
 import "style/Security.scss";
 
 class AccountId extends Component {

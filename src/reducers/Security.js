@@ -1,8 +1,6 @@
 import * as actions from "actions/Security";
 
 const security = {
-  failed: false,
-  error: "",
   message: "",
   credentials: [],
   code: "",
@@ -29,8 +27,6 @@ let securityReducer = (state = security, action) => {
     case actions.GET_CREDENTIALS_FAIL:
       return {
         ...state,
-        failed: true,
-        error: action.payload.error,
         message: action.payload.message
       };
     case actions.START_CHANGE_PASSWORD:
@@ -51,8 +47,6 @@ let securityReducer = (state = security, action) => {
     case actions.GET_CHANGE_PASSWORD_FAIL:
       return {
         ...state,
-        failed: true,
-        error: action.payload.error,
         message: action.payload.message
       };
     case actions.START_DELETE_ACCOUNT:
@@ -68,41 +62,33 @@ let securityReducer = (state = security, action) => {
     case actions.POST_DELETE_ACCOUNT:
       return {
         ...state,
-        failed: false,
         confirming_deletion: false
       };
     case actions.POST_DELETE_ACCOUNT_SUCCESS:
       return {
         ...state,
         confirming_deletion: false,
-        failed: false,
         location: action.payload.location
       };
     case actions.POST_DELETE_ACCOUNT_FAIL:
       return {
         ...state,
-        failed: true,
-        error: action.payload.error,
         message: action.payload.message
       };
     case actions.GET_DELETE_ACCOUNT:
       return {
         ...state,
-        failed: false,
         confirming_deletion: false
       };
     case actions.GET_DELETE_ACCOUNT_SUCCESS:
       return {
         ...state,
         confirming_deletion: false,
-        failed: false,
         deleted: true
       };
     case actions.GET_DELETE_ACCOUNT_FAIL:
       return {
         ...state,
-        failed: true,
-        error: action.payload.error,
         message: action.payload.message
       };
     case actions.START_WEBAUTHN_REGISTRATION:
@@ -127,7 +113,6 @@ let securityReducer = (state = security, action) => {
       return {
         ...state,
         webauthn_failed: true,
-        error: action.payload.error,
         message: action.payload.message
       };
     case actions.POST_WEBAUTHN_BEGIN_SUCCESS:

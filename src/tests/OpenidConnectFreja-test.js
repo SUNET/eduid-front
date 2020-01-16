@@ -48,7 +48,6 @@ describe("OIDC Freja Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    failed: false,
     error: null,
     iaRequestData: "",
     showModal: true,
@@ -61,7 +60,6 @@ describe("Reducers", () => {
         type: actions.POST_OIDC_PROOFING_FREJA_PROOFING
       })
     ).toEqual({
-      failed: false,
       error: null,
       iaRequestData: "",
       showModal: true,
@@ -76,7 +74,6 @@ describe("Reducers", () => {
         payload: { iaRequestData: "def456" }
       })
     ).toEqual({
-      failed: false,
       iaRequestData: "def456",
       error: null,
       showModal: true,
@@ -95,7 +92,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: true,
       iaRequestData: "",
       error: true,
       message: "Bad error",
@@ -111,7 +107,6 @@ describe("Reducers", () => {
         payload: "dummy payload"
       })
     ).toEqual({
-      failed: false,
       iaRequestData: "",
       error: null,
       showModal: true,
@@ -203,7 +198,6 @@ describe("OpenidConnectFreja Container before initiated vetting", () => {
     navigator.testUserAgent = "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.76 Mobile Safari/537.36"; // Mobile
     const store = fakeStore({
       openid_freja_data: {
-        failed: false,
         iaRequestData: ''
       },
       config: {OIDC_PROOFING_FREJA_URL: 'http://localhost/services/oidc-proofing/freja/proofing'},
@@ -258,7 +252,6 @@ describe("OpenidConnectFreja Container after initiated vetting", () => {
     navigator.testUserAgent = "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.76 Mobile Safari/537.36"; // Mobile
     const store = fakeStore({
       openid_freja_data: {
-        failed: false,
         iaRequestData: 'abc123'
       },
       config: {OIDC_PROOFING_FREJA_URL: 'http://localhost/services/oidc-proofing/freja/proofing'},

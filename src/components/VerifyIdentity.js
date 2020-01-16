@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import { connect } from "react-redux";
-// import i18n from "i18n-messages";
 import { withRouter } from "react-router-dom";
 import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
@@ -18,7 +16,6 @@ class VerifyIdentity extends Component {
       this.props.l10n("lmp.initialize_proofing_help_text"),
       this.props.l10n("eidas.initialize_proofing_help_text")
     ];
-    // this.props.is_configured
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
       const verifyOptions = this.props.proofing_methods.filter(
@@ -36,14 +33,13 @@ class VerifyIdentity extends Component {
         );
       });
     }
-    // this.props.nins.length && !this.props.verifiedNinStatus
+
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
         <div key="1" id="connect-nin-number">
           <label key="0">
             {this.props.l10n("verify-identity.connect_nin_title")}
           </label>
-          {/* <p className="profile-data">Request a confirmation code to</p>*/}
           <div key="1" id="nins-btn-group">
             {vettingButtons}
           </div>

@@ -23,7 +23,6 @@ const fakeStore = state => ({
 function setupComponent() {
   const store = fakeStore({
     config: {
-      window_size: "lg",
       language: "en"
     },
     personal_data: {
@@ -53,7 +52,6 @@ function setupComponent() {
     }
   });
   const props = {
-    window_size: "lg",
     show_sidebar: true,
     eppn: "eppn-eppn"
   };

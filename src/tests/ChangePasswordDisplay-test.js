@@ -274,23 +274,18 @@ describe("Logout modal redux functionality", () => {
 
   it("GET_CHANGE_PASSWORD_FAIL action retuns an error state", () => {
     const mockState = {
-      error: false,
       confirming_change: false
     };
     const err = "Error";
-    const error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.GET_CHANGE_PASSWORD_FAIL,
         error: true,
         payload: {
-          error: error,
           message: err
         }
       })
     ).toEqual({
-      failed: true,
-      error: error,
       message: err,
       confirming_change: false
     });
@@ -328,8 +323,6 @@ describe("Security Container", () => {
     getState = function(deleting, askingDescription) {
       return {
         security: {
-          failed: false,
-          error: "",
           message: "",
           confirming_change: false
         },

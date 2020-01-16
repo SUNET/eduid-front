@@ -1,8 +1,6 @@
 import * as actions from "actions/Nins";
 
 const ninState = {
-  failed: false,
-  error: "",
   message: "",
   nin: "",
   rmNin: "",
@@ -22,8 +20,6 @@ let ninsReducer = (state = ninState, action) => {
     case actions.GET_NINS_FAIL:
       return {
         ...state,
-        failed: true,
-        error: action.payload.error,
         message: action.payload.message
       };
     case actions.POST_NIN_REMOVE:
@@ -35,12 +31,6 @@ let ninsReducer = (state = ninState, action) => {
       return {
         ...state,
         ...action.payload
-      };
-    case actions.POST_NIN_REMOVE_FAIL:
-      return {
-        ...state,
-        failed: true,
-        error: action.payload.error
       };
     case actions.CHANGE_NINDATA:
       return {

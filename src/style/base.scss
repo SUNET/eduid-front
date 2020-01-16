@@ -36,13 +36,14 @@ h1 {
   font-size: 36px;
   line-height: 44px;
   margin-top: 0;
+  font-weight: 700;
   font-family: "ProximaNova-Regular";
 }
 
 h2 {
   font-size: 28px;
   line-height: 42px;
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 h3 {
@@ -68,8 +69,9 @@ h6 {
 
 p {
   font-size: 20px;
-  line-height: 32px;
-  margin-top: 24px;
+  line-height: 1.5;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 header {
@@ -173,13 +175,13 @@ small,
 .intro h4 {
   font-size: 1.5rem;
   line-height: 34px;
-  margin-top: 56px;
+  margin-top: 36px;
   font-weight: 700;
 }
 
-.intro {
-  margin: 0 0 10px 0;
-}
+// .intro {
+//   margin: 0 0 10px 0;
+// }
 
 /* Main marketing message and sign up button */
 // #content-block > h3:first-child {

@@ -7,8 +7,6 @@ const lookupMobileData = {
   // code_sent: "",
   // letter_expires: "",
   // letter_expired: false,
-  failed: false,
-  error: "",
   message: ""
 };
 
@@ -17,31 +15,17 @@ let lookupMobileProofingReducer = (state = lookupMobileData, action) => {
     case actions.SHOW_MOBILE_MODAL:
       return {
         ...state,
-        failed: false,
         showModal: true
       };
     case actions.CLOSE_MOBILE_MODAL:
       return {
         ...state,
-        failed: false,
         showModal: false
-      };
-    case actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING:
-      console.log("this is state -- POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL", state)
-      return {
-        ...state,
-        failed: false
       };
     case actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS:
       return {
-        ...action.payload,
-        failed: false
-      };
-    case actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL:
-      return {
         ...state,
-        failed: true,
-        error: action.payload.message
+        ...action.payload,
       };
     default:
       return state;

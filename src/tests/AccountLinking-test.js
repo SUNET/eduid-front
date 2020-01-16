@@ -43,7 +43,6 @@ describe("AccountLinking Actions", () => {
       type: actions.GET_ORCID_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err
       }
     };
@@ -70,7 +69,6 @@ describe("AccountLinking Actions", () => {
       type: actions.POST_ORCID_REMOVE_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err
       }
     };
@@ -80,8 +78,6 @@ describe("AccountLinking Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    failed: false,
-    error: "",
     message: "",
     orcid: {}
   };
@@ -92,14 +88,12 @@ describe("Reducers", () => {
         type: actions.GET_ORCID
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       orcid: {}
     });
   });
 
-  it("Receives a GET_ORCID_SUCCESS action", () => {
+  it("Receives a GET_PERSONAL_DATA_ORCID_SUCCESS action", () => {
     const orcid = {
       id: "https://sandbox.orcid.org/0000-0000-0000-0000",
       name: null,
@@ -108,34 +102,28 @@ describe("Reducers", () => {
     };
     expect(
       accountlinkingReducer(mockState, {
-        type: actions.GET_ORCID_SUCCESS,
+        type: actions.GET_PERSONAL_DATA_ORCID_SUCCESS,
         payload: {
           orcid: orcid
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       orcid: orcid
     });
   });
 
   it("Receives a GET_ORCID_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
+    const err = "Error";
     expect(
       accountlinkingReducer(mockState, {
         type: actions.GET_ORCID_FAIL,
         error: true,
         payload: {
-          error: error,
           message: err
         }
       })
     ).toEqual({
-      failed: true,
-      error: error,
       message: err,
       orcid: {}
     });
@@ -147,8 +135,6 @@ describe("Reducers", () => {
         type: actions.POST_ORCID_REMOVE
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       orcid: {}
     });
@@ -160,28 +146,22 @@ describe("Reducers", () => {
         type: actions.POST_ORCID_REMOVE_SUCCESS
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       orcid: {}
     });
   });
 
   it("Receives a POST_ORCID_REMOVE_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
+    const err = "Error";
     expect(
       accountlinkingReducer(mockState, {
         type: actions.POST_ORCID_REMOVE_FAIL,
         error: true,
         payload: {
-          error: error,
           message: err
         }
       })
     ).toEqual({
-      failed: true,
-      error: error,
       message: err,
       orcid: {}
     });
@@ -197,8 +177,6 @@ const fakeStore = state => ({
 
 const mockState = {
   account_linking: {
-    failed: false,
-    error: "",
     message: "",
     orcid: {}
   },
@@ -225,7 +203,7 @@ describe("Async component", () => {
     expect(orcid.value).toEqual(call(fetchOrcid, config));
 
     const action = {
-      type: actions.GET_ORCID_SUCCESS,
+      type: actions.GET_PERSONAL_DATA_ORCID_SUCCESS,
       payload: {
         csrf_token: "csrf-token",
         orcid: {
@@ -321,8 +299,6 @@ describe("AccountLinking Container", () => {
     getState = function() {
       return {
         account_linking: {
-          failed: false,
-          error: "",
           message: "",
           orcid: {
             id: "https://sandbox.orcid.org/0000-0000-0000-0000",

@@ -54,7 +54,6 @@ class Eidas extends Component {
         <div className="vetting-button">
           <button
             id="eidas-show-modal"
-            // disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
           >
             <div className="vetting-button-text">
@@ -77,7 +76,6 @@ class Eidas extends Component {
             <ModalHeader>{this.props.l10n("eidas.modal_title")}</ModalHeader>
 
             <ModalBody>
-              {/* <h4>{this.props.l10n("eidas.freja_instructions_title")}</h4> */}
               {freja_instructions}
               <div id="freja-links">
                 {have_freja}

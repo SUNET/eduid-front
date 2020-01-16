@@ -12,7 +12,6 @@ const mapStateToProps = (state, props) => {
   }
   return {
     dashboard_url: state.config.dashboard_url,
-    size: state.config.window_size,
     acceptingTOU: state.email.acceptingTOU,
     tou: tou
   };

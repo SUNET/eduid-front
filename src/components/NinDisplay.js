@@ -8,7 +8,6 @@ import "style/Nins.scss";
 export class NinDisplay extends Component {
   render() {
      const url = this.props.history.location.pathname;
-    // const url = window.location.href;
     if (url.includes("verify-identity")) {
       if (this.props.verifiedNinStatus) {
         return (

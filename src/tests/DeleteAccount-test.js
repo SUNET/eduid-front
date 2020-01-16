@@ -287,7 +287,6 @@ describe("Logout modal redux functionality", () => {
   it("POST_DELETE_ACCOUNT action retuns the current state", () => {
     const mockState = {
       confirming_deletion: false,
-      failed: false
     };
     expect(
       securityReducer(mockState, {
@@ -295,14 +294,11 @@ describe("Logout modal redux functionality", () => {
       })
     ).toEqual({
       confirming_deletion: false,
-      failed: false
     });
   });
 
   it("POST_DELETE_ACCOUNT_SUCCESS action returns the updated state", () => {
     const mockState = {
-      failed: false,
-      error: "",
       message: "",
       confirming_deletion: false,
       location: ""
@@ -316,8 +312,6 @@ describe("Logout modal redux functionality", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       location: "dummy-location",
       confirming_deletion: false
@@ -326,24 +320,18 @@ describe("Logout modal redux functionality", () => {
 
   it("POST_DELETE_ACCOUNT_FAIL action returns an error state", () => {
     const mockState = {
-      failed: false,
-      error: false,
       confirming_deletion: false
     };
     const err = "Error";
-    const error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.POST_DELETE_ACCOUNT_FAIL,
         error: true,
         payload: {
-          error: error,
           message: err
         }
       })
     ).toEqual({
-      failed: true,
-      error: error,
       message: err,
       confirming_deletion: false
     });
@@ -389,8 +377,6 @@ describe("DeleteAccount Container", () => {
     getState = function(deleting, askingDescription) {
       return {
         security: {
-          failed: false,
-          error: "",
           message: "",
           code: "",
           confirming_deletion: deleting,

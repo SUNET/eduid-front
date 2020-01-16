@@ -1,8 +1,8 @@
-export const GET_USERDATA_SUCCESS = "GET_PERSONAL_DATA_USER_SUCCESS";
 export const GET_ALL_USERDATA = "GET_ALL_USERDATA";
 export const GET_ALL_USERDATA_SUCCESS =
   "GET_PERSONAL_DATA_ALL_USER_DATA_SUCCESS";
 export const GET_ALL_USERDATA_FAIL = "GET_PERSONAL_DATA_ALL_USER_DATA_FAIL";
+export const GET_USERDATA_SUCCESS = "GET_PERSONAL_DATA_USER_SUCCESS";
 export const CHANGE_USERDATA = "CHANGE_USERDATA";
 export const POST_USERDATA = "POST_USERDATA";
 export const POST_USERDATA_SUCCESS = "POST_PERSONAL_DATA_USER_SUCCESS";
@@ -18,7 +18,9 @@ export function getAllUserdataFail(err) {
   return {
     type: GET_ALL_USERDATA_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }
 
@@ -39,6 +41,8 @@ export function postUserdataFail(err) {
   return {
     type: POST_USERDATA_FAIL,
     error: true,
-    payload: new Error(err)
+    payload: {
+      message: err
+    }
   };
 }

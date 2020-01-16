@@ -9,16 +9,6 @@ class Orcid extends Component {
   render() {
     let orcidData;
 
-    const orcidIntro = (
-      <div className="orcid-intro">
-        {/* <div className="orcid-logo-container">
-          <span className="orcid-logo" />
-    </div>*/}
-        {/* 
-        <label>{this.props.l10n("orc.title")}</label> */}
-      </div>
-    );
-
     if (this.props.orcid != null) {
       let orcidAuthor = this.props.orcid.name;
       if (!orcidAuthor) {
@@ -79,13 +69,11 @@ class Orcid extends Component {
           <p className="orcid-btn-help">
             {this.props.l10n("orc.long_description")}
           </p>
-          {/* <p>{this.props.l10n("orc.about_link")}</p> */}
         </div>
       );
     }
     return (
       <div id="orcid-connect">
-        {orcidIntro}
         {orcidData}
       </div>
     );

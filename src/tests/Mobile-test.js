@@ -42,7 +42,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.postMobileFail(err)).toEqual(expectedAction);
   });
@@ -78,7 +78,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.START_RESEND_MOBILE_CODE_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.resendMobileCodeFail(err)).toEqual(expectedAction);
   });
@@ -99,9 +99,9 @@ describe("Mobile Actions", () => {
   it("Should fail when start the verify process ", () => {
     const err = "Bad error";
     const expectedAction = {
-      type: actions.START_VERIFY_FAIL,
+      type: actions.POST_PHONE_VERIFY_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.startVerifyFail(err)).toEqual(expectedAction);
   });
@@ -123,7 +123,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_REMOVE_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.startRemoveFail(err)).toEqual(expectedAction);
   });
@@ -145,7 +145,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_PRIMARY_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.makePrimaryFail(err)).toEqual(expectedAction);
   });
@@ -153,14 +153,7 @@ describe("Mobile Actions", () => {
 
 describe("", () => {
   const mockState = {
-    failed: false,
-    error: "",
     message: "",
-    resending: {
-      failed: false,
-      error: {},
-      message: ""
-    },
     confirming: "",
     mobiles: [],
     phone: "",
@@ -176,14 +169,7 @@ describe("", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: 999123123,
@@ -197,14 +183,7 @@ describe("", () => {
         type: actions.POST_MOBILE
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -218,14 +197,7 @@ describe("", () => {
         type: actions.POST_MOBILE_SUCCESS
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -238,18 +210,11 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
-      error: { error: "Bad error" },
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -266,14 +231,7 @@ describe("", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: 999123123,
       mobiles: [],
       phone: "",
@@ -287,14 +245,7 @@ describe("", () => {
         type: actions.STOP_CONFIRMATION
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -308,14 +259,7 @@ describe("", () => {
         type: actions.START_RESEND_MOBILE_CODE
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -330,14 +274,7 @@ describe("", () => {
         message: "mobile.resend_success"
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: "mobile.resend_success"
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -350,18 +287,11 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: true,
-        error: { error: "Bad error" },
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -378,14 +308,7 @@ describe("", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -393,23 +316,14 @@ describe("", () => {
     });
   });
 
-  it("Receives a START_VERIFY_FAIL action", () => {
+  it("Receives a POST_PHONE_VERIFY_FAIL action", () => {
     expect(
       mobileReducer(mockState, {
-        type: actions.START_VERIFY_FAIL,
-        payload: {
-          error: { error: "Bad error" }
-        }
+        type: actions.POST_PHONE_VERIFY_FAIL,
+        payload: { message: "Bad error" }
       })
     ).toEqual({
-      failed: true,
-      error: { error: "Bad error" },
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -426,14 +340,7 @@ describe("", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: 999123123,
@@ -446,18 +353,11 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_REMOVE_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
-      error: { error: "Bad error" },
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -474,14 +374,7 @@ describe("", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: 999123123,
@@ -496,14 +389,7 @@ describe("", () => {
         message: "mobile.resend_success"
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -516,18 +402,11 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
-      error: { error: "Bad error" },
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       mobiles: [],
       phone: "",
@@ -538,14 +417,7 @@ describe("", () => {
 const getState = () => state;
 const state = {
   phones: {
-    failed: false,
-    error: "",
     message: "",
-    resending: {
-      failed: false,
-      error: {},
-      message: ""
-    },
     confirming: "",
     phones: [],
     phone: "",

@@ -2787,7 +2787,7 @@ const msgs = {
   "foot.change-version": (
     <FormattedMessage
       id="foot.change-version"
-      defaultMessage={`Use old version of the app`}
+      defaultMessage={`Switch to previous version`}
     />
   ),
 

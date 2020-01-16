@@ -15,11 +15,11 @@ import {
   postUserdataFail
 } from "actions/PersonalData";
 
+import * as actions from "actions/DashboardConfig";
 import * as ninActions from "actions/Nins";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
 import * as pdataActions from "actions/PersonalData";
-import * as profileActions from "actions/Profile";
 import * as accountLinkingActions from "actions/AccountLinking";
 
 export function* requestAllPersonalData() {
@@ -84,6 +84,7 @@ export function* requestAllPersonalData() {
           })
         );
       }
+      yield put(actions.appLoaded());
     } else {
       yield put(userdata);
     }

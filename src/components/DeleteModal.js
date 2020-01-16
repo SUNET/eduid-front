@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
-import Button from "reactstrap/lib/Button";
 import Modal from "reactstrap/lib/Modal";
 import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
-
 import i18n from "i18n-messages";
 import EduIDButton from "components/EduIDButton";
-import NotificationsContainer from "containers/Notifications";
 
 class DeleteModal extends Component {
   render() {
@@ -26,10 +22,7 @@ class DeleteModal extends Component {
           <ModalHeader>{this.props.title}</ModalHeader>
 
           <ModalBody>
-            {/* <NotificationsContainer /> */}
-            {/* <div id="delete-account"> */}
             <p id="delete-account">{this.props.l10n("delete.modal_info")}</p>
-            {/* <p>{this.props.l10n("security.modal_notes")}</p> */}
             <EduIDButton
               className="settings-button delete-button"
               id="confirm-delete-account-button"
@@ -41,7 +34,6 @@ class DeleteModal extends Component {
               {this.props.l10n("delete.confirm_button")}
             </EduIDButton>
             <p>{this.props.l10n("delete.modal_tip")}</p>
-            {/* </div> */}
           </ModalBody>
           <ModalFooter>
             <EduIDButton

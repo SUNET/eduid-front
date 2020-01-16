@@ -40,7 +40,9 @@ describe("Personal Data Actions", () => {
     const expectedAction = {
       type: actions.GET_ALL_USERDATA_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {
+        message: err
+      }
     };
     expect(actions.getAllUserdataFail(err)).toEqual(expectedAction);
   });
@@ -86,7 +88,9 @@ describe("Personal Data Actions", () => {
     const expectedAction = {
       type: actions.POST_USERDATA_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {
+        message: err
+      }
     };
     expect(actions.postUserdataFail(err)).toEqual(expectedAction);
   });
@@ -94,7 +98,6 @@ describe("Personal Data Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    failed: false,
     data: {
       given_name: "John",
       surname: "Smith",
@@ -110,7 +113,6 @@ describe("Reducers", () => {
         type: actions.GET_ALL_USERDATA
       })
     ).toEqual({
-      failed: false,
       data: {
         given_name: "John",
         surname: "Smith",
@@ -131,7 +133,6 @@ describe("Reducers", () => {
       data: {
         surname: "Surname"
       },
-      failed: false
     });
   });
 
@@ -140,12 +141,10 @@ describe("Reducers", () => {
       personalDataReducer(mockState, {
         type: actions.GET_ALL_USERDATA_FAIL,
         payload: {
-          error: "Bad error",
           message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
       data: {
         given_name: "John",
         surname: "Smith",
@@ -153,7 +152,6 @@ describe("Reducers", () => {
         language: "en",
         eppn: "dummy-eppn"
       },
-      error: "Bad error",
       message: "Bad error"
     });
   });
@@ -168,7 +166,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
       data: {
         given_name: "Jonna",
         eppn: "dummy-eppn",
@@ -183,7 +180,6 @@ describe("Reducers", () => {
         type: actions.POST_USERDATA
       })
     ).toEqual({
-      failed: false,
       data: {
         given_name: "John",
         surname: "Smith",
@@ -205,7 +201,6 @@ describe("Reducers", () => {
         surname: "Surname",
         eppn: "dummy-eppn"
       },
-      failed: false
     });
   });
 
@@ -214,12 +209,10 @@ describe("Reducers", () => {
       personalDataReducer(mockState, {
         type: actions.POST_USERDATA_FAIL,
         payload: {
-          error: "Bad error",
           message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
       data: {
         given_name: "John",
         surname: "Smith",
@@ -227,7 +220,6 @@ describe("Reducers", () => {
         language: "en",
         eppn: "dummy-eppn"
       },
-      error: "Bad error",
       message: "Bad error"
     });
   });
@@ -242,7 +234,6 @@ const fakeStore = state => ({
 
 const fakeState = {
   personal_data: {
-    failed: false,
     data: {
       given_name: "",
       surname: "",
@@ -254,7 +245,6 @@ const fakeState = {
   config: {
     csrf_token: "",
     is_configured: true,
-    failed: false,
     PERSONAL_DATA_URL: "http://localhost/services/personal-data/user"
   },
   intl: {
@@ -264,7 +254,6 @@ const fakeState = {
   form: {
     personal_data: {
       values: {
-        failed: false,
         given_name: "",
         surname: "",
         display_name: "",
@@ -381,7 +370,6 @@ describe("Async component", () => {
 
     const config = fakeState.config;
     const data = {
-      failed: false,
       given_name: "",
       surname: "",
       display_name: "",

@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import i18n from "i18n-messages";
-import { Field, reduxForm } from "redux-form";
-// import { Link } from "react-router-dom";
 import { ButtonGroup, Form } from "reactstrap";
+import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
 import TextInput from "components/EduIDTextInput";
-// import EduIDButton from "components/EduIDButton";
-// import vettingRegistry from "vetting-registry";
 
 import "style/Nins.scss";
 
@@ -90,20 +87,6 @@ NinForm = reduxForm({
   updateUnregisteredFields: true,
   validate: validate
 })(NinForm);
-
-// NinForm = connect(state => ({
-//   initialValues: { nin: state.nins.nin }
-// }))(NinForm);
-
-// NinForm.propTypes = {
-//   nin: PropTypes.string,
-//   nins: PropTypes.array,
-//   validateNin: PropTypes.func,
-//   handleDelete: PropTypes.func,
-//   proofing_methods: PropTypes.array
-// };
-
-// export default NinForm;
 
 const mapStateToProps = (state, props) => {
   return {

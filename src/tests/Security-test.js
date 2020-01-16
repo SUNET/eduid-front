@@ -47,7 +47,6 @@ describe("Security Actions", () => {
       type: actions.GET_CREDENTIALS_FAIL,
       error: true,
       payload: {
-        error: new Error(err),
         message: err
       }
     };
@@ -81,7 +80,6 @@ describe("Security Actions", () => {
       type: actions.GET_CHANGE_PASSWORD_FAIL,
       error: true,
       payload: {
-        error: new Error(err),
         message: err
       }
     };
@@ -122,7 +120,6 @@ describe("Security Actions", () => {
   //     type: actions.POST_DELETE_ACCOUNT_FAIL,
   //     error: true,
   //     payload: {
-  //       error: new Error(err),
   //       message: err
   //     }
   //   };
@@ -161,7 +158,6 @@ describe("Security Actions", () => {
       type: actions.POST_WEBAUTHN_BEGIN_FAIL,
       error: true,
       payload: {
-        error: new Error(err),
         message: err
       }
     };
@@ -174,7 +170,6 @@ describe("Security Actions", () => {
       type: actions.POST_WEBAUTHN_REGISTER_FAIL,
       error: true,
       payload: {
-        error: new Error(err),
         message: err
       }
     };
@@ -184,8 +179,6 @@ describe("Security Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    failed: false,
-    error: "",
     message: "",
     credentials: [],
     code: "",
@@ -207,8 +200,6 @@ describe("Reducers", () => {
         type: actions.GET_CREDENTIALS
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       credentials: [],
       code: "",
@@ -241,8 +232,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       credentials: credentials,
       code: "",
@@ -267,13 +256,10 @@ describe("Reducers", () => {
         type: actions.GET_CREDENTIALS_FAIL,
         error: true,
         payload: {
-          error: error,
           message: err
         }
       })
     ).toEqual({
-      failed: true,
-      error: error,
       message: err,
       credentials: [],
       code: "",
@@ -296,8 +282,6 @@ describe("Reducers", () => {
   //       type: actions.START_CHANGE_PASSWORD
   //     })
   //   ).toEqual({
-  //     failed: false,
-  //     error: "",
   //     message: "",
   //     credentials: [],
   //     code: "",
@@ -320,8 +304,6 @@ describe("Reducers", () => {
   //       type: actions.STOP_CHANGE_PASSWORD
   //     })
   //   ).toEqual({
-  //     failed: false,
-  //     error: "",
   //     message: "",
   //     credentials: [],
   //     code: "",
@@ -344,8 +326,6 @@ describe("Reducers", () => {
   //       type: actions.GET_CHANGE_PASSWORD
   //     })
   //   ).toEqual({
-  //     failed: false,
-  //     error: "",
   //     message: "",
   //     credentials: [],
   //     code: "",
@@ -370,13 +350,10 @@ describe("Reducers", () => {
   //       type: actions.GET_CHANGE_PASSWORD_FAIL,
   //       error: true,
   //       payload: {
-  //         error: error,
   //         message: err
   //       }
   //     })
   //   ).toEqual({
-  //     failed: true,
-  //     error: error,
   //     message: err,
   //     credentials: [],
   //     code: "",
@@ -399,8 +376,6 @@ describe("Reducers", () => {
   //       type: actions.START_DELETE_ACCOUNT
   //     })
   //   ).toEqual({
-  //     failed: false,
-  //     error: "",
   //     message: "",
   //     credentials: [],
   //     code: "",
@@ -423,8 +398,6 @@ describe("Reducers", () => {
   //       type: actions.STOP_DELETE_ACCOUNT
   //     })
   //   ).toEqual({
-  //     failed: false,
-  //     error: "",
   //     message: "",
   //     credentials: [],
   //     code: "",
@@ -447,8 +420,6 @@ describe("Reducers", () => {
   //       type: actions.POST_DELETE_ACCOUNT
   //     })
   //   ).toEqual({
-  //     failed: false,
-  //     error: "",
   //     message: "",
   //     credentials: [],
   //     code: "",
@@ -471,8 +442,6 @@ describe("Reducers", () => {
   //       type: actions.POST_DELETE_ACCOUNT
   //     })
   //   ).toEqual({
-  //     failed: false,
-  //     error: "",
   //     message: "",
   //     credentials: [],
   //     code: "",
@@ -499,8 +468,6 @@ describe("Reducers", () => {
   //       }
   //     })
   //   ).toEqual({
-  //     failed: false,
-  //     error: "",
   //     message: "",
   //     credentials: [],
   //     code: "",
@@ -525,13 +492,10 @@ describe("Reducers", () => {
   //       type: actions.POST_DELETE_ACCOUNT_FAIL,
   //       error: true,
   //       payload: {
-  //         error: error,
   //         message: err
   //       }
   //     })
   //   ).toEqual({
-  //     failed: true,
-  //     error: error,
   //     message: err,
   //     credentials: [],
   //     code: "",
@@ -554,8 +518,6 @@ describe("Reducers", () => {
         type: actions.START_ASK_WEBAUTHN_DESCRIPTION
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       credentials: [],
       code: "",
@@ -578,8 +540,6 @@ describe("Reducers", () => {
         type: actions.STOP_ASK_WEBAUTHN_DESCRIPTION
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       credentials: [],
       code: "",
@@ -605,8 +565,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       credentials: [],
       code: "",
@@ -631,13 +589,10 @@ describe("Reducers", () => {
         type: actions.POST_WEBAUTHN_BEGIN_FAIL,
         error: true,
         payload: {
-          error: error,
           message: err
         }
       })
     ).toEqual({
-      failed: false,
-      error: error,
       message: err,
       credentials: [],
       code: "",
@@ -667,8 +622,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       credentials: [],
       code: "",
@@ -693,13 +646,10 @@ describe("Reducers", () => {
         type: actions.POST_WEBAUTHN_REGISTER_FAIL,
         error: true,
         payload: {
-          error: error,
           message: err
         }
       })
     ).toEqual({
-      failed: false,
-      error: error,
       message: err,
       credentials: [],
       code: "",
@@ -1020,8 +970,6 @@ describe("Security Container", () => {
     getState = function(deleting, askingDescription) {
       return {
         security: {
-          failed: false,
-          error: "",
           message: "",
           credentials: [
             {

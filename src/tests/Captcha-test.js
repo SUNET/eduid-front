@@ -57,12 +57,11 @@ describe("Captcha Actions", () => {
   });
 
   it("Should fail when trying to post the captcha", () => {
-    const err = new Error("Captcha error");
+    const err = "Captcha error";
     const expectedAction = {
       type: actions.POST_SIGNUP_TRYCAPTCHA_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err
       }
     };

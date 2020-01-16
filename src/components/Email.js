@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import TextInput from "components/EduIDTextInput";
 import { Field, reduxForm } from "redux-form";
 import {
-  Form,
   FormFeedback,
   Modal,
   ModalHeader,
@@ -101,7 +100,6 @@ class Email extends Component {
 Email.propTypes = {
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
-  size: PropTypes.string,
   l10n: PropTypes.func,
   handleAccept: PropTypes.func,
   handleReject: PropTypes.func

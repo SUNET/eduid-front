@@ -20,7 +20,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 
 import eduIDApp from "./signup-store";
 import notifyAndDispatch from "./notify-middleware";
-import { getSignupConfig, getCodeStatus } from "actions/SignupMain";
+import { getSignupConfig } from "actions/SignupMain";
+import { getCodeStatus } from "actions/CodeVerified";
 import { history } from "components/SignupMain";
 
 /* for redux dev tools */

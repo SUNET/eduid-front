@@ -56,7 +56,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.postEmailFail(err)).toEqual(expectedAction);
   });
@@ -92,7 +92,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.START_RESEND_EMAIL_CODE_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.resendEmailCodeFail(err)).toEqual(expectedAction);
   });
@@ -115,7 +115,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.START_VERIFY_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.startVerifyFail(err)).toEqual(expectedAction);
   });
@@ -137,7 +137,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_REMOVE_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.startRemoveFail(err)).toEqual(expectedAction);
   });
@@ -159,7 +159,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_PRIMARY_FAIL,
       error: true,
-      payload: new Error(err)
+      payload: {message: err}
     };
     expect(actions.makePrimaryFail(err)).toEqual(expectedAction);
   });
@@ -167,14 +167,7 @@ describe("Email Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    failed: false,
-    error: "",
     message: "",
-    resending: {
-      failed: false,
-      error: {},
-      message: ""
-    },
     confirming: "",
     emails: [],
     email: ""
@@ -189,14 +182,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: "johnsmith@example.com"
@@ -212,14 +198,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: "johnsmith@example.com"
@@ -232,14 +211,7 @@ describe("Reducers", () => {
         type: actions.POST_EMAIL
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -252,14 +224,7 @@ describe("Reducers", () => {
         type: actions.POST_EMAIL_SUCCESS
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -271,18 +236,11 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
-      error: { error: "Bad error" },
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -298,14 +256,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "test@localhost.com",
       emails: [],
       email: ""
@@ -318,14 +269,7 @@ describe("Reducers", () => {
         type: actions.STOP_CONFIRMATION
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -338,14 +282,7 @@ describe("Reducers", () => {
         type: actions.START_RESEND_EMAIL_CODE
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -359,14 +296,7 @@ describe("Reducers", () => {
         message: "emails.resend_success"
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: "emails.resend_success"
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -378,18 +308,11 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.START_RESEND_EMAIL_CODE_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: true,
-        error: { error: "Bad error" },
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -405,14 +328,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: "",
@@ -425,18 +341,11 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.START_VERIFY_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
-      error: { error: "Bad error" },
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -452,14 +361,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: "john@gmail.com"
@@ -473,14 +375,7 @@ describe("Reducers", () => {
         message: "emails.resend_success"
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -492,18 +387,11 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_REMOVE_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
-      error: { error: "Bad error" },
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -519,14 +407,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: "john@gmail.com"
@@ -540,14 +421,7 @@ describe("Reducers", () => {
         message: "emails.resend_success"
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -559,18 +433,11 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_PRIMARY_FAIL,
         payload: {
-          error: { error: "Bad error" }
+          message: "Bad error"
         }
       })
     ).toEqual({
-      failed: true,
-      error: { error: "Bad error" },
       message: "",
-      resending: {
-        failed: false,
-        error: {},
-        message: ""
-      },
       confirming: "",
       emails: [],
       email: ""
@@ -580,17 +447,10 @@ describe("Reducers", () => {
 
 const state = {
   emails: {
-    failed: false,
-    error: "",
     message: "",
     confirming: "",
     emails: [],
     email: "",
-    resending: {
-      failed: false,
-      error: {},
-      message: ""
-    }
   },
   config: {
     csrf_token: "123456789",

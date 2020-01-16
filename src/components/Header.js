@@ -8,13 +8,11 @@ class Header extends Component {
     let button = "";
     if (url.includes("register")) {
       button = (
-        <div data-dashboard_url={this.props.dashboard_url}>
-          <a onClick={this.props.gotoSignin}>
-            <button id="login" className="btn">
-              {this.props.l10n("header.signin")}
-            </button>
-          </a>
-        </div>
+        <a href="http://html.eduid.docker/">
+          <button id="login" className="btn">
+            {this.props.l10n("header.signin")}
+          </button>
+        </a>
       );
     } else if (url.includes("profile")) {
       button = (

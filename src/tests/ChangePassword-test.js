@@ -39,7 +39,6 @@ describe("ChangePassword Actions", () => {
       type: actions.GET_SUGGESTED_PASSWORD_FAIL,
       error: true,
       payload: {
-        error: new Error(err),
         message: err
       }
     };
@@ -74,7 +73,6 @@ describe("ChangePassword Actions", () => {
         type: actions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
         error: true,
         payload: {
-          error: new Error(err),
           message: err
         }
       };
@@ -84,8 +82,6 @@ describe("ChangePassword Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    failed: false,
-    error: "",
     message: "",
     suggested_password: "",
     old_password: "",
@@ -99,8 +95,6 @@ describe("Reducers", () => {
         type: actions.GET_SUGGESTED_PASSWORD
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       suggested_password: "",
       old_password: "",
@@ -119,8 +113,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       suggested_password: suggested,
       old_password: "",
@@ -130,42 +122,20 @@ describe("Reducers", () => {
   });
 
   it("Receives a GET_SUGGESTED_PASSWORD_FAIL action", () => {
-    const errMsg = "Bad error",
-      err = new Error(errMsg);
+    const errMsg = "Bad error";
     expect(
       chpassReducer(mockState, {
         type: actions.GET_SUGGESTED_PASSWORD_FAIL,
         error: true,
         payload: {
-          error: err,
           message: errMsg
         }
       })
     ).toEqual({
-      failed: true,
-      error: err,
       message: errMsg,
       suggested_password: "",
       old_password: "",
       new_password: "",
-      choose_custom: false
-    });
-  });
-
-  it("Receives a VALID_CUSTOM_PASSWORD action", () => {
-    const passwd = "1234";
-    expect(
-      chpassReducer(mockState, {
-        type: actions.VALID_CUSTOM_PASSWORD,
-        payload: passwd
-      })
-    ).toEqual({
-      failed: false,
-      error: "",
-      message: "",
-      suggested_password: "",
-      old_password: "",
-      new_password: passwd,
       choose_custom: false
     });
   });
@@ -182,8 +152,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       suggested_password: "",
       old_password: passwd1,
@@ -198,8 +166,6 @@ describe("Reducers", () => {
         type: actions.START_PASSWORD_CHANGE
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: "",
       suggested_password: "",
       old_password: "",
@@ -218,8 +184,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: false,
-      error: "",
       message: msg,
       suggested_password: "",
       old_password: "",
@@ -235,13 +199,10 @@ describe("Reducers", () => {
         type: actions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
         error: true,
         payload: {
-          error: new Error(err),
           message: err
         }
       })
     ).toEqual({
-      failed: true,
-      error: err,
       message: "",
       suggested_password: "",
       old_password: "",
@@ -340,8 +301,6 @@ const fakeStore = state => ({
 
 const fakeState = custom => ({
   chpass: {
-    failed: false,
-    error: "",
     message: "",
     suggested_password: "abcd",
     old_password: "",

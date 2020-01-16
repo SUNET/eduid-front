@@ -31,7 +31,6 @@ describe("lookup mobile proofing Actions", () => {
       type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
       error: true,
       payload: {
-        error: "Bad error",
         message: "Bad error"
       }
     };
@@ -41,8 +40,6 @@ describe("lookup mobile proofing Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    failed: false,
-    error: ""
   };
 
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING action", () => {
@@ -51,8 +48,6 @@ describe("Reducers", () => {
         type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING
       })
     ).toEqual({
-      failed: false,
-      error: ""
     });
   });
 
@@ -62,7 +57,6 @@ describe("Reducers", () => {
         type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS
       })
     ).toEqual({
-      failed: false
     });
   });
 
@@ -76,8 +70,6 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      failed: true,
-      error: "Bad error"
     });
   });
 
@@ -88,8 +80,6 @@ describe("Reducers", () => {
         payload: "dummy payload"
       })
     ).toEqual({
-      failed: false,
-      error: ""
     });
   });
 });
@@ -103,8 +93,6 @@ const fakeStore = state => ({
 
 const fakeState = {
   lookup_mobile: {
-    failed: false,
-    error: ""
   },
   config: {
     LOOKUP_MOBILE_PROOFING_URL: "http://localhost/lookup-mobile",

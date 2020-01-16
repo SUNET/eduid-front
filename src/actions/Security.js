@@ -49,7 +49,6 @@ export function getCredentialsFail(err) {
     type: GET_CREDENTIALS_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };
@@ -78,7 +77,6 @@ export function getPasswordChangeFail(err) {
     type: GET_CHANGE_PASSWORD_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };
@@ -113,7 +111,6 @@ export function removeAccountFail(err) {
     type: POST_DELETE_ACCOUNT_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };
@@ -124,7 +121,6 @@ export function accountRemovedFail(err) {
     type: GET_DELETE_ACCOUNT_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };
@@ -156,7 +152,6 @@ export function beginWebauthnFail(err) {
     type: POST_WEBAUTHN_BEGIN_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };
@@ -167,7 +162,6 @@ export function registerWebauthnFail(err) {
     type: POST_WEBAUTHN_REGISTER_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };
@@ -187,7 +181,6 @@ export function tokenRemovedFail(err) {
     type: POST_WEBAUTHN_REMOVE_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };
@@ -207,7 +200,6 @@ export function tokenVerifyFail(err) {
     type: POST_WEBAUTHN_VERIFY_FAIL,
     error: true,
     payload: {
-      error: new Error(err),
       message: err
     }
   };

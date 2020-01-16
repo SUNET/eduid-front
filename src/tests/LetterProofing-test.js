@@ -60,7 +60,6 @@ describe("Letter proofing Actions", () => {
       type: actions.POST_LETTER_PROOFING_PROOFING_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err.toString()
       }
     };
@@ -74,7 +73,6 @@ describe("Letter proofing Actions", () => {
       type: actions.POST_LETTER_PROOFING_CODE_FAIL,
       error: true,
       payload: {
-        error: err,
         message: err.toString()
       }
     };
@@ -92,8 +90,6 @@ describe("Reducers", () => {
     letter_sent: "",
     letter_expires: "",
     letter_expired: false,
-    failed: false,
-    error: "",
     message: ""
   };
 
@@ -138,13 +134,11 @@ describe("Reducers", () => {
         type: actions.POST_LETTER_PROOFING_PROOFING_FAIL,
         error: true,
         payload: {
-          error: new Error("err"),
           message: "err"
         }
       })
     ).toEqual({
       ...mockState,
-      failed: true
     });
   });
 
@@ -183,26 +177,20 @@ describe("Reducers", () => {
         type: actions.POST_LETTER_PROOFING_CODE_FAIL,
         error: true,
         payload: {
-          error: new Error("err"),
           message: "err"
         }
       })
     ).toEqual({
       ...mockState,
-      failed: true
     });
   });
 });
 
 const fakeState = {
   letter_proofing: {
-    failed: false,
     message: "",
     errMsg: "",
     letter_sent: "",
-    resending: {
-      failed: false
-    }
   },
   config: { LETTER_PROOFING_URL: "http://localhost/letter" },
   nins: {
@@ -228,9 +216,6 @@ function setupComponent(store) {
     sendConfirmationLetter: mock.fn(),
     handleConfirmationLetter: mock.fn(),
     handleStopConfirmationLetter: mock.fn(),
-    resending: {
-      failed: false
-    }
   };
   const wrapper = mount(
     <Provider store={store}>
@@ -264,7 +249,6 @@ describe("LetterProofing Container", () => {
     const store = fakeStore(fakeState);
 
     mockProps = {
-      resending: {}
     };
 
     wrapper = mount(

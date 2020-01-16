@@ -62,18 +62,4 @@ ConfirmModalForm = connect(state => ({
   initialValues: {}
 }))(ConfirmModalForm);
 
-// ConfirmModalForm.propTypes = {
-//   placeholder: PropTypes.string,
-//   handleConfirm: PropTypes.func,
-//   confirming: PropTypes.string,
-//   handleResend: PropTypes.func,
-//   closeModal: PropTypes.func,
-//   showModal: PropTypes.bool,
-//   with_resend_link: PropTypes.bool
-// };
-
-// ConfirmModalForm.defaultProps = {
-//   with_resend_link: true
-// };
-
 export default i18n(ConfirmModalForm);
