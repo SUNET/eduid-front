@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import GenericConfirmModal from "components/GenericConfirmModal";
+import Modal from "reactstrap/lib/Modal";
+import ModalHeader from "reactstrap/lib/ModalHeader";
+import ModalBody from "reactstrap/lib/ModalBody";
+import ModalFooter from "reactstrap/lib/ModalFooter";
+import EduIDButton from "components/EduIDButton";
 
 import "style/PendingActions.scss";
+import "style/EduIDButton.scss";
 
 class PendingActions extends Component {
   render() {
     console.log("these are the props in pending actions:", this.props);
-    let modalPrompt = "";
+    let modal = "";
     let pdataMissing = true,
       toShow = this.props.pending.map((missing, index) => {
         if (
@@ -46,29 +52,41 @@ class PendingActions extends Component {
       });
 
     if (this.props.showModal) {
-      modalPrompt = [
-        <GenericConfirmModal
-          key="1"
-          title={"this is modal title"}
-          mainText={"this is mainText"}
-          showModal={this.props.showModal}
-          closeModal={this.props.handleCloseModal}
-          acceptModal={this.props.handleCloseModal}
-        />
+      modal = [
+        <Modal isOpen={this.props.showModal}>
+          <ModalHeader>
+            {this.props.l10n("beta-link.to-beta.modal.header")}
+          </ModalHeader>
+          <ModalBody>
+            <p>{this.props.l10n("beta-link.to-beta.modal.text")}</p>
+          </ModalBody>
+          <ModalFooter>
+            <EduIDButton
+              className="cancel-button"
+              onClick={this.props.handleCloseModal}
+            >
+              {this.props.l10n("cm.cancel")}
+            </EduIDButton>
+            <a href="/feature/beta">
+              <button id="beta-link-button" className="eduid-button">
+                {this.props.l10n("cm.accept")}
+              </button>
+            </a>
+          </ModalFooter>
+        </Modal>
       ];
     }
 
     return (
       <div>
         <button id="beta-link" onClick={this.props.handleShowModal}>
-          {/* href="/feature/beta" */}
-          {this.props.l10n("beta-link.change-version")}
+          {this.props.l10n("beta-link.to-beta")}
         </button>
         <ul className="list-unstyled pending-actions">
           {toShow}
           {toConfirm}
         </ul>
-        {modalPrompt}
+        <div>{modal}</div>
       </div>
     );
   }

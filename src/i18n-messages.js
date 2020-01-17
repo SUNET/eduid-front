@@ -2287,17 +2287,24 @@ const msgs = {
   /* Footer ******** ******/
   /************************/
 
-  "beta-link.change-version": (
+  "beta-link.to-beta": (
     <FormattedMessage
-      id="beta-link.change-version"
+      id="beta-link.to-beta"
       defaultMessage={`Try the new eduID`}
     />
   ),
 
-  "foot.change-version-tip": (
+  "beta-link.to-beta.modal.header": (
     <FormattedMessage
-      id="foot.change-version-tip"
-      defaultMessage={`If you experience any problem while using the app, you can switch to the old version.`}
+      id="beta-link.to-beta.modal.header"
+      defaultMessage={`About the new eduID...`}
+    />
+  ),
+
+  "beta-link.to-beta.modal.text": (
+    <FormattedMessage
+      id="beta-link.to-beta.modal.text"
+      defaultMessage={`The new eduID is under development so if you experience any technical problems you will be able to switch back to this version.`}
     />
   ),
 
