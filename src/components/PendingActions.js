@@ -12,7 +12,7 @@ import "style/EduIDButton.scss";
 
 class PendingActions extends Component {
   render() {
-    console.log("these are the props in pending actions:", this.props);
+    // console.log("these are the props in pending actions:", this.props);
     let modal = "";
     let pdataMissing = true,
       toShow = this.props.pending.map((missing, index) => {
