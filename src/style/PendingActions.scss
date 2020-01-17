@@ -1,38 +1,5 @@
 @import "../variables.scss";
 
-#beta-link-button {
-  height: 45px;
-  background-color: $light-green;
-  border-color: $light-green;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.25px;
-  line-height: 45px;
-  text-transform: uppercase;
-  padding: 0 40px;
-  border-radius: 0;
-  border: none;
-  &:hover {
-    background: $light-green-hover;
-    border-color: $light-green-hover;
-  }
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: $light-green-hover;
-    border-color: $light-green-hover;
-    box-shadow: 0 0 0 0.2rem $light-green-shadow;
-  }
-  &:disabled {
-    background-color: $light-green-disabled;
-    border-color: $light-green-disabled;
-  }
-}
-
-// .modal-footer a {
-//   margin: 0;
-// }
-
 #beta-link {
   font-size: 14px;
   color: white;

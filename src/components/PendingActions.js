@@ -12,7 +12,6 @@ import "style/EduIDButton.scss";
 
 class PendingActions extends Component {
   render() {
-    // console.log("these are the props in pending actions:", this.props);
     let modal = "";
     let pdataMissing = true,
       toShow = this.props.pending.map((missing, index) => {
@@ -68,9 +67,9 @@ class PendingActions extends Component {
               {this.props.l10n("cm.cancel")}
             </EduIDButton>
             <a href="/feature/beta">
-              <button id="beta-link-button" className="eduid-button">
+              <EduIDButton id="beta-link-button" className="eduid-button">
                 {this.props.l10n("cm.accept")}
-              </button>
+              </EduIDButton>
             </a>
           </ModalFooter>
         </Modal>
