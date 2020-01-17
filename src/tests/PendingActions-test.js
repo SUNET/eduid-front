@@ -27,6 +27,9 @@ function setupComponent() {
       pending: ["surname", "emails"],
       pending_confirm: ["phone"]
     },
+    pendingActions: {
+      showModal: false
+    },
     config: {
       DASHBOARD_URL: "/profile/"
     }

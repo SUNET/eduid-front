@@ -1336,12 +1336,16 @@
     "defaultMessage": "Logout"
   },
   {
-    "id": "beta-link.change-version",
+    "id": "beta-link.to-beta",
     "defaultMessage": "Try the new eduID"
   },
   {
-    "id": "foot.change-version-tip",
-    "defaultMessage": "If you experience any problem while using the app, you can switch to the old version."
+    "id": "beta-link.to-beta.modal.header",
+    "defaultMessage": "About the new eduID..."
+  },
+  {
+    "id": "beta-link.to-beta.modal.text",
+    "defaultMessage": "The new eduID is under development so if you experience any technical problems you will be able to switch back to this version."
   },
   {
     "id": "pending.pdata",
