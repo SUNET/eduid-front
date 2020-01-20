@@ -7,7 +7,7 @@ var webpackStaging = {
 
 webpackStaging.output = {
   filename: "[name].staging.js",
-  publicPath: "https://www.dev.eduid.se/static/front-build/",
+  publicPath: "/static/front-build/",
   path: path.join(__dirname, "build")
 };
 
