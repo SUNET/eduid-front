@@ -84,12 +84,28 @@ class Main extends Component {
                 path="/profile/verify-identity/"
                 render={props => <Profile {...props} />}
               />
+              <Route path="/profile/chpass/" component={ChangePassword} />
+              {/* Redirects for old paths */}
               <Route
                 exact
                 path="/profile/security/"
                 component={() => <Redirect to="/profile/settings/" />}
               />
-              <Route path="/profile/chpass/" component={ChangePassword} />
+              <Route
+                exact
+                path="/profile/accountlinking/"
+                component={() => <Redirect to="/profile/settings/advanced-settings/" />}
+              />
+              <Route
+                exact
+                path="/profile/nins/"
+                component={() => <Redirect to="/profile/verify-identity/" />}
+              />
+              <Route
+                exact
+                path="/profile/emails/"
+                component={() => <Redirect to="/profile/settings/personaldata/" />}
+              />
             </div>
           </div>
           <FooterContainer {...this.props} />
