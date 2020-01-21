@@ -11,7 +11,7 @@
   "Not a valid email address.": "Ogiltig e-postadress.",
   "Temporary technical problems": "Temporärt tekniskt fel, var god försök senare",
   "accountId.accountId_display_title": "Unikt ID",
-  "accountId.long_description": "Detta är ett autogenererat unikt id för ditt eduID som du kan behöva ange när du ber om tekninsk support.",
+  "accountId.long_description": "Detta är ett autogenererat unikt id för ditt eduID som du kan behöva ange när du ber om teknisk support.",
   "accountId.main_title": "Unikt ID",
   "accountId.short_description": " ",
   "account_linking.long_description": "Om du är forskare med ett ORCID iD kan du dela det med ditt eduID.",
