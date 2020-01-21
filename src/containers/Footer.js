@@ -17,7 +17,7 @@ const mapStateToProps = (state, props) => {
     language: state.intl.locale,
     languages: languages,
     reload_to: state.config.DASHBOARD_URL,
-    faq_link: state.config.faq_link
+    faq_link: state.config.static_faq_url
   };
 };
 
@@ -44,9 +44,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const FooterContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Footer);
+const FooterContainer = connect(mapStateToProps, mapDispatchToProps)(Footer);
 
 export default i18n(FooterContainer);
