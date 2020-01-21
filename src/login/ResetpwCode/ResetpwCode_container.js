@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import i18n from "i18n-messages";
 
-import ResetPassword from "login/ResetPassword/ResetPassword";
+import ResetpwCode from "login/ResetpwCode/ResetpwCode";
+import * as actions from "login/ResetpwCode/ResetpwCode_actions";
 
 const mapStateToProps = (state, props) => {
   return {
@@ -10,12 +11,15 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    onLoad: (e) => {
+      dispatch(actions.configCode());
+    },
   };
 };
 
-const ResetPasswordContainer = connect(
+const ResetpwCodeContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ResetPassword);
+)(ResetpwCode);
 
-export default i18n(ResetPasswordContainer);
+export default i18n(ResetpwCodeContainer);

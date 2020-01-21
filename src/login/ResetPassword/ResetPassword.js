@@ -12,8 +12,8 @@ class ResetPassword extends Component {
   render() {
     return (
       <div>
-        <h3 className="verify-identity-header">
-          {this.props.l10n("chpass.main_title")}
+        <h3 className="reset-password-header">
+          {this.props.l10n("resetpass.main_title")}
         </h3>
         <InitFormContainer />
       </div>
