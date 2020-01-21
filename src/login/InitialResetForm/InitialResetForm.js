@@ -14,49 +14,36 @@ import "./InitialResetForm.scss";
 
 
 let InitForm = props => (
-  <div id="init-reset-input-group">
-    <fieldset id="init-reset-form">
-      <Field
-        type="email"
-        name="email"
-        componentClass="input"
-        id="email-input"
-        component={TextInput}
-        l10n={props.l10n}
-        placeholder="example@email.com"
-      />
-    </fieldset>
-    <EduIDButton
-      className="settings-button"
-      id="register-button"
-      disabled={props.invalid}
-      onClick={props.handleEmail}
-    >
-      {props.l10n("reset.send")}
-    </EduIDButton>
-    <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback>
-  </div>
+  <Form
+    id="init-reset-form"
+    role="form">
+    <div id="init-reset-input-group">
+      <fieldset id="init-reset-form">
+        <Field
+          type="email"
+          name="email"
+          componentClass="input"
+          component={TextInput}
+          l10n={props.l10n}
+          placeholder="example@email.com"
+        />
+      </fieldset>
+      <EduIDButton
+        className="settings-button"
+        id="register-button"
+        disabled={props.invalid}
+        onClick={props.handleEmail}
+      >
+        {props.l10n("reset.send")}
+      </EduIDButton>
+      <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback>
+    </div>
+  </Form>
 );
 
 InitForm = reduxForm({
-  form: "initialForm",
+  form: "init-reset-form",
   validate
 })(InitForm);
 
-const mapStateToProps = (state, props) => {
-  return {
-    enableReinitialize: true
-  };
-};
-
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-  };
-};
-
-const InitFormContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(InitForm);
-
-export default i18n(InitFormContainer);
+export default InitForm;

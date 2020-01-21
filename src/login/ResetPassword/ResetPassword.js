@@ -4,7 +4,7 @@ import i18n from "i18n-messages";
 
 import "./ResetPassword.scss";
 
-import InitFormContainer from "login/InitialResetForm/InitialResetForm";
+import InitFormContainer from "login/InitialResetForm/InitialResetForm_container";
 
 
 class ResetPassword extends Component {
