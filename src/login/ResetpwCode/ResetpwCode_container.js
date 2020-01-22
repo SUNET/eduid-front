@@ -11,9 +11,6 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    onLoad: (e) => {
-      dispatch(actions.configCode());
-    },
   };
 };
 

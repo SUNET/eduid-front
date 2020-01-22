@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import i18n from "i18n-messages";
 
-import "./ResetPassword.scss";
+import "./ResetpwCode.scss";
 
 import CodeFormContainer from "login/ResetpwCodeForm/ResetpwCodeForm_container";
 

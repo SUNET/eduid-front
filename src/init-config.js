@@ -13,6 +13,7 @@ module.exports = {
     EDUID_CONFIG_URL: JSON.stringify("/services/jsconfig/config"),
     SIGNUP_CONFIG_URL: JSON.stringify("/services/jsconfig/signup/config"),
     LOGIN_CONFIG_URL: JSON.stringify("/services/jsconfig/login/config"),
+    PASSWORD_SERVICE_URL: JSON.stringify("/services/reset-password"),
     AVAILABLE_LANGUAGES: JSON.stringify(langs),
     LOCALIZED_MESSAGES: JSON.stringify(messages),
     SIGNUP_SERVICE_URL: JSON.stringify("/services/signup/"),

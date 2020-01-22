@@ -49,12 +49,12 @@ class Main extends Component {
                 />
                 <Route
                   exact
-                  path="/reset/reset-password"
+                  path="/reset/reset-password/"
                   render={props => <ResetPasswordContainer {...props} />}
                 />
                 <Route
                   path="/reset/reset-password/code/"
-                  render={props => <ResetPasswordContainer {...props} />}
+                  render={props => <ResetpwCodeContainer {...props} />}
                 />
               </div>
             </div>

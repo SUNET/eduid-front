@@ -6,6 +6,9 @@ export const GET_LOGIN_CONFIG = "GET_JSCONFIG_LOGIN_CONFIG";
 export const GET_LOGIN_CONFIG_SUCCESS = "GET_JSCONFIG_LOGIN_CONFIG_SUCCESS";
 export const GET_LOGIN_CONFIG_FAIL = "GET_JSCONFIG_LOGIN_CONFIG_FAIL";
 
+export const CODE_FOR_CONFIG = "CODE_FOR_CONFIG";
+export const POST_CODE_FAIL = "POST_CODE_FAIL";
+
 
 export function appFetching() {
   return {
@@ -40,6 +43,25 @@ export function getLoginConfigFail(err) {
     error: true,
     payload: {
       error: err,
+      message: err
+    }
+  };
+}
+
+export function configCode(code) {
+  return {
+    type: CODE_FOR_CONFIG,
+    payload: {
+      code: code
+    }
+  };
+}
+
+export function postCodeFail(err) {
+  return {
+    type: POST_CODE_FAIL,
+    error: true,
+    payload: {
       message: err
     }
   };

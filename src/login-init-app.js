@@ -41,7 +41,12 @@ sagaMiddleware.run(rootSaga);
 const initState = function() {
   console.log('Initializing state for the login app...');
   // ...
-  store.dispatch(actions.getLoginConfig())
+  const segments = document.location.href.split('/').reverse();
+  if (segments[1] === 'code') {
+    store.dispatch(actions.configCode(segments[0]))
+  } else {
+    store.dispatch(actions.getLoginConfig())
+  }
 };
 
 /* render app */
