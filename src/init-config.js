@@ -12,6 +12,7 @@ module.exports = {
     TOKEN_SERVICE_URL: JSON.stringify("/services/authn/login"),
     EDUID_CONFIG_URL: JSON.stringify("/services/jsconfig/config"),
     SIGNUP_CONFIG_URL: JSON.stringify("/services/jsconfig/signup/config"),
+    LOGIN_CONFIG_URL: JSON.stringify("/services/jsconfig/login/config"),
     AVAILABLE_LANGUAGES: JSON.stringify(langs),
     LOCALIZED_MESSAGES: JSON.stringify(messages),
     SIGNUP_SERVICE_URL: JSON.stringify("/services/signup/"),

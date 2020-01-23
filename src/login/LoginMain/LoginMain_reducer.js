@@ -32,6 +32,12 @@ let loginReducer = (state = loginData, action) => {
         //...state,
         //is_fetching: true
       //};
+    case actions.GET_LOGIN_CONFIG_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        // is_fetching: false
+      };
     default:
       //if (action.type.endsWith("_SUCCESS") || action.type.endsWith("_FAIL")) {
         //return {
