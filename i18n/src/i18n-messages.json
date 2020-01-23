@@ -1404,8 +1404,8 @@
     "defaultMessage": "Logout"
   },
   {
-    "id": "foot.change-version",
-    "defaultMessage": "Switch to previous version"
+    "id": "beta-link.to-stable",
+    "defaultMessage": "The new eduID is under development, click here to go back to the stable version"
   },
   {
     "id": "foot.change-version-tip",

@@ -42,6 +42,23 @@ h1.banner-tagline {
   margin: 6rem 0 3rem 0;
 }
 
+#stable-link {
+  background-color: #ffe7dd;
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+  text-decoration-color: #ff4500;
+}
+
+#stable-link span {
+  font-family: "ProximaNova-Regular";
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 6px 0;
+  color: #ff4500;
+  margin: 0 1rem;
+}
+
 // remove this from the test of the app
 #welcome {
   padding: 6rem 0 3rem 0;

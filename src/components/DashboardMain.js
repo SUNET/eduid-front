@@ -55,47 +55,63 @@ class Main extends Component {
     // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
     // should wrap the splash container and router once we get back to using
     // it.
-    return ([
-        <SplashContainer key="0" />,
-        <Router key="1" history={history}>
-          <div className="dashboard-wrapper">
-            <HeaderContainer {...this.props} />
-            <div id="dashboard-text">
-              <div id="welcome">
-                <h1>
-                  {this.props.l10n("dashboard.welcome")} {this.props.email}
-                </h1>
-                <Link id="profile-prompt-link" to={promptLink}>
-                  <h2 className={styling}>{welcomeGreeting}</h2>
-                </Link>
-              </div>
-              <div id="content">
-                <NotificationsContainer />
-                <Route
-                  path="/profile/settings/"
-                  component={SettingsComponent}
-                />
-                <Route
-                  exact
-                  path="/profile/"
-                  render={props => <Profile {...props} />}
-                />
-                <Route
-                  path="/profile/verify-identity/"
-                  render={props => <Profile {...props} />}
-                />
-                <Route
-                  exact
-                  path="/profile/security/"
-                  component={() => <Redirect to="/profile/settings/" />}
-                />
-                <Route path="/profile/chpass/" component={ChangePassword} />
-              </div>
+    return [
+      <SplashContainer key="0" />,
+      <Router key="1" history={history}>
+        <div className="dashboard-wrapper">
+          <a id="stable-link" href="/feature/no-beta">
+            {this.props.l10n("beta-link.to-stable")}
+          </a>
+          <HeaderContainer {...this.props} />
+          <div id="dashboard-text">
+            <div id="welcome">
+              <h1>
+                {this.props.l10n("dashboard.welcome")} {this.props.email}
+              </h1>
+              <Link id="profile-prompt-link" to={promptLink}>
+                <h2 className={styling}>{welcomeGreeting}</h2>
+              </Link>
             </div>
-            <FooterContainer {...this.props} />
+            <div id="content">
+              <NotificationsContainer />
+              <Route path="/profile/settings/" component={SettingsComponent} />
+              <Route
+                exact
+                path="/profile/"
+                render={props => <Profile {...props} />}
+              />
+              <Route
+                path="/profile/verify-identity/"
+                render={props => <Profile {...props} />}
+              />
+              <Route path="/profile/chpass/" component={ChangePassword} />
+              {/* Redirects for old paths */}
+              <Route
+                exact
+                path="/profile/security/"
+                component={() => <Redirect to="/profile/settings/" />}
+              />
+              <Route
+                exact
+                path="/profile/accountlinking/"
+                component={() => <Redirect to="/profile/settings/advanced-settings/" />}
+              />
+              <Route
+                exact
+                path="/profile/nins/"
+                component={() => <Redirect to="/profile/verify-identity/" />}
+              />
+              <Route
+                exact
+                path="/profile/emails/"
+                component={() => <Redirect to="/profile/settings/personaldata/" />}
+              />
+            </div>
           </div>
-        </Router>
-    ]);
+          <FooterContainer {...this.props} />
+        </div>
+      </Router>
+    ];
   }
 }
 

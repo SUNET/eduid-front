@@ -6,4 +6,5 @@
 - [ ] Reviewed the code changes
 - [ ] Navigate to the branch (pulled the latest version)
 - [ ] Run the code and been able to execute the expected function
+- [ ] Check any styling on both desktop and mobile sizes
 
