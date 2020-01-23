@@ -10,6 +10,8 @@ import notifyAndDispatch from "./notify-middleware";
 // i18n
 import { Provider } from "react-intl-redux";
 import { updateIntl } from "react-intl-redux";
+// root saga
+import rootSaga from "./login-root-saga";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -28,6 +30,8 @@ export const store = createStore(
     )
   )
 );
+
+sagaMiddleware.run(rootSaga);
 
 /* Initial action */
 
