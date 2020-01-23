@@ -29,8 +29,6 @@ export const store = createStore(
   )
 );
 
-sagaMiddleware.run(rootSaga);
-
 /* Initial action */
 
 const initState = function() {
