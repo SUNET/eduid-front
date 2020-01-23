@@ -1,5 +1,6 @@
 export const DEAL_WITH_EMAIL = "DEAL_WITH_EMAIL";
-export const POST_EMAIL_FAIL = "POST_EMAIL_FAIL";
+export const POST_RESET_PASSWORD_RESET_SUCCESS = "POST_RESET_PASSWORD_RESET_SUCCESS"
+export const POST_RESET_PASSWORD_RESET_FAIL = "POST_RESET_PASSWORD_RESET_FAIL"
 
 
 export function dealWithEmail(email) {
@@ -13,7 +14,7 @@ export function dealWithEmail(email) {
 
 export function postEmailFail(err) {
   return {
-    type: POST_EMAIL_FAIL,
+    type: POST_RESET_PASSWORD_RESET_FAIL,
     error: true,
     payload: {
       message: err

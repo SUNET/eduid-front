@@ -3,6 +3,7 @@ import * as actions from "login/InitialResetForm/InitialResetForm_actions";
 
 const resetData = {
   email: "",
+  email_sent: false,
 };
 
 let initResetReducer = (state = resetData, action) => {
@@ -11,6 +12,11 @@ let initResetReducer = (state = resetData, action) => {
       return {
         ...state,
         ...action.payload,
+      };
+    case actions.POST_RESET_PASSWORD_RESET_SUCCESS:
+      return {
+        ...state,
+        email_sent: true,
       };
     default:
       return state;

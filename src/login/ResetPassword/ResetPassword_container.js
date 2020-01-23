@@ -5,6 +5,7 @@ import ResetPassword from "login/ResetPassword/ResetPassword";
 
 const mapStateToProps = (state, props) => {
   return {
+      email_sent: state.reset.email_sent,
   };
 };
 
