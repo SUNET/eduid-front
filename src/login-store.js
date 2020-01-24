@@ -6,6 +6,7 @@ import { reducer as formReducer } from "redux-form";
 import { intlReducer } from "react-intl-redux";
 
 import loginReducer from "login/LoginMain/LoginMain_reducer";
+import initResetFormReducer from "login/InitResetForm/InitResetForm_reducer";
 
 
 const eduIDLoginApp = combineReducers({
@@ -14,6 +15,7 @@ const eduIDLoginApp = combineReducers({
   router: routerReducer,
   form: formReducer,
   intl: intlReducer,
+  reset: initResetFormReducer,
 });
 
 export default eduIDLoginApp;

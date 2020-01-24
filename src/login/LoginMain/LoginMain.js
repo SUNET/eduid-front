@@ -8,6 +8,8 @@ import SplashContainer from "containers/Splash";
 import NotificationsContainer from "containers/Notifications";
 import FooterContainer from "containers/Footer";
 
+import InitResetFormContainer from "login/InitResetForm/InitResetForm_container";
+
 import "style/base.scss";
 import "./LoginMain.scss";
 
@@ -44,6 +46,11 @@ class Main extends Component {
                   exact
                   path="/"
                   render={props => <div {...props} ></div>}
+                />
+                <Route
+                  exact
+                  path="/reset/reset-password/"
+                  render={props => <InitResetFormContainer {...props} />}
                 />
               </div>
             </div>
