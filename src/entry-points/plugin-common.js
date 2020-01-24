@@ -1,4 +1,3 @@
-import './public-path';
 import "babel-polyfill";
 
 // Polyfill for Element.closest for IE9+
