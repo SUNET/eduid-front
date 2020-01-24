@@ -16,7 +16,7 @@ import "style/Email.scss";
 
 /* FORM */
 
-const validate = values => {
+export const validate = values => {
   const errors = {},
     email = values.email,
     pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
