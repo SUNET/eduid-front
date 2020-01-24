@@ -9,6 +9,7 @@ import NotificationsContainer from "containers/Notifications";
 import FooterContainer from "containers/Footer";
 
 import InitResetFormContainer from "login/InitResetForm/InitResetForm_container";
+import ResettingContainer from "login/Resetting/Resetting_container";
 
 import "style/base.scss";
 import "./LoginMain.scss";
@@ -51,6 +52,10 @@ class Main extends Component {
                   exact
                   path="/reset/reset-password/"
                   render={props => <InitResetFormContainer {...props} />}
+                />
+                <Route
+                  path="/reset/reset-password/code/"
+                  render={props => <ResettingContainer {...props} />}
                 />
               </div>
             </div>
