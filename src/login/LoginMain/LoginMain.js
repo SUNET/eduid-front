@@ -32,8 +32,8 @@ class Main extends Component {
   render() {
     return [
       //<FetchingContext.Provider value={this.state}>
-        <SplashContainer key=0 />
-        <Router key=1 history={history}>
+        <SplashContainer key="0" />,
+        <Router key="1" history={history}>
           <div className="login-wrapper">
             <div id="login-text">
               <div id="welcome">
