@@ -13,8 +13,9 @@ import { Provider } from "react-intl-redux";
 import { updateIntl } from "react-intl-redux";
 // root saga
 import rootSaga from "./login-root-saga";
-// history
+
 import { history } from "login/LoginMain/LoginMain";
+import * as actions from "login/LoginMain/LoginMain_actions";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -41,7 +42,7 @@ sagaMiddleware.run(rootSaga);
 
 const initState = function() {
   console.log('Initializing state for the login app...');
-  // ...
+  store.dispatch(actions.getLoginConfig());
 };
 
 /* render app */
