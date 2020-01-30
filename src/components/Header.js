@@ -8,7 +8,7 @@ class Header extends Component {
     let button = "";
     if (url.includes("register")) {
       button = (
-        <a href="http://html.eduid.docker/">
+        <a href={this.props.dashboard_url}>
           <button id="login" className="btn">
             {this.props.l10n("header.signin")}
           </button>
@@ -28,7 +28,7 @@ class Header extends Component {
 
     return (
       <header>
-        <a href="http://html.eduid.docker/">
+        <a href={this.props.dashboard_url}>
           <div id="eduid-logo" />
         </a>
         {button}
