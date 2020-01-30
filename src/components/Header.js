@@ -5,9 +5,6 @@ import "style/Header.scss";
 class Header extends Component {
   render() {
     const url = location.pathname;
-    console.log("these are props:" ,this.props)
-    console.log("these are dashboard_url:", this.props.dashboard_url)
-
     let button = "";
     if (url.includes("register")) {
       button = (
