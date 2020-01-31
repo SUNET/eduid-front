@@ -50,7 +50,7 @@ class Security extends Component {
       // verify button/ verified badge
       if (cred.verified) {
         btnVerify = (
-          <EduIDButton className="btn-link verified-status-label" disabled>
+          <EduIDButton className="btn-link verified" disabled>
             {this.props.l10n("security.verified")}
           </EduIDButton>
         );
