@@ -143,6 +143,11 @@ button.btn-link {
 a.btn-primary,
 button.btn-primary {
   background-color: transparent;
+  &.disabled,
+  &:disabled {
+    background-color: transparent;
+    color: #161616;
+  }
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
@@ -243,7 +248,6 @@ button.eduid-button.btn-warning {
     transform: rotate(360deg);
   }
 }
-
 
 @media (max-width: 414px) {
   button.btn {
