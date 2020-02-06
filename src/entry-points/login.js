@@ -1,41 +1,41 @@
-import "babel-polyfill";
+// import "babel-polyfill";
 
-// Polyfill for Element.closest for IE9+
-// see https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+// // Polyfill for Element.closest for IE9+
+// // see https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
 
-if (!Element.prototype.matches)
-  Element.prototype.matches =
-    Element.prototype.msMatchesSelector ||
-    Element.prototype.webkitMatchesSelector;
+// if (!Element.prototype.matches)
+//   Element.prototype.matches =
+//     Element.prototype.msMatchesSelector ||
+//     Element.prototype.webkitMatchesSelector;
 
-if (!Element.prototype.closest)
-  Element.prototype.closest = function(s) {
-    var el = this;
-    if (!document.documentElement.contains(el)) return null;
-    do {
-      if (el.matches(s)) return el;
-      el = el.parentElement || el.parentNode;
-    } while (el !== null);
-    return null;
-  };
+// if (!Element.prototype.closest)
+//   Element.prototype.closest = function(s) {
+//     var el = this;
+//     if (!document.documentElement.contains(el)) return null;
+//     do {
+//       if (el.matches(s)) return el;
+//       el = el.parentElement || el.parentNode;
+//     } while (el !== null);
+//     return null;
+//   };
 
-// end Polyfill
+// // end Polyfill
 
-// URL.searchParams polyfill
+// // URL.searchParams polyfill
 
-window.URLSearchParams = require("url-search-params");
+// window.URLSearchParams = require("url-search-params");
 
-// End polyfill
+// // End polyfill
 
-import React from "react";
-import { addLocaleData } from "react-intl";
+// import React from "react";
+// import { addLocaleData } from "react-intl";
 
-import init_app from "login-init-app";
-import App from "login/components/App/App_container";
+// import init_app from "login-init-app";
+// import App from "login/components/App/App_container";
 
-import en from "react-intl/locale-data/en";
-import sv from "react-intl/locale-data/sv";
+// import en from "react-intl/locale-data/en";
+// import sv from "react-intl/locale-data/sv";
 
-addLocaleData([...en, ...sv]);
+// addLocaleData([...en, ...sv]);
 
-init_app(document.getElementById("root"), <App />);
+// init_app(document.getElementById("root"), <App />);
