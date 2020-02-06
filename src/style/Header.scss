@@ -3,17 +3,8 @@
 header {
   display: flex;
   justify-content: space-between;
-  margin: 1rem;
-}
-
-.banner {
-  background-color: white;
-}
-
-.tagline {
-  display: flex;
+  padding: 16px 16px 0 16px;
   align-items: center;
-  margin: 6rem 0 3rem 0;
 }
 
 #eduid-logo {
