@@ -12,8 +12,8 @@ import Footer from "../Footer/Footer_container";
 import InitResetFormContainer from "login/InitResetForm/InitResetForm_container";
 import ResettingContainer from "login/Resetting/Resetting_container";
 
-import "style/base.scss";
-import "./LoginMain.scss";
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../style/base.scss";
 
 export const history = createBrowserHistory();
 
