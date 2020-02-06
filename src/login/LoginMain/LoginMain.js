@@ -7,7 +7,7 @@ import { createBrowserHistory } from "history";
 import SplashContainer from "containers/Splash";
 import Header from "../Header/Header_container";
 import NotificationsContainer from "containers/Notifications";
-import FooterContainer from "containers/Footer";
+import Footer from "../Footer/Footer_container";
 
 import InitResetFormContainer from "login/InitResetForm/InitResetForm_container";
 import ResettingContainer from "login/Resetting/Resetting_container";
@@ -61,7 +61,7 @@ class Main extends Component {
                 />
               </div>
             </div>
-            <FooterContainer {...this.props} />
+            <Footer {...this.props} />
           </div>
         </Router>
       //</FetchingContext.Provider>
