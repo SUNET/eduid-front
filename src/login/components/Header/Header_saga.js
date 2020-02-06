@@ -1,5 +1,5 @@
 import { select } from "redux-saga/effects";
-import { failRequest } from "../../sagas/common";
+import { failRequest } from "../../../sagas/common";
 import { postLogoutFail, POST_AUTHN_LOGOUT_SUCCESS } from "./Header_actions";
 
 export function* requestLogout() {

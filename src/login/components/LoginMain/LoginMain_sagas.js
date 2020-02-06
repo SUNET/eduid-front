@@ -1,9 +1,9 @@
 import { put, call } from "redux-saga/effects";
 import { ajaxHeaders,
          checkStatus,
-         getRequest } from "sagas/common";
+         getRequest } from "../../../sagas/common";
 
-import * as actions from "login/LoginMain/LoginMain_actions";
+import * as actions from "./LoginMain_actions";
 
 
 export function* requestLoginConfig() {

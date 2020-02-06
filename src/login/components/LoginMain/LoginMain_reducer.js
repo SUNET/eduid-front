@@ -1,4 +1,4 @@
-import * as actions from "login/LoginMain/LoginMain_actions";
+import * as actions from "./LoginMain_actions";
 
 
 const loginData = {

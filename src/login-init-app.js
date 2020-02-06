@@ -14,9 +14,9 @@ import { updateIntl } from "react-intl-redux";
 // root saga
 import rootSaga from "./login-root-saga";
 
-import { history } from "login/LoginMain/LoginMain";
-import * as actions from "login/LoginMain/LoginMain_actions";
-import * as resetting_actions from "login/Resetting/Resetting_actions";
+import { history } from "login/components/LoginMain/LoginMain";
+import * as actions from "login/components/LoginMain/LoginMain_actions";
+// import * as resetting_actions from "login/components/Resetting/Resetting_actions";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

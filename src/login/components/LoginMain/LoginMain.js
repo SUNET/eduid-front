@@ -9,11 +9,11 @@ import Header from "../Header/Header_container";
 import NotificationsContainer from "containers/Notifications";
 import Footer from "../Footer/Footer_container";
 
-import InitResetFormContainer from "login/InitResetForm/InitResetForm_container";
-import ResettingContainer from "login/Resetting/Resetting_container";
+// import InitResetFormContainer from "../InitResetForm/InitResetForm_container";
+// import ResettingContainer from "../Resetting/Resetting_container";
 
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../../style/base.scss";
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../../style/base.scss";
 
 export const history = createBrowserHistory();
 
