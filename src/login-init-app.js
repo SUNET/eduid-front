@@ -14,8 +14,8 @@ import { updateIntl } from "react-intl-redux";
 // root saga
 import rootSaga from "./login-root-saga";
 
-import { history } from "login/components/LoginMain/LoginMain";
-import * as actions from "login/components/LoginMain/LoginMain_actions";
+import { history } from "login/components/App/App";
+import * as actions from "login/components/App/App_actions";
 // import * as resetting_actions from "login/components/Resetting/Resetting_actions";
 
 /* for redux dev tools */

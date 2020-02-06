@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import i18n from "i18n-messages";
-import LoginMain from "./LoginMain";
+import App from "./App";
 
 
 const mapStateToProps = (state, props) => {
@@ -10,8 +10,8 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const LoginMainContainer = connect(
+const AppContainer = connect(
   mapStateToProps,
-)(LoginMain);
+)(App);
 
-export default i18n(LoginMainContainer);
+export default i18n(AppContainer);

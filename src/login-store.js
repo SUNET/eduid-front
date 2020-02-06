@@ -5,7 +5,7 @@ import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import { intlReducer } from "react-intl-redux";
 
-import loginReducer from "login/components/LoginMain/LoginMain_reducer";
+import loginReducer from "login/components/App/App_reducer";
 // import initResetFormReducer from "login/InitResetForm/InitResetForm_reducer";
 // import resettingReducer from "login/Resetting/Resetting_reducer";
 

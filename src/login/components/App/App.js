@@ -17,20 +17,19 @@ import "../../../style/base.scss";
 
 export const history = createBrowserHistory();
 
-class Main extends Component {
-
+class App extends Component {
   //constructor(props) {
-    //super(props);
-    //this.state = {
-      //fetching: props.is_fetching,
-      //setFetching: this.setFetching.bind(this)
-    //};
+  //super(props);
+  //this.state = {
+  //fetching: props.is_fetching,
+  //setFetching: this.setFetching.bind(this)
+  //};
   //}
 
   //setFetching(fetching) {
-    //this.setState({
-      //fetching: fetching
-    //});
+  //this.setState({
+  //fetching: fetching
+  //});
   //}
 
   render() {
@@ -58,8 +57,8 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+App.propTypes = {
   //is_fetching: PropTypes.bool,
 };
 
-export default Main;
+export default App;

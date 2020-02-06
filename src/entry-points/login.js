@@ -31,11 +31,11 @@ import React from "react";
 import { addLocaleData } from "react-intl";
 
 import init_app from "login-init-app";
-import LoginMainContainer from "login/components/LoginMain/LoginMain_container";
+import App from "login/components/App/App_container";
 
 import en from "react-intl/locale-data/en";
 import sv from "react-intl/locale-data/sv";
 
 addLocaleData([...en, ...sv]);
 
-init_app(document.getElementById("root"), <LoginMainContainer />);
+init_app(document.getElementById("root"), <App />);
