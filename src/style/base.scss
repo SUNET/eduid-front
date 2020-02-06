@@ -31,6 +31,15 @@ body {
   background-color: #f4f4f4;
 }
 
+// this is here ONLY to counteract bootstrap
+.container {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
 #content {
   display: flex;
   flex-direction: column;

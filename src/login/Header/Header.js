@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import "style/Header.scss";
+
+import "../../style/Header.scss";
 
 class Header extends Component {
   render() {
+    let rightCorner = "";
     const url = location.pathname;
-    let button = "";
-    if (url.includes("register")) {
-      button = (
-        <a href="http://html.eduid.docker/">
-          <button id="login" className="btn">
-            {this.props.l10n("header.signin")}
-          </button>
-        </a>
-      );
-    } else if (url.includes("profile")) {
-      button = (
+
+    if (url.includes("profile")) {
+      rightCorner = (
         <div id="eduid-button">
           <button id="logout" className="btn" onClick={this.props.handleLogout}>
             {this.props.l10n("header.logout")}
@@ -23,16 +17,29 @@ class Header extends Component {
         </div>
       );
     } else {
-      button = <div />;
+      rightCorner = (
+        <p>logo</p>
+        // <img
+        // src="/assets/images/sunet-gray.png"
+        // alt="sunet-logo"
+        // width="70"
+        // height="40"
+        // />
+      );
     }
 
     return (
-      <header>
-        <a href="http://html.eduid.docker/">
-          <div id="eduid-logo" />
-        </a>
-        {button}
-      </header>
+      <section className="banner">
+        <header>
+          <a href={this.props.dashboard_url}>
+            <div id="eduid-logo" />
+          </a>
+          {rightCorner}
+        </header>
+        <div className="vertical-content-margin">
+          <h1 className="tagline">eduID is easier and safer login.</h1>
+        </div>
+      </section>
     );
   }
 }
