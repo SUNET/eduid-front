@@ -1,0 +1,18 @@
+input {
+  padding: 0 20px;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: "ProximaNova-Regular";
+  // font-weight: 900;
+  color: #161616;
+  font-size: 36px;
+}
+
+input::placeholder {
+  font-family: "ProximaNova-Regular";
+}
+
+input:focus {
+  outline: 0;
+}
+

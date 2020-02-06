@@ -13,7 +13,7 @@ import Footer from "../Footer/Footer_container";
 // import ResettingContainer from "../Resetting/Resetting_container";
 
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../../../style/base.scss";
+import "../../styles/index.scss";
 
 export const history = createBrowserHistory();
 

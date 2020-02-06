@@ -1,0 +1,106 @@
+@import "./variables.scss";
+
+/* overall structure of page */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  height: 100%;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  height: 100vh;
+  font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #161616;
+  scroll-behavior: smooth;
+}
+
+#root,
+#app-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+// this is here ONLY to counteract bootstrap
+.container {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 2rem;
+}
+
+.vertical-content-margin {
+  padding: 0;
+  width: 58%;
+  // max-width: 870px;
+  max-width: 54.4rem;
+  margin: 0 auto;
+}
+
+
+// /* Mobile scrollbar */
+// ::-webkit-scrollbar {
+//   -webkit-appearance: none;
+// }
+
+// ::-webkit-scrollbar:vertical {
+//   width: 12px;
+// }
+
+// ::-webkit-scrollbar:horizontal {
+//   height: 12px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background-color: rgba(0, 0, 0, 0.5);
+//   border-radius: 10px;
+//   border: 2px solid #ffffff;
+// }
+
+// ::-webkit-scrollbar-track {
+//   border-radius: 10px;
+//   background-color: #ffffff;
+// }
+
+// this is here ONLY to counteract bootstrap
+@media (min-width: 1200px) {
+  .container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  body {
+    background-color: inherit;
+  }
+  .container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+

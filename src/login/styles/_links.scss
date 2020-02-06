@@ -1,0 +1,10 @@
+@import "./variables.scss";
+
+a {
+  color: $orange-highlight;
+  font-family: "Akkurat";
+}
+
+a:hover {
+  text-decoration: none;
+}

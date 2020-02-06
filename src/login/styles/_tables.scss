@@ -1,0 +1,58 @@
+
+/* styles for tables displaying userinfo on settings page */
+table {
+  margin-bottom: 10px;
+  width: 100%;
+  // background-color: white;
+  color: gray;
+  font-size: 24px;
+  font-family: "ProximaNova-Light";
+  // border-collapse: collapse;
+}
+
+// table th {
+//   // border-bottom: #7c7c7c 1px solid;
+// }
+
+table th,
+table td {
+  padding: 0.75rem;
+  background-color: white;
+}
+
+td.data {
+  width: 80%;
+}
+
+td.data-remove-button,
+td.status-label {
+  width: 10%;
+}
+
+table th {
+  color: #171717;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 0.75rem;
+  background-color: transparent;
+}
+
+tbody {
+  margin-bottom: 10px;
+}
+
+span.nobutton,
+.primary,
+tr.primary {
+  font-weight: 300;
+  color: $black;
+}
+
+span.nobutton,
+button.verify-status-label {
+  font-size: 12px;
+}
+
+span.nobutton {
+  font-family: "ProximaNova-Regular";
+}
