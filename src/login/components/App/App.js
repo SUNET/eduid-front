@@ -7,12 +7,14 @@ import { createBrowserHistory } from "history";
 import Splash from "../Splash/Splash_container";
 import Header from "../Header/Header_container";
 import NotificationsContainer from "containers/Notifications";
+import LoginRoutes from "../LoginRoutes/LoginRoutes";
 import Footer from "../Footer/Footer_container";
+
 
 // import InitResetFormContainer from "../InitResetForm/InitResetForm_container";
 // import ResettingContainer from "../Resetting/Resetting_container";
 
-import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/index.scss";
 
 export const history = createBrowserHistory();
@@ -42,11 +44,7 @@ class App extends Component {
           <section id="content">
             {/* <Notifications /> */}
             <div className="vertical-content-margin">
-              {/* <Route exact path="/login/" component={LoginForm} />
-              <Route
-                path="/reset-password/get-reset-email/"
-                component={ResetPassword}
-              /> */}
+              <LoginRoutes />
             </div>
           </section>
           <Footer {...this.props} />
