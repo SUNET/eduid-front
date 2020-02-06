@@ -19,7 +19,7 @@ module.exports = {
     // server: 'webpack-dev-server/client?http://localhost:8080',
     signup: "./src/entry-points/signup",
     dashboard: "./src/entry-points/dashboard",
-    login: "./src/entry-points/login",
+    login: "./src/login/app_init/index",
   },
   output: {
     path: path.join(__dirname, "build"),
