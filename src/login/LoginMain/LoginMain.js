@@ -4,7 +4,7 @@ import { Router, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 // import FetchingContext from "components/FetchingContext";
-import SplashContainer from "containers/Splash";
+import Splash from "../Splash/Splash_container";
 import Header from "../Header/Header_container";
 import NotificationsContainer from "containers/Notifications";
 import Footer from "../Footer/Footer_container";
@@ -36,7 +36,7 @@ class Main extends Component {
   render() {
     return [
       //<FetchingContext.Provider value={this.state}>
-        <SplashContainer key="0" />,
+        <Splash key="0" />,
         <Router key="1" history={history}>
           <Header />
           <div className="login-wrapper">
