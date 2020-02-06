@@ -36,34 +36,23 @@ class Main extends Component {
   render() {
     return [
       //<FetchingContext.Provider value={this.state}>
-        <Splash key="0" />,
-        <Router key="1" history={history}>
-          <Header />
-          <div className="login-wrapper">
-            <div id="login-text">
-              <div id="welcome">
-              </div>
-              <div id="content">
-                <NotificationsContainer />
-                <Route
-                  exact
-                  path="/"
-                  render={props => <div {...props} ></div>}
-                />
-                <Route
-                  exact
-                  path="/reset/reset-password/"
-                  render={props => <InitResetFormContainer {...props} />}
-                />
-                <Route
-                  path="/reset/reset-password/code/"
-                  render={props => <ResettingContainer {...props} />}
-                />
-              </div>
+      <Splash key="0" />,
+      <Router key="1" history={history}>
+        <div id="app-container">
+          <Header {...this.props} />
+          <section id="content">
+            {/* <Notifications /> */}
+            <div className="vertical-content-margin">
+              {/* <Route exact path="/login/" component={LoginForm} />
+              <Route
+                path="/reset-password/get-reset-email/"
+                component={ResetPassword}
+              /> */}
             </div>
-            <Footer {...this.props} />
-          </div>
-        </Router>
+          </section>
+          <Footer {...this.props} />
+        </div>
+      </Router>
       //</FetchingContext.Provider>
     ];
   }
