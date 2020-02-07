@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import Input from "../Input.js";
-// import Link from "../Link.js";
+import Input from "../Input.js";
+import Link from "../Link.js";
 
 class LoginForm extends React.Component {
   render() {
@@ -11,13 +11,13 @@ class LoginForm extends React.Component {
         <p className="sub-heading">Login to your eduID</p>
         <div>
           <form id="login-form" className="form" method="POST">
-            {/* <Input
+            <Input
               inputId={"email-input"}
               inputClass={"input"}
               label={"Email"}
               name={"email-address"}
               placeholder={"example@email.com"}
-              onChange={this.props.handleValidation}
+              // onChange={this.props}
             />
             <Input
               inputId={"password-input"}
@@ -25,11 +25,8 @@ class LoginForm extends React.Component {
               label={"Password"}
               name={"password"}
               placeholder={"Write your password"}
-              onChange={this.handleChange}
-              validation={() =>
-                console.log("hello, i am here to validate password")
-              }
-            /> */}
+              // onChange={this.props}
+            />
             <div className="form-button-pair">
               <button
                 form="login-form"
@@ -38,22 +35,22 @@ class LoginForm extends React.Component {
               >
                 Login
               </button>
-              {/* <Link
+              <Link
                 id={"link-forgot-password"}
                 class={""}
                 href={"https://dashboard.eduid.se/"}
                 text={"Forgot your password?"}
-              /> */}
+              />
             </div>
           </form>
         </div>
         <p>
           If you dont have eduID you can register
-          {/* <Link
+          <Link
             className={"text-link"}
             href={"https://dashboard.eduid.se/"}
             text={"here"}
-          /> */}
+          />
         </p>
       </div>
     );

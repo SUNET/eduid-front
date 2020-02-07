@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LoginForm from "../LoginForm/LoginForm_container";
+
 import { Route } from "react-router-dom";
 
 class LoginRoutes extends Component {
@@ -16,11 +17,11 @@ class LoginRoutes extends Component {
         {/* <LoginForm /> */}
         {/* <p>
           If you dont have eduID you can register
-          {/* <Link
+          <Link
             className={"text-link"}
             href={"https://dashboard.eduid.se/"}
             text={"here"}
-          /> 
+          />
         </p> */}
       </div>
     );
