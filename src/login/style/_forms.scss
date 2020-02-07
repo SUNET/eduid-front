@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-button-pair {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.form-control:focus {
+  border-color: #fff;
+  box-shadow: none;
+}

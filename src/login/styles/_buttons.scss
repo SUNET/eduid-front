@@ -1,17 +1,26 @@
 
-@import "./variables.scss";
-
 /* Button */
+
 button {
   font-family: "Akkurat";
-  color: $black;
-  background-color: $white;
+  color: white;
+  font-size: 1rem;
   font-weight: 700;
-  font-size: 16px;
+  line-height: 2rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #ff4500;
+  height: 3rem;
   border-radius: 20px;
-  letter-spacing: 0.5px;
+  border: solid 1px transparent;
+  padding: 0.625rem 1.25rem;
+  margin: 0 0 2rem 0;
   box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
-  border: none;
-  padding: 10px 20px;
   transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(0.95);
 }

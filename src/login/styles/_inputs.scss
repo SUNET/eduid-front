@@ -1,11 +1,22 @@
 input {
-  padding: 0 20px;
-  border-radius: 0;
-  box-shadow: none;
+  background-color: white;
   font-family: "ProximaNova-Regular";
-  // font-weight: 900;
+  font-size: 24px;
+  font-weight: 500;
   color: #161616;
-  font-size: 36px;
+  box-shadow: none;
+
+  border-radius: 0;
+  border: none;
+  border-bottom: solid 1px #161616;
+
+  width: calc(100% - 1rem);
+  height: 2.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.input-container {
+  margin-bottom: 2rem;
 }
 
 input::placeholder {
@@ -15,4 +26,3 @@ input::placeholder {
 input:focus {
   outline: 0;
 }
-
