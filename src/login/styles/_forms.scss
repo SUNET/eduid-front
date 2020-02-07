@@ -1,38 +1,14 @@
 
 /* Form */
-
-
-/* valid form input*/
-.form-control.is-valid {
-  border: 2px solid $light-green;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.form-control.is-valid:focus {
-  border-color: $light-green;
-  box-shadow: 0 0 0 0.2rem $light-green-shadow;
-}
-
-/* invalid form input */
-.form-control.is-invalid {
-  border: 2px solid $error-red;
-}
-
-.form-control.is-invalid:focus {
-  border-color: $error-red;
-  box-shadow: 0 0 0 0.2rem $error-red-shadow;
-}
-
-.eduid-field-error {
-  color: $error-red;
-  font-weight: 500;
-}
-
-.form-control {
-  height: 48px;
-  border-radius: 0;
-  box-shadow: none;
-  font-size: 24px;
-  font-family: "ProximaNova-Regular";
+.form-button-pair {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 .form-control:focus {
@@ -40,6 +16,45 @@
   box-shadow: none;
 }
 
-fieldset {
-  width: 100%;
-}
+
+// /* valid form input*/
+// .form-control.is-valid {
+//   border: 2px solid $light-green;
+// }
+
+// .form-control.is-valid:focus {
+//   border-color: $light-green;
+//   box-shadow: 0 0 0 0.2rem $light-green-shadow;
+// }
+
+// /* invalid form input */
+// .form-control.is-invalid {
+//   border: 2px solid $error-red;
+// }
+
+// .form-control.is-invalid:focus {
+//   border-color: $error-red;
+//   box-shadow: 0 0 0 0.2rem $error-red-shadow;
+// }
+
+// .eduid-field-error {
+//   color: $error-red;
+//   font-weight: 500;
+// }
+
+// .form-control {
+//   height: 48px;
+//   border-radius: 0;
+//   box-shadow: none;
+//   font-size: 24px;
+//   font-family: "ProximaNova-Regular";
+// }
+
+// .form-control:focus {
+//   border-color: #fff;
+//   box-shadow: none;
+// }
+
+// fieldset {
+//   width: 100%;
+// }
