@@ -1,6 +1,7 @@
-@import "./variables.scss";
-
 /* typography */
+
+@import "variables.scss";
+
 h1 {
   font-size: 36px;
   line-height: 44px;
@@ -12,6 +13,7 @@ h1 {
 h2 {
   font-size: 28px;
   line-height: 42px;
+  font-weight: 700;
   margin-top: 0;
 }
 
@@ -37,43 +39,18 @@ h6 {
 }
 
 p {
-  font-size: 20px;
-  line-height: 1.5;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-top: 1rem 0;
 }
 
-.intro h4 {
-  font-size: 1.5rem;
-  line-height: 34px;
-  margin-top: 36px;
+// this is the first paragraph on pages outside of the dashboard
+.sub-heading {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   font-weight: 700;
 }
 
-@media (max-width: 823px) {
-  .intro h4 {
-    font-size: 1.5rem;
-    line-height: 34px;
-    margin-top: 34px;
-    font-weight: 700;
-  }
-  p {
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 32px;
-    line-height: 38px;
-  }
-  h2 {
-    font-size: 25px;
-    line-height: 30px;
-    margin-top: 10px;
-  }
-  .modal-dialog {
-    max-width: calc(100% - 40px);
-  }
-
+.horizontal-content-margin {
+  margin-top: 1.5rem;
 }

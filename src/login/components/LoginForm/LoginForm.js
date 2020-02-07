@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
             className={"text-link"}
             href={"https://dashboard.eduid.se/"}
             text={"here"}
-          />
+          />.
         </p>
       </div>
     );

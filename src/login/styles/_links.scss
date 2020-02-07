@@ -1,10 +1,25 @@
 @import "./variables.scss";
 
 a {
-  color: $orange-highlight;
+  color: #ff4500;
   font-family: "Akkurat";
 }
 
 a:hover {
   text-decoration: none;
+}
+
+a.text-link {
+  font-family: "ProximaNova-Regular";
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+a.text-link:hover {
+  border-bottom: solid #ff4500 1px;
+}
+
+a.text-link,
+a.nav-link {
+  transition: all 0.2s ease;
 }
