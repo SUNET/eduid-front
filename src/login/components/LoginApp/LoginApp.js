@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import LoginForm from "../LoginForm/LoginForm_container";
-
+// import PropTypes from "prop-types";
+// import LoginForm from "../LoginForm/LoginForm_container";
+import LoginForm from "../LoginForm/LoginForm";
 import { Route } from "react-router-dom";
 
 class LoginRoutes extends Component {

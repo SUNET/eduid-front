@@ -9,7 +9,7 @@
 html {
   height: 100%;
   width: 100vw;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 body {
@@ -19,11 +19,13 @@ body {
   line-height: 1.5;
   color: #161616;
   scroll-behavior: smooth;
+  display: flex;
 }
 
 #root,
 #app-container {
   display: flex;
+  flex: 1;
   // height: 100vh;
   flex-direction: column;
   background-color: #f4f4f4;
@@ -52,7 +54,6 @@ body {
   max-width: 54.4rem;
   margin: 0 auto;
 }
-
 
 // /* Mobile scrollbar */
 // ::-webkit-scrollbar {
@@ -102,5 +103,3 @@ body {
     max-width: 100%;
   }
 }
-
-
