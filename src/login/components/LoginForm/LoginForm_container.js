@@ -26,13 +26,13 @@ const mapDispatchToProps = (dispatch, props) => {
     // },
     handleSubmit: e => {
       console.log("your are in container handleSubmit");
-      // e.preventDefault();
-      // const addedEmail = e.target.closest(".form").children[0].children[1]
-      //   .value;
-      // console.log("this is addedEmail ", addedEmail);
-      // if (addedEmail) {
-      //   dispatch(actions.saveEmailFail(addedEmail));
-      // }
+      e.preventDefault();
+      const addedEmail = e.target.closest(".form").children[0].children[1]
+        .value;
+      console.log("this is addedEmail ", addedEmail);
+      if (addedEmail) {
+        dispatch(actions.saveEmailFail(addedEmail));
+      }
     }
   };
 };
