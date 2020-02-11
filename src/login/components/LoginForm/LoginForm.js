@@ -20,7 +20,7 @@ let LoginForm = props => (
         inputclass={"input"}
         id={"email-input"}
         component={Input}
-        // l10n={props.l10n}
+        l10n={props.l10n}
         l10n={"props.l10n string email"}
         placeholder={"example@email.com"}
       />
@@ -31,7 +31,7 @@ let LoginForm = props => (
         componentclass={"input"}
         id={"password-input"}
         component={Input}
-        // l10n={props.l10n}
+        l10n={props.l10n}
         l10n={"props.l10n string password"}
         placeholder={"this is password"}
       />
@@ -75,9 +75,9 @@ LoginForm = connect(state => ({
 }))(LoginForm);
 
 LoginForm.propTypes = {
-  l10n: PropTypes.func.isRequired,
+  l10n: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
-  validate: PropTypes.func.isRequired
+  validate: PropTypes.func
 };
 
 export default LoginForm;

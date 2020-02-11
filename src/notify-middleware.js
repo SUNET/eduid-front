@@ -1,4 +1,4 @@
-import * as actions from "actions/Notifications";
+import * as actions from "login/components/Notifications/Notifications_actions";
 
 const notifyAndDispatch = store => next => action => {
   if (action.type.endsWith("SUCCESS") || action.type.endsWith("FAIL")) {

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Header from "./Header";
 import { startLogout } from "./Header_actions";
-import i18n from "i18n-messages";
+import i18n from "../../../i18n-messages";
 
 const mapStateToProps = (state, props) => {
   let confirmed;

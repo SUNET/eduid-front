@@ -3,7 +3,7 @@ import { updateIntl } from "react-intl-redux";
 import Cookies from "js-cookie";
 
 import Footer from "./Footer";
-import i18n from "i18n-messages";
+import i18n from "../../../i18n-messages";
 
 const mapStateToProps = (state, props) => {
   const languages = {};
