@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import PropTypes from "prop-types";
 // import LoginForm from "../LoginForm/LoginForm_container";
-import LoginForm from "../LoginForm/LoginForm";
+import LoginForm from "../LoginForm/LoginForm_container";
 import { Route } from "react-router-dom";
 
 class LoginRoutes extends Component {
@@ -9,7 +9,11 @@ class LoginRoutes extends Component {
     return (
       <div className="horizontal-content-margin">
         {/* <p className="sub-heading">Login to your eduID</p> */}
-        <Route exact path="/login/" component={LoginForm} />
+        <Route
+          exact
+          path="/login/"
+          render={() => <LoginForm {...this.props} />}
+        />
         {/* <Route
           path="/reset-password/get-reset-email/"
           component={ResetPassword}

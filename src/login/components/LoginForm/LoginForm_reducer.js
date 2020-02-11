@@ -14,10 +14,10 @@ let loginReducer = (state = loginData, action) => {
         ...state,
         ...action.payload
       };
-    case actions.VALIDATE:
-      return {
-        ...state
-      };
+    // case actions.VALIDATE:
+    //   return {
+    //     ...state
+    //   };
     case actions.POST_EMAIL_SUCCESS:
       return {
         ...state,

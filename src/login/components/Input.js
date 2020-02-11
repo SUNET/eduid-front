@@ -13,7 +13,6 @@ const TextInput = props => {
     meta,
     disabled
   } = props;
-  console.log("these are props:", props);
 
   let valid = false;
   let invalid = false;
@@ -90,13 +89,13 @@ const TextInput = props => {
   return (
     <div id={input.name} className="input-container">
       {/* {labelElem} */}
-      <label for={props.name}>{props.label}</label>
+      <label>{props.label}</label>
       <Input
-        type={props.type}
-        disabled={disabled}
-        placeholder={props.placeholder}
         id={props.name}
         name={props.name}
+        type={props.type}
+        placeholder={props.placeholder}
+        disabled={disabled}
         valid={valid}
         invalid={invalid}
         {...input}

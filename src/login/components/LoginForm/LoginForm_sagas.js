@@ -1,6 +1,6 @@
 import { put, select, call } from "redux-saga/effects";
 import { postRequest, checkStatus, saveData } from "../../../sagas/common";
-import * as actions from "../../actions/forms";
+import * as actions from "./LoginForm_actions";
 
 export function postEmailRequest(config, data) {
   return window
@@ -19,7 +19,7 @@ const getData = state => ({
 
 export const postEmail = saveData(
   getData,
-  "email-input",
+  "loginForm",
   data => ({ type: "NOOP_ACTION" }),
   postEmailRequest,
   actions.saveEmailFail

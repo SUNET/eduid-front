@@ -10,7 +10,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-intl-redux";
 import initStore from "./initStore";
 import initActionDispatch from "./initAction";
-import App from "../components/App/App_container";
+import App from "../components/App/App";
 
 // translation (i18n) import available languages
 import { addLocaleData } from "react-intl";

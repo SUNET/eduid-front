@@ -1,8 +1,8 @@
 import * as actions from "./App_actions";
 
 
-const loginData = {
-  is_app_loaded: false,
+const initData = {
+  is_loaded: false,
   csrf_token: "",
   //is_fetching: false,
   error: false,
@@ -15,12 +15,12 @@ const loginData = {
 
 //const unFetchingActions = [];
 
-let loginReducer = (state = loginData, action) => {
+let initReducer = (state = initData, action) => {
   switch (action.type) {
     case actions.APP_LOADED:
       return {
         ...state,
-        is_app_loaded: true
+        is_loaded: true
       };
     case actions.NEW_CSRF_TOKEN:
       return {
@@ -59,4 +59,4 @@ let loginReducer = (state = loginData, action) => {
   }
 };
 
-export default loginReducer;
+export default initReducer;

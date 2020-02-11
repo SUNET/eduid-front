@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Spinner } from "spin.js";
 
-import "../../style/Splash.scss";
-
 const spinnerOpts = {
   rotate: 0, // The rotation offset
   direction: 1, // 1: clockwise, -1: counterclockwise
@@ -14,7 +12,7 @@ const spinnerOpts = {
 
 class Splash extends Component {
   componentDidMount() {
-    if (!this.props.is_app_loaded) {
+    if (!this.props.is_loaded) {
       const splash = this.refs.eduidSplash;
       const spinner = new Spinner(spinnerOpts).spin();
       splash.appendChild(spinner.el);
@@ -22,7 +20,7 @@ class Splash extends Component {
   }
 
   render() {
-    const comp = this.props.is_app_loaded ? (
+    const comp = this.props.is_loaded ? (
       ""
     ) : (
         <div ref="eduidSplash" id="eduid-splash-screen" />

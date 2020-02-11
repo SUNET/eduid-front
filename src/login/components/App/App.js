@@ -19,7 +19,7 @@ class App extends Component {
       <Splash key="0" />,
       <Router key="1" history={history}>
         <div id="app-container">
-          <Header {...this.props} />
+          <Header />
           <section id="content">
             {/* <Notifications /> */}
             <div className="vertical-content-margin">

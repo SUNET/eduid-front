@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
-import Splash from "components/Splash";
+import Splash from "./Splash";
 import i18n from "i18n-messages";
 
 const mapStateToProps = (state, props) => {
   return {
-    is_app_loaded: state.config.is_app_loaded
+    is_loaded: state.app.is_loaded
   };
 };
 

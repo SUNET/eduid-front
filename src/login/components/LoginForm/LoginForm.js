@@ -5,14 +5,14 @@ import { Field, reduxForm } from "redux-form";
 
 import Input from "../Input";
 import Link from "../Link";
-import EduIDButton from "components/EduIDButton";
+import EduIDButton from "../Button";
 
 import { validate } from "../../app_utils/validation/validateEmail";
 
-let LoginForm = props => (
-  <div className="text-margin">
-    <p className="sub-heading">Login to your eduID</p>
-    <div id="login-form" className="form">
+let LoginFormInputs = props => (
+  console.log("these are props in the LoginFormDetails:", props),
+  (
+    <React.Fragment>
       <Field
         type={"email"}
         name={"email"}
@@ -21,7 +21,6 @@ let LoginForm = props => (
         id={"email-input"}
         component={Input}
         l10n={props.l10n}
-        l10n={"props.l10n string email"}
         placeholder={"example@email.com"}
       />
       <Field
@@ -32,47 +31,60 @@ let LoginForm = props => (
         id={"password-input"}
         component={Input}
         l10n={props.l10n}
-        l10n={"props.l10n string password"}
         placeholder={"this is password"}
       />
-    </div>
-    <div className="form-button-pair">
-      <EduIDButton
-        className="settings-button"
-        id="register-button"
-        disabled={props.invalid}
-        onClick={props.handleEmail}
-      >
-        Login to eduID
-      </EduIDButton>
-      <Link
-        id={"link-forgot-password"}
-        class={""}
-        href={"https://dashboard.eduid.se/"}
-        text={"Forgot your password?"}
-      />
-      {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
-    </div>
-    <p>
-      If you dont have eduID you can register
-      <Link
-        className={"text-link"}
-        href={"https://dashboard.eduid.se/"}
-        text={"here"}
-      />
-      .
-    </p>
-  </div>
+    </React.Fragment>
+  )
 );
 
-LoginForm = reduxForm({
-  form: "loginForm",
+LoginFormInputs = reduxForm({
+  form: "login-form",
   validate
-})(LoginForm);
+})(LoginFormInputs);
 
-LoginForm = connect(state => ({
+LoginFormInputs = connect(state => ({
   enableReinitialize: true
-}))(LoginForm);
+}))(LoginFormInputs);
+
+class LoginForm extends Component {
+  render() {
+    console.log("these are props in the LoginForm:", this.props);
+    return (
+      <div className="text-margin">
+        <p className="sub-heading">Login to your eduID</p>
+        <form id="login-form" className="form">
+          <LoginFormInputs {...this.props} />
+          <div className="form-button-pair">
+            <EduIDButton
+              className={"settings-button"}
+              id={"register-button"}
+              disabled={this.props.invalid}
+              onClick={this.props.handleLogin}
+            >
+              Login to eduID
+            </EduIDButton>
+            <Link
+              id={"link-forgot-password"}
+              class={""}
+              href={"https://dashboard.eduid.se/"}
+              text={"Forgot your password?"}
+            />
+            {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
+          </div>
+        </form>
+        <p>
+          If you dont have eduID you can register
+          <Link
+            className={"text-link"}
+            href={"https://dashboard.eduid.se/"}
+            text={"here"}
+          />
+          .
+        </p>
+      </div>
+    );
+  }
+}
 
 LoginForm.propTypes = {
   l10n: PropTypes.func,
