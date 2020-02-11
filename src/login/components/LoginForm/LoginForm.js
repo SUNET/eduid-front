@@ -5,7 +5,7 @@ import { Field, reduxForm } from "redux-form";
 
 import Input from "../Input";
 import Link from "../Link";
-import EduIDButton from "../Button";
+import ButtonPrimary from "../ButtonPrimary";
 
 import { validate } from "../../app_utils/validation/validateEmail";
 
@@ -55,14 +55,14 @@ class LoginForm extends Component {
         <form id="login-form" className="form">
           <LoginFormInputs {...this.props} />
           <div className="form-button-pair">
-            <EduIDButton
+            <ButtonPrimary
               className={"settings-button"}
               id={"register-button"}
               disabled={this.props.invalid}
               onClick={this.props.handleLogin}
             >
               Login to eduID
-            </EduIDButton>
+            </ButtonPrimary>
             <Link
               id={"link-forgot-password"}
               class={""}

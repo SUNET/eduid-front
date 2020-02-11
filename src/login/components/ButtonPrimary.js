@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import faSpinner from "@fortawesome/free-solid-svg-icons/faSpinner";
 import Button from "reactstrap/lib/Button";
-
-//import FetchingContext from "components/FetchingContext";
 
 import "style/EduIDButton.scss";
 
-class EduIDButton extends Component {
+class ButtonPrimary extends Component {
   render() {
     // why is the className added dynamically?
     let classes = " eduid-button";
@@ -29,6 +25,9 @@ class EduIDButton extends Component {
   }
 }
 
-EduIDButton.propTypes = {};
+ButtonPrimary.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired
+};
 
-export default EduIDButton;
+export default ButtonPrimary;

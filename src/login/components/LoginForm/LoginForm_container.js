@@ -17,12 +17,12 @@ const mapDispatchToProps = (dispatch, props) => {
     handleLogin: e => {
       console.log("your are in container handleLogin");
       e.preventDefault();
-      // const addedEmail = e.target.closest(".form").children[0].children[1]
-      //   .value;
-      // console.log("this is addedEmail ", addedEmail);
-      // if (addedEmail) {
-      //   dispatch(actions.saveEmailFail(addedEmail));
-      // }
+      const addedEmail = e.target.closest(".form").children[0].children[1]
+        .value;
+      console.log("this is addedEmail ", addedEmail);
+      if (addedEmail) {
+        dispatch(actions.saveEmailFail(addedEmail));
+      }
     }
   };
 };
