@@ -5,7 +5,7 @@ import i18n from "../../../i18n-messages";
 
 const mapStateToProps = (state, props) => {
   return {
-    debug: state.config.debug,
+    // debug: state.config.debug,
     messages: state.notifications.messages,
     errors: state.notifications.errors
   };

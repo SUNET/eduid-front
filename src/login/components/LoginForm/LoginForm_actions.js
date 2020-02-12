@@ -15,14 +15,14 @@ export function addEmail(email) {
   };
 }
 
-export function validate() {
-  return {
-    type: VALIDATE,
-    payload: {
-      valid: true
-    }
-  };
-}
+// export function validate() {
+//   return {
+//     type: VALIDATE
+//     // payload: {
+//     //   buttonDisabled: false
+//     // }
+//   };
+// }
 
 export function saveEmailFail(err) {
   return {

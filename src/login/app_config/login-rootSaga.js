@@ -12,7 +12,7 @@ import { postEmail } from "../components/LoginForm/LoginForm_sagas";
 function* rootSaga() {
   yield [
     takeLatest(init_actions.GET_LOGIN_CONFIG, requestLoginConfig),
-    takeLatest(login_actions.POST_EMAIL, postEmail)
+    takeLatest(login_actions.ADD_EMAIL, postEmail)
     // takeLatest(resetting_actions.CODE_FOR_CONFIG, getConfigFromCode),
   ];
 }

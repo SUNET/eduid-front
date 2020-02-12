@@ -1,8 +1,10 @@
-import { put, select, call } from "redux-saga/effects";
+// import { put, select, call } from "redux-saga/effects";
 import { postRequest, checkStatus, saveData } from "../../../sagas/common";
 import * as actions from "./LoginForm_actions";
 
 export function postEmailRequest(config, data) {
+  console.log("this is saga config", config);
+  console.log("this is saga data", data);
   return window
     .fetch(config.password_service_url + "reset/", {
       ...postRequest,
@@ -13,49 +15,14 @@ export function postEmailRequest(config, data) {
 }
 
 const getData = state => ({
-  email: state.login.email,
-  csrf_token: state.config.csrf_token
+  email: state.config.email,
+  csrf_token: state.app.csrf_token
 });
 
 export const postEmail = saveData(
   getData,
-  "loginForm",
+  "login-form",
   data => ({ type: "NOOP_ACTION" }),
   postEmailRequest,
   actions.saveEmailFail
 );
-
-// export function saveData(getData, formName, startAction, fetcher, failAction) {
-//   return function*() {
-//     try {
-//       const state = yield select(state => state);
-//       const data = getData(state);
-//       yield put(startAction(data));
-//       yield put(startSubmit(formName));
-//       yield put(startAsyncValidation(formName));
-//       const resp = yield call(fetcher, state.config, data);
-//       yield put(putCsrfToken(resp));
-//       if (resp.type.endsWith("FAIL")) {
-//         if (resp.payload.error) {
-//           yield put(setSubmitFailed(formName, resp.payload.error));
-//           yield put(stopSubmit(formName, resp.payload.error));
-//         }
-//       } else {
-//         yield put(setSubmitSucceeded(formName));
-//         yield put(stopAsyncValidation(formName));
-//       }
-//       const lang = resp.payload.language;
-//       if (lang) {
-//         yield put(
-//           updateIntl({
-//             locale: lang,
-//             messages: LOCALIZED_MESSAGES[lang]
-//           })
-//         );
-//       }
-//       yield put(resp);
-//     } catch (error) {
-//       yield* failRequest(error, failAction);
-//     }
-//   };
-// }

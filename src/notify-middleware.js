@@ -1,8 +1,10 @@
-import * as actions from "login/components/Notifications/Notifications_actions";
+import * as actions from "./login/components/Notifications/Notifications_actions";
 
 const notifyAndDispatch = store => next => action => {
   if (action.type.endsWith("SUCCESS") || action.type.endsWith("FAIL")) {
     if (action.error && action.payload) {
+      console.log("this is action.payload", action.payload);
+      console.log("this is action.error", action.error);
       if (
         action.payload.error &&
         action.payload.error.csrf_token !== undefined

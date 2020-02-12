@@ -5,18 +5,14 @@ import FormText from "reactstrap/lib/FormText";
 import FormGroup from "reactstrap/lib/FormGroup";
 import FormFeedback from "reactstrap/lib/FormFeedback";
 import Input from "reactstrap/lib/Input";
-import i18n from "i18n-messages";
+import i18n from "../../i18n-messages";
 
 const TextInput = props => {
-  const {
-    input,
-    meta,
-    disabled
-  } = props;
+  const { input, meta, l10n, disabled } = props;
 
+  // set to determine styling of visual feedback upon writing valid vs invalid input
   let valid = false;
   let invalid = false;
-
   if (meta.touched || meta.submitFailed) {
     if (meta.error) {
       invalid = true;
@@ -25,19 +21,18 @@ const TextInput = props => {
     }
   }
 
-  // const errmsg = (invalid && l10n(meta.error)) || "";
-  // let feedback = "",
-  let help = "";
-  // if (errmsg !== "") {
-  //  let  feedback = <span className="eduid-field-error">{errmsg}</span>;
-  //   help = (
-  //     <FormText>
-  //       {feedback} | {helpBlock}
-  //     </FormText>
-  //   );
-  // } else {
-  //   help = <FormText>{helpBlock}</FormText>;
-  // }
+  // log the correct error under input following validation
+  let errorMessage = "";
+  // this is what comes back form validation (translated by l10n)
+  const validationError = (invalid && l10n(meta.error)) || "";
+  // if validation error is not "" display the html element
+  if (validationError !== "") {
+    errorMessage = (
+      <FormText>
+        <span className="eduid-field-error">{validationError}</span>
+      </FormText>
+    );
+  }
 
   // let field;
 
@@ -98,9 +93,10 @@ const TextInput = props => {
         disabled={disabled}
         valid={valid}
         invalid={invalid}
+        // onChange={props.onChange}
         {...input}
       />
-      {/* {help} */}
+      {errorMessage}
     </div>
   );
 };

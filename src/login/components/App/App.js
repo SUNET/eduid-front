@@ -5,7 +5,7 @@ import { createBrowserHistory } from "history";
 
 import Splash from "../Splash/Splash_container";
 import Header from "../Header/Header_container";
-import NotificationsContainer from "containers/Notifications";
+import Notifications from "../Notifications/Notifications_container";
 import LoginApp from "../LoginApp/LoginApp";
 import Footer from "../Footer/Footer_container";
 
@@ -21,7 +21,7 @@ class App extends Component {
         <div id="app-container">
           <Header />
           <section id="content">
-            {/* <Notifications /> */}
+            <Notifications />
             <div className="vertical-content-margin">
               <LoginApp />
             </div>

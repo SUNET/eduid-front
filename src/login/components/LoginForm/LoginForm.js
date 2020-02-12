@@ -9,42 +9,59 @@ import ButtonPrimary from "../ButtonPrimary";
 
 import { validate } from "../../app_utils/validation/validateEmail";
 
-let LoginFormInputs = props => (
-  console.log("these are props in the LoginFormDetails:", props),
-  (
-    <React.Fragment>
-      <Field
-        type={"email"}
-        name={"email"}
-        label={"email address"}
-        inputclass={"input"}
-        id={"email-input"}
-        component={Input}
-        l10n={props.l10n}
-        placeholder={"example@email.com"}
+let LoginFormDetails = props => (
+  // console.log("these are props in the LoginFormDetails:", props),
+  // (
+  <React.Fragment>
+    <Field
+      type={"email"}
+      name={"email"}
+      label={"email address"}
+      inputclass={"input"}
+      id={"email-input"}
+      component={Input}
+      l10n={props.l10n}
+      placeholder={"example@email.com"}
+    />
+    <Field
+      type={"password"}
+      name={"password"}
+      label={"password"}
+      componentclass={"input"}
+      id={"password-input"}
+      component={Input}
+      l10n={props.l10n}
+      placeholder={"this is password"}
+    />
+    <div className="form-button-pair">
+      <ButtonPrimary
+        className={"settings-button"}
+        id={"register-button"}
+        disabled={props.invalid}
+        onClick={props.handleLogin}
+      >
+        Login to eduID
+      </ButtonPrimary>
+      <Link
+        id={"link-forgot-password"}
+        class={""}
+        href={"https://dashboard.eduid.se/"}
+        text={"Forgot your password?"}
       />
-      <Field
-        type={"password"}
-        name={"password"}
-        label={"password"}
-        componentclass={"input"}
-        id={"password-input"}
-        component={Input}
-        l10n={props.l10n}
-        placeholder={"this is password"}
-      />
-    </React.Fragment>
-  )
+      {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
+    </div>
+  </React.Fragment>
+  // )
 );
 
-LoginFormInputs = reduxForm({
+LoginFormDetails = reduxForm({
   form: "login-form",
   validate
-})(LoginFormInputs);
+})(LoginFormDetails);
 
-LoginFormInputs = connect(state => ({
+LoginFormDetails = connect(state => ({
   enableReinitialize: true
-}))(LoginFormInputs);
+}))(LoginFormDetails);
 
 class LoginForm extends Component {
   render() {
@@ -53,24 +70,7 @@ class LoginForm extends Component {
       <div className="text-margin">
         <p className="sub-heading">Login to your eduID</p>
         <form id="login-form" className="form">
-          <LoginFormInputs {...this.props} />
-          <div className="form-button-pair">
-            <ButtonPrimary
-              className={"settings-button"}
-              id={"register-button"}
-              disabled={this.props.invalid}
-              onClick={this.props.handleLogin}
-            >
-              Login to eduID
-            </ButtonPrimary>
-            <Link
-              id={"link-forgot-password"}
-              class={""}
-              href={"https://dashboard.eduid.se/"}
-              text={"Forgot your password?"}
-            />
-            {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
-          </div>
+          <LoginFormDetails {...this.props} />
         </form>
         <p>
           If you dont have eduID you can register
