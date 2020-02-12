@@ -17,15 +17,7 @@ class Header extends Component {
         </div>
       );
     } else {
-      rightCorner = (
-        <p>logo</p>
-        // <img
-        // src="/assets/images/sunet-gray.png"
-        // alt="sunet-logo"
-        // width="70"
-        // height="40"
-        // />
-      );
+      rightCorner = <div />;
     }
 
     return (

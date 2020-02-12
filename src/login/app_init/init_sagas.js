@@ -8,7 +8,6 @@ export function* requestLoginConfig() {
   try {
     console.log("Getting config from " + LOGIN_CONFIG_URL);
     const config = yield call(fetchLoginConfig, LOGIN_CONFIG_URL);
-    // console.log("this is config", config);
     yield put(config);
     // On successfully receiving config from the backend,
     // signal that the app has successfuly loaded

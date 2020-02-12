@@ -3,8 +3,6 @@ import { postRequest, checkStatus, saveData } from "../../../sagas/common";
 import * as actions from "./LoginForm_actions";
 
 export function postEmailRequest(init, data) {
-  console.log("this is saga config", init);
-  console.log("this is saga data", data);
   return window
     .fetch(init.password_service_url + "reset/", {
       ...postRequest,

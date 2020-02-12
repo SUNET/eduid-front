@@ -21,7 +21,7 @@ export function getLoginConfig() {
   };
 }
 
-// this action triggers an error (catch in the saga (see .js)
+// this action triggers an error (catch(error) in the saga, see init_saga.js)
 export function getLoginConfigFail(err) {
   return {
     type: GET_LOGIN_CONFIG_FAIL,

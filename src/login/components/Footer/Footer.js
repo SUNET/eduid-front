@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import "../../../style/Footer.scss";
-
 class Footer extends Component {
   render() {
     let langElems = "";
