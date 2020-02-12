@@ -5,14 +5,17 @@ import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import { intlReducer } from "react-intl-redux";
 
-import initReducer from "../components/App/App_reducer";
+import initReducer from "../app_init/init_reducer";
+import appReducer from "../components/App/App_reducer";
+
 import loginReducer from "../components/LoginForm/LoginForm_reducer";
 // import initResetFormReducer from "login/InitResetForm/InitResetForm_reducer";
 // import resettingReducer from "login/Resetting/Resetting_reducer";
 
 const eduIDLoginApp = combineReducers({
-  app: initReducer,
-  config: loginReducer,
+  config: initReducer,
+  app: appReducer,
+  login: loginReducer,
   notifications: notificationsReducer,
   router: routerReducer,
   form: formReducer,

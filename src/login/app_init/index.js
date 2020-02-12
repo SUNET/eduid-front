@@ -9,7 +9,7 @@ import ReactDOM from "react-dom";
 // App.js = store, action and component required to render app
 import { Provider } from "react-intl-redux";
 import initStore from "./initStore";
-import initActionDispatch from "./initAction";
+import initContainer from "./init_container";
 import App from "../components/App/App";
 
 // translation (i18n) import available languages
@@ -35,5 +35,5 @@ ReactDOM.render(
     <App />
   </Provider>,
   initDomTarget,
-  initActionDispatch
+  initContainer
 );

@@ -2,11 +2,11 @@
 import { postRequest, checkStatus, saveData } from "../../../sagas/common";
 import * as actions from "./LoginForm_actions";
 
-export function postEmailRequest(config, data) {
-  console.log("this is saga config", config);
+export function postEmailRequest(init, data) {
+  console.log("this is saga config", init);
   console.log("this is saga data", data);
   return window
-    .fetch(config.password_service_url + "reset/", {
+    .fetch(init.password_service_url + "reset/", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -15,8 +15,8 @@ export function postEmailRequest(config, data) {
 }
 
 const getData = state => ({
-  email: state.config.email,
-  csrf_token: state.app.csrf_token
+  email: state.login.email,
+  csrf_token: state.config.csrf_token
 });
 
 export const postEmail = saveData(

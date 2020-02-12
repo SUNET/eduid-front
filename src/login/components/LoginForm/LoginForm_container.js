@@ -6,7 +6,7 @@ import * as actions from "./LoginForm_actions";
 
 const mapStateToProps = (state, props) => {
   return {
-    email: state.config.email,
+    email: state.login.email,
     enableReinitialize: true
     // buttonDisabled: state.login.valid
     // buttonDisabled: state.login.buttonDisabled

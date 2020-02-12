@@ -1,7 +1,7 @@
 import { takeLatest } from "redux-saga/effects";
 
-import * as init_actions from "../components/App/App_actions";
-import { requestLoginConfig } from "../components/App/App_sagas";
+import * as init_actions from "../app_init/init_actions";
+import { requestLoginConfig } from "../app_init/init_sagas";
 
 import * as login_actions from "../components/LoginForm/LoginForm_actions";
 import { postEmail } from "../components/LoginForm/LoginForm_sagas";
