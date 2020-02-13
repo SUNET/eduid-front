@@ -2,19 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { NavLink } from "react-router-dom";
 
 import Input from "../Input";
-import LinkRedirect from "../LinkRedirect";
 import Link from "../Link";
 import ButtonPrimary from "../ButtonPrimary";
-import { withRouter } from 'react-router-dom';
 
 import { validate } from "../../app_utils/validation/validateEmail";
 
-let LoginFormDetails = props => (
-  // console.log("these are props in the LoginFormDetails:", props),
-  // (
+let FormDetails = props => (
   <React.Fragment>
     <Field
       type={"email"}
@@ -26,16 +21,6 @@ let LoginFormDetails = props => (
       l10n={props.l10n}
       placeholder={"example@email.com"}
     />
-    <Field
-      type={"password"}
-      name={"password"}
-      label={"password"}
-      componentclass={"input"}
-      id={"password-input"}
-      component={Input}
-      l10n={props.l10n}
-      placeholder={"this is password"}
-    />
     <div className="form-button-pair">
       <ButtonPrimary
         className={"settings-button"}
@@ -45,54 +30,42 @@ let LoginFormDetails = props => (
       >
         Login to eduID
       </ButtonPrimary>
-      <LinkRedirect
-        id={"link-forgot-password"}
-        className={""}
-        to={`/reset/password-reset/`}
-        text={"Set a new password"}
-      />
       {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
     </div>
   </React.Fragment>
   // )
 );
 
-LoginFormDetails = reduxForm({
-  form: "login-form",
+FormDetails = reduxForm({
+  form: "email-form",
   validate
-})(LoginFormDetails);
+})(FormDetails);
 
-LoginFormDetails = connect(state => ({
+FormDetails = connect(state => ({
   enableReinitialize: true
-}))(LoginFormDetails);
+}))(FormDetails);
 
-class LoginForm extends Component {
+class ResetPassword extends Component {
   render() {
     console.log("these are props in the LoginForm:", this.props);
     return (
       <div className="text-margin">
-        <p className="sub-heading">Login to your eduID</p>
+        <p className="sub-heading">provide your email address to recieve a link</p>
         <form id="login-form" className="form">
-          <LoginFormDetails {...this.props} />
+          <FormDetails {...this.props} />
         </form>
         <p>
-          If you dont have eduID you can register
-          <Link
-            className={"text-link"}
-            href={`https://dashboard.eduid.se/`}
-            text={"here"}
-          />
-          .
+          If you dont have eduID you can register.
         </p>
       </div>
     );
   }
 }
 
-LoginForm.propTypes = {
+ResetPassword.propTypes = {
   l10n: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };
 
-export default withRouter(LoginForm);
+export default ResetPassword;
