@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch, props) => {
       const oldPassword = document.getElementsByName(comp.pwFieldOldName)[0]
         .value;
       let newPassword = this.props.suggested_password;
-      if (this.state.rSelected === "custom") {
+      if (this.state.customPassword) {
         newPassword = document.getElementsByName(comp.pwFieldCustomName)[0]
           .value;
       }
