@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 import Input from "../Input";
-import Link from "../Link";
+import ResetPasswordText from "../ResetPasswordText";
+// import Link from "../Link";
 import ButtonPrimary from "../ButtonPrimary";
 
 import { validate } from "../../app_utils/validation/validateEmail";
@@ -50,13 +51,8 @@ class ResetPassword extends Component {
     console.log("these are props in the LoginForm:", this.props);
     return (
       <div className="text-margin">
-        <p className="sub-heading">
-          Request a password reset link to your email address.
-        </p>
-        <p>
-          Enter the email address registered to your eduID. You will be sent a
-          link to reset your password.
-        </p>
+        <ResetPasswordText {...this.props} />
+        {resetPasswordFunctionality}
         <form id="login-form" className="form">
           <FormDetails {...this.props} />
         </form>

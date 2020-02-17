@@ -42,12 +42,13 @@ p {
   font-size: 1.25rem;
   line-height: 1.2;
   margin-top: 1rem 0;
+  padding-bottom: 1rem;
 }
 
 // this is the first paragraph on pages outside of the dashboard
 .sub-heading {
   margin-top: 3rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1rem;
   font-weight: 700;
 }
 

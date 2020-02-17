@@ -18,22 +18,15 @@ class LoginApp extends Component {
         <Route
           exact
           path="/reset/reset-password/"
-          component={() => <Redirect to="/get-email-link" />}
+          component={() => (
+            <Redirect to="/reset/reset-password/get-email-link" />
+          )}
         />
         <Route
           exact
           path="/reset/reset-password/get-email-link"
           render={props => <ResetPassword {...props} />}
         />
-        {/* <Route
-          path="/reset/reset-password/code/"
-          render={props => <ResettingContainer {...props} />}
-        /> */}
-        {/* <Route
-          exact
-          path="/forgot-password/get-email-link/"
-          render={() => <ResetPassword {...this.props} />}
-        /> */}
       </div>
     );
   }

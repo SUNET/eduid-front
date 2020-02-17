@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import Input from "../Input";
 import LinkRedirect from "../LinkRedirect";
 import Link from "../Link";
+import EmailInput from "../EmailInput";
 import ButtonPrimary from "../ButtonPrimary";
 import { withRouter } from "react-router-dom";
 
@@ -16,16 +17,9 @@ let LoginFormDetails = props => (
   // console.log("these are props in the LoginFormDetails:", props),
   // (
   <React.Fragment>
-    <Field
-      type={"email"}
-      name={"email"}
-      label={"email address"}
-      inputclass={"input"}
-      id={"email-input"}
-      component={Input}
-      l10n={props.l10n}
-      placeholder={"example@email.com"}
-    />
+    <Field>
+      <EmailInput />
+    </Field>
     <Field
       type={"password"}
       name={"password"}
@@ -74,6 +68,10 @@ class LoginForm extends Component {
     return (
       <div className="text-margin">
         <p className="sub-heading">Login to your eduID</p>
+        {/* <p>
+          If you log in you can to complete your identity process or edit your
+          current details.
+        </p> */}
         <form id="login-form" className="form">
           <LoginFormDetails {...this.props} />
         </form>
