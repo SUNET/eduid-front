@@ -50,7 +50,7 @@ let LoginFormDetails = props => (
         id={"link-forgot-password"}
         className={""}
         // to={`/reset/password-reset/`}
-        to={`/forgot-password/get-email-link/`}
+        to={`/reset/reset-password/`}
         text={"Set a new password"}
       />
       {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
