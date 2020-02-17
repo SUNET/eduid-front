@@ -17,9 +17,7 @@ let LoginFormDetails = props => (
   // console.log("these are props in the LoginFormDetails:", props),
   // (
   <React.Fragment>
-    <Field>
-      <EmailInput />
-    </Field>
+    <EmailInput />
     <Field
       type={"password"}
       name={"password"}

@@ -16,6 +16,13 @@ form {
   box-shadow: none;
 }
 
+#reset-password-email-form {
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
 // /* valid form input*/
 // .form-control.is-valid {
 //   border: 2px solid $light-green;

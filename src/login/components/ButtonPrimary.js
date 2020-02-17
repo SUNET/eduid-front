@@ -6,8 +6,8 @@ import "style/EduIDButton.scss";
 
 class ButtonPrimary extends Component {
   render() {
-    // why is the className added dynamically?
-    let classes = " eduid-button";
+    // why is the className added dynamically? maybe for styling following validation?
+    let classes = " eduid-button settings-button";
     if (this.props.className !== undefined) {
       classes = this.props.className + classes;
     }
