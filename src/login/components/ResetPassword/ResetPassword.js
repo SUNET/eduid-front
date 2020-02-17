@@ -28,7 +28,7 @@ let FormDetails = props => (
         disabled={props.invalid}
         onClick={props.handleLogin}
       >
-        Login to eduID
+        Send me a link
       </ButtonPrimary>
       {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
     </div>
@@ -50,12 +50,20 @@ class ResetPassword extends Component {
     console.log("these are props in the LoginForm:", this.props);
     return (
       <div className="text-margin">
-        <p className="sub-heading">provide your email address to recieve a link</p>
+        <p className="sub-heading">
+          Request a password reset link to your email address.
+        </p>
+        <p>
+          Enter the email address registered to your eduID. You will be sent a
+          link to reset your password.
+        </p>
         <form id="login-form" className="form">
           <FormDetails {...this.props} />
         </form>
         <p>
-          If you dont have eduID you can register.
+          <span className="sub-heading">For your security:</span> You may be
+          asked to prove that you are the owner of your eduID before resetting
+          the password.
         </p>
       </div>
     );

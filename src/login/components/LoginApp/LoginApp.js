@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import LoginForm from "../LoginForm/LoginForm_container";
 import ResetPassword from "../ResetPassword/ResetPassword";
 import { Route, Redirect } from "react-router-dom";
-import { withRouter } from 'react-router-dom';
+ import { withRouter } from 'react-router-dom';
 
 class LoginApp extends Component {
   render() {
@@ -15,14 +15,14 @@ class LoginApp extends Component {
           path="/login/"
           render={() => <LoginForm {...this.props} />}
         />
-        <Route
+        {/* <Route
           exact
           path="/reset/reset-password/"
           component={() => <Redirect to="forgot-password/get-email-link" />}
-        />
+        /> */}
         <Route
           exact
-          path="/forgot-password/get-email-link"
+          path="/forgot-password/get-email-link/"
           render={() => <ResetPassword {...this.props} />}
         />
       </div>

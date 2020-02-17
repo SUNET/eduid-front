@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
 class Link extends Component {
   render() {
@@ -19,4 +20,4 @@ Link.propTypes = {
   //is_fetching: PropTypes.bool,
 };
 
-export default Link;
+export default withRouter(Link);

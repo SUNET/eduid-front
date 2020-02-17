@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class LinkRedirect extends Component {
   render() {
     return (
       <Link
-        exact
+        // exact
         id={this.props.id}
         className={this.props.className}
         to={this.props.to}
@@ -21,4 +22,4 @@ LinkRedirect.propTypes = {
   //is_fetching: PropTypes.bool,
 };
 
-export default LinkRedirect;
+export default withRouter(LinkRedirect);

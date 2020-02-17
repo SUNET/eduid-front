@@ -8,7 +8,7 @@ import Input from "../Input";
 import LinkRedirect from "../LinkRedirect";
 import Link from "../Link";
 import ButtonPrimary from "../ButtonPrimary";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 import { validate } from "../../app_utils/validation/validateEmail";
 
@@ -46,9 +46,11 @@ let LoginFormDetails = props => (
         Login to eduID
       </ButtonPrimary>
       <LinkRedirect
+        exact
         id={"link-forgot-password"}
         className={""}
-        to={`/reset/password-reset/`}
+        // to={`/reset/password-reset/`}
+        to={`/forgot-password/get-email-link/`}
         text={"Set a new password"}
       />
       {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
