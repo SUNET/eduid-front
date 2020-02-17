@@ -7,7 +7,7 @@ import { createBrowserHistory } from "history";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
-import ChangePassword from "./ChangePassword";
+import ChangePasswordContainer from "containers/ChangePassword";
 import SettingsComponent from "./Settings";
 import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
@@ -84,7 +84,7 @@ class Main extends Component {
                 path="/profile/verify-identity/"
                 render={props => <Profile {...props} />}
               />
-              <Route path="/profile/chpass/" component={ChangePassword} />
+              <Route path="/profile/chpass/" component={ChangePasswordContainer} />
               {/* Redirects for old paths */}
               <Route
                 exact
