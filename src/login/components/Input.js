@@ -8,7 +8,7 @@ import Input from "reactstrap/lib/Input";
 import i18n from "../../i18n-messages";
 
 const TextInput = props => {
-  const { input, meta, l10n, disabled } = props;
+  const { input, meta, l10n } = props;
 
   // set to determine styling of visual feedback upon writing valid vs invalid input
   let valid = false;
@@ -22,16 +22,12 @@ const TextInput = props => {
   }
 
   // log the correct error under input following validation
-  let errorMessage = "";
+  let errorMessage = <span className="transparent-input-error">X</span>;
   // this is what comes back form validation (translated by l10n)
   const validationError = (invalid && l10n(meta.error)) || "";
   // if validation error is not "" display the html element
   if (validationError !== "") {
-    errorMessage = (
-      <FormText>
-        <span className="eduid-field-error">{validationError}</span>
-      </FormText>
-    );
+    errorMessage = <span className="input-error">{validationError}</span>;
   }
 
   // let field;
@@ -90,13 +86,12 @@ const TextInput = props => {
         name={props.name}
         type={props.type}
         placeholder={props.placeholder}
-        disabled={disabled}
         valid={valid}
         invalid={invalid}
         // onChange={props.onChange}
         {...input}
       />
-      {errorMessage}
+      <FormText>{errorMessage}</FormText>
     </div>
   );
 };

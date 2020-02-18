@@ -41,7 +41,6 @@ let LoginFormDetails = props => (
         exact
         id={"link-forgot-password"}
         className={""}
-        // to={`/reset/password-reset/`}
         to={`/reset/reset-password/`}
         text={"Set a new password"}
       />

@@ -1,3 +1,10 @@
+@import "./variables.scss";
+
+.form-control {
+  display: flex;
+}
+
+.form-control,
 input {
   background-color: white;
   font-family: "ProximaNova-Regular";
@@ -11,18 +18,51 @@ input {
   border-bottom: solid 1px #161616;
 
   width: calc(100% - 1rem);
-  height: 2.5rem;
   padding: 0.25rem 0.5rem;
 }
 
 .input-container {
   margin-bottom: 2rem;
+  margin-right: 0.5rem;
+  flex: 1;
 }
-
+.form-control::placeholder,
 input::placeholder {
   font-family: "ProximaNova-Regular";
 }
 
+.form-control:focus,
 input:focus {
   outline: 0;
+  border-bottom: solid 1px #161616;
+  box-shadow: 0 0 0 0.2rem $mid-gray;
+}
+
+/* valid form input*/
+.form-control.is-valid {
+  border: none;
+  border-bottom: 2px solid $light-green;
+}
+
+.form-control.is-valid:focus {
+  border-color: $light-green;
+  box-shadow: 0 0 0 0.2rem $mid-gray;
+}
+
+/* invalid form input */
+.form-control.is-invalid {
+  border: none;
+  border-bottom: 2px solid $orange-highlight;
+}
+
+.form-control.is-invalid:focus {
+  border-color: $orange-highlight;
+  box-shadow: 0 0 0 0.2rem $mid-gray;
+}
+
+/* error message */
+.input-error {
+  color: $orange-highlight;
+  font-weight: 700;
+  letter-spacing: 0.025rem;
 }

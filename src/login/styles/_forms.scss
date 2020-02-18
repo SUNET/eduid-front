@@ -18,9 +18,18 @@ form {
 
 #reset-password-email-form {
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
+}
+
+// #reset-password-email-form button {
+//   margin-top: 1.44rem;
+// }
+
+.transparent-input-error {
+  background-color: transparent;
+  color: transparent;
 }
 
 // /* valid form input*/

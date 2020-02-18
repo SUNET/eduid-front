@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 
 import EmailInput from "./EmailInput";
 import ButtonPrimary from "./ButtonPrimary";
@@ -9,9 +9,10 @@ import ButtonPrimary from "./ButtonPrimary";
 import { validate } from "../app_utils/validation/validateEmail";
 
 let EmailForm = props => (
-  <form id="reset-password-email-form" className="form">
-    <EmailInput />
-    <div className="form-button-pair">
+  console.log("this is props in Email Form", props),
+  (
+    <form id="reset-password-email-form" className="form">
+      <EmailInput  />
       <ButtonPrimary
         id={"register-button"}
         disabled={props.invalid}
@@ -19,9 +20,8 @@ let EmailForm = props => (
       >
         Send me a link
       </ButtonPrimary>
-      {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
-    </div>
-  </form>
+    </form>
+  )
 );
 
 EmailForm = reduxForm({
@@ -38,7 +38,7 @@ class ResetPasswordEmailLink extends Component {
     return (
       <React.Fragment>
         <EmailForm />
-        <p>
+        <p >
           <span className="sub-heading">For your security:</span> You may be
           asked to prove that you are the owner of your eduID before resetting
           the password.
