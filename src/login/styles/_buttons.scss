@@ -1,7 +1,10 @@
 /* Button */
 
 button,
-button.btn-primary {
+button.btn-primary,
+button.btn-primary:not(:disabled):not(.disabled):active,
+button.btn-primary:not(:disabled):not(.disabled):focus,
+button.btn-primary:not(:disabled):not(.disabled):active:focus {
   font-family: "Akkurat";
   color: white;
   font-size: 1rem;
@@ -26,6 +29,9 @@ button.btn-primary {
   }
 }
 
-button:hover {
+button:hover,
+.btn-primary:hover {
+  background-color: #ff4500;
+  border: none;
   transform: scale(0.95);
 }
