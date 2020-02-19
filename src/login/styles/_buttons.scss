@@ -72,3 +72,15 @@ button:hover,
   border: solid 1px transparent;
   outline: 0;
 }
+
+button.close {
+  margin: 0;
+  box-shadow: none;
+}
+
+button.close:hover {
+  box-shadow: none;
+  border: none;
+  transform: none;
+  background: hotpink;
+}

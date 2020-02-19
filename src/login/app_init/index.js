@@ -13,18 +13,18 @@ import initContainer from "./init_container";
 import App from "../components/App/App";
 
 // translation (i18n) import available languages
+import checkTranslationSupport from "../app_utils/browserLang_i18nSupport";
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
 import sv from "react-intl/locale-data/sv";
 
 // utils to check support, compatibility or cookies
 import checkIfBeta from "../app_utils/betaVersion_cookie";
-import checkTranslationSupport from "../app_utils/browserLang_i18nSupport";
 import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";
 
 /* run all utils and set up the translation */
 checkIfBeta();
-checkTranslationSupport();
+checkTranslationSupport()
 polyfillElClosest_EI();
 addLocaleData([...en, ...sv]);
 

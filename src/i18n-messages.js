@@ -793,7 +793,7 @@ const msgs = {
     />
   ),
 
-  "profile.email_display__no_data": (
+  "profile.email_display_no_data": (
     <FormattedMessage
       id="profile.email_display_no_data"
       defaultMessage={`no email added`}

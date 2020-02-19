@@ -1,8 +1,6 @@
 import initStore from "./initStore";
 import * as actions from "./init_actions";
 
-// to follow the naming of the compnetents this is really init_container
-
 /* Initial action */
 const init_container = () => {
   console.log("Initializing state for the login app...");

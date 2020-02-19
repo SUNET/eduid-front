@@ -1,20 +1,23 @@
+import initStore from "../app_init/initStore";
 import { updateIntl } from "react-intl-redux";
+
 // i18n
 const checkTranslationSupport = () => {
-  // check browser language
-  const language = navigator.languages
+  //check browser language
+  let browserLanguage = navigator.languages
     ? navigator.languages[0]
     : navigator.language || navigator.userLanguage;
-  console.log("this is language:", language);
-  console.log("this is navigator.languages:", navigator.language);
-  const supported = AVAILABLE_LANGUAGES.map(lang => lang[0]);
-  // if browser language has a translation, add it to props
-  if (supported.includes(language)) {
-    const lang_code = language.substring(0, 2);
-    store.dispatch(
+  // only use the first two characters to get the langugae code
+  browserLanguage = browserLanguage.substring(0, 2);
+
+  // get the languages we have provided translations for
+  const translatedLanguages = AVAILABLE_LANGUAGES.map(lang => lang[0]);
+  // if translation exists for the browser language pass it to the components
+  if (translatedLanguages.includes(browserLanguage)) {
+    initStore.dispatch(
       updateIntl({
-        locale: lang_code,
-        messages: LOCALIZED_MESSAGES[lang_code]
+        locale: browserLanguage,
+        messages: LOCALIZED_MESSAGES[translatedLanguages]
       })
     );
   }

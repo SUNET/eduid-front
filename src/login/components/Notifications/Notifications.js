@@ -23,7 +23,7 @@ class Notifications extends Component {
       return (
         <Alert
           key={index}
-          color="danger"
+          // color="danger"
           data-level="errors"
           data-index={index}
           isOpen={true}

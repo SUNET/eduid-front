@@ -6,14 +6,14 @@ class EmailDisplay extends Component {
     let displayText = "";
     if (this.props.email.length) {
       displayText = [
-        <p key="0" id="data" className="verified">
+        <p key="0" className="verified data">
           {this.props.email}
         </p>
       ];
     } else {
       displayText = [
-        <p key="0" id="data" className="no-data">
-          {this.props.l10n("profile.email_display_no_data")}
+        <p key="0" className="no-data data">
+        {this.props.l10n("profile.email_display_no_data")}
         </p>
       ];
     }
