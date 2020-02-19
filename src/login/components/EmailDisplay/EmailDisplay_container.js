@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import EmailDisplay from "./EmailDisplay";
-import i18n from "../../../i18n-messages";
+import i18n from "../../../i18n-messages"
 
 const mapStateToProps = (state, props) => {
   // const emailAddress = state.emails.emails.filter(email => email.primary);

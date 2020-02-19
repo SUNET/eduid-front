@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 // import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 
-import EmailDisplay from "../../EmailDisplay/EmailDisplay_container";
-import ButtonSecondary from "../../Buttons/ButtonSecondary";
+import EmailDisplay from "../../../EmailDisplay/EmailDisplay_container";
+import ButtonSecondary from "../../../Buttons/ButtonSecondary";
 // import EmailInput from "./EmailInput";
 // import LinkRedirect from "./LinkRedirect";
 // import ButtonPrimary from "./ButtonPrimary";

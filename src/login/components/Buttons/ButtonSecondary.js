@@ -17,6 +17,7 @@ class ButtonSecondary extends Component {
         id={this.props.id}
         onClick={this.props.onClick}
         color="secondary"
+        l10n={this.props.l10n}
       >
         {this.props.children}
       </Button>

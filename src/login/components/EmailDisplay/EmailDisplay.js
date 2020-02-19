@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class EmailDisplay extends Component {
   render() {
+    console.log("these are props in email display:", this.props);
     let displayText = "";
     if (this.props.email.length) {
       displayText = [

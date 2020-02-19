@@ -1,5 +1,5 @@
 // import { put, select, call } from "redux-saga/effects";
-import { postRequest, checkStatus, saveData } from "../../../sagas/common";
+import { postRequest, checkStatus, saveData } from "../../../../sagas/common";
 import * as actions from "./LoginForm_actions";
 
 export function postEmailRequest(init, data) {

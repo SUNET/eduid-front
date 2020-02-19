@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import i18n from "../../../i18n-messages";
+import i18n from "../../../../i18n-messages";
 
 import LoginForm from "./LoginForm";
 import * as actions from "./LoginForm_actions";

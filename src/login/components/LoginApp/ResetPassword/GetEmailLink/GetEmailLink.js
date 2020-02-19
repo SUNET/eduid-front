@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 
-import EmailInput from "../../Inputs/EmailInput";
-import ButtonPrimary from "../../Buttons/ButtonPrimary";
+import EmailInput from "../../../Inputs/EmailInput";
+import ButtonPrimary from "../../../Buttons/ButtonPrimary";
 // import ButtonRedirect from "../../ButtonPrimary";
 
-import { validate } from "../../../app_utils/validation/validateEmail";
+import { validate } from "../../../../app_utils/validation/validateEmail";
 
 let EmailForm = props => (
   console.log("this is props in Email Form", props),

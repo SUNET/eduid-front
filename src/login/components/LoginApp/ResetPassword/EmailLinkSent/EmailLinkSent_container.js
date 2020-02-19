@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 // import * as actions from "./Notifications_actions";
 import EmailLinkSent from "./EmailLinkSent";
-import i18n from "../../../../i18n-messages";
+import i18n from "../../../../../i18n-messages";
 
 const mapStateToProps = (state, props) => {
   return {

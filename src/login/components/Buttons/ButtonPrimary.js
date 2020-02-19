@@ -15,6 +15,7 @@ class ButtonPrimary extends Component {
       <Button
         className={classes}
         id={this.props.id}
+        l10n={this.props.l10n}
         disabled={this.props.disabled}
         onClick={this.props.onClick}
         color="primary"

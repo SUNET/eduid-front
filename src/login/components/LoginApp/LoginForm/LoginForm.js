@@ -5,13 +5,13 @@ import { Field, reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 
 // import Input from "../Input";
-import LinkRedirect from "../Links/LinkRedirect";
-import Link from "../Links/Link";
-import EmailInput from "../Inputs/EmailInput";
-import PasswordInput from "../Inputs/PasswordInput";
-import ButtonPrimary from "../Buttons/ButtonPrimary";
+import LinkRedirect from "../../Links/LinkRedirect";
+import Link from "../../Links/Link";
+import EmailInput from "../../Inputs/EmailInput";
+import PasswordInput from "../../Inputs/PasswordInput";
+import ButtonPrimary from "../../Buttons/ButtonPrimary";
 
-import { validate } from "../../app_utils/validation/validateEmail";
+import { validate } from "../../../app_utils/validation/validateEmail";
 
 let LoginFormDetails = props => (
   // console.log("these are props in the LoginFormDetails:", props),
