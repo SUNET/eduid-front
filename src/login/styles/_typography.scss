@@ -45,6 +45,14 @@ p {
   padding-bottom: 1rem;
 }
 
+p.verified {
+  color: #161616;
+}
+
+p.no-data {
+  color: gray;
+}
+
 // this is the first paragraph on pages outside of the dashboard
 .sub-heading {
   margin-top: 3rem;

@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 
-import EmailInput from "../../EmailInput";
-import ButtonPrimary from "../../ButtonPrimary";
+import EmailInput from "../../Inputs/EmailInput";
+import ButtonPrimary from "../../Buttons/ButtonPrimary";
 // import ButtonRedirect from "../../ButtonPrimary";
 
 import { validate } from "../../../app_utils/validation/validateEmail";

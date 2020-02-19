@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 // import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 
-import EmailDisplay from "../../../../components/EmailDisplay";
-import Link from "../../Link";
+import EmailDisplay from "../../EmailDisplay/EmailDisplay_container";
+import ButtonSecondary from "../../Buttons/ButtonSecondary";
 // import EmailInput from "./EmailInput";
 // import LinkRedirect from "./LinkRedirect";
 // import ButtonPrimary from "./ButtonPrimary";
@@ -16,7 +16,9 @@ class EmailSent extends Component {
     return (
       <React.Fragment>
         <EmailDisplay {...this.props} />
-        <Link>I did not recieve a link.</Link>
+        <ButtonSecondary id={"resend-email-link"}>
+          Resend the link
+        </ButtonSecondary>
       </React.Fragment>
     );
   }

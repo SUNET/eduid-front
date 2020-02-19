@@ -5,7 +5,7 @@ import FormText from "reactstrap/lib/FormText";
 import FormGroup from "reactstrap/lib/FormGroup";
 import FormFeedback from "reactstrap/lib/FormFeedback";
 import Input from "reactstrap/lib/Input";
-import i18n from "../../i18n-messages";
+import i18n from "../../../i18n-messages";
 
 const TextInput = props => {
   const { input, meta, l10n } = props;

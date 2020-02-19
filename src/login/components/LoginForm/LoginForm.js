@@ -4,13 +4,12 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 
-import Input from "../Input";
-import LinkRedirect from "../LinkRedirect";
-import Link from "../Link";
-import EmailInput from "../EmailInput";
-import PasswordInput from "../PasswordInput";
-import ButtonPrimary from "../ButtonPrimary";
-
+// import Input from "../Input";
+import LinkRedirect from "../Links/LinkRedirect";
+import Link from "../Links/Link";
+import EmailInput from "../Inputs/EmailInput";
+import PasswordInput from "../Inputs/PasswordInput";
+import ButtonPrimary from "../Buttons/ButtonPrimary";
 
 import { validate } from "../../app_utils/validation/validateEmail";
 

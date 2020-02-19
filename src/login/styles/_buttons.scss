@@ -1,4 +1,4 @@
-/* Button */
+@import "./variables.scss";
 
 button,
 button.btn-primary,
@@ -30,9 +30,45 @@ button.btn-primary:not(:disabled):not(.disabled):active:focus {
   }
 }
 
+button,
+button.btn-secondary,
+button.btn-secondary:not(:disabled):not(.disabled):active,
+button.btn-secondary:not(:disabled):not(.disabled):focus,
+button.btn-secondary:not(:disabled):not(.disabled):active:focus {
+  // font-family: "Akkurat";
+  color: $orange-highlight;
+  // font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  // text-transform: uppercase;
+  background-color: $orange-opaque;
+  // height: 3rem;
+  border-radius: 20px;
+  border: solid 2px transparent;
+  padding: 0.625rem 1.25rem;
+  margin: 0 0 2rem -0.25rem;
+  box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
+  transition: all 0.5s ease;
+  outline: 0;
+  cursor: pointer;
+}
+
 button:hover,
-.btn-primary:hover {
-  background-color: #ff4500;
+.btn-primary:hover,
+.btn-secondary:hover {
   border: none;
   transform: scale(0.95);
+}
+
+.btn-primary:hover {
+  background-color: $orange-highlight;
+}
+
+.btn-secondary:hover {
+  background-color: $orange-opaque;
+  color: $orange-highlight;
+  border: solid 1px transparent;
+  outline: 0;
 }
