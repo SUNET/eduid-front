@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import Input from "../Input";
 import LinkRedirect from "../LinkRedirect";
 import Link from "../Link";
 import EmailInput from "../EmailInput";
+import PasswordInput from "../PasswordInput";
 import ButtonPrimary from "../ButtonPrimary";
-import { withRouter } from "react-router-dom";
+
 
 import { validate } from "../../app_utils/validation/validateEmail";
 
@@ -18,16 +19,7 @@ let LoginFormDetails = props => (
   // (
   <React.Fragment>
     <EmailInput />
-    <Field
-      type={"password"}
-      name={"password"}
-      label={"password"}
-      componentclass={"input"}
-      id={"password-input"}
-      component={Input}
-      l10n={props.l10n}
-      placeholder={"this is password"}
-    />
+    <PasswordInput />
     <div className="form-button-pair">
       <ButtonPrimary
         className={"settings-button"}
@@ -44,7 +36,6 @@ let LoginFormDetails = props => (
         to={`/reset/reset-password/`}
         text={"Set a new password"}
       />
-      {/* <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback> */}
     </div>
   </React.Fragment>
   // )

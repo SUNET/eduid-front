@@ -5,7 +5,7 @@ import i18n from "i18n-messages";
 const mapStateToProps = (state, props) => {
   const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
-    emails: emailAddress
+    email: emailAddress
   };
 };
 

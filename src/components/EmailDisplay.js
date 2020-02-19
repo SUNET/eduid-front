@@ -6,10 +6,11 @@ import "style/DashboardMain.scss";
 class EmailDisplay extends Component {
   render() {
     let text = "";
-    if (this.props.emails.length) {
+
+    if (this.props.email.length) {
       text = [
         <p key="0" id="nin-number" className="verified">
-          {this.props.emails[0].email}
+          {this.props.email}
         </p>
       ];
     } else {
@@ -31,5 +32,3 @@ class EmailDisplay extends Component {
 }
 
 export default EmailDisplay;
-
-

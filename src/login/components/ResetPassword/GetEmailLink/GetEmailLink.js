@@ -2,21 +2,24 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
+import { withRouter } from "react-router-dom";
 
-import EmailInput from "./EmailInput";
-import ButtonPrimary from "./ButtonPrimary";
+import EmailInput from "../../EmailInput";
+import ButtonPrimary from "../../ButtonPrimary";
+// import ButtonRedirect from "../../ButtonPrimary";
 
-import { validate } from "../app_utils/validation/validateEmail";
+import { validate } from "../../../app_utils/validation/validateEmail";
 
 let EmailForm = props => (
   console.log("this is props in Email Form", props),
   (
     <form id="reset-password-email-form" className="form">
-      <EmailInput  />
+      <EmailInput />
       <ButtonPrimary
+        className={"settings-button"}
         id={"register-button"}
         disabled={props.invalid}
-        onClick={props.handleLogin}
+        onClick={props.handleEmailInput}
       >
         Send me a link
       </ButtonPrimary>
@@ -33,12 +36,13 @@ EmailForm = connect(state => ({
   enableReinitialize: true
 }))(EmailForm);
 
-class ResetPasswordEmailLink extends Component {
+class GetEmailLink extends Component {
   render() {
+    console.log("this is props in EmailLink", this.props);
     return (
       <React.Fragment>
-        <EmailForm />
-        <p >
+        <EmailForm {...this.props} />
+        <p>
           <span className="sub-heading">For your security:</span> You may be
           asked to prove that you are the owner of your eduID before resetting
           the password.
@@ -48,10 +52,10 @@ class ResetPasswordEmailLink extends Component {
   }
 }
 
-ResetPasswordEmailLink.propTypes = {
+GetEmailLink.propTypes = {
   l10n: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };
 
-export default ResetPasswordEmailLink;
+export default withRouter(GetEmailLink);

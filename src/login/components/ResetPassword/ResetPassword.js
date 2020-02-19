@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
-import ResetPasswordText from "../ResetPasswordText";
-import ResetPasswordEmailLink from "../ResetPasswordEmailLink";
-import ResetPasswordEmailSent from "../ResetPasswordEmailSent";
+import ResetPasswordText from "./ResetPasswordText";
+import GetEmailLink from "./GetEmailLink/GetEmailLink_container";
+import EmailLinkSent from "./EmailLinkSent/EmailLinkSent_container";
 
 class ResetPassword extends Component {
   render() {
@@ -12,10 +12,10 @@ class ResetPassword extends Component {
     let resetPasswordFunctionality = "";
 
     if (url.includes("get-email-link")) {
-      resetPasswordFunctionality = [<ResetPasswordEmailLink key="1" {...this.props} />];
+      resetPasswordFunctionality = [<GetEmailLink key="1" {...this.props} />];
     } else if (url.includes("email-link-sent")) {
-      resetPasswordFunctionality = [<ResetPasswordEmailSent key="1" {...this.props} />];
-    } 
+      resetPasswordFunctionality = [<EmailLinkSent key="1" {...this.props} />];
+    }
 
     console.log("these are props in the LoginForm:", this.props);
     return (
