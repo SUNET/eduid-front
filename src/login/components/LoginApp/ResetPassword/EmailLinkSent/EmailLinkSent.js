@@ -10,7 +10,7 @@ import ButtonSecondary from "../../../Buttons/ButtonSecondary";
 // import LinkRedirect from "./LinkRedirect";
 // import ButtonPrimary from "./ButtonPrimary";
 
-class EmailSent extends Component {
+class EmailLinkSent extends Component {
   render() {
     console.log("these are the props in EmailSent:", this.props);
     return (
@@ -24,10 +24,10 @@ class EmailSent extends Component {
   }
 }
 
-EmailSent.propTypes = {
+EmailLinkSent.propTypes = {
   l10n: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };
 
-export default withRouter(EmailSent);
+export default withRouter(EmailLinkSent);
