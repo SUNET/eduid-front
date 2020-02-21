@@ -1,0 +1,10 @@
+[
+  {
+    "id": "email.sign-up-email",
+    "defaultMessage": "Register for eduID"
+  },
+  {
+    "id": "email.invalid_email",
+    "defaultMessage": "The entered email is invalid"
+  }
+]

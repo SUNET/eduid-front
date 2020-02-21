@@ -12,7 +12,7 @@ class Header extends Component {
       rightCorner = (
         <div id="eduid-button">
           <button id="logout" className="btn" onClick={this.props.handleLogout}>
-            {this.props.l10n("header.logout")}
+            {this.props.translate("header.logout")}
           </button>
         </div>
       );

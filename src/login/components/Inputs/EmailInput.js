@@ -7,17 +7,17 @@ let EmailInput = props => (
   <Field
     type={"email"}
     name={"email"}
-    label={props.l10n("profile.email_display_title")}
+    label={props.translate("profile.email_display_title")}
     inputclass={"input"}
     id={"email-input"}
     component={Input}
-    l10n={props.l10n}
+    // translate={props.translate}
     placeholder={"example@email.com"}
   />
 );
 
 EmailInput.propTypes = {
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };

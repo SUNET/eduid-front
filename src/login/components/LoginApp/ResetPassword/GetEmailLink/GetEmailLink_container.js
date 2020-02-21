@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import i18n from "../../../../../i18n-messages";
+import InjectIntl from "../../../../translation/InjectIntl_HOC_factory";
 import { withRouter } from "react-router-dom";
 
 import GetEmailLink from "./GetEmailLink";
@@ -32,7 +32,7 @@ const GetEmailLinkContainer = connect(
   mapDispatchToProps
 )(GetEmailLink);
 
-// export default i18n(GetEmailLinkContainer);
-export default i18n(
+// export default InjectIntl(GetEmailLinkContainer);
+export default InjectIntl(
   withRouter(connect(mapStateToProps)(GetEmailLinkContainer))
 );

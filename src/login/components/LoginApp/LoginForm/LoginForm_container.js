@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import i18n from "../../../../i18n-messages";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 import LoginForm from "./LoginForm";
 import * as actions from "./LoginForm_actions";
@@ -29,4 +29,4 @@ const LoginFormContainer = connect(
   mapDispatchToProps
 )(LoginForm);
 
-export default i18n(LoginFormContainer);
+export default InjectIntl(LoginFormContainer);

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Splash from "./Splash";
-import i18n from "i18n-messages";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {
@@ -10,4 +10,4 @@ const mapStateToProps = (state, props) => {
 
 const SplashContainer = connect(mapStateToProps)(Splash);
 
-export default i18n(SplashContainer);
+export default InjectIntl(SplashContainer);

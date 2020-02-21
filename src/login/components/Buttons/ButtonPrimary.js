@@ -7,15 +7,15 @@ import Button from "reactstrap/lib/Button";
 class ButtonPrimary extends Component {
   render() {
     // why is the className added dynamically? maybe for styling following validation?
-    let classes = " eduid-button settings-button";
-    if (this.props.className !== undefined) {
-      classes = this.props.className + classes;
-    }
+    // let classes = " eduid-button settings-button";
+    // if (this.props.className !== undefined) {
+    //   classes = this.props.className + classes;
+    // }
     return (
       <Button
-        className={classes}
+        // className={classes}
         id={this.props.id}
-        l10n={this.props.l10n}
+        translate={this.props.translate}
         disabled={this.props.disabled}
         onClick={this.props.onClick}
         color="primary"

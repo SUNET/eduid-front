@@ -12,7 +12,7 @@ import ButtonSecondary from "../../../Buttons/ButtonSecondary";
 
 class EmailLinkSent extends Component {
   render() {
-    console.log("these are the props in EmailSent:", this.props);
+    // console.log("these are the props in EmailSent:", this.props);
     return (
       <React.Fragment>
         <EmailDisplay {...this.props} />

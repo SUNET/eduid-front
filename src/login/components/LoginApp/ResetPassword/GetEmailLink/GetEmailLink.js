@@ -16,8 +16,8 @@ let EmailForm = props => (
     <form id="reset-password-email-form" className="form">
       <EmailInput {...props} />
       <ButtonPrimary
-        className={"settings-button"}
-        id={"register-button"}
+        // className={"settings-button"}
+        // id={"register-button"}
         disabled={props.invalid}
         onClick={props.handleEmailInput}
       >
@@ -38,7 +38,7 @@ EmailForm = connect(state => ({
 
 class GetEmailLink extends Component {
   render() {
-    console.log("this is props in EmailLink", this.props);
+    // console.log("this is props in EmailLink", this.props);
     return (
       <React.Fragment>
         <EmailForm {...this.props} />

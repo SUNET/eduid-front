@@ -13,11 +13,11 @@ class ButtonSecondary extends Component {
     // }
     return (
       <Button
-        className={"eduid-button settings-button"}
+        // className={"eduid-button settings-button"}
         id={this.props.id}
         onClick={this.props.onClick}
         color="secondary"
-        l10n={this.props.l10n}
+        translate={this.props.translate}
       >
         {this.props.children}
       </Button>
@@ -27,7 +27,7 @@ class ButtonSecondary extends Component {
 
 ButtonSecondary.propTypes = {
   onClick: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string
 };
 
 export default ButtonSecondary;

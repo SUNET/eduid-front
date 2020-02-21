@@ -28,7 +28,7 @@ class ResetPasswordText extends Component {
       heading = "Set your new password.";
     }
 
-    console.log("these are props in the ResetPasswordText:", this.props);
+    // console.log("these are props in the ResetPasswordText:", this.props);
 
     return (
       <div className="text-container">

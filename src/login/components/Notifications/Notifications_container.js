@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Notifications from "./Notifications";
 import * as actions from "./Notifications_actions";
-import i18n from "../../../i18n-messages";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {
@@ -25,4 +25,4 @@ const NotificationsContainer = connect(
   mapDispatchToProps
 )(Notifications);
 
-export default i18n(NotificationsContainer);
+export default InjectIntl(NotificationsContainer);
