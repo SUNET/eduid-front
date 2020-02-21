@@ -49,10 +49,11 @@ p.verified {
   color: #161616;
 }
 
+// these styles are the same as input values and placeholder
 p.data {
   font-size: 1.5rem;
-  // color: $orange-highlight;
-  font-weight: 400;
+  font-weight: 500;
+  // padding: 0.25rem 0.5rem;
 }
 
 p.no-data.data {

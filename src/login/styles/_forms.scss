@@ -1,15 +1,25 @@
 /* Form */
+
+// top margin here assums that text above has bottom margin of 1rem
 form {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
-.form-button-pair {
+// .button-single {
+//   padding-top: 1rem;
+// }
+
+.button-pair {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
 }
+
+// .button-single button {
+//   padding-top: 1rem;
+// }
 
 .form-control:focus {
   border-color: #fff;
@@ -20,7 +30,6 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
 }
 
 // #reset-password-email-form button {

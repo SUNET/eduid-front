@@ -19,7 +19,7 @@ let LoginFormDetails = props => (
   <React.Fragment>
     <EmailInput />
     <PasswordInput />
-    <div className="form-button-pair">
+    <div className="button-pair">
       <ButtonPrimary
         className={"settings-button"}
         id={"register-button"}
