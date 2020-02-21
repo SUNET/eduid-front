@@ -14,13 +14,14 @@
   margin: 0;
   border: none;
   border-radius: 0;
+    // padding: 1rem 0;
+  // width: 58.3333%;
+  // margin: 0 auto;
 }
 
 .alert span {
   font-size: 1rem;
-  padding: 1rem 0;
-  width: 58.3333%;
-  margin: 0 auto;
+  font-weight: 700;
 }
 .alert-danger,
 .alert-success {
