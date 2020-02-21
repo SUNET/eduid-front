@@ -7,7 +7,7 @@ let EmailInput = props => (
   <Field
     type={"email"}
     name={"email"}
-    label={"email address"}
+    label={props.l10n("profile.email_display_title")}
     inputclass={"input"}
     id={"email-input"}
     component={Input}

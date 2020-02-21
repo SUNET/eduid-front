@@ -14,7 +14,7 @@ let EmailForm = props => (
   console.log("this is props in Email Form", props),
   (
     <form id="reset-password-email-form" className="form">
-      <EmailInput />
+      <EmailInput {...props} />
       <ButtonPrimary
         className={"settings-button"}
         id={"register-button"}
