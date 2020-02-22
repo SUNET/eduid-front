@@ -7,9 +7,9 @@ import PropTypes from "prop-types";
 import invariant from "invariant";
 import { intlShape } from "react-intl";
 
-import { messages, unformatted } from "./messages/message-index";
+import { formattedMessages, unformattedMessages } from "./messageIndex";
 
-console.log("this is messages:", messages);
+console.log("this is formattedMessages:", formattedMessages);
 function getReactComponentDisplayName(Component) {
   // console.log("this is Component.name:", Component.name);
   console.log("this is Component.displayName:", Component.displayName);
@@ -59,24 +59,20 @@ export default function InjectIntl(WrappedComponent, options = {}) {
       // this is a function available as a props that needs to be passed from parent
       const translation = (messageId, values) => {
         // if messageId is found in message variable
-        console.log(
-          " this is messages.email[messageId] ",
-          messages.email[messageId]
-        );
-        console.log(" this is messages[messageId] ", messages[messageId]);
-        if (messages[messageId] !== undefined) {
+        console.log(" this is messages[messageId] ", formattedMessages[messageId]);
+        if (formattedMessages[messageId] !== undefined) {
           // if values is not undefined (I have never seen it be defined)
           if (values !== undefined) {
             // ?
-            return messages[messageId](values);
+            return formattedMessages[messageId](values);
           } else {
             // return blob with a props object containing the id and defaultMessage (actual message string)
-            return messages[messageId];
+            return formattedMessages[messageId];
           }
           // if messageId is in the unformatted variable
-        } else if (unformatted[messageId] !== undefined) {
+        } else if (unformattedMessages[messageId] !== undefined) {
           return this.context.intl.formatMessage(
-            unformatted[messageId],
+            unformattedMessages[messageId],
             values
           );
           // if messageId cannot be found anywhere in the InjectIntl_HOC_factory file print error message

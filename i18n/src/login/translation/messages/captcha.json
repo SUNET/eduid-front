@@ -1,0 +1,22 @@
+[
+  {
+    "id": "captcha.one-step-left",
+    "defaultMessage": "Only one more step left!"
+  },
+  {
+    "id": "captcha.verify-human",
+    "defaultMessage": "Confirm that you are a human."
+  },
+  {
+    "id": "captcha.submit",
+    "defaultMessage": "Done"
+  },
+  {
+    "id": "captcha.cancel",
+    "defaultMessage": "Cancel"
+  },
+  {
+    "id": "signup.recaptcha-not-verified",
+    "defaultMessage": "There was a problem verifying that you are a human. Please try again"
+  }
+]

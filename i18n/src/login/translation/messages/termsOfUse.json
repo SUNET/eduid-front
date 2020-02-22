@@ -1,0 +1,22 @@
+[
+  {
+    "id": "tou.header",
+    "defaultMessage": "General rules for eduID users"
+  },
+  {
+    "id": "tou.cancel",
+    "defaultMessage": "Cancel"
+  },
+  {
+    "id": "tou.accept",
+    "defaultMessage": "Accept"
+  },
+  {
+    "id": "tou.must-accept",
+    "defaultMessage": "You must accept the new terms of use before continuing"
+  },
+  {
+    "id": "tou.not-tou",
+    "defaultMessage": "There were problems retrieving the current ToU, please contact the site administrators."
+  }
+]
