@@ -7,8 +7,9 @@ import PropTypes from "prop-types";
 import invariant from "invariant";
 import { intlShape } from "react-intl";
 
-import { messages, unformatted } from "./messages";
+import { messages, unformatted } from "./messages/message-index";
 
+console.log("this is messages:", messages);
 function getReactComponentDisplayName(Component) {
   // console.log("this is Component.name:", Component.name);
   console.log("this is Component.displayName:", Component.displayName);
@@ -58,6 +59,10 @@ export default function InjectIntl(WrappedComponent, options = {}) {
       // this is a function available as a props that needs to be passed from parent
       const translation = (messageId, values) => {
         // if messageId is found in message variable
+        console.log(
+          " this is messages.email[messageId] ",
+          messages.email[messageId]
+        );
         console.log(" this is messages[messageId] ", messages[messageId]);
         if (messages[messageId] !== undefined) {
           // if values is not undefined (I have never seen it be defined)

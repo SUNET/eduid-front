@@ -6,21 +6,17 @@ import {
   FormattedHTMLMessage
 } from "react-intl";
 
-import { email } from "./i18n-text/email-messages";
+import { email } from "./email";
+import { errors } from "./errors";
 
 console.log("this is email file:", email);
 
 export const messages = {
+  ...email,
+  ...errors,
   /************************/
   /* Generic Messages *****/
   /************************/
-
-  "Not a valid email address.": (
-    <FormattedMessage
-      id="Not a valid email address."
-      defaultMessage={`Not a valid email address.`}
-    />
-  ),
 
   out_of_sync: (
     <FormattedMessage
@@ -33,12 +29,12 @@ export const messages = {
 
   button_add: <FormattedMessage id="button_add" defaultMessage={`Add`} />,
 
-  faq_link: (
-    <FormattedMessage
-      id="faq_link"
-      defaultMessage={`For more information see the `}
-    />
-  ),
+  // faq_link: (
+  //   <FormattedMessage
+  //     id="faq_link"
+  //     defaultMessage={`For more information see the `}
+  //   />
+  // ),
 
   "Missing error message": (
     <FormattedMessage
@@ -190,7 +186,6 @@ export const messages = {
   //   />
   // ),
 
-  email,
 
   "captcha.one-step-left": (
     <FormattedMessage

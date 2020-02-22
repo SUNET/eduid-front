@@ -11,7 +11,7 @@ let EmailInput = props => (
     inputclass={"input"}
     id={"email-input"}
     component={Input}
-    // translate={props.translate}
+    translate={props.translate}
     placeholder={"example@email.com"}
   />
 );
