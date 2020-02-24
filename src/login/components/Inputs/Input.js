@@ -77,7 +77,7 @@ const TextInput = props => {
   //   labelElem = <Label for={name}>{label}</Label>;
   // }
 
-  console.log("these are the props in text input", props)
+  // console.log("these are the props in text input", props)
 
   return (
     <div id={input.name} className="input-container">

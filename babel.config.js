@@ -11,7 +11,7 @@ module.exports = function(api) {
     [
       "react-intl",
       {
-        messagesDir: "./i18n/",
+        messagesDir: "./src/login/translation",
         enforceDescriptions: false
       }
     ],

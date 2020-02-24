@@ -188,6 +188,10 @@
     "defaultMessage": "with a digital ID-card"
   },
   {
+    "id": "eidas.initialize_proofing_help_text",
+    "defaultMessage": "To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app."
+  },
+  {
     "id": "eidas.modal_title",
     "defaultMessage": "Use Freja eID+ and pass a local authorised agent"
   },
@@ -260,12 +264,20 @@
     "defaultMessage": "SE-LEG"
   },
   {
+    "id": "oc.initialize_proofing_help_text",
+    "defaultMessage": "To use this option you need to visit a <a href=\"https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/\" target=\"_blank\">SE-LEG RA</a> and show identification."
+  },
+  {
     "id": "oc.modal_title",
     "defaultMessage": "Confirm using SE-LEG"
   },
   {
     "id": "oc.instructions_title",
     "defaultMessage": "How to confirm your account using SE-LEG"
+  },
+  {
+    "id": "oc.instructions_step_1",
+    "defaultMessage": "Visit the nearest library on this list: <ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>"
   },
   {
     "id": "oc.instructions_step_2",
@@ -278,6 +290,10 @@
   {
     "id": "ocf.initialize_proofing",
     "defaultMessage": "with Freja eID"
+  },
+  {
+    "id": "ocf.initialize_proofing_help_text",
+    "defaultMessage": "To use this option you need to have the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID app</a> installed on your device."
   },
   {
     "id": "ocf.modal_title",
@@ -318,6 +334,10 @@
   {
     "id": "ocf.not_on_mobile_title",
     "defaultMessage": "Not using your phone?"
+  },
+  {
+    "id": "ocf.not_on_mobile_message",
+    "defaultMessage": "You need to switch to a mobile device (iOS or Android) with <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> installed before you will be able to confirm your account using Freja eID."
   },
   {
     "id": "add_nin.main_title",
@@ -798,6 +818,10 @@
   {
     "id": "orc.long_description",
     "defaultMessage": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
+  },
+  {
+    "id": "orc.about_link",
+    "defaultMessage": "Learn more about ORCID in eduID from our <a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>."
   },
   {
     "id": "orc.button_connect",

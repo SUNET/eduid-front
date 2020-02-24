@@ -7,28 +7,31 @@ class Footer extends Component {
   render() {
     let langElems = "";
 
-    if (this.props.is_configured) {
-      const langs = Object.getOwnPropertyNames(this.props.languages);
-      langElems = langs.map((lang, index) => {
-        if (lang === this.props.language) {
-          return (
-            <p key="0" className="non-selected" key={index}>
-              <span key="0">{this.props.languages[lang]}</span>
-            </p>
-          );
-        } else {
-          return (
-            <p key="0" className="lang-selected" data-lang={lang} key={index}>
-              <a key="0" onClick={this.props.changeLanguage}>
-                {this.props.languages[lang]}
-              </a>
-            </p>
-          );
-        }
-      });
-    } else {
-      langElems = "";
-    }
+    // if (this.props.is_configured) {
+   
+    const langs = Object.getOwnPropertyNames(this.props.languages);
+  
+    console.log("these are languages in footer",this.props.languages)
+    langElems = langs.map((lang, index) => {
+      if (lang === this.props.language) {
+        return (
+          <p key="0" className="non-selected" key={index}>
+            <span key="0">{this.props.languages[lang]}</span>
+          </p>
+        );
+      } else {
+        return (
+          <p key="0" className="lang-selected" data-lang={lang} key={index}>
+            <a key="0" onClick={this.props.changeLanguage}>
+              {this.props.languages[lang]}
+            </a>
+          </p>
+        );
+      }
+    });
+    // } else {
+    //   langElems = "";
+    // }
 
     return (
       <footer key="0" id="footer">

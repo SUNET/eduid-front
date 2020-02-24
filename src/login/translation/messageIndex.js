@@ -1,18 +1,18 @@
 import React from "react";
-import {
-  defineMessages,
-  FormattedMessage,
-  FormattedHTMLMessage
-} from "react-intl";
+import { defineMessages } from "react-intl";
 
 // import content from other files
-import { generalErrors, specificErrors } from "./messages/errors";
-import { login } from "./messages/login";
-import { generalInstructions } from "./messages/instructions";
-import { changePassword } from "./messages/password";
-import { register } from "./messages/register";
-import { generalApp } from "./messages/generalApp";
-import { userData, userProfile, userVetting } from "./messages/userProfile";
+import { generalErrors, specificErrors } from "./defaultMessages/errors";
+import { login } from "./defaultMessages/login";
+import { generalInstructions } from "./defaultMessages/instructions";
+import { changePassword } from "./defaultMessages/password";
+import { register } from "./defaultMessages/register";
+import { generalApp } from "./defaultMessages/generalApp";
+import {
+  userData,
+  userProfile,
+  userVetting
+} from "./defaultMessages/userProfile";
 
 export const formattedMessages = {
   ...generalApp,
@@ -24,8 +24,10 @@ export const formattedMessages = {
   ...register,
   ...userData,
   ...userProfile,
-  ...userVetting,
+  ...userVetting
 };
+
+// export const formattedMessages = JSON.stringify(formattedMessagesObj);
 
 export const unformattedMessages = defineMessages({
   "pd.choose-language": {

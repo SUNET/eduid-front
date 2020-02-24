@@ -7,8 +7,8 @@ import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   const languages = {};
-  if (state.config.AVAILABLE_LANGUAGES !== undefined) {
-    state.config.AVAILABLE_LANGUAGES.forEach(l => {
+  if (AVAILABLE_LANGUAGES !== undefined) {
+    AVAILABLE_LANGUAGES.forEach(l => {
       languages[l[0]] = l[1];
     });
   }

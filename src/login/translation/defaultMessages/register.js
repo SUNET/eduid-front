@@ -81,7 +81,6 @@ export const register = {
     />
   ),
 
-
   // eduID created
   "created.account-created": (
     <FormattedMessage
@@ -111,7 +110,6 @@ export const register = {
       defaultMessage={`Email address successfully registered`}
     />
   ),
-
 
   // eduID registration error: email already in use
   "signup.registering-address-used": (

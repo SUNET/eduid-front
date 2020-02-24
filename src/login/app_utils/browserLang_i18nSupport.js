@@ -17,7 +17,7 @@ const checkTranslationSupport = () => {
     initStore.dispatch(
       updateIntl({
         locale: browserLanguage,
-        messages: LOCALIZED_MESSAGES[translatedLanguages]
+        messages: LOCALIZED_MESSAGES
       })
     );
   }

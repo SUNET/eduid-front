@@ -9,10 +9,10 @@ import { intlShape } from "react-intl";
 
 import { formattedMessages, unformattedMessages } from "./messageIndex";
 
-console.log("this is formattedMessages:", formattedMessages);
+// console.log("this is formattedMessages:", formattedMessages);
 function getReactComponentDisplayName(Component) {
   // console.log("this is Component.name:", Component.name);
-  console.log("this is Component.displayName:", Component.displayName);
+  // console.log("this is Component.displayName:", Component.displayName);
   return Component.displayName || Component.name || "Component";
 }
 
@@ -29,7 +29,7 @@ function invariantIntlContext({ intl } = {}) {
 // This is a function that wraps whatever is exported in the container in an InjectIntl() and loads it with props each component needs for translation.
 // InjectIntl is the standard name for a component that deals with translation, but it is unclear to me why this is not a separate component loaded with the needed props in the index.js
 export default function InjectIntl(WrappedComponent, options = {}) {
-  console.log("this is WrappedComponent:", <WrappedComponent />);
+  // console.log("this is WrappedComponent:", <WrappedComponent />);
   const {
     intlPropName = "intl",
     l10nPropName = "translate",
@@ -59,7 +59,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
       // this is a function available as a props that needs to be passed from parent
       const translation = (messageId, values) => {
         // if messageId is found in message variable
-        console.log(" this is messages[messageId] ", formattedMessages[messageId]);
+        // console.log(" this is messages[messageId] ", formattedMessages[messageId]);
         if (formattedMessages[messageId] !== undefined) {
           // if values is not undefined (I have never seen it be defined)
           if (values !== undefined) {
@@ -82,7 +82,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
       };
 
       return (
-        console.log("this.props in WrappedComponent :", this.props),
+        // console.log("this.props in WrappedComponent :", this.props),
         (
           <WrappedComponent
             {...this.props}
