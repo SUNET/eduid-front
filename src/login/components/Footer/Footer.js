@@ -11,7 +11,6 @@ class Footer extends Component {
    
     const langs = Object.getOwnPropertyNames(this.props.languages);
   
-    console.log("these are languages in footer",this.props.languages)
     langElems = langs.map((lang, index) => {
       if (lang === this.props.language) {
         return (
@@ -29,9 +28,6 @@ class Footer extends Component {
         );
       }
     });
-    // } else {
-    //   langElems = "";
-    // }
 
     return (
       <footer key="0" id="footer">

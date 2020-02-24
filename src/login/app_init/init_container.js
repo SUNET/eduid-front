@@ -7,7 +7,7 @@ const init_container = () => {
   // get the config for app
   initStore.dispatch(init_actions.getLoginConfig());
   // // load app once config is in
-  initStore.dispatch(app_actions.appLoaded());
+  // initStore.dispatch(app_actions.appLoaded());
 };
 
 export default init_container;
