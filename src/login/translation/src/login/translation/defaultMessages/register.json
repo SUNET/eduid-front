@@ -1,0 +1,122 @@
+[
+  {
+    "id": "register.create-account",
+    "defaultMessage": "Sign up with your email address to start."
+  },
+  {
+    "id": "email.sign-up-email",
+    "defaultMessage": "Register for eduID"
+  },
+  {
+    "id": "tou.header",
+    "defaultMessage": "General rules for eduID users"
+  },
+  {
+    "id": "tou.cancel",
+    "defaultMessage": "Cancel"
+  },
+  {
+    "id": "tou.accept",
+    "defaultMessage": "Accept"
+  },
+  {
+    "id": "tou.must-accept",
+    "defaultMessage": "You must accept the new terms of use before continuing"
+  },
+  {
+    "id": "tou.not-tou",
+    "defaultMessage": "There were problems retrieving the current ToU, please contact the site administrators."
+  },
+  {
+    "id": "captcha.one-step-left",
+    "defaultMessage": "Only one more step left!"
+  },
+  {
+    "id": "captcha.verify-human",
+    "defaultMessage": "Confirm that you are a human."
+  },
+  {
+    "id": "captcha.submit",
+    "defaultMessage": "Done"
+  },
+  {
+    "id": "captcha.cancel",
+    "defaultMessage": "Cancel"
+  },
+  {
+    "id": "created.confirm-registration",
+    "defaultMessage": "Confirm your email to log in to eduID."
+  },
+  {
+    "id": "created.email-sent",
+    "defaultMessage": "Click the confirmation link sent to {email} to be able log in to eduID"
+  },
+  {
+    "id": "created.account-created",
+    "defaultMessage": "A link has been sent to your email address."
+  },
+  {
+    "id": "created.email-label",
+    "defaultMessage": "Complete registration by clicking the link sent to:"
+  },
+  {
+    "id": "created.back_to_signup",
+    "defaultMessage": "Back to signup"
+  },
+  {
+    "id": "signup.registering-new",
+    "defaultMessage": "Email address successfully registered"
+  },
+  {
+    "id": "signup.registering-address-used",
+    "defaultMessage": "The email address you entered is already in use"
+  },
+  {
+    "id": "used.email-label",
+    "defaultMessage": "If this is your eduID, you can reset your password to log back in."
+  },
+  {
+    "id": "used.email-in-use",
+    "defaultMessage": "An eduID is already using {email}"
+  },
+  {
+    "id": "finish.registration-complete",
+    "defaultMessage": "You have completed the registration for eduID."
+  },
+  {
+    "id": "finish.registration-details",
+    "defaultMessage": "These are your login details for eduID."
+  },
+  {
+    "id": "finish.got-it",
+    "defaultMessage": "go to my eduid"
+  },
+  {
+    "id": "finish.can-now-login",
+    "defaultMessage": "You can now log in"
+  },
+  {
+    "id": "finish.sites-accept",
+    "defaultMessage": "Your account is now ready for use with sites that accept"
+  },
+  {
+    "id": "finish.unconfirmed-identities",
+    "defaultMessage": "unconfirmed identities"
+  },
+  {
+    "id": "finish.finish",
+    "defaultMessage": "FINISH"
+  },
+  {
+    "id": "finish.access-more",
+    "defaultMessage": "Access more"
+  },
+  {
+    "id": "finish.to-dashboard",
+    "defaultMessage": "To get access to additional sites that require a confirmed identity, proceed to the dashboard."
+  },
+  {
+    "id": "finish.confirm-identity",
+    "defaultMessage": "CONFIRM IDENTITY"
+  }
+]

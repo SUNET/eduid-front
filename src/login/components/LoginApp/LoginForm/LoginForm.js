@@ -51,7 +51,7 @@ LoginFormDetails = connect(state => ({
 
 class LoginForm extends Component {
   render() {
-    console.log("these are props in the LoginForm:", this.props);
+    // console.log("these are props in the LoginForm:", this.props);
     return (
       <div className="text-margin">
         <p className="sub-heading">Login to your eduID</p>

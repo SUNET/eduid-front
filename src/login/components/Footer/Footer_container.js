@@ -3,12 +3,12 @@ import { updateIntl } from "react-intl-redux";
 import Cookies from "js-cookie";
 
 import Footer from "./Footer";
-import i18n from "../../../i18n-messages";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   const languages = {};
-  if (state.config.AVAILABLE_LANGUAGES !== undefined) {
-    state.config.AVAILABLE_LANGUAGES.forEach(l => {
+  if (AVAILABLE_LANGUAGES !== undefined) {
+    AVAILABLE_LANGUAGES.forEach(l => {
       languages[l[0]] = l[1];
     });
   }
@@ -23,7 +23,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    changeLanguage: function (e) {
+    changeLanguage: function(e) {
       const lang = e.target.closest(".lang-selected").dataset.lang;
       const msgs = LOCALIZED_MESSAGES[lang];
       dispatch(
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch, props) => {
         })
       );
     },
-    changeDashboardSession: function (reload_to) {
+    changeDashboardSession: function(reload_to) {
       return e => {
         e.preventDefault();
         Cookies.remove("eduid-dashboard-version");
@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const FooterContainer = connect(mapStateToProps, mapDispatchToProps)(Footer);
 
-export default i18n(FooterContainer);
+export default InjectIntl(FooterContainer);

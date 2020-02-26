@@ -4,7 +4,7 @@ const initData = {
   csrf_token: "",
   error: false,
   DEBUG: true,
-  available_languages: {}
+  AVAILABLE_LANGUAGES: []
 };
 
 let initReducer = (state = initData, action) => {

@@ -1,9 +1,8 @@
 // import React, { Component } from "react";
 // import PropTypes from "prop-types";
-// import i18n from "i18n-messages";
+// import i18n from "InjectIntl_HOC_factory";
 
 // import "./Resetting.scss";
-
 
 // class Resetting extends Component {
 
@@ -11,7 +10,7 @@
 //     return (
 //       <div>
 //         <h3 className="reset-password-code-header">
-//           {this.props.l10n("resetpw.code_title")}
+//           {this.props.translate("resetpw.code_title")}
 //         </h3>
 //       </div>
 //     );

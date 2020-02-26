@@ -11,20 +11,18 @@ import ButtonPrimary from "../../../Buttons/ButtonPrimary";
 import { validate } from "../../../../app_utils/validation/validateEmail";
 
 let EmailForm = props => (
-  console.log("this is props in Email Form", props),
-  (
-    <form id="reset-password-email-form" className="form">
-      <EmailInput {...props} />
-      <ButtonPrimary
-        className={"settings-button"}
-        id={"register-button"}
-        disabled={props.invalid}
-        onClick={props.handleEmailInput}
-      >
-        Send me a link
-      </ButtonPrimary>
-    </form>
-  )
+  // console.log("this is props in Email Form", props),
+  <form id="reset-password-email-form" className="form">
+    <EmailInput {...props} />
+    <ButtonPrimary
+      // className={"settings-button"}
+      id={"get-email-link"}
+      disabled={props.invalid}
+      onClick={props.handleEmailInput}
+    >
+      Send me a link
+    </ButtonPrimary>
+  </form>
 );
 
 EmailForm = reduxForm({
@@ -38,7 +36,7 @@ EmailForm = connect(state => ({
 
 class GetEmailLink extends Component {
   render() {
-    console.log("this is props in EmailLink", this.props);
+    // console.log("this is props in GetEmailLink", this.props);
     return (
       <React.Fragment>
         <EmailForm {...this.props} />

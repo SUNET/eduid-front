@@ -1,24 +1,25 @@
 import { connect } from "react-redux";
-import i18n from "i18n-messages";
+import i18n from "InjectIntl_HOC_factory";
 
 import InitResetForm from "login/InitResetForm/InitResetForm";
 import * as actions from "login/InitResetForm/InitResetForm_actions";
 
-
 const mapStateToProps = (state, props) => {
   return {
     email_sent: state.reset.email_sent,
-    enableReinitialize: true,
+    enableReinitialize: true
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleEmail: (e) => {
+    handleEmail: e => {
       e.preventDefault();
-      const email = document.querySelector("#init-reset-form input[name='email']").value;
+      const email = document.querySelector(
+        "#init-reset-form input[name='email']"
+      ).value;
       dispatch(actions.dealWithEmail(email));
-    },
+    }
   };
 };
 
@@ -27,4 +28,4 @@ const InitResetFormContainer = connect(
   mapDispatchToProps
 )(InitResetForm);
 
-export default i18n(InitResetFormContainer);
+export default InjectIntl(InitResetFormContainer);

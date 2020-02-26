@@ -1,8 +1,7 @@
 // import { connect } from "react-redux";
-// import i18n from "i18n-messages";
+// import i18n from "InjectIntl_HOC_factory";
 
 // import Resetting from "login/Resetting/Resetting";
-
 
 // const mapStateToProps = (state, props) => {
 //   return {
@@ -19,4 +18,4 @@
 //   mapDispatchToProps
 // )(Resetting);
 
-// export default i18n(ResettingContainer);
+// export default InjectIntl(ResettingContainer);

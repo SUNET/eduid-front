@@ -5,10 +5,10 @@ import FormText from "reactstrap/lib/FormText";
 import FormGroup from "reactstrap/lib/FormGroup";
 import FormFeedback from "reactstrap/lib/FormFeedback";
 import Input from "reactstrap/lib/Input";
-import i18n from "../../../i18n-messages";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const TextInput = props => {
-  const { input, meta, l10n } = props;
+  const { input, meta, translate } = props;
 
   // set to determine styling of visual feedback upon writing valid vs invalid input
   let valid = false;
@@ -24,7 +24,7 @@ const TextInput = props => {
   // log the correct error under input following validation
   let errorMessage = <span className="transparent-input-error">X</span>;
   // this is what comes back form validation (translated by l10n)
-  const validationError = (invalid && l10n(meta.error)) || "";
+  const validationError = (invalid && translate(meta.error)) || "";
   // if validation error is not "" display the html element
   if (validationError !== "") {
     errorMessage = <span className="input-error">{validationError}</span>;
@@ -77,6 +77,8 @@ const TextInput = props => {
   //   labelElem = <Label for={name}>{label}</Label>;
   // }
 
+  console.log("these are the props in text input", props);
+
   return (
     <div id={input.name} className="input-container">
       {/* {labelElem} */}
@@ -96,4 +98,4 @@ const TextInput = props => {
   );
 };
 
-export default i18n(TextInput);
+export default InjectIntl(TextInput);

@@ -5,18 +5,20 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import invariant from "invariant";
-import {
-  intlShape,
-  defineMessages,
-  FormattedMessage,
-  FormattedHTMLMessage
-} from "react-intl";
+import { intlShape } from "react-intl";
 
-function getDisplayName(Component) {
+import { formattedMessages, unformattedMessages } from "./messageIndex";
+
+// console.log("this is formattedMessages:", formattedMessages);
+function getReactComponentDisplayName(Component) {
+  // console.log("this is Component.name:", Component.name);
+  // console.log("this is Component.displayName:", Component.displayName);
   return Component.displayName || Component.name || "Component";
 }
 
 function invariantIntlContext({ intl } = {}) {
+  // console.log("this is  intl:", intl);
+  // console.log("this is  invariant:", invariant);
   invariant(
     intl,
     "[React Intl] Could not find required `intl` object. " +
@@ -24,18 +26,22 @@ function invariantIntlContext({ intl } = {}) {
   );
 }
 
-export default function i18n(WrappedComponent, options = {}) {
+// This is a function that wraps whatever is exported in the container in an InjectIntl() and loads it with props each component needs for translation.
+// InjectIntl is the standard name for a component that deals with translation, but it is unclear to me why this is not a separate component loaded with the needed props in the index.js
+export default function InjectIntl(WrappedComponent, options = {}) {
+  // console.log("this is WrappedComponent:", <WrappedComponent />);
   const {
     intlPropName = "intl",
-    l10nPropName = "l10n",
+    l10nPropName = "translate",
     withRef = false
   } = options;
-
   //WrappedComponent.propTypes['l10n'] = PropTypes.func;
 
+  // make a class for the component InjectIntl and load it with the props intl and i10n
   class InjectIntl extends Component {
     constructor(props, context) {
       super(props, context);
+      // get the intl context (seems to be what end up being intl from store, an object ready to take on info)
       invariantIntlContext(context);
     }
 
@@ -44,50 +50,72 @@ export default function i18n(WrappedComponent, options = {}) {
         withRef,
         "[React Intl] To access the wrapped instance, " +
           "the `{withRef: true}` option must be set when calling: " +
-          "`i18n()`"
+          "`InjectIntl()`"
       );
-
       return this.refs.wrappedInstance;
     }
 
     render() {
-      const l10n = (msgid, values) => {
-        if (msgs[msgid] !== undefined) {
+      // this is a function available as a props that needs to be passed from parent
+      const translation = (messageId, values) => {
+        // if messageId is found in message variable
+        // console.log(
+        //   " this is messages[messageId] ",
+        //   formattedMessages[messageId]
+        // );
+        if (formattedMessages[messageId] !== undefined) {
+          // if values is not undefined (I have never seen it be defined)
           if (values !== undefined) {
-            return msgs[msgid](values);
+            // ?
+            return formattedMessages[messageId](values);
           } else {
-            return msgs[msgid];
+            // return blob with a props object containing the id and defaultMessage (actual message string)
+            return formattedMessages[messageId];
           }
-        } else if (unformatted[msgid] !== undefined) {
-          return this.context.intl.formatMessage(unformatted[msgid], values);
+          // if messageId is in the unformatted variable
+        } else if (unformattedMessages[messageId] !== undefined) {
+          return this.context.intl.formatMessage(
+            unformattedMessages[messageId],
+            values
+          );
+          // if messageId cannot be found anywhere in the InjectIntl_HOC_factory file print error message
         } else {
-          return "UNKNOWN MESSAGE ID (" + msgid + ")";
+          return "UNKNOWN MESSAGE ID (" + messageId + ")";
         }
       };
 
       return (
+        // console.log("this.props in WrappedComponent :", this.props),
         <WrappedComponent
           {...this.props}
           {...{ [intlPropName]: this.context.intl }}
-          {...{ [l10nPropName]: l10n }}
+          {...{ [l10nPropName]: translation }}
           ref={withRef ? "wrappedInstance" : null}
         />
       );
     }
   }
 
-  InjectIntl.displayName = `InjectIntl(${getDisplayName(WrappedComponent)})`;
+  // creates a string of InjectIntl() and whatever wrapped components are returned from getReactComopnetDisplayName() and makes this the .displayName (ReactComponent property) of InjectIntl
+  InjectIntl.displayName = `InjectIntl(${getReactComponentDisplayName(
+    WrappedComponent
+  )})`;
 
+  console.log("thos is InjectIntl.displayName", InjectIntl.displayName);
+
+  // context types for InjectIntl
   InjectIntl.contextTypes = {
     intl: intlShape,
-    l10n: PropTypes.func
+    translation: PropTypes.func
   };
 
-  InjectIntl.WrappedComponent = WrappedComponent;
+  // this is undefined (?)
+  // InjectIntl.WrappedComponent = WrappedComponent;
+
   return InjectIntl;
 }
 
-// const msgs = {
+// const messages = {
 //   /************************/
 //   /* Generic Messages *****/
 //   /************************/
@@ -1829,7 +1857,7 @@ export default function i18n(WrappedComponent, options = {}) {
 //   "security.second-factor": (
 //     <FormattedMessage
 //       id="security.second-factor"
-//       defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are 
+//       defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are
 //     the owner of your eduID.`}
 //     />
 //   ),
@@ -2153,7 +2181,7 @@ export default function i18n(WrappedComponent, options = {}) {
 //   "emails.long_description": (
 //     <FormattedMessage
 //       id="emails.long_description"
-//       defaultMessage={`You can connect one or more email addresses with your eduID 
+//       defaultMessage={`You can connect one or more email addresses with your eduID
 //           account and select one to be your primary email address.`}
 //     />
 //   ),

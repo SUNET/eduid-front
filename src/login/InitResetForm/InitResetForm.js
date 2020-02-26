@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import i18n from "i18n-messages";
+import i18n from "InjectIntl_HOC_factory";
 
 import { ButtonGroup, Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
@@ -12,11 +12,8 @@ import TextInput from "components/EduIDTextInput";
 
 import "./InitResetForm.scss";
 
-
 let InitForm = props => (
-  <Form
-    id="init-reset-form"
-    role="form">
+  <Form id="init-reset-form" role="form">
     <div id="init-reset-input-group">
       <fieldset id="init-reset-form">
         <Field
@@ -24,7 +21,7 @@ let InitForm = props => (
           name="email"
           componentClass="input"
           component={TextInput}
-          l10n={props.l10n}
+          translate={props.l10n}
           placeholder="example@email.com"
         />
       </fieldset>
@@ -46,9 +43,7 @@ InitForm = reduxForm({
   validate
 })(InitForm);
 
-
 class InitResetForm extends Component {
-
   render() {
     let markup;
     if (this.props.email_sent) {
@@ -70,12 +65,12 @@ class InitResetForm extends Component {
         </div>
       );
     }
-    return (markup);
+    return markup;
   }
 }
 
 InitResetForm.propTypes = {
-  email_sent: PropTypes.bool,
+  email_sent: PropTypes.bool
 };
 
 export default InitResetForm;

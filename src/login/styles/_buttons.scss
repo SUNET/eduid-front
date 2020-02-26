@@ -46,7 +46,6 @@ button.btn-secondary:not(:disabled):not(.disabled):active:focus {
 // button:hover,
 button.btn:hover {
   border: none;
-  background-color: hotpink;
 }
 
 button.btn-primary:hover,
@@ -56,7 +55,12 @@ button.btn-secondary:hover {
 
 button.btn-primary:hover {
   background-color: $orange-highlight;
-  // border: none;
+  &:disabled,
+  .disabled {
+    background-color: $dark-gray;
+    border: none;
+    transform: scale(1.0);
+  }
 }
 
 button.btn-secondary:hover {
@@ -73,7 +77,6 @@ button.close {
   transition: all 0.3s ease;
   border: none;
   box-shadow: none;
-
 }
 button.close:hover {
   transform: scale(1.2);

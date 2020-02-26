@@ -11,7 +11,7 @@ let PasswordInput = props => (
     componentclass={"input"}
     id={"password-input"}
     component={Input}
-    l10n={props.l10n}
+    translate={props.translate}
     placeholder={"this is password"}
   />
 );

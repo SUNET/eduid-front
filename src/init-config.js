@@ -1,9 +1,17 @@
-const webpack = require("webpack"),
-  langs = [["en", "English"], ["sv", "Svenska"]],
-  messages = {};
+const webpack = require("webpack");
+const langs = [
+  ["en", "English"],
+  ["sv", "Svenska"]
+];
+
+const messages = {};
+
+// langs.forEach(lang => {
+//   messages[lang[0]] = require("../i18n/l10n/" + lang[0]);
+// });
 
 langs.forEach(lang => {
-  messages[lang[0]] = require("../i18n/l10n/" + lang[0]);
+  messages[lang[0]] = require("./login/translation/languages/" + lang[0]);
 });
 
 module.exports = {

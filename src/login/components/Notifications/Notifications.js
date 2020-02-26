@@ -4,12 +4,12 @@ import Alert from "reactstrap/lib/Alert";
 
 class Notifications extends Component {
   render() {
-    console.log("these are the props in Notifications", this.props);
+    // console.log("these are the props in Notifications", this.props);
     // console.log("this is props.errors in Notifications", this.props.errors);
     // console.log("this is props.errors in Notifications", this.props.errors);
 
     let toShow = this.props.errors.map((err, index) => {
-      let err_msg = this.props.l10n(err.msg);
+      let err_msg = this.props.translate(err.msg);
       if (err.vals !== null) {
         err_msg = err_msg(err.vals);
       }
@@ -18,7 +18,7 @@ class Notifications extends Component {
         err_msg.indexOf !== undefined &&
         err_msg.indexOf("UNKNOWN MESSAGE ID (") !== -1
       ) {
-        err_msg = this.props.l10n("unexpected-problem");
+        err_msg = this.props.translate("unexpected-problem");
       }
       return (
         <Alert
@@ -36,7 +36,7 @@ class Notifications extends Component {
 
     if (toShow.length === 0) {
       toShow = this.props.messages.map((msg, index) => {
-        let success_msg = this.props.l10n(msg.msg);
+        let success_msg = this.props.translate(msg.msg);
         if (msg.vals !== null) {
           success_msg = success_msg(msg.vals);
         }
@@ -45,7 +45,7 @@ class Notifications extends Component {
           success_msg.indexOf !== undefined &&
           success_msg.indexOf("UNKNOWN MESSAGE ID (") !== -1
         ) {
-          success_msg = this.props.l10n("unexpected-success");
+          success_msg = this.props.translate("unexpected-success");
         }
         return (
           <Alert
