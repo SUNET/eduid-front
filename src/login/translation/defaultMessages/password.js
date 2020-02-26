@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export const changePassword = {
+export const changePassword = { 
   // help
   "chpass.help-text-general": (
     <FormattedMessage
@@ -219,4 +219,32 @@ export const changePassword = {
   ),
 };
 
-export const resetPassword = {};
+export const resetPassword = {
+  "resetpw.get-email-link_heading": (
+    <FormattedMessage
+      id="resetpw.get-email-link_heading"
+      defaultMessage={`Request a password reset link to your email address.`}
+    />
+  ),
+
+  "resetpw.get-email-link_text": (
+    <FormattedMessage
+      id="resetpw.get-email-link_text"
+      defaultMessage={`Enter the email address registered to your eduID. You will be sent a link to reset your password.`}
+    />
+  ),
+  "resetpw.email-link-sent_heading": (
+    <FormattedMessage
+      id="resetpw.email-link-sent_heading"
+      defaultMessage={`You should have recieved a link to reset your password.`}
+    />
+  ),
+
+  "resetpw.email-link-sent_text": (
+    <FormattedMessage
+      id="resetpw.email-link-sent_text"
+      defaultMessage={`Click the link in your email to reset the password for your eduID. Alternatively, you can copy the link in your email and paste it into a browser window.`}
+    />
+  ),
+
+};

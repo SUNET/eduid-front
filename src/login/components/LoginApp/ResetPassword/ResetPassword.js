@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
+// to access redirect from LoginApp and for translation
 import { withRouter } from "react-router-dom";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 import ResetPasswordText from "./ResetPasswordText";
 import GetEmailLink from "./GetEmailLink/GetEmailLink_container";
@@ -17,7 +20,7 @@ class ResetPassword extends Component {
       resetPasswordFunctionality = [<EmailLinkSent key="1" {...this.props} />];
     }
 
-    console.log("these are props in the LoginForm:", this.props);
+    // console.log("these are props in the resetpassword:", this.props);
     return (
       <div className="text-margin">
         <ResetPasswordText key="0" {...this.props} />
@@ -33,4 +36,4 @@ ResetPassword.propTypes = {
   validate: PropTypes.func
 };
 
-export default withRouter(ResetPassword);
+export default InjectIntl(withRouter(ResetPassword));

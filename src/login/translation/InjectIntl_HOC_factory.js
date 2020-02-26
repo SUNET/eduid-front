@@ -59,7 +59,10 @@ export default function InjectIntl(WrappedComponent, options = {}) {
       // this is a function available as a props that needs to be passed from parent
       const translation = (messageId, values) => {
         // if messageId is found in message variable
-        // console.log(" this is messages[messageId] ", formattedMessages[messageId]);
+        // console.log(
+        //   " this is messages[messageId] ",
+        //   formattedMessages[messageId]
+        // );
         if (formattedMessages[messageId] !== undefined) {
           // if values is not undefined (I have never seen it be defined)
           if (values !== undefined) {
@@ -83,14 +86,12 @@ export default function InjectIntl(WrappedComponent, options = {}) {
 
       return (
         // console.log("this.props in WrappedComponent :", this.props),
-        (
-          <WrappedComponent
-            {...this.props}
-            {...{ [intlPropName]: this.context.intl }}
-            {...{ [l10nPropName]: translation }}
-            ref={withRef ? "wrappedInstance" : null}
-          />
-        )
+        <WrappedComponent
+          {...this.props}
+          {...{ [intlPropName]: this.context.intl }}
+          {...{ [l10nPropName]: translation }}
+          ref={withRef ? "wrappedInstance" : null}
+        />
       );
     }
   }
@@ -99,6 +100,8 @@ export default function InjectIntl(WrappedComponent, options = {}) {
   InjectIntl.displayName = `InjectIntl(${getReactComponentDisplayName(
     WrappedComponent
   )})`;
+
+  console.log("thos is InjectIntl.displayName", InjectIntl.displayName);
 
   // context types for InjectIntl
   InjectIntl.contextTypes = {
