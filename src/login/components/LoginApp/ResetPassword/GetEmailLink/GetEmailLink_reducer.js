@@ -1,26 +1,26 @@
-// import * as actions from "./GetEmailLink_actions";
+import * as actions from "./GetEmailLink_actions";
 
-// // see the config params in eduid-developer/etcd/conf.yaml
-// const routerData = {
-//   path: ""
-// };
+// see the config params in eduid-developer/etcd/conf.yaml
+const getEmailLinkData = {
+  email: "",
+  email_sent: false
+};
 
-// let routerReducer = (state = routerData, action) => {
-//   switch (action.type) {
-//     case actions.REDIRECT:
-//       return {
-//         ...state,
-//         ...action.payload,
-//         location: state.path
-//       };
-//     // case actions.POST_EMAIL_SUCCESS:
-//     //   return {
-//     //     ...state,
-//     //     email_sent: true
-//     //   };
-//     default:
-//       return state;
-//   }
-// };
+let getEmailLinkReducer = (state = getEmailLinkData, action) => {
+  switch (action.type) {
+    case actions.ADD_EMAIL:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case actions.FROM_BACKEND_EMAIL_SUCCESS:
+      return {
+        ...state,
+        email_sent: true
+      };
+    default:
+      return state;
+  }
+};
 
-// export default routerReducer;
+export default getEmailLinkReducer;

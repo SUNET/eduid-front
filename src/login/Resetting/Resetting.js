@@ -10,7 +10,7 @@
 //     return (
 //       <div>
 //         <h3 className="reset-password-code-header">
-//           {this.props.translate("resetpw.code_title")}
+//           {/* {this.props.translate("resetpw.code_title")} */}
 //         </h3>
 //       </div>
 //     );

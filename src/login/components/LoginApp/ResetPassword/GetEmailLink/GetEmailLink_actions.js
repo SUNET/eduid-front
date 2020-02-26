@@ -1,15 +1,13 @@
-export const REDIRECT = "REDIRECT";
-
+// ADD_EMAIL: adds user email adress into store
 export const ADD_EMAIL = "ADD_EMAIL";
-export const POST_EMAIL = "POST_EMAIL";
-export const POST_EMAIL_SUCCESS = "POST_EMAIL_SUCCESS";
-export const POST_EMAIL_FAIL = "POST_EMAIL_FAIL";
-// export const POST_EMAIL = "POST_EMAIL";
-// export const POST_EMAIL_SUCCESS = "POST_EMAIL_SUCCESS";
-// export const POST_EMAIL_FAIL = "POST_EMAIL_FAIL";
-// export const ACCEPT_TOU = "ACCEPT_TOU";
 
-// this action triggers adding user email to the store and starts the post of email to db (see login-rootSaga.js) 
+// FROM BACKEND:
+// consequences of FAIL are defined here (in _actions)
+export const FROM_BACKEND_EMAIL_FAIL = "POST_EMAIL_FAIL";
+// consequences of SUCESS is defined in _reducer
+export const FROM_BACKEND_EMAIL_SUCCESS = "POST_RESET_PASSWORD_RESET_SUCCESS";
+
+// this action triggers adding user email to the store (triggers the post of email to backend, see login-rootSaga.js)
 export function addEmail(email) {
   return {
     type: ADD_EMAIL,
@@ -22,7 +20,7 @@ export function addEmail(email) {
 // this triggers an error (catch(error) in saga that posts useremail to db)
 export function saveEmailFail(err) {
   return {
-    type: POST_EMAIL_FAIL,
+    type: FROM_BACKEND_EMAIL_FAIL,
     error: true,
     payload: {
       message: err

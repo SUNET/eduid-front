@@ -18,7 +18,8 @@ const mapDispatchToProps = (dispatch, props) => {
       const addedEmail = e.target.closest(".form").children[0].children[1]
         .value;
       if (addedEmail) {
-        dispatch(actions.addEmail(addedEmail));
+        // login-rootSaga.js: make this trigger postLoginDetails()
+        dispatch(actions.addLoginDetails(addedEmail));
       }
     }
   };

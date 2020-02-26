@@ -8,12 +8,12 @@ const loginData = {
 
 let loginReducer = (state = loginData, action) => {
   switch (action.type) {
-    case actions.ADD_EMAIL:
+    case actions.ADD_LOGIN_DETAILS:
       return {
         ...state,
         ...action.payload
       };
-    case actions.POST_EMAIL_SUCCESS:
+    case actions.POST_LOGIN_SUCCESS:
       return {
         ...state,
         email_sent: true

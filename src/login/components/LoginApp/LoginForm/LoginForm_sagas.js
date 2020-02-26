@@ -2,7 +2,8 @@
 import { postRequest, checkStatus, saveData } from "../../../../sagas/common";
 import * as actions from "./LoginForm_actions";
 
-export function postEmailRequest(init, data) {
+
+export function postLoginRequest(init, data) {
   return window
     .fetch(init.password_service_url + "reset/", {
       ...postRequest,
@@ -14,13 +15,14 @@ export function postEmailRequest(init, data) {
 
 const getData = state => ({
   email: state.login.email,
+  // password: state.login.password,
   csrf_token: state.config.csrf_token
 });
 
-export const postEmail = saveData(
+export const postLoginDetails = saveData(
   getData,
   "login-form",
   data => ({ type: "NOOP_ACTION" }),
-  postEmailRequest,
-  actions.saveEmailFail
+  postLoginRequest,
+  actions.saveLoginFail
 );

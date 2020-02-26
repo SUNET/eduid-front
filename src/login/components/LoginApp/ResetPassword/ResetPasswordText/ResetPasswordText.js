@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../../translation/InjectIntl_HOC_factory";
 class ResetPasswordText extends Component {
   render() {
     // console.log("this is props in ResetPasswordText:", this.props )

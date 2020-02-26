@@ -32,6 +32,18 @@ class LoginApp extends Component {
           path="/reset/reset-password/email-link-sent"
           render={props => <ResetPassword {...props} />}
         />
+        <Route
+          exact
+          path="/reset/reset-password/code"
+          component={() => (
+            <Redirect to="/reset/reset-password/get-email-code" />
+          )}
+        />
+        <Route
+          exact
+          path="/reset/reset-password/get-email-code"
+          render={props => <ResetPassword {...props} />}
+        />
       </div>
     );
   }

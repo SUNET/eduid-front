@@ -5,9 +5,10 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-import ResetPasswordText from "./ResetPasswordText";
+import ResetPasswordText from "./ResetPasswordText/ResetPasswordText";
 import GetEmailLink from "./GetEmailLink/GetEmailLink_container";
 import EmailLinkSent from "./EmailLinkSent/EmailLinkSent_container";
+import GetEmailCode from "./GetEmailCode/GetEmailCode";
 
 class ResetPassword extends Component {
   render() {
@@ -18,6 +19,8 @@ class ResetPassword extends Component {
       resetPasswordFunctionality = [<GetEmailLink key="1" {...this.props} />];
     } else if (url.includes("email-link-sent")) {
       resetPasswordFunctionality = [<EmailLinkSent key="1" {...this.props} />];
+    } else if (url.includes("get-email-code")) {
+      resetPasswordFunctionality = [<GetEmailCode key="1" {...this.props} />];
     }
 
     // console.log("these are props in the resetpassword:", this.props);

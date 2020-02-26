@@ -22,7 +22,10 @@ class EmailLinkSent extends Component {
             Request another one here. It is valid for up to two hours, so make
             sure you are looking at the most recent email.
           </p>
-          <ButtonSecondary id={"resend-email-link"}>
+          <ButtonSecondary
+            id={"resend-email-link"}
+            onClick={this.props.handleResendLink}
+          >
             Send me a new link to this email address
           </ButtonSecondary>
         </div>

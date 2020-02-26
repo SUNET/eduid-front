@@ -7,14 +7,15 @@ import InjectIntl from "../../../../translation/InjectIntl_HOC_factory";
 const mapStateToProps = (state, props) => {
   return {
     // debug: state.config.debug,
-    email: state.login.email
+    // email: state.login.email
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleaction(e) {
+    handleResendLink(e) {
       e.preventDefault();
+      console.log("this is resendLink func");
       // dispatch(actions.thing());
     }
   };

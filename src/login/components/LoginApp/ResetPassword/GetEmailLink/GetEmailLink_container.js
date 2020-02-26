@@ -7,7 +7,7 @@ import * as actions from "./GetEmailLink_actions";
 
 const mapStateToProps = (state, props) => {
   return {
-    email: state.login.email,
+    email: state.getEmailLink.email,
     enableReinitialize: true
   };
 };
@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch, props) => {
       const addedEmail = e.target.closest(".form").children[0].children[1]
         .value;
       if (addedEmail) {
+        //login-rootSaga.js: This action will trigger a post of the email to to backend (postEmail() in GetEmailLink_sagas.js)
         dispatch(actions.addEmail(addedEmail));
       }
       props.history.push("/reset/reset-password/email-link-sent");
