@@ -11,6 +11,8 @@ class ButtonPrimary extends Component {
     // if (this.props.className !== undefined) {
     //   classes = this.props.className + classes;
     // }
+
+    console.log("these are props in the button rimary:", this.props);
     return (
       <Button
         // className={classes}
