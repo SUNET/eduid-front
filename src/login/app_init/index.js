@@ -1,6 +1,6 @@
 // package is deprecated (now available as @ungap/url-search-params)
 // // URL.searchParams polyfill
-// window.URLSearchParams = require("url-search-params");
+// 
 // // End polyfill
 
 import React from "react";
@@ -21,6 +21,8 @@ import sv from "react-intl/locale-data/sv";
 // utils to check support, compatibility or cookies
 import checkIfBeta from "../app_utils/betaVersion_cookie";
 import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";
+
+window.URLSearchParams = require("url-search-params");
 
 /* run all utils and set up the translation */
 checkIfBeta();

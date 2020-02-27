@@ -1,7 +1,7 @@
 import { put, call } from "redux-saga/effects";
-import { ajaxHeaders, checkStatus, getRequest } from "../../sagas/common";
+import { checkStatus, getRequest, failRequest } from "../../sagas/common";
 
-import * as actions from "./init_actions";
+import * as init_actions from "./init_actions";
 import * as app_actions from "../components/App/App_actions";
 
 export function* requestLoginConfig() {
@@ -13,7 +13,7 @@ export function* requestLoginConfig() {
     // signal that the app has successfuly loaded
     yield put(app_actions.appLoaded());
   } catch (error) {
-    yield put(actions.getLoginConfigFail(error.toString()));
+    yield put(init_actions.getLoginConfigFail(error.toString()));
   }
 }
 
@@ -25,6 +25,33 @@ export function fetchLoginConfig(url) {
   return window
     .fetch(url, {
       ...request
+    })
+    .then(checkStatus)
+    .then(response => response.json());
+}
+
+export function* getConfigFromCode() {
+  try {
+    const state = yield select(state => state),
+      data = {
+        code: document.location.href.split("/").reverse()[0],
+        csrf_token: state.config.csrf_token
+      };
+    const resp = yield call(requestConfigFromCode, state.config, data);
+    yield put(putCsrfToken(resp));
+    yield put(resp);
+    yield put(app_actions.appLoaded());
+  } catch (error) {
+    yield put(app_actions.appLoaded());
+    yield* failRequest(error, init_actions.postCodeFail);
+  }
+}
+
+export function requestConfigFromCode(config, data) {
+  return window
+    .fetch(PASSWORD_SERVICE_URL + "/reset/config/", {
+      ...postRequest,
+      body: JSON.stringify(data)
     })
     .then(checkStatus)
     .then(response => response.json());

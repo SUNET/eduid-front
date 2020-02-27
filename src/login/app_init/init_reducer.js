@@ -19,6 +19,12 @@ let initReducer = (state = initData, action) => {
         ...state,
         ...action.payload
       };
+    case actions.POST_CODE_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        error: false,
+      };
     default:
       return state;
   }

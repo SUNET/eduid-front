@@ -1,7 +1,7 @@
 import { takeLatest } from "redux-saga/effects";
 
 import * as init_actions from "../app_init/init_actions";
-import { requestLoginConfig } from "../app_init/init_sagas";
+import { requestLoginConfig, getConfigFromCode } from "../app_init/init_sagas";
 
 // import * as login_actions from "../components/LoginApp/LoginForm/LoginForm_actions";
 // import { postLoginDetails } from "../components/LoginApp/LoginForm/LoginForm_sagas";
@@ -18,7 +18,7 @@ function* rootSaga() {
   yield [
     takeLatest(init_actions.GET_LOGIN_CONFIG, requestLoginConfig),
     takeLatest(getEmailLink_actions.ADD_EMAIL, postEmail),
-    takeLatest(emailLinkSent_actions.POST_EMAIL_LINK_CODE, postEmailLinkCode)
+    takeLatest(init_actions.CODE_FOR_CONFIG, getConfigFromCode)
     // takeLatest(resetting_actions.CODE_FOR_CONFIG, getConfigFromCode),
     // takeLatest(actions.GET_LOGIN_CONFIG, requestLoginConfig),
     // takeLatest(init_actions.DEAL_WITH_EMAIL, initReset),
