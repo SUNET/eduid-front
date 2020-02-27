@@ -7,12 +7,14 @@ import * as init_actions from "./init_actions";
 
 const init_container = () => {
   console.log("Initializing state for the login app...");
-  const url = window.location.href.split("/").reverse();
+  const url = document.location.href.split("/").reverse();
   console.log("url:", url);
-  console.log("url[0]:", url[0]);
+  // console.log("url[0]:", url[0]);
+  const emailCode = url[0].split("=")[1];
+  console.log("emailCode[1]:", emailCode);
   if (url[0].includes("email_code")) {
     // get config for app when staring from an email link
-    initStore.dispatch(init_actions.useLinkCode(url[0]));
+    initStore.dispatch(init_actions.useLinkCode(emailCode));
   } else {
     // get config for app
     initStore.dispatch(init_actions.getConfig());

@@ -18,11 +18,11 @@ function* rootSaga() {
   yield [
     takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(getEmailLink_actions.ADD_EMAIL, postEmail),
-    takeLatest(init_actions.POST_EMAIL_LINK_CODE, useLinkCode)
-    // takeLatest(resetting_actions.POST_EMAIL_LINK_CODE, useLinkCode),
+    takeLatest(init_actions.POST_LINK_CODE, useLinkCode)
+    // takeLatest(resetting_actions.POST_LINK_CODE, useLinkCode),
     // takeLatest(actions.GET_CONFIG, requestConfig),
     // takeLatest(init_actions.DEAL_WITH_EMAIL, initReset),
-    // takeLatest(actions.POST_EMAIL_LINK_CODE, useLinkCode),
+    // takeLatest(actions.POST_LINK_CODE, useLinkCode),
     // takeLatest(resetting_actions.CHOOSE_EXTRA_SECURITY_PHONE, postExtrasecWithSMSCode),
     // takeLatest(reset_actions.DO_RESET_PASSWORD, postPasswordReset),
     // takeLatest(reset_actions.DO_RESET_PASSWORD_SMS, postPasswordResetWithSMSCode),
