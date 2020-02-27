@@ -30,7 +30,7 @@ export function fetchConfig(url) {
     .then(response => response.json());
 }
 
-export function* uselLinkCode() {
+export function* useLinkCode() {
   try {
     const state = yield select(state => state),
       data = {

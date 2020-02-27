@@ -45,7 +45,7 @@ export function getConfigFail(err) {
 }
 
 // resetting the password, after sending the emailed code
-export function uselLinkCode(code) {
+export function useLinkCode(code) {
   return {
     type: POST_EMAIL_LINK_CODE,
     payload: {
