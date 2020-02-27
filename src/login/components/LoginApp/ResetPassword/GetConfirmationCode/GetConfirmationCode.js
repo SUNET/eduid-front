@@ -1,18 +1,20 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-// import PropTypes from "prop-types";
 // import i18n from "InjectIntl_HOC_factory";
 
 // import "./Resetting.scss";
 
 class GetEmailCode extends Component {
   render() {
+    // console.log("these are the props in EmailSent:", this.props);
     return (
-      <div>
+      <React.Fragment>
         <h3 className="reset-password-code-header">
+          this is the confirmation code page
           {this.props.translate("resetpw.code_title")}
         </h3>
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -20,4 +22,3 @@ class GetEmailCode extends Component {
 GetEmailCode.propTypes = {};
 
 export default withRouter(GetEmailCode);
-

@@ -1,8 +1,6 @@
-// import {
-//   checkStatus,
-//   postRequest,
-//   saveData
-// } from "../../../../../sagas/common";
+// import { checkStatus,
+//          postRequest,
+//          saveData } from "sagas/common";
 
 // import * as main_actions from "login/LoginMain/LoginMain_actions";
 // import * as actions from "login/Resetting/Resetting_actions";

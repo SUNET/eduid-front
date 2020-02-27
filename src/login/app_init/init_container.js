@@ -9,7 +9,7 @@ const init_container = () => {
   console.log("url:", url);
   if (url[1] === "code") {
     // get config for app when staring from an email link
-    initStore.dispatch(emailLinkSent_actions.postEmailLinkCode(url[0]));
+    initStore.dispatch(emailLinkSent_actions.useEmailLinkCode(url[0]));
   } else {
     // get config for app
     initStore.dispatch(init_actions.getLoginConfig());
