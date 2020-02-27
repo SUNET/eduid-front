@@ -13,7 +13,7 @@ class LoginApp extends Component {
         <Route
           exact
           path="/login/"
-          render={() => <LoginForm {...this.props} />}
+          render={props => <LoginForm {...props} />}
         />
         <Route
           exact
