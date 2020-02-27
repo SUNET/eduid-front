@@ -22,7 +22,7 @@ import sv from "react-intl/locale-data/sv";
 import checkIfBeta from "../app_utils/betaVersion_cookie";
 import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";
 
-window.URLSearchParams = require("url-search-params");
+// window.URLSearchParams = require("url-search-params");
 
 /* run all utils and set up the translation */
 checkIfBeta();

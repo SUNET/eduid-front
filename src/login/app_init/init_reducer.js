@@ -14,16 +14,16 @@ let initReducer = (state = initData, action) => {
         ...state,
         ...action.payload
       };
-    case actions.GET_LOGIN_CONFIG_SUCCESS:
+    case actions.GET_CONFIG_SUCCESS:
       return {
         ...state,
         ...action.payload
       };
-    case actions.POST_CODE_SUCCESS:
+    case actions.FROM_BACKEND_EMAIL_LINK_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        error: false,
+        error: false
       };
     default:
       return state;

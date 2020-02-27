@@ -1,7 +1,7 @@
 import { takeLatest } from "redux-saga/effects";
 
 import * as init_actions from "../app_init/init_actions";
-import { requestLoginConfig, getConfigFromCode } from "../app_init/init_sagas";
+import { requestConfig, uselLinkCode } from "../app_init/init_sagas";
 
 // import * as login_actions from "../components/LoginApp/LoginForm/LoginForm_actions";
 // import { postLoginDetails } from "../components/LoginApp/LoginForm/LoginForm_sagas";
@@ -12,17 +12,17 @@ import * as emailLinkSent_actions from "../components/LoginApp/ResetPassword/Ema
 import { postEmailLinkCode } from "../components/LoginApp/ResetPassword/EmailLinkSent/EmailLinkSent_sagas";
 
 // import * as resetting_actions from "login/components/Resetting/Resetting_actions";
-// import { getConfigFromCode } from "login/components/Resetting/Resetting_sagas";
+// import { uselLinkCode } from "login/components/Resetting/Resetting_sagas";
 
 function* rootSaga() {
   yield [
-    takeLatest(init_actions.GET_LOGIN_CONFIG, requestLoginConfig),
+    takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(getEmailLink_actions.ADD_EMAIL, postEmail),
-    takeLatest(init_actions.CODE_FOR_CONFIG, getConfigFromCode)
-    // takeLatest(resetting_actions.CODE_FOR_CONFIG, getConfigFromCode),
-    // takeLatest(actions.GET_LOGIN_CONFIG, requestLoginConfig),
+    takeLatest(init_actions.POST_EMAIL_LINK_CODE, uselLinkCode)
+    // takeLatest(resetting_actions.POST_EMAIL_LINK_CODE, uselLinkCode),
+    // takeLatest(actions.GET_CONFIG, requestConfig),
     // takeLatest(init_actions.DEAL_WITH_EMAIL, initReset),
-    // takeLatest(actions.CODE_FOR_CONFIG, getConfigFromCode),
+    // takeLatest(actions.POST_EMAIL_LINK_CODE, uselLinkCode),
     // takeLatest(resetting_actions.CHOOSE_EXTRA_SECURITY_PHONE, postExtrasecWithSMSCode),
     // takeLatest(reset_actions.DO_RESET_PASSWORD, postPasswordReset),
     // takeLatest(reset_actions.DO_RESET_PASSWORD_SMS, postPasswordResetWithSMSCode),
