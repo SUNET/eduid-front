@@ -13,6 +13,11 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    handleUseConfirmationCode: e => {
+      console.log("you're in handleResendConfirmationCode");
+      e.preventDefault();
+      props.history.push("/reset/reset-password/set-new-password/");
+    },
     handleResendConfirmationCode: e => {
       console.log("you're in handleResendConfirmationCode");
       e.preventDefault();

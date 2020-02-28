@@ -44,7 +44,7 @@ class UseConfirmationCode extends Component {
         <ConfirmationCodeForm {...this.props} />
         <p>
           <span className="sub-heading"> No code to your phone?</span>
-          <p>Request another one here. It is valid for up to two hours.</p>
+          <p>You can request another one that is valid for up to two hours.</p>
         </p>
         <SecondaryButton
           id={"use-confirmation-code"}
