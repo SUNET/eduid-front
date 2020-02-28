@@ -9,7 +9,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleSendConfirmCode(e) {
+    handleGetConfirmCode(e) {
       e.preventDefault();
       console.log("this is confirm code func");
       props.history.push("/reset/reset-password/use-confirmation-code");

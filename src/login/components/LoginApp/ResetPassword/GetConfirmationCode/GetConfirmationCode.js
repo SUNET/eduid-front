@@ -20,7 +20,7 @@ class GetConfirmationCode extends Component {
           <PrimaryButton
             id={"get-confirmation-code"}
             disabled={false}
-            onClick={this.props.handleSendConfirmCode}
+            onClick={this.props.handleGetConfirmCode}
           >
             Send me a code
           </PrimaryButton>
