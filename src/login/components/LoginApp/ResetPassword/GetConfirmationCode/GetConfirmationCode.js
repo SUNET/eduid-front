@@ -19,6 +19,7 @@ class GetConfirmationCode extends Component {
           <PhoneNumDisplay {...this.props} />
           <PrimaryButton
             id={"get-confirmation-code"}
+            disabled={false}
             onClick={this.props.handleSendConfirmCode}
           >
             Send me a code
@@ -26,7 +27,7 @@ class GetConfirmationCode extends Component {
         </div>
         <Link
           id={"bypass-confirmation-code"}
-          href={"#"}
+          href={"/reset/reset-password/set-new-password/"}
           text={"I want to set a new password and delete my identity."}
         />
       </React.Fragment>

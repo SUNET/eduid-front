@@ -34,6 +34,4 @@ const GetEmailLinkContainer = connect(
 )(GetEmailLink);
 
 // export default InjectIntl(GetEmailLinkContainer);
-export default InjectIntl(
-  withRouter(connect(mapStateToProps)(GetEmailLinkContainer))
-);
+export default InjectIntl(withRouter(GetEmailLinkContainer));

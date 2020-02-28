@@ -34,7 +34,7 @@ class ResetPasswordText extends Component {
       heading = "Use the code to prove that you are the owner of this eduID.";
       text =
         "Enter the confirmation code to prove you have access to the phone number. By doing so, you will be able to access your existing eduID.";
-    } else if (url.includes("new-password")) {
+    } else if (url.includes("set-new-password")) {
       heading = "Set your new password.";
     }
 
