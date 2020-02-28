@@ -34,14 +34,7 @@ class PhoneNumDisplay extends Component {
           {this.props.translate("profile.phone_display_title")}
         </label>
         <div className="data-display">{displayText}</div>
-        {/* <div className="data-display">{displayText}</div> */}
       </div>
-      // <div key="2" className="profile-card">
-      //   <label key="0">{this.props.l10n("profile.phone_display_title")}</label>
-      //   <div key="1" id="nin-number-container">
-      //     {text}
-      //   </div>
-      // </div>
     );
   }
 }

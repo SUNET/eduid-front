@@ -9,6 +9,7 @@ import ResetPasswordText from "./ResetPasswordText/ResetPasswordText";
 import GetEmailLink from "./GetEmailLink/GetEmailLink_container";
 import EmailLinkSent from "./EmailLinkSent/EmailLinkSent_container";
 import GetConfirmationCode from "./GetConfirmationCode/GetConfirmationCode_container";
+import UseConfirmationCode from "./UseConformationCode/UseConfirmationCode_container";
 
 class ResetPassword extends Component {
   render() {
@@ -22,6 +23,10 @@ class ResetPassword extends Component {
     } else if (url.includes("get-confirmation-code")) {
       resetPasswordFunctionality = [
         <GetConfirmationCode key="1" {...this.props} />
+      ];
+    } else if (url.includes("use-confirmation-code")) {
+      resetPasswordFunctionality = [
+        <UseConfirmationCode key="1" {...this.props} />
       ];
     }
 
