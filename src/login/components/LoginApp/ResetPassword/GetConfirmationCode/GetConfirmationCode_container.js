@@ -1,21 +1,24 @@
-// import { connect } from "react-redux";
-// import InjectIntl from "../../../../translation/InjectIntl_HOC_factory";
+import { connect } from "react-redux";
+import InjectIntl from "../../../../translation/InjectIntl_HOC_factory";
+import GetConfirmationCode from "./GetConfirmationCode";
 
-// import Resetting from "login/Resetting/Resetting";
+const mapStateToProps = (state, props) => {
+  return {};
+};
 
-// const mapStateToProps = (state, props) => {
-//   return {
-//   };
-// };
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    handleSendConfirmCode(e) {
+      e.preventDefault();
+      console.log("this is confirm code func");
+      // dispatch(actions.thing());
+    }
+  };
+};
 
-// const mapDispatchToProps = (dispatch, props) => {
-//   return {
-//   };
-// };
+const GetConfirmationCodeContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GetConfirmationCode);
 
-// const ResettingContainer = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Resetting);
-
-// export default InjectIntl(ResettingContainer);
+export default InjectIntl(GetConfirmationCodeContainer);

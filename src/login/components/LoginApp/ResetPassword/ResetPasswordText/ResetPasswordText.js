@@ -8,6 +8,7 @@ class ResetPasswordText extends Component {
     let heading = "";
     let text = "";
     let instructions = "";
+
     if (url.includes("get-email-link")) {
       heading = this.props.translate("resetpw.get-email-link_heading");
       text = this.props.translate("resetpw.get-email-link_text");
@@ -18,8 +19,17 @@ class ResetPasswordText extends Component {
       heading = "Prove that you are the owner of your eduID with your phone.";
       text =
         "By proving that you have access to the phone number added to your eduID your password will be reset without resetting your verified identity.";
-      instructions =
-        "1. Recieve a code to your phone 2. Use the code to prove you have access to the phone";
+      let instructionSteps = [
+        "1. Recieve a code to your phone",
+        "2. Use the code to prove you have access to the phone"
+      ];
+      instructions = instructionSteps.map((instruction, i) => {
+        return (
+          <p key={i} className="steps">
+            {instruction}
+          </p>
+        );
+      });
     } else if (url.includes("use-confirmation-code")) {
       heading = "Use the code to prove that you are the owner of this eduID.";
       text =
@@ -32,9 +42,13 @@ class ResetPasswordText extends Component {
 
     return (
       <div className="text-container">
-        <p className="sub-heading">{heading}</p>
-        <p>{text}</p>
-        <p className="instructions">{instructions}</p>
+        <p key="0" className="sub-heading">
+          {heading}
+        </p>
+        <p key="1">{text}</p>
+        <div key="2" className="instructions-container">
+          {instructions}
+        </div>
       </div>
     );
   }
@@ -46,5 +60,4 @@ ResetPasswordText.propTypes = {
   validate: PropTypes.func
 };
 
-export default InjectIntl(ResetPasswordText);;
-
+export default InjectIntl(ResetPasswordText);

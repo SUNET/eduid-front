@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { withRouter } from "react-router-dom";
 
-import EmailDisplay from "../../../EmailDisplay/EmailDisplay_container";
+import EmailDisplay from "../../../DataDisplay/Email/EmailDisplay_container";
 import ButtonSecondary from "../../../Buttons/ButtonSecondary";
 
 

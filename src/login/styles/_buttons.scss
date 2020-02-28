@@ -37,6 +37,7 @@ button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
 button.btn-secondary:not(:disabled):not(.disabled):active:focus {
   color: $orange-highlight;
+  text-transform: none;
   text-decoration: none;
   border: none;
   background-color: $orange-opaque;
@@ -59,7 +60,7 @@ button.btn-primary:hover {
   .disabled {
     background-color: $dark-gray;
     border: none;
-    transform: scale(1.0);
+    transform: scale(1);
   }
 }
 
