@@ -67,8 +67,13 @@ p.steps {
 // this is the first paragraph on pages outside of the dashboard
 .sub-heading {
   margin-top: 3rem;
-  padding-bottom: 1rem;
   font-weight: 700;
+}
+
+span.sub-heading {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  padding-bottom: 0;
 }
 
 .horizontal-content-margin {

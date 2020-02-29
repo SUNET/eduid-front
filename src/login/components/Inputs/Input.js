@@ -14,7 +14,9 @@ const TextInput = props => {
   let valid = false;
   let invalid = false;
   if (meta.touched || meta.submitFailed) {
+    console.log("meta.touched");
     if (meta.error) {
+      console.log("meta.error");
       invalid = true;
     } else {
       valid = true;
@@ -30,6 +32,7 @@ const TextInput = props => {
     errorMessage = <span className="input-error">{validationError}</span>;
   }
 
+  // console.log("this is input.name", input.name)
   // let field;
 
   // if (type === "select") {

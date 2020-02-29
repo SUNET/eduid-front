@@ -13,13 +13,15 @@ class EmailLinkSent extends Component {
       <React.Fragment>
         <EmailDisplay {...this.props} />
         <div className="button-single">
-          <p>
-            <span className="sub-heading"> No link in your email inbox?</span>
-            <p>
+          <div>
+            <span key="0" className="sub-heading">
+              No link in your email inbox?
+            </span>
+            <p key="1">
               Request another one here. It is valid for up to two hours, so make
               sure you are looking at the most recent email.
             </p>
-          </p>
+          </div>
           <ButtonSecondary
             id={"resend-email-link"}
             onClick={this.props.handleResendLink}

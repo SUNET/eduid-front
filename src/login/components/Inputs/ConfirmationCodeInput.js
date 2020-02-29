@@ -6,7 +6,7 @@ import Input from "./Input";
 let ConfirmationCodeInput = props => (
   <Field
     type={"text"}
-    name={"confirmation-code"}
+    name={"confirmationCode"}
     label={"confirmation code"}
     inputclass={"input"}
     id={"confirmation-code-input"}

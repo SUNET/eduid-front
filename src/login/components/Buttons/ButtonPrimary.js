@@ -12,7 +12,7 @@ class ButtonPrimary extends Component {
     //   classes = this.props.className + classes;
     // }
 
-    console.log("these are props in the button rimary:", this.props);
+    // console.log("these are props in the button rimary:", this.props);
     return (
       <Button
         // className={classes}

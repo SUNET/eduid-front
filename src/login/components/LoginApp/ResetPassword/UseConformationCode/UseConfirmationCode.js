@@ -7,10 +7,10 @@ import { withRouter } from "react-router-dom";
 import ConfirmationCodeInput from "../../../Inputs/ConfirmationCodeInput";
 import PrimaryButton from "../../../Buttons/ButtonPrimary";
 import SecondaryButton from "../../../Buttons/ButtonSecondary";
-import Link from "../../../Links/Link";
+// import Link from "../../../Links/Link";
 // import ButtonRedirect from "../../ButtonPrimary";
 
-import { validate } from "../../../../app_utils/validation/validateEmail";
+import { validate } from "../../../../app_utils/validation/validateConfirmationCode";
 
 let ConfirmationCodeForm = props => (
   // console.log("this is props in Email Form", props),
@@ -33,7 +33,7 @@ ConfirmationCodeForm = reduxForm({
 })(ConfirmationCodeForm);
 
 ConfirmationCodeForm = connect(state => ({
-  enableReinitialize: true
+  initialValues: {}
 }))(ConfirmationCodeForm);
 
 class UseConfirmationCode extends Component {
@@ -42,10 +42,10 @@ class UseConfirmationCode extends Component {
     return (
       <React.Fragment>
         <ConfirmationCodeForm {...this.props} />
-        <p>
-          <span className="sub-heading"> No code to your phone?</span>
-          <p>You can request another one that is valid for up to two hours.</p>
-        </p>
+        <div>
+          <span key="0" className="sub-heading"> No code to your phone?</span>
+          <p key="1">You can request another one that is valid for up to two hours.</p>
+        </div>
         <SecondaryButton
           id={"use-confirmation-code"}
           onClick={this.handleResendConfirmationCode}
