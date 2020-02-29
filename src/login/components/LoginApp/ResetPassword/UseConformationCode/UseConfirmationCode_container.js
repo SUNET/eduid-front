@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch, props) => {
     handleResendConfirmationCode: e => {
       console.log("you're in handleResendConfirmationCode");
       e.preventDefault();
-      props.history.push("/reset/reset-password/set-new-password/");
+      // props.history.push("/reset/reset-password/set-new-password/");
     }
   };
 };
