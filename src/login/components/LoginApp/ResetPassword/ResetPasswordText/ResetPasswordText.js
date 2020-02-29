@@ -33,9 +33,9 @@ class ResetPasswordText extends Component {
     } else if (url.includes("use-confirmation-code")) {
       heading = "Use the code to prove that you are the owner of this eduID.";
       text =
-        "Enter the confirmation code to prove you have access to the phone number. By doing so, you will be able to access your existing eduID.";
+        "By proving that you got the code you get to keep your eduID identity intact even after the password reset.";
     } else if (url.includes("set-new-password")) {
-      heading = "Set your new password.";
+      heading = "Set your new password";
     }
 
     // console.log("these are props in the ResetPasswordText:", this.props);

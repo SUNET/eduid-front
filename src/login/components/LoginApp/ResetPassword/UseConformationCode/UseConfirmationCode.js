@@ -22,7 +22,7 @@ let ConfirmationCodeForm = props => (
       disabled={props.invalid}
       onClick={props.handleUseConfirmationCode}
     >
-      I got the code
+      confirm code
     </PrimaryButton>
   </form>
 );
@@ -43,12 +43,13 @@ class UseConfirmationCode extends Component {
       <React.Fragment>
         <ConfirmationCodeForm {...this.props} />
         <div>
-          <span key="0" className="sub-heading">
+          {/* <span key="0" className="sub-heading">
             {" "}
             No code to your phone?
-          </span>
+          </span> */}
           <p key="1">
-            You can request another one that is valid for up to two hours.
+            If you did not get a code you can request another one. It will be
+            valid for up to two hours.
           </p>
         </div>
         <SecondaryButton
