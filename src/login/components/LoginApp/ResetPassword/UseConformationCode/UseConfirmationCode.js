@@ -43,12 +43,17 @@ class UseConfirmationCode extends Component {
       <React.Fragment>
         <ConfirmationCodeForm {...this.props} />
         <div>
-          <span key="0" className="sub-heading"> No code to your phone?</span>
-          <p key="1">You can request another one that is valid for up to two hours.</p>
+          <span key="0" className="sub-heading">
+            {" "}
+            No code to your phone?
+          </span>
+          <p key="1">
+            You can request another one that is valid for up to two hours.
+          </p>
         </div>
         <SecondaryButton
           id={"use-confirmation-code"}
-          onClick={this.handleResendConfirmationCode}
+          onClick={this.props.handleResendConfirmationCode}
         >
           Send a new code
         </SecondaryButton>
