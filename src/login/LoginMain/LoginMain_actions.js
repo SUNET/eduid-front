@@ -49,7 +49,10 @@ export function getLoginConfigFail(err) {
   };
 }
 
-// resetting the password, after sending the emailed code
+// resetting the password, the user has already provided an email address
+// and has been sent an email with a URL with a code in it. Here we send the code from
+// the URL to the centraL store, and also trigger the saga that will fetch
+// configuration data for the user corresponding to the code.
 export function getConfigFromCode(code) {
   return {
     type: CODE_FOR_CONFIG,
