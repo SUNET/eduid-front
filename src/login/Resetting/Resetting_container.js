@@ -15,12 +15,16 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handlePhoneNumber: (index) => {
+      // Handler for clicking on buttons offering to reset the password
+      // with extra security provided by verified phone numbers.
       return (e) => {
         e.preventDefault();
         dispatch(actions.chooseExtraSecurityPhone(index));
       }
     },
     handleToken: () => {
+      // Handler for clicking on buttons offering to reset the password
+      // with extra security provided by fido tokens.
       return (e) => {
         e.preventDefault();
         dispatch(actions.chooseExtraSecurityToken());
@@ -28,6 +32,8 @@ const mapDispatchToProps = (dispatch, props) => {
       }
     },
     handleNoExtraSec: (e) => {
+      // Handler for clicking on the button offering to reset the password
+      // with no extra security.
       e.preventDefault();
       dispatch(actions.chooseExtraSecurityNone());
       history.push('/reset-password/choose/');
