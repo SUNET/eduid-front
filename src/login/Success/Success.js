@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import i18n from "i18n-messages";
 
 
+// Little component to show success after completion of some workflow
+// (e.g. the reset password workflow)
 class Success extends Component {
 
   render() {
