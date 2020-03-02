@@ -18,6 +18,7 @@ const pwStrengthMessages = [
 ];
 
 export function hasWebauthnSupport() {
+  // check for webauthn support in the browser
   return
     navigator.credentials &&
     navigator.credentials.get !== undefined &&
@@ -26,6 +27,7 @@ export function hasWebauthnSupport() {
 
 const mapStateToProps = (state, props) => {
   let userInput = state.config.zxcvbn_terms;
+  // Grab the custom password and check its strength
   const customPassword =
     (state.form &&
       state.form.chpass &&
@@ -44,6 +46,7 @@ const mapStateToProps = (state, props) => {
     score = n;
     minEntropy += stepEntropy;
   }
+  // get webauthn options in a format appropriate for checking credentials.
   let options = {};
   if (state.config.extra_security.tokens && hasWebauthnSupport()) {
     try {
@@ -95,6 +98,9 @@ let credentials_locked = false;
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    // Handler for the password change form.
+    // grab the password from the DOM,
+    // and act according to the previous user choice on extra security.
     handleStartPasswordChange: function(event) {
       event.preventDefault();
       let newPassword = this.props.suggested_password;
@@ -110,20 +116,23 @@ const mapDispatchToProps = (dispatch, props) => {
         dispatch(actions.askForTokenAndReset());
       }
     },
-
+    // Leave the password reset form
     handleStopPasswordChange: function(event) {
       event.preventDefault();
       history.push(this.props.cancel_to);
     },
+    // hide the modal asking for the SMS code
     handleStopSMSCodeConfirmation: function(event) {
       dispatch(actions.stopResetPasswordSMS());
     },
+    // Trigger requesting a password reset with extra security with the provided SMS'd verification code.
     handleSMSCodeConfirm: function(event) {
       const newPassword = this.props.new_password;
       dispatch(actions.passwordToReset(newPassword));
       const code = document.getElementsByName('smsCodeDialogControl')[0].value;
       dispatch(actions.doResetPasswordSMS(code));
     },
+    // retry asking for fido credentials.
     retry: function(e) {
       e.preventDefault();
       dispatch(actions.retry());
