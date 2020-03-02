@@ -18,7 +18,7 @@ let InitForm = props => (
     id="init-reset-form"
     role="form">
     <div id="init-reset-input-group">
-      <fieldset id="init-reset-form">
+      <fieldset id="init-reset-form-fieldset">
         <Field
           type="email"
           name="email"
@@ -34,7 +34,7 @@ let InitForm = props => (
         disabled={props.invalid}
         onClick={props.handleEmail}
       >
-        {props.l10n("reset.send")}
+        {props.l10n("resetpw.send")}
       </EduIDButton>
       <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback>
     </div>
@@ -55,17 +55,18 @@ class InitResetForm extends Component {
       markup = (
         <div>
           <h3 className="resetting-password-header">
-            {this.props.l10n("resetpass.email-sent-title")}
+            {this.props.l10n("resetpw.email-sent-title")}
           </h3>
-          {this.props.l10n("resetpass.email-sent")}
+          {this.props.l10n("resetpw.email-sent")}
         </div>
       );
     } else {
       markup = (
         <div>
           <h3 className="reset-password-header">
-            {this.props.l10n("resetpass.main_title")}
+            {this.props.l10n("resetpw.main_title")}
           </h3>
+          {this.props.l10n("resetpw.main-body")}
           <InitForm {...this.props} />
         </div>
       );
