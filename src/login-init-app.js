@@ -16,7 +16,6 @@ import rootSaga from "./login-root-saga";
 
 import { history } from "login/LoginMain/LoginMain";
 import * as actions from "login/LoginMain/LoginMain_actions";
-import * as resetting_actions from "login/Resetting/Resetting_actions";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -45,7 +44,7 @@ const initState = function() {
   console.log('Initializing state for the login app...');
   const segments = document.location.href.split('/').reverse();
   if (segments[1] === 'code') {
-    store.dispatch(resetting_actions.getConfigFromCode(segments[0]))
+    store.dispatch(actions.getConfigFromCode(segments[0]))
   } else {
     store.dispatch(actions.getLoginConfig())
   }
