@@ -42,6 +42,8 @@ let loginReducer = (state = loginData, action) => {
         // is_fetching: false
       };
     case actions.POST_CODE_SUCCESS:
+      // the payload in this action will come directly from the backend,
+      // dispatched (put) in the saga getConfigFromCode
       return {
         ...state,
         ...action.payload,
