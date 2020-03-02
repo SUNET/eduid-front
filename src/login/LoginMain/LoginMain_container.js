@@ -7,6 +7,11 @@ import LoginMain from "login/LoginMain/LoginMain";
 const mapStateToProps = (state, props) => {
   return {
     //is_fetching: state.config.is_fetching,
+    email_code: "",
+    extra_security: [],
+    error: state.config.error,
+    success_title: state.config.success_title,
+    success_body: state.config.success_body,
   };
 };
 
