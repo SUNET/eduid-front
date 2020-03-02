@@ -11,6 +11,7 @@ import FooterContainer from "containers/Footer";
 
 import InitResetFormContainer from "login/InitResetForm/InitResetForm_container";
 import ResettingContainer from "login/Resetting/Resetting_container";
+import DoResetContainer from "login/DoReset/DoReset_container";
 
 
 import "style/base.scss";
@@ -54,6 +55,11 @@ class Main extends Component {
           key="2"
           path="/reset-password/code/"
           render={props => <ResettingContainer {...props} />}
+        />,
+        <Route
+          key="3"
+          path="/reset-password/choose/"
+          render={props => <DoResetContainer {...props} />}
         />,
       ];
     }
