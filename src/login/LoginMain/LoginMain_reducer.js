@@ -1,4 +1,5 @@
 import * as actions from "login/LoginMain/LoginMain_actions";
+import * as chpass_actions from "actions/ChangePassword";
 
 
 const loginData = {
@@ -37,6 +38,11 @@ let loginReducer = (state = loginData, action) => {
         ...state,
         ...action.payload,
         // is_fetching: false
+      };
+    case chpass_actions.SET_ZXCVBN:
+      return {
+        ...state,
+        zxcvbn_module: action.payload.module
       };
     default:
       //if (action.type.endsWith("_SUCCESS") || action.type.endsWith("_FAIL")) {
