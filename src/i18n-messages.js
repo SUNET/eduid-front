@@ -2976,8 +2976,215 @@ const msgs = {
 
   "pfilled.completion": (
     <FormattedMessage id="pfilled.completion" defaultMessage={`Completion`} />
-  )
+  ),
+
+  // reset-passwords
+
+  "resetpw.unknown-code": (
+    <FormattedMessage
+      id="resetpw.unknown-code"
+      defaultMessage={`Unrecognized code`}
+    />
+  ),
+
+  "resetpw.resetpw.phone-code-unknown": (
+    <FormattedMessage
+      id="resetpw.resetpw.phone-code-unknown"
+      defaultMessage={`Unrecognized SMS code`}
+    />
+  ),
+
+  "resetpw.expired-email-code": (
+    <FormattedMessage
+      id="resetpw.expired-email-code"
+      defaultMessage={`The code has expired, please request a new one`}
+    />
+  ),
+
+  "resetpw.expired-sms-code": (
+    <FormattedMessage
+      id="resetpw.expired-sms-code"
+      defaultMessage={`The SMS code has expired, please request a new one`}
+    />
+  ),
+
+  "resetpw.send-pw-fail": (
+    <FormattedMessage
+      id="resetpw.send-pw-fail"
+      defaultMessage={`There was some problem emailing the code`}
+    />
+  ),
+
+  "resetpw.send-pw-success": (
+    <FormattedMessage
+      id="resetpw.send-pw-success"
+      defaultMessage={`A verification code has been sent to the provided address`}
+    />
+  ),
+
+  "resetpw.pw-resetted": (
+    <FormattedMessage
+      id="resetpw.pw-resetted"
+      defaultMessage={`The password has been successfully reset`}
+    />
+  ),
+
+  "resetpw.sms-failed": (
+    <FormattedMessage
+      id="resetpw.sms-failed"
+      defaultMessage={`There was some problem sending an SMS with a verification code`}
+    />
+  ),
+
+  "resetpw.sms-success": (
+    <FormattedMessage
+      id="resetpw.sms-success"
+      defaultMessage={`A new verification code has been sent by SMS`}
+    />
+  ),
+
+  "resetpw.phone-invalid": (
+    <FormattedMessage
+      id="resetpw.phone-invalid"
+      defaultMessage={`The phone number cannot be verified`}
+    />
+  ),
+
+  "resetpw.user-not-found": (
+    <FormattedMessage
+      id="resetpw.user-not-found"
+      defaultMessage={`No user was found corresponding to the provided email`}
+    />
+  ),
+
+  "resetpw.email-not-validated": (
+    <FormattedMessage
+      id="resetpw.email-not-validated"
+      defaultMessage={`The email address cannnot be verified`}
+    />
+  ),
+
+  "resetpw.incomplete-user": (
+    <FormattedMessage
+      id="resetpw.incomplete-user"
+      defaultMessage={`Missing info for your account, please contact eduID`}
+    />
+  ),
+
+  "resetpw.no_reauthn": (
+    <FormattedMessage
+      id="resetpw.no_reauthn"
+      defaultMessage={`You need to re-authenticate again`}
+    />
+  ),
+
+  "resetpw.stale_reauthn": (
+    <FormattedMessage
+      id="resetpw.stale_reauthn"
+      defaultMessage={`Re-authentication has expired, please start the process again`}
+    />
+  ),
+
+  "resetpw.unable-to-verify-old-password": (
+    <FormattedMessage
+      id="resetpw.unable-to-verify-old-password"
+      defaultMessage={`Incorrect (old) password sent`}
+    />
+  ),
+  "resetpw.enter-sms-code": (
+    <FormattedMessage
+      id="resetpw.enter-sms-code"
+      defaultMessage={`Please enter the code sent by SMS`}
+    />
+  ),
+  "resetpw.choose-your-password": (
+    <FormattedMessage
+      id="resetpw.choose-your-password"
+      defaultMessage={`Choose a password`}
+    />
+  ),
+
+  "resetpw.main-title": (
+    <FormattedMessage
+      id="resetpw.main-title"
+      defaultMessage={`Reset your password`}
+    />
+  ),
+
+  "resetpw.email-sent": (
+    <FormattedMessage
+      id="resetpw.email-sent"
+      defaultMessage={`We have sent you further instructions to reset your password`}
+    />
+  ),
+  "resetpw.send": (
+    <FormattedMessage
+      id="resetpw.send"
+      defaultMessage={`Send`}
+    />
+  ),
+
+  "resetpw.no-extra-sec": (
+    <FormattedMessage
+      id="resetpw.no-extra-sec"
+      defaultMessage={`No extra security`}
+    />
+  ),
+  "resetpw.code-title": (
+    <FormattedMessage
+      id="resetpw.code-title"
+      defaultMessage={`Reset your password`}
+    />
+  ),
+  "resetpw.code-body": (
+    <FormattedMessage
+      id="resetpw.code-body"
+      defaultMessage={`You can prove that you own your security cards or phone numbers, to reset your password without unverifying your data`}
+    />
+  ),
+
+  "resetpw.use-key": (
+    <FormattedMessage
+      id="resetpw.use-key"
+      defaultMessage={`Use a security card`}
+    />
+  ),
+
+  "resetpw.key": (
+    <FormattedMessage
+      id="resetpw.key"
+      defaultMessage={`Security card`}
+    />
+  ),
+
+  "resetpw.send-sms": (
+    <FormattedMessage
+      id="resetpw.send-sms"
+      defaultMessage={`phone number:`}
+    />
+  ),
+
+  "resetpw.email-sent-title": (
+    <FormattedMessage
+      id="resetpw.email-sent-title"
+      defaultMessage={`Check your inbox`}
+    />
+  ),
+  "resetpw.main-body": (
+    <FormattedMessage
+      id="resetpw.main-body"
+      defaultMessage={`Please enter an email address`}
+    />
+  ),
+  "resetpw.phone-code-unknown": (
+    <FormattedMessage
+      id="resetpw.phone-code-unknown"
+      defaultMessage={`Unknown code, please check it and try again`}
+    />
+  ),
 };
+
+"resetpw."
 
 const unformatted = defineMessages({
   "pd.choose-language": {
