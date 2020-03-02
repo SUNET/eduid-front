@@ -199,6 +199,9 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     loadZxcvbn: function() {
+      // The zxcvbn module is quite heavy, so we only load it if necessary (i.e., if the password change
+      // form is visited). Here we load it and send it in an action to the central strore, from which
+      // components that need it can grab it.
       return new Promise(resolve => {
         require.ensure([], () => {
           const module = require("zxcvbn");

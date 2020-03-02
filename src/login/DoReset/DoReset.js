@@ -14,6 +14,10 @@ import ConfirmModal from "components/ConfirmModal";
 class DoReset extends Component {
 
   render() {
+    // Show the user a form to change the password.
+    // Once the form is valid and the user clicks on the submit button,
+    // if the user has chosen to use extra security with a phone number,
+    // show a modal with an input for the SMS'd code.
     return (
       <div>
         <h3 className="reset-password-code-header">

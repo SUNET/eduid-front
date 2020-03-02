@@ -17,6 +17,7 @@ class Resetting extends Component {
   render() {
     let phone_alternatives = [];
     if (this.props.alternatives && this.props.alternatives.phone_numbers) {
+      // for each verified phone number, provide an option to reset the password with extra security
       phone_alternatives = this.props.alternatives.phone_numbers.map((alt, index) => {
         return (
             <div className="row" key={alt.number}>
@@ -38,6 +39,8 @@ class Resetting extends Component {
     }
     let token_alternatives = [];
     if (this.props.alternatives && this.props.alternatives.tokens && hasWebauthnSupport()) {
+      // If the user has registered security tokens, and the browser supports it, offer the possibility
+      // to reset the password with extra secirity provided by them tokens.
       token_alternatives = (
             <div className="row">
                 <Form

@@ -11,6 +11,7 @@ import * as actions from "login/DoReset/DoReset_actions";
 import { history } from "login/LoginMain/LoginMain";
 
 
+// Send request for a password reset without extra security.
 export function* postPasswordReset() {
   try {
     const state = yield select(state => state);
@@ -47,6 +48,7 @@ export function requestPasswordReset(config, data) {
     .then(response => response.json());
 }
 
+// Send request for a password reset with extra security provided by a verified phone number
 export function* postPasswordResetWithSMSCode() {
   try {
     const state = yield select(state => state);
@@ -94,6 +96,7 @@ function safeEncode(obj) {
     .replace(/=*$/, "");
 }
 
+// Send request for a password reset with extra security provided by a fido token
 export function* postPasswordResetWithToken() {
   try {
     const state = yield select(state => state);
@@ -142,6 +145,8 @@ export function handleRetry() {
 
 let credentials_locked = false;
 
+
+// Trigger asking the user to provide fido credentials.
 export function* askForToken() {
   const state = yield select(state => state);
   let assertion = state.do_reset.webauthn_assertion;

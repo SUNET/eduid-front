@@ -7,6 +7,9 @@ import * as actions from "login/Resetting/Resetting_actions";
 import { history } from "login/LoginMain/LoginMain";
 
 
+// This will signal the backend that the user has chosen to reset the password
+// with extra security provided by a verified phone number, and that as a consequence,
+// it should send an SMS with a verification code to the indicated number.
 export function* postExtrasecWithSMSCode() {
   try {
     const state = yield select(state => state);

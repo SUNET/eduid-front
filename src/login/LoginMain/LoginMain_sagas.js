@@ -45,6 +45,7 @@ export function requestConfigFromCode(config, data) {
     .then(response => response.json());
 }
 
+// grab the code from the URL and POST it to the backend to get configuration data.
 export function* getConfigFromCode() {
   try {
     const state = yield select(state => state),
