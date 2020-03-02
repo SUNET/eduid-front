@@ -3184,7 +3184,6 @@ const msgs = {
   ),
 };
 
-"resetpw."
 
 const unformatted = defineMessages({
   "pd.choose-language": {
