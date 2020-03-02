@@ -9,6 +9,8 @@ const loginData = {
   error: false,
   DEBUG: true,
   available_languages: {},
+  success_title: '',
+  success_body: '',
 };
 
 //const fetchingActions = [
@@ -38,6 +40,17 @@ let loginReducer = (state = loginData, action) => {
         ...state,
         ...action.payload,
         // is_fetching: false
+      };
+    case actions.POST_CODE_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        error: false,
+      };
+    case actions.POST_CODE_FAIL:
+      return {
+        ...state,
+        error: true,
       };
     case chpass_actions.SET_ZXCVBN:
       return {

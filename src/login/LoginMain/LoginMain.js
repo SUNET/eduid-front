@@ -6,10 +6,12 @@ import { createBrowserHistory } from "history";
 import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import NotificationsContainer from "containers/Notifications";
+import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 
 import InitResetFormContainer from "login/InitResetForm/InitResetForm_container";
 import ResettingContainer from "login/Resetting/Resetting_container";
+
 
 import "style/base.scss";
 import "./LoginMain.scss";
@@ -33,30 +35,40 @@ class Main extends Component {
   //}
 
   render() {
+    let routes = '';
+    if (!this.props.error) {
+      routes = [
+        <Route
+          key="0"
+          exact
+          path="/"
+          render={props => <div {...props} ></div>}
+        />,
+        <Route
+          key="1"
+          exact
+          path="/reset-password/"
+          render={props => <InitResetFormContainer {...props} />}
+        />,
+        <Route
+          key="2"
+          path="/reset-password/code/"
+          render={props => <ResettingContainer {...props} />}
+        />,
+      ];
+    }
     return [
       //<FetchingContext.Provider value={this.state}>
         <SplashContainer key="0" />,
         <Router key="1" history={history}>
           <div className="login-wrapper">
+            <HeaderContainer {...this.props} />
             <div id="login-text">
               <div id="welcome">
               </div>
               <div id="content">
                 <NotificationsContainer />
-                <Route
-                  exact
-                  path="/"
-                  render={props => <div {...props} ></div>}
-                />
-                <Route
-                  exact
-                  path="/reset/reset-password/"
-                  render={props => <InitResetFormContainer {...props} />}
-                />
-                <Route
-                  path="/reset/reset-password/code/"
-                  render={props => <ResettingContainer {...props} />}
-                />
+                {routes}
               </div>
             </div>
             <FooterContainer {...this.props} />
