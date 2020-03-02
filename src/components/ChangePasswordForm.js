@@ -185,14 +185,35 @@ ChangePasswordForm = reduxForm({
   validate
 })(ChangePasswordForm);
 
-ChangePasswordForm = connect(state => {
+
+const mapStateToProps = (state, props) => {
   const initialValues = {};
-  initialValues[pwFieldSuggestedName] = state.chpass.suggested_password;
+  const suggested = state.chpass ? state.chpass.suggested_password : state.config.suggested_password;
+  initialValues[pwFieldSuggestedName] = suggested;
   return {
     initialValues: initialValues,
     enableReinitialize: true
   };
-})(ChangePasswordForm);
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    loadZxcvbn: function() {
+      return new Promise(resolve => {
+        require.ensure([], () => {
+          const module = require("zxcvbn");
+          dispatch(actions.setZxcvbn(module));
+          resolve();
+        });
+      });
+    }
+  };
+};
+
+ChangePasswordForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ChangePasswordForm);
 
 ChangePasswordForm = i18n(ChangePasswordForm);
 

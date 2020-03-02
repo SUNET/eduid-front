@@ -10,9 +10,13 @@ import ChangePasswordForm from "./ChangePasswordForm";
 import DashboardNav from "./DashboardNav";
 
 import "style/ChangePassword.scss";
+
+
 class ChangePassword extends Component {
-  componentWillMount() {
-    this.props.loadZxcvbn();
+
+  constructor(props) {
+    super(props);
+    props.loadZxcvbn();
   }
 
   render() {
