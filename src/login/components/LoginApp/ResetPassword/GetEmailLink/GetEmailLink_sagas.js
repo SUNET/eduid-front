@@ -7,7 +7,7 @@ import * as actions from "./GetEmailLink_actions";
 
 export function postEmailRequest(init, data) {
   return window
-    .fetch(init.password_service_url + "reset/", {
+    .fetch(PASSWORD_SERVICE_URL + "/reset/", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -27,4 +27,3 @@ export const postEmail = saveData(
   postEmailRequest,
   actions.saveEmailFail
 );
-
