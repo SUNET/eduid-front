@@ -4,10 +4,10 @@ import { Provider } from "react-intl-redux";
 import { mount } from "enzyme";
 import expect from "expect";
 
-import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
 import sv from "react-intl/locale-data/sv";
+import * as  messages from "../../../i18n/l10n/en";
 
 addLocaleData([...en, ...sv]);
 
@@ -40,6 +40,10 @@ const fakeState = {
     sms_code: "",
     password_chosen_sms: false,
     webauthn_assertion: null
+  },
+  intl: {
+    locale: "en",
+    messages: messages
   }
 };
 
@@ -66,7 +70,7 @@ export const fakeStore = state => ({
   getState: () => ({ ...state })
 });
 
-export const setupComponent = function({ component, overrides, store } = {}) {
+export const setupComponent = function(component, overrides, store) {
   if (store === undefined) {
     if (overrides === undefined) {
       overrides = {};

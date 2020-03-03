@@ -18,7 +18,7 @@ const loginData = {
 
 //const unFetchingActions = [];
 
-let loginReducer = (state = loginData, action) => {
+const loginReducer = (state = loginData, action) => {
   switch (action.type) {
     case actions.APP_LOADED:
       return {
