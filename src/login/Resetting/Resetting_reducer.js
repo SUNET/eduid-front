@@ -3,7 +3,7 @@ import * as actions from "login/Resetting/Resetting_actions";
 
 const resettingData = {
   choose_extrasec: '',
-  extrasec_phone_index: -1,
+  extrasec_phone_index: '-1',
 };
 
 let resettingReducer = (state = resettingData, action) => {

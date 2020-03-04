@@ -61,3 +61,29 @@ describe("Resetting Container", () => {
   });
 });
 
+describe("Resetting reducer", () => {
+
+  it("Receives an CHOOSE_EXTRA_SECURITY_NONE action", () => {
+    const state = getState();
+    const action = actions.chooseExtraSecurityNone();
+    const newState = resettingReducer(state.resetting, action);
+    expect(newState.choose_extrasec).toEqual('none');
+    expect(newState.extrasec_phone_index).toEqual(-1);
+  });
+
+  it("Receives an CHOOSE_EXTRA_SECURITY_PHONE action", () => {
+    const state = getState();
+    const action = actions.chooseExtraSecurityPhone("0");
+    const newState = resettingReducer(state.resetting, action);
+    expect(newState.choose_extrasec).toEqual('phone');
+    expect(newState.extrasec_phone_index).toEqual('0');
+  });
+
+  it("Receives an CHOOSE_EXTRA_SECURITY_TOKEN action", () => {
+    const state = getState();
+    const action = actions.chooseExtraSecurityToken();
+    const newState = resettingReducer(state.resetting, action);
+    expect(newState.choose_extrasec).toEqual('token');
+    expect(newState.extrasec_phone_index).toEqual(-1);
+  });
+});
