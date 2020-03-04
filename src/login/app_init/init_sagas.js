@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+import { push } from "react-router-redux";
 import { put, call, select } from "redux-saga/effects";
 import {
   checkStatus,
@@ -58,6 +58,9 @@ export function* useLinkCode(code) {
     yield put(putCsrfToken(resp));
     yield put(resp);
     yield put(app_actions.appLoaded());
+    if (state.config.extra_security.phone_numbers === []) {
+      console.log("extra_security.phone_numbers in the saga is empty:");
+    }
     yield put(push("/reset/reset-password/get-confirmation-code"));
   } catch (error) {
     yield put(app_actions.appLoaded());

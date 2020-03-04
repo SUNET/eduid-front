@@ -13,6 +13,11 @@ import UseConfirmationCode from "./UseConformationCode/UseConfirmationCode_conta
 
 class ResetPassword extends Component {
   render() {
+    console.log("these are props in the resetpassword:", this.props);
+    console.log(
+      "these are props in the resetpassword:",
+      this.props.extra_security
+    );
     const url = this.props.history.location.pathname;
     let resetPasswordFunctionality = "";
 
@@ -20,6 +25,9 @@ class ResetPassword extends Component {
       resetPasswordFunctionality = [<GetEmailLink key="1" {...this.props} />];
     } else if (url.includes("email-link-sent")) {
       resetPasswordFunctionality = [<EmailLinkSent key="1" {...this.props} />];
+      if (this.props.phone_numbers !== [] && this.props.security_keys) {
+
+      }
     } else if (url.includes("get-confirmation-code")) {
       resetPasswordFunctionality = [
         <GetConfirmationCode key="1" {...this.props} />
@@ -30,7 +38,6 @@ class ResetPassword extends Component {
       ];
     }
 
-    // console.log("these are props in the resetpassword:", this.props);
     return (
       <div className="text-margin">
         <ResetPasswordText key="0" {...this.props} />

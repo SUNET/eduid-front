@@ -10,7 +10,7 @@ const mapStateToProps = (state, props) => {
   // primaryPhone.length === 1
   //   ? (primaryPhoneStatus = true)
   //   : (primaryPhoneStatus = false);
-  console.log("this is extra security object", state.config.extra_security);
+  // console.log("this is extra security object", state.config.extra_security);
 
   return {
     //   phones: state.phones.phones,

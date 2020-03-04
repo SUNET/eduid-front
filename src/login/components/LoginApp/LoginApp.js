@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import PropTypes from "prop-types";
 // import LoginForm from "../LoginForm/LoginForm_container";
 import LoginForm from "./LoginForm/LoginForm_container";
-import ResetPassword from "./ResetPassword/ResetPassword";
+import ResetPassword from "./ResetPassword/ResetPassword_container";
 import { Route, Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
