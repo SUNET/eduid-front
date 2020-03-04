@@ -20,14 +20,14 @@ import sv from "react-intl/locale-data/sv";
 
 // utils to check support, compatibility or cookies
 import checkIfBeta from "../app_utils/betaVersion_cookie";
-import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";
+import polyfillElClosest_IE from "../app_utils/el.closest_IE_polyfill";
 
 // window.URLSearchParams = require("url-search-params");
 
 /* run all utils and set up the translation */
 checkIfBeta();
 checkTranslationSupport()
-polyfillElClosest_EI();
+polyfillElClosest_IE();
 addLocaleData([...en, ...sv]);
 
 /* render reactIndex.js */
