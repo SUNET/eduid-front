@@ -20,7 +20,7 @@ class Resetting extends Component {
       // for each verified phone number, provide an option to reset the password with extra security
       phone_alternatives = this.props.alternatives.phone_numbers.map((alt, index) => {
         return (
-            <div className="row" key={alt.number}>
+            <div className="row" key={index}>
                 <Form
                   id="init-reset-form"
                   role="form">

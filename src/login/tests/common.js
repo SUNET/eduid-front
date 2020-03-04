@@ -15,6 +15,7 @@ addLocaleData([...en, ...sv]);
 const fakeState = {
   config: {
     is_app_loaded: false,
+    extra_security: {},
     csrf_token: "dummy-csrf",
     //is_fetching: false,
     error: false,
