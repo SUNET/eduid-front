@@ -19,20 +19,10 @@ import { setupComponent, getState } from "./common";
 
 describe("Login Main Component", () => {
 
-  it("The <SplashContainer/> renders with a <Spinner/> if not app_loaded", () => {
+  it("Renders the <SplashContainer/>", () => {
     const wrapper = setupComponent(<LoginMainContainer/>);
     const splash = wrapper.find(SplashContainer);
-    const spinner = wrapper.find(Spinner);
     expect(splash.exists()).toEqual(true);
-    expect(spinner.exists()).toEqual(true);
-  });
-
-  it("The <SplashContainer/> renders without a <Spinner/>", () => {
-    const wrapper = setupComponent(<LoginMainContainer/>, {config: {is_app_loaded: true}});
-    const splash = wrapper.find(SplashContainer);
-    const spinner = splash.find(Spinner);
-    expect(splash.exists()).toEqual(true);
-    expect(spinner.exists()).toEqual(false);
   });
 
   it("Renders the <Header/> and <Footer/>", () => {
