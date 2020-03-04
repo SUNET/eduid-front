@@ -78,5 +78,5 @@ export const setupComponent = function(component, overrides, store) {
     store = fakeStore(getState(overrides));
   }
   const wrapper = mount(<Provider store={store}>{component}</Provider>);
-  return wrapper;
+  return {store: store, wrapper: wrapper};
 };

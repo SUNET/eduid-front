@@ -1,6 +1,6 @@
 import React from "react";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy } from "expect";
+import expect from "expect";
+import { put, call, select } from "redux-saga/effects";
 
 import { Spinner } from "spin.js";
 import SplashContainer from "containers/Splash";
@@ -20,22 +20,22 @@ import { setupComponent, getState } from "./common";
 describe("Login Main Component", () => {
 
   it("Renders the <SplashContainer/>", () => {
-    const wrapper = setupComponent(<LoginMainContainer/>);
-    const splash = wrapper.find(SplashContainer);
+    const setup = setupComponent(<LoginMainContainer/>);
+    const splash = setup.wrapper.find(SplashContainer);
     expect(splash.exists()).toEqual(true);
   });
 
   it("Renders the <Header/> and <Footer/>", () => {
-    const wrapper = setupComponent(<LoginMainContainer/>);
-    const header = wrapper.find(Header);
-    const footer = wrapper.find(Footer);
+    const setup = setupComponent(<LoginMainContainer/>);
+    const header = setup.wrapper.find(Header);
+    const footer = setup.wrapper.find(Footer);
     expect(header.exists()).toEqual(true);
     expect(footer.exists()).toEqual(true);
   });
 
   it("The <Notifications/> component renders", () => {
-    const wrapper = setupComponent(<LoginMainContainer/>);
-    const notifications = wrapper.find(Notifications);
+    const setup = setupComponent(<LoginMainContainer/>);
+    const notifications = setup.wrapper.find(Notifications);
     expect(notifications.exists()).toEqual(true);
   });
 });
@@ -99,36 +99,32 @@ describe("Main Login reducer", () => {
 describe("Async component", () => {
 
   it("Sagas requestLoginConfig", () => {
+
     const generator = sagas.requestLoginConfig();
 
-    next = generator.next();
-    const config = state => state.config;
-    const credentials = generator.next(config);
-    expect(credentials.value).toEqual(call(fetchCredentials, config));
+    let next = generator.next();
+    expect(next.value).toEqual(call(sagas.fetchLoginConfig, LOGIN_CONFIG_URL));
 
-    const action = {
-      type: actions.GET_LOGIN_CONFIG_SUCCESS,
-      payload: {
-        csrf_token: "csrf-token",
-        password_service_url: "dummy-url",
-        password_entropy: "25",
-        password_length: "12"
-      }
-    };
-    next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    const state = getState();
+
+    next = generator.next(state.config);
+
+    expect(next.value).toEqual(put(state.config));
+
     next = generator.next();
-    delete action.payload.csrf_token;
-    expect(next.value).toEqual(put(action));
+
+    expect(next.value).toEqual(put(actions.appLoaded()));
   });
 
   it("Sagas requestConfigFromCode", () => {
-    const generator = sagas.requestConfigFromCode();
+    const generator = sagas.getConfigFromCode();
 
-    next = generator.next();
-    const config = state => state.config;
-    const credentials = generator.next(config);
-    expect(credentials.value).toEqual(call(fetchCredentials, config));
+    const state = getState();
+
+    let next = generator.next();
+
+    next = generator.next(state);
+    expect(next.value.CALL.fn).toEqual(sagas.requestConfigFromCode);
 
     const action = {
       type: actions.GET_LOGIN_CONFIG_SUCCESS,
@@ -146,8 +142,12 @@ describe("Async component", () => {
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+
     next = generator.next();
     delete action.payload.csrf_token;
     expect(next.value).toEqual(put(action));
+
+    next = generator.next();
+    expect(next.value).toEqual(put(actions.appLoaded()));
   });
 });
