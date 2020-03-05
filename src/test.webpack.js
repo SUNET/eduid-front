@@ -18,3 +18,6 @@ context.keys().forEach(context);
 
 var context2 = require.context("../plugins", true, /test\.js$/);
 context2.keys().forEach(context2);
+
+var context3 = require.context("./login/tests", true, /\.js$/); //make sure you have your directory and regex test set correctly!
+context3.keys().forEach(context3);
