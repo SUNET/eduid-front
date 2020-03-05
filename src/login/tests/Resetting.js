@@ -29,6 +29,21 @@ describe("Resetting Container", () => {
     expect(setup.wrapper.find(EduIDButton).length).toEqual(1);
   });
 
+  it("clicks", () => {
+    const component = (<ResettingContainer/>);
+    setup = setupComponent(component);
+    const button = setup.wrapper.find(EduIDButton);
+
+    const numCalls = setup.store.dispatch.mock.calls.length;
+
+    const fakeEvent = {
+      preventDefault: () => {},
+    };
+    button.props().onClick(fakeEvent);
+
+    expect(setup.store.dispatch.mock.calls.length).toEqual(numCalls + 1);
+  });
+
   it("Does render 2 buttons", () => {
     const overrides = {
       config: {
