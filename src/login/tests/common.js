@@ -22,7 +22,8 @@ const fakeState = {
     DEBUG: true,
     available_languages: {},
     success_title: "",
-    success_body: ""
+    success_body: "",
+    password_service_url: 'dummy-url'
   },
   notifications: {
     messages: [],

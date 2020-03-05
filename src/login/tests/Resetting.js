@@ -87,3 +87,41 @@ describe("Resetting reducer", () => {
     expect(newState.extrasec_phone_index).toEqual(-1);
   });
 });
+
+describe("Async component", () => {
+  it("Post extra security with phone saga", () => {
+    const generator = sagas.postExtrasecWithSMSCode();
+    generator.next();
+
+    const state_overrides = {
+      config: {
+        email_code: 'dummy-code'
+      },
+      resetting: {
+        extrasec_phone_index: '1'
+      }
+    };
+    const state = getState(state_overrides);
+
+    const data = {
+      code: 'dummy-code',
+      phone_index: '1',
+      csrf_token: state.config.csrf_token
+    };
+    let next = generator.next(state);
+
+    expect(next.value).toEqual(call(sagas.requestExtrasecSMS, state.config, data));
+
+    const action = {
+      type: actions.POST_EXTRASEC_PHONE_SUCCESS,
+      payload: {
+        csrf_token: state.config.csrf_token
+      }
+    };
+    next = generator.next(action);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual(actions.POST_EXTRASEC_PHONE_SUCCESS);
+  });
+});
