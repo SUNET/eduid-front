@@ -46,11 +46,11 @@ describe("InitResetForm Container", () => {
     const numCalls = setup.store.dispatch.mock.calls.length;
     const querySelector = window.document.querySelector;
 
-    const fakeEvent = {
-      preventDefault: () => {},
-    };
     window.document.querySelector = (selector) => {
       return input.find('input#email');
+    };
+    const fakeEvent = {
+      preventDefault: () => {},
     };
 
     input.find('input#email').value = 'test@example.com';

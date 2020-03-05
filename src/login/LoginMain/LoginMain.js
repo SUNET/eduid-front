@@ -94,6 +94,9 @@ class Main extends Component {
 
 Main.propTypes = {
   //is_fetching: PropTypes.bool,
+  success_title: PropTypes.string,
+  success_body: PropTypes.string,
+  l10n: PropTypes.func,
 };
 
 export default Main;

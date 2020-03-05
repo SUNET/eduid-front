@@ -41,6 +41,20 @@ class DoReset extends Component {
 }
 
 DoReset.propTypes = {
+  l10n: PropTypes.func,
+  password_chosen_sms: PropTypes.bool,
+  handleStopSMSCodeConfirmation: PropTypes.func,
+  handleSMSCodeConfirm: PropTypes.func,
+  choose_extrasec: PropTypes.string,
+  suggested_password: PropTypes.string,
+  new_password: PropTypes.string,
+  password_entropy: PropTypes.string,
+  password_score: PropTypes.number,
+  password_strength_msg: PropTypes.string,
+  custom_ready: PropTypes.bool,
+  cancel_to: PropTypes.string,
+  webauthn_options: PropTypes.object,
+  assertion: PropTypes.object,
 };
 
 export default DoReset;

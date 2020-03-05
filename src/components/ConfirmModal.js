@@ -38,7 +38,6 @@ class ConfirmModal extends Component {
         <Modal
           id="confirm-user-data-modal"
           isOpen={this.props.showModal}
-          handleConfirm={this.props.handleConfirm}
         >
           <ModalHeader>{this.props.title}</ModalHeader>
           <ModalBody>

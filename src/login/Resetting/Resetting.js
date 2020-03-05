@@ -83,6 +83,11 @@ class Resetting extends Component {
 }
 
 Resetting.propTypes = {
+  alternatives: PropTypes.object,
+  handlePhoneNumber: PropTypes.func,
+  handleToken: PropTypes.func,
+  l10n: PropTypes.func,
+  handleNoExtraSec: PropTypes.func,
 };
 
 export default Resetting;

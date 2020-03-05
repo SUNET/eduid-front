@@ -77,6 +77,8 @@ class InitResetForm extends Component {
 
 InitResetForm.propTypes = {
   email_sent: PropTypes.bool,
+  handleEmail: PropTypes.func,
+  l10n: PropTypes.func,
 };
 
 export default InitResetForm;
