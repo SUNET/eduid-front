@@ -26,8 +26,14 @@ const mapStateToProps = (state, props) => {
   // );
 
   return {
-    phone_numbers: state.config.extra_security.phone_numbers,
-    security_keys: state.config.extra_security.tokens
+    // phone_numbers: state.config.extra_security.phone_numbers,
+    // security_keys: state.config.extra_security.tokens
+    phone_numbers: [7091234567, 7061234567],
+    security_keys: {
+      u2fdata: "{}",
+      webauthn_options:
+        "oWlwdWJsaWNLZXmlZHJwSWRsZWR1aWQuZG9ja2VyZ3RpbWVvdXQZdTBpY2hhbGxlbmdlWCDtkiDVpRVH3mVNgTfN4B-yqt2hgMKaYYX-m_KHlzRXtHBhbGxvd0NyZWRlbnRpYWxzgHB1c2VyVmVyaWZpY2F0aW9uaXByZWZlcnJlZA"
+    }
   };
 };
 

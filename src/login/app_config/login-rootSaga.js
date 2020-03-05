@@ -8,8 +8,8 @@ import { requestConfig, useLinkCode } from "../app_init/init_sagas";
 import * as getEmailLink_actions from "../components/LoginApp/ResetPassword/GetEmailLink/GetEmailLink_actions";
 import { postEmail } from "../components/LoginApp/ResetPassword/GetEmailLink/GetEmailLink_sagas";
 
-import * as emailLinkSent_actions from "../components/LoginApp/ResetPassword/EmailLinkSent/EmailLinkSent_actions";
-import { postEmailLinkCode } from "../components/LoginApp/ResetPassword/EmailLinkSent/EmailLinkSent_sagas";
+// import * as emailLinkSent_actions from "../components/LoginApp/ResetPassword/EmailLinkSent/EmailLinkSent_actions";
+// import { postEmailLinkCode } from "../components/LoginApp/ResetPassword/EmailLinkSent/EmailLinkSent_sagas";
 
 // import * as resetting_actions from "login/components/Resetting/Resetting_actions";
 // import { useLinkCode } from "login/components/Resetting/Resetting_sagas";

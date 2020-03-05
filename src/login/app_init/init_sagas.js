@@ -58,10 +58,7 @@ export function* useLinkCode(code) {
     yield put(putCsrfToken(resp));
     yield put(resp);
     yield put(app_actions.appLoaded());
-    if (state.config.extra_security.phone_numbers === []) {
-      console.log("extra_security.phone_numbers in the saga is empty:");
-    }
-    yield put(push("/reset/reset-password/get-confirmation-code"));
+    yield put(push("/reset/reset-password/check-user-details"));
   } catch (error) {
     yield put(app_actions.appLoaded());
     yield* failRequest(error, init_actions.postLinkCodeFail);

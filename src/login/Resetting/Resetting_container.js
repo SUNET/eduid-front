@@ -25,13 +25,13 @@ const mapDispatchToProps = (dispatch, props) => {
       return (e) => {
         e.preventDefault();
         dispatch(actions.chooseExtraSecurityToken());
-        history.push('/reset-password/choose/');
+        history.push('/reset/reset-password/choose/');
       }
     },
     handleNoExtraSec: (e) => {
       e.preventDefault();
       dispatch(actions.chooseExtraSecurityNone());
-      history.push('/reset-password/choose/');
+      history.push('/reset/reset-password/choose/');
     },
   };
 };

@@ -20,7 +20,7 @@ export function* postExtrasecWithSMSCode() {
       };
     const resp = yield call(requestExtrasecSMS, config, data);
     yield put(putCsrfToken(resp));
-    history.push('/reset-password/choose/');
+    history.push('/reset/reset-password/choose/');
     yield put(resp);
   } catch (error) {
     yield* failRequest(error, actions.extrasecWithSMSCodeFail);
