@@ -128,5 +128,93 @@ describe("Async component", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(actions.DO_RESET_PASSWORD_SUCESS);
   });
+
+  it("Post password reset with extra security SMS saga", () => {
+    const generator = sagas.postPasswordResetWithSMSCode();
+    generator.next();
+
+    const state_overrides = {
+      config: {
+        email_code: 'dummy-code'
+      },
+      do_reset: {
+        new_password: 'dummy-password',
+        sms_code: 'dummy-sms-code'
+      }
+    };
+    const state = getState(state_overrides);
+
+    const data = {
+      code: state.config.email_code,
+      phone_code: state.do_reset.sms_code,
+      password: state.do_reset.new_password,
+      csrf_token: state.config.csrf_token
+    };
+    let next = generator.next(state);
+
+    expect(next.value).toEqual(call(sagas.requestPasswordResetSMS, state.config, data));
+
+    const action = {
+      type: actions.DO_RESET_PASSWORD_SMS_SUCESS,
+      payload: {
+        csrf_token: state.config.csrf_token
+      }
+    };
+    next = generator.next(action);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual(actions.DO_RESET_PASSWORD_SMS_SUCESS);
+  });
+
+  it("Post password reset with extra security with fido saga", () => {
+    const generator = sagas.postPasswordResetWithToken();
+    generator.next();
+
+    const assertion = {
+      rawId: 'dummy-raw-id',
+      response: {
+        authenticatorData: 'dummy-authenticator-data',
+        clientDataJSON: '{"dummy": "client-data"}',
+        signature: 'dummy-signature'
+      }
+    };
+
+    const state_overrides = {
+      config: {
+        email_code: 'dummy-code'
+      },
+      do_reset: {
+        new_password: 'dummy-password',
+        webauthn_assertion: assertion
+      }
+    };
+    const state = getState(state_overrides);
+
+    const data = {
+      code: state.config.email_code,
+      credentialId: sagas.safeEncode(assertion.rawId),
+      authenticatorData: sagas.safeEncode(assertion.response.authenticatorData),
+      clientDataJSON: sagas.safeEncode(assertion.response.clientDataJSON),
+      signature: sagas.safeEncode(assertion.response.signature),
+      password: state.do_reset.new_password,
+      csrf_token: state.config.csrf_token
+    };
+    let next = generator.next(state);
+
+    expect(next.value).toEqual(call(sagas.requestPasswordResetToken, state.config, data));
+
+    const action = {
+      type: actions.DO_RESET_PASSWORD_TOKEN_SUCESS,
+      payload: {
+        csrf_token: state.config.csrf_token
+      }
+    };
+    next = generator.next(action);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual(actions.DO_RESET_PASSWORD_TOKEN_SUCESS);
+  });
 });
 

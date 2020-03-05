@@ -87,7 +87,7 @@ export function requestPasswordResetSMS(config, data) {
     .then(response => response.json());
 }
 
-function safeEncode(obj) {
+export function safeEncode(obj) {
   const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
   const unsafeObj = btoa(bytesObj);
   return unsafeObj
