@@ -92,5 +92,41 @@ describe("DoReset reducer", () => {
 });
 
 describe("Async component", () => {
+
+  it("Post password reset with no extra security saga", () => {
+    const generator = sagas.postPasswordReset();
+    generator.next();
+
+    const state_overrides = {
+      config: {
+        email_code: 'dummy-code'
+      },
+      do_reset: {
+        new_password: 'dummy-password'
+      }
+    };
+    const state = getState(state_overrides);
+
+    const data = {
+      code: state.config.email_code,
+      password: state.do_reset.new_password,
+      csrf_token: state.config.csrf_token
+    };
+    let next = generator.next(state);
+
+    expect(next.value).toEqual(call(sagas.requestPasswordReset, state.config, data));
+
+    const action = {
+      type: actions.DO_RESET_PASSWORD_SUCESS,
+      payload: {
+        csrf_token: state.config.csrf_token
+      }
+    };
+    next = generator.next(action);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual(actions.DO_RESET_PASSWORD_SUCESS);
+  });
 });
 
