@@ -31,7 +31,7 @@ const validate = (values, props) => {
   if (props.registeredFields && !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)) {
     if (!values[pwFieldCustomName]) {
       errors[pwFieldCustomName] = "required";
-    } else if (props.custom_ready) {
+    } else if (!props.custom_ready) {
       errors[pwFieldCustomName] = "chpass.low-password-entropy";
     }
     if (!values[pwFieldRepeatName]) {
@@ -211,7 +211,10 @@ const mapStateToProps = (state, props) => {
   initialValues[pwFieldSuggestedName] = suggested;
   return {
     initialValues: initialValues,
-    enableReinitialize: true
+    enableReinitialize: true,
+    shouldValidate: (data) => {
+      return true
+    }
   };
 };
 
