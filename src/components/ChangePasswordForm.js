@@ -23,8 +23,10 @@ export const pwFieldCustomName = "custom-password-field",
 
 const validate = (values, props) => {
   const errors = {};
-  if (!values[pwFieldOldName]) {
-    errors[pwFieldOldName] = "required";
+  if (props.require_old_password) {
+    if (!values[pwFieldOldName]) {
+      errors[pwFieldOldName] = "required";
+    }
   }
   if (props.registeredFields && !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)) {
     if (!values[pwFieldCustomName]) {
@@ -59,7 +61,31 @@ class ChangePasswordForm extends Component {
   render() {
     let form,
       button,
-      helpCustom = "";
+      helpCustom = "",
+      oldPasswordField = "",
+      disableButton = this.props.submitting || this.props.invalid;
+
+    if (this.props.require_old_password) {
+      oldPasswordField = (
+        <fieldset>
+          <Field
+            component={TextInput}
+            componentClass="input"
+            type="password"
+            id={pwFieldOldName}
+            label={this.props.l10n("chpass.old_password")}
+            name={pwFieldOldName}
+          />
+          <div className="form-field-error-area">
+            <FormText />
+          </div>
+        </fieldset>
+      );
+    }
+
+    if (this.props.require_old_password || this.state.customPassword) {
+      disableButton = this.props.submitting || this.props.pristine || this.props.invalid;
+    }
 
     if (this.state.customPassword) {
       const meterHelpBlock = [
@@ -141,19 +167,7 @@ class ChangePasswordForm extends Component {
 
     return (
       <form id="passwordsview-form" role="form">
-        <fieldset>
-          <Field
-            component={TextInput}
-            componentClass="input"
-            type="password"
-            id={pwFieldOldName}
-            label={this.props.l10n("chpass.old_password")}
-            name={pwFieldOldName}
-          />
-          <div className="form-field-error-area">
-            <FormText />
-          </div>
-        </fieldset>
+        {oldPasswordField}
         {helpCustom}
         <fieldset>{form}</fieldset>
         <div id="password-suggestion">
@@ -163,7 +177,7 @@ class ChangePasswordForm extends Component {
           <EduIDButton
             id="chpass-button"
             className="settings-button ok-button"
-            disabled={this.props.submitting || this.props.pristine || this.props.invalid}
+            disabled={disableButton}
             onClick={this.props.handleStartPasswordChange.bind(this)}
           >
             {this.props.l10n("chpass.button_save_password")}
@@ -179,6 +193,11 @@ class ChangePasswordForm extends Component {
     );
   }
 }
+
+ChangePasswordForm.defaultProps = {
+  require_old_password: true
+};
+
 
 ChangePasswordForm = reduxForm({
   form: "chpass",

@@ -24,7 +24,7 @@ class DoReset extends Component {
           {this.props.l10n("resetpw.choose-your-password")}
         </h3>
         <div>
-          <ChangePasswordForm {...this.props} />
+          <ChangePasswordForm require_old_password={false} {...this.props} />
         </div>
         <ConfirmModal
           modalId="smsCodeDialog"
