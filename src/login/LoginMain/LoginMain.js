@@ -74,14 +74,17 @@ class Main extends Component {
       //<FetchingContext.Provider value={this.state}>
         <SplashContainer key="0" />,
         <Router key="1" history={history}>
-          <div className="login-wrapper">
+          <div className="dashboard-wrapper">
             <HeaderContainer {...this.props} />
-            <div id="login-text">
+            <div id="dashboard-text">
               <div id="welcome">
+                <h1>{this.props.l10n("main.welcome")}</h1>
               </div>
               <div id="content">
                 <NotificationsContainer />
-                {routes}
+                <div id="login-container">
+                  {routes}
+                </div>
               </div>
             </div>
             <FooterContainer {...this.props} />
@@ -91,6 +94,7 @@ class Main extends Component {
     ];
   }
 }
+
 
 Main.propTypes = {
   //is_fetching: PropTypes.bool,

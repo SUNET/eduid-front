@@ -3170,6 +3170,12 @@ const msgs = {
       defaultMessage={`Check your inbox`}
     />
   ),
+  "resetpw.main_title": (
+    <FormattedMessage
+      id="resetpw.main_title"
+      defaultMessage={`Reset your password`}
+    />
+  ),
   "resetpw.main-body": (
     <FormattedMessage
       id="resetpw.main-body"

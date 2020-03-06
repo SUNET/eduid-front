@@ -1536,6 +1536,10 @@
     "defaultMessage": "Check your inbox"
   },
   {
+    "id": "resetpw.main_title",
+    "defaultMessage": "Reset your password"
+  },
+  {
     "id": "resetpw.main-body",
     "defaultMessage": "Please enter an email address"
   },

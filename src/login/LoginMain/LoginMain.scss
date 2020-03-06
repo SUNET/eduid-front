@@ -1,1 +1,24 @@
 @import "../../variables.scss";
+
+#login-container {
+  width: 58.3333%;
+  margin: 50px auto 5rem;
+}
+
+@media (max-width: 823px) {
+  #login-container {
+    width: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  #login-container {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 414px) {
+  #login-container {
+    margin: 20px auto 3rem;
+  }
+}
