@@ -3139,14 +3139,14 @@ const msgs = {
   "resetpw.code-body": (
     <FormattedMessage
       id="resetpw.code-body"
-      defaultMessage={`You can prove that you own your security cards or phone numbers, to reset your password without unverifying your data`}
+      defaultMessage={`You can choose to provide extra security about your identity, to reset your password without unverifying your data`}
     />
   ),
 
   "resetpw.use-key": (
     <FormattedMessage
       id="resetpw.use-key"
-      defaultMessage={`Use a security card`}
+      defaultMessage={`You will be prompted to proof that you own your security card`}
     />
   ),
 
@@ -3160,7 +3160,7 @@ const msgs = {
   "resetpw.send-sms": (
     <FormattedMessage
       id="resetpw.send-sms"
-      defaultMessage={`phone number:`}
+      defaultMessage={`Choose a phone number and you will receive an SMS with a verification code`}
     />
   ),
 
@@ -3188,8 +3188,31 @@ const msgs = {
       defaultMessage={`Unknown code, please check it and try again`}
     />
   ),
+  "resetpw.extrasec-sms": (
+    <FormattedMessage
+      id="resetpw.extrasec-sms"
+      defaultMessage={`Extra security with a verified phone number`}
+    />
+  ),
+  "resetpw.extrasec-key": (
+    <FormattedMessage
+      id="resetpw.extrasec-key"
+      defaultMessage={`Extra security with a security card`}
+    />
+  ),
+  "resetpw.extrasec-none": (
+    <FormattedMessage
+      id="resetpw.extrasec-none"
+      defaultMessage={`No extra security`}
+    />
+  ),
+  "resetpw.use-no-extrasec": (
+    <FormattedMessage
+      id="resetpw.use-no-extrasec"
+      defaultMessage={`You will need to verify your data again`}
+    />
+  ),
 };
-
 
 const unformatted = defineMessages({
   "pd.choose-language": {

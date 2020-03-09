@@ -48,7 +48,7 @@ DoReset.propTypes = {
   choose_extrasec: PropTypes.string,
   suggested_password: PropTypes.string,
   new_password: PropTypes.string,
-  password_entropy: PropTypes.string,
+  password_entropy: PropTypes.number,
   password_score: PropTypes.number,
   password_strength_msg: PropTypes.string,
   custom_ready: PropTypes.bool,

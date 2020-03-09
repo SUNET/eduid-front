@@ -1517,11 +1517,11 @@
   },
   {
     "id": "resetpw.code-body",
-    "defaultMessage": "You can prove that you own your security cards or phone numbers, to reset your password without unverifying your data"
+    "defaultMessage": "You can choose to provide extra security about your identity, to reset your password without unverifying your data"
   },
   {
     "id": "resetpw.use-key",
-    "defaultMessage": "Use a security card"
+    "defaultMessage": "You will be prompted to proof that you own your security card"
   },
   {
     "id": "resetpw.key",
@@ -1529,7 +1529,7 @@
   },
   {
     "id": "resetpw.send-sms",
-    "defaultMessage": "phone number:"
+    "defaultMessage": "Choose a phone number and you will receive an SMS with a verification code"
   },
   {
     "id": "resetpw.email-sent-title",
@@ -1546,6 +1546,22 @@
   {
     "id": "resetpw.phone-code-unknown",
     "defaultMessage": "Unknown code, please check it and try again"
+  },
+  {
+    "id": "resetpw.extrasec-sms",
+    "defaultMessage": "Extra security with a verified phone number"
+  },
+  {
+    "id": "resetpw.extrasec-key",
+    "defaultMessage": "Extra security with a security card"
+  },
+  {
+    "id": "resetpw.extrasec-none",
+    "defaultMessage": "No extra security"
+  },
+  {
+    "id": "resetpw.use-no-extrasec",
+    "defaultMessage": "You will need to verify your data again"
   },
   {
     "id": "pd.choose-language",

@@ -8,6 +8,7 @@ import * as actions from "login/Resetting/Resetting_actions";
 
 const mapStateToProps = (state, props) => {
   return {
+    is_app_loaded: state.config.is_app_loaded,
     alternatives: state.config.extra_security,
   };
 };
