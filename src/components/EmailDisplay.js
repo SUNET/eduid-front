@@ -10,7 +10,7 @@ class EmailDisplay extends Component {
     if (this.props.email.length) {
       text = [
         <p key="0" id="nin-number" className="verified">
-          {this.props.email}
+          {this.props.emails[0].email}
         </p>
       ];
     } else {
