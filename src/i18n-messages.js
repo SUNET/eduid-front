@@ -12,6 +12,10 @@ import {
   FormattedHTMLMessage
 } from "react-intl";
 
+import { formattedMessages, unformattedMessages } from "./login/translation/messageIndex";
+
+// import msgs from "./login/translation/messageIndex"
+
 function getDisplayName(Component) {
   return Component.displayName || Component.name || "Component";
 }
@@ -52,14 +56,14 @@ export default function i18n(WrappedComponent, options = {}) {
 
     render() {
       const l10n = (msgid, values) => {
-        if (msgs[msgid] !== undefined) {
+        if (formattedMessages[msgid] !== undefined) {
           if (values !== undefined) {
-            return msgs[msgid](values);
+            return formattedMessages[msgid](values);
           } else {
-            return msgs[msgid];
+            return formattedMessages[msgid];
           }
-        } else if (unformatted[msgid] !== undefined) {
-          return this.context.intl.formatMessage(unformatted[msgid], values);
+        } else if (unformattedMessages[msgid] !== undefined) {
+          return this.context.intl.formatMessage(unformattedMessages[msgid], values);
         } else {
           return "UNKNOWN MESSAGE ID (" + msgid + ")";
         }
