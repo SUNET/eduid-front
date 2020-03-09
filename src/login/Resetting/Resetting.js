@@ -7,6 +7,7 @@ import { Field, reduxForm } from "redux-form";
 import { FormFeedback } from "reactstrap";
 
 import EduIDButton from "components/EduIDButton";
+import { hasWebauthnSupport } from "login/DoReset/DoReset_container";
 
 import "./Resetting.scss";
 
@@ -37,7 +38,7 @@ class Resetting extends Component {
       });
     }
     let token_alternatives = [];
-    if (this.props.alternatives && this.props.alternatives.tokens) {
+    if (this.props.alternatives && this.props.alternatives.tokens && hasWebauthnSupport() ) {
       // If the user has registered security tokens, and the browser supports it, offer the possibility
       // to reset the password with extra secirity provided by them tokens.
       token_alternatives = (
