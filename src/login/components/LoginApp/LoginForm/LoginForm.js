@@ -17,7 +17,7 @@ let LoginFormDetails = props => (
   // console.log("these are props in the LoginFormDetails:", props),
   // (
   <React.Fragment>
-    <EmailInput />
+    <EmailInput {...props} />
     <PasswordInput />
     <div className="button-pair">
       <ButtonPrimary
