@@ -14,30 +14,32 @@ import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import { validate } from "../../../app_utils/validation/validateEmail";
 
 let LoginFormDetails = props => (
-  // console.log("these are props in the LoginFormDetails:", props),
-  // (
-  <React.Fragment>
-    <EmailInput />
-    <PasswordInput />
-    <div className="button-pair">
-      <ButtonPrimary
-        className={"settings-button"}
-        id={"register-button"}
-        disabled={props.invalid}
-        onClick={props.handleLogin}
-      >
-        Login to eduID
-      </ButtonPrimary>
-      <LinkRedirect
-        exact
-        id={"link-forgot-password"}
-        className={""}
-        to={`/reset/reset-password/`}
-        text={"Set a new password"}
-      />
-    </div>
-  </React.Fragment>
-  // )
+  console.log("these are props in the LoginFormDetails:", props),
+  (
+    // (
+    <React.Fragment>
+      <EmailInput {...props} />
+      <PasswordInput />
+      <div className="button-pair">
+        <ButtonPrimary
+          className={"settings-button"}
+          id={"register-button"}
+          disabled={props.invalid}
+          onClick={props.handleLogin}
+        >
+          Login to eduID
+        </ButtonPrimary>
+        <LinkRedirect
+          exact
+          id={"link-forgot-password"}
+          className={""}
+          to={`/reset/reset-password/`}
+          text={"Set a new password"}
+        />
+      </div>
+    </React.Fragment>
+    // )
+  )
 );
 
 LoginFormDetails = reduxForm({
