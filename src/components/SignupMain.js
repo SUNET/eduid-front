@@ -78,8 +78,8 @@ class SignupMain extends Component {
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
             <div id="welcome">
-              <h1>{ththis.props.translateate("main.welcome")}</h1>
-              <h2>{ththis.props.translateate("register.create-account")}</h2>
+              <h1>{this.props.translate("main.welcome")}</h1>
+              <h2>{this.props.translate("register.create-account")}</h2>
             </div>
             <div id="content">
               <NotificationsContainer />
