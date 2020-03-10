@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
@@ -37,7 +37,7 @@ class DashboardNav extends Component {
               to={`/profile/settings/advanced-settings`}
             >
               <li className="nav-item">
-                <h5>this.props.translate
+                <h5>
                   {this.props.translate("dashboard_nav.advanced-settings")}
                 </h5>
               </li>
@@ -89,7 +89,7 @@ class DashboardNav extends Component {
               <li className="transparent">
                 <h5 className="transparent">
                   {this.props.translate("dashboard_nav.advanced-settings")}
-                </hthis.props.translate
+                </h5>
               </li>
             </NavLink>
           </ul>
@@ -99,4 +99,4 @@ class DashboardNav extends Component {
   }
 }
 
-export default DashboardNav;
+export default i18n(DashboardNav);

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import PersonalData from "components/PersonalData";
 import { postUserdata, changeUserdata } from "actions/PersonalData";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   let langs = [];

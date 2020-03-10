@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
 import * as actions from "actions/Nins";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import Main from "components/DashboardMain";
 
 

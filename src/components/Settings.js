@@ -30,7 +30,7 @@ class Settings extends Component {
           />
           <Route
             path="/profile/settings/personaldata"
-            component={PersonalDataContainer}
+            render={props => <PersonalDataContainer {...props} />}
           />
 
           <Route

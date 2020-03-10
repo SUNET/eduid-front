@@ -83,6 +83,7 @@ class Emails extends Component {
         </div>
         <div id="email-display">
           <TableList
+            {...this.props}
             entries={this.props.emails}
             handleStartConfirmation={this.props.handleStartConfirmation}
             handleRemove={this.props.handleRemove}
