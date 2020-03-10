@@ -54,7 +54,7 @@ class DashboardNav extends Component {
               activeClassName="active"
               className="nav-link"
               to={`/profile/`}
-            >this.props.translate
+            >
               <li className="nav-item">
                 <h5>{this.props.translate("dashboard_nav.back")}</h5>
               </li>
@@ -71,7 +71,7 @@ class DashboardNav extends Component {
               activeClassName="active"
               className="nav-link"
               to={`/profile/`}
-            >this.props.translate
+            >
               <li className="nav-item">
                 <h5>{this.props.translate("dashboard_nav.profile")}</h5>
               </li>
@@ -80,7 +80,7 @@ class DashboardNav extends Component {
               activeClassName="active"
               className="nav-link"
               to={`/profile/settings/`}
-            >this.props.translate
+            >
               <li className="nav-item">
                 <h5>{this.props.translate("dashboard_nav.settings")}</h5>
               </li>
