@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import SignupMain from "components/SignupMain";
 import * as actions from "actions/SignupMain";
 
@@ -12,8 +12,6 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const SignupMainContainer = connect(
-  mapStateToProps
-)(SignupMain);
+const SignupMainContainer = connect(mapStateToProps)(SignupMain);
 
 export default i18n(SignupMainContainer);

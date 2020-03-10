@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import Header from "components/Header";
 import { startLogout } from "actions/Header";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   let confirmed;
   return {
     dashboard_url: state.config.dashboard_url,
-    confirmed: confirmed,
+    confirmed: confirmed
   };
 };
 
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, props) => {
     handleLogout: function(e) {
       dispatch(startLogout());
     },
-    gotoSignin: function (e) {
+    gotoSignin: function(e) {
       e.preventDefault();
       const dataNode = e.target.closest("div"),
         url = dataNode.dataset.dashboard_url;
@@ -25,10 +25,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const HeaderContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header);
 
 export default i18n(HeaderContainer);
-

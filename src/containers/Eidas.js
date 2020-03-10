@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import Eidas from "components/Eidas";
 import { showEidasModal, hideEidasModal } from "actions/Eidas";
 import { eduidRMAllNotify } from "actions/Notifications";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   let eidas_sp_url = state.config.EIDAS_URL;
@@ -31,9 +31,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const EidasContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Eidas);
+const EidasContainer = connect(mapStateToProps, mapDispatchToProps)(Eidas);
 
 export default i18n(EidasContainer);

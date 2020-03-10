@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Splash from "components/Splash";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {

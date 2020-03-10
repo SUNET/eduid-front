@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import NinDisplay from "components/NinDisplay";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import * as actions from "actions/Nins";
 
 const mapStateToProps = (state, props) => {
@@ -9,7 +9,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleDelete: function (e) {
+    handleDelete: function(e) {
       const ninNumber = e.target.closest("#nin-display-container").firstChild
         .dataset.ninnumber;
       dispatch(actions.startRemove(ninNumber));

@@ -5,7 +5,7 @@ import * as comp from "components/ChangePasswordForm";
 import * as actions from "actions/ChangePassword";
 import { stopConfirmationPassword } from "actions/Security";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePasswordForm from "./ChangePasswordForm";
 import DashboardNav from "./DashboardNav";
 

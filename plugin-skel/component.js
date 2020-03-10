@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { appFetching, postAction } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
 
@@ -26,9 +26,6 @@ const mapDispatchToProps = (dispatch, props) => {
   return {};
 };
 
-const MainContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+const MainContainer = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default i18n(MainContainer);

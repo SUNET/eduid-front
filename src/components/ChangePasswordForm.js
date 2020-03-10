@@ -8,7 +8,7 @@ import Label from "reactstrap/lib/Label";
 import Button from "reactstrap/lib/Button";
 import ButtonGroup from "reactstrap/lib/ButtonGroup";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";

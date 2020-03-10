@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { isValid } from "redux-form";
 import VerifyIdentity from "containers/VerifyIdentity";
 import * as actions from "actions/Nins";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   let confirmed;

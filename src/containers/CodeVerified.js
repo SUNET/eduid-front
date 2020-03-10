@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import * as actions from "actions/CodeVerified";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import CodeVerified from "components/CodeVerified";
 
 const mapStateToProps = (state, props) => {

@@ -6,7 +6,7 @@ import FormGroup from "reactstrap/lib/FormGroup";
 import FormFeedback from "reactstrap/lib/FormFeedback";
 import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const textInput = props => {
   const {

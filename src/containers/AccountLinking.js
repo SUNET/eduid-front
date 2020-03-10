@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import AccountLinking from "components/AccountLinking";
 import * as actions from "actions/AccountLinking";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {

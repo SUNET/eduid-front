@@ -3,7 +3,7 @@ import { isValid } from "redux-form";
 import LetterProofingButton from "components/LetterProofing";
 import * as actions from "actions/LetterProofing";
 import { eduidRMAllNotify } from "actions/Notifications";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   const confirming = state.letter_proofing.confirmingLetter,

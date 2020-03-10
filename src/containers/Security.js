@@ -15,7 +15,7 @@ import {
   chooseAuthenticator
 } from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {
