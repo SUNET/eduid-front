@@ -11,15 +11,15 @@ class CodeVerified extends Component {
         <div key="0" id="register-container">
           <div>
             <h3 className="register-header">
-              {this.props.l10n("finish.registration-complete")}
+              {this.props.translate("finish.registration-complete")}
             </h3>
             <p className="lead">
-              {this.props.l10n("finish.registration-details")}
+              {this.props.translate("finish.registration-details")}
             </p>
             <div id="email-display">
               <label>Email</label>
               <h3 id="user-email" className="register-header">
-                {this.props.email} 
+                {this.props.email}
               </h3>
               <label>Password</label>
               <h3 className="register-header registered-email">
@@ -33,7 +33,7 @@ class CodeVerified extends Component {
               className="settings-button"
               type="submit"
             >
-              {this.props.l10n("finish.got-it")}
+              {this.props.translate("finish.got-it")}
             </EduIDButton>
           </div>
         </div>
@@ -46,7 +46,7 @@ CodeVerified.propTypes = {
   dashboard_url: PropTypes.string,
   password: PropTypes.string,
   email: PropTypes.string,
-  l10n: PropTypes.func
+  translate: PropTypes.func
 };
 
 export default CodeVerified;

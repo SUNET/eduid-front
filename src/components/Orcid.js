@@ -64,19 +64,15 @@ class Orcid extends Component {
             <div className="orcid-logo-container">
               <span className="orcid-logo" />
             </div>
-            {this.props.l10n("orc.button_connect")}
+            {this.props.translate("orc.button_connect")}
           </EduIDButton>
           <p className="orcid-btn-help">
-            {this.props.l10n("orc.long_description")}
+            {this.props.translate("orc.long_description")}
           </p>
         </div>
       );
     }
-    return (
-      <div id="orcid-connect">
-        {orcidData}
-      </div>
-    );
+    return <div id="orcid-connect">{orcidData}</div>;
   }
 }
 

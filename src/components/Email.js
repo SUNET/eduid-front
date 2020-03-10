@@ -16,7 +16,7 @@ import "style/Email.scss";
 
 /* FORM */
 
-const validate = values => {
+export const validate = values => {
   const errors = {},
     email = values.email,
     pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -37,7 +37,7 @@ let EmailForm = props => (
         componentClass="input"
         id="email-input"
         component={TextInput}
-        l10n={props.l10n}
+        translate={props.translate}
         placeholder="example@email.com"
       />
     </fieldset>
@@ -47,9 +47,9 @@ let EmailForm = props => (
       disabled={props.invalid}
       onClick={props.handleEmail}
     >
-      {props.l10n("email.sign-up-email")}
+      {props.translate("email.sign-up-email")}
     </EduIDButton>
-    <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback>
+    <FormFeedback>{props.touched && props.translate(error)}</FormFeedback>
   </div>
 );
 
@@ -73,7 +73,7 @@ class Email extends Component {
       </div>,
       <div key="1">
         <Modal isOpen={this.props.acceptingTOU} id="register-modal">
-          <ModalHeader>{this.props.l10n("tou.header")}</ModalHeader>
+          <ModalHeader>{this.props.translate("tou.header")}</ModalHeader>
           <ModalBody dangerouslySetInnerHTML={{ __html: this.props.tou }} />
           <ModalFooter>
             <EduIDButton
@@ -81,14 +81,14 @@ class Email extends Component {
               className="modal-button ok-button"
               onClick={this.props.handleAccept}
             >
-              {this.props.l10n("tou.accept")}
+              {this.props.translate("tou.accept")}
             </EduIDButton>
             <EduIDButton
               className="modal-button cancel-button"
               id="reject-tou-button"
               onClick={this.props.handleReject}
             >
-              {this.props.l10n("tou.cancel")}
+              {this.props.translate("tou.cancel")}
             </EduIDButton>
           </ModalFooter>
         </Modal>
@@ -100,7 +100,7 @@ class Email extends Component {
 Email.propTypes = {
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   handleAccept: PropTypes.func,
   handleReject: PropTypes.func
 };

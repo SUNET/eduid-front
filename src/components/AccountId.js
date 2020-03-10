@@ -8,8 +8,8 @@ class AccountId extends Component {
       <div>
         <div id="change-password-container">
           <div className="intro">
-            <h4>{this.props.l10n("accountId.main_title")}</h4>
-            <p>{this.props.l10n("accountId.long_description")}</p>
+            <h4>{this.props.translate("accountId.main_title")}</h4>
+            <p>{this.props.translate("accountId.long_description")}</p>
           </div>
           <div key="1" className="profile-card">
             <div id="nin-number-container">
@@ -17,9 +17,9 @@ class AccountId extends Component {
                 {this.props.eppn}
               </p>
             </div>
-             <p className="orcid-btn-help">
-              {this.props.l10n("accountId.short_description")}
-            </p> 
+            <p className="orcid-btn-help">
+              {this.props.translate("accountId.short_description")}
+            </p>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 import ConfirmModalForm from "./ConfirmModalForm";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 
 class ConfirmModal extends Component {
@@ -51,13 +51,13 @@ class ConfirmModal extends Component {
               disabled={this.props.invalid}
               onClick={this.props.handleConfirm}
             >
-              {this.props.l10n("cm.ok")}
+              {this.props.translate("cm.ok")}
             </EduIDButton>
             <EduIDButton
               className="modal-button cancel-button"
               onClick={this.props.closeModal}
             >
-              {this.props.l10n("cm.cancel")}
+              {this.props.translate("cm.cancel")}
             </EduIDButton>
           </ModalFooter>
         </Modal>

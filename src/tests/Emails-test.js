@@ -28,7 +28,7 @@ import {
 } from "sagas/Emails";
 import { put, call, select } from "redux-saga/effects";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("Email Actions", () => {
@@ -56,7 +56,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.postEmailFail(err)).toEqual(expectedAction);
   });
@@ -92,7 +92,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.START_RESEND_EMAIL_CODE_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.resendEmailCodeFail(err)).toEqual(expectedAction);
   });
@@ -115,7 +115,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.START_VERIFY_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.startVerifyFail(err)).toEqual(expectedAction);
   });
@@ -137,7 +137,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_REMOVE_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.startRemoveFail(err)).toEqual(expectedAction);
   });
@@ -159,7 +159,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_PRIMARY_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.makePrimaryFail(err)).toEqual(expectedAction);
   });
@@ -450,7 +450,7 @@ const state = {
     message: "",
     confirming: "",
     emails: [],
-    email: "",
+    email: ""
   },
   config: {
     csrf_token: "123456789",

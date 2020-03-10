@@ -10,7 +10,7 @@ import LetterProofing from "components/LetterProofing";
 import LookupMobileProofing from "components/LookupMobileProofing";
 import Eidas from "components/Eidas";
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 // I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin

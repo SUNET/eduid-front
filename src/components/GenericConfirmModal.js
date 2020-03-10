@@ -6,7 +6,7 @@ import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 
 class GenericConfirmModal extends Component {
@@ -32,13 +32,13 @@ class GenericConfirmModal extends Component {
               className="modal-button ok-button"
               onClick={this.props.acceptModal}
             >
-              {this.props.l10n("cm.accept")}
+              {this.props.translate("cm.accept")}
             </EduIDButton>
             <EduIDButton
               className="modal-button cancel-button"
               onClick={this.props.closeModal}
             >
-              {this.props.l10n("cm.cancel")}
+              {this.props.translate("cm.cancel")}
             </EduIDButton>
           </ModalFooter>
         </Modal>

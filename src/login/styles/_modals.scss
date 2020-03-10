@@ -1,0 +1,163 @@
+/* Modals
+-------------------------------------------------- */
+
+.modal {
+  display: flex !important;
+  justify-content: center;
+}
+
+.modal-header {
+  padding: 30px;
+}
+
+h5.modal-title {
+  font-family: "Akkurat";
+  line-height: 1.2;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 20px;
+}
+
+.modal-body {
+  background-color: #f4f4f4;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  color: #7c7c7c;
+}
+
+.modal-dialog {
+  margin-top: 70px;
+  background-color: white;
+  border-radius: 20px;
+  max-width: 50vw;
+  margin: auto;
+}
+
+#confirm-user-data-modal,
+#register-modal,
+#eidas-modal,
+#delete-account-modal {
+  width: 70vw;
+  margin: auto;
+}
+
+#freja-instructions,
+#freja-instructions label {
+  color: #7c7c7c;
+}
+#freja-instructions ol {
+  padding-left: 30px;
+  line-height: 1.2;
+  font-size: 1.25rem;
+}
+
+#freja-instructions li {
+  padding-left: 5px;
+  margin: 15px 0;
+}
+
+#freja-links {
+  margin: 50px 0 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#freja-links a {
+  border: none;
+  color: #ff4500;
+  line-height: 1.2;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* styles for delete account modal text */
+#delete-account {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+#delete-account-modal label {
+  margin-bottom: 30px;
+  color: #7c7c7c;
+  font-size: 1rem;
+  text-transform: none;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+/* styles for confirm button in delete account modal */
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+
+@media (max-width: 823px) {
+  // ---- modals ----- //
+  #register-modal,
+  #delete-account-modal,
+  #eidas-modal,
+  .modal-dialog {
+    width: calc(100% - 40px);
+    margin: auto 20px;
+  }
+  .modal-header {
+    padding: 20px;
+  }
+
+  h5.modal-title {
+    font-size: 1rem;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .modal-footer {
+    padding: 0;
+  }
+
+  .resend-code {
+    font-size: 0.9rem;
+  }
+
+  .form-control {
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  #delete-account {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  #delete-account-modal label {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: calc(100% - 40px);
+  }
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+  .modal-dialog {
+    max-width: 100%;
+  }
+}
+
+

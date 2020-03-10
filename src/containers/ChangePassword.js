@@ -1,7 +1,7 @@
 import ReactDom from "react-dom";
 import { connect } from "react-redux";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePassword from "components/ChangePassword";
 import * as comp from "components/ChangePasswordForm";
 import * as actions from "actions/ChangePassword";

@@ -9,7 +9,7 @@ import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import NotificationsContainer from "containers/Notifications";
@@ -32,10 +32,7 @@ class ConfirmModalForm extends Component {
   render() {
     return (
       <div id="modal-form">
-        <Form
-          id={this.props.inputName + "-form"}
-          role="form"
-        >
+        <Form id={this.props.inputName + "-form"} role="form">
           <div id="confirmation-code-area">
             <Field
               component={TextInput}

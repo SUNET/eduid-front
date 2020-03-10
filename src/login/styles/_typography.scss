@@ -1,0 +1,81 @@
+/* typography */
+
+@import "variables.scss";
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  margin-top: 0;
+  font-weight: 700;
+  font-family: "ProximaNova-Regular";
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 42px;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 34px;
+  margin-top: 56px;
+}
+
+h4 {
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+}
+
+h5 {
+  padding: 0;
+  margin: 0;
+}
+
+h6 {
+  color: $black;
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-top: 1rem 0;
+  padding-bottom: 1rem;
+}
+
+p.verified {
+  color: #161616;
+}
+
+// these styles are the same as input values and placeholder
+p.data {
+  font-size: 1.5rem;
+  font-weight: 500;
+  // padding: 0.25rem 0.5rem;
+}
+
+p.no-data.data {
+  color: gray;
+}
+
+p.steps {
+  padding-bottom: 0;
+}
+
+// this is the first paragraph on pages outside of the dashboard
+.sub-heading {
+  margin-top: 3rem;
+  font-weight: 700;
+}
+
+span.sub-heading {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  padding-bottom: 0;
+}
+
+.horizontal-content-margin {
+  margin-top: 1.5rem;
+}

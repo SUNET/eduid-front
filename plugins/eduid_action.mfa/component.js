@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import i18n from "i18n-messages";
-import {
-  postAction,
-  postActionFail,
-  retry
-} from "actions/ActionWrapper";
+import i18n from "../../src/login/translation/InjectIntl_HOC_factory";
+import { postAction, postActionFail, retry } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
 
 import "./style.scss";
@@ -41,17 +37,17 @@ class Main extends Component {
       <div className="text-center">
         <div className="card" id="mfa-try-another-way">
           <div className="card-header">
-            {this.props.l10n("mfa.problems-heading")}
+            {this.props.translate("mfa.problems-heading")}
           </div>
           <div className="card-body">
             <button className="btn-link" onClick={this.props.retry}>
-              {this.props.l10n("mfa.try-again")}
+              {this.props.translate("mfa.try-again")}
             </button>
             <button
               className="btn-link"
               onClick={this.handleExternalMFAClick.bind(this)}
             >
-              {this.props.l10n("mfa.freja-eid")}
+              {this.props.translate("mfa.freja-eid")}
             </button>
           </div>
         </div>
@@ -63,11 +59,11 @@ class Main extends Component {
         <ActionWrapperContainer>
           <div className="col-xs-12 text-center">
             <div className="webauthn-title">
-              <h2>{this.props.l10n("mfa.no-webauthn-support")}</h2>
+              <h2>{this.props.translate("mfa.no-webauthn-support")}</h2>
             </div>
             <div>
               <p className="lead webauthn-text">
-                {this.props.l10n("mfa.no-webauthn-support-text")}
+                {this.props.translate("mfa.no-webauthn-support-text")}
               </p>
             </div>
           </div>
@@ -87,7 +83,7 @@ class Main extends Component {
                 type="submit"
                 name="accept"
                 id="accept"
-                value={this.props.l10n("mfa.fake-authn")}
+                value={this.props.translate("mfa.fake-authn")}
               />
             </div>
           </div>
@@ -99,15 +95,15 @@ class Main extends Component {
       <ActionWrapperContainer>
         <div className="col-xs-12 text-center">
           <div className="webauthn-title">
-            <h2>{this.props.l10n("mfa.two-factor-authn")}</h2>
+            <h2>{this.props.translate("mfa.two-factor-authn")}</h2>
           </div>
           <div className="webauthn-subtitle">
-            <h3>{this.props.l10n("mfa.extra-security-enabled")}</h3>
+            <h3>{this.props.translate("mfa.extra-security-enabled")}</h3>
           </div>
           <div className="key-animation" />
           <div>
             <p className="lead webauthn-text">
-              <strong>{this.props.l10n("mfa.login-tapit")}</strong>
+              <strong>{this.props.translate("mfa.login-tapit")}</strong>
             </p>
           </div>
           <div>
@@ -242,9 +238,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const MainContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+const MainContainer = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default i18n(MainContainer);

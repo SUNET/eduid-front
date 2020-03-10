@@ -17,9 +17,9 @@ class OpenidConnect extends Component {
     const seleg_instructions = (
       <div className="well" id="openid-connect-seleg-instructions">
         <ol>
-          <li>{this.props.l10n("oc.instructions_step_1")}</li>
-          <li>{this.props.l10n("oc.instructions_step_2")}</li>
-          <li>{this.props.l10n("oc.instructions_step_3")}</li>
+          <li>{this.props.translate("oc.instructions_step_1")}</li>
+          <li>{this.props.translate("oc.instructions_step_2")}</li>
+          <li>{this.props.translate("oc.instructions_step_3")}</li>
         </ol>
       </div>
     );
@@ -39,10 +39,10 @@ class OpenidConnect extends Component {
                 onClick={this.props.handleShowModal}
                 block
               >
-                {this.props.l10n("oc.initialize_proofing")}
+                {this.props.translate("oc.initialize_proofing")}
               </EduIDButton>
               <FormText className="proofing-btn-help" color="muted">
-                {this.props.l10n("oc.initialize_proofing_help_text")}
+                {this.props.translate("oc.initialize_proofing_help_text")}
               </FormText>
             </fieldset>
           </form>
@@ -59,10 +59,12 @@ class OpenidConnect extends Component {
               isOpen={this.props.showModal}
               id="openid-connect-seleg-modal"
             >
-              <ModalHeader>{this.props.l10n("oc.modal_title")}</ModalHeader>
+              <ModalHeader>
+                {this.props.translate("oc.modal_title")}
+              </ModalHeader>
 
               <ModalBody>
-                <h4>{this.props.l10n("oc.instructions_title")}</h4>
+                <h4>{this.props.translate("oc.instructions_title")}</h4>
                 {seleg_instructions}
 
                 <img
@@ -78,7 +80,7 @@ class OpenidConnect extends Component {
                   id="openid-connect-seleg-hide-modal"
                   onClick={this.props.handleHideModal}
                 >
-                  {this.props.l10n("cm.close")}
+                  {this.props.translate("cm.close")}
                 </Button>
               </ModalFooter>
             </Modal>

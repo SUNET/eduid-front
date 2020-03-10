@@ -16,17 +16,17 @@ class LetterProofingButton extends Component {
             onClick={this.props.handleLetterProofing}
           >
             <div className="vetting-button-text">
-              {this.props.l10n("verify-identity.vetting_post_tagline")}
+              {this.props.translate("verify-identity.vetting_post_tagline")}
             </div>
             <div className="vetting-button-name">
-              {this.props.l10n("letter.button_text_request")}
+              {this.props.translate("letter.button_text_request")}
             </div>
           </button>
         </div>
         <GenericConfirmModal
           modalId="letterGenericConfirmDialog"
-          title={this.props.l10n("letter.modal_confirm_title")}
-          mainText={this.props.l10n("letter.modal_confirm_info")}
+          title={this.props.translate("letter.modal_confirm_title")}
+          mainText={this.props.translate("letter.modal_confirm_info")}
           showModal={this.props.confirmingLetter}
           closeModal={this.props.handleStopConfirmationLetter}
           acceptModal={this.props.confirmLetterProofing}
@@ -34,9 +34,9 @@ class LetterProofingButton extends Component {
         <ConfirmModal
           modalId="letterConfirmDialog"
           id="letterConfirmDialogControl"
-          title={this.props.l10n("letter.verify_title")}
-          resendLabel={this.props.l10n("cm.enter_code")}
-          placeholder={this.props.l10n("letter.placeholder")}
+          title={this.props.translate("letter.verify_title")}
+          resendLabel={this.props.translate("cm.enter_code")}
+          placeholder={this.props.translate("letter.placeholder")}
           showModal={this.props.verifyingLetter}
           closeModal={this.props.handleStopVerificationLetter}
           handleConfirm={this.props.sendConfirmationCode}

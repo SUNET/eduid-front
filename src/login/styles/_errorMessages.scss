@@ -1,0 +1,51 @@
+@import "./variables.scss";
+
+.notifications-area {
+  display: flex;
+  flex-direction: column;
+  color: transparent;
+  background-color: transparent;
+  height: 3rem;
+  width: 100%;
+}
+
+.alert {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+    // padding: 1rem 0;
+  // width: 58.3333%;
+  // margin: 0 auto;
+}
+
+.alert span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.alert-danger,
+.alert-success {
+  color: $orange-highlight;
+  background-color: $orange-opaque;
+}
+
+@media (max-width: 812px) {
+  .notifications-area {
+    height: 49px;
+  }
+  .alert {
+    padding: 0.5rem 1rem;
+  }
+  .alert span {
+    font-size: 1rem;
+    width: 75%;
+  }
+}
+@media (max-width: 768px) {
+  .alert span {
+    width: 100%;
+  }
+  .alert-dismissible .close {
+    padding: 0.25rem 0.75rem;
+  }
+}

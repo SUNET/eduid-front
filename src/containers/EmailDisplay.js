@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import EmailDisplay from "components/EmailDisplay";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   const emailAddress = state.emails.emails.filter(email => email.primary);
   return {
-    emails: emailAddress
+    email: emailAddress
   };
 };
 

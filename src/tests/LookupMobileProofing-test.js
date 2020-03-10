@@ -14,7 +14,7 @@ import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 import LookupMobileProofingContainer from "containers/LookupMobileProofing";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("lookup mobile proofing Actions", () => {
@@ -39,16 +39,14 @@ describe("lookup mobile proofing Actions", () => {
 });
 
 describe("Reducers", () => {
-  const mockState = {
-  };
+  const mockState = {};
 
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING action", () => {
     expect(
       lookupMobileProofingReducer(mockState, {
         type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING
       })
-    ).toEqual({
-    });
+    ).toEqual({});
   });
 
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS action", () => {
@@ -56,8 +54,7 @@ describe("Reducers", () => {
       lookupMobileProofingReducer(mockState, {
         type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS
       })
-    ).toEqual({
-    });
+    ).toEqual({});
   });
 
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL action", () => {
@@ -69,8 +66,7 @@ describe("Reducers", () => {
           message: "Bad error"
         }
       })
-    ).toEqual({
-    });
+    ).toEqual({});
   });
 
   it("Receives a DUMMY action", () => {
@@ -79,8 +75,7 @@ describe("Reducers", () => {
         type: "DUMMY_ACTION",
         payload: "dummy payload"
       })
-    ).toEqual({
-    });
+    ).toEqual({});
   });
 });
 
@@ -92,8 +87,7 @@ const fakeStore = state => ({
 });
 
 const fakeState = {
-  lookup_mobile: {
-  },
+  lookup_mobile: {},
   config: {
     LOOKUP_MOBILE_PROOFING_URL: "http://localhost/lookup-mobile",
     csrf_token: "dummy-token"

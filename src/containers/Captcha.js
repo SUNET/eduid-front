@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import Captcha from "components/Captcha";
 import { history } from "components/SignupMain";
 import * as actions from "actions/Captcha";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {
@@ -27,9 +27,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const CaptchaContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Captcha);
+const CaptchaContainer = connect(mapStateToProps, mapDispatchToProps)(Captcha);
 
 export default i18n(CaptchaContainer);

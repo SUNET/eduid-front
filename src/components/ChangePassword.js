@@ -5,7 +5,7 @@ import * as comp from "components/ChangePasswordForm";
 import * as actions from "actions/ChangePassword";
 import { stopConfirmationPassword } from "actions/Security";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePasswordForm from "./ChangePasswordForm";
 import DashboardNav from "./DashboardNav";
 
@@ -22,7 +22,7 @@ class ChangePassword extends Component {
           <DashboardNav {...this.props} />
           <div id="password-container">
             <h3 className="verify-identity-header">
-              {this.props.l10n("chpass.main_title")}
+              {this.props.translate("chpass.main_title")}
             </h3>
             <div id="changePasswordDialog">
               <ChangePasswordForm {...this.props} />

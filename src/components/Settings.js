@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, NavLink, Redirect } from "react-router-dom";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
 import DashboardNav from "./DashboardNav";
 import PersonalDataContainer from "containers/PersonalData";
@@ -30,7 +30,7 @@ class Settings extends Component {
           />
           <Route
             path="/profile/settings/personaldata"
-            component={PersonalDataContainer}
+            render={props => <PersonalDataContainer {...props} />}
           />
 
           <Route

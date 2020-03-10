@@ -1,0 +1,21 @@
+@import "reset";
+@import "fonts";
+@import "typography";
+@import "base";
+@import "forms";
+@import "inputs";
+@import "label";
+@import "buttons";
+@import "links";
+@import "nav";
+@import "img";
+@import "errorMessages";
+@import "modals";
+
+/* styles specific to componets */
+@import "Header";
+@import "Footer";
+@import "ResetPassword";
+
+// does this styling work without stylesheet?
+@import "Splash";

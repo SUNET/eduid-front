@@ -28,11 +28,11 @@ class OpenidConnectFreja extends Component {
     const freja_instructions = (
       <div className="well" id="openid-connect-freja-instructions">
         <ol>
-          <li>{this.props.l10n("ocf.freja_instructions_step_1")}</li>
-          <li>{this.props.l10n("ocf.freja_instructions_step_2")}</li>
-          <li>{this.props.l10n("ocf.freja_instructions_step_3")}</li>
-          <li>{this.props.l10n("ocf.freja_instructions_step_4")}</li>
-          <li>{this.props.l10n("ocf.freja_instructions_step_5")}</li>
+          <li>{this.props.translate("ocf.freja_instructions_step_1")}</li>
+          <li>{this.props.translate("ocf.freja_instructions_step_2")}</li>
+          <li>{this.props.translate("ocf.freja_instructions_step_3")}</li>
+          <li>{this.props.translate("ocf.freja_instructions_step_4")}</li>
+          <li>{this.props.translate("ocf.freja_instructions_step_5")}</li>
         </ol>
       </div>
     );
@@ -42,8 +42,8 @@ class OpenidConnectFreja extends Component {
     if (!isMobile) {
       notOnMobileMsg = (
         <div id="openid-connect-freja-not-on-mobile">
-          <h4>{this.props.l10n("ocf.not_on_mobile_title")}</h4>
-          <p>{this.props.l10n("ocf.not_on_mobile_message")}</p>
+          <h4>{this.props.translate("ocf.not_on_mobile_title")}</h4>
+          <p>{this.props.translate("ocf.not_on_mobile_message")}</p>
         </div>
       );
     } else {
@@ -52,7 +52,7 @@ class OpenidConnectFreja extends Component {
           className="btn-link"
           onClick={this.props.handleInitializeFrejaProofing}
         >
-          {this.props.l10n("ocf.open_app")}
+          {this.props.translate("ocf.open_app")}
         </EduIDButton>
       );
       if (this.props.iaRequestData) {
@@ -63,7 +63,7 @@ class OpenidConnectFreja extends Component {
               "frejaeid://identify?iaRequestData=" + this.props.iaRequestData
             }
           >
-            {this.props.l10n("ocf.open_app")}
+            {this.props.translate("ocf.open_app")}
           </EduIDButton>
         );
       }
@@ -74,7 +74,7 @@ class OpenidConnectFreja extends Component {
             href="https://frejaeid.com/skaffa-freja-eid/"
             target="_blank"
           >
-            {this.props.l10n("ocf.freja_instructions_install_link")}
+            {this.props.translate("ocf.freja_instructions_install_link")}
           </Button>
 
           {frejaButton}
@@ -89,7 +89,7 @@ class OpenidConnectFreja extends Component {
         onClick={this.props.handleShowModal}
         block
       >
-        {this.props.l10n("ocf.initialize_proofing")}
+        {this.props.translate("ocf.initialize_proofing")}
       </EduIDButton>
     );
 
@@ -103,7 +103,7 @@ class OpenidConnectFreja extends Component {
           <fieldset id="openid-connect-freja">
             {showModalButton}
             <FormText className="proofing-btn-help" color="muted">
-              {this.props.l10n("ocf.initialize_proofing_help_text")}
+              {this.props.translate("ocf.initialize_proofing_help_text")}
             </FormText>
           </fieldset>
         </form>
@@ -118,11 +118,13 @@ class OpenidConnectFreja extends Component {
         >
           <Modal show={this.props.showModal} id="openid-connect-freja-modal">
             <Modal.Header>
-              <Modal.Title>{this.props.l10n("ocf.modal_title")}</Modal.Title>
+              <Modal.Title>
+                {this.props.translate("ocf.modal_title")}
+              </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-              <h4>{this.props.l10n("ocf.freja_instructions_title")}</h4>
+              <h4>{this.props.translate("ocf.freja_instructions_title")}</h4>
               {freja_instructions}
               {buttonGroup || notOnMobileMsg}
             </Modal.Body>
@@ -133,7 +135,7 @@ class OpenidConnectFreja extends Component {
                 id="openid-connect-freja-hide-modal"
                 onClick={this.props.handleHideModal}
               >
-                {this.props.l10n("cm.close")}
+                {this.props.translate("cm.close")}
               </Button>
             </Modal.Footer>
           </Modal>

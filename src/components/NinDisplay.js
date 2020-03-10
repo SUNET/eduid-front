@@ -7,13 +7,13 @@ import "style/Nins.scss";
 
 export class NinDisplay extends Component {
   render() {
-     const url = this.props.history.location.pathname;
+    const url = this.props.history.location.pathname;
     if (url.includes("verify-identity")) {
       if (this.props.verifiedNinStatus) {
         return (
           <div key="1" className="profile-card">
             <label key="0">
-              {this.props.l10n(
+              {this.props.translate(
                 "nin_display.verify-identity_verified_main_title"
               )}
             </label>
@@ -28,7 +28,7 @@ export class NinDisplay extends Component {
         return (
           <div key="1" className="profile-card">
             <label key="0">
-              {this.props.l10n(
+              {this.props.translate(
                 "nin_display.verify-identity_unverified_main_title"
               )}
             </label>
@@ -69,14 +69,14 @@ export class NinDisplay extends Component {
         return (
           <div key="1" className="profile-card">
             <label key="0">
-              {this.props.l10n("nin_display.profile.main_title")}
+              {this.props.translate("nin_display.profile.main_title")}
             </label>
             <div key="1" id="nin-number-container">
               <Link
                 to={`/profile/verify-identity/`}
                 className="unverified profile-data"
               >
-                {this.props.l10n("nin_display.profile.no_nin")}
+                {this.props.translate("nin_display.profile.no_nin")}
               </Link>
             </div>
           </div>
@@ -86,7 +86,7 @@ export class NinDisplay extends Component {
           return (
             <div key="1" className="profile-card">
               <label key="0">
-                {this.props.l10n("nin_display.profile.main_title")}
+                {this.props.translate("nin_display.profile.main_title")}
               </label>
               <div key="1" data-ninnumber={this.props.verifiedNin[0].number}>
                 <p key="0" id="nin-number" className="verified">
@@ -99,7 +99,7 @@ export class NinDisplay extends Component {
         return (
           <div key="1" className="profile-card">
             <label key="0">
-              {this.props.l10n("nin_display.profile.main_title")}
+              {this.props.translate("nin_display.profile.main_title")}
             </label>
             <div key="1" id="nin-number" id="nin-number-container">
               <Link

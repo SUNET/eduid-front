@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import i18n from "i18n-messages";
+import i18n from "../../src/login/translation/InjectIntl_HOC_factory";
 //import { appFetching, postAction } from "actions/ActionWrapper";
 import { postAction } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
@@ -19,7 +19,7 @@ class Main extends Component {
     return (
       <ActionWrapperContainer>
         <h3 key="0" className="tou-title">
-          {this.props.l10n("tou.header")}
+          {this.props.translate("tou.header")}
         </h3>
         <div
           // className="card-body"
@@ -34,14 +34,14 @@ class Main extends Component {
             onClick={this.props.acceptTOU}
             id="accept-tou-button"
           >
-            {this.props.l10n("tou.accept")}
+            {this.props.translate("tou.accept")}
           </EduIDButton>
           {/* <EduIDButton
             className="modal-button cancel-button"
             onClick={this.props.rejectTOU}
             id="reject-tou-button"
           >
-            {this.props.l10n("tou.cancel")}
+            {this.props.translate("tou.cancel")}
           </EduIDButton> */}
         </div>
       </ActionWrapperContainer>
@@ -76,9 +76,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const MainContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+const MainContainer = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default i18n(MainContainer);

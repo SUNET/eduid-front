@@ -21,18 +21,18 @@ export const history = createBrowserHistory();
 
 class SignupMain extends Component {
   //constructor(props) {
-    //super(props);
+  //super(props);
 
-    //this.state = {
-      //fetching: props.is_fetching,
-      //setFetching: this.setFetching.bind(this)
-    //};
+  //this.state = {
+  //fetching: props.is_fetching,
+  //setFetching: this.setFetching.bind(this)
+  //};
   //}
 
   //setFetching(fetching) {
-    //this.setState({
-      //fetching: fetching
-    //});
+  //this.setState({
+  //fetching: fetching
+  //});
   //}
 
   render() {
@@ -71,54 +71,53 @@ class SignupMain extends Component {
     // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
     // should wrap the splash container and router once we get back to using
     // it.
-    return ([
-        <SplashContainer key="0" />,
-        <Router key="1" history={history}>
-          <div className="dashboard-wrapper">
-            <HeaderContainer {...this.props} />
-            <div id="dashboard-text">
-              <div id="welcome">
-                <h1>{this.props.l10n("main.welcome")}</h1>
-                <h2>{this.props.l10n("register.create-account")}</h2>
-              </div>
-              <div id="content">
-                <NotificationsContainer />
-                <Route
-                  exact
-                  path={`${BASE_PATH}`}
-                  component={() => <Redirect to={redirect} />}
-                />
-                <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
-                <Route
-                  path={`${BASE_PATH}/trycaptcha`}
-                  component={CaptchaContainer}
-                />
-                <Route
-                  path={`${BASE_PATH}/new`}
-                  component={AccountCreatedContainer}
-                />
-                <Route
-                  path={`${BASE_PATH}/code-verified`}
-                  component={CodeVerifiedContainer}
-                />
-                <Route
-                  path={`${BASE_PATH}/resend-code`}
-                  component={ResendCodeContainer}
-                />
-                <Route
-                  path={`${BASE_PATH}/address-used`}
-                  component={EmailInUseContainer}
-                />
-              </div>
+    return [
+      <SplashContainer key="0" />,
+      <Router key="1" history={history}>
+        <div className="dashboard-wrapper">
+          <HeaderContainer {...this.props} />
+          <div id="dashboard-text">
+            <div id="welcome">
+              <h1>{this.props.translate("main.welcome")}</h1>
+              <h2>{this.props.translate("register.create-account")}</h2>
             </div>
-            <FooterContainer {...this.props} />
+            <div id="content">
+              <NotificationsContainer />
+              <Route
+                exact
+                path={`${BASE_PATH}`}
+                component={() => <Redirect to={redirect} />}
+              />
+              <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
+              <Route
+                path={`${BASE_PATH}/trycaptcha`}
+                component={CaptchaContainer}
+              />
+              <Route
+                path={`${BASE_PATH}/new`}
+                component={AccountCreatedContainer}
+              />
+              <Route
+                path={`${BASE_PATH}/code-verified`}
+                component={CodeVerifiedContainer}
+              />
+              <Route
+                path={`${BASE_PATH}/resend-code`}
+                component={ResendCodeContainer}
+              />
+              <Route
+                path={`${BASE_PATH}/address-used`}
+                component={EmailInUseContainer}
+              />
+            </div>
           </div>
-        </Router>
-    ]);
+          <FooterContainer {...this.props} />
+        </div>
+      </Router>
+    ];
   }
 }
 
-SignupMain.propTypes = {
-};
+SignupMain.propTypes = {};
 
 export default SignupMain;

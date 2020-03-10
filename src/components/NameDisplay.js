@@ -15,13 +15,15 @@ class NameDisplay extends Component {
     } else {
       text = [
         <p key="0" id="nin-number" className="no-data">
-          {this.props.l10n("profile.name_display_no_data")}
+          {this.props.translate("profile.name_display_no_data")}
         </p>
       ];
     }
     return (
       <div key="0" className="profile-card">
-        <label key="0">{this.props.l10n("profile.name_display_title")}</label>
+        <label key="0">
+          {this.props.translate("profile.name_display_title")}
+        </label>
         <div key="1" id="nin-number-container">
           {text}
         </div>
@@ -31,4 +33,3 @@ class NameDisplay extends Component {
 }
 
 export default NameDisplay;
-

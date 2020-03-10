@@ -9,14 +9,14 @@ import EmailDisplay from "containers/EmailDisplay";
 import { withRouter } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
-import "style/DashboardMain.scss"; 
+import "style/DashboardMain.scss";
 
 class Profile extends Component {
   render() {
     const url = this.props.history.location.pathname;
-    let profileSection = ""; 
-    let stylingId = "profile-container"; 
-    let accountDetails = ""; 
+    let profileSection = "";
+    let stylingId = "profile-container";
+    let accountDetails = "";
 
     if (url.includes("verify-identity")) {
       stylingId = "profile-container-verifyId";

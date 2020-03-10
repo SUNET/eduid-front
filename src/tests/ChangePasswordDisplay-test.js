@@ -11,7 +11,7 @@ import * as actions from "actions/Security";
 import securityReducer from "reducers/Security";
 import { requestPasswordChange } from "sagas/Security";
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: allows users to chaneg password in settings.

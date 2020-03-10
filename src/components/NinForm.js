@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { ButtonGroup, Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
@@ -49,7 +49,7 @@ class NinForm extends Component {
           onClick={this.props.addNin}
           key="1"
         >
-          {this.props.l10n("emails.button_add")}
+          {this.props.translate("emails.button_add")}
         </button>
       ];
     }
@@ -68,8 +68,8 @@ class NinForm extends Component {
             componentClass="input"
             type="text"
             name="nin"
-            placeholder={this.props.l10n("nins.input_placeholder")}
-            helpBlock={this.props.l10n("nins.input_help_text")}
+            placeholder={this.props.translate("nins.input_placeholder")}
+            helpBlock={this.props.translate("nins.input_help_text")}
           />
           {formButton}
         </Form>
@@ -104,9 +104,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const NinFormContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NinForm);
+const NinFormContainer = connect(mapStateToProps, mapDispatchToProps)(NinForm);
 
 export default i18n(NinFormContainer);

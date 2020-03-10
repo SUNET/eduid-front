@@ -35,18 +35,18 @@ class Footer extends Component {
     return (
       <footer key="0" id="footer">
         <p key="0" id="copyright">
-          <span>&copy;{this.props.l10n("main.copyright")}</span>
+          <span>&copy;{this.props.translate("main.copyright")}</span>
         </p>
         <nav key="1">
           <ul>
             {/*  <li key="0">
               <a id="stable-link" href="/feature/no-beta">
-                {this.props.l10n("foot.change-version")}
+                {this.props.translate("foot.change-version")}
               </a> 
             </li>*/}
             <li key="0">
               <a className="help-link" href={this.props.faq_link}>
-                {this.props.l10n("header.faq")}
+                {this.props.translate("header.faq")}
               </a>
             </li>
             <li key="1" id="language-selector">

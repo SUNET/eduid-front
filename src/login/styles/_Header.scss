@@ -1,0 +1,31 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.banner {
+  background-color: white;
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  margin: 6rem 0 3rem 0;
+}
+
+#eduid-logo {
+  width: 160px;
+  height: 50px;
+  background-image: url(../../../img/ds-eduID-logo-black320x120px.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+
+@media (max-width: 414px) {
+  #eduid-logo {
+    width: 105px;
+    height: 36px;
+  }
+}

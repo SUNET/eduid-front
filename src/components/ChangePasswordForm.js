@@ -8,7 +8,7 @@ import Label from "reactstrap/lib/Label";
 import Button from "reactstrap/lib/Button";
 import ButtonGroup from "reactstrap/lib/ButtonGroup";
 
-import i18n from "i18n-messages";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
@@ -71,7 +71,7 @@ class ChangePasswordForm extends Component {
         />,
         <div className="form-field-error-area" key="1">
           <FormText>
-            {this.props.l10n(this.props.password_strength_msg)}
+            {this.props.translate(this.props.password_strength_msg)}
           </FormText>
         </div>
       ];
@@ -82,7 +82,7 @@ class ChangePasswordForm extends Component {
           className="btn-link"
           onClick={() => this.togglePasswordType()}
         >
-          {this.props.l10n("chpass.button_suggest_password")}
+          {this.props.translate("chpass.button_suggest_password")}
         </EduIDButton>
       );
 
@@ -92,7 +92,7 @@ class ChangePasswordForm extends Component {
             component={TextInput}
             componentClass="input"
             type="password"
-            label={this.props.l10n("chpass.form_custom_password")}
+            label={this.props.translate("chpass.form_custom_password")}
             helpBlock={meterHelpBlock}
             id={pwFieldCustomName}
             name={pwFieldCustomName}
@@ -102,7 +102,7 @@ class ChangePasswordForm extends Component {
             componentClass="input"
             type="password"
             id={pwFieldRepeatName}
-            label={this.props.l10n("chpass.form_custom_password_repeat")}
+            label={this.props.translate("chpass.form_custom_password_repeat")}
             name={pwFieldRepeatName}
           />
         </div>
@@ -112,7 +112,7 @@ class ChangePasswordForm extends Component {
         <div
           className="password-format"
           dangerouslySetInnerHTML={{
-            __html: this.props.l10n("chpass.help-text-newpass")
+            __html: this.props.translate("chpass.help-text-newpass")
           }}
         />
       );
@@ -124,7 +124,7 @@ class ChangePasswordForm extends Component {
           type="text"
           name={pwFieldSuggestedName}
           id={pwFieldSuggestedName}
-          label={this.props.l10n("chpass.suggested_password")}
+          label={this.props.translate("chpass.suggested_password")}
           disabled={true}
         />
       );
@@ -134,7 +134,7 @@ class ChangePasswordForm extends Component {
           className="btn-link"
           onClick={() => this.togglePasswordType()}
         >
-          {this.props.l10n("chpass.button_custom_password")}
+          {this.props.translate("chpass.button_custom_password")}
         </EduIDButton>
       );
     }
@@ -147,7 +147,7 @@ class ChangePasswordForm extends Component {
             componentClass="input"
             type="password"
             id={pwFieldOldName}
-            label={this.props.l10n("chpass.old_password")}
+            label={this.props.translate("chpass.old_password")}
             name={pwFieldOldName}
           />
           <div className="form-field-error-area">
@@ -166,13 +166,13 @@ class ChangePasswordForm extends Component {
             disabled={this.props.submitting || this.props.pristine || this.props.invalid}
             onClick={this.props.handleStartPasswordChange.bind(this)}
           >
-            {this.props.l10n("chpass.button_save_password")}
+            {this.props.translate("chpass.button_save_password")}
           </EduIDButton>
           <EduIDButton
             className="modal-button cancel-button eduid-cancel-button"
             onClick={this.props.handleStopPasswordChange.bind(this)}
           >
-            {this.props.l10n("cm.cancel")}
+            {this.props.translate("cm.cancel")}
           </EduIDButton>
         </fieldset>
       </form>

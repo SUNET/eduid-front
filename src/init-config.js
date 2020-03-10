@@ -1,9 +1,17 @@
-const webpack = require("webpack"),
-  langs = [["en", "English"], ["sv", "Svenska"]],
-  messages = {};
+const webpack = require("webpack");
+const langs = [
+  ["en", "English"],
+  ["sv", "Svenska"]
+];
+
+const messages = {};
+
+// langs.forEach(lang => {
+//   messages[lang[0]] = require("../i18n/translate/" + lang[0]);
+// });
 
 langs.forEach(lang => {
-  messages[lang[0]] = require("../i18n/l10n/" + lang[0]);
+  messages[lang[0]] = require("./login/translation/languages/" + lang[0]);
 });
 
 module.exports = {
@@ -12,6 +20,8 @@ module.exports = {
     TOKEN_SERVICE_URL: JSON.stringify("/services/authn/login"),
     EDUID_CONFIG_URL: JSON.stringify("/services/jsconfig/config"),
     SIGNUP_CONFIG_URL: JSON.stringify("/services/jsconfig/signup/config"),
+    LOGIN_CONFIG_URL: JSON.stringify("/services/jsconfig/login/config"),
+    PASSWORD_SERVICE_URL: JSON.stringify("/services/reset-password"),
     AVAILABLE_LANGUAGES: JSON.stringify(langs),
     LOCALIZED_MESSAGES: JSON.stringify(messages),
     SIGNUP_SERVICE_URL: JSON.stringify("/services/signup/"),

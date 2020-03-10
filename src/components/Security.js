@@ -44,14 +44,14 @@ class Security extends Component {
       if (cred.success_ts) {
         date_success = new Date(cred.success_ts).toISOString().split("T")[0];
       } else {
-        date_success = this.props.l10n("security.last-used.date");
+        date_success = this.props.translate("security.last-used.date");
       }
 
       // verify button/ verified badge
       if (cred.verified) {
         btnVerify = (
           <EduIDButton className="btn-link verified" disabled>
-            {this.props.l10n("security.verified")}
+            {this.props.translate("security.verified")}
           </EduIDButton>
         );
       } else {
@@ -60,7 +60,7 @@ class Security extends Component {
             className="btn-link verify-status-label"
             onClick={this.props.handleVerifyWebauthnToken}
           >
-            {this.props.l10n("security.verify")}
+            {this.props.translate("security.verify")}
           </EduIDButton>
         );
       }
@@ -72,7 +72,7 @@ class Security extends Component {
               id="security-webauthn-platform-button"
               onClick={this.props.handleStartAskingDeviceWebauthnDescription}
             >
-              {this.props.l10n("security.add_webauthn_token_device")}
+              {this.props.translate("security.add_webauthn_token_device")}
             </EduIDButton>
           </div>
         );
@@ -124,9 +124,9 @@ class Security extends Component {
         <table className="passwords">
           <tbody>
             <tr>
-              <th>{this.props.l10n("security.description")}</th>
-              <th>{this.props.l10n("security.creation_date")}</th>
-              <th>{this.props.l10n("security.last_used")}</th>
+              <th>{this.props.translate("security.description")}</th>
+              <th>{this.props.translate("security.creation_date")}</th>
+              <th>{this.props.translate("security.last_used")}</th>
               <th />
               <th />
             </tr>
@@ -140,8 +140,8 @@ class Security extends Component {
       <div id="security-container">
         <div id="register-securitykey-container">
           <div className="intro">
-            <h4>{this.props.l10n("security.security-key_title")}</h4>
-            <p>{this.props.l10n("security.second-factor")}</p>
+            <h4>{this.props.translate("security.security-key_title")}</h4>
+            <p>{this.props.translate("security.second-factor")}</p>
           </div>
           <div id="register-webauthn-tokens-area">
             {securitykey_table}
@@ -151,7 +151,7 @@ class Security extends Component {
                 className="settings-button"
                 onClick={this.props.handleStartAskingKeyWebauthnDescription}
               >
-                {this.props.l10n("security.add_webauthn_token_key")}
+                {this.props.translate("security.add_webauthn_token_key")}
               </EduIDButton>
             </div>
             {platformAuthenticatorButton}
@@ -160,8 +160,8 @@ class Security extends Component {
 
         <GenericConfirmModal
           modalId="securityConfirmDialog"
-          title={this.props.l10n("security.confirm_title_chpass")}
-          mainText={this.props.l10n("security.change_info")}
+          title={this.props.translate("security.confirm_title_chpass")}
+          mainText={this.props.translate("security.change_info")}
           showModal={this.props.confirming_change}
           closeModal={this.props.handleStopConfirmationPassword}
           acceptModal={this.props.handleConfirmationPassword}
@@ -170,7 +170,7 @@ class Security extends Component {
         <ConfirmModal
           modalId="describeWebauthnTokenDialog"
           id="describeWebauthnTokenDialogControl"
-          title={this.props.l10n("security.webauthn-describe-title")}
+          title={this.props.translate("security.webauthn-describe-title")}
           resendLabel=""
           resendHelp=""
           resendText=""
