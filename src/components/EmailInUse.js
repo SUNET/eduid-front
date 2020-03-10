@@ -10,15 +10,17 @@ class EmailInUse extends Component {
       <div id="register-container">
         <div>
           <h3 className="register-header">
-            {this.props.l10n("used.email-in-use")({ email: this.props.email })}
+            {this.props.translate("used.email-in-use")({
+              email: this.props.email
+            })}
           </h3>
           <div id="email-display">
-            <p>{this.props.l10n("used.email-label")}</p>
+            <p>{this.props.translate("used.email-label")}</p>
           </div>
 
           <a href={this.props.reset_url}>
             <EduIDButton className="settings-button ok-button">
-              {this.props.l10n("used.reset-password")}
+              {this.props.translate("used.reset-password")}
             </EduIDButton>
           </a>
         </div>

@@ -17,7 +17,7 @@ class PendingActions extends Component {
             return (
               <li key={index} className="pending-action-item">
                 <a href="/profile/personaldata">
-                  {this.props.l10n("pending.pdata")}
+                  {this.props.translate("pending.pdata")}
                 </a>
               </li>
             );
@@ -26,7 +26,7 @@ class PendingActions extends Component {
           return (
             <li key={index} className="pending-action-item">
               <a onClick={this.props.handleGoToPending(missing).bind(this)}>
-                {this.props.l10n("pending." + missing)}
+                {this.props.translate("pending." + missing)}
               </a>
             </li>
           );
@@ -36,7 +36,7 @@ class PendingActions extends Component {
         return (
           <li key={index} className="pending-action-item">
             <a onClick={this.props.handleGoToPending(missing).bind(this)}>
-              {this.props.l10n("pending_confirm." + missing)}
+              {this.props.translate("pending_confirm." + missing)}
             </a>
           </li>
         );
@@ -45,7 +45,7 @@ class PendingActions extends Component {
     return (
       <div>
         <a id="beta-link" href="/feature/beta">
-          {this.props.l10n("beta-link.change-version")}
+          {this.props.translate("beta-link.change-version")}
         </a>
         <ul className="list-unstyled pending-actions">
           {toShow}

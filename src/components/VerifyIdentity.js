@@ -12,9 +12,9 @@ class VerifyIdentity extends Component {
     let connectNin = "";
     let headerText = "";
     let buttonHelpTextArray = [
-      this.props.l10n("letter.initialize_proofing_help_text"),
-      this.props.l10n("lmp.initialize_proofing_help_text"),
-      this.props.l10n("eidas.initialize_proofing_help_text")
+      this.props.translate("letter.initialize_proofing_help_text"),
+      this.props.translate("lmp.initialize_proofing_help_text"),
+      this.props.translate("eidas.initialize_proofing_help_text")
     ];
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
@@ -38,7 +38,7 @@ class VerifyIdentity extends Component {
       connectNin = [
         <div key="1" id="connect-nin-number">
           <label key="0">
-            {this.props.l10n("verify-identity.connect_nin_title")}
+            {this.props.translate("verify-identity.connect_nin_title")}
           </label>
           <div key="1" id="nins-btn-group">
             {vettingButtons}
@@ -47,9 +47,11 @@ class VerifyIdentity extends Component {
       ];
     }
     if (this.props.verifiedNinStatus) {
-      headerText = this.props.l10n("verify-identity.verified_main_title");
+      headerText = this.props.translate("verify-identity.verified_main_title");
     } else {
-      headerText = this.props.l10n("verify-identity.unverified_main_title");
+      headerText = this.props.translate(
+        "verify-identity.unverified_main_title"
+      );
     }
 
     return (

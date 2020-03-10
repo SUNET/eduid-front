@@ -9,10 +9,10 @@ class ResendCode extends Component {
     return (
       <div id="register-container">
         <h3 className="register-header">
-          {this.props.l10n("resend.link-sent")}
+          {this.props.translate("resend.link-sent")}
         </h3>
         <div id="email-display">
-          <p>{this.props.l10n("resend.email-label")}</p>
+          <p>{this.props.translate("resend.email-label")}</p>
           <h3 className="register-header registered-email">
             {this.props.email}
           </h3>
@@ -23,7 +23,7 @@ class ResendCode extends Component {
           className="settings-button"
           onClick={this.props.handleResend}
         >
-          {this.props.l10n("resend.button")}
+          {this.props.translate("resend.button")}
         </EduIDButton>
       </div>
     );

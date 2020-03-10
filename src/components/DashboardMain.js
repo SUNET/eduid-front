@@ -20,17 +20,17 @@ export const history = createBrowserHistory();
 
 class Main extends Component {
   //constructor(props) {
-    //super(props);
-    //this.state = {
-      //fetching: props.is_fetching,
-      //setFetching: this.setFetching.bind(this)
-    //};
+  //super(props);
+  //this.state = {
+  //fetching: props.is_fetching,
+  //setFetching: this.setFetching.bind(this)
+  //};
   //}
 
   //setFetching(fetching) {
-    //this.setState({
-      //fetching: fetching
-    //});
+  //this.setState({
+  //fetching: fetching
+  //});
   //}
 
   render() {
@@ -40,16 +40,16 @@ class Main extends Component {
     if (this.props.nin) {
       promptLink = `/profile/verify-identity/`;
       styling = "unverified";
-      welcomeGreeting = this.props.l10n("dashboard.tagline_unverified");
+      welcomeGreeting = this.props.translate("dashboard.tagline_unverified");
       if (this.props.verifiedNin) {
         promptLink = `/profile/settings/advanced-settings`;
         styling = "verified";
-        welcomeGreeting = this.props.l10n("dashboard.tagline_verified");
+        welcomeGreeting = this.props.translate("dashboard.tagline_verified");
       }
     } else {
       promptLink = `/profile/verify-identity/`;
       styling = "unverified";
-      welcomeGreeting = this.props.l10n("dashboard.tagline_unverified");
+      welcomeGreeting = this.props.translate("dashboard.tagline_unverified");
     }
 
     // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
@@ -60,13 +60,13 @@ class Main extends Component {
       <Router key="1" history={history}>
         <div className="dashboard-wrapper">
           <a id="stable-link" href="/feature/no-beta">
-            {this.props.l10n("beta-link.to-stable")}
+            {this.props.translate("beta-link.to-stable")}
           </a>
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
             <div id="welcome">
               <h1>
-                {this.props.l10n("dashboard.welcome")} {this.props.email}
+                {this.props.translate("dashboard.welcome")} {this.props.email}
               </h1>
               <Link id="profile-prompt-link" to={promptLink}>
                 <h2 className={styling}>{welcomeGreeting}</h2>
@@ -94,7 +94,9 @@ class Main extends Component {
               <Route
                 exact
                 path="/profile/accountlinking/"
-                component={() => <Redirect to="/profile/settings/advanced-settings/" />}
+                component={() => (
+                  <Redirect to="/profile/settings/advanced-settings/" />
+                )}
               />
               <Route
                 exact
@@ -104,7 +106,9 @@ class Main extends Component {
               <Route
                 exact
                 path="/profile/emails/"
-                component={() => <Redirect to="/profile/settings/personaldata/" />}
+                component={() => (
+                  <Redirect to="/profile/settings/personaldata/" />
+                )}
               />
             </div>
           </div>

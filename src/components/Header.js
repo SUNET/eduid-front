@@ -10,7 +10,7 @@ class Header extends Component {
       button = (
         <a href="http://html.eduid.docker/">
           <button id="login" className="btn">
-            {this.props.l10n("header.signin")}
+            {this.props.translate("header.signin")}
           </button>
         </a>
       );
@@ -18,7 +18,7 @@ class Header extends Component {
       button = (
         <div id="eduid-button">
           <button id="logout" className="btn" onClick={this.props.handleLogout}>
-            {this.props.l10n("header.logout")}
+            {this.props.translate("header.logout")}
           </button>
         </div>
       );

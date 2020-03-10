@@ -5,7 +5,7 @@ import { Field, reduxForm } from "redux-form";
 
 import Form from "reactstrap/lib/Form";
 import TextInput from "components/EduIDTextInput";
-import EduIDButton from "components/EduIDButton";;
+import EduIDButton from "components/EduIDButton";
 
 import "style/Emails.scss";
 import "style/PersonalData.scss";
@@ -25,10 +25,7 @@ const validate = values => {
 
 let PdataForm = props => {
   return (
-    <Form
-      id="personaldataview-form"
-      role="form"
-    >
+    <Form id="personaldataview-form" role="form">
       <fieldset id="personal-data-form" className="tabpane">
         <Field
           component={TextInput}
@@ -95,8 +92,8 @@ class PersonalData extends Component {
     return (
       <div className="namesview-form-container">
         <div className="intro">
-          <h4>{this.props.l10n("pd.main_title")}</h4>
-          <p>{this.props.l10n("pd.long_description")}</p>
+          <h4>{this.props.translate("pd.main_title")}</h4>
+          <p>{this.props.translate("pd.long_description")}</p>
         </div>
         <PdataForm {...this.props} />
       </div>

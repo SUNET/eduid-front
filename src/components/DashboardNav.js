@@ -19,7 +19,7 @@ class DashboardNav extends Component {
               to={`/profile/`}
             >
               <li className="nav-item">
-                <h5>{this.props.l10n("dashboard_nav.profile")}</h5>
+                <h5>{this.props.translateslate("dashboard_nav.profile")}</h5>
               </li>
             </NavLink>
             <NavLink
@@ -28,7 +28,7 @@ class DashboardNav extends Component {
               to={`/profile/settings/`}
             >
               <li className="nav-item">
-                <h5>{this.props.l10n("dashboard_nav.settings")}</h5>
+                <h5>{this.props.translateslate("dashboard_nav.settings")}</h5>
               </li>
             </NavLink>
             <NavLink
@@ -37,7 +37,9 @@ class DashboardNav extends Component {
               to={`/profile/settings/advanced-settings`}
             >
               <li className="nav-item">
-                <h5>{this.props.l10n("dashboard_nav.advanced-settings")}</h5>
+                <h5>this.props.translate
+                  {this.props.translate("dashboard_nav.advanced-settings")}
+                </h5>
               </li>
             </NavLink>
           </ul>
@@ -52,9 +54,9 @@ class DashboardNav extends Component {
               activeClassName="active"
               className="nav-link"
               to={`/profile/`}
-            >
+            >this.props.translate
               <li className="nav-item">
-                <h5>{this.props.l10n("dashboard_nav.back")}</h5>
+                <h5>{this.props.translate("dashboard_nav.back")}</h5>
               </li>
             </NavLink>
           </ul>
@@ -69,28 +71,25 @@ class DashboardNav extends Component {
               activeClassName="active"
               className="nav-link"
               to={`/profile/`}
-            >
+            >this.props.translate
               <li className="nav-item">
-                <h5>{this.props.l10n("dashboard_nav.profile")}</h5>
+                <h5>{this.props.translate("dashboard_nav.profile")}</h5>
               </li>
             </NavLink>
             <NavLink
               activeClassName="active"
               className="nav-link"
               to={`/profile/settings/`}
-            >
+            >this.props.translate
               <li className="nav-item">
-                <h5>{this.props.l10n("dashboard_nav.settings")}</h5>
+                <h5>{this.props.translate("dashboard_nav.settings")}</h5>
               </li>
             </NavLink>
-            <NavLink
-              className="nav-link advanced-setting transparent"
-              to={`#`}
-            >
+            <NavLink className="nav-link advanced-setting transparent" to={`#`}>
               <li className="transparent">
                 <h5 className="transparent">
-                  {this.props.l10n("dashboard_nav.advanced-settings")}
-                </h5>
+                  {this.props.translate("dashboard_nav.advanced-settings")}
+                </hthis.props.translate
               </li>
             </NavLink>
           </ul>

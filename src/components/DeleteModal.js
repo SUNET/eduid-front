@@ -22,7 +22,9 @@ class DeleteModal extends Component {
           <ModalHeader>{this.props.title}</ModalHeader>
 
           <ModalBody>
-            <p id="delete-account">{this.props.l10n("delete.modal_info")}</p>
+            <p id="delete-account">
+              {this.props.translate("delete.modal_info")}
+            </p>
             <EduIDButton
               className="settings-button delete-button"
               id="confirm-delete-account-button"
@@ -31,16 +33,16 @@ class DeleteModal extends Component {
               }}
               onClick={this.props.handleConfirm}
             >
-              {this.props.l10n("delete.confirm_button")}
+              {this.props.translate("delete.confirm_button")}
             </EduIDButton>
-            <p>{this.props.l10n("delete.modal_tip")}</p>
+            <p>{this.props.translate("delete.modal_tip")}</p>
           </ModalBody>
           <ModalFooter>
             <EduIDButton
               className="modal-button cancel-button"
               onClick={this.props.closeModal}
             >
-              {this.props.l10n("cm.cancel")}
+              {this.props.translate("cm.cancel")}
             </EduIDButton>
           </ModalFooter>
         </Modal>

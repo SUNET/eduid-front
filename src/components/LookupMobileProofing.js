@@ -11,8 +11,8 @@ class LookupMobileProofing extends Component {
         <GenericConfirmModal
           key="0"
           modalId="mobileGenericConfirmDialog"
-          title={this.props.l10n("lmp.modal_reminder_to_confirm_title")}
-          mainText={this.props.l10n("lmp.modal_reminder_to_confirm_info")}
+          title={this.props.translate("lmp.modal_reminder_to_confirm_title")}
+          mainText={this.props.translate("lmp.modal_reminder_to_confirm_info")}
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
@@ -23,8 +23,8 @@ class LookupMobileProofing extends Component {
           <GenericConfirmModal
             key="0"
             modalId="mobileGenericConfirmDialog"
-            title={this.props.l10n("lmp.modal_confirm_title")}
-            mainText={this.props.l10n("lmp.modal_confirm_info")}
+            title={this.props.translate("lmp.modal_confirm_title")}
+            mainText={this.props.translate("lmp.modal_confirm_info")}
             showModal={this.props.showModal}
             closeModal={this.props.handleCloseModal}
             acceptModal={this.props.handleLookupMobile}
@@ -36,8 +36,8 @@ class LookupMobileProofing extends Component {
         <GenericConfirmModal
           key="0"
           modalId="mobileGenericConfirmDialog"
-          title={this.props.l10n("lmp.modal_add_number_title")}
-          mainText={this.props.l10n("lmp.modal_add_number_info")}
+          title={this.props.translate("lmp.modal_add_number_title")}
+          mainText={this.props.translate("lmp.modal_add_number_info")}
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
@@ -54,10 +54,10 @@ class LookupMobileProofing extends Component {
             onClick={this.props.handleShowModal}
           >
             <div key="1" className="vetting-button-text">
-              {this.props.l10n("verify-identity.vetting_phone_tagline")}
+              {this.props.translate("verify-identity.vetting_phone_tagline")}
             </div>
             <div key="2" className="vetting-button-name">
-              {this.props.l10n("lmp.button_text_request")}
+              {this.props.translate("lmp.button_text_request")}
             </div>
           </button>
         </div>

@@ -78,8 +78,8 @@ class Emails extends Component {
     return (
       <div className="emailsview-form-container">
         <div className="intro">
-          <h4>{this.props.l10n("emails.main_title")}</h4>
-          <p>{this.props.l10n("emails.long_description")}</p>
+          <h4>{this.props.translate("emails.main_title")}</h4>
+          <p>{this.props.translate("emails.long_description")}</p>
         </div>
         <div id="email-display">
           <TableList
@@ -96,19 +96,19 @@ class Emails extends Component {
             className={this.state.addLinkClass}
             onClick={this.showEmailForm}
           >
-            {this.props.l10n("emails.button_add_more")}
+            {this.props.translate("emails.button_add_more")}
           </EduIDButton>
         </div>
         <ConfirmModal
           modalId="emailConfirmDialog"
           id="emailConfirmDialogControl"
-          title={this.props.l10n("emails.confirm_title", {
+          title={this.props.translate("emails.confirm_title", {
             email: this.props.confirming
           })}
-          resendLabel={this.props.l10n("cm.enter_code")}
-          resendHelp={this.props.l10n("cm.lost_code")}
-          resendText={this.props.l10n("cm.resend_code")}
-          placeholder={this.props.l10n("emails.placeholder")}
+          resendLabel={this.props.translate("cm.enter_code")}
+          resendHelp={this.props.translate("cm.lost_code")}
+          resendText={this.props.translate("cm.resend_code")}
+          placeholder={this.props.translate("emails.placeholder")}
           showModal={Boolean(this.props.confirming)}
           closeModal={this.props.handleStopConfirmation}
           handleResend={this.props.handleResend}

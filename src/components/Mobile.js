@@ -92,8 +92,8 @@ class Mobile extends Component {
     return (
       <div className="phoneview-form-container">
         <div className="intro">
-          <h4>{this.props.l10n("phones.main_title")}</h4>
-          <p>{this.props.l10n("phones.long_description")}</p>
+          <h4>{this.props.translate("phones.main_title")}</h4>
+          <p>{this.props.translate("phones.long_description")}</p>
         </div>
         <div id="phone-display">
           <TableList
@@ -110,19 +110,19 @@ class Mobile extends Component {
             className={this.state.addLinkClass}
             onClick={this.showEmailForm}
           >
-            {this.props.l10n("phones.button_add_more")}
+            {this.props.translate("phones.button_add_more")}
           </EduIDButton>
         </div>
         <ConfirmModal
           modalId="phoneConfirmDialog"
           id="phoneConfirmDialogControl"
-          title={this.props.l10n("mobile.confirm_title", {
+          title={this.props.translate("mobile.confirm_title", {
             phone: this.props.confirming
           })}
-          resendLabel={this.props.l10n("cm.enter_code")}
-          resendHelp={this.props.l10n("cm.lost_code")}
-          resendText={this.props.l10n("cm.resend_code")}
-          placeholder={this.props.l10n("mobile.placeholder")}
+          resendLabel={this.props.translate("cm.enter_code")}
+          resendHelp={this.props.translate("cm.lost_code")}
+          resendText={this.props.translate("cm.resend_code")}
+          placeholder={this.props.translate("mobile.placeholder")}
           showModal={Boolean(this.props.confirming)}
           closeModal={this.props.handleStopConfirmation}
           handleResend={this.props.handleResend}

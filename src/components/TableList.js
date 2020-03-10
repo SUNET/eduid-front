@@ -26,7 +26,7 @@ class TableList extends Component {
               <td className="identifier data">{key}</td>
               <td className="non-identifier status-label">
                 <span className="nobutton verify-status-label">
-                  {this.props.l10n("tl.primary")}
+                  {this.props.translate("tl.primary")}
                 </span>
               </td>
               <td className="non-identifier data-remove-button">
@@ -63,7 +63,7 @@ class TableList extends Component {
                   className="btn-link verify-label verify-status-label"
                   onClick={this.props.handleMakePrimary}
                 >
-                  {this.props.l10n("tl.make_primary")}
+                  {this.props.translate("tl.make_primary")}
                 </EduIDButton>
               </td>
               <td className="non-identifier ">
@@ -100,7 +100,7 @@ class TableList extends Component {
                   className="btn-link verify-status-label"
                   onClick={this.props.handleStartConfirmation}
                 >
-                  {this.props.l10n("tl.pending")}
+                  {this.props.translate("tl.pending")}
                 </EduIDButton>
               </td>
               <td className="non-identifier">

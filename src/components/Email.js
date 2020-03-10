@@ -73,7 +73,7 @@ class Email extends Component {
       </div>,
       <div key="1">
         <Modal isOpen={this.props.acceptingTOU} id="register-modal">
-          <ModalHeader>{this.props.l10n("tou.header")}</ModalHeader>
+          <ModalHeader>{this.props.translate("tou.header")}</ModalHeader>
           <ModalBody dangerouslySetInnerHTML={{ __html: this.props.tou }} />
           <ModalFooter>
             <EduIDButton
@@ -81,14 +81,14 @@ class Email extends Component {
               className="modal-button ok-button"
               onClick={this.props.handleAccept}
             >
-              {this.props.l10n("tou.accept")}
+              {this.props.translate("tou.accept")}
             </EduIDButton>
             <EduIDButton
               className="modal-button cancel-button"
               id="reject-tou-button"
               onClick={this.props.handleReject}
             >
-              {this.props.l10n("tou.cancel")}
+              {this.props.translate("tou.cancel")}
             </EduIDButton>
           </ModalFooter>
         </Modal>

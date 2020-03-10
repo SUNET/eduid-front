@@ -51,13 +51,13 @@ class ConfirmModal extends Component {
               disabled={this.props.invalid}
               onClick={this.props.handleConfirm}
             >
-              {this.props.l10n("cm.ok")}
+              {this.props.translate("cm.ok")}
             </EduIDButton>
             <EduIDButton
               className="modal-button cancel-button"
               onClick={this.props.closeModal}
             >
-              {this.props.l10n("cm.cancel")}
+              {this.props.translate("cm.cancel")}
             </EduIDButton>
           </ModalFooter>
         </Modal>

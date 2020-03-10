@@ -18,12 +18,12 @@ class Eidas extends Component {
     const freja_instructions = (
       <div id="freja-instructions">
         <ol>
-          <li>{this.props.l10n("eidas.freja_instructions_step1")}</li>
-          <li>{this.props.l10n("eidas.freja_instructions_step2")}</li>
-          <li>{this.props.l10n("eidas.freja_instructions_step3")}</li>
-          <li>{this.props.l10n("eidas.freja_instructions_step4")}</li>
-          <label>{this.props.l10n("eidas.freja_instructions_tip1")}</label>
-          <li>{this.props.l10n("eidas.freja_instructions_step5")}</li>
+          <li>{this.props.translateslate("eidas.freja_instructions_step1")}</li>
+          <li>{this.props.translateslate("eidas.freja_instructions_step2")}</li>
+          <li>{this.props.translateslate("eidas.freja_instructions_step3")}</li>
+          <li>{this.props.translateslate("eidas.freja_instructions_step4")}</li>
+          <label>{this.props.translateslate("eidas.freja_instructions_tip1")}</label>
+          <li>{this.props.translateslate("eidas.freja_instructions_step5")}</li>
         </ol>
       </div>
     );
@@ -35,7 +35,7 @@ class Eidas extends Component {
         className="btn-link"
         href={this.props.eidas_sp_freja_idp_url}
       >
-        {this.props.l10n("eidas.freja_eid_ready")}
+        {this.props.translateslate("eidas.freja_eid_ready")}
       </EduIDButton>
     );
 
@@ -45,25 +45,22 @@ class Eidas extends Component {
         href="https://frejaeid.com/skaffa-freja-eid/"
         target="_blank"
       >
-        {this.props.l10n("eidas.freja_instructions_install_link")}
+        {this.props.translateslate("eidas.freja_instructions_install_link")}
       </EduIDButton>
     );
 
     return (
       <div>
         <div className="vetting-button">
-          <button
-            id="eidas-show-modal"
-            onClick={this.props.handleShowModal}
-          >
+          <button id="eidas-show-modal" onClick={this.props.handleShowModal}>
             <div className="vetting-button-text">
-              {this.props.l10n("verify-identity.vetting_freja_tagline")}
+              {this.props.translate("verify-identity.vetting_freja_tagline")}
             </div>
             <div className="vetting-button-name">
-              {this.props.l10n("eidas.vetting_button_freja")}
+              {this.props.translateslate("eidas.vetting_button_freja")}
             </div>
           </button>
-        </div>
+        </div>this.props.translate
         <div
           id="eidas-info-dialog"
           tabIndex="-1"
@@ -73,8 +70,10 @@ class Eidas extends Component {
           data-backdrop="true"
         >
           <Modal isOpen={this.props.showModal} id="eidas-modal">
-            <ModalHeader>{this.props.l10n("eidas.modal_title")}</ModalHeader>
-
+            <ModalHeader>
+              {this.props.translate("eidas.modal_title")}
+            </ModalHeader>
+this.props.translate
             <ModalBody>
               {freja_instructions}
               <div id="freja-links">
@@ -89,8 +88,8 @@ class Eidas extends Component {
                 id="eidas-hide-modal"
                 onClick={this.props.handleHideModal}
               >
-                {this.props.l10n("cm.close")}
-              </EduIDButton>
+                {this.props.translate("cm.close")}
+              </Ethis.props.translate
             </ModalFooter>
           </Modal>
         </div>

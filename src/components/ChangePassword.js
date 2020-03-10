@@ -22,7 +22,7 @@ class ChangePassword extends Component {
           <DashboardNav {...this.props} />
           <div id="password-container">
             <h3 className="verify-identity-header">
-              {this.props.l10n("chpass.main_title")}
+              {this.props.translate("chpass.main_title")}
             </h3>
             <div id="changePasswordDialog">
               <ChangePasswordForm {...this.props} />

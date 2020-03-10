@@ -49,7 +49,7 @@ class NinForm extends Component {
           onClick={this.props.addNin}
           key="1"
         >
-          {this.props.l10n("emails.button_add")}
+          {this.props.translateslate("emails.button_add")}
         </button>
       ];
     }
@@ -68,8 +68,8 @@ class NinForm extends Component {
             componentClass="input"
             type="text"
             name="nin"
-            placeholder={this.props.l10n("nins.input_placeholder")}
-            helpBlock={this.props.l10n("nins.input_help_text")}
+            placeholder={this.props.translateslate("nins.input_placeholder")}
+            helpBlock={this.props.translateslate("nins.input_help_text")}
           />
           {formButton}
         </Form>
@@ -104,9 +104,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const NinFormContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NinForm);
+const NinFormContainer = connect(mapStateToProps, mapDispatchToProps)(NinForm);
 
 export default i18n(NinFormContainer);

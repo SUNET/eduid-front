@@ -16,7 +16,7 @@ class PhoneNumDisplay extends Component {
     } else {
       displayText = [
         <p key="0" className="unverified data">
-          {this.props.l10n("profile.phone_display_unconfirmed_data")}
+          {this.props.translate("profile.phone_display_unconfirmed_data")}
         </p>
       ];
     }
