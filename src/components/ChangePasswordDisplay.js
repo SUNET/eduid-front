@@ -11,8 +11,8 @@ class ChangePasswordDisplay extends Component {
       <div>
         <div id="change-password-container">
           <div className="intro">
-            <h4>{this.props.translateslate("settings.main_title")} </h4>
-            <p>{this.props.translateslate("settings.long_description")}</p>
+            <h4>{this.props.translate("settings.main_title")} </h4>
+            <p>{this.props.translate("settings.long_description")}</p>
           </div>
           <div id="change-password">
             <EduIDButton
@@ -20,14 +20,14 @@ class ChangePasswordDisplay extends Component {
               className="btn-link"
               onClick={this.props.handleStartConfirmationPassword}
             >
-              {this.props.translateslate("settings.change_password")}
+              {this.props.translate("settings.change_password")}
             </EduIDButton>
           </div>
         </div>
         <GenericConfirmModal
           modalId="securityConfirmDialog"
-          title={this.props.translateslate("settings.confirm_title_chpass")}
-          mainText={this.props.translateslate("settings.change_info")}
+          title={this.props.translate("settings.confirm_title_chpass")}
+          mainText={this.props.translate("settings.change_info")}
           showModal={this.props.confirming_change}
           closeModal={this.props.handleStopConfirmationPassword}
           acceptModal={this.props.handleConfirmationPassword}

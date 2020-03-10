@@ -18,12 +18,12 @@ class Eidas extends Component {
     const freja_instructions = (
       <div id="freja-instructions">
         <ol>
-          <li>{this.props.translateslate("eidas.freja_instructions_step1")}</li>
-          <li>{this.props.translateslate("eidas.freja_instructions_step2")}</li>
-          <li>{this.props.translateslate("eidas.freja_instructions_step3")}</li>
-          <li>{this.props.translateslate("eidas.freja_instructions_step4")}</li>
-          <label>{this.props.translateslate("eidas.freja_instructions_tip1")}</label>
-          <li>{this.props.translateslate("eidas.freja_instructions_step5")}</li>
+          <li>{this.props.translate("eidas.freja_instructions_step1")}</li>
+          <li>{this.props.translate("eidas.freja_instructions_step2")}</li>
+          <li>{this.props.translate("eidas.freja_instructions_step3")}</li>
+          <li>{this.props.translate("eidas.freja_instructions_step4")}</li>
+          <label>{this.props.translate("eidas.freja_instructions_tip1")}</label>
+          <li>{this.props.translate("eidas.freja_instructions_step5")}</li>
         </ol>
       </div>
     );
@@ -35,7 +35,7 @@ class Eidas extends Component {
         className="btn-link"
         href={this.props.eidas_sp_freja_idp_url}
       >
-        {this.props.translateslate("eidas.freja_eid_ready")}
+        {this.props.translate("eidas.freja_eid_ready")}
       </EduIDButton>
     );
 
@@ -45,7 +45,7 @@ class Eidas extends Component {
         href="https://frejaeid.com/skaffa-freja-eid/"
         target="_blank"
       >
-        {this.props.translateslate("eidas.freja_instructions_install_link")}
+        {this.props.translate("eidas.freja_instructions_install_link")}
       </EduIDButton>
     );
 
@@ -57,7 +57,7 @@ class Eidas extends Component {
               {this.props.translate("verify-identity.vetting_freja_tagline")}
             </div>
             <div className="vetting-button-name">
-              {this.props.translateslate("eidas.vetting_button_freja")}
+              {this.props.translate("eidas.vetting_button_freja")}
             </div>
           </button>
         </div>this.props.translate

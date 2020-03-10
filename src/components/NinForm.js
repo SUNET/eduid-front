@@ -49,7 +49,7 @@ class NinForm extends Component {
           onClick={this.props.addNin}
           key="1"
         >
-          {this.props.translateslate("emails.button_add")}
+          {this.props.translate("emails.button_add")}
         </button>
       ];
     }
@@ -68,8 +68,8 @@ class NinForm extends Component {
             componentClass="input"
             type="text"
             name="nin"
-            placeholder={this.props.translateslate("nins.input_placeholder")}
-            helpBlock={this.props.translateslate("nins.input_help_text")}
+            placeholder={this.props.translate("nins.input_placeholder")}
+            helpBlock={this.props.translate("nins.input_help_text")}
           />
           {formButton}
         </Form>

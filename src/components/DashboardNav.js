@@ -19,7 +19,7 @@ class DashboardNav extends Component {
               to={`/profile/`}
             >
               <li className="nav-item">
-                <h5>{this.props.translateslate("dashboard_nav.profile")}</h5>
+                <h5>{this.props.translate("dashboard_nav.profile")}</h5>
               </li>
             </NavLink>
             <NavLink
@@ -28,7 +28,7 @@ class DashboardNav extends Component {
               to={`/profile/settings/`}
             >
               <li className="nav-item">
-                <h5>{this.props.translateslate("dashboard_nav.settings")}</h5>
+                <h5>{this.props.translate("dashboard_nav.settings")}</h5>
               </li>
             </NavLink>
             <NavLink

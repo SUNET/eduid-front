@@ -18,7 +18,7 @@ class Captcha extends Component {
     return [
       <div key="0" id="register-container">
         <h3 className="register-header">
-          {this.props.translateslate("captcha.verify-human")}
+          {this.props.translate("captcha.verify-human")}
         </h3>
         <div key="1" id="captcha-container">
           <div id="captcha">
@@ -35,14 +35,14 @@ class Captcha extends Component {
               onClick={this.props.sendCaptcha}
               id="send-captcha-button"
             >
-              {this.props.translateslate("captcha.submit")}
+              {this.props.translate("captcha.submit")}
             </EduIDButton>
             <EduIDButton
               onClick={this.props.cancelCaptcha}
               className="modal-button captcha cancel-button"
               id="cancel-captcha-button"
             >
-              {this.props.translateslate("captcha.cancel")}
+              {this.props.translate("captcha.cancel")}
             </EduIDButton>
           </div>
         </div>
