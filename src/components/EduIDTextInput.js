@@ -17,7 +17,7 @@ const textInput = props => {
     selectOptions,
     componentClass,
     type,
-    l10n,
+    translate,
     disabled,
     helpBlock,
     placeholder
@@ -31,7 +31,7 @@ const textInput = props => {
       valid = true;
     }
   }
-  const errmsg = (invalid && l10n(meta.error)) || "";
+  const errmsg = (invalid && translate(meta.error)) || "";
   let feedback = "",
     help;
   if (errmsg !== "") {

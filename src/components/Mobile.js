@@ -39,8 +39,8 @@ let PhoneForm = props => {
           componentClass="input"
           type="text"
           name="number"
-          placeholder={props.l10n("phones.input_placeholder")}
-          helpBlock={props.l10n("phones.input_help_text")}
+          placeholder={props.translate("phones.input_placeholder")}
+          helpBlock={props.translate("phones.input_help_text")}
         />
       </fieldset>
       <EduIDButton
@@ -49,7 +49,7 @@ let PhoneForm = props => {
         disabled={!props.valid_phone}
         onClick={props.handleAdd}
       >
-        {props.l10n("mobile.button_add")}
+        {props.translate("mobile.button_add")}
       </EduIDButton>
     </form>
   );

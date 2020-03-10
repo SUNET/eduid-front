@@ -25,7 +25,7 @@ const TextInput = props => {
 
   // log the correct error under input following validation
   let errorMessage = <span className="transparent-input-error">X</span>;
-  // this is what comes back form validation (translated by l10n)
+  // this is what comes back form validation (translated by translate)
   const validationError = (invalid && translate(meta.error)) || "";
   // if validation error is not "" display the html element
   if (validationError !== "") {

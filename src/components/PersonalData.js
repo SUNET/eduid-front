@@ -32,23 +32,23 @@ let PdataForm = props => {
           componentClass="input"
           type="text"
           name="given_name"
-          label={props.l10n("pd.given_name")}
+          label={props.translate("pd.given_name")}
         />
         <Field
           component={TextInput}
           componentClass="input"
           type="text"
           name="surname"
-          label={props.l10n("pd.surname")}
+          label={props.translate("pd.surname")}
         />
         <Field
           component={TextInput}
           componentClass="input"
           type="text"
           name="display_name"
-          label={props.l10n("pd.display_name")}
-          placeholder={props.l10n("pd.display_name_input_placeholder")}
-          helpBlock={props.l10n("pd.display_name_input_help_text")}
+          label={props.translate("pd.display_name")}
+          placeholder={props.translate("pd.display_name_input_placeholder")}
+          helpBlock={props.translate("pd.display_name_input_help_text")}
         />
         <Field
           component={TextInput}
@@ -56,7 +56,7 @@ let PdataForm = props => {
           type="select"
           name="language"
           selectOptions={props.langs}
-          label={props.l10n("pd.language")}
+          label={props.translate("pd.language")}
         />
       </fieldset>
       <EduIDButton
@@ -65,7 +65,7 @@ let PdataForm = props => {
         disabled={props.pristine || props.submitting || props.invalid}
         onClick={props.handleSave}
       >
-        {props.l10n("button_add")}
+        {props.translate("button_add")}
       </EduIDButton>
     </Form>
   );

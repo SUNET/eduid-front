@@ -46,7 +46,7 @@ CodeVerified.propTypes = {
   dashboard_url: PropTypes.string,
   password: PropTypes.string,
   email: PropTypes.string,
-  l10n: PropTypes.func
+  translate: PropTypes.func
 };
 
 export default CodeVerified;

@@ -32,10 +32,10 @@ export default function InjectIntl(WrappedComponent, options = {}) {
   // console.log("this is WrappedComponent:", <WrappedComponent />);
   const {
     intlPropName = "intl",
-    l10nPropName = "translate",
+    translatePropName = "translate",
     withRef = false
   } = options;
-  //WrappedComponent.propTypes['l10n'] = PropTypes.func;
+  //WrappedComponent.propTypes['translate'] = PropTypes.func;
 
   // make a class for the component InjectIntl and load it with the props intl and i10n
   class InjectIntl extends Component {
@@ -89,7 +89,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
         <WrappedComponent
           {...this.props}
           {...{ [intlPropName]: this.context.intl }}
-          {...{ [l10nPropName]: translation }}
+          {...{ [translatePropName]: translation }}
           ref={withRef ? "wrappedInstance" : null}
         />
       );

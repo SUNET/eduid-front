@@ -35,7 +35,7 @@ class EmailLinkSent extends Component {
 }
 
 EmailLinkSent.propTypes = {
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };

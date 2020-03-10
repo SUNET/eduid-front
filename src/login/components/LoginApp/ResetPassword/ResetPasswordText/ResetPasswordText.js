@@ -55,7 +55,7 @@ class ResetPasswordText extends Component {
 }
 
 ResetPasswordText.propTypes = {
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };

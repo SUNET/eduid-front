@@ -30,7 +30,7 @@ class EmailInUse extends Component {
 }
 
 EmailInUse.propTypes = {
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   reset_url: PropTypes.string
 };
 

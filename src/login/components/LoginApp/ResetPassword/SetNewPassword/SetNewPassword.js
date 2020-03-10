@@ -22,7 +22,7 @@ class SetNewPassword extends Component {
 }
 
 SetNewPassword.propTypes = {
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };

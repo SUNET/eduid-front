@@ -33,7 +33,7 @@ let EmailForm = props => {
           type="text"
           name="email"
           placeholder="example@example.com"
-          helpBlock={props.l10n("emails.input_help_text")}
+          helpBlock={props.translate("emails.input_help_text")}
         />
       </fieldset>
       <EduIDButton
@@ -42,7 +42,7 @@ let EmailForm = props => {
         disabled={!props.valid_email}
         onClick={props.handleAdd}
       >
-        {props.l10n("emails.button_add")}
+        {props.translate("emails.button_add")}
       </EduIDButton>
     </form>
   );

@@ -60,7 +60,7 @@ class Eidas extends Component {
               {this.props.translate("eidas.vetting_button_freja")}
             </div>
           </button>
-        </div>this.props.translate
+        </div>
         <div
           id="eidas-info-dialog"
           tabIndex="-1"
@@ -73,7 +73,7 @@ class Eidas extends Component {
             <ModalHeader>
               {this.props.translate("eidas.modal_title")}
             </ModalHeader>
-this.props.translate
+
             <ModalBody>
               {freja_instructions}
               <div id="freja-links">
@@ -89,7 +89,7 @@ this.props.translate
                 onClick={this.props.handleHideModal}
               >
                 {this.props.translate("cm.close")}
-              </Ethis.props.translate
+              </EduIDButton>
             </ModalFooter>
           </Modal>
         </div>

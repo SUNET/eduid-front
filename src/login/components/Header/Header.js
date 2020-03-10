@@ -38,7 +38,7 @@ class Header extends Component {
 
 Header.propTypes = {
   gotoSignin: PropTypes.func,
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   confirmed: PropTypes.string
 };
 

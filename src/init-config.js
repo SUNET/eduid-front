@@ -7,7 +7,7 @@ const langs = [
 const messages = {};
 
 // langs.forEach(lang => {
-//   messages[lang[0]] = require("../i18n/l10n/" + lang[0]);
+//   messages[lang[0]] = require("../i18n/translate/" + lang[0]);
 // });
 
 langs.forEach(lang => {

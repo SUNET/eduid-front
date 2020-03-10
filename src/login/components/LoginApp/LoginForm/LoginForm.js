@@ -77,7 +77,7 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };

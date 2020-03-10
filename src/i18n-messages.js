@@ -12,7 +12,10 @@ import {
   FormattedHTMLMessage
 } from "react-intl";
 
-import { formattedMessages, unformattedMessages } from "./login/translation/messageIndex";
+import {
+  formattedMessages,
+  unformattedMessages
+} from "./login/translation/messageIndex";
 
 // import msgs from "./login/translation/messageIndex"
 
@@ -63,7 +66,10 @@ export default function i18n(WrappedComponent, options = {}) {
             return formattedMessages[msgid];
           }
         } else if (unformattedMessages[msgid] !== undefined) {
-          return this.context.intl.formatMessage(unformattedMessages[msgid], values);
+          return this.context.intl.formatMessage(
+            unformattedMessages[msgid],
+            values
+          );
         } else {
           return "UNKNOWN MESSAGE ID (" + msgid + ")";
         }
@@ -84,7 +90,7 @@ export default function i18n(WrappedComponent, options = {}) {
 
   InjectIntl.contextTypes = {
     intl: intlShape,
-    l10n: PropTypes.func
+    translate: PropTypes.func
   };
 
   InjectIntl.WrappedComponent = WrappedComponent;
@@ -1833,7 +1839,7 @@ export default function i18n(WrappedComponent, options = {}) {
 //   "security.second-factor": (
 //     <FormattedMessage
 //       id="security.second-factor"
-//       defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are 
+//       defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are
 //     the owner of your eduID.`}
 //     />
 //   ),
@@ -2157,7 +2163,7 @@ export default function i18n(WrappedComponent, options = {}) {
 //   "emails.long_description": (
 //     <FormattedMessage
 //       id="emails.long_description"
-//       defaultMessage={`You can connect one or more email addresses with your eduID 
+//       defaultMessage={`You can connect one or more email addresses with your eduID
 //           account and select one to be your primary email address.`}
 //     />
 //   ),

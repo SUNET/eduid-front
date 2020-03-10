@@ -68,7 +68,7 @@ Notifications.propTypes = {
   errors: PropTypes.array,
   debug: PropTypes.bool,
   handleRMNotification: PropTypes.func,
-  l10n: PropTypes.func
+  translate: PropTypes.func
 };
 
 export default Notifications;

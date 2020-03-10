@@ -51,7 +51,7 @@ class GetEmailLink extends Component {
 }
 
 GetEmailLink.propTypes = {
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func
 };

@@ -37,7 +37,7 @@ let EmailForm = props => (
         componentClass="input"
         id="email-input"
         component={TextInput}
-        l10n={props.l10n}
+        translate={props.translate}
         placeholder="example@email.com"
       />
     </fieldset>
@@ -47,9 +47,9 @@ let EmailForm = props => (
       disabled={props.invalid}
       onClick={props.handleEmail}
     >
-      {props.l10n("email.sign-up-email")}
+      {props.translate("email.sign-up-email")}
     </EduIDButton>
-    <FormFeedback>{props.touched && props.l10n(error)}</FormFeedback>
+    <FormFeedback>{props.touched && props.translate(error)}</FormFeedback>
   </div>
 );
 
@@ -100,7 +100,7 @@ class Email extends Component {
 Email.propTypes = {
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
-  l10n: PropTypes.func,
+  translate: PropTypes.func,
   handleAccept: PropTypes.func,
   handleReject: PropTypes.func
 };
