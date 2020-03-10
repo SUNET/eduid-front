@@ -30,7 +30,7 @@ import {
 
 import { addLocaleData } from "react-intl";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("Security Actions", () => {

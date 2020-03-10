@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import EmailDisplay from "containers/EmailDisplay";
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 // my job is to: control the display of the email address registered at signup in the profile

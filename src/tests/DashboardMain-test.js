@@ -10,11 +10,11 @@ import Footer from "containers/Footer";
 import MainContainer from "containers/DashboardMain";
 import Notifications from "containers/Notifications";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 const fakeStore = state => ({
-  default: () => { },
+  default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
   getState: () => ({ ...state })
@@ -89,5 +89,4 @@ describe("Main Component", () => {
     const notifications = wrapper.find(Notifications);
     expect(notifications.exists()).toEqual(true);
   });
-
 });

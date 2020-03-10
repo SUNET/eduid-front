@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import AddNin from "containers/AddNin";
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: displays the nin input form or the added nin in the vetting process.

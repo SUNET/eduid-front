@@ -17,7 +17,7 @@ import {
   deleteAccount
 } from "sagas/Security";
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: allows users to delete their account in settings.
@@ -286,14 +286,14 @@ describe("Logout modal redux functionality", () => {
   });
   it("POST_DELETE_ACCOUNT action retuns the current state", () => {
     const mockState = {
-      confirming_deletion: false,
+      confirming_deletion: false
     };
     expect(
       securityReducer(mockState, {
         type: actions.POST_DELETE_ACCOUNT
       })
     ).toEqual({
-      confirming_deletion: false,
+      confirming_deletion: false
     });
   });
 

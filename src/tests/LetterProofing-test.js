@@ -23,7 +23,7 @@ import {
   fetchLetterCode
 } from "../sagas/LetterProofing";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("Letter proofing Actions", () => {
@@ -138,7 +138,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      ...mockState,
+      ...mockState
     });
   });
 
@@ -181,7 +181,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      ...mockState,
+      ...mockState
     });
   });
 });
@@ -190,7 +190,7 @@ const fakeState = {
   letter_proofing: {
     message: "",
     errMsg: "",
-    letter_sent: "",
+    letter_sent: ""
   },
   config: { LETTER_PROOFING_URL: "http://localhost/letter" },
   nins: {
@@ -215,7 +215,7 @@ function setupComponent(store) {
     handleLetterProofing: mock.fn(),
     sendConfirmationLetter: mock.fn(),
     handleConfirmationLetter: mock.fn(),
-    handleStopConfirmationLetter: mock.fn(),
+    handleStopConfirmationLetter: mock.fn()
   };
   const wrapper = mount(
     <Provider store={store}>
@@ -248,8 +248,7 @@ describe("LetterProofing Container", () => {
   beforeEach(() => {
     const store = fakeStore(fakeState);
 
-    mockProps = {
-    };
+    mockProps = {};
 
     wrapper = mount(
       <Provider store={store}>

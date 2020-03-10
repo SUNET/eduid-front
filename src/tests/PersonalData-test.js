@@ -24,7 +24,7 @@ import { put, call, select } from "redux-saga/effects";
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("Personal Data Actions", () => {
@@ -132,7 +132,7 @@ describe("Reducers", () => {
     ).toEqual({
       data: {
         surname: "Surname"
-      },
+      }
     });
   });
 
@@ -200,7 +200,7 @@ describe("Reducers", () => {
       data: {
         surname: "Surname",
         eppn: "dummy-eppn"
-      },
+      }
     });
   });
 

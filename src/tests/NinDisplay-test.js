@@ -7,7 +7,7 @@ import { addLocaleData, IntlProvider } from "react-intl";
 import { history } from "components/DashboardMain";
 import NinDisplay from "containers/NinDisplay";
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 history.push("/verify-identity");
