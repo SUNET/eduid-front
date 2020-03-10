@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import i18n from "../login/translation/InjectIntl_HOC_factory";
+import i18n from "../../src/login/translation/InjectIntl_HOC_factory";
 import { postAction, postActionFail, retry } from "actions/ActionWrapper";
 import ActionWrapperContainer from "containers/ActionWrapper";
 
