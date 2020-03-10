@@ -23,10 +23,10 @@ class Profile extends Component {
       profileSection = [<VerifyIdentity key="0" {...this.props} />];
     } else {
       accountDetails = [
-        <NameDisplay key="0" {...this.props} />,
+        <NameDisplay key="0" />,
         <NinDisplay key="1" {...this.props} />,
-        <PhoneDisplay key="2" {...this.props} />,
-        <EmailDisplay key="3" {...this.props} />
+        <PhoneDisplay key="2" />,
+        <EmailDisplay key="3" />
       ];
     }
 
