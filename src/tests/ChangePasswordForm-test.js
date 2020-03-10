@@ -7,7 +7,7 @@ import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import ChangePasswordForm from "components/ChangePasswordForm";
 
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 
 describe("ChangePasswordForm Component", () => {
   it("The component does not render 'false' or 'null'", () => {

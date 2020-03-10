@@ -6,7 +6,7 @@ import { Provider } from "react-intl-redux";
 import NinForm from "components/NinForm";
 
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 
 describe("NinForm Component", () => {
   it("The component does not render 'false' or 'null'", () => {

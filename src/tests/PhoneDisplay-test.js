@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import PhoneDisplay from "containers/PhoneDisplay";
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 // my job is to: control the display of the phone number in the profile registered by user in settings
@@ -171,7 +171,7 @@ describe("PhoneDisplay component, when phone number is saved", () => {
 
 describe("PhoneDisplay component, when phone number is saved", () => {
   const fakeStore = state => ({
-    default: () => { },
+    default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
     getState: () => ({ ...state })

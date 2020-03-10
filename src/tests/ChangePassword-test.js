@@ -3,7 +3,7 @@ import React from "react";
 import { shallow, mount, render } from "enzyme";
 import { put, select, call } from "redux-saga/effects";
 import expect, { createSpy, spyOn, isSpy } from "expect";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import ChangePassword from "components/ChangePassword";
 import DeleteModal from "components/DeleteModal";
 import ChangePasswordContainer from "containers/ChangePassword";
@@ -22,7 +22,7 @@ import {
 
 import { IntlProvider, addLocaleData } from "react-intl";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("ChangePassword Actions", () => {
@@ -414,7 +414,7 @@ describe("ChangePassword Container", () => {
   });
 
   it("Renders test", () => {
-     expect(chooseCustom).toEqual(false);
+    expect(chooseCustom).toEqual(false);
   });
 
   /* TODO - fix these tests

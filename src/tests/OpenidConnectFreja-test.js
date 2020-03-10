@@ -13,7 +13,7 @@ import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 /**

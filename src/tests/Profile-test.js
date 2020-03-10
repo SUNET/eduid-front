@@ -11,7 +11,7 @@ import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";
 import VerifyIdentity from "containers/VerifyIdentity";
 const mock = require("jest-mock");
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: populates the profile landing page with user data.

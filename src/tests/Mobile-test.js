@@ -26,7 +26,7 @@ import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 import fetchMock from "fetch-mock";
 
-const messages = require("../../i18n/l10n/en");
+const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("Mobile Actions", () => {
@@ -42,7 +42,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.postMobileFail(err)).toEqual(expectedAction);
   });
@@ -78,7 +78,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.START_RESEND_MOBILE_CODE_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.resendMobileCodeFail(err)).toEqual(expectedAction);
   });
@@ -101,7 +101,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_PHONE_VERIFY_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.startVerifyFail(err)).toEqual(expectedAction);
   });
@@ -123,7 +123,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_REMOVE_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.startRemoveFail(err)).toEqual(expectedAction);
   });
@@ -145,7 +145,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_PRIMARY_FAIL,
       error: true,
-      payload: {message: err}
+      payload: { message: err }
     };
     expect(actions.makePrimaryFail(err)).toEqual(expectedAction);
   });
