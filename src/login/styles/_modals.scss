@@ -79,12 +79,12 @@ h5.modal-title {
 }
 
 /* styles for delete account modal text */
-#delete-account {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0;
-  margin-bottom: 30px;
-}
+// #delete-account {
+//   display: flex;
+//   flex-direction: column;
+//   margin-top: 0;
+//   margin-bottom: 30px;
+// }
 
 #delete-account-modal label {
   margin-bottom: 30px;
@@ -166,5 +166,20 @@ p.modal-text {
   }
   .modal-dialog {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 414px) {
+  button.btn-primary,
+  button.btn-secondary {
+    width: 100%;
+  }
+  button.btn.btn-link,
+  #delete-button,
+  #security-change-button,
+  #add-more-button {
+    width: auto;
+    padding: 0;
+    // background: yellow;
   }
 }

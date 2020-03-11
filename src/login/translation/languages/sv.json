@@ -301,7 +301,7 @@
   "security.add_u2f_token": "Lägg till säkerhetsnyckel",
   "security.add_webauthn_token_device": "Registrera den här enheten som en säkerhetsnyckel",
   "security.add_webauthn_token_key": "Lägg till en säkerhetsnyckel",
-  "security.button_delete_account": "Ta bort mitt eduID",
+  "security.button_delete_account": "Radera eduID",
   "security.creation_date": "Skapat den",
   "security.credential": "Lösenord",
   "security.description": "Namn",

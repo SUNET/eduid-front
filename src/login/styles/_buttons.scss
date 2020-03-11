@@ -122,9 +122,56 @@ button.cancel-button {
   }
 }
 
-// @media (max-width: 823px) {
-//   button,
-//   button.btn {
-//     font-size: 1rem;
-//   }
-// }
+/* styles for REMOVE icons */
+// ----- buttons that remove data ----  //
+// button.btn.btn-sm,
+button.btn.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 1px transparent;
+  box-shadow: none;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: transparent;
+    border: solid 1px #ff500d;
+  }
+}
+
+/* styles for DELETE button */
+// --- button that deletes user --- //
+button.btn.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 1px transparent;
+  box-shadow: none;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: transparent;
+    border: solid 1px #ff500d;
+  }
+}
+
+/* styles for links that are also buttons */
+// -----  ----  //
+button.btn-link {
+  background-color: transparent;
+  color: $orange-highlight;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    color: $orange-highlight;
+  }
+}
+

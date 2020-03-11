@@ -66,6 +66,17 @@ h1.banner-tagline {
   margin: 0 auto;
 }
 
+#welcome h1 {
+  margin-bottom: 0px;
+}
+
+#welcome .email-address {
+  font-size: 36px;
+  margin-top: 0;
+  font-weight: 700;
+  word-break: break-all;
+}
+
 // #welcome p {
 //   margin-top: 38px;
 //   margin-bottom: 0;
@@ -436,6 +447,11 @@ a#go-to-mobiles-tab {
   #welcome {
     padding: 3rem 20px 2rem 0;
     width: calc(100% - 40px);
+  }
+  #welcome .email-address {
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 1rem;
   }
   #profile-section {
     width: 100%;

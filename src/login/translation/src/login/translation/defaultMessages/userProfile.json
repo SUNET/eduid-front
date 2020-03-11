@@ -857,7 +857,7 @@
   },
   {
     "id": "security.button_delete_account",
-    "defaultMessage": "I want to delete my eduID"
+    "defaultMessage": "Delete eduID"
   },
   {
     "id": "settings.modal_delete_title",
