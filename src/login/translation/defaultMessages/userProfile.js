@@ -1284,7 +1284,7 @@ export const userData = {
   "security.add_webauthn_token_key": (
     <FormattedMessage
       id="security.add_webauthn_token_key"
-      defaultMessage={`Add a second layer of security`}
+      defaultMessage={`Add security key`}
     />
   ),
 
@@ -1424,7 +1424,7 @@ export const userData = {
   "orc.button_connect": (
     <FormattedMessage
       id="orc.button_connect"
-      defaultMessage={`Add your ORCID account`}
+      defaultMessage={`Add ORCID account`}
     />
   ),
 

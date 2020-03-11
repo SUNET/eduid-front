@@ -745,7 +745,7 @@
   },
   {
     "id": "security.add_webauthn_token_key",
-    "defaultMessage": "Add a second layer of security"
+    "defaultMessage": "Add security key"
   },
   {
     "id": "security.add_webauthn_token_device",
@@ -825,7 +825,7 @@
   },
   {
     "id": "orc.button_connect",
-    "defaultMessage": "Add your ORCID account"
+    "defaultMessage": "Add ORCID account"
   },
   {
     "id": "accountId.main_title",
