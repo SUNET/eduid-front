@@ -516,42 +516,42 @@ ul.nav.navbar-nav li a {
 /* Modals
 -------------------------------------------------- */
 
-// .modal {
-//   display: flex !important;
-//   justify-content: center;
-// }
+.modal {
+  display: flex !important;
+  justify-content: center;
+}
 
-// .modal-header {
-//   padding: 30px;
-// }
+.modal-header {
+  padding: 30px;
+}
 
-// h5.modal-title {
-//   font-family: "Akkurat";
-//   line-height: 1.2;
-//   font-weight: 700;
-//   font-size: 1.25rem;
-// }
+h5.modal-title {
+  font-family: "Akkurat";
+  line-height: 1.2;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
 
-// .modal-content {
-//   background-color: white;
-//   border-radius: 20px;
-// }
+.modal-content {
+  background-color: white;
+  border-radius: 20px;
+}
 
-// .modal-body {
-//   background-color: #f4f4f4;
-//   padding: 30px;
-//   display: flex;
-//   flex-direction: column;
-//   color: #7c7c7c;
-// }
+.modal-body {
+  background-color: #f4f4f4;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  color: #7c7c7c;
+}
 
-// .modal-dialog {
-//   margin-top: 70px;
-//   background-color: white;
-//   border-radius: 20px;
-//   max-width: 50vw;
-//   margin: auto;
-// }
+.modal-dialog {
+  margin-top: 70px;
+  background-color: white;
+  border-radius: 20px;
+  max-width: 50vw;
+  margin: auto;
+}
 
 // #confirm-user-data-modal,
 // #register-modal,
@@ -609,10 +609,10 @@ ul.nav.navbar-nav li a {
 
 /* styles for confirm button in delete account modal */
 
-// .modal-footer {
-//   display: flex;
-//   justify-content: center;
-// }
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
 
 /* styles for tables displaying userinfo on settings page */
 table {
@@ -746,60 +746,66 @@ svg.remove:hover {
   }
 }
 
-// @media (max-width: 823px) {
-//   // ---- modals ----- //
-//   #register-modal,
-//   #delete-account-modal,
-//   #eidas-modal,
-//   .modal-dialog {
-//     width: calc(100% - 40px);
-//     margin: auto 20px;
-//   }
-//   .modal-header {
-//     padding: 20px;
-//   }
+@media (max-width: 823px) {
+  // ---- modals ----- //
+  #register-modal,
+  #delete-account-modal,
+  #eidas-modal,
+  .modal-dialog {
+    width: calc(100% - 40px);
+    margin: auto 20px;
+  }
+  .modal-header {
+    padding: 20px;
+  }
 
-//   h5.modal-title {
-//     font-size: 1rem;
-//   }
+  h5.modal-title {
+    font-size: 1rem;
+  }
 
-//   .modal-body {
-//     padding: 20px;
-//   }
+  .modal-body {
+    padding: 20px;
+  }
 
-//   .modal-footer {
-//     padding: 0;
-//   }
+  .modal-footer {
+    padding: 0;
+  }
 
-//   .resend-code {
-//     font-size: 0.9rem;
-//   }
+  .resend-code {
+    font-size: 0.9rem;
+  }
 
-//   .form-control {
-//     height: 48px;
-//     font-size: 1.25rem;
-//   }
+  .form-control {
+    height: 48px;
+    font-size: 1.25rem;
+  }
 
-//   // #delete-account {
-//   //   font-size: 1rem;
-//   //   line-height: 1.2;
-//   //   margin-bottom: 20px;
-//   // }
+  p.modal-text {
+    font-size: 1rem;
+    line-height: 1.2;
+    // background: yellow;
+    // margin-bottom: 20px;
+  }
+  // #delete-account {
+  //   font-size: 1rem;
+  //   line-height: 1.2;
+  //   margin-bottom: 20px;
+  // }
 
-//   #delete-account-modal label {
-//     margin-bottom: 20px;
-//   }
+  // #delete-account-modal label {
+  //   margin-bottom: 20px;
+  // }
 
-//   .intro h4 {
-//     font-size: 1.5rem;
-//     line-height: 34px;
-//     margin-top: 34px;
-//     font-weight: 700;
-//   }
-//   p {
-//     margin-top: 10px;
-//   }
-// }
+  // .intro h4 {
+  //   font-size: 1.5rem;
+  //   line-height: 34px;
+  //   margin-top: 34px;
+  //   font-weight: 700;
+  // }
+  // p {
+  //   margin-top: 10px;
+  // }
+}
 
 @media (max-width: 768px) {
   h1 {
@@ -811,10 +817,10 @@ svg.remove:hover {
     line-height: 30px;
     margin-top: 10px;
   }
-  
-  // .modal-dialog {
-  //   max-width: calc(100% - 40px);
-  // }
+
+  .modal-dialog {
+    max-width: calc(100% - 40px);
+  }
 
   // #register-modal {
   //   width: calc(100% - 40px);
