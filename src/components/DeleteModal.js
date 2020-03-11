@@ -6,6 +6,9 @@ import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
+import ButtonModal from "../login/components/Buttons/ButtonModal";
+
+import "../login/styles/index.scss";
 
 class DeleteModal extends Component {
   render() {
@@ -20,7 +23,6 @@ class DeleteModal extends Component {
       >
         <Modal isOpen={this.props.showModal} id="delete-account-modal">
           <ModalHeader>{this.props.title}</ModalHeader>
-
           <ModalBody>
             <p id="delete-account">
               {this.props.translate("delete.modal_info")}
@@ -38,12 +40,19 @@ class DeleteModal extends Component {
             <p>{this.props.translate("delete.modal_tip")}</p>
           </ModalBody>
           <ModalFooter>
-            <EduIDButton
+            <ButtonModal
+              // id="close-modal"
               className="modal-button cancel-button"
               onClick={this.props.closeModal}
             >
               {this.props.translate("cm.cancel")}
-            </EduIDButton>
+            </ButtonModal>
+            {/* <EduIDButton
+              className="modal-button cancel-button"
+              onClick={this.props.closeModal}
+            >
+              {this.props.translate("cm.cancel")}
+            </EduIDButton> */}
           </ModalFooter>
         </Modal>
       </div>
