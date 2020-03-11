@@ -19,6 +19,7 @@ button.btn {
   .disabled {
     background-color: $dark-gray;
     border: none;
+    color: #f4f4f4;
   }
 }
 
@@ -141,24 +142,6 @@ button.btn.icon-button {
   }
 }
 
-/* styles for DELETE button */
-// --- button that deletes user --- //
-button.btn.icon-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: solid 1px transparent;
-  box-shadow: none;
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: transparent;
-    border: solid 1px #ff500d;
-  }
-}
-
 /* styles for links that are also buttons */
 // -----  ----  //
 button.btn-link {
@@ -175,3 +158,17 @@ button.btn-link {
   }
 }
 
+@media (max-width: 414px) {
+  button.btn.btn-primary,
+  button.btn.btn-secondary {
+    width: 100%;
+  }
+  button.btn.btn-link,
+  #delete-button,
+  #security-change-button,
+  #add-more-button {
+    width: auto;
+    padding: 0;
+    // background: yellow;
+  }
+}

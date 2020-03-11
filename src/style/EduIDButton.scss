@@ -48,6 +48,7 @@ button.btn.settings-button {
   &:disabled {
     background-color: $dark-gray;
     border-color: $dark-gray;
+    color: #f4f4f4;
   }
 }
 
@@ -249,17 +250,17 @@ button.eduid-button.btn-warning {
   }
 }
 
-// @media (max-width: 414px) {
-//   button.btn-primary,
-//   button.btn-secondary {
-//     width: 100%;
-//   }
-//   button.btn.btn-link,
-//   #delete-button,
-//   #security-change-button,
-//   #add-more-button {
-//     width: auto;
-//     padding: 0;
-//     // background: yellow;
-//   }
-// }
+@media (max-width: 414px) {
+  button.btn-primary,
+  button.btn-secondary {
+    width: 100%;
+  }
+  button.btn.btn-link,
+  #delete-button,
+  #security-change-button,
+  #add-more-button {
+    width: auto;
+    padding: 0;
+    // background: yellow;
+  }
+}
