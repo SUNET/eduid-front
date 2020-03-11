@@ -746,60 +746,60 @@ svg.remove:hover {
   }
 }
 
-@media (max-width: 823px) {
-  // ---- modals ----- //
-  #register-modal,
-  #delete-account-modal,
-  #eidas-modal,
-  .modal-dialog {
-    width: calc(100% - 40px);
-    margin: auto 20px;
-  }
-  .modal-header {
-    padding: 20px;
-  }
+// @media (max-width: 823px) {
+//   // ---- modals ----- //
+//   #register-modal,
+//   #delete-account-modal,
+//   #eidas-modal,
+//   .modal-dialog {
+//     width: calc(100% - 40px);
+//     margin: auto 20px;
+//   }
+//   .modal-header {
+//     padding: 20px;
+//   }
 
-  h5.modal-title {
-    font-size: 1rem;
-  }
+//   h5.modal-title {
+//     font-size: 1rem;
+//   }
 
-  .modal-body {
-    padding: 20px;
-  }
+//   .modal-body {
+//     padding: 20px;
+//   }
 
-  .modal-footer {
-    padding: 0;
-  }
+//   .modal-footer {
+//     padding: 0;
+//   }
 
-  .resend-code {
-    font-size: 0.9rem;
-  }
+//   .resend-code {
+//     font-size: 0.9rem;
+//   }
 
-  .form-control {
-    height: 48px;
-    font-size: 1.25rem;
-  }
+//   .form-control {
+//     height: 48px;
+//     font-size: 1.25rem;
+//   }
 
-  #delete-account {
-    font-size: 1rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-  }
+//   // #delete-account {
+//   //   font-size: 1rem;
+//   //   line-height: 1.2;
+//   //   margin-bottom: 20px;
+//   // }
 
-  #delete-account-modal label {
-    margin-bottom: 20px;
-  }
+//   #delete-account-modal label {
+//     margin-bottom: 20px;
+//   }
 
-  .intro h4 {
-    font-size: 1.5rem;
-    line-height: 34px;
-    margin-top: 34px;
-    font-weight: 700;
-  }
-  p {
-    margin-top: 10px;
-  }
-}
+//   .intro h4 {
+//     font-size: 1.5rem;
+//     line-height: 34px;
+//     margin-top: 34px;
+//     font-weight: 700;
+//   }
+//   p {
+//     margin-top: 10px;
+//   }
+// }
 
 @media (max-width: 768px) {
   h1 {
@@ -811,9 +811,9 @@ svg.remove:hover {
     line-height: 30px;
     margin-top: 10px;
   }
-  .modal-dialog {
-    max-width: calc(100% - 40px);
-  }
+  // .modal-dialog {
+  //   max-width: calc(100% - 40px);
+  // }
 
   // #register-modal {
   //   width: calc(100% - 40px);

@@ -17,9 +17,11 @@ class ButtonModal extends Component {
 }
 
 ButtonModal.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  id: PropTypes.string,
   className: PropTypes.string.isRequired,
-  id: PropTypes.string
+  onClick: PropTypes.func.isRequired,
+
+  
 };
 
 export default ButtonModal;

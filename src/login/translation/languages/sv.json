@@ -67,7 +67,7 @@
   "dashboard_nav.back": "Tillbaka",
   "dashboard_nav.profile": "Profil",
   "dashboard_nav.settings": "Inställningar",
-  "delete.confirm_button": "Ta bort all min information",
+  "delete.confirm_button": "Radera mitt eduID",
   "delete.modal_info": "När du tar bort ditt eduID kommer all information du sparat rensas permanent.",
   "delete.modal_tip": "Om du väljer att ta bort ditt eduID kommer du att behöva logga in igen en sista gång.",
   "eidas.authn_context_mismatch": "Mottog fel representation av tillitsnivå",

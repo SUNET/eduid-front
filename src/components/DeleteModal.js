@@ -24,12 +24,11 @@ class DeleteModal extends Component {
         <Modal isOpen={this.props.showModal} id="delete-account-modal">
           <ModalHeader>{this.props.title}</ModalHeader>
           <ModalBody>
-            <p id="delete-account">
+            <p className="modal-text">
               {this.props.translate("delete.modal_info")}
             </p>
             <EduIDButton
               className="settings-button delete-button"
-              id="confirm-delete-account-button"
               ref={button => {
                 this.deleteButton = button;
               }}
@@ -37,7 +36,9 @@ class DeleteModal extends Component {
             >
               {this.props.translate("delete.confirm_button")}
             </EduIDButton>
-            <p>{this.props.translate("delete.modal_tip")}</p>
+            <p className="modal-text">
+              {this.props.translate("delete.modal_tip")}
+            </p>
           </ModalBody>
           <ModalFooter>
             <ButtonModal
