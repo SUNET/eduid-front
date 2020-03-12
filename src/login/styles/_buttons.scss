@@ -19,6 +19,7 @@ button.btn {
   .disabled {
     background-color: $dark-gray;
     border: none;
+    color: #f4f4f4;
   }
 }
 
@@ -82,4 +83,92 @@ button.close {
 }
 button.close:hover {
   transform: scale(1.2);
+}
+
+/* MODALS */
+
+button.btn.modal-button {
+  box-shadow: none;
+  border: solid 1px transparent;
+  background-color: transparent;
+  margin: 0.5rem 1rem;
+}
+
+/* color for OK and ACCEPT buttons in modals */
+// ----- buttons with actions in modals ----  //
+button.ok-button {
+  color: $orange-highlight;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: $orange-opaque;
+    border: solid 1px $orange-highlight;
+    color: $orange-highlight;
+  }
+}
+
+/* color for CANCEL and CLOSE buttons in modals */
+// ----- buttons that close modals ----  //
+button.cancel-button {
+  color: #161616;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    color: #7c7c7c;
+    border: #7c7c7c solid 1px;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+/* styles for REMOVE icons */
+// ----- buttons that remove data ----  //
+// button.btn.btn-sm,
+button.btn.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: solid 1px transparent;
+  box-shadow: none;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: transparent;
+    border: solid 1px #ff500d;
+  }
+}
+
+/* styles for links that are also buttons */
+// -----  ----  //
+button.btn-link {
+  background-color: transparent;
+  color: $orange-highlight;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    color: $orange-highlight;
+  }
+}
+
+@media (max-width: 414px) {
+  button.btn.btn-primary,
+  button.btn.btn-secondary {
+    width: 100%;
+  }
+  button.btn.btn-link,
+  #delete-button,
+  #security-change-button,
+  #add-more-button {
+    width: auto;
+    padding: 0;
+    // background: yellow;
+  }
 }

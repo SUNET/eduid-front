@@ -142,7 +142,7 @@ export const changePassword = {
   "settings.change_password": (
     <FormattedMessage
       id="settings.change_password"
-      defaultMessage={`I want to change my password`}
+      defaultMessage={`Change password`}
     />
   ),
 

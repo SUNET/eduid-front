@@ -553,13 +553,13 @@ h5.modal-title {
   margin: auto;
 }
 
-#confirm-user-data-modal,
-#register-modal,
-#eidas-modal,
-#delete-account-modal {
-  width: 70vw;
-  margin: auto;
-}
+// #confirm-user-data-modal,
+// #register-modal,
+// #eidas-modal,
+// #delete-account-modal {
+//   width: 70vw;
+//   margin: auto;
+// }
 
 #freja-instructions,
 #freja-instructions label {
@@ -591,21 +591,21 @@ h5.modal-title {
 }
 
 /* styles for delete account modal text */
-#delete-account {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0;
-  margin-bottom: 30px;
-}
+// #delete-account {
+//   display: flex;
+//   flex-direction: column;
+//   margin-top: 0;
+//   margin-bottom: 30px;
+// }
 
-#delete-account-modal label {
-  margin-bottom: 30px;
-  color: #7c7c7c;
-  font-size: 1rem;
-  text-transform: none;
-  line-height: 1.5;
-  font-weight: 700;
-}
+// #delete-account-modal label {
+//   margin-bottom: 30px;
+//   color: #7c7c7c;
+//   font-size: 1rem;
+//   text-transform: none;
+//   line-height: 1.5;
+//   font-weight: 700;
+// }
 
 /* styles for confirm button in delete account modal */
 
@@ -780,25 +780,31 @@ svg.remove:hover {
     font-size: 1.25rem;
   }
 
-  #delete-account {
+  p.modal-text {
     font-size: 1rem;
     line-height: 1.2;
-    margin-bottom: 20px;
+    // background: yellow;
+    // margin-bottom: 20px;
   }
+  // #delete-account {
+  //   font-size: 1rem;
+  //   line-height: 1.2;
+  //   margin-bottom: 20px;
+  // }
 
-  #delete-account-modal label {
-    margin-bottom: 20px;
-  }
+  // #delete-account-modal label {
+  //   margin-bottom: 20px;
+  // }
 
-  .intro h4 {
-    font-size: 1.5rem;
-    line-height: 34px;
-    margin-top: 34px;
-    font-weight: 700;
-  }
-  p {
-    margin-top: 10px;
-  }
+  // .intro h4 {
+  //   font-size: 1.5rem;
+  //   line-height: 34px;
+  //   margin-top: 34px;
+  //   font-weight: 700;
+  // }
+  // p {
+  //   margin-top: 10px;
+  // }
 }
 
 @media (max-width: 768px) {
@@ -811,6 +817,7 @@ svg.remove:hover {
     line-height: 30px;
     margin-top: 10px;
   }
+
   .modal-dialog {
     max-width: calc(100% - 40px);
   }

@@ -185,8 +185,10 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
   it("Renders DELETE ACCOUNT and CANCEL EduIDButtons in modal", () => {
     const { wrapper } = setupComponent();
     const modal = wrapper.find(DeleteModal);
-    const button = modal.find("EduIDButton");
-    expect(button.length).toEqual(2);
+    const primaryButton = modal.find("EduIDButton");
+    const modalButton = modal.find("ButtonModal");
+    expect(primaryButton.length).toEqual(1);
+    expect(modalButton.length).toEqual(1);
   });
 });
 

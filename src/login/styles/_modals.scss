@@ -7,7 +7,7 @@
 }
 
 .modal-header {
-  padding: 30px;
+  padding: 2rem;
 }
 
 h5.modal-title {
@@ -28,6 +28,9 @@ h5.modal-title {
   display: flex;
   flex-direction: column;
   color: #7c7c7c;
+  & button.btn.settings-button {
+    margin: 0 0 1rem 0;
+  }
 }
 
 .modal-dialog {
@@ -76,12 +79,12 @@ h5.modal-title {
 }
 
 /* styles for delete account modal text */
-#delete-account {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0;
-  margin-bottom: 30px;
-}
+// #delete-account {
+//   display: flex;
+//   flex-direction: column;
+//   margin-top: 0;
+//   margin-bottom: 30px;
+// }
 
 #delete-account-modal label {
   margin-bottom: 30px;
@@ -99,6 +102,12 @@ h5.modal-title {
   justify-content: center;
 }
 
+p.modal-text {
+  // display: flex;
+  // flex-direction: column;
+  margin-top: 0;
+  // margin-bottom: 30px;
+}
 
 @media (max-width: 823px) {
   // ---- modals ----- //
@@ -118,7 +127,7 @@ h5.modal-title {
   }
 
   .modal-body {
-    padding: 20px;
+    padding: 1rem 1rem 0;
   }
 
   .modal-footer {
@@ -134,10 +143,11 @@ h5.modal-title {
     font-size: 1.25rem;
   }
 
-  #delete-account {
+  p.modal-text {
     font-size: 1rem;
     line-height: 1.2;
-    margin-bottom: 20px;
+    // background: yellow;
+    // margin-bottom: 20px;
   }
 
   #delete-account-modal label {
@@ -159,5 +169,3 @@ h5.modal-title {
     max-width: 100%;
   }
 }
-
-

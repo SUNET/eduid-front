@@ -1284,7 +1284,7 @@ export const userData = {
   "security.add_webauthn_token_key": (
     <FormattedMessage
       id="security.add_webauthn_token_key"
-      defaultMessage={`Add a second layer of security`}
+      defaultMessage={`Add security key`}
     />
   ),
 
@@ -1424,7 +1424,7 @@ export const userData = {
   "orc.button_connect": (
     <FormattedMessage
       id="orc.button_connect"
-      defaultMessage={`Add your ORCID account`}
+      defaultMessage={`Add ORCID account`}
     />
   ),
 
@@ -1480,7 +1480,7 @@ export const userData = {
   "security.button_delete_account": (
     <FormattedMessage
       id="security.button_delete_account"
-      defaultMessage={`I want to delete my eduID`}
+      defaultMessage={`Delete eduID`}
     />
   ),
 
@@ -1508,7 +1508,7 @@ export const userData = {
   "delete.confirm_button": (
     <FormattedMessage
       id="delete.confirm_button"
-      defaultMessage={`I want to delete eduID`}
+      defaultMessage={`Delete my eduID`}
     />
   )
 };

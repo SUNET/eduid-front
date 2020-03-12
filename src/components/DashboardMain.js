@@ -12,7 +12,6 @@ import SettingsComponent from "./Settings";
 import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
 
-
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
 import "style/DashboardMain.scss";
@@ -66,9 +65,9 @@ class Main extends Component {
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
             <div id="welcome">
-              <h1>
-                {this.props.translate("dashboard.welcome")} {this.props.email}
-              </h1>
+              <h1>{this.props.translate("dashboard.welcome")} </h1>
+              <div className="email-address">{this.props.email}</div>
+
               <Link id="profile-prompt-link" to={promptLink}>
                 <h2 className={styling}>{welcomeGreeting}</h2>
               </Link>
@@ -85,7 +84,10 @@ class Main extends Component {
                 path="/profile/verify-identity/"
                 render={props => <Profile {...props} />}
               />
-              <Route path="/profile/chpass/" component={ChangePasswordContainer} />
+              <Route
+                path="/profile/chpass/"
+                component={ChangePasswordContainer}
+              />
               {/* Redirects for old paths */}
               <Route
                 exact

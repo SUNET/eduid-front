@@ -745,7 +745,7 @@
   },
   {
     "id": "security.add_webauthn_token_key",
-    "defaultMessage": "Add a second layer of security"
+    "defaultMessage": "Add security key"
   },
   {
     "id": "security.add_webauthn_token_device",
@@ -825,7 +825,7 @@
   },
   {
     "id": "orc.button_connect",
-    "defaultMessage": "Add your ORCID account"
+    "defaultMessage": "Add ORCID account"
   },
   {
     "id": "accountId.main_title",
@@ -857,7 +857,7 @@
   },
   {
     "id": "security.button_delete_account",
-    "defaultMessage": "I want to delete my eduID"
+    "defaultMessage": "Delete eduID"
   },
   {
     "id": "settings.modal_delete_title",
@@ -873,6 +873,6 @@
   },
   {
     "id": "delete.confirm_button",
-    "defaultMessage": "I want to delete eduID"
+    "defaultMessage": "Delete my eduID"
   }
 ]

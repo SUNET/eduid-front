@@ -14,7 +14,7 @@ class EmailDisplay extends Component {
       ];
     } else {
       text = [
-        <p key="0" id="nin-number" className="verified">
+        <p key="0" id="nin-number" className="verified email-address">
           {this.props.email[0].email}
         </p>
       ];
