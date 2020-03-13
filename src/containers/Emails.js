@@ -29,6 +29,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handleAdd: e => {
+      e.preventDefault();
       dispatch(postEmail());
     },
     handleResend: function(e) {
