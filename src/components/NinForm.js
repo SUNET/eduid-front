@@ -56,13 +56,7 @@ class NinForm extends Component {
 
     return (
       <div key="2" id="nin-form-container">
-        <Form
-          id="nin-form"
-          role="form"
-          onSubmit={e => {
-            e.preventDefault();
-          }}
-        >
+        <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
           <Field
             component={TextInput}
             componentClass="input"
@@ -97,6 +91,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     addNin: function(e) {
+      e.preventDefault();
       const nin = e.target.closest("#nin-form-container").firstElementChild
         .firstElementChild.children[0].value;
       dispatch(actions.postNin(nin));
