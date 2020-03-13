@@ -28,6 +28,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handleAdd: e => {
+      e.preventDefault();
       dispatch(postMobile());
     },
     handleResend: function(e) {
@@ -74,9 +75,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const MobileContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Mobile);
+const MobileContainer = connect(mapStateToProps, mapDispatchToProps)(Mobile);
 
 export default i18n(MobileContainer);
