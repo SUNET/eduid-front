@@ -29,7 +29,7 @@ export const validate = values => {
 };
 
 let EmailForm = props => (
-  <div id="register-input-group">
+  <form id="register-input-group" onSubmit={props.handleEmail}>
     <fieldset id="register-form">
       <Field
         type="email"
@@ -50,7 +50,7 @@ let EmailForm = props => (
       {props.translate("email.sign-up-email")}
     </EduIDButton>
     <FormFeedback>{props.touched && props.translate(error)}</FormFeedback>
-  </div>
+  </form>
 );
 
 EmailForm = reduxForm({

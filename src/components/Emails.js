@@ -25,7 +25,7 @@ const validate = values => {
 
 let EmailForm = props => {
   return (
-    <form id="emailsview-form" role="form">
+    <form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="emails-form" className="tabpane">
         <Field
           component={TextInput}

@@ -32,7 +32,7 @@ const validate = (values, props) => {
 
 let PhoneForm = props => {
   return (
-    <form id="phonesview-form" role="form">
+    <form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
         <Field
           component={TextInput}
