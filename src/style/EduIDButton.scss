@@ -252,6 +252,9 @@ button.eduid-button.btn-warning {
 }
 
 @media (max-width: 414px) {
+  button.btn {
+    font-size: 0.9rem;
+  }
   button.btn-primary,
   button.btn-secondary {
     width: 100%;

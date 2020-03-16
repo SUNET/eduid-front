@@ -159,8 +159,11 @@ button.btn-link {
 }
 
 @media (max-width: 414px) {
-  button.btn.btn-primary,
-  button.btn.btn-secondary {
+  button.btn {
+    font-size: 0.9rem;
+  }
+  button.btn-primary,
+  button.btn-secondary {
     width: 100%;
   }
   button.btn.btn-link,
