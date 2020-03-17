@@ -431,7 +431,7 @@ a#go-to-mobiles-tab {
 
   #dashboard-nav {
     width: 75%;
-    margin: 20px auto;
+    // margin: 20px auto;
   }
   #dashboard-nav.nav-back {
     max-width: 75%;
@@ -465,7 +465,12 @@ a#go-to-mobiles-tab {
   #profile-detail-grid {
     width: calc(100% - 30px);
     grid-template-columns: 100%;
+    grid-row-gap: 0;
+    grid-column-gap: 0;
     padding: 0 20px;
+  }
+  #profile-container {
+    margin: 0 0 2rem 0;
   }
   #profile-prompt span {
     max-width: 100%;
@@ -478,13 +483,17 @@ a#go-to-mobiles-tab {
   #dashboard-nav.nav-back {
     max-width: calc(100% - 15px);
     padding: 0;
+    margin: 0;
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 568px) {
   #dashboard-nav ul {
     display: grid;
     grid-template-columns: auto;
+  }
+   #profile-container {
+    margin: -2rem 0 2rem 0;
   }
   #dashboard-nav.nav-back {
     max-width: calc(100% - 15px);
