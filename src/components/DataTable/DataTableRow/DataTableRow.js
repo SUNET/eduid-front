@@ -21,11 +21,14 @@ class DataTableRow extends Component {
         let valueStatus = "unverified";
         if (datum.verified) {
           valueStatus = "verified";
+          if (datum.primary) {
+            valueStatus = "primary";
+          }
         }
 
         return (
           <tr
-            className="emailrow"
+            className={`emailrow ${valueStatus}`}
             data-identifier={valueName}
             data-object={value}
             key={i}

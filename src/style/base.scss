@@ -618,11 +618,17 @@ h5.modal-title {
 table {
   margin-bottom: 10px;
   width: 100%;
-  // background-color: white;
   color: gray;
   font-size: 24px;
   font-family: "ProximaNova-Light";
-  // border-collapse: collapse;
+  & tr,
+  & th {
+    background-color: white;
+    &.primary {
+      font-weight: 400;
+      color: $black;
+    }
+  }
 }
 
 // table th {
@@ -632,7 +638,7 @@ table {
 table th,
 table td {
   padding: 0.75rem;
-  background-color: white;
+  // background-color: white;
 }
 
 td.data {
@@ -659,12 +665,18 @@ tbody {
   }
 }
 
-span.nobutton,
-.primary,
-tr.primary {
+span.nobutton
+// .primary,
+// tr.primary 
+ {
   font-weight: 300;
   color: $black;
 }
+
+// table tr.primary {
+//   background-color: yellow;
+//   color: $black;
+// }
 
 span.nobutton,
 button.verify-status-label {
