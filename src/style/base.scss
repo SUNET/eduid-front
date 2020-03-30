@@ -654,6 +654,9 @@ table th {
 
 tbody {
   margin-bottom: 10px;
+  & .unverified {
+    color: gray;
+  }
 }
 
 span.nobutton,
@@ -672,6 +675,20 @@ span.nobutton {
   font-family: "ProximaNova-Regular";
 }
 
+td {
+  &.value-status {
+    text-align: center;
+    & label {
+      font-family: "ProximaNova-Regular";
+      font-weight: 400;
+    }
+  }
+  &.remove-data {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
 /* styles for remove svg icon */
 svg {
   transform-origin: center;
@@ -685,6 +702,7 @@ svg.remove {
 }
 svg.remove:hover {
   fill: #ff500d;
+  border: 1px solid transparent;
 }
 
 // .form-control {

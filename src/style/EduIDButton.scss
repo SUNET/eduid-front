@@ -96,6 +96,7 @@ button.btn.icon-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  // border: none;
   background-color: transparent;
   border: solid 1px transparent;
   box-shadow: none;
@@ -104,7 +105,26 @@ button.btn.icon-button {
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     background-color: transparent;
-    border: solid 1px #ff500d;
+    // transform: scale(1.1);
+    border: solid 1px transparent;
+  }
+}
+
+button.btn.table-button {
+  color: #ff500d;
+  font-size: 0.75rem;
+  background-color: transparent;
+  border: solid 1px transparent;
+  box-shadow: none;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    background-color: transparent;
+    text-decoration: underline;
+    order: solid 1px transparent;
+    outline: none;
+    // border: solid 1px #ff500d;
   }
 }
 
