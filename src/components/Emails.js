@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-import TextInput from "components/EduIDTextInput";
-import EduIDButton from "components/EduIDButton";
-import TableList from "./DataTable/DataTable";
-import ConfirmModal from "components/ConfirmModal";
+import TextInput from "./EduIDTextInput";
+import EduIDButton from "./EduIDButton";
+import DataTable from "./DataTable/DataTable";
+import ConfirmModal from "./ConfirmModal";
 
 import "style/Emails.scss";
 import "style/DashboardMain.scss";
@@ -82,9 +82,9 @@ class Emails extends Component {
           <p>{this.props.translate("emails.long_description")}</p>
         </div>
         <div id="email-display">
-          <TableList
+          <DataTable
             {...this.props}
-            entries={this.props.emails}
+            data={this.props.emails}
             handleStartConfirmation={this.props.handleStartConfirmation}
             handleRemove={this.props.handleRemove}
             handleMakePrimary={this.props.handleMakePrimary}

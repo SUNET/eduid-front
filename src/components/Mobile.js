@@ -97,7 +97,7 @@ class Mobile extends Component {
         </div>
         <div id="phone-display">
           <TableList
-            entries={this.props.phones}
+            data={this.props.phones}
             handleStartConfirmation={this.props.handleStartConfirmation}
             handleRemove={this.props.handleRemove}
             handleMakePrimary={this.props.handleMakePrimary}

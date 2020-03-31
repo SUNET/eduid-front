@@ -7,7 +7,7 @@ import DataTableRow from "./DataTableRow/DataTableRow";
 class DataTable extends Component {
   render() {
     // console.log("this is this.props.entries:", this.props.entries);
-    let data = this.props.entries;
+    let data = this.props.data;
 
     return (
       <div className="table-responsive">
@@ -27,7 +27,7 @@ class DataTable extends Component {
 }
 
 DataTable.propTypes = {
-  entries: PropTypes.array,
+  data: PropTypes.array,
   handleStartConfirmation: PropTypes.func.isRequired,
   handleMakePrimary: PropTypes.func.isRequired,
   handleRemove: PropTypes.func.isRequired
