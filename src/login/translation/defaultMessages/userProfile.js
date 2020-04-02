@@ -729,7 +729,14 @@ export const userData = {
     <FormattedMessage
       id="phones.long_description"
       defaultMessage={`You can connect one or more mobile phone numbers to
-           your eduID, but one has to be set as the primary one.`}
+           your eduID, but one has to be set as primary.`}
+    />
+  ),
+
+  "phones.add_new": (
+    <FormattedMessage
+      id="phones.add_new"
+      defaultMessage={`After you add a new phone number we will send you a confirmation code to your phone for you to use by clicking Confirm in the table.`}
     />
   ),
 
@@ -1003,6 +1010,13 @@ export const userData = {
       id="emails.long_description"
       defaultMessage={`You can connect one or more email addresses with your eduID 
           account and select one to be your primary email address.`}
+    />
+  ),
+
+  "emails.add_new": (
+    <FormattedMessage
+      id="emails.add_new"
+      defaultMessage={`After you add a new email address we will send an email with a link to click or a confirmation code for you to use by clicking Confirm in the table.`}
     />
   ),
 
