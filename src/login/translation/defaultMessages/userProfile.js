@@ -902,7 +902,7 @@ export const userData = {
   "mobile.confirm_title": values => (
     <FormattedMessage
       id="mobile.confirm_title"
-      defaultMessage={`A message has been sent to {phone}`}
+      defaultMessage={`Enter the code sent to {phone} here`}
       values={values}
     />
   ),
@@ -1000,7 +1000,7 @@ export const userData = {
   "emails.confirm_title": values => (
     <FormattedMessage
       id="emails.confirm_title"
-      defaultMessage={`An email has been sent to {email}`}
+      defaultMessage={`Click the link or enter the code sent to {email} here`}
       values={values}
     />
   ),
