@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -10,6 +10,7 @@ import ConfirmModal from "components/ConfirmModal";
 
 import "style/Emails.scss";
 import "style/DashboardMain.scss";
+import "style/AccountLinking.scss";
 
 const validate = values => {
   const errors = {},
@@ -82,16 +83,22 @@ class Emails extends Component {
           <p>{this.props.translate("emails.long_description")}</p>
         </div>
         <div id="email-display">
-          <TableList
-            {...this.props}
-            entries={this.props.emails}
-            handleStartConfirmation={this.props.handleStartConfirmation}
-            handleRemove={this.props.handleRemove}
-            handleMakePrimary={this.props.handleMakePrimary}
-          />
+          <Fragment>
+            <TableList
+              {...this.props}
+              entries={this.props.emails}
+              handleStartConfirmation={this.props.handleStartConfirmation}
+              handleRemove={this.props.handleRemove}
+              handleMakePrimary={this.props.handleMakePrimary}
+            />
+            <p className="help-text">
+              {this.props.translate("emails.add_new")}
+            </p>
+          </Fragment>
           <div className={this.state.formClass}>
             <EmailForm {...this.props} />
           </div>
+
           <EduIDButton
             id="add-more-button"
             className={this.state.addLinkClass}

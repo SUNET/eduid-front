@@ -413,7 +413,11 @@
   },
   {
     "id": "phones.long_description",
-    "defaultMessage": "You can connect one or more mobile phone numbers to\n           your eduID, but one has to be set as the primary one."
+    "defaultMessage": "You can connect one or more mobile phone numbers to\n           your eduID, but one has to be set as primary."
+  },
+  {
+    "id": "phones.add_new",
+    "defaultMessage": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of numbers."
   },
   {
     "id": "phones.input_help_text",
@@ -509,7 +513,7 @@
   },
   {
     "id": "mobile.confirm_title",
-    "defaultMessage": "A message has been sent to {phone}"
+    "defaultMessage": "Enter the code sent to {phone} here"
   },
   {
     "id": "pfilled.completion",
@@ -569,11 +573,15 @@
   },
   {
     "id": "emails.confirm_title",
-    "defaultMessage": "An email has been sent to {email}"
+    "defaultMessage": "Click the link or enter the code sent to {email} here"
   },
   {
     "id": "emails.long_description",
     "defaultMessage": "You can connect one or more email addresses with your eduID \n          account and select one to be your primary email address."
+  },
+  {
+    "id": "emails.add_new",
+    "defaultMessage": "A new email address will recieve a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses."
   },
   {
     "id": "emails.main_title",

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -73,19 +73,12 @@ class Mobile extends Component {
   }
 
   showEmailForm() {
-    console.log("hellow, you're showing the form");
-    this.setState(
-      (state, props) => {
-        return {
-          formClass: "form-content",
-          addLinkClass: "hide"
-        };
-      },
-      () => {
-        console.log("formClass:", this.state.formClass);
-      }
-    );
-    console.log("formClass state updated:", this.state.formClass);
+    this.setState((state, props) => {
+      return {
+        formClass: "form-content",
+        addLinkClass: "hide"
+      };
+    });
   }
 
   render() {
@@ -96,12 +89,18 @@ class Mobile extends Component {
           <p>{this.props.translate("phones.long_description")}</p>
         </div>
         <div id="phone-display">
-          <TableList
-            entries={this.props.phones}
-            handleStartConfirmation={this.props.handleStartConfirmation}
-            handleRemove={this.props.handleRemove}
-            handleMakePrimary={this.props.handleMakePrimary}
-          />
+          <Fragment>
+            <TableList
+              entries={this.props.phones}
+              handleStartConfirmation={this.props.handleStartConfirmation}
+              handleRemove={this.props.handleRemove}
+              handleMakePrimary={this.props.handleMakePrimary}
+            />
+            <p className="help-text">
+              {this.props.translate("phones.add_new")}
+            </p>
+          </Fragment>
+
           <div className={this.state.formClass}>
             <PhoneForm {...this.props} />
           </div>
