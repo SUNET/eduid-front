@@ -736,7 +736,7 @@ export const userData = {
   "phones.add_new": (
     <FormattedMessage
       id="phones.add_new"
-      defaultMessage={`A new phone number will receive a confirmation code for you to use by clicking Confirm in the table.`}
+      defaultMessage={`A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of numbers.`}
     />
   ),
 
@@ -1016,7 +1016,7 @@ export const userData = {
   "emails.add_new": (
     <FormattedMessage
       id="emails.add_new"
-      defaultMessage={`A new email address will recieve a link to click or a confirmation code that can be used by clicking Confirm in the table.`}
+      defaultMessage={`A new email address will recieve a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses.`}
     />
   ),
 
