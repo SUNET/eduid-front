@@ -28,7 +28,9 @@ body {
   flex: 1;
   // height: 100vh;
   flex-direction: column;
-  background-color: #f4f4f4;
+
+  // this is commented out to accomodate DashboardMain, should be introduced again for login app 
+  // background-color: #f4f4f4;
 }
 
 // this is here ONLY to counteract bootstrap
@@ -44,7 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .vertical-content-margin {
