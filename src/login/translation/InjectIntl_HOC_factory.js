@@ -101,7 +101,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
     WrappedComponent
   )})`;
 
-  console.log("thos is InjectIntl.displayName", InjectIntl.displayName);
+  // console.log("thos is InjectIntl.displayName", InjectIntl.displayName);
 
   // context types for InjectIntl
   InjectIntl.contextTypes = {
