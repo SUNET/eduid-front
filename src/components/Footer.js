@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+//  import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import "style/Footer.scss";
 // import "style/base.scss";
 // import "style/DashboardMain.scss";
