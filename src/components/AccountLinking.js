@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Orcid from "components/Orcid";
 
 // import "style/AccountLinking.scss";
+import "../login/styles/index.scss"
 
 class AccountLinking extends Component {
   render() {
