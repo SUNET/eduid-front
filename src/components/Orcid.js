@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import EduIDButton from "components/EduIDButton";
 
-import "style/AccountLinking.scss";
+// import "style/AccountLinking.scss";
 
 class Orcid extends Component {
   render() {
