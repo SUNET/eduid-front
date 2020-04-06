@@ -26,6 +26,7 @@
   background-color: #f4f4f4;
   flex: 1;
   position: relative;
+  padding-bottom: 2rem;
 }
 
 // narrower one-line-banner introduced in reappering tou
@@ -492,7 +493,7 @@ a#go-to-mobiles-tab {
     display: grid;
     grid-template-columns: auto;
   }
-   #profile-container {
+  #profile-container {
     margin: -2rem 0 2rem 0;
   }
   #dashboard-nav.nav-back {
