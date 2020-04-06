@@ -133,6 +133,7 @@ button.btn.icon-button {
   background-color: transparent;
   border: solid 1px transparent;
   box-shadow: none;
+  margin: 0;
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
@@ -150,6 +151,7 @@ button.btn-link {
   border-radius: 0;
   border: none;
   box-shadow: none;
+  margin: 0;
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
