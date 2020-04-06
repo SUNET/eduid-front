@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Orcid from "components/Orcid";
 
-import "style/AccountLinking.scss";
+// import "style/AccountLinking.scss";
 
 class AccountLinking extends Component {
   render() {
