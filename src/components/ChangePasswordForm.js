@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 import FormText from "reactstrap/lib/FormText";
-import Label from "reactstrap/lib/Label";
-import Button from "reactstrap/lib/Button";
+// import Label from "reactstrap/lib/Label";
+// import Button from "reactstrap/lib/Button";
 import ButtonGroup from "reactstrap/lib/ButtonGroup";
 
 import i18n from "../login/translation/InjectIntl_HOC_factory";
@@ -13,7 +13,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
 
-import "style/ChangePassword.scss";
+// import "style/ChangePassword.scss";
 
 export const pwFieldCustomName = "custom-password-field",
   pwFieldRepeatName = "repeat-password-field",
