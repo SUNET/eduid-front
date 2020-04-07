@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import EduIDButton from "components/EduIDButton";
+import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 
 // import "style/AccountLinking.scss";
 
@@ -56,16 +57,16 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <div id="orcid-data">
-          <EduIDButton
+          <PrimaryButton
             id="connect-orcid-button"
-            className="settings-button ok-button"
+            // className="settings-button"
             onClick={this.props.handleOrcidConnect}
           >
             <div className="orcid-logo-container">
               <span className="orcid-logo" />
             </div>
             {this.props.translate("orc.button_connect")}
-          </EduIDButton>
+          </PrimaryButton>
           <p className="orcid-btn-help">
             {this.props.translate("orc.long_description")}
           </p>
