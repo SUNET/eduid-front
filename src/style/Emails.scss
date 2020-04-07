@@ -46,7 +46,8 @@ button#email.button {
 #phonesview-form,
 #emailsview-form {
   flex-direction: row;
-  margin-top: 10px;
+  align-items: baseline;
+  margin-top: 0;
 }
 
 #personal-data-form input,

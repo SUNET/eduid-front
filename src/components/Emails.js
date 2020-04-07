@@ -10,7 +10,7 @@ import ConfirmModal from "components/ConfirmModal";
 
 import "style/Emails.scss";
 import "style/DashboardMain.scss";
-import "style/AccountLinking.scss";
+// import "style/AccountLinking.scss";
 
 const validate = values => {
   const errors = {},
