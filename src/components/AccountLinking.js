@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Orcid from "components/Orcid";
 
-import "style/AccountLinking.scss";
+import "../login/styles/index.scss";
 
 class AccountLinking extends Component {
   render() {
@@ -12,9 +12,7 @@ class AccountLinking extends Component {
           <h4>{this.props.translate("account_linking.main_title")}</h4>
           <p>{this.props.translate("account_linking.long_description")}</p>
         </div>
-        <div id="orcid">
-          <Orcid {...this.props} />
-        </div>
+        <Orcid {...this.props} />
       </div>
     );
   }

@@ -22,7 +22,7 @@
 .emailsview-form-container,
 #delete-account-container,
 #change-password-container {
-  margin: 0 auto 30px;
+  margin: 0 auto;
   max-width: 58.3333333333%;
 }
 
@@ -46,7 +46,8 @@ button#email.button {
 #phonesview-form,
 #emailsview-form {
   flex-direction: row;
-  margin-top: 10px;
+  align-items: baseline;
+  margin-top: 0;
 }
 
 #personal-data-form input,
@@ -95,7 +96,7 @@ button#email.button {
   .emailsview-form-container,
   #delete-account-container,
   #change-password-container {
-    margin: 0 auto 20px;
+    margin: 0 auto;
     max-width: 75%;
   }
 }
