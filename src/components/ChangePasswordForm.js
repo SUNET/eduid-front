@@ -26,7 +26,10 @@ const validate = (values, props) => {
   if (!values[pwFieldOldName]) {
     errors[pwFieldOldName] = "required";
   }
-  if (props.registeredFields && !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)) {
+  if (
+    props.registeredFields &&
+    !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)
+  ) {
     if (!values[pwFieldCustomName]) {
       errors[pwFieldCustomName] = "required";
     } else if (props.custom_ready) {
@@ -159,11 +162,13 @@ class ChangePasswordForm extends Component {
         <div id="password-suggestion">
           <ButtonGroup>{button}</ButtonGroup>
         </div>
-        <fieldset id="chpass-form" className="tabpane">
+        <div id="chpass-form" className="tabpane">
           <EduIDButton
             id="chpass-button"
             className="settings-button ok-button"
-            disabled={this.props.submitting || this.props.pristine || this.props.invalid}
+            disabled={
+              this.props.submitting || this.props.pristine || this.props.invalid
+            }
             onClick={this.props.handleStartPasswordChange.bind(this)}
           >
             {this.props.translate("chpass.button_save_password")}
@@ -174,7 +179,7 @@ class ChangePasswordForm extends Component {
           >
             {this.props.translate("cm.cancel")}
           </EduIDButton>
-        </fieldset>
+        </div>
       </form>
     );
   }
