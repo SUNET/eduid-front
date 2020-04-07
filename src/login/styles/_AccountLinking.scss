@@ -27,6 +27,7 @@
   margin: 0 0 0 10px;
 }
 
+//streamline this styling with the other help text across the website (.help-text) 
 .orcid-btn-help {
   margin: 0;
   line-height: 1.2;
@@ -35,6 +36,7 @@
   margin-top: 15px;
 }
 
+//remove this when all button styles are refactored
 #connect-orcid-button {
   line-height: 2;
   margin: 0;
