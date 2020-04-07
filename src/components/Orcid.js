@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
 import EduIDButton from "components/EduIDButton";
@@ -56,7 +56,7 @@ class Orcid extends Component {
       );
     } else {
       orcidData = (
-        <div id="orcid-data">
+        <Fragment>
           <PrimaryButton
             id="connect-orcid-button"
             // className="settings-button"
@@ -70,10 +70,10 @@ class Orcid extends Component {
           <p className="orcid-btn-help">
             {this.props.translate("orc.long_description")}
           </p>
-        </div>
+        </Fragment>
       );
     }
-    return <div id="orcid-connect">{orcidData}</div>;
+    return <Fragment>{orcidData}</Fragment>;
   }
 }
 
