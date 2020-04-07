@@ -59,7 +59,6 @@ class Orcid extends Component {
         <Fragment>
           <PrimaryButton
             id="connect-orcid-button"
-            // className="settings-button"
             onClick={this.props.handleOrcidConnect}
           >
             <div className="orcid-logo-container">
