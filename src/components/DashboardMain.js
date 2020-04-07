@@ -65,9 +65,7 @@ class Main extends Component {
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
             <div id="welcome">
-              <h1>{this.props.translate("dashboard.welcome")} </h1>
-              <div className="email-address">{this.props.email}</div>
-
+              <h1>{this.props.translate("dashboard.welcome")} {this.props.email}</h1>
               <Link id="profile-prompt-link" to={promptLink}>
                 <h2 className={styling}>{welcomeGreeting}</h2>
               </Link>
