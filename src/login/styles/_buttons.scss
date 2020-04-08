@@ -146,7 +146,7 @@ button.btn.icon-button {
 
 /* styles for links that are also buttons */
 // -----  ----  //
-button.btn.btn-link {
+button.btn-link {
   background-color: transparent;
   color: $orange-highlight;
   border-radius: 0;
@@ -159,6 +159,7 @@ button.btn.btn-link {
   &:not(:disabled):not(.disabled):active:focus {
     color: $orange-highlight;
     background-color: transparent;
+    transform: scale(1);
   }
 }
 
