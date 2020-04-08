@@ -11,6 +11,7 @@ import ButtonGroup from "reactstrap/lib/ButtonGroup";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 import EduIDButton from "components/EduIDButton";
+import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import TextInput from "components/EduIDTextInput";
 
 // import "style/ChangePassword.scss";
@@ -163,7 +164,7 @@ class ChangePasswordForm extends Component {
           <ButtonGroup>{button}</ButtonGroup>
         </div>
         <div id="chpass-form" className="tabpane">
-          <EduIDButton
+          <PrimaryButton
             id="chpass-button"
             className="settings-button ok-button"
             disabled={
@@ -172,7 +173,7 @@ class ChangePasswordForm extends Component {
             onClick={this.props.handleStartPasswordChange.bind(this)}
           >
             {this.props.translate("chpass.button_save_password")}
-          </EduIDButton>
+          </PrimaryButton>
           <EduIDButton
             className="modal-button cancel-button eduid-cancel-button"
             onClick={this.props.handleStopPasswordChange.bind(this)}
