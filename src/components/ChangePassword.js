@@ -9,7 +9,9 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePasswordForm from "./ChangePasswordForm";
 import DashboardNav from "./DashboardNav";
 
-import "style/ChangePassword.scss";
+// import "style/ChangePassword.scss";
+import "../login/styles/index.scss";
+
 class ChangePassword extends Component {
   componentWillMount() {
     this.props.loadZxcvbn();

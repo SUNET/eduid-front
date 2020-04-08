@@ -4,16 +4,17 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 import FormText from "reactstrap/lib/FormText";
-import Label from "reactstrap/lib/Label";
-import Button from "reactstrap/lib/Button";
+// import Label from "reactstrap/lib/Label";
+// import Button from "reactstrap/lib/Button";
 import ButtonGroup from "reactstrap/lib/ButtonGroup";
 
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 import EduIDButton from "components/EduIDButton";
+import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import TextInput from "components/EduIDTextInput";
 
-import "style/ChangePassword.scss";
+// import "style/ChangePassword.scss";
 
 export const pwFieldCustomName = "custom-password-field",
   pwFieldRepeatName = "repeat-password-field",
@@ -26,7 +27,10 @@ const validate = (values, props) => {
   if (!values[pwFieldOldName]) {
     errors[pwFieldOldName] = "required";
   }
-  if (props.registeredFields && !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)) {
+  if (
+    props.registeredFields &&
+    !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)
+  ) {
     if (!values[pwFieldCustomName]) {
       errors[pwFieldCustomName] = "required";
     } else if (props.custom_ready) {
@@ -159,22 +163,24 @@ class ChangePasswordForm extends Component {
         <div id="password-suggestion">
           <ButtonGroup>{button}</ButtonGroup>
         </div>
-        <fieldset id="chpass-form" className="tabpane">
-          <EduIDButton
+        <div id="chpass-form" className="tabpane">
+          <PrimaryButton
             id="chpass-button"
             className="settings-button ok-button"
-            disabled={this.props.submitting || this.props.pristine || this.props.invalid}
+            disabled={
+              this.props.submitting || this.props.pristine || this.props.invalid
+            }
             onClick={this.props.handleStartPasswordChange.bind(this)}
           >
             {this.props.translate("chpass.button_save_password")}
-          </EduIDButton>
+          </PrimaryButton>
           <EduIDButton
             className="modal-button cancel-button eduid-cancel-button"
             onClick={this.props.handleStopPasswordChange.bind(this)}
           >
             {this.props.translate("cm.cancel")}
           </EduIDButton>
-        </fieldset>
+        </div>
       </form>
     );
   }
