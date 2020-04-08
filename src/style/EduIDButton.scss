@@ -47,7 +47,7 @@ button.btn.settings-button {
   }
   &:disabled {
     background-color: $dark-gray;
-    border-color: $dark-gray;
+    border: solid 1px transparent;
     color: #f4f4f4;
   }
 }

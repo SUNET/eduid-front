@@ -58,6 +58,7 @@ button.btn-secondary:hover {
 
 button.btn-primary:hover {
   background-color: $orange-highlight;
+  border: none;
   &:disabled,
   .disabled {
     background-color: $dark-gray;
