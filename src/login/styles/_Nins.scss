@@ -1,0 +1,55 @@
+//--- STEP 1. ADD NIN STYLES ---//
+
+#verify-identity-container {
+  background: yellow;
+  & .profile-card {
+    margin-bottom: 30px;
+    border: red solid 2px;
+  }
+  & label {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    font-family: "ProximaNova-Regular";
+    text-transform: none;
+    line-height: 1.2;
+    border: black solid 2px;
+  }
+}
+
+// #verify-identity-container label {
+//   margin: 0 0 10px 0;
+// }
+
+// #verify-identity-container label {
+//   font-size: 1.25rem;
+//   font-family: "ProximaNova-Regular";
+//   text-transform: none;
+//   line-height: 1.2;
+// }
+
+h3.verify-identity-header {
+  margin-top: 0px;
+  width: 100%;
+}
+
+/*--- styles for nin form ---*/
+#nin-form-container {
+  margin-right: 5px;
+}
+
+#nin-form {
+  display: block;
+}
+
+// #nin input {
+//   background-color: #ffffff;
+//   font-family: "ProximaNova-Regular";
+//   border: none;
+//   color: #161616;
+//   font-size: 36px;
+//   border-bottom: solid #333 3px;
+// }
+
+// #nin input::placeholder {
+//   font-size: 36px;
+// }
