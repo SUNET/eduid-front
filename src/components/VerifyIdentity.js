@@ -4,7 +4,8 @@ import { withRouter } from "react-router-dom";
 import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
 
-import "style/Nins.scss";
+// import "style/Nins.scss";
+import "../login/styles/index.scss"
 
 class VerifyIdentity extends Component {
   render() {
