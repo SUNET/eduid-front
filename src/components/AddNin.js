@@ -5,7 +5,7 @@ import NinDisplay from "containers/NinDisplay";
 import { withRouter } from "react-router-dom";
 
 import "style/DashboardMain.scss";
-import "style/Nins.scss";
+// import "style/Nins.scss";
 
 class AddNin extends Component {
   render() {
