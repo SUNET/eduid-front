@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ReactDom from "react-dom";
 import { Spinner } from "spin.js";
 
-import "style/Splash.scss";
+import "../login/styles/index.scss";
 
 const spinnerOpts = {
   rotate: 0, // The rotation offset
