@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import EduIDButton from "components/EduIDButton";
-import "style/Nins.scss";
+// import "style/Nins.scss";
 
 export class NinDisplay extends Component {
   render() {
