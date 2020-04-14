@@ -14,41 +14,6 @@
   margin-top: 0px;
 }
 
-/*--- styles for nin digits ---*/
-#nin-number-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-#nin-number-container a {
-  color: $orange-highlight;
-  // font-family: "Montserrat", sans-serif;
-  transition: all 0.5s ease;
-  cursor: pointer;
-  border-bottom: solid transparent 2px;
-}
-
-#nin-number-container a:hover {
-  text-decoration: none;
-  border-bottom: solid #ff4500 2px;
-}
-
-#nin-number {
-  font-size: 36px;
-  line-height: 1.5;
-  margin-bottom: 0;
-  padding-right: 5px;
-}
-
-.unverified {
-  color: #ff4500;
-}
-
-.verified {
-  color: #161616;
-}
-
 //--- STEP 2. CONNECT NIN STYLES ---//
 
 #connect-nin-number-container:empty {
