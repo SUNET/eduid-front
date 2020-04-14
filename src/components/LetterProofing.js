@@ -12,13 +12,13 @@ class LetterProofingButton extends Component {
       <div>
         <div className="vetting-button">
           <button
-            className="proofing-button"
+            // className="proofing-button"
             onClick={this.props.handleLetterProofing}
           >
-            <div className="vetting-button-text">
+            <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
             </div>
-            <div className="vetting-button-name">
+            <div className="name">
               {this.props.translate("letter.button_text_request")}
             </div>
           </button>

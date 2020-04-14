@@ -53,10 +53,10 @@ class Eidas extends Component {
       <div>
         <div className="vetting-button">
           <button id="eidas-show-modal" onClick={this.props.handleShowModal}>
-            <div className="vetting-button-text">
+            <div className="text">
               {this.props.translate("verify-identity.vetting_freja_tagline")}
             </div>
-            <div className="vetting-button-name">
+            <div className="name">
               {this.props.translate("eidas.vetting_button_freja")}
             </div>
           </button>
