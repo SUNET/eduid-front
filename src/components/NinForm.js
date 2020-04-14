@@ -49,6 +49,7 @@ class NinForm extends Component {
             helpBlock={this.props.translate("nins.input_help_text")}
           />
           <PrimaryButton
+            id={""}
             disabled={!this.props.valid}
             onClick={this.props.addNin}
             key="1"
