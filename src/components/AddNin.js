@@ -15,9 +15,7 @@ class AddNin extends Component {
       return (
         <div key="1">
           <label key="0">1. {this.props.translate("add_nin.main_title")}</label>
-          {/* <div key="1" id="add-nin-number"> */}
           <NinForm addNin={this.addNin} {...this.props} />
-          {/* </div> */}
         </div>
       );
     }
