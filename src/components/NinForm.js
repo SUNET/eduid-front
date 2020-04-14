@@ -9,8 +9,6 @@ import * as actions from "actions/Nins";
 import TextInput from "components/EduIDTextInput";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 
-// import "style/Nins.scss";
-
 const validate = values => {
   let value = values.nin;
   // accept only digits
@@ -39,22 +37,6 @@ const validate = values => {
 
 class NinForm extends Component {
   render() {
-    // let validNin = "",
-    //   formButton = "";
-
-    // if (this.props.valid) {
-    //   validNin = this.props.nin;
-    //   formButton = [
-    //     <PrimaryButton
-    //       className="btn settings-button"
-    //       onClick={this.props.addNin}
-    //       key="1"
-    //     >
-    //       {this.props.translate("emails.button_add")}
-    //     </PrimaryButton>
-    //   ];
-    // }
-
     return (
       <div key="2" id="nin-form-container">
         <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
