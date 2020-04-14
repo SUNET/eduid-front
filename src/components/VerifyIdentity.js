@@ -37,7 +37,6 @@ class VerifyIdentity extends Component {
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
         <label key="0">
-          2.
           {this.props.translate("verify-identity.connect_nin_title")}
         </label>,
         <div key="1" id="nins-btn-grid">
