@@ -4,8 +4,7 @@ import { withRouter } from "react-router-dom";
 import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
 
-// import "style/Nins.scss";
-import "../login/styles/index.scss"
+import "../login/styles/index.scss";
 
 class VerifyIdentity extends Component {
   render() {
@@ -37,13 +36,12 @@ class VerifyIdentity extends Component {
 
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
-        <div key="1" id="connect-nin-number">
-          <label key="0">
-            {this.props.translate("verify-identity.connect_nin_title")}
-          </label>
-          <div key="1" id="nins-btn-group">
-            {vettingButtons}
-          </div>
+        <label key="0">
+          2.
+          {this.props.translate("verify-identity.connect_nin_title")}
+        </label>,
+        <div key="1" id="nins-btn-grid">
+          {vettingButtons}
         </div>
       ];
     }
