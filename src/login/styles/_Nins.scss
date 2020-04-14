@@ -1,10 +1,8 @@
 //--- STEP 1. ADD NIN STYLES ---//
 
 #verify-identity-container {
-  // background: yellow;
   & .profile-card {
     margin-bottom: 2rem;
-    border: red solid 2px;
   }
   & label {
     margin: 0 0 1rem 0;
@@ -12,13 +10,14 @@
     font-family: "ProximaNova-Regular";
     text-transform: none;
     line-height: 1.2;
-    border: #161616 solid 2px;
   }
 }
 
-h3.verify-identity-header {
-  margin-top: 0px;
-  width: 100%;
+h3 {
+  &.verify-identity-header {
+    width: 100%;
+    margin-top: 0px;
+  }
 }
 
 /*--- styles for nin form ---*/
