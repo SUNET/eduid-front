@@ -15,26 +15,26 @@
 //   margin: 0 auto;
 // }
 
-.alert {
-  // position: relative;
-  padding: 0.75rem 1.25rem !important;
-  margin: 0 !important;
-  // border-bottom: 5px solid black;
-  border: none !important;
-  border-radius: 0 !important;
-  display: flex !important;
-}
+// .alert {
+//   // position: relative;
+//   padding: 0.75rem 1.25rem !important;
+//   margin: 0 !important;
+//   // border-bottom: 5px solid black;
+//   border: none !important;
+//   border-radius: 0 !important;
+//   display: flex !important;
+// }
 
-.alert span {
-  font-size: 1.25rem;
-  width: 58.3333%;
-  margin: 0 auto;
-}
-.alert-danger,
-.alert-success {
-  color: $orange-highlight !important;
-  background-color: #ffe7dd !important;
-}
+// .alert span {
+//   font-size: 1.25rem;
+//   width: 58.3333%;
+//   margin: 0 auto;
+// }
+// .alert-danger,
+// .alert-success {
+//   color: $orange-highlight !important;
+//   background-color: #ffe7dd !important;
+// }
 
 @media (max-width: 812px) {
   .notifications-area {
