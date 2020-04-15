@@ -1,7 +1,6 @@
 @import "./variables.scss";
 
 .notifications-area {
-  background-color: yellow;
   display: flex;
   flex-direction: column;
   color: transparent;
@@ -10,7 +9,7 @@
   width: 100%;
 }
 
-.alert {
+.alert.alert-dismissible {
   padding: 0;
   margin: 0;
   border: none;
@@ -21,11 +20,6 @@
     background-color: $orange-opaque;
     border: none;
   }
-}
-
-.alert span {
-  font-size: 1rem;
-  font-weight: 500;
 }
 
 @media (max-width: 812px) {
