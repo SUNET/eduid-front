@@ -8,9 +8,9 @@ import EduIDButton from "components/EduIDButton";
 import TableList from "components/TableList";
 import ConfirmModal from "components/ConfirmModal";
 
-import "style/Emails.scss";
-import "style/Mobile.scss";
-import "style/DashboardMain.scss";
+// import "style/Emails.scss";
+// import "style/Mobile.scss";
+// import "style/DashboardMain.scss";
 
 const validate = (values, props) => {
   let phone = values.number;
