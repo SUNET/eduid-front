@@ -16,27 +16,6 @@
 #change-password-container {
   margin: 0 auto;
   max-width: 58.3333333333%;
-  background: lightyellow;
-}
-
-// #personaldataview-form {
-//   display: block;
-// }
-
-// #personal-data-form {
-//   display: contents;
-// }
-
-// button#email.button {
-//   margin-top: 5px;
-//   color: green;
-// }
-
-#phonesview-form,
-#emailsview-form {
-  flex-direction: row;
-  align-items: baseline;
-  margin-top: 0;
 }
 
 #personal-data-form input,
@@ -44,8 +23,35 @@
 #phone-form input {
   background-color: white;
   border: none;
-  border-bottom: solid 1px #161616;
+  border-bottom: solid 2px #161616;
   font-family: "ProximaNova-Regular";
   color: #161616;
   font-size: 24px;
+}
+
+#add-more-button {
+  text-transform: lowercase;
+  &.hide {
+    display: none;
+  }
+}
+
+.form-content {
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #orcid-connect-container,
+  #register-securitykey-container,
+  .namesview-form-container,
+  .phoneview-form-container,
+  .emailsview-form-container,
+  #delete-account-container,
+  #change-password-container {
+    max-width: calc(100% - 40px);
+  }
 }
