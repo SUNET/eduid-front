@@ -1,0 +1,55 @@
+@import "./variables.scss";
+
+.notifications-area {
+  display: flex;
+  flex-direction: column;
+  color: transparent;
+  background-color: transparent;
+  height: 3rem;
+  width: 100%;
+}
+
+.alert.alert-dismissible {
+  position: inherit;
+  padding: 0.75rem 2rem 0.75rem 1.25rem;
+  margin: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
+  &.alert-danger,
+  &.alert-success {
+    color: $orange-highlight;
+    background-color: $orange-opaque;
+    border: none;
+  }
+  & span {
+    font-size: 1rem;
+    width: 58.3333%;
+    margin: 0 auto;
+  }
+  & .close {
+    position: inherit;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    text-shadow: unset;
+    &:hover {
+      color: $orange-highlight;
+    }
+  }
+}
+
+@media (max-width: 823px) {
+  .notifications-area {
+    height: 49px;
+  }
+  .alert.alert-dismissible {
+    padding: 0.5rem 1rem;
+    & span {
+      font-size: 1rem;
+      width: 100%;
+    }
+  }
+}

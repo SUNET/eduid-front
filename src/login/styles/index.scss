@@ -9,16 +9,16 @@
 @import "links";
 @import "nav";
 @import "img";
-@import "errorMessages";
 @import "modals";
 
-/* styles specific to componets */
+/* replaces specific stylesheets */
 @import "Header";
 @import "Footer";
 @import "ResetPassword";
 @import "AccountLinking";
 @import "ChangePassword";
 @import "Nins";
+@import "Notifications";
 
 // does this styling work without stylesheet?
 @import "Splash";
