@@ -1,6 +1,7 @@
 @import "./variables.scss";
 
 .notifications-area {
+  background-color: yellow;
   display: flex;
   flex-direction: column;
   color: transparent;
@@ -14,19 +15,17 @@
   margin: 0;
   border: none;
   border-radius: 0;
-    // padding: 1rem 0;
-  // width: 58.3333%;
-  // margin: 0 auto;
+  &.alert-danger,
+  &.alert-success {
+    color: $orange-highlight;
+    background-color: $orange-opaque;
+    border: none;
+  }
 }
 
 .alert span {
   font-size: 1rem;
   font-weight: 500;
-}
-.alert-danger,
-.alert-success {
-  color: $orange-highlight;
-  background-color: $orange-opaque;
 }
 
 @media (max-width: 812px) {
