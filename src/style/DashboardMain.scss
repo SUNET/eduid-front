@@ -190,17 +190,17 @@ h1.banner-tagline {
   border: solid #ff4500 1px;
 }
 
-h3.verify-identity-header {
-  margin-top: 0px;
-  width: 100%;
-}
+// h3.verify-identity-header {
+//   margin-top: 0px;
+//   width: 100%;
+// }
 
-#verify-identity-container label {
-  font-size: 1.25rem;
-  font-family: "ProximaNova-Regular";
-  text-transform: none;
-  line-height: 1.2;
-}
+// #verify-identity-container label {
+//   font-size: 1.25rem;
+//   font-family: "ProximaNova-Regular";
+//   text-transform: none;
+//   line-height: 1.2;
+// }
 
 /* styles for sidebar nav on settings page */
 aside {
@@ -309,8 +309,9 @@ aside li:hover a {
 
 /* styles for forms displaying userinfo on settings page */
 .form-group {
-  padding: 0 10px 10px 0;
+  padding: 0 1rem 0 0;
   margin: 0;
+  width: 100%;
 }
 
 fieldset {

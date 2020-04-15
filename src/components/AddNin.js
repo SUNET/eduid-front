@@ -5,7 +5,6 @@ import NinDisplay from "containers/NinDisplay";
 import { withRouter } from "react-router-dom";
 
 import "style/DashboardMain.scss";
-import "style/Nins.scss";
 
 class AddNin extends Component {
   render() {
@@ -14,12 +13,8 @@ class AddNin extends Component {
     } else {
       return (
         <div key="1">
-          <h3 key="0" id="add-nin-header">
-            {this.props.translate("add_nin.main_title")}
-          </h3>
-          <div key="1" id="add-nin-number">
-            <NinForm addNin={this.addNin} {...this.props} />
-          </div>
+          <label key="0"> {this.props.translate("add_nin.main_title")}</label>
+          <NinForm addNin={this.addNin} {...this.props} />
         </div>
       );
     }

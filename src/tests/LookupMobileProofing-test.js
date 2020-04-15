@@ -124,8 +124,6 @@ describe("LookupMobileProofing Component", () => {
   it("Renders a vetting button", () => {
     const { wrapper } = setupComponent();
     const button = wrapper.find("button");
-
-    expect(button.hasClass("proofing-button")).toEqual(true);
     expect(button.exists()).toEqual(true);
   });
 });

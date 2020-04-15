@@ -130,7 +130,7 @@ export const userProfile = {
   "verify-identity.connect_nin_title": (
     <FormattedMessage
       id="verify-identity.connect_nin_title"
-      defaultMessage={`Choose a way to verify that the id number belongs to you`}
+      defaultMessage={`2. Choose a way to verify that the id number belongs to you`}
     />
   )
 };
@@ -599,7 +599,7 @@ export const userData = {
   "add_nin.main_title": (
     <FormattedMessage
       id="add_nin.main_title"
-      defaultMessage={`Add your id number`}
+      defaultMessage={`1. Add your id number`}
     />
   ),
 
@@ -607,7 +607,7 @@ export const userData = {
   "nin_display.verify-identity_unverified_main_title": (
     <FormattedMessage
       id="nin_display.verify-identity_unverified_main_title"
-      defaultMessage={`Your added id number`}
+      defaultMessage={`1. Your added id number`}
     />
   ),
 

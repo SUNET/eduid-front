@@ -7,8 +7,7 @@ import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
 import TextInput from "components/EduIDTextInput";
-
-import "style/Nins.scss";
+import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 
 const validate = values => {
   let value = values.nin;
@@ -38,22 +37,6 @@ const validate = values => {
 
 class NinForm extends Component {
   render() {
-    let validNin = "",
-      formButton = "";
-
-    if (this.props.valid) {
-      validNin = this.props.nin;
-      formButton = [
-        <button
-          className="btn settings-button"
-          onClick={this.props.addNin}
-          key="1"
-        >
-          {this.props.translate("emails.button_add")}
-        </button>
-      ];
-    }
-
     return (
       <div key="2" id="nin-form-container">
         <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
@@ -65,7 +48,14 @@ class NinForm extends Component {
             placeholder={this.props.translate("nins.input_placeholder")}
             helpBlock={this.props.translate("nins.input_help_text")}
           />
-          {formButton}
+          <PrimaryButton
+            id={""}
+            disabled={!this.props.valid}
+            onClick={this.props.addNin}
+            key="1"
+          >
+            {this.props.translate("emails.button_add")}
+          </PrimaryButton>
         </Form>
       </div>
     );
