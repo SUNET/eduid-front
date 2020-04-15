@@ -78,6 +78,11 @@
   //   justify-content: center;
 }
 
+// #phone-display,
+#email-display {
+  flex-direction: column;
+}
+
 #email-display p {
   text-transform: none;
   font-size: 1.25rem;
