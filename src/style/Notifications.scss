@@ -1,11 +1,11 @@
 @import "../variables.scss";
 
-.notifications-area {
-  color: transparent;
-  background-color: transparent;
-  height: 53px;
-  width: 100%;
-}
+// .notifications-area {
+//   color: transparent;
+//   background-color: transparent;
+//   height: 53px;
+//   width: 100%;
+// }
 
 // .notifications-text {
 //   // max-width: 75%;
@@ -36,26 +36,26 @@
 //   background-color: #ffe7dd !important;
 // }
 
-@media (max-width: 812px) {
-  .notifications-area {
-    height: 49px !important;
-  }
-  .alert {
-    padding: 0.5rem 1rem !important;
-  }
-  .alert span {
-    font-size: 1rem !important;
-    width: 75% !important;
-  }
-}
-@media (max-width: 768px) {
-  .alert span {
-    width: 100% !important; 
-  }
-  .alert-dismissible .close {
-    padding: 0.25rem 0.75rem !important;
-  }
-}
+// @media (max-width: 812px) {
+//   .notifications-area {
+//     height: 49px !important;
+//   }
+//   .alert {
+//     padding: 0.5rem 1rem !important;
+//   }
+//   .alert span {
+//     font-size: 1rem !important;
+//     width: 75% !important;
+//   }
+// }
+// @media (max-width: 768px) {
+//   .alert span {
+//     width: 100% !important; 
+//   }
+//   .alert-dismissible .close {
+//     padding: 0.25rem 0.75rem !important;
+//   }
+// }
 
 // @media only screen and (min-width: 991px) {
 //   div.notifications-area {
