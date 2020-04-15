@@ -19,6 +19,15 @@
   max-width: 54.4rem;
 }
 
+#personaldataview-form {
+  display: block;
+  width: 100%;
+}
+
+#personal-data-form {
+  display: flex;
+}
+
 #personal-data-form input,
 #emails-form input,
 #phone-form input {
