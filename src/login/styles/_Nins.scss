@@ -46,6 +46,7 @@ h3 {
 #nin-number-container {
   display: flex;
   flex-direction: row;
+  align-items: baseline;
   & a {
     color: $orange-highlight;
     transition: all 0.5s ease;
