@@ -7,15 +7,17 @@ import Form from "reactstrap/lib/Form";
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 
-import "style/Emails.scss";
-import "style/PersonalData.scss";
-import "style/DashboardMain.scss";
+// import "style/Emails.scss";
+// import "style/PersonalData.scss";
+// import "style/DashboardMain.scss";
+
+import "../login/styles/index.scss";
 
 /* FORM */
 
-const validate = values => {
+const validate = (values) => {
   const errors = {};
-  ["given_name", "surname", "display_name", "language"].forEach(pdata => {
+  ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
     if (!values[pdata]) {
       errors[pdata] = "required";
     }
@@ -23,7 +25,7 @@ const validate = values => {
   return errors;
 };
 
-let PdataForm = props => {
+let PdataForm = (props) => {
   return (
     <Form id="personaldataview-form" role="form">
       <fieldset id="personal-data-form" className="tabpane">
@@ -78,11 +80,11 @@ PdataForm = reduxForm({
   keepDirtyOnReinitialize: true,
   keepValuesOnReinitialize: true,
   updateUnregisteredFields: true,
-  validate: validate
+  validate: validate,
 })(PdataForm);
 
-PdataForm = connect(state => ({
-  initialValues: state.personal_data.data
+PdataForm = connect((state) => ({
+  initialValues: state.personal_data.data,
 }))(PdataForm);
 
 /* COMPONENT */
@@ -103,7 +105,7 @@ class PersonalData extends Component {
 
 PersonalData.propTypes = {
   data: PropTypes.object,
-  langs: PropTypes.array
+  langs: PropTypes.array,
 };
 
 export default PersonalData;
