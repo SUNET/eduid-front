@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 import GenericConfirmModal from "components/GenericConfirmModal";
 
-import "style/Security.scss";
+import "../login/styles/index.scss";
 
 class ChangePasswordDisplay extends Component {
   render() {

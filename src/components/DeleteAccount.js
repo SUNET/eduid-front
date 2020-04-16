@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 import DeleteModal from "components/DeleteModal";
 
-import "style/Security.scss";
+import "../login/styles/index.scss";
 
 class DeleteAccount extends Component {
   render() {
