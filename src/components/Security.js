@@ -4,7 +4,6 @@ import EduIDButton from "components/EduIDButton";
 import GenericConfirmModal from "components/GenericConfirmModal";
 import ConfirmModal from "components/ConfirmModal";
 
-// import "style/Security.scss";
 import "../login/styles/index.scss";
 
 class Security extends Component {
