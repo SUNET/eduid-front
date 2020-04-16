@@ -8,11 +8,12 @@ import EduIDButton from "components/EduIDButton";
 import TableList from "components/TableList";
 import ConfirmModal from "components/ConfirmModal";
 
-import "style/Emails.scss";
-import "style/DashboardMain.scss";
+// import "style/Emails.scss";
+// import "style/DashboardMain.scss";
 // import "style/AccountLinking.scss";
+import "../login/styles/index.scss";
 
-const validate = values => {
+const validate = (values) => {
   const errors = {},
     email = values.email,
     pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -24,7 +25,7 @@ const validate = values => {
   return errors;
 };
 
-let EmailForm = props => {
+let EmailForm = (props) => {
   return (
     <form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="emails-form" className="tabpane">
@@ -51,12 +52,12 @@ let EmailForm = props => {
 
 EmailForm = reduxForm({
   form: "emails",
-  validate
+  validate,
 })(EmailForm);
 
-EmailForm = connect(state => ({
+EmailForm = connect((state) => ({
   initialValues: { email: state.emails.email },
-  enableReinitialize: true
+  enableReinitialize: true,
 }))(EmailForm);
 
 class Emails extends Component {
@@ -70,7 +71,7 @@ class Emails extends Component {
     this.setState((state, props) => {
       return {
         formClass: "form-content",
-        addLinkClass: "hide"
+        addLinkClass: "hide",
       };
     });
   }
@@ -111,7 +112,7 @@ class Emails extends Component {
           modalId="emailConfirmDialog"
           id="emailConfirmDialogControl"
           title={this.props.translate("emails.confirm_title", {
-            email: this.props.confirming
+            email: this.props.confirming,
           })}
           resendLabel={this.props.translate("cm.enter_code")}
           resendHelp={this.props.translate("cm.lost_code")}
@@ -135,7 +136,7 @@ Emails.propTypes = {
   handleAdd: PropTypes.func,
   handleStartConfirmation: PropTypes.func,
   handleStopConfirmation: PropTypes.func,
-  handleRemoveEmail: PropTypes.func
+  handleRemoveEmail: PropTypes.func,
 };
 
 export default Emails;

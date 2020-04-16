@@ -1,0 +1,67 @@
+.help-text {
+  margin-top: 0px;
+  margin-bottom: -5px;
+  line-height: 1.2;
+  color: #7c7c7c;
+  font-size: 14px;
+  // background: yellow;
+}
+
+#orcid-connect-container,
+#register-securitykey-container,
+.namesview-form-container,
+.phoneview-form-container,
+.emailsview-form-container,
+#delete-account-container,
+#change-password-container {
+  margin: 0 auto;
+  width: 58%;
+  max-width: 54.4rem;
+}
+
+#personaldataview-form {
+  display: block;
+  width: 100%;
+}
+
+#personal-data-form {
+  display: flex;
+}
+
+#personal-data-form input,
+#emails-form input,
+#phone-form input {
+  background-color: white;
+  border: none;
+  border-bottom: solid 2px #161616;
+  font-family: "ProximaNova-Regular";
+  color: #161616;
+  font-size: 24px;
+}
+
+#add-more-button {
+  text-transform: lowercase;
+  &.hide {
+    display: none;
+  }
+}
+
+.form-content {
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #orcid-connect-container,
+  #register-securitykey-container,
+  .namesview-form-container,
+  .phoneview-form-container,
+  .emailsview-form-container,
+  #delete-account-container,
+  #change-password-container {
+    max-width: calc(100% - 40px);
+  }
+}

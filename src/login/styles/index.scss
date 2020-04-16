@@ -12,13 +12,12 @@
 @import "modals";
 
 /* replaces specific stylesheets */
-@import "Header";
-@import "Footer";
-@import "ResetPassword";
 @import "AccountLinking";
 @import "ChangePassword";
+@import "Emails";
+@import "Footer";
+@import "Header";
 @import "Nins";
 @import "Notifications";
-
-// does this styling work without stylesheet?
+@import "ResetPassword";
 @import "Splash";
