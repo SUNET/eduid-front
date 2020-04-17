@@ -15,7 +15,11 @@ import NotificationsContainer from "containers/Notifications";
 import EmailInUseContainer from "containers/EmailInUse";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "style/base.scss";
+import "style/DashboardMain.scss";
 import "style/SignupMain.scss";
+import "../login/styles/index.scss";
+import "style/Header.scss";
 
 export const history = createBrowserHistory();
 
@@ -113,7 +117,7 @@ class SignupMain extends Component {
           </div>
           <FooterContainer {...this.props} />
         </div>
-      </Router>
+      </Router>,
     ];
   }
 }
