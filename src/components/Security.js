@@ -4,7 +4,7 @@ import EduIDButton from "components/EduIDButton";
 import GenericConfirmModal from "components/GenericConfirmModal";
 import ConfirmModal from "components/ConfirmModal";
 
-import "style/Security.scss";
+import "../login/styles/index.scss";
 
 class Security extends Component {
   checkWebauthnDevice() {
@@ -16,8 +16,8 @@ class Security extends Component {
       return false;
     }
     PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-      .then(available => available)
-      .catch(error => {
+      .then((available) => available)
+      .catch((error) => {
         console.log("Error checking for platform authenticator:", error);
         return false;
       });
@@ -31,7 +31,7 @@ class Security extends Component {
     let securitykey_table = "";
     // filter out password from data
     const tokens = this.props.credentials.filter(
-      cred => cred.credential_type !== "security.password_credential_type"
+      (cred) => cred.credential_type !== "security.password_credential_type"
     );
 
     // data that goes onto the table
@@ -145,15 +145,13 @@ class Security extends Component {
           </div>
           <div id="register-webauthn-tokens-area">
             {securitykey_table}
-            <div id="add-webauthn-token">
-              <EduIDButton
-                id="security-webauthn-button"
-                className="settings-button"
-                onClick={this.props.handleStartAskingKeyWebauthnDescription}
-              >
-                {this.props.translate("security.add_webauthn_token_key")}
-              </EduIDButton>
-            </div>
+            <EduIDButton
+              id="security-webauthn-button"
+              className="settings-button"
+              onClick={this.props.handleStartAskingKeyWebauthnDescription}
+            >
+              {this.props.translate("security.add_webauthn_token_key")}
+            </EduIDButton>
             {platformAuthenticatorButton}
           </div>
         </div>
@@ -191,7 +189,7 @@ Security.propTypes = {
   last_used: PropTypes.string,
   langs: PropTypes.array,
   handleStartWebauthnRegistration: PropTypes.func,
-  handleCloseWebauthnModal: PropTypes.func
+  handleCloseWebauthnModal: PropTypes.func,
 };
 
 export default Security;
