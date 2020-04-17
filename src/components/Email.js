@@ -8,7 +8,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
 } from "reactstrap";
 
 import EduIDButton from "components/EduIDButton";
@@ -16,7 +16,7 @@ import "style/Email.scss";
 
 /* FORM */
 
-export const validate = values => {
+export const validate = (values) => {
   const errors = {},
     email = values.email,
     pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -28,19 +28,17 @@ export const validate = values => {
   return errors;
 };
 
-let EmailForm = props => (
-  <form id="register-input-group" onSubmit={props.handleEmail}>
-    <fieldset id="register-form">
-      <Field
-        type="email"
-        name="email"
-        componentClass="input"
-        id="email-input"
-        component={TextInput}
-        translate={props.translate}
-        placeholder="example@email.com"
-      />
-    </fieldset>
+let EmailForm = (props) => (
+  <form id="register-form" onSubmit={props.handleEmail}>
+    <Field
+      type="email"
+      name="email"
+      componentClass="input"
+      id="email-input"
+      component={TextInput}
+      translate={props.translate}
+      placeholder="example@email.com"
+    />
     <EduIDButton
       className="settings-button"
       id="register-button"
@@ -55,11 +53,11 @@ let EmailForm = props => (
 
 EmailForm = reduxForm({
   form: "emailForm",
-  validate
+  validate,
 })(EmailForm);
 
-EmailForm = connect(state => ({
-  enableReinitialize: true
+EmailForm = connect((state) => ({
+  enableReinitialize: true,
 }))(EmailForm);
 
 /* COMPONENT */
@@ -92,7 +90,7 @@ class Email extends Component {
             </EduIDButton>
           </ModalFooter>
         </Modal>
-      </div>
+      </div>,
     ];
   }
 }
@@ -102,7 +100,7 @@ Email.propTypes = {
   tou: PropTypes.string,
   translate: PropTypes.func,
   handleAccept: PropTypes.func,
-  handleReject: PropTypes.func
+  handleReject: PropTypes.func,
 };
 
 export default Email;
