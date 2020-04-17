@@ -1,58 +1,58 @@
 ﻿@import "../variables.scss";
 
-#register-container {
-  width: 58.3333%;
-  margin: 50px auto 5rem;
-}
+// #register-container {
+//   width: 58.3333%;
+//   margin: 50px auto 5rem;
+// }
 
-#register-input-group {
-  display: flex;
-}
+// #register-input-group {
+//   display: flex;
+// }
 
-#email-input {
-  background-color: white;
-  border: none;
-  border-bottom: solid 1px #161616;
-  font-family: "ProximaNova-Regular";
-  color: #161616;
-  font-size: 24px;
-}
+// #email-input {
+//   background-color: white;
+//   border: none;
+//   border-bottom: solid 1px #161616;
+//   font-family: "ProximaNova-Regular";
+//   color: #161616;
+//   font-size: 24px;
+// }
 
-#email {
-  padding: 0;
-}
+// #email {
+//   padding: 0;
+// }
 
-#register-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: 0;
-}
+// #register-form {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: baseline;
+//   margin-top: 0;
+// }
 
-#register-button {
-  margin-left: 1rem;
-}
+// #register-button {
+//   margin-left: 1rem;
+// }
 
-.form-control {
-  background-color: white;
-  border: none;
-  border-bottom: solid 1px #161616;
-  font-family: "ProximaNova-Regular";
-  color: #161616;
-  font-size: 24px;
-}
+// .form-control {
+//   background-color: white;
+//   border: none;
+//   border-bottom: solid 1px #161616;
+//   font-family: "ProximaNova-Regular";
+//   color: #161616;
+//   font-size: 24px;
+// }
 
-#email {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
+// #email {
+//   display: flex;
+//   flex-direction: column;
+//   flex: 1;
+// }
 
-#login-button {
-  cursor: pointer;
-  padding-left: 0;
-}
+// #login-button {
+//   cursor: pointer;
+//   padding-left: 0;
+// }
 
 #captcha-container {
   margin: 50px auto 5rem;
