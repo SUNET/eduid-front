@@ -1,8 +1,8 @@
 #register-container {
   width: 58%;
   max-width: 870px;
-  margin: 0 auto;
-  background: yellow;
+  margin: 1rem auto;
+  // background: yellow;
 }
 
 #register-form {
@@ -20,7 +20,23 @@
 
 #email {
   padding: 0;
-  // display: flex;
-  // flex-direction: column;
   flex: 1;
+}
+
+h3 {
+  &.register-header {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+#captcha {
+  transform: scale(1.2);
+  transform-origin: 0 0;
+  margin-bottom: 2rem;
+}
+
+#captcha-buttons {
+  display: flex;
+  align-items: baseline;
 }
