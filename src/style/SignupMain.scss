@@ -54,103 +54,99 @@
 //   padding-left: 0;
 // }
 
-#captcha-container {
-  margin: 50px auto 5rem;
-  // align-items: center;
-}
+// #captcha-container {
+//   margin: 50px auto 5rem;
+//   // align-items: center;
+// }
 
-#captcha {
-  transform: scale(1.2);
-  transform-origin: 0 0;
-  margin-bottom: 30px;
-}
+// #captcha {
+//   transform: scale(1.2);
+//   transform-origin: 0 0;
+//   margin-bottom: 30px;
+// }
 
-#send-captcha-button {
-  margin-right: 20px;
-}
+// #send-captcha-button {
+//   margin-right: 20px;
+// }
 
 // #captcha-buttons {
 //   // display: flex;
 //   // justify-content: center;
 // }
 
-.register-header {
-  font-family: "ProximaNova-Bold";
-  margin-top: 0px;
-  margin-bottom: 30px;
-}
+// .register-header {
+//   font-family: "ProximaNova-Bold";
+//   margin-top: 0px;
+//   margin-bottom: 30px;
+// }
 
-.captcha {
-  margin-top: 30px;
-  //   justify-content: center;
-}
+// .captcha {
+//   margin-top: 30px;
+//   //   justify-content: center;
+// }
 
 // #phone-display,
-#email-display {
-  flex-direction: column;
-}
+// #email-display {
+//   flex-direction: column;
+// }
 
-#email-display p {
-  text-transform: none;
-  font-size: 1.25rem;
-  margin: 30px 0;
-}
-.registered-email {
-  color: $orange-highlight;
-}
+// #email-display p {
+//   text-transform: none;
+//   font-size: 1.25rem;
+//   margin: 30px 0;
+// }
+// .registered-email {
+//   color: $orange-highlight;
+// }
 
-@media (max-width: 823px) {
-  #register-container {
-    width: 75%;
-  }
-  #register-form {
-    flex-direction: column;
-  }
-  #register-button {
-    margin-left: 0;
-  }
-}
+// @media (max-width: 823px) {
+//   #register-container {
+//     width: 75%;
+//   }
+//   #register-form {
+//     flex-direction: column;
+//   }
+//   #register-button {
+//     margin-left: 0;
+//   }
+// }
 
-@media (max-width: 768px) {
-  #register-container {
-    width: calc(100% - 40px);
-  }
-  #register-button {
-    width: 100%;
-  }
-}
+// @media (max-width: 768px) {
+//   #register-container {
+//     width: calc(100% - 40px);
+//   }
+//   #register-button {
+//     width: 100%;
+//   }
+// }
 
-@media (max-width: 414px) {
-  #register-input-group {
-    flex-direction: column;
-  }
-  #register-button {
-    margin: 20px 0;
-    width: 100%;
-  }
-  #register-container {
-    margin: 20px auto 3rem;
-  }
-  #captcha {
-    transform: scale(0.8);
-  }
-  #captcha-container {
-    margin: 0;
-  }
-  .captcha {
-    margin: 0;
-  }
-  /* margin-top: 0; */
-  // #dashboard-nav.nav-back {
-  //   max-width: calc(100% - 15px);
-  //   padding: 0;
-  // }
-}
-@media (max-width: 375px) {
-  #resend-button {
-    font-size: 0.8rem;
-  }
-}
+// @media (max-width: 414px) {
+//   #register-input-group {
+//     flex-direction: column;
+//   }
+//   #register-button {
+//     margin: 20px 0;
+//     width: 100%;
+//   }
+//   #register-container {
+//     margin: 20px auto 3rem;
+//   }
+//   #captcha {
+//     transform: scale(0.8);
+//   }
+//   #captcha-container {
+//     margin: 0;
+//   }
+//   .captcha {
+//     margin: 0;
+//   }
+//   /* margin-top: 0; */
+//   // #dashboard-nav.nav-back {
+//   //   max-width: calc(100% - 15px);
+//   //   padding: 0;
+//   // }
+// }
+
 
 // body,
 // div.jumbotron {
