@@ -46,3 +46,41 @@ h3 {
   align-items: baseline;
 }
 
+@media (max-width: 823px) {
+  #register-container {
+    width: 75%;
+  }
+  #register-form {
+    flex-direction: column;
+  }
+  #register-button {
+    width: fit-content;
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #register-container {
+    width: calc(100% - 40px);
+  }
+  #register-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 414px) {
+  #captcha {
+    transform: scale(0.9);
+    margin-bottom: 0;
+  }
+  .captcha {
+    margin: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  #resend-button {
+    font-size: 0.8rem;
+  }
+}
