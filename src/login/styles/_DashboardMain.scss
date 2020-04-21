@@ -1,5 +1,84 @@
 /* styles for scaffolding  */
-#root {
+// #root {
+//   height: 100%;
+// }
+
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  background: yellow;
+  // background: lightgray;
 }
+
+// these are styles for text in the header
+#dashboard-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// narrower one-line-banner introduced in reappering tou
+#banner {
+  background-color: white;
+  width: 58%;
+  margin: 0 auto;
+}
+
+h1.banner-tagline {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#logout {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+// remove this from the test of the app
+#welcome {
+  padding: 5.625rem 0 3rem 0;
+  width: 58%;
+  margin: 0 auto;
+  & h1 {
+    font-size: 36px;
+    margin-top: 0;
+    font-weight: 700;
+    word-break: break-all;
+    margin-bottom: 0px;
+  }
+}
+
+#dashboard-nav {
+  & ul {
+    display: flex;
+    flex-direction: row;
+    & li {
+      margin-right: 2rem;
+    }
+    & a {
+      color: #161616;
+      padding: 0 0.1875rem;
+      & span {
+        border-bottom: #161616 solid 1px;
+      }
+      // styling for when menu item is clicked
+      &.active {
+        color: $orange-highlight;
+        & span {
+          border-bottom: transparent solid 1px;
+        }
+      }
+      // styling for when hovering the menu item  
+      &:hover {
+        color: $orange-highlight;
+        border-bottom: transparent solid 1px;
+        & span {
+          border-bottom: transparent solid 1px;
+        }
+      }
+    }
+  }
+}
+
