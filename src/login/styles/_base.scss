@@ -31,7 +31,7 @@ body {
 
   // this is commented out to accomodate DashboardMain, should be introduced again for login app
   // background-color: #f4f4f4;
-  
+
   // this is here ONLY to counteract bootstrap
   &.container {
     width: 100%;
@@ -56,7 +56,8 @@ body {
   width: 58%;
   // max-width: 870px;
   max-width: 43.5rem;
-  margin: -2.25rem auto 0 auto;
+  // margin: -2.25rem auto 0 auto;
+  margin: 1rem auto;
 }
 
 // /* Mobile scrollbar */
