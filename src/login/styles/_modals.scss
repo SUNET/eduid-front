@@ -49,6 +49,33 @@ h5.modal-title {
   margin: auto;
 }
 
+// temporary styling for register tou
+#register-modal {
+  & .modal-header {
+    padding: 1rem 2rem;
+  }
+  & .modal-body {
+    padding: 1rem 2rem 0 2rem;
+    & p {
+      font-size: 1rem;
+      padding-bottom: 0;
+    }
+    & ul {
+      margin-left: 2rem;
+      list-style-type: disc;
+      & li {
+        margin: 0.75rem 0;
+        line-height: 1;
+      }
+    }
+  }
+  & .modal-footer {
+    & button {
+      margin: 0;
+    }
+  }
+}
+
 #freja-instructions,
 #freja-instructions label {
   color: #7c7c7c;
