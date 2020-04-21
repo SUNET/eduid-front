@@ -22,7 +22,7 @@ import "style/DashboardMain.scss";
 class Settings extends Component {
   render() {
     return (
-      <div id="dashboard">
+      <div className="vertical-content-margin">
         <DashboardNav {...this.props} />
         <div id="settings-content">
           <Route
@@ -32,7 +32,7 @@ class Settings extends Component {
           />
           <Route
             path="/profile/settings/personaldata"
-            render={props => <PersonalDataContainer {...props} />}
+            render={(props) => <PersonalDataContainer {...props} />}
           />
 
           <Route

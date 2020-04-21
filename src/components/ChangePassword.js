@@ -19,7 +19,7 @@ class ChangePassword extends Component {
 
   render() {
     return (
-      <div id="dashboard">
+      <div className="vertical-content-margin">
         <div id="password-wrapper">
           <DashboardNav {...this.props} />
           <div id="password-container">
@@ -43,7 +43,7 @@ ChangePassword.propTypes = {
   handleChoice: PropTypes.func,
   noop: PropTypes.func,
   handleStartPasswordChange: PropTypes.func,
-  cancel_to: PropTypes.string
+  cancel_to: PropTypes.string,
 };
 
 export default ChangePassword;
