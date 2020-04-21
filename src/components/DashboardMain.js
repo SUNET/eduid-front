@@ -12,7 +12,7 @@ import SettingsComponent from "./Settings";
 import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import "style/base.scss";
 // import "style/DashboardMain.scss";
 
