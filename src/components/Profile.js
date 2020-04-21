@@ -15,33 +15,34 @@ class Profile extends Component {
   render() {
     const url = this.props.history.location.pathname;
     let profileSection = "";
-    let stylingId = "profile-container";
+    // let stylingClass = "vertical-content-margin";
     let accountDetails = "";
 
     if (url.includes("verify-identity")) {
-      stylingId = "profile-container-verifyId";
+      // stylingClass = "profile-container-verifyId";
       profileSection = [<VerifyIdentity key="0" {...this.props} />];
     } else {
       accountDetails = [
         <NameDisplay key="0" />,
         <NinDisplay key="1" {...this.props} />,
         <PhoneDisplay key="2" />,
-        <EmailDisplay key="3" />
+        <EmailDisplay key="3" />,
       ];
     }
 
     return (
-      <div key="0" id="dashboard">
+      <div key="0" className="vertical-content-margin">
         <DashboardNav {...this.props} />
-        <div key="0" id={stylingId}>
-          <div key="0" id="profile-section">
-            {profileSection}
-          </div>
-          <div key="1" id="profile-detail-grid" className="profile-data">
-            {accountDetails}
-          </div>
+        {/* <div key="0" className={stylingClass}> */}
+        {/* <div key="0"> */}
+        <div key="0" id="profile-section">
+          {profileSection}
+        </div>
+        <div key="1" id="profile-detail-grid" className="profile-data">
+          {accountDetails}
         </div>
       </div>
+      // </div>
     );
   }
 }
@@ -50,7 +51,7 @@ Profile.propTypes = {
   nin: PropTypes.string,
   nins: PropTypes.array,
   validateNin: PropTypes.func,
-  handleDelete: PropTypes.func
+  handleDelete: PropTypes.func,
 };
 
 export default withRouter(Profile);
