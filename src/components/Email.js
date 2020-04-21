@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 
 import EduIDButton from "components/EduIDButton";
-import "style/Email.scss";
+// import "style/Email.scss";
 
 /* FORM */
 

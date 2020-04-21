@@ -92,7 +92,7 @@
   "eidas.token_verify_success": "U2F token verified successfully",
   "eidas.vetting_button_freja": "with a digital ID-card",
   "email.invalid_email": "The entered email is invalid",
-  "email.sign-up-email": "Register for eduID",
+  "email.sign-up-email": "Create eduID",
   "emails.add_new": "A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses.",
   "emails.button_add": "Add",
   "emails.button_add_more": "+ add more",

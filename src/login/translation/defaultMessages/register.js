@@ -12,7 +12,7 @@ export const register = {
   "email.sign-up-email": (
     <FormattedMessage
       id="email.sign-up-email"
-      defaultMessage={`Register for eduID`}
+      defaultMessage={`Create eduID`}
     />
   ),
 

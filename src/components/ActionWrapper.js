@@ -8,7 +8,7 @@ import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "style/SignupMain.scss";
+import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
 
@@ -61,13 +61,13 @@ class ActionWrapper extends Component {
           </div>
           <FooterContainer {...this.props} />
         </div>
-      </Router>
+      </Router>,
     ];
   }
 }
 
 ActionWrapper.propTypes = {
-  redirect: PropTypes.string
+  redirect: PropTypes.string,
 };
 
 export default ActionWrapper;

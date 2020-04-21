@@ -13,37 +13,37 @@ const mapStateToProps = (state, props) => {
   return {
     dashboard_url: state.config.dashboard_url,
     acceptingTOU: state.email.acceptingTOU,
-    tou: tou
+    tou: tou,
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleEmail: function(e) {
+    handleEmail: function (e) {
       e.preventDefault();
       const email = e.target.closest("#content").children[1].children[1]
-        .firstChild.firstChild.children[0].value;
+        .firstChild.children[0].value;
       dispatch(actions.addEmail(email));
     },
-    handleAccept: e => {
+    handleAccept: (e) => {
       e.preventDefault();
       dispatch(actions.acceptTOU());
       history.push(BASE_PATH + "/trycaptcha");
     },
-    handleReject: e => {
+    handleReject: (e) => {
       e.preventDefault();
       dispatch(actions.rejectTOU());
     },
-    gotoSignup: function(e) {
+    gotoSignup: function (e) {
       e.preventDefault();
       document.location.href = "/";
     },
-    gotoSignin: function(e) {
+    gotoSignin: function (e) {
       e.preventDefault();
       const dataNode = e.target.closest("div"),
         url = dataNode.dataset.dashboard_url;
       document.location.href = url;
-    }
+    },
   };
 };
 
