@@ -12,7 +12,7 @@ import SettingsComponent from "./Settings";
 import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
 
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import "style/base.scss";
 // import "style/DashboardMain.scss";
 
@@ -68,9 +68,9 @@ class Main extends Component {
           <div id="dashboard-text">
             <div id="welcome">
               <h1>{this.props.translate("dashboard.welcome")} {this.props.email}</h1>
-              <Link id="profile-prompt-link" to={promptLink}>
+              {/* <Link id="profile-prompt-link" to={promptLink}>
                 <h2 className={styling}>{welcomeGreeting}</h2>
-              </Link>
+              </Link> */}
             </div>
             <div id="content">
               <NotificationsContainer />
