@@ -3,27 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import EduIDButton from "components/EduIDButton";
-// import "style/Nins.scss";
 
 export class NinDisplay extends Component {
   render() {
     let userData = "";
     const url = this.props.history.location.pathname;
-
-    // }
-    //   if (this.props.verifiedNinStatus) {
-    //   } else {
-    //     return (
-    //       <div key="1" className="profile-card">
-    //         <label key="0">
-    //           {this.props.translate(
-    //             "nin_display.verify-identity_unverified_main_title"
-    //           )}
-    //         </label>
-    //         <div key="1" id="nin-display-container">
-    //
-    //   }
-    // } else {
     if (this.props.nins.length === 0) {
       userData = [
         <Link
