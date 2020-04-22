@@ -99,11 +99,20 @@ h1.banner-tagline {
   background: yellow;
   & label {
     font-family: "Akkurat";
+    width: 100%;
   }
 }
 
 .profile-grid-cell {
   background: lightyellow;
+  display: flex;
+  flex-direction: column;
+  & a span {
+    border-bottom: solid 1px #ff4500;
+    &:hover {
+      border-bottom: solid 1px transparent;
+    }
+  }
   & .display-data {
     font-family: "ProximaNova-Light";
     font-size: 2rem;
@@ -115,11 +124,11 @@ h1.banner-tagline {
     &.no-data {
       color: gray;
     }
-    //   &.unverified {
-    //     color: #ff4500;
-    //   }
-    //   &.verified {
-    //     color: #161616;
-    //   }
+    &.unverified {
+      color: #ff4500;
+    }
+    &.verified {
+      color: #161616;
+    }
   }
 }
