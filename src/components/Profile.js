@@ -7,22 +7,20 @@ import NinDisplay from "containers/NinDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";
 import { withRouter } from "react-router-dom";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
-import "style/DashboardMain.scss";
+// import "style/DashboardMain.scss";
 
 class Profile extends Component {
   render() {
     const url = this.props.history.location.pathname;
-    let profileSection = "";
-    // let stylingClass = "vertical-content-margin";
-    let accountDetails = "";
+    let section = "";
+    let details = "";
 
     if (url.includes("verify-identity")) {
-      // stylingClass = "profile-container-verifyId";
-      profileSection = [<VerifyIdentity key="0" {...this.props} />];
+      section = [<VerifyIdentity key="0" {...this.props} />];
     } else {
-      accountDetails = [
+      details = [
         <NameDisplay key="0" />,
         <NinDisplay key="1" {...this.props} />,
         <PhoneDisplay key="2" />,
@@ -36,10 +34,10 @@ class Profile extends Component {
         {/* <div key="0" className={stylingClass}> */}
         {/* <div key="0"> */}
         <div key="0" id="text-content">
-          {profileSection}
+          {section}
         </div>
         <div key="1" id="profile-detail-grid" className="profile-data">
-          {accountDetails}
+          {details}
         </div>
       </div>
       // </div>
