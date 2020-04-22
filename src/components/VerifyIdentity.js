@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { withRouter } from "react-router-dom";
 import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
@@ -14,12 +15,12 @@ class VerifyIdentity extends Component {
     let buttonHelpTextArray = [
       this.props.translate("letter.initialize_proofing_help_text"),
       this.props.translate("lmp.initialize_proofing_help_text"),
-      this.props.translate("eidas.initialize_proofing_help_text")
+      this.props.translate("eidas.initialize_proofing_help_text"),
     ];
     if (this.props.is_configured) {
       const vettingBtns = vettingRegistry(!this.props.valid_nin);
       const verifyOptions = this.props.proofing_methods.filter(
-        option => option !== "oidc"
+        (option) => option !== "oidc"
       );
       vettingButtons = verifyOptions.map((key, index) => {
         let helpText = buttonHelpTextArray[index];
@@ -41,7 +42,7 @@ class VerifyIdentity extends Component {
         </label>,
         <div key="1" id="nins-btn-grid">
           {vettingButtons}
-        </div>
+        </div>,
       ];
     }
     if (this.props.verifiedNinStatus) {
@@ -69,7 +70,7 @@ VerifyIdentity.propTypes = {
   nins: PropTypes.array,
   validateNin: PropTypes.func,
   handleDelete: PropTypes.func,
-  proofing_methods: PropTypes.array
+  proofing_methods: PropTypes.array,
 };
 
-export default withRouter(VerifyIdentity);
+export default i18n(withRouter(VerifyIdentity));

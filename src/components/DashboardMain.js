@@ -4,6 +4,8 @@ import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 //import FetchingContext from "components/FetchingContext";
+import DashboardNav from "./DashboardNav";
+import VerifyIdentity from "containers/VerifyIdentity";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
@@ -76,45 +78,55 @@ class Main extends Component {
             </div>
             <div id="content">
               <NotificationsContainer />
-              <Route path="/profile/settings/" component={SettingsComponent} />
-              <Route
-                exact
-                path="/profile/"
-                render={(props) => <Profile {...props} />}
-              />
-              <Route
-                path="/profile/verify-identity/"
-                render={(props) => <Profile {...props} />}
-              />
-              <Route
-                path="/profile/chpass/"
-                component={ChangePasswordContainer}
-              />
-              {/* Redirects for old paths */}
-              <Route
-                exact
-                path="/profile/security/"
-                component={() => <Redirect to="/profile/settings/" />}
-              />
-              <Route
-                exact
-                path="/profile/accountlinking/"
-                component={() => (
-                  <Redirect to="/profile/settings/advanced-settings/" />
-                )}
-              />
-              <Route
-                exact
-                path="/profile/nins/"
-                component={() => <Redirect to="/profile/verify-identity/" />}
-              />
-              <Route
-                exact
-                path="/profile/emails/"
-                component={() => (
-                  <Redirect to="/profile/settings/personaldata/" />
-                )}
-              />
+              <div key="0" className="vertical-content-margin">
+                <DashboardNav {...this.props} />
+                <div key="0" id="text-content">
+                  <Route
+                    path="/profile/settings/"
+                    component={SettingsComponent}
+                  />
+                  <Route
+                    exact
+                    path="/profile/"
+                    render={(props) => <Profile {...props} />}
+                  />
+                  <Route
+                    path="/profile/verify-identity/"
+                    render={(props) => <VerifyIdentity {...props} />}
+                  />
+                  <Route
+                    path="/profile/chpass/"
+                    component={ChangePasswordContainer}
+                  />
+                  {/* Redirects for old paths */}
+                  <Route
+                    exact
+                    path="/profile/security/"
+                    component={() => <Redirect to="/profile/settings/" />}
+                  />
+                  <Route
+                    exact
+                    path="/profile/accountlinking/"
+                    component={() => (
+                      <Redirect to="/profile/settings/advanced-settings/" />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/profile/nins/"
+                    component={() => (
+                      <Redirect to="/profile/verify-identity/" />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/profile/emails/"
+                    component={() => (
+                      <Redirect to="/profile/settings/personaldata/" />
+                    )}
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <FooterContainer {...this.props} />
