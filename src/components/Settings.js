@@ -24,7 +24,7 @@ class Settings extends Component {
     return (
       <div className="vertical-content-margin">
         <DashboardNav {...this.props} />
-        <div id="settings-content">
+        <div>
           <Route
             exact
             path="/profile/settings/"
