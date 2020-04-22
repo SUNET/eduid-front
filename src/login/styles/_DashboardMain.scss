@@ -49,10 +49,12 @@ h1.banner-tagline {
 }
 
 #dashboard-nav {
+  margin-bottom: 1rem;
   & ul {
     display: flex;
     flex-direction: row;
     margin-left: -0.1875rem;
+    margin-bottom: 0;
     & li {
       margin-right: 2rem;
     }
@@ -81,5 +83,7 @@ h1.banner-tagline {
   }
 }
 
-#settings-content {
+#text-content {
+  // the height here is set to total the same as the notifications above the dashboard nav
+  margin-top: 2.25rem;
 }

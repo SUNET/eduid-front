@@ -35,7 +35,7 @@ class Profile extends Component {
         <DashboardNav {...this.props} />
         {/* <div key="0" className={stylingClass}> */}
         {/* <div key="0"> */}
-        <div key="0" id="profile-section">
+        <div key="0" id="text-content">
           {profileSection}
         </div>
         <div key="1" id="profile-detail-grid" className="profile-data">
