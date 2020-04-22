@@ -68,12 +68,6 @@ export class NinDisplay extends Component {
     // } else {
     if (this.props.nins.length === 0) {
       userData = [
-        // return (
-        // <div key="1" className="profile-card">
-        //   <label key="0">
-        //     {this.props.translate("nin_display.profile.main_title")}
-        //   </label>
-        // <div key="1" id="nin-number-container">
         <Link
           key="1"
           to={`/profile/verify-identity/`}
@@ -83,42 +77,43 @@ export class NinDisplay extends Component {
           {this.props.translate("nin_display.profile.no_nin")}
           {/* </p> */}
         </Link>,
-        // </div>,
       ];
-      // </div>
-      // );
+    } else {
+      if (this.props.verifiedNinStatus) {
+        userData = [
+          <div key="1" data-ninnumber={this.props.verifiedNin[0].number}>
+            <p key="0" className="display-data verified">
+              {this.props.verifiedNin[0].number}
+            </p>
+          </div>,
+        ];
+      } else {
+        userData = [
+          <Link
+            key="1"
+            to={`/profile/verify-identity/`}
+            className="display-data unverified"
+          >
+            <span>{this.props.nins[0].number}</span>
+          </Link>,
+        ];
+      }
+      //   if (this.props.verifiedNinStatus) {
+      //     return (
+      //       <div key="1" className="profile-card">
+      //         <label key="0">
+      //           {this.props.translate("nin_display.profile.main_title")}
+      //         </label>
+      //
+      //       </div>
+      //     );
     }
-    // else {
-    //   if (this.props.verifiedNinStatus) {
-    //     return (
-    //       <div key="1" className="profile-card">
-    //         <label key="0">
-    //           {this.props.translate("nin_display.profile.main_title")}
-    //         </label>
-    //         <div key="1" data-ninnumber={this.props.verifiedNin[0].number}>
-    //           <p key="0" id="nin-number" className="verified">
-    //             {this.props.verifiedNin[0].number}
-    //           </p>
-    //         </div>
-    //       </div>
-    //     );
-    //   }
     return (
       <div key="1" className="profile-grid-cell">
         <label key="0">
           {this.props.translate("nin_display.profile.main_title")}
         </label>
         {userData}
-        {/* <div key="1" id="nin-number" id="nin-number-container">
-              <Link
-                key="2"
-                to={`/profile/verify-identity/`}
-                id="nin-number"
-                className="unverified profile-data"
-              >
-                {this.props.nins[0].number}
-              </Link>
-            </div> */}
       </div>
     );
   }
