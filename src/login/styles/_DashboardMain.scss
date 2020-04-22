@@ -87,3 +87,18 @@ h1.banner-tagline {
   // the height here is set to total the same as the notifications above the dashboard nav
   margin-top: 2.25rem;
 }
+
+
+// --- PROFILE STYLES --- //
+#profile-grid {
+  //   // margin: 0 auto 7rem;
+  display: grid;
+  // grid-row-gap: 50px;
+  // grid-column-gap: 30px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(2, auto);
+  background: yellow;
+  & label {
+    font-family: "Akkurat";
+  }
+}

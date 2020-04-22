@@ -35,9 +35,10 @@ class Profile extends Component {
         {/* <div key="0"> */}
         <div key="0" id="text-content">
           {section}
-        </div>
-        <div key="1" id="profile-detail-grid" className="profile-data">
-          {details}
+          {/* className="profile-data" */}
+          <div key="1" id="profile-grid">
+            {details}
+          </div>
         </div>
       </div>
       // </div>
