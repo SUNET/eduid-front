@@ -10,6 +10,24 @@ class DashboardNav extends Component {
     const url = window.location.href;
 
     // if (url.includes("settings")) {
+    // if (url.includes("verify-identity") || url.includes("chpass")) {
+    //     return (
+    //       <nav id="dashboard-nav" className="nav-back">
+    //         <ul className="navbar-nav">
+    //           <NavLink
+    //             exact
+    //             activeClassName="active"
+    //             className="nav-link"
+    //             to={`/profile/`}
+    //           >
+    //             <li className="nav-item">
+    //               <h5>{this.props.translate("dashboard_nav.back")}</h5>
+    //             </li>
+    //           </NavLink>
+    //         </ul>
+    //       </nav>
+    //     );
+    // } else {
     return (
       <nav id="dashboard-nav">
         {/* className="navbar-nav" */}
@@ -24,12 +42,15 @@ class DashboardNav extends Component {
             <li>{this.props.translate("dashboard_nav.profile")}</li>
           </NavLink>
           <NavLink
+            exact
             activeClassName="active"
             // className="nav-link"
             to={`/profile/verify-identity/`}
           >
             {/* className="nav-item" */}
-            <li>Identity</li>
+            <li>
+              <span>Identity</span>
+            </li>
             {/* <li>{this.props.translate("dashboard_nav.settings")}</li> */}
           </NavLink>
           <NavLink
@@ -51,6 +72,8 @@ class DashboardNav extends Component {
         </ul>
       </nav>
     );
+    // }
+
     //   } else if (url.includes("verify-identity") || url.includes("chpass")) {
     //     return (
     //       <nav id="dashboard-nav" className="nav-back">
