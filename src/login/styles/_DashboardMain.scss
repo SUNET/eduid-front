@@ -88,7 +88,6 @@ h1.banner-tagline {
   margin-top: 2.25rem;
 }
 
-
 // --- PROFILE STYLES --- //
 #profile-grid {
   //   // margin: 0 auto 7rem;
@@ -100,5 +99,26 @@ h1.banner-tagline {
   background: yellow;
   & label {
     font-family: "Akkurat";
+  }
+}
+
+.profile-grid-cell {
+  background: lightyellow;
+  & .display-data {
+    font-family: "ProximaNova-Light";
+    font-size: 2rem;
+    line-height: 1;
+    margin-left: 0.1875rem;
+    margin-top: 0.375rem;
+    padding-bottom: 0;
+    &.no-data {
+      color: gray;
+    }
+    //   &.unverified {
+    //     color: #ff4500;
+    //   }
+    //   &.verified {
+    //     color: #161616;
+    //   }
   }
 }
