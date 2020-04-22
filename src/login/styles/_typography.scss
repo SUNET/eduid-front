@@ -64,6 +64,23 @@ p.steps {
   padding-bottom: 0;
 }
 
+.intro {
+  & h4 {
+    font-size: 1.5rem;
+    line-height: 2.125rem;
+    // margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  & p {
+    padding-bottom: 0;
+  }
+  & h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
 // this is the first paragraph on pages outside of the dashboard
 .sub-heading {
   margin-top: 3rem;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { withRouter } from "react-router-dom";
@@ -37,9 +37,16 @@ class VerifyIdentity extends Component {
 
     if (this.props.nins.length && !this.props.verifiedNinStatus) {
       connectNin = [
-        <label key="0">
-          {this.props.translate("verify-identity.connect_nin_title")}
-        </label>,
+        <div key="0" className="intro">
+          <h3 key="0">
+            2. Verify your id number
+            {/* {this.props.translate("verify-identity.connect_nin_title")} */}
+          </h3>
+          <p>
+            Choose a method to verify that you have access to the added id
+            number. If you are unable to use a method you need to try another.
+          </p>
+        </div>,
         <div key="1" id="nins-btn-grid">
           {vettingButtons}
         </div>,
@@ -54,13 +61,18 @@ class VerifyIdentity extends Component {
     }
 
     return (
-      <div key="0" id="verify-identity-container">
-        <h3 key="0" className="verify-identity-header">
-          {headerText}
-        </h3>
-        <AddNin {...this.props} />
+      <Fragment>
+        <div key="0" className="intro">
+          <h4>{headerText}</h4>
+          <p>
+            To be able to use eduID you have to prove your identity. Add your
+            national id number and verify it in real life.
+          </p>
+          <h3>1. Add your id number</h3>
+          <AddNin {...this.props} />
+        </div>
         {connectNin}
-      </div>
+      </Fragment>
     );
   }
 }
