@@ -92,39 +92,42 @@ button.cancel-button {
 /* styles for REMOVE icons */
 // ----- buttons that remove data ----  //
 // button.btn.btn-sm,
-button.btn.icon-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: solid 1px transparent;
-  box-shadow: none;
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: transparent;
-    border: solid 1px #ff500d;
-  }
-}
+// button.btn.icon-button {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: transparent;
+//   border: solid 1px transparent;
+//   box-shadow: none;
+//   margin: 0;
+//   padding: 0 1rem;
+//   height: auto;
+//   &:hover,
+//   &:not(:disabled):not(.disabled):active,
+//   &:not(:disabled):not(.disabled):focus,
+//   &:not(:disabled):not(.disabled):active:focus {
+//     background-color: transparent;
+//     border: solid 1px transparent;
+//   }
+// }
 
-/* styles for DELETE button */
-// --- button that deletes user --- //
-button.btn.icon-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: solid 1px transparent;
-  box-shadow: none;
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: transparent;
-    border: solid 1px #ff500d;
-  }
-}
+// /* styles for DELETE button */
+// // --- button that deletes user --- //
+// button.btn.icon-button {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: transparent;
+//   border: solid 1px transparent;
+//   box-shadow: none;
+//   &:hover,
+//   &:not(:disabled):not(.disabled):active,
+//   &:not(:disabled):not(.disabled):focus,
+//   &:not(:disabled):not(.disabled):active:focus {
+//     background-color: transparent;
+//     border: solid 1px #ff500d;
+//   }
+// }
 
 /* styles for links that are also buttons */
 // -----  ----  //
