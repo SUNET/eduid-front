@@ -109,10 +109,9 @@ h1.banner-tagline {
   & .data-with-delete {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
     & p {
-      margin: 0;
-      padding: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
   }
   & a span {
