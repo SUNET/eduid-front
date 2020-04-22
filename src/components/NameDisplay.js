@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "style/base.scss";
-import "style/DashboardMain.scss";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "style/base.scss";
+// import "style/DashboardMain.scss";
 
 class NameDisplay extends Component {
   render() {
