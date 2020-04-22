@@ -16,7 +16,7 @@ import NotificationsContainer from "containers/Notifications";
 // import "style/base.scss";
 // import "style/DashboardMain.scss";
 
-import "../login/styles/index.scss"
+import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
 
@@ -63,11 +63,13 @@ class Main extends Component {
         <div className="dashboard-wrapper">
           <a id="stable-link" className="hidden" href="/feature/no-beta">
             {this.props.translate("beta-link.to-stable")}
-          </a> 
+          </a>
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
-            <div id="welcome">
-              <h1>{this.props.translate("dashboard.welcome")} {this.props.email}</h1>
+            <div id="welcome" className="vertical-content-margin">
+              <h1>
+                {this.props.translate("dashboard.welcome")} {this.props.email}
+              </h1>
               {/* <Link id="profile-prompt-link" to={promptLink}>
                 <h2 className={styling}>{welcomeGreeting}</h2>
               </Link> */}
@@ -78,11 +80,11 @@ class Main extends Component {
               <Route
                 exact
                 path="/profile/"
-                render={props => <Profile {...props} />}
+                render={(props) => <Profile {...props} />}
               />
               <Route
                 path="/profile/verify-identity/"
-                render={props => <Profile {...props} />}
+                render={(props) => <Profile {...props} />}
               />
               <Route
                 path="/profile/chpass/"
@@ -117,14 +119,14 @@ class Main extends Component {
           </div>
           <FooterContainer {...this.props} />
         </div>
-      </Router>
+      </Router>,
     ];
   }
 }
 
 Main.propTypes = {
   eppn: PropTypes.string,
-  messages: PropTypes.object
+  messages: PropTypes.object,
 };
 
 export default Main;

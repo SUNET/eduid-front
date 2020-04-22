@@ -39,8 +39,6 @@ h1.banner-tagline {
 // remove this from the test of the app
 #welcome {
   padding: 5.625rem 0 3rem 0;
-  width: 58%;
-  margin: 0 auto;
   & h1 {
     font-size: 36px;
     margin-top: 0;
@@ -54,6 +52,7 @@ h1.banner-tagline {
   & ul {
     display: flex;
     flex-direction: row;
+    margin-left: -0.1875rem;
     & li {
       margin-right: 2rem;
     }
@@ -70,7 +69,7 @@ h1.banner-tagline {
           border-bottom: transparent solid 1px;
         }
       }
-      // styling for when hovering the menu item  
+      // styling for when hovering the menu item
       &:hover {
         color: $orange-highlight;
         border-bottom: transparent solid 1px;
@@ -82,3 +81,5 @@ h1.banner-tagline {
   }
 }
 
+#settings-content {
+}
