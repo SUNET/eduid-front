@@ -59,6 +59,9 @@ body {
   // this margin covers the notifications (check in the new login app why it is like this - plan for dashboard to have notifications under nav)
   // margin: -2.25rem auto 0 auto;
   margin: 1rem auto;
+  // this is added to prevent margin collapse (look for other solution if causing problems)
+  display: flex;
+  flex-direction: column;
 }
 
 // /* Mobile scrollbar */
