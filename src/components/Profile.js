@@ -11,7 +11,6 @@ import "style/base.scss";
 
 class Profile extends Component {
   render() {
-    const url = this.props.history.location.pathname;
     return (
       <div key="1" id="profile-grid">
         <NameDisplay key="0" />
