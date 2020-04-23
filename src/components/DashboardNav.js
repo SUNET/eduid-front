@@ -15,9 +15,7 @@ class DashboardNav extends Component {
             activeClassName="active"
             to={`/profile/verify-identity/`}
           >
-            <li>
-              <span>Identity</span>
-            </li>
+            <li>{this.props.translate("dashboard_nav.identity")}</li>
           </NavLink>
           <NavLink activeClassName="active" to={`/profile/settings/`}>
             <li>{this.props.translate("dashboard_nav.settings")}</li>

@@ -42,12 +42,10 @@ class VerifyIdentity extends Component {
       connectNin = [
         <div key="1" className="intro">
           <h3 key="0">
-            2. Verify your id number
-            {/* {this.props.translate("verify-identity.connect_nin_title")} */}
+            {this.props.translate("verify-identity.connect-nin_heading")}
           </h3>
           <p>
-            Choose a method to verify that you have access to the added id
-            number. If you are unable to use a method you need to try another.
+            {this.props.translate("verify-identity.connect-nin_description")}
           </p>
           <div key="1" id="nins-btn-grid">
             {vettingButtons}
@@ -63,11 +61,8 @@ class VerifyIdentity extends Component {
       <Fragment>
         <div key="0" className="intro">
           <h4>{headerText}</h4>
-          <p>
-            To be able to use eduID you have to prove your identity. Add your
-            national id number and verify it in real life.
-          </p>
-          <h3>1. Add your id number</h3>
+          <p>{this.props.translate("verify-identity.page-description")}</p>
+          <h3>{this.props.translate("verify-identity.add-nin_heading")}</h3>
           <AddNin {...this.props} />
         </div>
         {connectNin}
