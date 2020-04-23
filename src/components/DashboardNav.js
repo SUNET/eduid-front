@@ -1,131 +1,50 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "style/base.scss";
-// import "style/DashboardMain.scss";
 
 class DashboardNav extends Component {
   render() {
-    const url = window.location.href;
-
-    // if (url.includes("settings")) {
-    // if (url.includes("verify-identity") || url.includes("chpass")) {
-    //     return (
-    //       <nav id="dashboard-nav" className="nav-back">
-    //         <ul className="navbar-nav">
-    //           <NavLink
-    //             exact
-    //             activeClassName="active"
-    //             className="nav-link"
-    //             to={`/profile/`}
-    //           >
-    //             <li className="nav-item">
-    //               <h5>{this.props.translate("dashboard_nav.back")}</h5>
-    //             </li>
-    //           </NavLink>
-    //         </ul>
-    //       </nav>
-    //     );
-    // } else {
-    return (
-      <nav id="dashboard-nav">
-        {/* className="navbar-nav" */}
-        <ul>
-          <NavLink
-            exact
-            activeClassName="active"
-            // className="nav-link"
-            to={`/profile/`}
-          >
-            {/* className="nav-item" */}
-            <li>{this.props.translate("dashboard_nav.profile")}</li>
-          </NavLink>
-          <NavLink
-            exact
-            activeClassName="active"
-            // className="nav-link"
-            to={`/profile/verify-identity/`}
-          >
-            {/* className="nav-item" */}
-            <li>
-              <span>Identity</span>
-            </li>
-            {/* <li>{this.props.translate("dashboard_nav.settings")}</li> */}
-          </NavLink>
-          <NavLink
-            activeClassName="active"
-            // className="nav-link"
-            to={`/profile/settings/`}
-          >
-            {/* className="nav-item" */}
-            <li>{this.props.translate("dashboard_nav.settings")}</li>
-          </NavLink>
-          <NavLink
-            activeClassName="active"
-            // className="nav-link advanced-setting"
-            to={`/profile/settings/advanced-settings`}
-          >
-            {/* className="nav-item" */}
-            <li>{this.props.translate("dashboard_nav.advanced-settings")}</li>
-          </NavLink>
-        </ul>
-      </nav>
-    );
-    // }
-
-    //   } else if (url.includes("verify-identity") || url.includes("chpass")) {
-    //     return (
-    //       <nav id="dashboard-nav" className="nav-back">
-    //         <ul className="navbar-nav">
-    //           <NavLink
-    //             exact
-    //             activeClassName="active"
-    //             className="nav-link"
-    //             to={`/profile/`}
-    //           >
-    //             <li className="nav-item">
-    //               <h5>{this.props.translate("dashboard_nav.back")}</h5>
-    //             </li>
-    //           </NavLink>
-    //         </ul>
-    //       </nav>
-    //     );
-    //   } else {
-    //     return (
-    //       <nav id="dashboard-nav">
-    //         <ul className="navbar-nav">
-    //           <NavLink
-    //             exact
-    //             activeClassName="active"
-    //             className="nav-link"
-    //             to={`/profile/`}
-    //           >
-    //             <li className="nav-item">
-    //               <h5>{this.props.translate("dashboard_nav.profile")}</h5>
-    //             </li>
-    //           </NavLink>
-    //           <NavLink
-    //             activeClassName="active"
-    //             className="nav-link"
-    //             to={`/profile/settings/`}
-    //           >
-    //             <li className="nav-item">
-    //               <h5>{this.props.translate("dashboard_nav.settings")}</h5>
-    //             </li>
-    //           </NavLink>
-    //           <NavLink className="nav-link advanced-setting transparent" to={`#`}>
-    //             <li className="transparent">
-    //               <h5 className="transparent">
-    //                 {this.props.translate("dashboard_nav.advanced-settings")}
-    //               </h5>
-    //             </li>
-    //           </NavLink>
-    //         </ul>
-    //       </nav>
-    //     );
-    //   }
+    const url = location.pathname;
+    if (url.includes("chpass")) {
+      return (
+        <nav id="dashboard-nav">
+          <ul>
+            <NavLink exact to={`/profile/`}>
+              <li>{this.props.translate("dashboard_nav.back")}</li>
+            </NavLink>
+          </ul>
+        </nav>
+      );
+    } else {
+      return (
+        <nav id="dashboard-nav">
+          <ul>
+            <NavLink exact activeClassName="active" to={`/profile/`}>
+              <li>{this.props.translate("dashboard_nav.profile")}</li>
+            </NavLink>
+            <NavLink
+              exact
+              activeClassName="active"
+              to={`/profile/verify-identity/`}
+            >
+              <li>
+                <span>Identity</span>
+              </li>
+            </NavLink>
+            <NavLink activeClassName="active" to={`/profile/settings/`}>
+              <li>{this.props.translate("dashboard_nav.settings")}</li>
+            </NavLink>
+            <NavLink
+              activeClassName="active"
+              to={`/profile/settings/advanced-settings`}
+            >
+              <li>{this.props.translate("dashboard_nav.advanced-settings")}</li>
+            </NavLink>
+          </ul>
+        </nav>
+      );
+    }
   }
 }
 
-export default i18n(DashboardNav);
+export default i18n(withRouter(DashboardNav));
