@@ -32,6 +32,10 @@
     "defaultMessage": "Email address"
   },
   {
+    "id": "profile.eppn_display_title",
+    "defaultMessage": "eppn"
+  },
+  {
     "id": "profile.email_display_no_data",
     "defaultMessage": "no email added"
   },
@@ -48,6 +52,10 @@
     "defaultMessage": "Profile"
   },
   {
+    "id": "dashboard_nav.identity",
+    "defaultMessage": "Identity"
+  },
+  {
     "id": "dashboard_nav.settings",
     "defaultMessage": "Settings"
   },
@@ -57,11 +65,19 @@
   },
   {
     "id": "dashboard_nav.back",
-    "defaultMessage": "Back"
+    "defaultMessage": "< Back"
   },
   {
     "id": "verify-identity.unverified_main_title",
     "defaultMessage": "Connect your identity to your eduID"
+  },
+  {
+    "id": "verify-identity.add-nin_heading",
+    "defaultMessage": "1. Add\n            your id number"
+  },
+  {
+    "id": "verify-identity.page-description",
+    "defaultMessage": "To be able\n            to use eduID you have to prove your identity. Add your national id number and verify it in real life."
   },
   {
     "id": "verify-identity.verified_main_title",
@@ -80,8 +96,12 @@
     "defaultMessage": "For those able to create a Freja eID by visiting one of the authorised agents"
   },
   {
-    "id": "verify-identity.connect_nin_title",
-    "defaultMessage": "2. Choose a way to verify that the id number belongs to you"
+    "id": "verify-identity.connect-nin_heading",
+    "defaultMessage": "2. Verify your id number"
+  },
+  {
+    "id": "verify-identity.connect-nin_description",
+    "defaultMessage": "Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another."
   },
   {
     "id": "letter.button_text_request",
@@ -349,15 +369,15 @@
   },
   {
     "id": "nin_display.verify-identity_verified_main_title",
-    "defaultMessage": "National id number"
+    "defaultMessage": "id number"
   },
   {
     "id": "nin_display.profile.main_title",
-    "defaultMessage": "National id number"
+    "defaultMessage": "id number"
   },
   {
     "id": "nin_display.profile.no_nin",
-    "defaultMessage": "Add id number"
+    "defaultMessage": "add id number"
   },
   {
     "id": "nins.input_help_text",
