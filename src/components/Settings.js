@@ -15,9 +15,6 @@ import AccountId from "containers/AccountId";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
-import "style/DashboardMain.scss";
-
-// import "../login/styles/index.scss";
 
 class Settings extends Component {
   render() {
