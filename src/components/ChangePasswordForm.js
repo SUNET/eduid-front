@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -49,14 +49,14 @@ class ChangePasswordForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      customPassword: false
+      customPassword: false,
     };
     this.togglePasswordType = this.togglePasswordType.bind(this);
   }
 
   togglePasswordType() {
-    this.setState(prevState => ({
-      customPassword: !prevState.customPassword
+    this.setState((prevState) => ({
+      customPassword: !prevState.customPassword,
     }));
   }
 
@@ -77,7 +77,7 @@ class ChangePasswordForm extends Component {
           <FormText>
             {this.props.translate(this.props.password_strength_msg)}
           </FormText>
-        </div>
+        </div>,
       ];
 
       button = (
@@ -116,21 +116,16 @@ class ChangePasswordForm extends Component {
         <div
           className="password-format"
           dangerouslySetInnerHTML={{
-            __html: this.props.translate("chpass.help-text-newpass")
+            __html: this.props.translate("chpass.help-text-newpass"),
           }}
         />
       );
     } else {
       form = (
-        <Field
-          component={TextInput}
-          componentClass="input"
-          type="text"
-          name={pwFieldSuggestedName}
-          id={pwFieldSuggestedName}
-          label={this.props.translate("chpass.suggested_password")}
-          disabled={true}
-        />
+        <Fragment>
+          <label>{this.props.translate("chpass.suggested_password")}</label>
+          <p id="suggested-password">{this.props.suggested_password}</p>
+        </Fragment>
       );
       button = (
         <EduIDButton
@@ -188,15 +183,15 @@ class ChangePasswordForm extends Component {
 
 ChangePasswordForm = reduxForm({
   form: "chpass",
-  validate
+  validate,
 })(ChangePasswordForm);
 
-ChangePasswordForm = connect(state => {
+ChangePasswordForm = connect((state) => {
   const initialValues = {};
   initialValues[pwFieldSuggestedName] = state.chpass.suggested_password;
   return {
     initialValues: initialValues,
-    enableReinitialize: true
+    enableReinitialize: true,
   };
 })(ChangePasswordForm);
 
@@ -209,7 +204,7 @@ ChangePasswordForm.propTypes = {
   handleChoice: PropTypes.func,
   noop: PropTypes.func,
   handleStartPasswordChange: PropTypes.func,
-  cancel_to: PropTypes.string
+  cancel_to: PropTypes.string,
 };
 
 export default ChangePasswordForm;
