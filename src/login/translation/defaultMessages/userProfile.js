@@ -2,138 +2,160 @@ import React from "react";
 import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
 export const userProfile = {
-  // dashboard
-  "dashboard.welcome": (
-    <FormattedMessage id="dashboard.welcome" defaultMessage={`eduID for`} />
-  ),
+         // dashboard
+         "dashboard.welcome": (
+           <FormattedMessage
+             id="dashboard.welcome"
+             defaultMessage={`eduID for`}
+           />
+         ),
 
-  // profile page
-  "profile.name_display_title": (
-    <FormattedMessage id="profile.name_display_title" defaultMessage={`Name`} />
-  ),
-  "profile.name_display_no_data": (
-    <FormattedMessage
-      id="profile.name_display_no_data"
-      defaultMessage={`no name added`}
-    />
-  ),
+         // profile page
+         "profile.name_display_title": (
+           <FormattedMessage
+             id="profile.name_display_title"
+             defaultMessage={`Name`}
+           />
+         ),
+         "profile.name_display_no_data": (
+           <FormattedMessage
+             id="profile.name_display_no_data"
+             defaultMessage={`no name added`}
+           />
+         ),
 
-  "profile.phone_display_title": (
-    <FormattedMessage
-      id="profile.phone_display_title"
-      defaultMessage={`Phone number`}
-    />
-  ),
+         "profile.phone_display_title": (
+           <FormattedMessage
+             id="profile.phone_display_title"
+             defaultMessage={`Phone number`}
+           />
+         ),
 
-  "profile.phone_display_unconfirmed_data": (
-    <FormattedMessage
-      id="profile.phone_display_unconfirmed_data"
-      defaultMessage={`confirm added number`}
-    />
-  ),
+         "profile.phone_display_unconfirmed_data": (
+           <FormattedMessage
+             id="profile.phone_display_unconfirmed_data"
+             defaultMessage={`confirm added number`}
+           />
+         ),
 
-  "profile.phone_display_non-primary_data": (
-    <FormattedMessage
-      id="profile.phone_display_non-primary_data"
-      defaultMessage={`make number primary`}
-    />
-  ),
+         "profile.phone_display_non-primary_data": (
+           <FormattedMessage
+             id="profile.phone_display_non-primary_data"
+             defaultMessage={`make number primary`}
+           />
+         ),
 
-  "profile.phone_display_no_data": (
-    <FormattedMessage
-      id="profile.phone_display_no_data"
-      defaultMessage={`no phone number added`}
-    />
-  ),
+         "profile.phone_display_no_data": (
+           <FormattedMessage
+             id="profile.phone_display_no_data"
+             defaultMessage={`no phone number added`}
+           />
+         ),
 
-  "profile.email_display_title": (
-    <FormattedMessage
-      id="profile.email_display_title"
-      defaultMessage={`Email address`}
-    />
-  ),
+         "profile.email_display_title": (
+           <FormattedMessage
+             id="profile.email_display_title"
+             defaultMessage={`Email address`}
+           />
+         ),
 
-  "profile.email_display_no_data": (
-    <FormattedMessage
-      id="profile.email_display_no_data"
-      defaultMessage={`no email added`}
-    />
-  ),
+         "profile.eppn_display_title": (
+           <FormattedMessage
+             id="profile.eppn_display_title"
+             defaultMessage={`eppn`}
+           />
+         ),
+         
+         "profile.email_display_no_data": (
+           <FormattedMessage
+             id="profile.email_display_no_data"
+             defaultMessage={`no email added`}
+           />
+         ),
 
-  "dashboard.tagline_unverified": (
-    <FormattedMessage
-      id="dashboard.tagline_unverified"
-      defaultMessage={`Don't forget to connect your identity to eduID`}
-    />
-  ),
+         "dashboard.tagline_unverified": (
+           <FormattedMessage
+             id="dashboard.tagline_unverified"
+             defaultMessage={`Don't forget to connect your identity to eduID`}
+           />
+         ),
 
-  "dashboard.tagline_verified": (
-    <FormattedMessage
-      id="dashboard.tagline_verified"
-      defaultMessage={`Make eduID more secure`}
-    />
-  ),
+         "dashboard.tagline_verified": (
+           <FormattedMessage
+             id="dashboard.tagline_verified"
+             defaultMessage={`Make eduID more secure`}
+           />
+         ),
 
-  /* ----- DASHBOARDNAV  ------- */
-  "dashboard_nav.profile": (
-    <FormattedMessage id="dashboard_nav.profile" defaultMessage={`Profile`} />
-  ),
-  "dashboard_nav.settings": (
-    <FormattedMessage id="dashboard_nav.settings" defaultMessage={`Settings`} />
-  ),
-  "dashboard_nav.advanced-settings": (
-    <FormattedMessage
-      id="dashboard_nav.advanced-settings"
-      defaultMessage={`Advanced settings`}
-    />
-  ),
-  "dashboard_nav.back": (
-    <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />
-  ),
+         /* ----- DASHBOARDNAV  ------- */
+         "dashboard_nav.profile": (
+           <FormattedMessage
+             id="dashboard_nav.profile"
+             defaultMessage={`Profile`}
+           />
+         ),
+         "dashboard_nav.settings": (
+           <FormattedMessage
+             id="dashboard_nav.settings"
+             defaultMessage={`Settings`}
+           />
+         ),
+         "dashboard_nav.advanced-settings": (
+           <FormattedMessage
+             id="dashboard_nav.advanced-settings"
+             defaultMessage={`Advanced settings`}
+           />
+         ),
+         "dashboard_nav.back": (
+           <FormattedMessage
+             id="dashboard_nav.back"
+             defaultMessage={`< Back`}
+           />
+         ),
 
-  "verify-identity.unverified_main_title": (
-    <FormattedMessage
-      id="verify-identity.unverified_main_title"
-      defaultMessage={`Connect your identity to your eduID`}
-    />
-  ),
+         "verify-identity.unverified_main_title": (
+           <FormattedMessage
+             id="verify-identity.unverified_main_title"
+             defaultMessage={`Connect your identity to your eduID`}
+           />
+         ),
 
-  /* ----- verifyIdentity  ------- */
-  "verify-identity.verified_main_title": (
-    <FormattedMessage
-      id="verify-identity.verified_main_title"
-      defaultMessage={`Your eduID is ready to use`}
-    />
-  ),
+         /* ----- verifyIdentity  ------- */
+         "verify-identity.verified_main_title": (
+           <FormattedMessage
+             id="verify-identity.verified_main_title"
+             defaultMessage={`Your eduID is ready to use`}
+           />
+         ),
 
-  "verify-identity.vetting_post_tagline": (
-    <FormattedMessage
-      id="verify-identity.vetting_post_tagline"
-      defaultMessage={`For those registered at their current address`}
-    />
-  ),
+         "verify-identity.vetting_post_tagline": (
+           <FormattedMessage
+             id="verify-identity.vetting_post_tagline"
+             defaultMessage={`For those registered at their current address`}
+           />
+         ),
 
-  "verify-identity.vetting_phone_tagline": (
-    <FormattedMessage
-      id="verify-identity.vetting_phone_tagline"
-      defaultMessage={`For those with a phone registered in their name`}
-    />
-  ),
+         "verify-identity.vetting_phone_tagline": (
+           <FormattedMessage
+             id="verify-identity.vetting_phone_tagline"
+             defaultMessage={`For those with a phone registered in their name`}
+           />
+         ),
 
-  "verify-identity.vetting_freja_tagline": (
-    <FormattedMessage
-      id="verify-identity.vetting_freja_tagline"
-      defaultMessage={`For those able to create a Freja eID by visiting one of the authorised agents`}
-    />
-  ),
+         "verify-identity.vetting_freja_tagline": (
+           <FormattedMessage
+             id="verify-identity.vetting_freja_tagline"
+             defaultMessage={`For those able to create a Freja eID by visiting one of the authorised agents`}
+           />
+         ),
 
-  "verify-identity.connect_nin_title": (
-    <FormattedMessage
-      id="verify-identity.connect_nin_title"
-      defaultMessage={`2. Choose a way to verify that the id number belongs to you`}
-    />
-  )
-};
+         "verify-identity.connect_nin_title": (
+           <FormattedMessage
+             id="verify-identity.connect_nin_title"
+             defaultMessage={`2. Choose a way to verify that the id number belongs to you`}
+           />
+         ),
+       };
 
 export const userVetting = {
   /* ----- LETTER PROOFING  ------- */

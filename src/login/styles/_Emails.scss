@@ -4,20 +4,17 @@
   line-height: 1.2;
   color: #7c7c7c;
   font-size: 14px;
-  // background: yellow;
 }
 
-// #orcid-connect-container,
-// #register-securitykey-container,
-// .namesview-form-container,
-// .phoneview-form-container,
-// .emailsview-form-container,
-// #delete-account-container,
-// #change-password-container {
-//   margin: 0 auto;
-//   width: 58%;
-//   max-width: 54.4rem;
-// }
+#uniqueId-container {
+  margin-top: 1rem;
+}
+
+.phoneview-form-container,
+#delete-account-container,
+#change-password-container {
+  margin-top: 2rem;
+}
 
 #personaldataview-form {
   display: block;
@@ -64,16 +61,4 @@
 
 .hide {
   display: none;
-}
-
-@media (max-width: 768px) {
-  #orcid-connect-container,
-  #register-securitykey-container,
-  .namesview-form-container,
-  .phoneview-form-container,
-  .emailsview-form-container,
-  #delete-account-container,
-  #change-password-container {
-    max-width: calc(100% - 40px);
-  }
 }

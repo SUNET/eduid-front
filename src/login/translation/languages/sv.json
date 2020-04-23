@@ -279,6 +279,7 @@
   "phones.verification-success": "Telefonnummer har bekräftats",
   "profile.email_display_no_data": "ingen e-postadress sparad",
   "profile.email_display_title": "E-postadress",
+  "profile.eppn_display_title": "eppn",
   "profile.name_display_no_data": "inget namn sparat",
   "profile.name_display_title": "Namn",
   "profile.phone_display_no_data": "inget telefonnummer sparat",
