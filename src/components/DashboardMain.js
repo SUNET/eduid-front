@@ -4,19 +4,15 @@ import { Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 //import FetchingContext from "components/FetchingContext";
-import DashboardNav from "./DashboardNav";
-import VerifyIdentity from "containers/VerifyIdentity";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
 import ChangePasswordContainer from "containers/ChangePassword";
 import SettingsComponent from "./Settings";
+import DashboardNav from "./DashboardNav";
+import VerifyIdentity from "containers/VerifyIdentity";
 import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
-
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "style/base.scss";
-// import "style/DashboardMain.scss";
 
 import "../login/styles/index.scss";
 
@@ -38,24 +34,6 @@ class Main extends Component {
   //}
 
   render() {
-    let promptLink = ``;
-    let welcomeGreeting = "";
-    let styling = "unverified";
-    if (this.props.nin) {
-      promptLink = `/profile/verify-identity/`;
-      styling = "unverified";
-      welcomeGreeting = this.props.translate("dashboard.tagline_unverified");
-      if (this.props.verifiedNin) {
-        promptLink = `/profile/settings/advanced-settings`;
-        styling = "verified";
-        welcomeGreeting = this.props.translate("dashboard.tagline_verified");
-      }
-    } else {
-      promptLink = `/profile/verify-identity/`;
-      styling = "unverified";
-      welcomeGreeting = this.props.translate("dashboard.tagline_unverified");
-    }
-
     // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
     // should wrap the splash container and router once we get back to using
     // it.
@@ -72,9 +50,6 @@ class Main extends Component {
               <h1>
                 {this.props.translate("dashboard.welcome")} {this.props.email}
               </h1>
-              {/* <Link id="profile-prompt-link" to={promptLink}>
-                <h2 className={styling}>{welcomeGreeting}</h2>
-              </Link> */}
             </div>
             <div id="content">
               <NotificationsContainer />
