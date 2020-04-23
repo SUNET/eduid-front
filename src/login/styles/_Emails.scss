@@ -10,6 +10,15 @@
   margin-top: 1rem;
 }
 
+#emailsview-form,
+#phonesview-form {
+  flex-direction: row;
+  align-items: baseline;
+  & button {
+    margin-left: 1rem;
+  }
+}
+
 .phoneview-form-container,
 #delete-account-container,
 #change-password-container {
