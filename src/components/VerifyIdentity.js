@@ -35,9 +35,12 @@ class VerifyIdentity extends Component {
       });
     }
 
-    if (this.props.nins.length && !this.props.verifiedNinStatus) {
+    if (!this.props.verifiedNinStatus) {
+      headerText = this.props.translate(
+        "verify-identity.unverified_main_title"
+      );
       connectNin = [
-        <div key="0" className="intro">
+        <div key="1" className="intro">
           <h3 key="0">
             2. Verify your id number
             {/* {this.props.translate("verify-identity.connect_nin_title")} */}
@@ -46,18 +49,14 @@ class VerifyIdentity extends Component {
             Choose a method to verify that you have access to the added id
             number. If you are unable to use a method you need to try another.
           </p>
-        </div>,
-        <div key="1" id="nins-btn-grid">
-          {vettingButtons}
+          <div key="1" id="nins-btn-grid">
+            {vettingButtons}
+          </div>
         </div>,
       ];
-    }
-    if (this.props.verifiedNinStatus) {
+    } else if (this.props.verifiedNinStatus) {
       headerText = this.props.translate("verify-identity.verified_main_title");
-    } else {
-      headerText = this.props.translate(
-        "verify-identity.unverified_main_title"
-      );
+      connectNin = "";
     }
 
     return (
