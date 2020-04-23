@@ -93,9 +93,8 @@
 /*--- styles for vetting buttons ---*/
 #nins-btn-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
   grid-column-gap: 1rem;
-  max-width: 616px;
   margin-top: 2rem;
 }
 
@@ -120,7 +119,6 @@
     color: #161616;
     border: solid #161616 2px;
     background-color: white;
-    margin: auto;
     padding: 1rem 1.5rem;
     border-radius: 20px;
     width: 300px;
@@ -143,7 +141,7 @@
 }
 
 .proofing-btn-help {
-  margin: 1rem auto;
+  margin: 1rem 0.5rem;
   line-height: 1.2;
   color: #7c7c7c;
   font-size: 0.875rem;
