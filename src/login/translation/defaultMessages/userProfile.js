@@ -88,7 +88,7 @@ export const userProfile = {
     />
   ),
   "dashboard_nav.back": (
-    <FormattedMessage id="dashboard_nav.back" defaultMessage={`Back`} />
+    <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />
   ),
 
   "verify-identity.unverified_main_title": (
