@@ -5,23 +5,24 @@ import {
   putCsrfToken,
   postRequest,
   saveData,
-  failRequest
+  failRequest,
 } from "sagas/common";
 import { postLookupMobileFail } from "actions/LookupMobileProofing";
 import * as ninActions from "actions/Nins";
 
 export function* requestLookupMobileProof() {
   try {
-    const state = yield select(state => state),
-      // input = document.getElementsByName("nin")[0],
-      unconfirmed = document.getElementById("nin-number"),
-      // console.log("this is unconfirmed", unconfirmed);
-      // nin = input ? input.value : unconfirmed ? state.nins.nin : "testing",
-      nin = unconfirmed ? state.nins.nin : "testing",
-      data = {
-        nin: nin,
-        csrf_token: state.config.csrf_token
-      };
+    const state = yield select((state) => state);
+    // input = document.getElementsByName("nin")[0],
+    const unconfirmed = document.querySelector(".display-data").parentElement
+      .dataset.ninnumber;
+    // console.log("this is unconfirmed", unconfirmed);
+    // nin = input ? input.value : unconfirmed ? state.nins.nin : "testing",
+    const nin = unconfirmed ? state.nins.nin : "testing";
+    const data = {
+      nin: nin,
+      csrf_token: state.config.csrf_token,
+    };
 
     const lookupMobileData = yield call(
       fetchLookupMobileProof,
@@ -40,20 +41,21 @@ export function fetchLookupMobileProof(config, data) {
   return window
     .fetch(url, {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
-const getData = state => {
+const getData = (state) => {
   // const input = document.getElementsByName("nin")[0],
   // unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
-  const unconfirmed = document.getElementById("nin-number"),
-    // nin = input ? input.value : unconfirmed ? state.nins.nin : "testing";
-    nin = unconfirmed ? state.nins.nin : "testing";
+  const unconfirmed = document.querySelector(".display-data").parentElement
+    .dataset.ninnumber;
+  // nin = input ? input.value : unconfirmed ? state.nins.nin : "testing";
+  const nin = unconfirmed ? state.nins.nin : "testing";
   return {
     nin: nin,
-    csrf_token: state.config.csrf_token
+    csrf_token: state.config.csrf_token,
   };
 };
 
