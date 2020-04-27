@@ -1,0 +1,74 @@
+[
+  {
+    "id": "pd.choose-language",
+    "defaultMessage": "Choose language"
+  },
+  {
+    "id": "emails.confirm_email_placeholder",
+    "description": "Placeholder for email text input",
+    "defaultMessage": "Email confirmation code"
+  },
+  {
+    "id": "mobile.confirm_mobile_placeholder",
+    "description": "Placeholder for phone text input",
+    "defaultMessage": "Phone confirmation code"
+  },
+  {
+    "id": "chpass.help-text-newpass",
+    "description": "help text for custom password",
+    "defaultMessage": "<label>Tip: Choose a strong password</label>\n            <ul id=\"password-custom-help\">\n\t            <li>Use upper- and lowercase characters, but not at the beginning or end</li>\n\t            <li>Add digits somewhere, but not at the beginning or end</li>\n                <li>Add special characters, such as &#64; &#36; &#92; &#43; &#95; &#37;</li>\n\t            <li>Spaces are ignored</li>\n            </ul>"
+  },
+  {
+    "id": "cm.lost_code",
+    "description": "Lost code problem description",
+    "defaultMessage": "Is the code not working?"
+  },
+  {
+    "id": "cm.resend_code",
+    "description": "Lost code problem solution",
+    "defaultMessage": "Send a new confirmation code"
+  },
+  {
+    "id": "letter.lost_code",
+    "description": "Text for letter proofing confirm dialog",
+    "defaultMessage": "When you click on the \"Send code\" link a letter with a verification code will be sent to your official post address."
+  },
+  {
+    "id": "letter.resend_code",
+    "description": "Text for letter code resend button",
+    "defaultMessage": "Send code"
+  },
+  {
+    "id": "letter.placeholder",
+    "description": "Placeholder for letter proofing text input",
+    "defaultMessage": "Letter confirmation code"
+  },
+  {
+    "id": "pd.given_name",
+    "defaultMessage": "First name"
+  },
+  {
+    "id": "pd.surname",
+    "defaultMessage": "Last name"
+  },
+  {
+    "id": "pd.display_name",
+    "defaultMessage": "Display Name"
+  },
+  {
+    "id": "pd.language",
+    "defaultMessage": "Language"
+  },
+  {
+    "id": "pd.display_name_inputplaceholder",
+    "defaultMessage": "First and last name"
+  },
+  {
+    "id": "nins.input_placeholder",
+    "defaultMessage": "yyyymmddnnnn"
+  },
+  {
+    "id": "phones.input_placeholder",
+    "defaultMessage": "phone number"
+  }
+]

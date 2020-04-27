@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
+import TableList from "components/TableList";
 import GenericConfirmModal from "components/GenericConfirmModal";
 import ConfirmModal from "components/ConfirmModal";
 
@@ -121,7 +122,7 @@ class Security extends Component {
     // show no table if no security keys
     if (tokens.length > 0) {
       securitykey_table = (
-        <table className="passwords">
+        <table className="table-form passwords">
           <tbody>
             <tr>
               <th>{this.props.translate("security.description")}</th>
@@ -143,7 +144,7 @@ class Security extends Component {
             <h4>{this.props.translate("security.security-key_title")}</h4>
             <p>{this.props.translate("security.second-factor")}</p>
           </div>
-          <div id="register-webauthn-tokens-area">
+          <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
             <EduIDButton
               id="security-webauthn-button"

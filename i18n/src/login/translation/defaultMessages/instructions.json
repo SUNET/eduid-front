@@ -1,0 +1,30 @@
+[
+  {
+    "id": "faq_link",
+    "defaultMessage": "For more information see the"
+  },
+  {
+    "id": "resend.link-sent",
+    "defaultMessage": "A link has been sent to your email address."
+  },
+  {
+    "id": "resend.email-label",
+    "defaultMessage": "Complete registration by clicking the link sent to:"
+  },
+  {
+    "id": "resend.button",
+    "defaultMessage": "Send a new confirmation link"
+  },
+  {
+    "id": "signup.verification-resent",
+    "defaultMessage": "Verification email resent"
+  },
+  {
+    "id": "signup.registering-resend-code",
+    "defaultMessage": "Verification email resent"
+  },
+  {
+    "id": "mfa.try-again",
+    "defaultMessage": "Try again"
+  }
+]
