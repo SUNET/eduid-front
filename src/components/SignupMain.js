@@ -16,10 +16,7 @@ import EmailInUseContainer from "containers/EmailInUse";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "style/base.scss";
-import "style/DashboardMain.scss";
-// import "style/SignupMain.scss";
 import "../login/styles/index.scss";
-// import "style/Header.scss";
 
 export const history = createBrowserHistory();
 
@@ -81,7 +78,7 @@ class SignupMain extends Component {
         <div className="dashboard-wrapper">
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
-            <div id="welcome">
+            <div id="welcome" className="vertical-content-margin">
               <h1>{this.props.translate("main.welcome")}</h1>
               <h2>{this.props.translate("register.create-account")}</h2>
             </div>

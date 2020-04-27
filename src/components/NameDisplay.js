@@ -1,32 +1,32 @@
 import React, { Component } from "react";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "style/base.scss";
-import "style/DashboardMain.scss";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "style/base.scss";
+// import "style/DashboardMain.scss";
 
 class NameDisplay extends Component {
   render() {
-    let text = "";
+    let userData = "";
     if (this.props.firstName) {
-      text = [
-        <p key="0" id="nin-number" className="verified">
+      userData = [
+        <p key="0" className="display-data verified">
           {this.props.firstName} {this.props.lastName}
-        </p>
+        </p>,
       ];
     } else {
-      text = [
-        <p key="0" id="nin-number" className="no-data">
+      userData = [
+        <p key="0" className="display-data no-data">
           {this.props.translate("profile.name_display_no_data")}
-        </p>
+        </p>,
       ];
     }
     return (
-      <div key="0" className="profile-card">
+      <div key="0" className="profile-grid-cell">
         <label key="0">
           {this.props.translate("profile.name_display_title")}
         </label>
-        <div key="1" id="nin-number-container">
-          {text}
-        </div>
+        {/* <div key="1" id="nin-number-container"> */}
+        {userData}
+        {/* </div> */}
       </div>
     );
   }

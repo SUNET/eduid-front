@@ -1,74 +1,31 @@
 //--- STEP 1. ADD NIN STYLES ---//
-
-#verify-identity-container {
-  & .profile-card {
-    margin-bottom: 2rem;
-  }
-  & label {
-    margin: 0 0 1rem 0;
-    font-size: 1.25rem;
-    font-family: "ProximaNova-Regular";
-    text-transform: none;
-    line-height: 1.2;
-  }
-}
-
-h3 {
-  &.verify-identity-header {
-    width: 100%;
-    margin-top: 0px;
-  }
-}
-
-/*--- styles for nin form ---*/
+// /*--- styles for nin form ---*/
 #nin-form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 1rem;
   & button {
-    margin-top: 0;
+    margin-top: 0.75rem;
   }
 }
 
-#nin input {
-  background-color: #ffffff;
-  font-family: "ProximaNova-Regular";
-  border: none;
-  color: #161616;
-  font-size: 2rem;
-  border-bottom: solid #333 3px;
-  &::placeholder {
-    font-size: 2rem;
-  }
-}
-
-/*--- styles for nin digits ---*/
-#nin-number-container {
+#nin {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  & a {
-    color: $orange-highlight;
-    transition: all 0.5s ease;
-    cursor: pointer;
-    border-bottom: solid transparent 2px;
-    &:hover {
-      text-decoration: none;
-      border-bottom: solid #ff4500 2px;
-    }
-  }
-}
-
-#nin-number {
-  font-size: 2rem;
-  line-height: 1.5;
-  margin-bottom: 0;
-  padding-right: 0.375rem;
-  &.unverified {
-    color: #ff4500;
-  }
-  &.verified {
+  flex-direction: column;
+  flex: 1;
+  margin-right: 1rem;
+  & input {
+    background-color: #ffffff;
+    font-family: "ProximaNova-Regular";
+    border: none;
     color: #161616;
+    font-size: 2rem;
+
+    border-bottom: solid #161616 3px;
+    &::placeholder {
+      font-size: 2rem;
+    }
   }
 }
 
@@ -84,9 +41,9 @@ h3 {
 /*--- styles for vetting buttons ---*/
 #nins-btn-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
   grid-column-gap: 1rem;
-  max-width: 616px;
+  margin-top: 2rem;
 }
 
 .vetting-button {
@@ -100,16 +57,17 @@ h3 {
   }
   & .name {
     align-self: flex-end;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1;
+    text-transform: uppercase;
   }
   & button {
     font-family: "ProximaNova-Bold";
     line-height: 1;
     color: #161616;
+    border: solid #161616 2px;
     background-color: white;
-    margin: auto;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 20px;
     width: 300px;
     height: 300px;
@@ -123,7 +81,7 @@ h3 {
     cursor: pointer;
     &:hover {
       transform: scale(0.99);
-      border: solid #ff4500 1px;
+      border: solid #ff4500 2px;
       color: #ff4500;
       transition: all 0.5s ease;
     }
@@ -131,7 +89,7 @@ h3 {
 }
 
 .proofing-btn-help {
-  margin: 1rem auto;
+  margin: 1rem 0.5rem;
   line-height: 1.2;
   color: #7c7c7c;
   font-size: 0.875rem;
@@ -145,7 +103,6 @@ h3 {
       padding: 0;
     }
   }
-
   #nin-number {
     font-size: 2rem;
     line-height: 1.2;

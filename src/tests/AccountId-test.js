@@ -27,8 +27,8 @@ describe("AccountId component renders", () => {
       surname: "",
       display_name: "",
       language: "",
-      eppn: "dummy-eppn"
-    }
+      eppn: "dummy-eppn",
+    },
   };
   const wrapper = shallow(
     <IntlProvider locale="en">
@@ -45,30 +45,30 @@ describe("AccountId component renders", () => {
         eppn: "dummy-eppn",
         given_name: "",
         language: "",
-        surname: ""
-      }
+        surname: "",
+      },
     });
   });
   expect(wrapper.props().data.eppn).toEqual("dummy-eppn");
 });
 
 describe("AccountId component renders", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
   const fakeState = {
     personal_data: {
       data: {
-        eppn: "dummy-eppn"
-      }
+        eppn: "dummy-eppn",
+      },
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -93,7 +93,7 @@ describe("AccountId component renders", () => {
     );
     return {
       // props,
-      wrapper
+      wrapper,
     };
   }
 
@@ -106,7 +106,7 @@ describe("AccountId component renders", () => {
 
   it("Component renders eppn", () => {
     const { wrapper } = setupComponent();
-    const eppn = wrapper.find("#nin-number");
+    const eppn = wrapper.find(".display-data");
     expect(eppn.exists()).toBe(true);
     expect(eppn.text()).toContain("dummy-eppn");
   });

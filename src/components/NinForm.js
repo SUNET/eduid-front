@@ -9,7 +9,7 @@ import * as actions from "actions/Nins";
 import TextInput from "components/EduIDTextInput";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 
-const validate = values => {
+const validate = (values) => {
   let value = values.nin;
   // accept only digits
   if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
@@ -45,6 +45,7 @@ class NinForm extends Component {
             componentClass="input"
             type="text"
             name="nin"
+            label={this.props.translate("nin_display.profile.main_title")}
             placeholder={this.props.translate("nins.input_placeholder")}
             helpBlock={this.props.translate("nins.input_help_text")}
           />
@@ -69,23 +70,23 @@ NinForm = reduxForm({
   keepDirtyOnReinitialize: true,
   keepValuesOnReinitialize: true,
   updateUnregisteredFields: true,
-  validate: validate
+  validate: validate,
 })(NinForm);
 
 const mapStateToProps = (state, props) => {
   return {
-    initialValues: { nin: state.nins.nin }
+    initialValues: { nin: state.nins.nin },
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    addNin: function(e) {
+    addNin: function (e) {
       e.preventDefault();
       const nin = e.target.closest("#nin-form-container").firstElementChild
         .firstElementChild.children[0].value;
       dispatch(actions.postNin(nin));
-    }
+    },
   };
 };
 

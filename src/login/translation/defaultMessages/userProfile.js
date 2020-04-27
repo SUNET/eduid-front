@@ -53,6 +53,10 @@ export const userProfile = {
     />
   ),
 
+  "profile.eppn_display_title": (
+    <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />
+  ),
+
   "profile.email_display_no_data": (
     <FormattedMessage
       id="profile.email_display_no_data"
@@ -78,6 +82,9 @@ export const userProfile = {
   "dashboard_nav.profile": (
     <FormattedMessage id="dashboard_nav.profile" defaultMessage={`Profile`} />
   ),
+  "dashboard_nav.identity": (
+    <FormattedMessage id="dashboard_nav.identity" defaultMessage={`Identity`} />
+  ),
   "dashboard_nav.settings": (
     <FormattedMessage id="dashboard_nav.settings" defaultMessage={`Settings`} />
   ),
@@ -88,13 +95,29 @@ export const userProfile = {
     />
   ),
   "dashboard_nav.back": (
-    <FormattedMessage id="dashboard_nav.back" defaultMessage={`Back`} />
+    <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />
   ),
 
   "verify-identity.unverified_main_title": (
     <FormattedMessage
       id="verify-identity.unverified_main_title"
       defaultMessage={`Connect your identity to your eduID`}
+    />
+  ),
+
+  "verify-identity.add-nin_heading": (
+    <FormattedMessage
+      id="verify-identity.add-nin_heading"
+      defaultMessage={`1. Add
+            your id number`}
+    />
+  ),
+
+  "verify-identity.page-description": (
+    <FormattedMessage
+      id="verify-identity.page-description"
+      defaultMessage={`To be able
+            to use eduID you have to prove your identity. Add your national id number and verify it in real life.`}
     />
   ),
 
@@ -127,12 +150,19 @@ export const userProfile = {
     />
   ),
 
-  "verify-identity.connect_nin_title": (
+  "verify-identity.connect-nin_heading": (
     <FormattedMessage
-      id="verify-identity.connect_nin_title"
-      defaultMessage={`2. Choose a way to verify that the id number belongs to you`}
+      id="verify-identity.connect-nin_heading"
+      defaultMessage={`2. Verify your id number`}
     />
-  )
+  ),
+
+  "verify-identity.connect-nin_description": (
+    <FormattedMessage
+      id="verify-identity.connect-nin_description"
+      defaultMessage={`  Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another.`}
+    />
+  ),
 };
 
 export const userVetting = {
@@ -591,7 +621,7 @@ export const userVetting = {
       id="ocf.not_on_mobile_message"
       defaultMessage={`You need to switch to a mobile device (iOS or Android) with <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID</a> installed before you will be able to confirm your account using Freja eID.`}
     />
-  )
+  ),
 };
 
 export const userData = {
@@ -614,21 +644,21 @@ export const userData = {
   "nin_display.verify-identity_verified_main_title": (
     <FormattedMessage
       id="nin_display.verify-identity_verified_main_title"
-      defaultMessage={`National id number`}
+      defaultMessage={`id number`}
     />
   ),
 
   "nin_display.profile.main_title": (
     <FormattedMessage
       id="nin_display.profile.main_title"
-      defaultMessage={`National id number`}
+      defaultMessage={`id number`}
     />
   ),
 
   "nin_display.profile.no_nin": (
     <FormattedMessage
       id="nin_display.profile.no_nin"
-      defaultMessage={`Add id number`}
+      defaultMessage={`add id number`}
     />
   ),
 
@@ -883,7 +913,7 @@ export const userData = {
   ),
   /* -----  MOBILE ------- */
 
-  "mobile.resend_success": values => (
+  "mobile.resend_success": (values) => (
     <FormattedMessage
       id="mobile.resend_success"
       defaultMessage={`New code sent to {email}`}
@@ -899,7 +929,7 @@ export const userData = {
     <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />
   ),
 
-  "mobile.confirm_title": values => (
+  "mobile.confirm_title": (values) => (
     <FormattedMessage
       id="mobile.confirm_title"
       defaultMessage={`Enter the code sent to {phone} here`}
@@ -960,7 +990,7 @@ export const userData = {
 
   /* ----- EMAILS------- */
 
-  "emails.resend_success": values => (
+  "emails.resend_success": (values) => (
     <FormattedMessage
       id="emails.resend_success"
       defaultMessage={`New code sent to {email}`}
@@ -997,7 +1027,7 @@ export const userData = {
     <FormattedMessage id="emails.button_add" defaultMessage={`Add`} />
   ),
 
-  "emails.confirm_title": values => (
+  "emails.confirm_title": (values) => (
     <FormattedMessage
       id="emails.confirm_title"
       defaultMessage={`Click the link or enter the code sent to {email} here`}
@@ -1524,5 +1554,5 @@ export const userData = {
       id="delete.confirm_button"
       defaultMessage={`Delete my eduID`}
     />
-  )
+  ),
 };

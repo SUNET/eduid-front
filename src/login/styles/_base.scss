@@ -29,17 +29,17 @@ body {
   // height: 100vh;
   flex-direction: column;
 
-  // this is commented out to accomodate DashboardMain, should be introduced again for login app 
+  // this is commented out to accomodate DashboardMain, should be introduced again for login app
   // background-color: #f4f4f4;
-}
 
-// this is here ONLY to counteract bootstrap
-.container {
-  width: 100%;
-  padding-right: 0;
-  padding-left: 0;
-  margin-right: 0;
-  margin-left: 0;
+  // this is here ONLY to counteract bootstrap
+  &.container {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 
 #content {
@@ -47,14 +47,21 @@ body {
   flex-direction: column;
   flex: 1;
   padding-bottom: 2rem;
+  // background: lightyellow;
+  background-color: #f4f4f4;
 }
 
 .vertical-content-margin {
   padding: 0;
   width: 58%;
-  // max-width: 870px;
-  max-width: 43.5rem;
-  margin: -2.25rem auto 0 auto;
+  max-width: 870px;
+  // max-width: 43.5rem;
+  // this margin covers the notifications (check in the new login app why it is like this - plan for dashboard to have notifications under nav)
+  // margin: -2.25rem auto 0 auto;
+  margin: 1rem auto;
+  // this is added to prevent margin collapse (look for other solution if causing problems)
+  display: flex;
+  flex-direction: column;
 }
 
 // /* Mobile scrollbar */
@@ -82,26 +89,34 @@ body {
 // }
 
 // this is here ONLY to counteract bootstrap
-@media (min-width: 1200px) {
-  .container {
-    max-width: 100%;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 100%;
-  }
-}
-@media (min-width: 768px) {
-  body {
-    background-color: inherit;
-  }
-  .container {
-    max-width: 100%;
-  }
-}
-@media (min-width: 576px) {
-  .container {
-    max-width: 100%;
-  }
-}
+// @media (min-width: 1200px) {
+//   .container {
+//     max-width: 100%;
+//   }
+// }
+// @media (min-width: 992px) {
+//   .container {
+//     max-width: 100%;
+//   }
+// }
+// @media (max-width: 823px) {
+//   .vertical-content-margin {
+//     width: 75%;
+//   }
+// }
+// @media (min-width: 768px) {
+//   body {
+//     background-color: inherit;
+//   }
+//   .container {
+//     max-width: 100%;
+//   }
+//   .vertical-content-margin {
+//     width: calc(100% - 40px);
+//   }
+// }
+// @media (min-width: 576px) {
+//   .container {
+//     max-width: 100%;
+//   }
+// }

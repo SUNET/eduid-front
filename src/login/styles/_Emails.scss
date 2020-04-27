@@ -4,19 +4,25 @@
   line-height: 1.2;
   color: #7c7c7c;
   font-size: 14px;
-  // background: yellow;
 }
 
-#orcid-connect-container,
-#register-securitykey-container,
-.namesview-form-container,
+#uniqueId-container {
+  margin-top: 1rem;
+}
+
+#emailsview-form,
+#phonesview-form {
+  flex-direction: row;
+  align-items: baseline;
+  & button {
+    margin-left: 1rem;
+  }
+}
+
 .phoneview-form-container,
-.emailsview-form-container,
 #delete-account-container,
 #change-password-container {
-  margin: 0 auto;
-  width: 58%;
-  max-width: 54.4rem;
+  margin-top: 2rem;
 }
 
 #personaldataview-form {
@@ -24,10 +30,22 @@
   width: 100%;
 }
 
+#suggested-password {
+  display: table;
+  padding: 0.125rem 0.5rem;
+  background: $orange-opaque;
+  font-size: 1.5rem;
+  border: none;
+  color: $orange-highlight;
+}
+
 #personal-data-form {
   display: flex;
 }
 #email input,
+#old-password-field input,
+#custom-password-field input,
+#repeat-password-field input,
 #personal-data-form input,
 #emails-form input,
 #phone-form input {
@@ -52,16 +70,4 @@
 
 .hide {
   display: none;
-}
-
-@media (max-width: 768px) {
-  #orcid-connect-container,
-  #register-securitykey-container,
-  .namesview-form-container,
-  .phoneview-form-container,
-  .emailsview-form-container,
-  #delete-account-container,
-  #change-password-container {
-    max-width: calc(100% - 40px);
-  }
 }

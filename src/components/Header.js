@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "../login/styles/index.scss";
 import "style/Header.scss";
+
 
 class Header extends Component {
   render() {
@@ -27,7 +29,7 @@ class Header extends Component {
     }
 
     return (
-      <header>
+      <header id="header">
         <a href={this.props.dashboard_url}>
           <div id="eduid-logo" />
         </a>
@@ -40,7 +42,7 @@ class Header extends Component {
 Header.propTypes = {
   gotoSignin: PropTypes.func,
   translate: PropTypes.func,
-  confirmed: PropTypes.string
+  confirmed: PropTypes.string,
 };
 
 export default Header;
