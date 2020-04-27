@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
-import TableList from "components/TableList";
 import GenericConfirmModal from "components/GenericConfirmModal";
 import ConfirmModal from "components/ConfirmModal";
 
@@ -51,14 +50,14 @@ class Security extends Component {
       // verify button/ verified badge
       if (cred.verified) {
         btnVerify = (
-          <EduIDButton className="btn-link verified" disabled>
+          <span className="nobutton verified" disabled>
             {this.props.translate("security.verified")}
-          </EduIDButton>
+          </span>
         );
       } else {
         btnVerify = (
           <EduIDButton
-            className="btn-link verify-status-label"
+            className="btn-link nobutton verify-status-label"
             onClick={this.props.handleVerifyWebauthnToken}
           >
             {this.props.translate("security.verify")}
