@@ -30,8 +30,12 @@ export class NinDisplay extends Component {
       } else {
         if (url.includes("verify-identity")) {
           userData = [
-            <div key="0" data-ninnumber={this.props.nins[0].number} className="data-with-delete">
-              <p key="1" className="display-data unverified">
+            <div
+              key="0"
+              data-ninnumber={this.props.nins[0].number}
+              className="data-with-delete"
+            >
+              <p key="1" id="nin-number" className="display-data unverified">
                 {this.props.nins[0].number}
               </p>
               <EduIDButton
