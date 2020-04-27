@@ -122,10 +122,16 @@ class ChangePasswordForm extends Component {
       );
     } else {
       form = (
-        <Fragment>
-          <label>{this.props.translate("chpass.suggested_password")}</label>
-          <p id="suggested-password">{this.props.suggested_password}</p>
-        </Fragment>
+        <Field
+          className="suggetsed-password"
+          component={TextInput}
+          componentClass="input"
+          type="text"
+          name={pwFieldSuggestedName}
+          id={pwFieldSuggestedName}
+          label={this.props.translate("chpass.suggested_password")}
+          disabled={true}
+        />
       );
       button = (
         <EduIDButton
