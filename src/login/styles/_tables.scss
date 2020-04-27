@@ -1,4 +1,3 @@
-
 /* styles for tables displaying userinfo on settings page */
 table {
   margin-bottom: 10px;
@@ -7,6 +6,7 @@ table {
   color: gray;
   font-size: 24px;
   font-family: "ProximaNova-Light";
+  margin: 1rem 0;
   // border-collapse: collapse;
 }
 
@@ -55,4 +55,12 @@ button.verify-status-label {
 
 span.nobutton {
   font-family: "ProximaNova-Regular";
+  text-transform: uppercase;
+}
+
+@media (max-width: 568px) {
+  table {
+    font-size: 1rem;
+    color: #161616;
+  }
 }
