@@ -167,7 +167,7 @@ class ChangePasswordForm extends Component {
         <div id="chpass-form" className="tabpane">
           <PrimaryButton
             id="chpass-button"
-            className="settings-button ok-button"
+            className="settings-button"
             disabled={
               this.props.submitting || this.props.pristine || this.props.invalid
             }
