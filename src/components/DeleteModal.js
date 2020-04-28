@@ -27,20 +27,20 @@ class DeleteModal extends Component {
             <p className="modal-text">
               {this.props.translate("delete.modal_info")}
             </p>
+            {/* <p className="modal-text">
+              {this.props.translate("delete.modal_tip")}
+            </p> */}
+          </ModalBody>
+          <ModalFooter>
             <EduIDButton
               className="settings-button delete-button"
-              ref={button => {
+              ref={(button) => {
                 this.deleteButton = button;
               }}
               onClick={this.props.handleConfirm}
             >
               {this.props.translate("delete.confirm_button")}
             </EduIDButton>
-            <p className="modal-text">
-              {this.props.translate("delete.modal_tip")}
-            </p>
-          </ModalBody>
-          <ModalFooter>
             <ButtonModal
               // id="close-modal"
               className="modal-button cancel-button"
@@ -65,7 +65,7 @@ DeleteModal.propTypes = {
   title: PropTypes.any,
   showModal: PropTypes.bool,
   closeModal: PropTypes.func,
-  handleConfirm: PropTypes.func
+  handleConfirm: PropTypes.func,
 };
 
 export default i18n(DeleteModal);

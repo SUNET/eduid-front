@@ -535,13 +535,13 @@ h5.modal-title {
   border-radius: 20px;
 }
 
-.modal-body {
-  background-color: #f4f4f4;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  color: #7c7c7c;
-}
+// .modal-body {
+//   background-color: #f4f4f4;
+//   padding: 30px;
+//   display: flex;
+//   flex-direction: column;
+//   color: #7c7c7c;
+// }
 
 .modal-dialog {
   margin-top: 70px;
@@ -762,7 +762,7 @@ svg.remove:hover {
   }
 
   .modal-body {
-    padding: 20px;
+    padding: 1rem;
   }
 
   .modal-footer {
