@@ -1,0 +1,106 @@
+[
+  {
+    "id": "header.signup",
+    "defaultMessage": "SIGN UP"
+  },
+  {
+    "id": "header.signin",
+    "defaultMessage": "Log in"
+  },
+  {
+    "id": "header.faq",
+    "defaultMessage": "Help"
+  },
+  {
+    "id": "header.logout",
+    "defaultMessage": "Logout"
+  },
+  {
+    "id": "main.welcome",
+    "defaultMessage": "Welcome to eduID"
+  },
+  {
+    "id": "banner.tagline",
+    "defaultMessage": "eduID is easier and safer login."
+  },
+  {
+    "id": "main.copyright",
+    "defaultMessage": "SUNET 2013-2019"
+  },
+  {
+    "id": "beta-link.to-stable",
+    "defaultMessage": "The new eduID is under development, click here to go back to the stable version"
+  },
+  {
+    "id": "foot.change-version-tip",
+    "defaultMessage": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
+  },
+  {
+    "id": "button_save",
+    "defaultMessage": "Save"
+  },
+  {
+    "id": "button_add",
+    "defaultMessage": "Add"
+  },
+  {
+    "id": "mfa.fake-authn",
+    "defaultMessage": "Fake authn while testing"
+  },
+  {
+    "id": "mfa.two-factor-authn",
+    "defaultMessage": "Two-factor authentication"
+  },
+  {
+    "id": "mfa.extra-security-enabled",
+    "defaultMessage": "Extra security enabled for this account"
+  },
+  {
+    "id": "mfa.login-tapit",
+    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
+  },
+  {
+    "id": "actions.action-completed",
+    "defaultMessage": "Success"
+  },
+  {
+    "id": "cm.ok",
+    "defaultMessage": "OK"
+  },
+  {
+    "id": "cm.finish",
+    "defaultMessage": "FINISH"
+  },
+  {
+    "id": "cm.cancel",
+    "defaultMessage": "CANCEL"
+  },
+  {
+    "id": "cm.accept",
+    "defaultMessage": "ACCEPT"
+  },
+  {
+    "id": "cm.close",
+    "defaultMessage": "CLOSE"
+  },
+  {
+    "id": "cm.enter_code",
+    "defaultMessage": "Enter your confirmation code below"
+  },
+  {
+    "id": "still-valid-code",
+    "defaultMessage": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one."
+  },
+  {
+    "id": "tl.primary",
+    "defaultMessage": "PRIMARY"
+  },
+  {
+    "id": "tl.make_primary",
+    "defaultMessage": "MAKE PRIMARY"
+  },
+  {
+    "id": "tl.pending",
+    "defaultMessage": "confirm"
+  }
+]
