@@ -8,7 +8,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 import ButtonModal from "../login/components/Buttons/ButtonModal";
 
-import "../style/EduIDButton.scss";
+// import "../style/EduIDButton.scss";
 
 class DeleteModal extends Component {
   render() {
