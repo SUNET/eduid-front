@@ -41,7 +41,9 @@
 
 #personal-data-form {
   display: flex;
+  flex-direction: column;
 }
+
 #email input,
 #old-password-field input,
 #custom-password-field input,
