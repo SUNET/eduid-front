@@ -97,6 +97,12 @@
 }
 
 @media (max-width: 768px) {
+  #nin-form {
+    flex-direction: column;
+  }
+  #nin {
+    margin-right: 0;
+  }
   #connect-nin-number {
     margin-top: 3rem;
     & .btn.icon-button {
