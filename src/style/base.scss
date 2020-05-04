@@ -1,9 +1,9 @@
 @import "../variables.scss";
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+// * {
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
 
 // html {
 //   height: 100%;
@@ -14,11 +14,21 @@
 // }
 
 body {
-  scroll-behavior: smooth;
-  flex: 1;
+  min-height: 100vh;
   font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
+  font-size: 16px;
   line-height: 1.5;
+  color: #161616;
+  scroll-behavior: smooth;
+  display: flex;
 }
+
+// body {
+//   scroll-behavior: smooth;
+//   flex: 1;
+//   font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
+//   line-height: 1.5;
+// }
 
 // html,
 // body,
@@ -306,26 +316,18 @@ ul.nav.navbar-nav li a {
 
 /* Mobile scrollbar */
 ::-webkit-scrollbar {
-  -webkit-appearance: none;
+  margin-top: -1rem;
+  width: 0.125rem;
+  height: 0.125rem;
+  width: 0;
 }
-
-::-webkit-scrollbar:vertical {
-  width: 12px;
-}
-
-::-webkit-scrollbar:horizontal {
-  height: 12px;
-}
-
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  border: 2px solid #ffffff;
+  background-color:#7c7c7c;
+    border-radius: 1rem;
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #ececec;
 }
 
 /* Fontface */
