@@ -14,8 +14,8 @@ import CaptchaContainer from "containers/Captcha";
 import NotificationsContainer from "containers/Notifications";
 import EmailInUseContainer from "containers/EmailInUse";
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "style/base.scss";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "style/base.scss";
 import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();

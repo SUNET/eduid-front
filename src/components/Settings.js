@@ -13,8 +13,8 @@ import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "style/base.scss";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "style/base.scss";
 
 class Settings extends Component {
   render() {

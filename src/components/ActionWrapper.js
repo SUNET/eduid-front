@@ -7,7 +7,7 @@ import NotificationsContainer from "containers/Notifications";
 import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
