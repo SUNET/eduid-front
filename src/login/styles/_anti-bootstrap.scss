@@ -1,6 +1,4 @@
-.form-text {
-  margin-top: 0;
-}
+@import "./variables.scss";
 
 #nin-form .form-group {
   margin-bottom: 0;
@@ -8,3 +6,111 @@
     margin-top: 0;
   }
 }
+
+// // all inputs have a .form-control class which is hijacked by bootstrap
+input {
+  background-color: white;
+  font-family: "ProximaNova-Regular" !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  color: #161616 !important;
+  box-shadow: none !important;
+
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: solid 2px #161616 !important;
+
+  width: calc(100% - 1rem) !important;
+  padding: 0.25rem 0.5rem !important;
+  height: 2.25rem !important;
+}
+
+// //styles for personal data inputs
+// #given_name,
+// #surname,
+// #display_name {
+//   margin-bottom: 1rem !important;
+// }
+
+// //styles for select (language input)
+select {
+  background: white !important;
+  border-radius: 0 !important;
+  border: none !important;
+  width: calc(100% - 1rem) !important;
+  height: 2.25rem !important;
+  font-family: "ProximaNova-Regular" !important;
+  font-size: 1.5rem !important;
+  outline: 0 !important;
+  &.form-control.is-valid:focus {
+    border: none !important;
+    box-shadow: 0 0 0 0.2rem $mid-gray !important;
+  }
+}
+
+//styles for personal data inputs
+#given_name,
+#surname,
+#display_name {
+  margin-bottom: 1rem !important;
+}
+
+// text under inputs
+.small,
+small {
+  font-size: 100% !important;
+  &.text-muted {
+    color: #161616 !important;
+  }
+  &.form-text {
+    margin-top: 0 !important;
+  }
+}
+
+.form-group {
+  margin-bottom: 0 !important;
+}
+
+#root,
+#app-container {
+  // this is here ONLY to counteract bootstrap
+  &.container {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+// // this is here ONLY to counteract bootstrap
+// @media (min-width: 1200px) {
+//   #root.container {
+//     max-width: 100%;
+//   }
+// }
+// @media (min-width: 992px) {
+//   #root.container {
+//     max-width: 100%;
+//   }
+// }
+// @media (max-width: 823px) {
+//   #root.vertical-content-margin {
+//     width: 75%;
+//   }
+// }
+// @media (min-width: 768px) {
+//   body {
+//     background-color: inherit;
+//   }
+//   #root.container {
+//     max-width: 100%;
+//   }
+//   .vertical-content-margin {
+//     width: calc(100% - 40px);
+//   }
+// }
+// @media (min-width: 576px) {
+//   #root.container {
+//     max-width: 100%;
+//   }
+// }

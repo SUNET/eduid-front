@@ -6,14 +6,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  height: 100%;
-  width: 100vw;
-  // overflow-x: hidden;
-}
-
 body {
-  height: 100vh;
+  min-height: 100vh;
   font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -31,15 +25,6 @@ body {
 
   // this is commented out to accomodate DashboardMain, should be introduced again for login app
   // background-color: #f4f4f4;
-
-  // this is here ONLY to counteract bootstrap
-  &.container {
-    width: 100%;
-    padding-right: 0;
-    padding-left: 0;
-    margin-right: 0;
-    margin-left: 0;
-  }
 }
 
 #content {
@@ -86,37 +71,4 @@ body {
 // ::-webkit-scrollbar-track {
 //   border-radius: 10px;
 //   background-color: #ffffff;
-// }
-
-// this is here ONLY to counteract bootstrap
-// @media (min-width: 1200px) {
-//   .container {
-//     max-width: 100%;
-//   }
-// }
-// @media (min-width: 992px) {
-//   .container {
-//     max-width: 100%;
-//   }
-// }
-// @media (max-width: 823px) {
-//   .vertical-content-margin {
-//     width: 75%;
-//   }
-// }
-// @media (min-width: 768px) {
-//   body {
-//     background-color: inherit;
-//   }
-//   .container {
-//     max-width: 100%;
-//   }
-//   .vertical-content-margin {
-//     width: calc(100% - 40px);
-//   }
-// }
-// @media (min-width: 576px) {
-//   .container {
-//     max-width: 100%;
-//   }
 // }

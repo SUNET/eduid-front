@@ -4,23 +4,23 @@
   display: flex;
 }
 
-// .form-control,
-input {
-  background-color: white;
-  font-family: "ProximaNova-Regular";
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #161616;
-  box-shadow: none;
+// .form-control overrides all styling with bootsrap styles
+//input {
+//   background-color: white;
+//   font-family: "ProximaNova-Regular";
+//   font-size: 1.5rem;
+//   font-weight: 500;
+//   color: #161616;
+//   box-shadow: none;
 
-  border-radius: 0;
-  border: none;
-  border-bottom: solid 2px #161616;
+//   border-radius: 0;
+//   border: none;
+//   border-bottom: solid 2px #161616;
 
-  width: calc(100% - 1rem);
-  padding: 0.25rem 0.5rem;
-  height: 2.25rem;
-}
+//   width: calc(100% - 1rem);
+//   padding: 0.25rem 0.5rem;
+//   height: 2.25rem;
+// }
 
 .input-container {
   margin-bottom: 1.125rem;
@@ -38,12 +38,6 @@ input:focus {
   border-bottom: solid 2px #161616;
   box-shadow: 0 0 0 0.2rem $mid-gray;
 }
-
-/* valid form input*/
-// .form-control.is-valid {
-//   border: none;
-//   border-bottom: solid 2px #161616;
-// }
 
 .form-control.is-valid:focus {
   border-color: #161616;
@@ -68,25 +62,18 @@ input:focus {
   letter-spacing: 0.025rem;
 }
 
-//styles for personal data inputs
-#given_name,
-#surname,
-#display_name {
-  margin-bottom: 1rem;
-}
-
-//styles for select element language input
-select {
-  background: white;
-  border-radius: 0;
-  border: none;
-  width: 100%;
-  height: 2.25rem;
-  font-family: "ProximaNova-Regular";
-  font-size: 1.5rem;
-  outline: 0;
-  &.form-control.is-valid:focus {
-    border: none;
-    box-shadow: 0 0 0 0.2rem $mid-gray;
-  }
-}
+//styles for select element language input .form-control overrides all styling with bootsrap styles
+//select {
+//   background: white;
+//   border-radius: 0;
+//   border: none;
+//   width: 100%;
+//   height: 2.25rem;
+//   font-family: "ProximaNova-Regular";
+//   font-size: 1.5rem;
+//   outline: 0;
+//   &.form-control.is-valid:focus {
+//     border: none;
+//     box-shadow: 0 0 0 0.2rem $mid-gray;
+//   }
+// }
