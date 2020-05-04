@@ -20,7 +20,7 @@ input {
   border: none !important;
   border-bottom: solid 2px #161616 !important;
 
-  width: calc(100% - 1rem) !important;
+  width: 100% !important;
   padding: 0.25rem 0.5rem !important;
   height: 2.25rem !important;
 }
@@ -34,14 +34,17 @@ input {
 
 // //styles for select (language input)
 select {
-  background: white !important;
-  border-radius: 0 !important;
-  border: none !important;
-  width: calc(100% - 1rem) !important;
-  height: 2.25rem !important;
+  background-color: white;
   font-family: "ProximaNova-Regular" !important;
   font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  color: #161616 !important;
+  box-shadow: none !important;
+  border: none !important;
   outline: 0 !important;
+  width: 100% !important;
+  padding: 0.25rem 0.5rem !important;
+  height: 2.25rem !important;
   &.form-control.is-valid:focus {
     border: none !important;
     box-shadow: 0 0 0 0.2rem $mid-gray !important;
