@@ -49,7 +49,7 @@ h1.banner-tagline {
 }
 
 #dashboard-nav {
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
   & ul {
     display: flex;
     flex-direction: row;
@@ -57,7 +57,7 @@ h1.banner-tagline {
     margin-left: -0.1875rem;
     margin-bottom: 0;
     & li {
-      margin-right: 2rem;
+      margin: 0.5rem 2rem 0.5rem 0;
       flex: 1;
     }
     & a {
@@ -160,7 +160,7 @@ h1.banner-tagline {
 @media (max-width: 768px) {
   .vertical-content-margin,
   #profile-grid {
-    width: calc(100% - 4rem);
+    width: calc(100% - 1.25rem);
   }
   #profile-grid {
     grid-row-gap: 2rem;
@@ -171,9 +171,9 @@ h1.banner-tagline {
   #profile-grid {
     grid-template-columns: 1fr;
   }
-  #dashboard-nav {
-    & li {
-      margin: 0.5rem 0;
-    }
-  }
+  // #dashboard-nav {
+  //   & li {
+  //     margin: 0.5rem 0;
+  //   }
+  // }
 }
