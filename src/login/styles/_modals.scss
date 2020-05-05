@@ -4,6 +4,8 @@
 .modal {
   display: flex !important;
   justify-content: center;
+  width: calc(100% - 2rem);
+  margin: 0 1rem;
 }
 
 h5.modal-title {
@@ -133,7 +135,10 @@ p.modal-text {
     width: calc(100% - 1.25rem);
     margin: auto 1rem;
   }
-
+  .modal {
+    width: 100%;
+    margin: 0;
+  }
   .modal-content {
     & .modal-header {
       padding: 1rem;
