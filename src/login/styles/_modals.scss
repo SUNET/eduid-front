@@ -95,13 +95,19 @@ h5.modal-title {
   font-size: 1rem;
 }
 
-#delete-account-modal label {
-  margin-bottom: 30px;
-  color: #7c7c7c;
-  font-size: 1rem;
-  text-transform: none;
-  line-height: 1.5;
-  font-weight: 700;
+#delete-account-modal {
+  & .modal-footer {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+  & label {
+    margin-bottom: 30px;
+    color: #7c7c7c;
+    font-size: 1rem;
+    text-transform: none;
+    line-height: 1.5;
+    font-weight: 700;
+  }
 }
 
 /* styles for confirm button in delete account modal */
