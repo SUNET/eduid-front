@@ -49,6 +49,10 @@ body {
   flex-direction: column;
 }
 
+fieldset {
+  width: 100%;
+}
+
 // scrollbar for tables
 ::-webkit-scrollbar {
   margin-top: -1rem;
