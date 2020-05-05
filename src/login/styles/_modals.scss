@@ -20,16 +20,15 @@ h5.modal-title {
 .modal-content {
   background-color: white;
   border-radius: 20px;
-}
-
-.modal-body {
-  background-color: #f4f4f4;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  color: #7c7c7c;
-  & button.btn.settings-button {
-    margin: 0 0 1rem 0;
+  .modal-body {
+    background-color: #f4f4f4;
+    padding: 2rem 2rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    color: #7c7c7c;
+    & button.btn.settings-button {
+      margin: 0 0 1rem 0;
+    }
   }
 }
 

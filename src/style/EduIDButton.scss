@@ -1,272 +1,272 @@
-@import "../variables.scss";
+// @import "../variables.scss";
 
-.buttons .button {
-  padding: 0;
-}
-.buttons .button a {
-  padding: 20px 40px;
-}
-#login,
-#logout {
-  text-transform: none;
-}
-/* EDUIDBUTTONS */
-button.btn {
-  font-family: "Akkurat";
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  border-radius: 20px;
-  text-transform: uppercase;
-  height: 48px;
-  padding: 10px 20px;
-  box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
-  transition: all 0.5s ease;
-  cursor: pointer;
-}
+// .buttons .button {
+//   padding: 0;
+// }
+// .buttons .button a {
+//   padding: 20px 40px;
+// }
+// #login,
+// #logout {
+//   text-transform: none;
+// }
+// /* EDUIDBUTTONS */
+// button.btn {
+//   font-family: "Akkurat";
+//   font-weight: 700;
+//   font-size: 1rem;
+//   letter-spacing: 0.5px;
+//   border-radius: 20px;
+//   text-transform: uppercase;
+//   height: 48px;
+//   padding: 10px 20px;
+//   box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
+//   transition: all 0.5s ease;
+//   cursor: pointer;
+// }
 
-/* SETTINGS (incl. :hover, :active, :focus and :disabled) */
-// ----- Buttons that add data ----  //
-button.btn.settings-button {
-  background-color: $orange-highlight;
-  color: white;
-  border: solid 1px transparent;
-  &:not(:disabled):hover {
-    color: $orange-highlight;
-    background-color: $orange-opaque;
-    transform: scale(0.95);
-    border: solid 1px $orange-highlight;
-  }
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    color: $orange-highlight;
-    background-color: $orange-opaque;
-    transform: scale(0.95);
-    border: solid 1px $orange-highlight;
-  }
-  &:disabled {
-    background-color: $dark-gray;
-    border: solid 1px transparent;
-    color: #f4f4f4;
-  }
-}
-
-/* MODALS */
-button.btn.modal-button {
-  box-shadow: none;
-  border: solid 1px transparent;
-  background-color: transparent;
-  margin: 0.5rem 1rem;
-}
-
-/* color for OK and ACCEPT buttons in modals */
-// ----- buttons with actions in modals ----  //
-button.ok-button {
-  color: $orange-highlight;
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: $orange-opaque;
-    border: solid 1px $orange-highlight;
-    color: $orange-highlight;
-  }
-}
-
-/* color for CANCEL and CLOSE buttons in modals */
-// ----- buttons that close modals ----  //
-button.cancel-button {
-  color: #161616;
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    color: #7c7c7c;
-    border: #7c7c7c solid 1px;
-    background-color: transparent;
-    box-shadow: none;
-  }
-}
-
-/* styles for REMOVE icons */
-// ----- buttons that remove data ----  //
-// button.btn.btn-sm,
-// button.btn.icon-button {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: transparent;
+// /* SETTINGS (incl. :hover, :active, :focus and :disabled) */
+// // ----- Buttons that add data ----  //
+// button.btn.settings-button {
+//   background-color: $orange-highlight;
+//   color: white;
 //   border: solid 1px transparent;
-//   box-shadow: none;
-//   margin: 0;
-//   padding: 0 1rem;
-//   height: auto;
-//   &:hover,
+//   &:not(:disabled):hover {
+//     color: $orange-highlight;
+//     background-color: $orange-opaque;
+//     transform: scale(0.95);
+//     border: solid 1px $orange-highlight;
+//   }
 //   &:not(:disabled):not(.disabled):active,
 //   &:not(:disabled):not(.disabled):focus,
 //   &:not(:disabled):not(.disabled):active:focus {
-//     background-color: transparent;
+//     color: $orange-highlight;
+//     background-color: $orange-opaque;
+//     transform: scale(0.95);
+//     border: solid 1px $orange-highlight;
+//   }
+//   &:disabled {
+//     background-color: $dark-gray;
 //     border: solid 1px transparent;
+//     color: #f4f4f4;
 //   }
 // }
 
-// /* styles for DELETE button */
-// // --- button that deletes user --- //
-// button.btn.icon-button {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: transparent;
+// /* MODALS */
+// button.btn.modal-button {
+//   box-shadow: none;
 //   border: solid 1px transparent;
+//   background-color: transparent;
+//   margin: 0.5rem 1rem;
+// }
+
+// /* color for OK and ACCEPT buttons in modals */
+// // ----- buttons with actions in modals ----  //
+// button.ok-button {
+//   color: $orange-highlight;
+//   &:hover,
+//   &:not(:disabled):not(.disabled):active,
+//   &:not(:disabled):not(.disabled):focus,
+//   &:not(:disabled):not(.disabled):active:focus {
+//     background-color: $orange-opaque;
+//     border: solid 1px $orange-highlight;
+//     color: $orange-highlight;
+//   }
+// }
+
+// /* color for CANCEL and CLOSE buttons in modals */
+// // ----- buttons that close modals ----  //
+// button.cancel-button {
+//   color: #161616;
+//   &:hover,
+//   &:not(:disabled):not(.disabled):active,
+//   &:not(:disabled):not(.disabled):focus,
+//   &:not(:disabled):not(.disabled):active:focus {
+//     color: #7c7c7c;
+//     border: #7c7c7c solid 1px;
+//     background-color: transparent;
+//     box-shadow: none;
+//   }
+// }
+
+// /* styles for REMOVE icons */
+// // ----- buttons that remove data ----  //
+// // button.btn.btn-sm,
+// // button.btn.icon-button {
+// //   display: flex;
+// //   justify-content: center;
+// //   align-items: center;
+// //   background-color: transparent;
+// //   border: solid 1px transparent;
+// //   box-shadow: none;
+// //   margin: 0;
+// //   padding: 0 1rem;
+// //   height: auto;
+// //   &:hover,
+// //   &:not(:disabled):not(.disabled):active,
+// //   &:not(:disabled):not(.disabled):focus,
+// //   &:not(:disabled):not(.disabled):active:focus {
+// //     background-color: transparent;
+// //     border: solid 1px transparent;
+// //   }
+// // }
+
+// // /* styles for DELETE button */
+// // // --- button that deletes user --- //
+// // button.btn.icon-button {
+// //   display: flex;
+// //   justify-content: center;
+// //   align-items: center;
+// //   background-color: transparent;
+// //   border: solid 1px transparent;
+// //   box-shadow: none;
+// //   &:hover,
+// //   &:not(:disabled):not(.disabled):active,
+// //   &:not(:disabled):not(.disabled):focus,
+// //   &:not(:disabled):not(.disabled):active:focus {
+// //     background-color: transparent;
+// //     border: solid 1px #ff500d;
+// //   }
+// // }
+
+// /* styles for links that are also buttons */
+// // -----  ----  //
+// button.btn-link {
+//   background-color: transparent;
+//   color: $orange-highlight;
+//   border-radius: 0;
+//   border: none;
 //   box-shadow: none;
 //   &:hover,
 //   &:not(:disabled):not(.disabled):active,
 //   &:not(:disabled):not(.disabled):focus,
 //   &:not(:disabled):not(.disabled):active:focus {
-//     background-color: transparent;
-//     border: solid 1px #ff500d;
+//     color: $orange-highlight;
 //   }
 // }
 
-/* styles for links that are also buttons */
-// -----  ----  //
-button.btn-link {
-  background-color: transparent;
-  color: $orange-highlight;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    color: $orange-highlight;
-  }
-}
+// a.btn-primary,
+// button.btn-primary {
+//   background-color: transparent;
+//   &.disabled,
+//   &:disabled {
+//     background-color: transparent;
+//     color: #161616;
+//   }
+//   &:hover,
+//   &:not(:disabled):not(.disabled):active,
+//   &:not(:disabled):not(.disabled):focus,
+//   &:not(:disabled):not(.disabled):active:focus {
+//     background-color: transparent;
+//   }
+// }
 
-a.btn-primary,
-button.btn-primary {
-  background-color: transparent;
-  &.disabled,
-  &:disabled {
-    background-color: transparent;
-    color: #161616;
-  }
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: transparent;
-  }
-}
+// .btn-link.eduid-button {
+//   border: 0;
+//   padding: 0;
+// }
 
-.btn-link.eduid-button {
-  border: 0;
-  padding: 0;
-}
+// .btn-warning.eduid-button,
+// .btn-warning.eduid-button:hover {
+//   background: #dd650d;
+//   border-color: #dd650d;
+// }
 
-.btn-warning.eduid-button,
-.btn-warning.eduid-button:hover {
-  background: #dd650d;
-  border-color: #dd650d;
-}
+// input[type="submit"].btn.eduid-button,
+// button[type="submit"].btn.eduid-button {
+//   display: block;
+//   margin-top: 20px;
+// }
 
-input[type="submit"].btn.eduid-button,
-button[type="submit"].btn.eduid-button {
-  display: block;
-  margin-top: 20px;
-}
+// .btn-icon {
+//   display: inline-block;
+//   vertical-align: middle;
+//   width: 40px;
+//   height: 40px;
+// }
 
-.btn-icon {
-  display: inline-block;
-  vertical-align: middle;
-  width: 40px;
-  height: 40px;
-}
+// .btn-text {
+//   display: inline-block;
+//   vertical-align: middle;
+//   padding: 0 14px 0 10px;
+//   margin: 0 0 0 4px;
+// }
 
-.btn-text {
-  display: inline-block;
-  vertical-align: middle;
-  padding: 0 14px 0 10px;
-  margin: 0 0 0 4px;
-}
+// .pre-big {
+//   font-size: 150%;
+// }
 
-.pre-big {
-  font-size: 150%;
-}
+// .has-spinner {
+//   cursor: progress;
+//   position: relative;
+// }
 
-.has-spinner {
-  cursor: progress;
-  position: relative;
-}
+// .has-spinner .spin-holder {
+//   width: 100%;
+//   height: 80%;
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   margin-top: -40px;
+//   color: #ccc;
+// }
 
-.has-spinner .spin-holder {
-  width: 100%;
-  height: 80%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-top: -40px;
-  color: #ccc;
-}
+// .has-spinner .fa-spinner {
+//   display: inline-block;
+//   width: 26px;
+//   height: 80%;
+//   opacity: 1;
+//   font-size: 2em;
+//   -webkit-animation: spin 1.5s infinite linear;
+//   -moz-animation: spin 1.5s infinite linear;
+//   -o-animation: spin 1.5s infinite linear;
+//   animation: spin 1.5s infinite linear;
+// }
 
-.has-spinner .fa-spinner {
-  display: inline-block;
-  width: 26px;
-  height: 80%;
-  opacity: 1;
-  font-size: 2em;
-  -webkit-animation: spin 1.5s infinite linear;
-  -moz-animation: spin 1.5s infinite linear;
-  -o-animation: spin 1.5s infinite linear;
-  animation: spin 1.5s infinite linear;
-}
+// button.eduid-button.btn-warning {
+//   background-color: $btn-grey;
+// }
 
-button.eduid-button.btn-warning {
-  background-color: $btn-grey;
-}
+// @-moz-keyframes spin {
+//   from {
+//     -moz-transform: rotate(0deg);
+//   }
+//   to {
+//     -moz-transform: rotate(360deg);
+//   }
+// }
 
-@-moz-keyframes spin {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
+// @-webkit-keyframes spin {
+//   from {
+//     -webkit-transform: rotate(0deg);
+//   }
+//   to {
+//     -webkit-transform: rotate(360deg);
+//   }
+// }
 
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
+// @keyframes spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (max-width: 414px) {
-  button.btn {
-    font-size: 0.9rem;
-  }
-  button.btn-primary,
-  button.btn-secondary {
-    width: 100%;
-  }
-  button.btn.btn-link,
-  #delete-button,
-  #security-change-button,
-  #add-more-button {
-    width: auto;
-    padding: 0;
-  }
-}
+// @media (max-width: 414px) {
+//   button.btn {
+//     font-size: 0.9rem;
+//   }
+//   button.btn-primary,
+//   button.btn-secondary {
+//     width: 100%;
+//   }
+//   button.btn.btn-link,
+//   #delete-button,
+//   #security-change-button,
+//   #add-more-button {
+//     width: auto;
+//     padding: 0;
+//   }
+// }

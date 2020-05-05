@@ -6,7 +6,7 @@ import Button from "reactstrap/lib/Button";
 
 //import FetchingContext from "components/FetchingContext";
 
-import "style/EduIDButton.scss";
+// import "style/EduIDButton.scss";
 
 class EduIDButton extends Component {
   //render() {
