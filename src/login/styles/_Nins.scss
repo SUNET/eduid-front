@@ -100,12 +100,6 @@
 }
 
 @media (max-width: 768px) {
-  #nin-form {
-    flex-direction: column;
-  }
-  #nin {
-    margin-right: 0;
-  }
   #connect-nin-number {
     margin-top: 3rem;
     & .btn.icon-button {
@@ -117,8 +111,11 @@
     line-height: 1.2;
   }
 }
-@media (max-width: 320px) {
-  // #nins-btn-grid {
-  //   margin: 0 -1.5rem;
-  // }
+@media (max-width: 568px) {
+  #nin-form {
+    flex-direction: column;
+  }
+  #nin {
+    margin-right: 0;
+  }
 }

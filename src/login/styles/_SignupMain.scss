@@ -1,16 +1,16 @@
-
 // also check #nin-form
 #register-form {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
   margin-top: 0;
+  &.form-group {
+    margin-bottom: 0;
+  }
 }
 
 #register-button {
-  margin-left: 1rem;
-  margin-top: 0;
-  border: none;
+  margin: 0 0 0 1rem;
 }
 
 #email {
@@ -20,7 +20,6 @@
 
 h3 {
   &.register-header {
-    // font-family: "ProximaNova-Bold";
     margin-top: 0;
     margin-bottom: 1rem;
   }
@@ -41,18 +40,10 @@ h3 {
   align-items: baseline;
 }
 
-@media (max-width: 823px) {
+@media (max-width: 568px) {
   #register-form {
     flex-direction: column;
   }
-  #register-button {
-    width: fit-content;
-    margin-left: 0;
-    margin-top: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
   #register-button {
     width: 100%;
   }
