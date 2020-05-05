@@ -29,7 +29,7 @@ input {
 select {
   background-color: white;
   font-family: "ProximaNova-Regular" !important;
-  font-size: 1.5rem !important;
+  font-size: 1.5rem;
   font-weight: 500 !important;
   color: #161616 !important;
   box-shadow: none !important;
@@ -79,34 +79,34 @@ small {
   }
 }
 // // this is here ONLY to counteract bootstrap
-// @media (min-width: 1200px) {
-//   #root.container {
-//     max-width: 100%;
-//   }
-// }
-// @media (min-width: 992px) {
-//   #root.container {
-//     max-width: 100%;
-//   }
-// }
-// @media (max-width: 823px) {
-//   #root.vertical-content-margin {
-//     width: 75%;
-//   }
-// }
-// @media (min-width: 768px) {
-//   body {
-//     background-color: inherit;
-//   }
-//   #root.container {
-//     max-width: 100%;
-//   }
-//   .vertical-content-margin {
-//     width: calc(100% - 40px);
-//   }
-// }
-// @media (min-width: 576px) {
-//   #root.container {
-//     max-width: 100%;
-//   }
-// }
+@media (min-width: 1200px) {
+  #root.container {
+    max-width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  #root.container {
+    max-width: 100%;
+  }
+}
+@media (max-width: 823px) {
+  #root.vertical-content-margin {
+    width: 75%;
+  }
+}
+@media (min-width: 768px) {
+  body {
+    background-color: inherit;
+  }
+  #root.container {
+    max-width: 100%;
+  }
+  .vertical-content-margin {
+    width: calc(100% - 40px);
+  }
+}
+@media (min-width: 576px) {
+  #root.container {
+    max-width: 100%;
+  }
+}
