@@ -43,9 +43,11 @@ h3 {
 @media (max-width: 568px) {
   #register-form {
     flex-direction: column;
+    align-items: unset;
   }
   #register-button {
     width: 100%;
+    margin: 1rem 0 0 0;
   }
 }
 
