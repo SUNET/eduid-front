@@ -7,7 +7,7 @@ import "style/EmailInUse.scss";
 class EmailInUse extends Component {
   render() {
     return (
-      <div id="register-container">
+      <div id="register-container" class="vertical-content-margin">
         <div>
           <h3 className="register-header">
             {this.props.translate("used.email-in-use")({

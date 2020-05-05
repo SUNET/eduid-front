@@ -57,10 +57,28 @@ body {
   width: 0;
 }
 ::-webkit-scrollbar-thumb {
-  background-color:#7c7c7c;
-    border-radius: 1rem;
+  background-color: #7c7c7c;
+  border-radius: 1rem;
 }
 
 ::-webkit-scrollbar-track {
   background-color: #ececec;
+}
+
+@media (max-width: 823px) {
+  .vertical-content-margin {
+    width: calc(80% - 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .vertical-content-margin {
+    width: calc(80% - 1.25rem);
+  }
+}
+
+@media (max-width: 568px) {
+  .vertical-content-margin {
+    width: calc(100% - 1.25rem);
+  }
 }

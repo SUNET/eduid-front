@@ -151,14 +151,12 @@ h1.banner-tagline {
   #welcome {
     padding: 3rem 0 2rem;
   }
-  .vertical-content-margin,
   #profile-grid {
     width: calc(80% - 2rem);
   }
 }
 
 @media (max-width: 768px) {
-  .vertical-content-margin,
   #profile-grid {
     width: calc(100% - 1.25rem);
   }
