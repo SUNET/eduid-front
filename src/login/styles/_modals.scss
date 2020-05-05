@@ -6,10 +6,6 @@
   justify-content: center;
 }
 
-.modal-header {
-  padding: 2rem;
-}
-
 h5.modal-title {
   font-family: "Akkurat";
   line-height: 1.2;
@@ -20,7 +16,10 @@ h5.modal-title {
 .modal-content {
   background-color: white;
   border-radius: 20px;
-  .modal-body {
+  & .modal-header {
+    padding: 2rem;
+  }
+  & .modal-body {
     background-color: #f4f4f4;
     padding: 2rem 2rem 0 2rem;
     display: flex;
@@ -37,14 +36,6 @@ h5.modal-title {
   background-color: white;
   border-radius: 20px;
   max-width: 50vw;
-  margin: auto;
-}
-
-#confirm-user-data-modal,
-#register-modal,
-#eidas-modal,
-#delete-account-modal {
-  width: 70vw;
   margin: auto;
 }
 
@@ -104,14 +95,6 @@ h5.modal-title {
   font-size: 1rem;
 }
 
-/* styles for delete account modal text */
-// #delete-account {
-//   display: flex;
-//   flex-direction: column;
-//   margin-top: 0;
-//   margin-bottom: 30px;
-// }
-
 #delete-account-modal label {
   margin-bottom: 30px;
   color: #7c7c7c;
@@ -141,23 +124,40 @@ p.modal-text {
   #delete-account-modal,
   #eidas-modal,
   .modal-dialog {
-    width: calc(100% - 40px);
-    margin: auto 20px;
+    width: calc(100% - 1.25rem);
+    margin: auto 1rem;
   }
-  .modal-header {
-    padding: 20px;
+
+  .modal-content {
+    & .modal-header {
+      padding: 1rem;
+    }
+    & .modal-body {
+      padding: 1rem;
+      & button.btn.settings-button {
+        margin: 0 0 1rem 0;
+      }
+      & #modal-form form {
+        margin-top: 0;
+        & .form-control,
+        & input {
+          font-size: 1.25rem;
+          &::placeholder {
+            font-size: 1.25rem;
+          }
+        }
+      }
+      & p {
+        font-size: 1rem;
+      }
+    }
+    & .modal-footer {
+      padding: 0;
+    }
   }
 
   h5.modal-title {
     font-size: 1rem;
-  }
-
-  .modal-body {
-    padding: 1rem 1rem 0;
-  }
-
-  .modal-footer {
-    padding: 0;
   }
 
   .resend-code {
@@ -167,8 +167,6 @@ p.modal-text {
   p.modal-text {
     font-size: 1rem;
     line-height: 1.2;
-    // background: yellow;
-    // margin-bottom: 20px;
   }
 
   #delete-account-modal label {
@@ -183,9 +181,9 @@ p.modal-text {
 }
 
 @media (min-width: 576px) {
-  .container {
-    max-width: 100%;
-  }
+  // .container {
+  //   max-width: 100%;
+  // }
   .modal-dialog {
     max-width: 100%;
   }
