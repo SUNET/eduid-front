@@ -44,20 +44,6 @@
   flex-direction: column;
 }
 
-// #email input,
-// #old-password-field input,
-// #custom-password-field input,
-// #repeat-password-field input,
-// #personal-data-form input,
-// #emails-form input,
-// #phone-form input {
-//   background-color: white;
-//   border: none;
-//   border-bottom: solid 2px #161616;
-//   font-family: "ProximaNova-Regular";
-//   color: #161616;
-//   font-size: 24px;
-// }
 
 #add-more-button {
   text-transform: lowercase;
@@ -72,4 +58,15 @@
 
 .hide {
   display: none;
+}
+
+@media (max-width: 568px) {
+  #emailsview-form,
+  #phonesview-form {
+    flex-direction: column;
+    align-items: unset;
+    & button {
+      margin-left: 0;
+    }
+  }
 }
