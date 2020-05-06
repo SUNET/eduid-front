@@ -2,6 +2,13 @@
 
 .form-control {
   display: flex;
+  &:focus {
+    color: #161616;
+    background-color: #fff;
+    border-color: gray;
+    box-shadow: 0 0 0 0.2rem $mid-gray;
+    outline: 0;
+  }
 }
 
 // .form-control overrides all styling with bootsrap styles
@@ -67,6 +74,7 @@ input:focus {
   .form-control,
   input {
     font-size: 1rem;
+    color: #161616;
   }
   .form-control::placeholder,
   input::placeholder {
