@@ -16,7 +16,7 @@ class Captcha extends Component {
     }
 
     return [
-      <div key="0" id="register-container">
+      <div key="0" id="register-container" className="vertical-content-margin">
         <h3 className="register-header">
           {this.props.translate("captcha.verify-human")}
         </h3>
@@ -31,7 +31,7 @@ class Captcha extends Component {
           </div>
           <div id="captcha-buttons">
             <EduIDButton
-              className="settings-button captcha ok-button"
+              className="settings-button captcha"
               onClick={this.props.sendCaptcha}
               id="send-captcha-button"
             >

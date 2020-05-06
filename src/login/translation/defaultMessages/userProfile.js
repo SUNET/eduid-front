@@ -1538,14 +1538,7 @@ export const userData = {
   "delete.modal_info": (
     <FormattedMessage
       id="delete.modal_info"
-      defaultMessage={`Deleting your eduID will permanently remove all your saved information.`}
-    />
-  ),
-
-  "delete.modal_tip": (
-    <FormattedMessage
-      id="delete.modal_tip"
-      defaultMessage={`After clicking the button you need to use your log in details one final time.`}
+      defaultMessage={`Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time.`}
     />
   ),
 

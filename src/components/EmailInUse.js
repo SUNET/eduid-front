@@ -7,7 +7,7 @@ import "style/EmailInUse.scss";
 class EmailInUse extends Component {
   render() {
     return (
-      <div id="register-container">
+      <div id="register-container" className="vertical-content-margin">
         <div>
           <h3 className="register-header">
             {this.props.translate("used.email-in-use")({
@@ -19,7 +19,7 @@ class EmailInUse extends Component {
           </div>
 
           <a href={this.props.reset_url}>
-            <EduIDButton className="settings-button ok-button">
+            <EduIDButton className="settings-button">
               {this.props.translate("used.reset-password")}
             </EduIDButton>
           </a>

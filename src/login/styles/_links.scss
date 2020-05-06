@@ -1,25 +1,23 @@
 @import "./variables.scss";
 
 a {
-  color: #ff4500;
+  color: $orange-highlight;
   font-family: "Akkurat";
-}
-
-a:hover {
   text-decoration: none;
-}
-
-a.text-link {
-  font-family: "ProximaNova-Regular";
-  text-decoration: none;
-  margin-left: 5px;
-}
-
-a.text-link:hover {
-  border-bottom: solid #ff4500 1px;
-}
-
-a.text-link,
-a.nav-link {
   transition: all 0.2s ease;
+  &:hover {
+    text-decoration: none;
+  }
+  &.text-link {
+    font-family: "ProximaNova-Regular";
+    text-decoration: none;
+    margin-left: 5px;
+    &:hover {
+      border-bottom: solid #ff4500 1px;
+    }
+  }
+  // hiding opt in beta link
+  &#stable-link.hidden {
+    display: none;
+  }
 }

@@ -1,22 +1,16 @@
-#register-container {
-  width: 58%;
-  max-width: 870px;
-  margin: 1rem auto;
-  // background: yellow;
-}
-
 // also check #nin-form
 #register-form {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
   margin-top: 0;
+  &.form-group {
+    margin-bottom: 0;
+  }
 }
 
 #register-button {
-  margin-left: 1rem;
-  margin-top: 0;
-  border: none;
+  margin: 0 0 0 1rem;
 }
 
 #email {
@@ -26,7 +20,6 @@
 
 h3 {
   &.register-header {
-    // font-family: "ProximaNova-Bold";
     margin-top: 0;
     margin-bottom: 1rem;
   }
@@ -47,26 +40,14 @@ h3 {
   align-items: baseline;
 }
 
-@media (max-width: 823px) {
-  #register-container {
-    width: 75%;
-  }
+@media (max-width: 568px) {
   #register-form {
     flex-direction: column;
-  }
-  #register-button {
-    width: fit-content;
-    margin-left: 0;
-    margin-top: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  #register-container {
-    width: calc(100% - 40px);
+    align-items: unset;
   }
   #register-button {
     width: 100%;
+    margin: 1rem 0 0 0;
   }
 }
 

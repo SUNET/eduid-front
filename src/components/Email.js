@@ -65,7 +65,7 @@ EmailForm = connect((state) => ({
 class Email extends Component {
   render() {
     return [
-      <div key="0" id="register-container">
+      <div key="0" id="register-container" className="vertical-content-margin">
         <label>Email address</label>
         <EmailForm {...this.props} />
       </div>,

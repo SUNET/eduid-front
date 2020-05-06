@@ -7,7 +7,7 @@ import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";
 import { withRouter } from "react-router-dom";
 
-import "style/base.scss";
+// import "style/base.scss";
 
 class Profile extends Component {
   render() {

@@ -1,5 +1,13 @@
 @import "./variables.scss";
 
+// --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
+
+#login,
+#logout {
+  text-transform: none;
+  margin-top: 0;
+}
+
 button,
 button.btn {
   font-family: "Akkurat";
@@ -165,6 +173,10 @@ button.btn-link {
   }
 }
 
+.modal-footer button.delete-button {
+  margin: 0.5rem 1rem;
+}
+
 @media (max-width: 414px) {
   button.btn {
     font-size: 0.9rem;
@@ -174,7 +186,7 @@ button.btn-link {
     width: 100%;
   }
   button.btn.btn-link,
-  #delete-button,
+  .delete-button,
   #security-change-button,
   #add-more-button {
     width: auto;

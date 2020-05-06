@@ -69,7 +69,7 @@
   "dashboard_nav.profile": "Profile",
   "dashboard_nav.settings": "Settings",
   "delete.confirm_button": "Delete my eduID",
-  "delete.modal_info": "Deleting your eduID will permanently remove all your saved information.",
+  "delete.modal_info": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time",
   "delete.modal_tip": "After clicking the button you need to use your log in details one final time.",
   "eidas.authn_context_mismatch": "Wrong authentication context received",
   "eidas.error_missing_nin": "Please add a national identity number and try again",

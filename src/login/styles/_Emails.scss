@@ -1,5 +1,5 @@
 .help-text {
-  margin-top: 0px;
+  margin-top: 1rem;
   margin-bottom: -5px;
   line-height: 1.2;
   color: #7c7c7c;
@@ -41,21 +41,9 @@
 
 #personal-data-form {
   display: flex;
+  flex-direction: column;
 }
-#email input,
-#old-password-field input,
-#custom-password-field input,
-#repeat-password-field input,
-#personal-data-form input,
-#emails-form input,
-#phone-form input {
-  background-color: white;
-  border: none;
-  border-bottom: solid 2px #161616;
-  font-family: "ProximaNova-Regular";
-  color: #161616;
-  font-size: 24px;
-}
+
 
 #add-more-button {
   text-transform: lowercase;
@@ -70,4 +58,15 @@
 
 .hide {
   display: none;
+}
+
+@media (max-width: 568px) {
+  #emailsview-form,
+  #phonesview-form {
+    flex-direction: column;
+    align-items: unset;
+    & button {
+      margin-left: 0;
+    }
+  }
 }
