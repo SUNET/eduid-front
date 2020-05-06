@@ -21,8 +21,9 @@
     border: none;
     color: #161616;
     font-size: 2rem;
-
     border-bottom: solid #161616 3px;
+    height: 3rem;
+    padding: 0.125rem 0.5rem;
     &::placeholder {
       font-size: 2rem;
     }
@@ -110,9 +111,16 @@
     font-size: 2rem;
     line-height: 1.2;
   }
-  
 }
 @media (max-width: 568px) {
+  #nin {
+    & input {
+      font-size: 1rem;
+      &::placeholder {
+        font-size: 1rem;
+      }
+    }
+  }
   #nin-form {
     flex-direction: column;
   }
