@@ -30,6 +30,7 @@
 .form-control::placeholder,
 input::placeholder {
   font-family: "ProximaNova-Regular";
+  font-size: 1.5rem;
 }
 
 // .form-control:focus,
@@ -60,6 +61,17 @@ input:focus {
   color: $orange-highlight;
   font-weight: 700;
   letter-spacing: 0.025rem;
+}
+
+@media (max-width: 568px) {
+  .form-control,
+  input {
+    font-size: 1rem;
+  }
+  .form-control::placeholder,
+  input::placeholder {
+    font-size: 1rem;
+  }
 }
 
 //styles for select element language input .form-control overrides all styling with bootsrap styles

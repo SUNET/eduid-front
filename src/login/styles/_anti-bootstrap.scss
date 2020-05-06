@@ -8,39 +8,40 @@
 }
 
 // // all inputs have a .form-control class which is hijacked by bootstrap
+.form-control,
 input {
   background-color: white;
-  font-family: "ProximaNova-Regular" !important;
+  font-family: "ProximaNova-Regular";
   font-size: 1.5rem;
-  font-weight: 500 !important;
-  color: #161616 !important;
-  box-shadow: none !important;
+  font-weight: 500;
+  color: #161616;
+  box-shadow: none;
 
-  border-radius: 0 !important;
-  border: none !important;
-  border-bottom: solid 2px #161616 !important;
+  border-radius: 0;
+  border: none;
+  border-bottom: solid 2px #161616;
 
-  width: 100% !important;
-  padding: 0.25rem 0.5rem !important;
-  height: 2.25rem !important;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  height: 2.25rem;
 }
 
 // styles for select (language input)
 select {
   background-color: white;
-  font-family: "ProximaNova-Regular" !important;
+  font-family: "ProximaNova-Regular";
   font-size: 1.5rem;
-  font-weight: 500 !important;
-  color: #161616 !important;
-  box-shadow: none !important;
-  border: none !important;
-  outline: 0 !important;
-  width: 100% !important;
-  padding: 0.25rem 0.5rem !important;
-  height: 2.25rem !important;
+  font-weight: 500;
+  color: #161616;
+  box-shadow: none;
+  border: none;
+  outline: 0;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  height: 2.25rem;
   &.form-control.is-valid:focus {
-    border: none !important;
-    box-shadow: 0 0 0 0.2rem $mid-gray !important;
+    border: none;
+    box-shadow: 0 0 0 0.2rem $mid-gray;
   }
 }
 
