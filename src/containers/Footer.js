@@ -13,7 +13,7 @@ const mapStateToProps = (state, props) => {
     });
   }
   return {
-    is_configured: state.config.is_configured,
+    // is_configured: state.config.is_configured,
     language: state.intl.locale,
     languages: languages,
     reload_to: state.config.DASHBOARD_URL,
