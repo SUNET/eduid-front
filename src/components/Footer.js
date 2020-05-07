@@ -37,11 +37,6 @@ class Footer extends Component {
         </p>
         <nav key="1">
           <ul>
-            {/*  <li key="0">
-              <a id="stable-link" href="/feature/no-beta">
-                {this.props.translate("foot.change-version")}
-              </a> 
-            </li>*/}
             <li key="0">
               <a className="help-link" href={this.props.faq_link}>
                 {this.props.translate("header.faq")}
