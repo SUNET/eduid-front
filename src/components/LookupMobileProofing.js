@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import GenericConfirmModal from "components/GenericConfirmModal";
-import "style/LookupMobileProofing.scss";
+// import "style/LookupMobileProofing.scss";
 
 class LookupMobileProofing extends Component {
   render() {

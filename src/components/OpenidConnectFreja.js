@@ -7,7 +7,7 @@ import Button from "reactstrap/lib/Button";
 import ButtonGroup from "reactstrap/lib/ButtonGroup";
 import Modal from "reactstrap/lib/Modal";
 
-import "style/OpenidConnect.scss";
+// import "style/OpenidConnect.scss";
 
 class OpenidConnectFreja extends Component {
   render() {
