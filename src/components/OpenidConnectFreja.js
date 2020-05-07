@@ -7,8 +7,6 @@ import Button from "reactstrap/lib/Button";
 import ButtonGroup from "reactstrap/lib/ButtonGroup";
 import Modal from "reactstrap/lib/Modal";
 
-// import "style/OpenidConnect.scss";
-
 class OpenidConnectFreja extends Component {
   render() {
     // Wait for config to load before rendering, is there a better way?
