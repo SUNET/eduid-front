@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "./EduIDButton";
 
-import "style/EmailInUse.scss";
-
 class EmailInUse extends Component {
   render() {
     return (

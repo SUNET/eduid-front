@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import ConfirmModal from "components/ConfirmModal";
 import GenericConfirmModal from "components/GenericConfirmModal";
 
-import "style/LetterProofing.scss";
-
 class LetterProofingButton extends Component {
   render() {
     return (

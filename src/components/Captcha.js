@@ -5,8 +5,6 @@ import EduIDButton from "components/EduIDButton";
 import Recaptcha from "react-recaptcha";
 import FetchingContext from "components/FetchingContext";
 
-import "style/Captcha.scss";
-
 class Captcha extends Component {
   componentWillMount() {}
 
