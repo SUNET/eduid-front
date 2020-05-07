@@ -68,6 +68,10 @@
     "defaultMessage": "Email address successfully registered"
   },
   {
+    "id": "signup.registering-input",
+    "defaultMessage": "Email address"
+  },
+  {
     "id": "signup.registering-address-used",
     "defaultMessage": "The email address you entered is already in use"
   },

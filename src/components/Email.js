@@ -67,7 +67,7 @@ class Email extends Component {
   render() {
     return [
       <div key="0" id="register-container" className="vertical-content-margin">
-        <label>Email address</label>
+        <label>{this.props.translate("signup.registering-input")}</label>
         <EmailForm {...this.props} />
       </div>,
       <div key="1">

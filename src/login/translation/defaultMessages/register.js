@@ -111,6 +111,13 @@ export const register = {
     />
   ),
 
+  "signup.registering-input": (
+    <FormattedMessage
+      id="signup.registering-input"
+      defaultMessage={`Email address`}
+    />
+  ),
+
   // eduID registration error: email already in use
   "signup.registering-address-used": (
     <FormattedMessage
