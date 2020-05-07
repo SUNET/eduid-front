@@ -42,7 +42,7 @@ let EmailForm = (props) => (
     <EduIDButton
       className="settings-button"
       id="register-button"
-      disabled={!props.valid_email}
+      disabled={props.invalid}
       onClick={props.handleEmail}
     >
       {props.translate("email.sign-up-email")}
@@ -58,6 +58,7 @@ EmailForm = reduxForm({
 
 EmailForm = connect((state) => ({
   enableReinitialize: true,
+  destroyOnUnmount: false,
 }))(EmailForm);
 
 /* COMPONENT */
