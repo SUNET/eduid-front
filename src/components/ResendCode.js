@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 
-import "style/ResendCode.scss";
+// import "style/ResendCode.scss";
 
 class ResendCode extends Component {
   render() {

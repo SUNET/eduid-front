@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 
-import "style/CodeVerified.scss";
+// import "style/CodeVerified.scss";
 
 class CodeVerified extends Component {
   render() {
