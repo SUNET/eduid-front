@@ -352,6 +352,7 @@
   "settings.modal_delete_title": "Are you sure you want to delete your eduID?",
   "signup.recaptcha-not-verified": "There was a problem verifying that you are a human. Please try again",
   "signup.registering-address-used": "The email address you entered is already in use",
+  "signup.registering-input": "Email address",
   "signup.registering-new": "Email address successfully registered",
   "signup.registering-resend-code": "Verification email resent",
   "signup.verification-resent": "Verification email resent",
