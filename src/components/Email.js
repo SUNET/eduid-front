@@ -42,7 +42,7 @@ let EmailForm = (props) => (
     <EduIDButton
       className="settings-button"
       id="register-button"
-      disabled={props.invalid}
+      disabled={!props.valid_email}
       onClick={props.handleEmail}
     >
       {props.translate("email.sign-up-email")}
