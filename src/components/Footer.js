@@ -9,6 +9,8 @@ class Footer extends Component {
     const langs = Object.getOwnPropertyNames(this.props.languages);
     langElems = langs.map((lang, index) => {
       if (lang === this.props.language) {
+        // sets the < html lang=""> to the interface language
+        document.documentElement.lang = this.props.language;
         return (
           <p key="0" className="non-selected" key={index}>
             <span key="0">{this.props.languages[lang]}</span>
