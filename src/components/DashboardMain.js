@@ -46,11 +46,6 @@ class Main extends Component {
           </a>
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
-            <div id="welcome" className="vertical-content-margin">
-              <h1>
-                {this.props.translate("dashboard.welcome")} {this.props.email}
-              </h1>
-            </div>
             <div id="content">
               <NotificationsContainer />
               <div key="0" className="vertical-content-margin">

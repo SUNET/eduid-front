@@ -1,5 +1,13 @@
 [
   {
+    "id": "register.sub-heading",
+    "defaultMessage": "Register your email address to create your eduID."
+  },
+  {
+    "id": "register.paragraph",
+    "defaultMessage": "Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number."
+  },
+  {
     "id": "register.create-account",
     "defaultMessage": "Sign up with your email address to start."
   },

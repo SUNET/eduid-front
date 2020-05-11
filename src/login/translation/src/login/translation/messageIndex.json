@@ -14,6 +14,16 @@
     "defaultMessage": "Phone confirmation code"
   },
   {
+    "id": "register.toLogin",
+    "description": "Placeholder for phone text input",
+    "defaultMessage": "If you already have eduID you can log in"
+  },
+  {
+    "id": "text.link",
+    "description": "Placeholder for phone text input",
+    "defaultMessage": "here."
+  },
+  {
     "id": "chpass.help-text-newpass",
     "description": "help text for custom password",
     "defaultMessage": "<label>Tip: Choose a strong password</label>\n            <ul id=\"password-custom-help\">\n\t            <li>Use upper- and lowercase characters, but not at the beginning or end</li>\n\t            <li>Add digits somewhere, but not at the beginning or end</li>\n                <li>Add special characters, such as &#64; &#36; &#92; &#43; &#95; &#37;</li>\n\t            <li>Spaces are ignored</li>\n            </ul>"

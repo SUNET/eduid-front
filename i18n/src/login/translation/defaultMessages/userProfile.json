@@ -1,7 +1,7 @@
 [
   {
-    "id": "dashboard.welcome",
-    "defaultMessage": "eduID for"
+    "id": "banner.welcome",
+    "defaultMessage": "eduID for "
   },
   {
     "id": "profile.name_display_title",
