@@ -6,38 +6,38 @@
 //   margin: 1rem;
 // }
 
-.banner {
-  background-color: white;
-}
+// .banner {
+//   background-color: white;
+// }
 
-.tagline {
-  display: flex;
-  align-items: center;
-  margin: 6rem 0 3rem;
-  span {
-    margin-right: 0.375rem;
-  }
-}
+// .tagline {
+//   display: flex;
+//   align-items: center;
+//   margin: 6rem 0 3rem;
+//   span {
+//     margin-right: 0.375rem;
+//   }
+// }
 
-#eduid-logo {
-  width: 160px;
-  height: 50px;
-  background-image: url(../../img/ds-eduID-logo-black320x120px.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin: 0;
-}
+// #eduid-logo {
+//   width: 160px;
+//   height: 50px;
+//   background-image: url(../../img/ds-eduID-logo-black320x120px.png);
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   margin: 0;
+// }
 
 
-@media (max-width: 823px) {
-  .tagline {
-    margin: 3rem 0 1.5rem;
-  }
-}
+// @media (max-width: 823px) {
+//   .tagline {
+//     margin: 3rem 0 1.5rem;
+//   }
+// }
 
-@media (max-width: 414px) {
-  #eduid-logo {
-    width: 105px;
-    height: 36px;
-  }
-}
+// @media (max-width: 414px) {
+//   #eduid-logo {
+//     width: 105px;
+//     height: 36px;
+//   }
+// }
