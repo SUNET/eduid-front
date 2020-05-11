@@ -45,6 +45,19 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Phone confirmation code`,
     description: "Placeholder for phone text input"
   },
+
+  "register.toLogin": {
+    id: "register.toLogin",
+    defaultMessage: `If you already have eduID you can log in`,
+    description: "Placeholder for phone text input"
+  },
+
+  "text.link": {
+    id: "text.link",
+    defaultMessage: `here.`,
+    description: "Placeholder for phone text input"
+  },
+
   "chpass.help-text-newpass": {
     id: "chpass.help-text-newpass",
     defaultMessage: `<label>Tip: Choose a strong password</label>
