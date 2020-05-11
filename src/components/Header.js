@@ -20,7 +20,7 @@ class Header extends Component {
       );
       
     } else if (url.includes("profile")) {
-      tagline = this.props.translate("dashboard.welcome");
+      tagline = this.props.translate("dashboard.tagline");
       button = (
         <div id="eduid-button">
           <button id="logout" className="btn" onClick={this.props.handleLogout}>
@@ -33,7 +33,7 @@ class Header extends Component {
     }
 
     return (
-      <section class="banner">
+      <section className="banner">
         <header id="header">
           <a href={this.props.dashboard_url}>
             <div id="eduid-logo" />

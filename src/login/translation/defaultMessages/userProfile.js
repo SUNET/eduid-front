@@ -3,8 +3,8 @@ import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
 export const userProfile = {
   // dashboard
-  "dashboard.welcome": (
-    <FormattedMessage id="dashboard.welcome" defaultMessage={`eduID for`} />
+  "dashboard.tagline": (
+    <FormattedMessage id="dashboard.tagline" defaultMessage={`eduID for`} />
   ),
 
   // profile page
