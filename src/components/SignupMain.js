@@ -78,10 +78,6 @@ class SignupMain extends Component {
         <div className="dashboard-wrapper">
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
-            {/* <div id="welcome" className="vertical-content-margin">
-              <h1>{this.props.translate("main.welcome")}</h1>
-              <h2>{this.props.translate("register.create-account")}</h2>
-            </div> */}
             <div id="content">
               <NotificationsContainer />
               <Route
