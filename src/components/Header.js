@@ -6,11 +6,10 @@ import "style/Header.scss";
 class Header extends Component {
   render() {
     const url = location.pathname;
-    let tagline = "";
+    let tagline = this.props.translate("banner.tagline");;
     let button = "";
- 
+
     if (url.includes("register")) {
-      tagline = "eduID är enklare och säkrare inloggning.";
       button = (
         <a href={this.props.dashboard_url}>
           <button id="login" className="btn">
@@ -18,7 +17,6 @@ class Header extends Component {
           </button>
         </a>
       );
-      
     } else if (url.includes("profile")) {
       tagline = this.props.translate("dashboard.tagline");
       button = (
