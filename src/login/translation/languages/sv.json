@@ -60,7 +60,7 @@
   "created.email-sent": "Ett e-postmeddelande med instruktioner för hur du kommer vidare har skickats till {email}",
   "cred.credential_type": "Inloggningsuppgiftstyp",
   "csrf.try-again": "Ett problem uppstod, var vänlig försök igen",
-  "dashboard.tagline": "eduID for",
+  "dashboard.tagline": "eduID för",
   "dashboard.tagline_unverified": "Glöm inte att koppla din identitet till ditt eduID",
   "dashboard.tagline_verified": "Gör ditt eduID säkrare",
   "dashboard_nav.advanced-settings": "Avancerade inställningar",
