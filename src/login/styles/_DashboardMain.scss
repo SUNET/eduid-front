@@ -36,18 +36,6 @@ h1.banner-tagline {
   margin-top: 0;
 }
 
-// remove this from the test of the app
-#welcome {
-  padding: 5.625rem 0 3rem 0;
-  & h1 {
-    font-size: 36px;
-    margin-top: 0;
-    font-weight: 700;
-    word-wrap: break-word;
-    margin-bottom: 0px;
-  }
-}
-
 #dashboard-nav {
   // margin-bottom: 1rem;
   & ul {
@@ -148,9 +136,6 @@ h1.banner-tagline {
 }
 
 @media (max-width: 823px) {
-  #welcome {
-    padding: 3rem 0 2rem;
-  }
   #profile-grid {
     width: calc(80% - 2rem);
   }
