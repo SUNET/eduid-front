@@ -5,7 +5,7 @@ import "../login/styles/index.scss";
 class Header extends Component {
   render() {
     const url = location.pathname;
-    let tagline = this.props.translate("banner.tagline");;
+    let tagline = this.props.translate("banner.tagline");
     let button = "";
 
     if (url.includes("register")) {
