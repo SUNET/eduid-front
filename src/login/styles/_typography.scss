@@ -40,7 +40,7 @@ h6 {
 
 p {
   font-size: 1.25rem;
-  line-height: 1.2;
+  line-height: 1.5;
   margin-top: 1rem 0;
   padding-bottom: 1rem;
 }
@@ -83,9 +83,23 @@ p.steps {
   font-weight: 700;
 }
 
+#register-container {
+  .sub-heading {
+    margin-top: 0rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-family: "ProximaNova-Bold";
+    // font-weight: 700;
+  }
+  .text-content {
+    margin-bottom: 2rem;
+  }
+}
+
 span.sub-heading {
+  letter-spacing: unset;
   font-size: 1.25rem;
-  line-height: 1.2;
+  line-height: 1.5;
   padding-bottom: 0;
 }
 

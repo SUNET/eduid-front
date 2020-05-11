@@ -67,6 +67,14 @@ class Email extends Component {
   render() {
     return [
       <div key="0" id="register-container" className="vertical-content-margin">
+        <div className="text-content">
+        <p className="sub-heading">
+            {this.props.translate("register.sub-heading")}
+        </p>
+        <p>
+            {this.props.translate("register.paragraph")}
+        </p>
+        </div>
         <label>{this.props.translate("signup.registering-input")}</label>
         <EmailForm {...this.props} />
       </div>,

@@ -2,6 +2,20 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const register = {
+  "register.sub-heading": (
+    <FormattedMessage
+      id="register.sub-heading"
+      defaultMessage={`Register your email address to create your eduID.`}
+    />
+  ),
+
+  "register.paragraph": (
+    <FormattedMessage
+      id="register.paragraph"
+      defaultMessage={`Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number.`}
+    />
+  ),
+
   "register.create-account": (
     <FormattedMessage
       id="register.create-account"
@@ -73,7 +87,7 @@ export const register = {
     />
   ),
 
-  "created.email-sent": values => (
+  "created.email-sent": (values) => (
     <FormattedMessage
       id="created.email-sent"
       defaultMessage={`Click the confirmation link sent to {email} to be able log in to eduID`}
@@ -133,7 +147,7 @@ export const register = {
     />
   ),
 
-  "used.email-in-use": values => (
+  "used.email-in-use": (values) => (
     <FormattedMessage
       id="used.email-in-use"
       defaultMessage={`An eduID is already using {email}`}
@@ -201,5 +215,5 @@ export const register = {
       id="finish.confirm-identity"
       defaultMessage={`CONFIRM IDENTITY`}
     />
-  )
+  ),
 };
