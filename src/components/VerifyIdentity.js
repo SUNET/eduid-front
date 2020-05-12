@@ -12,6 +12,13 @@ class VerifyIdentity extends Component {
     let vettingButtons = "";
     let connectNin = "";
     let headerText = "";
+    let recoverIdentityTip = "";
+    let ninExplanation = this.props.translate(
+      "verify-identity.unverified_page-description"
+    );
+    let numberedHeading = this.props.translate(
+      "verify-identity.add-nin_heading"
+    );
     let buttonHelpTextArray = [
       this.props.translate("letter.initialize_proofing_help_text"),
       this.props.translate("lmp.initialize_proofing_help_text"),
@@ -55,15 +62,23 @@ class VerifyIdentity extends Component {
     } else if (this.props.verifiedNinStatus) {
       headerText = this.props.translate("verify-identity.verified_main_title");
       connectNin = "";
+      numberedHeading = "";
+      ninExplanation = this.props.translate(
+        "verify-identity.verified_page-description"
+      );
+      recoverIdentityTip = this.props.translate(
+        "verify-identity.verified_pw_reset_extra_security"
+      );
     }
 
     return (
       <Fragment>
         <div key="0" className="intro">
           <h4>{headerText}</h4>
-          <p>{this.props.translate("verify-identity.page-description")}</p>
-          <h3>{this.props.translate("verify-identity.add-nin_heading")}</h3>
+          <p>{ninExplanation}</p>
+          <h3>{numberedHeading}</h3>
           <AddNin {...this.props} />
+          <p className="help-text">{recoverIdentityTip}</p>
         </div>
         {connectNin}
       </Fragment>

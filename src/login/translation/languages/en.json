@@ -383,9 +383,11 @@
   "verify-identity.connect-nin_description": "Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another.",
   "verify-identity.connect-nin_heading": "2. Verify your id number",
   "verify-identity.connect_nin_title": "2. Choose a way to verify that the id number belongs to you",
-  "verify-identity.page-description": "To be able\n            to use eduID you have to prove your identity. Add your national id number and verify it in real life.",
   "verify-identity.unverified_main_title": "Connect your identity to your eduID",
+  "verify-identity.unverified_page-description": "To be able\n            to use eduID you have to prove your identity. Add your national id number and verify it in real life.",
   "verify-identity.verified_main_title": "Your eduID is ready to use",
+  "verify-identity.verified_page-description": "The below id number is now connected to this eduID. Use your eduID to log in to sevices related to higher education.",
+  "verify-identity.verified_pw_reset_extra_security": "Add a phone number or a security key to your eduID to keep your identity at password reset.",
   "verify-identity.vetting_freja_tagline": "For those able to create a Freja eID by visiting one of the authorised agents",
   "verify-identity.vetting_phone_tagline": "For those with a phone registered in their name",
   "verify-identity.vetting_post_tagline": "For those registered at their current address"
