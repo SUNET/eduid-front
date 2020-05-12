@@ -113,11 +113,25 @@ export const userProfile = {
     />
   ),
 
-  "verify-identity.page-description": (
+  "verify-identity.unverified_page-description": (
     <FormattedMessage
-      id="verify-identity.page-description"
+      id="verify-identity.unverified_page-description"
       defaultMessage={`To be able
             to use eduID you have to prove your identity. Add your national id number and verify it in real life.`}
+    />
+  ),
+
+ "verify-identity.verified_pw_reset_extra_security": (
+   <FormattedMessage
+     id="verify-identity.verified_pw_reset_extra_security"
+     defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at password reset.`}
+   />
+ ),
+
+  "verify-identity.verified_page-description": (
+    <FormattedMessage
+      id="verify-identity.verified_page-description"
+      defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to sevices related to higher education.`}
     />
   ),
 
