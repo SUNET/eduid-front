@@ -21,8 +21,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     handleEmail: function (e) {
       e.preventDefault();
-      const email = e.target.closest("#content").children[1].children[1]
-        .firstChild.children[0].value;
+      const email = document.querySelector("input[name='email']").value;
       dispatch(actions.addEmail(email));
     },
     handleAccept: (e) => {
