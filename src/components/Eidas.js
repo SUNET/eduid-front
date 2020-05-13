@@ -25,28 +25,14 @@ class Eidas extends Component {
           <label>{this.props.translate("eidas.freja_instructions_tip1")}</label>
           <li>{this.props.translate("eidas.freja_instructions_step5")}</li>
         </ol>
+        <a
+          // className="btn-link"
+          href="https://frejaeid.com/skaffa-freja-eid/"
+          target="_blank"
+        >
+          {this.props.translate("eidas.freja_instructions_install_link")}
+        </a>
       </div>
-    );
-
-    let have_freja, install_freja;
-
-    have_freja = (
-      <EduIDButton
-        className="btn-link"
-        href={this.props.eidas_sp_freja_idp_url}
-      >
-        {this.props.translate("eidas.freja_eid_ready")}
-      </EduIDButton>
-    );
-
-    install_freja = (
-      <EduIDButton
-        className="btn-link"
-        href="https://frejaeid.com/skaffa-freja-eid/"
-        target="_blank"
-      >
-        {this.props.translate("eidas.freja_instructions_install_link")}
-      </EduIDButton>
     );
 
     return (
@@ -74,15 +60,15 @@ class Eidas extends Component {
               {this.props.translate("eidas.modal_title")}
             </ModalHeader>
 
-            <ModalBody>
-              {freja_instructions}
-              <div id="freja-links">
-                {have_freja}
-                {install_freja}
-              </div>
-            </ModalBody>
+            <ModalBody>{freja_instructions}</ModalBody>
 
             <ModalFooter>
+              <EduIDButton
+                className="modal-button ok-button"
+                href={this.props.eidas_sp_freja_idp_url}
+              >
+                {this.props.translate("eidas.freja_eid_ready")}
+              </EduIDButton>
               <EduIDButton
                 className="modal-button cancel-button"
                 id="eidas-hide-modal"
@@ -102,7 +88,7 @@ Eidas.propTypes = {
   handleShowModal: PropTypes.func,
   handleHideModal: PropTypes.func,
   showModal: PropTypes.bool,
-  eidas_sp_freja_idp_url: PropTypes.string
+  eidas_sp_freja_idp_url: PropTypes.string,
 };
 
 export default Eidas;

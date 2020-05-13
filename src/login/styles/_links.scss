@@ -6,7 +6,8 @@ a {
   text-decoration: none;
   transition: all 0.2s ease;
   &:hover {
-    text-decoration: none;
+    text-decoration: underline;
+    color: #ff4500;
   }
   &.text-link {
     font-family: "ProximaNova-Regular";
