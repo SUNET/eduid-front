@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import "../login/styles/index.scss";
 
@@ -17,7 +17,11 @@ class Header extends Component {
         </a>
       );
     } else if (url.includes("profile")) {
-      tagline = this.props.translate("dashboard.tagline");
+      tagline = (
+        <Fragment>
+          {this.props.translate("dashboard.tagline")} {this.props.email}
+        </Fragment>
+      );
       button = (
         <div id="eduid-button">
           <button id="logout" className="btn" onClick={this.props.handleLogout}>
@@ -38,9 +42,7 @@ class Header extends Component {
           {button}
         </header>
         <div className="vertical-content-margin">
-          <h1 className="tagline">
-            {tagline} {this.props.email}
-          </h1>
+          <h1 className="tagline">{tagline}</h1>
         </div>
       </section>
     );
