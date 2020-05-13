@@ -34,7 +34,7 @@ h5.modal-title {
   & .modal-footer {
     & a {
       display: flex;
-      align-items:center;
+      align-items: center;
     }
   }
 }
@@ -89,15 +89,17 @@ ol {
         line-height: 1.4;
       }
     }
-    & a {
-      font-size: 1rem;
-      &:hover {
-        color: #ff4500;
-      }
-    }
     & label {
       color: #7c7c7c;
       margin: 1rem 0;
+    }
+  }
+  & a {
+    font-size: 1rem;
+    text-decoration: underline;
+    &:hover {
+      color: #ff4500;
+      text-decoration: none;
     }
   }
 }
