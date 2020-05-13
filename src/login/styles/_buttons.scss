@@ -8,7 +8,7 @@
   margin-top: 0;
   margin-bottom: 0;
 }
-
+a.btn,
 button,
 button.btn {
   font-family: "Akkurat";
@@ -95,17 +95,26 @@ button.close:hover {
   transform: scale(1.2);
 }
 
-/* MODALS */
+//  {
+//   font-family: "ProximaNova-Regular";
+// }
 
+/* MODALS */
+a.btn.modal-button,
 button.btn.modal-button {
   box-shadow: none;
   border: solid 1px transparent;
   background-color: transparent;
   margin: 0.5rem 1rem;
+  &:hover {
+    background: transparent;
+    transform: scale(1);
+  }
 }
 
 /* color for OK and ACCEPT buttons in modals */
 // ----- buttons with actions in modals ----  //
+a.ok-button,
 button.ok-button {
   color: $orange-highlight;
   &:hover,
@@ -157,6 +166,7 @@ button.btn.icon-button {
 
 /* styles for links that are also buttons */
 // -----  ----  //
+a.btn-link,
 button.btn-link {
   background-color: transparent;
   color: $orange-highlight;

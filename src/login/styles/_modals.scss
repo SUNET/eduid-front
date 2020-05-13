@@ -23,12 +23,18 @@ h5.modal-title {
   }
   & .modal-body {
     background-color: #f4f4f4;
-    padding: 2rem 2rem 0 2rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     color: #7c7c7c;
     & button.btn.settings-button {
       margin: 0 0 1rem 0;
+    }
+  }
+  & .modal-footer {
+    & a {
+      display: flex;
+      align-items: center;
     }
   }
 }
@@ -68,33 +74,34 @@ h5.modal-title {
   }
 }
 
-#freja-instructions,
-#freja-instructions label {
-  color: #7c7c7c;
-}
-#freja-instructions ol {
-  padding-left: 30px;
-  line-height: 1.2;
-  font-size: 1.25rem;
+ol {
+  list-style-type: decimal;
 }
 
-#freja-instructions li {
-  padding-left: 5px;
-  margin: 15px 0;
-}
-
-#freja-links {
-  margin: 50px 0 20px;
-  display: flex;
-  justify-content: space-around;
-}
-
-#freja-links a {
-  border: none;
-  color: #ff4500;
-  line-height: 1.2;
-  font-weight: 700;
-  font-size: 1rem;
+#freja-instructions {
+  & ol {
+    line-height: 1;
+    font-size: 1.25rem;
+    margin: 0 0 2rem 2rem;
+    & li {
+      margin-bottom: 1rem;
+      & span {
+        line-height: 1.4;
+      }
+    }
+    & label {
+      color: #7c7c7c;
+      margin: 1rem 0;
+    }
+  }
+  & a {
+    font-size: 1rem;
+    text-decoration: underline;
+    &:hover {
+      color: #ff4500;
+      text-decoration: none;
+    }
+  }
 }
 
 #delete-account-modal {
@@ -120,10 +127,7 @@ h5.modal-title {
 }
 
 p.modal-text {
-  // display: flex;
-  // flex-direction: column;
   margin-top: 0;
-  // margin-bottom: 30px;
 }
 
 @media (max-width: 823px) {
@@ -192,9 +196,6 @@ p.modal-text {
 }
 
 @media (min-width: 576px) {
-  // .container {
-  //   max-width: 100%;
-  // }
   .modal-dialog {
     max-width: 100%;
   }
