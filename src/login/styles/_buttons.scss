@@ -106,6 +106,10 @@ button.btn.modal-button {
   border: solid 1px transparent;
   background-color: transparent;
   margin: 0.5rem 1rem;
+  &:hover {
+    background: transparent;
+    transform: scale(1);
+  }
 }
 
 /* color for OK and ACCEPT buttons in modals */
