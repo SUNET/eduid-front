@@ -9,11 +9,11 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleDelete: function(e) {
-      const ninNumber = e.target.closest("#nin-display-container").firstChild
+    handleDelete: function (e) {
+      const ninNumber = e.target.closest(".profile-grid-cell").children[1]
         .dataset.ninnumber;
       dispatch(actions.startRemove(ninNumber));
-    }
+    },
   };
 };
 

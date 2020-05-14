@@ -10,8 +10,6 @@ import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 import CookieChecker from "components/CookieChecker";
 
-import "style/OpenidConnect.scss";
-
 class OpenidConnect extends Component {
   render() {
     const seleg_instructions = (

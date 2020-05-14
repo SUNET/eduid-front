@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import GenericConfirmModal from "components/GenericConfirmModal";
-import "style/LookupMobileProofing.scss";
 
 class LookupMobileProofing extends Component {
   render() {
@@ -49,14 +48,14 @@ class LookupMobileProofing extends Component {
       <div key="0">
         <div key="0" className="vetting-button">
           <button
-            className="proofing-button"
+            // className="proofing-button"
             disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
           >
-            <div key="1" className="vetting-button-text">
+            <div key="1" className="text">
               {this.props.translate("verify-identity.vetting_phone_tagline")}
             </div>
-            <div key="2" className="vetting-button-name">
+            <div key="2" className="name">
               {this.props.translate("lmp.button_text_request")}
             </div>
           </button>

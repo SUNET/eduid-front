@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -8,9 +8,10 @@ import EduIDButton from "components/EduIDButton";
 import TableList from "./DataTable/DataTable";
 import ConfirmModal from "components/ConfirmModal";
 
-import "style/Emails.scss";
-import "style/Mobile.scss";
-import "style/DashboardMain.scss";
+// import "style/Emails.scss";
+// import "style/Mobile.scss";
+// import "style/DashboardMain.scss";
+import "../login/styles/index.scss";
 
 const validate = (values, props) => {
   let phone = values.number;
@@ -30,7 +31,7 @@ const validate = (values, props) => {
   }
 };
 
-let PhoneForm = props => {
+let PhoneForm = (props) => {
   return (
     <form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
@@ -57,12 +58,12 @@ let PhoneForm = props => {
 
 PhoneForm = reduxForm({
   form: "phones",
-  validate
+  validate,
 })(PhoneForm);
 
-PhoneForm = connect(state => ({
+PhoneForm = connect((state) => ({
   initialValues: { number: state.phones.phone },
-  enableReinitialize: true
+  enableReinitialize: true,
 }))(PhoneForm);
 
 class Mobile extends Component {
@@ -73,19 +74,12 @@ class Mobile extends Component {
   }
 
   showEmailForm() {
-    console.log("hellow, you're showing the form");
-    this.setState(
-      (state, props) => {
-        return {
-          formClass: "form-content",
-          addLinkClass: "hide"
-        };
-      },
-      () => {
-        console.log("formClass:", this.state.formClass);
-      }
-    );
-    console.log("formClass state updated:", this.state.formClass);
+    this.setState((state, props) => {
+      return {
+        formClass: "form-content",
+        addLinkClass: "hide",
+      };
+    });
   }
 
   render() {
@@ -117,7 +111,7 @@ class Mobile extends Component {
           modalId="phoneConfirmDialog"
           id="phoneConfirmDialogControl"
           title={this.props.translate("mobile.confirm_title", {
-            phone: this.props.confirming
+            phone: this.props.confirming,
           })}
           resendLabel={this.props.translate("cm.enter_code")}
           resendHelp={this.props.translate("cm.lost_code")}
@@ -141,7 +135,7 @@ Mobile.propTypes = {
   handleAdd: PropTypes.func,
   handleStartConfirmation: PropTypes.func,
   handleStopConfirmation: PropTypes.func,
-  handleRemoveMobile: PropTypes.func
+  handleRemoveMobile: PropTypes.func,
 };
 
 export default Mobile;

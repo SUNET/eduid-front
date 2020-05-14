@@ -723,7 +723,6 @@ describe("Emails Container", () => {
     email = wrapper.find(EmailsContainer).props().email;
     language = wrapper.find(EmailsContainer).props().language;
     dispatch = store.dispatch;
-    console.log("this is the wrapper;", wrapper.debug());
   });
 
   afterEach(() => {

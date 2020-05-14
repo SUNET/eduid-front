@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 
-import "style/CodeVerified.scss";
-
 class CodeVerified extends Component {
   render() {
     return (
-      <form key="2" method="GET" action={this.props.dashboard_url}>
+      <form key="2" method="GET" action={this.props.dashboard_url} className="vertical-content-margin">
         <div key="0" id="register-container">
           <div>
             <h3 className="register-header">

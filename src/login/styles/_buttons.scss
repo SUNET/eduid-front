@@ -1,5 +1,14 @@
 @import "./variables.scss";
 
+// --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
+
+#login,
+#logout {
+  text-transform: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+a.btn,
 button,
 button.btn {
   font-family: "Akkurat";
@@ -14,11 +23,11 @@ button.btn {
   box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
   transition: all 0.5s ease;
   outline: 0;
+  border: none;
   cursor: pointer;
   &:disabled,
   .disabled {
     background-color: $dark-gray;
-    border: none;
     color: #f4f4f4;
   }
 }
@@ -58,6 +67,7 @@ button.btn-secondary:hover {
 
 button.btn-primary:hover {
   background-color: $orange-highlight;
+  border: none;
   &:disabled,
   .disabled {
     background-color: $dark-gray;
@@ -85,17 +95,26 @@ button.close:hover {
   transform: scale(1.2);
 }
 
-/* MODALS */
+//  {
+//   font-family: "ProximaNova-Regular";
+// }
 
+/* MODALS */
+a.btn.modal-button,
 button.btn.modal-button {
   box-shadow: none;
   border: solid 1px transparent;
   background-color: transparent;
   margin: 0.5rem 1rem;
+  &:hover {
+    background: transparent;
+    transform: scale(1);
+  }
 }
 
 /* color for OK and ACCEPT buttons in modals */
 // ----- buttons with actions in modals ----  //
+a.ok-button,
 button.ok-button {
   color: $orange-highlight;
   &:hover,
@@ -134,6 +153,9 @@ button.btn.icon-button {
   background-color: transparent;
   border: solid 1px transparent;
   box-shadow: none;
+  margin: 0;
+  padding: 0 1rem;
+  height: auto;
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
@@ -164,18 +186,26 @@ button.btn.table-button {
 
 /* styles for links that are also buttons */
 // -----  ----  //
+a.btn-link,
 button.btn-link {
   background-color: transparent;
   color: $orange-highlight;
   border-radius: 0;
   border: none;
   box-shadow: none;
+  margin: 0;
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     color: $orange-highlight;
+    background-color: transparent;
+    transform: scale(1);
   }
+}
+
+.modal-footer button.delete-button {
+  margin: 0.5rem 1rem;
 }
 
 @media (max-width: 414px) {
@@ -187,7 +217,7 @@ button.btn-link {
     width: 100%;
   }
   button.btn.btn-link,
-  #delete-button,
+  .delete-button,
   #security-change-button,
   #add-more-button {
     width: auto;

@@ -21,29 +21,29 @@ describe("ChangePasswordForm Component", () => {
 });
 
 describe("ChangePasswordForm renders", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     security: {
-      confirming_change: false
+      confirming_change: false,
     },
     chpass: {
-      suggested_password: "h3u r6 lo9"
+      suggested_password: "h3u r6 lo9",
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   const props = {
     handleStartPasswordChange: mock.fn(),
-    handleStopPasswordChange: mock.fn()
+    handleStopPasswordChange: mock.fn(),
   };
 
   function setupComponent() {
@@ -53,7 +53,7 @@ describe("ChangePasswordForm renders", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 

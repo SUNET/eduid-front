@@ -9,6 +9,7 @@ class ButtonModal extends Component {
         className={this.props.className}
         translate={this.props.translate}
         onClick={this.props.onClick}
+        color="primary"
       >
         {this.props.children}
       </Button>

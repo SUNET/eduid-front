@@ -1,4 +1,5 @@
 @import "reset";
+@import "anti-bootstrap";
 @import "fonts";
 @import "typography";
 @import "base";
@@ -9,13 +10,20 @@
 @import "links";
 @import "nav";
 @import "img";
-@import "errorMessages";
 @import "modals";
+@import "tables";
 
-/* styles specific to componets */
-@import "Header";
+/* replaces specific stylesheets */
+@import "AccountLinking";
+@import "ChangePassword";
+@import "DashboardMain";
+@import "Emails";
 @import "Footer";
+@import "Header";
+@import "Nins";
+@import "Notifications";
 @import "ResetPassword";
-
-// does this styling work without stylesheet?
+@import "Security";
+@import "SignupMain";
 @import "Splash";
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";

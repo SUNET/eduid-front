@@ -1,0 +1,71 @@
+// also check #nin-form
+#register-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0;
+  &.form-group {
+    margin-bottom: 0;
+  }
+}
+
+#register-button {
+  margin: 0 0 0 1rem;
+}
+
+#email {
+  padding: 0;
+  flex: 1;
+}
+
+h3 {
+  &.register-header {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+.text-link-container {
+  display: flex;
+}
+
+.registered-email {
+  color: $orange-highlight;
+}
+
+#captcha {
+  transform: scale(1.2);
+  transform-origin: 0 0;
+  margin-bottom: 2rem;
+}
+
+#captcha-buttons {
+  display: flex;
+  align-items: baseline;
+}
+
+@media (max-width: 568px) {
+  #register-form {
+    flex-direction: column;
+    align-items: unset;
+  }
+  #register-button {
+    width: 100%;
+    margin: 1rem 0 0 0;
+  }
+}
+
+@media (max-width: 414px) {
+  #captcha {
+    transform: scale(0.9);
+    margin-bottom: 0;
+  }
+  .captcha {
+    margin: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  #resend-button {
+    font-size: 0.8rem;
+  }
+}

@@ -4,7 +4,7 @@ import EduIDButton from "components/EduIDButton";
 import GenericConfirmModal from "components/GenericConfirmModal";
 import ConfirmModal from "components/ConfirmModal";
 
-import "style/Security.scss";
+import "../login/styles/index.scss";
 
 class Security extends Component {
   checkWebauthnDevice() {
@@ -16,8 +16,8 @@ class Security extends Component {
       return false;
     }
     PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-      .then(available => available)
-      .catch(error => {
+      .then((available) => available)
+      .catch((error) => {
         console.log("Error checking for platform authenticator:", error);
         return false;
       });
@@ -31,7 +31,7 @@ class Security extends Component {
     let securitykey_table = "";
     // filter out password from data
     const tokens = this.props.credentials.filter(
-      cred => cred.credential_type !== "security.password_credential_type"
+      (cred) => cred.credential_type !== "security.password_credential_type"
     );
 
     // data that goes onto the table
@@ -50,14 +50,14 @@ class Security extends Component {
       // verify button/ verified badge
       if (cred.verified) {
         btnVerify = (
-          <EduIDButton className="btn-link verified" disabled>
+          <span className="nobutton verified" disabled>
             {this.props.translate("security.verified")}
-          </EduIDButton>
+          </span>
         );
       } else {
         btnVerify = (
           <EduIDButton
-            className="btn-link verify-status-label"
+            className="btn-link nobutton verify-status-label"
             onClick={this.props.handleVerifyWebauthnToken}
           >
             {this.props.translate("security.verify")}
@@ -121,7 +121,7 @@ class Security extends Component {
     // show no table if no security keys
     if (tokens.length > 0) {
       securitykey_table = (
-        <table className="passwords">
+        <table className="table-form passwords">
           <tbody>
             <tr>
               <th>{this.props.translate("security.description")}</th>
@@ -143,17 +143,15 @@ class Security extends Component {
             <h4>{this.props.translate("security.security-key_title")}</h4>
             <p>{this.props.translate("security.second-factor")}</p>
           </div>
-          <div id="register-webauthn-tokens-area">
+          <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
-            <div id="add-webauthn-token">
-              <EduIDButton
-                id="security-webauthn-button"
-                className="settings-button"
-                onClick={this.props.handleStartAskingKeyWebauthnDescription}
-              >
-                {this.props.translate("security.add_webauthn_token_key")}
-              </EduIDButton>
-            </div>
+            <EduIDButton
+              id="security-webauthn-button"
+              className="settings-button"
+              onClick={this.props.handleStartAskingKeyWebauthnDescription}
+            >
+              {this.props.translate("security.add_webauthn_token_key")}
+            </EduIDButton>
             {platformAuthenticatorButton}
           </div>
         </div>
@@ -191,7 +189,7 @@ Security.propTypes = {
   last_used: PropTypes.string,
   langs: PropTypes.array,
   handleStartWebauthnRegistration: PropTypes.func,
-  handleCloseWebauthnModal: PropTypes.func
+  handleCloseWebauthnModal: PropTypes.func,
 };
 
 export default Security;

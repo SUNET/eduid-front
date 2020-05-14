@@ -13,57 +13,51 @@ import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "style/base.scss";
-import "style/DashboardMain.scss";
-
-// import "../login/styles/index.scss";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "style/base.scss";
 
 class Settings extends Component {
   render() {
     return (
-      <div id="dashboard">
-        <DashboardNav {...this.props} />
-        <div id="settings-content">
-          <Route
-            exact
-            path="/profile/settings/"
-            component={() => <Redirect to="/profile/settings/personaldata" />}
-          />
-          <Route
-            path="/profile/settings/personaldata"
-            render={props => <PersonalDataContainer {...props} />}
-          />
+      <div>
+        <Route
+          exact
+          path="/profile/settings/"
+          component={() => <Redirect to="/profile/settings/personaldata" />}
+        />
+        <Route
+          path="/profile/settings/personaldata"
+          render={(props) => <PersonalDataContainer {...props} />}
+        />
 
-          <Route
-            path="/profile/settings/personaldata"
-            component={EmailsContainer}
-          />
-          <Route
-            path="/profile/settings/personaldata"
-            component={MobileContainer}
-          />
-          <Route
-            path="/profile/settings/personaldata"
-            component={ChangePasswordDisplay}
-          />
-          <Route
-            path="/profile/settings/personaldata"
-            component={DeleteAccount}
-          />
-          <Route
-            path="/profile/settings/advanced-settings"
-            component={SecurityContainer}
-          />
-          <Route
-            path="/profile/settings/advanced-settings"
-            component={AccountLinkingContainer}
-          />
-          <Route
-            path="/profile/settings/advanced-settings"
-            component={AccountId}
-          />
-        </div>
+        <Route
+          path="/profile/settings/personaldata"
+          component={EmailsContainer}
+        />
+        <Route
+          path="/profile/settings/personaldata"
+          component={MobileContainer}
+        />
+        <Route
+          path="/profile/settings/personaldata"
+          component={ChangePasswordDisplay}
+        />
+        <Route
+          path="/profile/settings/personaldata"
+          component={DeleteAccount}
+        />
+        <Route
+          path="/profile/settings/advanced-settings"
+          component={SecurityContainer}
+        />
+        <Route
+          path="/profile/settings/advanced-settings"
+          component={AccountLinkingContainer}
+        />
+        <Route
+          path="/profile/settings/advanced-settings"
+          component={AccountId}
+        />
       </div>
     );
   }

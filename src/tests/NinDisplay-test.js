@@ -172,14 +172,14 @@ describe("NinDisplay component (profile), when no nin is saved", () => {
   }
   // const state = { ...fakeState };
   // state.nins = [];
-  it("Renders an 'Add id number' box", () => {
+  it("Renders an 'add id number' box", () => {
     history.push("/profile");
     const state = { ...fakeState };
     state.nins = [{ number: "199901100006", verified: false, primary: false }];
     const { wrapper } = setupComponent();
     const noNumber = wrapper.find("a");
     expect(noNumber.exists()).toEqual(true);
-    expect(noNumber.text()).toContain("Add id number");
+    expect(noNumber.text()).toContain("add id number");
   });
 
   it("Renders a link to '/profile/verify-identity/'", () => {

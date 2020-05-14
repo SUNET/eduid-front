@@ -14,8 +14,9 @@ import CaptchaContainer from "containers/Captcha";
 import NotificationsContainer from "containers/Notifications";
 import EmailInUseContainer from "containers/EmailInUse";
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "style/SignupMain.scss";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "style/base.scss";
+import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
 
@@ -77,10 +78,6 @@ class SignupMain extends Component {
         <div className="dashboard-wrapper">
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
-            <div id="welcome">
-              <h1>{this.props.translate("main.welcome")}</h1>
-              <h2>{this.props.translate("register.create-account")}</h2>
-            </div>
             <div id="content">
               <NotificationsContainer />
               <Route
@@ -113,7 +110,7 @@ class SignupMain extends Component {
           </div>
           <FooterContainer {...this.props} />
         </div>
-      </Router>
+      </Router>,
     ];
   }
 }

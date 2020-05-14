@@ -3,8 +3,8 @@
 @import "variables.scss";
 
 h1 {
-  font-size: 36px;
-  line-height: 44px;
+  font-size: 2.25rem;
+  line-height: 1.2;
   margin-top: 0;
   font-weight: 700;
   font-family: "ProximaNova-Regular";
@@ -20,7 +20,7 @@ h2 {
 h3 {
   font-size: 24px;
   line-height: 34px;
-  margin-top: 56px;
+  // margin-top: 56px;
 }
 
 h4 {
@@ -40,7 +40,7 @@ h6 {
 
 p {
   font-size: 1.25rem;
-  line-height: 1.2;
+  line-height: 1.5;
   margin-top: 1rem 0;
   padding-bottom: 1rem;
 }
@@ -64,15 +64,42 @@ p.steps {
   padding-bottom: 0;
 }
 
+.intro {
+  & h4 {
+    font-size: 1.5rem;
+    line-height: 2.125rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  & h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
 // this is the first paragraph on pages outside of the dashboard
 .sub-heading {
   margin-top: 3rem;
   font-weight: 700;
 }
 
+#register-container {
+  .sub-heading {
+    margin-top: 0rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-family: "ProximaNova-Bold";
+    // font-weight: 700;
+  }
+  .text-content {
+    margin-bottom: 2rem;
+  }
+}
+
 span.sub-heading {
+  letter-spacing: unset;
   font-size: 1.25rem;
-  line-height: 1.2;
+  line-height: 1.5;
   padding-bottom: 0;
 }
 

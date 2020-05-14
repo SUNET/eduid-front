@@ -28,42 +28,42 @@ describe("AddNin component", () => {
 });
 
 describe("AddNin component, when no nin is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     config: {
-      language: "en"
+      language: "en",
     },
     personal_data: {
       data: {
-        eppn: "test-eppn"
-      }
+        eppn: "test-eppn",
+      },
     },
     emails: {
-      emails: []
+      emails: [],
     },
     nins: {
-      nins: []
+      nins: [],
     },
     phones: {
-      phones: []
+      phones: [],
     },
     profile: {
-      pending: []
+      pending: [],
     },
     notifications: {
       messages: [],
-      errors: []
+      errors: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -72,7 +72,7 @@ describe("AddNin component, when no nin is saved", () => {
       nin: "",
       valid_nin: true,
       verifyingLetter: false,
-      proofing_methods: []
+      proofing_methods: [],
     };
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -83,7 +83,7 @@ describe("AddNin component, when no nin is saved", () => {
     );
     return {
       props,
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
@@ -97,48 +97,48 @@ describe("AddNin component, when no nin is saved", () => {
 
   it("Does not render <NinDisplay/> ", () => {
     const { wrapper } = setupComponent();
-    const ninDisplay = wrapper.find("#nin-display-container");
+    const ninDisplay = wrapper.find(".profile-grid-cell");
     expect(ninDisplay.exists()).toEqual(false);
   });
 });
 
 describe("AddNin component, when a nin is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     config: {
-      language: "en"
+      language: "en",
     },
     personal_data: {
       data: {
-        eppn: "test-eppn"
-      }
+        eppn: "test-eppn",
+      },
     },
     emails: {
-      emails: []
+      emails: [],
     },
     nins: {
-      nins: []
+      nins: [],
     },
     phones: {
-      phones: []
+      phones: [],
     },
     profile: {
-      pending: []
+      pending: [],
     },
     notifications: {
       messages: [],
-      errors: []
+      errors: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -147,7 +147,7 @@ describe("AddNin component, when a nin is saved", () => {
       nin: "",
       valid_nin: true,
       verifyingLetter: false,
-      proofing_methods: []
+      proofing_methods: [],
     };
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -158,17 +158,17 @@ describe("AddNin component, when a nin is saved", () => {
     );
     return {
       props,
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
   state.nins.nins = [
     { number: "196701100006", verified: false, primary: false },
-    { number: "196701110005", verified: false, primary: false }
+    { number: "196701110005", verified: false, primary: false },
   ];
   it("Renders <NinDisplay/> ", () => {
     const { wrapper } = setupComponent();
-    const ninDisplay = wrapper.find(".profile-card");
+    const ninDisplay = wrapper.find(".display-data");
     expect(ninDisplay.exists()).toEqual(true);
   });
 

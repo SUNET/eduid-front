@@ -30,7 +30,7 @@ class Main extends Component {
         />
         <div id="tou-buttons">
           <EduIDButton
-            className="settings-button ok-button tou-button"
+            className="settings-button tou-button"
             onClick={this.props.acceptTOU}
             id="accept-tou-button"
           >

@@ -4,10 +4,8 @@
 .modal {
   display: flex !important;
   justify-content: center;
-}
-
-.modal-header {
-  padding: 2rem;
+  width: calc(100% - 2rem);
+  margin: 0 1rem;
 }
 
 h5.modal-title {
@@ -20,16 +18,24 @@ h5.modal-title {
 .modal-content {
   background-color: white;
   border-radius: 20px;
-}
-
-.modal-body {
-  background-color: #f4f4f4;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  color: #7c7c7c;
-  & button.btn.settings-button {
-    margin: 0 0 1rem 0;
+  & .modal-header {
+    padding: 2rem;
+  }
+  & .modal-body {
+    background-color: #f4f4f4;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    color: #7c7c7c;
+    & button.btn.settings-button {
+      margin: 0 0 1rem 0;
+    }
+  }
+  & .modal-footer {
+    & a {
+      display: flex;
+      align-items: center;
+    }
   }
 }
 
@@ -41,58 +47,76 @@ h5.modal-title {
   margin: auto;
 }
 
-#confirm-user-data-modal,
-#register-modal,
-#eidas-modal,
+// temporary styling for register tou
+#register-modal {
+  & .modal-header {
+    padding: 1rem 2rem;
+  }
+  & .modal-body {
+    padding: 1rem 2rem 0 2rem;
+    & p {
+      font-size: 1rem;
+      padding-bottom: 0;
+    }
+    & ul {
+      margin-left: 2rem;
+      list-style-type: disc;
+      & li {
+        margin: 0.75rem 0;
+        line-height: 1;
+      }
+    }
+  }
+  & .modal-footer {
+    & button {
+      margin: 0;
+    }
+  }
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+#freja-instructions {
+  & ol {
+    line-height: 1;
+    font-size: 1.25rem;
+    margin: 0 0 2rem 2rem;
+    & li {
+      margin-bottom: 1rem;
+      & span {
+        line-height: 1.4;
+      }
+    }
+    & label {
+      color: #7c7c7c;
+      margin: 1rem 0;
+    }
+  }
+  & a {
+    font-size: 1rem;
+    text-decoration: underline;
+    &:hover {
+      color: #ff4500;
+      text-decoration: none;
+    }
+  }
+}
+
 #delete-account-modal {
-  width: 70vw;
-  margin: auto;
-}
-
-#freja-instructions,
-#freja-instructions label {
-  color: #7c7c7c;
-}
-#freja-instructions ol {
-  padding-left: 30px;
-  line-height: 1.2;
-  font-size: 1.25rem;
-}
-
-#freja-instructions li {
-  padding-left: 5px;
-  margin: 15px 0;
-}
-
-#freja-links {
-  margin: 50px 0 20px;
-  display: flex;
-  justify-content: space-around;
-}
-
-#freja-links a {
-  border: none;
-  color: #ff4500;
-  line-height: 1.2;
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-/* styles for delete account modal text */
-// #delete-account {
-//   display: flex;
-//   flex-direction: column;
-//   margin-top: 0;
-//   margin-bottom: 30px;
-// }
-
-#delete-account-modal label {
-  margin-bottom: 30px;
-  color: #7c7c7c;
-  font-size: 1rem;
-  text-transform: none;
-  line-height: 1.5;
-  font-weight: 700;
+  & .modal-footer {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+  & label {
+    margin-bottom: 30px;
+    color: #7c7c7c;
+    font-size: 1rem;
+    text-transform: none;
+    line-height: 1.5;
+    font-weight: 700;
+  }
 }
 
 /* styles for confirm button in delete account modal */
@@ -103,10 +127,7 @@ h5.modal-title {
 }
 
 p.modal-text {
-  // display: flex;
-  // flex-direction: column;
   margin-top: 0;
-  // margin-bottom: 30px;
 }
 
 @media (max-width: 823px) {
@@ -115,39 +136,52 @@ p.modal-text {
   #delete-account-modal,
   #eidas-modal,
   .modal-dialog {
-    width: calc(100% - 40px);
-    margin: auto 20px;
+    width: calc(100% - 1.25rem);
+    margin: auto 1rem;
   }
-  .modal-header {
-    padding: 20px;
+  .modal {
+    width: 100%;
+    margin: 0;
+  }
+  .modal-content {
+    & .modal-header {
+      padding: 1rem;
+    }
+    & .modal-body {
+      padding: 1rem;
+      & button.btn.settings-button {
+        margin: 0 0 1rem 0;
+      }
+      & #modal-form form {
+        margin-top: 0;
+        & .form-control,
+        & input {
+          font-size: 1.25rem;
+          &::placeholder {
+            font-size: 1.25rem;
+          }
+        }
+      }
+      & p {
+        font-size: 1rem;
+      }
+    }
+    & .modal-footer {
+      padding: 0;
+    }
   }
 
   h5.modal-title {
     font-size: 1rem;
   }
 
-  .modal-body {
-    padding: 1rem 1rem 0;
-  }
-
-  .modal-footer {
-    padding: 0;
-  }
-
   .resend-code {
     font-size: 0.9rem;
-  }
-
-  .form-control {
-    height: 48px;
-    font-size: 1.25rem;
   }
 
   p.modal-text {
     font-size: 1rem;
     line-height: 1.2;
-    // background: yellow;
-    // margin-bottom: 20px;
   }
 
   #delete-account-modal label {
@@ -162,9 +196,6 @@ p.modal-text {
 }
 
 @media (min-width: 576px) {
-  .container {
-    max-width: 100%;
-  }
   .modal-dialog {
     max-width: 100%;
   }

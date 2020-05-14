@@ -1,0 +1,162 @@
+/* styles for scaffolding  */
+// #root {
+//   height: 100%;
+// }
+
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  // background: lightgray;
+}
+
+// these are styles for text in the header
+#dashboard-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// narrower one-line-banner introduced in reappering tou
+#banner {
+  background-color: white;
+  width: 58%;
+  margin: 0 auto;
+}
+
+h1.banner-tagline {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#logout {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+#dashboard-nav {
+  // margin-bottom: 1rem;
+  & ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -0.1875rem;
+    margin-bottom: 0;
+    & li {
+      margin: 0.5rem 2rem 0.5rem 0;
+      flex: 1;
+    }
+    & a {
+      color: #161616;
+      padding: 0 0.1875rem;
+      & span {
+        border-bottom: #161616 solid 1px;
+      }
+      // styling for when menu item is clicked
+      &.active {
+        color: $orange-highlight;
+        & span {
+          border-bottom: transparent solid 1px;
+        }
+      }
+      // styling for when hovering the menu item
+      &:hover {
+        color: $orange-highlight;
+        border-bottom: transparent solid 1px;
+        & span {
+          border-bottom: transparent solid 1px;
+        }
+      }
+    }
+  }
+}
+
+#text-content {
+  // the height here is set to total the same as the notifications above the dashboard nav
+  margin-top: 2.25rem;
+}
+
+// --- PROFILE STYLES --- //
+#profile-grid {
+  display: grid;
+  grid-row-gap: 2rem;
+  grid-column-gap: 2rem;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(2, auto);
+  & label {
+    font-family: "Akkurat";
+    width: 100%;
+  }
+}
+
+.profile-grid-cell {
+  display: flex;
+  flex-direction: column;
+  & .data-with-delete {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    & p {
+      font-size: 2.25rem;
+      font-family: "ProximaNova-Regular";
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    & .display-data {
+      margin-top: 0;
+    }
+  }
+  & a span {
+    border-bottom: solid 1px #ff4500;
+    &:hover {
+      border-bottom: solid 1px transparent;
+    }
+  }
+  & .display-data {
+    font-family: "ProximaNova-Light";
+    font-size: 2rem;
+    line-height: 1;
+    margin-left: 0.1875rem;
+    margin-top: 1rem;
+    padding-bottom: 0;
+    word-wrap: break-word;
+
+    &.no-data {
+      color: gray;
+    }
+    &.unverified {
+      color: #ff4500;
+    }
+    &.verified {
+      color: #161616;
+    }
+  }
+}
+
+@media (max-width: 823px) {
+  #profile-grid {
+    width: calc(80% - 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  #profile-grid {
+    width: calc(100% - 1.25rem);
+  }
+  #profile-grid {
+    grid-row-gap: 2rem;
+  }
+}
+
+@media (max-width: 568px) {
+  #profile-grid {
+    grid-template-columns: 1fr;
+  }
+  // #dashboard-nav {
+  //   & li {
+  //     margin: 0.5rem 0;
+  //   }
+  // }
+}

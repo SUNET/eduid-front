@@ -7,10 +7,9 @@ import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
 import TextInput from "components/EduIDTextInput";
+import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 
-import "style/Nins.scss";
-
-const validate = values => {
+const validate = (values) => {
   let value = values.nin;
   // accept only digits
   if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
@@ -38,22 +37,6 @@ const validate = values => {
 
 class NinForm extends Component {
   render() {
-    let validNin = "",
-      formButton = "";
-
-    if (this.props.valid) {
-      validNin = this.props.nin;
-      formButton = [
-        <button
-          className="btn settings-button"
-          onClick={this.props.addNin}
-          key="1"
-        >
-          {this.props.translate("emails.button_add")}
-        </button>
-      ];
-    }
-
     return (
       <div key="2" id="nin-form-container">
         <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
@@ -62,10 +45,18 @@ class NinForm extends Component {
             componentClass="input"
             type="text"
             name="nin"
+            label={this.props.translate("nin_display.profile.main_title")}
             placeholder={this.props.translate("nins.input_placeholder")}
             helpBlock={this.props.translate("nins.input_help_text")}
           />
-          {formButton}
+          <PrimaryButton
+            id={""}
+            disabled={!this.props.valid}
+            onClick={this.props.addNin}
+            key="1"
+          >
+            {this.props.translate("emails.button_add")}
+          </PrimaryButton>
         </Form>
       </div>
     );
@@ -79,23 +70,23 @@ NinForm = reduxForm({
   keepDirtyOnReinitialize: true,
   keepValuesOnReinitialize: true,
   updateUnregisteredFields: true,
-  validate: validate
+  validate: validate,
 })(NinForm);
 
 const mapStateToProps = (state, props) => {
   return {
-    initialValues: { nin: state.nins.nin }
+    initialValues: { nin: state.nins.nin },
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    addNin: function(e) {
+    addNin: function (e) {
       e.preventDefault();
       const nin = e.target.closest("#nin-form-container").firstElementChild
         .firstElementChild.children[0].value;
       dispatch(actions.postNin(nin));
-    }
+    },
   };
 };
 

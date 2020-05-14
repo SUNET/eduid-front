@@ -8,15 +8,15 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
 } from "reactstrap";
 
 import EduIDButton from "components/EduIDButton";
-import "style/Email.scss";
+// import "style/Email.scss";
 
 /* FORM */
 
-export const validate = values => {
+export const validate = (values) => {
   const errors = {},
     email = values.email,
     pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -28,19 +28,17 @@ export const validate = values => {
   return errors;
 };
 
-let EmailForm = props => (
-  <form id="register-input-group" onSubmit={props.handleEmail}>
-    <fieldset id="register-form">
-      <Field
-        type="email"
-        name="email"
-        componentClass="input"
-        id="email-input"
-        component={TextInput}
-        translate={props.translate}
-        placeholder="example@email.com"
-      />
-    </fieldset>
+let EmailForm = (props) => (
+  <form id="register-form" onSubmit={props.handleEmail}>
+    <Field
+      type="email"
+      name="email"
+      componentClass="input"
+      id="email-input"
+      component={TextInput}
+      translate={props.translate}
+      placeholder="example@email.com"
+    />
     <EduIDButton
       className="settings-button"
       id="register-button"
@@ -55,11 +53,12 @@ let EmailForm = props => (
 
 EmailForm = reduxForm({
   form: "emailForm",
-  validate
+  validate,
 })(EmailForm);
 
-EmailForm = connect(state => ({
-  enableReinitialize: true
+EmailForm = connect((state) => ({
+  enableReinitialize: true,
+  destroyOnUnmount: false,
 }))(EmailForm);
 
 /* COMPONENT */
@@ -67,9 +66,25 @@ EmailForm = connect(state => ({
 class Email extends Component {
   render() {
     return [
-      <div key="0" id="register-container">
-        <label>Email address</label>
-        <EmailForm {...this.props} />
+      <div key="0" id="register-container" className="vertical-content-margin">
+        <div className="text-content">
+          <p className="sub-heading">
+            {this.props.translate("register.sub-heading")}
+          </p>
+          <p>{this.props.translate("register.paragraph")}</p>
+        </div>
+        <div className="text-content">
+          <label>{this.props.translate("signup.registering-input")}</label>
+          <EmailForm {...this.props} />
+        </div>
+        <div className="text-content">
+          <p className="text-link-container">
+            <span>{this.props.translate("register.toLogin")}</span>
+            <a className="text-link" href={this.props.dashboard_url}>
+              <span>{this.props.translate("text.link")}</span>
+            </a>
+          </p>
+        </div>
       </div>,
       <div key="1">
         <Modal isOpen={this.props.acceptingTOU} id="register-modal">
@@ -92,7 +107,7 @@ class Email extends Component {
             </EduIDButton>
           </ModalFooter>
         </Modal>
-      </div>
+      </div>,
     ];
   }
 }
@@ -102,7 +117,7 @@ Email.propTypes = {
   tou: PropTypes.string,
   translate: PropTypes.func,
   handleAccept: PropTypes.func,
-  handleReject: PropTypes.func
+  handleReject: PropTypes.func,
 };
 
 export default Email;
