@@ -19,6 +19,7 @@ header {
 .tagline {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   margin: 4rem 0 3rem 0;
   & span {
     margin-right: 0.375rem;
