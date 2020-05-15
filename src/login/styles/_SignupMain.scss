@@ -25,7 +25,10 @@ h3 {
   }
 }
 .text-link-container {
-  display: flex;
+  display: block;
+  & span {
+    margin-right: 0.375rem;
+  }
 }
 
 .registered-email {
