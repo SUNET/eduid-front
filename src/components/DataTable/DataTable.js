@@ -30,7 +30,7 @@ DataTable.propTypes = {
   data: PropTypes.array,
   handleStartConfirmation: PropTypes.func.isRequired,
   handleMakePrimary: PropTypes.func.isRequired,
-  handleRemove: PropTypes.func.isRequired
+  handleRemove: PropTypes.func.isRequired,
 };
 
 export default i18n(DataTable);
