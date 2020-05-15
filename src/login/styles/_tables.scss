@@ -6,15 +6,19 @@ table {
   color: gray;
   font-size: 1.5rem;
   font-family: "ProximaNova-Light";
+  table-layout: fixed;
   & tbody {
     margin-bottom: 1rem;
     & tr {
       background-color: white;
       height: 3rem;
       & td {
+        word-wrap: break-word;
         text-align: left;
         vertical-align: middle;
+        line-height: 1;
         &.value-status {
+          width: 25%;
           & button {
             margin: 0;
             padding: 0;
@@ -26,6 +30,7 @@ table {
           }
         }
         &.remove-data {
+          width: 5%;
           & .icon-button {
             margin: 0;
             padding: 0;
@@ -45,6 +50,7 @@ table {
     // & th {
     //   //   padding: 0.75rem;
     //   background-color: white;
+    //   // border-bottom: #7c7c7c 1px solid;
     // }
 
     //   &.value-status {
@@ -63,19 +69,6 @@ table {
     //   }
   }
 }
-
-// // table th {
-// //   // border-bottom: #7c7c7c 1px solid;
-// // }
-
-// // table td.data {
-// //   width: 80%;
-// // }
-
-// // td.data-remove-button,
-// // td.status-label {
-// //   width: 10%;
-// // }
 
 // td table th {
 //   color: #171717;
@@ -104,7 +97,8 @@ table {
 
 // @media (max-width: 568px) {
 //   table {
-//     font-size: 1rem;
-//     color: #161616;
+//     font-size: 1.25rem;
+//     font-weight: 400;
+//     // color: #161616;
 //   }
 // }
