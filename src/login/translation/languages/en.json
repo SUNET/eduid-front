@@ -295,7 +295,7 @@
   "pwfield.terrible": "Extremely weak password",
   "pwfield.weak": "Weak password",
   "register.create-account": "Sign up with your email address to start.",
-  "register.paragraph": "Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number.",
+  "register.paragraph": "You will be able to log in and connect it to your Swedish national identity number.",
   "register.sub-heading": "Register your email address to create your eduID.",
   "register.toLogin": "If you already have eduID you can log in",
   "required": "Field cannot be empty",

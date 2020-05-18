@@ -5,7 +5,8 @@ import { createBrowserHistory } from "history";
 //import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
-import HeaderContainer from "containers/Header";
+import Header from "../login/components/Header/Header_container"
+// import HeaderContainer from "containers/Header";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";
@@ -76,7 +77,7 @@ class SignupMain extends Component {
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
         <div className="dashboard-wrapper">
-          <HeaderContainer {...this.props} />
+          <Header {...this.props} />
           <div id="dashboard-text">
             <div id="content">
               <NotificationsContainer />

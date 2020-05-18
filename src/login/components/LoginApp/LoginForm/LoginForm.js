@@ -55,9 +55,12 @@ class LoginForm extends Component {
     return (
       <div id="panel-container" className="text-margin">
         <div className="text-content">
-          <p className="sub-heading">Login to your eduID</p>
+          <p className="sub-heading">
+            Log in to your eduID with your email address.
+          </p>
           <p>
-            Connect your eduID to your id number or edit your personal details.
+           You can connect your eduID to your
+            Swedish national identity number or edit your details.
           </p>
         </div>
         <div className="text-content">
