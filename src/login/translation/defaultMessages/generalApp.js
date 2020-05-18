@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 export const generalApp = {
   // header
   "header.signup": (
-    <FormattedMessage id="header.signup" defaultMessage={`SIGN UP`} />
+    <FormattedMessage id="header.signup" defaultMessage={`Create eduID`} />
   ),
 
   "header.signin": (

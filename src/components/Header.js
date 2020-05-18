@@ -16,6 +16,14 @@ class Header extends Component {
           </button>
         </a>
       );
+      // } else if (url.includes("login")) {
+      //   button = (
+      //     <a href={this.props.register_url}>
+      //       <button id="login" className="btn">
+      //         {this.props.translate("header.signup")}
+      //       </button>
+      //     </a>
+      //   );
     } else if (url.includes("profile")) {
       tagline = (
         <Fragment>
