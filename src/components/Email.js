@@ -66,7 +66,11 @@ EmailForm = connect((state) => ({
 class Email extends Component {
   render() {
     return [
-      <div key="0" id="register-container" className="vertical-content-margin">
+      <div
+        key="0"
+        id="initial-panel-container"
+        className="vertical-content-margin"
+      >
         <div className="text-content">
           <p className="sub-heading">
             {this.props.translate("register.sub-heading")}
