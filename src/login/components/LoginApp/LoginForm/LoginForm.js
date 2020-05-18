@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -13,10 +13,10 @@ import ButtonPrimary from "../../Buttons/ButtonPrimary";
 
 import { validate } from "../../../app_utils/validation/validateEmail";
 
-let LoginFormDetails = props => (
+let LoginFormDetails = (props) => (
   // console.log("these are props in the LoginFormDetails:", props),
   // (
-  <React.Fragment>
+  <Fragment>
     <EmailInput {...props} />
     <PasswordInput />
     <div className="button-pair">
@@ -36,41 +36,46 @@ let LoginFormDetails = props => (
         text={"Set a new password"}
       />
     </div>
-  </React.Fragment>
+  </Fragment>
   // )
 );
 
 LoginFormDetails = reduxForm({
   form: "login-form",
-  validate
+  validate,
 })(LoginFormDetails);
 
-LoginFormDetails = connect(state => ({
-  enableReinitialize: true
+LoginFormDetails = connect((state) => ({
+  enableReinitialize: true,
 }))(LoginFormDetails);
 
 class LoginForm extends Component {
   render() {
     // console.log("these are props in the LoginForm:", this.props);
     return (
-      <div className="text-margin">
-        <p className="sub-heading">Login to your eduID</p>
-        {/* <p>
-          If you log in you can to complete your identity process or edit your
-          current details.
-        </p> */}
-        <form id="login-form" className="form">
-          <LoginFormDetails {...this.props} />
-        </form>
-        <p>
-          If you dont have eduID you can register
-          <Link
-            className={"text-link"}
-            href={`https://dashboard.eduid.se/`}
-            text={"here"}
-          />
-          .
-        </p>
+      <div id="panel-container" className="text-margin">
+        <div className="text-content">
+          <p className="sub-heading">Login to your eduID</p>
+          <p>
+            Connect your eduID to your id number or edit your personal details.
+          </p>
+        </div>
+        <div className="text-content">
+          <form id="login-form" className="form">
+            <LoginFormDetails {...this.props} />
+          </form>
+        </div>
+        <div className="text-content">
+          <p>
+            If you dont have eduID you can register
+            <Link
+              className={"text-link"}
+              href={`https://dashboard.eduid.se/`}
+              text={"here"}
+            />
+            .
+          </p>
+        </div>
       </div>
     );
   }
@@ -79,7 +84,7 @@ class LoginForm extends Component {
 LoginForm.propTypes = {
   translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
-  validate: PropTypes.func
+  validate: PropTypes.func,
 };
 
 export default withRouter(LoginForm);
