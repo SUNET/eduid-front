@@ -12,7 +12,7 @@ export const register = {
   "register.paragraph": (
     <FormattedMessage
       id="register.paragraph"
-      defaultMessage={`You will be able to log in and connect it to your Swedish national identity number.`}
+      defaultMessage={`Get log in details to connect your eduID to your Swedish national identity number.`}
     />
   ),
 
