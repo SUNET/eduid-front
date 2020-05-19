@@ -5,7 +5,7 @@ import { createBrowserHistory } from "history";
 
 //import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
-import HeaderContainer from "containers/Header";
+import Header from "../login/components/Header/Header_container";
 import FooterContainer from "containers/Footer";
 import ChangePasswordContainer from "containers/ChangePassword";
 import SettingsComponent from "./Settings";
@@ -44,7 +44,7 @@ class Main extends Component {
           <a id="stable-link" className="hidden" href="/feature/no-beta">
             {this.props.translate("beta-link.to-stable")}
           </a>
-          <HeaderContainer {...this.props} />
+          <Header {...this.props} />
           <div id="dashboard-text">
             <div id="content">
               <NotificationsContainer />

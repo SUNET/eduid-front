@@ -73,12 +73,12 @@ input:focus {
 @media (max-width: 568px) {
   .form-control,
   input {
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: #161616;
   }
   .form-control::placeholder,
   input::placeholder {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 }
 

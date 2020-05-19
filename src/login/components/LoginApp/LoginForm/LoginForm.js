@@ -22,7 +22,7 @@ let LoginFormDetails = (props) => (
     <div className="button-pair">
       <ButtonPrimary
         className={"settings-button"}
-        id={"register-button"}
+        id={"login-button"}
         disabled={props.invalid}
         onClick={props.handleLogin}
       >
@@ -33,7 +33,7 @@ let LoginFormDetails = (props) => (
         id={"link-forgot-password"}
         className={""}
         to={`/reset/reset-password/`}
-        text={"Set a new password"}
+        text={"Forgot your password?"}
       />
     </div>
   </Fragment>
@@ -55,22 +55,16 @@ class LoginForm extends Component {
     return (
       <div id="panel-container" className="text-margin">
         <div className="text-content">
-          <p className="sub-heading">
-            Log in to your eduID with your email address.
-          </p>
-          <p>
-           You can connect your eduID to your
-            Swedish national identity number or edit your details.
-          </p>
+          <p className="sub-heading">Log in to eduID.</p>
         </div>
         <div className="text-content">
           <form id="login-form" className="form">
             <LoginFormDetails {...this.props} />
           </form>
         </div>
-        <div className="text-content">
+        <div className="text-link-container">
           <p>
-            If you dont have eduID you can register
+            <span>If you dont have eduID you can register</span>
             <Link
               className={"text-link"}
               href={`https://dashboard.eduid.se/`}

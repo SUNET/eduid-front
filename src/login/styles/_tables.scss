@@ -60,7 +60,12 @@ span.nobutton {
 
 @media (max-width: 568px) {
   table {
-    font-size: 1rem;
+    font-size: 1.25rem;
+
     color: #161616;
+  }
+  table th,
+  table td {
+    padding: 0.5rem;
   }
 }
