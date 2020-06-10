@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     handleResendLink(e) {
       e.preventDefault();
-      console.log("this is resendLink func");
+      // console.log("this is resendLink func");
       // dispatch(actions.thing());
     }
   };

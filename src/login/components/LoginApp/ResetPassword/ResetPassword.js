@@ -34,11 +34,11 @@ class ResetPassword extends Component {
   }
 
   render() {
-    console.log("these are props in the resetpassword:", this.props);
-    console.log(
-      "these are props in the resetpassword:",
-      this.props.extra_security
-    );
+    // console.log("these are props in the resetpassword:", this.props);
+    // console.log(
+    //   "these are props in the resetpassword:",
+    //   this.props.extra_security
+    // );
     const url = this.props.history.location.pathname;
     let resetPasswordFunc = "";
 

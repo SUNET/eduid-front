@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     handleGetConfirmCode(e) {
       e.preventDefault();
-      console.log("this is confirm code func");
+      // console.log("this is confirm code func");
       props.history.push("/reset/reset-password/use-confirmation-code");
       // dispatch(actions.thing());
     }
