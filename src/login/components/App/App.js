@@ -20,7 +20,7 @@ class App extends Component {
       <Splash key="0" />,
       <Fragment>
         <Header />
-        <section id="content">
+        <section id="panel">
           <Notifications />
           <div className="vertical-content-margin">
             <Router history={history}>

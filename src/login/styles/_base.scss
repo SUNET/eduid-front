@@ -28,6 +28,8 @@ body {
   // background-color: #f4f4f4;
 }
 
+// can #content be replaced with #panel 
+#panel,
 #content {
   display: flex;
   flex-direction: column;
