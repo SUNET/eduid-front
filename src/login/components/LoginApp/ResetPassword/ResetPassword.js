@@ -57,7 +57,7 @@ class ResetPassword extends Component {
     }
 
     return (
-      <div className="text-margin">
+      <div id="content">
         <ResetPasswordText key="0" {...this.props} />
         {resetPasswordFunc}
       </div>

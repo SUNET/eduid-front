@@ -53,7 +53,7 @@ class LoginForm extends Component {
   render() {
     // console.log("these are props in the LoginForm:", this.props);
     return (
-      <div id="panel-container" className="text-margin">
+      <div id="content">
         <div className="text-content">
           <p className="sub-heading">Log in to eduID.</p>
         </div>
