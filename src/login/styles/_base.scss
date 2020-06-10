@@ -16,6 +16,7 @@ body {
   display: flex;
 }
 
+// is #app-container needed? has been replaced with a <Fragment>
 #root,
 #app-container {
   display: flex;
