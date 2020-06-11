@@ -68,8 +68,7 @@ small {
   margin-bottom: 0;
 }
 
-#root,
-#app-container {
+#root{
   // this is here ONLY to counteract bootstrap
   &.container {
     width: 100%;
