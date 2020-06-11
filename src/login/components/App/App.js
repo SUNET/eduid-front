@@ -17,7 +17,6 @@ class App extends Component {
   render() {
     return [
       <Splash key="0" />,
-      // <div key="1" id="app-container">
       <Fragment>
         <Header />
         <section id="content">
@@ -30,7 +29,6 @@ class App extends Component {
         </section>
         <Footer {...this.props} />
       </Fragment>,
-      // </div>
     ];
   }
 }
