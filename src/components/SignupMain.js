@@ -77,7 +77,7 @@ class SignupMain extends Component {
       <Router key="1" history={history}>
         <HeaderContainer {...this.props} />
         <div id="dashboard-text">
-          <div id="content">
+          <section id="panel">
             <NotificationsContainer />
             <Route
               exact
@@ -105,7 +105,7 @@ class SignupMain extends Component {
               path={`${BASE_PATH}/address-used`}
               component={EmailInUseContainer}
             />
-          </div>
+          </section>
         </div>
         <FooterContainer {...this.props} />
       </Router>,
