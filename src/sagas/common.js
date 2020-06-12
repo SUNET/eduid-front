@@ -70,7 +70,7 @@ export function saveData(getData, formName, startAction, fetcher, failAction) {
     try {
       const state = yield select(state => state);
       const data = getData(state);
-      yield put(startAction(data));
+      yield put(startAction({...data}));
       yield put(startSubmit(formName));
       yield put(startAsyncValidation(formName));
       const resp = yield call(fetcher, state.config, data);
