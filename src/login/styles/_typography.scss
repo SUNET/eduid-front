@@ -20,7 +20,6 @@ h2 {
 h3 {
   font-size: 24px;
   line-height: 34px;
-  // margin-top: 56px;
 }
 
 h4 {
@@ -46,14 +45,13 @@ p {
 }
 
 p.verified {
-  color: #161616;
+  color: $black;
 }
 
 // these styles are the same as input values and placeholder
 p.data {
   font-size: 1.5rem;
   font-weight: 500;
-  // padding: 0.25rem 0.5rem;
 }
 
 p.no-data.data {
@@ -89,7 +87,6 @@ p.steps {
     font-size: 1.25rem;
     line-height: 1.5;
     font-family: "ProximaNova-Bold";
-    // font-weight: 700;
   }
   .text-content {
     margin-bottom: 2rem;
