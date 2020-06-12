@@ -21,11 +21,9 @@ class App extends Component {
         <Header />
         <section id="panel">
           <Notifications />
-          <div className="vertical-content-margin">
-            <Router history={history}>
-              <LoginApp />
-            </Router>
-          </div>
+          <Router history={history}>
+            <LoginApp />
+          </Router>
         </section>
         <Footer {...this.props} />
       </Fragment>,
