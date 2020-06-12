@@ -76,6 +76,9 @@ input:focus {
     font-size: 1rem;
     color: #161616;
   }
+  .input-container {
+    margin: 0;
+  }
   .form-control::placeholder,
   input::placeholder {
     font-size: 1rem;
