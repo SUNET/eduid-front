@@ -45,8 +45,8 @@ class Main extends Component {
             {this.props.translate("beta-link.to-stable")}
           </a>
           <HeaderContainer {...this.props} />
-          <div id="dashboard-text">
-            <div id="content">
+          <section id="panel">
+            <section id="content">
               <NotificationsContainer />
               <div key="0" className="vertical-content-margin">
                 <DashboardNav {...this.props} />
@@ -97,10 +97,10 @@ class Main extends Component {
                   />
                 </div>
               </div>
-            </div>
-          </div>
-          <FooterContainer {...this.props} />
-        {/* </div> */}
+            </section>
+          {/* </div> */}
+          </section>
+        <FooterContainer {...this.props} /> 
       </Router>,
     ];
   }
