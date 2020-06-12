@@ -10,7 +10,7 @@ import ButtonPrimary from "../../../Buttons/ButtonPrimary";
 
 import { validate } from "../../../../app_utils/validation/validateEmail";
 
-let EmailForm = props => (
+let EmailForm = (props) => (
   // console.log("this is props in Email Form", props),
   <form id="reset-password-email-form" className="form">
     <EmailInput {...props} />
@@ -27,11 +27,11 @@ let EmailForm = props => (
 
 EmailForm = reduxForm({
   form: "email-form",
-  validate
+  validate,
 })(EmailForm);
 
-EmailForm = connect(state => ({
-  enableReinitialize: true
+EmailForm = connect((state) => ({
+  enableReinitialize: true,
 }))(EmailForm);
 
 class GetEmailLink extends Component {
@@ -41,9 +41,8 @@ class GetEmailLink extends Component {
       <React.Fragment>
         <EmailForm {...this.props} />
         <p>
-          <span className="heading">For your security:</span> You may be
-          asked to prove that you are the owner of your eduID before resetting
-          the password.
+          For your security:You may be asked to prove that you are the owner of
+          your eduID before resetting the password.
         </p>
       </React.Fragment>
     );
@@ -53,7 +52,7 @@ class GetEmailLink extends Component {
 GetEmailLink.propTypes = {
   translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
-  validate: PropTypes.func
+  validate: PropTypes.func,
 };
 
 export default withRouter(GetEmailLink);
