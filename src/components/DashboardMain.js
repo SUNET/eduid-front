@@ -40,7 +40,7 @@ class Main extends Component {
     return [
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
-        <div className="dashboard-wrapper">
+        {/* <div className="dashboard-wrapper"> */}
           <a id="stable-link" className="hidden" href="/feature/no-beta">
             {this.props.translate("beta-link.to-stable")}
           </a>
@@ -100,7 +100,7 @@ class Main extends Component {
             </div>
           </div>
           <FooterContainer {...this.props} />
-        </div>
+        {/* </div> */}
       </Router>,
     ];
   }
