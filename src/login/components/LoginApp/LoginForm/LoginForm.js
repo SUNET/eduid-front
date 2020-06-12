@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -13,7 +13,7 @@ import ButtonPrimary from "../../Buttons/ButtonPrimary";
 
 import { validate } from "../../../app_utils/validation/validateEmail";
 
-let LoginFormDetails = props => (
+let LoginFormDetails = (props) => (
   // console.log("these are props in the LoginFormDetails:", props),
   // (
   <React.Fragment>
@@ -42,18 +42,18 @@ let LoginFormDetails = props => (
 
 LoginFormDetails = reduxForm({
   form: "login-form",
-  validate
+  validate,
 })(LoginFormDetails);
 
-LoginFormDetails = connect(state => ({
-  enableReinitialize: true
+LoginFormDetails = connect((state) => ({
+  enableReinitialize: true,
 }))(LoginFormDetails);
 
 class LoginForm extends Component {
   render() {
     // console.log("these are props in the LoginForm:", this.props);
     return (
-      <div className="text-margin">
+      <Fragment>
         <p className="sub-heading">Login to your eduID</p>
         {/* <p>
           If you log in you can to complete your identity process or edit your
@@ -71,7 +71,7 @@ class LoginForm extends Component {
           />
           .
         </p>
-      </div>
+      </Fragment>
     );
   }
 }
@@ -79,7 +79,7 @@ class LoginForm extends Component {
 LoginForm.propTypes = {
   translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
-  validate: PropTypes.func
+  validate: PropTypes.func,
 };
 
 export default withRouter(LoginForm);
