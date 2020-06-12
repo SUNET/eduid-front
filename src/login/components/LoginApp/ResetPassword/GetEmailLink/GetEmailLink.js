@@ -41,7 +41,7 @@ class GetEmailLink extends Component {
       <React.Fragment>
         <EmailForm {...this.props} />
         <p>
-          <span className="sub-heading">For your security:</span> You may be
+          <span className="heading">For your security:</span> You may be
           asked to prove that you are the owner of your eduID before resetting
           the password.
         </p>

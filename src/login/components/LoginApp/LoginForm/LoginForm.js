@@ -54,7 +54,7 @@ class LoginForm extends Component {
     // console.log("these are props in the LoginForm:", this.props);
     return (
       <Fragment>
-        <p className="sub-heading">Login to your eduID</p>
+        <p className="heading">Login to your eduID</p>
         {/* <p>
           If you log in you can to complete your identity process or edit your
           current details.

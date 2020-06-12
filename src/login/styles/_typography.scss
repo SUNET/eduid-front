@@ -77,11 +77,6 @@ p.steps {
   }
 }
 
-// this is the first paragraph on pages outside of the dashboard
-.sub-heading {
-  margin-top: 3rem;
-  font-weight: 700;
-}
 
 #register-container {
   .sub-heading {
@@ -96,11 +91,14 @@ p.steps {
   }
 }
 
-span.sub-heading {
+span.heading,
+p.heading {
+  font-family: "ProximaNova-Bold";
   letter-spacing: unset;
   font-size: 1.25rem;
   line-height: 1.5;
   padding-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 .horizontal-content-margin {

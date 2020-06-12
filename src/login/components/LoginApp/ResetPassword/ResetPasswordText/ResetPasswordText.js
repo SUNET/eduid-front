@@ -42,7 +42,7 @@ class ResetPasswordText extends Component {
 
     return (
       <Fragment>
-        <p key="0" className="sub-heading">
+        <p key="0" className="heading">
           {heading}
         </p>
         <p key="1">{text}</p>
