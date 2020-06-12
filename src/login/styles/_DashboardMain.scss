@@ -1,43 +1,7 @@
-/* styles for scaffolding  */
-// #root {
-//   height: 100%;
-// }
 
-// .dashboard-wrapper {
-//   display: flex;
-//   flex-direction: column;
-//   height: 100%;
-  // background: lightgray;
-// }
-
-// these are styles for text in the header
-// #dashboard-text {
-//   flex: 1;
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// narrower one-line-banner introduced in reappering tou
-// #banner {
-//   background-color: white;
-//   width: 58%;
-//   margin: 0 auto;
-// }
-
-// h1.banner-tagline {
-//   font-weight: 700;
-//   display: flex;
-//   align-items: center;
-//   margin: 0 auto;
-// }
-
-// #logout {
-//   margin-bottom: 0;
-//   margin-top: 0;
-// }
+@import "./variables.scss";
 
 #dashboard-nav {
-  // margin-bottom: 1rem;
   & ul {
     display: flex;
     flex-direction: row;
@@ -49,10 +13,10 @@
       flex: 1;
     }
     & a {
-      color: #161616;
+      color: $black;
       padding: 0 0.1875rem;
       & span {
-        border-bottom: #161616 solid 1px;
+        border-bottom: $black solid 1px;
       }
       // styling for when menu item is clicked
       &.active {
@@ -109,7 +73,7 @@
     }
   }
   & a span {
-    border-bottom: solid 1px #ff4500;
+    border-bottom: solid 1px $orange-highlight;
     &:hover {
       border-bottom: solid 1px transparent;
     }
@@ -127,10 +91,10 @@
       color: gray;
     }
     &.unverified {
-      color: #ff4500;
+      color: $orange-highlight;
     }
     &.verified {
-      color: #161616;
+      color: $black;
     }
   }
 }
@@ -154,9 +118,4 @@
   #profile-grid {
     grid-template-columns: 1fr;
   }
-  // #dashboard-nav {
-  //   & li {
-  //     margin: 0.5rem 0;
-  //   }
-  // }
 }
