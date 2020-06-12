@@ -30,7 +30,7 @@ class LoginApp extends Component {
     });
 
     return (
-      <div className="horizontal-content-margin">
+      <div id="content">
         <Route
           exact
           path="/login/"
