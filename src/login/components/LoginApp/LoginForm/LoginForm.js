@@ -22,7 +22,7 @@ let LoginFormDetails = (props) => (
     <div className="button-pair">
       <ButtonPrimary
         className={"settings-button"}
-        id={"register-button"}
+        id={"login-button"}
         disabled={props.invalid}
         onClick={props.handleLogin}
       >
