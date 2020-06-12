@@ -14,7 +14,7 @@ class LoginApp extends Component {
       "/reset/reset-password/check-user-details",
       "/reset/reset-password/get-confirmation-code",
       "/reset/reset-password/use-confirmation-code",
-      "/reset/reset-password/set-new-password"
+      "/reset/reset-password/set-new-password",
     ];
 
     // creates a series of routes using all of the paths above
@@ -24,17 +24,17 @@ class LoginApp extends Component {
           key={i}
           exact
           path={path}
-          render={props => <ResetPassword {...props} />}
+          render={(props) => <ResetPassword {...props} />}
         />
       );
     });
 
     return (
-      <div id="content">
+      <div id="content" className="vertical-content-margin">
         <Route
           exact
           path="/login/"
-          render={props => <LoginForm {...props} />}
+          render={(props) => <LoginForm {...props} />}
         />
         <Route
           exact
