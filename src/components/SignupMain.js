@@ -76,7 +76,6 @@ class SignupMain extends Component {
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
         <HeaderContainer {...this.props} />
-        <div id="dashboard-text">
           <section id="panel">
             <NotificationsContainer />
             <Route
@@ -106,7 +105,6 @@ class SignupMain extends Component {
               component={EmailInUseContainer}
             />
           </section>
-        </div>
         <FooterContainer {...this.props} />
       </Router>,
     ];
