@@ -43,12 +43,6 @@ class ActionWrapper extends Component {
         <div className="dashboard-wrapper">
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
-            <div id="banner">
-              <h1 className="banner-tagline">
-                {this.props.translate("banner.tagline")}
-              </h1>
-            </div>
-
             <div id="content">
               <NotificationsContainer />
               <Route
