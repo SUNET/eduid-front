@@ -28,11 +28,16 @@
 //   padding: 0.25rem 0.5rem;
 //   height: 2.25rem;
 // }
-
 .input-container {
   margin-bottom: 1.125rem;
   margin-right: 0.5rem;
   flex: 1;
+}
+
+// the login form consists of multiple stacked inputs and is formatted differently from single inputs (.input-container)
+#login-form .input-container {
+  margin-bottom: 0rem;
+  margin-right: 0rem;
 }
 .form-control::placeholder,
 input::placeholder {
@@ -75,6 +80,9 @@ input:focus {
   input {
     font-size: 1rem;
     color: #161616;
+  }
+  .input-container {
+    margin: 0;
   }
   .form-control::placeholder,
   input::placeholder {
