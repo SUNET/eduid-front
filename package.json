@@ -90,7 +90,7 @@
     "precss": "^3.1.2",
     "prop-types": "^15.6.1",
     "puppeteer": "^1.19.0",
-    "react-hot-loader": "^4.3.12",
+    "react-hot-loader": "^4.12.21",
     "react-intl": "^2.7.2",
     "react-intl-redux": "^2.0.2",
     "react-intl-translations-manager": "^5.0.3",
