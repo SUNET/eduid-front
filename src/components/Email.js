@@ -67,7 +67,7 @@ class Email extends Component {
   render() {
     return [
       <div key="0" id="content" className="vertical-content-margin">
-        <p className="sub-heading">
+        <p className="heading">
           {this.props.translate("register.sub-heading")}
         </p>
         <p>{this.props.translate("register.paragraph")}</p>
