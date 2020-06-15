@@ -21,8 +21,6 @@ form {
 //   padding-top: 1rem;
 // }
 
-
-
 #reset-password-email-form {
   flex-direction: row;
   align-items: center;
@@ -36,6 +34,17 @@ form {
 .transparent-input-error {
   background-color: transparent;
   color: transparent;
+}
+
+@media (max-width: 568px) {
+  #reset-password-email-form {
+    flex-direction: column;
+    align-items: unset;
+    button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
 }
 
 // /* valid form input*/
