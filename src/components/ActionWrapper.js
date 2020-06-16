@@ -43,7 +43,7 @@ class ActionWrapper extends Component {
         <div className="dashboard-wrapper">
           <HeaderContainer {...this.props} />
           <div id="dashboard-text">
-            <div id="content">
+            <section id="panel">
               <NotificationsContainer />
               <Route
                 exact
@@ -51,7 +51,7 @@ class ActionWrapper extends Component {
                 component={() => <Redirect to={this.props.redirect} />}
               />
               {this.props.children}
-            </div>
+            </section>
           </div>
           <FooterContainer {...this.props} />
         </div>
