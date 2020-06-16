@@ -40,21 +40,19 @@ class ActionWrapper extends Component {
     return [
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
-        <div className="dashboard-wrapper">
-          <HeaderContainer {...this.props} />
-          <div id="dashboard-text">
-            <section id="panel">
-              <NotificationsContainer />
-              <Route
-                exact
-                path={`${BASE_PATH}`}
-                component={() => <Redirect to={this.props.redirect} />}
-              />
-              {this.props.children}
-            </section>
-          </div>
-          <FooterContainer {...this.props} />
+        <HeaderContainer {...this.props} />
+        <div id="dashboard-text">
+          <section id="panel">
+            <NotificationsContainer />
+            <Route
+              exact
+              path={`${BASE_PATH}`}
+              component={() => <Redirect to={this.props.redirect} />}
+            />
+            {this.props.children}
+          </section>
         </div>
+        <FooterContainer {...this.props} />
       </Router>,
     ];
   }
