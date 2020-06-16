@@ -18,9 +18,9 @@ class Main extends Component {
   render() {
     return (
       <ActionWrapperContainer>
-        <h3 key="0" className="tou-title">
+        <p key="0" className="heading">
           {this.props.translate("tou.header")}
-        </h3>
+        </p>
         <div
           // className="card-body"
           id="eduid-tou"
