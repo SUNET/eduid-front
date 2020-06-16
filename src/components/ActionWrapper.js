@@ -44,12 +44,14 @@ class ActionWrapper extends Component {
         <section id="panel">
           <NotificationsContainer />
           <div key="0" id="content" className="vertical-content-margin">
-            <Route
-              exact
-              path={`${BASE_PATH}`}
-              component={() => <Redirect to={this.props.redirect} />}
-            />
-            {this.props.children}
+            <div key="0" id="text-content">
+              <Route
+                exact
+                path={`${BASE_PATH}`}
+                component={() => <Redirect to={this.props.redirect} />}
+              />
+              {this.props.children}
+            </div>
           </div>
         </section>
         <FooterContainer {...this.props} />
