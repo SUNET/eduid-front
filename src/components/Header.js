@@ -35,7 +35,7 @@ class Header extends Component {
 
     return (
       <section className="banner">
-        <header id="header">
+        <header>
           <a href={this.props.dashboard_url}>
             <div id="eduid-logo" />
           </a>

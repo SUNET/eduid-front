@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
 // to access redirect from LoginApp and for translation
@@ -14,9 +14,9 @@ class SetNewPassword extends Component {
     );
 
     return (
-      <div className="text-margin">
+      <Fragment>
         <p>this is info about password reset</p>
-      </div>
+      </Fragment>
     );
   }
 }
@@ -24,7 +24,7 @@ class SetNewPassword extends Component {
 SetNewPassword.propTypes = {
   translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
-  validate: PropTypes.func
+  validate: PropTypes.func,
 };
 
 export default InjectIntl(withRouter(SetNewPassword));

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
@@ -17,18 +17,16 @@ class App extends Component {
   render() {
     return [
       <Splash key="0" />,
-      <div key="1" id="app-container">
+      <Fragment>
         <Header />
-        <section id="content">
+        <section id="panel">
           <Notifications />
-          <div className="vertical-content-margin">
-            <Router history={history}>
-              <LoginApp />
-            </Router>
-          </div>
+          <Router history={history}>
+            <LoginApp />
+          </Router>
         </section>
         <Footer {...this.props} />
-      </div>
+      </Fragment>,
     ];
   }
 }
