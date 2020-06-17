@@ -1,25 +1,12 @@
-.tou-title,
-#eduid-tou {
-  width: 58.3333333333%;
-  margin: 0 auto;
-}
-
-.tou-title {
-  margin-top: 30px;
-  font-weight: 700;
-}
-
 #eduid-tou li {
   font-size: 20px;
   line-height: 24px;
   margin-top: 24px;
-  padding-right: 20px;
 }
 
 #eduid-tou p {
   margin-top: 4rem;
   margin-bottom: 1rem;
-  padding-right: 20px;
 }
 
 #tou-buttons {
@@ -36,22 +23,16 @@
 }
 
 @media (max-width: 823px) {
-  .tou-title,
   #eduid-tou {
-    // padding: 3rem 0 2rem;
     width: 75%;
   }
 }
 
 @media (max-width: 768px) {
-  .tou-title,
   #eduid-tou {
-    // padding: 3rem 20px 2rem 0;
     width: calc(100% - 40px);
   }
-  .tou-title {
-    margin-top: 15px;
-  }
+
   #eduid-tou p {
     margin-top: 2rem;
   }
@@ -62,20 +43,4 @@
   }
 }
 
-@media (max-width: 414px) {
-  .tou-title {
-    margin-top: 30px;
-  }
-  #eduid-tou ul {
-    padding-left: 20px;
-  }
-  #eduid-tou li {
-    font-size: 20px;
-    line-height: 24px;
-    margin-top: 24px;
-  }
-  #eduid-tou p {
-    font-size: 20px;
-    line-height: 24px;
-  }
-}
+@media (max-width: 414px) { }
