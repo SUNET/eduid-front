@@ -48,7 +48,6 @@ class Main extends Component {
           <NotificationsContainer />
           <div key="0" id="content" className="vertical-content-margin">
             <DashboardNav {...this.props} />
-            <div key="0" id="text-content">
               <Route
                 path="/profile/settings/"
                 component={SettingsComponent}
@@ -93,7 +92,6 @@ class Main extends Component {
                   <Redirect to="/profile/settings/personaldata/" />
                 )}
               />
-              </div>
             </div>
           </section>
         <FooterContainer {...this.props} /> 
