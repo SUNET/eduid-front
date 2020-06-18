@@ -2,7 +2,7 @@ import { takeLatest, takeEvery } from "redux-saga/effects";
 import { call, put, select } from "redux-saga/effects";
 
 import defaultSaga from "plugins-saga";
-import * as actions from "actions/ActionWrapper";
+import * as actions from "actions/ActionMain";
 import { postRequest, checkStatus, putCsrfToken } from "sagas/common";
 
 export function requestPostAcceptTOU(data) {

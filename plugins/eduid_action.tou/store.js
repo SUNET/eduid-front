@@ -2,10 +2,10 @@ import { combineReducers } from "redux";
 import { intlReducer } from "react-intl-redux";
 import { routerReducer } from "react-router-redux";
 
-import actionWrapperReducer from "reducers/ActionWrapper";
+import actionMainReducer from "reducers/ActionMain";
 import notificationsReducer from "reducers/Notifications";
 
-import * as actions from "actions/ActionWrapper";
+import * as actions from "actions/ActionMain";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const actionData = {
@@ -28,7 +28,7 @@ export const actionReducer = (state = actionData, action) => {
 const App = combineReducers({
   router: routerReducer,
   intl: intlReducer,
-  config: actionWrapperReducer,
+  config: actionMainReducer,
   plugin: actionReducer,
   notifications: notificationsReducer
 });
