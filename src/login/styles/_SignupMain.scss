@@ -46,6 +46,11 @@ h3 {
   align-items: baseline;
 }
 
+#resend-button {
+  width: fit-content;
+  justify-content: center;
+}
+
 @media (max-width: 568px) {
   #register-form {
     flex-direction: column;
