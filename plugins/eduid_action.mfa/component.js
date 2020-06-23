@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import i18n from "../../src/login/translation/InjectIntl_HOC_factory";
-import { postAction, postActionFail, retry } from "actions/ActionWrapper";
-import ActionWrapperContainer from "containers/ActionWrapper";
+import { postAction, postActionFail, retry } from "actions/ActionMain";
+import ActionMainContainer from "containers/ActionMain";
 
 import "./style.scss";
 
@@ -56,7 +56,7 @@ class Main extends Component {
 
     if (!this.hasWebauthnSupport()) {
       return (
-        <ActionWrapperContainer>
+        <ActionMainContainer>
           <div className="col-xs-12 text-center">
             <div className="webauthn-title">
               <h2>{this.props.translate("mfa.no-webauthn-support")}</h2>
@@ -68,7 +68,7 @@ class Main extends Component {
             </div>
           </div>
           {mfa_fallback}
-        </ActionWrapperContainer>
+        </ActionMainContainer>
       );
     }
 
@@ -92,7 +92,7 @@ class Main extends Component {
     }
 
     return (
-      <ActionWrapperContainer>
+      <ActionMainContainer>
         <div className="col-xs-12 text-center">
           <div className="webauthn-title">
             <h2>{this.props.translate("mfa.two-factor-authn")}</h2>
@@ -114,7 +114,7 @@ class Main extends Component {
           </div>
         </div>
         {mfa_fallback}
-      </ActionWrapperContainer>
+      </ActionMainContainer>
     );
   }
 }

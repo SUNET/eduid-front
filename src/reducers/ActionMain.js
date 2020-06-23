@@ -1,4 +1,4 @@
-import * as actions from "actions/ActionWrapper";
+import * as actions from "actions/ActionMain";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
@@ -9,7 +9,7 @@ const configData = {
   available_languages: {}
 };
 
-let actionWrapperReducer = (state = configData, action) => {
+let actionMainReducer = (state = configData, action) => {
   switch (action.type) {
     case actions.APP_LOADED:
       return {
@@ -36,4 +36,4 @@ let actionWrapperReducer = (state = configData, action) => {
   }
 };
 
-export default actionWrapperReducer;
+export default actionMainReducer;

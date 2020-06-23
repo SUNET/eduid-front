@@ -6,15 +6,15 @@ import expect from "expect";
 import { put, call, select } from "redux-saga/effects";
 
 import EduIDButton from "components/EduIDButton";
-import ActionWrapperContainer from "containers/ActionWrapper";
-import * as actions from "actions/ActionWrapper";
-import actionWrapperReducer from "reducers/ActionWrapper";
+import ActionMainContainer from "containers/ActionMain";
+import * as actions from "actions/ActionMain";
+import actionMainReducer from "reducers/ActionMain";
 import {
   requestConfig,
   requestNextAction,
   fetchActions,
   fetchConfig
-} from "sagas/ActionWrapper";
+} from "sagas/ActionMain";
 
 import { addLocaleData } from "react-intl";
 
@@ -92,10 +92,10 @@ export function genSetupComponent(pluginState) {
 
 export const setupComponent = genSetupComponent();
 
-describe("ActionWrapper Component", () => {
+describe("ActionMain Component", () => {
   it("Renders the splash screen", () => {
     const wrapper = setupComponent({
-        component: <ActionWrapperContainer />,
+        component: <ActionMainContainer />,
         overrides: { config: { is_app_loaded: false } }
       }),
       splash = wrapper.find("div#eduid-splash-screen"),
@@ -108,7 +108,7 @@ describe("ActionWrapper Component", () => {
   });
 
   it("Doesn't Render the splash screen", () => {
-    const wrapper = setupComponent({ component: <ActionWrapperContainer /> }),
+    const wrapper = setupComponent({ component: <ActionMainContainer /> }),
       splash = wrapper.find("div#eduid-splash-screen"),
       spinner = wrapper.find("div.spin-holder");
 
@@ -130,7 +130,7 @@ describe("ActionWrapper Component", () => {
   //});
 });
 
-describe("ActionWrapper Actions", () => {
+describe("ActionMain Actions", () => {
 
   //it("Should signal the app is fetching data", () => {
     //const expectedAction = {
@@ -198,7 +198,7 @@ describe("ActionWrapper Actions", () => {
   });
 });
 
-describe("ActionWrapper reducer", () => {
+describe("ActionMain reducer", () => {
   const mockState = {
     csrf_token: "",
     is_app_loaded: false,
@@ -220,7 +220,7 @@ describe("ActionWrapper reducer", () => {
 
   it("Receives app loaded action", () => {
     expect(
-      actionWrapperReducer(mockState, {
+      actionMainReducer(mockState, {
         type: actions.APP_LOADED
       })
     ).toEqual({
@@ -231,7 +231,7 @@ describe("ActionWrapper reducer", () => {
 
   it("Receives get config sucessful action", () => {
     expect(
-      actionWrapperReducer(mockState, {
+      actionMainReducer(mockState, {
         type: actions.GET_ACTIONS_CONFIG_SUCCESS,
         payload: {
           plugin_setting: "dummy setting"
@@ -245,7 +245,7 @@ describe("ActionWrapper reducer", () => {
 
   it("Receives new csrf token", () => {
     expect(
-      actionWrapperReducer(mockState, {
+      actionMainReducer(mockState, {
         type: actions.NEW_CSRF_TOKEN,
         payload: {
           csrf_token: "dummy token"
@@ -259,7 +259,7 @@ describe("ActionWrapper reducer", () => {
 
   it("Receives a redirect action", () => {
     expect(
-      actionWrapperReducer(mockState, {
+      actionMainReducer(mockState, {
         type: actions.REDIRECT,
         payload: {
           path: "dummy path"
@@ -274,7 +274,7 @@ describe("ActionWrapper reducer", () => {
 
 window.ACTIONS_SERVICE_URL = "/services/actions2/";
 
-describe("ActionWrapper async actions", () => {
+describe("ActionMain async actions", () => {
   it("Tests the request config saga", () => {
     const state = getState({
       config: {

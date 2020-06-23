@@ -1,8 +1,8 @@
 import { takeLatest, takeEvery } from "redux-saga/effects";
 import { call, put, select } from "redux-saga/effects";
 
-import * as actions from "actions/ActionWrapper";
-import { requestConfig, requestNextAction } from "sagas/ActionWrapper";
+import * as actions from "actions/ActionMain";
+import { requestConfig, requestNextAction } from "sagas/ActionMain";
 
 const defaultSaga = [
   takeLatest(actions.GET_ACTIONS_CONFIG, requestConfig),

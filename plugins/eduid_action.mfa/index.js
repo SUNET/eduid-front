@@ -8,7 +8,7 @@ try {
 import React from "react";
 
 import init_plugin from "init-plugin";
-import * as actions from "actions/ActionWrapper";
+import * as actions from "actions/ActionMain";
 import MainContainer from "./component";
 import App from "./store";
 import rootSaga from "./root-saga";

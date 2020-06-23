@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import { appFetching, postAction } from "actions/ActionWrapper";
-import ActionWrapperContainer from "containers/ActionWrapper";
+import { appFetching, postAction } from "actions/ActionMain";
+import ActionMainContainer from "containers/ActionMain";
 
 import "./style.scss";
 
 class Main extends Component {
   render() {
     return (
-      <ActionWrapperContainer>// UI for the action</ActionWrapperContainer>
+      <ActionMainContainer>// UI for the action</ActionMainContainer>
     );
   }
 }
