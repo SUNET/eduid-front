@@ -6,8 +6,8 @@ import {
   putCsrfToken
 } from "sagas/common";
 
-import * as actions from "actions/ActionWrapper";
-import { history } from "components/ActionWrapper";
+import * as actions from "actions/ActionMain";
+import { history } from "components/ActionMain";
 import { eduidNotify } from "actions/Notifications";
 import * as CBOR from "sagas/cbor";
 import { newCsrfToken } from "actions/DashboardConfig";

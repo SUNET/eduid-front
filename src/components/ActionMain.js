@@ -17,7 +17,7 @@ export const history = createBrowserHistory();
 //setFetching: () => {}
 //});
 
-class ActionWrapper extends Component {
+class ActionMain extends Component {
   //constructor(props) {
   //super(props);
 
@@ -58,8 +58,8 @@ class ActionWrapper extends Component {
   }
 }
 
-ActionWrapper.propTypes = {
+ActionMain.propTypes = {
   redirect: PropTypes.string,
 };
 
-export default ActionWrapper;
+export default ActionMain;
