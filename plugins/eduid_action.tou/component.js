@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 
 import i18n from "../../src/login/translation/InjectIntl_HOC_factory";
 //import { appFetching, postAction } from "actions/ActionWrapper";
-import { postAction } from "actions/ActionWrapper";
-import ActionWrapperContainer from "containers/ActionWrapper";
+import { postAction } from "actions/ActionMain";
+import ActionMainContainer from "containers/ActionMain";
 import HeaderContainer from "containers/HeaderAnon";
 import FooterContainer from "containers/Footer";
 
@@ -17,7 +17,7 @@ import "./style.scss";
 class Main extends Component {
   render() {
     return (
-      <ActionWrapperContainer>
+      <ActionMainContainer>
         <p key="0" className="heading">
           {this.props.translate("tou.header")}
         </p>
@@ -44,7 +44,7 @@ class Main extends Component {
             {this.props.translate("tou.cancel")}
           </EduIDButton> */}
         </div>
-      </ActionWrapperContainer>
+      </ActionMainContainer>
     );
   }
 }
