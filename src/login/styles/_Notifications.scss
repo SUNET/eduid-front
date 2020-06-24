@@ -61,6 +61,10 @@
 }
 
 @media (max-width: 568px) {
+  .notifications-area {
+    margin-bottom: 1.5rem;
+  }
+
   .alert.alert-dismissible {
     & span {
       width: calc(100% - 1.25rem);
