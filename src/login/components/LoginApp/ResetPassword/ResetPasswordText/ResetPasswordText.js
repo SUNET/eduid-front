@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../../translation/InjectIntl_HOC_factory";
 class ResetPasswordText extends Component {
@@ -21,7 +21,7 @@ class ResetPasswordText extends Component {
         "By proving that you have access to the phone number added to your eduID your password will be reset without resetting your verified identity.";
       let instructionSteps = [
         "1. Recieve a code to your phone",
-        "2. Use the code to prove you have access to the phone"
+        "2. Use the code to prove you have access to the phone",
       ];
       instructions = instructionSteps.map((instruction, i) => {
         return (
@@ -41,15 +41,15 @@ class ResetPasswordText extends Component {
     // console.log("these are props in the ResetPasswordText:", this.props);
 
     return (
-      <div className="text-container">
-        <p key="0" className="sub-heading">
+      <Fragment>
+        <p key="0" className="heading">
           {heading}
         </p>
         <p key="1">{text}</p>
         <div key="2" className="instructions-container">
           {instructions}
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
@@ -57,7 +57,7 @@ class ResetPasswordText extends Component {
 ResetPasswordText.propTypes = {
   translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
-  validate: PropTypes.func
+  validate: PropTypes.func,
 };
 
 export default InjectIntl(ResetPasswordText);

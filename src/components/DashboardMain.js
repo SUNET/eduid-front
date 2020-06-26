@@ -40,67 +40,63 @@ class Main extends Component {
     return [
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
-        <div className="dashboard-wrapper">
-          <a id="stable-link" className="hidden" href="/feature/no-beta">
-            {this.props.translate("beta-link.to-stable")}
-          </a>
-          <HeaderContainer {...this.props} />
-          <div id="dashboard-text">
-            <div id="content">
-              <NotificationsContainer />
-              <div key="0" className="vertical-content-margin">
-                <DashboardNav {...this.props} />
-                <div key="0" id="text-content">
-                  <Route
-                    path="/profile/settings/"
-                    component={SettingsComponent}
-                  />
-                  <Route
-                    exact
-                    path="/profile/"
-                    render={(props) => <Profile {...props} />}
-                  />
-                  <Route
-                    path="/profile/verify-identity/"
-                    render={(props) => <VerifyIdentity {...props} />}
-                  />
-                  <Route
-                    path="/profile/chpass/"
-                    component={ChangePasswordContainer}
-                  />
-                  {/* Redirects for old paths */}
-                  <Route
-                    exact
-                    path="/profile/security/"
-                    component={() => <Redirect to="/profile/settings/" />}
-                  />
-                  <Route
-                    exact
-                    path="/profile/accountlinking/"
-                    component={() => (
-                      <Redirect to="/profile/settings/advanced-settings/" />
-                    )}
-                  />
-                  <Route
-                    exact
-                    path="/profile/nins/"
-                    component={() => (
-                      <Redirect to="/profile/verify-identity/" />
-                    )}
-                  />
-                  <Route
-                    exact
-                    path="/profile/emails/"
-                    component={() => (
-                      <Redirect to="/profile/settings/personaldata/" />
-                    )}
-                  />
-                </div>
+        <a id="stable-link" className="hidden" href="/feature/no-beta">
+          {this.props.translate("beta-link.to-stable")}
+        </a>
+        <HeaderContainer {...this.props} />
+        <section id="panel">
+          <NotificationsContainer />
+          <div key="0" id="content" className="vertical-content-margin">
+            <DashboardNav {...this.props} />
+            <div key="0" id="text-content">
+              <Route
+                path="/profile/settings/"
+                component={SettingsComponent}
+              />
+              <Route
+                exact
+                path="/profile/"
+                render={(props) => <Profile {...props} />}
+              />
+              <Route
+                path="/profile/verify-identity/"
+                render={(props) => <VerifyIdentity {...props} />}
+              />
+              <Route
+                path="/profile/chpass/"
+                component={ChangePasswordContainer}
+              />
+              {/* Redirects for old paths */}
+              <Route
+                exact
+                path="/profile/security/"
+                component={() => <Redirect to="/profile/settings/" />}
+              />
+              <Route
+                exact
+                path="/profile/accountlinking/"
+                component={() => (
+                  <Redirect to="/profile/settings/advanced-settings/" />
+                )}
+              />
+              <Route
+                exact
+                path="/profile/nins/"
+                component={() => (
+                  <Redirect to="/profile/verify-identity/" />
+                )}
+              />
+              <Route
+                exact
+                path="/profile/emails/"
+                component={() => (
+                  <Redirect to="/profile/settings/personaldata/" />
+                )}
+              />
               </div>
             </div>
-          </div>
-          <FooterContainer {...this.props} />
-        </div>
+          </section>
+        <FooterContainer {...this.props} /> 
       </Router>,
     ];
   }

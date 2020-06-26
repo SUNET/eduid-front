@@ -11,11 +11,12 @@ a {
   }
   &.text-link {
     font-family: "ProximaNova-Regular";
-    text-decoration: none;
+    text-decoration: underline;
+    line-height:1.4;
     margin-left: 0.375rem;
-    border-bottom: solid #ff4500 1px;
     &:hover {
-      border-bottom: solid transparent 1px;
+      text-decoration: none;
+      // border-bottom: solid transparent 1px;
       color: #ff4500;
     }
   }

@@ -5,10 +5,10 @@ import { mount } from "enzyme";
 import expect from "expect";
 import { put, call, select } from "redux-saga/effects";
 
-import { genSetupComponent, getState } from "tests/ActionWrapper-test";
+import { genSetupComponent, getState } from "tests/ActionMain-test";
 import MainContainer from "./component";
 import { actionReducer } from "./store";
-import * as actions from "actions/ActionWrapper";
+import * as actions from "actions/ActionMain";
 import { requestPostAcceptTOU, postAcceptTOU } from "./root-saga";
 
 const pluginState = {

@@ -17,7 +17,7 @@ export const history = createBrowserHistory();
 //setFetching: () => {}
 //});
 
-class ActionWrapper extends Component {
+class ActionMain extends Component {
   //constructor(props) {
   //super(props);
 
@@ -40,34 +40,26 @@ class ActionWrapper extends Component {
     return [
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
-        <div className="dashboard-wrapper">
-          <HeaderContainer {...this.props} />
-          <div id="dashboard-text">
-            <div id="banner">
-              <h1 className="banner-tagline">
-                {this.props.translate("banner.tagline")}
-              </h1>
-            </div>
-
-            <div id="content">
-              <NotificationsContainer />
-              <Route
-                exact
-                path={`${BASE_PATH}`}
-                component={() => <Redirect to={this.props.redirect} />}
-              />
-              {this.props.children}
-            </div>
+        <HeaderContainer {...this.props} />
+        <section id="panel">
+          <NotificationsContainer />
+          <div key="0" id="content" className="vertical-content-margin">
+            <Route
+              exact
+              path={`${BASE_PATH}`}
+              component={() => <Redirect to={this.props.redirect} />}
+            />
+            {this.props.children}
           </div>
-          <FooterContainer {...this.props} />
-        </div>
+        </section>
+        <FooterContainer {...this.props} />
       </Router>,
     ];
   }
 }
 
-ActionWrapper.propTypes = {
+ActionMain.propTypes = {
   redirect: PropTypes.string,
 };
 
-export default ActionWrapper;
+export default ActionMain;
