@@ -248,7 +248,7 @@ stuff from the microservices. So the common structure of a saga is:
 * extract CSRF token from response, dispatch as action (through `putCsrfToken`)
 * dispatch the rest of the data in the response (minus the csrf token) as an action.
 
-A very straight forward example of an action that does just that [is this one][19],
+A very straight forward example of a saga that does just that [is this one][19],
 that signals the backend to resend a verification code for a given email.
 
 
