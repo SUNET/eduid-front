@@ -26,15 +26,15 @@ and then each component decides whether to re-render or not, based on the new st
 @startuml img/basic_arch
 
 state "redux store" as store
-state "react component props" as props
+store: state
 state "react component" as comp
+comp: props
 state event
 state action
 
-store -down-> props: mapStateToProps
-props -left-> comp: render
-comp -up-> event: user UI interaction
-event -right-> action: handler
+store -down-> comp: render
+comp -left-> event: user UI interaction
+event -up-> action: handler
 action -right-> store: reducer
 
 @enduml
@@ -87,6 +87,7 @@ through an action defined in yet another component - it may end up difficult to 
 Note: React components have, in addition to their props, a state
 that can be changed internally (in opposition to the props, that can only be changed externally).
 Since the objective is to keep all app state in the central store,
+and change components externally from the central state,
 there is very little use in eduID of the local state of reacts components.
 There is a [discussion on this topic here][7].
 
@@ -96,7 +97,7 @@ The basic responsibility of Redux is to keep state in a central store.
 Changes in the central state are enacted via actions,
 which are plain JS objects with a conventional structure.
 These actions are provided to a `dispatch` function,
-that takes it to the central state through the reducers.
+that takes them to the central state through the reducers.
 
 ### the central state.
 
@@ -164,7 +165,7 @@ and [is registered here][12], so the central state
 (below we can see a screenshot of the central state as redux dev tools shows it)
 has an `emails` key with the structure specified in the reducer.
 
-![View of the state in the redux dev tools](img/redux-dev-tools.png)
+![View of the state in the redux dev tools](img/redux-state.png)
 
 Then, each time an action is dispatched,
 the action is given to all the reducers,
