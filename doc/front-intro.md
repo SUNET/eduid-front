@@ -32,7 +32,7 @@ comp: props
 state event
 state action
 
-store -down-> comp: render
+store -down-> comp: mapStateToProps
 comp -left-> event: user UI interaction
 event -up-> action: handler
 action -right-> store: reducer
