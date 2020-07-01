@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="196px" preserveAspectRatio="none" style="width:470px;height:196px;" version="1.1" viewBox="0 0 470 196" width="470px" zoomAndPan="magnify"><defs><filter height="300%" id="fr82k17mppxw3" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FEFECE" filter="url(#fr82k17mppxw3)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="297" y="8"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="297" x2="396" y1="34.2969" y2="34.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="307" y="25.9951">redux store</text><rect fill="#FEFECE" filter="url(#fr82k17mppxw3)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="183" x="246" y="135"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="246" x2="429" y1="161.2969" y2="161.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="163" x="256" y="152.9951">react component props</text><rect fill="#FEFECE" filter="url(#fr82k17mppxw3)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="139" x="19" y="135"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="19" x2="158" y1="161.2969" y2="161.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="119" x="29" y="152.9951">react component</text><rect fill="#FEFECE" filter="url(#fr82k17mppxw3)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="59" x="6" y="8"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="6" x2="65" y1="34.2969" y2="34.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="39" x="16" y="25.9951">event</text><rect fill="#FEFECE" filter="url(#fr82k17mppxw3)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="62" x="149.5" y="8"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="149.5" x2="211.5" y1="34.2969" y2="34.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="159.5" y="25.9951">action</text><!--MD5=[d8ec3efba97ecb1b8eb035235df2dba0]
+link store to props--><path d="M344.76,58.1 C343.29,78.59 341.17,108.08 339.6,129.88 " fill="none" id="store-&gt;props" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="339.23,134.97,343.8628,126.2788,339.5873,129.9828,335.8833,125.7072,339.23,134.97" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="115" x="343.5" y="101.0669">mapStateToProps</text><!--MD5=[2c04594081dcf70c3963a7ccfc4455b4]
+reverse link comp to props--><path d="M163.34,160 C189.32,160 218.75,160 245.92,160 " fill="none" id="comp&lt;-props" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="158.19,160,167.19,164,163.19,160,167.19,156,158.19,160" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="42" x="181" y="153.0669">render</text><!--MD5=[99c27cadb16f63fd6d0653aba3ba47bc]
+reverse link event to comp--><path d="M47.76,62.92 C57.03,84.77 69.6,114.42 78.31,134.97 " fill="none" id="event&lt;-comp" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="45.72,58.1,45.5628,67.9476,47.6775,62.7009,52.9242,64.8156,45.72,58.1" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="117" x="66.5" y="101.0669">user UI interaction</text><!--MD5=[b5bb638ac7ad55e2a799c3c214b3085e]
+link event to action--><path d="M65.19,33 C88.09,33 119.86,33 144.26,33 " fill="none" id="event-&gt;action" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="149.34,33,140.34,29,144.34,33,140.34,37,149.34,33" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="48" x="83.25" y="26.0669">handler</text><!--MD5=[d5e19190eecd01b4e14b96761ea70e07]
+link action to store--><path d="M211.72,33 C234.18,33 265.04,33 291.57,33 " fill="none" id="action-&gt;store" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="296.82,33,287.82,29,291.82,33,287.82,37,296.82,33" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="49" x="229.75" y="26.0669">reducer</text><!--MD5=[f39dcadecea272dcf96daba7f67017dc]
+@startuml img/basic_arch
+
+state "redux store" as store
+state "react component props" as props
+state "react component" as comp
+state event
+state action
+
+store -down-> props: mapStateToProps
+props -left-> comp: render
+comp -up-> event: user UI interaction
+event -right-> action: handler
+action -right-> store: reducer
+
+@enduml
+
+PlantUML version 1.2020.07(Sun Apr 19 13:42:40 CEST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 14.0.1+7
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
