@@ -1,13 +1,13 @@
 
 # Basic architecture for eduid-front
 
-Main libraries used:
+The main libraries used in eduID are:
 
 * [React][1] - provides components abstracted from the DOM
 * [Redux][2] - keeps a centralized state
 * [Sagas][3] - provides asynchronous actions
 
-Also on top of redux we use [redux-form][4] for forms.
+Also on top of redux we use [redux-form][4] for forms (but we won't go into redux-form in this doc).
 
 Abstractly, the architecture of eduid-front is based upon the idea ([Flux][5] / Redux)
 of a central store with all the state of the app.
@@ -30,12 +30,12 @@ store: state
 state "react component" as comp
 comp: props
 state event
-state action
+state "redux action" as action
 
 store -down-> comp: mapStateToProps
 comp -left-> event: user UI interaction
 event -up-> action: handler
-action -right-> store: reducer
+action -right-> store: redux reducer
 
 @enduml
 
@@ -58,7 +58,7 @@ In general, an eduID component is developed in several modules:
     that connect Reacct components with the redux store.
   * Actions (Redux): Module within `actions/`, contains the actions that can be dispatched from the handlers and sagas of the component (or of any other component if it is reused).
   * Reducer (Redux): Module within `reducers/`. If the component has a reducer, it keeps a piece o state as a property of the central state, provided by the reducer.
-  * Sagas (Sagas): Contains async procedures.
+  * Sagas (Sagas): Module within `sagas/`. Contains async procedures.
 
 Not all components need all files;
 there may be structural components with only its "component" file,
@@ -83,6 +83,8 @@ Nathalie is doing a great job of breaking these components up in smaller compone
 but care must be taken that the functional elements don't get too dispersed, e.g.:
 A handler defined in a subcomponent, that changes props of a supercomponent
 through an action defined in yet another component - it may end up difficult to follow.
+(I'm not implying that they are getting too dispersed - they are not.
+This is just to illustrate the kind of tension in this issue).
 
 Note: React components have, in addition to their props, a state
 that can be changed internally (in opposition to the props, that can only be changed externally).
@@ -99,7 +101,7 @@ which are plain JS objects with a conventional structure.
 These actions are provided to a `dispatch` function,
 that takes them to the central state through the reducers.
 
-### the central state.
+### The central state.
 
 The state kept in redux's central store is a plain JS object,
 with a totally arbitrary structure, only determined by the needs of the app
@@ -119,7 +121,7 @@ NOTE: In general, in eduID, the state corresponding to each component
 keeps data related to the success / failure expressed in the last action that has affected it.
 This is not used, and might welcome a cleanup.
 
-### actions
+### Actions
 
 As said, an action is just a plain old JS object (sometimes called POJO)
 with essentially a `type` key with a string value (usually capitalized)
@@ -144,7 +146,7 @@ export function getConfigSuccess(config) {
 }
 ```
 
-This action might be dispatched e.g. when the app successfully tries to retrieve data from the server.
+This action might be dispatched e.g. when the app successfully tries to retrieve configuration data from the server.
 
 The structure of these actions is specified in the [flux standard][9].
 
@@ -153,7 +155,7 @@ so it can be directly given to `dispatch`.
 The data that the front sends to the microservices does not have any particular structure,
 it's arbitrary JSON (conforming to each microservice's expectations).
 
-### reducers
+### Reducers
 
 Each reducer module contains an object with an initial state, and a reducer function.
 
