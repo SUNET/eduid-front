@@ -87,14 +87,10 @@ const customInput = props => {
       />
     );
   }
-  let labelElem = "";
-  if (label) {
-    labelElem = <Label for={name}>{label}</Label>;
-  }
 
   return (
     <FormGroup id={input.name}>
-      {labelElem}
+      <Label for={name}>{label && label}</Label>
       {field}
       {help}
     </FormGroup>
