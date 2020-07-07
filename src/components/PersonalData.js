@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 import Form from "reactstrap/lib/Form";
-import TextInput from "components/EduIDTextInput";
+// import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
+import CustomInput from "../login/components/Inputs/CustomInput";
 
 // import "style/Emails.scss";
 // import "style/PersonalData.scss";
@@ -30,21 +31,21 @@ let PdataForm = (props) => {
     <Form id="personaldataview-form" role="form">
       <fieldset id="personal-data-form" className="tabpane">
         <Field
-          component={TextInput}
+          component={CustomInput}
           componentClass="input"
           type="text"
           name="given_name"
           label={props.translate("pd.given_name")}
         />
         <Field
-          component={TextInput}
+          component={CustomInput}
           componentClass="input"
           type="text"
           name="surname"
           label={props.translate("pd.surname")}
         />
         <Field
-          component={TextInput}
+          component={CustomInput}
           componentClass="input"
           type="text"
           name="display_name"
@@ -53,7 +54,7 @@ let PdataForm = (props) => {
           helpBlock={props.translate("pd.display_name_input_help_text")}
         />
         <Field
-          component={TextInput}
+          component={CustomInput}
           componentClass="input"
           type="select"
           name="language"
