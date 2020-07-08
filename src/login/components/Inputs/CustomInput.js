@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import FormGroup from "reactstrap/lib/FormGroup";
 import FormText from "reactstrap/lib/FormText";
 import Input from "reactstrap/lib/Input";
@@ -99,6 +100,21 @@ const customInput = (props) => {
       <RenderHelpBlock {...props} valid={valid} invalid={invalid}/>
     </FormGroup>
   );
+};
+
+customInput.propTypes = {
+  label: PropTypes.string,
+  meta: PropTypes.object,
+  input: PropTypes.object,
+  name: PropTypes.string,
+  selectOptions: PropTypes.array,
+  type: PropTypes.string,
+  disabled: PropTypes.bool,
+  placeholder: PropTypes.string,
+  valid: PropTypes.bool,
+  invalid: PropTypes.bool,
+  translate: PropTypes.func, 
+  helpBlock: PropTypes.object
 };
 
 export default i18n(customInput);
