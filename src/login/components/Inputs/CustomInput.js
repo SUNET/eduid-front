@@ -38,13 +38,14 @@ const RenderInput = props => {
     if (selectOptions) {
       options = selectOptions.slice();
     }
-    const selectedOption = options.map(option => {
+    const optionChildren = options.map(option => {
       return (
         <option key={option[0]} value={option[0]}>
           {option[1]}
         </option>
       );
     });   
+
     return(
       <Input
         type={type}
@@ -56,7 +57,7 @@ const RenderInput = props => {
         invalid={invalid}
         {...input}
       >
-        {selectedOption}
+        {optionChildren}
       </Input>
     )} else {
     return(
@@ -95,7 +96,7 @@ const customInput = (props) => {
 
   return (
     <FormGroup id={input.name}>
-      {label && <Label for={name}>{label}</Label>}
+      { label && <Label for={name}>{label}</Label> }
       <RenderInput {...props} valid={valid} invalid={invalid}/>
       <RenderHelpBlock {...props} valid={valid} invalid={invalid}/>
     </FormGroup>
