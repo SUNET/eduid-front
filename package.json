@@ -19,8 +19,8 @@
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.15",
-    "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "0.1.10",
     "bootstrap": "^4.5.0",
     "intl": "^1.2.5",
