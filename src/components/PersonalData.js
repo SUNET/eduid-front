@@ -17,19 +17,21 @@ import "../login/styles/index.scss";
 
 const validatePersonalData = (values) => {
   const errors = {};
-  const spacePattern = /\s/;
-  const onlyLettersPattern = /^[a-zA-ZäöåÄÖÅ]+$/;
+  const spacePattern = /^\s+$/;
+  const onlyLettersPattern = /^[a-zA-ZäöåÄÖÅ]+(\s+[a-zA-ZäöåÄÖÅ]+)*$/;
+  
   ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
     if (!values[pdata]) {
-      return errors[pdata] = "required";
-    } else if(!values[pdata].length){
-        return errors[pdata] = "required";
-    } else if(spacePattern.test(values[pdata])){
-        return errors[pdata] = "blank space not allowed";
-    } else if(!onlyLettersPattern.test(values[pdata])){
-        return errors[pdata] = "only allow letters";
+      errors[pdata] = "required";
     }
-  });
+    else if(spacePattern.test(values[pdata])){
+      errors[pdata] = "blank space not allowed";
+    }
+    else if(!onlyLettersPattern.test(values[pdata])){
+      errors[pdata] = "only allow letters";
+    }
+  }
+  );
   return errors;
 };
 
