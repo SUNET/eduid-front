@@ -15,13 +15,19 @@ import "../login/styles/index.scss";
 
 /* FORM */
 
-const validate = (values) => {
+const validatePersonalData = (values) => {
   const errors = {};
+  const spacePattern = /\s/;
   ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
     if (!values[pdata]) {
-      errors[pdata] = "required";
+      return errors[pdata] = "required";
+    } else if(!values[pdata].length){
+        return errors[pdata] = "required";
+    } else if(spacePattern.test(values[pdata])){
+        return errors[pdata] = "not allow space";
+      }
     }
-  });
+  );
   return errors;
 };
 
@@ -80,7 +86,7 @@ PdataForm = reduxForm({
   keepDirtyOnReinitialize: true,
   keepValuesOnReinitialize: true,
   updateUnregisteredFields: true,
-  validate: validate,
+  validate: validatePersonalData,
 })(PdataForm);
 
 PdataForm = connect((state) => ({
