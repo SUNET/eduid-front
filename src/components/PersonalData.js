@@ -27,7 +27,7 @@ const validatePersonalData = (values) => {
     } else if(spacePattern.test(values[pdata])){
         return errors[pdata] = "blank space not allowed";
     } else if(!onlyLettersPattern.test(values[pdata])){
-        return errors[pdata] = "only letters allowed";
+        return errors[pdata] = "only allow letters";
     }
   });
   return errors;
@@ -41,6 +41,7 @@ let PdataForm = (props) => {
           component={TextInput}
           componentClass="input"
           type="text"
+
           name="given_name"
           label={props.translate("pd.given_name")}
         />
