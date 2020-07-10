@@ -30,7 +30,7 @@ const validatePersonalData = (values) => {
     else if(pdata==="given_name" && !onlyLettersPattern.test(values[pdata])){
       errors[pdata] = "only allow letters";
     }
-    else if((pdata==="surname" && !onlyLettersPattern.test(values[pdata]))){
+    else if(pdata==="surname" && !onlyLettersPattern.test(values[pdata])){
       errors[pdata] = "only allow letters";
     }
   });
