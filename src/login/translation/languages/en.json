@@ -300,7 +300,7 @@
   "register.toLogin": "If you already have eduID you can log in",
   "required": "Field cannot be empty",
   "blank space not allowed": "Blank space not allowed",
-  "only allow letters": "Only allow letters",
+  "only allow letters": "Name can only consist of letters",
   "resend.button": "Send a new confirmation link",
   "resend.email-label": "Complete registration by clicking the link sent to:",
   "resend.link-sent": "A link has been sent to your email address.",
