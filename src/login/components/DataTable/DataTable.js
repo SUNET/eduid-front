@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import i18n from "../../login/translation/InjectIntl_HOC_factory";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 import DataTableRow from "./DataTableRow/DataTableRow";
 
 class DataTable extends Component {

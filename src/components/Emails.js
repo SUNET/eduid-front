@@ -5,7 +5,7 @@ import { Field, reduxForm } from "redux-form";
 
 import TextInput from "./EduIDTextInput";
 import EduIDButton from "./EduIDButton";
-import DataTable from "./DataTable/DataTable";
+import DataTable from "../login/components/DataTable/DataTable";
 import ConfirmModal from "./ConfirmModal";
 
 // import "style/Emails.scss";

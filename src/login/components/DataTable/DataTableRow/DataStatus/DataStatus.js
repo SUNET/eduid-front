@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
-import ButtonTableData from "../../../../login/components/Buttons/ButtonTableData";
+import ButtonTableData from "../../../Buttons/ButtonTableData";
 
 class DataStatus extends Component {
   render() {

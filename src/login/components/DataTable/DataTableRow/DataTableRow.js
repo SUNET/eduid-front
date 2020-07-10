@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import i18n from "../../../login/translation/InjectIntl_HOC_factory";
+import i18n from "../../../translation/InjectIntl_HOC_factory";
 
 import DataStatus from "./DataStatus/DataStatus";
-import ButtonRemoveData from "../../../login/components/Buttons/ButtonRemoveData";
+import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 
 class DataTableRow extends Component {
   render() {
