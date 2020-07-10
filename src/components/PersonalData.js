@@ -19,7 +19,7 @@ const validatePersonalData = (values) => {
   const errors = {};
   const spacePattern = /^\s+$/;
   const onlyLettersPattern = /^[a-zA-ZäöåÄÖÅ]+(\s+[a-zA-ZäöåÄÖÅ]+)*$/;
-  
+
   ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
     if (!values[pdata]) {
       errors[pdata] = "required";
@@ -27,11 +27,13 @@ const validatePersonalData = (values) => {
     else if(spacePattern.test(values[pdata])){
       errors[pdata] = "blank space not allowed";
     }
-    else if(!onlyLettersPattern.test(values[pdata])){
+    else if(pdata==="given_name" && !onlyLettersPattern.test(values[pdata])){
       errors[pdata] = "only allow letters";
     }
-  }
-  );
+    else if((pdata==="surname" && !onlyLettersPattern.test(values[pdata]))){
+      errors[pdata] = "only allow letters";
+    }
+  });
   return errors;
 };
 
