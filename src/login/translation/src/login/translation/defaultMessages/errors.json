@@ -17,7 +17,7 @@
   },
   {
     "id": "only allow letters",
-    "defaultMessage": "Name can only consist of letters"
+    "defaultMessage": "Only allow letters"
   },
   {
     "id": "user-out-of-sync",
