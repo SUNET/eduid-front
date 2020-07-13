@@ -299,7 +299,6 @@
   "register.sub-heading": "Register your email address to create your eduID.",
   "register.toLogin": "If you already have eduID you can log in",
   "required": "Field cannot be empty",
-  "blank space not allowed": "Blank space not allowed",
   "only allow letters": "Name can only consist of letters",
   "resend.button": "Send a new confirmation link",
   "resend.email-label": "Complete registration by clicking the link sent to:",

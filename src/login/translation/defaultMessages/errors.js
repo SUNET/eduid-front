@@ -18,9 +18,6 @@ export const generalErrors = {
   required: (
     <FormattedMessage id="required" defaultMessage={`Field cannot be empty`} />
   ),
-  "blank space not allowed": (
-    <FormattedMessage id="blank space not allowed" defaultMessage={`Blank space not allowed`} />
-  ),
   "only allow letters": (
     <FormattedMessage id="only allow letters" defaultMessage={`Only allow letters`} />
   ),

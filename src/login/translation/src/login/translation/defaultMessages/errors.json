@@ -12,10 +12,6 @@
     "defaultMessage": "Field cannot be empty"
   },
   {
-    "id": "blank space not allowed",
-    "defaultMessage": "Blank space not allowed"
-  },
-  {
     "id": "only allow letters",
     "defaultMessage": "Only allow letters"
   },
