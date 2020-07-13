@@ -17,7 +17,7 @@ class ButtonTable extends Component {
 }
 
 ButtonTable.propTypes = {
-  buttonText: PropTypes.string.isRequired,
+  buttonText: PropTypes.object.isRequired,
   className: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
