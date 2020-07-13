@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-
+import i18n from "../../../../translation/InjectIntl_HOC_factory";
 import ButtonTableData from "../../../Buttons/ButtonTableData";
 
 class DataStatus extends Component {
@@ -9,13 +9,13 @@ class DataStatus extends Component {
 
     if (this.props.verified) {
       if (this.props.primary) {
-        dataStatus = <label>primary</label>;
+        dataStatus = <label>{this.props.translate("tl.primary")}</label>;
       } else {
         dataStatus = (
           <ButtonTableData
             className="table-button"
             onClick={this.props.handleMakePrimary}
-            buttonText={"Make Primary"}
+            buttonText={this.props.translate("tl.make_primary")}
           />
         );
       }
@@ -23,7 +23,7 @@ class DataStatus extends Component {
       dataStatus = (
         <ButtonTableData
           className="table-button"
-          buttonText={"Confirm"}
+          buttonText={this.props.translate("tl.pending")}
           onClick={this.props.handleStartConfirmation}
         />
       );
@@ -40,4 +40,4 @@ DataStatus.propTypes = {
   handleMakePrimary: PropTypes.func.isRequired
 };
 
-export default DataStatus;
+export default i18n(DataStatus);
