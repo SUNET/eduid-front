@@ -24,6 +24,7 @@ const validatePersonalData = (values) => {
     if (!values[pdata]) {
       errors[pdata] = "required";
     }
+    //add space pattern instead of trim because the input datas will be added without space.
     else if(spacePattern.test(values[pdata])){
       errors[pdata] = "required";
     }
