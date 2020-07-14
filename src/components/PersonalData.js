@@ -35,6 +35,7 @@ let PdataForm = (props) => {
           type="text"
           name="given_name"
           label={props.translate("pd.given_name")}
+          placeholder={props.translate("pd.given_name")}
         />
         <Field
           component={TextInput}
@@ -42,6 +43,7 @@ let PdataForm = (props) => {
           type="text"
           name="surname"
           label={props.translate("pd.surname")}
+          placeholder={props.translate("pd.surname")}
         />
         <Field
           component={TextInput}
