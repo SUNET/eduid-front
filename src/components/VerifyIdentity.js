@@ -15,28 +15,28 @@ class VerifyIdentity extends Component {
 
     // nin is not verified (add nin)
     let AddNumber = (props) => {
-      pageHeading = this.props.translate(
+      pageHeading = props.translate(
         "verify-identity.unverified_main_title"
       );
-      pageText = this.props.translate(
+      pageText = props.translate(
         "verify-identity.unverified_page-description"
       );
       return (
         <div key="0" className="intro">
           <h4>{pageHeading}</h4>
           <p>{pageText}</p>
-          <h3>{this.props.translate("verify-identity.add-nin_heading")}</h3>
+          <h3>{props.translate("verify-identity.add-nin_heading")}</h3>
         </div>
       );
     };
 
     let NumberAdded = (props) => {
       // nin is verified (nin added)
-      pageHeading = this.props.translate("verify-identity.verified_main_title");
-      pageText = this.props.translate(
+      pageHeading = props.translate("verify-identity.verified_main_title");
+      pageText = props.translate(
         "verify-identity.verified_page-description"
       );
-      recoverIdentityTip = this.props.translate(
+      recoverIdentityTip = props.translate(
         "verify-identity.verified_pw_reset_extra_security"
       );
       return (
