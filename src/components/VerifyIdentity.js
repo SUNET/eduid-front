@@ -57,7 +57,7 @@ class VerifyIdentity extends Component {
     };
 
     // rendering of vetting buttons from options in an object in another file
-    let VettingButtons = (props) => {
+    let VettingButtons = () => {
       // this is the help text under the first 3 vetting buttons
       let helpTextArray = [
         this.props.translate("letter.initialize_proofing_help_text"),
@@ -96,7 +96,7 @@ class VerifyIdentity extends Component {
               {this.props.translate("verify-identity.connect-nin_description")}
             </p>
             <div key="1" id="nins-btn-grid">
-              <VettingButtons {...this.props} />
+              <VettingButtons />
             </div>
           </div>
         );
