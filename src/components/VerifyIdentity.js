@@ -107,9 +107,9 @@ class VerifyIdentity extends Component {
   
     return (
       <Fragment>
-        <VerifyIdentity_Step1 {...this.props} />
+        <VerifyIdentity_Step1 />
         <AddNin {...this.props} />
-        <VerifyIdentity_Step2 {...this.props} />
+        <VerifyIdentity_Step2 />
       </Fragment>
     );
   }
