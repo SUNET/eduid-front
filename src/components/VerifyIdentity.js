@@ -48,7 +48,7 @@ class VerifyIdentity extends Component {
     };
 
     // top half of page: add nin/nin added
-    let VerifyIdentity_Step1 = (props) => {
+    let VerifyIdentity_Step1 = () => {
       if (this.props.verifiedNinStatus) {
         return <NumberAdded {...this.props} />;
       } else {
@@ -85,7 +85,7 @@ class VerifyIdentity extends Component {
     };
 
     // bottom half of page: vetting on added nin
-    let VerifyIdentity_Step2 = (props) => {
+    let VerifyIdentity_Step2 = () => {
       if (this.props.is_configured && !this.props.verifiedNinStatus) {
         return (
           <div key="1" className="intro">
