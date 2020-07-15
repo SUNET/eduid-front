@@ -46,11 +46,10 @@ const textInput = props => {
   }
 
   let field;
-
-  if (type === "radio") {
+  if (selectOptions) {
     field = (selectOptions.map((option, index) => {
       return (
-        <div key={index} className='radio-input'>
+        <div key={index}>
           <input
             key={option[1]}
             id={option[1]}

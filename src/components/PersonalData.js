@@ -68,8 +68,6 @@ let PdataForm = (props) => {
         />
          <Field
           component={TextInput}
-          componentClass="input"
-          type="radio"
           name="language"
           selectOptions={props.langs}
           label={props.translate("pd.language")}
