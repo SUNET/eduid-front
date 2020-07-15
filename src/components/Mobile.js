@@ -5,7 +5,7 @@ import { Field, reduxForm } from "redux-form";
 
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
-import TableList from "components/TableList";
+import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "components/ConfirmModal";
 
 // import "style/Emails.scss";
@@ -90,18 +90,12 @@ class Mobile extends Component {
           <p>{this.props.translate("phones.long_description")}</p>
         </div>
         <div id="phone-display">
-          <Fragment>
-            <TableList
-              entries={this.props.phones}
-              handleStartConfirmation={this.props.handleStartConfirmation}
-              handleRemove={this.props.handleRemove}
-              handleMakePrimary={this.props.handleMakePrimary}
-            />
-            <p className="help-text">
-              {this.props.translate("phones.add_new")}
-            </p>
-          </Fragment>
-
+          <TableList
+            data={this.props.phones}
+            handleStartConfirmation={this.props.handleStartConfirmation}
+            handleRemove={this.props.handleRemove}
+            handleMakePrimary={this.props.handleMakePrimary}
+          />
           <div className={this.state.formClass}>
             <PhoneForm {...this.props} />
           </div>

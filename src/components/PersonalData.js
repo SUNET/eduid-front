@@ -15,11 +15,23 @@ import "../login/styles/index.scss";
 
 /* FORM */
 
-const validate = (values) => {
+const validatePersonalData = (values) => {
   const errors = {};
+  const spacePattern = /^\s+$/;
+  const withSpecialCharacters  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}()-=_+]/;
+
   ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
     if (!values[pdata]) {
       errors[pdata] = "required";
+    }
+    //add space pattern instead of trim because the input datas will be added without space.
+    else if(spacePattern.test(values[pdata])){
+      errors[pdata] = "required";
+    }
+    else if(pdata==="given_name" || pdata==="surname"){
+      if(withSpecialCharacters.test(values[pdata])){
+        errors[pdata] = "only allow letters";
+      }
     }
   });
   return errors;
@@ -35,6 +47,7 @@ let PdataForm = (props) => {
           type="text"
           name="given_name"
           label={props.translate("pd.given_name")}
+          placeholder={props.translate("pd.given_name")}
         />
         <Field
           component={TextInput}
@@ -42,6 +55,7 @@ let PdataForm = (props) => {
           type="text"
           name="surname"
           label={props.translate("pd.surname")}
+          placeholder={props.translate("pd.surname")}
         />
         <Field
           component={TextInput}
@@ -80,7 +94,7 @@ PdataForm = reduxForm({
   keepDirtyOnReinitialize: true,
   keepValuesOnReinitialize: true,
   updateUnregisteredFields: true,
-  validate: validate,
+  validate: validatePersonalData,
 })(PdataForm);
 
 PdataForm = connect((state) => ({
