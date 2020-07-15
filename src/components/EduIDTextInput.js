@@ -47,33 +47,24 @@ const textInput = props => {
 
   let field;
 
-  if (type === "select") {
-    let options = [];
-    if (selectOptions) {
-      options = selectOptions.slice();
-    }
-    const children = options.map(opt => {
+  if (type === "radio") {
+    field = (selectOptions.map((option, index) => {
       return (
-        <option key={opt[0]} value={opt[0]}>
-          {opt[1]}
-        </option>
+        <div key={index} className='radio-input'>
+          <input
+            key={option[1]}
+            id={option[1]}
+            type='radio'
+            {...input}
+            value={option[0]}
+            checked={option[0]===input.value}
+          />
+          <label key={index} htmlFor={option[1]}>{option[1]}</label>
+      </div>
       );
-    });
-    field = (
-      <Input
-        type={type}
-        disabled={disabled}
-        placeholder={placeholder}
-        id={name}
-        name={name}
-        valid={valid}
-        invalid={invalid}
-        {...input}
-      >
-        {children}
-      </Input>
-    );
-  } else {
+    }));
+  } 
+  else {
     field = (
       <Input
         type={type}

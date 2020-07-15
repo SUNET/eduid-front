@@ -7,7 +7,7 @@ const mapStateToProps = (state, props) => {
   let langs = [];
   if (state.config.AVAILABLE_LANGUAGES !== undefined) {
     langs = [...state.config.AVAILABLE_LANGUAGES];
-    langs.unshift(["", props.translate("pd.choose-language")]);
+    // langs.unshift(["", props.translate("pd.choose-language")]);
   }
   return {
     data: state.personal_data.data,
