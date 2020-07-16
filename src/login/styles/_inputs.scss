@@ -11,6 +11,47 @@
   }
 }
 
+input[type="radio"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 1px solid #bbbbbb;
+  background-color: #e7e6e7;
+  border-radius: 50%;
+}
+
+/* appearance for checked radiobutton */
+input[type="radio"]:checked {
+  background-color: $primary-btn-border-color;
+}
+
+/* optional styles for centering radiobuttons */
+.radio-input {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  background-color: $white;
+  border-bottom: 2px solid $black;
+  padding-left: 8px;
+
+  label{
+    font-size: 1.5rem;
+    font-family: "ProximaNova-Regular";
+    font-weight: normal;
+    text-transform: capitalize;
+    padding-right: 8px;
+  }
+}
+
+
 // .form-control overrides all styling with bootsrap styles
 //input {
 //   background-color: white;
@@ -77,7 +118,8 @@ input:focus {
 
 @media (max-width: 568px) {
   .form-control,
-  input {
+  input,
+  .radio-input label {
     font-size: 1rem;
     color: #161616;
   }
