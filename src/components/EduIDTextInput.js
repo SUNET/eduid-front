@@ -47,9 +47,11 @@ const textInput = props => {
 
   let field;
   if (selectOptions) {
-    field = (selectOptions.map((option, index) => {
+    const children = selectOptions.map((option, index) => {
       return (
-        <div key={index}>
+        <>
+          <label key={index} htmlFor={option[1]}>
+            {option[1]}</label>
           <input
             key={option[1]}
             id={option[1]}
@@ -58,10 +60,14 @@ const textInput = props => {
             value={option[0]}
             checked={option[0]===input.value}
           />
-          <label key={index} htmlFor={option[1]}>{option[1]}</label>
-      </div>
+      </>
       );
-    }));
+    });
+    field = (
+      <div className='radio-input'>
+        {children}
+      </div>
+    );
   } 
   else {
     field = (
