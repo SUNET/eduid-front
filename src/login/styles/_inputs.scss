@@ -34,24 +34,25 @@ input[type="radio"]:checked {
 }
 
 /* optional styles for centering radiobuttons */
-.radio-input {
+.radio-input-container {
   display: flex;
   align-items: center;
-  height: 48px;
+  height: 3rem;
   background-color: $white;
   border-bottom: 2px solid $black;
-  padding-left: 8px;
 
   label{
     font-size: 1.5rem;
     font-family: "ProximaNova-Regular";
     font-weight: normal;
     text-transform: capitalize;
-    padding-right: 8px;
+    padding: 0 8px 0 8px;
   }
 }
 
-
+.radio-input {
+  margin-right: 3rem;
+}
 // .form-control overrides all styling with bootsrap styles
 //input {
 //   background-color: white;
@@ -119,7 +120,7 @@ input:focus {
 @media (max-width: 568px) {
   .form-control,
   input,
-  .radio-input label {
+  .radio-input-container label {
     font-size: 1rem;
     color: $black;
   }
