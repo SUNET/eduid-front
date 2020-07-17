@@ -60,7 +60,7 @@ const textInput = props => {
             value={option[0]}
             checked={option[0]===input.value}
           />
-          <span>{option[1]}</span>
+          <span key={option[1]}>{option[1]}</span>
           </label>
         </>
       );
