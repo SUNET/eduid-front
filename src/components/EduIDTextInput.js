@@ -47,7 +47,7 @@ const textInput = props => {
 
   let field;
   if (selectOptions) {
-    const renderRadioButtons = selectOptions.map((option, index) => {
+    const renderSelectLanguage = selectOptions.map((option, index) => {
       return (
         <>
           <label key={index} htmlFor={option[1]}>
@@ -67,7 +67,7 @@ const textInput = props => {
     });
     field = (
       <div className='radio-input-container'>
-        {renderRadioButtons}
+        {renderSelectLanguage}
       </div>
     );
   } 
