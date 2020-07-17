@@ -51,8 +51,6 @@ const textInput = props => {
       return (
         <>
           <label key={index} htmlFor={option[1]}>
-            {option[1]}
-          </label>
           <input
             className={"radio-input"}
             key={option[1]}
@@ -62,6 +60,8 @@ const textInput = props => {
             value={option[0]}
             checked={option[0]===input.value}
           />
+          <span>{option[1]}</span>
+          </label>
         </>
       );
     });
