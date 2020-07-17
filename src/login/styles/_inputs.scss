@@ -47,13 +47,14 @@ input[type="radio"]:checked {
     font-family: "ProximaNova-Regular";
     font-weight: normal;
     text-transform: capitalize;
-    padding: 0 8px 0 8px;
+    margin: 0 2rem 0 0 ;
+    text-align: center;
   }
 }
 
-.radio-input {
-  margin-right: 3rem;
-}
+// .radio-input {
+//   margin-right: 3rem;
+// }
 // .form-control overrides all styling with bootsrap styles
 //input {
 //   background-color: white;
