@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import FormText from "reactstrap/lib/FormText";
@@ -49,20 +49,20 @@ const textInput = props => {
   if (selectOptions) {
     const renderSelectLanguage = selectOptions.map((option, index) => {
       return (
-        <>
-          <label key={index} htmlFor={option[1]}>
+        <Fragment key={index}>
+          <label key={option[0]} htmlFor={option[1]}>
           <input
             className={"radio-input"}
-            key={option[1]}
+            key={option[0]}
             id={option[1]}
             type='radio'
             {...input}
             value={option[0]}
             checked={option[0]===input.value}
           />
-          <span key={option[1]}>{option[1]}</span>
+          <span key={index}>{option[1]}</span>
           </label>
-        </>
+        </Fragment>
       );
     });
     field = (
