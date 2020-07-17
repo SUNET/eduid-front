@@ -40,8 +40,9 @@ input[type="radio"]:checked {
   height: 3rem;
   background-color: $white;
   border-bottom: 2px solid $black;
+  padding-left: 8px;
 
-  label{
+  span{
     font-size: 1.5rem;
     font-family: "ProximaNova-Regular";
     font-weight: normal;
@@ -120,7 +121,7 @@ input:focus {
 @media (max-width: 568px) {
   .form-control,
   input,
-  .radio-input-container label {
+  .radio-input-container span {
     font-size: 1rem;
     color: $black;
   }
