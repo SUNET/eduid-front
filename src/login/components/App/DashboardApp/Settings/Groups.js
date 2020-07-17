@@ -8,7 +8,7 @@ class Groups extends Component {
   render() {
     const cookieName = "show-groups";
     const cookiePattern = "";
-    const showComponent = checkForCookie(cookieName);
+    const showComponent = checkForCookie(cookieName, cookiePattern);
 
     if (showComponent) {
       return (
