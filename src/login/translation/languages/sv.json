@@ -83,7 +83,7 @@
   "eidas.freja_instructions_step4": "Gå till närmsta ombud, visa giltigt ID tillsammans med QR-koden i din telefon och låt dem bevisa din identitet",
   "eidas.freja_instructions_step5": "Freja eID är redo att användas med ditt eduID",
   "eidas.freja_instructions_tip_1": "Tips: Du kan hitta närmsta ombud i appen",
-  "eidas.initialize_proofing_help_text": "För att använda det här alternativet så måste du först skaffa ett digitalt ID-kort i <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> appen.",
+  "eidas.initialize_proofing_help_text": "För att använda det här alternativet måste du först skaffa ett digitalt ID-kort i <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> appen.",
   "eidas.modal_title": "Med Freja eID appen kan du skapa ett digitalt ID-kort",
   "eidas.nin_already_verified": "Du har redan bekräftat din identitet",
   "eidas.nin_not_matching": "Den mottagna identiteten motsvarar inte den bekräftade identiteten på kontot",
