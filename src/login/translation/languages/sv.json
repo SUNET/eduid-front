@@ -209,7 +209,7 @@
   "oc.error_missing_nin": "Skriv in ett personnummer och försök igen",
   "oc.error_unknown_error": "Temporärt tekniskt fel. Var god försök igen senare",
   "oc.initialize_proofing": "SE-LEG",
-  "oc.initialize_proofing_help_text": "För att använda det här alternativet så måste du besöka en <a href=\"https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/\" target=\"_blank\">SE-LEG RA</a> och visa legitimation.",
+  "oc.initialize_proofing_help_text": "För att använda det här alternativet måste du besöka en <a href=\"https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/\" target=\"_blank\">SE-LEG RA</a> och visa legitimation.",
   "oc.instructions_step_1": "Besök ditt närmaste folkbibliotek på den här listan: <ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>",
   "oc.instructions_step_2": "Visa QR-koden och vald legitimation för bibliotekarien. Berätta att du vill bekräfta ditt eduID-konto.",
   "oc.instructions_step_3": "Inom några timmar ska ditt konto vara verifierat.",
