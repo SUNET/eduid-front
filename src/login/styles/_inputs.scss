@@ -33,10 +33,6 @@ input[type="radio"]:checked {
   background-color: $primary-btn-border-color;
 }
 
-input[type="radio"]:checked+span{
-  color: $black;
-}
-
 /* optional styles for centering radiobuttons */
 .radio-input-container {
   display: flex;
@@ -48,7 +44,7 @@ input[type="radio"]:checked+span{
 
   span{
     font-size: 1.5rem;
-    color: #808080;
+    color: $black;
     font-family: "ProximaNova-Regular";
     font-weight: normal;
     text-transform: capitalize;
