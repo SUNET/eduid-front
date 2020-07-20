@@ -37,8 +37,10 @@ input[type="radio"]:checked {
 /* optional styles for centering radiobuttons */
 .radio-input-container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   height: 42px;
+  width: 100%;
   padding-left: 8px;
 
   span{
