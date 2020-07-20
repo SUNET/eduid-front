@@ -145,7 +145,7 @@
   "letter.bad-postal-address": "Ofullständig postadress",
   "letter.button_text_code": "Skriv bekräftelsekoden här",
   "letter.button_text_request": "via post",
-  "letter.initialize_proofing_help_text": "Brevet innehåller en bekräftelsekod som av säkehetsskäl går ut efter två veckor.",
+  "letter.initialize_proofing_help_text": "Brevet innehåller en bekräftelsekod som av säkerhetsskäl går ut efter två veckor.",
   "letter.letter_sent_msg": "Ett brev med en kod har skickats till din folkbokföringsadress",
   "letter.lost_code": "Om du klickar på \"Skicka\"-knappen kommer en kod att skickas till din folkbokföringsadress.",
   "letter.modal_confirm_info": "Om du accepterar att få ett brev hem måste du skriva in bekräfelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor.",
