@@ -18,8 +18,8 @@ input[type="radio"] {
   appearance: none;
   /* create custom radiobutton appearance */
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   /* background-color only for content */
   background-clip: content-box;
   border: 1px solid $black;
