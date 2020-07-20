@@ -30,6 +30,7 @@ input[type="radio"] {
 /* appearance for checked radiobutton */
 input[type="radio"]:checked {
   background-color: $primary-btn-border-color;
+  border: none;
 }
 
 /* optional styles for centering radiobuttons */
