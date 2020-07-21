@@ -242,6 +242,8 @@
   "out_of_sync": "Användardata ur synk. Var god ladda om sidan.",
   "pd.all-data-success": "Kontodata laddat",
   "pd.choose-language": "Välj språk",
+  "pd.language-english": "Engelska",
+  "pd.language-swedish": "Svenska",
   "pd.display_name": "Visningsnamn",
   "pd.display_name_input_help_text": "Vissa tjänster visar detta i stället för förnamn och efternamn.",
   "pd.display_name_inputplaceholder": "Förnamn Efternamn",

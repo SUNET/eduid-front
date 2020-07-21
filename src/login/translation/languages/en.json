@@ -242,6 +242,8 @@
   "out_of_sync": "User data is out of sync. Reload page to re-sync.",
   "pd.all-data-success": "Successfully retrieved personal information",
   "pd.choose-language": "Choose language",
+  "pd.language-english": "English",
+  "pd.language-swedish": "Swedish",
   "pd.display_name": "Display Name",
   "pd.display_name_input_help_text": "Some services will show this instead of your first and last name.",
   "pd.display_name_inputplaceholder": "First and last name",
