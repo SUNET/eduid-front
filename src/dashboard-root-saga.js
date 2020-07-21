@@ -20,7 +20,7 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
   requestRemoveEmail,
-  requestMakePrimaryEmail
+  requestMakePrimaryEmail,
 } from "sagas/Emails";
 import * as sagasMobile from "sagas/Mobile";
 import * as sagasOpenidFreja from "sagas/OpenidConnectFreja";
@@ -66,6 +66,7 @@ function* rootSaga() {
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),
+    takeLatest(configActions.GET_INITIAL_USERDATA, requestGroupData),
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     takeLatest(
       openidActions.SHOW_OIDC_SELEG_MODAL,
