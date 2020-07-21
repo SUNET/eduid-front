@@ -8,6 +8,7 @@ import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
+
 const textInput = props => {
   const {
     input,
@@ -60,7 +61,10 @@ const textInput = props => {
             value={option[0]}
             checked={option[0]===input.value}
           />
-          <span key={index}>{option[1]}</span>
+          <span key={index}>{option[1] === "English" ? 
+            props.translate("pd.language-english") 
+            : props.translate("pd.language-swedish")}
+          </span>
           </label>
         </Fragment>
       );
