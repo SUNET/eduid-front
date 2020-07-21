@@ -147,22 +147,22 @@ describe("VerifyIdentity component, when nin is saved", () => {
   //   expect(ninNumber.exists()).toEqual(true);
   // });
 
-  it("Renders buttons when app is configured", () => {
-    const { wrapper } = setupComponent();
-    const vettingButton = wrapper.find("button");
-    expect(vettingButton.exists()).toEqual(true);
-    expect(vettingButton.length).toEqual(3);
-  });
+  // it("Renders buttons when app is configured", () => {
+  //   const { wrapper } = setupComponent();
+  //   const vettingButton = wrapper.find("button");
+  //   expect(vettingButton.exists()).toEqual(true);
+  //   expect(vettingButton.length).toEqual(3);
+  // });
 
-  it("Renders <LetterProofing /> <LookupMobileProofing /> and <Eidas/>", () => {
-    const { wrapper } = setupComponent();
-    const letterProofing = wrapper.find(LetterProofing);
-    const mobileProofing = wrapper.find(LookupMobileProofing);
-    const eidasProofing = wrapper.find(Eidas);
-    expect(letterProofing.exists()).toEqual(true);
-    expect(mobileProofing.exists()).toEqual(true);
-    expect(eidasProofing.exists()).toEqual(true);
-  });
+  // it("Renders <LetterProofing /> <LookupMobileProofing /> and <Eidas/>", () => {
+  //   const { wrapper } = setupComponent();
+  //   const letterProofing = wrapper.find(LetterProofing);
+  //   const mobileProofing = wrapper.find(LookupMobileProofing);
+  //   const eidasProofing = wrapper.find(Eidas);
+  //   expect(letterProofing.exists()).toEqual(true);
+  //   expect(mobileProofing.exists()).toEqual(true);
+  //   expect(eidasProofing.exists()).toEqual(true);
+  // });
 
   // it("Renders header prompting user to add and verify nin (verifiedNinStatus = false)", () => {
   //   const { wrapper } = setupComponent();
