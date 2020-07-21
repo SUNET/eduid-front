@@ -66,10 +66,8 @@ let PdataForm = (props) => {
           placeholder={props.translate("pd.display_name_input_placeholder")}
           helpBlock={props.translate("pd.display_name_input_help_text")}
         />
-        <Field
+         <Field
           component={TextInput}
-          componentClass="input"
-          type="select"
           name="language"
           selectOptions={props.langs}
           label={props.translate("pd.language")}
