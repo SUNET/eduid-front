@@ -4,7 +4,7 @@
   "description": "",
   "browser": "src/entry-points/index.js",
   "scripts": {
-    "start": "webpack --watch --progress",
+    "start": "rm -rf node_modules/.cache && webpack --watch --progress",
     "test": "karma start",
     "test-headless": "karma start headless.karma.conf.js",
     "debug": "karma start --single-run=false --debug --browser Chrome",

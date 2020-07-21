@@ -20,7 +20,7 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
   requestRemoveEmail,
-  requestMakePrimaryEmail
+  requestMakePrimaryEmail,
 } from "sagas/Emails";
 import * as sagasMobile from "sagas/Mobile";
 import * as sagasOpenidFreja from "sagas/OpenidConnectFreja";
@@ -52,6 +52,8 @@ import {
 } from "sagas/LetterProofing";
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
+import { requestGroupData } from "./login/components/App/DashboardApp/Settings/Groups/Group_sagas";
+
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -64,6 +66,7 @@ function* rootSaga() {
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),
+    takeLatest(configActions.GET_INITIAL_USERDATA, requestGroupData),
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     takeLatest(
       openidActions.SHOW_OIDC_SELEG_MODAL,
