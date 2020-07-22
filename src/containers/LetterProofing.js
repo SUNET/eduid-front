@@ -6,14 +6,14 @@ import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
-  const confirming = state.letter_proofing.confirmingLetter,
-    valid_nin = isValid("nins")(state),
-    confirmingLetter = confirming && valid_nin;
+  const confirming = state.letter_proofing.confirmingLetter;
+  const valid_nin = isValid("nins")(state);
+  const confirmingLetter = confirming && valid_nin;
   return {
+    disabled: !valid_nin,
     confirmingLetter: confirmingLetter,
     verifyingLetter: state.letter_proofing.verifyingLetter,
-    valid_nin: isValid("nins")(state),
-    nin: state.nins.nin
+    // nin: state.nins.nin,
   };
 };
 
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, props) => {
       const data = {
         code: document
           .getElementById("confirmation-code-area")
-          .querySelector("input").value
+          .querySelector("input").value,
       };
       dispatch(actions.postLetterProofingVerificationCode(data));
       dispatch(actions.stopLetterVerification());
