@@ -9,78 +9,100 @@ import "../login/styles/index.scss";
 
 class VerifyIdentity extends Component {
   render() {
+    // page text depend on nin status (verified or not)
+    let pageHeading = "";
+    let pageText = "";
     let vettingButtons = "";
-    let connectNin = "";
-    let headerText = "";
-    let recoverIdentityTip = "";
-    let ninExplanation = this.props.translate(
-      "verify-identity.unverified_page-description"
-    );
-    let numberedHeading = this.props.translate(
-      "verify-identity.add-nin_heading"
-    );
     let buttonHelpTextArray = [
       this.props.translate("letter.initialize_proofing_help_text"),
       this.props.translate("lmp.initialize_proofing_help_text"),
       this.props.translate("eidas.initialize_proofing_help_text"),
     ];
-    if (this.props.is_configured) {
-      const vettingBtns = vettingRegistry(!this.props.valid_nin);
-      const verifyOptions = this.props.proofing_methods.filter(
-        (option) => option !== "oidc"
-      );
-      vettingButtons = verifyOptions.map((key, index) => {
-        let helpText = buttonHelpTextArray[index];
-        return (
-          <div key={index}>
-            {vettingBtns[key]}
-            <p key={index} className="proofing-btn-help">
-              {helpText}
-            </p>
-          </div>
-        );
-      });
-    }
 
-    if (!this.props.verifiedNinStatus) {
-      headerText = this.props.translate(
-        "verify-identity.unverified_main_title"
+    // nin is not verified (add nin)
+    let AddNumber = (props) => {
+      pageHeading = props.translate("verify-identity.unverified_main_title");
+      pageText = props.translate("verify-identity.unverified_page-description");
+      return (
+        <div key="0" className="intro">
+          <h4>{pageHeading}</h4>
+          <p>{pageText}</p>
+          <h3>{props.translate("verify-identity.add-nin_heading")}</h3>
+        </div>
       );
-      connectNin = [
-        <div key="1" className="intro">
-          <h3 key="0">
-            {this.props.translate("verify-identity.connect-nin_heading")}
-          </h3>
-          <p>
-            {this.props.translate("verify-identity.connect-nin_description")}
-          </p>
-          <div key="1" id="nins-btn-grid">
-            {vettingButtons}
-          </div>
-        </div>,
-      ];
-    } else if (this.props.verifiedNinStatus) {
-      headerText = this.props.translate("verify-identity.verified_main_title");
-      connectNin = "";
-      numberedHeading = "";
-      ninExplanation = this.props.translate(
-        "verify-identity.verified_page-description"
-      );
-      recoverIdentityTip = this.props.translate(
+    };
+
+    let NumberAdded = (props) => {
+      // nin is verified (nin added)
+      pageHeading = props.translate("verify-identity.verified_main_title");
+      pageText = props.translate("verify-identity.verified_page-description");
+      recoverIdentityTip = props.translate(
         "verify-identity.verified_pw_reset_extra_security"
       );
+      return (
+        <div key="0" className="intro">
+          <h4>{pageHeading}</h4>
+          <p>{pageText}</p>
+        </div>
+      );
+    };
+
+    // top half of page: add nin/nin added
+    let VerifyIdentity_Step1 = () => {
+      if (this.props.verifiedNinStatus) {
+        return <NumberAdded {...this.props} />;
+      } else {
+        return <AddNumber {...this.props} />;
+      }
+    };
+
+    // this is where the buttons are generated
+    // this needs to be outside of <VerifyIdentity_Step2> for the second modal to render
+    if (this.props.is_configured) {
+      //this is an object listing all the vetting components in another file (src/vetting-registry.js)
+      const vettingOptionsObject = vettingRegistry(!this.props.valid_nin);
+      // extract the keys from the vettingOptionsObject
+      const vettingOptionsKeys = Object.keys(vettingOptionsObject);
+      vettingButtons = [
+        vettingOptionsKeys.map((key, index) => {
+          let helpText = buttonHelpTextArray[index];
+          return (
+            <div key={index}>
+              {vettingOptionsObject[key]}
+              <p key={index} className="proofing-btn-help">
+                {helpText}
+              </p>
+            </div>
+          );
+        }),
+      ];
     }
+
+    // bottom half of page: vetting on added nin
+    let VerifyIdentity_Step2 = () => {
+      if (this.props.is_configured && !this.props.verifiedNinStatus) {
+        return (
+          <div key="1" className="intro">
+            <h3>
+              {this.props.translate("verify-identity.connect-nin_heading")}
+            </h3>
+            <p>
+              {this.props.translate("verify-identity.connect-nin_description")}
+            </p>
+            <div key="1" id="nins-btn-grid"></div>
+          </div>
+        );
+      } else {
+        return <div />;
+      }
+    };
 
     return (
       <Fragment>
-        <div key="0" className="intro">
-          <h4>{headerText}</h4>
-          <p>{ninExplanation}</p>
-          <h3>{numberedHeading}</h3>
-          <AddNin {...this.props} />
-          <p className="help-text">{recoverIdentityTip}</p>
-        </div>
-        {connectNin}
+        <VerifyIdentity_Step1 />
+        <AddNin {...this.props} />
+        <VerifyIdentity_Step2 />
+        {vettingButtons}
       </Fragment>
     );
   }
