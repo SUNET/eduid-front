@@ -392,6 +392,6 @@
   "verify-identity.verified_page-description": "Personummret nedan är nu kopplat till detta eduID. Använd ditt eduID för att logga in till  olika tjänster inom högskolan.",
   "verify-identity.verified_pw_reset_extra_security": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord.",
   "verify-identity.vetting_freja_tagline": "För dig som har eller kan skapa Freja eID genom att besöka ett ombud i Sverige",
-  "verify-identity.vetting_phone_tagline": "För dig som har ett telefonabonnemang i sitt eget namn",
-  "verify-identity.vetting_post_tagline": "För dig som har tillgång till sin folkbokföringsaddress"
+  "verify-identity.vetting_phone_tagline": "För dig som har ett telefonabonnemang i ditt eget namn",
+  "verify-identity.vetting_post_tagline": "För dig som har tillgång till din folkbokföringsaddress"
 }
