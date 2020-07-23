@@ -129,6 +129,10 @@ input:focus {
   align-items: center;
 }
 
+.help-block {
+  font-size: 0.875rem;
+}
+
 @media (max-width: 568px) {
   .form-control,
   input,
