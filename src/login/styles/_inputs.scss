@@ -108,6 +108,7 @@ input:focus {
 .form-control.is-invalid {
   border: none;
   border-bottom: 2px solid $orange-highlight;
+  background-image: none;
 }
 
 .form-control.is-invalid:focus {
