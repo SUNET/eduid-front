@@ -26,6 +26,6 @@ module.exports = {
     LOCALIZED_MESSAGES: JSON.stringify(messages),
     SIGNUP_SERVICE_URL: JSON.stringify("/services/signup/"),
     BASE_PATH: JSON.stringify("/register"),
-    GROUP_MGMT_URL: JSON.stringify("/services/group-management/"),
+    GROUP_MGMT_URL: JSON.stringify("/services/group-management"),
   }),
 };
