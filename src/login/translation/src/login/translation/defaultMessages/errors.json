@@ -12,6 +12,10 @@
     "defaultMessage": "Field cannot be empty"
   },
   {
+    "id": "only allow letters",
+    "defaultMessage": "Only allow letters"
+  },
+  {
     "id": "user-out-of-sync",
     "defaultMessage": "User data is out of sync. Reload page to re-sync."
   },

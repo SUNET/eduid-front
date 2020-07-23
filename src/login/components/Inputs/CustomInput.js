@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import FormGroup from "reactstrap/lib/FormGroup";
 import FormText from "reactstrap/lib/FormText";
@@ -33,32 +33,33 @@ const RenderInput = props => {
     invalid
   } = props;
   
-  if (type === "select") {
-    let options = [];
-    if (selectOptions) {
-      options = selectOptions.slice();
-    }
-    const optionChildren = options.map(option => {
+  if (selectOptions) {
+    const renderSelectLanguage = selectOptions.map((option, index) => {
       return (
-        <option key={option[0]} value={option[0]}>
-          {option[1]}
-        </option>
+        <Fragment key={index}>
+          <label key={option[0]} htmlFor={option[1]}>
+          <input
+            className={"radio-input"}
+            key={option[0]}
+            id={option[1]}
+            type='radio'
+            {...input}
+            value={option[0]}
+            checked={option[0]===input.value}
+          />
+          <span key={index}>{option[1] === "English" ? 
+            props.translate("pd.language-english") 
+            : props.translate("pd.language-swedish")}
+          </span>
+          </label>
+        </Fragment>
       );
-    });   
+    });  
 
     return(
-      <Input
-        type={type}
-        disabled={disabled}
-        placeholder={placeholder}
-        id={name}
-        name={name}
-        valid={valid}
-        invalid={invalid}
-        {...input}
-      >
-        {optionChildren}
-      </Input>
+      <div className='radio-input-container'>
+        {renderSelectLanguage}
+      </div>
     )} else {
     return(
       <Input
