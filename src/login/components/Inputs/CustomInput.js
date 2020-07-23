@@ -6,17 +6,15 @@ import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
-const RenderHelpBlock = props => {
-  const { meta, translate, helpBlock, invalid } = props;
+const RenderErrorMessage = props => {
+  const { meta, translate, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
 
   return(
-    errmsg ? (
+    errmsg && (
       <FormText>
-        <span className="eduid-field-error">{errmsg} {helpBlock && helpBlock} </span>
+        <span className="eduid-field-error">{errmsg}</span>
       </FormText>
-    ):(
-      <FormText>{helpBlock}</FormText>
     )
   )
 }
@@ -81,7 +79,8 @@ const customInput = (props) => {
     input,
     label,
     name,
-    meta
+    meta,
+    helpBlock
   } = props;
 
   let valid = false,
@@ -98,8 +97,9 @@ const customInput = (props) => {
   return (
     <FormGroup id={input.name}>
       { label && <Label for={name}>{label}</Label> }
+      { helpBlock && <span>{helpBlock}</span> }
       <RenderInput {...props} valid={valid} invalid={invalid}/>
-      <RenderHelpBlock {...props} valid={valid} invalid={invalid}/>
+      <RenderErrorMessage {...props} valid={valid} invalid={invalid}/>
     </FormGroup>
   );
 };
