@@ -12,6 +12,8 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
+import Groups from "../login/components/App/DashboardApp/Settings/Groups/Groups";
+
 
 // import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import "style/base.scss";
@@ -46,6 +48,7 @@ class Settings extends Component {
           path="/profile/settings/personaldata"
           component={DeleteAccount}
         />
+        <Route path="/profile/settings/personaldata" component={Groups} />
         <Route
           path="/profile/settings/advanced-settings"
           component={SecurityContainer}
