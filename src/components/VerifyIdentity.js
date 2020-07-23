@@ -12,15 +12,17 @@ class VerifyIdentity extends Component {
     // page text depend on nin status (verified or not)
     let pageHeading = "";
     let pageText = "";
+    let vettingButtons = "";
+    let buttonHelpTextArray = [
+      this.props.translate("letter.initialize_proofing_help_text"),
+      this.props.translate("lmp.initialize_proofing_help_text"),
+      this.props.translate("eidas.initialize_proofing_help_text"),
+    ];
 
     // nin is not verified (add nin)
     let AddNumber = (props) => {
-      pageHeading = props.translate(
-        "verify-identity.unverified_main_title"
-      );
-      pageText = props.translate(
-        "verify-identity.unverified_page-description"
-      );
+      pageHeading = props.translate("verify-identity.unverified_main_title");
+      pageText = props.translate("verify-identity.unverified_page-description");
       return (
         <div key="0" className="intro">
           <h4>{pageHeading}</h4>
@@ -33,9 +35,7 @@ class VerifyIdentity extends Component {
     let NumberAdded = (props) => {
       // nin is verified (nin added)
       pageHeading = props.translate("verify-identity.verified_main_title");
-      pageText = props.translate(
-        "verify-identity.verified_page-description"
-      );
+      pageText = props.translate("verify-identity.verified_page-description");
       recoverIdentityTip = props.translate(
         "verify-identity.verified_pw_reset_extra_security"
       );
@@ -56,33 +56,27 @@ class VerifyIdentity extends Component {
       }
     };
 
-    // rendering of vetting buttons from options in an object in another file
-    let VettingButtons = () => {
-      // this is the help text under the first 3 vetting buttons
-      let helpTextArray = [
-        this.props.translate("letter.initialize_proofing_help_text"),
-        this.props.translate("lmp.initialize_proofing_help_text"),
-        this.props.translate("eidas.initialize_proofing_help_text"),
-      ];
-
-      // this is an object listing all the vetting components in another file (src/vetting-registry.js)
+    // this is where the buttons are generated
+    // this needs to be outside of <VerifyIdentity_Step2> for the second modal to render
+    if (this.props.is_configured) {
+      //this is an object listing all the vetting components in another file (src/vetting-registry.js)
       const vettingOptionsObject = vettingRegistry(!this.props.valid_nin);
       // extract the keys from the vettingOptionsObject
       const vettingOptionsKeys = Object.keys(vettingOptionsObject);
-
-      // this is where each button is rendered based on the vettingOptionsList object
-      return vettingOptionsKeys.map((key, i) => {
-        let helpText = helpTextArray[i];
-        return (
-          <div key={i}>
-            {vettingOptionsObject[key]}
-            <p key={i} className="proofing-btn-help">
-              {helpText}
-            </p>
-          </div>
-        );
-      });
-    };
+      vettingButtons = [
+        vettingOptionsKeys.map((key, index) => {
+          let helpText = buttonHelpTextArray[index];
+          return (
+            <div key={index}>
+              {vettingOptionsObject[key]}
+              <p key={index} className="proofing-btn-help">
+                {helpText}
+              </p>
+            </div>
+          );
+        }),
+      ];
+    }
 
     // bottom half of page: vetting on added nin
     let VerifyIdentity_Step2 = () => {
@@ -95,21 +89,20 @@ class VerifyIdentity extends Component {
             <p>
               {this.props.translate("verify-identity.connect-nin_description")}
             </p>
-            <div key="1" id="nins-btn-grid">
-              <VettingButtons />
-            </div>
+            <div key="1" id="nins-btn-grid"></div>
           </div>
         );
       } else {
         return <div />;
       }
     };
-  
+
     return (
       <Fragment>
         <VerifyIdentity_Step1 />
         <AddNin {...this.props} />
         <VerifyIdentity_Step2 />
+        {vettingButtons}
       </Fragment>
     );
   }
