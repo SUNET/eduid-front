@@ -122,6 +122,13 @@ input:focus {
   letter-spacing: 0.025rem;
 }
 
+.label-helpblock-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 @media (max-width: 568px) {
   .form-control,
   input,
