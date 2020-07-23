@@ -139,6 +139,10 @@ input:focus {
   padding-left: 2px;
 }
 
+.eduid-field-error {
+  font-size: 0.875rem;
+}
+
 @media (max-width: 568px) {
   .form-control,
   input,
