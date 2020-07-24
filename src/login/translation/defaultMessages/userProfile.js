@@ -146,21 +146,21 @@ export const userProfile = {
   "verify-identity.vetting_post_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_post_tagline"
-      defaultMessage={`For those registered at their current address`}
+      defaultMessage={`For you registered at your current address`}
     />
   ),
 
   "verify-identity.vetting_phone_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_phone_tagline"
-      defaultMessage={`For those with a phone registered in their name`}
+      defaultMessage={`For you with a phone number registered in your name`}
     />
   ),
 
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
-      defaultMessage={`For those able to create a Freja eID by visiting one of the authorised agents`}
+      defaultMessage={`For you able to create a Freja eID by visiting one of the authorised agents`}
     />
   ),
 

@@ -35,14 +35,6 @@ export const unformattedMessages = defineMessages({
     id: "pd.choose-language",
     defaultMessage: `Choose language`
   },
-  "pd.language-english": {
-    id: "pd.language-english",
-    defaultMessage: `English`
-  },
-  "pd.language-swedish": {
-    id: "pd.language-swedish",
-    defaultMessage: `Swedish`
-  },
   "emails.placeholder": {
     id: "emails.confirm_email_placeholder",
     defaultMessage: `Email confirmation code`,
