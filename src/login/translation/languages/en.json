@@ -242,8 +242,6 @@
   "out_of_sync": "User data is out of sync. Reload page to re-sync.",
   "pd.all-data-success": "Successfully retrieved personal information",
   "pd.choose-language": "Choose language",
-  "pd.language-english": "English",
-  "pd.language-swedish": "Swedish",
   "pd.display_name": "Display Name",
   "pd.display_name_input_help_text": "Some services will show this instead of your first and last name.",
   "pd.display_name_inputplaceholder": "First and last name",
@@ -391,7 +389,7 @@
   "verify-identity.verified_main_title": "Your eduID is ready to use",
   "verify-identity.verified_page-description": "The below id number is now connected to this eduID. Use your eduID to log in to sevices related to higher education.",
   "verify-identity.verified_pw_reset_extra_security": "Add a phone number or a security key to your eduID to keep your identity at password reset.",
-  "verify-identity.vetting_freja_tagline": "For those able to create a Freja eID by visiting one of the authorised agents",
-  "verify-identity.vetting_phone_tagline": "For those with a phone registered in their name",
-  "verify-identity.vetting_post_tagline": "For those registered at their current address"
+  "verify-identity.vetting_freja_tagline": "For you able to create a Freja eID by visiting one of the authorised agents",
+  "verify-identity.vetting_phone_tagline": "For you with a phone number registered in your name",
+  "verify-identity.vetting_post_tagline": "For you registered at your current address"
 }
