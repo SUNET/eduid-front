@@ -52,6 +52,7 @@ import {
 } from "sagas/LetterProofing";
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
+import groupsSagas from "./sagas/rootSagas/groupSagas";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -64,6 +65,7 @@ function* rootSaga() {
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),
+    ...groupsSagas,
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     takeLatest(
       openidActions.SHOW_OIDC_SELEG_MODAL,
