@@ -1,5 +1,5 @@
 import { takeLatest } from "redux-saga/effects";
-import * as configActions from "../../actions/DashboardConfig";
+import * as configActions from "../../../actions/DashboardConfig";
 import { requestGroupsData } from "../getGroups";
 import { requestGroupsAllData } from "../getGroupsAllData";
 
