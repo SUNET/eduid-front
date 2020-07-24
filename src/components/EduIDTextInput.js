@@ -61,9 +61,7 @@ const textInput = props => {
             value={option[0]}
             checked={option[0]===input.value}
           />
-          <span key={index}>{option[1] === "English" ? 
-            props.translate("pd.language-english") 
-            : props.translate("pd.language-swedish")}
+          <span key={index}>{option[1]}
           </span>
           </label>
         </Fragment>
