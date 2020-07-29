@@ -64,7 +64,7 @@ class VerifyIdentity extends Component {
       // extract the keys from the vettingOptionsObject
       const vettingOptionsKeys = Object.keys(vettingOptionsObject);
       vettingButtons = [
-        <div id="nins-btn-grid"> 
+        <div key="1" id="nins-btn-grid"> 
           {vettingOptionsKeys.map((key, index) => {
             let helpText = buttonHelpTextArray[index];
             return (
