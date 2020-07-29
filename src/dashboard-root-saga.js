@@ -29,7 +29,7 @@ import { requestConfig } from "sagas/DashboardConfig";
 import {
   requestRemoveOrcid,
   requestOrcid,
-  requestConnectOrcid
+  requestConnectOrcid,
 } from "sagas/AccountLinking";
 import {
   requestCredentials,
@@ -38,22 +38,21 @@ import {
   beginRegisterWebauthn,
   registerWebauthn,
   removeWebauthnToken,
-  verifyWebauthnToken
+  verifyWebauthnToken,
 } from "sagas/Security";
 import {
   requestSuggestedPassword,
-  postPasswordChange
+  postPasswordChange,
 } from "sagas/ChangePassword";
 import { requestNins, requestRemoveNin, postNin } from "sagas/Nins";
 import {
   sendLetterProofing,
   sendGetLetterProofing,
-  sendLetterCode
+  sendLetterCode,
 } from "sagas/LetterProofing";
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
-import { requestGroupData } from "./login/components/App/DashboardApp/Settings/Groups/Group_sagas";
-
+import groupsSagas from "./login/sagas/rootSaga/groupSagas";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -66,7 +65,7 @@ function* rootSaga() {
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),
-    takeLatest(configActions.GET_INITIAL_USERDATA, requestGroupData),
+    ...groupsSagas,
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     takeLatest(
       openidActions.SHOW_OIDC_SELEG_MODAL,
@@ -126,8 +125,14 @@ function* rootSaga() {
     takeLatest(ninActions.POST_NIN_REMOVE, requestRemoveNin),
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
     takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestAllPersonalData),
-    takeEvery(letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
-    takeEvery(letterActions.POST_LETTER_PROOFING_CODE_SUCCESS, requestAllPersonalData),
+    takeEvery(
+      letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS,
+      requestAllPersonalData
+    ),
+    takeEvery(
+      letterActions.POST_LETTER_PROOFING_CODE_SUCCESS,
+      requestAllPersonalData
+    ),
     takeEvery(
       lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
       requestAllPersonalData
@@ -151,7 +156,7 @@ function* rootSaga() {
     takeLatest(securityActions.POST_WEBAUTHN_VERIFY, verifyWebauthnToken),
     takeEvery(accountLinkingActions.POST_ORCID_REMOVE, requestRemoveOrcid),
     takeEvery(accountLinkingActions.POST_ORCID_REMOVE_SUCCESS, requestOrcid),
-    takeEvery(accountLinkingActions.GET_ORCID_CONNECT, requestConnectOrcid)
+    takeEvery(accountLinkingActions.GET_ORCID_CONNECT, requestConnectOrcid),
   ];
 }
 
