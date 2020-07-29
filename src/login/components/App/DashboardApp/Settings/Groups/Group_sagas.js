@@ -1,19 +1,18 @@
 // import { push } from "react-router-redux";
-import { call } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import { checkStatus, getRequest } from "../../../../../../sagas/common";
+import * as actions from "./Groups_actions";
 
 export function* requestGroupData() {
   const url = GROUP_MGMT_URL + "/groups";
-  // const url =
-  //   "http://dashboard.eduid.docker:8080/services/group-management/groups";
   try {
     console.log("this is url", url);
     const groupDataReponse = yield call(fetchGroups, url);
     console.log("This should be data:", groupDataReponse);
-    // yield put(groupDataReponse);
+    yield put(groupDataReponse);
   } catch (error) {
     console.log("groups request errored", error.message);
-    // yield put(actions.actionFail(error.toString()));
+    yield put(actions.getGropusDataFail(error.toString()));
   }
 }
 
