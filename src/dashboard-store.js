@@ -17,12 +17,14 @@ import notificationsReducer from "reducers/Notifications";
 import eidasReducer from "reducers/Eidas";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
+import groupsDataReducer from "./login/components/App/DashboardApp/Settings/Groups/Groups_reducer";
 
 const eduIDApp = combineReducers({
   router: routerReducer,
   chpass: chpassReducer,
   config: configReducer,
   emails: emailsReducer,
+  groups: groupsDataReducer,
   openid_data: openidConnectReducer,
   lookup_mobile: lookupMobileProofingReducer,
   openid_freja_data: openidConnectFrejaReducer,
@@ -35,7 +37,7 @@ const eduIDApp = combineReducers({
   security: securityReducer,
   eidas_data: eidasReducer,
   form: formReducer,
-  intl: intlReducer
+  intl: intlReducer,
 });
 
 export default eduIDApp;
