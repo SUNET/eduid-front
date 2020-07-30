@@ -41,6 +41,7 @@ input[type="radio"]:checked {
   align-items: center;
   height: 3rem;
   width: 100%;
+  margin-left: -2px;
 
   span{
     font-size: 1.5rem;
@@ -142,6 +143,7 @@ input:focus {
 
 .eduid-field-error {
   font-size: 1rem;
+  padding-left: 8px;
 }
 
 @media (max-width: 568px) {
