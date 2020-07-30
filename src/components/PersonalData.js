@@ -64,7 +64,7 @@ let PdataForm = (props) => {
           type="text"
           name="display_name"
           label={props.translate("pd.display_name")}
-          placeholder={props.translate("pd.display_name_input_placeholder")}
+          placeholder={props.translate("pd.display_name")}
           helpBlock={props.translate("pd.display_name_input_help_text")}
         />
          <Field
