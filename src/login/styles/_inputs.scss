@@ -139,11 +139,16 @@ input:focus {
 .help-block {
   font-size: 1rem;
   text-transform: lowercase;
+  padding-bottom: 3px;
 }
 
 .eduid-field-error {
   font-size: 1rem;
   padding-left: 8px;
+}
+
+.label-required {
+  color: $orange-highlight;
 }
 
 @media (max-width: 568px) {
