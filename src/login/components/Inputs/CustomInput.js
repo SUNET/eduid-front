@@ -95,7 +95,7 @@ const customInput = (props) => {
   return (
     <FormGroup id={input.name}>
       <div className={"label-helpblock-container"}>
-        { label && <Label for={name}>{label}</Label> }
+        { label && <Label for={name}>{label}<span className="label-required">*</span></Label> }
         { helpBlock && <span className={"help-block"}>{helpBlock}</span> }
       </div>
       <RenderInput {...props} valid={valid} invalid={invalid}/>
