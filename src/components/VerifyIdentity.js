@@ -64,18 +64,20 @@ class VerifyIdentity extends Component {
       // extract the keys from the vettingOptionsObject
       const vettingOptionsKeys = Object.keys(vettingOptionsObject);
       vettingButtons = [
-        vettingOptionsKeys.map((key, index) => {
-          let helpText = buttonHelpTextArray[index];
-          return (
-            <div key={index}>
-              {vettingOptionsObject[key]}
-              <p key={index} className="proofing-btn-help">
-                {helpText}
-              </p>
-            </div>
-          );
-        }),
-      ];
+        <div key="1" id="nins-btn-grid"> 
+          {vettingOptionsKeys.map((key, index) => {
+            let helpText = buttonHelpTextArray[index];
+            return (
+              <div key={index}>
+                {vettingOptionsObject[key]}
+                <p key={index} className="proofing-btn-help">
+                  {helpText}
+                </p>
+              </div>
+            )
+          })}
+        </div>
+      ]
     }
 
     // bottom half of page: vetting on added nin
@@ -89,7 +91,6 @@ class VerifyIdentity extends Component {
             <p>
               {this.props.translate("verify-identity.connect-nin_description")}
             </p>
-            <div key="1" id="nins-btn-grid"></div>
           </div>
         );
       } else {
