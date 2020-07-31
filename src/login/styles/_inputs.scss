@@ -129,17 +129,14 @@ input:focus {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-
-  label{
+  & label{
     font-size: 1rem;
     margin-left: -2px;
   }
-
-  .label-required {
+  & .label-required {
     color: $orange-highlight;
   }
-  
-  .help-block {
+  & .help-block {
     font-size: 1rem;
     text-transform: lowercase;
     padding-bottom: 3px;
