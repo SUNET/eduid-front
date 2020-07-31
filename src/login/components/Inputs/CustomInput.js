@@ -13,7 +13,7 @@ const RenderErrorMessage = props => {
   return(
     errmsg && (
       <FormText>
-        <span className="eduid-field-error">{errmsg}</span>
+        <span className="input-validate-error">{errmsg}</span>
       </FormText>
     )
   )
