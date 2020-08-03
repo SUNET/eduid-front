@@ -60,7 +60,7 @@ class VerifyIdentity extends Component {
 
     // this is where the buttons are generated
     // this needs to be outside of <VerifyIdentity_Step2> for the second modal to render
-    if (this.props.is_configured) {
+    if (this.props.is_configured && !this.props.verifiedNinStatus) {
       //this is an object listing all the vetting components in another file (src/vetting-registry.js)
       const vettingOptionsObject = vettingRegistry(!this.props.valid_nin);
       // extract the keys from the vettingOptionsObject
