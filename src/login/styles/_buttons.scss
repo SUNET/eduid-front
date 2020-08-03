@@ -95,6 +95,11 @@ button.close:hover {
   transform: scale(1.2);
 }
 
+button.btn#email-button,
+#mobile-button {
+  margin-top: 0;
+}
+
 //  {
 //   font-family: "ProximaNova-Regular";
 // }
