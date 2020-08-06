@@ -44,6 +44,7 @@ let PdataForm = (props) => {
       <fieldset id="personal-data-form" className="tabpane">
         <Field
           component={CustomInput}
+          required={true}
           componentClass="input"
           type="text"
           name="given_name"

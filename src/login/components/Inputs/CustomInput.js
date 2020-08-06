@@ -6,6 +6,25 @@ import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
+const RenderLabelAndHelpText = props => {
+  const {
+    label,
+    name,
+    helpBlock,
+    required
+  } = props;
+  return(
+    <div className={"input-label-helptext-container"}>
+      { label && 
+        <Label for={name}>{label}
+          { required && <span className="label-required">*</span> }
+        </Label> 
+      }
+      { helpBlock && <span className={"help-block"}>{helpBlock}</span> }
+    </div>
+  )
+}
+
 const RenderErrorMessage = props => {
   const { meta, translate, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
@@ -75,10 +94,7 @@ const RenderInput = props => {
 const customInput = (props) => {
   const {
     input,
-    label,
-    name,
     meta,
-    helpBlock
   } = props;
 
   let valid = false,
@@ -94,10 +110,7 @@ const customInput = (props) => {
 
   return (
     <FormGroup id={input.name}>
-      <div className={"input-label-helptext-container"}>
-        { label && <Label for={name}>{label}<span className="label-required">*</span></Label> }
-        { helpBlock && <span className={"help-block"}>{helpBlock}</span> }
-      </div>
+      <RenderLabelAndHelpText {...props}/>
       <RenderInput {...props} valid={valid} invalid={invalid}/>
       <RenderErrorMessage {...props} valid={valid} invalid={invalid}/>
     </FormGroup>
@@ -105,7 +118,7 @@ const customInput = (props) => {
 };
 
 customInput.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.any,
   meta: PropTypes.object,
   input: PropTypes.object,
   name: PropTypes.string,
