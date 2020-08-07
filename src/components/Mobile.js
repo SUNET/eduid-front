@@ -40,6 +40,7 @@ let PhoneForm = (props) => {
           componentClass="input"
           type="text"
           name="number"
+          label={props.translate("profile.phone_display_title")}
           placeholder={props.translate("phones.input_placeholder")}
           helpBlock={props.translate("phones.input_help_text")}
         />
