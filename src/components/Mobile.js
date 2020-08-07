@@ -7,7 +7,7 @@ import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "components/ConfirmModal";
-
+import PhoneInput from "../login/components/Inputs/CustomInput"
 // import "style/Emails.scss";
 // import "style/Mobile.scss";
 // import "style/DashboardMain.scss";
@@ -36,7 +36,7 @@ let PhoneForm = (props) => {
     <form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
         <Field
-          component={TextInput}
+          component={PhoneInput}
           componentClass="input"
           type="text"
           name="number"
