@@ -100,5 +100,4 @@ const textInput = props => {
     </FormGroup>
   );
 };
-
 export default i18n(textInput);
