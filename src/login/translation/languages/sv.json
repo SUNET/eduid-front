@@ -268,7 +268,7 @@
   "phones.code_invalid_or_expired": "Den bekräftelsekod du angett stämmer inte. Var god försök igen",
   "phones.duplicated": "Telefonnumret du angett används redan. Försök med ett annat.",
   "phones.get-success": "Telefonnummer laddades",
-  "phones.input_help_text": "Telefonnummer som börjar med 0 eller +",
+  "phones.input_help_text": "Telefonnummer som börjar med 0 eller +46",
   "phones.input_placeholder": "Telefonnummer",
   "phones.invalid_phone": "Ogiltigt telefonnummer",
   "phones.long_description": "Du kan koppla ett eller flera av dina mobiltelefonnummer till ditt eduID-konto och därefter välja vilket av dem som ska vara primär.",

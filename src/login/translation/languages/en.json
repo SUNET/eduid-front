@@ -268,7 +268,7 @@
   "phones.code_invalid_or_expired": "The confirmation code is invalid or it has expired, please try again or request a new code",
   "phones.duplicated": "That phone number is already in use, please choose another",
   "phones.get-success": "Successfully retrieved phone numbers",
-  "phones.input_help_text": "Phone number starting with 0 or +",
+  "phones.input_help_text": "Phone number starting with 0 or +46",
   "phones.input_placeholder": "phone number",
   "phones.invalid_phone": "Invalid phone number",
   "phones.long_description": "You can connect one or more mobile phone numbers to\n           your eduID, but one has to be set as the primary one.",
