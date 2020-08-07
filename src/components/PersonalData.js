@@ -53,6 +53,7 @@ let PdataForm = (props) => {
         />
         <Field
           component={CustomInput}
+          required={true}
           componentClass="input"
           type="text"
           name="surname"
@@ -61,6 +62,7 @@ let PdataForm = (props) => {
         />
         <Field
           component={CustomInput}
+          required={true}
           componentClass="input"
           type="text"
           name="display_name"
@@ -70,6 +72,7 @@ let PdataForm = (props) => {
         />
          <Field
           component={CustomInput}
+          required={true}
           name="language"
           selectOptions={props.langs}
           label={props.translate("pd.language")}
