@@ -6,6 +6,7 @@ import EmailInput from "../login/components/Inputs/CustomInput"
 import EduIDButton from "./EduIDButton";
 import DataTable from "../login/components/DataTable/DataTable";
 import ConfirmModal from "./ConfirmModal";
+import Form from "reactstrap/lib/Form";
 
 // import "style/Emails.scss";
 // import "style/DashboardMain.scss";
@@ -26,7 +27,7 @@ const validate = (values) => {
 
 let EmailForm = (props) => {
   return (
-    <form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="emails-form" className="tabpane">
         <Field
           component={EmailInput}
@@ -46,7 +47,7 @@ let EmailForm = (props) => {
       >
         {props.translate("emails.button_add")}
       </EduIDButton>
-    </form>
+    </Form>
   );
 };
 

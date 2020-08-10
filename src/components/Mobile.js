@@ -5,7 +5,8 @@ import { Field, reduxForm } from "redux-form";
 import EduIDButton from "components/EduIDButton";
 import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "components/ConfirmModal";
-import PhoneInput from "../login/components/Inputs/CustomInput"
+import PhoneInput from "../login/components/Inputs/CustomInput";
+import Form from "reactstrap/lib/Form";
 // import "style/Emails.scss";
 // import "style/Mobile.scss";
 // import "style/DashboardMain.scss";
@@ -31,7 +32,7 @@ const validate = (values, props) => {
 
 let PhoneForm = (props) => {
   return (
-    <form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
         <Field
           component={PhoneInput}
@@ -51,7 +52,7 @@ let PhoneForm = (props) => {
       >
         {props.translate("mobile.button_add")}
       </EduIDButton>
-    </form>
+    </Form>
   );
 };
 
