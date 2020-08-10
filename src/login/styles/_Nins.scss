@@ -1,10 +1,10 @@
 //--- STEP 1. ADD NIN STYLES ---//
 // /*--- styles for nin form ---*/
-#nin-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+// #nin-form {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// }
 
 // #nin {
 //   display: flex;
@@ -116,9 +116,9 @@
       }
     }
   }
-  #nin-form {
-    flex-direction: column;
-  }
+  // #nins-form {
+  //   flex-direction: column;
+  // }
   #nin {
     margin-right: 0;
   }
