@@ -39,7 +39,7 @@ const validate = (values) => {
 class NinForm extends Component {
   render() {
     return (
-      <div key="2" id="nin-form-container">
+      // <div key="2" id="nin-form-container">
         <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
           <Field
             component={NinInput}
@@ -59,7 +59,7 @@ class NinForm extends Component {
             {this.props.translate("emails.button_add")}
           </PrimaryButton>
         </Form>
-      </div>
+      // </div>
     );
   }
 }
@@ -84,7 +84,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     addNin: function (e) {
       e.preventDefault();
-      const nin = e.target.closest("#nin-form-container").firstElementChild
+      const nin = e.target.closest("#nin-form")
         .firstElementChild.children[0].value;
       dispatch(actions.postNin(nin));
     },
