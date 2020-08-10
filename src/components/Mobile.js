@@ -2,8 +2,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-
-import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "components/ConfirmModal";
