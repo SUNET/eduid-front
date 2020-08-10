@@ -13,9 +13,8 @@
 #emailsview-form,
 #phonesview-form {
   flex-direction: row;
-  // align-items: baseline;
   & button {
-    margin-left: 1rem;
+    margin: 2rem 0  0 1rem; 
   }
 }
 
