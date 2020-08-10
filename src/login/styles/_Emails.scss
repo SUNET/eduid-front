@@ -62,7 +62,8 @@
 
 @media (max-width: 568px) {
   #emailsview-form,
-  #phonesview-form {
+  #phonesview-form,
+  #nins-form{
     flex-direction: column;
     align-items: unset;
     & button {
