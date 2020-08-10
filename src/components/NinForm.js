@@ -40,16 +40,18 @@ class NinForm extends Component {
   render() {
     return (
       // <div key="2" id="nin-form-container">
-        <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
-          <Field
-            component={NinInput}
-            componentClass="input"
-            type="text"
-            name="nin"
-            label={this.props.translate("nin_display.profile.main_title")}
-            placeholder={this.props.translate("nins.input_placeholder")}
-            helpBlock={this.props.translate("nins.input_help_text")}
-          />
+        <Form id="nins-form" role="form" onSubmit={this.props.addNin}>
+          <fieldset id="nin-form" className="tabpane">
+            <Field
+              component={NinInput}
+              componentClass="input"
+              type="text"
+              name="nin"
+              label={this.props.translate("nin_display.profile.main_title")}
+              placeholder={this.props.translate("nins.input_placeholder")}
+              helpBlock={this.props.translate("nins.input_help_text")}
+            />
+          </fieldset>
           <PrimaryButton
             id={""}
             disabled={!this.props.valid}
