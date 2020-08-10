@@ -39,29 +39,27 @@ const validate = (values) => {
 class NinForm extends Component {
   render() {
     return (
-      // <div key="2" id="nin-form-container">
-        <Form id="nins-form" role="form" onSubmit={this.props.addNin}>
-          <fieldset id="nin-form" className="tabpane">
-            <Field
-              component={NinInput}
-              componentClass="input"
-              type="text"
-              name="nin"
-              label={this.props.translate("nin_display.profile.main_title")}
-              placeholder={this.props.translate("nins.input_placeholder")}
-              helpBlock={this.props.translate("nins.input_help_text")}
-            />
-          </fieldset>
-          <PrimaryButton
-            id={""}
-            disabled={!this.props.valid}
-            onClick={this.props.addNin}
-            key="1"
-          >
-            {this.props.translate("emails.button_add")}
-          </PrimaryButton>
-        </Form>
-      // </div>
+      <Form id="nins-form" role="form" onSubmit={this.props.addNin}>
+        <fieldset id="nin-form" className="tabpane">
+          <Field
+            component={NinInput}
+            componentClass="input"
+            type="text"
+            name="nin"
+            label={this.props.translate("nin_display.profile.main_title")}
+            placeholder={this.props.translate("nins.input_placeholder")}
+            helpBlock={this.props.translate("nins.input_help_text")}
+          />
+        </fieldset>
+        <PrimaryButton
+          id={""}
+          disabled={!this.props.valid}
+          onClick={this.props.addNin}
+          key="1"
+        >
+          {this.props.translate("emails.button_add")}
+        </PrimaryButton>
+      </Form>
     );
   }
 }
