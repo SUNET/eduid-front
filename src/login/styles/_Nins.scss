@@ -6,24 +6,24 @@
   justify-content: space-between;
 }
 
-#nin {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  & input {
-    background-color: #ffffff;
-    font-family: "ProximaNova-Regular";
-    border: none;
-    color: #161616;
-    font-size: 2rem;
-    border-bottom: solid #161616 3px;
-    height: 3rem;
-    padding: 0.125rem 0.5rem;
-    &::placeholder {
-      font-size: 2rem;
-    }
-  }
-}
+// #nin {
+//   display: flex;
+//   flex-direction: column;
+//   flex: 1;
+//   & input {
+//     background-color: #ffffff;
+//     font-family: "ProximaNova-Regular";
+//     border: none;
+//     color: #161616;
+//     font-size: 2rem;
+//     border-bottom: solid #161616 3px;
+//     height: 3rem;
+//     padding: 0.125rem 0.5rem;
+//     &::placeholder {
+//       font-size: 2rem;
+//     }
+//   }
+// }
 
 //--- STEP 2. CONNECT NIN STYLES ---//
 
