@@ -6,7 +6,8 @@ import { ButtonGroup, Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
-import TextInput from "components/EduIDTextInput";
+// import TextInput from "components/EduIDTextInput";
+import NinInput from "../login/components/Inputs/CustomInput"
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 
 const validate = (values) => {
@@ -41,7 +42,7 @@ class NinForm extends Component {
       <div key="2" id="nin-form-container">
         <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
           <Field
-            component={TextInput}
+            component={NinInput}
             componentClass="input"
             type="text"
             name="nin"
