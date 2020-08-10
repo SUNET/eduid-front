@@ -131,7 +131,7 @@
   "finish.confirm-identity": "BEKRÄFTA IDENTITET",
   "finish.finish": "SLUTFÖR",
   "finish.got-it": "Klart",
-  "finish.registration-complete": "Registrering av {email} är klar",
+  "finish.registration-complete": "Registrering av ditt eduID är klar",
   "finish.registration-details": "Detta är dina inloggningsuppgifter för eduID.",
   "finish.sites-accept": "Ditt konto är nu klart att användas med webbplatser som accepterar",
   "finish.to-dashboard": "Fortsätt till din profilsida för att få åtkomst till webbplatser som kräver en bekräftad identitet.",
