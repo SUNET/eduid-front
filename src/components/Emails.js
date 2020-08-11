@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-import TextInput from "./EduIDTextInput";
+import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 import DataTable from "../login/components/DataTable/DataTable";
 import ConfirmModal from "./ConfirmModal";
@@ -31,7 +31,7 @@ let EmailForm = (props) => {
       <fieldset id="emails-form" className="tabpane">
         <Field
           label={props.translate("profile.email_display_title")}
-          component={TextInput}
+          component={CustomInput}
           componentClass="input"
           type="text"
           name="email"
