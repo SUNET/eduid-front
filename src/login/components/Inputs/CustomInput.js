@@ -94,10 +94,7 @@ const RenderInput = props => {
 const customInput = (props) => {
   const {
     input,
-    label,
-    name,
     meta,
-    helpBlock
   } = props;
 
   let valid = false,
