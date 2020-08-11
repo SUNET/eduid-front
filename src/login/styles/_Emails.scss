@@ -10,12 +10,18 @@
   margin-top: 1rem;
 }
 
-#emailsview-form,
 #phonesview-form {
   flex-direction: row;
   //align-items: baseline;
   & button {
     margin-left: 1rem;
+  }
+}
+
+#emailsview-form{
+  flex-direction: row;
+  & button {
+    margin: 1.6rem 0  0 1rem; 
   }
 }
 
