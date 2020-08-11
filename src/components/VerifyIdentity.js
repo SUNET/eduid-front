@@ -18,6 +18,9 @@ class VerifyIdentity extends Component {
       this.props.translate("lmp.initialize_proofing_help_text"),
       this.props.translate("eidas.initialize_proofing_help_text"),
     ];
+    let recoverIdentityTip = this.props.translate(
+      "verify-identity.verified_pw_reset_extra_security"
+    );
 
     // nin is not verified (add nin)
     let AddNumber = (props) => {
@@ -36,13 +39,10 @@ class VerifyIdentity extends Component {
       // nin is verified (nin added)
       pageHeading = props.translate("verify-identity.verified_main_title");
       pageText = props.translate("verify-identity.verified_page-description");
-      recoverIdentityTip = props.translate(
-        "verify-identity.verified_pw_reset_extra_security"
-      );
       return (
         <div key="0" className="intro">
           <h4>{pageHeading}</h4>
-          <p>{pageText}</p>
+          <p>{pageText}</p>    
         </div>
       );
     };
@@ -50,7 +50,9 @@ class VerifyIdentity extends Component {
     // top half of page: add nin/nin added
     let VerifyIdentity_Step1 = () => {
       if (this.props.verifiedNinStatus) {
-        return <NumberAdded {...this.props} />;
+        return (
+          <NumberAdded {...this.props} />
+        ) 
       } else {
         return <AddNumber {...this.props} />;
       }
@@ -58,7 +60,7 @@ class VerifyIdentity extends Component {
 
     // this is where the buttons are generated
     // this needs to be outside of <VerifyIdentity_Step2> for the second modal to render
-    if (this.props.is_configured) {
+    if (this.props.is_configured && !this.props.verifiedNinStatus) {
       //this is an object listing all the vetting components in another file (src/vetting-registry.js)
       const vettingOptionsObject = vettingRegistry(!this.props.valid_nin);
       // extract the keys from the vettingOptionsObject
@@ -102,6 +104,9 @@ class VerifyIdentity extends Component {
       <Fragment>
         <VerifyIdentity_Step1 />
         <AddNin {...this.props} />
+        { this.props.verifiedNinStatus && 
+          <p className="help-text">{recoverIdentityTip}</p>
+        }
         <VerifyIdentity_Step2 />
         {vettingButtons}
       </Fragment>
