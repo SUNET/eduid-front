@@ -30,6 +30,7 @@ let EmailForm = (props) => {
     <form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="emails-form" className="tabpane">
         <Field
+          label={props.translate("profile.email_display_title")}
           component={TextInput}
           componentClass="input"
           type="text"
