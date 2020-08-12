@@ -36,6 +36,7 @@ let PhoneForm = (props) => {
     <form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
         <Field
+          label={props.translate("profile.phone_display_title")}
           component={CustomInput}
           componentClass="input"
           type="text"
