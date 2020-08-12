@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-import TextInput from "components/EduIDTextInput";
+import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "components/EduIDButton";
 import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "components/ConfirmModal";
@@ -36,7 +36,7 @@ let PhoneForm = (props) => {
     <form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
         <Field
-          component={TextInput}
+          component={CustomInput}
           componentClass="input"
           type="text"
           name="number"
