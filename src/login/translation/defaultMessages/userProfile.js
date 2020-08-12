@@ -665,7 +665,7 @@ export const userData = {
   "nin_display.profile.main_title": (
     <FormattedMessage
       id="nin_display.profile.main_title"
-      defaultMessage={`id number`}
+      defaultMessage={`Id number`}
     />
   ),
 

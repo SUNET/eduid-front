@@ -191,7 +191,7 @@
   "mobile.mobile": "mobile",
   "mobile.resend_success": "New code sent to {email}",
   "nin needs to be formatted as 18|19|20yymmddxxxx": "National identity number needs to be in the form of yyyymmddxxxx",
-  "nin_display.profile.main_title": "id number",
+  "nin_display.profile.main_title": "Id number",
   "nin_display.profile.no_nin": "add id number",
   "nin_display.verify-identity_unverified_main_title": "1. Your added id number",
   "nin_display.verify-identity_verified_main_title": "National id number",
