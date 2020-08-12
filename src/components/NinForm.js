@@ -38,8 +38,9 @@ const validate = (values) => {
 class NinForm extends Component {
   render() {
     return (
-      <div key="2" id="nin-form-container">
-        <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
+      // <div key="2" id="nin-form-container">
+      <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
+        <fieldset id="nins-form" className="tabpane">
           <Field
             component={CustomInput}
             componentClass="input"
@@ -49,16 +50,17 @@ class NinForm extends Component {
             placeholder={this.props.translate("nins.input_placeholder")}
             helpBlock={this.props.translate("nins.input_help_text")}
           />
-          <PrimaryButton
-            id={""}
-            disabled={!this.props.valid}
-            onClick={this.props.addNin}
-            key="1"
-          >
-            {this.props.translate("emails.button_add")}
-          </PrimaryButton>
-        </Form>
-      </div>
+        </fieldset>
+        <PrimaryButton
+          id={""}
+          disabled={!this.props.valid}
+          onClick={this.props.addNin}
+          key="1"
+        >
+          {this.props.translate("emails.button_add")}
+        </PrimaryButton>
+      </Form>
+      // </div>
     );
   }
 }
