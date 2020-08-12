@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import Form from "reactstrap/lib/Form";
 
 import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "components/EduIDButton";
@@ -33,7 +34,7 @@ const validate = (values, props) => {
 
 let PhoneForm = (props) => {
   return (
-    <form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
         <Field
           label={props.translate("profile.phone_display_title")}
@@ -53,7 +54,7 @@ let PhoneForm = (props) => {
       >
         {props.translate("mobile.button_add")}
       </EduIDButton>
-    </form>
+    </Form>
   );
 };
 
