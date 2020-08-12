@@ -18,7 +18,8 @@
   }
 }
 
-#emailsview-form{
+#emailsview-form,
+#nin-form{
   flex-direction: row;
   & button {
     margin: 1.6rem 0  0 1rem; 
@@ -68,7 +69,8 @@
 
 @media (max-width: 568px) {
   #emailsview-form,
-  #phonesview-form {
+  #phonesview-form,
+  #nin-form {
     flex-direction: column;
     align-items: unset;
     & button {
