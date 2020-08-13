@@ -130,6 +130,7 @@ input:focus {
   flex-wrap: wrap;
   align-items: center;
   & label{
+    letter-spacing: 0;
     font-size: 1rem;
     margin-left: -2px;
   }
