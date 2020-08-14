@@ -5,6 +5,7 @@ import FormText from "reactstrap/lib/FormText";
 import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
 import i18n from "../../translation/InjectIntl_HOC_factory";
+import {reset} from 'redux-form';
 
 const RenderLabelAndHelpText = props => {
   const {
