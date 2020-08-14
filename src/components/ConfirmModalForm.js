@@ -10,7 +10,6 @@ import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-// import TextInput from "components/EduIDTextInput";
 import CustomInput from"../login/components/Inputs/CustomInput";
 import EduIDButton from "components/EduIDButton";
 import NotificationsContainer from "containers/Notifications";
