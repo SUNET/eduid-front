@@ -32,21 +32,19 @@ const validate = (values, props) => {
 class ConfirmModalForm extends Component {
   render() {
     return (
-      <div id="modal-form">
-        <Form id={this.props.inputName + "-form"} role="form">
-          <div id="confirmation-code-area">
-            <Field
-              component={CustomInput}
-              componentClass="input"
-              type="text"
-              label={this.props.resendLabel}
-              placeholder={this.props.placeholder}
-              id={this.props.inputName}
-              name={this.props.inputName}
-            />
-          </div>
-        </Form>
-      </div>
+      <Form id={this.props.inputName + "-form"} role="form">
+        <div id="confirmation-code-area">
+          <Field
+            component={CustomInput}
+            componentClass="input"
+            type="text"
+            label={this.props.resendLabel}
+            placeholder={this.props.placeholder}
+            id={this.props.inputName}
+            name={this.props.inputName}
+          />
+        </div>
+      </Form>
     );
   }
 }
