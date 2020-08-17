@@ -118,7 +118,7 @@ const customInput = (props) => {
 };
 
 customInput.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.any,
   meta: PropTypes.object,
   input: PropTypes.object,
   name: PropTypes.string,
