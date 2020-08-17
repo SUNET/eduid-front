@@ -787,7 +787,7 @@ export const userData = {
   "phones.input_help_text": (
     <FormattedMessage
       id="phones.input_help_text"
-      defaultMessage={"Phone number starting with 0 or +46"}
+      defaultMessage={"Phone number starting with 0 or +"}
     />
   ),
 
