@@ -23,26 +23,7 @@ input {
 
   width: 100%;
   padding: 1.25rem 0.5rem;
-  height: 2.25rem;
-}
-
-// styles for select (language input)
-select {
-  background-color: white;
-  font-family: "ProximaNova-Regular";
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #161616;
-  box-shadow: none;
-  border: none;
-  outline: 0;
-  width: 100%;
-  padding: 1.25rem 0.5rem;
-  height: 2.25rem;
-  &.form-control.is-valid:focus {
-    border: none;
-    box-shadow: 0 0 0 0.2rem $mid-gray;
-  }
+  height: 3rem;
 }
 
 //styles for personal data inputs

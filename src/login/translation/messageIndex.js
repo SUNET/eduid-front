@@ -107,7 +107,7 @@ export const unformattedMessages = defineMessages({
 
   "pd.display_name": {
     id: "pd.display_name",
-    defaultMessage: `Display Name`
+    defaultMessage: `Display name`
   },
 
   "pd.language": {

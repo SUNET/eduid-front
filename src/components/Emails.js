@@ -2,8 +2,9 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import Form from "reactstrap/lib/Form";
 
-import TextInput from "./EduIDTextInput";
+import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 import DataTable from "../login/components/DataTable/DataTable";
 import ConfirmModal from "./ConfirmModal";
@@ -27,10 +28,11 @@ const validate = (values) => {
 
 let EmailForm = (props) => {
   return (
-    <form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="emails-form" className="tabpane">
         <Field
-          component={TextInput}
+          label={props.translate("profile.email_display_title")}
+          component={CustomInput}
           componentClass="input"
           type="text"
           name="email"
@@ -46,7 +48,7 @@ let EmailForm = (props) => {
       >
         {props.translate("emails.button_add")}
       </EduIDButton>
-    </form>
+    </Form>
   );
 };
 

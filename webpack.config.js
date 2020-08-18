@@ -23,7 +23,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "build"),
-    publicPath: "http://html.eduid.docker/static/front-build/",
+    publicPath: "https://html.eduid.docker/static/front-build/",
     filename: "[name]-bundle.dev.js"
   },
   devtool: "source-map",
