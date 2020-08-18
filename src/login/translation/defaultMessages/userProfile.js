@@ -758,7 +758,7 @@ export const userData = {
     <FormattedMessage
       id="phone_format"
       defaultMessage={`Invalid telephone number. It must be a valid Swedish number, or written
-                            using international notation, starting with '+' and followed by 10-20 digits.`}
+                            using international notation, starting with '+' and followed by 6-20 digits.`}
     />
   ),
 

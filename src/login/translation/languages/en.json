@@ -257,7 +257,7 @@
   "phone.e164_format": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits.",
   "phone.swedish_mobile_format": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits.",
   "phone_duplicated": "Added number is duplicated",
-  "phone_format": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits.",
+  "phone_format": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 6-20 digits.",
   "phones.add_new": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of phone numbers.",
   "phones.button_add_more": "+ add more",
   "phones.cannot_remove_primary": "You cannot remove your primary phone number",
