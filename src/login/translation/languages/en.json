@@ -254,7 +254,7 @@
   "pd.surname": "Last name",
   "pdata.field_required": "This field is required",
   "pfilled.completion": "Completion",
-  "phone.e164_format": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits.",
+  "phone.e164_format": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 6-20 digits.",
   "phone.swedish_mobile_format": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits.",
   "phone_duplicated": "Added number is duplicated",
   "phone_format": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 6-20 digits.",

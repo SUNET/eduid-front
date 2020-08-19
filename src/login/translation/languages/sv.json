@@ -255,7 +255,7 @@
   "pd.surname": "Efternamn",
   "pdata.field_required": "Obligatoriskt",
   "pfilled.completion": "Profilstatus",
-  "phone.e164_format": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror.",
+  "phone.e164_format": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 6-20 siffror.",
   "phone.swedish_mobile_format": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror.",
   "phone_duplicated": "Telefonnummret är redan tillagt",
   "phone_format": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 6-20 siffror.",
