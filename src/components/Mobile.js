@@ -25,6 +25,7 @@ const validate = (values, props) => {
   if (phone.startsWith("0")) {
     phone = "+" + props.default_country_code + phone.substr(1);
   }
+  //Reason for 20 digit max length due to https://en.wikipedia.org/wiki/E.164 
   const pattern = /^\+[1-9]\d{6,20}$/;
   if (!pattern.test(phone)) {
     return { number: "phone.phone_format" };
