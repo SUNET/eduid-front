@@ -26,7 +26,7 @@ const validate = (values, props) => {
   if (phone.startsWith("0")) {
     phone = "+" + props.default_country_code + phone.substr(1);
   }
-  const pattern = /^\+[1-9]\d{10,20}$/;
+  const pattern = /^\+[1-9]\d{6,20}$/;
   if (!pattern.test(phone)) {
     return { number: "phone.phone_format" };
   }
