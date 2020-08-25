@@ -38,7 +38,6 @@ const validate = (values) => {
 class NinForm extends Component {
   render() {
     return (
-      // <div key="2" id="nin-form-container">
       <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
         <fieldset id="nins-form" className="tabpane">
           <Field
@@ -60,7 +59,6 @@ class NinForm extends Component {
           {this.props.translate("emails.button_add")}
         </PrimaryButton>
       </Form>
-      // </div>
     );
   }
 }
