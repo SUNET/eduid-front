@@ -33,6 +33,7 @@ let EmailForm = (props) => (
     <Field
       type="email"
       name="email"
+      label={props.translate("signup.registering-input")}
       componentClass="input"
       id="email-input"
       component={CustomInput}
@@ -72,7 +73,6 @@ class Email extends Component {
         </p>
         <p>{this.props.translate("register.paragraph")}</p>
 
-        <label>{this.props.translate("signup.registering-input")}</label>
         <EmailForm {...this.props} />
         <p className="text-link-container">
           <span>{this.props.translate("register.toLogin")}</span>
