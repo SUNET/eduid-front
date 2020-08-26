@@ -55,11 +55,12 @@ h3 {
   #register-form {
     flex-direction: column;
     align-items: unset;
+    & #register-button {
+      width: 100%;
+      margin-left: 0;
+    }
   }
-  #register-button {
-    width: 100%;
-    margin: 1rem 0 0 0;
-  }
+ 
   #resend-button {
     width: 100%;
   }
