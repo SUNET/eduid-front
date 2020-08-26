@@ -127,6 +127,6 @@ export const unformattedMessages = defineMessages({
 
   "phones.input_placeholder": {
     id: "phones.input_placeholder",
-    defaultMessage: `phone number`
+    defaultMessage: `Phone number`
   }
 });
