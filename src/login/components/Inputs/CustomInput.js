@@ -118,7 +118,10 @@ const customInput = (props) => {
 };
 
 customInput.propTypes = {
-  label: PropTypes.any,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   meta: PropTypes.object,
   input: PropTypes.object,
   name: PropTypes.string,
