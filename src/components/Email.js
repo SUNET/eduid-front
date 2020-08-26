@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import TextInput from "components/EduIDTextInput";
+import CustomInput from "../login/components/Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import {
   FormFeedback,
@@ -35,7 +35,7 @@ let EmailForm = (props) => (
       name="email"
       componentClass="input"
       id="email-input"
-      component={TextInput}
+      component={CustomInput}
       translate={props.translate}
       placeholder="example@email.com"
     />
