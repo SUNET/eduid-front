@@ -258,7 +258,7 @@
   "phone.e164_format": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror.",
   "phone.swedish_mobile_format": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror.",
   "phone_duplicated": "Telefonnummret är redan tillagt",
-  "phone_format": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror.",
+  "phone_format": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 6-20 siffror.",
   "phones.add_new": "Ett nytt telefonnummer kommer att ta emot en verifieringskod som kan användas genom att klicka Bekräfta i listan med nummer.",
   "phones.button_add_more": "+ lägg till fler",
   "phones.cannot_remove_primary": "Du kan inte ta bort ditt primära telefonnummer",
