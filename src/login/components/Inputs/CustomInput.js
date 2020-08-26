@@ -15,11 +15,11 @@ const RenderLabelAndHelpText = props => {
   } = props;
   return(
     <div className={"input-label-helptext-container"}>
-   
+      { label && 
         <Label for={name}>{label}
           { required && <span className="label-required">*</span> }
         </Label> 
-     
+      }
       { helpBlock && <span className={"help-block"}>{helpBlock}</span> }
     </div>
   )
