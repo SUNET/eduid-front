@@ -6,7 +6,7 @@ import { ButtonGroup, Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
-import TextInput from "components/EduIDTextInput";
+import CustomInput from "../login/components/Inputs/CustomInput";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 
 const validate = (values) => {
@@ -38,10 +38,10 @@ const validate = (values) => {
 class NinForm extends Component {
   render() {
     return (
-      <div key="2" id="nin-form-container">
-        <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
+      <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
+        <fieldset id="nins-form" className="tabpane">
           <Field
-            component={TextInput}
+            component={CustomInput}
             componentClass="input"
             type="text"
             name="nin"
@@ -49,16 +49,16 @@ class NinForm extends Component {
             placeholder={this.props.translate("nins.input_placeholder")}
             helpBlock={this.props.translate("nins.input_help_text")}
           />
-          <PrimaryButton
-            id={""}
-            disabled={!this.props.valid}
-            onClick={this.props.addNin}
-            key="1"
-          >
-            {this.props.translate("emails.button_add")}
-          </PrimaryButton>
-        </Form>
-      </div>
+        </fieldset>
+        <PrimaryButton
+          id={""}
+          disabled={!this.props.valid}
+          onClick={this.props.addNin}
+          key="1"
+        >
+          {this.props.translate("emails.button_add")}
+        </PrimaryButton>
+      </Form>
     );
   }
 }
@@ -83,7 +83,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     addNin: function (e) {
       e.preventDefault();
-      const nin = e.target.closest("#nin-form-container").firstElementChild
+      const nin = e.target.closest("#nin-form").firstElementChild
         .firstElementChild.children[0].value;
       dispatch(actions.postNin(nin));
     },

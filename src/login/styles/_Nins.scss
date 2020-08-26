@@ -1,34 +1,4 @@
 //--- STEP 1. ADD NIN STYLES ---//
-// /*--- styles for nin form ---*/
-#nin-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 1rem;
-  & button {
-    margin-top: 0.75rem;
-  }
-}
-
-#nin {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin-right: 1rem;
-  & input {
-    background-color: #ffffff;
-    font-family: "ProximaNova-Regular";
-    border: none;
-    color: #161616;
-    font-size: 2rem;
-    border-bottom: solid #161616 3px;
-    height: 3rem;
-    padding: 0.125rem 0.5rem;
-    &::placeholder {
-      font-size: 2rem;
-    }
-  }
-}
 
 //--- STEP 2. CONNECT NIN STYLES ---//
 
