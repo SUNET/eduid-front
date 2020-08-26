@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
+import Form from "reactstrap/lib/Form";
 import {
   Modal,
   ModalHeader,
