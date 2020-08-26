@@ -29,7 +29,7 @@ export const validate = (values) => {
 };
 
 let EmailForm = (props) => (
-  <Form id="register-form" onSubmit={props.handleEmail}>
+  <Form id="register-form" role="form" onSubmit={props.handleEmail}>
     <Field
       type="email"
       name="email"
