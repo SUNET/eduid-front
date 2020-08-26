@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import {
-  FormFeedback,
   Modal,
   ModalHeader,
   ModalBody,
@@ -29,7 +28,7 @@ export const validate = (values) => {
 };
 
 let EmailForm = (props) => (
-  <form id="register-form" onSubmit={props.handleEmail}>
+  <Form id="register-form" onSubmit={props.handleEmail}>
     <Field
       type="email"
       name="email"
@@ -48,8 +47,7 @@ let EmailForm = (props) => (
     >
       {props.translate("email.sign-up-email")}
     </EduIDButton>
-    <FormFeedback>{props.touched && props.translate(error)}</FormFeedback>
-  </form>
+  </Form>
 );
 
 EmailForm = reduxForm({
