@@ -8,7 +8,8 @@ import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 class DataTableRow extends Component {
   render() {
     let data = this.props.data;
-    // console.log("this is data:", data);
+    console.log("this is data in TableRow:", data);
+
     let row = [];
 
     if (data) {
@@ -57,10 +58,10 @@ class DataTableRow extends Component {
 }
 
 DataTableRow.propTypes = {
-  data: PropTypes.array.isRequired,
-  handleStartConfirmation: PropTypes.func.isRequired,
-  handleMakePrimary: PropTypes.func.isRequired,
-  handleRemove: PropTypes.func.isRequired
+  data: PropTypes.any,
+  handleStartConfirmation: PropTypes.func,
+  handleMakePrimary: PropTypes.func,
+  handleRemove: PropTypes.func,
 };
 
 export default i18n(DataTableRow);
