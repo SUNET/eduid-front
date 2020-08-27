@@ -6,7 +6,14 @@
   justify-content: center;
   width: calc(100% - 2rem);
   margin: 0 1rem;
+  &  #modal-form{
+    & form{
+      margin-top: 0;
+    }
+  }
 }
+
+
 
 h5.modal-title {
   font-family: "Akkurat";
