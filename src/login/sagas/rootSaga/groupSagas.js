@@ -6,7 +6,7 @@ import { requestGroupsAllData } from "../getGroupsAllData";
 // console.log("this is requestGroupsData in groupsRootSaga", requestGroupsData);
 
 const groupsSagas = [
-  takeLatest(configActions.GET_INITIAL_USERDATA, requestGroupsData),
+  // takeLatest(configActions.GET_INITIAL_USERDATA, requestGroupsData),
   takeLatest(configActions.GET_INITIAL_USERDATA, requestGroupsAllData),
 ];
 
