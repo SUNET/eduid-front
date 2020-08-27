@@ -18,11 +18,11 @@ class ConfirmModal extends Component {
     let resendMarkup = "";
     if (this.props.with_resend_link) {
       resendMarkup = (
-        <div>
+        <>
           <a href="#" onClick={this.props.handleResend} className="resend-code">
             {this.props.resendText}
           </a>
-        </div>
+        </>
       );
     }
 
