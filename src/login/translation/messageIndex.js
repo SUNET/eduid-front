@@ -45,7 +45,11 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Phone confirmation code`,
     description: "Placeholder for phone text input"
   },
-
+  "security.placeholder": {
+    id: "security.confirm_security_placeholder",
+    defaultMessage: `Security key`,
+    description: "Placeholder for security key text input"
+  },
   "register.toLogin": {
     id: "register.toLogin",
     defaultMessage: `If you already have eduID you can log in`,

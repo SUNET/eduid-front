@@ -14,6 +14,11 @@
     "defaultMessage": "Phone confirmation code"
   },
   {
+    "id": "security.confirm_security_placeholder",
+    "description": "Placeholder for security key text input",
+    "defaultMessage": "Security key"
+  },
+  {
     "id": "register.toLogin",
     "description": "Placeholder for phone text input",
     "defaultMessage": "If you already have eduID you can log in"
