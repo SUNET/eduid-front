@@ -12,6 +12,7 @@ const validate = (values, props) => {
   if (!code) {
     errors[inputName] = "required";
   }
+  // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   return errors;
 };
 
