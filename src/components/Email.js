@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import TextInput from "components/EduIDTextInput";
+import CustomInput from "../login/components/Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
+import Form from "reactstrap/lib/Form";
 import {
-  FormFeedback,
   Modal,
   ModalHeader,
   ModalBody,
@@ -29,13 +29,14 @@ export const validate = (values) => {
 };
 
 let EmailForm = (props) => (
-  <form id="register-form" onSubmit={props.handleEmail}>
+  <Form id="register-form" role="form" onSubmit={props.handleEmail}>
     <Field
       type="email"
       name="email"
+      label={props.translate("signup.registering-input")}
       componentClass="input"
       id="email-input"
-      component={TextInput}
+      component={CustomInput}
       translate={props.translate}
       placeholder="example@email.com"
     />
@@ -47,8 +48,7 @@ let EmailForm = (props) => (
     >
       {props.translate("email.sign-up-email")}
     </EduIDButton>
-    <FormFeedback>{props.touched && props.translate(error)}</FormFeedback>
-  </form>
+  </Form>
 );
 
 EmailForm = reduxForm({
@@ -72,7 +72,6 @@ class Email extends Component {
         </p>
         <p>{this.props.translate("register.paragraph")}</p>
 
-        <label>{this.props.translate("signup.registering-input")}</label>
         <EmailForm {...this.props} />
         <p className="text-link-container">
           <span>{this.props.translate("register.toLogin")}</span>

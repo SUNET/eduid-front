@@ -409,7 +409,7 @@
   },
   {
     "id": "phone_format",
-    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 10-20 digits."
+    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written\n                            using international notation, starting with '+' and followed by 6-20 digits."
   },
   {
     "id": "still-valid-code",
@@ -1493,6 +1493,6 @@
   },
   {
     "id": "phones.input_placeholder",
-    "defaultMessage": "phone number"
+    "defaultMessage": "Phone number"
   }
 ]
