@@ -14,6 +14,11 @@ const validate = (values, props) => {
   }
   // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   const emailPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
+  if(inputName.includes("email")) {
+    if (!emailPattern.test(values.emailConfirmDialogControl)){
+      errors[inputName] = "wrong pattern";
+    }
+  }
   return errors;
 };
 
