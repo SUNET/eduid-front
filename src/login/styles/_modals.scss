@@ -163,14 +163,11 @@ p.modal-text {
       & button.btn.settings-button {
         margin: 0 0 1rem 0;
       }
-      & #modal-form form {
-        margin-top: 0;
-        & .form-control,
-        & input {
+      & .form-control,
+      & input {
+        font-size: 1.25rem;
+        &::placeholder {
           font-size: 1.25rem;
-          &::placeholder {
-            font-size: 1.25rem;
-          }
         }
       }
       & p {
