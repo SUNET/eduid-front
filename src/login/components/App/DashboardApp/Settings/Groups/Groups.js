@@ -20,7 +20,7 @@ class Groups extends Component {
               Create groups with other eduID users to allow them access to
               third-party services using eduID for login.
             </p>
-            <DataTable data={this.props.data} />
+            {/* <DataTable data={this.props.data} /> */}
           </div>
         </div>
       );
