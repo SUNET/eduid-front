@@ -187,7 +187,7 @@
   "mfa.two-factor-authn": "Tvåfaktorsautentisering",
   "mobile.button_add": "Lägg till",
   "mobile.confirm_mobile_placeholder": "Bekräftelsekod",
-  "security.confirm_security_placeholder": "Beskrivning av säkerhetsnyckel",
+  "security.confirm_security_placeholder": "Beskriv din säkerhetsnyckel",
   "mobile.confirm_title": "Skriv in koden som skickats till {phone} här",
   "mobile.mobile": "Telefon",
   "mobile.resend_success": "Ny bekräftelsekod skickad till {email}",
