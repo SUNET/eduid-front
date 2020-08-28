@@ -47,7 +47,7 @@ export const unformattedMessages = defineMessages({
   },
   "security.placeholder": {
     id: "security.confirm_security_placeholder",
-    defaultMessage: `Security key`,
+    defaultMessage: `Describe your security key`,
     description: "Placeholder for security key text input"
   },
   "register.toLogin": {

@@ -1440,7 +1440,7 @@
   {
     "id": "security.confirm_security_placeholder",
     "description": "Placeholder for security key text input",
-    "defaultMessage": "Security key"
+    "defaultMessage": "Describe your security key"
   },
   {
     "id": "chpass.help-text-newpass",

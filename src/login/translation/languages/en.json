@@ -187,7 +187,7 @@
   "mfa.two-factor-authn": "Two-factor authentication",
   "mobile.button_add": "Add",
   "mobile.confirm_mobile_placeholder": "Phone confirmation code",
-  "security.confirm_security_placeholder": "Security key",
+  "security.confirm_security_placeholder": "Describe your security key",
   "mobile.confirm_title": "Enter the code sent to {phone} here",
   "mobile.mobile": "mobile",
   "mobile.resend_success": "New code sent to {email}",
