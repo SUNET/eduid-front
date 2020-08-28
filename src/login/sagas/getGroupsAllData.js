@@ -1,17 +1,14 @@
-// import { push } from "react-router-redux";
-import { call } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import { getData } from "./getData";
-// import { checkStatus, getRequest } from "../../../../../../sagas/common";
+import * as actions from "../redux/actions/getAllGroupsData_actions";
 
 export function* requestGroupsAllData() {
   const url = GROUP_MGMT_URL + "/all-data";
   try {
     console.log("this is url", url);
     const allGroupReponse = yield call(getData, url);
-    console.log("This should be allGroupReponse:", allGroupReponse);
-    // yield put(groupDataReponse);
+    yield put(allGroupReponse);
   } catch (error) {
-    console.log("groups request errored", error.message);
-    // yield put(actions.actionFail(error.toString()));
+    yield put(actions.getAllGroupsDataFail(error.toString()));
   }
 }
