@@ -14,6 +14,11 @@
     "defaultMessage": "Email confirmation code must be 32 charaters long"
   },
   {
+    "id": "mobile.confirm_code_wrong_length",
+    "description": "Error message for wrong length",
+    "defaultMessage": "Phone confirmation code must consists of 10-12 characters"
+  },
+  {
     "id": "mobile.confirm_mobile_placeholder",
     "description": "Placeholder for phone text input",
     "defaultMessage": "Phone confirmation code"

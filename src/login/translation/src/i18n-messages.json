@@ -1443,6 +1443,11 @@
     "defaultMessage": "Phone confirmation code"
   },
   {
+    "id": "mobile.confirm_code_wrong_length",
+    "description": "Error message for wrong length",
+    "defaultMessage": "Phone confirmation code must consists of 10-12 characters"
+  },
+  {
     "id": "security.confirm_security_placeholder",
     "description": "Placeholder for security key text input",
     "defaultMessage": "Security key"

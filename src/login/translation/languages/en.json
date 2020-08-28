@@ -189,6 +189,7 @@
   "mfa.two-factor-authn": "Two-factor authentication",
   "mobile.button_add": "Add",
   "mobile.confirm_mobile_placeholder": "Phone confirmation code",
+  "mobile.confirm_code_wrong_length": "Phone confirmation code must consists of 10-12 characters",
   "security.confirm_security_placeholder": "Security key",
   "mobile.confirm_title": "Enter the code sent to {phone} here",
   "mobile.mobile": "mobile",

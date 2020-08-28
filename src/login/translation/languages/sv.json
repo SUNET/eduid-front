@@ -108,6 +108,7 @@
   "emails.code_invalid_or_expired": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod",
   "emails.confirm_email_placeholder": "Bekräftelsekod",
   "emails.confirm_code_wrong_length": "Bekräftelsekod måste vara 32 tecken",
+  
   "emails.confirm_title": "Klicka på länken eller skriv in koden som skickats till {email} här",
   "emails.duplicated": "E-postadressen är redan tagen. Var god använd en annan.",
   "emails.email": "E-postadress",
@@ -189,6 +190,7 @@
   "mfa.two-factor-authn": "Tvåfaktorsautentisering",
   "mobile.button_add": "Lägg till",
   "mobile.confirm_mobile_placeholder": "Bekräftelsekod",
+  "mobile.confirm_code_wrong_length": "Bekräftelsekod måste innehålla 10-12 tecken",
   "security.confirm_security_placeholder": "Säkerhetsnyckel",
   "mobile.confirm_title": "Skriv in koden som skickats till {phone} här",
   "mobile.mobile": "Telefon",

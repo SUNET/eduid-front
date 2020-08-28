@@ -7,6 +7,7 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 
 const validate = (values, props) => {
   let inputName = props.inputName;
+  console.log('[inputName]', inputName);
   const errors = {};
   const code = values[inputName];
   if (!code) {
@@ -25,7 +26,7 @@ const validate = (values, props) => {
   const phonePattern = /^[A-Za-z0-9]{10,12}$/;
   if(inputName.includes("phone")) {
     if (!phonePattern.test(values.phoneConfirmDialogControl)){
-      errors[inputName] = "phone.confirm_code_wrong_length";
+      errors[inputName] = "mobile.confirm_code_wrong_length";
     }
   }
   return errors;
