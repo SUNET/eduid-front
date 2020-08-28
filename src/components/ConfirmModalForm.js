@@ -22,6 +22,7 @@ const validate = (values, props) => {
       errors[inputName] = "emails.confirm_code_wrong_length";
     }
   }
+  const phonePattern = /^[A-Za-z0-9]{10,12}$/;
   return errors;
 };
 
