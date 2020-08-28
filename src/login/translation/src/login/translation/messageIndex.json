@@ -29,6 +29,11 @@
     "defaultMessage": "Security key"
   },
   {
+    "id": "security.confirm_security_length",
+    "description": "Error message for max length",
+    "defaultMessage": "The max length of 50 characters is reached"
+  },
+  {
     "id": "register.toLogin",
     "description": "Placeholder for phone text input",
     "defaultMessage": "If you already have eduID you can log in"

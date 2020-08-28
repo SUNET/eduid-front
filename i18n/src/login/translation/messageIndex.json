@@ -29,6 +29,11 @@
     "defaultMessage": "Security key"
   },
   {
+    "id": "security.confirm_security_length",
+    "description": "Error message for max length",
+    "defaultMessage": "The max length of 50 characters is reached"
+  },
+  {
     "id": "chpass.help-text-newpass",
     "description": "help text for custom password",
     "defaultMessage": "<label>Tip: Choose a strong password</label>\n            <ul id=\"password-custom-help\">\n\t            <li>Use upper- and lowercase characters, but not at the beginning or end</li>\n\t            <li>Add digits somewhere, but not at the beginning or end</li>\n                <li>Add special characters, such as &#64; &#36; &#92; &#43; &#95; &#37;</li>\n\t            <li>Spaces are ignored</li>\n            </ul>"

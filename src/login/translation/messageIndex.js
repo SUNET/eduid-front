@@ -60,6 +60,11 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Security key`,
     description: "Placeholder for security key text input"
   },
+  "security.confirm_security_length": {
+    id: "security.confirm_security_length",
+    defaultMessage: `The max length of 50 characters is reached`,
+    description: "Error message for max length"
+  },
   "register.toLogin": {
     id: "register.toLogin",
     defaultMessage: `If you already have eduID you can log in`,

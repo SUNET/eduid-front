@@ -29,6 +29,12 @@ const validate = (values, props) => {
       errors[inputName] = "mobile.confirm_code_wrong_length";
     }
   }
+  const securityKeyPattern = /^.{1,50}$/;
+  if(inputName.includes("describeWebauthnToken")) {
+    if (!securityKeyPattern.test(values.describeWebauthnTokenDialogControl)){
+      errors[inputName] = "security.confirm_security_length";
+    }
+  }
   return errors;
 };
 
