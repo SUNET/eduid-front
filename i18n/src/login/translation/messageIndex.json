@@ -9,6 +9,11 @@
     "defaultMessage": "Email confirmation code"
   },
   {
+    "id": "emails.invalid_code",
+    "defaultMessage": "Invalid confirmation code",
+    "description": "error text for invalid confirmation code"
+  },
+  {
     "id": "emails.confirm_code_wrong_length",
     "description": "Error message for wrong length",
     "defaultMessage": "Email confirmation code must be 36 characters long"
@@ -47,11 +52,6 @@
     "id": "cm.resend_code",
     "description": "Lost code problem solution",
     "defaultMessage": "Send a new confirmation code"
-  },
-  {
-    "id": "cm.invalid_code",
-    "defaultMessage": "Invalid confirmation code",
-    "description": "error text for invalid confirmation code"
   },
   {
     "id": "letter.lost_code",

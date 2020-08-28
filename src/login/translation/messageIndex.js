@@ -40,6 +40,11 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Email confirmation code`,
     description: "Placeholder for email text input"
   },
+  "emails.invalid_code": {
+    id: "emails.invalid_code",
+    defaultMessage: `Invalid confirmation code`,
+    description: "error text for invalid confirmation code"
+  },
   "emails.confirm_code_wrong_length": {
     id: "emails.confirm_code_wrong_length",
     defaultMessage: `Email confirmation code must be 36 characters long`,
@@ -97,11 +102,6 @@ export const unformattedMessages = defineMessages({
     id: "cm.resend_code",
     defaultMessage: `Send a new confirmation code`,
     description: "Lost code problem solution"
-  },
-  "cm.invalid_code": {
-    id: "cm.invalid_code",
-    defaultMessage: `Invalid confirmation code`,
-    description: "error text for invalid confirmation code"
   },
   "letter.lost_code": {
     id: "letter.lost_code",
