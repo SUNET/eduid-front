@@ -1435,7 +1435,7 @@
   {
     "id": "emails.confirm_code_wrong_length",
     "description": "Error message for wrong length",
-    "defaultMessage": "Email confirmation code must be 32 charaters long"
+    "defaultMessage": "Email confirmation code must be 32 characters long"
   },
   {
     "id": "mobile.confirm_mobile_placeholder",
