@@ -7,7 +7,6 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 
 const validate = (values, props) => {
   let inputName = props.inputName;
-  console.log('[inputName]', inputName);
   const errors = {};
   const code = values[inputName];
   if (!code) {
