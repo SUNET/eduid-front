@@ -13,6 +13,10 @@ const validate = (values, props) => {
   if (!code) {
     errors[inputName] = "required";
   }
+  const spacePattern = /^\s+$/;
+  if(spacePattern.test(values[inputName])){
+    errors[inputName] = "required";
+  }
   // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   const emailPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
   if(inputName.includes("email")) {
