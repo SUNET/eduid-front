@@ -107,7 +107,7 @@
   "emails.code_invalid": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod",
   "emails.code_invalid_or_expired": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod",
   "emails.confirm_email_placeholder": "Bekräftelsekod",
-  "emails.confirm_code_wrong_length": "Bekräftelsekod måste vara 32 tecken",
+  "emails.confirm_code_wrong_length": "Bekräftelsekod måste vara 36 tecken",
   
   "emails.confirm_title": "Klicka på länken eller skriv in koden som skickats till {email} här",
   "emails.duplicated": "E-postadressen är redan tagen. Var god använd en annan.",

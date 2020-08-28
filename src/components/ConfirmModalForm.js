@@ -21,7 +21,7 @@ const validate = (values, props) => {
   const emailPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
   if(inputName.includes("email")) {
     if (!emailPattern.test(values.emailConfirmDialogControl)){
-      errors[inputName] = "cm.invalid_code";
+      errors[inputName] = "emails.invalid_code";
     }
     if (values.length !== 36){
       errors[inputName] = "emails.confirm_code_wrong_length";
