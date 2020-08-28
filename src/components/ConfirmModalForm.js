@@ -23,6 +23,11 @@ const validate = (values, props) => {
     }
   }
   const phonePattern = /^[A-Za-z0-9]{10,12}$/;
+  if(inputName.includes("phone")) {
+    if (!phonePattern.test(values.phoneConfirmDialogControl)){
+      errors[inputName] = "phone.confirm_code_wrong_length";
+    }
+  }
   return errors;
 };
 
