@@ -39,6 +39,7 @@ class Settings extends Component {
           path="/profile/settings/personaldata"
           component={MobileContainer}
         />
+        <Route path="/profile/settings/personaldata" component={Groups} />
         <Route
           path="/profile/settings/personaldata"
           component={ChangePasswordDisplay}
@@ -47,7 +48,6 @@ class Settings extends Component {
           path="/profile/settings/personaldata"
           component={DeleteAccount}
         />
-        <Route path="/profile/settings/personaldata" component={Groups} />
         <Route
           path="/profile/settings/advanced-settings"
           component={SecurityContainer}
