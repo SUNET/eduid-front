@@ -190,7 +190,7 @@
   "mobile.button_add": "Add",
   "mobile.confirm_mobile_placeholder": "Phone confirmation code",
   "mobile.confirm_code_wrong_length": "Phone confirmation code must consists of 10-12 characters",
-  "security.confirm_security_placeholder": "Security key",
+  "security.confirm_security_placeholder": "Describe your security key",
   "security.confirm_security_length": "The max length of 50 characters is reached",
   "mobile.confirm_title": "Enter the code sent to {phone} here",
   "mobile.mobile": "mobile",
