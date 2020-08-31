@@ -22,6 +22,14 @@ class Groups extends Component {
     const cookiePattern = "";
     const showComponent = checkForCookie(cookieName, cookiePattern);
 
+    const RenderWizard = () => {
+      return (
+        <div className={"wizard"}>
+          {this.state.wizardCreateGroup && <p>Create you first group wizard</p>}
+        </div>
+      );
+    };
+
     if (showComponent) {
       // // just mock handling data here to render something from the api
       // let mockData = [];
@@ -40,7 +48,9 @@ class Groups extends Component {
               third-party services using eduID for login.
             </p>
             {/* {mockData} */}
-            <div>This will be the DataPanel component</div>
+            <div>
+              <p>This will be the DataPanel component</p> <RenderWizard />
+            </div>
             {/* <DataTable data={this.props.data} /> */}
           </div>
         </article>
