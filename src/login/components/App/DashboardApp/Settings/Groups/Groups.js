@@ -30,6 +30,16 @@ class Groups extends Component {
       );
     };
 
+    const RenderCreateButton = (props) => {
+      return (
+        <a href="#">
+          {!this.state.wizardCreateGroup && (
+            <button className={"create-group"}>Create button</button>
+          )}
+        </a>
+      );
+    };
+
     if (showComponent) {
       // // just mock handling data here to render something from the api
       // let mockData = [];
@@ -42,14 +52,18 @@ class Groups extends Component {
       return (
         <article>
           <div className="intro">
-            <h4>Groups</h4>
+            <div>
+              <h4>Groups</h4>
+              <RenderCreateButton />
+            </div>
             <p>
               Create groups with other eduID users to allow them access to
               third-party services using eduID for login.
             </p>
             {/* {mockData} */}
             <div>
-              <p>This will be the DataPanel component</p> <RenderWizard />
+              <p>This will be the DataPanel component</p>
+              <RenderWizard />
             </div>
             {/* <DataTable data={this.props.data} /> */}
           </div>
