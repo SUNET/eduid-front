@@ -5,13 +5,18 @@ import checkForCookie from "../../../../../app_utils/checkForCookie";
 import DataTable from "../../../../DataTable/DataTable";
 
 class Groups extends Component {
+  // this component should:
+  // 1. take in text to fill .intro h4 and .intro p (hardcoded at the moment)
+  // 2. be able to handle logic of create group button:
+  // - if wizard: hide button
+  // - if no wizard: show button
+
   render() {
     const cookieName = "show-groups";
     const cookiePattern = "";
     const showComponent = checkForCookie(cookieName, cookiePattern);
 
     if (showComponent) {
-
       // // just mock handling data here to render something from the api
       // let mockData = [];
       // let mockArray = Object.keys(this.props.data);
@@ -20,7 +25,6 @@ class Groups extends Component {
       //   return <p key={i}>{thing}</p>;
       // });
 
-      
       return (
         <article>
           <div className="intro">
