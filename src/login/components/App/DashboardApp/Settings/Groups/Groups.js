@@ -11,6 +11,12 @@ class Groups extends Component {
   // - if wizard: hide button
   // - if no wizard: show button
 
+  constructor(props) {
+    super(props);
+    // will start as true and permanently be set to false when wizard is completed
+    this.state = { wizardCreateGroup: true };
+  }
+
   render() {
     const cookieName = "show-groups";
     const cookiePattern = "";
