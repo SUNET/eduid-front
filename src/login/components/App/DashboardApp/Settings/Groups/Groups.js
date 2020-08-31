@@ -12,13 +12,13 @@ class Groups extends Component {
 
     if (showComponent) {
 
-      // just mock handling data here to render something from the api
-      let mockData = [];
-      let mockArray = Object.keys(this.props.data);
-      mockData = mockArray.map((thing, i) => {
-        console.log("these are thing:", thing);
-        return <p key={i}>{thing}</p>;
-      });
+      // // just mock handling data here to render something from the api
+      // let mockData = [];
+      // let mockArray = Object.keys(this.props.data);
+      // mockData = mockArray.map((thing, i) => {
+      //   console.log("these are thing:", thing);
+      //   return <p key={i}>{thing}</p>;
+      // });
 
       
       return (
@@ -29,7 +29,7 @@ class Groups extends Component {
               Create groups with other eduID users to allow them access to
               third-party services using eduID for login.
             </p>
-            {mockData}
+            {/* {mockData} */}
             <div>This will be the DataPanel component</div>
             {/* <DataTable data={this.props.data} /> */}
           </div>
