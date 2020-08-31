@@ -14,7 +14,7 @@ class Groups extends Component {
   constructor(props) {
     super(props);
     // will start as true and permanently be set to false when wizard is completed
-    this.state = { wizardCreateGroup: true };
+    this.state = { wizardCreateGroup: true};
   }
 
   render() {
@@ -22,10 +22,10 @@ class Groups extends Component {
     const cookiePattern = "";
     const showComponent = checkForCookie(cookieName, cookiePattern);
 
-    const RenderWizard = () => {
+    const RenderWizard = (props) => {
       return (
         <div className={"wizard"}>
-          {this.state.wizardCreateGroup && <p>Create you first group wizard</p>}
+          {props.show && <p>Create you first group wizard</p>}
         </div>
       );
     };
@@ -33,7 +33,7 @@ class Groups extends Component {
     const RenderCreateButton = (props) => {
       return (
         <a href="#">
-          {!this.state.wizardCreateGroup && (
+          {!props.show && (
             <button className={"create-group"}>Create button</button>
           )}
         </a>
@@ -54,7 +54,7 @@ class Groups extends Component {
           <div className="intro">
             <div>
               <h4>Groups</h4>
-              <RenderCreateButton />
+              <RenderCreateButton show={this.state.wizardCreateGroup} />
             </div>
             <p>
               Create groups with other eduID users to allow them access to
@@ -63,7 +63,7 @@ class Groups extends Component {
             {/* {mockData} */}
             <div>
               <p>This will be the DataPanel component</p>
-              <RenderWizard />
+              <RenderWizard show={this.state.wizardCreateGroup} />
             </div>
             {/* <DataTable data={this.props.data} /> */}
           </div>
