@@ -22,7 +22,7 @@ class Groups extends Component {
 
       
       return (
-        <article className="namesview-form-container">
+        <article>
           <div className="intro">
             <h4>Groups</h4>
             <p>

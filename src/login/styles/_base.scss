@@ -35,6 +35,11 @@ body {
   background-color: #f4f4f4;
 }
 
+// same styling as .phoneview-form-container, #delete-account-container,#change-password-container in Email.js = replaced thes ewith with <article>
+article {
+  margin-top: 2rem;
+}
+
 .vertical-content-margin {
   padding: 0;
   width: 58%;
