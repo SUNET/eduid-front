@@ -22,7 +22,7 @@ class Groups extends Component {
 
       
       return (
-        <div className="namesview-form-container">
+        <article className="namesview-form-container">
           <div className="intro">
             <h4>Groups</h4>
             <p>
@@ -32,7 +32,7 @@ class Groups extends Component {
             {mockData}
             {/* <DataTable data={this.props.data} /> */}
           </div>
-        </div>
+        </article>
       );
     }
     return <div />;
