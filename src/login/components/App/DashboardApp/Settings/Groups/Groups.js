@@ -30,6 +30,7 @@ class Groups extends Component {
               third-party services using eduID for login.
             </p>
             {mockData}
+            <div>This will be the DataPanel component</div>
             {/* <DataTable data={this.props.data} /> */}
           </div>
         </article>
