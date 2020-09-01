@@ -106,7 +106,7 @@
   "emails.code_invalid": "The confirmation code is invalid, please try again or request a new code",
   "emails.code_invalid_or_expired": "The confirmation code is invalid or has expired, please try again or request a new code",
   "emails.confirm_email_placeholder": "Email confirmation code",
-  "emails.invalid_code": "Invalid confirmation code, only letters and numbers allowed",
+  "emails.invalid_code": "Invalid confirmation code, only 32 characters and 4 hyphens allowed",
   "emails.confirm_code_wrong_length": "This code is too long, the code to confirm your email addresses must be 36 characters long",
   "emails.confirm_title": "Click the link or enter the code sent to {email} here",
   "emails.duplicated": "That email address is already in use, please choose another",

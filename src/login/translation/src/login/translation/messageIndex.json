@@ -11,7 +11,7 @@
   {
     "id": "emails.invalid_code",
     "description": "error text for invalid confirmation code",
-    "defaultMessage": "Invalid confirmation code, only letters and numbers allowed"
+    "defaultMessage": "Invalid confirmation code, only 32 characters and 4 hyphens allowed"
   },
   {
     "id": "emails.confirm_code_wrong_length",
