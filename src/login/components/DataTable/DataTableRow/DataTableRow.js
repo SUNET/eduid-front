@@ -8,7 +8,7 @@ import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 class DataTableRow extends Component {
   render() {
     let data = this.props.data;
-    console.log("this is data in TableRow:", data);
+    // console.log("this is data in TableRow:", data);
 
     let row = [];
 
