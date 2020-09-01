@@ -21,11 +21,20 @@ class WizardPanel extends Component {
   //     state = {firstGroup: false} 
   //     -> keeping this as local state if possible
 
-  
   render() {
     return (
-      <div className="wizard">
+      <div className="create-group-wizard">
         <p>Create your first group</p>
+        <a href="#">
+          <button
+            className={"create-group"}
+            onClick={() => {
+              this.props.renderCreateButton();
+            }}
+          >
+            tell parent state.firstGroup is false
+          </button>
+        </a>
       </div>
     );
   }
