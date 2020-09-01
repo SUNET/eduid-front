@@ -42,7 +42,7 @@ export const unformattedMessages = defineMessages({
   },
   "emails.invalid_code": {
     id: "emails.invalid_code",
-    defaultMessage: `Invalid confirmation code`,
+    defaultMessage: `Invalid confirmation code, only letters and numbers allowed`,
     description: "error text for invalid confirmation code"
   },
   "emails.confirm_code_wrong_length": {

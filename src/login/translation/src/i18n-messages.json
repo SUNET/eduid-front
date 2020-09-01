@@ -1434,7 +1434,7 @@
   },
   {
     "id": "emails.invalid_code",
-    "defaultMessage": "Invalid confirmation code",
+    "defaultMessage": "Invalid confirmation code, only letters and numbers allowed",
     "description": "error text for invalid confirmation code"
   },
   {
