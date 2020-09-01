@@ -11,6 +11,15 @@ const RenderWizard = (props) => {
   );
 };
 
+const RenderDataPanel = () => {
+  // this is just a placeholder function for the actual </DataPanel> component that will be here (problably a class component)
+  return (
+    <div className={"data-panel"}>
+      <p>This will be the DataPanel component</p>
+    </div>
+  );
+};
+
 const RenderCreateButton = (props) => {
   return (
     <a href="#">
@@ -52,10 +61,8 @@ class Groups extends Component {
               Create groups with other eduID users to allow them access to
               third-party services using eduID for login.
             </p>
-            <div>
-              <p>This will be the DataPanel component</p>
-              <RenderWizard show={this.state.wizardCreateGroup} />
-            </div>
+            <RenderDataPanel />
+            <RenderWizard show={this.state.wizardCreateGroup} />
           </div>
         </article>
       );
