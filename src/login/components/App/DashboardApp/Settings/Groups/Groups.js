@@ -73,7 +73,13 @@ class Groups extends Component {
       return (
         <article>
           <div className="intro">
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "baseline",
+              }}
+            >
               <h4>Groups</h4>
               <RenderCreateButton firstGroup={this.state.firstGroup} />
             </div>
