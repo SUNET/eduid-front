@@ -52,7 +52,7 @@ export const unformattedMessages = defineMessages({
   },
   "mobile.confirm_code_wrong_length": {
     id: "mobile.confirm_code_wrong_length",
-    defaultMessage: `Phone confirmation code must consists of 10-12 characters`,
+    defaultMessage: `Code must be 10-12 characters long, only letters and numbers allowed`,
     description: "Error message for wrong length",
   },
   "mobile.placeholder": {
