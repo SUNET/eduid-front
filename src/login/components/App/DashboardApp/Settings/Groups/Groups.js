@@ -14,10 +14,11 @@ const RenderDataPanel = () => {
 };
 
 const RenderCreateButton = (props) => {
+  // this is a placeholder button for now
   return (
     <a href="#">
-      {!props.show && (
-        <button className={"create-group"}>Create button</button>
+      {!props.firstGroup && (
+        <button className={"create-group"}>create group</button>
       )}
     </a>
   );
@@ -33,7 +34,25 @@ class Groups extends Component {
   constructor(props) {
     super(props);
     // will start as true and permanently be set to false when wizard is completed
-    this.state = { wizardCreateGroup: true};
+    this.state = { firstGroup: true };
+    this.renderCreateButton = this.renderCreateButton.bind(this);
+  }
+
+  renderCreateButton() {
+    console.log("you're setting state.firstGroup to false ");
+    this.setState(
+      () => {
+        return {
+          firstGroup: false,
+        };
+      },
+      () => {
+        console.log(
+          "this is the updated state.firstGroup:",
+          this.state.firstGroup
+        );
+      }
+    );
   }
 
   render() {
@@ -47,7 +66,7 @@ class Groups extends Component {
           <div className="intro">
             <div>
               <h4>Groups</h4>
-              <RenderCreateButton show={this.state.wizardCreateGroup} />
+              <RenderCreateButton firstGroup={this.state.firstGroup} />
             </div>
             <p>
               Create groups with other eduID users to allow them access to
