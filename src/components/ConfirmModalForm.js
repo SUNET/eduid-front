@@ -56,6 +56,7 @@ class ConfirmModalForm extends Component {
               placeholder={this.props.placeholder}
               id={this.props.inputName}
               name={this.props.inputName}
+              helpBlock={this.props.helpBlock}
             />
           </div>
         </Form>

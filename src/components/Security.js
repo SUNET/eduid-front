@@ -175,6 +175,7 @@ class Security extends Component {
           showModal={Boolean(this.props.webauthn_asking_description)}
           closeModal={this.props.handleStopAskingWebauthnDescription}
           handleConfirm={this.props.handleStartWebauthnRegistration}
+          helpBlock={"Max length of 50 characters"}
         />
       </div>
     );

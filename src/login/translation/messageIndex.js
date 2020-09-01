@@ -65,6 +65,11 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Describe your security key`,
     description: "Placeholder for security key text input"
   },
+  "security.help_text": {
+    id: "security.help_text",
+    defaultMessage: `max length of 50 characters`,
+    description: "Help text for security key max length"
+  },
   "security.confirm_security_length": {
     id: "security.confirm_security_length",
     defaultMessage: `The max length of 50 characters is reached`,
