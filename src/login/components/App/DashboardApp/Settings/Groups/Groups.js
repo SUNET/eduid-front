@@ -73,7 +73,10 @@ class Groups extends Component {
               third-party services using eduID for login.
             </p>
             <RenderDataPanel />
-            <WizardPanel />
+            <WizardPanel
+              renderCreateButton={this.renderCreateButton}
+              firstGroup={this.state.firstGroup}
+            />
           </div>
         </article>
       );
