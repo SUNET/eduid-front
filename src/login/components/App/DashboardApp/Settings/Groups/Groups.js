@@ -18,7 +18,16 @@ const RenderCreateButton = (props) => {
   return (
     <a href="#">
       {!props.firstGroup && (
-        <button className={"create-group"}>create group</button>
+        <button
+          style={{
+            backgroundColor: "transparent",
+            boxShadow: "0 0 0",
+            textDecoration: "underline",
+          }}
+          className={"create-group"}
+        >
+          create group
+        </button>
       )}
     </a>
   );
@@ -59,24 +68,24 @@ class Groups extends Component {
     const cookieName = "show-groups";
     const cookiePattern = "";
     const showComponent = checkForCookie(cookieName, cookiePattern);
- 
+
     if (showComponent) {
       return (
         <article>
           <div className="intro">
-            <div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h4>Groups</h4>
               <RenderCreateButton firstGroup={this.state.firstGroup} />
             </div>
             <p>
-              Create groups with other eduID users to allow them access to
-              third-party services using eduID for login.
+              Create groups with other eduID users. What the groups are used for
+              is up to you and the local services your univeristy provides.
             </p>
-            <RenderDataPanel />
             <WizardPanel
               renderCreateButton={this.renderCreateButton}
               firstGroup={this.state.firstGroup}
             />
+            <RenderDataPanel />
           </div>
         </article>
       );
