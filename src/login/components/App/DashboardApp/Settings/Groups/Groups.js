@@ -2,14 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
 import checkForCookie from "../../../../../app_utils/checkForCookie";
-
-const RenderWizard = (props) => {
-  return (
-    <div className={"wizard"}>
-      {props.show && <p>Create you first group wizard</p>}
-    </div>
-  );
-};
+import WizardPanel from "../../../../Wizard/WizardPanel";
 
 const RenderDataPanel = () => {
   // this is just a placeholder function for the actual </DataPanel> component that will be here (problably a class component)
@@ -29,7 +22,6 @@ const RenderCreateButton = (props) => {
     </a>
   );
 };
-
 
 class Groups extends Component {
   // this component should:
@@ -62,7 +54,7 @@ class Groups extends Component {
               third-party services using eduID for login.
             </p>
             <RenderDataPanel />
-            <RenderWizard show={this.state.wizardCreateGroup} />
+            <WizardPanel />
           </div>
         </article>
       );
