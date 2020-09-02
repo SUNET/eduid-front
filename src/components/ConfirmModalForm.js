@@ -12,7 +12,6 @@ const validate = (values, props) => {
   const spacePattern = /^\s+$/;
   // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   const emailUUIDFormatPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
-  const emailLengthPattern = /^.{36}$/;
   const phoneLengthPattern = /^[A-Za-z0-9]{10,12}$/;
   const securityKeyLengthPattern = /^.{1,50}$/;
 
@@ -25,9 +24,6 @@ const validate = (values, props) => {
   else if(inputName.includes("email")) {
     if (!emailUUIDFormatPattern .test(values.emailConfirmDialogControl)){
       errors[inputName] = "emails.invalid_code";
-    }
-    else if(!emailLengthPattern.test(values.emailConfirmDialogControl)){
-      errors[inputName] = "emails.confirm_code_wrong_length";
     }
   }
   else if(inputName.includes("phone")) {
