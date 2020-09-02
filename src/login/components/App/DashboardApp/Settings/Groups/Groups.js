@@ -44,10 +44,9 @@ class Groups extends Component {
     super(props);
     // will start as true and permanently be set to false when wizard is completed
     this.state = { firstGroup: true };
-    this.renderCreateButton = this.renderCreateButton.bind(this);
   }
 
-  renderCreateButton() {
+  renderCreateButton = () => {
     console.log("you're setting state.firstGroup to false ");
     this.setState(
       () => {
