@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
 import i18n from "../../translation/InjectIntl_HOC_factory";
 // import DataTableRow from "./DataTableRow/DataTableRow";
 
@@ -25,12 +24,19 @@ const DataTableGroups = () => {
               padding: "1rem",
             }}
           >
-            <td className="data-cell">
-              ^
-            </td>
+            <td className="data-cell">^</td>
             <td className="data-cell">data 1</td>
-            <td className="remove-data">
-              <p className="icon-button">X</p>
+            <td>
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  boxShadow: "0 0 0",
+                  textDecoration: "underline",
+                  margin: "0",
+                }}
+              >
+                edit
+              </button>
             </td>
           </tr>
           <tr
@@ -41,8 +47,17 @@ const DataTableGroups = () => {
           >
             <td className="data-cell">^</td>
             <td className="data-cell">data 2</td>
-            <td className="remove-data">
-              <p className="icon-button">X</p>
+            <td>
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  boxShadow: "0 0 0",
+                  textDecoration: "underline",
+                  margin: "0",
+                }}
+              >
+                edit
+              </button>
             </td>
           </tr>
           <tr
@@ -53,8 +68,17 @@ const DataTableGroups = () => {
           >
             <td className="data-cell">^</td>
             <td className="data-cell">data 3</td>
-            <td className="remove-data">
-              <p className="icon-button">X</p>
+            <td>
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  boxShadow: "0 0 0",
+                  textDecoration: "underline",
+                  margin: "0",
+                }}
+              >
+                edit
+              </button>
             </td>
           </tr>
           <tr
@@ -65,8 +89,17 @@ const DataTableGroups = () => {
           >
             <td className="data-cell">^</td>
             <td className="data-cell">data 4</td>
-            <td className="remove-data">
-              <p className="icon-button">X</p>
+            <td>
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  boxShadow: "0 0 0",
+                  textDecoration: "underline",
+                  margin: "0",
+                }}
+              >
+                edit
+              </button>
             </td>
           </tr>
         </tbody>
