@@ -192,7 +192,7 @@
   "mobile.confirm_code_wrong_length": "Koden måste vara 10-12 tecken lång, endast bokstäver och nummer tillåtna",
   "security.confirm_security_length": "Maxlängden på 50 tecken har överskridits",
   "security.confirm_security_placeholder": "Beskriv din säkerhetsnyckel",
-  "security.help_text": "max längd av 50 tecken" ,
+  "security.help_text": "max 50 tecken" ,
   "mobile.confirm_title": "Skriv in koden som skickats till {phone} här",
   "mobile.mobile": "Telefon",
   "mobile.resend_success": "Ny bekräftelsekod skickad till {email}",

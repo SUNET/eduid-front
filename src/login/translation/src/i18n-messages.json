@@ -1460,7 +1460,7 @@
   {
     "id": "security.help_text",
     "description": "Help text for security key max length",
-    "defaultMessage": "max length of 50 characters"
+    "defaultMessage": "max 50 characters"
   },
   {
     "id": "security.confirm_security_length",

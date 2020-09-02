@@ -191,7 +191,7 @@
   "mobile.confirm_mobile_placeholder": "Phone confirmation code",
   "mobile.confirm_code_wrong_length": "Code must be 10-12 characters long, only letters and numbers allowed",
   "security.confirm_security_placeholder": "Describe your security key",
-  "security.help_text": "max length of 50 characters" ,
+  "security.help_text": "max 50 characters" ,
   "security.confirm_security_length": "The max length of 50 characters is reached",
   "mobile.confirm_title": "Enter the code sent to {phone} here",
   "mobile.mobile": "mobile",
