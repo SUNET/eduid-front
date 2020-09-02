@@ -63,7 +63,12 @@ class Groups extends Component {
 
     if (showComponent) {
       return (
-        <article>
+        <article
+          style={{
+            display: "flex",
+            flexDirection: "column"
+          }}
+        >
           <div className="intro">
             <div
               style={{
