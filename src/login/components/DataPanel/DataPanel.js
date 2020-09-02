@@ -16,6 +16,7 @@ const RenderViewData = (props) => {
         >
           <p>view-mode: A table of data - only for viewing! Don't touch!</p>
           <label>Groups I manage</label>
+          <DataTableGroups />
         </div>
       )}
     </Fragment>
