@@ -40,6 +40,12 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`,
     description: "Placeholder for email text input"
   },
+  "emails.confirm_help_text":
+  {
+    id: "emails.confirm_help_text",
+    defaultMessage: "Code is formatted as five groups of characters and numbers, separated by hyphens",
+    description: "Help text for email confirmation code",
+  },
   "emails.invalid_code": {
     id: "emails.invalid_code",
     defaultMessage: `Invalid confirmation code`,

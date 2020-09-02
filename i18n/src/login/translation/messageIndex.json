@@ -9,6 +9,11 @@
     "defaultMessage": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   },
   {
+    "id": "emails.confirm_help_text",
+    "description": "Help text for email confirmation code",
+    "defaultMessage": "Code is formatted as five groups of characters and numbers, separated by hyphens"
+  },
+  {
     "id": "emails.invalid_code",
     "defaultMessage": "Invalid confirmation code",
     "description": "error text for invalid confirmation code"
