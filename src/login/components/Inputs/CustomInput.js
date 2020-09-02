@@ -132,7 +132,6 @@ customInput.propTypes = {
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
   translate: PropTypes.func, 
-  helpBlock: PropTypes.object
 };
 
 export default i18n(customInput);
