@@ -69,11 +69,8 @@ class WizardPanel extends Component {
   //     state = {firstGroup: false}
   //     -> keeping this as local state if possible
 
-  constructor(props) {
-    super(props);
-    // will start as true and permanently be set to false when wizard is completed
-    this.state = { firstInvite: true };
-  }
+  // will start as true and permanently be set to false when wizard is completed
+  state = { firstInvite: true };
 
   render() {
     return <RenderFirstGroupWizard {...this.props} />;

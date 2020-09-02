@@ -40,11 +40,8 @@ class Groups extends Component {
   // - if wizard: hide button
   // - if no wizard: show button
 
-  constructor(props) {
-    super(props);
-    // will start as true and permanently be set to false when wizard is completed
-    this.state = { firstGroup: true };
-  }
+  // will start as true and permanently be set to false when wizard is completed
+  state = { firstGroup: true };
 
   renderCreateButton = () => {
     console.log("you're setting state.firstGroup to false ");
@@ -61,7 +58,7 @@ class Groups extends Component {
         );
       }
     );
-  }
+  };
 
   render() {
     const cookieName = "show-groups";
