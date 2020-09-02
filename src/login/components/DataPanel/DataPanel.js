@@ -14,8 +14,7 @@ const RenderViewData = (props) => {
           }}
           className={"view-data"}
         >
-          <p>view-mode: A table of data - only for viewing! Don't touch!</p>
-          <label>Groups I manage</label>
+          <label style={{ fontSize: "16px", letterSpacing: "0" }}>Groups I manage</label>
           <DataTableGroups />
         </div>
       )}
