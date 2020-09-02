@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
+import DataTableGroups from "../DataTable/DataTableGroups";
 
 const RenderViewData = (props) => {
   // this is a placeholder button for now
@@ -9,17 +10,17 @@ const RenderViewData = (props) => {
       {!props.editDataMode && (
         <div
           style={{
-            backgroundColor: "hotpink",
+            backgroundColor: "transparent",
           }}
           className={"view-data"}
         >
-          view-mode: A table of data - only for viewing! Don't touch!
+          <p>view-mode: A table of data - only for viewing! Don't touch!</p>
+          <label>Groups I manage</label>
         </div>
       )}
     </Fragment>
   );
 };
-
 
 const RenderEditData = (props) => {
   // this is a placeholder button for now
@@ -32,7 +33,9 @@ const RenderEditData = (props) => {
           }}
           className={"edit-data"}
         >
-          edit-mode: A table of data and a number of options for editing data!
+          <p>
+            edit-mode: A table of data and a number of options for editing data!
+          </p>
         </div>
       )}
     </Fragment>
@@ -46,7 +49,7 @@ class DataPanel extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { editDataMode: false};
+    this.state = { editDataMode: false };
   }
 
   render() {
@@ -54,7 +57,7 @@ class DataPanel extends Component {
       <div
         className={"data-panel"}
         style={{
-          backgroundColor: "yellow",
+          backgroundColor: "transparent",
           margin: "1rem 0 ",
         }}
       >
