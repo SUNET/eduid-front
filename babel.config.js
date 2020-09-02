@@ -5,19 +5,20 @@ module.exports = function(api) {
     [
       "@babel/plugin-transform-runtime",
       {
-        regenerator: true
-      }
+        regenerator: true,
+      },
     ],
     [
       "react-intl",
       {
         messagesDir: "./src/login/translation",
-        enforceDescriptions: false
-      }
+        enforceDescriptions: false,
+      },
     ],
     "transform-object-rest-spread",
     "@babel/plugin-transform-flow-strip-types",
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    "transform-class-properties",
   ];
 
   return {
