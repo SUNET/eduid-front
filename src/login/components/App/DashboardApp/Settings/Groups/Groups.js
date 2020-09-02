@@ -5,15 +5,6 @@ import checkForCookie from "../../../../../app_utils/checkForCookie";
 import WizardPanel from "../../../../Wizard/WizardPanel";
 import DataPanel from "../../../../DataPanel/DataPanel";
 
-// const RenderDataPanel = () => {
-//   // this is just a placeholder function for the actual </DataPanel> component that will be here (problably a class component)
-//   return (
-//     <div className={"data-panel"}>
-//       <p>This will be the DataPanel component</p>
-//     </div>
-//   );
-// };
-
 const RenderCreateButton = (props) => {
   // this is a placeholder button for now
   return (
@@ -93,7 +84,6 @@ class Groups extends Component {
               firstGroup={this.state.firstGroup}
             />
             <DataPanel />
-            {/* <RenderDataPanel /> */}
           </div>
         </article>
       );
