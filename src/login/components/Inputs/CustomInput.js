@@ -11,7 +11,7 @@ const RenderLabelAndHelpText = props => {
     label,
     name,
     helpBlock,
-    required
+    required,
   } = props;
   return(
     <div className={"input-label-helptext-container"}>
