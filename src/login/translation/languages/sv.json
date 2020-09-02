@@ -345,7 +345,7 @@
   "security.u2f_registration_error_unsupported": "U2F-fel: Felaktig konfiguration",
   "security.verified": "Verifierad",
   "security.verify": "Verifiera",
-  "security.webauthn-describe-title": "Lägg till ett namn för säkerhetsnyckeln",
+  "security.webauthn-describe-title": "Ge ett namn till din säkerhetsnyckel",
   "security.webauthn-missing-pdata": "Du måste lägga till personlig data innan du kan lägga till en säkerhetsnyckel",
   "security.webauthn-noremove-last": "Du kan inte ta bort din enda säkerhetsnyckel",
   "security.webauthn-token-notfound": "Säkerhetsnyckeln hittades inte",
