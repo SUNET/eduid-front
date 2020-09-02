@@ -6,7 +6,7 @@
   {
     "id": "emails.confirm_email_placeholder",
     "description": "Placeholder for email text input",
-    "defaultMessage": "Email confirmation code"
+    "defaultMessage": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   },
   {
     "id": "emails.invalid_code",

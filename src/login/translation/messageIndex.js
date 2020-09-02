@@ -37,7 +37,7 @@ export const unformattedMessages = defineMessages({
   },
   "emails.placeholder": {
     id: "emails.confirm_email_placeholder",
-    defaultMessage: `Email confirmation code`,
+    defaultMessage: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`,
     description: "Placeholder for email text input"
   },
   "emails.invalid_code": {
