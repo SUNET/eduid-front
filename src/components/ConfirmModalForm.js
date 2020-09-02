@@ -9,17 +9,20 @@ const validate = (values, props) => {
   let inputName = props.inputName;
   const errors = {};
   const code = values[inputName];
-  if (!code) {
-    errors[inputName] = "required";
-  }
   const spacePattern = /^\s+$/;
-  if(spacePattern.test(values[inputName])){
-    errors[inputName] = "required";
-  }
   // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   const emailUUIDFormatPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
   const emailLengthPattern = /^.{36}$/;
-  if(inputName.includes("email")) {
+  const phoneLengthPattern = /^[A-Za-z0-9]{10,12}$/;
+  const securityKeyLengthPattern = /^.{1,50}$/;
+
+  if (!code) {
+    errors[inputName] = "required";
+  }
+  else if(spacePattern.test(values[inputName])){
+    errors[inputName] = "required";
+  }
+  else if(inputName.includes("email")) {
     if (!emailUUIDFormatPattern .test(values.emailConfirmDialogControl)){
       errors[inputName] = "emails.invalid_code";
     }
@@ -27,14 +30,12 @@ const validate = (values, props) => {
       errors[inputName] = "emails.confirm_code_wrong_length";
     }
   }
-  const phoneLengthPattern = /^[A-Za-z0-9]{10,12}$/;
-  if(inputName.includes("phone")) {
+  else if(inputName.includes("phone")) {
     if (!phoneLengthPattern.test(values.phoneConfirmDialogControl)){
       errors[inputName] = "mobile.confirm_code_wrong_length";
     }
   }
-  const securityKeyLengthPattern = /^.{1,50}$/;
-  if(inputName.includes("describeWebauthnToken")) {
+  else if(inputName.includes("describeWebauthnToken")) {
     if (!securityKeyLengthPattern.test(values.describeWebauthnTokenDialogControl)){
       errors[inputName] = "security.confirm_security_length";
     }

@@ -47,7 +47,7 @@ export const unformattedMessages = defineMessages({
   },
   "emails.confirm_code_wrong_length": {
     id: "emails.confirm_code_wrong_length",
-    defaultMessage: `This code is too long, the code to confirm your email addresses must be 36 characters long`,
+    defaultMessage: `This code is too long, the code to confirm your email address must be 36 characters long`,
     description: "Error message for wrong length",
   },
   "mobile.confirm_code_wrong_length": {

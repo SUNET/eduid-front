@@ -1440,7 +1440,7 @@
   {
     "id": "emails.confirm_code_wrong_length",
     "description": "Error message for wrong length",
-    "defaultMessage": "This code is too long, the code to confirm your email addresses must be 36 characters long"
+    "defaultMessage": "This code is too long, the code to confirm your email address must be 36 characters long"
   },
   {
     "id": "mobile.confirm_mobile_placeholder",
