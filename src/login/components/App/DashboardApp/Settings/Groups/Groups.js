@@ -3,15 +3,16 @@ import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
 import checkForCookie from "../../../../../app_utils/checkForCookie";
 import WizardPanel from "../../../../Wizard/WizardPanel";
+import DataPanel from "../../../../DataPanel/DataPanel";
 
-const RenderDataPanel = () => {
-  // this is just a placeholder function for the actual </DataPanel> component that will be here (problably a class component)
-  return (
-    <div className={"data-panel"}>
-      <p>This will be the DataPanel component</p>
-    </div>
-  );
-};
+// const RenderDataPanel = () => {
+//   // this is just a placeholder function for the actual </DataPanel> component that will be here (problably a class component)
+//   return (
+//     <div className={"data-panel"}>
+//       <p>This will be the DataPanel component</p>
+//     </div>
+//   );
+// };
 
 const RenderCreateButton = (props) => {
   // this is a placeholder button for now
@@ -91,7 +92,8 @@ class Groups extends Component {
               renderCreateButton={this.renderCreateButton}
               firstGroup={this.state.firstGroup}
             />
-            <RenderDataPanel />
+            <DataPanel />
+            {/* <RenderDataPanel /> */}
           </div>
         </article>
       );
