@@ -38,7 +38,11 @@ class ConfirmModal extends Component {
         >
           <ModalHeader>{this.props.title}</ModalHeader>
           <ModalBody>
-            <ConfirmModalForm helpBlock={this.props.helpBlock} inputName={this.props.id} {...this.props} />
+            <ConfirmModalForm 
+              helpBlock={this.props.helpBlock} 
+              inputName={this.props.id} 
+              {...this.props} 
+            />
             {resendMarkup}
           </ModalBody>
           <ModalFooter>
