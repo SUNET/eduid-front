@@ -9,168 +9,185 @@ const ViewDataTable = (props) => {
   console.log("these are props in VireDataTable", props);
 
   return (
-    <div className="groups-grid">
-      <div
+    <div
+      style={{
+        backgroundColor: "transparent",
+        marginTop: "2rem",
+      }}
+      className={"view-data"}
+    >
+      <label
         style={{
-          borderTop: "2px solid white",
-          borderBottom: "2px solid white",
-          display: "flex",
-          padding: "0 0.375rem",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          height: "3rem",
+          fontSize: "16px",
+          letterSpacing: "0",
+          paddingBottom: "10px",
         }}
       >
-        <p
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "700",
-            padding: "0  0.75rem 0 0.375rem",
-          }}
-        >
-          ^
-        </p>
+        Groups I manage
+      </label>
+      <div className="groups-grid">
         <div
           style={{
+            borderTop: "2px solid white",
+            borderBottom: "2px solid white",
             display: "flex",
-            flex: "1",
+            padding: "0 0.375rem",
             justifyContent: "space-between",
             alignItems: "baseline",
+            height: "3rem",
           }}
         >
           <p
             style={{
               fontSize: "1.5rem",
-              paddingBottom: "0",
+              fontWeight: "700",
+              padding: "0  0.75rem 0 0.375rem",
             }}
           >
-            First ever group
+            ^
           </p>
-          <a href="#">
-            <button
+          <div
+            style={{
+              display: "flex",
+              flex: "1",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+            }}
+          >
+            <p
               style={{
-                backgroundColor: "transparent",
-                boxShadow: "0 0 0",
-                textDecoration: "underline",
-                margin: "0",
-                fontWeight: "400",
-              }}
-              className={"edit-button"}
-              onClick={() => {
-                props.toggleEditMode();
+                fontSize: "1.5rem",
+                paddingBottom: "0",
               }}
             >
-              edit
-            </button>
-          </a>
+              First ever group
+            </p>
+            <a href="#">
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  boxShadow: "0 0 0",
+                  textDecoration: "underline",
+                  margin: "0",
+                  fontWeight: "400",
+                }}
+                className={"edit-button"}
+                onClick={() => {
+                  props.toggleEditMode();
+                }}
+              >
+                edit
+              </button>
+            </a>
+          </div>
         </div>
-      </div>
-      <div
-        style={{
-          borderBottom: "2px solid white",
-          display: "flex",
-          padding: "0 0.375rem",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          height: "3rem",
-        }}
-      >
-        <p
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "700",
-            padding: "0 0.75rem 0 0.375rem",
-          }}
-        >
-          ^
-        </p>
         <div
           style={{
+            borderBottom: "2px solid white",
             display: "flex",
-            flex: "1",
+            padding: "0 0.375rem",
             justifyContent: "space-between",
             alignItems: "baseline",
+            height: "3rem",
           }}
         >
           <p
             style={{
               fontSize: "1.5rem",
-              paddingBottom: "0",
+              fontWeight: "700",
+              padding: "0 0.75rem 0 0.375rem",
             }}
           >
-            Second ever group
+            ^
           </p>
-          <a href="#">
-            <button
+          <div
+            style={{
+              display: "flex",
+              flex: "1",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+            }}
+          >
+            <p
               style={{
-                backgroundColor: "transparent",
-                boxShadow: "0 0 0",
-                textDecoration: "underline",
-                margin: "0",
-                fontWeight: "400",
-              }}
-              className={"edit-button"}
-              onClick={() => {
-                props.toggleEditMode();
+                fontSize: "1.5rem",
+                paddingBottom: "0",
               }}
             >
-              edit
-            </button>
-          </a>
+              Second ever group
+            </p>
+            <a href="#">
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  boxShadow: "0 0 0",
+                  textDecoration: "underline",
+                  margin: "0",
+                  fontWeight: "400",
+                }}
+                className={"edit-button"}
+                onClick={() => {
+                  props.toggleEditMode();
+                }}
+              >
+                edit
+              </button>
+            </a>
+          </div>
         </div>
-      </div>
-      <div
-        style={{
-          borderBottom: "2px solid white",
-          display: "flex",
-          padding: "0 0.375rem",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          height: "3rem",
-        }}
-      >
-        <p
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "700",
-            padding: "0  0.75rem 0 0.375rem",
-          }}
-        >
-          ^
-        </p>
         <div
           style={{
+            borderBottom: "2px solid white",
             display: "flex",
-            flex: "1",
+            padding: "0 0.375rem",
             justifyContent: "space-between",
             alignItems: "baseline",
+            height: "3rem",
           }}
         >
           <p
             style={{
               fontSize: "1.5rem",
-              paddingBottom: "0",
+              fontWeight: "700",
+              padding: "0  0.75rem 0 0.375rem",
             }}
           >
-            Group 3
+            ^
           </p>
-          <a href="#">
-            <button
+          <div
+            style={{
+              display: "flex",
+              flex: "1",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+            }}
+          >
+            <p
               style={{
-                backgroundColor: "transparent",
-                boxShadow: "0 0 0",
-                textDecoration: "underline",
-                margin: "0",
-                fontWeight: "400",
-              }}
-              className={"edit-button"}
-              onClick={() => {
-                props.toggleEditMode();
+                fontSize: "1.5rem",
+                paddingBottom: "0",
               }}
             >
-              edit
-            </button>
-          </a>
+              Group 3
+            </p>
+            <a href="#">
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  boxShadow: "0 0 0",
+                  textDecoration: "underline",
+                  margin: "0",
+                  fontWeight: "400",
+                }}
+                className={"edit-button"}
+                onClick={() => {
+                  props.toggleEditMode();
+                }}
+              >
+                edit
+              </button>
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -5,35 +5,12 @@ import ViewDataTable from "../DataTable/ViewDataTable";
 import EditDataBox from "../DataTable/EditDataBox";
 
 const RenderViewData = (props) => {
-  // this is a placeholder button for now
   return (
-    <Fragment>
-      {!props.editDataMode && (
-        <div
-          style={{
-            backgroundColor: "transparent",
-            marginTop: "2rem",
-          }}
-          className={"view-data"}
-        >
-          <label
-            style={{
-              fontSize: "16px",
-              letterSpacing: "0",
-              paddingBottom: "10px",
-            }}
-          >
-            Groups I manage
-          </label>
-          <ViewDataTable {...props} />
-        </div>
-      )}
-    </Fragment>
+    <Fragment>{!props.editDataMode && <ViewDataTable {...props} />}</Fragment>
   );
 };
 
 const RenderEditData = (props) => {
-  // this is a placeholder button for now
   return (
     <Fragment>{props.editDataMode && <EditDataBox {...props} />}</Fragment>
   );
