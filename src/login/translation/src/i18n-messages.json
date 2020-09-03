@@ -401,7 +401,7 @@
   },
   {
     "id": "cm.enter_code",
-    "defaultMessage": "Enter your confirmation code below"
+    "defaultMessage": "Confirmation code"
   },
   {
     "id": "phone_duplicated",
@@ -1430,12 +1430,37 @@
   {
     "id": "emails.confirm_email_placeholder",
     "description": "Placeholder for email text input",
-    "defaultMessage": "Email confirmation code"
+    "defaultMessage": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  },
+  {
+    "id": "emails.invalid_code",
+    "defaultMessage": "Invalid confirmation code",
+    "description": "error text for invalid confirmation code"
   },
   {
     "id": "mobile.confirm_mobile_placeholder",
     "description": "Placeholder for phone text input",
     "defaultMessage": "Phone confirmation code"
+  },
+  {
+    "id": "mobile.confirm_code_wrong_length",
+    "description": "Error message for wrong length",
+    "defaultMessage": "Code must be 10-12 characters long, only letters and numbers allowed"
+  },
+  {
+    "id": "security.confirm_security_placeholder",
+    "description": "Placeholder for security key text input",
+    "defaultMessage": "Describe your security key"
+  },
+  {
+    "id": "security.help_text",
+    "description": "Help text for security key max length",
+    "defaultMessage": "max 50 characters"
+  },
+  {
+    "id": "security.confirm_security_length",
+    "description": "Error message for max length",
+    "defaultMessage": "The max length of 50 characters is reached"
   },
   {
     "id": "chpass.help-text-newpass",

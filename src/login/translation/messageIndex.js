@@ -37,15 +37,45 @@ export const unformattedMessages = defineMessages({
   },
   "emails.placeholder": {
     id: "emails.confirm_email_placeholder",
-    defaultMessage: `Email confirmation code`,
+    defaultMessage: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`,
     description: "Placeholder for email text input"
+  },
+  "emails.confirm_help_text":
+  {
+    id: "emails.confirm_help_text",
+    defaultMessage: "Code is formatted as five groups of characters and numbers, separated by hyphens",
+    description: "Help text for email confirmation code",
+  },
+  "emails.invalid_code": {
+    id: "emails.invalid_code",
+    defaultMessage: `Invalid confirmation code`,
+    description: "error text for invalid confirmation code"
+  },
+  "mobile.confirm_code_wrong_length": {
+    id: "mobile.confirm_code_wrong_length",
+    defaultMessage: `Code must be 10-12 characters long, only letters and numbers allowed`,
+    description: "Error message for wrong length",
   },
   "mobile.placeholder": {
     id: "mobile.confirm_mobile_placeholder",
     defaultMessage: `Phone confirmation code`,
     description: "Placeholder for phone text input"
   },
-
+  "security.placeholder": {
+    id: "security.confirm_security_placeholder",
+    defaultMessage: `Describe your security key`,
+    description: "Placeholder for security key text input"
+  },
+  "security.help_text": {
+    id: "security.help_text",
+    defaultMessage: `max 50 characters`,
+    description: "Help text for security key max length"
+  },
+  "security.confirm_security_length": {
+    id: "security.confirm_security_length",
+    defaultMessage: `The max length of 50 characters is reached`,
+    description: "Error message for max length"
+  },
   "register.toLogin": {
     id: "register.toLogin",
     defaultMessage: `If you already have eduID you can log in`,

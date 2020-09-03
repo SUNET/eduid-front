@@ -169,14 +169,13 @@ class Security extends Component {
           modalId="describeWebauthnTokenDialog"
           id="describeWebauthnTokenDialogControl"
           title={this.props.translate("security.webauthn-describe-title")}
-          resendLabel=""
-          resendHelp=""
-          resendText=""
-          placeholder=""
+          resendLabel={this.props.translate("security.webauthn_credential_type")}
+          placeholder={this.props.translate("security.placeholder")}
           with_resend_link={false}
           showModal={Boolean(this.props.webauthn_asking_description)}
           closeModal={this.props.handleStopAskingWebauthnDescription}
           handleConfirm={this.props.handleStartWebauthnRegistration}
+          helpBlock={this.props.translate("security.help_text")}
         />
       </div>
     );
