@@ -11,7 +11,7 @@ const RenderViewData = (props) => {
         <div
           style={{
             backgroundColor: "transparent",
-            marginTop: "2rem"
+            marginTop: "2rem",
           }}
           className={"view-data"}
         >
@@ -56,10 +56,7 @@ class DataPanel extends Component {
   // 1. handle the logic of rendering data in either view-mode (no interactions) vs edit-mode (alterations allowed)
   //
 
-  constructor(props) {
-    super(props);
-    this.state = { editDataMode: true };
-  }
+  state = { editDataMode: true };
 
   render() {
     return (
