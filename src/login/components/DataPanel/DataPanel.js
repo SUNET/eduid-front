@@ -11,10 +11,19 @@ const RenderViewData = (props) => {
         <div
           style={{
             backgroundColor: "transparent",
+            marginTop: "2rem"
           }}
           className={"view-data"}
         >
-          <label style={{ fontSize: "16px", letterSpacing: "0" }}>Groups I manage</label>
+          <label
+            style={{
+              fontSize: "16px",
+              letterSpacing: "0",
+              paddingBottom: "10px",
+            }}
+          >
+            Groups I manage
+          </label>
           <DataTableGroups />
         </div>
       )}
@@ -49,7 +58,7 @@ class DataPanel extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { editDataMode: false };
+    this.state = { editDataMode: true };
   }
 
   render() {

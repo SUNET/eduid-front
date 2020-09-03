@@ -8,102 +8,161 @@ const DataTableGroups = () => {
   // console.log("this is data in Table", data);
 
   return (
-    <div className="table-responsive">
-      <table
-        className="table-form"
+    <div className="groups-grid">
+      <div
         style={{
-          color: "#161616",
+          borderTop: "2px solid white",
+          borderBottom: "2px solid white",
+          display: "flex",
+          padding: "0 0.375rem",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          height: "3rem",
         }}
       >
-        <tbody>
-          <tr
+        <p
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: "700",
+            padding: "0  0.75rem 0 0.375rem",
+          }}
+        >
+          ^
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flex: "1",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+          }}
+        >
+          <p
             style={{
-              backgroundColor: "transparent",
-              borderTop: "2px solid white",
-              borderBottom: "2px solid white",
-              padding: "1rem",
+              fontSize: "1.5rem",
+              paddingBottom: "0",
             }}
           >
-            <td className="data-cell">^</td>
-            <td className="data-cell">data 1</td>
-            <td>
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  boxShadow: "0 0 0",
-                  textDecoration: "underline",
-                  margin: "0",
-                }}
-              >
-                edit
-              </button>
-            </td>
-          </tr>
-          <tr
+            First ever group
+          </p>
+          <a href="#">
+            <button
+              style={{
+                backgroundColor: "transparent",
+                boxShadow: "0 0 0",
+                textDecoration: "underline",
+                margin: "0",
+                fontWeight: "400",
+              }}
+              className={"edit-button"}
+            >
+              edit
+            </button>
+          </a>
+        </div>
+      </div>
+      <div
+        style={{
+          borderBottom: "2px solid white",
+          display: "flex",
+          padding: "0 0.375rem",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          height: "3rem",
+        }}
+      >
+        <p
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: "700",
+            padding: "0 0.75rem 0 0.375rem",
+          }}
+        >
+          ^
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flex: "1",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+          }}
+        >
+          <p
             style={{
-              backgroundColor: "transparent",
-              borderBottom: "2px solid white",
+              fontSize: "1.5rem",
+              paddingBottom: "0",
             }}
           >
-            <td className="data-cell">^</td>
-            <td className="data-cell">data 2</td>
-            <td>
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  boxShadow: "0 0 0",
-                  textDecoration: "underline",
-                  margin: "0",
-                }}
-              >
-                edit
-              </button>
-            </td>
-          </tr>
-          <tr
+            Second ever group
+          </p>
+          <a href="#">
+            <button
+              style={{
+                backgroundColor: "transparent",
+                boxShadow: "0 0 0",
+                textDecoration: "underline",
+                margin: "0",
+                fontWeight: "400",
+              }}
+              className={"edit-button"}
+            >
+              edit
+            </button>
+          </a>
+        </div>
+      </div>
+      <div
+        style={{
+          borderBottom: "2px solid white",
+          display: "flex",
+          padding: "0 0.375rem",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          height: "3rem",
+        }}
+      >
+        <p
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: "700",
+            padding: "0  0.75rem 0 0.375rem",
+          }}
+        >
+          ^
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flex: "1",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+          }}
+        >
+          <p
             style={{
-              backgroundColor: "transparent",
-              borderBottom: "2px solid white",
+              fontSize: "1.5rem",
+              paddingBottom: "0",
             }}
           >
-            <td className="data-cell">^</td>
-            <td className="data-cell">data 3</td>
-            <td>
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  boxShadow: "0 0 0",
-                  textDecoration: "underline",
-                  margin: "0",
-                }}
-              >
-                edit
-              </button>
-            </td>
-          </tr>
-          <tr
-            style={{
-              backgroundColor: "transparent",
-              borderBottom: "2px solid white",
-            }}
-          >
-            <td className="data-cell">^</td>
-            <td className="data-cell">data 4</td>
-            <td>
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  boxShadow: "0 0 0",
-                  textDecoration: "underline",
-                  margin: "0",
-                }}
-              >
-                edit
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            Group 3
+          </p>
+          <a href="#">
+            <button
+              style={{
+                backgroundColor: "transparent",
+                boxShadow: "0 0 0",
+                textDecoration: "underline",
+                margin: "0",
+                fontWeight: "400",
+              }}
+              className={"edit-button"}
+            >
+              edit
+            </button>
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
