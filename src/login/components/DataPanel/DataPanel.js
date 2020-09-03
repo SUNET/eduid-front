@@ -21,7 +21,7 @@ class DataPanel extends Component {
   // 1. handle the logic of rendering data in either view-mode (no interactions) vs edit-mode (alterations allowed)
   //
 
-  state = { editDataMode: true };
+  state = { editDataMode: false };
 
   toggleEditMode = () => {
     console.log("you're toggling state.editDataMode");
