@@ -15,6 +15,7 @@ const RenderCreateButton = (props) => {
             backgroundColor: "transparent",
             boxShadow: "0 0 0",
             textDecoration: "underline",
+            margin: "0",
           }}
           className={"create-group"}
         >
@@ -62,7 +63,7 @@ class Groups extends Component {
         <article
           style={{
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
           }}
         >
           <div className="intro">
