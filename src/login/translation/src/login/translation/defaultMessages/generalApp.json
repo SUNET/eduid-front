@@ -85,7 +85,7 @@
   },
   {
     "id": "cm.enter_code",
-    "defaultMessage": "Enter your confirmation code below"
+    "defaultMessage": "Confirmation code"
   },
   {
     "id": "still-valid-code",

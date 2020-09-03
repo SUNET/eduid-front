@@ -401,7 +401,7 @@
   },
   {
     "id": "cm.enter_code",
-    "defaultMessage": "Enter your confirmation code below"
+    "defaultMessage": "Confirmation code"
   },
   {
     "id": "phone_duplicated",

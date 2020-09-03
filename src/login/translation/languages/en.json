@@ -47,7 +47,7 @@
   "cm.accept": "ACCEPT",
   "cm.cancel": "CANCEL",
   "cm.close": "CLOSE",
-  "cm.enter_code": "Enter your confirmation code below",
+  "cm.enter_code": "Confirmation code",
   "cm.finish": "FINISH",
   "cm.lost_code": "Is the code not working?",
   "cm.ok": "OK",
