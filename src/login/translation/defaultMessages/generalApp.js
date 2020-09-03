@@ -106,7 +106,7 @@ export const generalApp = {
   "cm.enter_code": (
     <FormattedMessage
       id="cm.enter_code"
-      defaultMessage={`Enter your confirmation code below`}
+      defaultMessage={`Confirmation code`}
     />
   ),
 

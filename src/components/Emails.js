@@ -119,6 +119,7 @@ class Emails extends Component {
           closeModal={this.props.handleStopConfirmation}
           handleResend={this.props.handleResend}
           handleConfirm={this.props.handleConfirm}
+          helpBlock={this.props.translate("emails.confirm_help_text")}
         />
       </div>
     );

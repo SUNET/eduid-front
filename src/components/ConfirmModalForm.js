@@ -1,29 +1,40 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { ButtonGroup, Form } from "reactstrap";
-import Button from "reactstrap/lib/Button";
-import Modal from "reactstrap/lib/Modal";
-import ModalHeader from "reactstrap/lib/ModalHeader";
-import ModalBody from "reactstrap/lib/ModalBody";
-import ModalFooter from "reactstrap/lib/ModalFooter";
-
+import { Form } from "reactstrap";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import TextInput from "components/EduIDTextInput";
-import EduIDButton from "components/EduIDButton";
-import NotificationsContainer from "containers/Notifications";
+import CustomInput from "../login/components/Inputs/CustomInput";
 
 const validate = (values, props) => {
-  console.log("validate - values", values);
-  console.log("valiadate - props.inputName", props.inputName);
-  console.log("valiadate - this.props.inputName", props.inputName);
   let inputName = props.inputName;
-  console.log("valiadate - inputName", inputName);
   const errors = {};
   const code = values[inputName];
+  const spacePattern = /^\s+$/;
+  // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
+  const emailUUIDFormatPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
+  const phoneLengthPattern = /^[A-Za-z0-9]{10,12}$/;
+  const securityKeyLengthPattern = /^.{1,50}$/;
+
   if (!code) {
     errors[inputName] = "required";
+  }
+  else if(spacePattern.test(values[inputName])){
+    errors[inputName] = "required";
+  }
+  else if(inputName.includes("email")) {
+    if (!emailUUIDFormatPattern .test(values.emailConfirmDialogControl)){
+      errors[inputName] = "emails.invalid_code";
+    }
+  }
+  else if(inputName.includes("phone")) {
+    if (!phoneLengthPattern.test(values.phoneConfirmDialogControl)){
+      errors[inputName] = "mobile.confirm_code_wrong_length";
+    }
+  }
+  else if(inputName.includes("describeWebauthnToken")) {
+    if (!securityKeyLengthPattern.test(values.describeWebauthnTokenDialogControl)){
+      errors[inputName] = "security.confirm_security_length";
+    }
   }
   return errors;
 };
@@ -35,13 +46,14 @@ class ConfirmModalForm extends Component {
         <Form id={this.props.inputName + "-form"} role="form">
           <div id="confirmation-code-area">
             <Field
-              component={TextInput}
+              component={CustomInput}
               componentClass="input"
               type="text"
               label={this.props.resendLabel}
               placeholder={this.props.placeholder}
               id={this.props.inputName}
               name={this.props.inputName}
+              helpBlock={this.props.helpBlock}
             />
           </div>
         </Form>
