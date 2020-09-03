@@ -8,6 +8,7 @@ import ConfirmModalForm from "./ConfirmModalForm";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 import { isValid, isSubmitting } from 'redux-form';
+import { connect } from "react-redux";
 
 class ConfirmModal extends Component {
   render() {
@@ -81,5 +82,5 @@ const mapStateToProps = state => {
   };
 };
 
-const ConfrimModalContainer =  connect(mapStateToProps, null)(ConfirmModal);
+const ConfrimModalContainer = connect(mapStateToProps, null)(ConfirmModal);
 export default i18n(ConfrimModalContainer);
