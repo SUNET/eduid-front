@@ -110,6 +110,9 @@ const ViewDataTable = (props) => {
                 fontWeight: "400",
               }}
               className={"edit-button"}
+              onClick={() => {
+                props.toggleEditMode();
+              }}
             >
               edit
             </button>
@@ -161,6 +164,9 @@ const ViewDataTable = (props) => {
                 fontWeight: "400",
               }}
               className={"edit-button"}
+              onClick={() => {
+                props.toggleEditMode();
+              }}
             >
               edit
             </button>
