@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import ViewDataTable from "../DataTable/ViewDataTable";
+import { findLastIndex } from "lodash";
 
 const RenderViewData = (props) => {
   // this is a placeholder button for now
@@ -24,7 +25,7 @@ const RenderViewData = (props) => {
           >
             Groups I manage
           </label>
-          <ViewDataTable />
+          <ViewDataTable {...props} />
         </div>
       )}
     </Fragment>
@@ -56,7 +57,24 @@ class DataPanel extends Component {
   // 1. handle the logic of rendering data in either view-mode (no interactions) vs edit-mode (alterations allowed)
   //
 
-  state = { editDataMode: true };
+  state = { editDataMode: false };
+
+  toggleEditMode = () => {
+    console.log("you're toggling state.editDataMode");
+    this.setState(
+      (prevState) => {
+        return {
+          editDataMode: !prevState.editDataMode,
+        };
+      },
+      () => {
+        console.log(
+          "this is the updated state.editDataMode:",
+          this.state.editDataMode
+        );
+      }
+    );
+  };
 
   render() {
     return (
@@ -67,7 +85,10 @@ class DataPanel extends Component {
           margin: "1rem 0 ",
         }}
       >
-        <RenderViewData editDataMode={this.state.editDataMode} />
+        <RenderViewData 
+          toggleEditMode={this.toggleEditMode}
+          editDataMode={this.state.editDataMode}
+        />
         <RenderEditData editDataMode={this.state.editDataMode} />
       </div>
     );

@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 // import DataTableRow from "./DataTableRow/DataTableRow";
 
-const ViewDataTable = () => {
+const ViewDataTable = (props) => {
   // let data = this.props.data;
   // console.log("this is data in Table", data);
+  console.log("these are props in VireDataTable", props);
 
   return (
     <div className="groups-grid">
@@ -55,6 +56,9 @@ const ViewDataTable = () => {
                 fontWeight: "400",
               }}
               className={"edit-button"}
+              onClick={() => {
+                props.toggleEditMode();
+              }}
             >
               edit
             </button>
