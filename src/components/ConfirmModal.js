@@ -48,7 +48,7 @@ class ConfirmModal extends Component {
           <ModalFooter>
             <EduIDButton
               className="modal-button ok-button"
-              disabled={this.props.invalid}
+              disabled={!this.props.formEnabled}
               onClick={this.props.handleConfirm}
             >
               {this.props.translate("cm.ok")}
