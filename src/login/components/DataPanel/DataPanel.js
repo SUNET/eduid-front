@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import DataTableGroups from "../DataTable/DataTableGroups";
+import ViewDataTable from "../DataTable/ViewDataTable";
 
 const RenderViewData = (props) => {
   // this is a placeholder button for now
@@ -24,7 +24,7 @@ const RenderViewData = (props) => {
           >
             Groups I manage
           </label>
-          <DataTableGroups />
+          <ViewDataTable />
         </div>
       )}
     </Fragment>

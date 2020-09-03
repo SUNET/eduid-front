@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 // import DataTableRow from "./DataTableRow/DataTableRow";
 
-const DataTableGroups = () => {
+const ViewDataTable = () => {
   // let data = this.props.data;
   // console.log("this is data in Table", data);
 
@@ -167,11 +167,11 @@ const DataTableGroups = () => {
   );
 };
 
-DataTableGroups.propTypes = {
+ViewDataTable.propTypes = {
   data: PropTypes.any,
   handleStartConfirmation: PropTypes.func,
   handleMakePrimary: PropTypes.func,
   handleRemove: PropTypes.func,
 };
 
-export default i18n(DataTableGroups);
+export default i18n(ViewDataTable);
