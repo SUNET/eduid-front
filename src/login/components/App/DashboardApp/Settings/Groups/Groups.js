@@ -3,15 +3,7 @@ import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
 import checkForCookie from "../../../../../app_utils/checkForCookie";
 import WizardPanel from "../../../../Wizard/WizardPanel";
-
-const RenderDataPanel = () => {
-  // this is just a placeholder function for the actual </DataPanel> component that will be here (problably a class component)
-  return (
-    <div className={"data-panel"}>
-      <p>This will be the DataPanel component</p>
-    </div>
-  );
-};
+import DataPanel from "../../../../DataPanel/DataPanel";
 
 const RenderCreateButton = (props) => {
   // this is a placeholder button for now
@@ -23,6 +15,7 @@ const RenderCreateButton = (props) => {
             backgroundColor: "transparent",
             boxShadow: "0 0 0",
             textDecoration: "underline",
+            margin: "0",
           }}
           className={"create-group"}
         >
@@ -67,7 +60,12 @@ class Groups extends Component {
 
     if (showComponent) {
       return (
-        <article>
+        <article
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <div className="intro">
             <div
               style={{
@@ -87,7 +85,7 @@ class Groups extends Component {
               renderCreateButton={this.renderCreateButton}
               firstGroup={this.state.firstGroup}
             />
-            <RenderDataPanel />
+            <DataPanel />
           </div>
         </article>
       );
