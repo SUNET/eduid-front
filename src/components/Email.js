@@ -90,6 +90,8 @@ class Email extends Component {
           mainText={this.props.tou}
           acceptButtonText={this.props.translate("tou.accept")}
           closeButtonText={this.props.translate("tou.cancel")}
+          acceptButtonId={"accept-tou-button"}
+          closeButtonId={"reject-tou-button"}
         />
       </div>,
       //   <Modal isOpen={this.props.acceptingTOU} id="register-modal">
