@@ -15,9 +15,9 @@ class LookupMobileProofing extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
-        />
+        />,
       ];
-      if (this.props.phoneNumbers[0].verified) {
+      if (this.props.primaryPhoneNumber[0].verified) {
         modalPrompt = [
           <GenericConfirmModal
             key="0"
@@ -27,7 +27,7 @@ class LookupMobileProofing extends Component {
             showModal={this.props.showModal}
             closeModal={this.props.handleCloseModal}
             acceptModal={this.props.handleLookupMobile}
-          />
+          />,
         ];
       }
     } else {
@@ -40,7 +40,7 @@ class LookupMobileProofing extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
-        />
+        />,
       ];
     }
 
@@ -48,7 +48,6 @@ class LookupMobileProofing extends Component {
       <div key="0">
         <div key="0" className="vetting-button">
           <button
-            // className="proofing-button"
             disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
           >
@@ -67,7 +66,7 @@ class LookupMobileProofing extends Component {
 }
 
 LookupMobileProofing.propTypes = {
-  handleLookupMobile: PropTypes.func
+  handleLookupMobile: PropTypes.func,
 };
 
 export default LookupMobileProofing;
