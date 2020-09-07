@@ -35,6 +35,7 @@ class GenericConfirmModal extends Component {
           }
           <ModalFooter>
             <EduIDButton
+              id={this.props.acceptButtonId}
               className="modal-button ok-button"
               onClick={this.props.acceptModal}
             >
@@ -44,6 +45,7 @@ class GenericConfirmModal extends Component {
               }
             </EduIDButton>
             <EduIDButton
+              id={this.props.closeButtonId}
               className="modal-button cancel-button"
               onClick={this.props.closeModal}
             >
