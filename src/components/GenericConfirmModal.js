@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
 import Modal from "reactstrap/lib/Modal";
 import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
-
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 
@@ -82,7 +80,6 @@ GenericConfirmModal.propTypes = {
   closeModal: PropTypes.func,
   acceptModal: PropTypes.func,
   showModal: PropTypes.bool,
-  //is_fetching: PropTypes.bool,
   confirming: PropTypes.bool
 };
 
