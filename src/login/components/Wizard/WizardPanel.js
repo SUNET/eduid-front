@@ -22,7 +22,9 @@ const RenderFirstGroupWizard = (props) => {
             edit the group and send out invites.
           </p>
           <div>
-            <label>Group name</label>
+            <label style={{ fontSize: "16px", letterSpacing: "0" }}>
+              Group name
+            </label>
             <input style={{ backgroundColor: "#F4F4F4" }} />
           </div>
           <a
