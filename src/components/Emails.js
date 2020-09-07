@@ -7,7 +7,7 @@ import Form from "reactstrap/lib/Form";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 import DataTable from "../login/components/DataTable/DataTable";
-import ConfirmModal from "./ConfirmModal";
+import ConfirmModal from "../containers/ConfirmModal";
 
 // import "style/Emails.scss";
 // import "style/DashboardMain.scss";
