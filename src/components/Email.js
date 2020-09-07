@@ -4,13 +4,6 @@ import { connect } from "react-redux";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "reactstrap";
-
 import EduIDButton from "components/EduIDButton";
 import GenericConfirmModal from "components/GenericConfirmModal";
 
@@ -93,28 +86,7 @@ class Email extends Component {
           acceptButtonId={"accept-tou-button"}
           closeButtonId={"reject-tou-button"}
         />
-      </div>,
-      //   <Modal isOpen={this.props.acceptingTOU} id="register-modal">
-      //     <ModalHeader>{this.props.translate("tou.header")}</ModalHeader>
-      //     <ModalBody dangerouslySetInnerHTML={{ __html: this.props.tou }} />
-      //     <ModalFooter>
-      //       <EduIDButton
-      //         id="accept-tou-button"
-      //         className="modal-button ok-button"
-      //         onClick={this.props.handleAccept}
-      //       >
-      //         {this.props.translate("tou.accept")}
-      //       </EduIDButton>
-      //       <EduIDButton
-      //         className="modal-button cancel-button"
-      //         id="reject-tou-button"
-      //         onClick={this.props.handleReject}
-      //       >
-      //         {this.props.translate("tou.cancel")}
-      //       </EduIDButton>
-      //     </ModalFooter>
-      //   </Modal>
-     
+      </div>
     ];
   }
 }
