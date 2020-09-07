@@ -19,7 +19,7 @@ class GenericConfirmModal extends Component {
         aria-hidden="true"
         data-backdrop="true"
       >
-        <Modal isOpen={this.props.showModal}>
+        <Modal isOpen={this.props.showModal} className={this.props.modalId}>
           <ModalHeader>{this.props.title}</ModalHeader>
           {
             this.props.modalId === "register-modal" ?
