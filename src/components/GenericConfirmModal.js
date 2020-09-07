@@ -21,12 +21,18 @@ class GenericConfirmModal extends Component {
       >
         <Modal isOpen={this.props.showModal}>
           <ModalHeader>{this.props.title}</ModalHeader>
-
-          <ModalBody>
-            <div>
-              <p>{this.props.mainText}</p>
-            </div>
-          </ModalBody>
+          {
+            this.props.modalId === "register-modal" ?
+            <ModalBody 
+              dangerouslySetInnerHTML={{ __html: this.props.mainText }} 
+            />
+            : 
+            <ModalBody>
+              <div>
+                <p>{this.props.mainText}</p>
+              </div>
+            </ModalBody>
+          }
           <ModalFooter>
             <EduIDButton
               className="modal-button ok-button"
