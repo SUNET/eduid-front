@@ -11,47 +11,61 @@ import EduIDButton from "components/EduIDButton";
 
 class GenericConfirmModal extends Component {
   render() {
+    const { 
+      modalId, 
+      showModal, 
+      title, 
+      mainText, 
+      acceptButtonId, 
+      acceptModal, 
+      closeModal,
+      acceptButtonText, 
+      closeButtonId, 
+      closeButtonText, 
+      translate 
+    } = this.props;
+
     return (
       <div
-        id={this.props.modalId}
+        id={modalId}
         tabIndex="-1"
         role="dialog"
         aria-hidden="true"
         data-backdrop="true"
       >
-        <Modal isOpen={this.props.showModal} className={this.props.modalId}>
-          <ModalHeader>{this.props.title}</ModalHeader>
+        <Modal isOpen={showModal} className={modalId}>
+          <ModalHeader>{title}</ModalHeader>
           {
-            this.props.modalId === "register-modal" ?
+            modalId === "register-modal" ?
             <ModalBody 
-              dangerouslySetInnerHTML={{ __html: this.props.mainText }} 
+              dangerouslySetInnerHTML={{ __html: mainText }} 
             />
             : 
             <ModalBody>
               <div>
-                <p>{this.props.mainText}</p>
+                <p>{mainText}</p>
               </div>
             </ModalBody>
           }
           <ModalFooter>
             <EduIDButton
-              id={this.props.acceptButtonId}
+              id={acceptButtonId}
               className="modal-button ok-button"
-              onClick={this.props.acceptModal}
+              onClick={acceptModal}
             >
               {
-                this.props.acceptButtonText ? this.props.acceptButtonText 
-                : this.props.translate("cm.accept")
+                acceptButtonText ? acceptButtonText 
+                : translate("cm.accept")
               }
             </EduIDButton>
             <EduIDButton
-              id={this.props.closeButtonId}
+              id={closeButtonId}
               className="modal-button cancel-button"
-              onClick={this.props.closeModal}
+              onClick={closeModal}
             >
               {
-                this.props.closeButtonText ? this.props.closeButtonText 
-                : this.props.translate("cm.cancel")
+                closeButtonText ? closeButtonText 
+                : translate("cm.cancel")
               }
             </EduIDButton>
           </ModalFooter>
