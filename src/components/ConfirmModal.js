@@ -5,10 +5,8 @@ import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 import ConfirmModalForm from "./ConfirmModalForm";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
-import { isValid, isSubmitting } from 'redux-form';
-import { connect } from "react-redux";
+
 
 class ConfirmModal extends Component {
   render() {
@@ -80,11 +78,4 @@ ConfirmModal.defaultProps = {
   with_resend_link: true
 };
 
-const mapStateToProps = state => {
-  return {
-    formEnabled: isValid('modal-form')(state) && !isSubmitting('modal-form')(state)
-  };
-};
-
-const ConfrimModalContainer = connect(mapStateToProps, null)(ConfirmModal);
-export default i18n(ConfrimModalContainer);
+export default ConfirmModal;
