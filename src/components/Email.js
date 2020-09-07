@@ -87,6 +87,7 @@ class Email extends Component {
           showModal={this.props.acceptingTOU}
           closeModal={this.props.handleReject}
           acceptModal={this.props.handleAccept}
+          mainText={this.props.tou}
         />
       </div>,
       //   <Modal isOpen={this.props.acceptingTOU} id="register-modal">
