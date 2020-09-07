@@ -6,21 +6,10 @@ import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EduIDButton from "components/EduIDButton";
 import GenericConfirmModal from "components/GenericConfirmModal";
+import EduIDButton from "components/EduIDButton";
+import { validate } from "../login/app_utils/validation/validateEmail";
 
 /* FORM */
-
-export const validate = (values) => {
-  const errors = {},
-    email = values.email,
-    pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  if (!email) {
-    errors.email = "required";
-  } else if (!pattern.test(email)) {
-    errors.email = "email.invalid_email";
-  }
-  return errors;
-};
-
 let EmailForm = (props) => (
   <Form id="register-form" role="form" onSubmit={props.handleEmail}>
     <Field

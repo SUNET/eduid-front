@@ -3,28 +3,12 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
-
 import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 import DataTable from "../login/components/DataTable/DataTable";
 import ConfirmModal from "./ConfirmModal";
-
-// import "style/Emails.scss";
-// import "style/DashboardMain.scss";
-// import "style/AccountLinking.scss";
 import "../login/styles/index.scss";
-
-const validate = (values) => {
-  const errors = {},
-    email = values.email,
-    pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  if (!email) {
-    errors.email = "required";
-  } else if (!pattern.test(email)) {
-    errors.email = "emails.invalid_email";
-  }
-  return errors;
-};
+import { validate } from "../login/app_utils/validation/validateEmail";
 
 let EmailForm = (props) => {
   return (
