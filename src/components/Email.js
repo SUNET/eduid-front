@@ -81,7 +81,9 @@ class Email extends Component {
         </p>
       </div>,
       <div key="1">
-        <GenericConfirmModal />
+        <GenericConfirmModal 
+          modalId="register-modal"
+        />
       </div>,
       //   <Modal isOpen={this.props.acceptingTOU} id="register-modal">
       //     <ModalHeader>{this.props.translate("tou.header")}</ModalHeader>
