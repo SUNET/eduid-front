@@ -14,7 +14,7 @@ const mapStateToProps = (state, props) => {
     disabled: !isValid("nins")(state),
     showModal: state.lookup_mobile.showModal,
     phoneNumbers: state.phones.phones,
-    nins: state.nins.nins
+    nins: state.nins.nins,
   };
 };
 

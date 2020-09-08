@@ -5,9 +5,11 @@ import LetterProofingContainer from "containers/LetterProofing";
 import LookupMobileProofingContainer from "containers/LookupMobileProofing";
 import EidasContainer from "containers/Eidas";
 
-let vettingRegistry = (disabled) => ({
+let vettingRegistry = (disabled, props) => ({
   letter: <LetterProofingContainer disabled={disabled} />,
-  lookup_mobile: <LookupMobileProofingContainer disabled={disabled} />,
+  lookup_mobile: (
+    <LookupMobileProofingContainer disabled={disabled} {...props} />
+  ),
   eidas: <EidasContainer disabled={disabled} />,
   oidc: <OpenidConnectContainer disabled={disabled} />,
   oidc_freja: <OpenidConnectFrejaContainer disabled={disabled} />,

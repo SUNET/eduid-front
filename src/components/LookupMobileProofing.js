@@ -5,7 +5,15 @@ import GenericConfirmModal from "components/GenericConfirmModal";
 class LookupMobileProofing extends Component {
   render() {
     let modalPrompt = "";
-    if (this.props.phoneNumbers.length) {
+    let primaryNumber = false;
+    let phoneNumbers = this.props.phoneNumbers;
+
+    // if there are phone numbers, check if one is primary   
+    if (phoneNumbers !== []) {
+      primaryNumber = phoneNumbers.some((num) => num.primary === true);
+    } 
+
+    if (phoneNumbers.length) {
       modalPrompt = [
         <GenericConfirmModal
           key="0"
@@ -15,9 +23,9 @@ class LookupMobileProofing extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
-        />
+        />,
       ];
-      if (this.props.phoneNumbers[0].verified) {
+      if (primaryNumber) {
         modalPrompt = [
           <GenericConfirmModal
             key="0"
@@ -27,7 +35,7 @@ class LookupMobileProofing extends Component {
             showModal={this.props.showModal}
             closeModal={this.props.handleCloseModal}
             acceptModal={this.props.handleLookupMobile}
-          />
+          />,
         ];
       }
     } else {
@@ -40,7 +48,7 @@ class LookupMobileProofing extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
-        />
+        />,
       ];
     }
 
@@ -48,7 +56,6 @@ class LookupMobileProofing extends Component {
       <div key="0">
         <div key="0" className="vetting-button">
           <button
-            // className="proofing-button"
             disabled={this.props.disabled}
             onClick={this.props.handleShowModal}
           >
@@ -67,7 +74,7 @@ class LookupMobileProofing extends Component {
 }
 
 LookupMobileProofing.propTypes = {
-  handleLookupMobile: PropTypes.func
+  handleLookupMobile: PropTypes.func,
 };
 
 export default LookupMobileProofing;
