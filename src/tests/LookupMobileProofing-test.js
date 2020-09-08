@@ -163,29 +163,29 @@ describe("LookupMobileProofing Component", () => {
 //   });
 // });
 
-import {
-  requestLookupMobileProof,
-  fetchLookupMobileProof
-} from "../sagas/LookupMobileProofing";
-import { put, call, select } from "redux-saga/effects";
+// import {
+//   requestLookupMobileProof,
+//   fetchLookupMobileProof
+// } from "../sagas/LookupMobileProofing";
+// import { put, call, select } from "redux-saga/effects";
 
-describe("Async component", () => {
-  it("Sagas requestLookupMobileProof", () => {
-    const generator = requestLookupMobileProof();
+// describe("Async component", () => {
+//   it("Sagas requestLookupMobileProof", () => {
+//     const generator = requestLookupMobileProof();
 
-    let next = generator.next();
-    next = generator.next(fakeState);
+//     let next = generator.next();
+//     next = generator.next(fakeState);
 
-    const action = {
-      type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
-      payload: {
-        csrf_token: "dummy-token"
-      }
-    };
+//     const action = {
+//       type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
+//       payload: {
+//         csrf_token: "dummy-token"
+//       }
+//     };
 
-    generator.next(action);
-    next = generator.next();
-    delete action.payload.csrf_token;
-    expect(next.value).toEqual(put(action));
-  });
-});
+//     generator.next(action);
+//     next = generator.next();
+//     delete action.payload.csrf_token;
+//     expect(next.value).toEqual(put(action));
+//   });
+// });
