@@ -1,44 +1,70 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
 import Modal from "reactstrap/lib/Modal";
 import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
-
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 
 class GenericConfirmModal extends Component {
   render() {
+    const { 
+      modalId, 
+      showModal, 
+      title, 
+      mainText, 
+      acceptButtonId, 
+      acceptModal, 
+      closeModal,
+      acceptButtonText, 
+      closeButtonId, 
+      closeButtonText, 
+      translate 
+    } = this.props;
+
     return (
       <div
-        id={this.props.modalId}
+        id={modalId}
         tabIndex="-1"
         role="dialog"
         aria-hidden="true"
         data-backdrop="true"
       >
-        <Modal isOpen={this.props.showModal}>
-          <ModalHeader>{this.props.title}</ModalHeader>
-
-          <ModalBody>
-            <div>
-              <p>{this.props.mainText}</p>
-            </div>
-          </ModalBody>
+        <Modal isOpen={showModal} className={modalId}>
+          <ModalHeader>{title}</ModalHeader>
+          {
+            modalId === "register-modal" ?
+            <ModalBody 
+              dangerouslySetInnerHTML={{ __html: mainText }} 
+            />
+            : 
+            <ModalBody>
+              <div>
+                <p>{mainText}</p>
+              </div>
+            </ModalBody>
+          }
           <ModalFooter>
             <EduIDButton
+              id={acceptButtonId}
               className="modal-button ok-button"
-              onClick={this.props.acceptModal}
+              onClick={acceptModal}
             >
-              {this.props.translate("cm.accept")}
+              {
+                acceptButtonText ? acceptButtonText 
+                : translate("cm.accept")
+              }
             </EduIDButton>
             <EduIDButton
+              id={closeButtonId}
               className="modal-button cancel-button"
-              onClick={this.props.closeModal}
+              onClick={closeModal}
             >
-              {this.props.translate("cm.cancel")}
+              {
+                closeButtonText ? closeButtonText 
+                : translate("cm.cancel")
+              }
             </EduIDButton>
           </ModalFooter>
         </Modal>
@@ -54,7 +80,6 @@ GenericConfirmModal.propTypes = {
   closeModal: PropTypes.func,
   acceptModal: PropTypes.func,
   showModal: PropTypes.bool,
-  //is_fetching: PropTypes.bool,
   confirming: PropTypes.bool
 };
 

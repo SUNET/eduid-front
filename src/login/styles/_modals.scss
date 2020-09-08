@@ -58,12 +58,12 @@ h5.modal-title {
 }
 
 // temporary styling for register tou
-#register-modal {
+.register-modal{
   & .modal-header {
     padding: 1rem 2rem;
   }
   & .modal-body {
-    padding: 1rem 2rem 0 2rem;
+    padding: 1rem 2rem 1rem 2rem;
     & p {
       font-size: 1rem;
       padding-bottom: 0;
