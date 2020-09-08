@@ -5,7 +5,15 @@ import GenericConfirmModal from "components/GenericConfirmModal";
 class LookupMobileProofing extends Component {
   render() {
     let modalPrompt = "";
-    if (this.props.phoneNumbers.length) {
+    let primaryNumber = false;
+    let phoneNumbers = this.props.phoneNumbers;
+
+    // if there are phone numbers, check if one is primary   
+    if (phoneNumbers !== []) {
+      primaryNumber = phoneNumbers.some((num) => num.primary === true);
+    } 
+
+    if (phoneNumbers.length) {
       modalPrompt = [
         <GenericConfirmModal
           key="0"
@@ -17,7 +25,7 @@ class LookupMobileProofing extends Component {
           acceptModal={this.props.handleCloseModal}
         />,
       ];
-      if (this.props.primaryPhoneNumber[0].verified) {
+      if (primaryNumber) {
         modalPrompt = [
           <GenericConfirmModal
             key="0"

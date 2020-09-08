@@ -10,20 +10,17 @@ import {
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
-  const phoneNumbers = state.phones.phones;
-  const primaryPhoneNumber = phoneNumbers.filter((num) => num.primary === true);
   return {
     disabled: !isValid("nins")(state),
     showModal: state.lookup_mobile.showModal,
-    phoneNumbers,
-    primaryPhoneNumber,
+    phoneNumbers: state.phones.phones,
     nins: state.nins.nins,
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleShowModal: function(e) {
+    handleShowModal: fuqnction(e) {
       dispatch(eduidRMAllNotify());
       dispatch(showModal());
     },
