@@ -20,7 +20,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleShowModal: fuqnction(e) {
+    handleShowModal: function(e) {
       dispatch(eduidRMAllNotify());
       dispatch(showModal());
     },
