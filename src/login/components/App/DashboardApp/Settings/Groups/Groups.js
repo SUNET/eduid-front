@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
 import checkForCookie from "../../../../../app_utils/checkForCookie";
 import WizardPanel from "../../../../Wizard/WizardPanel";
-import DataPanel from "../../../../DataPanel/DataPanel";
+import DataPanel from "../../../../DataPanel/DataPanelContainer";
 
 const RenderCreateButton = (props) => {
   // this is a placeholder button for now
