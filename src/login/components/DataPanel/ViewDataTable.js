@@ -25,7 +25,8 @@ const ViewDataTable = (props) => {
       >
         Groups I manage
       </label>
-      <div className="groups-grid">
+      <pre>{JSON.stringify(props.data, null, 2)}</pre>
+      {/* <div className="groups-grid">
         <div
           style={{
             borderTop: "2px solid white",
@@ -189,7 +190,7 @@ const ViewDataTable = (props) => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
