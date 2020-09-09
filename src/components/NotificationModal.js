@@ -7,7 +7,7 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 
-class GenericConfirmModal extends Component {
+class NotificationModal extends Component {
   render() {
     const { 
       modalId, 
@@ -73,7 +73,7 @@ class GenericConfirmModal extends Component {
   }
 }
 
-GenericConfirmModal.propTypes = {
+NotificationModal.propTypes = {
   modalId: PropTypes.string,
   title: PropTypes.any,
   mainText: PropTypes.any,
@@ -83,4 +83,4 @@ GenericConfirmModal.propTypes = {
   confirming: PropTypes.bool
 };
 
-export default i18n(GenericConfirmModal);
+export default i18n(NotificationModal);

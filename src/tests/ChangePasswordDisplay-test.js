@@ -5,7 +5,7 @@ import { put, select, call } from "redux-saga/effects";
 import { shallow, mount } from "enzyme";
 import fetchMock from "fetch-mock";
 import { addLocaleData, IntlProvider } from "react-intl";
-import GenericConfirmModal from "components/GenericConfirmModal";
+import NotificationModal from "components/NotificationModal";
 import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
 import * as actions from "actions/Security";
 import securityReducer from "reducers/Security";
@@ -73,7 +73,7 @@ describe("ChangePasswordDisplay component", () => {
 
   it("has a modal", () => {
     const { wrapper } = setupComponent();
-    const modal = wrapper.find(GenericConfirmModal);
+    const modal = wrapper.find(NotificationModal);
     expect(modal.exists()).toEqual(true);
   });
 });
@@ -110,7 +110,7 @@ describe("ChangePasswordDisplay component, when confirming_change is (false)", (
   // leave confirming_change as false
   it("does not render a modal", () => {
     const { wrapper } = setupComponent();
-    const modal = wrapper.find(GenericConfirmModal);
+    const modal = wrapper.find(NotificationModal);
     expect(modal.props().showModal).toEqual(false);
   });
 
@@ -154,12 +154,12 @@ describe("ChangePasswordDisplay component, when confirming_change is (true)", ()
   state.security.confirming_change = true;
   it("renders a modal", () => {
     const { wrapper } = setupComponent();
-    const modal = wrapper.find(GenericConfirmModal);
+    const modal = wrapper.find(NotificationModal);
     expect(modal.props().showModal).toEqual(true);
   });
   it("Renders ACCEPT and CANCEL EduIDButtons in modal", () => {
     const { wrapper } = setupComponent();
-    const modal = wrapper.find(GenericConfirmModal);
+    const modal = wrapper.find(NotificationModal);
     const button = modal.find("EduIDButton");
     expect(button.length).toEqual(2);
   });

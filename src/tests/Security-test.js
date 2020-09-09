@@ -957,7 +957,7 @@ describe("Security Component", () => {
       buttonChange = wrapper.find("EduIDButton#security-change-button"),
       buttonWEBAUTHN = wrapper.find("EduIDButton#security-webauthn-button"),
       buttonDelete = wrapper.find("EduIDButton#delete-button"),
-      modalChange = wrapper.find("GenericConfirmModal"),
+      modalChange = wrapper.find("NotificationModal"),
       modalWEBAUTHNDescription = wrapper.find("ConfirmModal"),
       modalDelete = wrapper.find("DeleteModal");
   });
