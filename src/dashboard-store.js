@@ -17,7 +17,7 @@ import notificationsReducer from "reducers/Notifications";
 import eidasReducer from "reducers/Eidas";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
-import groupsDataReducer from "./login/redux/reducers/getAllGroupsData_reducer";
+import groupsDataReducer from "./login/redux/reducers/getAllGroupsDataReducer";
 
 const eduIDApp = combineReducers({
   router: routerReducer,
