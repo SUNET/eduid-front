@@ -5,13 +5,13 @@ import { routerReducer } from "react-router-redux";
 
 import captchaReducer from "reducers/Captcha";
 import signupReducer from "reducers/SignupMain";
-import emailReducer from "reducers/Email";
+import addEmailReducer from "reducers/AddEmail";
 import verifiedReducer from "reducers/CodeVerified";
 import notificationsReducer from "reducers/Notifications";
 
 const eduIDApp = combineReducers({
   config: signupReducer,
-  email: emailReducer,
+  email: addEmailReducer,
   captcha: captchaReducer,
   verified: verifiedReducer,
   router: routerReducer,

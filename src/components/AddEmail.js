@@ -44,7 +44,7 @@ EmailForm = connect((state) => ({
 
 /* COMPONENT */
 
-class Email extends Component {
+class AddEmail extends Component {
   render() {
     return [
       <div key="0" id="content" className="vertical-content-margin">
@@ -79,7 +79,7 @@ class Email extends Component {
   }
 }
 
-Email.propTypes = {
+AddEmail.propTypes = {
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
   translate: PropTypes.func,
@@ -87,4 +87,4 @@ Email.propTypes = {
   handleReject: PropTypes.func,
 };
 
-export default Email;
+export default AddEmail;

@@ -7,7 +7,7 @@ const emailData = {
   tou_accepted: false
 };
 
-let emailReducer = (state = emailData, action) => {
+let addEmailReducer = (state = emailData, action) => {
   switch (action.type) {
     case actions.ADD_EMAIL:
       return {
@@ -32,4 +32,4 @@ let emailReducer = (state = emailData, action) => {
   }
 };
 
-export default emailReducer;
+export default addEmailReducer;

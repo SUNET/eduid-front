@@ -3,15 +3,15 @@ import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
-import EmailContainer from "containers/Email";
-import * as actions from "actions/Email";
-import emailReducer from "reducers/Email";
+import AddEmailContainer from "containers/AddEmail";
+import * as actions from "actions/AddEmail";
+import addEmailReducer from "reducers/AddEmail";
 
 describe("Email Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <EmailContainer />
+        <AddEmailContainer  />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -19,14 +19,14 @@ describe("Email Component", () => {
 
   it("Email address input renders", () => {
     const fullWrapper = setupComponent({
-      component: <EmailContainer />
+      component: <AddEmailContainer  />
     });
     const input = fullWrapper.find("input");
     expect(input.exists()).toEqual(true);
   });
   it("'Register for eduID' button renders", () => {
     const fullWrapper = setupComponent({
-      component: <EmailContainer />
+      component: <AddEmailContainer  />
     });
     const button = fullWrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
@@ -69,7 +69,7 @@ describe("Email reducer", () => {
 
   it("Receives add email action", () => {
     expect(
-      emailReducer(mockState, {
+      addEmailReducer(mockState, {
         type: actions.ADD_EMAIL,
         payload: {
           email: "dummy@example.com"
@@ -84,7 +84,7 @@ describe("Email reducer", () => {
 
   it("Receives an accept tou action", () => {
     expect(
-      emailReducer(mockState, {
+      addEmailReducer(mockState, {
         type: actions.ACCEPT_TOU
       })
     ).toEqual({
@@ -96,7 +96,7 @@ describe("Email reducer", () => {
 
   it("Receives a reject tou action", () => {
     expect(
-      emailReducer(mockState, {
+      addEmailReducer(mockState, {
         type: actions.REJECT_TOU
       })
     ).toEqual({
@@ -113,7 +113,7 @@ describe("Test email Container", () => {
   beforeEach(() => {
     const store = fakeStore(getState());
     dispatch = store.dispatch;
-    wrapper = setupComponent({ component: <EmailContainer />, store: store });
+    wrapper = setupComponent({ component: <AddEmailContainer />, store: store });
  
   it("Clicks the email button", () => {
     wrapper.find("input#email-input").value = "dummy@example.com";
@@ -127,7 +127,7 @@ describe("Test email Container", () => {
   it("Clicks the accept tou button", () => {
     const store = fakeStore(getState({ email: { acceptingTOU: true } }));
     dispatch = store.dispatch;
-    wrapper = setupComponent({ component: <EmailContainer />, store: store });
+    wrapper = setupComponent({ component: <AddEmailContainer />, store: store });
     wrapper.find("input#email-input").value = "dummy@example.com";
     const numCalls = dispatch.mock.calls.length;
     const mockEvent = { preventDefault: () => {} };
@@ -141,7 +141,7 @@ describe("Test email Container", () => {
   it("Clicks the reject tou button", () => {
     const store = fakeStore(getState({ email: { acceptingTOU: true } }));
     dispatch = store.dispatch;
-    wrapper = setupComponent({ component: <EmailContainer />, store: store });
+    wrapper = setupComponent({ component: <AddEmailContainer />, store: store });
     wrapper.find("input#email-input").value = "dummy@example.com";
     const numCalls = dispatch.mock.calls.length;
     const mockEvent = { preventDefault: () => {} };
