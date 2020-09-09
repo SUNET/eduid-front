@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import NotificationModal from "components/NotificationModal";
 import ConfirmModal from "../containers/ConfirmModal";
 
-
 class LetterProofingButton extends Component {
   render() {
     return (
