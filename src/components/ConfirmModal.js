@@ -5,8 +5,8 @@ import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 import ConfirmModalForm from "./ConfirmModalForm";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
+
 
 class ConfirmModal extends Component {
   render() {
@@ -36,13 +36,17 @@ class ConfirmModal extends Component {
         >
           <ModalHeader>{this.props.title}</ModalHeader>
           <ModalBody>
-            <ConfirmModalForm helpBlock={this.props.helpBlock} inputName={this.props.id} {...this.props} />
+            <ConfirmModalForm 
+              helpBlock={this.props.helpBlock} 
+              inputName={this.props.id} 
+              {...this.props} 
+            />
             {resendMarkup}
           </ModalBody>
           <ModalFooter>
             <EduIDButton
               className="modal-button ok-button"
-              disabled={this.props.invalid}
+              disabled={!this.props.formEnabled}
               onClick={this.props.handleConfirm}
             >
               {this.props.translate("cm.ok")}
@@ -74,4 +78,4 @@ ConfirmModal.defaultProps = {
   with_resend_link: true
 };
 
-export default i18n(ConfirmModal);
+export default ConfirmModal;
