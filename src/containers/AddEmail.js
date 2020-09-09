@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import AddEmail from "components/AddEmail";
-import * as actions from "actions/Email";
+import * as actions from "actions/AddEmail";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { history } from "components/SignupMain";
 

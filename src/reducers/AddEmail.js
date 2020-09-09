@@ -1,4 +1,4 @@
-import * as actions from "actions/Email";
+import * as actions from "actions/AddEmail";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const emailData = {
