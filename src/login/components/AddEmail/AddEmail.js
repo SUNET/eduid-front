@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import CustomInput from "../login/components/Inputs/CustomInput";
+import CustomInput from "../../../login/components/Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EduIDButton from "../../../components/EduIDButton";
-import GenericConfirmModal from "../../components/GenericConfirmModal";
-import { validate } from "../login/app_utils/validation/validateEmail";
+import GenericConfirmModal from "../../../components/GenericConfirmModal";
+import { validate } from "../../../login/app_utils/validation/validateEmail";
 
 /* FORM */
 let EmailForm = (props) => (
