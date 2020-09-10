@@ -50,12 +50,12 @@ class DataPanel extends Component {
         }}
       >
         <RenderViewData
-          {...this.props}
+          data={this.props.data}
           toggleEditMode={this.toggleEditMode}
           editDataMode={this.state.editDataMode}
         />
         <RenderEditData
-          {...this.props}
+          data={this.props.data}
           toggleEditMode={this.toggleEditMode}
           editDataMode={this.state.editDataMode}
         />
