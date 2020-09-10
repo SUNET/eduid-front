@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import Email from "components/Email";
-import * as actions from "actions/Email";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
-import { history } from "components/SignupMain";
+import AddEmail from "./AddEmail";
+import * as actions from "../../redux/actions/addEmailActions";
+import i18n from "../../translation/InjectIntl_HOC_factory";
+import { history } from "../../../components/SignupMain";
 
 const mapStateToProps = (state, props) => {
   const lang = state.intl.locale;
@@ -46,6 +46,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const EmailContainer = connect(mapStateToProps, mapDispatchToProps)(Email);
+const AddEmailContainer = connect(mapStateToProps, mapDispatchToProps)(AddEmail);
 
-export default i18n(EmailContainer);
+export default i18n(AddEmailContainer);

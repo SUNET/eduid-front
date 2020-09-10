@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
-import EduIDButton from "components/EduIDButton";
-import GenericConfirmModal from "components/GenericConfirmModal";
+import EduIDButton from "../../../components/EduIDButton";
+import GenericConfirmModal from "../../components/GenericConfirmModal";
 import { validate } from "../login/app_utils/validation/validateEmail";
 
 /* FORM */
@@ -44,7 +44,7 @@ EmailForm = connect((state) => ({
 
 /* COMPONENT */
 
-class Email extends Component {
+class AddEmail extends Component {
   render() {
     return [
       <div key="0" id="content" className="vertical-content-margin">
@@ -79,7 +79,7 @@ class Email extends Component {
   }
 }
 
-Email.propTypes = {
+AddEmail.propTypes = {
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
   translate: PropTypes.func,
@@ -87,4 +87,4 @@ Email.propTypes = {
   handleReject: PropTypes.func,
 };
 
-export default Email;
+export default AddEmail;
