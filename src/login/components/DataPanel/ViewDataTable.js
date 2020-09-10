@@ -6,7 +6,7 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 const ViewDataTable = (props) => {
   // let data = this.props.data;
   // console.log("this is data in Table", data);
-  console.log("these are props in VireDataTable", props);
+  console.log("these are props in ViewDataTable", props);
 
   return (
     <div
@@ -16,16 +16,42 @@ const ViewDataTable = (props) => {
       }}
       className={"view-data"}
     >
-      <label
+      <div
         style={{
-          fontSize: "16px",
-          letterSpacing: "0",
-          paddingBottom: "10px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline"
         }}
       >
-        Groups I manage
-      </label>
-      <div className="groups-grid">
+        <label
+          style={{
+            fontSize: "16px",
+            letterSpacing: "0",
+            paddingBottom: "10px",
+          }}
+        >
+          Groups I manage
+        </label>
+        <a href="#">
+          <button
+            style={{
+              backgroundColor: "transparent",
+              boxShadow: "0 0 0",
+              textDecoration: "underline",
+              margin: "0",
+              fontWeight: "400",
+            }}
+            className={"edit-button"}
+            onClick={() => {
+              props.toggleEditMode();
+            }}
+          >
+            edit
+          </button>
+        </a>
+      </div>
+      <pre>{JSON.stringify(props.data, null, 2)}</pre>
+      {/* <div className="groups-grid">
         <div
           style={{
             borderTop: "2px solid white",
@@ -189,7 +215,7 @@ const ViewDataTable = (props) => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

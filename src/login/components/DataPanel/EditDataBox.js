@@ -16,7 +16,7 @@ const EditDataBox = (props) => {
       className={"edit-data"}
     >
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <p style={{ fontWeight: "700" }}>Edit your group First ever group</p>
+        <p style={{ fontWeight: "700" }}>Edit your group</p>
         <a href="#">
           <button
             style={{
@@ -27,6 +27,9 @@ const EditDataBox = (props) => {
               fontWeight: "400",
             }}
             className={"save-button"}
+            onClick={() => {
+              props.toggleEditMode();
+            }}
           >
             save
           </button>
@@ -75,7 +78,8 @@ const EditDataBox = (props) => {
           margin: "1rem 0",
         }}
       >
-        <p style={{ fontWeight: "700" }}> Invite people to your group</p>
+        <pre>{JSON.stringify(props.data, null, 2)}</pre>
+        {/* <p style={{ fontWeight: "700" }}> Invite people to your group</p>
         <p>
           You can invite people to a group via their email address. All invites
           will be sent to members, but you can upgrade specific individials to
@@ -97,8 +101,8 @@ const EditDataBox = (props) => {
             >
               ADD
             </button>
-          </div>
-        </div>
+          </div> 
+        </div>*/}
       </div>
     </div>
   );
