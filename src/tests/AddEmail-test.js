@@ -4,8 +4,8 @@ import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import AddEmailContainer from "../login/components/AddEmail/AddEmailContainer";
-import * as actions from "actions/Email";
-import emailReducer from "reducers/Email";
+import * as actions from "../login/redux/actions/addEmailActions";
+import addEmailReducer from "../login/redux/reducers/addEmailReducer";
 
 describe("Email Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -69,7 +69,7 @@ describe("Email reducer", () => {
 
   it("Receives add email action", () => {
     expect(
-      emailReducer(mockState, {
+      addEmailReducer(mockState, {
         type: actions.ADD_EMAIL,
         payload: {
           email: "dummy@example.com"
@@ -84,7 +84,7 @@ describe("Email reducer", () => {
 
   it("Receives an accept tou action", () => {
     expect(
-      emailReducer(mockState, {
+      addEmailReducer(mockState, {
         type: actions.ACCEPT_TOU
       })
     ).toEqual({
@@ -96,7 +96,7 @@ describe("Email reducer", () => {
 
   it("Receives a reject tou action", () => {
     expect(
-      emailReducer(mockState, {
+      addEmailReducer(mockState, {
         type: actions.REJECT_TOU
       })
     ).toEqual({
