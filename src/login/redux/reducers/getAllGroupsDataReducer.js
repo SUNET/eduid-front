@@ -1,4 +1,4 @@
-import * as actions from "../actions/getAllGroupsData_actions";
+import * as actions from "../actions/getAllGroupsDataActions";
 
 const groupsData = {
   message: "",

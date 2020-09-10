@@ -110,6 +110,10 @@ button.btn.modal-button {
     background: transparent;
     transform: scale(1);
   }
+  &:disabled,
+  .disabled {
+    color: #7c7c7c;
+  }
 }
 
 /* color for OK and ACCEPT buttons in modals */
@@ -125,6 +129,7 @@ button.ok-button {
     border: solid 1px $orange-highlight;
     color: $orange-highlight;
   }
+
 }
 
 /* color for CANCEL and CLOSE buttons in modals */

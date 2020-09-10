@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import ConfirmModal from "components/ConfirmModal";
+import ConfirmModal from "../containers/ConfirmModal";
 import GenericConfirmModal from "components/GenericConfirmModal";
 
 class LetterProofingButton extends Component {
