@@ -54,7 +54,11 @@ class DataPanel extends Component {
           toggleEditMode={this.toggleEditMode}
           editDataMode={this.state.editDataMode}
         />
-        <RenderEditData editDataMode={this.state.editDataMode} />
+        <RenderEditData
+          {...this.props}
+          toggleEditMode={this.toggleEditMode}
+          editDataMode={this.state.editDataMode}
+        />
       </div>
     );
   }
