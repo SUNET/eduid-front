@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-import ConfirmModal from "components/ConfirmModal";
+import ConfirmModal from "../containers/ConfirmModal";
+
 import "../login/styles/index.scss";
 
 class Security extends Component {
