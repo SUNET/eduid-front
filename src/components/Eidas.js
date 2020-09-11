@@ -11,6 +11,7 @@ import Modal from "reactstrap/lib/Modal";
 import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
+import NotificationModal from "../login/components/Modals/NotificationModal";
 
 class Eidas extends Component {
   render() {
@@ -47,7 +48,8 @@ class Eidas extends Component {
             </div>
           </button>
         </div>
-        <div
+        <NotificationModal />
+        {/* <div
           id="eidas-info-dialog"
           tabIndex="-1"
           role="dialog"
@@ -78,7 +80,7 @@ class Eidas extends Component {
               </EduIDButton>
             </ModalFooter>
           </Modal>
-        </div>
+        </div> */}
       </div>
     );
   }
