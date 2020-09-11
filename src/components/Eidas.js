@@ -55,6 +55,8 @@ class Eidas extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleHideModal}
           mainText={freja_instructions}
+          closeText={this.props.translate("cm.close")}
+          closeButtonId={"eidas-hide-modal"}
         />
         {/* <div
           id="eidas-info-dialog"
