@@ -54,6 +54,7 @@ class Eidas extends Component {
           href={this.props.eidas_sp_freja_idp_url}
           showModal={this.props.showModal}
           closeModal={this.props.handleHideModal}
+          mainText={freja_instructions}
         />
         {/* <div
           id="eidas-info-dialog"
