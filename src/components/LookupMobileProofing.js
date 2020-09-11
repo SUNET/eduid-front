@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import GenericConfirmModal from "components/GenericConfirmModal";
+import NotificationModal from "../login/components/Modals/NotificationModal";
 
 class LookupMobileProofing extends Component {
   render() {
@@ -15,7 +15,7 @@ class LookupMobileProofing extends Component {
 
     if (phoneNumbers.length) {
       modalPrompt = [
-        <GenericConfirmModal
+        <NotificationModal
           key="0"
           modalId="mobileGenericConfirmDialog"
           title={this.props.translate("lmp.modal_reminder_to_confirm_title")}
@@ -27,7 +27,7 @@ class LookupMobileProofing extends Component {
       ];
       if (primaryNumber) {
         modalPrompt = [
-          <GenericConfirmModal
+          <NotificationModal
             key="0"
             modalId="mobileGenericConfirmDialog"
             title={this.props.translate("lmp.modal_confirm_title")}
@@ -40,7 +40,7 @@ class LookupMobileProofing extends Component {
       }
     } else {
       modalPrompt = [
-        <GenericConfirmModal
+        <NotificationModal
           key="0"
           modalId="mobileGenericConfirmDialog"
           title={this.props.translate("lmp.modal_add_number_title")}

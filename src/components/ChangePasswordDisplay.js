@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
-import GenericConfirmModal from "components/GenericConfirmModal";
-
+import NotificationModal from "../login/components/Modals/NotificationModal";
 import "../login/styles/index.scss";
 
 class ChangePasswordDisplay extends Component {
@@ -24,7 +23,7 @@ class ChangePasswordDisplay extends Component {
             </EduIDButton>
           </div>
         </div>
-        <GenericConfirmModal
+        <NotificationModal 
           modalId="securityConfirmDialog"
           title={this.props.translate("settings.confirm_title_chpass")}
           mainText={this.props.translate("settings.change_info")}
