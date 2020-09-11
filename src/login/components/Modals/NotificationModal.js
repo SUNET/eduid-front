@@ -46,16 +46,29 @@ class NotificationModal extends Component {
             </ModalBody>
           }
           <ModalFooter>
+          { href ?
+            <EduIDButton
+              id={acceptButtonId}
+              className="modal-button ok-button"
+              href={href}
+            >
+            {
+              acceptButtonText ? acceptButtonText 
+              : translate("cm.accept")
+            }
+            </EduIDButton>
+          :
             <EduIDButton
               id={acceptButtonId}
               className="modal-button ok-button"
               onClick={acceptModal}
             >
-              {
-                acceptButtonText ? acceptButtonText 
-                : translate("cm.accept")
-              }
+            {
+              acceptButtonText ? acceptButtonText 
+              : translate("cm.accept")
+            }
             </EduIDButton>
+          }
             <EduIDButton
               id={closeButtonId}
               className="modal-button cancel-button"
