@@ -41,7 +41,7 @@ class NotificationModal extends Component {
             : 
             <ModalBody>
               <div>
-                <p>{mainText}</p>
+                {mainText}
               </div>
             </ModalBody>
           }
