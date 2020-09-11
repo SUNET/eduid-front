@@ -48,7 +48,9 @@ class Eidas extends Component {
             </div>
           </button>
         </div>
-        <NotificationModal />
+        <NotificationModal 
+          modalId="eidas-info-dialog"
+        />
         {/* <div
           id="eidas-info-dialog"
           tabIndex="-1"
