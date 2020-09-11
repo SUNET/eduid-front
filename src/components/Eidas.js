@@ -50,6 +50,7 @@ class Eidas extends Component {
         </div>
         <NotificationModal 
           modalId="eidas-info-dialog"
+          title={this.props.translate("eidas.modal_title")}
         />
         {/* <div
           id="eidas-info-dialog"
