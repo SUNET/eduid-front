@@ -7,6 +7,43 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import i18n from "../../../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../components/EduIDButton";
 
+const RenderAcceptButton = ({ 
+  href, 
+  acceptButtonId, 
+  acceptModal, 
+  acceptButtonText, 
+  translate 
+})=>{
+  return(
+    href ?
+    <>
+      <EduIDButton
+        id={acceptButtonId}
+        className="modal-button ok-button"
+        href={href}
+      >
+      {
+        acceptButtonText ? acceptButtonText 
+        : translate("cm.accept")
+      }
+      </EduIDButton>
+    </>
+    :
+    <>
+      <EduIDButton
+        id={acceptButtonId}
+        className="modal-button ok-button"
+        onClick={acceptModal}
+      >
+      {
+        acceptButtonText ? acceptButtonText 
+        : translate("cm.accept")
+      }
+      </EduIDButton>
+    </>
+  )
+}
+
 const RenderModalBody = ({ modalId, mainText }) => {
   return (
     modalId === "register-modal" ?
@@ -55,29 +92,13 @@ class NotificationModal extends Component {
           />
 
           <ModalFooter>
-          { href ?
-            <EduIDButton
-              id={acceptButtonId}
-              className="modal-button ok-button"
+            <RenderAcceptButton 
+              acceptButtonId={acceptButtonId}
+              acceptModal={acceptModal} 
+              acceptButtonText={acceptButtonText} 
+              translate={translate}
               href={href}
-            >
-            {
-              acceptButtonText ? acceptButtonText 
-              : translate("cm.accept")
-            }
-            </EduIDButton>
-          :
-            <EduIDButton
-              id={acceptButtonId}
-              className="modal-button ok-button"
-              onClick={acceptModal}
-            >
-            {
-              acceptButtonText ? acceptButtonText 
-              : translate("cm.accept")
-            }
-            </EduIDButton>
-          }
+            />
             <EduIDButton
               id={closeButtonId}
               className="modal-button cancel-button"
