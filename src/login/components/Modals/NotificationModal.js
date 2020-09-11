@@ -7,6 +7,21 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import i18n from "../../../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../components/EduIDButton";
 
+const RenderModalBody = ({ modalId, mainText }) => {
+  return (
+    modalId === "register-modal" ?
+    <ModalBody 
+      dangerouslySetInnerHTML={{ __html: mainText }} 
+    />
+    : 
+    <ModalBody>
+      <div>
+        {mainText}
+      </div>
+    </ModalBody>
+  )
+}
+
 class NotificationModal extends Component {
   render() {
     const { 
@@ -34,18 +49,11 @@ class NotificationModal extends Component {
       >
         <Modal isOpen={showModal} className={modalId}>
           <ModalHeader>{title}</ModalHeader>
-          {
-            modalId === "register-modal" ?
-            <ModalBody 
-              dangerouslySetInnerHTML={{ __html: mainText }} 
-            />
-            : 
-            <ModalBody>
-              <div>
-                {mainText}
-              </div>
-            </ModalBody>
-          }
+          <RenderModalBody 
+            modalId={modalId} 
+            mainText={mainText}
+          />
+
           <ModalFooter>
           { href ?
             <EduIDButton
