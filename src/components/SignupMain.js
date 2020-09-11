@@ -6,7 +6,7 @@ import { createBrowserHistory } from "history";
 import SplashContainer from "containers/Splash";
 import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
-import AddEmailContainer from "../login/components/AddEmail/AddEmailContainer";
+import RegisterEmailContainer from "../login/components/RegisterEmail/RegisterEmailContainer";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";
 import ResendCodeContainer from "containers/ResendCode";
@@ -83,7 +83,7 @@ class SignupMain extends Component {
               path={`${BASE_PATH}`}
               component={() => <Redirect to={redirect} />}
             />
-            <Route path={`${BASE_PATH}/email`} component={AddEmailContainer} />
+            <Route path={`${BASE_PATH}/email`} component={RegisterEmailContainer} />
             <Route
               path={`${BASE_PATH}/trycaptcha`}
               component={CaptchaContainer}

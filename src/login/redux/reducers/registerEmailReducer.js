@@ -1,4 +1,4 @@
-import * as actions from "../actions/addEmailActions";
+import * as actions from "../actions/registerEmailActions";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const emailData = {
@@ -7,7 +7,7 @@ const emailData = {
   tou_accepted: false
 };
 
-let emailReducer = (state = emailData, action) => {
+let registerEmailReducer = (state = emailData, action) => {
   switch (action.type) {
     case actions.ADD_EMAIL:
       return {
@@ -32,4 +32,4 @@ let emailReducer = (state = emailData, action) => {
   }
 };
 
-export default emailReducer;
+export default registerEmailReducer;

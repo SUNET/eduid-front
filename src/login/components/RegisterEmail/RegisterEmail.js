@@ -5,7 +5,7 @@ import CustomInput from "../../../login/components/Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EduIDButton from "../../../components/EduIDButton";
-import GenericConfirmModal from "../../../components/GenericConfirmModal";
+import NotificationModal from "../../../login/components/Modals/NotificationModal";
 import { validate } from "../../../login/app_utils/validation/validateEmail";
 
 /* FORM */
@@ -44,7 +44,7 @@ EmailForm = connect((state) => ({
 
 /* COMPONENT */
 
-class AddEmail extends Component {
+class RegisterEmail extends Component {
   render() {
     return [
       <div key="0" id="content" className="vertical-content-margin">
@@ -62,7 +62,7 @@ class AddEmail extends Component {
         </p>
       </div>,
       <div key="1">
-        <GenericConfirmModal 
+        <NotificationModal  
           modalId="register-modal"
           title={this.props.translate("tou.header")}
           showModal={this.props.acceptingTOU}
@@ -79,7 +79,7 @@ class AddEmail extends Component {
   }
 }
 
-AddEmail.propTypes = {
+RegisterEmail.propTypes = {
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
   translate: PropTypes.func,
@@ -87,4 +87,4 @@ AddEmail.propTypes = {
   handleReject: PropTypes.func,
 };
 
-export default AddEmail;
+export default RegisterEmail;
