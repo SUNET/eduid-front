@@ -20,7 +20,8 @@ class NotificationModal extends Component {
       acceptButtonText, 
       closeButtonId, 
       closeButtonText, 
-      translate 
+      translate,
+      href
     } = this.props;
 
     return (
