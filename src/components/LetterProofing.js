@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+import NotificationModal from "../login/components/Modals/NotificationModal";
 import ConfirmModal from "../containers/ConfirmModal";
-import GenericConfirmModal from "components/GenericConfirmModal";
-
 class LetterProofingButton extends Component {
   render() {
     return (
@@ -21,7 +19,7 @@ class LetterProofingButton extends Component {
             </div>
           </button>
         </div>
-        <GenericConfirmModal
+        <NotificationModal
           modalId="letterGenericConfirmDialog"
           title={this.props.translate("letter.modal_confirm_title")}
           mainText={this.props.translate("letter.modal_confirm_info")}
