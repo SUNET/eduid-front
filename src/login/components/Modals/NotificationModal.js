@@ -7,6 +7,26 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import i18n from "../../../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../components/EduIDButton";
 
+const RenderCloseButton = ({ 
+  closeButtonId, 
+  closeModal, 
+  closeButtonText, 
+  translate 
+}) => {
+  return(
+    <EduIDButton
+      id={closeButtonId}
+      className="modal-button cancel-button"
+      onClick={closeModal}
+    >
+      {
+        closeButtonText ? closeButtonText 
+        : translate("cm.cancel")
+      }
+    </EduIDButton>
+  )
+}
+
 const RenderAcceptButton = ({ 
   href, 
   acceptButtonId, 
@@ -90,7 +110,6 @@ class NotificationModal extends Component {
             modalId={modalId} 
             mainText={mainText}
           />
-
           <ModalFooter>
             <RenderAcceptButton 
               acceptButtonId={acceptButtonId}
@@ -99,16 +118,12 @@ class NotificationModal extends Component {
               translate={translate}
               href={href}
             />
-            <EduIDButton
-              id={closeButtonId}
-              className="modal-button cancel-button"
-              onClick={closeModal}
-            >
-              {
-                closeButtonText ? closeButtonText 
-                : translate("cm.cancel")
-              }
-            </EduIDButton>
+            <RenderCloseButton 
+              closeButtonId={closeButtonId}
+              closeModal={closeModal}
+              translate={translate} 
+              closeButtonText={closeButtonText} 
+            />
           </ModalFooter>
         </Modal>
       </div>
