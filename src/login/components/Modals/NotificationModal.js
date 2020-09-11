@@ -72,9 +72,9 @@ const RenderModalBody = ({ modalId, mainText }) => {
     />
     : 
     <ModalBody>
-      <div>
+      <>
         {mainText}
-      </div>
+      </>
     </ModalBody>
   )
 }
