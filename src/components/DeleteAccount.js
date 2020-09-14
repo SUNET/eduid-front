@@ -36,6 +36,7 @@ class DeleteAccount extends Component {
           closeModal={this.props.handleStopConfirmationDeletion}
           acceptModal={this.props.handleConfirmationDeletion}
           mainText={this.props.translate("delete.modal_info")}
+          acceptButtonText={this.props.translate("delete.confirm_button")}
         />
       </div>
     );
