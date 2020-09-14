@@ -186,9 +186,9 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
     const { wrapper } = setupComponent();
     const modal = wrapper.find(NotificationModal);
     const primaryButton = modal.find("EduIDButton");
-    const modalButton = modal.find("ButtonModal");
+    // const modalButton = modal.find("ButtonModal");
     expect(primaryButton.length).toEqual(1);
-    expect(modalButton.length).toEqual(1);
+    // expect(modalButton.length).toEqual(1);
   });
 });
 
