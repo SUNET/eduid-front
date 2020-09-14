@@ -69,14 +69,14 @@ PhoneForm = connect((state) => ({
 }))(PhoneForm);
 
 class AddPhoneNumbers extends Component {
-  constructor(props) {
-    super(props);
-    this.showEmailForm = this.showEmailForm.bind(this);
-    this.state = { formClass: "hide", addLinkClass: "btn-link" };
-  }
 
-  showEmailForm() {
-    this.setState((state, props) => {
+  state = { 
+    formClass: "hide", 
+    addLinkClass: "btn-link" 
+  };
+ 
+  showEmailForm = () => {
+    this.setState(() => {
       return {
         formClass: "form-content",
         addLinkClass: "hide",
