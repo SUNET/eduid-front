@@ -3,16 +3,15 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
-
-import CustomInput from "../login/components/Inputs/CustomInput";
-import EduIDButton from "components/EduIDButton";
-import TableList from "../login/components/DataTable/DataTable";
-import ConfirmModal from "../containers/ConfirmModal";
+import CustomInput from "../Inputs/CustomInput";
+import EduIDButton from "../../../components/EduIDButton";
+import TableList from "../DataTable/DataTable";
+import ConfirmModal from "../../../containers/ConfirmModal";
 
 // import "style/Emails.scss";
 // import "style/Mobile.scss";
 // import "style/DashboardMain.scss";
-import "../login/styles/index.scss";
+import "../../styles/index.scss";
 
 const validate = (values, props) => {
   let phone = values.number;
