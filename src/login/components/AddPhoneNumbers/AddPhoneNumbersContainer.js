@@ -10,9 +10,9 @@ import {
   stopConfirmation,
   startVerify,
   startRemove
-} from "actions/Mobile";
-import { eduidRMAllNotify } from "actions/Notifications";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
+} from "../../redux/actions/addPhoneNumbersActions";
+import { eduidRMAllNotify } from "../../../actions/Notifications";
+import i18n from "../../../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {
