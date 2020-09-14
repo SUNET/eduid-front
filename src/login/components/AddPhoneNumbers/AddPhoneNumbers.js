@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -7,10 +7,6 @@ import CustomInput from "../Inputs/CustomInput";
 import EduIDButton from "../../../components/EduIDButton";
 import TableList from "../DataTable/DataTable";
 import ConfirmModal from "../../../containers/ConfirmModal";
-
-// import "style/Emails.scss";
-// import "style/Mobile.scss";
-// import "style/DashboardMain.scss";
 import "../../styles/index.scss";
 
 const validate = (values, props) => {
