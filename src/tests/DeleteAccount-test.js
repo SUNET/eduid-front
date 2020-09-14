@@ -462,7 +462,7 @@ describe("DeleteAccount Container", () => {
     };
     const deleteModal = getWrapper(true, false, newProps).find("NotificationModal");
     expect(dispatch.mock.calls.length).toEqual(0);
-    deleteModal.props().handleConfirm();
+    deleteModal.props().acceptModal();
     expect(dispatch.mock.calls.length).toEqual(1);
     expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT);
   });
