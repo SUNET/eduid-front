@@ -7,7 +7,7 @@ import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
 import DashboardNav from "./DashboardNav";
 import PersonalDataContainer from "containers/PersonalData";
 import EmailsContainer from "containers/Emails";
-import MobileContainer from "containers/Mobile";
+import AddPhoneNumbersContainer from "../login/components/AddPhoneNumbers/AddPhoneNumbersContainer";
 import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
@@ -37,7 +37,7 @@ class Settings extends Component {
         />
         <Route
           path="/profile/settings/personaldata"
-          component={MobileContainer}
+          component={AddPhoneNumbersContainer}
         />
         <Route path="/profile/settings/personaldata" component={Groups} />
         <Route
