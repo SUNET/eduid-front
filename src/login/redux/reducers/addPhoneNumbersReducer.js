@@ -1,4 +1,4 @@
-import * as actions from "actions/Mobile";
+import * as actions from "../actions/addPhoneNumbersActions";
 
 const mobileData = {
   message: "",
@@ -8,7 +8,7 @@ const mobileData = {
   code: ""
 };
 
-let mobileReducer = (state = mobileData, action) => {
+let addPhoneNumbersReducer = (state = mobileData, action) => {
   switch (action.type) {
     case actions.GET_MOBILES_SUCCESS:
       return {
@@ -81,4 +81,4 @@ let mobileReducer = (state = mobileData, action) => {
       return state;
   }
 };
-export default mobileReducer;
+export default addPhoneNumbersReducer;
