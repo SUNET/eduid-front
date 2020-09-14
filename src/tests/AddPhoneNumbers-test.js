@@ -2,8 +2,8 @@ const mock = require("jest-mock");
 import React from "react";
 import { shallow, mount, render } from "enzyme";
 import expect, { createSpy, spyOn, isSpy } from "expect";
-import * as actions from "actions/Mobile";
-import mobileReducer from "reducers/Mobile";
+import * as actions from "../login/redux/actions/addPhoneNumbersActions";
+import addPhoneNumbersReducer from "../login/redux/reducers/addPhoneNumbersReducer";
 import {
   requestMobile,
   fetchMobiles,
@@ -21,7 +21,7 @@ import {
 import { put, call, select } from "redux-saga/effects";
 
 import Mobile from "components/Mobile";
-import MobileContainer from "containers/Mobile";
+import AddPhoneNumbersContainer from "../login/components/AddPhoneNumbers/AddPhoneNumbersContainer";
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 import fetchMock from "fetch-mock";
@@ -162,7 +162,7 @@ describe("", () => {
 
   it("Receives a GET_MOBILES_SUCCESS action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.GET_MOBILES_SUCCESS,
         payload: {
           phone: 999123123
@@ -179,7 +179,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_MOBILE
       })
     ).toEqual({
@@ -193,7 +193,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_SUCCESS action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_MOBILE_SUCCESS
       })
     ).toEqual({
@@ -207,7 +207,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_MOBILE_FAIL,
         payload: {
           message: "Bad error"
@@ -224,7 +224,7 @@ describe("", () => {
 
   it("Receives a START_CONFIRMATION action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.START_CONFIRMATION,
         payload: {
           phone: 999123123
@@ -241,7 +241,7 @@ describe("", () => {
 
   it("Receives a STOP_CONFIRMATION action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.STOP_CONFIRMATION
       })
     ).toEqual({
@@ -255,7 +255,7 @@ describe("", () => {
 
   it("Receives a START_RESEND_MOBILE_CODE action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE
       })
     ).toEqual({
@@ -269,7 +269,7 @@ describe("", () => {
 
   it("Receives a START_RESEND_MOBILE_CODE_SUCCESS action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE_SUCCESS,
         message: "mobile.resend_success"
       })
@@ -284,7 +284,7 @@ describe("", () => {
 
   it("Receives a START_RESEND_MOBILE_CODE_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE_FAIL,
         payload: {
           message: "Bad error"
@@ -301,7 +301,7 @@ describe("", () => {
 
   it("Receives a START_VERIFY action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.START_VERIFY,
         payload: {
           code: "123456789"
@@ -318,7 +318,7 @@ describe("", () => {
 
   it("Receives a POST_PHONE_VERIFY_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_PHONE_VERIFY_FAIL,
         payload: { message: "Bad error" }
       })
@@ -333,7 +333,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_REMOVE action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_MOBILE_REMOVE,
         payload: {
           phone: 999123123
@@ -350,7 +350,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_REMOVE_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_MOBILE_REMOVE_FAIL,
         payload: {
           message: "Bad error"
@@ -367,7 +367,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_PRIMARY action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY,
         payload: {
           phone: 999123123
@@ -384,7 +384,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_PRIMARY_SUCCESS action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY_SUCCESS,
         message: "mobile.resend_success"
       })
@@ -399,7 +399,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_PRIMARY_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      addPhoneNumbersReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY_FAIL,
         payload: {
           message: "Bad error"
@@ -640,7 +640,7 @@ function setupComponent(store) {
 
   const wrapper = shallow(
     <Provider store={store}>
-      <MobileContainer {...props} />
+      <AddPhoneNumbersContainer {...props} />
     </Provider>
   );
   return {
@@ -678,13 +678,13 @@ describe("Mobile Container", () => {
 
     wrapper = mount(
       <Provider store={store}>
-        <MobileContainer {...mockProps} />
+        <AddPhoneNumbersContainer {...mockProps} />
       </Provider>
     );
-    fulldom = wrapper.find(MobileContainer);
-    fulltext = wrapper.find(MobileContainer).text();
-    mobile = wrapper.find(MobileContainer).props().mobile;
-    language = wrapper.find(MobileContainer).props().language;
+    fulldom = wrapper.find(AddPhoneNumbersContainer);
+    fulltext = wrapper.find(AddPhoneNumbersContainer).text();
+    mobile = wrapper.find(AddPhoneNumbersContainer).props().mobile;
+    language = wrapper.find(AddPhoneNumbersContainer).props().language;
     dispatch = store.dispatch;
   });
 
