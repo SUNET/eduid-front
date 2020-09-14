@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
-import DeleteModal from "components/DeleteModal";
-
+// import DeleteModal from "components/DeleteModal";
+import NotificationModal from "../login/components/Modals/NotificationModal"
 import "../login/styles/index.scss";
 
 class DeleteAccount extends Component {
@@ -32,11 +32,13 @@ class DeleteAccount extends Component {
           </EduIDButton>
         </div>
 
-        <DeleteModal
+        {/* <DeleteModal
           title={this.props.translate("settings.modal_delete_title")}
           showModal={this.props.confirming_deletion}
           closeModal={this.props.handleStopConfirmationDeletion}
           handleConfirm={this.props.handleConfirmationDeletion}
+        /> */}
+        <NotificationModal
         />
       </div>
     );
