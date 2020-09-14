@@ -460,7 +460,7 @@ describe("DeleteAccount Container", () => {
       language: "en",
       confirming_deletion: true
     };
-    const deleteModal = getWrapper(true, false, newProps).find("DeleteModal");
+    const deleteModal = getWrapper(true, false, newProps).find("NotificationModal");
     expect(dispatch.mock.calls.length).toEqual(0);
     deleteModal.props().handleConfirm();
     expect(dispatch.mock.calls.length).toEqual(1);
