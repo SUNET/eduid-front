@@ -23,7 +23,7 @@ h5.modal-title {
 }
 
 .modal-content {
-  background-color: white;
+  background-color: $white;
   border-radius: 20px;
   & .modal-header {
     padding: 2rem;
@@ -33,6 +33,8 @@ h5.modal-title {
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    font-size: 1.25rem;
+    line-height: 1.4;
     & button.btn.settings-button {
       margin: 0 0 1rem 0;
     }

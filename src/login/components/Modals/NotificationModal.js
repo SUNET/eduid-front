@@ -112,14 +112,15 @@ class NotificationModal extends Component {
         data-backdrop="true"
       >
         <Modal isOpen={showModal} className={modalId}>
-          <ModalHeader>{title}
-          <RenderCloseButton 
-            closeButtonId={closeButtonId}
-            closeModal={closeModal}
-            translate={translate} 
-            closeButtonText={closeButtonText} 
-            />
-          </ModalHeader>
+          <ModalHeader>
+            {title}
+            <RenderCloseButton 
+              closeButtonId={closeButtonId}
+              closeModal={closeModal}
+              translate={translate} 
+              closeButtonText={closeButtonText} 
+              />
+            </ModalHeader>
           <RenderModalBody 
             modalId={modalId} 
             mainText={mainText}
