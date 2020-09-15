@@ -104,7 +104,7 @@ a.btn.modal-button,
 button.btn.modal-button {
   box-shadow: none;
   border: solid 1px transparent;
-  background-color: transparent;
+  // background-color: transparent;
   margin: 0.5rem 1rem;
   &:hover {
     background: transparent;
@@ -147,9 +147,13 @@ button.cancel-button {
   }
 }
 
-button.cancel-button svg{
-  fill: #C4C4C4;
+button.cancel-button {
+  background-color: transparent;
+  & svg{
+    fill: #C4C4C4;
+  }
 }
+
 
 /* styles for REMOVE icons */
 // ----- buttons that remove data ----  //
