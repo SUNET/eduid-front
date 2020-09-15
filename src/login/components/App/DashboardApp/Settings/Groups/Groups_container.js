@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Groups from "./Groups";
+import * as actions from "../../../../../redux/actions/createGroupActions";
 import i18n from "../../../../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
@@ -9,12 +10,17 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-  return {};
+  return {
+    handleCreateGroup: () => {
+      console.log("youre in handleCreateGroup");
+      dispatch(actions.postCreateGroup("Test"));
+    },
+  };
 };
 
-const GroupsDataContainer = connect(
+const GroupsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Groups);
 
-export default i18n(GroupsDataContainer);
+export default i18n(GroupsContainer);
