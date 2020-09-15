@@ -149,11 +149,13 @@ button.cancel-button {
 
 button.cancel-button {
   background-color: transparent;
+  padding: 1rem 1.3rem;
+  margin:0 !important;
   & svg{
     fill: #C4C4C4;
+    align-self: center;
   }
 }
-
 
 /* styles for REMOVE icons */
 // ----- buttons that remove data ----  //
