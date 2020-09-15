@@ -27,6 +27,7 @@ h5.modal-title {
   border-radius: 20px;
   & .modal-header {
     padding: 2rem;
+    border-bottom: none;
   }
   & .modal-body {
     padding: 2rem;
@@ -37,6 +38,7 @@ h5.modal-title {
     }
   }
   & .modal-footer {
+    border-top: none;
     & a {
       display: flex;
       align-items: center;
