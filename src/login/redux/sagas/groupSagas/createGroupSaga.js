@@ -1,7 +1,7 @@
 import { call, select, put } from "redux-saga/effects";
-import * as actions from "../actions/createGroupActions";
-import postRequest from "./postDataRequest";
-import { putCsrfToken } from "../../../sagas/common";
+import * as actions from "../../actions/createGroupActions";
+import postRequest from "../postDataRequest";
+import { putCsrfToken } from "../../../../sagas/common";
 
 // saga determining what data going into the POST request and what happens when the response (_SUCESS and _FAIL) is back
 export function* createGroupSaga(action) {

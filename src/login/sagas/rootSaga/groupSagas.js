@@ -3,7 +3,7 @@ import * as configActions from "../../../actions/DashboardConfig";
 import { requestGroupsData } from "../getGroups";
 import { requestGroupsAllData } from "../getGroupsAllData";
 import * as createGroupActions from "../../redux/actions/createGroupActions";
-import { createGroupSaga } from "../../redux/sagas/createGroupSaga";
+import { createGroupSaga } from "../../redux/sagas/groupSagas/createGroupSaga";
 // console.log("this is requestGroupsData in groupsRootSaga", requestGroupsData);
 
 // connecting actions (redux) with sagas (fetch)
