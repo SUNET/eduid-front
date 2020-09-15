@@ -1,9 +1,9 @@
 import { takeLatest } from "redux-saga/effects";
 import * as configActions from "../../../../actions/DashboardConfig";
 import * as createGroupActions from "../../actions/createGroupActions";
-import { allDataSaga } from "../groupSagas/allDataSaga";
-import { groupsSaga } from "../groupSagas/groupsSaga";
-import { createGroupSaga } from "../groupSagas/createGroupSaga";
+import { allDataSaga } from "../groups/allDataSaga";
+import { groupsSaga } from "../groups/groupsSaga";
+import { createGroupSaga } from "../groups/createGroupSaga";
 // console.log("this is groupsSaga in groupsSagas", groupsSaga);
 
 // connecting actions (redux) with sagas (fetch)
