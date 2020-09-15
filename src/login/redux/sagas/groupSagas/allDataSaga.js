@@ -1,5 +1,5 @@
 import { call, put } from "redux-saga/effects";
-import { getData } from "../../../sagas/getData";
+import { getData } from "../getDataRequest";
 import * as actions from "../../actions/getAllGroupsDataActions";
 
 export function* allDataSaga() {
