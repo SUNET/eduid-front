@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     handleCreateGroup: () => {
       console.log("youre in handleCreateGroup");
-      dispatch(actions.postCreateGroup("Test"));
+      dispatch(actions.createGroup("Test"));
     },
   };
 };
