@@ -1,9 +1,9 @@
 import { takeLatest } from "redux-saga/effects";
-import * as configActions from "../../../actions/DashboardConfig";
-import * as createGroupActions from "../../redux/actions/createGroupActions";
-import { allDataSaga } from "../../redux/sagas/groupSagas/allDataSaga";
-import { groupsSaga } from "../../redux/sagas/groupSagas/groupsSaga";
-import { createGroupSaga } from "../../redux/sagas/groupSagas/createGroupSaga";
+import * as configActions from "../../../../actions/DashboardConfig";
+import * as createGroupActions from "../../actions/createGroupActions";
+import { allDataSaga } from "../groupSagas/allDataSaga";
+import { groupsSaga } from "../groupSagas/groupsSaga";
+import { createGroupSaga } from "../groupSagas/createGroupSaga";
 // console.log("this is groupsSaga in groupsSagas", groupsSaga);
 
 // connecting actions (redux) with sagas (fetch)
