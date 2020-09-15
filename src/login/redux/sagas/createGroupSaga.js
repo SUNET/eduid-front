@@ -20,6 +20,6 @@ export function* createGroupSaga(action) {
     yield put(putCsrfToken(createGroupResponse));
   } catch (error) {
     // console.log("groups request errored", error.message);
-    yield put(actions.postCreateGroupFail(error.toString()));
+    yield put(actions.createGroupFail(error.toString()));
   }
 }
