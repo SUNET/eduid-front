@@ -121,7 +121,7 @@ button.btn.modal-button {
 // ----- buttons with actions in modals ----  //
 a.ok-button,
 button.ok-button {
-  color: $orange-highlight;
+  background-color: $orange-highlight;
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
@@ -130,7 +130,6 @@ button.ok-button {
     border: solid 1px $orange-highlight;
     color: $orange-highlight;
   }
-
 }
 
 /* color for CANCEL and CLOSE buttons in modals */
