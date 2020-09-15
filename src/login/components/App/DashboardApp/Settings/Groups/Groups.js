@@ -7,7 +7,7 @@ import DataPanel from "../../../../DataPanel/DataPanelContainer";
 
 const RenderCreateButton = (props) => {
   // this is a placeholder button for now
-  console.log("these are props in RenderCreateButton:", props);
+  // console.log("these are props in RenderCreateButton:", props);
   return (
     <a href="#">
       {!props.firstGroup && (
@@ -36,10 +36,10 @@ class Groups extends Component {
   // - if no wizard: show button
 
   // will start as true and permanently be set to false when wizard is completed
-  state = { firstGroup: true };
+  state = { firstGroup: false};
 
   renderCreateButton = () => {
-    console.log("you're setting state.firstGroup to false ");
+    // console.log("you're setting state.firstGroup to false ");
     this.setState(
       () => {
         return {

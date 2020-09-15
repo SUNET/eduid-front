@@ -6,7 +6,7 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 const ViewDataTable = (props) => {
   // let data = this.props.data;
   // console.log("this is data in Table", data);
-  console.log("these are props in ViewDataTable", props);
+  // console.log("these are props in ViewDataTable", props);
 
   return (
     <div
