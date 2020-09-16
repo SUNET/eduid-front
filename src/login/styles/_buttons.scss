@@ -151,6 +151,7 @@ button.cancel-button {
   background-color: transparent;
   padding: 1rem 1.25rem;
   margin:0 !important;
+  height: 100%;
   & svg{
     fill: #C4C4C4;
     align-self: center;
@@ -223,6 +224,13 @@ button.btn-link {
   margin: 0.5rem 1rem;
 }
 
+@media (max-width: 823px) {
+  button.cancel-button {
+    padding: 0.5rem 0.6rem;
+    width: 10%;
+  }
+}
+
 @media (max-width: 414px) {
   button.btn {
     font-size: 0.9rem;
@@ -238,5 +246,9 @@ button.btn-link {
     width: auto;
     padding: 0;
     // background: yellow;
+  }
+  button.cancel-button {
+    padding: 0.5rem 0.6rem;
+    width: 20%;
   }
 }
