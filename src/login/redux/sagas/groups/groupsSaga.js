@@ -1,6 +1,6 @@
 // import { push } from "react-router-redux";
 import { call } from "redux-saga/effects";
-import { getData } from "./getData";
+import { getData } from "../getDataRequest";
 
 export function* requestGroupsData() {
   const url = GROUP_MGMT_URL + "/groups";

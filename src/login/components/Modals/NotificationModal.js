@@ -7,6 +7,78 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import i18n from "../../../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../components/EduIDButton";
 
+const RenderCloseButton = ({ 
+  closeButtonId, 
+  closeModal, 
+  closeButtonText, 
+  translate 
+}) => {
+  return(
+    <EduIDButton
+      id={closeButtonId}
+      className="modal-button cancel-button"
+      onClick={closeModal}
+    >
+      {
+        closeButtonText ? closeButtonText 
+        : translate("cm.cancel")
+      }
+    </EduIDButton>
+  )
+}
+
+const RenderAcceptButton = ({ 
+  href, 
+  acceptButtonId, 
+  acceptModal, 
+  acceptButtonText, 
+  translate 
+})=>{
+  return(
+    href ?
+    <>
+      <EduIDButton
+        id={acceptButtonId}
+        className="modal-button ok-button"
+        href={href}
+      >
+      {
+        acceptButtonText ? acceptButtonText 
+        : translate("cm.accept")
+      }
+      </EduIDButton>
+    </>
+    :
+    <>
+      <EduIDButton
+        id={acceptButtonId}
+        className="modal-button ok-button"
+        onClick={acceptModal}
+      >
+      {
+        acceptButtonText ? acceptButtonText 
+        : translate("cm.accept")
+      }
+      </EduIDButton>
+    </>
+  )
+}
+
+const RenderModalBody = ({ modalId, mainText }) => {
+  return (
+    modalId === "register-modal" ?
+    <ModalBody 
+      dangerouslySetInnerHTML={{ __html: mainText }} 
+    />
+    : 
+    <ModalBody>
+      <>
+        {mainText}
+      </>
+    </ModalBody>
+  )
+}
+
 class NotificationModal extends Component {
   render() {
     const { 
@@ -20,7 +92,8 @@ class NotificationModal extends Component {
       acceptButtonText, 
       closeButtonId, 
       closeButtonText, 
-      translate 
+      translate,
+      href
     } = this.props;
 
     return (
@@ -33,39 +106,24 @@ class NotificationModal extends Component {
       >
         <Modal isOpen={showModal} className={modalId}>
           <ModalHeader>{title}</ModalHeader>
-          {
-            modalId === "register-modal" ?
-            <ModalBody 
-              dangerouslySetInnerHTML={{ __html: mainText }} 
-            />
-            : 
-            <ModalBody>
-              <div>
-                <p>{mainText}</p>
-              </div>
-            </ModalBody>
-          }
+          <RenderModalBody 
+            modalId={modalId} 
+            mainText={mainText}
+          />
           <ModalFooter>
-            <EduIDButton
-              id={acceptButtonId}
-              className="modal-button ok-button"
-              onClick={acceptModal}
-            >
-              {
-                acceptButtonText ? acceptButtonText 
-                : translate("cm.accept")
-              }
-            </EduIDButton>
-            <EduIDButton
-              id={closeButtonId}
-              className="modal-button cancel-button"
-              onClick={closeModal}
-            >
-              {
-                closeButtonText ? closeButtonText 
-                : translate("cm.cancel")
-              }
-            </EduIDButton>
+            <RenderAcceptButton 
+              acceptButtonId={acceptButtonId}
+              acceptModal={acceptModal} 
+              acceptButtonText={acceptButtonText} 
+              translate={translate}
+              href={href}
+            />
+            <RenderCloseButton 
+              closeButtonId={closeButtonId}
+              closeModal={closeModal}
+              translate={translate} 
+              closeButtonText={closeButtonText} 
+            />
           </ModalFooter>
         </Modal>
       </div>

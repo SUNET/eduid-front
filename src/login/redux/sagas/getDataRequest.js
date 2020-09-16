@@ -1,4 +1,4 @@
-import { checkStatus, getRequest } from "../../sagas/common";
+import { checkStatus, getRequest } from "../../../sagas/common";
 
 export function getData(url) {
   console.log("groups request url", url);
