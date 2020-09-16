@@ -101,7 +101,9 @@ button.close:hover {
 
 /* MODALS */
 a.btn.modal-button,
-button.btn.modal-button {
+button.btn.modal-button,
+button#accept-tou-button
+ {
   box-shadow: none;
   border: solid 1px transparent;
   // background-color: transparent;
