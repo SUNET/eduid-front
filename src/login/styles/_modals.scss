@@ -166,9 +166,11 @@ p.modal-text {
     margin: 0;
   }
   .modal-content {
-    & .modal-header {
-      padding: 1rem;
-  
+    .modal-title {
+      & span {
+        font-size: 1.25rem;
+        padding: 1rem 0 0 1rem;
+      }
     }
     & .modal-body {
       padding: 1rem;
