@@ -63,8 +63,8 @@ function* rootSaga() {
     takeLatest(configActions.GET_JSCONFIG_CONFIG, requestConfig),
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSaga),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
-    takeLatest(configActions.GET_INITIAL_USERDATA, requestCredentials),
-    takeLatest(configActions.GET_INITIAL_USERDATA, requestSuggestedPassword),
+    takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestCredentials),
+    takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestSuggestedPassword),
     ...groupsSagas,
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     takeLatest(
