@@ -5,7 +5,7 @@ import { shallow, mount } from "enzyme";
 import { put, select, call } from "redux-saga/effects";
 import fetchMock from "fetch-mock";
 import { addLocaleData, IntlProvider } from "react-intl";
-import DeleteModal from "components/DeleteModal";
+import NotificationModal from "../login/components/Modals/NotificationModal";
 import DeleteAccountContainer from "containers/DeleteAccount";
 import DeleteAccount from "components/DeleteAccount";
 import * as actions from "actions/Security";
@@ -90,7 +90,7 @@ describe("DeleteAccount component", () => {
   });
   it("has a (hidden) modal", () => {
     const { wrapper } = setupComponent();
-    const modal = wrapper.find(DeleteModal);
+    const modal = wrapper.find(NotificationModal);
     expect(modal.exists()).toEqual(true);
   });
 });
@@ -133,7 +133,7 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
   it("does not render a modal", () => {
     const { wrapper } = setupComponent();
     // console.log(wrapper.debug());
-    const modal = wrapper.find(DeleteModal);
+    const modal = wrapper.find(NotificationModal);
     expect(modal.props().showModal).toEqual(false);
   });
 
@@ -179,16 +179,16 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
   state.security.confirming_deletion = true;
   it("renders a modal", () => {
     const { wrapper } = setupComponent();
-    const modal = wrapper.find(DeleteModal);
+    const modal = wrapper.find(NotificationModal);
     expect(modal.props().showModal).toEqual(true);
   });
   it("Renders DELETE ACCOUNT and CANCEL EduIDButtons in modal", () => {
     const { wrapper } = setupComponent();
-    const modal = wrapper.find(DeleteModal);
+    const modal = wrapper.find(NotificationModal);
     const primaryButton = modal.find("EduIDButton");
-    const modalButton = modal.find("ButtonModal");
-    expect(primaryButton.length).toEqual(1);
-    expect(modalButton.length).toEqual(1);
+    // const modalButton = modal.find("ButtonModal");
+    expect(primaryButton.length).toEqual(2);
+    // expect(modalButton.length).toEqual(1);
   });
 });
 
@@ -460,9 +460,9 @@ describe("DeleteAccount Container", () => {
       language: "en",
       confirming_deletion: true
     };
-    const deleteModal = getWrapper(true, false, newProps).find("DeleteModal");
+    const deleteModal = getWrapper(true, false, newProps).find("NotificationModal");
     expect(dispatch.mock.calls.length).toEqual(0);
-    deleteModal.props().handleConfirm();
+    deleteModal.props().acceptModal();
     expect(dispatch.mock.calls.length).toEqual(1);
     expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_DELETE_ACCOUNT);
   });
