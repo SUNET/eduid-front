@@ -166,12 +166,13 @@ p.modal-text {
   .modal-content {
     .modal-title {
       & span {
-        font-size: 1.25rem;
+        font-size: 1rem;
         padding: 1rem 0 0 1rem;
       }
     }
     & .modal-body {
       padding: 1rem;
+      font-size: 1rem;
       & button.btn.settings-button {
         margin: 0 0 1rem 0;
       }
