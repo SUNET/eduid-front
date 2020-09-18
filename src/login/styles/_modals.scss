@@ -47,6 +47,9 @@ h5.modal-title {
     & button.btn.settings-button {
       margin: 0 0 1rem 0;
     }
+    & input {
+      background-color:$light-gray;
+    }
   }
   & .modal-footer {
     border-top: none;
