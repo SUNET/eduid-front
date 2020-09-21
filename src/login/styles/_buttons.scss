@@ -116,6 +116,7 @@ button#accept-tou-button
   &:disabled,
   .disabled {
     color: $white;
+    background-color: #c4c4c4;
   }
 }
 
