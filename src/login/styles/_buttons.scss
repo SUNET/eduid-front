@@ -117,6 +117,7 @@ button#accept-tou-button
   .disabled {
     color: $white;
     background-color: #c4c4c4;
+    pointer-events: none;
   }
 }
 
