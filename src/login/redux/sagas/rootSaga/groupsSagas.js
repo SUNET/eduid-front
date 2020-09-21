@@ -9,7 +9,6 @@ import { createGroupSaga } from "../groups/createGroupSaga";
 // connecting actions (redux) with sagas (fetch)
 const groupsSagas = [
   // takeLatest(configActions.GET_INITIAL_USERDATA, groupsSaga),
-  takeLatest(configActions.GET_INITIAL_USERDATA, allDataSaga),
   takeLatest(createGroupActions.CREATE_GROUP, createGroupSaga),
 ];
 
