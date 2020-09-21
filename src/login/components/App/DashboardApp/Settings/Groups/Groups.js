@@ -61,46 +61,39 @@ class Groups extends Component {
   }
 
   render() {
-    // const cookieName = "show-groups";
-    // const cookiePattern = "";
-    // const showComponent = checkForCookie(cookieName, cookiePattern);
-
-    // if (showComponent) {
-      return (
-        <article
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <div className="intro">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-              }}
-            >
-              <h4>Groups</h4>
-              <RenderCreateButton
-                handleCreateGroup={this.props.handleCreateGroup}
-                firstGroup={this.state.firstGroup}
-              />
-            </div>
-            <p>
-              Create groups with other eduID users. What the groups are used for
-              is up to you and the local services your univeristy provides.
-            </p>
-            <WizardPanel
-              renderCreateButton={this.renderCreateButton}
+    return (
+      <article
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <div className="intro">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+            }}
+          >
+            <h4>Groups</h4>
+            <RenderCreateButton
+              handleCreateGroup={this.props.handleCreateGroup}
               firstGroup={this.state.firstGroup}
             />
-            <DataPanel />
           </div>
-        </article>
-      );
-    // }
-    // return <div />;
+          <p>
+            Create groups with other eduID users. What the groups are used for
+            is up to you and the local services your univeristy provides.
+          </p>
+          <WizardPanel
+            renderCreateButton={this.renderCreateButton}
+            firstGroup={this.state.firstGroup}
+          />
+          <DataPanel />
+        </div>
+      </article>
+    );
   }
 }
 

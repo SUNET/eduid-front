@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Route, NavLink, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
-import DashboardNav from "./DashboardNav";
 import PersonalDataContainer from "containers/PersonalData";
 import EmailsContainer from "containers/Emails";
 import MobileContainer from "containers/Mobile";
@@ -30,8 +28,6 @@ const RenderGroups = () => {
     </Fragment>
   );
 };
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "style/base.scss";
 
 class Settings extends Component {
   render() {
@@ -55,7 +51,6 @@ class Settings extends Component {
           component={MobileContainer}
         />
         <RenderGroups />
-        {/* <Route path="/profile/settings/personaldata" component={Groups} /> */}
         <Route
           path="/profile/settings/personaldata"
           component={ChangePasswordDisplay}
@@ -81,18 +76,4 @@ class Settings extends Component {
   }
 }
 
-// export default Settings;
-const mapStateToProps = (state, props) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch, props) => {
-  return {};
-};
-
-const SettingsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Settings);
-
-export default i18n(SettingsContainer);
+export default i18n(Settings);

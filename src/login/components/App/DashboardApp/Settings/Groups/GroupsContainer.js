@@ -13,8 +13,6 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handleGetAllData: () => {
-      console.log("this is dispatch,", dispatch);
-      console.log("this is props,", props);
       // console.log("youre in handleGetAllData");
       dispatch(allDataActions.getAllData());
     },
