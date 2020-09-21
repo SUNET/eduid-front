@@ -7,7 +7,28 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import ConfirmModalForm from "./ConfirmModalForm";
 import EduIDButton from "components/EduIDButton";
 
-
+const RenderCloseButton = ({closeModal}) => {
+  return (
+    <>
+      <EduIDButton
+        className="modal-button cancel-button"
+        onClick={closeModal}
+      >
+      <svg
+        className="remove"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M7 0h2v16H7z" />
+        <path d="M0 9V7h16v2z" />
+      </svg>
+      </EduIDButton>
+    </>
+  )
+}
 class ConfirmModal extends Component {
   render() {
     let resendMarkup = "";
@@ -35,22 +56,7 @@ class ConfirmModal extends Component {
           isOpen={this.props.showModal}
         >
           <ModalHeader>{this.props.title}
-            <EduIDButton
-              className="modal-button cancel-button"
-              onClick={this.props.closeModal}
-            >
-            <svg
-              className="remove"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M7 0h2v16H7z" />
-              <path d="M0 9V7h16v2z" />
-            </svg>
-            </EduIDButton>
+          <RenderCloseButton  closeModal={this.props.closeModal}/>
           </ModalHeader>
           <ModalBody>
             <ConfirmModalForm 
