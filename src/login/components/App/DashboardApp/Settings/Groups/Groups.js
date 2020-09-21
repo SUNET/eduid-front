@@ -36,7 +36,7 @@ class Groups extends Component {
   // - if no wizard: show button
 
   // will start as true and permanently be set to false when wizard is completed
-  state = { firstGroup: false};
+  state = { firstGroup: false };
 
   renderCreateButton = () => {
     // console.log("you're setting state.firstGroup to false ");
@@ -54,6 +54,11 @@ class Groups extends Component {
       }
     );
   };
+
+  componentDidMount() {
+    console.log("Groups mounted");
+    this.props.handleGetAllData();
+  }
 
   render() {
     // const cookieName = "show-groups";

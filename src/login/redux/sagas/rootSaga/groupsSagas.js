@@ -1,5 +1,5 @@
 import { takeLatest } from "redux-saga/effects";
-import * as configActions from "../../../../actions/DashboardConfig";
+import * as allDataActions from "../../actions/getAllDataGroupActions";
 import * as createGroupActions from "../../actions/createGroupActions";
 import { allDataSaga } from "../groups/allDataSaga";
 import { groupsSaga } from "../groups/groupsSaga";
@@ -8,8 +8,7 @@ import { createGroupSaga } from "../groups/createGroupSaga";
 
 // connecting actions (redux) with sagas (fetch)
 const groupsSagas = [
-  // takeLatest(configActions.GET_INITIAL_USERDATA, groupsSaga),
-  takeLatest(configActions.GET_INITIAL_USERDATA, allDataSaga),
+  takeLatest(allDataActions.GET_ALL_DATA, allDataSaga),
   takeLatest(createGroupActions.CREATE_GROUP, createGroupSaga),
 ];
 
