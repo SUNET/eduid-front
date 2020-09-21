@@ -56,11 +56,11 @@ class Groups extends Component {
   };
 
   render() {
-    const cookieName = "show-groups";
-    const cookiePattern = "";
-    const showComponent = checkForCookie(cookieName, cookiePattern);
+    // const cookieName = "show-groups";
+    // const cookiePattern = "";
+    // const showComponent = checkForCookie(cookieName, cookiePattern);
 
-    if (showComponent) {
+    // if (showComponent) {
       return (
         <article
           style={{
@@ -94,8 +94,8 @@ class Groups extends Component {
           </div>
         </article>
       );
-    }
-    return <div />;
+    // }
+    // return <div />;
   }
 }
 

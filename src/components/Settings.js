@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, NavLink, Redirect } from "react-router-dom";
@@ -14,6 +14,22 @@ import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
 import Groups from "../login/components/App/DashboardApp/Settings/Groups/GroupsContainer";
 
+import checkForCookie from "../login/app_utils/checkForCookie";
+
+const RenderGroups = () => {
+  // functionality to be removed when groups feature is released
+  const cookieName = "show-groups";
+  const cookiePattern = "";
+  const showComponent = checkForCookie(cookieName, cookiePattern);
+  console.log("this is showComponent in RenderGroups:", showComponent);
+  return (
+    <Fragment>
+      {showComponent && (
+        <Route path="/profile/settings/personaldata" component={Groups} />
+      )}
+    </Fragment>
+  );
+};
 // import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import "style/base.scss";
 
@@ -30,7 +46,6 @@ class Settings extends Component {
           path="/profile/settings/personaldata"
           render={(props) => <PersonalDataContainer {...props} />}
         />
-
         <Route
           path="/profile/settings/personaldata"
           component={EmailsContainer}
@@ -39,7 +54,8 @@ class Settings extends Component {
           path="/profile/settings/personaldata"
           component={MobileContainer}
         />
-        <Route path="/profile/settings/personaldata" component={Groups} />
+        <RenderGroups />
+        {/* <Route path="/profile/settings/personaldata" component={Groups} /> */}
         <Route
           path="/profile/settings/personaldata"
           component={ChangePasswordDisplay}
