@@ -34,7 +34,24 @@ class ConfirmModal extends Component {
           id="confirm-user-data-modal"
           isOpen={this.props.showModal}
         >
-          <ModalHeader>{this.props.title}</ModalHeader>
+          <ModalHeader>{this.props.title}
+            <EduIDButton
+              className="modal-button cancel-button"
+              onClick={this.props.closeModal}
+            >
+            <svg
+              className="remove"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M7 0h2v16H7z" />
+              <path d="M0 9V7h16v2z" />
+            </svg>
+            </EduIDButton>
+          </ModalHeader>
           <ModalBody>
             <ConfirmModalForm 
               helpBlock={this.props.helpBlock} 
@@ -50,12 +67,6 @@ class ConfirmModal extends Component {
               onClick={this.props.handleConfirm}
             >
               {this.props.translate("cm.ok")}
-            </EduIDButton>
-            <EduIDButton
-              className="modal-button cancel-button"
-              onClick={this.props.closeModal}
-            >
-              {this.props.translate("cm.cancel")}
             </EduIDButton>
           </ModalFooter>
         </Modal>
