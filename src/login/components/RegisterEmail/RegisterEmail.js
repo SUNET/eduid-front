@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import CustomInput from "../login/components/Inputs/CustomInput";
+import CustomInput from "../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EduIDButton from "components/EduIDButton";
-import NotificationModal from "../login/components/Modals/NotificationModal";
-import { validate } from "../login/app_utils/validation/validateEmail";
+import NotificationModal from "../Modals/NotificationModal";
+import { validate } from "../../app_utils/validation/validateEmail";
 
 /* FORM */
 let EmailForm = (props) => (
@@ -44,7 +44,7 @@ EmailForm = connect((state) => ({
 
 /* COMPONENT */
 
-class Email extends Component {
+class RegisterEmail extends Component {
   render() {
     return [
       <div key="0" id="content" className="vertical-content-margin">
@@ -79,7 +79,7 @@ class Email extends Component {
   }
 }
 
-Email.propTypes = {
+RegisterEmail.propTypes = {
   acceptingTOU: PropTypes.bool,
   tou: PropTypes.string,
   translate: PropTypes.func,
@@ -87,4 +87,4 @@ Email.propTypes = {
   handleReject: PropTypes.func,
 };
 
-export default Email;
+export default RegisterEmail;
