@@ -9,7 +9,7 @@ import EduIDButton from "components/EduIDButton";
 
 const RenderCloseButton = ({closeModal}) => {
   return (
-    <>
+    <div className="close-button-container">
       <EduIDButton
         className="modal-button cancel-button"
         onClick={closeModal}
@@ -26,7 +26,7 @@ const RenderCloseButton = ({closeModal}) => {
         <path d="M0 9V7h16v2z" />
       </svg>
       </EduIDButton>
-    </>
+    </div>
   )
 }
 class ConfirmModal extends Component {
