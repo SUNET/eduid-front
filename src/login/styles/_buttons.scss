@@ -50,7 +50,6 @@ button.btn-secondary:not(:disabled):not(.disabled):active:focus {
   text-transform: none;
   text-decoration: none;
   border: none;
-  // border: solid 2px $orange-highlight;
   background-color: $orange-opaque;
   margin: 0 0 2rem -0.25rem;
 }
@@ -95,10 +94,6 @@ button.close:hover {
   transform: scale(1.2);
 }
 
-//  {
-//   font-family: "ProximaNova-Regular";
-// }
-
 /* MODALS */
 a.btn.modal-button,
 button.btn.modal-button,
@@ -106,8 +101,7 @@ button#accept-tou-button
  {
   box-shadow: none;
   border: solid 1px transparent;
-  // background-color: transparent;
-  margin: 0.5rem 1rem;
+  margin: 1rem 2rem 1rem 2rem;
   color: $white;
   &:hover {
     background: transparent;
@@ -145,7 +139,6 @@ button.cancel-button {
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     color: #7c7c7c;
-    border: #7c7c7c solid 1px;
     background-color: transparent;
     box-shadow: none;
   }
@@ -153,7 +146,7 @@ button.cancel-button {
 
 button.cancel-button {
   background-color: transparent;
-  padding: 1rem 1.25rem;
+  padding: 1rem 1rem 0 1rem;
   margin:0 !important;
   height: 100%;
   & svg{
@@ -169,7 +162,6 @@ button.btn.icon-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  // border: none;
   background-color: transparent;
   border: solid 1px transparent;
   box-shadow: none;
@@ -181,7 +173,6 @@ button.btn.icon-button {
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     background-color: transparent;
-    // transform: scale(1.1);
     border: solid 1px transparent;
   }
 }
@@ -200,7 +191,6 @@ button.btn.table-button {
     text-decoration: underline;
     border: solid 1px transparent;
     outline: none;
-    // border: solid 1px #ff500d;
   }
 }
 
@@ -228,19 +218,14 @@ button.btn-link {
   margin: 0.5rem 1rem;
 }
 
-@media (max-width: 823px) {
-  button.cancel-button {
-    padding: 0.5rem 0.6rem;
-  }
-}
-
 @media (max-width: 414px) {
   button.btn {
     font-size: 0.9rem;
   }
-  button.btn-primary,
-  button.btn-secondary,
-  a.modal-button.ok-button {
+
+  
+  button.modal-button.ok-button, 
+  button.btn-secondary {
     width: 100%;
   }
   button.btn.btn-link,
@@ -249,10 +234,5 @@ button.btn-link {
   #add-more-button {
     width: auto;
     padding: 0;
-    // background: yellow;
-  }
-  button.cancel-button {
-    padding: 0.5rem 0.6rem;
-    width: 15%;
   }
 }

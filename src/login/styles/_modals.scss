@@ -4,8 +4,8 @@
 .modal {
   display: flex !important;
   justify-content: center;
-  width: calc(100% - 2rem);
-  margin: 0 1rem;
+  width: 60%;
+  margin: 0 20%;
   &  #modal-form{
     & form{
       margin-top: 0;
@@ -13,13 +13,18 @@
   }
 }
 
+
 .modal-title {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  & .close-button-container{
+    display: flex;
+    justify-content: flex-end;
+  }
   & span {
-    padding: 2.25rem 2.25rem 1.9rem 2.25rem;
+    padding: 0 2.25rem 1.5rem 2.25rem;
   }
 }
 
@@ -53,6 +58,7 @@ h5.modal-title {
   }
   & .modal-footer {
     border-top: none;
+    padding: 0;
     & a {
       display: flex;
       align-items: center;
@@ -167,15 +173,15 @@ p.modal-text {
     margin: 0;
   }
   .modal-content {
-    .modal-title {
-      & span {
-        font-size: 1rem;
-        padding: 1rem 0 0 1rem;
-      }
-    }
+    // .modal-title {
+      // & span {
+        // font-size: 1rem;
+        // padding: 1rem 0 0 1rem;
+      // }
+    // }
     & .modal-body {
-      padding: 1rem;
-      font-size: 1rem;
+      // padding: 1rem;
+      // font-size: 1rem;
       & button.btn.settings-button {
         margin: 0 0 1rem 0;
       }
@@ -195,9 +201,9 @@ p.modal-text {
     }
   }
 
-  h5.modal-title {
-    font-size: 1rem;
-  }
+  // h5.modal-title {
+  //   font-size: 1rem;
+  // }
 
   .resend-code-container {
     margin-top: 1rem;

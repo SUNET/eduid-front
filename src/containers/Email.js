@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Email from "components/Email";
+import RegisterEmail from "../login/components/RegisterEmail/RegisterEmail";
 import * as actions from "actions/Email";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { history } from "components/SignupMain";
@@ -46,6 +46,6 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const EmailContainer = connect(mapStateToProps, mapDispatchToProps)(Email);
+const EmailContainer = connect(mapStateToProps, mapDispatchToProps)(RegisterEmail);
 
 export default i18n(EmailContainer);
