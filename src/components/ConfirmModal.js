@@ -71,10 +71,10 @@ class ConfirmModal extends Component {
           isOpen={showModal}
         >
           <ModalHeader>
-            {title}
             <RenderCloseButton  
               closeModal={closeModal}
             />
+            {title}
           </ModalHeader>
           <ModalBody>
             <ConfirmModalForm 
