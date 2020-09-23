@@ -12,23 +12,25 @@ const RenderCloseButton = ({
   closeModal, 
 }) => {
   return(
-    <EduIDButton
-      id={closeButtonId}
-      className="modal-button cancel-button"
-      onClick={closeModal}
-    >
-      <svg
-        className="remove"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+    <div className="close-button-container">
+      <EduIDButton
+        id={closeButtonId}
+        className="modal-button cancel-button"
+        onClick={closeModal}
       >
-        <path d="M7 0h2v16H7z" />
-        <path d="M0 9V7h16v2z" />
-      </svg>
-    </EduIDButton>
+        <svg
+          className="remove"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M7 0h2v16H7z" />
+          <path d="M0 9V7h16v2z" />
+        </svg>
+      </EduIDButton>
+    </div>
   )
 }
 
