@@ -226,14 +226,12 @@ button.btn-link {
   margin: 0.5rem 1rem;
 }
 
-
 @media (max-width: 414px) {
   button.btn {
     font-size: 0.9rem;
   }
   button.btn-primary,
-  button.btn-secondary,
-  a.modal-button.ok-button {
+  button.btn-secondary {
     width: 100%;
   }
   button.btn.btn-link,
