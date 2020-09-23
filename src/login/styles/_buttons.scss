@@ -101,7 +101,7 @@ button#accept-tou-button
  {
   box-shadow: none;
   border: solid 1px transparent;
-  margin: 1rem;
+  margin: 1rem 2rem 1rem 2rem;
   color: $white;
   &:hover {
     background: transparent;
@@ -220,6 +220,9 @@ button.btn-link {
   button.btn {
     font-size: 0.9rem;
   }
+
+  
+  button.modal-button.ok-button, 
   button.btn-secondary {
     width: 100%;
   }
