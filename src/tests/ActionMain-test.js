@@ -29,7 +29,7 @@ const fakeState = {
     is_app_loaded: true,
     redirect: "/",
     //is_fetching: false,
-    available_languages: {}
+    available_languages: []
   },
   notifications: {
     messages: [],
@@ -204,7 +204,7 @@ describe("ActionMain reducer", () => {
     is_app_loaded: false,
     redirect: "/",
     //is_fetching: false,
-    available_languages: {}
+    available_languages: []
   };
 
   //it("Receives app fetching action", () => {

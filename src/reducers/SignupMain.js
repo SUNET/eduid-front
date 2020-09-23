@@ -15,7 +15,7 @@ const configData = {
   is_app_loaded: false,
   //is_fetching: false,
   debug: true,
-  available_languages: {},
+  available_languages: [],
   eidas_url: "",
   mfa_authn_idp: ""
 };

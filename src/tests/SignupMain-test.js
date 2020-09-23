@@ -209,7 +209,7 @@ describe("SignupMain reducer", () => {
     is_app_loaded: false,
     //is_fetching: false,
     debug: true,
-    available_languages: {}
+    available_languages: []
   };
 
   it("Receives app loaded action", () => {
