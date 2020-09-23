@@ -226,11 +226,6 @@ button.btn-link {
   margin: 0.5rem 1rem;
 }
 
-@media (max-width: 823px) {
-  button.cancel-button {
-    padding: 0.5rem 0.6rem;
-  }
-}
 
 @media (max-width: 414px) {
   button.btn {
@@ -250,7 +245,7 @@ button.btn-link {
     // background: yellow;
   }
   button.cancel-button {
-    padding: 0.5rem 0.6rem;
-    width: 15%;
+    // padding: 0.5rem 0.6rem;
+    width: 20%;
   }
 }
