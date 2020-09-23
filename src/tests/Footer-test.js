@@ -8,12 +8,12 @@ import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 const config = {
   is_app_loaded: true,
   is_configured: true,
-  AVAILABLE_LANGUAGES: [["en", "English"], ["sv", "Svenska"]],
+  available_languages: [["en", "English"], ["sv", "Svenska"]],
   dashboard_url: "http://example.com",
-  STATIC_STUDENTS_URL: "http://example.com/student",
-  STATIC_TECHNICIANS_URL: "http://example.com",
-  STATIC_STAFF_URL: "http://example.com",
-  STATIC_FAQ_URL: "http://example.com"
+  static_students_url: "http://example.com/student",
+  static_technicians_url: "http://example.com",
+  static_staff_url: "http://example.com",
+  static_faq_url: "http://example.com"
 };
 
 const state = {

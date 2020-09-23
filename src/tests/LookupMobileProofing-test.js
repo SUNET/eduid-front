@@ -89,7 +89,7 @@ const fakeStore = state => ({
 const fakeState = {
   lookup_mobile: {},
   config: {
-    LOOKUP_MOBILE_PROOFING_URL: "http://localhost/lookup-mobile",
+    lookup_mobile_proofing_url: "http://localhost/lookup-mobile",
     csrf_token: "dummy-token"
   },
   intl: {
