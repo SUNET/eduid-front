@@ -36,7 +36,7 @@ const fakeState = {
     is_app_loaded: true,
     //is_fetching: false,
     debug: true,
-    available_languages: {}
+    available_languages: []
   },
   captcha: {
     captcha_verification: ""
