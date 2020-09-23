@@ -50,7 +50,6 @@ button.btn-secondary:not(:disabled):not(.disabled):active:focus {
   text-transform: none;
   text-decoration: none;
   border: none;
-  // border: solid 2px $orange-highlight;
   background-color: $orange-opaque;
   margin: 0 0 2rem -0.25rem;
 }
@@ -95,10 +94,6 @@ button.close:hover {
   transform: scale(1.2);
 }
 
-//  {
-//   font-family: "ProximaNova-Regular";
-// }
-
 /* MODALS */
 a.btn.modal-button,
 button.btn.modal-button,
@@ -106,7 +101,6 @@ button#accept-tou-button
  {
   box-shadow: none;
   border: solid 1px transparent;
-  // background-color: transparent;
   margin: 1rem;
   color: $white;
   &:hover {
@@ -168,7 +162,6 @@ button.btn.icon-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  // border: none;
   background-color: transparent;
   border: solid 1px transparent;
   box-shadow: none;
@@ -180,7 +173,6 @@ button.btn.icon-button {
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     background-color: transparent;
-    // transform: scale(1.1);
     border: solid 1px transparent;
   }
 }
@@ -199,7 +191,6 @@ button.btn.table-button {
     text-decoration: underline;
     border: solid 1px transparent;
     outline: none;
-    // border: solid 1px #ff500d;
   }
 }
 
@@ -240,6 +231,5 @@ button.btn-link {
   #add-more-button {
     width: auto;
     padding: 0;
-    // background: yellow;
   }
 }
