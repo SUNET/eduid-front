@@ -10,8 +10,6 @@ import EduIDButton from "../../../components/EduIDButton";
 const RenderCloseButton = ({ 
   closeButtonId, 
   closeModal, 
-  closeButtonText, 
-  translate 
 }) => {
   return(
     <EduIDButton
