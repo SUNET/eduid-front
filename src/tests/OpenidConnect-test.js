@@ -295,7 +295,7 @@ describe("Async component", () => {
     };
 
     expect(oidcData.value).toEqual(
-      call(fetchQRcode, state.config.OIDC_PROOFING_URL, data)
+      call(fetchQRcode, state.config.oidc_proofing_url, data)
     );
 
     const action = {

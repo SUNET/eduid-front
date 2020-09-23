@@ -21,7 +21,7 @@ const mapStateToProps = (state, props) => {
     phone: state.phones.phone,
     confirming: state.phones.confirming,
     resending: state.phones.resending,
-    default_country_code: state.config.DEFAULT_COUNTRY_CODE
+    default_country_code: state.config.default_country_code
   };
 };
 

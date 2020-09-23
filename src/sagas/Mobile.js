@@ -18,7 +18,7 @@ const getData = state => ({
 
 export function sendMobile(config, data) {
   return window
-    .fetch(config.MOBILE_URL + "new", {
+    .fetch(config.mobile_url + "new", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -51,7 +51,7 @@ export function* requestResendMobileCode() {
 
 export function requestResend(config, data) {
   return window
-    .fetch(config.MOBILE_URL + "resend-code", {
+    .fetch(config.mobile_url + "resend-code", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -77,7 +77,7 @@ export function* requestVerifyMobile() {
 
 export function requestVerify(config, data) {
   return window
-    .fetch(config.MOBILE_URL + "verify", {
+    .fetch(config.mobile_url + "verify", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -102,7 +102,7 @@ export function* requestRemoveMobile() {
 
 export function requestRemove(config, data) {
   return window
-    .fetch(config.MOBILE_URL + "remove", {
+    .fetch(config.mobile_url + "remove", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -127,7 +127,7 @@ export function* requestMakePrimaryMobile() {
 
 export function requestMakePrimary(config, data) {
   return window
-    .fetch(config.MOBILE_URL + "primary", {
+    .fetch(config.mobile_url + "primary", {
       ...postRequest,
       body: JSON.stringify(data)
     })

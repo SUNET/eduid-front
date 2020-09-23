@@ -39,7 +39,7 @@ export function* requestCredentials() {
 
 export function fetchCredentials(config) {
   return window
-    .fetch(config.SECURITY_URL + "credentials", {
+    .fetch(config.security_url + "credentials", {
       ...getRequest
     })
     .then(checkStatus)
@@ -50,9 +50,9 @@ export function* requestPasswordChange(win) {
   try {
     yield put(stopConfirmationPassword());
     const config = yield select(state => state.config),
-      tsURL = config.TOKEN_SERVICE_URL,
+      tsURL = config.token_service_url,
       chpassURL = tsURL + "chpass",
-      dashURL = config.DASHBOARD_URL,
+      dashURL = config.dashboard_url,
       nextURL = dashURL + "chpass",
       url = chpassURL + "?next=" + encodeURIComponent(nextURL);
 
@@ -70,7 +70,7 @@ export function* requestPasswordChange(win) {
 //   try {
 //     yield put(stopConfirmationDeletion());
 //     const config = yield select(state => state.config);
-//     let tsURL = config.TOKEN_SERVICE_URL;
+//     let tsURL = config.token_service_url;
 //     let nextURL = "delete-account";
 //     let url = tsURL + "?next=" + nextURL;
 
@@ -101,7 +101,7 @@ export function* postDeleteAccount() {
 
 export function deleteAccount(config, data) {
   return window
-    .fetch(config.SECURITY_URL + "terminate-account", {
+    .fetch(config.security_url + "terminate-account", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -126,7 +126,7 @@ export function* removeWebauthnToken() {
 
 export function removeToken(config, data) {
   return window
-    .fetch(config.SECURITY_URL + "webauthn/remove", {
+    .fetch(config.security_url + "webauthn/remove", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -139,8 +139,8 @@ export function* verifyWebauthnToken(win) {
     const state = yield select(state => state);
     const keyHandle = state.security.webauthn_token_verify;
 
-    let idpParam = "?idp=" + state.config.TOKEN_VERIFY_IDP;
-    let url = state.config.EIDAS_URL + "verify-token/" + keyHandle + idpParam;
+    let idpParam = "?idp=" + state.config.token_verify_idp;
+    let url = state.config.eidas_url + "verify-token/" + keyHandle + idpParam;
 
     if (win !== undefined && win.location !== undefined) {
       win.location.href = url;
@@ -180,7 +180,7 @@ export function* beginRegisterWebauthn() {
 
 export function beginWebauthnRegistration(config, data) {
   return window
-    .fetch(config.SECURITY_URL + "webauthn/register/begin", {
+    .fetch(config.security_url + "webauthn/register/begin", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -218,7 +218,7 @@ export function* registerWebauthn() {
 
 export function webauthnRegistration(config, data) {
   return window
-    .fetch(config.SECURITY_URL + "webauthn/register/complete", {
+    .fetch(config.security_url + "webauthn/register/complete", {
       ...postRequest,
       body: JSON.stringify(data)
     })

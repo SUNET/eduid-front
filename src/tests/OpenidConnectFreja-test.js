@@ -325,7 +325,7 @@ describe("Async component", () => {
       csrf_token: "csrf-token"
     };
     expect(oidcFrejaData.value).toEqual(
-      call(fetchFrejaData, state.config.OIDC_PROOFING_FREJA_URL, data)
+      call(fetchFrejaData, state.config.oidc_proofing_freja_url, data)
     );
 
     const action = {
