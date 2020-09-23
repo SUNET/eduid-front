@@ -13,6 +13,7 @@
   }
 }
 
+
 .modal-title {
   width: 100%;
   display: flex;
@@ -21,11 +22,12 @@
   & .close-button-container{
     display: flex;
     justify-content: flex-end;
-    & span {
-      padding: 0 2.25rem 1.9rem 2.25rem;
-    }
+  }
+  & span {
+    padding: 0 2.25rem 1.9rem 2.25rem;
   }
 }
+
 
 h5.modal-title {
   font-family: "Proxima Nova";
