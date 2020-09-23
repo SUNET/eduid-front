@@ -143,7 +143,6 @@ button.cancel-button {
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     color: #7c7c7c;
-    border: #7c7c7c solid 1px;
     background-color: transparent;
     box-shadow: none;
   }
