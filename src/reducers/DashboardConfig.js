@@ -17,8 +17,8 @@ const configData = {
   is_configured: false,
   //is_fetching: false,
   is_app_loaded: false,
-  AVAILABLE_LANGUAGES: [],
-  DEBUG: true
+  available_languages: [],
+  debug: true
 };
 
 //const fetchingActions = [

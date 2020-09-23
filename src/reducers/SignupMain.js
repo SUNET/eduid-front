@@ -14,7 +14,7 @@ const configData = {
   tou: "",
   is_app_loaded: false,
   //is_fetching: false,
-  DEBUG: true,
+  debug: true,
   available_languages: {},
   eidas_url: "",
   mfa_authn_idp: ""
