@@ -24,12 +24,17 @@ const validate = (values, props) => {
     errors[inputName] = "required";
   }
   else if(inputName.includes("email")) {
-    if (!emailUUIDFormatPattern .test(values.emailConfirmDialogControl)){
+    if (!emailUUIDFormatPattern.test(values.emailConfirmDialogControl)){
       errors[inputName] = "emails.invalid_code";
     }
   }
   else if(inputName.includes("phone")) {
     if (!phoneLengthPattern.test(values.phoneConfirmDialogControl)){
+      errors[inputName] = "mobile.confirm_code_wrong_length";
+    }
+  }
+  else if(inputName.includes("letter")) {
+    if (!phoneLengthPattern.test(values.letterConfirmDialogControl)){
       errors[inputName] = "mobile.confirm_code_wrong_length";
     }
   }
