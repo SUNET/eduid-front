@@ -7,11 +7,13 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 
 const validate = (values, props) => {
   let inputName = props.inputName;
+  console.log('inputName', inputName)
   const errors = {};
   const code = values[inputName];
   const spacePattern = /^\s+$/;
   // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   const emailUUIDFormatPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
+  // Phone, Letter proofing pattern
   const phoneLengthPattern = /^[A-Za-z0-9]{10,12}$/;
   const securityKeyLengthPattern = /^.{1,50}$/;
 
