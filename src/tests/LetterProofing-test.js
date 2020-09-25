@@ -192,7 +192,7 @@ const fakeState = {
     errMsg: "",
     letter_sent: ""
   },
-  config: { LETTER_PROOFING_URL: "http://localhost/letter" },
+  config: { letter_proofing_url: "http://localhost/letter" },
   nins: {
     valid_nin: false,
     nin: "dummy-nin"
@@ -283,7 +283,7 @@ describe("LetterProofing Container", () => {
 
 const state = {
   config: {
-    LETTER_PROOFING_URL: "http://localhost/letter",
+    letter_proofing_url: "http://localhost/letter",
     csrf_token: "csrf-token"
   },
   nins: {

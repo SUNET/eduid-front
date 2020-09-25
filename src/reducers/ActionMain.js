@@ -6,7 +6,7 @@ const configData = {
   is_app_loaded: false,
   redirect: "/",
   //is_fetching: false,
-  available_languages: {}
+  available_languages: []
 };
 
 let actionMainReducer = (state = configData, action) => {

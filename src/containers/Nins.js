@@ -16,7 +16,7 @@ const mapStateToProps = (state, props) => {
     verifyingLetter: state.letter_proofing.verifyingLetter,
     nins: state.nins.nins,
     is_configured: state.config.is_configured,
-    proofing_methods: state.config.PROOFING_METHODS,
+    proofing_methods: state.config.proofing_methods,
     valid_nin: isValid("nins")(state),
     nin: state.nins.nin,
     message: state.nins.message,
