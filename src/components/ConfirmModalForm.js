@@ -13,7 +13,7 @@ const validate = (values, props) => {
   // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   const emailUUIDFormatPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
   // Phone, Letter proofing pattern
-  const phoneLengthPattern = /^[A-Za-z0-9]{10,12}$/;
+  const shortConfirmCodeLength = /^[A-Za-z0-9]{10,12}$/;
   const securityKeyLengthPattern = /^.{1,50}$/;
 
   if (!code) {
@@ -28,12 +28,12 @@ const validate = (values, props) => {
     }
   }
   else if(inputName.includes("phone")) {
-    if (!phoneLengthPattern.test(values.phoneConfirmDialogControl)){
+    if (!shortConfirmCodeLength.test(values.phoneConfirmDialogControl)){
       errors[inputName] = "mobile.confirm_code_wrong_length";
     }
   }
   else if(inputName.includes("letter")) {
-    if (!phoneLengthPattern.test(values.letterConfirmDialogControl)){
+    if (!shortConfirmCodeLength.test(values.letterConfirmDialogControl)){
       errors[inputName] = "mobile.confirm_code_wrong_length";
     }
   }
