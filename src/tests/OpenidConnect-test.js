@@ -141,7 +141,7 @@ const fakeState = {
     showModal: false
   },
   config: {
-    OIDC_PROOFING_URL: "http://localhost/oidc"
+    oidc_proofing_url: "http://localhost/oidc"
   },
   intl: {
     locale: "en",
@@ -253,7 +253,7 @@ describe("OpenidConnect Container", () => {
 
 const state = {
   config: {
-    OIDC_PROOFING_URL: "http://localhost/services/oidc-proofing/proofing",
+    oidc_proofing_url: "http://localhost/services/oidc-proofing/proofing",
     csrf_token: "csrf-token"
   },
   openid_data: {
@@ -295,7 +295,7 @@ describe("Async component", () => {
     };
 
     expect(oidcData.value).toEqual(
-      call(fetchQRcode, state.config.OIDC_PROOFING_URL, data)
+      call(fetchQRcode, state.config.oidc_proofing_url, data)
     );
 
     const action = {

@@ -44,7 +44,7 @@ import * as ninActions from "actions/Nins";
 export function fetchLookupMobileProof(config, data) {
   console.log("this is config in fetchLookupMobileProof", config);
   console.log("this is data in fetchLookupMobileProof", data);
-  const url = config.LOOKUP_MOBILE_PROOFING_URL;
+  const url = config.lookup_mobile_proofing_url;
   return window
     .fetch(url, {
       ...postRequest,

@@ -7,15 +7,15 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   const languages = {};
-  if (state.config.AVAILABLE_LANGUAGES !== undefined) {
-    state.config.AVAILABLE_LANGUAGES.forEach(l => {
+  if (state.config.available_languages !== undefined) {
+    state.config.available_languages.forEach(l => {
       languages[l[0]] = l[1];
     });
   }
   return {
     language: state.intl.locale,
     languages: languages,
-    reload_to: state.config.DASHBOARD_URL,
+    reload_to: state.config.dashboard_url,
     faq_link: state.config.static_faq_url
   };
 };

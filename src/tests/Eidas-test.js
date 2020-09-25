@@ -57,8 +57,8 @@ describe("Reducers", () => {
 
 const state = {
   config: {
-    EIDAS_URL: "http://eidas.localhost",
-    TOKEN_VERIFY_IDP: "http://idp.localhost",
+    eidas_url: "http://eidas.localhost",
+    token_verify_idp: "http://idp.localhost",
     csrf_token: "csrf-token"
   },
   intl: {

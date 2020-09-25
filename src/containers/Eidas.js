@@ -5,8 +5,8 @@ import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
-  let eidas_sp_url = state.config.EIDAS_URL;
-  let freja_idp_url = state.config.TOKEN_VERIFY_IDP;
+  let eidas_sp_url = state.config.eidas_url;
+  let freja_idp_url = state.config.token_verify_idp;
   let verify_path = "verify-nin";
   if (!eidas_sp_url.endsWith("/")) {
     eidas_sp_url = eidas_sp_url.concat("/");

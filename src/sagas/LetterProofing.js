@@ -25,7 +25,7 @@ export function* sendGetLetterProofing() {
 
 export function fetchGetLetterProofing(config, nin) {
   return window
-    .fetch(config.LETTER_PROOFING_URL + "proofing?nin=" + nin, {
+    .fetch(config.letter_proofing_url + "proofing?nin=" + nin, {
       ...getRequest
     })
     .then(checkStatus)
@@ -50,7 +50,7 @@ export function* sendLetterProofing() {
 
 export function fetchLetterProofing(config, data) {
   return window
-    .fetch(config.LETTER_PROOFING_URL + "proofing", {
+    .fetch(config.letter_proofing_url + "proofing", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -76,7 +76,7 @@ export function* sendLetterCode() {
 
 export function fetchLetterCode(config, data) {
   return window
-    .fetch(config.LETTER_PROOFING_URL + "verify-code", {
+    .fetch(config.letter_proofing_url + "verify-code", {
       ...postRequest,
       body: JSON.stringify(data)
     })

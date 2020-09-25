@@ -28,7 +28,7 @@ const mapStateToProps = (state, props) => {
       state.form.chpass.values[comp.pwFieldCustomName]) ||
     "";
   let score = 0,
-    configEntropy = state.config.PASSWORD_ENTROPY,
+    configEntropy = state.config.password_entropy,
     minEntropy = configEntropy / 5,
     stepEntropy = minEntropy,
     entropy = 0;

@@ -454,7 +454,7 @@ const state = {
   },
   config: {
     csrf_token: "123456789",
-    EMAILS_URL: "test/localhost",
+    emails_url: "test/localhost",
     email: "email@localhost.com"
   },
   intl: {

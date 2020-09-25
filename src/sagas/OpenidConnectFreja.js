@@ -44,7 +44,7 @@ export function* closeFrejaModal() {
 export function* initializeOpenidFrejaData() {
   try {
     const state = yield select(state => state),
-      openid_freja_url = state.config.OIDC_PROOFING_FREJA_URL,
+      openid_freja_url = state.config.oidc_proofing_freja_url,
       data = {
         nin: state.openid_freja_data.nin,
         csrf_token: state.config.csrf_token
@@ -72,7 +72,7 @@ export function* initializeOpenidFrejaData() {
 export function* requestOpenidFrejaData() {
   try {
     const openid_freja_url = yield select(
-      state => state.config.OIDC_PROOFING_FREJA_URL
+      state => state.config.oidc_proofing_freja_url
     );
     console.log("Checking for existing opaque data");
     const oidcFrejaData = yield call(fetchFrejaData, openid_freja_url);
