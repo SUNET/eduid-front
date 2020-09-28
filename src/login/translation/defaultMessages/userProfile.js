@@ -330,7 +330,7 @@ export const userVetting = {
   "lmp.modal_reminder_to_confirm_title": (
     <FormattedMessage
       id="lmp.modal_reminder_to_confirm_title"
-      defaultMessage={`Your number also needs to be confrimed`}
+      defaultMessage={`Your number also needs to be confirmed`}
     />
   ),
 
