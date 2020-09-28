@@ -189,7 +189,7 @@
   "mfa.two-factor-authn": "Two-factor authentication",
   "mobile.button_add": "Add",
   "mobile.confirm_mobile_placeholder": "Phone confirmation code",
-  "mobile.confirm_code_wrong_length": "Code must be 10-12 characters long, only letters and numbers allowed",
+  "mobile.letter_code_wrong_length": "Code must be 10-12 characters long, only letters and numbers allowed",
   "security.confirm_security_placeholder": "Describe your security key",
   "security.help_text": "max 50 characters" ,
   "security.confirm_security_length": "The max length of 50 characters is reached",

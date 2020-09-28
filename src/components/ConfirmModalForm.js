@@ -29,12 +29,12 @@ const validate = (values, props) => {
   }
   else if(inputName.includes("phone")) {
     if (!phoneLetterCodeLength.test(values.phoneConfirmDialogControl)){
-      errors[inputName] = "mobile.confirm_code_wrong_length";
+      errors[inputName] = "mobile.letter_code_wrong_length";
     }
   }
   else if(inputName.includes("letter")) {
     if (!phoneLetterCodeLength.test(values.letterConfirmDialogControl)){
-      errors[inputName] = "mobile.confirm_code_wrong_length";
+      errors[inputName] = "mobile.letter_code_wrong_length";
     }
   }
   else if(inputName.includes("describeWebauthnToken")) {

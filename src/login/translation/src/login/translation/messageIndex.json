@@ -19,8 +19,8 @@
     "defaultMessage": "Invalid confirmation code"
   },
   {
-    "id": "mobile.confirm_code_wrong_length",
-    "description": "Error message for wrong length",
+    "id": "mobile.letter_code_wrong_length",
+    "description": "Error message for mobile and letter wrong length",
     "defaultMessage": "Code must be 10-12 characters long, only letters and numbers allowed"
   },
   {
