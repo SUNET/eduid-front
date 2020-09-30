@@ -9,7 +9,6 @@ const validate = (values, props) => {
   let inputName = props.inputName;
   const errors = {};
   const code = values[inputName];
-  const spacePattern = /^\s+$/;
   // Naming of regex patterns refer to matching long (UUID format) and short (10 characters) codes. This aligns with naming used in the backend
   // UUID format source from: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   // longCodePattern is used to verify an added email address
@@ -21,27 +20,27 @@ const validate = (values, props) => {
   if (!code) {
     errors[inputName] = "required";
   }
-  else if(spacePattern.test(values[inputName])){
-    errors[inputName] = "required";
-  }
-  else if(inputName.includes("email")) {
-    if (!longCodePattern.test(values.emailConfirmDialogControl)){
-      errors[inputName] = "emails.invalid_code";
+  else {
+    const trimmedCode = code.trim();
+    if(inputName.includes("email")) {
+      if (!longCodePattern.test(trimmedCode)){
+        errors[inputName] = "emails.invalid_code";
+      }
     }
-  }
-  else if(inputName.includes("phone")) {
-    if (!shortCodePattern.test(values.phoneConfirmDialogControl)){
-      errors[inputName] = "mobile.letter_code_wrong_length";
+    else if(inputName.includes("phone")) {
+      if (!shortCodePattern.test(trimmedCode)){
+        errors[inputName] = "mobile.letter_code_wrong_length";
+      }
     }
-  }
-  else if(inputName.includes("letter")) {
-    if (!shortCodePattern.test(values.letterConfirmDialogControl)){
-      errors[inputName] = "mobile.letter_code_wrong_length";
+    else if(inputName.includes("letter")) {
+      if (!shortCodePattern.test(trimmedCode)){
+        errors[inputName] = "mobile.letter_code_wrong_length";
+      }
     }
-  }
-  else if(inputName.includes("describeWebauthnToken")) {
-    if (!securityKeyLengthPattern.test(values.describeWebauthnTokenDialogControl)){
-      errors[inputName] = "security.confirm_security_length";
+    else if(inputName.includes("describeWebauthnToken")) {
+      if (!securityKeyLengthPattern.test(trimmedCode)){
+        errors[inputName] = "security.confirm_security_length";
+      }
     }
   }
   return errors;
