@@ -10,10 +10,12 @@ const validate = (values, props) => {
   const errors = {};
   const code = values[inputName];
   const spacePattern = /^\s+$/;
-  // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
-  const emailUUIDFormatPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
-  // Phone, Letter proofing pattern
-  const phoneLetterCodeLength = /^[A-Za-z0-9]{10,12}$/;
+  // Naming of regex patterns refer to matching long (UUID format) and short (10 characters) codes. This aligns with naming used in the backend
+  // UUID format source from: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
+  // longCodePattern is used to verify an added email address
+  const longCodePattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
+  // shortCodePattern is used to verify an added phone number and vetting via letter and phone
+  const shortCodePattern = /^[A-Za-z0-9]{10,12}$/;
   const securityKeyLengthPattern = /^.{1,50}$/;
 
   if (!code) {
@@ -23,17 +25,17 @@ const validate = (values, props) => {
     errors[inputName] = "required";
   }
   else if(inputName.includes("email")) {
-    if (!emailUUIDFormatPattern.test(values.emailConfirmDialogControl)){
+    if (!longCodePattern.test(values.emailConfirmDialogControl)){
       errors[inputName] = "emails.invalid_code";
     }
   }
   else if(inputName.includes("phone")) {
-    if (!phoneLetterCodeLength.test(values.phoneConfirmDialogControl)){
+    if (!shortCodePattern.test(values.phoneConfirmDialogControl)){
       errors[inputName] = "mobile.letter_code_wrong_length";
     }
   }
   else if(inputName.includes("letter")) {
-    if (!phoneLetterCodeLength.test(values.letterConfirmDialogControl)){
+    if (!shortCodePattern.test(values.letterConfirmDialogControl)){
       errors[inputName] = "mobile.letter_code_wrong_length";
     }
   }
