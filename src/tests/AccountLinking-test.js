@@ -182,7 +182,7 @@ const mockState = {
   },
   config: {
     csrf_token: "csrf-token",
-    ORCID_URL: "/dummy-orcid-url/"
+    orcid_url: "/dummy-orcid-url/"
   },
   intl: {
     locale: "en",
@@ -309,7 +309,7 @@ describe("AccountLinking Container", () => {
         },
         config: {
           csrf_token: "csrf-token",
-          ORCID_URL: "/dummy-orcid-url/"
+          orcid_url: "/dummy-orcid-url/"
         },
         intl: {
           locale: "en",

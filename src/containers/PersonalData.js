@@ -5,8 +5,8 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   let langs = [];
-  if (state.config.AVAILABLE_LANGUAGES !== undefined) {
-    langs = [...state.config.AVAILABLE_LANGUAGES];
+  if (state.config.available_languages !== undefined) {
+    langs = [...state.config.available_languages];
     // langs.unshift(["", props.translate("pd.choose-language")]);
   }
   return {

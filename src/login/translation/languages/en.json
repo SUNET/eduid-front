@@ -169,7 +169,7 @@
   "lmp.modal_add_number_title": "Add your mobile number to continue",
   "lmp.modal_confirm_title": "Check if your phone number is connected to your id number.",
   "lmp.modal_reminder_to_confirm_info": "Go to Settings to confirm your number. You can only use this option with a confirmed number.",
-  "lmp.modal_reminder_to_confirm_title": "Your number also needs to be confrimed",
+  "lmp.modal_reminder_to_confirm_title": "Your number also needs to be confirmed",
   "lmp.verification_success": "Your national id number has been successfully verified",
   "mail_duplicated": "Added email is duplicated",
   "main.confirmed": "Confirmed",

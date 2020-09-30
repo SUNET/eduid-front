@@ -11,7 +11,7 @@ import { postLogoutFail, POST_AUTHN_LOGOUT_SUCCESS } from "actions/Header";
 export function* requestLogout() {
   try {
     const state = yield select(state => state),
-      url = state.config.TOKEN_SERVICE_URL + "logout";
+      url = state.config.token_service_url + "logout";
     if (navigator.userAgent.indexOf("Trident/7") > -1) {
       window.location = url;
     } else {

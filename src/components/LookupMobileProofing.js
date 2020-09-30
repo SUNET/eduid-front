@@ -23,6 +23,7 @@ class LookupMobileProofing extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
+          acceptButtonText={this.props.translate("cm.ok")}
         />,
       ];
       if (primaryNumber) {
@@ -48,6 +49,7 @@ class LookupMobileProofing extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
+          acceptButtonText={this.props.translate("cm.ok")}
         />,
       ];
     }

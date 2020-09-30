@@ -425,7 +425,7 @@ const state = {
   },
   config: {
     csrf_token: "123456789",
-    MOBILE_URL: "test/localhost"
+    mobile_url: "test/localhost"
   },
   intl: {
     locale: "en",

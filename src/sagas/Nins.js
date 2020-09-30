@@ -23,7 +23,7 @@ export function* requestNins() {
 
 export function fetchNins(config) {
   return window
-    .fetch(config.PERSONAL_DATA_URL + "nins", {
+    .fetch(config.personal_data_url + "nins", {
       ...getRequest
     })
     .then(checkStatus)
@@ -79,7 +79,7 @@ export function* requestRemoveNin() {
 
 export function requestRemove(config, data) {
   return window
-    .fetch(config.SECURITY_URL + "remove-nin", {
+    .fetch(config.security_url + "remove-nin", {
       ...postRequest,
       body: JSON.stringify(data)
     })
