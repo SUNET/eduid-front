@@ -6,7 +6,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import CustomInput from "../login/components/Inputs/CustomInput";
 
 const validate = (values, props) => {
-  let inputName = props.inputName;
+  const inputName = props.inputName;
   let value = values[inputName];
   const errors = {};
   // Naming of regex patterns refer to matching long (UUID format) and short (10 characters) codes. This aligns with naming used in the backend
@@ -23,24 +23,20 @@ const validate = (values, props) => {
   }
 
   value = value.trim();
-  if(inputName.includes("email")) {
-    if (!longCodePattern.test(value)){
-      errors[inputName] = "emails.invalid_code";
-    }
+  let pattern = /.*/;
+  switch (inputName) {
+    case "emailConfirmDialogControl": pattern = longCodePattern; break;
+    case "phoneConfirmDialogControl": pattern = shortCodePattern; break;
+    case "letterConfirmDialogControl": pattern = shortCodePattern; break;
+    case "describeWebauthnTokenDialogControl": pattern = securityKeyPattern; break;
+    default:
+      break;
   }
-  else if(inputName.includes("phone") || inputName.includes("letter")) {
-    if (!shortCodePattern.test(value)){
-      errors[inputName] = "mobile.letter_code_wrong_length";
-    }
-  }
-  else if(inputName.includes("describeWebauthnToken")) {
-    if (!securityKeyPattern.test(value)){
-      errors[inputName] = "security.confirm_security_length";
-    }
+  if (!pattern.test(value)){
+    errors[inputName] = "invalid_format";
   }
   return errors;
-};
-
+}
 class ConfirmModalForm extends Component {
   render() {
     return (
