@@ -8,7 +8,7 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 const validate = (values, props) => {
   const inputName = props.inputName;
   let value = values[inputName];
-  const errors = {};
+  let errors = {};
   // Naming of regex patterns refer to matching long (UUID format) and short (10 characters) codes. This aligns with naming used in the backend
   // UUID format source from: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   // longCodePattern is used to verify an added email address
