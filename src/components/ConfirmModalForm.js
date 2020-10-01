@@ -33,7 +33,7 @@ const validate = (values, props) => {
       break;
   }
   if (!pattern.test(value)){
-    errors[inputName] = "invalid_format";
+    errors[inputName] = "invalid format";
   }
   return errors;
 }
