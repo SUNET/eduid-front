@@ -19,28 +19,28 @@ const validate = (values, props) => {
 
   if (!value) {
     errors[inputName] = "required";
+    return errors;
   }
-  else {
-    value = value.trim();
-    if(inputName.includes("email")) {
-      if (!longCodePattern.test(value)){
-        errors[inputName] = "emails.invalid_code";
-      }
+  
+  value = value.trim();
+  if(inputName.includes("email")) {
+    if (!longCodePattern.test(value)){
+      errors[inputName] = "emails.invalid_code";
     }
-    else if(inputName.includes("phone")) {
-      if (!shortCodePattern.test(value)){
-        errors[inputName] = "mobile.letter_code_wrong_length";
-      }
+  }
+  else if(inputName.includes("phone")) {
+    if (!shortCodePattern.test(value)){
+      errors[inputName] = "mobile.letter_code_wrong_length";
     }
-    else if(inputName.includes("letter")) {
-      if (!shortCodePattern.test(value)){
-        errors[inputName] = "mobile.letter_code_wrong_length";
-      }
+  }
+  else if(inputName.includes("letter")) {
+    if (!shortCodePattern.test(value)){
+      errors[inputName] = "mobile.letter_code_wrong_length";
     }
-    else if(inputName.includes("describeWebauthnToken")) {
-      if (!securityKeyLengthPattern.test(value)){
-        errors[inputName] = "security.confirm_security_length";
-      }
+  }
+  else if(inputName.includes("describeWebauthnToken")) {
+    if (!securityKeyLengthPattern.test(value)){
+      errors[inputName] = "security.confirm_security_length";
     }
   }
   return errors;
