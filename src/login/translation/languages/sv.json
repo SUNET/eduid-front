@@ -189,7 +189,7 @@
   "mfa.two-factor-authn": "Tvåfaktorsautentisering",
   "mobile.button_add": "Lägg till",
   "mobile.confirm_mobile_placeholder": "Bekräftelsekod",
-  "mobile.letter_code_wrong_length": "Koden måste vara 10-12 tecken lång, endast bokstäver och nummer tillåtna",
+  "mobile.letter_code_wrong_length": "Koden måste vara 10 tecken lång, endast bokstäver och nummer tillåtna",
   "security.confirm_security_length": "Maxlängden på 50 tecken har överskridits",
   "security.confirm_security_placeholder": "Beskriv din säkerhetsnyckel",
   "security.help_text": "max 50 tecken" ,

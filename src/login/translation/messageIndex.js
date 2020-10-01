@@ -53,7 +53,7 @@ export const unformattedMessages = defineMessages({
   },
   "mobile.letter_code_wrong_length": {
     id: "mobile.letter_code_wrong_length",
-    defaultMessage: `Code must be 10-12 characters long, only letters and numbers allowed`,
+    defaultMessage: `Code must be 10 characters long, only letters and numbers allowed`,
     description: "Error message for mobile and letter wrong length",
   },
   "mobile.placeholder": {
