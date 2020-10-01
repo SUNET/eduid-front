@@ -7,8 +7,8 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 
 const validate = (values, props) => {
   let inputName = props.inputName;
+  let value = values[inputName];
   const errors = {};
-  const code = values[inputName];
   // Naming of regex patterns refer to matching long (UUID format) and short (10 characters) codes. This aligns with naming used in the backend
   // UUID format source from: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
   // longCodePattern is used to verify an added email address
@@ -17,28 +17,28 @@ const validate = (values, props) => {
   const shortCodePattern = /^[A-Za-z0-9]{10,12}$/;
   const securityKeyLengthPattern = /^.{1,50}$/;
 
-  if (!code) {
+  if (!value) {
     errors[inputName] = "required";
   }
   else {
-    const trimmedCode = code.trim();
+    value = value.trim();
     if(inputName.includes("email")) {
-      if (!longCodePattern.test(trimmedCode)){
+      if (!longCodePattern.test(value)){
         errors[inputName] = "emails.invalid_code";
       }
     }
     else if(inputName.includes("phone")) {
-      if (!shortCodePattern.test(trimmedCode)){
+      if (!shortCodePattern.test(value)){
         errors[inputName] = "mobile.letter_code_wrong_length";
       }
     }
     else if(inputName.includes("letter")) {
-      if (!shortCodePattern.test(trimmedCode)){
+      if (!shortCodePattern.test(value)){
         errors[inputName] = "mobile.letter_code_wrong_length";
       }
     }
     else if(inputName.includes("describeWebauthnToken")) {
-      if (!securityKeyLengthPattern.test(trimmedCode)){
+      if (!securityKeyLengthPattern.test(value)){
         errors[inputName] = "security.confirm_security_length";
       }
     }
