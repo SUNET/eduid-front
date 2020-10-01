@@ -21,19 +21,14 @@ const validate = (values, props) => {
     errors[inputName] = "required";
     return errors;
   }
-  
+
   value = value.trim();
   if(inputName.includes("email")) {
     if (!longCodePattern.test(value)){
       errors[inputName] = "emails.invalid_code";
     }
   }
-  else if(inputName.includes("phone")) {
-    if (!shortCodePattern.test(value)){
-      errors[inputName] = "mobile.letter_code_wrong_length";
-    }
-  }
-  else if(inputName.includes("letter")) {
+  else if(inputName.includes("phone") || inputName.includes("letter")) {
     if (!shortCodePattern.test(value)){
       errors[inputName] = "mobile.letter_code_wrong_length";
     }
