@@ -15,6 +15,7 @@ const validate = (values, props) => {
   const longCodePattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
   // shortCodePattern is used to verify an added phone number and vetting via letter and phone
   const shortCodePattern = /^[A-Za-z0-9]{10,12}$/;
+   // securityKeyPattern is used to verify user's entered descriptions for security keys
   const securityKeyPattern = /^.{1,50}$/;
 
   if (!value) {
