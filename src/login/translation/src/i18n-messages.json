@@ -1433,14 +1433,14 @@
     "defaultMessage": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   },
   {
-    "id": "emails.invalid_code",
-    "defaultMessage": "Invalid confirmation code",
-    "description": "error text for invalid confirmation code"
-  },
-  {
     "id": "mobile.confirm_mobile_placeholder",
     "description": "Placeholder for phone text input",
     "defaultMessage": "Phone confirmation code"
+  },
+  {
+    "id": "modal.long_code_invalid_format",
+    "defaultMessage": "Invalid confirmation code",
+    "description": "error text for invalid confirmation code"
   },
   {
     "id": "modal.short_code_invalid_format",

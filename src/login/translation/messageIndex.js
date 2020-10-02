@@ -46,8 +46,8 @@ export const unformattedMessages = defineMessages({
     defaultMessage: "Code is formatted as five groups of characters and numbers, separated by hyphens",
     description: "Help text for email confirmation code",
   },
-  "emails.invalid_code": {
-    id: "emails.invalid_code",
+  "modal.long_code_invalid_format": {
+    id: "modal.long_code_invalid_format",
     defaultMessage: `Invalid confirmation code`,
     description: "error text for invalid confirmation code"
   },
