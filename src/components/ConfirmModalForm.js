@@ -13,11 +13,11 @@ const validate = (values, props) => {
   if (!value) {
     return {inputName: "required"};
   }
-  
+
   if (! props.validationPattern.test(value.trim())) {
     return {inputName: props.validationError};
   }
-}
+};
 
 class ConfirmModalForm extends Component { 
   render() {

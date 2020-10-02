@@ -81,13 +81,11 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `If you already have eduID you can log in`,
     description: "Placeholder for phone text input"
   },
-
   "text.link": {
     id: "text.link",
     defaultMessage: `here.`,
     description: "Placeholder for phone text input"
   },
-
   "chpass.help-text-newpass": {
     id: "chpass.help-text-newpass",
     defaultMessage: `<label>Tip: Choose a strong password</label>
@@ -124,37 +122,30 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Letter confirmation code`,
     description: "Placeholder for letter proofing text input"
   },
-
   "pd.given_name": {
     id: "pd.given_name",
     defaultMessage: `First name`
   },
-
   "pd.surname": {
     id: "pd.surname",
     defaultMessage: `Last name`
   },
-
   "pd.display_name": {
     id: "pd.display_name",
     defaultMessage: `Display name`
   },
-
   "pd.language": {
     id: "pd.language",
     defaultMessage: `Language`
   },
-
   "pd.display_name_input_placeholder": {
     id: "pd.display_name_inputplaceholder",
     defaultMessage: `First and last name`
   },
-
   "nins.input_placeholder": {
     id: "nins.input_placeholder",
     defaultMessage: `yyyymmddnnnn`
   },
-
   "phones.input_placeholder": {
     id: "phones.input_placeholder",
     defaultMessage: `Phone number`
