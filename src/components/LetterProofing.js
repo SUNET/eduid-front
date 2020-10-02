@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import ConfirmModal from "../containers/ConfirmModal";
+import { shortCodePattern } from "../login/app_utils/validation/regexPattern";
+
 class LetterProofingButton extends Component {
   render() {
     return (
@@ -37,6 +39,8 @@ class LetterProofingButton extends Component {
           closeModal={this.props.handleStopVerificationLetter}
           handleConfirm={this.props.sendConfirmationCode}
           with_resend_link={false}
+          validationPattern={shortCodePattern}
+          validationError={"modal.short_code_invalid_format"}
         />
       </div>
     );
