@@ -53,7 +53,7 @@ export const unformattedMessages = defineMessages({
   },
   "modal.short_code_invalid_format": {
     id: "modal.short_code_invalid_format",
-    defaultMessage: `Code must be 10 characters long, only letters and numbers allowed`,
+    defaultMessage: `The code is 10 characters long`,
     description: "Error message for mobile and letter wrong length",
   },
   "modal.security_code_invalid_format": {
