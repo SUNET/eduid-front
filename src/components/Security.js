@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import ConfirmModal from "../containers/ConfirmModal";
-
+import { securityKeyPattern } from "../login/app_utils/validation/regexPattern";
 import "../login/styles/index.scss";
 
 class Security extends Component {
@@ -176,6 +176,8 @@ class Security extends Component {
           closeModal={this.props.handleStopAskingWebauthnDescription}
           handleConfirm={this.props.handleStartWebauthnRegistration}
           helpBlock={this.props.translate("security.help_text")}
+          validationPattern={securityKeyPattern}
+          validationError={"security.confirm_security_length"}
         />
       </div>
     );
