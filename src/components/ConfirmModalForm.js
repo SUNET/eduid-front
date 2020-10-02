@@ -5,19 +5,17 @@ import { Form } from "reactstrap";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import CustomInput from "../login/components/Inputs/CustomInput";
 
+// Check the user supplied value against a regexp pattern provided when creating the ConfirmModal.
 const validate = (values, props) => {
   const inputName = props.inputName;
-  const pattern = props.validationPattern;
-  const errorMessage = props.validationError
   const value = values[inputName];
-  let errors={};
+​
   if (!value) {
-   errors[inputName] = "required";
-   return errors;
-     }
-  if (!pattern.test(value.trim())){
-    errors[inputName] = errorMessage;
-    return errors;
+    return {inputName: "required"};
+  }
+​
+  if (! props.validationPattern.test(value.trim())) {
+    return {inputName: props.validationError};
   }
 }
 
