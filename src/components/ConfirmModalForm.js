@@ -7,38 +7,21 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 
 const validate = (values, props) => {
   const inputName = props.inputName;
-  let value = values[inputName];
-  let errors = {};
-  // Naming of regex patterns refer to matching long (UUID format) and short (10 characters) codes. This aligns with naming used in the backend
-  // UUID format source from: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
-  // longCodePattern is used to verify an added email address
-  const longCodePattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
-  // shortCodePattern is used to verify an added phone number and vetting via letter and phone
-  const shortCodePattern = /^[A-Za-z0-9]{10}$/;
-   // securityKeyPattern is used to verify user's entered descriptions for security keys
-  const securityKeyPattern = /^.{1,50}$/;
-
+  const pattern = props.validationPattern;
+  const errorMessage = props.validationError
+  const value = values[inputName];
+  let errors={};
   if (!value) {
-    errors[inputName] = "required";
+   errors[inputName] = "required";
+   return errors;
+     }
+  if (!pattern.test(value.trim())){
+    errors[inputName] = errorMessage;
     return errors;
   }
-
-  value = value.trim();
-  let pattern = /.*/;
-  switch (inputName) {
-    case "emailConfirmDialogControl": pattern = longCodePattern; break;
-    case "phoneConfirmDialogControl": pattern = shortCodePattern; break;
-    case "letterConfirmDialogControl": pattern = shortCodePattern; break;
-    case "describeWebauthnTokenDialogControl": pattern = securityKeyPattern; break;
-    default:
-      break;
-  }
-  if (!pattern.test(value)){
-    errors[inputName] = "invalid format";
-  }
-  return errors;
 }
-class ConfirmModalForm extends Component {
+
+class ConfirmModalForm extends Component { 
   render() {
     return (
       <div id="modal-form">
@@ -63,7 +46,7 @@ class ConfirmModalForm extends Component {
 
 ConfirmModalForm = reduxForm({
   form: "modal-form",
-  validate: validate
+  validate: validate 
 })(ConfirmModalForm);
 
 ConfirmModalForm = connect(state => ({
