@@ -9,6 +9,7 @@ import DataTable from "../login/components/DataTable/DataTable";
 import ConfirmModal from "../containers/ConfirmModal";
 import "../login/styles/index.scss";
 import { validate } from "../login/app_utils/validation/validateEmail";
+import { longCodePattern } from "../login/app_utils/validation/regexPattern";
 
 let EmailForm = (props) => {
   return (
@@ -104,6 +105,8 @@ class Emails extends Component {
           handleResend={this.props.handleResend}
           handleConfirm={this.props.handleConfirm}
           helpBlock={this.props.translate("emails.confirm_help_text")}
+          validationPattern={longCodePattern}
+          validationError={"modal.long_code_invalid_format"}
         />
       </div>
     );
