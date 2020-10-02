@@ -24,6 +24,11 @@
     "defaultMessage": "Code must be 10 characters long, only letters and numbers allowed"
   },
   {
+    "id": "modal.security_code_invalid_format",
+    "description": "Error message for max length",
+    "defaultMessage": "The max length of 50 characters is reached"
+  },
+  {
     "id": "mobile.confirm_mobile_placeholder",
     "description": "Placeholder for phone text input",
     "defaultMessage": "Phone confirmation code"
@@ -37,11 +42,6 @@
     "id": "security.help_text",
     "defaultMessage": "max 50 characters",
     "description": "Help text for security key max length"
-  },
-  {
-    "id": "security.confirm_security_length",
-    "description": "Error message for max length",
-    "defaultMessage": "The max length of 50 characters is reached"
   },
   {
     "id": "chpass.help-text-newpass",

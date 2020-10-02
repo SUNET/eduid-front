@@ -56,6 +56,11 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Code must be 10 characters long, only letters and numbers allowed`,
     description: "Error message for mobile and letter wrong length",
   },
+  "modal.security_code_invalid_format": {
+    id: "modal.security_code_invalid_format",
+    defaultMessage: `The max length of 50 characters is reached`,
+    description: "Error message for max length"
+  },
   "mobile.placeholder": {
     id: "mobile.confirm_mobile_placeholder",
     defaultMessage: `Phone confirmation code`,
@@ -70,11 +75,6 @@ export const unformattedMessages = defineMessages({
     id: "security.help_text",
     defaultMessage: `max 50 characters`,
     description: "Help text for security key max length"
-  },
-  "security.confirm_security_length": {
-    id: "security.confirm_security_length",
-    defaultMessage: `The max length of 50 characters is reached`,
-    description: "Error message for max length"
   },
   "register.toLogin": {
     id: "register.toLogin",

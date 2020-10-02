@@ -1448,6 +1448,11 @@
     "defaultMessage": "Code must be 10 characters long, only letters and numbers allowed"
   },
   {
+    "id": "modal.security_code_invalid_format",
+    "description": "Error message for max length",
+    "defaultMessage": "The max length of 50 characters is reached"
+  },
+  {
     "id": "security.confirm_security_placeholder",
     "description": "Placeholder for security key text input",
     "defaultMessage": "Describe your security key"
@@ -1456,11 +1461,6 @@
     "id": "security.help_text",
     "description": "Help text for security key max length",
     "defaultMessage": "max 50 characters"
-  },
-  {
-    "id": "security.confirm_security_length",
-    "description": "Error message for max length",
-    "defaultMessage": "The max length of 50 characters is reached"
   },
   {
     "id": "chpass.help-text-newpass",
