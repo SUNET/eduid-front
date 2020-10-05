@@ -14,11 +14,12 @@ const validate = (values, props) => {
     errors[inputName] = "required";
     return errors;
   }
+
   if (!props.validationPattern.test(value.trim())){
     errors[inputName] = props.validationError;
     return errors;
   }
-}
+};
 class ConfirmModalForm extends Component { 
   render() {
     return (
@@ -44,7 +45,7 @@ class ConfirmModalForm extends Component {
 
 ConfirmModalForm = reduxForm({
   form: "modal-form",
-  validate: validate 
+  validate: validate
 })(ConfirmModalForm);
 
 ConfirmModalForm = connect(state => ({
