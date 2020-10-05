@@ -9,16 +9,16 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 const validate = (values, props) => {
   const inputName = props.inputName;
   const value = values[inputName];
-
-  if (!value) {
-    return {inputName: "required"};
+  let errors = {};
+  if (!value || !value.trim()) {
+    errors[inputName] = "required";
+    return errors;
   }
-
-  if (! props.validationPattern.test(value.trim())) {
-    return {inputName: props.validationError};
+  if (!props.validationPattern.test(value.trim())){
+    errors[inputName] = props.validationError;
+    return errors;
   }
-};
-
+}
 class ConfirmModalForm extends Component { 
   render() {
     return (
