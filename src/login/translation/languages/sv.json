@@ -190,7 +190,7 @@
   "mobile.confirm_mobile_placeholder": "Bekräftelsekod",
   "modal.long_code_invalid_format": "Ogiltig bekräftelsekod",
   "modal.short_code_invalid_format": "Koden är 10 tecken lång",
-  "modal.security_code_invalid_format": "Maxlängden på 50 tecken har överskridits",
+  "modal.security_code_invalid_format": "Beskrivningen är för lång",
   "security.confirm_security_placeholder": "Beskriv din säkerhetsnyckel",
   "security.help_text": "max 50 tecken" ,
   "mobile.confirm_title": "Skriv in koden som skickats till {phone} här",
