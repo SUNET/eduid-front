@@ -190,7 +190,7 @@
   "mobile.confirm_mobile_placeholder": "Phone confirmation code",
   "modal.long_code_invalid_format": "Invalid confirmation code",
   "modal.short_code_invalid_format": "The code is 10 characters long",
-  "modal.security_code_invalid_format": "The description is too long (max 50 characters)",
+  "modal.security_code_invalid_format": "The description is too long",
   "security.confirm_security_placeholder": "Describe your security key",
   "security.help_text": "max 50 characters" ,
   "mobile.confirm_title": "Enter the code sent to {phone} here",
