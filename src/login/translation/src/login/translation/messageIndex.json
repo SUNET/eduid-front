@@ -19,7 +19,7 @@
     "defaultMessage": "Invalid confirmation code"
   },
   {
-    "id": "modal.short_code_invalid_format",
+    "id": "confirmation.short_code_invalid_format",
     "description": "Error message for mobile and letter wrong length",
     "defaultMessage": "The code is 10 characters long"
   },

@@ -51,8 +51,8 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Invalid confirmation code`,
     description: "error text for invalid confirmation code"
   },
-  "modal.short_code_invalid_format": {
-    id: "modal.short_code_invalid_format",
+  "confirmation.short_code_invalid_format": {
+    id: "confirmation.short_code_invalid_format",
     defaultMessage: `The code is 10 characters long`,
     description: "Error message for mobile and letter wrong length",
   },

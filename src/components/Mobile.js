@@ -121,7 +121,7 @@ class Mobile extends Component {
           handleResend={this.props.handleResend}
           handleConfirm={this.props.handleConfirm}
           validationPattern={shortCodePattern}
-          validationError={"modal.short_code_invalid_format"}
+          validationError={"confirmation.short_code_invalid_format"}
         />
       </div>
     );
