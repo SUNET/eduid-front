@@ -53,7 +53,7 @@ export const unformattedMessages = defineMessages({
   },
   "confirmation.short_code_invalid_format": {
     id: "confirmation.short_code_invalid_format",
-    defaultMessage: `The code is 10 characters long`,
+    defaultMessage: `Incorrect code`,
     description: "Error message for mobile and letter wrong length",
   },
   "security.description_invalid_format": {
