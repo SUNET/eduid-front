@@ -9,7 +9,7 @@ import DataTable from "../login/components/DataTable/DataTable";
 import ConfirmModal from "../containers/ConfirmModal";
 import "../login/styles/index.scss";
 import { validate } from "../login/app_utils/validation/validateEmail";
-import { longCodePattern } from "../login/app_utils/validation/regexPattern";
+import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
 
 let EmailForm = (props) => {
   return (
