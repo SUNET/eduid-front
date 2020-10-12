@@ -1438,7 +1438,7 @@
     "defaultMessage": "Phone confirmation code"
   },
   {
-    "id": "modal.long_code_invalid_format",
+    "id": "confirmation.long_code_invalid_format",
     "defaultMessage": "Invalid confirmation code",
     "description": "error text for invalid confirmation code"
   },

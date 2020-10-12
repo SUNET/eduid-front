@@ -188,7 +188,7 @@
   "mfa.two-factor-authn": "Two-factor authentication",
   "mobile.button_add": "Add",
   "mobile.confirm_mobile_placeholder": "Phone confirmation code",
-  "modal.long_code_invalid_format": "Invalid confirmation code",
+  "confirmation.long_code_invalid_format": "Invalid confirmation code",
   "modal.short_code_invalid_format": "The code is 10 characters long",
   "security.description_invalid_format": "The description is too long",
   "security.confirm_security_placeholder": "Describe your security key",
