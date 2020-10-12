@@ -9,7 +9,7 @@ import EduIDButton from "components/EduIDButton";
 import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "../containers/ConfirmModal";
 import "../login/styles/index.scss";
-import { shortCodePattern } from "../login/app_utils/validation/regexPattern";
+import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 
 const validate = (values, props) => {
   let phone = values.number;
