@@ -106,7 +106,7 @@ class Emails extends Component {
           handleConfirm={this.props.handleConfirm}
           helpBlock={this.props.translate("emails.confirm_help_text")}
           validationPattern={longCodePattern}
-          validationError={"confirmation.long_code_invalid_format"}
+          validationError={"confirmation.code_invalid_format"}
         />
       </div>
     );

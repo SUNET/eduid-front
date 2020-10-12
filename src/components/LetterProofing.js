@@ -40,7 +40,7 @@ class LetterProofingButton extends Component {
           handleConfirm={this.props.sendConfirmationCode}
           with_resend_link={false}
           validationPattern={shortCodePattern}
-          validationError={"confirmation.short_code_invalid_format"}
+          validationError={"confirmation.code_invalid_format"}
         />
       </div>
     );

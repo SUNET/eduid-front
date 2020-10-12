@@ -1438,14 +1438,9 @@
     "defaultMessage": "Phone confirmation code"
   },
   {
-    "id": "confirmation.long_code_invalid_format",
+    "id": "confirmation.code_invalid_format",
     "defaultMessage": "Invalid confirmation code",
     "description": "error text for invalid confirmation code"
-  },
-  {
-    "id": "confirmation.short_code_invalid_format",
-    "description": "Error message for mobile and letter wrong length",
-    "defaultMessage": "Incorrect code"
   },
   {
     "id": "security.description_invalid_format",

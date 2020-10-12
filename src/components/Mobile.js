@@ -9,7 +9,7 @@ import EduIDButton from "components/EduIDButton";
 import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "../containers/ConfirmModal";
 import "../login/styles/index.scss";
-import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
+import { shortCodePattern } from "../login/app_utils/validation/regexPattern";
 
 const validate = (values, props) => {
   let phone = values.number;
@@ -121,7 +121,7 @@ class Mobile extends Component {
           handleResend={this.props.handleResend}
           handleConfirm={this.props.handleConfirm}
           validationPattern={shortCodePattern}
-          validationError={"confirmation.short_code_invalid_format"}
+          validationError={"confirmation.code_invalid_format"}
         />
       </div>
     );
