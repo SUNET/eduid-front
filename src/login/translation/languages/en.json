@@ -309,7 +309,7 @@
   "resend.button": "Send a new confirmation link",
   "resend.email-label": "Complete registration by clicking the link sent to:",
   "resend.link-sent": "A link has been sent to your email address.",
-  "resetpw.email-link-sent_heading": "You should have recieved a link to reset your password.",
+  "resetpw.email-link-sent_heading": "You should have received a link to reset your password.",
   "resetpw.email-link-sent_text": "Click the link in your email to reset the password for your eduID. Alternatively, you can copy the link in your email and paste it into a browser window.",
   "resetpw.get-email-link_heading": "Request a password reset link to your email address.",
   "resetpw.get-email-link_text": "Enter the email address registered to your eduID. You will be sent a link to reset your password.",
