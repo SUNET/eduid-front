@@ -56,8 +56,8 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `The code is 10 characters long`,
     description: "Error message for mobile and letter wrong length",
   },
-  "modal.security_code_invalid_format": {
-    id: "modal.security_code_invalid_format",
+  "security.description_invalid_format": {
+    id: "security.description_invalid_format",
     defaultMessage: `The description is too long`,
     description: "Error message for max length"
   },

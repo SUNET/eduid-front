@@ -24,7 +24,7 @@
     "defaultMessage": "The code is 10 characters long"
   },
   {
-    "id": "modal.security_code_invalid_format",
+    "id": "security.description_invalid_format",
     "description": "Error message for max length",
     "defaultMessage": "The description is too long"
   },

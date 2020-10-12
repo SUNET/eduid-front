@@ -177,7 +177,7 @@ class Security extends Component {
           handleConfirm={this.props.handleStartWebauthnRegistration}
           helpBlock={this.props.translate("security.help_text")}
           validationPattern={securityKeyPattern}
-          validationError={"modal.security_code_invalid_format"}
+          validationError={"security.description_invalid_format"}
         />
       </div>
     );
