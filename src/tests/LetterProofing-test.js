@@ -234,9 +234,9 @@ describe("LetterProofingButton Component", () => {
     const { wrapper, props } = setupComponent(store);
     const button = wrapper.find("button");
     expect(button.exists()).toEqual(true);
-    // expect(store.dispatch.mock.calls.length).toEqual(0);
-    // button.props().onClick();
-    // expect(store.dispatch.mock.calls.length).toEqual(2);
+    expect(store.dispatch.mock.calls).tobeUndefined();
+    button.props().onClick();
+    expect(store.dispatch.mock.calls.length).toEqual(2);
   });
 });
 
@@ -272,7 +272,7 @@ describe("LetterProofing Container", () => {
       payload: { message: "success" }
     });
 
-    expect(dispatch.mock.calls.length).toEqual(0);
+    expect(dispatch.mock.calls).tobeUndefined();
     wrapper
       .find("button")
       .props()
