@@ -10,9 +10,9 @@ import {
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
-  let disabled = !state.nins.nins[0]
+  let withoutNin = !state.nins.nins[0]
   return {
-    disabled: disabled,
+    disabled: withoutNin,
     showModal: state.lookup_mobile.showModal,
     phoneNumbers: state.phones.phones,
     nins: state.nins.nins,
