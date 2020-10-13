@@ -16,7 +16,7 @@ class LetterProofingButton extends Component {
               {this.props.translate("verify-identity.vetting_post_tagline")}
               { disabled &&
                 <div className="text explanation">
-                  {this.props.translate("verify-identity.vetting_post_tagline")}
+                  {this.props.translate("verify-identity.vetting_explanation_add_nin")}
                 </div>
               }
             </div>
