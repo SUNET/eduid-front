@@ -1060,7 +1060,7 @@ export const userData = {
   "emails.add_new": (
     <FormattedMessage
       id="emails.add_new"
-      defaultMessage={`A new email address will recieve a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses.`}
+      defaultMessage={`A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses.`}
     />
   ),
 
