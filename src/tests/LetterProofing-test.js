@@ -234,7 +234,7 @@ describe("LetterProofingButton Component", () => {
     const { wrapper, props } = setupComponent(store);
     const button = wrapper.find("button");
     expect(button.exists()).toEqual(true);
-    expect(store.dispatch.mock.calls.length).toEqual(0);
+    expect(store.dispatch.mock.calls.length).toBeUndefined();
     button.props().onClick();
     expect(store.dispatch.mock.calls.length).toEqual(2);
   });
