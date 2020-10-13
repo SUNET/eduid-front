@@ -4,15 +4,21 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import ConfirmModal from "../containers/ConfirmModal";
 class LetterProofingButton extends Component {
   render() {
+    const { disabled } = this.props;
     return (
       <div>
         <div className="vetting-button">
           <button
-            disabled={this.props.disabled}
+            disabled={disabled}
             onClick={this.props.handleLetterProofing}
           >
             <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
+              { disabled &&
+                <div className="text explanation">
+                  {this.props.translate("verify-identity.vetting_post_tagline")}
+                </div>
+              }
             </div>
             <div className="name">
               {this.props.translate("letter.button_text_request")}
