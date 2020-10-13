@@ -448,6 +448,10 @@
     "defaultMessage": "For you with a phone number registered in your name"
   },
   {
+    "id": "verify-identity.vetting_explanation_add_nin",
+    "defaultMessage": "Start by adding your ID number above"
+  },
+  {
     "id": "verify-identity.vetting_freja_tagline",
     "defaultMessage": "For you able to create a Freja eID by visiting one of the authorised agents"
   },
