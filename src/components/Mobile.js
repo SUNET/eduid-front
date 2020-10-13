@@ -8,11 +8,8 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "components/EduIDButton";
 import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "../containers/ConfirmModal";
-
-// import "style/Emails.scss";
-// import "style/Mobile.scss";
-// import "style/DashboardMain.scss";
 import "../login/styles/index.scss";
+import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 
 const validate = (values, props) => {
   let phone = values.number;
@@ -123,6 +120,8 @@ class Mobile extends Component {
           closeModal={this.props.handleStopConfirmation}
           handleResend={this.props.handleResend}
           handleConfirm={this.props.handleConfirm}
+          validationPattern={shortCodePattern}
+          validationError={"confirmation.code_invalid_format"}
         />
       </div>
     );

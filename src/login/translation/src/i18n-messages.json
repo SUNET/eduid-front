@@ -1433,19 +1433,19 @@
     "defaultMessage": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   },
   {
-    "id": "emails.invalid_code",
-    "defaultMessage": "Invalid confirmation code",
-    "description": "error text for invalid confirmation code"
-  },
-  {
     "id": "mobile.confirm_mobile_placeholder",
     "description": "Placeholder for phone text input",
     "defaultMessage": "Phone confirmation code"
   },
   {
-    "id": "mobile.confirm_code_wrong_length",
-    "description": "Error message for wrong length",
-    "defaultMessage": "Code must be 10-12 characters long, only letters and numbers allowed"
+    "id": "confirmation.code_invalid_format",
+    "defaultMessage": "Invalid confirmation code",
+    "description": "error text for invalid confirmation code"
+  },
+  {
+    "id": "security.description_invalid_format",
+    "description": "Error message for max length",
+    "defaultMessage": "The description is too long"
   },
   {
     "id": "security.confirm_security_placeholder",
@@ -1456,11 +1456,6 @@
     "id": "security.help_text",
     "description": "Help text for security key max length",
     "defaultMessage": "max 50 characters"
-  },
-  {
-    "id": "security.confirm_security_length",
-    "description": "Error message for max length",
-    "defaultMessage": "The max length of 50 characters is reached"
   },
   {
     "id": "chpass.help-text-newpass",

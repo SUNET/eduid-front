@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, props) => {
       const data = {
         code: document
           .getElementById("confirmation-code-area")
-          .querySelector("input").value,
+          .querySelector("input").value.trim(),
       };
       dispatch(actions.postLetterProofingVerificationCode(data));
       dispatch(actions.stopLetterVerification());
