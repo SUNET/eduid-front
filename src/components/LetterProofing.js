@@ -21,6 +21,18 @@ class LetterProofingButton extends Component {
                   {this.props.translate("verify-identity.vetting_explanation_add_nin")}
                 </div>
               }
+              { !disabled && this.props.letter_expired ?
+                <div className="text explanation">
+                  KODEN GICK UT {this.props.letter_expires.slice(0,10)}<br />
+                  TRYCK HÄR OM DU VILL BESTÄLLA EN NY KOD<br />
+                </div>
+              : !disabled && !this.props.letter_expired &&
+                <div className="text explanation">
+                  ETT BREVET SKICKADES {this.props.letter_sent.slice(0,10)}<br />
+                  BREVET ÄR GILTIG TILL{this.props.letter_expires.slice(0,10)}<br />
+                  TRYCK HÄR IGEN NÄR DU HAR FÅTT BREVET<br />
+                </div>
+              }
             </div>
             <div className="name">
               {this.props.translate("letter.button_text_request")}
@@ -41,8 +53,8 @@ class LetterProofingButton extends Component {
           title={this.props.translate("letter.verify_title")}
           resendLabel={this.props.translate("cm.enter_code")}
           placeholder={this.props.translate("letter.placeholder")}
-          showModal={this.props.verifyingLetter}
-          closeModal={this.props.handleStopVerificationLetter}
+          // showModal={this.props.verifyingLetter}
+          // closeModal={this.props.handleStopVerificationLetter}
           handleConfirm={this.props.sendConfirmationCode}
           with_resend_link={false}
           validationPattern={shortCodePattern}
