@@ -6,15 +6,21 @@ import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 
 class LetterProofingButton extends Component {
   render() {
+    const { disabled } = this.props;
     return (
       <div>
         <div className="vetting-button">
           <button
-            disabled={this.props.disabled}
+            disabled={disabled}
             onClick={this.props.handleLetterProofing}
           >
             <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
+              { disabled &&
+                <div className="text explanation">
+                  {this.props.translate("verify-identity.vetting_explanation_add_nin")}
+                </div>
+              }
             </div>
             <div className="name">
               {this.props.translate("letter.button_text_request")}
