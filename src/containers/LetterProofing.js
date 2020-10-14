@@ -14,6 +14,8 @@ const mapStateToProps = (state, props) => {
     disabled: withoutNin,
     confirmingLetter: confirmingLetter,
     verifyingLetter: state.letter_proofing.verifyingLetter,
+    letter_sent: state.letter_proofing.letter_sent,
+    letter_expires: state.letter_proofing.letter_expires
   };
 };
 
