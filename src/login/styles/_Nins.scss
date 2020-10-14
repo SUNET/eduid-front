@@ -63,15 +63,15 @@
 }
 
 .vetting-button {
+  & .explanation {
+      color: $black;
+      margin-top: 1rem;
+  }
   & button:disabled{
     background-color: #f4f4f4;
     border-color: #7c7c7c;
     & .text {
       color: #7c7c7c;
-    }
-    & .explanation {
-      color: $black;
-      margin-top: 1rem;
     }
     & .name {
       color: #7c7c7c;
