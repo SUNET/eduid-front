@@ -157,6 +157,13 @@ export const userProfile = {
     />
   ),
 
+  "verify-identity.vetting_explanation_add_nin": (
+    <FormattedMessage
+      id="verify-identity.vetting_explanation_add_nin"
+      defaultMessage={`Start by adding your ID number above`}
+    />
+  ),
+
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
