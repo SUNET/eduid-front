@@ -17,7 +17,7 @@ export function* sendGetLetterProofing() {
     const response = yield call(fetchGetLetterProofing, state.config, nin);
     yield put(putCsrfToken(response));
     yield put(response);
-    yield put(eduidRMAllNotify());
+    // yield put(eduidRMAllNotify());
   } catch (error) {
     yield* failRequest(error, actions.getLetterProofingStateFail);
   }
