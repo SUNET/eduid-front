@@ -153,7 +153,7 @@ export const userProfile = {
   "verify-identity.vetting_phone_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_phone_tagline"
-      defaultMessage={`For you with a swedish phone number registered in your name`}
+      defaultMessage={`For you with a Swedish phone number registered in your name`}
     />
   ),
 
