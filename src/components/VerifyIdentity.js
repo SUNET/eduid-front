@@ -73,6 +73,8 @@ class VerifyIdentity extends Component {
             return (
               <div key={index}>
                 {vettingOptionsObject[key]}
+                {/* vettingRegistry object letter(index 0) and lookup_mobile(index 1) needs nin, 
+                if index is less then 2 and nin is not added, class name will be disabled */}
                 <p key={index} className={"proofing-btn-help" + (index < 2 && !addedNin ? " disabled":"")}>
                   {helpText}
                 </p>
