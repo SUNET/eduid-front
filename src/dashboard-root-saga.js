@@ -117,8 +117,8 @@ function* rootSaga() {
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeLatest(letterActions.POST_LETTER_PROOFING_PROOFING, sendLetterProofing),
     takeLatest(
-      letterActions.GET_LETTER_PROOFING_PROOFING,
-      sendGetLetterProofing
+      letterActions.GET_LETTER_PROOFING_PROOFING,sendGetLetterProofing
+      
     ),
     takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
     takeLatest(ninActions.POST_NIN, postNin),
