@@ -40,17 +40,22 @@ class LetterProofingButton extends Component {
         </div> 
       )
     } else {
-      if(!this.props.letter_sent === "" && this.props.letter_expire){
+      if(this.props.letter_sent === ""){
         description = (
-          <div className="text explanation">
+          <div />
+        )
+      }
+      else if(this.props.letter_expire){
+        description = (
+          <div className="description">
             KODEN GICK UT {this.props.letter_expires.slice(0,10)}<br />
             TRYCK HÄR OM DU VILL BESTÄLLA EN NY KOD<br />
           </div>
         )
       }
-      else{
+      else {
         description = (
-          <div className="text explanation">
+          <div className="description">
             ETT BREVET SKICKADES {this.props.letter_sent.slice(0,10)}<br />
             BREVET ÄR GILTIG TILL{this.props.letter_expires.slice(0,10)}<br />
             TRYCK HÄR IGEN NÄR DU HAR FÅTT BREVET<br />
