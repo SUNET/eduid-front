@@ -12,7 +12,16 @@ class LetterProofingButton extends Component {
     confirmingLetter: false,
     letter_sent: "",
   }
-  
+
+  handleModal=()=>{
+    const { verifyingLetter, letter_expired, confirmingLetter } = this.props;
+    this.setState({
+      verifyingLetter: verifyingLetter,
+      letter_expired: letter_expired,
+      confirmingLetter: confirmingLetter
+    })
+  }
+
   render() {
     const { disabled } = this.props;
     return (
@@ -20,7 +29,7 @@ class LetterProofingButton extends Component {
         <div className="vetting-button">
           <button
             disabled={disabled}
-            onClick={this.props.handleLetterProofing}
+            onClick={()=>this.handleModal()}
           >
             <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
