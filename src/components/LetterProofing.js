@@ -22,6 +22,14 @@ class LetterProofingButton extends Component {
     })
   }
 
+  sendConfirmationCode=(e)=>{
+    this.props.sendConfirmationCode(e);
+    this.setState({
+      confirmingLetter: false,
+      verifyingLetter: false
+    })
+  }
+
   render() {
     const { disabled } = this.props;
     return (
@@ -73,7 +81,7 @@ class LetterProofingButton extends Component {
           placeholder={this.props.translate("letter.placeholder")}
           // showModal={this.props.verifyingLetter}
           // closeModal={this.props.handleStopVerificationLetter}
-          handleConfirm={this.props.sendConfirmationCode}
+          handleConfirm={this.sendConfirmationCode}
           with_resend_link={false}
           validationPattern={shortCodePattern}
           validationError={"confirmation.code_invalid_format"}
