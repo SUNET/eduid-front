@@ -69,8 +69,8 @@ class LetterProofingButton extends Component {
           modalId="letterGenericConfirmDialog"
           title={this.props.translate("letter.modal_confirm_title")}
           mainText={this.props.translate("letter.modal_confirm_info")}
-          showModal={this.props.confirmingLetter}
-          closeModal={this.props.handleStopConfirmationLetter}
+          showModal={this.state.confirmingLetter}
+          closeModal={()=>this.setState({confirmingLetter: false})}
           acceptModal={this.props.confirmLetterProofing}
         />
         <ConfirmModal
@@ -79,8 +79,8 @@ class LetterProofingButton extends Component {
           title={this.props.translate("letter.verify_title")}
           resendLabel={this.props.translate("cm.enter_code")}
           placeholder={this.props.translate("letter.placeholder")}
-          // showModal={this.props.verifyingLetter}
-          // closeModal={this.props.handleStopVerificationLetter}
+          showModal={this.state.verifyingLetter}
+          closeModal={()=>this.setState({verifyingLetter: false})}
           handleConfirm={this.sendConfirmationCode}
           with_resend_link={false}
           validationPattern={shortCodePattern}
