@@ -5,6 +5,14 @@ import ConfirmModal from "../containers/ConfirmModal";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 
 class LetterProofingButton extends Component {
+  state = {
+    letter_expired: false,
+    letter_expires: false,
+    verifyingLetter: false,
+    confirmingLetter: false,
+    letter_sent: "",
+  }
+  
   render() {
     const { disabled } = this.props;
     return (
