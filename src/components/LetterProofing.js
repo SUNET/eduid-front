@@ -16,22 +16,23 @@ class LetterProofingButton extends Component {
           >
             <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
-              { disabled &&
+              { disabled ?
                 <div className="text explanation">
                   {this.props.translate("verify-identity.vetting_explanation_add_nin")}
                 </div>
-              }
-              { !disabled && this.props.letter_expired ?
-                <div className="text explanation">
-                  KODEN GICK UT {this.props.letter_expires.slice(0,10)}<br />
-                  TRYCK HÄR OM DU VILL BESTÄLLA EN NY KOD<br />
-                </div>
-              : !disabled && !this.props.letter_expired &&
-                <div className="text explanation">
-                  ETT BREVET SKICKADES {this.props.letter_sent.slice(0,10)}<br />
-                  BREVET ÄR GILTIG TILL{this.props.letter_expires.slice(0,10)}<br />
-                  TRYCK HÄR IGEN NÄR DU HAR FÅTT BREVET<br />
-                </div>
+                : !this.props.letter_sent==="" && this.props.letter_expired ? 
+                ( 
+                  <div className="text explanation">
+                    KODEN GICK UT {this.props.letter_expires.slice(0,10)}<br />
+                    TRYCK HÄR OM DU VILL BESTÄLLA EN NY KOD<br />
+                  </div>
+                ):(
+                  <div className="text explanation">
+                    ETT BREVET SKICKADES {this.props.letter_sent.slice(0,10)}<br />
+                    BREVET ÄR GILTIG TILL{this.props.letter_expires.slice(0,10)}<br />
+                    TRYCK HÄR IGEN NÄR DU HAR FÅTT BREVET<br />
+                  </div>
+                )
               }
             </div>
             <div className="name">
