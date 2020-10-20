@@ -32,6 +32,32 @@ class LetterProofingButton extends Component {
 
   render() {
     const { disabled } = this.props;
+    let description = "";
+    if(disabled){
+      description = (
+        <div className="description">
+          {this.props.translate("verify-identity.vetting_explanation_add_nin")}
+        </div> 
+      )
+    } else {
+      if(!this.props.letter_sent === "" && this.props.letter_expire){
+        description = (
+          <div className="text explanation">
+            KODEN GICK UT {this.props.letter_expires.slice(0,10)}<br />
+            TRYCK HÄR OM DU VILL BESTÄLLA EN NY KOD<br />
+          </div>
+        )
+      }
+      else{
+        description = (
+          <div className="text explanation">
+            ETT BREVET SKICKADES {this.props.letter_sent.slice(0,10)}<br />
+            BREVET ÄR GILTIG TILL{this.props.letter_expires.slice(0,10)}<br />
+            TRYCK HÄR IGEN NÄR DU HAR FÅTT BREVET<br />
+          </div>
+        )
+      }
+    }
     return (
       <div>
         <div className="vetting-button">
@@ -41,24 +67,7 @@ class LetterProofingButton extends Component {
           >
             <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
-              { disabled ?
-                <div className="text explanation">
-                  {this.props.translate("verify-identity.vetting_explanation_add_nin")}
-                </div>
-                : !this.props.letter_sent==="" && this.props.letter_expired ? 
-                ( 
-                  <div className="text explanation">
-                    KODEN GICK UT {this.props.letter_expires.slice(0,10)}<br />
-                    TRYCK HÄR OM DU VILL BESTÄLLA EN NY KOD<br />
-                  </div>
-                ):(
-                  <div className="text explanation">
-                    ETT BREVET SKICKADES {this.props.letter_sent.slice(0,10)}<br />
-                    BREVET ÄR GILTIG TILL{this.props.letter_expires.slice(0,10)}<br />
-                    TRYCK HÄR IGEN NÄR DU HAR FÅTT BREVET<br />
-                  </div>
-                )
-              }
+              {description}
             </div>
             <div className="name">
               {this.props.translate("letter.button_text_request")}
