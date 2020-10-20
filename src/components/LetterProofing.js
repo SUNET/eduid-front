@@ -56,7 +56,7 @@ class LetterProofingButton extends Component {
       else {
         description = (
           <div className="description">
-            ETT BREVET SKICKADES {this.props.letter_sent.slice(0,10)}<br />
+             {this.props.translate("verify-identity.vetting_letter_sent")} {this.props.letter_sent.slice(0,10)}<br />
             BREVET ÄR GILTIG TILL{this.props.letter_expires.slice(0,10)}<br />
             TRYCK HÄR IGEN NÄR DU HAR FÅTT BREVET<br />
           </div>
