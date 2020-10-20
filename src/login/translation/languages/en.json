@@ -397,5 +397,6 @@
   "verify-identity.vetting_freja_tagline": "For you able to create a Freja eID by visiting one of the authorised agents",
   "verify-identity.vetting_phone_tagline": "For you with a phone number registered in your name",
   "verify-identity.vetting_post_tagline": "For you registered at your current address",
-  "verify-identity.vetting_explanation_add_nin": "Start by adding your ID number above"
+  "verify-identity.vetting_explanation_add_nin": "Start by adding your ID number above",
+  "verify-identity.vetting_letter_sent": "The letter was sent"
 }

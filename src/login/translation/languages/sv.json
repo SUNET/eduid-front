@@ -397,5 +397,6 @@
   "verify-identity.vetting_freja_tagline": "För dig som har eller kan skapa Freja eID genom att besöka ett ombud i Sverige",
   "verify-identity.vetting_phone_tagline": "För dig som har ett telefonabonnemang i ditt eget namn",
   "verify-identity.vetting_post_tagline": "För dig som har tillgång till din folkbokföringsaddress",
-  "verify-identity.vetting_explanation_add_nin": "Börja med att lägga till ditt personnummer här ovan"
+  "verify-identity.vetting_explanation_add_nin": "Börja med att lägga till ditt personnummer här ovan",
+  "verify-identity.vetting_letter_sent": "Ett brev skickades"
 }

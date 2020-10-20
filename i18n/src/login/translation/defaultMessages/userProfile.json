@@ -96,6 +96,10 @@
     "defaultMessage": "Start by adding your ID number above"
   },
   {
+    "id": "verify-identity.vetting_letter_sent",
+    "defaultMessage": "The letter was sent"
+  },
+  {
     "id": "verify-identity.vetting_freja_tagline",
     "defaultMessage": "For you able to create a Freja eID by visiting one of the authorised agents"
   },

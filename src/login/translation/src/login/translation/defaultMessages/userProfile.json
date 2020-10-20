@@ -100,6 +100,10 @@
     "defaultMessage": "For you with a phone number registered in your name"
   },
   {
+    "id": "verify-identity.vetting_letter_sent",
+    "defaultMessage": "The letter was sent"
+  },
+  {
     "id": "verify-identity.vetting_explanation_add_nin",
     "defaultMessage": "Start by adding your ID number above"
   },

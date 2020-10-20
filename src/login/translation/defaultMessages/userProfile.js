@@ -157,6 +157,13 @@ export const userProfile = {
     />
   ),
 
+  "verify-identity.vetting_letter_sent": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_sent"
+      defaultMessage={`The letter was sent`}
+    />
+  ),
+
   "verify-identity.vetting_explanation_add_nin": (
     <FormattedMessage
       id="verify-identity.vetting_explanation_add_nin"
