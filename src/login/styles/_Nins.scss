@@ -73,6 +73,9 @@
     border-color: #7c7c7c;
     & .text {
       color: #7c7c7c;
+      & .description {
+        color: $black;
+      }
     }
     & .name {
       color: #7c7c7c;
