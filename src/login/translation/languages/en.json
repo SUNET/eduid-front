@@ -401,5 +401,6 @@
   "verify-identity.vetting_letter_sent": "The letter was sent",
   "verify-identity.vetting_letter_valid": "The letter is valid to",
   "verify-identity.vetting_letter_received": "Click here again when you have received the letter",
-  "verify-identity.vetting_letter_code_expired": "The code expired"
+  "verify-identity.vetting_letter_code_expired": "The code expired",
+  "verify-identity.vetting_letter_order_new_code": "Click here to order a new code"
 }

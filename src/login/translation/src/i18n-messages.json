@@ -468,6 +468,10 @@
     "defaultMessage": "The code expired"
   },
   {
+    "id": "verify-identity.vetting_letter_order_new_code",
+    "defaultMessage": "Click here to order a new code"
+  },
+  {
     "id": "verify-identity.vetting_freja_tagline",
     "defaultMessage": "For you able to create a Freja eID by visiting one of the authorised agents"
   },

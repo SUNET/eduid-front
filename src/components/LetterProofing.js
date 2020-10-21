@@ -49,7 +49,7 @@ class LetterProofingButton extends Component {
         description = (
           <div className="description">
             {this.props.translate("verify-identity.vetting_letter_code_expired")} {this.props.letter_expires.slice(0,10)}<br />
-            TRYCK HÄR OM DU VILL BESTÄLLA EN NY KOD<br />
+            {this.props.translate("verify-identity.vetting_letter_order_new_code")} <br />
           </div>
         )
       }

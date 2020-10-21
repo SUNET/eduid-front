@@ -116,6 +116,10 @@
     "defaultMessage": "The code expired"
   },
   {
+    "id": "verify-identity.vetting_letter_order_new_code",
+    "defaultMessage": "Click here to order a new code"
+  },
+  {
     "id": "verify-identity.vetting_explanation_add_nin",
     "defaultMessage": "Start by adding your ID number above"
   },

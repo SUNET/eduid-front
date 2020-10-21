@@ -184,6 +184,13 @@ export const userProfile = {
       defaultMessage={`The code expired`}
     />
   ),
+
+  "verify-identity.vetting_letter_order_new_code": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_order_new_code"
+      defaultMessage={`Click here to order a new code`}
+    />
+  ),
  
   "verify-identity.vetting_explanation_add_nin": (
     <FormattedMessage
