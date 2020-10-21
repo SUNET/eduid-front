@@ -65,7 +65,7 @@ function* rootSaga() {
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestCredentials),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestSuggestedPassword),
-    takeLatest(ninActions.GET_NINS_SUCCESS, sendGetLetterProofing),
+    takeLatest(pdataActions.GET_USERDATA_SUCCESS, sendGetLetterProofing),
     ...groupsSagas,
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     takeLatest(
