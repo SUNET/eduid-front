@@ -456,6 +456,10 @@
     "defaultMessage": "The letter was sent"
   },
   {
+    "id": "verify-identity.vetting_letter_valid",
+    "defaultMessage": "The letter is valid to"
+  },
+  {
     "id": "verify-identity.vetting_freja_tagline",
     "defaultMessage": "For you able to create a Freja eID by visiting one of the authorised agents"
   },

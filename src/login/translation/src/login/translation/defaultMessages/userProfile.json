@@ -104,6 +104,10 @@
     "defaultMessage": "The letter was sent"
   },
   {
+    "id": "verify-identity.vetting_letter_valid",
+    "defaultMessage": "The letter is valid to"
+  },
+  {
     "id": "verify-identity.vetting_explanation_add_nin",
     "defaultMessage": "Start by adding your ID number above"
   },
