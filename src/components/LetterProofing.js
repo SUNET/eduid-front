@@ -58,7 +58,7 @@ class LetterProofingButton extends Component {
           <div className="description">
             {this.props.translate("verify-identity.vetting_letter_sent")} {this.props.letter_sent.slice(0,10)}<br />
             {this.props.translate("verify-identity.vetting_letter_valid")} {this.props.letter_expires.slice(0,10)}<br />
-            TRYCK HÄR IGEN NÄR DU HAR FÅTT BREVET<br />
+            {this.props.translate("verify-identity.vetting_letter_received")} <br />
           </div>
         )
       }

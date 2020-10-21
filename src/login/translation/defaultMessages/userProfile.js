@@ -171,6 +171,13 @@ export const userProfile = {
     />
   ),
 
+  "verify-identity.vetting_letter_received": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_received"
+      defaultMessage={`Click here again when you have received the letter`}
+    />
+  ),
+ 
   "verify-identity.vetting_explanation_add_nin": (
     <FormattedMessage
       id="verify-identity.vetting_explanation_add_nin"
