@@ -177,6 +177,13 @@ export const userProfile = {
       defaultMessage={`Click here again when you have received the letter`}
     />
   ),
+
+  "verify-identity.vetting_letter_code_expired": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_code_expired"
+      defaultMessage={`The code expired`}
+    />
+  ),
  
   "verify-identity.vetting_explanation_add_nin": (
     <FormattedMessage

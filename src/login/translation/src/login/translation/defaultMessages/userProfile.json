@@ -112,6 +112,10 @@
     "defaultMessage": "Click here again when you have received the letter"
   },
   {
+    "id": "verify-identity.vetting_letter_code_expired",
+    "defaultMessage": "The code expired"
+  },
+  {
     "id": "verify-identity.vetting_explanation_add_nin",
     "defaultMessage": "Start by adding your ID number above"
   },

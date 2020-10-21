@@ -400,5 +400,6 @@
   "verify-identity.vetting_explanation_add_nin": "Börja med att lägga till ditt personnummer här ovan",
   "verify-identity.vetting_letter_sent": "Ett brev skickades",
   "verify-identity.vetting_letter_valid": "Brevet är giltig till",
-  "verify-identity.vetting_letter_received": "Tryck här igen när du har fått brevet"
+  "verify-identity.vetting_letter_received": "Tryck här igen när du har fått brevet",
+  "verify-identity.vetting_letter_code_expired": "Koden gick ut"
 }
