@@ -47,19 +47,32 @@ class LetterProofingButton extends Component {
       }
       else if(this.props.letter_expire){
         description = (
-          <div className="description">
-            {this.props.translate("verify-identity.vetting_letter_code_expired")} {this.props.letter_expires.slice(0,10)}<br />
-            {this.props.translate("verify-identity.vetting_letter_order_new_code")} <br />
-          </div>
+          <>
+            <div className="description">
+              {this.props.translate("verify-identity.vetting_letter_code_expired")}
+              {this.props.letter_expires.slice(0,10)}
+            </div>
+            <div className="description">
+              {this.props.translate("verify-identity.vetting_letter_order_new_code")}
+            </div>
+          </>
         )
       }
       else {
         description = (
-          <div className="description">
-            {this.props.translate("verify-identity.vetting_letter_sent")} {this.props.letter_sent.slice(0,10)}<br />
-            {this.props.translate("verify-identity.vetting_letter_valid")} {this.props.letter_expires.slice(0,10)}<br />
-            {this.props.translate("verify-identity.vetting_letter_received")} <br />
-          </div>
+          <>
+            <div className="description">
+              {this.props.translate("verify-identity.vetting_letter_sent")} 
+              {this.props.letter_sent.slice(0,10)}
+            </div>
+            <div className="description">
+              {this.props.translate("verify-identity.vetting_letter_valid")} 
+              {this.props.letter_expires.slice(0,10)}
+            </div>
+            <div className="description">
+              {this.props.translate("verify-identity.vetting_letter_received")}
+            </div>
+          </>
         )
       }
     }
