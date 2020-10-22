@@ -320,7 +320,7 @@
   "security.credential": "Lösenord",
   "security.description": "Namn",
   "security.last-used.date": "Aldrig använd",
-  "security.last_used": "Senast använt",
+  "security.last_used": "Senast använd",
   "security.main_title": "Säkerhet",
   "security.password_credential_type": "Lösenord",
   "security.remove": "Ta bort",
