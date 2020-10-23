@@ -9,6 +9,9 @@ table {
   table-layout: fixed;
   & tbody {
     margin-bottom: 1rem;
+    & tr.webauthn-token-holder {
+      color: $black;
+    }
     & tr {
       background-color: white;
       height: 3rem;
