@@ -59,14 +59,20 @@ table {
         &.primary {
           padding: 0.625rem 1.25rem;
         }
+        .btn-remove-webauthn {
+          padding: 0;
+        }
       }
     }
     .security-name{
-      width: 30%;
+      width: 25%;
     }
     .security-creation-date,
     .security-last-used-date {
-      width: 23%;
+      width: 20%;
+    }
+    .security-remove-data {
+      width: 5%;
     }
 
 
