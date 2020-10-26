@@ -69,11 +69,16 @@ table {
       }
     }
     .security-name{
-      width: 25%;
+      width: 39%;
     }
-    .security-creation-date,
+    .security-creation-date{
+      width: 22%;
+    }
     .security-last-used-date {
       width: 20%;
+    }
+    .security-verify-link {
+      width: 18%;
     }
     .security-remove-data {
       width: 5%;
