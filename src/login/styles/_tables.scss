@@ -55,6 +55,9 @@ table {
         &.primary {
           color: #161616;
         }
+        &.btn-remove-webauthn {
+          padding: 0;
+        }
         &.unverified,
         &.verified,
         &.primary {
