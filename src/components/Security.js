@@ -127,7 +127,7 @@ class Security extends Component {
               <th className="security-name">{this.props.translate("security.description")}</th>
               <th className="security-creation-date">{this.props.translate("security.creation_date")}</th>
               <th className="security-last-used-date">{this.props.translate("security.last_used")}</th>
-              <th />
+              <th className="security-verify-link" />
               <th className="security-remove-data"/>
             </tr>
             {secirutykey_table_data}
