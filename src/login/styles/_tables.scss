@@ -19,6 +19,11 @@ table {
     }
     & tr.webauthn-token-holder {
       color: $black;
+      & td:first-child{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
     }
     & tr {
       background-color: white;
