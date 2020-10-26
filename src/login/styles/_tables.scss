@@ -18,6 +18,9 @@ table {
     & tr {
       background-color: white;
       height: 3rem;
+      & td:first-child{
+        padding-left: 1.25rem;
+      }
       & td {
         word-wrap: break-word;
         text-align: left;
