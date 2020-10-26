@@ -55,9 +55,6 @@ table {
         &.primary {
           color: #161616;
         }
-        &.btn-remove-webauthn {
-          padding: 0;
-        }
         &.unverified,
         &.verified,
         &.primary {
@@ -69,13 +66,13 @@ table {
       }
     }
     .security-name{
-      width: 34%;
+      width: 36%;
     }
     .security-creation-date{
-      width: 22%;
+      width: 21%;
     }
     .security-last-used-date {
-      width: 22%;
+      width: 21%;
     }
     .security-verify-link {
       width: 17%;
