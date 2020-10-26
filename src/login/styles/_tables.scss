@@ -100,6 +100,15 @@ table {
   }
 }
 
+@media (max-width: 568px) {
+  .security-creation-date,
+  .security-last-used-date,
+  .webauthn-token-holder td:nth-child(2),
+  .webauthn-token-holder td:nth-child(3){
+    display: none;
+  }
+}
+
 // td table th {
 //   color: #171717;
 //   font-size: 12px;
