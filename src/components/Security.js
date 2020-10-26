@@ -124,11 +124,11 @@ class Security extends Component {
         <table className="table-form passwords">
           <tbody>
             <tr>
-              <th>{this.props.translate("security.description")}</th>
-              <th>{this.props.translate("security.creation_date")}</th>
-              <th>{this.props.translate("security.last_used")}</th>
+              <th className="security-name">{this.props.translate("security.description")}</th>
+              <th className="security-creation-date">{this.props.translate("security.creation_date")}</th>
+              <th className="security-last-used-date">{this.props.translate("security.last_used")}</th>
               <th />
-              <th />
+              <th className="remove-data"/>
             </tr>
             {secirutykey_table_data}
           </tbody>

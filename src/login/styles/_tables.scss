@@ -49,6 +49,14 @@ table {
         }
       }
     }
+    .security-name{
+      width: 30%;
+    }
+    .security-creation-date,
+    .security-last-used-date {
+      width: 25%;
+    }
+
 
     // & th {
     //   //   padding: 0.75rem;
