@@ -9,6 +9,9 @@ table {
   table-layout: fixed;
   & tbody {
     margin-bottom: 1rem;
+    & th:first-child{
+      padding-left: 1.25rem;
+    }
     & tr.webauthn-token-holder {
       color: $black;
     }
@@ -20,7 +23,8 @@ table {
         text-align: left;
         vertical-align: middle;
         line-height: 1;
-        &.value-status {
+        &.value-status,
+        &.verify {
           width: 25%;
           & button {
             margin: 0;
@@ -34,7 +38,8 @@ table {
         }
         &.remove-data {
           width: 5%;
-          & .icon-button {
+          & .icon-button
+           {
             margin: 0;
             padding: 0;
           }
@@ -54,7 +59,7 @@ table {
     }
     .security-creation-date,
     .security-last-used-date {
-      width: 25%;
+      width: 23%;
     }
 
 
