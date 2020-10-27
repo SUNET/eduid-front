@@ -38,7 +38,7 @@ describe("AccountId component renders", () => {
   it("Component does not render 'null' or 'false'", () => {
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
-  it("Component recieves user data as props", () => {
+  it("Component receives user data as props", () => {
     expect(wrapper.props()).toEqual({
       data: {
         display_name: "",

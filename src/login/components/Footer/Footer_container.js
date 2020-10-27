@@ -16,7 +16,7 @@ const mapStateToProps = (state, props) => {
     is_configured: state.config.is_configured,
     language: state.intl.locale,
     languages: languages,
-    reload_to: state.config.DASHBOARD_URL,
+    reload_to: state.config.dashboard_url,
     faq_link: state.config.static_faq_url
   };
 };

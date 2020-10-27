@@ -245,7 +245,7 @@ const fakeState = {
   config: {
     csrf_token: "",
     is_configured: true,
-    PERSONAL_DATA_URL: "http://localhost/services/personal-data/user"
+    personal_data_url: "http://localhost/services/personal-data/user"
   },
   intl: {
     locale: "en",
@@ -295,7 +295,7 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(actions.getAllUserdata()));
 
     const config = {
-      PERSONAL_DATA_URL: "http://localhost/services/personal-data/user"
+      personal_data_url: "http://localhost/services/personal-data/user"
     };
     next = generator.next();
 

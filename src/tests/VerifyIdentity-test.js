@@ -43,7 +43,7 @@ describe("VerifyIdentity component, no nin added ", () => {
     },
     config: {
       is_configured: false,
-      PROOFING_METHODS: ["letter", "lookup_mobile", "oidc", "eidas"]
+      proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"]
     },
     letter_proofing: {
       confirmingLetter: false
@@ -103,9 +103,9 @@ describe("VerifyIdentity component, when nin is saved", () => {
     },
     config: {
       is_configured: false,
-      PROOFING_METHODS: ["letter", "lookup_mobile", "oidc", "eidas"],
-      TOKEN_VERIFY_IDP: "http://dev.test.swedenconnect.se/idp",
-      EIDAS_URL: "http://eidas.eduid.docker:8080/"
+      proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"],
+      token_verify_idp: "http://dev.test.swedenconnect.se/idp",
+      eidas_url: "http://eidas.eduid.docker:8080/"
     },
     letter_proofing: {
       confirmingLetter: false
@@ -190,9 +190,9 @@ describe("VerifyIdentity component, when nin is saved", () => {
     },
     config: {
       is_configured: false,
-      PROOFING_METHODS: ["letter", "lookup_mobile", "oidc", "eidas"],
-      TOKEN_VERIFY_IDP: "http://dev.test.swedenconnect.se/idp",
-      EIDAS_URL: "http://eidas.eduid.docker:8080/"
+      proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"],
+      token_verify_idp: "http://dev.test.swedenconnect.se/idp",
+      eidas_url: "http://eidas.eduid.docker:8080/"
     },
     letter_proofing: {
       confirmingLetter: false
