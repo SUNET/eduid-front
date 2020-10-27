@@ -6,11 +6,17 @@ import Footer from "components/Footer";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
-  const languages = {};
+  let languages = {};
   if (state.config.available_languages !== undefined) {
-    state.config.available_languages.forEach(l => {
-      languages[l[0]] = l[1];
-    });
+    // Old format of lists in list, remove after config update
+    if (Array.isArray(state.config.available_languages)) {
+      state.config.available_languages.forEach(l => {
+        languages[l[0]] = l[1];
+      });
+    } else {
+      // This is the new format, keep this after config update
+      languages = state.config.available_languages
+    }
   }
   return {
     language: state.intl.locale,
