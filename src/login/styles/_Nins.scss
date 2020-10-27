@@ -65,16 +65,16 @@
 .vetting-button {
   & button:disabled{
     background-color: #f4f4f4;
-    border-color: #7c7c7c;
+    border-color: $gray;
     & .text {
-      color: #7c7c7c;
+      color: $gray;
     }
     & .explanation {
       color: $black;
       margin-top: 1rem;
     }
     & .name {
-      color: #7c7c7c;
+      color: $gray;
     }
     &:hover {
       transform: unset;
@@ -82,12 +82,17 @@
   }
 }
 
+
 .proofing-btn-help {
   margin: 0 0.5rem 1rem 0.5rem;
   line-height: 1.2;
-  color: #7c7c7c;
+  color: $black;
   font-size: 0.875rem;
   width: 300px;
+}
+
+.proofing-btn-help.disabled {
+  color: $gray;
 }
 
 @media (max-width: 768px) {
