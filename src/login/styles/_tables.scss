@@ -70,21 +70,7 @@ table {
         }
       }
     }
-    .security-name{
-      width: 36%;
-    }
-    .security-creation-date{
-      width: 21%;
-    }
-    .security-last-used-date {
-      width: 21%;
-    }
-    .security-verify-link {
-      width: 17%;
-    }
-    .security-remove-data {
-      width: 5%;
-    }
+
 
 
     // & th {
@@ -116,6 +102,21 @@ table.table-form.passwords{
     color: $black;
     font-family: "ProximaNova-Bold";
     height: auto;
+  }
+  .security-name{
+    width: 36%;
+  }
+  .security-creation-date{
+    width: 21%;
+  }
+  .security-last-used-date {
+    width: 21%;
+  }
+  .security-verify-link {
+    width: 17%;
+  }
+  .security-remove-data {
+    width: 5%;
   }
 }
 
