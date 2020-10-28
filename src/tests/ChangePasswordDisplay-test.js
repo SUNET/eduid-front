@@ -328,9 +328,9 @@ describe("Security Container", () => {
         },
         config: {
           csrf_token: "",
-          // SECURITY_URL: "/dummy-sec-url",
-          DASHBOARD_URL: "/dummy-dash-url/",
-          TOKEN_SERVICE_URL: "/dummy-tok-url/"
+          // security_url: "/dummy-sec-url",
+          dashboard_url: "/dummy-dash-url/",
+          token_service_url: "/dummy-tok-url/"
         },
         intl: {
           locale: "en",
@@ -401,9 +401,9 @@ const mockState = {
   },
   config: {
     csrf_token: "csrf-token",
-    DASHBOARD_URL: "/dummy-dash-url/",
-    TOKEN_SERVICE_URL: "/dummy-tok-url/",
-    SECURITY_URL: "/dummy-sec-url"
+    dashboard_url: "/dummy-dash-url/",
+    token_service_url: "/dummy-tok-url/",
+    security_url: "/dummy-sec-url"
   },
   intl: {
     locale: "en",

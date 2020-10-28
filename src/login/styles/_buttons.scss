@@ -103,7 +103,6 @@ button.close:hover {
 a.btn.modal-button,
 button.btn.modal-button {
   box-shadow: none;
-  border: solid 1px transparent;
   background-color: transparent;
   margin: 0.5rem 1rem;
   &:hover {
@@ -171,7 +170,7 @@ button.btn.icon-button {
   }
 }
 
-button.btn.table-button {
+button.btn.table-button.btn.btn-primary  {
   color: #ff500d;
   font-size: 0.75rem;
   background-color: transparent;

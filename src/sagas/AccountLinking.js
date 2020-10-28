@@ -24,7 +24,7 @@ export function* requestOrcid() {
 export function* requestConnectOrcid(win) {
   try {
     const config = yield select(state => state.config);
-    let url = config.ORCID_URL + "authorize";
+    let url = config.orcid_url + "authorize";
 
     if (win !== undefined && win.location !== undefined) {
       win.location.href = url;
@@ -38,7 +38,7 @@ export function* requestConnectOrcid(win) {
 
 export function fetchOrcid(config) {
   return window
-    .fetch(config.ORCID_URL, {
+    .fetch(config.orcid_url, {
       ...getRequest
     })
     .then(checkStatus)
@@ -61,7 +61,7 @@ export function* requestRemoveOrcid() {
 
 export function removeOrcid(config, data) {
   return window
-    .fetch(config.ORCID_URL + "remove", {
+    .fetch(config.orcid_url + "remove", {
       ...postRequest,
       body: JSON.stringify(data)
     })
