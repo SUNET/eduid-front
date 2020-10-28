@@ -30,6 +30,14 @@ class LetterProofingButton extends Component {
     })
   }
 
+  confirmLetterProofing=(e)=>{
+    this.props.confirmLetterProofing(e);
+    this.setState({
+      confirmingLetter: false,
+      verifyingLetter: false
+    })
+  }
+
   render() {
     const { disabled, translate, letter_sent, letter_expire, letter_expires } = this.props;
     let description = "";
@@ -98,7 +106,7 @@ class LetterProofingButton extends Component {
           mainText={translate("letter.modal_confirm_info")}
           showModal={this.state.confirmingLetter}
           closeModal={()=>this.setState({confirmingLetter: false})}
-          acceptModal={this.props.confirmLetterProofing}
+          acceptModal={this.confirmLetterProofing}
         />
         <ConfirmModal
           modalId="letterConfirmDialog"
