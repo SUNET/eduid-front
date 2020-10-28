@@ -70,29 +70,6 @@ table {
         }
       }
     }
-
-
-
-    // & th {
-    //   //   padding: 0.75rem;
-    //   background-color: white;
-    //   // border-bottom: #7c7c7c 1px solid;
-    // }
-
-    //   &.value-status {
-    //     text-align: center;
-    //     & label {
-    //       font-family: "ProximaNova-Regular";
-    //       font-weight: 400;
-    //     }
-    //   }
-    //   &.data {
-    //     width: 80%;
-    //   }
-    //   &.data-remove-button,
-    //   &.status-label {
-    //     width: 10%;
-    //   }
   }
 }
 table.table-form.passwords{
@@ -128,36 +105,3 @@ table.table-form.passwords{
     display: none;
   }
 }
-
-// td table th {
-//   color: #171717;
-//   font-size: 12px;
-//   text-transform: uppercase;
-//   padding: 0.75rem;
-//   background-color: transparent;
-// }
-
-// span.nobutton,
-// .primary,
-// tr.primary {
-//   font-weight: 300;
-//   color: $black;
-// }
-
-// span.nobutton,
-// button.verify-status-label {
-//   font-size: 12px;
-// }
-
-// span.nobutton {
-//   font-family: "ProximaNova-Regular";
-//   text-transform: uppercase;
-// }
-
-// @media (max-width: 568px) {
-//   table {
-//     font-size: 1.25rem;
-//     font-weight: 400;
-//     // color: #161616;
-//   }
-// }
