@@ -109,6 +109,15 @@ table {
     //   }
   }
 }
+table.table-form.passwords{
+  tr:first-child{
+    font-size: 1rem;
+    letter-spacing: 0;
+    color: $black;
+    font-family: "ProximaNova-Bold";
+    height: auto;
+  }
+}
 
 @media (max-width: 568px) {
   .security-creation-date,
