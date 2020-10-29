@@ -79,7 +79,7 @@ class Security extends Component {
       }
 
       return (
-        <tr key={index} className="webauthn-token-holder" data-token={cred.key}>
+        <tr key={index} className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
           <td>{cred.description}</td>
           <td
             data-toggle="tooltip"
