@@ -17,12 +17,15 @@ table {
       line-height: 1;
     }
     & tr.webauthn-token-holder {
-      color: $black;
+      color: $gray;
       & td:first-child{
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
       }
+    }  
+    & tr.webauthn-token-holder.verified {
+      color: $black;
     }
     & tr {
       background-color:$white;
