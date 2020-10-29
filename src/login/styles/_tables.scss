@@ -52,9 +52,11 @@ table {
             padding: 0;
           }
         }
-        .verified{
+        .verified {
           text-transform: uppercase;
-          padding: 0.625rem 1.25rem;;
+          padding: 0.625rem 1.25rem;
+          font-family: "ProximaNova-Regular";
+          font-weight: 700;
         }
         &.remove-data {
           width: 5%;
