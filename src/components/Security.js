@@ -50,9 +50,9 @@ class Security extends Component {
       // verify button/ verified badge
       if (cred.verified) {
         btnVerify = (
-          <span className="nobutton verified" disabled>
+          <label className="nobutton verified" disabled>
             {this.props.translate("security.verified")}
-          </span>
+          </label>
         );
       } else {
         btnVerify = (

@@ -51,10 +51,10 @@ table {
             font-weight: 700;
             padding: 0;
           }
-          .verified {
-            text-transform: uppercase;
-            padding: 0.625rem 1.25rem;;
-          }
+        }
+        .verified{
+          text-transform: uppercase;
+          padding: 0.625rem 1.25rem;;
         }
         &.remove-data {
           width: 5%;
