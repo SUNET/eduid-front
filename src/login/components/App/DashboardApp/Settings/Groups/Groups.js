@@ -36,7 +36,7 @@ class Groups extends Component {
   // - if no wizard: show button
 
   // will start as true and permanently be set to false when wizard is completed
-  state = { firstGroup: false};
+  state = { firstGroup: false };
 
   renderCreateButton = () => {
     // console.log("you're setting state.firstGroup to false ");
@@ -55,47 +55,45 @@ class Groups extends Component {
     );
   };
 
-  render() {
-    const cookieName = "show-groups";
-    const cookiePattern = "";
-    const showComponent = checkForCookie(cookieName, cookiePattern);
+  componentDidMount() {
+    console.log("Groups mounted");
+    this.props.handleGetAllData();
+  }
 
-    if (showComponent) {
-      return (
-        <article
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <div className="intro">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-              }}
-            >
-              <h4>Groups</h4>
-              <RenderCreateButton
-                handleCreateGroup={this.props.handleCreateGroup}
-                firstGroup={this.state.firstGroup}
-              />
-            </div>
-            <p>
-              Create groups with other eduID users. What the groups are used for
-              is up to you and the local services your univeristy provides.
-            </p>
-            <WizardPanel
-              renderCreateButton={this.renderCreateButton}
+  render() {
+    return (
+      <article
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <div className="intro">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+            }}
+          >
+            <h4>Groups</h4>
+            <RenderCreateButton
+              handleCreateGroup={this.props.handleCreateGroup}
               firstGroup={this.state.firstGroup}
             />
-            <DataPanel />
           </div>
-        </article>
-      );
-    }
-    return <div />;
+          <p>
+            Create groups with other eduID users. What the groups are used for
+            is up to you and the local services your univeristy provides.
+          </p>
+          <WizardPanel
+            renderCreateButton={this.renderCreateButton}
+            firstGroup={this.state.firstGroup}
+          />
+          <DataPanel />
+        </div>
+      </article>
+    );
   }
 }
 
