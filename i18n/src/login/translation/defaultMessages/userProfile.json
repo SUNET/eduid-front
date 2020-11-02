@@ -96,6 +96,26 @@
     "defaultMessage": "Start by adding your ID number above"
   },
   {
+    "id": "verify-identity.vetting_letter_sent",
+    "defaultMessage": "The letter was sent"
+  },
+  {
+    "id": "verify-identity.vetting_letter_valid",
+    "defaultMessage": "The letter is valid to"
+  },
+  {
+    "id": "verify-identity.vetting_letter_received",
+    "defaultMessage": "Click here again when you have received the letter"
+  },
+  {
+    "id": "verify-identity.vetting_letter_code_expired",
+    "defaultMessage": "The code expired"
+  },
+  {
+    "id": "verify-identity.vetting_letter_order_new_code",
+    "defaultMessage": "Click here to order a new code"
+  },
+  {
     "id": "verify-identity.vetting_freja_tagline",
     "defaultMessage": "For you able to create a Freja eID by visiting one of the authorised agents"
   },

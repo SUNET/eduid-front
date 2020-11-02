@@ -157,6 +157,41 @@ export const userProfile = {
     />
   ),
 
+  "verify-identity.vetting_letter_sent": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_sent"
+      defaultMessage={`The letter was sent`}
+    />
+  ),
+
+  "verify-identity.vetting_letter_valid": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_valid"
+      defaultMessage={`The letter is valid to`}
+    />
+  ),
+
+  "verify-identity.vetting_letter_received": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_received"
+      defaultMessage={`Click here again when you have received the letter`}
+    />
+  ),
+
+  "verify-identity.vetting_letter_code_expired": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_code_expired"
+      defaultMessage={`The code expired`}
+    />
+  ),
+
+  "verify-identity.vetting_letter_order_new_code": (
+    <FormattedMessage
+      id="verify-identity.vetting_letter_order_new_code"
+      defaultMessage={`Click here to order a new code`}
+    />
+  ),
+ 
   "verify-identity.vetting_explanation_add_nin": (
     <FormattedMessage
       id="verify-identity.vetting_explanation_add_nin"

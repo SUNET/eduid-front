@@ -5,45 +5,118 @@ import ConfirmModal from "../containers/ConfirmModal";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 
 class LetterProofingButton extends Component {
+  state = {
+    letter_expired: false,
+    letter_expires: false,
+    verifyingLetter: false,
+    confirmingLetter: false,
+    letter_sent: "",
+  }
+
+  handleModal=()=>{
+    const { verifyingLetter, letter_expired, confirmingLetter } = this.props;
+    this.setState({
+      verifyingLetter: verifyingLetter,
+      letter_expired: letter_expired,
+      confirmingLetter: confirmingLetter
+    })
+  }
+
+  sendConfirmationCode=(e)=>{
+    this.props.sendConfirmationCode(e);
+    this.setState({
+      confirmingLetter: false,
+      verifyingLetter: false
+    })
+  }
+
+  confirmLetterProofing=(e)=>{
+    this.props.confirmLetterProofing(e);
+    this.setState({
+      confirmingLetter: false,
+      verifyingLetter: false
+    })
+  }
+
   render() {
-    const { disabled } = this.props;
+    const { disabled, translate, letter_sent, letter_expire, letter_expires } = this.props;
+    let description = "";
+    if(disabled){
+      description = (
+        <div className="description">
+          {translate("verify-identity.vetting_explanation_add_nin")}
+        </div> 
+      )
+    } else {
+      if(letter_sent === ""){
+        description = (
+          <div />
+        )
+      }
+      else if(letter_expire){
+        description = (
+          <>
+            <div className="description">
+              {translate("verify-identity.vetting_letter_code_expired")}
+              {letter_expires.slice(0,10)}
+            </div>
+            <div className="description">
+              {translate("verify-identity.vetting_letter_order_new_code")}
+            </div>
+          </>
+        )
+      }
+      else {
+        description = (
+          <>
+            <div className="description">
+              {translate("verify-identity.vetting_letter_sent")} 
+              {letter_sent.slice(0,10)}
+            </div>
+            <div className="description">
+              {translate("verify-identity.vetting_letter_valid")} 
+              {letter_expires.slice(0,10)}
+            </div>
+            <div className="description">
+              {translate("verify-identity.vetting_letter_received")}
+            </div>
+          </>
+        )
+      }
+    }
     return (
       <div>
         <div className="vetting-button">
           <button
             disabled={disabled}
-            onClick={this.props.handleLetterProofing}
+            onClick={()=>this.handleModal()}
           >
             <div className="text">
-              {this.props.translate("verify-identity.vetting_post_tagline")}
-              { disabled &&
-                <div className="text explanation">
-                  {this.props.translate("verify-identity.vetting_explanation_add_nin")}
-                </div>
-              }
+              {translate("verify-identity.vetting_post_tagline")}
+              {description}
             </div>
             <div className="name">
-              {this.props.translate("letter.button_text_request")}
+              {translate("letter.button_text_request")}
             </div>
           </button>
         </div>
         <NotificationModal
           modalId="letterGenericConfirmDialog"
-          title={this.props.translate("letter.modal_confirm_title")}
-          mainText={this.props.translate("letter.modal_confirm_info")}
-          showModal={this.props.confirmingLetter}
-          closeModal={this.props.handleStopConfirmationLetter}
-          acceptModal={this.props.confirmLetterProofing}
+          title={translate("letter.modal_confirm_title")}
+          mainText={translate("letter.modal_confirm_info")}
+          showModal={this.state.confirmingLetter}
+          closeModal={()=>this.setState({confirmingLetter: false})}
+          acceptModal={this.confirmLetterProofing}
         />
         <ConfirmModal
           modalId="letterConfirmDialog"
           id="letterConfirmDialogControl"
-          title={this.props.translate("letter.verify_title")}
-          resendLabel={this.props.translate("cm.enter_code")}
-          placeholder={this.props.translate("letter.placeholder")}
-          showModal={this.props.verifyingLetter}
-          closeModal={this.props.handleStopVerificationLetter}
-          handleConfirm={this.props.sendConfirmationCode}
+          title={translate("letter.verify_title")}
+          resendLabel={translate("cm.enter_code")}
+          placeholder={translate("letter.placeholder")}
+          showModal={this.state.verifyingLetter}
+          closeModal={()=>this.setState({verifyingLetter: false})}
+          handleConfirm={this.sendConfirmationCode}
           with_resend_link={false}
           validationPattern={shortCodePattern}
           validationError={"confirmation.code_invalid_format"}
