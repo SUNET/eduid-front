@@ -65,6 +65,7 @@ class VerifyIdentity extends Component {
       const vettingOptionsObject = vettingRegistry(!this.props.valid_nin);
       // extract the keys from the vettingOptionsObject
       const vettingOptionsKeys = Object.keys(vettingOptionsObject);
+      const addedNin = this.props.nins[0];
       vettingButtons = [
         <div key="1" id="nins-btn-grid"> 
           {vettingOptionsKeys.map((key, index) => {
@@ -72,7 +73,9 @@ class VerifyIdentity extends Component {
             return (
               <div key={index}>
                 {vettingOptionsObject[key]}
-                <p key={index} className="proofing-btn-help">
+                {/* vettingRegistry object letter(index 0) and lookup_mobile(index 1) needs nin, 
+                if index is less then 2 and nin is not added, class name will be disabled */}
+                <p key={index} className={"proofing-btn-help" + (index < 2 && !addedNin ? " disabled":"")}>
                   {helpText}
                 </p>
               </div>

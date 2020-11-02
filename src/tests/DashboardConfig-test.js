@@ -111,7 +111,7 @@ const mockState = {
     csrf_token: "",
     is_configured: false,
     //is_fetching: false,
-    PERSONAL_DATA_URL: "http://localhost/services/personal-data/user"
+    personal_data_url: "http://localhost/services/personal-data/user"
   }
 };
 const getState = () => mockState;

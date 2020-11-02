@@ -97,7 +97,11 @@
   },
   {
     "id": "verify-identity.vetting_phone_tagline",
-    "defaultMessage": "For you with a phone number registered in your name"
+    "defaultMessage": "For you with a Swedish phone number registered in your name"
+  },
+  {
+    "id": "verify-identity.vetting_explanation_add_nin",
+    "defaultMessage": "Start by adding your ID number above"
   },
   {
     "id": "verify-identity.vetting_freja_tagline",
@@ -193,7 +197,7 @@
   },
   {
     "id": "lmp.modal_reminder_to_confirm_title",
-    "defaultMessage": "Your number also needs to be confrimed"
+    "defaultMessage": "Your number also needs to be confirmed"
   },
   {
     "id": "lmp.modal_reminder_to_confirm_info",
@@ -609,7 +613,7 @@
   },
   {
     "id": "emails.add_new",
-    "defaultMessage": "A new email address will recieve a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses."
+    "defaultMessage": "A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses."
   },
   {
     "id": "emails.main_title",

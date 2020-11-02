@@ -50,7 +50,6 @@ button.btn-secondary:not(:disabled):not(.disabled):active:focus {
   text-transform: none;
   text-decoration: none;
   border: none;
-  // border: solid 2px $orange-highlight;
   background-color: $orange-opaque;
   margin: 0 0 2rem -0.25rem;
 }
@@ -95,17 +94,15 @@ button.close:hover {
   transform: scale(1.2);
 }
 
-//  {
-//   font-family: "ProximaNova-Regular";
-// }
-
 /* MODALS */
 a.btn.modal-button,
-button.btn.modal-button {
+button.btn.modal-button,
+button#accept-tou-button
+ {
   box-shadow: none;
   border: solid 1px transparent;
-  background-color: transparent;
-  margin: 0.5rem 1rem;
+  margin: 1rem 2rem 1rem 2rem;
+  color: $white;
   &:hover {
     background: transparent;
     transform: scale(1);
@@ -120,7 +117,7 @@ button.btn.modal-button {
 // ----- buttons with actions in modals ----  //
 a.ok-button,
 button.ok-button {
-  color: $orange-highlight;
+  background-color: $orange-highlight;
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
@@ -129,7 +126,6 @@ button.ok-button {
     border: solid 1px $orange-highlight;
     color: $orange-highlight;
   }
-
 }
 
 /* color for CANCEL and CLOSE buttons in modals */
@@ -141,9 +137,19 @@ button.cancel-button {
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     color: #7c7c7c;
-    border: #7c7c7c solid 1px;
     background-color: transparent;
     box-shadow: none;
+  }
+}
+
+button.cancel-button {
+  background-color: transparent;
+  padding: 1rem 1rem 0 1rem;
+  margin:0 !important;
+  height: 100%;
+  & svg{
+    fill: #C4C4C4;
+    align-self: center;
   }
 }
 
@@ -154,7 +160,6 @@ button.btn.icon-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  // border: none;
   background-color: transparent;
   border: solid 1px transparent;
   box-shadow: none;
@@ -166,12 +171,11 @@ button.btn.icon-button {
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     background-color: transparent;
-    // transform: scale(1.1);
     border: solid 1px transparent;
   }
 }
 
-button.btn.table-button {
+button.btn.table-button.btn.btn-primary  {
   color: #ff500d;
   font-size: 0.75rem;
   background-color: transparent;
@@ -185,7 +189,6 @@ button.btn.table-button {
     text-decoration: underline;
     border: solid 1px transparent;
     outline: none;
-    // border: solid 1px #ff500d;
   }
 }
 
@@ -217,7 +220,9 @@ button.btn-link {
   button.btn {
     font-size: 0.9rem;
   }
-  button.btn-primary,
+
+  
+  button.modal-button.ok-button, 
   button.btn-secondary {
     width: 100%;
   }
@@ -227,6 +232,5 @@ button.btn-link {
   #add-more-button {
     width: auto;
     padding: 0;
-    // background: yellow;
   }
 }

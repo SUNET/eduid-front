@@ -4,6 +4,7 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 
 class LookupMobileProofing extends Component {
   render() {
+    const { disabled } = this.props;
     let modalPrompt = "";
     let primaryNumber = false;
     let phoneNumbers = this.props.phoneNumbers;
@@ -23,6 +24,7 @@ class LookupMobileProofing extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
+          acceptButtonText={this.props.translate("cm.ok")}
         />,
       ];
       if (primaryNumber) {
@@ -48,6 +50,7 @@ class LookupMobileProofing extends Component {
           showModal={this.props.showModal}
           closeModal={this.props.handleCloseModal}
           acceptModal={this.props.handleCloseModal}
+          acceptButtonText={this.props.translate("cm.ok")}
         />,
       ];
     }
@@ -56,11 +59,16 @@ class LookupMobileProofing extends Component {
       <div key="0">
         <div key="0" className="vetting-button">
           <button
-            disabled={this.props.disabled}
+            disabled={disabled}
             onClick={this.props.handleShowModal}
           >
             <div key="1" className="text">
               {this.props.translate("verify-identity.vetting_phone_tagline")}
+              { disabled &&
+                <div className="text explanation">
+                  {this.props.translate("verify-identity.vetting_explanation_add_nin")}
+                </div>
+              }
             </div>
             <div key="2" className="name">
               {this.props.translate("lmp.button_text_request")}

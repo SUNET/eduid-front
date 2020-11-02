@@ -236,7 +236,7 @@ export const resetPassword = {
   "resetpw.email-link-sent_heading": (
     <FormattedMessage
       id="resetpw.email-link-sent_heading"
-      defaultMessage={`You should have recieved a link to reset your password.`}
+      defaultMessage={`You should have received a link to reset your password.`}
     />
   ),
 

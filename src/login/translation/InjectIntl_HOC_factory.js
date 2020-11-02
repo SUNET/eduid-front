@@ -1149,7 +1149,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
 //   // "letter.initialize_proofing_help_text_step_2": (
 //   //   <FormattedMessage
 //   //     id="letter.initialize_proofing_help_text_step_2"
-//   //     defaultMessage={`You need to recieve the letter before the code expires`}
+//   //     defaultMessage={`You need to receive the letter before the code expires`}
 //   //   />
 //   // ),
 

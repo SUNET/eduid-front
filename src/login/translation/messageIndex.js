@@ -46,15 +46,15 @@ export const unformattedMessages = defineMessages({
     defaultMessage: "Code is formatted as five groups of characters and numbers, separated by hyphens",
     description: "Help text for email confirmation code",
   },
-  "emails.invalid_code": {
-    id: "emails.invalid_code",
+  "confirmation.code_invalid_format": {
+    id: "confirmation.code_invalid_format",
     defaultMessage: `Invalid confirmation code`,
     description: "error text for invalid confirmation code"
   },
-  "mobile.confirm_code_wrong_length": {
-    id: "mobile.confirm_code_wrong_length",
-    defaultMessage: `Code must be 10-12 characters long, only letters and numbers allowed`,
-    description: "Error message for wrong length",
+  "security.description_invalid_format": {
+    id: "security.description_invalid_format",
+    defaultMessage: `The description is too long`,
+    description: "Error message for max length"
   },
   "mobile.placeholder": {
     id: "mobile.confirm_mobile_placeholder",
@@ -71,23 +71,16 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `max 50 characters`,
     description: "Help text for security key max length"
   },
-  "security.confirm_security_length": {
-    id: "security.confirm_security_length",
-    defaultMessage: `The max length of 50 characters is reached`,
-    description: "Error message for max length"
-  },
   "register.toLogin": {
     id: "register.toLogin",
     defaultMessage: `If you already have eduID you can log in`,
     description: "Placeholder for phone text input"
   },
-
   "text.link": {
     id: "text.link",
     defaultMessage: `here.`,
     description: "Placeholder for phone text input"
   },
-
   "chpass.help-text-newpass": {
     id: "chpass.help-text-newpass",
     defaultMessage: `<label>Tip: Choose a strong password</label>
@@ -124,37 +117,30 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `Letter confirmation code`,
     description: "Placeholder for letter proofing text input"
   },
-
   "pd.given_name": {
     id: "pd.given_name",
     defaultMessage: `First name`
   },
-
   "pd.surname": {
     id: "pd.surname",
     defaultMessage: `Last name`
   },
-
   "pd.display_name": {
     id: "pd.display_name",
     defaultMessage: `Display name`
   },
-
   "pd.language": {
     id: "pd.language",
     defaultMessage: `Language`
   },
-
   "pd.display_name_input_placeholder": {
     id: "pd.display_name_inputplaceholder",
     defaultMessage: `First and last name`
   },
-
   "nins.input_placeholder": {
     id: "nins.input_placeholder",
     defaultMessage: `yyyymmddnnnn`
   },
-
   "phones.input_placeholder": {
     id: "phones.input_placeholder",
     defaultMessage: `Phone number`

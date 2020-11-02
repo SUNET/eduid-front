@@ -2,7 +2,7 @@ export const NEW_CSRF_TOKEN = "NEW_CSRF_TOKEN";
 
 export const GET_CONFIG = "GET_JSCONFIG_LOGIN_CONFIG";
 
-// POST_LINK_CODE: posts the code at the end of the email link to the backend > if successful, recieves config to load the reset password flow in the app again
+// POST_LINK_CODE: posts the code at the end of the email link to the backend > if successful, receives config to load the reset password flow in the app again
 export const POST_LINK_CODE = "POST_LINK_CODE";
 
 // FROM BACKEND:
