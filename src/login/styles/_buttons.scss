@@ -170,7 +170,8 @@ button.btn.icon-button {
   }
 }
 
-button.btn.table-button.btn.btn-primary  {
+button.btn.table-button.btn.btn-primary,
+button.btn-link.nobutton.verify-status-label {
   color: #ff500d;
   font-size: 0.75rem;
   background-color: transparent;
