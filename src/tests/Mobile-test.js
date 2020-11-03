@@ -662,7 +662,7 @@ describe("Mobile Component", () => {
       { wrapper, props } = setupComponent(store),
       form = wrapper.find("form"),
       fieldset = wrapper.find("fieldset"),
-      email = wrapper.find('TextControl[name="mobile"]');
+      email = wrapper.find("TextControl[name=\"mobile\"]");
   });
 });
 

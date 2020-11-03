@@ -9,7 +9,7 @@ const mapStateToProps = (state, props) => {
   const confirming = state.letter_proofing.confirmingLetter;
   const valid_nin = isValid("nins")(state);
   const confirmingLetter = confirming && valid_nin || state.letter_proofing.letter_expired;
-  let withoutNin = !state.nins.nins[0]
+  let withoutNin = !state.nins.nins[0];
   return {
     disabled: withoutNin,
     confirmingLetter: confirmingLetter,

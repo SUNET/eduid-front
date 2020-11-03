@@ -25,7 +25,7 @@ export function closeModal() {
 }
 
 export function postLookupMobile() {
-  console.log("this is lookupmobile actions")
+  console.log("this is lookupmobile actions");
   return {
     type: POST_LOOKUP_MOBILE_PROOFING_PROOFING
   };

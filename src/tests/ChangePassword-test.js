@@ -355,9 +355,9 @@ describe("ChangePassword Component suggested", () => {
     const store = fakeStore(fakeState(false)),
       { wrapper, props } = setupComponent(store),
       form = wrapper.find("form#passwordsview-form"),
-      inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
+      inputOldPassword = wrapper.find("TextControl[name=\"old_password\"]"),
       checkBoxCustom = wrapper.find("CheckBox"),
-      inputSuggested = wrapper.find('TextControl[name="suggested_password"]'),
+      inputSuggested = wrapper.find("TextControl[name=\"suggested_password\"]"),
       button = wrapper.find("EduIDButton");
   });
 });
@@ -367,7 +367,7 @@ describe("ChangePassword Component custom", () => {
     const store = fakeStore(fakeState(true)),
       { wrapper, props } = setupComponent(store, true),
       form = wrapper.find("form#passwordsview-form"),
-      inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
+      inputOldPassword = wrapper.find("TextControl[name=\"old_password\"]"),
       checkBoxCustom = wrapper.find("CheckBox"),
       inputCustom = wrapper.find("PasswordField"),
       button = wrapper.find("EduIDButton");

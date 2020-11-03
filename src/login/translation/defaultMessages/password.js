@@ -6,7 +6,7 @@ export const changePassword = {
   "chpass.help-text-general": (
     <FormattedMessage
       id="chpass.help-text-general"
-      defaultMessage={`You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking "Change password" or you can opt to choose your own password using the checkbox.`}
+      defaultMessage={"You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking \"Change password\" or you can opt to choose your own password using the checkbox."}
     />
   ),
 
@@ -14,7 +14,7 @@ export const changePassword = {
   "chpass.main_title": (
     <FormattedMessage
       id="chpass.main_title"
-      defaultMessage={`Change your current password`}
+      defaultMessage={"Change your current password"}
     />
   ),
 
@@ -23,105 +23,105 @@ export const changePassword = {
   "chpass.old_password": (
     <FormattedMessage
       id="chpass.old_password"
-      defaultMessage={`Current password`}
+      defaultMessage={"Current password"}
     />
   ),
 
   "chpass.suggested_password": (
     <FormattedMessage
       id="chpass.suggested_password"
-      defaultMessage={`Suggested password`}
+      defaultMessage={"Suggested password"}
     />
   ),
 
   "chpass.button_custom_password": (
     <FormattedMessage
       id="chpass.button_custom_password"
-      defaultMessage={`I don't want a suggested password`}
+      defaultMessage={"I don't want a suggested password"}
     />
   ),
 
   "chpass.form_custom_password": (
     <FormattedMessage
       id="chpass.form_custom_password"
-      defaultMessage={`Enter new password`}
+      defaultMessage={"Enter new password"}
     />
   ),
 
   "chpass.form_custom_password_repeat": (
     <FormattedMessage
       id="chpass.form_custom_password_repeat"
-      defaultMessage={`Repeat new password`}
+      defaultMessage={"Repeat new password"}
     />
   ),
 
   "chpass.button_suggest_password": (
     <FormattedMessage
       id="chpass.button_suggest_password"
-      defaultMessage={`Suggest a password for me`}
+      defaultMessage={"Suggest a password for me"}
     />
   ),
 
   "chpass.button_save_password": (
     <FormattedMessage
       id="chpass.button_save_password"
-      defaultMessage={`Save`}
+      defaultMessage={"Save"}
     />
   ),
 
   "chpass.no_old_pw": (
     <FormattedMessage
       id="chpass.no_old_pw"
-      defaultMessage={`Please enter your old password`}
+      defaultMessage={"Please enter your old password"}
     />
   ),
 
   "chpass.no_reauthn": (
     <FormattedMessage
       id="chpass.no_reauthn"
-      defaultMessage={`You must re-authenticate to change your password`}
+      defaultMessage={"You must re-authenticate to change your password"}
     />
   ),
 
   "chpass.stale_reauthn": (
     <FormattedMessage
       id="chpass.stale_reauthn"
-      defaultMessage={`Stale re-authentication. Please re-initiate the process.`}
+      defaultMessage={"Stale re-authentication. Please re-initiate the process."}
     />
   ),
 
   "chpass.stale_authn_info": (
     <FormattedMessage
       id="chpass.stale_authn_info"
-      defaultMessage={`Stale re-authentication. Please re-initiate the process.`}
+      defaultMessage={"Stale re-authentication. Please re-initiate the process."}
     />
   ),
 
   "chpass.password-changed": (
     <FormattedMessage
       id="chpass.password-changed"
-      defaultMessage={`Your password has been changed`}
+      defaultMessage={"Your password has been changed"}
     />
   ),
 
   "chpass.different-repeat": (
     <FormattedMessage
       id="chpass.different-repeat"
-      defaultMessage={`The two passwords are different`}
+      defaultMessage={"The two passwords are different"}
     />
   ),
 
   "chpass.unable-to-verify-old-password": (
     <FormattedMessage
       id="chpass.unable-to-verify-old-password"
-      defaultMessage={`There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator`}
+      defaultMessage={"There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator"}
     />
   ),
 
   "chpass.low-password-entropy": (
     <FormattedMessage
       id="chpass.low-password-entropy"
-      defaultMessage={`Please provide a stronger password`}
+      defaultMessage={"Please provide a stronger password"}
     />
   ),
 
@@ -129,34 +129,34 @@ export const changePassword = {
   "settings.main_title": (
     <FormattedMessage
       id="settings.main_title"
-      defaultMessage={`Change password`}
+      defaultMessage={"Change password"}
     />
   ),
 
   "settings.long_description": (
     <FormattedMessage
       id="settings.long_description"
-      defaultMessage={`Click the link to change your eduID password.`}
+      defaultMessage={"Click the link to change your eduID password."}
     />
   ),
   "settings.change_password": (
     <FormattedMessage
       id="settings.change_password"
-      defaultMessage={`Change password`}
+      defaultMessage={"Change password"}
     />
   ),
 
   "settings.confirm_title_chpass": (
     <FormattedMessage
       id="settings.confirm_title_chpass"
-      defaultMessage={`For security reasons...`}
+      defaultMessage={"For security reasons..."}
     />
   ),
 
   "settings.change_info": (
     <FormattedMessage
       id="settings.change_info"
-      defaultMessage={`You will need to log in again to change your password.`}
+      defaultMessage={"You will need to log in again to change your password."}
     />
   ),
 
@@ -165,33 +165,33 @@ export const changePassword = {
   "pwfield.terrible": (
     <FormattedMessage
       id="pwfield.terrible"
-      defaultMessage={`Extremely weak password`}
+      defaultMessage={"Extremely weak password"}
     />
   ),
 
   "pwfield.bad": (
-    <FormattedMessage id="pwfield.bad" defaultMessage={`Very weak password`} />
+    <FormattedMessage id="pwfield.bad" defaultMessage={"Very weak password"} />
   ),
 
   "pwfield.weak": (
-    <FormattedMessage id="pwfield.weak" defaultMessage={`Weak password`} />
+    <FormattedMessage id="pwfield.weak" defaultMessage={"Weak password"} />
   ),
 
   "pwfield.good": (
     <FormattedMessage
       id="pwfield.good"
-      defaultMessage={`Fairly strong password`}
+      defaultMessage={"Fairly strong password"}
     />
   ),
 
   "pwfield.strong": (
-    <FormattedMessage id="pwfield.strong" defaultMessage={`Strong password`} />
+    <FormattedMessage id="pwfield.strong" defaultMessage={"Strong password"} />
   ),
 
   "pwfield.repeat_different": (
     <FormattedMessage
       id="pwfield.repeat_different"
-      defaultMessage={`The repeated password is different from the first`}
+      defaultMessage={"The repeated password is different from the first"}
     />
   ),
 
@@ -199,14 +199,14 @@ export const changePassword = {
   "used.forgot-password": (
     <FormattedMessage
       id="used.forgot-password"
-      defaultMessage={`Forgot your password?`}
+      defaultMessage={"Forgot your password?"}
     />
   ),
 
   "used.reset-password": (
     <FormattedMessage
       id="used.reset-password"
-      defaultMessage={`Reset your password`}
+      defaultMessage={"Reset your password"}
     />
   ),
 
@@ -214,7 +214,7 @@ export const changePassword = {
   "security.password_credential_type": (
     <FormattedMessage
       id="security.password_credential_type"
-      defaultMessage={`Password`}
+      defaultMessage={"Password"}
     />
   ),
 };
@@ -223,27 +223,27 @@ export const resetPassword = {
   "resetpw.get-email-link_heading": (
     <FormattedMessage
       id="resetpw.get-email-link_heading"
-      defaultMessage={`Request a password reset link to your email address.`}
+      defaultMessage={"Request a password reset link to your email address."}
     />
   ),
 
   "resetpw.get-email-link_text": (
     <FormattedMessage
       id="resetpw.get-email-link_text"
-      defaultMessage={`Enter the email address registered to your eduID. You will be sent a link to reset your password.`}
+      defaultMessage={"Enter the email address registered to your eduID. You will be sent a link to reset your password."}
     />
   ),
   "resetpw.email-link-sent_heading": (
     <FormattedMessage
       id="resetpw.email-link-sent_heading"
-      defaultMessage={`You should have received a link to reset your password.`}
+      defaultMessage={"You should have received a link to reset your password."}
     />
   ),
 
   "resetpw.email-link-sent_text": (
     <FormattedMessage
       id="resetpw.email-link-sent_text"
-      defaultMessage={`Click the link in your email to reset the password for your eduID. Alternatively, you can copy the link in your email and paste it into a browser window.`}
+      defaultMessage={"Click the link in your email to reset the password for your eduID. Alternatively, you can copy the link in your email and paste it into a browser window."}
     />
   ),
 

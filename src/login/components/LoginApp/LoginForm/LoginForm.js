@@ -32,7 +32,7 @@ let LoginFormDetails = (props) => (
         exact
         id={"link-forgot-password"}
         className={""}
-        to={`/reset/reset-password/`}
+        to={"/reset/reset-password/"}
         text={"Set a new password"}
       />
     </div>
@@ -66,7 +66,7 @@ class LoginForm extends Component {
           If you dont have eduID you can register
           <Link
             className={"text-link"}
-            href={`https://dashboard.eduid.se/`}
+            href={"https://dashboard.eduid.se/"}
             text={"here"}
           />
           .

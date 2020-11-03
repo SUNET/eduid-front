@@ -22,8 +22,8 @@ const RenderLabelAndHelpText = props => {
       }
       { helpBlock && <span className={"help-block"}>{helpBlock}</span> }
     </div>
-  )
-}
+  );
+};
 
 const RenderErrorMessage = props => {
   const { meta, translate, invalid } = props;
@@ -35,8 +35,8 @@ const RenderErrorMessage = props => {
         <span className="input-validate-error">{errmsg}</span>
       </FormText>
     )
-  )
-}
+  );
+};
 
 const RenderInput = props => {
   const {
@@ -75,7 +75,7 @@ const RenderInput = props => {
       <div className='radio-input-container'>
         {renderSelectLanguage}
       </div>
-    )} else {
+    );} else {
     return(
       <Input
         type={type}
@@ -87,9 +87,9 @@ const RenderInput = props => {
         invalid={invalid}
         {...input}
       />
-    )
+    );
   }
-}
+};
 
 const customInput = (props) => {
   const {

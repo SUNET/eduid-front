@@ -18,14 +18,14 @@ class ResetPassword extends Component {
   checkUserDetails() {
     let redirectToPage = "";
     if (this.props.phone_numbers.length === 0 && this.props.security_keys) {
-      redirectToPage = `set-new-password`;
+      redirectToPage = "set-new-password";
     } else {
-      redirectToPage = `get-confirmation-code`;
+      redirectToPage = "get-confirmation-code";
     }
     return (
       <Route
         exact
-        path={`/reset/reset-password/check-user-details`}
+        path={"/reset/reset-password/check-user-details"}
         component={() => (
           <Redirect to={`/reset/reset-password/${redirectToPage}`} />
         )}

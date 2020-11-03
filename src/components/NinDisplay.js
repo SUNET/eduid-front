@@ -12,7 +12,7 @@ export class NinDisplay extends Component {
       userData = [
         <Link
           key="1"
-          to={`/profile/verify-identity/`}
+          to={"/profile/verify-identity/"}
           className="display-data unverified"
         >
           {this.props.translate("nin_display.profile.no_nin")}
@@ -62,7 +62,7 @@ export class NinDisplay extends Component {
           userData = [
             <Link
               key="1"
-              to={`/profile/verify-identity/`}
+              to={"/profile/verify-identity/"}
               className="display-data unverified"
             >
               <span>{this.props.nins[0].number}</span>

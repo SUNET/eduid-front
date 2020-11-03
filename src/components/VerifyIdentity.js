@@ -52,7 +52,7 @@ class VerifyIdentity extends Component {
       if (this.props.verifiedNinStatus) {
         return (
           <NumberAdded {...this.props} />
-        ) 
+        ); 
       } else {
         return <AddNumber {...this.props} />;
       }
@@ -79,10 +79,10 @@ class VerifyIdentity extends Component {
                   {helpText}
                 </p>
               </div>
-            )
+            );
           })}
         </div>
-      ]
+      ];
     }
 
     // bottom half of page: vetting on added nin

@@ -7,22 +7,22 @@ class DashboardNav extends Component {
     return (
       <nav id="dashboard-nav">
         <ul>
-          <NavLink exact activeClassName="active" to={`/profile/`}>
+          <NavLink exact activeClassName="active" to={"/profile/"}>
             <li>{this.props.translate("dashboard_nav.profile")}</li>
           </NavLink>
           <NavLink
             exact
             activeClassName="active"
-            to={`/profile/verify-identity/`}
+            to={"/profile/verify-identity/"}
           >
             <li>{this.props.translate("dashboard_nav.identity")}</li>
           </NavLink>
-          <NavLink activeClassName="active" to={`/profile/settings/`}>
+          <NavLink activeClassName="active" to={"/profile/settings/"}>
             <li>{this.props.translate("dashboard_nav.settings")}</li>
           </NavLink>
           <NavLink
             activeClassName="active"
-            to={`/profile/settings/advanced-settings`}
+            to={"/profile/settings/advanced-settings"}
           >
             <li>{this.props.translate("dashboard_nav.advanced-settings")}</li>
           </NavLink>

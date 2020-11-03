@@ -24,8 +24,8 @@ const RenderCloseButton = ({
         : translate("cm.cancel")
       }
     </EduIDButton>
-  )
-}
+  );
+};
 
 const RenderAcceptButton = ({ 
   href, 
@@ -61,8 +61,8 @@ const RenderAcceptButton = ({
       }
       </EduIDButton>
     </>
-  )
-}
+  );
+};
 
 const RenderModalBody = ({ modalId, mainText }) => {
   return (
@@ -76,8 +76,8 @@ const RenderModalBody = ({ modalId, mainText }) => {
         {mainText}
       </>
     </ModalBody>
-  )
-}
+  );
+};
 
 class NotificationModal extends Component {
   render() {

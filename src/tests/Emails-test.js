@@ -697,7 +697,7 @@ describe("Emails Component", () => {
       { wrapper, props } = setupComponent(store),
       form = wrapper.find("form"),
       fieldset = wrapper.find("fieldset"),
-      email = wrapper.find('TextControl[name="email"]');
+      email = wrapper.find("TextControl[name=\"email\"]");
     // TODO: not finished
   });
 });

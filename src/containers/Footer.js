@@ -15,7 +15,7 @@ const mapStateToProps = (state, props) => {
       });
     } else {
       // This is the new format, keep this after config update
-      languages = state.config.available_languages
+      languages = state.config.available_languages;
     }
   }
   return {

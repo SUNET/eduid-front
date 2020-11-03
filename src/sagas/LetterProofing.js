@@ -42,7 +42,7 @@ export function* sendLetterProofing() {
     yield put(putCsrfToken(response));
     yield put(response);
   } catch (error) {
-    console.log('error', error)
+    console.log("error", error);
     yield* failRequest(error, actions.postLetterProofingSendLetterFail);
   }
 }
