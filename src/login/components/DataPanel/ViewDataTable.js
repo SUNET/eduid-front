@@ -4,11 +4,9 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const ViewDataTable = (props) => {
   return (
-    <div className={"view-data"}>
+    <div className="view-data">
       <div className="title">
-        <label>
-          Groups I manage
-        </label>
+        <label>Groups I manage</label>
       </div>
       <div className="group-data">
         <pre>{JSON.stringify(props.data, null, 2)}</pre>

@@ -6,10 +6,8 @@ const RenderFirstGroupWizard = (props) => {
   return (
     <Fragment>
       {props.firstGroup && (
-        <div
-          className="wizard"
-        >
-          <div className="title" >
+        <div className="wizard">
+          <div className="title">
             <p>Create your first group.</p>
             <button>X</button>
           </div>
@@ -22,7 +20,7 @@ const RenderFirstGroupWizard = (props) => {
             <input />
           </div>
             <button
-              className={"create-group"}
+              className="create-group"
               onClick={() => {
                 props.renderCreateButton();
               }}

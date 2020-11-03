@@ -12,7 +12,7 @@ const RenderCreateButton = (props) => {
     <a href="#">
       {!props.firstGroup && (
         <button
-          className={"create-group"}
+          className="create-group"
           onClick={props.handleCreateGroup}
         >
           create group
@@ -23,7 +23,7 @@ const RenderCreateButton = (props) => {
 };
 
 class Groups extends Component {
-  state = { firstGroup: false };
+  state = { firstGroup: true };
 
   renderCreateButton = () => {
     this.setState(

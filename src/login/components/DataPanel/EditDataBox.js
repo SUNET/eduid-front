@@ -4,11 +4,11 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const EditDataBox = (props) => {
   return (
-    <div className={"edit-data"} >
+    <div className="edit-data" >
       <div className="title">
         <p>Edit your group</p>
           <button
-            className={"save-button"}
+            className="save-button"
             onClick={() => {
               props.toggleEditMode();
             }}

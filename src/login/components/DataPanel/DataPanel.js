@@ -17,7 +17,7 @@ const RenderEditData = (props) => {
 };
 
 class DataPanel extends Component {
-  state = { editDataMode: false };
+  state = { editDataMode: true };
 
   toggleEditMode = () => {
     this.setState(
@@ -31,7 +31,7 @@ class DataPanel extends Component {
 
   render() {
     return (
-      <div className={"data-panel"} >
+      <div className="data-panel" >
         <RenderViewData
           data={this.props.data}
           toggleEditMode={this.toggleEditMode}
