@@ -17,25 +17,14 @@ const RenderEditData = (props) => {
 };
 
 class DataPanel extends Component {
-  // this component should:
-  // 1. handle the logic of rendering data in either view-mode (no interactions) vs edit-mode (alterations allowed)
-  //
-
   state = { editDataMode: false };
 
   toggleEditMode = () => {
-    console.log("you're toggling state.editDataMode");
     this.setState(
       (prevState) => {
         return {
           editDataMode: !prevState.editDataMode,
         };
-      },
-      () => {
-        console.log(
-          "this is the updated state.editDataMode:",
-          this.state.editDataMode
-        );
       }
     );
   };
