@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
-import checkForCookie from "../../../../../app_utils/checkForCookie";
 import WizardPanel from "../../../../Wizard/WizardPanel";
 import DataPanel from "../../../../DataPanel/DataPanelContainer";
 
 const RenderCreateButton = (props) => {
-  // this is a placeholder button for now
-  // console.log("these are props in RenderCreateButton:", props);
   return (
     <a href="#">
       {!props.firstGroup && (
