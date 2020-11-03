@@ -23,7 +23,7 @@ const RenderCreateButton = (props) => {
 };
 
 class Groups extends Component {
-  state = { firstGroup: true };
+  state = { firstGroup: false };
 
   renderCreateButton = () => {
     this.setState(
