@@ -6,13 +6,7 @@ const ViewDataTable = (props) => {
   return (
     <div className={"view-data"}>
       <div className="title">
-        <label
-          style={{
-            fontSize: "16px",
-            letterSpacing: "0",
-            paddingBottom: "10px",
-          }}
-        >
+        <label>
           Groups I manage
         </label>
       </div>
