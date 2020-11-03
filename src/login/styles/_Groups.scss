@@ -1,15 +1,55 @@
+// styling for Groups section
 article {
   display: flex;
   flex-direction: column;
-  & .heading {
+  .heading {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    & button {
+    button {
       background-color: transparent;
       box-shadow: 0 0 0;
       text-decoration: underline;
       margin: 0;
     }
+  }
+}
+
+// styling for Wizard
+.wizard {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    p {
+      font-weight: 700;
+    }
+    button {
+      background-color: transparent;
+      color: #c4c4c4;
+      height: 1rem;
+      box-shadow: 0 0 0;
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .group-name {
+    label {
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    input {
+      background-color: #f4f4f4;
+    }
+  }
+  button {
+    margin: 1rem auto;
+    width: max-content;
   }
 }

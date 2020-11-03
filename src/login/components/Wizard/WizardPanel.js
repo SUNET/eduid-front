@@ -7,37 +7,21 @@ const RenderFirstGroupWizard = (props) => {
     <Fragment>
       {props.firstGroup && (
         <div
-          className="create-group-wizard"
-          style={{
-            backgroundColor: "white",
-            padding: "1rem",
-          }}
+          className="wizard"
         >
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <p style={{ fontWeight: "700" }}>Create your first group.</p>
-            <p>X</p>
+          <div className="title" >
+            <p>Create your first group.</p>
+            <button>X</button>
           </div>
           <p>
             As the creator of a group you will be an admin, which allows you to
             edit the group and send out invites.
           </p>
-          <div>
-            <label style={{ fontSize: "16px", letterSpacing: "0" }}>
-              Group name
-            </label>
-            <input style={{ backgroundColor: "#F4F4F4" }} />
+          <div className="group-name">
+            <label>Group name</label>
+            <input />
           </div>
-          <a
-            href="#"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
             <button
-              style={{
-                margin: "1rem 0",
-              }}
               className={"create-group"}
               onClick={() => {
                 props.renderCreateButton();
@@ -45,7 +29,6 @@ const RenderFirstGroupWizard = (props) => {
             >
               CREATE GROUP
             </button>
-          </a>
         </div>
       )}
     </Fragment>
