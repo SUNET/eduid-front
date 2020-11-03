@@ -42,13 +42,7 @@ class DataPanel extends Component {
 
   render() {
     return (
-      <div
-        className={"data-panel"}
-        style={{
-          backgroundColor: "transparent",
-          margin: "1rem 0 ",
-        }}
-      >
+      <div className={"data-panel"} >
         <RenderViewData
           data={this.props.data}
           toggleEditMode={this.toggleEditMode}
