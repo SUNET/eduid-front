@@ -1,0 +1,15 @@
+article {
+  display: flex;
+  flex-direction: column;
+  & .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    & button {
+      background-color: transparent;
+      box-shadow: 0 0 0;
+      text-decoration: underline;
+      margin: 0;
+    }
+  }
+}

@@ -12,12 +12,6 @@ const RenderCreateButton = (props) => {
     <a href="#">
       {!props.firstGroup && (
         <button
-          style={{
-            backgroundColor: "transparent",
-            boxShadow: "0 0 0",
-            textDecoration: "underline",
-            margin: "0",
-          }}
           className={"create-group"}
           onClick={props.handleCreateGroup}
         >
@@ -62,20 +56,9 @@ class Groups extends Component {
 
   render() {
     return (
-      <article
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <article>
         <div className="intro">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "baseline",
-            }}
-          >
+          <div className="heading">
             <h4>Groups</h4>
             <RenderCreateButton
               handleCreateGroup={this.props.handleCreateGroup}
