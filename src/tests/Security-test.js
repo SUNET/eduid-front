@@ -1,23 +1,18 @@
 const mock = require("jest-mock");
 import React from "react";
-import { shallow, mount, render } from "enzyme";
-import { put, select, call } from "redux-saga/effects";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import Security from "components/Security";
-import DeleteModal from "components/DeleteModal";
+import { shallow, mount } from "enzyme";
+import { put, call } from "redux-saga/effects";
+import expect from "expect";
 import SecurityContainer from "containers/Security";
 import * as actions from "actions/Security";
 import * as notifyActions from "actions/Notifications";
 import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
 import securityReducer from "reducers/Security";
 import { Provider } from "react-intl-redux";
-import { eduidNotify } from "actions/Notifications";
 
 import {
   requestCredentials,
   fetchCredentials,
-  requestPasswordChange,
   postDeleteAccount,
   deleteAccount,
   beginRegisterWebauthn,
@@ -249,8 +244,8 @@ describe("Reducers", () => {
   });
 
   it("Receives a GET_CREDENTIALS_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
+    const err = "Error";
+    // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.GET_CREDENTIALS_FAIL,
@@ -582,8 +577,8 @@ describe("Reducers", () => {
   });
 
   it("Receives a POST_WEBAUTHN_BEGIN_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
+    const err = "Error";
+    // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.POST_WEBAUTHN_BEGIN_FAIL,
@@ -639,8 +634,8 @@ describe("Reducers", () => {
   });
 
   it("Receives a POST_WEBAUTHN_REGISTER_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
+    const err = "Error";
+    // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.POST_WEBAUTHN_REGISTER_FAIL,

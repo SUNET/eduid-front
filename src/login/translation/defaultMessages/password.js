@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export const changePassword = { 
+export const changePassword = {
   // help
   "chpass.help-text-general": (
     <FormattedMessage
