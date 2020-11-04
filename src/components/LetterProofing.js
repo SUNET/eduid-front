@@ -39,7 +39,7 @@ class LetterProofingButton extends Component {
   }
 
   render() {
-    const { disabled, translate, letter_sent, letter_expire, letter_expires } = this.props;
+    const { disabled, translate, letter_sent, letter_expired, letter_expires } = this.props;
     let description = "";
     if(disabled){
       description = (
@@ -53,7 +53,7 @@ class LetterProofingButton extends Component {
           <div />
         )
       }
-      else if(letter_expire){
+      else if(letter_expired){
         description = (
           <>
             <div className="description">
@@ -104,8 +104,11 @@ class LetterProofingButton extends Component {
           modalId="letterGenericConfirmDialog"
           title={translate("letter.modal_confirm_title")}
           mainText={translate("letter.modal_confirm_info")}
-          showModal={this.state.confirmingLetter}
-          closeModal={()=>this.setState({confirmingLetter: false})}
+          showModal={this.state.confirmingLetter  || this.state.letter_expired}
+          closeModal={()=>this.setState({
+            confirmingLetter: false,
+            letter_expired: false
+          })}
           acceptModal={this.confirmLetterProofing}
         />
         <ConfirmModal
