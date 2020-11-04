@@ -1,0 +1,115 @@
+// styling for Groups section
+article {
+  display: flex;
+  flex-direction: column;
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    button {
+      background-color: transparent;
+      box-shadow: 0 0 0;
+      text-decoration: underline;
+      margin: 0;
+    }
+  }
+}
+
+// styling for Wizard
+.wizard {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    p {
+      font-weight: 700;
+    }
+    button {
+      background-color: transparent;
+      color: #c4c4c4;
+      height: 1rem;
+      box-shadow: 0 0 0;
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .group-name {
+    label {
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    input {
+      background-color: #f4f4f4;
+    }
+  }
+  button {
+    margin: 1rem auto;
+    width: max-content;
+  }
+}
+
+// styling for EditView
+.data-panel {
+  background-color: transparent;
+  margin: 1rem 0;
+  .edit-data {
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      p {
+        font-weight: 700;
+      }
+      button {
+        background-color: transparent;
+        box-shadow: 0 0 0;
+        text-decoration: underline;
+        border-radius: 0;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+        height: 1rem;
+      }
+    }
+    nav {
+      display: flex;
+      margin: 0 1rem 0 0;
+      font-family: "Akkurat";
+      li {
+        margin-right: 1rem;
+        p {
+          font-size: 1rem;
+          text-decoration: underline;
+          color: #ff4500;
+        }
+      }
+    }
+  }
+  .group-data {
+    margin: 1rem 0;
+  }
+  .view-data {
+    background-color: transparent;
+    margin-top: 2rem;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    label {
+      font-size: 1rem;
+      letter-spacing: 0;
+      padding-bottom: 0, 625;
+    }
+  }
+}

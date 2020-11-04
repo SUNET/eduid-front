@@ -1,24 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
-import checkForCookie from "../../../../../app_utils/checkForCookie";
 import WizardPanel from "../../../../Wizard/WizardPanel";
 import DataPanel from "../../../../DataPanel/DataPanelContainer";
 
 const RenderCreateButton = (props) => {
-  // this is a placeholder button for now
-  // console.log("these are props in RenderCreateButton:", props);
   return (
     <a href="#">
       {!props.firstGroup && (
         <button
-          style={{
-            backgroundColor: "transparent",
-            boxShadow: "0 0 0",
-            textDecoration: "underline",
-            margin: "0",
-          }}
-          className={"create-group"}
+          className="create-group"
           onClick={props.handleCreateGroup}
         >
           create group
@@ -29,53 +20,27 @@ const RenderCreateButton = (props) => {
 };
 
 class Groups extends Component {
-  // this component should:
-  // 1. take in text to fill .intro h4 and .intro p (hardcoded at the moment)
-  // 2. be able to handle logic of create group button:
-  // - if wizard: hide button
-  // - if no wizard: show button
-
-  // will start as true and permanently be set to false when wizard is completed
   state = { firstGroup: false };
 
   renderCreateButton = () => {
-    // console.log("you're setting state.firstGroup to false ");
     this.setState(
       () => {
         return {
           firstGroup: false,
         };
-      },
-      () => {
-        console.log(
-          "this is the updated state.firstGroup:",
-          this.state.firstGroup
-        );
       }
     );
   };
 
   componentDidMount() {
-    console.log("Groups mounted");
     this.props.handleGetAllData();
   }
 
   render() {
     return (
-      <article
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <article>
         <div className="intro">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "baseline",
-            }}
-          >
+          <div className="heading">
             <h4>Groups</h4>
             <RenderCreateButton
               handleCreateGroup={this.props.handleCreateGroup}

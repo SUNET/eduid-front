@@ -13,11 +13,9 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handleGetAllData: () => {
-      // console.log("youre in handleGetAllData");
       dispatch(allDataActions.getAllData());
     },
     handleCreateGroup: () => {
-      // console.log("youre in handleCreateGroup");
       dispatch(createGroupActions.createGroup("Test"));
     },
   };
