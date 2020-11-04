@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
 import WizardPanel from "../../../../Wizard/WizardPanel";
 import DataPanel from "../../../../DataPanel/DataPanelContainer";
+import ViewDataTable from "../../../../DataPanel/ViewDataTable";
 
 const RenderCreateButton = (props) => {
   return (
-    <a href="#">
-      {!props.firstGroup && (
+    <Fragment>
+      {props.data && (
         <button
           className="create-group"
           onClick={props.handleCreateGroup}
@@ -15,28 +16,27 @@ const RenderCreateButton = (props) => {
           create group
         </button>
       )}
-    </a>
+    </Fragment>
   );
 };
 
 class Groups extends Component {
-  state = { firstGroup: false };
-
-  renderCreateButton = () => {
-    this.setState(
-      () => {
-        return {
-          firstGroup: false,
-        };
-      }
-    );
-  };
-
   componentDidMount() {
     this.props.handleGetAllData();
   }
 
   render() {
+    let renderGetAllGroups = "empty";
+    const { data } = this.props
+    console.log('this is data from deconstructed props:', data)
+    if (data) {
+      renderGetAllGroups  = ( 
+         <div className="group-data">
+           <pre>{JSON.stringify(data, null, 2)}</pre>
+         </div>
+      )
+    }
+    
     return (
       <article>
         <div className="intro">
@@ -44,18 +44,14 @@ class Groups extends Component {
             <h4>Groups</h4>
             <RenderCreateButton
               handleCreateGroup={this.props.handleCreateGroup}
-              firstGroup={this.state.firstGroup}
+              data={data}
             />
           </div>
           <p>
             Create groups with other eduID users. What the groups are used for
             is up to you and the local services your univeristy provides.
           </p>
-          <WizardPanel
-            renderCreateButton={this.renderCreateButton}
-            firstGroup={this.state.firstGroup}
-          />
-          <DataPanel />
+           {renderGetAllGroups}
         </div>
       </article>
     );

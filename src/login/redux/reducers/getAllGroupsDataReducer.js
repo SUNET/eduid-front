@@ -2,7 +2,7 @@ import * as actions from "../actions/getAllDataGroupActions";
 
 const groupsData = {
   message: "",
-  data: {},
+  data: [],
 };
 
 let groupsDataReducer = (state = groupsData, action) => {
@@ -10,7 +10,7 @@ let groupsDataReducer = (state = groupsData, action) => {
     case actions.GET_GROUP_MANAGEMENT_ALL_DATA_SUCCESS:
       return {
         ...state,
-        data: { ...action.payload },
+        data: action.payload, 
       };
     default:
       return state;
