@@ -16,7 +16,8 @@ const mapStateToProps = (state, props) => {
     verifyingLetter: state.letter_proofing.verifyingLetter,
     letter_sent: state.letter_proofing.letter_sent,
     letter_expires: state.letter_proofing.letter_expires,
-    letter_expired: state.letter_proofing.letter_expired
+    letter_expired: state.letter_proofing.letter_expired,
+    letter_sent_days_ago: state.letter_proofing.letter_sent_days_ago
   };
 };
 
@@ -28,7 +29,7 @@ const mapDispatchToProps = (dispatch, props) => {
     // },
     confirmLetterProofing: function(e) {
       dispatch(actions.postLetterProofingSendLetter());
-      dispatch(actions.stopLetterConfirmation());
+      // dispatch(actions.stopLetterConfirmation());
     },
     sendConfirmationCode: function(e) {
       e.preventDefault();

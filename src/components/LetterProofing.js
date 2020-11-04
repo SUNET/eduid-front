@@ -11,30 +11,34 @@ class LetterProofingButton extends Component {
     verifyingLetter: false,
     confirmingLetter: false,
     letter_sent: "",
+    letter_sent_days_ago: 0
   }
 
   handleModal=()=>{
-    const { verifyingLetter, letter_expired, confirmingLetter } = this.props;
+    const { verifyingLetter, letter_expired, confirmingLetter, letter_sent_days_ago, letter_sent } = this.props;
     this.setState({
       verifyingLetter: verifyingLetter,
       letter_expired: letter_expired,
-      confirmingLetter: confirmingLetter
+      confirmingLetter: confirmingLetter,
+      letter_sent_days_ago: letter_sent_days_ago,
+      letter_sent: letter_sent
     })
+    console.log(verifyingLetter, letter_expired, confirmingLetter, letter_sent_days_ago)
   }
 
   sendConfirmationCode=(e)=>{
     this.props.sendConfirmationCode(e);
     this.setState({
-      confirmingLetter: false,
-      verifyingLetter: false
+      letter_sent_days_ago: 0, 
+      verifyingLetter:false
     })
   }
 
   confirmLetterProofing=(e)=>{
     this.props.confirmLetterProofing(e);
     this.setState({
-      confirmingLetter: false,
-      verifyingLetter: false
+      letter_sent_days_ago: 0,
+      verifyingLetter: true
     })
   }
 
@@ -104,10 +108,10 @@ class LetterProofingButton extends Component {
           modalId="letterGenericConfirmDialog"
           title={translate("letter.modal_confirm_title")}
           mainText={translate("letter.modal_confirm_info")}
-          showModal={this.state.confirmingLetter  || this.state.letter_expired}
-          closeModal={()=>this.setState({
-            confirmingLetter: false,
-            letter_expired: false
+          showModal={(this.state.letter_sent_days_ago===undefined && !this.state.verifyingLetter)||(this.state.letter_expired && this.state.letter_sent_days_ago>=15)}
+          closeModal={(prevState)=>this.setState({
+            letter_sent_days_ago: 0,
+            verifyingLetter: true
           })}
           acceptModal={this.confirmLetterProofing}
         />
@@ -117,8 +121,8 @@ class LetterProofingButton extends Component {
           title={translate("letter.verify_title")}
           resendLabel={translate("cm.enter_code")}
           placeholder={translate("letter.placeholder")}
-          showModal={this.state.verifyingLetter}
-          closeModal={()=>this.setState({verifyingLetter: false})}
+          showModal={this.state.verifyingLetter && this.state.letter_sent_days_ago<15 && !this.state.letter_expired && this.state.letter_sent!==""}
+          closeModal={()=>this.setState({letter_sent_days_ago: 0, verifyingLetter:false})}
           handleConfirm={this.sendConfirmationCode}
           with_resend_link={false}
           validationPattern={shortCodePattern}
