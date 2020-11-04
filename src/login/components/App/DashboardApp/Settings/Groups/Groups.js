@@ -27,8 +27,10 @@ class Groups extends Component {
 
   render() {
     let renderGetAllGroups = "empty";
-    const { data } = this.props
-    console.log('this is data from deconstructed props:', data)
+    const { loading, data } = this.props
+    console.log('this loading:', loading)
+    if (loading) return <p>Loading...</p>;
+    console.log('this is data:', data)
     if (data) {
       renderGetAllGroups  = ( 
          <div className="group-data">

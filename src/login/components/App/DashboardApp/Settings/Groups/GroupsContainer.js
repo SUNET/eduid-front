@@ -6,6 +6,7 @@ import i18n from "../../../../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {
+    loading: state.groups.loading,
     data: state.groups.data,
   };
 };
