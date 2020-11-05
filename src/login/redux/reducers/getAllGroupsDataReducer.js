@@ -2,8 +2,11 @@ import * as actions from "../actions/getAllDataGroupActions";
 
 const groupsData = {
   message: "",
+  firstGroup: true,
   loading: true,
   data: [],
+  member_of: [],
+  owner_of: [],
 };
 
 let groupsDataReducer = (state = groupsData, action) => {
@@ -12,7 +15,9 @@ let groupsDataReducer = (state = groupsData, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload, 
+        data: action.payload,
+        member_of: action.payload.member_of,
+        owner_of: action.payload.owner_of,
       };
     default:
       return state;
