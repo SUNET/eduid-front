@@ -11,6 +11,7 @@ class LetterProofingButton extends Component {
     verifyingLetter: false,
     confirmingLetter: false,
     letter_sent: "",
+    letter_sent_days_ago: 0
   }
 
   handleModal=()=>{
