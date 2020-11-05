@@ -15,11 +15,19 @@ class LetterProofingButton extends Component {
   }
 
   handleModal=()=>{
-    const { verifyingLetter, letter_expired, confirmingLetter } = this.props;
+    const { 
+      verifyingLetter, 
+      letter_expired, 
+      confirmingLetter, 
+      letter_sent_days_ago, 
+      letter_sent 
+    } = this.props;
     this.setState({
       verifyingLetter: verifyingLetter,
       letter_expired: letter_expired,
-      confirmingLetter: confirmingLetter
+      confirmingLetter: confirmingLetter,
+      letter_sent_days_ago: letter_sent_days_ago,
+      letter_sent: letter_sent
     })
   }
 
