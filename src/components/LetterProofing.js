@@ -50,7 +50,7 @@ class LetterProofingButton extends Component {
 
   render() {
     const { disabled, translate, letter_sent, letter_expired, letter_expires } = this.props;
-    const showNotificaitonModal = 
+    const showNotificationModal = 
       (this.state.letter_sent_days_ago === undefined && !this.state.verifyingLetter) ||
       (this.state.letter_expired && this.state.letter_sent_days_ago >= 15);
     const showConfirmationModal = 
@@ -120,7 +120,7 @@ class LetterProofingButton extends Component {
           modalId="letterGenericConfirmDialog"
           title={translate("letter.modal_confirm_title")}
           mainText={translate("letter.modal_confirm_info")}
-          showModal={showNotificaitonModal}
+          showModal={showNotificationModal}
           closeModal={this.closeModal}
           acceptModal={this.confirmLetterProofing}
         />
