@@ -3,20 +3,25 @@ import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
 import WizardPanel from "../../../../Wizard/WizardPanel";
 import DataPanel from "../../../../DataPanel/DataPanelContainer";
-import ViewDataTable from "../../../../DataPanel/ViewDataTable";
 
-const RenderCreateButton = (props) => {
+const RenderCreateGroupButton = (props) => {
   return (
     <Fragment>
       {props.data && (
-        <button
-          className="create-group"
-          onClick={props.handleCreateGroup}
-        >
+        <button className="create-group" onClick={props.handleCreateGroup}>
           create group
         </button>
       )}
     </Fragment>
+  );
+};
+
+const RenderWizardOrData = (props) => {
+  if (props.loading) return <p>Loading...</p>;
+  return props.firstGroup ? (
+    <WizardPanel {...props} />
+  ) : (
+    <DataPanel {...props} />
   );
 };
 
@@ -26,34 +31,21 @@ class Groups extends Component {
   }
 
   render() {
-    let renderGetAllGroups = "empty";
-    const { loading, data } = this.props
-    console.log('this loading:', loading)
-    if (loading) return <p>Loading...</p>;
-    console.log('this is data:', data)
-    if (data) {
-      renderGetAllGroups  = ( 
-         <div className="group-data">
-           <pre>{JSON.stringify(data, null, 2)}</pre>
-         </div>
-      )
-    }
-    
     return (
       <article>
         <div className="intro">
           <div className="heading">
             <h4>Groups</h4>
-            <RenderCreateButton
+            <RenderCreateGroupButton
               handleCreateGroup={this.props.handleCreateGroup}
-              data={data}
+              firstGroup={this.props.firstGroup}
             />
           </div>
           <p>
             Create groups with other eduID users. What the groups are used for
             is up to you and the local services your univeristy provides.
           </p>
-           {renderGetAllGroups}
+          <RenderWizardOrData {...this.props} />
         </div>
       </article>
     );

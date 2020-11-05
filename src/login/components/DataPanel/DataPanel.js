@@ -37,7 +37,7 @@ class DataPanel extends Component {
           toggleEditMode={this.toggleEditMode}
           editDataMode={this.state.editDataMode}
         />
-        <RenderEditData
+        {/* <RenderEditData
           data={this.props.data}
           toggleEditMode={this.toggleEditMode}
           editDataMode={this.state.editDataMode}
