@@ -31,24 +31,31 @@ class LetterProofingButton extends Component {
     })
   }
 
-   sendConfirmationCode=(e)=>{
+  sendConfirmationCode=(e)=>{
     this.props.sendConfirmationCode(e);
-    this.setState({
-      letter_sent_days_ago: 0, 
-      verifyingLetter:false
-    })
+    this.closeModal();
   }
 
   confirmLetterProofing=(e)=>{
     this.props.confirmLetterProofing(e);
+    this.closeModal();
+  }
+
+  closeModal=()=>{
     this.setState({
       letter_sent_days_ago: 0,
-      verifyingLetter: true
+      verifyingLetter: false
     })
   }
 
   render() {
     const { disabled, translate, letter_sent, letter_expired, letter_expires } = this.props;
+    const showNotificaitonModal = 
+      (this.state.letter_sent_days_ago === undefined && !this.state.verifyingLetter) ||
+      (this.state.letter_expired && this.state.letter_sent_days_ago >= 15);
+    const showConfirmationModal = 
+      this.state.verifyingLetter && this.state.letter_sent_days_ago < 15 && 
+      !this.state.letter_expired && this.state.letter_sent !== "";
     let description = "";
     if(disabled){
       description = (
@@ -113,14 +120,8 @@ class LetterProofingButton extends Component {
           modalId="letterGenericConfirmDialog"
           title={translate("letter.modal_confirm_title")}
           mainText={translate("letter.modal_confirm_info")}
-          showModal={
-            (this.state.letter_sent_days_ago===undefined && !this.state.verifyingLetter)
-            ||(this.state.letter_expired && this.state.letter_sent_days_ago>=15)
-          }
-          closeModal={(prevState)=>this.setState({
-            letter_sent_days_ago: prevState.letter_sent_days_ago,
-            verifyingLetter: prevState.verifyingLetter
-          })}
+          showModal={showNotificaitonModal}
+          closeModal={this.closeModal}
           acceptModal={this.confirmLetterProofing}
         />
         <ConfirmModal
@@ -129,8 +130,8 @@ class LetterProofingButton extends Component {
           title={translate("letter.verify_title")}
           resendLabel={translate("cm.enter_code")}
           placeholder={translate("letter.placeholder")}
-          showModal={this.state.verifyingLetter}
-          closeModal={()=>this.setState({verifyingLetter: false})}
+          showModal={showConfirmationModal}
+          closeModal={this.closeModal}
           handleConfirm={this.sendConfirmationCode}
           with_resend_link={false}
           validationPattern={shortCodePattern}
