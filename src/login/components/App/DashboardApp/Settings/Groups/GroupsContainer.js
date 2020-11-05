@@ -5,9 +5,17 @@ import * as allDataActions from "../../../../../redux/actions/getAllDataGroupAct
 import i18n from "../../../../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
+  // check if user has any gropus
+  let noGroups =
+    Object.entries(state.groups.member_of).length === 0 ||
+    Object.entries(state.groups.owner_of).length === 0;
+
   return {
+    firstGroup: noGroups,
     loading: state.groups.loading,
     data: state.groups.data,
+    member_of: state.groups.member_of,
+    owner_of: state.groups.owner_of,
   };
 };
 
