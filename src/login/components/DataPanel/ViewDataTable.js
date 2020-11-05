@@ -7,14 +7,19 @@ const RenderGroupList = (props) => (
     <label>Groups I manage</label>
     <ul>
       {props.owner_of.map((group, i) => {
-        console.log("this is group", group);
         return (
           <li key={group.identifier}>
             <div className="element-pair">
               <button className="dropdown">^</button>
               <p>{group.display_name}</p>
             </div>
-            <button>edit</button>
+            <button
+              onClick={() => {
+                props.toggleMode();
+              }}
+            >
+              edit
+            </button>
           </li>
         );
       })}

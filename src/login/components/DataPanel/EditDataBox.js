@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const EditDataBox = (props) => {
+  console.log("this is props:", props);
   return (
     <div className="edit-data">
       <div className="title">

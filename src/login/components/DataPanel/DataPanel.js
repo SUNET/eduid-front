@@ -16,7 +16,9 @@ class DataPanel extends Component {
       return {
         editDataMode: !prevState.editDataMode,
       };
-    });
+    }), () => {
+      console.log("this is the updated state:", this.state.editDataMode);
+    };
   };
 
   render() {
