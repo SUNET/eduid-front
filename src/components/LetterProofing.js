@@ -31,19 +31,19 @@ class LetterProofingButton extends Component {
     })
   }
 
-  sendConfirmationCode=(e)=>{
+   sendConfirmationCode=(e)=>{
     this.props.sendConfirmationCode(e);
     this.setState({
-      confirmingLetter: false,
-      verifyingLetter: false
+      letter_sent_days_ago: 0, 
+      verifyingLetter:false
     })
   }
 
   confirmLetterProofing=(e)=>{
     this.props.confirmLetterProofing(e);
     this.setState({
-      confirmingLetter: false,
-      verifyingLetter: false
+      letter_sent_days_ago: 0,
+      verifyingLetter: true
     })
   }
 
