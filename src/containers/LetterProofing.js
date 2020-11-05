@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     confirmLetterProofing: function(e) {
       dispatch(actions.postLetterProofingSendLetter());
-      dispatch(actions.stopLetterConfirmation());
+      // dispatch(actions.stopLetterConfirmation());
     },
     sendConfirmationCode: function(e) {
       e.preventDefault();

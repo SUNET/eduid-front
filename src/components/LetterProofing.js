@@ -29,6 +29,7 @@ class LetterProofingButton extends Component {
       letter_sent_days_ago: letter_sent_days_ago,
       letter_sent: letter_sent
     })
+    console.log(verifyingLetter, letter_expired, confirmingLetter, letter_sent_days_ago)
   }
 
   sendConfirmationCode=(e)=>{

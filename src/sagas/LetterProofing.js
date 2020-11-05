@@ -37,17 +37,26 @@ export function* sendLetterProofing() {
         nin: state.nins.nin,
         csrf_token: state.config.csrf_token
       };
-
+      console.log('[1 sendLetterProofing state.config]', state.config)
+      console.log('[2 sendLetterProofing data]', data)
     const response = yield call(fetchLetterProofing, state.config, data);
-    yield put(putCsrfToken(response));
-    yield put(response);
+
+  
+      console.log('[3 sendLetterProofing response]',response)
+      console.log('[4 response.status]',response.status)
+      yield put(putCsrfToken(response));
+      yield put(response);
+ 
+   
   } catch (error) {
-    console.log('error', error)
+    console.log('[5 error]', error)
     yield* failRequest(error, actions.postLetterProofingSendLetterFail);
   }
 }
 
 export function fetchLetterProofing(config, data) {
+  console.log('[config]', config)
+  console.log('[data]', data)
   return window
     .fetch(config.letter_proofing_url + "proofing", {
       ...postRequest,
