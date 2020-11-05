@@ -4,21 +4,25 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const EditDataBox = (props) => {
   return (
-    <div className="edit-data" >
+    <div className="edit-data">
       <div className="title">
         <p>Edit your group</p>
-          <button
-            className="save-button"
-            onClick={() => {
-              props.toggleEditMode();
-            }}
-          >
-            save
-          </button>
+        <button
+          className="save-button"
+          onClick={() => {
+            props.toggleMode();
+          }}
+        >
+          save
+        </button>
       </div>
       <nav>
-        <li><p>Invites</p></li>
-        <li><p>Delete</p></li>
+        <li>
+          <p>Invites</p>
+        </li>
+        <li>
+          <p>Delete</p>
+        </li>
       </nav>
       <div className="group-data">
         <pre>{JSON.stringify(props.data, null, 2)}</pre>
