@@ -7,7 +7,7 @@ import DataPanel from "../../../../DataPanel/DataPanelContainer";
 const RenderCreateGroupButton = (props) => {
   return (
     <Fragment>
-      {props.data && (
+      {!props.firstGroup && (
         <button className="create-group" onClick={props.handleCreateGroup}>
           create group
         </button>
