@@ -113,10 +113,13 @@ class LetterProofingButton extends Component {
           modalId="letterGenericConfirmDialog"
           title={translate("letter.modal_confirm_title")}
           mainText={translate("letter.modal_confirm_info")}
-          showModal={this.state.confirmingLetter  || this.state.letter_expired}
-          closeModal={()=>this.setState({
-            confirmingLetter: false,
-            letter_expired: false
+          showModal={
+            (this.state.letter_sent_days_ago===undefined && !this.state.verifyingLetter)
+            ||(this.state.letter_expired && this.state.letter_sent_days_ago>=15)
+          }
+          closeModal={(prevState)=>this.setState({
+            letter_sent_days_ago: prevState.letter_sent_days_ago,
+            verifyingLetter: prevState.verifyingLetter
           })}
           acceptModal={this.confirmLetterProofing}
         />
