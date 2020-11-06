@@ -7,7 +7,7 @@ import DataPanel from "../../../../DataPanel/DataPanelContainer";
 const RenderCreateGroupButton = (props) => {
   return (
     <Fragment>
-      {!props.firstGroup && (
+      {!props.noGroups && (
         <button className="create-group" onClick={props.handleCreateGroup}>
           create group
         </button>
@@ -18,11 +18,7 @@ const RenderCreateGroupButton = (props) => {
 
 const RenderWizardOrData = (props) => {
   if (props.loading) return <p>Loading...</p>;
-  return props.firstGroup ? (
-    <WizardPanel {...props} />
-  ) : (
-    <DataPanel {...props} />
-  );
+  return props.noGroups ? <WizardPanel {...props} /> : <DataPanel {...props} />;
 };
 
 class Groups extends Component {
@@ -38,7 +34,7 @@ class Groups extends Component {
             <h4>Groups</h4>
             <RenderCreateGroupButton
               handleCreateGroup={this.props.handleCreateGroup}
-              firstGroup={this.props.firstGroup}
+              noGroups={this.props.noGroups}
             />
           </div>
           <p>
