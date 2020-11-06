@@ -60,7 +60,6 @@ class Group extends Component {
   };
 
   render() {
-     console.log("this is props in Gropus:", this.props);
     return (
       <li
         className="closed"

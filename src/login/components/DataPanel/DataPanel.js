@@ -16,7 +16,6 @@ class DataPanel extends Component {
   };
 
   render() {
-    console.log("this is props in dtaa panel:", this.props);
     return (
       <div className="data-panel">
         {this.state.editMode ? (
