@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import ViewData from "./ViewDataTable";
-import EditData from "./EditDataBox";
+import ViewData from "./ViewMode";
+import EditData from "./EditMode";
 
 const RenderViewOrEditMode = (props) => {
   return props.toggleState ? <EditData {...props} /> : <ViewData {...props} />;

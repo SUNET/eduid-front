@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
-const EditDataBox = (props) => {
+const EditMode = (props) => {
   console.log("this is props:", props);
   return (
     <div className="edit-data">
@@ -32,11 +32,8 @@ const EditDataBox = (props) => {
   );
 };
 
-EditDataBox.propTypes = {
-  data: PropTypes.any,
-  handleStartConfirmation: PropTypes.func,
-  handleMakePrimary: PropTypes.func,
-  handleRemove: PropTypes.func,
+EditMode.propTypes = {
+
 };
 
-export default i18n(EditDataBox);
+export default i18n(EditMode);
