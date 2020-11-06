@@ -11,7 +11,7 @@ const mapStateToProps = (state, props) => {
     Object.entries(state.groups.owner_of).length === 0;
 
   return {
-    firstGroup: noGroups,
+    noGroups,
     loading: state.groups.loading,
     data: state.groups.data,
     member_of: state.groups.member_of,

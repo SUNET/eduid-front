@@ -60,6 +60,7 @@ class Group extends Component {
   };
 
   render() {
+     console.log("this is props in Gropus:", this.props);
     return (
       <li
         className="closed"
@@ -75,7 +76,7 @@ class Group extends Component {
           </div>
           <button
             onClick={() => {
-              props.toggleMode();
+              this.props.toggleViewOrEditMode();
             }}
           >
             edit

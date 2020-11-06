@@ -11,7 +11,7 @@ const EditMode = (props) => {
         <button
           className="save-button"
           onClick={() => {
-            props.toggleMode();
+            props.toggleViewOrEditMode();
           }}
         >
           save
@@ -32,8 +32,6 @@ const EditMode = (props) => {
   );
 };
 
-EditMode.propTypes = {
-
-};
+EditMode.propTypes = {};
 
 export default i18n(EditMode);

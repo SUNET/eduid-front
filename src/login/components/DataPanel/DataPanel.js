@@ -1,32 +1,35 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import ViewData from "./ViewMode";
-import EditData from "./EditMode";
-
-const RenderViewOrEditMode = (props) => {
-  return props.toggleState ? <EditData {...props} /> : <ViewData {...props} />;
-};
+import ViewMode from "./ViewMode";
+import EditMode from "./EditMode";
 
 class DataPanel extends Component {
-  state = { editDataMode: false };
+  state = { editMode: false };
 
-  toggleMode = () => {
+  toggleViewOrEditMode = () => {
     this.setState((prevState) => {
       return {
-        editDataMode: !prevState.editDataMode,
+        editMode: !prevState.editMode,
       };
     });
   };
 
   render() {
+    console.log("this is props in dtaa panel:", this.props);
     return (
       <div className="data-panel">
-        <RenderViewOrEditMode
-          toggleMode={this.toggleMode}
-          toggleState={this.state.editDataMode}
-          {...this.props}
-        />
+        {this.state.editMode ? (
+          <EditMode
+            {...this.props}
+            toggleViewOrEditMode={this.toggleViewOrEditMode}
+          />
+        ) : (
+          <ViewMode
+            {...this.props}
+            toggleViewOrEditMode={this.toggleViewOrEditMode}
+          />
+        )}
       </div>
     );
   }

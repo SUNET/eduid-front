@@ -14,7 +14,7 @@ const RenderGroupListWithRoleAdmin = (props) => {
               <Group
                 key={group.identifier}
                 group={group}
-                toggleMode={props.toggleMode}
+                toggleViewOrEditMode={props.toggleViewOrEditMode}
               />
             ))}
           </ul>
@@ -35,7 +35,7 @@ const RenderGroupListWithRoleMember = (props) => {
               <Group
                 key={group.identifier}
                 group={group}
-                toggleMode={props.toggleMode}
+                toggleViewOrEditMode={props.toggleViewOrEditMode}
               />
             ))}
           </ul>
