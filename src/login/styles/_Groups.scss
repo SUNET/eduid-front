@@ -101,6 +101,9 @@ article {
   .view-data {
     background-color: transparent;
     margin-top: 2rem;
+    ul {
+      margin: 0  0 1rem 0;
+    }
     li {
       border-bottom: solid white 2px;
       padding: 0 0.375rem;
@@ -114,45 +117,40 @@ article {
         justify-content: space-between;
         align-items: center;
         height: 3rem;
+        .element-pair {
+          display: flex;
+          align-items: center;
+        }
+        p {
+          padding: 0 0 0 0.75rem;
+          font-size: 1.5rem;
+          font-family: "ProximaNova-Light";
+        }
+        button {
+          background-color: transparent;
+          box-shadow: 0 0 0;
+          text-decoration: underline;
+          border-radius: 0;
+          font-weight: 400;
+          margin: 0;
+          padding: 0;
+          height: 1rem;
+          &.dropdown-closed {
+            color: #161616;
+            text-decoration: none;
+            transform: rotate(180deg);
+            transform-origin: center center;
+            font-family: "ProximaNova-Bold";
+          }
+          &.dropdown-open {
+            color: #161616;
+            transform: rotate(0deg);
+            text-decoration: none;
+            transform-origin: center center;
+            font-family: "ProximaNova-Bold";
+          }
+        }
       }
-      .element-pair {
-        display: flex;
-        align-items: center;
-      }
-      p {
-        padding: 0 0 0 0.75rem;
-        font-size: 1.5rem;
-        font-family: "ProximaNova-Light";
-      }
-    }
-    button {
-      background-color: transparent;
-      box-shadow: 0 0 0;
-      text-decoration: underline;
-      border-radius: 0;
-      font-weight: 400;
-      margin: 0;
-      padding: 0;
-      height: 1rem;
-      &.dropdown-closed {
-        color: #161616;
-        text-decoration: none;
-        transform: rotate(180deg);
-        transform-origin: center center;
-        font-family: "ProximaNova-Bold";
-      }
-      &.dropdown-open {
-        color: #161616;
-        transform: rotate(0deg);
-        text-decoration: none;
-        transform-origin: center center;
-        font-family: "ProximaNova-Bold";
-      }
-    }
-    .title {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
     }
     label {
       font-size: 1rem;
@@ -160,8 +158,11 @@ article {
       padding: 0 0 0.625rem 0.375rem;
       margin-right: 0;
     }
-    .open {
-      // height: 100%;
+    .open-group {
+      margin: 0 0 0 1rem;
+      label {
+         padding: 0 0 0.625rem 0.375rem;
+      }
     }
   }
 }

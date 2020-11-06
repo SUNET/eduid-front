@@ -2,19 +2,45 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../../../translation/InjectIntl_HOC_factory";
 
+const RenderAdminList = (props) => {
+  let admins = props.group.owners;
+  return (
+    <Fragment>
+      <label>Admin</label>
+      {admins.map((admin, i) => (
+        <p key={admin.identifier}>
+          {i + 1}. {admin.display_name}
+        </p>
+      ))}
+    </Fragment>
+  );
+};
+
+const RenderMemberList = (props) => {
+  let members = props.group.members;
+  return (
+    <Fragment>
+      <label>Member</label>
+      {members.map((member, i) => (
+        <p key={member.identifier}>
+          {i + 1}. {member.display_name}
+        </p>
+      ))}
+    </Fragment>
+  );
+};
 
 const RenderOpenGroup = (props) => {
-  console.log("these are props:", props);
   return props.openGroup ? (
-    <Fragment>
-      <p>{props.group.identifier}</p>
-
-    </Fragment>
+    <div className="open-group">
+      <RenderAdminList {...props} />
+      <RenderMemberList {...props} />
+    </div>
   ) : null;
 };
 
-const AnimateDropdownIcon = (state) =>
-  state.openGroup ? (
+const AnimateDropdownIcon = (props) =>
+  props.openGroup ? (
     <button className="dropdown-open">^</button>
   ) : (
     <button className="dropdown-closed">^</button>
@@ -44,7 +70,7 @@ class Group extends Component {
       >
         <div className="title">
           <div className="element-pair">
-            <AnimateDropdownIcon {...this.state} />
+            <AnimateDropdownIcon openGroup={this.state.openGroup} />
             <p>{this.props.group.display_name}</p>
           </div>
           <button
