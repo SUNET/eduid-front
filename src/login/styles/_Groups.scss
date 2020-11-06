@@ -102,14 +102,18 @@ article {
     background-color: transparent;
     margin-top: 2rem;
     li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       border-bottom: solid white 2px;
-      height: 3rem;
       padding: 0 0.375rem;
+      display: flex;
+      flex-direction: column;
       &:first-child {
         border-top: solid white 2px;
+      }
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 3rem;
       }
       .element-pair {
         display: flex;
@@ -155,6 +159,9 @@ article {
       letter-spacing: 0;
       padding: 0 0 0.625rem 0.375rem;
       margin-right: 0;
+    }
+    .open {
+      // height: 100%;
     }
   }
 }
