@@ -20,9 +20,9 @@ export function* sendGetLetterProofing() {
   }
 }
 
-export function fetchGetLetterProofing(config, nin) {
+export function fetchGetLetterProofing(config) {
   return window
-    .fetch(config.letter_proofing_url + "proofing?nin=" + nin, {
+    .fetch(config.letter_proofing_url + "proofing", {
       ...getRequest
     })
     .then(checkStatus)
