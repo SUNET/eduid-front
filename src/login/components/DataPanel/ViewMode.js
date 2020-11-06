@@ -15,7 +15,7 @@ const RenderGroupList = (props) => (
             </div>
             <button
               onClick={() => {
-                props.toggleMode();
+                props.toggleViewOrEditMode();
               }}
             >
               edit
@@ -27,7 +27,7 @@ const RenderGroupList = (props) => (
   </Fragment>
 );
 
-const ViewDataTable = (props) => {
+const ViewMode = (props) => {
   return (
     <div className="view-data">
       <RenderGroupList {...props} />
@@ -35,11 +35,11 @@ const ViewDataTable = (props) => {
   );
 };
 
-ViewDataTable.propTypes = {
+ViewMode.propTypes = {
   data: PropTypes.any,
   handleStartConfirmation: PropTypes.func,
   handleMakePrimary: PropTypes.func,
   handleRemove: PropTypes.func,
 };
 
-export default i18n(ViewDataTable);
+export default i18n(ViewMode);
