@@ -130,14 +130,19 @@ article {
       margin: 0;
       padding: 0;
       height: 1rem;
-      &.dropdown {
+      &.dropdown-closed {
         color: #161616;
         text-decoration: none;
-        font-size: 1.5rem;
         transform: rotate(180deg);
         transform-origin: center center;
         font-family: "ProximaNova-Bold";
-         height: 1.5rem; 
+      }
+      &.dropdown-open {
+        color: #161616;
+        transform: rotate(0deg);
+        text-decoration: none;
+        transform-origin: center center;
+        font-family: "ProximaNova-Bold";
       }
     }
     .title {
