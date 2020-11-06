@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 import Group from "../App/DashboardApp/Settings/Groups/Group";
 
-const OwnerOfGroupsList = (props) => {
+const RenderGroupListWithRoleAdmin = (props) => {
   return (
     <Fragment>
       {props.owner_of && (
@@ -24,7 +24,7 @@ const OwnerOfGroupsList = (props) => {
   );
 };
 
-const MemberOfGroupsList = (props) => {
+const RenderGroupListWithRoleMember = (props) => {
   return (
     <Fragment>
       {props.member_of && (
@@ -48,8 +48,8 @@ const MemberOfGroupsList = (props) => {
 const ViewMode = (props) => {
   return (
     <div className="view-data">
-      <OwnerOfGroupsList {...props} />
-      <MemberOfGroupsList {...props} />
+      <RenderGroupListWithRoleAdmin {...props} />
+      <RenderGroupListWithRoleMember {...props} />
     </div>
   );
 };
