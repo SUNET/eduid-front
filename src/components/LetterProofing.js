@@ -30,15 +30,23 @@ class LetterProofingButton extends Component {
 
   sendConfirmationCode=(e)=>{
     this.props.sendConfirmationCode(e);
-    this.closeModal();
+    this.closeNotificationModal();
   }
 
   confirmLetterProofing=(e)=>{
     this.props.confirmLetterProofing(e);
-    this.closeModal();
+    this.closeConfirmationModal();
   }
 
-  closeModal=()=>{
+  closeNotificationModal=()=>{
+    this.setState({
+      letter_sent: "",
+      confirmingLetter: false,
+      letter_expires: false
+    })
+  }
+
+  closeConfirmationModal=()=>{
     this.setState({
       verifyingLetter: false
     })
@@ -117,7 +125,7 @@ class LetterProofingButton extends Component {
           title={translate("letter.modal_confirm_title")}
           mainText={translate("letter.modal_confirm_info")}
           showModal={showNotificationModal}
-          closeModal={this.closeModal}
+          closeModal={this.closeNotificationModal}
           acceptModal={this.confirmLetterProofing}
         />
         <ConfirmModal
@@ -127,7 +135,7 @@ class LetterProofingButton extends Component {
           resendLabel={translate("cm.enter_code")}
           placeholder={translate("letter.placeholder")}
           showModal={showConfirmationModal}
-          closeModal={this.closeModal}
+          closeModal={this.closeConfirmationModal}
           handleConfirm={this.sendConfirmationCode}
           with_resend_link={false}
           validationPattern={shortCodePattern}
