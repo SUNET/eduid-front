@@ -22,7 +22,7 @@
     "@fortawesome/react-fontawesome": "0.1.11",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.5.3",
     "intl": "^1.2.5",
     "invariant": "^2.2.4",
     "react": "^16.13.1",
