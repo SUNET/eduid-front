@@ -10,8 +10,7 @@ class LetterProofingButton extends Component {
     letter_expires: false,
     verifyingLetter: false,
     confirmingLetter: false,
-    letter_sent: "",
-    letter_sent_days_ago: 0
+    letter_sent: ""
   }
 
   handleModal=()=>{
@@ -19,14 +18,12 @@ class LetterProofingButton extends Component {
       verifyingLetter, 
       letter_expired, 
       confirmingLetter, 
-      letter_sent_days_ago, 
       letter_sent 
     } = this.props;
     this.setState({
       verifyingLetter: verifyingLetter,
       letter_expired: letter_expired,
       confirmingLetter: confirmingLetter,
-      letter_sent_days_ago: letter_sent_days_ago,
       letter_sent: letter_sent
     })
   }
@@ -43,7 +40,6 @@ class LetterProofingButton extends Component {
 
   closeModal=()=>{
     this.setState({
-      letter_sent_days_ago: 0,
       verifyingLetter: false
     })
   }
@@ -51,11 +47,11 @@ class LetterProofingButton extends Component {
   render() {
     const { disabled, translate, letter_sent, letter_expired, letter_expires } = this.props;
     const showNotificationModal = 
-      (this.state.letter_sent_days_ago === undefined && !this.state.verifyingLetter) ||
-      (this.state.letter_expired && this.state.letter_sent_days_ago >= 15);
+      (this.state.letter_sent === "" && this.state.confirmingLetter) ||
+      (this.state.letter_expired && this.state.letter_sent !== "");
     const showConfirmationModal = 
-      this.state.verifyingLetter && this.state.letter_sent_days_ago < 15 && 
-      !this.state.letter_expired && this.state.letter_sent !== "";
+      !this.state.letter_expired && this.state.letter_sent !== "" 
+      &&!this.state.confirmingLetter && this.state.verifyingLetter;
     let description = "";
     if(disabled){
       description = (
