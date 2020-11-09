@@ -7,7 +7,7 @@ import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 class LetterProofingButton extends Component {
   state = {
     letter_expired: false,
-    letter_expires: false,
+    letter_expires: "",
     verifyingLetter: false,
     confirmingLetter: false,
     letter_sent: ""
@@ -30,25 +30,25 @@ class LetterProofingButton extends Component {
 
   sendConfirmationCode=(e)=>{
     this.props.sendConfirmationCode(e);
-    this.closeNotificationModal();
+    this.closeConfirmationModal();
+  }
+
+  closeConfirmationModal=()=>{
+    this.setState({
+      verifyingLetter: false
+    })
   }
 
   confirmLetterProofing=(e)=>{
     this.props.confirmLetterProofing(e);
-    this.closeConfirmationModal();
+    this.closeNotificationModal();
   }
 
   closeNotificationModal=()=>{
     this.setState({
       letter_sent: "",
       confirmingLetter: false,
-      letter_expires: false
-    })
-  }
-
-  closeConfirmationModal=()=>{
-    this.setState({
-      verifyingLetter: false
+      letter_expires: ""
     })
   }
 
