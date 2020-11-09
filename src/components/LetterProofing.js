@@ -18,13 +18,15 @@ class LetterProofingButton extends Component {
       verifyingLetter, 
       letter_expired, 
       confirmingLetter, 
-      letter_sent 
+      letter_sent,
+      letter_expires
     } = this.props;
     this.setState({
       verifyingLetter: verifyingLetter,
       letter_expired: letter_expired,
       confirmingLetter: confirmingLetter,
-      letter_sent: letter_sent
+      letter_sent: letter_sent,
+      letter_expires: letter_expires
     })
   }
 
