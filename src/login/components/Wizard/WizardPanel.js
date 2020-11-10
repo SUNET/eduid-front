@@ -22,7 +22,7 @@ const RenderCreateGroupWizard = (props) => {
             <button
               className="create-group"
               onClick={() => {
-                props.renderCreateButton();
+                console.log("wizard is not fully functional yet")
               }}
             >
               CREATE GROUP
