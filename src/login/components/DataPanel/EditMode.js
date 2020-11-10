@@ -11,8 +11,6 @@ const SingleGroup = (props) => {
     <Fragment>
       <RenderAdminList group={props.group} />
       <RenderMemberList group={props.group} />
-      <p>Everyone loves {props.group.display_name}</p>
-      <p>the id for this group is: {props.group.identifier}</p>
     </Fragment>
   );
 };
