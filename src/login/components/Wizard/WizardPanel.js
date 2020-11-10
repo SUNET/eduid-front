@@ -2,10 +2,10 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
-const RenderFirstGroupWizard = (props) => {
+const RenderCreateGroupWizard = (props) => {
   return (
     <Fragment>
-      {props.firstGroup && (
+      {props.noGroups && (
         <div className="wizard">
           <div className="title">
             <p>Create your first group.</p>
@@ -22,7 +22,7 @@ const RenderFirstGroupWizard = (props) => {
             <button
               className="create-group"
               onClick={() => {
-                props.renderCreateButton();
+                console.log("wizard is not fully functional yet")
               }}
             >
               CREATE GROUP
@@ -36,7 +36,7 @@ const RenderFirstGroupWizard = (props) => {
 class WizardPanel extends Component {
   state = { firstInvite: true };
   render() {
-    return <RenderFirstGroupWizard {...this.props} />;
+    return <RenderCreateGroupWizard {...this.props} />;
   }
 }
 

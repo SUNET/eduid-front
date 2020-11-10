@@ -1,37 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
 import WizardPanel from "../../../../Wizard/WizardPanel";
 import DataPanel from "../../../../DataPanel/DataPanelContainer";
 
-const RenderCreateButton = (props) => {
+const RenderCreateGroupButton = (props) => {
   return (
-    <a href="#">
-      {!props.firstGroup && (
-        <button
-          className="create-group"
-          onClick={props.handleCreateGroup}
-        >
+    <Fragment>
+      {!props.noGroups && (
+        <button className="create-group" onClick={props.handleCreateGroup}>
           create group
         </button>
       )}
-    </a>
+    </Fragment>
   );
 };
 
+const RenderWizardOrData = (props) => {
+  if (props.loading) return <p>Loading...</p>;
+  return props.noGroups ? <WizardPanel {...props} /> : <DataPanel {...props} />;
+};
+
 class Groups extends Component {
-  state = { firstGroup: false };
-
-  renderCreateButton = () => {
-    this.setState(
-      () => {
-        return {
-          firstGroup: false,
-        };
-      }
-    );
-  };
-
   componentDidMount() {
     this.props.handleGetAllData();
   }
@@ -42,20 +32,16 @@ class Groups extends Component {
         <div className="intro">
           <div className="heading">
             <h4>Groups</h4>
-            <RenderCreateButton
+            <RenderCreateGroupButton
               handleCreateGroup={this.props.handleCreateGroup}
-              firstGroup={this.state.firstGroup}
+              noGroups={this.props.noGroups}
             />
           </div>
           <p>
             Create groups with other eduID users. What the groups are used for
             is up to you and the local services your univeristy provides.
           </p>
-          <WizardPanel
-            renderCreateButton={this.renderCreateButton}
-            firstGroup={this.state.firstGroup}
-          />
-          <DataPanel />
+          <RenderWizardOrData {...this.props} />
         </div>
       </article>
     );
