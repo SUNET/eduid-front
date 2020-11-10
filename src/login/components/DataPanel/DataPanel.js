@@ -1,47 +1,34 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import ViewDataTable from "./ViewDataTable";
-import EditDataBox from "./EditDataBox";
-
-const RenderViewData = (props) => {
-  return (
-    <Fragment>{!props.editDataMode && <ViewDataTable {...props} />}</Fragment>
-  );
-};
-
-const RenderEditData = (props) => {
-  return (
-    <Fragment>{props.editDataMode && <EditDataBox {...props} />}</Fragment>
-  );
-};
+import ViewMode from "./ViewMode";
+import EditMode from "./EditMode";
 
 class DataPanel extends Component {
-  state = { editDataMode: false };
+  state = { editMode: false };
 
-  toggleEditMode = () => {
-    this.setState(
-      (prevState) => {
-        return {
-          editDataMode: !prevState.editDataMode,
-        };
-      }
-    );
+  toggleViewOrEditMode = () => {
+    this.setState((prevState) => {
+      return {
+        editMode: !prevState.editMode,
+      };
+    });
   };
 
   render() {
     return (
-      <div className="data-panel" >
-        <RenderViewData
-          data={this.props.data}
-          toggleEditMode={this.toggleEditMode}
-          editDataMode={this.state.editDataMode}
-        />
-        <RenderEditData
-          data={this.props.data}
-          toggleEditMode={this.toggleEditMode}
-          editDataMode={this.state.editDataMode}
-        />
+      <div className="data-panel">
+        {this.state.editMode ? (
+          <EditMode
+            {...this.props}
+            toggleViewOrEditMode={this.toggleViewOrEditMode}
+          />
+        ) : (
+          <ViewMode
+            {...this.props}
+            toggleViewOrEditMode={this.toggleViewOrEditMode}
+          />
+        )}
       </div>
     );
   }
