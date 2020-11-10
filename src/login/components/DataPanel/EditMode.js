@@ -1,13 +1,18 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
+import {
+  RenderAdminList,
+  RenderMemberList,
+} from "../App/DashboardApp/Settings/Groups/Group";
 
 const SingleGroup = (props) => {
   return (
     <Fragment>
+      <RenderAdminList group={props.group} />
+      <RenderMemberList group={props.group} />
       <p>Everyone loves {props.group.display_name}</p>
       <p>the id for this group is: {props.group.identifier}</p>
-      {/* <pre>{JSON.stringify(props.data, null, 2)}</pre> */}
     </Fragment>
   );
 };

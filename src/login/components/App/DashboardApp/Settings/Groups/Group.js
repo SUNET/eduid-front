@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../../../translation/InjectIntl_HOC_factory";
 
-const RenderAdminList = (props) => {
+export const RenderAdminList = (props) => {
   let admins = props.group.owners;
   return (
     <Fragment>
@@ -16,7 +16,7 @@ const RenderAdminList = (props) => {
   );
 };
 
-const RenderMemberList = (props) => {
+export const RenderMemberList = (props) => {
   let members = props.group.members;
   return (
     <Fragment>
