@@ -2,7 +2,6 @@ import * as actions from "../actions/getAllDataGroupActions";
 
 const groupsData = {
   message: "",
-  noGroups: true,
   loading: true,
   data: [],
   member_of: [],
