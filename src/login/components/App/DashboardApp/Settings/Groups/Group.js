@@ -75,7 +75,7 @@ class Group extends Component {
           </div>
           <button
             onClick={() => {
-              this.props.toggleViewOrEditMode();
+              this.props.toggleViewOrEditMode(this.props.group);
             }}
           >
             edit

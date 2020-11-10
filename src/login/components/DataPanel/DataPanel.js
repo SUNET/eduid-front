@@ -5,12 +5,13 @@ import ViewMode from "./ViewMode";
 import EditMode from "./EditMode";
 
 class DataPanel extends Component {
-  state = { editMode: false };
+  state = { editMode: false, group: "" };
 
-  toggleViewOrEditMode = () => {
+  toggleViewOrEditMode = (singleGroupData) => {
     this.setState((prevState) => {
       return {
         editMode: !prevState.editMode,
+        group: singleGroupData,
       };
     });
   };
@@ -21,6 +22,7 @@ class DataPanel extends Component {
         {this.state.editMode ? (
           <EditMode
             {...this.props}
+            group={this.state.group}
             toggleViewOrEditMode={this.toggleViewOrEditMode}
           />
         ) : (
