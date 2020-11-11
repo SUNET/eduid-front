@@ -1,18 +1,13 @@
 const mock = require("jest-mock");
 import React from "react";
-import ReactDOM from "react-dom";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import fetch from "whatwg-fetch";
+import { shallow, mount} from "enzyme";
+import expect from "expect";
 import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
 import { Provider } from "react-intl-redux";
 import { IntlProvider, addLocaleData } from "react-intl";
-import { put, call, select } from "redux-saga/effects";
-
+import { put, call } from "redux-saga/effects";
 import * as actions from "actions/LetterProofing";
 import letterProofingReducer from "reducers/LetterProofing";
-import LetterProofingButton from "components/LetterProofing";
 import LetterProofingContainer from "containers/LetterProofing";
 import {
   sendLetterProofing,
@@ -25,7 +20,7 @@ import {
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
-// SUCCESS
+
 describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
@@ -36,7 +31,7 @@ describe("LetterProofing Component", () => {
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 });
-// SUCCESS
+
 describe("Letter Proofing, when letter has been expired", () => {
   const fakeStore = (state) => ({
     default: () => {},
@@ -302,18 +297,6 @@ function setupComponent(store) {
   };
 }
 
-// describe("LetterProofingButton Component", () => {
-//   it("Renders", () => {
-//     const store = fakeStore(fakeState);
-//     const { wrapper, props } = setupComponent(store);
-//     const button = wrapper.find("button");
-//     expect(button.exists()).toEqual(true);
-    // expect(store.dispatch.mock.calls).toBeUndefined();
-    // button.props().onClick();
-    // expect(store.dispatch.mock.calls.length).toEqual(2);
-//   });
-// });
-
 describe("LetterProofing Container", () => {
   let mockProps, wrapper, buttontext, dispatch;
 
@@ -335,24 +318,6 @@ describe("LetterProofing Container", () => {
   afterEach(() => {
     fetchMock.restore();
   });
-
-  // it("Renders", () => {
-  //   expect(buttontext).toEqual(true);
-  // });
-
-//   it("Clicks", () => {
-//     fetchMock.post("http://localhost/letter", {
-//       type: actions.POST_LETTER_PROOFING_PROOFING_SUCCESS,
-//       payload: { message: "success" }
-//     });
-
-//     expect(dispatch.mock.calls).toBeUndefined();
-//     wrapper
-//       .find("button")
-//       .props()
-//       .onClick();
-//     expect(dispatch.mock.calls.length).toEqual(2);
-//   });
 });
 
 const state = {
