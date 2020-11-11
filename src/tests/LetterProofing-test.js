@@ -25,6 +25,79 @@ import {
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
+// SUCCESS
+describe("LetterProofing Component", () => {
+  it("The component does not render 'false' or 'null'", () => {
+    const wrapper = shallow(
+      <IntlProvider locale="en">
+        <LetterProofingContainer />
+      </IntlProvider>
+    );
+    expect(wrapper.isEmptyRender()).toEqual(false);
+  });
+});
+// SUCCESS
+describe("Letter Proofing, when letter has been expired", () => {
+  const fakeStore = (state) => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state }),
+  });
+  const fakeState = {
+    letter_proofing: {
+      confirmingLetter: false,
+      verifyingLetter: false,
+      code: "",
+      letter_sent: "",
+      letter_expires: "",
+      letter_expired: false,
+      message: ""
+    },
+    config: { letter_proofing_url: "http://localhost/letter" },
+    nins: {
+      valid_nin: true,
+      nin: "dummy-nin"
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  }
+
+  function setupComponent() {
+    const props =  {
+      confirmingLetter: false,
+      verifyingLetter: true,
+      code: "",
+      letter_sent: "20101010",
+      letter_expires: "20101024",
+      letter_expired: true,
+      handleLetterProofing: mock.fn(),
+      sendConfirmationLetter: mock.fn(),
+      handleConfirmationLetter: mock.fn(),
+      handleStopConfirmationLetter: mock.fn()
+    };
+    const wrapper = shallow(
+      <Provider store={fakeStore(fakeState)}>
+        <LetterProofingContainer {...props} />
+      </Provider>
+    );
+    return {
+      props,
+      wrapper,
+    };
+  }
+  const state = { ...fakeState };
+  state.letter_proofing.letter_expired = true; 
+
+  it("Renders when letter has been expired", () => {
+    const { wrapper } = setupComponent();
+    expect(wrapper.find(LetterProofingContainer).props().letter_sent).toEqual("20101010");
+    expect(wrapper.find(LetterProofingContainer).props().letter_expires).toEqual("20101024");
+    expect(wrapper.find(LetterProofingContainer).props().letter_expired).toBeTruthy();
+  });
+})
 
 describe("Letter proofing Actions", () => {
   it("should create an action to close the modal for the letter-sent code", () => {
@@ -212,12 +285,13 @@ const fakeStore = state => ({
 
 function setupComponent(store) {
   const props = {
+    letter_expires:"",
     handleLetterProofing: mock.fn(),
     sendConfirmationLetter: mock.fn(),
     handleConfirmationLetter: mock.fn(),
     handleStopConfirmationLetter: mock.fn()
   };
-  const wrapper = mount(
+  const wrapper = shallow(
     <Provider store={store}>
       <LetterProofingContainer {...props} />
     </Provider>
