@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import ViewMode from "./ViewMode";
+import GroupList from "./GroupList";
 import EditMode from "./EditMode";
 
 class DataPanel extends Component {
@@ -24,7 +24,7 @@ class DataPanel extends Component {
             toggleViewOrEditMode={this.toggleViewOrEditMode}
           />
         ) : (
-          <ViewMode
+          <GroupList
             {...this.props}
             toggleViewOrEditMode={this.toggleViewOrEditMode}
           />

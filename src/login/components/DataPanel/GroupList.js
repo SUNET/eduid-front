@@ -45,7 +45,7 @@ const RenderGroupListWithRoleMember = (props) => {
   );
 };
 
-const ViewMode = (props) => {
+const GroupList = (props) => {
   return (
     <div className="view-data">
       <RenderGroupListWithRoleAdmin {...props} />
@@ -54,6 +54,6 @@ const ViewMode = (props) => {
   );
 };
 
-ViewMode.propTypes = {};
+GroupList.propTypes = {};
 
-export default i18n(ViewMode);
+export default i18n(GroupList);
