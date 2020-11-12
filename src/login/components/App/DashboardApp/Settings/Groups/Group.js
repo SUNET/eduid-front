@@ -17,7 +17,7 @@ export const RenderAdminList = (props) => {
 };
 
 export const RenderMemberList = (props) => {
-  let members = props.group.group.owners;
+  let members = props.group.group.members;
   return (
     <Fragment>
       <label>Member</label>
@@ -76,8 +76,12 @@ class Group extends Component {
               <p>{this.props.group.group.display_name}</p>
             </div>
           </div>
-          <div className="list-cell">X</div>
-          <div className="list-cell">X</div>
+          <div className="list-cell">
+            {this.props.group.isAdmin ? "X" : null}
+          </div>
+          <div className="list-cell">
+            {this.props.group.isMember ? "X" : null}
+          </div>
           <div className="list-cell">
             <button
               onClick={() => {
