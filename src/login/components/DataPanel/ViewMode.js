@@ -3,44 +3,31 @@ import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 import Group from "../App/DashboardApp/Settings/Groups/Group";
 
-const RenderGroupListWithRoleAdmin = (props) => {
+const RenderGroupList = (props) => {
   return (
     <Fragment>
-      {props.owner_of && (
-        <div>
-          <label>Groups I manage</label>
-          <ul>
-            {props.owner_of.map((group, i) => (
-              <Group
-                key={group.identifier}
-                group={group}
-                toggleViewOrEditMode={props.toggleViewOrEditMode}
-              />
-            ))}
-          </ul>
-        </div>
-      )}
-    </Fragment>
-  );
-};
-
-const RenderGroupListWithRoleMember = (props) => {
-  return (
-    <Fragment>
-      {props.member_of && (
-        <div>
-          <label>Groups I am a member of</label>
-          <ul>
-            {props.member_of.map((group, i) => (
-              <Group
-                key={group.identifier}
-                group={group}
-                toggleViewOrEditMode={props.toggleViewOrEditMode}
-              />
-            ))}
-          </ul>
-        </div>
-      )}
+      <ul>
+        <li>
+          <div className="list-grid">
+            <div className="list-cell"></div>
+            <div className="list-cell">
+              <label>Admin</label>
+            </div>
+            <div className="list-cell">
+              <label>Member</label>
+            </div>
+            <div className="list-cell"></div>
+          </div>
+        </li>
+        {props.uniqueGroups.map((group, i) => (
+          <Group
+            key={group.identifier}
+            group={group}
+            username={props.primaryEmailAddress}
+            toggleViewOrEditMode={props.toggleViewOrEditMode}
+          />
+        ))}
+      </ul>
     </Fragment>
   );
 };
@@ -48,8 +35,7 @@ const RenderGroupListWithRoleMember = (props) => {
 const ViewMode = (props) => {
   return (
     <div className="view-data">
-      <RenderGroupListWithRoleAdmin {...props} />
-      <RenderGroupListWithRoleMember {...props} />
+      <RenderGroupList {...props} />
     </div>
   );
 };
