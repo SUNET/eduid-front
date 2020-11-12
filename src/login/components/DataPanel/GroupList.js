@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
-import Group from "../App/DashboardApp/Settings/Groups/Group";
+import GroupListItem from "../App/DashboardApp/Settings/Groups/GroupListItem";
 
 const RenderGroupListWithRoleAdmin = (props) => {
   return (
@@ -11,7 +11,7 @@ const RenderGroupListWithRoleAdmin = (props) => {
           <label>Groups I manage</label>
           <ul>
             {props.owner_of.map((group, i) => (
-              <Group
+              <GroupListItem
                 key={group.identifier}
                 group={group}
                 toggleViewOrEditMode={props.toggleViewOrEditMode}
@@ -32,7 +32,7 @@ const RenderGroupListWithRoleMember = (props) => {
           <label>Groups I am a member of</label>
           <ul>
             {props.member_of.map((group, i) => (
-              <Group
+              <GroupListItem
                 key={group.identifier}
                 group={group}
                 toggleViewOrEditMode={props.toggleViewOrEditMode}
@@ -45,7 +45,7 @@ const RenderGroupListWithRoleMember = (props) => {
   );
 };
 
-const ViewMode = (props) => {
+const GroupList = (props) => {
   return (
     <div className="view-data">
       <RenderGroupListWithRoleAdmin {...props} />
@@ -54,6 +54,6 @@ const ViewMode = (props) => {
   );
 };
 
-ViewMode.propTypes = {};
+GroupList.propTypes = {};
 
-export default i18n(ViewMode);
+export default i18n(GroupList);
