@@ -19,16 +19,14 @@ const mapStateToProps = (state, props) => {
 
   // filter out primary email address to look for username among members and owners in groups
   let emailAddresses = state.emails.emails;
-  let primaryEmailAddress = emailAddresses.filter((email, i) => {
+  let username = emailAddresses.filter((email, i) => {
     if (email.primary) {
-      return email.email;
+      return email.email[0].email;
     }
   });
 
   // create new object listing user relationship with each group
   let userGroupsAndRoles = uniqueGroups.map((group, i) => {
-    let username = primaryEmailAddress[0].email;
-
     let membershipObj = { group: group, isMember: false, isAdmin: false };
     group.members.some((member, i) => {
       if (member.display_name === username) {
@@ -42,7 +40,7 @@ const mapStateToProps = (state, props) => {
     });
     return membershipObj;
   });
-  console.log("this is userGroupsAndRoles", userGroupsAndRoles);
+  // console.log("this is userGroupsAndRoles", userGroupsAndRoles);
 
   return {
     noGroups,
