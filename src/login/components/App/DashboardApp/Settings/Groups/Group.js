@@ -39,13 +39,6 @@ const RenderOpenGroup = (props) => {
   ) : null;
 };
 
-const AnimateDropdownIcon = (props) =>
-  props.openGroup ? (
-    <button className="dropdown-open">^</button>
-  ) : (
-    <button className="dropdown-closed">^</button>
-  );
-
 class Group extends Component {
   state = {
     openGroup: false,
@@ -70,7 +63,13 @@ class Group extends Component {
       >
         <div className="title">
           <div className="element-pair">
-            <AnimateDropdownIcon openGroup={this.state.openGroup} />
+            <button
+              className={
+                this.state.openGroup ? "dropdown-open" : "dropdown-closed"
+              }
+            >
+              ^
+            </button>
             <p>{this.props.group.display_name}</p>
           </div>
           <button
