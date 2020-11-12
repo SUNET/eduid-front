@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
-import Group from "../App/DashboardApp/Settings/Groups/Group";
+import GroupListItem from "../App/DashboardApp/Settings/Groups/GroupListItem";
 
 const GroupsTableHeader = (props) => (
   <div className="list-grid">
@@ -22,7 +22,7 @@ const ViewMode = (props) => {
       <ul>
         {props.openGroup ? null : <GroupsTableHeader {...props} />}
         {props.uniqueGroups.map((group, i) => (
-          <Group
+          <GroupListItem
             key={group.identifier}
             group={group}
             toggleViewOrEditMode={props.toggleViewOrEditMode}
@@ -33,6 +33,6 @@ const ViewMode = (props) => {
   ) : null;
 };
 
-ViewMode.propTypes = {};
+GroupList.propTypes = {};
 
-export default i18n(ViewMode);
+export default i18n(GroupList);

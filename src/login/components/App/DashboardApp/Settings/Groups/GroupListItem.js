@@ -39,14 +39,7 @@ const RenderOpenGroup = (props) => {
   ) : null;
 };
 
-const AnimateDropdownIcon = (props) =>
-  props.openGroup ? (
-    <button className="dropdown-open">^</button>
-  ) : (
-    <button className="dropdown-closed">^</button>
-  );
-
-class Group extends Component {
+class GroupListItem extends Component {
   state = {
     openGroup: false,
   };
@@ -69,30 +62,36 @@ class Group extends Component {
         }}
         key={this.props.group.group.identifier}
       >
-        <div className="list-grid">
-          <div className="title list-cell">
-            <div className="element-pair">
-              <AnimateDropdownIcon openGroup={this.state.openGroup} />
-              <p>{this.props.group.group.display_name}</p>
+        <div>
+          <div className="list-grid">
+            <div className="title list-cell">
+              <div className="element-pair">
+                <button
+                  className={
+                    this.state.openGroup ? "dropdown-open" : "dropdown-closed"
+                  }
+                >
+                  ^
+                </button>
+                <p>{this.props.group.group.display_name}</p>
+              </div>
+            </div>
+            <div className="list-cell">
+              {this.props.group.isAdmin ? "X" : null}
+            </div>
+            <div className="list-cell">
+              {this.props.group.isMember ? "X" : null}
+            </div>
+            <div className="list-cell">
+              <button
+                onClick={() => {
+                  this.props.toggleViewOrEditMode(this.props.group);
+                }}
+              >
+                edit
+              </button>
             </div>
           </div>
-          <div className="list-cell">
-            {this.props.group.isAdmin ? "X" : null}
-          </div>
-          <div className="list-cell">
-            {this.props.group.isMember ? "X" : null}
-          </div>
-          <div className="list-cell">
-            <button
-              onClick={() => {
-                this.props.toggleViewOrEditMode(this.props.group);
-              }}
-            >
-              edit
-            </button>
-          </div>
-        </div>
-        <div>
           <RenderOpenGroup openGroup={this.state.openGroup} {...this.props} />
         </div>
       </li>
@@ -100,6 +99,6 @@ class Group extends Component {
   }
 }
 
-Group.propTypes = {};
+GroupListItem.propTypes = {};
 
-export default i18n(Group);
+export default i18n(GroupListItem);
