@@ -39,7 +39,7 @@ const RenderOpenGroup = (props) => {
   ) : null;
 };
 
-class Group extends Component {
+class GroupListItem extends Component {
   state = {
     openGroup: false,
   };
@@ -88,6 +88,6 @@ class Group extends Component {
   }
 }
 
-Group.propTypes = {};
+GroupListItem.propTypes = {};
 
-export default i18n(Group);
+export default i18n(GroupListItem);
