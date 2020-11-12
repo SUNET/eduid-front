@@ -77,7 +77,7 @@ class GroupListItem extends Component {
               </div>
             </div>
             <div className="list-cell">
-              {this.props.group.isAdmin ? "X" : null}
+              {this.props.group.isOwner ? "X" : null}
             </div>
             <div className="list-cell">
               {this.props.group.isMember ? "X" : null}

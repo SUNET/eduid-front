@@ -7,7 +7,7 @@ const GroupsTableHeader = (props) => (
   <div className="list-grid">
     <div className="list-cell"></div>
     <div className="list-cell">
-      <label>Admin</label>
+      <label>Owner</label>
     </div>
     <div className="list-cell">
       <label>Member</label>
@@ -16,7 +16,7 @@ const GroupsTableHeader = (props) => (
   </div>
 );
 
-const ViewMode = (props) => {
+const GroupList = (props) => {
   return props.uniqueGroups !== undefined ? (
     <div className="view-data">
       <ul>

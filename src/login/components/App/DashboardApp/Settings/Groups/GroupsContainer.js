@@ -34,7 +34,7 @@ const mapStateToProps = (state, props) => {
   //create new object listing user relationship with each group
   let userGroupsAndRoles = uniqueGroups.map((group, i) => {
     let username = getUsername();
-    let membershipObj = { group: group, isMember: false, isAdmin: false };
+    let membershipObj = { group: group, isMember: false, isOwner: false };
     group.members.some((member, i) => {
       if (member.display_name === username) {
         return (membershipObj.isMember = true);
@@ -42,7 +42,7 @@ const mapStateToProps = (state, props) => {
     });
     group.owners.some((owner, i) => {
       if (owner.display_name === username) {
-        return (membershipObj.isAdmin = true);
+        return (membershipObj.isOwner = true);
       }
     });
     return membershipObj;
