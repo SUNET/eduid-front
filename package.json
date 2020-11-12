@@ -116,5 +116,16 @@
     "whatwg-fetch": "^2.0.4",
     "yargs": "^11.0.0",
     "zxcvbn": "^4.4.2"
+  },
+  "jest": {
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "testEnvironment": "node",
+    "testMatch": [
+       "/__tests__/**/*-test.[jt]s?(x)", "**/?(*)+(test).[jt]s?(x)" 
+    ]
   }
 }
