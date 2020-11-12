@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import i18n from "../../../../../translation/InjectIntl_HOC_factory";
 
 export const RenderAdminList = (props) => {
-  let admins = props.group.owners;
+  let admins = props.group.group.owners;
   return (
     <Fragment>
       <label>Admin</label>
@@ -17,7 +17,7 @@ export const RenderAdminList = (props) => {
 };
 
 export const RenderMemberList = (props) => {
-  let members = props.group.members;
+  let members = props.group.group.owners;
   return (
     <Fragment>
       <label>Member</label>
@@ -60,20 +60,20 @@ class Group extends Component {
   };
 
   render() {
-    console.log("these are this.props in Group", this.props);
+    // console.log("these are this.props in Group", this.props);
     return (
       <li
         className="closed"
         onClick={() => {
           this.toggleGroupOpenClosed();
         }}
-        key={this.props.group.identifier}
+        key={this.props.group.group.identifier}
       >
         <div className="list-grid">
           <div className="title list-cell">
             <div className="element-pair">
               <AnimateDropdownIcon openGroup={this.state.openGroup} />
-              <p>{this.props.group.display_name}</p>
+              <p>{this.props.group.group.display_name}</p>
             </div>
           </div>
           <div className="list-cell">X</div>

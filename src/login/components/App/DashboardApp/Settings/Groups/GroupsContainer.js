@@ -10,17 +10,43 @@ const mapStateToProps = (state, props) => {
     Object.entries(state.groups.member_of).length === 0 &&
     Object.entries(state.groups.owner_of).length === 0;
 
-  // filer out duplicate groups to generate only one list of groups
+  // filter out duplicate groups to generate only one list of groups
   let allGroups = state.groups.member_of.concat(state.groups.owner_of);
   let uniqueGroupIds = [...new Set(allGroups.map((group) => group.identifier))];
   let uniqueGroups = allGroups.filter((group, i) => {
     return i === uniqueGroupIds.findIndex((id) => id === group.identifier);
   });
 
+  // filter out primary email address to look for username among members and owners in groups
+  let emailAddresses = state.emails.emails;
+  let primaryEmailAddress = emailAddresses.filter((email, i) => {
+    if (email.primary) {
+      return email.email;
+    }
+  });
+
+  // create new object listing user relationship with each group
+  let userGroupsAndRoles = uniqueGroups.map((group, i) => {
+    let username = primaryEmailAddress[0].email;
+
+    let membershipObj = { group: group, isMember: false, isAdmin: false };
+    group.members.some((member, i) => {
+      if (member.display_name === username) {
+        membershipObj.isMember = true;
+      }
+    });
+    group.owners.some((owner, i) => {
+      if (owner.display_name === username) {
+        membershipObj.isAdmin = true;
+      }
+    });
+    return membershipObj;
+  });
+  console.log("this is userGroupsAndRoles", userGroupsAndRoles);
+
   return {
     noGroups,
-    uniqueGroups,
-    primaryEmailAddress: state.emails.emails,
+    uniqueGroups: userGroupsAndRoles,
     loading: state.groups.loading,
     data: state.groups.data,
     member_of: state.groups.member_of,
