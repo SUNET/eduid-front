@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const EditMode = (props) => {
-  console.log("this is props:", props);
   return (
     <div className="edit-data">
       <div className="title">
@@ -32,11 +31,6 @@ const EditMode = (props) => {
   );
 };
 
-EditMode.propTypes = {
-  data: PropTypes.any,
-  handleStartConfirmation: PropTypes.func,
-  handleMakePrimary: PropTypes.func,
-  handleRemove: PropTypes.func,
-};
+EditMode.propTypes = {};
 
 export default i18n(EditMode);
