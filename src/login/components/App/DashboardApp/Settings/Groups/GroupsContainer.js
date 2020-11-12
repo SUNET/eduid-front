@@ -10,8 +10,17 @@ const mapStateToProps = (state, props) => {
     Object.entries(state.groups.member_of).length === 0 &&
     Object.entries(state.groups.owner_of).length === 0;
 
+  // filer out duplicate groups to generate only one list of groups
+  let allGroups = state.groups.member_of.concat(state.groups.owner_of);
+  let uniqueGroupIds = [...new Set(allGroups.map((group) => group.identifier))];
+  let uniqueGroups = allGroups.filter((group, i) => {
+    return i === uniqueGroupIds.findIndex((id) => id === group.identifier);
+  });
+
   return {
     noGroups,
+    uniqueGroups,
+    primaryEmailAddress: state.emails.emails,
     loading: state.groups.loading,
     data: state.groups.data,
     member_of: state.groups.member_of,
