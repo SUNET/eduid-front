@@ -60,6 +60,7 @@ class Group extends Component {
   };
 
   render() {
+    console.log("these are this.props in Group", this.props);
     return (
       <li
         className="closed"
@@ -68,18 +69,24 @@ class Group extends Component {
         }}
         key={this.props.group.identifier}
       >
-        <div className="title">
-          <div className="element-pair">
-            <AnimateDropdownIcon openGroup={this.state.openGroup} />
-            <p>{this.props.group.display_name}</p>
+        <div className="list-grid">
+          <div className="title list-cell">
+            <div className="element-pair">
+              <AnimateDropdownIcon openGroup={this.state.openGroup} />
+              <p>{this.props.group.display_name}</p>
+            </div>
           </div>
-          <button
-            onClick={() => {
-              this.props.toggleViewOrEditMode(this.props.group);
-            }}
-          >
-            edit
-          </button>
+          <div className="list-cell">X</div>
+          <div className="list-cell">X</div>
+          <div className="list-cell">
+            <button
+              onClick={() => {
+                this.props.toggleViewOrEditMode(this.props.group);
+              }}
+            >
+              edit
+            </button>
+          </div>
         </div>
         <div>
           <RenderOpenGroup openGroup={this.state.openGroup} {...this.props} />
