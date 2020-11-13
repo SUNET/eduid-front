@@ -1,57 +1,32 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "../App/DashboardApp/Settings/Groups/GroupListItem";
 
-const RenderGroupListWithRoleAdmin = (props) => {
-  return (
-    <Fragment>
-      {props.owner_of && (
-        <div>
-          <label>Groups I manage</label>
-          <ul>
-            {props.owner_of.map((group, i) => (
-              <GroupListItem
-                key={group.identifier}
-                group={group}
-                toggleViewOrEditMode={props.toggleViewOrEditMode}
-              />
-            ))}
-          </ul>
-        </div>
-      )}
-    </Fragment>
-  );
-};
-
-const RenderGroupListWithRoleMember = (props) => {
-  return (
-    <Fragment>
-      {props.member_of && (
-        <div>
-          <label>Groups I am a member of</label>
-          <ul>
-            {props.member_of.map((group, i) => (
-              <GroupListItem
-                key={group.identifier}
-                group={group}
-                toggleViewOrEditMode={props.toggleViewOrEditMode}
-              />
-            ))}
-          </ul>
-        </div>
-      )}
-    </Fragment>
-  );
-};
-
 const GroupList = (props) => {
-  return (
+  return props.uniqueGroups !== undefined ? (
     <div className="view-data">
-      <RenderGroupListWithRoleAdmin {...props} />
-      <RenderGroupListWithRoleMember {...props} />
+      <div className="list-grid">
+        <div className="list-cell"></div>
+        <div className="list-cell">
+          <label>Owner</label>
+        </div>
+        <div className="list-cell">
+          <label>Member</label>
+        </div>
+        <div className="list-cell"></div>
+      </div>
+      <ul>
+        {props.uniqueGroups.map((group) => (
+          <GroupListItem
+            key={group.group.identifier}
+            group={group}
+            toggleViewOrEditMode={props.toggleViewOrEditMode}
+          />
+        ))}
+      </ul>
     </div>
-  );
+  ) : null;
 };
 
 GroupList.propTypes = {};

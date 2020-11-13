@@ -19,7 +19,7 @@ const EditMode = (props) => {
   return (
     <div className="edit-data">
       <div className="title">
-        <p>Edit your group {props.group.display_name}</p>
+        <p>Edit your group {props.group.group.display_name}</p>
         <button
           className="save-button"
           onClick={() => {

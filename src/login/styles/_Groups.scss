@@ -21,7 +21,6 @@ article {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   .title {
     display: flex;
     justify-content: space-between;
@@ -102,21 +101,31 @@ article {
     background-color: transparent;
     margin-top: 2rem;
     ul {
-      margin: 0  0 1rem 0;
+      margin: 0 0 1rem 0;
     }
     li {
-      border-bottom: solid white 2px;
+      border-top: solid white 2px;
       padding: 0 0.375rem;
       display: flex;
       flex-direction: column;
-      &:first-child {
-        border-top: solid white 2px;
+      &:last-child {
+        border-bottom: solid white 2px;
+      }
+      button {
+        background-color: transparent;
+        box-shadow: 0 0 0;
+        text-decoration: underline;
+        border-radius: 0;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+        height: 1rem;
       }
       .title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: unset;
         height: 3rem;
+        white-space: nowrap;
+        overflow: hidden;
         .element-pair {
           display: flex;
           align-items: center;
@@ -152,17 +161,39 @@ article {
         }
       }
     }
+
     label {
       font-size: 1rem;
       letter-spacing: 0;
+      font-weight: unset;
       padding: 0 0 0.625rem 0.375rem;
       margin-right: 0;
+      font-family: "ProximaNova-Bold";
     }
     .open-group {
       margin: 0 0 0 1rem;
       label {
-         padding: 0 0 0.625rem 0.375rem;
+        padding: 0 0 0.625rem 0.375rem;
       }
     }
   }
+}
+
+.list-grid {
+  display: grid;
+  grid-template-columns:
+    1fr calc(0.5rem + 48px + 0.5rem) calc(0.5rem + 68px + 0.5rem)
+    3rem;
+  .list-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    label {
+      padding: 0 0 0.625rem 0;
+    }
+  }
+}
+
+.transparent {
+  opacity: 0;
 }
