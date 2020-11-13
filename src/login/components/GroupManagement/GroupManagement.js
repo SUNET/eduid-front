@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import WizardPanel from "../Wizard/WizardPanel";
-import DataPanel from "../DataPanel/DataPanelContainer";
+import WizardPanel from "./Wizard/WizardPanel";
+import DataPanel from "./DataPanel/DataPanelContainer";
 
 const RenderCreateGroupButton = (props) => {
   return (
@@ -21,7 +21,7 @@ const RenderWizardOrData = (props) => {
   return props.noGroups ? <WizardPanel {...props} /> : <DataPanel {...props} />;
 };
 
-class Groups extends Component {
+class GroupManagement extends Component {
   componentDidMount() {
     this.props.handleGetAllData();
   }
@@ -48,6 +48,6 @@ class Groups extends Component {
   }
 }
 
-Groups.propTypes = {};
+GroupManagement.propTypes = {};
 
-export default InjectIntl(Groups);
+export default InjectIntl(GroupManagement);

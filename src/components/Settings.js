@@ -10,7 +10,7 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
-import GroupManagement from "../login/components/GroupManagement/GroupsContainer";
+import GroupManagement from "../login/components/GroupManagement/GroupManagementContainer";
 
 import checkForCookie from "../login/app_utils/checkForCookie";
 

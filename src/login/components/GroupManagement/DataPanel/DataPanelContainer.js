@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import DataPanel from "./DataPanel";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import i18n from "../../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   return {

@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import i18n from "../../../translation/InjectIntl_HOC_factory";
 import {
   RenderAdminList,
   RenderMemberList,
-} from "../GroupManagement/GroupListItem";
+} from "../GroupListItem";
 
 const SingleGroup = (props) => {
   return (
