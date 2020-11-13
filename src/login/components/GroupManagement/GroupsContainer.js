@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import Groups from "./Groups";
-import * as createGroupActions from "../../../../../redux/actions/createGroupActions";
-import * as allDataActions from "../../../../../redux/actions/getAllDataGroupActions";
-import i18n from "../../../../../translation/InjectIntl_HOC_factory";
+import * as createGroupActions from "../../redux/actions/createGroupActions";
+import * as allDataActions from "../../redux/actions/getAllDataGroupActions";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   // check if user has any gropus

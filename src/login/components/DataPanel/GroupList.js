@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
-import GroupListItem from "../App/DashboardApp/Settings/Groups/GroupListItem";
+import GroupListItem from "../GroupManagement/GroupListItem";
 
 const GroupList = (props) => {
   return props.uniqueGroups !== undefined ? (

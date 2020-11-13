@@ -10,7 +10,7 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
-import Groups from "../login/components/App/DashboardApp/Settings/Groups/GroupsContainer";
+import GroupManagement from "../login/components/GroupManagement/GroupsContainer";
 
 import checkForCookie from "../login/app_utils/checkForCookie";
 
@@ -23,7 +23,10 @@ const RenderGroups = () => {
   return (
     <Fragment>
       {showComponent && (
-        <Route path="/profile/settings/personaldata" component={Groups} />
+        <Route
+          path="/profile/settings/personaldata"
+          component={GroupManagement}
+        />
       )}
     </Fragment>
   );

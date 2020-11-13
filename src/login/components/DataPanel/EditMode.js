@@ -4,7 +4,7 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 import {
   RenderAdminList,
   RenderMemberList,
-} from "../App/DashboardApp/Settings/Groups/GroupListItem";
+} from "../GroupManagement/GroupListItem";
 
 const SingleGroup = (props) => {
   return (

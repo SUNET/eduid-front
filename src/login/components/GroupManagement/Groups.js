@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import InjectIntl from "../../../../../translation/InjectIntl_HOC_factory";
-import WizardPanel from "../../../../Wizard/WizardPanel";
-import DataPanel from "../../../../DataPanel/DataPanelContainer";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
+import WizardPanel from "../Wizard/WizardPanel";
+import DataPanel from "../DataPanel/DataPanelContainer";
 
 const RenderCreateGroupButton = (props) => {
   return (
