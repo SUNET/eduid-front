@@ -33,7 +33,7 @@ export const RenderMemberList = (props) => {
 const RenderOpenGroup = (props) => {
   return props.openGroup ? (
     <div className="open-group">
-      <RenderAdminList {...props} />
+      <RenderOwnerList {...props} />
       <RenderMemberList {...props} />
     </div>
   ) : null;
