@@ -53,47 +53,47 @@ class GroupListItem extends Component {
   };
 
   render() {
-    // console.log("these are this.props in Group", this.props);
     return (
       <li
         className="closed"
         onClick={() => {
           this.toggleGroupOpenClosed();
         }}
-        key={this.props.group.group.identifier}
       >
-        <div>
-          <div className="list-grid">
-            <div className="title list-cell">
-              <div className="element-pair">
-                <button
-                  className={
-                    this.state.openGroup ? "dropdown-open" : "dropdown-closed"
-                  }
-                >
-                  ^
-                </button>
-                <p>{this.props.group.group.display_name}</p>
-              </div>
-            </div>
-            <div className="list-cell">
-              {this.props.group.isOwner ? "X" : null}
-            </div>
-            <div className="list-cell">
-              {this.props.group.isMember ? "X" : null}
-            </div>
-            <div className="list-cell">
+        <div className="list-grid">
+          <div className="title list-cell">
+            <div className="element-pair">
               <button
-                onClick={() => {
-                  this.props.toggleViewOrEditMode(this.props.group);
-                }}
+                className={
+                  this.state.openGroup ? "dropdown-open" : "dropdown-closed"
+                }
               >
-                edit
+                ^
               </button>
+              <p>{this.props.group.group.display_name}</p>
             </div>
           </div>
-          <RenderOpenGroup openGroup={this.state.openGroup} {...this.props} />
+          <div className="list-cell">
+            <div className={this.state.openGroup ? "transparent" : null}>
+              {this.props.group.isOwner ? "X" : null}
+            </div>
+          </div>
+          <div className="list-cell">
+            <div className={this.state.openGroup ? "transparent" : null}>
+              {this.props.group.isMember ? "X" : null}
+            </div>
+          </div>
+          <div className="list-cell">
+            <button
+              onClick={() => {
+                this.props.toggleViewOrEditMode(this.props.group);
+              }}
+            >
+              edit
+            </button>
+          </div>
         </div>
+        <RenderOpenGroup openGroup={this.state.openGroup} {...this.props} />
       </li>
     );
   }

@@ -1,29 +1,25 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "../App/DashboardApp/Settings/Groups/GroupListItem";
 
-const GroupsTableHeader = (props) => (
-  <div className="list-grid">
-    <div className="list-cell"></div>
-    <div className="list-cell">
-      <label>Owner</label>
-    </div>
-    <div className="list-cell">
-      <label>Member</label>
-    </div>
-    <div className="list-cell"></div>
-  </div>
-);
-
 const GroupList = (props) => {
   return props.uniqueGroups !== undefined ? (
     <div className="view-data">
+      <div className="list-grid">
+        <div className="list-cell"></div>
+        <div className="list-cell">
+          <label>Owner</label>
+        </div>
+        <div className="list-cell">
+          <label>Member</label>
+        </div>
+        <div className="list-cell"></div>
+      </div>
       <ul>
-        {props.openGroup ? null : <GroupsTableHeader {...props} />}
-        {props.uniqueGroups.map((group, i) => (
+        {props.uniqueGroups.map((group) => (
           <GroupListItem
-            key={group.identifier}
+            key={group.group.identifier}
             group={group}
             toggleViewOrEditMode={props.toggleViewOrEditMode}
           />
