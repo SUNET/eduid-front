@@ -1,12 +1,25 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../translation/InjectIntl_HOC_factory";
+import {
+  RenderAdminList,
+  RenderMemberList,
+} from "../App/DashboardApp/Settings/Groups/GroupListItem";
+
+const SingleGroup = (props) => {
+  return (
+    <Fragment>
+      <RenderAdminList group={props.group} />
+      <RenderMemberList group={props.group} />
+    </Fragment>
+  );
+};
 
 const EditMode = (props) => {
   return (
     <div className="edit-data">
       <div className="title">
-        <p>Edit your group</p>
+        <p>Edit your group {props.group.display_name}</p>
         <button
           className="save-button"
           onClick={() => {
@@ -25,7 +38,7 @@ const EditMode = (props) => {
         </li>
       </nav>
       <div className="group-data">
-        <pre>{JSON.stringify(props.data, null, 2)}</pre>
+        <SingleGroup group={props.group} />
       </div>
     </div>
   );
