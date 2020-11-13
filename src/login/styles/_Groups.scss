@@ -188,5 +188,12 @@ article {
     display: flex;
     align-items: center;
     justify-content: center;
+    label {
+      padding: 0 0 0.625rem 0;
+    }
   }
+}
+
+.transparent {
+  opacity: 0;
 }
