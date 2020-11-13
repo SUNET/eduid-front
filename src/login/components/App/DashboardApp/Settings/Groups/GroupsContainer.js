@@ -52,9 +52,6 @@ const mapStateToProps = (state, props) => {
     noGroups,
     uniqueGroups: userGroupsAndRoles,
     loading: state.groups.loading,
-    data: state.groups.data,
-    member_of: state.groups.member_of,
-    owner_of: state.groups.owner_of,
   };
 };
 
