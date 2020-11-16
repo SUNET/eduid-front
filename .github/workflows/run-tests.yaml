@@ -27,3 +27,6 @@ jobs:
       - name: Run tests
         run: |
           make test
+
+      - name: Audit
+        run: npm audit
