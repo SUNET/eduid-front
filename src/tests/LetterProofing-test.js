@@ -310,9 +310,9 @@ describe("LetterProofing Container", () => {
         <LetterProofingContainer {...mockProps} />
       </Provider>
     );
-
     buttontext = wrapper.find("button").exists();
-    dispatch = store.dispatch;
+    expect(buttontext.exists()).toEqual(true);
+    expect(buttontext.text()).toContain("By post");
   });
 
   afterEach(() => {
