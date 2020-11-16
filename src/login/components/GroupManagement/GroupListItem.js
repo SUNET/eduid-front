@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import i18n from "../../../../../translation/InjectIntl_HOC_factory";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 
-export const RenderAdminList = (props) => {
-  let admins = props.group.group.owners;
+export const RenderOwnerList = (props) => {
+  let owners = props.group.group.owners;
   return (
     <Fragment>
-      <label>Admin</label>
-      {admins.map((admin, i) => (
-        <p key={admin.identifier}>
-          {i + 1}. {admin.display_name}
+      <label>Owner</label>
+      {owners.map((owner, i) => (
+        <p key={owner.identifier}>
+          {i + 1}. {owner.display_name}
         </p>
       ))}
     </Fragment>
@@ -33,7 +33,7 @@ export const RenderMemberList = (props) => {
 const RenderOpenGroup = (props) => {
   return props.openGroup ? (
     <div className="open-group">
-      <RenderAdminList {...props} />
+      <RenderOwnerList {...props} />
       <RenderMemberList {...props} />
     </div>
   ) : null;

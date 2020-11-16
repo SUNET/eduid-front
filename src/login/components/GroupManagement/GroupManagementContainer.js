@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import Groups from "./Groups";
-import * as createGroupActions from "../../../../../redux/actions/createGroupActions";
-import * as allDataActions from "../../../../../redux/actions/getAllDataGroupActions";
-import i18n from "../../../../../translation/InjectIntl_HOC_factory";
+import GroupManagement from "./GroupManagement";
+import * as createGroupActions from "../../redux/actions/createGroupActions";
+import * as allDataActions from "../../redux/actions/getAllDataGroupActions";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   // check if user has any gropus
@@ -66,6 +66,9 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-const GroupsContainer = connect(mapStateToProps, mapDispatchToProps)(Groups);
+const GroupManagementContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GroupManagement);
 
-export default i18n(GroupsContainer);
+export default i18n(GroupManagementContainer);

@@ -2,9 +2,9 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import GroupList from "./GroupList";
-import EditMode from "./EditMode";
+import EditMode from "./EditMode/EditMode";
 
-class DataPanel extends Component {
+class GroupDataPanel extends Component {
   state = { editMode: false, group: "" };
 
   toggleViewOrEditMode = (singleGroupData) => {
@@ -36,6 +36,6 @@ class DataPanel extends Component {
   }
 }
 
-DataPanel.propTypes = {};
+GroupDataPanel.propTypes = {};
 
-export default InjectIntl(DataPanel);
+export default InjectIntl(GroupDataPanel);
