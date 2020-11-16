@@ -392,7 +392,7 @@
   "verify-identity.unverified_main_title": "Koppla din identitet till ditt eduID",
   "verify-identity.unverified_page-description": "För att kunna använda eduID måste du bevisa din identitet. Lägg till ditt personnummer och bekräfta det i verkliga livet.",
   "verify-identity.verified_main_title": "Ditt eduID är redo att användas",
-  "verify-identity.verified_page-description": "Personumret nedan är nu kopplat till detta eduID. Använd ditt eduID för att logga in till  olika tjänster inom högskolan.",
+  "verify-identity.verified_page-description": "Personnumret nedan är nu kopplat till detta eduID. Använd ditt eduID för att logga in till olika tjänster inom högskolan.",
   "verify-identity.verified_pw_reset_extra_security": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord.",
   "verify-identity.vetting_freja_tagline": "För dig som har eller kan skapa Freja eID genom att besöka ett ombud i Sverige",
   "verify-identity.vetting_phone_tagline": "För dig som har ett svenskt telefonabonnemang i ditt eget namn",
