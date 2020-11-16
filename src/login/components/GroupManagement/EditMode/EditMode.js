@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import i18n from "../../../translation/InjectIntl_HOC_factory";
 import {
-  RenderAdminList,
+  RenderOwnerList,
   RenderMemberList,
-} from "../App/DashboardApp/Settings/Groups/GroupListItem";
+} from "../GroupListItem";
 
 const SingleGroup = (props) => {
   return (
     <Fragment>
-      <RenderAdminList group={props.group} />
+      <RenderOwnerList group={props.group} />
       <RenderMemberList group={props.group} />
     </Fragment>
   );
