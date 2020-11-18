@@ -27,7 +27,10 @@ jobs:
       - name: Run tests
         run: |
           make test
+      
+      - name: Audit production npm packages
+        run: npm audit --only=prod
 
-      - name: Audit
-        # Don't error out on this until we are somewhere close to up-to-date.
+      - name: Audit including devDependencies
+        # Don't error out on audit warnings about devDependencies
         run: npm audit || true
