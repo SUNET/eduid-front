@@ -8,12 +8,20 @@ class GroupDataPanel extends Component {
   state = { editMode: false, group: "" };
 
   toggleViewOrEditMode = (singleGroupData) => {
-    this.setState((prevState) => {
-      return {
-        editMode: !prevState.editMode,
-        group: singleGroupData,
-      };
-    });
+    this.setState(
+      (prevState) => {
+        return {
+          editMode: !prevState.editMode,
+          group: singleGroupData,
+        };
+      },
+      () => {
+        window.localStorage.setItem(
+          "persistedGroupState",
+          JSON.stringify(this.state)
+        );
+      }
+    );
   };
 
   render() {
