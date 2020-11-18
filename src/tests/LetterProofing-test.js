@@ -411,3 +411,151 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(action));
   });
 });
+
+describe("LetterProofing component, without id number", () => {
+  const fakeStore = state => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
+  });
+
+  const fakeState = {
+    letter_proofing: {
+      message: "",
+      letter_sent: "",
+      verifyingLetter: false,
+      letter_expires: "",
+      letter_expired: false
+    },
+    config: { letter_proofing_url: "http://localhost/letter" },
+    nins: {
+      valid_nin: true,
+      nins: []
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  };
+
+  function setupComponent() {
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <LetterProofingContainer />
+      </Provider>
+    );
+    return {
+      wrapper
+    };
+  }
+  it("Renders button text, add ID number to get letter", () => {
+    const { wrapper } = setupComponent();
+    const description = wrapper.find("div.description");
+    expect(button.exists()).toEqual(true);
+    expect(description.exists()).toEqual(true);
+    expect(description.text()).toContain("Start by adding your ID number above");
+  });
+});
+
+describe("LetterProofing component, letter has been sent", () => {
+  const fakeStore = state => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
+  });
+
+  const fakeState = {
+    letter_proofing: {
+      message: "",
+      letter_sent: "20201010",
+      verifyingLetter: true,
+      letter_expires: "",
+      letter_expired: false,
+      confirmingLetter: false
+    },
+    config: { letter_proofing_url: "http://localhost/letter" },
+    nins: {
+      valid_nin: true,
+      nins: ["19881212"]
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  };
+
+  function setupComponent() {
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <LetterProofingContainer />
+      </Provider>
+    );
+    return {
+      wrapper
+    };
+  }
+
+  it("Renders button text, the letter was sent", () => {
+    const { wrapper } = setupComponent();
+    const description = wrapper.find("div.description");
+    const letterSent = description.find("span").at(0);
+    const letterValid = description.find("span").at(1);
+    expect(letterSent.exists()).toEqual(true);
+    expect(letterSent.text()).toContain("The letter was sent");
+    expect(letterValid.exists()).toEqual(true);
+    expect(letterValid.text()).toContain("The letter is valid to");
+  });
+});
+
+describe("LetterProofing component, when letter has expired", () => {
+  const fakeStore = state => ({
+    default: () => {},
+    dispatch: mock.fn(),
+    subscribe: mock.fn(),
+    getState: () => ({ ...state })
+  });
+
+  const fakeState = {
+    letter_proofing: {
+      message: "",
+      letter_sent: "20101010",
+      verifyingLetter: true,
+      letter_expires: "",
+      letter_expired: true,
+      confirmingLetter: false
+    },
+    config: { letter_proofing_url: "http://localhost/letter" },
+    nins: {
+      valid_nin: true,
+      nins: ["19881212"]
+    },
+    intl: {
+      locale: "en",
+      messages: messages
+    }
+  };
+
+  function setupComponent() {
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <LetterProofingContainer />
+      </Provider>
+    );
+    return {
+      wrapper
+    };
+  }
+
+  it("Renders button text, the code has expired", () => {
+    const { wrapper } = setupComponent();
+    const description = wrapper.find("div.description");
+    const codeExpired = description.find("span").at(0);
+    const orderNewLetter = description.find("span").at(1);
+    expect(codeExpired.exists()).toEqual(true);
+    expect(codeExpired.text()).toContain("The code expired");
+    expect(orderNewLetter.exists()).toEqual(true);
+    expect(orderNewLetter.text()).toContain("Click here to order a new code");
+  });
+});
