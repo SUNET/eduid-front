@@ -5,23 +5,27 @@ import GroupList from "./GroupList";
 import EditMode from "./EditMode/EditMode";
 
 class GroupDataPanel extends Component {
-  state = { editMode: false, group: "" };
+  state = {
+    editMode:
+      JSON.parse(window.localStorage.getItem("persistedEditMode")) || false,
+    group: JSON.parse(window.localStorage.getItem("persistedGroup")) || "",
+  };
+
+  componentDidUpdate() {
+    window.localStorage.setItem("persistedEditMode", this.state.editMode);
+    window.localStorage.setItem(
+      "persistedGroup",
+      JSON.stringify(this.state.group)
+    );
+  }
 
   toggleViewOrEditMode = (singleGroupData) => {
-    this.setState(
-      (prevState) => {
-        return {
-          editMode: !prevState.editMode,
-          group: singleGroupData,
-        };
-      },
-      () => {
-        window.localStorage.setItem(
-          "persistedGroupState",
-          JSON.stringify(this.state)
-        );
-      }
-    );
+    this.setState((prevState) => {
+      return {
+        editMode: !prevState.editMode,
+        group: singleGroupData,
+      };
+    });
   };
 
   render() {
