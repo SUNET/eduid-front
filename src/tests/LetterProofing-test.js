@@ -452,7 +452,6 @@ describe("LetterProofing component, without id number", () => {
   it("Renders button text, add ID number to get letter", () => {
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
-    expect(button.exists()).toEqual(true);
     expect(description.exists()).toEqual(true);
     expect(description.text()).toContain("Start by adding your ID number above");
   });
