@@ -7,10 +7,10 @@ import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 class LetterProofingButton extends Component {
   state = {
     letter_expired: false,
-    letter_expires: "",
+    letter_expires_date: "",
     verifyingLetter_sent: false,
     confirmingLetter: false,
-    letter_sent: ""
+    letter_sent_date: ""
   }
 
   handleModal=()=>{
@@ -18,15 +18,15 @@ class LetterProofingButton extends Component {
       verifyingLetter_sent, 
       letter_expired, 
       confirmingLetter, 
-      letter_sent,
-      letter_expires
+      letter_sent_date,
+      letter_expires_date
     } = this.props;
     this.setState({
       verifyingLetter_sent: verifyingLetter_sent,
       letter_expired: letter_expired,
       confirmingLetter: confirmingLetter,
-      letter_sent: letter_sent,
-      letter_expires: letter_expires
+      letter_sent_date: letter_sent_date,
+      letter_expires_date: letter_expires_date
     })
   }
 
@@ -48,19 +48,19 @@ class LetterProofingButton extends Component {
 
   closeNotificationModal=()=>{
     this.setState({
-      letter_sent: "",
+      letter_sent_date: "",
       confirmingLetter: false,
-      letter_expires: ""
+      letter_expires_date: ""
     })
   }
 
   render() {
-    const { disabled, translate, letter_sent, letter_expired, letter_expires } = this.props;
+    const { disabled, translate, letter_sent_date, letter_expired, letter_expires_date } = this.props;
     const showNotificationModal = 
-      (this.state.letter_sent === "" && this.state.confirmingLetter) ||
-      (this.state.letter_expired && this.state.letter_sent !== "");
+      (this.state.letter_sent_date === "" && this.state.confirmingLetter) ||
+      (this.state.letter_expired && this.state.letter_sent_date !== "");
     const showConfirmationModal = 
-      !this.state.letter_expired && this.state.letter_sent !== "" 
+      !this.state.letter_expired && this.state.letter_sent_date !== "" 
       &&!this.state.confirmingLetter && this.state.verifyingLetter_sent;
     let description = "";
     if(disabled){
@@ -70,7 +70,7 @@ class LetterProofingButton extends Component {
         </div> 
       )
     } else {
-      if(letter_sent === ""){
+      if(letter_sent_date === ""){
         description = (
           <div />
         )
@@ -80,7 +80,7 @@ class LetterProofingButton extends Component {
           <>
             <div className="description">
               {translate("verify-identity.vetting_letter_code_expired")}
-              {letter_expires.slice(0,10)}
+              {letter_expires_date.slice(0,10)}
             </div>
             <div className="description">
               {translate("verify-identity.vetting_letter_order_new_code")}
@@ -93,11 +93,11 @@ class LetterProofingButton extends Component {
           <>
             <div className="description">
               {translate("verify-identity.vetting_letter_sent")} 
-              {letter_sent.slice(0,10)}
+              {letter_sent_date.slice(0,10)}
             </div>
             <div className="description">
               {translate("verify-identity.vetting_letter_valid")} 
-              {letter_expires.slice(0,10)}
+              {letter_expires_date.slice(0,10)}
             </div>
             <div className="description">
               {translate("verify-identity.vetting_letter_received")}
