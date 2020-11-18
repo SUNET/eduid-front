@@ -8,21 +8,21 @@ class LetterProofingButton extends Component {
   state = {
     letter_expired: false,
     letter_expires: "",
-    verifyingLetter: false,
+    verifyingLetter_sent: false,
     confirmingLetter: false,
     letter_sent: ""
   }
 
   handleModal=()=>{
     const { 
-      verifyingLetter, 
+      verifyingLetter_sent, 
       letter_expired, 
       confirmingLetter, 
       letter_sent,
       letter_expires
     } = this.props;
     this.setState({
-      verifyingLetter: verifyingLetter,
+      verifyingLetter_sent: verifyingLetter_sent,
       letter_expired: letter_expired,
       confirmingLetter: confirmingLetter,
       letter_sent: letter_sent,
@@ -37,7 +37,7 @@ class LetterProofingButton extends Component {
 
   closeConfirmationModal=()=>{
     this.setState({
-      verifyingLetter: false
+      verifyingLetter_sent: false
     })
   }
 
@@ -61,7 +61,7 @@ class LetterProofingButton extends Component {
       (this.state.letter_expired && this.state.letter_sent !== "");
     const showConfirmationModal = 
       !this.state.letter_expired && this.state.letter_sent !== "" 
-      &&!this.state.confirmingLetter && this.state.verifyingLetter;
+      &&!this.state.confirmingLetter && this.state.verifyingLetter_sent;
     let description = "";
     if(disabled){
       description = (

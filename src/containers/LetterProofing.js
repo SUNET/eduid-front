@@ -12,7 +12,7 @@ const mapStateToProps = (state, props) => {
   return {
     disabled: withoutNin,
     confirmingLetter: confirmingLetter,
-    verifyingLetter: state.letter_proofing.verifyingLetter,
+    verifyingLetter_sent: state.letter_proofing.verifyingLetter,
     letter_sent: state.letter_proofing.letter_sent,
     letter_expires: state.letter_proofing.letter_expires,
     letter_expired: state.letter_proofing.letter_expired
