@@ -37,8 +37,8 @@ export function* sendLetterProofing() {
         csrf_token: state.config.csrf_token
       };
     const response = yield call(fetchLetterProofing, state.config, data);
-      yield put(putCsrfToken(response));
-      yield put(response);
+    yield put(putCsrfToken(response));
+    yield put(response);
   } catch (error) {
     yield* failRequest(error, actions.postLetterProofingSendLetterFail);
   }
