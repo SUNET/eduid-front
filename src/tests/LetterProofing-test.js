@@ -453,7 +453,7 @@ describe("LetterProofing component, without id number", () => {
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
     expect(description.exists()).toEqual(true);
-    expect(description.text()).toContain("Start by adding your ID number above");
+    expect(description.text()).toContain("ID number");
   });
 });
 
@@ -502,9 +502,9 @@ describe("LetterProofing component, letter has been sent", () => {
     const letterSent = description.find("span").at(0);
     const letterValid = description.find("span").at(1);
     expect(letterSent.exists()).toEqual(true);
-    expect(letterSent.text()).toContain("The letter was sent");
+    expect(letterSent.text()).toContain("sent");
     expect(letterValid.exists()).toEqual(true);
-    expect(letterValid.text()).toContain("The letter is valid to");
+    expect(letterValid.text()).toContain("valid to");
   });
 });
 
@@ -553,8 +553,8 @@ describe("LetterProofing component, when letter has expired", () => {
     const codeExpired = description.find("span").at(0);
     const orderNewLetter = description.find("span").at(1);
     expect(codeExpired.exists()).toEqual(true);
-    expect(codeExpired.text()).toContain("The code expired");
+    expect(codeExpired.text()).toContain("expired");
     expect(orderNewLetter.exists()).toEqual(true);
-    expect(orderNewLetter.text()).toContain("Click here to order a new code");
+    expect(orderNewLetter.text()).toContain("order a new code");
   });
 });
