@@ -1,10 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import {
-  RenderOwnerList,
-  RenderMemberList,
-} from "../GroupListItem";
+import { RenderOwnerList, RenderMemberList } from "../GroupListItem";
 
 const SingleGroup = (props) => {
   return (
@@ -23,7 +20,7 @@ const EditMode = (props) => {
         <button
           className="save-button"
           onClick={() => {
-            props.toggleViewOrEditMode();
+            props.toggleViewOrEditMode(props.group.group);
           }}
         >
           save
