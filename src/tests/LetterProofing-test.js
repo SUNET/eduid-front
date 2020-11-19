@@ -21,6 +21,16 @@ import {
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
+import { configure } from "enzyme";
+ import Adapter from "enzyme-adapter-react-16";
+ import jsdom from 'jsdom';  
+ configure({ adapter: new Adapter()});
+
+ const {JSDOM} = jsdom;  
+ const {document} = (new JSDOM('<!doctype html><html><body></body></html>')).window;  
+ global.document = document;  
+ global.window = document.defaultView;
+
 describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
@@ -470,7 +480,7 @@ describe("LetterProofing component, letter has been sent", () => {
       message: "",
       letter_sent: "20201010",
       verifyingLetter: true,
-      letter_expires: "",
+      letter_expires: "20201024",
       letter_expired: false,
       confirmingLetter: false
     },
@@ -501,10 +511,16 @@ describe("LetterProofing component, letter has been sent", () => {
     const description = wrapper.find("div.description");
     const letterSent = description.find("span").at(0);
     const letterValid = description.find("span").at(1);
+    const letterSentDate = description.at(0).prop('children');
+    const checkSentDate = shallow(<div>{letterSentDate}</div>).text();
+    const letterVaildDate = description.at(1).prop('children');
+    const checkVaildDate = shallow(<div>{letterVaildDate}</div>).text();
     expect(letterSent.exists()).toEqual(true);
     expect(letterSent.text()).toContain("sent");
     expect(letterValid.exists()).toEqual(true);
     expect(letterValid.text()).toContain("valid to");
+    expect(checkSentDate).toContain("NaN");
+    expect(checkVaildDate).toContain("NaN");
   });
 });
 
@@ -552,9 +568,12 @@ describe("LetterProofing component, when letter has expired", () => {
     const description = wrapper.find("div.description");
     const codeExpired = description.find("span").at(0);
     const orderNewLetter = description.find("span").at(1);
+    const expiredDate = description.at(0).prop('children');
+    const checkExpiredDate = shallow(<div>{expiredDate}</div>).text();
     expect(codeExpired.exists()).toEqual(true);
     expect(codeExpired.text()).toContain("expired");
     expect(orderNewLetter.exists()).toEqual(true);
     expect(orderNewLetter.text()).toContain("order a new code");
+    expect(checkExpiredDate).toContain("NaN");
   });
 });
