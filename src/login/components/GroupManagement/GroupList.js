@@ -4,6 +4,7 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "./GroupListItem";
 
 const GroupList = (props) => {
+  console.log(props.uniqueGroups)
   return props.uniqueGroups !== undefined ? (
     <div className="view-data">
       <div className="list-grid">
