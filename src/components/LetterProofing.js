@@ -54,14 +54,13 @@ class LetterProofingButton extends Component {
     })
   }
 
+  formatDateFromBackend = data => {
+    let date = new Date(data);
+    return date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+  }
+  
   render() {
     const { disabled, translate, letter_sent_date, letter_expired, letter_expires_date } = this.props;
-    let letterExpiresDate = new Date(letter_expires_date);
-    const formattedExpiresDate = 
-      letterExpiresDate.getFullYear()+'-' + (letterExpiresDate.getMonth()+1) + '-'+letterExpiresDate.getDate();
-    let letterSentDate = new Date(letter_sent_date);
-    const formattedSentDate = 
-      letterSentDate.getFullYear()+'-' + (letterSentDate.getMonth()+1) + '-'+letterSentDate.getDate();
 
     const showNotificationModal = 
       (this.state.letter_sent_date === "" && this.state.confirmingLetter) ||
@@ -87,7 +86,7 @@ class LetterProofingButton extends Component {
           <>
             <div className="description">
               {translate("verify-identity.vetting_letter_code_expired")}
-              {formattedExpiresDate}
+              {this.formatDateFromBackend(letter_expires_date)}
             </div>
             <div className="description">
               {translate("verify-identity.vetting_letter_order_new_code")}
@@ -100,11 +99,11 @@ class LetterProofingButton extends Component {
           <>
             <div className="description">
               {translate("verify-identity.vetting_letter_sent")} 
-              {formattedSentDate}
+              {this.formatDateFromBackend(letter_sent_date)}
             </div>
             <div className="description">
               {translate("verify-identity.vetting_letter_valid")} 
-              {formattedExpiresDate}
+              {this.formatDateFromBackend(letter_expires_date)}
             </div>
             <div className="description">
               {translate("verify-identity.vetting_letter_received")}
