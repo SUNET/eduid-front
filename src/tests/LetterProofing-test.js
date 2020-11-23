@@ -382,11 +382,11 @@ describe("Async component", () => {
   });
 });
 
-const fakeStore = state => ({
+const fakeStore = fakeState => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...fakeState })
 });
 
 const fakeState = {
@@ -395,11 +395,12 @@ const fakeState = {
     letter_sent: "",
     verifyingLetter: false,
     letter_expires: "",
-    letter_expired: false
+    letter_expired: false,
+    confirmingLetter: false
   },
   config: { letter_proofing_url: "http://localhost/letter" },
   nins: {
-    valid_nin: true,
+    valid_nin: false,
     nins: []
   },
   intl: {
@@ -419,7 +420,15 @@ describe("LetterProofing component, without id number", () => {
       wrapper
     };
   }
+
   it("Renders button text, add ID number to get letter", () => {
+    const state = {...fakeState};
+    state.letter_proofing.letter_sent = "",
+    state.letter_proofing.verifyingLetter = false,
+    state.nins.valid_nin = false,
+    state.letter_proofing.letter_expired = false,
+    state.nins.nins[0] = ""
+
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
     expect(description.exists()).toEqual(true);
@@ -428,26 +437,6 @@ describe("LetterProofing component, without id number", () => {
 });
 
 describe("LetterProofing component, letter has been sent", () => {
-  const fakeState = {
-    letter_proofing: {
-      message: "",
-      letter_sent: "20201010",
-      verifyingLetter: true,
-      letter_expires: "20201024",
-      letter_expired: false,
-      confirmingLetter: false
-    },
-    config: { letter_proofing_url: "http://localhost/letter" },
-    nins: {
-      valid_nin: true,
-      nins: ["19881212"]
-    },
-    intl: {
-      locale: "en",
-      messages: messages
-    }
-  };
-
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -460,6 +449,12 @@ describe("LetterProofing component, letter has been sent", () => {
   }
 
   it("Renders button text, the letter was sent", () => {
+    const state = {...fakeState};
+    state.letter_proofing.letter_sent = "20201010",
+    state.letter_proofing.verifyingLetter = true,
+    state.nins.valid_nin = true,
+    state.nins.nins[0] = "19881212"
+
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
     const letterSent = description.find("span").at(0);
@@ -478,26 +473,6 @@ describe("LetterProofing component, letter has been sent", () => {
 });
 
 describe("LetterProofing component, when letter has expired", () => {
-  const fakeState = {
-    letter_proofing: {
-      message: "",
-      letter_sent: "20101010",
-      verifyingLetter: true,
-      letter_expires: "",
-      letter_expired: true,
-      confirmingLetter: false
-    },
-    config: { letter_proofing_url: "http://localhost/letter" },
-    nins: {
-      valid_nin: true,
-      nins: ["19881212"]
-    },
-    intl: {
-      locale: "en",
-      messages: messages
-    }
-  };
-
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -510,6 +485,15 @@ describe("LetterProofing component, when letter has expired", () => {
   }
 
   it("Renders button text, the code has expired", () => {
+    const state = {...fakeState};
+    state.letter_proofing.letter_sent = "20201010",
+    state.letter_proofing.letter_expires = "20201024",
+    state.letter_proofing.verifyingLetter = true,
+    state.letter_proofing.confirmingLetter = false,
+    state.nins.valid_nin = true,
+    state.letter_proofing.letter_expired = true,
+    state.nins.nins[0] = "19881212"
+    
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
     const codeExpired = description.find("span").at(0);
