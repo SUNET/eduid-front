@@ -5,7 +5,19 @@ import GroupList from "./GroupList";
 import EditMode from "./EditMode/EditMode";
 
 class GroupDataPanel extends Component {
-  state = { editMode: false, group: "" };
+  state = {
+    editMode:
+      JSON.parse(window.localStorage.getItem("persistedEditMode")) || false,
+    group: JSON.parse(window.localStorage.getItem("persistedGroup")) || "",
+  };
+
+  componentDidUpdate() {
+    window.localStorage.setItem("persistedEditMode", this.state.editMode);
+    window.localStorage.setItem(
+      "persistedGroup",
+      JSON.stringify(this.state.group)
+    );
+  }
 
   toggleViewOrEditMode = (singleGroupData) => {
     this.setState((prevState) => {
