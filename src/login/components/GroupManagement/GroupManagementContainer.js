@@ -17,31 +17,17 @@ const mapStateToProps = (state, props) => {
     return i === uniqueGroupIds.findIndex((id) => id === group.identifier);
   });
 
-  // filter out primary email address to look for username among members and owners in groups
-  let emailAddresses = state.emails.emails;
-  const primaryEmailAddress = emailAddresses.filter(
-    (email) => email.primary
-  )[0];
-
-  // email request sometimes happens after group data
-  const getUsername = () => {
-    if (primaryEmailAddress !== undefined) {
-      return primaryEmailAddress.email;
-    }
-    return null;
-  };
-
-  //create new object listing user relationship with each group
+  // create new object listing user relationship with each group
+  let userIdentifier = state.groups.data.user_identifier;
   let userGroupsAndRoles = uniqueGroups.map((group, i) => {
-    let username = getUsername();
     let membershipObj = { group: group, isMember: false, isOwner: false };
     group.members.some((member, i) => {
-      if (member.display_name === username) {
+      if (member.identifier === userIdentifier) {
         return (membershipObj.isMember = true);
       }
     });
     group.owners.some((owner, i) => {
-      if (owner.display_name === username) {
+      if (owner.identifier === userIdentifier) {
         return (membershipObj.isOwner = true);
       }
     });

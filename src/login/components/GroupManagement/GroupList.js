@@ -4,7 +4,7 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "./GroupListItem";
 
 const GroupList = (props) => {
-  return props.uniqueGroups !== undefined ? (
+  return (
     <div className="view-data">
       <div className="list-grid">
         <div className="list-cell"></div>
@@ -26,7 +26,7 @@ const GroupList = (props) => {
         ))}
       </ul>
     </div>
-  ) : null;
+  );
 };
 
 GroupList.propTypes = {};
