@@ -33,12 +33,6 @@ describe("LetterProofing Component", () => {
 });
 
 describe("Letter Proofing, when letter has been expired", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
   const fakeState = {
     letter_proofing: {
       confirmingLetter: false,
@@ -254,30 +248,6 @@ describe("Reducers", () => {
   });
 });
 
-const fakeState = {
-  letter_proofing: {
-    message: "",
-    errMsg: "",
-    letter_sent: ""
-  },
-  config: { letter_proofing_url: "http://localhost/letter" },
-  nins: {
-    valid_nin: false,
-    nin: "dummy-nin"
-  },
-  intl: {
-    locale: "en",
-    messages: messages
-  }
-};
-
-const fakeStore = state => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...state })
-});
-
 function setupComponent(store) {
   const props = {
     letter_expires:"",
@@ -412,33 +382,33 @@ describe("Async component", () => {
   });
 });
 
+const fakeStore = state => ({
+  default: () => {},
+  dispatch: mock.fn(),
+  subscribe: mock.fn(),
+  getState: () => ({ ...state })
+});
+
+const fakeState = {
+  letter_proofing: {
+    message: "",
+    letter_sent: "",
+    verifyingLetter: false,
+    letter_expires: "",
+    letter_expired: false
+  },
+  config: { letter_proofing_url: "http://localhost/letter" },
+  nins: {
+    valid_nin: true,
+    nins: []
+  },
+  intl: {
+    locale: "en",
+    messages: messages
+  }
+};
+
 describe("LetterProofing component, without id number", () => {
-  const fakeStore = state => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state })
-  });
-
-  const fakeState = {
-    letter_proofing: {
-      message: "",
-      letter_sent: "",
-      verifyingLetter: false,
-      letter_expires: "",
-      letter_expired: false
-    },
-    config: { letter_proofing_url: "http://localhost/letter" },
-    nins: {
-      valid_nin: true,
-      nins: []
-    },
-    intl: {
-      locale: "en",
-      messages: messages
-    }
-  };
-
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -458,13 +428,6 @@ describe("LetterProofing component, without id number", () => {
 });
 
 describe("LetterProofing component, letter has been sent", () => {
-  const fakeStore = state => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state })
-  });
-
   const fakeState = {
     letter_proofing: {
       message: "",
@@ -515,13 +478,6 @@ describe("LetterProofing component, letter has been sent", () => {
 });
 
 describe("LetterProofing component, when letter has expired", () => {
-  const fakeStore = state => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state })
-  });
-
   const fakeState = {
     letter_proofing: {
       message: "",
