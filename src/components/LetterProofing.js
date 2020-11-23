@@ -54,9 +54,9 @@ class LetterProofingButton extends Component {
     })
   }
 
-  formatDateFromBackend = data => {
-    let date = new Date(data);
-    return date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+  formatDateFromBackend = dateFromBackend => {
+    let newDate = new Date(dateFromBackend);
+    return newDate.getFullYear()+'-' + (newDate.getMonth()+1) + '-'+newDate.getDate();
   }
   
   render() {
