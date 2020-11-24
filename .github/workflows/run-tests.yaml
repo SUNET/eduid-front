@@ -29,7 +29,7 @@ jobs:
           make test
       
       - name: Audit production npm packages
-        run: npm audit --only=prod
+        run: npm audit --production
 
       - name: Audit including devDependencies
         # Don't error out on audit warnings about devDependencies
