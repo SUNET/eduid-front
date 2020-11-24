@@ -14,19 +14,12 @@ class LetterProofingButton extends Component {
   }
 
   handleModal=()=>{
-    const { 
-      verifyingLetter_sent, 
-      letter_expired, 
-      confirmingLetter, 
-      letter_sent_date,
-      letter_expires_date
-    } = this.props;
     this.setState({
-      verifyingLetter_sent: verifyingLetter_sent,
-      letter_expired: letter_expired,
-      confirmingLetter: confirmingLetter,
-      letter_sent_date: letter_sent_date,
-      letter_expires_date: letter_expires_date
+      verifyingLetter_sent: this.props.verifyingLetter_sent,
+      letter_expired: this.props.letter_expired,
+      confirmingLetter: this.props.confirmingLetter,
+      letter_sent_date: this.props.letter_sent_date,
+      letter_expires_date: this.props.letter_expires_date
     })
   }
 
@@ -60,8 +53,6 @@ class LetterProofingButton extends Component {
   }
   
   render() {
-    const { disabled, translate, letter_sent_date, letter_expired, letter_expires_date } = this.props;
-
     const showNotificationModal = 
       (this.state.letter_sent_date === "" && this.state.confirmingLetter) ||
       (this.state.letter_expired && this.state.letter_sent_date !== "");
@@ -69,27 +60,27 @@ class LetterProofingButton extends Component {
       !this.state.letter_expired && this.state.letter_sent_date !== "" 
       &&!this.state.confirmingLetter && this.state.verifyingLetter_sent;
     let description = "";
-    if(disabled){
+    if(this.props.disabled){
       description = (
         <div className="description">
-          {translate("verify-identity.vetting_explanation_add_nin")}
+          {this.props.translate("verify-identity.vetting_explanation_add_nin")}
         </div> 
       )
     } else {
-      if(letter_sent_date === ""){
+      if(this.props.letter_sent_date === ""){
         description = (
           <div />
         )
       }
-      else if(letter_expired){
+      else if(this.props.letter_expired){
         description = (
           <>
             <div className="description">
-              {translate("verify-identity.vetting_letter_code_expired")}
-              {this.formatDateFromBackend(letter_expires_date)}
+              {this.props.translate("verify-identity.vetting_letter_code_expired")}
+              {this.formatDateFromBackend(this.props.letter_expires_date)}
             </div>
             <div className="description">
-              {translate("verify-identity.vetting_letter_order_new_code")}
+              {this.props.translate("verify-identity.vetting_letter_order_new_code")}
             </div>
           </>
         )
@@ -98,15 +89,15 @@ class LetterProofingButton extends Component {
         description = (
           <>
             <div className="description">
-              {translate("verify-identity.vetting_letter_sent")} 
-              {this.formatDateFromBackend(letter_sent_date)}
+              {this.props.translate("verify-identity.vetting_letter_sent")} 
+              {this.formatDateFromBackend(this.props.letter_sent_date)}
             </div>
             <div className="description">
-              {translate("verify-identity.vetting_letter_valid")} 
-              {this.formatDateFromBackend(letter_expires_date)}
+              {this.props.translate("verify-identity.vetting_letter_valid")} 
+              {this.formatDateFromBackend(this.props.letter_expires_date)}
             </div>
             <div className="description">
-              {translate("verify-identity.vetting_letter_received")}
+              {this.props.translate("verify-identity.vetting_letter_received")}
             </div>
           </>
         )
@@ -116,22 +107,22 @@ class LetterProofingButton extends Component {
       <div>
         <div className="vetting-button">
           <button
-            disabled={disabled}
+            disabled={this.props.disabled}
             onClick={()=>this.handleModal()}
           >
             <div className="text">
-              {translate("verify-identity.vetting_post_tagline")}
+              {this.props.translate("verify-identity.vetting_post_tagline")}
               {description}
             </div>
             <div className="name">
-              {translate("letter.button_text_request")}
+              {this.props.translate("letter.button_text_request")}
             </div>
           </button>
         </div>
         <NotificationModal
           modalId="letterGenericConfirmDialog"
-          title={translate("letter.modal_confirm_title")}
-          mainText={translate("letter.modal_confirm_info")}
+          title={this.props.translate("letter.modal_confirm_title")}
+          mainText={this.props.translate("letter.modal_confirm_info")}
           showModal={showNotificationModal}
           closeModal={this.closeNotificationModal}
           acceptModal={this.confirmLetterProofing}
@@ -139,9 +130,9 @@ class LetterProofingButton extends Component {
         <ConfirmModal
           modalId="letterConfirmDialog"
           id="letterConfirmDialogControl"
-          title={translate("letter.verify_title")}
-          resendLabel={translate("cm.enter_code")}
-          placeholder={translate("letter.placeholder")}
+          title={this.props.translate("letter.verify_title")}
+          resendLabel={this.props.translate("cm.enter_code")}
+          placeholder={this.props.translate("letter.placeholder")}
           showModal={showConfirmationModal}
           closeModal={this.closeConfirmationModal}
           handleConfirm={this.sendConfirmationCode}
