@@ -14,15 +14,21 @@
     "manage:plugins": "node ./buildPlugins.js",
     "manage:plugins:staging": "node ./buildPlugins.staging.js",
     "manage:plugins:pro": "node ./buildPlugins.prod.js",
-    "serve": "webpack-dev-server --open"
+    "serve": "webpack-dev-server --open",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
   },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "@fortawesome/react-fontawesome": "0.1.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "0.1.12",
     "bootstrap": "^4.5.3",
+    "eslint": "^7.14.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.21.5",
     "intl": "^1.2.5",
     "invariant": "^2.2.4",
     "react": "^16.14.0",
