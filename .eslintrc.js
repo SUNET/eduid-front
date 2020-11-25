@@ -8,6 +8,7 @@ module.exports = {
     },
     "extends": [
     ],
+    "parser": "babel-eslint",
     "parserOptions": {
     "ecmaFeatures": {
         "jsx": true
