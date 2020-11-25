@@ -31,3 +31,9 @@ jobs:
       - name: Audit
         # Don't error out on this until we are somewhere close to up-to-date.
         run: npm audit || true
+      
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          eslint: true
