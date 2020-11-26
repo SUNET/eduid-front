@@ -21,6 +21,42 @@ import {
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
+
+const baseState = {
+  letter_proofing: {
+    message: "",
+    letter_sent: "",
+    verifyingLetter: false,
+    letter_expires: "",
+    letter_expired: false,
+    confirmingLetter: false,
+    code: "",
+  },
+  config: {
+    letter_proofing_url: "http://localhost/letter",
+    csrf_token: "csrf-token"
+  },
+  nins: {},
+  intl: {
+    locale: "en",
+    messages: messages
+  }
+};
+
+const fakeStore = fakeState => ({
+  default: () => {},
+  dispatch: mock.fn(),
+  subscribe: mock.fn(),
+  getState: () => ({ ...fakeState })
+});
+
+function getFakeState(newState) {
+  if (newState === undefined) {
+    newState = {}
+  }
+  return Object.assign(baseState, newState)
+}
+
 describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
@@ -33,26 +69,12 @@ describe("LetterProofing Component", () => {
 });
 
 describe("Letter Proofing, when letter has been expired", () => {
-  const fakeState = {
-    letter_proofing: {
-      confirmingLetter: false,
-      verifyingLetter: false,
-      code: "",
-      letter_sent: "",
-      letter_expires: "",
-      letter_expired: false,
-      message: ""
-    },
-    config: { letter_proofing_url: "http://localhost/letter" },
+  const fakeState = getFakeState({
     nins: {
       valid_nin: true,
       nin: "dummy-nin"
     },
-    intl: {
-      locale: "en",
-      messages: messages
-    }
-  }
+  })
 
   function setupComponent() {
     const props =  {
@@ -78,7 +100,7 @@ describe("Letter Proofing, when letter has been expired", () => {
     };
   }
   const state = { ...fakeState };
-  state.letter_proofing.letter_expired = true; 
+  state.letter_proofing.letter_expired = true;
 
   it("Renders when letter has been expired", () => {
     const { wrapper } = setupComponent();
@@ -145,54 +167,46 @@ describe("Letter proofing Actions", () => {
 });
 
 describe("Reducers", () => {
-  const mockState = {
-    confirmingLetter: false,
-    verifyingLetter: false,
-    code: "",
-    letter_sent: "",
-    letter_expires: "",
-    letter_expired: false,
-    message: ""
-  };
+  const fakeState = getFakeState()
 
   it("Receives a STOP_LETTER_VERIFICATION action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(fakeState, {
         type: actions.STOP_LETTER_VERIFICATION
       })
     ).toEqual({
-      ...mockState,
+      ...fakeState,
       confirmingLetter: false
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(fakeState, {
         type: actions.STOP_LETTER_VERIFICATION
       })
     ).toEqual({
-      ...mockState
+      ...fakeState
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_PROOFING_SUCCESS action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(fakeState, {
         type: actions.POST_LETTER_PROOFING_PROOFING_SUCCESS,
         payload: {
           message: "success"
         }
       })
     ).toEqual({
-      ...mockState,
+      ...fakeState,
       message: "success"
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_PROOFING_FAIL action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(fakeState, {
         type: actions.POST_LETTER_PROOFING_PROOFING_FAIL,
         error: true,
         payload: {
@@ -200,27 +214,27 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      ...mockState
+      ...fakeState
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(fakeState, {
         type: actions.POST_LETTER_PROOFING_CODE,
         payload: {
           code: "dummy-code"
         }
       })
     ).toEqual({
-      ...mockState,
+      ...fakeState,
       code: "dummy-code"
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE_SUCCESS action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(fakeState, {
         type: actions.POST_LETTER_PROOFING_CODE_SUCCESS,
         payload: {
           success: true,
@@ -228,14 +242,14 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      ...mockState,
+      ...fakeState,
       message: "success"
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE_FAIL action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(fakeState, {
         type: actions.POST_LETTER_PROOFING_CODE_FAIL,
         error: true,
         payload: {
@@ -243,33 +257,14 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      ...mockState
+      ...fakeState
     });
   });
 });
 
-function setupComponent(store) {
-  const props = {
-    letter_expires:"",
-    handleLetterProofing: mock.fn(),
-    sendConfirmationLetter: mock.fn(),
-    handleConfirmationLetter: mock.fn(),
-    handleStopConfirmationLetter: mock.fn()
-  };
-  const wrapper = shallow(
-    <Provider store={store}>
-      <LetterProofingContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper
-  };
-}
-
 describe("LetterProofing Container", () => {
   let mockProps, wrapper, buttontext, dispatch;
-
+  const fakeState = getFakeState(false, false, false, false, 'dummy-code')
   beforeEach(() => {
     const store = fakeStore(fakeState);
 
@@ -290,20 +285,15 @@ describe("LetterProofing Container", () => {
   });
 });
 
-const state = {
-  config: {
-    letter_proofing_url: "http://localhost/letter",
-    csrf_token: "csrf-token"
-  },
-  nins: {
-    nin: "dummy-nin"
-  },
-  letter_proofing: {
-    code: "dummy-code"
-  }
-};
-
 describe("Async component", () => {
+  const fakeState = getFakeState({
+    nins: {
+      nin: "dummy-nin"
+    },
+    letter_proofing: {
+      code: "dummy-code"
+    }
+  })
   it("Sagas sendLetterProfing", () => {
     const generator = sendLetterProofing();
 
@@ -314,8 +304,8 @@ describe("Async component", () => {
       csrf_token: "csrf-token"
     };
 
-    const resp = generator.next(state);
-    expect(resp.value).toEqual(call(fetchLetterProofing, state.config, data));
+    const resp = generator.next(fakeState);
+    expect(resp.value).toEqual(call(fetchLetterProofing, fakeState.config, data));
 
     const action = {
       type: "POST_LETTER_PROOFING_PROOFING_SUCCESS",
@@ -337,8 +327,8 @@ describe("Async component", () => {
     let next = generator.next();
 
     const nin = "dummy-nin";
-    const resp = generator.next(state);
-    expect(resp.value).toEqual(call(fetchGetLetterProofing, state.config, nin));
+    const resp = generator.next(fakeState);
+    expect(resp.value).toEqual(call(fetchGetLetterProofing, fakeState.config, nin));
 
     const action = {
       type: "GET_LETTER_PROOFING_PROOFING_SUCCESS",
@@ -364,8 +354,8 @@ describe("Async component", () => {
       csrf_token: "csrf-token"
     };
 
-    const resp = generator.next(state);
-    expect(resp.value).toEqual(call(fetchLetterCode, state.config, data));
+    const resp = generator.next(fakeState);
+    expect(resp.value).toEqual(call(fetchLetterCode, fakeState.config, data));
 
     const action = {
       type: "POST_LETTER_PROOFING_CODE_SUCCESS",
@@ -382,34 +372,13 @@ describe("Async component", () => {
   });
 });
 
-const fakeStore = fakeState => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...fakeState })
-});
-
-const fakeState = {
-  letter_proofing: {
-    message: "",
-    letter_sent: "",
-    verifyingLetter: false,
-    letter_expires: "",
-    letter_expired: false,
-    confirmingLetter: false
-  },
-  config: { letter_proofing_url: "http://localhost/letter" },
-  nins: {
-    valid_nin: false,
-    nins: []
-  },
-  intl: {
-    locale: "en",
-    messages: messages
-  }
-};
-
 describe("LetterProofing component, without id number", () => {
+  const fakeState = getFakeState({
+    nins: {
+      valid_nin: false,
+      nins: []
+    }
+  })
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -423,10 +392,10 @@ describe("LetterProofing component, without id number", () => {
 
   it("Renders button text, add ID number to get letter", () => {
     const state = {...fakeState};
-    state.letter_proofing.letter_sent = "",
-    state.letter_proofing.verifyingLetter = false,
-    state.nins.valid_nin = false,
-    state.letter_proofing.letter_expired = false,
+    state.letter_proofing.letter_sent = ""
+    state.letter_proofing.verifyingLetter = false
+    state.nins.valid_nin = false
+    state.letter_proofing.letter_expired = false
     state.nins.nins[0] = ""
 
     const { wrapper } = setupComponent();
@@ -437,6 +406,12 @@ describe("LetterProofing component, without id number", () => {
 });
 
 describe("LetterProofing component, letter has been sent", () => {
+  const fakeState = getFakeState({
+    nins: {
+      valid_nin: false,
+      nins: []
+    }
+  })
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -493,7 +468,7 @@ describe("LetterProofing component, when letter has expired", () => {
     state.nins.valid_nin = true,
     state.letter_proofing.letter_expired = true,
     state.nins.nins[0] = "19881212"
-    
+
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
     const codeExpired = description.find("span").at(0);
