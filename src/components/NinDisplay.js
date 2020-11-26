@@ -89,6 +89,7 @@ NinDisplay.propTypes = {
   verifiedNin: PropTypes.array,
   verifiedNinStatus: PropTypes.bool,
   handleDelete: PropTypes.func,
+  translate: PropTypes.object
 };
 
 export default withRouter(NinDisplay);
