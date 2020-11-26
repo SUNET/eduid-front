@@ -49,7 +49,7 @@ class LetterProofingButton extends Component {
 
   formatDateFromBackend = dateFromBackend => {
     let newDate = new Date(dateFromBackend);
-    return newDate.getFullYear()+'-' + (newDate.getMonth()+1) + '-'+newDate.getDate();
+    return newDate.getFullYear()+'-' + ('0'+(newDate.getMonth()+1)).slice(-2) + '-'+('0'+newDate.getDate()).slice(-2);
   }
   
   render() {
@@ -89,7 +89,7 @@ class LetterProofingButton extends Component {
         description = (
           <>
             <div className="description">
-              {this.props.translate("verify-identity.vetting_letter_sent")} 
+              {this.props.translate("verify-identity.vetting_letter_sent")}
               {this.formatDateFromBackend(this.props.letter_sent_date)}
             </div>
             <div className="description">
