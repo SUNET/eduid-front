@@ -1,7 +1,6 @@
 import { put, select, call } from "redux-saga/effects";
 import {
   checkStatus,
-  ajaxHeaders,
   putCsrfToken,
   postRequest,
   getRequest,
@@ -21,9 +20,9 @@ export function* sendGetLetterProofing() {
   }
 }
 
-export function fetchGetLetterProofing(config, nin) {
+export function fetchGetLetterProofing(config) {
   return window
-    .fetch(config.letter_proofing_url + "proofing?nin=" + nin, {
+    .fetch(config.letter_proofing_url + "proofing", {
       ...getRequest
     })
     .then(checkStatus)
@@ -37,12 +36,10 @@ export function* sendLetterProofing() {
         nin: state.nins.nin,
         csrf_token: state.config.csrf_token
       };
-
     const response = yield call(fetchLetterProofing, state.config, data);
     yield put(putCsrfToken(response));
     yield put(response);
   } catch (error) {
-    console.log('error', error)
     yield* failRequest(error, actions.postLetterProofingSendLetterFail);
   }
 }
