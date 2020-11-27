@@ -248,25 +248,6 @@ describe("Reducers", () => {
   });
 });
 
-function setupComponent(store) {
-  const props = {
-    letter_expires:"",
-    handleLetterProofing: mock.fn(),
-    sendConfirmationLetter: mock.fn(),
-    handleConfirmationLetter: mock.fn(),
-    handleStopConfirmationLetter: mock.fn()
-  };
-  const wrapper = shallow(
-    <Provider store={store}>
-      <LetterProofingContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper
-  };
-}
-
 describe("LetterProofing Container", () => {
   let mockProps, wrapper, buttontext, dispatch;
 
