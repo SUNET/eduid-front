@@ -21,14 +21,7 @@ import {
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
-const fakeStore = fakeState => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...fakeState })
-});
-
-const fakeState = {
+const baseState = {
   letter_proofing: {
     message: "",
     letter_sent: "",
@@ -38,15 +31,26 @@ const fakeState = {
     confirmingLetter: false
   },
   config: { letter_proofing_url: "http://localhost/letter" },
-  nins: {
-    valid_nin: false,
-    nins: []
-  },
+  nins: {},
   intl: {
     locale: "en",
     messages: messages
   }
 };
+
+const fakeStore = fakeState => ({
+  default: () => {},
+  dispatch: mock.fn(),
+  subscribe: mock.fn(),
+  getState: () => ({ ...fakeState })
+});
+
+function getFakeState(newState) {
+  if (newState === undefined) {
+    newState = {}
+  }
+  return Object.assign(baseState, newState)
+}
 
 describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -60,6 +64,13 @@ describe("LetterProofing Component", () => {
 });
 
 describe("Letter Proofing, when letter has been expired", () => {
+  const fakeState = getFakeState({
+    nins: {
+      valid_nin: true,
+      nin: "dummy-nin"
+    },
+  })
+
   function setupComponent() {
     const props =  {
       confirmingLetter: false,
@@ -370,6 +381,13 @@ describe("Async component", () => {
 });
 
 describe("LetterProofing component, without id number", () => {
+  const fakeState = getFakeState({
+    nins: {
+      valid_nin: false,
+      nins: []
+    }
+  })
+
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -397,6 +415,13 @@ describe("LetterProofing component, without id number", () => {
 });
 
 describe("LetterProofing component, letter has been sent", () => {
+  const fakeState = getFakeState({
+    nins: {
+      valid_nin: false,
+      nins: []
+    }
+  })
+
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -433,6 +458,13 @@ describe("LetterProofing component, letter has been sent", () => {
 });
 
 describe("LetterProofing component, when letter has expired", () => {
+  const fakeState = getFakeState({
+    nins: {
+      valid_nin: false,
+      nins: []
+    }
+  })
+  
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
