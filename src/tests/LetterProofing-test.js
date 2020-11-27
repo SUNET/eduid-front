@@ -21,6 +21,33 @@ import {
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
+const fakeStore = fakeState => ({
+  default: () => {},
+  dispatch: mock.fn(),
+  subscribe: mock.fn(),
+  getState: () => ({ ...fakeState })
+});
+
+const fakeState = {
+  letter_proofing: {
+    message: "",
+    letter_sent: "",
+    verifyingLetter: false,
+    letter_expires: "",
+    letter_expired: false,
+    confirmingLetter: false
+  },
+  config: { letter_proofing_url: "http://localhost/letter" },
+  nins: {
+    valid_nin: false,
+    nins: []
+  },
+  intl: {
+    locale: "en",
+    messages: messages
+  }
+};
+
 describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
@@ -33,27 +60,6 @@ describe("LetterProofing Component", () => {
 });
 
 describe("Letter Proofing, when letter has been expired", () => {
-  const fakeState = {
-    letter_proofing: {
-      confirmingLetter: false,
-      verifyingLetter: false,
-      code: "",
-      letter_sent: "",
-      letter_expires: "",
-      letter_expired: false,
-      message: ""
-    },
-    config: { letter_proofing_url: "http://localhost/letter" },
-    nins: {
-      valid_nin: true,
-      nin: "dummy-nin"
-    },
-    intl: {
-      locale: "en",
-      messages: messages
-    }
-  }
-
   function setupComponent() {
     const props =  {
       confirmingLetter: false,
@@ -362,33 +368,6 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(action));
   });
 });
-
-const fakeStore = fakeState => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...fakeState })
-});
-
-const fakeState = {
-  letter_proofing: {
-    message: "",
-    letter_sent: "",
-    verifyingLetter: false,
-    letter_expires: "",
-    letter_expired: false,
-    confirmingLetter: false
-  },
-  config: { letter_proofing_url: "http://localhost/letter" },
-  nins: {
-    valid_nin: false,
-    nins: []
-  },
-  intl: {
-    locale: "en",
-    messages: messages
-  }
-};
 
 describe("LetterProofing component, without id number", () => {
   function setupComponent() {
