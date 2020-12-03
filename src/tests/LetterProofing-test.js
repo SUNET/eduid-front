@@ -410,12 +410,7 @@ describe("LetterProofing component, without id number", () => {
 });
 
 describe("LetterProofing component, letter has been sent", () => {
-  const fakeState = getFakeState({
-    nins: {
-      valid_nin: false,
-      nins: []
-    }
-  })
+  const fakeState = getFakeState()
 
   function setupComponent() {
     const wrapper = mount(
@@ -453,12 +448,7 @@ describe("LetterProofing component, letter has been sent", () => {
 });
 
 describe("LetterProofing component, when letter has expired", () => {
-  const fakeState = getFakeState({
-    nins: {
-      valid_nin: false,
-      nins: []
-    }
-  })
+  const fakeState = getFakeState()
   
   function setupComponent() {
     const wrapper = mount(
