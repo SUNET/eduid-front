@@ -31,7 +31,9 @@ const baseState = {
     confirmingLetter: false
   },
   config: { letter_proofing_url: "http://localhost/letter" },
-  nins: {},
+  nins: {
+    nin:""
+  },
   intl: {
     locale: "en",
     messages: messages
@@ -265,10 +267,9 @@ describe("Reducers", () => {
 
 describe("LetterProofing Container", () => {
   let mockProps, wrapper, buttontext;
-
+  const fakeState = getFakeState();
   beforeEach(() => {
     const store = fakeStore(fakeState);
-
     mockProps = {};
 
     wrapper = mount(
@@ -286,20 +287,20 @@ describe("LetterProofing Container", () => {
   });
 });
 
-const state = {
-  config: {
-    letter_proofing_url: "http://localhost/letter",
-    csrf_token: "csrf-token"
-  },
-  nins: {
-    nin: "dummy-nin"
-  },
-  letter_proofing: {
-    code: "dummy-code"
-  }
-};
-
 describe("Async component", () => {
+  const fakeState = {
+    config: {
+      letter_proofing_url: "http://localhost/letter",
+      csrf_token: "csrf-token"
+    },
+    nins: {
+      nin: "dummy-nin"
+    },
+    letter_proofing: {
+      code: "dummy-code"
+    }
+  };
+
   it("Sagas sendLetterProfing", () => {
     const generator = sendLetterProofing();
 
@@ -310,8 +311,8 @@ describe("Async component", () => {
       csrf_token: "csrf-token"
     };
 
-    const resp = generator.next(state);
-    expect(resp.value).toEqual(call(fetchLetterProofing, state.config, data));
+    const resp = generator.next(fakeState);
+    expect(resp.value).toEqual(call(fetchLetterProofing, fakeState.config, data));
 
     const action = {
       type: "POST_LETTER_PROOFING_PROOFING_SUCCESS",
@@ -333,8 +334,8 @@ describe("Async component", () => {
     let next = generator.next();
 
     const nin = "dummy-nin";
-    const resp = generator.next(state);
-    expect(resp.value).toEqual(call(fetchGetLetterProofing, state.config, nin));
+    const resp = generator.next(fakeState);
+    expect(resp.value).toEqual(call(fetchGetLetterProofing, fakeState.config, nin));
 
     const action = {
       type: "GET_LETTER_PROOFING_PROOFING_SUCCESS",
@@ -359,9 +360,8 @@ describe("Async component", () => {
       code: "dummy-code",
       csrf_token: "csrf-token"
     };
-
-    const resp = generator.next(state);
-    expect(resp.value).toEqual(call(fetchLetterCode, state.config, data));
+    const resp = generator.next(fakeState);
+    expect(resp.value).toEqual(call(fetchLetterCode, fakeState.config, data));
 
     const action = {
       type: "POST_LETTER_PROOFING_CODE_SUCCESS",
