@@ -264,7 +264,7 @@ describe("Reducers", () => {
 });
 
 describe("LetterProofing Container", () => {
-  let mockProps, wrapper, buttontext, dispatch;
+  let mockProps, wrapper, buttontext;
 
   beforeEach(() => {
     const store = fakeStore(fakeState);
