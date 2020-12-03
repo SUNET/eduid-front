@@ -94,8 +94,6 @@ describe("Letter Proofing, when letter has been expired", () => {
       wrapper,
     };
   }
-  const state = { ...fakeState };
-  state.letter_proofing.letter_expired = true; 
 
   it("Renders when letter has been expired", () => {
     const { wrapper } = setupComponent();
