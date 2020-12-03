@@ -28,7 +28,8 @@ const baseState = {
     verifyingLetter: false,
     letter_expires: "",
     letter_expired: false,
-    confirmingLetter: false
+    confirmingLetter: false,
+    code: ""
   },
   config: { letter_proofing_url: "http://localhost/letter" },
   nins: {
@@ -162,54 +163,47 @@ describe("Letter proofing Actions", () => {
 });
 
 describe("Reducers", () => {
-  const mockState = {
-    confirmingLetter: false,
-    verifyingLetter: false,
-    code: "",
-    letter_sent: "",
-    letter_expires: "",
-    letter_expired: false,
-    message: ""
-  };
+  const fakeState = getFakeState();
+  const letterProofingState = fakeState.letter_proofing;
 
   it("Receives a STOP_LETTER_VERIFICATION action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(letterProofingState, {
         type: actions.STOP_LETTER_VERIFICATION
       })
     ).toEqual({
-      ...mockState,
+      ...letterProofingState,
       confirmingLetter: false
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(letterProofingState, {
         type: actions.STOP_LETTER_VERIFICATION
       })
     ).toEqual({
-      ...mockState
+      ...letterProofingState
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_PROOFING_SUCCESS action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(letterProofingState, {
         type: actions.POST_LETTER_PROOFING_PROOFING_SUCCESS,
         payload: {
           message: "success"
         }
       })
     ).toEqual({
-      ...mockState,
+      ...letterProofingState,
       message: "success"
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_PROOFING_FAIL action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(letterProofingState, {
         type: actions.POST_LETTER_PROOFING_PROOFING_FAIL,
         error: true,
         payload: {
@@ -217,27 +211,27 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      ...mockState
+      ...letterProofingState
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(letterProofingState, {
         type: actions.POST_LETTER_PROOFING_CODE,
         payload: {
           code: "dummy-code"
         }
       })
     ).toEqual({
-      ...mockState,
+      ...letterProofingState,
       code: "dummy-code"
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE_SUCCESS action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(letterProofingState, {
         type: actions.POST_LETTER_PROOFING_CODE_SUCCESS,
         payload: {
           success: true,
@@ -245,14 +239,14 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      ...mockState,
+      ...letterProofingState,
       message: "success"
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE_FAIL action", () => {
     expect(
-      letterProofingReducer(mockState, {
+      letterProofingReducer(letterProofingState, {
         type: actions.POST_LETTER_PROOFING_CODE_FAIL,
         error: true,
         payload: {
@@ -260,7 +254,7 @@ describe("Reducers", () => {
         }
       })
     ).toEqual({
-      ...mockState
+      ...letterProofingState
     });
   });
 });
