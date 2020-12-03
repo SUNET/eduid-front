@@ -31,7 +31,10 @@ const baseState = {
     confirmingLetter: false,
     code: ""
   },
-  config: { letter_proofing_url: "http://localhost/letter" },
+  config: { 
+    letter_proofing_url: "http://localhost/letter",
+    csrf_token: "csrf-token" 
+  },
   nins: {
     nin:""
   },
