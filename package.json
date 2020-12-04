@@ -52,6 +52,7 @@
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^1.1.11",
+    "copy-and-watch": "^0.1.5",
     "css-loader": "^0.28.11",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
@@ -125,7 +126,8 @@
     ],
     "testEnvironment": "node",
     "testMatch": [
-       "/__tests__/**/*-test.[jt]s?(x)", "**/?(*)+(test).[jt]s?(x)" 
+      "/__tests__/**/*-test.[jt]s?(x)",
+      "**/?(*)+(test).[jt]s?(x)"
     ]
   }
 }
