@@ -12,7 +12,7 @@ const mapStateToProps = (state, props) => {
     verifiedNinStatus: verifiedNinStatus,
     is_configured: state.config.is_configured,
     letter_verification: state.letter_proofing.confirmingLetter,
-    proofing_methods: state.config.PROOFING_METHODS,
+    proofing_methods: state.config.proofing_methods,
     message: state.nins.message
   };
 };

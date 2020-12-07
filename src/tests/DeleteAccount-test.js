@@ -387,8 +387,8 @@ describe("DeleteAccount Container", () => {
         },
         config: {
           csrf_token: "",
-          DASHBOARD_URL: "/dummy-dash-url/",
-          TOKEN_SERVICE_URL: "/dummy-tok-url/"
+          dashboard_url: "/dummy-dash-url/",
+          token_service_url: "/dummy-tok-url/"
         },
         intl: {
           locale: "en",
@@ -475,9 +475,9 @@ describe("Async component", () => {
     },
     config: {
       csrf_token: "csrf-token",
-      DASHBOARD_URL: "/dummy-dash-url/",
-      TOKEN_SERVICE_URL: "/dummy-tok-url/",
-      SECURITY_URL: "/dummy-sec-url"
+      dashboard_url: "/dummy-dash-url/",
+      token_service_url: "/dummy-tok-url/",
+      security_url: "/dummy-sec-url"
     },
     intl: {
       locale: "en",

@@ -5,41 +5,22 @@ import { Form } from "reactstrap";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import CustomInput from "../login/components/Inputs/CustomInput";
 
+// Check the user supplied value against a regexp pattern provided when creating the ConfirmModal.
 const validate = (values, props) => {
-  let inputName = props.inputName;
-  const errors = {};
-  const code = values[inputName];
-  const spacePattern = /^\s+$/;
-  // Backend use UUID format for emailconfirmcode: https://en.wikipedia.org/wiki/Universally_unique_identifier#Format
-  const emailUUIDFormatPattern = /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
-  const phoneLengthPattern = /^[A-Za-z0-9]{10,12}$/;
-  const securityKeyLengthPattern = /^.{1,50}$/;
+  const inputName = props.inputName;
+  const value = values[inputName];
+  let errors = {};
+  if (!value || !value.trim()) {
+    errors[inputName] = "required";
+    return errors;
+  }
 
-  if (!code) {
-    errors[inputName] = "required";
+  if (!props.validationPattern.test(value.trim())){
+    errors[inputName] = props.validationError;
+    return errors;
   }
-  else if(spacePattern.test(values[inputName])){
-    errors[inputName] = "required";
-  }
-  else if(inputName.includes("email")) {
-    if (!emailUUIDFormatPattern .test(values.emailConfirmDialogControl)){
-      errors[inputName] = "emails.invalid_code";
-    }
-  }
-  else if(inputName.includes("phone")) {
-    if (!phoneLengthPattern.test(values.phoneConfirmDialogControl)){
-      errors[inputName] = "mobile.confirm_code_wrong_length";
-    }
-  }
-  else if(inputName.includes("describeWebauthnToken")) {
-    if (!securityKeyLengthPattern.test(values.describeWebauthnTokenDialogControl)){
-      errors[inputName] = "security.confirm_security_length";
-    }
-  }
-  return errors;
 };
-
-class ConfirmModalForm extends Component {
+class ConfirmModalForm extends Component { 
   render() {
     return (
       <div id="modal-form">

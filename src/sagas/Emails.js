@@ -18,7 +18,7 @@ const getData = state => ({
 
 export function sendEmail(config, data) {
   return window
-    .fetch(config.EMAILS_URL + "new", {
+    .fetch(config.emails_url + "new", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -51,7 +51,7 @@ export function* requestResendEmailCode() {
 
 export function requestResend(config, data) {
   return window
-    .fetch(config.EMAILS_URL + "resend-code", {
+    .fetch(config.emails_url + "resend-code", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -77,7 +77,7 @@ export function* requestVerifyEmail() {
 
 export function requestVerify(config, data) {
   return window
-    .fetch(config.EMAILS_URL + "verify", {
+    .fetch(config.emails_url + "verify", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -102,7 +102,7 @@ export function* requestRemoveEmail() {
 
 export function requestRemove(config, data) {
   return window
-    .fetch(config.EMAILS_URL + "remove", {
+    .fetch(config.emails_url + "remove", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -127,7 +127,7 @@ export function* requestMakePrimaryEmail() {
 
 export function requestMakePrimary(config, data) {
   return window
-    .fetch(config.EMAILS_URL + "primary", {
+    .fetch(config.emails_url + "primary", {
       ...postRequest,
       body: JSON.stringify(data)
     })

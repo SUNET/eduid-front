@@ -2,17 +2,25 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import ConfirmModal from "../containers/ConfirmModal";
+import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
+
 class LetterProofingButton extends Component {
   render() {
+    const { disabled } = this.props;
     return (
       <div>
         <div className="vetting-button">
           <button
-            disabled={this.props.disabled}
+            disabled={disabled}
             onClick={this.props.handleLetterProofing}
           >
             <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
+              { disabled &&
+                <div className="text explanation">
+                  {this.props.translate("verify-identity.vetting_explanation_add_nin")}
+                </div>
+              }
             </div>
             <div className="name">
               {this.props.translate("letter.button_text_request")}
@@ -37,6 +45,8 @@ class LetterProofingButton extends Component {
           closeModal={this.props.handleStopVerificationLetter}
           handleConfirm={this.props.sendConfirmationCode}
           with_resend_link={false}
+          validationPattern={shortCodePattern}
+          validationError={"confirmation.code_invalid_format"}
         />
       </div>
     );

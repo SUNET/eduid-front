@@ -200,7 +200,7 @@ describe("OpenidConnectFreja Container before initiated vetting", () => {
       openid_freja_data: {
         iaRequestData: ''
       },
-      config: {OIDC_PROOFING_FREJA_URL: 'http://localhost/services/oidc-proofing/freja/proofing'},
+      config: {oidc_proofing_freja_url: 'http://localhost/services/oidc-proofing/freja/proofing'},
     });
 
     mockProps = {
@@ -254,7 +254,7 @@ describe("OpenidConnectFreja Container after initiated vetting", () => {
       openid_freja_data: {
         iaRequestData: 'abc123'
       },
-      config: {OIDC_PROOFING_FREJA_URL: 'http://localhost/services/oidc-proofing/freja/proofing'},
+      config: {oidc_proofing_freja_url: 'http://localhost/services/oidc-proofing/freja/proofing'},
     });
 
     mockProps = {
@@ -289,7 +289,7 @@ describe("OpenidConnectFreja Container after initiated vetting", () => {
 
 const state = {
   config: {
-    OIDC_PROOFING_FREJA_URL:
+    oidc_proofing_freja_url:
       "http://localhost/services/oidc-proofing/freja/proofing",
     csrf_token: "csrf-token"
   },
@@ -325,7 +325,7 @@ describe("Async component", () => {
       csrf_token: "csrf-token"
     };
     expect(oidcFrejaData.value).toEqual(
-      call(fetchFrejaData, state.config.OIDC_PROOFING_FREJA_URL, data)
+      call(fetchFrejaData, state.config.oidc_proofing_freja_url, data)
     );
 
     const action = {

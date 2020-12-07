@@ -14,14 +14,14 @@
     "defaultMessage": "Code is formatted as five groups of characters and numbers, separated by hyphens"
   },
   {
-    "id": "emails.invalid_code",
+    "id": "confirmation.code_invalid_format",
     "defaultMessage": "Invalid confirmation code",
     "description": "error text for invalid confirmation code"
   },
   {
-    "id": "mobile.confirm_code_wrong_length",
-    "description": "Error message for wrong length",
-    "defaultMessage": "Code must be 10-12 characters long, only letters and numbers allowed"
+    "id": "security.description_invalid_format",
+    "description": "Error message for max length",
+    "defaultMessage": "The description is too long"
   },
   {
     "id": "mobile.confirm_mobile_placeholder",
@@ -37,11 +37,6 @@
     "id": "security.help_text",
     "defaultMessage": "max 50 characters",
     "description": "Help text for security key max length"
-  },
-  {
-    "id": "security.confirm_security_length",
-    "description": "Error message for max length",
-    "defaultMessage": "The max length of 50 characters is reached"
   },
   {
     "id": "chpass.help-text-newpass",

@@ -9,11 +9,11 @@ const mapStateToProps = (state, props) => {
   const confirming = state.letter_proofing.confirmingLetter;
   const valid_nin = isValid("nins")(state);
   const confirmingLetter = confirming && valid_nin;
+  let withoutNin = !state.nins.nins[0]
   return {
-    disabled: !valid_nin,
+    disabled: withoutNin,
     confirmingLetter: confirmingLetter,
     verifyingLetter: state.letter_proofing.verifyingLetter,
-    // nin: state.nins.nin,
   };
 };
 
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, props) => {
       const data = {
         code: document
           .getElementById("confirmation-code-area")
-          .querySelector("input").value,
+          .querySelector("input").value.trim(),
       };
       dispatch(actions.postLetterProofingVerificationCode(data));
       dispatch(actions.stopLetterVerification());

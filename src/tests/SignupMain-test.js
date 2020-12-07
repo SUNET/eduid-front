@@ -35,8 +35,8 @@ const fakeState = {
     tou: "",
     is_app_loaded: true,
     //is_fetching: false,
-    DEBUG: true,
-    available_languages: {}
+    debug: true,
+    available_languages: []
   },
   captcha: {
     captcha_verification: ""
@@ -208,8 +208,8 @@ describe("SignupMain reducer", () => {
     tou: "",
     is_app_loaded: false,
     //is_fetching: false,
-    DEBUG: true,
-    available_languages: {}
+    debug: true,
+    available_languages: []
   };
 
   it("Receives app loaded action", () => {

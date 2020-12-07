@@ -3,8 +3,8 @@ import * as actions from "./init_actions";
 const initData = {
   csrf_token: "",
   error: false,
-  DEBUG: true,
-  AVAILABLE_LANGUAGES: [],
+  debug: true,
+  available_languages: [],
   extra_security: {}
 };
 

@@ -16,7 +16,7 @@ const mapStateToProps = (state, props) => {
     showModal: state.openid_freja_data.showModal,
     error: state.openid_freja_data.error,
     // Used until we deploy the nin component
-    proofing_methods: state.config.PROOFING_METHODS
+    proofing_methods: state.config.proofing_methods
   };
 };
 

@@ -39,7 +39,7 @@ export function* checkNINAndShowSelegModal() {
 
 export function* requestOpenidQRcode() {
   const state = yield select(state => state),
-    openid_url = state.config.OIDC_PROOFING_URL,
+    openid_url = state.config.oidc_proofing_url,
     data = {
       csrf_token: state.config.csrf_token,
       nin: state.openid_data.nin

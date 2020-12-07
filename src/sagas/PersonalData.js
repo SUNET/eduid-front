@@ -95,7 +95,7 @@ export function* requestAllPersonalData() {
 
 export function fetchAllPersonalData(config) {
   return window
-    .fetch(config.PERSONAL_DATA_URL + "all-user-data", {
+    .fetch(config.personal_data_url + "all-user-data", {
       ...getRequest
     })
     .then(checkStatus)
@@ -113,7 +113,7 @@ const getData = state => {
 
 export function sendPersonalData(config, data) {
   return window
-    .fetch(config.PERSONAL_DATA_URL + "user", {
+    .fetch(config.personal_data_url + "user", {
       ...postRequest,
       body: JSON.stringify(data)
     })

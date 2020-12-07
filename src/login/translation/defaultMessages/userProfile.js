@@ -153,7 +153,14 @@ export const userProfile = {
   "verify-identity.vetting_phone_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_phone_tagline"
-      defaultMessage={`For you with a phone number registered in your name`}
+      defaultMessage={`For you with a Swedish phone number registered in your name`}
+    />
+  ),
+
+  "verify-identity.vetting_explanation_add_nin": (
+    <FormattedMessage
+      id="verify-identity.vetting_explanation_add_nin"
+      defaultMessage={`Start by adding your ID number above`}
     />
   ),
 
@@ -330,7 +337,7 @@ export const userVetting = {
   "lmp.modal_reminder_to_confirm_title": (
     <FormattedMessage
       id="lmp.modal_reminder_to_confirm_title"
-      defaultMessage={`Your number also needs to be confrimed`}
+      defaultMessage={`Your number also needs to be confirmed`}
     />
   ),
 
@@ -1060,7 +1067,7 @@ export const userData = {
   "emails.add_new": (
     <FormattedMessage
       id="emails.add_new"
-      defaultMessage={`A new email address will recieve a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses.`}
+      defaultMessage={`A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses.`}
     />
   ),
 
