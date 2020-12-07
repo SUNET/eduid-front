@@ -25,6 +25,11 @@
     text-transform: uppercase;
     align-self: flex-start;
     text-align: left;
+    & .description {
+      margin: 0.5rem 0;
+      display: flex;
+      justify-content: space-between;
+    } 
   }
   & .name {
     align-self: flex-end;
@@ -68,10 +73,9 @@
     border-color: $gray;
     & .text {
       color: $gray;
-    }
-    & .explanation {
-      color: $black;
-      margin-top: 1rem;
+      & .description {
+        color: $black;
+      }
     }
     & .name {
       color: $gray;

@@ -65,7 +65,7 @@ class LookupMobileProofing extends Component {
             <div key="1" className="text">
               {this.props.translate("verify-identity.vetting_phone_tagline")}
               { disabled &&
-                <div className="text explanation">
+                <div className="description">
                   {this.props.translate("verify-identity.vetting_explanation_add_nin")}
                 </div>
               }

@@ -19,14 +19,14 @@
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "@fortawesome/react-fontawesome": "0.1.11",
-    "@fortawesome/fontawesome-svg-core": "^1.2.31",
-    "@fortawesome/free-solid-svg-icons": "^5.15.0",
-    "bootstrap": "^4.5.2",
+    "@fortawesome/react-fontawesome": "0.1.12",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "bootstrap": "^4.5.3",
     "intl": "^1.2.5",
     "invariant": "^2.2.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-recaptcha": "^2.3.10",
     "react-redux": "^6.0.1",
     "react-script-loader-hoc": "^1.2.2",
@@ -116,5 +116,16 @@
     "whatwg-fetch": "^2.0.4",
     "yargs": "^11.0.0",
     "zxcvbn": "^4.4.2"
+  },
+  "jest": {
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "testEnvironment": "node",
+    "testMatch": [
+       "/__tests__/**/*-test.[jt]s?(x)", "**/?(*)+(test).[jt]s?(x)" 
+    ]
   }
 }

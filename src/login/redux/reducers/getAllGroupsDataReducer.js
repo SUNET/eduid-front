@@ -1,8 +1,11 @@
-import * as actions from "../actions/getAllGroupsDataActions";
+import * as actions from "../actions/getAllDataGroupActions";
 
 const groupsData = {
   message: "",
-  data: {},
+  loading: true,
+  data: [],
+  member_of: [],
+  owner_of: [],
 };
 
 let groupsDataReducer = (state = groupsData, action) => {
@@ -10,7 +13,10 @@ let groupsDataReducer = (state = groupsData, action) => {
     case actions.GET_GROUP_MANAGEMENT_ALL_DATA_SUCCESS:
       return {
         ...state,
-        data: { ...action.payload },
+        loading: false,
+        data: action.payload,
+        member_of: action.payload.member_of,
+        owner_of: action.payload.owner_of,
       };
     default:
       return state;

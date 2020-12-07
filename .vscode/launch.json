@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node", // Jest runs under node, that's why we set up this value
+            "request": "launch", // launch a program.
+            "name": "Jest Current File", // // This is the configuration name you will see in debug sidebar
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": [
+                "${relativeFile}"
+            ],
+            // args: test: we are indicating that we want to launch tests.
+            // runInBand: run all tests serially in the current process, rather than creating a worker pool of child processes that run tests. Normally Jest parallelizes test runs across processes but it is hard to debug many processes at the same time.
+            // no-cache: Disable the cache, Jest caches transformed module files to speed up test execution (in some scenarios this can lead to issues when debugging).
+            // watchAll: Watch files for changes and rerun all tests when there is an update on any of the files. Since we are performing a single run we set this flag to false.
+            "env": {
+                "cross-env": "1",
+                "NODE_PATH": "./src",
+                "__PLATFORM__": " WEB",
+            },
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+        }
+    ]
+}

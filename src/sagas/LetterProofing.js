@@ -1,14 +1,12 @@
 import { put, select, call } from "redux-saga/effects";
 import {
   checkStatus,
-  ajaxHeaders,
   putCsrfToken,
   postRequest,
   getRequest,
   failRequest
 } from "sagas/common";
 import * as actions from "actions/LetterProofing";
-import { eduidRMAllNotify } from "actions/Notifications";
 
 export function* sendGetLetterProofing() {
   try {
@@ -17,15 +15,14 @@ export function* sendGetLetterProofing() {
     const response = yield call(fetchGetLetterProofing, state.config, nin);
     yield put(putCsrfToken(response));
     yield put(response);
-    yield put(eduidRMAllNotify());
   } catch (error) {
     yield* failRequest(error, actions.getLetterProofingStateFail);
   }
 }
 
-export function fetchGetLetterProofing(config, nin) {
+export function fetchGetLetterProofing(config) {
   return window
-    .fetch(config.letter_proofing_url + "proofing?nin=" + nin, {
+    .fetch(config.letter_proofing_url + "proofing", {
       ...getRequest
     })
     .then(checkStatus)
@@ -39,7 +36,6 @@ export function* sendLetterProofing() {
         nin: state.nins.nin,
         csrf_token: state.config.csrf_token
       };
-
     const response = yield call(fetchLetterProofing, state.config, data);
     yield put(putCsrfToken(response));
     yield put(response);

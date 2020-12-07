@@ -1,10 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Route, NavLink, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
-import DashboardNav from "./DashboardNav";
 import PersonalDataContainer from "containers/PersonalData";
 import EmailsContainer from "containers/Emails";
 import MobileContainer from "containers/Mobile";
@@ -12,10 +10,27 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
-import Groups from "../login/components/App/DashboardApp/Settings/Groups/GroupsContainer";
+import GroupManagement from "../login/components/GroupManagement/GroupManagementContainer";
 
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "style/base.scss";
+import checkForCookie from "../login/app_utils/checkForCookie";
+
+const RenderGroups = () => {
+  // functionality to be removed when groups feature is released
+  const cookieName = "show-groups";
+  const cookiePattern = "";
+  const showComponent = checkForCookie(cookieName, cookiePattern);
+  console.log("this is showComponent in RenderGroups:", showComponent);
+  return (
+    <Fragment>
+      {showComponent && (
+        <Route
+          path="/profile/settings/personaldata"
+          component={GroupManagement}
+        />
+      )}
+    </Fragment>
+  );
+};
 
 class Settings extends Component {
   render() {
@@ -30,7 +45,6 @@ class Settings extends Component {
           path="/profile/settings/personaldata"
           render={(props) => <PersonalDataContainer {...props} />}
         />
-
         <Route
           path="/profile/settings/personaldata"
           component={EmailsContainer}
@@ -39,7 +53,7 @@ class Settings extends Component {
           path="/profile/settings/personaldata"
           component={MobileContainer}
         />
-        <Route path="/profile/settings/personaldata" component={Groups} />
+        <RenderGroups />
         <Route
           path="/profile/settings/personaldata"
           component={ChangePasswordDisplay}
@@ -65,18 +79,4 @@ class Settings extends Component {
   }
 }
 
-// export default Settings;
-const mapStateToProps = (state, props) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch, props) => {
-  return {};
-};
-
-const SettingsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Settings);
-
-export default i18n(SettingsContainer);
+export default i18n(Settings);

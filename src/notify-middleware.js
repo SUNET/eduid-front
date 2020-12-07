@@ -19,7 +19,7 @@ const notifyAndDispatch = store => next => action => {
       setTimeout(() => {
         window.scroll(0, 0);
       }, 100);
-    } else if (action.payload && action.payload.message) {
+    } else if (action.payload && action.payload.message && !action.payload.message.includes("letter")) {
       next(actions.eduidNotify(action.payload.message, "messages"));
       setTimeout(() => {
         window.scroll(0, 0);

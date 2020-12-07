@@ -65,6 +65,7 @@ function* rootSaga() {
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestCredentials),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestSuggestedPassword),
+    takeLatest(pdataActions.GET_USERDATA_SUCCESS, sendGetLetterProofing),
     ...groupsSagas,
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     takeLatest(
@@ -116,8 +117,8 @@ function* rootSaga() {
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeLatest(letterActions.POST_LETTER_PROOFING_PROOFING, sendLetterProofing),
     takeLatest(
-      letterActions.GET_LETTER_PROOFING_PROOFING,
-      sendGetLetterProofing
+      letterActions.GET_LETTER_PROOFING_PROOFING,sendGetLetterProofing
+      
     ),
     takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
     takeLatest(ninActions.POST_NIN, postNin),

@@ -9,15 +9,38 @@ table {
   table-layout: fixed;
   & tbody {
     margin-bottom: 1rem;
+    & th:first-child{
+      padding-left: 1.25rem;
+    }
+    th {
+      padding-top: 0.625rem;
+      line-height: 1;
+    }
+    & tr.webauthn-token-holder {
+      color: $gray;
+      & td:first-child{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }  
+    & tr.webauthn-token-holder.verified {
+      color: $black;
+    }
     & tr {
-      background-color: white;
+      background-color:$white;
       height: 3rem;
+      & td:first-child{
+        padding-left: 1.25rem;
+        padding-right: 1.5rem;
+      }
       & td {
         word-wrap: break-word;
         text-align: left;
         vertical-align: middle;
         line-height: 1;
-        &.value-status {
+        &.value-status,
+        &.verify {
           width: 25%;
           & button {
             margin: 0;
@@ -29,76 +52,65 @@ table {
             padding: 0;
           }
         }
+        .verified {
+          text-transform: uppercase;
+          padding: 0.625rem 1.25rem;
+          font-family: "ProximaNova-Regular";
+          font-weight: 700;
+        }
         &.remove-data {
           width: 5%;
-          & .icon-button {
+          & .icon-button
+           {
             margin: 0;
             padding: 0;
           }
         }
         &.primary {
-          color: #161616;
+          color:$black;
         }
         &.unverified,
         &.verified,
         &.primary {
           padding: 0.625rem 1.25rem;
         }
+        .btn-remove-webauthn {
+          padding: 0;
+        }
       }
     }
-
-    // & th {
-    //   //   padding: 0.75rem;
-    //   background-color: white;
-    //   // border-bottom: #7c7c7c 1px solid;
-    // }
-
-    //   &.value-status {
-    //     text-align: center;
-    //     & label {
-    //       font-family: "ProximaNova-Regular";
-    //       font-weight: 400;
-    //     }
-    //   }
-    //   &.data {
-    //     width: 80%;
-    //   }
-    //   &.data-remove-button,
-    //   &.status-label {
-    //     width: 10%;
-    //   }
+  }
+}
+table.table-form.passwords{
+  tr:first-child{
+    font-size: 1rem;
+    letter-spacing: 0;
+    color: $black;
+    font-family: "ProximaNova-Bold";
+    height: auto;
+  }
+  .security-name{
+    width: 36%;
+  }
+  .security-creation-date{
+    width: 21%;
+  }
+  .security-last-used-date {
+    width: 21%;
+  }
+  .security-verify-link {
+    width: 17%;
+  }
+  .security-remove-data {
+    width: 5%;
   }
 }
 
-// td table th {
-//   color: #171717;
-//   font-size: 12px;
-//   text-transform: uppercase;
-//   padding: 0.75rem;
-//   background-color: transparent;
-// }
-
-// span.nobutton,
-// .primary,
-// tr.primary {
-//   font-weight: 300;
-//   color: $black;
-// }
-
-// span.nobutton,
-// button.verify-status-label {
-//   font-size: 12px;
-// }
-
-// span.nobutton {
-//   font-family: "ProximaNova-Regular";
-//   text-transform: uppercase;
-// }
-
-// @media (max-width: 568px) {
-//   table {
-//     font-size: 1.25rem;
-//     font-weight: 400;
-//     // color: #161616;
-//   }
-// }
+@media (max-width: 568px) {
+  .security-creation-date,
+  .security-last-used-date,
+  .webauthn-token-holder td:nth-child(2),
+  .webauthn-token-holder td:nth-child(3){
+    display: none;
+  }
+}

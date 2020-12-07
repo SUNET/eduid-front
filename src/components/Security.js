@@ -50,9 +50,9 @@ class Security extends Component {
       // verify button/ verified badge
       if (cred.verified) {
         btnVerify = (
-          <span className="nobutton verified" disabled>
+          <label className="nobutton verified" disabled>
             {this.props.translate("security.verified")}
-          </span>
+          </label>
         );
       } else {
         btnVerify = (
@@ -79,7 +79,7 @@ class Security extends Component {
       }
 
       return (
-        <tr key={index} className="webauthn-token-holder" data-token={cred.key}>
+        <tr key={index} className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
           <td>{cred.description}</td>
           <td
             data-toggle="tooltip"
@@ -124,11 +124,11 @@ class Security extends Component {
         <table className="table-form passwords">
           <tbody>
             <tr>
-              <th>{this.props.translate("security.description")}</th>
-              <th>{this.props.translate("security.creation_date")}</th>
-              <th>{this.props.translate("security.last_used")}</th>
-              <th />
-              <th />
+              <th className="security-name">{this.props.translate("security.description")}</th>
+              <th className="security-creation-date">{this.props.translate("security.creation_date")}</th>
+              <th className="security-last-used-date">{this.props.translate("security.last_used")}</th>
+              <th className="security-verify-link" />
+              <th className="security-remove-data"/>
             </tr>
             {secirutykey_table_data}
           </tbody>
