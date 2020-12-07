@@ -8,6 +8,8 @@
     "test": "karma start",
     "test-headless": "karma start headless.karma.conf.js",
     "debug": "karma start --single-run=false --debug --browser Chrome",
+    "copy-bundles": "copy-and-watch build/*.{json,js,woff,woff2,ttf} ../../../../Mount/eduid-front/build",
+    "watch-bundles": "copy-and-watch build/*.{json,js,woff,woff2,ttf} ../../../../Mount/eduid-front/build --watch --skip-initial-copy",
     "build": "webpack --config webpack.staging.config.js --mode development",
     "build-pro": "webpack --config webpack.prod.config.js --mode production",
     "manage:translations": "node ./translationRunner.js",
