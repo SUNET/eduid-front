@@ -38,7 +38,7 @@ webpackProd.plugins = [
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new webpack.optimize.OccurrenceOrderPlugin(true),
   new CompressionPlugin({
-    asset: "[path].gz[query]",
+    filename: "[path].gz[query]",
     algorithm: "gzip",
     test: /\.js$|\.css$|\.html$/,
     threshold: 10240,
