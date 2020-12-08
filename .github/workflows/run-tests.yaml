@@ -34,3 +34,6 @@ jobs:
       - name: Audit including devDependencies
         # Don't error out on audit warnings about devDependencies
         run: npm audit || true
+      
+      - name: Run linters
+        run: npm run lint
