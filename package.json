@@ -8,8 +8,6 @@
     "test": "karma start",
     "test-headless": "karma start headless.karma.conf.js",
     "debug": "karma start --single-run=false --debug --browser Chrome",
-    "copy-bundles": "copy-and-watch build/*.{json,js,woff,woff2,ttf} ../../../../Mount/eduid-front/build",
-    "watch-bundles": "copy-and-watch build/*.{json,js} ../../../../Mount/eduid-front/build --watch --skip-initial-copy",
     "build": "webpack --config webpack.staging.config.js --mode development",
     "build-pro": "webpack --config webpack.prod.config.js --mode production",
     "manage:translations": "node ./translationRunner.js",
@@ -18,7 +16,9 @@
     "manage:plugins:pro": "node ./buildPlugins.prod.js",
     "serve": "webpack-dev-server --open",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix src"
+    "lint:fix": "eslint --fix src",
+    "copy:bundles": "copy-and-watch build/*.{json} ../../../../Mount/eduid-front/build",
+    "watch:bundles": "copy-and-watch build/*.{js} ../../../../Mount/eduid-front/build --watch --skip-initial-copy"
   },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
