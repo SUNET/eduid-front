@@ -400,7 +400,7 @@
   "verify-identity.vetting_letter_order_new_code": "Tryck här om du vill beställa en ny kod",
   "verify-identity.vetting_letter_received": "Tryck här igen när du har fått brevet",
   "verify-identity.vetting_letter_sent": "Ett brev skickades",
-  "verify-identity.vetting_letter_valid": "Brevet är giltig till",
+  "verify-identity.vetting_letter_valid": "Brevet är giltigt till",
   "verify-identity.vetting_phone_tagline": "För dig som har ett svenskt telefonabonnemang i ditt eget namn",
   "verify-identity.vetting_post_tagline": "För dig som har tillgång till din folkbokföringsaddress"
 }
