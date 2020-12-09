@@ -227,7 +227,9 @@ button.btn-link {
   
   button.modal-button.ok-button,
   a.modal-button.ok-button,
-  button.btn-secondary {
+  button.btn-secondary,
+  #security-webauthn-button,
+  #connect-orcid-button{
     width: 100%;
   }
   button.btn.btn-link,
