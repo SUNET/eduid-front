@@ -1,7 +1,7 @@
 import React from "react";
 import OpenidConnectContainer from "containers/OpenidConnect";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
-import LetterProofingContainer from "containers/LetterProofing";
+import LetterProofingContainer from "./login/components/LetterProofing/LetterProofingContainer"
 import LookupMobileProofingContainer from "containers/LookupMobileProofing";
 import EidasContainer from "containers/Eidas";
 

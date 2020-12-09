@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import VerifyIdentity from "containers/VerifyIdentity";
 import AddNin from "containers/AddNin";
-import LetterProofing from "components/LetterProofing";
+import LetterProofing from "../login/components/LetterProofing/LetterProofing";
 import LookupMobileProofing from "components/LookupMobileProofing";
 import Eidas from "components/Eidas";
 const mock = require("jest-mock");
