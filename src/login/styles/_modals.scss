@@ -75,7 +75,10 @@ h5.modal-title {
 }
 
 .resend-code-container {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  & a {
+    font-size: 1rem;
+  }
 }
 
 // temporary styling for register tou
