@@ -16,7 +16,9 @@
     "manage:plugins:pro": "node ./buildPlugins.prod.js",
     "serve": "webpack-dev-server --open",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix src"
+    "lint:fix": "eslint --fix src",
+    "copy:bundles": "copy-and-watch build/*.{js,ttf,woff,woff2,map} ~/Mount/eduid-front/build",
+    "watch:bundles": "copy-and-watch build/*.{js,ttf,woff,woff2,map} ~/Mount/eduid-front/build --watch --skip-initial-copy"
   },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
@@ -57,6 +59,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
     "chai": "^4.1.2",
+    "copy-and-watch": "^0.1.5",
     "compression-webpack-plugin": "^5.0.2",
     "css-loader": "^0.28.11",
     "enzyme": "^3.7.0",
@@ -132,7 +135,8 @@
     ],
     "testEnvironment": "node",
     "testMatch": [
-       "/__tests__/**/*-test.[jt]s?(x)", "**/?(*)+(test).[jt]s?(x)" 
+      "/__tests__/**/*-test.[jt]s?(x)",
+      "**/?(*)+(test).[jt]s?(x)"
     ]
   }
 }
