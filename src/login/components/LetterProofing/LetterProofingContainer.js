@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
-import LetterProofingButton from "components/LetterProofing";
-import * as actions from "actions/LetterProofing";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
+import LetterProofingButton from "./LetterProofing";
+import * as actions from "../../../actions/LetterProofing";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
   const confirming = state.letter_proofing.confirmingLetter;
