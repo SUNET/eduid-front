@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
-import LetterProofingButton from "components/LetterProofing";
-import * as actions from "actions/LetterProofing";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
+import LetterProofingButton from "./LetterProofing";
+import * as actions from "../../../actions/LetterProofing";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const confirming = state.letter_proofing.confirmingLetter;
   const valid_nin = isValid("nins")(state);
   const confirmingLetter = confirming && valid_nin || state.letter_proofing.letter_expired;
@@ -19,9 +19,9 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    confirmLetterProofing: function(e) {
+    confirmLetterProofing: function() {
       dispatch(actions.postLetterProofingSendLetter());
     },
     sendConfirmationCode: function(e) {
@@ -34,10 +34,10 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(actions.postLetterProofingVerificationCode(data));
       dispatch(actions.stopLetterVerification());
     },
-    handleStopConfirmationLetter: function(e) {
+    handleStopConfirmationLetter: function() {
       dispatch(actions.stopLetterConfirmation());
     },
-    handleStopVerificationLetter: function(e) {
+    handleStopVerificationLetter: function() {
       dispatch(actions.stopLetterVerification());
     }
   };

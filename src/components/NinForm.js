@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import { ButtonGroup, Form } from "reactstrap";
+import { Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
@@ -73,13 +72,13 @@ NinForm = reduxForm({
   validate: validate,
 })(NinForm);
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     initialValues: { nin: state.nins.nin },
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     addNin: function (e) {
       e.preventDefault();

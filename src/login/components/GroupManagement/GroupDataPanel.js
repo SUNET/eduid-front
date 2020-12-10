@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import GroupList from "./GroupList";
 import EditMode from "./EditMode/EditMode";

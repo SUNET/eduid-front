@@ -4,13 +4,13 @@ import { history } from "components/SignupMain";
 import * as actions from "actions/Captcha";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     recaptcha_key: state.config.recaptcha_public_key
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     loadedCaptcha: () => {
       console.log("Loaded recaptcha");
@@ -18,10 +18,10 @@ const mapDispatchToProps = (dispatch, props) => {
     handleCaptcha: response => {
       dispatch(actions.verifyCaptcha(response));
     },
-    sendCaptcha: e => {
+    sendCaptcha: () => {
       dispatch(actions.postCaptcha());
     },
-    cancelCaptcha: e => {
+    cancelCaptcha: () => {
       history.push("email");
     }
   };

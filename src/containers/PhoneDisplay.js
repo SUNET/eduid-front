@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import PhoneDisplay from "components/PhoneDisplay";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let primaryPhoneStatus = "";
   const primaryPhone = state.phones.phones.filter(phone => phone.primary);
   primaryPhone.length === 1
@@ -15,7 +15,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {};
 };
 

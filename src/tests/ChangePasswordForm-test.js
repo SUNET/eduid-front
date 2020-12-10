@@ -3,7 +3,6 @@ import expect from "expect";
 import { shallow, mount } from "enzyme/build";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-intl-redux";
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import ChangePasswordForm from "components/ChangePasswordForm";
 
 const mock = require("jest-mock");

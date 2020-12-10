@@ -5,10 +5,7 @@ import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import VerifyIdentity from "containers/VerifyIdentity";
-import AddNin from "containers/AddNin";
-import LetterProofing from "components/LetterProofing";
-import LookupMobileProofing from "components/LookupMobileProofing";
-import Eidas from "components/Eidas";
+
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
@@ -66,7 +63,7 @@ describe("VerifyIdentity component, no nin added ", () => {
       wrapper
     };
   }
-  const state = { ...fakeState };
+
   it("Renders a header", () => {
     const { wrapper } = setupComponent();
     const header = wrapper.find("h4");
@@ -87,13 +84,6 @@ describe("VerifyIdentity component, no nin added ", () => {
 });
 
 describe("VerifyIdentity component, when nin is saved", () => {
-  const fakeStore = state => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state })
-  });
-
   const fakeState = {
     nins: {
       nins: []
@@ -122,18 +112,6 @@ describe("VerifyIdentity component, when nin is saved", () => {
     }
   };
 
-  function setupComponent() {
-    const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
-        <MemoryRouter>
-          <VerifyIdentity />
-        </MemoryRouter>
-      </Provider>
-    );
-    return {
-      wrapper
-    };
-  }
   const state = { ...fakeState };
   state.config.is_configured = true;
   state.nins.nins = [
@@ -174,13 +152,6 @@ describe("VerifyIdentity component, when nin is saved", () => {
 });
 
 describe("VerifyIdentity component, when nin is saved", () => {
-  const fakeStore = state => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state })
-  });
-
   const fakeState = {
     nins: {
       nins: []
@@ -209,18 +180,6 @@ describe("VerifyIdentity component, when nin is saved", () => {
     }
   };
 
-  function setupComponent() {
-    const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
-        <MemoryRouter>
-          <VerifyIdentity />
-        </MemoryRouter>
-      </Provider>
-    );
-    return {
-      wrapper
-    };
-  }
   const state = { ...fakeState };
   state.config.is_configured = true;
   state.nins.nins = [

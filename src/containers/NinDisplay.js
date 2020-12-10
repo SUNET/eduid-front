@@ -3,11 +3,11 @@ import NinDisplay from "components/NinDisplay";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import * as actions from "actions/Nins";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleDelete: function (e) {
       const ninNumber = e.target.closest(".profile-grid-cell").children[1]

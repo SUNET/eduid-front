@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ReactDom from "react-dom";
 import { Spinner } from "spin.js";
 
 import "../login/styles/index.scss";

@@ -1,15 +1,9 @@
 const mock = require("jest-mock");
 import React from "react";
-import ReactDOM from "react-dom";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import fetch from "whatwg-fetch";
-import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
+import { mount } from "enzyme";
+import expect from "expect";
 import * as actions from "actions/LookupMobileProofing";
 import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
-import LookupMobileProofing from "components/LookupMobileProofing";
-
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 import LookupMobileProofingContainer from "containers/LookupMobileProofing";

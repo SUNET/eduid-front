@@ -1,11 +1,13 @@
 import React from "react";
 import expect from "expect";
-import { put, call, select } from "redux-saga/effects";
-
+import { put, call } from "redux-saga/effects";
+import { shallow } from "enzyme";
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import ResendCodeContainer from "containers/ResendCode";
 import * as actions from "actions/ResendCode";
 import { resendCode, requestResendCode } from "sagas/ResendCode";
+import { IntlProvider } from "react-intl";
+import EmailInUseContainer from "containers/EmailInUse";
 
 describe("ResendCode Component", () => {
   it("Renders the email in use component", () => {
@@ -101,7 +103,6 @@ describe("Resend code async actions", () => {
         csrf_token: "dummy-token"
       }
     });
-    const url = SIGNUP_SERVICE_URL + "resend-verification";
     const generator = resendCode();
     let next = generator.next();
 

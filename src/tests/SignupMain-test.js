@@ -3,7 +3,7 @@ import React from "react";
 import { Provider } from "react-intl-redux";
 import { mount } from "enzyme";
 import expect from "expect";
-import { put, call, select } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 
 import SignupMainContainer from "containers/SignupMain";
 import * as signupActions from "actions/SignupMain";
@@ -390,11 +390,11 @@ describe("SignupMain reducer", () => {
 
 describe("SignupMain async actions", () => {
   it("Tests the request config saga", () => {
-    const state = getState({
-      config: {
-        csrf_token: "dummy-token"
-      }
-    });
+    // const state = getState({
+    //   config: {
+    //     csrf_token: "dummy-token"
+    //   }
+    // });
     const url = SIGNUP_CONFIG_URL;
     const generator = requestConfig();
     let resp = generator.next();

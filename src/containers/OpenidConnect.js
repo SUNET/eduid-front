@@ -6,9 +6,8 @@ import {
   showOpenidSelegModal,
   hideOpenidSelegModal
 } from "../actions/OpenidConnect";
-import { getNins } from "../actions/Nins";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     qr_img: state.openid_data.qr_img,
     qr_code: state.openid_data.qr_code,
@@ -18,13 +17,13 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleShowModal: function(e) {
+    handleShowModal: function() {
       dispatch(showOpenidSelegModal());
       dispatch(eduidRMAllNotify());
     },
-    handleHideModal: function(e) {
+    handleHideModal: function() {
       dispatch(hideOpenidSelegModal());
     }
   };

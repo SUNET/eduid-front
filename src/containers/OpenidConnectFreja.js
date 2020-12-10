@@ -9,7 +9,7 @@ import {
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     iaRequestData: state.openid_freja_data.iaRequestData,
     nin: state.openid_freja_data.nin,
@@ -20,19 +20,19 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleInitializeFrejaProofing: function(e) {
+    handleInitializeFrejaProofing: function() {
       dispatch(postOpenidFreja());
     },
-    handleFetchFrejaProofing: function(e) {
+    handleFetchFrejaProofing: function() {
       dispatch(getOpenidFreja());
     },
-    handleShowModal: function(e) {
+    handleShowModal: function() {
       dispatch(eduidRMAllNotify());
       dispatch(showOpenidFrejaModal());
     },
-    handleHideModal: function(e) {
+    handleHideModal: function() {
       dispatch(hideOpenidFrejaModal());
     }
   };

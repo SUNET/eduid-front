@@ -3,9 +3,7 @@ import React from "react";
 import { Provider } from "react-intl-redux";
 import { mount } from "enzyme";
 import expect from "expect";
-import { put, call, select } from "redux-saga/effects";
-
-import EduIDButton from "components/EduIDButton";
+import { put, call } from "redux-saga/effects";
 import ActionMainContainer from "containers/ActionMain";
 import * as actions from "actions/ActionMain";
 import actionMainReducer from "reducers/ActionMain";
@@ -276,11 +274,11 @@ window.ACTIONS_SERVICE_URL = "/services/actions2/";
 
 describe("ActionMain async actions", () => {
   it("Tests the request config saga", () => {
-    const state = getState({
-      config: {
-        csrf_token: "dummy-token"
-      }
-    });
+    // const state = getState({
+    //   config: {
+    //     csrf_token: "dummy-token"
+    //   }
+    // });
     const url = ACTIONS_SERVICE_URL + "config";
     const generator = requestConfig();
     let resp = generator.next();
@@ -304,11 +302,11 @@ describe("ActionMain async actions", () => {
   });
 
   it("Tests the request next action saga", () => {
-    const state = getState({
-      config: {
-        csrf_token: "dummy-token"
-      }
-    });
+    // const state = getState({
+    //   config: {
+    //     csrf_token: "dummy-token"
+    //   }
+    // });
     const url = ACTIONS_SERVICE_URL + "get-actions";
     const generator = requestNextAction();
     let resp = generator.next();

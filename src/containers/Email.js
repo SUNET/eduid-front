@@ -4,7 +4,7 @@ import * as actions from "actions/Email";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { history } from "components/SignupMain";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const lang = state.intl.locale;
   let tou = "";
   if (state.config.tous !== undefined) {
@@ -17,7 +17,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleEmail: function (e) {
       e.preventDefault();

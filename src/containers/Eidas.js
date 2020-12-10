@@ -4,7 +4,7 @@ import { showEidasModal, hideEidasModal } from "actions/Eidas";
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let eidas_sp_url = state.config.eidas_url;
   let freja_idp_url = state.config.token_verify_idp;
   let verify_path = "verify-nin";
@@ -19,13 +19,13 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleShowModal: function(e) {
+    handleShowModal: function() {
       dispatch(eduidRMAllNotify());
       dispatch(showEidasModal());
     },
-    handleHideModal: function(e) {
+    handleHideModal: function() {
       dispatch(hideEidasModal());
     }
   };

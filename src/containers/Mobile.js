@@ -5,7 +5,6 @@ import {
   makePrimary,
   postMobile,
   startResendMobileCode,
-  finishConfirmation,
   startConfirmation,
   stopConfirmation,
   startVerify,
@@ -14,7 +13,7 @@ import {
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     phones: state.phones.phones,
     valid_phone: isValid("phones")(state),
@@ -25,7 +24,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleAdd: e => {
       e.preventDefault();
@@ -46,10 +45,10 @@ const mapDispatchToProps = (dispatch, props) => {
 
       dispatch(startConfirmation(data));
     },
-    handleStopConfirmation: function(e) {
+    handleStopConfirmation: function() {
       dispatch(stopConfirmation());
     },
-    handleConfirm: function(e) {
+    handleConfirm: function() {
       const data = {
         code: document
           .getElementById("confirmation-code-area")

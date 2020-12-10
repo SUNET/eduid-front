@@ -8,7 +8,7 @@ import {
 import { eduidRMAllNotify } from "actions/Notifications";
 import DeleteAccount from "components/DeleteAccount";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     credentials: state.security.credentials,
     confirming_deletion: state.security.confirming_deletion,
@@ -17,16 +17,16 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleStartConfirmationDeletion: function (e) {
+    handleStartConfirmationDeletion: function () {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationDeletion());
     },
-    handleStopConfirmationDeletion: function (e) {
+    handleStopConfirmationDeletion: function () {
       dispatch(stopConfirmationDeletion());
     },
-    handleConfirmationDeletion: function (e) {
+    handleConfirmationDeletion: function () {
       dispatch(confirmDeletion());
     }
   };

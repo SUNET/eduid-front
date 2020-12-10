@@ -3,11 +3,11 @@ import { withRouter } from "react-router-dom";
 import InjectIntl from "../../../../translation/InjectIntl_HOC_factory";
 import SetNewPassword from "./SetNewPassword";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (props) => {
   return {
     handleGetConfirmCode(e) {
       e.preventDefault();

@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import PersonalData from "components/PersonalData";
-import { postUserdata, changeUserdata } from "actions/PersonalData";
+import { postUserdata } from "actions/PersonalData";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let langs = [];
   if (state.config.available_languages !== undefined) {
     langs = [...state.config.available_languages];
@@ -15,7 +15,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleSave: e => {
       e.preventDefault();

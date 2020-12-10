@@ -3,7 +3,7 @@ import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import CodeVerifiedContainer from "containers/CodeVerified";
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
+import { setupComponent } from "tests/SignupMain-test";
 
 describe("CodeVerified Component", () => {
   const state = {

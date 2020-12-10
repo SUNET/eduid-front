@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import Footer from "components/Footer";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let languages = {};
   if (state.config.available_languages !== undefined) {
     // Old format of lists in list, remove after config update
@@ -26,7 +26,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     changeLanguage: function(e) {
       const lang = e.target.closest(".lang-selected").dataset.lang;

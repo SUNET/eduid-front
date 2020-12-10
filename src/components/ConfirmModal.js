@@ -7,15 +7,51 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import ConfirmModalForm from "./ConfirmModalForm";
 import EduIDButton from "components/EduIDButton";
 
-
+const RenderCloseButton = ({closeModal}) => {
+  return (
+    <div className="close-button-container">
+      <EduIDButton
+        className="modal-button cancel-button"
+        onClick={closeModal}
+      >
+      <svg
+        className="remove"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M7 0h2v16H7z" />
+        <path d="M0 9V7h16v2z" />
+      </svg>
+      </EduIDButton>
+    </div>
+  )
+}
 class ConfirmModal extends Component {
   render() {
+    const { 
+      with_resend_link, 
+      handleResend, 
+      resendText, 
+      modalId, 
+      closeModal, 
+      helpBlock, 
+      showModal,
+      id, 
+      formEnabled, 
+      handleConfirm, 
+      translate,
+      title
+    } = this.props;
+
     let resendMarkup = "";
-    if (this.props.with_resend_link) {
+    if (with_resend_link) {
       resendMarkup = (
         <div className="resend-code-container">
-          <a href="#" onClick={this.props.handleResend} className="resend-code">
-            {this.props.resendText}
+          <a href="#" onClick={handleResend} className="resend-code">
+            {resendText}
           </a>
         </div>
       );
@@ -23,7 +59,7 @@ class ConfirmModal extends Component {
 
     return (
       <div
-        id={this.props.modalId}
+        id={modalId}
         tabIndex="-1"
         role="dialog"
         aria-labelledby="askDialogPrompt"
@@ -32,13 +68,18 @@ class ConfirmModal extends Component {
       >
         <Modal
           id="confirm-user-data-modal"
-          isOpen={this.props.showModal}
+          isOpen={showModal}
         >
-          <ModalHeader>{this.props.title}</ModalHeader>
+          <ModalHeader>
+            <RenderCloseButton  
+              closeModal={closeModal}
+            />
+            {title}
+          </ModalHeader>
           <ModalBody>
             <ConfirmModalForm 
-              helpBlock={this.props.helpBlock} 
-              inputName={this.props.id} 
+              helpBlock={helpBlock} 
+              inputName={id} 
               {...this.props} 
             />
             {resendMarkup}
@@ -46,16 +87,10 @@ class ConfirmModal extends Component {
           <ModalFooter>
             <EduIDButton
               className="modal-button ok-button"
-              disabled={!this.props.formEnabled}
-              onClick={this.props.handleConfirm}
+              disabled={!formEnabled}
+              onClick={handleConfirm}
             >
-              {this.props.translate("cm.ok")}
-            </EduIDButton>
-            <EduIDButton
-              className="modal-button cancel-button"
-              onClick={this.props.closeModal}
-            >
-              {this.props.translate("cm.cancel")}
+              {translate("cm.ok")}
             </EduIDButton>
           </ModalFooter>
         </Modal>

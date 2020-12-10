@@ -1,17 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import fetch from "whatwg-fetch";
-import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
+import expect from "expect";
 import * as actions from "actions/OpenidConnectFreja";
 import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
-import OpenidConnectFreja from "components/OpenidConnectFreja";
-
-import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
-import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
@@ -303,7 +293,6 @@ const state = {
 };
 
 import {
-  checkNINAndShowModal,
   initializeOpenidFrejaData,
   fetchFrejaData
 } from "../sagas/OpenidConnectFreja";

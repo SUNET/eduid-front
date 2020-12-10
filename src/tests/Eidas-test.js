@@ -1,19 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import fetch from "whatwg-fetch";
-import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
+import expect from "expect";
 import * as actions from "actions/Eidas";
 import eidasReducer from "reducers/Eidas";
-import Eidas from "components/Eidas";
-
-import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
-import EidasContainer from "containers/Eidas";
 
-const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("Eidas Actions", () => {
@@ -54,15 +43,3 @@ describe("Reducers", () => {
     });
   });
 });
-
-const state = {
-  config: {
-    eidas_url: "http://eidas.localhost",
-    token_verify_idp: "http://idp.localhost",
-    csrf_token: "csrf-token"
-  },
-  intl: {
-    locale: "en",
-    messages: messages
-  }
-};

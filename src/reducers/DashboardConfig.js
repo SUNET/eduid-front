@@ -1,15 +1,4 @@
 import * as actions from "actions/DashboardConfig";
-import * as pdataActions from "actions/PersonalData";
-import * as oidcActions from "actions/OpenidConnect";
-import * as lmobileActions from "actions/LookupMobileProofing";
-import * as ninsActions from "actions/Nins";
-import * as letterActions from "actions/LetterProofing";
-import * as secActions from "actions/Security";
-import * as orcidActions from "actions/AccountLinking";
-import * as phoneActions from "actions/Mobile";
-import * as chpassActions from "actions/ChangePassword";
-import * as frejaActions from "actions/OpenidConnectFreja";
-import * as emailsActions from "actions/Emails";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {

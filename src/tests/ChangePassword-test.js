@@ -1,15 +1,12 @@
 const mock = require("jest-mock");
 import React from "react";
-import { shallow, mount, render } from "enzyme";
-import { put, select, call } from "redux-saga/effects";
-import expect, { createSpy, spyOn, isSpy } from "expect";
+import { mount } from "enzyme";
+import { put, call } from "redux-saga/effects";
+import expect from "expect";
 import { BrowserRouter as Router } from "react-router-dom";
-import ChangePassword from "components/ChangePassword";
-import DeleteModal from "components/DeleteModal";
 import ChangePasswordContainer from "containers/ChangePassword";
 import * as actions from "actions/ChangePassword";
 import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
 import chpassReducer from "reducers/ChangePassword";
 import { Provider } from "react-intl-redux";
 
@@ -20,7 +17,7 @@ import {
   postPassword
 } from "sagas/ChangePassword";
 
-import { IntlProvider, addLocaleData } from "react-intl";
+import { addLocaleData } from "react-intl";
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
@@ -329,57 +326,32 @@ const fakeState = custom => ({
   }
 });
 
-function setupComponent(store, custom = false) {
-  const props = {
-    choose_custom: custom,
-    user_input: [],
-    password_entropy: 0,
-    handlePassword: mock.fn(),
-    handleChoice: mock.fn(),
-    handleStartPasswordChange: mock.fn()
-  };
-
-  const wrapper = shallow(
-    <Provider store={store}>
-      <ChangePasswordContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper
-  };
-}
-
 describe("ChangePassword Component suggested", () => {
   it("Renders", () => {
-    const store = fakeStore(fakeState(false)),
-      { wrapper, props } = setupComponent(store),
-      form = wrapper.find("form#passwordsview-form"),
-      inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
-      checkBoxCustom = wrapper.find("CheckBox"),
-      inputSuggested = wrapper.find('TextControl[name="suggested_password"]'),
-      button = wrapper.find("EduIDButton");
+    // const store = fakeStore(fakeState(false)),
+      // { wrapper } = setupComponent(store),
+      // form = wrapper.find("form#passwordsview-form"),
+      // inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
+      // checkBoxCustom = wrapper.find("CheckBox"),
+      // inputSuggested = wrapper.find('TextControl[name="suggested_password"]'),
+      // button = wrapper.find("EduIDButton");
   });
 });
 
 describe("ChangePassword Component custom", () => {
   it("Renders", () => {
-    const store = fakeStore(fakeState(true)),
-      { wrapper, props } = setupComponent(store, true),
-      form = wrapper.find("form#passwordsview-form"),
-      inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
-      checkBoxCustom = wrapper.find("CheckBox"),
-      inputCustom = wrapper.find("PasswordField"),
-      button = wrapper.find("EduIDButton");
+    // const store = fakeStore(fakeState(true)),
+    //   { wrapper, props } = setupComponent(store, true),
+    //   form = wrapper.find("form#passwordsview-form"),
+    //   inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
+    //   checkBoxCustom = wrapper.find("CheckBox"),
+    //   inputCustom = wrapper.find("PasswordField"),
+    //   button = wrapper.find("EduIDButton");
   });
 });
 
 describe("ChangePassword Container", () => {
-  let mockProps, fulldom, chooseCustom, getWrapper, dispatch, store;
-
-  const mockEvent = {
-    preventDefault: () => {}
-  };
+  let fulldom, mockProps, chooseCustom, getWrapper, store;
 
   beforeEach(() => {
     mockProps = {
@@ -393,7 +365,6 @@ describe("ChangePassword Container", () => {
     getWrapper = function(custom = false, props = mockProps) {
       const state = fakeState(custom);
       store = fakeStore(state);
-      dispatch = store.dispatch;
       const wrapper = mount(
         <Provider store={store}>
           <Router>
@@ -404,9 +375,7 @@ describe("ChangePassword Container", () => {
       return wrapper;
     };
     fulldom = getWrapper().find(ChangePasswordContainer);
-    chooseCustom = getWrapper()
-      .find(ChangePasswordContainer)
-      .props().choose_custom;
+    chooseCustom = fulldom.props().choose_custom;
   });
 
   afterEach(() => {
