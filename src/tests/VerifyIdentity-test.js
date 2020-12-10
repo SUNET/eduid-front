@@ -5,7 +5,6 @@ import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import VerifyIdentity from "containers/VerifyIdentity";
-
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
