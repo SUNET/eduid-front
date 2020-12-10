@@ -10,20 +10,27 @@ import EduIDButton from "../../../components/EduIDButton";
 const RenderCloseButton = ({ 
   closeButtonId, 
   closeModal, 
-  closeButtonText, 
-  translate 
 }) => {
   return(
-    <EduIDButton
-      id={closeButtonId}
-      className="modal-button cancel-button"
-      onClick={closeModal}
-    >
-      {
-        closeButtonText ? closeButtonText 
-        : translate("cm.cancel")
-      }
-    </EduIDButton>
+    <div className="close-button-container">
+      <EduIDButton
+        id={closeButtonId}
+        className="modal-button cancel-button"
+        onClick={closeModal}
+      >
+        <svg
+          className="remove"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M7 0h2v16H7z" />
+          <path d="M0 9V7h16v2z" />
+        </svg>
+      </EduIDButton>
+    </div>
   )
 }
 
@@ -105,7 +112,15 @@ class NotificationModal extends Component {
         data-backdrop="true"
       >
         <Modal isOpen={showModal} className={modalId}>
-          <ModalHeader>{title}</ModalHeader>
+          <ModalHeader>
+            <RenderCloseButton 
+              closeButtonId={closeButtonId}
+              closeModal={closeModal}
+              translate={translate} 
+              closeButtonText={closeButtonText} 
+            />
+            {title}
+          </ModalHeader>
           <RenderModalBody 
             modalId={modalId} 
             mainText={mainText}
@@ -118,12 +133,7 @@ class NotificationModal extends Component {
               translate={translate}
               href={href}
             />
-            <RenderCloseButton 
-              closeButtonId={closeButtonId}
-              closeModal={closeModal}
-              translate={translate} 
-              closeButtonText={closeButtonText} 
-            />
+         
           </ModalFooter>
         </Modal>
       </div>

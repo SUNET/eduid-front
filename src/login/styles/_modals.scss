@@ -4,8 +4,8 @@
 .modal {
   display: flex !important;
   justify-content: center;
-  width: calc(100% - 2rem);
-  margin: 0 1rem;
+  width: 60%;
+  margin: 0 20%;
   &  #modal-form{
     & form{
       margin-top: 0;
@@ -14,33 +14,54 @@
 }
 
 
+.modal-title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  & .close-button-container{
+    display: flex;
+    justify-content: flex-end;
+  }
+  & span {
+    padding: 0 2.25rem 1.5rem 2.25rem;
+  }
+}
+
 
 h5.modal-title {
-  font-family: "Akkurat";
-  line-height: 1.2;
-  font-weight: 700;
+  font-family: "ProximaNova-Bold";
+  line-height: 1.4;
   font-size: 1.25rem;
 }
 
 .modal-content {
-  background-color: white;
+  background-color: $white;
   border-radius: 20px;
   & .modal-header {
-    padding: 2rem;
+    border-bottom: none;
+    padding: 0;
   }
   & .modal-body {
-    background-color: #f4f4f4;
-    padding: 2rem;
+    padding: 0 2.25rem;
     display: flex;
     flex-direction: column;
+    font-size: 1.25rem;
+    line-height: 1.4;
     & button.btn.settings-button {
       margin: 0 0 1rem 0;
     }
+    & input {
+      background-color:$light-gray;
+    }
   }
   & .modal-footer {
+    border-top: none;
+    padding: 0;
     & a {
       display: flex;
       align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -49,21 +70,21 @@ h5.modal-title {
   margin-top: 70px;
   background-color: white;
   border-radius: 20px;
-  max-width: 50vw;
+  width: 100%;
   margin: auto;
 }
 
 .resend-code-container {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  & a {
+    font-size: 1rem;
+  }
 }
 
 // temporary styling for register tou
 .register-modal{
-  & .modal-header {
-    padding: 1rem 2rem;
-  }
   & .modal-body {
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 0 2rem 1rem 2rem;
     & p {
       font-size: 1rem;
       padding-bottom: 0;
@@ -154,11 +175,15 @@ p.modal-text {
     margin: 0;
   }
   .modal-content {
-    & .modal-header {
-      padding: 1rem;
-    }
+    // .modal-title {
+      // & span {
+        // font-size: 1rem;
+        // padding: 1rem 0 0 1rem;
+      // }
+    // }
     & .modal-body {
-      padding: 1rem;
+      // padding: 1rem;
+      // font-size: 1rem;
       & button.btn.settings-button {
         margin: 0 0 1rem 0;
       }
@@ -178,9 +203,9 @@ p.modal-text {
     }
   }
 
-  h5.modal-title {
-    font-size: 1rem;
-  }
+  // h5.modal-title {
+  //   font-size: 1rem;
+  // }
 
   .resend-code-container {
     margin-top: 1rem;
