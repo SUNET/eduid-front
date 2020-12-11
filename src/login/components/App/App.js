@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return [
       <Splash key="0" />,
-      <Fragment>
+      <Fragment key="0">
         <Header />
         <section id="panel">
           <Notifications />
