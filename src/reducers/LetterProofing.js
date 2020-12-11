@@ -24,7 +24,7 @@ let letterProofingReducer = (state = letterData, action) => {
         confirmingLetter: false,
         verifyingLetter: false
       };
-    case actions.GET_LETTER_PROOFING_PROOFING_SUCCESS:
+    case actions.GET_LETTER_PROOFING_PROOFING_SUCCESS: {
       let verifying = false,
         confirming = false;
       if (action.payload.letter_sent === undefined) {
@@ -38,6 +38,7 @@ let letterProofingReducer = (state = letterData, action) => {
         verifyingLetter: verifying,
         confirmingLetter: confirming
       };
+    }
     case actions.GET_LETTER_PROOFING_PROOFING_FAIL:
       return {
         ...state,

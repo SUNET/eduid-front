@@ -9,7 +9,7 @@ const ninState = {
 
 let ninsReducer = (state = ninState, action) => {
   switch (action.type) {
-    case actions.GET_NINS_SUCCESS:
+    case actions.GET_NINS_SUCCESS: {
       const nins = action.payload.nins,
         nin = nins.length ? nins[0].number : state.nin;
       return {
@@ -17,6 +17,7 @@ let ninsReducer = (state = ninState, action) => {
         ...action.payload,
         nin: nin
       };
+    }
     case actions.GET_NINS_FAIL:
       return {
         ...state,
@@ -37,7 +38,7 @@ let ninsReducer = (state = ninState, action) => {
         ...state,
         data: { ...action.payload }
       };
-    case "@@redux-form/CHANGE":
+    case "@@redux-form/CHANGE": {
       const form = {};
       if (
         action.meta.form === "nins" &&
@@ -49,6 +50,7 @@ let ninsReducer = (state = ninState, action) => {
         ...state,
         ...form
       };
+    }
     default:
       return state;
   }
