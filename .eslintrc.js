@@ -38,5 +38,10 @@ module.exports = {
         "GROUP_MGMT_URL": true,
         "ACTIONS_SERVICE_URL": true,
         "__webpack_public_path__": true
+      },
+      "settings": {
+        "react": {
+          "version": "detect"
+        }
       }
 };
