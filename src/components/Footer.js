@@ -12,13 +12,13 @@ class Footer extends Component {
         // sets the < html lang=""> to the interface language
         document.documentElement.lang = this.props.language;
         return (
-          <p key="0" className="non-selected" key={index}>
+          <p className="non-selected" key={index}>
             <span key="0">{this.props.languages[lang]}</span>
           </p>
         );
       } else {
         return (
-          <p key="0" className="lang-selected" data-lang={lang} key={index}>
+          <p className="lang-selected" data-lang={lang} key={index}>
             <a key="0" onClick={this.props.changeLanguage}>
               {this.props.languages[lang]}
             </a>
