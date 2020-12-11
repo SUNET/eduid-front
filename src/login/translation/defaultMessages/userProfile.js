@@ -969,13 +969,13 @@ export const userData = {
   ),
   /* -----  MOBILE ------- */
 
-  "mobile.resend_success": (values) => (
+  "mobile.resend_success": function(values){
     <FormattedMessage
       id="mobile.resend_success"
       defaultMessage={`New code sent to {email}`}
       values={values}
     />
-  ),
+  },
 
   "mobile.email_label": (
     <FormattedMessage id="mobile.mobile" defaultMessage={`mobile`} />
@@ -985,13 +985,13 @@ export const userData = {
     <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />
   ),
 
-  "mobile.confirm_title": (values) => (
+  "mobile.confirm_title": function(values){
     <FormattedMessage
       id="mobile.confirm_title"
       defaultMessage={`Enter the code sent to {phone} here`}
       values={values}
     />
-  ),
+  },
 
   /* ----- PERSONAL DATA------- */
   "pfilled.completion": (
@@ -1046,13 +1046,13 @@ export const userData = {
 
   /* ----- EMAILS------- */
 
-  "emails.resend_success": (values) => (
+  "emails.resend_success": function(values) {
     <FormattedMessage
       id="emails.resend_success"
       defaultMessage={`New code sent to {email}`}
       values={values}
     />
-  ),
+  },
 
   "emails.email_label": (
     <FormattedMessage id="emails.email" defaultMessage={`Email`} />
@@ -1083,13 +1083,13 @@ export const userData = {
     <FormattedMessage id="emails.button_add" defaultMessage={`Add`} />
   ),
 
-  "emails.confirm_title": (values) => (
+  "emails.confirm_title": function(values){
     <FormattedMessage
       id="emails.confirm_title"
       defaultMessage={`Click the link or enter the code sent to {email} here`}
       values={values}
     />
-  ),
+  },
 
   "emails.long_description": (
     <FormattedMessage

@@ -87,13 +87,13 @@ export const register = {
     />
   ),
 
-  "created.email-sent": (values) => (
+  "created.email-sent": function(values) {
     <FormattedMessage
       id="created.email-sent"
       defaultMessage={`Click the confirmation link sent to {email} to be able log in to eduID`}
       values={values}
     />
-  ),
+  },
 
   // eduID created
   "created.account-created": (
@@ -147,13 +147,13 @@ export const register = {
     />
   ),
 
-  "used.email-in-use": (values) => (
+  "used.email-in-use": function(values){
     <FormattedMessage
       id="used.email-in-use"
       defaultMessage={`An eduID is already using {email}`}
       values={values}
     />
-  ),
+  },
 
   // eduID registration complete
   "finish.registration-complete": (

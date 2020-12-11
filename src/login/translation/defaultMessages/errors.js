@@ -272,13 +272,13 @@ export const specificErrors = {
     />
   ),
 
-  "security.u2f_registration_error_code": values => (
+  "security.u2f_registration_error_code": function(values){
     <FormattedMessage
       id="security.u2f_registration_error_code"
       defaultMessage={`U2F failed with error code: {errorCode}`}
       values={values}
     />
-  ),
+  },
 
   // captcha error
   "signup.recaptcha-not-verified": (
