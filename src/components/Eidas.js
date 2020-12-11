@@ -18,6 +18,7 @@ class Eidas extends Component {
           // className="btn-link"
           href="https://frejaeid.com/skaffa-freja-eid/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           {this.props.translate("eidas.freja_instructions_install_link")}
         </a>
