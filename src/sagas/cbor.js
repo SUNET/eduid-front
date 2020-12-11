@@ -1,6 +1,6 @@
 var POW_2_24 = 5.960464477539063e-8,
   POW_2_32 = 4294967296;
-
+/* global POW_2_53 */
 export function encode(value) {
   var data = new ArrayBuffer(256);
   var dataView = new DataView(data);
