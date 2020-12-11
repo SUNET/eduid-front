@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { Router, Route, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 //import FetchingContext from "components/FetchingContext";
@@ -41,8 +42,9 @@ class SignupMain extends Component {
     if (this.props.email) {
       if (this.props.captcha) {
         if (this.props.code) {
+          return
         } 
-       else {
+      } else {
         redirect = `${BASE_PATH}/trycaptcha`;
       }
     }
