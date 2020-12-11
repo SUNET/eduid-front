@@ -19,7 +19,7 @@ import "../login/styles/index.scss";
 const validatePersonalData = (values) => {
   const errors = {};
   const spacePattern = /^\s+$/;
-  const withSpecialCharacters  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}()-=_+]/;
+  const withSpecialCharacters  = /[`!€%&?~#@,.<>;':"/[\]|{}()-=_+]/;
 
   ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
     if (!values[pdata]) {
