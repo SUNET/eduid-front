@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { RenderOwnerList, RenderMemberList } from "../GroupListItem";
+import EmailForm from "./EmailForm";
 
 const SingleGroup = (props) => {
   return (
@@ -45,13 +46,10 @@ const EditMode = (props) => {
         will be sent to members, but you can upgrade specific individials to
         fellow admins.
       </p>
-      <div className="group-data">
-        <div className="invite-email">
-          <label>Email addess</label>
-          <input />
-        </div>
-        {/* <SingleGroup group={props.group} /> */}
+      <div className="invite-email">
+        <EmailForm />
       </div>
+      {/* <SingleGroup group={props.group} /> */}
     </div>
   );
 };
