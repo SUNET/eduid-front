@@ -417,7 +417,7 @@ export const userVetting = {
   "eidas.initialize_proofing_help_text": (
     <FormattedHTMLMessage
       id="eidas.initialize_proofing_help_text"
-      defaultMessage={`To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app.`}
+      defaultMessage={`To use this option you will need to first create a digital ID-card in the <a href=\`https://frejaeid.com/skaffa-freja-eid/\` target=\`_blank\`>Freja eID</a> app.`}
     />
   ),
 

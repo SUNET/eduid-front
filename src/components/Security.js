@@ -5,7 +5,7 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import ConfirmModal from "../containers/ConfirmModal";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import "../login/styles/index.scss";
-
+/*global PublicKeyCredential*/
 class Security extends Component {
   checkWebauthnDevice() {
     if (
