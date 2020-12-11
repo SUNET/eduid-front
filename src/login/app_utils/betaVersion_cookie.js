@@ -1,5 +1,4 @@
 import Cookies from "js-cookie";
-/*global __webpack_public_path__*/
 // this function checks for cookie and sets the public path for the app before the app loads 
 console.log("Checking if its beta...");
 let cookie = Cookies.get("bundle-version");

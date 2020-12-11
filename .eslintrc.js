@@ -36,6 +36,7 @@ module.exports = {
         "SIGNUP_SERVICE_URL": true,
         "BASE_PATH": true,
         "GROUP_MGMT_URL": true,
-        "ACTIONS_SERVICE_URL": true
+        "ACTIONS_SERVICE_URL": true,
+        "__webpack_public_path__": true
       }
 };
