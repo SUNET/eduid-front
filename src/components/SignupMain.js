@@ -41,9 +41,8 @@ class SignupMain extends Component {
     if (this.props.email) {
       if (this.props.captcha) {
         if (this.props.code) {
-        } else {
-        }
-      } else {
+        } 
+       else {
         redirect = `${BASE_PATH}/trycaptcha`;
       }
     }
