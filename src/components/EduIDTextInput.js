@@ -13,7 +13,6 @@ const textInput = props => {
     name,
     meta,
     selectOptions,
-    componentClass,
     type,
     translate,
     disabled,

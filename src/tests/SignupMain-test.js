@@ -390,11 +390,6 @@ describe("SignupMain reducer", () => {
 
 describe("SignupMain async actions", () => {
   it("Tests the request config saga", () => {
-    // const state = getState({
-    //   config: {
-    //     csrf_token: "dummy-token"
-    //   }
-    // });
     const url = SIGNUP_CONFIG_URL;
     const generator = requestConfig();
     let resp = generator.next();
