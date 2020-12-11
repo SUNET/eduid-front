@@ -60,7 +60,7 @@ const LoadingCaptcha = ScriptLoader(
   "https://www.google.com/recaptcha/api.js?render=explicit"
 )(Captcha);
 
-export default props => (
+export default function(props){
   <FetchingContext.Consumer>
     {({ fetching, setFetching }) => (
       <LoadingCaptcha
@@ -70,4 +70,4 @@ export default props => (
       />
     )}
   </FetchingContext.Consumer>
-);
+}
