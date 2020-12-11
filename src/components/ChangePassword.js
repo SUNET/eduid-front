@@ -12,7 +12,7 @@ import ChangePasswordForm from "./ChangePasswordForm";
 import "../login/styles/index.scss";
 
 class ChangePassword extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.loadZxcvbn();
   }
 
