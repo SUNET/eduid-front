@@ -31,11 +31,26 @@ const EditMode = (props) => {
           <p>Invites</p>
         </li>
         <li>
+          <p>People</p>
+        </li>
+        <li>
           <p>Delete</p>
         </li>
       </nav>
+      <div className="title">
+        <p>Invite people to your group</p>
+      </div>
+      <p>
+        You can invite people to a group via their email address. All invites
+        will be sent to members, but you can upgrade specific individials to
+        fellow admins.
+      </p>
       <div className="group-data">
-        <SingleGroup group={props.group} />
+        <div className="invite-email">
+          <label>Email addess</label>
+          <input />
+        </div>
+        {/* <SingleGroup group={props.group} /> */}
       </div>
     </div>
   );
