@@ -28,7 +28,7 @@ module.exports = {
         "no-prototype-builtins": "off",
         "react/display-name": "off"
     },
-    "globals": { // global variables from init-config, to prevent having an error "no-undef" 
+    "globals": { // global variables from init-config and public-path, to prevent having "no-undef" errors  
         "EDUID_COOKIE_NAME": true,
         "TOKEN_SERVICE_URL": true,
         "EDUID_CONFIG_URL": true,
