@@ -6,7 +6,7 @@ import Recaptcha from "react-recaptcha";
 import FetchingContext from "components/FetchingContext";
 
 class Captcha extends Component {
-  componentWillMount() {}
+  UNSAFE_componentWillMount() {}
 
   render() {
     if (this.props.fetching === this.props.scriptsLoadedSuccessfully) {
