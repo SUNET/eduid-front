@@ -6,7 +6,7 @@ import Recaptcha from "react-recaptcha";
 import FetchingContext from "components/FetchingContext";
 
 class Captcha extends Component {
-  UNSAFE_componentWillMount() {}
+  componentWillMount() {}
 
   render() {
     if (this.props.fetching === this.props.scriptsLoadedSuccessfully) {
@@ -60,7 +60,7 @@ const LoadingCaptcha = ScriptLoader(
   "https://www.google.com/recaptcha/api.js?render=explicit"
 )(Captcha);
 
-export default function(props){
+export default props => (
   <FetchingContext.Consumer>
     {({ fetching, setFetching }) => (
       <LoadingCaptcha
@@ -70,4 +70,4 @@ export default function(props){
       />
     )}
   </FetchingContext.Consumer>
-}
+);

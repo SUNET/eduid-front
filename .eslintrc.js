@@ -22,7 +22,11 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "react/no-string-refs": "off",
+        "no-class-assign": "off",
+        "no-prototype-builtins": "off",
+        "react/display-name": "off"
     },
     "globals": { // global variables from init-config, to prevent having an error "no-undef" 
         "EDUID_COOKIE_NAME": true,
