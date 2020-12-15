@@ -6,7 +6,8 @@ import EmailForm from "./EmailForm";
 class CreateInvite extends Component {
 
   handleInviteEmail = (emailValue) => {
-    this.props.createInvite(emailValue); 
+    let groupId = this.props.groupId;
+    this.props.createInvite(emailValue, groupId);
   };
 
   render() {

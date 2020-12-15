@@ -1,21 +1,25 @@
 export const CREATE_INVITE = "CREATE_INVITE";
 
 //returned from API in response
-export const CREATE_INVITE_SUCCESS = "POST_GROUP_INVITE_INVITES_CREATE_SUCCESS";
-export const CREATE_INVITE_FAIL = "POST_GROUP_INVITE_INVITES_CREATE_FAIL";
+export const POST_GROUP_INVITE_INVITES_CREATE_SUCCESS =
+  "POST_GROUP_INVITE_INVITES_CREATE_SUCCESS";
+export const POST_GROUP_INVITE_INVITES_CREATE_FAIL =
+  "POST_GROUP_INVITE_INVITES_CREATE_FAIL";
 
 // Create new invites
-export const createGroup = (groupName) => ({
-  type: CREATE_GROUP,
+export const createInvite = (inviteEmail, groupId) => ({
+  type: CREATE_INVITE,
   payload: {
-    display_name: groupName,
+    group_identifier: groupId,
+    email_address: inviteEmail,
+    role: "member",
   },
 });
 
-export function createGroupFail(err) {
+export function createInviteFail(err) {
   console.log("This is create invite error:", err);
   return {
-    type: CREATE_GROUP_FAIL,
+    type: POST_GROUP_INVITE_INVITES_CREATE_FAIL,
     error: true,
     payload: {
       message: err,
