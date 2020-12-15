@@ -2,7 +2,7 @@ import * as actions from "../actions/inviteActions";
 
 const invitesData = {
   message: "",
-  payload: "",
+  invitesFromMe: [],
 };
 
 let invitesDataReducer = (state = invitesData, action) => {
@@ -10,7 +10,9 @@ let invitesDataReducer = (state = invitesData, action) => {
     case actions.POST_GROUP_INVITE_INVITES_CREATE_SUCCESS:
       return {
         ...state,
-        payload: "update the invites list",
+        invitesFromMe: action.payload.outgoing,
+        // member_of: action.payload.member_of,
+        // owner_of: action.payload.owner_of,
       };
     default:
       return state;
