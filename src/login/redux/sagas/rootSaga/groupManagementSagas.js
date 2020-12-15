@@ -12,6 +12,7 @@ import { allOutgoingInvitesSaga } from "../groups/allOutgoingInvitesSaga";
 const groupsSagas = [
   takeLatest(allDataActions.GET_ALL_DATA, allDataSaga),
   takeLatest(createGroupActions.CREATE_GROUP, createGroupSaga),
+  // cretaion of an invite leads to req for all outgoing invites
   takeLatest(createInviteActions.CREATE_INVITE, createInviteSaga),
   takeLatest(
     getOutgoingInvitesActions.GET_ALL_OUTGOING_INVITES,
