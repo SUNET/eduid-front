@@ -7,8 +7,8 @@ const InvitesListItem = (props) => {
   let { membersList } = props;
   return (
     <Fragment>
-      {membersList.map((member) => (
-        <li>
+      {membersList.map((member, i) => (
+        <li key={i}>
           <div className="list-grid">
             <div className="list-cell left-align">
               <p>{member.email_address}</p>
@@ -22,7 +22,7 @@ const InvitesListItem = (props) => {
             <div className="list-cell">
               <ButtonRemoveData
                 className="icon-button"
-                // onClick={this.props.handleRemove}
+                onClick={props.handleRemoveInvite}
               />
             </div>
           </div>
@@ -31,7 +31,6 @@ const InvitesListItem = (props) => {
     </Fragment>
   );
 };
-
 
 InvitesListItem.propTypes = {};
 

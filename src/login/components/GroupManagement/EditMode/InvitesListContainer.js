@@ -11,8 +11,11 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    handleGetAllInvites: () => {
+    handleGetAllOutgoingInvites: () => {
       dispatch(getAllOutgoingActions.getAllOutgoingInvites());
+    },
+    handleRemoveOutgoingInvite: () => {
+      console.log("your in handle remove in the container");
     },
   };
 };

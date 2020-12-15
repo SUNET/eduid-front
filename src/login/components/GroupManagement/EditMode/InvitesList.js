@@ -5,8 +5,12 @@ import InvitesListItem from "./InvitesListItem";
 
 class InvitesList extends Component {
   componentDidMount() {
-    this.props.handleGetAllInvites();
+    this.props.handleGetAllOutgoingInvites();
   }
+
+  handleRemoveInvite = () => {
+    this.props.handleRemoveOutgoingInvite();
+  };
 
   render() {
     let groupsWithInvites = this.props.invitesFromMe;
@@ -29,6 +33,7 @@ class InvitesList extends Component {
             <InvitesListItem
               key={group.group_identifier}
               membersList={group.member_invites}
+              handleRemoveInvite={this.handleRemoveInvite}
             />
           ))}
         </ul>
