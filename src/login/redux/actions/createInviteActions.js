@@ -1,16 +1,11 @@
 export const CREATE_INVITE = "CREATE_INVITE";
-export const GET_ALL_OUTGOING_INVITES = "GET_ALL_OUTGOING_INVITES";
 
 //returned from API in response
 export const POST_GROUP_INVITE_INVITES_CREATE_SUCCESS =
   "POST_GROUP_INVITE_INVITES_CREATE_SUCCESS";
-export const POST_GROUP_INVITE_INVITES_CREATE_FAIL =
+export cons
+t POST_GROUP_INVITE_INVITES_CREATE_FAIL =
   "POST_GROUP_INVITE_INVITES_CREATE_FAIL";
-
-// Get all outgoing invites
-export const getAllOutgoingInvites = () => ({
-  type: GET_ALL_OUTGOING_INVITES,
-});
 
 // Create new invites
 export const createInvite = (inviteEmail, groupId) => ({
