@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import * as inviteActions from "../../../redux/actions/inviteActions";
+import * as inviteActions from "../../../redux/actions/createInviteActions";
 import CreateInvite from "./CreateInvite";
 
 const mapStateToProps = (state, props) => {
@@ -13,9 +13,6 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     createInvite: (email, groupId) => {
       const inviteEmail = email.email;
-      // const groupId = groupId;
-      console.log("this is inviteEmail:", inviteEmail);
-      console.log("this is groupId:", groupId);
       dispatch(inviteActions.createInvite(inviteEmail, groupId));
     },
   };

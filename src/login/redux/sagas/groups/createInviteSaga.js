@@ -1,6 +1,6 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
-import * as actions from "../../actions/inviteActions";
+import * as actions from "../../actions/createInviteActions";
 import { putCsrfToken } from "../../../../sagas/common";
 
 export function* createInviteSaga(action) {

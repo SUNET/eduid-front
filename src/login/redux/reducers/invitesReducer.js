@@ -1,4 +1,4 @@
-import * as actions from "../actions/inviteActions";
+import * as actions from "../actions/createInviteActions";
 
 const invitesData = {
   message: "",

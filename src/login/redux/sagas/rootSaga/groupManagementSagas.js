@@ -1,7 +1,7 @@
 import { takeLatest } from "redux-saga/effects";
 import * as allDataActions from "../../actions/getAllDataGroupActions";
 import * as createGroupActions from "../../actions/createGroupActions";
-import * as inviteActions from "../../actions/inviteActions";
+import * as inviteActions from "../../actions/createInviteActions";
 import { allDataSaga } from "../groups/allDataSaga"
 import { createGroupSaga } from "../groups/createGroupSaga";
 import { createInviteSaga } from "../groups/createInviteSaga";
