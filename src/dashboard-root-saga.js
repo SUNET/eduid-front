@@ -52,7 +52,7 @@ import {
 } from "sagas/LetterProofing";
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
-import groupsSagas from "./login/redux/sagas/rootSaga/groupsSagas";
+import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
