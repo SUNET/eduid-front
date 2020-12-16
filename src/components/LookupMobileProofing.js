@@ -4,7 +4,6 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 
 class LookupMobileProofing extends Component {
   render() {
-    const { disabled } = this.props;
     let modalPrompt = "";
     let primaryNumber = false;
     const phoneNumbers = this.props.phoneNumbers;
@@ -59,7 +58,7 @@ class LookupMobileProofing extends Component {
       <div key="0">
         <div key="0" className="vetting-button">
           <button
-            disabled={disabled}
+            disabled={this.props.withoutNin || this.props.withoutPhoneNumber|| this.props.notVerified || this.props.nonSweNumber}
             onClick={this.props.handleShowModal}
           >
             <div key="1" className="text">
