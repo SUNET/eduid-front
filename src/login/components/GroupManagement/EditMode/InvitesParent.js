@@ -2,23 +2,30 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import CreateInvite from "./CreateInviteContainer";
-import InvitesList from "./InvitesList";
+import InvitesList from "./InvitesListContainer";
 
 class InvitesParent extends Component {
   componentDidMount() {
     this.props.handleGetAllOutgoingInvites();
   }
 
-  // handleRemoveInvite = () => {
-  //   this.props.handleRemoveOutgoingInvite();
-  // };
-
   render() {
-    let { group, invitesFromMe } = this.props;
+    let { group, groupsWithInvites } = this.props;
+    // use the group id to filter out only the member info for the group in edit
+    let groupIdInEdit = group.identifier;
+    let membersListsGroupInEdit = groupsWithInvites
+      .filter((group) => Object.keys(group).toString() === groupIdInEdit)
+      .map((groupInEdit) => {
+        return Object.values(groupInEdit);
+      });
+
     return (
       <Fragment>
-        <CreateInvite groupId={group.identifier} />
-        <InvitesList groupsWithInvites={invitesFromMe} />
+        <CreateInvite groupId={groupIdInEdit} />
+        <InvitesList
+          groupId={groupIdInEdit}
+          membersList={membersListsGroupInEdit}
+        />
       </Fragment>
     );
   }
