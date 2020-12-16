@@ -351,38 +351,6 @@ export const userVetting = {
     />
   ),
 
-  /* ----- no number > reminder to add a number ------- */
-
-  "lmp.modal_add_number_title": (
-    <FormattedMessage
-      id="lmp.modal_add_number_title"
-      defaultMessage={`Add your mobile number to continue`}
-    />
-  ),
-
-  "lmp.modal_add_number_info": (
-    <FormattedMessage
-      id="lmp.modal_add_number_info"
-      defaultMessage={`Go to Settings to add your phone number. Do not forget to also confirm it! You can only use this option with a confirmed number!`}
-    />
-  ),
-
-  /* ----- added number but not confirmed > reminder to confirm number------- */
-
-  "lmp.modal_reminder_to_confirm_title": (
-    <FormattedMessage
-      id="lmp.modal_reminder_to_confirm_title"
-      defaultMessage={`Your number also needs to be confirmed`}
-    />
-  ),
-
-  "lmp.modal_reminder_to_confirm_info": (
-    <FormattedMessage
-      id="lmp.modal_reminder_to_confirm_info"
-      defaultMessage={`Go to Settings to confirm your number. You can only use this option with a confirmed number.`}
-    />
-  ),
-
   /* ----- confirmed number > ready for vetting------- */
 
   "lmp.modal_confirm_title": (

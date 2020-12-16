@@ -200,22 +200,6 @@
     "defaultMessage": "Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers"
   },
   {
-    "id": "lmp.modal_add_number_title",
-    "defaultMessage": "Add your mobile number to continue"
-  },
-  {
-    "id": "lmp.modal_add_number_info",
-    "defaultMessage": "Go to Settings to add your phone number. Do not forget to also confirm it! You can only use this option with a confirmed number!"
-  },
-  {
-    "id": "lmp.modal_reminder_to_confirm_title",
-    "defaultMessage": "Your number also needs to be confirmed"
-  },
-  {
-    "id": "lmp.modal_reminder_to_confirm_info",
-    "defaultMessage": "Go to Settings to confirm your number. You can only use this option with a confirmed number."
-  },
-  {
     "id": "lmp.modal_confirm_title",
     "defaultMessage": "Check if your phone number is connected to your id number."
   },
