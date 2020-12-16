@@ -20,7 +20,6 @@ const mapStateToProps = (state, props) => {
     notVerified: notVerified,
     nonSweNumber: nonSweNumber,
     showModal: state.lookup_mobile.showModal,
-    phoneNumbers: state.phones.phones,
     nins: state.nins.nins,
   };
 };

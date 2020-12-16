@@ -4,15 +4,7 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 
 class LookupMobileProofing extends Component {
   render() {
-    let primaryNumber = false;
     let description = "";
-    const phoneNumbers = this.props.phoneNumbers;
-
-    // if there are phone numbers, check if one is primary   
-    if (phoneNumbers !== []) {
-      primaryNumber = phoneNumbers.some((num) => num.primary === true);
-    } 
-
     if(this.props.withoutNin){
       description = (
         <div className="description">
