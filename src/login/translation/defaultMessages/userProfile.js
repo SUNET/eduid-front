@@ -206,6 +206,13 @@ export const userProfile = {
     />
   ),
 
+  "verify-identity.vetting_explanation_confirm_phone_number": (
+    <FormattedMessage
+      id="verify-identity.vetting_explanation_confirm_phone_number"
+      defaultMessage={`Confirm your phone number in settings`}
+    />
+  ),
+
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"

@@ -20,7 +20,7 @@ class LookupMobileProofing extends Component {
     } else if(this.props.notVerified) {
       description = (
         <div className="description">
-          CONFIRM YOUR PHONE NUMBER IN SETTINGS
+          {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")}
         </div> 
       ); 
     } else if(this.props.nonSweNumber) {
