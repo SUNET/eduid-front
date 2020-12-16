@@ -14,7 +14,7 @@ class LookupMobileProofing extends Component {
     } else if(this.props.withoutPhoneNumber){
       description = (
         <div className="description">
-          START BY ADDING YOUR PHONE NUMBER IN SETTINGS
+          {this.props.translate("verify-identity.vetting_explanation_add_phone_number")}
         </div> 
       )
     } else if(this.props.notVerified) {

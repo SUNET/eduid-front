@@ -452,6 +452,10 @@
     "defaultMessage": "Start by adding your ID number above"
   },
   {
+    "id": "verify-identity.vetting_explanation_add_phone_number",
+    "defaultMessage": "Start by adding your phone number in settings"
+  },
+  {
     "id": "verify-identity.vetting_letter_sent",
     "defaultMessage": "The letter was sent"
   },

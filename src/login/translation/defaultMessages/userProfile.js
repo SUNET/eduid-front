@@ -199,6 +199,13 @@ export const userProfile = {
     />
   ),
 
+  "verify-identity.vetting_explanation_add_phone_number": (
+    <FormattedMessage
+      id="verify-identity.vetting_explanation_add_phone_number"
+      defaultMessage={`Start by adding your phone number in settings`}
+    />
+  ),
+
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
