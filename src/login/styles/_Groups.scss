@@ -228,6 +228,13 @@ article {
     display: flex;
     align-items: center;
     justify-content: center;
+    label {
+      font-size: 1rem;
+      letter-spacing: 0;
+      font-weight: unset;
+      margin-right: 0;
+      font-family: "ProximaNova-Bold";
+    }
     label,
     p {
       padding: 0 0 0.625rem 0;
