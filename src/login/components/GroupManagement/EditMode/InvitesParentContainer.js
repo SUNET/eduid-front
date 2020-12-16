@@ -16,8 +16,6 @@ const mapStateToProps = (state, props) => {
       return { [groupId]: membersListArray[i] };
     })
   );
-  console.log("this is groupsWithInvitest:", groupsWithInvites);
-
 
   return {
     invitesFromMe: state.invites.invitesFromMe,
