@@ -11,7 +11,7 @@ class LookupMobileProofing extends Component {
           {this.props.translate("verify-identity.vetting_explanation_add_nin")}
         </div> 
       )
-    }else if(this.props.withoutPhoneNumber){
+    } else if(this.props.withoutPhoneNumber){
       description = (
         <div className="description">
           START BY ADDING YOUR PHONE NUMBER IN SETTINGS
@@ -20,10 +20,16 @@ class LookupMobileProofing extends Component {
     } else if(this.props.notVerified) {
       description = (
         <div className="description">
-         {this.props.translate("lmp.modal_reminder_to_confirm_title")}
+          CONFIRM YOUR PHONE NUMBER IN SETTINGS
         </div> 
       ); 
-    } else if(!this.props.notVerified) {
+    } else if(this.props.nonSweNumber) {
+      description = (
+        <div className="description">
+          ONLY POSSIBLE WITH SWEDISH TELEPHONE NUMBER
+        </div> 
+      ); 
+    } else {
       <div /> 
     }
 
