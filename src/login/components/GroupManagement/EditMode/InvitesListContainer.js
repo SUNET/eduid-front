@@ -1,21 +1,16 @@
 import { connect } from "react-redux";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import * as getAllOutgoingActions from "../../../redux/actions/getOutgoingInvitesActions";
 import InvitesList from "./InvitesList";
 
 const mapStateToProps = (state, props) => {
-  return {
-    invitesFromMe: state.invites.invitesFromMe,
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    // handleGetAllOutgoingInvites: () => {
-    //   dispatch(getAllOutgoingActions.getAllOutgoingInvites());
-    // },
     handleRemoveOutgoingInvite: () => {
-      console.log("your in handle remove in the container");
+      // console.log("you're in handleRemoveOutgoingInvite in the container");
+      // TODO: write functionality to remove an item from temporary list 
     },
   };
 };
