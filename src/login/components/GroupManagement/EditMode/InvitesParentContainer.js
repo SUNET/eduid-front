@@ -4,13 +4,24 @@ import * as getAllOutgoingActions from "../../../redux/actions/getOutgoingInvite
 import InvitesDataPanel from "./InvitesParent";
 
 const mapStateToProps = (state, props) => {
-  console.log(
-    "this is state.invites.invitesFromMe:",
-    state.invites.invitesFromMe
+  let groupIdsArray = state.invites.invitesFromMe.map(
+    (group) => group.group_identifier
   );
-  // let groupsWithMembers;
+  let membersListArray = state.invites.invitesFromMe.map(
+    (group) => group.member_invites
+  );
+  // create new object with group_identifier (value) and memberListArray (key)
+  let groupsWithInvites = Object.assign(
+    groupIdsArray.map((groupId, i) => {
+      return { [groupId]: membersListArray[i] };
+    })
+  );
+  console.log("this is groupsWithInvitest:", groupsWithInvites);
+
+
   return {
     invitesFromMe: state.invites.invitesFromMe,
+    groupsWithInvites: groupsWithInvites,
   };
 };
 
@@ -19,9 +30,6 @@ const mapDispatchToProps = (dispatch, props) => {
     handleGetAllOutgoingInvites: () => {
       dispatch(getAllOutgoingActions.getAllOutgoingInvites());
     },
-    // handleRemoveOutgoingInvite: () => {
-    //   console.log("your in handle remove in the container");
-    // },
   };
 };
 
