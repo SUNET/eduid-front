@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import { isValid } from "redux-form";
 import LookupMobileProofing from "components/LookupMobileProofing";
 import { eduidRMAllNotify } from "actions/Notifications";
 import {
@@ -10,15 +9,11 @@ import {
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
-  const withoutNin = !state.nins.nins[0];
-  const withoutPhoneNumber = !state.phones.phones.length;
-  const notVerifiedNumber = !state.phones.phones.some((num) => num.verified === true);
-  const nonSweNumber = !state.phones.phones.some((num) => num.number.includes(+46));
   return {
-    withoutNin: withoutNin,
-    withoutPhoneNumber: withoutPhoneNumber,
-    notVerifiedNumber: notVerifiedNumber,
-    nonSweNumber: nonSweNumber,
+    withoutNin: !state.nins.nins[0],
+    withoutPhoneNumber: !state.phones.phones.length,
+    notVerifiedNumber: !state.phones.phones.some((num) => num.verified === true),
+    nonSweNumber: !state.phones.phones.some((num) => num.number.includes(+46)),
     showModal: state.lookup_mobile.showModal,
     nins: state.nins.nins,
   };
