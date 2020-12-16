@@ -10,10 +10,6 @@ class InvitesList extends Component {
   };
 
   render() {
-    console.log(
-      "thsi is this.props.invitesFromMe from container",
-      this.props.invitesFromMe
-    );
     return (
       <div className="list-data invites">
         <div className="list-grid">
