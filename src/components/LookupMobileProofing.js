@@ -17,7 +17,7 @@ class LookupMobileProofing extends Component {
           {this.props.translate("verify-identity.vetting_explanation_add_phone_number")}
         </div> 
       )
-    } else if(this.props.notVerified) {
+    } else if(this.props.notVerifiedNumber) {
       description = (
         <div className="description">
           {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")}
@@ -37,7 +37,7 @@ class LookupMobileProofing extends Component {
       <div key="0">
         <div key="0" className="vetting-button">
           <button
-            disabled={this.props.withoutNin || this.props.withoutPhoneNumber|| this.props.notVerified || this.props.nonSweNumber}
+            disabled={this.props.withoutNin || this.props.withoutPhoneNumber|| this.props.notVerifiedNumber || this.props.nonSweNumber}
             onClick={this.props.handleShowModal}
           >
             <div key="1" className="text">
