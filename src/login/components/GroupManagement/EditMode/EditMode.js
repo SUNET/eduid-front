@@ -1,18 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-// import { RenderOwnerList, RenderMemberList } from "../GroupListItem";
-import CreateInvite from "./CreateInviteContainer";
-import InvitesList from "./InvitesListContainer";
-
-// const SingleGroup = (props) => {
-//   return (
-//     <Fragment>
-//       <RenderOwnerList group={props.group} />
-//       <RenderMemberList group={props.group} />
-//     </Fragment>
-//   );
-// };
+import InvitesParent from "./InvitesParentContainer";
 
 const EditMode = (props) => {
   return (
@@ -39,9 +28,7 @@ const EditMode = (props) => {
           <p>Delete</p>
         </li>
       </nav>
-      <CreateInvite groupId={props.group.group.identifier} />
-      <InvitesList />
-      {/* <SingleGroup group={props.group} /> */}
+      <InvitesParent group={props.group.group} />
     </div>
   );
 };
