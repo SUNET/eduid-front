@@ -52,7 +52,6 @@ class LookupMobileProofing extends Component {
           </button>
         </div>
         <NotificationModal
-          key="0"
           modalId="mobileGenericConfirmDialog"
           title={this.props.translate("lmp.modal_confirm_title")}
           mainText={this.props.translate("lmp.modal_confirm_info")}
