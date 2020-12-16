@@ -7,27 +7,29 @@ const InvitesListItem = (props) => {
   let { membersList } = props;
   return (
     <Fragment>
-      {membersList.map((member, i) => (
-        <li key={i}>
-          <div className="list-grid">
-            <div className="list-cell left-align">
-              <p>{member.email_address}</p>
+      {membersList.map((list) =>
+        list.map((member, i) => (
+          <li key={i}>
+            <div className="list-grid">
+              <div className="list-cell left-align">
+                <p>{member.email_address}</p>
+              </div>
+              <div className="list-cell">
+                <p></p>
+              </div>
+              <div className="list-cell">
+                <p>X</p>
+              </div>
+              <div className="list-cell">
+                <ButtonRemoveData
+                  className="icon-button"
+                  onClick={props.handleRemoveInvite}
+                />
+              </div>
             </div>
-            <div className="list-cell">
-              <p></p>
-            </div>
-            <div className="list-cell">
-              <p>X</p>
-            </div>
-            <div className="list-cell">
-              <ButtonRemoveData
-                className="icon-button"
-                onClick={props.handleRemoveInvite}
-              />
-            </div>
-          </div>
-        </li>
-      ))}
+          </li>
+        ))
+      )}
     </Fragment>
   );
 };
