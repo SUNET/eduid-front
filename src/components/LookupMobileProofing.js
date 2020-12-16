@@ -26,7 +26,7 @@ class LookupMobileProofing extends Component {
     } else if(this.props.nonSweNumber) {
       description = (
         <div className="description">
-          ONLY POSSIBLE WITH SWEDISH TELEPHONE NUMBER
+          {this.props.translate("verify-identity.vetting_explanation_only_available_swe_number")}
         </div> 
       ); 
     } else {

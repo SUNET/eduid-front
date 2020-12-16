@@ -213,6 +213,13 @@ export const userProfile = {
     />
   ),
 
+  "verify-identity.vetting_explanation_only_available_swe_number": (
+    <FormattedMessage
+      id="verify-identity.vetting_explanation_only_available_swe_number"
+      defaultMessage={`Only possible with Swedish phone number`}
+    />
+  ),
+
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"

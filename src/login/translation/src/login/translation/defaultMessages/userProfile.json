@@ -132,6 +132,10 @@
     "defaultMessage": "Confirm your phone number in settings"
   },
   {
+    "id": "verify-identity.vetting_explanation_only_available_swe_number",
+    "defaultMessage": "Only possible with Swedish phone number"
+  },
+  {
     "id": "verify-identity.vetting_freja_tagline",
     "defaultMessage": "For you able to create a Freja eID by visiting one of the authorised agents"
   },
