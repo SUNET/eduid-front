@@ -7,7 +7,7 @@ class LookupMobileProofing extends Component {
     const { disabled } = this.props;
     let modalPrompt = "";
     let primaryNumber = false;
-    let phoneNumbers = this.props.phoneNumbers;
+    const phoneNumbers = this.props.phoneNumbers;
 
     // if there are phone numbers, check if one is primary   
     if (phoneNumbers !== []) {
