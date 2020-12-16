@@ -12,8 +12,8 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 const mapStateToProps = (state, props) => {
   const withoutNin = !state.nins.nins[0];
   const withoutPhoneNumber = !state.phones.phones.length;
-  const notVerified = state.phones.phones.some((num) => num.verified === false);
-  const nonSweNumber = state.phones.phones.some((num) => !num.number.includes(+46));
+  const notVerified = !state.phones.phones.some((num) => num.verified === true);
+  const nonSweNumber = !state.phones.phones.some((num) => num.number.includes(+46));
   return {
     withoutNin: withoutNin,
     withoutPhoneNumber: withoutPhoneNumber,
