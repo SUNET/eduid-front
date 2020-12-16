@@ -4,12 +4,12 @@ import i18n from "../../../translation/InjectIntl_HOC_factory";
 import InvitesListItem from "./InvitesListItem";
 
 class InvitesList extends Component {
-
   handleRemoveInvite = () => {
     this.props.handleRemoveOutgoingInvite();
   };
 
   render() {
+    let { groupId, membersList } = this.props;
     return (
       <div className="list-data invites">
         <div className="list-grid">
@@ -24,15 +24,15 @@ class InvitesList extends Component {
           </div>
           <div className="list-cell"></div>
         </div>
-         <ul>
-          {this.props.groupsWithInvites.map((group) => (
+        <ul>
+          {membersList.map((list) => (
             <InvitesListItem
-              key={group.group_identifier}
-              membersList={group.member_invites}
+              key={groupId}
+              membersList={list}
               handleRemoveInvite={this.handleRemoveInvite}
             />
           ))}
-        </ul> 
+        </ul>
       </div>
     );
   }
