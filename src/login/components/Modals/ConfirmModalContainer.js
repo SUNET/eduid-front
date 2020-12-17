@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
-import ConfirmModal from "../components/ConfirmModal";
+import i18n from "../../translation/InjectIntl_HOC_factory";
+import ConfirmModal from "./ConfirmModal";
 import { isValid, isSubmitting } from 'redux-form';
 
 const mapStateToProps = state => {

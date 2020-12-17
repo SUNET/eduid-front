@@ -4,8 +4,8 @@ import Modal from "reactstrap/lib/Modal";
 import ModalHeader from "reactstrap/lib/ModalHeader";
 import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
-import ConfirmModalForm from "./ConfirmModalForm";
-import EduIDButton from "components/EduIDButton";
+import ConfirmModalForm from "../../../components/ConfirmModalForm";
+import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({closeModal}) => {
   return (
