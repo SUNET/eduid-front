@@ -3,13 +3,13 @@ import i18n from "../../../translation/InjectIntl_HOC_factory";
 import * as inviteActions from "../../../redux/actions/createInviteActions";
 import CreateInvite from "./CreateInvite";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     values: state.form.emails.values,
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     createInvite: (email, groupId) => {
       const inviteEmail = email.email;

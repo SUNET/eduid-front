@@ -1,3 +1,5 @@
+ /* eslint-disable */ 
+ 
 import { connect } from "react-redux";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import InvitesList from "./InvitesList";

@@ -3,7 +3,7 @@ import i18n from "../../../translation/InjectIntl_HOC_factory";
 import * as getAllOutgoingActions from "../../../redux/actions/getOutgoingInvitesActions";
 import InvitesDataPanel from "./InvitesParent";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let groupIdsArray = state.invites.invitesFromMe.map(
     (group) => group.group_identifier
   );
@@ -23,7 +23,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleGetAllOutgoingInvites: () => {
       dispatch(getAllOutgoingActions.getAllOutgoingInvites());

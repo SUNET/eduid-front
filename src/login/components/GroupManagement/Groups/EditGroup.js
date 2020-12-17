@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
 

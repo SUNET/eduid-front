@@ -1,5 +1,4 @@
-import React, { Fragment, Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "./GroupListItem";
 
