@@ -6,7 +6,7 @@ import Form from "reactstrap/lib/Form";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "./EduIDButton";
 import DataTable from "../login/components/DataTable/DataTable";
-import ConfirmModal from "../containers/ConfirmModal";
+import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
 import { validate } from "../login/app_utils/validation/validateEmail";
 import { longCodePattern } from "../login/app_utils/validation/regexPatterns";

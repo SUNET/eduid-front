@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-import ConfirmModal from "../containers/ConfirmModal";
+import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import "../login/styles/index.scss";
 
