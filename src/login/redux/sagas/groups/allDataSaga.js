@@ -1,6 +1,6 @@
 import { call, put } from "redux-saga/effects";
 import { getData } from "../getDataRequest";
-import * as actions from "../../actions/getAllGroupMgmtDataAction";
+import * as actions from "../../actions/getAllGroupMgmtDataActions";
 
 export function* allDataSaga() {
   const url = GROUP_MGMT_URL + "/all-data";
