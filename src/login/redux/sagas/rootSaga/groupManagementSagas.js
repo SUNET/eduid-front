@@ -1,5 +1,5 @@
 import { takeLatest } from "redux-saga/effects";
-import * as allDataActions from "../../actions/getAllDataGroupActions";
+import * as allDataActions from "../../actions/getAllGroupMgmtDataAction";
 import * as createGroupActions from "../../actions/createGroupActions";
 import * as createInviteActions from "../../actions/createInviteActions";
 import * as getOutgoingInvitesActions from "../../actions/getOutgoingInvitesActions";

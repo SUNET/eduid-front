@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import GroupManagement from "./GroupManagement";
 import * as createGroupActions from "../../redux/actions/createGroupActions";
-import * as allDataActions from "../../redux/actions/getAllDataGroupActions";
+import * as allDataActions from "../../redux/actions/getAllGroupMgmtDataAction";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state, props) => {
