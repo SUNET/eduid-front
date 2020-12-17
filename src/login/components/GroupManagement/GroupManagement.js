@@ -6,7 +6,7 @@ import GroupParent from "./Groups/GroupsParent";
 const RenderCreateGroupButton = (props) => {
   return (
     <Fragment>
-      {!props.noGroups && (
+      {!props.hasNoGroups && (
         <button className="create-group" onClick={props.handleCreateGroup}>
           create group
         </button>
@@ -17,7 +17,7 @@ const RenderCreateGroupButton = (props) => {
 
 const RenderWizardOrData = (props) => {
   if (props.loading) return <p>Loading...</p>;
-  return props.noGroups ? (
+  return props.hasNoGroups ? (
     <WizardParent {...props} />
   ) : (
     <GroupParent {...props} />
@@ -37,7 +37,7 @@ class GroupManagement extends Component {
             <h4>Groups</h4>
             <RenderCreateGroupButton
               handleCreateGroup={this.props.handleCreateGroup}
-              noGroups={this.props.noGroups}
+              hasNoGroups={this.props.hasNoGroups}
             />
           </div>
           <p>

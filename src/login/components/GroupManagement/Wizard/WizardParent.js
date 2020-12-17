@@ -4,7 +4,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 const RenderCreateGroupWizard = (props) => {
   return (
     <Fragment>
-      {props.noGroups && (
+      {props.hasNoGroups && (
         <div className="wizard">
           <div className="title">
             <p>Create your first group.</p>
