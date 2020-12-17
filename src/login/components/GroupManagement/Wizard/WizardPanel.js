@@ -33,13 +33,13 @@ const RenderCreateGroupWizard = (props) => {
   );
 };
 
-class WizardPanel extends Component {
+class WizardParent extends Component {
   state = { firstInvite: true };
   render() {
     return <RenderCreateGroupWizard {...this.props} />;
   }
 }
 
-WizardPanel.propTypes = {};
+WizardParent.propTypes = {};
 
-export default InjectIntl(WizardPanel);
+export default InjectIntl(WizardParent);
