@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import i18n from "../../../translation/InjectIntl_HOC_factory";
 
 export const RenderOwnerList = (props) => {
   let owners = props.group.group.owners;
@@ -86,7 +86,7 @@ class GroupListItem extends Component {
           <div className="list-cell">
             <button
               onClick={() => {
-                this.props.toggleViewOrEditMode(this.props.group);
+                this.props.toggleGroupListOrEditGroup(this.props.group);
               }}
             >
               edit

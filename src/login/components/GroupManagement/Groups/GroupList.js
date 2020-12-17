@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import i18n from "../../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "./GroupListItem";
 
 const GroupList = (props) => {
@@ -21,7 +21,7 @@ const GroupList = (props) => {
           <GroupListItem
             key={group.group.identifier}
             group={group}
-            toggleViewOrEditMode={props.toggleViewOrEditMode}
+            toggleGroupListOrEditGroup={props.toggleGroupListOrEditGroup}
           />
         ))}
       </ul>

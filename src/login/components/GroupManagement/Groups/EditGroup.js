@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import InvitesParent from "./InvitesParentContainer";
+import InvitesParent from "../Invites/InvitesParentContainer";
 
-const EditMode = (props) => {
+const EditGroup = (props) => {
   return (
     <div className="edit-data">
       <div className="title">
@@ -11,7 +11,7 @@ const EditMode = (props) => {
         <button
           className="save-button"
           onClick={() => {
-            props.toggleViewOrEditMode(props.group.group);
+            props.toggleGroupListOrEditGroup(props.group.group);
           }}
         >
           save
@@ -33,6 +33,6 @@ const EditMode = (props) => {
   );
 };
 
-EditMode.propTypes = {};
+EditGroup.propTypes = {};
 
-export default i18n(EditMode);
+export default i18n(EditGroup);
