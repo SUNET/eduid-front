@@ -9,7 +9,7 @@ import { validate } from "../../app_utils/validation/validateEmail";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
 let EmailForm = (props) => {
-  const { handleSubmit, invalid , translate} = props;
+  const { handleSubmit, invalid, translate} = props;
   return (
     <Form id="emailsview-form" role="form" onSubmit={handleSubmit}>
       <fieldset id="emails-form" className="tabpane">

@@ -18,7 +18,6 @@ const mapStateToProps = (state) => {
   );
 
   return {
-    invitesFromMe: state.invites.invitesFromMe,
     groupsWithInvites: groupsWithInvites,
   };
 };
