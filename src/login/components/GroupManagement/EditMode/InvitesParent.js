@@ -18,14 +18,18 @@ class InvitesParent extends Component {
       .map((groupInEdit) => {
         return Object.values(groupInEdit);
       });
+    // check if memebrslist for the specific group in edit has members
+    let groupHasInvites = membersListsGroupInEdit.length > 0;
 
     return (
       <Fragment>
         <CreateInvite groupId={groupIdInEdit} />
-        <InvitesList
-          groupId={groupIdInEdit}
-          membersList={membersListsGroupInEdit}
-        />
+        {groupHasInvites ? (
+          <InvitesList
+            groupId={groupIdInEdit}
+            membersList={membersListsGroupInEdit}
+          />
+        ) : null}
       </Fragment>
     );
   }
