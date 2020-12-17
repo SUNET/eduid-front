@@ -212,6 +212,22 @@ article {
   }
 }
 
+// adds styling inputs on the white edit box
+.invite-email {
+  input {
+    background: #f4f4f4;
+  }
+  form {
+    margin-top: 0;
+  }
+  label {
+    font-size: 1rem;
+    letter-spacing: 0;
+    font-weight: unset;
+    margin-left: 0;
+  }
+}
+
 .open-group {
   margin: 0 0 0 1rem;
   label {
@@ -228,12 +244,13 @@ article {
     display: flex;
     align-items: center;
     justify-content: center;
+    .invite-email label,
     label {
       font-size: 1rem;
       letter-spacing: 0;
       font-weight: unset;
-      margin-right: 0;
-      font-family: "ProximaNova-Bold";
+      margin-left: 0;
+      // font-family: "ProximaNova-Bold";
     }
     label,
     p {
