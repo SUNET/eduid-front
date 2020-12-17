@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
-import CustomInput from "../../Inputs/CustomInput";
-import EduIDButton from "../../../../components/EduIDButton";
-import { validate } from "../../../app_utils/validation/validateEmail";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import CustomInput from "../Inputs/CustomInput";
+import EduIDButton from "../../../components/EduIDButton";
+import { validate } from "../../app_utils/validation/validateEmail";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 
 let EmailForm = (props) => {
   const { handleSubmit, invalid , translate} = props;

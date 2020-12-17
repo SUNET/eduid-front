@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import EmailForm from "../EditMode/EmailForm";
+import EmailForm from "../EmailForm";
 
 class CreateInvite extends Component {
 
