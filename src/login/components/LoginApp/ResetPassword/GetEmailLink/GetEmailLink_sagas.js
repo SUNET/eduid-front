@@ -23,7 +23,7 @@ const getData = state => ({
 export const postEmail = saveData(
   getData,
   "email-form",
-  data => ({ type: "NOOP_ACTION" }),
+  () => ({ type: "NOOP_ACTION" }),
   postEmailRequest,
   actions.saveEmailFail
 );

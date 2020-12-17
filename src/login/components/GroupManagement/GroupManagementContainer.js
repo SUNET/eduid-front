@@ -4,7 +4,7 @@ import * as createGroupActions from "../../redux/actions/createGroupActions";
 import * as allDataActions from "../../redux/actions/getAllGroupMgmtDataActions";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   // check if user has any gropus
   let noGroups =
     Object.entries(state.groups.member_of).length === 0 &&
@@ -19,14 +19,14 @@ const mapStateToProps = (state, props) => {
 
   // create new object listing user relationship with each group
   let userIdentifier = state.groups.data.user_identifier;
-  let userGroupsAndRoles = uniqueGroups.map((group, i) => {
+  let userGroupsAndRoles = uniqueGroups.map((group) => {
     let membershipObj = { group: group, isMember: false, isOwner: false };
-    group.members.some((member, i) => {
+    group.members.some((member) => {
       if (member.identifier === userIdentifier) {
         return (membershipObj.isMember = true);
       }
     });
-    group.owners.some((owner, i) => {
+    group.owners.some((owner) => {
       if (owner.identifier === userIdentifier) {
         return (membershipObj.isOwner = true);
       }
@@ -41,7 +41,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleGetAllData: () => {
       dispatch(allDataActions.getAllData());

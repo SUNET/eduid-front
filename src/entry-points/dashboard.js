@@ -29,13 +29,12 @@ window.URLSearchParams = require("url-search-params");
 // End polyfill
 
 import React from "react";
-import ReactDOM from "react-dom";
 import { addLocaleData } from "react-intl";
 
 import init_app from "dashboard-init-app";
 import DashboardMainContainer from "containers/DashboardMain";
 
-const locales = [];
+// const locales = [];
 
 //AVAILABLE_LANGUAGES.forEach((lang) => {
 //const locale = require('react-intl/locale-data/' + lang[0]);

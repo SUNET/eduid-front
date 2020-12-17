@@ -3,7 +3,7 @@ import AccountLinking from "components/AccountLinking";
 import * as actions from "actions/AccountLinking";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     orcid: state.account_linking.orcid,
     is_configured: state.config.is_configured,
@@ -11,7 +11,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleOrcidDelete: function() {
       dispatch(actions.startOrcidRemove());

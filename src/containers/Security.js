@@ -17,7 +17,7 @@ import {
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     credentials: state.security.credentials,
     confirming_change: state.security.confirming_change,
@@ -29,42 +29,42 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleStartConfirmationPassword: function(e) {
+    handleStartConfirmationPassword: function() {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationPassword());
     },
-    handleStopConfirmationPassword: function(e) {
+    handleStopConfirmationPassword: function() {
       dispatch(stopConfirmationPassword());
     },
-    handleConfirmationPassword: e => {
+    handleConfirmationPassword: () => {
       dispatch(confirmPasswordChange());
     },
-    handleStartConfirmationDeletion: function(e) {
+    handleStartConfirmationDeletion: function() {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationDeletion());
     },
-    handleStopConfirmationDeletion: function(e) {
+    handleStopConfirmationDeletion: function() {
       dispatch(stopConfirmationDeletion());
     },
-    handleConfirmationDeletion: function(e) {
+    handleConfirmationDeletion: function() {
       dispatch(confirmDeletion());
     },
-    handleStartAskingKeyWebauthnDescription: function(e) {
+    handleStartAskingKeyWebauthnDescription: function() {
       dispatch(eduidRMAllNotify());
       dispatch(chooseAuthenticator("cross-platform"));
       dispatch(startAskWebauthnDescription());
     },
-    handleStartAskingDeviceWebauthnDescription: function(e) {
+    handleStartAskingDeviceWebauthnDescription: function() {
       dispatch(eduidRMAllNotify());
       dispatch(chooseAuthenticator("platform"));
       dispatch(startAskWebauthnDescription());
     },
-    handleStopAskingWebauthnDescription: function(e) {
+    handleStopAskingWebauthnDescription: function() {
       dispatch(stopAskWebauthnDescription());
     },
-    handleStartWebauthnRegistration: function(e) {
+    handleStartWebauthnRegistration: function() {
       const description = document.getElementById(
         "describeWebauthnTokenDialogControl"
       ).children[1].value.trim();

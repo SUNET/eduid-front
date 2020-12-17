@@ -37,7 +37,7 @@ EmailForm = reduxForm({
   validate,
 })(EmailForm);
 
-EmailForm = connect((state) => ({
+EmailForm = connect(() => ({
   enableReinitialize: true,
   destroyOnUnmount: false,
 }))(EmailForm);

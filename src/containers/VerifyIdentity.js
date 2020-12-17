@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import VerifyIdentity from "components/VerifyIdentity";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let verifiedNinStatus = "";
   const nins = state.nins.nins.filter(nin => nin.verified);
   nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
@@ -17,7 +17,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {};
 };
 

@@ -1,5 +1,4 @@
-import { takeLatest, takeEvery } from "redux-saga/effects";
-import { put, select } from "redux-saga/effects";
+import { takeLatest } from "redux-saga/effects";
 
 import * as signupMainActions from "actions/SignupMain";
 import * as verifiedActions from "actions/CodeVerified";

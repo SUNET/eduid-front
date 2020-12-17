@@ -1,8 +1,7 @@
-import mock from "jest-mock";
 import React from "react";
 import expect from "expect";
 import fetchMock from "fetch-mock";
-import { put, call, select } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";

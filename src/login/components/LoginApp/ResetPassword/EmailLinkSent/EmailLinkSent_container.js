@@ -4,14 +4,14 @@ import EmailLinkSent from "./EmailLinkSent";
 // import i18n from "../../../../../InjectIntl_HOC_factory";
 import InjectIntl from "../../../../translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = () => {
   return {
     // debug: state.config.debug,
     // email: state.login.email
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {
     handleResendLink(e) {
       e.preventDefault();

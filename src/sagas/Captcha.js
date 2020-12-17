@@ -1,6 +1,5 @@
 import { put, call, select } from "redux-saga/effects";
 import {
-  ajaxHeaders,
   checkStatus,
   postRequest,
   putCsrfToken
@@ -9,9 +8,9 @@ import {
 import * as actions from "actions/Captcha";
 import { history } from "components/SignupMain";
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+// function sleep(ms) {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
 
 export function* sendCaptcha() {
   try {

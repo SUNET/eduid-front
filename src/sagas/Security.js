@@ -1,7 +1,6 @@
 import { put, select, call } from "redux-saga/effects";
 import {
   checkStatus,
-  ajaxHeaders,
   putCsrfToken,
   getRequest,
   postRequest,
@@ -19,10 +18,8 @@ import {
   beginWebauthnFail,
   POST_WEBAUTHN_BEGIN_SUCCESS
 } from "actions/Security";
-import { eduidNotify } from "actions/Notifications";
 import { tokenVerifyFail } from "../actions/Security";
 
-import * as CBOR from "sagas/cbor";
 import { safeEncode, safeDecodeCBOR } from "sagas/common";
 
 export function* requestCredentials() {

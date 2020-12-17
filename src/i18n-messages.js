@@ -6,10 +6,7 @@ import PropTypes from "prop-types";
 
 import invariant from "invariant";
 import {
-  intlShape,
-  defineMessages,
-  FormattedMessage,
-  FormattedHTMLMessage
+  intlShape
 } from "react-intl";
 
 import {

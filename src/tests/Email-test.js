@@ -118,7 +118,7 @@ describe("Test email Container", () => {
   it("Clicks the email button", () => {
     wrapper.find("input#email-input").value = "dummy@example.com";
     const numCalls = dispatch.mock.calls.length;
-    const mockEvent = { preventDefault: e => {} };
+    const mockEvent = { preventDefault: () => {} };
     wrapper.find("EduIDButton#register-button").props().onClick(mockEvent);
    
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);

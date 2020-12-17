@@ -1,6 +1,6 @@
 import * as actions from "./login/components/Notifications/Notifications_actions";
 
-const notifyAndDispatch = store => next => action => {
+const notifyAndDispatch = () => next => action => {
   if (action.type.endsWith("SUCCESS") || action.type.endsWith("FAIL")) {
     if (action.error && action.payload) {
       console.log("this is action.payload", action.payload);

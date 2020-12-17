@@ -1,23 +1,17 @@
 const mock = require("jest-mock");
 import React from "react";
-import { shallow, mount, render } from "enzyme";
-import { put, select, call } from "redux-saga/effects";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import Security from "components/Security";
-import DeleteModal from "components/DeleteModal";
+import { mount } from "enzyme";
+import { put, call } from "redux-saga/effects";
+import expect from "expect";
 import SecurityContainer from "containers/Security";
 import * as actions from "actions/Security";
 import * as notifyActions from "actions/Notifications";
 import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
 import securityReducer from "reducers/Security";
 import { Provider } from "react-intl-redux";
-import { eduidNotify } from "actions/Notifications";
-
 import {
   requestCredentials,
   fetchCredentials,
-  requestPasswordChange,
   postDeleteAccount,
   deleteAccount,
   beginRegisterWebauthn,
@@ -249,8 +243,8 @@ describe("Reducers", () => {
   });
 
   it("Receives a GET_CREDENTIALS_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
+    const err = "Error";
+      // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.GET_CREDENTIALS_FAIL,
@@ -582,8 +576,8 @@ describe("Reducers", () => {
   });
 
   it("Receives a POST_WEBAUTHN_BEGIN_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
+    const err = "Error";
+      // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.POST_WEBAUTHN_BEGIN_FAIL,
@@ -610,10 +604,10 @@ describe("Reducers", () => {
   });
 
   it("Receives a POST_WEBAUTHN_BEGIN_SUCCESS action", () => {
-    const challenge = "dummy",
-      version = "v2",
-      registerRequests = [{ challenge: challenge, version: version }],
-      appId = "app-id";
+    // const challenge = "dummy",
+    //   version = "v2",
+    //   registerRequests = [{ challenge: challenge, version: version }],
+    //   appId = "app-id";
     expect(
       securityReducer(mockState, {
         type: actions.POST_WEBAUTHN_BEGIN_SUCCESS,
@@ -639,8 +633,8 @@ describe("Reducers", () => {
   });
 
   it("Receives a POST_WEBAUTHN_REGISTER_FAIL action", () => {
-    const err = "Error",
-      error = new Error(err);
+    const err = "Error";
+      // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.POST_WEBAUTHN_REGISTER_FAIL,
@@ -921,45 +915,16 @@ describe("Async component", () => {
   });
 });
 
-function setupComponent() {
-  const props = {
-    credentials: [],
-    creation_date: "",
-    last_used: "",
-    language: "",
-    langs: [],
-    confirming_change: false,
-    confirming_deletion: false,
-    handleStartConfirmationPassword: mock.fn(),
-    handleStopConfirmationPassword: mock.fn(),
-    handleConfirmationPassword: mock.fn(),
-    handleStartConfirmationDeletion: mock.fn(),
-    handleStopConfirmationDeletion: mock.fn(),
-    handleConfirmationDeletion: mock.fn(),
-    handleStartWebauthnRegistration: mock.fn()
-  };
-
-  const wrapper = shallow(
-    <Provider store={fakeStore(mockState)}>
-      <SecurityContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper
-  };
-}
-
 describe("Security Component", () => {
   it("Renders", () => {
-    const { wrapper, props } = setupComponent(),
-      table = wrapper.find("table.passwords"),
-      buttonChange = wrapper.find("EduIDButton#security-change-button"),
-      buttonWEBAUTHN = wrapper.find("EduIDButton#security-webauthn-button"),
-      buttonDelete = wrapper.find("EduIDButton#delete-button"),
-      modalChange = wrapper.find("GenericConfirmModal"),
-      modalWEBAUTHNDescription = wrapper.find("ConfirmModal"),
-      modalDelete = wrapper.find("DeleteModal");
+    // const { wrapper, props } = setupComponent(),
+    //   table = wrapper.find("table.passwords"),
+    //   buttonChange = wrapper.find("EduIDButton#security-change-button"),
+    //   buttonWEBAUTHN = wrapper.find("EduIDButton#security-webauthn-button"),
+    //   buttonDelete = wrapper.find("EduIDButton#delete-button"),
+    //   modalChange = wrapper.find("GenericConfirmModal"),
+    //   modalWEBAUTHNDescription = wrapper.find("ConfirmModal"),
+    //   modalDelete = wrapper.find("DeleteModal");
   });
 });
 

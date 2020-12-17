@@ -1,9 +1,8 @@
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import Profile from "components/Profile";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let verifiedNinStatus = "";
   let verifiedPhone = "";
   const nins = state.nins.nins.filter(nin => nin.verified);
@@ -23,7 +22,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {};
 };
 

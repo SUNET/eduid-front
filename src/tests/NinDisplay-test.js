@@ -231,7 +231,6 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
       wrapper
     };
   }
-  const state = { ...fakeState };
   // state.nins = [{ number: "196701110005", verified: false, primary: false }];
   it("Renders a clickable number if a nin has been added nin", () => {
     const { wrapper } = setupComponent();
@@ -286,7 +285,7 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
       wrapper
     };
   }
-  const state = { ...fakeState };
+
   it("Renders a static number (not clickable)", () => {
     const { wrapper } = setupComponent();
     const verifiedNumber = wrapper.find(".verified");

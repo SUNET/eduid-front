@@ -1,9 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 import FormText from "reactstrap/lib/FormText";
-import FormGroup from "reactstrap/lib/FormGroup";
-import FormFeedback from "reactstrap/lib/FormFeedback";
 import Input from "reactstrap/lib/Input";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 

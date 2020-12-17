@@ -4,15 +4,15 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ResendCode from "components/ResendCode";
 import * as actions from "actions/ResendCode";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     email: state.email.email
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleResend: e => {
+    handleResend: () => {
       dispatch(actions.postResendCode());
     }
   };

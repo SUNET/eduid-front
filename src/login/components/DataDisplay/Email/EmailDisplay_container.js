@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import EmailDisplay from "./EmailDisplay";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   // const emailAddress = state.emails.emails.filter(email => email.primary);
   // return {
   //   email: emailAddress
@@ -12,7 +12,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {};
 };
 

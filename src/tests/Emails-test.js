@@ -1,20 +1,15 @@
 const mock = require("jest-mock");
 import React from "react";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import Emails from "components/Emails";
+import { mount } from "enzyme";
+import expect from "expect";
 import * as actions from "actions/Emails";
 import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
 import emailsReducer from "reducers/Emails";
-
 import EmailsContainer from "containers/Emails";
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 
 import {
-  requestEmails,
-  fetchEmails,
   requestResend,
   requestResendEmailCode,
   saveEmail,
@@ -26,7 +21,7 @@ import {
   requestMakePrimaryEmail,
   requestMakePrimary
 } from "sagas/Emails";
-import { put, call, select } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
@@ -663,27 +658,6 @@ describe("Async component", () => {
   });
 });
 
-function setupComponent(store) {
-  const props = {
-    given_name: "",
-    surname: "",
-    display_name: "",
-    language: "",
-    handleSave: mock.fn(),
-    handleChange: mock.fn()
-  };
-
-  const wrapper = shallow(
-    <Provider store={store}>
-      <EmailsContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper
-  };
-}
-
 const fakeStore = state => ({
   default: () => {},
   dispatch: mock.fn(),
@@ -692,18 +666,18 @@ const fakeStore = state => ({
 });
 
 describe("Emails Component", () => {
-  it("Renders", () => {
-    const store = fakeStore(getState()),
-      { wrapper, props } = setupComponent(store),
-      form = wrapper.find("form"),
-      fieldset = wrapper.find("fieldset"),
-      email = wrapper.find('TextControl[name="email"]');
+  // it("Renders", () => {
+  //   const store = fakeStore(getState()),
+  //     { wrapper } = setupComponent(store),
+  //     form = wrapper.find("form"),
+  //     fieldset = wrapper.find("fieldset"),
+  //     email = wrapper.find('TextControl[name="email"]');
     // TODO: not finished
-  });
+  // });
 });
 
 describe("Emails Container", () => {
-  let fulltext, email, fulldom, language, mockProps, wrapper, dispatch;
+  let email, fulldom, language, mockProps, wrapper;
 
   beforeEach(() => {
     const store = fakeStore(getState());
@@ -719,10 +693,8 @@ describe("Emails Container", () => {
       </Provider>
     );
     fulldom = wrapper.find(EmailsContainer);
-    fulltext = wrapper.find(EmailsContainer).text();
-    email = wrapper.find(EmailsContainer).props().email;
-    language = wrapper.find(EmailsContainer).props().language;
-    dispatch = store.dispatch;
+    email = fulldom.props().email;
+    language = fulldom.props().language;
   });
 
   afterEach(() => {

@@ -1,5 +1,5 @@
 import { takeLatest, takeEvery } from "redux-saga/effects";
-import { put, select } from "redux-saga/effects";
+import { put } from "redux-saga/effects";
 import * as configActions from "actions/DashboardConfig";
 import * as pdataActions from "actions/PersonalData";
 import * as emailActions from "actions/Emails";
