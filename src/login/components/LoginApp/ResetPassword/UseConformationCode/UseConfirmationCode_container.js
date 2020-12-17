@@ -4,14 +4,14 @@ import { withRouter } from "react-router-dom";
 import UseConfirmationCode from "./UseConfirmationCode";
 // import * as actions from "./GetEmailLink_actions";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = () => {
   return {
     // email: state.getEmailLink.email,
     // enableReinitialize: true
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (props) => {
   return {
     handleUseConfirmationCode: e => {
       console.log("you're in handleResendConfirmationCode");

@@ -3,20 +3,17 @@ import { isValid } from "redux-form";
 import Emails from "components/Emails";
 import {
   postEmail,
-  changeEmail,
   startConfirmation,
   stopConfirmation,
   startResendEmailCode,
-  finishConfirmation,
   startVerify,
-  requestRemoveEmail,
   startRemove,
   makePrimary
 } from "actions/Emails";
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     emails: state.emails.emails,
     valid_email: isValid("emails")(state),
@@ -26,7 +23,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleAdd: e => {
       e.preventDefault();
@@ -46,10 +43,10 @@ const mapDispatchToProps = (dispatch, props) => {
         };
       dispatch(startConfirmation(data));
     },
-    handleStopConfirmation: function(e) {
+    handleStopConfirmation: function() {
       dispatch(stopConfirmation());
     },
-    handleConfirm: function(e) {
+    handleConfirm: function() {
       const data = {
         code: document
           .getElementById("confirmation-code-area")

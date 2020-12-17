@@ -79,7 +79,6 @@ describe("Profile component", () => {
       wrapper
     };
   }
-  const state = { ...fakeState };
 
   it("Renders <NameDisplay/> ", () => {
     const { wrapper } = setupComponent();

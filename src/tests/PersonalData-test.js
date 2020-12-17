@@ -1,16 +1,13 @@
 const mock = require("jest-mock");
 import React from "react";
-import ReactDOM from "react-dom";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import PersonalData from "components/PersonalData";
+import { mount } from "enzyme";
+import expect from "expect";
 import PersonalDataContainer from "containers/PersonalData";
 import * as actions from "actions/PersonalData";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
 import * as ninActions from "actions/Nins";
 import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
 import personalDataReducer from "reducers/PersonalData";
 
 import {
@@ -19,7 +16,7 @@ import {
   fetchAllPersonalData,
   sendPersonalData
 } from "../sagas/PersonalData";
-import { put, call, select } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
@@ -409,14 +406,13 @@ describe("Async component", () => {
 describe("PersonalData Component", () => {
   it("Renders", () => {
     const store = fakeStore(fakeState),
-      { wrapper, props } = setupComponent(store),
+      { wrapper } = setupComponent(store),
       form = wrapper.find("form"),
       fieldset = wrapper.find("fieldset"),
       language = wrapper.find("#language"),
       surname = wrapper.find("#surname"),
       given_name = wrapper.find("#given_name"),
       display_name = wrapper.find("#display_name"),
-      eppn = wrapper.find("p.eppn.text-muted"),
       button = wrapper.find("EduIDButton#personal-data-button");
 
     expect(form.contains(fieldset.get(0))).toBeTruthy();
@@ -439,8 +435,7 @@ describe("PersonalData Component", () => {
 });
 
 describe("PersonalData Container", () => {
-  let fulltext,
-    given_name,
+  let given_name,
     fulldom,
     surname,
     display_name,
@@ -469,13 +464,12 @@ describe("PersonalData Container", () => {
       </Provider>
     );
     fulldom = wrapper.find(PersonalDataContainer);
-    fulltext = wrapper.find(PersonalDataContainer).text();
-    given_name = wrapper.find(PersonalDataContainer).props().data.given_name;
-    surname = wrapper.find(PersonalDataContainer).props().data.surname;
-    display_name = wrapper.find(PersonalDataContainer).props().data
+    given_name = fulldom.props().data.given_name;
+    surname = fulldom.props().data.surname;
+    display_name = fulldom.props().data
       .display_name;
-    language = wrapper.find(PersonalDataContainer).props().data.language;
-    eppn = wrapper.find(PersonalDataContainer).props().data.eppn;
+    language = fulldom.props().data.language;
+    eppn = fulldom.props().data.eppn;
     dispatch = store.dispatch;
   });
 

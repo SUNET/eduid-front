@@ -29,7 +29,7 @@ window.URLSearchParams = require("url-search-params");
 
 import { addLocaleData } from "react-intl";
 
-const locales = [];
+// const locales = [];
 
 //AVAILABLE_LANGUAGES.forEach((lang) => {
 //const locale = require('react-intl/locale-data/' + lang[0]);

@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import AccountCreated from "components/AccountCreated";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     email: state.email.email
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {};
 };
 

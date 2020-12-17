@@ -1,7 +1,7 @@
 import React from "react";
-import expect, { createSpy, spyOn, isSpy } from "expect";
+import expect from "expect";
 import { Provider } from "react-intl-redux";
-import { put, select, call } from "redux-saga/effects";
+import { put } from "redux-saga/effects";
 import { shallow, mount } from "enzyme";
 import fetchMock from "fetch-mock";
 import { addLocaleData, IntlProvider } from "react-intl";
@@ -63,7 +63,6 @@ describe("ChangePasswordDisplay component", () => {
       wrapper
     };
   }
-  const state = { ...fakeState };
   it("has a button", () => {
     const { wrapper } = setupComponent();
     const button = wrapper.find("EduIDButton");
@@ -106,7 +105,6 @@ describe("ChangePasswordDisplay component, when confirming_change is (false)", (
       wrapper
     };
   }
-  const state = { ...fakeState };
   // leave confirming_change as false
   it("does not render a modal", () => {
     const { wrapper } = setupComponent();
@@ -320,7 +318,7 @@ describe("Security Container", () => {
   let mockProps, language, getWrapper, getState, dispatch, store;
 
   beforeEach(() => {
-    getState = function(deleting, askingDescription) {
+    getState = function() {
       return {
         security: {
           message: "",

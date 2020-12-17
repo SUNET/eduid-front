@@ -1,16 +1,12 @@
-import { put, call, select } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 import {
-  ajaxHeaders,
   checkStatus,
   getRequest,
   putCsrfToken
 } from "sagas/common";
 
 import * as actions from "actions/ActionMain";
-import { history } from "components/ActionMain";
-import { eduidNotify } from "actions/Notifications";
 import * as CBOR from "sagas/cbor";
-import { newCsrfToken } from "actions/DashboardConfig";
 
 window.CBOR = CBOR;
 

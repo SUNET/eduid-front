@@ -1,6 +1,5 @@
 import { put, call } from "redux-saga/effects";
 import {
-  ajaxHeaders,
   checkStatus,
   getRequest,
   failRequest

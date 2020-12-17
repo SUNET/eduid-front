@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 
 // import Input from "../Input";
@@ -45,7 +45,7 @@ LoginFormDetails = reduxForm({
   validate,
 })(LoginFormDetails);
 
-LoginFormDetails = connect((state) => ({
+LoginFormDetails = connect(() => ({
   enableReinitialize: true,
 }))(LoginFormDetails);
 

@@ -3,7 +3,7 @@ import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import FooterContainer from "containers/Footer";
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
+import { setupComponent } from "tests/SignupMain-test";
 
 const config = {
   is_app_loaded: true,
@@ -69,14 +69,14 @@ describe("Footer Component", () => {
   });
 });
 
-describe("Test footer Container", () => {
-  let wrapper, dispatch;
+// describe("Test footer Container", () => {
+//   let wrapper, dispatch;
 
-  beforeEach(() => {
-    const store = fakeStore(getState({ config: config }));
-    dispatch = store.dispatch;
-    wrapper = setupComponent({ component: <FooterContainer />, store: store });
-  });
+//   beforeEach(() => {
+//     const store = fakeStore(getState({ config: config }));
+//     dispatch = store.dispatch;
+//     wrapper = setupComponent({ component: <FooterContainer />, store: store });
+//   });
 
   // it("Clicks a language selector button", () => {
   //   const numCalls = dispatch.mock.calls.length;
@@ -95,4 +95,4 @@ describe("Test footer Container", () => {
   //     .onClick(mockEvent);
   //   expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   // });
-});
+// });

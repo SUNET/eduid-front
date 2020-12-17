@@ -1,5 +1,3 @@
-import { GET_CHANGE_PASSWORD_FAIL } from "./Security";
-
 export const GET_ORCID = "GET_ORCID";
 export const GET_PERSONAL_DATA_ORCID_SUCCESS =
   "GET_PERSONAL_DATA_ORCID_SUCCESS";

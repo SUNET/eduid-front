@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import PhoneNumDisplay from "./PhoneNumDisplay";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
-  let primaryPhoneStatus = "";
+const mapStateToProps = () => {
+  // let primaryPhoneStatus = "";
   // return {};
   // const primaryPhone = state.phones.phones.filter(phone => phone.primary);
   // console.log("this is this state.phones.phones in PhoneDisplay_container",state.phones.phones)
@@ -19,7 +19,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {};
 };
 

@@ -1,10 +1,9 @@
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
 import VerifyIdentity from "containers/VerifyIdentity";
-import * as actions from "actions/Nins";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let confirmed;
   const nins = state.nins.nins.filter(nin => nin.verified);
   if (nins.length >= 1) {
@@ -24,7 +23,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {
     // handleDelete: function(e) {
     //   const nin = e.target.closest(".nin-holder").dataset.ninnumber;

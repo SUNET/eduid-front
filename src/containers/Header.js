@@ -3,7 +3,7 @@ import Header from "components/Header";
 import { startLogout } from "actions/Header";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let confirmed;
   return {
     dashboard_url: state.config.dashboard_url,
@@ -11,9 +11,9 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleLogout: function(e) {
+    handleLogout: function() {
       dispatch(startLogout());
     },
     gotoSignin: function(e) {

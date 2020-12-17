@@ -1,12 +1,10 @@
 const mock = require("jest-mock");
 import React from "react";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
+import { mount } from "enzyme";
+import expect from "expect";
 import * as actions from "actions/Mobile";
 import mobileReducer from "reducers/Mobile";
 import {
-  requestMobile,
-  fetchMobiles,
   saveMobile,
   sendMobile,
   requestRemoveMobile,
@@ -18,9 +16,7 @@ import {
   requestMakePrimary,
   requestResend
 } from "sagas/Mobile";
-import { put, call, select } from "redux-saga/effects";
-
-import Mobile from "components/Mobile";
+import { put, call } from "redux-saga/effects";
 import MobileContainer from "containers/Mobile";
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
@@ -631,24 +627,6 @@ describe("Async component", () => {
   });
 });
 
-function setupComponent(store) {
-  const props = {
-    mobile: "",
-    handleSave: mock.fn(),
-    handleChange: mock.fn()
-  };
-
-  const wrapper = shallow(
-    <Provider store={store}>
-      <MobileContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper
-  };
-}
-
 const fakeStore = state => ({
   default: () => {},
   dispatch: mock.fn(),
@@ -658,16 +636,16 @@ const fakeStore = state => ({
 
 describe("Mobile Component", () => {
   it("Renders", () => {
-    const store = fakeStore(getState()),
-      { wrapper, props } = setupComponent(store),
-      form = wrapper.find("form"),
-      fieldset = wrapper.find("fieldset"),
-      email = wrapper.find('TextControl[name="mobile"]');
+    // const store = fakeStore(getState());
+    //   { wrapper } = setupComponent(store),
+    //   form = wrapper.find("form"),
+    //   fieldset = wrapper.find("fieldset"),
+    //   email = wrapper.find('TextControl[name="mobile"]');
   });
 });
 
 describe("Mobile Container", () => {
-  let fulltext, mobile, fulldom, language, mockProps, wrapper, dispatch;
+  let mobile, fulldom, mockProps, wrapper;
 
   beforeEach(() => {
     const store = fakeStore(getState());
@@ -682,10 +660,7 @@ describe("Mobile Container", () => {
       </Provider>
     );
     fulldom = wrapper.find(MobileContainer);
-    fulltext = wrapper.find(MobileContainer).text();
-    mobile = wrapper.find(MobileContainer).props().mobile;
-    language = wrapper.find(MobileContainer).props().language;
-    dispatch = store.dispatch;
+    mobile = fulldom.props().mobile;
   });
 
   afterEach(() => {

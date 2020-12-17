@@ -1,4 +1,4 @@
-export const validate = (values, props) => {
+export const validate = (values) => {
   let codeInput = values.confirmationCode;
   const errors = {};
   if (codeInput === undefined) {

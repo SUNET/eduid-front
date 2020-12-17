@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import WizardPanel from "./Wizard/WizardPanel";
 import GroupDataPanel from "./GroupDataPanel";

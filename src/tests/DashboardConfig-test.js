@@ -1,10 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import fetch from "whatwg-fetch";
-import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
+import expect from "expect";
 import * as actions from "actions/DashboardConfig";
 import configReducer from "reducers/DashboardConfig";
 import { requestConfig, fetchConfig } from "../sagas/DashboardConfig";

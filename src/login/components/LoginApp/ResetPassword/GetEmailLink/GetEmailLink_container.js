@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import GetEmailLink from "./GetEmailLink";
 import * as actions from "./GetEmailLink_actions";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     email: state.getEmailLink.email,
     enableReinitialize: true

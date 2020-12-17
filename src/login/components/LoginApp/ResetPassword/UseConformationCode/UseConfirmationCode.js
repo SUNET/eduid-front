@@ -32,7 +32,7 @@ ConfirmationCodeForm = reduxForm({
   validate
 })(ConfirmationCodeForm);
 
-ConfirmationCodeForm = connect(state => ({
+ConfirmationCodeForm = connect(()=> ({
   initialValues: {}
 }))(ConfirmationCodeForm);
 

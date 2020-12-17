@@ -29,32 +29,32 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 /* to load persisted state from local storage */
 
-const loadPersistedState = () => {
-  try {
-    const serializedState = localStorage.getItem("eduid-state");
-    if (serializedState === null) {
-      return undefined;
-    }
-    return {
-      ...JSON.parse(serializedState),
-      notifications: {
-        errors: [],
-        messages: []
-      }
-    };
-  } catch (err) {
-    return undefined;
-  }
-};
+// const loadPersistedState = () => {
+//   try {
+//     const serializedState = localStorage.getItem("eduid-state");
+//     if (serializedState === null) {
+//       return undefined;
+//     }
+//     return {
+//       ...JSON.parse(serializedState),
+//       notifications: {
+//         errors: [],
+//         messages: []
+//       }
+//     };
+//   } catch (err) {
+//     return undefined;
+//   }
+// };
 
-const saveState = state => {
-  try {
-    const serialized = JSON.stringify(state);
-    localStorage.setItem("eduid-state", serialized);
-  } catch (err) {
-    console.log("Cannot save the state: ", err);
-  }
-};
+// const saveState = state => {
+//   try {
+//     const serialized = JSON.stringify(state);
+//     localStorage.setItem("eduid-state", serialized);
+//   } catch (err) {
+//     console.log("Cannot save the state: ", err);
+//   }
+// };
 
 /* Store */
 

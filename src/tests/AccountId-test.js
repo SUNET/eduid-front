@@ -1,7 +1,6 @@
 import React from "react";
 import expect from "expect";
 import { shallow, mount } from "enzyme";
-import AccountIdComponent from "components/AccountId";
 import AccountIdContainer from "containers/AccountId";
 import { addLocaleData, IntlProvider } from "react-intl";
 import { Provider } from "react-intl-redux";

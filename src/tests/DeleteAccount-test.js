@@ -1,8 +1,8 @@
 import React from "react";
-import expect, { createSpy, spyOn, isSpy } from "expect";
+import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
-import { put, select, call } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 import fetchMock from "fetch-mock";
 import { addLocaleData, IntlProvider } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
@@ -12,7 +12,6 @@ import * as actions from "actions/Security";
 import * as notifyActions from "actions/Notifications";
 import securityReducer from "reducers/Security";
 import {
-  requestDeleteAccount,
   postDeleteAccount,
   deleteAccount
 } from "sagas/Security";
@@ -376,7 +375,7 @@ describe("DeleteAccount Container", () => {
   });
 
   beforeEach(() => {
-    getState = function(deleting, askingDescription) {
+    getState = function(deleting) {
       return {
         security: {
           message: "",

@@ -48,7 +48,7 @@ ConfirmModalForm = reduxForm({
   validate: validate
 })(ConfirmModalForm);
 
-ConfirmModalForm = connect(state => ({
+ConfirmModalForm = connect(() => ({
   initialValues: {}
 }))(ConfirmModalForm);
 

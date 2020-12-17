@@ -4,14 +4,14 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import LoginForm from "./LoginForm";
 import * as actions from "./LoginForm_actions";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     email: state.login.email,
     enableReinitialize: true
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleLogin: e => {
       e.preventDefault();

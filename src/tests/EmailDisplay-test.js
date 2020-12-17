@@ -2,7 +2,6 @@ import React from "react";
 import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
-import { MemoryRouter } from "react-router-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import EmailDisplay from "containers/EmailDisplay";
 const mock = require("jest-mock");
