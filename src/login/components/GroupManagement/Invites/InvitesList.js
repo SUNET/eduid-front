@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import InvitesListItem from "./InvitesListItem";
+import InviteListItem from "./InviteListItem";
 
 class InvitesList extends Component {
   handleRemoveInvite = () => {
@@ -26,7 +26,7 @@ class InvitesList extends Component {
         </div>
         <ul>
           {membersList.map((list) => (
-            <InvitesListItem
+            <InviteListItem
               key={groupId}
               membersList={list}
               handleRemoveInvite={this.handleRemoveInvite}

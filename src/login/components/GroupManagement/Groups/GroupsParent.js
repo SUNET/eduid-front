@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import GroupList from "./GroupList";
+import GroupsList from "./GroupsList";
 import EditGroup from "./EditGroup";
 
 class GroupParent extends Component {
@@ -19,7 +19,7 @@ class GroupParent extends Component {
     );
   }
 
-  toggleGroupListOrEditGroup = (singleGroupData) => {
+  toggleGroupsListOrEditGroup = (singleGroupData) => {
     this.setState((prevState) => {
       return {
         editGroup: !prevState.editGroup,
@@ -35,12 +35,12 @@ class GroupParent extends Component {
           <EditGroup
             {...this.props}
             group={this.state.group}
-            toggleGroupListOrEditGroup={this.toggleGroupListOrEditGroup}
+            toggleGroupsListOrEditGroup={this.toggleGroupsListOrEditGroup}
           />
         ) : (
-          <GroupList
+          <GroupsList
             {...this.props}
-            toggleGroupListOrEditGroup={this.toggleGroupListOrEditGroup}
+            toggleGroupsListOrEditGroup={this.toggleGroupsListOrEditGroup}
           />
         )}
       </div>

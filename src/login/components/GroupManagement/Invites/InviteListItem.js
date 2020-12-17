@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 
-const InvitesListItem = (props) => {
+const InviteListItem = (props) => {
   let { membersList } = props;
   return (
     <Fragment>
@@ -34,6 +34,6 @@ const InvitesListItem = (props) => {
   );
 };
 
-InvitesListItem.propTypes = {};
+InviteListItem.propTypes = {};
 
-export default i18n(InvitesListItem);
+export default i18n(InviteListItem);

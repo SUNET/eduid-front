@@ -86,7 +86,7 @@ class GroupListItem extends Component {
           <div className="list-cell">
             <button
               onClick={() => {
-                this.props.toggleGroupListOrEditGroup(this.props.group);
+                this.props.toggleGroupsListOrEditGroup(this.props.group);
               }}
             >
               edit

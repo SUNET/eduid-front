@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import WizardParent from "./Wizard/WizardParent";
-import GroupParent from "./Groups/GroupParent";
+import GroupParent from "./Groups/GroupsParent";
 
 const RenderCreateGroupButton = (props) => {
   return (

@@ -11,7 +11,7 @@ const EditGroup = (props) => {
         <button
           className="save-button"
           onClick={() => {
-            props.toggleGroupListOrEditGroup(props.group.group);
+            props.toggleGroupsListOrEditGroup(props.group.group);
           }}
         >
           save
