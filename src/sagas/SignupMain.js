@@ -1,5 +1,5 @@
 import { put, call, select } from "redux-saga/effects";
-import { ajaxHeaders, checkStatus, getRequest } from "sagas/common";
+import { checkStatus, getRequest } from "sagas/common";
 
 import * as actions from "actions/SignupMain";
 import * as verifiedActions from "actions/CodeVerified";

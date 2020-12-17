@@ -22,7 +22,7 @@ const getData = state => ({
 export const postLoginDetails = saveData(
   getData,
   "login-form",
-  data => ({ type: "NOOP_ACTION" }),
+  () => ({ type: "NOOP_ACTION" }),
   postLoginRequest,
   actions.saveLoginFail
 );

@@ -8,7 +8,7 @@ import {
 } from "actions/LookupMobileProofing";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     withoutNin: !state.nins.nins[0],
     withoutPhoneNumber: !state.phones.phones.length,
@@ -19,17 +19,17 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleShowModal: function(e) {
+    handleShowModal: function() {
       dispatch(eduidRMAllNotify());
       dispatch(showModal());
     },
-    handleCloseModal: function(e) {
+    handleCloseModal: function() {
       dispatch(eduidRMAllNotify());
       dispatch(closeModal());
     },
-    handleLookupMobile: function(e) {
+    handleLookupMobile: function() {
       dispatch(closeModal());
       dispatch(postLookupMobile());
     }

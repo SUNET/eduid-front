@@ -1,20 +1,7 @@
-import { fetchFrejaData } from "../sagas/OpenidConnectFreja";
-
-const mock = require("jest-mock");
-import React from "react";
-import ReactDOM from "react-dom";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy, spyOn, isSpy } from "expect";
-import fetch from "whatwg-fetch";
-import fetchMock from "fetch-mock";
-import configureStore from "redux-mock-store";
+import expect from "expect";
 import * as actions from "actions/OpenidConnect";
 import openidConnectReducer from "reducers/OpenidConnect";
-import OpenidConnect from "components/OpenidConnect";
-
-import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
-import OpenidConnectContainer from "containers/OpenidConnect";
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
@@ -124,48 +111,6 @@ describe("Reducers", () => {
   });
 });
 
-const fakeStore = state => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...state })
-});
-
-const fakeState = {
-  openid_data: {
-    error: "",
-    qr_img:
-      "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-    qr_code: "new nonce",
-    nin: "",
-    showModal: false
-  },
-  config: {
-    oidc_proofing_url: "http://localhost/oidc"
-  },
-  intl: {
-    locale: "en",
-    messages: messages
-  }
-};
-
-function setupComponent(store) {
-  const props = {
-    handleGetQRCode: mock.fn(),
-    qr_img: "code",
-    qr_code: "nonce"
-  };
-
-  const wrapper = mount(
-    <Provider store={store}>
-      <OpenidConnectContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper
-  };
-}
 
 // Modals are hard
 /*

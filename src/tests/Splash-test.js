@@ -1,7 +1,4 @@
-const mock = require("jest-mock");
 import React from "react";
-import { Provider } from "react-intl-redux";
-import { mount } from "enzyme";
 import expect from "expect";
 
 import { setupComponent } from "tests/SignupMain-test";

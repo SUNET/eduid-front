@@ -1,7 +1,6 @@
 import { put, select, call } from "redux-saga/effects";
 import {
   checkStatus,
-  ajaxHeaders,
   putCsrfToken,
   postRequest,
   saveData,
@@ -29,7 +28,7 @@ export function sendMobile(config, data) {
 export const saveMobile = saveData(
   getData,
   "phones",
-  data => ({ type: "NOOP_ACTION" }),
+  () => ({ type: "NOOP_ACTION" }),
   sendMobile,
   actions.postMobileFail
 );

@@ -1,7 +1,6 @@
 import { put, select, call } from "redux-saga/effects";
 import {
   checkStatus,
-  ajaxHeaders,
   putCsrfToken,
   postRequest,
   saveData,
@@ -29,7 +28,7 @@ export function sendEmail(config, data) {
 export const saveEmail = saveData(
   getData,
   "emails",
-  data => ({ type: "NOOP_ACTION" }),
+  () => ({ type: "NOOP_ACTION" }),
   sendEmail,
   actions.postEmailFail
 );

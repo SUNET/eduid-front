@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Router, Route, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 //import FetchingContext from "components/FetchingContext";

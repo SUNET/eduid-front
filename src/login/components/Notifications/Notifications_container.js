@@ -3,7 +3,7 @@ import Notifications from "./Notifications";
 import * as actions from "./Notifications_actions";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     // debug: state.config.debug,
     messages: state.notifications.messages,
@@ -11,7 +11,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleRMNotification(e) {
       e.preventDefault();

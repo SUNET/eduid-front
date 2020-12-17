@@ -1,7 +1,5 @@
 import * as actions from "actions/SignupMain";
-import * as captchaActions from "actions/Captcha";
 import * as verifiedActions from "actions/CodeVerified";
-import * as resendActions from "actions/ResendCode";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {

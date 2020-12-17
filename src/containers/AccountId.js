@@ -2,13 +2,13 @@ import { connect } from "react-redux";
 import AccountId from "components/AccountId";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     eppn: state.personal_data.data.eppn
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = () => {
   return {};
 };
 

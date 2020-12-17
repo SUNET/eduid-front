@@ -1,10 +1,9 @@
 const mock = require("jest-mock");
 import React from "react";
 import { Provider } from "react-intl-redux";
-import { shallow, mount, render } from "enzyme";
-import expect, { createSpy } from "expect";
+import { shallow, mount } from "enzyme";
+import expect from "expect";
 import { addLocaleData, IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router-dom";
 import Header from "containers/Header";
 import Footer from "containers/Footer";
 import MainContainer from "containers/DashboardMain";

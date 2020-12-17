@@ -1,4 +1,3 @@
-import ReactDom from "react-dom";
 import { connect } from "react-redux";
 
 import i18n from "../login/translation/InjectIntl_HOC_factory";
@@ -15,7 +14,7 @@ const pwStrengthMessages = [
   "pwfield.strong"
 ];
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   let userInput = [];
   userInput.push(state.personal_data.data.given_name);
   userInput.push(state.personal_data.data.surname);
@@ -52,7 +51,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     noop: function(event) {
       event.preventDefault();

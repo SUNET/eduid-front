@@ -2,7 +2,6 @@ import { takeLatest } from "redux-saga/effects";
 import * as allDataActions from "../../actions/getAllDataGroupActions";
 import * as createGroupActions from "../../actions/createGroupActions";
 import { allDataSaga } from "../groups/allDataSaga";
-import { groupsSaga } from "../groups/groupsSaga";
 import { createGroupSaga } from "../groups/createGroupSaga";
 // console.log("this is groupsSaga in groupsSagas", groupsSaga);
 

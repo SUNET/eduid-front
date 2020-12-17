@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 

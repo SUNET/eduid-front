@@ -2,7 +2,6 @@ import { put, select, call } from "redux-saga/effects";
 import { updateIntl } from "react-intl-redux";
 import {
   checkStatus,
-  ajaxHeaders,
   putCsrfToken,
   getRequest,
   postRequest,

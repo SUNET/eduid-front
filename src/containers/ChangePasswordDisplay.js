@@ -8,22 +8,22 @@ import {
 import { eduidRMAllNotify } from "actions/Notifications";
 import ChangePasswordDisplay from "components/ChangePasswordDisplay";
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     confirming_change: state.security.confirming_change
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleStartConfirmationPassword: function(e) {
+    handleStartConfirmationPassword: function() {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationPassword());
     },
-    handleStopConfirmationPassword: function(e) {
+    handleStopConfirmationPassword: function() {
       dispatch(stopConfirmationPassword());
     },
-    handleConfirmationPassword: function(e) {
+    handleConfirmationPassword: function() {
       dispatch(confirmPasswordChange());
     }
   };

@@ -6,7 +6,7 @@ export const PPOST_LOGIN_FAIL = "POST_LOGIN_FAIL";
 // export const ACCEPT_TOU = "ACCEPT_TOU";
 
 // this action triggers adding user email to the store and starts the post of email to db (see login-rootSaga.js)
-export function addLoginDetails(email, password) {
+export function addLoginDetails(email) {
   return {
     type: ADD_LOGIN_DETAILS,
     payload: {

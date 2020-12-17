@@ -3,7 +3,7 @@ import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import AccountCreatedContainer from "containers/AccountCreated";
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
+import { setupComponent } from "tests/SignupMain-test";
 
 describe("Account Component", () => {
   it("The component does not render 'false' or 'null'", () => {
