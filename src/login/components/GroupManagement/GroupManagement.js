@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import WizardParent from "./Wizard/WizardParent";
-import GroupParent from "./Groups/GroupsParent";
+import GroupsParent from "./Groups/GroupsParent";
 
 const RenderCreateGroupButton = (props) => {
   return (
@@ -20,7 +20,7 @@ const RenderWizardOrData = (props) => {
   return props.hasNoGroups ? (
     <WizardParent {...props} />
   ) : (
-    <GroupParent {...props} />
+    <GroupsParent {...props} />
   );
 };
 
