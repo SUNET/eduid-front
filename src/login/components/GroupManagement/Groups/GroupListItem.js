@@ -60,7 +60,7 @@ class GroupListItem extends Component {
         }}
       >
         <div className="list-grid">
-          <div className="title list-cell">
+          <div className="title hide-overflow list-cell">
             <div className="element-pair">
               <button
                 className={

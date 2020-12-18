@@ -158,8 +158,6 @@ article {
     .title {
       justify-content: unset;
       height: 3rem;
-      white-space: nowrap;
-      overflow: hidden;
       .element-pair {
         display: flex;
         align-items: center;
@@ -240,6 +238,10 @@ article {
   grid-template-columns:
     1fr calc(0.5rem + 48px + 0.5rem) calc(0.5rem + 68px + 0.5rem)
     3rem;
+  .hide-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+  }
   .list-cell {
     display: flex;
     align-items: center;
@@ -250,7 +252,6 @@ article {
       letter-spacing: 0;
       font-weight: unset;
       margin-left: 0;
-      // font-family: "ProximaNova-Bold";
     }
     label,
     p {

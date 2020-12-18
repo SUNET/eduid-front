@@ -10,7 +10,7 @@ const InviteListItem = (props) => {
         list.map((member, i) => (
           <li key={i}>
             <div className="list-grid">
-              <div className="list-cell left-align">
+              <div className="hide-overflow list-cell left-align">
                 <p>{member.email_address}</p>
               </div>
               <div className="list-cell">
