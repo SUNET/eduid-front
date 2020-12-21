@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-
-class LookupMobileProofing extends Component {
+import { Link } from "react-router-dom";
+class LookupMobileProofing extends Component {  
   render() {
     let description = "";
     if(this.props.withoutNin){
@@ -13,14 +13,26 @@ class LookupMobileProofing extends Component {
       )
     } else if(this.props.withoutPhoneNumber){
       description = (
-        <div className="description">
+        <div className="link">
           {this.props.translate("verify-identity.vetting_explanation_add_phone_number")}
+          <Link
+            key="1"
+            to={"/profile/settings/"}
+          >
+          {this.props.translate("verify-identity.vetting_link_settings")}
+          </Link>
         </div> 
       )
     } else if(this.props.notVerifiedNumber) {
       description = (
-        <div className="description">
+        <div className="link">
           {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")}
+          <Link
+            key="1"
+            to={"/profile/settings/"}
+          >
+          {this.props.translate("verify-identity.vetting_link_settings")}
+          </Link>
         </div> 
       ); 
     } else if(this.props.nonSweNumber) {
