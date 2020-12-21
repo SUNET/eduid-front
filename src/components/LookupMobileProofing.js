@@ -4,78 +4,59 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 
 class LookupMobileProofing extends Component {
   render() {
-    const { disabled } = this.props;
-    let modalPrompt = "";
-    let primaryNumber = false;
-    let phoneNumbers = this.props.phoneNumbers;
-
-    // if there are phone numbers, check if one is primary   
-    if (phoneNumbers !== []) {
-      primaryNumber = phoneNumbers.some((num) => num.primary === true);
-    } 
-
-    if (phoneNumbers.length) {
-      modalPrompt = [
-        <NotificationModal
-          key="0"
-          modalId="mobileGenericConfirmDialog"
-          title={this.props.translate("lmp.modal_reminder_to_confirm_title")}
-          mainText={this.props.translate("lmp.modal_reminder_to_confirm_info")}
-          showModal={this.props.showModal}
-          closeModal={this.props.handleCloseModal}
-          acceptModal={this.props.handleCloseModal}
-          acceptButtonText={this.props.translate("cm.ok")}
-        />,
-      ];
-      if (primaryNumber) {
-        modalPrompt = [
-          <NotificationModal
-            key="0"
-            modalId="mobileGenericConfirmDialog"
-            title={this.props.translate("lmp.modal_confirm_title")}
-            mainText={this.props.translate("lmp.modal_confirm_info")}
-            showModal={this.props.showModal}
-            closeModal={this.props.handleCloseModal}
-            acceptModal={this.props.handleLookupMobile}
-          />,
-        ];
-      }
+    let description = "";
+    if(this.props.withoutNin){
+      description = (
+        <div className="description">
+          {this.props.translate("verify-identity.vetting_explanation_add_nin")}
+        </div> 
+      )
+    } else if(this.props.withoutPhoneNumber){
+      description = (
+        <div className="description">
+          {this.props.translate("verify-identity.vetting_explanation_add_phone_number")}
+        </div> 
+      )
+    } else if(this.props.notVerifiedNumber) {
+      description = (
+        <div className="description">
+          {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")}
+        </div> 
+      ); 
+    } else if(this.props.nonSweNumber) {
+      description = (
+        <div className="description">
+          {this.props.translate("verify-identity.vetting_explanation_only_available_swe_number")}
+        </div> 
+      ); 
     } else {
-      modalPrompt = [
-        <NotificationModal
-          key="0"
-          modalId="mobileGenericConfirmDialog"
-          title={this.props.translate("lmp.modal_add_number_title")}
-          mainText={this.props.translate("lmp.modal_add_number_info")}
-          showModal={this.props.showModal}
-          closeModal={this.props.handleCloseModal}
-          acceptModal={this.props.handleCloseModal}
-          acceptButtonText={this.props.translate("cm.ok")}
-        />,
-      ];
+      <div /> 
     }
 
     return (
       <div key="0">
         <div key="0" className="vetting-button">
           <button
-            disabled={disabled}
+            disabled={this.props.withoutNin || this.props.withoutPhoneNumber|| this.props.notVerifiedNumber || this.props.nonSweNumber}
             onClick={this.props.handleShowModal}
           >
             <div key="1" className="text">
               {this.props.translate("verify-identity.vetting_phone_tagline")}
-              { disabled &&
-                <div className="description">
-                  {this.props.translate("verify-identity.vetting_explanation_add_nin")}
-                </div>
-              }
+              {description}
             </div>
             <div key="2" className="name">
               {this.props.translate("lmp.button_text_request")}
             </div>
           </button>
         </div>
-        {modalPrompt}
+        <NotificationModal
+          modalId="mobileGenericConfirmDialog"
+          title={this.props.translate("lmp.modal_confirm_title")}
+          mainText={this.props.translate("lmp.modal_confirm_info")}
+          showModal={this.props.showModal}
+          closeModal={this.props.handleCloseModal}
+          acceptModal={this.props.handleLookupMobile}
+        />
       </div>
     );
   }

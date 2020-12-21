@@ -124,6 +124,18 @@
     "defaultMessage": "Start by adding your ID number above"
   },
   {
+    "id": "verify-identity.vetting_explanation_add_phone_number",
+    "defaultMessage": "Start by adding your phone number in settings"
+  },
+  {
+    "id": "verify-identity.vetting_explanation_confirm_phone_number",
+    "defaultMessage": "Confirm your phone number in settings"
+  },
+  {
+    "id": "verify-identity.vetting_explanation_only_available_swe_number",
+    "defaultMessage": "Only possible with Swedish phone number"
+  },
+  {
     "id": "verify-identity.vetting_freja_tagline",
     "defaultMessage": "For you able to create a Freja eID by visiting one of the authorised agents"
   },
@@ -206,22 +218,6 @@
   {
     "id": "lmp.initialize_proofing_help_text_tip_1",
     "defaultMessage": "Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers"
-  },
-  {
-    "id": "lmp.modal_add_number_title",
-    "defaultMessage": "Add your mobile number to continue"
-  },
-  {
-    "id": "lmp.modal_add_number_info",
-    "defaultMessage": "Go to Settings to add your phone number. Do not forget to also confirm it! You can only use this option with a confirmed number!"
-  },
-  {
-    "id": "lmp.modal_reminder_to_confirm_title",
-    "defaultMessage": "Your number also needs to be confirmed"
-  },
-  {
-    "id": "lmp.modal_reminder_to_confirm_info",
-    "defaultMessage": "Go to Settings to confirm your number. You can only use this option with a confirmed number."
   },
   {
     "id": "lmp.modal_confirm_title",

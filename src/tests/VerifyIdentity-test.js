@@ -37,6 +37,9 @@ describe("VerifyIdentity component, no nin added ", () => {
     nins: {
       nins: []
     },
+    phones: {
+      phones: []
+    },
     config: {
       is_configured: false,
       proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"]

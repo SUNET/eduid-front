@@ -9,11 +9,12 @@ import {
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
-  let withoutNin = !state.nins.nins[0]
   return {
-    disabled: withoutNin,
+    withoutNin: !state.nins.nins[0],
+    withoutPhoneNumber: !state.phones.phones.length,
+    notVerifiedNumber: !state.phones.phones.some((num) => num.verified === true),
+    nonSweNumber: !state.phones.phones.some((num) => num.number.includes(+46)),
     showModal: state.lookup_mobile.showModal,
-    phoneNumbers: state.phones.phones,
     nins: state.nins.nins,
   };
 };

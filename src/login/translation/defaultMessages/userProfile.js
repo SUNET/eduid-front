@@ -199,6 +199,27 @@ export const userProfile = {
     />
   ),
 
+  "verify-identity.vetting_explanation_add_phone_number": (
+    <FormattedMessage
+      id="verify-identity.vetting_explanation_add_phone_number"
+      defaultMessage={`Start by adding your phone number in settings`}
+    />
+  ),
+
+  "verify-identity.vetting_explanation_confirm_phone_number": (
+    <FormattedMessage
+      id="verify-identity.vetting_explanation_confirm_phone_number"
+      defaultMessage={`Confirm your phone number in settings`}
+    />
+  ),
+
+  "verify-identity.vetting_explanation_only_available_swe_number": (
+    <FormattedMessage
+      id="verify-identity.vetting_explanation_only_available_swe_number"
+      defaultMessage={`Only possible with Swedish phone number`}
+    />
+  ),
+
   "verify-identity.vetting_freja_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_freja_tagline"
@@ -348,38 +369,6 @@ export const userVetting = {
     <FormattedMessage
       id="lmp.initialize_proofing_help_text_tip_1"
       defaultMessage={`Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers`}
-    />
-  ),
-
-  /* ----- no number > reminder to add a number ------- */
-
-  "lmp.modal_add_number_title": (
-    <FormattedMessage
-      id="lmp.modal_add_number_title"
-      defaultMessage={`Add your mobile number to continue`}
-    />
-  ),
-
-  "lmp.modal_add_number_info": (
-    <FormattedMessage
-      id="lmp.modal_add_number_info"
-      defaultMessage={`Go to Settings to add your phone number. Do not forget to also confirm it! You can only use this option with a confirmed number!`}
-    />
-  ),
-
-  /* ----- added number but not confirmed > reminder to confirm number------- */
-
-  "lmp.modal_reminder_to_confirm_title": (
-    <FormattedMessage
-      id="lmp.modal_reminder_to_confirm_title"
-      defaultMessage={`Your number also needs to be confirmed`}
-    />
-  ),
-
-  "lmp.modal_reminder_to_confirm_info": (
-    <FormattedMessage
-      id="lmp.modal_reminder_to_confirm_info"
-      defaultMessage={`Go to Settings to confirm your number. You can only use this option with a confirmed number.`}
     />
   ),
 
