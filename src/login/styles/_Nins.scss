@@ -32,6 +32,15 @@
     } 
     & .link {
       margin: 0.5rem 0;
+      & a span:nth-child(1){
+        color: $black;
+        border-bottom: $black solid 1px;
+      }
+      & a span:nth-child(1):hover {
+        color: $orange-highlight;
+        border-bottom: transparent solid 1px;
+      }
+
     }
   }
   & .name {
