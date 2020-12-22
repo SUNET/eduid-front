@@ -3,17 +3,27 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import GroupsList from "./GroupsList";
 import EditGroup from "./EditGroup";
 
+const LOCAL_STORAGE_PERSISTED_EDIT_GROUP = "persistedEditGroup";
+const LOCAL_STORAGE_PERSISTED_GROUP = "persistedGroup";
+
 class GroupParent extends Component {
   state = {
     editGroup:
-      JSON.parse(window.localStorage.getItem("persistedEditGroup")) || false,
-    group: JSON.parse(window.localStorage.getItem("persistedGroup")) || "",
+      JSON.parse(
+        window.localStorage.getItem(LOCAL_STORAGE_PERSISTED_EDIT_GROUP)
+      ) || false,
+    group:
+      JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_PERSISTED_GROUP)) ||
+      "",
   };
 
   componentDidUpdate() {
-    window.localStorage.setItem("persistedEditGroup", this.state.editGroup);
     window.localStorage.setItem(
-      "persistedGroup",
+      LOCAL_STORAGE_PERSISTED_EDIT_GROUP,
+      this.state.editGroup
+    );
+    window.localStorage.setItem(
+      LOCAL_STORAGE_PERSISTED_GROUP,
       JSON.stringify(this.state.group)
     );
   }
