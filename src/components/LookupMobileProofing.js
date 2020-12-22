@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-import { Link } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
 class LookupMobileProofing extends Component {  
   render() {
     let description = "";
@@ -15,24 +15,24 @@ class LookupMobileProofing extends Component {
       description = (
         <div className="link">
           {this.props.translate("verify-identity.vetting_explanation_add_phone_number")}
-          <Link
+          <HashLink
             key="1"
-            to={"/profile/settings/"}
+            to={"/profile/settings/#mobile"}
           >
-          {this.props.translate("verify-identity.vetting_link_settings")}
-          </Link>
+            {this.props.translate("verify-identity.vetting_link_settings")}
+          </HashLink>
         </div> 
       )
     } else if(this.props.notVerifiedNumber) {
       description = (
         <div className="link">
           {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")}
-          <Link
+          <HashLink
             key="1"
-            to={"/profile/settings/"}
+            to={"/profile/settings/#phone"}
           >
-          {this.props.translate("verify-identity.vetting_link_settings")}
-          </Link>
+            {this.props.translate("verify-identity.vetting_link_settings")}
+          </HashLink>
         </div> 
       ); 
     } else if(this.props.nonSweNumber) {
