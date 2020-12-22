@@ -17,7 +17,7 @@ class LookupMobileProofing extends Component {
           {this.props.translate("verify-identity.vetting_explanation_add_phone_number")}
           <HashLink
             key="1"
-            to={"/profile/settings/#mobile"}
+            to={"/profile/settings/#phone"}
           >
             {this.props.translate("verify-identity.vetting_link_settings")}
           </HashLink>
