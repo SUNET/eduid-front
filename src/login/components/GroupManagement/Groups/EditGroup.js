@@ -6,11 +6,11 @@ const EditGroup = (props) => {
   return (
     <div className="edit-data">
       <div className="title">
-        <p>Edit your group {props.group.display_name}</p> 
+        <p>Edit your group {props.group.group.display_name}</p>
         <button
           className="save-button"
           onClick={() => {
-            props.toggleGroupsListOrEditGroup(props.group);
+            props.toggleGroupsListOrEditGroup(props.group.group);
           }}
         >
           save
@@ -27,7 +27,7 @@ const EditGroup = (props) => {
           <p>Delete</p>
         </li>
       </nav>
-      <InvitesParent group={props.group} />
+      <InvitesParent group={props.group.group} />
     </div>
   );
 };

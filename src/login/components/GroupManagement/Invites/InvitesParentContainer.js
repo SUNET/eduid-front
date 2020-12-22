@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import * as getAllOutgoingActions from "../../../redux/actions/getOutgoingInvitesActions";
-import InvitesParent from "./InvitesParent";
+import InvitesDataPanel from "./InvitesParent";
 
 const mapStateToProps = (state) => {
   let groupIdsArray = state.invites.invitesFromMe.map(
@@ -30,8 +30,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const InvitesParentContainer = connect(
+const InvitesDataPanelContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(InvitesParent);
-export default i18n(InvitesParentContainer);
+)(InvitesDataPanel);
+export default i18n(InvitesDataPanelContainer);
