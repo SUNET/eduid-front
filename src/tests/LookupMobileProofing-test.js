@@ -11,6 +11,38 @@ import LookupMobileProofingContainer from "containers/LookupMobileProofing";
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
+const baseState = {
+  lookup_mobile: {},
+  config: {
+    lookup_mobile_proofing_url: "http://localhost/lookup-mobile",
+    csrf_token: "dummy-token"
+  },
+  intl: {
+    locale: "en",
+    messages: messages
+  },
+  phones: {
+    phones: []
+  },
+  nins: {
+    nins: []
+  }
+};
+
+const fakeStore = fakeState => ({
+  default: () => {},
+  dispatch: mock.fn(),
+  subscribe: mock.fn(),
+  getState: () => ({ ...fakeState })
+});
+
+function getFakeState(newState) {
+  if (newState === undefined) {
+    newState = {}
+  }
+  return Object.assign(baseState, newState)
+}
+
 describe("lookup mobile proofing Actions", () => {
   it("should create an action to trigger checking a mobile phone", () => {
     const expectedAction = {
@@ -33,92 +65,140 @@ describe("lookup mobile proofing Actions", () => {
 });
 
 describe("Reducers", () => {
-  const mockState = {};
+  const fakeState = getFakeState();
+  const lookupMobileState = fakeState.lookup_mobile;
 
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING action", () => {
     expect(
-      lookupMobileProofingReducer(mockState, {
+      lookupMobileProofingReducer(lookupMobileState, {
         type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING
       })
-    ).toEqual({});
+    ).toEqual({
+      ...lookupMobileState
+    });
   });
 
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS action", () => {
     expect(
-      lookupMobileProofingReducer(mockState, {
+      lookupMobileProofingReducer(lookupMobileState, {
         type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS
       })
-    ).toEqual({});
+    ).toEqual({
+      ...lookupMobileState
+    });
   });
 
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL action", () => {
     expect(
-      lookupMobileProofingReducer(mockState, {
+      lookupMobileProofingReducer(lookupMobileState, {
         type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
         error: true,
         payload: {
           message: "Bad error"
         }
       })
-    ).toEqual({});
+    ).toEqual({
+      ...lookupMobileState
+    });
   });
 
   it("Receives a DUMMY action", () => {
     expect(
-      lookupMobileProofingReducer(mockState, {
+      lookupMobileProofingReducer(lookupMobileState, {
         type: "DUMMY_ACTION",
         payload: "dummy payload"
       })
-    ).toEqual({});
+    ).toEqual({
+      ...lookupMobileState
+    });
   });
 });
 
-const fakeStore = state => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...state })
+describe("LookupMobile Container", () => {
+  let mockProps, wrapper, buttontext;
+  const fakeState = getFakeState();
+  beforeEach(() => {
+    const store = fakeStore(fakeState);
+    mockProps = {};
+
+    wrapper = mount(
+      <Provider store={store}>
+        <LookupMobileProofingContainer {...mockProps} />
+      </Provider>
+    );
+    it("Renders button text", () => {
+      buttontext = wrapper.find("button").exists();
+      expect(buttontext.exists()).toEqual(true);
+      expect(buttontext.text()).toContain("By phone");
+    })
+  });
+  afterEach(() => {
+    fetchMock.restore();
+  });
 });
 
-const fakeState = {
-  lookup_mobile: {},
-  config: {
-    lookup_mobile_proofing_url: "http://localhost/lookup-mobile",
-    csrf_token: "dummy-token"
-  },
-  intl: {
-    locale: "en",
-    messages: messages
-  },
-  phones: {
-    phones: []
-  },
-  nins: {
-    nins: []
+describe("LookupMobileProofing component,", () => {
+  const fakeState = getFakeState({
+    nins: {
+      valid_nin: false,
+      nins: []
+    }
+  })
+
+  function setupComponent() {
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <LookupMobileProofingContainer />
+      </Provider>
+    );
+    return {
+      wrapper
+    };
   }
-};
 
-function setupComponent() {
-  const props = {
-    handleLookupMobile: mock.fn()
-  };
-
-  const wrapper = mount(
-    <Provider store={fakeStore(fakeState)}>
-      <LookupMobileProofingContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper
-  };
-}
-
-describe("LookupMobileProofing Component", () => {
   it("Renders a vetting button", () => {
     const { wrapper } = setupComponent();
     const button = wrapper.find("button");
     expect(button.exists()).toEqual(true);
+  });
+
+  it("Renders button text, add ID number to verify phone", () => {
+    const state = {...fakeState};
+    state.nins.nins[0] = ""
+    const { wrapper } = setupComponent();
+    const description = wrapper.find("div.description");
+    expect(description.exists()).toEqual(true);
+    expect(description.text()).toContain("ID number");
+  });
+
+  it("Renders button text, the phone number is added", () => {
+    const state = {...fakeState};
+    state.phones.phones = [{number:"+46700011555"}],
+    state.nins.nins[0] = "19881212"
+    const { wrapper } = setupComponent();
+    const description = wrapper.find("div.description");
+    const confirmPhone = description.find("span").at(0);
+    expect(confirmPhone.exists()).toEqual(true);
+    expect(confirmPhone.text()).toContain("Confirm");
+  });
+
+  it("Renders button text, the phone number is verified", () => {
+    const state = {...fakeState};
+    state.phones.phones = [{number:"+46700011555", primary: true, verified: true}],
+    state.nins.nins[0] = "19881212"
+    const { wrapper } = setupComponent();
+    const description = wrapper.find("div.description");
+    expect(description.exists()).toEqual(false);
+  });
+
+  it("Renders button text, if the phone number is non swedish", () => {
+    const state = {...fakeState};
+    state.phones.phones = [{number:"+36700011555", primary: true, verified: true}],
+    state.nins.nins[0] = "19881212"
+    const { wrapper } = setupComponent();
+    const description = wrapper.find("div.description");
+    expect(description.exists()).toEqual(true);
+    expect(description.text()).toContain("Swedish");
   });
 });
 
