@@ -3,8 +3,8 @@ import i18n from "../../../translation/InjectIntl_HOC_factory";
 import EmailForm from "../EmailForm";
 
 class CreateInvite extends Component {
-
-  handleInviteEmail = (emailValue) => {
+  handleInviteEmailAddress = (values) => {
+    let emailValue = values;
     let groupId = this.props.groupId;
     this.props.createInvite(emailValue, groupId);
   };
@@ -21,7 +21,7 @@ class CreateInvite extends Component {
           fellow admins.
         </p>
         <div className="invite-email">
-          <EmailForm onSubmit={this.handleInviteEmail} />
+          <EmailForm onSubmit={this.handleInviteEmailAddress} />
         </div>
       </Fragment>
     );
