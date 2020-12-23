@@ -4,8 +4,12 @@ import * as inviteActions from "../../../redux/actions/createInviteActions";
 import CreateInvite from "./CreateInvite";
 
 const mapStateToProps = (state) => {
+  let emailFormValues = { email: "" };
+  if (state.form.emails !== undefined) {
+    return (emailFormValues = state.form.emails.values);
+  }
   return {
-    values: state.form.emails.values,
+    values: emailFormValues,
   };
 };
 
