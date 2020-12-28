@@ -2,16 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-
 import Form from "reactstrap/lib/Form";
-// import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import CustomInput from "../login/components/Inputs/CustomInput";
-
-// import "style/Emails.scss";
-// import "style/PersonalData.scss";
-// import "style/DashboardMain.scss";
-
 import "../login/styles/index.scss";
 
 /* FORM */
