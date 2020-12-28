@@ -51,4 +51,9 @@ module.exports = {
         "ACTIONS_SERVICE_URL": true,
         "__webpack_public_path__": true
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 };
