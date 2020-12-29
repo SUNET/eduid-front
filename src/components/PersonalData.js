@@ -9,7 +9,7 @@ import "../login/styles/index.scss";
 
 /* FORM */
 
-const validatePersonalData = (values) => {
+const validatePersonalData = (values, props) => {
   const errors = {};
   const spacePattern = /^\s+$/;
   const withSpecialCharacters  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}()-=_+]/;
@@ -17,6 +17,10 @@ const validatePersonalData = (values) => {
   ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
     if (!values[pdata]) {
       errors[pdata] = "required";
+    }
+    //none of the fields value properties differ from their initial properties will get error message.
+    else if(props.pristine){
+      errors[pdata] = "value not changed";
     }
     //add space pattern instead of trim because the input datas will be added without space.
     else if(spacePattern.test(values[pdata])){
