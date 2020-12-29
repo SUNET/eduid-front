@@ -97,7 +97,7 @@ input::placeholder {
   font-size: 1.5rem;
 }
 
-// .form-control:focus,
+.form-control:focus,
 input:focus {
   outline: 0;
   border-bottom: solid 2px $black;
