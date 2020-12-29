@@ -34,6 +34,10 @@ input[type="radio"]:checked {
   border: none;
 }
 
+input[type="radio"]:checked.error {
+  background-color: $orange-highlight;
+}
+
 /* optional styles for centering radiobuttons */
 .radio-input-container {
   display: flex;
