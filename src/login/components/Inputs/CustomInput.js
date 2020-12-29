@@ -56,7 +56,7 @@ const RenderInput = props => {
         <Fragment key={index}>
           <label key={option[0]} htmlFor={option[1]}>
           <input
-            className={"radio-input"}
+            className={props.meta.error && props.meta.visited ? "radio-input error":"radio-input"}
             key={option[0]}
             id={option[1]}
             type='radio'
