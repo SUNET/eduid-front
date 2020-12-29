@@ -91,7 +91,6 @@ PdataForm = reduxForm({
   form: "personal_data",
   destroyOnUnmount: false,
   enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
   keepValuesOnReinitialize: true,
   updateUnregisteredFields: true,
   validate: validatePersonalData,
