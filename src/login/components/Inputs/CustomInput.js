@@ -86,7 +86,6 @@ const RenderInput = props => {
         valid={valid}
         invalid={invalid}
         {...input}
-        autoComplete="off" 
       />
     )
   }
