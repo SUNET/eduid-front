@@ -16,6 +16,10 @@
     "defaultMessage": "Name can only consist of letters"
   },
   {
+    "id": "value not changed",
+    "defaultMessage": "Input value is not updating"
+  },
+  {
     "id": "user-out-of-sync",
     "defaultMessage": "User data is out of sync. Reload page to re-sync."
   },

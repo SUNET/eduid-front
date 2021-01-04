@@ -23,6 +23,10 @@ export const generalErrors = {
     <FormattedMessage id="only allow letters" defaultMessage={`Name can only consist of letters`} />
   ),
 
+  "value not changed": (
+    <FormattedMessage id="value not changed" defaultMessage={`Input value is not updating`} />
+  ),
+
   "user-out-of-sync": (
     <FormattedMessage
       id="user-out-of-sync"

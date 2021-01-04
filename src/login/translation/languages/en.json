@@ -229,6 +229,7 @@
   "ocf.not_on_mobile_title": "Not using your phone?",
   "ocf.open_app": "I have Freja eID installed",
   "only allow letters": "Name can only consist of letters",
+  "value not changed": "Input value is not updating",
   "orc.about_link": "Learn more about ORCID in eduID from our <a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>.",
   "orc.already_connected": "ORCID already connected to this account",
   "orc.authorization_fail": "ORCID authentication failed",

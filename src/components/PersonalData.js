@@ -12,6 +12,8 @@ import "../login/styles/index.scss";
 const validatePersonalData = (values, props) => {
   const errors = {};
   const specialCharsAndNumbers  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}(_+0-9]/;
+  // Regex pattern to match all emojis, https://www.regextester.com/106421
+  const emojiUnicodes = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/;
 
   ["given_name", "surname", "display_name", "language"].forEach((inputValue) => {
     if (!values[inputValue] || !values[inputValue].trim()) {
@@ -22,7 +24,7 @@ const validatePersonalData = (values, props) => {
       errors[inputValue] = "value not changed";
     }
     else if(inputValue==="given_name" || inputValue==="surname"){
-      if(specialCharsAndNumbers.test(values[inputValue])){
+      if(specialCharsAndNumbers.test(values[inputValue]) || emojiUnicodes.test(values[inputValue])){
         errors[inputValue] = "only allow letters";
       }
     }
