@@ -11,7 +11,7 @@ import "../login/styles/index.scss";
 
 const validatePersonalData = (values, props) => {
   const errors = {};
-  const withSpecialCharacters  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}()-=_+]/;
+  const specialCharsAndNumbers  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}(_+0-9]/;
 
   ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
     if (!values[pdata] || !values[pdata].trim()) {
@@ -22,7 +22,7 @@ const validatePersonalData = (values, props) => {
       errors[pdata] = "value not changed";
     }
     else if(pdata==="given_name" || pdata==="surname"){
-      if(withSpecialCharacters.test(values[pdata])){
+      if(specialCharsAndNumbers.test(values[pdata])){
         errors[pdata] = "only allow letters";
       }
     }
