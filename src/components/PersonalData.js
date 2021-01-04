@@ -13,17 +13,17 @@ const validatePersonalData = (values, props) => {
   const errors = {};
   const specialCharsAndNumbers  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}(_+0-9]/;
 
-  ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
-    if (!values[pdata] || !values[pdata].trim()) {
-      errors[pdata] = "required";
+  ["given_name", "surname", "display_name", "language"].forEach((inputValue) => {
+    if (!values[inputValue] || !values[inputValue].trim()) {
+      errors[inputValue] = "required";
     }
     //none of the fields value properties differ from their initial properties will get error message.
     else if(props.pristine){
-      errors[pdata] = "value not changed";
+      errors[inputValue] = "value not changed";
     }
-    else if(pdata==="given_name" || pdata==="surname"){
-      if(specialCharsAndNumbers.test(values[pdata])){
-        errors[pdata] = "only allow letters";
+    else if(inputValue==="given_name" || inputValue==="surname"){
+      if(specialCharsAndNumbers.test(values[inputValue])){
+        errors[inputValue] = "only allow letters";
       }
     }
   });
