@@ -11,7 +11,7 @@ import "../login/styles/index.scss";
 
 const validatePersonalData = (values, props) => {
   const errors = {};
-  const specialCharsAndNumbers  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}(_+0-9]/;
+  const specialCharsAndNumbers  = /[´`¨^§°*!€%&?~#@,.<>;':"\/\[\]\|{}()=_+0-9]/;
   // Regex pattern to match all emojis, https://www.regextester.com/106421
   const emojiUnicodes = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/;
 
