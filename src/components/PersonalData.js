@@ -12,20 +12,24 @@ import "../login/styles/index.scss";
 const validatePersonalData = (values, props) => {
   const errors = {};
   const specialCharsAndNumbers  = /[´`¨^§°*!€%&?~#@,.<>;':"\/\[\]\|{}()=_+0-9]/;
+  const middleNameWithHyphen = /^[^-]*-[^-]/;
   // Regex pattern to match all emojis, https://www.regextester.com/106421
   const emojiUnicodes = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/;
 
-  ["given_name", "surname", "display_name", "language"].forEach((inputValue) => {
-    if (!values[inputValue] || !values[inputValue].trim()) {
-      errors[inputValue] = "required";
+  ["given_name", "surname", "display_name", "language"].forEach((inputName) => {
+    if (!values[inputName] || !values[inputName].trim()) {
+      errors[inputName] = "required";
     }
     //none of the fields value properties differ from their initial properties will get error message.
     else if(props.pristine){
-      errors[inputValue] = "value not changed";
+      errors[inputName] = "value not changed";
     }
-    else if(inputValue==="given_name" || inputValue==="surname"){
-      if(specialCharsAndNumbers.test(values[inputValue]) || emojiUnicodes.test(values[inputValue])){
-        errors[inputValue] = "only allow letters";
+    else if(inputName==="given_name" || inputName==="surname"){
+      if(!middleNameWithHyphen.test(values[inputName])){
+        errors[inputName] = "only allow letters";
+      }
+      else if(specialCharsAndNumbers.test(values[inputName]) || emojiUnicodes.test(values[inputName])){
+        errors[inputName] = "only allow letters";
       }
     }
   });
