@@ -229,6 +229,7 @@
   "ocf.not_on_mobile_title": "Not using your phone?",
   "ocf.open_app": "I have Freja eID installed",
   "only allow letters": "Name can only consist of letters",
+  "name with hyphen": "Hyphen only allowed between names",
   "value not changed": "The value is not changed",
   "orc.about_link": "Learn more about ORCID in eduID from our <a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>.",
   "orc.already_connected": "ORCID already connected to this account",

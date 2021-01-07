@@ -229,6 +229,7 @@
   "ocf.not_on_mobile_title": "Använder du inte din mobil?",
   "ocf.open_app": "Jag har Freja eID-appen installerad",
   "only allow letters": "Ett namn kan bara bestå av bokstäver",
+  "name with hyphen": "Bindstrek kan bara användas mellan namn",
   "value not changed": "Värdet är inte ändrat",
   "orc.about_link": "Läs mer om ORCID i eduID i vår <a href=\"https://www.eduid.se/faq.html\">FAQ</a>.",
   "orc.already_connected": "Ditt ORCID-konto är redan kopplat till det här kontot",
