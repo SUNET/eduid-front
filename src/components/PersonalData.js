@@ -24,11 +24,19 @@ const validatePersonalData = (values, props) => {
     else if(props.pristine){
       errors[inputName] = "value not changed";
     }
-    else if(inputName==="given_name" || inputName==="surname"){
-      if(!middleNameWithHyphen.test(values[inputName])){
+    else if(emojiUnicodes.test(values[inputName])){
+      errors[inputName] = "only allow letters";
+    }
+    else if(inputName==="given_name"){
+      if(values[inputName].includes("-") && !middleNameWithHyphen.test(values[inputName])){
+        errors[inputName] = "name with hyphen";
+      }
+      else if(specialCharsAndNumbers.test(values[inputName])){
         errors[inputName] = "only allow letters";
       }
-      else if(specialCharsAndNumbers.test(values[inputName]) || emojiUnicodes.test(values[inputName])){
+    }
+    else if(inputName==="surname"){
+      if(specialCharsAndNumbers.test(values[inputName]) || values[inputName].includes("-")){
         errors[inputName] = "only allow letters";
       }
     }
