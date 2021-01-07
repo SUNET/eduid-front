@@ -17,7 +17,7 @@
   },
   {
     "id": "value not changed",
-    "defaultMessage": "Input value is not updating"
+    "defaultMessage": "The value is not changed"
   },
   {
     "id": "user-out-of-sync",

@@ -24,7 +24,7 @@ export const generalErrors = {
   ),
 
   "value not changed": (
-    <FormattedMessage id="value not changed" defaultMessage={`Input value is not updating`} />
+    <FormattedMessage id="value not changed" defaultMessage={`The value is not changed`} />
   ),
 
   "user-out-of-sync": (
