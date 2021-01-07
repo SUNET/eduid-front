@@ -27,18 +27,12 @@ const validatePersonalData = (values, props) => {
     else if(emojiUnicodes.test(values[inputName])){
       errors[inputName] = "only allow letters";
     }
-    else if(inputName==="given_name"){
-      // when input value includes hyphen without following strings it will cause an error for given_name(First name)
+    else if(inputName==="given_name" || inputName==="surname"){
+      // when input value includes hyphen without following strings it will cause an error
       if(values[inputName].includes("-") && !middleNameWithHyphen.test(values[inputName])){
         errors[inputName] = "name with hyphen";
       }
       else if(specialCharsAndNumbers.test(values[inputName])){
-        errors[inputName] = "only allow letters";
-      }
-    }
-    // not allowed special chars, numbers including hyphen for surname(lastname)
-    else if(inputName==="surname"){
-      if(specialCharsAndNumbers.test(values[inputName]) || values[inputName].includes("-")){
         errors[inputName] = "only allow letters";
       }
     }
