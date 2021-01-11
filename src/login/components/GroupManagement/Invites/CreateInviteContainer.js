@@ -6,7 +6,7 @@ import CreateInvite from "./CreateInvite";
 const mapStateToProps = (state) => {
   let emailFormValues = { email: "" };
   if (state.form.emails !== undefined) {
-    return (emailFormValues = state.form.emails.values);
+    emailFormValues = state.form.emails.values;
   }
   return {
     values: emailFormValues,
