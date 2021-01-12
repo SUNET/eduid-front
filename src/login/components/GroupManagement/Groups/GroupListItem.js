@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import i18n from "../../../translation/InjectIntl_HOC_factory";
 
 export const RenderOwnerList = (props) => {
   let owners = props.group.group.owners;
@@ -60,7 +60,7 @@ class GroupListItem extends Component {
         }}
       >
         <div className="list-grid">
-          <div className="title list-cell">
+          <div className="title hide-overflow list-cell">
             <div className="element-pair">
               <button
                 className={
@@ -85,7 +85,7 @@ class GroupListItem extends Component {
           <div className="list-cell">
             <button
               onClick={() => {
-                this.props.toggleViewOrEditMode(this.props.group);
+                this.props.toggleGroupsListOrEditGroup(this.props.group);
               }}
             >
               edit

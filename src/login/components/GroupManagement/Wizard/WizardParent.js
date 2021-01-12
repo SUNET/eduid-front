@@ -4,7 +4,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 const RenderCreateGroupWizard = (props) => {
   return (
     <Fragment>
-      {props.noGroups && (
+      {props.hasNoGroups && (
         <div className="wizard">
           <div className="title">
             <p>Create your first group.</p>
@@ -32,13 +32,13 @@ const RenderCreateGroupWizard = (props) => {
   );
 };
 
-class WizardPanel extends Component {
+class WizardParent extends Component {
   state = { firstInvite: true };
   render() {
     return <RenderCreateGroupWizard {...this.props} />;
   }
 }
 
-WizardPanel.propTypes = {};
+WizardParent.propTypes = {};
 
-export default InjectIntl(WizardPanel);
+export default InjectIntl(WizardParent);

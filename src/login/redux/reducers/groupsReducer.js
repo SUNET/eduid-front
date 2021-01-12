@@ -1,4 +1,4 @@
-import * as actions from "../actions/getAllDataGroupActions";
+import * as actions from "../actions/getAllGroupMgmtDataActions";
 
 const groupsData = {
   message: "",
@@ -6,9 +6,10 @@ const groupsData = {
   data: [],
   member_of: [],
   owner_of: [],
+  payload: ""
 };
 
-let groupsDataReducer = (state = groupsData, action) => {
+let groupsReducer = (state = groupsData, action) => {
   switch (action.type) {
     case actions.GET_GROUP_MANAGEMENT_ALL_DATA_SUCCESS:
       return {
@@ -23,4 +24,4 @@ let groupsDataReducer = (state = groupsData, action) => {
   }
 };
 
-export default groupsDataReducer;
+export default groupsReducer;
