@@ -6,6 +6,15 @@ class LookupMobileProofing extends Component {
   render() {
     /* Description is the text inside the vetting button */
     let description = "";
+    const linkToSetting = 
+      <>
+        <HashLink
+          key="1"
+          to={"/profile/settings/#phone"}
+        >
+          {this.props.translate("verify-identity.vetting_link_settings")}
+        </HashLink>
+      </>;
     /* without nin, description text will help the user to add id number */
     if(this.props.withoutNin){
       description = (
@@ -17,24 +26,14 @@ class LookupMobileProofing extends Component {
       description = (
         <div className="link">
           {this.props.translate("verify-identity.vetting_explanation_add_phone_number")}
-          <HashLink
-            key="1"
-            to={"/profile/settings/#phone"}
-          >
-            {this.props.translate("verify-identity.vetting_link_settings")}
-          </HashLink>
+          {linkToSetting}
         </div> 
       ) /* without verified phone number, description text will help the user to confirm phone number and the text "setting" is linked to the setting page phone number section */
     } else if(this.props.notVerifiedNumber) {
       description = (
         <div className="link">
           {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")}
-          <HashLink
-            key="1"
-            to={"/profile/settings/#phone"}
-          >
-            {this.props.translate("verify-identity.vetting_link_settings")}
-          </HashLink>
+          {linkToSetting}
         </div> 
       ); /* the verified phone number is not a Swedish number, description text show "only avaiable with Swedish number" */
     } else if(this.props.nonSweNumber) {
