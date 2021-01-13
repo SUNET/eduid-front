@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { intlReducer } from "react-intl-redux";
-
+import { routerReducer } from "react-router-redux";
+import { reducer as formReducer } from "redux-form";
 import personalDataReducer from "reducers/PersonalData";
 import emailsReducer from "reducers/Emails";
 import configReducer from "reducers/DashboardConfig";
@@ -15,16 +16,17 @@ import ninsReducer from "reducers/Nins";
 import letterProofingReducer from "reducers/LetterProofing";
 import notificationsReducer from "reducers/Notifications";
 import eidasReducer from "reducers/Eidas";
-import { routerReducer } from "react-router-redux";
-import { reducer as formReducer } from "redux-form";
-import groupsDataReducer from "./login/redux/reducers/getAllGroupsDataReducer";
+import groupsReducer from "./login/redux/reducers/groupsReducer";
+import invitesReducer from "./login/redux/reducers/invitesReducer";
+
 
 const eduIDApp = combineReducers({
   router: routerReducer,
   chpass: chpassReducer,
   config: configReducer,
   emails: emailsReducer,
-  groups: groupsDataReducer,
+  groups: groupsReducer,
+  invites: invitesReducer,
   openid_data: openidConnectReducer,
   lookup_mobile: lookupMobileProofingReducer,
   openid_freja_data: openidConnectFrejaReducer,
