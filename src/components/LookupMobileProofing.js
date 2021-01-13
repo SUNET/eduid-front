@@ -4,47 +4,25 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import { HashLink } from 'react-router-hash-link';
 class LookupMobileProofing extends Component {  
   render() {
-    /* Description is the text inside the vetting button */
-    let description = "";
-    const linkToSetting = 
-      <>
-        <HashLink
-          key="1"
-          to={"/profile/settings/#phone"}
-        >
-          {this.props.translate("verify-identity.vetting_link_settings")}
-        </HashLink>
-      </>;
-    /* without nin, description text will help the user to add id number */
-    if(this.props.withoutNin){
-      description = (
-        <div className="description">
-          {this.props.translate("verify-identity.vetting_explanation_add_nin")}
-        </div> 
-      ) /* without phone number, description text will help the user to add phone number and the text "setting" is linked to the setting page phone number section */ 
-    } else if(this.props.withoutPhoneNumber){
-      description = (
-        <div className="link">
-          {this.props.translate("verify-identity.vetting_explanation_add_phone_number")}
-          {linkToSetting}
-        </div> 
-      ) /* without verified phone number, description text will help the user to confirm phone number and the text "setting" is linked to the setting page phone number section */
-    } else if(this.props.unverifiedNumber) {
-      description = (
-        <div className="link">
-          {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")}
-          {linkToSetting}
-        </div> 
-      ); /* the verified phone number is not a Swedish number, description text show "only avaiable with Swedish number" */
-    } else if(this.props.nonSweNumber) {
-      description = (
-        <div className="description">
-          {this.props.translate("verify-identity.vetting_explanation_only_available_swe_number")}
-        </div> 
-      ); /* if user verified swedish number, description text will be empty */
-    } else {
-      <div /> 
-    }
+    const linkToSetting = (
+      <HashLink
+        key="1"
+        to={"/profile/settings/#phone"}
+      >
+        {this.props.translate("verify-identity.vetting_link_settings")}
+      </HashLink>
+    );
+
+    let explanationText = (
+      <div className="link">
+        { 
+          this.props.withoutNin ? this.props.translate("verify-identity.vetting_explanation_add_nin") : 
+          this.props.withoutPhoneNumber ? <> {this.props.translate("verify-identity.vetting_explanation_add_phone_number")} {linkToSetting}</> : 
+          this.props.unverifiedNumber ? <> {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")} {linkToSetting}</> :
+          this.props.nonSweNumber ? this.props.translate("verify-identity.vetting_explanation_only_available_swe_number") : null 
+        }
+      </div>
+    )
 
     return (
       <div key="0">
@@ -55,7 +33,7 @@ class LookupMobileProofing extends Component {
           >
             <div key="1" className="text">
               {this.props.translate("verify-identity.vetting_phone_tagline")}
-              {description}
+              {explanationText}
             </div>
             <div key="2" className="name">
               {this.props.translate("lmp.button_text_request")}
