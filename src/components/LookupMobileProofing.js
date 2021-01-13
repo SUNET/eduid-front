@@ -4,7 +4,7 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import { HashLink } from 'react-router-hash-link';
 class LookupMobileProofing extends Component {  
   render() {
-    const linkToSetting = (
+    const linkToSettings = (
       <HashLink
         key="1"
         to={"/profile/settings/#phone"}
@@ -17,8 +17,8 @@ class LookupMobileProofing extends Component {
       <div className="link">
         { 
           this.props.withoutNin ? this.props.translate("verify-identity.vetting_explanation_add_nin") : 
-          this.props.withoutPhoneNumber ? <> {this.props.translate("verify-identity.vetting_explanation_add_phone_number")} {linkToSetting}</> : 
-          this.props.unverifiedNumber ? <> {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")} {linkToSetting}</> :
+          this.props.withoutPhoneNumber ? <> {this.props.translate("verify-identity.vetting_explanation_add_phone_number")} {linkToSettings}</> : 
+          this.props.unverifiedNumber ? <> {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")} {linkToSettings}</> :
           this.props.nonSweNumber ? this.props.translate("verify-identity.vetting_explanation_only_available_swe_number") : null 
         }
       </div>
