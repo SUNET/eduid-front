@@ -1,8 +1,8 @@
 import React from "react";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import i18n from "../../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "./GroupListItem";
 
-const GroupList = (props) => {
+const GroupsList = (props) => {
   return (
     <div className="view-data">
       <div className="list-grid">
@@ -20,7 +20,7 @@ const GroupList = (props) => {
           <GroupListItem
             key={group.group.identifier}
             group={group}
-            toggleViewOrEditMode={props.toggleViewOrEditMode}
+            toggleGroupsListOrEditGroup={props.toggleGroupsListOrEditGroup}
           />
         ))}
       </ul>
@@ -28,6 +28,6 @@ const GroupList = (props) => {
   );
 };
 
-GroupList.propTypes = {};
+GroupsList.propTypes = {};
 
-export default i18n(GroupList);
+export default i18n(GroupsList);
