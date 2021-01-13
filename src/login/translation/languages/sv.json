@@ -169,7 +169,7 @@
   "lmp.verification_success": "Ditt personummer har verifierats",
   "mail_duplicated": "E-postadressen finns redan i listan",
   "main.confirmed": "Bekräftad",
-  "main.copyright": "SUNET 2013-2019",
+  "main.copyright": "SUNET 2013-2021",
   "main.unconfirmed": "Obekräftad",
   "main.welcome": "Välkommen till eduID",
   "mfa.edge-no-u2f": "Det är för närvarande ett problem med browsern Edge och U2F-säkerhetsnycklar. Vänligen försök igen med Firefox eller Chrome.",
