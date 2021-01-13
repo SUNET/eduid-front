@@ -30,7 +30,7 @@
       display: flex;
       justify-content: space-between;
     } 
-    & .link {
+    & .explanation-link{
       margin: 0.5rem 0;
       & a span{
         color: $black;
@@ -88,7 +88,7 @@
       & .description {
         color: $black;
       }
-      & .link {
+      & .explanation-link {
         color: $black;
       }
     }

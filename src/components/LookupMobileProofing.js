@@ -14,7 +14,7 @@ class LookupMobileProofing extends Component {
     );
 
     let explanationText = (
-      <div className="link">
+      <div className="explanation-link">
         { 
           this.props.withoutNin ? this.props.translate("verify-identity.vetting_explanation_add_nin") : 
           /* without phone number, description text will help the user to add phone number and the text "setting" is linked to the setting page phone number section */
