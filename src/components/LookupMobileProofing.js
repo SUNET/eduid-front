@@ -29,7 +29,7 @@ class LookupMobileProofing extends Component {
           {linkToSetting}
         </div> 
       ) /* without verified phone number, description text will help the user to confirm phone number and the text "setting" is linked to the setting page phone number section */
-    } else if(this.props.notVerifiedNumber) {
+    } else if(this.props.unverifiedNumber) {
       description = (
         <div className="link">
           {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")}
@@ -50,7 +50,7 @@ class LookupMobileProofing extends Component {
       <div key="0">
         <div key="0" className="vetting-button"> 
           <button 
-            disabled={this.props.withoutNin || this.props.withoutPhoneNumber|| this.props.notVerifiedNumber || this.props.nonSweNumber}
+            disabled={this.props.withoutNin || this.props.withoutPhoneNumber|| this.props.unverifiedNumber || this.props.nonSweNumber}
             onClick={this.props.handleShowModal}
           >
             <div key="1" className="text">
