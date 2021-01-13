@@ -31,7 +31,7 @@ export const generalApp = {
 
   // footer
   "main.copyright": (
-    <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2019`} />
+    <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2021`} />
   ),
 
   "beta-link.to-stable": (

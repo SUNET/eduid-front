@@ -169,7 +169,7 @@
   "lmp.verification_success": "Your national id number has been successfully verified",
   "mail_duplicated": "Added email is duplicated",
   "main.confirmed": "Confirmed",
-  "main.copyright": "SUNET 2013-2019",
+  "main.copyright": "SUNET 2013-2021",
   "main.unconfirmed": "Unconfirmed",
   "main.welcome": "Welcome to eduID",
   "mfa.edge-no-u2f": "There is a problem with the Edge browser and U2F security keys. Please try with Firefox or Chrome.",
