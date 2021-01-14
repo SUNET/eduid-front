@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
   return {
     withoutNin: !state.nins.nins[0],
     withoutPhoneNumber: !state.phones.phones.length,
-    notVerifiedNumber: !state.phones.phones.some((num) => num.verified === true),
+    unverifiedNumber: !state.phones.phones.some((num) => num.verified === true),
     nonSweNumber: !state.phones.phones.some((num) => num.number.includes(+46)),
     showModal: state.lookup_mobile.showModal,
     nins: state.nins.nins,
