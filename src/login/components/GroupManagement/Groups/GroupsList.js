@@ -16,9 +16,9 @@ const GroupsList = (props) => {
         <div className="list-cell"></div>
       </div>
       <ul>
-        {props.uniqueGroups.map((group) => (
+        {props.userGroupData.map((group) => (
           <GroupListItem
-            key={group.group.identifier}
+            key={group.identifier}
             group={group}
             toggleGroupsListOrEditGroup={props.toggleGroupsListOrEditGroup}
           />
