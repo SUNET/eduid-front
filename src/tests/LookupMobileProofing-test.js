@@ -170,9 +170,9 @@ describe("LookupMobileProofing component,", () => {
     const state = {...fakeState};
     state.nins.nins[0] = ""
     const { wrapper } = setupComponent();
-    const description = wrapper.find("div.explanation-link");
-    expect(description.exists()).toEqual(true);
-    expect(description.text()).toContain("ID number");
+    const explanation = wrapper.find("div.explanation-link");
+    expect(explanation.exists()).toEqual(true);
+    expect(explanation.text()).toContain("ID number");
   });
 
   it("Renders button text, the phone number is added", () => {
@@ -180,8 +180,8 @@ describe("LookupMobileProofing component,", () => {
     state.phones.phones = [{number:"+46700011555"}],
     state.nins.nins[0] = "19881212"
     const { wrapper } = setupComponent();
-    const description = wrapper.find("div.explanation-link");
-    const confirmPhone = description.find("span").at(0);
+    const explanation = wrapper.find("div.explanation-link");
+    const confirmPhone = explanation.find("span").at(0);
     expect(confirmPhone.exists()).toEqual(true);
     expect(confirmPhone.text()).toContain("Confirm");
   });
@@ -191,9 +191,9 @@ describe("LookupMobileProofing component,", () => {
     state.phones.phones = [{number:"+36700011555", primary: true, verified: true}],
     state.nins.nins[0] = "19881212"
     const { wrapper } = setupComponent();
-    const description = wrapper.find("div.explanation-link");
-    expect(description.exists()).toEqual(true);
-    expect(description.text()).toContain("Swedish");
+    const explanation = wrapper.find("div.explanation-link");
+    expect(explanation.exists()).toEqual(true);
+    expect(explanation.text()).toContain("Swedish");
   });
 });
 
