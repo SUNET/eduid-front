@@ -3,21 +3,9 @@ import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import WizardParent from "./Wizard/WizardParent";
 import GroupsParent from "./Groups/GroupsParent";
 
-const RenderCreateGroupButton = (props) => {
-  return (
-    <Fragment>
-      {!props.hasNoGroups && (
-        <button className="create-group" onClick={props.handleCreateGroup}>
-          create group
-        </button>
-      )}
-    </Fragment>
-  );
-};
-
 const RenderWizardOrData = (props) => {
   if (props.loading) return <p>Loading...</p>;
-  return props.hasNoGroups ? (
+  return props.hasNoGroups || props.openPanel ? (
     <WizardParent {...props} />
   ) : (
     <GroupsParent {...props} />
@@ -25,9 +13,21 @@ const RenderWizardOrData = (props) => {
 };
 
 class GroupManagement extends Component {
+  state = {
+    openCreateGroup: false,
+  };
+
   componentDidMount() {
     this.props.handleGetAllData();
   }
+
+  toggleCreateGroupPanel = () => {
+    this.setState((prevState) => {
+      return {
+        openCreateGroup: !prevState.openCreateGroup,
+      };
+    });
+  };
 
   render() {
     return (
@@ -35,16 +35,24 @@ class GroupManagement extends Component {
         <div className="intro">
           <div className="heading">
             <h4>Groups</h4>
-            <RenderCreateGroupButton
-              handleCreateGroup={this.props.handleCreateGroup}
-              hasNoGroups={this.props.hasNoGroups}
-            />
+            {!this.state.openCreateGroup && (
+              <button
+                className="create-group"
+                onClick={this.toggleCreateGroupPanel}
+              >
+                create group
+              </button>
+            )}
           </div>
           <p>
             Create groups with other eduID users. What the groups are used for
             is up to you and the local services your univeristy provides.
           </p>
-          <RenderWizardOrData {...this.props} />
+          <RenderWizardOrData
+            {...this.props}
+            toggleCreateGroupPanel={this.toggleCreateGroupPanel}
+            openPanel={this.state.openCreateGroup}
+          />
         </div>
       </article>
     );
