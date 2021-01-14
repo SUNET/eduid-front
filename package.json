@@ -25,7 +25,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "0.1.13",
+    "@fortawesome/react-fontawesome": "0.1.14",
     "bootstrap": "^4.5.3",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-node": "^11.1.0",
@@ -35,6 +35,7 @@
     "react-dom": "^16.14.0",
     "react-recaptcha": "^2.3.10",
     "react-redux": "^6.0.1",
+    "react-router-hash-link": "^2.3.1",
     "react-script-loader-hoc": "^1.2.2",
     "react-useragent": "^1.1.2",
     "reactstrap": "^6.5.0",

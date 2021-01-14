@@ -83,7 +83,7 @@ class Mobile extends Component {
 
   render() {
     return (
-      <div className="phoneview-form-container">
+      <div className="phoneview-form-container" id="phone">
         <div className="intro">
           <h4>{this.props.translate("phones.main_title")}</h4>
           <p>{this.props.translate("phones.long_description")}</p>
