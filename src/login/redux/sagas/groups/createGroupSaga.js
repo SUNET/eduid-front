@@ -1,6 +1,7 @@
 import { call, select, put } from "redux-saga/effects";
 import * as actions from "../../actions/createGroupActions";
 import postRequest from "../postDataRequest";
+import * as getAllGroupMgmtDataActions from "../../actions/getAllGroupMgmtDataActions";
 import { putCsrfToken } from "../../../../sagas/common";
 
 // saga determining what data going into the POST request and what happens when the response (_SUCESS and _FAIL) is back
@@ -18,6 +19,7 @@ export function* createGroupSaga(action) {
     // console.log("this is url:", url);
     const createGroupResponse = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(createGroupResponse));
+    yield put(getAllGroupMgmtDataActions.getAllData())
   } catch (error) {
     // console.log("groups request errored", error.message);
     yield put(actions.createGroupFail(error.toString()));
