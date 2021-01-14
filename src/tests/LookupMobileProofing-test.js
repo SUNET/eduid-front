@@ -6,6 +6,7 @@ import * as actions from "actions/LookupMobileProofing";
 import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
+import fetchMock from "fetch-mock";
 import LookupMobileProofingContainer from "containers/LookupMobileProofing";
 
 const messages = require("../login/translation/messageIndex");
