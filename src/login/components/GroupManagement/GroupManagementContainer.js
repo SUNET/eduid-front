@@ -6,7 +6,9 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   // check if user has any groups
-  let hasNoGroups = Object.entries(state.groups.data).length === 0;
+  let hasNoGroups =
+    Object.entries(state.groups.data).length === 0 ||
+    Object.entries(state.groups.data.groups).length === 0;
   let userGroupData = state.groups.data.groups;
 
   return {
