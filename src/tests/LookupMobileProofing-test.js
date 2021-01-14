@@ -173,6 +173,9 @@ describe("LookupMobileProofing component,", () => {
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);
     expect(explanation.text()).toContain("ID number");
+
+    const buttonDisabled = wrapper.find("button").prop("disabled");
+    expect(buttonDisabled).toBeTruthy();
   });
 
   it("Renders button text, the phone number is added", () => {
@@ -184,6 +187,9 @@ describe("LookupMobileProofing component,", () => {
     const confirmPhone = explanation.find("span").at(0);
     expect(confirmPhone.exists()).toEqual(true);
     expect(confirmPhone.text()).toContain("Confirm");
+
+    const buttonDisabled = wrapper.find("button").prop("disabled");
+    expect(buttonDisabled).toBeTruthy();
   });
 
   it("Renders button text, if the phone number is non swedish", () => {
@@ -194,6 +200,9 @@ describe("LookupMobileProofing component,", () => {
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);
     expect(explanation.text()).toContain("Swedish");
+
+    const buttonDisabled = wrapper.find("button").prop("disabled");
+    expect(buttonDisabled).toBeTruthy();
   });
 
   it("Renders button text, when verified swedish phone", () => {
@@ -204,5 +213,8 @@ describe("LookupMobileProofing component,", () => {
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);
     expect(explanation.text()).toContain("");
+
+    const buttonDisabled = wrapper.find("button").prop("disabled");
+    expect(buttonDisabled).toBeFalsy();
   });
 });
