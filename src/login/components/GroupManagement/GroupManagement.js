@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import WizardParent from "./Wizard/WizardParent";
+import CreateGroup from "./Groups/CreateGroup";
 import GroupsParent from "./Groups/GroupsParent";
 
-const RenderWizardOrData = (props) => {
+const RenderCreateGroupOrGroupData = (props) => {
   if (props.loading) return <p>Loading...</p>;
   return props.hasNoGroups || props.openPanel ? (
-    <WizardParent {...props} />
+    <CreateGroup {...props} />
   ) : (
     <GroupsParent {...props} />
   );
@@ -48,7 +48,7 @@ class GroupManagement extends Component {
             Create groups with other eduID users. What the groups are used for
             is up to you and the local services your univeristy provides.
           </p>
-          <RenderWizardOrData
+          <RenderCreateGroupOrGroupData
             {...this.props}
             toggleCreateGroupPanel={this.toggleCreateGroupPanel}
             openPanel={this.state.openCreateGroup}

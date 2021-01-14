@@ -5,7 +5,7 @@ const RenderHeading = (props) => {
   return <p>Create {props.hasNoGroups ? "your first" : "a new"} group.</p>;
 };
 
-class WizardParent extends Component {
+class CreateGroup extends Component {
   state = { firstInvite: true };
   render() {
     return (
@@ -41,6 +41,6 @@ class WizardParent extends Component {
   }
 }
 
-WizardParent.propTypes = {};
+CreateGroup.propTypes = {};
 
-export default InjectIntl(WizardParent);
+export default InjectIntl(CreateGroup);
