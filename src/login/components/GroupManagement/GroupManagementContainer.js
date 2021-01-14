@@ -9,11 +9,11 @@ const mapStateToProps = (state) => {
   let hasNoGroups =
     Object.entries(state.groups.data).length === 0 ||
     Object.entries(state.groups.data.groups).length === 0;
-  let userGroupData = state.groups.data.groups;
+  let groupsData = state.groups.data.groups;
 
   return {
     hasNoGroups,
-    userGroupData,
+    groupsData,
     loading: state.groups.loading,
   };
 };

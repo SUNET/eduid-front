@@ -16,7 +16,7 @@ const GroupsList = (props) => {
         <div className="list-cell"></div>
       </div>
       <ul>
-        {props.userGroupData.map((group) => (
+        {props.groupsData.map((group) => (
           <GroupListItem
             key={group.identifier}
             group={group}
