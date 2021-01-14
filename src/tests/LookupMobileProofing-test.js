@@ -195,4 +195,14 @@ describe("LookupMobileProofing component,", () => {
     expect(explanation.exists()).toEqual(true);
     expect(explanation.text()).toContain("Swedish");
   });
+
+  it("Renders button text, when verified swedish phone", () => {
+    const state = {...fakeState};
+    state.phones.phones = [{number:"+46700011555", primary: true, verified: true}],
+    state.nins.nins[0] = "19881212"
+    const { wrapper } = setupComponent();
+    const explanation = wrapper.find("div.explanation-link");
+    expect(explanation.exists()).toEqual(true);
+    expect(explanation.text()).toContain("");
+  });
 });
