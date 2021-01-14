@@ -7,6 +7,7 @@ import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 import fetchMock from "fetch-mock";
+import { MemoryRouter } from "react-router-dom";
 import LookupMobileProofingContainer from "containers/LookupMobileProofing";
 
 const messages = require("../login/translation/messageIndex");
@@ -149,7 +150,9 @@ describe("LookupMobileProofing component,", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <LookupMobileProofingContainer />
+        <MemoryRouter>
+          <LookupMobileProofingContainer />
+        </MemoryRouter>
       </Provider>
     );
     return {
@@ -167,7 +170,7 @@ describe("LookupMobileProofing component,", () => {
     const state = {...fakeState};
     state.nins.nins[0] = ""
     const { wrapper } = setupComponent();
-    const description = wrapper.find("div.description");
+    const description = wrapper.find("div.explanation-link");
     expect(description.exists()).toEqual(true);
     expect(description.text()).toContain("ID number");
   });
@@ -177,19 +180,10 @@ describe("LookupMobileProofing component,", () => {
     state.phones.phones = [{number:"+46700011555"}],
     state.nins.nins[0] = "19881212"
     const { wrapper } = setupComponent();
-    const description = wrapper.find("div.description");
+    const description = wrapper.find("div.explanation-link");
     const confirmPhone = description.find("span").at(0);
     expect(confirmPhone.exists()).toEqual(true);
     expect(confirmPhone.text()).toContain("Confirm");
-  });
-
-  it("Renders button text, the phone number is verified", () => {
-    const state = {...fakeState};
-    state.phones.phones = [{number:"+46700011555", primary: true, verified: true}],
-    state.nins.nins[0] = "19881212"
-    const { wrapper } = setupComponent();
-    const description = wrapper.find("div.description");
-    expect(description.exists()).toEqual(false);
   });
 
   it("Renders button text, if the phone number is non swedish", () => {
@@ -197,7 +191,7 @@ describe("LookupMobileProofing component,", () => {
     state.phones.phones = [{number:"+36700011555", primary: true, verified: true}],
     state.nins.nins[0] = "19881212"
     const { wrapper } = setupComponent();
-    const description = wrapper.find("div.description");
+    const description = wrapper.find("div.explanation-link");
     expect(description.exists()).toEqual(true);
     expect(description.text()).toContain("Swedish");
   });
