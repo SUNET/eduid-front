@@ -16,10 +16,7 @@ export function* createInviteSaga(action) {
       role: action.payload.role,
       csrf_token: state.config.csrf_token,
     };
-    console.log("this is url", url);
-    console.log("this is dataToSend:", dataToSend);
     const createInviteReponse = yield call(postRequest, url, dataToSend);
-    console.log("this is createInviteReponse", createInviteReponse);
     yield put(putCsrfToken(createInviteReponse));
     yield put(getOutgoingInvitesActions.getAllOutgoingInvites())
   } catch (error) {
