@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 
 export const RenderOwnerList = (props) => {
-  let owners = props.group.group.owners;
+  let owners = props.group.owners;
   return (
     <Fragment>
       <label>Owner</label>
@@ -16,7 +16,7 @@ export const RenderOwnerList = (props) => {
 };
 
 export const RenderMemberList = (props) => {
-  let members = props.group.group.members;
+  let members = props.group.members;
   return (
     <Fragment>
       <label>Member</label>
@@ -52,6 +52,8 @@ class GroupListItem extends Component {
   };
 
   render() {
+    const { group } = this.props;
+    const { display_name } = this.props.group;
     return (
       <li
         className="closed"
@@ -69,23 +71,23 @@ class GroupListItem extends Component {
               >
                 ^
               </button>
-              <p>{this.props.group.group.display_name}</p>
+              <p>{display_name}</p>
             </div>
           </div>
           <div className="list-cell">
             <div className={this.state.openGroup ? "transparent" : null}>
-              {this.props.group.isOwner ? "X" : null}
+              {group.is_owner ? "X" : null}
             </div>
           </div>
           <div className="list-cell">
             <div className={this.state.openGroup ? "transparent" : null}>
-              {this.props.group.isMember ? "X" : null}
+              {group.is_member ? "X" : null}
             </div>
           </div>
           <div className="list-cell">
             <button
               onClick={() => {
-                this.props.toggleGroupsListOrEditGroup(this.props.group);
+                this.props.toggleGroupsListOrEditGroup(group);
               }}
             >
               edit
