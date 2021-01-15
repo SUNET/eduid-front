@@ -30,6 +30,18 @@
       display: flex;
       justify-content: space-between;
     } 
+    & .explanation-link{
+      margin: 0.5rem 0;
+      & a span{
+        color: $black;
+        border-bottom: $black solid 1px;
+      }
+      & a span:hover {
+        color: $orange-highlight;
+        border-bottom: transparent solid 1px;
+      }
+
+    }
   }
   & .name {
     align-self: flex-end;
@@ -74,6 +86,9 @@
     & .text {
       color: $gray;
       & .description {
+        color: $black;
+      }
+      & .explanation-link {
         color: $black;
       }
     }
