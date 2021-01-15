@@ -28,13 +28,13 @@ class GroupParent extends Component {
     );
   }
 
-  toggleGroupsListOrEditGroup = (singleGroupData) => {
-    this.setState((prevState) => {
-      return {
-        editGroup: !prevState.editGroup,
-        group: singleGroupData,
-      };
-    });
+  toggleGroupsListOrEditGroup = (groupData) => {
+      this.setState((prevState) => {
+        return {
+          editGroup: !prevState.editGroup,
+          group: groupData,
+        };
+      });
   };
 
   render() {

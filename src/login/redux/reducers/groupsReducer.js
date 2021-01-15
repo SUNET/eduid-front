@@ -4,8 +4,6 @@ const groupsData = {
   message: "",
   loading: true,
   data: [],
-  member_of: [],
-  owner_of: [],
   payload: ""
 };
 
@@ -16,8 +14,6 @@ let groupsReducer = (state = groupsData, action) => {
         ...state,
         loading: false,
         data: action.payload,
-        member_of: action.payload.member_of,
-        owner_of: action.payload.owner_of,
       };
     default:
       return state;

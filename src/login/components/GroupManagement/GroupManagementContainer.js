@@ -5,38 +5,15 @@ import * as allDataActions from "../../redux/actions/getAllGroupMgmtDataActions"
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
-  // check if user has any gropus
+  // check if user has any groups
   let hasNoGroups =
-    Object.entries(state.groups.member_of).length === 0 &&
-    Object.entries(state.groups.owner_of).length === 0;
-
-  // filter out duplicate groups to generate only one list of groups
-  let allGroups = state.groups.member_of.concat(state.groups.owner_of);
-  let uniqueGroupIds = [...new Set(allGroups.map((group) => group.identifier))];
-  let uniqueGroups = allGroups.filter((group, i) => {
-    return i === uniqueGroupIds.findIndex((id) => id === group.identifier);
-  });
-
-  // create new object listing user relationship with each group
-  let userIdentifier = state.groups.data.user_identifier;
-  let userGroupsAndRoles = uniqueGroups.map((group) => {
-    let membershipObj = { group: group, isMember: false, isOwner: false };
-    group.members.some((member) => {
-      if (member.identifier === userIdentifier) {
-        return (membershipObj.isMember = true);
-      }
-    });
-    group.owners.some((owner) => {
-      if (owner.identifier === userIdentifier) {
-        return (membershipObj.isOwner = true);
-      }
-    });
-    return membershipObj;
-  });
+    Object.entries(state.groups.data).length === 0 ||
+    Object.entries(state.groups.data.groups).length === 0;
+  let groupsData = state.groups.data.groups;
 
   return {
     hasNoGroups,
-    uniqueGroups: userGroupsAndRoles,
+    groupsData,
     loading: state.groups.loading,
   };
 };
