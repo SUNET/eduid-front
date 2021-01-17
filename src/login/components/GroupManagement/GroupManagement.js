@@ -42,7 +42,7 @@ class GroupManagement extends Component {
           </div>
           <p>
             Create groups with other eduID users. What the groups are used for
-            is up to you and the local services your univeristy provides.
+            is up to you and the local services your university provides.
           </p>
           <RenderWizardOrData {...this.props} />
         </div>
