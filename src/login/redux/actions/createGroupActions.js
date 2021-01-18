@@ -1,8 +1,9 @@
 export const CREATE_GROUP = "CREATE_GROUP";
 
 //returned from API in response
-export const CREATE_GROUP_SUCCESS = "POST_GROUP_MANAGEMENT_CREATE_SUCCESS";
-export const CREATE_GROUP_FAIL = "POST_GROUP_MANAGEMENT_CREATE_FAIL";
+export const POST_GROUP_MANAGEMENT_CREATE_SUCCESS =
+  "POST_GROUP_MANAGEMENT_CREATE_SUCCESS";
+export const POST_GROUP_MANAGEMENT_CREATE_FAIL = "POST_GROUP_MANAGEMENT_CREATE_FAIL";
 
 export const createGroup = (groupName) => ({
   type: CREATE_GROUP,
@@ -11,13 +12,12 @@ export const createGroup = (groupName) => ({
   },
 });
 
-export function createGroupFail(err) {
-  console.log("This is create group error:", err);
+export const createGroupFail = (err) => {
   return {
-    type: CREATE_GROUP_FAIL,
+    type: POST_GROUP_MANAGEMENT_CREATE_FAIL,
     error: true,
     payload: {
       message: err,
     },
   };
-}
+};
