@@ -1,19 +1,27 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-
-const RenderHeading = (props) => {
-  return <p>Create {props.hasNoGroups ? "your first" : "a new"} group.</p>;
-};
+import NameForm from "../NameForm";
 
 class CreateGroup extends Component {
   state = { firstInvite: true };
+
+  handleGroupName = (values) => {
+    console.log("you are in handleGroupName");
+    console.log("values", values);
+    // let emailValue = values;
+    // let groupId = this.props.groupId;
+    // this.props.createInvite(emailValue, groupId);
+  };
+
   render() {
     return (
       <Fragment>
         {this.props.openPanel && (
           <div className="wizard">
             <div className="title">
-              <RenderHeading hasNoGroups={this.props.hasNoGroups} />
+              <p>
+                Create {this.props.hasNoGroups ? "your first" : "a new"} group.
+              </p>
               <button onClick={() => this.props.toggleCreateGroupPanel()}>
                 X
               </button>
@@ -23,17 +31,14 @@ class CreateGroup extends Component {
               to edit the group and send out invites.
             </p>
             <div className="group-name">
-              <label>Group name</label>
-              <input />
+              <NameForm
+                form={"groupName"} 
+                label={"Group name"}
+                placeholder={"Name your group"}
+                helpBlock={""}
+                handleSubmit={this.handleGroupName}
+              />
             </div>
-            <button
-              className="create-group"
-              onClick={() => {
-                console.log("wizard is not fully functional yet");
-              }}
-            >
-              CREATE GROUP
-            </button>
           </div>
         )}
       </Fragment>
