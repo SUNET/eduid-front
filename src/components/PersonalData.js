@@ -11,11 +11,6 @@ import "../login/styles/index.scss";
 
 const validatePersonalData = (values, props) => {
   const errors = {};
-  const specialCharsAndNumbers  = /[´`¨^§°*!€%&?~#@,.<>;':"\/\[\]\|{}()=_+0-9]/;
-  // hyphen only allowed between strings
-  const middleNameWithHyphen = /^[^-]*-[^-]/;
-  // Regex pattern to match all emojis, https://www.regextester.com/106421
-  const emojiUnicodes = /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/;
   ["given_name", "surname", "display_name", "language"].forEach((inputName) => {
     if (!values[inputName] || !values[inputName].trim()) {
       errors[inputName] = "required";
@@ -23,18 +18,6 @@ const validatePersonalData = (values, props) => {
     //none of the fields value properties differ from their initial properties will get error message.
     else if(props.pristine){
       errors[inputName] = "value not changed";
-    }
-    else if(emojiUnicodes.test(values[inputName])){
-      errors[inputName] = "only allow letters";
-    }
-    else if(inputName==="given_name" || inputName==="surname"){
-      // when input value includes hyphen without following strings it will cause an error
-      if(values[inputName].includes("-") && !middleNameWithHyphen.test(values[inputName])){
-        errors[inputName] = "name with hyphen";
-      }
-      else if(specialCharsAndNumbers.test(values[inputName])){
-        errors[inputName] = "only allow letters";
-      }
     }
   });
   return errors;
