@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import CreateGroup from "./Groups/CreateGroup";
+import CreateGroup from "./Groups/CreateGroupContainer";
 import GroupsParent from "./Groups/GroupsParent";
 
 const RenderCreateGroupOrGroupData = (props) => {

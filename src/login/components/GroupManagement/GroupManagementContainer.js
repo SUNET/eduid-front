@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import GroupManagement from "./GroupManagement";
-import * as createGroupActions from "../../redux/actions/createGroupActions";
 import * as allDataActions from "../../redux/actions/getAllGroupMgmtDataActions";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
@@ -22,9 +21,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleGetAllData: () => {
       dispatch(allDataActions.getAllData());
-    },
-    handleCreateGroup: () => {
-      dispatch(createGroupActions.createGroup("Test"));
     },
   };
 };
