@@ -19,14 +19,6 @@ export const generalErrors = {
     <FormattedMessage id="required" defaultMessage={`Field cannot be empty`} />
   ),
 
-  "only allow letters": (
-    <FormattedMessage id="only allow letters" defaultMessage={`Name can only consist of letters`} />
-  ),
-
-  "name with hyphen": (
-    <FormattedMessage id="name with hyphen" defaultMessage={`Hyphen only allowed between names`} />
-  ),
-
   "value not changed": (
     <FormattedMessage id="value not changed" defaultMessage={`The value is not changed`} />
   ),

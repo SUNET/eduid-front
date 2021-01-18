@@ -228,8 +228,6 @@
   "ocf.not_on_mobile_message": "Du måste använda en mobil (iOS eller Android) med <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID-appen</a> installerad för att kunna verifiera ditt konto med Freja eID.",
   "ocf.not_on_mobile_title": "Använder du inte din mobil?",
   "ocf.open_app": "Jag har Freja eID-appen installerad",
-  "only allow letters": "Ett namn kan bara bestå av bokstäver",
-  "name with hyphen": "Bindstrek kan bara användas mellan namn",
   "value not changed": "Värdet är inte ändrat",
   "orc.about_link": "Läs mer om ORCID i eduID i vår <a href=\"https://www.eduid.se/faq.html\">FAQ</a>.",
   "orc.already_connected": "Ditt ORCID-konto är redan kopplat till det här kontot",

@@ -12,14 +12,6 @@
     "defaultMessage": "Field cannot be empty"
   },
   {
-    "id": "only allow letters",
-    "defaultMessage": "Name can only consist of letters"
-  },
-  {
-    "id": "name with hyphen",
-    "defaultMessage": "Hyphen only allowed between names"
-  },
-  {
     "id": "value not changed",
     "defaultMessage": "The value is not changed"
   },
