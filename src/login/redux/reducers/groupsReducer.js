@@ -12,7 +12,8 @@ let groupsReducer = (state = groupsData, action) => {
   switch (action.type) {
     case createGroupActions.POST_GROUP_MANAGEMENT_CREATE_SUCCESS:
       return {
-        ...state
+        ...state,
+        data: action.payload,
       };
     case getDataActions.GET_GROUP_MANAGEMENT_ALL_DATA_SUCCESS:
       return {
