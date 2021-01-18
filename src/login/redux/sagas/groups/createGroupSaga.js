@@ -1,7 +1,6 @@
 import { call, select, put } from "redux-saga/effects";
 import * as actions from "../../actions/createGroupActions";
 import postRequest from "../postDataRequest";
-import * as getAllGroupMgmtDataActions from "../../actions/getAllGroupMgmtDataActions";
 import { putCsrfToken } from "../../../../sagas/common";
 
 export function* createGroupSaga(action) {
@@ -14,7 +13,7 @@ export function* createGroupSaga(action) {
     };
     const createGroupResponse = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(createGroupResponse));
-    yield put(getAllGroupMgmtDataActions.getAllData())
+    yield put(createGroupResponse);
   } catch (error) {
     yield put(actions.createGroupFail(error.toString()));
   }
