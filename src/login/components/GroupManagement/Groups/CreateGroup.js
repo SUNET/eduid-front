@@ -5,12 +5,13 @@ import NameForm from "../NameForm";
 class CreateGroup extends Component {
   state = { firstInvite: true };
 
-  handleGroupName = (values) => {
-    console.log("you are in handleGroupName");
-    console.log("values", values);
-    // let emailValue = values;
-    // let groupId = this.props.groupId;
-    // this.props.createInvite(emailValue, groupId);
+  handleGroupName = (e) => {
+    e.preventDefault();
+    let groupName = this.props.values.groupName;
+    // api call
+    this.props.handleCreateGroup(groupName);
+    // close panel
+    this.props.toggleCreateGroupPanel();
   };
 
   render() {
@@ -32,7 +33,7 @@ class CreateGroup extends Component {
             </p>
             <div className="group-name">
               <NameForm
-                form={"groupName"} 
+                form={"groupName"}
                 label={"Group name"}
                 placeholder={"Name your group"}
                 helpBlock={""}
