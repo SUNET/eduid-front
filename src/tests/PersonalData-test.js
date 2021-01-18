@@ -12,9 +12,9 @@ import personalDataReducer from "reducers/PersonalData";
 
 import {
   requestAllPersonalData,
-  savePersonalData,
+  // savePersonalData,
   fetchAllPersonalData,
-  sendPersonalData
+  // sendPersonalData
 } from "../sagas/PersonalData";
 import { put, call } from "redux-saga/effects";
 
@@ -357,50 +357,50 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(action));
   });
 
-  it("Sagas savePersonalData", () => {
-    const generator = savePersonalData();
+  // it("Sagas savePersonalData", () => {
+  //   const generator = savePersonalData();
 
-    let next = generator.next();
+  //   let next = generator.next();
 
-    // const config = next.value;
-    next = generator.next(fakeState);
+  //   // const config = next.value;
+  //   next = generator.next(fakeState);
 
-    const config = fakeState.config;
-    const data = {
-      given_name: "",
-      surname: "",
-      display_name: "",
-      language: "",
-      csrf_token: ""
-    };
+  //   const config = fakeState.config;
+  //   const data = {
+  //     given_name: "",
+  //     surname: "",
+  //     display_name: "",
+  //     language: "",
+  //     csrf_token: ""
+  //   };
 
-    // expect(data).toEqual(select(fakeState => fakeState.config));
+  //   // expect(data).toEqual(select(fakeState => fakeState.config));
 
-    generator.next(data);
-    generator.next();
-    next = generator.next();
+  //   generator.next(data);
+  //   generator.next();
+  //   next = generator.next();
 
-    expect(next.value).toEqual(call(sendPersonalData, config, data));
+  //   expect(next.value).toEqual(call(sendPersonalData, config, data));
 
-    const action = {
-      type: actions.POST_USERDATA_SUCCESS,
-      payload: {
-        csrf_token: "csrf-token",
-        given_name: "",
-        surname: "",
-        display_name: "",
-        language: "",
-        eppn: ""
-      }
-    };
-    next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    generator.next();
-    delete action.payload.csrf_token;
-    generator.next();
-    next = generator.next();
-    expect(next.value).toEqual(put(action));
-  });
+  //   const action = {
+  //     type: actions.POST_USERDATA_SUCCESS,
+  //     payload: {
+  //       csrf_token: "csrf-token",
+  //       given_name: "",
+  //       surname: "",
+  //       display_name: "",
+  //       language: "",
+  //       eppn: ""
+  //     }
+  //   };
+  //   next = generator.next(action);
+  //   expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+  //   generator.next();
+  //   delete action.payload.csrf_token;
+  //   generator.next();
+  //   next = generator.next();
+  //   expect(next.value).toEqual(put(action));
+  // });
 });
 
 describe("PersonalData Component", () => {
