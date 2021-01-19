@@ -1,15 +1,31 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import CreateGroup from "./Groups/CreateGroupContainer";
 import GroupsParent from "./Groups/GroupsParent";
 
+const RenderCreateGroupButton = (props) => {
+  return (
+    <Fragment>
+      {!props.hasNoGroups && !props.openPanel ? (
+        <button
+          className="create-group"
+          onClick={props.toggleCreateGroupOrGroupData}
+        >
+          create group
+        </button>
+      ) : null}
+    </Fragment>
+  );
+};
+
 const RenderCreateGroupOrGroupData = (props) => {
   if (props.loading) return <p>Loading...</p>;
-  return props.hasNoGroups || props.openPanel ? (
-    <CreateGroup {...props} />
-  ) : (
-    <GroupsParent {...props} />
-  );
+  // create group when: no groups in db || toggle via buttons in local state
+  if (props.hasNoGroups || props.openPanel) {
+    return <CreateGroup {...props} />;
+  } else {
+    return <GroupsParent {...props} />;
+  }
 };
 
 class GroupManagement extends Component {
@@ -21,7 +37,7 @@ class GroupManagement extends Component {
     this.props.handleGetAllData();
   }
 
-  toggleCreateGroupPanel = () => {
+  toggleCreateGroupOrGroupData = () => {
     this.setState((prevState) => {
       return {
         openCreateGroup: !prevState.openCreateGroup,
@@ -35,14 +51,11 @@ class GroupManagement extends Component {
         <div className="intro">
           <div className="heading">
             <h4>Groups</h4>
-            {!this.state.openCreateGroup && (
-              <button
-                className="create-group"
-                onClick={this.toggleCreateGroupPanel}
-              >
-                create group
-              </button>
-            )}
+            <RenderCreateGroupButton
+              toggleCreateGroupOrGroupData={this.toggleCreateGroupOrGroupData}
+              hasNoGroups={this.props.hasNoGroups}
+              openPanel={this.state.openCreateGroup}
+            />
           </div>
           <p>
             Create groups with other eduID users. What the groups are used for
@@ -50,7 +63,7 @@ class GroupManagement extends Component {
           </p>
           <RenderCreateGroupOrGroupData
             {...this.props}
-            toggleCreateGroupPanel={this.toggleCreateGroupPanel}
+            toggleCreateGroupOrGroupData={this.toggleCreateGroupOrGroupData}
             openPanel={this.state.openCreateGroup}
           />
         </div>
