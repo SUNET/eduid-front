@@ -2,11 +2,29 @@ import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import NameForm from "../NameForm";
 
-const WizardHeading = (props) => {
+const CloseButton = () => (
+  <svg
+    className="close"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M7 0h2v16H7z" />
+    <path d="M0 9V7h16v2z" />
+  </svg>
+);
+
+const WizardHeading = () => {
   return (
     <Fragment>
       <p>Create your first group.</p>
-      <button onClick={() => props.toggleCreateGroupOrGroupData()}>+</button>
+      <button
+        onClick={() => console.log("This will expand a minimised wizard")}
+      >
+        <CloseButton />
+      </button>
     </Fragment>
   );
 };
@@ -15,7 +33,9 @@ const CreateGroupHeading = (props) => {
   return (
     <Fragment>
       <p>Create a new group.</p>
-      <button onClick={() => props.toggleCreateGroupOrGroupData()}>X</button>
+      <button onClick={() => props.toggleCreateGroupOrGroupData()}>
+        <CloseButton />
+      </button>
     </Fragment>
   );
 };
@@ -36,11 +56,7 @@ class CreateGroup extends Component {
         <div className="wizard">
           <div className="title">
             {this.props.hasNoGroups ? (
-              <WizardHeading
-                toggleCreateGroupOrGroupData={
-                  this.props.toggleCreateGroupOrGroupData
-                }
-              />
+              <WizardHeading />
             ) : (
               <CreateGroupHeading
                 toggleCreateGroupOrGroupData={
