@@ -2,9 +2,25 @@ import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import NameForm from "../NameForm";
 
-class CreateGroup extends Component {
-  state = { firstInvite: true };
+const WizardHeading = (props) => {
+  return (
+    <Fragment>
+      <p>Create your first group.</p>
+      <button onClick={() => props.toggleCreateGroupOrGroupData()}>+</button>
+    </Fragment>
+  );
+};
 
+const CreateGroupHeading = (props) => {
+  return (
+    <Fragment>
+      <p>Create a new group.</p>
+      <button onClick={() => props.toggleCreateGroupOrGroupData()}>X</button>
+    </Fragment>
+  );
+};
+
+class CreateGroup extends Component {
   handleGroupName = (e) => {
     e.preventDefault();
     let groupName = this.props.values.groupName;
@@ -17,31 +33,36 @@ class CreateGroup extends Component {
   render() {
     return (
       <Fragment>
-        {this.props.openPanel && (
-          <div className="wizard">
-            <div className="title">
-              <p>
-                Create {this.props.hasNoGroups ? "your first" : "a new"} group.
-              </p>
-              <button onClick={() => this.props.toggleCreateGroupPanel()}>
-                X
-              </button>
-            </div>
-            <p>
-              As the creator of a group you will be an admin, which allows you
-              to edit the group and send out invites.
-            </p>
-            <div className="group-name">
-              <NameForm
-                form={"groupName"}
-                label={"Group name"}
-                placeholder={"Name your group"}
-                helpBlock={""}
-                handleSubmit={this.handleGroupName}
+        <div className="wizard">
+          <div className="title">
+            {this.props.hasNoGroups ? (
+              <WizardHeading
+                toggleCreateGroupOrGroupData={
+                  this.props.toggleCreateGroupOrGroupData
+                }
               />
-            </div>
+            ) : (
+              <CreateGroupHeading
+                toggleCreateGroupOrGroupData={
+                  this.props.toggleCreateGroupOrGroupData
+                }
+              />
+            )}
           </div>
-        )}
+          <p>
+            As the creator of a group you will be an admin, which allows you to
+            edit the group and send out invites.
+          </p>
+          <div className="group-name">
+            <NameForm
+              form={"groupName"}
+              label={"Group name"}
+              placeholder={"Name your group"}
+              helpBlock={""}
+              handleSubmit={this.handleGroupName}
+            />
+          </div>
+        </div>
       </Fragment>
     );
   }
