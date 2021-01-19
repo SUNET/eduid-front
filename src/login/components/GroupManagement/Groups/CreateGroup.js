@@ -47,7 +47,7 @@ class CreateGroup extends Component {
     // api call
     this.props.handleCreateGroup(groupName);
     // close panel
-    this.props.toggleCreateGroupPanel();
+    this.props.toggleCreateGroupOrGroupData();
   };
 
   render() {
