@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleCreateGroup: (groupName) => {
-      dispatch(createGroupActions.createGroup(groupName));
+      let trimmedGroupName = groupName.trim();
+      dispatch(createGroupActions.createGroup(trimmedGroupName));
     },
   };
 };
