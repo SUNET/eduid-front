@@ -10,7 +10,6 @@ import "../login/styles/index.scss";
 /* FORM */
 
 const validatePersonalData = (values, props) => {
-  console.log(props)
   const errors = {};
   ["given_name", "surname", "display_name", "language"].forEach((inputName) => {
     if (!values[inputName] || !values[inputName].trim()) {
