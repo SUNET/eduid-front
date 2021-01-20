@@ -25,10 +25,10 @@ const mapDispatchToProps = (dispatch) => {
     handleGetAllData: () => {
       dispatch(allDataActions.getAllData());
     },
-    handleOpenCreateGroup: (e) => {
+    handleOpenCreateGroup: () => {
       dispatch(createGroupActions.openCreateGroup());
     },
-    handleCloseCreateGroup: (e) => {
+    handleCloseCreateGroup: () => {
       dispatch(createGroupActions.closeCreateGroup());
     },
   };

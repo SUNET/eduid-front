@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(createGroupActions.createGroup(trimmedGroupName));
       dispatch(createGroupActions.closeCreateGroup());
     },
-    handleCloseCreateGroup: (e) => {
+    handleCloseCreateGroup: () => {
       dispatch(createGroupActions.closeCreateGroup());
     },
   };
