@@ -10,13 +10,14 @@ import "../login/styles/index.scss";
 /* FORM */
 
 const validatePersonalData = (values, props) => {
+  console.log(props)
   const errors = {};
   ["given_name", "surname", "display_name", "language"].forEach((inputName) => {
     if (!values[inputName] || !values[inputName].trim()) {
       errors[inputName] = "required";
     }
     //none of the fields value properties differ from their initial properties will get error message.
-    else if(props.pristine){
+    else if(props.pristine || props.data[inputName] === values[inputName].trim()){
       errors[inputName] = "value not changed";
     }
   });
