@@ -13,6 +13,7 @@ export function* createGroupSaga(action) {
     };
     const createGroupResponse = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(createGroupResponse));
+    yield put(actions.closeCreateGroup());
     yield put(createGroupResponse);
   } catch (error) {
     yield put(actions.createGroupFail(error.toString()));

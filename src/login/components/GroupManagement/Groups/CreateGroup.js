@@ -33,7 +33,7 @@ const CreateGroupHeading = (props) => {
   return (
     <Fragment>
       <p>Create a new group.</p>
-      <button onClick={() => props.toggleCreateGroupOrGroupData()}>
+      <button onClick={props.handleCloseCreateGroup}>
         <CloseButton />
       </button>
     </Fragment>
@@ -44,10 +44,7 @@ class CreateGroup extends Component {
   handleGroupName = (e) => {
     e.preventDefault();
     let groupName = this.props.values.groupName;
-    // api call
     this.props.handleCreateGroup(groupName);
-    // close panel
-    this.props.toggleCreateGroupOrGroupData();
   };
 
   render() {
@@ -59,9 +56,7 @@ class CreateGroup extends Component {
               <WizardHeading />
             ) : (
               <CreateGroupHeading
-                toggleCreateGroupOrGroupData={
-                  this.props.toggleCreateGroupOrGroupData
-                }
+                {...this.props}
               />
             )}
           </div>
