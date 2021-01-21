@@ -37,6 +37,7 @@ NameForm = reduxForm({
 NameForm = connect(() => ({
   initialValues: {},
   enableReinitialize: true,
+  touchOnChange: true,
 }))(NameForm);
 
 NameForm.propTypes = {};

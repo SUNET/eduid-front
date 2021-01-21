@@ -101,7 +101,7 @@ input:focus {
 }
 
 .form-control.is-valid:focus {
-  border-color: $black;
+  border-color: $valid-green;
   box-shadow: 0 0 0 0.2rem $mid-gray;
 }
 
