@@ -16,24 +16,19 @@ const CloseButton = () => (
   </svg>
 );
 
-const WizardHeading = () => {
+const RenderWizardOrCreateGroupHeading = (props) => {
   return (
     <Fragment>
-      <p>Create your first group.</p>
+      <p>
+        {props.hasNoGroups ? "Create your first group." : "Create a new group."}
+      </p>
       <button
-        onClick={() => console.log("This will expand a minimised wizard")}
+        onClick={
+          props.hasNoGroups
+            ? () => console.log("This will expand a minimised wizard")
+            : props.handleCloseCreateGroup
+        }
       >
-        <CloseButton />
-      </button>
-    </Fragment>
-  );
-};
-
-const CreateGroupHeading = (props) => {
-  return (
-    <Fragment>
-      <p>Create a new group.</p>
-      <button onClick={props.handleCloseCreateGroup}>
         <CloseButton />
       </button>
     </Fragment>
@@ -52,11 +47,7 @@ class CreateGroup extends Component {
       <Fragment>
         <div className="wizard">
           <div className="title">
-            {this.props.hasNoGroups ? (
-              <WizardHeading />
-            ) : (
-              <CreateGroupHeading {...this.props} />
-            )}
+            <RenderWizardOrCreateGroupHeading {...this.props} />
           </div>
           <p>
             As the creator of a group you will be an admin, which allows you to
