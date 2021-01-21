@@ -88,7 +88,7 @@ let configReducer = (state = configData, action) => {
         ...state,
         ...action.payload
       };
-    case "@@router/LOCATION_CHANGE":
+    case "@@router/LOCATION_CHANGE": {
       let show_sidebar = true;
       if (
         urls_with_no_sidebar.filter(v => action.payload.pathname.endsWith(v))
@@ -100,6 +100,7 @@ let configReducer = (state = configData, action) => {
         ...state,
         show_sidebar: show_sidebar
       };
+    }
     default:
       //if (action.type.endsWith("_SUCCESS") || action.type.endsWith("_FAIL")) {
         //return {

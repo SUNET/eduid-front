@@ -202,14 +202,21 @@ export const userProfile = {
   "verify-identity.vetting_explanation_add_phone_number": (
     <FormattedMessage
       id="verify-identity.vetting_explanation_add_phone_number"
-      defaultMessage={`Start by adding your phone number in settings`}
+      defaultMessage={`Start by adding your phone number in\n`}
     />
   ),
 
   "verify-identity.vetting_explanation_confirm_phone_number": (
     <FormattedMessage
       id="verify-identity.vetting_explanation_confirm_phone_number"
-      defaultMessage={`Confirm your phone number in settings`}
+      defaultMessage={`Confirm your phone number in\n`}
+    />
+  ),
+
+  "verify-identity.vetting_link_settings": (
+    <FormattedMessage
+      id="verify-identity.vetting_link_settings"
+      defaultMessage={`Settings`}
     />
   ),
 

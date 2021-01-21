@@ -22,8 +22,6 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "react/jsx-no-undef": "off", 
-        "no-case-declarations": "off",
         "no-useless-escape": "off",
         "react/jsx-key": "off",
         "react/jsx-no-duplicate-props": "off",

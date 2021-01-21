@@ -68,7 +68,7 @@ let mobileReducer = (state = mobileData, action) => {
         ...state,
         ...action.payload
       };
-    case "@@redux-form/CHANGE":
+    case "@@redux-form/CHANGE": {
       const form = {};
       if (action.meta.form === "phones" && action.meta.field === "number") {
         form.phone = action.payload;
@@ -77,6 +77,7 @@ let mobileReducer = (state = mobileData, action) => {
         ...state,
         ...form
       };
+    }
     default:
       return state;
   }
