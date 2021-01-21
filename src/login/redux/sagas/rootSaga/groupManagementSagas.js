@@ -11,7 +11,7 @@ import { getAllOutgoingInvitesSaga } from "../invites/getAllOutgoingInvitesSaga"
 // connecting actions (redux) with sagas (fetch)
 const groupsSagas = [
   takeLatest(allDataActions.GET_ALL_DATA, getAllDataSaga),
-  takeLatest(createGroupActions.CREATE_GROUP, createGroupSaga),
+  takeLatest(createGroupActions.POST_CREATE_GROUP, createGroupSaga),
   // cretaion of an invite leads to req for all outgoing invites
   takeLatest(createInviteActions.CREATE_INVITE, createInviteSaga),
   takeLatest(

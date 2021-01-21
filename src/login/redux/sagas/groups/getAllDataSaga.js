@@ -5,7 +5,6 @@ import * as actions from "../../actions/getAllGroupMgmtDataActions";
 export function* getAllDataSaga() {
   const url = GROUP_MGMT_URL + "/all-data";
   try {
-    console.log("this is url", url);
     const allGroupReponse = yield call(getData, url);
     yield put(allGroupReponse);
   } catch (error) {

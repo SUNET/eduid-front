@@ -11,6 +11,7 @@ article {
       box-shadow: 0 0 0;
       text-decoration: underline;
       margin: 0;
+      height: 100%;
     }
   }
 }
@@ -19,14 +20,21 @@ article {
 .wizard {
   background-color: white;
   padding: 1rem;
+  margin-top: 1rem;
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  p {
+    margin-top: 1rem;
+  }
   .title {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     p {
       font-weight: 700;
+      padding-bottom: 0;
+      margin-top: 0;
     }
     button {
       background-color: transparent;
@@ -39,6 +47,9 @@ article {
     }
   }
   .group-name {
+    form {
+      margin-top: 0;
+    }
     label {
       font-size: 16px;
       letter-spacing: 0;
@@ -48,7 +59,7 @@ article {
     }
   }
   button {
-    margin: 1rem auto;
+    margin: 1rem auto 0;
     width: max-content;
   }
 }
@@ -133,7 +144,7 @@ article {
 // styles specific for data being viewed (needs to be changed into generic styling)
 .view-data {
   background-color: transparent;
-  margin-top: 2rem;
+  margin-top: 1rem;
   ul {
     margin: 0 0 1rem 0;
   }
