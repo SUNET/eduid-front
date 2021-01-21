@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import NameForm from "../NameForm";
+import GroupNameForm from "../GroupNameForm";
 
 const CloseButton = () => (
   <svg
@@ -55,9 +55,7 @@ class CreateGroup extends Component {
             {this.props.hasNoGroups ? (
               <WizardHeading />
             ) : (
-              <CreateGroupHeading
-                {...this.props}
-              />
+              <CreateGroupHeading {...this.props} />
             )}
           </div>
           <p>
@@ -65,7 +63,7 @@ class CreateGroup extends Component {
             edit the group and send out invites.
           </p>
           <div className="group-name">
-            <NameForm
+            <GroupNameForm
               form={"groupName"}
               label={"Group name"}
               placeholder={"Name your group"}

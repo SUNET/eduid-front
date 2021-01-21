@@ -7,7 +7,7 @@ import EduIDButton from "../../../components/EduIDButton";
 import { emptyValueValidation } from "../../app_utils/validation/emptyValueValidation";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
-let NameForm = (props) => {
+let GroupNameForm = (props) => {
   const { handleSubmit, invalid, form, label, placeholder, helpBlock } = props;
 
   return (
@@ -30,16 +30,16 @@ let NameForm = (props) => {
   );
 };
 
-NameForm = reduxForm({
+GroupNameForm = reduxForm({
   validate: emptyValueValidation,
-})(NameForm);
+})(GroupNameForm);
 
-NameForm = connect(() => ({
+GroupNameForm = connect(() => ({
   initialValues: {},
   enableReinitialize: true,
   touchOnChange: true,
-}))(NameForm);
+}))(GroupNameForm);
 
-NameForm.propTypes = {};
+GroupNameForm.propTypes = {};
 
-export default i18n(NameForm);
+export default i18n(GroupNameForm);
