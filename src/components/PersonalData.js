@@ -19,6 +19,9 @@ const validatePersonalData = (values, props) => {
     else if(props.pristine){
       errors[inputName] = "value not changed";
     }
+    else if(values[inputName].trim() === props.initialValues[inputName]){
+      errors[inputName] = "value not changed";
+    }
   });
   return errors;
 };
