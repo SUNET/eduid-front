@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -28,8 +28,16 @@ const validatePersonalData = (values, props) => {
 };
 
 let PdataForm = (props) => {
+  const [isDisable, setIsDisable] = useState(false);
+  const handleFormChange = (field)=> {
+    const inputName = field.name;
+    if(field.value && field.value.trim() === props.data[inputName]){
+      setIsDisable(true);
+    }else setIsDisable(false);
+  };
+  
   return (
-    <Form id="personaldataview-form" role="form">
+    <Form id="personaldataview-form" role="form" onChange={(e)=>handleFormChange(e.target)}>
       <fieldset id="personal-data-form" className="tabpane">
         <Field
           component={CustomInput}
@@ -70,7 +78,7 @@ let PdataForm = (props) => {
       <EduIDButton
         id="personal-data-button"
         className="settings-button"
-        disabled={props.pristine || props.submitting}
+        disabled={props.pristine || props.submitting || isDisable}
         onClick={props.handleSave}
       >
         {props.translate("button_save")}
