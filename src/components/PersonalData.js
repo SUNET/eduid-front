@@ -6,13 +6,14 @@ import Form from "reactstrap/lib/Form";
 import EduIDButton from "components/EduIDButton";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import "../login/styles/index.scss";
+import { emptyStringPattern } from "../login/app_utils/validation/regexPatterns";
 
 /* FORM */
 
 const validatePersonalData = (values, props) => {
   const errors = {};
   ["given_name", "surname", "display_name", "language"].forEach((inputName) => {
-    if (!values[inputName] || !values[inputName].trim()) {
+    if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
       errors[inputName] = "required";
     }
     //none of the fields value properties differ from their initial properties will get error message.
