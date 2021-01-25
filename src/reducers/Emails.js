@@ -79,7 +79,7 @@ let emailsReducer = (state = emailsData, action) => {
         ...state,
         ...action.payload
       };
-    case "@@redux-form/CHANGE":
+    case "@@redux-form/CHANGE":{
       const form = {};
       if (action.meta.form === "emails" && action.meta.field === "email") {
         form.email = action.payload;
@@ -88,6 +88,7 @@ let emailsReducer = (state = emailsData, action) => {
         ...state,
         ...form
       };
+    }
     default:
       return state;
   }

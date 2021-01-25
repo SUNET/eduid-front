@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import WizardParent from "./Wizard/WizardParent";
+import CreateGroup from "./Groups/CreateGroupContainer";
 import GroupsParent from "./Groups/GroupsParent";
 
 const RenderCreateGroupButton = (props) => {
   return (
     <Fragment>
-      {!props.hasNoGroups && (
-        <button className="create-group" onClick={props.handleCreateGroup}>
+      {!props.createGroup && (
+        <button className="create-group" onClick={props.handleOpenCreateGroup}>
           create group
         </button>
       )}
@@ -15,13 +15,10 @@ const RenderCreateGroupButton = (props) => {
   );
 };
 
-const RenderWizardOrData = (props) => {
+const RenderCreateGroupOrGroupData = (props) => {
   if (props.loading) return <p>Loading...</p>;
-  return props.hasNoGroups ? (
-    <WizardParent {...props} />
-  ) : (
-    <GroupsParent {...props} />
-  );
+  if (props.createGroup || props.hasNoGroups) return <CreateGroup {...props} />;
+  if (!props.hasNoGroups) return <GroupsParent {...props} />;
 };
 
 class GroupManagement extends Component {
@@ -35,16 +32,13 @@ class GroupManagement extends Component {
         <div className="intro">
           <div className="heading">
             <h4>Groups</h4>
-            <RenderCreateGroupButton
-              handleCreateGroup={this.props.handleCreateGroup}
-              hasNoGroups={this.props.hasNoGroups}
-            />
+            <RenderCreateGroupButton {...this.props} />
           </div>
           <p>
             Create groups with other eduID users. What the groups are used for
-            is up to you and the local services your univeristy provides.
+            is up to you and the local services your university provides.
           </p>
-          <RenderWizardOrData {...this.props} />
+          <RenderCreateGroupOrGroupData {...this.props} />
         </div>
       </article>
     );
