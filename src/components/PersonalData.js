@@ -70,7 +70,7 @@ let PdataForm = (props) => {
       <EduIDButton
         id="personal-data-button"
         className="settings-button"
-        disabled={props.pristine || props.submitting || props.invalid}
+        disabled={props.pristine || props.submitting}
         onClick={props.handleSave}
       >
         {props.translate("button_save")}
