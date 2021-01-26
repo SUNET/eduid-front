@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -29,11 +29,27 @@ const validatePersonalData = (values, props) => {
 
 let PdataForm = (props) => {
   const [isDisable, setIsDisable] = useState(false);
+  const [pdata, setPdata] = useState({
+    given_name: props.data.given_name,
+    surname: props.data.surname,
+    display_name: props.data.display_name,
+    language:  props.data.language,
+  });
+
+  useEffect(() => {
+    if(pdata.given_name === props.initialValues.given_name && 
+      pdata.surname === props.initialValues.surname && 
+      pdata.display_name === props.initialValues.display_name &&
+      pdata.language === props.initialValues.language){ 
+        setIsDisable(true)
+      } else setIsDisable(false)
+  }, [pdata, isDisable]);
+  
   const handleFormChange = (field)=> {
     const inputName = field.name;
-    if(field.value && field.value.trim() === props.data[inputName]){
-      setIsDisable(true);
-    }else setIsDisable(false);
+    if(field.value){
+      setPdata({...pdata,[inputName]: field.value.trim()})
+    }else setPdata({pdata});
   };
   
   return (
