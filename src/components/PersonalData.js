@@ -37,7 +37,7 @@ let PdataForm = (props) => {
   useEffect(()=>{
     setPdata(props.data)
   }, [props.data])
-
+  
   useEffect(() => {
     if(pdata.given_name === props.initialValues.given_name && 
       pdata.surname === props.initialValues.surname && 
