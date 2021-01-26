@@ -103,18 +103,10 @@ export function fetchAllPersonalData(config) {
 
 const getData = state => {
   const data = {
-    given_name: document
-      .getElementById("given_name")
-      .querySelector("input").value.trim(),
-    surname: document
-      .getElementById("surname")
-      .querySelector("input").value.trim(),
-    display_name: document
-      .getElementById("display_name")
-      .querySelector("input").value.trim(),
-    language: document
-      .getElementById("language")
-      .querySelector('input[type="radio"]:checked').value,
+    given_name: state.form.personal_data.values.given_name.trim(),
+    surname: state.form.personal_data.values.surname.trim(),
+    display_name: state.form.personal_data.values.display_name.trim(),
+    language: state.form.personal_data.values.language,
     csrf_token: state.config.csrf_token
   };
   delete data.eppn;
