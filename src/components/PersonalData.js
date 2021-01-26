@@ -28,14 +28,17 @@ const validatePersonalData = (values, props) => {
 };
 
 let PdataForm = (props) => {
+  // button status, defalut is false
   const [isDisable, setIsDisable] = useState(false);
+  // personal data, default data is from props.data
   const [pdata, setPdata] = useState({
     given_name: props.data.given_name,
     surname: props.data.surname,
     display_name: props.data.display_name,
     language:  props.data.language,
   });
-
+  // After rendering, useEffect will check pdata and isDisable against the values from the last render, and will call effect function if any one of them has changed.
+  // if all the updateded values are matched with initial values, button will be disabled.
   useEffect(() => {
     if(pdata.given_name === props.initialValues.given_name && 
       pdata.surname === props.initialValues.surname && 
@@ -45,6 +48,7 @@ let PdataForm = (props) => {
       } else setIsDisable(false)
   }, [pdata, isDisable]);
   
+  // if field value is present, setPdata key and value.
   const handleFormChange = (field)=> {
     const inputName = field.name;
     if(field.value){
