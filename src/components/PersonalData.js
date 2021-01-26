@@ -33,11 +33,10 @@ let PdataForm = (props) => {
   // personal data, default data is empty object
   const [pdata, setPdata] = useState({});
   // After rendering, useEffect will check [] parameter against the values from the last render, and will call effect function if any one of them has changed.
-  // if all the updateded values are matched with initial values, button will be disabled.
   useEffect(()=>{
     setPdata(props.data)
   }, [props.data])
-  
+  // if all the updateded values are matched with initial values, button will be disabled.
   useEffect(() => {
     if(pdata.given_name === props.initialValues.given_name && 
       pdata.surname === props.initialValues.surname && 
