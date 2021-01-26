@@ -50,9 +50,8 @@ let PdataForm = (props) => {
   
   // if field value is present, setPdata key and value.
   const handleFormChange = (field)=> {
-    const inputName = field.name;
     if(field.value){
-      setPdata({...pdata,[inputName]: field.value.trim()})
+      setPdata({...pdata,[field.name]: field.value.trim()})
     }else setPdata({pdata});
   };
   
