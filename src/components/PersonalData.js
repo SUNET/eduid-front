@@ -112,7 +112,6 @@ PdataForm = reduxForm({
   updateUnregisteredFields: true,
   validate: validatePersonalData,
   touchOnChange: true,
-  touchOnBlur: true
 })(PdataForm);
 
 PdataForm = connect((state) => ({
