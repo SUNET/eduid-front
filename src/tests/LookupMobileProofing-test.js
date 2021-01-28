@@ -8,7 +8,7 @@ import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
 import fetchMock from "fetch-mock";
 import { MemoryRouter } from "react-router-dom";
-import LookupMobileProofingContainer from "containers/LookupMobileProofing";
+import LookupMobileProofingContainer from "../login/components/LookupMobileProofing/LookupMobileProofingContainer";
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");

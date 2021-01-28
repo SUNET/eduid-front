@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
-import LookupMobileProofing from "components/LookupMobileProofing";
-import { eduidRMAllNotify } from "actions/Notifications";
+import LookupMobileProofing from "./LookupMobileProofing";
+import { eduidRMAllNotify } from "../../../actions/Notifications";
 import {
   showModal,
   closeModal,
   postLookupMobile
-} from "actions/LookupMobileProofing";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
+} from "../../../actions/LookupMobileProofing";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {

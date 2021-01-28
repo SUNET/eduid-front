@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import NotificationModal from "../login/components/Modals/NotificationModal";
+import NotificationModal from "../Modals/NotificationModal";
 import { HashLink } from 'react-router-hash-link';
 class LookupMobileProofing extends Component {  
   render() {
