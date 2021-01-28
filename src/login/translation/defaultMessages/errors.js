@@ -19,8 +19,8 @@ export const generalErrors = {
     <FormattedMessage id="required" defaultMessage={`Field cannot be empty`} />
   ),
 
-  "only allow letters": (
-    <FormattedMessage id="only allow letters" defaultMessage={`Name can only consist of letters`} />
+  "value not changed": (
+    <FormattedMessage id="value not changed" defaultMessage={`The value is not changed`} />
   ),
 
   "user-out-of-sync": (

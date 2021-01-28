@@ -1,46 +1,60 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-
 import Form from "reactstrap/lib/Form";
-// import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import CustomInput from "../login/components/Inputs/CustomInput";
-
-// import "style/Emails.scss";
-// import "style/PersonalData.scss";
-// import "style/DashboardMain.scss";
-
 import "../login/styles/index.scss";
+import { emptyStringPattern } from "../login/app_utils/validation/regexPatterns";
 
 /* FORM */
 
-const validatePersonalData = (values) => {
+const validatePersonalData = (values, props) => {
   const errors = {};
-  const spacePattern = /^\s+$/;
-  const withSpecialCharacters  = /[`!€%&?~#@,.<>;':"\/\[\]\|{}()-=_+]/;
-
-  ["given_name", "surname", "display_name", "language"].forEach((pdata) => {
-    if (!values[pdata]) {
-      errors[pdata] = "required";
+  ["given_name", "surname", "display_name", "language"].forEach((inputName) => {
+    if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
+      errors[inputName] = "required";
     }
-    //add space pattern instead of trim because the input datas will be added without space.
-    else if(spacePattern.test(values[pdata])){
-      errors[pdata] = "required";
+    //none of the fields value properties differ from their initial properties will get error message.
+    else if(props.pristine){
+      errors[inputName] = "value not changed";
     }
-    else if(pdata==="given_name" || pdata==="surname"){
-      if(withSpecialCharacters.test(values[pdata])){
-        errors[pdata] = "only allow letters";
-      }
+    else if(values[inputName].trim() === props.initialValues[inputName]){
+      errors[inputName] = "value not changed";
     }
   });
   return errors;
 };
 
 let PdataForm = (props) => {
+  // button status, defalut is false
+  const [isDisable, setIsDisable] = useState(false);
+  // personal data, default data is empty object
+  const [pdata, setPdata] = useState({});
+  // After rendering, useEffect will check [] parameter against the values from the last render, and will call effect function if any one of them has changed.
+  useEffect(()=>{
+    setPdata(props.data)
+  }, [props.data])
+  // if all the updateded values are matched with initial values, button will be disabled.
+  useEffect(() => {
+    if(pdata.given_name === props.initialValues.given_name && 
+      pdata.surname === props.initialValues.surname && 
+      pdata.display_name === props.initialValues.display_name &&
+      pdata.language === props.initialValues.language){ 
+        setIsDisable(true)
+      } else setIsDisable(false)
+  }, [pdata, isDisable]);
+  
+  // if field value is present, setPdata key and value.
+  const handleFormChange = (field)=> {
+    if(field.value){
+      setPdata({...pdata,[field.name]: field.value.trim()})
+    }else setPdata({pdata});
+  };
+  
   return (
-    <Form id="personaldataview-form" role="form">
+    <Form id="personaldataview-form" role="form" onChange={(e)=>handleFormChange(e.target)}>
       <fieldset id="personal-data-form" className="tabpane">
         <Field
           component={CustomInput}
@@ -81,10 +95,10 @@ let PdataForm = (props) => {
       <EduIDButton
         id="personal-data-button"
         className="settings-button"
-        disabled={props.pristine || props.submitting || props.invalid}
+        disabled={props.pristine || props.submitting || isDisable}
         onClick={props.handleSave}
       >
-        {props.translate("button_add")}
+        {props.translate("button_save")}
       </EduIDButton>
     </Form>
   );
@@ -94,10 +108,10 @@ PdataForm = reduxForm({
   form: "personal_data",
   destroyOnUnmount: false,
   enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
   keepValuesOnReinitialize: true,
   updateUnregisteredFields: true,
   validate: validatePersonalData,
+  touchOnChange: true,
 })(PdataForm);
 
 PdataForm = connect((state) => ({

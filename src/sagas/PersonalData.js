@@ -103,7 +103,10 @@ export function fetchAllPersonalData(config) {
 
 const getData = state => {
   const data = {
-    ...state.form.personal_data.values,
+    given_name: state.form.personal_data.values.given_name.trim(),
+    surname: state.form.personal_data.values.surname.trim(),
+    display_name: state.form.personal_data.values.display_name.trim(),
+    language: state.form.personal_data.values.language,
     csrf_token: state.config.csrf_token
   };
   delete data.eppn;
