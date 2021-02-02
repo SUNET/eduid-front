@@ -43,7 +43,9 @@ let PdataForm = (props) => {
       pdata.display_name === props.initialValues.display_name &&
       pdata.language === props.initialValues.language){ 
         setIsDisable(true)
-      } else setIsDisable(false)
+      } else if(Object.keys(pdata).length < 5){
+          setIsDisable(true)
+        } else setIsDisable(false)
   }, [pdata, isDisable]);
   
   // if field value is present, setPdata key and value.
