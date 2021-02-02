@@ -152,6 +152,21 @@ button.cancel-button {
   }
 }
 
+button.captcha.cancel-button{
+  color: #161616;
+  margin: 0.5rem 1rem !important;
+  padding: 1rem;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    color: #7c7c7c;
+    background-color: transparent;
+    box-shadow: none;
+    border: solid 1px  #7c7c7c;
+  }
+}
+
 /* styles for REMOVE icons */
 // ----- buttons that remove data ----  //
 // button.btn.btn-sm,
