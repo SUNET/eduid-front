@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 class InviteListItem extends Component {
   render() {
@@ -24,6 +24,6 @@ class InviteListItem extends Component {
   }
 }
 
-InviteListItem.propTypes = {};
+// InviteListItem.propTypes = {};
 
-export default i18n(InviteListItem);
+export default InjectIntl(InviteListItem);

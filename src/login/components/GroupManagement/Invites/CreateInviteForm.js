@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { reduxForm, FormSection } from "redux-form";
 import Form from "reactstrap/lib/Form";
@@ -8,7 +7,7 @@ import InviteRoleCheckboxes from "../InviteRoleCheckboxes";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import validateCheckboxes from "../../../app_utils/validation/validateCheckboxes";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const validateCreateInvite = (values) => {
   const { inviteEmail, inviteRoles } = values;
@@ -46,17 +45,13 @@ CreateInviteForm = reduxForm({
   validate: validateCreateInvite,
 })(CreateInviteForm);
 
-CreateInviteForm = connect((state) => ({
+CreateInviteForm = connect(() => ({
   initialValues: {
     inviteEmail: { email: "" },
     inviteRoles: { member: true, owner: false },
   },
 }))(CreateInviteForm);
 
-// CreateInviteForm.propTypes = {
-//   // longDescription: PropTypes.string,
-//   // emails: PropTypes.array,
-//   // handleSubmit: PropTypes.func,
-// };
+// CreateInviteForm.propTypes = {};
 
-export default i18n(CreateInviteForm);
+export default InjectIntl(CreateInviteForm);

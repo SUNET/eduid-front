@@ -5,7 +5,7 @@ import Form from "reactstrap/lib/Form";
 import CustomInput from "../Inputs/CustomInput";
 import EduIDButton from "../../../components/EduIDButton";
 import { emptyValueValidation } from "../../app_utils/validation/emptyValueValidation";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 let GroupNameForm = (props) => {
   const { handleSubmit, invalid, form, label, placeholder, helpBlock } = props;
@@ -40,6 +40,6 @@ GroupNameForm = connect(() => ({
   touchOnChange: true,
 }))(GroupNameForm);
 
-GroupNameForm.propTypes = {};
+// GroupNameForm.propTypes = {};
 
-export default i18n(GroupNameForm);
+export default InjectIntl(GroupNameForm);

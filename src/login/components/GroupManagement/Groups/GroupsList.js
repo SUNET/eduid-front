@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "./GroupListItem";
 
 const GroupsList = (props) => {
@@ -28,6 +28,6 @@ const GroupsList = (props) => {
   );
 };
 
-GroupsList.propTypes = {};
+// GroupsList.propTypes = {};
 
-export default i18n(GroupsList);
+export default InjectIntl(GroupsList);

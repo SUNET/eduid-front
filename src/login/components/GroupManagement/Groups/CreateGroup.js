@@ -68,6 +68,6 @@ class CreateGroup extends Component {
   }
 }
 
-CreateGroup.propTypes = {};
+// CreateGroup.propTypes = {};
 
 export default InjectIntl(CreateGroup);

@@ -45,6 +45,6 @@ class GroupManagement extends Component {
   }
 }
 
-GroupManagement.propTypes = {};
+// GroupManagement.propTypes = {};
 
 export default InjectIntl(GroupManagement);

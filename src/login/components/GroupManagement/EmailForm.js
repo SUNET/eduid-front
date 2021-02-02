@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../Inputs/CustomInput";
 import EduIDButton from "../../../components/EduIDButton";
 import { validate } from "../../app_utils/validation/validateEmail";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const RenderSubmitButton = ({ invalid, translate }) => (
   <EduIDButton
@@ -34,8 +33,7 @@ export let RenderEmailInput = ({ translate, required }) => (
   </fieldset>
 );
 
-let EmailForm = ({ submitButton, onSubmit }) => {
-  // const { submitButton, onSubmit } = props;
+let EmailForm = (props, { submitButton, onSubmit }) => {
   return (
     <Form id="emailsview-form" role="form" onSubmit={onSubmit}>
       <RenderEmailInput {...props} />
@@ -55,10 +53,6 @@ EmailForm = connect((state) => ({
   touchOnChange: true,
 }))(EmailForm);
 
-EmailForm.propTypes = {
-  longDescription: PropTypes.string,
-  emails: PropTypes.array,
-  handleSubmit: PropTypes.func,
-};
+// EmailForm.propTypes = {};
 
-export default i18n(EmailForm);
+export default InjectIntl(EmailForm);

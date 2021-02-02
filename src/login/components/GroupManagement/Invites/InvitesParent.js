@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import React, { Component } from "react";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CreateInvite from "./CreateInviteContainer";
 import InvitesList from "./InvitesListContainer";
 
@@ -31,6 +31,6 @@ class InvitesParent extends Component {
   }
 }
 
-InvitesParent.propTypes = {};
+// InvitesParent.propTypes = {};
 
-export default i18n(InvitesParent);
+export default InjectIntl(InvitesParent);

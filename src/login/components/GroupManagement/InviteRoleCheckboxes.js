@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Field } from "redux-form";
-import i18n from "../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const checkboxNamesLabels = [
   { member: "User belongs to group as a member" },
@@ -64,6 +64,6 @@ let InviteRoleCheckboxes = ({ helpBlock }) => {
   );
 };
 
-// RoleCheckboxes.propTypes = {};
+// InviteRoleCheckboxes.propTypes = {};
 
-export default i18n(InviteRoleCheckboxes);
+export default InjectIntl(InviteRoleCheckboxes);

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 export const RenderOwnerList = (props) => {
   let owners = props.group.owners;
@@ -102,4 +102,4 @@ class GroupListItem extends Component {
 
 GroupListItem.propTypes = {};
 
-export default i18n(GroupListItem);
+export default InjectIntl(GroupListItem);

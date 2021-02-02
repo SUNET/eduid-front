@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InviteListItem from "./InviteListItem";
 
 class InvitesList extends Component {
@@ -41,6 +41,6 @@ class InvitesList extends Component {
   }
 }
 
-InvitesList.propTypes = {};
+// InvitesList.propTypes = {};
 
-export default i18n(InvitesList);
+export default InjectIntl(InvitesList);
