@@ -28,7 +28,7 @@ button.btn {
   &:disabled,
   .disabled {
     background-color: $dark-gray;
-    color: #f4f4f4;
+    color:$light-gray;
   }
 }
 
@@ -37,8 +37,8 @@ button.btn-primary,
 button.btn-primary:not(:disabled):not(.disabled):active,
 button.btn-primary:not(:disabled):not(.disabled):focus,
 button.btn-primary:not(:disabled):not(.disabled):active:focus {
-  color: white;
-  background-color: #ff4500;
+  color: $white;
+  background-color: $orange-highlight;
 }
 
 button,
@@ -146,12 +146,13 @@ button.cancel-button {
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: #7c7c7c;
+    color: $gray;
     background-color: transparent;
     box-shadow: none;
   }
 }
 
+// ----- buttons that captcha cancel modals ----  //
 button.captcha.cancel-button{
   color: #161616;
   margin: 0.5rem 1rem !important;
@@ -160,10 +161,10 @@ button.captcha.cancel-button{
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
-    color: #7c7c7c;
+    color: $gray;
     background-color: transparent;
     box-shadow: none;
-    border: solid 1px  #7c7c7c;
+    border: solid 1px  $gray;
   }
 }
 
