@@ -42,7 +42,7 @@ export const userProfile = {
   "profile.phone_display_no_data": (
     <FormattedMessage
       id="profile.phone_display_no_data"
-      defaultMessage={`no phone number added`}
+      defaultMessage={`add phone number`}
     />
   ),
 

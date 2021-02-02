@@ -283,7 +283,7 @@
   "profile.eppn_display_title": "eppn",
   "profile.name_display_no_data": "add name",
   "profile.name_display_title": "Name",
-  "profile.phone_display_no_data": "no phone number added",
+  "profile.phone_display_no_data": "add phone number",
   "profile.phone_display_non-primary_data": "make number primary",
   "profile.phone_display_title": "Phone number",
   "profile.phone_display_unconfirmed_data": "confirm added number",
