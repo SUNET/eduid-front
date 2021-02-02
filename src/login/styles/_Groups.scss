@@ -220,9 +220,16 @@ article {
 
 .list-grid {
   display: grid;
-  grid-template-columns: 1fr calc(0.5rem + 48px + 0.5rem) calc(
-      0.5rem + 68px + 0.5rem
-    );
+  &#four-columns {
+    grid-template-columns:
+      1fr calc(0.5rem + 48px + 0.5rem) calc(0.5rem + 68px + 0.5rem)
+      3rem;
+  }
+  &#three-columns {
+    grid-template-columns: 1fr calc(0.5rem + 48px + 0.5rem) calc(
+        0.5rem + 68px + 0.5rem
+      );
+  }
   .hide-overflow {
     white-space: nowrap;
     overflow: hidden;

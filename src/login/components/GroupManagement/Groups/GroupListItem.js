@@ -61,7 +61,7 @@ class GroupListItem extends Component {
           this.toggleGroupOpenClosed();
         }}
       >
-        <div className="list-grid">
+        <div className="list-grid" id="four-columns">
           <div className="title hide-overflow list-cell">
             <div className="element-pair">
               <button

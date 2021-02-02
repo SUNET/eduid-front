@@ -5,7 +5,7 @@ import GroupListItem from "./GroupListItem";
 const GroupsList = (props) => {
   return (
     <div className="view-data">
-      <div className="list-grid">
+      <div className="list-grid" id="four-columns">
         <div className="list-cell"></div>
         <div className="list-cell">
           <label>Owner</label>

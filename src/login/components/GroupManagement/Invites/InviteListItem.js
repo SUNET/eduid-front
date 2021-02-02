@@ -9,7 +9,7 @@ class InviteListItem extends Component {
         {membersList.map((list) =>
           list.map((member, i) => (
             <li key={i}>
-              <div className="list-grid">
+              <div className="list-grid" id="three-columns">
                 <div className="hide-overflow list-cell left-align">
                   <p>{member.email_address}</p>
                 </div>
