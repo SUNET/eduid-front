@@ -4,20 +4,36 @@ import * as inviteActions from "../../../redux/actions/createInviteActions";
 import CreateInvite from "./CreateInvite";
 
 const mapStateToProps = (state) => {
-  let emailFormValues = { email: "" };
-  if (state.form.emails !== undefined) {
-    emailFormValues = state.form.emails.values;
+  let createInviteValues = {};
+  let inviteEmail = {};
+  let inviteRoles = [];
+  if (state.form.createInvite !== undefined) {
+    createInviteValues = state.form.createInvite.values;
+    inviteEmail = createInviteValues.inviteEmail.email;
+    let rolesArr = Object.entries(createInviteValues.inviteRoles);
+    inviteRoles = rolesArr
+      .map((role) => {
+        if (role.includes(true)) {
+          return role[0];
+        } else {
+          return null;
+        }
+      })
+      .filter((role) => role !== null);
   }
   return {
-    values: emailFormValues,
+    inviteEmail,
+    inviteRoles,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createInvite: (email, groupId) => {
-      const inviteEmail = email.email;
-      dispatch(inviteActions.createInvite(inviteEmail, groupId));
+    createInviteMember: (groupId, inviteEmail) => {
+      dispatch(inviteActions.createInviteMember(groupId, inviteEmail));
+    },
+    createInviteOwner: (groupId, inviteEmail) => {
+      dispatch(inviteActions.createInviteOwner(groupId, inviteEmail));
     },
   };
 };
