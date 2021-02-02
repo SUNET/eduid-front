@@ -48,11 +48,9 @@ let PdataForm = (props) => {
         } else setIsDisable(false)
   }, [pdata, isDisable]);
   
-  // if field value is present, setPdata key and value.
+  // setPdata key and value.
   const handleFormChange = (field)=> {
-    if(field.value){
-      setPdata({...pdata,[field.name]: field.value.trim()})
-    }else setPdata({pdata});
+    setPdata({...pdata,[field.name]: field.value.trim()})
   };
   
   return (
