@@ -118,7 +118,8 @@ button#accept-tou-button
 /* color for OK and ACCEPT buttons in modals */
 // ----- buttons with actions in modals ----  //
 a.ok-button,
-button.ok-button {
+button.ok-button,
+#accept-tou-button {
   background-color: $orange-highlight;
   &:hover,
   &:not(:disabled):not(.disabled):active,
