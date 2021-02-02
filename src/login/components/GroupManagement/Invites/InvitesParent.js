@@ -14,12 +14,9 @@ class InvitesParent extends Component {
     let groupIdInEdit = group.identifier;
     let membersListsGroupInEdit = groupsWithInvites
       .filter((group) => Object.keys(group).toString() === groupIdInEdit)
-      .map((groupInEdit) => {
-        return Object.values(groupInEdit);
-      });
+      .map((groupInEdit) => Object.values(groupInEdit));
     // check if memebrslist for the specific group in edit has members
     let groupHasInvites = membersListsGroupInEdit.length > 0;
-
     return (
       <Fragment>
         <CreateInvite groupId={groupIdInEdit} />
