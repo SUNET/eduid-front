@@ -60,13 +60,7 @@ export class NinDisplay extends Component {
           ];
         } else {
           userData = [
-            <Link
-              key="1"
-              to={`/profile/verify-identity/`}
-              className="display-data unverified"
-            >
-              <span>{this.props.nins[0].number}</span>
-            </Link>,
+            <p key="1" className="display-data verified">{this.props.nins[0].number}</p>
           ];
         }
       }
