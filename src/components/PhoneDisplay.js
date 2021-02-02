@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
 
 class PhoneDisplay extends Component {
   render() {
@@ -20,13 +20,13 @@ class PhoneDisplay extends Component {
       }
     } else {
       userData = [
-        <Link
+        <HashLink
           key="1"
-          to={`/profile/settings/`}
+          to={`/profile/settings/#phone`}
           className="display-data unverified"
         >
          {this.props.translate("profile.phone_display_no_data")}
-        </Link>,
+        </HashLink>,
       ];
     }
 
