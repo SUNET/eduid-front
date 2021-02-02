@@ -14,7 +14,7 @@ export const userProfile = {
   "profile.name_display_no_data": (
     <FormattedMessage
       id="profile.name_display_no_data"
-      defaultMessage={`no name added`}
+      defaultMessage={`add name`}
     />
   ),
 
