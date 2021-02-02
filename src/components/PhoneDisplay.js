@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "style/base.scss";
-// import "style/DashboardMain.scss";
+import { Link } from "react-router-dom";
 
 class PhoneDisplay extends Component {
   render() {
@@ -22,9 +20,13 @@ class PhoneDisplay extends Component {
       }
     } else {
       userData = [
-        <p key="0" className="display-data no-data">
-          {this.props.translate("profile.phone_display_no_data")}
-        </p>,
+        <Link
+          key="1"
+          to={`/profile/settings/`}
+          className="display-data unverified"
+        >
+         {this.props.translate("profile.phone_display_no_data")}
+        </Link>,
       ];
     }
 
