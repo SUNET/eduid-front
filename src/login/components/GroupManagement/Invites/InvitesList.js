@@ -21,7 +21,6 @@ class InvitesList extends Component {
           <div className="list-cell">
             <label>Member</label>
           </div>
-          <div className="list-cell"></div>
         </div>
         <ul>
           {membersList.map((list) => (

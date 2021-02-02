@@ -21,10 +21,15 @@ class InvitesParent extends Component {
       <Fragment>
         <CreateInvite groupId={groupIdInEdit} />
         {groupHasInvites ? (
-          <InvitesList
-            groupId={groupIdInEdit}
-            membersList={membersListsGroupInEdit}
-          />
+          <Fragment>
+            <div className="title">
+              <p>Sent invites</p>
+            </div>
+            <InvitesList
+              groupId={groupIdInEdit}
+              membersList={membersListsGroupInEdit}
+            />
+          </Fragment>
         ) : null}
       </Fragment>
     );

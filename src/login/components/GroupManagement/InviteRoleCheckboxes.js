@@ -7,33 +7,31 @@ const checkboxNamesLabels = [
   { owner: "User can edit who belongs to the group as an owner" },
 ];
 
-const RenderCheckboxInput = ({
-  meta: { error },
-  input: { onChange, value },
-  id,
-  label,
-}) => {
+const RenderCheckboxInput = ({ meta, input, id, label, type }) => {
+  const { error } = meta;
+  const { onChange, value } = input;
   return (
     <Fragment>
-      <div className="role-form">
+      <div className="checkbox-wrapper">
         <div className="checkbox-label">
           <label className={value ? "checked" : null} htmlFor={id}></label>
           <p>{label}</p>
         </div>
+        {/* input is display:none to allow custom styling of box */}
         <input
           id={id}
-          type="checkbox"
+          type={type}
           value={value}
           checked={value}
           onChange={onChange}
         />
       </div>
       {error && (
-        <p>
-          <span className="input-validate-error">
+        <div className="small form-text">
+          <span className={"input-validate-error"}>
             At least one membership must be set to create an invite
           </span>
-        </p>
+        </div>
       )}
     </Fragment>
   );
@@ -41,10 +39,10 @@ const RenderCheckboxInput = ({
 
 let InviteRoleCheckboxes = ({ helpBlock }) => {
   return (
-    <div className="invite-role">
+    <div className={"invite-role"}>
       <div className={"input-label-helptext-container"}>
         <label>
-          Membership<span className="label-required">*</span>
+          Membership<span className={"label-required"}>*</span>
         </label>
         {helpBlock && <span className={"help-block"}>{helpBlock}</span>}
       </div>
