@@ -5,6 +5,24 @@ import CreateInviteForm from "./CreateInviteForm.js";
 class CreateInvite extends Component {
   handleCreateInvite = (e) => {
     e.preventDefault();
+    const {
+      groupId,
+      inviteEmail,
+      inviteRoles,
+      createInviteMember,
+      createInviteOwner,
+    } = this.props;
+    // endpoint takes one role per invite
+    if (inviteRoles.length > 1) {
+      createInviteMember(groupId, inviteEmail);
+      createInviteOwner(groupId, inviteEmail);
+    } else {
+      if (inviteRoles.includes("member")) {
+        createInviteMember(groupId, inviteEmail);
+      } else if (inviteRoles.includes("owner")) {
+        createInviteOwner(groupId, inviteEmail);
+      }
+    }
   };
 
   render() {
@@ -31,4 +49,3 @@ class CreateInvite extends Component {
 CreateInvite.propTypes = {};
 
 export default i18n(CreateInvite);
-
