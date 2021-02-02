@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 // styling for Groups section
 article {
   display: flex;
@@ -114,7 +116,6 @@ article {
 // styles common for all listed data (both edit and view)
 .list-data {
   background-color: transparent;
-  margin-top: 2rem;
   label {
     font-size: 1rem;
     letter-spacing: 0;
@@ -135,9 +136,6 @@ article {
       font-size: 1.5rem;
       font-family: "ProximaNova-Light";
     }
-  }
-  &.invites {
-    margin-right: 4.5625rem;
   }
 }
 
@@ -221,22 +219,6 @@ article {
   }
 }
 
-// adds styling inputs on the white edit box
-.invite-email {
-  input {
-    background: #f4f4f4;
-  }
-  form {
-    margin-top: 0;
-  }
-  label {
-    font-size: 1rem;
-    letter-spacing: 0;
-    font-weight: unset;
-    margin-left: 0;
-  }
-}
-
 .open-group {
   margin: 0 0 0 1rem;
   label {
@@ -253,23 +235,64 @@ article {
     white-space: nowrap;
     overflow: hidden;
   }
+  form {
+    flex-direction: row;
+    margin-top: 0;
+  }
   .list-cell {
     display: flex;
     align-items: center;
     justify-content: center;
-    .invite-email label,
-    label {
-      font-size: 1rem;
-      letter-spacing: 0;
-      font-weight: unset;
-      margin-left: 0;
-    }
-    label,
-    p {
-      padding: 0 0 0.625rem 0;
-    }
     &.left-align {
       justify-content: flex-start;
+    }
+  }
+}
+
+.create-invite {
+  label {
+    font-size: 1rem;
+    letter-spacing: 0;
+    font-weight: unset;
+    margin-left: 0;
+  }
+  // adds styling inputs on the white edit box
+  #emailsview-form,
+  #create-invite-form {
+    margin-top: 0;
+  }
+  #emails-form {
+    input {
+      background: #f4f4f4;
+    }
+  }
+  .invite-role {
+    margin-top: 1.25rem;
+    .role-form {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      .checkbox-label {
+        display: flex;
+        align-items: baseline;
+        margin-right: 1rem;
+      }
+      label {
+        margin-right: 0.5rem;
+        height: 1rem;
+        width: 1rem;
+        flex-direction: row;
+        border: solid 2px $orange-highlight;
+        &.checked {
+          background: $orange-highlight;
+        }
+      }
+      input[type="checkbox"] {
+        display: none;
+      }
+      p {
+        padding: 0;
+      }
     }
   }
 }
