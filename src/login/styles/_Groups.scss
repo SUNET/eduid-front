@@ -69,7 +69,6 @@ article {
 // styling for EditView
 .data-panel {
   background-color: transparent;
-  margin: 1rem 0;
   .edit-data {
     background-color: white;
     padding: 1rem;
@@ -80,7 +79,7 @@ article {
       justify-content: space-between;
       align-items: baseline;
       p {
-        font-weight: 700;
+        font-family: "ProximaNova-Bold";
       }
       button {
         background-color: transparent;
@@ -95,10 +94,10 @@ article {
     }
     nav {
       display: flex;
-      margin: 0 1rem 0 0;
       font-family: "Akkurat";
       li {
         margin-right: 1rem;
+        margin-bottom: 0.25rem;
         p {
           font-size: 1rem;
           text-decoration: underline;
@@ -116,6 +115,7 @@ article {
 // styles common for all listed data (both edit and view)
 .list-data {
   background-color: transparent;
+  margin-top: 0.5rem;
   ul {
     margin: 0;
   }
@@ -257,8 +257,27 @@ article {
     margin-left: 0;
   }
 }
+.invites {
+  .title p {
+    padding: 0;
+  }
+}
 
 .create-invite {
+  .input-label-helptext-container {
+    margin-bottom: 0.75rem;
+    .help-block {
+      padding-bottom: 0;
+      line-height: 1;
+    }
+    label {
+      padding: 0;
+    }
+  }
+  .small.form-text,
+  small.form-text {
+    line-height: 1;
+  }
   #emailsview-form,
   #create-invite-form {
     margin-top: 0;
@@ -266,19 +285,17 @@ article {
   #emails-form {
     input {
       background: #f4f4f4;
+      margin-bottom: 0.25rem;
     }
   }
   .invite-role {
-    margin-top: 1.25rem;
+    margin-top: 0.75rem;
     .checkbox-wrapper {
-      padding: 0 0 0.1875rem 0.125rem;
-      margin-top: 0.5rem;
       display: flex;
       flex-direction: column;
       .checkbox-label {
         display: flex;
         align-items: baseline;
-        margin-right: 1rem;
       }
       label {
         margin-right: 0.5rem;
@@ -295,13 +312,14 @@ article {
       }
       p {
         padding: 0;
-        margin-bottom: 0;
+        margin-bottom: 0.5rem;
       }
     }
   }
   .settings-button {
     width: fit-content;
     align-self: center;
+    margin-bottom: 1rem;
   }
 }
 

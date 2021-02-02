@@ -27,21 +27,19 @@ class CreateInvite extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className="create-invite">
         <div className="title">
           <p>Invite people to your group</p>
         </div>
         <p>
-          Send an invite to anyone you want to add to your group. You will need
-          to add an email address and set a membership for them.
+          Add an email address and set a membership to invite anyone to join
+          your group.
         </p>
-        <div className="create-invite">
-          <CreateInviteForm
-            {...this.props}
-            handleSubmit={this.handleCreateInvite}
-          />
-        </div>
-      </Fragment>
+        <CreateInviteForm
+          {...this.props}
+          handleSubmit={this.handleCreateInvite}
+        />
+      </div>
     );
   }
 }

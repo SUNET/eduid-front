@@ -18,20 +18,15 @@ class InvitesParent extends Component {
     // check if memebrslist for the specific group in edit has members
     let groupHasInvites = membersListsGroupInEdit.length > 0;
     return (
-      <Fragment>
-        <CreateInvite groupId={groupIdInEdit} />
-        {groupHasInvites ? (
-          <Fragment>
-            <div className="title">
-              <p>Sent invites</p>
-            </div>
-            <InvitesList
-              groupId={groupIdInEdit}
-              membersList={membersListsGroupInEdit}
-            />
-          </Fragment>
-        ) : null}
-      </Fragment>
+        <div className="invites">
+          <CreateInvite groupId={groupIdInEdit} />
+          {groupHasInvites ? (
+              <InvitesList
+                groupId={groupIdInEdit}
+                membersList={membersListsGroupInEdit}
+              />
+          ) : null}
+        </div>
     );
   }
 }
