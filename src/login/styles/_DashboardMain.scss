@@ -58,6 +58,9 @@
 .profile-grid-cell {
   display: flex;
   flex-direction: column;
+  .display-nin-show-hide{
+    display: flex;
+  }
   & .data-with-delete {
     display: flex;
     flex-direction: row;

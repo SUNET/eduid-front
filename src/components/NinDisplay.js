@@ -36,10 +36,11 @@ export class NinDisplay extends Component {
               className="data-with-delete"
             >
               <p key="1" id="nin-number" className="display-data unverified">
-                {this.props.nins[0].number}
+                {this.props.showNinIdentity ? this.props.nins[0].number :  this.props.nins[0].number.replace(/\d{4}$/, '****')}
               </p>
+              <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinIdentity}>{this.props.showNinIdentity ? "HIDE": "SHOW" }</button> 
               <EduIDButton
-                key="2"
+                key="3"
                 className="icon-button"
                 onClick={this.props.handleDelete}
               >
@@ -60,7 +61,12 @@ export class NinDisplay extends Component {
           ];
         } else {
           userData = [
-            <p key="1" className="display-data verified">{this.props.nins[0].number}</p>
+            <div key="1" className="display-nin-show-hide">
+              <p key="1" className="display-data verified">
+                {this.props.showNinProfile  ? this.props.nins[0].number :  this.props.nins[0].number.replace(/\d{4}$/, '****')}
+              </p>
+             <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinProfile}>{this.props.showNinProfile ? "HIDE": "SHOW" }</button> 
+            </div>
           ];
         }
       }

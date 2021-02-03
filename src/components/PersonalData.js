@@ -38,7 +38,9 @@ let PdataForm = (props) => {
   }, [props.data])
   // if all the updateded values are matched with initial values, button will be disabled.
   useEffect(() => {
-    if(pdata.given_name === props.initialValues.given_name && 
+    if(!pdata.given_name || !pdata.surname || !pdata.display_name || !pdata.language){
+      setIsDisable(true)
+    } else if(pdata.given_name === props.initialValues.given_name && 
       pdata.surname === props.initialValues.surname && 
       pdata.display_name === props.initialValues.display_name &&
       pdata.language === props.initialValues.language){ 
@@ -46,11 +48,9 @@ let PdataForm = (props) => {
       } else setIsDisable(false)
   }, [pdata, isDisable]);
   
-  // if field value is present, setPdata key and value.
+  // setPdata key and value.
   const handleFormChange = (field)=> {
-    if(field.value){
-      setPdata({...pdata,[field.name]: field.value.trim()})
-    }else setPdata({pdata});
+    setPdata({...pdata,[field.name]: field.value.trim()})
   };
   
   return (
