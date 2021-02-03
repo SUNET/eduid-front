@@ -36,9 +36,14 @@ export class NinDisplay extends Component {
               className="data-with-delete"
             >
               <p key="1" id="nin-number" className="display-data unverified">
-                {this.props.showNinIdentity ? this.props.nins[0].number :  this.props.nins[0].number.replace(/\d{4}$/, '****')}
+                { this.props.showNinAtIdentity ? 
+                  this.props.nins[0].number :  
+                  this.props.nins[0].number.replace(/\d{4}$/, '****')
+                }
               </p>
-              <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinIdentity}>{this.props.showNinIdentity ? "HIDE": "SHOW" }</button> 
+              <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtIdentity}>
+                {this.props.showNinAtIdentity ? "HIDE": "SHOW" }
+              </button> 
               <EduIDButton
                 key="3"
                 className="icon-button"
@@ -63,9 +68,14 @@ export class NinDisplay extends Component {
           userData = [
             <div key="1" className="display-nin-show-hide">
               <p key="1" className="display-data verified">
-                {this.props.showNinProfile  ? this.props.nins[0].number :  this.props.nins[0].number.replace(/\d{4}$/, '****')}
+                { this.props.showNinAtProfile  ? 
+                  this.props.nins[0].number :  
+                  this.props.nins[0].number.replace(/\d{4}$/, '****')
+                }
               </p>
-             <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinProfile}>{this.props.showNinProfile ? "HIDE": "SHOW" }</button> 
+             <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtProfile}>
+                {this.props.showNinAtProfile ? "HIDE": "SHOW" }
+              </button> 
             </div>
           ];
         }

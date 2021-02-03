@@ -76,13 +76,13 @@ export function changeNindata(data) {
   };
 }
 
-export function showNinProfile() {
+export function showNinAtProfile() {
   return {
     type: SHOW_NIN_PROFILE
   };
 }
 
-export function showNinIdentity() {
+export function showNinAtIdentity() {
   return {
     type: SHOW_NIN_IDENTITY
   };

@@ -5,8 +5,8 @@ const ninState = {
   nin: "",
   rmNin: "",
   nins: [],
-  showNinProfile: false,
-  showNinIdentity: false
+  showNinAtProfile: false,
+  showNinAtIdentity: false
 };
 
 let ninsReducer = (state = ninState, action) => {
@@ -14,12 +14,12 @@ let ninsReducer = (state = ninState, action) => {
     case actions.SHOW_NIN_PROFILE:
       return {
         ...state,
-        showNinProfile: !state.showNinProfile
+        showNinAtProfile: !state.showNinAtProfile
       };
       case actions.SHOW_NIN_IDENTITY:
         return {
           ...state,
-          showNinIdentity: !state.showNinIdentity
+          showNinAtIdentity: !state.showNinAtIdentity
         };
     case actions.GET_NINS_SUCCESS:{
       const nins = action.payload.nins,

@@ -5,8 +5,8 @@ import * as actions from "actions/Nins";
 
 const mapStateToProps = (state) => {
   return {
-    showNinProfile: state.nins.showNinProfile,
-    showNinIdentity: state.nins.showNinIdentity
+    showNinAtProfile: state.nins.showNinAtProfile,
+    showNinAtIdentity: state.nins.showNinAtIdentity
   };
 };
 
@@ -17,11 +17,11 @@ const mapDispatchToProps = (dispatch) => {
         .dataset.ninnumber;
       dispatch(actions.startRemove(ninNumber));
     },
-    toggleShowNinProfile: function() {
-      dispatch(actions.showNinProfile());
+    toggleShowNinAtProfile: function() {
+      dispatch(actions.showNinAtProfile());
     },
-    toggleShowNinIdentity: function() {
-      dispatch(actions.showNinIdentity());
+    toggleShowNinAtIdentity: function() {
+      dispatch(actions.showNinAtIdentity());
     },
   };
 };
