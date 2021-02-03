@@ -18,7 +18,7 @@ const validateCreateInvite = (values) => {
 };
 
 let CreateInviteForm = (props) => {
-  const { handleSubmit, submitting, invalid } = props;
+  const { handleSubmit, invalid } = props;
   return (
     <Fragment>
       <Form id={"create-invite-form"} role="form" onSubmit={handleSubmit}>
@@ -31,7 +31,7 @@ let CreateInviteForm = (props) => {
         <EduIDButton
           type={"submit"}
           className={"settings-button"}
-          disabled={invalid || submitting}
+          disabled={invalid}
         >
           Send Invite
         </EduIDButton>
