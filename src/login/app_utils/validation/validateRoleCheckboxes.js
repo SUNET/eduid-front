@@ -1,4 +1,4 @@
-const validateCheckboxes = (values) => {
+const validateRoleCheckboxes = (values) => {
   const errors = {};
   if (values !== undefined) {
     let roles = new Array(values.member, values.owner);
@@ -10,4 +10,4 @@ const validateCheckboxes = (values) => {
   return errors;
 };
 
-export default validateCheckboxes;
+export default validateRoleCheckboxes;

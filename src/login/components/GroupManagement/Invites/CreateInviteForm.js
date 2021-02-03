@@ -6,14 +6,14 @@ import { RenderEmailInput } from "../EmailForm";
 import InviteRoleCheckboxes from "../InviteRoleCheckboxes";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
-import validateCheckboxes from "../../../app_utils/validation/validateCheckboxes";
+import validateRoleCheckboxes from "../../../app_utils/validation/validateRoleCheckboxes";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const validateCreateInvite = (values) => {
   const { inviteEmail, inviteRoles } = values;
   let errors = {};
   errors.inviteEmail = validate(inviteEmail);
-  errors.inviteRoles = validateCheckboxes(inviteRoles);
+  errors.inviteRoles = validateRoleCheckboxes(inviteRoles);
   return errors;
 };
 
