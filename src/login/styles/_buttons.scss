@@ -28,7 +28,7 @@ button.btn {
   &:disabled,
   .disabled {
     background-color: $dark-gray;
-    color: #f4f4f4;
+    color:$light-gray;
   }
 }
 
@@ -37,8 +37,8 @@ button.btn-primary,
 button.btn-primary:not(:disabled):not(.disabled):active,
 button.btn-primary:not(:disabled):not(.disabled):focus,
 button.btn-primary:not(:disabled):not(.disabled):active:focus {
-  color: white;
-  background-color: #ff4500;
+  color: $white;
+  background-color: $orange-highlight;
 }
 
 button,
@@ -118,7 +118,8 @@ button#accept-tou-button
 /* color for OK and ACCEPT buttons in modals */
 // ----- buttons with actions in modals ----  //
 a.ok-button,
-button.ok-button {
+button.ok-button,
+#accept-tou-button {
   background-color: $orange-highlight;
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -133,18 +134,6 @@ button.ok-button {
 /* color for CANCEL and CLOSE buttons in modals */
 // ----- buttons that close modals ----  //
 button.cancel-button {
-  color: #161616;
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    color: #7c7c7c;
-    background-color: transparent;
-    box-shadow: none;
-  }
-}
-
-button.cancel-button {
   background-color: transparent;
   padding: 1rem 1rem 0 1rem;
   margin:0 !important;
@@ -152,6 +141,30 @@ button.cancel-button {
   & svg{
     fill: #C4C4C4;
     align-self: center;
+  }
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    color: $gray;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+// ----- buttons that captcha cancel modals ----  //
+button.captcha.cancel-button{
+  color: #161616;
+  margin: 0.5rem 1rem !important;
+  padding: 1rem;
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    color: $gray;
+    background-color: transparent;
+    box-shadow: none;
+    border: solid 1px  $gray;
   }
 }
 
