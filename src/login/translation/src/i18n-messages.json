@@ -516,6 +516,14 @@
     "defaultMessage": "Add id number"
   },
   {
+    "id": "nin_show_last_four_digits",
+    "defaultMessage": "SHOW"
+  },
+  {
+    "id": "nin_hide_last_four_digits",
+    "defaultMessage": "HIDE"
+  },
+  {
     "id": "nins.input_help_text",
     "defaultMessage": "National identity number with 12 digits"
   },

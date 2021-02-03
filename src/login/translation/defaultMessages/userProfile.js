@@ -714,6 +714,20 @@ export const userData = {
     />
   ),
 
+  "nin_show_last_four_digits": (
+    <FormattedMessage
+      id="nin_show_last_four_digits"
+      defaultMessage={`SHOW`}
+    />
+  ),
+
+  "nin_hide_last_four_digits": (
+    <FormattedMessage
+      id="nin_hide_last_four_digits"
+      defaultMessage={`HIDE`}
+    />
+  ),
+
   "nins.input_help_text": (
     <FormattedMessage
       id="nins.input_help_text"

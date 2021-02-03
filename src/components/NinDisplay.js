@@ -42,7 +42,10 @@ export class NinDisplay extends Component {
                 }
               </p>
               <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtIdentity}>
-                {this.props.showNinAtIdentity ? "HIDE": "SHOW" }
+                { this.props.showNinAtIdentity ? 
+                  this.props.translate("nin_hide_last_four_digits") : 
+                  this.props.translate("nin_show_last_four_digits")
+                }
               </button> 
               <EduIDButton
                 key="3"
@@ -74,7 +77,10 @@ export class NinDisplay extends Component {
                 }
               </p>
              <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtProfile}>
-                {this.props.showNinAtProfile ? "HIDE": "SHOW" }
+                { this.props.showNinAtProfile ? 
+                  this.props.translate("nin_hide_last_four_digits") : 
+                  this.props.translate("nin_show_last_four_digits")
+                }
               </button> 
             </div>
           ];
