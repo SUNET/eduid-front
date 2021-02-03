@@ -14,7 +14,7 @@ class PhoneDisplay extends Component {
       } else {
         userData = [
           <p key="0" className="display-data no-data">
-            {this.props.translate("profile.phone_display_unconfirmed_data")}
+            {this.props.phones[0].number}
           </p>,
         ];
       }
@@ -35,9 +35,7 @@ class PhoneDisplay extends Component {
         <label key="0">
           {this.props.translate("profile.phone_display_title")}
         </label>
-        {/* <div key="1" id="nin-number-container"> */}
         {userData}
-        {/* </div> */}
       </div>
     );
   }
