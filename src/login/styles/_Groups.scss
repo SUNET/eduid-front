@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 // styling for Groups section
 article {
   display: flex;
@@ -67,7 +69,6 @@ article {
 // styling for EditView
 .data-panel {
   background-color: transparent;
-  margin: 1rem 0;
   .edit-data {
     background-color: white;
     padding: 1rem;
@@ -78,7 +79,7 @@ article {
       justify-content: space-between;
       align-items: baseline;
       p {
-        font-weight: 700;
+        font-family: "ProximaNova-Bold";
       }
       button {
         background-color: transparent;
@@ -93,10 +94,10 @@ article {
     }
     nav {
       display: flex;
-      margin: 0 1rem 0 0;
       font-family: "Akkurat";
       li {
         margin-right: 1rem;
+        margin-bottom: 0.25rem;
         p {
           font-size: 1rem;
           text-decoration: underline;
@@ -114,17 +115,9 @@ article {
 // styles common for all listed data (both edit and view)
 .list-data {
   background-color: transparent;
-  margin-top: 2rem;
-  label {
-    font-size: 1rem;
-    letter-spacing: 0;
-    font-weight: unset;
-    padding: 0 0 0.625rem 0.375rem;
-    margin-right: 0;
-    font-family: "ProximaNova-Bold";
-  }
+  margin-top: 0.5rem;
   ul {
-    margin: 0 0 1rem 0;
+    margin: 0;
   }
   li {
     padding: 0 0.375rem;
@@ -135,9 +128,6 @@ article {
       font-size: 1.5rem;
       font-family: "ProximaNova-Light";
     }
-  }
-  &.invites {
-    margin-right: 4.5625rem;
   }
 }
 
@@ -221,22 +211,6 @@ article {
   }
 }
 
-// adds styling inputs on the white edit box
-.invite-email {
-  input {
-    background: #f4f4f4;
-  }
-  form {
-    margin-top: 0;
-  }
-  label {
-    font-size: 1rem;
-    letter-spacing: 0;
-    font-weight: unset;
-    margin-left: 0;
-  }
-}
-
 .open-group {
   margin: 0 0 0 1rem;
   label {
@@ -246,31 +220,106 @@ article {
 
 .list-grid {
   display: grid;
-  grid-template-columns:
-    1fr calc(0.5rem + 48px + 0.5rem) calc(0.5rem + 68px + 0.5rem)
-    3rem;
+  &#four-columns {
+    grid-template-columns:
+      1fr calc(0.5rem + 48px + 0.5rem) calc(0.5rem + 68px + 0.5rem)
+      3rem;
+  }
+  &#three-columns {
+    grid-template-columns: 1fr calc(0.5rem + 48px + 0.5rem) calc(
+        0.5rem + 68px + 0.5rem
+      );
+  }
   .hide-overflow {
     white-space: nowrap;
     overflow: hidden;
+  }
+  form {
+    flex-direction: row;
+    margin-top: 0;
   }
   .list-cell {
     display: flex;
     align-items: center;
     justify-content: center;
-    .invite-email label,
-    label {
-      font-size: 1rem;
-      letter-spacing: 0;
-      font-weight: unset;
-      margin-left: 0;
-    }
-    label,
-    p {
-      padding: 0 0 0.625rem 0;
-    }
     &.left-align {
       justify-content: flex-start;
     }
+  }
+}
+
+.create-invite,
+.list-cell {
+  label {
+    font-size: 1rem;
+    letter-spacing: 0;
+    font-weight: unset;
+    margin-left: 0;
+  }
+}
+.invites {
+  .title p {
+    padding: 0;
+  }
+}
+
+.create-invite {
+  .input-label-helptext-container {
+    margin-bottom: 0.75rem;
+    .help-block {
+      padding-bottom: 0;
+      line-height: 1;
+    }
+    label {
+      padding: 0;
+    }
+  }
+  .small.form-text,
+  small.form-text {
+    line-height: 1;
+  }
+  #emailsview-form,
+  #create-invite-form {
+    margin-top: 0;
+  }
+  #emails-form {
+    input {
+      background: #f4f4f4;
+      margin-bottom: 0.25rem;
+    }
+  }
+  .invite-role {
+    margin-top: 0.75rem;
+    .checkbox-wrapper {
+      display: flex;
+      flex-direction: column;
+      .checkbox-label {
+        display: flex;
+        align-items: baseline;
+      }
+      label {
+        margin-right: 0.5rem;
+        min-height: 1rem;
+        min-width: 1rem;
+        flex-direction: row;
+        border: solid 2px $orange-highlight;
+        &.checked {
+          background: $orange-highlight;
+        }
+      }
+      input[type="checkbox"] {
+        display: none;
+      }
+      p {
+        padding: 0;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+  .settings-button {
+    width: fit-content;
+    align-self: center;
+    margin-bottom: 1rem;
   }
 }
 

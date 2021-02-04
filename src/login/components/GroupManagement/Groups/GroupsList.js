@@ -1,11 +1,11 @@
 import React from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import GroupListItem from "./GroupListItem";
 
 const GroupsList = (props) => {
   return (
     <div className="view-data">
-      <div className="list-grid">
+      <div className="list-grid" id="four-columns">
         <div className="list-cell"></div>
         <div className="list-cell">
           <label>Owner</label>
@@ -28,6 +28,6 @@ const GroupsList = (props) => {
   );
 };
 
-GroupsList.propTypes = {};
+// GroupsList.propTypes = {};
 
-export default i18n(GroupsList);
+export default InjectIntl(GroupsList);

@@ -57,6 +57,6 @@ class GroupParent extends Component {
   }
 }
 
-GroupParent.propTypes = {};
+// GroupParent.propTypes = {};
 
 export default InjectIntl(GroupParent);

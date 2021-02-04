@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
 
 const EditGroup = (props) => {
@@ -34,6 +34,6 @@ const EditGroup = (props) => {
   );
 };
 
-EditGroup.propTypes = {};
+// EditGroup.propTypes = {};
 
-export default i18n(EditGroup);
+export default InjectIntl(EditGroup);
