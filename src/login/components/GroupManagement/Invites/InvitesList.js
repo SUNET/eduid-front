@@ -11,9 +11,7 @@ class InvitesList extends Component {
     let { groupId, membersList } = this.props;
     return (
       <div className="invites-list">
-        <div className="title">
-          <p>Sent invites</p>
-        </div>
+        <h3>Sent invites</h3>
         <div className="list-data invites">
           <div className="list-grid" id="three-columns">
             <div className="list-cell left-align">

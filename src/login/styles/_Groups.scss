@@ -265,9 +265,18 @@ article {
     margin-left: 0;
   }
 }
-.invites {
-  .title p {
-    padding: 0;
+
+.edit-data {
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin: 0;
+    font-family: "ProximaNova-Bold";
+  }
+  .invites .title {
+    p {
+      padding: 0;
+    }
   }
 }
 
