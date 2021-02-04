@@ -1,4 +1,5 @@
-export const CREATE_INVITE = "CREATE_INVITE";
+export const CREATE_INVITE_MEMBER = "CREATE_INVITE_MEMBER";
+export const CREATE_INVITE_OWNER = "CREATE_INVITE_OWNER";
 
 //returned from API in response
 export const POST_GROUP_INVITE_INVITES_CREATE_SUCCESS =
@@ -6,13 +7,23 @@ export const POST_GROUP_INVITE_INVITES_CREATE_SUCCESS =
 export const POST_GROUP_INVITE_INVITES_CREATE_FAIL =
   "POST_GROUP_INVITE_INVITES_CREATE_FAIL";
 
-// Create new invites
-export const createInvite = (inviteEmail, groupId) => ({
-  type: CREATE_INVITE,
+//Create new invite for member
+export const createInviteMember = (groupId, inviteEmail) => ({
+  type: CREATE_INVITE_MEMBER,
   payload: {
     group_identifier: groupId,
     email_address: inviteEmail,
     role: "member",
+  },
+});
+
+// Create new invite for owner
+export const createInviteOwner = (groupId, inviteEmail) => ({
+  type: CREATE_INVITE_OWNER,
+  payload: {
+    group_identifier: groupId,
+    email_address: inviteEmail,
+    role: "owner",
   },
 });
 

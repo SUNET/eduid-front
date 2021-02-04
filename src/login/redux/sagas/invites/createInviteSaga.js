@@ -1,7 +1,6 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import * as actions from "../../actions/createInviteActions";
-import * as getOutgoingInvitesActions from "../../actions/getOutgoingInvitesActions";
 import { putCsrfToken } from "../../../../sagas/common";
 
 export function* createInviteSaga(action) {
@@ -16,7 +15,7 @@ export function* createInviteSaga(action) {
     };
     const createInviteReponse = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(createInviteReponse));
-    yield put(getOutgoingInvitesActions.getAllOutgoingInvites())
+    yield put(createInviteReponse);
   } catch (error) {
     yield put(actions.createInviteFail(error.toString()));
   }
