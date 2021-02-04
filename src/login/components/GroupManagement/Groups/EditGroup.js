@@ -29,8 +29,8 @@ const EditGroup = (props) => {
 
 const EditGroupNav = ({ parentId, setNavParent }) => {
   const navContent = [
-    { invites: "Invite" },
-    { memberships: "Membership" },
+    { invite: "Invite" },
+    { membership: "Membership" },
     { delete: "Delete" },
   ];
   return (
