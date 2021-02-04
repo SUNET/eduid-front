@@ -1,15 +1,15 @@
 import React from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import EduIDButton from "../../../../components/EduIDButton";
 
-const DeleteGroup = (props) => {
+const DeleteGroup = () => {
   return (
     <div className="delete-group">
-      <div className="invites">
-        <div className="edit-invite">
-            <h3>Delete group</h3>
-          <p>Delete Change membership of those who have joined your group.</p>
-        </div>
-      </div>
+      <h3>Delete your group</h3>
+      <p>Deleting the group will permanently remove it from all its users.</p>
+      <EduIDButton type="submit" className="settings-button" disabled={false}>
+        Delete group
+      </EduIDButton>
     </div>
   );
 };

@@ -278,6 +278,16 @@ article {
       padding: 0;
     }
   }
+  .settings-button {
+    width: fit-content;
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+  .delete-group,
+  .edit-invite {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .create-invite {
