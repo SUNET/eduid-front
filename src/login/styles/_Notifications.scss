@@ -43,6 +43,24 @@
   }
 }
 
+.notification-dot {
+  width: 12px;
+  height: 12px;
+  position:relative;
+  background-color: $orange-highlight;
+  border-radius: 50%;
+}
+.notification-dot-inner{
+  background-color:$orange-highlight;
+  border: solid 1px $light-gray;
+  top: 10%; 
+  left:10%;
+  width:80%; /* of the notification-dot */
+  height:80%; /* of the notification-dot */
+  position: absolute;
+  border-radius: 50%;
+}
+
 @media (max-width: 823px) {
   .alert.alert-dismissible {
     & span {

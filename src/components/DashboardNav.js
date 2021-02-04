@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
+import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 class DashboardNav extends Component {
@@ -15,9 +16,11 @@ class DashboardNav extends Component {
             activeClassName="active"
             to={`/profile/verify-identity/`}
           >
+            <NotificationTip {...this.props}/>
             <li>{this.props.translate("dashboard_nav.identity")}</li>
           </NavLink>
           <NavLink activeClassName="active" to={`/profile/settings/`}>
+            <NotificationTip {...this.props}/>
             <li>{this.props.translate("dashboard_nav.settings")}</li>
           </NavLink>
           <NavLink
