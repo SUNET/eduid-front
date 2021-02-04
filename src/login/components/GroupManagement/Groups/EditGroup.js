@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
+import DeleteGroup from "./DeleteGroup";
+import EditInvite from "../Invites/EditInvite";
 
 const EditGroup = (props) => {
   const { group } = props;
@@ -9,7 +11,7 @@ const EditGroup = (props) => {
   return (
     <div className="edit-data">
       <div className="title">
-        <p>Edit your group {display_name}</p>
+        <p>Edit {display_name}</p>
         <button
           className="save-button"
           onClick={() => {
@@ -19,12 +21,8 @@ const EditGroup = (props) => {
           save
         </button>
       </div>
-      <EditGroupNav
-        parentId={parentId}
-        setNavParent={setNavParent}
-        {...props}
-      />
-      <EditGroupParent parentId={parentId} {...props} />
+      <EditGroupNav parentId={parentId} setNavParent={setNavParent} />
+      <EditGroupParent parentId={parentId} group={group} />
     </div>
   );
 };
@@ -32,7 +30,7 @@ const EditGroup = (props) => {
 const EditGroupNav = ({ parentId, setNavParent }) => {
   const navContent = [
     { invites: "Invites" },
-    { people: "People" },
+    { memberships: "Memberships" },
     { delete: "Delete" },
   ];
   return (
@@ -55,10 +53,10 @@ const EditGroupNav = ({ parentId, setNavParent }) => {
 const EditGroupParent = ({ parentId, group }) => {
   if (parentId === "invites") {
     return <InvitesParent group={group} />;
-  } else if (parentId === "people") {
-    return <p>this is people section of Nav</p>;
+  } else if (parentId === "memberships") {
+    return <EditInvite group={group} />;
   } else if (parentId === "delete") {
-    return <p>this is Delete section of Nav</p>;
+    return <DeleteGroup group={group} />;
   }
 };
 
