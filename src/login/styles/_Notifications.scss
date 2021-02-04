@@ -49,6 +49,7 @@
   position:relative;
   background-color: $orange-highlight;
   border-radius: 50%;
+  margin-top: -1rem;
 }
 .notification-dot-inner{
   background-color:$orange-highlight;
@@ -60,6 +61,52 @@
   position: absolute;
   border-radius: 50%;
 }
+
+/* Wrapping */
+.SpeechBubbleTip-Wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+/* Absolute positioning */
+.SpeechBubbleTip {
+  position: absolute;
+  border-radius: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px;
+  color: $white;
+  background: $black;
+  font-size: 14px;
+  font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;;
+  line-height: 1;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+/* CSS border triangles */
+.SpeechBubbleTip::before {
+  content: " ";
+  left: 50%;
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-width: 6px;
+  margin-left: calc(6px * -1);
+}
+
+/* Absolute positioning */
+.SpeechBubbleTip.top {
+  top: calc(50px * -1);
+}
+/* CSS border triangles */
+.SpeechBubbleTip.top::before {
+  top: 100%;
+  border-top-color: $black;
+}
+
 
 @media (max-width: 823px) {
   .alert.alert-dismissible {

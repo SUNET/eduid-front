@@ -16,12 +16,16 @@ class DashboardNav extends Component {
             activeClassName="active"
             to={`/profile/verify-identity/`}
           >
-            <NotificationTip {...this.props}/>
-            <li>{this.props.translate("dashboard_nav.identity")}</li>
+            <li>
+              {this.props.translate("dashboard_nav.identity")}
+              <NotificationTip {...this.props}/>
+            </li>
           </NavLink>
           <NavLink activeClassName="active" to={`/profile/settings/`}>
-            <NotificationTip {...this.props}/>
-            <li>{this.props.translate("dashboard_nav.settings")}</li>
+            <li>
+              {this.props.translate("dashboard_nav.settings")}
+              <NotificationTip {...this.props}/>
+            </li>
           </NavLink>
           <NavLink
             activeClassName="active"
