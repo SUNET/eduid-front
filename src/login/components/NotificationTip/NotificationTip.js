@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const SpeechBubbleTip = (props) => {
     let timeout;
@@ -18,7 +19,7 @@ const SpeechBubbleTip = (props) => {
   
     return (
       <div
-        className="SpeechBubbleTip-Wrapper"
+        className={props.nins !== undefined  && props.nins[0] ? "SpeechBubbleTip-Wrapper" :  "SpeechBubbleTip-Wrapper hide"}
         onMouseEnter={showTip}
         onMouseLeave={hideTip}
       >
@@ -33,9 +34,10 @@ const SpeechBubbleTip = (props) => {
   };
 
 
-function NotificationTip(props) {
+function NotificationTip() {
+  const nins = useSelector(state => state.nins.nins)
     return (
-        <SpeechBubbleTip content={props.nin} direction="top">
+        <SpeechBubbleTip nins={nins} direction="top">
             <div className="notification-dot">
                 <div className="notification-dot-inner" /> 
             </div>

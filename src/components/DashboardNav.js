@@ -18,13 +18,13 @@ class DashboardNav extends Component {
           >
             <li>
               {this.props.translate("dashboard_nav.identity")}
-              <NotificationTip {...this.props}/>
+              <NotificationTip />
             </li>
           </NavLink>
           <NavLink activeClassName="active" to={`/profile/settings/`}>
             <li>
               {this.props.translate("dashboard_nav.settings")}
-              <NotificationTip {...this.props}/>
+              <NotificationTip />
             </li>
           </NavLink>
           <NavLink

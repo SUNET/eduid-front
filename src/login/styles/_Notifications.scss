@@ -68,6 +68,10 @@
   position: relative;
 }
 
+.SpeechBubbleTip-Wrapper.hide{
+  display: none;
+}
+
 /* Absolute positioning */
 .SpeechBubbleTip {
   position: absolute;
