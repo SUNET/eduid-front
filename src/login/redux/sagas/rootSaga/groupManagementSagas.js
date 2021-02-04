@@ -1,4 +1,4 @@
-import { takeLatest } from "redux-saga/effects";
+import { takeLatest, takeEvery } from "redux-saga/effects";
 import * as allDataActions from "../../actions/getAllGroupMgmtDataActions";
 import * as createGroupActions from "../../actions/createGroupActions";
 import * as createInviteActions from "../../actions/createInviteActions";
@@ -12,8 +12,8 @@ import { getAllOutgoingInvitesSaga } from "../invites/getAllOutgoingInvitesSaga"
 const groupsSagas = [
   takeLatest(allDataActions.GET_ALL_DATA, getAllDataSaga),
   takeLatest(createGroupActions.POST_CREATE_GROUP, createGroupSaga),
-  // cretaion of an invite leads to req for all outgoing invites
-  takeLatest(createInviteActions.CREATE_INVITE, createInviteSaga),
+  takeEvery(createInviteActions.CREATE_INVITE_MEMBER, createInviteSaga),
+  takeEvery(createInviteActions.CREATE_INVITE_OWNER, createInviteSaga),
   takeLatest(
     getOutgoingInvitesActions.GET_ALL_OUTGOING_INVITES,
     getAllOutgoingInvitesSaga

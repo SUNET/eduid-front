@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 export const RenderOwnerList = (props) => {
   let owners = props.group.owners;
@@ -61,7 +61,7 @@ class GroupListItem extends Component {
           this.toggleGroupOpenClosed();
         }}
       >
-        <div className="list-grid">
+        <div className="list-grid" id="four-columns">
           <div className="title hide-overflow list-cell">
             <div className="element-pair">
               <button
@@ -102,4 +102,4 @@ class GroupListItem extends Component {
 
 GroupListItem.propTypes = {};
 
-export default i18n(GroupListItem);
+export default InjectIntl(GroupListItem);

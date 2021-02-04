@@ -1,33 +1,49 @@
-import React, { Component, Fragment } from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
-import EmailForm from "../EmailForm";
+import React, { Component } from "react";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import CreateInviteForm from "./CreateInviteForm.js";
 
 class CreateInvite extends Component {
-  handleInviteEmailAddress = (values) => {
-    let emailValue = values;
-    let groupId = this.props.groupId;
-    this.props.createInvite(emailValue, groupId);
+  handleCreateInvite = (e) => {
+    e.preventDefault();
+    const {
+      groupId,
+      inviteEmail,
+      inviteRoles,
+      createInviteMember,
+      createInviteOwner,
+    } = this.props;
+    // endpoint takes one role per invite
+    if (inviteRoles.length > 1) {
+      createInviteMember(groupId, inviteEmail);
+      createInviteOwner(groupId, inviteEmail);
+    } else {
+      if (inviteRoles.includes("member")) {
+        createInviteMember(groupId, inviteEmail);
+      } else if (inviteRoles.includes("owner")) {
+        createInviteOwner(groupId, inviteEmail);
+      }
+    }
   };
 
   render() {
     return (
-      <Fragment>
+      <div className="create-invite">
         <div className="title">
           <p>Invite people to your group</p>
         </div>
         <p>
-          You can invite people to a group via their email address. All invites
-          will be sent to members, but you can upgrade specific individials to
-          fellow admins.
+          Add an email address and set a membership to invite anyone to join
+          your group.
         </p>
-        <div className="invite-email">
-          <EmailForm onSubmit={this.handleInviteEmailAddress} />
-        </div>
-      </Fragment>
+        <CreateInviteForm
+          {...this.props}
+          handleSubmit={this.handleCreateInvite}
+        />
+      </div>
     );
   }
 }
 
-CreateInvite.propTypes = {};
+// CreateInvite.propTypes = {};
 
-export default i18n(CreateInvite);
+export default InjectIntl(CreateInvite);

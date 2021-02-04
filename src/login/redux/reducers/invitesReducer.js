@@ -11,11 +11,12 @@ let invitesDataReducer = (state = invitesData, action) => {
     case createInviteActions.POST_GROUP_INVITE_INVITES_CREATE_SUCCESS:
       return {
         ...state,
+        invitesFromMe: [...action.payload.outgoing],
       };
     case getOutgoingInvitesActions.GET_GROUP_INVITE_INVITES_OUTGOING_SUCCESS:
       return {
         ...state,
-        invitesFromMe: action.payload.outgoing,
+        invitesFromMe: [...action.payload.outgoing],
       };
     default:
       return state;
