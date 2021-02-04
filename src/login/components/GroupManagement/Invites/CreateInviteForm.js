@@ -50,6 +50,7 @@ CreateInviteForm = connect(() => ({
     inviteEmail: { email: "" },
     inviteRoles: { member: true, owner: false },
   },
+  destroyOnUnmount: false,
 }))(CreateInviteForm);
 
 // CreateInviteForm.propTypes = {};
