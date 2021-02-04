@@ -61,11 +61,14 @@
   flex-direction: column;
   .display-nin-show-hide{
     display: flex;
+    button {
+      margin-top: 6px;
+    }
   }
   & .data-with-delete {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     & p {
       font-size: 2.25rem;
       font-family: "ProximaNova-Regular";
