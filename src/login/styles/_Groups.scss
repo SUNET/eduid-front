@@ -95,13 +95,21 @@ article {
     nav {
       display: flex;
       font-family: "Akkurat";
+      margin-bottom: 1rem;
       li {
         margin-right: 1rem;
         margin-bottom: 0.25rem;
         p {
           font-size: 1rem;
-          text-decoration: underline;
-          color: #ff4500;
+          color: #161616;
+          padding: 0;
+          line-height: 1;
+          border-bottom: #161616 solid 1px;
+          cursor: pointer;
+          &.active {
+            color: $orange-highlight;
+            border-bottom: transparent solid 1px;
+          }
         }
       }
     }
