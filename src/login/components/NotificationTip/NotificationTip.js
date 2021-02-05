@@ -18,13 +18,13 @@ const SpeechBubbleTip = (props) => {
 
   return (
     <div
-      className="SpeechBubbleTip-Wrapper"
+      className={`speech-bubbletip-wrapper ${props.className}`}
       onMouseEnter={showTip}
       onMouseLeave={hideTip}
     >
       {props.children}
       {active && (
-        <div className={`SpeechBubbleTip ${props.direction || "top"}`}>
+        <div className={`speech-bubbletip ${props.direction || "top"}`}>
           {props.content}
         </div>
       )}
@@ -35,7 +35,7 @@ const SpeechBubbleTip = (props) => {
 
 function NotificationTip(props) {
   return (
-    <SpeechBubbleTip content={props.content} direction="top">
+    <SpeechBubbleTip {...props} content={props.content} direction="top">
         <div className="notification-dot">
             <div className="notification-dot-inner" /> 
         </div>
