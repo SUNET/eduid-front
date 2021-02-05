@@ -376,6 +376,22 @@
     "defaultMessage": "Advanced settings"
   },
   {
+    "id": "dashboard_nav.identity-verify-freja",
+    "defaultMessage": "You can verify with a digital ID-card"
+  },
+  {
+    "id": "dashboard_nav.identity-verify-post-freja",
+    "defaultMessage": "You can verify by post or with a digital ID-card"
+  },
+  {
+    "id": "dashboard_nav.identity-verify-post-phone-freja",
+    "defaultMessage": "You can verify by post, phone or with a digital ID-card"
+  },
+  {
+    "id": "dashboard_nav.settings-confirm-phone",
+    "defaultMessage": "Confirm your number to verify your id by phone"
+  },
+  {
     "id": "dashboard_nav.back",
     "defaultMessage": "Back"
   },

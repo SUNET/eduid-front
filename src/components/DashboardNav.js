@@ -20,11 +20,15 @@ function DashboardNav(props) {
   }, [dispatch]);
 
   let tipsAtIdentity = "";
-  if(nins.length > 0){
-    tipsAtIdentity = <NotificationTip className={"show"} content={"you can verify by post"}/>;
+  if(!nins.length){
+    tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-freja")}/>;
+  }
+  else if(nins.length > 0){
+    tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-post-freja")}/>;
     if(phones.length > 0){
-      if(phones[0].verified)
-      tipsAtIdentity = <NotificationTip className={"show"} content={"you can verify by post, phone"}/>;
+      if(phones[0].verified && phones[0].number.includes("+46")){
+        tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-post-phone-freja")}/>;
+      }
     }
   }else null;
 
@@ -32,7 +36,7 @@ function DashboardNav(props) {
   if(nins.length > 0){
     if(phones.length > 0){
       if(!phones[0].verified)
-      tipsAtSettings = <NotificationTip className={"show"} content={"Confirm your number to verify your id by phone "}/>;
+      tipsAtSettings = <NotificationTip className={"show"} content={props.translate("dashboard_nav.settings-confirm-phone")}/>;
     }
   }else null;
 
