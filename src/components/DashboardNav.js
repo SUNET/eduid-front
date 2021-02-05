@@ -3,29 +3,39 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, withRouter } from "react-router-dom";
 import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import * as actions from "../actions/Nins";
+import * as ninActions from "../actions/Nins";
+import * as mobileActions from "../actions/Mobile";
 
 function DashboardNav(props) {
   const nins = useSelector(state => state.nins.nins);
   const phones =  useSelector(state => state.phones.phones);
-
   const dispatch = useDispatch()
 
   useEffect(() => { 
-    dispatch(actions.getNins())
-    console.log("[dispatch]", props)
- }, [dispatch]);
+    dispatch(ninActions.getNins());
+  }, [dispatch]);
+
+  useEffect(() => { 
+    dispatch(mobileActions.getMobiles());
+  }, [dispatch]);
+
   let tipsAtIdentity = "";
-  console.log('nins',nins)
+  if(nins.length > 0){
+    tipsAtIdentity = <NotificationTip className={"show"} content={"you can verify by post"}/>;
+    if(phones.length > 0){
+      if(phones[0].verified)
+      tipsAtIdentity = <NotificationTip className={"show"} content={"you can verify by post, phone"}/>;
+    }
+  }else null;
 
-  if(nins !== undefined  && nins[0]){
-    tipsAtIdentity = <NotificationTip content={"you can verify by post"}/>
-    }else if(phones !== undefined  && phones[0]){
-      tipsAtIdentity =  <NotificationTip content={"you can verify by post, by phone"}/>
-    }else if(nins === undefined  && !nins[0]){
-      tipsAtIdentity =  <div/>}else null;
+  let tipsAtSettings = "";
+  if(nins.length > 0){
+    if(phones.length > 0){
+      if(!phones[0].verified)
+      tipsAtSettings = <NotificationTip className={"show"} content={"Confirm your number to verify your id by phone "}/>;
+    }
+  }else null;
 
-  
   return (
     <nav id="dashboard-nav">
       <ul>
@@ -45,6 +55,7 @@ function DashboardNav(props) {
         <NavLink activeClassName="active" to={`/profile/settings/`}>
           <li>
             {props.translate("dashboard_nav.settings")}
+            {tipsAtSettings}
           </li>
         </NavLink>
         <NavLink
