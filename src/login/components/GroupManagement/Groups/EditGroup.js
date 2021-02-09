@@ -7,7 +7,7 @@ import EditInvite from "../Invites/EditInvite";
 const EditGroup = (props) => {
   const { group } = props;
   const { display_name } = props.group;
-  const [parentId, setNavParent] = useState("invites");
+  const [parentId, setNavParent] = useState("invite");
   return (
     <div className="edit-data">
       <div className="title">
@@ -51,9 +51,9 @@ const EditGroupNav = ({ parentId, setNavParent }) => {
 };
 
 const EditGroupParent = ({ parentId, group }) => {
-  if (parentId === "invites") {
+  if (parentId === "invite") {
     return <InvitesParent group={group} />;
-  } else if (parentId === "memberships") {
+  } else if (parentId === "membership") {
     return <EditInvite />;
   } else if (parentId === "delete") {
     return <DeleteGroup />;
