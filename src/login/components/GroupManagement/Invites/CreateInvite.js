@@ -28,9 +28,7 @@ class CreateInvite extends Component {
   render() {
     return (
       <div className="create-invite">
-        <div className="title">
-          <p>Invite people to your group</p>
-        </div>
+        <h3>Invite people to your group</h3>
         <p>
           Add an email address and set a membership to invite anyone to join
           your group.
