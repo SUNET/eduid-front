@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, withRouter } from "react-router-dom";
 import NotificationTip from "../login/components/NotificationTip/NotificationTip";
@@ -7,9 +7,10 @@ import * as ninActions from "../actions/Nins";
 import * as mobileActions from "../actions/Mobile";
 
 function DashboardNav(props) {
+  const [active, setActive] = useState(false);
   const nins = useSelector(state => state.nins.nins);
   const phones =  useSelector(state => state.phones.phones);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => { 
     dispatch(ninActions.getNins());
@@ -36,7 +37,7 @@ function DashboardNav(props) {
   if(nins.length > 0){
     if(phones.length > 0){
       if(!phones[0].verified)
-      tipsAtSettings = <NotificationTip className={"show"} content={props.translate("dashboard_nav.settings-confirm-phone")}/>;
+      tipsAtSettings = <NotificationTip state={{active: [active, setActive]}}  className={"show"} content={props.translate("dashboard_nav.settings-confirm-phone")}/>;
     }
   }else null;
 
@@ -56,7 +57,7 @@ function DashboardNav(props) {
             {tipsAtIdentity}
           </li>
         </NavLink>
-        <NavLink activeClassName="active" to={`/profile/settings/`}>
+        <NavLink className={tipsAtSettings && active ?  "nav-settings": null} activeClassName="active" to={`/profile/settings/`}>
           <li>
             {props.translate("dashboard_nav.settings")}
             {tipsAtSettings}

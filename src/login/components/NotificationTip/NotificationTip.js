@@ -2,9 +2,14 @@
 import React, { useState } from 'react';
 
 const SpeechBubbleTip = (props) => {
-  let timeout;
-  const [active, setActive] = useState(false);
+  const {
+    active: [active, setActive]
+  } = {
+    active: useState(false),
+    ...(props.state || {})
+  };
 
+  let timeout;
   const showTip = () => {
     timeout = setTimeout(() => {
       setActive(true);
@@ -23,11 +28,13 @@ const SpeechBubbleTip = (props) => {
       onMouseLeave={hideTip}
     >
       {props.children}
-      {active && (
+      {active ? (
         <div className={`speech-bubbletip ${props.direction || "top"}`}>
           {props.content}
         </div>
-      )}
+      ): active && props.mobile ( <div className={`speech-bubbletip space ${props.direction || "top"}`}>
+      {props.content}
+    </div>)}
     </div>
   );
 };
@@ -35,10 +42,10 @@ const SpeechBubbleTip = (props) => {
 
 function NotificationTip(props) {
   return (
-    <SpeechBubbleTip {...props} content={props.content} direction="top">
-        <div className="notification-dot">
-            <div className="notification-dot-inner" /> 
-        </div>
+    <SpeechBubbleTip {...props} content={props.content} direction={"top"}>
+      <div className="notification-dot">
+        <div className="notification-dot-inner" /> 
+      </div>
     </SpeechBubbleTip>
     )
   }
