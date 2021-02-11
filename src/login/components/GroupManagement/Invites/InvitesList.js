@@ -7,7 +7,7 @@ const InvitesList = ({ groupId, allInvitesFromMe }) => {
   let invitesForGroup = allInvitesFromMe.filter(
     (invite) => invite.group_identifier === groupId
   );
-  let invitesFromMeByRole = invitesByRole();
+  let invitesFromMeByRole = invitesByRole(invitesForGroup);
 
   return (
     <div className="invites-list">
