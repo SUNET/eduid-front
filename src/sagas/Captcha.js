@@ -23,13 +23,11 @@ export function* sendCaptcha() {
         csrf_token: state.config.csrf_token,
         tou_accepted: state.email.tou_accepted
       };
-      
     yield delay(10000);
     const resp = yield call(requestSendCaptcha, data);
     yield put(putCsrfToken(resp));
     history.push(resp.payload.next);
     delete resp.payload.next;
-    console.log('resp',resp)
     yield put(resp);
   } catch (error) {
     yield put(actions.postCaptchaFail(error.toString()));
