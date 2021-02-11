@@ -9,24 +9,15 @@ class InvitesParent extends Component {
   }
 
   render() {
-    let { group, groupsWithInvites } = this.props;
-    // use the group id to filter out only the member info for the group in edit
-    let groupIdInEdit = group.identifier;
-    let membersListsGroupInEdit = groupsWithInvites
-      .filter((group) => Object.keys(group).toString() === groupIdInEdit)
-      .map((groupInEdit) => Object.values(groupInEdit));
-    // check if memebrslist for the specific group in edit has members
-    let groupHasInvites = membersListsGroupInEdit.length > 0;
+    let { groupsWithInvites } = this.props;
+    let { identifier } = this.props.group;
+    let groupHasInvites = groupsWithInvites.includes(identifier);
+
     return (
-        <div className="invites">
-          <CreateInvite groupId={groupIdInEdit} />
-          {groupHasInvites ? (
-              <InvitesList
-                groupId={groupIdInEdit}
-                membersList={membersListsGroupInEdit}
-              />
-          ) : null}
-        </div>
+      <div className="invites">
+        <CreateInvite groupId={identifier} />
+        {groupHasInvites ? <InvitesList groupId={identifier} /> : null}
+      </div>
     );
   }
 }
