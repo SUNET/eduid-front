@@ -1,14 +1,14 @@
 import React from "react";
 import expect from "expect";
 import fetchMock from "fetch-mock";
-import { put, call } from "redux-saga/effects";
+// import { put, call } from "redux-saga/effects";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import CaptchaContainer from "containers/Captcha";
 import * as actions from "actions/Captcha";
 import captchaReducer from "reducers/Captcha";
-import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
+// import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
 
 describe("Captcha Component", () => {
     afterEach(() => {
@@ -113,42 +113,42 @@ describe("Test captcha Container", () => {
   });
 });
 
-describe("Async actions for captcha", () => {
-  it("Tests the send captcha saga", () => {
-    const state = getState({
-      config: {
-        csrf_token: "dummy-token"
-      },
-      email: {
-        email: "dummy@example.com",
-        tou_accepted: true
-      },
-      captcha: {
-        captcha_verification: "dummy response"
-      }
-    });
-    const generator = sendCaptcha();
-    let next = generator.next();
+// describe("Async actions for captcha", () => {
+//   it("Tests the send captcha saga", () => {
+//     const state = getState({
+//       config: {
+//         csrf_token: "dummy-token"
+//       },
+//       email: {
+//         email: "dummy@example.com",
+//         tou_accepted: true
+//       },
+//       captcha: {
+//         captcha_verification: "dummy response"
+//       }
+//     });
+//     const generator = sendCaptcha();
+//     let next = generator.next();
 
-    const data = {
-      email: "dummy@example.com",
-      recaptcha_response: "dummy response",
-      csrf_token: "dummy-token",
-      tou_accepted: true
-    };
-    const resp = generator.next(state);
-    expect(resp.value).toEqual(call(requestSendCaptcha, data));
+//     const data = {
+//       email: "dummy@example.com",
+//       recaptcha_response: "dummy response",
+//       csrf_token: "dummy-token",
+//       tou_accepted: true
+//     };
+//     const resp = generator.next(state);
+//     expect(resp.value).toEqual(call(requestSendCaptcha, data));
 
-    const action = {
-      type: actions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
-      payload: {
-        csrf_token: "csrf-token"
-      }
-    };
-    next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    next = generator.next();
-    delete action.payload.csrf_token;
-    expect(next.value).toEqual(put(action));
-  });
-});
+//     const action = {
+//       type: actions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
+//       payload: {
+//         csrf_token: "csrf-token"
+//       }
+//     };
+//     next = generator.next(action);
+//     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+//     next = generator.next();
+//     delete action.payload.csrf_token;
+//     expect(next.value).toEqual(put(action));
+//   });
+// });
