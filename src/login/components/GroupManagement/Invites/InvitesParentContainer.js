@@ -4,23 +4,14 @@ import * as getAllOutgoingActions from "../../../redux/actions/getOutgoingInvite
 import InvitesParent from "./InvitesParent";
 
 const mapStateToProps = (state) => {
-  let invitesArray = [];
   let groupIdsArray = [];
   if (state.invites.invitesFromMe !== undefined) {
     groupIdsArray = state.invites.invitesFromMe.map(
       (group) => group.group_identifier
     );
-    invitesArray = state.invites.invitesFromMe.map((group) => {
-      return group.member_invites.concat(group.owner_invites);
-    });
   }
-  // create new object with group_identifier (value) and memberListArray (key)
-  let groupsWithInvites = Object.assign(
-    groupIdsArray.map((groupId, i) => ({ [groupId]: invitesArray[i] }))
-  );
-
   return {
-    groupsWithInvites: groupsWithInvites,
+    groupsWithInvites: groupIdsArray,
   };
 };
 
