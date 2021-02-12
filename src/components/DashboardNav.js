@@ -64,6 +64,7 @@ function DashboardNav(props) {
           </li>
         </NavLink>
         <NavLink
+          className={tipsAtSettings && active ?  "nav-advanced-settings": null} 
           activeClassName="active"
           to={`/profile/settings/advanced-settings`}
         >
