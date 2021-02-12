@@ -126,10 +126,23 @@
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 383px) {
+  a.nav-settings,
+  a.nav-advanced-settings
+  {
+    margin-top: 2.5rem;
+  }
+}
+
 
 @media (max-width: 353px) {
   a.nav-settings
   {
     margin-top: 2.5rem;
+  }
+
+  a.nav-advanced-settings
+  {
+    margin-top: 0;
   }
 }
