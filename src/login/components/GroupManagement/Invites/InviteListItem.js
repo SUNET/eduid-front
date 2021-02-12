@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const InviteListItem = ({ invite }) => {

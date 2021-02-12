@@ -15,7 +15,7 @@ let invitesByRole = (invites) => {
   );
   // 3. create new object (roles set to false)
   let invitesByEmail = Object.assign(
-    combinedUniqueInvites.map((invite, i) => ({
+    combinedUniqueInvites.map((invite) => ({
       email: invite,
       member: false,
       owner: false,

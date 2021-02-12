@@ -1,4 +1,4 @@
-import { not } from "expect";
+import expect from "jest";
 import invitesByRole from "../../login/app_utils/helperFunctions/invitesByRole";
 
 let noInvites = [];
@@ -43,7 +43,7 @@ test("invitesByRole returns an array", () => {
   expect(Array.isArray(invitesFromMeByRole)).toEqual(true);
 });
 
-test("invitesByRole returns an array, even with empty input ", () => {
+test("invitesByRole returns an array, even with empty input", () => {
   let invitesFromMeByRole = invitesByRole(noInvites);
   expect(Array.isArray(invitesFromMeByRole)).toEqual(true);
 });
