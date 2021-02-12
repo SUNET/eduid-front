@@ -19,7 +19,7 @@ class InvitesParent extends Component {
         {groupHasInvites ? (
           <InvitesList
             groupId={identifier}
-             allInvitesFromMe={allInvitesFromMe}
+            allInvitesFromMe={allInvitesFromMe}
           />
         ) : null}
       </div>

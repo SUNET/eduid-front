@@ -26,10 +26,7 @@ const InvitesList = ({ groupId, allInvitesFromMe }) => {
         </div>
         <ul>
           {invitesFromMeByRole.map((invite, i) => (
-            <InviteListItem
-              key={i}
-              invite={invite}
-            />
+            <InviteListItem key={i} invite={invite} />
           ))}
         </ul>
       </div>

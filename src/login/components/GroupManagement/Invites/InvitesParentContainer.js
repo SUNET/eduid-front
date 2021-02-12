@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
     groupIdsArray = allInvitesFromMe.map((group) => group.group_identifier);
   }
   return {
-     allInvitesFromMe,
+    allInvitesFromMe,
     groupsWithInvites: groupIdsArray,
   };
 };
