@@ -48,9 +48,7 @@ describe("invitesByRole returns an array", () => {
     let invitesFromMeByRole = invitesByRole(noInvites);
     expect(Array.isArray(invitesFromMeByRole)).toEqual(true);
   });
-});
 
-describe("invitesByRole returns an array", () => {
   it("with only unique email addresses", () => {
     let memberInvitesLength = invites[0].member_invites.length;
     let ownerInvitesLength = invites[0].owner_invites.length;
@@ -73,7 +71,7 @@ describe("invitesByRole returns an array", () => {
     expect(invitesFromMeByRole[0].email).not.toEqual(firstUnsortedEmail);
   });
 
-it("pairing invite emails with its role/s", () => {
+  it("pairing invite emails with its role/s", () => {
     let invitesFromMeByRole = invitesByRole(invites);
     let both1Email = invitesFromMeByRole[0];
     expect(both1Email.member).toEqual(true);
