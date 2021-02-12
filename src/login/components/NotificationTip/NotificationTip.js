@@ -42,7 +42,7 @@ const SpeechBubbleTip = (props) => {
 
 function NotificationTip(props) {
   return (
-    <SpeechBubbleTip {...props} content={props.content} direction={"top"}>
+    <SpeechBubbleTip {...props} content={props.content} direction={props.direction}>
       <div className="notification-dot">
         <div className="notification-dot-inner" /> 
       </div>
