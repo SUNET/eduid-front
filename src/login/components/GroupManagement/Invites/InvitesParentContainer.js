@@ -5,12 +5,13 @@ import InvitesParent from "./InvitesParent";
 
 const mapStateToProps = (state) => {
   let groupIdsArray = [];
+  let allInvitesFromMe = [];
   if (state.invites.invitesFromMe !== undefined) {
-    groupIdsArray = state.invites.invitesFromMe.map(
-      (group) => group.group_identifier
-    );
+    allInvitesFromMe = state.invites.invitesFromMe;
+    groupIdsArray = allInvitesFromMe.map((group) => group.group_identifier);
   }
   return {
+     allInvitesFromMe,
     groupsWithInvites: groupIdsArray,
   };
 };

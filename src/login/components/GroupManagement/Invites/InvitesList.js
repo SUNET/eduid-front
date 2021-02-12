@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InviteListItem from "./InviteListItem";
-import invitesByRole from "../helperFunctions/invitesByRole";
+import invitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
 
 const InvitesList = ({ groupId, allInvitesFromMe }) => {
   let invitesForGroup = allInvitesFromMe.filter(
