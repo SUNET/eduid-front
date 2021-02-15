@@ -103,17 +103,6 @@
   left: calc(62px * -1);
 }
 
-// .speech-bubbletip.left {
-//   left: calc(150px * -1);
-// }
-
-/* CSS border triangles */
-// .speech-bubbletip.left::before {
-//   top: 100%;
-//   border-top-color: $black;
-//   left: 50%;
-// }
-
 /* CSS border triangles */
 .speech-bubbletip::before {
   top: 100%;
@@ -154,20 +143,21 @@
   @media (max-width: 432px) {
     .speech-bubbletip.left{
       width: 270px;
-      top: -50px;
       white-space: normal;
     }
     .speech-bubbletip.left.en {
+      top: -50px;
       left: 55px;
     }
     .speech-bubbletip.left.sv {
       left: 5px;
+      top: -60px;
     }
     .speech-bubbletip.left.en::before {
       left: 11%;
     }
     .speech-bubbletip.left.sv::before {
-      left: 48%;
+      left: 30%;
     }
   }
 
