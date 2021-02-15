@@ -29,10 +29,10 @@ const SpeechBubbleTip = (props) => {
     >
       {props.children}
       {active ? (
-        <div className={`speech-bubbletip ${props.direction || "top"}`}>
+        <div className={`speech-bubbletip ${props.position || "identity"}`}>
           {props.content}
         </div>
-      ): active && props.mobile ( <div className={`speech-bubbletip space ${props.direction || "top"}`}>
+      ): active && props.mobile ( <div className={`speech-bubbletip space ${props.position || "identity"}`}>
       {props.content}
     </div>)}
     </div>
@@ -42,7 +42,7 @@ const SpeechBubbleTip = (props) => {
 
 function NotificationTip(props) {
   return (
-    <SpeechBubbleTip {...props} content={props.content} direction={props.direction}>
+    <SpeechBubbleTip {...props} content={props.content} position={props.position}>
       <div className="notification-dot">
         <div className="notification-dot-inner" /> 
       </div>

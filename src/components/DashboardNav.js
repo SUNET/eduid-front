@@ -31,15 +31,21 @@ function DashboardNav(props) {
         tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-post-phone-freja")}/>;
       }
     }
-  }else null;
+  } else null;
 
   let tipsAtSettings = "";
   if(nins.length > 0){
     if(phones.length > 0){
       if(!phones[0].verified)
-      tipsAtSettings = <NotificationTip direction={`left ${props.intl.locale}`} state={{active: [active, setActive]}}  className={"show"} content={props.translate("dashboard_nav.settings-confirm-phone")}/>;
+        tipsAtSettings = 
+          <NotificationTip 
+            position={`settings ${props.intl.locale}`} 
+            state={{active: [active, setActive]}}  
+            className={"show"} 
+            content={props.translate("dashboard_nav.settings-confirm-phone")}
+          />;
     }
-  }else null;
+  } else null;
 
   return (
     <nav id="dashboard-nav">
@@ -57,7 +63,10 @@ function DashboardNav(props) {
             {tipsAtIdentity}
           </li>
         </NavLink>
-        <NavLink className={tipsAtSettings && active ?  `nav-settings ${props.intl.locale}`: null} activeClassName="active" to={`/profile/settings/`}>
+        <NavLink 
+          className={tipsAtSettings && active ?  `nav-settings ${props.intl.locale}`: null} 
+          activeClassName="active" to={`/profile/settings/`}
+        >
           <li>
             {props.translate("dashboard_nav.settings")}
             {tipsAtSettings}
