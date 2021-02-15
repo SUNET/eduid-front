@@ -55,9 +55,9 @@
   background-color:$orange-highlight;
   border: solid 1px $light-gray;
   top: 10%; 
-  left:10%;
-  width:80%; /* of the notification-dot */
-  height:80%; /* of the notification-dot */
+  left: 10%;
+  width: 80%; /* of the notification-dot */
+  height: 80%; /* of the notification-dot */
   position: absolute;
   border-radius: 50%;
 }
@@ -78,7 +78,7 @@
   padding: 6px;
   color: $white;
   background: $black;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;;
   line-height: 1;
   z-index: 100;
@@ -98,28 +98,27 @@
 }
 
 /* Absolute positioning */
-.speech-bubbletip.top {
+.speech-bubbletip {
   top: calc(50px * -1);
-  left: calc(50px * -1);
+  left: calc(62px * -1);
 }
 
-.speech-bubbletip.left {
-  top: calc(50px * -1);
-  left: calc(150px * -1);
-}
+// .speech-bubbletip.left {
+//   left: calc(150px * -1);
+// }
 
 /* CSS border triangles */
-.speech-bubbletip.left::before {
-  top: 100%;
-  border-top-color: $black;
-  left: 73%;
-}
+// .speech-bubbletip.left::before {
+//   top: 100%;
+//   border-top-color: $black;
+//   left: 50%;
+// }
 
 /* CSS border triangles */
-.speech-bubbletip.top::before {
+.speech-bubbletip::before {
   top: 100%;
   border-top-color: $black;
-  left: 50%;
+  left: 55%;
 }
 
 @media (max-width: 823px) {
@@ -152,18 +151,34 @@
   }
 }
 
-
-@media (max-width: 432px) {
-  .speech-bubbletip.top {
-    white-space: normal;
-    transform: translate(-50%,-50%);
-    width: 270px;
+  @media (max-width: 432px) {
+    .speech-bubbletip.left{
+      width: 270px;
+      top: -50px;
+      white-space: normal;
+    }
+    .speech-bubbletip.left.en {
+      left: 55px;
+    }
+    .speech-bubbletip.left.sv {
+      left: 5px;
+    }
+    .speech-bubbletip.left.en::before {
+      left: 11%;
+    }
+    .speech-bubbletip.left.sv::before {
+      left: 48%;
+    }
   }
 
-  .speech-bubbletip.left {
-    white-space: normal;
-    transform: translate(-50%,-50%);
-    width: 270px;
-    left: 10%;
+  @media (min-width: 384px) {
+    .speech-bubbletip.left.en{
+      left: -70px;
+    }
+    .speech-bubbletip.left.en::before {
+      left: 57%;
+    }
   }
-}
+
+ 
+
