@@ -9,7 +9,6 @@ class Captcha extends Component {
   componentWillMount() {}
 
   render() {
-    console.log(this.props.disabledButton)
     if (this.props.fetching === this.props.scriptsLoadedSuccessfully) {
       this.props.setFetching(!this.props.scriptsLoadedSuccessfully);
     }
