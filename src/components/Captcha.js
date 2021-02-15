@@ -9,6 +9,7 @@ class Captcha extends Component {
   componentWillMount() {}
 
   render() {
+    console.log(this.props.disabledButton)
     if (this.props.fetching === this.props.scriptsLoadedSuccessfully) {
       this.props.setFetching(!this.props.scriptsLoadedSuccessfully);
     }
@@ -32,6 +33,7 @@ class Captcha extends Component {
               className="settings-button captcha"
               onClick={this.props.sendCaptcha}
               id="send-captcha-button"
+              disabled={this.props.disabledButton}
             >
               {this.props.translate("captcha.submit")}
             </EduIDButton>
