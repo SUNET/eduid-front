@@ -126,22 +126,29 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 432px) {
+  a.nav-settings.sv {
+    margin-top: 2rem;
+  }
+}
+
 @media (max-width: 383px) {
-  a.nav-settings,
-  a.nav-advanced-settings
+  a.nav-settings.en,
+  a.nav-advanced-settings.en
   {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
   }
 }
 
 
 @media (max-width: 353px) {
-  a.nav-settings
+  a.nav-settings.en
   {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
   }
 
-  a.nav-advanced-settings
+  a.nav-advanced-settings.en
   {
     margin-top: 0;
   }

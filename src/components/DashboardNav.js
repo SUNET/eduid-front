@@ -57,14 +57,14 @@ function DashboardNav(props) {
             {tipsAtIdentity}
           </li>
         </NavLink>
-        <NavLink className={tipsAtSettings && active ?  "nav-settings": null} activeClassName="active" to={`/profile/settings/`}>
+        <NavLink className={tipsAtSettings && active ?  `nav-settings ${props.intl.locale}`: null} activeClassName="active" to={`/profile/settings/`}>
           <li>
             {props.translate("dashboard_nav.settings")}
             {tipsAtSettings}
           </li>
         </NavLink>
         <NavLink
-          className={tipsAtSettings && active ?  "nav-advanced-settings": null} 
+          className={tipsAtSettings && active ?  `nav-advanced-settings ${props.intl.locale}`: null} 
           activeClassName="active"
           to={`/profile/settings/advanced-settings`}
         >
