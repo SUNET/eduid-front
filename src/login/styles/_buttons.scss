@@ -241,7 +241,6 @@ button.btn-link {
   button.btn {
     font-size: 0.9rem;
   }
-
   
   button.modal-button.ok-button,
   a.modal-button.ok-button,
@@ -256,5 +255,9 @@ button.btn-link {
   #add-more-button {
     width: auto;
     padding: 0;
+  }
+
+  .show-hide-button {
+    padding: 0.625rem 0.5rem;
   }
 }
