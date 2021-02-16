@@ -61,7 +61,8 @@ describe("Captcha Actions", () => {
       type: actions.POST_SIGNUP_TRYCAPTCHA_FAIL,
       error: true,
       payload: {
-        message: err
+        message: err,
+        disabledButton: false
       }
     };
     expect(actions.postCaptchaFail(err)).toEqual(expectedAction);
@@ -69,7 +70,10 @@ describe("Captcha Actions", () => {
 
   it("Should post the captcha", () => {
     const expectedAction = {
-      type: actions.POST_SIGNUP_TRYCAPTCHA
+      type: actions.POST_SIGNUP_TRYCAPTCHA,
+      payload: {
+        disabledButton: true
+      }
     };
     expect(actions.postCaptcha()).toEqual(expectedAction);
   });

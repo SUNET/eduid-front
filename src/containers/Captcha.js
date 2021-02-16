@@ -6,7 +6,8 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {
-    recaptcha_key: state.config.recaptcha_public_key
+    recaptcha_key: state.config.recaptcha_public_key,
+    disabledButton: state.captcha.disabledButton
   };
 };
 

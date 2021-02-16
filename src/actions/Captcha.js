@@ -15,7 +15,10 @@ export function verifyCaptcha(response) {
 
 export function postCaptcha() {
   return {
-    type: POST_SIGNUP_TRYCAPTCHA
+    type: POST_SIGNUP_TRYCAPTCHA,
+    payload: {
+      disabledButton: true
+    }
   };
 }
 
@@ -24,7 +27,8 @@ export function postCaptchaFail(err) {
     type: POST_SIGNUP_TRYCAPTCHA_FAIL,
     error: true,
     payload: {
-      message: err
+      message: err,
+      disabledButton: false
     }
   };
 }
