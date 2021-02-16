@@ -9,16 +9,16 @@ function DashboardNav(props) {
   const nins = useSelector(state => state.nins.nins);
   const phones =  useSelector(state => state.phones.phones);
   const selectedLanguage = props.intl.locale;
-
+  
   let tipsAtIdentity = "";
   if(!nins.length){
-    tipsAtIdentity = <NotificationTip className={"show"} length={"short"} content={props.translate("dashboard_nav.identity-verify-freja")}/>;
+    tipsAtIdentity = <NotificationTip textLength={"short"} tipText={props.translate("dashboard_nav.identity-verify-freja")}/>;
   }
   else if(nins.length){
-    tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-post-freja")}/>;
+    tipsAtIdentity = <NotificationTip tipText={props.translate("dashboard_nav.identity-verify-post-freja")}/>;
     if(phones.length){
       if(phones[0].verified && phones[0].number.includes("+46")){
-        tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-post-phone-freja")}/>;
+        tipsAtIdentity = <NotificationTip tipText={props.translate("dashboard_nav.identity-verify-post-phone-freja")}/>;
       }
     }
   } else null;
@@ -31,8 +31,7 @@ function DashboardNav(props) {
           <NotificationTip 
             position={`settings ${selectedLanguage}`} 
             state={{active: [active, setActive]}}  
-            className={"show"} 
-            content={props.translate("dashboard_nav.settings-confirm-phone")}
+            tipText={props.translate("dashboard_nav.settings-confirm-phone")}
           />;
     }
   } else null;
