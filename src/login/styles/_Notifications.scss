@@ -46,7 +46,7 @@
 .notification-dot {
   width: 12px;
   height: 12px;
-  position:relative;
+  position: relative;
   background-color: $orange-highlight;
   border-radius: 50%;
   margin-top: -1rem;
@@ -94,24 +94,27 @@
   position: absolute;
   pointer-events: none;
   border-width: 6px;
-  margin-left: 3.125rem;
 }
 
 /* Absolute positioning */
 .speech-bubbletip {
   top: calc(50px * -1);
-  left: calc(50px * -1);
+  left: calc(50% * -1);
+}
+
+.speech-bubbletip.settings.en::before {
+  left: 52%;
 }
 
 /* CSS border triangles */
 .speech-bubbletip::before {
   top: 100%;
   border-top-color: $black;
-  left: 50%;
+  left: 52%;
 }
 
 .speech-bubbletip.settings.sv::before {
-  left: 50%;
+  left: 52%;
 }
 
 @media (max-width: 823px) {
@@ -129,7 +132,12 @@
       width: calc(80% - 1.25rem);
     }
   }
-
+  .speech-bubbletip.settings.sv {
+    left: -100px;
+  }
+  .speech-bubbletip.settings.sv::before {
+    left: 74%;
+  }
 }
 
 @media (max-width: 568px) {
@@ -145,31 +153,37 @@
 }
 
 @media (max-width: 432px) {
-  .speech-bubbletip.settings{
+  .speech-bubbletip.settings,
+  .speech-bubbletip.identity {
     width: 270px;
     white-space: normal;
+    top: -65px;
   }
   .speech-bubbletip.settings.en {
-    top: -50px;
-    left: 55px;
+    left: -80px;
   }
   .speech-bubbletip.settings.sv {
     left: 5px;
-    top: -62px;
+  }
+  .speech-bubbletip.identity {
+    left: -56px;
+  }
+  .speech-bubbletip.identity::before {
+    left: 70%;
   }
   .speech-bubbletip.settings.en::before {
-    left: 11%;
+    left: 80%;
   }
   .speech-bubbletip.settings.sv::before {
-    left: 30%;
+    left: 48%;
   }
 }
 
-@media (min-width: 384px) {
+@media (max-width: 384px) {
   .speech-bubbletip.settings.en{
-    left: -70px;
+    left: 55px;
   }
   .speech-bubbletip.settings.en::before {
-    left: 57%;
+    left: 30%;
   }
 }
