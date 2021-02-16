@@ -8,14 +8,15 @@ function DashboardNav(props) {
   const [active, setActive] = useState(false);
   const nins = useSelector(state => state.nins.nins);
   const phones =  useSelector(state => state.phones.phones);
+  const selectedLanguage = props.intl.locale;
 
   let tipsAtIdentity = "";
   if(!nins.length){
     tipsAtIdentity = <NotificationTip className={"show"} length={"short"} content={props.translate("dashboard_nav.identity-verify-freja")}/>;
   }
-  else if(nins.length > 0){
+  else if(nins.length){
     tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-post-freja")}/>;
-    if(phones.length > 0){
+    if(phones.length){
       if(phones[0].verified && phones[0].number.includes("+46")){
         tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-post-phone-freja")}/>;
       }
@@ -23,12 +24,12 @@ function DashboardNav(props) {
   } else null;
 
   let tipsAtSettings = "";
-  if(nins.length > 0){
-    if(phones.length > 0){
+  if(nins.length){
+    if(phones.length){
       if(!phones[0].verified)
         tipsAtSettings = 
           <NotificationTip 
-            position={`settings ${props.intl.locale}`} 
+            position={`settings ${selectedLanguage}`} 
             state={{active: [active, setActive]}}  
             className={"show"} 
             content={props.translate("dashboard_nav.settings-confirm-phone")}
@@ -53,7 +54,7 @@ function DashboardNav(props) {
           </li>
         </NavLink>
         <NavLink 
-          className={tipsAtSettings && active ?  `nav-settings ${props.intl.locale}`: null} 
+          className={tipsAtSettings && active ?  `nav-settings ${selectedLanguage}`: null} 
           activeClassName="active" to={`/profile/settings/`}
         >
           <li>
@@ -62,7 +63,7 @@ function DashboardNav(props) {
           </li>
         </NavLink>
         <NavLink
-          className={tipsAtSettings && active ?  `nav-advanced-settings ${props.intl.locale}`: null} 
+          className={tipsAtSettings && active ?  `nav-advanced-settings ${selectedLanguage}`: null} 
           activeClassName="active"
           to={`/profile/settings/advanced-settings`}
         >
