@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, withRouter } from "react-router-dom";
 import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import * as ninActions from "../actions/Nins";
-import * as mobileActions from "../actions/Mobile";
 
 function DashboardNav(props) {
   const [active, setActive] = useState(false);
   const nins = useSelector(state => state.nins.nins);
   const phones =  useSelector(state => state.phones.phones);
-  const dispatch = useDispatch();
-
-  useEffect(() => { 
-    dispatch(ninActions.getNins());
-  }, [dispatch]);
-
-  useEffect(() => { 
-    dispatch(mobileActions.getMobiles());
-  }, [dispatch]);
 
   let tipsAtIdentity = "";
   if(!nins.length){
