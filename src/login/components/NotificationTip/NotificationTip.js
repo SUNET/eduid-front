@@ -29,7 +29,7 @@ const SpeechBubbleTip = (props) => {
     >
       {props.children}
       {active ? (
-        <div className={`speech-bubbletip ${props.position || "identity"}`}>
+        <div className={`speech-bubbletip ${props.position || "identity"} ${props.length}`}>
           {props.content}
         </div>
       ): active && props.mobile ( <div className={`speech-bubbletip space ${props.position || "identity"}`}>

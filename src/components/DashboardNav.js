@@ -22,7 +22,7 @@ function DashboardNav(props) {
 
   let tipsAtIdentity = "";
   if(!nins.length){
-    tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-freja")}/>;
+    tipsAtIdentity = <NotificationTip className={"show"} length={"short"} content={props.translate("dashboard_nav.identity-verify-freja")}/>;
   }
   else if(nins.length > 0){
     tipsAtIdentity = <NotificationTip className={"show"} content={props.translate("dashboard_nav.identity-verify-post-freja")}/>;
