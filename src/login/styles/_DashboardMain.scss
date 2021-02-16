@@ -130,6 +130,12 @@
 @media (max-width: 432px) {
   a.nav-settings.sv {
     margin-top: 2.5rem;
+    display: block;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
   }
 }
 
@@ -138,6 +144,12 @@
   a.nav-advanced-settings.en
   {
     margin-top: 2.5rem;
+    display: block;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
   }
 }
 
@@ -151,5 +163,7 @@
   a.nav-advanced-settings.en
   {
     margin-top: 0;
+    display: block;
+    transition: transform 0.5s;
   }
 }
