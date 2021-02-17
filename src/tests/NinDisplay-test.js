@@ -239,10 +239,10 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
     expect(unverifiedNumber.text()).toContain("19670110****");
   });
 
-  it("Renders a link to '/profile/verify-identity/'", () => {
+  it("Renders a show/hide button", () => {
     const { wrapper } = setupComponent();
-    const unverifiedNumber = wrapper.find("p");
-    // expect(unverifiedNumber.props().href).toBe("/profile/verify-identity/");
+    const unverifiedNumber = wrapper.find("button");
+    expect(unverifiedNumber.text()).toContain("SHOW");
   });
 });
 
