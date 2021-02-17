@@ -29,6 +29,9 @@ const SpeechBubbleTip = (props) => {
     >
       {props.children}
       {active && (
+        // props.position, where the speech bubble tip is rendering on identity or settings
+        // props.textLength, for short text styling
+        // props.tipText, text inside speech bubble
         <div className={`speech-bubbletip ${props.position || "identity"} ${props.textLength || ""}`}>
           {props.tipText}
         </div>
