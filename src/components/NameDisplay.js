@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 class NameDisplay extends Component {
   render() {
     let userData = "";
-    console.log(this.props)
     if (this.props.firstName) {
       userData = [
         <p key="0" className="display-data verified">
