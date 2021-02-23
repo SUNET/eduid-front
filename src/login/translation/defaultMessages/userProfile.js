@@ -95,27 +95,27 @@ export const userProfile = {
     />
   ),
   "dashboard_nav.identity-verify-freja": (
-    <FormattedMessage
+    <FormattedHTMLMessage
       id="dashboard_nav.identity-verify-freja"
-      defaultMessage={`You can verify with a digital ID-card`}
+      defaultMessage={`You can verify <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.identity-verify-post-freja": (
-    <FormattedMessage
+    <FormattedHTMLMessage
       id="dashboard_nav.identity-verify-post-freja"
-      defaultMessage={`You can verify by post or with a digital ID-card`}
+      defaultMessage={`You can verify <b>by post</b> or <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.identity-verify-post-phone-freja": (
-    <FormattedMessage
+    <FormattedHTMLMessage
       id="dashboard_nav.identity-verify-post-phone-freja"
-      defaultMessage={`You can verify by post, phone or with a digital ID-card`}
+      defaultMessage={`You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.settings-confirm-phone": (
-    <FormattedMessage
+    <FormattedHTMLMessage
       id="dashboard_nav.settings-confirm-phone"
-      defaultMessage={`Confirm your number to verify your id by phone`}
+      defaultMessage={`<b>Confirm your number</b> to verify your id by phone`}
     />
   ),
   "dashboard_nav.back": (
