@@ -104,17 +104,14 @@
   left: calc(50% * -1);
 }
 
-.speech-bubbletip.settings.en::before {
-  left: 52%;
-}
-
 /* CSS border triangles */
 .speech-bubbletip::before {
   top: 100%;
   border-top-color: $black;
-  left: 52%;
 }
 
+.speech-bubbletip::before,
+.speech-bubbletip.settings.en::before,
 .speech-bubbletip.settings.sv::before {
   left: 52%;
 }
