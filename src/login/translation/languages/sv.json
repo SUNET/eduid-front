@@ -73,7 +73,7 @@
   "dashboard_nav.identity-verify-post-phone-freja": "Du kan verifera <b>by post</b>, <b>telefon</b> eller <b>med digitial ID-kort</b>",
   "dashboard_nav.profile": "Profil",
   "dashboard_nav.settings": "Inställningar",
-  "dashboard_nav.settings-confirm-phone": "Bekräfta ditt telefonnummer för att kunna verifera ditt ID via telefon",
+  "dashboard_nav.settings-confirm-phone": "<b>Bekräfta ditt telefonnummer</b> för att kunna verifera ditt ID via telefon",
   "delete.confirm_button": "Radera mitt eduID",
   "delete.modal_info": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om du väljer att ta bort ditt eduID kommer du att behöva logga in igen en sista gång.",
   "delete.modal_tip": "Efter att du klickat på knappen kommer du behöva logga in en sista gång.",
