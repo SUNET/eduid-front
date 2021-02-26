@@ -16,21 +16,24 @@ function DashboardNav(props) {
   
   let tipsAtIdentity = "";
   let tipsAtSettings = "";
-  // if user does not added id number, rendering text on IDENTITY tab, only posible to verify with a freja eId
+
   if(!verifiedNin.length){
+    // when user is accessing the profile checke if user has an unverified nin
     if(!nins.length){
+      // check if nin is not added, then rendering text on IDENTITY tab, only posible to verify with a freja eId
       tipsAtIdentity = <NotificationTip textLength={"short"} tipText={props.translate("dashboard_nav.identity-verify-freja")}/>;
     }
-    // else if user added id number, unverified id number, rendering text on IDENTITY tab, possible to verify by post and with a freja eId 
     else {
+       // else user has added id number,rendering text on IDENTITY tab, possible to verify by post and with a freja eId 
       tipsAtIdentity = <NotificationTip tipText={props.translate("dashboard_nav.identity-verify-post-freja")}/>;
       if(phones.length){
+        // then check if there is a number added to the phones array
         if(verifiedSweNumber.length){
-          //if phones array is not empty and verified Swedish phone number, rendering text on IDENTITY tab, user can verify by post, phone or freja eId
+          // if a number is added to the phone array, check if number is verified and a Swedish phone number, rendering text on IDENTITY tab, user can verify by post, phone or freja eId
           tipsAtIdentity = <NotificationTip tipText={props.translate("dashboard_nav.identity-verify-post-phone-freja")}/>;
         } 
         else if(unverifiedNumber.length){
-          // if phone number is not confirmed, rendering text on SETTINGS tab "Confirm your number..."
+          // else if phone number is not confirmed, rendering text on SETTINGS tab "Confirm your number..."
           tipsAtSettings = 
             <NotificationTip 
               position={`settings ${selectedLanguage}`} 
