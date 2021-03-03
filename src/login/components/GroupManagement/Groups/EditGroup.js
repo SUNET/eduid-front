@@ -5,12 +5,12 @@ import DeleteGroup from "./DeleteGroup";
 import EditInvite from "../Invites/EditInvite";
 
 const EditGroup = (props) => {
-  const { group, handleAddNavIdToStore, navId } = props;
+  const { group, handleAddNavIdToStore, savedNavId } = props;
   const { display_name } = props.group;
-  const [parentId, setNavParent] = useState(navId);
+  const [navId, setNavId] = useState(savedNavId);
   useEffect(() => {
-    handleAddNavIdToStore(parentId);
-  }, [parentId]);
+    handleAddNavIdToStore(navId);
+  }, [navId]);
   return (
     <div className="edit-data">
       <div className="title">
@@ -24,13 +24,13 @@ const EditGroup = (props) => {
           save
         </button>
       </div>
-      <EditGroupNav parentId={parentId} setNavParent={setNavParent} />
-      <EditGroupParent parentId={parentId} group={group} />
+      <EditGroupNav navId={navId} setNavId={setNavId} />
+      <EditGroupParent navId={navId} group={group} />
     </div>
   );
 };
 
-const EditGroupNav = ({ parentId, setNavParent }) => {
+const EditGroupNav = ({ navId, setNavId }) => {
   const navContent = [
     { invite: "Invite" },
     { membership: "Membership" },
@@ -42,8 +42,8 @@ const EditGroupNav = ({ parentId, setNavParent }) => {
         let id = Object.keys(item).toString();
         let text = Object.values(item);
         return (
-          <li key={i} onClick={(e) => setNavParent(e.target.id)}>
-            <p className={parentId === id ? "active" : null} id={id}>
+          <li key={i} onClick={(e) => setNavId(e.target.id)}>
+            <p className={navId === id ? "active" : null} id={id}>
               {text}
             </p>
           </li>
@@ -53,12 +53,12 @@ const EditGroupNav = ({ parentId, setNavParent }) => {
   );
 };
 
-const EditGroupParent = ({ parentId, group }) => {
-  if (parentId === "invite") {
+const EditGroupParent = ({ navId, group }) => {
+  if (navId === "invite") {
     return <InvitesParent group={group} />;
-  } else if (parentId === "membership") {
+  } else if (navId === "membership") {
     return <EditInvite />;
-  } else if (parentId === "delete") {
+  } else if (navId === "delete") {
     return <DeleteGroup />;
   }
 };

@@ -5,7 +5,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {
-    navId: state.groups.navId,
+    savedNavId: state.groups.navId,
   };
 };
 
