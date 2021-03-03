@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
-import DeleteGroup from "./DeleteGroup";
+import DeleteGroup from "./DeleteGroupContainer";
 import EditInvite from "../Invites/EditInvite";
 
 const EditGroup = (props) => {
-  const { group } = props;
+  const { group, toggleGroupsListOrEditGroup } = props;
   const { display_name } = props.group;
   const [parentId, setNavParent] = useState("invite");
   return (
@@ -15,14 +15,18 @@ const EditGroup = (props) => {
         <button
           className="save-button"
           onClick={() => {
-            props.toggleGroupsListOrEditGroup(group);
+            toggleGroupsListOrEditGroup(group);
           }}
         >
           save
         </button>
       </div>
       <EditGroupNav parentId={parentId} setNavParent={setNavParent} />
-      <EditGroupParent parentId={parentId} group={group} />
+      <EditGroupParent
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+        parentId={parentId}
+        group={group}
+      />
     </div>
   );
 };
@@ -50,13 +54,18 @@ const EditGroupNav = ({ parentId, setNavParent }) => {
   );
 };
 
-const EditGroupParent = ({ parentId, group }) => {
+const EditGroupParent = ({ parentId, group, toggleGroupsListOrEditGroup }) => {
   if (parentId === "invite") {
     return <InvitesParent group={group} />;
   } else if (parentId === "membership") {
     return <EditInvite />;
   } else if (parentId === "delete") {
-    return <DeleteGroup />;
+    return (
+      <DeleteGroup
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+        groupId={group.identifier}
+      />
+    );
   }
 };
 
