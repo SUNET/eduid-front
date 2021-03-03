@@ -25,7 +25,7 @@ const EditGroup = (props) => {
         </button>
       </div>
       <EditGroupNav navId={navId} setNavId={setNavId} />
-      <EditGroupParent navId={navId} group={group} />
+      <EditGroupNavParent navId={navId} group={group} />
     </div>
   );
 };
@@ -53,7 +53,7 @@ const EditGroupNav = ({ navId, setNavId }) => {
   );
 };
 
-const EditGroupParent = ({ navId, group }) => {
+const EditGroupNavParent = ({ navId, group }) => {
   if (navId === "invite") {
     return <InvitesParent group={group} />;
   } else if (navId === "membership") {
