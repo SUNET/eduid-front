@@ -32,9 +32,9 @@ const EditGroup = (props) => {
 
 const EditGroupNav = ({ navId, setNavId }) => {
   const navContent = [
-    { invite: "Invite" },
-    { membership: "Membership" },
-    { delete: "Delete" },
+    { ["create-invite"]: "Invite" },
+    { ["edit-invite"]: "Membership" },
+    { ["delete-group"]: "Delete" },
   ];
   return (
     <nav>
@@ -54,11 +54,11 @@ const EditGroupNav = ({ navId, setNavId }) => {
 };
 
 const EditGroupNavParent = ({ navId, group }) => {
-  if (navId === "invite") {
+  if (navId === "create-invite") {
     return <InvitesParent group={group} />;
-  } else if (navId === "membership") {
+  } else if (navId === "edit-invite") {
     return <EditInvite />;
-  } else if (navId === "delete") {
+  } else if (navId === "delete-group") {
     return <DeleteGroup />;
   }
 };

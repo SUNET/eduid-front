@@ -7,7 +7,7 @@ const groupsData = {
   loading: true,
   data: [],
   createGroup: null,
-  navId: "invite",
+  navId: "create-invite",
   payload: "",
 };
 
