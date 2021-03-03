@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleAddDataToStore: (data) => {
-      dispatch(addDataToStore.addData(data));
+    handleAddNavIdToStore: (navId) => {
+      dispatch(addDataToStore.addNavId(navId));
     },
   };
 };
