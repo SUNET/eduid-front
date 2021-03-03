@@ -1,16 +1,23 @@
 import * as getDataActions from "../actions/getAllGroupMgmtDataActions";
 import * as createGroupActions from "../actions/createGroupActions";
+import * as addDataToStore from "../actions/addDataToStoreActions";
 
 const groupsData = {
   message: "",
   loading: true,
   data: [],
   createGroup: null,
+  navId: "invite",
   payload: "",
 };
 
 let groupsReducer = (state = groupsData, action) => {
   switch (action.type) {
+    case addDataToStore.ADD_NAVID_TO_STORE:
+      return {
+        ...state,
+        navId: action.payload.navId,
+      };
     case createGroupActions.POST_GROUP_MANAGEMENT_CREATE_SUCCESS:
       return {
         ...state,
