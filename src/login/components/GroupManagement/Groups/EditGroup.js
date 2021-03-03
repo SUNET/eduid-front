@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
 import DeleteGroup from "./DeleteGroup";
 import EditInvite from "../Invites/EditInvite";
 
 const EditGroup = (props) => {
-  const { group } = props;
+  const { group, handleAddNavIdToStore, navId } = props;
   const { display_name } = props.group;
-  const [parentId, setNavParent] = useState("invite");
+  const [parentId, setNavParent] = useState(navId);
+  useEffect(() => {
+    handleAddNavIdToStore(parentId);
+  }, [parentId]);
   return (
     <div className="edit-data">
       <div className="title">
