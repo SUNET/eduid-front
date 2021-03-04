@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
-import DeleteGroup from "./DeleteGroup";
+import DeleteGroup from "./DeleteGroupContainer";
 import EditInvite from "../Invites/EditInvite";
 
 const EditGroup = (props) => {
-  const { group, handleAddNavIdToStore, savedNavId } = props;
+  const {
+    group,
+    handleAddNavIdToStore,
+    savedNavId,
+    toggleGroupsListOrEditGroup,
+  } = props;
   const { display_name } = props.group;
   const [navId, setNavId] = useState(savedNavId);
   useEffect(() => {
@@ -18,14 +23,18 @@ const EditGroup = (props) => {
         <button
           className="save-button"
           onClick={() => {
-            props.toggleGroupsListOrEditGroup(group);
+            toggleGroupsListOrEditGroup(group);
           }}
         >
           save
         </button>
       </div>
       <EditGroupNav navId={navId} setNavId={setNavId} />
-      <EditGroupNavParent navId={navId} group={group} />
+      <EditGroupNavParent
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+        navId={navId}
+        group={group}
+      />
     </div>
   );
 };
@@ -53,13 +62,18 @@ const EditGroupNav = ({ navId, setNavId }) => {
   );
 };
 
-const EditGroupNavParent = ({ navId, group }) => {
+const EditGroupNavParent = ({ navId, group, toggleGroupsListOrEditGroup }) => {
   if (navId === "create-invite") {
     return <InvitesParent group={group} />;
   } else if (navId === "edit-invite") {
     return <EditInvite />;
   } else if (navId === "delete-group") {
-    return <DeleteGroup />;
+    return (
+      <DeleteGroup
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+        groupId={group.identifier}
+      />
+    );
   }
 };
 
