@@ -20,7 +20,15 @@ const RenderListHeading = ({ columnNumber }) => {
 };
 
 const RenderListItems = ({ invitesForGroup, navId, columnNumber }) => {
-  let invitesFromMeByRole = invitesByRole(invitesForGroup);
+  // let invitesFromMeByRole = invitesByRole(invitesForGroup)
+  let invitesFromMeByRole = [
+    { email: "hardcodedtest@email", member: true, owner: true },
+    { email: "hardcoded1test@email", member: true, owner: false },
+    { email: "hardcoded2test@email", member: true, owner: false },
+    { email: "hardcoded3test@email", member: true, owner: true },
+    { email: "hardcoded4test@email", member: true, owner: false },
+    { email: "hardcoded5test@email", member: true, owner: true },
+  ];
   return (
     <div className="list-data invites">
       <ul>
