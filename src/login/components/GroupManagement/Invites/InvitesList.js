@@ -4,17 +4,17 @@ import InviteListItem from "./InviteListItem";
 import invitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
 
 const RenderListHeading = ({ columnNumber }) => {
+  let headingText =
+    columnNumber === "four-columns"
+      ? ["Invites", "Member", "Owner", ""]
+      : ["Invites", "Member", "Owner"];
   return (
-    <div className="list-grid" id="three-columns">
-      <div className="list-cell left-align">
-        <label>Invites</label>
-      </div>
-      <div className="list-cell">
-        <label>Owner</label>
-      </div>
-      <div className="list-cell">
-        <label>Member</label>
-      </div>
+    <div className="list-grid" id={columnNumber}>
+      {headingText.map((text, i) => (
+        <div key={i} className="list-cell">
+          <label>{text}</label>
+        </div>
+      ))}
     </div>
   );
 };
