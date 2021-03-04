@@ -1,6 +1,12 @@
 import React, { Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
+const RenderEmailAddress = ({ email }) => (
+  <div className="hide-overflow list-cell">
+    <p>{email}</p>
+  </div>
+);
+
 const RenderRoleIndicators = ({ member, owner }) => (
   <Fragment>
     <div className="list-cell">{owner && "X"}</div>
@@ -14,9 +20,7 @@ const InviteListItem = ({ invite }) => {
     <Fragment>
       <li>
         <div className="list-grid" id="three-columns">
-          <div className="hide-overflow list-cell left-align">
-            <p>{email}</p>
-          </div>
+          <RenderEmailAddress email={email} />
           <RenderRoleIndicators member={member} owner={owner} />
         </div>
       </li>
