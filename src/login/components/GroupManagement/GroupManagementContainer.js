@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
 import GroupManagement from "./GroupManagement";
-import * as allDataActions from "../../redux/actions/getAllGroupMgmtDataActions";
 import * as createGroupActions from "../../redux/actions/createGroupActions";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
-  let groupsData = state.groups.data
+  let groupsData = state.groups.data;
   // check if user has groups
   let hasNoGroups = "";
   if (groupsData !== undefined) {
@@ -22,9 +21,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleGetAllData: () => {
-      dispatch(allDataActions.getAllData());
-    },
     handleOpenCreateGroup: () => {
       dispatch(createGroupActions.openCreateGroup());
     },

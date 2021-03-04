@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import * as getAllOutgoingActions from "../../../redux/actions/getOutgoingInvitesActions";
 import InvitesParent from "./InvitesParent";
 
 const mapStateToProps = (state) => {
@@ -17,11 +16,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    handleGetAllOutgoingInvites: () => {
-      dispatch(getAllOutgoingActions.getAllOutgoingInvites());
-    },
-  };
+  return {};
 };
 
 const InvitesParentContainer = connect(
