@@ -42,20 +42,6 @@ EditRolesForm = reduxForm({
 })(EditRolesForm);
 
 EditRolesForm = connect(() => ({
-  initialValues: {
-    "hardcodedtest@email-member": false,
-    "hardcodedtest@email-owner": true,
-    "hardcoded1test@email-member": true,
-    "hardcoded1test@email-owner": true,
-    "hardcoded2test@email-member": false,
-    "hardcoded2test@email-owner": true,
-    "hardcoded3test@email-member": true,
-    "hardcoded3test@email-owner": true,
-    "hardcoded4test@email-member": true,
-    "hardcoded4test@email-owner": false,
-    "hardcoded5test@email-member": false,
-    "hardcoded5test@email-owner": true,
-  },
   destroyOnUnmount: false,
 }))(EditRolesForm);
 
