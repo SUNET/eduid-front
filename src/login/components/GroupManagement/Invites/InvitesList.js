@@ -1,6 +1,7 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InviteListItem from "./InviteListItem";
+import { createInitValues } from "../../../app_utils/helperFunctions/checkboxHelpers";
 import invitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
 
 const RenderListHeading = ({ columnNumber }) => {
@@ -20,31 +21,8 @@ const RenderListHeading = ({ columnNumber }) => {
 };
 
 const RenderListItems = ({ invitesForGroup, navId, columnNumber }) => {
-  // let invitesFromMeByRole = invitesByRole(invitesForGroup)
-  let invitesFromMeByRole = [
-    { email: "hardcodedtest@email", member: true, owner: true },
-    { email: "hardcoded1test@email", member: true, owner: false },
-    { email: "hardcoded2test@email", member: true, owner: false },
-    { email: "hardcoded3test@email", member: true, owner: true },
-    { email: "hardcoded4test@email", member: true, owner: false },
-    { email: "hardcoded5test@email", member: true, owner: true },
-  ];
-
-  const initialValues = {
-    "hardcodedtest@email-member": false,
-    "hardcodedtest@email-owner": true,
-    "hardcoded1test@email-member": false,
-    "hardcoded1test@email-owner": true,
-    "hardcoded2test@email-member": false,
-    "hardcoded2test@email-owner": true,
-    "hardcoded3test@email-member": false,
-    "hardcoded3test@email-owner": true,
-    "hardcoded4test@email-member": true,
-    "hardcoded4test@email-owner": false,
-    "hardcoded5test@email-member": false,
-    "hardcoded5test@email-owner": true,
-  };
-
+  const invitesFromMeByRole = invitesByRole(invitesForGroup);
+  const initialValues = createInitValues(invitesFromMeByRole);
   return (
     <div className="list-data invites">
       <ul>

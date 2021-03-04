@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 import EditRolesForm from "./EditRolesForm";
+import { createCheckboxNamesAndLabels } from "../../../app_utils/helperFunctions/checkboxHelpers";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const RenderEmailAddress = ({ email }) => (
@@ -10,10 +11,7 @@ const RenderEmailAddress = ({ email }) => (
 );
 
 const RenderEditRolesForm = ({ email, initialValues }) => {
-  let checkboxNames = [
-    { name: `${email}-member`, label: "" },
-    { name: `${email}-owner`, label: "" },
-  ];
+  const checkboxNames = createCheckboxNamesAndLabels(email)
   return (
     <EditRolesForm
       initialValues={initialValues}
