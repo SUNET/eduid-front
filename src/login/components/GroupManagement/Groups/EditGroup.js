@@ -11,24 +11,17 @@ const EditGroup = (props) => {
     savedNavId,
     toggleGroupsListOrEditGroup,
   } = props;
-  const { display_name } = props.group;
+
   const [navId, setNavId] = useState(savedNavId);
   useEffect(() => {
     handleAddNavIdToStore(navId);
   }, [navId]);
   return (
     <div className="edit-data">
-      <div className="title">
-        <p>Edit {display_name}</p>
-        <button
-          className="save-button"
-          onClick={() => {
-            toggleGroupsListOrEditGroup(group);
-          }}
-        >
-          save
-        </button>
-      </div>
+      <EditGroupText
+        group={group}
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+      />
       <EditGroupNav navId={navId} setNavId={setNavId} />
       <EditGroupNavParent
         toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
@@ -39,6 +32,22 @@ const EditGroup = (props) => {
   );
 };
 
+const EditGroupText = ({ group, toggleGroupsListOrEditGroup }) => {
+  const { display_name } = group;
+  return (
+    <div className="title">
+      <p>Edit {display_name}</p>
+      <button
+        className="save-button"
+        onClick={() => {
+          toggleGroupsListOrEditGroup(group);
+        }}
+      >
+        save
+      </button>
+    </div>
+  );
+};
 const EditGroupNav = ({ navId, setNavId }) => {
   const navContent = [
     { "create-invite": "Invite" },
