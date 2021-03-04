@@ -9,12 +9,17 @@ const RenderEmailAddress = ({ email }) => (
   </div>
 );
 
-const RenderEditRolesForm = ({ email }) => {
+const RenderEditRolesForm = ({ email, initialValues }) => {
   let checkboxNames = [
     { name: `${email}-member`, label: "" },
     { name: `${email}-owner`, label: "" },
   ];
-  return <EditRolesForm checkboxNames={checkboxNames} />;
+  return (
+    <EditRolesForm
+      initialValues={initialValues}
+      checkboxNames={checkboxNames}
+    />
+  );
 };
 
 const RenderRoleIndicators = ({ member, owner }) => (
@@ -35,14 +40,14 @@ const RenderRemoveButton = () => (
   </div>
 );
 
-const InviteListItem = ({ columnNumber, invite, navId }) => {
+const InviteListItem = ({ columnNumber, invite, navId, initialValues }) => {
   let { email, member, owner } = invite;
   return (
     <li>
       <div className="list-grid" id={columnNumber}>
         <RenderEmailAddress email={email} />
         {navId === "edit-invite" ? (
-          <RenderEditRolesForm email={email} />
+          <RenderEditRolesForm email={email} initialValues={initialValues} />
         ) : (
           <RenderRoleIndicators member={member} owner={owner} />
         )}
