@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InviteListItem from "./InviteListItem";
 import invitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
@@ -29,6 +29,22 @@ const RenderListItems = ({ invitesForGroup, navId, columnNumber }) => {
     { email: "hardcoded4test@email", member: true, owner: false },
     { email: "hardcoded5test@email", member: true, owner: true },
   ];
+
+  const initialValues = {
+    "hardcodedtest@email-member": false,
+    "hardcodedtest@email-owner": true,
+    "hardcoded1test@email-member": false,
+    "hardcoded1test@email-owner": true,
+    "hardcoded2test@email-member": false,
+    "hardcoded2test@email-owner": true,
+    "hardcoded3test@email-member": false,
+    "hardcoded3test@email-owner": true,
+    "hardcoded4test@email-member": true,
+    "hardcoded4test@email-owner": false,
+    "hardcoded5test@email-member": false,
+    "hardcoded5test@email-owner": true,
+  };
+
   return (
     <div className="list-data invites">
       <ul>
@@ -37,6 +53,7 @@ const RenderListItems = ({ invitesForGroup, navId, columnNumber }) => {
             key={i}
             invite={invite}
             navId={navId}
+            initialValues={initialValues}
             columnNumber={columnNumber}
           />
         ))}
