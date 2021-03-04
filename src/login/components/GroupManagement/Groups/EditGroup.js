@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
 import DeleteGroup from "./DeleteGroupContainer";
-import EditInvite from "../Invites/EditInvite";
 
 const EditGroup = (props) => {
   const {
@@ -72,10 +71,8 @@ const EditGroupNav = ({ navId, setNavId }) => {
 };
 
 const EditGroupNavParent = ({ navId, group, toggleGroupsListOrEditGroup }) => {
-  if (navId === "create-invite") {
+  if (navId === "create-invite" || navId === "edit-invite") {
     return <InvitesParent group={group} />;
-  } else if (navId === "edit-invite") {
-    return <EditInvite />;
   } else if (navId === "delete-group") {
     return (
       <DeleteGroup
