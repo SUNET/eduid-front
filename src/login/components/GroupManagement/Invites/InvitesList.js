@@ -24,6 +24,7 @@ const InvitesList = ({ groupId, allInvitesFromMe, navId }) => {
     (invite) => invite.group_identifier === groupId
   );
   let invitesFromMeByRole = invitesByRole(invitesForGroup);
+  let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
   return (
     <div className="invites-list">
       <h3>Sent invites</h3>
