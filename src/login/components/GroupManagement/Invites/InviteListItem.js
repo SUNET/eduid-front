@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const RenderEmailAddress = ({ email }) => (
@@ -14,17 +15,27 @@ const RenderRoleIndicators = ({ member, owner }) => (
   </Fragment>
 );
 
-const InviteListItem = ({ invite }) => {
+const RenderRemoveButton = () => (
+  <div className="list-cell">
+    <ButtonRemoveData
+      className="icon-button"
+      onClick={() => {
+        console.log("you clicked the cross");
+      }}
+    />
+  </div>
+);
+
+const InviteListItem = ({ columnNumber, invite }) => {
   let { email, member, owner } = invite;
   return (
-    <Fragment>
-      <li>
-        <div className="list-grid" id="three-columns">
-          <RenderEmailAddress email={email} />
-          <RenderRoleIndicators member={member} owner={owner} />
-        </div>
-      </li>
-    </Fragment>
+    <li>
+      <div className="list-grid" id={columnNumber}>
+        <RenderEmailAddress email={email} />
+        <RenderRoleIndicators member={member} owner={owner} />
+        {columnNumber === "four-columns" && <RenderRemoveButton />}
+      </div>
+    </li>
   );
 };
 
