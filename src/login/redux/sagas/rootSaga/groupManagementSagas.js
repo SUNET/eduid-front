@@ -4,7 +4,7 @@ import * as createGroupActions from "../../actions/createGroupActions";
 import * as createInviteActions from "../../actions/createInviteActions";
 import * as getOutgoingInvitesActions from "../../actions/getOutgoingInvitesActions";
 import * as deleteGroupActions from "../../actions/deleteGroupActions";
-import * as pdataActions from "actions/PersonalData";
+import * as pdataActions from "../../../../actions/PersonalData";
 import { getAllDataSaga } from "../groups/getAllDataSaga";
 import { createGroupSaga } from "../groups/createGroupSaga";
 import { createInviteSaga } from "../invites/createInviteSaga";
