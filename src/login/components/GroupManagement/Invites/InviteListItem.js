@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
+import EditRolesForm from "./EditRolesForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const RenderEmailAddress = ({ email }) => (
@@ -7,6 +8,14 @@ const RenderEmailAddress = ({ email }) => (
     <p>{email}</p>
   </div>
 );
+
+const RenderEditRolesForm = ({ email }) => {
+  let checkboxNames = [
+    { name: `${email}-member`, label: "" },
+    { name: `${email}-owner`, label: "" },
+  ];
+  return <EditRolesForm checkboxNames={checkboxNames} />;
+};
 
 const RenderRoleIndicators = ({ member, owner }) => (
   <Fragment>
@@ -26,13 +35,17 @@ const RenderRemoveButton = () => (
   </div>
 );
 
-const InviteListItem = ({ columnNumber, invite }) => {
+const InviteListItem = ({ columnNumber, invite, navId }) => {
   let { email, member, owner } = invite;
   return (
     <li>
       <div className="list-grid" id={columnNumber}>
         <RenderEmailAddress email={email} />
-        <RenderRoleIndicators member={member} owner={owner} />
+        {navId === "edit-invite" ? (
+          <RenderEditRolesForm email={email} />
+        ) : (
+          <RenderRoleIndicators member={member} owner={owner} />
+        )}
         {columnNumber === "four-columns" && <RenderRemoveButton />}
       </div>
     </li>
