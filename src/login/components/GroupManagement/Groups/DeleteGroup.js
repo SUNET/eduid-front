@@ -14,7 +14,6 @@ const DeleteGroup = ({
       <EduIDButton
         type="submit"
         className="settings-button"
-        disabled={false}
         onClick={() => {
           handleDeleteGroup(groupId), toggleGroupsListOrEditGroup("");
         }}
