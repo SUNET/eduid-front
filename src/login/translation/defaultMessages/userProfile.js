@@ -14,7 +14,7 @@ export const userProfile = {
   "profile.name_display_no_data": (
     <FormattedMessage
       id="profile.name_display_no_data"
-      defaultMessage={`no name added`}
+      defaultMessage={`add name`}
     />
   ),
 
@@ -42,7 +42,7 @@ export const userProfile = {
   "profile.phone_display_no_data": (
     <FormattedMessage
       id="profile.phone_display_no_data"
-      defaultMessage={`no phone number added`}
+      defaultMessage={`add phone number`}
     />
   ),
 
@@ -92,6 +92,30 @@ export const userProfile = {
     <FormattedMessage
       id="dashboard_nav.advanced-settings"
       defaultMessage={`Advanced settings`}
+    />
+  ),
+  "dashboard_nav.identity-verify-freja": (
+    <FormattedHTMLMessage
+      id="dashboard_nav.identity-verify-freja"
+      defaultMessage={`You can verify <b>with a digital ID-card</b>`}
+    />
+  ),
+  "dashboard_nav.identity-verify-post-freja": (
+    <FormattedHTMLMessage
+      id="dashboard_nav.identity-verify-post-freja"
+      defaultMessage={`You can verify <b>by post</b> or <b>with a digital ID-card</b>`}
+    />
+  ),
+  "dashboard_nav.identity-verify-post-phone-freja": (
+    <FormattedHTMLMessage
+      id="dashboard_nav.identity-verify-post-phone-freja"
+      defaultMessage={`You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>`}
+    />
+  ),
+  "dashboard_nav.settings-confirm-phone": (
+    <FormattedHTMLMessage
+      id="dashboard_nav.settings-confirm-phone"
+      defaultMessage={`<b>Confirm your number</b> to verify your id by phone`}
     />
   ),
   "dashboard_nav.back": (
@@ -711,6 +735,20 @@ export const userData = {
     <FormattedMessage
       id="nin_display.profile.no_nin"
       defaultMessage={`add id number`}
+    />
+  ),
+
+  "nin_show_last_four_digits": (
+    <FormattedMessage
+      id="nin_show_last_four_digits"
+      defaultMessage={`SHOW`}
+    />
+  ),
+
+  "nin_hide_last_four_digits": (
+    <FormattedMessage
+      id="nin_hide_last_four_digits"
+      defaultMessage={`HIDE`}
     />
   ),
 
