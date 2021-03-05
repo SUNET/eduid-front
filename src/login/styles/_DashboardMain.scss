@@ -50,7 +50,8 @@
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(2, auto);
   & label {
-    font-family: "Akkurat";
+    font-family: "ProximaNova-Bold";
+    font-size: 1rem;
     width: 100%;
   }
 }
@@ -58,10 +59,16 @@
 .profile-grid-cell {
   display: flex;
   flex-direction: column;
+  .display-nin-show-hide{
+    display: flex;
+    button {
+      margin-top: 6px;
+    }
+  }
   & .data-with-delete {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     & p {
       font-size: 2.25rem;
       font-family: "ProximaNova-Regular";
@@ -117,5 +124,46 @@
 @media (max-width: 568px) {
   #profile-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 432px) {
+  a.nav-settings.sv {
+    margin-top: 2.5rem;
+    display: block;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+  }
+}
+
+@media (max-width: 383px) {
+  a.nav-settings.en,
+  a.nav-advanced-settings.en
+  {
+    margin-top: 2.5rem;
+    display: block;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+  }
+}
+
+
+@media (max-width: 353px) {
+  a.nav-settings.en
+  {
+    margin-top: 2.5rem;
+  }
+
+  a.nav-advanced-settings.en
+  {
+    margin-top: 0;
+    display: block;
+    transition: transform 0.5s;
   }
 }
