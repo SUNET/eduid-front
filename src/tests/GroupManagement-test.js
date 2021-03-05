@@ -57,13 +57,6 @@ function getFakeState(newState) {
 }
 
 describe("Actions trigger the correct types:", () => {
-  it("getAllData() > GET_ALL_DATA", () => {
-    const expectedAction = {
-      type: getAllGroupDataActions.GET_ALL_DATA,
-    };
-    expect(getAllGroupDataActions.getAllData()).toEqual(expectedAction);
-  });
-
   it("getAllGroupsDataFail() > GET_GROUP_MANAGEMENT_ALL_DATA_FAIL", () => {
     const err = "Bad error";
     const expectedAction = {
@@ -89,17 +82,6 @@ describe("Actions trigger the correct types:", () => {
 describe("Reducer updates redux state correclty:", () => {
   const fakeState = getFakeState();
   const groupsState = fakeState.groups;
-
-  it("groupsReducer > GET_ALL_DATA", () => {
-    expect(
-      groupsReducer(groupsState, {
-        type: getAllGroupDataActions.GET_ALL_DATA,
-      })
-    ).toEqual({
-      ...groupsState,
-    });
-  });
-
   it("groupsReducer > GET_GROUP_MANAGEMENT_ALL_DATA_FAIL", () => {
     expect(
       groupsReducer(groupsState, {

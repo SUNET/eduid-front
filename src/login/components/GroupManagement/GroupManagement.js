@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import CreateGroup from "./Groups/CreateGroupContainer";
 import GroupsParent from "./Groups/GroupsParent";
