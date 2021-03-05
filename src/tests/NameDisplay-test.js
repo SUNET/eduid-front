@@ -7,6 +7,7 @@ import NameDisplay from "containers/NameDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
+import { MemoryRouter } from "react-router-dom";
 
 // my job is to: control the display of the name (either retrieved on vetting) or added by user in the profile
 
@@ -47,7 +48,9 @@ describe("NameDisplay component, when no names are saved", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <NameDisplay />
+        <MemoryRouter>
+          <NameDisplay />
+        </MemoryRouter>
       </Provider>
     );
     return {
@@ -65,9 +68,9 @@ describe("NameDisplay component, when no names are saved", () => {
 
   it("Renders text when no name is saved", () => {
     const { wrapper } = setupComponent();
-    const nameText = wrapper.find("p");
+    const nameText = wrapper.find("a");
     expect(nameText.exists()).toEqual(true);
-    expect(nameText.text()).toContain("no");
+    expect(nameText.text()).toContain("add");
   });
 });
 

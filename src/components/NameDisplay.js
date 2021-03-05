@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "style/base.scss";
-// import "style/DashboardMain.scss";
+import { Link } from "react-router-dom";
 
 class NameDisplay extends Component {
   render() {
@@ -14,9 +12,13 @@ class NameDisplay extends Component {
       ];
     } else {
       userData = [
-        <p key="0" className="display-data no-data">
+        <Link
+          key="1"
+          to={`/profile/settings/`}
+          className="display-data unverified"
+        >
           {this.props.translate("profile.name_display_no_data")}
-        </p>,
+        </Link>,
       ];
     }
     return (
@@ -24,9 +26,7 @@ class NameDisplay extends Component {
         <label key="0">
           {this.props.translate("profile.name_display_title")}
         </label>
-        {/* <div key="1" id="nin-number-container"> */}
         {userData}
-        {/* </div> */}
       </div>
     );
   }

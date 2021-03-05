@@ -9,7 +9,7 @@
   },
   {
     "id": "profile.name_display_no_data",
-    "defaultMessage": "no name added"
+    "defaultMessage": "add name"
   },
   {
     "id": "profile.phone_display_title",
@@ -25,7 +25,7 @@
   },
   {
     "id": "profile.phone_display_no_data",
-    "defaultMessage": "no phone number added"
+    "defaultMessage": "add phone number"
   },
   {
     "id": "profile.email_display_title",
@@ -62,6 +62,22 @@
   {
     "id": "dashboard_nav.advanced-settings",
     "defaultMessage": "Advanced settings"
+  },
+  {
+    "id": "dashboard_nav.identity-verify-freja",
+    "defaultMessage": "You can verify <b>with a digital ID-card</b>"
+  },
+  {
+    "id": "dashboard_nav.identity-verify-post-freja",
+    "defaultMessage": "You can verify <b>by post</b> or <b>with a digital ID-card</b>"
+  },
+  {
+    "id": "dashboard_nav.identity-verify-post-phone-freja",
+    "defaultMessage": "You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>"
+  },
+  {
+    "id": "dashboard_nav.settings-confirm-phone",
+    "defaultMessage": "<b>Confirm your number</b> to verify your id by phone"
   },
   {
     "id": "dashboard_nav.back",
@@ -410,6 +426,14 @@
   {
     "id": "nin_display.profile.no_nin",
     "defaultMessage": "add id number"
+  },
+  {
+    "id": "nin_show_last_four_digits",
+    "defaultMessage": "SHOW"
+  },
+  {
+    "id": "nin_hide_last_four_digits",
+    "defaultMessage": "HIDE"
   },
   {
     "id": "nins.input_help_text",
