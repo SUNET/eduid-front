@@ -7,6 +7,7 @@ import PhoneDisplay from "containers/PhoneDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
+import { MemoryRouter } from "react-router-dom";
 
 // my job is to: control the display of the phone number in the profile registered by user in settings
 
@@ -44,7 +45,9 @@ describe("PhoneDisplay component, when no phone number is saved", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <PhoneDisplay />
+        <MemoryRouter>
+          <PhoneDisplay />
+        </MemoryRouter>
       </Provider>
     );
     return {
@@ -62,9 +65,9 @@ describe("PhoneDisplay component, when no phone number is saved", () => {
 
   it("Renders text when no phone numbers is saved", () => {
     const { wrapper } = setupComponent();
-    const phoneText = wrapper.find("p");
+    const phoneText = wrapper.find("a");
     expect(phoneText.exists()).toEqual(true);
-    expect(phoneText.text()).toContain("no");
+    expect(phoneText.text()).toContain("add");
   });
 });
 
@@ -89,7 +92,9 @@ describe("PhoneDisplay component, when phone numbers is saved", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <PhoneDisplay />
+        <MemoryRouter>
+          <PhoneDisplay />
+        </MemoryRouter>
       </Provider>
     );
     return {
@@ -112,7 +117,7 @@ describe("PhoneDisplay component, when phone numbers is saved", () => {
     const { wrapper } = setupComponent();
     const primaryPhone = wrapper.find("p");
     expect(primaryPhone.exists()).toEqual(true);
-    expect(primaryPhone.text()).not.toContain("+46700000079");
+    expect(primaryPhone.text()).toContain("+46700000079");
   });
 });
 
@@ -137,7 +142,9 @@ describe("PhoneDisplay component, when phone number is saved", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <PhoneDisplay />
+        <MemoryRouter>
+          <PhoneDisplay />
+        </MemoryRouter>
       </Provider>
     );
     return {
@@ -164,7 +171,7 @@ describe("PhoneDisplay component, when phone number is saved", () => {
     const { wrapper } = setupComponent();
     const primaryPhone = wrapper.find("p");
     expect(primaryPhone.exists()).toEqual(true);
-    expect(primaryPhone.text()).not.toContain("+46700000079");
+    expect(primaryPhone.text()).toContain("+46736483364");
   });
 });
 
@@ -189,7 +196,9 @@ describe("PhoneDisplay component, when phone number is saved", () => {
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
-        <PhoneDisplay />
+        <MemoryRouter>
+          <PhoneDisplay />
+        </MemoryRouter>
       </Provider>
     );
     return {

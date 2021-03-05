@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "style/base.scss";
-// import "style/DashboardMain.scss";
+import { HashLink } from 'react-router-hash-link';
 
 class PhoneDisplay extends Component {
   render() {
@@ -16,15 +14,19 @@ class PhoneDisplay extends Component {
       } else {
         userData = [
           <p key="0" className="display-data no-data">
-            {this.props.translate("profile.phone_display_unconfirmed_data")}
+            {this.props.phones[0].number}
           </p>,
         ];
       }
     } else {
       userData = [
-        <p key="0" className="display-data no-data">
-          {this.props.translate("profile.phone_display_no_data")}
-        </p>,
+        <HashLink
+          key="1"
+          to={`/profile/settings/#phone`}
+          className="display-data unverified"
+        >
+         {this.props.translate("profile.phone_display_no_data")}
+        </HashLink>,
       ];
     }
 
@@ -33,9 +35,7 @@ class PhoneDisplay extends Component {
         <label key="0">
           {this.props.translate("profile.phone_display_title")}
         </label>
-        {/* <div key="1" id="nin-number-container"> */}
         {userData}
-        {/* </div> */}
       </div>
     );
   }
