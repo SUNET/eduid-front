@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CreateInvite from "./CreateInviteContainer";
 import InvitesList from "./InvitesList";
