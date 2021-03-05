@@ -4,11 +4,23 @@ const ninState = {
   message: "",
   nin: "",
   rmNin: "",
-  nins: []
+  nins: [],
+  showNinAtProfile: false,
+  showNinAtIdentity: false
 };
 
 let ninsReducer = (state = ninState, action) => {
   switch (action.type) {
+    case actions.SHOW_NIN_PROFILE:
+      return {
+        ...state,
+        showNinAtProfile: !state.showNinAtProfile
+      };
+      case actions.SHOW_NIN_IDENTITY:
+        return {
+          ...state,
+          showNinAtIdentity: !state.showNinAtIdentity
+        };
     case actions.GET_NINS_SUCCESS:{
       const nins = action.payload.nins,
         nin = nins.length ? nins[0].number : state.nin;

@@ -36,10 +36,19 @@ export class NinDisplay extends Component {
               className="data-with-delete"
             >
               <p key="1" id="nin-number" className="display-data unverified">
-                {this.props.nins[0].number}
+                { this.props.showNinAtIdentity ? 
+                  this.props.nins[0].number :  
+                  this.props.nins[0].number.replace(/\d{4}$/, '****')
+                }
               </p>
+              <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtIdentity}>
+                { this.props.showNinAtIdentity ? 
+                  this.props.translate("nin_hide_last_four_digits") : 
+                  this.props.translate("nin_show_last_four_digits")
+                }
+              </button> 
               <EduIDButton
-                key="2"
+                key="3"
                 className="icon-button"
                 onClick={this.props.handleDelete}
               >
@@ -60,13 +69,20 @@ export class NinDisplay extends Component {
           ];
         } else {
           userData = [
-            <Link
-              key="1"
-              to={`/profile/verify-identity/`}
-              className="display-data unverified"
-            >
-              <span>{this.props.nins[0].number}</span>
-            </Link>,
+            <div key="1" className="display-nin-show-hide">
+              <p key="1" className="display-data verified">
+                { this.props.showNinAtProfile  ? 
+                  this.props.nins[0].number :  
+                  this.props.nins[0].number.replace(/\d{4}$/, '****')
+                }
+              </p>
+             <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtProfile}>
+                { this.props.showNinAtProfile ? 
+                  this.props.translate("nin_hide_last_four_digits") : 
+                  this.props.translate("nin_show_last_four_digits")
+                }
+              </button> 
+            </div>
           ];
         }
       }

@@ -191,7 +191,8 @@ button.btn.icon-button {
 }
 
 button.btn.table-button.btn.btn-primary,
-button.btn-link.nobutton.verify-status-label {
+button.btn-link.nobutton.verify-status-label,
+.show-hide-button {
   color: #ff500d;
   font-size: 0.75rem;
   background-color: transparent;
@@ -206,6 +207,10 @@ button.btn-link.nobutton.verify-status-label {
     border: solid 1px transparent;
     outline: none;
   }
+}
+
+.show-hide-button {
+  margin: 0;
 }
 
 /* styles for links that are also buttons */
@@ -236,7 +241,6 @@ button.btn-link {
   button.btn {
     font-size: 0.9rem;
   }
-
   
   button.modal-button.ok-button,
   a.modal-button.ok-button,
@@ -251,5 +255,9 @@ button.btn-link {
   #add-more-button {
     width: auto;
     padding: 0;
+  }
+
+  .show-hide-button {
+    padding: 0.625rem 0.5rem;
   }
 }
