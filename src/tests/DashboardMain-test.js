@@ -8,6 +8,7 @@ import Header from "containers/Header";
 import Footer from "containers/Footer";
 import MainContainer from "containers/DashboardMain";
 import Notifications from "containers/Notifications";
+import { MemoryRouter } from "react-router-dom";
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
@@ -56,7 +57,9 @@ function setupComponent() {
   };
   const wrapper = mount(
     <Provider store={store}>
-      <MainContainer {...props} />
+      <MemoryRouter>
+        <MainContainer {...props} />
+      </MemoryRouter>
     </Provider>
   );
   return {

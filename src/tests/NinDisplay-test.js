@@ -61,7 +61,7 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
   it("Renders the saved number", () => {
     const { wrapper } = setupComponent();
     const number = wrapper.find("p");
-    expect(number.text()).toBe("199901100006");
+    expect(number.text()).toContain("****");
   });
 
   it("Renders the saved number and icon button (remove)", () => {
@@ -232,17 +232,17 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
     };
   }
   // state.nins = [{ number: "196701110005", verified: false, primary: false }];
-  it("Renders a clickable number if a nin has been added nin", () => {
+  it("Renders a nonclickable number if a nin has been added nin", () => {
     const { wrapper } = setupComponent();
-    const unverifiedNumber = wrapper.find("a");
+    const unverifiedNumber = wrapper.find("p");
     expect(unverifiedNumber.exists()).toEqual(true);
-    expect(unverifiedNumber.text()).toContain("196701100006");
+    expect(unverifiedNumber.text()).toContain("19670110****");
   });
 
-  it("Renders a link to '/profile/verify-identity/'", () => {
+  it("Renders a show/hide button", () => {
     const { wrapper } = setupComponent();
-    const unverifiedNumber = wrapper.find("a");
-    expect(unverifiedNumber.props().href).toBe("/profile/verify-identity/");
+    const unverifiedNumber = wrapper.find("button");
+    expect(unverifiedNumber.text()).toContain("SHOW");
   });
 });
 
