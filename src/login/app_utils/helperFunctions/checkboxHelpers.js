@@ -1,8 +1,8 @@
 export let createInitValues = (invitesByRole) => {
   // 1. remove ".com" from email address to be able to set unique names to each checkbox
-  let emails = invitesByRole.map((invite, i) => invite.email.split(".")[0]);
-  let memberStatus = invitesByRole.map((invite, i) => invite.member);
-  let ownerStatus = invitesByRole.map((invite, i) => invite.owner);
+  let emails = invitesByRole.map((invite) => invite.email.split(".")[0]);
+  let memberStatus = invitesByRole.map((invite) => invite.member);
+  let ownerStatus = invitesByRole.map((invite) => invite.owner);
 
   // 2. data structure required to set initial values for all checkboxes
   let initialValues = emails.reduce((obj, email, i) => {
