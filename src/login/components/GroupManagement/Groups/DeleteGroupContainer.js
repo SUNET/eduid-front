@@ -3,7 +3,7 @@ import DeleteGroup from "./DeleteGroup";
 import * as deleteGroupActions from "../../../redux/actions/deleteGroupActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {};
 };
 
