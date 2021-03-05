@@ -18,6 +18,12 @@ export const POST_MOBILE_PRIMARY = "POST_MOBILE_PRIMARY";
 export const POST_MOBILE_PRIMARY_SUCCESS = "POST_PHONE_PRIMARY_SUCCESS";
 export const POST_MOBILE_PRIMARY_FAIL = "POST_PHONE_PRIMARY_FAIL";
 
+export function getMobiles() {
+  return {
+    type: GET_MOBILES_SUCCESS
+  };
+}
+
 export function postMobile() {
   return {
     type: POST_MOBILE

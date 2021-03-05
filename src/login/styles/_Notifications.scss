@@ -43,6 +43,83 @@
   }
 }
 
+.notification-dot {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  background-color: $orange-highlight;
+  border-radius: 50%;
+  margin-top: -1rem;
+}
+.notification-dot-inner{
+  background-color:$orange-highlight;
+  border: solid 1px $light-gray;
+  top: 10%; 
+  left: 10%;
+  width: 80%; /* of the notification-dot */
+  height: 80%; /* of the notification-dot */
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Wrapping */
+.speech-bubbletip-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+/* Absolute positioning */
+.speech-bubbletip {
+  display: inline-block;
+  position: absolute;
+  border-radius: 4px;
+  left: calc(50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+  padding: 6px;
+  color: $white;
+  background: $black;
+  font-size: 0.875rem;
+  font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
+  line-height: 1;
+  z-index: 100;
+  white-space: nowrap;
+
+  & b {
+    font-weight: 700;
+  }
+}
+
+/* CSS border triangles */
+.speech-bubbletip::before {
+  content: " ";
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-width: 6px;
+}
+
+/* Absolute positioning */
+.speech-bubbletip {
+  top: calc(50px * -1);
+  left: calc(50% * -1);
+}
+
+/* CSS border triangles */
+.speech-bubbletip::before {
+  top: 100%;
+  border-top-color: $black;
+}
+
+.speech-bubbletip::before,
+.speech-bubbletip.settings.en::before,
+.speech-bubbletip.settings.sv::before {
+  left: 52%;
+}
+
 @media (max-width: 823px) {
   .alert.alert-dismissible {
     & span {
@@ -58,6 +135,12 @@
       width: calc(80% - 1.25rem);
     }
   }
+  .speech-bubbletip.settings.sv {
+    left: -100px;
+  }
+  .speech-bubbletip.settings.sv::before {
+    left: 74%;
+  }
 }
 
 @media (max-width: 568px) {
@@ -69,5 +152,44 @@
     & span {
       width: calc(100% - 1.25rem);
     }
+  }
+}
+
+@media (max-width: 432px) {
+  .speech-bubbletip.settings,
+  .speech-bubbletip.identity {
+    width: 270px;
+    white-space: normal;
+    top: -65px;
+  }
+  .speech-bubbletip.identity.short {
+    top: -52px;
+  }
+  .speech-bubbletip.settings.en {
+    left: -80px;
+  }
+  .speech-bubbletip.settings.sv {
+    left: 5px;
+  }
+  .speech-bubbletip.identity {
+    left: -56px;
+  }
+  .speech-bubbletip.identity::before {
+    left: 70%;
+  }
+  .speech-bubbletip.settings.en::before {
+    left: 80%;
+  }
+  .speech-bubbletip.settings.sv::before {
+    left: 48%;
+  }
+}
+
+@media (max-width: 384px) {
+  .speech-bubbletip.settings.en{
+    left: 55px;
+  }
+  .speech-bubbletip.settings.en::before {
+    left: 30%;
   }
 }
