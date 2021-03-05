@@ -99,7 +99,7 @@ describe("createInitValues returns an object", () => {
     expect(fewInvitesByRoleLength * 2).toBe(fewInitialValuesLength);
   });
 
-  it("pairing invite emails with its role/s", () => {
+  it("generates the expected data structure (object with email-role keys and boolean values)", () => {
     let initialValues = createInitValues(mixedRolesInvitesByRole);
     expect(initialValues).toEqual(memberOnlyHardcodedInitialValues);
   });
@@ -107,11 +107,6 @@ describe("createInitValues returns an object", () => {
 
 let noEmail = "";
 let email = "hardcoded25@test.email";
-
-let hardcodedCheckboxNames = [
-  { name: "hardcoded25@test-member", label: "" },
-  { name: "hardcoded25@test-owner", label: "" },
-];
 
 describe("createCheckboxNamesAndLabels returns an array", () => {
   it("with invites", () => {
@@ -131,4 +126,12 @@ describe("createCheckboxNamesAndLabels returns an array", () => {
     expect(emailLength * 2).toBe(checkboxNamesLength);
   });
 
+  it("generates the expected data structure (name and label)", () => {
+    let hardcodedCheckboxNames = [
+      { name: "hardcoded25@test-member", label: "" },
+      { name: "hardcoded25@test-owner", label: "" },
+    ];
+    let checkboxNames = createCheckboxNamesAndLabels(email);
+    expect(checkboxNames).toStrictEqual(hardcodedCheckboxNames);
+  });
 });
