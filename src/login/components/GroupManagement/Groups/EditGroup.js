@@ -1,45 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNavId } from "../../../redux/actions/addDataToStoreActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
 import DeleteGroup from "./DeleteGroup";
 import EditInvite from "../Invites/EditInvite";
 
-const EditGroup = (props) => {
-  const {
-    group,
-    handleAddNavIdToStore,
-    savedNavId,
-    toggleGroupsListOrEditGroup,
-  } = props;
-  const { display_name } = props.group;
-  const [navId, setNavId] = useState(savedNavId);
-  useEffect(() => {
-    handleAddNavIdToStore(navId);
-  }, [navId]);
-  return (
-    <div className="edit-data">
-      <div className="title">
-        <p>Edit {display_name}</p>
-        <button
-          className="save-button"
-          onClick={() => {
-            toggleGroupsListOrEditGroup(group);
-          }}
-        >
-          save
-        </button>
-      </div>
-      <EditGroupNav navId={navId} setNavId={setNavId} />
-      <EditGroupNavParent
-        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
-        navId={navId}
-        group={group}
-      />
-    </div>
+const EditGroupNav = () => {
+  const [navId, setNavId] = useState(
+    useSelector((state) => state.groups.navId)
   );
-};
-
-const EditGroupNav = ({ navId, setNavId }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(addNavId(navId));
+  }, [navId]);
   const navContent = [
     { "create-invite": "Invite" },
     { "edit-invite": "Membership" },
@@ -62,7 +36,8 @@ const EditGroupNav = ({ navId, setNavId }) => {
   );
 };
 
-const EditGroupNavParent = ({ navId, group, toggleGroupsListOrEditGroup }) => {
+const EditGroupNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
+  const navId = useSelector((state) => state.groups.navId);
   if (navId === "create-invite") {
     return <InvitesParent group={group} />;
   } else if (navId === "edit-invite") {
@@ -76,6 +51,31 @@ const EditGroupNavParent = ({ navId, group, toggleGroupsListOrEditGroup }) => {
     );
   }
 };
+
+const EditGroup = ({ group, toggleGroupsListOrEditGroup }) => {
+  const { display_name } = group;
+  return (
+    <div className="edit-data">
+      <div className="title">
+        <p>Edit {display_name}</p>
+        <button
+          className="save-button"
+          onClick={() => {
+            toggleGroupsListOrEditGroup(group);
+          }}
+        >
+          save
+        </button>
+      </div>
+      <EditGroupNav />
+      <EditGroupNavParent
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+        group={group}
+      />
+    </div>
+  );
+};
+
 
 // EditGroup.propTypes = {};
 

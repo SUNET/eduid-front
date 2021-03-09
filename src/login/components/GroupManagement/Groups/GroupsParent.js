@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import GroupsList from "./GroupsList";
-import EditGroup from "./EditGroupContainer";
+import EditGroup from "./EditGroup";
 
 const LOCAL_STORAGE_PERSISTED_EDIT_GROUP = "persistedEditGroup";
 const LOCAL_STORAGE_PERSISTED_GROUP = "persistedGroup";
