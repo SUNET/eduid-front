@@ -4,6 +4,7 @@ const autoprefixer = require("autoprefixer");
 const precss = require("precss");
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -26,6 +27,12 @@ module.exports = {
     publicPath: "https://html.eduid.docker/static/front-build/",
     filename: "[name]-bundle.dev.js"
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'My App',
+      filename: 'dist/index-old.html'
+    })
+  ],
   devtool: "source-map",
   resolve: {
     // allow us to import components in tests like:
