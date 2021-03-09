@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
-import DeleteGroup from "./DeleteGroupContainer";
+import DeleteGroup from "./DeleteGroup";
 import EditInvite from "../Invites/EditInvite";
 
 const EditGroup = (props) => {
