@@ -1,12 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteGroup } from "../../../redux/actions/deleteGroupActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../../components/EduIDButton";
 
-const DeleteGroup = ({
-  groupId,
-  handleDeleteGroup,
-  toggleGroupsListOrEditGroup,
-}) => {
+const DeleteGroup = ({ groupId, toggleGroupsListOrEditGroup }) => {
+  const dispatch = useDispatch();
   return (
     <div className="delete-group">
       <h3>Delete your group</h3>
@@ -15,7 +14,8 @@ const DeleteGroup = ({
         type="submit"
         className="settings-button"
         onClick={() => {
-          handleDeleteGroup(groupId), toggleGroupsListOrEditGroup("");
+          dispatch(deleteGroup(groupId));
+          toggleGroupsListOrEditGroup("");
         }}
       >
         Delete group
