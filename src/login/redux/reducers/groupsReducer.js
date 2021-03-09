@@ -1,5 +1,6 @@
 import * as getDataActions from "../actions/getAllGroupMgmtDataActions";
 import * as createGroupActions from "../actions/createGroupActions";
+import * as deleteGroupActions from "../actions/deleteGroupActions";
 
 const groupsData = {
   message: "",
@@ -30,6 +31,11 @@ let groupsReducer = (state = groupsData, action) => {
       return {
         ...state,
         loading: false,
+        data: [...action.payload.groups],
+      };
+    case deleteGroupActions.POST_GROUP_MANAGEMENT_DELETE_SUCCESS:
+      return {
+        ...state,
         data: [...action.payload.groups],
       };
     default:

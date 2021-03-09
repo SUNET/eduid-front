@@ -21,18 +21,13 @@ module.exports = {
     signup: "./src/entry-points/signup",
     dashboard: "./src/entry-points/dashboard",
     login: "./src/login/app_init/index",
+    errors: "./src/entry-points/errors",
   },
   output: {
     path: path.join(__dirname, "build"),
     publicPath: "https://html.eduid.docker/static/front-build/",
     filename: "[name]-bundle.dev.js"
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'My App',
-      filename: 'dist/index-old.html'
-    })
-  ],
   devtool: "source-map",
   resolve: {
     // allow us to import components in tests like:
@@ -88,7 +83,7 @@ module.exports = {
       {
         test: /\.gif$/,
         loader: "file-loader"
-      }
+      },
     ]
   },
   plugins: [
@@ -107,6 +102,13 @@ module.exports = {
           return [autoprefixer, precss];
         }
       }
+    }),
+    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      hash: true,
+      template: "./public/errors.html",
+      filename: "./errors.html",
+      chunks: ["errors"]
     })
     // new BundleAnalyzerPlugin()
   ]

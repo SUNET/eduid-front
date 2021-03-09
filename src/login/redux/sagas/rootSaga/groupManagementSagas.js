@@ -3,10 +3,12 @@ import * as allDataActions from "../../actions/getAllGroupMgmtDataActions";
 import * as createGroupActions from "../../actions/createGroupActions";
 import * as createInviteActions from "../../actions/createInviteActions";
 import * as getOutgoingInvitesActions from "../../actions/getOutgoingInvitesActions";
+import * as deleteGroupActions from "../../actions/deleteGroupActions";
 import { getAllDataSaga } from "../groups/getAllDataSaga";
 import { createGroupSaga } from "../groups/createGroupSaga";
 import { createInviteSaga } from "../invites/createInviteSaga";
 import { getAllOutgoingInvitesSaga } from "../invites/getAllOutgoingInvitesSaga";
+import { deleteGroupSaga } from "../groups/deleteGroupSaga";
 
 // connecting actions (redux) with sagas (fetch)
 const groupsSagas = [
@@ -18,6 +20,7 @@ const groupsSagas = [
     getOutgoingInvitesActions.GET_ALL_OUTGOING_INVITES,
     getAllOutgoingInvitesSaga
   ),
+  takeLatest(deleteGroupActions.POST_DELETE_GROUP, deleteGroupSaga),
 ];
 
 export default groupsSagas;
