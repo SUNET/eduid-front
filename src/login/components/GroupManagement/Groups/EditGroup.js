@@ -6,7 +6,7 @@ import InvitesParent from "../Invites/InvitesParentContainer";
 import DeleteGroup from "./DeleteGroup";
 import EditInvite from "../Invites/EditInvite";
 
-const EditGroupNav = () => {
+const RenderNav = () => {
   const [navId, setNavId] = useState(
     useSelector((state) => state.groups.navId)
   );
@@ -36,7 +36,7 @@ const EditGroupNav = () => {
   );
 };
 
-const EditGroupNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
+const RenderNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
   const navId = useSelector((state) => state.groups.navId);
   if (navId === "create-invite") {
     return <InvitesParent group={group} />;
@@ -67,8 +67,8 @@ const EditGroup = ({ group, toggleGroupsListOrEditGroup }) => {
           save
         </button>
       </div>
-      <EditGroupNav />
-      <EditGroupNavParent
+      <RenderNav />
+      <RenderNavParent
         toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
         group={group}
       />
