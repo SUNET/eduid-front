@@ -15,12 +15,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = () => {
-  return {};
-};
-
-const InvitesParentContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(InvitesParent);
+const InvitesParentContainer = connect(mapStateToProps)(InvitesParent);
 export default i18n(InvitesParentContainer);
