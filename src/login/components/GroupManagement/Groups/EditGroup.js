@@ -5,7 +5,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
 import DeleteGroup from "./DeleteGroup";
 
-const RenderText = ({ group, toggleGroupsListOrEditGroup }) => {
+const RenderHeader = ({ group, toggleGroupsListOrEditGroup }) => {
   const { display_name } = group;
   return (
     <div className="title">
@@ -69,7 +69,7 @@ const RenderNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
 const EditGroup = ({ group, toggleGroupsListOrEditGroup }) => {
   return (
     <div className="edit-data">
-      <RenderText
+      <RenderHeader
         group={group}
         toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
       />
