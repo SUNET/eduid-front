@@ -1,37 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNavId } from "../../../redux/actions/addDataToStoreActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
-import DeleteGroup from "./DeleteGroupContainer";
+import DeleteGroup from "./DeleteGroup";
 
-const EditGroup = (props) => {
-  const {
-    group,
-    handleAddNavIdToStore,
-    savedNavId,
-    toggleGroupsListOrEditGroup,
-  } = props;
-
-  const [navId, setNavId] = useState(savedNavId);
-  useEffect(() => {
-    handleAddNavIdToStore(navId);
-  }, [navId]);
-  return (
-    <div className="edit-data">
-      <EditGroupText
-        group={group}
-        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
-      />
-      <EditGroupNav navId={navId} setNavId={setNavId} />
-      <EditGroupNavParent
-        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
-        navId={navId}
-        group={group}
-      />
-    </div>
-  );
-};
-
-const EditGroupText = ({ group, toggleGroupsListOrEditGroup }) => {
+const RenderHeader = ({ group, toggleGroupsListOrEditGroup }) => {
   const { display_name } = group;
   return (
     <div className="title">
@@ -47,7 +21,15 @@ const EditGroupText = ({ group, toggleGroupsListOrEditGroup }) => {
     </div>
   );
 };
-const EditGroupNav = ({ navId, setNavId }) => {
+
+const RenderNav = () => {
+  const [navId, setNavId] = useState(
+    useSelector((state) => state.groups.navId)
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(addNavId(navId));
+  }, [navId]);
   const navContent = [
     { "create-invite": "Invite" },
     { "edit-invite": "Membership" },
@@ -70,7 +52,8 @@ const EditGroupNav = ({ navId, setNavId }) => {
   );
 };
 
-const EditGroupNavParent = ({ navId, group, toggleGroupsListOrEditGroup }) => {
+const RenderNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
+  const navId = useSelector((state) => state.groups.navId);
   if (navId === "create-invite" || navId === "edit-invite") {
     return <InvitesParent group={group} />;
   } else if (navId === "delete-group") {
@@ -83,6 +66,22 @@ const EditGroupNavParent = ({ navId, group, toggleGroupsListOrEditGroup }) => {
   }
 };
 
-// EditGroup.propTypes = {};
+const EditGroup = ({ group, toggleGroupsListOrEditGroup }) => {
+  return (
+    <div className="edit-data">
+      <RenderHeader
+        group={group}
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+      />
+      <RenderNav />
+      <RenderNavParent
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+        group={group}
+      />
+    </div>
+  );
+};
+
+EditGroup.propTypes = {};
 
 export default InjectIntl(EditGroup);

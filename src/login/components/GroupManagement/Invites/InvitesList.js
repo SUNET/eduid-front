@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InviteListItem from "./InviteListItem";
 import { createInitValues } from "../../../app_utils/helperFunctions/checkboxHelpers";
 import invitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
 
-const RenderListHeading = ({ columnNumber }) => {
+const RenderListHeading = () => {
+  const navId = useSelector((state) => state.groups.navId);
+  let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
   let headingText =
     columnNumber === "four-columns"
       ? ["Invites", "Member", "Owner", ""]
@@ -20,7 +23,7 @@ const RenderListHeading = ({ columnNumber }) => {
   );
 };
 
-const RenderListItems = ({ invitesForGroup, navId, columnNumber }) => {
+const RenderListItems = ({ invitesForGroup }) => {
   const invitesFromMeByRole = invitesByRole(invitesForGroup);
   const initialValues = createInitValues(invitesFromMeByRole);
   return (
@@ -30,9 +33,7 @@ const RenderListItems = ({ invitesForGroup, navId, columnNumber }) => {
           <InviteListItem
             key={i}
             invite={invite}
-            navId={navId}
             initialValues={initialValues}
-            columnNumber={columnNumber}
           />
         ))}
       </ul>
@@ -40,21 +41,16 @@ const RenderListItems = ({ invitesForGroup, navId, columnNumber }) => {
   );
 };
 
-const InvitesList = ({ groupId, allInvitesFromMe, navId }) => {
+const InvitesList = ({ groupId, allInvitesFromMe }) => {
   let invitesForGroup = allInvitesFromMe.filter(
     (invite) => invite.group_identifier === groupId
   );
-  let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
   return (
     <div className="invites-list">
       <h3>Sent invites</h3>
       <div className="list-data invites">
-        <RenderListHeading columnNumber={columnNumber} />
-        <RenderListItems
-          invitesForGroup={invitesForGroup}
-          navId={navId}
-          columnNumber={columnNumber}
-        />
+        <RenderListHeading />
+        <RenderListItems invitesForGroup={invitesForGroup} />
       </div>
     </div>
   );

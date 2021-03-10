@@ -10,18 +10,10 @@ const mapStateToProps = (state) => {
     groupIdsArray = allInvitesFromMe.map((group) => group.group_identifier);
   }
   return {
-    navId: state.groups.navId,
     allInvitesFromMe,
     groupsWithInvites: groupIdsArray,
   };
 };
 
-const mapDispatchToProps = () => {
-  return {};
-};
-
-const InvitesParentContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(InvitesParent);
+const InvitesParentContainer = connect(mapStateToProps)(InvitesParent);
 export default i18n(InvitesParentContainer);
