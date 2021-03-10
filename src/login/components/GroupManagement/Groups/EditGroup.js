@@ -1,13 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNavId } from "../../../redux/actions/addDataToStoreActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
 import DeleteGroup from "./DeleteGroup";
 import EditInvite from "../Invites/EditInvite";
 
-const EditGroup = (props) => {
-  const { group, toggleGroupsListOrEditGroup } = props;
-  const { display_name } = props.group;
-  const [parentId, setNavParent] = useState("invite");
+const RenderNav = () => {
+  const [navId, setNavId] = useState(
+    useSelector((state) => state.groups.navId)
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(addNavId(navId));
+  }, [navId]);
+  const navContent = [
+    { "create-invite": "Invite" },
+    { "edit-invite": "Membership" },
+    { "delete-group": "Delete" },
+  ];
+  return (
+    <nav>
+      {navContent.map((item, i) => {
+        let id = Object.keys(item).toString();
+        let text = Object.values(item);
+        return (
+          <li key={i} onClick={(e) => setNavId(e.target.id)}>
+            <p className={navId === id ? "active" : null} id={id}>
+              {text}
+            </p>
+          </li>
+        );
+      })}
+    </nav>
+  );
+};
+
+const RenderNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
+  const navId = useSelector((state) => state.groups.navId);
+  if (navId === "create-invite") {
+    return <InvitesParent group={group} />;
+  } else if (navId === "edit-invite") {
+    return <EditInvite />;
+  } else if (navId === "delete-group") {
+    return (
+      <DeleteGroup
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+        groupId={group.identifier}
+      />
+    );
+  }
+};
+
+const EditGroup = ({ group, toggleGroupsListOrEditGroup }) => {
+  const { display_name } = group;
   return (
     <div className="edit-data">
       <div className="title">
@@ -21,53 +67,15 @@ const EditGroup = (props) => {
           save
         </button>
       </div>
-      <EditGroupNav parentId={parentId} setNavParent={setNavParent} />
-      <EditGroupParent
+      <RenderNav />
+      <RenderNavParent
         toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
-        parentId={parentId}
         group={group}
       />
     </div>
   );
 };
 
-const EditGroupNav = ({ parentId, setNavParent }) => {
-  const navContent = [
-    { invite: "Invite" },
-    { membership: "Membership" },
-    { delete: "Delete" },
-  ];
-  return (
-    <nav>
-      {navContent.map((item, i) => {
-        let id = Object.keys(item).toString();
-        let text = Object.values(item);
-        return (
-          <li key={i} onClick={(e) => setNavParent(e.target.id)}>
-            <p className={parentId === id ? "active" : null} id={id}>
-              {text}
-            </p>
-          </li>
-        );
-      })}
-    </nav>
-  );
-};
-
-const EditGroupParent = ({ parentId, group, toggleGroupsListOrEditGroup }) => {
-  if (parentId === "invite") {
-    return <InvitesParent group={group} />;
-  } else if (parentId === "membership") {
-    return <EditInvite />;
-  } else if (parentId === "delete") {
-    return (
-      <DeleteGroup
-        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
-        groupId={group.identifier}
-      />
-    );
-  }
-};
 
 // EditGroup.propTypes = {};
 
