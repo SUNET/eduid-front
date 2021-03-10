@@ -250,7 +250,7 @@ article {
     display: flex;
     align-items: center;
     justify-content: center;
-    &.left-align {
+    &:first-child {
       justify-content: flex-start;
     }
   }

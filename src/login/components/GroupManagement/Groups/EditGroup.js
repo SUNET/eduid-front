@@ -4,7 +4,23 @@ import { addNavId } from "../../../redux/actions/addDataToStoreActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InvitesParent from "../Invites/InvitesParentContainer";
 import DeleteGroup from "./DeleteGroup";
-import EditInvite from "../Invites/EditInvite";
+
+const RenderHeader = ({ group, toggleGroupsListOrEditGroup }) => {
+  const { display_name } = group;
+  return (
+    <div className="title">
+      <p>Edit {display_name}</p>
+      <button
+        className="save-button"
+        onClick={() => {
+          toggleGroupsListOrEditGroup(group);
+        }}
+      >
+        save
+      </button>
+    </div>
+  );
+};
 
 const RenderNav = () => {
   const [navId, setNavId] = useState(
@@ -38,10 +54,8 @@ const RenderNav = () => {
 
 const RenderNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
   const navId = useSelector((state) => state.groups.navId);
-  if (navId === "create-invite") {
+  if (navId === "create-invite" || navId === "edit-invite") {
     return <InvitesParent group={group} />;
-  } else if (navId === "edit-invite") {
-    return <EditInvite />;
   } else if (navId === "delete-group") {
     return (
       <DeleteGroup
@@ -53,20 +67,12 @@ const RenderNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
 };
 
 const EditGroup = ({ group, toggleGroupsListOrEditGroup }) => {
-  const { display_name } = group;
   return (
     <div className="edit-data">
-      <div className="title">
-        <p>Edit {display_name}</p>
-        <button
-          className="save-button"
-          onClick={() => {
-            toggleGroupsListOrEditGroup(group);
-          }}
-        >
-          save
-        </button>
-      </div>
+      <RenderHeader
+        group={group}
+        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
+      />
       <RenderNav />
       <RenderNavParent
         toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
@@ -76,7 +82,6 @@ const EditGroup = ({ group, toggleGroupsListOrEditGroup }) => {
   );
 };
 
-
-// EditGroup.propTypes = {};
+EditGroup.propTypes = {};
 
 export default InjectIntl(EditGroup);
