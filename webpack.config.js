@@ -87,6 +87,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      hash: true,
+      template: "./public/errors.html",
+      filename: "errors.html",
+      chunks: ["errors"]
+    }),
     // Initial configuration
     initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),
@@ -103,13 +109,6 @@ module.exports = {
         }
       }
     }),
-    new HtmlWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      hash: true,
-      template: "./public/errors.html",
-      filename: "./errors.html",
-      chunks: ["errors"]
-    })
     // new BundleAnalyzerPlugin()
   ]
 };
