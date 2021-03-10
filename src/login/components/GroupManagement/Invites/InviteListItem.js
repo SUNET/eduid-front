@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
@@ -26,7 +27,9 @@ const RenderRemoveButton = () => (
   </div>
 );
 
-const InviteListItem = ({ columnNumber, invite }) => {
+const InviteListItem = ({ invite }) => {
+  const navId = useSelector((state) => state.groups.navId);
+  let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
   let { email, member, owner } = invite;
   return (
     <li>

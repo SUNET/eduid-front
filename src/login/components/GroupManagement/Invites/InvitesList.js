@@ -1,9 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import InviteListItem from "./InviteListItem";
 import invitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
 
-const RenderListHeading = ({ columnNumber }) => {
+const RenderListHeading = () => {
+  const navId = useSelector((state) => state.groups.navId);
+  let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
   let headingText =
     columnNumber === "four-columns"
       ? ["Invites", "Member", "Owner", ""]
@@ -19,39 +22,29 @@ const RenderListHeading = ({ columnNumber }) => {
   );
 };
 
-const RenderListItems = ({ invitesForGroup, navId, columnNumber }) => {
+const RenderListItems = ({ invitesForGroup }) => {
   let invitesFromMeByRole = invitesByRole(invitesForGroup);
   return (
     <div className="list-data invites">
       <ul>
         {invitesFromMeByRole.map((invite, i) => (
-          <InviteListItem
-            key={i}
-            invite={invite}
-            navId={navId}
-            columnNumber={columnNumber}
-          />
+          <InviteListItem key={i} invite={invite} />
         ))}
       </ul>
     </div>
   );
 };
 
-const InvitesList = ({ groupId, allInvitesFromMe, navId }) => {
+const InvitesList = ({ groupId, allInvitesFromMe }) => {
   let invitesForGroup = allInvitesFromMe.filter(
     (invite) => invite.group_identifier === groupId
   );
-  let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
   return (
     <div className="invites-list">
       <h3>Sent invites</h3>
       <div className="list-data invites">
-        <RenderListHeading columnNumber={columnNumber} />
-        <RenderListItems
-          invitesForGroup={invitesForGroup}
-          navId={navId}
-          columnNumber={columnNumber}
-        />
+        <RenderListHeading />
+        <RenderListItems invitesForGroup={invitesForGroup} />
       </div>
     </div>
   );

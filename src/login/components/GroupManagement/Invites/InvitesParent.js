@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CreateInvite from "./CreateInviteContainer";
 import InvitesList from "./InvitesList";
@@ -17,10 +18,10 @@ const InvitesParent = ({
   groupsWithInvites,
   allInvitesFromMe,
   group,
-  navId,
 }) => {
   let { identifier } = group;
   let groupHasInvites = groupsWithInvites.includes(identifier);
+  const navId = useSelector((state) => state.groups.navId);
   return (
     <div className="invites">
       {navId === "edit-invite" ? (
@@ -30,7 +31,6 @@ const InvitesParent = ({
       )}
       {groupHasInvites && (
         <InvitesList
-          navId={navId}
           groupId={identifier}
           allInvitesFromMe={allInvitesFromMe}
         />
