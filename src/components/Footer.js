@@ -5,6 +5,7 @@ import "../login/styles/index.scss";
 
 class Footer extends Component {
   render() {
+    console.log("this.props.faq_link", this.props.faq_link)
     let langElems = "";
     const langs = Object.getOwnPropertyNames(this.props.languages);
     langElems = langs.map((lang, index) => {
@@ -35,7 +36,7 @@ class Footer extends Component {
         <nav key="1">
           <ul>
             <li key="0">
-              <a className="help-link" href={this.props.faq_link}>
+              <a className="help-link" href={this.props.faq_link ? this.props.faq_link : "/faq.html"}>
                 {this.props.translate("header.faq")}
               </a>
             </li>
