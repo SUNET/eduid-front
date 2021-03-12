@@ -17,18 +17,14 @@ import { createLogger } from "redux-logger";
 import { Provider } from "react-intl-redux";
 import { updateIntl } from "react-intl-redux";
 import { createStore, applyMiddleware, compose } from "redux";
-
 import eduIDApp from "./signup-store";
 import notifyAndDispatch from "./notify-middleware";
-// import { getSignupConfig } from "actions/SignupMain";
-// import { getCodeStatus } from "actions/CodeVerified";
 import { history } from "components/ErrorsMain";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 /* Store */
-
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
@@ -46,34 +42,11 @@ export const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 /* render app */
-
-// const findCode = function(path) {
-//   const re = new RegExp("/code/(.+)$"),
-//     match = re.exec(path);
-//   if (match !== null) {
-//     return match[1];
-//   }
-//   return "";
-// };
-
-// const initState = function() {
-//   const path = window.location.pathname;
-//   const code = findCode(path);
-//   if (code) {
-//     store.dispatch(getCodeStatus(code));
-//   } else {
-//     store.dispatch(getSignupConfig());
-//   }
-// };
-
 const init_app = function(target, component) {
-  let app;
-  // action = initState;
   const language = navigator.languages
     ? navigator.languages[0]
     : navigator.language || navigator.userLanguage;
   const supported = AVAILABLE_LANGUAGES.map(lang => lang[0]);
-
   if (supported.includes(language)) {
     const lang_code = language.substring(0, 2);
     store.dispatch(
@@ -83,7 +56,7 @@ const init_app = function(target, component) {
       })
     );
   }
-  app = <Provider store={store}>{component}</Provider>;
+  const app = <Provider store={store}>{component}</Provider>;
   ReactDOM.render(app, target);
 };
 
