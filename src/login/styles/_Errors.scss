@@ -1,0 +1,42 @@
+.swamid-error ul{
+    list-style-type: disc !important;
+    font-size: 1.25rem;
+    & span {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+
+      }
+    & ul {
+        font-family: "ProximaNova-Regular";
+        padding: 0.75rem 0;
+        line-height: 1;
+    }
+  }
+  
+  .swamid-error li {
+    margin-top: 24px;
+  }
+  
+  .swamid-error p {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 823px) {
+    .swamid-error {
+      width: 75%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .swamid-error {
+      width: calc(100% - 40px);
+    }
+  
+    .swamid-error p {
+      margin-top: 2rem;
+    }
+  }
+  
+  
