@@ -28,49 +28,39 @@ const Errors = (props) => {
     })
   }, []);
 
-  let errorText = "";
+  let catchAllErrorInfo = (
+    <>
+      { props.translate("error_identification_failed"),
+        props.translate("error_authentication"),
+        props.translate("error_insufficient_privileges"),
+        props.translate("error_access")
+      }
+    </>
+  );
+
+  let errorText = (
+    <>
+      { errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
+        errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") :
+        errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") :
+        errorUrlQuery.errorurl_code === "OTHER_ERROR" ? props.translate("error_access") : catchAllErrorInfo
+      }
+    </>
+  );
+
   let technicalInformation = 
     errorUrlQuery.technicalInformation && Object.keys(errorUrlQuery.technicalInformation).map((result, key) => {
       return <p key={key}>{errorUrlQuery.technicalInformation[result]}</p>
     }
-  )
-  if(errorUrlQuery.errorurl_code){
-    if(errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE")
-      errorText =  <span>{props.translate("identification_failed")}</span>
-    else if(errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE")
-      errorText = <p>Authentication error</p>
-    else if(errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE")
-      errorText = <p>Insufficient privileges</p>
-    else if(errorUrlQuery.errorurl_code === "OTHER_ERROR")
-      errorText = <p>Access error</p>
-    else {
-      errorText = 
-        <div className="vertical-content-margin">
-            <p className="heading">
-                <span>{props.translate("identification_failed")}</span>
-                <span>Authentication error</span>
-                <span>Insufficient privileges</span>
-                <span>Access error</span>
-            </p>
-        </div>
-    }
-  }
-  else {
-    errorText = 
-      <div className="vertical-content-margin">
-        <p className="heading">
-          <span>{props.translate("identification_failed")}</span>
-          <span>Authentication error</span>
-          <span>Insufficient privileges</span>
-          <span>Access error</span>
-        </p>
-      </div>
-  }
+  );
+
   return(
-    <>
-      {errorText}
+    <div className="vertical-content-margin">
+      <div className="swamid-error">
+        {errorText}
+      </div>
       {technicalInformation}
-    </>
+    </div>
   )
 }
 
