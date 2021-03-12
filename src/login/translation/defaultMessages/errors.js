@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedHTMLMessage  } from "react-intl";
 
 export const generalErrors = {
   // non-error errors?
@@ -297,10 +297,31 @@ export const specificErrors = {
   ),
 
   identification_failed: (
-      <FormattedMessage
-        id="identification_failed"
-        defaultMessage={`Identification failed`}
-      />
-    ),
+    <FormattedHTMLMessage
+      id="error_identification_failed"
+      defaultMessage={`Identification failed <ul><li>The service that you tried to access did not get all required attributes for identification and/or personalization.</li><li>This may be because your institution is missing those attributes or that your institution is not configured to release those attributes to the service you tried to access.</li><li>Please contact support at your institution and include the name of the service you tried to access, any missing attributes if you know what they are (the service may have informed you) and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>`}
+    />
+  ),
+
+  authentication_error: (
+    <FormattedHTMLMessage
+      id="error_authentication"
+      defaultMessage={"Authentication error <ul><li>The service you tried to access failed during the authentication stage.</li><li>This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again.</li><li>If you cannot resolve the issue yourself, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
+    />
+  ),
+
+  insufficient_privileges: (
+    <FormattedHTMLMessage
+      id="error_insufficient_privileges"
+      defaultMessage={"Insufficient privileges <ul><li>The service that you tried to access requires privileges that you do not have.</li><li>Typical requirements include:</li><li><b>A confirmed user account, or high identity assurance level (AL)</b></li><li>To confirm your user account, you need to visit IT Service Desk and identify yourself using your national ID card or passport.</li><li><b>Affiliation</b></li><li>Your affiliation describes your relationship with the Blue Star University. The set of attributes include for example student and employee. If you are a student and the service you tried to access did not receive the student affiliation, please contact IT Service Desk to correct this.</li><li><b>Some specific entitlements</b></li><li>Entitlements are specific privileges at specific services. </li><li>If you are missing entitlements that you think you should have (e.g. you should be able to access this service), please contact IT Service Desk to resolve this.</li>If you think you should have access, please contact support at your institution and include the name of the service you tried to access, any privileges that were noted as missing and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
+    />
+  ),
+
+  access_error: (
+    <FormattedHTMLMessage
+      id="error_access"
+      defaultMessage={"Access error <ul><li>An error occurred when accessing the service.</li><li>If you think you should be able to access the service, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
+    />
+  ),
 
 };
