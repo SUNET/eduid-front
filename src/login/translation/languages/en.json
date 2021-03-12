@@ -172,6 +172,7 @@
   "lmp.modal_confirm_title": "Check if your phone number is connected to your id number.",
   "lmp.verification_success": "Your national id number has been successfully verified",
   "mail_duplicated": "Added email is duplicated",
+  "identification_failed": "Identification failed",
   "main.confirmed": "Confirmed",
   "main.copyright": "SUNET 2013-2021",
   "main.unconfirmed": "Unconfirmed",

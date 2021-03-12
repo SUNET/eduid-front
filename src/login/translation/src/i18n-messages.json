@@ -436,6 +436,10 @@
     "defaultMessage": "Added email is duplicated"
   },
   {
+    "id": "identification_failed",
+    "defaultMessage": "Identification failed"
+  },
+  {
     "id": "tl.primary",
     "defaultMessage": "PRIMARY"
   },

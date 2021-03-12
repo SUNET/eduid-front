@@ -172,6 +172,7 @@
   "lmp.modal_confirm_title": "Kolla om ditt telefonnummer är kopplat till ditt personnummer.",
   "lmp.verification_success": "Ditt personummer har verifierats",
   "mail_duplicated": "E-postadressen finns redan i listan",
+  "identification_failed": "Attribut saknas",
   "main.confirmed": "Bekräftad",
   "main.copyright": "SUNET 2013-2021",
   "main.unconfirmed": "Obekräftad",

@@ -166,5 +166,9 @@
   {
     "id": "mail_duplicated",
     "defaultMessage": "Added email is duplicated"
+  },
+  {
+    "id": "identification_failed",
+    "defaultMessage": "Identification failed"
   }
 ]

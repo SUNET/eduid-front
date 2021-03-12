@@ -296,5 +296,11 @@ export const specificErrors = {
     />
   ),
 
+  identification_failed: (
+      <FormattedMessage
+        id="identification_failed"
+        defaultMessage={`Identification failed`}
+      />
+    ),
 
 };
