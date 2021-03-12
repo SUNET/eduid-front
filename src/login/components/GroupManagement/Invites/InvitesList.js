@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import { reduxForm } from "redux-form";
 import InviteListItem from "./InviteListItem";
+import disableInvitesNotInFocus from "../../../app_utils/helperFunctions/disableInvitesNotInFocus";
 import { createInitValues } from "../../../app_utils/helperFunctions/checkboxHelpers";
 import invitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const RenderListHeading = () => {
   const navId = useSelector((state) => state.groups.navId);
@@ -23,23 +25,44 @@ const RenderListHeading = () => {
   );
 };
 
-const RenderListItems = ({ invitesForGroup }) => {
+let RenderListItems = ({ invitesForGroup, pristine }) => {
+  const [isUpdate, setsUpdateStatus] = useState(false);
+  const navId = useSelector((state) => state.groups.navId);
+  const updatedInvite = useSelector((state) => state.invites.updatedInvite);
   const invitesFromMeByRole = invitesByRole(invitesForGroup);
   const initialValues = createInitValues(invitesFromMeByRole);
+  useEffect(() => {
+    navId.includes("edit") ? setsUpdateStatus(true) : null;
+  }, [updatedInvite]);
+  let disabledInvites = isUpdate
+    ? disableInvitesNotInFocus(invitesFromMeByRole, updatedInvite)
+    : [];
   return (
     <div className="list-data invites">
       <ul>
-        {invitesFromMeByRole.map((invite, i) => (
-          <InviteListItem
-            key={i}
-            invite={invite}
-            initialValues={initialValues}
-          />
-        ))}
+        {!pristine
+          ? disabledInvites.map((invite, i) => (
+              <InviteListItem
+                key={i}
+                invite={invite}
+                initialValues={initialValues}
+              />
+            ))
+          : invitesFromMeByRole.map((invite, i) => (
+              <InviteListItem
+                key={i}
+                invite={invite}
+                initialValues={initialValues}
+              />
+            ))}
       </ul>
     </div>
   );
 };
+
+RenderListItems = reduxForm({
+  form: "editInviteRole",
+})(RenderListItems);
 
 const InvitesList = ({ groupId, allInvitesFromMe }) => {
   let invitesForGroup = allInvitesFromMe.filter(
