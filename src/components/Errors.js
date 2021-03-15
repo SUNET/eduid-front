@@ -30,12 +30,10 @@ const Errors = (props) => {
 
   let catchAllErrorInfo = (
     <>
-      { 
-        props.translate("error_identification_failed"),
-        props.translate("error_authentication"),
-        props.translate("error_insufficient_privileges"),
-        props.translate("error_access")
-      }
+      {props.translate("error_identification_failed")}
+      {props.translate("error_authentication")}
+      {props.translate("error_insufficient_privileges")}
+      {props.translate("error_access")}
     </>
   );
 
@@ -49,6 +47,7 @@ const Errors = (props) => {
       }
     </>
   );
+
 
   let isTechnicalInfoNotEmpty = 
     Object.keys(errorUrlQuery.technicalInformation).some((key) => {
@@ -74,7 +73,9 @@ const Errors = (props) => {
         {errorText}
         {isTechnicalInfoNotEmpty &&
           <>
-            <h4>{props.translate("error_technical_info_heading")}</h4>
+           <div className={"technical-info-heading"}>
+              {props.translate("error_technical_info_heading")}
+            </div>
             <div className={"technical-info-box"}>
               {technicalInfo}
             </div>
