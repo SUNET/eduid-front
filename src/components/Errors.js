@@ -68,9 +68,14 @@ const Errors = (props) => {
       <div className="swamid-error">
         {errorText}
       </div>
-      <div className={isTechnicalInfoNotEmpty ? "technical-info-box" : null}>
-        {technicalInfo}
-      </div>
+      { isTechnicalInfoNotEmpty &&
+        <>
+          <h4>{props.translate("error_technical_info_heading")}</h4>
+          <div className={"technical-info-box"}>
+            {technicalInfo}
+          </div>
+        </>
+      }
     </div>
   )
 }
