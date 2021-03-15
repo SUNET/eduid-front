@@ -7,7 +7,10 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   let languages = {};
-  if (state.config.available_languages !== undefined) {
+  if (location.pathname === "/errors"){
+    languages = { en: "English", sv: "Svenska" }
+  }
+  else if (state.config.available_languages !== undefined) {
     // Old format of lists in list, remove after config update
     if (Array.isArray(state.config.available_languages)) {
       state.config.available_languages.forEach(l => {
