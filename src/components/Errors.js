@@ -8,22 +8,22 @@ export const history = createBrowserHistory();
 
 const Errors = (props) => {
   let query = new URLSearchParams(useLocation().search);
-  const [errorUrlQuery, setErrorUrlQuery] = useState({errorurlCode: "", technicalInformation: {}});
+  const [errorUrlQuery, setErrorUrlQuery] = useState({errorurl_code: "", technicalInformation: {}});
 
   useEffect(()=> {
-    let errorurlCode = query.get("errorurl_code");
-    let errorurlTs = query.get("errorurl_ts");
-    let errorurlRp = query.get("errorurl_rp");
-    let errorurlTid = query.get("errorurl_tid");
-    let errorurlCtx = query.get("errorurl_ctx");
+    let errorurl_code = query.get("errorurl_code");
+    let errorurl_ts = query.get("errorurl_ts");
+    let errorurl_rp = query.get("errorurl_rp");
+    let errorurl_tid = query.get("errorurl_tid");
+    let errorurl_ctx = query.get("errorurl_ctx");
 
     setErrorUrlQuery({
-      errorurlCode: errorurlCode, 
+      errorurl_code: errorurl_code, 
       technicalInformation: {
-        errorurlTs: errorurlTs ? errorurlTs : undefined, 
-        errorurlRp: errorurlRp ? errorurlRp : undefined,
-        errorurlTid: errorurlTid ? errorurlTid : undefined,
-        errorurlCtx: errorurlCtx ? errorurlCtx : undefined,
+        errorurl_ts: errorurl_ts ? errorurl_ts : undefined, 
+        errorurl_rp: errorurl_rp ? errorurl_rp : undefined,
+        errorurl_tid:errorurl_tid ? errorurl_tid : undefined,
+        errorurl_ctx: errorurl_ctx ? errorurl_ctx : undefined,
       }
     })
   }, []);
@@ -42,10 +42,10 @@ const Errors = (props) => {
   let errorText = (
     <>
       {
-        errorUrlQuery.errorurlCode === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
-        errorUrlQuery.errorurlCode === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") :
-        errorUrlQuery.errorurlCode === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") :
-        errorUrlQuery.errorurlCode === "OTHER_ERROR" ? props.translate("error_access") : catchAllErrorInfo
+        errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
+        errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") :
+        errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") :
+        errorUrlQuery.errorurl_code === "OTHER_ERROR" ? props.translate("error_access") : catchAllErrorInfo
       }
     </>
   );
@@ -59,23 +59,28 @@ const Errors = (props) => {
   });
 
   let technicalInfo = 
-    Object.keys(errorUrlQuery.technicalInformation).map((result, key) => {
-      return <span key={key}>{isTechnicalInfoNotEmpty && errorUrlQuery.technicalInformation[result]}</span>
-  });
+    Object.keys(errorUrlQuery.technicalInformation).map((key) => {
+      return (
+        <div className={"technical-info-text"} key={key}>
+          <p>{key.toUpperCase()}</p>
+          <p>{errorUrlQuery.technicalInformation[key]}</p>
+        </div>
+      )}
+  );
 
   return(
     <div className="vertical-content-margin">
       <div className="swamid-error">
         {errorText}
+        {isTechnicalInfoNotEmpty &&
+          <>
+            <h4>{props.translate("error_technical_info_heading")}</h4>
+            <div className={"technical-info-box"}>
+              {technicalInfo}
+            </div>
+          </>
+        }
       </div>
-      { isTechnicalInfoNotEmpty &&
-        <>
-          <h4>{props.translate("error_technical_info_heading")}</h4>
-          <div className={"technical-info-box"}>
-            {technicalInfo}
-          </div>
-        </>
-      }
     </div>
   )
 }
