@@ -21,6 +21,11 @@
   .swamid-error p {
     margin-top: 4rem;
     margin-bottom: 1rem;
+    background-color: $white;
+  }
+
+  .technical-info-box {
+    background-color: $white;
   }
   
   @media (max-width: 823px) {
