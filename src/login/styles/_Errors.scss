@@ -7,6 +7,14 @@
     }
     & ul {
       margin-bottom: 4rem;
+      div {
+        margin-left: 1rem;
+        li:nth-child(1), li:nth-child(3), li:nth-child(5){
+          list-style-type: disc;
+          margin-top: 1rem;     
+          font-family: "ProximaNova-bold";
+      }
+      }
     }
     & li {
       line-height: 1.5;
