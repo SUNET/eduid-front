@@ -28,7 +28,7 @@ const Errors = (props) => {
     })
   }, []);
 
-  let catchAllErrorInfo = (
+  let catchAllErrorCodes = (
     <>
       {props.translate("error_identification_failed")}
       {props.translate("error_authentication")}
@@ -43,7 +43,7 @@ const Errors = (props) => {
         errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
         errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") :
         errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") :
-        errorUrlQuery.errorurl_code === "OTHER_ERROR" ? props.translate("error_access") : catchAllErrorInfo
+        errorUrlQuery.errorurl_code === "OTHER_ERROR" ? props.translate("error_access") : catchAllErrorCodes
       }
     </>
   );
