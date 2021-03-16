@@ -8,7 +8,7 @@ export const history = createBrowserHistory();
 
 const Errors = (props) => {
   let query = new URLSearchParams(useLocation().search);
-  const [errorUrlQuery, setErrorUrlQuery] = useState({errorurl_code: "", technicalInformation: {}});
+  const [errorUrlQuery, setErrorUrlQuery] = useState({errorurl_code: "", technicalInformations: {}});
 
   useEffect(()=> {
     let errorurl_code = query.get("errorurl_code");
@@ -19,7 +19,7 @@ const Errors = (props) => {
 
     setErrorUrlQuery({
       errorurl_code: errorurl_code, 
-      technicalInformation: {
+      technicalInformations: {
         errorurl_ts: errorurl_ts ? errorurl_ts : undefined, 
         errorurl_rp: errorurl_rp ? errorurl_rp : undefined,
         errorurl_tid:errorurl_tid ? errorurl_tid : undefined,
@@ -50,19 +50,19 @@ const Errors = (props) => {
 
 
   let isTechnicalInfoNotEmpty = 
-    Object.keys(errorUrlQuery.technicalInformation).some((key) => {
-      if (errorUrlQuery.technicalInformation[key] !== undefined){
+    Object.keys(errorUrlQuery.technicalInformations).some((key) => {
+      if (errorUrlQuery.technicalInformations[key] !== undefined){
         return true
       } else 
       return false
   });
 
-  let technicalInfo = 
-    Object.keys(errorUrlQuery.technicalInformation).map((key) => {
+  let technicalInfomations = 
+    Object.keys(errorUrlQuery.technicalInformations).map((key) => {
       return (
         <div className={"technical-info-text"} key={key}>
           <p>{key.toUpperCase()}</p>
-          <p>{errorUrlQuery.technicalInformation[key]}</p>
+          <p>{errorUrlQuery.technicalInformations[key]}</p>
         </div>
       )}
   );
@@ -77,7 +77,7 @@ const Errors = (props) => {
               {props.translate("error_technical_info_heading")}
             </div>
             <div className={"technical-info-box"}>
-              {technicalInfo}
+              {technicalInfomations}
             </div>
           </>
         }
