@@ -14,10 +14,13 @@ const Errors = (props) => {
     let errorurl_tid = query.get("errorurl_tid");
     let errorurl_ctx = query.get("errorurl_ctx");
 
+    const convertUnixDate = new Date(errorurl_ts * 1000);
+    const newConvertTs = ' ('+ convertUnixDate.getFullYear()+'-' + ((convertUnixDate.getMonth()+1).toString())+ '-'+(convertUnixDate.getDate().toString())+')';
+
     setErrorUrlQuery({
       errorurl_code: errorurl_code, 
       technicalInformations: {
-        errorurl_ts: errorurl_ts ? errorurl_ts : undefined, 
+        errorurl_ts: errorurl_ts ? errorurl_ts + newConvertTs  : undefined, 
         errorurl_rp: errorurl_rp ? errorurl_rp : undefined,
         errorurl_tid:errorurl_tid ? errorurl_tid : undefined,
         errorurl_ctx: errorurl_ctx ? errorurl_ctx : undefined,
