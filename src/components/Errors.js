@@ -37,7 +37,7 @@ const Errors = (props) => {
     </>
   );
 
-  let errorText = (
+  let showErrorCode = (
     <>
       {
         errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
@@ -70,7 +70,7 @@ const Errors = (props) => {
   return(
     <div className="vertical-content-margin">
       <div className="swamid-error">
-        {errorText}
+        {showErrorCode}
         {isTechnicalInfoNotEmpty &&
           <>
            <div className={"technical-info-heading"}>
