@@ -6,9 +6,9 @@ export function* requestConfig() {
   try {
     const config = yield call(fetchConfig, "/errors");
     yield put(config);
-    yield put(actions.updateAvailableLanguage());
+    yield put(actions.updateErrorsConfigData());
   } catch (error) {
-    yield put(actions.updateAvailableLanguageFail(error.toString()));
+    yield put(actions.updateErrorsConfigDataFail(error.toString()));
   }
 }
 

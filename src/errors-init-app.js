@@ -12,7 +12,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import eduIDApp from "./errors-store";
 import notifyAndDispatch from "./notify-middleware";
 import { history } from "components/ErrorsMain";
-import { updateAvailableLanguage } from "actions/ErrorsMain";
+import { updateErrorsConfigData } from "actions/ErrorsMain";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -35,7 +35,7 @@ export const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 const initState = function() {
-  store.dispatch(updateAvailableLanguage());
+  store.dispatch(updateErrorsConfigData());
 };
 
 /* render app */
@@ -48,6 +48,7 @@ const init_app = function(target, component) {
   const supported = AVAILABLE_LANGUAGES.map(lang => lang[0]);
   if (supported.includes(language)) {
     const lang_code = language.substring(0, 2);
+
     store.dispatch(
       updateIntl({
         locale: lang_code,

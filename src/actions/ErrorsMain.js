@@ -1,6 +1,6 @@
 export const APP_LOADED = "APP_LOADED";
-export const UPDATE_AVAILABLE_LANGUAGE = "UPDATE_AVAILABLE_LANGUAGE";
-export const UPDATE_AVAILABLE_LANGUAGE_FAIL = "UPDATE_AVAILABLE_LANGUAGE_FAIL";
+export const UPDATE_CONFIG_DATA = "UPDATE_CONFIG_DATA";
+export const UPDATE_CONFIG_DATA_FAIL = "UPDATE_CONFIG_DATA_FAIL";
 
 export function appLoaded() {
   return {
@@ -8,15 +8,15 @@ export function appLoaded() {
   };
 }
 
-export function updateAvailableLanguage() {
+export function updateErrorsConfigData() {
   return {
-    type: UPDATE_AVAILABLE_LANGUAGE
+    type: UPDATE_CONFIG_DATA
   };
 }
 
-export function updateAvailableLanguageFail(err) {
+export function updateErrorsConfigDataFail(err) {
   return {
-    type: UPDATE_AVAILABLE_LANGUAGE_FAIL,
+    type: UPDATE_CONFIG_DATA_FAIL,
     error: true,
     payload: {
       message: err
