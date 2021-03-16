@@ -36,7 +36,7 @@ class Footer extends Component {
         <nav key="1">
           <ul>
             <li key="0">
-              <a className="help-link" href={this.props.faq_link ? this.props.faq_link : "/en/faq.html"}>
+              <a className="help-link" href={this.props.faq_link}>
                 {this.props.translate("header.faq")}
               </a>
             </li>
