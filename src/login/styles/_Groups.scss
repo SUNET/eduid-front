@@ -354,8 +354,14 @@ article {
       min-height: 1rem;
       min-width: 1rem;
       border: solid 2px $orange-highlight;
+      &.disabled {
+        border: solid 2px $close;
+      }
       &.checked {
         background: $orange-highlight;
+        &.disabled {
+          background: $close;
+        }
       }
     }
   }
