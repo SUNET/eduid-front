@@ -7,6 +7,7 @@ import { Router, Route } from "react-router-dom";
 import "../login/styles/index.scss";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import Errors from "./Errors"
+
 export const history = createBrowserHistory();
 class ErrorsMain extends Component {
   render() {

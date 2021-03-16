@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { createBrowserHistory } from "history";
 import { useLocation } from "react-router-dom";
 import "../login/styles/index.scss";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-
-export const history = createBrowserHistory();
 
 const Errors = (props) => {
   let query = new URLSearchParams(useLocation().search);
@@ -47,7 +44,6 @@ const Errors = (props) => {
       }
     </>
   );
-
 
   let isTechnicalInfoNotEmpty = 
     Object.keys(errorUrlQuery.technicalInformations).some((key) => {
