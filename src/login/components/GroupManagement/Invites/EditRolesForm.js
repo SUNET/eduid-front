@@ -11,9 +11,9 @@ const validateEditInvite = () => {
 };
 
 let EditRolesForm = (props) => {
-  const { handleSubmit, checkboxNames } = props;
+  const { handleSubmit, checkboxNames, disabled } = props;
   return (
-    <Form id={"edit-invite-form"} role="form" onSubmit={handleSubmit}>
+    <Form id={"edit-invite-form"} role="form">
       {checkboxNames.map(({ name, label }, i) => {
         return (
           <div key={i} className="list-cell">
@@ -21,6 +21,7 @@ let EditRolesForm = (props) => {
               type="checkbox"
               label={label}
               id={name}
+              disabled={disabled}
               component={RenderCheckboxInput}
               name={name}
             />
@@ -33,9 +34,10 @@ let EditRolesForm = (props) => {
 
 EditRolesForm = reduxForm({
   form: "editInviteRole",
-  validate: validateEditInvite,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true,
+  touchOnChange: true,
+  //   validate: validateEditInvite,
 })(EditRolesForm);
 
 EditRolesForm = connect(() => ({

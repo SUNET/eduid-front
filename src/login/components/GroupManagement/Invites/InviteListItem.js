@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 import EditRolesForm from "./EditRolesForm";
@@ -11,10 +11,11 @@ const RenderEmailAddress = ({ email }) => (
   </div>
 );
 
-const RenderEditRolesForm = ({ email, initialValues }) => {
-  const checkboxNames = createCheckboxNamesAndLabels(email)
+const RenderEditRolesForm = ({ email, initialValues, disabled }) => {
+  const checkboxNames = createCheckboxNamesAndLabels(email);
   return (
     <EditRolesForm
+      disabled={disabled}
       initialValues={initialValues}
       checkboxNames={checkboxNames}
     />
@@ -42,13 +43,18 @@ const RenderRemoveButton = () => (
 const InviteListItem = ({ invite, initialValues }) => {
   const navId = useSelector((state) => state.groups.navId);
   let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
-  let { email, member, owner } = invite;
+  let { email, member, owner, disabled } = invite;
+  // console.log(disabled);
   return (
     <li>
       <div className="list-grid" id={columnNumber}>
         <RenderEmailAddress email={email} />
         {navId === "edit-invite" ? (
-          <RenderEditRolesForm email={email} initialValues={initialValues} />
+          <RenderEditRolesForm
+            disabled={disabled}
+            email={email}
+            initialValues={initialValues}
+          />
         ) : (
           <RenderRoleIndicators member={member} owner={owner} />
         )}
