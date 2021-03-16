@@ -48,7 +48,6 @@ const init_app = function(target, component) {
   const supported = AVAILABLE_LANGUAGES.map(lang => lang[0]);
   if (supported.includes(language)) {
     const lang_code = language.substring(0, 2);
-    console.log("lang_code", lang_code)
     store.dispatch(
       updateIntl({
         locale: lang_code,
