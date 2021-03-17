@@ -23,8 +23,8 @@ const RenderEditRolesForm = ({ email, initialValues }) => {
 
 const RenderRoleIndicators = ({ member, owner }) => (
   <Fragment>
-    <div className="list-cell">{owner && "X"}</div>
     <div className="list-cell">{member && "X"}</div>
+    <div className="list-cell">{owner && "X"}</div>
   </Fragment>
 );
 
