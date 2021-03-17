@@ -52,7 +52,7 @@ function Errors(props){
     let errorurl_rp = query.get("errorurl_rp");
     let errorurl_tid = query.get("errorurl_tid");
     let errorurl_ctx = query.get("errorurl_ctx");
-    //Convert unix time stamp to (YYYY-MM-DDDD) format
+    //Convert unix time stamp to (YYYY-MM-DD) format
     const convertUnixDate = new Date(errorurl_ts * 1000);
     const newDateUrlTs = 
       ' ('+ convertUnixDate.getFullYear()+'-' + ((convertUnixDate.getMonth()+1).toString())+ '-'+(convertUnixDate.getDate().toString())+')';
