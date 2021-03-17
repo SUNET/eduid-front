@@ -12,7 +12,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import eduIDApp from "./errors-store";
 import notifyAndDispatch from "./notify-middleware";
 import { history } from "./login/components/SwamidErrors/ErrorsMain";
-import { updateErrorsConfigData } from "./login/redux/actions/ErrorsMain";
+import { updateErrorsConfigData } from "./login/redux/actions/errorsMainActions";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

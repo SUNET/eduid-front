@@ -1,5 +1,5 @@
 import { takeLatest } from "redux-saga/effects";
-import * as errorsMainActions from "./login/redux/actions/ErrorsMain";
+import * as errorsMainActions from "./login/redux/actions/errorsMainActions";
 import { requestConfig } from "./login/redux/sagas/ErrorsMain";
 
 function* rootSaga() {
