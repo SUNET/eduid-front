@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import { routerMiddleware } from "react-router-redux";
-
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./errors-root-saga";
 import { createLogger } from "redux-logger";

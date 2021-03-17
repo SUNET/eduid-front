@@ -30,27 +30,8 @@ window.URLSearchParams = require("url-search-params");
 
 import React from "react";
 import { addLocaleData } from "react-intl";
-
 import init_app from "errors-init-app";
 import ErrorsMain from "../login/components/SwamidErrors/ErrorsMain";
-
-// const locales = [];
-
-//AVAILABLE_LANGUAGES.forEach((lang) => {
-//const locale = require('react-intl/locale-data/' + lang[0]);
-//addLocaleData([...locale]);
-//});
-
-//require.ensure([], () => {
-//AVAILABLE_LANGUAGES.forEach((lang) => {
-//const locale = require('react-intl/locale-data/' + lang[0]);
-//addLocaleData([...locale]);
-//});
-//});
-
-// XXX TODO load locales dynamically based on AVAILABLE_LANGUAGES.
-// None of the above commented techniques work
-
 import en from "react-intl/locale-data/en";
 import sv from "react-intl/locale-data/sv";
 
