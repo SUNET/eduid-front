@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { reduxForm } from "redux-form";
-import InviteListItem from "./InviteListItem";
-import disableInvitesNotInFocus from "../../../app_utils/helperFunctions/disableInvitesNotInFocus";
-import { createInitValues } from "../../../app_utils/helperFunctions/checkboxHelpers";
-import invitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import InviteListItem from "./InviteListItem";
+import createInvitesByRole from "../../../app_utils/helperFunctions/invitesByRole";
+import { createInitValues } from "../../../app_utils/helperFunctions/checkboxHelpers";
+import disableInvitesNotInFocus from "../../../app_utils/helperFunctions/disableInvitesNotInFocus";
 
 const RenderListHeading = () => {
   const navId = useSelector((state) => state.groups.navId);
-  let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
+  let columnNumber = navId.includes("edit") ? "four-columns" : "three-columns";
   let headingText =
     columnNumber === "four-columns"
       ? ["Invites", "Member", "Owner", ""]
@@ -25,36 +25,34 @@ const RenderListHeading = () => {
   );
 };
 
-let RenderListItems = ({ invitesForGroup, pristine }) => {
-  const [isUpdate, setsUpdateStatus] = useState(false);
-  const navId = useSelector((state) => state.groups.navId);
+let RenderListItems = ({ invitesByRole, pristine, initialValues }) => {
+  // set disabled status on all invites that were not clicked
   const updatedInvite = useSelector((state) => state.invites.updatedInvite);
-  const invitesFromMeByRole = invitesByRole(invitesForGroup);
-  const initialValues = createInitValues(invitesFromMeByRole);
+  const disabledInvitesByRole = disableInvitesNotInFocus(
+    invitesByRole,
+    updatedInvite
+  );
+  // set state if any checkbox in "edit-invite" has been clicked
+  const navId = useSelector((state) => state.groups.navId);
+  const [isClicked, setsClickedStatus] = useState(false);
   useEffect(() => {
-    navId.includes("edit") ? setsUpdateStatus(true) : null;
+    if (navId.includes("edit")) {
+      setsClickedStatus(true);
+    }
   }, [updatedInvite]);
-  let disabledInvites = isUpdate
-    ? disableInvitesNotInFocus(invitesFromMeByRole, updatedInvite)
-    : [];
+  // toggle invites with or without disable status
+  let invitesArray =
+    isClicked && !pristine ? disabledInvitesByRole : invitesByRole;
   return (
     <div className="list-data invites">
       <ul>
-        {!pristine
-          ? disabledInvites.map((invite, i) => (
-              <InviteListItem
-                key={i}
-                invite={invite}
-                initialValues={initialValues}
-              />
-            ))
-          : invitesFromMeByRole.map((invite, i) => (
-              <InviteListItem
-                key={i}
-                invite={invite}
-                initialValues={initialValues}
-              />
-            ))}
+        {invitesArray.map((invite, i) => (
+          <InviteListItem
+            key={i}
+            invite={invite}
+            initialValues={initialValues}
+          />
+        ))}
       </ul>
     </div>
   );
@@ -69,12 +67,18 @@ const InvitesList = ({ groupId, allInvitesFromMe }) => {
   let invitesForGroup = allInvitesFromMe.filter(
     (invite) => invite.group_identifier === groupId
   );
+  // transform the data into the structures needed to render checkboxes
+  const invitesByRole = createInvitesByRole(invitesForGroup);
+  const initialValues = createInitValues(invitesByRole);
   return (
     <div className="invites-list">
       <h3>Sent invites</h3>
       <div className="list-data invites">
         <RenderListHeading />
-        <RenderListItems invitesForGroup={invitesForGroup} />
+        <RenderListItems
+          initialValues={initialValues}
+          invitesByRole={invitesByRole}
+        />
       </div>
     </div>
   );

@@ -38,6 +38,6 @@ EditRolesForm = connect(() => ({
   destroyOnUnmount: false,
 }))(EditRolesForm);
 
-// CreateInviteForm.propTypes = {};
+// EditRolesForm.propTypes = {};
 
 export default InjectIntl(EditRolesForm);
