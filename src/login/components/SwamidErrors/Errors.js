@@ -35,6 +35,7 @@ const showErrorCode = ({ errorUrlQuery, props }) => {
   }else if(errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE"){
     return props.translate("error_authentication")
   }else if(errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE"){
+    //If error_code is AUTHORIZATION_FAILURE, check errorurl_ctx to show more detailed information
     return checkErrorUrlCtx({errorUrlQuery, props})
   }else if(errorUrlQuery.errorurl_code === "OTHER_ERROR"){
     return props.translate("error_access")
@@ -51,7 +52,7 @@ function Errors(props){
     let errorurl_rp = query.get("errorurl_rp");
     let errorurl_tid = query.get("errorurl_tid");
     let errorurl_ctx = query.get("errorurl_ctx");
-
+    //Convert unix time stamp to (YYYY-MM-DDDD) format
     const convertUnixDate = new Date(errorurl_ts * 1000);
     const newDateUrlTs = 
       ' ('+ convertUnixDate.getFullYear()+'-' + ((convertUnixDate.getMonth()+1).toString())+ '-'+(convertUnixDate.getDate().toString())+')';
