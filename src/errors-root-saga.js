@@ -1,6 +1,6 @@
 import { takeLatest } from "redux-saga/effects";
 import * as errorsMainActions from "./login/redux/actions/errorsMainActions";
-import { requestConfig } from "./login/redux/sagas/ErrorsMain";
+import { requestConfig } from "./login/redux/sagas/getErrorsRequest";
 
 function* rootSaga() {
   yield [
