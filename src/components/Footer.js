@@ -7,7 +7,7 @@ class Footer extends Component {
   render() {
     let langElems = "";
     const langs = Object.getOwnPropertyNames(this.props.languages);
-    langElems = langs && langs.map((lang, index) => {
+    langElems = langs.map((lang, index) => {
       if (lang === this.props.language) {
         // sets the < html lang=""> to the interface language
         document.documentElement.lang = this.props.language;
@@ -25,8 +25,7 @@ class Footer extends Component {
           </p>
         );
       }
-    } 
-    );
+    });
 
     return (
       <footer key="0" id="footer">
