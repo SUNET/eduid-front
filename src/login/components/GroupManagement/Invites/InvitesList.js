@@ -62,6 +62,7 @@ let RenderListItems = ({ invitesForGroup, pristine }) => {
 
 RenderListItems = reduxForm({
   form: "editInviteRole",
+  destroyOnUnmount: false,
 })(RenderListItems);
 
 const InvitesList = ({ groupId, allInvitesFromMe }) => {
