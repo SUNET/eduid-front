@@ -310,6 +310,13 @@ export const specificErrors = {
     />
   ),
 
+  error_authentication_al1: (
+    <FormattedHTMLMessage
+      id="error_authentication_al1"
+      defaultMessage={"SWAMID base level user account required<ul><li>The service you tried to access requires a user account fulfulling the base level of SWAMID, also known as SWAMID AL1.</li><li>Your user account most likely fulfills this but your institution may not be configured to release this to the service you tried to access.</li><li>Please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
+    />
+  ),
+
   error_insufficient_privileges: (
     <FormattedHTMLMessage
       id="error_insufficient_privileges"

@@ -8,7 +8,7 @@ const checkErrorUrlCtx = ({errorUrlQuery, props})=> {
   return(
     <>
       {
-        errorurl_ctx.includes("/assurance/al1") || errorurl_ctx.includes("/assurance/IAP/low") ? "AL1" :
+        errorurl_ctx.includes("/assurance/al1") || errorurl_ctx.includes("/assurance/IAP/low") ? props.translate("error_authentication_al1") :
         errorurl_ctx.includes("/assurance/al2") || errorurl_ctx.includes("/assurance/IAP/medium") || errorurl_ctx.includes("/profile/cappuccino") ? "AL2": 
         errorurl_ctx.includes("/assurance/al3") || errorurl_ctx.includes("/assurance/IAP/high") || errorurl_ctx.includes("/assurance/profile/espresso") ? "AL3": 
         props.translate("error_authentication")
