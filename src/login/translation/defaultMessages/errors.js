@@ -324,6 +324,13 @@ export const specificErrors = {
     />
   ),
 
+  error_authentication_al3: (
+    <FormattedHTMLMessage
+      id="error_authentication_al3"
+      defaultMessage={ "Verified user account required<ul><li>The service you tried to access requires a verified user account, also known as SWAMID AL3.</li><li>Identities are often verified by visiting the IT service desk of your institution and identifying yourself using your national ID card or passwport. In addition to this two-factor authentication is required during login.</li><li> Please contact support at your institution, verify your user account and try again. If you already are verified, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li><ul>"}
+    />
+  ),
+
   error_insufficient_privileges: (
     <FormattedHTMLMessage
       id="error_insufficient_privileges"
