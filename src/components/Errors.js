@@ -3,21 +3,45 @@ import { useLocation } from "react-router-dom";
 import "../login/styles/index.scss";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const checkErrorUrlCtx = ({errorUrlQuery, props})=> {
-  const { errorurl_ctx } = errorUrlQuery.technicalInformations
-  return(
+const catchAllErrorCodes = (props) => {
+  return (
     <>
-      {
-        errorurl_ctx.includes("/assurance/al1") || errorurl_ctx.includes("/assurance/IAP/low") ? props.translate("error_authentication_al1") :
-        errorurl_ctx.includes("/assurance/al2") || errorurl_ctx.includes("/assurance/IAP/medium") || errorurl_ctx.includes("/profile/cappuccino") ? props.translate("error_authentication_al2"): 
-        errorurl_ctx.includes("/assurance/al3") || errorurl_ctx.includes("/assurance/IAP/high") || errorurl_ctx.includes("/assurance/profile/espresso") ? props.translate("error_authentication_al3"): 
-        props.translate("error_authentication")
-      }
+      {props.translate("error_login_failed")}
+      {props.translate("error_identification_failed")}
+      {props.translate("error_authentication")}
+      {props.translate("error_insufficient_privileges")}
+      {props.translate("error_access")}
     </>
   )
 };
 
-const Errors = (props) => {
+const checkErrorUrlCtx = ({ errorUrlQuery, props }) => {
+  const { errorurl_ctx } = errorUrlQuery.technicalInformations;
+  if(errorurl_ctx){
+    if(errorurl_ctx.includes("/assurance/al1") || errorurl_ctx.includes("/assurance/IAP/low")){
+      return props.translate("error_insufficient_privileges_al1");
+    }else if(errorurl_ctx.includes("/assurance/al2") || errorurl_ctx.includes("/assurance/IAP/medium") || errorurl_ctx.includes("/profile/cappuccino")){
+      return props.translate("error_insufficient_privileges_al2");
+    }else if(errorurl_ctx.includes("/assurance/al3") || errorurl_ctx.includes("/assurance/IAP/high") || errorurl_ctx.includes("/assurance/profile/espresso")){
+      return props.translate("error_insufficient_privileges_al3");
+    }else return props.translate("error_insufficient_privileges");
+  }
+  else return props.translate("error_insufficient_privileges");
+};
+
+const showErrorCode = ({ errorUrlQuery, props }) => {   
+  if(errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE") {
+    return props.translate("error_identification_failed")
+  }else if(errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE"){
+    return props.translate("error_authentication")
+  }else if(errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE"){
+    return checkErrorUrlCtx({errorUrlQuery, props})
+  }else if(errorUrlQuery.errorurl_code === "OTHER_ERROR"){
+    return props.translate("error_access")
+  }else return catchAllErrorCodes(props)
+};
+
+function Errors(props){
   let query = new URLSearchParams(useLocation().search);
   const [errorUrlQuery, setErrorUrlQuery] = useState({errorurl_code: "", technicalInformations: {}});
 
@@ -29,38 +53,19 @@ const Errors = (props) => {
     let errorurl_ctx = query.get("errorurl_ctx");
 
     const convertUnixDate = new Date(errorurl_ts * 1000);
-    const newConvertTs = ' ('+ convertUnixDate.getFullYear()+'-' + ((convertUnixDate.getMonth()+1).toString())+ '-'+(convertUnixDate.getDate().toString())+')';
+    const newDateUrlTs = 
+      ' ('+ convertUnixDate.getFullYear()+'-' + ((convertUnixDate.getMonth()+1).toString())+ '-'+(convertUnixDate.getDate().toString())+')';
 
     setErrorUrlQuery({
       errorurl_code: errorurl_code, 
       technicalInformations: {
-        errorurl_ts: errorurl_ts ? errorurl_ts + newConvertTs  : undefined, 
-        errorurl_rp: errorurl_rp ? errorurl_rp : undefined,
-        errorurl_tid:errorurl_tid ? errorurl_tid : undefined,
-        errorurl_ctx: errorurl_ctx ? errorurl_ctx : undefined,
+        errorurl_ts: errorurl_ts &&  errorurl_ts !== "ERRORURL_TS" ? errorurl_ts + newDateUrlTs : undefined, 
+        errorurl_rp: errorurl_rp && errorurl_rp !== "ERRORURL_RP" ? errorurl_rp : undefined,
+        errorurl_tid: errorurl_tid && errorurl_tid !== "ERRORURL_TID" ? errorurl_tid : undefined,
+        errorurl_ctx: errorurl_ctx && errorurl_ctx !== "ERRORURL_CTX" ? errorurl_ctx : undefined,
       }
     })
   }, []);
-
-  let catchAllErrorCodes = (
-    <>
-      {props.translate("error_identification_failed")}
-      {props.translate("error_authentication")}
-      {props.translate("error_insufficient_privileges")}
-      {props.translate("error_access")}
-    </>
-  );
-
-  let showErrorCode = (
-    <>
-      {
-        errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
-        errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE" ? checkErrorUrlCtx({errorUrlQuery, props}) :
-        errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") :
-        errorUrlQuery.errorurl_code === "OTHER_ERROR" ? props.translate("error_access") : catchAllErrorCodes
-      }
-    </>
-  );
 
   let isTechnicalInfoNotEmpty = 
     Object.keys(errorUrlQuery.technicalInformations).some((key) => {
@@ -83,7 +88,7 @@ const Errors = (props) => {
   return(
     <div className="vertical-content-margin">
       <div className="swamid-error">
-        {showErrorCode}
+        {showErrorCode({errorUrlQuery, props})}
         {isTechnicalInfoNotEmpty &&
           <>
            <div className={"technical-info-heading"}>
