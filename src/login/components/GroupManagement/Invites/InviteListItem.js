@@ -44,7 +44,6 @@ const InviteListItem = ({ invite, initialValues }) => {
   const navId = useSelector((state) => state.groups.navId);
   let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
   let { email, member, owner, disabled } = invite;
-  // console.log(disabled);
   return (
     <li>
       <div className="list-grid" id={columnNumber}>
