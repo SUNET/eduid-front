@@ -296,6 +296,13 @@ export const specificErrors = {
     />
   ),
 
+  error_login_failed: (
+    <FormattedHTMLMessage
+      id="error_login_failed"
+      defaultMessage={`Login failed <ul><li>Login failed at the service you tried to access. Please see below for possible reasons and actions.</li></ul>`}
+    />
+  ),
+
   error_identification_failed: (
     <FormattedHTMLMessage
       id="error_identification_failed"
