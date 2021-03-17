@@ -3,6 +3,20 @@ import { useLocation } from "react-router-dom";
 import "../login/styles/index.scss";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
+const checkErrorUrlCtx = ({errorUrlQuery, props})=> {
+  const { errorurl_ctx } = errorUrlQuery.technicalInformations
+  return(
+    <>
+      {
+        errorurl_ctx.includes("/assurance/al1") || errorurl_ctx.includes("/assurance/IAP/low") ? "AL1" :
+        errorurl_ctx.includes("/assurance/al2") || errorurl_ctx.includes("/assurance/IAP/medium") || errorurl_ctx.includes("/profile/cappuccino") ? "AL2": 
+        errorurl_ctx.includes("/assurance/al3") || errorurl_ctx.includes("/assurance/IAP/high") || errorurl_ctx.includes("/assurance/profile/espresso") ? "AL3": 
+        props.translate("error_authentication")
+      }
+    </>
+  )
+};
+
 const Errors = (props) => {
   let query = new URLSearchParams(useLocation().search);
   const [errorUrlQuery, setErrorUrlQuery] = useState({errorurl_code: "", technicalInformations: {}});
@@ -41,7 +55,7 @@ const Errors = (props) => {
     <>
       {
         errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
-        errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") :
+        errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE" ? checkErrorUrlCtx({errorUrlQuery, props}) :
         errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") :
         errorUrlQuery.errorurl_code === "OTHER_ERROR" ? props.translate("error_access") : catchAllErrorCodes
       }
