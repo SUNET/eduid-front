@@ -1,4 +1,4 @@
-import * as actions from "actions/ErrorsMain";
+import * as actions from "../actions/ErrorsMain";
 
 const configData = {
   is_app_loaded: false,

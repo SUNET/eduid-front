@@ -11,8 +11,8 @@ import { updateIntl } from "react-intl-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import eduIDApp from "./errors-store";
 import notifyAndDispatch from "./notify-middleware";
-import { history } from "components/ErrorsMain";
-import { updateErrorsConfigData } from "actions/ErrorsMain";
+import { history } from "./login/components/SwamidErrors/ErrorsMain";
+import { updateErrorsConfigData } from "./login/redux/actions/ErrorsMain";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import "../login/styles/index.scss";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
+import "../../styles/index.scss";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const catchAllErrorCodes = (props) => {
   return (

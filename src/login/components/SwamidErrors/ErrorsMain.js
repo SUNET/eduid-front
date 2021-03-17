@@ -4,8 +4,8 @@ import FooterContainer from "containers/Footer";
 import HeaderContainer from "containers/Header";
 import NotificationsContainer from "containers/Notifications";
 import { Router, Route } from "react-router-dom";
-import "../login/styles/index.scss";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
+import "../../styles/index.scss";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 import Errors from "./Errors"
 
 export const history = createBrowserHistory();

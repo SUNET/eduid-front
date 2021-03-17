@@ -32,7 +32,7 @@ import React from "react";
 import { addLocaleData } from "react-intl";
 
 import init_app from "errors-init-app";
-import ErrorsMain from "components/ErrorsMain";
+import ErrorsMain from "../login/components/SwamidErrors/ErrorsMain";
 
 // const locales = [];
 

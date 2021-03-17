@@ -1,6 +1,6 @@
 import { put, call } from "redux-saga/effects";
 import { checkStatus, getRequest } from "sagas/common";
-import * as actions from "actions/ErrorsMain";
+import * as actions from "../actions/ErrorsMain";
 
 export function* requestConfig() {
   try {
