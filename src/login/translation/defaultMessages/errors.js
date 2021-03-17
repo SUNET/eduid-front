@@ -317,6 +317,13 @@ export const specificErrors = {
     />
   ),
 
+  error_authentication_al2: (
+    <FormattedHTMLMessage
+      id="error_authentication_al2"
+      defaultMessage={"Confirmed user account required<ul><li>The service you tried to access requires a confirmed user account, also known as SWAMID AL2.</li><li>Identities are often confirmed by visiting the IT service desk of your institution and identifying yourself using your national ID card or passwport.</li><li>Please contact support at your institution, confirm your user account and try again. If you already are confirmed, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li><ul>"}
+    />
+  ),
+
   error_insufficient_privileges: (
     <FormattedHTMLMessage
       id="error_insufficient_privileges"
