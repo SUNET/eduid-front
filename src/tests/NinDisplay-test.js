@@ -119,7 +119,7 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
   it("Renders the saved number", () => {
     const { wrapper } = setupComponent();
     const number = wrapper.find("p");
-    expect(number.text()).toBe("199901100004");
+    expect(number.text()).toBe("19990110****");
   });
 });
 
@@ -297,6 +297,6 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
   it("Renders only the verified number", () => {
     const { wrapper } = setupComponent();
     const verifiedNumber = wrapper.find(".verified");
-    expect(verifiedNumber.text()).toContain("196701110005");
+    expect(verifiedNumber.text()).toContain("19670111****");
   });
 });
