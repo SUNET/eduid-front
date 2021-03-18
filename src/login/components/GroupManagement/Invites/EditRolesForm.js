@@ -30,7 +30,6 @@ let EditRolesForm = (props) => {
 EditRolesForm = reduxForm({
   form: "editInviteRole",
   enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
   touchOnChange: true,
 })(EditRolesForm);
 
