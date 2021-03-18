@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { reduxForm } from "redux-form";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -41,7 +41,6 @@ let RenderListItems = ({
   // toggle invites with or without disable status
   let invitesArray =
     anyTouched && !pristine ? disabledInvitesByRole : invitesByRole;
-
   return (
     <div className="list-data invites">
       <ul>
