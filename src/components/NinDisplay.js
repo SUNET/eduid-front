@@ -8,6 +8,25 @@ export class NinDisplay extends Component {
   render() {
     let userData = "";
     const url = this.props.history.location.pathname;
+    const showHideButtonAtProfile = 
+      <>
+        <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtProfile}>
+          { this.props.showNinAtProfile ? 
+            this.props.translate("nin_hide_last_four_digits") : 
+            this.props.translate("nin_show_last_four_digits")
+          }
+        </button> 
+      </>;
+    const showHideButtonAtIdentity = 
+      <>
+        <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtIdentity}>
+          { this.props.showNinAtIdentity ? 
+            this.props.translate("nin_hide_last_four_digits") : 
+            this.props.translate("nin_show_last_four_digits")
+          }
+        </button> 
+      </>;
+
     if (this.props.nins.length === 0) {
       userData = [
         <Link
@@ -29,30 +48,21 @@ export class NinDisplay extends Component {
                   this.props.verifiedNin[0].number.replace(/\d{4}$/, '****')
                 }
               </p>
-              <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtIdentity}>
-                { this.props.showNinAtIdentity ? 
-                  this.props.translate("nin_hide_last_four_digits") : 
-                  this.props.translate("nin_show_last_four_digits")
-                }
-                </button> 
+              {showHideButtonAtIdentity}
             </div>,
           ];
 
         }else 
         userData = [
           <div key="1" data-ninnumber={this.props.verifiedNin[0].number} className="display-nin-show-hide">
+            
             <p key="0" className="display-data verified">
               { this.props.showNinAtProfile  ? 
                 this.props.verifiedNin[0].number :  
                 this.props.verifiedNin[0].number.replace(/\d{4}$/, '****')
               }
             </p>
-            <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtProfile}>
-                { this.props.showNinAtProfile ? 
-                  this.props.translate("nin_hide_last_four_digits") : 
-                  this.props.translate("nin_show_last_four_digits")
-                }
-              </button> 
+            {showHideButtonAtProfile}
           </div>,
         ];
 
@@ -70,12 +80,7 @@ export class NinDisplay extends Component {
                   this.props.nins[0].number.replace(/\d{4}$/, '****')
                 }
               </p>
-              <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtIdentity}>
-                { this.props.showNinAtIdentity ? 
-                  this.props.translate("nin_hide_last_four_digits") : 
-                  this.props.translate("nin_show_last_four_digits")
-                }
-              </button> 
+              { showHideButtonAtIdentity }
               <EduIDButton
                 key="3"
                 className="icon-button"
@@ -105,12 +110,7 @@ export class NinDisplay extends Component {
                   this.props.nins[0].number.replace(/\d{4}$/, '****')
                 }
               </p>
-             <button key="2" className="show-hide-button" onClick={this.props.toggleShowNinAtProfile}>
-                { this.props.showNinAtProfile ? 
-                  this.props.translate("nin_hide_last_four_digits") : 
-                  this.props.translate("nin_show_last_four_digits")
-                }
-              </button> 
+              {showHideButtonAtProfile}
             </div>
           ];
         }
