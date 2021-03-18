@@ -27,7 +27,14 @@ export class NinDisplay extends Component {
         </button> 
       </>;
 
-    if (this.props.nins.length === 0) {
+    const showHideLastFourDigits = (show, number) => {
+     if(show){
+      return number
+      }else  
+      return number.replace(/\d{4}$/, '****')
+    };
+
+    if(this.props.nins.length === 0) {
       userData = [
         <Link
           key="1"
@@ -37,35 +44,26 @@ export class NinDisplay extends Component {
           {this.props.translate("nin_display.profile.no_nin")}
         </Link>,
       ];
-    } else {
-      if (this.props.verifiedNinStatus) {
+    }else{
+      if(this.props.verifiedNinStatus) {
         if(url.includes("verify-identity")){
           userData = [
             <div key="1" data-ninnumber={this.props.verifiedNin[0].number} className="display-nin-show-hide">
               <p key="0" className="display-data verified">
-                { this.props.showNinAtIdentity  ? 
-                  this.props.verifiedNin[0].number :  
-                  this.props.verifiedNin[0].number.replace(/\d{4}$/, '****')
-                }
+                {showHideLastFourDigits(this.props.showNinAtIdentity ,this.props.verifiedNin[0].number)}
               </p>
               {showHideButtonAtIdentity}
             </div>,
           ];
-
         }else 
-        userData = [
-          <div key="1" data-ninnumber={this.props.verifiedNin[0].number} className="display-nin-show-hide">
-            
-            <p key="0" className="display-data verified">
-              { this.props.showNinAtProfile  ? 
-                this.props.verifiedNin[0].number :  
-                this.props.verifiedNin[0].number.replace(/\d{4}$/, '****')
-              }
-            </p>
-            {showHideButtonAtProfile}
-          </div>,
-        ];
-
+          userData = [
+            <div key="1" data-ninnumber={this.props.verifiedNin[0].number} className="display-nin-show-hide"> 
+              <p key="0" className="display-data verified">
+                {showHideLastFourDigits(this.props.showNinAtProfile, this.props.verifiedNin[0].number)}
+              </p>
+              {showHideButtonAtProfile}
+            </div>,
+          ];
       } else {
         if (url.includes("verify-identity")) {
           userData = [
@@ -75,10 +73,8 @@ export class NinDisplay extends Component {
               className="data-with-delete"
             >
               <p key="1" id="nin-number" className="display-data unverified">
-                { this.props.showNinAtIdentity ? 
-                  this.props.nins[0].number :  
-                  this.props.nins[0].number.replace(/\d{4}$/, '****')
-                }
+                {showHideLastFourDigits(this.props.showNinAtIdentity, this.props.nins[0].number)
+}
               </p>
               { showHideButtonAtIdentity }
               <EduIDButton
@@ -105,10 +101,7 @@ export class NinDisplay extends Component {
           userData = [
             <div key="1" className="display-nin-show-hide">
               <p key="1" className="display-data verified">
-                { this.props.showNinAtProfile  ? 
-                  this.props.nins[0].number :  
-                  this.props.nins[0].number.replace(/\d{4}$/, '****')
-                }
+                {showHideLastFourDigits(this.props.showNinAtProfile, this.props.nins[0].number)}
               </p>
               {showHideButtonAtProfile}
             </div>
