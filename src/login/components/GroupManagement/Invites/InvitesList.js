@@ -25,24 +25,23 @@ const RenderListHeading = () => {
   );
 };
 
-let RenderListItems = ({ invitesByRole, pristine, initialValues }) => {
+let RenderListItems = ({
+  invitesByRole,
+  initialValues,
+  pristine,
+  invalid,
+  anyTouched,
+}) => {
   // set disabled status on all invites that were not clicked
   const updatedInvite = useSelector((state) => state.invites.updatedInvite);
   const disabledInvitesByRole = disableInvitesNotInFocus(
     invitesByRole,
     updatedInvite
   );
-  // set state if any checkbox in "edit-invite" has been clicked
-  const navId = useSelector((state) => state.groups.navId);
-  const [isClicked, setsClickedStatus] = useState(false);
-  useEffect(() => {
-    if (navId.includes("edit")) {
-      setsClickedStatus(true);
-    }
-  }, [updatedInvite]);
   // toggle invites with or without disable status
   let invitesArray =
-    isClicked && !pristine ? disabledInvitesByRole : invitesByRole;
+    anyTouched && !pristine ? disabledInvitesByRole : invitesByRole;
+
   return (
     <div className="list-data invites">
       <ul>
@@ -54,6 +53,13 @@ let RenderListItems = ({ invitesByRole, pristine, initialValues }) => {
           />
         ))}
       </ul>
+      {anyTouched && invalid ? (
+        <div className="small form-text">
+          <span className={"input-validate-error"}>
+            At least one membership must be set to update an invite
+          </span>
+        </div>
+      ) : null}
     </div>
   );
 };
