@@ -35,7 +35,6 @@ EditRolesForm = reduxForm({
   form: "editInviteRole",
   validate: validateEditInvite,
   enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
 })(EditRolesForm);
 
 EditRolesForm = connect(() => ({
