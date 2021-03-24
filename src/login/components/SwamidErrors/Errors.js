@@ -1,7 +1,9 @@
+
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../../styles/index.scss";
 import i18n from "../../translation/InjectIntl_HOC_factory";
+import { swamidErrorData } from "./swamidErrorData";
 
 const catchAllErrorCodes = (props) => {
   return (
@@ -15,28 +17,13 @@ const catchAllErrorCodes = (props) => {
   )
 };
 
-const checkErrorUrlCtx = ({ errorUrlQuery, props }) => {
-  const { errorurl_ctx } = errorUrlQuery.technicalInformations;
-  if(errorurl_ctx){
-    if(errorurl_ctx.includes("/assurance/al1") || errorurl_ctx.includes("/assurance/IAP/low")){
-      return props.translate("error_insufficient_privileges_al1");
-    }else if(errorurl_ctx.includes("/assurance/al2") || errorurl_ctx.includes("/assurance/IAP/medium") || errorurl_ctx.includes("/profile/cappuccino")){
-      return props.translate("error_insufficient_privileges_al2");
-    }else if(errorurl_ctx.includes("/assurance/al3") || errorurl_ctx.includes("/assurance/IAP/high") || errorurl_ctx.includes("/assurance/profile/espresso")){
-      return props.translate("error_insufficient_privileges_al3");
-    }else return props.translate("error_insufficient_privileges");
-  }
-  else return props.translate("error_insufficient_privileges");
-};
-
 const showErrorCode = ({ errorUrlQuery, props }) => {   
   if(errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE") {
     return props.translate("error_identification_failed")
   }else if(errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE"){
     return props.translate("error_authentication")
   }else if(errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE"){
-    //If error_code is AUTHORIZATION_FAILURE, check errorurl_ctx to show more detailed information
-    return checkErrorUrlCtx({errorUrlQuery, props})
+    return props.translate("error_insufficient_privileges");
   }else if(errorUrlQuery.errorurl_code === "OTHER_ERROR"){
     return props.translate("error_access")
   }else return catchAllErrorCodes(props)
@@ -86,18 +73,61 @@ function Errors(props){
       )}
   );
 
+  let isSpecificRP = (
+    errorUrlQuery.technicalInformations.errorurl_rp !== undefined &&
+      Object.keys(swamidErrorData).map(key=>{
+        if (key === errorUrlQuery.technicalInformations.errorurl_rp)
+          return swamidErrorData[key]
+      }
+    )
+  );
+  
+  let specificRpError = 
+    isSpecificRP.length > 0 && isSpecificRP.map(key=>{
+      if(key!==undefined)
+        return Object.keys(key).map((i)=>{
+          if(i === errorUrlQuery.errorurl_code){
+            let result = key[i];
+            return Object.keys(result).map((urlCtx, index)=>{
+            if(urlCtx.includes(errorUrlQuery.technicalInformations.errorurl_ctx)){
+              return (
+                <span key={index}>{Object.values(result[urlCtx]).toString()}</span>
+              )
+            }
+          }
+        )
+      }
+    })
+  });
+
+  let specificCtxError = 
+    Object.keys(swamidErrorData.common).map(key=>{
+      let entry = swamidErrorData.common[key];
+      if(key === errorUrlQuery.errorurl_code){
+        return Object.keys(entry).map((urlCtx, index)=> {
+          if(urlCtx.includes(errorUrlQuery.technicalInformations.errorurl_ctx)){
+            return (
+              <span key={index}>{Object.values(entry[urlCtx]).toString()}</span>
+            )}
+        })
+      }
+  });
+
   return(
     <div className="vertical-content-margin">
       <div className="swamid-error">
-        {showErrorCode({errorUrlQuery, props})}
-        {isTechnicalInfoNotEmpty &&
+        {isTechnicalInfoNotEmpty ?
           <>
+          { isSpecificRP ? specificRpError : specificCtxError}
            <div className={"technical-info-heading"}>
               {props.translate("error_technical_info_heading")}
             </div>
             <div className={"technical-info-box"}>
               {technicalInfomations}
             </div>
+          </> : 
+          <>
+            {showErrorCode({errorUrlQuery, props})}
           </>
         }
       </div>
