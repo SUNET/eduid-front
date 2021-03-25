@@ -5,6 +5,56 @@ import "../../styles/index.scss";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 import { swamidErrorData } from "./swamidErrorData";
 
+const isSpecificRP = ({errorUrlQuery, props}) => {
+  if(errorUrlQuery.technicalInformations.errorurl_rp !== undefined){
+    return Object.keys(swamidErrorData).map(key=>{
+      if (key === errorUrlQuery.technicalInformations.errorurl_rp){
+        let result = swamidErrorData[key];
+        return checkRP({result, errorUrlQuery, props});
+      }
+    }
+  )}
+};
+
+const checkRP =({result, errorUrlQuery}) =>{
+  return result && Object.keys(result).map(key=>{
+    if(key === errorUrlQuery.errorurl_code);
+      let r = result[key];
+      return Object.keys(r).map((urlCtx, index)=>{
+        if(urlCtx === errorUrlQuery.technicalInformations.errorurl_ctx){
+          return <span key={index}>{Object.values(r[urlCtx]).toString()}</span>
+        }
+      }
+    )
+   }
+)};
+
+const checkCtx = ({errorUrlQuery, props})=>{
+  let errorCode = swamidErrorData.common;
+   return Object.keys(errorCode).map(key=>{
+    if(key === errorUrlQuery.errorurl_code){
+      let result = errorCode[key];
+      return Object.keys(result).map((urlCtx, index)=> {
+        if(urlCtx === errorUrlQuery.technicalInformations.errorurl_ctx){
+          return <span key={index}>{Object.values(result[urlCtx]).toString()}</span>;
+        }else checkDefaultCode({errorUrlQuery, props});
+      })
+    }else checkDefaultCode({errorUrlQuery, props});
+  })
+};
+
+const checkDefaultCode =({errorUrlQuery, props})=> {
+  if(errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE") {
+    return props.translate("error_identification_failed");
+  }else if(errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE"){
+    return props.translate("error_authentication");
+  }else if(errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE"){
+    return props.translate("error_insufficient_privileges");
+  }else if(errorUrlQuery.errorurl_code === "OTHER_ERROR"){
+    return props.translate("error_access")
+  }else return catchAllErrorCodes(props)
+};
+
 const catchAllErrorCodes = (props) => {
   return (
     <>
@@ -15,18 +65,6 @@ const catchAllErrorCodes = (props) => {
       {props.translate("error_access")}
     </>
   )
-};
-
-const showErrorCode = ({ errorUrlQuery, props }) => {   
-  if(errorUrlQuery.errorurl_code === "IDENTIFICATION_FAILURE") {
-    return props.translate("error_identification_failed")
-  }else if(errorUrlQuery.errorurl_code === "AUTHENTICATION_FAILURE"){
-    return props.translate("error_authentication")
-  }else if(errorUrlQuery.errorurl_code === "AUTHORIZATION_FAILURE"){
-    return props.translate("error_insufficient_privileges");
-  }else if(errorUrlQuery.errorurl_code === "OTHER_ERROR"){
-    return props.translate("error_access")
-  }else return catchAllErrorCodes(props)
 };
 
 function Errors(props){
@@ -63,7 +101,7 @@ function Errors(props){
       return false
   });
 
-  let technicalInfomations = 
+  let technicalInfomations = (
     Object.keys(errorUrlQuery.technicalInformations).map((key) => {
       return (
         <div className={"technical-info-text"} key={key}>
@@ -71,54 +109,16 @@ function Errors(props){
           <p>{errorUrlQuery.technicalInformations[key]}</p>
         </div>
       )}
-  );
-
-  let isSpecificRP = (
-    errorUrlQuery.technicalInformations.errorurl_rp !== undefined &&
-      Object.keys(swamidErrorData).map(key=>{
-        if (key === errorUrlQuery.technicalInformations.errorurl_rp)
-          return swamidErrorData[key]
-      }
     )
   );
-  
-  let specificRpError = 
-    isSpecificRP.length > 0 && isSpecificRP.map(key=>{
-      if(key!==undefined)
-        return Object.keys(key).map((i)=>{
-          if(i === errorUrlQuery.errorurl_code){
-            let result = key[i];
-            return Object.keys(result).map((urlCtx, index)=>{
-            if(urlCtx.includes(errorUrlQuery.technicalInformations.errorurl_ctx)){
-              return (
-                <span key={index}>{Object.values(result[urlCtx]).toString()}</span>
-              )
-            }
-          }
-        )
-      }
-    })
-  });
-
-  let specificCtxError = 
-    Object.keys(swamidErrorData.common).map(key=>{
-      let entry = swamidErrorData.common[key];
-      if(key === errorUrlQuery.errorurl_code){
-        return Object.keys(entry).map((urlCtx, index)=> {
-          if(urlCtx.includes(errorUrlQuery.technicalInformations.errorurl_ctx)){
-            return (
-              <span key={index}>{Object.values(entry[urlCtx]).toString()}</span>
-            )}
-        })
-      }
-  });
 
   return(
     <div className="vertical-content-margin">
       <div className="swamid-error">
         {isTechnicalInfoNotEmpty ?
           <>
-          { isSpecificRP ? specificRpError : specificCtxError}
+            {isSpecificRP({errorUrlQuery, props})}
+            {checkCtx({errorUrlQuery, props})}
            <div className={"technical-info-heading"}>
               {props.translate("error_technical_info_heading")}
             </div>
@@ -127,7 +127,7 @@ function Errors(props){
             </div>
           </> : 
           <>
-            {showErrorCode({errorUrlQuery, props})}
+            {checkDefaultCode({errorUrlQuery, props})}
           </>
         }
       </div>
