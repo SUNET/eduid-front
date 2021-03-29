@@ -26,25 +26,6 @@ function Errors(props){
     })
   }, []);
 
-  let isTechnicalInfoNotEmpty = 
-    Object.keys(techInformations).some((key) => {
-      if (techInformations[key] !== undefined){
-        return true
-      } else 
-      return false
-  });
-
-  let technicalInfomations = (
-    Object.keys(techInformations).map((key) => {
-      return (
-        <div className={"technical-info-text"} key={key}>
-          <p>{key.toUpperCase()}</p>
-          <p>{techInformations[key]}</p>
-        </div>
-      )}
-    )
-  );
-
   let isSpecificError = "";
   let errorurl_code = query.get("errorurl_code")
   let common = swamidErrorData.common;
@@ -69,12 +50,12 @@ function Errors(props){
             if(urlCtx === techInformations.errorurl_ctx){
               return isSpecificError = (
                 <span key={index}>{Object.values(result[urlCtx]).toString()}</span>
-              );
-            }
-         })
+              )}
+          })
         }
       })
-    })
+    }
+  )
   else if (!techInformations.errorurl_rp || techInformations.errorurl_rp !== "sp.ladok.se"){
     Object.keys(common).map(key=>{
       if(key === errorurl_code){
@@ -83,11 +64,10 @@ function Errors(props){
         if(urlCtx === techInformations.errorurl_ctx){
           return isSpecificError = (
             <span key={index}>{Object.values(result[urlCtx]).toString()}</span>
-          );
-        }
-      })
-    }
-  })
+          )}
+        })
+      }
+    })
   }
     
   let dafualt = (
@@ -102,6 +82,25 @@ function Errors(props){
       {props.translate("error_insufficient_privileges")}
       {props.translate("error_access")}
     </>
+  );
+
+  let isTechnicalInfoNotEmpty = 
+    Object.keys(techInformations).some((key) => {
+      if (techInformations[key] !== undefined){
+        return true
+      } else 
+      return false
+  });
+
+  let technicalInfomations = (
+    Object.keys(techInformations).map((key) => {
+      return (
+        <div className={"technical-info-text"} key={key}>
+          <p>{key.toUpperCase()}</p>
+          <p>{techInformations[key]}</p>
+        </div>
+      )}
+    )
   );
 
   return(   
