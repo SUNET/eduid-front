@@ -26,13 +26,20 @@ function Errors(props){
     })
   }, []);
 
+  let isSpecificError = "";
+  let errorurlCode = query.get("errorurl_code");
+  let errorurlCtx = query.get("errorurl_ctx");
+  let errorurlRp = query.get("errorurl_rp");
+  let common = swamidErrorData.common;
+  let specialRp = swamidErrorData["sp.ladok.se"];
+
   const checkErrorUrlCtx = () => {
     //Compare error url ctx query string and swaimidErrorData.common 
     Object.keys(common).map(key=>{
-      if(key === errorurl_code){
+      if(key === errorurlCode ){
       let result = common[key];
       Object.keys(result).map((urlCtx)=> {
-        if(urlCtx === techInformations.errorurl_ctx){
+        if(errorurlCtx.includes(urlCtx)){
           return isSpecificError = (
             <div className="specific-error">{props.translate(Object.values(result[urlCtx]).toString())}</div>
         )}
@@ -40,17 +47,12 @@ function Errors(props){
     }
   })}
 
-  let isSpecificError = "";
-  let errorurl_code = query.get("errorurl_code")
-  let common = swamidErrorData.common;
-  let specialRp = swamidErrorData["sp.ladok.se"];
- 
-  if(techInformations.errorurl_rp === "sp.ladok.se")
+  if(errorurlRp.includes("sp.ladok.se"))
     Object.keys(specialRp).map((key)=>{
       let ctxResult = specialRp[key];
-      if(key === errorurl_code){
+      if(key === errorurlCode){
         Object.keys(ctxResult).map((urlCtx)=>{
-          if(urlCtx === techInformations.errorurl_ctx){
+          if(errorurlCtx.includes(urlCtx)){
             return isSpecificError = (
               <div className="specific-error">{props.translate(Object.values(ctxResult[urlCtx]).toString())}</div>
             );
@@ -59,15 +61,14 @@ function Errors(props){
       }else checkErrorUrlCtx();
     }
   )
-  else if (techInformations.errorurl_rp !== "sp.ladok.se"){
-    checkErrorUrlCtx();
-  }
+  else checkErrorUrlCtx();
+  
 
   let showErrorCode = (
-    errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
-    errorurl_code === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") : 
-    errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") : 
-    errorurl_code === "OTHER_ERROR" ? props.translate("error_access") :   
+    errorurlCode  === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
+    errorurlCode  === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") : 
+    errorurlCode  === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") : 
+    errorurlCode  === "OTHER_ERROR" ? props.translate("error_access") :   
     <div className="specific-error">{props.translate("error_without_code")}</div>
   );
 
