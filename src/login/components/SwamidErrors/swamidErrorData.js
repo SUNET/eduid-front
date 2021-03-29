@@ -29,7 +29,7 @@ export const swamidErrorData = {
   },
   "sp.ladok.se": {
     "IDENTIFICATION_FAILURE": {
-      "norEduPersonNIN http://refeds.org/category/research-and-scholarship": {
+      "norEduPersonNIN": {
         "message": "error_sp_ladok"
       }
     }
