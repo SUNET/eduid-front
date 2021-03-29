@@ -383,7 +383,7 @@ export const specificErrors = {
   error_sp_ladok: (
     <FormattedMessage
     id="error_sp_ladok"
-    defaultMessage={"You need to verify you eduID account error"}
+    defaultMessage={"You need to verify your eduID account"}
   />
   ),
 
