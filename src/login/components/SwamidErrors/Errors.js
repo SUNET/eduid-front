@@ -32,9 +32,9 @@ function Errors(props){
   let specialRp = swamidErrorData["sp.ladok.se"];
 
   if(techInformations.errorurl_rp && techInformations.errorurl_rp === "sp.ladok.se")
-    Object.keys(specialRp).map((i)=>{
-      let ctxResult = specialRp[i];
-      if(i === errorurl_code){
+    Object.keys(specialRp).map((key)=>{
+      let ctxResult = specialRp[key];
+      if(key === errorurl_code){
         Object.keys(ctxResult).map((urlCtx, index)=>{
           if(urlCtx === techInformations.errorurl_ctx){
             return isSpecificError = (
@@ -109,7 +109,7 @@ function Errors(props){
         {isTechnicalInfoNotEmpty ?
           <>
             {isSpecificError ? isSpecificError : dafualt }
-           <div className={"technical-info-heading"}>
+            <div className={"technical-info-heading"}>
               {props.translate("error_technical_info_heading")}
             </div>
             <div className={"technical-info-box"}>
