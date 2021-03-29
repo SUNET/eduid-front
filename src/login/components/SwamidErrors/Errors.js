@@ -26,11 +26,24 @@ function Errors(props){
     })
   }, []);
 
+  const checkErrorUrlCtx = () => {
+    Object.keys(common).map(key=>{
+      if(key === errorurl_code){
+      let result = common[key];
+      Object.keys(result).map((urlCtx, index)=> {
+        if(urlCtx === techInformations.errorurl_ctx){
+          return isSpecificError = (
+            <span key={index}>{Object.values(result[urlCtx]).toString()}</span>
+        )}
+      })
+    }
+  })}
+
   let isSpecificError = "";
   let errorurl_code = query.get("errorurl_code")
   let common = swamidErrorData.common;
   let specialRp = swamidErrorData["sp.ladok.se"];
-
+ 
   if(techInformations.errorurl_rp && techInformations.errorurl_rp === "sp.ladok.se")
     Object.keys(specialRp).map((key)=>{
       let ctxResult = specialRp[key];
@@ -42,32 +55,11 @@ function Errors(props){
             );
           }
         })
-      }else 
-        Object.keys(common).map(key=>{
-          if(key === errorurl_code){
-          let result = common[key];
-          Object.keys(result).map((urlCtx, index)=> {
-            if(urlCtx === techInformations.errorurl_ctx){
-              return isSpecificError = (
-                <span key={index}>{Object.values(result[urlCtx]).toString()}</span>
-              )}
-          })
-        }
-      })
+      }else checkErrorUrlCtx();
     }
   )
   else if (!techInformations.errorurl_rp || techInformations.errorurl_rp !== "sp.ladok.se"){
-    Object.keys(common).map(key=>{
-      if(key === errorurl_code){
-      let result = common[key];
-      Object.keys(result).map((urlCtx, index)=> {
-        if(urlCtx === techInformations.errorurl_ctx){
-          return isSpecificError = (
-            <span key={index}>{Object.values(result[urlCtx]).toString()}</span>
-          )}
-        })
-      }
-    })
+    checkErrorUrlCtx();
   }
     
   let dafualt = (
