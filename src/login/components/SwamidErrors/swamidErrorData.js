@@ -2,35 +2,35 @@ export const swamidErrorData = {
   "common": {
     "IDENTIFICATION_FAILURE": {
       "eduPersonPrincipalName": {
-        "message": "eduPersonPrincipalName error"
+        "message": "error_edu_person_principal_name"
       },
       "eduPersonOrcid": {
-        "message": "eduPersonOrcid error"
+        "message": "error_edu_person_orcid"
       }
     },
     "AUTHENTICATION_FAILURE": {
       "https://refeds.org/profile/mfa": {
-        "message": "MFA error"
+        "message": "error_mfa"
       }
     },
     "AUTHORIZATION_FAILURE": {
       "affiliation=student": {
-        "message": "Not student error"
+        "message": "error_affiliation_student"
       },
       "http://www.swamid.se/policy/assurance/al1": {
-        "message": "Not AL1 error"
+        "message": "error_assurance_al1"
       }
     },
     "OTHER_ERROR": {
       "An error occurred": {
-        "message": "Error unclear, something stuck somewhere"
+        "message": "error_access_an_error_occurred"
       }
     }
   },
   "sp.ladok.se": {
     "IDENTIFICATION_FAILURE": {
       "norEduPersonNIN http://refeds.org/category/research-and-scholarship": {
-        "message": "You need to verify you eduID account error"
+        "message": "error_sp_ladok"
       }
     }
   }

@@ -310,10 +310,31 @@ export const specificErrors = {
     />
   ),
 
+  error_edu_person_principal_name: (
+    <FormattedHTMLMessage
+      id="error_edu_person_principal_name"
+      defaultMessage={`eduPersonPrincipalName error`}
+    />
+  ),
+
+  error_edu_person_orcid: (
+    <FormattedHTMLMessage
+      id="error_edu_person_orcid"
+      defaultMessage={`eduPersonOrcid error`}
+    />
+  ),
+
   error_authentication: (
     <FormattedHTMLMessage
       id="error_authentication"
       defaultMessage={"Authentication error <ul><li>The service you tried to access failed during the authentication stage.</li><li>This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again.</li><li>If you cannot resolve the issue yourself, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
+    />
+  ),
+
+  error_mfa: (
+    <FormattedHTMLMessage
+      id="error_mfa"
+      defaultMessage={"MFA error"}
     />
   ),
 
@@ -324,16 +345,45 @@ export const specificErrors = {
     />
   ),
 
+  error_affiliation_student: (
+    <FormattedHTMLMessage
+      id="error_affiliation_student"
+      defaultMessage={"Not student error"}
+    />
+  ),
+
+  error_assurance_al1: (
+    <FormattedHTMLMessage
+      id="error_assurance_al1"
+      defaultMessage={"Not AL1 error"}
+    />
+  ),
+
   error_access: (
     <FormattedHTMLMessage
       id="error_access"
       defaultMessage={"Access error <ul><li>An error occurred when accessing the service.</li><li>If you think you should be able to access the service, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
     />
   ),
+
+  error_access_an_error_occurred: (
+    <FormattedHTMLMessage
+      id="error_access_an_error_occurred"
+      defaultMessage={"Error unclear, something stuck somewhere"}
+    />
+  ),
+
   error_without_code: (
     <FormattedMessage
     id="error_without_code"
-    defaultMessage={"Insufficient error information received, Please retry or contact support"}
+    defaultMessage={"Insufficient error information received, please retry or contact support"}
+  />
+  ),
+
+  error_sp_ladok: (
+    <FormattedMessage
+    id="error_sp_ladok"
+    defaultMessage={"You need to verify you eduID account error"}
   />
   ),
 

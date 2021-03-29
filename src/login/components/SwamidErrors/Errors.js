@@ -33,7 +33,7 @@ function Errors(props){
       Object.keys(result).map((urlCtx, index)=> {
         if(urlCtx === techInformations.errorurl_ctx){
           return isSpecificError = (
-            <span key={index}>{Object.values(result[urlCtx]).toString()}</span>
+            props.translate(Object.values(result[urlCtx]).toString())
         )}
       })
     }
@@ -65,7 +65,7 @@ function Errors(props){
         Object.keys(ctxResult).map((urlCtx, index)=>{
           if(urlCtx === techInformations.errorurl_ctx){
             return isSpecificError = (
-              <span key={index}>{Object.values(ctxResult[urlCtx]).toString()}</span>
+              props.translate(Object.values(ctxResult[urlCtx]).toString())
             );
           }
         })
