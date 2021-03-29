@@ -27,6 +27,7 @@ function Errors(props){
   }, []);
 
   const checkErrorUrlCtx = () => {
+    //Compare error url ctx query string and swaimidErrorData.common 
     Object.keys(common).map(key=>{
       if(key === errorurl_code){
       let result = common[key];
@@ -44,7 +45,7 @@ function Errors(props){
   let common = swamidErrorData.common;
   let specialRp = swamidErrorData["sp.ladok.se"];
  
-  if(techInformations.errorurl_rp && techInformations.errorurl_rp === "sp.ladok.se")
+  if(techInformations.errorurl_rp === "sp.ladok.se")
     Object.keys(specialRp).map((key)=>{
       let ctxResult = specialRp[key];
       if(key === errorurl_code){
@@ -58,7 +59,7 @@ function Errors(props){
       }else checkErrorUrlCtx();
     }
   )
-  else if (!techInformations.errorurl_rp || techInformations.errorurl_rp !== "sp.ladok.se"){
+  else if (techInformations.errorurl_rp !== "sp.ladok.se"){
     checkErrorUrlCtx();
   }
 
