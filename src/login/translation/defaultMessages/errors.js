@@ -330,6 +330,12 @@ export const specificErrors = {
       defaultMessage={"Access error <ul><li>An error occurred when accessing the service.</li><li>If you think you should be able to access the service, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
     />
   ),
+  error_without_code: (
+    <FormattedMessage
+    id="error_without_code"
+    defaultMessage={"Insufficient error information received, Please retry or contact support"}
+  />
+  ),
 
   error_technical_info_heading: (
     <FormattedHTMLMessage

@@ -48,15 +48,7 @@ function Errors(props){
       return props.translate("error_insufficient_privileges")
     }else if(errorurl_code === "OTHER_ERROR"){
       return props.translate("error_access")
-    }else return (
-      <>
-        {props.translate("error_login_failed")}
-        {props.translate("error_identification_failed")}
-        {props.translate("error_authentication")}
-        {props.translate("error_insufficient_privileges")}
-        {props.translate("error_access")}
-      </>
-    )
+    }else return props.translate("error_without_code")
   };
 
   let isSpecificError = "";
@@ -81,20 +73,6 @@ function Errors(props){
   else if (!techInformations.errorurl_rp || techInformations.errorurl_rp !== "sp.ladok.se"){
     checkErrorUrlCtx();
   }showDefault();
-    
-  // let dafualt = (
-  //   errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
-  //   errorurl_code === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") : 
-  //   errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") : 
-  //   errorurl_code === "OTHER_ERROR" ? props.translate("error_access") :  
-  //   <>
-  //     {props.translate("error_login_failed")}
-  //     {props.translate("error_identification_failed")}
-  //     {props.translate("error_authentication")}
-  //     {props.translate("error_insufficient_privileges")}
-  //     {props.translate("error_access")}
-  //   </>
-  // );
 
   let isTechnicalInfoNotEmpty = 
     Object.keys(techInformations).some((key) => {
