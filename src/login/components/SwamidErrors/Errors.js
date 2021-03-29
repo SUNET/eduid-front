@@ -36,10 +36,10 @@ function Errors(props){
   const checkErrorUrlCtx = () => {
     //Compare error url ctx query string and swaimidErrorData.common 
     Object.keys(common).map(key=>{
-      if(key === errorurlCode ){
+      if(key === errorurlCode){
       let result = common[key];
       Object.keys(result).map((urlCtx)=> {
-        if(errorurlCtx.includes(urlCtx)){
+        if(errorurlCtx && errorurlCtx.includes(urlCtx)){
           return isSpecificError = (
             <div className="specific-error">{props.translate(Object.values(result[urlCtx]).toString())}</div>
         )}
@@ -47,16 +47,16 @@ function Errors(props){
     }
   })}
 
-  if(errorurlRp.includes("sp.ladok.se"))
+  if(errorurlRp && errorurlRp.includes("sp.ladok.se"))
     Object.keys(specialRp).map((key)=>{
       let ctxResult = specialRp[key];
       if(key === errorurlCode){
         Object.keys(ctxResult).map((urlCtx)=>{
-          if(errorurlCtx.includes(urlCtx)){
+          if(errorurlCtx && errorurlCtx.includes(urlCtx)){
             return isSpecificError = (
               <div className="specific-error">{props.translate(Object.values(ctxResult[urlCtx]).toString())}</div>
             );
-          }
+          }else checkErrorUrlCtx();
         })
       }else checkErrorUrlCtx();
     }
