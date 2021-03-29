@@ -39,17 +39,19 @@ function Errors(props){
     }
   })}
 
-  const showDefault = () => {
-    if(errorurl_code === "IDENTIFICATION_FAILURE"){
-      return props.translate("error_identification_failed")}
-    else if(errorurl_code === "AUTHENTICATION_FAILURE"){
-      return props.translate("error_authentication")
-    }else if(errorurl_code === "AUTHORIZATION_FAILURE"){
-      return props.translate("error_insufficient_privileges")
-    }else if(errorurl_code === "OTHER_ERROR"){
-      return props.translate("error_access")
-    }else return props.translate("error_without_code")
-  };
+
+
+  // const showDefault = () => {
+  //   if(errorurl_code === "IDENTIFICATION_FAILURE"){
+  //     return props.translate("error_identification_failed")}
+  //   else if(errorurl_code === "AUTHENTICATION_FAILURE"){
+  //     return props.translate("error_authentication")
+  //   }else if(errorurl_code === "AUTHORIZATION_FAILURE"){
+  //     return props.translate("error_insufficient_privileges")
+  //   }else if(errorurl_code === "OTHER_ERROR"){
+  //     return props.translate("error_access")
+  //   }else return props.translate("error_without_code")
+  // };
 
   let isSpecificError = "";
   let errorurl_code = query.get("errorurl_code")
@@ -72,7 +74,14 @@ function Errors(props){
   )
   else if (!techInformations.errorurl_rp || techInformations.errorurl_rp !== "sp.ladok.se"){
     checkErrorUrlCtx();
-  }showDefault();
+  }
+
+  let showErrorCode = (
+    errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
+    errorurl_code === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") : 
+    errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") : 
+    errorurl_code === "OTHER_ERROR" ? props.translate("error_access") :  props.translate("error_without_code")
+  );
 
   let isTechnicalInfoNotEmpty = 
     Object.keys(techInformations).some((key) => {
@@ -98,7 +107,7 @@ function Errors(props){
       <div className="swamid-error">
         {isTechnicalInfoNotEmpty ?
           <>
-            {isSpecificError}
+            {isSpecificError ? isSpecificError : showErrorCode}
             <div className={"technical-info-heading"}>
               {props.translate("error_technical_info_heading")}
             </div>
@@ -106,7 +115,7 @@ function Errors(props){
               {technicalInfomations}
             </div>
           </> : 
-          <>{showDefault()}</>
+          <>{showErrorCode}</>
         }
       </div>
     </div>
