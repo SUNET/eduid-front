@@ -30,28 +30,14 @@ function Errors(props){
     Object.keys(common).map(key=>{
       if(key === errorurl_code){
       let result = common[key];
-      Object.keys(result).map((urlCtx, index)=> {
+      Object.keys(result).map((urlCtx)=> {
         if(urlCtx === techInformations.errorurl_ctx){
           return isSpecificError = (
-            props.translate(Object.values(result[urlCtx]).toString())
+            <div className="specific-error">{props.translate(Object.values(result[urlCtx]).toString())}</div>
         )}
       })
     }
   })}
-
-
-
-  // const showDefault = () => {
-  //   if(errorurl_code === "IDENTIFICATION_FAILURE"){
-  //     return props.translate("error_identification_failed")}
-  //   else if(errorurl_code === "AUTHENTICATION_FAILURE"){
-  //     return props.translate("error_authentication")
-  //   }else if(errorurl_code === "AUTHORIZATION_FAILURE"){
-  //     return props.translate("error_insufficient_privileges")
-  //   }else if(errorurl_code === "OTHER_ERROR"){
-  //     return props.translate("error_access")
-  //   }else return props.translate("error_without_code")
-  // };
 
   let isSpecificError = "";
   let errorurl_code = query.get("errorurl_code")
@@ -62,10 +48,10 @@ function Errors(props){
     Object.keys(specialRp).map((key)=>{
       let ctxResult = specialRp[key];
       if(key === errorurl_code){
-        Object.keys(ctxResult).map((urlCtx, index)=>{
+        Object.keys(ctxResult).map((urlCtx)=>{
           if(urlCtx === techInformations.errorurl_ctx){
             return isSpecificError = (
-              props.translate(Object.values(ctxResult[urlCtx]).toString())
+              <div className="specific-error">{props.translate(Object.values(ctxResult[urlCtx]).toString())}</div>
             );
           }
         })
@@ -80,7 +66,8 @@ function Errors(props){
     errorurl_code === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
     errorurl_code === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") : 
     errorurl_code === "AUTHORIZATION_FAILURE" ? props.translate("error_insufficient_privileges") : 
-    errorurl_code === "OTHER_ERROR" ? props.translate("error_access") :  props.translate("error_without_code")
+    errorurl_code === "OTHER_ERROR" ? props.translate("error_access") :   
+    <div className="specific-error">{props.translate("error_without_code")}</div>
   );
 
   let isTechnicalInfoNotEmpty = 
