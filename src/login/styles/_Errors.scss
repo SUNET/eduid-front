@@ -1,0 +1,70 @@
+.swamid-error {
+  & span {
+    line-height: 1.5;
+    font-family: "ProximaNova-bold";
+    font-size: 1.5rem;
+  }
+  & ul {
+    margin-bottom: 3.5rem;
+    font-size: 1.25rem;
+    div {
+      margin-left: 2rem;
+      li:nth-child(1), 
+      li:nth-child(3), 
+      li:nth-child(5) {
+        list-style-type: disc;
+        margin-top: 1rem;     
+        font-family: "ProximaNova-bold";
+      }
+      li:nth-child(even) {
+        margin-top: 0;     
+      }
+    }
+  }
+  & li {
+    line-height: 1.5;
+    font-family: "ProximaNova-Regular";
+  }
+  & .technical-info-heading span{
+    font-family: "ProximaNova-Bold";
+    font-size: 1.25rem;
+  }
+  & .technical-info-box {
+    background-color: $white;
+    padding: 1rem;
+    .technical-info-text{
+      display: flex;
+      justify-content: flex-start;
+      p {
+        font-size: 1rem;
+        padding-bottom: 0;
+      }
+      p:first-child{
+        text-transform: uppercase;
+        font-family: "ProximaNova-Bold";
+        width: 8.125rem;
+        padding-right: 1rem;
+      }
+      p:last-child{
+        color: $orange-highlight;
+      }
+    }
+  }
+  .specific-error {
+    margin-bottom: 1.5rem;
+  }
+}
+  
+.swamid-error li {
+  margin-top: 24px;
+}
+
+@media (max-width: 568px) {
+  .technical-info-text{
+    flex-direction: column;
+
+    p:last-child{
+      color: $orange-highlight;
+    }
+  }
+}
