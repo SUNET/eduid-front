@@ -29,42 +29,32 @@ function Errors(props){
   let errorurlCode = query.get("errorurl_code");
   let errorurlCtx = query.get("errorurl_ctx");
   let errorurlRp = query.get("errorurl_rp");
-  let specialRPMessages = "";
-
-  const checkErrorUrlCtx = (commonMessages) => {
-    //Compare error url ctx query string and swaimidErrorData.common 
-    Object.keys(commonMessages).map(key=>{
-      if(key === errorurlCode){
-      let result = commonMessages[key];
-      Object.keys(result).map((urlCtx)=> {
-        if(errorurlCtx && errorurlCtx.includes(urlCtx)){
-          return isSpecificError = (
-            <div className="specific-error">{props.translate(Object.values(result[urlCtx]).toString())}</div>
-        )}
-      })
-    }
-  })};
-
+  let specificMessages = {};
   Object.keys(swamidErrorData).map((key) => {
     if(errorurlRp && errorurlRp.includes(key))
-      return specialRPMessages = swamidErrorData[errorurlRp]
+      return specificMessages = swamidErrorData[errorurlRp];
   });
 
-  if(specialRPMessages)
-    Object.keys(specialRPMessages).map((key)=>{
+  const checkErrorUrlCtx = (messages) => {
+    Object.keys(messages).map(key=>{
       if(key === errorurlCode){
-        let result = specialRPMessages[key];
-        Object.keys(result).map((urlCtx)=>{
+        let result = messages[key];
+        Object.keys(result).map((urlCtx)=> {
           if(errorurlCtx && errorurlCtx.includes(urlCtx)){
             return isSpecificError = (
               <div className="specific-error">{props.translate(Object.values(result[urlCtx]).toString())}</div>
-            );
-          }else checkErrorUrlCtx(swamidErrorData.common);
+          )}
         })
-      }else checkErrorUrlCtx(swamidErrorData.common);
-    }
-  )
-  else checkErrorUrlCtx(swamidErrorData.common);
+      }
+    })
+  };
+
+  if(specificMessages)
+  //specific messages is present, checkErrorUrlCtx function run with swamidErrorData[sp.example.com]
+    checkErrorUrlCtx(specificMessages);
+  if(!isSpecificError)
+  //isSpecificError is not returned, checkErrorUrlCtx function run with swamidErrorData.common
+    checkErrorUrlCtx(swamidErrorData.common);
   
   let showErrorCode = (
     errorurlCode  === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
