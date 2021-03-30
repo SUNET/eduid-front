@@ -45,7 +45,7 @@ function Errors(props){
         )}
       })
     }
-  })}
+  })};
 
   if(errorurlRp && errorurlRp.includes("sp.ladok.se"))
     Object.keys(specialRp).map((key)=>{
