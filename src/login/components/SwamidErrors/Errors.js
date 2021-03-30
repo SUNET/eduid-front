@@ -6,7 +6,7 @@ import { swamidErrorData } from "./swamidErrorData";
 
 function Errors(props){
   let query = new URLSearchParams(useLocation().search);
-  const [techInformations, setTechInformations] = useState({});
+  const [techInformation, setTechInformation] = useState({});
   useEffect(()=> {
     let errorurl_ts = query.get("errorurl_ts");
     let errorurl_rp = query.get("errorurl_rp");
@@ -17,7 +17,7 @@ function Errors(props){
     const newDateUrlTs = 
       ' ('+ convertUnixDate.getFullYear()+'-' + ((convertUnixDate.getMonth()+1).toString())+ '-'+(convertUnixDate.getDate().toString())+')';
 
-      setTechInformations({
+      setTechInformation({
         errorurl_ts: errorurl_ts &&  errorurl_ts !== "ERRORURL_TS" ? errorurl_ts + newDateUrlTs : undefined, 
         errorurl_rp: errorurl_rp && errorurl_rp !== "ERRORURL_RP" ? errorurl_rp : undefined,
         errorurl_tid: errorurl_tid && errorurl_tid !== "ERRORURL_TID" ? errorurl_tid : undefined,
@@ -71,19 +71,19 @@ function Errors(props){
   );
 
   let isTechnicalInfoNotEmpty = 
-    Object.keys(techInformations).some((key) => {
-      if(techInformations[key] !== undefined){
+    Object.keys(techInformation).some((key) => {
+      if(techInformation[key] !== undefined){
         return true
       } else 
       return false
   });
 
-  let technicalInformations = (
-    Object.keys(techInformations).map((key) => {
+  let technicalInformation = (
+    Object.keys(techInformation).map((key) => {
       return (
         <div className={"technical-info-text"} key={key}>
           <p>{key.toUpperCase()}</p>
-          <p>{techInformations[key]}</p>
+          <p>{techInformation[key]}</p>
         </div>
       )}
     )
@@ -99,7 +99,7 @@ function Errors(props){
               {props.translate("error_technical_info_heading")}
             </div>
             <div className={"technical-info-box"}>
-              {technicalInformations}
+              {technicalInformation}
             </div>
           </> : 
           <>{showErrorCode}</>
