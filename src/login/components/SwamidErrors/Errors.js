@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../../styles/index.scss";
@@ -63,7 +62,6 @@ function Errors(props){
   )
   else checkErrorUrlCtx();
   
-
   let showErrorCode = (
     errorurlCode  === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
     errorurlCode  === "AUTHENTICATION_FAILURE" ? props.translate("error_authentication") : 
@@ -74,7 +72,7 @@ function Errors(props){
 
   let isTechnicalInfoNotEmpty = 
     Object.keys(techInformations).some((key) => {
-      if (techInformations[key] !== undefined){
+      if(techInformations[key] !== undefined){
         return true
       } else 
       return false
