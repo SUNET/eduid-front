@@ -380,9 +380,9 @@ export const specificErrors = {
   />
   ),
 
-  error_sp_ladok: (
+  error_sp_example_nin: (
     <FormattedMessage
-    id="error_sp_ladok"
+    id="error_sp_example_nin"
     defaultMessage={"You need to verify your eduID account"}
   />
   ),

@@ -27,10 +27,10 @@ export const swamidErrorData = {
       }
     }
   },
-  "sp.ladok.se": {
+  "sp.example.com": {
     "IDENTIFICATION_FAILURE": {
       "norEduPersonNIN": {
-        "message": "error_sp_ladok"
+        "message": "error_sp_example_nin"
       }
     }
   }

@@ -484,7 +484,7 @@
     "defaultMessage": "Insufficient error information received, please retry or contact support"
   },
   {
-    "id": "error_sp_ladok",
+    "id": "error_sp_example_nin",
     "defaultMessage": "You need to verify your eduID account"
   },
   {
