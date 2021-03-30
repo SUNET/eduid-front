@@ -29,14 +29,13 @@ function Errors(props){
   let errorurlCode = query.get("errorurl_code");
   let errorurlCtx = query.get("errorurl_ctx");
   let errorurlRp = query.get("errorurl_rp");
-  let common = swamidErrorData.common;
-  let specialRp = swamidErrorData["sp.ladok.se"];
+  let specialRPMessages = "";
 
-  const checkErrorUrlCtx = () => {
+  const checkErrorUrlCtx = (commonMessages) => {
     //Compare error url ctx query string and swaimidErrorData.common 
-    Object.keys(common).map(key=>{
+    Object.keys(commonMessages).map(key=>{
       if(key === errorurlCode){
-      let result = common[key];
+      let result = commonMessages[key];
       Object.keys(result).map((urlCtx)=> {
         if(errorurlCtx && errorurlCtx.includes(urlCtx)){
           return isSpecificError = (
@@ -46,21 +45,26 @@ function Errors(props){
     }
   })};
 
-  if(errorurlRp && errorurlRp.includes("sp.ladok.se"))
-    Object.keys(specialRp).map((key)=>{
-      let ctxResult = specialRp[key];
+  Object.keys(swamidErrorData).map((key) => {
+    if(errorurlRp && errorurlRp.includes(key))
+      return specialRPMessages = swamidErrorData[errorurlRp]
+  });
+
+  if(specialRPMessages)
+    Object.keys(specialRPMessages).map((key)=>{
       if(key === errorurlCode){
-        Object.keys(ctxResult).map((urlCtx)=>{
+        let result = specialRPMessages[key];
+        Object.keys(result).map((urlCtx)=>{
           if(errorurlCtx && errorurlCtx.includes(urlCtx)){
             return isSpecificError = (
-              <div className="specific-error">{props.translate(Object.values(ctxResult[urlCtx]).toString())}</div>
+              <div className="specific-error">{props.translate(Object.values(result[urlCtx]).toString())}</div>
             );
-          }else checkErrorUrlCtx();
+          }else checkErrorUrlCtx(swamidErrorData.common);
         })
-      }else checkErrorUrlCtx();
+      }else checkErrorUrlCtx(swamidErrorData.common);
     }
   )
-  else checkErrorUrlCtx();
+  else checkErrorUrlCtx(swamidErrorData.common);
   
   let showErrorCode = (
     errorurlCode  === "IDENTIFICATION_FAILURE" ? props.translate("error_identification_failed") :
