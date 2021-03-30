@@ -6,7 +6,7 @@ const configData = {
   static_faq_url: ""
 };
 
-let signupReducer = (state = configData, action) => {
+let errorsReducer = (state = configData, action) => {
   switch (action.type) {
     case actions.APP_LOADED:
       return {
@@ -27,4 +27,4 @@ let signupReducer = (state = configData, action) => {
   }
 };
 
-export default signupReducer;
+export default errorsReducer;
