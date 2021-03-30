@@ -78,7 +78,7 @@ function Errors(props){
       return false
   });
 
-  let technicalInfomations = (
+  let technicalInformations = (
     Object.keys(techInformations).map((key) => {
       return (
         <div className={"technical-info-text"} key={key}>
@@ -99,7 +99,7 @@ function Errors(props){
               {props.translate("error_technical_info_heading")}
             </div>
             <div className={"technical-info-box"}>
-              {technicalInfomations}
+              {technicalInformations}
             </div>
           </> : 
           <>{showErrorCode}</>
