@@ -9,8 +9,10 @@ const RenderShowHideNin = props => {
   let toggleShowNin = "", showNin = "", nin = "";
 
   if(props.verifiedNinStatus)
+  //if nin is verified, verifiedNin[0]number will be present
     nin = props.verifiedNin[0].number;
   else 
+  //else nin is not verified, nins[0].number will be present
     nin = props.nins[0].number;
 
   if(url === "/profile/"){
@@ -20,19 +22,19 @@ const RenderShowHideNin = props => {
     toggleShowNin = props.toggleShowNinAtIdentity,
     showNin = props.showNinAtIdentity
   }
-
+  
   return(
-    <div key="1" data-ninnumber={nin} className={`${props.delete ? "data-with-delete" : "display-nin-show-hide"}`} >
-      <p key="0" className={`display-data ${props.verifiedNinStatus ? "verified" : "unverified"}`}>
+    <div data-ninnumber={nin} className={`${props.delete ? "data-with-delete" : "display-nin-show-hide"}`} >
+      <p className={`display-data ${props.verifiedNinStatus ? "verified" : "unverified"}`}>
         {showNin ? nin : nin.replace(/\d{4}$/, '****')}
       </p>
-      <button key="2" className="show-hide-button" onClick={toggleShowNin}>
+      <button className="show-hide-button" onClick={toggleShowNin}>
         {showNin ? props.translate("nin_hide_last_four_digits") : props.translate("nin_show_last_four_digits")}
       </button> 
       {
         (url === "/profile/verify-identity/" && !props.verifiedNinStatus) &&
+        // if location path name is "/profile/verify-identity/" and nin is not verified, button for deleting of nin number will appear
         <EduIDButton
-          key="3"
           className="icon-button"
           onClick={props.handleDelete}
         >
@@ -50,19 +52,19 @@ const RenderShowHideNin = props => {
         </svg>
         </EduIDButton>
       }  
-  </div>
+    </div>
   )
 }
 export class NinDisplay extends Component {
   render() {
     return (
-      <div key="1" className="profile-grid-cell">
+      <div className="profile-grid-cell">
         <label key="0">
           {this.props.translate("nin_display.profile.main_title")}
         </label>
         {this.props.nins.length === 0 ? 
+        // if nins is not added, user is able to navigate to identity
         <Link
-          key="1"
           to={`/profile/verify-identity/`}
           className="display-data unverified"
         >
