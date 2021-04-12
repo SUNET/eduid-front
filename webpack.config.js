@@ -6,6 +6,8 @@ const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+let environment =  process.argv[5];
+
 module.exports = {
   mode: "development",
   devServer: {
@@ -90,11 +92,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: true,
       template: 
-        process.argv[5] === "production" ? "./public/errors.html" :
-        process.argv[5] === "development" ? "./public/errors.staging.html" : "./public/errors.dev.html" ,
+        environment === "production" ? "./public/errors.html" :
+        environment === "development" ? "./public/errors.staging.html" : "./public/errors.dev.html" ,
       filename:  
-        process.argv[5] === "production" ? "errors.html" :
-        process.argv[5] === "development" ? "errors.staging.html" :  "errors.dev.html",
+        environment === "production" ? "errors.html" :
+        environment === "development" ? "errors.staging.html" :  "errors.dev.html",
         chunks: ["errors"]
     }),
     // Initial configuration
