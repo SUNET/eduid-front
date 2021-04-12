@@ -91,9 +91,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
-      template: 
-        environment === "production" ? "./public/errors.html" :
-        environment === "development" ? "./public/errors.staging.html" : "./public/errors.dev.html" ,
+      template: "./public/errors.html",
       filename:  
         environment === "production" ? "errors.html" :
         environment === "development" ? "errors.staging.html" :  "errors.dev.html",
