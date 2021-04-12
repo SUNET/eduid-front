@@ -19,7 +19,7 @@ delete webpackProd.entry.hot;
 delete webpackProd.devtool;
 
 webpackProd.output = {
-  filename: "[name].js",
+  filename: ({ chunk: { name } }) => { return name ===  "errors" ? "[name]-bundle.js" : "[name].js"} ,
   publicPath: "https://www.eduid.se/static/front-build/",
   path: path.join(__dirname, "build")
 };
@@ -53,6 +53,10 @@ webpackProd.optimization = {
   minimizer: [
     new UglifyJsPlugin()
   ]
+};
+
+webpackProd.performance= {
+  hints: false
 };
 
 module.exports = webpackProd;

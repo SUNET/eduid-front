@@ -6,7 +6,7 @@ var webpackStaging = {
 };
 
 webpackStaging.output = {
-  filename: "[name].staging.js",
+  filename: ({ chunk: { name } }) => { return name ===  "errors" ? "[name]-bundle.staging.js" :"[name].staging.js"},
   publicPath: "https://www.dev.eduid.se/static/front-build/",
   path: path.join(__dirname, "build")
 };
