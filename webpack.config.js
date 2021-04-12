@@ -89,9 +89,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
-      template: "./public/errors.html",
-      filename: "errors.html",
-      chunks: ["errors"]
+      template: 
+        process.argv[5] === "production" ? "./public/errors.html" :
+        process.argv[5] === "development" ? "./public/errors.staging.html" : "./public/errors.dev.html" ,
+      filename:  
+        process.argv[5] === "production" ? "errors.html" :
+        process.argv[5] === "development" ? "errors.staging.html" :  "errors.dev.html",
+        chunks: ["errors"]
     }),
     // Initial configuration
     initialConfigPlugin,
