@@ -40,7 +40,6 @@ const initState = function() {
 const init_app = function(target, component) {
   let action;
   action = initState;
-  console.log("AVAILABLE_LANGUAGES", AVAILABLE_LANGUAGES)
   const language = navigator.languages
     ? navigator.languages[0]
     : navigator.language || navigator.userLanguage;
