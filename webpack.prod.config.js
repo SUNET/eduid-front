@@ -5,6 +5,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var webpackProd = {
   entry: webpackConfig.entry,
@@ -52,8 +53,17 @@ webpackProd.mode = 'production';
 webpackProd.optimization = {
   minimizer: [
     new UglifyJsPlugin()
-  ]
+  ],
 };
+
+webpackProd.plugins = [
+  new HtmlWebpackPlugin({
+    hash: true,
+    template: "./public/errors.html",
+    filename: "errors.html",
+    chunks: ["errors"]
+  })
+];
 
 webpackProd.performance= {
   hints: false

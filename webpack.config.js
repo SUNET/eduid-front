@@ -23,7 +23,7 @@ module.exports = {
     signup: "./src/entry-points/signup",
     dashboard: "./src/entry-points/dashboard",
     login: "./src/login/app_init/index",
-    errors: "./src/entry-points/errors",
+    errors: ['babel-polyfill',"./src/entry-points/errors"],
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -92,10 +92,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: true,
       template: "./public/errors.html",
-      filename:  
-        environment === "production" ? "errors.html" :
-        environment === "development" ? "errors.staging.html" :  "errors.dev.html",
-        chunks: ["errors"]
+      filename: "errors.dev.html",
+      chunks: ["errors"]
     }),
     // Initial configuration
     initialConfigPlugin,
