@@ -1,6 +1,7 @@
 const path = require("path");
 const webpackProd = require("./webpack.prod.config");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 
 var webpackStaging = {
   ...webpackProd
@@ -13,6 +14,7 @@ webpackStaging.output = {
 };
 
 webpackStaging.plugins = [
+  initialConfigPlugin,
   new HtmlWebpackPlugin({
     hash: true,
     template: "./public/errors.html",
