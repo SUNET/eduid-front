@@ -6,8 +6,6 @@ const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let environment =  process.argv[5];
-
 module.exports = {
   mode: "development",
   devServer: {
@@ -92,10 +90,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: true,
       template: "./public/errors.html",
-      filename:  
-        environment === "production" ? "errors.html" :
-        environment === "development" ? "errors.staging.html" :  "errors.dev.html",
-        chunks: ["errors"]
+      filename: "errors.dev.html",
+      chunks: ["errors"]
     }),
     // Initial configuration
     initialConfigPlugin,
@@ -113,6 +109,5 @@ module.exports = {
         }
       }
     }),
-    // new BundleAnalyzerPlugin()
   ]
 };
