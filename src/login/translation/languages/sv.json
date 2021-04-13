@@ -211,7 +211,7 @@
   "nin_display.profile.no_nin": "lägg till personnummer",
   "nin_display.verify-identity_unverified_main_title": "1. Ditt personnummer",
   "nin_display.verify-identity_verified_main_title": "Personnummer",
-  "nin_hide_last_four_digits": "DÖJL",
+  "nin_hide_last_four_digits": "DÖLJ",
   "nin_show_last_four_digits": "VISA",
   "nins.illegal_chars": "Endast siffror är tillåtna",
   "nins.input_help_text": "Personnummer med 12 siffror",
