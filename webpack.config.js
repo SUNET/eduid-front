@@ -6,8 +6,6 @@ const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let environment =  process.argv[5];
-
 module.exports = {
   mode: "development",
   devServer: {
@@ -23,7 +21,7 @@ module.exports = {
     signup: "./src/entry-points/signup",
     dashboard: "./src/entry-points/dashboard",
     login: "./src/login/app_init/index",
-    errors: ['babel-polyfill',"./src/entry-points/errors"],
+    errors: "./src/entry-points/errors",
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -111,6 +109,5 @@ module.exports = {
         }
       }
     }),
-    // new BundleAnalyzerPlugin()
   ]
 };
