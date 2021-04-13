@@ -2,7 +2,6 @@ const path = require("path");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config");
 const CompressionPlugin = require("compression-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

@@ -6,8 +6,6 @@ const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let environment =  process.argv[5];
-
 module.exports = {
   mode: "development",
   devServer: {
