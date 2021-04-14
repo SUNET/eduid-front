@@ -7,7 +7,7 @@ const checkboxNamesLabels = [
   { owner: "User can edit who belongs to the group as an owner" },
 ];
 
-const RenderCheckboxInput = ({ meta, input, id, label, type }) => {
+export const RenderCheckboxInput = ({ meta, input, id, label, type }) => {
   const { error } = meta;
   const { onChange, value } = input;
   return (
