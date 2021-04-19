@@ -153,17 +153,18 @@ button.cancel-button {
 }
 
 // ----- buttons that captcha cancel modals ----  //
-button.captcha.cancel-button{
+button.captcha.cancel-button,
+button.reset-password.cancel-button {
   color: #161616;
   margin: 0.5rem 1rem !important;
   padding: 1rem;
+  box-shadow: none;
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     color: $gray;
     background-color: transparent;
-    box-shadow: none;
     border: solid 1px  $gray;
   }
 }
