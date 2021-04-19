@@ -176,7 +176,7 @@ class ChangePasswordForm extends Component {
             {this.props.translate("chpass.button_save_password")}
           </PrimaryButton>
           <EduIDButton
-            className="reset-password cancel-button"
+            className="cancel-button"
             onClick={this.props.handleStopPasswordChange.bind(this)}
           >
             {this.props.translate("cm.cancel")}
