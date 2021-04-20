@@ -64,9 +64,9 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
     expect(number.text()).toContain("****");
   });
 
-  it("Renders the saved number and icon button (remove)", () => {
+  it("Renders the saved number and show/hide", () => {
     const { wrapper } = setupComponent();
-    const button = wrapper.find("EduIDButton.icon-button");
+    const button = wrapper.find("button.show-hide-button");
     expect(button.exists()).toEqual(true);
     expect(button.length).toEqual(1);
   });
@@ -119,7 +119,7 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
   it("Renders the saved number", () => {
     const { wrapper } = setupComponent();
     const number = wrapper.find("p");
-    expect(number.text()).toBe("199901100004");
+    expect(number.text()).toBe("19990110****");
   });
 });
 
@@ -297,6 +297,6 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
   it("Renders only the verified number", () => {
     const { wrapper } = setupComponent();
     const verifiedNumber = wrapper.find(".verified");
-    expect(verifiedNumber.text()).toContain("196701110005");
+    expect(verifiedNumber.text()).toContain("19670111****");
   });
 });
