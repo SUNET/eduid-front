@@ -38,7 +38,7 @@ class Captcha extends Component {
             </EduIDButton>
             <EduIDButton
               onClick={this.props.cancelCaptcha}
-              className="modal-button captcha cancel-button"
+              className="cancel-button"
               id="cancel-captcha-button"
             >
               {this.props.translate("captcha.cancel")}

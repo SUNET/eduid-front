@@ -133,7 +133,7 @@ button.ok-button,
 
 /* color for CANCEL and CLOSE buttons in modals */
 // ----- buttons that close modals ----  //
-button.cancel-button {
+button.close-button {
   background-color: transparent;
   padding: 1rem 1rem 0 1rem;
   margin:0 !important;
@@ -152,18 +152,19 @@ button.cancel-button {
   }
 }
 
-// ----- buttons that captcha cancel modals ----  //
-button.captcha.cancel-button{
+// ----- buttons that captcha, reset-password cancel ----  //
+button.cancel-button {
   color: #161616;
   margin: 0.5rem 1rem !important;
   padding: 1rem;
+  box-shadow: none;
+  background-color: transparent;
   &:hover,
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled):focus,
   &:not(:disabled):not(.disabled):active:focus {
     color: $gray;
     background-color: transparent;
-    box-shadow: none;
     border: solid 1px  $gray;
   }
 }

@@ -43,7 +43,7 @@ class DeleteModal extends Component {
             </EduIDButton>
             <ButtonModal
               // id="close-modal"
-              className="modal-button cancel-button"
+              className="modal-button close-button"
               onClick={this.props.closeModal}
             >
               {this.props.translate("cm.cancel")}

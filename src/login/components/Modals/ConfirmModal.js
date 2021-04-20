@@ -11,7 +11,7 @@ const RenderCloseButton = ({closeModal}) => {
   return (
     <div className="close-button-container">
       <EduIDButton
-        className="modal-button cancel-button"
+        className="modal-button close-button"
         onClick={closeModal}
       >
       <svg

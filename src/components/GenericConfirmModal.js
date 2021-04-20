@@ -58,7 +58,7 @@ class GenericConfirmModal extends Component {
             </EduIDButton>
             <EduIDButton
               id={closeButtonId}
-              className="modal-button cancel-button"
+              className="modal-button close-button"
               onClick={closeModal}
             >
               {
