@@ -130,6 +130,14 @@ export const generalErrors = {
     />
   ),
 
+  // user errors
+  "nin needs to be formatted as 18|19|20yymmddxxxx": (
+    <FormattedMessage
+      id="nin needs to be formatted as 18|19|20yymmddxxxx"
+      defaultMessage={`National identity number needs to be in the form of yyyymmddxxxx`}
+    />
+  ),
+
   "Missing data for required field.": (
     <FormattedMessage
       id="Missing data for required field."

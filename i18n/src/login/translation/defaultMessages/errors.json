@@ -72,6 +72,10 @@
     "defaultMessage": "Service Unavailable. Check your internet connection."
   },
   {
+    "id": "nin needs to be formatted as 18|19|20yymmddxxxx",
+    "defaultMessage": "National identity number needs to be in the form of yyyymmddxxxx"
+  },
+  {
     "id": "error_in_form",
     "defaultMessage": "Check the form below for errors."
   },
