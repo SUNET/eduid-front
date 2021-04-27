@@ -11,9 +11,15 @@ const notifyAndDispatch = () => next => action => {
       ) {
         const msg = "csrf.try-again";
         next(actions.eduidNotify(msg, "errors"));
-      } else {
+      } 
+      else if(action.payload.error.nin){
         const msg =
-          action.payload.errorMsg || action.payload.message || "error_in_form";
+          action.payload.error.nin[0];
+        next(actions.eduidNotify(msg, "errors"));
+      }
+      else {
+        const msg =
+          action.payload.errorMsg || action.payload.message || "error_in_form" ;
         next(actions.eduidNotify(msg, "errors"));
       }
       setTimeout(() => {

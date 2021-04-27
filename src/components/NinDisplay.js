@@ -25,7 +25,7 @@ const RenderShowHideNin = props => {
   
   return(
     <div data-ninnumber={nin} className={`${props.delete ? "data-with-delete" : "display-nin-show-hide"}`} >
-      <p className={`display-data ${props.verifiedNinStatus ? "verified" : "unverified"}`}>
+      <p id="nin-number" className={`display-data ${props.verifiedNinStatus ? "verified" : "unverified"}`}>
         {showNin ? nin : nin.replace(/\d{4}$/, '****')}
       </p>
       <button className="show-hide-button" onClick={toggleShowNin}>

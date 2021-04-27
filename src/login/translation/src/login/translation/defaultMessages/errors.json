@@ -76,6 +76,10 @@
     "defaultMessage": "Check the form below for errors."
   },
   {
+    "id": "nin needs to be formatted as 18|19|20yymmddxxxx",
+    "defaultMessage": "National identity number needs to be in the form of yyyymmddxxxx"
+  },
+  {
     "id": "Missing data for required field.",
     "defaultMessage": "Missing data for required field"
   },
