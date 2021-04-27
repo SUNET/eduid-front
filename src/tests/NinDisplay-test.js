@@ -121,6 +121,12 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
     const number = wrapper.find("p");
     expect(number.text()).toBe("19990110****");
   });
+
+  it("Check p#nin-number exists", () => {
+    const { wrapper } = setupComponent();
+    const ninNumber = wrapper.find("p#nin-number");
+    expect(ninNumber.exists()).toEqual(true);
+  });
 });
 
 history.push("/profile");
