@@ -60,7 +60,7 @@ webpackProd.plugins = [
     return new HtmlWebpackPlugin({
       hash: true,
       template: `./public/${entryName}.html`,
-      filename: `${entryName}.dev.html`,
+      filename: `${entryName}.html`,
       chunks: [`${entryName}`]
     })
   }),

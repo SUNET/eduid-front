@@ -19,7 +19,7 @@ webpackStaging.plugins = [
     return new HtmlWebpackPlugin({
       hash: true,
       template: `./public/${entryName}.html`,
-      filename: `${entryName}.dev.html`,
+      filename: `${entryName}.staging.html`,
       chunks: [`${entryName}`]
     })
   })
