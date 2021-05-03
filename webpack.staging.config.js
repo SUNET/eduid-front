@@ -8,18 +8,20 @@ var webpackStaging = {
 };
 
 webpackStaging.output = {
-  filename: ({ chunk: { name } }) => { return name ===  "errors" ? "[name]-bundle.staging.js" :"[name].staging.js"},
+  filename: "[name]-bundle.staging.js",
   publicPath: "https://www.dev.eduid.se/static/front-build/",
   path: path.join(__dirname, "build")
 };
 
 webpackStaging.plugins = [
   initialConfigPlugin,
-  new HtmlWebpackPlugin({
-    hash: true,
-    template: "./public/errors.html",
-    filename: "errors.staging.html",
-    chunks: ["errors"]
+  ...["errors", "login", "dashboard", "signup"].map((entryName) =>{
+    return new HtmlWebpackPlugin({
+      hash: true,
+      template: `./public/${entryName}.html`,
+      filename: `${entryName}.staging.html`,
+      chunks: [`${entryName}`]
+    })
   })
 ];
 
