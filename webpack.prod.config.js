@@ -19,7 +19,7 @@ delete webpackProd.entry.hot;
 delete webpackProd.devtool;
 
 webpackProd.output = {
-  filename: ({ chunk: { name } }) => { return name ===  "errors" ? "[name]-bundle.js" : "[name].js"} ,
+  filename: "[name]-bundle.js",
   publicPath: "https://www.eduid.se/static/front-build/",
   path: path.join(__dirname, "build")
 };
@@ -56,12 +56,14 @@ webpackProd.optimization = {
 };
 
 webpackProd.plugins = [
-  new HtmlWebpackPlugin({
-    hash: true,
-    template: "./public/errors.html",
-    filename: "errors.html",
-    chunks: ["errors"]
-  })
+  ...["errors", "login", "dashboard", "signup"].map((entryName) =>{
+    return new HtmlWebpackPlugin({
+      hash: true,
+      template: `./public/${entryName}.html`,
+      filename: `${entryName}.dev.html`,
+      chunks: [`${entryName}`]
+    })
+  }),
 ];
 
 webpackProd.performance= {
