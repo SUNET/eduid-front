@@ -8,3 +8,4 @@ build/
 dist/
 .npm
 .DS_Store
+.idea/
