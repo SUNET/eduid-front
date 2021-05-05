@@ -44,8 +44,8 @@ extra_jobs:
       - "echo Building branch ${GIT_LOCAL_BRANCH}"
       - "npm install"
       - "npm run-script test-headless"
-      - "npm run build && npm run build-pro"
-      - "npm run manage:plugins && npm run manage:plugins:staging && npm run manage:plugins:pro"
+      - "npm run build-staging && npm run build-production"
+      - "npm run manage:plugins:staging && npm run manage:plugins:production"
       - "echo ${GIT_LOCAL_BRANCH} > build/revision.txt"
       - "git describe --always >> build/revision.txt; git log -n 1 >> build/revision.txt"
     clean_workspace: true
