@@ -2,9 +2,11 @@ import * as actions from "./login/components/Notifications/Notifications_actions
 
 const notifyAndDispatch = () => next => action => {
   if (action.type.endsWith("SUCCESS") || action.type.endsWith("FAIL")) {
-    if (action.error && action.payload) {
-      console.log("this is action.payload", action.payload);
-      console.log("this is action.error", action.error);
+    if(action.type.startsWith("GET_LETTER")){
+      delete action.payload.message;
+      delete action.payload.error;
+    }
+    else if (action.error && action.payload) {
       if (
         action.payload.error &&
         action.payload.error.csrf_token !== undefined
@@ -12,7 +14,7 @@ const notifyAndDispatch = () => next => action => {
         const msg = "csrf.try-again";
         next(actions.eduidNotify(msg, "errors"));
       } 
-      else if(action.payload.error.nin){
+      else if(action.payload.error && action.payload.error.nin){
         const msg =
           action.payload.error.nin[0];
         next(actions.eduidNotify(msg, "errors"));
@@ -25,7 +27,7 @@ const notifyAndDispatch = () => next => action => {
       setTimeout(() => {
         window.scroll(0, 0);
       }, 100);
-    } else if (action.payload && action.payload.message && !action.payload.message.includes("letter")) {
+    } else if (action.payload && action.payload.message) {
       next(actions.eduidNotify(action.payload.message, "messages"));
       setTimeout(() => {
         window.scroll(0, 0);
@@ -37,6 +39,5 @@ const notifyAndDispatch = () => next => action => {
     }
   }
   return next(action);
-};
-
+}
 export default notifyAndDispatch;
