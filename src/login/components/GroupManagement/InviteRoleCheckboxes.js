@@ -7,25 +7,13 @@ const checkboxNamesLabels = [
   { owner: "User can edit who belongs to the group as an owner" },
 ];
 
-export const RenderCheckboxInput = ({
-  meta,
-  input,
-  id,
-  label,
-  type,
-  disabled,
-}) => {
+export const RenderCheckboxInput = ({ meta, input, id, label, type }) => {
   const { error } = meta;
   const { onChange, value } = input;
-  const checkedStyling = value ? "checked" : null;
-  const disabledStyling = disabled ? "disabled" : null;
   return (
     <Fragment>
       <div className="checkbox-label">
-        <label
-          className={`${checkedStyling} ${disabledStyling}`}
-          htmlFor={id}
-        ></label>
+        <label className={value ? "checked" : null} htmlFor={id}></label>
         <p>{label}</p>
       </div>
       {/* input is display:none to allow custom styling of box */}
@@ -35,7 +23,6 @@ export const RenderCheckboxInput = ({
         value={value}
         checked={value}
         onChange={onChange}
-        disabled={disabled}
       />
       {error && (
         <div className="small form-text">

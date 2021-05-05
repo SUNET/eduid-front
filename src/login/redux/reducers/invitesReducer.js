@@ -4,7 +4,6 @@ import * as getOutgoingInvitesActions from "../actions/getOutgoingInvitesActions
 const invitesData = {
   message: "",
   invitesFromMe: [],
-  updatedInvite: {},
 };
 
 let invitesDataReducer = (state = invitesData, action) => {
@@ -19,23 +18,6 @@ let invitesDataReducer = (state = invitesData, action) => {
         ...state,
         invitesFromMe: [...action.payload.outgoing],
       };
-    case "@@redux-form/CHANGE": {
-      let checkboxName = action.meta.field;
-      let trimmedEmail = checkboxName.split("-")[0];
-      let role = checkboxName.split("-")[1];
-      if (role === "member") {
-        state.updatedInvite.member = action.payload;
-      } else if (role === "owner") {
-        state.updatedInvite.owner = action.payload;
-      }
-      return {
-        ...state,
-        updatedInvite: {
-          ...state.updatedInvite,
-          email: trimmedEmail,
-        },
-      };
-    }
     default:
       return state;
   }
