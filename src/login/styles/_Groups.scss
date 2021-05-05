@@ -313,7 +313,7 @@ article {
       margin-bottom: 0.25rem;
     }
   }
-  // structure for checkboxes in create invite 
+  // structure for checkboxes in create invite
   .invite-role {
     margin-top: 0.75rem;
     .checkbox-wrapper {
@@ -336,7 +336,7 @@ article {
   }
 }
 
-// position of checkboxes in edit invite 
+// position of checkboxes in edit invite
 #edit-invite-form {
   display: contents;
   .list-cell {
@@ -346,7 +346,7 @@ article {
   }
 }
 
- // styling for all checkboxes related to invites 
+// styling for all checkboxes related to invites
 .invites {
   .checkbox-label {
     label {
@@ -354,8 +354,14 @@ article {
       min-height: 1rem;
       min-width: 1rem;
       border: solid 2px $orange-highlight;
+      &.disabled {
+        border: solid 2px $close;
+      }
       &.checked {
         background: $orange-highlight;
+        &.disabled {
+          background: $close;
+        }
       }
     }
   }

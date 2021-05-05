@@ -5,15 +5,10 @@ import Form from "reactstrap/lib/Form";
 import { RenderCheckboxInput } from "../InviteRoleCheckboxes";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-const validateEditInvite = () => {
-  let errors = {};
-  return errors;
-};
-
 let EditRolesForm = (props) => {
-  const { handleSubmit, checkboxNames } = props;
+  const { checkboxNames, disabled } = props;
   return (
-    <Form id={"edit-invite-form"} role="form" onSubmit={handleSubmit}>
+    <Form id={"edit-invite-form"} role="form">
       {checkboxNames.map(({ name, label }, i) => {
         return (
           <div key={i} className="list-cell">
@@ -21,6 +16,7 @@ let EditRolesForm = (props) => {
               type="checkbox"
               label={label}
               id={name}
+              disabled={disabled}
               component={RenderCheckboxInput}
               name={name}
             />
@@ -33,14 +29,14 @@ let EditRolesForm = (props) => {
 
 EditRolesForm = reduxForm({
   form: "editInviteRole",
-  validate: validateEditInvite,
   enableReinitialize: true,
+  touchOnChange: true,
 })(EditRolesForm);
 
 EditRolesForm = connect(() => ({
   destroyOnUnmount: false,
 }))(EditRolesForm);
 
-// CreateInviteForm.propTypes = {};
+// EditRolesForm.propTypes = {};
 
 export default InjectIntl(EditRolesForm);
