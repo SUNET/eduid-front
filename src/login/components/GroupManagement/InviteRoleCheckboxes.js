@@ -17,8 +17,8 @@ export const RenderCheckboxInput = ({
 }) => {
   const { error } = meta;
   const { onChange, value } = input;
-  const checkedStyling = value ? "checked" : null;
-  const disabledStyling = disabled ? "disabled" : null;
+  const checkedStyling = value ? "checked" : "";
+  const disabledStyling = disabled ? "disabled" : "";
   return (
     <Fragment>
       <div className="checkbox-label">
