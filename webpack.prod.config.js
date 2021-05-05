@@ -19,7 +19,7 @@ delete webpackProd.entry.hot;
 delete webpackProd.devtool;
 
 webpackProd.output = {
-  filename: "[name]-bundle.js",
+  filename: "[name].js",
   publicPath: "https://www.eduid.se/static/front-build/",
   path: path.join(__dirname, "build")
 };
