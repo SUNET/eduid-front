@@ -8,7 +8,7 @@ var webpackStaging = {
 };
 
 webpackStaging.output = {
-  filename: "[name]-bundle.staging.js",
+  filename: "[name].staging.js",
   publicPath: "https://www.dev.eduid.se/static/front-build/",
   path: path.join(__dirname, "build")
 };
