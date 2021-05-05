@@ -53,7 +53,7 @@ let hardcodedInitialValues = {
   "hardcoded5@test-owner": true,
 };
 
-let mixedRolesInvitesByRole = [
+export let mixedRolesInvitesByRole = [
   { email: "hardcoded8@test.email", member: true, owner: true },
   { email: "hardcoded9@test.email", member: false, owner: true },
   { email: "hardcoded10@test.email", member: true, owner: false },
