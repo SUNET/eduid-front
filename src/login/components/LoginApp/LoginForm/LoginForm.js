@@ -1,22 +1,17 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
-
-// import Input from "../Input";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
 import EmailInput from "../../Inputs/EmailInput";
 import PasswordInput from "../../Inputs/PasswordInput";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
-
 import { validate } from "../../../app_utils/validation/validateEmail";
 
 let LoginFormDetails = (props) => (
-  // console.log("these are props in the LoginFormDetails:", props),
-  // (
-  <React.Fragment>
+  <>
     <EmailInput {...props} />
     <PasswordInput />
     <div className="button-pair">
@@ -31,13 +26,11 @@ let LoginFormDetails = (props) => (
       <LinkRedirect
         exact
         id={"link-forgot-password"}
-        className={""}
-        to={`/reset/reset-password/`}
+        to={`/reset-password/`}
         text={"Set a new password"}
       />
     </div>
-  </React.Fragment>
-  // )
+  </>
 );
 
 LoginFormDetails = reduxForm({
@@ -51,14 +44,9 @@ LoginFormDetails = connect(() => ({
 
 class LoginForm extends Component {
   render() {
-    // console.log("these are props in the LoginForm:", this.props);
     return (
-      <Fragment>
+      <>
         <p className="heading">Login to your eduID</p>
-        {/* <p>
-          If you log in you can to complete your identity process or edit your
-          current details.
-        </p> */}
         <form id="login-form" className="form">
           <LoginFormDetails {...this.props} />
         </form>
@@ -71,14 +59,13 @@ class LoginForm extends Component {
           />
           .
         </p>
-      </Fragment>
+      </>
     );
   }
 }
 
 LoginForm.propTypes = {
   translate: PropTypes.func,
-  // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func,
 };
 

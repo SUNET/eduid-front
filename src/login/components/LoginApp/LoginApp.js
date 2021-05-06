@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
 import LoginForm from "./LoginForm/LoginForm_container";
 import ResetPassword from "./ResetPassword/ResetPassword_container";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 class LoginApp extends Component {
   render() {
     // all these paths need need to render the ResetPassword component, which in turn handles the logic of what is displayed at each path
     const resetPasswordPaths = [
-      "/reset/reset-password/get-email-link",
-      "/reset/reset-password/email-link-sent",
-      "/reset/reset-password/check-user-details",
-      "/reset/reset-password/get-confirmation-code",
-      "/reset/reset-password/use-confirmation-code",
-      "/reset/reset-password/set-new-password",
+      "/reset-password/verify-email",
+      "/reset-password/new-password",
+      "/reset-password/extra-security-phone",
+      "/reset-password/new-password-extra-security-phone",
+      "/reset-password/new-password-extra-security-token",
     ];
 
     // creates a series of routes using all of the paths above
@@ -38,10 +36,8 @@ class LoginApp extends Component {
         />
         <Route
           exact
-          path="/reset/reset-password/"
-          component={() => (
-            <Redirect to="/reset/reset-password/get-email-link" />
-          )}
+          path="/reset-password/"
+          
         />
         {resetPasswordPages}
       </div>
@@ -50,7 +46,6 @@ class LoginApp extends Component {
 }
 
 LoginApp.propTypes = {
-  //is_fetching: PropTypes.bool,
 };
 
 export default withRouter(LoginApp);
