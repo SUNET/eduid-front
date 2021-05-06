@@ -44,18 +44,6 @@ webpackProd.plugins = [
     threshold: 10240,
     minRatio: 0.8
   }),
-  // new BundleAnalyzerPlugin()
-];
-
-webpackProd.mode = 'production';
-
-webpackProd.optimization = {
-  minimizer: [
-    new UglifyJsPlugin()
-  ],
-};
-
-webpackProd.plugins = [
   ...["errors", "login", "dashboard", "signup"].map((entryName) =>{
     return new HtmlWebpackPlugin({
       hash: true,
@@ -65,6 +53,14 @@ webpackProd.plugins = [
     })
   }),
 ];
+
+webpackProd.mode = 'production';
+
+webpackProd.optimization = {
+  minimizer: [
+    new UglifyJsPlugin()
+  ],
+};
 
 webpackProd.performance= {
   hints: false
