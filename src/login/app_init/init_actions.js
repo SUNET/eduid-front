@@ -1,11 +1,6 @@
 export const NEW_CSRF_TOKEN = "NEW_CSRF_TOKEN";
 export const GET_CONFIG = "GET_JSCONFIG_LOGIN_CONFIG";
-export const POST_EMAIL = "POST_EMAIL";
-export const POST_EMAIL_FAIL = "POST_EMAIL_FAIL";
-export const POST_RESET_PASSWORD_RESET_CONFIG_FAIL = "POST_RESET_PASSWORD_RESET_CONFIG_FAIL";
 export const GET_JSCONFIG_LOGIN_CONFIG_FAIL= "GET_JSCONFIG_LOGIN_CONFIG_FAIL";
-export const POST_RESET_PASSWORD_RESET_CONFIG_SUCCESS = "POST_RESET_PASSWORD_RESET_CONFIG_SUCCESS";
-export const GET_JSCONFIG_LOGIN_CONFIG_SUCCESS = "GET_JSCONFIG_LOGIN_CONFIG_SUCCESS";
 
 // token is needd to access the config
 export function newCsrfToken(token) {
@@ -36,22 +31,3 @@ export function getConfigFail(err) {
   };
 }
 
-// resetting the password, after sending the emailed code
-export function postEmial(email) {
-  return {
-    type: POST_EMAIL,
-    payload: {
-      email: email
-    }
-  };
-}
-
-export function postEmailFail(err) {
-  return {
-    type: POST_EMAIL_FAIL,
-    error: true,
-    payload: {
-      message: err.toString()
-    }
-  };
-}
