@@ -7,13 +7,11 @@ import {
   failRequest,
   putCsrfToken
 } from "../../sagas/common";
-
 import * as init_actions from "./init_actions";
 import * as app_actions from "../components/App/App_actions";
 
 export function* requestConfig() {
   try {
-    console.log("Getting config from " + LOGIN_CONFIG_URL);
     const config = yield call(fetchConfig, LOGIN_CONFIG_URL);
     yield put(config);
     yield put(app_actions.appLoaded());
@@ -35,10 +33,9 @@ export function fetchConfig(url) {
     .then(response => response.json());
 }
 
-export function fetchConfigLinkCode(config, data) {
-  console.log("this is data in the saga (fetch):", data);
+export function fetchConfigResetPassword(config, data) {
   return window
-    .fetch(PASSWORD_SERVICE_URL + "/reset/config/", {
+    .fetch(PASSWORD_SERVICE_URL + "/", {
       ...postRequest,
       body: JSON.stringify(data)
     })
@@ -46,53 +43,20 @@ export function fetchConfigLinkCode(config, data) {
     .then(response => response.json());
 }
 
-export function* useLinkCode(code) {
+export function* postEmail() {
   try {
     const state = yield select(state => state);
     const data = {
-      code: code.payload.code,
+      email: "test@test.se",
       csrf_token: state.config.csrf_token
     };
-    const resp = yield call(fetchConfigLinkCode, state.config, data);
-    console.log("this is resp in the saga:", resp);
+    const resp = yield call(fetchConfigResetPassword, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
     yield put(app_actions.appLoaded());
-    yield put(push("/reset/reset-password/check-user-details"));
+    yield put(push("/reset-password/verify-email"));
   } catch (error) {
     yield put(app_actions.appLoaded());
-    yield* failRequest(error, init_actions.postLinkCodeFail);
+    yield* failRequest(error, init_actions.postEmailFail);
   }
 }
-
-// const getData = state => ({
-//   email: state.getEmailLink.email,
-//   csrf_token: state.config.csrf_token
-// });
-
-// export function requestConfigFromCode(config, data) {
-//   return window
-//     .fetch(PASSWORD_SERVICE_URL + "/reset/config/", {
-//       ...postRequest,
-//       body: JSON.stringify(data)
-//     })
-//     .then(checkStatus)
-//     .then(response => response.json());
-// }
-
-// export function* getConfigFromCode() {
-//   try {
-//     const state = yield select(state => state),
-//       data = {
-//         code: document.location.href.split('/').reverse()[0],
-//         csrf_token: state.config.csrf_token,
-//       };
-//     const resp = yield call(requestConfigFromCode, state.config, data);
-//     yield put(putCsrfToken(resp));
-//     yield put(resp);
-//     yield put(actions.appLoaded());
-//   } catch (error) {
-//     yield put(actions.appLoaded());
-//     yield* failRequest(error, actions.postCodeFail);
-//   }
-// }
