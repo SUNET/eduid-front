@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm/LoginForm_container";
 import ResetPassword from "./ResetPassword/ResetPassword_container";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 
 class LoginApp extends Component {
   render() {
@@ -37,7 +38,7 @@ class LoginApp extends Component {
         <Route
           exact
           path="/reset-password/"
-          
+          render={(props) => <ResetPasswordMain {...props} />}
         />
         {resetPasswordPages}
       </div>
