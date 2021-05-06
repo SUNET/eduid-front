@@ -9,6 +9,7 @@ import {
 } from "../../sagas/common";
 import * as init_actions from "./init_actions";
 import * as app_actions from "../components/App/App_actions";
+import { getResetPasswordDataFail } from "./../redux/actions/resetPasswordActions";
 
 export function* requestConfig() {
   try {
@@ -31,6 +32,28 @@ export function fetchConfig(url) {
     })
     .then(checkStatus)
     .then(response => response.json());
+}
+
+export function* getResetPasswordData() {
+  const url = PASSWORD_SERVICE_URL + "/";
+  try {
+    const reponse = yield call(getData, url);
+    yield put(reponse);
+  } catch (error) {
+    yield put(getResetPasswordDataFail(error.toString()));
+  }
+}
+
+export function getData(url) {
+  const request = {
+    ...getRequest,
+  };
+  return window
+    .fetch(url, {
+      ...request,
+    })
+    .then(checkStatus)
+    .then((response) => response.json());
 }
 
 export function fetchConfigResetPassword(config, data) {
