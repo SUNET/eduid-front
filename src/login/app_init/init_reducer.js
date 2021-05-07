@@ -10,7 +10,7 @@ const initData = {
 
 let initReducer = (state = initData, action) => {
   switch (action.type) {
-    case actions.NEW_CSRF_TOKEN:
+    case actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS:
       return {
         ...state,
         ...action.payload
