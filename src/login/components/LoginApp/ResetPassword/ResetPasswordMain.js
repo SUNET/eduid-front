@@ -1,18 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch,  } from 'react-redux';
+import {getResetPassword} from "../../../redux/actions/resetPasswordActions"
 
-function ResetPasswordMain() {
-    const state = useSelector(state => state);
-    console.log("[RESET PASSWORD]", state)
-    return (
-      <>
-        <h1>hi</h1>
-      </>
-    );
+const ResetPasswordMain = () => {
+  const dispatch = useDispatch();
+  const state = useSelector(state => state.config.csrf_token);
 
-    
+  useEffect( () => {
+    dispatch(getResetPassword());
+  }, [state])
+
+  return (
+    <>
+      <h1>Reset password main</h1>
+    </>
+  );
 }
 
 ResetPasswordMain.propTypes = {
