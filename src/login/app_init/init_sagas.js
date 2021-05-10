@@ -9,7 +9,7 @@ import {
 } from "../../sagas/common";
 import * as init_actions from "./init_actions";
 import * as app_actions from "../components/App/App_actions";
-import { getResetPasswordDataFail } from "./../redux/actions/resetPasswordActions";
+import { getResetPasswordDataFail, postEmailFail } from "./../redux/actions/resetPasswordActions";
 
 export function* requestConfig() {
   try {
@@ -70,16 +70,16 @@ export function* postEmail() {
   try {
     const state = yield select(state => state);
     const data = {
-      email: "test@test.se",
-      csrf_token: state.config.csrf_token
+      email: state.resetPassword.email,
+      csrf_token: state.resetPassword.csrf_token
     };
     const resp = yield call(fetchConfigResetPassword, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
-    yield put(app_actions.appLoaded());
-    yield put(push("/reset-password/verify-email"));
+    if (resp.type.endsWith("SUCCESS")) {
+      yield put(push("verify-email"));
+    }
   } catch (error) {
-    yield put(app_actions.appLoaded());
-    yield* failRequest(error, init_actions.postEmailFail);
+    yield* failRequest(error, postEmailFail(error));
   }
 }
