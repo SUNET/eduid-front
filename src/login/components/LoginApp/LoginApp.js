@@ -37,7 +37,7 @@ class LoginApp extends Component {
         />
         <Route
           exact
-          path="/reset/reset-password/"
+          path="/reset-password/"
           render={(props) => <ResetPasswordMain {...props} />}
         />
         {resetPasswordPages}
