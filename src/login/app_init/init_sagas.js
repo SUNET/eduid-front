@@ -1,4 +1,3 @@
-import { push } from "react-router-redux";
 import { put, call, select } from "redux-saga/effects";
 import {
   checkStatus,
@@ -76,9 +75,6 @@ export function* postEmail() {
     const resp = yield call(fetchConfigResetPassword, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
-    if (resp.type.endsWith("SUCCESS")) {
-      yield put(push("verify-email"));
-    }
   } catch (error) {
     yield* failRequest(error, postEmailFail(error));
   }
