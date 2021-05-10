@@ -422,5 +422,6 @@
   "verify-identity.vetting_letter_valid": "Brevet är giltigt till",
   "verify-identity.vetting_link_settings": "Inställningar",
   "verify-identity.vetting_phone_tagline": "För dig som har ett svenskt telefonabonnemang i ditt eget namn",
-  "verify-identity.vetting_post_tagline": "För dig som har tillgång till din folkbokföringsaddress"
+  "verify-identity.vetting_post_tagline": "För dig som har tillgång till din folkbokföringsaddress",
+  "resetpass.send-link": "Skicka länk till e-postadress"
 }

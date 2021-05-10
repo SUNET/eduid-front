@@ -421,5 +421,6 @@
   "verify-identity.vetting_letter_sent": "The letter was sent",
   "verify-identity.vetting_letter_valid": "The letter is valid to",
   "verify-identity.vetting_phone_tagline": "For you with a Swedish phone number registered in your name",
-  "verify-identity.vetting_post_tagline": "For you registered at your current address"
+  "verify-identity.vetting_post_tagline": "For you registered at your current address",
+  "resetpass.send-link": "send link to email"
 }

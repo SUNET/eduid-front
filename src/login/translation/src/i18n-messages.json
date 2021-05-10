@@ -1618,5 +1618,10 @@
   {
     "id": "phones.input_placeholder",
     "defaultMessage": "Phone number"
+  },
+  {
+    "id": "resetpass.send-link",
+    "defaultMessage":"send link to email"
   }
+    
 ]
