@@ -1,11 +1,14 @@
 export const GET_RESET_PASSWORD = "GET_RESET_PASSWORD";
-export const GET_RESET_PASSWORD_SUCCESS = "GET_RESET_PASSWORD_SUCCESS";
 export const GET_RESET_PASSWORD_FAIL = "GET_RESET_PASSWORD_FAIL";
 export const POST_RESET_PASSWORD = "POST_RESET_PASSWORD";
 export const POST_RESET_PASSWORD_FAIL = "POST_RESET_PASSWORD_FAIL";
-export const POST_RESET_PASSWORD_RESET_CONFIG_FAIL = "POST_RESET_PASSWORD_RESET_CONFIG_FAIL";
-export const POST_RESET_PASSWORD_RESET_CONFIG_SUCCESS = "POST_RESET_PASSWORD_RESET_CONFIG_SUCCESS";
 export const POST_RESET_PASSWORD_VERIFY_EMAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL";
+
+export function postResetPassword() {
+  return {
+    type: POST_RESET_PASSWORD
+  };
+}
 
 export function getResetPassword() {
   return {
@@ -23,7 +26,6 @@ export function getResetPasswordDataFail(err) {
   };
 }
 
-// resetting the password, after sending the emailed code
 export function postEmail(email) {
   return {
     type: POST_RESET_PASSWORD,
