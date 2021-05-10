@@ -400,6 +400,5 @@ export const specificErrors = {
       id="error_technical_info_heading"
       defaultMessage={"Technical Information"}
     />
-  ),
-
+  )
 };
