@@ -17,7 +17,7 @@ export const login = {
   "resetpw.user-not-found": (
     <FormattedMessage
       id="resetpw.user-not-found"
-      defaultMessage={"User does not exist"}
+      defaultMessage={"User does not exist, please check your email addess"}
     />
   ),
   "resetpw.invalid_user": (
@@ -29,7 +29,7 @@ export const login = {
   "resetpw.email-send-failure": (
     <FormattedMessage
       id="resetpw.email-send-failure"
-      defaultMessage={"Error sending mail"}
+      defaultMessage={"Error sending mail, please try again"}
     />
   ),
   "resetpw.return-login": (
