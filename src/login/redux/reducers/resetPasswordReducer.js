@@ -12,6 +12,11 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
        ...action.payload
       };
+      case actions.POST_RESET_PASSWORD:
+        return {
+          ...state,
+         ...action.payload
+        };
     default:
       return state;
   }
