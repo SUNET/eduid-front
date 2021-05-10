@@ -22,5 +22,9 @@
   {
     "id": "resetpw.return-login",
     "defaultMessage": "return to Login"
+  },
+  {
+    "id": "resetpw.reset-pw-initialized",
+    "defaultMessage": "Reset password link has been sent"
   }
 ]

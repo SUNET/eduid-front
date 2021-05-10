@@ -38,4 +38,10 @@ export const login = {
       defaultMessage={"return to Login"}
     />
   ),
+  "resetpw.reset-pw-initialized": (
+    <FormattedMessage
+      id="resetpw.reset-pw-initialized"
+      defaultMessage={`Reset password link has been sent`}
+    /> 
+  ),
 }

@@ -428,5 +428,6 @@
   "resetpw.user-not-found": "Användaren finns inte",
   "resetpw.invalid_user": "Användaren har inte slutfört registreringen",
   "resetpw.email-send-failure": "Fel vid skicka e-post",
-  "resetpw.return-login": "återgå till inloggningen"
+  "resetpw.return-login": "återgå till inloggningen",
+  "resetpw.reset-pw-initialized": "Återställ lösenordslänken har skickats"
 }
