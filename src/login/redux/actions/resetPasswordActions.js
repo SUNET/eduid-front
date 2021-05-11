@@ -18,7 +18,7 @@ export function getResetPassword() {
   };
 }
 
-export function getResetPasswordDataFail(err) {
+export function getResetPasswordConfigFail(err) {
   return {
     type: GET_RESET_PASSWORD_FAIL,
     error: true,
@@ -28,7 +28,7 @@ export function getResetPasswordDataFail(err) {
   };
 }
 
-export function postEmail(email) {
+export function postEmailLink(email) {
   return {
     type: POST_RESET_PASSWORD,
     payload: {
@@ -37,7 +37,7 @@ export function postEmail(email) {
   };
 }
 
-export function postEmailFail(err) {
+export function postEmailLinkFail(err) {
   return {
     type: POST_RESET_PASSWORD_FAIL,
     error: true,

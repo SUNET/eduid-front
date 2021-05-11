@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useSelector, useDispatch,  } from 'react-redux';
-import {getResetPassword, postEmail} from "../../../redux/actions/resetPasswordActions"
+import { getResetPassword, postEmailLink } from "../../../redux/actions/resetPasswordActions"
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
@@ -49,7 +49,7 @@ const ResetPasswordMain = (props) => {
 
   const sendLink = () => {
     const email = document.querySelector("input[name='email']").value;
-    dispatch(postEmail(email));
+    dispatch(postEmailLink(email));
   };
   
   useEffect( () => {

@@ -5,16 +5,16 @@ import {
   failRequest,
   putCsrfToken
 } from "../../../../sagas/common";
-import { getResetPasswordDataFail, postEmailFail } from "../../actions/resetPasswordActions";
+import { getResetPasswordConfigFail, postEmailLinkFail } from "../../actions/resetPasswordActions";
 import { getData } from "../../sagas/getDataRequest";
 
-export function* getResetPasswordData() {
+export function* getResetPasswordConfig() {
   const url = PASSWORD_SERVICE_URL + "/";
   try {
     const reponse = yield call(getData, url);
     yield put(reponse);
   } catch (error) {
-    yield put(getResetPasswordDataFail(error.toString()));
+    yield put(getResetPasswordConfigFail(error.toString()));
   }
 }
 
@@ -28,7 +28,7 @@ export function fetchConfigResetPassword(config, data) {
     .then(response => response.json());
 }
 
-export function* postEmail() {
+export function* postEmailLink() {
   try {
     const state = yield select(state => state);
     const data = {
@@ -39,6 +39,6 @@ export function* postEmail() {
     yield put(putCsrfToken(resp));
     yield put(resp);
   } catch (error) {
-    yield* failRequest(error, postEmailFail(error));
+    yield* failRequest(error, postEmailLinkFail(error));
   }
 }
