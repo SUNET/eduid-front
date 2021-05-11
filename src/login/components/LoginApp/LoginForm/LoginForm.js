@@ -26,7 +26,7 @@ let LoginFormDetails = (props) => (
       <LinkRedirect
         exact
         id={"link-forgot-password"}
-        to={`/reset/reset-password/`}
+        to={`/reset-password/`}
         text={"Set a new password"}
       />
     </div>
