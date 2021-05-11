@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useSelector, useDispatch,  } from 'react-redux';
 import { getResetPassword, postEmailLink } from "../../../redux/actions/resetPasswordActions"
@@ -70,6 +71,9 @@ const ResetPasswordMain = (props) => {
 }
 
 ResetPasswordMain.propTypes = {
+  translate: PropTypes.func,
+  sendLink: PropTypes.func,
+  invalid: PropTypes.bool
 };
 
 export default i18n(withRouter(ResetPasswordMain));
