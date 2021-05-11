@@ -1,15 +1,14 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import { useSelector, useDispatch,  } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
 import { getResetPassword, postEmailLink } from "../../../redux/actions/resetPasswordActions"
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
-import { connect } from "react-redux";
 
 let EmailForm = (props) => (
   <Form id="reset-password-form" role="form" onSubmit={props.sendLink}>
@@ -35,7 +34,7 @@ let EmailForm = (props) => (
 );
 
 EmailForm = reduxForm({
-  form: "emailForm",
+  form: "reset-pass-email-form",
   validate,
 })(EmailForm);
 
