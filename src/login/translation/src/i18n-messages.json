@@ -1637,7 +1637,7 @@
   },
   {
     "id": "resetpw.email-send-failure",
-    "defaultMessage":"Error sending mail"
+    "defaultMessage":"Error sending mail, please try again"
   },
   {
     "id" : "resetpw.return-login",

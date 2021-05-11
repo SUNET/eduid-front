@@ -426,7 +426,7 @@
   "resetpw.send-link": "send link to email",
   "resetpw.user-not-found": "User does not exist, check your email addess",
   "resetpw.invalid_user": "User has not completed signup",
-  "resetpw.email-send-failure": "Error sending mail",
+  "resetpw.email-send-failure": "Error sending mail, please try again",
   "resetpw.return-login":"return to Login",
   "resetpw.reset-pw-initialized": "Reset password link has been sent"
 }
