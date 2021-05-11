@@ -45,14 +45,14 @@ EmailForm = connect(() => ({
 
 const ResetPasswordMain = (props) => {
   const dispatch = useDispatch();
-  const csrf_token = useSelector(state => state.config.csrf_token);
+  const csrf_token = useSelector(state => state.resetPassword.csrf_token);
 
   const sendLink = () => {
     const email = document.querySelector("input[name='email']").value;
     dispatch(postEmailLink(email));
   };
   
-  useEffect( () => {
+  useEffect(() => {
     dispatch(getResetPassword());
   }, [csrf_token])
 
