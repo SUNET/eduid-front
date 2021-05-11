@@ -1,12 +1,12 @@
 import { put, call, select } from "redux-saga/effects";
 import {
   checkStatus,
-  getRequest,
   postRequest,
   failRequest,
   putCsrfToken
 } from "../../../../sagas/common";
 import { getResetPasswordDataFail, postEmailFail } from "../../actions/resetPasswordActions";
+import { getData } from "../../sagas/getDataRequest";
 
 export function* getResetPasswordData() {
   const url = PASSWORD_SERVICE_URL + "/";
@@ -16,18 +16,6 @@ export function* getResetPasswordData() {
   } catch (error) {
     yield put(getResetPasswordDataFail(error.toString()));
   }
-}
-
-export function getData(url) {
-  const request = {
-    ...getRequest,
-  };
-  return window
-    .fetch(url, {
-      ...request,
-    })
-    .then(checkStatus)
-    .then((response) => response.json());
 }
 
 export function fetchConfigResetPassword(config, data) {
