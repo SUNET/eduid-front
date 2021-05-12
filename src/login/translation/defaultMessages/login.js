@@ -17,7 +17,7 @@ export const login = {
   "resetpw.user-not-found": (
     <FormattedMessage
       id="resetpw.user-not-found"
-      defaultMessage={"User does not exist, please check your email addess"}
+      defaultMessage={"User does not exist, please check your email address"}
     />
   ),
   "resetpw.invalid_user": (

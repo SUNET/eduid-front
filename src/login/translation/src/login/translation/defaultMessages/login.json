@@ -9,7 +9,7 @@
   },
   {
     "id": "resetpw.user-not-found",
-    "defaultMessage": "User does not exist, please check your email addess"
+    "defaultMessage": "User does not exist, please check your email address"
   },
   {
     "id": "resetpw.invalid_user",
