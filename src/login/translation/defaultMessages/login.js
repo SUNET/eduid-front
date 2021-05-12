@@ -44,4 +44,10 @@ export const login = {
       defaultMessage={`Reset password link has been sent`}
     /> 
   ),
+  "resetpw.email-throttled": (
+    <FormattedMessage
+      id="resetpw.email-throttled"
+      defaultMessage={`Reset password link not sent please try again later`}
+    /> 
+  ),
 }

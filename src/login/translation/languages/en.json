@@ -428,5 +428,6 @@
   "resetpw.invalid_user": "User has not completed signup",
   "resetpw.email-send-failure": "Error sending mail, please try again",
   "resetpw.return-login":"return to Login",
-  "resetpw.reset-pw-initialized": "Reset password link has been sent"
+  "resetpw.reset-pw-initialized": "Reset password link has been sent",
+  "resetpw.email-throttled": "Reset password link not sent please try again later"
 }

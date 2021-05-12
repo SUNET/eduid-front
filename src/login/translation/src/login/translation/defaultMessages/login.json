@@ -26,5 +26,9 @@
   {
     "id": "resetpw.reset-pw-initialized",
     "defaultMessage": "Reset password link has been sent"
+  },
+  {
+    "id": "resetpw.email-throttled",
+    "defaultMessage": "Reset password link not sent please try again later"
   }
 ]

@@ -429,5 +429,6 @@
   "resetpw.invalid_user": "Användaren har inte slutfört registreringen",
   "resetpw.email-send-failure": "Misslyckades att skicka e-post, vänligen försök igen",
   "resetpw.return-login": "återgå till inloggningen",
-  "resetpw.reset-pw-initialized": "Återställnings länken har skickats"
+  "resetpw.reset-pw-initialized": "Återställnings länken har skickats",
+  "resetpw.email-throttled": "Återställ lösenordslänken inte skickad, försök igen senare"
 }
