@@ -1,4 +1,3 @@
-
 import React from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
@@ -9,6 +8,7 @@ import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
+import PropTypes from "prop-types";
 
 let EmailForm = (props) => (
   <Form id="reset-password-form" role="form" onSubmit={props.sendLink}>
@@ -44,13 +44,14 @@ EmailForm = connect(() => ({
 }))(EmailForm);
 
 
-function ResetPasswordEmailLink(props){
+function SendResetPassLink(props){
   const dispatch = useDispatch();
 
   const sendLink = () => {
     const email = document.querySelector("input[name='email']").value;
     dispatch(postEmailLink(email));
   };
+
   return (
     <>
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
@@ -64,4 +65,10 @@ function ResetPasswordEmailLink(props){
   )
 }
 
-export default i18n(withRouter(ResetPasswordEmailLink));
+SendResetPassLink.propTypes = {
+  translate: PropTypes.func,
+  sendLink: PropTypes.func,
+  invalid: PropTypes.bool
+};
+
+export default i18n(withRouter(SendResetPassLink));
