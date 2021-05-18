@@ -3,19 +3,34 @@ import {
   checkStatus,
   postRequest,
   failRequest,
+  getRequest,
   putCsrfToken
 } from "../../../../sagas/common";
 import { getResetPasswordConfigFail, postEmailLinkFail } from "../../actions/resetPasswordActions";
-import { getData } from "../../sagas/getDataRequest";
+import { history } from "../../../components/App/App";
+
 
 export function* getResetPasswordConfig() {
   const url = PASSWORD_SERVICE_URL + "/";
   try {
-    const reponse = yield call(getData, url);
+    const reponse = yield call(fetchConfig, url);
     yield put(reponse);
   } catch (error) {
     yield put(getResetPasswordConfigFail(error.toString()));
   }
+}
+
+export function fetchConfig(url) {
+  const request = {
+    ...getRequest,
+    redirect: "follow"
+  };
+  return window
+    .fetch(url, {
+      ...request
+    })
+    .then(checkStatus)
+    .then(response => response.json());
 }
 
 export function fetchConfigResetPassword(config, data) {
@@ -38,6 +53,9 @@ export function* postEmailLink() {
     const resp = yield call(fetchConfigResetPassword, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
+    if (resp.type === "POST_RESET_PASSWORD_SUCCESS") {
+      history.push(`/reset-password/email-link-sent`);
+    }
   } catch (error) {
     yield* failRequest(error, postEmailLinkFail(error));
   }
