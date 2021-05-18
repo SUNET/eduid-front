@@ -8,6 +8,7 @@ class LoginApp extends Component {
   render() {
     // all these paths need need to render the ResetPassword component, which in turn handles the logic of what is displayed at each path
     const resetPasswordPaths = [
+      "/reset-password/email-link-sent",
       "/reset-password/verify-email",
       "/reset-password/new-password",
       "/reset-password/extra-security-phone",
