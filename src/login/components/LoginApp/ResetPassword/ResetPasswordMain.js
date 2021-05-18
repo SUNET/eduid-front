@@ -1,25 +1,29 @@
 import React, { useEffect } from "react";
-import { withRouter, Route  } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useSelector, useDispatch } from 'react-redux';
 import { getResetPassword } from "../../../redux/actions/resetPasswordActions"
-import SendResetPassLink from "./SendResetPassLink";
-import { createBrowserHistory } from "history";
+import ResetPasswordForm from "./ResetPasswordForm";
+import EmailLinkSent from "./EmailLinkSent";
 
-export const history = createBrowserHistory();
-
-const ResetPasswordMain = () => {
+const ResetPasswordMain = (props) => {
   const dispatch = useDispatch();
-  const csrf_token = useSelector(state => state.config.csrf_token);
+  const csrf_token = useSelector(state => state.resetPassword.csrf_token);
 
   useEffect(() => {
     dispatch(getResetPassword());
   }, [csrf_token]);
 
+  const url = props.history.location.pathname;
+
   return (
-    <div>
-      <Route path={`/reset-password/`} component={SendResetPassLink} />
-    </div>
+    <>
+      { 
+        url === `/reset-password/` ? <ResetPasswordForm {...props}/> : 
+        url ===`/reset-password/email-link-sent` ? <EmailLinkSent {...props}/> 
+        : null
+      }
+    </>
   );
 }
 
