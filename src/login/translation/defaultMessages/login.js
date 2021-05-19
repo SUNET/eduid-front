@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
 export const login = {
   "resetpw.heading-add-email": (
@@ -48,6 +48,25 @@ export const login = {
     <FormattedMessage
       id="resetpw.email-throttled"
       defaultMessage={`Reset password link not sent please try again later`}
+    /> 
+  ),
+  "resetpw.check-email-link": (values) => (
+    <FormattedHTMLMessage
+      id="resetpw.check-email-link"
+      defaultMessage={`Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours.`}
+      values={values}
+    /> 
+  ),
+  "resetpw.resend-link": (
+    <FormattedHTMLMessage
+      id="resetpw.resend-link"
+      defaultMessage={`If you didn’t receive the email? Check your junk email, \n or`}
+    /> 
+  ),
+  "resetpw.resend-link-button": (
+    <FormattedMessage
+      id="resetpw.resend-link-button"
+      defaultMessage={`resend link`}
     /> 
   ),
 }

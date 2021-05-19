@@ -30,5 +30,17 @@
   {
     "id": "resetpw.email-throttled",
     "defaultMessage": "Reset password link not sent please try again later"
+  },
+  {
+    "id": "resetpw.check-email-link",
+    "defaultMessage": "Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours."
+  },
+  {
+    "id": "resetpw.resend-link",
+    "defaultMessage": "If you didn’t receive the email? Check your junk email, \n or"
+  },
+  {
+    "id": "resetpw.resend-link-button",
+    "defaultMessage": "resend link"
   }
 ]
