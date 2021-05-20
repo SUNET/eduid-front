@@ -4,6 +4,7 @@ import * as addDataToStore from "../actions/addDataToStoreActions";
 import * as deleteGroupActions from "../actions/deleteGroupActions";
 
 const groupsData = {
+  hasCookie: null,
   message: "",
   loading: true,
   data: [],
@@ -14,6 +15,11 @@ const groupsData = {
 
 let groupsReducer = (state = groupsData, action) => {
   switch (action.type) {
+    case addDataToStore.ADD_COOKIE_STATUS_TO_STORE:
+      return {
+        ...state,
+        hasCookie: action.payload.hasCookie,
+      };
     case addDataToStore.ADD_NAVID_TO_STORE:
       return {
         ...state,
