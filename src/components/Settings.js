@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
 import PersonalDataContainer from "containers/PersonalData";
@@ -11,14 +12,9 @@ import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
 import GroupManagement from "../login/components/GroupManagement/GroupManagementContainer";
 
-import checkForCookie from "../login/app_utils/checkForCookie";
-
 const RenderGroups = () => {
   // functionality to be removed when groups feature is released
-  const cookieName = "show-groups";
-  const cookiePattern = "";
-  const showComponent = checkForCookie(cookieName, cookiePattern);
-  console.log("this is showComponent in RenderGroups:", showComponent);
+  const showComponent = useSelector((state) => state.groups.hasCookie);
   return (
     <Fragment>
       {showComponent && (
