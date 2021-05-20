@@ -1,47 +1,59 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
-
-// import Input from "../Input";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
-import EmailInput from "../../Inputs/EmailInput";
-import PasswordInput from "../../Inputs/PasswordInput";
+import EmailForm from "../../GroupManagement/EmailForm";
+import PasswordFormMock from "../../GroupManagement/GroupNameForm";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
-
 import { validate } from "../../../app_utils/validation/validateEmail";
 
-let LoginFormDetails = (props) => (
-  // console.log("these are props in the LoginFormDetails:", props),
-  // (
-  <React.Fragment>
-    <EmailInput {...props} />
-    <PasswordInput />
-    <div className="button-pair">
-      <ButtonPrimary
-        className={"settings-button"}
-        id={"login-button"}
-        disabled={props.invalid}
-        onClick={props.handleLogin}
-      >
-        Login to eduID
-      </ButtonPrimary>
-      <LinkRedirect
-        exact
-        id={"link-forgot-password"}
-        className={""}
-        to={`/reset/reset-password/`}
-        text={"Set a new password"}
-      />
-    </div>
-  </React.Fragment>
-  // )
+let RenderRegisterInfo = () => (
+  <p>
+    If you dont have eduID you can register
+    <Link
+      className={"text-link"}
+      href={`https://dashboard.eduid.se/`}
+      text={"here"}
+    />
+    .
+  </p>
 );
 
+let LoginFormDetails = (props) => {
+  const { handleAddEmail } = props;
+  return (
+    <Fragment>
+      <EmailForm
+        {...props}
+        required={true}
+        submitButton={false}
+        onSubmit={() => {}}
+      />
+      <PasswordFormMock
+        form={"password"}
+        label={"Password"}
+        submitButton={false}
+        placeholder={"Enter a password"}
+        helpBlock={""}
+        handleSubmit={() => {}}
+      />
+      <ButtonPrimary
+        type={"submit"}
+        onClick={handleAddEmail}
+        id={""}
+        className={"settings-button"}
+      >
+        Log in
+      </ButtonPrimary>
+    </Fragment>
+  );
+};
+
 LoginFormDetails = reduxForm({
-  form: "login-form",
+  form: "loginForm",
   validate,
 })(LoginFormDetails);
 
@@ -49,32 +61,20 @@ LoginFormDetails = connect(() => ({
   enableReinitialize: true,
 }))(LoginFormDetails);
 
-class LoginForm extends Component {
-  render() {
-    // console.log("these are props in the LoginForm:", this.props);
-    return (
-      <Fragment>
-        <p className="heading">Login to your eduID</p>
-        {/* <p>
-          If you log in you can to complete your identity process or edit your
-          current details.
-        </p> */}
-        <form id="login-form" className="form">
-          <LoginFormDetails {...this.props} />
-        </form>
-        <p>
-          If you dont have eduID you can register
-          <Link
-            className={"text-link"}
-            href={`https://dashboard.eduid.se/`}
-            text={"here"}
-          />
-          .
-        </p>
-      </Fragment>
-    );
-  }
-}
+let LoginForm = (props) => (
+  <Fragment>
+    <p className="heading">Login to your eduID</p>
+    <LoginFormDetails {...props} />
+    <RenderRegisterInfo />
+    <LinkRedirect
+      exact
+      id={"link-forgot-password"}
+      className={""}
+      to={`/reset/reset-password/`}
+      text={"Set a new password"}
+    />
+  </Fragment>
+);
 
 LoginForm.propTypes = {
   translate: PropTypes.func,
