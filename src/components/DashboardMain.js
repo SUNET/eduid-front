@@ -13,19 +13,25 @@ import DashboardNav from "./DashboardNav";
 import VerifyIdentity from "containers/VerifyIdentity";
 import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
-
+import checkForCookie from "../login/app_utils/checkForCookie";
 import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
 
+// cookie info
+const cookieName = "show-groups";
+const cookiePattern = "";
+
 class Main extends Component {
-  //constructor(props) {
-  //super(props);
-  //this.state = {
-  //fetching: props.is_fetching,
-  //setFetching: this.setFetching.bind(this)
-  //};
-  //}
+  state = {
+    hasCookie: checkForCookie(cookieName, cookiePattern),
+    //fetching: props.is_fetching,
+    //setFetching: this.setFetching.bind(this)
+  };
+
+  componentDidMount() {
+    this.props.handleCheckCookieStatus(this.state.hasCookie);
+  }
 
   //setFetching(fetching) {
   //this.setState({
@@ -49,10 +55,7 @@ class Main extends Component {
           <div key="0" id="content" className="vertical-content-margin">
             <DashboardNav {...this.props} />
             <div key="0" id="text-content">
-              <Route
-                path="/profile/settings/"
-                component={SettingsComponent}
-              />
+              <Route path="/profile/settings/" component={SettingsComponent} />
               <Route
                 exact
                 path="/profile/"
@@ -82,9 +85,7 @@ class Main extends Component {
               <Route
                 exact
                 path="/profile/nins/"
-                component={() => (
-                  <Redirect to="/profile/verify-identity/" />
-                )}
+                component={() => <Redirect to="/profile/verify-identity/" />}
               />
               <Route
                 exact
@@ -93,10 +94,10 @@ class Main extends Component {
                   <Redirect to="/profile/settings/personaldata/" />
                 )}
               />
-              </div>
             </div>
-          </section>
-        <FooterContainer {...this.props} /> 
+          </div>
+        </section>
+        <FooterContainer {...this.props} />
       </Router>,
     ];
   }
