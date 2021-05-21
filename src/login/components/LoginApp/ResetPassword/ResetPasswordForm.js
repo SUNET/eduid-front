@@ -47,7 +47,8 @@ EmailForm = connect(() => ({
 function ResetPasswordForm(props){
   const dispatch = useDispatch();
 
-  const sendLink = () => {
+  const sendLink = (e) => {
+    e.preventDefault();
     const email = document.querySelector("input[name='email']").value;
     dispatch(postEmailLink(email));
   };
