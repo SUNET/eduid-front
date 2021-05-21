@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
@@ -12,6 +12,12 @@ function EmailLinkSent(props){
   const sendLink = () => {
     dispatch(postEmailLink(email));
   };
+
+  useEffect(()=>{
+    if(!email){
+      props.history.push("/reset-password/");
+    }
+  },[])
 
   return (
     <>
