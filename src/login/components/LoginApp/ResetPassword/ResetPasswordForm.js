@@ -15,12 +15,14 @@ let EmailForm = (props) => (
     <Field
       type="email"
       name="email"
-      label={props.translate("signup.registering-input")}
+      label={props.translate("profile.email_display_title")}
       componentClass="input"
       id="email-input"
       component={CustomInput}
       translate={props.translate}
       placeholder="example@email.com"
+      required={true}
+      helpBlock={props.translate("emails.input_help_text")}
     />
     <EduIDButton
       className="settings-button"
