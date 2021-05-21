@@ -1,4 +1,4 @@
-import { takeLatest, takeEvery } from "redux-saga/effects";
+import { takeLatest, takeEvery, select } from "redux-saga/effects";
 import { put } from "redux-saga/effects";
 import * as configActions from "actions/DashboardConfig";
 import * as pdataActions from "actions/PersonalData";
@@ -58,15 +58,25 @@ function* configSaga() {
   yield put(configActions.getInitialUserdata());
 }
 
+// get cookie status out of store
+export const getCookieStatus = (state) => state.groups.hasCookie;
+// allow access based on status
+function* allowGroupsSagas() {
+  let hasCookie = yield select(getCookieStatus);
+  if (hasCookie) {
+    yield [...groupsSagas];
+  }
+}
+
 function* rootSaga() {
   yield [
     takeLatest(configActions.GET_JSCONFIG_CONFIG, requestConfig),
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSaga),
+    takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, allowGroupsSagas),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestCredentials),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestSuggestedPassword),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, sendGetLetterProofing),
-    ...groupsSagas,
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
     takeLatest(
       openidActions.SHOW_OIDC_SELEG_MODAL,
@@ -117,8 +127,8 @@ function* rootSaga() {
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeLatest(letterActions.POST_LETTER_PROOFING_PROOFING, sendLetterProofing),
     takeLatest(
-      letterActions.GET_LETTER_PROOFING_PROOFING,sendGetLetterProofing
-      
+      letterActions.GET_LETTER_PROOFING_PROOFING,
+      sendGetLetterProofing
     ),
     takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
     takeLatest(ninActions.POST_NIN, postNin),

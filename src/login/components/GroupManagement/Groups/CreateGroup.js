@@ -59,6 +59,7 @@ class CreateGroup extends Component {
               label={"Group name"}
               placeholder={"Name your group"}
               helpBlock={""}
+              submitButton={true}
               handleSubmit={this.handleGroupName}
             />
           </div>

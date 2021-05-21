@@ -8,7 +8,15 @@ import { emptyValueValidation } from "../../app_utils/validation/emptyValueValid
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 let GroupNameForm = (props) => {
-  const { handleSubmit, invalid, form, label, placeholder, helpBlock } = props;
+  const {
+    handleSubmit,
+    invalid,
+    form,
+    label,
+    placeholder,
+    helpBlock,
+    submitButton,
+  } = props;
 
   return (
     <Form id={`${form}-form`} role="form" onSubmit={handleSubmit}>
@@ -23,9 +31,15 @@ let GroupNameForm = (props) => {
           helpBlock={helpBlock}
         />
       </fieldset>
-      <EduIDButton type="submit" className="settings-button" disabled={invalid}>
-        CREATE GROUP
-      </EduIDButton>
+      {submitButton && (
+        <EduIDButton
+          type="submit"
+          className="settings-button"
+          disabled={invalid}
+        >
+          CREATE GROUP
+        </EduIDButton>
+      )}
     </Form>
   );
 };

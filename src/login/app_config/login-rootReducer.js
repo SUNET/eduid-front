@@ -5,7 +5,7 @@ import { reducer as formReducer } from "redux-form";
 import { intlReducer } from "react-intl-redux";
 import initReducer from "../app_init/init_reducer";
 import appReducer from "../components/App/App_reducer";
-import loginReducer from "../components/LoginApp/LoginForm/LoginForm_reducer";
+import loginReducer from "../redux/reducers/loginReducer";
 import resetPasswordReducer from "../redux/reducers/resetPasswordReducer";
 
 const eduIDLoginApp = combineReducers({

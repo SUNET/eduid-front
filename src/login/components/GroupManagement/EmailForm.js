@@ -45,10 +45,11 @@ let EmailForm = (props, { submitButton, onSubmit }) => {
 EmailForm = reduxForm({
   form: "email",
   validate,
+  asyncBlurFields: [],
 })(EmailForm);
 
-EmailForm = connect((state) => ({
-  initialValues: { email: state.emails.email },
+EmailForm = connect(() => ({
+  initialValues: {},
   enableReinitialize: true,
   touchOnChange: true,
 }))(EmailForm);
