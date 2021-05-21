@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useDispatch, connect } from 'react-redux';
-import { postEmailLink } from "../../../redux/actions/resetPasswordActions";
+import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";

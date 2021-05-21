@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch, } from 'react-redux';
-import { postEmailLink } from "../../../redux/actions/resetPasswordActions";
+import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 
 function EmailLinkSent(props){
   const email = useSelector(state => state.resetPassword.email);

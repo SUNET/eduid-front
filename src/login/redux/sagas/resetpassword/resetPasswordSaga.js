@@ -6,7 +6,8 @@ import {
   getRequest,
   putCsrfToken
 } from "../../../../sagas/common";
-import { getResetPasswordConfigFail, postEmailLinkFail } from "../../actions/resetPasswordActions";
+import { postEmailLinkFail } from "../../actions/postResetPasswordActions";
+import { getResetPasswordConfigFail } from "../../actions/getResetPasswordActions";
 import { history } from "../../../components/App/App";
 
 

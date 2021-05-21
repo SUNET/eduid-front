@@ -1,6 +1,6 @@
 import initStore from "./initStore";
 import * as init_actions from "./init_actions";
-import { useLinkCode }  from "./../redux/actions/resetPasswordActions";
+import { useLinkCode }  from "./../redux/actions/postResetPasswordActions";
 
 const init_container = () => {
   console.log("Initializing state for the login app...");

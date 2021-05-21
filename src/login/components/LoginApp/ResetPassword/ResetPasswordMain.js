@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useSelector, useDispatch } from 'react-redux';
-import { getResetPassword } from "../../../redux/actions/resetPasswordActions"
+import { getResetPassword } from "../../../redux/actions/getResetPasswordActions"
 import ResetPasswordForm from "./ResetPasswordForm";
 import EmailLinkSent from "./EmailLinkSent";
 
