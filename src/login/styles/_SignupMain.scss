@@ -1,14 +1,12 @@
 // also check #nin-form
-#register-form,
-#reset-password-form {
+#register-form {
   display: flex;
   flex-direction: row;
   margin-top: 0;
   &.form-group {
     margin-bottom: 0;
   }
-  & #register-button, 
-    #reset-password-button {
+  & #register-button{
     margin: 1rem 0 0 1rem;
   }
 }
@@ -54,12 +52,10 @@ h3 {
 }
 
 @media (max-width: 568px) {
-  #register-form,
-  #reset-password-form {
+  #register-form  {
     flex-direction: column;
     align-items: unset;
-    & #register-button, 
-      #reset-password-button {
+    & #register-button {
       width: 100%;
       margin-left: 0;
     }
