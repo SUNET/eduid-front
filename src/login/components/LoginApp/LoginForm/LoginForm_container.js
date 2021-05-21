@@ -2,26 +2,24 @@ import { connect } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 import LoginForm from "./LoginForm";
-import * as actions from "./LoginForm_actions";
+import { addLoginEmail } from "../../../redux/actions/addDataToStoreActions";
 
 const mapStateToProps = (state) => {
+  let loginEmail = {};
+  if (state.form.loginForm !== undefined) {
+    loginEmail = state.form.loginForm.email;
+  }
   return {
-    email: state.login.email,
-    enableReinitialize: true
+    email: loginEmail,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleLogin: e => {
-      e.preventDefault();
-      const addedEmail = e.target.closest(".form").children[0].children[1]
-        .value;
-      if (addedEmail) {
-        // login-rootSaga.js: make this trigger postLoginDetails()
-        dispatch(actions.addLoginDetails(addedEmail));
-      }
-    }
+    handleAddEmail: () => {
+      const email = document.getElementsByTagName("input")[0].value;
+      dispatch(addLoginEmail(email));
+    },
   };
 };
 
