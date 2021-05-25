@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Splash from "../Splash/Splash_container";
@@ -28,7 +28,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  //is_fetching: PropTypes.bool,
 };
 
 export default App;
