@@ -14,19 +14,21 @@ export const history = createBrowserHistory();
 
 class App extends Component {
   render() {
-    return [
-      <Splash key="0" />,
-      <Fragment>
-        <Header />
-        <section id="panel">
-          <Notifications />
-          <Router history={history}>
-            <LoginApp />
-          </Router>
-        </section>
-        <Footer {...this.props} />
-      </Fragment>,
-    ];
+    return (
+      <>
+        <Splash key="0" />
+        <Fragment>
+          <Header />
+          <section id="panel">
+            <Notifications />
+            <Router history={history}>
+              <LoginApp />
+            </Router>
+          </section>
+          <Footer {...this.props} />
+        </Fragment>
+      </>
+    );
   }
 }
 

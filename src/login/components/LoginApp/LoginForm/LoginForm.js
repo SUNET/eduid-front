@@ -70,7 +70,7 @@ let LoginForm = (props) => (
       exact
       id={"link-forgot-password"}
       className={""}
-      to={`/reset/reset-password/`}
+      to={`/reset-password`}
       text={"Set a new password"}
     />
   </Fragment>
