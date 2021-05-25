@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
