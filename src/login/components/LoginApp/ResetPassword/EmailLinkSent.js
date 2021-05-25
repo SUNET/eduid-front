@@ -13,12 +13,6 @@ function EmailLinkSent(props){
     dispatch(postEmailLink(email));
   };
 
-  useEffect(()=>{
-    if(!email){
-      props.history.push("/reset-password/");
-    }
-  },[])
-
   return (
     <>
       <p className="heading">
@@ -27,7 +21,7 @@ function EmailLinkSent(props){
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
         <p>{props.translate("resetpw.resend-link")} 
-          <a className={`resend-link` } onClick={sendLink}> {props.translate("resetpw.resend-link-button")} </a>
+          <a className={`resend-link`} onClick={sendLink}> {props.translate("resetpw.resend-link-button")} </a>
         </p>
       </div>
     </>
