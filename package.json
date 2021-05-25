@@ -37,7 +37,7 @@
     "react-dom": "^16.14.0",
     "react-recaptcha": "^2.3.10",
     "react-redux": "^7.2.4",
-    "react-router-hash-link": "^2.4.0",
+    "react-router-hash-link": "^2.4.1",
     "react-script-loader-hoc": "^1.2.2",
     "react-useragent": "^1.1.2",
     "reactstrap": "^6.5.0",
