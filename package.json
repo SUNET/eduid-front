@@ -18,8 +18,8 @@
     "serve": "webpack-dev-server --open",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "copy:bundles": "copy-and-watch build/*.{js,ttf,woff,woff2,map} ~/Mount/eduid-front/build",
-    "watch:bundles": "copy-and-watch build/*.{js,ttf,woff,woff2,map} ~/Mount/eduid-front/build --watch --skip-initial-copy"
+    "copy:bundles": "copy-and-watch build/*.{html,js,ttf,woff,woff2,map} ~/Mount/eduid-front/build",
+    "watch:bundles": "copy-and-watch build/*.{html,js,ttf,woff,woff2,map} ~/Mount/eduid-front/build --watch --skip-initial-copy"
   },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
