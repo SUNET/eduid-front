@@ -10,13 +10,11 @@ class LoginApp extends Component {
 
     return (
       <div id="content" className="vertical-content-margin">
-        {url.includes(`login`) && (
-          <Route
-            exact
-            path={`/login/${urlCode}`}
-            render={(props) => <LoginForm {...props} />}
-          />
-        )}
+        <Route
+          exact
+          path={`/login/${urlCode}`}
+          render={(props) => <LoginForm {...props} />}
+        />
       </div>
     );
   }
