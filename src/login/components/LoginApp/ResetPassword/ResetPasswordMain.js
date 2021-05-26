@@ -19,7 +19,7 @@ const ResetPasswordMain = (props) => {
   return (
     <>
       { 
-        url === `/reset-password/` ? <ResetPasswordForm {...props}/> : 
+        url === `/reset-password/` ? <ResetPasswordForm urlCode={props.urlCode} {...props}/> : 
         url ===`/reset-password/email-link-sent` ? <EmailLinkSent {...props}/> 
         : null
       }
