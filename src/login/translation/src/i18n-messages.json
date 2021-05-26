@@ -1618,5 +1618,29 @@
   {
     "id": "phones.input_placeholder",
     "defaultMessage": "Phone number"
-  }
+  },
+  {
+    "id": "resetpw.heading-add-email",
+    "defaultMessage": "Enter your email address registered to your account"
+  },
+  {
+    "id": "resetpw.send-link",
+    "defaultMessage":"send link to email"
+  },
+  {
+    "id": "resetpw.user-not-found",
+    "defaultMessage":"User does not exist, check your email address"
+  },
+  {
+    "id": "resetpw.invalid_user",
+    "defaultMessage":"User has not completed signup"
+  },
+  {
+    "id": "resetpw.email-send-failure",
+    "defaultMessage":"Error sending mail, please try again"
+  },
+  {
+    "id" : "resetpw.return-login",
+    "defaultMessage": "return to Login"
+  } 
 ]

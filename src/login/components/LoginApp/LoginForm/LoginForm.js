@@ -70,7 +70,7 @@ let LoginForm = (props) => (
       exact
       id={"link-forgot-password"}
       className={""}
-      to={`/reset-password`}
+      to={`/reset-password/`}
       text={"Set a new password"}
     />
   </Fragment>
@@ -78,7 +78,6 @@ let LoginForm = (props) => (
 
 LoginForm.propTypes = {
   translate: PropTypes.func,
-  // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func,
 };
 

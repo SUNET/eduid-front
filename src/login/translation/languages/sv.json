@@ -422,5 +422,16 @@
   "verify-identity.vetting_letter_valid": "Brevet är giltigt till",
   "verify-identity.vetting_link_settings": "Inställningar",
   "verify-identity.vetting_phone_tagline": "För dig som har ett svenskt telefonabonnemang i ditt eget namn",
-  "verify-identity.vetting_post_tagline": "För dig som har tillgång till din folkbokföringsaddress"
+  "verify-identity.vetting_post_tagline": "För dig som har tillgång till din folkbokföringsaddress",
+  "resetpw.heading-add-email": "Ange din e-postadress registrerad till ditt konto",
+  "resetpw.send-link": "Skicka länk till e-postadress",
+  "resetpw.user-not-found": "Användaren finns inte, kontrollera e-postadressen",
+  "resetpw.invalid_user": "Användaren har inte slutfört registreringen",
+  "resetpw.email-send-failure": "Misslyckades att skicka e-post, vänligen försök igen",
+  "resetpw.return-login": "återgå till inloggningen",
+  "resetpw.reset-pw-initialized": "Återställnings länken har skickats",
+  "resetpw.email-throttled": "Återställ lösenordslänken inte skickad, försök igen senare",
+  "resetpw.check-email-link": "Kontrollera din e-postadress <b>{email}</b> för att fortsätta. \n Länken är giltig i två timmar.",
+  "resetpw.resend-link": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller",
+  "resetpw.resend-link-button": "skicka länk igen"
 }
