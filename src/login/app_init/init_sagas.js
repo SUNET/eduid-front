@@ -1,7 +1,7 @@
 import { put, call } from "redux-saga/effects";
 import {
   checkStatus,
-  getRequest,
+  getRequest
 } from "../../sagas/common";
 import * as init_actions from "./init_actions";
 import * as app_actions from "../components/App/App_actions";

@@ -15,6 +15,11 @@ let initReducer = (state = initData, action) => {
         ...state,
         ...action.payload
       };
+    case actions.FROM_BACKEND_CONFIG_SUCCESS:
+      return {
+        ...state,
+        ...action.payload
+      };
     default:
       return state;
   }

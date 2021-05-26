@@ -23,10 +23,10 @@ export function postEmailLinkFail(err) {
 }
 
 export function useLinkCode(code) {
-    return {
-      type: POST_RESET_PASSWORD_VERIFY_EMAIL,
-      payload: {
-        code: code
-      }
-    };
-  }
+  return {
+    type: POST_RESET_PASSWORD_VERIFY_EMAIL,
+    payload: {
+      code: code
+    }
+  };
+}
