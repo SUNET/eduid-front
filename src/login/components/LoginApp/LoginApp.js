@@ -27,12 +27,14 @@ class LoginApp extends Component {
         />
       );
     });
+    const url = this.props.location.pathname;
+    const urlCode = url.split("/").reverse()[0];
 
     return (
       <div id="content" className="vertical-content-margin">
         <Route
           exact
-          path="/login/"
+          path={`/login/${urlCode}`}
           render={(props) => <LoginForm {...props} />}
         />
         <Route
