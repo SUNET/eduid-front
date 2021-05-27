@@ -15,6 +15,12 @@ function EmailLinkSent(props){
 
   return (
     <>
+      <div className="success-positioning">
+        <div className="success-icon">
+          <div className="success-tip-line" />
+          <div className="success-long-line" />
+        </div>
+      </div>  
       <p className="heading">
         {props.translate("resetpw.reset-pw-initialized")}
       </p>
