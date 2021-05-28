@@ -8,7 +8,6 @@ import { validate } from "../../../app_utils/validation/validateEmail";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let LoginForm = (props) => {
-  const { handleAddEmail } = props;
   return (
     <Fragment>
       <EmailForm
