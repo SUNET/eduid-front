@@ -61,7 +61,7 @@ LoginFormDetails = connect(() => ({
   enableReinitialize: true,
 }))(LoginFormDetails);
 
-let LoginForm = (props) => (
+let Login = (props) => (
   <Fragment>
     <p className="heading">Login to your eduID</p>
     <LoginFormDetails {...props} />
@@ -76,9 +76,9 @@ let LoginForm = (props) => (
   </Fragment>
 );
 
-LoginForm.propTypes = {
+Login.propTypes = {
   translate: PropTypes.func,
   validate: PropTypes.func,
 };
 
-export default withRouter(LoginForm);
+export default withRouter(Login);

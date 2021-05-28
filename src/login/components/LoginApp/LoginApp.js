@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoginForm from "./LoginForm/LoginForm_container";
+import Login from "./Login/Login_container";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
@@ -35,7 +35,7 @@ class LoginApp extends Component {
         <Route
           exact
           path={`/login/${urlCode}`}
-          render={(props) => <LoginForm {...props} />}
+          render={(props) => <Login {...props} />}
         />
         <Route
           exact

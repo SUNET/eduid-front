@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-import LoginForm from "./LoginForm";
+import Login from "./Login";
 import { addLoginEmail } from "../../../redux/actions/addDataToStoreActions";
 
 const mapStateToProps = (state) => {
@@ -23,9 +23,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const LoginFormContainer = connect(
+const LoginContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginForm);
+)(Login);
 
-export default InjectIntl(LoginFormContainer);
+export default InjectIntl(LoginContainer);
