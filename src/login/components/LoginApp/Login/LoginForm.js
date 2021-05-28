@@ -27,7 +27,7 @@ let LoginForm = (props) => {
       />
       <ButtonPrimary
         type={"submit"}
-        onClick={handleAddEmail}
+        onClick={() => {}}
         id={""}
         className={"settings-button"}
       >
