@@ -5,30 +5,33 @@ import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
 import LoginForm from "./LoginForm";
 
-let RenderRegisterInfo = () => (
+let RenderRegisterLink = () => (
   <p>
-    If you dont have eduID you can register
+    Don't have eduID?
     <Link
       className={"text-link"}
-      href={`https://dashboard.eduid.se/`}
-      text={"here"}
+      href={`https://signup.eduid.se/`}
+      text={"Register here"}
     />
-    .
   </p>
+);
+
+let RenderResetPasswordLink = () => (
+  <LinkRedirect
+    exact
+    id={"link-forgot-password"}
+    className={""}
+    to={`/reset-password/`}
+    text={"Set a new password"}
+  />
 );
 
 let Login = (props) => (
   <Fragment>
-    <p className="heading">Login to your eduID</p>
+    <p className="heading">Log in</p>
     <LoginForm {...props} />
-    <RenderRegisterInfo />
-    <LinkRedirect
-      exact
-      id={"link-forgot-password"}
-      className={""}
-      to={`/reset-password/`}
-      text={"Set a new password"}
-    />
+    <RenderRegisterLink />
+    <RenderResetPasswordLink />
   </Fragment>
 );
 
