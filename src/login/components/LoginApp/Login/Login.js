@@ -5,7 +5,7 @@ import Link from "../../Links/Link";
 import LoginForm from "./LoginForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-let RenderRegisterLink = () => (
+const RenderRegisterLink = () => (
   <p>
     Don&apos;t have eduID?
     <Link
@@ -16,7 +16,7 @@ let RenderRegisterLink = () => (
   </p>
 );
 
-let RenderResetPasswordLink = () => (
+const RenderResetPasswordLink = () => (
   <LinkRedirect
     exact
     id={"link-forgot-password"}
@@ -26,7 +26,7 @@ let RenderResetPasswordLink = () => (
   />
 );
 
-let Login = (props) => (
+const Login = (props) => (
   <Fragment>
     <p className="heading">Log in</p>
     <LoginForm {...props} />
