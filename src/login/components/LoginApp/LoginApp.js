@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Login from "./Login/Login_container";
+import Login from "./Login/Login";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
