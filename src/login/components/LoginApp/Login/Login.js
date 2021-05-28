@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
 import LoginForm from "./LoginForm";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let RenderRegisterLink = () => (
   <p>
@@ -40,4 +40,4 @@ Login.propTypes = {
   validate: PropTypes.func,
 };
 
-export default withRouter(Login);
+export default InjectIntl(Login);
