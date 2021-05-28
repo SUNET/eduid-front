@@ -1,23 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch, } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
-import { countDownStart } from "./CountDownTimer";
+import { countDownStart, RenderingTimer} from "./CountDownTimer";
 function EmailLinkSent(props){
   const email = useSelector(state => state.resetPassword.email);
   const dispatch = useDispatch();
 
   const sendLink = () => {
-    dispatch(postEmailLink(email));
-  };
-
-  useEffect(()=>{
     if(email){
+      dispatch(postEmailLink(email));
       countDownStart();
-    }
-  },[])
+     } 
+  };
 
   return (
     <>
@@ -26,13 +23,11 @@ function EmailLinkSent(props){
       </p>
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
-        <p>{props.translate("resetpw.resend-link")} 
-          <a id={`resend-link`} onClick={sendLink}> {props.translate("resetpw.resend-link-button")} </a>
-        </p>
-      </div>
-      <div className="timer">
-        <p id="minute" />
-        <p id="second" />
+        <div className="timer">
+          <p>{props.translate("resetpw.resend-link")} 
+            <RenderingTimer sendLink={sendLink} {...props}/>
+          </p>
+        </div>
       </div>
     </>
   ) 

@@ -9,6 +9,7 @@ import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
+import { countDownStart } from "./CountDownTimer";
 
 let EmailForm = (props) => (
   <Form id="reset-password-form" role="form" onSubmit={props.sendLink}>
@@ -52,7 +53,10 @@ function ResetPasswordForm(props){
   const sendLink = (e) => {
     e.preventDefault();
     const email = document.querySelector("input[name='email']").value;
-    dispatch(postEmailLink(email));
+    if(email){
+      dispatch(postEmailLink(email));
+      countDownStart();
+     }
   };
 
   return (
