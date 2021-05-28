@@ -7,7 +7,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let RenderRegisterLink = () => (
   <p>
-    Don't have eduID?
+    Don&apos;t have eduID?
     <Link
       className={"text-link"}
       href={`https://signup.eduid.se/`}
