@@ -3,7 +3,8 @@ import { checkStatus, ajaxHeaders } from "../../../sagas/common";
 const postDataRequest = (url, dataToSend) => {
   return fetch(url, {
     method: "POST",
-    redirect: "manual",
+    // changed from mnaual as that is not default
+    redirect: "follow",
     credentials: "include",
     headers: ajaxHeaders,
     body: JSON.stringify(dataToSend),

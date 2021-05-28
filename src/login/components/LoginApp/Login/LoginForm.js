@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
-import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
 import EmailForm from "../../GroupManagement/EmailForm";
 import PasswordFormMock from "../../GroupManagement/GroupNameForm";
@@ -22,7 +21,7 @@ let RenderRegisterInfo = () => (
   </p>
 );
 
-let LoginFormDetails = (props) => {
+let LoginForm = (props) => {
   const { handleAddEmail } = props;
   return (
     <Fragment>
@@ -40,45 +39,26 @@ let LoginFormDetails = (props) => {
         helpBlock={""}
         handleSubmit={() => {}}
       />
-      <ButtonPrimary
+      {/* <ButtonPrimary
         type={"submit"}
         onClick={handleAddEmail}
         id={""}
         className={"settings-button"}
       >
         Log in
-      </ButtonPrimary>
+      </ButtonPrimary> */}
     </Fragment>
   );
 };
 
-LoginFormDetails = reduxForm({
+LoginForm = reduxForm({
   form: "loginForm",
   validate,
-})(LoginFormDetails);
+})(LoginForm);
 
-LoginFormDetails = connect(() => ({
+LoginForm = connect(() => ({
   enableReinitialize: true,
-}))(LoginFormDetails);
+}))(LoginForm);
 
-let LoginForm = (props) => (
-  <Fragment>
-    <p className="heading">Login to your eduID</p>
-    <LoginFormDetails {...props} />
-    <RenderRegisterInfo />
-    <LinkRedirect
-      exact
-      id={"link-forgot-password"}
-      className={""}
-      to={`/reset-password/`}
-      text={"Set a new password"}
-    />
-  </Fragment>
-);
-
-LoginForm.propTypes = {
-  translate: PropTypes.func,
-  validate: PropTypes.func,
-};
 
 export default withRouter(LoginForm);

@@ -1,8 +1,26 @@
-import React, { Component } from "react";
-import LoginForm from "./LoginForm/LoginForm_container";
-import { Route } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import React, { Component, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Login from "./Login/Login_container";
+import { Route, withRouter } from "react-router-dom";
+import { useLoginRef } from "../../redux/actions/postRefToLoginActions";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
+
+const RenderLogin = (props) => {
+  const dispatch = useDispatch();
+  const ref = useSelector((state) => state.login.ref);
+  const next_url = useSelector((state) => state.config.next_url);
+  // dispatch action when next_url is available
+  useEffect(() => {
+    dispatch(useLoginRef(ref));
+  }, [next_url]);
+  return (
+    <Route
+      exact
+      path={`/login/${ref}`}
+      render={(props) => <Login {...props} />}
+    />
+  );
+};
 
 class LoginApp extends Component {
   render() {
@@ -28,27 +46,16 @@ class LoginApp extends Component {
       );
     });
     const url = this.props.location.pathname;
-    const urlCode = url.split("/").reverse()[0];
-
     return (
       <div id="content" className="vertical-content-margin">
-        <Route
-          exact
-          path={`/login/${urlCode}`}
-          render={(props) => <LoginForm {...props} />}
-        />
-        <Route
-          exact
-          path="/reset-password/"
-          component={ResetPasswordMain}
-        />
+        {url.includes("/login/") && <RenderLogin {...this.props} />}
+        <Route exact path="/reset-password/" component={ResetPasswordMain} />
         {resetPasswordPages}
       </div>
     );
   }
 }
 
-LoginApp.propTypes = {
-};
+LoginApp.propTypes = {};
 
 export default withRouter(LoginApp);

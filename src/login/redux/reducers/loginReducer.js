@@ -1,15 +1,16 @@
 import * as actions from "../actions/addDataToStoreActions";
 
 const loginData = {
+  ref: null,
   email: "",
 };
 
 let loginReducer = (state = loginData, action) => {
   switch (action.type) {
-    case actions.ADD_EMAIL_ADDRESS_TO_STORE:
+    case actions.ADD_LOGIN_REF_TO_STORE:
       return {
         ...state,
-        email: action.payload.email,
+        ref: action.payload.ref,
       };
     default:
       return state;
