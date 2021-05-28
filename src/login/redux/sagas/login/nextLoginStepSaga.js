@@ -16,7 +16,7 @@ export function* nextLoginStepSaga(action) {
       csrf_token: state.config.csrf_token,
     };
     console.log("dataToSend", dataToSend);
-    const nextLoginStepResponse = yield call(postNextRequest(url, dataToSend));
+    const nextLoginStepResponse = yield call(postNextRequest, url, dataToSend);
     console.log("nextLoginStepResponse", nextLoginStepResponse);
     // yield put(putCsrfToken(nextLoginStepResponse));
     // yield put(nextLoginStepResponse);
