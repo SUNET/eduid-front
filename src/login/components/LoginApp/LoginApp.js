@@ -4,6 +4,17 @@ import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 
+const RenderLogin = (props) => {
+  const urlCode = props.url.split("/").reverse()[0];
+  return (
+    <Route
+      exact
+      path={`/login/${urlCode}`}
+      render={(props) => <Login {...props} />}
+    />
+  );
+};
+
 class LoginApp extends Component {
   render() {
     // all these paths need need to render the ResetPassword component, which in turn handles the logic of what is displayed at each path
@@ -28,27 +39,16 @@ class LoginApp extends Component {
       );
     });
     const url = this.props.location.pathname;
-    const urlCode = url.split("/").reverse()[0];
-
     return (
       <div id="content" className="vertical-content-margin">
-        <Route
-          exact
-          path={`/login/${urlCode}`}
-          render={(props) => <Login {...props} />}
-        />
-        <Route
-          exact
-          path="/reset-password/"
-          component={ResetPasswordMain}
-        />
+        {url.includes("/login/") && <RenderLogin {...this.props} url={url} />}
+        <Route exact path="/reset-password/" component={ResetPasswordMain} />
         {resetPasswordPages}
       </div>
     );
   }
 }
 
-LoginApp.propTypes = {
-};
+LoginApp.propTypes = {};
 
 export default withRouter(LoginApp);
