@@ -29,7 +29,7 @@ class ButtonPrimary extends Component {
 }
 
 ButtonPrimary.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  // onClick: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired
 };
 
