@@ -4,7 +4,7 @@ import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch, } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
-import { countDownStart, RenderingTimer } from "./CountDownTimer";
+import { countDownStart } from "./CountDownTimer";
 function EmailLinkSent(props){
   const email = useSelector(state => state.resetPassword.email);
   const dispatch = useDispatch();
@@ -27,10 +27,13 @@ function EmailLinkSent(props){
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
         <p>{props.translate("resetpw.resend-link")} 
-          <a className={`resend-link`} onClick={sendLink}> {props.translate("resetpw.resend-link-button")} </a>
+          <a id={`resend-link`} onClick={sendLink}> {props.translate("resetpw.resend-link-button")} </a>
         </p>
       </div>
-      <RenderingTimer />
+      <div className="timer">
+        <p id="minute" />
+        <p id="second" />
+      </div>
     </>
   ) 
 }
