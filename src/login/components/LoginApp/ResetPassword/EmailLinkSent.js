@@ -16,7 +16,7 @@ function EmailLinkSent(props){
 
   return (
     <>
-      <SuccessIcon /> 
+    { email && <SuccessIcon /> }
       <p className="heading">
         {props.translate("resetpw.reset-pw-initialized")}
       </p>
