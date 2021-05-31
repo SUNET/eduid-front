@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch, connect, useSelector } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
@@ -9,7 +9,7 @@ import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
-import { countDownStart } from "./CountDownTimer";
+import { countDownStart, clearCountdown } from "./CountDownTimer";
 
 let EmailForm = (props) => (
   <Form id="reset-password-form" role="form" onSubmit={props.sendLink}>
@@ -49,13 +49,22 @@ EmailForm = connect(() => ({
 
 function ResetPasswordForm(props){
   const dispatch = useDispatch();
+  const notificationErrors = useSelector(state => state.notifications.errors);
+  const [errors, setErrors] = useState([]);
+
+  useEffect(()=>{
+    clearCountdown();
+  }, []);
 
   const sendLink = (e) => {
     e.preventDefault();
     const email = document.querySelector("input[name='email']").value;
     if(email){
       dispatch(postEmailLink(email));
-      countDownStart();
+     if(notificationErrors !== undefined)
+      setErrors(notificationErrors);
+      if(errors.length <= 0)
+        countDownStart();
      }
   };
 
