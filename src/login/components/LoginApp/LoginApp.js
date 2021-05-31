@@ -5,6 +5,18 @@ import { withRouter } from "react-router-dom";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 
 class LoginApp extends Component {
+  state = {
+    urlCode: "",
+  };
+
+  componentDidMount() {
+    const url = this.props.location.pathname;
+    const urlCode = url.split("/").reverse()[0];
+    this.setState(() => ({
+      urlCode: urlCode
+    }));
+  }
+
   render() {
     // all these paths need need to render the ResetPassword component, which in turn handles the logic of what is displayed at each path
     const resetPasswordPaths = [
@@ -27,20 +39,18 @@ class LoginApp extends Component {
         />
       );
     });
-    const url = this.props.location.pathname;
-    const urlCode = url.split("/").reverse()[0];
 
     return (
       <div id="content" className="vertical-content-margin">
         <Route
           exact
-          path={`/login/${urlCode}`}
+          path={`/login/${this.state.urlCode}`}
           render={(props) => <LoginForm {...props} />}
         />
         <Route
           exact
           path="/reset-password/"
-          component={ResetPasswordMain}
+          render={(props) => <ResetPasswordMain urlCode={this.state.urlCode} {...props} />}
         />
         {resetPasswordPages}
       </div>
