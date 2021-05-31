@@ -4,6 +4,7 @@ import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch, } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
+import SuccessIcon from "../ResetPassword/SuccessIcon";
 
 function EmailLinkSent(props){
   const email = useSelector(state => state.resetPassword.email);
@@ -15,12 +16,7 @@ function EmailLinkSent(props){
 
   return (
     <>
-      <div className="success-positioning">
-        <div className="success-icon">
-          <div className="success-tip-line" />
-          <div className="success-long-line" />
-        </div>
-      </div>  
+      <SuccessIcon /> 
       <p className="heading">
         {props.translate("resetpw.reset-pw-initialized")}
       </p>
