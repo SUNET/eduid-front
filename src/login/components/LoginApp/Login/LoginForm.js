@@ -24,7 +24,6 @@ let LoginForm = (props) => {
           {...props}
           submitButton={false}
           required={true}
-          autoFocus={true}
         />
       </FormSection>
       <FormSection name={"credentials"}>
