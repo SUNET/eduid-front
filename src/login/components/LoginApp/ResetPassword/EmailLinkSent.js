@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch, } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
-import { countDownStart, RenderingTimer} from "./CountDownTimer";
+import { RenderingTimer} from "./CountDownTimer";
 function EmailLinkSent(props){
   const dispatch = useDispatch();
   const email = useSelector(state => state.resetPassword.email);
-  const notificationErrors = useSelector(state => state.notifications.errors);
-  const [errors, setErrors] = useState([]);
-
-  useEffect(()=> {
-    setErrors(notificationErrors)
-  },[errors])
 
   const sendLink = (e) => {
     e.preventDefault();
     if(email){
       dispatch(postEmailLink(email));
-     if(notificationErrors !== undefined)
-      setErrors(notificationErrors);
-      if(errors.length <= 0)
-        countDownStart();
      }
   };
 
