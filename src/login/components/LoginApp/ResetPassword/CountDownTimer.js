@@ -1,9 +1,11 @@
 import React from "react";
 
+const LOCAL_STORAGE_PERSISTED_COUNT = "count";
+
 let count = 0, counter = null, minute = "", second = "";
 
 const timer = () => {
-  count = setLocalStorage("count", count - 1);
+  count = setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT, count - 1);
   const elementMinute = document.querySelector("#minute");
   const elementSecond = document.querySelector("#second");
   const elementResendLink = document.querySelector("#resend-link");
@@ -29,7 +31,7 @@ const timer = () => {
 }
 
 export const clearCountdown = () => { 
-  return window.localStorage.removeItem("count");
+  return window.localStorage.removeItem(LOCAL_STORAGE_PERSISTED_COUNT);
 }    
 
 export const getLocalStorage = (key) => {
@@ -44,11 +46,11 @@ const setLocalStorage = (key, val) => {
 } 
 
 export const countDownStart = () =>{
-  if(getLocalStorage("count") <= -1){
+  if(getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT) <= -1){
     clearCountdown();
   }
   clearInterval(counter);
-  count = getLocalStorage("count") || 300;
+  count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT) || 300;
   // 300 = 5 min
   counter = setInterval(timer, 1000);
   // every countdown step is 1 second 
