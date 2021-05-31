@@ -1,48 +1,58 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { reduxForm } from "redux-form";
-import EmailForm from "../../GroupManagement/EmailForm";
-import PasswordFormMock from "../../GroupManagement/GroupNameForm";
-import ButtonPrimary from "../../Buttons/ButtonPrimary";
+import { reduxForm, FormSection } from "redux-form";
+import Form from "reactstrap/lib/Form";
+import { RenderEmailInput } from "../../GroupManagement/EmailForm";
+import { RenderInput } from "../../GroupManagement/GroupNameForm";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
+const validateLoginForm = (values) => {
+  let errors = {};
+  if (values ?? undefined) {
+    const { username } = values;
+    errors.username = validate(username);
+  }
+  return errors;
+};
+
 let LoginForm = (props) => {
   return (
-    <Fragment>
-      <EmailForm
-        {...props}
-        required={true}
-        submitButton={false}
-        onSubmit={() => {}}
-      />
-      <PasswordFormMock
-        form={"password"}
-        label={"Password"}
-        submitButton={false}
-        placeholder={"Enter a password"}
-        helpBlock={""}
-        handleSubmit={() => {}}
-      />
-      <ButtonPrimary
-        type={"submit"}
-        onClick={() => {}}
-        id={""}
-        className={"settings-button"}
-      >
-        Log in
-      </ButtonPrimary>
-    </Fragment>
+    <Form id={"create-invite-form"} role="form" onSubmit={() => {}}>
+      <FormSection name={"username"}>
+        <RenderEmailInput
+          {...props}
+          submitButton={false}
+          required={true}
+          autoFocus={true}
+        />
+      </FormSection>
+      <FormSection name={"loginPassword"}>
+        <RenderInput
+          form={"password"}
+          label={"Password"}
+          submitButton={false}
+          placeholder={"enter a password"}
+          helpBlock={""}
+          handleSubmit={() => {}}
+        />
+      </FormSection>
+    </Form>
   );
 };
 
 LoginForm = reduxForm({
   form: "loginForm",
-  validate,
+  validate: validateLoginForm,
 })(LoginForm);
 
 LoginForm = connect(() => ({
-  enableReinitialize: true,
+  initialValues: {
+    username: { email: "" },
+    loginPassword: { password: "" },
+  },
+  destroyOnUnmount: false,
+  touchOnChange: true,
 }))(LoginForm);
 
 export default InjectIntl(LoginForm);
