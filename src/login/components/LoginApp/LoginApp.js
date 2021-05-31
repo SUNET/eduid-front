@@ -1,19 +1,32 @@
 import React, { Component } from "react";
-import LoginForm from "./LoginForm/LoginForm_container";
+import Login from "./Login/Login";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 
+const RenderLogin = (props) => {
+  const { urlCode } = props;
+  return (
+    <Route
+      exact
+      path={`/login/${urlCode}`}
+      render={(props) => <Login {...props} />}
+    />
+  );
+};
+
 class LoginApp extends Component {
   state = {
     urlCode: "",
+    url: "",
   };
 
   componentDidMount() {
     const url = this.props.location.pathname;
     const urlCode = url.split("/").reverse()[0];
     this.setState(() => ({
-      urlCode: urlCode
+      urlCode: urlCode,
+      url: url,
     }));
   }
 
@@ -42,15 +55,15 @@ class LoginApp extends Component {
 
     return (
       <div id="content" className="vertical-content-margin">
-        <Route
-          exact
-          path={`/login/${this.state.urlCode}`}
-          render={(props) => <LoginForm {...props} />}
-        />
+        {this.state.url.includes("/login/") && (
+          <RenderLogin urlCode={this.state.urlCode} {...this.props} />
+        )}
         <Route
           exact
           path="/reset-password/"
-          render={(props) => <ResetPasswordMain urlCode={this.state.urlCode} {...props} />}
+          render={(props) => (
+            <ResetPasswordMain urlCode={this.state.urlCode} {...props} />
+          )}
         />
         {resetPasswordPages}
       </div>
@@ -58,7 +71,6 @@ class LoginApp extends Component {
   }
 }
 
-LoginApp.propTypes = {
-};
+LoginApp.propTypes = {};
 
 export default withRouter(LoginApp);
