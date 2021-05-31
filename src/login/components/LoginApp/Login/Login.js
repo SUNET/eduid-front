@@ -4,6 +4,7 @@ import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
 import LoginForm from "./LoginForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import ButtonPrimary from "../../Buttons/ButtonPrimary";
 
 const RenderRegisterLink = () => (
   <p>
@@ -11,7 +12,7 @@ const RenderRegisterLink = () => (
     <Link
       className={"text-link"}
       href={`https://signup.eduid.se/`}
-      text={"Register here"}
+      text={"Register here."}
     />
   </p>
 );
@@ -22,22 +23,33 @@ const RenderResetPasswordLink = () => (
     id={"link-forgot-password"}
     className={""}
     to={`/reset-password/`}
-    text={"Set a new password"}
+    text={"Forgot your password?"}
   />
 );
 
 const Login = (props) => (
   <Fragment>
     <p className="heading">Log in</p>
-    <LoginForm {...props} />
+    <div>
+      <LoginForm {...props} />
+      <RenderResetPasswordLink />
+      <div>
+        <ButtonPrimary
+          type={"submit"}
+          onClick={() => {}}
+          id={""}
+          className={"settings-button"}
+        >
+          Log in
+        </ButtonPrimary>
+      </div>
+    </div>
     <RenderRegisterLink />
-    <RenderResetPasswordLink />
   </Fragment>
 );
 
 Login.propTypes = {
   translate: PropTypes.func,
-  validate: PropTypes.func,
 };
 
 export default InjectIntl(Login);
