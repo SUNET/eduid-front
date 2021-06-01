@@ -29,7 +29,7 @@
   },
   {
     "id": "resetpw.email-throttled",
-    "defaultMessage": "Reset password link not sent please try again later"
+    "defaultMessage": "Reset password link already sent please try again later"
   },
   {
     "id": "resetpw.check-email-link",
