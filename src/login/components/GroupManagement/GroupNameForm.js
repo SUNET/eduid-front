@@ -7,30 +7,40 @@ import EduIDButton from "../../../components/EduIDButton";
 import { emptyValueValidation } from "../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
+export let RenderInput = ({
+  placeholder,
+  label,
+  required,
+  form,
+  helpBlock,
+  autoFocus,
+}) => (
+  <fieldset id={`${form}-fieldset`} className="tabpane">
+    <Field
+      label={label}
+      required={required}
+      component={CustomInput}
+      componentClass="input"
+      type="text"
+      name={form}
+      autoFocus={autoFocus}
+      placeholder={placeholder}
+      helpBlock={helpBlock}
+    />
+  </fieldset>
+);
+
 let GroupNameForm = (props) => {
   const {
     handleSubmit,
     invalid,
     form,
-    label,
-    placeholder,
-    helpBlock,
     submitButton,
   } = props;
 
   return (
     <Form id={`${form}-form`} role="form" onSubmit={handleSubmit}>
-      <fieldset id={`${form}-fieldset`} className="tabpane">
-        <Field
-          label={label}
-          component={CustomInput}
-          componentClass="input"
-          type="text"
-          name={form}
-          placeholder={placeholder}
-          helpBlock={helpBlock}
-        />
-      </fieldset>
+      <RenderInput {...props} />
       {submitButton && (
         <EduIDButton
           type="submit"
