@@ -33,9 +33,6 @@ function EmailLinkSent(props){
   return (
     <>
       <SuccessIconAnimation />
-      <p className="heading">
-        {props.translate("resetpw.reset-pw-initialized")}
-      </p>
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
         <div className="timer">
