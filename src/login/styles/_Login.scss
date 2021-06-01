@@ -1,0 +1,22 @@
+@import "./variables.scss";
+
+.login {
+  display: flex;
+  flex-direction: column;
+  .heading {
+    line-height: $line-height;
+  }
+  form {
+    margin-top: 0;
+    .form-group {
+      margin-bottom: 1rem;
+    }
+  }
+  button {
+    margin: 0.25rem 0 3rem;
+  }
+  .secondary-link {
+    font-size: 1rem;
+    align-self: flex-end;
+  }
+}
