@@ -1,6 +1,6 @@
 import React from "react";
 
-const LOCAL_STORAGE_PERSISTED_COUNT = "count";
+export const LOCAL_STORAGE_PERSISTED_COUNT = "count";
 
 let count = 0, counter = null, minute = "", second = "";
 
@@ -38,7 +38,7 @@ export const getLocalStorage = (key) => {
   return window.localStorage ? window.localStorage.getItem(key) : '';
 }
 
-const setLocalStorage = (key, val) => {
+export const setLocalStorage = (key, val) => {
   if (window.localStorage) {
     window.localStorage.setItem(key, val);
   }
@@ -57,11 +57,12 @@ export const countDownStart = () =>{
 }
 
 export const RenderingTimer = (props) => {  
+  const countLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
   return (
     <>
-      <a id={"resend-link"} className={count <=- 1 ? "button-active" : ""} onClick={props.sendLink}> {props.translate("resetpw.resend-link-button")} </a>
-      <span id="minute" className={count <=- 1 ? "display-none" : ""}/>
-      <span id="second" className={count <=- 1 ? "display-none" : ""} />
+      <a id={"resend-link"} className={countLocalStorage  <=- 1 ? "button-active" : ""} onClick={props.sendLink}> {props.translate("resetpw.resend-link-button")} </a>
+      <span id="minute" className={countLocalStorage  <=- 1 ? "display-none" : ""}/>
+      <span id="second" className={countLocalStorage  <=- 1 ? "display-none" : ""} />
     </>
   )
 }
