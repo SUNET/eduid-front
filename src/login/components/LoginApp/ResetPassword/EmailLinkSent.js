@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
-import { useSelector, useDispatch, } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
-import { RenderingTimer} from "./CountDownTimer";
+import { RenderingTimer, countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT } from "./CountDownTimer";
+import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordForm"
 function EmailLinkSent(props){
   const dispatch = useDispatch();
-  const email = useSelector(state => state.resetPassword.email);
+  const [email, setEmail] = useState("")
 
   const sendLink = (e) => {
     e.preventDefault();
     if(email){
       dispatch(postEmailLink(email));
-     }
+    }
   };
+
+  useEffect(()=>{
+    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
+    if(count > - 1)
+      countDownStart();
+  },[])
+
+  useEffect(()=>{
+    const emailFromLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL);
+    if(emailFromLocalStorage)
+      setEmail(emailFromLocalStorage)
+  },[email])
 
   return (
     <>
