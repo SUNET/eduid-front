@@ -19,7 +19,7 @@ function EmailLinkSent(props){
 
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
-    if(count >= - 1)
+    if(count > - 1)
       countDownStart();
   },[])
 
