@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useDispatch, connect } from 'react-redux';
@@ -9,6 +9,9 @@ import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
+import { clearCountdown, setLocalStorage } from "./CountDownTimer";
+
+export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
 let EmailForm = (props) => (
   <Form id="reset-password-form" role="form" onSubmit={props.sendLink}>
@@ -49,10 +52,17 @@ EmailForm = connect(() => ({
 function ResetPasswordForm(props){
   const dispatch = useDispatch();
 
+  useEffect(()=>{
+    clearCountdown();
+  }, []);
+
   const sendLink = (e) => {
     e.preventDefault();
     const email = document.querySelector("input[name='email']").value;
-    dispatch(postEmailLink(email));
+    if(email){
+      dispatch(postEmailLink(email));
+      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL , email)
+    }
   };
 
   return (

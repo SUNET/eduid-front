@@ -1,6 +1,6 @@
 import React from "react";
 
-const SuccessIcon = () =>{
+const SuccessIconAnimation = () =>{
   return (
     <>
       <div className="success-positioning">
@@ -13,4 +13,4 @@ const SuccessIcon = () =>{
   ) 
 }
 
-export default SuccessIcon;
+export default SuccessIconAnimation;
