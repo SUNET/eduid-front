@@ -15,8 +15,16 @@
   button {
     margin: 0.25rem 0 3rem;
   }
+
   .secondary-link {
     font-size: 1rem;
     align-self: flex-end;
+  }
+}
+
+#link-forgot-password {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
   }
 }
