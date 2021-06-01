@@ -429,7 +429,7 @@
   "resetpw.email-send-failure": "Error sending mail, please try again",
   "resetpw.return-login":"return to Login",
   "resetpw.reset-pw-initialized": "Reset password link has been sent",
-  "resetpw.email-throttled": "Reset password link not sent please try again later",
+  "resetpw.email-throttled": "Reset password link already sent please try again later",
   "resetpw.check-email-link": "Please check your email <b>{email}</b> to continue. \n Link is valid for 2 hours.",
   "resetpw.resend-link": "If you didn’t receive the email? Check your junk email, \n or",
   "resetpw.resend-link-button": "resend link"
