@@ -58,7 +58,6 @@ class LoginApp extends Component {
         {this.state.url.includes("/login/") && (
           <RenderLogin urlCode={this.state.urlCode} {...this.props} />
         )}
-        <Route exact path="/reset-password/" component={ResetPasswordMain} />
         <Route
           exact
           path="/reset-password/"
