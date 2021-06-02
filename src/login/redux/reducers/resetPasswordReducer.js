@@ -4,7 +4,7 @@ import * as postActions from "../actions/postResetPasswordActions";
 const data = {
     email: "",
     csrf_token: "",
-    email_code: ""
+    code: ""
 };
 
 let resetPasswordReducer = (state = data, action) => {

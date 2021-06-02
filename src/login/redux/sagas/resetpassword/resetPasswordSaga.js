@@ -80,7 +80,7 @@ export function* useLinkCode(code) {
     const state = yield select(state => state);
     const data = {
       email_code: code.payload.code,
-      csrf_token: state.config.csrf_token
+      // csrf_token: state.config.csrf_token
     };
     const resp = yield call(fetchConfigLinkCode, state.config, data);
     yield put(putCsrfToken(resp));
