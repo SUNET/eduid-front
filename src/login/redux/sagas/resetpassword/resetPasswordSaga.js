@@ -1,4 +1,4 @@
-import { put, call, select, push } from "redux-saga/effects";
+import { put, call, select } from "redux-saga/effects";
 import {
   checkStatus,
   postRequest,
@@ -6,10 +6,11 @@ import {
   getRequest,
   putCsrfToken
 } from "../../../../sagas/common";
-import { postEmailLinkFail } from "../../actions/postResetPasswordActions";
+import { postEmailLinkFail, postLinkCodeFail } from "../../actions/postResetPasswordActions";
 import { getResetPasswordConfigFail } from "../../actions/getResetPasswordActions";
 import { history } from "../../../components/App/App";
-import { countDownStart } from "../../../components/LoginApp/ResetPassword/CountDownTimer"
+import { countDownStart } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import * as app_actions from "../../../components/App/App_actions";
 
 
 export function* getResetPasswordConfig() {
@@ -65,7 +66,6 @@ export function* postEmailLink() {
 }
 
 export function fetchConfigLinkCode(config, data) {
-  console.log("this is data in the saga (fetch):", data);
   return window
     .fetch(PASSWORD_SERVICE_URL + "/verify-email/", {
       ...postRequest,
@@ -79,17 +79,16 @@ export function* useLinkCode(code) {
   try {
     const state = yield select(state => state);
     const data = {
-      code: code.payload.code,
+      email_code: code.payload.code,
       csrf_token: state.config.csrf_token
     };
     const resp = yield call(fetchConfigLinkCode, state.config, data);
-    console.log("this is resp in the saga:", resp);
     yield put(putCsrfToken(resp));
     yield put(resp);
-    // yield put(app_actions.appLoaded());
-    yield put(push("/reset-password/verify-email/"));
+    yield put(app_actions.appLoaded());
+    history.push(`/reset-password/verify-email/`);
   } catch (error) {
-    // yield put(app_actions.appLoaded());
-    // yield* failRequest(error, init_actions.postLinkCodeFail);
+    yield put(app_actions.appLoaded());
+    yield* failRequest(error, postLinkCodeFail(error));
   }
 }
