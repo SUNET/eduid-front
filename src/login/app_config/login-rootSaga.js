@@ -13,7 +13,6 @@ import { postRefLoginSaga } from "../redux/sagas/login/postRefLoginSaga";
 export const getLoginRef = (state) => state.login.ref;
 function* loginSagas() {
   let ref = yield select(getLoginRef);
-  console.log("ref", ref);
   if (ref) {
     yield [
       takeLatest(
