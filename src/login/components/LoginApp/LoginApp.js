@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, withRouter } from "react-router-dom";
 import Login from "./Login/Login";
-import { Route } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { useLoginRef } from "../../redux/actions/postRefLoginActions";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
+
 
 const RenderLogin = (props) => {
   const dispatch = useDispatch();

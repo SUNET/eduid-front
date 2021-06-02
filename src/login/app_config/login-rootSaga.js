@@ -7,8 +7,8 @@ import {
 } from "../redux/sagas/resetpassword/resetPasswordSaga";
 import * as getResetPasswordActions from "../redux/actions/getResetPasswordActions";
 import * as postResetPasswordActions from "../redux/actions/postResetPasswordActions";
-import * as postRefToLoginActions from "../redux/actions/postRefToLoginActions";
-import { postRefOnloadSaga } from "../redux/sagas/login/postRefOnloadSaga";
+import * as postRefLoginActions from "../redux/actions/postRefLoginActions";
+import { postRefLoginSaga } from "../redux/sagas/login/postRefLoginSaga";
 
 export const getLoginRef = (state) => state.login.ref;
 function* loginSagas() {
@@ -17,8 +17,8 @@ function* loginSagas() {
   if (ref) {
     yield [
       takeLatest(
-        postRefToLoginActions.POST_LOGIN_REF_TO_NEXT,
-        postRefOnloadSaga
+        postRefLoginActions.POST_LOGIN_REF_TO_NEXT,
+        postRefLoginSaga
       ),
     ];
   }

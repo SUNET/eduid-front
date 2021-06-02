@@ -3,7 +3,7 @@ import { call, select, put } from "redux-saga/effects";
 import { checkStatus, postRequest } from "../../../../sagas/common";
 import { putCsrfToken } from "../../../../sagas/common";
 
-export function* postRefOnloadSaga(action) {
+export function* postRefLoginSaga(action) {
   console.log("welcome to nextLoginStepSaga");
   console.log(postNextRequest);
   const state = yield select((state) => state);
