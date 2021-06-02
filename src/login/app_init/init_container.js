@@ -1,6 +1,7 @@
 import initStore from "./initStore";
 import { getConfig } from "./init_actions";
 import { useLinkCode } from "./../redux/actions/postResetPasswordActions";
+import { addLoginRef } from "./../redux/actions/addDataToStoreActions";
 
 const init_container = () => {
   console.log("Initializing state for the login app...");
@@ -10,7 +11,7 @@ const init_container = () => {
   const url = document.location.href;
   const urlCode = url.split("/").reverse()[0];
   if (url.includes(`/login/${urlCode}`)) {
-    //dispatch code here
+    initStore.dispatch(addLoginRef(urlCode));
   }
 
   const emailCode = urlCode.split("=")[1];
