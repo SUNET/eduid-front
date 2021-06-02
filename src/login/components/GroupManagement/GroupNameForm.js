@@ -13,7 +13,6 @@ export let RenderInput = ({
   required,
   form,
   helpBlock,
-  autoFocus,
 }) => (
   <fieldset id={`${form}-fieldset`} className="tabpane">
     <Field
@@ -23,7 +22,6 @@ export let RenderInput = ({
       componentClass="input"
       type="text"
       name={form}
-      autoFocus={autoFocus}
       placeholder={placeholder}
       helpBlock={helpBlock}
     />

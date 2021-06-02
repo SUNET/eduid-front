@@ -5,14 +5,14 @@ import Form from "reactstrap/lib/Form";
 import { RenderEmailInput } from "../../GroupManagement/EmailForm";
 import { RenderInput } from "../../GroupManagement/GroupNameForm";
 import { validate } from "../../../app_utils/validation/validateEmail";
+import { emptyValueValidation } from "../../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const validateLoginForm = (values) => {
   let errors = {};
-  if (values ?? undefined) {
-    const { username } = values;
-    errors.username = validate(username);
-  }
+  const { username, credentials } = values;
+  errors.username = validate(username);
+  errors.credentials = emptyValueValidation(credentials);
   return errors;
 };
 
@@ -24,10 +24,9 @@ let LoginForm = (props) => {
           {...props}
           submitButton={false}
           required={true}
-          autoFocus={true}
         />
       </FormSection>
-      <FormSection name={"loginPassword"}>
+      <FormSection name={"credentials"}>
         <RenderInput
           form={"password"}
           label={"Password"}
@@ -49,7 +48,7 @@ LoginForm = reduxForm({
 LoginForm = connect(() => ({
   initialValues: {
     username: { email: "" },
-    loginPassword: { password: "" },
+    credentials: { password: "" },
   },
   destroyOnUnmount: false,
   touchOnChange: true,
