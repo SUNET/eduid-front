@@ -1,4 +1,5 @@
-import * as actions from "../actions/addDataToStoreActions";
+import * as onLoadActions from "../actions/addDataToStoreActions";
+import * as actions from "../actions/postRefLoginActions";
 
 const loginData = {
   ref: null,
@@ -6,10 +7,15 @@ const loginData = {
 
 let loginReducer = (state = loginData, action) => {
   switch (action.type) {
-    case actions.ADD_LOGIN_REF_TO_STORE:
+    case onLoadActions.ADD_LOGIN_REF_TO_STORE:
       return {
         ...state,
         ref: action.payload.ref,
+      };
+    case actions.POST_IDP_NEXT_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
       };
     default:
       return state;
