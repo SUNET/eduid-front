@@ -5,11 +5,17 @@ import { withRouter } from "react-router-dom";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 
 const RenderLogin = (props) => {
-  const { urlCode } = props;
+  const dispatch = useDispatch();
+  const ref = useSelector((state) => state.login.ref);
+  const next_url = useSelector((state) => state.config.next_url);
+  // dispatch action when next_url is available
+  useEffect(() => {
+    dispatch(useLoginRef(ref));
+  }, [next_url]);
   return (
     <Route
       exact
-      path={`/login/${urlCode}`}
+      path={`/login/${ref}`}
       render={(props) => <Login {...props} />}
     />
   );
