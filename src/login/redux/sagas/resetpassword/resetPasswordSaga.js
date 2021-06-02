@@ -1,4 +1,4 @@
-import { put, call, select } from "redux-saga/effects";
+import { put, call, select, push } from "redux-saga/effects";
 import {
   checkStatus,
   postRequest,
@@ -61,5 +61,35 @@ export function* postEmailLink() {
     }
   } catch (error) {
     yield* failRequest(error, postEmailLinkFail(error));
+  }
+}
+
+export function fetchConfigLinkCode(config, data) {
+  console.log("this is data in the saga (fetch):", data);
+  return window
+    .fetch(PASSWORD_SERVICE_URL + "/verify-email/", {
+      ...postRequest,
+      body: JSON.stringify(data)
+    })
+    .then(checkStatus)
+    .then(response => response.json());
+}
+
+export function* useLinkCode(code) {
+  try {
+    const state = yield select(state => state);
+    const data = {
+      code: code.payload.code,
+      csrf_token: state.config.csrf_token
+    };
+    const resp = yield call(fetchConfigLinkCode, state.config, data);
+    console.log("this is resp in the saga:", resp);
+    yield put(putCsrfToken(resp));
+    yield put(resp);
+    // yield put(app_actions.appLoaded());
+    yield put(push("/reset-password/verify-email/"));
+  } catch (error) {
+    // yield put(app_actions.appLoaded());
+    // yield* failRequest(error, init_actions.postLinkCodeFail);
   }
 }
