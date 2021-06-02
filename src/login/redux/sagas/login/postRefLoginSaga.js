@@ -4,7 +4,7 @@ import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postRefLoginActions";
 import { eduidRMAllNotify } from "./../../../../actions/Notifications";
 
-export function* postRefLoginSaga(action) {
+export function* postRefLoginSaga() {
   const state = yield select((state) => state);
   const url = state.config.next_url;
   try {
