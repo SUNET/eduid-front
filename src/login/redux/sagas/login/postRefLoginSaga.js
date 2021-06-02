@@ -1,11 +1,10 @@
 import { call, select, put } from "redux-saga/effects";
-// import postRequest from "../postDataRequest";
-import { checkStatus, postRequest } from "../../../../sagas/common";
+import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 
 export function* postRefLoginSaga(action) {
   console.log("welcome to nextLoginStepSaga");
-  console.log(postNextRequest);
+  // console.log(postNextRequest);
   const state = yield select((state) => state);
   const url = state.config.next_url;
   console.log("url ", url);
@@ -16,7 +15,7 @@ export function* postRefLoginSaga(action) {
       csrf_token: state.config.csrf_token,
     };
     console.log("dataToSend", dataToSend);
-    const nextLoginStepResponse = yield call(postNextRequest, url, dataToSend);
+    const nextLoginStepResponse = yield call(postRequest, url, dataToSend);
     console.log("nextLoginStepResponse", nextLoginStepResponse);
     // yield put(putCsrfToken(nextLoginStepResponse));
     // yield put(nextLoginStepResponse);
@@ -25,18 +24,3 @@ export function* postRefLoginSaga(action) {
   }
 }
 
-export function postNextRequest(url, data) {
-  console.log("postRequest url", url);
-  console.log("postRequest data", data);
-  const request = {
-    ...postRequest,
-    redirect: "follow",
-    body: JSON.stringify(data),
-  };
-  return window
-    .fetch(url, {
-      ...request,
-    })
-    .then(checkStatus)
-    .then((response) => response.json());
-}
