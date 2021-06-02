@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
@@ -27,24 +28,33 @@ const RenderResetPasswordLink = () => (
   />
 );
 
-const Login = (props) => (
-  <div className="login">
-    <p className="heading">Log in</p>
-    <LoginForm {...props} />
-    <div className="button-pair">
-      <RenderResetPasswordLink />
-      <ButtonPrimary
-        type={"submit"}
-        onClick={() => {}}
-        id={""}
-        className={"settings-button"}
-      >
-        Log in
-      </ButtonPrimary>
-    </div>
-    <RenderRegisterLink />
-  </div>
-);
+const Login = (props) => {
+  const page = useSelector((state) => state.login.next_page);
+  return (
+    <Fragment>
+      {page === "USERNAMEPASSWORD" ? (
+        <div className="login">
+          <p className="heading">Log in</p>
+          <LoginForm {...props} />
+          <div className="button-pair">
+            <RenderResetPasswordLink />
+            <ButtonPrimary
+              type={"submit"}
+              onClick={() => {}}
+              id={""}
+              className={"settings-button"}
+            >
+              Log in
+            </ButtonPrimary>
+          </div>
+          <RenderRegisterLink />
+        </div>
+      ) : (
+        <p className="heading">Loading</p>
+      )}
+    </Fragment>
+  );
+};
 
 Login.propTypes = {
   translate: PropTypes.func,
