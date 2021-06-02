@@ -3,6 +3,7 @@ import * as actions from "../actions/postRefLoginActions";
 
 const loginData = {
   ref: null,
+  next_page: null,
 };
 
 let loginReducer = (state = loginData, action) => {
@@ -13,9 +14,10 @@ let loginReducer = (state = loginData, action) => {
         ref: action.payload.ref,
       };
     case actions.POST_IDP_NEXT_SUCCESS:
+      const page = "USERNAMEPASSWORD";
       return {
         ...state,
-        ...action.payload,
+        next_page: page,
       };
     default:
       return state;
