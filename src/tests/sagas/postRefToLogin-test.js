@@ -1,6 +1,3 @@
-const mock = require("jest-mock");
-const messages = require("../../login/translation/messageIndex");
-import React from "react";
 import expect from "expect";
 import { put, call } from "redux-saga/effects";
 import { addLocaleData } from "react-intl";
@@ -8,35 +5,7 @@ addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postRefLoginSaga } from "../../login/redux/sagas/login/postRefLoginSaga";
 
-const baseState = {
-  login: {
-    ref: null,
-    next_page: null,
-    message: "",
-    payload: "",
-  },
-  form: [],
-  intl: {
-    locale: "en",
-    messages: messages,
-  },
-};
-
-const fakeStore = (fakeState) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...fakeState }),
-});
-
-function getFakeState(newState) {
-  if (newState === undefined) {
-    newState = {};
-  }
-  return Object.assign(baseState, newState);
-}
-
-describe("Async component", () => {
+describe("initial API call to /next fires", () => {
   const fakeState = {
     config: {
       next_url: "http://localhost/next",
@@ -50,7 +19,7 @@ describe("Async component", () => {
 
   it("postRefLoginSaga posts the expected data", () => {
     const generator = postRefLoginSaga();
-    let next = generator.next();
+    generator.next();
     const dataToSend = {
       ref: "dummy-ref",
       csrf_token: "csrf-token",

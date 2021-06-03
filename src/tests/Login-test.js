@@ -1,11 +1,10 @@
 import React from "react";
 import expect from "expect";
-import { shallow, mount } from "enzyme";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { mount } from "enzyme";
+import { addLocaleData } from "react-intl";
 import { createMemoryHistory } from "history";
-import { Router, BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { Provider } from "react-intl-redux";
-const messages = require("../login/translation/messageIndex");
 const mock = require("jest-mock");
 addLocaleData("react-intl/locale-data/en");
 
@@ -24,6 +23,21 @@ addLocaleData("react-intl/locale-data/en");
 import Login from "../login/components/LoginApp/Login/Login";
 import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
 
+const baseState = {
+  config: {
+    next_url: "http://localhost/next",
+    csrf_token: "csrf-token",
+  },
+  login: {
+    ref: "e0367c25-3853-45a9-806",
+    next_page: null,
+  },
+  form: [],
+  intl: {
+    locale: "en",
+  },
+};
+
 const fakeStore = (fakeState) => ({
   default: () => {},
   dispatch: mock.fn(),
@@ -31,23 +45,15 @@ const fakeStore = (fakeState) => ({
   getState: () => ({ ...fakeState }),
 });
 
-describe("Login component renders", () => {
-  const fakeState = {
-    config: {
-      next_url: "http://localhost/next",
-      csrf_token: "csrf-token",
-    },
-    login: {
-      ref: "e0367c25-3853-45a9-806",
-      next_page: null,
-    },
-    form: [],
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
+function getFakeState(newState) {
+  if (newState === undefined) {
+    newState = {};
+  }
+  return Object.assign(baseState, newState);
+}
 
+describe("Login component renders", () => {
+  const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();
     const props = {
@@ -79,26 +85,9 @@ describe("Login component renders", () => {
 });
 
 describe("Login renders the expected page", () => {
-  const fakeState = {
-    config: {
-      next_url: "http://localhost/next",
-      csrf_token: "csrf-token",
-    },
-    login: {
-      ref: "e0367c25-3853-45a9-806",
-      next_page: null,
-    },
-    form: [],
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
+  const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();
-    const state = { ...fakeState };
-    state.login.next_page = "USERNAMEPASSWORD";
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
         <Router history={history}>
@@ -112,6 +101,8 @@ describe("Login renders the expected page", () => {
   }
 
   it("page USERNAMEPASSWORD renders UsernamePw", () => {
+    const state = { ...fakeState };
+    state.login.next_page = "USERNAMEPASSWORD";
     const { wrapper } = setupComponent();
     const page = wrapper.find(UsernamePw);
     expect(page.exists()).toBe(true);
@@ -119,27 +110,9 @@ describe("Login renders the expected page", () => {
 });
 
 describe("Login does not render UsernamePw if page is different", () => {
-  const fakeState = {
-    config: {
-      next_url: "http://localhost/next",
-      csrf_token: "csrf-token",
-    },
-    login: {
-      ref: "e0367c25-3853-45a9-806",
-      next_page: null,
-    },
-    form: [],
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
+  const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();
-    const state = { ...fakeState };
-    state.login.ref = "e0367c25-3853-45a9-806";
-    state.login.next_page = "MOCKPAGE";
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
         <Router history={history}>
@@ -153,6 +126,8 @@ describe("Login does not render UsernamePw if page is different", () => {
   }
 
   it("page MOCKPAGE does not render UsernamePw", () => {
+    const state = { ...fakeState };
+    state.login.next_page = "MOCKPAGE";
     const { wrapper } = setupComponent();
     const page = wrapper.find(UsernamePw);
     expect(page.exists()).toBe(false);
