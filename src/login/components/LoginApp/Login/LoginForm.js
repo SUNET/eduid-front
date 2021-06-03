@@ -8,7 +8,7 @@ import { validate } from "../../../app_utils/validation/validateEmail";
 import { emptyValueValidation } from "../../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-const validateLoginForm = (values) => {
+export const validateLoginForm = (values) => {
   let errors = {};
   const { username, credentials } = values;
   errors.username = validate(username);

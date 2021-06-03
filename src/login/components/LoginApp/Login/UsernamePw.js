@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { reduxForm } from "redux-form";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
-import LoginForm from "./LoginForm";
+import LoginForm, { validateLoginForm } from "./LoginForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 
@@ -27,20 +28,29 @@ const RenderResetPasswordLink = () => (
   />
 );
 
+let LoginFormButton = (props) => (
+  <ButtonPrimary
+    type={"submit"}
+    onClick={() => {}}
+    id={""}
+    className={"settings-button"}
+  >
+    Log in
+  </ButtonPrimary>
+);
+
+LoginFormButton = reduxForm({
+  form: "loginForm",
+  validate: validateLoginForm,
+})(LoginFormButton);
+
 const UsernamePw = (props) => (
   <div className="login">
     <p className="heading">Log in</p>
     <LoginForm {...props} />
     <div className="button-pair">
       <RenderResetPasswordLink />
-      <ButtonPrimary
-        type={"submit"}
-        onClick={() => {}}
-        id={""}
-        className={"settings-button"}
-      >
-        Log in
-      </ButtonPrimary>
+      <LoginFormButton {...props} />
     </div>
     <RenderRegisterLink />
   </div>
