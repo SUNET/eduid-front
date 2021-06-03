@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { reduxForm } from "redux-form";
+import { reduxForm, submit } from "redux-form";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
 import LoginForm from "./LoginForm";
@@ -28,12 +28,12 @@ const RenderResetPasswordLink = () => (
   />
 );
 
-let LoginFormButton = ({invalid}) => {
+let LoginFormButton = ({ invalid, dispatch, pristine }) => {
   return (
     <ButtonPrimary
-      type={"submit"}
-      onClick={() => {}}
-      disabled={invalid}
+      type="submit"
+      onClick={() => dispatch(submit("loginForm"))}
+      disabled={invalid || pristine}
       id={""}
       className={"settings-button"}
     >
@@ -44,19 +44,25 @@ let LoginFormButton = ({invalid}) => {
 
 LoginFormButton = reduxForm({
   form: "loginForm",
+  destroyOnUnmount: false,
 })(LoginFormButton);
 
-const UsernamePw = (props) => (
-  <div className="login">
-    <p className="heading">Log in</p>
-    <LoginForm {...props} />
-    <div className="button-pair">
-      <RenderResetPasswordLink />
-      <LoginFormButton {...props} />
+const UsernamePw = (props) => {
+  const handleUsernamePassword = (e) => {
+    e.preventDefault();
+  };
+  return (
+    <div className="login">
+      <p className="heading">Log in</p>
+      <LoginForm {...props} handleSubmit={handleUsernamePassword} />
+      <div className="button-pair">
+        <RenderResetPasswordLink />
+        <LoginFormButton {...props} />
+      </div>
+      <RenderRegisterLink />
     </div>
-    <RenderRegisterLink />
-  </div>
-);
+  );
+};
 
 UsernamePw.propTypes = {
   translate: PropTypes.func,

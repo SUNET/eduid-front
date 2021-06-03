@@ -17,8 +17,11 @@ export const validateLoginForm = (values) => {
 };
 
 let LoginForm = (props) => {
+  const { handleSubmit } = props;
+  console.log("LoginForm props", props);
+  console.log("handleSubmit ", handleSubmit);
   return (
-    <Form id={"login-form"} role="form" onSubmit={() => {}}>
+    <Form id={"login-form"} role="form" onSubmit={handleSubmit}>
       <fieldset>
         <FormSection name={"username"}>
           <RenderEmailInput {...props} submitButton={false} required={true} />
@@ -42,6 +45,7 @@ let LoginForm = (props) => {
 LoginForm = reduxForm({
   form: "loginForm",
   validate: validateLoginForm,
+  //  onSubmit: handleUsernamePassword,
 })(LoginForm);
 
 LoginForm = connect(() => ({
