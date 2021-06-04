@@ -10,6 +10,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
+import { getResetPassword } from "../../../redux/actions/getResetPasswordActions"
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
@@ -51,6 +52,10 @@ EmailForm = connect(() => ({
 
 function ResetPasswordForm(props){
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getResetPassword());
+  }, []);
 
   useEffect(()=>{
     clearCountdown();
