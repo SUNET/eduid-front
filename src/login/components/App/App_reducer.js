@@ -18,8 +18,7 @@ let appReducer = (state = appData, action) => {
         ...state,
         loading_data: true,
       };
-    case loadingDataActions.LOAD_DATA_SUCCESS:
-    case loadingDataActions.LOAD_DATA_FAIL:
+    case loadingDataActions.LOAD_DATA_COMPLETE:
       return {
         ...state,
         loading_data: false,

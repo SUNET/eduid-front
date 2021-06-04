@@ -4,8 +4,7 @@ import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postUsernamePasswordActions";
 import {
   loadingData,
-  loadingDataSuccess,
-  loadingDataFail,
+  loadingDataComplete,
 } from "../../actions/loadingDataActions";
 
 export function* postUsernamePasswordSaga(action) {
@@ -26,9 +25,9 @@ export function* postUsernamePasswordSaga(action) {
     );
     yield put(putCsrfToken(postUsernamePasswordResponse));
     yield put(postUsernamePasswordResponse);
-    yield put(loadingDataSuccess());
+    yield put(loadingDataComplete());
   } catch (error) {
     yield put(actions.postUsernamePasswordFail(error.toString()));
-    yield put(loadingDataFail());
+    yield put(loadingDataComplete());
   }
 }

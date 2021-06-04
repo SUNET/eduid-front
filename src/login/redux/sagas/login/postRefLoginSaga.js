@@ -5,8 +5,7 @@ import * as actions from "../../actions/postRefLoginActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import {
   loadingData,
-  loadingDataSuccess,
-  loadingDataFail,
+  loadingDataComplete,
 } from "../../actions/loadingDataActions";
 
 export function* postRefLoginSaga() {
@@ -21,10 +20,10 @@ export function* postRefLoginSaga() {
     const nextLoginStepResponse = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(nextLoginStepResponse));
     yield put(nextLoginStepResponse);
-    yield put(loadingDataSuccess());
+    yield put(loadingDataComplete());
     yield put(eduidRMAllNotify());
   } catch (error) {
     yield put(actions.postRefFail(error.toString()));
-    yield put(loadingDataFail());
+    yield put(loadingDataComplete());
   }
 }
