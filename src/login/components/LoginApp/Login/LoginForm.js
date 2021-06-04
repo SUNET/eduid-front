@@ -7,6 +7,12 @@ import { RenderInput } from "../../GroupManagement/GroupNameForm";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import { emptyValueValidation } from "../../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import { postUsernamePassword } from "../../../redux/actions/postUsernamePasswordActions";
+
+export const submitUsernamePassword = (values, dispatch) => {
+  const { username, credentials } = values;
+  dispatch(postUsernamePassword(username.email, credentials.password));
+};
 
 export const validateLoginForm = (values) => {
   let errors = {};
@@ -17,11 +23,8 @@ export const validateLoginForm = (values) => {
 };
 
 let LoginForm = (props) => {
-  const { handleSubmit } = props;
-  console.log("LoginForm props", props);
-  console.log("handleSubmit ", handleSubmit);
   return (
-    <Form id={"login-form"} role="form" onSubmit={handleSubmit}>
+    <Form id={"login-form"} role="form" onSubmit={submitUsernamePassword}>
       <fieldset>
         <FormSection name={"username"}>
           <RenderEmailInput {...props} submitButton={false} required={true} />
@@ -45,7 +48,8 @@ let LoginForm = (props) => {
 LoginForm = reduxForm({
   form: "loginForm",
   validate: validateLoginForm,
-  //  onSubmit: handleUsernamePassword,
+  onSubmit: submitUsernamePassword,
+  // enableReinitialize: true,
 })(LoginForm);
 
 LoginForm = connect(() => ({
