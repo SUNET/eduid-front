@@ -19,18 +19,16 @@ const RenderSubmitButton = ({ invalid, translate }) => (
 );
 
 export let RenderEmailInput = ({ translate, required }) => (
-  <fieldset id="emails-form" className="tabpane">
-    <Field
-      required={required}
-      label={translate("profile.email_display_title")}
-      component={CustomInput}
-      componentClass="input"
-      type="text"
-      name="email"
-      placeholder="example@example.com"
-      helpBlock={translate("emails.input_help_text")}
-    />
-  </fieldset>
+  <Field
+    required={required}
+    label={translate("profile.email_display_title")}
+    component={CustomInput}
+    componentClass="input"
+    type="text"
+    name="email"
+    placeholder="example@example.com"
+    helpBlock={translate("emails.input_help_text")}
+  />
 );
 
 let EmailForm = (props, { submitButton, onSubmit }) => {

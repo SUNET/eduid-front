@@ -14,28 +14,20 @@ export let RenderInput = ({
   form,
   helpBlock,
 }) => (
-  <fieldset id={`${form}-fieldset`} className="tabpane">
-    <Field
-      label={label}
-      required={required}
-      component={CustomInput}
-      componentClass="input"
-      type="text"
-      name={form}
-      placeholder={placeholder}
-      helpBlock={helpBlock}
-    />
-  </fieldset>
+  <Field
+    label={label}
+    required={required}
+    component={CustomInput}
+    componentClass="input"
+    type="text"
+    name={form}
+    placeholder={placeholder}
+    helpBlock={helpBlock}
+  />
 );
 
 let GroupNameForm = (props) => {
-  const {
-    handleSubmit,
-    invalid,
-    form,
-    submitButton,
-  } = props;
-
+  const { handleSubmit, invalid, form, submitButton } = props;
   return (
     <Form id={`${form}-form`} role="form" onSubmit={handleSubmit}>
       <RenderInput {...props} />

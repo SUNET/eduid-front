@@ -47,50 +47,25 @@ input[type="radio"]:checked.error {
   width: 100%;
   margin-left: -2px;
 
-  span{
+  span {
     font-size: 1.5rem;
     align-self: center;
     color: $black;
     font-family: "ProximaNova-Regular";
     font-weight: normal;
     text-transform: capitalize;
-    margin: 0 2rem 0 0 ;
+    margin: 0 2rem 0 0;
     text-align: center;
     margin-left: 8px;
   }
 }
 
-// .radio-input {
-//   margin-right: 3rem;
-// }
-// .form-control overrides all styling with bootsrap styles
-//input {
-//   background-color: white;
-//   font-family: "ProximaNova-Regular";
-//   font-size: 1.5rem;
-//   font-weight: 500;
-//   color: #161616;
-//   box-shadow: none;
-
-//   border-radius: 0;
-//   border: none;
-//   border-bottom: solid 2px #161616;
-
-//   width: calc(100% - 1rem);
-//   padding: 0.25rem 0.5rem;
-//   height: 2.25rem;
-// }
 .input-container {
   margin-bottom: 1.125rem;
   margin-right: 0.5rem;
   flex: 1;
 }
 
-// the login form consists of multiple stacked inputs and is formatted differently from single inputs (.input-container)
-#login-form .input-container {
-  margin-bottom: 0rem;
-  margin-right: 0rem;
-}
 .form-control::placeholder,
 input::placeholder {
   font-family: "ProximaNova-Regular";
@@ -134,7 +109,7 @@ input:focus {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  & label{
+  & label {
     letter-spacing: 0;
     font-size: 1rem;
     margin-left: -2px;

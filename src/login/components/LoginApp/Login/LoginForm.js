@@ -18,24 +18,23 @@ const validateLoginForm = (values) => {
 
 let LoginForm = (props) => {
   return (
-    <Form id={"create-invite-form"} role="form" onSubmit={() => {}}>
-      <FormSection name={"username"}>
-        <RenderEmailInput
-          {...props}
-          submitButton={false}
-          required={true}
-        />
-      </FormSection>
-      <FormSection name={"credentials"}>
-        <RenderInput
-          form={"password"}
-          label={"Password"}
-          submitButton={false}
-          placeholder={"enter a password"}
-          helpBlock={""}
-          handleSubmit={() => {}}
-        />
-      </FormSection>
+    <Form id={"login-form"} role="form" onSubmit={() => {}}>
+      <fieldset>
+        <FormSection name={"username"}>
+          <RenderEmailInput {...props} submitButton={false} required={true} />
+        </FormSection>
+        <FormSection name={"credentials"}>
+          <RenderInput
+            form={"password"}
+            label={"Password"}
+            submitButton={false}
+            required={true}
+            placeholder={"enter a password"}
+            helpBlock={""}
+            handleSubmit={() => {}}
+          />
+        </FormSection>
+      </fieldset>
     </Form>
   );
 };
