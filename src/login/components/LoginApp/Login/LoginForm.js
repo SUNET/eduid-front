@@ -49,7 +49,6 @@ LoginForm = reduxForm({
   form: "loginForm",
   validate: validateLoginForm,
   onSubmit: submitUsernamePassword,
-  // enableReinitialize: true,
 })(LoginForm);
 
 LoginForm = connect(() => ({
