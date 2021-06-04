@@ -1,4 +1,4 @@
-import { takeLatest, takeEvery } from "redux-saga/effects";
+import { takeLatest } from "redux-saga/effects";
 import * as postRefLoginActions from "../../actions/postRefLoginActions";
 import { postRefLoginSaga } from "../login/postRefLoginSaga";
 import * as postUsernamePasswordActions from "../../actions/postUsernamePasswordActions";
