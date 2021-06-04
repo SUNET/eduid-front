@@ -1,6 +1,7 @@
 /* eslint-disable */
 import * as onLoadActions from "../actions/addDataToStoreActions";
-import * as actions from "../actions/postRefLoginActions";
+import * as nextPageActions from "../actions/postRefLoginActions";
+import * as usernamePasswordActions from "../actions/postUsernamePasswordActions";
 
 const loginData = {
   ref: null,
@@ -14,11 +15,15 @@ let loginReducer = (state = loginData, action) => {
         ...state,
         ref: action.payload.ref,
       };
-    case actions.POST_IDP_NEXT_SUCCESS:
+    case nextPageActions.POST_IDP_NEXT_SUCCESS:
       const page = "USERNAMEPASSWORD";
       return {
         ...state,
         next_page: page,
+      };
+    case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
+      return {
+        ...state,
       };
     default:
       return state;
