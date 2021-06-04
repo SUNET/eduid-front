@@ -3,6 +3,11 @@ import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postRefLoginActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import {
+  loadingData,
+  loadingDataSuccess,
+  loadingDataFail,
+} from "../../actions/loadingDataActions";
 
 export function* postRefLoginSaga() {
   const state = yield select((state) => state);
@@ -12,11 +17,14 @@ export function* postRefLoginSaga() {
       ref: state.login.ref,
       csrf_token: state.config.csrf_token,
     };
+    yield put(loadingData());
     const nextLoginStepResponse = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(nextLoginStepResponse));
     yield put(nextLoginStepResponse);
+    yield put(loadingDataSuccess());
     yield put(eduidRMAllNotify());
   } catch (error) {
     yield put(actions.postRefFail(error.toString()));
+    yield put(loadingDataFail());
   }
 }
