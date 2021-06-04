@@ -4,11 +4,12 @@ import i18n from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
+import SuccessIconAnimation from "./SuccessIconAnimation";
 import { RenderingTimer, countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT } from "./CountDownTimer";
-import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordForm"
+import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordForm";
 function EmailLinkSent(props){
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
 
   const sendLink = (e) => {
     e.preventDefault();
@@ -31,9 +32,7 @@ function EmailLinkSent(props){
 
   return (
     <>
-      <p className="heading">
-        {props.translate("resetpw.reset-pw-initialized")}
-      </p>
+      <SuccessIconAnimation />
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
         <div className="timer">
