@@ -47,22 +47,17 @@ LoginFormButton = reduxForm({
   destroyOnUnmount: false,
 })(LoginFormButton);
 
-const UsernamePw = (props) => {
-  const handleUsernamePassword = (e) => {
-    e.preventDefault();
-  };
-  return (
-    <div className="login">
-      <p className="heading">Log in</p>
-      <LoginForm {...props} handleSubmit={handleUsernamePassword} />
-      <div className="button-pair">
-        <RenderResetPasswordLink />
-        <LoginFormButton {...props} />
-      </div>
-      <RenderRegisterLink />
+const UsernamePw = (props) => (
+  <div className="login">
+    <p className="heading">Log in</p>
+    <LoginForm {...props} />
+    <div className="button-pair">
+      <RenderResetPasswordLink />
+      <LoginFormButton {...props} />
     </div>
-  );
-};
+    <RenderRegisterLink />
+  </div>
+);
 
 UsernamePw.propTypes = {
   translate: PropTypes.func,
