@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
@@ -7,7 +7,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 
 const RenderRegisterLink = () => (
-  <p>
+  <p className="secondary-link">
     Don&apos;t have eduID?
     <Link
       className={"text-link"}
@@ -28,24 +28,22 @@ const RenderResetPasswordLink = () => (
 );
 
 const Login = (props) => (
-  <Fragment>
+  <div className="login">
     <p className="heading">Log in</p>
-    <div>
-      <LoginForm {...props} />
+    <LoginForm {...props} />
+    <div className="button-pair">
       <RenderResetPasswordLink />
-      <div>
-        <ButtonPrimary
-          type={"submit"}
-          onClick={() => {}}
-          id={""}
-          className={"settings-button"}
-        >
-          Log in
-        </ButtonPrimary>
-      </div>
+      <ButtonPrimary
+        type={"submit"}
+        onClick={() => {}}
+        id={""}
+        className={"settings-button"}
+      >
+        Log in
+      </ButtonPrimary>
     </div>
     <RenderRegisterLink />
-  </Fragment>
+  </div>
 );
 
 Login.propTypes = {
