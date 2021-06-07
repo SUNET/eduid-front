@@ -24,6 +24,9 @@ import Login from "../login/components/LoginApp/Login/Login";
 import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
 
 const baseState = {
+  app: {
+    loading_data: null,
+  },
   config: {
     next_url: "http://localhost/next",
     csrf_token: "csrf-token",
