@@ -5,20 +5,16 @@ const initData = {
   error: false,
   debug: true,
   available_languages: [],
-  extra_security: {}
+  extra_security: {},
+  next_url: null,
 };
 
 let initReducer = (state = initData, action) => {
   switch (action.type) {
-    case actions.NEW_CSRF_TOKEN:
+    case actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS:
       return {
         ...state,
-        ...action.payload
-      };
-    case actions.FROM_BACKEND_CONFIG_SUCCESS:
-      return {
-        ...state,
-        ...action.payload
+        ...action.payload,
       };
     default:
       return state;

@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+/* eslint-disable */
+import React, { Component, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, withRouter } from "react-router-dom";
 import Login from "./Login/Login";
-import { Route } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { useLoginRef } from "../../redux/actions/postRefLoginActions";
 import ResetPasswordForm from "./ResetPassword/ResetPasswordForm";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
 
@@ -28,11 +30,17 @@ const RenderResetPassword = (props) => {
 };
 
 const RenderLogin = (props) => {
-  const { urlCode } = props;
+  const dispatch = useDispatch();
+  const ref = useSelector((state) => state.login.ref);
+  const next_url = useSelector((state) => state.config.next_url);
+  // dispatch action when next_url is available
+  useEffect(() => {
+    dispatch(useLoginRef(ref));
+  }, [next_url]);
   return (
     <Route
       exact
-      path={`/login/${urlCode}`}
+      path={`/login/${ref}`}
       render={(props) => <Login {...props} />}
     />
   );
