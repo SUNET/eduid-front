@@ -26,8 +26,10 @@ button.btn {
   cursor: pointer;
   &:disabled,
   .disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
     background-color: $dark-gray;
-    color:$light-gray;
+    color: $light-gray;
   }
 }
 
@@ -96,8 +98,7 @@ button.close:hover {
 /* MODALS */
 a.btn.modal-button,
 button.btn.modal-button,
-button#accept-tou-button
- {
+button#accept-tou-button {
   box-shadow: none;
   border: solid 1px transparent;
   margin: 1rem 2rem 1rem 2rem;
@@ -135,10 +136,10 @@ button.ok-button,
 button.close-button {
   background-color: transparent;
   padding: 1rem 1rem 0 1rem;
-  margin:0 !important;
+  margin: 0 !important;
   height: 100%;
-  & svg{
-    fill: #C4C4C4;
+  & svg {
+    fill: #c4c4c4;
     align-self: center;
   }
   &:hover,
@@ -164,7 +165,7 @@ button.cancel-button {
   &:not(:disabled):not(.disabled):active:focus {
     color: $gray;
     background-color: transparent;
-    border: solid 1px  $gray;
+    border: solid 1px $gray;
   }
 }
 
@@ -241,12 +242,12 @@ button.btn-link {
   button.btn {
     font-size: 0.9rem;
   }
-  
+
   button.modal-button.ok-button,
   a.modal-button.ok-button,
   button.btn-secondary,
   #security-webauthn-button,
-  #connect-orcid-button{
+  #connect-orcid-button {
     width: 100%;
   }
   button.btn.btn-link,

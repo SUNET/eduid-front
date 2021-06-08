@@ -2,7 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postRefLoginActions";
-import { eduidRMAllNotify } from "./../../../../actions/Notifications";
+import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 export function* postRefLoginSaga() {
   const state = yield select((state) => state);
