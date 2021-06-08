@@ -19,11 +19,11 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-      case postActions.SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE:
-        return {
-          ...state,
-          ...action.payload
-        };
+    case postActions.SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE:
+      return {
+        ...state,
+        ...action.payload
+      };
     case postActions.POST_RESET_PASSWORD_VERIFY_EMAIL:
       return {
         ...state,
