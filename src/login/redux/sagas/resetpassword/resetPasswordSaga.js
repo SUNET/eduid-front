@@ -75,18 +75,20 @@ export function fetchConfigLinkCode(config, data) {
     .then(response => response.json());
 }
 
-export function* useLinkCode(code) {
+export function* useLinkCode() {
   try {
     const state = yield select(state => state);
+    if(state.resetPassword.code){
     const data = {
-      email_code: code.payload.code,
-      // csrf_token: state.config.csrf_token
+      email_code: state.resetPassword.code,
+      csrf_token: state.resetPassword.csrf_token
     };
     const resp = yield call(fetchConfigLinkCode, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
     yield put(app_actions.appLoaded());
-    history.push(`/reset-password/verify-email/`);
+      history.push(`/reset-password/verify-email/`);
+    }
   } catch (error) {
     yield put(app_actions.appLoaded());
     yield* failRequest(error, postLinkCodeFail(error));

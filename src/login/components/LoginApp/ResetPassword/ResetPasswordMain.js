@@ -10,19 +10,19 @@ const ResetPasswordMain = (props) => {
   const dispatch = useDispatch();
   const csrf_token = useSelector(state => state.resetPassword.csrf_token);
 
-  useEffect(() => {
-    dispatch(getResetPassword());
-  }, [csrf_token]);
+  // useEffect(() => {
+  //   dispatch(getResetPassword());
+  // }, [csrf_token]);
 
   const url = props.history.location.pathname;
 
   return (
     <>
-      { 
+      {/* { 
         url === `/reset-password/` ? <ResetPasswordForm urlCode={props.urlCode} {...props}/> : 
         url ===`/reset-password/email-link-sent` ? <EmailLinkSent {...props}/> 
         : null
-      }
+      } */}
     </>
   );
 }
