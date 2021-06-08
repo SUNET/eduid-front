@@ -18,7 +18,6 @@ const init_container = () => {
   if (url.includes("email_code")) {
     // pass on code get config for app and
     initStore.dispatch(saveLinkCode(emailCode));
-    console.log(emailCode)
   }
 };
 
