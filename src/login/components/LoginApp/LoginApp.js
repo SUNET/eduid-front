@@ -6,7 +6,8 @@ import Login from "./Login/Login";
 import { useLoginRef } from "../../redux/actions/postRefLoginActions";
 import ResetPasswordForm from "./ResetPassword/ResetPasswordForm";
  import EmailLinkSent from "./ResetPassword/EmailLinkSent";
-import VerifyEmail from "./ResetPassword/VerifyEmail";
+import ExtraSecurity from "./ResetPassword/ExtraSecurity";
+import SetNewPassword from "./ResetPassword/SetNewPassword";
 
  const RenderResetPassword = (props) => {
    const { urlCode } = props;
@@ -28,9 +29,16 @@ import VerifyEmail from "./ResetPassword/VerifyEmail";
        />
        <Route
          exact
-         path="/reset-password/verify-email"
+         path="/reset-password/extra-security"
          render={(props) => (
-           <VerifyEmail {...props} />
+           <ExtraSecurity {...props} />
+         )}
+       />
+       <Route
+         exact
+         path="/reset-password/set-new-password"
+         render={(props) => (
+           <SetNewPassword {...props} />
          )}
        />
      </>
