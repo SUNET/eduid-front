@@ -50,7 +50,7 @@ export function* postEmailLink() {
     const state = yield select(state => state);
     const data = {
       email: state.resetPassword.email,
-      csrf_token: state.resetPassword.csrf_token
+      csrf_token: state.config.csrf_token
     };
     const resp = yield call(fetchConfigResetPassword, state.config, data);
     yield put(putCsrfToken(resp));
