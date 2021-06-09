@@ -3,7 +3,6 @@ import * as postActions from "../actions/postResetPasswordActions";
 
 const data = {
     email: "",
-    csrf_token: "",
     code: ""
 };
 
