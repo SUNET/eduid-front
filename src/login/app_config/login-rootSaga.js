@@ -31,8 +31,7 @@ function* rootSaga() {
       postResetPasswordActions.POST_RESET_PASSWORD_FAIL,
       getResetPasswordConfig
     ),
-    takeLatest(postResetPasswordActions.SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE, getResetPasswordConfig),
-    takeLatest(getResetPasswordActions.GET_RESET_PASSWORD_SUCCESS, useLinkCode),
+    takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, useLinkCode),
   ];
 }
 
