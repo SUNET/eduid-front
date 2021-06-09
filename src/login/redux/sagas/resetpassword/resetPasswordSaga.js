@@ -87,6 +87,7 @@ export function* useLinkCode() {
     yield put(putCsrfToken(resp));
     yield put(resp);
     yield put(app_actions.appLoaded());
+      history.push(`/reset-password/`);
     }
   } catch (error) {
     yield put(app_actions.appLoaded());
