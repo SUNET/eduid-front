@@ -16,8 +16,7 @@ const RenderLogin = (props) => {
   }, [next_url]);
   return (
     <Route
-      exact
-      path={`/login/${ref}`}
+      path={`/login/`}
       render={(props) => <Login {...props} />}
     />
   );
@@ -63,9 +62,7 @@ class LoginApp extends Component {
 
     return (
       <div id="content" className="vertical-content-margin">
-        {this.state.url.includes("/login/") && (
-          <RenderLogin urlCode={this.state.urlCode} {...this.props} />
-        )}
+        {this.state.url.includes("/login/") && <RenderLogin {...this.props} />}
         <Route
           exact
           path="/reset-password/"
