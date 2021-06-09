@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import UsernamePw from "./UsernamePw";
 import TermOfUse from "./TermsOfUse";
@@ -7,9 +7,7 @@ import MultiFactorAuth from "./MultiFactorAuth";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const Login = (props) => {
-  // uncomment to let backend control render
-  // const nextPage = useSelector((state) => state.login.next_page);
-  const nextPage = "USERNAMEPASSWORD";
+  const nextPage = useSelector((state) => state.login.next_page);
   return (
     <Fragment>
       {nextPage === "USERNAMEPASSWORD" ? (
