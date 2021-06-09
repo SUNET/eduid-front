@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as onLoadActions from "../actions/addDataToStoreActions";
 import * as nextPageActions from "../actions/postRefLoginActions";
 import * as usernamePasswordActions from "../actions/postUsernamePasswordActions";
