@@ -7,8 +7,14 @@ import { RenderInput } from "../../GroupManagement/GroupNameForm";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import { emptyValueValidation } from "../../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import { postUsernamePassword } from "../../../redux/actions/postUsernamePasswordActions";
 
-const validateLoginForm = (values) => {
+export const submitUsernamePassword = (values, dispatch) => {
+  const { username, credentials } = values;
+  dispatch(postUsernamePassword(username.email, credentials.password));
+};
+
+export const validateLoginForm = (values) => {
   let errors = {};
   const { username, credentials } = values;
   errors.username = validate(username);
@@ -18,7 +24,7 @@ const validateLoginForm = (values) => {
 
 let LoginForm = (props) => {
   return (
-    <Form id={"login-form"} role="form" onSubmit={() => {}}>
+    <Form id={"login-form"} role="form" onSubmit={submitUsernamePassword}>
       <fieldset>
         <FormSection name={"username"}>
           <RenderEmailInput {...props} submitButton={false} required={true} />
@@ -42,6 +48,7 @@ let LoginForm = (props) => {
 LoginForm = reduxForm({
   form: "loginForm",
   validate: validateLoginForm,
+  onSubmit: submitUsernamePassword,
 })(LoginForm);
 
 LoginForm = connect(() => ({
