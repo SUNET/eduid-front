@@ -1,4 +1,5 @@
 import React, { useEffect }  from "react";
+import { useSelector } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useDispatch, connect } from 'react-redux';
@@ -10,6 +11,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
+import { useHistory } from 'react-router-dom';
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
@@ -51,10 +53,20 @@ EmailForm = connect(() => ({
 
 function ResetPasswordForm(props){
   const dispatch = useDispatch();
+  const extra_security = useSelector(state => state.resetPassword.extra_security);
+  const history = useHistory();
 
   useEffect(()=>{
     clearCountdown();
   }, []);
+
+  useEffect(()=>{
+    if(extra_security && Object.keys(extra_security).length > 0) {
+      history.push(`/reset-password/extra-security`)
+    }else if(extra_security && Object.keys(extra_security).length === 0) 
+      history.push(`/reset-password/set-new-password`)
+    else history.push(`/reset-password/`)
+  }, [extra_security]);
 
   const sendLink = (e) => {
     e.preventDefault();
