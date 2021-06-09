@@ -3,7 +3,7 @@ import * as loadingDataActions from "../../redux/actions/loadingDataActions";
 
 const appData = {
   is_loaded: false,
-  loading_data: null,
+  loading_data: false,
 };
 
 let appReducer = (state = appData, action) => {
