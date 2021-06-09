@@ -18,10 +18,12 @@ let loginReducer = (state = loginData, action) => {
       };
     case nextPageActions.POST_IDP_NEXT_SUCCESS:
       const nextPage = "USERNAMEPASSWORD";
+      // const nextPage = "TOU";
+      // const nextPage = "MFA";
       return {
         ...state,
-        // next_page: action.payload.action,
         next_page: nextPage,
+        // next_page: action.payload.action,
         post_to: action.payload.target,
       };
     case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
