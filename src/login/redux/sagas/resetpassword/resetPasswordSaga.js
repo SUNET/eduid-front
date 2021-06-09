@@ -50,7 +50,7 @@ export function* postEmailLink() {
   try {
     const state = yield select(state => state);
     const data = {
-      email: state.resetPassword.email,
+      email: state.resetPassword.email_address,
       csrf_token: state.config.csrf_token
     };
     const resp = yield call(fetchConfigResetPassword, state.config, data);
@@ -81,13 +81,12 @@ export function* useLinkCode() {
     if(state.resetPassword.code){
     const data = {
       email_code: state.resetPassword.code,
-      csrf_token: state.resetPassword.csrf_token
+      csrf_token: state.config.csrf_token
     };
     const resp = yield call(fetchConfigLinkCode, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
     yield put(app_actions.appLoaded());
-      history.push(`/reset-password/verify-email/`);
     }
   } catch (error) {
     yield put(app_actions.appLoaded());
