@@ -20,7 +20,6 @@ let EmailInput = ({ translate, required}) => (
 
 EmailInput.propTypes = {
   translate: PropTypes.func,
-  // handleAccept: PropTypes.func.isRequired,
   validate: PropTypes.func,
 };
 
