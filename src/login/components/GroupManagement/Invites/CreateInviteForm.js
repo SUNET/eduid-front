@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { reduxForm, FormSection } from "redux-form";
 import Form from "reactstrap/lib/Form";
-import { RenderEmailInput } from "../EmailForm";
+import EmailInput from "../../Inputs/EmailInput";
 import InviteRoleCheckboxes from "../InviteRoleCheckboxes";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
@@ -23,7 +23,7 @@ let CreateInviteForm = (props) => {
     <Fragment>
       <Form id={"create-invite-form"} role="form" onSubmit={handleSubmit}>
         <FormSection name={"inviteEmail"}>
-          <RenderEmailInput {...props} submitButton={false} required={true} />
+          <EmailInput {...props} submitButton={false} required={true} />
         </FormSection>
         <FormSection name={"inviteRoles"}>
           <InviteRoleCheckboxes {...props} helpBlock={"select one or more"} />
