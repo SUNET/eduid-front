@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { reduxForm, submit } from "redux-form";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
-import LoginForm from "./LoginForm";
+import UsernamePwForm from "./UsernamePwForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 
@@ -29,14 +29,14 @@ const RenderResetPasswordLink = () => (
   />
 );
 
-let LoginFormButton = ({ invalid, dispatch }) => {
+let UsernamePwFormButton = ({ invalid, dispatch }) => {
   const loading = useSelector((state) => state.app.loading_data);
   return (
     <ButtonPrimary
       type="submit"
-      onClick={() => dispatch(submit("loginForm"))}
+      onClick={() => dispatch(submit("usernamePwForm"))}
       disabled={invalid || loading}
-      id={""}
+      id="login-form-button"
       className={"settings-button"}
     >
       {loading ? "Logging" : "Log"} in
@@ -44,18 +44,18 @@ let LoginFormButton = ({ invalid, dispatch }) => {
   );
 };
 
-LoginFormButton = reduxForm({
-  form: "loginForm",
+UsernamePwFormButton = reduxForm({
+  form: "usernamePwForm",
   destroyOnUnmount: false,
-})(LoginFormButton);
+})(UsernamePwFormButton);
 
 const UsernamePw = (props) => (
   <div className="login">
     <p className="heading">Log in</p>
-    <LoginForm {...props} />
+    <UsernamePwForm {...props} />
     <div className="button-pair">
       <RenderResetPasswordLink />
-      <LoginFormButton {...props} />
+      <UsernamePwFormButton {...props} />
     </div>
     <RenderRegisterLink />
   </div>
