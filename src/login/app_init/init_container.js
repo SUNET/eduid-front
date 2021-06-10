@@ -10,7 +10,7 @@ const init_container = () => {
   // check url for code
   const url = document.location.href;
   const urlCode = url.split("/").reverse()[0];
-  if (url.includes(`/login/${urlCode}`)) {
+  if (url.includes(`/login/`)) {
     initStore.dispatch(addLoginRef(urlCode));
   }
 

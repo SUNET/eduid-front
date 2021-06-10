@@ -82,7 +82,7 @@ function ResetPasswordMain(props){
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
       <EmailForm sendLink={sendLink} {...props} />
       <div className="return-login-link">
-        <a href={`/login/${props.urlCode}`}>
+        <a href={`/login/password/${props.urlCode}`}>
           {props.translate("resetpw.return-login")}
         </a>
       </div>

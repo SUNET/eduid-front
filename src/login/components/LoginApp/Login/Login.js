@@ -1,23 +1,37 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import UsernamePw from "./UsernamePw";
 import TermOfUse from "./TermsOfUse";
 import MultiFactorAuth from "./MultiFactorAuth";
+import Splash from "../../Splash/Splash_container";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const Login = (props) => {
-  const nextPage = useSelector((state) => state.login.next_page);
+  // update url when next_page changes
+  let history = useHistory();
+  const next_page = useSelector((state) => state.login.next_page);
+  const ref = useSelector((state) => state.login.ref);
+  useEffect(() => {
+    if (next_page === "USERNAMEPASSWORD") {
+      history.push(`/login/password/${ref}`);
+    } else if (next_page === "TOU") {
+      history.push(`/login/tou/${ref}`);
+    } else if (next_page === "MFA") {
+      history.push(`/login/mfa/${ref}`);
+    }
+  }, [next_page]);
   return (
     <Fragment>
-      {nextPage === "USERNAMEPASSWORD" ? (
+      {next_page === "USERNAMEPASSWORD" ? (
         <UsernamePw {...props} />
-      ) : nextPage === "TOU" ? (
+      ) : next_page === "TOU" ? (
         <TermOfUse {...props} />
-      ) : nextPage === "MFA" ? (
+      ) : next_page === "MFA" ? (
         <MultiFactorAuth {...props} />
       ) : (
-        <p className="heading">Loading</p>
+        <Splash />
       )}
     </Fragment>
   );

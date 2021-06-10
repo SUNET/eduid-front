@@ -13,33 +13,25 @@ import SetNewPassword from "./ResetPassword/SetNewPassword";
    const { urlCode } = props;
    return (
      <>
-       <Route
-         exact
-         path="/reset-password/"
-         render={(props) => (
-           <ResetPasswordMain urlCode={urlCode} {...props} />
-         )}
-       />
-       <Route
-         exact
-         path="/reset-password/email-link-sent"
-         render={(props) => (
-           <EmailLinkSent {...props} />
-         )}
-       />
+      <Route
+        exact
+        path="/reset-password/"
+        render={(props) => <ResetPasswordForm urlCode={urlCode} {...props} />}
+      />
+      <Route
+        exact
+        path="/reset-password/email-link-sent"
+        render={(props) => <EmailLinkSent {...props} />}
+      />
        <Route
          exact
          path="/reset-password/extra-security"
-         render={(props) => (
-           <ExtraSecurity {...props} />
-         )}
+         render={(props) => <ExtraSecurity {...props} />}
        />
        <Route
          exact
          path="/reset-password/set-new-password"
-         render={(props) => (
-           <SetNewPassword {...props} />
-         )}
+         render={(props) => <SetNewPassword {...props} />}
        />
      </>
    )
@@ -53,13 +45,7 @@ const RenderLogin = (props) => {
   useEffect(() => {
     dispatch(useLoginRef(ref));
   }, [next_url]);
-  return (
-    <Route
-      exact
-      path={`/login/${ref}`}
-      render={(props) => <Login {...props} />}
-    />
-  );
+  return <Route path={`/login/`} render={(props) => <Login {...props} />} />;
 };
 
 class LoginApp extends Component {
@@ -80,10 +66,8 @@ class LoginApp extends Component {
   render() {
     return (
       <div id="content" className="vertical-content-margin">
-        {this.state.url.includes("/login/") && (
-          <RenderLogin urlCode={this.state.urlCode} {...this.props} />
-        )}
-        <RenderResetPassword urlCode={this.state.urlCode} {...this.props}/>
+        {this.state.url.includes("/login/") && <RenderLogin {...this.props} />}
+        <RenderResetPassword urlCode={this.state.urlCode} {...this.props} />
       </div>
     );
   }
