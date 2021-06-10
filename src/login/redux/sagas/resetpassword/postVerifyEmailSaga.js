@@ -9,7 +9,7 @@ import { postLinkCodeFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
 import * as app_actions from "../../../components/App/App_actions";
 
-export function fetchConfigLinkCode(config, data) {
+export function requestSendLinkCode(config, data) {
   return window
     .fetch(PASSWORD_SERVICE_URL + "/verify-email/", {
       ...postRequest,
@@ -27,7 +27,7 @@ export function* useLinkCode() {
       email_code: state.resetPassword.code,
       csrf_token: state.config.csrf_token
     };
-    const resp = yield call(fetchConfigLinkCode, state.config, data);
+    const resp = yield call(requestSendLinkCode, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
     yield put(app_actions.appLoaded());
