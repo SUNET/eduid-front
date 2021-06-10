@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import { reduxForm, submit } from "redux-form";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
@@ -28,16 +29,17 @@ const RenderResetPasswordLink = () => (
   />
 );
 
-let LoginFormButton = ({ invalid, dispatch, pristine }) => {
+let LoginFormButton = ({ invalid, dispatch }) => {
+  const loading = useSelector((state) => state.app.loading_data);
   return (
     <ButtonPrimary
       type="submit"
       onClick={() => dispatch(submit("loginForm"))}
-      disabled={invalid || pristine}
+      disabled={invalid || loading}
       id={""}
       className={"settings-button"}
     >
-      Log in
+      {loading ? "Logging" : "Log"} in
     </ButtonPrimary>
   );
 };

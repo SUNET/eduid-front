@@ -22,8 +22,13 @@ addLocaleData("react-intl/locale-data/en");
 
 import Login from "../login/components/LoginApp/Login/Login";
 import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
+import TermsOfUse from "../login/components/LoginApp/Login/TermsOfUse";
+import MultiFactorAuth from "../login/components/LoginApp/Login/MultiFactorAuth";
 
 const baseState = {
+  app: {
+    loading_data: null,
+  },
   config: {
     next_url: "http://localhost/next",
     csrf_token: "csrf-token",
@@ -105,6 +110,22 @@ describe("Login renders the expected page", () => {
     state.login.next_page = "USERNAMEPASSWORD";
     const { wrapper } = setupComponent();
     const page = wrapper.find(UsernamePw);
+    expect(page.exists()).toBe(true);
+  });
+
+  it("page TOU renders TermsOfUse", () => {
+    const state = { ...fakeState };
+    state.login.next_page = "TOU";
+    const { wrapper } = setupComponent();
+    const page = wrapper.find(TermsOfUse);
+    expect(page.exists()).toBe(true);
+  });
+
+  it("page MFA renders MultiFactorAuth", () => {
+    const state = { ...fakeState };
+    state.login.next_page = "MFA";
+    const { wrapper } = setupComponent();
+    const page = wrapper.find(MultiFactorAuth);
     expect(page.exists()).toBe(true);
   });
 });

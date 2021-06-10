@@ -3,38 +3,12 @@ import {
   checkStatus,
   postRequest,
   failRequest,
-  getRequest,
   putCsrfToken
 } from "../../../../sagas/common";
 import { postEmailLinkFail, postLinkCodeFail } from "../../actions/postResetPasswordActions";
-import { getResetPasswordConfigFail } from "../../actions/getResetPasswordActions";
 import { history } from "../../../components/App/App";
 import { countDownStart } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import * as app_actions from "../../../components/App/App_actions";
-
-
-export function* getResetPasswordConfig() {
-  const url = PASSWORD_SERVICE_URL + "/";
-  try {
-    const reponse = yield call(fetchConfig, url);
-    yield put(reponse);
-  } catch (error) {
-    yield put(getResetPasswordConfigFail(error.toString()));
-  }
-}
-
-export function fetchConfig(url) {
-  const request = {
-    ...getRequest,
-    redirect: "follow"
-  };
-  return window
-    .fetch(url, {
-      ...request
-    })
-    .then(checkStatus)
-    .then(response => response.json());
-}
 
 export function fetchConfigResetPassword(config, data) {
   return window

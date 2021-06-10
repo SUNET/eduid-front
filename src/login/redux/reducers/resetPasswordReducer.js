@@ -1,4 +1,3 @@
-import * as getActions from "../actions/getResetPasswordActions";
 import * as postActions from "../actions/postResetPasswordActions";
 
 const data = {
@@ -8,11 +7,6 @@ const data = {
 
 let resetPasswordReducer = (state = data, action) => {
   switch (action.type) {
-    case getActions.GET_RESET_PASSWORD_SUCCESS:
-      return {
-        ...state,
-       ...action.payload
-      };
     case postActions.POST_RESET_PASSWORD:
       return {
         ...state,
@@ -36,7 +30,6 @@ let resetPasswordReducer = (state = data, action) => {
     default:
       return state;
   }
-  
 };
 
 export default resetPasswordReducer;
