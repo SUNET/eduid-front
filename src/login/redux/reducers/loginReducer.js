@@ -17,14 +17,21 @@ let loginReducer = (state = loginData, action) => {
         ref: action.payload.ref,
       };
     case nextPageActions.POST_IDP_NEXT_SUCCESS:
-      const nextPage = "USERNAMEPASSWORD";
-      // const nextPage = "TOU";
-      // const nextPage = "MFA";
       return {
         ...state,
-        next_page: nextPage,
+        next_page: "USERNAMEPASSWORD",
         // next_page: action.payload.action,
-        post_to: action.payload.target,
+        // post_to: action.payload.target,
+      };
+    case nextPageActions.NEXT_MOCK_URL_TOU:
+      return {
+        ...state,
+        next_page: "TOU",
+      };
+    case nextPageActions.NEXT_MOCK_URL_MFA:
+      return {
+        ...state,
+        next_page: "MFA",
       };
     case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
       return {
