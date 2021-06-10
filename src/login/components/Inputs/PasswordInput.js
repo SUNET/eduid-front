@@ -1,25 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field } from "redux-form";
-import Input from "./Input";
+import CustomInput from "./CustomInput";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
-let PasswordInput = props => (
+let PasswordInput = ({ translate, required }) => (
   <Field
-    type={"password"}
-    name={"password"}
-    label={"password"}
-    componentclass={"input"}
-    id={"password-input"}
-    component={Input}
-    translate={props.translate}
-    placeholder={"this is password"}
+    type="password"
+    name="current-password"
+    component={CustomInput}
+    // id="current-password"
+    autoComplete="current-password"
+    required={required}
+    label={"Password"}
+    placeholder={"enter a password"}
+    helpBlock={""}
+    handleSubmit={() => {}}
   />
 );
 
 PasswordInput.propTypes = {
   translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
-  validate: PropTypes.func
+  validate: PropTypes.func,
 };
 
-export default PasswordInput;
+export default InjectIntl(PasswordInput);
