@@ -6,6 +6,7 @@ import * as usernamePasswordActions from "../actions/postUsernamePasswordActions
 const loginData = {
   ref: null,
   next_page: null,
+  post_to: null,
 };
 
 let loginReducer = (state = loginData, action) => {
@@ -16,10 +17,12 @@ let loginReducer = (state = loginData, action) => {
         ref: action.payload.ref,
       };
     case nextPageActions.POST_IDP_NEXT_SUCCESS:
-      const page = "USERNAMEPASSWORD";
+      const nextPage = "USERNAMEPASSWORD";
       return {
         ...state,
-        next_page: page,
+        // next_page: action.payload.action,
+        next_page: nextPage,
+        post_to: action.payload.target,
       };
     case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
       return {
