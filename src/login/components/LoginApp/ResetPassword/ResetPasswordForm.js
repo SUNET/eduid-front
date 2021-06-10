@@ -1,5 +1,4 @@
 import React, { useEffect }  from "react";
-import { withRouter } from "react-router-dom";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useDispatch, connect } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
@@ -84,4 +83,4 @@ ResetPasswordForm.propTypes = {
   invalid: PropTypes.bool
 };
 
-export default i18n(withRouter(ResetPasswordForm));
+export default i18n(ResetPasswordForm);
