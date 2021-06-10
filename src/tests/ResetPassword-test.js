@@ -38,27 +38,24 @@ function getFakeState(newState) {
   return Object.assign(baseState, newState)
 }
 
-function setupComponent(fakeState) {
-  const props =  {                                                  
-    sendLink: mock.fn(),
-  };
-  const history = createMemoryHistory();
-  const wrapper = mount(
-    <Provider store={fakeStore(fakeState)}>
-      <Router history={history}>
-        <ResetPasswordForm {...props} />
-      </Router>
-    </Provider>
-  );
-  return {
-    props,
-    wrapper,
-  };
-}
-
 describe("ResetPasswordForm Component,", () => {
-  const { wrapper } = setupComponent();
+  const fakeState = getFakeState();
+  function setupComponent() {
+    const history = createMemoryHistory();
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <Router history={history}>
+          <ResetPasswordForm />
+        </Router>
+      </Provider>
+    );
+    return {
+      wrapper,
+    };
+  }
+
   it("The component does not render 'false' or 'null'", () => {
+    const { wrapper } = setupComponent();
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 });
@@ -90,14 +87,30 @@ describe("ResetPassword post actions,", () => {
 });
 
 describe("ResetPasswordForm, send link button ", () => {
-  const { wrapper } = setupComponent();
+  const fakeState = getFakeState();
+  function setupComponent() {
+    const history = createMemoryHistory();
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <Router history={history}>
+          <ResetPasswordForm />
+        </Router>
+      </Provider>
+    );
+    return {
+      wrapper,
+    };
+  }
+
   it("check if button is present", () => {
+    const { wrapper } = setupComponent();
     const button = wrapper.find("button#reset-password-button");
     expect(button.exists()).toEqual(true);
     expect(button.text()).toContain("send link");
   });
 
   it("will active when input is filled", () => {
+    const { wrapper } = setupComponent();
     const button = wrapper.find("button#reset-password-button");
     const input = wrapper.find("#reset-password-form input");
     const buttonDisabled = button.prop("disabled");
