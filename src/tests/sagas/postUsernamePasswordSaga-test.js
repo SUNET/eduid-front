@@ -1,6 +1,5 @@
 import expect from "expect";
 import { put, call } from "redux-saga/effects";
-// import { cloneableGenerator } from "@redux-saga/testing-utils";
 import { addLocaleData } from "react-intl";
 addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
