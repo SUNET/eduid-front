@@ -1,10 +1,8 @@
 import { takeLatest, select } from "redux-saga/effects";
 import * as init_actions from "../app_init/init_actions";
 import { requestConfig } from "../app_init/init_sagas";
-import {
-  postEmailLink,
-  useLinkCode
-} from "../redux/sagas/resetpassword/resetPasswordSaga";
+import { postEmailLink } from "../redux/sagas/resetpassword/postResetPasswordSaga";
+import { useLinkCode } from "../redux/sagas/resetpassword/postVerifyEmailSaga";
 import * as postResetPasswordActions from "../redux/actions/postResetPasswordActions";
 import loginSagas from "../redux/sagas/rootSaga/loginSagas";
 
