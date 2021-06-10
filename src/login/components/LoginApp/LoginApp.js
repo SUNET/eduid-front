@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, withRouter } from "react-router-dom";
 import Login from "./Login/Login";
 import { useLoginRef } from "../../redux/actions/postRefLoginActions";
-import ResetPasswordForm from "./ResetPassword/ResetPasswordForm";
+import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
 import ExtraSecurity from "./ResetPassword/ExtraSecurity";
 import SetNewPassword from "./ResetPassword/SetNewPassword";
@@ -17,7 +17,7 @@ import SetNewPassword from "./ResetPassword/SetNewPassword";
          exact
          path="/reset-password/"
          render={(props) => (
-           <ResetPasswordForm urlCode={urlCode} {...props} />
+           <ResetPasswordMain urlCode={urlCode} {...props} />
          )}
        />
        <Route

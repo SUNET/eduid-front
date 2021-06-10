@@ -51,7 +51,7 @@ EmailForm = connect(() => ({
 }))(EmailForm);
 
 
-function ResetPasswordForm(props){
+function ResetPasswordMain(props){
   const dispatch = useDispatch();
   const extra_security = useSelector(state => state.resetPassword.extra_security);
   const history = useHistory();
@@ -90,10 +90,10 @@ function ResetPasswordForm(props){
   ) 
 }
 
-ResetPasswordForm.propTypes = {
+ResetPasswordMain.propTypes = {
   translate: PropTypes.func,
   sendLink: PropTypes.func,
   invalid: PropTypes.bool
 };
 
-export default i18n(withRouter(ResetPasswordForm));
+export default i18n(withRouter(ResetPasswordMain));
