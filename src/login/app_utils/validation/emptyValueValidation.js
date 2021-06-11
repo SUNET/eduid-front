@@ -1,7 +1,7 @@
 import { emptyStringPattern } from "./regexPatterns";
 
-export const emptyValueValidation = (values) => {
-  const errors = {};
+const emptyValueValidation = (values) => {
+  let errors = {};
   let inputValue = "";
   let inputName = "";
   if (values !== undefined) {
@@ -13,3 +13,5 @@ export const emptyValueValidation = (values) => {
   }
   return errors;
 };
+
+export default emptyValueValidation;

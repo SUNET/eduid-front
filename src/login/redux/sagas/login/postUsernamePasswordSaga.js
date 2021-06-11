@@ -2,6 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postUsernamePasswordActions";
+import { nextMockUrlTou } from "../../actions/postRefLoginActions";
 import {
   loadingData,
   loadingDataComplete,
@@ -26,6 +27,7 @@ export function* postUsernamePasswordSaga(action) {
     yield put(putCsrfToken(postUsernamePasswordResponse));
     yield put(postUsernamePasswordResponse);
     yield put(loadingDataComplete());
+    yield put(nextMockUrlTou());
   } catch (error) {
     yield put(actions.postUsernamePasswordFail(error.toString()));
     yield put(loadingDataComplete());

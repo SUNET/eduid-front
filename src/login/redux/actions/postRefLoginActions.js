@@ -18,3 +18,18 @@ export function postRefFail(err) {
     },
   };
 }
+
+// mock actions to trigger a set order of redirects
+export const NEXT_MOCK_URL_TOU = "NEXT_MOCK_URL_TOU";
+export const NEXT_MOCK_URL_MFA = "NEXT_MOCK_URL_MFA";
+
+export function nextMockUrlTou() {
+  return {
+    type: NEXT_MOCK_URL_TOU,
+  };
+}
+export function nextMockUrlMFA() {
+  return {
+    type: NEXT_MOCK_URL_MFA,
+  };
+}
