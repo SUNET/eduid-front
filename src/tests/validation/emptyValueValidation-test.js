@@ -1,5 +1,5 @@
 import expect from "expect";
-import { emptyValueValidation } from "../../login/app_utils/validation/emptyValueValidation";
+import emptyValueValidation from "../../login/app_utils/validation/emptyValueValidation";
 
 // input values
 let anyValue = { key: "anyValue" };
@@ -48,5 +48,4 @@ describe("emptyValueValidation returns an error object with a value for a specif
     expect(validation).toEqual(groupNameRequiredError);
     expect(validation).not.toEqual(pwRequiredError);
   });
-
 });

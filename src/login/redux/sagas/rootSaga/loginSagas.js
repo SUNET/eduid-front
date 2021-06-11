@@ -10,10 +10,11 @@ const loginSagas = [
     postUsernamePasswordActions.POST_USERNAME_PASSWORD,
     postUsernamePasswordSaga
   ),
-  takeLatest(
-    postUsernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS,
-    postRefLoginSaga
-  ),
+  // uncomment to enable call to /next on /pw_auth success 
+  // takeLatest(
+  //   postUsernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS,
+  //   postRefLoginSaga
+  // ),
 ];
 
 export default loginSagas;
