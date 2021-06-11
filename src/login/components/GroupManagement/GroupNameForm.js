@@ -4,7 +4,7 @@ import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../Inputs/CustomInput";
 import EduIDButton from "../../../components/EduIDButton";
-import { emptyValueValidation } from "../../app_utils/validation/emptyValueValidation";
+import emptyValueValidation from "../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 export let RenderInput = ({
