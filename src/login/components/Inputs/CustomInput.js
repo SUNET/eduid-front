@@ -45,6 +45,8 @@ const RenderInput = (props) => {
     valid,
     invalid,
     autoComplete,
+    autoFocus,
+    ariaLabel,
   } = props;
 
   if (selectOptions) {
@@ -77,12 +79,15 @@ const RenderInput = (props) => {
       <Input
         type={type}
         disabled={disabled}
+        autoFocus={autoFocus}
         placeholder={placeholder}
         id={name}
         name={name}
         valid={valid}
         invalid={invalid}
         autoComplete={autoComplete}
+        aria-label={ariaLabel}
+        aria-required="true"
         {...input}
       />
     );

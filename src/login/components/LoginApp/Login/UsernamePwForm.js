@@ -31,7 +31,12 @@ export const validateLoginForm = (values) => {
 let UsernamePwForm = (props) => {
   return (
     <Form id={"login-form"} role="form" onSubmit={submitUsernamePassword}>
-      <EmailInput {...props} submitButton={false} required={true} />
+      <EmailInput
+        {...props}
+        autoFocus={true}
+        submitButton={false}
+        required={true}
+      />
       <PasswordInput {...props} submitButton={false} required={true} />
     </Form>
   );
