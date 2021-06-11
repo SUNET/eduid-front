@@ -10,12 +10,12 @@ const init_container = () => {
   // check url for code
   const url = document.location.href;
   const urlCode = url.split("/").reverse()[0];
-  if (url.includes(`/login/`)) {
+  if (url.includes(`/login/`) && !url.includes("email_code")) {
     initStore.dispatch(addLoginRef(urlCode));
   }
 
   const emailCode = urlCode.split("=")[1];
-  if (url.includes("email_code")) {
+  if (emailCode) {
     // pass on code get config for app and
     initStore.dispatch(saveLinkCode(emailCode));
   }
