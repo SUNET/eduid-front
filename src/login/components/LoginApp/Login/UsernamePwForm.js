@@ -28,7 +28,7 @@ export const validateLoginForm = (values) => {
   return errors;
 };
 
-let LoginForm = (props) => {
+let UsernamePwForm = (props) => {
   return (
     <Form id={"login-form"} role="form" onSubmit={submitUsernamePassword}>
       <EmailInput {...props} submitButton={false} required={true} />
@@ -37,19 +37,19 @@ let LoginForm = (props) => {
   );
 };
 
-LoginForm = reduxForm({
+UsernamePwForm = reduxForm({
   form: "usernamePwForm",
   validate: validateLoginForm,
   onSubmit: submitUsernamePassword,
-})(LoginForm);
+})(UsernamePwForm);
 
-LoginForm = connect(() => ({
+UsernamePwForm = connect(() => ({
   initialValues: {
     email: "",
     ["current-password"]: "",
   },
   destroyOnUnmount: false,
   touchOnChange: true,
-}))(LoginForm);
+}))(UsernamePwForm);
 
-export default InjectIntl(LoginForm);
+export default InjectIntl(UsernamePwForm);
