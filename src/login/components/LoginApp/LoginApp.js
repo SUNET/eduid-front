@@ -16,7 +16,7 @@ import SetNewPassword from "./ResetPassword/SetNewPassword";
       <Route
         exact
         path="/reset-password/"
-        render={(props) => <ResetPasswordForm urlCode={urlCode} {...props} />}
+        render={(props) => <ResetPasswordMain urlCode={urlCode} {...props} />}
       />
       <Route
         exact
