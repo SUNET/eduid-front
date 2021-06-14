@@ -437,5 +437,6 @@
   "resetpw.extra-security_heading": "Extra säkerhet",
   "resetpw.extra-security_description": "Bevisa att du är ägaren till eduID med din extra säkerhet.",
   "resetpw.extra-phone_send_sms": "Skicka SMS till {phone}",
-  "resetpw.without_extra_security": "<b>För din säkerhet: </b>Du behöver verifiera ditt eduID efter att du har återställt lösenordet utan extra säkerhet"
+  "resetpw.without_extra_security": "<b>För din säkerhet: </b>Du behöver verifiera ditt eduID efter att du har återställt lösenordet utan extra säkerhet",
+  "resetpw.continue_without_extra_security": "Fortsätt utan extra säkerhet"
 }
