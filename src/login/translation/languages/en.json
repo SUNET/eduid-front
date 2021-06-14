@@ -436,6 +436,7 @@
   "resetpw.extra-security_heading": "Extra security",
   "resetpw.extra-security_description": "Prove that your are the owner of eduID with your extra security.",
   "resetpw.extra-phone_send_sms": "Send sms to {phone}",
+  "resetpw.use_extra_security_key": "Use your security key",
   "resetpw.without_extra_security": "<b>For your security: </b> You will require to verify your eduID after resetting password without extra security",
   "resetpw.continue_without_extra_security": "Continue without extra security"
 }

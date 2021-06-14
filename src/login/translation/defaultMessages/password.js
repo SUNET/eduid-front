@@ -306,6 +306,12 @@ export const resetPassword = {
       values={values}
     /> 
   ),
+  "resetpw.use_extra_security_key": (
+    <FormattedMessage
+      id="resetpw.use_extra_security_key"
+      defaultMessage={`Use your security key`}
+    /> 
+  ),
   "resetpw.without_extra_security": (
     <FormattedHTMLMessage
       id="resetpw.without_extra_security"

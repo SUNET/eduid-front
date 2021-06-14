@@ -35,7 +35,7 @@ function ExtraSecurity(props){
                 id="extra-security-key-button"
                 key={security}
               >
-                USE YOUR SECURITY KEY
+               {props.translate("resetpw.use_extra_security_key")}
               </EduIDButton>
             )
           }) : null
