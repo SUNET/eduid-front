@@ -251,5 +251,10 @@ export const resetPassword = {
       defaultMessage={`Extra security`}
     />
   ),
-
+  "resetpw.extra-security_description": (
+    <FormattedMessage
+      id="resetpw.extra-security_description"
+      defaultMessage={`Prove that your are the owner of eduID with your extra security.`}
+    />
+  ),
 };

@@ -16,7 +16,7 @@ function ExtraSecurity(props){
     <>
       <p className="heading">{props.translate("resetpw.extra-security_heading")}</p>
       <div id="reset-pass-display">
-        <p>Prove that your are the owner of eduID with your extra security. </p>
+        <p>{props.translate("resetpw.extra-security_description")}</p>
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
             extraSecurity.phone_numbers.map(phone => {
             return (
