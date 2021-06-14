@@ -54,8 +54,6 @@ EmailForm = connect(() => ({
 function ResetPasswordMain(props){
   const dispatch = useDispatch();
   const extra_security = useSelector(state => state.resetPassword.extra_security);
-  const userData = useSelector(state => state.resetPassword);
-  console.log("resetPassword", userData)
   const history = useHistory();
 
   useEffect(()=>{
@@ -64,9 +62,9 @@ function ResetPasswordMain(props){
 
   useEffect(()=>{
     if(extra_security && Object.keys(extra_security).length > 0) {
-      history.push({pathname:`/reset-password/extra-security`,state: { extra_security: extra_security }})
+      history.push({ pathname:`/reset-password/extra-security`, state: { extra_security: extra_security }})
     }else if(extra_security && Object.keys(extra_security).length === 0) 
-      history.push({pathname:`/reset-password/set-new-password`,state: { useData: userData }})
+      history.push(`/reset-password/set-new-password`)
     else history.push(`/reset-password/`)
   }, [extra_security]);
 
