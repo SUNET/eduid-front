@@ -3,7 +3,6 @@ import * as postActions from "../actions/postResetPasswordActions";
 const data = {
     email_address: "",
     email_code: "",
-    extra_security: {}
 };
 
 let resetPasswordReducer = (state = data, action) => {
@@ -28,11 +27,6 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-      case postActions.SAVE_USER_DETAILES:
-        return {
-          ...state,
-          ...action.payload
-        };
     default:
       return state;
   }

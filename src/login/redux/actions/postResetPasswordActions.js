@@ -5,7 +5,6 @@ export const SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE = "SAVE_RESET_PASSWORD_VERIFY
 export const POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL";
 export const POST_RESET_PASSWORD_VERIFY_EMAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL";
 export const POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS = "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS";
-export const SAVE_USER_DETAILES = "SAVE_USER_DETAILES";
 
 export function postEmailLink(email) {
   return {
@@ -48,13 +47,6 @@ export function postLinkCodeFail(err) {
     payload: {
       message: err.toString()
     }
-  };
-}
-
-export function saveUserDetail() {
-  return {
-    type: SAVE_USER_DETAILES
-   
   };
 }
 
