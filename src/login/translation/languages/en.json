@@ -432,5 +432,6 @@
   "resetpw.email-throttled": "Reset password link already sent please try again later",
   "resetpw.check-email-link": "Please check your email <b>{email}</b> to continue. \n Link is valid for 2 hours.",
   "resetpw.resend-link": "If you didn’t receive the email? Check your junk email, \n or",
-  "resetpw.resend-link-button": "resend link"
+  "resetpw.resend-link-button": "resend link",
+  "resetpw.extra-security_heading": "Extra security"
 }

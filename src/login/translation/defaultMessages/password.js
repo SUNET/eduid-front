@@ -239,11 +239,16 @@ export const resetPassword = {
       defaultMessage={`You should have received a link to reset your password.`}
     />
   ),
-
   "resetpw.email-link-sent_text": (
     <FormattedMessage
       id="resetpw.email-link-sent_text"
       defaultMessage={`Click the link in your email to reset the password for your eduID. Alternatively, you can copy the link in your email and paste it into a browser window.`}
+    />
+  ),
+  "resetpw.extra-security_heading": (
+    <FormattedMessage
+      id="resetpw.extra-security_heading"
+      defaultMessage={`Extra security`}
     />
   ),
 

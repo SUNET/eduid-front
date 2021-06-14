@@ -2,7 +2,7 @@ import React, { useEffect, useState }  from "react";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
-function ExtraSecurity(){
+function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState();
 
@@ -14,7 +14,7 @@ function ExtraSecurity(){
 
   return (
     <>
-      <p className="heading">Extra security</p>
+      <p className="heading">{props.translate("resetpw.extra-security_heading")}</p>
       <div id="reset-pass-display">
         <p>Prove that your are the owner of eduID with your extra security. </p>
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
