@@ -1,49 +1,55 @@
-import React, { useEffect, useMemo, useState }  from "react";
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState }  from "react";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
-
+import EduIDButton from "../../../../components/EduIDButton";
 function ExtraSecurity(){
-  const extra_security = useSelector(state => state.resetPassword.extra_security);
-  const [security, setSecurity] = useState({});
   const history = useHistory();
-  console.log("extra_security", history)
-  // useEffect(()=>{
-  //   if(extra_security && Object.keys(extra_security).length === 0) {
-  //     history.push(`/reset-password/`)
-  //   }
-  // }, [extra_security]);
+  const extra_security = history.location.state.extra_security;
+  const [extraSecurity, setExtraSecurity] = useState(extra_security);
 
-//   useEffect(() => {
-//     if (extra_security) {
-//       console.log("useEffect")
-//         const listener = e => {
-//             e.preventDefault();
-//             console.log(extra_security, ' useEffect - touchmove');
-//         };
-
-//         document.body.addEventListener('touchmove', listener, { passive: false });
-
-//         return () => {
-//             document.body.removeEventListener('touchmove', listener);
-//         }
-//     }
-// }, [extra_security]);
-
-// useMemo(() => {
-//   saveExtraSecurity(extra_security)
-// }, [extra_security]);
-
-// const saveExtraSecurity =()=>{
-//   setSecurity(extra_security);
-//   console.log("security", security)
-// }
-
-
+  useEffect(()=>{
+    if(extra_security){
+      setExtraSecurity(extra_security)
+    }
+  },[extra_security])
 
   return (
     <>
-      <p className="heading">Extra Security</p>
+      <p className="heading">Extra security</p>
+      <div id="reset-pass-display">
+        <p>Prove that your are the owner of eduID with your extra security. 
+          If you want to continue reset password without extra security you will require verification after reset password for your security.
+        </p>
+        { extraSecurity !== null && extraSecurity.phone_numbers.length > 0 ? 
+            extraSecurity.phone_numbers.map(phone => {
+            return (
+              <EduIDButton
+                className={"settings-button"}
+                id="extra-security-phone-button"
+                key={phone.index}
+              >
+                SEND SMS TO {phone.number}
+              </EduIDButton>)
+          }) : 
+          extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0 ? 
+            Object.values(extraSecurity.tokens).map((security) => {
+            return (
+              <EduIDButton
+                className={"settings-button"}
+                id="extra-security-key-button"
+                key={security}
+              >
+                USE YOUR SECURITY KEY
+              </EduIDButton>
+            )
+          }) : null
+        }
+        <div className={"return-new-password"}>
+          <a href={`/reset-password/set-new-password/`}>
+            Continue without extra security
+          </a>
+        </div>
+      </div>
     </>
   ) 
 }
