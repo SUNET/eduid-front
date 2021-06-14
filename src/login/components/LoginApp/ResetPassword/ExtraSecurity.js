@@ -18,7 +18,7 @@ function ExtraSecurity(props){
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.extra-security_description")}</p>
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-          extraSecurity.phone_numbers.map(phone => {
+            extraSecurity.phone_numbers.map(phone => {
             return (
               <EduIDButton
                 className={"settings-button"}
@@ -41,9 +41,8 @@ function ExtraSecurity(props){
           }) : null
         }
         <div className={"return-new-password"}>
-          <p>For your security: You will require to verify your eduID after resetting password without extra security 
-            <a href={`/reset-password/set-new-password/`}> Continue without extra security </a>
-          </p>
+          <p>{props.translate("resetpw.without_extra_security")}</p>
+            <a href={`/reset-password/set-new-password/`}> Continue without extra security </a> 
         </div>
       </div>
     </>
