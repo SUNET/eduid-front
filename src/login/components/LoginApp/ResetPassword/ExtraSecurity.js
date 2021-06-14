@@ -40,11 +40,9 @@ function ExtraSecurity(props){
             )
           }) : null
         }
-        <div className={"return-new-password"}>
-          <p>{props.translate("resetpw.without_extra_security")}
-            <a href={`/reset-password/set-new-password/`}>  {props.translate("resetpw.continue_without_extra_security")}</a> 
+        <p>{props.translate("resetpw.without_extra_security")}
+          <a href={`/reset-password/set-new-password/`}>{props.translate("resetpw.continue_reset_password")}</a> 
           </p>
-        </div>
       </div>
     </>
   ) 
