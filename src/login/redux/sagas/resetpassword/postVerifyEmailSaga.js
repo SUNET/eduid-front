@@ -30,7 +30,6 @@ export function* useLinkCode() {
     const resp = yield call(requestSendLinkCode, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
-    yield put(app_actions.appLoaded());
       history.push(`/reset-password/`);
     }
   } catch (error) {
