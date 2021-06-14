@@ -17,15 +17,13 @@ function ExtraSecurity(){
     <>
       <p className="heading">Extra security</p>
       <div id="reset-pass-display">
-        <p>Prove that your are the owner of eduID with your extra security. 
-          If you want to continue reset password without extra security you will require verification after reset password for your security.
-        </p>
+        <p>Prove that your are the owner of eduID with your extra security. </p>
         { extraSecurity !== null && extraSecurity.phone_numbers.length > 0 ? 
             extraSecurity.phone_numbers.map(phone => {
             return (
               <EduIDButton
                 className={"settings-button"}
-                id="extra-security-phone-button"
+                id="extra-security-phone-button" 
                 key={phone.index}
               >
                 SEND SMS TO {phone.number}
@@ -35,7 +33,7 @@ function ExtraSecurity(){
             Object.values(extraSecurity.tokens).map((security) => {
             return (
               <EduIDButton
-                className={"settings-button"}
+                className={"settings-button"} 
                 id="extra-security-key-button"
                 key={security}
               >
@@ -45,9 +43,9 @@ function ExtraSecurity(){
           }) : null
         }
         <div className={"return-new-password"}>
-          <a href={`/reset-password/set-new-password/`}>
-            Continue without extra security
-          </a>
+          <p>For your security: You will require to verify your eduID after resetting password without extra security 
+            <a href={`/reset-password/set-new-password/`}> Continue without extra security </a>
+          </p>
         </div>
       </div>
     </>
