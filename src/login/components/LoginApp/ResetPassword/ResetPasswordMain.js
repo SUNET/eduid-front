@@ -1,7 +1,7 @@
 import React, { useEffect }  from "react";
 import { useSelector } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useDispatch, connect } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import { Field, reduxForm } from "redux-form";
@@ -96,4 +96,4 @@ ResetPasswordMain.propTypes = {
   invalid: PropTypes.bool
 };
 
-export default i18n(withRouter(ResetPasswordMain));
+export default InjectIntl(withRouter(ResetPasswordMain));

@@ -1,5 +1,5 @@
 import React, { useEffect, useState }  from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
 function ExtraSecurity(props){
@@ -54,4 +54,4 @@ function ExtraSecurity(props){
 ExtraSecurity.propTypes = {
 };
 
-export default i18n(ExtraSecurity);
+export default InjectIntl(ExtraSecurity);
