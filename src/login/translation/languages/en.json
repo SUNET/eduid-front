@@ -434,5 +434,6 @@
   "resetpw.resend-link": "If you didn’t receive the email? Check your junk email, \n or",
   "resetpw.resend-link-button": "resend link",
   "resetpw.extra-security_heading": "Extra security",
-  "resetpw.extra-security_description": "Prove that your are the owner of eduID with your extra security."
+  "resetpw.extra-security_description": "Prove that your are the owner of eduID with your extra security.",
+  "resetpw.extra-phone_send_sms": "Send sms to {phone}"
 }

@@ -18,14 +18,13 @@ function ExtraSecurity(props){
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.extra-security_description")}</p>
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-            extraSecurity.phone_numbers.map(phone => {
+          extraSecurity.phone_numbers.map(phone => {
             return (
               <EduIDButton
                 className={"settings-button"}
                 id="extra-security-phone-button" 
                 key={phone.index}
-              >
-                SEND SMS TO {phone.number}
+              > {props.translate("resetpw.extra-phone_send_sms")({ phone: phone.number })}
               </EduIDButton>)
           }) : 
           extraSecurity && Object.keys(extraSecurity.tokens).length > 0 ? 

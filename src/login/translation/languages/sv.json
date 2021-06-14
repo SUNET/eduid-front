@@ -435,5 +435,6 @@
   "resetpw.resend-link": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller",
   "resetpw.resend-link-button": "skicka länk igen",
   "resetpw.extra-security_heading": "Extra säkerhet",
-  "resetpw.extra-security_description": "Bevisa att du är ägaren till eduID med din extra säkerhet."
+  "resetpw.extra-security_description": "Bevisa att du är ägaren till eduID med din extra säkerhet.",
+  "resetpw.extra-phone_send_sms": "Skicka SMS till {phone}"
 }

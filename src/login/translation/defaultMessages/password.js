@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
 export const changePassword = { 
   // help
@@ -220,30 +220,72 @@ export const changePassword = {
 };
 
 export const resetPassword = {
-  "resetpw.get-email-link_heading": (
+  "resetpw.heading-add-email": (
     <FormattedMessage
-      id="resetpw.get-email-link_heading"
-      defaultMessage={`Request a password reset link to your email address.`}
+      id="resetpw.heading-add-email"
+      defaultMessage={`Enter your email address registered to your account`}
+    /> 
+  ),
+  "resetpw.send-link": (
+    <FormattedMessage
+      id="resetpw.send-link"
+      defaultMessage={`send link to email`}
     />
   ),
-
-  "resetpw.get-email-link_text": (
+  "resetpw.user-not-found": (
     <FormattedMessage
-      id="resetpw.get-email-link_text"
-      defaultMessage={`Enter the email address registered to your eduID. You will be sent a link to reset your password.`}
+      id="resetpw.user-not-found"
+      defaultMessage={"User does not exist, please check your email address"}
     />
   ),
-  "resetpw.email-link-sent_heading": (
+  "resetpw.invalid_user": (
     <FormattedMessage
-      id="resetpw.email-link-sent_heading"
-      defaultMessage={`You should have received a link to reset your password.`}
+      id="resetpw.invalid_user"
+      defaultMessage={"User has not completed signup"}
     />
   ),
-  "resetpw.email-link-sent_text": (
+  "resetpw.email-send-failure": (
     <FormattedMessage
-      id="resetpw.email-link-sent_text"
-      defaultMessage={`Click the link in your email to reset the password for your eduID. Alternatively, you can copy the link in your email and paste it into a browser window.`}
+      id="resetpw.email-send-failure"
+      defaultMessage={"Error sending mail, please try again"}
     />
+  ),
+  "resetpw.return-login": (
+    <FormattedMessage
+      id="resetpw.return-login"
+      defaultMessage={"return to Login"}
+    />
+  ),
+  "resetpw.reset-pw-initialized": (
+    <FormattedMessage
+      id="resetpw.reset-pw-initialized"
+      defaultMessage={`Reset password link has been sent`}
+    /> 
+  ),
+  "resetpw.email-throttled": (
+    <FormattedMessage
+      id="resetpw.email-throttled"
+      defaultMessage={`Reset password link already sent please try again later`}
+    /> 
+  ),
+  "resetpw.check-email-link": (values) => (
+    <FormattedHTMLMessage
+      id="resetpw.check-email-link"
+      defaultMessage={`Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours.`}
+      values={values}
+    /> 
+  ),
+  "resetpw.resend-link": (
+    <FormattedHTMLMessage
+      id="resetpw.resend-link"
+      defaultMessage={`If you didn’t receive the email? Check your junk email, \n or`}
+    /> 
+  ),
+  "resetpw.resend-link-button": (
+    <FormattedMessage
+      id="resetpw.resend-link-button"
+      defaultMessage={`resend link`}
+    /> 
   ),
   "resetpw.extra-security_heading": (
     <FormattedMessage
@@ -256,5 +298,12 @@ export const resetPassword = {
       id="resetpw.extra-security_description"
       defaultMessage={`Prove that your are the owner of eduID with your extra security.`}
     />
+  ),
+  "resetpw.extra-phone_send_sms": (values) => (
+    <FormattedHTMLMessage
+      id="resetpw.extra-phone_send_sms"
+      defaultMessage={`Send sms to {phone}`}
+      values={values}
+    /> 
   ),
 };
