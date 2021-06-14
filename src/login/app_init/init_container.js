@@ -14,7 +14,7 @@ const init_container = () => {
     initStore.dispatch(addLoginRef(urlCode));
   }
 
-  if (url.includes(`/reset-password/`)) {
+  if (url.includes(`/email-code/`)) {
     // pass on code get config for app and
     initStore.dispatch(saveLinkCode(urlCode));
   }
