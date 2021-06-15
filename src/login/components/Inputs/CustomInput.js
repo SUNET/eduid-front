@@ -11,7 +11,7 @@ const RenderLabelAndHelpText = (props) => {
   return (
     <div className={"input-label-helptext-container"}>
       {label && (
-        <Label htmlFor={name}>
+        <Label aria-required="true" htmlFor={name}>
           {label}
           {required && <span className="label-required">*</span>}
         </Label>
@@ -24,11 +24,17 @@ const RenderLabelAndHelpText = (props) => {
 const RenderErrorMessage = (props) => {
   const { meta, translate, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
-
   return (
     errmsg && (
       <FormText>
-        <span className="input-validate-error">{errmsg}</span>
+        <span
+          role="alert"
+          aria-invalid="true"
+          tabIndex="0"
+          className="input-validate-error"
+        >
+          {errmsg}
+        </span>
       </FormText>
     )
   );
@@ -47,8 +53,8 @@ const RenderInput = (props) => {
     autoComplete,
     autoFocus,
     ariaLabel,
+    required,
   } = props;
-
   if (selectOptions) {
     const renderSelectLanguage = selectOptions.map((option, index) => {
       return (
@@ -79,15 +85,16 @@ const RenderInput = (props) => {
       <Input
         type={type}
         disabled={disabled}
-        autoFocus={autoFocus}
         placeholder={placeholder}
         id={name}
         name={name}
         valid={valid}
         invalid={invalid}
         autoComplete={autoComplete}
+        autoFocus={autoFocus}
         aria-label={ariaLabel}
-        aria-required="true"
+        aria-required={required}
+        required={required}
         {...input}
       />
     );
@@ -95,8 +102,7 @@ const RenderInput = (props) => {
 };
 
 const customInput = (props) => {
-  const { input, meta } = props;
-
+  const { meta, name } = props;
   let valid = false,
     invalid = false;
 
@@ -109,10 +115,15 @@ const customInput = (props) => {
   }
 
   return (
-    <FormGroup id={input.name}>
-      <RenderLabelAndHelpText name={input.name} {...props} />
-      <RenderInput {...props} valid={valid} invalid={invalid} />
-      <RenderErrorMessage {...props} valid={valid} invalid={invalid} />
+    <FormGroup id={name}>
+      <RenderLabelAndHelpText {...props} name={name} />
+      <RenderInput {...props} name={name} valid={valid} invalid={invalid} />
+      <RenderErrorMessage
+        {...props}
+        name={name}
+        valid={valid}
+        invalid={invalid}
+      />
     </FormGroup>
   );
 };

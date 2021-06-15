@@ -30,16 +30,26 @@ export const validateLoginForm = (values) => {
 
 let UsernamePwForm = (props) => {
   return (
-    <Form id={"login-form"} role="form" onSubmit={submitUsernamePassword}>
+    <Form
+      id="login-form"
+      aria-label="login form"
+      onSubmit={submitUsernamePassword}
+    >
       <EmailInput
         {...props}
         autoFocus={true}
         submitButton={false}
         required={true}
       />
-      <PasswordInput {...props} submitButton={false} required={true} />
+      <PasswordInput
+        {...props}
+        submitButton={false}
+        required={true}
+      />
     </Form>
   );
+
+  
 };
 
 UsernamePwForm = reduxForm({

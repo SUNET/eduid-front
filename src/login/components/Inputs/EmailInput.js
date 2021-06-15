@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import CustomInput from "./CustomInput";
-import InjectIntl from "../../translation/InjectIntl_HOC_factory"
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 let EmailInput = ({ translate, required, autoFocus }) => (
   <Field
@@ -10,13 +10,13 @@ let EmailInput = ({ translate, required, autoFocus }) => (
     label={translate("profile.email_display_title")}
     component={CustomInput}
     componentClass="input"
-    autoFocus={autoFocus}
-    ariaLabel={""}
-    autoComplete="username"
     type="email"
     name="email"
-    placeholder="example@example.com"
     helpBlock={translate("emails.input_help_text")}
+    autoFocus={autoFocus}
+    ariaLabel={"enter your email address to login"}
+    autoComplete="username"
+    placeholder="example@email.com"
   />
 );
 
