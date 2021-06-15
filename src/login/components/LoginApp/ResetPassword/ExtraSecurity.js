@@ -24,7 +24,8 @@ function ExtraSecurity(props){
                 className={"settings-button"}
                 id="extra-security-phone-button" 
                 key={phone.index}
-              > {props.translate("resetpw.extra-phone_send_sms")({ phone: phone.number })}
+              > {props.translate("resetpw.extra-phone_send_sms")(
+                  {phone: phone.number.replace(/^.{10}/g, '**********')})}
               </EduIDButton>)
           }) : 
           extraSecurity && Object.keys(extraSecurity.tokens).length > 0 ? 
