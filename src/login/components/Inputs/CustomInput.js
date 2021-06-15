@@ -104,8 +104,7 @@ const RenderInput = (props) => {
 
 const customInput = (props) => {
   const { meta, input } = props;
-  console.log(props);
-  // console.log(name);
+
   let valid = false,
     invalid = false;
 
