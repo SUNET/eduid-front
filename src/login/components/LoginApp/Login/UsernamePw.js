@@ -36,7 +36,7 @@ let UsernamePwFormButton = ({ invalid, dispatch }) => {
       type="submit"
       onClick={() => dispatch(submit("usernamePwForm"))}
       disabled={invalid || loading}
-      aria-disabled={invalid || loading}
+      aria-disabled={invalid || loading} 
       id="login-form-button"
       className={"settings-button"}
     >
