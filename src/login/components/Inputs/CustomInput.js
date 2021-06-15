@@ -5,6 +5,7 @@ import FormText from "reactstrap/lib/FormText";
 import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
 import i18n from "../../translation/InjectIntl_HOC_factory";
+import InputWithIcons from "./InputWithIcons";
 
 const RenderLabelAndHelpText = (props) => {
   const { label, name, helpBlock, required } = props;
@@ -102,7 +103,9 @@ const RenderInput = (props) => {
 };
 
 const customInput = (props) => {
-  const { meta, name } = props;
+  const { meta, input } = props;
+  console.log(props);
+  // console.log(name);
   let valid = false,
     invalid = false;
 
@@ -115,12 +118,26 @@ const customInput = (props) => {
   }
 
   return (
-    <FormGroup id={name}>
-      <RenderLabelAndHelpText {...props} name={name} />
-      <RenderInput {...props} name={name} valid={valid} invalid={invalid} />
+    <FormGroup id={input.name}>
+      <RenderLabelAndHelpText {...props} name={input.name} />
+      {input.name.includes("password") ? (
+        <InputWithIcons
+          {...props}
+          name={input.name}
+          valid={valid}
+          invalid={invalid}
+        />
+      ) : (
+        <RenderInput
+          {...props}
+          name={input.name}
+          valid={valid}
+          invalid={invalid}
+        />
+      )}
       <RenderErrorMessage
         {...props}
-        name={name}
+        name={input.name}
         valid={valid}
         invalid={invalid}
       />
