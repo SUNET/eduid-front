@@ -44,22 +44,6 @@
     "defaultMessage": "Add"
   },
   {
-    "id": "mfa.fake-authn",
-    "defaultMessage": "Fake authn while testing"
-  },
-  {
-    "id": "mfa.two-factor-authn",
-    "defaultMessage": "Two-factor authentication"
-  },
-  {
-    "id": "mfa.extra-security-enabled",
-    "defaultMessage": "Extra security enabled for this account"
-  },
-  {
-    "id": "mfa.login-tapit",
-    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
-  },
-  {
     "id": "actions.action-completed",
     "defaultMessage": "Success"
   },
