@@ -22,9 +22,9 @@ export function requestSendLinkCode(config, data) {
 export function* useLinkCode() {
   try {
     const state = yield select(state => state);
-    if(state.resetPassword.code){
+    if(state.resetPassword.email_code){
     const data = {
-      email_code: state.resetPassword.code,
+      email_code: state.resetPassword.email_code,
       csrf_token: state.config.csrf_token
     };
     const resp = yield call(requestSendLinkCode, state.config, data);
