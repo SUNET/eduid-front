@@ -7,7 +7,6 @@ import {
 } from "../../../../sagas/common";
 import { postLinkCodeFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
-import * as app_actions from "../../../components/App/App_actions";
 
 export function requestSendLinkCode(config, data) {
   return window
@@ -30,11 +29,9 @@ export function* useLinkCode() {
     const resp = yield call(requestSendLinkCode, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
-    yield put(app_actions.appLoaded());
       history.push(`/reset-password/`);
     }
   } catch (error) {
-    yield put(app_actions.appLoaded());
     yield* failRequest(error, postLinkCodeFail(error));
   }
 }
