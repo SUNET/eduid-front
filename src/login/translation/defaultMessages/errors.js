@@ -161,6 +161,14 @@ export const generalErrors = {
 };
 
 export const specificErrors = {
+  // login errors
+  "login.wrong_credentials": (
+    <FormattedMessage
+      id="login.wrong_credentials"
+      defaultMessage={`The username or password was incorrect.`}
+    />
+  ),
+
   //freja errors
   "eidas.error_missing_nin": (
     <FormattedMessage
@@ -280,7 +288,7 @@ export const specificErrors = {
     />
   ),
 
-  "security.u2f_registration_error_code": values => (
+  "security.u2f_registration_error_code": (values) => (
     <FormattedMessage
       id="security.u2f_registration_error_code"
       defaultMessage={`U2F failed with error code: {errorCode}`}
@@ -335,21 +343,22 @@ export const specificErrors = {
   error_authentication: (
     <FormattedHTMLMessage
       id="error_authentication"
-      defaultMessage={"Authentication error <ul><li>The service you tried to access failed during the authentication stage.</li><li>This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again.</li><li>If you cannot resolve the issue yourself, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
+      defaultMessage={
+        "Authentication error <ul><li>The service you tried to access failed during the authentication stage.</li><li>This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again.</li><li>If you cannot resolve the issue yourself, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
+      }
     />
   ),
 
   error_mfa: (
-    <FormattedHTMLMessage
-      id="error_mfa"
-      defaultMessage={"MFA error"}
-    />
+    <FormattedHTMLMessage id="error_mfa" defaultMessage={"MFA error"} />
   ),
 
   error_insufficient_privileges: (
     <FormattedHTMLMessage
       id="error_insufficient_privileges"
-      defaultMessage={"Insufficient privileges <ul><li>The service that you tried to access requires privileges that you do not have.</li><li>Typical requirements include:</li><div><li>A confirmed user account, or high identity assurance level (AL)</li><li>To confirm your user account, you need to visit IT Service Desk and identify yourself using your national ID card or passport.</li><li>Affiliation</li><li>Your affiliation describes your relationship with the Blue Star University. The set of attributes include for example student and employee. If you are a student and the service you tried to access did not receive the student affiliation, please contact IT Service Desk to correct this.</li><li>Some specific entitlements</li><li>Entitlements are specific privileges at specific services. </li><li>If you are missing entitlements that you think you should have (e.g. you should be able to access this service), please contact IT Service Desk to resolve this.</li></div><li>If you think you should have access, please contact support at your institution and include the name of the service you tried to access, any privileges that were noted as missing and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
+      defaultMessage={
+        "Insufficient privileges <ul><li>The service that you tried to access requires privileges that you do not have.</li><li>Typical requirements include:</li><div><li>A confirmed user account, or high identity assurance level (AL)</li><li>To confirm your user account, you need to visit IT Service Desk and identify yourself using your national ID card or passport.</li><li>Affiliation</li><li>Your affiliation describes your relationship with the Blue Star University. The set of attributes include for example student and employee. If you are a student and the service you tried to access did not receive the student affiliation, please contact IT Service Desk to correct this.</li><li>Some specific entitlements</li><li>Entitlements are specific privileges at specific services. </li><li>If you are missing entitlements that you think you should have (e.g. you should be able to access this service), please contact IT Service Desk to resolve this.</li></div><li>If you think you should have access, please contact support at your institution and include the name of the service you tried to access, any privileges that were noted as missing and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
+      }
     />
   ),
 
@@ -370,7 +379,9 @@ export const specificErrors = {
   error_access: (
     <FormattedHTMLMessage
       id="error_access"
-      defaultMessage={"Access error <ul><li>An error occurred when accessing the service.</li><li>If you think you should be able to access the service, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"}
+      defaultMessage={
+        "Access error <ul><li>An error occurred when accessing the service.</li><li>If you think you should be able to access the service, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
+      }
     />
   ),
 
@@ -383,16 +394,18 @@ export const specificErrors = {
 
   error_without_code: (
     <FormattedMessage
-    id="error_without_code"
-    defaultMessage={"Insufficient error information received, please retry or contact support"}
-  />
+      id="error_without_code"
+      defaultMessage={
+        "Insufficient error information received, please retry or contact support"
+      }
+    />
   ),
 
   error_sp_example_nin: (
     <FormattedMessage
-    id="error_sp_example_nin"
-    defaultMessage={"You need to verify your eduID account"}
-  />
+      id="error_sp_example_nin"
+      defaultMessage={"You need to verify your eduID account"}
+    />
   ),
 
   error_technical_info_heading: (
@@ -400,5 +413,5 @@ export const specificErrors = {
       id="error_technical_info_heading"
       defaultMessage={"Technical Information"}
     />
-  )
+  ),
 };

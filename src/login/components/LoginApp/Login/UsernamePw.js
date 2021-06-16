@@ -56,7 +56,9 @@ UsernamePwFormButton = reduxForm({
 const UsernamePw = (props) => {
   return (
     <div className="login">
-      <h2 className="heading">Log in</h2>
+      <h2 className="heading">
+        {props.translate("login.usernamePw.h2-heading")}
+      </h2>
       <UsernamePwForm {...props} />
       <div className="button-pair">
         <RenderResetPasswordLink {...props} />

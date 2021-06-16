@@ -33,7 +33,7 @@
   },
   {
     "id": "login.tou.paragraph",
-    "defaultMessage": "We need an updated acceptance from you of the eduID terms of use"
+    "defaultMessage": "We need an updated acceptance from you of the eduID terms of use."
   },
   {
     "id": "login.tou.button",
@@ -45,7 +45,7 @@
   },
   {
     "id": "login.mfa.paragraph",
-    "defaultMessage": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID"
+    "defaultMessage": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
   },
   {
     "id": "login.mfa.primary-choice.title",

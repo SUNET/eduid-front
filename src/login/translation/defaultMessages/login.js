@@ -56,7 +56,7 @@ export const login = {
   "login.tou.paragraph": (
     <FormattedMessage
       id="login.tou.paragraph"
-      defaultMessage={`We need an updated acceptance from you of the eduID terms of use`}
+      defaultMessage={`We need an updated acceptance from you of the eduID terms of use.`}
     />
   ),
   "login.tou.button": (
@@ -73,7 +73,7 @@ export const login = {
   "login.mfa.paragraph": (
     <FormattedMessage
       id="login.mfa.paragraph"
-      defaultMessage={`You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID`}
+      defaultMessage={`You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID.`}
     />
   ),
   // security key

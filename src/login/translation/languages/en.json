@@ -201,6 +201,7 @@
   "login.usernamePw.reset-password-link": "Forgot your password?",
   "login.usernamePw.submit-button-busy": "Logging in",
   "login.usernamePw.submit-button-idle": "Log in",
+  "login.wrong_credentials": "The username or password was incorrect",
   "mail_duplicated": "Added email is duplicated",
   "main.confirmed": "Confirmed",
   "main.copyright": "SUNET 2013-2021",
