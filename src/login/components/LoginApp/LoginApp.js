@@ -6,6 +6,7 @@ import Login from "./Login/Login";
 import { useLoginRef } from "../../redux/actions/postRefLoginActions";
 import ResetPasswordForm from "./ResetPassword/ResetPasswordForm";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
+import PropTypes from "prop-types";
 
 const RenderResetPassword = (props) => {
   const { urlCode } = props;
@@ -61,6 +62,8 @@ class LoginApp extends Component {
   }
 }
 
-LoginApp.propTypes = {};
+LoginApp.propTypes = {
+  location: PropTypes.shape({ pathname: PropTypes.string.isRequired }),
+};
 
 export default withRouter(LoginApp);

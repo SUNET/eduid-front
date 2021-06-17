@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Input from "reactstrap/lib/Input";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
+import PropTypes from "prop-types";
 
 let RenderHidePasswordIcon = ({ setInputType, translate }) => (
   <button
@@ -62,6 +63,19 @@ let InputWithIcons = (props) => {
       ) : null}
     </div>
   );
+};
+
+InputWithIcons.propTypes = {
+  input: PropTypes.object,
+  name: PropTypes.string.isRequired,
+  disable: PropTypes.bool,
+  placeholder: PropTypes.string,
+  valid: PropTypes.bool,
+  invalid: PropTypes.bool,
+  autoComplete: PropTypes.string,
+  autoFocus: PropTypes.bool,
+  ariaLabel: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 export default InjectIntl(InputWithIcons);
