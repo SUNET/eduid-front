@@ -26,7 +26,6 @@ const RenderResetPasswordLink = ({ translate }) => (
     className={""}
     to={`/reset-password/`}
     text={translate("login.usernamePw.reset-password-link")}
-    // text={"Forgot your password?"}
   />
 );
 
