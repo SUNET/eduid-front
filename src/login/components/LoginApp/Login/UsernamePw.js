@@ -12,8 +12,8 @@ const RenderRegisterLink = () => (
   <p className="secondary-link">
     Don&apos;t have eduID?
     <Link
-      className={"text-link"}
-      href={`https://signup.eduid.se/`}
+      className="text-link"
+      href="https://signup.eduid.se/"
       text={"Register here."}
     />
   </p>
@@ -36,6 +36,7 @@ let UsernamePwFormButton = ({ invalid, dispatch }) => {
       type="submit"
       onClick={() => dispatch(submit("usernamePwForm"))}
       disabled={invalid || loading}
+      aria-disabled={invalid || loading} 
       id="login-form-button"
       className={"settings-button"}
     >
@@ -49,17 +50,19 @@ UsernamePwFormButton = reduxForm({
   destroyOnUnmount: false,
 })(UsernamePwFormButton);
 
-const UsernamePw = (props) => (
-  <div className="login">
-    <p className="heading">Log in</p>
-    <UsernamePwForm {...props} />
-    <div className="button-pair">
-      <RenderResetPasswordLink />
-      <UsernamePwFormButton {...props} />
+const UsernamePw = (props) => {
+  return (
+    <div className="login">
+      <h2 className="heading">Log in</h2>
+      <UsernamePwForm {...props} />
+      <div className="button-pair">
+        <RenderResetPasswordLink />
+        <UsernamePwFormButton {...props} />
+      </div>
+      <RenderRegisterLink />
     </div>
-    <RenderRegisterLink />
-  </div>
-);
+  );
+};
 
 UsernamePw.propTypes = {
   translate: PropTypes.func,

@@ -11,10 +11,7 @@
   }
 }
 
-
-
 #email {
-  padding: 0;
   flex: 1;
 }
 
@@ -52,7 +49,7 @@ h3 {
 }
 
 @media (max-width: 568px) {
-  #register-form  {
+  #register-form {
     flex-direction: column;
     align-items: unset;
     & #register-button {
@@ -60,7 +57,7 @@ h3 {
       margin-left: 0;
     }
   }
- 
+
   #resend-button {
     width: 100%;
   }
