@@ -3,7 +3,7 @@ import Input from "reactstrap/lib/Input";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 
-let RenderHidePasswordIcon = ({ setInputType, translate }) => (
+let RenderHideButton = ({ setInputType, translate }) => (
   <button
     aria-label="hide password"
     className="icon"
@@ -15,7 +15,7 @@ let RenderHidePasswordIcon = ({ setInputType, translate }) => (
   </button>
 );
 
-let RenderShowPasswordIcon = ({ setInputType, translate }) => (
+let RenderShowButton = ({ setInputType, translate }) => (
   <button
     aria-label="show password"
     className="icon"
@@ -25,7 +25,7 @@ let RenderShowPasswordIcon = ({ setInputType, translate }) => (
   </button>
 );
 
-let InputWithIcons = (props) => {
+let InputToggleShowHide = (props) => {
   const {
     input,
     name,
@@ -57,15 +57,15 @@ let InputWithIcons = (props) => {
         {...input}
       />
       {inputType === "password" ? (
-        <RenderShowPasswordIcon {...props} setInputType={setInputType} />
+        <RenderShowButton {...props} setInputType={setInputType} />
       ) : inputType === "text" ? (
-        <RenderHidePasswordIcon {...props} setInputType={setInputType} />
+        <RenderHideButton {...props} setInputType={setInputType} />
       ) : null}
     </div>
   );
 };
 
-InputWithIcons.propTypes = {
+InputToggleShowHide.propTypes = {
   input: PropTypes.object,
   name: PropTypes.string.isRequired,
   disable: PropTypes.bool,
@@ -78,4 +78,4 @@ InputWithIcons.propTypes = {
   required: PropTypes.bool,
 };
 
-export default InjectIntl(InputWithIcons);
+export default InjectIntl(InputToggleShowHides);
