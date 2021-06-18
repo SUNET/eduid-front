@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -9,7 +9,9 @@ let TermOfUseText = () => (
     <ul>
       <p>The following generally applies:</p>
       <li>
-        <p>that all usage of user accounts follow Sweden's laws and by-laws,</p>
+        <p>
+          that all usage of user accounts follow Sweden&apos;s laws and by-laws,
+        </p>
       </li>
       <li>
         <p>
@@ -24,7 +26,10 @@ let TermOfUseText = () => (
         </p>
       </li>
       <li>
-        <p>that SUNET's ethical rules regulate the "other" usage.</p>
+        <p>
+          that SUNET&apos;s ethical rules regulate the &ldquo;other&ldquo;
+          usage.
+        </p>
       </li>
     </ul>
     <ul>
@@ -65,7 +70,7 @@ let TermOfUseText = () => (
     </p>
   </div>
 );
-let AcceptButton = ({ loading, translate }) => (
+let AcceptButton = ({ loading }) => (
   <ButtonPrimary
     type="submit"
     onClick={() => {}}
