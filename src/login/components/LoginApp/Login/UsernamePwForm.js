@@ -38,18 +38,14 @@ let UsernamePwForm = (props) => {
       <EmailInput
         {...props}
         autoFocus={true}
-        submitButton={false}
         required={true}
       />
       <PasswordInput
         {...props}
-        submitButton={false}
         required={true}
       />
     </Form>
   );
-
-  
 };
 
 UsernamePwForm = reduxForm({

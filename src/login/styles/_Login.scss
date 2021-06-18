@@ -14,7 +14,10 @@
     .password-input {
       display: flex;
       .icon {
-        position: relative;
+        color: $black;
+        font-size: 1rem;
+        position: absolute;
+        right: 1rem;
         background: transparent;
         height: 3rem;
         border-radius: 0;
@@ -23,17 +26,9 @@
         box-shadow: 0 0 0;
         border: none;
         cursor: pointer;
-        svg {
-          color: $black;
-          position: absolute;
-          top: 0.75rem;
-          right: 1rem;
-          transform: rotate(0deg);
-          font-size: 1.5em;
-        }
       }
       .is-valid ~ .icon {
-        right: 2rem;
+        right: 3rem;
       }
     }
   }
