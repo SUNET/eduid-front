@@ -1,30 +1,30 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import Input from "reactstrap/lib/Input";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
-let RenderHidePasswordIcon = ({ setInputType }) => (
+let RenderHideButton = ({ setInputType, translate }) => (
   <button
     aria-label="hide password"
     className="icon"
     onClick={() => setInputType("password")}
   >
-    <FontAwesomeIcon className="eye-hide-icon" icon={faEyeSlash} />
+    <div className="button-text-container">
+      {translate("nin_hide_last_four_digits")}
+    </div>
   </button>
 );
 
-let RenderShowPasswordIcon = ({ setInputType }) => (
+let RenderShowButton = ({ setInputType, translate }) => (
   <button
     aria-label="show password"
     className="icon"
     onClick={() => setInputType("text")}
   >
-    <FontAwesomeIcon className="eye-show-icon" icon={faEye} />
+    {translate("nin_show_last_four_digits")}
   </button>
 );
 
-let InputWithIcons = (props) => {
+let InputToggleShowHide = (props) => {
   const {
     input,
     name,
@@ -56,12 +56,12 @@ let InputWithIcons = (props) => {
         {...input}
       />
       {inputType === "password" ? (
-        <RenderShowPasswordIcon setInputType={setInputType} />
+        <RenderShowButton {...props} setInputType={setInputType} />
       ) : inputType === "text" ? (
-        <RenderHidePasswordIcon setInputType={setInputType} />
+        <RenderHideButton {...props} setInputType={setInputType} />
       ) : null}
     </div>
   );
 };
 
-export default InjectIntl(InputWithIcons);
+export default InjectIntl(InputToggleShowHide);

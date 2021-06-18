@@ -5,7 +5,7 @@ import FormText from "reactstrap/lib/FormText";
 import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
 import i18n from "../../translation/InjectIntl_HOC_factory";
-import InputWithIcons from "./InputWithIcons";
+import InputToggleShowHide from "./InputToggleShowHide";
 
 const RenderLabelAndHelpText = (props) => {
   const { label, name, helpBlock, required } = props;
@@ -120,7 +120,7 @@ const customInput = (props) => {
     <FormGroup id={input.name}>
       <RenderLabelAndHelpText {...props} name={input.name} />
       {input.name.includes("password") ? (
-        <InputWithIcons
+        <InputToggleShowHide
           {...props}
           name={input.name}
           valid={valid}

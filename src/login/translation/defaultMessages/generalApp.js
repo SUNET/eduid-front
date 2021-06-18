@@ -53,35 +53,6 @@ export const generalApp = {
 
   button_add: <FormattedMessage id="button_add" defaultMessage={`Add`} />,
 
-  // mfa messages
-  "mfa.fake-authn": (
-    <FormattedMessage
-      id="mfa.fake-authn"
-      defaultMessage={`Fake authn while testing`}
-    />
-  ),
-
-  "mfa.two-factor-authn": (
-    <FormattedMessage
-      id="mfa.two-factor-authn"
-      defaultMessage={`Two-factor authentication`}
-    />
-  ),
-
-  "mfa.extra-security-enabled": (
-    <FormattedMessage
-      id="mfa.extra-security-enabled"
-      defaultMessage={`Extra security enabled for this account`}
-    />
-  ),
-
-  "mfa.login-tapit": (
-    <FormattedMessage
-      id="mfa.login-tapit"
-      defaultMessage={`Use your security key to log in. If it has a button, tap it.`}
-    />
-  ),
-
   // sucess
   "actions.action-completed": (
     <FormattedMessage

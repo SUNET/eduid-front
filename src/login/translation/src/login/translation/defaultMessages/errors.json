@@ -92,6 +92,10 @@
     "defaultMessage": "The entered email is invalid"
   },
   {
+    "id": "login.wrong_credentials",
+    "defaultMessage": "The username or password was incorrect."
+  },
+  {
     "id": "eidas.error_missing_nin",
     "defaultMessage": "Please add a national identity number and try again"
   },

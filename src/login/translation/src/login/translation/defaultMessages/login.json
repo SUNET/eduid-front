@@ -1,5 +1,69 @@
 [
   {
+    "id": "login.usernamePw.h2-heading",
+    "defaultMessage": "Log in"
+  },
+  {
+    "id": "login.usernamePw.password-input",
+    "defaultMessage": "Password"
+  },
+  {
+    "id": "login.usernamePw.submit-button-idle",
+    "defaultMessage": "Log in"
+  },
+  {
+    "id": "login.usernamePw.submit-button-busy",
+    "defaultMessage": "Logging in"
+  },
+  {
+    "id": "login.usernamePw.reset-password-link",
+    "defaultMessage": "Forgot your password?"
+  },
+  {
+    "id": "login.usernamePw.register-prompt",
+    "defaultMessage": "Don't have eduID?"
+  },
+  {
+    "id": "login.usernamePw.register-link",
+    "defaultMessage": "Register here."
+  },
+  {
+    "id": "login.tou.h2-heading",
+    "defaultMessage": "Log in: Terms of use"
+  },
+  {
+    "id": "login.tou.paragraph",
+    "defaultMessage": "We need an updated acceptance from you of the eduID terms of use."
+  },
+  {
+    "id": "login.tou.button",
+    "defaultMessage": "Ì accept"
+  },
+  {
+    "id": "login.mfa.h2-heading",
+    "defaultMessage": "Log in: Extra level of security"
+  },
+  {
+    "id": "login.mfa.paragraph",
+    "defaultMessage": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
+  },
+  {
+    "id": "login.mfa.primary-choice.title",
+    "defaultMessage": "Security key"
+  },
+  {
+    "id": "login.mfa.primary-choice.button",
+    "defaultMessage": "Use my security key"
+  },
+  {
+    "id": "login.mfa.secondary-choice.title",
+    "defaultMessage": "Freja eID+"
+  },
+  {
+    "id": "login.mfa.secondary-choice.button",
+    "defaultMessage": "Use my freja eid+"
+  },
+  {
     "id": "resetpw.heading-add-email",
     "defaultMessage": "Enter your email address registered to your account"
   },
