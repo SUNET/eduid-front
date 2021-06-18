@@ -5,7 +5,6 @@ const initData = {
   error: false,
   debug: true,
   available_languages: [],
-  extra_security: {},
   next_url: null,
 };
 

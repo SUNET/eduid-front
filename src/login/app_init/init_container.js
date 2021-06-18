@@ -1,6 +1,6 @@
 import initStore from "./initStore";
 import { getConfig } from "./init_actions";
-import { useLinkCode } from "./../redux/actions/postResetPasswordActions";
+import { saveLinkCode } from "./../redux/actions/postResetPasswordActions";
 import { addLoginRef } from "./../redux/actions/addDataToStoreActions";
 
 const init_container = () => {
@@ -14,10 +14,9 @@ const init_container = () => {
     initStore.dispatch(addLoginRef(urlCode));
   }
 
-  const emailCode = urlCode.split("=")[1];
-  if (url.includes("email_code")) {
+  if (url.includes(`/email-code/`)) {
     // pass on code get config for app and
-    initStore.dispatch(useLinkCode(emailCode));
+    initStore.dispatch(saveLinkCode(urlCode));
   }
 };
 

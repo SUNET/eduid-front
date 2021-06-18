@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import SuccessIconAnimation from "./SuccessIconAnimation";
 import { RenderingTimer, countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT } from "./CountDownTimer";
-import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordForm";
+import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 function EmailLinkSent(props){
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
