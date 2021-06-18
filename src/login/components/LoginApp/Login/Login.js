@@ -35,8 +35,8 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  history: PropTypes.object.isRequired,
-  location: PropTypes.shape({ pathname: PropTypes.string.isRequired }),
+  history: PropTypes.object,
+  location: PropTypes.shape({ pathname: PropTypes.string }),
 };
 
 export default InjectIntl(Login);
