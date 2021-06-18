@@ -195,21 +195,6 @@ export const changePassword = {
     />
   ),
 
-  // links to forgot password and reset password
-  "used.forgot-password": (
-    <FormattedMessage
-      id="used.forgot-password"
-      defaultMessage={`Forgot your password?`}
-    />
-  ),
-
-  "used.reset-password": (
-    <FormattedMessage
-      id="used.reset-password"
-      defaultMessage={`Reset your password`}
-    />
-  ),
-
   // password in two factor table, but think this is only security keys now
   "security.password_credential_type": (
     <FormattedMessage

@@ -4,7 +4,7 @@ import { Field } from "redux-form";
 import CustomInput from "./CustomInput";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
-let PasswordInput = ({ required }) => {
+let PasswordInput = ({ required, translate }) => {
   return (
     <Field
       type="password"
@@ -12,7 +12,7 @@ let PasswordInput = ({ required }) => {
       component={CustomInput}
       autoComplete="current-password"
       required={required}
-      label={"Password"}
+      label={translate("login.usernamePw.password-input")}
       placeholder={"enter a password"}
       helpBlock={""}
     />

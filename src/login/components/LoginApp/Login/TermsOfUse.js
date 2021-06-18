@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-
-let TermOfUse = () => {
+let TermOfUse = (props) => {
   return (
-    <div>
-      <p>this is terms of use</p>
+    <div className="tou">
+      <h2 className="heading">{props.translate("login.tou.h2-heading")}</h2>
+      <p>{props.translate("login.tou.paragraph")}</p>
     </div>
   );
 };
