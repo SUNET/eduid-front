@@ -1,9 +1,8 @@
 import { takeLatest, select } from "redux-saga/effects";
 import * as init_actions from "../app_init/init_actions";
 import { requestConfig } from "../app_init/init_sagas";
-import {
-  postEmailLink,
-} from "../redux/sagas/resetpassword/resetPasswordSaga";
+import { postEmailLink } from "../redux/sagas/resetpassword/postResetPasswordSaga";
+import { useLinkCode } from "../redux/sagas/resetpassword/postVerifyEmailSaga";
 import * as postResetPasswordActions from "../redux/actions/postResetPasswordActions";
 import loginSagas from "../redux/sagas/rootSaga/loginSagas";
 
@@ -20,6 +19,7 @@ function* rootSaga() {
     takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, allowLoginSagas),
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD, postEmailLink),
+    takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, useLinkCode),
   ];
 }
 
