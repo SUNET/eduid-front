@@ -2,6 +2,7 @@
 import * as onLoadActions from "../actions/addDataToStoreActions";
 import * as nextPageActions from "../actions/postRefLoginActions";
 import * as usernamePasswordActions from "../actions/postUsernamePasswordActions";
+import * as updatedTouAcceptActions from "../actions/postUpdatedTouAcceptActions";
 
 const loginData = {
   ref: null,
@@ -34,6 +35,10 @@ let loginReducer = (state = loginData, action) => {
         next_page: "MFA",
       };
     case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
+      return {
+        ...state,
+      };
+    case updatedTouAcceptActions.POST_IDP_TOU_SUCCESS:
       return {
         ...state,
       };
