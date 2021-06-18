@@ -29,7 +29,7 @@ export function saveLinkCode(code) {
   return {
     type: SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE,
     payload: {
-      code: code
+      email_code: code
     }
   };
 }

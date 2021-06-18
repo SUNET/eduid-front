@@ -7,7 +7,6 @@ import {
 } from "../../../../sagas/common";
 import { postLinkCodeFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
-import * as app_actions from "../../../components/App/App_actions";
 
 export function requestSendLinkCode(config, data) {
   return window
@@ -22,9 +21,9 @@ export function requestSendLinkCode(config, data) {
 export function* useLinkCode() {
   try {
     const state = yield select(state => state);
-    if(state.resetPassword.code){
+    if(state.resetPassword.email_code){
     const data = {
-      email_code: state.resetPassword.code,
+      email_code: state.resetPassword.email_code,
       csrf_token: state.config.csrf_token
     };
     const resp = yield call(requestSendLinkCode, state.config, data);
@@ -33,7 +32,6 @@ export function* useLinkCode() {
       history.push(`/reset-password/`);
     }
   } catch (error) {
-    yield put(app_actions.appLoaded());
     yield* failRequest(error, postLinkCodeFail(error));
   }
 }

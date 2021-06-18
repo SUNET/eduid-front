@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import UsernamePw from "./UsernamePw";
 import TermOfUse from "./TermsOfUse";
 import MultiFactorAuth from "./MultiFactorAuth";
-import Splash from "../../Splash/Splash_container";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const Login = (props) => {
@@ -30,9 +29,7 @@ const Login = (props) => {
         <TermOfUse {...props} />
       ) : next_page === "MFA" ? (
         <MultiFactorAuth {...props} />
-      ) : (
-        <Splash />
-      )}
+      ) : null}
     </Fragment>
   );
 };

@@ -11,11 +11,35 @@
     .form-group {
       margin-bottom: 1rem;
     }
+    .password-input {
+      display: flex;
+      .icon {
+        position: relative;
+        background: transparent;
+        height: 3rem;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        box-shadow: 0 0 0;
+        border: none;
+        cursor: pointer;
+        svg {
+          color: $black;
+          position: absolute;
+          top: 0.75rem;
+          right: 1rem;
+          transform: rotate(0deg);
+          font-size: 1.5em;
+        }
+      }
+      .is-valid ~ .icon {
+        right: 2rem;
+      }
+    }
   }
   button {
     margin: 0.25rem 0 3rem;
   }
-
   .secondary-link {
     font-size: 1rem;
     align-self: flex-end;
