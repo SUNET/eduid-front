@@ -4,27 +4,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, withRouter } from "react-router-dom";
 import Login from "./Login/Login";
 import { useLoginRef } from "../../redux/actions/postRefLoginActions";
-import ResetPasswordForm from "./ResetPassword/ResetPasswordForm";
+import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
+import ExtraSecurity from "./ResetPassword/ExtraSecurity";
+import SetNewPassword from "./ResetPassword/SetNewPassword";
 import PropTypes from "prop-types";
 
-const RenderResetPassword = (props) => {
-  const { urlCode } = props;
-  return (
-    <>
+ const RenderResetPassword = (props) => {
+   const { urlCode } = props;
+   return (
+     <>
       <Route
         exact
         path="/reset-password/"
-        render={(props) => <ResetPasswordForm urlCode={urlCode} {...props} />}
+        render={(props) => <ResetPasswordMain urlCode={urlCode} {...props} />}
       />
       <Route
         exact
         path="/reset-password/email-link-sent"
         render={(props) => <EmailLinkSent {...props} />}
       />
-    </>
-  );
-};
+       <Route
+         exact
+         path="/reset-password/extra-security"
+         render={(props) => <ExtraSecurity {...props} />}
+       />
+       <Route
+         exact
+         path="/reset-password/set-new-password"
+         render={(props) => <SetNewPassword {...props} />}
+       />
+     </>
+   )
+ };
 
 const RenderLogin = (props) => {
   const dispatch = useDispatch();
