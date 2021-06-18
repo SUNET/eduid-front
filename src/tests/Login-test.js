@@ -77,8 +77,16 @@ describe("Login component renders", () => {
     };
   }
 
-  it("does not render 'null' or 'false'", () => {
+  it("renders 'null' or 'false' when not given a state.login.next_page", () => {
     const { wrapper } = setupComponent();
+    expect(wrapper.isEmptyRender()).toEqual(true);
+  });
+
+  it("to not render 'null' or 'false' when given a state.login.next_page", () => {
+    const state = { ...fakeState };
+    state.login.next_page = "USERNAMEPASSWORD";
+    const { wrapper, props } = setupComponent();
+    props.location.pathname = "/login/password/e0367c25-3853-45a9-806";
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
@@ -89,10 +97,13 @@ describe("Login component renders", () => {
   });
 });
 
-describe("Login renders the expected page", () => {
+describe("Login renders the UsernamePw as expected", () => {
   const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();
+    const props = {
+      location: { pathname: "/login/e0367c25-3853-45a9-806" },
+    };
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
         <Router history={history}>
@@ -101,11 +112,12 @@ describe("Login renders the expected page", () => {
       </Provider>
     );
     return {
+      props,
       wrapper,
     };
   }
 
-  it("page USERNAMEPASSWORD renders UsernamePw", () => {
+  it("page=USERNAMEPASSWORD renders UsernamePw", () => {
     const state = { ...fakeState };
     state.login.next_page = "USERNAMEPASSWORD";
     const { wrapper } = setupComponent();
@@ -113,7 +125,38 @@ describe("Login renders the expected page", () => {
     expect(page.exists()).toBe(true);
   });
 
-  it("page TOU renders TermsOfUse", () => {
+  it("UsernamePw renders on an appropriate url", () => {
+    const { wrapper, props } = setupComponent();
+    props.location.pathname = "/login/password/e0367c25-3853-45a9-806";
+    expect(props.location.pathname).toContain("password");
+    const page = wrapper.find(UsernamePw);
+    expect(page.exists()).toBe(true);
+    expect(props.location.pathname).not.toContain("tou");
+    expect(props.location.pathname).not.toContain("mfa");
+  });
+});
+
+describe("Login renders the TermsOfUse as expected", () => {
+  const fakeState = getFakeState();
+  function setupComponent() {
+    const history = createMemoryHistory();
+    const props = {
+      location: { pathname: "/login/e0367c25-3853-45a9-806" },
+    };
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <Router history={history}>
+          <Login />
+        </Router>
+      </Provider>
+    );
+    return {
+      props,
+      wrapper,
+    };
+  }
+
+  it("pag=TOU renders TermsOfUse", () => {
     const state = { ...fakeState };
     state.login.next_page = "TOU";
     const { wrapper } = setupComponent();
@@ -121,16 +164,57 @@ describe("Login renders the expected page", () => {
     expect(page.exists()).toBe(true);
   });
 
-  it("page MFA renders MultiFactorAuth", () => {
+  it("TermsOfUse renders on an appropriate url", () => {
+    const { wrapper, props } = setupComponent();
+    props.location.pathname = "/login/tou/e0367c25-3853-45a9-806";
+    expect(props.location.pathname).toContain("tou");
+    const page = wrapper.find(TermsOfUse);
+    expect(page.exists()).toBe(true);
+    expect(props.location.pathname).not.toContain("password");
+    expect(props.location.pathname).not.toContain("mfa");
+  });
+});
+
+describe("Login renders the MultiFactorAuth as expected", () => {
+  const fakeState = getFakeState();
+  function setupComponent() {
+    const history = createMemoryHistory();
+    const props = {
+      location: { pathname: "/login/e0367c25-3853-45a9-806" },
+    };
+    const wrapper = mount(
+      <Provider store={fakeStore(fakeState)}>
+        <Router history={history}>
+          <Login />
+        </Router>
+      </Provider>
+    );
+    return {
+      props,
+      wrapper,
+    };
+  }
+
+  it("page=MFA renders MultiFactorAuth", () => {
     const state = { ...fakeState };
     state.login.next_page = "MFA";
     const { wrapper } = setupComponent();
     const page = wrapper.find(MultiFactorAuth);
     expect(page.exists()).toBe(true);
   });
+
+  it("MultiFactorAuth renders on an appropriate url", () => {
+    const { wrapper, props } = setupComponent();
+    props.location.pathname = "/login/mfa/e0367c25-3853-45a9-806";
+    expect(props.location.pathname).toContain("mfa");
+    const page = wrapper.find(MultiFactorAuth);
+    expect(page.exists()).toBe(true);
+    expect(props.location.pathname).not.toContain("password");
+    expect(props.location.pathname).not.toContain("tou");
+  });
 });
 
-describe("Login does not render UsernamePw if page is different", () => {
+describe("Login does not render any component if page is not one of the above", () => {
   const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();
@@ -146,7 +230,7 @@ describe("Login does not render UsernamePw if page is different", () => {
     };
   }
 
-  it("page MOCKPAGE does not render UsernamePw", () => {
+  it(" MOCKPAGE does not render any of the componets", () => {
     const state = { ...fakeState };
     state.login.next_page = "MOCKPAGE";
     const { wrapper } = setupComponent();

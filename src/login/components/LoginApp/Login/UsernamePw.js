@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { reduxForm, submit } from "redux-form";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
-import LoginForm from "./LoginForm";
+import UsernamePwForm from "./UsernamePwForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 
@@ -12,8 +12,8 @@ const RenderRegisterLink = () => (
   <p className="secondary-link">
     Don&apos;t have eduID?
     <Link
-      className={"text-link"}
-      href={`https://signup.eduid.se/`}
+      className="text-link"
+      href="https://signup.eduid.se/"
       text={"Register here."}
     />
   </p>
@@ -29,14 +29,15 @@ const RenderResetPasswordLink = () => (
   />
 );
 
-let LoginFormButton = ({ invalid, dispatch }) => {
+let UsernamePwFormButton = ({ invalid, dispatch }) => {
   const loading = useSelector((state) => state.app.loading_data);
   return (
     <ButtonPrimary
       type="submit"
-      onClick={() => dispatch(submit("loginForm"))}
+      onClick={() => dispatch(submit("usernamePwForm"))}
       disabled={invalid || loading}
-      id={""}
+      aria-disabled={invalid || loading} 
+      id="login-form-button"
       className={"settings-button"}
     >
       {loading ? "Logging" : "Log"} in
@@ -44,22 +45,24 @@ let LoginFormButton = ({ invalid, dispatch }) => {
   );
 };
 
-LoginFormButton = reduxForm({
-  form: "loginForm",
+UsernamePwFormButton = reduxForm({
+  form: "usernamePwForm",
   destroyOnUnmount: false,
-})(LoginFormButton);
+})(UsernamePwFormButton);
 
-const UsernamePw = (props) => (
-  <div className="login">
-    <p className="heading">Log in</p>
-    <LoginForm {...props} />
-    <div className="button-pair">
-      <RenderResetPasswordLink />
-      <LoginFormButton {...props} />
+const UsernamePw = (props) => {
+  return (
+    <div className="login">
+      <h2 className="heading">Log in</h2>
+      <UsernamePwForm {...props} />
+      <div className="button-pair">
+        <RenderResetPasswordLink />
+        <UsernamePwFormButton {...props} />
+      </div>
+      <RenderRegisterLink />
     </div>
-    <RenderRegisterLink />
-  </div>
-);
+  );
+};
 
 UsernamePw.propTypes = {
   translate: PropTypes.func,

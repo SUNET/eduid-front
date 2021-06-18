@@ -5,40 +5,43 @@ import FormText from "reactstrap/lib/FormText";
 import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
 import i18n from "../../translation/InjectIntl_HOC_factory";
+import InputWithIcons from "./InputWithIcons";
 
-const RenderLabelAndHelpText = props => {
-  const {
-    label,
-    name,
-    helpBlock,
-    required,
-  } = props;
-  return(
+const RenderLabelAndHelpText = (props) => {
+  const { label, name, helpBlock, required } = props;
+  return (
     <div className={"input-label-helptext-container"}>
-      { label && 
-        <Label for={name}>{label}
-          { required && <span className="label-required">*</span> }
-        </Label> 
-      }
-      { helpBlock && <span className={"help-block"}>{helpBlock}</span> }
+      {label && (
+        <Label aria-required="true" htmlFor={name}>
+          {label}
+          {required && <span className="label-required">*</span>}
+        </Label>
+      )}
+      {helpBlock && <span className={"help-block"}>{helpBlock}</span>}
     </div>
-  )
-}
+  );
+};
 
-const RenderErrorMessage = props => {
+const RenderErrorMessage = (props) => {
   const { meta, translate, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
-
-  return(
+  return (
     errmsg && (
       <FormText>
-        <span className="input-validate-error">{errmsg}</span>
+        <span
+          role="alert"
+          aria-invalid="true"
+          tabIndex="0"
+          className="input-validate-error"
+        >
+          {errmsg}
+        </span>
       </FormText>
     )
-  )
-}
+  );
+};
 
-const RenderInput = props => {
+const RenderInput = (props) => {
   const {
     input,
     name,
@@ -47,36 +50,39 @@ const RenderInput = props => {
     disabled,
     placeholder,
     valid,
-    invalid
+    invalid,
+    autoComplete,
+    autoFocus,
+    ariaLabel,
+    required,
   } = props;
-  
   if (selectOptions) {
     const renderSelectLanguage = selectOptions.map((option, index) => {
       return (
         <Fragment key={index}>
           <label key={option[0]} htmlFor={option[1]}>
-          <input
-            className={props.meta.error && props.meta.visited ? "radio-input error":"radio-input"}
-            key={option[0]}
-            id={option[1]}
-            type='radio'
-            {...input}
-            value={option[0]}
-            checked={option[0]===input.value}
-          />
-          <span key={index}>{option[1]}
-          </span>
+            <input
+              className={
+                props.meta.error && props.meta.visited
+                  ? "radio-input error"
+                  : "radio-input"
+              }
+              key={option[0]}
+              id={option[1]}
+              type="radio"
+              {...input}
+              value={option[0]}
+              checked={option[0] === input.value}
+            />
+            <span key={index}>{option[1]}</span>
           </label>
         </Fragment>
       );
-    });  
+    });
 
-    return(
-      <div className='radio-input-container'>
-        {renderSelectLanguage}
-      </div>
-    )} else {
-    return(
+    return <div className="radio-input-container">{renderSelectLanguage}</div>;
+  } else {
+    return (
       <Input
         type={type}
         disabled={disabled}
@@ -85,20 +91,22 @@ const RenderInput = props => {
         name={name}
         valid={valid}
         invalid={invalid}
+        autoComplete={autoComplete}
+        autoFocus={autoFocus}
+        aria-label={ariaLabel}
+        aria-required={required}
+        required={required}
         {...input}
       />
-    )
+    );
   }
-}
+};
 
 const customInput = (props) => {
-  const {
-    input,
-    meta,
-  } = props;
+  const { meta, input } = props;
 
   let valid = false,
-  invalid = false;
+    invalid = false;
 
   if (meta.touched || meta.submitFailed) {
     if (meta.error) {
@@ -110,18 +118,34 @@ const customInput = (props) => {
 
   return (
     <FormGroup id={input.name}>
-      <RenderLabelAndHelpText {...props}/>
-      <RenderInput {...props} valid={valid} invalid={invalid}/>
-      <RenderErrorMessage {...props} valid={valid} invalid={invalid}/>
+      <RenderLabelAndHelpText {...props} name={input.name} />
+      {input.name.includes("password") ? (
+        <InputWithIcons
+          {...props}
+          name={input.name}
+          valid={valid}
+          invalid={invalid}
+        />
+      ) : (
+        <RenderInput
+          {...props}
+          name={input.name}
+          valid={valid}
+          invalid={invalid}
+        />
+      )}
+      <RenderErrorMessage
+        {...props}
+        name={input.name}
+        valid={valid}
+        invalid={invalid}
+      />
     </FormGroup>
   );
 };
 
 customInput.propTypes = {
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   meta: PropTypes.object,
   input: PropTypes.object,
   name: PropTypes.string,
@@ -131,7 +155,7 @@ customInput.propTypes = {
   placeholder: PropTypes.string,
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
-  translate: PropTypes.func, 
+  translate: PropTypes.func,
 };
 
 export default i18n(customInput);

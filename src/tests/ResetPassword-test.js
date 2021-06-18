@@ -4,7 +4,7 @@ import { mount } from "enzyme";
 import expect from "expect";
 import { addLocaleData } from "react-intl";
 import * as actions from "../login/redux/actions/postResetPasswordActions";
-import ResetPasswordForm from "../login/components/LoginApp/ResetPassword/ResetPasswordForm";
+import ResetPasswordMain from "../login/components/LoginApp/ResetPassword/ResetPasswordMain";
 import { Provider } from "react-intl-redux";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
@@ -13,7 +13,7 @@ addLocaleData("react-intl/locale-data/en");
 
 const baseState = {
   resetPassword: {
-    email: ""
+    email_address: ""
   },
   config: { 
     csrf_token: "csrf-token" 
@@ -45,7 +45,7 @@ describe("ResetPasswordForm Component,", () => {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
         <Router history={history}>
-          <ResetPasswordForm />
+          <ResetPasswordMain />
         </Router>
       </Provider>
     );
@@ -62,13 +62,13 @@ describe("ResetPasswordForm Component,", () => {
 
 describe("ResetPassword post actions,", () => {
   const fakeState = getFakeState({
-    resetPassword: { email: "test@test.com" }
+    resetPassword: { email_address: "test@test.com" }
   });
   it("create an action to send email link", () => {
     const expectedAction = {
       type: actions.POST_RESET_PASSWORD,
       payload: {
-        email: fakeState.resetPassword.email
+        email_address: fakeState.resetPassword.email
       }
     };
     expect(actions.postEmailLink(fakeState.resetPassword.email)).toEqual(expectedAction);
@@ -93,7 +93,7 @@ describe("ResetPasswordForm, send link button ", () => {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
         <Router history={history}>
-          <ResetPasswordForm />
+          <ResetPasswordMain />
         </Router>
       </Provider>
     );
