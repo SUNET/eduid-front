@@ -56,7 +56,7 @@ UsernamePwFormButton = reduxForm({
 
 const UsernamePw = (props) => {
   return (
-    <div className="login">
+    <div className="username-pw">
       <h2 className="heading">
         {props.translate("login.usernamePw.h2-heading")}
       </h2>

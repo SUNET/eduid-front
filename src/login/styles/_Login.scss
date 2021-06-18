@@ -1,11 +1,19 @@
 @import "./variables.scss";
 
-.login {
+.username-pw,
+.tou {
   display: flex;
   flex-direction: column;
   .heading {
     line-height: $line-height;
   }
+  button {
+    width: fit-content;
+  }
+}
+
+// usename and password page
+.username-pw {
   form {
     margin-top: 0;
     .form-group {
@@ -31,13 +39,35 @@
         right: 3rem;
       }
     }
-  }
-  button {
-    margin: 0.25rem 0 3rem;
+    button {
+      margin: 0.25rem 0 3rem;
+    }
   }
   .secondary-link {
     font-size: 1rem;
     align-self: flex-end;
+  }
+}
+
+// terms of use page
+.tou {
+  .tou-text {
+    margin-bottom: 1rem;
+    p {
+      line-height: $line-height;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    ul {
+      margin-bottom: #{1rem * $line-height};
+      list-style-type: disc;
+      li {
+        margin: 0 1.5rem;
+      }
+    }
+  }
+  button {
+    align-self: center;
   }
 }
 
