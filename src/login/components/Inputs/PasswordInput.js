@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import CustomInput from "./CustomInput";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
+import PropTypes from "prop-types";
 
 let PasswordInput = ({ required, translate }) => {
   return (
@@ -20,8 +20,8 @@ let PasswordInput = ({ required, translate }) => {
 };
 
 PasswordInput.propTypes = {
-  translate: PropTypes.func,
-  validate: PropTypes.func,
+  translate: PropTypes.func.isRequired,
+  required: PropTypes.bool,
 };
 
 export default InjectIntl(PasswordInput);

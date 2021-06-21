@@ -8,6 +8,7 @@ import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
 import ExtraSecurity from "./ResetPassword/ExtraSecurity";
 import SetNewPassword from "./ResetPassword/SetNewPassword";
+import PropTypes from "prop-types";
 
  const RenderResetPassword = (props) => {
    const { urlCode } = props;
@@ -73,6 +74,8 @@ class LoginApp extends Component {
   }
 }
 
-LoginApp.propTypes = {};
+LoginApp.propTypes = {
+  location: PropTypes.shape({ pathname: PropTypes.string.isRequired }),
+};
 
 export default withRouter(LoginApp);
