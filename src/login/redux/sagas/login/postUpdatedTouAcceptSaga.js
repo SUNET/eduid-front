@@ -18,7 +18,6 @@ export function* postUpdatedTouAcceptSaga(action) {
       csrf_token: state.config.csrf_token,
       user_accepts: action.payload.user_accepts,
     };
-    console.log("dataToSend", dataToSend);
     yield put(eduidRMAllNotify());
     yield put(loadingData());
     const postUpdatedTouAcceptResponse = yield call(
