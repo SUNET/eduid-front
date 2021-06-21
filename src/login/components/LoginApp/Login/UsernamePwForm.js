@@ -8,6 +8,7 @@ import { validate } from "../../../app_utils/validation/validateEmail";
 import emptyValueValidation from "../../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { postUsernamePassword } from "../../../redux/actions/postUsernamePasswordActions";
+import PropTypes from "prop-types";
 
 export const submitUsernamePassword = (values, dispatch) => {
   const { email, "current-password": currentPassword } = values;
@@ -28,25 +29,16 @@ export const validateLoginForm = (values) => {
   return errors;
 };
 
-let UsernamePwForm = (props) => {
-  return (
-    <Form
-      id="login-form"
-      aria-label="login form"
-      onSubmit={submitUsernamePassword}
-    >
-      <EmailInput
-        {...props}
-        autoFocus={true}
-        required={true}
-      />
-      <PasswordInput
-        {...props}
-        required={true}
-      />
-    </Form>
-  );
-};
+let UsernamePwForm = (props) => (
+  <Form
+    id="login-form"
+    aria-label="login form"
+    onSubmit={submitUsernamePassword}
+  >
+    <EmailInput {...props} autoFocus={true} required={true} />
+    <PasswordInput {...props} required={true} />
+  </Form>
+);
 
 UsernamePwForm = reduxForm({
   form: "usernamePwForm",
@@ -62,5 +54,9 @@ UsernamePwForm = connect(() => ({
   destroyOnUnmount: false,
   touchOnChange: true,
 }))(UsernamePwForm);
+
+UsernamePwForm.propTypes = {
+  translate: PropTypes.func.isRequired,
+};
 
 export default InjectIntl(UsernamePwForm);

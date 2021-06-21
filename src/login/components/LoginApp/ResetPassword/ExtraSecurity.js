@@ -42,7 +42,7 @@ function ExtraSecurity(props){
           }) : null
         }
         <p>{props.translate("resetpw.without_extra_security")}
-          <a href={`/reset-password/set-new-password/`}>{props.translate("resetpw.continue_reset_password")}</a> 
+          <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
           </p>
       </div>
     </>
