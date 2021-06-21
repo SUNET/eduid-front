@@ -78,4 +78,4 @@ InputToggleShowHide.propTypes = {
   required: PropTypes.bool,
 };
 
-export default InjectIntl(InputToggleShowHides);
+export default InjectIntl(InputToggleShowHide);
