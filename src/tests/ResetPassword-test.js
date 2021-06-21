@@ -38,7 +38,7 @@ function getFakeState(newState) {
   return Object.assign(baseState, newState)
 }
 
-describe("ResetPasswordForm Component,", () => {
+describe("ResetPasswordMain Component, renders", () => {
   const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();
@@ -86,7 +86,7 @@ describe("ResetPassword post actions,", () => {
   });
 });
 
-describe("ResetPasswordForm, send link button ", () => {
+describe("ResetPasswordMain, send link button ", () => {
   const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();
