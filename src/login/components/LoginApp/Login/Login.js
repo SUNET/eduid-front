@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
 import UsernamePw from "./UsernamePw";
 import TermOfUse from "./TermsOfUse";
 import MultiFactorAuth from "./MultiFactorAuth";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import PropTypes from "prop-types";
 
 const Login = (props) => {
   // update url when next_page changes
@@ -35,7 +35,8 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  translate: PropTypes.func,
+  history: PropTypes.object.isRequired,
+  location: PropTypes.shape({ pathname: PropTypes.string.isRequired }),
 };
 
 export default InjectIntl(Login);

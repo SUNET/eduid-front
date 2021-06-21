@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { reduxForm, submit } from "redux-form";
 import LinkRedirect from "../../Links/LinkRedirect";
@@ -7,6 +6,7 @@ import Link from "../../Links/Link";
 import UsernamePwForm from "./UsernamePwForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
+import PropTypes from "prop-types";
 
 const RenderRegisterLink = ({ translate }) => (
   <p className="secondary-link">
@@ -50,6 +50,8 @@ let UsernamePwFormButton = ({ invalid, dispatch, translate }) => {
 UsernamePwFormButton = reduxForm({
   form: "usernamePwForm",
   destroyOnUnmount: false,
+  invalid: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 })(UsernamePwFormButton);
 
 const UsernamePw = (props) => {
@@ -69,7 +71,16 @@ const UsernamePw = (props) => {
 };
 
 UsernamePw.propTypes = {
-  translate: PropTypes.func,
+  translate: PropTypes.func.isRequired,
+};
+UsernamePwFormButton.propTypes = {
+  translate: PropTypes.func.isRequired,
+};
+RenderResetPasswordLink.propTypes = {
+  translate: PropTypes.func.isRequired,
+};
+RenderRegisterLink.propTypes = {
+  translate: PropTypes.func.isRequired,
 };
 
 export default InjectIntl(UsernamePw);
