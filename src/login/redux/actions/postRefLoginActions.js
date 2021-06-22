@@ -28,7 +28,7 @@ export function nextMockUrlTou() {
     type: NEXT_MOCK_URL_TOU,
   };
 }
-export function nextMockUrlMFA() {
+export function nextMockUrlMfa() {
   return {
     type: NEXT_MOCK_URL_MFA,
   };
