@@ -342,7 +342,7 @@
   "resetpw.email-send-failure": "Error sending mail, please try again",
   "resetpw.email-throttled": "Reset password link already sent please try again later",
   "resetpw.extra-phone_send_sms": "Send sms to {phone}",
-  "resetpw.extra-security_description": "Prove that your are the owner of eduID with your extra security.",
+  "resetpw.extra-security_description": "Prove that your are the owner of the account.",
   "resetpw.extra-security_heading": "Extra security",
   "resetpw.heading-add-email": "Enter your email address registered to your account",
   "resetpw.invalid_user": "User has not completed signup",
