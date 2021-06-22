@@ -77,28 +77,28 @@ export const login = {
     />
   ),
   // security key
-  "login.mfa.primary-choice.title": (
+  "login.mfa.primary-option.title": (
     <FormattedMessage
-      id="login.mfa.primary-choice.title"
+      id="login.mfa.primary-option.title"
       defaultMessage={`Security key`}
     />
   ),
-  "login.mfa.primary-choice.button": (
+  "login.mfa.primary-option.button": (
     <FormattedMessage
-      id="login.mfa.primary-choice.button"
+      id="login.mfa.primary-option.button"
       defaultMessage={`Use my security key`}
     />
   ),
   // freja eid+
-  "login.mfa.secondary-choice.title": (
+  "login.mfa.secondary-option.title": (
     <FormattedMessage
-      id="login.mfa.secondary-choice.title"
+      id="login.mfa.secondary-option.title"
       defaultMessage={`Freja eID+`}
     />
   ),
-  "login.mfa.secondary-choice.button": (
+  "login.mfa.secondary-option.button": (
     <FormattedMessage
-      id="login.mfa.secondary-choice.button"
+      id="login.mfa.secondary-option.button"
       defaultMessage={`Use my freja eid+`}
     />
   ),
