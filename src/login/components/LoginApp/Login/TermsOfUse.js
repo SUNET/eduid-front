@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { updatedTouAccept } from "../../../redux/actions/postUpdatedTouAcceptActions";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -70,17 +72,20 @@ let TermOfUseText = () => (
     </p>
   </div>
 );
-let AcceptButton = ({ loading }) => (
-  <ButtonPrimary
-    type="submit"
-    onClick={() => {}}
-    disabled={loading}
-    aria-disabled={loading}
-    id="accept-button"
-  >
-    accept
-  </ButtonPrimary>
-);
+let AcceptButton = ({ loading }) => {
+  const dispatch = useDispatch();
+  return (
+    <ButtonPrimary
+      type="submit"
+      onClick={() => dispatch(updatedTouAccept())}
+      disabled={loading}
+      aria-disabled={loading}
+      id="accept-button"
+    >
+      accept
+    </ButtonPrimary>
+  );
+};
 
 let TermOfUse = (props) => {
   const { loading, translate } = props;
