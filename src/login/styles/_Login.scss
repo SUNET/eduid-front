@@ -49,6 +49,13 @@
   }
 }
 
+#link-forgot-password {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 // terms of use page
 .tou {
   .tou-text {
@@ -71,9 +78,66 @@
   }
 }
 
-#link-forgot-password {
-  text-decoration: underline;
-  &:hover {
-    text-decoration: none;
+// multi-factor authentication
+.mfa {
+  .options {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    .primary {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      margin-right: 1rem;
+      transition: all 0.5s ease;
+      .bottom {
+        align-items: flex-end;
+      }
+      .selected .heading {
+        margin-bottom: 0;
+      }
+      img {
+        width: 50%;
+      }
+      .icon {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        height: auto;
+        svg {
+          color: $black;
+          height: 1rem;
+          width: 1rem;
+          transform: rotate(0);
+        }
+      }
+      .help-link {
+        margin-top: 1rem;
+        font-size: 1rem;
+        margin-left: 0.25rem;
+      }
+    }
+    .secondary {
+      flex: 1;
+      border: solid transparent 2px;
+      margin-left: 2rem;
+      button {
+        color: $orange-highlight;
+        border: none;
+        border: solid 2px $orange-highlight;
+        background-color: $white;
+        text-transform: uppercase;
+      }
+    }
+    .option {
+      border-radius: 20px;
+      background: $white;
+      box-shadow: 0 4px 14px rgba(89, 89, 89, 0.07);
+      padding: 1rem;
+      button {
+        margin-top: 2.75rem;
+        margin-bottom: 0;
+      }
+    }
   }
 }

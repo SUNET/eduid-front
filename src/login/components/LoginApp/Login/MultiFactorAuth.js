@@ -1,11 +1,41 @@
 import React from "react";
+import SecurityKey from "./SecurityKey";
+import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-let MultiFactorAuth = () => {
+let FrejaOption = (props) => {
+  const { loading, translate } = props;
   return (
-    <div>
-      <p>this is multi-factor authentication</p>
+    <div className="secondary">
+      <div className="option">
+        <p className="heading">
+          {translate("login.mfa.secondary-option.title")}
+        </p>
+        <ButtonSecondary
+          type="submit"
+          onClick={() => {}}
+          disabled={loading}
+          aria-disabled={loading}
+          id="mfa-freja"
+        >
+          {translate("login.mfa.secondary-option.button")}
+        </ButtonSecondary>
+      </div>
+    </div>
+  );
+};
+
+let MultiFactorAuth = (props) => {
+  const { translate } = props;
+  return (
+    <div className="mfa">
+      <h2 className="heading">{translate("login.mfa.h2-heading")}</h2>
+      <p>{translate("login.mfa.paragraph")}</p>
+      <div className="options">
+        <SecurityKey {...props} />
+        <FrejaOption {...props} />
+      </div>
     </div>
   );
 };
