@@ -9,7 +9,7 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
       return (
         <EduIDButton
           className={"settings-button"}
-          id="extra-security-phone-button" 
+          id="extra-security" 
           key={phone.index}
         > 
         {translate("resetpw.extra-phone_send_sms")(
@@ -26,7 +26,7 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
       return (
         <EduIDButton
           className={"settings-button"} 
-          id="extra-security-key-button"
+          id="extra-security"
           key={security}
         >
         {translate("resetpw.use_extra_security_key")}
