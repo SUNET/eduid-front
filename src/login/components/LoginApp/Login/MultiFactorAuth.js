@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { postRefToWebauthnOptions } from "../../../redux/actions/postRefWebauthnOptionsActions";
 import SecurityKey from "./SecurityKey";
 import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import PropTypes from "prop-types";
@@ -27,6 +29,12 @@ let FrejaOption = (props) => {
 };
 
 let MultiFactorAuth = (props) => {
+  const dispatch = useDispatch();
+  // during the forced navigation this
+  // function is dispatched on load
+  useEffect(() => {
+    dispatch(postRefToWebauthnOptions());
+  }, []);
   const { translate } = props;
   return (
     <div className="mfa">
