@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postTouVersions } from "../../../redux/actions/postTouVersionsActions";
@@ -104,7 +103,9 @@ let TermOfUse = (props) => {
 
   return (
     <div className="tou">
-      <h2 className="heading">{translate("login.tou.h2-heading")}</h2>
+      <h2 className="heading">
+        {translate("login.tou.h2-heading")}{" "}({version})
+      </h2>
       <p>{translate("login.tou.paragraph")}</p>
       <TermOfUseText />
       <AcceptButton loading={loading} translate={translate} />
