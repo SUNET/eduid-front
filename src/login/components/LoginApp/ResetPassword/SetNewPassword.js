@@ -51,8 +51,8 @@ NewPasswordForm = connect(() => ({
 function SetNewPassword(props){
   return (
     <>
-      <p className="heading">Set your new password</p>
-      <p>A suggested password can be selected by clicking the input field. </p>
+      <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
+      <p>{props.translate("resetpw.set-new-password-description")}</p>
       <NewPasswordForm {...props} />
     </>
   ) 
