@@ -356,6 +356,8 @@
   "resetpw.without_extra_security": "<b>För din säkerhet:</b> Du behöver verifiera ditt eduID efter att du har återställt lösenordet utan extra säkerhet",
   "resetpw.state-not-found": "Det gick inte att fortsätta återställningen av lösenordet. Var god försök igen.",
   "resetpw.expired-email-code": "E-postkoden har gått ut. Var god försök igen.",
+  "resetpw.set-new-password-heading": "Skapa ditt nya lösenord",
+  "resetpw.set-new-password-description": "Ett starkt lösenord kan väljas genom att klicka på inmatningsfältet.",
   "security.add_u2f_token": "Lägg till säkerhetsnyckel",
   "security.add_webauthn_token_device": "Registrera den här enheten som en säkerhetsnyckel",
   "security.add_webauthn_token_key": "Lägg till säkerhetsnyckel",

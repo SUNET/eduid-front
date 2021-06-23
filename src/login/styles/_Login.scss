@@ -19,26 +19,6 @@
     .form-group {
       margin-bottom: 1rem;
     }
-    .password-input {
-      display: flex;
-      .icon {
-        color: $black;
-        font-size: 1rem;
-        position: absolute;
-        right: 1rem;
-        background: transparent;
-        height: 3rem;
-        border-radius: 0;
-        padding: 0;
-        margin: 0;
-        box-shadow: 0 0 0;
-        border: none;
-        cursor: pointer;
-      }
-      .is-valid ~ .icon {
-        right: 3rem;
-      }
-    }
     button {
       margin: 0.25rem 0 3rem;
     }
@@ -46,6 +26,28 @@
   .secondary-link {
     font-size: 1rem;
     align-self: flex-end;
+  }
+}
+
+// login username-pw / set-new-password toggle show hide 
+.password-input {
+  display: flex;
+  .show-hide-button {
+    color: $black;
+    font-size: 1rem;
+    position: absolute;
+    right: 1rem;
+    background: transparent;
+    height: 3rem;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0 0;
+    border: none;
+    cursor: pointer;
+  }
+  .is-valid ~ .icon {
+    right: 3rem;
   }
 }
 
