@@ -18,7 +18,7 @@ const validateNewPassword = (value) => {
 
 let NewPasswordForm = (props) =>{
   return (
-    <Form autoComplete="on" id="new-password-form" role="form" >
+    <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" >
       <Field
         id="new-password"
         type="password"
