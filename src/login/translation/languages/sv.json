@@ -354,7 +354,7 @@
   "resetpw.use_extra_security_key": "Använd din säkerhetsnyckel",
   "resetpw.user-not-found": "Användaren finns inte, kontrollera e-postadressen",
   "resetpw.without_extra_security": "<b>För din säkerhet:</b> Du behöver verifiera ditt eduID efter att du har återställt lösenordet utan extra säkerhet",
-  "resetpw.state-not-found": "Det gick inte att fortsätta återställningen av lösenordet. Vänligen börja om.",
+  "resetpw.state-not-found": "Det gick inte att fortsätta återställningen av lösenordet. Var god försök igen.",
   "resetpw.expired-email-code": "E-postkoden har gått ut. Var god försök igen.",
   "security.add_u2f_token": "Lägg till säkerhetsnyckel",
   "security.add_webauthn_token_device": "Registrera den här enheten som en säkerhetsnyckel",
