@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 function SetNewPassword(){
   return (
@@ -12,4 +12,4 @@ function SetNewPassword(){
 SetNewPassword.propTypes = {
 };
 
-export default i18n(SetNewPassword);
+export default InjectIntl(SetNewPassword);
