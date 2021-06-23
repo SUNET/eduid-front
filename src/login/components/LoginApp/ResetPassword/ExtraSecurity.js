@@ -51,9 +51,10 @@ function ExtraSecurity(props){
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.extra-security_description")}</p>
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-          <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
+          <>
+            <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/><br />
+          </>: null
         }
-        <br />
         { extraSecurity && Object.keys(extraSecurity.tokens).length > 0  ?
           <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
