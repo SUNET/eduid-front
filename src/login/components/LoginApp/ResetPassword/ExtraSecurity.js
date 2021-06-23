@@ -57,7 +57,7 @@ function ExtraSecurity(props){
         { extraSecurity && Object.keys(extraSecurity.tokens).length > 0  ?
           <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
-        <p>{props.translate("resetpw.without_extra_security")}
+        <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
           <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
           </p>
       </div>
