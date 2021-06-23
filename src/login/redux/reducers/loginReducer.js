@@ -21,7 +21,7 @@ let loginReducer = (state = loginData, action) => {
     case nextPageActions.POST_IDP_NEXT_SUCCESS:
       return {
         ...state,
-        next_page: "TOU",
+        next_page: "USERNAMEPASSWORD",
         // next_page: action.payload.action,
         // post_to: action.payload.target,
       };
