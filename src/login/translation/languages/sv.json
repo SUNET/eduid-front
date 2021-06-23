@@ -343,7 +343,7 @@
   "resetpw.email-throttled": "Återställ lösenordslänken har redan skickats, försök igen senare",
   "resetpw.extra-phone_send_sms": "Skicka sms till {phone}",
   "resetpw.extra-security_description": "Bevisa att du är ägaren till kontot.",
-  "resetpw.extra-security_heading": "Extra äkerhet",
+  "resetpw.extra-security_heading": "Extra säkerhet",
   "resetpw.heading-add-email": "Ange din e-postadress registrerad till ditt konto",
   "resetpw.invalid_user": "Användaren har inte slutfört registreringen",
   "resetpw.resend-link": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller",
