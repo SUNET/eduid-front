@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postTouVersions } from "../../../redux/actions/postTouVersionsActions";
@@ -96,7 +97,7 @@ let TermOfUse = (props) => {
   const availableTouVersions = ["2016-v1", "2021-v1"];
   useEffect(() => {
     dispatch(postTouVersions(availableTouVersions));
-  },[]);
+  }, []);
 
   // MOCK: the backend determines what version the user nddes to accept
   const version = useSelector((state) => state.login.tou.version);
