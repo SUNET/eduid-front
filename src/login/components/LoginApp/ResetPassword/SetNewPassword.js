@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "reactstrap/lib/Form";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
@@ -61,4 +61,4 @@ function SetNewPassword(props){
 SetNewPassword.propTypes = {
 };
 
-export default i18n(SetNewPassword);
+export default InjectIntl(SetNewPassword);
