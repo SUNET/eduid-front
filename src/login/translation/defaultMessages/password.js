@@ -312,7 +312,7 @@ export const resetPassword = {
   "resetpw.state-not-found": (
     <FormattedMessage
       id="resetpw.state-not-found"
-      defaultMessage={`Could not continue the reset password process. Please start over.`}
+      defaultMessage={`Could not continue the reset password process. Please try again `}
     /> 
   ),
   "resetpw.expired-email-code": (
