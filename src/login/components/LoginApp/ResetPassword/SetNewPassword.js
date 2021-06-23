@@ -6,6 +6,15 @@ import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
+import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
+
+const validateNewPassword = (value) => {
+  const errors = {};
+    if (!value["new-password"] || emptyStringPattern.test(value["new-password"])) {
+      errors["new-password"] = "required";
+    }
+  return errors;
+};
 
 let NewPasswordForm = (props) =>{
   return (
@@ -18,7 +27,6 @@ let NewPasswordForm = (props) =>{
         autoComplete={"new-password"} 
         required={true}
         label={props.translate("security.password_credential_type")}
-        value={props.password}
       />
       <EduIDButton
         className="settings-button"
@@ -33,6 +41,7 @@ let NewPasswordForm = (props) =>{
 
 NewPasswordForm = reduxForm({
   form: "new-password-form",
+  validate: validateNewPassword,
 })(NewPasswordForm);
 
 NewPasswordForm = connect(() => ({
