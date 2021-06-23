@@ -8,6 +8,7 @@ const loginData = {
   ref: null,
   next_page: null,
   post_to: null,
+  tou: {},
 };
 
 let loginReducer = (state = loginData, action) => {
@@ -20,7 +21,7 @@ let loginReducer = (state = loginData, action) => {
     case nextPageActions.POST_IDP_NEXT_SUCCESS:
       return {
         ...state,
-        next_page: "USERNAMEPASSWORD",
+        next_page: "TOU",
         // next_page: action.payload.action,
         // post_to: action.payload.target,
       };
@@ -41,6 +42,10 @@ let loginReducer = (state = loginData, action) => {
     case updatedTouAcceptActions.POST_IDP_TOU_SUCCESS:
       return {
         ...state,
+        tou: {
+          ...state.tou,
+          version: action.payload.version,
+        },
       };
     default:
       return state;
