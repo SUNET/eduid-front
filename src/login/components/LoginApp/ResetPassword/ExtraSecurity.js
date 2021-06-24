@@ -2,9 +2,6 @@ import React, { useEffect, useState, Fragment }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
-import { useDispatch, useSelector } from 'react-redux';
-import { isShowSecurityKey } from "../../../redux/actions/postResetPasswordActions";
-import SecurityKey from "./SecurityKey";
 
 const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
   return (
@@ -46,8 +43,6 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
 function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState();
-  const dispatch = useDispatch();
-  const show_security_key = useSelector(state => state.resetPassword.show_security_key);
 
   useEffect(()=>{
     if(history.location.state !== undefined){
@@ -57,7 +52,7 @@ function ExtraSecurity(props){
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
-    dispatch(isShowSecurityKey(true));
+    history.push(`/reset-password/security-key`)
   };
 
   return (
@@ -65,13 +60,12 @@ function ExtraSecurity(props){
       <p className="heading">{props.translate("resetpw.extra-security_heading")}</p>
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.extra-security_description")}</p>
-        { !show_security_key && extraSecurity && Object.keys(extraSecurity.tokens).length > 0  ?
+        { extraSecurity && Object.keys(extraSecurity.tokens).length > 0  ?
           <SecurityKeyButton ShowSecurityKey={ShowSecurityKey} extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
-        { !show_security_key && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
+        { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
           <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
         }
-        { show_security_key && <SecurityKey /> }
         <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
           <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
           </p>

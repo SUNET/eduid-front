@@ -50,13 +50,3 @@ export function postLinkCodeFail(err) {
     }
   };
 }
-
-export function isShowSecurityKey(bool) {
-  return {
-    type: SHOW_SECURITY_KEY,
-    payload: {
-      show_security_key: bool
-    }
-  };
-}
-
