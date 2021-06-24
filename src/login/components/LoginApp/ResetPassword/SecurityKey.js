@@ -1,6 +1,7 @@
 import React from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import ResetPasswordText from "./ResetPasswordText";
+import PropTypes from "prop-types";
 
 const SecurityKey = (props) => {
   return (
@@ -38,5 +39,9 @@ const SecurityKey = (props) => {
     </ResetPasswordText>
   )
 }
+
+SecurityKey.propTypes = {
+  translate: PropTypes.func.isRequired
+};
 
 export default InjectIntl(SecurityKey);
