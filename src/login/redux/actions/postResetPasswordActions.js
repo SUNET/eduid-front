@@ -5,6 +5,7 @@ export const SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE = "SAVE_RESET_PASSWORD_VERIFY
 export const POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL";
 export const POST_RESET_PASSWORD_VERIFY_EMAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL";
 export const POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS = "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS";
+export const SHOW_SECURITY_KEY = "SHOW_SECURITY_KEY";
 
 export function postEmailLink(email) {
   return {
@@ -46,6 +47,15 @@ export function postLinkCodeFail(err) {
     error: true,
     payload: {
       message: err.toString()
+    }
+  };
+}
+
+export function isShowSecurityKey(bool) {
+  return {
+    type: SHOW_SECURITY_KEY,
+    payload: {
+      show_security_key: bool
     }
   };
 }
