@@ -1,9 +1,15 @@
 import React from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
+import ResetPasswordText from "./ResetPasswordText";
 
 const SecurityKey = (props) => {
   return (
-    <>
+    <ResetPasswordText
+      heading={props.translate("resetpw.extra-security_heading")} 
+      description={props.translate("resetpw.extra-security_description")} 
+      linkInfoText={props.translate("resetpw.without_extra_security")}
+      linkText={props.translate("resetpw.continue_reset_password")}
+    > 
       <p>{props.translate("mfa.reset-password-tapit")}</p>
       <div className="key-animation"  />
       <div>
@@ -29,7 +35,7 @@ const SecurityKey = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </ResetPasswordText>
   )
 }
 
