@@ -3,6 +3,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
 import ResetPasswordText from "./ResetPasswordText";
+import PropTypes from "prop-types";
 
 const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
   return (
@@ -74,6 +75,9 @@ function ExtraSecurity(props){
 }
 
 ExtraSecurity.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.shape({ pathname: PropTypes.string }),
+  translate: PropTypes.func.isRequired,
 };
 
 export default InjectIntl(ExtraSecurity);
