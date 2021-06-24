@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResetPasswordText = (props) =>{
+const ResetPasswordLayout = (props) =>{
   return (
     <>
       <p className="heading">{props.heading}</p>
@@ -15,4 +15,4 @@ const ResetPasswordText = (props) =>{
   ) 
 }
 
-export default ResetPasswordText;
+export default ResetPasswordLayout;

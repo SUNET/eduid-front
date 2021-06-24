@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
-import ResetPasswordText from "./ResetPasswordText";
+import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
 
 const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
@@ -58,7 +58,7 @@ function ExtraSecurity(props){
   };
 
   return (
-    <ResetPasswordText
+    <ResetPasswordLayout
       heading={props.translate("resetpw.extra-security_heading")} 
       description={props.translate("resetpw.extra-security_description")} 
       linkInfoText={props.translate("resetpw.without_extra_security")}
@@ -70,7 +70,7 @@ function ExtraSecurity(props){
       { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
         <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
       }
-    </ResetPasswordText>
+    </ResetPasswordLayout>
   ) 
 }
 

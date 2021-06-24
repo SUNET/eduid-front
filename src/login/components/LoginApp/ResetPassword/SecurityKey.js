@@ -1,11 +1,11 @@
 import React from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
-import ResetPasswordText from "./ResetPasswordText";
+import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
 
 const SecurityKey = (props) => {
   return (
-    <ResetPasswordText
+    <ResetPasswordLayout
       heading={props.translate("resetpw.extra-security_heading")} 
       description={props.translate("resetpw.extra-security_description")} 
       linkInfoText={props.translate("resetpw.without_extra_security")}
@@ -36,7 +36,7 @@ const SecurityKey = (props) => {
           </div>
         </div>
       </div>
-    </ResetPasswordText>
+    </ResetPasswordLayout>
   )
 }
 
