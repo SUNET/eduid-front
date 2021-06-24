@@ -334,4 +334,12 @@ export const resetPassword = {
       defaultMessage={`A strong password can be selected by clicking the input field.`}
     />
   ),
+
+  "mfa.reset-password-tapit": (
+    <FormattedMessage
+     id="mfa.reset-password-tapit"
+     defaultMessage={`Use your security key to reset password. If it has a button, tap it.`}
+   />
+   ),
+
 };

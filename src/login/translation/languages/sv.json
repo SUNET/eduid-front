@@ -213,6 +213,7 @@
   "mfa.fake-authn": "Fejkad authn vid testning",
   "mfa.freja-eid": "Använd Freja eID i stället",
   "mfa.login-tapit": "Använd din säkerhetsnyckel för att logga in. Om den har en knapp, tryck på den nu.",
+  "mfa.reset-password-tapit": "Använd din säkerhetsnyckel för att återställa lösenordet. Om den har en knapp, tryck på den nu.",
   "mfa.no-webauthn-support": "Säkerhetsnycklar stöds inte",
   "mfa.no-webauthn-support-text": "Du har registrerat en säkerhetsnyckel för tvåfaktorsautentisering men din webbläsare har inget stöd för dom. Försök med en annan browser för att använda din säkerhetsnyckel.",
   "mfa.problems-heading": "Problem?",

@@ -213,6 +213,7 @@
   "mfa.fake-authn": "Fake authn while testing",
   "mfa.freja-eid": "Use Freja eID instead",
   "mfa.login-tapit": "Use your security key to log in. If it has a button, tap it.",
+  "mfa.reset-password-tapit": "Use your security key to reset password. If it has a button, tap it.",
   "mfa.no-webauthn-support": "No support for security keys",
   "mfa.no-webauthn-support-text": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys.",
   "mfa.problems-heading": "Problems?",
