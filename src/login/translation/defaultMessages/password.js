@@ -334,4 +334,11 @@ export const resetPassword = {
       defaultMessage={`A strong password can be selected by clicking the input field.`}
     />
   ),
+
+  "resetpw.sms-throttled": (
+    <FormattedMessage
+      id="resetpw.sms-throttled"
+      defaultMessage={`SMS code already sent. Please try again.`}
+    />
+  ),
 };
