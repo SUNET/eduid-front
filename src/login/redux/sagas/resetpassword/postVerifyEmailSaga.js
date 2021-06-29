@@ -34,6 +34,7 @@ export function* useLinkCode() {
       history.push(`/reset-password/`);
     }
   } catch (error) {
+    yield put(eduidRMAllNotify());
     yield* failRequest(error, postLinkCodeFail(error));
   }
 }

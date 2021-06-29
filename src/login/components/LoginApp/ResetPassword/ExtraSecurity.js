@@ -2,10 +2,8 @@ import React, { useEffect, useState }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
-import ConfirmModal from "../../../components/Modals/ConfirmModalContainer";
-import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import { useDispatch, useSelector } from "react-redux";
-import { requestPhoneCode, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   return (
@@ -23,15 +21,13 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   )
 };
 
-const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone, setIsShowModal }) => {
+const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
   const dispatch = useDispatch();
   const email_code = useSelector(state => state.resetPassword.email_code);
 
   const sendConfirmCode = (phone)=>{
     const index = phone.index;
-    setPhone(phone);
     dispatch(requestPhoneCode(index));
-    // setIsShowModal(true);
   };
 
   return (
@@ -57,28 +53,12 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone, setIsS
 function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState(null);
-  const [phone, setPhone] = useState({});
-  const [isShowModal, setIsShowModal] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(()=>{
     if(history.location.state !== undefined){
       setExtraSecurity(history.location.state.extra_security)
     }else history.push(`/reset-password/`)
   },[extraSecurity]);
-
-  const saveConfirmationCode = () => {
-    const code = document
-      .getElementById("confirmation-code-area")
-      .querySelector("input").value.trim()
-    ;
-    dispatch(savePhoneCode(code));
-    history.push(`/reset-password/set-new-password`)
-  };
-  
-  const handleCloseModal = () => {
-    setIsShowModal(false);
-  };
 
   return (
     <>
@@ -89,27 +69,11 @@ function ExtraSecurity(props){
           <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-          <SecurityWithSMSButton setIsShowModal={setIsShowModal} setPhone={setPhone} extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
+          <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
         }
         <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
           <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
         </p>
-        <ConfirmModal
-          modalId="phoneConfirmDialog"
-          id="phoneConfirmDialogControl"
-          title={props.translate("mobile.confirm_title", {
-            phone: phone.number!== undefined && phone.number.replace(/^.{10}/g, '**********')
-          })}
-          resendLabel={props.translate("cm.enter_code")}
-          resendHelp={props.translate("cm.lost_code")}
-          resendText={props.translate("cm.resend_code")}
-          placeholder={props.translate("mobile.placeholder")}
-          validationPattern={shortCodePattern}
-          validationError={"confirmation.code_invalid_format"}
-          showModal={isShowModal}
-          closeModal={handleCloseModal}
-          handleConfirm={saveConfirmationCode}
-        />
       </div>
     </>
   ) 
