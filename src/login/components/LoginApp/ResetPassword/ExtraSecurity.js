@@ -1,10 +1,10 @@
-import React, { useEffect, useState, Fragment }  from "react";
+import React, { useEffect, useState }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
 import ConfirmModal from "../../../components/Modals/ConfirmModalContainer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { requestPhoneCode, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({extraSecurityKey, translate}) => {
@@ -25,12 +25,13 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
 
 const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone, setIsShowModal }) => {
   const dispatch = useDispatch();
+  const email_code = useSelector(state => state.resetPassword.email_code);
 
   const sendConfirmCode = (phone)=>{
     const index = phone.index;
     setPhone(phone);
     dispatch(requestPhoneCode(index));
-    dispatch(setIsShowModal(true));
+    // setIsShowModal(true);
   };
 
   return (
@@ -42,6 +43,7 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone, setIsS
             id="extra-security" 
             key={phone.index}
             onClick={()=>sendConfirmCode(phone)}
+            disabled={!email_code}
           > 
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
@@ -75,7 +77,7 @@ function ExtraSecurity(props){
   };
   
   const handleCloseModal = () => {
-    dispatch(setIsShowModal(false));
+    setIsShowModal(false);
   };
 
   return (
