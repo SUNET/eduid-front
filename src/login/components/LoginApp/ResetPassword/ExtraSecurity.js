@@ -2,10 +2,12 @@ import React, { useEffect, useState, Fragment }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
+import ConfirmModal from "../../../components/Modals/ConfirmModalContainer";
+import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 
 const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   return (
-    Object.values(extraSecurityKey).map((security) => {
+     Object.values(extraSecurityKey).map((security) => {
       return (
         <EduIDButton
           className={"settings-button"} 
@@ -20,6 +22,7 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
 };
 
 const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
+  
   return (
     extraSecurityPhone.map(phone => {
       return (
@@ -33,6 +36,19 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
           </EduIDButton>
+          <ConfirmModal
+            modalId="phoneConfirmDialog"
+            id="phoneConfirmDialogControl"
+            title={translate("mobile.confirm_title", {
+              phone: phone.number!== undefined && phone.number.replace(/^.{10}/g, '**********')
+            })}
+            resendLabel={translate("cm.enter_code")}
+            resendHelp={translate("cm.lost_code")}
+            resendText={translate("cm.resend_code")}
+            placeholder={translate("mobile.placeholder")}
+            validationPattern={shortCodePattern}
+            validationError={"confirmation.code_invalid_format"}
+          />
         </Fragment>
       )
     })
@@ -62,7 +78,7 @@ function ExtraSecurity(props){
         }
         <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
           <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
-          </p>
+        </p>
       </div>
     </>
   ) 
