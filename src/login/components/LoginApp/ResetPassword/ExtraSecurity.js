@@ -23,20 +23,20 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   )
 };
 
-const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone}) => {
+const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone, setIsShowModal }) => {
   const dispatch = useDispatch();
 
   const sendConfirmCode = (phone)=>{
     const index = phone.index;
     setPhone(phone);
     dispatch(requestPhoneCode(index));
+    dispatch(setIsShowModal(true));
   };
 
   return (
     extraSecurityPhone.map(phone => {
       return (
-        <Fragment key={phone.index}>
-          <br/>
+        <div key={phone.index}>
           <EduIDButton
             className={"settings-button"}
             id="extra-security" 
@@ -46,7 +46,7 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone}) => {
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
           </EduIDButton>
-        </Fragment>
+        </div>
       )
     })
   )
@@ -56,6 +56,7 @@ function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState(null);
   const [phone, setPhone] = useState({});
+  const [isShowModal, setIsShowModal] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(()=>{
@@ -71,7 +72,11 @@ function ExtraSecurity(props){
     ;
     dispatch(savePhoneCode(code));
     history.push(`/reset-password/set-new-password`)
-  }
+  };
+  
+  const handleCloseModal = () => {
+    dispatch(setIsShowModal(false));
+  };
 
   return (
     <>
@@ -82,7 +87,7 @@ function ExtraSecurity(props){
           <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-          <SecurityWithSMSButton setPhone={setPhone} extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
+          <SecurityWithSMSButton setIsShowModal={setIsShowModal} setPhone={setPhone} extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
         }
         <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
           <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
@@ -99,8 +104,8 @@ function ExtraSecurity(props){
           placeholder={props.translate("mobile.placeholder")}
           validationPattern={shortCodePattern}
           validationError={"confirmation.code_invalid_format"}
-          showModal={()=>console.log("showModal")}
-          closeModal={()=>console.log("closeModal")}
+          showModal={isShowModal}
+          closeModal={handleCloseModal}
           handleConfirm={saveConfirmationCode}
         />
       </div>
