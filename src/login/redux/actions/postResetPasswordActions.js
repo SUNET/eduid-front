@@ -7,7 +7,6 @@ export const POST_RESET_PASSWORD_VERIFY_EMAIL = "POST_RESET_PASSWORD_VERIFY_EMAI
 export const POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS = "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS";
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE";
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
-export const SHOW_MODAL = "SHOW_MODAL";
 export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
 
 export function postEmailLink(email) {
@@ -73,18 +72,9 @@ export function requestPhoneCodeFail(err) {
   };
 }
 
-export function showModal(bool) {
-  return {
-    type: SHOW_MODAL,
-    payload: {
-      show_modal: bool
-    }
-  };
-}
-
 export function savePhoneCode(code) {
   return {
-    type: SHOW_MODAL,
+    type: SAVE_PHONE_CODE,
     payload: {
       phone_code: code
     }

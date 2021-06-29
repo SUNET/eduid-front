@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
 import ConfirmModal from "../../../components/Modals/ConfirmModalContainer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
-import { useDispatch, useSelector } from "react-redux";
-import { requestPhoneCode, showModal, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
+import { useDispatch } from "react-redux";
+import { requestPhoneCode, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   return (
@@ -55,7 +55,6 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone}) => {
 function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState(null);
-  const show_moodal = useSelector(state => state.resetPassword.show_modal);
   const [phone, setPhone] = useState({});
   const dispatch = useDispatch();
 
@@ -65,14 +64,10 @@ function ExtraSecurity(props){
     }else history.push(`/reset-password/`)
   },[extraSecurity]);
 
-  const handleCloseModal = () =>{
-    dispatch(showModal(false))
-  };
-
   const saveConfirmationCode = () => {
     const code = document
-        .getElementById("confirmation-code-area")
-        .querySelector("input").value.trim()
+      .getElementById("confirmation-code-area")
+      .querySelector("input").value.trim()
     ;
     dispatch(savePhoneCode(code));
     history.push(`/reset-password/set-new-password`)
@@ -104,8 +99,8 @@ function ExtraSecurity(props){
           placeholder={props.translate("mobile.placeholder")}
           validationPattern={shortCodePattern}
           validationError={"confirmation.code_invalid_format"}
-          showModal={show_moodal}
-          closeModal={handleCloseModal}
+          showModal={()=>console.log("showModal")}
+          closeModal={()=>console.log("closeModal")}
           handleConfirm={saveConfirmationCode}
         />
       </div>
