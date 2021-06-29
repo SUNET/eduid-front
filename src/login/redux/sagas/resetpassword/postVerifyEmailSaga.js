@@ -7,6 +7,7 @@ import {
 } from "../../../../sagas/common";
 import { postLinkCodeFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
+import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 export function requestSendLinkCode(config, data) {
   return window
@@ -26,6 +27,7 @@ export function* useLinkCode() {
       email_code: state.resetPassword.email_code,
       csrf_token: state.config.csrf_token
     };
+    yield put(eduidRMAllNotify());
     const resp = yield call(requestSendLinkCode, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
