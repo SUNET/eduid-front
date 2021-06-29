@@ -2,7 +2,8 @@ import * as postActions from "../actions/postResetPasswordActions";
 
 const data = {
     email_address: "",
-    email_code: ""
+    email_code: "",
+    phone_index: null
 };
 
 let resetPasswordReducer = (state = data, action) => {
@@ -23,6 +24,11 @@ let resetPasswordReducer = (state = data, action) => {
         ...action.payload
       };
     case postActions.POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case postActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE:
       return {
         ...state,
         ...action.payload
