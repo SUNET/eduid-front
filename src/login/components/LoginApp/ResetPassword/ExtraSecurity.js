@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
 import ConfirmModal from "../../../components/Modals/ConfirmModalContainer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { requestPhoneCode, showModal } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   return (
@@ -22,8 +23,15 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   )
 };
 
-const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
-  const showModal = useSelector(state => state.resetPassword.show_modal);
+const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone}) => {
+  const dispatch = useDispatch();
+
+  const sendConfirmCode = (phone)=>{
+    const index = phone.index;
+    setPhone(phone);
+    dispatch(requestPhoneCode(index));
+  };
+
   return (
     extraSecurityPhone.map(phone => {
       return (
@@ -33,24 +41,11 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
             className={"settings-button"}
             id="extra-security" 
             key={phone.index}
+            onClick={()=>sendConfirmCode(phone)}
           > 
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
           </EduIDButton>
-          <ConfirmModal
-            modalId="phoneConfirmDialog"
-            id="phoneConfirmDialogControl"
-            title={translate("mobile.confirm_title", {
-              phone: phone.number!== undefined && phone.number.replace(/^.{10}/g, '**********')
-            })}
-            resendLabel={translate("cm.enter_code")}
-            resendHelp={translate("cm.lost_code")}
-            resendText={translate("cm.resend_code")}
-            placeholder={translate("mobile.placeholder")}
-            validationPattern={shortCodePattern}
-            validationError={"confirmation.code_invalid_format"}
-            showModal={showModal}
-          />
         </Fragment>
       )
     })
@@ -60,12 +55,19 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
 function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState();
+  const show_moodal = useSelector(state => state.resetPassword.show_modal);
+  const [phone, setPhone] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     if(history.location.state !== undefined){
       setExtraSecurity(history.location.state.extra_security)
     }else history.push(`/reset-password/`)
-  },[extraSecurity])
+  },[extraSecurity]);
+
+  const handleCloseModal=()=>{
+    dispatch(showModal(false))
+  };
 
   return (
     <>
@@ -76,11 +78,26 @@ function ExtraSecurity(props){
           <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-          <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
+          <SecurityWithSMSButton setPhone={setPhone} extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
         }
         <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
           <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
         </p>
+        <ConfirmModal
+          modalId="phoneConfirmDialog"
+          id="phoneConfirmDialogControl"
+          title={props.translate("mobile.confirm_title", {
+            phone: phone.number!== undefined && phone.number.replace(/^.{10}/g, '**********')
+          })}
+          resendLabel={props.translate("cm.enter_code")}
+          resendHelp={props.translate("cm.lost_code")}
+          resendText={props.translate("cm.resend_code")}
+          placeholder={props.translate("mobile.placeholder")}
+          validationPattern={shortCodePattern}
+          validationError={"confirmation.code_invalid_format"}
+          showModal={show_moodal}
+          closeModal={handleCloseModal}
+        />
       </div>
     </>
   ) 
