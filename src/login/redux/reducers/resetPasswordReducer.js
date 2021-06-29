@@ -4,7 +4,8 @@ const data = {
     email_address: "",
     email_code: "",
     phone_index: null,
-    show_modal: false
+    show_modal: false,
+    phone_code: ""
 };
 
 let resetPasswordReducer = (state = data, action) => {
@@ -35,6 +36,11 @@ let resetPasswordReducer = (state = data, action) => {
         ...action.payload
       };
     case postActions.SHOW_MODAL:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case postActions.SAVE_PHONE_CODE:
       return {
         ...state,
         ...action.payload

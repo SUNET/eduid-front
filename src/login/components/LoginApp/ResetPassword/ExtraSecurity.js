@@ -5,7 +5,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import ConfirmModal from "../../../components/Modals/ConfirmModalContainer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import { useDispatch, useSelector } from "react-redux";
-import { requestPhoneCode, showModal } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode, showModal, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   return (
@@ -65,19 +65,29 @@ function ExtraSecurity(props){
     }else history.push(`/reset-password/`)
   },[extraSecurity]);
 
-  const handleCloseModal=()=>{
+  const handleCloseModal = () =>{
     dispatch(showModal(false))
   };
+
+  const saveConfirmationCode = () => {
+    const code = {
+      code: document
+        .getElementById("confirmation-code-area")
+        .querySelector("input").value.trim()
+    };
+    dispatch(savePhoneCode(code));
+    history.push(`/reset-password/set-new-password`)
+  }
 
   return (
     <>
       <p className="heading">{props.translate("resetpw.extra-security_heading")}</p>
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.extra-security_description")}</p>
-        { extraSecurity && Object.keys(extraSecurity.tokens).length > 0  ?
+        { extraSecurity !== undefined && Object.keys(extraSecurity.tokens).length > 0  ?
           <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
-        { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
+        { extraSecurity!== undefined && extraSecurity.phone_numbers.length > 0 ? 
           <SecurityWithSMSButton setPhone={setPhone} extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
         }
         <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
@@ -97,6 +107,7 @@ function ExtraSecurity(props){
           validationError={"confirmation.code_invalid_format"}
           showModal={show_moodal}
           closeModal={handleCloseModal}
+          handleConfirm={saveConfirmationCode}
         />
       </div>
     </>
