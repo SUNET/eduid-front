@@ -5,7 +5,7 @@ import {
   failRequest,
   putCsrfToken
 } from "../../../../sagas/common";
-import { requestPhoneCodeFail } from "../../actions/postResetPasswordActions";
+import { requestPhoneCodeFail, showModal } from "../../actions/postResetPasswordActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 export function fetchExtraSecurityPhone(config, data) {
@@ -30,7 +30,11 @@ export function* requestPhoneCode() {
     const resp = yield call(fetchExtraSecurityPhone, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
+    if(resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS"){
+      yield put(showModal(true));
+    }
   } catch (error) {
     yield* failRequest(error, requestPhoneCodeFail(error));
+    yield put(showModal(false));
   }
 }

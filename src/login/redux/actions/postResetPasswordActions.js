@@ -6,6 +6,7 @@ export const POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL = "POST_RESET_PASSWORD_VERIFY
 export const POST_RESET_PASSWORD_VERIFY_EMAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL";
 export const POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS = "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS";
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE";
+export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
 export const SHOW_MODAL = "SHOW_MODAL";
 
 export function postEmailLink(email) {
@@ -61,6 +62,16 @@ export function requestPhoneCode(index) {
   };
 }
 
+export function requestPhoneCodeFail(err) {
+  return {
+    type: POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL,
+    error: true,
+    payload: {
+      message: err.toString()
+    }
+  };
+}
+
 export function showModal(bool) {
   return {
     type: SHOW_MODAL,
@@ -69,5 +80,3 @@ export function showModal(bool) {
     }
   };
 }
-
-
