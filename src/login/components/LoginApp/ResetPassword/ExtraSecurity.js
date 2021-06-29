@@ -70,15 +70,14 @@ function ExtraSecurity(props){
   };
 
   const saveConfirmationCode = () => {
-    const code = {
-      code: document
+    const code = document
         .getElementById("confirmation-code-area")
         .querySelector("input").value.trim()
-    };
+    ;
     dispatch(savePhoneCode(code));
     history.push(`/reset-password/set-new-password`)
   }
-  
+
   return (
     <>
       <p className="heading">{props.translate("resetpw.extra-security_heading")}</p>
