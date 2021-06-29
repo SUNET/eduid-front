@@ -54,7 +54,7 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate , setPhone}) => {
 
 function ExtraSecurity(props){
   const history = useHistory();
-  const [extraSecurity, setExtraSecurity] = useState();
+  const [extraSecurity, setExtraSecurity] = useState(null);
   const show_moodal = useSelector(state => state.resetPassword.show_modal);
   const [phone, setPhone] = useState({});
   const dispatch = useDispatch();
@@ -78,16 +78,16 @@ function ExtraSecurity(props){
     dispatch(savePhoneCode(code));
     history.push(`/reset-password/set-new-password`)
   }
-
+  
   return (
     <>
       <p className="heading">{props.translate("resetpw.extra-security_heading")}</p>
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.extra-security_description")}</p>
-        { extraSecurity !== undefined && Object.keys(extraSecurity.tokens).length > 0  ?
+        { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
           <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
-        { extraSecurity!== undefined && extraSecurity.phone_numbers.length > 0 ? 
+        { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
           <SecurityWithSMSButton setPhone={setPhone} extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
         }
         <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
