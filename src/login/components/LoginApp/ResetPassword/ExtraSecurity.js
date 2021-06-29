@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
 import ConfirmModal from "../../../components/Modals/ConfirmModalContainer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
+import { useSelector } from "react-redux";
 
 const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   return (
@@ -22,7 +23,7 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
 };
 
 const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
-  
+  const showModal = useSelector(state => state.resetPassword.show_modal);
   return (
     extraSecurityPhone.map(phone => {
       return (
@@ -48,6 +49,7 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
             placeholder={translate("mobile.placeholder")}
             validationPattern={shortCodePattern}
             validationError={"confirmation.code_invalid_format"}
+            showModal={showModal}
           />
         </Fragment>
       )
