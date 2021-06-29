@@ -2,6 +2,7 @@ import initStore from "./initStore";
 import { getConfig } from "./init_actions";
 import { saveLinkCode } from "./../redux/actions/postResetPasswordActions";
 import { addLoginRef } from "./../redux/actions/addDataToStoreActions";
+import { eduidRMAllNotify } from "../../actions/Notifications";
 
 const init_container = () => {
   console.log("Initializing state for the login app...");
@@ -16,6 +17,7 @@ const init_container = () => {
 
   if (url.includes(`/email-code/`)) {
     // pass on code get config for app and
+    initStore.dispatch(eduidRMAllNotify());
     initStore.dispatch(saveLinkCode(urlCode));
   }
 };
