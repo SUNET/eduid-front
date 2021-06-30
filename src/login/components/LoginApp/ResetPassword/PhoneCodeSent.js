@@ -14,15 +14,15 @@ import { requestPhoneCode } from "../../../redux/actions/postResetPasswordAction
 import { useHistory } from 'react-router-dom';
 
 const validate = (values) => {
-    const value = values.code;
+    const value = values.phone;
     let errors = {};
     if (!value || !value.trim()) {
-      errors.code = "required";
+      errors.phone = "required";
       return errors;
     }
   
     if (!shortCodePattern.test(value.trim())){
-      errors.phoneCode = "confirmation.code_invalid_format";
+      errors.phone = "confirmation.code_invalid_format";
       return errors;
     }
   };
@@ -34,7 +34,7 @@ let PhoneCodeForm = (props) => (
         componentClass="input"
         type="text"
         label={props.translate("cm.enter_code")}
-        name="code"
+        name="phone"
       />
       <EduIDButton
         className="settings-button"
