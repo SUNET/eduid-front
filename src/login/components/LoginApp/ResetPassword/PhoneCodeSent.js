@@ -9,7 +9,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 const validate = (values) => {
     const value = values.phoneCode;
@@ -28,13 +28,12 @@ const validate = (values) => {
 let PhoneCodeForm = (props) => (
     <Form id="phone-code-form" role="form">
       <Field
-         component={CustomInput}
-         componentClass="input"
-         type="text"
-         label="confirmation code"
-         placeholder="Phone confirmation code"
-         id="phone-code"
-         name="phoneCode"
+        component={CustomInput}
+        componentClass="input"
+        type="text"
+        label={props.translate("cm.enter_code")}
+        id="phone-code"
+        name="phoneCode"
       />
       <EduIDButton
         className="settings-button"
@@ -57,7 +56,8 @@ let PhoneCodeForm = (props) => (
   }))(PhoneCodeForm);
 
 function PhoneCodeSent(props){
-
+ const number = useSelector(state => state.resetPassword.phone.number);
+ 
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
     if(count > - 1)
@@ -67,10 +67,16 @@ function PhoneCodeSent(props){
   return (
     <>
       <SuccessIconAnimation />
+      <p className="heading">Phone code has been sent</p>
       <div id="reset-pass-display">
+        <p>{props.translate("mobile.confirm_title")({ phone: number.replace(/^.{10}/g, '**********') })}</p>
         <PhoneCodeForm {...props} />
-        <RenderingResendCodeTimer  {...props}/>
+        <div className="timer">
+            <RenderingResendCodeTimer  {...props}/>
+        </div>
       </div>
+
+
     </>
   ) 
 }
