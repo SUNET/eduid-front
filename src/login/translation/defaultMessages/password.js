@@ -341,4 +341,18 @@ export const resetPassword = {
       defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
+
+  "resetpw.send-sms-success": (
+    <FormattedMessage
+      id="resetpw.send-sms-success"
+      defaultMessage={`Phone code has been sent.`}
+    />
+  ),
+
+  "resetpw.expired-phone-code": (
+    <FormattedMessage
+      id="resetpw.expired-phone-code"
+      defaultMessage={`Phone code has expired. Please try again.`}
+    />
+  ),
 };

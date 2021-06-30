@@ -359,6 +359,8 @@
   "resetpw.set-new-password-description": "A strong password can be selected by clicking the input field.",
   "resetpw.expired-email-code": "Email code has expired. Please try again.",
   "resetpw.sms-throttled": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.",
+  "resetpw.send-sms-success": "Phone code has been sent.",
+  "resetpw.expired-phone-code": "Phone code has expired. Please try again.",
   "security.add_u2f_token": "Add U2F token",
   "security.add_webauthn_token_device": "Register this device as security key",
   "security.add_webauthn_token_key": "Add security key",
