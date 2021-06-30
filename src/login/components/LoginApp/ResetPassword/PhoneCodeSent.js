@@ -9,7 +9,8 @@ import EduIDButton from "../../../../components/EduIDButton";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
-import { connect, useSelector } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
+import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
 const validate = (values) => {
     const value = values.code;
@@ -55,23 +56,30 @@ let PhoneCodeForm = (props) => (
   }))(PhoneCodeForm);
 
 function PhoneCodeSent(props){
- const number = useSelector(state => state.resetPassword.phone.number);
- 
+ const phone = useSelector(state => state.resetPassword.phone);
+ const dispatch = useDispatch();
+
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
     if(count > - 1)
       countDownStart();
   },[])
 
+  const resendPhoneCode = (e) => {
+    e.preventDefault();
+    if(phone){
+       dispatch(requestPhoneCode(phone));
+    }else history.push(`/reset-password/`)
+  }
+
   return (
     <>
       <SuccessIconAnimation />
-      <p className="heading">Phone code has been sent</p>
       <div id="reset-pass-display">
-        <p>{props.translate("mobile.confirm_title")({ phone: number && number.replace(/^.{10}/g, '**********') })}</p>
+        <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
         <PhoneCodeForm {...props} />
         <div className="timer">
-            <RenderingResendCodeTimer  {...props}/>
+            <RenderingResendCodeTimer  resendPhoneCode={resendPhoneCode} {...props}/>
         </div>
       </div>
 
