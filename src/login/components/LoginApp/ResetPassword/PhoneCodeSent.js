@@ -69,7 +69,7 @@ function PhoneCodeSent(props){
       <SuccessIconAnimation />
       <p className="heading">Phone code has been sent</p>
       <div id="reset-pass-display">
-        <p>{props.translate("mobile.confirm_title")({ phone: number.replace(/^.{10}/g, '**********') })}</p>
+        <p>{props.translate("mobile.confirm_title")({ phone: number && number.replace(/^.{10}/g, '**********') })}</p>
         <PhoneCodeForm {...props} />
         <div className="timer">
             <RenderingResendCodeTimer  {...props}/>
