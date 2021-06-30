@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import SuccessIconAnimation from "./SuccessIconAnimation";
-import { RenderingResendCodeTimer , countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT } from "./CountDownTimer";
+import { clearCountdown, RenderingResendCodeTimer, countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT } from "./CountDownTimer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import EduIDButton from "../../../../components/EduIDButton";
 import Form from "reactstrap/lib/Form";
@@ -11,6 +11,7 @@ import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
+import { useHistory } from 'react-router-dom';
 
 const validate = (values) => {
     const value = values.code;
@@ -58,11 +59,13 @@ let PhoneCodeForm = (props) => (
 function PhoneCodeSent(props){
  const phone = useSelector(state => state.resetPassword.phone);
  const dispatch = useDispatch();
+ const history = useHistory();
 
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
-    if(count > - 1)
-      countDownStart();
+    if(count > - 1 && Object.keys(phone).length){
+        countDownStart();
+    } else clearCountdown();
   },[])
 
   const resendPhoneCode = (e) => {
