@@ -358,7 +358,7 @@
   "resetpw.expired-email-code": "E-postkoden har gått ut. Var god försök igen.",
   "resetpw.set-new-password-heading": "Skapa ditt nya lösenord",
   "resetpw.set-new-password-description": "Ett starkt lösenord kan väljas genom att klicka på inmatningsfältet.",
-  "resetpw.sms-throttled": "SMS kod har redan skickats. Försök igen senare",
+  "resetpw.sms-throttled": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod.",
   "security.add_u2f_token": "Lägg till säkerhetsnyckel",
   "security.add_webauthn_token_device": "Registrera den här enheten som en säkerhetsnyckel",
   "security.add_webauthn_token_key": "Lägg till säkerhetsnyckel",

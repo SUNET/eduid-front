@@ -338,7 +338,7 @@ export const resetPassword = {
   "resetpw.sms-throttled": (
     <FormattedMessage
       id="resetpw.sms-throttled"
-      defaultMessage={`SMS code already sent. Please try again.`}
+      defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
     />
   ),
 };
