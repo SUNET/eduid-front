@@ -7,6 +7,8 @@ import {
 } from "../../../../sagas/common";
 import { requestPhoneCodeFail } from "../../actions/postResetPasswordActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { countDownStart } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import { history } from "../../../components/App/App";
 
 export function fetchExtraSecurityPhone(config, data) {
   return window
@@ -30,6 +32,10 @@ export function* requestPhoneCode() {
     const resp = yield call(fetchExtraSecurityPhone, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
+    if (resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS") {
+      history.push(`/reset-password/phone-code-sent`);
+      countDownStart();
+    }
   } catch (error) {
     yield* failRequest(error, requestPhoneCodeFail(error));
   }
