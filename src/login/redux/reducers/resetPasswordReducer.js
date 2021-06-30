@@ -3,7 +3,7 @@ import * as postActions from "../actions/postResetPasswordActions";
 const data = {
     email_address: "",
     email_code: "",
-    phone_index: null,
+    phone: {},
     phone_code: ""
 };
 

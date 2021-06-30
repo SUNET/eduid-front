@@ -53,11 +53,14 @@ export function postLinkCodeFail(err) {
   };
 }
 
-export function requestPhoneCode(index) {
+export function requestPhoneCode(phone) {
   return {
     type: POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE,
     payload: {
-      phone_index: index
+      phone: {
+        index: phone.index,
+        number: phone.number
+      }
     }
   };
 }

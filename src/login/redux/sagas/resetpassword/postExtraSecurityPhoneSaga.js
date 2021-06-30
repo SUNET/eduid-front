@@ -26,14 +26,14 @@ export function* requestPhoneCode() {
     const data = {
       email_code: state.resetPassword.email_code,
       csrf_token: state.config.csrf_token,
-      phone_index: state.resetPassword.phone_index,
+      phone_index: state.resetPassword.phone.index,
     };
     yield put(eduidRMAllNotify());
     const resp = yield call(fetchExtraSecurityPhone, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
     if (resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS") {
-      history.push(`/reset-password/phone-code-sent`);
+      history.push({ pathname:`/reset-password/phone-code-sent`, state: { phone: state.resetPassword.phone.number }})
       countDownStart();
     }
   } catch (error) {
