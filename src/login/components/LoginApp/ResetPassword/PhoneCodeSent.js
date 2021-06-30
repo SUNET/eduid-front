@@ -92,8 +92,7 @@ function PhoneCodeSent(props){
 }
 
 PhoneCodeSent.propTypes = {
-  translate: PropTypes.func, 
-  sendLink: PropTypes.func,
+  translate: PropTypes.func.isRequired,
   invalid: PropTypes.bool
 };
 
