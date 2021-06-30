@@ -85,8 +85,6 @@ function PhoneCodeSent(props){
             <RenderingResendCodeTimer  resendPhoneCode={resendPhoneCode} {...props}/>
         </div>
       </div>
-
-
     </>
   ) 
 }
