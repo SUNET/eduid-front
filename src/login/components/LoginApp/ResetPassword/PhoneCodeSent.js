@@ -12,10 +12,10 @@ import { Field, reduxForm } from "redux-form";
 import { connect, useSelector } from 'react-redux';
 
 const validate = (values) => {
-    const value = values.phoneCode;
+    const value = values.code;
     let errors = {};
     if (!value || !value.trim()) {
-      errors.phoneCode = "required";
+      errors.code = "required";
       return errors;
     }
   
@@ -32,15 +32,14 @@ let PhoneCodeForm = (props) => (
         componentClass="input"
         type="text"
         label={props.translate("cm.enter_code")}
-        id="phone-code"
-        name="phoneCode"
+        name="code"
       />
       <EduIDButton
         className="settings-button"
         id="save-phone-button"
         disabled={props.invalid}
       >
-        save
+       {props.translate("chpass.button_save_password")}
       </EduIDButton>
     </Form>
   );
