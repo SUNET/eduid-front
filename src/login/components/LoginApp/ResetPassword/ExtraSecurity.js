@@ -23,11 +23,10 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
 
 const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
   const dispatch = useDispatch();
-  const email_code = useSelector(state => state.resetPassword.email_code);
+  const email_code = useSelector(state => state.resetPassword.email_code)
 
   const sendConfirmCode = (phone)=>{
-    const index = phone.index;
-    dispatch(requestPhoneCode(index));
+    dispatch(requestPhoneCode(phone));
   };
 
   return (
