@@ -220,7 +220,7 @@
   "mfa.two-factor-authn": "Two-factor authentication",
   "mobile.button_add": "Add",
   "mobile.confirm_mobile_placeholder": "Phone confirmation code",
-  "mobile.confirm_title": "Enter the code sent to {phone} here",
+  "mobile.confirm_title": "Enter the code sent to <b>{phone}</b> here",
   "mobile.mobile": "mobile",
   "mobile.resend_success": "New code sent to {email}",
   "nin needs to be formatted as 18|19|20yymmddxxxx": "National identity number needs to be in the form of yyyymmddxxxx",
