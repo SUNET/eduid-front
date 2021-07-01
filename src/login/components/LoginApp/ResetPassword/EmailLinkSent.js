@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
@@ -51,4 +51,4 @@ EmailLinkSent.propTypes = {
   invalid: PropTypes.bool
 };
 
-export default i18n(withRouter(EmailLinkSent));
+export default InjectIntl(withRouter(EmailLinkSent));

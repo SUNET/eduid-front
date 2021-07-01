@@ -1,6 +1,6 @@
 import React, { useEffect }  from "react";
 import { useSelector } from 'react-redux';
-import i18n from "../../../translation/InjectIntl_HOC_factory";
+import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useDispatch, connect } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import { Field, reduxForm } from "redux-form";
@@ -61,7 +61,7 @@ function ResetPasswordMain(props){
 
   useEffect(()=>{
     if(extra_security && Object.keys(extra_security).length > 0) {
-      history.push(`/reset-password/extra-security`)
+      history.push({ pathname:`/reset-password/extra-security`, state: { extra_security: extra_security }})
     }else if(extra_security && Object.keys(extra_security).length === 0) 
       history.push(`/reset-password/set-new-password`)
     else history.push(`/reset-password/`)
@@ -95,4 +95,4 @@ ResetPasswordMain.propTypes = {
   invalid: PropTypes.bool
 };
 
-export default i18n(ResetPasswordMain);
+export default InjectIntl(ResetPasswordMain);

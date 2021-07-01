@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 let RenderHideButton = ({ setInputType, translate }) => (
   <button
     aria-label="hide password"
-    className="icon"
+    className="show-hide-button"
     onClick={() => setInputType("password")}
   >
     <div className="button-text-container">
@@ -18,7 +18,7 @@ let RenderHideButton = ({ setInputType, translate }) => (
 let RenderShowButton = ({ setInputType, translate }) => (
   <button
     aria-label="show password"
-    className="icon"
+    className="show-hide-button"
     onClick={() => setInputType("text")}
   >
     {translate("nin_show_last_four_digits")}
