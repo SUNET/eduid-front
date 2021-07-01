@@ -1,13 +1,15 @@
-import React, { useEffect, useState, Fragment }  from "react";
+import React, { useEffect, useState }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
   return (
-    Object.values(extraSecurityKey).map((security) => {
+     Object.values(extraSecurityKey).map((security) => {
       return (
         <EduIDButton
           className={"settings-button"} 
@@ -22,21 +24,27 @@ const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
   )
 };
 
-const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
+const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
+  const dispatch = useDispatch();
+
+  const sendConfirmCode = (phone)=>{
+    dispatch(requestPhoneCode(phone));
+  };
+
   return (
     extraSecurityPhone.map(phone => {
       return (
-        <Fragment key={phone.index}>
-          <br/>
+        <div key={phone.index}>
           <EduIDButton
             className={"settings-button"}
             id="extra-security" 
             key={phone.index}
+            onClick={()=>sendConfirmCode(phone)}
           > 
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
           </EduIDButton>
-        </Fragment>
+        </div>
       )
     })
   )
@@ -44,7 +52,7 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
 
 function ExtraSecurity(props){
   const history = useHistory();
-  const [extraSecurity, setExtraSecurity] = useState();
+  const [extraSecurity, setExtraSecurity] = useState(null);
 
   useEffect(()=>{
     if(history.location.state !== undefined){

@@ -48,19 +48,19 @@
     "defaultMessage": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
   },
   {
-    "id": "login.mfa.primary-choice.title",
+    "id": "login.mfa.primary-option.title",
     "defaultMessage": "Security key"
   },
   {
-    "id": "login.mfa.primary-choice.button",
+    "id": "login.mfa.primary-option.button",
     "defaultMessage": "Use my security key"
   },
   {
-    "id": "login.mfa.secondary-choice.title",
+    "id": "login.mfa.secondary-option.title",
     "defaultMessage": "Freja eID+"
   },
   {
-    "id": "login.mfa.secondary-choice.button",
+    "id": "login.mfa.secondary-option.button",
     "defaultMessage": "Use my freja eid+"
   }
 ]

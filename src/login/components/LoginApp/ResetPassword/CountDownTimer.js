@@ -66,3 +66,14 @@ export const RenderingTimer = (props) => {
     </>
   )
 }
+
+export const RenderingResendCodeTimer = (props) => {  
+  const countLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
+  return (
+    <>
+      <a id={"resend-link"} className={countLocalStorage  <=- 1 ? "button-active" : ""} onClick={props.resendPhoneCode}> {props.translate("cm.resend_code")} </a>
+      <span id="minute" className={countLocalStorage  <=- 1 ? "display-none" : ""}/>
+      <span id="second" className={countLocalStorage  <=- 1 ? "display-none" : ""} />
+    </>
+  )
+}

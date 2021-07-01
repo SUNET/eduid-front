@@ -7,6 +7,7 @@ import { useLoginRef } from "../../redux/actions/postRefLoginActions";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
 import ExtraSecurity from "./ResetPassword/ExtraSecurity";
+import PhoneCodeSent from "./ResetPassword/PhoneCodeSent";
 import SetNewPassword from "./ResetPassword/SetNewPassword";
 import SecurityKey from "./ResetPassword/SecurityKey";
 import PropTypes from "prop-types";
@@ -25,10 +26,15 @@ import PropTypes from "prop-types";
         path="/reset-password/email-link-sent"
         render={(props) => <EmailLinkSent {...props} />}
       />
-       <Route
+      <Route
+        exact
+        path="/reset-password/extra-security"
+        render={(props) => <ExtraSecurity {...props} />}
+      />
+      <Route
          exact
-         path="/reset-password/extra-security"
-         render={(props) => <ExtraSecurity {...props} />}
+         path="/reset-password/phone-code-sent"
+         render={(props) => <PhoneCodeSent {...props} />}
        />
         <Route
          exact

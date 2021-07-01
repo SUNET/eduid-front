@@ -581,7 +581,7 @@
   },
   {
     "id": "mobile.confirm_title",
-    "defaultMessage": "Enter the code sent to {phone} here"
+    "defaultMessage": "Enter the code sent to <b>{phone}</b> here"
   },
   {
     "id": "pfilled.completion",
