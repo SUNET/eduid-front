@@ -71,15 +71,19 @@ function PhoneCodeSent(props){
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
     if(count > - 1 && Object.keys(phone).length){
         countDownStart();
-    } else clearCountdown();
+    } else {
+        //Navigate to "/reset-password/" without extra security phone
+        history.push(`/reset-password/`)
+        clearCountdown();
+    }
   },[]);
 
   const resendPhoneCode = (e) => {
     e.preventDefault();
     if(phone){
        dispatch(requestPhoneCode(phone));
-    }else history.push(`/reset-password/`)
-  }
+    }
+  };
 
   return (
     <>
