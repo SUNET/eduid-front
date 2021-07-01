@@ -3,7 +3,13 @@ import { withRouter } from "react-router-dom";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import SuccessIconAnimation from "./SuccessIconAnimation";
-import { clearCountdown, RenderingResendCodeTimer, countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT } from "./CountDownTimer";
+import { 
+    clearCountdown, 
+    RenderingResendCodeTimer, 
+    countDownStart, 
+    getLocalStorage, 
+    LOCAL_STORAGE_PERSISTED_COUNT 
+} from "./CountDownTimer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import EduIDButton from "../../../../components/EduIDButton";
 import Form from "reactstrap/lib/Form";
@@ -57,16 +63,16 @@ let PhoneCodeForm = (props) => (
   }))(PhoneCodeForm);
 
 function PhoneCodeSent(props){
- const phone = useSelector(state => state.resetPassword.phone);
- const dispatch = useDispatch();
- const history = useHistory();
+  const phone = useSelector(state => state.resetPassword.phone);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
     if(count > - 1 && Object.keys(phone).length){
         countDownStart();
     } else clearCountdown();
-  },[])
+  },[]);
 
   const resendPhoneCode = (e) => {
     e.preventDefault();
@@ -80,7 +86,7 @@ function PhoneCodeSent(props){
       <SuccessIconAnimation />
       <div id="reset-pass-display">
         <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
-        <PhoneCodeForm {...props} />
+        <PhoneCodeForm phone={phone} {...props} />
         <div className="timer">
             <RenderingResendCodeTimer  resendPhoneCode={resendPhoneCode} {...props}/>
         </div>
