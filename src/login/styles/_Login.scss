@@ -29,28 +29,6 @@
   }
 }
 
-// login username-pw / set-new-password toggle show hide 
-.password-input {
-  display: flex;
-  .show-hide-button {
-    color: $black;
-    font-size: 1rem;
-    position: absolute;
-    right: 1rem;
-    background: transparent;
-    height: 3rem;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
-    box-shadow: 0 0 0;
-    border: none;
-    cursor: pointer;
-  }
-  .is-valid ~ .icon {
-    right: 3rem;
-  }
-}
-
 // terms of use page
 .tou {
   .tou-text {
