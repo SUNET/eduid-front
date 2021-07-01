@@ -1,11 +1,13 @@
-import React, { useEffect, useState, Fragment }  from "react";
+import React, { useEffect, useState }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
+import { useDispatch } from "react-redux";
+import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   return (
-    Object.values(extraSecurityKey).map((security) => {
+     Object.values(extraSecurityKey).map((security) => {
       return (
         <EduIDButton
           className={"settings-button"} 
@@ -19,21 +21,27 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
   )
 };
 
-const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
+const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
+  const dispatch = useDispatch();
+
+  const sendConfirmCode = (phone)=>{
+    dispatch(requestPhoneCode(phone));
+  };
+
   return (
     extraSecurityPhone.map(phone => {
       return (
-        <Fragment key={phone.index}>
-          <br/>
+        <div key={phone.index}>
           <EduIDButton
             className={"settings-button"}
             id="extra-security" 
             key={phone.index}
+            onClick={()=>sendConfirmCode(phone)}
           > 
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
           </EduIDButton>
-        </Fragment>
+        </div>
       )
     })
   )
@@ -41,20 +49,20 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate}) => {
 
 function ExtraSecurity(props){
   const history = useHistory();
-  const [extraSecurity, setExtraSecurity] = useState();
+  const [extraSecurity, setExtraSecurity] = useState(null);
 
   useEffect(()=>{
     if(history.location.state !== undefined){
       setExtraSecurity(history.location.state.extra_security)
     }else history.push(`/reset-password/`)
-  },[extraSecurity])
+  },[extraSecurity]);
 
   return (
     <>
       <p className="heading">{props.translate("resetpw.extra-security_heading")}</p>
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.extra-security_description")}</p>
-        { extraSecurity && Object.keys(extraSecurity.tokens).length > 0  ?
+        { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
           <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
         }
         { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
@@ -62,7 +70,7 @@ function ExtraSecurity(props){
         }
         <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
           <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
-          </p>
+        </p>
       </div>
     </>
   ) 
