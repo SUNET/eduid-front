@@ -321,4 +321,38 @@ export const resetPassword = {
       defaultMessage={`Email code has expired. Please try again.`}
     /> 
   ),
+  "resetpw.set-new-password-heading": (
+    <FormattedMessage
+      id="resetpw.set-new-password-heading"
+      defaultMessage={`Set your new password`}
+    />
+  ),
+
+  "resetpw.set-new-password-description": (
+    <FormattedMessage
+      id="resetpw.set-new-password-description"
+      defaultMessage={`A strong password can be selected by clicking the input field.`}
+    />
+  ),
+
+  "resetpw.sms-throttled": (
+    <FormattedMessage
+      id="resetpw.sms-throttled"
+      defaultMessage={`You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.`}
+    />
+  ),
+
+  "resetpw.send-sms-success": (
+    <FormattedMessage
+      id="resetpw.send-sms-success"
+      defaultMessage={`Phone code has been sent.`}
+    />
+  ),
+
+  "resetpw.expired-phone-code": (
+    <FormattedMessage
+      id="resetpw.expired-phone-code"
+      defaultMessage={`Phone code has expired. Please try again.`}
+    />
+  ),
 };
