@@ -5,6 +5,9 @@ export const SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE = "SAVE_RESET_PASSWORD_VERIFY
 export const POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL";
 export const POST_RESET_PASSWORD_VERIFY_EMAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL";
 export const POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS = "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS";
+export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE";
+export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
+export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
 
 export function postEmailLink(email) {
   return {
@@ -50,3 +53,33 @@ export function postLinkCodeFail(err) {
   };
 }
 
+export function requestPhoneCode(phone) {
+  return {
+    type: POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE,
+    payload: {
+      phone: {
+        index: phone.index,
+        number: phone.number
+      }
+    }
+  };
+}
+
+export function requestPhoneCodeFail(err) {
+  return {
+    type: POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL,
+    error: true,
+    payload: {
+      message: err.toString()
+    }
+  };
+}
+
+export function savePhoneCode(code) {
+  return {
+    type: SAVE_PHONE_CODE,
+    payload: {
+      phone_code: code
+    }
+  };
+}
