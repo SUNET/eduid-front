@@ -4,6 +4,7 @@ import * as nextPageActions from "../actions/postRefLoginActions";
 import * as usernamePasswordActions from "../actions/postUsernamePasswordActions";
 import * as updatedTouAcceptActions from "../actions/postUpdatedTouAcceptActions";
 import * as postRefForWebauthnChallengeActions from "../actions/postRefForWebauthnChallengeActions";
+import * as postWebauthnToAuthenticatorActions from "../actions/postWebauthnToAuthenticatorActions";
 
 const loginData = {
   ref: null,
@@ -25,8 +26,8 @@ let loginReducer = (state = loginData, action) => {
     case nextPageActions.POST_IDP_NEXT_SUCCESS:
       return {
         ...state,
-        next_page: "USERNAMEPASSWORD",
-        // next_page: action.payload.action,
+        // next_page: "USERNAMEPASSWORD",
+        next_page: action.payload.action,
         // post_to: action.payload.target,
       };
     case nextPageActions.NEXT_MOCK_URL_TOU:
@@ -38,6 +39,11 @@ let loginReducer = (state = loginData, action) => {
       return {
         ...state,
         next_page: "MFA",
+      };
+    case nextPageActions.NEXT_MOCK_URL_FINISHED:
+      return {
+        ...state,
+        next_page: "FINISHED",
       };
     case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
       return {
@@ -55,6 +61,15 @@ let loginReducer = (state = loginData, action) => {
           webauthn_challenge: action.payload.webauthn_options,
         },
       };
+    case postWebauthnToAuthenticatorActions.POST_WEBAUTHN_ASSERTION:
+      return {
+        ...state,
+        mfa: {
+          ...state.mfa,
+          webauthn_assertion: action.payload.assertion,
+        },
+      };
+
     default:
       return state;
   }

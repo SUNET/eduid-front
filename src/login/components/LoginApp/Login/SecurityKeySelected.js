@@ -1,12 +1,14 @@
 import React, { Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
+import { postWebauthnToAuthenticator } from "../../../redux/actions/postWebauthnToAuthenticatorActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let SecurityKeySelected = ({ translate, setSelected }) => {
+  const dispatch = useDispatch();
   const webauthn_challenge = useSelector(
     (state) => state.login.mfa.webauthn_challenge
   );
@@ -19,7 +21,7 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
         .catch((error) => {
           console.log("Problem getting MFA credentials:", error);
         });
-      console.log("asserion from authenticator", webauthnAssertion);
+      dispatch(postWebauthnToAuthenticator(webauthnAssertion));
     }
     securityKeyAssertion();
   }, []);
