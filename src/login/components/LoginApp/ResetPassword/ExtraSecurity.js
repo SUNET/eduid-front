@@ -23,7 +23,6 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
 
 const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
   const dispatch = useDispatch();
-  const email_code = useSelector(state => state.resetPassword.email_code)
 
   const sendConfirmCode = (phone)=>{
     dispatch(requestPhoneCode(phone));
@@ -38,7 +37,6 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
             id="extra-security" 
             key={phone.index}
             onClick={()=>sendConfirmCode(phone)}
-            disabled={!email_code}
           > 
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
