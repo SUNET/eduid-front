@@ -30,8 +30,6 @@ let FrejaOption = (props) => {
 
 let MultiFactorAuth = (props) => {
   const dispatch = useDispatch();
-  // during the forced navigation this
-  // function is dispatched on load
   useEffect(() => {
     dispatch(postRefForWebauthnChallenge());
   }, []);
