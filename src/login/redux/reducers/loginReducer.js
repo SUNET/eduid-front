@@ -3,7 +3,7 @@ import * as onLoadActions from "../actions/addDataToStoreActions";
 import * as nextPageActions from "../actions/postRefLoginActions";
 import * as usernamePasswordActions from "../actions/postUsernamePasswordActions";
 import * as updatedTouAcceptActions from "../actions/postUpdatedTouAcceptActions";
-import * as postRefWebauthnOptionsActions from "../actions/postRefWebauthnOptionsActions";
+import * as postRefWebauthnOptionsActions from "../actions/postRefForWebauthnChallengeActions";
 
 const loginData = {
   ref: null,

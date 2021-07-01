@@ -5,8 +5,9 @@ import * as postUsernamePasswordActions from "../../actions/postUsernamePassword
 import { postUsernamePasswordSaga } from "../login/postUsernamePasswordSaga";
 import * as postUpdatedTouAcceptActions from "../../actions/postUpdatedTouAcceptActions";
 import { postUpdatedTouAcceptSaga } from "../login/postUpdatedTouAcceptSaga";
-import * as postRefWebauthnOptionsActions from "../../actions/postRefWebauthnOptionsActions";
-import { postRefWebauthnOptionsSaga } from "../login/postRefWebauthnOptionsSaga";
+import * as postRefForWebauthnChallengeActions from "../../actions/postRefForWebauthnChallengeActions";
+import { postRefForWebauthnChallengeSaga } from "../login/postRefForWebauthnChallengeSaga";
+
 
 const loginSagas = [
   takeLatest(postRefLoginActions.POST_LOGIN_REF_TO_NEXT, postRefLoginSaga),
@@ -19,8 +20,8 @@ const loginSagas = [
     postUpdatedTouAcceptSaga
   ),
   takeLatest(
-    postRefWebauthnOptionsActions.POST_REF_WEBAUTHN_OPTIONS,
-    postRefWebauthnOptionsSaga
+    postRefForWebauthnChallengeActions.POST_REF_WEBAUTHN_CHALLENGE,
+    postRefForWebauthnChallengeSaga
   ),
   // uncomment to enable call to /next on /pw_auth success
   // takeLatest(

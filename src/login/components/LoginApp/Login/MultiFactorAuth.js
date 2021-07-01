@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { postRefToWebauthnOptions } from "../../../redux/actions/postRefWebauthnOptionsActions";
+import { postRefForWebauthnChallenge } from "../../../redux/actions/postRefForWebauthnChallengeActions";
 import SecurityKey from "./SecurityKey";
 import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import PropTypes from "prop-types";
@@ -33,7 +33,7 @@ let MultiFactorAuth = (props) => {
   // during the forced navigation this
   // function is dispatched on load
   useEffect(() => {
-    dispatch(postRefToWebauthnOptions());
+    dispatch(postRefForWebauthnChallenge());
   }, []);
   const { translate } = props;
   return (
