@@ -3,6 +3,8 @@ import * as postRefLoginActions from "../../actions/postRefLoginActions";
 import { postRefLoginSaga } from "../login/postRefLoginSaga";
 import * as postUsernamePasswordActions from "../../actions/postUsernamePasswordActions";
 import { postUsernamePasswordSaga } from "../login/postUsernamePasswordSaga";
+import * as postTouVersionsActions from "../../actions/postTouVersionsActions";
+import { postTouVersionsSaga } from "../login/postTouVersionsSaga";
 import * as postUpdatedTouAcceptActions from "../../actions/postUpdatedTouAcceptActions";
 import { postUpdatedTouAcceptSaga } from "../login/postUpdatedTouAcceptSaga";
 import * as postRefForWebauthnChallengeActions from "../../actions/postRefForWebauthnChallengeActions";
@@ -17,6 +19,7 @@ const loginSagas = [
     postUsernamePasswordActions.POST_USERNAME_PASSWORD,
     postUsernamePasswordSaga
   ),
+  takeLatest(postTouVersionsActions.POST_TOU_VERSIONS, postTouVersionsSaga),
   takeLatest(
     postUpdatedTouAcceptActions.POST_UPDATED_TOU_ACCEPT,
     postUpdatedTouAcceptSaga
