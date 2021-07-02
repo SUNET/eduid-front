@@ -4,7 +4,7 @@ import * as nextPageActions from "../actions/postRefLoginActions";
 import * as usernamePasswordActions from "../actions/postUsernamePasswordActions";
 import * as updatedTouAcceptActions from "../actions/postUpdatedTouAcceptActions";
 import * as postRefForWebauthnChallengeActions from "../actions/postRefForWebauthnChallengeActions";
-import * as postWebauthnToAuthenticatorActions from "../actions/postWebauthnToAuthenticatorActions";
+import * as postWebauthnFromAuthenticatorActions from "../actions/postWebauthnFromAuthenticatorActions";
 
 const loginData = {
   ref: null,
@@ -66,7 +66,7 @@ let loginReducer = (state = loginData, action) => {
           webauthn_challenge: action.payload.webauthn_options,
         },
       };
-    case postWebauthnToAuthenticatorActions.POST_WEBAUTHN_ASSERTION:
+    case postWebauthnFromAuthenticatorActions.POST_WEBAUTHN_ASSERTION:
       return {
         ...state,
         mfa: {

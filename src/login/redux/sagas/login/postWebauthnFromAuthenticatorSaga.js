@@ -1,7 +1,7 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
-import * as actions from "../../actions/postWebauthnToAuthenticatorActions";
+import * as actions from "../../actions/postWebauthnFromAuthenticatorActions";
 import { nextMockUrlFinished } from "../../actions/postRefLoginActions";
 
 function safeEncode(obj) {
@@ -10,7 +10,7 @@ function safeEncode(obj) {
   return unsafeObj.replace(/\//g, "_").replace(/\+/g, "-").replace(/=*$/, "");
 }
 
-export function* postWebauthnToAuthenticatorSaga() {
+export function* postWebauthnFromAuthenticatorSaga() {
   const state = yield select((state) => state);
   const url = "https://idp.eduid.docker/mfa_auth";
   const assertion = state.login.mfa.webauthn_assertion;
@@ -35,6 +35,6 @@ export function* postWebauthnToAuthenticatorSaga() {
       yield put(nextMockUrlFinished());
     }
   } catch (error) {
-    yield put(actions.postWebauthnToAuthenticatorFail(error.toString()));
+    yield put(actions.postWebauthnFromAuthenticatorFail(error.toString()));
   }
 }

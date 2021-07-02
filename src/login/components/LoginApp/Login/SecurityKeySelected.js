@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
-import { postWebauthnToAuthenticator } from "../../../redux/actions/postWebauthnToAuthenticatorActions";
+import { postWebauthnFromAuthenticator } from "../../../redux/actions/postWebauthnFromAuthenticatorActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let SecurityKeySelected = ({ translate, setSelected }) => {
@@ -21,7 +21,7 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
         .catch((error) => {
           console.log("Problem getting MFA credentials:", error);
         });
-      dispatch(postWebauthnToAuthenticator(webauthnAssertion));
+      dispatch(postWebauthnFromAuthenticator(webauthnAssertion));
     }
     securityKeyAssertion();
   }, []);
