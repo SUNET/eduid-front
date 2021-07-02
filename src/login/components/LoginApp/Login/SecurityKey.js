@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
-import SecurityKeySelected from "./SecurityKeySelected";
+import SecurityKeyAuthentication from "./SecurityKeyAuthentication";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let SecurityKeyUnselected = ({ translate, setSelected }) => {
@@ -25,7 +25,7 @@ let SecurityKey = (props) => {
     <div className="primary">
       <div className="option">
         {selected ? (
-          <SecurityKeySelected setSelected={setSelected} {...props} />
+          <SecurityKeyAuthentication setSelected={setSelected} {...props} />
         ) : (
           <SecurityKeyUnselected setSelected={setSelected} {...props} />
         )}
