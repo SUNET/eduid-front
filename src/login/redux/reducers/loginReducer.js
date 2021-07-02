@@ -13,6 +13,7 @@ const loginData = {
     webauthn_challenge: null,
     webauthn_assertion: null,
   },
+  tou: {},
 };
 
 let loginReducer = (state = loginData, action) => {
@@ -46,6 +47,10 @@ let loginReducer = (state = loginData, action) => {
     case updatedTouAcceptActions.POST_IDP_TOU_SUCCESS:
       return {
         ...state,
+        tou: {
+          ...state.tou,
+          version: action.payload.version,
+        },
       };
     case postRefForWebauthnChallengeActions.POST_IDP_MFA_AUTH_SUCCESS:
       return {

@@ -1,5 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { postTouVersions } from "../../../redux/actions/postTouVersionsActions";
 import { updatedTouAccept } from "../../../redux/actions/postUpdatedTouAcceptActions";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
@@ -88,10 +89,23 @@ let AcceptButton = ({ loading }) => {
 };
 
 let TermOfUse = (props) => {
+  const dispatch = useDispatch();
   const { loading, translate } = props;
+
+  // MOCK: the tou versions will be available from the translations object
+  const availableTouVersions = ["2016-v1", "2021-v1"];
+  useEffect(() => {
+    dispatch(postTouVersions(availableTouVersions));
+  }, []);
+
+  // MOCK: the backend determines what version the user nddes to accept
+  const version = useSelector((state) => state.login.tou.version);
+
   return (
     <div className="tou">
-      <h2 className="heading">{translate("login.tou.h2-heading")}</h2>
+      <h2 className="heading">
+        {translate("login.tou.h2-heading")}{" "}({version})
+      </h2>
       <p>{translate("login.tou.paragraph")}</p>
       <TermOfUseText />
       <AcceptButton loading={loading} translate={translate} />
