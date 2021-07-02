@@ -36,6 +36,7 @@ const baseState = {
   login: {
     ref: "e0367c25-3853-45a9-806",
     next_page: null,
+    tou: {},
   },
   form: [],
   intl: {
@@ -156,9 +157,10 @@ describe("Login renders the TermsOfUse as expected", () => {
     };
   }
 
-  it("pag=TOU renders TermsOfUse", () => {
+  it("page=TOU renders TermsOfUse", () => {
     const state = { ...fakeState };
     state.login.next_page = "TOU";
+    state.login.tou.version = "2016-v1";
     const { wrapper } = setupComponent();
     const page = wrapper.find(TermsOfUse);
     expect(page.exists()).toBe(true);
