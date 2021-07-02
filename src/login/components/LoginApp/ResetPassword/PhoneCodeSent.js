@@ -16,7 +16,7 @@ import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
 import { useHistory } from 'react-router-dom';
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
@@ -47,7 +47,7 @@ let PhoneCodeForm = (props) => (
       className="settings-button"
       id="save-phone-button"
       disabled={props.invalid}
-      onClick={props.savePhoneCode}
+      onClick={props.handlePhoneCode}
     >
       {props.translate("chpass.button_save_password")}
     </EduIDButton>
@@ -88,15 +88,13 @@ function PhoneCodeSent(props){
     }
   };
 
-  const savePhoneCode = (e) => {
+  const handlePhoneCode = (e) => {
     e.preventDefault();
     const phoneCode = document.querySelector("input#phone").value;
 
     if(phoneCode){
-      history.push({ 
-        pathname:`/reset-password/set-new-password`, 
-        state: { phone_code: phoneCode }
-      })
+      history.push(`/reset-password/set-new-password`);
+      dispatch(savePhoneCode(phoneCode));
       dispatch(eduidRMAllNotify());
     }
   };
@@ -106,7 +104,7 @@ function PhoneCodeSent(props){
       <SuccessIconAnimation />
       <div id="reset-pass-display">
         <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
-        <PhoneCodeForm savePhoneCode={savePhoneCode} phone={phone} {...props} />
+        <PhoneCodeForm handlePhoneCode={handlePhoneCode} phone={phone} {...props} />
         <div className="timer">
           <RenderingResendCodeTimer resendPhoneCode={resendPhoneCode} {...props}/>
         </div>
