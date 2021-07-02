@@ -18,6 +18,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
 import { useHistory } from 'react-router-dom';
+import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 const validate = (values) => {
     const value = values.phone;
@@ -96,6 +97,7 @@ function PhoneCodeSent(props){
         pathname:`/reset-password/set-new-password`, 
         state: { phone_code: phoneCode }
       })
+      dispatch(eduidRMAllNotify());
     }
   };
 
