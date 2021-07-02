@@ -10,6 +10,7 @@ const loginData = {
   next_page: null,
   post_to: null,
   webauthn_options: {},
+  tou: {},
 };
 
 let loginReducer = (state = loginData, action) => {
@@ -43,6 +44,10 @@ let loginReducer = (state = loginData, action) => {
     case updatedTouAcceptActions.POST_IDP_TOU_SUCCESS:
       return {
         ...state,
+        tou: {
+          ...state.tou,
+          version: action.payload.version,
+        },
       };
     case postRefWebauthnOptionsActions.POST_IDP_MFA_AUTH_SUCCESS:
       return {
