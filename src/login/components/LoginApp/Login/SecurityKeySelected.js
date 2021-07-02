@@ -1,13 +1,45 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import { postWebauthnFromAuthenticator } from "../../../redux/actions/postWebauthnFromAuthenticatorActions";
+import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
+let CloseButton = ({ setSelected }) => {
+  const dispatch = useDispatch();
+  return (
+    <button
+      className="icon"
+      onClick={() => {
+        setSelected(false);
+        dispatch(eduidRMAllNotify());
+      }}
+    >
+      <FontAwesomeIcon icon={faTimes} />
+    </button>
+  );
+};
+
+let RetryButton = ({ retryToggle, setRetryToggle }) => {
+  const dispatch = useDispatch();
+  return (
+    <button
+      className="icon"
+      onClick={() => {
+        setRetryToggle(!retryToggle);
+        dispatch(eduidRMAllNotify());
+      }}
+    >
+      <FontAwesomeIcon icon={faRedo} />
+    </button>
+  );
+};
+
 let SecurityKeySelected = ({ translate, setSelected }) => {
+  const [retryToggle, setRetryToggle] = useState(false);
   const dispatch = useDispatch();
   const webauthn_challenge = useSelector(
     (state) => state.login.mfa.webauthn_challenge
@@ -24,29 +56,23 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
       dispatch(postWebauthnFromAuthenticator(webauthnAssertion));
     }
     securityKeyAssertion();
-  }, []);
+  }, [retryToggle]);
 
   return (
     <Fragment>
       <div className="button-pair selected">
         <p className="heading">{translate("login.mfa.primary-option.title")}</p>
-        <button
-          className="icon"
-          onClick={() => {
-            setSelected(false);
-          }}
-        >
-          <FontAwesomeIcon icon={faTimes} />
-        </button>
+        <CloseButton setSelected={setSelected} />
       </div>
       <div className="button-pair bottom">
         <img
           src={SecurityKeyGif}
           alt="animation of security key inserted into computer"
         />
-        <button className="icon" onClick={() => {}}>
-          <FontAwesomeIcon icon={faRedo} />
-        </button>
+        <RetryButton
+          retryToggle={retryToggle}
+          setRetryToggle={setRetryToggle}
+        />
       </div>
     </Fragment>
   );
