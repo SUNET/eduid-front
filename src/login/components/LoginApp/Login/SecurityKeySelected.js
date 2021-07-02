@@ -6,7 +6,7 @@ import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-let SecurityKeyAuthentication = ({ translate, setSelected }) => {
+let SecurityKeySelected = ({ translate, setSelected }) => {
   const webauthn_challenge = useSelector(
     (state) => state.login.mfa.webauthn_challenge
   );
@@ -50,8 +50,8 @@ let SecurityKeyAuthentication = ({ translate, setSelected }) => {
   );
 };
 
-SecurityKeyAuthentication.propTypes = {
+SecurityKeySelected.propTypes = {
   translate: PropTypes.func,
 };
 
-export default InjectIntl(SecurityKeyAuthentication);
+export default InjectIntl(SecurityKeySelected);
