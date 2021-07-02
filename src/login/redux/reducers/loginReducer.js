@@ -3,11 +3,13 @@ import * as onLoadActions from "../actions/addDataToStoreActions";
 import * as nextPageActions from "../actions/postRefLoginActions";
 import * as usernamePasswordActions from "../actions/postUsernamePasswordActions";
 import * as updatedTouAcceptActions from "../actions/postUpdatedTouAcceptActions";
+import * as postRefWebauthnOptionsActions from "../actions/postRefForWebauthnChallengeActions";
 
 const loginData = {
   ref: null,
   next_page: null,
   post_to: null,
+  webauthn_options: {},
   tou: {},
 };
 
@@ -47,6 +49,12 @@ let loginReducer = (state = loginData, action) => {
           version: action.payload.version,
         },
       };
+    case postRefWebauthnOptionsActions.POST_IDP_MFA_AUTH_SUCCESS:
+      return {
+        ...state,
+        webauthn_options: action.payload.webauthn_options,
+      };
+
     default:
       return state;
   }
