@@ -8,6 +8,7 @@ const loginData = {
   ref: null,
   next_page: null,
   post_to: null,
+  tou: {},
 };
 
 let loginReducer = (state = loginData, action) => {
@@ -41,6 +42,10 @@ let loginReducer = (state = loginData, action) => {
     case updatedTouAcceptActions.POST_IDP_TOU_SUCCESS:
       return {
         ...state,
+        tou: {
+          ...state.tou,
+          version: action.payload.version,
+        },
       };
     default:
       return state;
