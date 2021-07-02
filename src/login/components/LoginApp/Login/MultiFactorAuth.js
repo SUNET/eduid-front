@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { postRefForWebauthnChallenge } from "../../../redux/actions/postRefForWebauthnChallengeActions";
