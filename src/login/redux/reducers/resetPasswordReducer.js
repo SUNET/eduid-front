@@ -34,11 +34,6 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-    case postActions.SAVE_PHONE_CODE:
-      return {
-        ...state,
-        ...action.payload
-      };
     default:
       return state;
   }
