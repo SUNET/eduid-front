@@ -101,7 +101,10 @@
       flex: 1;
       border: solid transparent 2px;
       margin-left: 2rem;
-      button {
+      button,
+      button:active,
+      button:focus,
+      button:active:focus {
         color: $orange-highlight;
         border: none;
         border: solid 2px $orange-highlight;
@@ -114,7 +117,10 @@
       background: $white;
       box-shadow: 0 4px 14px rgba(89, 89, 89, 0.07);
       padding: 1rem;
-      button {
+      button,
+      button:active,
+      button:focus,
+      button:active:focus {
         margin-top: 2.75rem;
         margin-bottom: 0;
       }
