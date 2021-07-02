@@ -40,7 +40,6 @@ let RetryButton = ({ retryToggle, setRetryToggle }) => {
 
 let SecurityKeySelected = ({ translate, setSelected }) => {
   const [retryToggle, setRetryToggle] = useState(false);
-  console.log("retry", retry);
   const dispatch = useDispatch();
   const webauthn_challenge = useSelector(
     (state) => state.login.mfa.webauthn_challenge
