@@ -34,23 +34,24 @@ const validate = (values) => {
   };
 
 let PhoneCodeForm = (props) => (
-    <Form id="phone-code-form" role="form">
-      <Field
-        component={CustomInput}
-        componentClass="input"
-        type="text"
-        label={props.translate("cm.enter_code")}
-        name="phone"
-      />
-      <EduIDButton
-        className="settings-button"
-        id="save-phone-button"
-        disabled={props.invalid}
-      >
-       {props.translate("chpass.button_save_password")}
-      </EduIDButton>
-    </Form>
-  );
+  <Form id="phone-code-form" role="form" onSubmit={props.savePhoneCode}>
+    <Field
+      component={CustomInput}
+      componentClass="input"
+      type="text"
+      label={props.translate("cm.enter_code")}
+      name="phone"
+    />
+    <EduIDButton
+      className="settings-button"
+      id="save-phone-button"
+      disabled={props.invalid}
+      onClick={props.savePhoneCode}
+    >
+      {props.translate("chpass.button_save_password")}
+    </EduIDButton>
+  </Form>
+);
     
   PhoneCodeForm = reduxForm({
     form: "phone-code-form",
@@ -70,18 +71,31 @@ function PhoneCodeSent(props){
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
     if(count > - 1 && Object.keys(phone).length){
-        countDownStart();
-    } else {
-        //Navigate to "/reset-password/" without extra security phone
-        history.push(`/reset-password/`)
-        clearCountdown();
+      countDownStart();
+    } 
+    else {
+      //Navigate to "/reset-password/" without extra security phone
+      history.push(`/reset-password/`)
+      clearCountdown();
     }
   },[]);
 
   const resendPhoneCode = (e) => {
     e.preventDefault();
     if(phone){
-       dispatch(requestPhoneCode(phone));
+      dispatch(requestPhoneCode(phone));
+    }
+  };
+
+  const savePhoneCode = (e) => {
+    e.preventDefault();
+    const phoneCode = document.querySelector("input#phone").value;
+
+    if(phoneCode){
+      history.push({ 
+        pathname:`/reset-password/set-new-password`, 
+        state: { phone_code: phoneCode }
+      })
     }
   };
 
@@ -90,9 +104,9 @@ function PhoneCodeSent(props){
       <SuccessIconAnimation />
       <div id="reset-pass-display">
         <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
-        <PhoneCodeForm phone={phone} {...props} />
+        <PhoneCodeForm savePhoneCode={savePhoneCode} phone={phone} {...props} />
         <div className="timer">
-            <RenderingResendCodeTimer  resendPhoneCode={resendPhoneCode} {...props}/>
+          <RenderingResendCodeTimer resendPhoneCode={resendPhoneCode} {...props}/>
         </div>
       </div>
     </>
