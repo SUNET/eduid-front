@@ -23,13 +23,13 @@ let CloseButton = ({ setSelected }) => {
   );
 };
 
-let RetryButton = ({ setRetry }) => {
+let RetryButton = ({ retryToggle, setRetryToggle }) => {
   const dispatch = useDispatch();
   return (
     <button
       className="icon"
       onClick={() => {
-        setRetry(true);
+        setRetryToggle(!retryToggle);
         dispatch(eduidRMAllNotify());
       }}
     >
@@ -39,14 +39,14 @@ let RetryButton = ({ setRetry }) => {
 };
 
 let SecurityKeySelected = ({ translate, setSelected }) => {
-  const [retry, setRetry] = useState(false);
+  const [retryToggle, setRetryToggle] = useState(false);
+  console.log("retry", retry);
   const dispatch = useDispatch();
   const webauthn_challenge = useSelector(
     (state) => state.login.mfa.webauthn_challenge
   );
 
   useEffect(() => {
-    setRetry(false);
     async function securityKeyAssertion() {
       const webauthnAssertion = await navigator.credentials
         .get(webauthn_challenge)
@@ -57,7 +57,7 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
       dispatch(postWebauthnFromAuthenticator(webauthnAssertion));
     }
     securityKeyAssertion();
-  }, [retry]);
+  }, [retryToggle]);
 
   return (
     <Fragment>
@@ -70,7 +70,10 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
           src={SecurityKeyGif}
           alt="animation of security key inserted into computer"
         />
-        <RetryButton setRetry={setRetry} />
+        <RetryButton
+          retryToggle={retryToggle}
+          setRetryToggle={setRetryToggle}
+        />
       </div>
     </Fragment>
   );
