@@ -10,7 +10,7 @@ let FrejaOption = (props) => {
   const { loading, translate } = props;
 
   // the following are dynamic in prev version
-  const idp = "http://dev.test.swedenconnect.se/";
+  const idp = "http://dev.test.swedenconnect.se/idp";
   const encodedUrl = btoa(window.location);
   // om frejaUrlDomain inte slutar på "/" sätt dit ett med .concat("/")
   // https://eidas.eduid.docker/  (i dev slutar det på /)
@@ -18,18 +18,19 @@ let FrejaOption = (props) => {
   // dev: "https://eidas.eduid.docker/"
   // (?) QA: "https://eidas.eduid.se/"
   // prod: "https://eidas.eduid.se/"
-  const mfa_authn_idp = "http://dev.test.swedenconnect.se/idp";
+  // const mfa_authn_idp = "http://dev.test.swedenconnect.se/idp";
   // dev: "http://dev.test.swedenconnect.se/idp"
   // (?) QA: https://idp-sweden-connect-valfr-2017.test.frejaeid.com
   // prod: https://idp-sweden-connect-valfr-2017.prod.frejaeid.com
 
-  const frejaLink = `${frejaUrlDomain}mfa-authentication?idp=${idp}idp&next=${encodedUrl}`;
+   const frejaLink = `${frejaUrlDomain}mfa-authentication?idp=${idp}&next=${encodedUrl}`;
   // dev: "https://eidas.eduid.docker/mfa-authentication?idp=http://dev.test.swedenconnect.se/idp&next=aHR0cHM6Ly9sb2dpbi5lZHVpZC5kb2NrZXIvbG9naW4vbWZhLzJjZDViYTE2LWJiMzYtNDFiYy05ZmIyLWJiZjQ4MGRlZGIwOA=="
   // (?) QA: "https://eidas.eduid.se/mfa-authentication?idp=https://idp-sweden-connect-valfr-2017.test.frejaeid.com&next=aHR0cHM6Ly9sb2dpbi5lZHVpZC5kb2NrZXIvbG9naW4vbWZhLzJjZDViYTE2LWJiMzYtNDFiYy05ZmIyLWJiZjQ4MGRlZGIwOA=="
-  // prod: https://eidas.eduid.se/mfa-authentication?idphttps://idp-sweden-connect-valfr-2017.prod.frejaeid.com&next=aHR0cHM6Ly9sb2dpbi5lZHVpZC5kb2NrZXIvbG9naW4vbWZhLzJjZDViYTE2LWJiMzYtNDFiYy05ZmIyLWJiZjQ4MGRlZGIwOA==
+  // prod: https://eidas.eduid.se/mfa-authentication?idp=https://idp-sweden-connect-valfr-2017.prod.frejaeid.com&next=aHR0cHM6Ly9sb2dpbi5lZHVpZC5kb2NrZXIvbG9naW4vbWZhLzJjZDViYTE2LWJiMzYtNDFiYy05ZmIyLWJiZjQ4MGRlZGIwOA==
 
   // actual link to freja website
-  // const swe_connect_test_url = "https://idp-sweden-connect-valfr-2017-ct.test.frejaeid.com/idp/extauth?conversation=e1s1";
+  // const swe_connect_url = "https://idp-sweden-connect-valfr-2017-ct.test.frejaeid.com";
+  // const url_when_on_site ="https://idp-sweden-connect-valfr-2017-ct.test.frejaeid.com/idp/extauth?conversation=e1s1";
 
   // in actual prod:
   // https://eidas.eduid.se/mfa-authentication?idp=https://idp-sweden-connect-valfr-2017.prod.frejaeid.com&next=aHR0cHM6Ly9sb2dpbi5pZHAuZWR1aWQuc2Uvc2VydmljZXMvYWN0aW9uczIv
@@ -43,7 +44,7 @@ let FrejaOption = (props) => {
         <ButtonSecondary
           type="submit"
           onClick={() => {
-            window.open(external_mfa_url, "_blank").focus();
+            window.open(frejaLink, "_blank").focus();
           }}
           disabled={loading}
           aria-disabled={loading}
