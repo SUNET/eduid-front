@@ -17,7 +17,6 @@ export function postUsernamePasswordFail(err) {
     type: POST_IDP_PW_AUTH_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err,
     },
   };

@@ -16,7 +16,6 @@ export function updateTouAcceptFail(err) {
     type: POST_IDP_TOU_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err,
     },
   };
