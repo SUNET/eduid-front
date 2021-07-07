@@ -1,5 +1,5 @@
 import expect from "expect";
-import { put, call } from "redux-saga/effects";
+import { call } from "redux-saga/effects";
 import { addLocaleData } from "react-intl";
 addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
@@ -41,7 +41,7 @@ describe("initial API call to /next fires", () => {
     expect(resp).toEqual(call(postRequest, url, dataToSend));
   });
 
-  it("postUsernamePasswordSaga SUCCESS response is followed by 'NEW_CSRF_TOKEN'", () => {
+  it("postUsernamePasswordSaga SUCCESS response is followed by 'NEW_CSRF_TOKEN' and 'LOAD_DATA_COMPLETE'", () => {
     let action = {
       type: "POST_USERNAME_PASSWORD,",
       payload: {
@@ -75,7 +75,6 @@ describe("initial API call to /next fires", () => {
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    delete action.payload.csrf_token;
-    expect(next.value).toEqual(put(action));
+    expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
   });
 });
