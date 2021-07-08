@@ -16,7 +16,7 @@ let TermOfUseText = ({ translate, version }) => (
   </div>
 );
 
-let AcceptButton = ({ loading }) => {
+let AcceptButton = ({ translate }) => {
   const dispatch = useDispatch();
   return (
     <ButtonPrimary
@@ -24,7 +24,7 @@ let AcceptButton = ({ loading }) => {
       onClick={() => dispatch(updatedTouAccept())}
       id="accept-button"
     >
-      accept
+      {translate("login.tou.button")}
     </ButtonPrimary>
   );
 };

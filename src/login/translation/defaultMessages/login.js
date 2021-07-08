@@ -204,6 +204,6 @@ export const tou = {
     />
   ),
   "login.tou.button": (
-    <FormattedMessage id="login.tou.button" defaultMessage={`Ì accept`} />
+    <FormattedMessage id="login.tou.button" defaultMessage={`I accept`} />
   ),
 };
