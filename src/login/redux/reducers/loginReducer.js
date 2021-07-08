@@ -13,6 +13,7 @@ const loginData = {
   mfa: {
     webauthn_challenge: null,
     webauthn_assertion: null,
+    parameters: null,
   },
   tou: {},
 };
@@ -25,27 +26,33 @@ let loginReducer = (state = loginData, action) => {
         ref: action.payload.ref,
       };
     case nextPageActions.POST_IDP_NEXT_SUCCESS:
+      const samlParameters =
+        action.payload.action === "FINISHED" ? action.payload.parameters : null;
       return {
         ...state,
-        next_page: "USERNAMEPASSWORD",
-        // next_page: action.payload.action,
-        // post_to: action.payload.target,
+        // next_page: "USERNAMEPASSWORD",
+        next_page: action.payload.action,
+        post_to: action.payload.target,
+        mfa: {
+          ...state.mfa,
+          parameters: samlParameters,
+        },
       };
-    case nextPageActions.NEXT_MOCK_URL_TOU:
-      return {
-        ...state,
-        next_page: "TOU",
-      };
-    case nextPageActions.NEXT_MOCK_URL_MFA:
-      return {
-        ...state,
-        next_page: "MFA",
-      };
-    case nextPageActions.NEXT_MOCK_URL_FINISHED:
-      return {
-        ...state,
-        next_page: "FINISHED",
-      };
+    // case nextPageActions.NEXT_MOCK_URL_TOU:
+    //   return {
+    //     ...state,
+    //     next_page: "TOU",
+    //   };
+    // case nextPageActions.NEXT_MOCK_URL_MFA:
+    //   return {
+    //     ...state,
+    //     next_page: "MFA",
+    //   };
+    // case nextPageActions.NEXT_MOCK_URL_FINISHED:
+    //   return {
+    //     ...state,
+    //     next_page: "FINISHED",
+    //   };
     case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
       return {
         ...state,
