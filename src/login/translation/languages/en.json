@@ -191,7 +191,7 @@
   "login.mfa.primary-option.title": "Security key",
   "login.mfa.secondary-option.button": "Use my freja eid+",
   "login.mfa.secondary-option.title": "Freja eID+",
-  "login.tou.button": "Ì accept",
+  "login.tou.button": "I accept",
   "login.tou.h2-heading": "Log in: Terms of use",
   "login.tou.legal-title": "General rules for eduID users:",
   "login.tou.legal-warning": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken.",
