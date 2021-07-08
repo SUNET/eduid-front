@@ -107,6 +107,7 @@ export const tou = {
       defaultMessage={`General rules for eduID users:`}
     />
   ),
+  // --- TOU: 2016-V1--- //
   "login.tou.2016-v1": (
     <FormattedHTMLMessage
       id="login.tou.2016-v1"
@@ -165,6 +166,33 @@ export const tou = {
       </li>
       <li>
         <p>attempts to insult or offend others</p>
+      </li>
+    </ul>`}
+    />
+  ),
+  // --- TOU: 2021-V1--- //
+  "login.tou.2021-v1": (
+    <FormattedHTMLMessage
+      id="login.tou.2021-v1"
+      defaultMessage={`<ul>
+      <p>This is a test tou:</p>
+      <li>
+        <p>
+          This version is from 2021,
+        </p>
+      </li>
+      <li>
+        <p>
+          This shows that the version the backend dictates,
+        </p>
+      </li>
+    </ul>
+    <ul>
+      <p>This is a test header:</p>
+      <li>
+        <p>
+        is the version one that displayed
+        </p>
       </li>
     </ul>`}
     />
