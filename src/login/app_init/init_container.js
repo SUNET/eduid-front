@@ -13,15 +13,13 @@ const init_container = () => {
   const urlCode = url.split("/").reverse()[0];
   if (url.includes(`/login/`)) {
     initStore.dispatch(addLoginRef(urlCode));
-    if (url.includes(`/tou/`)) {
-      const state = initStore.getState();
-      const messages = state.intl.messages.en;
-      // extract the available tou versions in the message object
-      const touVersions = Object.keys(messages)
-        .filter((msgId) => msgId.includes("login.tou.version."))
-        .map((mgsId) => mgsId.split(".").reverse()[0]);
-      initStore.dispatch(addTouVersions(touVersions));
-    }
+    // extract the available tou versions in the message object
+    const state = initStore.getState();
+    const messages = state.intl.messages.en;
+    const touVersions = Object.keys(messages)
+      .filter((msgId) => msgId.includes("login.tou.version."))
+      .map((mgsId) => mgsId.split(".").reverse()[0]);
+    initStore.dispatch(addTouVersions(touVersions));
   }
 
   if (url.includes(`/email-code/`)) {
