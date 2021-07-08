@@ -108,9 +108,9 @@ export const tou = {
     />
   ),
   // --- TOU: 2016-V1--- //
-  "login.tou.2016-v1": (
+  "login.tou.version.2016-v1": (
     <FormattedHTMLMessage
-      id="login.tou.2016-v1"
+      id="login.tou.version.2016-v1"
       defaultMessage={`<ul>
       <p>The following generally applies:</p>
       <li>
@@ -171,9 +171,9 @@ export const tou = {
     />
   ),
   // --- TOU: 2021-V1--- //
-  "login.tou.2021-v1": (
+  "login.tou.version.2021-v1": (
     <FormattedHTMLMessage
-      id="login.tou.2021-v1"
+      id="login.tou.version.2021-v1"
       defaultMessage={`<ul>
       <p>This is a test tou:</p>
       <li>
