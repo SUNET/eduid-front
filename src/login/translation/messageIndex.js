@@ -1,7 +1,7 @@
 import { defineMessages } from "react-intl";
 
 // import content from other files
-import { generalErrors, specificErrors } from "./defaultMessages/eors";
+import { generalErrors, specificErrors } from "./defaultMessages/errors";
 import { login, tou} from "./defaultMessages/login";
 import { generalInstructions } from "./defaultMessages/instructions";
 import { changePassword, resetPassword } from "./defaultMessages/password";
