@@ -2,8 +2,8 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postUsernamePasswordActions";
-import { useLoginRef } from "../../actions/postRefLoginActions";
-// import { nextMockUrlTou } from "../../actions/postRefLoginActions";
+//import { useLoginRef } from "../../actions/postRefLoginActions";
+import { nextMockUrlTou } from "../../actions/postRefLoginActions";
 import {
   loadingData,
   loadingDataComplete,
@@ -29,8 +29,8 @@ export function* postUsernamePasswordSaga(action) {
     yield put(loadingDataComplete());
     if (postUsernamePasswordResponse.payload.finished) {
       // MOCK: forced navigation to tou
-      // yield put(nextMockUrlTou());
-      yield put(useLoginRef());
+      yield put(nextMockUrlTou());
+      //yield put(useLoginRef());
     }
   } catch (error) {
     yield put(actions.postUsernamePasswordFail(error.toString()));
