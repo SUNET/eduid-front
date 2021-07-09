@@ -42,7 +42,7 @@ let TermOfUse = (props) => {
   return (
     <div className="tou">
       <h2 className="heading">
-        {translate("login.tou.h2-heading")} ({version})
+        {translate("login.tou.h2-heading")}
       </h2>
       <p>{translate("login.tou.paragraph")}</p>
       <TermOfUseText translate={translate} version={version} />
