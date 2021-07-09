@@ -9,7 +9,7 @@ let FrejaeID = ({ translate }) => {
   // ensure url has one slash at the end to be functional in the link
   const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/")
     ? frejaUrlDomain
-    : frejaUrlDomain.contact("/");
+    : frejaUrlDomain.concat("/");
   return (
     <div className="secondary">
       <div className="option">
