@@ -34,29 +34,13 @@ let loginReducer = (state = loginData, action) => {
         action.payload.action === "FINISHED" ? action.payload.parameters : null;
       return {
         ...state,
-        next_page: "TOU",
-        // next_page: action.payload.action,
+        next_page: action.payload.action,
         post_to: action.payload.target,
         mfa: {
           ...state.mfa,
           parameters: samlParameters,
         },
       };
-    // case nextPageActions.NEXT_MOCK_URL_TOU:
-    //   return {
-    //     ...state,
-    //     next_page: "TOU",
-    //   };
-    // case nextPageActions.NEXT_MOCK_URL_MFA:
-    //   return {
-    //     ...state,
-    //     next_page: "MFA",
-    //   };
-    // case nextPageActions.NEXT_MOCK_URL_FINISHED:
-    //   return {
-    //     ...state,
-    //     next_page: "FINISHED",
-    //   };
     case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
       return {
         ...state,
