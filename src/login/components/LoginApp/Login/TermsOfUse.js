@@ -38,12 +38,10 @@ let TermOfUse = (props) => {
   const version = useSelector((state) => state.login.tou.version);
   useEffect(() => {
     dispatch(postTouVersions(availableTouVersions));
-  });
+  }, []);
   return (
     <div className="tou">
-      <h2 className="heading">
-        {translate("login.tou.h2-heading")}
-      </h2>
+      <h2 className="heading">{translate("login.tou.h2-heading")}</h2>
       <p>{translate("login.tou.paragraph")}</p>
       <TermOfUseText translate={translate} version={version} />
       <AcceptButton translate={translate} />
