@@ -69,7 +69,7 @@ export const login = {
   "login.mfa.primary-option.button": (
     <FormattedMessage
       id="login.mfa.primary-option.button"
-      defaultMessage={`Use my security key`}
+      defaultMessage={`Use security key`}
     />
   ),
   // freja eid+
@@ -82,7 +82,7 @@ export const login = {
   "login.mfa.secondary-option.button": (
     <FormattedMessage
       id="login.mfa.secondary-option.button"
-      defaultMessage={`Use my freja eid+`}
+      defaultMessage={`Use freja eid+`}
     />
   ),
 };
