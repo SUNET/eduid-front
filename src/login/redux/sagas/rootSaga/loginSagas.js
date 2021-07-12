@@ -12,7 +12,6 @@ import { postRefForWebauthnChallengeSaga } from "../login/postRefForWebauthnChal
 import * as postWebauthnFromAuthenticatorActions from "../../actions/postWebauthnFromAuthenticatorActions";
 import { postWebauthnFromAuthenticatorSaga } from "../login/postWebauthnFromAuthenticatorSaga";
 
-
 const loginSagas = [
   takeLatest(postRefLoginActions.POST_LOGIN_REF_TO_NEXT, postRefLoginSaga),
   takeLatest(
@@ -32,11 +31,6 @@ const loginSagas = [
     postWebauthnFromAuthenticatorActions.POST_WEBAUTHN_ASSERTION,
     postWebauthnFromAuthenticatorSaga
   ),
-  // uncomment to enable call to /next on /pw_auth success
-  // takeLatest(
-  //   postUsernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS,
-  //   postRefLoginSaga
-  // ),
 ];
 
 export default loginSagas;

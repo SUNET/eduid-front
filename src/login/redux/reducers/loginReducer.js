@@ -2,6 +2,7 @@
 import * as onLoadActions from "../actions/addDataToStoreActions";
 import * as nextPageActions from "../actions/postRefLoginActions";
 import * as usernamePasswordActions from "../actions/postUsernamePasswordActions";
+import * as addDataToStoreActions from "../actions/addDataToStoreActions";
 import * as updatedTouAcceptActions from "../actions/postUpdatedTouAcceptActions";
 import * as postRefForWebauthnChallengeActions from "../actions/postRefForWebauthnChallengeActions";
 import * as postWebauthnFromAuthenticatorActions from "../actions/postWebauthnFromAuthenticatorActions";
@@ -13,8 +14,12 @@ const loginData = {
   mfa: {
     webauthn_challenge: null,
     webauthn_assertion: null,
+    parameters: null,
   },
-  tou: {},
+  tou: {
+    available_versions: null,
+    version: null,
+  },
 };
 
 let loginReducer = (state = loginData, action) => {
@@ -25,30 +30,28 @@ let loginReducer = (state = loginData, action) => {
         ref: action.payload.ref,
       };
     case nextPageActions.POST_IDP_NEXT_SUCCESS:
+      const samlParameters =
+        action.payload.action === "FINISHED" ? action.payload.parameters : null;
       return {
         ...state,
-        next_page: "USERNAMEPASSWORD",
-        // next_page: action.payload.action,
-        // post_to: action.payload.target,
-      };
-    case nextPageActions.NEXT_MOCK_URL_TOU:
-      return {
-        ...state,
-        next_page: "TOU",
-      };
-    case nextPageActions.NEXT_MOCK_URL_MFA:
-      return {
-        ...state,
-        next_page: "MFA",
-      };
-    case nextPageActions.NEXT_MOCK_URL_FINISHED:
-      return {
-        ...state,
-        next_page: "FINISHED",
+        next_page: action.payload.action,
+        post_to: action.payload.target,
+        mfa: {
+          ...state.mfa,
+          parameters: samlParameters,
+        },
       };
     case usernamePasswordActions.POST_IDP_PW_AUTH_SUCCESS:
       return {
         ...state,
+      };
+    case addDataToStoreActions.ADD_TOU_VERSIONS_TO_STORE:
+      return {
+        ...state,
+        tou: {
+          ...state.tou,
+          available_versions: action.payload.touVersions,
+        },
       };
     case updatedTouAcceptActions.POST_IDP_TOU_SUCCESS:
       return {

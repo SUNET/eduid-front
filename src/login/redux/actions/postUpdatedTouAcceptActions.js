@@ -2,11 +2,11 @@ export const POST_UPDATED_TOU_ACCEPT = "POST_UPDATED_TOU_ACCEPT";
 export const POST_IDP_TOU_SUCCESS = "POST_IDP_TOU_SUCCESS";
 export const POST_IDP_TOU_FAIL = "POST_IDP_TOU_FAIL";
 
-export function updatedTouAccept() {
+export function updatedTouAccept(version) {
   return {
     type: POST_UPDATED_TOU_ACCEPT,
     payload: {
-      user_accepts: "2016-v1",
+      user_accepts: version,
     },
   };
 }
@@ -16,7 +16,6 @@ export function updateTouAcceptFail(err) {
     type: POST_IDP_TOU_FAIL,
     error: true,
     payload: {
-      error: err,
       message: err,
     },
   };

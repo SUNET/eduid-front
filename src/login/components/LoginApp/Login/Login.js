@@ -4,11 +4,11 @@ import { useHistory } from "react-router-dom";
 import UsernamePw from "./UsernamePw";
 import TermOfUse from "./TermsOfUse";
 import MultiFactorAuth from "./MultiFactorAuth";
+import SubmitSamlResponse from "./SubmitSamlResponse";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 
 const Login = (props) => {
-  // update url when next_page changes
   let history = useHistory();
   const next_page = useSelector((state) => state.login.next_page);
   const ref = useSelector((state) => state.login.ref);
@@ -19,8 +19,6 @@ const Login = (props) => {
       history.push(`/login/tou/${ref}`);
     } else if (next_page === "MFA") {
       history.push(`/login/mfa/${ref}`);
-    } else if (next_page === "FINISHED") {
-      history.push(`/login/finished/`);
     }
   }, [next_page]);
   return (
@@ -31,6 +29,8 @@ const Login = (props) => {
         <TermOfUse {...props} />
       ) : next_page === "MFA" ? (
         <MultiFactorAuth {...props} />
+      ) : next_page === "FINISHED" ? (
+        <SubmitSamlResponse />
       ) : null}
     </Fragment>
   );
