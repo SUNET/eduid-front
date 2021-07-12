@@ -188,6 +188,7 @@
   "login.mfa.h2-heading": "Log in: Extra level of security",
   "login.mfa.paragraph": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID",
   "login.mfa.primary-option.button": "Use my security key",
+  "login.mfa.primary-option.hint": "If your security key has a button, don’t forget to tap it.",
   "login.mfa.primary-option.title": "Security key",
   "login.mfa.secondary-option.button": "Use my freja eid+",
   "login.mfa.secondary-option.title": "Freja eID+",

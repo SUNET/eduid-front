@@ -52,6 +52,10 @@
     "defaultMessage": "Use freja eid+"
   },
   {
+    "id": "login.mfa.primary-option.hint",
+    "defaultMessage": "If your security key has a button, don’t forget to tap it."
+  },
+  {
     "id": "login.tou.h2-heading",
     "defaultMessage": "Log in: Terms of use"
   },

@@ -188,6 +188,7 @@
   "login.mfa.h2-heading": "Logga in: Extra nivå av säkerhet",
   "login.mfa.paragraph": "Du måste välja en andra metod att autentisera dig själv. Detta hjälper att garantera att bara du kan komma åt ditt eduID.",
   "login.mfa.primary-option.button": "Använd säkerhetsnyckel",
+  "login.mfa.primary-option.hint": "Om din säkerhetsnyckel har en knapp, glöm inte att trycka på den.",
   "login.mfa.primary-option.title": "Säkerhetsnyckel",
   "login.mfa.secondary-option.button": "Använd Freja eID+",
   "login.mfa.secondary-option.title": "Freja eID+",

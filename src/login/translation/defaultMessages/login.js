@@ -85,6 +85,12 @@ export const login = {
       defaultMessage={`Use freja eid+`}
     />
   ),
+  "login.mfa.primary-option.hint": (
+    <FormattedMessage
+      id="login.mfa.primary-option.hint"
+      defaultMessage={`If your security key has a button, don’t forget to tap it.`}
+    />
+  ),
 };
 
 export const tou = {
