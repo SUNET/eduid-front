@@ -3,7 +3,6 @@ import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postUpdatedTouAcceptActions";
 import { useLoginRef } from "../../actions/postRefLoginActions";
-// import { nextMockUrlMfa } from "../../actions/postRefLoginActions";
 
 export function* postUpdatedTouAcceptSaga(action) {
   const state = yield select((state) => state);
@@ -21,8 +20,6 @@ export function* postUpdatedTouAcceptSaga(action) {
     );
     yield put(putCsrfToken(postUpdatedTouAcceptResponse));
     if (postUpdatedTouAcceptResponse.payload.finished) {
-      // MOCK: forced navigation to mfa
-      // yield put(nextMockUrlMfa());
       yield put(useLoginRef());
     }
   } catch (error) {

@@ -18,23 +18,3 @@ export function postRefFail(err) {
   };
 }
 
-// mock actions to trigger a set order of redirects
-// export const NEXT_MOCK_URL_TOU = "NEXT_MOCK_URL_TOU";
-// export const NEXT_MOCK_URL_MFA = "NEXT_MOCK_URL_MFA";
-// export const NEXT_MOCK_URL_FINISHED = "NEXT_MOCK_URL_FINISHED";
-
-// export function nextMockUrlTou() {
-//   return {
-//     type: NEXT_MOCK_URL_TOU,
-//   };
-// }
-// export function nextMockUrlMfa() {
-//   return {
-//     type: NEXT_MOCK_URL_MFA,
-//   };
-// }
-// export function nextMockUrlFinished() {
-//   return {
-//     type: NEXT_MOCK_URL_FINISHED,
-//   };
-// }
