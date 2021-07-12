@@ -17,7 +17,7 @@ import initContainer from "./init_container";
 import App from "../components/App/App";
 
 // translation (i18n) import available languages
-import checkTranslationSupport from "../app_utils/browserLang_i18nSupport";
+import injectTranslation from "../app_utils/injectTranslation";
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
 import sv from "react-intl/locale-data/sv";
@@ -27,7 +27,7 @@ import sv from "react-intl/locale-data/sv";
 import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";
 
 /* run all utils and set up the translation */
-checkTranslationSupport();
+injectTranslation();
 polyfillElClosest_EI();
 addLocaleData([...en, ...sv]);
 

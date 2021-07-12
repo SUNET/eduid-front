@@ -2,7 +2,7 @@ import initStore from "../app_init/initStore";
 import { updateIntl } from "react-intl-redux";
 
 // i18n
-const checkTranslationSupport = () => {
+const injectTranslation = () => {
   // check if we have translation for preferred browser language
   const selectedBrowserLanguage = navigator.language;
   const translatedLanguages = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
@@ -14,7 +14,7 @@ const checkTranslationSupport = () => {
     ? selectedBrowserLanguage
     : "en";
 
-  // set translation locale based on preferred browser lang 
+  // set translation locale based on preferred browser lang
   // pass on only the translation of that locale
   initStore.dispatch(
     updateIntl({
@@ -24,4 +24,4 @@ const checkTranslationSupport = () => {
   );
 };
 
-export default checkTranslationSupport;
+export default injectTranslation;
