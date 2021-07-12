@@ -1,18 +1,14 @@
 const webpack = require("webpack");
 const langs = [
   ["en", "English"],
-  ["sv", "Svenska"]
+  ["sv", "Svenska"],
 ];
-
-const messages = {};
-
-// langs.forEach(lang => {
-//   messages[lang[0]] = require("../i18n/translate/" + lang[0]);
-// });
-
-langs.forEach(lang => {
-  messages[lang[0]] = require("./login/translation/languages/" + lang[0]);
-});
+// require all translation files in langs array
+const messages = Object.assign(
+  ...langs.map(([key]) => ({
+    [key]: require(`./login/translation/languages/${key}`),
+  }))
+);
 
 module.exports = {
   initialConfigPlugin: new webpack.DefinePlugin({

@@ -16,12 +16,12 @@ let TermOfUseText = ({ translate, version }) => (
   </div>
 );
 
-let AcceptButton = ({ translate }) => {
+let AcceptButton = ({ translate, version }) => {
   const dispatch = useDispatch();
   return (
     <ButtonPrimary
       type="submit"
-      onClick={() => dispatch(updatedTouAccept())}
+      onClick={() => dispatch(updatedTouAccept(version))}
       id="accept-button"
     >
       {translate("login.tou.button")}
@@ -44,7 +44,7 @@ let TermOfUse = (props) => {
       <h2 className="heading">{translate("login.tou.h2-heading")}</h2>
       <p>{translate("login.tou.paragraph")}</p>
       <TermOfUseText translate={translate} version={version} />
-      <AcceptButton translate={translate} />
+      <AcceptButton translate={translate} version={version} />
     </div>
   );
 };
