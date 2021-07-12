@@ -19,12 +19,7 @@ let FrejaeID = ({ translate }) => {
         <ButtonSecondary
           type="submit"
           onClick={() => {
-            window
-              .open(
-                `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}`,
-                "_blank"
-              )
-              .focus();
+            window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}`;
           }}
           id="mfa-freja"
         >
