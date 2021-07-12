@@ -40,27 +40,3 @@ ReactDOM.render(
   initDomTarget,
   initContainer
 );
-
-// // const init_app = function (target, component) {
-// //   let app, action;
-// //   action = initContainer;
-
-// //   const language = navigator.languages
-// //     ? navigator.languages[0]
-// //     : navigator.language || navigator.userLanguage;
-// //   const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
-
-// //   if (supported.includes(language)) {
-// //     const lang_code = language.substring(0, 2);
-// //     initStore.dispatch(
-// //       updateIntl({
-// //         locale: lang_code,
-// //         messages: LOCALIZED_MESSAGES[lang_code],
-// //       })
-// //     );
-// //   }
-// //   app = <Provider store={initStore}>{component}</Provider>;
-// //   ReactDOM.render(app, target, action);
-// // };
-
-// init_app(document.getElementById("root"), <App />);
