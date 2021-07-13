@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
-import Splash from "../../Splash";
+import Splash from "../../Splash/Splash_container";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const SubmitSamlResponse = () => {
