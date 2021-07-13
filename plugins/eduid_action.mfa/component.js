@@ -176,7 +176,6 @@ const mapStateToProps = (state, props) => {
       next.concat("/");
     }
     next = next + "redirect-action";
-    console.log(next);
     external_mfa_url =
       eidas_sp_url + verify_path + "?idp=" + mfa_auth_idp_url + "&next=" + next;
     console.log(external_mfa_url);
