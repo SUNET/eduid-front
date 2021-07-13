@@ -170,8 +170,12 @@ const mapStateToProps = (state, props) => {
     if (!eidas_sp_url.endsWith("/")) {
       eidas_sp_url.concat("/");
     }
-    // base64 encode next argument to avoid our request sanitation
-    let next = btoa(window.location);
+    let next = window.location.toString();
+    // add actions expected endpoint
+    if (!next.endsWith("/")) {
+      next.concat("/");
+    }
+    next = next + "redirect-action";
     external_mfa_url =
       eidas_sp_url + verify_path + "?idp=" + mfa_auth_idp_url + "&next=" + next;
     console.log(external_mfa_url);
