@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux"
+import React, { useEffect, Fragment } from "react";
+import { useSelector } from "react-redux";
+import Splash from "../../Splash";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 const SubmitSamlResponse = () => {
@@ -10,17 +11,19 @@ const SubmitSamlResponse = () => {
 
   useEffect(() => {
     document.forms[0].submit();
-  })
+  });
 
   return (
-    <form action={targetUrl} method="post">
-      <input type="hidden" name="SAMLResponse" value={SAMLResponse} />
-      <noscript>
-        <input type="submit" value="Continue" />
-      </noscript>
-    </form>
+    <Fragment>
+      <Splash />
+      <form action={targetUrl} method="post">
+        <input type="hidden" name="SAMLResponse" value={SAMLResponse} />
+        <noscript>
+          <input type="submit" value="Continue" />
+        </noscript>
+      </form>
+    </Fragment>
   );
 };
-
 
 export default InjectIntl(SubmitSamlResponse);
