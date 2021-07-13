@@ -26,5 +26,17 @@
   {
     "id": "mfa.try-again",
     "defaultMessage": "Try again"
+  },
+  {
+    "id": "mfa.login-tapit",
+    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
+  },
+  {
+    "id": "mfa.two-factor-authn",
+    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
+  },
+  {
+    "id": "mfa.extra-security-enabled",
+    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
   }
 ]
