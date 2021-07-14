@@ -11,6 +11,11 @@ form {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  @media (max-width: 320px) {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: baseline;
+  }
 }
 
 #reset-password-email-form {
