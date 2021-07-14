@@ -20,9 +20,10 @@ const init_container = () => {
       .filter((msgId) => msgId.includes("login.tou.version."))
       .map((mgsId) => mgsId.split(".").reverse()[0]);
     initStore.dispatch(addTouVersions(touVersions));
+    // REMOVE: after actions/plugins are removed
     if (url.includes(`mfa`)) {
-      // remove after actions/plugins are removed
-      if (url.includes(`?msg=actions.action-completed`)) {
+      // ignores information after `?` in all urls 
+      if (url.includes(`?`)) {
         const mfaPageUrl = `${window.location.origin}${window.location.pathname}`;
         window.location = mfaPageUrl;
       }
