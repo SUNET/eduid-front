@@ -90,3 +90,9 @@ fieldset {
     width: calc(100% - 1.25rem);
   }
 }
+
+@media (max-width: 320px) {
+  .vertical-content-margin {
+    width: calc(100% - #{2 * $margin});
+  }
+}
