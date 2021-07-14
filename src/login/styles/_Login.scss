@@ -1,14 +1,20 @@
 @import "./variables.scss";
 
 .username-pw,
-.tou {
+.tou,
+.mfa {
   display: flex;
   flex-direction: column;
   .heading {
     line-height: $line-height;
   }
-  button {
+  button.btn {
     width: fit-content;
+    @media (max-width: 320px) {
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 0;
+    }
   }
 }
 
@@ -17,15 +23,20 @@
   form {
     margin-top: 0;
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: $margin;
     }
     button {
-      margin: 0.25rem 0 3rem;
+      margin: 0.25rem 0 #{3 * $margin};
     }
   }
   .secondary-link {
     font-size: 1rem;
     align-self: flex-end;
+    @media (max-width: 320px) {
+      margin-top: #{3 * $margin};
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
@@ -39,7 +50,7 @@
 // terms of use page
 .tou {
   .tou-text {
-    margin-bottom: 1rem;
+    margin-bottom: $margin;
     p {
       line-height: $line-height;
       margin-bottom: 0;
@@ -61,15 +72,22 @@
 // multi-factor authentication
 .mfa {
   .options {
-    margin-top: 2rem;
+    margin-top: #{2 * $margin};
     display: flex;
     justify-content: space-between;
+    @media (max-width: 320px) {
+      flex-direction: column;
+    }
     .primary {
       display: flex;
       flex: 1;
       flex-direction: column;
-      margin-right: 1rem;
+      margin-right: $margin;
       transition: all 0.5s ease;
+      @media (max-width: 320px) {
+        margin-right: 0;
+        margin-bottom: #{2 * $margin};
+      }
       .bottom {
         align-items: flex-end;
       }
@@ -92,7 +110,7 @@
         }
       }
       .help-link {
-        margin-top: 1rem;
+        margin-top: $margin;
         font-size: 1rem;
         margin-left: 0.25rem;
       }
@@ -100,7 +118,11 @@
     .secondary {
       flex: 1;
       border: solid transparent 2px;
-      margin-left: 2rem;
+      margin-left: #{2 * $margin};
+      @media (max-width: 320px) {
+        margin-top: #{2 * $margin};
+        margin-left: 0;
+      }
       button,
       button:active,
       button:focus,
