@@ -31,6 +31,8 @@ const baseState = {
   },
   config: {
     next_url: "http://localhost/next",
+    mfa_auth_idp: "https//swedenconnect.idp/",
+    eidas_url: "http://eidas.docker",
     csrf_token: "csrf-token",
   },
   login: {
