@@ -20,6 +20,7 @@ let SecurityKeyUnselected = ({ translate, setSelected }) => {
 };
 
 let SecurityKey = (props) => {
+  const { translate } = props;
   const [selected, setSelected] = useState(false);
   return (
     <div className="primary">
@@ -32,7 +33,7 @@ let SecurityKey = (props) => {
       </div>
       {selected && (
         <p className="help-link">
-          If your security key has a button, don&apos;t forget to tap it.
+          {translate("login.mfa.primary-option.hint")}
         </p>
       )}
     </div>
