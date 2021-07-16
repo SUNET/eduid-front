@@ -31,7 +31,6 @@ body {
   flex-direction: column;
   flex: 1;
   padding-bottom: 2rem;
-  // background: lightyellow;
   background-color: #f4f4f4;
 }
 
@@ -91,7 +90,7 @@ fieldset {
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 414px) {
   .vertical-content-margin {
     width: calc(100% - #{2 * $margin});
   }
