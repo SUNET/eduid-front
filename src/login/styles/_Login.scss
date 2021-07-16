@@ -1,5 +1,6 @@
 @import "./variables.scss";
 
+// for all login pages
 .username-pw,
 .tou,
 .mfa {
@@ -10,15 +11,10 @@
   }
   button.btn {
     width: fit-content;
-    @media (max-width: 320px) {
-      width: 100%;
-      font-size: 1rem;
-      margin-top: 0;
-    }
   }
 }
 
-// usename and password page
+// usename and password
 .username-pw {
   form {
     margin-top: 0;
@@ -32,11 +28,6 @@
   .secondary-link {
     font-size: 1rem;
     align-self: flex-end;
-    @media (max-width: 320px) {
-      margin-top: #{3 * $margin};
-      display: flex;
-      flex-direction: column;
-    }
   }
 }
 
@@ -47,9 +38,10 @@
   }
 }
 
-// terms of use page
+// terms of use
 .tou {
   .tou-text {
+    margin-top: $margin;
     margin-bottom: $margin;
     p {
       line-height: $line-height;
@@ -72,22 +64,12 @@
 // multi-factor authentication
 .mfa {
   .options {
-    margin-top: #{2 * $margin};
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    @media (max-width: 320px) {
-      flex-direction: column;
-    }
+    margin-top: #{2 * $margin};
     .primary {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      margin-right: $margin;
-      transition: all 0.5s ease;
-      @media (max-width: 320px) {
-        margin-right: 0;
-        margin-bottom: #{2 * $margin};
-      }
+      margin: 0 #{3 * $margin} #{3.5 * $margin} 0;
       .bottom {
         align-items: flex-end;
       }
@@ -95,7 +77,7 @@
         margin-bottom: 0;
       }
       img {
-        width: 50%;
+        max-width: 178px;
       }
       .icon {
         background: transparent;
@@ -110,28 +92,11 @@
         }
       }
       .help-link {
-        margin-top: $margin;
+        max-width: 350px;
+        margin-top: 0.5rem;
         font-size: 1rem;
         margin-left: 0.25rem;
-      }
-    }
-    .secondary {
-      flex: 1;
-      border: solid transparent 2px;
-      margin-left: #{2 * $margin};
-      @media (max-width: 320px) {
-        margin-top: #{2 * $margin};
-        margin-left: 0;
-      }
-      button,
-      button:active,
-      button:focus,
-      button:active:focus {
-        color: $orange-highlight;
-        border: none;
-        border: solid 2px $orange-highlight;
-        background-color: $white;
-        text-transform: uppercase;
+        padding-bottom: 0;
       }
     }
     .option {
@@ -139,12 +104,74 @@
       background: $white;
       box-shadow: 0 4px 14px rgba(89, 89, 89, 0.07);
       padding: 1rem;
-      button,
-      button:active,
-      button:focus,
-      button:active:focus {
-        margin-top: 2.75rem;
-        margin-bottom: 0;
+      width: 350px;
+      height: 168px;
+    }
+  }
+}
+
+// styles to counteract bootstrap button styles (.mfa)
+.option {
+  button,
+  button:active,
+  button:focus,
+  button:active:focus {
+    margin-top: 2.75rem;
+    margin-bottom: 0;
+  }
+}
+.mfa .secondary .option {
+  button,
+  button:active,
+  button:focus,
+  button:active:focus {
+    color: $orange-highlight;
+    border: none;
+    border: solid 2px $orange-highlight;
+    background-color: $white;
+    text-transform: uppercase;
+    margin-top: 2.75rem;
+    margin-bottom: 0;
+    .lowercase {
+      text-transform: none;
+    }
+  }
+}
+
+// iPhone 6/7/8+ and smaller
+@media (max-width: 414px) {
+  .username-pw,
+  .tou,
+  .mfa {
+    button.btn {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+  .username-pw .button-pair {
+    flex-direction: column-reverse;
+  }
+  .username-pw .secondary-link {
+    margin-top: #{3 * $margin};
+    display: flex;
+    flex-direction: column;
+  }
+  .tou .tou-text {
+    margin-top: #{2 * $margin};
+  }
+}
+
+// breakpoint at .option width + 2 * margin (.mfa)
+@media (max-width: 368px) {
+  .mfa .options {
+    .primary {
+      margin-right: 0;
+    }
+    .primary,
+    .secondary {
+      flex: 1;
+      .option {
+        width: unset;
       }
     }
   }
