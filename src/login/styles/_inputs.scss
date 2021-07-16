@@ -166,15 +166,10 @@ input:focus {
   }
 }
 
+// increased font size on smallest screens
 .form-control,
-input,
-.radio-input-container span {
-  @media (max-width: 320px) {
-    font-size: 1.5rem;
-  }
-}
-
 .form-control::placeholder,
+input,
 input::placeholder {
   @media (max-width: 320px) {
     font-size: 1.5rem;
