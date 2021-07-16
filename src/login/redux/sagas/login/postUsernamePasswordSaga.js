@@ -25,6 +25,7 @@ export function* postUsernamePasswordSaga(action) {
       dataToSend
     );
     yield put(putCsrfToken(postUsernamePasswordResponse));
+    yield put(postUsernamePasswordResponse);
     yield put(loadingDataComplete());
     if (postUsernamePasswordResponse.payload.finished) {
       yield put(useLoginRef());

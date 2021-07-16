@@ -19,6 +19,7 @@ export function* postUpdatedTouAcceptSaga(action) {
       dataToSend
     );
     yield put(putCsrfToken(postUpdatedTouAcceptResponse));
+    yield put(postUpdatedTouAcceptResponse);
     if (postUpdatedTouAcceptResponse.payload.finished) {
       yield put(useLoginRef());
     }

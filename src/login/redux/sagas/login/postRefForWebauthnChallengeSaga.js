@@ -17,6 +17,7 @@ export function* postRefForWebauthnChallengeSaga() {
       mfaDecodeMiddleware(encodedWebauthnChallenge)
     );
     yield put(putCsrfToken(decodedWebauthnChallenge));
+    yield put(decodedWebauthnChallenge);
   } catch (error) {
     yield put(actions.postRefForWebauthnChallengeFail(error.toString()));
   }
