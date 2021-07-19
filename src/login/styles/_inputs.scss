@@ -166,12 +166,3 @@ input:focus {
   }
 }
 
-// increased font size on smallest screens
-.form-control,
-.form-control::placeholder,
-input,
-input::placeholder {
-  @media (max-width: 320px) {
-    font-size: 1.5rem;
-  }
-}
