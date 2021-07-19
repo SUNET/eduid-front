@@ -190,7 +190,7 @@
   "login.mfa.primary-option.button": "Use my security key",
   "login.mfa.primary-option.hint": "If your security key has a button, don’t forget to tap it.",
   "login.mfa.primary-option.title": "Security key",
-  "login.mfa.secondary-option.button": "Use my <span class=\"lowercase\">Freja&nbspe</span>id+",
+  "login.mfa.secondary-option.button": "Use my <span class=\"verbatim\">Freja&nbsp;eID+</span>",
   "login.mfa.secondary-option.title": "Freja eID+",
   "login.tou.button": "I accept",
   "login.tou.h2-heading": "Log in: Terms of use",
