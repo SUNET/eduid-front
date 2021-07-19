@@ -80,9 +80,9 @@ export const login = {
     />
   ),
   "login.mfa.secondary-option.button": (
-    <FormattedMessage
+    <FormattedHTMLMessage
       id="login.mfa.secondary-option.button"
-      defaultMessage={`Use freja eid+`}
+      defaultMessage={`Use my <span class="verbatim">Freja&nbsp;eID+</span>`}
     />
   ),
   "login.mfa.primary-option.hint": (

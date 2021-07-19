@@ -190,7 +190,7 @@
   "login.mfa.primary-option.button": "Använd min säkerhetsnyckel",
   "login.mfa.primary-option.hint": "Om din säkerhetsnyckel har en knapp, glöm inte att trycka på den.",
   "login.mfa.primary-option.title": "Säkerhetsnyckel",
-  "login.mfa.secondary-option.button": "Använd mitt Freja eID+",
+  "login.mfa.secondary-option.button": "Använd mitt <span class=\"verbatim\">Freja&nbsp;eID+</span>",
   "login.mfa.secondary-option.title": "Freja eID+",
   "login.tou.button": "Jag accepterar",
   "login.tou.h2-heading": "Logga in: Användarvillkor",
