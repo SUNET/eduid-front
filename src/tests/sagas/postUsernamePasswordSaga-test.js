@@ -4,7 +4,7 @@ import { addLocaleData } from "react-intl";
 addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUsernamePasswordSaga } from "../../login/redux/sagas/login/postUsernamePasswordSaga";
-import { postUsernamePasswordFail } from "../../login/redux/actions/postUsernamePasswordActions";
+import { postUsernamePasswordFail } from "../../login/redux/actions/postUsernamePasswordActions"
 
 const fakeState = {
   config: {
@@ -30,6 +30,7 @@ const successResponse = {
   payload: {
     csrf_token: "csrf-token",
     message: "success",
+    finished: true,
   },
 };
 
@@ -63,10 +64,14 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_PW_AUTH_SUCCESS");
+  });
+  it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
+    expect(next.value.PUT.action.type).toEqual("POST_LOGIN_REF_TO_NEXT");
   });
   it("done after 'LOAD_DATA_COMPLETE'", () => {
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -88,17 +93,16 @@ describe("API call to /pw_auth behaves as expected on _FAIL", () => {
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).not.toEqual(call(postRequest, url, dataToSend));
   });
-
   it("_FAIL response is followed by the expected action types", () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_PW_AUTH_FAIL");
     expect(failResponse).toEqual(postUsernamePasswordFail("error"));
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
   });
   it("done after 'LOAD_DATA_COMPLETE'", () => {
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
