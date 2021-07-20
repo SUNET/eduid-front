@@ -6,6 +6,7 @@ import { useLoginRef } from "../../actions/postRefLoginActions";
 
 export function* postUpdatedTouAcceptSaga(action) {
   const state = yield select((state) => state);
+  // TODO: end of url to be dynamically set by backend
   const url = "https://idp.eduid.docker/tou";
   const dataToSend = {
     ref: state.login.ref,
@@ -13,14 +14,10 @@ export function* postUpdatedTouAcceptSaga(action) {
     user_accepts: action.payload.user_accepts,
   };
   try {
-    const postUpdatedTouAcceptResponse = yield call(
-      postRequest,
-      url,
-      dataToSend
-    );
-    yield put(putCsrfToken(postUpdatedTouAcceptResponse));
-    yield put(postUpdatedTouAcceptResponse);
-    if (postUpdatedTouAcceptResponse.payload.finished) {
+    const response = yield call(postRequest, url, dataToSend);
+    yield put(putCsrfToken(response));
+    yield put(response);
+    if (response.payload.finished) {
       yield put(useLoginRef());
     }
   } catch (error) {
