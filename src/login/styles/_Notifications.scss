@@ -8,6 +8,7 @@
   height: 3rem;
   margin-bottom: 0.75rem;
   width: 100%;
+  z-index: 1;
 }
 
 .alert.alert-dismissible {
@@ -197,7 +198,6 @@
 
 @media (max-width: 414px) {
   .notifications-area {
-    z-index: 2;
     margin-bottom: 0;
   }
   .alert.alert-dismissible {
