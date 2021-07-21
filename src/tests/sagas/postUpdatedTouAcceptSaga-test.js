@@ -15,10 +15,12 @@ const fakeState = {
     post_to: "https://idp.eduid.docker/tou",
   },
 };
+
 const action = {
   type: "POST_UPDATED_TOU_ACCEPT",
   payload: {
     user_accepts: "2016-v1",
+    next_page: "TOU",
   },
 };
 

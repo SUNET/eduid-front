@@ -14,6 +14,7 @@ const fakeState = {
   login: {
     ref: "dummy-ref",
     next_page: "USERNAMEPASSWORD",
+    post_to: "https://idp.eduid.docker/pw_auth",
   },
 };
 
@@ -55,7 +56,7 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
       username: action.payload.username,
       password: action.payload.password,
     };
-    const url = "https://idp.eduid.docker/pw_auth";
+    const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).toEqual(call(postRequest, url, dataToSend));
   });
@@ -89,7 +90,7 @@ describe("API call to /pw_auth behaves as expected on _FAIL", () => {
       username: "incorrect-username",
       password: action.payload.password,
     };
-    const url = "https://idp.eduid.docker/pw_auth";
+    const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).not.toEqual(call(postRequest, url, dataToSend));
   });
