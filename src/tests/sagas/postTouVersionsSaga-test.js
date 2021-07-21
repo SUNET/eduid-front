@@ -3,8 +3,8 @@ import { call } from "redux-saga/effects";
 import { addLocaleData } from "react-intl";
 addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
-import { postUpdatedTouAcceptSaga } from "../../login/redux/sagas/login/postUpdatedTouAcceptSaga";
-import { updateTouAcceptFail } from "../../login/redux/actions/postUpdatedTouAcceptActions";
+import { postTouVersionsSaga } from "../../login/redux/sagas/login/postTouVersionsSaga";
+import { postTouVersionsFail } from "../../login/redux/actions/postTouVersionsActions";
 
 const fakeState = {
   config: {
@@ -18,18 +18,18 @@ const fakeState = {
 const action = {
   type: "POST_UPDATED_TOU_ACCEPT",
   payload: {
-    user_accepts: "2016-v1",
+    versions: ["2016-v1", "2021-v1"],
   },
 };
 
-describe("second API call to /tou behaves as expected on _SUCCESS", () => {
-  const generator = postUpdatedTouAcceptSaga(action);
+describe("first API call to /tou behaves as expected on _SUCCESS", () => {
+  const generator = postTouVersionsSaga(action);
   let next = generator.next();
   it("saga posts the expected data", () => {
     const dataToSend = {
       ref: "dummy-ref",
       csrf_token: "csrf-token",
-      user_accepts: action.payload.user_accepts,
+      versions: action.payload.versions.toString(),
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
@@ -40,8 +40,8 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
       type: "POST_IDP_TOU_SUCCESS",
       payload: {
         csrf_token: "csrf-token",
-        message: "success",
-        finished: true,
+        version: "2016-v1",
+        finished: false,
       },
     };
     next = generator.next(successResponse);
@@ -49,24 +49,20 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_SUCCESS");
   });
-  it("{finished: true} fires api call to /next loop ", () => {
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_LOGIN_REF_TO_NEXT");
-  });
-  it("done after 'POST_LOGIN_REF_TO_NEXT'", () => {
+  it("done after 'POST_IDP_TOU_SUCCESS'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
 });
 
-describe("second API call to /tou behaves as expected on _FAIL", () => {
-  const generator = postUpdatedTouAcceptSaga(action);
+describe("first API call to /tou behaves as expected on _FAIL", () => {
+  const generator = postTouVersionsSaga(action);
   let next = generator.next();
-  it("saga posts unexpected data", () => {
+  it("saga posts the expected data", () => {
     const dataToSend = {
       ref: "dummy-ref",
       csrf_token: "csrf-token",
-      user_accepts: "1997-v3",
+      versions: "1997-v3",
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
@@ -85,7 +81,7 @@ describe("second API call to /tou behaves as expected on _FAIL", () => {
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_FAIL");
-    expect(failResponse).toEqual(updateTouAcceptFail("error"));
+    expect(failResponse).toEqual(postTouVersionsFail("error"));
   });
   it("done after 'POST_IDP_TOU_FAIL'", () => {
     const done = generator.next().done;
