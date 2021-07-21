@@ -10,8 +10,7 @@ import {
 
 export function* postUsernamePasswordSaga(action) {
   const state = yield select((state) => state);
-  // TODO: end of url to be dynamically set by backend
-  const url = "https://idp.eduid.docker/pw_auth";
+  const url = state.login.post_to;
   const dataToSend = {
     ref: state.login.ref,
     csrf_token: state.config.csrf_token,

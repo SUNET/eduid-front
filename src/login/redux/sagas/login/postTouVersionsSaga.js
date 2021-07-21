@@ -5,7 +5,7 @@ import * as actions from "../../actions/postTouVersionsActions";
 
 export function* postTouVersionsSaga(action) {
   const state = yield select((state) => state);
-  const url = "https://idp.eduid.docker/tou";
+  const url = state.login.post_to;
   try {
     const dataToSend = {
       ref: state.login.ref,

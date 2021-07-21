@@ -6,7 +6,7 @@ import * as actions from "../../actions/postRefForWebauthnChallengeActions";
 
 export function* postRefForWebauthnChallengeSaga() {
   const state = yield select((state) => state);
-  const url = "https://idp.eduid.docker/mfa_auth";
+  const url = state.login.post_to;
   try {
     const dataToSend = {
       ref: state.login.ref,

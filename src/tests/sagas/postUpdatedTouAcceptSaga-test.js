@@ -12,6 +12,7 @@ const fakeState = {
   login: {
     ref: "dummy-ref",
     next_page: "TOU",
+    post_to: "https://idp.eduid.docker/tou",
   },
 };
 
@@ -32,7 +33,7 @@ describe("API call to /tou fires", () => {
       csrf_token: "csrf-token",
       user_accepts: action.payload.user_accepts,
     };
-    const url = "https://idp.eduid.docker/tou";
+    const url = fakeState.login.post_to;
     const resp = generator.next(fakeState).value;
     expect(resp).toEqual(call(postRequest, url, dataToSend));
   });
@@ -53,7 +54,7 @@ describe("API call to /tou fires", () => {
       csrf_token: "csrf-token",
       user_accepts: action.payload.user_accepts,
     };
-    const url = "https://idp.eduid.docker/tou";
+    const url = fakeState.login.post_to;
     const resp = generator.next(fakeState).value;
     expect(resp).toEqual(call(postRequest, url, dataToSend));
 
@@ -93,7 +94,7 @@ describe("incorrect user details leads to an error response", () => {
       csrf_token: "csrf-token",
       user_accepts: "",
     };
-    const url = "https://idp.eduid.docker/tou";
+    const url = fakeState.login.post_to;
     const resp = generator.next(fakeState).value;
     expect(resp).not.toEqual(call(postRequest, url, dataToSend));
 
