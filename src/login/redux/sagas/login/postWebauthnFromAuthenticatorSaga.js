@@ -12,7 +12,7 @@ function safeEncode(obj) {
 
 export function* postWebauthnFromAuthenticatorSaga() {
   const state = yield select((state) => state);
-  const url = "https://idp.eduid.docker/mfa_auth";
+  const url = state.login.post_to;
   const assertion = state.login.mfa.webauthn_assertion;
   const dataToSend = {
     ref: state.login.ref,
