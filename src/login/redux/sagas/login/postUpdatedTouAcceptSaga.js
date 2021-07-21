@@ -6,7 +6,7 @@ import { useLoginRef } from "../../actions/postRefLoginActions";
 
 export function* postUpdatedTouAcceptSaga(action) {
   const state = yield select((state) => state);
-  const url = "https://idp.eduid.docker/tou";
+  const url = state.login.post_to;
   const dataToSend = {
     ref: state.login.ref,
     csrf_token: state.config.csrf_token,
