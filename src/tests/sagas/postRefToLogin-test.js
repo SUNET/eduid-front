@@ -1,5 +1,5 @@
 import expect from "expect";
-import { put, call } from "redux-saga/effects";
+import { call } from "redux-saga/effects";
 import { addLocaleData } from "react-intl";
 addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
@@ -13,14 +13,13 @@ const fakeState = {
   },
   login: {
     ref: "dummy-ref",
-    next_page: "USERNAMEPASSWORD",
   },
 };
 
-describe("initial API call to /next fires", () => {
-  it("postRefLoginSaga posts the expected data", () => {
-    const generator = postRefLoginSaga();
-    generator.next();
+describe("API call to /next behaves as expected on _SUCCESS", () => {
+  const generator = postRefLoginSaga();
+  let next = generator.next();
+  it("saga posts the expected data", () => {
     const dataToSend = {
       ref: "dummy-ref",
       csrf_token: "csrf-token",
@@ -30,49 +29,43 @@ describe("initial API call to /next fires", () => {
     expect(apiCall).toEqual(call(postRequest, url, dataToSend));
   });
 
-  it("postRefLoginSaga SUCCESS response is followed by 'NEW_CSRF_TOKEN'", () => {
-    const generator = postRefLoginSaga();
-    let next = generator.next();
-    const dataToSend = {
-      ref: "dummy-ref",
-      csrf_token: "csrf-token",
-    };
-    const url = fakeState.config.next_url;
-    const apiCall = generator.next(fakeState).value;
-    expect(apiCall).toEqual(call(postRequest, url, dataToSend));
-
-    // mock _SUCCESS response
-    const response = {
+  it("_SUCCESS response is followed by the expected action types", () => {
+    const successResponse = {
       type: "POST_IDP_NEXT_SUCCESS",
       payload: {
         csrf_token: "csrf-token",
         message: "success",
       },
     };
-    next = generator.next(response);
+    next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value).toEqual(put(response));
-    // remove notifications on _SUCCESS
+    expect(next.value.PUT.action.type).toEqual("POST_IDP_NEXT_SUCCESS");
+  });
+  it("_SUCCESS response removes success notification", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("RM_ALL_NOTIFICATION");
   });
+  it("done after 'RM_ALL_NOTIFICATION'", () => {
+    const done = generator.next().done;
+    expect(done).toEqual(true);
+  });
 });
 
-describe("incorrect user details leads to an error response", () => {
+describe("API call to /next behaves as expected on _FAIL", () => {
   const generator = postRefLoginSaga();
   let next = generator.next();
-  it("_FAIL response from backend when ref incorrect", () => {
+  it("saga posts unexpected data", () => {
     const url = fakeState.config.next_url;
     const dataToSend = {
       ref: "incorrect-ref",
       csrf_token: "csrf-token",
     };
     const apiCall = generator.next(fakeState).value;
-    // sending incorrect-ref does not result in the same values as saga
     expect(apiCall).not.toEqual(call(postRequest, url, dataToSend));
-    // mock _FAIL response
-    const response = {
+  });
+  it("_FAIL response is followed by the expected action types", () => {
+    const failResponse = {
       type: "POST_IDP_NEXT_FAIL",
       error: true,
       payload: {
@@ -80,11 +73,14 @@ describe("incorrect user details leads to an error response", () => {
         message: "error",
       },
     };
-    next = generator.next(response);
+    next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    // mock _FAIL response is equal to _FAIL action
-    expect(response).toEqual(postRefFail("error"));
     expect(next.value.PUT.action.type).toEqual("POST_IDP_NEXT_FAIL");
+    expect(failResponse).toEqual(postRefFail("error"));
+  });
+  it("done after 'POST_IDP_NEXT_FAIL'", () => {
+    const done = generator.next().done;
+    expect(done).toEqual(true);
   });
 });
