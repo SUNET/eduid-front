@@ -82,7 +82,7 @@ export const login = {
   "login.mfa.secondary-option.button": (
     <FormattedHTMLMessage
       id="login.mfa.secondary-option.button"
-      defaultMessage={`Use my <span class="lowercase">Freja&nbspe</span>id+`}
+      defaultMessage={`Use my <span class="verbatim">Freja&nbsp;eID+</span>`}
     />
   ),
   "login.mfa.primary-option.hint": (
