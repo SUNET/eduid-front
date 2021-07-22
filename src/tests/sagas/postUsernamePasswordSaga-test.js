@@ -13,6 +13,7 @@ const fakeState = {
   login: {
     ref: "dummy-ref",
     next_page: "USERNAMEPASSWORD",
+    post_to: "https://idp.eduid.docker/pw_auth",
   },
 };
 
@@ -36,7 +37,7 @@ describe("initial API call to /next fires", () => {
       username: action.payload.username,
       password: action.payload.password,
     };
-    const url = "https://idp.eduid.docker/pw_auth";
+    const url = fakeState.login.post_to;
     const resp = generator.next(fakeState).value;
     expect(resp).toEqual(call(postRequest, url, dataToSend));
   });
@@ -60,7 +61,7 @@ describe("initial API call to /next fires", () => {
       username: "username",
       password: "password",
     };
-    const url = "https://idp.eduid.docker/pw_auth";
+    const url = fakeState.login.post_to;
     const resp = generator.next(fakeState).value;
     expect(resp).toEqual(call(postRequest, url, dataToSend));
 
@@ -99,7 +100,7 @@ describe("incorrect user details leads to an error response", () => {
       username: "",
       password: "password",
     };
-    const url = "https://idp.eduid.docker/pw_auth";
+    const url = fakeState.login.post_to;
     const resp = generator.next(fakeState).value;
     expect(resp).not.toEqual(call(postRequest, url, dataToSend));
 
