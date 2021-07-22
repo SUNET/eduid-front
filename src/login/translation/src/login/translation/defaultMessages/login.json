@@ -49,7 +49,7 @@
   },
   {
     "id": "login.mfa.secondary-option.button",
-    "defaultMessage": "Use my <span class=\"lowercase\">Freja&nbspe</span>id+"
+    "defaultMessage": "Use my <span class=\"verbatim\">Freja&nbsp;eID+</span>"
   },
   {
     "id": "login.mfa.primary-option.hint",
