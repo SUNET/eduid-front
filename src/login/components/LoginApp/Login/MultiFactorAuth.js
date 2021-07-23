@@ -1,16 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { postRefForWebauthnChallenge } from "../../../redux/actions/postRefForWebauthnChallengeActions";
+import React from "react";
 import SecurityKey from "./SecurityKey";
 import FrejaeID from "./FrejaeID";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let MultiFactorAuth = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(postRefForWebauthnChallenge());
-  }, []);
   const { translate } = props;
   return (
     <div className="mfa">
