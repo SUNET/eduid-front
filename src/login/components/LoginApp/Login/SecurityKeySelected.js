@@ -44,19 +44,22 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
   const webauthn_challenge = useSelector(
     (state) => state.login.mfa.webauthn_challenge
   );
-
   useEffect(() => {
     async function securityKeyAssertion() {
-      const webauthnAssertion = await navigator.credentials
-        .get(webauthn_challenge)
-        .then()
-        .catch((error) => {
-          console.log("Problem getting MFA credentials:", error);
-        });
-      dispatch(postWebauthnFromAuthenticator(webauthnAssertion));
+      if (webauthn_challenge !== null) {
+        const webauthnAssertion = await navigator.credentials
+          .get(webauthn_challenge)
+          .then()
+          .catch((error) => {
+            console.log("Problem getting MFA credentials:", error);
+          });
+        if (webauthnAssertion !== undefined) {
+          dispatch(postWebauthnFromAuthenticator(webauthnAssertion));
+        }
+      }
     }
     securityKeyAssertion();
-  }, [retryToggle]);
+  }, [webauthn_challenge, retryToggle]);
 
   return (
     <Fragment>
