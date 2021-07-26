@@ -62,6 +62,7 @@ let loginReducer = (state = loginData, action) => {
         },
       };
     case postRefForWebauthnChallengeActions.POST_IDP_MFA_AUTH_SUCCESS:
+      console.log("challenge", action.payload.webauthn_options);
       return {
         ...state,
         mfa: {
@@ -69,15 +70,22 @@ let loginReducer = (state = loginData, action) => {
           webauthn_challenge: action.payload.webauthn_options,
         },
       };
-    case postWebauthnFromAuthenticatorActions.POST_WEBAUTHN_ASSERTION:
+    case onLoadActions.ADD_WEBAUTHN_ASSERTION_TO_STORE:
       return {
         ...state,
         mfa: {
           ...state.mfa,
-          webauthn_assertion: action.payload.assertion,
+          webauthn_assertion: action.payload.webauthnAssertion,
         },
       };
-
+    case postWebauthnFromAuthenticatorActions.POST_WEBAUTHN_ASSERTION:
+      return {
+        ...state,
+        //   mfa: {
+        //     ...state.mfa,
+        //     webauthn_assertion: action.payload.assertion,
+        //   },
+      };
     default:
       return state;
   }

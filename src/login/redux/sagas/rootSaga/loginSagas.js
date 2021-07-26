@@ -31,6 +31,10 @@ const loginSagas = [
     postRefForWebauthnChallengeActions.POST_IDP_MFA_AUTH_SUCCESS,
     postRefLoginSaga
   ),
+  // takeLatest(
+  //   postRefForWebauthnChallengeActions.POST_IDP_MFA_AUTH_FAIL,
+  //   postRefForWebauthnChallengeSaga
+  // ),
   takeLatest(
     postWebauthnFromAuthenticatorActions.POST_WEBAUTHN_ASSERTION,
     postWebauthnFromAuthenticatorSaga

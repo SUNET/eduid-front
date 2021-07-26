@@ -16,6 +16,8 @@ export function* postRefForWebauthnChallengeSaga() {
     const decodedWebauthnChallenge = yield put(
       mfaDecodeMiddleware(encodedWebauthnChallenge)
     );
+    // console.log("decodedWebauthnChallenge", decodedWebauthnChallenge);
+    // alert();
     yield put(putCsrfToken(decodedWebauthnChallenge));
     yield put(decodedWebauthnChallenge);
   } catch (error) {
