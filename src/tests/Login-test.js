@@ -39,6 +39,7 @@ const baseState = {
     ref: "e0367c25-3853-45a9-806",
     next_page: null,
     tou: {},
+    mfa: {},
   },
   form: [],
   intl: {
