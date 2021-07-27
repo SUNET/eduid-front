@@ -3,7 +3,6 @@ import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postWebauthnFromAuthenticatorActions";
 import { useLoginRef } from "../../actions/postRefLoginActions";
-// import { postRefForWebauthnChallenge } from "../../actions/postRefForWebauthnChallengeActions";
 
 function safeEncode(obj) {
   const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
@@ -15,7 +14,6 @@ export function* postWebauthnFromAuthenticatorSaga() {
   const state = yield select((state) => state);
   const url = state.login.post_to;
   const assertion = state.login.mfa.webauthn_assertion;
-  console.log("assertion", assertion);
   const dataToSend = {
     ref: state.login.ref,
     csrf_token: state.config.csrf_token,
