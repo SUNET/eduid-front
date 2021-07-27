@@ -9,7 +9,7 @@ import { postWebauthnFromAuthenticator } from "../../../redux/actions/postWebaut
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
-const getCredentialsFromAuthenticator = async (
+const assertionFromAuthenticator = async (
   webauthn_challenge,
   dispatch,
   setSelected
@@ -17,13 +17,11 @@ const getCredentialsFromAuthenticator = async (
   const webauthnAssertion = await navigator.credentials
     .get(webauthn_challenge)
     .then()
-    .catch((error) => {
-      console.log("Problem getting MFA credentials:", error);
+    .catch(() => {
+      // getting assertion failed
+      setSelected(false);
     });
-  if (webauthnAssertion === undefined) {
-    // assertion failed
-    setSelected(false);
-  } else {
+  if (webauthnAssertion !== undefined) {
     dispatch(addWebauthnAssertion(webauthnAssertion));
   }
 };
@@ -73,11 +71,7 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
       return undefined;
     } else {
       if (webauthn_assertion === null) {
-        getCredentialsFromAuthenticator(
-          webauthn_challenge,
-          dispatch,
-          setSelected
-        );
+        assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
       } else {
         dispatch(postWebauthnFromAuthenticator(webauthn_assertion));
       }
