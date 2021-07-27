@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import { addWebauthnAssertion } from "../../../redux/actions/addDataToStoreActions";
-import { postWebauthnFromAuthenticator } from "../../../redux/actions/postWebauthnFromAuthenticatorActions";
+import {
+  postWebauthnFromAuthenticator,
+  postWebauthnFromAuthenticatorFail,
+} from "../../../redux/actions/postWebauthnFromAuthenticatorActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
