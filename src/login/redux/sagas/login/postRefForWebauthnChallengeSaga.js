@@ -12,18 +12,15 @@ export function* postRefForWebauthnChallengeSaga() {
       ref: state.login.ref,
       csrf_token: state.config.csrf_token,
     };
-    const encodedWebauthnChallenge = yield call(postRequest, url, dataToSend);
-    const decodedWebauthnChallenge = mfaDecodeMiddleware(
-      encodedWebauthnChallenge
-    );
-    yield put(putCsrfToken(decodedWebauthnChallenge));
-    yield put(decodedWebauthnChallenge);
+    const encodedChallenge = yield call(postRequest, url, dataToSend);
+    const decodedChallenge = mfaDecodeMiddleware(encodedChallenge);
+    yield put(putCsrfToken(decodedChallenge));
+    yield put(decodedChallenge);
   } catch (error) {
     yield put(actions.postRefForWebauthnChallengeFail(error.toString()));
   }
 }
 
-window.CBOR = CBOR;
 const mfaDecodeMiddleware = (response) => {
   if (response.payload && response.payload.webauthn_options !== undefined) {
     const raw_options = response.payload.webauthn_options;
