@@ -17,7 +17,6 @@ button.btn {
   text-transform: uppercase;
   height: 3rem;
   border-radius: 20px;
-  padding: 0.625rem 1.25rem;
   margin: 1rem 0 2rem 0;
   box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
   transition: all 0.5s ease;
@@ -192,8 +191,7 @@ button.btn.icon-button {
 }
 
 button.btn.table-button.btn.btn-primary,
-button.btn-link.nobutton.verify-status-label,
-.show-hide-button {
+button.btn-link.nobutton.verify-status-label {
   color: #ff500d;
   font-size: 0.75rem;
   background-color: transparent;
@@ -211,6 +209,11 @@ button.btn-link.nobutton.verify-status-label,
 }
 
 .show-hide-button {
+  color: #ff500d;
+  font-size: 0.75rem;
+  background-color: transparent;
+  border: solid 1px transparent;
+  box-shadow: none;
   margin: 0;
 }
 

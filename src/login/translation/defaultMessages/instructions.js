@@ -53,11 +53,28 @@ export const generalInstructions = {
     />
   ),
 
-  // mfa instructions 
-    "mfa.try-again": (
+  // mfa instructions
+  "mfa.try-again": (
     <FormattedMessage id="mfa.try-again" defaultMessage={`Try again`} />
   ),
-
+  "mfa.login-tapit": (
+    <FormattedMessage
+      id="mfa.login-tapit"
+      defaultMessage={`Use your security key to log in. If it has a button, tap it.`}
+    />
+  ),
+  "mfa.two-factor-authn": (
+    <FormattedMessage
+      id="mfa.two-factor-authn"
+      defaultMessage={`Use your security key to log in. If it has a button, tap it.`}
+    />
+  ),
+  "mfa.extra-security-enabled": (
+    <FormattedMessage
+      id="mfa.extra-security-enabled"
+      defaultMessage={`Use your security key to log in. If it has a button, tap it.`}
+    />
+  ),
 };
 
 export const specificInstructions = {};
