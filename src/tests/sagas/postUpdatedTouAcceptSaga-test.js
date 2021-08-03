@@ -1,7 +1,5 @@
 import expect from "expect";
 import { call } from "redux-saga/effects";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUpdatedTouAcceptSaga } from "../../login/redux/sagas/login/postUpdatedTouAcceptSaga";
 import { updateTouAcceptFail } from "../../login/redux/actions/postUpdatedTouAcceptActions";
@@ -20,7 +18,6 @@ const action = {
   type: "POST_UPDATED_TOU_ACCEPT",
   payload: {
     user_accepts: "2016-v1",
-    next_page: "TOU",
   },
 };
 
@@ -29,8 +26,8 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   let next = generator.next();
   it("saga posts the expected data", () => {
     const dataToSend = {
-      ref: "dummy-ref",
-      csrf_token: "csrf-token",
+      ref: fakeState.login.ref,
+      csrf_token: fakeState.config.csrf_token,
       user_accepts: action.payload.user_accepts,
     };
     const url = fakeState.login.post_to;
@@ -66,8 +63,8 @@ describe("second API call to /tou behaves as expected on _FAIL", () => {
   let next = generator.next();
   it("saga posts unexpected data", () => {
     const dataToSend = {
-      ref: "dummy-ref",
-      csrf_token: "csrf-token",
+      ref: fakeState.login.ref,
+      csrf_token: fakeState.config.csrf_token,
       user_accepts: "1997-v3",
     };
     const url = fakeState.login.post_to;

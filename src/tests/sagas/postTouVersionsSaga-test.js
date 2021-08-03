@@ -1,7 +1,5 @@
 import expect from "expect";
 import { call } from "redux-saga/effects";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postTouVersionsSaga } from "../../login/redux/sagas/login/postTouVersionsSaga";
 import { postTouVersionsFail } from "../../login/redux/actions/postTouVersionsActions";
@@ -27,8 +25,8 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
   let next = generator.next();
   it("saga posts the expected data", () => {
     const dataToSend = {
-      ref: "dummy-ref",
-      csrf_token: "csrf-token",
+      ref: fakeState.login.ref,
+      csrf_token: fakeState.config.csrf_token,
       versions: action.payload.versions.toString(),
     };
     const url = fakeState.login.post_to;
@@ -58,10 +56,10 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
 describe("first API call to /tou behaves as expected on _FAIL", () => {
   const generator = postTouVersionsSaga(action);
   let next = generator.next();
-  it("saga posts the expected data", () => {
+  it("saga posts the unexpected data", () => {
     const dataToSend = {
-      ref: "dummy-ref",
-      csrf_token: "csrf-token",
+      ref: fakeState.login.ref,
+      csrf_token: fakeState.config.csrf_token,
       versions: "1997-v3",
     };
     const url = fakeState.login.post_to;
