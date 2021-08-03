@@ -2,22 +2,21 @@ import React, { useEffect } from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { addTokenAssertion } from "../../../redux/actions/postResetPasswordActions";
+import ResetPasswordLayout from "./ResetPasswordLayout";
+import { addTokenAssertion, cancleTokenAssertion } from "../../../redux/actions/postResetPasswordActions";
 
 const assertionFromAuthenticator = async (
   webauthn_challenge,
-  dispatch,
-  showSecurityToken,
-  setShowSecurityToken,
+  dispatch
 ) => {
   const webauthnAssertion = await navigator.credentials
     .get(webauthn_challenge)
     .then()
     .catch(() => {
-      setShowSecurityToken(false)
+      dispatch(cancleTokenAssertion())
     });
-  if (webauthnAssertion !== undefined || !webauthnAssertion && !showSecurityToken) {
-   dispatch(addTokenAssertion(webauthnAssertion))
+  if(webauthnAssertion !== undefined) {
+    dispatch(addTokenAssertion(webauthnAssertion));
   }
 };
 
@@ -29,21 +28,28 @@ const ExtraSecurityToken = (props) => {
   const token_assertion = useSelector(
     (state) => state.resetPassword.token_assertion
   );
-  const { setShowSecurityToken, showSecurityToken } = props;
-
 
   useEffect(() => {
-    if (webauthn_challenge === null) {
-      return undefined;
+    if(webauthn_challenge === null) {
+      history.push(`/reset-password/`)
     } else {  
-      if (!token_assertion) {
-        assertionFromAuthenticator(webauthn_challenge, dispatch, showSecurityToken, setShowSecurityToken);
+      if (!token_assertion && token_assertion !== undefined) {
+        assertionFromAuthenticator(webauthn_challenge, dispatch);
       } 
     }
-  }, [webauthn_challenge, token_assertion, setShowSecurityToken]);
+  }, [webauthn_challenge, token_assertion]);
+
+  const retryTokenAssertion = () => {
+    assertionFromAuthenticator(webauthn_challenge, dispatch);
+  }
 
   return (
-    <>
+    <ResetPasswordLayout
+       heading={props.translate("resetpw.extra-security_heading")} 
+       description={props.translate("resetpw.extra-security_description")} 
+       linkInfoText={props.translate("resetpw.without_extra_security")}
+       linkText={props.translate("resetpw.continue_reset_password")}
+     > 
       <p>{props.translate("mfa.reset-password-tapit")}</p>
       <div className="key-animation"  />
       <div>
@@ -60,7 +66,9 @@ const ExtraSecurityToken = (props) => {
             {props.translate("mfa.problems-heading")}
           </div>
           <div className="card-body">
-            <button className="btn-link">
+            <button 
+              className="btn-link" 
+              onClick={()=>retryTokenAssertion()}>
               {props.translate("mfa.try-again")}
             </button>
             <button className="btn-link">
@@ -69,7 +77,7 @@ const ExtraSecurityToken = (props) => {
           </div>
         </div>
       </div>
-      </>
+      </ResetPasswordLayout>
   )
 }
 

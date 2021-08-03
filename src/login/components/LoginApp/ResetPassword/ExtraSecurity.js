@@ -6,17 +6,13 @@ import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
-import ExtraSecurityToken from "./ExtraSecurityToken";
 
 const SecurityKeyButton = ({ 
   extraSecurityKey, 
   translate, 
-  ShowSecurityKey, 
-  showSecurityToken, 
-  setShowSecurityToken 
+  ShowSecurityKey
 }) => {
   return (
-    !showSecurityToken ? 
      Object.values(extraSecurityKey).map((security) => {
       return (
         <EduIDButton
@@ -29,11 +25,8 @@ const SecurityKeyButton = ({
         </EduIDButton>
       )
     } 
-  ) : <ExtraSecurityToken 
-        showSecurityToken={showSecurityToken} 
-        setShowSecurityToken={setShowSecurityToken}
-      />
-    )};
+  )
+)};
 
 const SecurityWithSMSButton = ({ extraSecurityPhone, translate }) => {
   const dispatch = useDispatch();
@@ -64,7 +57,6 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate }) => {
 function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState(null);
-  const [showSecurityToken, setShowSecurityToken] = useState(false);
 
   useEffect(()=>{
     if(history.location.state !== undefined){
@@ -74,7 +66,7 @@ function ExtraSecurity(props){
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
-    setShowSecurityToken(true)
+    history.push(`/reset-password/security-key`);
   };
 
   return (
@@ -86,8 +78,6 @@ function ExtraSecurity(props){
     > 
       { extraSecurity && Object.keys(extraSecurity.tokens).length > 0  ?
         <SecurityKeyButton 
-          setShowSecurityToken={setShowSecurityToken} 
-          showSecurityToken={showSecurityToken} 
           ShowSecurityKey={ShowSecurityKey} 
           extraSecurityKey={Object.keys(extraSecurity.tokens)} 
           translate={props.translate}
