@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { removeSecurityOption, addTokenAssertion } from "../../../redux/actions/postResetPasswordActions";
+
+const assertionFromAuthenticator = async (
+  webauthn_challenge,
+  dispatch
+) => {
+  console.log("[1 webauthn_challenge]", webauthn_challenge)
+  const webauthnAssertion = await navigator.credentials
+    .get(webauthn_challenge)
+    .then()
+    .catch(() => {
+      // getting assertion failed
+      // dispatch(removeSecurityOption());
+    });
+  if (webauthnAssertion !== undefined || !webauthnAssertion) {
+    dispatch(addTokenAssertion(webauthnAssertion));
+    console.log("[2 webauthnAssertion ]", webauthnAssertion )
+  }
+};
+
 
 const ExtraSecurityToken = (props) => {
+  const dispatch = useDispatch();
+  const webauthn_challenge = useSelector(
+    (state) => state.resetPassword.extra_security.tokens.webauthn_options
+  );
+  const selected_option = useSelector(
+    (state) => state.resetPassword.selected_option
+  );
+
+  useEffect(() => {
+    if (webauthn_challenge === null || webauthn_challenge === undefined) {
+      return undefined;
+    } else {
+      if (!selected_option) {
+        assertionFromAuthenticator(webauthn_challenge, dispatch);
+      } else {
+        dispatch(addTokenAssertion(selected_option.webauthn_assertion));
+      }
+    }
+  }, [webauthn_challenge, selected_option]);
+
   return (
     <ResetPasswordLayout
       heading={props.translate("resetpw.extra-security_heading")} 
