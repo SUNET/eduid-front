@@ -4,9 +4,27 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
+import { addWebauthnAssertion } from "../../../redux/actions/addDataToStoreActions";
 import { postWebauthnFromAuthenticator } from "../../../redux/actions/postWebauthnFromAuthenticatorActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+
+const assertionFromAuthenticator = async (
+  webauthn_challenge,
+  dispatch,
+  setSelected
+) => {
+  const webauthnAssertion = await navigator.credentials
+    .get(webauthn_challenge)
+    .then()
+    .catch(() => {
+      // getting assertion failed
+      setSelected(false);
+    });
+  if (webauthnAssertion !== undefined) {
+    dispatch(addWebauthnAssertion(webauthnAssertion));
+  }
+};
 
 let CloseButton = ({ setSelected }) => {
   const dispatch = useDispatch();
@@ -44,19 +62,21 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
   const webauthn_challenge = useSelector(
     (state) => state.login.mfa.webauthn_challenge
   );
-
+  const webauthn_assertion = useSelector(
+    (state) => state.login.mfa.webauthn_assertion
+  );
   useEffect(() => {
-    async function securityKeyAssertion() {
-      const webauthnAssertion = await navigator.credentials
-        .get(webauthn_challenge)
-        .then()
-        .catch((error) => {
-          console.log("Problem getting MFA credentials:", error);
-        });
-      dispatch(postWebauthnFromAuthenticator(webauthnAssertion));
+    if (webauthn_challenge === null) {
+      // HACK: skip func if no webauthn_challenge
+      return undefined;
+    } else {
+      if (webauthn_assertion === null) {
+        assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
+      } else {
+        dispatch(postWebauthnFromAuthenticator(webauthn_assertion));
+      }
     }
-    securityKeyAssertion();
-  }, [retryToggle]);
+  }, [webauthn_challenge, webauthn_assertion, retryToggle]);
 
   return (
     <Fragment>
