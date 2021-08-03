@@ -5,8 +5,7 @@ const data = {
     email_code: "",
     phone: {},
     phone_code: "",
-    selected_option: null,
-
+    token_assertion: null,
 };
 
 let resetPasswordReducer = (state = data, action) => {
@@ -41,17 +40,11 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-    case postActions.SELECT_EXTRA_SECURITY_OPTION:
-        return {
-          ...state,
-          ...action.payload
-        };
-        case postActions.ADD_TOKEN_ASSERTION:
-          return {
-            ...state,
-            ...action.payload
-          };
-        
+    case postActions.ADD_TOKEN_ASSERTION:
+      return {
+        ...state,
+        ...action.payload
+      };
     default:
       return state;
   }
