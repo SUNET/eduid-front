@@ -1,13 +1,9 @@
 import expect from "expect";
 import { call } from "redux-saga/effects";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
-import {
-  postWebauthnFromAuthenticatorSaga,
-  safeEncode,
-} from "../../login/redux/sagas/login/postWebauthnFromAuthenticatorSaga";
+import { postWebauthnFromAuthenticatorSaga } from "../../login/redux/sagas/login/postWebauthnFromAuthenticatorSaga";
 import { postWebauthnFromAuthenticatorFail } from "../../login/redux/actions/postWebauthnFromAuthenticatorActions";
+import { safeEncode } from "../../login/app_utils/helperFunctions/authenticatorAssertion";
 
 /* safeEncode() relies on the DOM, uncomment below to run test in file */
 // import { JSDOM } from "jsdom";
