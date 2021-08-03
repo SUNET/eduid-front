@@ -4,8 +4,9 @@ import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
+import { useDispatch, useSelector } from "react-redux";
+import { requestPhoneCode, selectSecurityOption } from "../../../redux/actions/postResetPasswordActions";
+import * as CBOR from "../../../../sagas/cbor";
 
 const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
   return (
@@ -53,6 +54,8 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
 function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState(null);
+  const tokens = useSelector(state => state.resetPassword.extra_security.tokens);
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     if(history.location.state !== undefined){
@@ -62,8 +65,21 @@ function ExtraSecurity(props){
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
-    history.push(`/reset-password/security-key`)
+    history.push(`/reset-password/security-key`);
+    tokenDecodeMiddleware(tokens);
+    dispatch(selectSecurityOption(tokens));
   };
+
+  window.CBOR = CBOR;
+  const tokenDecodeMiddleware = (tokens) => {
+  if (tokens && tokens !== undefined) {
+    const raw_options = tokens.webauthn_options;
+    const options = atob(raw_options.replace(/_/g, "/").replace(/-/g, "+"));
+    const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
+    tokens.webauthn_options = CBOR.decode(byte_options.buffer);
+  }
+  return tokens;
+};
 
   return (
     <ResetPasswordLayout
