@@ -1,19 +1,15 @@
 import expect from "expect";
 import { call } from "redux-saga/effects";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUsernamePasswordSaga } from "../../login/redux/sagas/login/postUsernamePasswordSaga";
-import { postUsernamePasswordFail } from "../../login/redux/actions/postUsernamePasswordActions"
+import { postUsernamePasswordFail } from "../../login/redux/actions/postUsernamePasswordActions";
 
 const fakeState = {
   config: {
-    next_url: "http://localhost/next",
     csrf_token: "csrf-token",
   },
   login: {
     ref: "dummy-ref",
-    next_page: "USERNAMEPASSWORD",
     post_to: "https://idp.eduid.docker/pw_auth",
   },
 };
@@ -51,8 +47,8 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
   expect(next.value.PUT.action.type).toEqual("LOAD_DATA_REQUEST");
   it("saga posts the expected data", () => {
     const dataToSend = {
-      ref: "dummy-ref",
-      csrf_token: "csrf-token",
+      ref: fakeState.login.ref,
+      csrf_token: fakeState.config.csrf_token,
       username: action.payload.username,
       password: action.payload.password,
     };
@@ -85,8 +81,8 @@ describe("API call to /pw_auth behaves as expected on _FAIL", () => {
   expect(next.value.PUT.action.type).toEqual("LOAD_DATA_REQUEST");
   it("saga posts unexpected data", () => {
     const dataToSend = {
-      ref: "dummy-ref",
-      csrf_token: "csrf-token",
+      ref: fakeState.login.ref,
+      csrf_token: fakeState.config.csrf_token,
       username: "incorrect-username",
       password: action.payload.password,
     };
