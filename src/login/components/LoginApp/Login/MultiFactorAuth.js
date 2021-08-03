@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { postRefForWebauthnChallenge } from "../../../redux/actions/postRefForWebauthnChallengeActions";
 import SecurityKey from "./SecurityKey";
 import FrejaeID from "./FrejaeID";
 import PropTypes from "prop-types";
+import { postRefForWebauthnChallenge } from "../../../redux/actions/postRefForWebauthnChallengeActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let MultiFactorAuth = (props) => {

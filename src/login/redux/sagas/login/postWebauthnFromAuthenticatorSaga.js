@@ -31,6 +31,7 @@ export function* postWebauthnFromAuthenticatorSaga() {
       dataToSend
     );
     yield put(putCsrfToken(authenticatorAssertionResponse));
+    yield put(authenticatorAssertionResponse);
     if (authenticatorAssertionResponse.payload.finished) {
       yield put(useLoginRef());
     }
