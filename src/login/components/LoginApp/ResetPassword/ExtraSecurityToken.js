@@ -1,25 +1,28 @@
 import React, { useEffect } from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
-import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { removeSecurityOption, addTokenAssertion } from "../../../redux/actions/postResetPasswordActions";
+import { addTokenAssertion } from "../../../redux/actions/postResetPasswordActions";
 
 const assertionFromAuthenticator = async (
   webauthn_challenge,
-  dispatch
+  dispatch,
+  setShowSecurityToken,
+  showSecurityToken
 ) => {
   console.log("[1 webauthn_challenge]", webauthn_challenge)
   const webauthnAssertion = await navigator.credentials
     .get(webauthn_challenge)
     .then()
     .catch(() => {
+      setShowSecurityToken(false)
       // getting assertion failed
       // dispatch(removeSecurityOption());
     });
-  if (webauthnAssertion !== undefined || !webauthnAssertion) {
-    dispatch(addTokenAssertion(webauthnAssertion));
-    console.log("[2 webauthnAssertion ]", webauthnAssertion )
+  if (webauthnAssertion !== undefined || !webauthnAssertion && !showSecurityToken) {
+    
+    return dispatch(addTokenAssertion(webauthnAssertion)),
+    console.log("[2 webauthnAssertion]", webauthnAssertion)
   }
 };
 
@@ -32,26 +35,21 @@ const ExtraSecurityToken = (props) => {
   const selected_option = useSelector(
     (state) => state.resetPassword.selected_option
   );
+  const setShowSecurityToken = props.setShowSecurityToken;
+  const showSecurityToken = props.showSecurityToken;
 
   useEffect(() => {
-    if (webauthn_challenge === null || webauthn_challenge === undefined) {
-      return undefined;
-    } else {
+    if (webauthn_challenge) {
+      
       if (!selected_option) {
         assertionFromAuthenticator(webauthn_challenge, dispatch);
-      } else {
-        dispatch(addTokenAssertion(selected_option.webauthn_assertion));
-      }
+      } 
     }
-  }, [webauthn_challenge, selected_option]);
+  }, [webauthn_challenge, selected_option, setShowSecurityToken]);
 
   return (
-    <ResetPasswordLayout
-      heading={props.translate("resetpw.extra-security_heading")} 
-      description={props.translate("resetpw.extra-security_description")} 
-      linkInfoText={props.translate("resetpw.without_extra_security")}
-      linkText={props.translate("resetpw.continue_reset_password")}
-    > 
+    showSecurityToken && 
+    <>
       <p>{props.translate("mfa.reset-password-tapit")}</p>
       <div className="key-animation"  />
       <div>
@@ -77,7 +75,7 @@ const ExtraSecurityToken = (props) => {
           </div>
         </div>
       </div>
-    </ResetPasswordLayout>
+      </>
   )
 }
 
