@@ -7,48 +7,42 @@ import { addTokenAssertion } from "../../../redux/actions/postResetPasswordActio
 const assertionFromAuthenticator = async (
   webauthn_challenge,
   dispatch,
+  showSecurityToken,
   setShowSecurityToken,
-  showSecurityToken
 ) => {
-  console.log("[1 webauthn_challenge]", webauthn_challenge)
   const webauthnAssertion = await navigator.credentials
     .get(webauthn_challenge)
     .then()
     .catch(() => {
       setShowSecurityToken(false)
-      // getting assertion failed
-      // dispatch(removeSecurityOption());
     });
   if (webauthnAssertion !== undefined || !webauthnAssertion && !showSecurityToken) {
-    
-    return dispatch(addTokenAssertion(webauthnAssertion)),
-    console.log("[2 webauthnAssertion]", webauthnAssertion)
+   dispatch(addTokenAssertion(webauthnAssertion))
   }
 };
-
 
 const ExtraSecurityToken = (props) => {
   const dispatch = useDispatch();
   const webauthn_challenge = useSelector(
     (state) => state.resetPassword.extra_security.tokens.webauthn_options
   );
-  const selected_option = useSelector(
-    (state) => state.resetPassword.selected_option
+  const token_assertion = useSelector(
+    (state) => state.resetPassword.token_assertion
   );
-  const setShowSecurityToken = props.setShowSecurityToken;
-  const showSecurityToken = props.showSecurityToken;
+  const { setShowSecurityToken, showSecurityToken } = props;
+
 
   useEffect(() => {
-    if (webauthn_challenge) {
-      
-      if (!selected_option) {
-        assertionFromAuthenticator(webauthn_challenge, dispatch);
+    if (webauthn_challenge === null) {
+      return undefined;
+    } else {  
+      if (!token_assertion) {
+        assertionFromAuthenticator(webauthn_challenge, dispatch, showSecurityToken, setShowSecurityToken);
       } 
     }
-  }, [webauthn_challenge, selected_option, setShowSecurityToken]);
+  }, [webauthn_challenge, token_assertion, setShowSecurityToken]);
 
   return (
-    showSecurityToken && 
     <>
       <p>{props.translate("mfa.reset-password-tapit")}</p>
       <div className="key-animation"  />

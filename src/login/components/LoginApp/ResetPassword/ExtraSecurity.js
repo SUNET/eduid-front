@@ -8,7 +8,13 @@ import { useDispatch } from "react-redux";
 import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
 import ExtraSecurityToken from "./ExtraSecurityToken";
 
-const SecurityKeyButton = ({ extraSecurityKey, translate, ShowSecurityKey, showSecurityToken, setShowSecurityToken }) => {
+const SecurityKeyButton = ({ 
+  extraSecurityKey, 
+  translate, 
+  ShowSecurityKey, 
+  showSecurityToken, 
+  setShowSecurityToken 
+}) => {
   return (
     !showSecurityToken ? 
      Object.values(extraSecurityKey).map((security) => {
@@ -23,11 +29,13 @@ const SecurityKeyButton = ({ extraSecurityKey, translate, ShowSecurityKey, showS
         </EduIDButton>
       )
     } 
-  )
-  : <ExtraSecurityToken showSecurityToken={showSecurityToken} setShowSecurityToken={setShowSecurityToken}/>)
-};
+  ) : <ExtraSecurityToken 
+        showSecurityToken={showSecurityToken} 
+        setShowSecurityToken={setShowSecurityToken}
+      />
+    )};
 
-const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
+const SecurityWithSMSButton = ({ extraSecurityPhone, translate }) => {
   const dispatch = useDispatch();
 
   const sendConfirmCode = (phone)=>{
@@ -77,10 +85,19 @@ function ExtraSecurity(props){
       linkText={props.translate("resetpw.continue_reset_password")}
     > 
       { extraSecurity && Object.keys(extraSecurity.tokens).length > 0  ?
-        <SecurityKeyButton setShowSecurityToken={setShowSecurityToken} showSecurityToken={showSecurityToken} ShowSecurityKey={ShowSecurityKey} extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
+        <SecurityKeyButton 
+          setShowSecurityToken={setShowSecurityToken} 
+          showSecurityToken={showSecurityToken} 
+          ShowSecurityKey={ShowSecurityKey} 
+          extraSecurityKey={Object.keys(extraSecurity.tokens)} 
+          translate={props.translate}
+        /> : null
       }
       { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-        <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
+        <SecurityWithSMSButton 
+          extraSecurityPhone={extraSecurity.phone_numbers} 
+          translate={props.translate}
+        /> : null
       }
     </ResetPasswordLayout>
   ) 

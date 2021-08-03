@@ -42,7 +42,7 @@ export function* useLinkCode() {
 
 window.CBOR = CBOR;
 const mfaDecodeMiddleware = (response) => {
-  if (response.payload.extra_security.tokens && response.payload.extra_security.tokens.webauthn_options !== undefined) {
+  if(response.payload.extra_security.tokens && response.payload.extra_security.tokens.webauthn_options !== undefined) {
     const raw_options = response.payload.extra_security.tokens.webauthn_options;
     const options = atob(raw_options.replace(/_/g, "/").replace(/-/g, "+"));
     const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
