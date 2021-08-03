@@ -4,7 +4,8 @@ const data = {
     email_address: "",
     email_code: "",
     phone: {},
-    phone_code: ""
+    phone_code: "",
+    selected_option: null
 };
 
 let resetPasswordReducer = (state = data, action) => {
@@ -39,6 +40,11 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
+    case postActions.SELECT_EXTRA_SECURITY_OPTION:
+        return {
+          ...state,
+          ...action.payload
+        };
     default:
       return state;
   }
