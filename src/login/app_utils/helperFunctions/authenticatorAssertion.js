@@ -1,6 +1,7 @@
 import * as CBOR from "../../../sagas/cbor";
 
 // 1. Ask backend for a challenge
+// decode the challenge to use it
 export const mfaDecodeMiddleware = (response) => {
   if (response.payload && response.payload.webauthn_options !== undefined) {
     const raw_options = response.payload.webauthn_options;
@@ -16,6 +17,7 @@ export const mfaDecodeMiddleware = (response) => {
 };
 
 // 2. Return autheticator assertion to backend for final verification
+// encode the assertion before post
 export const safeEncode = (obj) => {
   const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
   const unsafeObj = window.btoa(bytesObj);

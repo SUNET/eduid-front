@@ -20,7 +20,6 @@ export function* postWebauthnFromAuthenticatorSaga() {
     },
   };
   try {
-    alert("hello");
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     yield put(response);

@@ -1,7 +1,5 @@
 import expect from "expect";
-import { call, put } from "redux-saga/effects";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
+import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postRefForWebauthnChallengeSaga } from "../../login/redux/sagas/login/postRefForWebauthnChallengeSaga";
 import { postRefForWebauthnChallengeFail } from "../../login/redux/actions/postRefForWebauthnChallengeActions";
