@@ -9,6 +9,8 @@ export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXT
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
 export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
 export const SELECT_EXTRA_SECURITY_OPTION = "SELECT_EXTRA_SECURITY_OPTION";
+export const REMOVE_EXTRA_SECURITY_OPTION = "REMOVE_EXTRA_SECURITY_OPTION";
+export const ADD_TOKEN_ASSERTION = "ADD_TOKEN_ASSERTION";
 
 export function postEmailLink(email) {
   return {
@@ -93,3 +95,21 @@ export function selectSecurityOption(option) {
     }
   };
 }
+
+export function removeSecurityOption() {
+  return {
+    type: SELECT_EXTRA_SECURITY_OPTION,
+    payload: {
+      selected_option: null
+    }
+  };
+}
+
+export const addTokenAssertion = (assertion) => ({
+  type: ADD_TOKEN_ASSERTION,
+  payload: {
+
+      selected_option: assertion,
+
+  },
+});
