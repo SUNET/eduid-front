@@ -45,6 +45,11 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
+      case postActions.CANCLE_TOKEN_ASSERTION:
+        return {
+          ...state,
+          ...action.payload
+        };
     default:
       return state;
   }
