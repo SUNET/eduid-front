@@ -37,18 +37,18 @@ const ExtraSecurityToken = (props) => {
     if (!webauthn_assertion && webauthn_assertion !== undefined) {
       assertionFromAuthenticator(webauthn_challenge, dispatch, extra_security);
     } 
-  }, [webauthn_challenge, webauthn_assertion]);
+  }, [webauthn_challenge, webauthn_assertion, extra_security]);
 
   const retryTokenAssertion = () => {
-    assertionFromAuthenticator(webauthn_challenge, dispatch);
+    assertionFromAuthenticator(webauthn_challenge, dispatch, extra_security);
   }
 
   return (
     <ResetPasswordLayout
-       heading={props.translate("resetpw.extra-security_heading")} 
-       description={props.translate("resetpw.extra-security_description")} 
-       linkInfoText={props.translate("resetpw.without_extra_security")}
-       linkText={props.translate("resetpw.continue_reset_password")}
+      heading={props.translate("resetpw.extra-security_heading")} 
+      description={props.translate("resetpw.extra-security_description")} 
+      linkInfoText={props.translate("resetpw.without_extra_security")}
+      linkText={props.translate("resetpw.continue_reset_password")}
      > 
       <p>{props.translate("mfa.reset-password-tapit")}</p>
       <div className="key-animation"  />
@@ -77,7 +77,7 @@ const ExtraSecurityToken = (props) => {
           </div>
         </div>
       </div>
-      </ResetPasswordLayout>
+    </ResetPasswordLayout>
   )
 }
 
