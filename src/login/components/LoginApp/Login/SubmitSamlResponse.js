@@ -14,8 +14,8 @@ const SubmitSamlResponse = () => {
   useEffect(() => {
     if (
       document.forms[0] !== undefined ||
-      SAMLResponse !== undefined ||
-      targetUrl !== undefined
+      SAMLResponse !== null ||
+      targetUrl !== null
     ) {
       document.forms[0].submit();
     } else {
