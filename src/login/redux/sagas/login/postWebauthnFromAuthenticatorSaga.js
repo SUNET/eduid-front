@@ -23,9 +23,6 @@ export function* postWebauthnFromAuthenticatorSaga() {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     yield put(response);
-    if (response.payload.finished) {
-      yield put(useLoginRef());
-    }
   } catch (error) {
     yield put(actions.postWebauthnFromAuthenticatorFail(error.toString()));
   }
