@@ -3,41 +3,41 @@ import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
-import { addTokenAssertion, cancleTokenAssertion } from "../../../redux/actions/postResetPasswordActions";
+import { getWebauthnAssertion, cancleWebauthnAssertion } from "../../../redux/actions/postResetPasswordActions";
 
 const assertionFromAuthenticator = async (
   webauthn_challenge,
-  dispatch
+  dispatch,
+  extra_security
 ) => {
   const webauthnAssertion = await navigator.credentials
     .get(webauthn_challenge)
     .then()
     .catch(() => {
-      dispatch(cancleTokenAssertion())
+      dispatch(cancleWebauthnAssertion())
     });
-  if(webauthnAssertion !== undefined) {
-    dispatch(addTokenAssertion(webauthnAssertion));
+  if(webauthnAssertion !== undefined && extra_security) {
+    dispatch(getWebauthnAssertion(webauthnAssertion));
   }
 };
 
 const ExtraSecurityToken = (props) => {
   const dispatch = useDispatch();
-  const webauthn_challenge = useSelector(
-    (state) => state.resetPassword.extra_security.tokens.webauthn_options
+  const extra_security = useSelector(
+    (state) => state.resetPassword.extra_security
   );
-  const token_assertion = useSelector(
-    (state) => state.resetPassword.token_assertion
+  const webauthn_challenge = useSelector(
+    (state) => extra_security && state.resetPassword.extra_security.tokens.webauthn_options
+  );
+  const webauthn_assertion = useSelector(
+    (state) => state.resetPassword.webauthn_assertion
   );
 
-  useEffect(() => {
-    if(webauthn_challenge === null) {
-      history.push(`/reset-password/`)
-    } else {  
-      if (!token_assertion && token_assertion !== undefined) {
-        assertionFromAuthenticator(webauthn_challenge, dispatch);
-      } 
-    }
-  }, [webauthn_challenge, token_assertion]);
+  useEffect(() => { 
+    if (!webauthn_assertion && webauthn_assertion !== undefined) {
+      assertionFromAuthenticator(webauthn_challenge, dispatch, extra_security);
+    } 
+  }, [webauthn_challenge, webauthn_assertion]);
 
   const retryTokenAssertion = () => {
     assertionFromAuthenticator(webauthn_challenge, dispatch);
