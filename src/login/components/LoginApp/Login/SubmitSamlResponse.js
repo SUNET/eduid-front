@@ -13,8 +13,8 @@ const SubmitSamlResponse = () => {
   const targetUrl = useSelector((state) => state.login.post_to);
   useEffect(() => {
     if (
-      document.forms[0] !== undefined &&
-      SAMLResponse !== undefined &&
+      document.forms[0] !== undefined ||
+      SAMLResponse !== undefined ||
       targetUrl !== undefined
     ) {
       document.forms[0].submit();
