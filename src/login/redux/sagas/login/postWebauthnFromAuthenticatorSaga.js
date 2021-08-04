@@ -2,7 +2,6 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postWebauthnFromAuthenticatorActions";
-import { useLoginRef } from "../../actions/postRefLoginActions";
 import { safeEncode } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 export function* postWebauthnFromAuthenticatorSaga() {
