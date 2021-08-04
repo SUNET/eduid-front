@@ -8,8 +8,8 @@ export const POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS = "POST_RESET_PASSWORD_VER
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE";
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
 export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
-export const ADD_TOKEN_ASSERTION = "ADD_TOKEN_ASSERTION";
-export const CANCLE_TOKEN_ASSERTION = "CANCLE_TOKEN_ASSERTION";
+export const GET_WEBAUTHN_ASSERTION = "GET_WEBAUTHN_ASSERTION";
+export const CANCLE_WEBAUTHN_ASSERTION = "CANCLE_WEBAUTHN_ASSERTION";
 
 export function postEmailLink(email) {
   return {
@@ -86,20 +86,20 @@ export function savePhoneCode(code) {
   };
 }
 
-export function addTokenAssertion(assertion) {
+export function getWebauthnAssertion(assertion) {
   return {
-    type: ADD_TOKEN_ASSERTION,
+    type: GET_WEBAUTHN_ASSERTION,
     payload: {
-      token_assertion: assertion
+      webauthn_assertion: assertion
     }
   };
 }
 
-export function cancleTokenAssertion() {
+export function cancleWebauthnAssertion() {
   return {
-    type: CANCLE_TOKEN_ASSERTION,
+    type: CANCLE_WEBAUTHN_ASSERTION,
     payload: {
-      token_assertion: undefined
+      webauthn_assertion: undefined
     }
   };
 }

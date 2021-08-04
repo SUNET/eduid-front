@@ -5,7 +5,7 @@ const data = {
     email_code: "",
     phone: {},
     phone_code: "",
-    token_assertion: null,
+    webauthn_assertion: null,
 };
 
 let resetPasswordReducer = (state = data, action) => {
@@ -40,12 +40,12 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-    case postActions.ADD_TOKEN_ASSERTION:
+    case postActions.GET_WEBAUTHN_ASSERTION:
       return {
         ...state,
         ...action.payload
       };
-      case postActions.CANCLE_TOKEN_ASSERTION:
+      case postActions.CANCLE_WEBAUTHN_ASSERTION:
         return {
           ...state,
           ...action.payload
