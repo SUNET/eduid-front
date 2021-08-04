@@ -9,7 +9,7 @@ export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXT
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
 export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
 export const ADD_TOKEN_ASSERTION = "ADD_TOKEN_ASSERTION";
-export const  CANCLE_TOKEN_ASSERTION = "CANCLE_TOKEN_ASSERTION";
+export const CANCLE_TOKEN_ASSERTION = "CANCLE_TOKEN_ASSERTION";
 
 export function postEmailLink(email) {
   return {
@@ -86,16 +86,20 @@ export function savePhoneCode(code) {
   };
 }
 
-export const addTokenAssertion = (assertion) => ({
-  type: ADD_TOKEN_ASSERTION,
-  payload: {
-    token_assertion: assertion,
-  },
-});
+export function addTokenAssertion(assertion) {
+  return {
+    type: ADD_TOKEN_ASSERTION,
+    payload: {
+      token_assertion: assertion
+    }
+  };
+}
 
-export const cancleTokenAssertion = () => ({
-  type: CANCLE_TOKEN_ASSERTION,
-  payload: {
-    token_assertion: undefined,
-  },
-});
+export function cancleTokenAssertion() {
+  return {
+    type: CANCLE_TOKEN_ASSERTION,
+    payload: {
+      token_assertion: undefined
+    }
+  };
+}
