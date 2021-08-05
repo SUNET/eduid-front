@@ -36,7 +36,7 @@ let UsernamePwForm = (props) => (
     onSubmit={submitUsernamePassword}
   >
     <EmailInput {...props} autoFocus={true} required={true} />
-    <PasswordInput {...props} required={true} />
+    <PasswordInput {...props} />
   </Form>
 );
 
