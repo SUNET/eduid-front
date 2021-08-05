@@ -30,13 +30,14 @@ const RenderResetPasswordLink = ({ translate }) => (
 );
 
 let UsernamePwFormButton = ({ invalid, dispatch, translate }) => {
+  const errorMessage = useSelector((state) => state.notifications.errors);
   const loading = useSelector((state) => state.app.loading_data);
   return (
     <ButtonPrimary
       type="submit"
       onClick={() => dispatch(submit("usernamePwForm"))}
-      disabled={invalid || loading}
-      aria-disabled={invalid || loading}
+      disabled={errorMessage.length !== 0 || invalid || loading}
+      aria-disabled={errorMessage.length !== 0 || invalid || loading}
       id="login-form-button"
       className={"settings-button"}
     >
