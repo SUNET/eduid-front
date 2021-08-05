@@ -54,6 +54,8 @@ function ResetPasswordMain(props){
   const dispatch = useDispatch();
   const extra_security = useSelector(state => state.resetPassword.extra_security);
   const history = useHistory();
+  const url = document.location.href;
+  const loginRef = url.split("/main/").reverse()[0];
 
   useEffect(()=>{
     clearCountdown();
@@ -64,7 +66,7 @@ function ResetPasswordMain(props){
       history.push({ pathname:`/reset-password/extra-security`, state: { extra_security: extra_security }})
     }else if(extra_security && Object.keys(extra_security).length === 0) 
       history.push(`/reset-password/set-new-password`)
-    else history.push(`/reset-password/`)
+    else history.push(`/reset-password/main/${loginRef}`)
   }, [extra_security]);
 
   const sendLink = (e) => {
@@ -81,7 +83,7 @@ function ResetPasswordMain(props){
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
       <EmailForm sendLink={sendLink} {...props} />
       <div className="return-login-link">
-        <a href={`/login/password/${props.urlCode}`}>
+        <a href={`/login/password/${loginRef}`}>
           {props.translate("resetpw.return-login")}
         </a>
       </div>
