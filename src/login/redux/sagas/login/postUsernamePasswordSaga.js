@@ -19,19 +19,15 @@ export function* postUsernamePasswordSaga(action) {
   };
   try {
     yield put(loadingData());
-    const postUsernamePasswordResponse = yield call(
-      postRequest,
-      url,
-      dataToSend
-    );
-    yield put(putCsrfToken(postUsernamePasswordResponse));
-    yield put(postUsernamePasswordResponse);
-    yield put(loadingDataComplete());
-    if (postUsernamePasswordResponse.payload.finished) {
+    const response = yield call(postRequest, url, dataToSend);
+    yield put(putCsrfToken(response));
+    yield put(response);
+    if (response.payload.finished) {
       yield put(useLoginRef());
     }
   } catch (error) {
     yield put(actions.postUsernamePasswordFail(error.toString()));
+  } finally {
     yield put(loadingDataComplete());
   }
 }
