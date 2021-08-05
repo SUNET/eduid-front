@@ -45,6 +45,9 @@ const baseState = {
   intl: {
     locale: "en",
   },
+  notifications: {
+    errors: [],
+  },
 };
 
 const fakeStore = (fakeState) => ({
