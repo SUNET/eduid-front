@@ -29,7 +29,7 @@ export function* useLinkCode() {
     const resp = yield call(requestSendLinkCode, state.config, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
-      history.push(`/reset-password/main`);
+      history.push(`/reset-password/email`);
     }
   } catch (error) {
     yield* failRequest(error, postLinkCodeFail(error));
