@@ -20,12 +20,12 @@ const RenderRegisterLink = ({ translate }) => (
 );
 
 const RenderResetPasswordLink = ({ translate }) => {
-  const ref = useSelector((state) => state.login.ref);
+  const loginRef = useSelector((state) => state.login.ref);
   return(
     <LinkRedirect
       id={"link-forgot-password"}
       className={""}
-      to={`/reset-password/email/${ref}`}
+      to={`/reset-password/email/${loginRef}`}
       text={translate("login.usernamePw.reset-password-link")}
   />
 )};

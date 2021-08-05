@@ -50,12 +50,12 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
 function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState(null);
-  const ref = useSelector(state => state.login.ref);
+  const loginRef = useSelector(state => state.login.ref);
 
   useEffect(()=>{
     if(history.location.state !== undefined){
       setExtraSecurity(history.location.state.extra_security)
-    }else history.push(`/reset-password/email/${ref}`)
+    }else history.push(`/reset-password/email/${loginRef}`)
   },[extraSecurity]);
 
   return (
