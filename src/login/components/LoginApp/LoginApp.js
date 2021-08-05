@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
    return (
      <>
       <Route
-        path={`/reset-password/main`}
+        path={`/reset-password/email`}
         render={(props) => <ResetPasswordMain {...props} />}
       />
       <Route

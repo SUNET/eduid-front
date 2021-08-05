@@ -55,7 +55,7 @@ function ExtraSecurity(props){
   useEffect(()=>{
     if(history.location.state !== undefined){
       setExtraSecurity(history.location.state.extra_security)
-    }else history.push(`/reset-password/main/${ref}`)
+    }else history.push(`/reset-password/email/${ref}`)
   },[extraSecurity]);
 
   return (

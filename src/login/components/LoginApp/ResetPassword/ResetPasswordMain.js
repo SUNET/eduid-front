@@ -55,7 +55,7 @@ function ResetPasswordMain(props){
   const extra_security = useSelector(state => state.resetPassword.extra_security);
   const history = useHistory();
   const url = document.location.href;
-  const loginRef = url.split("/main/").reverse()[0];
+  const loginRef = url.split("/email/").reverse()[0];
 
   useEffect(()=>{
     clearCountdown();
@@ -66,7 +66,7 @@ function ResetPasswordMain(props){
       history.push({ pathname:`/reset-password/extra-security`, state: { extra_security: extra_security }})
     }else if(extra_security && Object.keys(extra_security).length === 0) 
       history.push(`/reset-password/set-new-password`)
-    else history.push(`/reset-password/main/${loginRef}`)
+    else history.push(`/reset-password/email/${loginRef}`)
   }, [extra_security]);
 
   const sendLink = (e) => {

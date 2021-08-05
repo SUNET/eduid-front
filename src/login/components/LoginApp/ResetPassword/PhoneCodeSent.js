@@ -77,7 +77,7 @@ function PhoneCodeSent(props){
     } 
     else {
       //Navigate to "/reset-password/" without extra security phone
-      history.push(`/reset-password/main/${ref}`)
+      history.push(`/reset-password/email/${ref}`)
       clearCountdown();
     }
   },[]);
