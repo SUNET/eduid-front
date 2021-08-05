@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { Field } from "redux-form";
 import CustomInput from "./CustomInput";
 import Input from "reactstrap/lib/Input";
