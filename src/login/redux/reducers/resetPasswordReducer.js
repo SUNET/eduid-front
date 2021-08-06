@@ -1,4 +1,5 @@
 import * as postActions from "../actions/postResetPasswordActions";
+import * as getWebauthnActions from "../actions/getWebauthnAssertionActions";
 
 const data = {
     email_address: "",
@@ -40,16 +41,16 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-    case postActions.GET_WEBAUTHN_ASSERTION:
+    case getWebauthnActions.GET_WEBAUTHN_ASSERTION:
       return {
         ...state,
         ...action.payload
       };
-      case postActions.CANCLE_WEBAUTHN_ASSERTION:
-        return {
-          ...state,
-          ...action.payload
-        };
+    case getWebauthnActions.CANCLE_WEBAUTHN_ASSERTION:
+      return {
+        ...state,
+        ...action.payload
+      };
     default:
       return state;
   }
