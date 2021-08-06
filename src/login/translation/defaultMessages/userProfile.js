@@ -519,7 +519,7 @@ export const userVetting = {
   "eidas.nin_not_matching": (
     <FormattedMessage
       id="eidas.nin_not_matching"
-      defaultMessage={`Asserted identity not matching the current accounts verified identity`}
+      defaultMessage={`The identity does not match the one verified for this eduID`}
     />
   ),
 
