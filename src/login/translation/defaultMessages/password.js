@@ -335,6 +335,13 @@ export const resetPassword = {
     />
   ),
 
+  "mfa.reset-password-tapit": (
+    <FormattedMessage
+     id="mfa.reset-password-tapit"
+     defaultMessage={`Use your security key to reset password. If it has a button, tap it.`}
+   />
+   ),
+
   "resetpw.sms-throttled": (
     <FormattedMessage
       id="resetpw.sms-throttled"
