@@ -1,8 +1,8 @@
 import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
-import { postUpdatedTouAcceptSaga } from "../../login/redux/sagas/login/postUpdatedTouAcceptSaga";
-import { updateTouAcceptFail } from "../../login/redux/actions/postUpdatedTouAcceptActions";
+import { postRefForWebauthnChallengeSaga } from "../../login/redux/sagas/login/postRefForWebauthnChallengeSaga";
+import { postRefForWebauthnChallengeFail } from "../../login/redux/actions/postRefForWebauthnChallengeActions";
 
 const fakeState = {
   config: {
@@ -10,25 +10,17 @@ const fakeState = {
   },
   login: {
     ref: "dummy-ref",
-    post_to: "https://idp.eduid.docker/tou",
+    post_to: "https://idp.eduid.docker/mfa_auth",
   },
 };
 
-const action = {
-  type: "POST_UPDATED_TOU_ACCEPT",
-  payload: {
-    user_accepts: "2016-v1",
-  },
-};
-
-describe("second API call to /tou behaves as expected on _SUCCESS", () => {
-  const generator = postUpdatedTouAcceptSaga(action);
+describe("first API call to /mfa_auth behaves as expected on _SUCCESS", () => {
+  const generator = postRefForWebauthnChallengeSaga();
   let next = generator.next();
   it("saga posts the expected data", () => {
     const dataToSend = {
-      ref: fakeState.login.ref,
-      csrf_token: fakeState.config.csrf_token,
-      user_accepts: action.payload.user_accepts,
+      ref: "dummy-ref",
+      csrf_token: "csrf-token",
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
@@ -36,36 +28,31 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_TOU_SUCCESS",
+      type: "POST_IDP_MFA_AUTH_SUCCESS",
       payload: {
         csrf_token: "csrf-token",
         message: "success",
-        finished: true,
+        finished: false,
       },
     };
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_SUCCESS");
+    expect(next.value.PUT.action.type).toEqual("POST_IDP_MFA_AUTH_SUCCESS");
   });
-  it("{finished: true} fires api call to /next loop ", () => {
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_LOGIN_REF_TO_NEXT");
-  });
-  it("done after 'POST_LOGIN_REF_TO_NEXT'", () => {
+  it("done after 'POST_IDP_MFA_AUTH_SUCCESS'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
 });
 
-describe("second API call to /tou behaves as expected on _FAIL", () => {
-  const generator = postUpdatedTouAcceptSaga(action);
+describe("first API call to /mfa behaves as expected on _FAIL", () => {
+  const generator = postRefForWebauthnChallengeSaga();
   let next = generator.next();
   it("saga posts unexpected data", () => {
     const dataToSend = {
-      ref: fakeState.login.ref,
-      csrf_token: fakeState.config.csrf_token,
-      user_accepts: "1997-v3",
+      ref: "incorrect-dummy-ref",
+      csrf_token: "csrf-token",
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
@@ -73,7 +60,7 @@ describe("second API call to /tou behaves as expected on _FAIL", () => {
   });
   it("_FAIL response is followed by the expected action types", () => {
     const failResponse = {
-      type: "POST_IDP_TOU_FAIL",
+      type: "POST_IDP_MFA_AUTH_FAIL",
       error: true,
       payload: {
         csrf_token: "csrf-token",
@@ -83,10 +70,10 @@ describe("second API call to /tou behaves as expected on _FAIL", () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_FAIL");
-    expect(failResponse).toEqual(updateTouAcceptFail("error"));
+    expect(next.value.PUT.action.type).toEqual("POST_IDP_MFA_AUTH_FAIL");
+    expect(failResponse).toEqual(postRefForWebauthnChallengeFail("error"));
   });
-  it("done after 'POST_IDP_TOU_FAIL'", () => {
+  it("done after 'POST_IDP_MFA_AUTH_FAIL'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
