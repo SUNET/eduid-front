@@ -3,12 +3,7 @@ import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postWebauthnFromAuthenticatorActions";
 import { useLoginRef } from "../../actions/postRefLoginActions";
-
-function safeEncode(obj) {
-  const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
-  const unsafeObj = btoa(bytesObj);
-  return unsafeObj.replace(/\//g, "_").replace(/\+/g, "-").replace(/=*$/, "");
-}
+import { safeEncode } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 export function* postWebauthnFromAuthenticatorSaga() {
   const state = yield select((state) => state);
@@ -25,14 +20,10 @@ export function* postWebauthnFromAuthenticatorSaga() {
     },
   };
   try {
-    const authenticatorAssertionResponse = yield call(
-      postRequest,
-      url,
-      dataToSend
-    );
-    yield put(putCsrfToken(authenticatorAssertionResponse));
-    yield put(authenticatorAssertionResponse);
-    if (authenticatorAssertionResponse.payload.finished) {
+    const response = yield call(postRequest, url, dataToSend);
+    yield put(putCsrfToken(response));
+    yield put(response);
+    if (response.payload.finished) {
       yield put(useLoginRef());
     }
   } catch (error) {
