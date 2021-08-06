@@ -46,7 +46,7 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-    case getWebauthnActions.CANCLE_WEBAUTHN_ASSERTION:
+    case getWebauthnActions.GET_WEBAUTHN_ASSERTION_FAIL:
       return {
         ...state,
         ...action.payload

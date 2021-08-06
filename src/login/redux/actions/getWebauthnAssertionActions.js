@@ -1,5 +1,5 @@
 export const GET_WEBAUTHN_ASSERTION = "GET_WEBAUTHN_ASSERTION";
-export const CANCLE_WEBAUTHN_ASSERTION = "CANCLE_WEBAUTHN_ASSERTION";
+export const GET_WEBAUTHN_ASSERTION_FAIL = "GET_WEBAUTHN_ASSERTION_FAIL";
 
 export function getWebauthnAssertion(assertion) {
   return {
@@ -12,7 +12,7 @@ export function getWebauthnAssertion(assertion) {
 
 export function cancleWebauthnAssertion() {
   return {
-    type: CANCLE_WEBAUTHN_ASSERTION,
+    type: GET_WEBAUTHN_ASSERTION_FAIL,
     payload: {
       webauthn_assertion: undefined
     }
