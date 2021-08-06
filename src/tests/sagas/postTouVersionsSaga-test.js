@@ -1,72 +1,74 @@
 import expect from "expect";
 import { call } from "redux-saga/effects";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
-import { postRefLoginSaga } from "../../login/redux/sagas/login/postRefLoginSaga";
-import { postRefFail } from "../../login/redux/actions/postRefLoginActions";
+import { postTouVersionsSaga } from "../../login/redux/sagas/login/postTouVersionsSaga";
+import { postTouVersionsFail } from "../../login/redux/actions/postTouVersionsActions";
 
 const fakeState = {
   config: {
-    next_url: "http://localhost/next",
     csrf_token: "csrf-token",
   },
   login: {
     ref: "dummy-ref",
+    post_to: "https://idp.eduid.docker/tou",
+  },
+};
+const action = {
+  type: "POST_UPDATED_TOU_ACCEPT",
+  payload: {
+    versions: ["2016-v1", "2021-v1"],
   },
 };
 
-describe("API call to /next behaves as expected on _SUCCESS", () => {
-  const generator = postRefLoginSaga();
+describe("first API call to /tou behaves as expected on _SUCCESS", () => {
+  const generator = postTouVersionsSaga(action);
   let next = generator.next();
   it("saga posts the expected data", () => {
     const dataToSend = {
-      ref: "dummy-ref",
-      csrf_token: "csrf-token",
+      ref: fakeState.login.ref,
+      csrf_token: fakeState.config.csrf_token,
+      versions: action.payload.versions.toString(),
     };
-    const url = fakeState.config.next_url;
+    const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).toEqual(call(postRequest, url, dataToSend));
   });
-
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_NEXT_SUCCESS",
+      type: "POST_IDP_TOU_SUCCESS",
       payload: {
         csrf_token: "csrf-token",
-        message: "success",
+        version: "2016-v1",
+        finished: false,
       },
     };
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_NEXT_SUCCESS");
+    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_SUCCESS");
   });
-  it("_SUCCESS response removes success notification", () => {
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("RM_ALL_NOTIFICATION");
-  });
-  it("done after 'RM_ALL_NOTIFICATION'", () => {
+  it("done after 'POST_IDP_TOU_SUCCESS'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
 });
 
-describe("API call to /next behaves as expected on _FAIL", () => {
-  const generator = postRefLoginSaga();
+describe("first API call to /tou behaves as expected on _FAIL", () => {
+  const generator = postTouVersionsSaga(action);
   let next = generator.next();
-  it("saga posts unexpected data", () => {
-    const url = fakeState.config.next_url;
+  it("saga posts the unexpected data", () => {
     const dataToSend = {
-      ref: "incorrect-ref",
-      csrf_token: "csrf-token",
+      ref: fakeState.login.ref,
+      csrf_token: fakeState.config.csrf_token,
+      versions: "1997-v3",
     };
+    const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).not.toEqual(call(postRequest, url, dataToSend));
   });
   it("_FAIL response is followed by the expected action types", () => {
     const failResponse = {
-      type: "POST_IDP_NEXT_FAIL",
+      type: "POST_IDP_TOU_FAIL",
       error: true,
       payload: {
         csrf_token: "csrf-token",
@@ -76,10 +78,10 @@ describe("API call to /next behaves as expected on _FAIL", () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_NEXT_FAIL");
-    expect(failResponse).toEqual(postRefFail("error"));
+    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_FAIL");
+    expect(failResponse).toEqual(postTouVersionsFail("error"));
   });
-  it("done after 'POST_IDP_NEXT_FAIL'", () => {
+  it("done after 'POST_IDP_TOU_FAIL'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
