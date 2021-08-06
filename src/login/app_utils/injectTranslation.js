@@ -10,16 +10,14 @@ const injectTranslation = () => {
     selectedBrowserLanguage
   );
   // check if we have translation for preferred browser language
-  const translationLocale = isTranslatedLanguage
-    ? selectedBrowserLanguage
-    : "en";
+  const browserLocale = isTranslatedLanguage ? selectedBrowserLanguage : "en";
 
   // set translation locale based on preferred browser lang
   // pass on only the translation of that locale
   initStore.dispatch(
     updateIntl({
-      locale: translationLocale,
-      messages: LOCALIZED_MESSAGES[translationLocale],
+      locale: browserLocale,
+      messages: LOCALIZED_MESSAGES[browserLocale],
     })
   );
 };
