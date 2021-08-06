@@ -2,10 +2,12 @@ import React, { useEffect, useState }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
+import ResetPasswordLayout from "./ResetPasswordLayout";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
-const SecurityKeyButton = ({extraSecurityKey, translate}) => {
+const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
   return (
      Object.values(extraSecurityKey).map((security) => {
       return (
@@ -13,6 +15,7 @@ const SecurityKeyButton = ({extraSecurityKey, translate}) => {
           className={"settings-button"} 
           id="extra-security"
           key={security}
+          onClick={ShowSecurityKey}
         >
         {translate("resetpw.use_extra_security_key")}
         </EduIDButton>
@@ -57,26 +60,32 @@ function ExtraSecurity(props){
     }else history.push(`/reset-password/`)
   },[extraSecurity]);
 
+  const ShowSecurityKey = (e) => {
+    e.preventDefault();
+    history.push(`/reset-password/security-key`)
+  };
+
   return (
-    <>
-      <p className="heading">{props.translate("resetpw.extra-security_heading")}</p>
-      <div id="reset-pass-display">
-        <p>{props.translate("resetpw.extra-security_description")}</p>
-        { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
-          <SecurityKeyButton extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
-        }
-        { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-          <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
-        }
-        <p className="decription-without-security">{props.translate("resetpw.without_extra_security")}
-          <a href={`/reset-password/set-new-password/`}> {props.translate("resetpw.continue_reset_password")}</a> 
-        </p>
-      </div>
-    </>
+    <ResetPasswordLayout
+      heading={props.translate("resetpw.extra-security_heading")} 
+      description={props.translate("resetpw.extra-security_description")} 
+      linkInfoText={props.translate("resetpw.without_extra_security")}
+      linkText={props.translate("resetpw.continue_reset_password")}
+    > 
+      { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
+        <SecurityKeyButton ShowSecurityKey={ShowSecurityKey} extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
+      }
+      { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
+        <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
+      }
+    </ResetPasswordLayout>
   ) 
 }
 
 ExtraSecurity.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.shape({ pathname: PropTypes.string }),
+  translate: PropTypes.func.isRequired,
 };
 
 export default InjectIntl(ExtraSecurity);
