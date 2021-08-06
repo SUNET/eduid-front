@@ -10,7 +10,7 @@ export function getWebauthnAssertion(assertion) {
   };
 }
 
-export function cancleWebauthnAssertion() {
+export function cancelWebauthnAssertion() {
   return {
     type: GET_WEBAUTHN_ASSERTION_FAIL,
     payload: {

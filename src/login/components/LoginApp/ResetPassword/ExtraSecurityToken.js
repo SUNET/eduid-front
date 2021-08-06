@@ -3,7 +3,7 @@ import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
-import { getWebauthnAssertion, cancleWebauthnAssertion } from "../../../redux/actions/getWebauthnAssertionActions";
+import { getWebauthnAssertion, cancelWebauthnAssertion } from "../../../redux/actions/getWebauthnAssertionActions";
 
 const assertionFromAuthenticator = async (
   webauthn_challenge,
@@ -14,7 +14,7 @@ const assertionFromAuthenticator = async (
     .get(webauthn_challenge)
     .then()
     .catch(() => {
-      dispatch(cancleWebauthnAssertion())
+      dispatch(cancelWebauthnAssertion())
     });
   if(webauthnAssertion !== undefined && extra_security) {
     dispatch(getWebauthnAssertion(webauthnAssertion));
