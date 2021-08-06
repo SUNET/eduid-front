@@ -23,6 +23,7 @@ let AcceptButton = ({ translate, version }) => {
       type="submit"
       onClick={() => dispatch(updatedTouAccept(version))}
       id="accept-button"
+      disabled={!version}
     >
       {translate("login.tou.button")}
     </ButtonPrimary>

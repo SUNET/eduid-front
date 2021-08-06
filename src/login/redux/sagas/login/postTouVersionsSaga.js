@@ -6,15 +6,15 @@ import * as actions from "../../actions/postTouVersionsActions";
 export function* postTouVersionsSaga(action) {
   const state = yield select((state) => state);
   const url = state.login.post_to;
+  const dataToSend = {
+    ref: state.login.ref,
+    versions: action.payload.versions.toString(),
+    csrf_token: state.config.csrf_token,
+  };
   try {
-    const dataToSend = {
-      ref: state.login.ref,
-      versions: action.payload.versions.toString(),
-      csrf_token: state.config.csrf_token,
-    };
-    const touVersionResponse = yield call(postRequest, url, dataToSend);
-    yield put(putCsrfToken(touVersionResponse));
-    yield put(touVersionResponse);
+    const response = yield call(postRequest, url, dataToSend);
+    yield put(putCsrfToken(response));
+    yield put(response);
   } catch (error) {
     yield put(actions.postTouVersionsFail(error.toString()));
   }

@@ -13,14 +13,10 @@ export function* postUpdatedTouAcceptSaga(action) {
     user_accepts: action.payload.user_accepts,
   };
   try {
-    const postUpdatedTouAcceptResponse = yield call(
-      postRequest,
-      url,
-      dataToSend
-    );
-    yield put(putCsrfToken(postUpdatedTouAcceptResponse));
-    yield put(postUpdatedTouAcceptResponse);
-    if (postUpdatedTouAcceptResponse.payload.finished) {
+    const response = yield call(postRequest, url, dataToSend);
+    yield put(putCsrfToken(response));
+    yield put(response);
+    if (response.payload.finished) {
       yield put(useLoginRef());
     }
   } catch (error) {
