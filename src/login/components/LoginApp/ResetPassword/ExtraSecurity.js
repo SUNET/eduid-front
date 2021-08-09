@@ -62,15 +62,15 @@ function ExtraSecurity(props){
   const [extraSecurity, setExtraSecurity] = useState(null);
   const loginRef = useSelector(state => state.login.ref);
   const selected_option = useSelector(state => state.resetPassword.selected_option);
-  const webauthn_challenge = useSelector(
-    (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
+  const extra_security = useSelector(
+    (state) => state.resetPassword.extra_security
   );
   
   useEffect(()=>{
     if(history.location.state !== undefined){
       setExtraSecurity(history.location.state.extra_security)
     }else history.push(`/reset-password/email/${loginRef}`)
-  },[extraSecurity]);
+  },[extraSecurity, extra_security]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
@@ -79,7 +79,10 @@ function ExtraSecurity(props){
   };
 
   const startTokenAssertion = () => {
-    assertionFromAuthenticator(webauthn_challenge, dispatch);
+    const webauthn_challenge = extra_security.tokens.webauthn_options;
+    if(extra_security.tokens.webauthn_options){
+      assertionFromAuthenticator(webauthn_challenge, dispatch);
+    }
   };
 
   return (
