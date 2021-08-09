@@ -30,7 +30,10 @@ const init_container = () => {
     }
   }
 
-  if (url.includes(`/email-code/`)) {
+  if(url.includes(`/email/`)){
+    initStore.dispatch(addLoginRef(urlCode));
+  }
+  else if(url.includes(`/email-code/`)) {
     // pass on code get config for app and
     initStore.dispatch(saveLinkCode(urlCode));
   }
