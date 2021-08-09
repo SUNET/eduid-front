@@ -2,7 +2,7 @@ import React from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { assertionFromAuthenticator }  from "./StartOpenAuthentication";
+import { assertionFromAuthenticator }  from "./StartAuthenticator";
 
 const ExtraSecurityToken = (props) => {
   const dispatch = useDispatch();

@@ -8,9 +8,9 @@ export const assertionFromAuthenticator = async (
     .get(webauthn_challenge)
     .then()
     .catch(() => {
-      return dispatch(cancelWebauthnAssertion());
+      dispatch(cancelWebauthnAssertion());
     });
   if(webauthnAssertion !== undefined) {
-    return dispatch(getWebauthnAssertion(webauthnAssertion));
+    dispatch(getWebauthnAssertion(webauthnAssertion));
   }
 };

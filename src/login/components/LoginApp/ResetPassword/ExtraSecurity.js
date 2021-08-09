@@ -7,7 +7,7 @@ import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
 import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
-import  { assertionFromAuthenticator } from "./StartOpenAuthentication";
+import  { assertionFromAuthenticator } from "./StartAuthenticator";
 
 const SecurityKeyButton = ({ 
   selected_option,
