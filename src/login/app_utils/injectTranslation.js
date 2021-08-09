@@ -11,7 +11,8 @@ const injectTranslation = () => {
   );
   // check if we have translation for preferred browser language
   const browserLocale = isTranslatedLanguage ? selectedBrowserLanguage : "en";
-
+  // // sets the < html lang=""> to the interface language
+  document.documentElement.lang = browserLocale;
   // set translation locale based on preferred browser lang
   // pass on only the translation of that locale
   initStore.dispatch(

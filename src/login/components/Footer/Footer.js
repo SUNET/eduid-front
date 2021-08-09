@@ -16,6 +16,8 @@ const LanguageToggler = ({ browserLocale, setLanguage }) => {
       <p className="lang-selected">
         <a
           onClick={() => {
+            // sets the < html lang=""> to the interface language
+            document.documentElement.lang = locale;
             setLanguage(locale);
             dispatch(
               updateIntl({
