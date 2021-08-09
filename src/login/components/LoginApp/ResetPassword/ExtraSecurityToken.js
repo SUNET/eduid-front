@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import ResetPasswordLayout from "./ResetPasswordLayout";
 import { getWebauthnAssertion, cancelWebauthnAssertion } from "../../../redux/actions/getWebauthnAssertionActions";
 
 const assertionFromAuthenticator = async (
   webauthn_challenge,
-  dispatch,
-  extra_security
+  dispatch
 ) => {
   const webauthnAssertion = await navigator.credentials
     .get(webauthn_challenge)
@@ -16,16 +14,13 @@ const assertionFromAuthenticator = async (
     .catch(() => {
       dispatch(cancelWebauthnAssertion())
     });
-  if(webauthnAssertion !== undefined && extra_security) {
+  if(webauthnAssertion !== undefined) {
     dispatch(getWebauthnAssertion(webauthnAssertion));
   }
 };
 
 const ExtraSecurityToken = (props) => {
   const dispatch = useDispatch();
-  const extra_security = useSelector(
-    (state) => state.resetPassword.extra_security
-  );
   const webauthn_challenge = useSelector(
     (state) => extra_security && state.resetPassword.extra_security.tokens.webauthn_options
   );
@@ -35,21 +30,16 @@ const ExtraSecurityToken = (props) => {
 
   useEffect(() => { 
     if (!webauthn_assertion && webauthn_assertion !== undefined) {
-      assertionFromAuthenticator(webauthn_challenge, dispatch, extra_security);
+      assertionFromAuthenticator(webauthn_challenge, dispatch);
     } 
-  }, [webauthn_challenge, webauthn_assertion, extra_security]);
+  }, [webauthn_challenge, webauthn_assertion]);
 
   const retryTokenAssertion = () => {
-    assertionFromAuthenticator(webauthn_challenge, dispatch, extra_security);
+    assertionFromAuthenticator(webauthn_challenge, dispatch);
   }
 
   return (
-    <ResetPasswordLayout
-      heading={props.translate("resetpw.extra-security_heading")} 
-      description={props.translate("resetpw.extra-security_description")} 
-      linkInfoText={props.translate("resetpw.without_extra_security")}
-      linkText={props.translate("resetpw.continue_reset_password")}
-     > 
+    <> 
       <p>{props.translate("mfa.reset-password-tapit")}</p>
       <div className="key-animation"  />
       <div>
@@ -77,7 +67,7 @@ const ExtraSecurityToken = (props) => {
           </div>
         </div>
       </div>
-    </ResetPasswordLayout>
+    </>
   )
 }
 
