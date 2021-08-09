@@ -1,4 +1,6 @@
 import * as CBOR from "../../../sagas/cbor";
+import { getWebauthnAssertion, cancelWebauthnAssertion } from "../../../login/redux/actions/getWebauthnAssertionActions";
+
 
 // 1. Ask backend for a challenge
 // decode the challenge to use it
@@ -27,6 +29,22 @@ export const mfaDecodeMiddleware = (response) => {
       }
     }
     return response;
+  }
+};
+
+export const assertionFromAuthenticator = async (
+  webauthn_challenge,
+  dispatch
+) => {
+  const webauthnAssertion = await navigator.credentials
+    .get(webauthn_challenge)
+    .then()
+    .catch(() => {
+       // assertion failed / cancled
+      dispatch(cancelWebauthnAssertion());
+    });
+  if(webauthnAssertion !== undefined) {
+    dispatch(getWebauthnAssertion(webauthnAssertion));
   }
 };
 
