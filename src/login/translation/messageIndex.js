@@ -2,7 +2,7 @@ import { defineMessages } from "react-intl";
 
 // import content from other files
 import { generalErrors, specificErrors } from "./defaultMessages/errors";
-import { login, tou} from "./defaultMessages/login";
+import { login, tou } from "./defaultMessages/login";
 import { generalInstructions } from "./defaultMessages/instructions";
 import { changePassword, resetPassword } from "./defaultMessages/password";
 import { register } from "./defaultMessages/register";
@@ -29,6 +29,11 @@ export const formattedMessages = {
 };
 
 export const unformattedMessages = defineMessages({
+  "placeholder.password": {
+    id: "placeholder.password",
+    defaultMessage: `enter a password`,
+    description: "placeholder text for password input",
+  },
   "pd.choose-language": {
     id: "pd.choose-language",
     defaultMessage: `Choose language`,
