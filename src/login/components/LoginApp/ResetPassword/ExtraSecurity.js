@@ -81,7 +81,8 @@ function ExtraSecurity(props){
       linkText={props.translate("resetpw.continue_reset_password")}
     > 
       { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
-        <SecurityKeyButton 
+        <SecurityKeyButton
+          selected_option={selected_option} 
           ShowSecurityKey={ShowSecurityKey} 
           extraSecurityKey={Object.keys(extraSecurity.tokens)} 
           translate={props.translate}

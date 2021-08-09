@@ -25,7 +25,7 @@ const ExtraSecurityToken = (props) => {
     (state) => state.resetPassword.selected_option
   );
   const webauthn_challenge = useSelector(
-    (state) => extra_security && state.resetPassword.extra_security.tokens.webauthn_options
+    (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
   );
   const webauthn_assertion = useSelector(
     (state) => state.resetPassword.webauthn_assertion
