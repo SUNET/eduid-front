@@ -67,7 +67,6 @@ function ExtraSecurity(props){
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
-    history.push(`/reset-password/security-key`);
   };
 
   return (
