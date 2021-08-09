@@ -133,7 +133,7 @@ input:focus {
 .password-input {
   display: flex;
   position: relative;
-  .is-valid {
+  input[name="current-password"].is-valid {
     background-image: none;
   }
   .checkmark,
