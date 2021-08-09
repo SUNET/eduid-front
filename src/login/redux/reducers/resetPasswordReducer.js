@@ -7,7 +7,7 @@ const data = {
     phone: {},
     phone_code: "",
     webauthn_assertion: null,
-    seleted_option: ""
+    selected_option: ""
 };
 
 let resetPasswordReducer = (state = data, action) => {
