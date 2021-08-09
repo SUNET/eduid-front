@@ -19,6 +19,8 @@ const Login = (props) => {
       history.push(`/login/tou/${ref}`);
     } else if (next_page === "MFA") {
       history.push(`/login/mfa/${ref}`);
+    } else if (next_page === "FINISHED") {
+      history.push(`/login/finished/${ref}`);
     }
   }, [next_page]);
   return (
