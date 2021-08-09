@@ -13,13 +13,11 @@ import ExtraSecurityToken from "./ResetPassword/ExtraSecurityToken";
 import PropTypes from "prop-types";
 
  const RenderResetPassword = (props) => {
-   const { urlCode } = props;
    return (
      <>
       <Route
-        exact
-        path="/reset-password/"
-        render={(props) => <ResetPasswordMain urlCode={urlCode} {...props} />}
+        path={`/reset-password/email`}
+        render={(props) => <ResetPasswordMain {...props} />}
       />
       <Route
         exact
@@ -83,7 +81,7 @@ class LoginApp extends Component {
     return (
       <div id="content" className="vertical-content-margin">
         {this.state.url.includes("/login/") && <RenderLogin {...this.props} />}
-        <RenderResetPassword urlCode={this.state.urlCode} {...this.props} />
+        <RenderResetPassword {...this.props} />
       </div>
     );
   }

@@ -66,6 +66,7 @@ let PhoneCodeForm = (props) => (
 
 function PhoneCodeSent(props){
   const phone = useSelector(state => state.resetPassword.phone);
+  const loginRef = useSelector(state => state.login.ref);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -76,7 +77,7 @@ function PhoneCodeSent(props){
     } 
     else {
       //Navigate to "/reset-password/" without extra security phone
-      history.push(`/reset-password/`)
+      history.push(`/reset-password/email/${loginRef}`)
       clearCountdown();
     }
   },[]);
