@@ -31,7 +31,7 @@ export function* useLinkCode() {
     const decodedWebauthnChallenge = mfaDecodeMiddleware(encodedWebauthnChallenge);
     yield put(putCsrfToken(decodedWebauthnChallenge));
     yield put(decodedWebauthnChallenge);
-      history.push(`/reset-password/`);
+      history.push(`/reset-password/email`);
     }
   } catch (error) {
     yield* failRequest(error, postLinkCodeFail(error));

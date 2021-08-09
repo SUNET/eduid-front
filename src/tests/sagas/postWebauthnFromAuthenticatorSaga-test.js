@@ -64,10 +64,10 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_MFA_AUTH_SUCCESS");
   });
-  it("{finished: true} fires api call to /next loop ", () => {
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_LOGIN_REF_TO_NEXT");
-  });
+  // it("{finished: true} fires api call to /next loop ", () => {
+  //   next = generator.next();
+  //   expect(next.value.PUT.action.type).toEqual("POST_LOGIN_REF_TO_NEXT");
+  // });
   it("done after 'POST_IDP_MFA_AUTH_SUCCESS'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);

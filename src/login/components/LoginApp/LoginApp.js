@@ -13,13 +13,11 @@ import ExtraSecurityToken from "./ResetPassword/ExtraSecurityToken";
 import PropTypes from "prop-types";
 
  const RenderResetPassword = (props) => {
-   const { urlCode } = props;
    return (
      <>
       <Route
-        exact
-        path="/reset-password/"
-        render={(props) => <ResetPasswordMain urlCode={urlCode} {...props} />}
+        path={`/reset-password/email`}
+        render={(props) => <ResetPasswordMain {...props} />}
       />
       <Route
         exact
@@ -54,9 +52,12 @@ const RenderLogin = (props) => {
   const dispatch = useDispatch();
   const ref = useSelector((state) => state.login.ref);
   const next_url = useSelector((state) => state.config.next_url);
-  // dispatch action when next_url is available
+  const errorMessage = useSelector((state) => state.notifications.errors);
   useEffect(() => {
-    dispatch(useLoginRef(ref));
+    // dispatch action when next_url is available and no error message
+    errorMessage.length === 0 && next_url !== null
+      ? dispatch(useLoginRef(ref))
+      : undefined;
   }, [next_url]);
   return <Route path={`/login/`} render={(props) => <Login {...props} />} />;
 };
@@ -80,7 +81,7 @@ class LoginApp extends Component {
     return (
       <div id="content" className="vertical-content-margin">
         {this.state.url.includes("/login/") && <RenderLogin {...this.props} />}
-        <RenderResetPassword urlCode={this.state.urlCode} {...this.props} />
+        <RenderResetPassword {...this.props} />
       </div>
     );
   }

@@ -2,7 +2,6 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postWebauthnFromAuthenticatorActions";
-import { useLoginRef } from "../../actions/postRefLoginActions";
 import { safeEncode } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 export function* postWebauthnFromAuthenticatorSaga() {
@@ -23,9 +22,6 @@ export function* postWebauthnFromAuthenticatorSaga() {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     yield put(response);
-    if (response.payload.finished) {
-      yield put(useLoginRef());
-    }
   } catch (error) {
     yield put(actions.postWebauthnFromAuthenticatorFail(error.toString()));
   }

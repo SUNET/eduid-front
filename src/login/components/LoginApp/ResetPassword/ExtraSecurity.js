@@ -2,9 +2,9 @@ import React, { useEffect, useState }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from 'react-router-dom';
 import EduIDButton from "../../../../components/EduIDButton";
+import { useDispatch, useSelector } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
 import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({ 
@@ -57,11 +57,12 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate }) => {
 function ExtraSecurity(props){
   const history = useHistory();
   const [extraSecurity, setExtraSecurity] = useState(null);
+  const loginRef = useSelector(state => state.login.ref);
 
   useEffect(()=>{
     if(history.location.state !== undefined){
       setExtraSecurity(history.location.state.extra_security)
-    }else history.push(`/reset-password/`)
+    }else history.push(`/reset-password/email/${loginRef}`)
   },[extraSecurity]);
 
   const ShowSecurityKey = (e) => {
