@@ -13,7 +13,7 @@ let FrejaeID = ({ translate }) => {
     ? frejaUrlDomain
     : frejaUrlDomain.concat("/");
   return (
-    <div className="secondary">
+    <div className="secondary" tabIndex="0">
       <div className="option">
         <p className="heading">
           {translate("login.mfa.secondary-option.title")}
