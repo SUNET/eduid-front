@@ -32,6 +32,7 @@ export const mfaDecodeMiddleware = (response) => {
   }
 };
 
+// 2. Open authenticator
 export const assertionFromAuthenticator = async (
   webauthn_challenge,
   dispatch
@@ -48,7 +49,7 @@ export const assertionFromAuthenticator = async (
   }
 };
 
-// 2. Return autheticator assertion to backend for final verification
+// 3. Return autheticator assertion to backend for final verification
 // encode the assertion before post
 export const safeEncode = (obj) => {
   const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
