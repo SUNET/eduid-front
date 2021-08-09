@@ -5,7 +5,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { useDispatch, useSelector } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
-import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({ 
   extraSecurityKey, 
@@ -67,6 +67,7 @@ function ExtraSecurity(props){
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
+    dispatch(selectExtraSecurity("securityKey"))
   };
 
   return (
