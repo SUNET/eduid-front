@@ -1,45 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { getWebauthnAssertion, cancelWebauthnAssertion } from "../../../redux/actions/getWebauthnAssertionActions";
-
-const assertionFromAuthenticator = async (
-  webauthn_challenge,
-  dispatch
-) => {
-  const webauthnAssertion = await navigator.credentials
-    .get(webauthn_challenge)
-    .then()
-    .catch(() => {
-      dispatch(cancelWebauthnAssertion())
-    });
-  if(webauthnAssertion !== undefined) {
-    dispatch(getWebauthnAssertion(webauthnAssertion));
-  }
-};
+import { assertionFromAuthenticator }  from "./StartOpenAuthentication";
 
 const ExtraSecurityToken = (props) => {
   const dispatch = useDispatch();
-  const selected_option = useSelector(
-    (state) => state.resetPassword.selected_option
-  );
   const webauthn_challenge = useSelector(
     (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
   );
-  const webauthn_assertion = useSelector(
-    (state) => state.resetPassword.webauthn_assertion
-  );
-
-  useEffect(() => { 
-    if (!webauthn_assertion && webauthn_assertion !== undefined && selected_option === "securityKey") {
-      assertionFromAuthenticator(webauthn_challenge, dispatch);
-    } 
-  }, [webauthn_challenge, webauthn_assertion]);
 
   const retryTokenAssertion = () => {
     assertionFromAuthenticator(webauthn_challenge, dispatch);
-  }
+  };
 
   return (
     <> 
