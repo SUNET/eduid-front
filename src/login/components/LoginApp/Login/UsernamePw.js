@@ -19,15 +19,16 @@ const RenderRegisterLink = ({ translate }) => (
   </p>
 );
 
-const RenderResetPasswordLink = ({ translate }) => (
-  <LinkRedirect
-    exact
-    id={"link-forgot-password"}
-    className={""}
-    to={`/reset-password/`}
-    text={translate("login.usernamePw.reset-password-link")}
+const RenderResetPasswordLink = ({ translate }) => {
+  const loginRef = useSelector((state) => state.login.ref);
+  return(
+    <LinkRedirect
+      id={"link-forgot-password"}
+      className={""}
+      to={`/reset-password/email/${loginRef}`}
+      text={translate("login.usernamePw.reset-password-link")}
   />
-);
+)};
 
 let UsernamePwFormButton = ({ invalid, dispatch, translate }) => {
   const loading = useSelector((state) => state.app.loading_data);
