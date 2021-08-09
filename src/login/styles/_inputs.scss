@@ -132,13 +132,14 @@ input:focus {
 // login username-pw / reset-password set-new-password
 .password-input {
   display: flex;
+  position: relative;
+  .is-valid {
+    background-image: none;
+  }
+  .checkmark,
   .show-hide-button {
-    color: $black;
-    font-size: 1rem;
     position: absolute;
-    right: 1rem;
     background: transparent;
-    height: 3rem;
     border-radius: 0;
     padding: 0;
     margin: 0;
@@ -146,8 +147,23 @@ input:focus {
     border: none;
     cursor: pointer;
   }
+  .show-hide-button {
+    right: 1rem;
+    color: $black;
+    font-size: 1rem;
+  }
   .is-valid ~ .show-hide-button {
     right: 3rem;
+  }
+  .checkmark {
+    color: #28a745;
+    right: 0.625rem;
+    align-self: center;
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+      transform: rotate(0);
+    }
   }
 }
 
@@ -165,4 +181,3 @@ input:focus {
     font-size: 1rem;
   }
 }
-
