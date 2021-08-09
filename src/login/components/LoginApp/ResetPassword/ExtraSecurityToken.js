@@ -21,6 +21,9 @@ const assertionFromAuthenticator = async (
 
 const ExtraSecurityToken = (props) => {
   const dispatch = useDispatch();
+  const selected_option = useSelector(
+    (state) => state.resetPassword.selected_option
+  );
   const webauthn_challenge = useSelector(
     (state) => extra_security && state.resetPassword.extra_security.tokens.webauthn_options
   );
@@ -29,7 +32,7 @@ const ExtraSecurityToken = (props) => {
   );
 
   useEffect(() => { 
-    if (!webauthn_assertion && webauthn_assertion !== undefined) {
+    if (!webauthn_assertion && webauthn_assertion !== undefined && selected_option === "securityKey") {
       assertionFromAuthenticator(webauthn_challenge, dispatch);
     } 
   }, [webauthn_challenge, webauthn_assertion]);
