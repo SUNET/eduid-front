@@ -66,7 +66,7 @@ function ResetPasswordMain(props){
       history.push({ pathname:`/reset-password/extra-security`, state: { extra_security: extra_security }})
     }else if(extra_security && Object.keys(extra_security).length === 0) 
       history.push(`/reset-password/set-new-password`)
-    else history.push(`/reset-password/email`)
+    else history.push(`/reset-password/email/${loginRef}`)
   }, [extra_security]);
 
   const sendLink = (e) => {
