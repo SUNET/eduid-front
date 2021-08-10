@@ -24,24 +24,24 @@ const RenderRegisterLink = ({ translate }) => {
 
 const RenderResetPasswordLink = ({ translate }) => {
   const loginRef = useSelector((state) => state.login.ref);
-  return(
+  return (
     <LinkRedirect
       id={"link-forgot-password"}
       className={""}
       to={`/reset-password/email/${loginRef}`}
       text={translate("login.usernamePw.reset-password-link")}
-  />
-)};
+    />
+  );
+};
 
 let UsernamePwFormButton = ({ invalid, dispatch, translate }) => {
-  const errorMessage = useSelector((state) => state.notifications.errors);
   const loading = useSelector((state) => state.app.loading_data);
   return (
     <ButtonPrimary
       type="submit"
       onClick={() => dispatch(submit("usernamePwForm"))}
-      disabled={errorMessage.length !== 0 || invalid || loading}
-      aria-disabled={errorMessage.length !== 0 || invalid || loading}
+      disabled={invalid || loading}
+      aria-disabled={invalid || loading}
       id="login-form-button"
       className={"settings-button"}
     >
