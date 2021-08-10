@@ -8,6 +8,7 @@ export const POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS = "POST_RESET_PASSWORD_VER
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE";
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
 export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
+export const SELECT_EXTRA_SECURITY_OPTION = "SELECT_EXTRA_SECURITY_OPTION";
 
 export function postEmailLink(email) {
   return {
@@ -80,6 +81,15 @@ export function savePhoneCode(code) {
     type: SAVE_PHONE_CODE,
     payload: {
       phone_code: code
+    }
+  };
+}
+
+export function selectExtraSecurity(option) {
+  return {
+    type: SELECT_EXTRA_SECURITY_OPTION,
+    payload: {
+      selected_option: option
     }
   };
 }
