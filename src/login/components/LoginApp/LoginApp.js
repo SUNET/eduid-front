@@ -9,7 +9,6 @@ import EmailLinkSent from "./ResetPassword/EmailLinkSent";
 import ExtraSecurity from "./ResetPassword/ExtraSecurity";
 import PhoneCodeSent from "./ResetPassword/PhoneCodeSent";
 import SetNewPassword from "./ResetPassword/SetNewPassword";
-import ExtraSecurityToken from "./ResetPassword/ExtraSecurityToken";
 import PropTypes from "prop-types";
 
  const RenderResetPassword = (props) => {
@@ -33,11 +32,6 @@ import PropTypes from "prop-types";
          exact
          path="/reset-password/phone-code-sent"
          render={(props) => <PhoneCodeSent {...props} />}
-       />
-        <Route
-         exact
-         path="/reset-password/security-key"
-         render={(props) => <ExtraSecurityToken {...props} />}
        />
        <Route
          exact
