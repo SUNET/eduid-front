@@ -5,10 +5,18 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { useDispatch, useSelector } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
-import { requestPhoneCode } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
+import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
+import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
-const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
+const SecurityKeyButton = ({ 
+  selected_option,
+  extraSecurityKey, 
+  translate, 
+  ShowSecurityKey
+}) => {
   return (
+    !selected_option ? 
      Object.values(extraSecurityKey).map((security) => {
       return (
         <EduIDButton
@@ -20,13 +28,11 @@ const SecurityKeyButton = ({extraSecurityKey, translate, ShowSecurityKey}) => {
         {translate("resetpw.use_extra_security_key")}
         </EduIDButton>
       )
-    })
-  )
-};
+    } 
+  ) : selected_option === "securityKey" ? <ExtraSecurityToken /> : null
+)};
 
-const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
-  const dispatch = useDispatch();
-
+const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch }) => {
   const sendConfirmCode = (phone)=>{
     dispatch(requestPhoneCode(phone));
   };
@@ -52,18 +58,31 @@ const SecurityWithSMSButton = ({extraSecurityPhone, translate }) => {
 
 function ExtraSecurity(props){
   const history = useHistory();
+  const dispatch = useDispatch();
   const [extraSecurity, setExtraSecurity] = useState(null);
   const loginRef = useSelector(state => state.login.ref);
-
+  const selected_option = useSelector(state => state.resetPassword.selected_option);
+  const extra_security = useSelector(
+    (state) => state.resetPassword.extra_security
+  );
+  
   useEffect(()=>{
     if(history.location.state !== undefined){
       setExtraSecurity(history.location.state.extra_security)
     }else history.push(`/reset-password/email/${loginRef}`)
-  },[extraSecurity]);
+  },[extraSecurity, extra_security]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
-    history.push(`/reset-password/security-key`)
+    dispatch(selectExtraSecurity("securityKey"));
+    startTokenAssertion();
+  };
+
+  const startTokenAssertion = () => {
+    const webauthn_challenge = extra_security.tokens.webauthn_options;
+    if(extra_security.tokens.webauthn_options){
+      assertionFromAuthenticator(webauthn_challenge, dispatch);
+    }
   };
 
   return (
@@ -74,10 +93,19 @@ function ExtraSecurity(props){
       linkText={props.translate("resetpw.continue_reset_password")}
     > 
       { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
-        <SecurityKeyButton ShowSecurityKey={ShowSecurityKey} extraSecurityKey={Object.keys(extraSecurity.tokens)} translate={props.translate} /> : null
+        <SecurityKeyButton
+          selected_option={selected_option} 
+          ShowSecurityKey={ShowSecurityKey} 
+          extraSecurityKey={Object.keys(extraSecurity.tokens)} 
+          translate={props.translate}
+        /> : null
       }
-      { extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-        <SecurityWithSMSButton extraSecurityPhone={extraSecurity.phone_numbers} translate={props.translate}/> : null
+      { !selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
+        <SecurityWithSMSButton 
+          extraSecurityPhone={extraSecurity.phone_numbers} 
+          translate={props.translate}
+          dispatch={dispatch}
+        /> : null
       }
     </ResetPasswordLayout>
   ) 
