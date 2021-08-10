@@ -1,16 +1,21 @@
 import React from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
-import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 const ExtraSecurityToken = (props) => {
+  const dispatch = useDispatch();
+  const webauthn_challenge = useSelector(
+    (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
+  );
+
+  const retryTokenAssertion = () => {
+    assertionFromAuthenticator(webauthn_challenge, dispatch);
+  };
+
   return (
-    <ResetPasswordLayout
-      heading={props.translate("resetpw.extra-security_heading")} 
-      description={props.translate("resetpw.extra-security_description")} 
-      linkInfoText={props.translate("resetpw.without_extra_security")}
-      linkText={props.translate("resetpw.continue_reset_password")}
-    > 
+    <> 
       <p>{props.translate("mfa.reset-password-tapit")}</p>
       <div className="key-animation"  />
       <div>
@@ -27,7 +32,9 @@ const ExtraSecurityToken = (props) => {
             {props.translate("mfa.problems-heading")}
           </div>
           <div className="card-body">
-            <button className="btn-link">
+            <button 
+              className="btn-link" 
+              onClick={()=>retryTokenAssertion()}>
               {props.translate("mfa.try-again")}
             </button>
             <button className="btn-link">
@@ -36,7 +43,7 @@ const ExtraSecurityToken = (props) => {
           </div>
         </div>
       </div>
-    </ResetPasswordLayout>
+    </>
   )
 }
 
