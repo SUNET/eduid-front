@@ -1,61 +1,77 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateIntl } from "react-intl-redux";
 import PropTypes from "prop-types";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
-// import "../../../style/Footer.scss";
-
-class Footer extends Component {
-  render() {
-    let langElems = "";
-
-    // if (this.props.is_configured) {
-   
-    const langs = Object.getOwnPropertyNames(this.props.languages);
-  
-    langElems = langs.map((lang, index) => {
-      if (lang === this.props.language) {
-        return (
-          <p key="0" className="non-selected" key={index}>
-            <span key="0">{this.props.languages[lang]}</span>
-          </p>
-        );
-      } else {
-        return (
-          <p key="0" className="lang-selected" data-lang={lang} key={index}>
-            <a key="0" onClick={this.props.changeLanguage}>
-              {this.props.languages[lang]}
-            </a>
-          </p>
-        );
-      }
-    });
-
-    return (
-      <footer key="0" id="footer">
-        <p key="0" id="copyright">
-          <span>&copy;{this.props.translate("main.copyright")}</span>
-        </p>
-        <nav key="1">
-          <ul>
-            <li key="0">
-              <a className="help-link" href={this.props.faq_link}>
-                {this.props.translate("header.faq")}
-              </a>
-            </li>
-            <li key="1" id="language-selector">
-              {langElems}
-            </li>
-          </ul>
-        </nav>
-      </footer>
-    );
-  }
-}
-
-Footer.propTypes = {
-  is_configured: PropTypes.bool,
-  language: PropTypes.string,
-  languages: PropTypes.object,
-  changeLanguage: PropTypes.func
+const LanguageToggler = ({ browserLocale, setLanguage }) => {
+  const dispatch = useDispatch();
+  const translateTo = AVAILABLE_LANGUAGES.filter(
+    (lang) => lang[0] !== browserLocale
+  );
+  const locale = translateTo[0][0];
+  const language = translateTo[0][1];
+  return (
+    <li id="language-selector">
+      <p className="lang-selected">
+        <a
+          onClick={() => {
+            setLanguage(locale);
+            dispatch(
+              updateIntl({
+                locale: locale,
+                messages: LOCALIZED_MESSAGES[locale],
+              })
+            );
+          }}
+        >
+          {language}
+        </a>
+      </p>
+    </li>
+  );
 };
 
-export default Footer;
+const HelpLink = ({ language, translate }) => {
+  const toHome = useSelector((state) => state.config.eduid_site_url);
+  const toHelp = language === "en" ? `/en/faq.html` : `/faq.html`;
+  return (
+    <li>
+      <a className="help-link" href={`${toHome}${toHelp}`}>
+        {translate("header.faq")}
+      </a>
+    </li>
+  );
+};
+
+const Nav = (props) => {
+  const browserLocale = useSelector((state) => state.intl.locale);
+  const [language, setLanguage] = useState(browserLocale);
+  return (
+    <nav>
+      <ul>
+        <HelpLink language={language} {...props} />
+        <LanguageToggler
+          setLanguage={setLanguage}
+          browserLocale={browserLocale}
+          {...props}
+        />
+      </ul>
+    </nav>
+  );
+};
+
+const Footer = (props) => {
+  return (
+    <footer key="0" id="footer">
+      <p id="copyright">&copy;{props.translate("main.copyright")}</p>
+      <Nav {...props} />
+    </footer>
+  );
+};
+
+Footer.propTypes = {
+  translate: PropTypes.func,
+};
+
+export default InjectIntl(Footer);

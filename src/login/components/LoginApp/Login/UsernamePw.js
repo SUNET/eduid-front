@@ -8,27 +8,31 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
 
-const RenderRegisterLink = ({ translate }) => (
-  <p className="secondary-link">
-    {translate("login.usernamePw.register-prompt")}
-    <Link
-      className="text-link"
-      href="https://signup.eduid.se/"
-      text={translate("login.usernamePw.register-link")}
-    />
-  </p>
-);
+const RenderRegisterLink = ({ translate }) => {
+  const toSignup = useSelector((state) => state.config.signup_url);
+  return (
+    <p className="secondary-link">
+      {translate("login.usernamePw.register-prompt")}
+      <Link
+        className="text-link"
+        href={toSignup}
+        text={translate("login.usernamePw.register-link")}
+      />
+    </p>
+  );
+};
 
 const RenderResetPasswordLink = ({ translate }) => {
   const loginRef = useSelector((state) => state.login.ref);
-  return(
+  return (
     <LinkRedirect
       id={"link-forgot-password"}
       className={""}
       to={`/reset-password/email/${loginRef}`}
       text={translate("login.usernamePw.reset-password-link")}
-  />
-)};
+    />
+  );
+};
 
 let UsernamePwFormButton = ({ invalid, dispatch, translate }) => {
   const loading = useSelector((state) => state.app.loading_data);
