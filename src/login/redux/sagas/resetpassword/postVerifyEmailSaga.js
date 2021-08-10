@@ -7,7 +7,7 @@ import {
 } from "../../../../sagas/common";
 import { postLinkCodeFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
-import { mfaDecodeMiddleware } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 export function requestSendLinkCode(config, data) {
   return window
@@ -28,7 +28,7 @@ export function* useLinkCode() {
       csrf_token: state.config.csrf_token
     };
     const encodedWebauthnChallenge = yield call(requestSendLinkCode, state.config, data);
-    const decodedWebauthnChallenge = mfaDecodeMiddleware(encodedWebauthnChallenge);
+    const decodedWebauthnChallenge = mfaDecodeMiddlewareForResetPassword(encodedWebauthnChallenge);
     yield put(putCsrfToken(decodedWebauthnChallenge));
     yield put(decodedWebauthnChallenge);
       history.push(`/reset-password/email`);
