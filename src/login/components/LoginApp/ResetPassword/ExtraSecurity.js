@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
-import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({ 
   selected_option,
@@ -66,7 +65,6 @@ function ExtraSecurity(props){
   const extra_security = useSelector(
     (state) => state.resetPassword.extra_security
   );
-
   
   useEffect(()=>{
     if(extra_security !== undefined){
@@ -85,9 +83,10 @@ function ExtraSecurity(props){
   };
 
   const startTokenAssertion = () => {
+    const path = history.push(`/reset-password/set-new-password/`)
     const webauthn_challenge = extra_security.tokens.webauthn_options;
     if(extra_security.tokens.webauthn_options){
-      assertionFromAuthenticator(webauthn_challenge, dispatch);
+      assertionFromAuthenticator(webauthn_challenge, dispatch, path);
     }
   };
 
