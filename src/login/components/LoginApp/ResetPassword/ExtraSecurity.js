@@ -60,7 +60,6 @@ function ExtraSecurity(props){
   const history = useHistory();
   const dispatch = useDispatch();
   const [extraSecurity, setExtraSecurity] = useState(null);
-  const loginRef = useSelector(state => state.login.ref);
   const selected_option = useSelector(state => state.resetPassword.selected_option);
   const extra_security = useSelector(
     (state) => state.resetPassword.extra_security
