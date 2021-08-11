@@ -31,8 +31,9 @@ export function* useLinkCode() {
     const decodedWebauthnChallenge = mfaDecodeMiddlewareForResetPassword(encodedWebauthnChallenge);
     yield put(putCsrfToken(decodedWebauthnChallenge));
     yield put(decodedWebauthnChallenge);
-      history.push(`/reset-password/email`);
-    }
+    if (decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS")
+      history.push(`/reset-password/extra-security/${data.email_code}`);
+    }else history.push(`/reset-password/email/`);
   } catch (error) {
     yield* failRequest(error, postLinkCodeFail(error));
   }
