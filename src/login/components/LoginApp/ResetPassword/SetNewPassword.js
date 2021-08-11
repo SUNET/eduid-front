@@ -1,6 +1,6 @@
-import React, { useEffect, useState }  from "react";
+import React, { useEffect }  from "react";
 import Form from "reactstrap/lib/Form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field } from "redux-form";
