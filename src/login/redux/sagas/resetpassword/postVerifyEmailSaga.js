@@ -22,6 +22,7 @@ export function requestSendLinkCode(config, data) {
 export function* useLinkCode() {
   try {
     const state = yield select(state => state);
+    console.log("STATE",state)
     if(state.resetPassword.email_code){
     const data = {
       email_code: state.resetPassword.email_code,
@@ -33,7 +34,8 @@ export function* useLinkCode() {
     yield put(decodedWebauthnChallenge);
     if (decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS")
       history.push(`/reset-password/extra-security/${data.email_code}`);
-    }else history.push(`/reset-password/email/`);
+    }else(decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL") 
+      history.push(`/reset-password/email/`);
   } catch (error) {
     yield* failRequest(error, postLinkCodeFail(error));
   }
