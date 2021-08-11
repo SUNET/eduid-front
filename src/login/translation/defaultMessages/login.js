@@ -117,7 +117,7 @@ export const tou = {
   "login.tou.version.2016-v1": (
     <FormattedHTMLMessage
       id="login.tou.version.2016-v1"
-      defaultMessage={`<ul>
+      defaultMessage={`<ul tabIndex="0">
       <p>The following generally applies:</p>
       <li>
         <p>
@@ -143,7 +143,7 @@ export const tou = {
         </p>
       </li>
     </ul>
-    <ul>
+    <ul tabIndex="0">
       <p>SUNET judges unethical behaviour to be when someone:</p>
       <li>
         <p>
@@ -180,24 +180,21 @@ export const tou = {
   "login.tou.version.2021-v1": (
     <FormattedHTMLMessage
       id="login.tou.version.2021-v1"
-      defaultMessage={`<ul>
-      <p>This is a test tou:</p>
+      defaultMessage={`<ul tabIndex="0">
+       <p>The following generally applies:</p>
       <li>
         <p>
-          This version is from 2021,
+          This a test version of terms of use version 1 from 2021,
         </p>
       </li>
       <li>
         <p>
-          This shows that the version the backend dictates,
+          The versioning allows us to update terms if needed and keep parallel versions at the same time,
         </p>
       </li>
-    </ul>
-    <ul>
-      <p>This is a test header:</p>
       <li>
         <p>
-        is the version one that displayed
+          And still ensure that we serve the correct version a specific users need to acccept,
         </p>
       </li>
     </ul>`}
