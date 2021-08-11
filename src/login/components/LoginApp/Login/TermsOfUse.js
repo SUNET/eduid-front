@@ -8,11 +8,13 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
 let TermOfUseText = ({ translate, version }) => (
   <div className="tou-text">
-    <p className="heading">{translate("login.tou.legal-title")}</p>
-    {version !== null ? (
-      <ul>{translate(`login.tou.version.${version}`)}</ul>
-    ) : null}
-    <p className="heading">{translate("login.tou.legal-warning")}</p>
+    <p className="heading" tabIndex="0">
+      {translate("login.tou.legal-title")}
+    </p>
+    {version !== null ? translate(`login.tou.version.${version}`) : null}
+    <p tabIndex="0" className="heading">
+      {translate("login.tou.legal-warning")}
+    </p>
   </div>
 );
 
@@ -23,6 +25,8 @@ let AcceptButton = ({ translate, version }) => {
       type="submit"
       onClick={() => dispatch(updatedTouAccept(version))}
       id="accept-button"
+      aria-label="accept button"
+      aria-disabled={!version}
       disabled={!version}
     >
       {translate("login.tou.button")}
@@ -43,7 +47,7 @@ let TermOfUse = (props) => {
   return (
     <div className="tou">
       <h2 className="heading">{translate("login.tou.h2-heading")}</h2>
-      <p>{translate("login.tou.paragraph")}</p>
+      <p tabIndex="0">{translate("login.tou.paragraph")}</p>
       <TermOfUseText translate={translate} version={version} />
       <AcceptButton translate={translate} version={version} />
     </div>
