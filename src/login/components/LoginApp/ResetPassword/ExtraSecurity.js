@@ -65,6 +65,7 @@ function ExtraSecurity(props){
   const extra_security = useSelector(
     (state) => state.resetPassword.extra_security
   );
+  const emailCode = useSelector(state => state.resetPassword.email_code);
   
   useEffect(()=>{
     if(extra_security !== undefined){
@@ -83,10 +84,9 @@ function ExtraSecurity(props){
   };
 
   const startTokenAssertion = () => {
-    const path = history.push(`/reset-password/set-new-password/`)
     const webauthn_challenge = extra_security.tokens.webauthn_options;
     if(extra_security.tokens.webauthn_options){
-      assertionFromAuthenticator(webauthn_challenge, dispatch, path);
+      assertionFromAuthenticator(webauthn_challenge, dispatch);
     }
   };
 
