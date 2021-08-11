@@ -52,8 +52,8 @@ EmailForm = connect(() => ({
 
 function ResetPasswordMain(props){
   const dispatch = useDispatch();
-  const extra_security = useSelector(state => state.resetPassword.extra_security);
-  const history = useHistory();
+  // const extra_security = useSelector(state => state.resetPassword.extra_security);
+  // const history = useHistory();
   const url = document.location.href;
   const loginRef = url.split("/email/").reverse()[0];
 
@@ -61,13 +61,13 @@ function ResetPasswordMain(props){
     clearCountdown();
   }, []);
 
-  useEffect(()=>{
-    if(extra_security && Object.keys(extra_security).length > 0) {
-      history.push({ pathname:`/reset-password/extra-security`, state: { extra_security: extra_security }})
-    }else if(extra_security && Object.keys(extra_security).length === 0) 
-      history.push(`/reset-password/set-new-password`)
-    else history.push(`/reset-password/email/${loginRef}`)
-  }, [extra_security]);
+  // useEffect(()=>{
+  //   if(extra_security && Object.keys(extra_security).length > 0) {
+  //     history.push({ pathname:`/reset-password/extra-security`, state: { extra_security: extra_security }})
+  //   }else if(extra_security && Object.keys(extra_security).length === 0) 
+  //     history.push(`/reset-password/set-new-password`)
+  //   else history.push(`/reset-password/email/${loginRef}`)
+  // }, [extra_security]);
 
   const sendLink = (e) => {
     e.preventDefault();

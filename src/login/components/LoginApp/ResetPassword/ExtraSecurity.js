@@ -66,11 +66,11 @@ function ExtraSecurity(props){
     (state) => state.resetPassword.extra_security
   );
   
-  useEffect(()=>{
-    if(history.location.state !== undefined){
-      setExtraSecurity(history.location.state.extra_security)
-    }else history.push(`/reset-password/email/${loginRef}`)
-  },[extraSecurity, extra_security]);
+  // useEffect(()=>{
+  //   if(history.location.state !== undefined){
+  //     setExtraSecurity(history.location.state.extra_security)
+  //   }else history.push(`/reset-password/email/${loginRef}`)
+  // },[extraSecurity, extra_security]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
