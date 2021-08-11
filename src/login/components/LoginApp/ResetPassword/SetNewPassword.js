@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import { useLocation } from 'react-router-dom';
 
 const validateNewPassword = (value) => {
   const errors = {};
@@ -55,9 +54,9 @@ function SetNewPassword(props){
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
   const dispatch = useDispatch();
-  const location = useLocation();
+
   useEffect(()=>{
-      dispatch(saveLinkCode(emailCode));
+    dispatch(saveLinkCode(emailCode));
   },[dispatch]);
 
   return (
