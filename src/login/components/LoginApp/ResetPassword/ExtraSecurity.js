@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import Splash from "../../../../containers/Splash";
 
 const SecurityKeyButton = ({ 
   selected_option,
@@ -96,6 +97,7 @@ function ExtraSecurity(props){
       linkInfoText={props.translate("resetpw.without_extra_security")}
       linkText={props.translate("resetpw.continue_reset_password")}
     > 
+      {!extraSecurity && <Splash /> }
       { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
         <SecurityKeyButton
           selected_option={selected_option} 
