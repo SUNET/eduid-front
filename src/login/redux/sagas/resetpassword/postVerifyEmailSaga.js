@@ -20,28 +20,24 @@ export function requestSendLinkCode(config, data) {
 }
 
 export function* useLinkCode() {
-  try {
-    const state = yield select(state => state);
-    console.log("STATE",state)
-    if(state.resetPassword.email_code){
+  const state = yield select(state => state);
+  if(state.resetPassword.email_code){
     const data = {
       email_code: state.resetPassword.email_code,
       csrf_token: state.config.csrf_token
     };
-    const encodedWebauthnChallenge = yield call(requestSendLinkCode, state.config, data);
-    console.log("action", encodedWebauthnChallenge)
-    const decodedWebauthnChallenge = mfaDecodeMiddlewareForResetPassword(encodedWebauthnChallenge);
-    yield put(putCsrfToken(decodedWebauthnChallenge));
-    yield put(decodedWebauthnChallenge);
-    history.push(`/reset-password/extra-security/${data.email_code}`);
-  }
-
-  // if (decodedWebauthnChallenge && decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS")
-  //     history.push(`/reset-password/extra-security/${data.email_code}`);
-  //   else(decodedWebauthnChallenge && decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL") 
-  //    console.log("hello")
-  //     history.push(`/reset-password/email/`);
-  } catch (error) {
-    yield* failRequest(error, postLinkCodeFail(error));
+    try {
+      const encodedWebauthnChallenge = yield call(requestSendLinkCode, state.config, data);
+      const decodedWebauthnChallenge = mfaDecodeMiddlewareForResetPassword(encodedWebauthnChallenge);
+      yield put(putCsrfToken(decodedWebauthnChallenge));
+      yield put(decodedWebauthnChallenge);
+      if(decodedWebauthnChallenge && decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS")
+        return history.push(`/reset-password/extra-security/${data.email_code}`);
+      else
+        return history.push(`/reset-password/email/`);
+    }
+    catch (error) {
+      yield* failRequest(error, postLinkCodeFail(error));
+    }
   }
 }
