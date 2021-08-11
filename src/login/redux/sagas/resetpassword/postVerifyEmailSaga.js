@@ -29,13 +29,18 @@ export function* useLinkCode() {
       csrf_token: state.config.csrf_token
     };
     const encodedWebauthnChallenge = yield call(requestSendLinkCode, state.config, data);
+    console.log("action", encodedWebauthnChallenge)
     const decodedWebauthnChallenge = mfaDecodeMiddlewareForResetPassword(encodedWebauthnChallenge);
     yield put(putCsrfToken(decodedWebauthnChallenge));
     yield put(decodedWebauthnChallenge);
-    if (decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS")
-      history.push(`/reset-password/extra-security/${data.email_code}`);
-    }else(decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL") 
-      history.push(`/reset-password/email/`);
+    history.push(`/reset-password/extra-security/${data.email_code}`);
+  }
+
+  // if (decodedWebauthnChallenge && decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS")
+  //     history.push(`/reset-password/extra-security/${data.email_code}`);
+  //   else(decodedWebauthnChallenge && decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL") 
+  //    console.log("hello")
+  //     history.push(`/reset-password/email/`);
   } catch (error) {
     yield* failRequest(error, postLinkCodeFail(error));
   }

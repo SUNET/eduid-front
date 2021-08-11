@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import Form from "reactstrap/lib/Form";
+import { useDispatch, useSelector } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field } from "redux-form";
@@ -7,6 +8,8 @@ import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
+import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
+import { useLocation } from 'react-router-dom';
 
 const validateNewPassword = (value) => {
   const errors = {};
@@ -49,6 +52,14 @@ NewPasswordForm = connect(() => ({
   touchOnChange: true,
 }))(NewPasswordForm);
 function SetNewPassword(props){
+  const url = document.location.href;
+  const emailCode = url.split("/").reverse()[0];
+  const dispatch = useDispatch();
+  const location = useLocation();
+  useEffect(()=>{
+      dispatch(saveLinkCode(emailCode));
+  },[dispatch]);
+
   return (
     <>
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>

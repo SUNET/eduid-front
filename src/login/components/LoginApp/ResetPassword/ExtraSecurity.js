@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({ 
   selected_option,
@@ -65,12 +66,17 @@ function ExtraSecurity(props){
   const extra_security = useSelector(
     (state) => state.resetPassword.extra_security
   );
+
   
-  // useEffect(()=>{
-  //   if(history.location.state !== undefined){
-  //     setExtraSecurity(history.location.state.extra_security)
-  //   }else history.push(`/reset-password/email/${loginRef}`)
-  // },[extraSecurity, extra_security]);
+  useEffect(()=>{
+    if(extra_security !== undefined){
+      if(Object.keys(extra_security).length > 0){
+        setExtraSecurity(extra_security);
+      }if(!Object.keys(extra_security).length){
+        history.push(`/reset-password/set-new-password/${emailCode}`)
+      }
+    }
+  },[extra_security]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
