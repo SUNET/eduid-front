@@ -24,7 +24,6 @@ import PropTypes from "prop-types";
         render={(props) => <EmailLinkSent {...props} />}
       />
       <Route
-        exact
         path="/reset-password/extra-security"
         render={(props) => <ExtraSecurity {...props} />}
       />
@@ -34,7 +33,6 @@ import PropTypes from "prop-types";
          render={(props) => <PhoneCodeSent {...props} />}
        />
        <Route
-         exact
          path="/reset-password/set-new-password"
          render={(props) => <SetNewPassword {...props} />}
        />
