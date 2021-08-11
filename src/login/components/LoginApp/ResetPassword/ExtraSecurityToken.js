@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
 import InjectIntl  from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 const ExtraSecurityToken = (props) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [assertion, setAssertion] = useState(null);
   const webauthn_challenge = useSelector(
     (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
+  );
+  const webauthn_assertion = useSelector(
+    (state) => state.resetPassword.webauthn_assertion
   );
 
   const retryTokenAssertion = () => {
     assertionFromAuthenticator(webauthn_challenge, dispatch);
   };
+
+  useEffect(() => {
+    if(webauthn_assertion)
+      setAssertion(webauthn_assertion);
+    if(assertion)
+      history.push(`/reset-password/set-new-password`); 
+  }, [webauthn_assertion, assertion]);
 
   return (
     <> 
