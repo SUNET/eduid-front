@@ -106,6 +106,7 @@ function ExtraSecurity(props){
       description={props.translate("resetpw.extra-security_description")} 
       linkInfoText={props.translate("resetpw.without_extra_security")}
       linkText={props.translate("resetpw.continue_reset_password")}
+      emailCode={emailCode}
     > 
       {!extraSecurity && <Splash /> }
       { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
