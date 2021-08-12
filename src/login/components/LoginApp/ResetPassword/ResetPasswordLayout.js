@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 const ResetPasswordLayout = (props) =>{
   const dispatch = useDispatch();
   const history = useHistory();
-  const setPasswordWithout = () => {
+  const continueSetPassword = () => {
     dispatch(selectExtraSecurity("without"));
     history.push(`/reset-password/set-new-password/${props.emailCode}`)
   };
@@ -17,7 +17,7 @@ const ResetPasswordLayout = (props) =>{
         <p>{props.description}</p>
         {props.children}
         <p className="decription-without-security">{props.linkInfoText}
-          <a onClick={setPasswordWithout}> {props.linkText}</a> 
+          <a onClick={()=>continueSetPassword()}> {props.linkText}</a> 
         </p>
       </div>
     </>
