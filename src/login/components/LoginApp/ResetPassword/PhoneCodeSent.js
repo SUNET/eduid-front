@@ -4,10 +4,10 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import SuccessIconAnimation from "./SuccessIconAnimation";
 import { 
-    RenderingResendCodeTimer, 
-    countDownStart, 
-    getLocalStorage, 
-    LOCAL_STORAGE_PERSISTED_COUNT 
+  RenderingResendCodeTimer, 
+  countDownStart, 
+  getLocalStorage, 
+  LOCAL_STORAGE_PERSISTED_COUNT 
 } from "./CountDownTimer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -18,6 +18,7 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 import { requestPhoneCode, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
 import { useHistory } from 'react-router-dom';
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
 
 const validate = (values) => {
     const value = values.phone;
@@ -65,10 +66,11 @@ let PhoneCodeForm = (props) => (
 
 function PhoneCodeSent(props){
   const phone = useSelector(state => state.resetPassword.phone);
-  const emailCode = useSelector(state => state.resetPassword.email_code);
   const messages = useSelector(state => state.notifications.messages);
   const dispatch = useDispatch();
   const history = useHistory();
+  const url = document.location.href;
+  const emailCode = url.split("/").reverse()[0];
 
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
@@ -76,6 +78,11 @@ function PhoneCodeSent(props){
       countDownStart();
     } 
   },[]);
+
+
+  useEffect(()=>{
+    dispatch(saveLinkCode(emailCode));
+  },[dispatch]);
 
   const resendPhoneCode = (e) => {
     e.preventDefault();
