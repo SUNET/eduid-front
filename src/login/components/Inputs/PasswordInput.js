@@ -60,7 +60,7 @@ let PasswordInput = ({ translate }) => {
       autoComplete="current-password"
       required="true"
       label={translate("login.usernamePw.password-input")}
-      placeholder={"enter a password"}
+      placeholder={translate("placeholder.password")}
       helpBlock={""}
     />
   );

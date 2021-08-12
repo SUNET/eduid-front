@@ -36,7 +36,7 @@ let SecurityKey = (props) => {
   const { translate } = props;
   const [selected, setSelected] = useState(false);
   return (
-    <div className="primary">
+    <div className="primary" tabIndex="0">
       <div className="option">
         {selected ? (
           <SecurityKeySelected setSelected={setSelected} {...props} />
