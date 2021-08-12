@@ -4,7 +4,6 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import SuccessIconAnimation from "./SuccessIconAnimation";
 import { 
-    clearCountdown, 
     RenderingResendCodeTimer, 
     countDownStart, 
     getLocalStorage, 
@@ -66,7 +65,6 @@ let PhoneCodeForm = (props) => (
 
 function PhoneCodeSent(props){
   const phone = useSelector(state => state.resetPassword.phone);
-  const loginRef = useSelector(state => state.login.ref);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -75,11 +73,6 @@ function PhoneCodeSent(props){
     if(count > - 1 && Object.keys(phone).length){
       countDownStart();
     } 
-    else {
-      //Navigate to "/reset-password/" without extra security phone
-      history.push(`/reset-password/email/${loginRef}`)
-      clearCountdown();
-    }
   },[]);
 
   const resendPhoneCode = (e) => {
@@ -102,7 +95,7 @@ function PhoneCodeSent(props){
 
   return (
     <>
-      <SuccessIconAnimation />
+    <SuccessIconAnimation />
       <div id="reset-pass-display">
         <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
         <PhoneCodeForm handlePhoneCode={handlePhoneCode} phone={phone} {...props} />
