@@ -320,6 +320,7 @@
   "phones.unconfirmed_number_not_primary": "Du kan inte sätta ett obekräftat telefonnummer som primärt nummer",
   "phones.unknown_phone": "Telefonumret du angav kan inte hittas",
   "phones.verification-success": "Telefonnummer har bekräftats",
+  "placeholder.password": "ange ett lösenord",
   "profile.email_display_no_data": "ingen e-postadress sparad",
   "profile.email_display_title": "E-postadress",
   "profile.eppn_display_title": "eppn",
