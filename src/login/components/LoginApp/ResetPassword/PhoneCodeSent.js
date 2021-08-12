@@ -65,6 +65,7 @@ let PhoneCodeForm = (props) => (
 
 function PhoneCodeSent(props){
   const phone = useSelector(state => state.resetPassword.phone);
+  const emailCode = useSelector(state => state.resetPassword.email_code);
   const messages = useSelector(state => state.notifications.messages);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -88,7 +89,7 @@ function PhoneCodeSent(props){
     const phoneCode = document.querySelector("input#phone").value;
 
     if(phoneCode){
-      history.push(`/reset-password/set-new-password`);
+      history.push(`/reset-password/set-new-password/${emailCode}`);
       dispatch(savePhoneCode(phoneCode));
       dispatch(eduidRMAllNotify());
     }
