@@ -74,11 +74,12 @@ function PhoneCodeSent(props){
 
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
-    if(count > - 1 && Object.keys(phone).length){
-      countDownStart();
-    } 
+    if(count){
+      if(count > - 1 && Object.keys(phone).length){
+        countDownStart();
+      } 
+    }
   },[]);
-
 
   useEffect(()=>{
     dispatch(saveLinkCode(emailCode));
