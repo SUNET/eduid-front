@@ -33,7 +33,7 @@ export function* requestPhoneCode() {
     yield put(putCsrfToken(resp));
     yield put(resp);
     if (resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS") {
-      history.push({ pathname:`/reset-password/phone-code-sent`, state: { phone: state.resetPassword.phone.number }})
+      history.push(`/reset-password/phone-code-sent/${data.email_code}`)
       countDownStart();
     }
   } catch (error) {
