@@ -56,8 +56,8 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch, histor
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
           </EduIDButton>
-          <p className="add-phone-code">already received sms? 
-            <a onClick={()=>toPhoneCodeForm(phone)}>enter code </a> 
+          <p className="add-phone-code">{translate("resetpw.received-sms")} 
+            <a onClick={()=>toPhoneCodeForm(phone)}>{translate("resetpw.enter-code")} </a> 
           </p>
         </div>
       )
