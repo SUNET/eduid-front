@@ -65,6 +65,7 @@ let PhoneCodeForm = (props) => (
 
 function PhoneCodeSent(props){
   const phone = useSelector(state => state.resetPassword.phone);
+  const messages = useSelector(state => state.notifications.messages);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -95,7 +96,7 @@ function PhoneCodeSent(props){
 
   return (
     <>
-    <SuccessIconAnimation />
+    { messages.length > 0 && <SuccessIconAnimation /> }
       <div id="reset-pass-display">
         <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
         <PhoneCodeForm handlePhoneCode={handlePhoneCode} phone={phone} {...props} />
