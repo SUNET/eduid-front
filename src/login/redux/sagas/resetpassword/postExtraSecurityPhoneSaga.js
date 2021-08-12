@@ -7,7 +7,7 @@ import {
 } from "../../../../sagas/common";
 import { requestPhoneCodeFail } from "../../actions/postResetPasswordActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-import { countDownStart } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import { countDownStart, clearCountdown } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { history } from "../../../components/App/App";
 
 export function fetchExtraSecurityPhone(config, data) {
@@ -33,7 +33,8 @@ export function* requestPhoneCode() {
     yield put(putCsrfToken(resp));
     yield put(resp);
     if (resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS") {
-      history.push(`/reset-password/phone-code-sent/${data.email_code}`);
+      // history.push(`/reset-password/phone-code-sent/${data.email_code}`);
+      clearCountdown();
       countDownStart();
     }
   } catch (error) {
