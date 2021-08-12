@@ -28,7 +28,6 @@ import PropTypes from "prop-types";
         render={(props) => <ExtraSecurity {...props} />}
       />
       <Route
-         exact
          path="/reset-password/phone-code-sent"
          render={(props) => <PhoneCodeSent {...props} />}
        />
