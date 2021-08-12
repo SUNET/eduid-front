@@ -15,7 +15,7 @@ let MultiFactorAuth = (props) => {
   return (
     <div className="mfa">
       <h2 className="heading">{translate("login.mfa.h2-heading")}</h2>
-      <p>{translate("login.mfa.paragraph")}</p>
+      <p tabIndex="0">{translate("login.mfa.paragraph")}</p>
       <div className="options">
         <SecurityKey {...props} />
         <FrejaeID {...props} />
