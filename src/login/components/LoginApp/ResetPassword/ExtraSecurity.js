@@ -9,6 +9,7 @@ import { requestPhoneCode, selectExtraSecurity, selectedPhoneInfo } from "../../
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import Splash from "../../../../containers/Splash";
+import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 const SecurityKeyButton = ({ 
   selected_option,
@@ -40,7 +41,8 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch, histor
 
   const toPhoneCodeForm = (phone)=>{
     dispatch(selectedPhoneInfo(phone));
-    history.push(`/reset-password/phone-code-sent/${emailCode}`)
+    dispatch(eduidRMAllNotify());
+    history.push(`/reset-password/phone-code-sent/${emailCode}`);
   };
 
   return (
