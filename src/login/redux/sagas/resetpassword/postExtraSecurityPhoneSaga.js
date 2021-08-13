@@ -43,7 +43,7 @@ export function* requestPhoneCode() {
       }else if(url.includes("phone-code-sent")){
         history.push(`/reset-password/phone-code-sent/${data.email_code}`);
     }
-  };
+  }
  } catch (error) {
     yield* failRequest(error, requestPhoneCodeFail(error));
   }
