@@ -19,7 +19,6 @@ const validateNewPassword = (value) => {
 };
 
 let NewPasswordForm = (props) =>{
-  console.log("password", props.password)
   return (
     <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" >
       <Field
@@ -30,12 +29,10 @@ let NewPasswordForm = (props) =>{
         autoComplete={"new-password"} 
         required={true}
         label={props.translate("security.password_credential_type")}
-        value={props.password}
       />
       <EduIDButton
         className="settings-button"
         id="new-password-button"
-        disabled={props.invalid}
       >
         {props.translate("chpass.button_save_password")}
       </EduIDButton>
@@ -59,22 +56,22 @@ function SetNewPassword(props){
   const suggested_password = useSelector(
     (state) => state.resetPassword.suggested_password
   );
-  const [password, setNewPassword] = useState("");
 
   useEffect(()=>{
     dispatch(saveLinkCode(emailCode));
   },[dispatch]);
 
   useEffect(()=>{
-    const value = document.getElementsByName("new-password")[0].value = suggested_password;    
-    setNewPassword(value)
-  },[password]);
+    if(document.getElementsByName("new-password")[0].value !== undefined){
+      document.getElementsByName("new-password")[0].value = suggested_password;    
+    }
+  },[]);
 
   return (
     <>
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
-      <NewPasswordForm {...props} password={password}/>
+      <NewPasswordForm {...props}/>
     </>
   ) 
 }
