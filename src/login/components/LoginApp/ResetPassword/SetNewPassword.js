@@ -8,7 +8,8 @@ import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
-import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
+import { saveLinkCode, setNewPassword } from "../../../redux/actions/postResetPasswordActions";
+import { useHistory } from 'react-router-dom';
 
 const validateNewPassword = (value) => {
   const errors = {};
@@ -20,7 +21,7 @@ const validateNewPassword = (value) => {
 
 let NewPasswordForm = (props) =>{
   return (
-    <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" >
+    <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" onSubmit={props.clickSetNewPassword} >
       <Field
         id="new-password"
         type="password"
@@ -42,7 +43,7 @@ let NewPasswordForm = (props) =>{
 
 NewPasswordForm = reduxForm({
   form: "new-password-form",
-  validate: validateNewPassword,
+  validate: validateNewPassword
 })(NewPasswordForm);
 
 NewPasswordForm = connect(() => ({
@@ -53,13 +54,14 @@ function SetNewPassword(props){
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
   const dispatch = useDispatch();
+  const history = useHistory();
   const suggested_password = useSelector(
     (state) => state.resetPassword.suggested_password
   );
 
-  useEffect(()=>{
-    dispatch(saveLinkCode(emailCode));
-  },[dispatch]);
+  // useEffect(()=>{
+  //   dispatch(saveLinkCode(emailCode));
+  // },[dispatch]);
 
   useEffect(()=>{
     if(document.getElementsByName("new-password")[0].value !== undefined){
@@ -67,11 +69,21 @@ function SetNewPassword(props){
     }
   },[]);
 
+  const clickSetNewPassword = (e) => {
+    e.preventDefault()
+    dispatch(setNewPassword());
+    pathToSuccess();
+  };
+
+  const pathToSuccess = () => {
+    history.push("/reset-password/success");
+  };
+
   return (
     <>
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
-      <NewPasswordForm {...props}/>
+      <NewPasswordForm {...props} clickSetNewPassword={clickSetNewPassword}/>
     </>
   ) 
 }
