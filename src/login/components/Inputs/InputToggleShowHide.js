@@ -55,8 +55,10 @@ let InputToggleShowHide = (props) => {
         aria-required={required}
         required={required}
         {...input}
-        //TODO: WILL SEPARATE FOR RESET PASSWORD
-        value={props.password}
+        //To dispaly suggested password in input
+        value={name ==="new-password" && props.password}
+        //Not editable password input
+        readOnly={name ==="new-password" && true}
       />
       {inputType === "password" ? (
         <RenderShowButton {...props} setInputType={setInputType} />
