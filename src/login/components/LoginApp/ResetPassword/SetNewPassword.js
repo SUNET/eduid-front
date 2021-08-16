@@ -21,6 +21,7 @@ let NewPasswordForm = (props) =>{
         autoComplete={"new-password"} 
         required={true}
         label={props.translate("security.password_credential_type")}
+        readOnly={true}
       />
       <EduIDButton
         className="settings-button"
@@ -49,15 +50,12 @@ function SetNewPassword(props){
     (state) => state.resetPassword.suggested_password
   );
 
-  // useEffect(()=>{
-  //   dispatch(saveLinkCode(emailCode));
-  // },[dispatch]);
-
   useEffect(()=>{
     if(document.getElementsByName("new-password")[0].value !== undefined){
       document.getElementsByName("new-password")[0].value = suggested_password;    
-    }
-  },[]);
+    }else (!document.getElementsByName("new-password")[0].value) 
+      dispatch(saveLinkCode(emailCode));
+  },[dispatch]);
 
   const clickSetNewPassword = (e) => {
     e.preventDefault()
