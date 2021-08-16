@@ -133,8 +133,6 @@ const customInput = (props) => {
           name={input.name}
           valid={valid}
           invalid={invalid}
-          //TODO: WILL SEPARATE FOR RESET PASSWORD
-          value={props.password}
         />
       ) : (
         <RenderInput
