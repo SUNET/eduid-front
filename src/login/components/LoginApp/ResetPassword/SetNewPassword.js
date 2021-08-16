@@ -1,11 +1,11 @@
-import React, { useEffect }  from "react";
+import React, { useEffect, useState }  from "react";
 import Form from "reactstrap/lib/Form";
 import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
@@ -19,6 +19,7 @@ const validateNewPassword = (value) => {
 };
 
 let NewPasswordForm = (props) =>{
+  console.log("password", props.password)
   return (
     <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" >
       <Field
@@ -29,6 +30,7 @@ let NewPasswordForm = (props) =>{
         autoComplete={"new-password"} 
         required={true}
         label={props.translate("security.password_credential_type")}
+        value={props.password}
       />
       <EduIDButton
         className="settings-button"
@@ -54,16 +56,25 @@ function SetNewPassword(props){
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
   const dispatch = useDispatch();
+  const suggested_password = useSelector(
+    (state) => state.resetPassword.suggested_password
+  );
+  const [password, setNewPassword] = useState("");
 
   useEffect(()=>{
     dispatch(saveLinkCode(emailCode));
   },[dispatch]);
 
+  useEffect(()=>{
+    const value = document.getElementsByName("new-password")[0].value = suggested_password;    
+    setNewPassword(value)
+  },[password]);
+
   return (
     <>
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
-      <NewPasswordForm {...props} />
+      <NewPasswordForm {...props} password={password}/>
     </>
   ) 
 }
