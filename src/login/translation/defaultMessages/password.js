@@ -331,7 +331,7 @@ export const resetPassword = {
   "resetpw.set-new-password-description": (
     <FormattedMessage
       id="resetpw.set-new-password-description"
-      defaultMessage={`A strong password can be selected by clicking the input field.`}
+      defaultMessage={`A strong password has been generated for you. You can accept the generated password by clicking Accept Password.`}
     />
   ),
 
@@ -372,6 +372,12 @@ export const resetPassword = {
     <FormattedMessage
       id="resetpw.enter-code"
       defaultMessage={`enter code`}
+    />
+  ),
+  "resetpw.accept-password": (
+    <FormattedMessage
+      id="resetpw.accept-password"
+      defaultMessage={`accept password`}
     />
   ),
 

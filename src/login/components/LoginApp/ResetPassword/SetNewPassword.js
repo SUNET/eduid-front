@@ -27,7 +27,7 @@ let NewPasswordForm = (props) =>{
         className="settings-button"
         id="new-password-button"
       >
-        {props.translate("chpass.button_save_password")}
+        {props.translate("resetpw.accept-password")}
       </EduIDButton>
     </Form>
   ) 
