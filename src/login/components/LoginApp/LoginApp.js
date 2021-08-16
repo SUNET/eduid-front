@@ -10,6 +10,7 @@ import ExtraSecurity from "./ResetPassword/ExtraSecurity";
 import PhoneCodeSent from "./ResetPassword/PhoneCodeSent";
 import SetNewPassword from "./ResetPassword/SetNewPassword";
 import PropTypes from "prop-types";
+import SuccessIconAnimation from "./ResetPassword/SuccessIconAnimation";
 
  const RenderResetPassword = (props) => {
    return (
@@ -34,6 +35,10 @@ import PropTypes from "prop-types";
        <Route
          path="/reset-password/set-new-password"
          render={(props) => <SetNewPassword {...props} />}
+       />
+        <Route
+         path="/reset-password/success"
+         render={(props) => <SuccessIconAnimation {...props} />}
        />
      </>
    )
