@@ -7,17 +7,8 @@ import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
-import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import { saveLinkCode, setNewPassword } from "../../../redux/actions/postResetPasswordActions";
 import { useHistory } from 'react-router-dom';
-
-const validateNewPassword = (value) => {
-  const errors = {};
-    if (!value["new-password"] || emptyStringPattern.test(value["new-password"])) {
-      errors["new-password"] = "required";
-    }
-  return errors;
-};
 
 let NewPasswordForm = (props) =>{
   return (
@@ -43,7 +34,6 @@ let NewPasswordForm = (props) =>{
 
 NewPasswordForm = reduxForm({
   form: "new-password-form",
-  validate: validateNewPassword
 })(NewPasswordForm);
 
 NewPasswordForm = connect(() => ({
