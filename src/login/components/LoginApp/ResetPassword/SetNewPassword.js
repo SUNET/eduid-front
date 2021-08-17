@@ -7,7 +7,8 @@ import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
-import { saveLinkCode, setNewPassword } from "../../../redux/actions/postResetPasswordActions";
+import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
+import { setNewPassword, setNewPasswordExtraSecurityPhone } from "../../../redux/actions/postResetNewPasswordActions";
 
 let NewPasswordForm = (props) =>{
   return (
@@ -47,6 +48,9 @@ function SetNewPassword(props){
   const suggested_password = useSelector(
     (state) => state.resetPassword.suggested_password
   );
+  const selected_option = useSelector(
+    (state) => state.resetPassword.selected_option
+  );
 
   useEffect(()=>{
     if(document.getElementsByName("new-password")[0].value !== undefined){
@@ -56,8 +60,12 @@ function SetNewPassword(props){
   },[dispatch]);
 
   const clickSetNewPassword = (e) => {
-    e.preventDefault()
-    dispatch(setNewPassword());
+    e.preventDefault();
+    if(!selected_option){
+      dispatch(setNewPassword());
+    }else if(selected_option === "phoneCode"){
+      dispatch(setNewPasswordExtraSecurityPhone());
+    }
   };
 
   return (
