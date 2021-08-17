@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import Splash from "../../../../containers/Splash";
 
 const SecurityKeyButton = ({ 
   selected_option,
@@ -60,17 +61,21 @@ function ExtraSecurity(props){
   const history = useHistory();
   const dispatch = useDispatch();
   const [extraSecurity, setExtraSecurity] = useState(null);
-  const loginRef = useSelector(state => state.login.ref);
   const selected_option = useSelector(state => state.resetPassword.selected_option);
   const extra_security = useSelector(
     (state) => state.resetPassword.extra_security
   );
+  const emailCode = useSelector(state => state.resetPassword.email_code);
   
   useEffect(()=>{
-    if(history.location.state !== undefined){
-      setExtraSecurity(history.location.state.extra_security)
-    }else history.push(`/reset-password/email/${loginRef}`)
-  },[extraSecurity, extra_security]);
+    if(extra_security !== undefined){
+      if(Object.keys(extra_security).length > 0){
+        setExtraSecurity(extra_security);
+      }if(!Object.keys(extra_security).length){
+        history.push(`/reset-password/set-new-password/${emailCode}`)
+      }
+    }
+  },[extra_security]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
@@ -92,6 +97,7 @@ function ExtraSecurity(props){
       linkInfoText={props.translate("resetpw.without_extra_security")}
       linkText={props.translate("resetpw.continue_reset_password")}
     > 
+      {!extraSecurity && <Splash /> }
       { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
         <SecurityKeyButton
           selected_option={selected_option} 
