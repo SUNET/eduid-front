@@ -362,4 +362,17 @@ export const resetPassword = {
       defaultMessage={`Phone code has expired. Please try again.`}
     />
   ),
+  "resetpw.received-sms": (
+    <FormattedMessage
+      id="resetpw.received-sms"
+      defaultMessage={`Already received sms? `}
+    />
+  ),
+  "resetpw.enter-code": (
+    <FormattedMessage
+      id="resetpw.enter-code"
+      defaultMessage={`enter code`}
+    />
+  ),
+
 };

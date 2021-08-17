@@ -4,11 +4,10 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import SuccessIconAnimation from "./SuccessIconAnimation";
 import { 
-    clearCountdown, 
-    RenderingResendCodeTimer, 
-    countDownStart, 
-    getLocalStorage, 
-    LOCAL_STORAGE_PERSISTED_COUNT 
+  RenderingResendCodeTimer, 
+  countDownStart, 
+  getLocalStorage, 
+  LOCAL_STORAGE_PERSISTED_COUNT 
 } from "./CountDownTimer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -19,6 +18,7 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 import { requestPhoneCode, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
 import { useHistory } from 'react-router-dom';
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
 
 const validate = (values) => {
     const value = values.phone;
@@ -66,21 +66,24 @@ let PhoneCodeForm = (props) => (
 
 function PhoneCodeSent(props){
   const phone = useSelector(state => state.resetPassword.phone);
-  const loginRef = useSelector(state => state.login.ref);
+  const messages = useSelector(state => state.notifications.messages);
   const dispatch = useDispatch();
   const history = useHistory();
+  const url = document.location.href;
+  const emailCode = url.split("/").reverse()[0];
 
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
-    if(count > - 1 && Object.keys(phone).length){
-      countDownStart();
-    } 
-    else {
-      //Navigate to "/reset-password/" without extra security phone
-      history.push(`/reset-password/email/${loginRef}`)
-      clearCountdown();
+    if(count){
+      if(count > - 1 && Object.keys(phone).length){
+        countDownStart();
+      } 
     }
   },[]);
+
+  useEffect(()=>{
+    dispatch(saveLinkCode(emailCode));
+  },[dispatch]);
 
   const resendPhoneCode = (e) => {
     e.preventDefault();
@@ -94,7 +97,7 @@ function PhoneCodeSent(props){
     const phoneCode = document.querySelector("input#phone").value;
 
     if(phoneCode){
-      history.push(`/reset-password/set-new-password`);
+      history.push(`/reset-password/set-new-password/${emailCode}`);
       dispatch(savePhoneCode(phoneCode));
       dispatch(eduidRMAllNotify());
     }
@@ -102,7 +105,7 @@ function PhoneCodeSent(props){
 
   return (
     <>
-      <SuccessIconAnimation />
+    { messages.length > 0 && <SuccessIconAnimation /> }
       <div id="reset-pass-display">
         <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
         <PhoneCodeForm handlePhoneCode={handlePhoneCode} phone={phone} {...props} />

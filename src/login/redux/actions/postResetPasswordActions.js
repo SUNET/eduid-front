@@ -9,6 +9,7 @@ export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXT
 export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
 export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
 export const SELECT_EXTRA_SECURITY_OPTION = "SELECT_EXTRA_SECURITY_OPTION";
+export const ADD_EXTRA_SECURITY_PHONE_INFO = "ADD_EXTRA_SECURITY_PHONE_INFO";
 
 export function postEmailLink(email) {
   return {
@@ -57,6 +58,18 @@ export function postLinkCodeFail(err) {
 export function requestPhoneCode(phone) {
   return {
     type: POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE,
+    payload: {
+      phone: {
+        index: phone.index,
+        number: phone.number
+      }
+    }
+  };
+}
+
+export function selectedPhoneInfo(phone) {
+  return {
+    type: ADD_EXTRA_SECURITY_PHONE_INFO,
     payload: {
       phone: {
         index: phone.index,
