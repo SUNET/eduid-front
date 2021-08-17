@@ -14,11 +14,11 @@ export function* postSetNewPasswordExtraSecurityToken() {
   const data = {
     email_code: state.resetPassword.email_code,
     password: state.resetPassword.suggested_password,
-    csrf_token: state.config.csrf_token,
-    credentialId: safeEncode(state.resetPassword.webauthn_assertion.rawId),
     authenticatorData: safeEncode(state.resetPassword.webauthn_assertion.response.authenticatorData),
     clientDataJSON: safeEncode(state.resetPassword.webauthn_assertion.response.clientDataJSON),
     signature: safeEncode(state.resetPassword.webauthn_assertion.response.signature),
+    credentialId: safeEncode(state.resetPassword.webauthn_assertion.rawId),
+    csrf_token: state.config.csrf_token,
   };
   try {
     const resp = yield call(postRequest, url, data);
