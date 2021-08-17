@@ -7,7 +7,8 @@ import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
-import { saveLinkCode, setNewPassword } from "../../../redux/actions/postResetPasswordActions";
+import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
+import { setNewPassword } from "../../../redux/actions/postResetNewPasswordActions";
 
 let NewPasswordForm = (props) =>{
   return (

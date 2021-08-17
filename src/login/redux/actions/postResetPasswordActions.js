@@ -10,9 +10,6 @@ export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWOR
 export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
 export const SELECT_EXTRA_SECURITY_OPTION = "SELECT_EXTRA_SECURITY_OPTION";
 export const ADD_EXTRA_SECURITY_PHONE_INFO = "ADD_EXTRA_SECURITY_PHONE_INFO";
-export const POST_RESET_PASSWORD_NEW_PASSWORD = "POST_RESET_PASSWORD_NEW_PASSWORD";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS = "POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_FAIL = "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL";
 
 export function postEmailLink(email) {
   return {
@@ -107,17 +104,5 @@ export function selectExtraSecurity(option) {
     payload: {
       selected_option: option
     }
-  };
-}
-
-export function setNewPassword() {
-  return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD
-  };
-}
-
-export function setNewPasswordFail() {
-  return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_FAIL
   };
 }
