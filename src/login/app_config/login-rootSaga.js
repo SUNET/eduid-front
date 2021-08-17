@@ -5,7 +5,8 @@ import { postEmailLink } from "../redux/sagas/resetpassword/postResetPasswordSag
 import { useLinkCode } from "../redux/sagas/resetpassword/postVerifyEmailSaga";
 import * as postResetPasswordActions from "../redux/actions/postResetPasswordActions";
 import loginSagas from "../redux/sagas/rootSaga/loginSagas";
-import { requestPhoneCode } from "../redux/sagas/resetpassword//postExtraSecurityPhoneSaga";
+import { requestPhoneCode } from "../redux/sagas/resetpassword/postExtraSecurityPhoneSaga";
+import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPasswordSaga";
 
 export const getLoginRef = (state) => state.login.ref;
 function* allowLoginSagas() {
@@ -22,6 +23,7 @@ function* rootSaga() {
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD, postEmailLink),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, useLinkCode),
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE, requestPhoneCode),
+    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD, postSetNewPassword),
   ];
 }
 

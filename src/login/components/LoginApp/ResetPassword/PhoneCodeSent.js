@@ -15,7 +15,7 @@ import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { requestPhoneCode, savePhoneCode } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode, savePhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import { useHistory } from 'react-router-dom';
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
@@ -99,6 +99,7 @@ function PhoneCodeSent(props){
     if(phoneCode){
       history.push(`/reset-password/set-new-password/${emailCode}`);
       dispatch(savePhoneCode(phoneCode));
+      dispatch(selectExtraSecurity("phoneCode"));
       dispatch(eduidRMAllNotify());
     }
   };
