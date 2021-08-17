@@ -9,6 +9,7 @@ import loginSagas from "../redux/sagas/rootSaga/loginSagas";
 import { requestPhoneCode } from "../redux/sagas/resetpassword/postExtraSecurityPhoneSaga";
 import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPasswordSaga";
 import { postSetNewPasswordExtraSecurityPhone } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityPhoneSaga";
+import { postSetNewPasswordExtraSecurityToken } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityTokenSaga";
 
 export const getLoginRef = (state) => state.login.ref;
 function* allowLoginSagas() {
@@ -27,6 +28,7 @@ function* rootSaga() {
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE, requestPhoneCode),
     takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD, postSetNewPassword),
     takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE, postSetNewPasswordExtraSecurityPhone),
+    takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN, postSetNewPasswordExtraSecurityToken)
   ];
 }
 
