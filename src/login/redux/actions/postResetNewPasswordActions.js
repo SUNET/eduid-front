@@ -16,6 +16,12 @@ export function setNewPasswordFail() {
   };
 }
 
+export function setNewPasswordExtraSecurityPhone() {
+  return {
+    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE
+  };
+}
+
 export function setNewPasswordExtraSecurityPhoneFail() {
   return {
     type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL
