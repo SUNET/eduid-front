@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Field } from "redux-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import CustomInput from "./CustomInput";
 import Input from "reactstrap/lib/Input";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
@@ -42,6 +44,11 @@ export let PasswordInputElement = (props) => {
         aria-required={props.required}
         {...input}
       />
+      {props.valid ? (
+        <div className="checkmark ">
+          <FontAwesomeIcon icon={faCheck} />
+        </div>
+      ) : null}
       {inputType === "password" ? (
         <RenderShowButton {...props} setInputType={setInputType} />
       ) : inputType === "text" ? (
@@ -60,7 +67,7 @@ let PasswordInput = ({ translate }) => {
       autoComplete="current-password"
       required="true"
       label={translate("login.usernamePw.password-input")}
-      placeholder={"enter a password"}
+      placeholder={translate("placeholder.password")}
       helpBlock={""}
     />
   );
