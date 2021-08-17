@@ -8,7 +8,7 @@ import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import { setNewPassword, setNewPasswordExtraSecurityPhone } from "../../../redux/actions/postResetNewPasswordActions";
+import { setNewPassword, setNewPasswordExtraSecurityPhone, setNewPasswordExtraSecurityToken } from "../../../redux/actions/postResetNewPasswordActions";
 
 let NewPasswordForm = (props) =>{
   return (
@@ -61,10 +61,12 @@ function SetNewPassword(props){
 
   const clickSetNewPassword = (e) => {
     e.preventDefault();
-    if(!selected_option){
+    if(!selected_option || selected_option === "without"){
       dispatch(setNewPassword());
     }else if(selected_option === "phoneCode"){
       dispatch(setNewPasswordExtraSecurityPhone());
+    }else if(selected_option === "securityKey"){
+      dispatch(setNewPasswordExtraSecurityToken());
     }
   };
 
