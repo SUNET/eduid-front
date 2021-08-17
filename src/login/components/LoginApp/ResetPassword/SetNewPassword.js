@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from "react";
+import React, { useEffect }  from "react";
 import Form from "reactstrap/lib/Form";
 import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -8,7 +8,6 @@ import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { saveLinkCode, setNewPassword } from "../../../redux/actions/postResetPasswordActions";
-import { useHistory } from 'react-router-dom';
 
 let NewPasswordForm = (props) =>{
   return (
@@ -45,7 +44,6 @@ function SetNewPassword(props){
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
   const dispatch = useDispatch();
-  const history = useHistory();
   const suggested_password = useSelector(
     (state) => state.resetPassword.suggested_password
   );
@@ -60,11 +58,6 @@ function SetNewPassword(props){
   const clickSetNewPassword = (e) => {
     e.preventDefault()
     dispatch(setNewPassword());
-    pathToSuccess();
-  };
-
-  const pathToSuccess = () => {
-    history.push("/reset-password/success");
   };
 
   return (
