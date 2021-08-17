@@ -1,5 +1,4 @@
 import React, { useEffect }  from "react";
-import { useSelector } from 'react-redux';
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useDispatch, connect } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
@@ -10,7 +9,6 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
-import { useHistory } from 'react-router-dom';
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
@@ -48,26 +46,14 @@ EmailForm = connect(() => ({
   enableReinitialize: true,
   destroyOnUnmount: false,
 }))(EmailForm);
-
-
 function ResetPasswordMain(props){
   const dispatch = useDispatch();
-  const extra_security = useSelector(state => state.resetPassword.extra_security);
-  const history = useHistory();
   const url = document.location.href;
   const loginRef = url.split("/email/").reverse()[0];
 
   useEffect(()=>{
     clearCountdown();
   }, []);
-
-  useEffect(()=>{
-    if(extra_security && Object.keys(extra_security).length > 0) {
-      history.push({ pathname:`/reset-password/extra-security`, state: { extra_security: extra_security }})
-    }else if(extra_security && Object.keys(extra_security).length === 0) 
-      history.push(`/reset-password/set-new-password`)
-    else history.push(`/reset-password/email/${loginRef}`)
-  }, [extra_security]);
 
   const sendLink = (e) => {
     e.preventDefault();
@@ -82,7 +68,7 @@ function ResetPasswordMain(props){
     <>
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
       <EmailForm sendLink={sendLink} {...props} />
-      <div className="return-login-link">
+      <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
         <a href={`/login/password/${loginRef}`}>
           {props.translate("resetpw.return-login")}
         </a>
