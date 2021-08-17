@@ -7,7 +7,7 @@ import {
 } from "../../../../sagas/common";
 import { postEmailLinkFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
-import { countDownStart } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import { countDownStart, clearCountdown } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
 
 export function fetchConfigResetPassword(config, data) {
@@ -34,6 +34,7 @@ export function* postEmailLink() {
     yield put(resp);
     if (resp.type === "POST_RESET_PASSWORD_SUCCESS") {
       history.push(`/reset-password/email-link-sent`);
+      clearCountdown();
       countDownStart();
     }
   } catch (error) {
