@@ -61,7 +61,7 @@ function SetNewPassword(props){
 
   const clickSetNewPassword = (e) => {
     e.preventDefault();
-    if(!selected_option){
+    if(!selected_option || selected_option === "without"){
       dispatch(setNewPassword());
     }else if(selected_option === "phoneCode"){
       dispatch(setNewPasswordExtraSecurityPhone());
