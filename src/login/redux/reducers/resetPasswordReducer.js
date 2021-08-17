@@ -5,7 +5,6 @@ const data = {
     email_address: "",
     email_code: "",
     phone: {},
-    phone_code: "",
     webauthn_assertion: null,
     selected_option: ""
 };
@@ -40,7 +39,10 @@ let resetPasswordReducer = (state = data, action) => {
     case postActions.SAVE_PHONE_CODE:
       return {
         ...state,
-        ...action.payload
+        phone: {
+          ...state.phone,
+          ...action.payload
+        }
       };
     case getWebauthnActions.GET_WEBAUTHN_ASSERTION:
       return {
