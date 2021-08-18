@@ -11,6 +11,22 @@ import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/a
 import Splash from "../../../../containers/Splash";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
+// const FrejaeIdButton = ({ 
+//   selected_option,
+//   translate, 
+// }) => {
+//   return (
+//     !selected_option && 
+//     <div>
+//       <EduIDButton
+//         className={"settings-button"} 
+//         id="extra-security-frejaeid"
+//         >
+//         {translate("eidas.freja_eid_ready")}
+//         </EduIDButton>
+//     </div>   
+// )};
+
 const SecurityKeyButton = ({ 
   selected_option,
   extraSecurityKey, 
@@ -76,7 +92,16 @@ function ExtraSecurity(props){
     (state) => state.resetPassword.extra_security
   );
   const emailCode = useSelector(state => state.resetPassword.email_code);
-  
+
+  // compose external link
+  const frejaUrlDomain = useSelector((state) => state.config.eidas_url);
+  const idp = useSelector((state) => state.config.mfa_auth_idp);
+  const mfaPage = window.location.href; // return to mfa page on completion
+  // ensure url has one slash at the end to be functional in the link
+  const frejaUrlDomainSlash = frejaUrlDomain && frejaUrlDomain.endsWith("/")
+    ? frejaUrlDomain
+    : frejaUrlDomain && frejaUrlDomain.concat("/");
+  console.log("frejaUrlDomainSlash ",frejaUrlDomainSlash )
   useEffect(()=>{
     if(extra_security !== undefined){
       if(Object.keys(extra_security).length > 0){
@@ -85,7 +110,7 @@ function ExtraSecurity(props){
         history.push(`/reset-password/set-new-password/${emailCode}`)
       }
     }
-  },[extra_security]);
+  },[extra_security, frejaUrlDomain]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
@@ -110,12 +135,24 @@ function ExtraSecurity(props){
     > 
       {!extraSecurity && <Splash /> }
       { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
+      <>
         <SecurityKeyButton
           selected_option={selected_option} 
           ShowSecurityKey={ShowSecurityKey} 
           extraSecurityKey={Object.keys(extraSecurity.tokens)} 
           translate={props.translate}
-        /> : null
+        />
+        <div>
+          <EduIDButton
+            className={"settings-button"} 
+            id="extra-security-freja"
+            onClick={() => {
+              window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+            }}
+          >{props.translate("eidas.freja_eid_ready")}
+          </EduIDButton>
+        </div>
+      </> : null
       }
       { !selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
         <SecurityWithSMSButton 
