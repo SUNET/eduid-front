@@ -15,6 +15,9 @@ const ExtraSecurityToken = (props) => {
   const webauthn_assertion = useSelector(
     (state) => state.resetPassword.webauthn_assertion
   );
+  const emailCode = useSelector(
+    (state) => state.resetPassword.email_code
+  );
 
   const retryTokenAssertion = () => {
     assertionFromAuthenticator(webauthn_challenge, dispatch);
@@ -24,7 +27,7 @@ const ExtraSecurityToken = (props) => {
     if(webauthn_assertion)
       setAssertion(webauthn_assertion);
     if(assertion)
-      history.push(`/reset-password/set-new-password`); 
+      history.push(`/reset-password/set-new-password/${emailCode}`); 
   }, [webauthn_assertion, assertion]);
 
   return (
