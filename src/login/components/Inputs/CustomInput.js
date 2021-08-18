@@ -88,7 +88,6 @@ const RenderInput = (props) => {
         type={type}
         disabled={disabled}
         placeholder={placeholder}
-        id={name}
         name={name}
         valid={valid}
         invalid={invalid}
