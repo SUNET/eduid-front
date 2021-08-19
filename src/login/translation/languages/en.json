@@ -366,6 +366,8 @@
   "resetpw.send-sms-success": "Phone code has been sent.",
   "resetpw.set-new-password-description": "A strong password has been generated for you. You can accept the generated password by clicking Accept Password.",
   "resetpw.set-new-password-heading": "Set your new password",
+  "resetpw.set-new-password-success": "Password reset has been updated",
+  "resetpw.login-now": "Login now",
   "resetpw.sms-throttled": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one.",
   "resetpw.state-not-found": "Could not continue the reset password process. Please try again.",
   "resetpw.use_extra_security_key": "Use your security key",
