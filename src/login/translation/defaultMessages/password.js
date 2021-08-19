@@ -342,13 +342,6 @@ export const resetPassword = {
     />
   ),
 
-  "resetpw.login-now": (
-    <FormattedMessage
-      id="resetpw.login-now"
-      defaultMessage={`Login now`}
-    />
-  ),
-
   "mfa.reset-password-tapit": (
     <FormattedMessage
      id="mfa.reset-password-tapit"

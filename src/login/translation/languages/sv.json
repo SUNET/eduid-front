@@ -367,7 +367,6 @@
   "resetpw.set-new-password-description": "Ett säkert lösenord har genererats till dig. Du väljer att använda det genererade lösenordet genom att klicka Acceptera lösenord.",
   "resetpw.set-new-password-heading": "Skapa ditt nya lösenord",
   "resetpw.set-new-password-success": "Lösenordet har uppdaterats",
-  "resetpw.login-now": "logga in nu",
   "resetpw.sms-throttled": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod.",
   "resetpw.state-not-found": "Det gick inte att fortsätta återställningen av lösenordet. Var god försök igen.",
   "resetpw.use_extra_security_key": "Använd din säkerhetsnyckel",
