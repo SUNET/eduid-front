@@ -11,7 +11,7 @@ import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFu
 
 export function requestSendLinkCode(config, data) {
   return window
-    .fetch(PASSWORD_SERVICE_URL + "/verify-email/", {
+    .fetch(config.reset_password_url + "/verify-email/", {
       ...postRequest,
       body: JSON.stringify(data)
     })

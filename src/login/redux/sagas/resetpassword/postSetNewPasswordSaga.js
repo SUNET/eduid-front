@@ -8,7 +8,7 @@ import { setNewPasswordFail } from "../../actions/postResetNewPasswordActions";
 import { history } from "../../../components/App/App";
 
 export function* postSetNewPassword() {
-  const url = PASSWORD_SERVICE_URL + "/new-password/";
+  const url = config.reset_password_url + "/new-password/";
   const state = yield select(state => state);
   const data = {
     email_code: state.resetPassword.email_code,

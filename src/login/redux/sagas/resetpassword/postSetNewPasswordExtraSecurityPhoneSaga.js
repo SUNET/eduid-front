@@ -8,7 +8,7 @@ import { setNewPasswordExtraSecurityPhoneFail } from "../../actions/postResetNew
 import { history } from "../../../components/App/App";
 
 export function* postSetNewPasswordExtraSecurityPhone() {
-  const url = PASSWORD_SERVICE_URL + "/new-password-extra-security-phone/";
+  const url = config.reset_password_url + "/new-password-extra-security-phone/";
   const state = yield select(state => state);
   const data = {
     email_code: state.resetPassword.email_code,

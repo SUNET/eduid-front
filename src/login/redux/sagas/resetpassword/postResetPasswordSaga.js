@@ -12,7 +12,7 @@ import { loadingData, loadingDataComplete } from "../../actions/loadingDataActio
 
 export function fetchConfigResetPassword(config, data) {
   return window
-    .fetch(PASSWORD_SERVICE_URL + "/", {
+    .fetch(config.reset_password_url + "/", {
       ...postRequest,
       body: JSON.stringify(data)
     })

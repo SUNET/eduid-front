@@ -12,7 +12,7 @@ import { history } from "../../../components/App/App";
 
 export function fetchExtraSecurityPhone(config, data) {
   return window
-    .fetch(PASSWORD_SERVICE_URL + "/extra-security-phone/", {
+    .fetch(config.reset_password_url + "/extra-security-phone/", {
       ...postRequest,
       body: JSON.stringify(data)
     })
