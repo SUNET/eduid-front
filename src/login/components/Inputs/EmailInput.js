@@ -4,7 +4,7 @@ import CustomInput from "./CustomInput";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 
-let EmailInput = ({ translate, required, autoFocus }) => (
+let EmailInput = ({ translate, required }) => (
   <Field
     required={required}
     label={translate("profile.email_display_title")}
@@ -13,7 +13,6 @@ let EmailInput = ({ translate, required, autoFocus }) => (
     type="email"
     name="email"
     helpBlock={translate("emails.input_help_text")}
-    autoFocus={autoFocus}
     ariaLabel={"enter your email address to login"}
     autoComplete="username"
     placeholder="example@email.com"

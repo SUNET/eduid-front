@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EmailInput from "../../Inputs/EmailInput";
@@ -29,20 +29,16 @@ export const validateLoginForm = (values) => {
   return errors;
 };
 
-let UsernamePwForm = (props) => {
-  const usernamePwForm = useSelector(state => state.form.usernamePwForm);
-  const autoFocus = usernamePwForm.values.email !== "" ? true : false;
-  return (
-    <Form
-      id="login-form"
-      aria-label="login form"
-      onSubmit={submitUsernamePassword}
-    >
-    <EmailInput {...props} autoFocus={autoFocus} required={true} />
+let UsernamePwForm = (props) => (
+  <Form
+    id="login-form"
+    aria-label="login form"
+    onSubmit={submitUsernamePassword}
+  >
+    <EmailInput {...props} required={true} />
     <PasswordInput {...props} />
-    </Form>
-  )
-};
+  </Form>
+);
 
 UsernamePwForm = reduxForm({
   form: "usernamePwForm",
