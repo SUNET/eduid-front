@@ -43,6 +43,7 @@ let InputToggleShowHide = (props) => {
   const suggested_password = useSelector(
     (state) => state.resetPassword.suggested_password
   );
+
   return (
     <div className="password-input">
       <Input
@@ -60,7 +61,7 @@ let InputToggleShowHide = (props) => {
         required={required}
         {...input}
         //To dispaly suggested password in input
-        value={name === "new-password" && suggested_password}
+        value={name === "new-password" && suggested_password !== undefined && suggested_password}
         //Not editable password input
         readOnly={name ==="new-password" && true}
       />
