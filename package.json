@@ -27,6 +27,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "0.1.14",
+    "@sentry/react": "^6.11.0",
     "bootstrap": "^4.6.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-node": "^11.1.0",
