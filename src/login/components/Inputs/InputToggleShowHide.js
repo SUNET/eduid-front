@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "reactstrap/lib/Input";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 let RenderHideButton = ({ setInputType, translate }) => (
   <button
@@ -36,9 +37,12 @@ let InputToggleShowHide = (props) => {
     autoComplete,
     autoFocus,
     ariaLabel,
-    required,
+    required
   } = props;
   const [inputType, setInputType] = useState("password");
+  const suggested_password = useSelector(
+    (state) => state.resetPassword.suggested_password
+  );
   return (
     <div className="password-input">
       <Input
@@ -56,7 +60,7 @@ let InputToggleShowHide = (props) => {
         required={required}
         {...input}
         //To dispaly suggested password in input
-        value={name ==="new-password" && props.password}
+        value={name === "new-password" && suggested_password}
         //Not editable password input
         readOnly={name ==="new-password" && true}
       />
