@@ -75,7 +75,7 @@ class LoginApp extends Component {
 
   render() {
     return (
-      <div id="content" className="vertical-content-margin">
+      <div id="content" className="horizontal-content-margin">
         {this.state.url.includes("/login/") && <RenderLogin {...this.props} />}
         <RenderResetPassword {...this.props} />
       </div>
