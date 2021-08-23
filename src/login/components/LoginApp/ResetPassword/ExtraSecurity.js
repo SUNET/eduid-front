@@ -9,23 +9,8 @@ import { requestPhoneCode, selectExtraSecurity, selectedPhoneInfo } from "../../
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import Splash from "../../../../containers/Splash";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
-
-// const FrejaeIdButton = ({ 
-//   selected_option,
-//   translate, 
-// }) => {
-//   return (
-//     !selected_option && 
-//     <div>
-//       <EduIDButton
-//         className={"settings-button"} 
-//         id="extra-security-frejaeid"
-//         >
-//         {translate("eidas.freja_eid_ready")}
-//         </EduIDButton>
-//     </div>   
-// )};
+import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
+import { saveLinkCode } from "./../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({ 
   selected_option,
@@ -91,8 +76,10 @@ function ExtraSecurity(props){
   const extra_security = useSelector(
     (state) => state.resetPassword.extra_security
   );
+  const url = document.location.href;
+  const urlCode = url.split("/").reverse()[0];
   const emailCode = useSelector(state => state.resetPassword.email_code);
-
+  const suggested_password = useSelector(state => state.resetPassword.suggested_password);
   // compose external link
   const frejaUrlDomain = useSelector((state) => state.config.eidas_url);
   const idp = useSelector((state) => state.config.mfa_auth_idp);
@@ -101,16 +88,32 @@ function ExtraSecurity(props){
   const frejaUrlDomainSlash = frejaUrlDomain && frejaUrlDomain.endsWith("/")
     ? frejaUrlDomain
     : frejaUrlDomain && frejaUrlDomain.concat("/");
-  console.log("frejaUrlDomainSlash ",frejaUrlDomainSlash )
+
   useEffect(()=>{
     if(extra_security !== undefined){
       if(Object.keys(extra_security).length > 0){
         setExtraSecurity(extra_security);
       }if(!Object.keys(extra_security).length){
+        dispatch(selectExtraSecurity("without"));
         history.push(`/reset-password/set-new-password/${emailCode}`)
       }
     }
-  },[extra_security, frejaUrlDomain]);
+  },[suggested_password]);
+
+  useEffect(()=>{
+    if(window.location.search){
+      const message = window.location.search.split("=")[1];
+      const emailCode = urlCode.split('?')
+      if(message.includes("completed")){
+        history.push(`/reset-password/set-new-password/${emailCode[0]}`)
+      }else if(message.includes("%3AERROR%3A")){
+        const error = message.split('%3AERROR%3A')[1];
+        dispatch(eduidNotify(error, "errors"));
+        history.push(`/reset-password/extra-security/${emailCode[0]}`);
+        dispatch(saveLinkCode(emailCode[0]));
+      }
+    }
+  },[emailCode, suggested_password]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
@@ -144,6 +147,7 @@ function ExtraSecurity(props){
         />
         <div>
           <EduIDButton
+            type="submit"
             className={"settings-button"} 
             id="extra-security-freja"
             onClick={() => {
