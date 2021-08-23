@@ -168,6 +168,14 @@
     "defaultMessage": "U2F failed with error code: {errorCode}"
   },
   {
+    "id": "runtime_error.generic.title",
+    "defaultMessage": "There was a problem displaying the page."
+  },
+  {
+    "id": "runtime_error.generic.description",
+    "defaultMessage": "The issue has been reported to the team.<br />\n        Reload the page to continue or return to the home page to start over."
+  },
+  {
     "id": "signup.recaptcha-not-verified",
     "defaultMessage": "There was a problem verifying that you are a human. Please try again"
   },

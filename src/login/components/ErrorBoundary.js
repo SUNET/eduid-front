@@ -1,72 +1,47 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component, Fragment } from "react";
+import InjectIntl from "../translation/InjectIntl_HOC_factory";
 
-class ErrorBoundary extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { hasError: false };
-  // }
+export const GenericError = ({ translate }) => (
+  <Fragment>
+    <div className="username-pw">
+      <h2 className="heading">{translate("runtime_error.generic.title")}</h2>
+      <p>{translate("runtime_error.generic.description")}</p>
+    </div>
+  </Fragment>
+);
+
+// has to be a class component
+class ErrorBoundary extends Component {
   state = {
-    error: "",
-    eventId: "",
-    errorInfo: "",
+    error: null,
+    errorInfo: null,
     hasError: false,
   };
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true, error };
+    return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    console.log({ error, errorInfo });
-    logErrorToMyService(error, errorInfo);
+    console.log("componentDidCatch, error:", error);
+    console.log("errorInfo:", errorInfo);
+    this.setState({ error, errorInfo });
   }
 
   render() {
-    const { hasError, errorInfo } = this.state;
-    if (hasError) {
-      return (
-        <div>
-          <div>
-            {/* <p>
-              An error has occurred in this component.{" "}
-              <span
-                style={{ cursor: "pointer", color: "#0077FF" }}
-                onClick={() => {
-                  window.location.reload();
-                }}
-              >
-                Reload this page
-              </span>{" "}
-            </p> */}
+    const { hasError, errorInfo, error } = this.state;
+    return (
+      <Fragment>
+        {hasError && errorInfo !== null && error !== null ? (
+          <div id="content" className="horizontal-content-margin">
+            <this.props.ErrorComponent {...this.state} {...this.props} />
           </div>
-
-          <div className="card-body">
-            {/* <details className="error-details"> */}
-              <summary>Click for error details</summary>
-              {errorInfo && errorInfo.componentStack.toString()}
-            {/* </details> */}
-          </div>
-
-          {/* <button
-            className="bg-primary text-light"
-            onClick={() =>
-              Sentry.showReportDialog({ eventId: this.state.eventId })
-            }
-          >
-            Report feedback
-          </button> */}
-        </div>
-      );
-    }
-    return this.props.children;
+        ) : (
+          this.props.children
+        )}
+      </Fragment>
+    );
   }
 }
 
-export default ErrorBoundary;
-
-ErrorBoundary.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
-};
+export default InjectIntl(ErrorBoundary);

@@ -7,6 +7,7 @@ import ErrorBoundary from "../ErrorBoundary";
 import Notifications from "../Notifications/Notifications_container";
 import LoginApp from "../LoginApp/LoginApp";
 import Footer from "../Footer/Footer";
+import { GenericError } from "../ErrorBoundary";
 import "../../styles/index.scss";
 
 export const history = createBrowserHistory();
@@ -14,17 +15,17 @@ class App extends Component {
   render() {
     return (
       <>
-        <ErrorBoundary>
-          <Splash />
-          <Banner {...this.props} />
-          <section id="panel">
-            <Notifications />
+        <Splash />
+        <Banner {...this.props} />
+        <section id="panel">
+          <Notifications />
+          <ErrorBoundary {...this.props} ErrorComponent={GenericError}>
             <Router history={history}>
               <LoginApp />
             </Router>
-          </section>
-          <Footer {...this.props} />
-        </ErrorBoundary>
+          </ErrorBoundary>
+        </section>
+        <Footer {...this.props} />
       </>
     );
   }
