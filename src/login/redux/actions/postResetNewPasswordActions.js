@@ -14,7 +14,7 @@ export function setNewPassword() {
   };
 }
 
-export function setNewPasswordFail() {
+export function setNewPasswordFail(err) {
   return {
     type: POST_RESET_PASSWORD_NEW_PASSWORD_FAIL,
     error: true,
