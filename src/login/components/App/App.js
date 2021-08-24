@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import * as Sentry from "@sentry/react";
 import Splash from "../Splash/Splash_container";
 import Banner from "../Banner/Banner";
 import Buggy from "../Buggy";

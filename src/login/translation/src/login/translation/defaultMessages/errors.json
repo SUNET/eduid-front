@@ -173,7 +173,23 @@
   },
   {
     "id": "runtime_error.generic.description",
-    "defaultMessage": "The issue has been reported to the team.<br />\n        Reload the page to continue or return to the home page to start over."
+    "defaultMessage": "The issue has been reported to the team."
+  },
+  {
+    "id": "runtime_error.generic.label.reload",
+    "defaultMessage": "Try again:"
+  },
+  {
+    "id": "runtime_error.generic.reload",
+    "defaultMessage": "Reload page"
+  },
+  {
+    "id": "runtime_error.generic.label.toHome",
+    "defaultMessage": "Start over:"
+  },
+  {
+    "id": "runtime_error.generic.p.toHome",
+    "defaultMessage": "Return to home"
   },
   {
     "id": "signup.recaptcha-not-verified",
