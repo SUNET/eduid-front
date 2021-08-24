@@ -119,6 +119,7 @@ function ExtraSecurity(props){
     e.preventDefault();
     dispatch(selectExtraSecurity("securityKey"));
     startTokenAssertion();
+    dispatch(eduidRMAllNotify());
   };
 
   const startTokenAssertion = () => {
@@ -152,6 +153,7 @@ function ExtraSecurity(props){
             id="extra-security-freja"
             onClick={() => {
               window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+              dispatch(eduidRMAllNotify());
             }}
           >{props.translate("eidas.freja_eid_ready")}
           </EduIDButton>
