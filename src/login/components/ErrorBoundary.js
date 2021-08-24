@@ -1,14 +1,24 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../translation/InjectIntl_HOC_factory";
 
-export const GenericError = ({ translate }) => (
-  <Fragment>
-    <div className="username-pw">
-      <h2 className="heading">{translate("runtime_error.generic.title")}</h2>
-      <p>{translate("runtime_error.generic.description")}</p>
-    </div>
-  </Fragment>
-);
+export const GenericError = ({ translate, handleReset, handleError }) => {
+  return (
+    <Fragment>
+      <div className="username-pw">
+        <h2 className="heading">{translate("runtime_error.generic.title")}</h2>
+        <p>{translate("runtime_error.generic.description")}</p>
+      </div>
+      <button
+        onClick={() => {
+          handleReset();
+          handleError();
+        }}
+      >
+        Click here to reset!
+      </button>
+    </Fragment>
+  );
+};
 
 // has to be a class component
 class ErrorBoundary extends Component {
@@ -23,18 +33,25 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log("componentDidCatch, error:", error);
-    console.log("errorInfo:", errorInfo);
     this.setState({ error, errorInfo });
   }
 
+  handleReset = () => {
+    this.setState({ error: null, errorInfo: null, hasError: false });
+  };
+
   render() {
-    const { hasError, errorInfo, error } = this.state;
+    const { hasError, errorInfo, error, handleError } = this.state;
     return (
       <Fragment>
         {hasError && errorInfo !== null && error !== null ? (
           <div id="content" className="horizontal-content-margin">
-            <this.props.ErrorComponent {...this.state} {...this.props} />
+            <this.props.fallback
+              handleError={handleError}
+              handleReset={this.handleReset}
+              {...this.state}
+              {...this.props}
+            />
           </div>
         ) : (
           this.props.children
