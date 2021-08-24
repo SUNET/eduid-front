@@ -103,11 +103,11 @@ function ExtraSecurity(props){
   useEffect(()=>{
     if(window.location.search){
       const message = window.location.search.split("=")[1];
-      const emailCode = urlCode.split('?')
+      const emailCode = urlCode.split("?")
       if(message.includes("completed")){
         history.push(`/reset-password/set-new-password/${emailCode[0]}`)
       }else if(message.includes("%3AERROR%3A")){
-        const error = message.split('%3AERROR%3A')[1];
+        const error = message.split("%3AERROR%3A")[1];
         dispatch(eduidNotify(error, "errors"));
         history.push(`/reset-password/extra-security/${emailCode[0]}`);
         dispatch(saveLinkCode(emailCode[0]));
