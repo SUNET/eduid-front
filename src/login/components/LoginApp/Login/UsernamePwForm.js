@@ -15,9 +15,9 @@ export const submitUsernamePassword = (values, dispatch) => {
   dispatch(postUsernamePassword(email, currentPassword));
 };
 
-export const validateLoginForm = (values) => {
+export const validateLoginForm = (values, props) => {
   const { "current-password": currentPassword } = values;
-  let emailValidation = validate(values);
+  let emailValidation = validate(values, props);
   let passwordValidation = emptyValueValidation({
     ["current-password"]: currentPassword,
   });
