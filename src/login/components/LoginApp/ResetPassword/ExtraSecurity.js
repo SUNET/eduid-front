@@ -88,8 +88,6 @@ function ExtraSecurity(props){
   const frejaUrlDomainSlash = frejaUrlDomain && frejaUrlDomain.endsWith("/")
     ? frejaUrlDomain
     : frejaUrlDomain && frejaUrlDomain.concat("/");
-  
-  const isMfa = true;
 
   useEffect(()=>{
     dispatch(selectExtraSecurity(null));
@@ -142,28 +140,24 @@ function ExtraSecurity(props){
     > 
       {!extraSecurity && <Splash /> }
       { extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0  ?
-      <>
         <SecurityKeyButton
           selected_option={selected_option} 
           ShowSecurityKey={ShowSecurityKey} 
           extraSecurityKey={Object.keys(extraSecurity.tokens)} 
           translate={props.translate}
-        />
-        { !selected_option && extraSecurity && isMfa && 
-          <div>
-            <EduIDButton
-              type="submit"
-              className={"settings-button"} 
-              id="extra-security-freja"
-              onClick={() => {
-                window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
-                dispatch(eduidRMAllNotify());
-              }}
-            >{props.translate("eidas.freja_eid_ready")}
-            </EduIDButton>
-          </div>
-        }
-      </> : null
+        /> : null
+      }
+      { !selected_option && extraSecurity && extraSecurity.external_mfa &&
+        <EduIDButton
+          type="submit"
+          className={"settings-button"} 
+          id="extra-security-freja"
+          onClick={() => {
+            window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+            dispatch(eduidRMAllNotify());
+          }}
+        >{props.translate("eidas.freja_eid_ready")}
+        </EduIDButton>
       }
       { !selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
         <SecurityWithSMSButton 
