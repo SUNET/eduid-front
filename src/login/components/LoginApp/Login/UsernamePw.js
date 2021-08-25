@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
+import { emailPattern } from "../../../app_utils/validation/regexPatterns";
 
 const RenderRegisterLink = ({ translate }) => {
   const toSignup = useSelector((state) => state.config.signup_url);
@@ -36,8 +37,10 @@ const RenderResetPasswordLink = ({ translate }) => {
     const email = document.querySelector("input[name='email']") && 
       document.querySelector("input[name='email']").value;
     if(email){
-      dispatch(postEmailLink(email));
-      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL , email)
+      if(emailPattern.test(email)){
+        dispatch(postEmailLink(email));
+        setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL , email)
+      }else history.push(`/reset-password/email/${loginRef}`)
     } else history.push(`/reset-password/email/${loginRef}`)
   };
 
