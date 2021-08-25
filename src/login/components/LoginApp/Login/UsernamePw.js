@@ -1,5 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { reduxForm, submit } from "redux-form";
 import LinkRedirect from "../../Links/LinkRedirect";
 import Link from "../../Links/Link";
@@ -7,6 +8,9 @@ import UsernamePwForm from "./UsernamePwForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
+import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
+import { setLocalStorage } from "../ResetPassword/CountDownTimer";
+import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
 
 const RenderRegisterLink = ({ translate }) => {
   const toSignup = useSelector((state) => state.config.signup_url);
@@ -24,11 +28,25 @@ const RenderRegisterLink = ({ translate }) => {
 
 const RenderResetPasswordLink = ({ translate }) => {
   const loginRef = useSelector((state) => state.login.ref);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  
+  const sendLink = (e) => {
+    e.preventDefault();
+    const email = document.querySelector("input[name='email']") && 
+      document.querySelector("input[name='email']").value;
+    if(email){
+      dispatch(postEmailLink(email));
+      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL , email)
+    } else history.push(`/reset-password/email/${loginRef}`)
+  };
+
   return (
     <LinkRedirect
       id={"link-forgot-password"}
       className={""}
-      to={`/reset-password/email/${loginRef}`}
+      to={"/"}
+      onClick={sendLink}
       text={translate("login.usernamePw.reset-password-link")}
     />
   );
