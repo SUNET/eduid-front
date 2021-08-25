@@ -88,6 +88,8 @@ function ExtraSecurity(props){
   const frejaUrlDomainSlash = frejaUrlDomain && frejaUrlDomain.endsWith("/")
     ? frejaUrlDomain
     : frejaUrlDomain && frejaUrlDomain.concat("/");
+  
+  const isMfa = true;
 
   useEffect(()=>{
     dispatch(selectExtraSecurity(null));
@@ -147,18 +149,20 @@ function ExtraSecurity(props){
           extraSecurityKey={Object.keys(extraSecurity.tokens)} 
           translate={props.translate}
         />
-        <div>
-          <EduIDButton
-            type="submit"
-            className={"settings-button"} 
-            id="extra-security-freja"
-            onClick={() => {
-              window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
-              dispatch(eduidRMAllNotify());
-            }}
-          >{props.translate("eidas.freja_eid_ready")}
-          </EduIDButton>
-        </div>
+        { !selected_option && extraSecurity && isMfa && 
+          <div>
+            <EduIDButton
+              type="submit"
+              className={"settings-button"} 
+              id="extra-security-freja"
+              onClick={() => {
+                window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+                dispatch(eduidRMAllNotify());
+              }}
+            >{props.translate("eidas.freja_eid_ready")}
+            </EduIDButton>
+          </div>
+        }
       </> : null
       }
       { !selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
