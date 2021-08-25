@@ -8,8 +8,8 @@ import { setNewPasswordExtraSecurityExternalMfaFail } from "../../actions/postRe
 import { history } from "../../../components/App/App";
 
 export function* postSetNewPasswordExternalMfa() {
-  const url = PASSWORD_SERVICE_URL + "/new-password-extra-security-external-mfa/";
   const state = yield select(state => state);
+  const url = state.config.reset_password_url + "/new-password-extra-security-external-mfa/";
   const data = {
     email_code: state.resetPassword.email_code,
     password: state.resetPassword.suggested_password,
