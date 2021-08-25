@@ -27,7 +27,7 @@ addLocaleData("react-intl/locale-data/en");
 describe("Personal Data Actions", () => {
   it("Should get the data user for personal data", () => {
     const expectedAction = {
-      type: actions.GET_ALL_USERDATA
+      type: actions.GET_ALL_USERDATA,
     };
     expect(actions.getAllUserdata()).toEqual(expectedAction);
   });
@@ -38,23 +38,23 @@ describe("Personal Data Actions", () => {
       type: actions.GET_ALL_USERDATA_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.getAllUserdataFail(err)).toEqual(expectedAction);
   });
 
   it("shouldn't update personal data user", () => {
     const data = {
-      name: "Pablo"
+      name: "Pablo",
     };
     const data_error = {
       name: "Pablo",
-      language: "en"
+      language: "en",
     };
     const expectedAction = {
       type: actions.CHANGE_USERDATA,
-      payload: data_error
+      payload: data_error,
     };
     expect(actions.changeUserdata(data)).not.toEqual(expectedAction);
   });
@@ -62,19 +62,19 @@ describe("Personal Data Actions", () => {
   it("should update personal data user", () => {
     const data = {
       name: "Pablo",
-      language: "en"
+      language: "en",
     };
 
     const expectedAction = {
       type: actions.CHANGE_USERDATA,
-      payload: data
+      payload: data,
     };
     expect(actions.changeUserdata(data)).toEqual(expectedAction);
   });
 
   it("Should post the data for personal data", () => {
     const expectedAction = {
-      type: actions.POST_USERDATA
+      type: actions.POST_USERDATA,
     };
     expect(actions.postUserdata()).toEqual(expectedAction);
   });
@@ -86,8 +86,8 @@ describe("Personal Data Actions", () => {
       type: actions.POST_USERDATA_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.postUserdataFail(err)).toEqual(expectedAction);
   });
@@ -100,14 +100,14 @@ describe("Reducers", () => {
       surname: "Smith",
       display_name: "John",
       language: "en",
-      eppn: "dummy-eppn"
-    }
+      eppn: "dummy-eppn",
+    },
   };
 
   it("Receives a GET_ALL_USERDATA action", () => {
     expect(
       personalDataReducer(mockState, {
-        type: actions.GET_ALL_USERDATA
+        type: actions.GET_ALL_USERDATA,
       })
     ).toEqual({
       data: {
@@ -115,8 +115,8 @@ describe("Reducers", () => {
         surname: "Smith",
         display_name: "John",
         language: "en",
-        eppn: "dummy-eppn"
-      }
+        eppn: "dummy-eppn",
+      },
     });
   });
 
@@ -124,12 +124,12 @@ describe("Reducers", () => {
     expect(
       personalDataReducer(mockState, {
         payload: { surname: "Surname" },
-        type: actions.GET_USERDATA_SUCCESS
+        type: actions.GET_USERDATA_SUCCESS,
       })
     ).toEqual({
       data: {
-        surname: "Surname"
-      }
+        surname: "Surname",
+      },
     });
   });
 
@@ -138,8 +138,8 @@ describe("Reducers", () => {
       personalDataReducer(mockState, {
         type: actions.GET_ALL_USERDATA_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       data: {
@@ -147,9 +147,9 @@ describe("Reducers", () => {
         surname: "Smith",
         display_name: "John",
         language: "en",
-        eppn: "dummy-eppn"
+        eppn: "dummy-eppn",
       },
-      message: "Bad error"
+      message: "Bad error",
     });
   });
 
@@ -159,22 +159,22 @@ describe("Reducers", () => {
         type: actions.CHANGE_USERDATA,
         payload: {
           given_name: "Jonna",
-          display_name: "Jonna"
-        }
+          display_name: "Jonna",
+        },
       })
     ).toEqual({
       data: {
         given_name: "Jonna",
         eppn: "dummy-eppn",
-        display_name: "Jonna"
-      }
+        display_name: "Jonna",
+      },
     });
   });
 
   it("Receives a POST_USERDATA action", () => {
     expect(
       personalDataReducer(mockState, {
-        type: actions.POST_USERDATA
+        type: actions.POST_USERDATA,
       })
     ).toEqual({
       data: {
@@ -182,8 +182,8 @@ describe("Reducers", () => {
         surname: "Smith",
         display_name: "John",
         language: "en",
-        eppn: "dummy-eppn"
-      }
+        eppn: "dummy-eppn",
+      },
     });
   });
 
@@ -191,13 +191,13 @@ describe("Reducers", () => {
     expect(
       personalDataReducer(mockState, {
         payload: { surname: "Surname" },
-        type: actions.POST_USERDATA_SUCCESS
+        type: actions.POST_USERDATA_SUCCESS,
       })
     ).toEqual({
       data: {
         surname: "Surname",
-        eppn: "dummy-eppn"
-      }
+        eppn: "dummy-eppn",
+      },
     });
   });
 
@@ -206,8 +206,8 @@ describe("Reducers", () => {
       personalDataReducer(mockState, {
         type: actions.POST_USERDATA_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       data: {
@@ -215,18 +215,18 @@ describe("Reducers", () => {
         surname: "Smith",
         display_name: "John",
         language: "en",
-        eppn: "dummy-eppn"
+        eppn: "dummy-eppn",
       },
-      message: "Bad error"
+      message: "Bad error",
     });
   });
 });
 
-const fakeStore = state => ({
+const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
 const fakeState = {
@@ -236,17 +236,17 @@ const fakeState = {
       surname: "",
       display_name: "",
       language: "",
-      eppn: ""
-    }
+      eppn: "",
+    },
   },
   config: {
     csrf_token: "",
     is_configured: true,
-    personal_data_url: "http://localhost/services/personal-data/user"
+    personal_data_url: "http://localhost/services/personal-data/user",
   },
   intl: {
     locale: "en",
-    messagers: messages
+    messagers: messages,
   },
   form: {
     personal_data: {
@@ -254,10 +254,10 @@ const fakeState = {
         given_name: "",
         surname: "",
         display_name: "",
-        language: ""
-      }
-    }
-  }
+        language: "",
+      },
+    },
+  },
 };
 
 function setupComponent(store) {
@@ -267,10 +267,10 @@ function setupComponent(store) {
       surname: "",
       display_name: "",
       language: "",
-      eppn: ""
+      eppn: "",
     },
     handleSave: mock.fn(),
-    handleChange: mock.fn()
+    handleChange: mock.fn(),
   };
 
   const wrapper = mount(
@@ -280,7 +280,7 @@ function setupComponent(store) {
   );
   return {
     props,
-    wrapper
+    wrapper,
   };
 }
 
@@ -292,7 +292,7 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(actions.getAllUserdata()));
 
     const config = {
-      personal_data_url: "http://localhost/services/personal-data/user"
+      personal_data_url: "http://localhost/services/personal-data/user",
     };
     next = generator.next();
 
@@ -310,8 +310,8 @@ describe("Async component", () => {
         eppn: "",
         nins: [],
         emails: [],
-        phones: []
-      }
+        phones: [],
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -319,8 +319,8 @@ describe("Async component", () => {
     action = {
       type: ninActions.GET_NINS_SUCCESS,
       payload: {
-        nins: []
-      }
+        nins: [],
+      },
     };
     next = generator.next(action);
     expect(next.value).toEqual(put(action));
@@ -328,8 +328,8 @@ describe("Async component", () => {
     action = {
       type: emailActions.GET_EMAILS_SUCCESS,
       payload: {
-        emails: []
-      }
+        emails: [],
+      },
     };
     next = generator.next(action);
     expect(next.value).toEqual(put(action));
@@ -337,8 +337,8 @@ describe("Async component", () => {
     action = {
       type: phoneActions.GET_MOBILES_SUCCESS,
       payload: {
-        phones: []
-      }
+        phones: [],
+      },
     };
     next = generator.next(action);
     expect(next.value).toEqual(put(action));
@@ -350,8 +350,8 @@ describe("Async component", () => {
         surname: "",
         display_name: "",
         language: "",
-        eppn: ""
-      }
+        eppn: "",
+      },
     };
     next = generator.next();
     expect(next.value).toEqual(put(action));
@@ -409,10 +409,10 @@ describe("PersonalData Component", () => {
       { wrapper } = setupComponent(store),
       form = wrapper.find("form"),
       fieldset = wrapper.find("fieldset"),
-      language = wrapper.find("#language"),
-      surname = wrapper.find("#surname"),
-      given_name = wrapper.find("#given_name"),
-      display_name = wrapper.find("#display_name"),
+      language = wrapper.find("#language-wrapper"),
+      surname = wrapper.find("#surname-wrapper"),
+      given_name = wrapper.find("#given_name-wrapper"),
+      display_name = wrapper.find("#display_name-wrapper"),
       button = wrapper.find("EduIDButton#personal-data-button");
 
     expect(form.contains(fieldset.get(0))).toBeTruthy();
@@ -427,7 +427,7 @@ describe("PersonalData Component", () => {
 
     const numCalls = store.dispatch.mock.calls.length;
     const fakeEvent = {
-      preventDefault: () => {}
+      preventDefault: () => {},
     };
     button.props().onClick(fakeEvent);
     expect(store.dispatch.mock.calls.length).toEqual(numCalls + 1);
@@ -454,8 +454,8 @@ describe("PersonalData Container", () => {
         surname: "Iglesias",
         display_name: "Pablo",
         language: "en",
-        eppn: "dummy-eppn"
-      }
+        eppn: "dummy-eppn",
+      },
     };
 
     wrapper = mount(
@@ -466,8 +466,7 @@ describe("PersonalData Container", () => {
     fulldom = wrapper.find(PersonalDataContainer);
     given_name = fulldom.props().data.given_name;
     surname = fulldom.props().data.surname;
-    display_name = fulldom.props().data
-      .display_name;
+    display_name = fulldom.props().data.display_name;
     language = fulldom.props().data.language;
     eppn = fulldom.props().data.eppn;
     dispatch = store.dispatch;
@@ -487,17 +486,14 @@ describe("PersonalData Container", () => {
 
   it("Clicks", () => {
     const mockEvent = {
-      preventDefault: () => {}
+      preventDefault: () => {},
     };
 
     fetchMock.post("http://localhost/services/personal-data/user", {
-      type: actions.POST_USERDATA_SUCCESS
+      type: actions.POST_USERDATA_SUCCESS,
     });
     const numCalls = dispatch.mock.calls.length;
-    wrapper
-      .find("EduIDButton#personal-data-button")
-      .props()
-      .onClick(mockEvent);
+    wrapper.find("EduIDButton#personal-data-button").props().onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
 });
