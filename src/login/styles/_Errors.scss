@@ -73,15 +73,15 @@
       p {
         margin-left: 1rem;
         font-family: "ProximaNova-Regular";
-        // font-weight: 400;
-        color: black;
+        color: $black;
       }
       button,
       button:active,
       button:focus,
       button:active:focus {
+        border: transparent solid 1px;
         margin-top: 0;
-        padding: 0.5rem;
+        padding: 0.75rem;
         background-color: white;
         border-radius: 50%;
       }
