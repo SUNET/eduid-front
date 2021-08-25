@@ -90,7 +90,7 @@ const RenderInput = (props) => {
         id={name}
         placeholder={placeholder}
         name={name}
-        valid={valid}
+        valid={input.value !== "" && valid}
         invalid={invalid}
         autoComplete={autoComplete}
         autoFocus={autoFocus}
