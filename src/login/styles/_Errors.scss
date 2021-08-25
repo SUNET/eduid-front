@@ -9,15 +9,15 @@
     font-size: 1.25rem;
     div {
       margin-left: 2rem;
-      li:nth-child(1), 
-      li:nth-child(3), 
+      li:nth-child(1),
+      li:nth-child(3),
       li:nth-child(5) {
         list-style-type: disc;
-        margin-top: 1rem;     
+        margin-top: 1rem;
         font-family: "ProximaNova-bold";
       }
       li:nth-child(even) {
-        margin-top: 0;     
+        margin-top: 0;
       }
     }
   }
@@ -25,27 +25,27 @@
     line-height: 1.5;
     font-family: "ProximaNova-Regular";
   }
-  & .technical-info-heading span{
+  & .technical-info-heading span {
     font-family: "ProximaNova-Bold";
     font-size: 1.25rem;
   }
   & .technical-info-box {
     background-color: $white;
     padding: 1rem;
-    .technical-info-text{
+    .technical-info-text {
       display: flex;
       justify-content: flex-start;
       p {
         font-size: 1rem;
         padding-bottom: 0;
       }
-      p:first-child{
+      p:first-child {
         text-transform: uppercase;
         font-family: "ProximaNova-Bold";
         width: 8.125rem;
         padding-right: 1rem;
       }
-      p:last-child{
+      p:last-child {
         color: $orange-highlight;
       }
     }
@@ -54,16 +54,51 @@
     margin-bottom: 1.5rem;
   }
 }
-  
+
 .swamid-error li {
   margin-top: 24px;
 }
 
+// ErrorBoundary: generic error
+.error-boundary {
+  .options {
+    margin-top: 2rem;
+    display: flex;
+  }
+  .option {
+    margin-right: 5rem;
+    .icon-text {
+      display: flex;
+      align-items: baseline;
+      p {
+        margin-left: 1rem;
+        font-family: "ProximaNova-Regular";
+        // font-weight: 400;
+        color: black;
+      }
+      button,
+      button:active,
+      button:focus,
+      button:active:focus {
+        margin-top: 0;
+        padding: 0.5rem;
+        background-color: white;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  label {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
 @media (max-width: 568px) {
-  .technical-info-text{
+  .technical-info-text {
     flex-direction: column;
 
-    p:last-child{
+    p:last-child {
       color: $orange-highlight;
     }
   }

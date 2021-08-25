@@ -307,10 +307,33 @@ export const specificErrors = {
     />
   ),
   "runtime_error.generic.description": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="runtime_error.generic.description"
-      defaultMessage={`The issue has been reported to the team.<br />
-        Reload the page to continue or return to the home page to start over.`}
+      defaultMessage={`The issue has been reported to the team.`}
+    />
+  ),
+  "runtime_error.generic.label.reload": (
+    <FormattedMessage
+      id="runtime_error.generic.label.reload"
+      defaultMessage={`Try again:`}
+    />
+  ),
+  "runtime_error.generic.p.reload": (
+    <FormattedMessage
+      id="runtime_error.generic.reload"
+      defaultMessage={`Reload page`}
+    />
+  ),
+  "runtime_error.generic.label.toHome": (
+    <FormattedMessage
+      id="runtime_error.generic.label.toHome"
+      defaultMessage={`Start over:`}
+    />
+  ),
+  "runtime_error.generic.p.toHome": (
+    <FormattedMessage
+      id="runtime_error.generic.p.toHome"
+      defaultMessage={`Return to home`}
     />
   ),
 
