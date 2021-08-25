@@ -90,6 +90,7 @@ function ExtraSecurity(props){
     : frejaUrlDomain && frejaUrlDomain.concat("/");
 
   useEffect(()=>{
+    dispatch(selectExtraSecurity(null));
     if(extra_security !== undefined){
       if(Object.keys(extra_security).length > 0){
         setExtraSecurity(extra_security);
