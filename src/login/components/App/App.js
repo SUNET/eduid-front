@@ -4,11 +4,11 @@ import { createBrowserHistory } from "history";
 import Splash from "../Splash/Splash_container";
 import Banner from "../Banner/Banner";
 import Buggy from "../Buggy";
-import ErrorBoundary from "../ErrorBoundary";
+import ErrorBoundaryContainer from "../Errors/ErrorBoundary";
+import GenericError from "../Errors/GenericError";
 import Notifications from "../Notifications/Notifications_container";
 import LoginApp from "../LoginApp/LoginApp";
 import Footer from "../Footer/Footer";
-import { GenericError } from "../ErrorBoundary";
 import "../../styles/index.scss";
 
 export const history = createBrowserHistory();
@@ -25,7 +25,7 @@ class App extends Component {
         <Banner {...this.props} />
         <section id="panel">
           <Notifications />
-          <ErrorBoundary
+          <ErrorBoundaryContainer
             {...this.props}
             handleError={this.handleError}
             fallback={GenericError}
@@ -34,7 +34,7 @@ class App extends Component {
               <LoginApp />
               {this.state.faulty ? <Buggy /> : null}
             </Router>
-          </ErrorBoundary>
+          </ErrorBoundaryContainer>
         </section>
         <Footer {...this.props} />
       </>
