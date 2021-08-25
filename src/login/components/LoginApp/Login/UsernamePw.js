@@ -47,7 +47,6 @@ const RenderResetPasswordLink = ({ translate }) => {
   return (
     <LinkRedirect
       id={"link-forgot-password"}
-      className={""}
       to={"/"}
       onClick={sendLink}
       text={translate("login.usernamePw.reset-password-link")}
