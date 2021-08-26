@@ -24,6 +24,7 @@ let EmailForm = (props) => (
       translate={props.translate}
       placeholder="example@email.com"
       required={true}
+      autoComplete="off" 
       helpBlock={props.translate("emails.input_help_text")}
     />
     <EduIDButton
