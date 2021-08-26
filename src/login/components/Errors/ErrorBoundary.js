@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 class ErrorBoundary extends Component {
   state = {
     error: null,
+    errorInfo: null,
     hasError: false,
   };
 
@@ -14,27 +15,36 @@ class ErrorBoundary extends Component {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error, errorInfo) {
-    // initialise sentry
-    Sentry.init({
-      dsn: this.props.dsn,
-    });
-    // send error info to sentry
-    Sentry.withScope((scope) => {
-      scope.setExtras(errorInfo);
-      Sentry.captureException(error);
-    });
+  componentDidCatch(errorInfo) {
+    this.setState({ errorInfo });
+  }
+
+  // HACK: update props until state.config.sentry_dsn is updated
+  componentDidUpdate(prevProps) {
+    if (this.props.sentry_dsn !== prevProps.sentry_dsn) {
+      if (this.props.sentry_dsn !== undefined) {
+        // initialise sentry
+        Sentry.init({
+          dsn: this.props.sentry_dsn,
+        });
+        // send error info to sentry
+        Sentry.withScope((scope) => {
+          scope.setExtras(this.state.errorInfo);
+          Sentry.captureException(this.state.error);
+        });
+      }
+    }
   }
 
   handleReset = () => {
-    this.setState({ error: null, hasError: false });
+    this.setState({ error: null, errorInfo: null, hasError: false });
   };
 
   render() {
-    const { hasError, handleError, error } = this.state;
+    const { hasError, handleError, error, errorInfo } = this.state;
     return (
       <Fragment>
-        {hasError && error !== null ? (
+        {hasError && error !== null && errorInfo !== null ? (
           <div id="content" className="horizontal-content-margin">
             <this.props.fallback
               handleError={handleError}
@@ -53,12 +63,12 @@ class ErrorBoundary extends Component {
 
 // connect class compnonet to redux store
 const mapStateToProps = (state) => {
-  let sentry_dsn = "";
+  let sentry_dsn
   if (state.config.sentry_dsn !== null) {
     sentry_dsn = state.config.sentry_dsn;
   }
   return {
-    dsn: sentry_dsn,
+    sentry_dsn: sentry_dsn,
   };
 };
 const ErrorBoundaryContainer = connect(mapStateToProps)(ErrorBoundary);
