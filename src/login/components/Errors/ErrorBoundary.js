@@ -53,11 +53,12 @@ class ErrorBoundary extends Component {
 
 // connect class compnonet to redux store
 const mapStateToProps = (state) => {
+  let sentry_dsn = "";
+  if (state.config.sentry_dsn !== null) {
+    sentry_dsn = state.config.sentry_dsn;
+  }
   return {
-    // hardcoded mock for etsting in dev
-    dsn: "https://c027625f3c9448fdb6c55c55dda3b475@monitor.dev.eduid.se/21",
-    // dsn in redux store
-    // dsn: state.config.sentry_dsn,
+    dsn: sentry_dsn,
   };
 };
 const ErrorBoundaryContainer = connect(mapStateToProps)(ErrorBoundary);

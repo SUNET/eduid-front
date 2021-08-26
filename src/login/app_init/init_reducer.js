@@ -6,6 +6,7 @@ const initData = {
   debug: true,
   available_languages: [],
   next_url: null,
+  sentry_dsn: null,
 };
 
 let initReducer = (state = initData, action) => {
