@@ -15,6 +15,7 @@ let initReducer = (state = initData, action) => {
       return {
         ...state,
         ...action.payload,
+        sentry_dsn: action.payload.sentry_dsn,
       };
     default:
       return state;
