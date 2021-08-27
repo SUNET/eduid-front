@@ -28,7 +28,7 @@ const SecurityKeyButton = ({
           key={security}
           onClick={ShowSecurityKey}
         >
-        {translate("resetpw.use_extra_security_key")}
+        {translate("login.mfa.primary-option.button")}
         </EduIDButton>
       )
     } 
@@ -148,16 +148,18 @@ function ExtraSecurity(props){
         /> : null
       }
       { !selected_option && extraSecurity && extraSecurity.external_mfa &&
-        <EduIDButton
-          type="submit"
-          className={"settings-button"} 
-          id="extra-security-freja"
-          onClick={() => {
-            window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
-            dispatch(eduidRMAllNotify());
-          }}
-        >{props.translate("eidas.freja_eid_ready")}
-        </EduIDButton>
+        <div>
+          <EduIDButton
+            type="submit"
+            className="settings-button" 
+            id="extra-security-freja"
+            onClick={() => {
+              window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+              dispatch(eduidRMAllNotify());
+            }}
+            >{props.translate("eidas.freja_eid_ready")}
+          </EduIDButton>
+        </div>
       }
       { !selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
         <SecurityWithSMSButton 
