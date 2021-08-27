@@ -39,12 +39,6 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch, histor
     dispatch(requestPhoneCode(phone));
   };
 
-  const toPhoneCodeForm = (phone)=>{
-    dispatch(selectedPhoneInfo(phone));
-    dispatch(eduidRMAllNotify());
-    history.push(`/reset-password/phone-code-sent/${emailCode}`);
-  };
-
   return (
     extraSecurityPhone.map(phone => {
       return (
@@ -58,9 +52,6 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch, histor
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
           </EduIDButton>
-          <p className="enter-phone-code">{translate("resetpw.received-sms")} 
-            <a onClick={()=>toPhoneCodeForm(phone)}>{translate("resetpw.enter-code")} </a> 
-          </p>
         </div>
       )
     })
@@ -100,6 +91,11 @@ function ExtraSecurity(props){
     }
   };
 
+  const toPhoneCodeForm = ()=>{
+    dispatch(eduidRMAllNotify());
+    history.push(`/reset-password/phone-code-sent/${emailCode}`);
+  };
+
   return (
     <ResetPasswordLayout
       heading={props.translate("resetpw.extra-security_heading")} 
@@ -118,13 +114,19 @@ function ExtraSecurity(props){
         /> : null
       }
       { !selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-        <SecurityWithSMSButton 
-          extraSecurityPhone={extraSecurity.phone_numbers} 
-          translate={props.translate}
-          dispatch={dispatch}
-          history={history}
-          emailCode={emailCode}
-        /> : null
+        <>
+          <SecurityWithSMSButton 
+            extraSecurityPhone={extraSecurity.phone_numbers} 
+            translate={props.translate}
+            dispatch={dispatch}
+            history={history}
+            emailCode={emailCode}
+          /> 
+          <p className="enter-phone-code">{props.translate("resetpw.received-sms")} 
+            <a onClick={()=>toPhoneCodeForm()}>{props.translate("resetpw.enter-code")} </a> 
+          </p>
+        </>
+      : null
       }
     </ResetPasswordLayout>
   ) 
