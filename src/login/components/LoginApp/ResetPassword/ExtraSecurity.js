@@ -34,7 +34,7 @@ const SecurityKeyButton = ({
   ) : selected_option === "securityKey" ? <ExtraSecurityToken /> : null
 )};
 
-const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch, history, emailCode }) => {
+const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch }) => {
   const sendConfirmCode = (phone)=>{
     dispatch(requestPhoneCode(phone));
   };
