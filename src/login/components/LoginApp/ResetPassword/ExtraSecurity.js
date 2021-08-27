@@ -23,7 +23,7 @@ const SecurityKeyButton = ({
       return (
         <EduIDButton
           className={"settings-button"} 
-          id="extra-security"
+          id="extra-security-key"
           key={security}
           onClick={ShowSecurityKey}
         >
@@ -51,7 +51,7 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch, histor
         <div key={phone.index}>
           <EduIDButton
             className={"settings-button"}
-            id="extra-security" 
+            id="extra-security-phone" 
             key={phone.index}
             onClick={()=>sendConfirmCode(phone)}
           > 

@@ -49,6 +49,7 @@ const ExtraSecurityToken = (props) => {
           </div>
           <div className="card-body">
             <button 
+              id="try-token-assertion"
               className="btn-link" 
               onClick={()=>retryTokenAssertion()}>
               {props.translate("mfa.try-again")}

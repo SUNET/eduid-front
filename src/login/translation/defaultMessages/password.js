@@ -335,6 +335,13 @@ export const resetPassword = {
     />
   ),
 
+  "resetpw.set-new-password-success": (
+    <FormattedMessage
+      id="resetpw.set-new-password-success"
+      defaultMessage={`Password reset has been updated`}
+    />
+  ),
+
   "mfa.reset-password-tapit": (
     <FormattedMessage
      id="mfa.reset-password-tapit"
