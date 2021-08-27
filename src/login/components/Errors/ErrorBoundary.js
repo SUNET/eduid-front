@@ -41,13 +41,12 @@ class ErrorBoundary extends Component {
   };
 
   render() {
-    const { hasError, handleError, error, errorInfo } = this.state;
+    const { hasError, error, errorInfo } = this.state;
     return (
       <Fragment>
         {hasError && error !== null && errorInfo !== null ? (
           <div id="content" className="horizontal-content-margin">
             <this.props.fallback
-              handleError={handleError}
               handleReset={this.handleReset}
               {...this.state}
               {...this.props}
