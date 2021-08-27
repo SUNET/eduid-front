@@ -80,7 +80,7 @@ function SetNewPassword(props){
 
   return (
     <>
-     { suggested_password === undefined && <Splash /> }
+     { !suggested_password && <Splash /> }
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
       <NewPasswordForm {...props} clickSetNewPassword={clickSetNewPassword}/>
