@@ -14,6 +14,7 @@ import {
   setNewPasswordExtraSecurityToken, 
   setNewPasswordExtraSecurityExternalMfa 
 } from "../../../redux/actions/postResetNewPasswordActions";
+import Splash from "../../../../containers/Splash";
 
 let NewPasswordForm = (props) =>{
   return (
@@ -79,6 +80,7 @@ function SetNewPassword(props){
 
   return (
     <>
+     { suggested_password === undefined && <Splash /> }
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
       <NewPasswordForm {...props} clickSetNewPassword={clickSetNewPassword}/>
