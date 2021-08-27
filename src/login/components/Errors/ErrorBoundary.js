@@ -60,14 +60,14 @@ class ErrorBoundary extends Component {
   }
 }
 
-// connect class compnonet to redux store
+// connect class component to redux store
 const mapStateToProps = (state) => {
   let sentry_dsn
   if (state.config.sentry_dsn !== null) {
     sentry_dsn = state.config.sentry_dsn;
   }
   return {
-    sentry_dsn: sentry_dsn,
+    sentry_dsn,
   };
 };
 const ErrorBoundaryContainer = connect(mapStateToProps)(ErrorBoundary);
