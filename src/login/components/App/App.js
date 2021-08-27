@@ -19,11 +19,7 @@ class App extends Component {
         <Banner {...this.props} />
         <section id="panel">
           <Notifications />
-          <ErrorBoundaryContainer
-            {...this.props}
-            handleError={this.handleError}
-            fallback={GenericError}
-          >
+          <ErrorBoundaryContainer {...this.props} fallback={GenericError}>
             <Router history={history}>
               <LoginApp />
             </Router>
