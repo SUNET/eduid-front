@@ -70,7 +70,7 @@ function ResetPasswordMain(props){
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
       <EmailForm sendLink={sendLink} {...props} />
       <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
-        <a href={`/login/password/${loginRef}`}>
+        <a id="return-login" href={`/login/password/${loginRef}`}>
           {props.translate("resetpw.return-login")}
         </a>
       </div>

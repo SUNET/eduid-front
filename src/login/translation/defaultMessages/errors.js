@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedHTMLMessage  } from "react-intl";
+import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
 export const generalErrors = {
   // non-error errors?
@@ -20,7 +20,10 @@ export const generalErrors = {
   ),
 
   "value not changed": (
-    <FormattedMessage id="value not changed" defaultMessage={`The value is not changed`} />
+    <FormattedMessage
+      id="value not changed"
+      defaultMessage={`The value is not changed`}
+    />
   ),
 
   "user-out-of-sync": (
@@ -157,7 +160,7 @@ export const generalErrors = {
       id="email.invalid_email"
       defaultMessage={`The entered email is invalid`}
     />
-  )
+  ),
 };
 
 export const specificErrors = {
@@ -293,6 +296,44 @@ export const specificErrors = {
       id="security.u2f_registration_error_code"
       defaultMessage={`U2F failed with error code: {errorCode}`}
       values={values}
+    />
+  ),
+
+  // runtime error page
+  "runtime_error.generic.title": (
+    <FormattedMessage
+      id="runtime_error.generic.title"
+      defaultMessage={`There was a problem displaying the page.`}
+    />
+  ),
+  "runtime_error.generic.description": (
+    <FormattedMessage
+      id="runtime_error.generic.description"
+      defaultMessage={`The issue has been reported to the team.`}
+    />
+  ),
+  "runtime_error.generic.label.reload": (
+    <FormattedMessage
+      id="runtime_error.generic.label.reload"
+      defaultMessage={`Try again:`}
+    />
+  ),
+  "runtime_error.generic.p.reload": (
+    <FormattedMessage
+      id="runtime_error.generic.reload"
+      defaultMessage={`Reload page`}
+    />
+  ),
+  "runtime_error.generic.label.toHome": (
+    <FormattedMessage
+      id="runtime_error.generic.label.toHome"
+      defaultMessage={`Start over:`}
+    />
+  ),
+  "runtime_error.generic.p.toHome": (
+    <FormattedMessage
+      id="runtime_error.generic.p.toHome"
+      defaultMessage={`Return to home`}
     />
   ),
 

@@ -39,6 +39,8 @@ article {
   margin-top: 2rem;
 }
 
+// this is a horizontal-margin and should be renamed
+.horizontal-content-margin,
 .vertical-content-margin {
   padding: 0;
   width: 58%;
@@ -73,24 +75,28 @@ fieldset {
 }
 
 @media (max-width: 823px) {
+  .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(80% - 2rem);
   }
 }
 
 @media (max-width: 768px) {
+  .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(80% - 1.25rem);
   }
 }
 
 @media (max-width: 568px) {
+  .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(100% - 1.25rem);
   }
 }
 
 @media (max-width: 414px) {
+  .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(100% - #{2 * $margin});
   }
