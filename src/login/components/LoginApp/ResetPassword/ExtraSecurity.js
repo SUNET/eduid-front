@@ -5,7 +5,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { useDispatch, useSelector } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
-import { requestPhoneCode, selectExtraSecurity, selectedPhoneInfo } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import Splash from "../../../../containers/Splash";

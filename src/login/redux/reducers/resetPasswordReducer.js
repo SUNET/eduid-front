@@ -59,11 +59,6 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-    case postActions.ADD_EXTRA_SECURITY_PHONE_INFO:
-      return {
-        ...state,
-        ...action.payload
-      };
     default:
       return state;
   }
