@@ -24,6 +24,6 @@ export const validateEmailOnLogin = (values, props) => {
         errors.email = "email.invalid_email";
       }
     }
-  return errors;
   }
+  return errors;
 };
