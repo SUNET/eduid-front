@@ -1,21 +1,29 @@
-export const validate = (values, props) => {
+import { emailPattern } from "./regexPatterns";
+
+export const validate = (values) => {
   const errors = {};
-  let email = values.email;
-  const pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  const startValidate = () => {
+  if (values !== undefined) {
+    let email = values.email;
     if (!email) {
       errors.email = "required";
-    } else if (!pattern.test(email)) {
+    } else if (! emailPattern.test(email)) {
       errors.email = "email.invalid_email";
     }
-  };
+  }
+  return errors;
+};
 
+export const validateEmailOnLogin = (values, props) => {
+  const errors = {};
+  let email = values.email;
   if (values !== undefined) { 
-    if(props.form === "usernamePwForm"){
-      if(!props.pristine){
-        startValidate();
+    if(!props.pristine){
+      if (!email) {
+        errors.email = "required";
+      } else if (!emailPattern.test(email)) {
+        errors.email = "email.invalid_email";
       }
-    }else startValidate();
+    }
   return errors;
   }
 };
