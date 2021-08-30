@@ -6,7 +6,7 @@ export const validate = (values) => {
     let email = values.email;
     if (!email) {
       errors.email = "required";
-    } else if (! emailPattern.test(email)) {
+    } else if (!emailPattern.test(email)) {
       errors.email = "email.invalid_email";
     }
   }
