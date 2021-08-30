@@ -17,7 +17,8 @@ export const submitUsernamePassword = (values, dispatch) => {
 
 export const validateLoginForm = (values, props) => {
   const { "current-password": currentPassword } = values;
-  let emailValidation =validateEmailOnLogin(values, props);
+  // props for checking if values is changed(pristine is false) to prevent activation of validation when emapty input 
+  let emailValidation = validateEmailOnLogin(values, props);
   let passwordValidation = emptyValueValidation({
     ["current-password"]: currentPassword,
   });
