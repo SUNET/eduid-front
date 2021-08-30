@@ -10,4 +10,3 @@ export const securityKeyPattern = /^.{1,50}$/;
 export const emptyStringPattern = /^\s+$/;
 // matches email strings
 export const emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
