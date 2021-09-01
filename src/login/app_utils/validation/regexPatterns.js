@@ -8,4 +8,5 @@ export const shortCodePattern = /^[A-Za-z0-9]{10}$/;
 export const securityKeyPattern = /^.{1,50}$/;
 // matches empty strings
 export const emptyStringPattern = /^\s+$/;
-
+// matches email strings
+export const emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
