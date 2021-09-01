@@ -449,7 +449,7 @@
   "u2f.push-the-button": "Tryck på knappen på din U2F-säkerhetsnyckel",
   "unexpected-problem": "Ett okänt fel inträffade. Var god försök igen och kontakta supporten om felet kvarstår.",
   "unexpected-success": "Klart",
-  "used.email-in-use": "E-postadressen används redan",
+  "used.email-in-use": "Ett eduID konto använder redan {email}",
   "used.email-label": "Om detta är ditt eduID, kan du återställa lösenord för att kunna logga in igen.",
   "used.forgot-password": "Glömt ditt lösenord?",
   "used.reset-password": "Återställ lösenord",
