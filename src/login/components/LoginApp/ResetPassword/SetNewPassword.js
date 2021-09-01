@@ -8,7 +8,13 @@ import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import { setNewPassword, setNewPasswordExtraSecurityPhone, setNewPasswordExtraSecurityToken } from "../../../redux/actions/postResetNewPasswordActions";
+import { 
+  setNewPassword, 
+  setNewPasswordExtraSecurityPhone, 
+  setNewPasswordExtraSecurityToken, 
+  setNewPasswordExtraSecurityExternalMfa 
+} from "../../../redux/actions/postResetNewPasswordActions";
+import Splash from "../../../../containers/Splash";
 
 let NewPasswordForm = (props) =>{
   return (
@@ -67,11 +73,14 @@ function SetNewPassword(props){
       dispatch(setNewPasswordExtraSecurityPhone());
     }else if(selected_option === "securityKey"){
       dispatch(setNewPasswordExtraSecurityToken());
+    }else if(selected_option === "freja"){
+      dispatch(setNewPasswordExtraSecurityExternalMfa());
     }
   };
 
   return (
     <>
+     { !suggested_password && <Splash /> }
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
       <NewPasswordForm {...props} clickSetNewPassword={clickSetNewPassword}/>

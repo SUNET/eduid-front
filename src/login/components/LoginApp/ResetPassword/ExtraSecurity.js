@@ -9,7 +9,8 @@ import { requestPhoneCode, selectExtraSecurity, selectedPhoneInfo } from "../../
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import Splash from "../../../../containers/Splash";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
+import { saveLinkCode } from "./../../../redux/actions/postResetPasswordActions";
 
 const SecurityKeyButton = ({ 
   selected_option,
@@ -27,7 +28,7 @@ const SecurityKeyButton = ({
           key={security}
           onClick={ShowSecurityKey}
         >
-        {translate("resetpw.use_extra_security_key")}
+        {translate("login.mfa.primary-option.button")}
         </EduIDButton>
       )
     } 
@@ -75,22 +76,51 @@ function ExtraSecurity(props){
   const extra_security = useSelector(
     (state) => state.resetPassword.extra_security
   );
+  const url = document.location.href;
+  const urlCode = url.split("/").reverse()[0];
   const emailCode = useSelector(state => state.resetPassword.email_code);
-  
+  const suggested_password = useSelector(state => state.resetPassword.suggested_password);
+  // compose external link
+  const frejaUrlDomain = useSelector((state) => state.config.eidas_url);
+  const idp = useSelector((state) => state.config.mfa_auth_idp);
+  const mfaPage = window.location.href; // return to mfa page on completion
+  // ensure url has one slash at the end to be functional in the link
+  const frejaUrlDomainSlash = frejaUrlDomain && frejaUrlDomain.endsWith("/")
+    ? frejaUrlDomain
+    : frejaUrlDomain && frejaUrlDomain.concat("/");
+
   useEffect(()=>{
+    dispatch(selectExtraSecurity(null));
     if(extra_security !== undefined){
       if(Object.keys(extra_security).length > 0){
         setExtraSecurity(extra_security);
       }if(!Object.keys(extra_security).length){
+        dispatch(selectExtraSecurity("without"));
         history.push(`/reset-password/set-new-password/${emailCode}`)
       }
     }
-  },[extra_security]);
+  },[suggested_password]);
+
+  useEffect(()=>{
+    if(window.location.search){
+      const message = window.location.search.split("=")[1];
+      const emailCode = urlCode.split("?")
+      if(message.includes("completed")){
+        history.push(`/reset-password/set-new-password/${emailCode[0]}`)
+      }else if(message.includes("%3AERROR%3A")){
+        const error = message.split("%3AERROR%3A")[1];
+        dispatch(eduidNotify(error, "errors"));
+        history.push(`/reset-password/extra-security/${emailCode[0]}`);
+        dispatch(saveLinkCode(emailCode[0]));
+      }
+    }
+  },[emailCode, suggested_password]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
     dispatch(selectExtraSecurity("securityKey"));
     startTokenAssertion();
+    dispatch(eduidRMAllNotify());
   };
 
   const startTokenAssertion = () => {
@@ -116,6 +146,20 @@ function ExtraSecurity(props){
           extraSecurityKey={Object.keys(extraSecurity.tokens)} 
           translate={props.translate}
         /> : null
+      }
+      { !selected_option && extraSecurity && extraSecurity.external_mfa &&
+        <div>
+          <EduIDButton
+            type="submit"
+            className="settings-button" 
+            id="extra-security-freja"
+            onClick={() => {
+              window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+              dispatch(eduidRMAllNotify());
+            }}
+            >{props.translate("eidas.freja_eid_ready")}
+          </EduIDButton>
+        </div>
       }
       { !selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
         <SecurityWithSMSButton 

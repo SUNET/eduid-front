@@ -5,7 +5,8 @@ export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET
 export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
 export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN";
 export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL";
-
+export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA";
+export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL";
 
 export function setNewPassword() {
   return {
@@ -13,9 +14,13 @@ export function setNewPassword() {
   };
 }
 
-export function setNewPasswordFail() {
+export function setNewPasswordFail(err) {
   return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_FAIL
+    type: POST_RESET_PASSWORD_NEW_PASSWORD_FAIL,
+    error: true,
+    payload: {
+      message: err.toString()
+    }
   };
 }
 
@@ -25,9 +30,13 @@ export function setNewPasswordExtraSecurityPhone() {
   };
 }
 
-export function setNewPasswordExtraSecurityPhoneFail() {
+export function setNewPasswordExtraSecurityPhoneFail(err) {
   return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL
+    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL,
+    error: true,
+    payload: {
+      message: err.toString()
+    }
   };
 }
 
@@ -37,8 +46,28 @@ export function setNewPasswordExtraSecurityToken() {
   };
 }
 
-export function setNewPasswordExtraSecurityTokenFail() {
+export function setNewPasswordExtraSecurityTokenFail(err) {
   return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL
+    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL,
+    error: true,
+    payload: {
+      message: err.toString()
+    }
+  };
+}
+
+export function setNewPasswordExtraSecurityExternalMfa() {
+  return {
+    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA
+  };
+}
+
+export function setNewPasswordExtraSecurityExternalMfaFail(err) {
+  return {
+    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL,
+    error: true,
+    payload: {
+      message: err.toString()
+    }
   };
 }

@@ -54,9 +54,6 @@ const ExtraSecurityToken = (props) => {
               onClick={()=>retryTokenAssertion()}>
               {props.translate("mfa.try-again")}
             </button>
-            <button className="btn-link">
-              {props.translate("mfa.freja-eid")}
-            </button>
           </div>
         </div>
       </div>
