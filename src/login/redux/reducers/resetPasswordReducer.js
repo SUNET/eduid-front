@@ -6,7 +6,7 @@ const data = {
     email_code: "",
     phone: {},
     webauthn_assertion: null,
-    selected_option: ""
+    selected_option: null
 };
 
 let resetPasswordReducer = (state = data, action) => {
