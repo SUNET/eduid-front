@@ -4,7 +4,7 @@ import { reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EmailInput from "../../Inputs/EmailInput";
 import PasswordInput from "../../Inputs/PasswordInput";
-import { validate } from "../../../app_utils/validation/validateEmail";
+import { validateEmailOnLogin } from "../../../app_utils/validation/validateEmail";
 import emptyValueValidation from "../../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { postUsernamePassword } from "../../../redux/actions/postUsernamePasswordActions";
@@ -15,9 +15,10 @@ export const submitUsernamePassword = (values, dispatch) => {
   dispatch(postUsernamePassword(email, currentPassword));
 };
 
-export const validateLoginForm = (values) => {
+export const validateLoginForm = (values, props) => {
   const { "current-password": currentPassword } = values;
-  let emailValidation = validate(values);
+  // props for checking if values is changed(pristine is false) to prevent activation of validation when emapty input 
+  let emailValidation = validateEmailOnLogin(values, props);
   let passwordValidation = emptyValueValidation({
     ["current-password"]: currentPassword,
   });

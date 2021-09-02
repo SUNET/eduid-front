@@ -229,6 +229,12 @@ export const resetPassword = {
       defaultMessage={"User has not completed signup"}
     />
   ),
+  "resetpw.invalid_session": (
+    <FormattedMessage
+      id="resetpw.invalid_session"
+      defaultMessage={"Invalid session, please try again"}
+    />
+  ),
   "resetpw.email-send-failure": (
     <FormattedMessage
       id="resetpw.email-send-failure"
@@ -387,5 +393,10 @@ export const resetPassword = {
       defaultMessage={`accept password`}
     />
   ),
-
+  "resetpw.go-to-eduid": (
+    <FormattedMessage
+      id="resetpw.go-to-eduid"
+      defaultMessage={`go to eduID`}
+    />
+  ),
 };
