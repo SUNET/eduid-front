@@ -366,7 +366,7 @@
   "resetpw.return-login": "återgå till inloggningen",
   "resetpw.send-link": "Skicka länk till e-postadress",
   "resetpw.send-sms-success": "Telefonkoden har skickats.",
-  "resetpw.set-new-password-description": "Ett säkert lösenord har genererats till dig. Du väljer att använda det genererade lösenordet genom att klicka Acceptera lösenord.",
+  "resetpw.set-new-password-description": "Ett säkert lösenord har genererats till dig. För att komma vidare behöver du kopiera det till Repetera ditt nya lösenord och klicka Acceptera lösenord.",
   "resetpw.set-new-password-heading": "Skapa ditt nya lösenord",
   "resetpw.set-new-password-success": "Lösenordet har uppdaterats",
   "resetpw.sms-throttled": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod.",
