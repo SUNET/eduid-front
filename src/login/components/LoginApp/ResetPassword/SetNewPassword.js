@@ -14,7 +14,7 @@ import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';
 
 
-let ReEnterPasswordForm = (props) =>{
+let NewPasswordForm = (props) =>{
   return (
     <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" onSubmit={props.clickSetNewPassword} >
       <Field
@@ -36,14 +36,14 @@ let ReEnterPasswordForm = (props) =>{
   ) 
 }
 
-ReEnterPasswordForm = reduxForm({
+NewPasswordForm = reduxForm({
   form: "new-password-form"
-})(ReEnterPasswordForm);
+})(NewPasswordForm);
 
-ReEnterPasswordForm = connect(() => ({
+NewPasswordForm = connect(() => ({
   destroyOnUnmount: false,
   touchOnChange: true,
-}))(ReEnterPasswordForm);
+}))(NewPasswordForm);
 function SetNewPassword(props){
   const history = useHistory();
   const url = document.location.href;
@@ -116,7 +116,7 @@ function SetNewPassword(props){
           <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
         </button> 
       </div>
-      <ReEnterPasswordForm {...props} 
+      <NewPasswordForm {...props} 
         clickSetNewPassword={clickSetNewPassword}
       />
     </>
