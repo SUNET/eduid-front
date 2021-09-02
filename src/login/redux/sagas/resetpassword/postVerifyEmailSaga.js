@@ -3,7 +3,7 @@ import {
   failRequest,
   putCsrfToken
 } from "../../../../sagas/common";
-import { postLinkCodeFail, selectExtraSecurity } from "../../actions/postResetPasswordActions";
+import { postLinkCodeFail } from "../../actions/postResetPasswordActions";
 import postRequest from "../postDataRequest";
 import { history } from "../../../components/App/App";
 import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFunctions/authenticatorAssertion";
@@ -23,8 +23,7 @@ export function* useLinkCode() {
       yield put(putCsrfToken(decodedWebauthnChallenge));
       yield put(decodedWebauthnChallenge);
       if(locationUrl.includes("set-new-password")){
-        return history.push(`/reset-password/set-new-password/${data.email_code}`),
-        yield put(selectExtraSecurity("freja"));
+        return history.push(`/reset-password/set-new-password/${data.email_code}`)
       }else if(decodedWebauthnChallenge && decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS") {
         return history.push(`/reset-password/extra-security/${data.email_code}`);
       }else return history.push(`/reset-password/email/`);
