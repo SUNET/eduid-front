@@ -40,6 +40,7 @@ let EmailForm = (props) => (
 EmailForm = reduxForm({
   form: "reset-pass-email-form",
   validate,
+  touchOnChange: true,
 })(EmailForm);
 
 EmailForm = connect(() => ({
