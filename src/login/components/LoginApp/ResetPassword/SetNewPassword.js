@@ -23,7 +23,6 @@ let NewPasswordForm = (props) =>{
         autoComplete={"new-password"} 
         required={true}
         label={props.translate("security.password_credential_type")}
-        readOnly={true}
       />
       <EduIDButton
         className="settings-button"
