@@ -1,8 +1,8 @@
 export const CAPTCHA_VERIFICATION = "CAPTCHA_VERIFICATION";
-
 export const POST_SIGNUP_TRYCAPTCHA = "POST_SIGNUP_TRYCAPTCHA";
 export const POST_SIGNUP_TRYCAPTCHA_SUCCESS = "POST_SIGNUP_TRYCAPTCHA_SUCCESS";
 export const POST_SIGNUP_TRYCAPTCHA_FAIL = "POST_SIGNUP_TRYCAPTCHA_FAIL";
+export const IS_CAPTCHA_AVAILABLE = "IS_CAPTHA_AVAILABLE";
 
 export function verifyCaptcha(response) {
   return {
@@ -28,6 +28,15 @@ export function postCaptchaFail(err) {
     error: true,
     payload: {
       message: err,
+      disabledButton: false
+    }
+  };
+}
+
+export function makeCapthaButtonAvailable() {
+  return {
+    type: IS_CAPTCHA_AVAILABLE,
+    payload: {
       disabledButton: false
     }
   };

@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import RegisterEmail from "../login/components/RegisterEmail/RegisterEmail";
 import * as actions from "actions/Email";
+import { makeCapthaButtonAvailable } from "actions/Captcha";
+import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { history } from "components/SignupMain";
 
@@ -28,6 +30,10 @@ const mapDispatchToProps = (dispatch) => {
       e.preventDefault();
       dispatch(actions.acceptTOU());
       history.push(BASE_PATH + "/trycaptcha");
+      // remove remained notification message
+      dispatch(eduidRMAllNotify());
+      // to make captch button active
+      dispatch(makeCapthaButtonAvailable());
     },
     handleReject: (e) => {
       e.preventDefault();
