@@ -20,7 +20,6 @@ let NewPasswordForm = (props) =>{
         type="password"
         name="new-password"
         component={CustomInput}
-        autoComplete={"new-password"} 
         required={true}
         label={props.translate("security.password_credential_type")}
       />
@@ -55,8 +54,8 @@ function SetNewPassword(props){
   const [password, setPassword] = useState(null);
   const ref = useRef(null);
 
-    useEffect(()=>{
-      setPassword(suggested_password)
+  useEffect(()=>{
+    setPassword(suggested_password)
   },[suggested_password]);
 
   const copyToClipboard = () => {
@@ -100,6 +99,7 @@ function SetNewPassword(props){
           defaultValue={password && password}
           readOnly={true}
           name="copy-new-password"
+          autoComplete={"new-password"} 
         />
         <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
