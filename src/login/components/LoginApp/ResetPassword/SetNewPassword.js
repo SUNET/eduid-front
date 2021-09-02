@@ -116,7 +116,7 @@ function SetNewPassword(props){
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
       <div className="reset-password-input">
-        <label>{props.translate("chpass.suggested_password")}</label>
+        <label>{props.translate("resetpw.new-password")}</label>
         <input
           name="copy-new-password"
           id="copy-new-password"

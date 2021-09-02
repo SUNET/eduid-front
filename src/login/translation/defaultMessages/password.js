@@ -407,4 +407,10 @@ export const resetPassword = {
       defaultMessage={`go to eduID`}
     />
   ),
+  "resetpw.new-password": (
+    <FormattedMessage
+      id="resetpw.new-password"
+      defaultMessage={`New password`}
+    />
+  ),
 };

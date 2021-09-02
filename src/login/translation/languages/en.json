@@ -359,6 +359,7 @@
   "resetpw.heading-add-email": "Enter your email address registered to your account",
   "resetpw.invalid_user": "User has not completed signup",
   "resetpw.invalid_session": "Invalid session, please try again",
+  "resetpw.new-password": "New password",
   "resetpw.received-sms": "Already received sms? ",
   "resetpw.resend-link": "If you didn’t receive the email? Check your junk email, \n or",
   "resetpw.resend-link-button": "resend link",
