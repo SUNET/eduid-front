@@ -13,7 +13,7 @@ function ResetPasswordSuccess(props){
       <SuccessIconAnimation />
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.set-new-password-success")}</p>
-        <a id="return-login" href={toHome}>{props.translate("resetpw.return-login")}</a> 
+        <a id="return-login" href={toHome}>{props.translate("resetpw.go-to-eduid")}</a> 
       </div>
     </>
   ) 
