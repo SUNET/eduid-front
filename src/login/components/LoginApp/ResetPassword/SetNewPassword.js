@@ -7,10 +7,11 @@ import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
-import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
+import { saveLinkCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import { setNewPassword, setNewPasswordExtraSecurityPhone, setNewPasswordExtraSecurityToken } from "../../../redux/actions/postResetNewPasswordActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { useHistory } from 'react-router-dom';
 
 let NewPasswordForm = (props) =>{
   return (
@@ -22,6 +23,7 @@ let NewPasswordForm = (props) =>{
         component={CustomInput}
         required={true}
         label={props.translate("security.password_credential_type")}
+        placeholder="xxxx xxxx xxxx"
       />
       <EduIDButton
         className="settings-button"
@@ -42,6 +44,7 @@ NewPasswordForm = connect(() => ({
   touchOnChange: true,
 }))(NewPasswordForm);
 function SetNewPassword(props){
+  const history = useHistory();
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
   const dispatch = useDispatch();
@@ -69,13 +72,18 @@ function SetNewPassword(props){
     }, 1000);
   };
 
-
   useEffect(()=>{
     if(document.getElementsByName("copy-new-password")[0].value !== undefined){
       document.getElementsByName("copy-new-password")[0].value = suggested_password;    
     }else (!document.getElementsByName("copy-new-password")[0].value) 
       dispatch(saveLinkCode(emailCode));
   },[dispatch]);
+
+  useEffect(()=>{
+    if(selected_option === null){
+      history.push(`/reset-password/extra-security/${emailCode}`);
+    }
+  },[selected_option]);
 
   const clickSetNewPassword = (e) => {
     e.preventDefault();
@@ -105,7 +113,7 @@ function SetNewPassword(props){
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
         </button> 
-    </div>
+      </div>
       <NewPasswordForm {...props} 
         clickSetNewPassword={clickSetNewPassword}
       />
