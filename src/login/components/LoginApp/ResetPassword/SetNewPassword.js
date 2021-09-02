@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React, { useEffect, useState, useRef }  from "react";
 import Form from "reactstrap/lib/Form";
 import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -8,13 +8,9 @@ import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import { 
-  setNewPassword, 
-  setNewPasswordExtraSecurityPhone, 
-  setNewPasswordExtraSecurityToken, 
-  setNewPasswordExtraSecurityExternalMfa 
-} from "../../../redux/actions/postResetNewPasswordActions";
-import Splash from "../../../../containers/Splash";
+import { setNewPassword, setNewPasswordExtraSecurityPhone, setNewPasswordExtraSecurityToken } from "../../../redux/actions/postResetNewPasswordActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 
 let NewPasswordForm = (props) =>{
   return (
@@ -40,7 +36,7 @@ let NewPasswordForm = (props) =>{
 }
 
 NewPasswordForm = reduxForm({
-  form: "new-password-form",
+  form: "new-password-form"
 })(NewPasswordForm);
 
 NewPasswordForm = connect(() => ({
@@ -57,11 +53,29 @@ function SetNewPassword(props){
   const selected_option = useSelector(
     (state) => state.resetPassword.selected_option
   );
+  const [password, setPassword] = useState(null);
+  const ref = useRef(null);
+
+    useEffect(()=>{
+      setPassword(suggested_password)
+  },[suggested_password]);
+
+  const copyToClipboard = () => {
+    ref.current.select();
+    document.execCommand('copy');
+    document.getElementById("icon-copy").style.display = "none";
+    document.getElementById("icon-check").style.display = "inline";
+    setTimeout( function() {
+      document.getElementById("icon-copy").style.display = "inline";
+      document.getElementById("icon-check").style.display = "none";
+    }, 1000);
+  };
+
 
   useEffect(()=>{
-    if(document.getElementsByName("new-password")[0].value !== undefined){
-      document.getElementsByName("new-password")[0].value = suggested_password;    
-    }else (!document.getElementsByName("new-password")[0].value) 
+    if(document.getElementsByName("copy-new-password")[0].value !== undefined){
+      document.getElementsByName("copy-new-password")[0].value = suggested_password;    
+    }else (!document.getElementsByName("copy-new-password")[0].value) 
       dispatch(saveLinkCode(emailCode));
   },[dispatch]);
 
@@ -73,17 +87,29 @@ function SetNewPassword(props){
       dispatch(setNewPasswordExtraSecurityPhone());
     }else if(selected_option === "securityKey"){
       dispatch(setNewPasswordExtraSecurityToken());
-    }else if(selected_option === "freja"){
-      dispatch(setNewPasswordExtraSecurityExternalMfa());
     }
   };
 
   return (
     <>
-     { !suggested_password && <Splash /> }
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
-      <NewPasswordForm {...props} clickSetNewPassword={clickSetNewPassword}/>
+      <div className="reset-password-input">
+        <input 
+          id="copy-new-password"
+          ref={ref}
+          defaultValue={password && password}
+          readOnly={true}
+          name="copy-new-password"
+        />
+        <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
+          <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
+          <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
+        </button> 
+    </div>
+      <NewPasswordForm {...props} 
+        clickSetNewPassword={clickSetNewPassword}
+      />
     </>
   ) 
 }
