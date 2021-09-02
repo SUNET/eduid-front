@@ -12,7 +12,19 @@ import { setNewPassword, setNewPasswordExtraSecurityPhone, setNewPasswordExtraSe
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';
+import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 
+const validateNewPassword = (values, props) => {
+  const newPassword = "new-password";
+  const errors = {};
+  if (!values[newPassword] || emptyStringPattern.test(values[newPassword])) {
+    errors[newPassword] = "required";
+  }
+  else if (values[newPassword] !== props.suggested_password) {
+    errors[newPassword] = "chpass.different-repeat";
+  }
+  return errors;
+};
 
 let NewPasswordForm = (props) =>{
   return (
@@ -29,6 +41,7 @@ let NewPasswordForm = (props) =>{
       <EduIDButton
         className="settings-button"
         id="new-password-button"
+        disabled={props.invalid}
       >
         {props.translate("resetpw.accept-password")}
       </EduIDButton>
@@ -43,6 +56,7 @@ NewPasswordForm = reduxForm({
 NewPasswordForm = connect(() => ({
   destroyOnUnmount: false,
   touchOnChange: true,
+  validate: validateNewPassword
 }))(NewPasswordForm);
 function SetNewPassword(props){
   const history = useHistory();
@@ -104,6 +118,7 @@ function SetNewPassword(props){
       <div className="reset-password-input">
         <label>New password</label>
         <input
+          name="copy-new-password"
           id="copy-new-password"
           ref={ref}
           defaultValue={password && password}
@@ -117,6 +132,7 @@ function SetNewPassword(props){
         </button> 
       </div>
       <NewPasswordForm {...props} 
+        suggested_password={suggested_password}
         clickSetNewPassword={clickSetNewPassword}
       />
     </>
