@@ -35,7 +35,7 @@ let NewPasswordForm = (props) =>{
         name="new-password"
         component={CustomInput}
         required={true}
-        label="Re-enter password"
+        label={props.translate("chpass.form_custom_password_repeat")}
         placeholder="xxxx xxxx xxxx"
       />
       <EduIDButton
@@ -116,7 +116,7 @@ function SetNewPassword(props){
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
       <div className="reset-password-input">
-        <label>New password</label>
+        <label>{props.translate("chpass.suggested_password")}</label>
         <input
           name="copy-new-password"
           id="copy-new-password"
