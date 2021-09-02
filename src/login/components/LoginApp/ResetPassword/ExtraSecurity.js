@@ -5,7 +5,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { useDispatch, useSelector } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
-import { requestPhoneCode, selectExtraSecurity, selectedPhoneInfo } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import Splash from "../../../../containers/Splash";
@@ -35,15 +35,9 @@ const SecurityKeyButton = ({
   ) : selected_option === "securityKey" ? <ExtraSecurityToken /> : null
 )};
 
-const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch, history, emailCode }) => {
+const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch }) => {
   const sendConfirmCode = (phone)=>{
     dispatch(requestPhoneCode(phone));
-  };
-
-  const toPhoneCodeForm = (phone)=>{
-    dispatch(selectedPhoneInfo(phone));
-    dispatch(eduidRMAllNotify());
-    history.push(`/reset-password/phone-code-sent/${emailCode}`);
   };
 
   return (
@@ -59,9 +53,6 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch, histor
           {translate("resetpw.extra-phone_send_sms")(
             {phone: phone.number.replace(/^.{10}/g, '**********')})}
           </EduIDButton>
-          <p className="enter-phone-code">{translate("resetpw.received-sms")} 
-            <a onClick={()=>toPhoneCodeForm(phone)}>{translate("resetpw.enter-code")} </a> 
-          </p>
         </div>
       )
     })
@@ -130,6 +121,11 @@ function ExtraSecurity(props){
     }
   };
 
+  const toPhoneCodeForm = ()=>{
+    dispatch(eduidRMAllNotify());
+    history.push(`/reset-password/phone-code-sent/${emailCode}`);
+  };
+
   return (
     <ResetPasswordLayout
       heading={props.translate("resetpw.extra-security_heading")} 
@@ -162,13 +158,19 @@ function ExtraSecurity(props){
         </div>
       }
       { !selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? 
-        <SecurityWithSMSButton 
-          extraSecurityPhone={extraSecurity.phone_numbers} 
-          translate={props.translate}
-          dispatch={dispatch}
-          history={history}
-          emailCode={emailCode}
-        /> : null
+        <>
+          <SecurityWithSMSButton 
+            extraSecurityPhone={extraSecurity.phone_numbers} 
+            translate={props.translate}
+            dispatch={dispatch}
+            history={history}
+            emailCode={emailCode}
+          /> 
+          <p className="enter-phone-code">{props.translate("resetpw.received-sms")} 
+            <a onClick={()=>toPhoneCodeForm()}>{props.translate("resetpw.enter-code")} </a> 
+          </p>
+        </>
+      : null
       }
     </ResetPasswordLayout>
   ) 
