@@ -10,8 +10,8 @@ import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFu
 
 export function* useLinkCode() {
   const state = yield select(state => state);
+  const url = state.config.reset_password_url + "verify-email/";
   const locationUrl = document.location.href;
-  const url = state.config.reset_password_url + "/verify-email/";
   if(state.resetPassword.email_code){
     const data = {
       email_code: state.resetPassword.email_code,
