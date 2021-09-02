@@ -40,9 +40,6 @@ let InputToggleShowHide = (props) => {
     required
   } = props;
   const [inputType, setInputType] = useState("password");
-  const suggested_password = useSelector(
-    (state) => state.resetPassword.suggested_password
-  );
 
   return (
     <div className="password-input">
@@ -60,10 +57,6 @@ let InputToggleShowHide = (props) => {
         aria-required={required}
         required={required}
         {...input}
-        //To dispaly suggested password in input
-        value={name === "new-password" && suggested_password !== undefined && suggested_password}
-        //Not editable password input
-        readOnly={name ==="new-password" && true}
       />
       {inputType === "password" ? (
         <RenderShowButton {...props} setInputType={setInputType} />
