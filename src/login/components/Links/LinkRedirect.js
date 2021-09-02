@@ -6,10 +6,10 @@ class LinkRedirect extends Component {
   render() {
     return (
       <Link
-        // exact
         id={this.props.id}
         className={this.props.className}
         to={this.props.to}
+        onClick={this.props.onClick}
       >
         {this.props.text}
       </Link>
@@ -17,8 +17,6 @@ class LinkRedirect extends Component {
   }
 }
 
-LinkRedirect.propTypes = {
-  //is_fetching: PropTypes.bool,
-};
+LinkRedirect.propTypes = { };
 
 export default withRouter(LinkRedirect);
