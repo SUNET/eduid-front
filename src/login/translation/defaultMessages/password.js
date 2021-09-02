@@ -202,6 +202,14 @@ export const changePassword = {
       defaultMessage={`Password`}
     />
   ),
+
+  // links to reset password from sign up
+  "used.reset-password": (
+    <FormattedMessage
+      id="used.reset-password"
+      defaultMessage={`Reset your password`}
+    />
+  ),
 };
 
 export const resetPassword = {
