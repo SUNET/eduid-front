@@ -7,13 +7,14 @@ import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
-import { saveLinkCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
+import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
 import { setNewPassword, setNewPasswordExtraSecurityPhone, setNewPasswordExtraSecurityToken } from "../../../redux/actions/postResetNewPasswordActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';
 
-let NewPasswordForm = (props) =>{
+
+let ReEnterPasswordForm = (props) =>{
   return (
     <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" onSubmit={props.clickSetNewPassword} >
       <Field
@@ -22,7 +23,7 @@ let NewPasswordForm = (props) =>{
         name="new-password"
         component={CustomInput}
         required={true}
-        label={props.translate("security.password_credential_type")}
+        label="Re-enter password"
         placeholder="xxxx xxxx xxxx"
       />
       <EduIDButton
@@ -35,14 +36,14 @@ let NewPasswordForm = (props) =>{
   ) 
 }
 
-NewPasswordForm = reduxForm({
+ReEnterPasswordForm = reduxForm({
   form: "new-password-form"
-})(NewPasswordForm);
+})(ReEnterPasswordForm);
 
-NewPasswordForm = connect(() => ({
+ReEnterPasswordForm = connect(() => ({
   destroyOnUnmount: false,
   touchOnChange: true,
-}))(NewPasswordForm);
+}))(ReEnterPasswordForm);
 function SetNewPassword(props){
   const history = useHistory();
   const url = document.location.href;
@@ -101,7 +102,8 @@ function SetNewPassword(props){
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
       <div className="reset-password-input">
-        <input 
+        <label>New password</label>
+        <input
           id="copy-new-password"
           ref={ref}
           defaultValue={password && password}
@@ -114,7 +116,7 @@ function SetNewPassword(props){
           <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
         </button> 
       </div>
-      <NewPasswordForm {...props} 
+      <ReEnterPasswordForm {...props} 
         clickSetNewPassword={clickSetNewPassword}
       />
     </>
