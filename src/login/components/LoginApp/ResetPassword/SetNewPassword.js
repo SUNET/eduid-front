@@ -125,7 +125,6 @@ function SetNewPassword(props){
           ref={ref}
           defaultValue={password && password}
           readOnly={true}
-          name="copy-new-password"
           autoComplete={"new-password"} 
         />
         <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
