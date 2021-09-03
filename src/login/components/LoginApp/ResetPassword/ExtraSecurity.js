@@ -95,8 +95,9 @@ function ExtraSecurity(props){
   useEffect(()=>{
     if(window.location.search){
       const message = window.location.search.split("=")[1];
-      const emailCode = urlCode.split("?")
+      const emailCode = urlCode.split("?");
       if(message.includes("completed")){
+        dispatch(selectExtraSecurity("freja"));
         history.push(`/reset-password/set-new-password/${emailCode[0]}`)
       }else if(message.includes("%3AERROR%3A")){
         const error = message.split("%3AERROR%3A")[1];
