@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef }  from "react";
+import React, { useEffect, useRef }  from "react";
 import Form from "reactstrap/lib/Form";
 import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -70,12 +70,18 @@ function SetNewPassword(props){
   const selected_option = useSelector(
     (state) => state.resetPassword.selected_option
   );
-  const [password, setPassword] = useState(null);
   const ref = useRef(null);
 
   useEffect(()=>{
-    setPassword(suggested_password)
-  },[suggested_password]);
+    dispatch(saveLinkCode(emailCode));
+  },[dispatch]);
+
+  // Change path to extra-security without selected option on reload
+  useEffect(()=>{
+    if(selected_option === null || !suggested_password){
+      history.push(`/reset-password/extra-security/${emailCode}`);
+    }
+  },[selected_option, suggested_password]);
 
   const copyToClipboard = () => {
     ref.current.select();
@@ -87,20 +93,6 @@ function SetNewPassword(props){
       document.getElementById("icon-check").style.display = "none";
     }, 1000);
   };
-
-  useEffect(()=>{
-    if(document.getElementsByName("copy-new-password")[0].value !== undefined){
-      document.getElementsByName("copy-new-password")[0].value = suggested_password;    
-    }else (!document.getElementsByName("copy-new-password")[0].value) 
-      dispatch(saveLinkCode(emailCode));
-  },[dispatch]);
-
-  // Change path to extra-security without selected option on reload
-  useEffect(()=>{
-    if(selected_option === null){
-      history.push(`/reset-password/extra-security/${emailCode}`);
-    }
-  },[selected_option]);
 
   const clickSetNewPassword = (e) => {
     e.preventDefault();
@@ -123,7 +115,7 @@ function SetNewPassword(props){
           name="copy-new-password"
           id="copy-new-password"
           ref={ref}
-          defaultValue={password && password}
+          defaultValue={suggested_password && suggested_password}
           readOnly={true}
           autoComplete={"new-password"} 
         />
