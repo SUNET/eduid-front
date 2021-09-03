@@ -355,6 +355,7 @@
   "resetpw.extra-phone_send_sms": "Send sms to {phone}",
   "resetpw.extra-security_description": "Prove that your are the owner of the account.",
   "resetpw.extra-security_heading": "Extra security",
+  "resetpw.external-mfa-fail": "External MFA failed",
   "resetpw.fido-token-fail": "There was a problem using your security key for resetting password",
   "resetpw.go-to-eduid": "go to eduID",
   "resetpw.heading-add-email": "Enter your email address registered to your account",

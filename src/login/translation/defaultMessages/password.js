@@ -444,4 +444,10 @@ export const resetPassword = {
       defaultMessage={`There was a problem using your security key for resetting password`}
     />
   ),
+  "resetpw.external-mfa-fail": (
+    <FormattedMessage
+      id="resetpw.external-mfa-fail"
+      defaultMessage={`External MFA failed.`}
+    />
+  ),
 };
