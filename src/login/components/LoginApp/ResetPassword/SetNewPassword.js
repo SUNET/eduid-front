@@ -143,6 +143,8 @@ function SetNewPassword(props){
 
 SetNewPassword.propTypes = {
   translate: PropTypes.func,
+  suggested_password: PropTypes.string,
+  invalid: PropTypes.bool
 };
 
 export default InjectIntl(SetNewPassword);
