@@ -23,6 +23,11 @@ let captchaReducer = (state = captchaData, action) => {
         ...state,
         disabledButton: false
       };
+    case actions.IS_CAPTCHA_AVAILABLE:
+      return {
+        ...state,
+        disabledButton: false
+      };
     default:
       return state;
   }
