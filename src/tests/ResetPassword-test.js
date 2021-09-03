@@ -122,7 +122,7 @@ describe("ResetPasswordMain, send link button ", () => {
   });
 })
 
-describe("SeNewPassword, Accept password button ", () => {
+describe("SetNewPassword, Accept password button ", () => {
   const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();
@@ -138,14 +138,14 @@ describe("SeNewPassword, Accept password button ", () => {
     };
   }
 
-  it("check if button is present", () => {
+  it("check if new password button is present", () => {
     const { wrapper } = setupComponent();
     const button = wrapper.find("button#new-password-button");
     expect(button.exists()).toEqual(true);
     expect(button.text()).toContain("password");
   });
 
-  it("will active when repet password input is filled", () => {
+  it("will active when repeat password input is filled", () => {
     const { wrapper } = setupComponent();
     const button = wrapper.find("button#new-password-button");
     const input = wrapper.find("#new-password-form input");
