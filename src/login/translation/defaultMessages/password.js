@@ -377,6 +377,13 @@ export const resetPassword = {
     />
   ),
 
+  "resetpw.send-sms-failed": (
+    <FormattedMessage
+      id="resetpw.send-sms-failed"
+      defaultMessage={`Failed to send phone code`}
+    />
+  ),
+
   "resetpw.expired-phone-code": (
     <FormattedMessage
       id="resetpw.expired-phone-code"
