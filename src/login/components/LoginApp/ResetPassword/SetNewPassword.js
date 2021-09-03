@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
+import PropTypes from "prop-types";
 
 const validateNewPassword = (values, props) => {
   const newPassword = "new-password";
@@ -141,6 +142,7 @@ function SetNewPassword(props){
 }
 
 SetNewPassword.propTypes = {
+  translate: PropTypes.func,
 };
 
 export default InjectIntl(SetNewPassword);
