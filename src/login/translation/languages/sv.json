@@ -360,6 +360,7 @@
   "resetpw.invalid_user": "Användaren har inte slutfört registreringen",
   "resetpw.invalid_session": "Ogiltig session, var god försök igen.",
   "resetpw.new-password": "Nytt lösenord",
+  "resetpw.phone-code-unknown": "Felaktig telefon kod.",
   "resetpw.received-sms": "Redan fått sms? ",
   "resetpw.resend-link": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller",
   "resetpw.resend-link-button": "skicka länk igen",

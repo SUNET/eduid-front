@@ -413,4 +413,10 @@ export const resetPassword = {
       defaultMessage={`New password`}
     />
   ),
+  "resetpw.phone-code-unknown": (
+    <FormattedMessage
+      id="resetpw.phone-code-unknown"
+      defaultMessage={`Incorrect phone code. `}
+    />
+  ),
 };
