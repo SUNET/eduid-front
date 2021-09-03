@@ -1,4 +1,4 @@
-import React, { useEffect, useRef }  from "react";
+import React, { useEffect, useState, useRef }  from "react";
 import Form from "reactstrap/lib/Form";
 import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -8,12 +8,18 @@ import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import { setNewPassword, setNewPasswordExtraSecurityPhone, setNewPasswordExtraSecurityToken } from "../../../redux/actions/postResetNewPasswordActions";
+import { 
+  setNewPassword, 
+  setNewPasswordExtraSecurityPhone, 
+  setNewPasswordExtraSecurityToken, 
+  setNewPasswordExtraSecurityExternalMfa  
+} from "../../../redux/actions/postResetNewPasswordActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import PropTypes from "prop-types";
+import Splash from "../../../../containers/Splash";
 
 const validateNewPassword = (values, props) => {
   const newPassword = "new-password";
@@ -70,18 +76,20 @@ function SetNewPassword(props){
   const selected_option = useSelector(
     (state) => state.resetPassword.selected_option
   );
+  const [password, setPassword] = useState(null);
   const ref = useRef(null);
 
   useEffect(()=>{
+    setPassword(suggested_password);
     dispatch(saveLinkCode(emailCode));
-  },[dispatch]);
+  },[suggested_password, dispatch]);
 
   // Change path to extra-security without selected option on reload
   useEffect(()=>{
-    if(selected_option === null || !suggested_password){
+    if(selected_option === null){
       history.push(`/reset-password/extra-security/${emailCode}`);
     }
-  },[selected_option, suggested_password]);
+  },[selected_option]);
 
   const copyToClipboard = () => {
     ref.current.select();
@@ -102,11 +110,14 @@ function SetNewPassword(props){
       dispatch(setNewPasswordExtraSecurityPhone());
     }else if(selected_option === "securityKey"){
       dispatch(setNewPasswordExtraSecurityToken());
+    }else if(selected_option === "freja"){
+      dispatch(setNewPasswordExtraSecurityExternalMfa());
     }
   };
 
   return (
     <>
+    { !password && <Splash /> }
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
       <div className="reset-password-input">
@@ -115,7 +126,7 @@ function SetNewPassword(props){
           name="copy-new-password"
           id="copy-new-password"
           ref={ref}
-          defaultValue={suggested_password && suggested_password}
+          defaultValue={password && password}
           readOnly={true}
           autoComplete={"new-password"} 
         />
