@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Input from "reactstrap/lib/Input";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
 
 let RenderHideButton = ({ setInputType, translate }) => (
   <button
