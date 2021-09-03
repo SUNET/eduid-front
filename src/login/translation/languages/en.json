@@ -361,6 +361,7 @@
   "resetpw.invalid_session": "Invalid session, please try again",
   "resetpw.new-password": "New password",
   "resetpw.phone-code-unknown": "Incorrect phone code.",
+  "resetpw.pw-reset-fail": "Reset password failed, please try again",
   "resetpw.received-sms": "Already received sms? ",
   "resetpw.resend-link": "If you didn’t receive the email? Check your junk email, \n or",
   "resetpw.resend-link-button": "resend link",

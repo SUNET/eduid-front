@@ -419,4 +419,10 @@ export const resetPassword = {
       defaultMessage={`Incorrect phone code. `}
     />
   ),
+  "resetpw.pw-reset-fail": (
+    <FormattedMessage
+      id="resetpw.pw-reset-fail"
+      defaultMessage={`Reset password failed, please try again `}
+    />
+  ),
 };
