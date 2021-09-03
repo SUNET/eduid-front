@@ -361,6 +361,7 @@
   "resetpw.invalid_session": "Ogiltig session, var god försök igen.",
   "resetpw.new-password": "Nytt lösenord",
   "resetpw.phone-code-unknown": "Felaktig telefonkod.",
+  "resetpw.phone-invalid": "Ogiltigt telefonnummer.",
   "resetpw.pw-reset-fail": "Återställning av lösenordet misslyckades, vänligen försök igen",
   "resetpw.received-sms": "Redan fått sms? ",
   "resetpw.resend-link": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller",

@@ -426,6 +426,12 @@ export const resetPassword = {
       defaultMessage={`Incorrect phone code. `}
     />
   ),
+  "resetpw.phone-invalid": (
+    <FormattedMessage
+      id="resetpw.phone-invalid"
+      defaultMessage={`Invalid phone number.`}
+    />
+  ),
   "resetpw.pw-reset-fail": (
     <FormattedMessage
       id="resetpw.pw-reset-fail"
