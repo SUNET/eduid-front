@@ -81,7 +81,7 @@ function SetNewPassword(props){
     document.execCommand('copy');
     document.getElementById("icon-copy").style.display = "none";
     document.getElementById("icon-check").style.display = "inline";
-    setTimeout( function() {
+    setTimeout(()=> {
       document.getElementById("icon-copy").style.display = "inline";
       document.getElementById("icon-check").style.display = "none";
     }, 1000);
