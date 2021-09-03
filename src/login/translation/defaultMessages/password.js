@@ -438,4 +438,10 @@ export const resetPassword = {
       defaultMessage={`Reset password failed, please try again `}
     />
   ),
+  "resetpw.fido-token-fail": (
+    <FormattedMessage
+      id="resetpw.fido-token-fail"
+      defaultMessage={`There was a problem using your security key for resetting password`}
+    />
+  ),
 };

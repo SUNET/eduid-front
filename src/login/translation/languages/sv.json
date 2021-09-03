@@ -355,6 +355,7 @@
   "resetpw.extra-phone_send_sms": "Skicka sms till {phone}",
   "resetpw.extra-security_description": "Bevisa att du är ägaren till kontot.",
   "resetpw.extra-security_heading": "Extra säkerhet",
+  "resetpw.fido-token-fail": "Det uppstod ett problem med din säkerhetsnyckel för återställning av lösenordet",
   "resetpw.go-to-eduid": "gå till eduID",
   "resetpw.heading-add-email": "Ange din e-postadress registrerad till ditt konto",
   "resetpw.invalid_user": "Användaren har inte slutfört registreringen",
