@@ -94,6 +94,7 @@ function SetNewPassword(props){
       dispatch(saveLinkCode(emailCode));
   },[dispatch]);
 
+  // Change path to extra-security without selected option on reload
   useEffect(()=>{
     if(selected_option === null){
       history.push(`/reset-password/extra-security/${emailCode}`);
