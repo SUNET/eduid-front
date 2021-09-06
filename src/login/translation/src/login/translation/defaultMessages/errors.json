@@ -96,6 +96,38 @@
     "defaultMessage": "The username or password was incorrect."
   },
   {
+    "id": "eidas.reauthn_expired",
+    "defaultMessage": "Authentication has expired. Please try again."
+  },
+  {
+    "id": "login.mfa_auth_failure",
+    "defaultMessage": "There was a problem with the authentication, please try again."
+  },
+  {
+    "id": "login.not_implemented",
+    "defaultMessage": "There was a problem, please try again."
+  },
+  {
+    "id": "login.assurance_failure",
+    "defaultMessage": "There was a problem, please reload the page."
+  },
+  {
+    "id": "login.bad_ref",
+    "defaultMessage": "The was a problem a problem with the reference number in the URL, please reload the page."
+  },
+  {
+    "id": "login.no_sso_session",
+    "defaultMessage": "There was a problem, please reload the page."
+  },
+  {
+    "id": "login.wrong_user",
+    "defaultMessage": "It was not possible to complete the login. Please try again."
+  },
+  {
+    "id": "eidas.nin_not_matching",
+    "defaultMessage": "The identity does not match the one verified for this eduID"
+  },
+  {
     "id": "eidas.error_missing_nin",
     "defaultMessage": "Please add a national identity number and try again"
   },

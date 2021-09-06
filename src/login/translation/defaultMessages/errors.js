@@ -171,6 +171,55 @@ export const specificErrors = {
       defaultMessage={`The username or password was incorrect.`}
     />
   ),
+  "eidas.reauthn_expired": (
+    <FormattedMessage
+      id="eidas.reauthn_expired"
+      defaultMessage={`Authentication has expired. Please try again.`}
+    />
+  ),
+  "login.mfa_auth_failure": (
+    <FormattedMessage
+      id="login.mfa_auth_failure"
+      defaultMessage={`There was a problem with the authentication, please try again.`}
+    />
+  ),
+  "login.not_implemented": (
+    <FormattedMessage
+      id="login.not_implemented"
+      defaultMessage={`There was a problem, please try again.`}
+    />
+  ),
+  "login.assurance_failure": (
+    <FormattedMessage
+      id="login.assurance_failure"
+      defaultMessage={`There was a problem, please reload the page.`}
+    />
+  ),
+  "login.bad_ref": (
+    <FormattedMessage
+      id="login.bad_ref"
+      defaultMessage={`The was a problem a problem with the reference number in the URL, please reload the page.`}
+    />
+  ),
+
+  "login.no_sso_session": (
+    <FormattedMessage
+      id="login.no_sso_session"
+      defaultMessage={`There was a problem, please reload the page.`}
+    />
+  ),
+  "login.wrong_user": (
+    <FormattedMessage
+      id="login.wrong_user"
+      defaultMessage={`It was not possible to complete the login. Please try again.`}
+    />
+  ),
+  "eidas.nin_not_matching": (
+    <FormattedMessage
+      id="eidas.nin_not_matching"
+      defaultMessage={`The identity does not match the one verified for this eduID`}
+    />
+  ),
 
   //freja errors
   "eidas.error_missing_nin": (
