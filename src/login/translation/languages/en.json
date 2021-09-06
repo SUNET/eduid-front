@@ -211,7 +211,7 @@
   "login.usernamePw.reset-password-link": "Forgot your password?",
   "login.usernamePw.submit-button-busy": "Logging in",
   "login.usernamePw.submit-button-idle": "Log in",
-  "login.wrong_credentials": "The username or password was incorrect",
+  "login.wrong_credentials": "The email address or password was incorrect.",
   "login.wrong_user": "It was not possible to complete the login. Please try again.",
   "mail_duplicated": "Added email is duplicated",
   "main.confirmed": "Confirmed",

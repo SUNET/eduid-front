@@ -93,7 +93,7 @@
   },
   {
     "id": "login.wrong_credentials",
-    "defaultMessage": "The username or password was incorrect."
+    "defaultMessage": "The email address or password was incorrect."
   },
   {
     "id": "eidas.reauthn_expired",

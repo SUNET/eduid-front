@@ -1,27 +1,24 @@
 import * as actions from "./login/components/Notifications/Notifications_actions";
 
-const notifyAndDispatch = () => next => action => {
+const notifyAndDispatch = () => (next) => (action) => {
   if (action.type.endsWith("SUCCESS") || action.type.endsWith("FAIL")) {
-    if(action.type.startsWith("GET_LETTER")){
+    if (action.type.startsWith("GET_LETTER")) {
       delete action.payload.message;
       delete action.payload.error;
-    }
-    else if (action.error && action.payload) {
+    } else if (action.error && action.payload) {
+      action.payload.message = "login.wrong_credentials";
       if (
         action.payload.error &&
         action.payload.error.csrf_token !== undefined
       ) {
         const msg = "csrf.try-again";
         next(actions.eduidNotify(msg, "errors"));
-      } 
-      else if(action.payload.error && action.payload.error.nin){
-        const msg =
-          action.payload.error.nin[0];
+      } else if (action.payload.error && action.payload.error.nin) {
+        const msg = action.payload.error.nin[0];
         next(actions.eduidNotify(msg, "errors"));
-      }
-      else {
+      } else {
         const msg =
-          action.payload.errorMsg || action.payload.message || "error_in_form" ;
+          action.payload.errorMsg || action.payload.message || "error_in_form";
         next(actions.eduidNotify(msg, "errors"));
       }
       setTimeout(() => {
@@ -39,5 +36,5 @@ const notifyAndDispatch = () => next => action => {
     }
   }
   return next(action);
-}
+};
 export default notifyAndDispatch;

@@ -168,7 +168,7 @@ export const specificErrors = {
   "login.wrong_credentials": (
     <FormattedMessage
       id="login.wrong_credentials"
-      defaultMessage={`The username or password was incorrect.`}
+      defaultMessage={`The email address or password was incorrect.`}
     />
   ),
   "eidas.reauthn_expired": (
