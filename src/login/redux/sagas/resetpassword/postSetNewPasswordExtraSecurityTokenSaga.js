@@ -11,7 +11,7 @@ import { safeEncode } from "../../../app_utils/helperFunctions/authenticatorAsse
 export function* postSetNewPasswordExtraSecurityToken() {
   const state = yield select(state => state);
   const newPassword = document.querySelector("input[name='new-password']").value;
-  const url = state.config.reset_password_url + "/new-password-extra-security-token/";
+  const url = state.config.reset_password_url + "new-password-extra-security-token/";
   const data = {
     email_code: state.resetPassword.email_code,
     password: newPassword,

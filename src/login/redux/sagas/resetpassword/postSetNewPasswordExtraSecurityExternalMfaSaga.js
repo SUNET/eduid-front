@@ -10,7 +10,7 @@ import { history } from "../../../components/App/App";
 export function* postSetNewPasswordExternalMfa() {
   const state = yield select(state => state);
   const newPassword = document.querySelector("input[name='new-password']").value;
-  const url = state.config.reset_password_url + "/new-password-extra-security-external-mfa/";
+  const url = state.config.reset_password_url + "new-password-extra-security-external-mfa/";
   const data = {
     email_code: state.resetPassword.email_code,
     password: newPassword,
