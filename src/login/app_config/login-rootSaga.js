@@ -27,6 +27,8 @@ function* rootSaga() {
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD, postEmailLink),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, useLinkCode),
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE, requestPhoneCode),
+    // security phone request failed, trigger /verify-email to get users extra security
+    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL, useLinkCode),
     takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD, postSetNewPassword),
     takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE, postSetNewPasswordExtraSecurityPhone),
     takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN, postSetNewPasswordExtraSecurityToken),
