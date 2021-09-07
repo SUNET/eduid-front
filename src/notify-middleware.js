@@ -6,7 +6,6 @@ const notifyAndDispatch = () => (next) => (action) => {
       delete action.payload.message;
       delete action.payload.error;
     } else if (action.error && action.payload) {
-      action.payload.message = "login.wrong_credentials";
       if (
         action.payload.error &&
         action.payload.error.csrf_token !== undefined
