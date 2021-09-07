@@ -50,7 +50,7 @@ EmailForm = connect(() => ({
 function ResetPasswordMain(props){
   const dispatch = useDispatch();
   const url = document.location.href;
-  const loginRef = url.split("/email/").reverse()[0];
+  const loginRef = url.split("/email").reverse()[0];
 
   useEffect(()=>{
     clearCountdown();
@@ -64,7 +64,6 @@ function ResetPasswordMain(props){
       setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL , email)
     }
   };
-
   return (
     <>
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
