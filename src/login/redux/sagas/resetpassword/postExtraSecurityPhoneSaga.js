@@ -11,7 +11,7 @@ import { history } from "../../../components/App/App";
 
 export function* requestPhoneCode() {
   const state = yield select(state => state);
-  const url = state.config.reset_password_url + "/extra-security-phone/";
+  const url = state.config.reset_password_url + "extra-security-phone/";
   const locationUrl = document.location.href;
   const data = {
     email_code: state.resetPassword.email_code,

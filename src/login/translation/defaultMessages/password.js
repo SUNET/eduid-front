@@ -345,7 +345,7 @@ export const resetPassword = {
   "resetpw.set-new-password-description": (
     <FormattedMessage
       id="resetpw.set-new-password-description"
-      defaultMessage={`A strong password has been generated for you. You can accept the generated password by clicking Accept Password.`}
+      defaultMessage={`A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password.`}
     />
   ),
 
@@ -377,6 +377,13 @@ export const resetPassword = {
     />
   ),
 
+  "resetpw.send-sms-failed": (
+    <FormattedMessage
+      id="resetpw.send-sms-failed"
+      defaultMessage={`Failed to send phone code`}
+    />
+  ),
+
   "resetpw.expired-phone-code": (
     <FormattedMessage
       id="resetpw.expired-phone-code"
@@ -405,6 +412,42 @@ export const resetPassword = {
     <FormattedMessage
       id="resetpw.go-to-eduid"
       defaultMessage={`go to eduID`}
+    />
+  ),
+  "resetpw.new-password": (
+    <FormattedMessage
+      id="resetpw.new-password"
+      defaultMessage={`New password`}
+    />
+  ),
+  "resetpw.phone-code-unknown": (
+    <FormattedMessage
+      id="resetpw.phone-code-unknown"
+      defaultMessage={`Incorrect phone code. `}
+    />
+  ),
+  "resetpw.phone-invalid": (
+    <FormattedMessage
+      id="resetpw.phone-invalid"
+      defaultMessage={`Invalid phone number.`}
+    />
+  ),
+  "resetpw.pw-reset-fail": (
+    <FormattedMessage
+      id="resetpw.pw-reset-fail"
+      defaultMessage={`Reset password failed, please try again `}
+    />
+  ),
+  "resetpw.fido-token-fail": (
+    <FormattedMessage
+      id="resetpw.fido-token-fail"
+      defaultMessage={`There was a problem using your security key for resetting password`}
+    />
+  ),
+  "resetpw.external-mfa-fail": (
+    <FormattedMessage
+      id="resetpw.external-mfa-fail"
+      defaultMessage={`External MFA failed.`}
     />
   ),
 };
