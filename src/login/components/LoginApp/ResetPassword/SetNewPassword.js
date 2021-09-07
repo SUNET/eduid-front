@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React, { useEffect, useState, useRef }  from "react";
 import Form from "reactstrap/lib/Form";
 import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -12,9 +12,26 @@ import {
   setNewPassword, 
   setNewPasswordExtraSecurityPhone, 
   setNewPasswordExtraSecurityToken, 
-  setNewPasswordExtraSecurityExternalMfa 
+  setNewPasswordExtraSecurityExternalMfa  
 } from "../../../redux/actions/postResetNewPasswordActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { useHistory } from 'react-router-dom';
+import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
+import PropTypes from "prop-types";
 import Splash from "../../../../containers/Splash";
+
+const validateNewPassword = (values, props) => {
+  const newPassword = "new-password";
+  const errors = {};
+  if (!values[newPassword] || emptyStringPattern.test(values[newPassword])) {
+    errors[newPassword] = "required";
+  }
+  else if (values[newPassword] !== props.suggested_password) {
+    errors[newPassword] = "chpass.different-repeat";
+  }
+  return errors;
+};
 
 let NewPasswordForm = (props) =>{
   return (
@@ -24,14 +41,14 @@ let NewPasswordForm = (props) =>{
         type="password"
         name="new-password"
         component={CustomInput}
-        autoComplete={"new-password"} 
         required={true}
-        label={props.translate("security.password_credential_type")}
-        readOnly={true}
+        label={props.translate("chpass.form_custom_password_repeat")}
+        placeholder="xxxx xxxx xxxx"
       />
       <EduIDButton
         className="settings-button"
         id="new-password-button"
+        disabled={props.invalid}
       >
         {props.translate("resetpw.accept-password")}
       </EduIDButton>
@@ -40,14 +57,16 @@ let NewPasswordForm = (props) =>{
 }
 
 NewPasswordForm = reduxForm({
-  form: "new-password-form",
+  form: "new-password-form"
 })(NewPasswordForm);
 
 NewPasswordForm = connect(() => ({
   destroyOnUnmount: false,
   touchOnChange: true,
+  validate: validateNewPassword
 }))(NewPasswordForm);
 function SetNewPassword(props){
+  const history = useHistory();
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
   const dispatch = useDispatch();
@@ -57,13 +76,31 @@ function SetNewPassword(props){
   const selected_option = useSelector(
     (state) => state.resetPassword.selected_option
   );
+  const [password, setPassword] = useState(null);
+  const ref = useRef(null);
 
   useEffect(()=>{
-    if(document.getElementsByName("new-password")[0].value !== undefined){
-      document.getElementsByName("new-password")[0].value = suggested_password;    
-    }else (!document.getElementsByName("new-password")[0].value) 
-      dispatch(saveLinkCode(emailCode));
-  },[dispatch]);
+    setPassword(suggested_password);
+    dispatch(saveLinkCode(emailCode));
+  },[suggested_password, dispatch]);
+
+  // Change path to extra-security without selected option on reload
+  useEffect(()=>{
+    if(selected_option === null){
+      history.push(`/reset-password/extra-security/${emailCode}`);
+    }
+  },[selected_option]);
+
+  const copyToClipboard = () => {
+    ref.current.select();
+    document.execCommand('copy');
+    document.getElementById("icon-copy").style.display = "none";
+    document.getElementById("icon-check").style.display = "inline";
+    setTimeout(()=> {
+      document.getElementById("icon-copy").style.display = "inline";
+      document.getElementById("icon-check").style.display = "none";
+    }, 1000);
+  };
 
   const clickSetNewPassword = (e) => {
     e.preventDefault();
@@ -80,15 +117,36 @@ function SetNewPassword(props){
 
   return (
     <>
-     { !suggested_password && <Splash /> }
+    { !password && <Splash /> }
       <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
-      <NewPasswordForm {...props} clickSetNewPassword={clickSetNewPassword}/>
+      <div className="reset-password-input">
+        <label>{props.translate("resetpw.new-password")}</label>
+        <input
+          name="copy-new-password"
+          id="copy-new-password"
+          ref={ref}
+          defaultValue={password && password}
+          readOnly={true}
+          autoComplete={"new-password"} 
+        />
+        <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
+          <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
+          <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
+        </button> 
+      </div>
+      <NewPasswordForm {...props} 
+        suggested_password={suggested_password}
+        clickSetNewPassword={clickSetNewPassword}
+      />
     </>
   ) 
 }
 
 SetNewPassword.propTypes = {
+  translate: PropTypes.func,
+  suggested_password: PropTypes.string,
+  invalid: PropTypes.bool
 };
 
 export default InjectIntl(SetNewPassword);

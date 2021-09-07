@@ -166,6 +166,10 @@ input:focus {
     }
   }
 }
+#copy-new-password {
+  border-bottom: none;
+  background-color: $orange-opaque;
+}
 
 @media (max-width: 568px) {
   .form-control,
