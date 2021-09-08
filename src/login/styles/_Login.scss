@@ -38,6 +38,14 @@ a.send-link {
   }
 }
 
+a.send-link.disabled {
+  color: $gray;
+  text-decoration: none;
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
 // terms of use
 .tou {
   .tou-text {
