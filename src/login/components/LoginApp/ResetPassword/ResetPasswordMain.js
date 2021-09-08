@@ -50,7 +50,7 @@ EmailForm = connect(() => ({
 function ResetPasswordMain(props){
   const dispatch = useDispatch();
   const url = document.location.href;
-  const loginRef = url.split("/email/").reverse()[0];
+  const loginRef = url.split("/email").reverse()[0];
   const request_in_progress = useSelector(state => state.app.request_in_progress);
 
   useEffect(()=>{

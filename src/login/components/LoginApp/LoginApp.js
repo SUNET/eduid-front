@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Redirect } from "react-router-dom";
 import Login from "./Login/Login";
 import { useLoginRef } from "../../redux/actions/postRefLoginActions";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
@@ -15,6 +15,11 @@ import ResetPasswordSuccess from "./ResetPassword/ResetPasswordSuccess";
  const RenderResetPassword = (props) => {
    return (
      <>
+     <Route
+        exact
+        path="/reset-password/"
+        component={() => <Redirect to="/reset-password/email" />}
+      />
       <Route
         path={`/reset-password/email`}
         render={(props) => <ResetPasswordMain {...props} />}

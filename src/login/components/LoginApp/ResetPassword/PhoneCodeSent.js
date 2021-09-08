@@ -49,7 +49,7 @@ let PhoneCodeForm = (props) => (
       disabled={props.invalid}
       onClick={props.handlePhoneCode}
     >
-      {props.translate("chpass.button_save_password")}
+      {props.translate("cm.ok")}
     </EduIDButton>
   </Form>
 );
