@@ -450,4 +450,10 @@ export const resetPassword = {
       defaultMessage={`External MFA failed.`}
     />
   ),
+  "resetpw.go-back": (
+    <FormattedMessage
+      id="resetpw.go-back"
+      defaultMessage={`go back`}
+    />
+  ),
 };

@@ -52,10 +52,12 @@ let NewPasswordForm = (props) => {
         <ButtonSecondary
           className="secondary"
           id="go-back-button"
-          onClick={() => history.push(`/reset-password/extra-security/${props.emailCode}`)}
+          onClick={() => 
+            history.push(`/reset-password/extra-security/${props.emailCode}`)
+          }
         >
           <FontAwesomeIcon icon={faArrowLeft} />
-          <span>go back</span>
+          {props.translate("resetpw.go-back")}
         </ButtonSecondary>
       }
       <EduIDButton
