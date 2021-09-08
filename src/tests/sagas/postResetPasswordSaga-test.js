@@ -17,6 +17,8 @@ const fakeState = {
 describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
   const generator = postEmailLink();
   let next = generator.next();
+  next = generator.next(fakeState);
+  expect(next.value.PUT.action.type).toEqual("REQUEST_IN_PROGRESS");
   it("saga posts the expected data", () => {
     const data = {
       email: fakeState.resetPassword.email_address,
@@ -40,11 +42,19 @@ describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
   next = generator.next();
   expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_SUCCESS");
   });
+  it("done after 'REQUEST_COMPLETED'", () => {
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual("REQUEST_COMPLETED");
+    const done = generator.next().done;
+    expect(done).toEqual(true);
+  });
 });
 
 describe(`first API call to "/" behaves as expected on _FAIL`, () => {
   const generator = postEmailLink();
   let next = generator.next();
+  next = generator.next(fakeState);
+  expect(next.value.PUT.action.type).toEqual("REQUEST_IN_PROGRESS");
   it("saga posts unexpected data", () => {
     const data = {
       email: "not found user",
@@ -69,7 +79,9 @@ describe(`first API call to "/" behaves as expected on _FAIL`, () => {
     expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_FAIL");
     expect(failResponse).toEqual(postEmailLinkFail("error"));
   });
-  it("done after 'POST_RESET_PASSWORD_FAIL'", () => {
+  it("done after 'REQUEST_COMPLETED'", () => {
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual("REQUEST_COMPLETED");
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
