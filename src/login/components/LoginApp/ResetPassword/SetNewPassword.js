@@ -46,6 +46,7 @@ let NewPasswordForm = (props) => {
         required={true}
         label={props.translate("chpass.form_custom_password_repeat")}
         placeholder="xxxx xxxx xxxx"
+        autoComplete={"new-password"} 
       />
       <div className="new-password-button-container">
       { props.extra_security && Object.keys(props.extra_security).length > 0 &&
@@ -147,7 +148,6 @@ function SetNewPassword(props){
           ref={ref}
           defaultValue={password && password}
           readOnly={true}
-          autoComplete={"new-password"} 
         />
         <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
