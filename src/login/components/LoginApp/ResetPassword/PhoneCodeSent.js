@@ -60,6 +60,10 @@ let PhoneCodeForm = (props) => (
   })(PhoneCodeForm);
   
   PhoneCodeForm = connect(() => ({
+    enableReinitialize: true,
+    initialValues: {
+      phone: ""
+    },
     touchOnChange: true,
     destroyOnUnmount: false,
   }))(PhoneCodeForm);

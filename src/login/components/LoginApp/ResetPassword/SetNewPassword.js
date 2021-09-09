@@ -78,6 +78,10 @@ NewPasswordForm = reduxForm({
 })(NewPasswordForm);
 
 NewPasswordForm = connect(() => ({
+  enableReinitialize: true,
+  initialValues: {
+    "new-password": ""
+  },
   destroyOnUnmount: false,
   touchOnChange: true,
   validate: validateNewPassword
@@ -102,6 +106,7 @@ function SetNewPassword(props){
   useEffect(()=>{
     setPassword(suggested_password);
     dispatch(saveLinkCode(emailCode));
+
   },[suggested_password, dispatch]);
 
   // Change path to extra-security without selected option on reload
