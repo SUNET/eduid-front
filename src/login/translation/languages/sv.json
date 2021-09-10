@@ -353,6 +353,8 @@
   "resetpw.accept-password": "acceptera lösenord",
   "resetpw.check-email-link": "Kontrollera din e-postadress <b>{email}</b> för att fortsätta. \n Länken är giltig i två timmar.",
   "resetpw.continue_reset_password": "Forsätt återställ lösenordet",
+  "resetpw.copy-to-clipboard": "Kopiera till urklipp",
+  "resetpw.copied-in-clipboard": "Kopierat!",
   "resetpw.email-send-failure": "Misslyckades att skicka e-post, vänligen försök igen",
   "resetpw.email-throttled": "Återställ lösenordslänken har redan skickats, försök igen senare",
   "resetpw.enter-code": "skriv in koden",

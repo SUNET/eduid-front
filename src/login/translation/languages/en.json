@@ -353,6 +353,8 @@
   "resetpw.accept-password": "accept password",
   "resetpw.check-email-link": "Please check your email <b>{email}</b> to continue. \n Link is valid for 2 hours.",
   "resetpw.continue_reset_password": "Continue reset password",
+  "resetpw.copy-to-clipboard": "Copy to clipboard",
+  "resetpw.copied-in-clipboard": "Copied!",
   "resetpw.email-send-failure": "Error sending mail, please try again",
   "resetpw.email-throttled": "Reset password link already sent please try again later",
   "resetpw.enter-code": "enter code",
