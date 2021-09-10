@@ -101,6 +101,7 @@ function SetNewPassword(props){
     (state) => state.resetPassword.extra_security
   );
   const [password, setPassword] = useState(null);
+  const [toolTipText, setToolTipText] = useState("copy to clipboard");
   const ref = useRef(null);
 
   useEffect(()=>{
@@ -119,11 +120,13 @@ function SetNewPassword(props){
   const copyToClipboard = () => {
     ref.current.select();
     document.execCommand('copy');
+    setToolTipText("copied")
     document.getElementById("icon-copy").style.display = "none";
     document.getElementById("icon-check").style.display = "inline";
     setTimeout(()=> {
       document.getElementById("icon-copy").style.display = "inline";
       document.getElementById("icon-check").style.display = "none";
+      setToolTipText("copy to clipboard")
     }, 1000);
   };
 
@@ -157,6 +160,7 @@ function SetNewPassword(props){
         <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
+          <span className="tool-tip-text" id="tool-tip">{toolTipText}</span>
         </button> 
       </div>
       <NewPasswordForm {...props} 
