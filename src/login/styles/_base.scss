@@ -52,6 +52,7 @@ article {
   // this is added to prevent margin collapse (look for other solution if causing problems)
   display: flex;
   flex-direction: column;
+  padding-top: 2rem;
 }
 
 fieldset {
