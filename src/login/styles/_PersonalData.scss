@@ -68,7 +68,12 @@
   display: flex;
   flex-wrap: wrap;
   flex: 1;
+  margin-bottom: 0;
 }
+.personal-data-info .profile-grid-cell {
+  margin-bottom: 1rem;
+}
+
 .external-names,
 .personal-data-info {
   .profile-grid-cell {
@@ -76,7 +81,6 @@
     flex-basis: 13rem;
     justify-content: unset;
     margin-right: 1rem;
-    margin-bottom: 0;
     .display-data {
       font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
       margin-top: 0;
