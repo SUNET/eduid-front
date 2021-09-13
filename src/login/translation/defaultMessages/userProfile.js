@@ -738,18 +738,12 @@ export const userData = {
     />
   ),
 
-  "nin_show_last_four_digits": (
-    <FormattedMessage
-      id="nin_show_last_four_digits"
-      defaultMessage={`SHOW`}
-    />
+  nin_show_last_four_digits: (
+    <FormattedMessage id="nin_show_last_four_digits" defaultMessage={`SHOW`} />
   ),
 
-  "nin_hide_last_four_digits": (
-    <FormattedMessage
-      id="nin_hide_last_four_digits"
-      defaultMessage={`HIDE`}
-    />
+  nin_hide_last_four_digits: (
+    <FormattedMessage id="nin_hide_last_four_digits" defaultMessage={`HIDE`} />
   ),
 
   "nins.input_help_text": (
@@ -1261,12 +1255,13 @@ export const userData = {
 
   /* -----  Advanced settings ------- */
 
-  "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": (
-    <FormattedMessage
-      id="InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
-      defaultMessage={`You are attempting to register an authenticator that contains one of the credentials already registered with the relying party`}
-    />
-  ),
+  "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.":
+    (
+      <FormattedMessage
+        id="InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
+        defaultMessage={`You are attempting to register an authenticator that contains one of the credentials already registered with the relying party`}
+      />
+    ),
 
   "cred.credential_type": (
     <FormattedMessage
@@ -1298,7 +1293,20 @@ export const userData = {
   "security.credential": (
     <FormattedMessage id="security.credential" defaultMessage={`Credential`} />
   ),
+  "security.user-update-throttled": (
+    <FormattedMessage
+      id="security.user-update-throttled"
+      defaultMessage={`Too many attempts to update names have been made. Try again later.`}
+    />
+  ),
 
+  "security.user-updated": (
+    <FormattedMessage
+      id="security.user-updated"
+      defaultMessage={`First and last are up to date with those registered at Skatteverket`}
+    />
+  ),
+  
   "security.last-used.date": (
     <FormattedMessage
       id="security.last-used.date"

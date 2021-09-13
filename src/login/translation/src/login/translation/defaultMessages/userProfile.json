@@ -760,6 +760,14 @@
     "defaultMessage": "Credential"
   },
   {
+    "id": "security.user-update-throttled",
+    "defaultMessage": "Too many attempts to update names have been made. Try again later."
+  },
+  {
+    "id": "security.user-updated",
+    "defaultMessage": "First and last are up to date with those registered at Skatteverket"
+  },
+  {
     "id": "security.last-used.date",
     "defaultMessage": "Never used"
   },

@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 // import PdataForm from "./PersonalDataForm";
-import PersonalDataForm from "./PersonalDataForm";
+import PersonalDataForm from "../../../components/PersonalDataForm";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import ButtonPrimary from "../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
