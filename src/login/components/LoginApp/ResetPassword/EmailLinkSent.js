@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import SuccessIconAnimation from "./SuccessIconAnimation";
-import { RenderingTimer, countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT } from "./CountDownTimer";
+import { RenderingTimer, countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT, countRealTime } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 function EmailLinkSent(props){
   const dispatch = useDispatch();
@@ -20,8 +20,15 @@ function EmailLinkSent(props){
 
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
+    const realTime = getLocalStorage("REALTIME");
     if(count > - 1)
       countDownStart();
+    if(realTime || realTime > - 1){
+      countRealTime();
+    }
+    else if(realTime  <= -1){
+      window.localStorage.removeItem("REALTIME");
+    }
   },[])
 
   useEffect(()=>{
@@ -33,6 +40,7 @@ function EmailLinkSent(props){
   return (
     <>
       <SuccessIconAnimation />
+      <p id="timer" />
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
         <div className="timer">
