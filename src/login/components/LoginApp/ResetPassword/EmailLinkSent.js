@@ -19,11 +19,11 @@ function EmailLinkSent(props){
   };
 
   useEffect(()=>{
-    const realTime = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    if(realTime || realTime > - 1){
+    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+    if(count || count > - 1){
       countFiveMin();
     }
-    else if(realTime  <= -1){
+    else if(count <= -1){
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     }
   },[])
