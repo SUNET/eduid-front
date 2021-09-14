@@ -23,13 +23,13 @@ export const countFiveMin = () => {
   const elementCountDownTime = document.getElementById("count-down-time");
   // Resend link button will be disabled
   elementResendLink !== null && elementResendLink.classList.remove('button-active');
-  let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+  let countDownTime = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
   // Update the count down every 1 second
   let timer = setInterval(()=>{
     // Get today's date and time
     let now = new Date().getTime();
     // Find the distance between now and the count down date
-    distance = countDownDate - now;
+    distance = countDownTime - now;
     // Time calculations for minutes and seconds
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -53,10 +53,10 @@ export const countFiveMinPhone = () => {
   const elementResendPhoneCode = document.querySelector("#resend-phone-code");
   const elementCountDownTimePhone = document.querySelector("#count-down-time-phone");
   elementResendPhoneCode !== null && document.querySelector("#resend-phone-code").classList.remove('button-active');
-  let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
+  let countDownTime = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
   let timer = setInterval(()=> {
     let now = new Date().getTime();
-    distance = countDownDate - now;
+    distance = countDownTime - now;
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
     if(elementCountDownTimePhone!== null){
