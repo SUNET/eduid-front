@@ -3,7 +3,6 @@ import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
-//import PersonalDataContainer from "containers/PersonalData";
 import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
 import EmailsContainer from "containers/Emails";
 import MobileContainer from "containers/Mobile";
