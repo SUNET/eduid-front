@@ -1,6 +1,5 @@
-import React, { Component, useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
@@ -10,8 +9,6 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { updateNamesFromSkatteverket } from "../login/redux/actions/updateNamesFromSkatteverketActions";
-
-// import "../login/styles/index.scss";
 import { emptyStringPattern } from "../login/app_utils/validation/regexPatterns";
 import InjectIntl from "../login/translation/InjectIntl_HOC_factory";
 
@@ -42,13 +39,11 @@ const RenderLockedNames = ({ translate }) => {
       <div className="external-names">
         <NameDisplay
           label={translate("pd.given_name")}
-          // name={firstName}
-          name={"Robert-Anders Christian Nicklas"}
+          name={firstName}
         />
         <NameDisplay
           label={translate("pd.surname")}
-          // name={lastName}
-          name={"Van de Meulebrouck Brendgard"}
+          name={lastName}
         />
       </div>
       <div className="icon-text">

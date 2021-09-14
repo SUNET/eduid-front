@@ -1,6 +1,5 @@
-import React, { Component, Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
-// import PdataForm from "./PersonalDataForm";
 import PersonalDataForm from "../../../containers/PersonalData";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import ButtonPrimary from "../Buttons/ButtonPrimary";
@@ -33,24 +32,11 @@ const RenderPersonalData = ({ translate }) => {
     (lang) => lang[0] === pref_language
   );
   const languageLabel = prefLanguageLabel[0][1];
-
   return (
     <div className="personal-data-info">
-      <NameDisplay
-        label={translate("pd.given_name")}
-        name={first_name}
-        // name={"Robert-Anders Christian Nicklas Jonas"}
-      />
-      <NameDisplay
-        label={translate("pd.surname")}
-        name={last_name}
-        //name={"Van de Meulebrouck Brendgard"}
-      />
-      <NameDisplay
-        label={translate("pd.display_name")}
-        name={display_name}
-        //name={"Långt visningsnamn som är en lång mening"}
-      />
+      <NameDisplay label={translate("pd.given_name")} name={first_name} />
+      <NameDisplay label={translate("pd.surname")} name={last_name} />
+      <NameDisplay label={translate("pd.display_name")} name={display_name} />
       <NameDisplay label={translate("pd.language")} name={languageLabel} />
     </div>
   );
@@ -59,9 +45,7 @@ const RenderPersonalData = ({ translate }) => {
 const RenderEditBox = (props) => {
   // check if verified nin
   const nins = useSelector((state) => state.nins.nins);
-  const isVerifiedNin = nins.some((nin, i) => nin.verified);
-  console.log("nins", nins);
-  console.log("nins", isVerifiedNin);
+  const isVerifiedNin = nins.some((nin) => nin.verified);
   return (
     <Fragment>
       <div className="edit-data">
@@ -98,14 +82,11 @@ const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }) => (
 
 const PersonalDataParent = (props) => {
   const [isEditMode, setEditMode] = useState(false);
-  console.log("isEditMode", isEditMode);
   // check if any data
   const personal_data = useSelector((state) => state.personal_data.data);
   const hasPersonalData = Object.entries(personal_data)
     .filter((entry, i) => entry[0] !== "eppn")
     .some((entry) => entry[1].length > 0);
-  console.log("personal_data", personal_data);
-  console.log("hasPersonalData", hasPersonalData);
   return (
     <article className="personal-data">
       <div className="intro">
