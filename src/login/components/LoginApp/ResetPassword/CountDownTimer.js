@@ -19,7 +19,8 @@ export const setLocalStorage = (key, val) => {
 };
 
 export const countFiveMin = () => {
-  const elementResendLink = document.querySelector("#minute");
+  const elementResendLink = document.querySelector("#resend-link");
+  const elementCountDownTime = document.getElementById("count-down-time");
   // Resend link button will be disabled
   elementResendLink !== null && elementResendLink.classList.remove('button-active');
   let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
@@ -32,7 +33,6 @@ export const countFiveMin = () => {
     // Time calculations for minutes and seconds
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    const elementCountDownTime = document.getElementById("count-down-time");
     // Output the result in an element with id="count-down-time"
     if(elementCountDownTime!== null){
       elementCountDownTime.innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
