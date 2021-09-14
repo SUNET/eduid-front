@@ -1029,7 +1029,7 @@ export const userData = {
   "pd.long_description": (
     <FormattedMessage
       id="pd.long_description"
-      defaultMessage={`These settings may be used to personalise services that you access with eduID.`}
+      defaultMessage={`This information may be used to personalise services that you access with eduID.`}
     />
   ),
 

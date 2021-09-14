@@ -81,8 +81,6 @@ const RenderEditableNames = (props) => {
       </div>
       <p className="hint">
         {props.translate("pd.hint.names_locked_when_verified")}
-        {/* För- och efternamn kommer att hämtas automatiskt från Skatteverket om du
-        verifierar ditt eduID med ditt personummer. */}
       </p>
     </Fragment>
   );
