@@ -37,14 +37,8 @@ const RenderLockedNames = ({ translate }) => {
   return (
     <Fragment>
       <div className="external-names">
-        <NameDisplay
-          label={translate("pd.given_name")}
-          name={firstName}
-        />
-        <NameDisplay
-          label={translate("pd.surname")}
-          name={lastName}
-        />
+        <NameDisplay label={translate("pd.given_name")} name={firstName} />
+        <NameDisplay label={translate("pd.surname")} name={lastName} />
       </div>
       <div className="icon-text">
         <button
@@ -56,7 +50,7 @@ const RenderLockedNames = ({ translate }) => {
         >
           <FontAwesomeIcon icon={faRedo} />
         </button>
-        <p className="hint">Hämta för- och efternamn från Skatteverket.</p>
+        <p className="hint">{translate("pd.update_locked_names")}</p>
       </div>
     </Fragment>
   );
@@ -86,8 +80,9 @@ const RenderEditableNames = (props) => {
         />
       </div>
       <p className="hint">
-        För- och efternamn kommer att hämtas automatiskt från Skatteverket om du
-        verifierar ditt eduID med ditt personummer.
+        {props.translate("pd.hint.names_locked_when_verified")}
+        {/* För- och efternamn kommer att hämtas automatiskt från Skatteverket om du
+        verifierar ditt eduID med ditt personummer. */}
       </p>
     </Fragment>
   );
@@ -147,7 +142,7 @@ let PersonalDataForm = (props) => {
         type="text"
         name="display_name"
         label={props.translate("pd.display_name")}
-        placeholder={props.translate("pd.display_name")}
+        placeholder={props.translate("pd.display_name_placeholder")}
         helpBlock={props.translate("pd.display_name_input_help_text")}
       />
       <Field

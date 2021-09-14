@@ -132,6 +132,10 @@ export const unformattedMessages = defineMessages({
     id: "pd.display_name",
     defaultMessage: `Display name`,
   },
+  "pd.display_name_placeholder": {
+    id: "pd.display_name_placeholder",
+    defaultMessage: `Optional alias`,
+  },
   "pd.language": {
     id: "pd.language",
     defaultMessage: `Language`,

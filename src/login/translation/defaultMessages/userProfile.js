@@ -1029,12 +1029,12 @@ export const userData = {
   "pd.long_description": (
     <FormattedMessage
       id="pd.long_description"
-      defaultMessage={`Your name and preferred language will be used to personalise some services that you access with eduID.`}
+      defaultMessage={`These settings may be used to personalise services that you access with eduID.`}
     />
   ),
 
   "pd.main_title": (
-    <FormattedMessage id="pd.main_title" defaultMessage={`Name & language`} />
+    <FormattedMessage id="pd.main_title" defaultMessage={`Names & language`} />
   ),
 
   "pd.all-data-success": (
@@ -1069,6 +1069,34 @@ export const userData = {
     <FormattedMessage
       id="pd.display_name_input_help_text"
       defaultMessage={`Some services will show this instead of your first and last name.`}
+    />
+  ),
+
+  "pd.no_data_added": (
+    <FormattedMessage
+      id="pd.no_data_added"
+      defaultMessage={`No information has been added.`}
+    />
+  ),
+  "pd.edit.button": (
+    <FormattedMessage id="pd.edit.button" defaultMessage={`edit`} />
+  ),
+  "pd.edit.title": (
+    <FormattedMessage
+      id="pd.edit.title"
+      defaultMessage={`Edit name and language`}
+    />
+  ),
+  "pd.update_locked_names": (
+    <FormattedMessage
+      id="pd.update_locked_names"
+      defaultMessage={`Get first and last names from Skatteverket.`}
+    />
+  ),
+  "pd.hint.names_locked_when_verified": (
+    <FormattedMessage
+      id="pd.hint.names_locked_when_verified"
+      defaultMessage={`First and last name will be replaced with those registered with Skatteverket if you verify your eduID with your personal id number.`}
     />
   ),
 
@@ -1306,7 +1334,7 @@ export const userData = {
       defaultMessage={`First and last are up to date with those registered at Skatteverket`}
     />
   ),
-  
+
   "security.last-used.date": (
     <FormattedMessage
       id="security.last-used.date"

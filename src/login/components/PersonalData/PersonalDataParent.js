@@ -9,7 +9,7 @@ import { CloseButton } from "../../components/GroupManagement/Groups/CreateGroup
 
 const RenderAddPersonalDataPrompt = ({ translate, setEditMode }) => (
   <div className="button-pair">
-    <p className="">Ingen information har lagts till.</p>
+    <p>{translate("pd.no_data_added")}</p>
     <ButtonPrimary id="add-personal-data" onClick={() => setEditMode(true)}>
       {translate("button_add")}
     </ButtonPrimary>
@@ -50,7 +50,8 @@ const RenderEditBox = (props) => {
     <Fragment>
       <div className="edit-data">
         <div className="title button-pair">
-          <p>Ändra personlig information</p>
+          <p>{props.translate("pd.edit.title")}</p>
+          {/* <p>Ändra personlig information</p> */}
           <button
             type="button"
             className="save-button"
@@ -69,12 +70,17 @@ const RenderEditBox = (props) => {
   );
 };
 
-const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }) => (
+const RenderEditButton = ({
+  setEditMode,
+  hasPersonalData,
+  isEditMode,
+  translate,
+}) => (
   <Fragment>
     {isEditMode ||
       (hasPersonalData && (
         <button className="create-group" onClick={() => setEditMode(true)}>
-          ändra
+          {translate("pd.edit.button")}
         </button>
       ))}
   </Fragment>
