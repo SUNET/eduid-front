@@ -408,22 +408,9 @@ describe("PersonalData Component", () => {
     const store = fakeStore(fakeState),
       { wrapper } = setupComponent(store),
       form = wrapper.find("form"),
-      fieldset = wrapper.find("fieldset"),
-      language = wrapper.find("#language-wrapper"),
-      surname = wrapper.find("#surname-wrapper"),
-      given_name = wrapper.find("#given_name-wrapper"),
-      display_name = wrapper.find("#display_name-wrapper"),
       button = wrapper.find("EduIDButton#personal-data-button");
 
-    expect(form.contains(fieldset.get(0))).toBeTruthy();
-    expect(fieldset.hasClass("tabpane")).toBeTruthy();
-    expect(fieldset.contains(language.get(0))).toBeTruthy();
-    expect(fieldset.contains(surname.get(0))).toBeTruthy();
-    expect(fieldset.contains(given_name.get(0))).toBeTruthy();
-    expect(fieldset.contains(display_name.get(0))).toBeTruthy();
-
     expect(form.props()).toMatchObject({ role: "form" });
-    expect(fieldset.props()).toMatchObject({ id: "personal-data-form" });
 
     const numCalls = store.dispatch.mock.calls.length;
     const fakeEvent = {
