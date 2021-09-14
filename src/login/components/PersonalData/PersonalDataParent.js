@@ -51,7 +51,6 @@ const RenderEditBox = (props) => {
       <div className="edit-data">
         <div className="title button-pair">
           <p>{props.translate("pd.edit.title")}</p>
-          {/* <p>Ändra personlig information</p> */}
           <button
             type="button"
             className="save-button"
