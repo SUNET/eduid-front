@@ -60,7 +60,6 @@ button.btn-secondary:not(:disabled):not(.disabled):active:focus {
   margin: 0 0 2rem -0.25rem;
 }
 
-// button:hover,
 button.btn:hover {
   border: none;
 }
@@ -76,7 +75,6 @@ button.btn-primary:hover {
   &:disabled,
   .disabled {
     background-color: $dark-gray;
-    // color: $light-gray;
     border: none;
     transform: scale(1);
   }
@@ -225,7 +223,6 @@ button.btn-link.nobutton.verify-status-label {
 }
 
 /* styles for links that are also buttons */
-// -----  ----  //
 a.btn-link,
 button.btn-link {
   background-color: transparent;
