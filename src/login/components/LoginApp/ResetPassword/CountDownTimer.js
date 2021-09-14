@@ -1,5 +1,5 @@
-export const LOCAL_STORAGE_PERSISTED_REAL_TIME = "REALTIME";
-export const LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE = "REAL_TIME_PHONE";
+export const LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK = "COUNT_EMAIL_LINK";
+export const LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE = "COUNT_PHONE_CODE";
 
 let distance = "";
 
@@ -22,7 +22,7 @@ export const countFiveMin = () => {
   const elementResendLink = document.querySelector("#minute");
   // Resend link button will be disabled
   elementResendLink !== null && elementResendLink.classList.remove('button-active');
-  let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME);
+  let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
   // Update the count down every 1 second
   let timer = setInterval(()=>{
     // Get today's date and time
@@ -51,7 +51,7 @@ export const countFiveMinPhone = () => {
   const elementResendPhoneCode = document.querySelector("#resend-phone-code");
   const elementCountDownTimePhone = document.querySelector("#count-down-time-phone");
   elementResendPhoneCode !== null && document.querySelector("#resend-phone-code").classList.remove('button-active');
-  let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE);
+  let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
   let timer = setInterval(()=> {
     let now = new Date().getTime();
     distance = countDownDate - now;

@@ -7,7 +7,7 @@ import {
   clearCountdown,
   countFiveMinPhone, 
   getLocalStorage, 
-  LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE
+  LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE
 } from "./CountDownTimer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -77,13 +77,13 @@ function PhoneCodeSent(props){
   const emailCode = url.split("/").reverse()[0];
 
   useEffect(()=>{
-    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE);
+    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     if(count){
       if(count > - 1 && Object.keys(phone).length){
         countFiveMinPhone();
       }
       else if(count  <= -1){
-        clearCountdown(LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE);
+        clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
       } 
     }
   },[]);

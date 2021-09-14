@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import SuccessIconAnimation from "./SuccessIconAnimation";
-import { getLocalStorage, countFiveMin, LOCAL_STORAGE_PERSISTED_REAL_TIME, clearCountdown } from "./CountDownTimer";
+import { getLocalStorage, countFiveMin, LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, clearCountdown } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 function EmailLinkSent(props){
   const dispatch = useDispatch();
@@ -19,12 +19,12 @@ function EmailLinkSent(props){
   };
 
   useEffect(()=>{
-    const realTime = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME);
+    const realTime = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     if(realTime || realTime > - 1){
       countFiveMin();
     }
     else if(realTime  <= -1){
-      clearCountdown(LOCAL_STORAGE_PERSISTED_REAL_TIME);
+      clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     }
   },[])
 
