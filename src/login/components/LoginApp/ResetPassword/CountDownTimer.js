@@ -2,7 +2,7 @@ import React from "react";
 
 export const LOCAL_STORAGE_PERSISTED_COUNT = "count";
 
-let count = 0, counter = null, minute = "", second = "";
+let count = 0, counter = null, minute = "", second = "", distance ="";
 
 const timer = () => {
   count = setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT, count - 1);
@@ -56,17 +56,6 @@ export const countDownStart = () =>{
   // every countdown step is 1 second 
 }
 
-export const RenderingTimer = (props) => {  
-  const countLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
-  return (
-    <>
-      <a id={"resend-link"} className={countLocalStorage  <=- 1 ? "button-active" : ""} onClick={props.sendLink}> {props.translate("resetpw.resend-link-button")} </a>
-      <span id="minute" className={countLocalStorage  <=- 1 ? "display-none" : ""}/>
-      <span id="second" className={countLocalStorage  <=- 1 ? "display-none" : ""} />
-    </>
-  )
-}
-
 export const RenderingResendCodeTimer = (props) => {  
   const countLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
   return (
@@ -80,24 +69,29 @@ export const RenderingResendCodeTimer = (props) => {
 
 
 export const countRealTime = () => {
+  document.querySelector("#resend-link").classList.remove('button-active');
   let countDownDate = getLocalStorage("REALTIME");
   // Update the count down every 1 second
   let timer = setInterval(function() {
   // Get today's date and time
   let now = new Date().getTime();
   // Find the distance between now and the count down date
-  let distance = countDownDate - now;
+  distance = countDownDate - now;
   // Time calculations for minutes and seconds
   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
   // Output the result in an element with id="timer"
-  document.getElementById("timer").innerHTML = minutes + ": " + seconds;
-  // If the count down is over, write some text 
-    if (countDownDate && distance < 0) {
-      document.querySelector("#timer").classList.add('display-none');
-      clearInterval(timer);
-      window.localStorage.removeItem("REALTIME")
+  document.getElementById("count-down-time").innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
+
+  // If the count down is over, add class and remove class
+    if (distance < 0) {
+      document.querySelector("#count-down-time").classList.add('display-none');
+      document.querySelector("#resend-link").classList.add('button-active');
+      clearInterval(timer);  
+    }else {
+      document.querySelector("#resend-link").classList.remove('button-active');
+      document.querySelector("#count-down-time").classList.remove('display-none');
     }
   }, 1000);
 }
