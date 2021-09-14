@@ -427,7 +427,7 @@
   "security.u2f_registration_error_unknown": "U2F error: Unknown error",
   "security.u2f_registration_error_unsupported": "U2F error: Configuration unsupported",
   "security.user-update-throttled": "Too many attempts to update names have been made. Try again later.",
-  "security.user-updated": "First and last are up to date with those registered at Skatteverket",
+  "security.user-updated": "First and last names are up-to-date with those registered at Skatteverket.",
   "security.verified": "Verified",
   "security.verify": "Verify key",
   "security.webauthn-describe-title": "Add a name for your security key",

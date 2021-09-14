@@ -1331,7 +1331,7 @@ export const userData = {
   "security.user-updated": (
     <FormattedMessage
       id="security.user-updated"
-      defaultMessage={`First and last are up to date with those registered at Skatteverket`}
+      defaultMessage={`First and last names are up-to-date with those registered at Skatteverket.`}
     />
   ),
 

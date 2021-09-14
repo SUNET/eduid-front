@@ -427,7 +427,7 @@
   "security.u2f_registration_error_unknown": "U2F-fel: Okänt fel",
   "security.u2f_registration_error_unsupported": "U2F-fel: Felaktig konfiguration",
   "security.user-update-throttled": "För många försök att uppdatera namnen har gjorts. Var vänlig försök igen senare.",
-  "security.user-updated": "För- och efternamn är uppdaterade till de som är registrerade hos Skatteverket",
+  "security.user-updated": "First and last names are up-to-date with those registered at Skatteverket.",
   "security.verified": "Verifierad",
   "security.verify": "Verifiera",
   "security.webauthn-describe-title": "Ge ett namn till din säkerhetsnyckel",
