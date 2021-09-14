@@ -456,4 +456,16 @@ export const resetPassword = {
       defaultMessage={`go back`}
     />
   ),
+  "resetpw.copy-to-clipboard": (
+    <FormattedMessage
+      id="resetpw.copy-to-clipboard"
+      defaultMessage={`Copy to clipboard`}
+    />
+  ),
+  "resetpw.copied-in-clipboard": (
+    <FormattedMessage
+      id="resetpw.copied-in-clipboard"
+      defaultMessage={`Copied!`}
+    />
+  ),
 };
