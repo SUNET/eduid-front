@@ -597,7 +597,7 @@
   },
   {
     "id": "pd.long_description",
-    "defaultMessage": "This information may be used to personalise services that you access with eduID."
+    "defaultMessage": "This information may be used to personalise services that you access with your eduID."
   },
   {
     "id": "pd.main_title",
