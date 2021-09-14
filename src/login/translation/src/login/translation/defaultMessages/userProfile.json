@@ -597,11 +597,11 @@
   },
   {
     "id": "pd.long_description",
-    "defaultMessage": "Your name and preferred language will be used to personalise some services that you access with eduID."
+    "defaultMessage": "This information may be used to personalise services that you access with your eduID."
   },
   {
     "id": "pd.main_title",
-    "defaultMessage": "Name & language"
+    "defaultMessage": "Names & language"
   },
   {
     "id": "pd.all-data-success",
@@ -622,6 +622,26 @@
   {
     "id": "pd.display_name_input_help_text",
     "defaultMessage": "Some services will show this instead of your first and last name."
+  },
+  {
+    "id": "pd.no_data_added",
+    "defaultMessage": "No information has been added."
+  },
+  {
+    "id": "pd.edit.button",
+    "defaultMessage": "edit"
+  },
+  {
+    "id": "pd.edit.title",
+    "defaultMessage": "Edit name and language"
+  },
+  {
+    "id": "pd.update_locked_names",
+    "defaultMessage": "Get first and last names from Skatteverket."
+  },
+  {
+    "id": "pd.hint.names_locked_when_verified",
+    "defaultMessage": "First and last name will be replaced with those registered with Skatteverket if you verify your eduID with your personal id number."
   },
   {
     "id": "emails.resend_success",
@@ -758,6 +778,14 @@
   {
     "id": "security.credential",
     "defaultMessage": "Credential"
+  },
+  {
+    "id": "security.user-update-throttled",
+    "defaultMessage": "Too many attempts to update names have been made. Try again later."
+  },
+  {
+    "id": "security.user-updated",
+    "defaultMessage": "First and last names are up-to-date with those registered at Skatteverket."
   },
   {
     "id": "security.last-used.date",

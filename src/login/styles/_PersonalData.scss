@@ -1,0 +1,114 @@
+.personal-data {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  label {
+    font-size: 1rem;
+    padding: 0 0 0.1875rem 0.125rem;
+  }
+  button {
+    margin-bottom: 0;
+    @media (max-width: 568px) {
+      &.btn {
+        font-size: unset;
+      }
+    }
+  }
+  .name-inputs {
+    .hint {
+      margin-top: 1rem;
+    }
+    .icon-text {
+      display: flex;
+      align-items: baseline;
+      p {
+        margin-left: 1rem;
+        padding-bottom: 0;
+      }
+    }
+    button:active,
+    button:focus,
+    button:active:focus {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.personal-data-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hint {
+  font-size: 1rem;
+}
+.input-pair {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  @media (max-width: 568px) {
+    flex-direction: column;
+  }
+}
+
+#personaldataview-form {
+  margin-top: 0;
+  @media (max-width: 568px) {
+    .radio-input-container span,
+    .form-control,
+    input {
+      font-size: 1.5rem;
+      &::placeholder {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+// styles for input on white bg
+.edit-data {
+  margin-bottom: 2rem;
+  .form-control,
+  input {
+    background-color: #f4f4f4;
+  }
+  .form-group {
+    margin-top: 1rem;
+    flex: 1;
+    &:last-child {
+      margin-left: 1rem;
+      @media (max-width: 568px) {
+        margin-left: 0;
+      }
+    }
+  }
+  p.verified {
+    padding-bottom: 0;
+  }
+}
+
+// styles for displayed names
+.external-names {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  margin-bottom: 0;
+}
+.personal-data-info .profile-grid-cell {
+  margin-bottom: 1rem;
+}
+
+.external-names,
+.personal-data-info {
+  .profile-grid-cell {
+    flex: 1;
+    flex-basis: 13rem;
+    justify-content: unset;
+    margin-right: 1rem;
+    .display-data {
+      font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
+      margin-top: 0;
+      line-height: $line-height;
+      font-size: 1.5rem;
+      word-wrap: normal;
+    }
+  }
+}

@@ -13,6 +13,7 @@ import * as openidFrejaActions from "actions/OpenidConnectFreja";
 import * as letterActions from "actions/LetterProofing";
 import * as lmpActions from "actions/LookupMobileProofing";
 import * as headerActions from "actions/Header";
+import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updateNamesFromSkatteverketActions";
 
 import { requestAllPersonalData, savePersonalData } from "sagas/PersonalData";
 import {
@@ -53,6 +54,7 @@ import {
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
+import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -78,6 +80,10 @@ function* rootSaga() {
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestSuggestedPassword),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, sendGetLetterProofing),
     takeLatest(pdataActions.POST_USERDATA, savePersonalData),
+    takeLatest(
+      updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET,
+      updateNamesFromSkatteverketSaga
+    ),
     takeLatest(
       openidActions.SHOW_OIDC_SELEG_MODAL,
       sagasOpenid.checkNINAndShowSelegModal

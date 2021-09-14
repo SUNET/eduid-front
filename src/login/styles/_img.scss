@@ -18,8 +18,12 @@ svg.remove:hover {
 }
 
 svg.close {
-  fill: #7c7c7c;
+  fill: #808080;
 }
+.close {
+  opacity: 1;
+}
+
 svg.close:hover {
   fill: #7c7c7c;
 }

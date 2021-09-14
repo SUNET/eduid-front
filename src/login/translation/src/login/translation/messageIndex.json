@@ -96,6 +96,10 @@
     "defaultMessage": "Display name"
   },
   {
+    "id": "pd.display_name_placeholder",
+    "defaultMessage": "Optional alias"
+  },
+  {
     "id": "pd.language",
     "defaultMessage": "Language"
   },
