@@ -7,6 +7,11 @@
   }
   button {
     margin-bottom: 0;
+    @media (max-width: 568px) {
+      &.btn {
+        font-size: unset;
+      }
+    }
   }
   .name-inputs {
     .hint {
@@ -39,14 +44,28 @@
   display: flex;
   flex: 1;
   flex-wrap: wrap;
+  @media (max-width: 568px) {
+    flex-direction: column;
+  }
 }
 
 #personaldataview-form {
   margin-top: 0;
+  @media (max-width: 568px) {
+    .radio-input-container span,
+    .form-control,
+    input {
+      font-size: 1.5rem;
+      &::placeholder {
+        font-size: 1.5rem;
+      }
+    }
+  }
 }
 
 // styles for input on white bg
 .edit-data {
+  margin-bottom: 2rem;
   .form-control,
   input {
     background-color: #f4f4f4;
@@ -56,6 +75,9 @@
     flex: 1;
     &:last-child {
       margin-left: 1rem;
+      @media (max-width: 568px) {
+        margin-left: 0;
+      }
     }
   }
   p.verified {
@@ -90,17 +112,3 @@
     }
   }
 }
-// .profile-grid-cell {
-//   flex: 1;
-//   flex-basis: 13rem;
-//   justify-content: unset;
-//   margin-right: 1rem;
-//   margin-bottom: 0;
-//   .display-data {
-//     font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
-//     margin-top: 0;
-//     line-height: $line-height;
-//     font-size: 1.5rem;
-//     word-wrap: normal;
-//   }
-// }

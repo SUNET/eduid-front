@@ -42,13 +42,13 @@ const RenderLockedNames = ({ translate }) => {
       <div className="external-names">
         <NameDisplay
           label={translate("pd.given_name")}
-          name={firstName}
-          //name={"Robert-Anders Christian Nicklas"}
+          // name={firstName}
+          name={"Robert-Anders Christian Nicklas"}
         />
         <NameDisplay
           label={translate("pd.surname")}
-          name={lastName}
-          // name={"Van de Meulebrouck Brendgard"}
+          // name={lastName}
+          name={"Van de Meulebrouck Brendgard"}
         />
       </div>
       <div className="icon-text">
