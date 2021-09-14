@@ -11,7 +11,6 @@ export function updateNamesFromSkatteverket() {
 }
 
 export function updateNamesFromSkatteverketFail(err) {
-  console.log("err", err);
   return {
     type: POST_SECURITY_REFRESH_OFFICIAL_USER_DATA_FAIL,
     error: true,
