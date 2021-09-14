@@ -4,10 +4,9 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import SuccessIconAnimation from "./SuccessIconAnimation";
 import { 
-  RenderingResendCodeTimer, 
-  countDownStart, 
+  countFiveMinPhone, 
   getLocalStorage, 
-  LOCAL_STORAGE_PERSISTED_COUNT 
+  LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE
 } from "./CountDownTimer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -77,10 +76,10 @@ function PhoneCodeSent(props){
   const emailCode = url.split("/").reverse()[0];
 
   useEffect(()=>{
-    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
+    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE);
     if(count){
       if(count > - 1 && Object.keys(phone).length){
-        countDownStart();
+        countFiveMinPhone();
       } 
     }
   },[]);
@@ -115,7 +114,10 @@ function PhoneCodeSent(props){
         <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
         <PhoneCodeForm handlePhoneCode={handlePhoneCode} phone={phone} {...props} />
         <div className="timer">
-          <RenderingResendCodeTimer resendPhoneCode={resendPhoneCode} {...props}/>
+          <a id={"resend-phone-code"} onClick={resendPhoneCode}> 
+            {props.translate("resetpw.resend-link-button")} 
+          </a>
+          <span id="count-down-time-phone" />
         </div>
       </div>
     </>
