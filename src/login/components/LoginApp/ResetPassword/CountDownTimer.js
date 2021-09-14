@@ -34,7 +34,9 @@ export const countFiveMin = () => {
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
     const elementCountDownTime = document.getElementById("count-down-time");
     // Output the result in an element with id="count-down-time"
-    elementCountDownTime.innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
+    if(elementCountDownTime!== null){
+      elementCountDownTime.innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
+    }
     // If the count down is over, resedn-link will be active and timer will be display-none
       if (distance < 0) {
         document.querySelector("#count-down-time").classList.add('display-none');
