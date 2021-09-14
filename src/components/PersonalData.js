@@ -9,26 +9,8 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { updateNamesFromSkatteverket } from "../login/redux/actions/updateNamesFromSkatteverketActions";
-import { emptyStringPattern } from "../login/app_utils/validation/regexPatterns";
+import { validatePersonalData } from "../login/app_utils/validation/validatePersonalData";
 import InjectIntl from "../login/translation/InjectIntl_HOC_factory";
-
-/* FORM */
-
-const validatePersonalData = (values, props) => {
-  const errors = {};
-  ["given_name", "surname", "display_name", "language"].forEach((inputName) => {
-    if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
-      errors[inputName] = "required";
-    }
-    //none of the fields value properties differ from their initial properties will get error message.
-    else if (props.pristine) {
-      errors[inputName] = "value not changed";
-    } else if (values[inputName].trim() === props.initialValues[inputName]) {
-      errors[inputName] = "value not changed";
-    }
-  });
-  return errors;
-};
 
 const RenderLockedNames = ({ translate }) => {
   const dispatch = useDispatch();
