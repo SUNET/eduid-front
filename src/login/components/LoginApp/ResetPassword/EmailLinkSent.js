@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import SuccessIconAnimation from "./SuccessIconAnimation";
-import { getLocalStorage, countFiveMin, LOCAL_STORAGE_PERSISTED_REAL_TIME } from "./CountDownTimer";
+import { getLocalStorage, countFiveMin, LOCAL_STORAGE_PERSISTED_REAL_TIME, clearCountdown } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 function EmailLinkSent(props){
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function EmailLinkSent(props){
       countFiveMin();
     }
     else if(realTime  <= -1){
-      window.localStorage.removeItem(LOCAL_STORAGE_PERSISTED_REAL_TIME);
+      clearCountdown(LOCAL_STORAGE_PERSISTED_REAL_TIME);
     }
   },[])
 

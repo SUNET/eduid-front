@@ -4,6 +4,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import SuccessIconAnimation from "./SuccessIconAnimation";
 import { 
+  clearCountdown,
   countFiveMinPhone, 
   getLocalStorage, 
   LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE
@@ -80,6 +81,9 @@ function PhoneCodeSent(props){
     if(count){
       if(count > - 1 && Object.keys(phone).length){
         countFiveMinPhone();
+      }
+      else if(count  <= -1){
+        clearCountdown(LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE);
       } 
     }
   },[]);
