@@ -119,7 +119,7 @@ function PhoneCodeSent(props){
         <PhoneCodeForm handlePhoneCode={handlePhoneCode} phone={phone} {...props} />
         <div className="timer">
           <a id={"resend-phone-code"} onClick={resendPhoneCode}> 
-            {props.translate("resetpw.resend-link-button")} 
+            {props.translate("cm.resend_code")} 
           </a>
           <span id="count-down-time-phone" />
         </div>
