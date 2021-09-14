@@ -2,6 +2,7 @@ import React from "react";
 
 export const LOCAL_STORAGE_PERSISTED_COUNT = "count";
 export const LOCAL_STORAGE_PERSISTED_REAL_TIME = "REALTIME";
+export const LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE = "REAL_TIME_PHONE";
 
 let count = 0, counter = null, minute = "", second = "", distance ="";
 
@@ -70,8 +71,9 @@ export const RenderingResendCodeTimer = (props) => {
 
 
 export const countFiveMin = () => {
+  const elementResendLink = document.querySelector("#minute");
   // Resend link button will be disabled
-  document.querySelector("#resend-link").classList.remove('button-active');
+  elementResendLink !== null && elementResendLink.classList.remove('button-active');
   let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME);
   // Update the count down every 1 second
   let timer = setInterval(function() {
@@ -82,10 +84,10 @@ export const countFiveMin = () => {
   // Time calculations for minutes and seconds
   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
+  const elementCountDownTime = document.getElementById("count-down-time");
   // Output the result in an element with id="count-down-time"
-  document.getElementById("count-down-time").innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
-
+  elementCountDownTime.innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
+  console.log("distance", distance)
   // If the count down is over, resedn-link will be active and timer will be display-none
     if (distance < 0) {
       document.querySelector("#count-down-time").classList.add('display-none');
@@ -94,6 +96,36 @@ export const countFiveMin = () => {
     }else {
       document.querySelector("#resend-link").classList.remove('button-active');
       document.querySelector("#count-down-time").classList.remove('display-none');
+    }
+  }, 1000);
+}
+
+export const countFiveMinPhone = () => {
+  const elementResendPhoneCode = document.querySelector("#resend-phone-code");
+  // Resend link button will be disabled
+  elementResendPhoneCode !== null && document.querySelector("#resend-phone-code").classList.remove('button-active');
+  let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME_PHONE);
+  // Update the count down every 1 second
+  let timer = setInterval(function() {
+  // Get today's date and time
+  let now = new Date().getTime();
+  // Find the distance between now and the count down date
+  distance = countDownDate - now;
+  // Time calculations for minutes and seconds
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const elementCountDownTimePhone = document.getElementById("count-down-time-phone");
+    
+  // Output the result in an element with id="count-down-time"
+  elementCountDownTimePhone.innerHTML =minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
+  // If the count down is over, resedn-link will be active and timer will be display-none
+    if (distance < 0) {
+      document.querySelector("#count-down-time-phone").classList.add('display-none');
+      document.querySelector("#resend-phone-code").classList.add('button-active');
+      clearInterval(timer);  
+    }else {
+      document.querySelector("#resend-phone-code").classList.remove('button-active');
+      document.querySelector("#count-down-time-phone").classList.remove('display-none');
     }
   }, 1000);
 }
