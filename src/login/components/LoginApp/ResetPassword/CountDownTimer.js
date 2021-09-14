@@ -70,6 +70,7 @@ export const RenderingResendCodeTimer = (props) => {
 
 
 export const countRealTime = () => {
+  // Resend link button will be disabled
   document.querySelector("#resend-link").classList.remove('button-active');
   let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME);
   // Update the count down every 1 second
@@ -82,10 +83,10 @@ export const countRealTime = () => {
   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
-  // Output the result in an element with id="timer"
+  // Output the result in an element with id="count-down-time"
   document.getElementById("count-down-time").innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
 
-  // If the count down is over, add class and remove class
+  // If the count down is over, resedn-link will be active and timer will be display-none
     if (distance < 0) {
       document.querySelector("#count-down-time").classList.add('display-none');
       document.querySelector("#resend-link").classList.add('button-active');
