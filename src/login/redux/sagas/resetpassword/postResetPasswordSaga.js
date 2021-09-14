@@ -7,6 +7,10 @@ import postRequest from "../postDataRequest";
 import { postEmailLinkFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
 import { countFiveMin, LOCAL_STORAGE_PERSISTED_REAL_TIME } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import {
+  requestInProgress,
+  requestCompleted,
+} from "../../actions/loadingDataActions";
 
 export function* postEmailLink() {
   const state = yield select(state => state);
@@ -16,6 +20,7 @@ export function* postEmailLink() {
     csrf_token: state.config.csrf_token
   };
   try {
+    yield put(requestInProgress());
     const resp = yield call(postRequest, url, data);
     yield put(putCsrfToken(resp));
     yield put(resp);
@@ -27,5 +32,8 @@ export function* postEmailLink() {
     }
   } catch (error) {
     yield* failRequest(error, postEmailLinkFail(error));
+  }
+  finally {
+    yield put(requestCompleted());
   }
 }

@@ -738,18 +738,12 @@ export const userData = {
     />
   ),
 
-  "nin_show_last_four_digits": (
-    <FormattedMessage
-      id="nin_show_last_four_digits"
-      defaultMessage={`SHOW`}
-    />
+  nin_show_last_four_digits: (
+    <FormattedMessage id="nin_show_last_four_digits" defaultMessage={`SHOW`} />
   ),
 
-  "nin_hide_last_four_digits": (
-    <FormattedMessage
-      id="nin_hide_last_four_digits"
-      defaultMessage={`HIDE`}
-    />
+  nin_hide_last_four_digits: (
+    <FormattedMessage id="nin_hide_last_four_digits" defaultMessage={`HIDE`} />
   ),
 
   "nins.input_help_text": (
@@ -1035,12 +1029,12 @@ export const userData = {
   "pd.long_description": (
     <FormattedMessage
       id="pd.long_description"
-      defaultMessage={`Your name and preferred language will be used to personalise some services that you access with eduID.`}
+      defaultMessage={`This information may be used to personalise services that you access with your eduID.`}
     />
   ),
 
   "pd.main_title": (
-    <FormattedMessage id="pd.main_title" defaultMessage={`Name & language`} />
+    <FormattedMessage id="pd.main_title" defaultMessage={`Names & language`} />
   ),
 
   "pd.all-data-success": (
@@ -1075,6 +1069,34 @@ export const userData = {
     <FormattedMessage
       id="pd.display_name_input_help_text"
       defaultMessage={`Some services will show this instead of your first and last name.`}
+    />
+  ),
+
+  "pd.no_data_added": (
+    <FormattedMessage
+      id="pd.no_data_added"
+      defaultMessage={`No information has been added.`}
+    />
+  ),
+  "pd.edit.button": (
+    <FormattedMessage id="pd.edit.button" defaultMessage={`edit`} />
+  ),
+  "pd.edit.title": (
+    <FormattedMessage
+      id="pd.edit.title"
+      defaultMessage={`Edit name and language`}
+    />
+  ),
+  "pd.update_locked_names": (
+    <FormattedMessage
+      id="pd.update_locked_names"
+      defaultMessage={`Get first and last names from Skatteverket.`}
+    />
+  ),
+  "pd.hint.names_locked_when_verified": (
+    <FormattedMessage
+      id="pd.hint.names_locked_when_verified"
+      defaultMessage={`First and last name will be replaced with those registered with Skatteverket if you verify your eduID with your personal id number.`}
     />
   ),
 
@@ -1261,12 +1283,13 @@ export const userData = {
 
   /* -----  Advanced settings ------- */
 
-  "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": (
-    <FormattedMessage
-      id="InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
-      defaultMessage={`You are attempting to register an authenticator that contains one of the credentials already registered with the relying party`}
-    />
-  ),
+  "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.":
+    (
+      <FormattedMessage
+        id="InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party."
+        defaultMessage={`You are attempting to register an authenticator that contains one of the credentials already registered with the relying party`}
+      />
+    ),
 
   "cred.credential_type": (
     <FormattedMessage
@@ -1297,6 +1320,19 @@ export const userData = {
 
   "security.credential": (
     <FormattedMessage id="security.credential" defaultMessage={`Credential`} />
+  ),
+  "security.user-update-throttled": (
+    <FormattedMessage
+      id="security.user-update-throttled"
+      defaultMessage={`Too many attempts to update names have been made. Try again later.`}
+    />
+  ),
+
+  "security.user-updated": (
+    <FormattedMessage
+      id="security.user-updated"
+      defaultMessage={`First and last names are up-to-date with those registered at Skatteverket.`}
+    />
   ),
 
   "security.last-used.date": (

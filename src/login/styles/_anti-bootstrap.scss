@@ -26,13 +26,6 @@ input {
   height: 3rem;
 }
 
-//styles for personal data inputs
-#given_name,
-#surname,
-#display_name {
-  margin-bottom: 1rem !important;
-}
-
 // text under inputs
 .small,
 small {
@@ -42,7 +35,6 @@ small {
   }
   &.form-text {
     margin-top: 0 !important;
-    padding-left: 8px;
   }
 }
 

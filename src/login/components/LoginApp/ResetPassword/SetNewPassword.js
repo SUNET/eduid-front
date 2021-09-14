@@ -8,7 +8,8 @@ import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import { 
+import {
+  storeNewPassword,
   setNewPassword, 
   setNewPasswordExtraSecurityPhone, 
   setNewPasswordExtraSecurityToken, 
@@ -101,6 +102,7 @@ function SetNewPassword(props){
     (state) => state.resetPassword.extra_security
   );
   const [password, setPassword] = useState(null);
+  const [toolTipText, setToolTipText] = useState("resetpw.copy-to-clipboard");
   const ref = useRef(null);
 
   useEffect(()=>{
@@ -119,16 +121,20 @@ function SetNewPassword(props){
   const copyToClipboard = () => {
     ref.current.select();
     document.execCommand('copy');
+    setToolTipText("resetpw.copied-in-clipboard")
     document.getElementById("icon-copy").style.display = "none";
     document.getElementById("icon-check").style.display = "inline";
     setTimeout(()=> {
       document.getElementById("icon-copy").style.display = "inline";
       document.getElementById("icon-check").style.display = "none";
+      setToolTipText("resetpw.copy-to-clipboard")
     }, 1000);
   };
 
   const clickSetNewPassword = (e) => {
     e.preventDefault();
+    const newPassword = e.target["new-password"].value;
+    dispatch(storeNewPassword(newPassword));
     if(!selected_option || selected_option === "without"){
       dispatch(setNewPassword());
     }else if(selected_option === "phoneCode"){
@@ -157,6 +163,7 @@ function SetNewPassword(props){
         <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
+          <div className="tool-tip-text" id="tool-tip">{props.translate(toolTipText)}</div>
         </button> 
       </div>
       <NewPasswordForm {...props} 

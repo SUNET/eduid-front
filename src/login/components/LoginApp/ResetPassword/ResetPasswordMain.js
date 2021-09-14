@@ -1,6 +1,6 @@
 import React, { useEffect }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import { useDispatch, connect } from 'react-redux';
+import {  useSelector, useDispatch, connect } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
@@ -29,7 +29,7 @@ let EmailForm = (props) => (
     <EduIDButton
       className="settings-button"
       id="reset-password-button"
-      disabled={props.invalid}
+      disabled={props.invalid || props.request_in_progress }
       onClick={props.sendLink}
     >
       {props.translate("resetpw.send-link")}
@@ -51,6 +51,7 @@ function ResetPasswordMain(props){
   const dispatch = useDispatch();
   const url = document.location.href;
   const loginRef = url.split("/email").reverse()[0];
+  const request_in_progress = useSelector(state => state.app.request_in_progress);
 
   useEffect(()=>{
     clearCountdown();
@@ -67,7 +68,7 @@ function ResetPasswordMain(props){
   return (
     <>
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
-      <EmailForm sendLink={sendLink} {...props} />
+      <EmailForm sendLink={sendLink} {...props} request_in_progress={request_in_progress}/>
       <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
         <a id="return-login" href={`/login/password/${loginRef}`}>
           {props.translate("resetpw.return-login")}

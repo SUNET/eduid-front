@@ -7,6 +7,12 @@
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.btn.disabled,
+.btn:disabled {
+  opacity: 1;
+}
+
 a.btn,
 button,
 button.btn {
@@ -54,7 +60,6 @@ button.btn-secondary:not(:disabled):not(.disabled):active:focus {
   margin: 0 0 2rem -0.25rem;
 }
 
-// button:hover,
 button.btn:hover {
   border: none;
 }
@@ -218,7 +223,6 @@ button.btn-link.nobutton.verify-status-label {
 }
 
 /* styles for links that are also buttons */
-// -----  ----  //
 a.btn-link,
 button.btn-link {
   background-color: transparent;
@@ -242,13 +246,26 @@ button.btn-link {
 }
 
 // retry/reload icon button
-button.icon {
-  height: auto;
-  svg {
-    color: $black;
-    height: 1rem;
-    width: 1rem;
-    transform: rotate(0);
+.icon-text {
+  button,
+  button:active,
+  button:focus,
+  button:active:focus {
+    border: transparent solid 2px;
+    margin-top: 0;
+    padding: 0.75rem;
+    background-color: white;
+    border-radius: 50%;
+    &.icon {
+      background-color: white;
+      height: auto;
+      svg {
+        color: $black;
+        height: 1rem;
+        width: 1rem;
+        transform: rotate(0);
+      }
+    }
   }
 }
 
