@@ -1,6 +1,7 @@
 import React from "react";
 
 export const LOCAL_STORAGE_PERSISTED_COUNT = "count";
+export const LOCAL_STORAGE_PERSISTED_REAL_TIME = "REALTIME";
 
 let count = 0, counter = null, minute = "", second = "", distance ="";
 
@@ -70,7 +71,7 @@ export const RenderingResendCodeTimer = (props) => {
 
 export const countRealTime = () => {
   document.querySelector("#resend-link").classList.remove('button-active');
-  let countDownDate = getLocalStorage("REALTIME");
+  let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME);
   // Update the count down every 1 second
   let timer = setInterval(function() {
   // Get today's date and time
