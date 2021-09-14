@@ -29,6 +29,7 @@ const RenderRegisterLink = ({ translate }) => {
 
 const RenderResetPasswordLink = ({ translate }) => {
   const loginRef = useSelector((state) => state.login.ref);
+  const request_in_progress = useSelector((state) => state.app.request_in_progress);
   const dispatch = useDispatch();
   const history = useHistory();
   
@@ -43,11 +44,12 @@ const RenderResetPasswordLink = ({ translate }) => {
       }else history.push(`/reset-password/email/${loginRef}`)
     } else history.push(`/reset-password/email/${loginRef}`)
   };
-
+  
   return (
     <LinkRedirect
       id={"link-forgot-password"}
       to={"/"}
+      className={`send-link ${request_in_progress ? 'disabled' : ''}`}
       onClick={sendLink}
       text={translate("login.usernamePw.reset-password-link")}
     />

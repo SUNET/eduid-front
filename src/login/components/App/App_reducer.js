@@ -4,6 +4,7 @@ import * as loadingDataActions from "../../redux/actions/loadingDataActions";
 const appData = {
   is_loaded: false,
   loading_data: false,
+  request_in_progress: false,
 };
 
 let appReducer = (state = appData, action) => {
@@ -22,6 +23,16 @@ let appReducer = (state = appData, action) => {
       return {
         ...state,
         loading_data: false,
+      };
+    case loadingDataActions.REQUEST_IN_PROGRESS:
+      return {
+        ...state,
+        request_in_progress: true,
+      };
+    case loadingDataActions.REQUEST_COMPLETED:
+      return {
+        ...state,
+        request_in_progress: false,
       };
     default:
       return state;
