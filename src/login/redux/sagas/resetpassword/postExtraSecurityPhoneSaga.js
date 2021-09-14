@@ -25,7 +25,7 @@ export function* requestPhoneCode() {
     yield put(resp);
     if (resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS") {
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
-      setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 301000);
+      setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
       countFiveMinPhone();
       history.push(`/reset-password/phone-code-sent/${data.email_code}`);
     }else if(resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL"){
