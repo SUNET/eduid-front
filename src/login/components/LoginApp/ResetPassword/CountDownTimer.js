@@ -69,7 +69,7 @@ export const RenderingResendCodeTimer = (props) => {
 }
 
 
-export const countRealTime = () => {
+export const countFiveMin = () => {
   // Resend link button will be disabled
   document.querySelector("#resend-link").classList.remove('button-active');
   let countDownDate = getLocalStorage(LOCAL_STORAGE_PERSISTED_REAL_TIME);

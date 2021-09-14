@@ -6,7 +6,7 @@ import {
 import postRequest from "../postDataRequest";
 import { postEmailLinkFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
-import { countRealTime, LOCAL_STORAGE_PERSISTED_REAL_TIME } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import { countFiveMin, LOCAL_STORAGE_PERSISTED_REAL_TIME } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 
 export function* postEmailLink() {
   const state = yield select(state => state);
@@ -22,7 +22,7 @@ export function* postEmailLink() {
     if (resp.type === "POST_RESET_PASSWORD_SUCCESS") {
       window.localStorage.removeItem(LOCAL_STORAGE_PERSISTED_REAL_TIME);
       window.localStorage.setItem(LOCAL_STORAGE_PERSISTED_REAL_TIME, new Date().getTime() + 301000);
-      countRealTime();
+      countFiveMin();
       history.push(`/reset-password/email-link-sent`);
     }
   } catch (error) {
