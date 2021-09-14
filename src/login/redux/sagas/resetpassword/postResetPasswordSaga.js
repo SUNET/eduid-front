@@ -6,7 +6,7 @@ import {
 import postRequest from "../postDataRequest";
 import { postEmailLinkFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
-import { countDownStart, clearCountdown, countRealTime} from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import { countRealTime } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 
 export function* postEmailLink() {
   const state = yield select(state => state);
@@ -20,8 +20,6 @@ export function* postEmailLink() {
     yield put(putCsrfToken(resp));
     yield put(resp);
     if (resp.type === "POST_RESET_PASSWORD_SUCCESS") {
-      clearCountdown();
-      countDownStart();
       window.localStorage.removeItem("REALTIME");
       window.localStorage.setItem("REALTIME", new Date().getTime() + 301000);
       countRealTime();
