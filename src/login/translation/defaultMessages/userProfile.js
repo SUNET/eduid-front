@@ -1096,7 +1096,7 @@ export const userData = {
   "pd.hint.names_locked_when_verified": (
     <FormattedMessage
       id="pd.hint.names_locked_when_verified"
-      defaultMessage={`First and last name will be replaced with those registered with Skatteverket if you verify your eduID with your personal id number.`}
+      defaultMessage={`First and last name will be replaced with your legal name if you verify your eduID with your personal id number.`}
     />
   ),
 

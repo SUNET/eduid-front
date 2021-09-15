@@ -296,7 +296,7 @@
   "pd.edit.button": "edit",
   "pd.edit.title": "Edit name and language",
   "pd.given_name": "First name",
-  "pd.hint.names_locked_when_verified": "First and last name will be replaced with those registered with Skatteverket if you verify your eduID with your personal id number.",
+  "pd.hint.names_locked_when_verified": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number.",
   "pd.language": "Language",
   "pd.long_description": "This information may be used to personalise services that you access with your eduID.",
   "pd.main_title": "Name & language",
