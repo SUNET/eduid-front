@@ -369,7 +369,7 @@
   "resetpw.external-mfa-fail": "Externt MFA misslyckades",
   "resetpw.extra-phone_send_sms": "Skicka sms till {phone}",
   "resetpw.extra-security_description": "Bevisa att du är ägaren till kontot.",
-  "resetpw.extra-security_heading": "Extra säkerhet",
+  "resetpw.extra-security_heading": "Välj en extra säkerhet för att fortsätta med återställning av lösenordet",
   "resetpw.fido-token-fail": "Det uppstod ett problem med din säkerhetsnyckel för återställning av lösenordet",
   "resetpw.go-to-eduid": "gå till eduID",
   "resetpw.go-back": "gå tillbaka",
