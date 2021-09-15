@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
-import ButtonPrimary from "../login/components/Buttons/ButtonPrimary";
-import NameDisplay from "../login/components/DataDisplay/Name/NameDisplay";
-import CustomInput from "../login/components/Inputs/CustomInput";
-import validatePersonalData from "../login/app_utils/validation/validatePersonalData";
+import ButtonPrimary from "../Buttons/ButtonPrimary";
+import NameDisplay from "../DataDisplay/Name/NameDisplay";
+import CustomInput from "../Inputs/CustomInput";
+import validatePersonalData from "../../app_utils/validation/validatePersonalData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
-import { postUserdata } from "actions/PersonalData";
-import { updateNamesFromSkatteverket } from "../login/redux/actions/updateNamesFromSkatteverketActions";
-import InjectIntl from "../login/translation/InjectIntl_HOC_factory";
+import { postUserdata } from "../../../actions/PersonalData";
+import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const RenderLockedNames = ({ translate }) => {
   const dispatch = useDispatch();
