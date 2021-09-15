@@ -258,7 +258,7 @@ export const resetPassword = {
   "resetpw.reset-pw-initialized": (
     <FormattedMessage
       id="resetpw.reset-pw-initialized"
-      defaultMessage={`Reset password link has been sent`}
+      defaultMessage={`Reset password link has been sent to your email.`}
     /> 
   ),
   "resetpw.email-throttled": (

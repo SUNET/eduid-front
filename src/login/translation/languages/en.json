@@ -383,7 +383,7 @@
   "resetpw.received-sms": "Already received sms? ",
   "resetpw.resend-link": "If you didn’t receive the email? Check your junk email, \n or",
   "resetpw.resend-link-button": "resend link in",
-  "resetpw.reset-pw-initialized": "Reset password link has been sent",
+  "resetpw.reset-pw-initialized": "Reset password link has been sent to your email.",
   "resetpw.return-login": "return to Login",
   "resetpw.send-link": "send link to email",
   "resetpw.send-sms-failed": "Failed to send phone code.",
