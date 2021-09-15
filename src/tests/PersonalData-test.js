@@ -1,25 +1,15 @@
-const mock = require("jest-mock");
-import React from "react";
-import { mount } from "enzyme";
 import expect from "expect";
-import PersonalDataContainer from "../login/components/PersonalData/PersonalDataParent";
 import * as actions from "actions/PersonalData";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
 import * as ninActions from "actions/Nins";
-import fetchMock from "fetch-mock";
 import personalDataReducer from "reducers/PersonalData";
-
 import {
   requestAllPersonalData,
   fetchAllPersonalData,
 } from "../sagas/PersonalData";
 import { put, call } from "redux-saga/effects";
-
-import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
-
-const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("Personal Data Actions", () => {
@@ -219,68 +209,6 @@ describe("Reducers", () => {
     });
   });
 });
-
-const fakeStore = (state) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...state }),
-});
-
-const fakeState = {
-  personal_data: {
-    data: {
-      given_name: "",
-      surname: "",
-      display_name: "",
-      language: "",
-      eppn: "",
-    },
-  },
-  config: {
-    csrf_token: "",
-    is_configured: true,
-    personal_data_url: "http://localhost/services/personal-data/user",
-  },
-  intl: {
-    locale: "en",
-    messagers: messages,
-  },
-  form: {
-    personal_data: {
-      values: {
-        given_name: "",
-        surname: "",
-        display_name: "",
-        language: "",
-      },
-    },
-  },
-};
-
-function setupComponent(store) {
-  const props = {
-    data: {
-      given_name: "",
-      surname: "",
-      display_name: "",
-      language: "",
-      eppn: "",
-    },
-    handleSave: mock.fn(),
-    handleChange: mock.fn(),
-  };
-
-  const wrapper = mount(
-    <Provider store={store}>
-      <PersonalDataContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper,
-  };
-}
 
 describe("Async component", () => {
   it("Sagas requestAllPersonalData", () => {
