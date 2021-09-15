@@ -19,7 +19,6 @@ const validatePersonalData = (values, props) => {
       }
     );
   }
-  console.log("errors", errors);
   return errors;
 };
 
