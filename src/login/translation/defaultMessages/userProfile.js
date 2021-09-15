@@ -1090,7 +1090,7 @@ export const userData = {
   "pd.update_locked_names": (
     <FormattedMessage
       id="pd.update_locked_names"
-      defaultMessage={`Get first and last names from Skatteverket.`}
+      defaultMessage={`Update first and last names from the Swedish Population Register.`}
     />
   ),
   "pd.hint.names_locked_when_verified": (
@@ -1331,7 +1331,7 @@ export const userData = {
   "security.user-updated": (
     <FormattedMessage
       id="security.user-updated"
-      defaultMessage={`First and last names are up-to-date with those registered at Skatteverket.`}
+      defaultMessage={`First and last names are up-to-date with those registered in the Swedish Population Register.`}
     />
   ),
 
