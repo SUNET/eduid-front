@@ -1,7 +1,7 @@
 export const LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK = "COUNT_EMAIL_LINK";
 export const LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE = "COUNT_PHONE_CODE";
 
-let distance = "";
+let period = "";
 
 export const clearCountdown = (key) => { 
   return window.localStorage.removeItem(key);
@@ -23,22 +23,22 @@ export const countFiveMin = (key) => {
   const elementCountDownTime = document.getElementById(`count-down-time-${key}`);
   // Resend link button will be disabled
   elementResendLink !== null && elementResendLink.classList.remove('button-active');
-  let countDownTime = getLocalStorage(key=== "email" ? LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK : LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
+  let countDownTime = getLocalStorage(key === "email" ? LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK : LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
   // Update the count down every 1 second
   let timer = setInterval(()=>{
     // Get today's date and time
     let now = new Date().getTime();
-    // Find the distance between now and the count down date
-    distance = countDownTime - now;
+    // Find the period between now and the count down date
+    period = countDownTime - now;
     // Time calculations for minutes and seconds
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let minutes = Math.floor((period % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((period % (1000 * 60)) / 1000);
     // Output the result in an element with id="count-down-time"
     if(elementCountDownTime!== null){
       elementCountDownTime.innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
     }
-    // If the count down is over, resedn-link will be active and timer will be display-none
-      if (distance < 0) {
+    // If the count down is over, resend-${key} will be active and timer will be display-none
+      if (period < 0) {
         document.querySelector(`#count-down-time-${key}`).classList.add('display-none');
         document.querySelector(`#resend-${key}`).classList.add('button-active');
         clearInterval(timer);  
