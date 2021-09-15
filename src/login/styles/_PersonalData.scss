@@ -7,9 +7,12 @@
   }
   button {
     margin-bottom: 0;
+    width: fit-content;
+    align-self: center;
     @media (max-width: 568px) {
       &.btn {
         font-size: unset;
+        width: unset;
       }
     }
   }
