@@ -165,7 +165,7 @@
   },
   {
     "id": "signup.recaptcha-not-verified",
-    "defaultMessage": "There was a problem verifying that you are a human. Please try again"
+    "defaultMessage": "There was a problem verifying that you are a human. Please try again."
   },
   {
     "id": "mail_duplicated",
