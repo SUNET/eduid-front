@@ -55,6 +55,7 @@ import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
+import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalData"
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -79,7 +80,7 @@ function* rootSaga() {
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestCredentials),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestSuggestedPassword),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, sendGetLetterProofing),
-    takeLatest(pdataActions.POST_USERDATA, savePersonalData),
+    takeLatest(pdataActions.POST_USERDATA, postPersonalDataSaga ),
     takeLatest(
       updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET,
       updateNamesFromSkatteverketSaga

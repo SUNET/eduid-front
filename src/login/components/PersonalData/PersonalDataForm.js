@@ -70,6 +70,7 @@ const RenderEditableNames = (props) => {
 };
 
 let PersonalDataForm = (props) => {
+  const loading = useSelector((state) => state.config.loading_data);
   const available_languages = useSelector(
     (state) => state.config.available_languages
   );
@@ -105,6 +106,7 @@ let PersonalDataForm = (props) => {
   // setPdata key and value.
   const handleFormChange = (field) => {
     setPdata({ ...pdata, [field.name]: field.value.trim() });
+    
   };
 
   return (
@@ -140,9 +142,9 @@ let PersonalDataForm = (props) => {
       <ButtonPrimary
         id="personal-data-button"
         className="settings-button"
-        disabled={props.pristine || props.submitting || isDisable}
+        disabled={props.pristine || props.submitting || isDisable || loading}
         onClick={() => {
-          dispatch(postUserdata());
+          dispatch(postUserdata(pdata));
           props.setEditMode(false);
         }}
       >

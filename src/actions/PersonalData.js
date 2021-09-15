@@ -10,7 +10,7 @@ export const POST_USERDATA_FAIL = "POST_PERSONAL_DATA_USER_FAIL";
 
 export function getAllUserdata() {
   return {
-    type: GET_ALL_USERDATA
+    type: GET_ALL_USERDATA,
   };
 }
 
@@ -19,21 +19,22 @@ export function getAllUserdataFail(err) {
     type: GET_ALL_USERDATA_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function changeUserdata(data) {
   return {
     type: CHANGE_USERDATA,
-    payload: data
+    payload: data,
   };
 }
 
-export function postUserdata() {
+export function postUserdata(pdata) {
   return {
-    type: POST_USERDATA
+    type: POST_USERDATA,
+    personalData: { ...pdata },
   };
 }
 
@@ -42,7 +43,7 @@ export function postUserdataFail(err) {
     type: POST_USERDATA_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }

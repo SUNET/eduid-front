@@ -1,13 +1,16 @@
 import * as actions from "actions/DashboardConfig";
+import * as loadingDataActions from "../login/redux/actions/loadingDataActions";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
   show_sidebar: true,
   is_configured: false,
+  loading_data: false,
   //is_fetching: false,
+
   is_app_loaded: false,
   available_languages: [],
-  debug: true
+  debug: true,
 };
 
 //const fetchingActions = [
@@ -65,7 +68,7 @@ let configReducer = (state = configData, action) => {
       return {
         ...state,
         is_fetching: false,
-        is_app_loaded: true
+        is_app_loaded: true,
       };
     case actions.GET_JSCONFIG_CONFIG:
       return {
@@ -86,37 +89,47 @@ let configReducer = (state = configData, action) => {
     case actions.NEW_CSRF_TOKEN:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case "@@router/LOCATION_CHANGE": {
       let show_sidebar = true;
       if (
-        urls_with_no_sidebar.filter(v => action.payload.pathname.endsWith(v))
+        urls_with_no_sidebar.filter((v) => action.payload.pathname.endsWith(v))
           .length > 0
       ) {
         show_sidebar = false;
       }
       return {
         ...state,
-        show_sidebar: show_sidebar
+        show_sidebar: show_sidebar,
       };
     }
+    case loadingDataActions.LOAD_DATA_REQUEST:
+      return {
+        ...state,
+        loading_data: true,
+      };
+    case loadingDataActions.LOAD_DATA_COMPLETE:
+      return {
+        ...state,
+        loading_data: false,
+      };
     default:
       //if (action.type.endsWith("_SUCCESS") || action.type.endsWith("_FAIL")) {
-        //return {
-          //...state,
-          //is_fetching: false
-        //};
+      //return {
+      //...state,
+      //is_fetching: false
+      //};
       //} else if (fetchingActions.includes(action.type)) {
-        //return {
-          //...state,
-          //is_fetching: true
-        //};
+      //return {
+      //...state,
+      //is_fetching: true
+      //};
       //} else if (unFetchingActions.includes(action.type)) {
-        //return {
-          //...state,
-          //is_fetching: false
-        //};
+      //return {
+      //...state,
+      //is_fetching: false
+      //};
       //}
       return state;
   }
