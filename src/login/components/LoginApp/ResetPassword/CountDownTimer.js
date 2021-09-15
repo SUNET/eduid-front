@@ -18,12 +18,12 @@ export const setLocalStorage = (key, val) => {
   return val;
 };
 
-export const countFiveMin = () => {
-  const elementResendLink = document.querySelector("#resend-link");
-  const elementCountDownTime = document.getElementById("count-down-time");
+export const countFiveMin = (key) => {
+  const elementResendLink = document.querySelector(`#resend-${key}`);
+  const elementCountDownTime = document.getElementById(`count-down-time-${key}`);
   // Resend link button will be disabled
   elementResendLink !== null && elementResendLink.classList.remove('button-active');
-  let countDownTime = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+  let countDownTime = getLocalStorage(key=== "email" ? LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK : LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
   // Update the count down every 1 second
   let timer = setInterval(()=>{
     // Get today's date and time
@@ -39,36 +39,12 @@ export const countFiveMin = () => {
     }
     // If the count down is over, resedn-link will be active and timer will be display-none
       if (distance < 0) {
-        document.querySelector("#count-down-time").classList.add('display-none');
-        document.querySelector("#resend-link").classList.add('button-active');
+        document.querySelector(`#count-down-time-${key}`).classList.add('display-none');
+        document.querySelector(`#resend-${key}`).classList.add('button-active');
         clearInterval(timer);  
       }else {
-        document.querySelector("#resend-link").classList.remove('button-active');
-        document.querySelector("#count-down-time").classList.remove('display-none');
+        document.querySelector(`#resend-${key}`).classList.remove('button-active');
+        document.querySelector(`#count-down-time-${key}`).classList.remove('display-none');
       }
     }, 1000);
-};
-
-export const countFiveMinPhone = () => {
-  const elementResendPhoneCode = document.querySelector("#resend-phone-code");
-  const elementCountDownTimePhone = document.querySelector("#count-down-time-phone");
-  elementResendPhoneCode !== null && document.querySelector("#resend-phone-code").classList.remove('button-active');
-  let countDownTime = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
-  let timer = setInterval(()=> {
-    let now = new Date().getTime();
-    distance = countDownTime - now;
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    if(elementCountDownTimePhone!== null){
-      elementCountDownTimePhone.innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0)
-    }
-      if (distance < 0) {
-        elementCountDownTimePhone && elementCountDownTimePhone.classList.add('display-none');
-        elementResendPhoneCode && elementResendPhoneCode.classList.add('button-active');
-        clearInterval(timer);  
-      }else {
-        elementResendPhoneCode && elementResendPhoneCode.classList.remove('button-active');
-        elementCountDownTimePhone && elementCountDownTimePhone.classList.remove('display-none');
-      }
-  }, 1000);
 };

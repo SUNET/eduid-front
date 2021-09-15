@@ -6,7 +6,7 @@ import {
 import postRequest from "../postDataRequest";
 import { requestPhoneCodeFail } from "../../actions/postResetPasswordActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-import { LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, countFiveMinPhone, clearCountdown, setLocalStorage } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
+import { LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, countFiveMin, clearCountdown, setLocalStorage } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { history } from "../../../components/App/App";
 
 export function* requestPhoneCode() {
@@ -26,7 +26,7 @@ export function* requestPhoneCode() {
     if (resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS") {
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
       setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
-      countFiveMinPhone();
+      countFiveMin("phone");
       history.push(`/reset-password/phone-code-sent/${data.email_code}`);
     }else if(resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL"){
       if(locationUrl.includes("extra-security")){

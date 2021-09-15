@@ -21,7 +21,7 @@ function EmailLinkSent(props){
   useEffect(()=>{
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     if(count || count > - 1){
-      countFiveMin();
+      countFiveMin("email");
     }
     else if(count <= -1){
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
@@ -41,10 +41,10 @@ function EmailLinkSent(props){
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
         <div className="timer">
           <p>{props.translate("resetpw.resend-link")} 
-            <a id={"resend-link"} onClick={sendLink}> 
+            <a id={"resend-email"} onClick={sendLink}> 
               {props.translate("resetpw.resend-link-button")} 
             </a>
-            <span id="count-down-time" />
+            <span id="count-down-time-email" />
           </p>
         </div>
       </div>

@@ -27,7 +27,7 @@ export function* postEmailLink() {
     if (resp.type === "POST_RESET_PASSWORD_SUCCESS") {
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
       setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, new Date().getTime() + 300000);
-      countFiveMin();
+      countFiveMin("email");
       history.push(`/reset-password/email-link-sent`);
     }
   } catch (error) {

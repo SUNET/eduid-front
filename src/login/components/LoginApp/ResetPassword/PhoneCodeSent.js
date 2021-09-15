@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import SuccessIconAnimation from "./SuccessIconAnimation";
 import { 
   clearCountdown,
-  countFiveMinPhone, 
+  countFiveMin, 
   getLocalStorage, 
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE
 } from "./CountDownTimer";
@@ -80,7 +80,7 @@ function PhoneCodeSent(props){
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     if(count){
       if(count > - 1 && Object.keys(phone).length){
-        countFiveMinPhone();
+        countFiveMin("phone");
       }
       else if(count  <= -1){
         clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
@@ -118,7 +118,7 @@ function PhoneCodeSent(props){
         <p>{props.translate("mobile.confirm_title")({ phone: phone.number && phone.number.replace(/^.{10}/g, '**********') })}</p>
         <PhoneCodeForm handlePhoneCode={handlePhoneCode} phone={phone} {...props} />
         <div className="timer">
-          <a id={"resend-phone-code"} onClick={resendPhoneCode}> 
+          <a id={"resend-phone"} onClick={resendPhoneCode}> 
             {props.translate("cm.resend_code")} 
           </a>
           <span id="count-down-time-phone" />
