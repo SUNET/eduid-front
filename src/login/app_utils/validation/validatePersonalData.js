@@ -3,15 +3,10 @@ import { emptyStringPattern } from "./regexPatterns";
 const validatePersonalData = (values, props) => {
   const errors = {};
   if (values !== undefined) {
-    console.log("values", values);
-    console.log("values.language", values.language);
-
-    [("given_name", "surname", "display_name", "language")].forEach(
+    ["given_name", "surname", "display_name", "language"].forEach(
       (inputName) => {
-        console.log("!values[inputName]", !values[inputName]);
         if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
-          console.log("hello");
-          // errors[inputName] = "required";
+          errors[inputName] = "required";
         }
         //none of the fields value properties differ from their initial properties will get error message.
         else if (props.pristine) {
