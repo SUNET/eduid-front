@@ -74,7 +74,6 @@ let PersonalDataForm = (props) => {
     (state) => state.config.available_languages
   );
   const dispatch = useDispatch();
-  // console.log("props", props);
   const personal_data = useSelector((state) => state.personal_data.data);
   // button status, defalut is false
   const [isDisable, setIsDisable] = useState(false);
