@@ -3,14 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
-import EduIDButton from "components/EduIDButton";
+import { postUserdata } from "actions/PersonalData";
+// import EduIDButton from "components/EduIDButton";
+import ButtonPrimary from "../login/components/Buttons/ButtonPrimary";
 import NameDisplay from "../login/components/DataDisplay/Name/NameDisplay";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { updateNamesFromSkatteverket } from "../login/redux/actions/updateNamesFromSkatteverketActions";
-import { validatePersonalData } from "../login/app_utils/validation/validatePersonalData";
+import validatePersonalData from "../login/app_utils/validation/validatePersonalData";
 import InjectIntl from "../login/translation/InjectIntl_HOC_factory";
+import LanguageRadioInputs from "../login/components/Inputs/LanguageRadioInputs";
+// import ButtonPrimary from "../login/components/Buttons/ButtonPrimary";
 
 const RenderLockedNames = ({ translate }) => {
   const dispatch = useDispatch();
@@ -69,6 +73,11 @@ const RenderEditableNames = (props) => {
 };
 
 let PersonalDataForm = (props) => {
+  const available_languages = useSelector(
+    (state) => state.config.available_languages
+  );
+  const dispatch = useDispatch();
+  // console.log("props", props);
   const personal_data = useSelector((state) => state.personal_data.data);
   // button status, defalut is false
   const [isDisable, setIsDisable] = useState(false);
@@ -99,6 +108,7 @@ let PersonalDataForm = (props) => {
 
   // setPdata key and value.
   const handleFormChange = (field) => {
+    console.log("field", field);
     setPdata({ ...pdata, [field.name]: field.value.trim() });
   };
 
@@ -125,21 +135,28 @@ let PersonalDataForm = (props) => {
         placeholder={props.translate("pd.display_name_placeholder")}
         helpBlock={props.translate("pd.display_name_input_help_text")}
       />
-      <Field
+      {/* <div className="radio-input-container"> */}
+      <LanguageRadioInputs
+        required={true}
+        selectOptions={available_languages}
+        {...props}
+      />
+      {/* </div> */}
+      {/* <Field
         component={CustomInput}
         required={true}
         name="language"
         selectOptions={props.langs}
         label={props.translate("pd.language")}
-      />
-      <EduIDButton
+      /> */}
+      <ButtonPrimary
         id="personal-data-button"
         className="settings-button"
         disabled={props.pristine || props.submitting || isDisable}
-        onClick={props.handleSave}
+        onClick={() => dispatch(postUserdata())}
       >
         {props.translate("button_save")}
-      </EduIDButton>
+      </ButtonPrimary>
     </Form>
   );
 };
