@@ -352,7 +352,7 @@ export const resetPassword = {
   "resetpw.set-new-password-success": (
     <FormattedMessage
       id="resetpw.set-new-password-success"
-      defaultMessage={`Password reset has been updated`}
+      defaultMessage={`Password has been updated.`}
     />
   ),
 
