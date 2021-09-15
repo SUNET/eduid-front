@@ -70,6 +70,7 @@ const RenderEditableNames = (props) => {
 };
 
 let PersonalDataForm = (props) => {
+  const error = useSelector((state) => state.config.loading_data);
   const loading = useSelector((state) => state.config.loading_data);
   const available_languages = useSelector(
     (state) => state.config.available_languages
@@ -106,7 +107,7 @@ let PersonalDataForm = (props) => {
   // setPdata key and value.
   const handleFormChange = (field) => {
     setPdata({ ...pdata, [field.name]: field.value.trim() });
-    
+
   };
 
   return (
