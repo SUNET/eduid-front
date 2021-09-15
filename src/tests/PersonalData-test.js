@@ -12,9 +12,7 @@ import personalDataReducer from "reducers/PersonalData";
 
 import {
   requestAllPersonalData,
-  // savePersonalData,
   fetchAllPersonalData,
-  // sendPersonalData
 } from "../sagas/PersonalData";
 import { put, call } from "redux-saga/effects";
 
@@ -356,51 +354,6 @@ describe("Async component", () => {
     next = generator.next();
     expect(next.value).toEqual(put(action));
   });
-
-  // it("Sagas savePersonalData", () => {
-  //   const generator = savePersonalData();
-
-  //   let next = generator.next();
-
-  //   // const config = next.value;
-  //   next = generator.next(fakeState);
-
-  //   const config = fakeState.config;
-  //   const data = {
-  //     given_name: "",
-  //     surname: "",
-  //     display_name: "",
-  //     language: "",
-  //     csrf_token: ""
-  //   };
-
-  //   // expect(data).toEqual(select(fakeState => fakeState.config));
-
-  //   generator.next(data);
-  //   generator.next();
-  //   next = generator.next();
-
-  //   expect(next.value).toEqual(call(sendPersonalData, config, data));
-
-  //   const action = {
-  //     type: actions.POST_USERDATA_SUCCESS,
-  //     payload: {
-  //       csrf_token: "csrf-token",
-  //       given_name: "",
-  //       surname: "",
-  //       display_name: "",
-  //       language: "",
-  //       eppn: ""
-  //     }
-  //   };
-  //   next = generator.next(action);
-  //   expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-  //   generator.next();
-  //   delete action.payload.csrf_token;
-  //   generator.next();
-  //   next = generator.next();
-  //   expect(next.value).toEqual(put(action));
-  // });
 });
 
 describe("PersonalData Component", () => {
@@ -408,22 +361,9 @@ describe("PersonalData Component", () => {
     const store = fakeStore(fakeState),
       { wrapper } = setupComponent(store),
       form = wrapper.find("form"),
-      fieldset = wrapper.find("fieldset"),
-      language = wrapper.find("#language-wrapper"),
-      surname = wrapper.find("#surname-wrapper"),
-      given_name = wrapper.find("#given_name-wrapper"),
-      display_name = wrapper.find("#display_name-wrapper"),
       button = wrapper.find("EduIDButton#personal-data-button");
 
-    expect(form.contains(fieldset.get(0))).toBeTruthy();
-    expect(fieldset.hasClass("tabpane")).toBeTruthy();
-    expect(fieldset.contains(language.get(0))).toBeTruthy();
-    expect(fieldset.contains(surname.get(0))).toBeTruthy();
-    expect(fieldset.contains(given_name.get(0))).toBeTruthy();
-    expect(fieldset.contains(display_name.get(0))).toBeTruthy();
-
     expect(form.props()).toMatchObject({ role: "form" });
-    expect(fieldset.props()).toMatchObject({ id: "personal-data-form" });
 
     const numCalls = store.dispatch.mock.calls.length;
     const fakeEvent = {

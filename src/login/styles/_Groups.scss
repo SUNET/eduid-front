@@ -69,47 +69,47 @@ article {
 // styling for EditView
 .data-panel {
   background-color: transparent;
-  .edit-data {
-    background-color: $white;
-    padding: 1rem;
+}
+.edit-data {
+  background-color: $white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  .title {
     display: flex;
-    flex-direction: column;
-    .title {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      p {
-        font-family: "ProximaNova-Bold";
-      }
-      button {
-        background-color: transparent;
-        box-shadow: 0 0 0;
-        text-decoration: underline;
-        border-radius: 0;
-        font-weight: 400;
-        margin: 0;
-        padding: 0;
-        height: 1rem;
-      }
+    justify-content: space-between;
+    align-items: baseline;
+    p {
+      font-family: "ProximaNova-Bold";
     }
-    nav {
-      display: flex;
-      font-family: "Akkurat";
-      margin-bottom: 1rem;
-      li {
-        margin-right: 1rem;
-        margin-bottom: 0.25rem;
-        p {
-          font-size: 1rem;
-          color: $black;
-          padding: 0;
-          line-height: 1;
-          border-bottom: $black solid 1px;
-          cursor: pointer;
-          &.active {
-            color: $orange-highlight;
-            border-bottom: transparent solid 1px;
-          }
+    button {
+      background-color: transparent;
+      box-shadow: 0 0 0;
+      text-decoration: underline;
+      border-radius: 0;
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+      height: 1rem;
+    }
+  }
+  nav {
+    display: flex;
+    font-family: "Akkurat";
+    margin-bottom: 1rem;
+    li {
+      margin-right: 1rem;
+      margin-bottom: 0.25rem;
+      p {
+        font-size: 1rem;
+        color: $black;
+        padding: 0;
+        line-height: 1;
+        border-bottom: $black solid 1px;
+        cursor: pointer;
+        &.active {
+          color: $orange-highlight;
+          border-bottom: transparent solid 1px;
         }
       }
     }

@@ -6,11 +6,15 @@ form {
   flex-direction: column;
   margin-top: 1.25rem;
 }
-
+.element-pair,
 .button-pair {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+}
+.element-pair {
+  margin-top: 1rem;
+  align-items: unset;
 }
 
 #reset-password-email-form {

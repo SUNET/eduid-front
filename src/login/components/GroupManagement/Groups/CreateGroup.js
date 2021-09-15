@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import GroupNameForm from "../GroupNameForm";
 
-const CloseButton = () => (
+export const CloseButton = () => (
   <svg
     className="close"
     width="16"
