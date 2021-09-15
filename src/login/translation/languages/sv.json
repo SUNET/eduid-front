@@ -386,7 +386,7 @@
   "resetpw.reset-pw-initialized": "Återställnings länken har skickats",
   "resetpw.return-login": "återgå till inloggningen",
   "resetpw.send-link": "Skicka länk till e-postadress",
-  "resetpw.send-sms-success": "En engångskod har skickats till din telefon.",
+  "resetpw.send-sms-success": "En engångsverifieringskod har skickats till din telefon.",
   "resetpw.send-sms-failed": "Det gick inte att skicka telefonkoden",
   "resetpw.set-new-password-description": "Ett säkert lösenord har genererats till dig. För att komma vidare behöver du kopiera det till Repetera ditt nya lösenord och klicka Acceptera lösenord.",
   "resetpw.set-new-password-heading": "Skapa ditt nya lösenord",
