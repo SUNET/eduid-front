@@ -142,7 +142,10 @@ let PersonalDataForm = (props) => {
         id="personal-data-button"
         className="settings-button"
         disabled={props.pristine || props.submitting || isDisable}
-        onClick={() => dispatch(postUserdata())}
+        onClick={() => {
+          dispatch(postUserdata());
+          props.setEditMode(false);
+        }}
       >
         {props.translate("button_save")}
       </ButtonPrimary>
