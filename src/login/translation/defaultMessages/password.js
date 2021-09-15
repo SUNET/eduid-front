@@ -258,7 +258,7 @@ export const resetPassword = {
   "resetpw.reset-pw-initialized": (
     <FormattedMessage
       id="resetpw.reset-pw-initialized"
-      defaultMessage={`Reset password link has been sent`}
+      defaultMessage={`Reset password link has been sent to your email.`}
     /> 
   ),
   "resetpw.email-throttled": (
@@ -283,7 +283,7 @@ export const resetPassword = {
   "resetpw.resend-link-button": (
     <FormattedMessage
       id="resetpw.resend-link-button"
-      defaultMessage={`resend link`}
+      defaultMessage={`resend link in`}
     /> 
   ),
   "resetpw.extra-security_heading": (
@@ -352,7 +352,7 @@ export const resetPassword = {
   "resetpw.set-new-password-success": (
     <FormattedMessage
       id="resetpw.set-new-password-success"
-      defaultMessage={`Password reset has been updated`}
+      defaultMessage={`Password has been updated.`}
     />
   ),
 
