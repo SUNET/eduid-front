@@ -39,12 +39,12 @@ export const countFiveMin = (key) => {
     }
     // If the count down is over, resend-${key} will be active and timer will be display-none
       if (period < 0) {
-        document.querySelector(`#count-down-time-${key}`).classList.add('display-none');
-        document.querySelector(`#resend-${key}`).classList.add('button-active');
+        elementCountDownTime && elementCountDownTime.classList.add('display-none');
+        elementResendLink && elementResendLink.classList.add('button-active');
         clearInterval(timer);  
       }else {
-        document.querySelector(`#resend-${key}`).classList.remove('button-active');
-        document.querySelector(`#count-down-time-${key}`).classList.remove('display-none');
+        elementResendLink && elementResendLink.classList.remove('button-active');
+        elementCountDownTime && elementCountDownTime.classList.remove('display-none');
       }
     }, 1000);
 };
