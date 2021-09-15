@@ -1022,7 +1022,7 @@ export const userData = {
   "mobile.confirm_title": (values) => (
     <FormattedHTMLMessage
       id="mobile.confirm_title"
-      defaultMessage={`Enter the code sent to <b>{phone}</b> here`}
+      defaultMessage={`Enter the code sent to <b>{phone}</b>`}
       values={values}
     />
   ),
