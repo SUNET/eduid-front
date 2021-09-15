@@ -1,11 +1,13 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
+import { updateIntl } from "react-intl-redux";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../../../actions/PersonalData";
 import {
   loadingData,
   loadingDataComplete,
 } from "../../actions/loadingDataActions";
+import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 export function* postPersonalDataSaga(action) {
   const state = yield select((state) => state);
@@ -22,6 +24,15 @@ export function* postPersonalDataSaga(action) {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     yield put(response);
+    if (response.type.endsWith("_SUCCESS")) {
+      yield put(
+        updateIntl({
+          locale: response.payload.language,
+          messages: LOCALIZED_MESSAGES[response.payload.language],
+        })
+      );
+      yield put(eduidRMAllNotify());
+    }
   } catch (error) {
     yield put(actions.postUserdataFail(error.toString()));
   } finally {

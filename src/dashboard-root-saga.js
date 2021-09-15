@@ -55,7 +55,7 @@ import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
-import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalData"
+import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga"
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
