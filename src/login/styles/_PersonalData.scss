@@ -7,12 +7,22 @@
   }
   button {
     margin-bottom: 0;
+    width: fit-content;
+    align-self: center;
     @media (max-width: 568px) {
       &.btn {
         font-size: unset;
+        width: unset;
       }
     }
   }
+  .title {
+    align-items: center;
+    p {
+      padding-bottom: 0;
+    }
+  }
+
   .name-inputs {
     .hint {
       margin-top: 1rem;

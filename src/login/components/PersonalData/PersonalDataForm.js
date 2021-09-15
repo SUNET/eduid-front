@@ -3,32 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
-import EduIDButton from "components/EduIDButton";
-import NameDisplay from "../login/components/DataDisplay/Name/NameDisplay";
-import CustomInput from "../login/components/Inputs/CustomInput";
+import ButtonPrimary from "../Buttons/ButtonPrimary";
+import NameDisplay from "../DataDisplay/Name/NameDisplay";
+import CustomInput from "../Inputs/CustomInput";
+import validatePersonalData from "../../app_utils/validation/validatePersonalData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
-import { updateNamesFromSkatteverket } from "../login/redux/actions/updateNamesFromSkatteverketActions";
-import { emptyStringPattern } from "../login/app_utils/validation/regexPatterns";
-import InjectIntl from "../login/translation/InjectIntl_HOC_factory";
-
-/* FORM */
-
-const validatePersonalData = (values, props) => {
-  const errors = {};
-  ["given_name", "surname", "display_name", "language"].forEach((inputName) => {
-    if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
-      errors[inputName] = "required";
-    }
-    //none of the fields value properties differ from their initial properties will get error message.
-    else if (props.pristine) {
-      errors[inputName] = "value not changed";
-    } else if (values[inputName].trim() === props.initialValues[inputName]) {
-      errors[inputName] = "value not changed";
-    }
-  });
-  return errors;
-};
+import { postUserdata } from "../../../actions/PersonalData";
+import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
+import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const RenderLockedNames = ({ translate }) => {
   const dispatch = useDispatch();
@@ -87,6 +70,10 @@ const RenderEditableNames = (props) => {
 };
 
 let PersonalDataForm = (props) => {
+  const available_languages = useSelector(
+    (state) => state.config.available_languages
+  );
+  const dispatch = useDispatch();
   const personal_data = useSelector((state) => state.personal_data.data);
   // button status, defalut is false
   const [isDisable, setIsDisable] = useState(false);
@@ -147,17 +134,20 @@ let PersonalDataForm = (props) => {
         component={CustomInput}
         required={true}
         name="language"
-        selectOptions={props.langs}
+        selectOptions={available_languages}
         label={props.translate("pd.language")}
       />
-      <EduIDButton
+      <ButtonPrimary
         id="personal-data-button"
         className="settings-button"
         disabled={props.pristine || props.submitting || isDisable}
-        onClick={props.handleSave}
+        onClick={() => {
+          dispatch(postUserdata());
+          props.setEditMode(false);
+        }}
       >
         {props.translate("button_save")}
-      </EduIDButton>
+      </ButtonPrimary>
     </Form>
   );
 };

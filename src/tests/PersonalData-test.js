@@ -1,25 +1,15 @@
-const mock = require("jest-mock");
-import React from "react";
-import { mount } from "enzyme";
 import expect from "expect";
-import PersonalDataContainer from "containers/PersonalData";
 import * as actions from "actions/PersonalData";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
 import * as ninActions from "actions/Nins";
-import fetchMock from "fetch-mock";
 import personalDataReducer from "reducers/PersonalData";
-
 import {
   requestAllPersonalData,
   fetchAllPersonalData,
 } from "../sagas/PersonalData";
 import { put, call } from "redux-saga/effects";
-
-import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
-
-const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 describe("Personal Data Actions", () => {
@@ -220,68 +210,6 @@ describe("Reducers", () => {
   });
 });
 
-const fakeStore = (state) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...state }),
-});
-
-const fakeState = {
-  personal_data: {
-    data: {
-      given_name: "",
-      surname: "",
-      display_name: "",
-      language: "",
-      eppn: "",
-    },
-  },
-  config: {
-    csrf_token: "",
-    is_configured: true,
-    personal_data_url: "http://localhost/services/personal-data/user",
-  },
-  intl: {
-    locale: "en",
-    messagers: messages,
-  },
-  form: {
-    personal_data: {
-      values: {
-        given_name: "",
-        surname: "",
-        display_name: "",
-        language: "",
-      },
-    },
-  },
-};
-
-function setupComponent(store) {
-  const props = {
-    data: {
-      given_name: "",
-      surname: "",
-      display_name: "",
-      language: "",
-      eppn: "",
-    },
-    handleSave: mock.fn(),
-    handleChange: mock.fn(),
-  };
-
-  const wrapper = mount(
-    <Provider store={store}>
-      <PersonalDataContainer {...props} />
-    </Provider>
-  );
-  return {
-    props,
-    wrapper,
-  };
-}
-
 describe("Async component", () => {
   it("Sagas requestAllPersonalData", () => {
     const generator = requestAllPersonalData();
@@ -353,87 +281,5 @@ describe("Async component", () => {
     };
     next = generator.next();
     expect(next.value).toEqual(put(action));
-  });
-});
-
-describe("PersonalData Component", () => {
-  it("Renders", () => {
-    const store = fakeStore(fakeState),
-      { wrapper } = setupComponent(store),
-      form = wrapper.find("form"),
-      button = wrapper.find("EduIDButton#personal-data-button");
-
-    expect(form.props()).toMatchObject({ role: "form" });
-
-    const numCalls = store.dispatch.mock.calls.length;
-    const fakeEvent = {
-      preventDefault: () => {},
-    };
-    button.props().onClick(fakeEvent);
-    expect(store.dispatch.mock.calls.length).toEqual(numCalls + 1);
-  });
-});
-
-describe("PersonalData Container", () => {
-  let given_name,
-    fulldom,
-    surname,
-    display_name,
-    language,
-    eppn,
-    mockProps,
-    wrapper,
-    dispatch;
-
-  beforeEach(() => {
-    const store = fakeStore(fakeState);
-
-    mockProps = {
-      data: {
-        given_name: "Pablo",
-        surname: "Iglesias",
-        display_name: "Pablo",
-        language: "en",
-        eppn: "dummy-eppn",
-      },
-    };
-
-    wrapper = mount(
-      <Provider store={store}>
-        <PersonalDataContainer {...mockProps} />
-      </Provider>
-    );
-    fulldom = wrapper.find(PersonalDataContainer);
-    given_name = fulldom.props().data.given_name;
-    surname = fulldom.props().data.surname;
-    display_name = fulldom.props().data.display_name;
-    language = fulldom.props().data.language;
-    eppn = fulldom.props().data.eppn;
-    dispatch = store.dispatch;
-  });
-
-  afterEach(() => {
-    fetchMock.restore();
-  });
-
-  it("Renders", () => {
-    expect(language).toEqual("en");
-    expect(given_name).toEqual("Pablo");
-    expect(surname).toEqual("Iglesias");
-    expect(display_name).toEqual("Pablo");
-    expect(eppn).toEqual("dummy-eppn");
-  });
-
-  it("Clicks", () => {
-    const mockEvent = {
-      preventDefault: () => {},
-    };
-
-    fetchMock.post("http://localhost/services/personal-data/user", {
-      type: actions.POST_USERDATA_SUCCESS,
-    });
-    const numCalls = dispatch.mock.calls.length;
-    wrapper.find("EduIDButton#personal-data-button").props().onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
 });
