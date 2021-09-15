@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
 import SuccessIconAnimation from "./SuccessIconAnimation";
-import { RenderingTimer, countDownStart, getLocalStorage, LOCAL_STORAGE_PERSISTED_COUNT } from "./CountDownTimer";
+import { getLocalStorage, countFiveMin, LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, clearCountdown } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 function EmailLinkSent(props){
   const dispatch = useDispatch();
@@ -19,9 +19,13 @@ function EmailLinkSent(props){
   };
 
   useEffect(()=>{
-    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
-    if(count > - 1)
-      countDownStart();
+    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+    if(count || count > - 1){
+      countFiveMin("email");
+    }
+    else if(count <= -1){
+      clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+    }
   },[])
 
   useEffect(()=>{
@@ -37,7 +41,10 @@ function EmailLinkSent(props){
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
         <div className="timer">
           <p>{props.translate("resetpw.resend-link")} 
-            <RenderingTimer sendLink={sendLink} {...props}/>
+            <a id={"resend-email"} onClick={sendLink}> 
+              {props.translate("resetpw.resend-link-button")} 
+            </a>
+            <span id="count-down-time-email" />
           </p>
         </div>
       </div>

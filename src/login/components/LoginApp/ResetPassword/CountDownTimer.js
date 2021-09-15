@@ -1,79 +1,50 @@
-import React from "react";
+export const LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK = "COUNT_EMAIL_LINK";
+export const LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE = "COUNT_PHONE_CODE";
 
-export const LOCAL_STORAGE_PERSISTED_COUNT = "count";
+let period = "";
 
-let count = 0, counter = null, minute = "", second = "";
-
-const timer = () => {
-  count = setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT, count - 1);
-  const elementMinute = document.querySelector("#minute");
-  const elementSecond = document.querySelector("#second");
-  const elementResendLink = document.querySelector("#resend-link");
-
-  if (count <= -1) {
-     clearInterval(counter),
-     //if count is -1  or below, clearInterval
-     elementMinute !== null && elementMinute.classList.add('display-none'),
-     elementSecond !== null && elementSecond.classList.add('display-none'),
-     elementResendLink !== null && elementResendLink.classList.add('button-active')
-     // timer(minute, second) will not be display and the button will be activated
-  }else if(count > 0){
-    minute = Math.floor(count / 60),
-    second = count % 60
-    elementMinute !== null && elementMinute.classList.remove('display-none'),
-    elementSecond !== null && elementSecond.classList.remove('display-none'),
-    elementResendLink !== null && elementResendLink.classList.remove('button-active')
-    if(elementMinute){
-      elementMinute.textContent = minute.toString().padStart(2,0)+":";
-    }if(elementSecond)
-      elementSecond.textContent = second.toString().padStart(2,0)
-    }
-}
-
-export const clearCountdown = () => { 
-  return window.localStorage.removeItem(LOCAL_STORAGE_PERSISTED_COUNT);
-}    
+export const clearCountdown = (key) => { 
+  return window.localStorage.removeItem(key);
+};   
 
 export const getLocalStorage = (key) => {
   return window.localStorage ? window.localStorage.getItem(key) : '';
-}
+};
 
 export const setLocalStorage = (key, val) => {
   if (window.localStorage) {
     window.localStorage.setItem(key, val);
   }
   return val;
-} 
+};
 
-export const countDownStart = () =>{
-  if(getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT) <= -1){
-    clearCountdown();
-  }
-  clearInterval(counter);
-  count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT) || 300;
-  // 300 = 5 min
-  counter = setInterval(timer, 1000);
-  // every countdown step is 1 second 
-}
-
-export const RenderingTimer = (props) => {  
-  const countLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
-  return (
-    <>
-      <a id={"resend-link"} className={countLocalStorage  <=- 1 ? "button-active" : ""} onClick={props.sendLink}> {props.translate("resetpw.resend-link-button")} </a>
-      <span id="minute" className={countLocalStorage  <=- 1 ? "display-none" : ""}/>
-      <span id="second" className={countLocalStorage  <=- 1 ? "display-none" : ""} />
-    </>
-  )
-}
-
-export const RenderingResendCodeTimer = (props) => {  
-  const countLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT);
-  return (
-    <>
-      <a id={"resend-link"} className={countLocalStorage === null || countLocalStorage  <=- 1 ? "button-active" : ""} onClick={props.resendPhoneCode}> {props.translate("cm.resend_code")} </a>
-      <span id="minute" className={countLocalStorage  <=- 1 ? "display-none" : ""}/>
-      <span id="second" className={countLocalStorage  <=- 1 ? "display-none" : ""} />
-    </>
-  )
-}
+export const countFiveMin = (key) => {
+  const elementResendLink = document.querySelector(`#resend-${key}`);
+  const elementCountDownTime = document.getElementById(`count-down-time-${key}`);
+  // Resend link button will be disabled
+  elementResendLink !== null && elementResendLink.classList.remove('button-active');
+  let countDownTime = getLocalStorage(key === "email" ? LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK : LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
+  // Update the count down every 1 second
+  let timer = setInterval(()=>{
+    // Get today's date and time
+    let now = new Date().getTime();
+    // Find the period between now and the count down date
+    period = countDownTime - now;
+    // Time calculations for minutes and seconds
+    let minutes = Math.floor((period % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((period % (1000 * 60)) / 1000);
+    // Output the result in an element with id="count-down-time"
+    if(elementCountDownTime!== null){
+      elementCountDownTime.innerHTML = minutes.toString().padStart(2,0)+":" + seconds.toString().padStart(2,0);
+    }
+    // If the count down is over, resend-${key} will be active and timer will be display-none
+      if (period < 0) {
+        document.querySelector(`#count-down-time-${key}`).classList.add('display-none');
+        document.querySelector(`#resend-${key}`).classList.add('button-active');
+        clearInterval(timer);  
+      }else {
+        document.querySelector(`#resend-${key}`).classList.remove('button-active');
+        document.querySelector(`#count-down-time-${key}`).classList.remove('display-none');
+      }
+    }, 1000);
+};
