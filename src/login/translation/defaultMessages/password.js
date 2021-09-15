@@ -373,7 +373,7 @@ export const resetPassword = {
   "resetpw.send-sms-success": (
     <FormattedMessage
       id="resetpw.send-sms-success"
-      defaultMessage={`Phone code has been sent.`}
+      defaultMessage={`One time verification code has been sent to your phone.`}
     />
   ),
 
