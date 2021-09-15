@@ -16,6 +16,13 @@
       }
     }
   }
+  .title {
+    align-items: center;
+    p {
+      padding-bottom: 0;
+    }
+  }
+
   .name-inputs {
     .hint {
       margin-top: 1rem;
