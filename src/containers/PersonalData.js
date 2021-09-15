@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import PersonalData from "components/PersonalData";
-import { postUserdata } from "actions/PersonalData";
+// import { postUserdata } from "actions/PersonalData";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
@@ -10,23 +10,23 @@ const mapStateToProps = (state) => {
     // langs.unshift(["", props.translate("pd.choose-language")]);
   }
   return {
-    data: state.personal_data.data,
-    langs: langs
+    // data: state.personal_data.data,
+    langs: langs,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleSave: e => {
-      e.preventDefault();
-      dispatch(postUserdata());
-    }
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     handleSave: e => {
+//       e.preventDefault();
+//       dispatch(postUserdata());
+//     }
+//   };
+// };
 
 const PersonalDataContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
+  // mapDispatchToProps
 )(PersonalData);
 
 export default i18n(PersonalDataContainer);
