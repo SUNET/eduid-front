@@ -283,7 +283,7 @@ export const resetPassword = {
   "resetpw.resend-link-button": (
     <FormattedMessage
       id="resetpw.resend-link-button"
-      defaultMessage={`resend link in`}
+      defaultMessage={`resend link`}
     /> 
   ),
   "resetpw.extra-security_heading": (
