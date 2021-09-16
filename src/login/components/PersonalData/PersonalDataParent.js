@@ -91,7 +91,8 @@ const PersonalDataParent = (props) => {
   const personal_data = useSelector((state) => state.personal_data.data);
   const hasPersonalData = Object.entries(personal_data)
     .filter((entry) => entry[0] !== "eppn")
-    .some((entry) => entry[1].length > 0);
+    .some((entry) => entry[1] !== null);
+
   return (
     <article className="personal-data">
       <div className="intro">

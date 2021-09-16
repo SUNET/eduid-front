@@ -12,6 +12,7 @@ import { eduidRMAllNotify } from "../../../../actions/Notifications";
 export function* postPersonalDataSaga(action) {
   const state = yield select((state) => state);
   const url = state.config.personal_data_url + "user";
+  console.log("saga action", action);
   const dataToSend = {
     given_name: action.personalData.given_name,
     surname: action.personalData.surname,
