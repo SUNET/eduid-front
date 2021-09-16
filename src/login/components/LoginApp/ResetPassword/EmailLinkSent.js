@@ -42,6 +42,7 @@ function EmailLinkSent(props){
             <a id={"resend-email"} onClick={sendLink}> 
               {props.translate("resetpw.resend-link-button")} 
             </a>
+            <span id="timer-in" className="display-none">{props.translate("resetpw.resend-timer-in")} </span>
             <span id="count-down-time-email" />
           </p>
         </div>

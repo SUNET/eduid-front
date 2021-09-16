@@ -118,6 +118,7 @@ function PhoneCodeSent(props){
           <a id={"resend-phone"} onClick={resendPhoneCode}> 
             {props.translate("cm.resend_code")} 
           </a>
+          <span id="timer-in" className="display-none">{props.translate("resetpw.resend-timer-in")} </span>
           <span id="count-down-time-phone" />
         </div>
       </div>
