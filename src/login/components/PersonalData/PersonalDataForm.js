@@ -25,30 +25,31 @@ const RenderLockedNames = ({ translate }) => {
   // update names if success message in redux store
   const messages = useSelector((state) => state.notifications.messages);
   const [updatedNames, setUpdatedNames] = useState({
-    updatedGivenName: null,
-    updatedSurname: null,
+    givenName: null,
+    surname: null,
   });
-  const namesUpdated = Object.entries(updatedNames).some(
+  const areUpdated = Object.entries(updatedNames).some(
     (entry) => entry[1] !== null
   );
   useEffect(() => {
     if (messages.length > 0) {
       setUpdatedNames({
-        updatedFirstName: given_name,
-        updatedLastName: surname,
+        givenName: given_name,
+        surname: surname,
       });
     }
+    return undefined;
   }, [messages]);
   return (
     <Fragment>
       <div className="external-names">
         <NameDisplay
           label={translate("pd.given_name")}
-          name={namesUpdated ? updatedNames.updatedGivenName : given_name}
+          name={areUpdated ? updatedNames.givenName : given_name}
         />
         <NameDisplay
           label={translate("pd.surname")}
-          name={namesUpdated ? updatedNames.updatedSurname : surname}
+          name={areUpdated ? updatedNames.surname : surname}
         />
       </div>
       <div className="icon-text">
