@@ -11,6 +11,7 @@ import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/a
 import Splash from "../../../../containers/Splash";
 import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
 import { saveLinkCode } from "./../../../redux/actions/postResetPasswordActions";
+import { cancelWebauthnAssertion } from "../../../redux/actions/getWebauthnAssertionActions";
 
 const SecurityKeyButton = ({ 
   selected_option,
@@ -82,6 +83,7 @@ function ExtraSecurity(props){
 
   useEffect(()=>{
     dispatch(selectExtraSecurity(null));
+    dispatch(cancelWebauthnAssertion ());
     if(extra_security !== undefined){
       if(Object.keys(extra_security).length > 0){
         setExtraSecurity(extra_security);

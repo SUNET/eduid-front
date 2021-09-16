@@ -31,10 +31,18 @@
   }
 }
 
-#link-forgot-password {
+a.send-link {
   text-decoration: underline;
   &:hover {
     text-decoration: none;
+  }
+}
+
+a.send-link.disabled {
+  color: $gray;
+  text-decoration: none;
+  &:hover {
+    cursor: not-allowed;
   }
 }
 

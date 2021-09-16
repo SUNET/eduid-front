@@ -12,7 +12,7 @@ import {
   startWebauthnRegistration,
   startAskWebauthnDescription,
   stopAskWebauthnDescription,
-  chooseAuthenticator
+  chooseAuthenticator,
 } from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
@@ -25,60 +25,60 @@ const mapStateToProps = (state) => {
     redirect_to: state.security.location,
     deleted: state.security.deleted,
     webauthn_asking_description: state.security.webauthn_asking_description,
-    authenticator: state.security.webauthn_authenticator
+    authenticator: state.security.webauthn_authenticator,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleStartConfirmationPassword: function() {
+    handleStartConfirmationPassword: function () {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationPassword());
     },
-    handleStopConfirmationPassword: function() {
+    handleStopConfirmationPassword: function () {
       dispatch(stopConfirmationPassword());
     },
     handleConfirmationPassword: () => {
       dispatch(confirmPasswordChange());
     },
-    handleStartConfirmationDeletion: function() {
+    handleStartConfirmationDeletion: function () {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationDeletion());
     },
-    handleStopConfirmationDeletion: function() {
+    handleStopConfirmationDeletion: function () {
       dispatch(stopConfirmationDeletion());
     },
-    handleConfirmationDeletion: function() {
+    handleConfirmationDeletion: function () {
       dispatch(confirmDeletion());
     },
-    handleStartAskingKeyWebauthnDescription: function() {
+    handleStartAskingKeyWebauthnDescription: function () {
       dispatch(eduidRMAllNotify());
       dispatch(chooseAuthenticator("cross-platform"));
       dispatch(startAskWebauthnDescription());
     },
-    handleStartAskingDeviceWebauthnDescription: function() {
+    handleStartAskingDeviceWebauthnDescription: function () {
       dispatch(eduidRMAllNotify());
       dispatch(chooseAuthenticator("platform"));
       dispatch(startAskWebauthnDescription());
     },
-    handleStopAskingWebauthnDescription: function() {
+    handleStopAskingWebauthnDescription: function () {
       dispatch(stopAskWebauthnDescription());
     },
-    handleStartWebauthnRegistration: function() {
-      const description = document.getElementById(
-        "describeWebauthnTokenDialogControl"
-      ).children[1].value.trim();
+    handleStartWebauthnRegistration: function () {
+      const description = document
+        .getElementById("describeWebauthnTokenDialogControl")
+        .value.trim();
       dispatch(stopAskWebauthnDescription());
       dispatch(startWebauthnRegistration(description));
     },
-    handleRemoveWebauthnToken: function(e) {
+    handleRemoveWebauthnToken: function (e) {
       const token = e.target.closest(".webauthn-token-holder").dataset.token;
       dispatch(postRemoveWebauthnToken(token));
     },
-    handleVerifyWebauthnToken: function(e) {
+    handleVerifyWebauthnToken: function (e) {
       const token = e.target.closest(".webauthn-token-holder").dataset.token;
       dispatch(postVerifyWebauthnToken(token));
-    }
+    },
   };
 };
 

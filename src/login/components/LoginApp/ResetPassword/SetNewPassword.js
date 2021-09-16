@@ -8,18 +8,20 @@ import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import { 
+import {
+  storeNewPassword,
   setNewPassword, 
   setNewPasswordExtraSecurityPhone, 
   setNewPasswordExtraSecurityToken, 
   setNewPasswordExtraSecurityExternalMfa  
 } from "../../../redux/actions/postResetNewPasswordActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faCopy, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import PropTypes from "prop-types";
 import Splash from "../../../../containers/Splash";
+import ButtonSecondary from "../../Buttons/ButtonSecondary";
 
 const validateNewPassword = (values, props) => {
   const newPassword = "new-password";
@@ -33,7 +35,8 @@ const validateNewPassword = (values, props) => {
   return errors;
 };
 
-let NewPasswordForm = (props) =>{
+let NewPasswordForm = (props) => {
+  const history = useHistory();
   return (
     <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" onSubmit={props.clickSetNewPassword} >
       <Field
@@ -44,7 +47,21 @@ let NewPasswordForm = (props) =>{
         required={true}
         label={props.translate("chpass.form_custom_password_repeat")}
         placeholder="xxxx xxxx xxxx"
+        autoComplete={"new-password"} 
       />
+      <div className="new-password-button-container">
+      { props.extra_security && Object.keys(props.extra_security).length > 0 &&
+        <ButtonSecondary
+          className="secondary"
+          id="go-back-button"
+          onClick={() => 
+            history.push(`/reset-password/extra-security/${props.emailCode}`)
+          }
+        >
+          <FontAwesomeIcon icon={faArrowLeft} />
+          {props.translate("resetpw.go-back")}
+        </ButtonSecondary>
+      }
       <EduIDButton
         className="settings-button"
         id="new-password-button"
@@ -52,6 +69,7 @@ let NewPasswordForm = (props) =>{
       >
         {props.translate("resetpw.accept-password")}
       </EduIDButton>
+      </div>
     </Form>
   ) 
 }
@@ -61,6 +79,10 @@ NewPasswordForm = reduxForm({
 })(NewPasswordForm);
 
 NewPasswordForm = connect(() => ({
+  enableReinitialize: true,
+  initialValues: {
+    "new-password": ""
+  },
   destroyOnUnmount: false,
   touchOnChange: true,
   validate: validateNewPassword
@@ -76,12 +98,17 @@ function SetNewPassword(props){
   const selected_option = useSelector(
     (state) => state.resetPassword.selected_option
   );
+  const extra_security = useSelector(
+    (state) => state.resetPassword.extra_security
+  );
   const [password, setPassword] = useState(null);
+  const [toolTipText, setToolTipText] = useState("resetpw.copy-to-clipboard");
   const ref = useRef(null);
 
   useEffect(()=>{
     setPassword(suggested_password);
     dispatch(saveLinkCode(emailCode));
+
   },[suggested_password, dispatch]);
 
   // Change path to extra-security without selected option on reload
@@ -94,16 +121,20 @@ function SetNewPassword(props){
   const copyToClipboard = () => {
     ref.current.select();
     document.execCommand('copy');
+    setToolTipText("resetpw.copied-in-clipboard")
     document.getElementById("icon-copy").style.display = "none";
     document.getElementById("icon-check").style.display = "inline";
     setTimeout(()=> {
       document.getElementById("icon-copy").style.display = "inline";
       document.getElementById("icon-check").style.display = "none";
+      setToolTipText("resetpw.copy-to-clipboard")
     }, 1000);
   };
 
   const clickSetNewPassword = (e) => {
     e.preventDefault();
+    const newPassword = e.target["new-password"].value;
+    dispatch(storeNewPassword(newPassword));
     if(!selected_option || selected_option === "without"){
       dispatch(setNewPassword());
     }else if(selected_option === "phoneCode"){
@@ -128,16 +159,18 @@ function SetNewPassword(props){
           ref={ref}
           defaultValue={password && password}
           readOnly={true}
-          autoComplete={"new-password"} 
         />
         <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
+          <div className="tool-tip-text" id="tool-tip">{props.translate(toolTipText)}</div>
         </button> 
       </div>
       <NewPasswordForm {...props} 
         suggested_password={suggested_password}
         clickSetNewPassword={clickSetNewPassword}
+        emailCode={emailCode}
+        extra_security={extra_security}
       />
     </>
   ) 

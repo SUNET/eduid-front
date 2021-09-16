@@ -258,7 +258,7 @@ export const resetPassword = {
   "resetpw.reset-pw-initialized": (
     <FormattedMessage
       id="resetpw.reset-pw-initialized"
-      defaultMessage={`Reset password link has been sent`}
+      defaultMessage={`Reset password link has been sent to your email.`}
     /> 
   ),
   "resetpw.email-throttled": (
@@ -283,19 +283,19 @@ export const resetPassword = {
   "resetpw.resend-link-button": (
     <FormattedMessage
       id="resetpw.resend-link-button"
-      defaultMessage={`resend link`}
+      defaultMessage={`resend link in`}
     /> 
   ),
   "resetpw.extra-security_heading": (
     <FormattedMessage
       id="resetpw.extra-security_heading"
-      defaultMessage={`Extra security`}
+      defaultMessage={`Select an extra security option`}
     />
   ),
   "resetpw.extra-security_description": (
     <FormattedMessage
       id="resetpw.extra-security_description"
-      defaultMessage={`Prove that your are the owner of the account.`}
+      defaultMessage={`A password reset using an extra security option will keep your account confirmed.`}
     />
   ),
   "resetpw.extra-phone_send_sms": (values) => (
@@ -352,7 +352,7 @@ export const resetPassword = {
   "resetpw.set-new-password-success": (
     <FormattedMessage
       id="resetpw.set-new-password-success"
-      defaultMessage={`Password reset has been updated`}
+      defaultMessage={`Password has been updated.`}
     />
   ),
 
@@ -373,7 +373,7 @@ export const resetPassword = {
   "resetpw.send-sms-success": (
     <FormattedMessage
       id="resetpw.send-sms-success"
-      defaultMessage={`Phone code has been sent.`}
+      defaultMessage={`One time verification code has been sent to your phone.`}
     />
   ),
 
@@ -448,6 +448,24 @@ export const resetPassword = {
     <FormattedMessage
       id="resetpw.external-mfa-fail"
       defaultMessage={`External MFA failed.`}
+    />
+  ),
+  "resetpw.go-back": (
+    <FormattedMessage
+      id="resetpw.go-back"
+      defaultMessage={`go back`}
+    />
+  ),
+  "resetpw.copy-to-clipboard": (
+    <FormattedMessage
+      id="resetpw.copy-to-clipboard"
+      defaultMessage={`Copy to clipboard`}
+    />
+  ),
+  "resetpw.copied-in-clipboard": (
+    <FormattedMessage
+      id="resetpw.copied-in-clipboard"
+      defaultMessage={`Copied!`}
     />
   ),
 };

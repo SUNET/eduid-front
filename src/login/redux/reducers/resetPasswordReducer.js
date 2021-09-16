@@ -1,4 +1,5 @@
 import * as postActions from "../actions/postResetPasswordActions";
+import * as postNewPasswordActions from "../actions/postResetNewPasswordActions";
 import * as getWebauthnActions from "../actions/getWebauthnAssertionActions";
 
 const data = {
@@ -6,7 +7,8 @@ const data = {
     email_code: "",
     phone: {},
     webauthn_assertion: null,
-    selected_option: null
+    selected_option: null,
+    new_password: null
 };
 
 let resetPasswordReducer = (state = data, action) => {
@@ -55,6 +57,11 @@ let resetPasswordReducer = (state = data, action) => {
         ...action.payload
       };
     case postActions.SELECT_EXTRA_SECURITY_OPTION:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case postNewPasswordActions.STORE_RESET_PASSWORD_NEW_PASSWORD:
       return {
         ...state,
         ...action.payload

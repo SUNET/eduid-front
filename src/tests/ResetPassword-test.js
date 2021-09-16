@@ -13,6 +13,9 @@ const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
 const baseState = {
+  app: {
+    request_in_progress: false,
+  },
   resetPassword: {
     email_address: ""
   },
@@ -39,7 +42,7 @@ function getFakeState(newState) {
   return Object.assign(baseState, newState)
 }
 
-describe("ResetPasswordMain Component, renders", () => {
+describe("renders", () => {
   const fakeState = getFakeState();
   function setupComponent() {
     const history = createMemoryHistory();

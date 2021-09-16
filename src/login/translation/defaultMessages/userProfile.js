@@ -1016,7 +1016,7 @@ export const userData = {
   "mobile.confirm_title": (values) => (
     <FormattedHTMLMessage
       id="mobile.confirm_title"
-      defaultMessage={`Enter the code sent to <b>{phone}</b> here`}
+      defaultMessage={`Enter the code sent to <b>{phone}</b>`}
       values={values}
     />
   ),
@@ -1090,13 +1090,13 @@ export const userData = {
   "pd.update_locked_names": (
     <FormattedMessage
       id="pd.update_locked_names"
-      defaultMessage={`Get first and last names from Skatteverket.`}
+      defaultMessage={`Update first and last names from the Swedish Population Register.`}
     />
   ),
   "pd.hint.names_locked_when_verified": (
     <FormattedMessage
       id="pd.hint.names_locked_when_verified"
-      defaultMessage={`First and last name will be replaced with those registered with Skatteverket if you verify your eduID with your personal id number.`}
+      defaultMessage={`First and last name will be replaced with your legal name if you verify your eduID with your personal id number.`}
     />
   ),
 
@@ -1331,7 +1331,7 @@ export const userData = {
   "security.user-updated": (
     <FormattedMessage
       id="security.user-updated"
-      defaultMessage={`First and last names are up-to-date with those registered at Skatteverket.`}
+      defaultMessage={`First and last names are up-to-date with those registered in the Swedish Population Register.`}
     />
   ),
 

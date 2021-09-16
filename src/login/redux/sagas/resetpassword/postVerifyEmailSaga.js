@@ -26,7 +26,7 @@ export function* useLinkCode() {
         return history.push(`/reset-password/set-new-password/${data.email_code}`)
       }else if(decodedWebauthnChallenge && decodedWebauthnChallenge.type === "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS") {
         return history.push(`/reset-password/extra-security/${data.email_code}`);
-      }else return history.push(`/reset-password/email/`);
+      }else return history.push(`/reset-password/email`);
     }
     catch (error) {
       yield* failRequest(error, postLinkCodeFail(error));

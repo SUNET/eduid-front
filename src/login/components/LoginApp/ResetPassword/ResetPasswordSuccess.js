@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
-import SuccessIconAnimation from "./SuccessIconAnimation";
 import { useSelector } from "react-redux";
 
 function ResetPasswordSuccess(props){
@@ -10,7 +9,6 @@ function ResetPasswordSuccess(props){
 
   return (
     <>
-      <SuccessIconAnimation />
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.set-new-password-success")}</p>
         <a id="return-login" href={toHome}>{props.translate("resetpw.go-to-eduid")}</a> 

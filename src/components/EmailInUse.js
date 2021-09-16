@@ -16,7 +16,7 @@ class EmailInUse extends Component {
             <p>{this.props.translate("used.email-label")}</p>
           </div>
 
-          <a href={this.props.reset_url}>
+          <a href={this.props.reset_password_link}>
             <EduIDButton className="settings-button">
               {this.props.translate("used.reset-password")}
             </EduIDButton>
