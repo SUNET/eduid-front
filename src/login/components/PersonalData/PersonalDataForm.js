@@ -17,6 +17,7 @@ const RenderLockedNames = ({ translate }) => {
   const dispatch = useDispatch();
   const firstName = useSelector((state) => state.personal_data.data.given_name);
   const lastName = useSelector((state) => state.personal_data.data.surname);
+  const loading = useSelector((state) => state.config.loading_data);
   return (
     <Fragment>
       <div className="external-names">
@@ -25,8 +26,9 @@ const RenderLockedNames = ({ translate }) => {
       </div>
       <div className="icon-text">
         <button
-          type="button"
+          type="submit"
           className="icon"
+          disabled={loading}
           onClick={() => {
             dispatch(updateNamesFromSkatteverket());
           }}

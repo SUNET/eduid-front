@@ -23,6 +23,8 @@ export function* postPersonalDataSaga(action) {
   try {
     yield put(loadingData());
     const response = yield call(postRequest, url, dataToSend);
+
+    console.log("saga response", response);
     yield put(putCsrfToken(response));
     yield put(response);
     if (response.type.endsWith("_SUCCESS")) {
