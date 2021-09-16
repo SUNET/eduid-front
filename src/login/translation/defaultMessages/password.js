@@ -289,13 +289,13 @@ export const resetPassword = {
   "resetpw.extra-security_heading": (
     <FormattedMessage
       id="resetpw.extra-security_heading"
-      defaultMessage={`Select an extra security`}
+      defaultMessage={`Select an extra security option`}
     />
   ),
   "resetpw.extra-security_description": (
     <FormattedMessage
       id="resetpw.extra-security_description"
-      defaultMessage={`Resetting of password using an extra security option will keep your account confirmed.`}
+      defaultMessage={`A password reset using an extra security option will keep your account confirmed.`}
     />
   ),
   "resetpw.extra-phone_send_sms": (values) => (
