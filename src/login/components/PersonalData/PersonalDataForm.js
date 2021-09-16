@@ -114,8 +114,7 @@ let PersonalDataForm = (props) => {
   const available_languages = useSelector(
     (state) => state.config.available_languages
   );
-  const personal_data = useSelector((state) => state.personal_data.data);
-  const [pdata, setPdata] = useState(personal_data);
+  const [pdata, setPdata] = useState({});
   // setPdata key and value.
   const handleFormChange = (field) => {
     setPdata({ ...pdata, [field.name]: field.value.trim() });
