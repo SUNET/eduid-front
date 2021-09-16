@@ -4,7 +4,6 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
-import SuccessIconAnimation from "./SuccessIconAnimation";
 import { getLocalStorage, countFiveMin, LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, clearCountdown } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 function EmailLinkSent(props){
@@ -36,7 +35,6 @@ function EmailLinkSent(props){
 
   return (
     <>
-      <SuccessIconAnimation />
       <div id="reset-pass-display">
         <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
         <div className="timer">
