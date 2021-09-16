@@ -69,52 +69,71 @@ const RenderEditableNames = (props) => {
   );
 };
 
-let PersonalDataForm = (props) => {
-  const error = useSelector((state) => state.config.loading_data);
+let RenderSavePersonalDataButton = ({
+  pdata,
+  pristine,
+  submitting,
+  translate,
+  initialValues,
+}) => {
   const loading = useSelector((state) => state.config.loading_data);
+  const [isDisable, setIsDisable] = useState(false);
+  useEffect(() => {
+    const disableSaveButton = () => {
+      const userValues = Object.entries(pdata);
+      const initValues = Object.entries(initialValues);
+      return userValues.some((entry, i) => {
+        const value = entry[1].trim();
+        if (!value || value === "") {
+          setIsDisable(true);
+        } else {
+          if (pristine) {
+            return undefined;
+          } else if (value === initValues[i][1]) {
+            setIsDisable(true);
+          }
+          setIsDisable(false);
+        }
+      });
+    };
+    disableSaveButton();
+  }, [pdata, isDisable]);
+  return (
+    <ButtonPrimary
+      id="personal-data-button"
+      className="settings-button"
+      disabled={pristine || submitting || isDisable || loading}
+    >
+      {translate("button_save")}
+    </ButtonPrimary>
+  );
+};
+
+let PersonalDataForm = (props) => {
+  const dispatch = useDispatch();
   const available_languages = useSelector(
     (state) => state.config.available_languages
   );
-  const dispatch = useDispatch();
   const personal_data = useSelector((state) => state.personal_data.data);
-  // button status, defalut is false
-  const [isDisable, setIsDisable] = useState(false);
-  // personal data, default data is empty object
-  const [pdata, setPdata] = useState({});
-  // After rendering, useEffect will check [] parameter against the values from the last render, and will call effect function if any one of them has changed.
-  useEffect(() => {
-    setPdata(personal_data);
-  }, [personal_data]);
-  // if all the updateded values are matched with initial values, button will be disabled.
-  useEffect(() => {
-    if (
-      !pdata.given_name ||
-      !pdata.surname ||
-      !pdata.display_name ||
-      !pdata.language
-    ) {
-      setIsDisable(true);
-    } else if (
-      pdata.given_name === props.initialValues.given_name &&
-      pdata.surname === props.initialValues.surname &&
-      pdata.display_name === props.initialValues.display_name &&
-      pdata.language === props.initialValues.language
-    ) {
-      setIsDisable(true);
-    } else setIsDisable(false);
-  }, [pdata, isDisable]);
-
+  const [pdata, setPdata] = useState(personal_data);
   // setPdata key and value.
   const handleFormChange = (field) => {
     setPdata({ ...pdata, [field.name]: field.value.trim() });
-
   };
-
+  // submit data
+  const submitForm = (e) => {
+    e.preventDefault();
+    dispatch(postUserdata(pdata));
+    props.setEditMode(false);
+  };
   return (
     <Form
       id="personaldataview-form"
       role="form"
       onChange={(e) => handleFormChange(e.target)}
+      onSubmit={(e) => {
+        submitForm(e);
+      }}
     >
       <div className="name-inputs">
         {props.isVerifiedNin ? (
@@ -140,17 +159,7 @@ let PersonalDataForm = (props) => {
         selectOptions={available_languages}
         label={props.translate("pd.language")}
       />
-      <ButtonPrimary
-        id="personal-data-button"
-        className="settings-button"
-        disabled={props.pristine || props.submitting || isDisable || loading}
-        onClick={() => {
-          dispatch(postUserdata(pdata));
-          props.setEditMode(false);
-        }}
-      >
-        {props.translate("button_save")}
-      </ButtonPrimary>
+      <RenderSavePersonalDataButton pdata={pdata} {...props} />
     </Form>
   );
 };
