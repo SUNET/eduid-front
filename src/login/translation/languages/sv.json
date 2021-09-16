@@ -383,6 +383,7 @@
   "resetpw.received-sms": "Redan fått sms? ",
   "resetpw.resend-link": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller",
   "resetpw.resend-link-button": "skicka länk igen",
+  "resetpw.resend-timer-in": "om",
   "resetpw.reset-pw-initialized": "Återställningslänken har skickats till din epost.",
   "resetpw.return-login": "återgå till inloggningen",
   "resetpw.send-link": "Skicka länk till e-postadress",
