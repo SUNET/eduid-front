@@ -38,7 +38,14 @@ const validateNewPassword = (values, props) => {
 let NewPasswordForm = (props) => {
   const history = useHistory();
   return (
-    <Form id="new-password-form" role="form" aria-label="new-password form" onSubmit={props.clickSetNewPassword} >
+    <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" onSubmit={props.clickSetNewPassword} >
+      <input
+        autoComplete="new-password"
+        type="password"
+        name="display-none-new-password"
+        id="display-none-new-password"
+        defaultValue={props.suggested_password && props.suggested_password}
+      />
       <Field
         id="new-password"
         type="text"
@@ -48,6 +55,7 @@ let NewPasswordForm = (props) => {
         label={props.translate("chpass.form_custom_password_repeat")}
         placeholder="xxxx xxxx xxxx"
       />
+
       <div className="new-password-button-container">
       { props.extra_security && Object.keys(props.extra_security).length > 0 &&
         <ButtonSecondary
@@ -158,7 +166,6 @@ function SetNewPassword(props){
           ref={ref}
           defaultValue={password && password}
           readOnly={true}
-          autoComplete="new-password"
         />
         <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}> 
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
