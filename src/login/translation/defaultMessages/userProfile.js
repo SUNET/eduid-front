@@ -145,12 +145,12 @@ export const userProfile = {
     />
   ),
 
- "verify-identity.verified_pw_reset_extra_security": (
-   <FormattedMessage
-     id="verify-identity.verified_pw_reset_extra_security"
-     defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at password reset.`}
-   />
- ),
+  "verify-identity.verified_pw_reset_extra_security": (
+    <FormattedMessage
+      id="verify-identity.verified_pw_reset_extra_security"
+      defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at password reset.`}
+    />
+  ),
 
   "verify-identity.verified_page-description": (
     <FormattedMessage
@@ -215,7 +215,7 @@ export const userProfile = {
       defaultMessage={`Click here to order a new code`}
     />
   ),
- 
+
   "verify-identity.vetting_explanation_add_nin": (
     <FormattedMessage
       id="verify-identity.vetting_explanation_add_nin"
@@ -1025,6 +1025,10 @@ export const userData = {
   "pfilled.completion": (
     <FormattedMessage id="pfilled.completion" defaultMessage={`Completion`} />
   ),
+
+  "pd.sv_lang": <FormattedMessage id="pd.sv_lang" defaultMessage={`Svenska`} />,
+
+  "pd.en_lang": <FormattedMessage id="pd.en_lang" defaultMessage={`English`} />,
 
   "pd.long_description": (
     <FormattedMessage
