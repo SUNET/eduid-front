@@ -15,14 +15,16 @@ import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const RenderLockedNames = ({ translate }) => {
   const dispatch = useDispatch();
-  const firstName = useSelector((state) => state.personal_data.data.given_name);
-  const lastName = useSelector((state) => state.personal_data.data.surname);
   const loading = useSelector((state) => state.config.loading_data);
+  const given_name = useSelector(
+    (state) => state.personal_data.data.given_name
+  );
+  const surname = useSelector((state) => state.personal_data.data.surname);
   return (
     <Fragment>
       <div className="external-names">
-        <NameDisplay label={translate("pd.given_name")} name={firstName} />
-        <NameDisplay label={translate("pd.surname")} name={lastName} />
+        <NameDisplay label={translate("pd.given_name")} name={given_name} />
+        <NameDisplay label={translate("pd.surname")} name={surname} />
       </div>
       <div className="icon-text">
         <button
