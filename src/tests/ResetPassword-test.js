@@ -152,10 +152,11 @@ describe("SetNewPassword, Accept password button ", () => {
     const { wrapper } = setupComponent();
     const button = wrapper.find("button#new-password-button");
     const input = wrapper.find("#new-password-form input");
+    const passwordInput = input.find("#new-password");
     const buttonDisabled = button.prop("disabled");
-    input.props().value = "6py7 oi92 icqh";
-    input.update();
-    expect(input.props().value).toBe("6py7 oi92 icqh")
+    passwordInput.props().value = "6py7 oi92 icqh";
+    passwordInput.update();
+    expect(passwordInput.props().value).toBe("6py7 oi92 icqh")
     expect(buttonDisabled).toBeFalsy();
   });
 })
