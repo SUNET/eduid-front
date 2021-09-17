@@ -8,7 +8,6 @@ import ResetPasswordMain from "../login/components/LoginApp/ResetPassword/ResetP
 import { Provider } from "react-intl-redux";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import SetNewPassword from "../login/components/LoginApp/ResetPassword/SetNewPassword";
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
