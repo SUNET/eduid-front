@@ -15,42 +15,16 @@ import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const RenderLockedNames = ({ translate }) => {
   const dispatch = useDispatch();
-  // disable update button during api call
   const loading = useSelector((state) => state.config.loading_data);
-  // names from backend
   const given_name = useSelector(
     (state) => state.personal_data.data.given_name
   );
   const surname = useSelector((state) => state.personal_data.data.surname);
-  // update names if success message in redux store
-  const messages = useSelector((state) => state.notifications.messages);
-  const [updatedNames, setUpdatedNames] = useState({
-    givenName: null,
-    surname: null,
-  });
-  const areUpdated = Object.entries(updatedNames).some(
-    (entry) => entry[1] !== null
-  );
-  useEffect(() => {
-    if (messages.length > 0) {
-      setUpdatedNames({
-        givenName: given_name,
-        surname: surname,
-      });
-    }
-    return undefined;
-  }, [messages]);
   return (
     <Fragment>
       <div className="external-names">
-        <NameDisplay
-          label={translate("pd.given_name")}
-          name={areUpdated ? updatedNames.givenName : given_name}
-        />
-        <NameDisplay
-          label={translate("pd.surname")}
-          name={areUpdated ? updatedNames.surname : surname}
-        />
+        <NameDisplay label={translate("pd.given_name")} name={given_name} />
+        <NameDisplay label={translate("pd.surname")} name={surname} />
       </div>
       <div className="icon-text">
         <button

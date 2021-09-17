@@ -2,6 +2,7 @@ import { call, put, select } from "redux-saga/effects";
 import postDataRequest from "../postDataRequest";
 import * as actions from "../../actions/updateNamesFromSkatteverketActions";
 import { putCsrfToken } from "../../../../sagas/common";
+import { getInitialUserdata } from "../../../../actions/DashboardConfig";
 import {
   loadingData,
   loadingDataComplete,
@@ -18,9 +19,13 @@ export function* updateNamesFromSkatteverketSaga() {
     const response = yield call(postDataRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     yield put(response);
+    if (response.type.endsWith("_SUCCESS")) {
+      yield put(getInitialUserdata());
+    }
   } catch (error) {
     yield put(actions.updateNamesFromSkatteverketFail(error.toString()));
   } finally {
     yield put(loadingDataComplete());
+    yield put(getInitialUserdata());
   }
 }
