@@ -54,7 +54,7 @@ const RenderLockedNames = ({ translate }) => {
       </div>
       <div className="icon-text">
         <button
-          type="submit"
+          type="button"
           className="icon"
           disabled={loading}
           onClick={() => {
@@ -105,6 +105,7 @@ let RenderSavePersonalDataButton = ({
   submitting,
   translate,
   initialValues,
+  hasPersonalData,
 }) => {
   const loading = useSelector((state) => state.config.loading_data);
   const [isDisable, setIsDisable] = useState(false);
@@ -126,7 +127,11 @@ let RenderSavePersonalDataButton = ({
         }
       });
     };
-    disableSaveButton();
+    if (hasPersonalData) {
+      disableSaveButton();
+    } else {
+      return undefined;
+    }
   }, [pdata, isDisable]);
   return (
     <ButtonPrimary
@@ -189,7 +194,11 @@ let PersonalDataForm = (props) => {
         selectOptions={available_languages}
         label={props.translate("pd.language")}
       />
-      <RenderSavePersonalDataButton pdata={pdata} {...props} />
+      <RenderSavePersonalDataButton
+        hasPersonalData={props.hasPersonalData}
+        pdata={pdata}
+        {...props}
+      />
     </Form>
   );
 };
