@@ -8,7 +8,6 @@ import ResetPasswordMain from "../login/components/LoginApp/ResetPassword/ResetP
 import { Provider } from "react-intl-redux";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import SetNewPassword from "../login/components/LoginApp/ResetPassword/SetNewPassword";
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
@@ -124,39 +123,3 @@ describe("ResetPasswordMain, send link button ", () => {
     expect(buttonDisabled).toBeFalsy();
   });
 })
-
-describe("SetNewPassword, Accept password button ", () => {
-  const fakeState = getFakeState();
-  function setupComponent() {
-    const history = createMemoryHistory();
-    const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <SetNewPassword />
-        </Router>
-      </Provider>
-    );
-    return {
-      wrapper,
-    };
-  }
-
-  it("check if new password button is present", () => {
-    const { wrapper } = setupComponent();
-    const button = wrapper.find("button#new-password-button");
-    expect(button.exists()).toEqual(true);
-    expect(button.text()).toContain("password");
-  });
-
-  it("will active when repeat password input is filled", () => {
-    const { wrapper } = setupComponent();
-    const button = wrapper.find("button#new-password-button");
-    const input = wrapper.find("#new-password-form input");
-    const buttonDisabled = button.prop("disabled");
-    input.props().value = "6py7 oi92 icqh";
-    input.update();
-    expect(input.props().value).toBe("6py7 oi92 icqh")
-    expect(buttonDisabled).toBeFalsy();
-  });
-})
-  
