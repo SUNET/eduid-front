@@ -41,7 +41,7 @@ let NewPasswordForm = (props) => {
     <Form id="new-password-form" role="form" aria-label="new-password form" onSubmit={props.clickSetNewPassword} >
       <Field
         id="new-password"
-        type="password"
+        type="text"
         name="new-password"
         component={CustomInput}
         required={true}
