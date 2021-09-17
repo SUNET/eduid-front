@@ -1026,6 +1026,20 @@ export const userData = {
     <FormattedMessage id="pfilled.completion" defaultMessage={`Completion`} />
   ),
 
+  "pd.sv_lang": (
+    <FormattedMessage
+      id="pd.sv_lang"
+      defaultMessage={`Svenska`}
+    />
+  ),
+
+  "pd.en_lang": (
+    <FormattedMessage
+      id="pd.en_lang"
+      defaultMessage={`English`}
+    />
+  ),
+
   "pd.long_description": (
     <FormattedMessage
       id="pd.long_description"
