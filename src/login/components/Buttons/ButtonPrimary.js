@@ -23,7 +23,7 @@ const ButtonPrimary = ({
 );
 
 ButtonPrimary.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   id: PropTypes.string.isRequired,
 };
 

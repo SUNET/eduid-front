@@ -24,20 +24,26 @@ const RenderPersonalData = ({ translate }) => {
   const display_name = useSelector(
     (state) => state.personal_data.data.display_name
   );
-  // get language label from language code
   const pref_language = useSelector(
     (state) => state.personal_data.data.language
   );
-  const prefLanguageLabel = AVAILABLE_LANGUAGES.filter(
-    (lang) => lang[0] === pref_language
-  );
-  const languageLabel = prefLanguageLabel[0][1];
+  // if language is set render label
+  const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
+  let languageLabel;
+  if (hasPrefLanguage) {
+    languageLabel =
+      pref_language === "sv"
+        ? translate("pd.sv_lang")
+        : translate("pd.en_lang");
+  }
   return (
     <div className="personal-data-info">
       <NameDisplay label={translate("pd.given_name")} name={first_name} />
       <NameDisplay label={translate("pd.surname")} name={last_name} />
       <NameDisplay label={translate("pd.display_name")} name={display_name} />
-      <NameDisplay label={translate("pd.language")} name={languageLabel} />
+      {hasPrefLanguage ? (
+        <NameDisplay label={translate("pd.language")} name={languageLabel} />
+      ) : null}
     </div>
   );
 };
@@ -91,7 +97,8 @@ const PersonalDataParent = (props) => {
   const personal_data = useSelector((state) => state.personal_data.data);
   const hasPersonalData = Object.entries(personal_data)
     .filter((entry) => entry[0] !== "eppn")
-    .some((entry) => entry[1].length > 0);
+    .some((entry) => entry[1] !== null);
+
   return (
     <article className="personal-data">
       <div className="intro">
@@ -114,7 +121,7 @@ const PersonalDataParent = (props) => {
             />
           ) : null}
           {hasPersonalData && !isEditMode ? (
-            <RenderPersonalData {...props} />
+            <RenderPersonalData hasPersonalData={hasPersonalData} {...props} />
           ) : null}
           {isEditMode && (
             <RenderEditBox

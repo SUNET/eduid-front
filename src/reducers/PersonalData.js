@@ -3,12 +3,12 @@ import * as actions from "actions/PersonalData";
 const personalData = {
   message: "",
   data: {
-    eppn: "",
-    given_name: "",
-    surname: "",
-    display_name: "",
-    language: ""
-  }
+    eppn: null,
+    given_name: null,
+    surname: null,
+    display_name: null,
+    language: null,
+  },
 };
 
 let personalDataReducer = (state = personalData, action) => {
@@ -16,7 +16,10 @@ let personalDataReducer = (state = personalData, action) => {
     case actions.GET_USERDATA_SUCCESS:
       return {
         ...state,
-        data: { ...action.payload },
+        data: {
+          ...state.data,
+          ...action.payload,
+        },
       };
     case actions.GET_ALL_USERDATA_FAIL:
       return {
@@ -29,7 +32,7 @@ let personalDataReducer = (state = personalData, action) => {
       }
       return {
         ...state,
-        data: { ...action.payload }
+        data: { ...action.payload },
       };
     case actions.POST_USERDATA_SUCCESS:
       if (!action.payload.eppn) {

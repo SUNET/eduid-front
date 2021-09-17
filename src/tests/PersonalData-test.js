@@ -59,26 +59,6 @@ describe("Personal Data Actions", () => {
     };
     expect(actions.changeUserdata(data)).toEqual(expectedAction);
   });
-
-  it("Should post the data for personal data", () => {
-    const expectedAction = {
-      type: actions.POST_USERDATA,
-    };
-    expect(actions.postUserdata()).toEqual(expectedAction);
-  });
-
-  it("Should fail when post the data for personal data", () => {
-    const err = "Bad error";
-
-    const expectedAction = {
-      type: actions.POST_USERDATA_FAIL,
-      error: true,
-      payload: {
-        message: err,
-      },
-    };
-    expect(actions.postUserdataFail(err)).toEqual(expectedAction);
-  });
 });
 
 describe("Reducers", () => {
@@ -104,19 +84,6 @@ describe("Reducers", () => {
         display_name: "John",
         language: "en",
         eppn: "dummy-eppn",
-      },
-    });
-  });
-
-  it("Receives a GET_USERDATA_SUCCESS action", () => {
-    expect(
-      personalDataReducer(mockState, {
-        payload: { surname: "Surname" },
-        type: actions.GET_USERDATA_SUCCESS,
-      })
-    ).toEqual({
-      data: {
-        surname: "Surname",
       },
     });
   });

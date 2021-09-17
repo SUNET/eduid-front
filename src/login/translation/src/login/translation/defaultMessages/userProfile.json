@@ -596,6 +596,14 @@
     "defaultMessage": "Completion"
   },
   {
+    "id": "pd.sv_lang",
+    "defaultMessage": "Svenska"
+  },
+  {
+    "id": "pd.en_lang",
+    "defaultMessage": "English"
+  },
+  {
     "id": "pd.long_description",
     "defaultMessage": "This information may be used to personalise services that you access with your eduID."
   },

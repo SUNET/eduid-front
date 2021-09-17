@@ -15,14 +15,21 @@
         width: unset;
       }
     }
+    &.icon {
+      &:disabled,
+      &.disabled {
+        opacity: 0.5;
+        background: #f4f4f4;
+      }
+    }
   }
   .title {
     align-items: center;
+    margin-bottom: 1rem;
     p {
       padding-bottom: 0;
     }
   }
-
   .name-inputs {
     .hint {
       margin-top: 1rem;
@@ -30,6 +37,7 @@
     .icon-text {
       display: flex;
       align-items: baseline;
+      margin-bottom: 1rem;
       p {
         margin-left: 1rem;
         padding-bottom: 0;
@@ -41,6 +49,10 @@
       transform: rotate(180deg);
     }
   }
+}
+
+#add-personal-data {
+  align-self: unset;
 }
 
 .personal-data-info {
@@ -71,6 +83,9 @@
       }
     }
   }
+  #language-wrapper {
+    margin-top: 1rem;
+  }
 }
 
 // styles for input on white bg
@@ -81,8 +96,10 @@
     background-color: #f4f4f4;
   }
   .form-group {
-    margin-top: 1rem;
     flex: 1;
+    @media (max-width: 568px) {
+      margin-top: 1rem;
+    }
     &:last-child {
       margin-left: 1rem;
       @media (max-width: 568px) {
