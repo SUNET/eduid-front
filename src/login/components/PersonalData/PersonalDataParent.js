@@ -115,7 +115,7 @@ const PersonalDataParent = (props) => {
             />
           ) : null}
           {hasPersonalData && !isEditMode ? (
-            <RenderPersonalData {...props} />
+            <RenderPersonalData hasPersonalData={hasPersonalData} {...props} />
           ) : null}
           {isEditMode && (
             <RenderEditBox
