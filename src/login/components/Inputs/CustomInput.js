@@ -83,7 +83,6 @@ const RenderInput = (props) => {
 
     return <div className="radio-input-container">{renderSelectLanguage}</div>;
   } else {
-    console.log("autoComplete", autoComplete)
     return (
       <Input
         type={type}
