@@ -22,6 +22,7 @@ import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns"
 import PropTypes from "prop-types";
 import Splash from "../../../../containers/Splash";
 import ButtonSecondary from "../../Buttons/ButtonSecondary";
+import { getFormValues } from 'redux-form';
 
 const validateNewPassword = (values, props) => {
   const newPassword = "new-password";
@@ -36,6 +37,7 @@ const validateNewPassword = (values, props) => {
 };
 
 let NewPasswordForm = (props) => {
+  const formValues = useSelector(state => getFormValues('new-password-form')(state))
   const history = useHistory();
   return (
     <Form autoComplete="on" id="new-password-form" role="form" aria-label="new-password form" onSubmit={props.clickSetNewPassword} >
@@ -44,7 +46,7 @@ let NewPasswordForm = (props) => {
         type="password"
         name="display-none-new-password"
         id="display-none-new-password"
-        defaultValue={props.suggested_password && props.suggested_password}
+        defaultValue={formValues["new-password"] && formValues["new-password"]}
       />
       <Field
         id="new-password"
