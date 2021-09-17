@@ -26,6 +26,5 @@ export function* updateNamesFromSkatteverketSaga() {
     yield put(actions.updateNamesFromSkatteverketFail(error.toString()));
   } finally {
     yield put(loadingDataComplete());
-    yield put(getInitialUserdata());
   }
 }
