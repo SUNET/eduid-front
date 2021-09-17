@@ -20,6 +20,7 @@ export const setLocalStorage = (key, val) => {
 
 export const countFiveMin = (key) => {
   const elementResendLink = document.querySelector(`#resend-${key}`);
+  const elementTextIn = document.getElementById("timer-in");
   const elementCountDownTime = document.getElementById(`count-down-time-${key}`);
   // Resend link button will be disabled
   elementResendLink !== null && elementResendLink.classList.remove('button-active');
@@ -40,10 +41,12 @@ export const countFiveMin = (key) => {
     // If the count down is over, resend-${key} will be active and timer will be display-none
       if (period < 0) {
         elementCountDownTime && elementCountDownTime.classList.add('display-none');
+        elementTextIn && elementTextIn.classList.add('display-none');
         elementResendLink && elementResendLink.classList.add('button-active');
         clearInterval(timer);  
       }else {
         elementResendLink && elementResendLink.classList.remove('button-active');
+        elementTextIn && elementTextIn.classList.remove('display-none');
         elementCountDownTime && elementCountDownTime.classList.remove('display-none');
       }
     }, 1000);

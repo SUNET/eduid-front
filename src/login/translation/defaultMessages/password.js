@@ -283,7 +283,13 @@ export const resetPassword = {
   "resetpw.resend-link-button": (
     <FormattedMessage
       id="resetpw.resend-link-button"
-      defaultMessage={`resend link in`}
+      defaultMessage={`resend link`}
+    /> 
+  ),
+  "resetpw.resend-timer-in": (
+    <FormattedMessage
+      id="resetpw.resend-timer-in"
+      defaultMessage={`in`}
     /> 
   ),
   "resetpw.extra-security_heading": (
