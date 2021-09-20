@@ -16,7 +16,7 @@ export const generalErrors = {
   ),
 
   required: (
-    <FormattedMessage id="required" defaultMessage={`Field cannot be empty`} />
+    <FormattedMessage id="required" defaultMessage={`*Field cannot be empty`} />
   ),
 
   "value not changed": (

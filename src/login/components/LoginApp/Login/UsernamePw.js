@@ -29,27 +29,30 @@ const RenderRegisterLink = ({ translate }) => {
 
 const RenderResetPasswordLink = ({ translate }) => {
   const loginRef = useSelector((state) => state.login.ref);
-  const request_in_progress = useSelector((state) => state.app.request_in_progress);
+  const request_in_progress = useSelector(
+    (state) => state.app.request_in_progress
+  );
   const dispatch = useDispatch();
   const history = useHistory();
-  
+
   const sendLink = (e) => {
     e.preventDefault();
-    const email = document.querySelector("input[name='email']") && 
+    const email =
+      document.querySelector("input[name='email']") &&
       document.querySelector("input[name='email']").value;
-    if(email){
-      if(emailPattern.test(email)){
+    if (email) {
+      if (emailPattern.test(email)) {
         dispatch(postEmailLink(email));
-        setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL , email)
-      }else history.push(`/reset-password/email/${loginRef}`)
-    } else history.push(`/reset-password/email/${loginRef}`)
+        setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
+      } else history.push(`/reset-password/email/${loginRef}`);
+    } else history.push(`/reset-password/email/${loginRef}`);
   };
-  
+
   return (
     <LinkRedirect
       id={"link-forgot-password"}
       to={"/"}
-      className={`send-link ${request_in_progress ? 'disabled' : ''}`}
+      className={`send-link ${request_in_progress ? "disabled" : ""}`}
       onClick={sendLink}
       text={translate("login.usernamePw.reset-password-link")}
     />
@@ -89,8 +92,8 @@ const UsernamePw = (props) => {
       </h2>
       <UsernamePwForm {...props} />
       <div className="button-pair">
-        <RenderResetPasswordLink {...props} />
         <UsernamePwFormButton {...props} />
+        <RenderResetPasswordLink {...props} />
       </div>
       <RenderRegisterLink {...props} />
     </div>

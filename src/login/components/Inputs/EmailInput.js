@@ -12,7 +12,6 @@ let EmailInput = ({ translate, required, autoFocus }) => (
     componentClass="input"
     type="email"
     name="email"
-    helpBlock={translate("emails.input_help_text")}
     autoFocus={autoFocus}
     ariaLabel={"enter your email address to login"}
     autoComplete="username"
