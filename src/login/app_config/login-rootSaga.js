@@ -33,6 +33,7 @@ function* rootSaga() {
     takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE, postSetNewPasswordExtraSecurityPhone),
     takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN, postSetNewPasswordExtraSecurityToken),
     takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA, postSetNewPasswordExternalMfa),
+    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL, useLinkCode),
   ];
 }
 

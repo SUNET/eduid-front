@@ -21,6 +21,9 @@ const baseState = {
   config: { 
     csrf_token: "csrf-token" 
   },
+  notifications: {
+    errors: []
+  },
   intl: {
     locale: "en",
     messages: messages

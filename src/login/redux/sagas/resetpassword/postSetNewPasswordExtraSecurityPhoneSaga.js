@@ -22,6 +22,8 @@ export function* postSetNewPasswordExtraSecurityPhone() {
     yield put(resp);
     if(resp.type === "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS"){
       return history.push(`/reset-password/success`);
+    }else {
+      return history.push(`/reset-password/email`);
     }
   }
   catch (error) {
