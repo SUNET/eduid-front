@@ -9,6 +9,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
+import Splash from "../../../../containers/Splash";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
@@ -78,7 +79,8 @@ function ResetPasswordMain(props){
     }
   };
   return (
-    <>
+    <>    
+    { errors && errors[0] && errors[0].msg.includes("phone-code") && <Splash />}
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
       <EmailForm sendLink={sendLink} {...props} request_in_progress={request_in_progress}/>
       <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
