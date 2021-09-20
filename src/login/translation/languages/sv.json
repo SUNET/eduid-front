@@ -354,7 +354,7 @@
   "register.paragraph": "När du har skapat ditt eduID kan du logga in och koppla det till ditt svenska personnummer.",
   "register.sub-heading": "Registrera din e-postadress för att skapa ditt eduID.",
   "register.toLogin": "Om du redan har ett eduID kan du logga in",
-  "required": "Obligatorisk",
+  "required": "Fältet kan inte vara tomt",
   "resend.button": "Skicka ett nytt verifieringsmeddelande",
   "resend.email-label": "Slutför skapandet av eduID genom att klicka länken skickad till:",
   "resend.link-sent": "En länk har skickats till din e-postadress.",
