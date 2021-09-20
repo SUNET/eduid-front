@@ -1,7 +1,7 @@
 import React, { useEffect }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import {  useSelector, useDispatch, connect } from 'react-redux';
-import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
+import { postEmailLink, useLinkCode  } from "../../../redux/actions/postResetPasswordActions";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
@@ -52,10 +52,22 @@ function ResetPasswordMain(props){
   const url = document.location.href;
   const loginRef = url.split("/email").reverse()[0];
   const request_in_progress = useSelector(state => state.app.request_in_progress);
+  const errors = useSelector(state => state.notifications.errors);
+  const emailCode = useSelector(state => state.resetPassword.email_code);
 
   useEffect(()=>{
     clearCountdown();
   }, []);
+
+  useEffect(()=>{
+    if(errors && errors[0]){
+      // error message is expired-phone-code
+      if(errors[0].msg.includes("phone-code")){
+      // dispatch useLinkCode to change path to extra-security for resending sms code
+        dispatch(useLinkCode());
+      }
+    }
+  }, [errors, emailCode]);
 
   const sendLink = (e) => {
     e.preventDefault();
