@@ -54,7 +54,6 @@ function ResetPasswordMain(props){
   const loginRef = url.split("/email").reverse()[0];
   const request_in_progress = useSelector(state => state.app.request_in_progress);
   const errors = useSelector(state => state.notifications.errors);
-  const emailCode = useSelector(state => state.resetPassword.email_code);
 
   useEffect(()=>{
     clearCountdown();
@@ -68,7 +67,7 @@ function ResetPasswordMain(props){
         dispatch(useLinkCode());
       }
     }
-  }, [errors, emailCode]);
+  }, [errors]);
 
   const sendLink = (e) => {
     e.preventDefault();
