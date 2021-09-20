@@ -31,7 +31,7 @@ export const formattedMessages = {
 export const unformattedMessages = defineMessages({
   "placeholder.password": {
     id: "placeholder.password",
-    defaultMessage: `enter a password`,
+    defaultMessage: `enter password`,
     description: "placeholder text for password input",
   },
   "pd.choose-language": {

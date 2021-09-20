@@ -2,7 +2,7 @@
   {
     "id": "placeholder.password",
     "description": "placeholder text for password input",
-    "defaultMessage": "enter a password"
+    "defaultMessage": "enter password"
   },
   {
     "id": "pd.choose-language",

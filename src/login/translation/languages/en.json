@@ -334,7 +334,7 @@
   "phones.unconfirmed_number_not_primary": "An unconfirmed phone number cannot be set as primary",
   "phones.unknown_phone": "We have no record of the phone number you provided",
   "phones.verification-success": "Successfully verified phone number",
-  "placeholder.password": "enter a password",
+  "placeholder.password": "enter password",
   "profile.email_display_no_data": "no email added",
   "profile.email_display_title": "Email address",
   "profile.eppn_display_title": "eppn",
