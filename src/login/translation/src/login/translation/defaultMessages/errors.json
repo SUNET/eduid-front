@@ -9,7 +9,7 @@
   },
   {
     "id": "required",
-    "defaultMessage": "Field cannot be empty"
+    "defaultMessage": "*Field cannot be empty"
   },
   {
     "id": "value not changed",

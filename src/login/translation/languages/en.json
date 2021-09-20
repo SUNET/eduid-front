@@ -354,7 +354,7 @@
   "register.paragraph": "Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number.",
   "register.sub-heading": "Register your email address to create your eduID.",
   "register.toLogin": "If you already have eduID you can log in",
-  "required": "Field cannot be empty",
+  "required": "*Field cannot be empty",
   "resend.button": "Send a new confirmation link",
   "resend.email-label": "Complete registration by clicking the link sent to:",
   "resend.link-sent": "A link has been sent to your email address.",
