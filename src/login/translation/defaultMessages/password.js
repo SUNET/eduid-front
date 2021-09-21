@@ -326,7 +326,7 @@ export const resetPassword = {
   "resetpw.without_extra_security": (
     <FormattedHTMLMessage
       id="resetpw.without_extra_security"
-      defaultMessage={`You will require to verify your eduID after resetting password without extra security  `}
+      defaultMessage={`Your account will require confirmation after the password has been reset.`}
     /> 
   ),
   "resetpw.continue_reset_password": (
