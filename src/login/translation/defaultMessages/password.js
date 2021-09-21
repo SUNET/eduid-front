@@ -317,10 +317,16 @@ export const resetPassword = {
       defaultMessage={`Use your security key`}
     /> 
   ),
+  "resetpw.without_extra_security_heading": (
+    <FormattedHTMLMessage
+      id="resetpw.without_extra_security_heading"
+      defaultMessage={`<b>Continue without extra security option </b> `}
+    /> 
+  ),
   "resetpw.without_extra_security": (
     <FormattedHTMLMessage
       id="resetpw.without_extra_security"
-      defaultMessage={`<b>For your security:</b> You will require to verify your eduID after resetting password without extra security  `}
+      defaultMessage={`You will require to verify your eduID after resetting password without extra security  `}
     /> 
   ),
   "resetpw.continue_reset_password": (
