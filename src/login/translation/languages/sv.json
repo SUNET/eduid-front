@@ -399,7 +399,7 @@
   "resetpw.use_extra_security_key": "Använd din säkerhetsnyckel",
   "resetpw.user-not-found": "Användaren finns inte, kontrollera e-postadressen",
   "resetpw.without_extra_security_heading": "<b>Forsätt utan extra säkerhetsalternativ</b>",
-  "resetpw.without_extra_security": "Ditt konto kommer att behöva konfirmeras efter att lösenordet har återställt.",
+  "resetpw.without_extra_security": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställt.",
   "runtime_error.generic.description": "Problemet har rapporterats till teamet.",
   "runtime_error.generic.label.reload": "Försök igen:",
   "runtime_error.generic.label.toHome": "Börja om:",
