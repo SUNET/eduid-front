@@ -367,7 +367,7 @@
   "resetpw.email-throttled": "Reset password link already sent please try again later",
   "resetpw.enter-code": "enter code",
   "resetpw.expired-email-code": "Email code has expired. Please try again.",
-  "resetpw.expired-phone-code": "Phone code has expired. Please try again.",
+  "resetpw.expired-phone-code": "Phone code has expired. Please send phone code again.",
   "resetpw.external-mfa-fail": "External MFA failed",
   "resetpw.extra-phone_send_sms": "Send sms to {phone}",
   "resetpw.extra-security_description": "A password reset using an extra security option will keep your account confirmed.",
