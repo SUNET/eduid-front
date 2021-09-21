@@ -338,7 +338,7 @@ export const resetPassword = {
   "resetpw.expired-email-code": (
     <FormattedMessage
       id="resetpw.expired-email-code"
-      defaultMessage={`Email code has expired. Please try again.`}
+      defaultMessage={`Password reset link has expired. Please send link again.`}
     /> 
   ),
   "resetpw.set-new-password-heading": (
