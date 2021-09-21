@@ -3,6 +3,7 @@ import { selectExtraSecurity } from "../../../redux/actions/postResetPasswordAct
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import ButtonSecondary from "../../Buttons/ButtonSecondary";
 
 const ResetPasswordLayout = (props) =>{
   const dispatch = useDispatch();
@@ -18,9 +19,19 @@ const ResetPasswordLayout = (props) =>{
       <div id="reset-pass-display">
         <p>{props.description}</p>
         {props.children}
-        <p className="decription-without-security">{props.linkInfoText}
-          <a id="continue-without-security" onClick={()=>continueSetPassword()}> {props.linkText}</a> 
+        <p className="decription-without-security">{props.linkInfoHeading}{props.linkInfoText}
+         
+          {/* <a id="continue-without-security" onClick={()=>continueSetPassword()}> {props.linkText}</a>  */}
         </p>
+        <ButtonSecondary
+          className="secondary"
+          id="continue-without-extra"
+          onClick={() => 
+            continueSetPassword()
+          }
+        >
+          {props.linkText}
+        </ButtonSecondary>
       </div>
     </>
   ) 
