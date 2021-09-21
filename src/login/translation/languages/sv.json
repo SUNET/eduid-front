@@ -366,7 +366,7 @@
   "resetpw.email-send-failure": "Misslyckades att skicka e-post, vänligen försök igen",
   "resetpw.email-throttled": "Återställ lösenordslänken har redan skickats, försök igen senare",
   "resetpw.enter-code": "skriv in koden",
-  "resetpw.expired-email-code": "Länken för återställning av lösenord har gått ut. Skicka länken igen.",
+  "resetpw.expired-email-code": "Lösenord återställnings länken är inte längre giltig. Skicka länken igen.",
   "resetpw.expired-phone-code": "Telefonkoden har gått ut. vänligen skicka telefonkoden igen.",
   "resetpw.external-mfa-fail": "Externt MFA misslyckades",
   "resetpw.extra-phone_send_sms": "Skicka sms till {phone}",
