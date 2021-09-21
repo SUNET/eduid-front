@@ -417,7 +417,7 @@ export const resetPassword = {
   "resetpw.go-to-eduid": (
     <FormattedMessage
       id="resetpw.go-to-eduid"
-      defaultMessage={`go to eduID`}
+      defaultMessage={`Go to eduID`}
     />
   ),
   "resetpw.new-password": (

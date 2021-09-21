@@ -374,7 +374,7 @@
   "resetpw.extra-security_heading": "Välj ett extra säkerhetsalternativ",
   "resetpw.fido-token-fail": "Det uppstod ett problem med din säkerhetsnyckel för återställning av lösenordet",
   "resetpw.go-back": "gå tillbaka",
-  "resetpw.go-to-eduid": "gå till eduID",
+  "resetpw.go-to-eduid": "Gå till eduID",
   "resetpw.heading-add-email": "Ange din e-postadress registrerad till ditt konto",
   "resetpw.invalid_session": "Ogiltig session, var god försök igen.",
   "resetpw.invalid_user": "Användaren har inte slutfört registreringen",

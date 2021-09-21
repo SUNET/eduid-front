@@ -374,7 +374,7 @@
   "resetpw.extra-security_heading": "Select an extra security option",
   "resetpw.fido-token-fail": "There was a problem using your security key for resetting password",
   "resetpw.go-back": "go back",
-  "resetpw.go-to-eduid": "go to eduID",
+  "resetpw.go-to-eduid": "Go to eduID",
   "resetpw.heading-add-email": "Enter your email address registered to your account",
   "resetpw.invalid_session": "Invalid session, please try again",
   "resetpw.invalid_user": "User has not completed signup",
