@@ -133,6 +133,7 @@ function ExtraSecurity(props){
     <ResetPasswordLayout
       heading={props.translate("resetpw.extra-security_heading")} 
       description={props.translate("resetpw.extra-security_description")} 
+      linkInfoHeading={props.translate("resetpw.without_extra_security_heading")}
       linkInfoText={props.translate("resetpw.without_extra_security")}
       linkText={props.translate("resetpw.continue_reset_password")}
       emailCode={emailCode}
