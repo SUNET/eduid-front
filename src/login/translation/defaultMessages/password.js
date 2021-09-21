@@ -393,7 +393,7 @@ export const resetPassword = {
   "resetpw.expired-phone-code": (
     <FormattedMessage
       id="resetpw.expired-phone-code"
-      defaultMessage={`Phone code has expired. Please resend phone code.`}
+      defaultMessage={`Phone code has expired. Please send phone code again.`}
     />
   ),
   "resetpw.received-sms": (
