@@ -8,11 +8,13 @@ import { createGroupSaga } from "../groups/createGroupSaga";
 import { createInviteSaga } from "../invites/createInviteSaga";
 import { getAllOutgoingInvitesSaga } from "../invites/getAllOutgoingInvitesSaga";
 import { deleteGroupSaga } from "../groups/deleteGroupSaga";
+import { getIncomingInvitesSaga } from "../invites/getIncomingInvitesSaga";
 
 // connecting actions (redux) with sagas (fetch)
 const groupsSagas = [
   takeLatest(pdataActions.GET_USERDATA_SUCCESS, getAllDataSaga),
   takeLatest(pdataActions.GET_USERDATA_SUCCESS, getAllOutgoingInvitesSaga),
+  takeLatest(pdataActions.GET_USERDATA_SUCCESS, getIncomingInvitesSaga),
   takeLatest(createGroupActions.POST_CREATE_GROUP, createGroupSaga),
   takeEvery(createInviteActions.CREATE_INVITE_MEMBER, createInviteSaga),
   takeEvery(createInviteActions.CREATE_INVITE_OWNER, createInviteSaga),
