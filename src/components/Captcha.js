@@ -14,7 +14,7 @@ class Captcha extends Component {
     }
 
     return [
-      <div key="0" id="content" className="vertical-content-margin">
+      <div key="0" id="content" className="horizontal-content-margin">
         <h3 className="register-header">
           {this.props.translate("captcha.verify-human")}
         </h3>

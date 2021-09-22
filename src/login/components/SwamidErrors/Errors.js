@@ -84,7 +84,7 @@ function Errors(props){
   );
 
   return(   
-    <div className="vertical-content-margin">
+    <div className="horizontal-content-margin">
       <div className="swamid-error">
         {isTechnicalInfoNotEmpty ?
           <>

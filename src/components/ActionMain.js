@@ -43,7 +43,7 @@ class ActionMain extends Component {
         <HeaderContainer {...this.props} />
         <section id="panel">
           <NotificationsContainer />
-          <div key="0" id="content" className="vertical-content-margin">
+          <div key="0" id="content" className="horizontal-content-margin">
             <Route
               exact
               path={`${BASE_PATH}`}
