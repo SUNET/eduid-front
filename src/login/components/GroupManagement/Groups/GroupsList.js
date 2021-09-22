@@ -5,13 +5,15 @@ import GroupListItem from "./GroupListItem";
 const GroupsList = (props) => {
   return (
     <div className="view-data">
-      <div className="list-grid" id="four-columns">
-        <div className="list-cell"></div>
+      <div className="list-grid" id="five-columns">
         <div className="list-cell">
-          <label>Owner</label>
+          <label>Groups</label>
         </div>
         <div className="list-cell">
           <label>Member</label>
+        </div>
+        <div className="list-cell">
+          <label>Owner</label>
         </div>
         <div className="list-cell"></div>
       </div>

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 
 export const RenderOwnerList = (props) => {
   let owners = props.group.owners;
@@ -61,7 +62,7 @@ class GroupListItem extends Component {
           this.toggleGroupOpenClosed();
         }}
       >
-        <div className="list-grid" id="four-columns">
+        <div className="list-grid" id="five-columns">
           <div className="title hide-overflow list-cell">
             <div className="element-pair">
               <button
@@ -76,12 +77,12 @@ class GroupListItem extends Component {
           </div>
           <div className="list-cell">
             <div className={this.state.openGroup ? "transparent" : null}>
-              {group.is_owner ? "X" : null}
+              {group.is_member ? "X" : null}
             </div>
           </div>
           <div className="list-cell">
             <div className={this.state.openGroup ? "transparent" : null}>
-              {group.is_member ? "X" : null}
+              {group.is_owner ? "X" : null}
             </div>
           </div>
           <div className="list-cell">
@@ -92,6 +93,14 @@ class GroupListItem extends Component {
             >
               edit
             </button>
+          </div>
+          <div className="list-cell">
+            <ButtonRemoveData
+              className="icon-button"
+              onClick={() => {
+                console.log("you clicked the cross");
+              }}
+            />
           </div>
         </div>
         <RenderOpenGroup openGroup={this.state.openGroup} {...this.props} />
