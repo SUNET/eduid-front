@@ -50,7 +50,7 @@ class NinForm extends Component {
           />
         </fieldset>
         <PrimaryButton
-          id={""}
+          id="add-nin-button"
           disabled={!this.props.valid}
           onClick={this.props.addNin}
           key="1"
