@@ -19,7 +19,7 @@ let EmailForm = (props) => (
       id="email-input"
       component={CustomInput}
       translate={props.translate}
-      placeholder="example@email.com"
+      placeholder="name@example.com"
     />
     <EduIDButton
       className="settings-button"

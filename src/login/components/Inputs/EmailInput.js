@@ -15,7 +15,7 @@ let EmailInput = ({ translate, required, autoFocus }) => (
     autoFocus={autoFocus}
     ariaLabel={"enter your email address to login"}
     autoComplete="username"
-    placeholder="example@email.com"
+    placeholder="name@example.com"
   />
 );
 
