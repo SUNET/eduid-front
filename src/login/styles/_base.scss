@@ -52,6 +52,9 @@ article {
   // this is added to prevent margin collapse (look for other solution if causing problems)
   display: flex;
   flex-direction: column;
+  .tagline {
+    padding-top: 0.625rem;
+  }
 }
 
 #content {
