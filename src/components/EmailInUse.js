@@ -5,7 +5,7 @@ import EduIDButton from "./EduIDButton";
 class EmailInUse extends Component {
   render() {
     return (
-      <div id="content" className="vertical-content-margin">
+      <div id="content" className="horizontal-content-margin">
         <div>
           <h3 className="register-header">
             {this.props.translate("used.email-in-use")({

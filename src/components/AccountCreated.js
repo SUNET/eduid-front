@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 class AccountCreated extends Component {
   render() {
     return (
-      <div id="content" className="vertical-content-margin">
+      <div id="content" className="horizontal-content-margin">
         <h3 className="register-header">
           {this.props.translate("created.account-created")}
         </h3>
