@@ -62,7 +62,7 @@ function DashboardNav(props) {
         </NavLink>
         <NavLink 
           className={tipsAtSettings && active ?  `nav-settings ${selectedLanguage}`: null} 
-          activeClassName="active" to={`/profile/settings/`}
+          exact activeClassName="active" to={`/profile/settings/`}
         >
           <li>
             {props.translate("dashboard_nav.settings")}
@@ -71,7 +71,7 @@ function DashboardNav(props) {
         </NavLink>
         <NavLink
           className={tipsAtSettings && active ?  `nav-advanced-settings ${selectedLanguage}`: null} 
-          activeClassName="active"
+          exact activeClassName="active"
           to={`/profile/settings/advanced-settings`}
         >
           <li>{props.translate("dashboard_nav.advanced-settings")}</li>
