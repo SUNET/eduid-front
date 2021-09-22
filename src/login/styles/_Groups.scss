@@ -137,6 +137,9 @@ article {
       font-family: "ProximaNova-Light";
     }
   }
+  .invites {
+    margin-bottom: 2rem;
+  }
 }
 
 // styles specific for data being viewed (needs to be changed into generic styling)
@@ -168,6 +171,7 @@ article {
       justify-content: unset;
       height: 3rem;
       .element-pair {
+        margin-top: 0;
         display: flex;
         align-items: center;
       }
@@ -204,6 +208,10 @@ article {
   }
 }
 
+button.accept {
+  transform: rotate(-45deg);
+}
+
 // styles specific for data being edited
 .edit-data {
   li {
@@ -228,6 +236,11 @@ article {
 
 .list-grid {
   display: grid;
+  &#five-columns {
+    grid-template-columns:
+      1fr calc(0.5rem + 48px + 0.5rem) calc(0.5rem + 68px + 0.5rem)
+      3rem 3rem;
+  }
   &#four-columns {
     grid-template-columns:
       1fr calc(0.5rem + 48px + 0.5rem) calc(0.5rem + 68px + 0.5rem)
