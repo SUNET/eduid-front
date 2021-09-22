@@ -21,7 +21,7 @@ let EmailForm = (props) => {
           componentClass="input"
           type="text"
           name="email"
-          placeholder="example@example.com"
+          placeholder="name@example.com"
           helpBlock={props.translate("emails.input_help_text")}
         />
       </fieldset>

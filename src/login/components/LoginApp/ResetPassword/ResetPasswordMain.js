@@ -23,7 +23,7 @@ let EmailForm = (props) => (
       id="email-input"
       component={CustomInput}
       translate={props.translate}
-      placeholder="example@email.com"
+      placeholder="name@example.com"
       required={true}
       helpBlock={props.translate("emails.input_help_text")}
     />
