@@ -1,6 +1,6 @@
 import { call, put } from "redux-saga/effects";
 import { getData } from "../getDataRequest";
-import * as actions from "../../actions/getIncomingActions";
+import * as actions from "../../actions/getIncomingInvitesActions";
 
 export function* getIncomingInvitesSaga() {
   const url = GROUP_MGMT_URL + "/invites/incoming";
