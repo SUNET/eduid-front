@@ -40,8 +40,10 @@ const GroupManagement = (props) => (
         Create groups with other eduID users. What the groups are used for is up
         to you and the local services your university provides.
       </p>
-      <RenderInvitesToMe {...props} />
-      <RenderCreateGroupOrGroupData {...props} />
+      <div className="data-panel">
+        <RenderInvitesToMe {...props} />
+        <RenderCreateGroupOrGroupData {...props} />
+      </div>
     </div>
   </article>
 );
