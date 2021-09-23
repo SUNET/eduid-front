@@ -10,7 +10,7 @@
 
 .btn.disabled,
 .btn:disabled {
-  opacity: 1;
+  opacity: 40%;
 }
 
 a.btn,
@@ -33,8 +33,8 @@ button.btn {
   .disabled {
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: $dark-gray;
-    color: $light-gray;
+    background-color: $orange-highlight;
+    color: $white;
   }
 }
 
@@ -74,7 +74,8 @@ button.btn-primary:hover {
   border: none;
   &:disabled,
   .disabled {
-    background-color: $dark-gray;
+    background-color: $orange-highlight;
+    opacity: 40%;
     border: none;
     transform: scale(1);
   }
@@ -114,7 +115,8 @@ button#accept-tou-button {
   &:disabled,
   .disabled {
     color: $white;
-    background-color: #c4c4c4;
+    opacity: 40%;
+    background-color: $orange-highlight;
     pointer-events: none;
   }
 }
