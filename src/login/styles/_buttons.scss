@@ -145,7 +145,7 @@ button.close-button {
   margin: 0 !important;
   height: 100%;
   & svg {
-    fill: #c4c4c4;
+    fill: $close;
     align-self: center;
   }
   &:hover,
@@ -160,7 +160,7 @@ button.close-button {
 
 // ----- buttons that captcha, reset-password cancel ----  //
 button.cancel-button {
-  color: #161616;
+  color: $black;
   margin: 0.5rem 1rem !important;
   padding: 1rem;
   box-shadow: none;
@@ -256,10 +256,10 @@ button.btn-link {
     border: transparent solid 2px;
     margin-top: 0;
     padding: 0.75rem;
-    background-color: white;
+    background-color: $white;
     border-radius: 50%;
     &.icon {
-      background-color: white;
+      background-color: $white;
       height: auto;
       svg {
         color: $black;
