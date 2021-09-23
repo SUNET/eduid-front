@@ -42,6 +42,7 @@ export let PasswordInputElement = (props) => {
         autoComplete={props.autoComplete}
         aria-label={props.ariaLabel}
         aria-required={props.required}
+        id={props.id}
         {...input}
       />
       {props.valid ? (

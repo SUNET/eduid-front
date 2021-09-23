@@ -126,6 +126,7 @@ const customInput = (props) => {
           name={input.name}
           valid={valid}
           invalid={invalid}
+          id={input.name}
         />
       ) : input.name === "current-password" ? (
         <InputToggleShowHide
