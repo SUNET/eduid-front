@@ -24,13 +24,19 @@ const RenderAllInvitesItems = () => {
   let invitesToMeByRole = [
     {
       display_name: "Group 1",
+      email_address: "njons13@test.com",
+      group_identifier: "f60657f6-8e38-4011-9747-19fecbc34442",
+      roles: ["owner", "member"],
       member: true,
       owner: true,
     },
     {
       display_name: "Group 2",
+      email_address: "njons13@test.com",
+      group_identifier: "a45e1518-cce5-4027-b832-5539fbbc873e",
+      roles: ["owner", "member"],
       member: true,
-      owner: false,
+      owner: true,
     },
   ];
   return (

@@ -1,8 +1,17 @@
 import React, { Fragment, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
+import {
+  acceptInviteMember,
+  acceptInviteOwner,
+} from "../../../redux/actions/postAcceptInviteActions";
+import {
+  declineInviteMember,
+  declineInviteOwner,
+} from "../../../redux/actions/postDeclineInviteActions";
 
 const RenderOpenInvite = ({ open, invite }) => {
   const { owner, member } = invite;
@@ -37,29 +46,54 @@ const RenderRoleIndicators = ({ member, owner, open }) => {
   );
 };
 
-const RenderRemoveButton = () => (
-  <div className="list-cell">
-    <ButtonRemoveData
-      className="icon-button"
-      onClick={() => {
-        console.log("you clicked the cross");
-      }}
-    />
-  </div>
-);
-
-const RenderAcceptButton = () => (
-  <div className="list-cell">
-    <button className="accept">
-      <FontAwesomeIcon
-        icon={faCheck}
-        onClick={() => {
-          console.log("you accepted the invite");
-        }}
+const RenderRemoveButton = ({ invite }) => {
+  const dispatch = useDispatch();
+  const { group_identifier, email_address, roles } = invite;
+  const handleRejectInvite = () => {
+    if (roles.length > 1) {
+      dispatch(declineInviteMember(group_identifier, email_address));
+      dispatch(declineInviteOwner(group_identifier, email_address));
+    } else {
+      if (roles.includes("member")) {
+        dispatch(declineInviteMember(group_identifier, email_address));
+      } else if (roles.includes("owner")) {
+        dispatch(declineInviteOwner(group_identifier, email_address));
+      }
+    }
+  };
+  return (
+    <div className="list-cell">
+      <ButtonRemoveData
+        className="icon-button"
+        onClick={() => handleRejectInvite()}
       />
-    </button>
-  </div>
-);
+    </div>
+  );
+};
+
+const RenderAcceptButton = ({ invite }) => {
+  const dispatch = useDispatch();
+  const { group_identifier, email_address, roles } = invite;
+  const handleAcceptInvite = () => {
+    if (roles.length > 1) {
+      dispatch(acceptInviteMember(group_identifier, email_address));
+      dispatch(acceptInviteOwner(group_identifier, email_address));
+    } else {
+      if (roles.includes("member")) {
+        dispatch(acceptInviteMember(group_identifier, email_address));
+      } else if (roles.includes("owner")) {
+        dispatch(acceptInviteOwner(group_identifier, email_address));
+      }
+    }
+  };
+  return (
+    <div className="list-cell">
+      <button className="accept">
+        <FontAwesomeIcon icon={faCheck} onClick={() => handleAcceptInvite()} />
+      </button>
+    </div>
+  );
+};
 
 const AllInvitesListItem = ({ invite }) => {
   const [open, setOpen] = useState(false);
@@ -72,8 +106,8 @@ const AllInvitesListItem = ({ invite }) => {
           member={invite.member}
           owner={invite.owner}
         />
-        <RenderAcceptButton />
-        <RenderRemoveButton />
+        <RenderAcceptButton invite={invite} />
+        <RenderRemoveButton invite={invite} />
       </div>
       <RenderOpenInvite open={open} invite={invite} />
     </li>
