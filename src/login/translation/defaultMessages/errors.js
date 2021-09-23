@@ -192,8 +192,14 @@ export const specificErrors = {
   "login.assurance_failure": (
     <FormattedMessage
       id="login.assurance_failure"
-      defaultMessage={`There was a problem, please reload the page.`}
+      defaultMessage={`An error occurred. Please try again later.`}
     />
+  ),
+  "login.assurance_not_possible": (
+      <FormattedMessage
+          id="login.assurance_not_possible"
+          defaultMessage={`The service requires something that eduID cannot provide. Contact the service owner for help.`}
+      />
   ),
   "login.bad_ref": (
     <FormattedMessage
@@ -213,6 +219,48 @@ export const specificErrors = {
       id="login.wrong_user"
       defaultMessage={`It was not possible to complete the login. Please try again.`}
     />
+  ),
+  "login.credential_expired": (
+      <FormattedMessage
+          id="login.credential_expired"
+          defaultMessage={`The credential has expired because it was not used in 18 months. Perform a password reset or log in using some other credential.`}
+      />
+  ),
+  "login.general_failure": (
+      <FormattedMessage
+          id="login.general_failure"
+          defaultMessage={`An error occurred. Please try again later.`}
+      />
+  ),
+  "login.not_available": (
+      <FormattedMessage
+          id="login.not_available"
+          defaultMessage={`An error occurred. Please try again later.`}
+      />
+  ),
+  "login.swamid_mfa_required": (
+      <FormattedMessage
+          id="login.swamid_mfa_required"
+          defaultMessage={`The service requires Person-Proofed multi-factor authentication (SWAMID MFA). Visit the eduID dashboard to add a verified Security Key.`}
+      />
+  ),
+  "login.user_temporary_locked": (
+      <FormattedMessage
+          id="login.user_temporary_locked"
+          defaultMessage={`This account has reached the limit for incorrect logins and is temporarily disabled. Try again next calendar month.`}
+      />
+  ),
+  "login.user_terminated": (
+      <FormattedMessage
+          id="login.user_terminated"
+          defaultMessage={`This account has been terminated, but is still present. Perform a password reset to cancel termination. `}
+      />
+  ),
+  "eidas.authn_context_mismatch": (
+      <FormattedMessage
+          id="eidas.authn_context_mismatch"
+          defaultMessage={`Wrong authentication context received`}
+      />
   ),
   "eidas.nin_not_matching": (
     <FormattedMessage
