@@ -7,8 +7,8 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 const SubmitSamlResponse = () => {
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
-  const SAMLResponse = useSelector(
-    (state) => state.login.mfa.parameters.SAMLResponse
+  const SAMLParameters = useSelector(
+    (state) => state.login.mfa.parameters
   );
   const targetUrl = useSelector((state) => state.login.post_to);
   useEffect(() => {
@@ -27,7 +27,8 @@ const SubmitSamlResponse = () => {
     <Fragment>
       {error ? null : <Splash />}
       <form action={targetUrl} method="post">
-        <input type="hidden" name="SAMLResponse" value={SAMLResponse} />
+        <input type="hidden" name="SAMLResponse" value={SAMLParameters.SAMLResponse} />
+        <input type="hidden" name="RelayState" value={SAMLParameters.RelayState} />
         <noscript>
           <input type="submit" value="Continue" />
         </noscript>
