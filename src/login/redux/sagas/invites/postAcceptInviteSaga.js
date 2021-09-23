@@ -14,9 +14,8 @@ export function* postAcceptInviteSaga(action) {
       csrf_token: state.config.csrf_token,
     };
     const response = yield call(postRequest, url, dataToSend);
-    // console.log("response", response);
-    yield put(putCsrfToken(createInviteReponse));
-    yield put(createInviteReponse);
+    yield put(putCsrfToken(response));
+    yield put(response);
   } catch (error) {
     yield put(actions.acceptInviteFail(error.toString()));
   }

@@ -14,9 +14,8 @@ export function* postDeclineInviteSaga(action) {
       csrf_token: state.config.csrf_token,
     };
     const response = yield call(postRequest, url, dataToSend);
-   console.log("response", response);
-    // yield put(putCsrfToken(reponse));
-    // yield put(reponse);
+    yield put(putCsrfToken(response));
+    yield put(response);
   } catch (error) {
     yield put(actions.declineInviteFail(error.toString()));
   }
