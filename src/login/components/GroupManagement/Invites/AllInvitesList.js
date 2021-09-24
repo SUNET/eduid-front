@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import AllInvitesListItem from "./AllInvitesListItem";
+import addRoleInfoToInvites from "../../../app_utils/helperFunctions/addRoleInfoToInvites";
 
 const RenderAllInvitesListHeading = () => {
   let headingText = ["Invites", "Member", "Owner", "", ""];
@@ -19,6 +20,8 @@ const RenderAllInvitesListHeading = () => {
 const RenderAllInvitesItems = () => {
   // invites data from redux store
   const invitesToMe = useSelector((state) => state.invites.invitesToMe);
+  const incomingInvitesByRole = addRoleInfoToInvites(invitesToMe);
+  // console.log("incomingInvitesByRole", incomingInvitesByRole);
   // invitesToMe mutated into below
   // structure by helper function
   let invitesToMeByRole = [

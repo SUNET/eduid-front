@@ -47,19 +47,21 @@ const RenderRoleIndicators = ({ member, owner, open }) => {
 };
 
 const RenderRemoveButton = ({ invite }) => {
+  console.log("invite", invite);
   const dispatch = useDispatch();
-  const { group_identifier, email_address, roles } = invite;
+  const { group_identifier, email_address } = invite;
   const handleRejectInvite = () => {
-    if (roles.length > 1) {
+    // if (roles.length > 1) {
+    //   dispatch(declineInviteMember(group_identifier, email_address));
+    //   dispatch(declineInviteOwner(group_identifier, email_address));
+    // } else {
+    if (role === "member") {
       dispatch(declineInviteMember(group_identifier, email_address));
-      dispatch(declineInviteOwner(group_identifier, email_address));
-    } else {
-      if (roles.includes("member")) {
-        dispatch(declineInviteMember(group_identifier, email_address));
-      } else if (roles.includes("owner")) {
-        dispatch(declineInviteOwner(group_identifier, email_address));
-      }
     }
+    if (role === "owner") {
+      dispatch(declineInviteOwner(group_identifier, email_address));
+    }
+    // }
   };
   return (
     <div className="list-cell">
@@ -73,18 +75,19 @@ const RenderRemoveButton = ({ invite }) => {
 
 const RenderAcceptButton = ({ invite }) => {
   const dispatch = useDispatch();
-  const { group_identifier, email_address, roles } = invite;
+  const { group_identifier, email_address } = invite;
   const handleAcceptInvite = () => {
-    if (roles.length > 1) {
+    // if (roles.length > 1) {
+    //   dispatch(acceptInviteMember(group_identifier, email_address));
+    //   dispatch(acceptInviteOwner(group_identifier, email_address));
+    // } else {
+    if (role === "member") {
       dispatch(acceptInviteMember(group_identifier, email_address));
-      dispatch(acceptInviteOwner(group_identifier, email_address));
-    } else {
-      if (roles.includes("member")) {
-        dispatch(acceptInviteMember(group_identifier, email_address));
-      } else if (roles.includes("owner")) {
-        dispatch(acceptInviteOwner(group_identifier, email_address));
-      }
     }
+    if (role === "owner") {
+      dispatch(acceptInviteOwner(group_identifier, email_address));
+    }
+    // }
   };
   return (
     <div className="list-cell">
