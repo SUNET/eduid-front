@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import { addWebauthnAssertion } from "../../../redux/actions/addDataToStoreActions";
-import { postWebauthnFromAuthenticator } from "../../../redux/actions/postWebauthnFromAuthenticatorActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 
@@ -72,9 +71,7 @@ let SecurityKeySelected = ({ translate, setSelected }) => {
     } else {
       if (webauthn_assertion === null) {
         assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
-      } else {
-        dispatch(postWebauthnFromAuthenticator(webauthn_assertion));
-      }
+      } 
     }
   }, [webauthn_challenge, webauthn_assertion, retryToggle]);
 
