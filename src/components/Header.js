@@ -28,6 +28,7 @@ class Header extends Component {
       button = (
         <div id="eduid-button">
           <button id="logout" onClick={this.props.handleLogout}>
+            <FontAwesomeIcon icon={faUser}/>
             {this.props.translate("header.logout")}
           </button>
         </div>
