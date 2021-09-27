@@ -9,8 +9,8 @@ import * as postUpdatedTouAcceptActions from "../../actions/postUpdatedTouAccept
 import { postUpdatedTouAcceptSaga } from "../login/postUpdatedTouAcceptSaga";
 import * as postRefForWebauthnChallengeActions from "../../actions/postRefForWebauthnChallengeActions";
 import { postRefForWebauthnChallengeSaga } from "../login/postRefForWebauthnChallengeSaga";
-import * as postWebauthnFromAuthenticatorActions from "../../actions/postWebauthnFromAuthenticatorActions";
 import { postWebauthnFromAuthenticatorSaga } from "../login/postWebauthnFromAuthenticatorSaga";
+import * as addDataToStoreActions from "../../actions/addDataToStoreActions";
 
 const loginSagas = [
   takeLatest(postRefLoginActions.POST_LOGIN_REF_TO_NEXT, postRefLoginSaga),
@@ -32,7 +32,7 @@ const loginSagas = [
     postRefLoginSaga
   ),
   takeLatest(
-    postWebauthnFromAuthenticatorActions.POST_WEBAUTHN_ASSERTION,
+    addDataToStoreActions.ADD_WEBAUTHN_ASSERTION_TO_STORE,
     postWebauthnFromAuthenticatorSaga
   ),
 ];

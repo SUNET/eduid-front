@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import { addWebauthnAssertion } from "../../../redux/actions/addDataToStoreActions";
-import { postWebauthnFromAuthenticator } from "../../../redux/actions/postWebauthnFromAuthenticatorActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 
@@ -77,13 +76,13 @@ let SecurityKeyUnselected = ({ translate, setSelected }) => {
   const startTokenAssertion = (setSelected) => {
    setSelected(true);
    if (webauthn_challenge === null) {
-        // HACK: skip func if no webauthn_challenge
-        return undefined;
-      } else {
-        if (webauthn_assertion === null) {
-          assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
-        } 
-      }
+      // HACK: skip func if no webauthn_challenge
+      return undefined;
+    } else {
+      if (webauthn_assertion === null) {
+        assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
+      } 
+    }
   };
   
   return (
