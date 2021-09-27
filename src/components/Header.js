@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import "../login/styles/index.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 class Header extends Component {
   render() {
@@ -11,7 +13,8 @@ class Header extends Component {
     if (url.includes("register")) {
       button = (
         <a href={this.props.dashboard_url}>
-          <button id="login" className="btn">
+          <button id="login">
+            <FontAwesomeIcon icon={faUser}/>
             {this.props.translate("header.signin")}
           </button>
         </a>
@@ -24,7 +27,7 @@ class Header extends Component {
       );
       button = (
         <div id="eduid-button">
-          <button id="logout" className="btn" onClick={this.props.handleLogout}>
+          <button id="logout" onClick={this.props.handleLogout}>
             {this.props.translate("header.logout")}
           </button>
         </div>
