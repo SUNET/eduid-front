@@ -1,11 +1,22 @@
 @import "./variables.scss";
 
 // --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
-
-#logout {
+// Login, Logout button in Header
+#login, #logout {
   text-transform: none;
   margin-top: 0;
   margin-bottom: 0;
+  font-family: "ProximaNova-Regular";
+  color: $black;
+  background-color: $white;
+  box-shadow: none;
+  padding: 0;
+  span{
+    padding-left: 6px;
+  }
+  svg {
+    transform: none;
+  }
 }
 
 .btn.disabled,
@@ -268,6 +279,14 @@ button.btn-link {
         transform: rotate(0);
       }
     }
+  }
+}
+
+@media (max-width: 568px) {
+  #login, #logout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
