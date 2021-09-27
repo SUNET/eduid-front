@@ -10,12 +10,13 @@
   color: $black;
   background-color: $white;
   box-shadow: none;
-  padding: 0;
-  span{
-    &:hover {
-      border-bottom: solid 1px $orange-highlight;
-      color: $orange-highlight;
-    }
+  border: solid 1px $orange-highlight;
+  padding: 6px 12px;
+  &:hover {
+    transform: scale(0.95);
+  }
+  span:hover {
+    color: $orange-highlight;
   }
   svg {
     transform: none;
@@ -286,20 +287,15 @@ button.btn-link {
   }
 }
 
-@media (max-width: 568px) {
-  #login, #logout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    svg {
-      margin-right: 0;
-    }
-  }
-}
-
 @media (max-width: 414px) {
   button.btn {
     font-size: 0.9rem;
+  }
+  #login, #logout {
+    font-size: 0.9rem;
+    svg {
+      width: 12px;
+    }
   }
 
   button.modal-button.ok-button,
