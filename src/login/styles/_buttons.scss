@@ -1,11 +1,27 @@
 @import "./variables.scss";
 
 // --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
-
-#logout {
+// Login, Logout button in Header
+#login, #logout {
   text-transform: none;
   margin-top: 0;
   margin-bottom: 0;
+  font-family: "ProximaNova-Regular";
+  color: $black;
+  background-color: $white;
+  box-shadow: none;
+  border: solid 1px $orange-highlight;
+  padding: 6px 12px;
+  &:hover {
+    transform: scale(0.95);
+  }
+  span:hover {
+    color: $orange-highlight;
+  }
+  svg {
+    transform: none;
+    margin-right: 6px;
+  } 
 }
 
 .btn.disabled,
@@ -274,6 +290,12 @@ button.btn-link {
 @media (max-width: 414px) {
   button.btn {
     font-size: 0.9rem;
+  }
+  #login, #logout {
+    font-size: 0.9rem;
+    svg {
+      width: 12px;
+    }
   }
 
   button.modal-button.ok-button,
