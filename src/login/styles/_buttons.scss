@@ -12,11 +12,15 @@
   box-shadow: none;
   padding: 0;
   span{
-    padding-left: 6px;
+    &:hover {
+      border-bottom: solid 1px $orange-highlight;
+      color: $orange-highlight;
+    }
   }
   svg {
     transform: none;
-  }
+    margin-right: 6px;
+  } 
 }
 
 .btn.disabled,
@@ -287,6 +291,9 @@ button.btn-link {
     display: flex;
     flex-direction: column;
     align-items: center;
+    svg {
+      margin-right: 0;
+    }
   }
 }
 
