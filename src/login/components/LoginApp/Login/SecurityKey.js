@@ -70,7 +70,6 @@ let SecurityKeyUnselected = ({ translate, setSelected }) => {
   const ShowSecurityKey = (e) => {
     e.preventDefault();
     startTokenAssertion(setSelected);
-  
   };
   
   const startTokenAssertion = (setSelected) => {
