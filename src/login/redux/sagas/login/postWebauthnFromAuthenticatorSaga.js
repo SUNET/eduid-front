@@ -3,6 +3,7 @@ import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postWebauthnFromAuthenticatorActions";
 import { safeEncode } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import { useLoginRef } from "../../actions/postRefLoginActions";
 
 export function* postWebauthnFromAuthenticatorSaga() {
   const state = yield select((state) => state);
@@ -22,6 +23,9 @@ export function* postWebauthnFromAuthenticatorSaga() {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     yield put(response);
+    if (response.payload.finished) {
+      yield put(useLoginRef());
+    }
   } catch (error) {
     yield put(actions.postWebauthnFromAuthenticatorFail(error.toString()));
   }

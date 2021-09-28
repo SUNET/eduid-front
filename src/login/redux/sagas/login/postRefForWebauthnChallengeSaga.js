@@ -3,6 +3,7 @@ import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/postRefForWebauthnChallengeActions";
 import { mfaDecodeMiddleware } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import { useLoginRef } from "../../actions/postRefLoginActions";
 
 export function* postRefForWebauthnChallengeSaga() {
   const state = yield select((state) => state);
@@ -16,6 +17,9 @@ export function* postRefForWebauthnChallengeSaga() {
     const decodedChallenge = mfaDecodeMiddleware(encodedChallenge);
     yield put(putCsrfToken(decodedChallenge));
     yield put(decodedChallenge);
+    if (decodedChallenge.payload.finished){
+      yield put(useLoginRef());
+    }
   } catch (error) {
     yield put(actions.postRefForWebauthnChallengeFail(error.toString()));
   }
