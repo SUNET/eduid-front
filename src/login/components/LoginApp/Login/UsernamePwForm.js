@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { reduxForm } from "redux-form";
+import { reduxForm, submit } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EmailInput from "../../Inputs/EmailInput";
 import PasswordInput from "../../Inputs/PasswordInput";
@@ -30,11 +30,20 @@ export const validateLoginForm = (values, props) => {
   return errors;
 };
 
-let UsernamePwForm = (props) => (
+const handleKeyDown = (e, dispatch) => {
+  if (e.which === 13) {
+    // e.which === 13, event is to click the enter button
+    e.preventDefault();
+    dispatch(submit("usernamePwForm"))
+  }
+};
+
+let UsernamePwForm = ({props, dispatch}) => (
   <Form
     id="login-form"
     aria-label="login form"
     onSubmit={submitUsernamePassword}
+    onKeyDown={(e) => handleKeyDown(e, dispatch)}
   >
     <EmailInput {...props} autoFocus={true} required={true} />
     <PasswordInput {...props} />

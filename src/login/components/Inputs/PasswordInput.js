@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 
 let RenderHideButton = ({ setInputType, translate }) => (
   <button
+    type="button"
     aria-label="hide password"
     className="show-hide-button"
     onClick={() => setInputType("password")}
@@ -21,6 +22,7 @@ let RenderHideButton = ({ setInputType, translate }) => (
 
 let RenderShowButton = ({ setInputType, translate }) => (
   <button
+    type="button"
     aria-label="show password"
     className="show-hide-button"
     onClick={() => setInputType("text")}
