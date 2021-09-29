@@ -90,7 +90,7 @@ const UsernamePw = (props) => {
       <h2 className="heading">
         {props.translate("login.usernamePw.h2-heading")}
       </h2>
-      <UsernamePwForm {...props} />
+      <UsernamePwForm dispatch={props.dispatch} {...props} />
       <div className="button-pair">
         <UsernamePwFormButton {...props} />
         <RenderResetPasswordLink {...props} />
