@@ -93,14 +93,12 @@ class Security extends Component {
 
       if (this.state.isAvailablePlatformAuthenticator) {
         platformAuthenticatorButton = (
-          <div id="add-webauthn-token-platform">
-            <EduIDButton
-              id="security-webauthn-platform-button"
-              onClick={this.props.handleStartAskingDeviceWebauthnDescription}
-            >
-              {this.props.translate("security.add_webauthn_token_device")}
-            </EduIDButton>
-          </div>
+          <EduIDButton
+            id="security-webauthn-platform-button"
+            onClick={this.props.handleStartAskingDeviceWebauthnDescription}
+          >
+            {this.props.translate("security.add_webauthn_token_device")}
+          </EduIDButton>
         );
       }
 
@@ -171,14 +169,16 @@ class Security extends Component {
           </div>
           <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
-            <EduIDButton
-              id="security-webauthn-button"
-              className="settings-button"
-              onClick={this.props.handleStartAskingKeyWebauthnDescription}
-            >
-              {this.props.translate("security.add_webauthn_token_key")}
-            </EduIDButton>
+            <div className="register-authn-buttons">
+              <EduIDButton
+                id="security-webauthn-button"
+                className="settings-button"
+                onClick={this.props.handleStartAskingKeyWebauthnDescription}
+              >
+                {this.props.translate("security.add_webauthn_token_key")}
+              </EduIDButton>
             {platformAuthenticatorButton}
+            </div>
           </div>
         </div>
 

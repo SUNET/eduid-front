@@ -1,3 +1,14 @@
 td .passwords {
   background-color: white;
 }
+
+.register-authn-buttons {
+  padding-left: 0.3rem;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  button {
+    margin: 0.5rem 0;
+    width: fit-content;
+  }
+}
