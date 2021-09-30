@@ -14,7 +14,7 @@ const security = {
   webauthn_attestation: {},
   webauthn_token_remove: "",
   webauthn_token_verify: "",
-  webauthn_authenticator: "cross-platform"
+  webauthn_authenticator: ""
 };
 
 let securityReducer = (state = security, action) => {
