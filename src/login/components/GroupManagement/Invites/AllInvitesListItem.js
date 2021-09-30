@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";

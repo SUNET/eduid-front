@@ -32,7 +32,7 @@ const RenderAllInvitesItems = () => {
   );
 };
 
-const AllInvitesList = (props) => {
+const AllInvitesList = () => {
   return (
     <div className="view-data">
       <div className="invites-list">
