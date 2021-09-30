@@ -170,6 +170,7 @@ class Security extends Component {
           <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
             <div className="register-authn-buttons">
+             {platformAuthenticatorButton}
               <EduIDButton
                 id="security-webauthn-button"
                 className="settings-button"
@@ -177,7 +178,6 @@ class Security extends Component {
               >
                 {this.props.translate("security.add_webauthn_token_key")}
               </EduIDButton>
-            {platformAuthenticatorButton}
             </div>
           </div>
         </div>

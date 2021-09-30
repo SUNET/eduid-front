@@ -458,6 +458,7 @@
   "security.webauthn.max_allowed_tokens": "Du kan inte registrera fler säkerhetsnycklar",
   "security.webauthn_credential_type": "Säkerhetsnyckel",
   "security.webauthn_register_success": "Säkerhetsnyckel registrerad",
+  "SecurityMsg.rm_webauthn": "Säkerhetsnyckel har tagits bort.",
   "settings.account_description": "Om du väljer att ta bort ditt eduID kommer all information du sparat rensas permanent.",
   "settings.account_title": "Ta bort eduID",
   "settings.change_info": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya.",

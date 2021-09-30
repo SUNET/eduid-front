@@ -10,5 +10,10 @@ td .passwords {
   button {
     margin: 0.5rem 0;
     width: fit-content;
+    &#security-webauthn-button {
+      background-color:$white;
+      border: solid 1px $orange-highlight;
+      color: $orange-highlight;
+    }
   }
 }

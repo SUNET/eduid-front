@@ -458,6 +458,7 @@
   "security.webauthn.max_allowed_tokens": "You are not allowed to register more security keys",
   "security.webauthn_credential_type": "Security key",
   "security.webauthn_register_success": "Security key added",
+  "SecurityMsg.rm_webauthn": "Security key has been removed.",
   "settings.account_description": "Click the link to permanently delete your eduID.",
   "settings.account_title": "Delete eduID",
   "settings.change_info": "You will need to log in again to change your password.",

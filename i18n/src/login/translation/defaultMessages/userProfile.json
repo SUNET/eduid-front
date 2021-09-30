@@ -864,6 +864,10 @@
     "defaultMessage": "You are not allowed to remove your only security key"
   },
   {
+    "id": "SecurityMsg.rm_webauthn",
+    "defaultMessage": "Security key has been removed."
+  },
+  {
     "id": "account_linking.main_title",
     "defaultMessage": "ORCID account"
   },

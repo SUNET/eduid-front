@@ -1533,6 +1533,13 @@ export const userData = {
     />
   ),
 
+  "SecurityMsg.rm_webauthn": (
+    <FormattedMessage
+      id="SecurityMsg.rm_webauthn"
+      defaultMessage={`Security key has been removed.`}
+    />
+  ),
+
   /* ----- ACCOUNT LINKING ------- */
 
   "account_linking.main_title": (
