@@ -40,8 +40,8 @@ const RenderGroupName = ({ display_name, open }) => {
 const RenderRoleIndicators = ({ member, owner, open }) => {
   return (
     <Fragment>
-      <div className="list-cell"> {!open && owner ? "X" : null}</div>
       <div className="list-cell">{!open && member ? "X" : null}</div>
+      <div className="list-cell"> {!open && owner ? "X" : null}</div>
     </Fragment>
   );
 };

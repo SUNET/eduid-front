@@ -20,33 +20,11 @@ const RenderAllInvitesListHeading = () => {
 const RenderAllInvitesItems = () => {
   // invites data from redux store
   const invitesToMe = useSelector((state) => state.invites.invitesToMe);
-  console.log("invitesToMe", invitesToMe);
-  const incomingInvitesByRole = addRoleInfoToInvites(invitesToMe);
-  console.log("incomingInvitesByRole", incomingInvitesByRole);
-  // invitesToMe mutated into below
-  // structure by helper function
-  let invitesToMeByRole = [
-    {
-      display_name: "Group 1",
-      email_address: "njons13@test.com",
-      group_identifier: "f60657f6-8e38-4011-9747-19fecbc34442",
-      roles: ["owner", "member"],
-      member: true,
-      owner: true,
-    },
-    {
-      display_name: "Group 2",
-      email_address: "njons13@test.com",
-      group_identifier: "a45e1518-cce5-4027-b832-5539fbbc873e",
-      roles: ["owner", "member"],
-      member: true,
-      owner: true,
-    },
-  ];
+  const invitesToMeByRole = addRoleInfoToInvites(invitesToMe);
   return (
     <div className="list-data invites">
       <ul>
-        {incomingInvitesByRole.map((invite, i) => (
+        {invitesToMeByRole.map((invite, i) => (
           <AllInvitesListItem key={i} invite={invite} />
         ))}
       </ul>
