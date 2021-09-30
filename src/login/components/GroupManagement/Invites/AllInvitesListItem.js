@@ -51,14 +51,10 @@ const RenderRemoveButton = ({ invite }) => {
   const dispatch = useDispatch();
   const { group_identifier, email_address } = invite;
   const handleRejectInvite = () => {
-    // if (roles.length > 1) {
-    //   dispatch(declineInviteMember(group_identifier, email_address));
-    //   dispatch(declineInviteOwner(group_identifier, email_address));
-    // } else {
-    if (role === "member") {
+    if (invite.role === "member") {
       dispatch(declineInviteMember(group_identifier, email_address));
     }
-    if (role === "owner") {
+    if (invite.role === "owner") {
       dispatch(declineInviteOwner(group_identifier, email_address));
     }
     // }
@@ -77,14 +73,10 @@ const RenderAcceptButton = ({ invite }) => {
   const dispatch = useDispatch();
   const { group_identifier, email_address } = invite;
   const handleAcceptInvite = () => {
-    // if (roles.length > 1) {
-    //   dispatch(acceptInviteMember(group_identifier, email_address));
-    //   dispatch(acceptInviteOwner(group_identifier, email_address));
-    // } else {
-    if (role === "member") {
+    if (invite.role === "member") {
       dispatch(acceptInviteMember(group_identifier, email_address));
     }
-    if (role === "owner") {
+    if (invite.role === "owner") {
       dispatch(acceptInviteOwner(group_identifier, email_address));
     }
     // }

@@ -20,8 +20,9 @@ const RenderAllInvitesListHeading = () => {
 const RenderAllInvitesItems = () => {
   // invites data from redux store
   const invitesToMe = useSelector((state) => state.invites.invitesToMe);
+  console.log("invitesToMe", invitesToMe);
   const incomingInvitesByRole = addRoleInfoToInvites(invitesToMe);
-  // console.log("incomingInvitesByRole", incomingInvitesByRole);
+  console.log("incomingInvitesByRole", incomingInvitesByRole);
   // invitesToMe mutated into below
   // structure by helper function
   let invitesToMeByRole = [
@@ -45,7 +46,7 @@ const RenderAllInvitesItems = () => {
   return (
     <div className="list-data invites">
       <ul>
-        {invitesToMeByRole.map((invite, i) => (
+        {incomingInvitesByRole.map((invite, i) => (
           <AllInvitesListItem key={i} invite={invite} />
         ))}
       </ul>
