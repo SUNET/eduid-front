@@ -61,18 +61,21 @@
 let incomingInvitesByRole = (invites) => {
   if (invites.length === 0) return [];
 
-  invites.map(function(invite) {
-    invite.member = false
-    invite.owner = false
-    if (invite.role === 'member') {
-      invite.member = true
-    } else if (invite.role === 'owner') {
-      invite.owner = true
+  const modifiedInvites = invites.map(function(invite) {
+    let modifiedInvite = {
+      ...invite,
+      member: false,
+      owner: false
     }
-    return invite;
+    if (invite.role === 'member') {
+      modifiedInvite.member = true
+    } else if (invite.role === 'owner') {
+      modifiedInvite.owner = true
+    }
+    return modifiedInvite;
   });
 
-  return invites
+  return modifiedInvites
 };
 
 export default incomingInvitesByRole;
