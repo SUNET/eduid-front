@@ -7,8 +7,8 @@ import PasswordInput from "../../Inputs/PasswordInput";
 import { validateEmailOnLogin } from "../../../app_utils/validation/validateEmail";
 import emptyValueValidation from "../../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import { postUsernamePassword } from "../../../redux/actions/postUsernamePasswordActions";
 import PropTypes from "prop-types";
+import {postUsernamePassword} from "../../../redux/actions/loginActions";
 
 export const submitUsernamePassword = (values, dispatch) => {
   const { email, "current-password": currentPassword } = values;

@@ -2,7 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUsernamePasswordSaga } from "../../login/redux/sagas/login/postUsernamePasswordSaga";
-import { postUsernamePasswordFail } from "../../login/redux/actions/postUsernamePasswordActions";
+import { loginSagaFail } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
@@ -95,7 +95,7 @@ describe("API call to /pw_auth behaves as expected on _FAIL", () => {
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_PW_AUTH_FAIL");
-    expect(failResponse).toEqual(postUsernamePasswordFail("error"));
+    expect(failResponse).toEqual(loginSagaFail("error"));
   });
   it("done after 'LOAD_DATA_COMPLETE'", () => {
     next = generator.next();

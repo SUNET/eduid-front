@@ -4,7 +4,7 @@ import { addLocaleData } from "react-intl";
 addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postRefLoginSaga } from "../../login/redux/sagas/login/postRefLoginSaga";
-import { postRefFail } from "../../login/redux/actions/postRefLoginActions";
+import { loginSagaFail } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
@@ -77,7 +77,7 @@ describe("API call to /next behaves as expected on _FAIL", () => {
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_NEXT_FAIL");
-    expect(failResponse).toEqual(postRefFail("error"));
+    expect(failResponse).toEqual(loginSagaFail("error"));
   });
   it("done after 'POST_IDP_NEXT_FAIL'", () => {
     const done = generator.next().done;
