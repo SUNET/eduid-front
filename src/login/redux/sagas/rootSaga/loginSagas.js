@@ -27,10 +27,7 @@ const loginSagas = [
     postRefForWebauthnChallengeActions.POST_REF_WEBAUTHN_CHALLENGE,
     postRefForWebauthnChallengeSaga
   ),
-  takeLatest(
-    addDataToStoreActions.ADD_WEBAUTHN_ASSERTION_TO_STORE,
-    postWebauthnFromAuthenticatorSaga
-  ),
+  takeLatest(addDataToStoreActions.addWebauthnAssertion.toString(), postWebauthnFromAuthenticatorSaga),
   takeLatest(
     postRefForWebauthnChallengeActions.POST_IDP_MFA_AUTH_FAIL,
     postRefForWebauthnChallengeSaga

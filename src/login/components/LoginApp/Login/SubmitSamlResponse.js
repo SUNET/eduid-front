@@ -8,7 +8,7 @@ const SubmitSamlResponse = () => {
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const SAMLParameters = useSelector(
-    (state) => state.login.mfa.parameters
+    (state) => state.login.saml_parameters
   );
   const targetUrl = useSelector((state) => state.login.post_to);
   useEffect(() => {

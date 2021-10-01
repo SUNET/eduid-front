@@ -1,6 +1,5 @@
 export const POST_USERNAME_PASSWORD = "POST_USERNAME_PASSWORD";
-export const POST_IDP_PW_AUTH_SUCCESS = "POST_IDP_PW_AUTH_SUCCESS";
- export const POST_IDP_PW_AUTH_FAIL = "POST_IDP_PW_AUTH_FAIL";
+export const POST_IDP_PW_AUTH_FAIL = "POST_IDP_PW_AUTH_FAIL";
 
 export function postUsernamePassword(username, password) {
   return {

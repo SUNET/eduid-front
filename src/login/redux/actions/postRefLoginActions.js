@@ -1,5 +1,4 @@
 export const POST_LOGIN_REF_TO_NEXT = "POST_LOGIN_REF_TO_NEXT";
-export const POST_IDP_NEXT_SUCCESS = "POST_IDP_NEXT_SUCCESS";
 export const POST_IDP_NEXT_FAIL = "POST_IDP_NEXT_FAIL";
 
 export function useLoginRef() {
