@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import GroupsList from "./GroupsList";
 import EditGroup from "./EditGroup";
@@ -39,7 +39,7 @@ class GroupParent extends Component {
 
   render() {
     return (
-      <div className="data-panel">
+      <Fragment>
         {this.state.editGroup ? (
           <EditGroup
             {...this.props}
@@ -52,7 +52,7 @@ class GroupParent extends Component {
             toggleGroupsListOrEditGroup={this.toggleGroupsListOrEditGroup}
           />
         )}
-      </div>
+      </Fragment>
     );
   }
 }
