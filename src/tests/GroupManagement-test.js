@@ -35,6 +35,11 @@ const baseState = {
     message: "",
     payload: "",
   },
+  invites: {
+    message: "",
+    invitesFromMe: [],
+    invitesToMe: [],
+  },
   form: [],
   intl: {
     locale: "en",
