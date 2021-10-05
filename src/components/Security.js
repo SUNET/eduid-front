@@ -37,11 +37,10 @@ class Security extends Component {
     // data that goes onto the table
     const securitykey_table_data = tokens.map((cred, index) => {
       // date created
-      const date_created = cred.created_ts.split(" ")[0];
+      const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
       // date last used
-      console.log("cred.created_ts", date_created )
       if (cred.success_ts) {
-        date_success = cred.success_ts.replace(/-/g, '-').split(" ")[0];
+        date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
       } else {
         date_success = this.props.translate("security.last-used.date");
       }
