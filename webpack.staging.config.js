@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 
 var webpackStaging = {
-  ...webpackProd
+  ...webpackProd,
+  devtool: "eval-source-map"
 };
 
 webpackStaging.output = {
