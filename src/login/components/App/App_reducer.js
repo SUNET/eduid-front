@@ -9,11 +9,11 @@ const initialState = {
 };
 
 const appReducer = createReducer(initialState, {
-  [actions.appLoaded]: (state, action) => { state.is_loaded = true },
-  [loadingDataActions.loadingData]: (state, action) => { state.loading_data = true },
-  [loadingDataActions.loadingDataComplete]: (state, action) => { state.loading_data = false },
-  [loadingDataActions.requestInProgress]: (state, action) => { state.request_in_progress = true },
-  [loadingDataActions.requestCompleted]: (state, action) => { state.request_in_progress = false },
+  [actions.appLoaded]: (state) => { state.is_loaded = true },
+  [loadingDataActions.loadingData]: (state) => { state.loading_data = true },
+  [loadingDataActions.loadingDataComplete]: (state) => { state.loading_data = false },
+  [loadingDataActions.requestInProgress]: (state) => { state.request_in_progress = true },
+  [loadingDataActions.requestCompleted]: (state) => { state.request_in_progress = false },
 })
 
 export default appReducer;

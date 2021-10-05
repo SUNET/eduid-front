@@ -30,7 +30,7 @@ const loginReducer = createReducer(loginData, {
     state.post_to = action.payload.target;
     state.saml_parameters = samlParameters;
   },
-  "POST_IDP_PW_AUTH_SUCCESS": (state, action) => {
+  "POST_IDP_PW_AUTH_SUCCESS": () => {
     // Process a successful response from the /pw_auth endpoint.
     // This is currently a NO-OP. The saga that sent the request and received the response will have
     // also requested a new call to the /next endpoint to see what needs to be done now.
