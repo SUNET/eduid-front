@@ -61,14 +61,12 @@ class Security extends Component {
     );
 
     // data that goes onto the table
-    const secirutykey_table_data = tokens.map((cred, index) => {
+    const securitykey_table_data = tokens.map((cred, index) => {
       // date created
-      const date_created = new Date(cred.created_ts)
-        .toISOString()
-        .split("T")[0];
+      const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
       // date last used
       if (cred.success_ts) {
-        date_success = new Date(cred.success_ts).toISOString().split("T")[0];
+        date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
       } else {
         date_success = this.props.translate("security.last-used.date");
       }
@@ -154,7 +152,7 @@ class Security extends Component {
               <th className="security-verify-link" />
               <th className="security-remove-data"/>
             </tr>
-            {secirutykey_table_data}
+            {securitykey_table_data}
           </tbody>
         </table>
       );
