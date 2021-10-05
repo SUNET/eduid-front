@@ -40,7 +40,7 @@ class Security extends Component {
       const date_created = cred.created_ts.replace(/-/g, '-').split(" ")[0];
       // date last used
       if (cred.success_ts) {
-        date_success = cred.created_ts.replace(/-/g, '-').split(" ")[0];
+        date_success = cred.success_ts.replace(/-/g, '-').split(" ")[0];
       } else {
         date_success = this.props.translate("security.last-used.date");
       }
