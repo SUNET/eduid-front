@@ -2,7 +2,6 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postTouVersionsSaga } from "../../login/redux/sagas/login/postTouVersionsSaga";
-import { loginSagaFail } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
@@ -27,7 +26,7 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
     const dataToSend = {
       ref: fakeState.login.ref,
       csrf_token: fakeState.config.csrf_token,
-      versions: action.payload.versions.toString(),
+      versions: action.payload.toString(),
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
@@ -78,8 +77,7 @@ describe("first API call to /tou behaves as expected on _FAIL", () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_FAIL");
-    expect(failResponse).toEqual(loginSagaFail("error"));
+    expect(next.value.PUT.action).toEqual(failResponse);
   });
   it("done after 'POST_IDP_TOU_FAIL'", () => {
     const done = generator.next().done;
