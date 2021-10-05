@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { postWebauthnFromAuthenticatorFail } from "../../../redux/actions/postWebauthnFromAuthenticatorActions";
 import Splash from "../../../../containers/Splash";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import { loginSagaFail } from "../../../redux/actions/loginActions";
 
 const SubmitSamlResponse = () => {
   const [error, setError] = useState(false);
@@ -20,7 +20,8 @@ const SubmitSamlResponse = () => {
       document.forms[0].submit();
     } else {
       setError(true);
-      dispatch(postWebauthnFromAuthenticatorFail("error"));
+      // TODO: Not really a saga failure, so maybe it should have it's own fail action?
+      dispatch(loginSagaFail("error"));
     }
   }, []);
   return (
