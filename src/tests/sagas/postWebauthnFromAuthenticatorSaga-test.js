@@ -2,7 +2,6 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postWebauthnFromAuthenticatorSaga } from "../../login/redux/sagas/login/postWebauthnFromAuthenticatorSaga";
-import { postWebauthnFromAuthenticatorFail } from "../../login/redux/actions/postWebauthnFromAuthenticatorActions";
 import { safeEncode } from "../../login/app_utils/helperFunctions/authenticatorAssertion";
 import {useLoginRef} from "../../login/redux/actions/loginActions";
 
@@ -105,8 +104,7 @@ describe("second API call to /mfa behaves as expected on _FAIL", () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_WEBAUTHN_ASSERTION_FAIL");
-    expect(failResponse).toEqual(postWebauthnFromAuthenticatorFail("error"));
+    expect(next.value.PUT.action).toEqual(failResponse);
   });
   it("done after 'POST_WEBAUTHN_ASSERTION_FAIL'", () => {
     const done = generator.next().done;
