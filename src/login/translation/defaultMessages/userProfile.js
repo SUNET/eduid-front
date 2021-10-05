@@ -1508,7 +1508,7 @@ export const userData = {
   "security.webauthn-token-removed": (
     <FormattedMessage
       id="security.webauthn-token-removed"
-      defaultMessage={`Security key removed`}
+      defaultMessage={`Security key has been removed.`}
     />
   ),
 

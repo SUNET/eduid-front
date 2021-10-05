@@ -454,7 +454,7 @@
   "security.webauthn-missing-pdata": "You should add your personal data before adding a security key",
   "security.webauthn-noremove-last": "You are not allowed to remove your only security key",
   "security.webauthn-token-notfound": "Security token not found",
-  "security.webauthn-token-removed": "Security key removed",
+  "security.webauthn-token-removed": "Security key has been removed.",
   "security.webauthn.max_allowed_tokens": "You are not allowed to register more security keys",
   "security.webauthn_credential_type": "Security key",
   "security.webauthn_register_success": "Security key added",
