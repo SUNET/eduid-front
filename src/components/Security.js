@@ -35,10 +35,11 @@ class Security extends Component {
     );
 
     // data that goes onto the table
-    const secirutykey_table_data = tokens.map((cred, index) => {
+    const securitykey_table_data = tokens.map((cred, index) => {
       // date created
-      const date_created = cred.created_ts.replace(/-/g, '-').split(" ")[0];
+      const date_created = cred.created_ts.split(" ")[0];
       // date last used
+      console.log("cred.created_ts", date_created )
       if (cred.success_ts) {
         date_success = cred.success_ts.replace(/-/g, '-').split(" ")[0];
       } else {
@@ -128,7 +129,7 @@ class Security extends Component {
               <th className="security-verify-link" />
               <th className="security-remove-data"/>
             </tr>
-            {secirutykey_table_data}
+            {securitykey_table_data}
           </tbody>
         </table>
       );
