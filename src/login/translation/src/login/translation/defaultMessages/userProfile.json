@@ -893,7 +893,7 @@
   },
   {
     "id": "security.webauthn-token-removed",
-    "defaultMessage": "Security key removed"
+    "defaultMessage": "Security key has been removed."
   },
   {
     "id": "security.webauthn-missing-pdata",
@@ -906,6 +906,10 @@
   {
     "id": "security.webauthn-noremove-last",
     "defaultMessage": "You are not allowed to remove your only security key"
+  },
+  {
+    "id": "SecurityMsg.rm_webauthn",
+    "defaultMessage": "Security key has been removed."
   },
   {
     "id": "account_linking.main_title",

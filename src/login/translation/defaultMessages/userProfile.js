@@ -1508,7 +1508,7 @@ export const userData = {
   "security.webauthn-token-removed": (
     <FormattedMessage
       id="security.webauthn-token-removed"
-      defaultMessage={`Security key removed`}
+      defaultMessage={`Security key has been removed.`}
     />
   ),
 
@@ -1530,6 +1530,13 @@ export const userData = {
     <FormattedMessage
       id="security.webauthn-noremove-last"
       defaultMessage={`You are not allowed to remove your only security key`}
+    />
+  ),
+
+  "SecurityMsg.rm_webauthn": (
+    <FormattedMessage
+      id="SecurityMsg.rm_webauthn"
+      defaultMessage={`Security key has been removed.`}
     />
   ),
 

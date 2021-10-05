@@ -7,20 +7,46 @@ import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns"
 import "../login/styles/index.scss";
 /*global PublicKeyCredential*/
 class Security extends Component {
-  checkWebauthnDevice() {
-    if (
-      window.PublicKeyCredential === undefined ||
-      typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable !==
-        "function"
-    ) {
-      return false;
-    }
-    PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-      .then((available) => available)
-      .catch((error) => {
-        console.log("Error checking for platform authenticator:", error);
-        return false;
+  constructor(props) {
+    super(props);
+    this.state = { isAvailablePlatformAuthenticator: false };
+  }
+
+  componentDidMount(){
+    this.checkWebauthnDevice();
+  }
+
+  checkWebauthnDevice(){
+    if (window.PublicKeyCredential) {
+      PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+        .then((available) => {
+          if (available) {
+            console.log("Supported."),
+            this.setState(() => {
+              return {
+                isAvailablePlatformAuthenticator: true
+              };
+            });
+          } else {
+            console.log(
+              "WebAuthn supported, Platform Authenticator *not* supported."
+            ),  
+            this.setState(() => {
+              return {
+                isAvailablePlatformAuthenticator: false
+              };
+            });
+          }
+        })
+        .catch((err) => console.log(err, "Something went wrong."));
+     } else {
+      console.log("Not supported."),
+      this.setState(() => {
+        return {
+          isAvailablePlatformAuthenticator: false
+        };
       });
+     }
   }
 
   render() {
@@ -65,16 +91,14 @@ class Security extends Component {
         );
       }
 
-      if (this.checkWebauthnDevice()) {
+      if (this.state.isAvailablePlatformAuthenticator) {
         platformAuthenticatorButton = (
-          <div id="add-webauthn-token-platform">
-            <EduIDButton
-              id="security-webauthn-platform-button"
-              onClick={this.props.handleStartAskingDeviceWebauthnDescription}
-            >
-              {this.props.translate("security.add_webauthn_token_device")}
-            </EduIDButton>
-          </div>
+          <EduIDButton
+            id="security-webauthn-platform-button"
+            onClick={this.props.handleStartAskingDeviceWebauthnDescription}
+          >
+            {this.props.translate("security.add_webauthn_token_device")}
+          </EduIDButton>
         );
       }
 
@@ -145,14 +169,16 @@ class Security extends Component {
           </div>
           <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
-            <EduIDButton
-              id="security-webauthn-button"
-              className="settings-button"
-              onClick={this.props.handleStartAskingKeyWebauthnDescription}
-            >
-              {this.props.translate("security.add_webauthn_token_key")}
-            </EduIDButton>
-            {platformAuthenticatorButton}
+            <div className="register-authn-buttons">
+             {platformAuthenticatorButton}
+              <EduIDButton
+                id="security-webauthn-button"
+                className="settings-button"
+                onClick={this.props.handleStartAskingKeyWebauthnDescription}
+              >
+                {this.props.translate("security.add_webauthn_token_key")}
+              </EduIDButton>
+            </div>
           </div>
         </div>
 
