@@ -1,7 +1,7 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
-import { useLoginRef } from "../../actions/loginActions";
+import { loginSagaFail, useLoginRef } from "../../actions/loginActions";
 import {
   loadingData,
   loadingDataComplete,
