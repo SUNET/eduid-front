@@ -10,7 +10,7 @@ export function* postUpdatedTouAcceptSaga(action) {
   const dataToSend = {
     ref: state.login.ref,
     csrf_token: state.config.csrf_token,
-    user_accepts: action.payload.user_accepts,
+    user_accepts: action.payload,
   };
   try {
     const response = yield call(postRequest, url, dataToSend);

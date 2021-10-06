@@ -2,7 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUpdatedTouAcceptSaga } from "../../login/redux/sagas/login/postUpdatedTouAcceptSaga";
-import {useLoginRef} from "../../login/redux/actions/loginActions";
+import { updatedTouAccept, useLoginRef } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
@@ -14,12 +14,8 @@ const fakeState = {
   },
 };
 
-const action = {
-  type: "POST_UPDATED_TOU_ACCEPT",
-  payload: {
-    user_accepts: "2016-v1",
-  },
-};
+const testTouVersion = "2016-v1";
+const action = updatedTouAccept(testTouVersion);
 
 describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   const generator = postUpdatedTouAcceptSaga(action);
@@ -28,7 +24,7 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
     const dataToSend = {
       ref: fakeState.login.ref,
       csrf_token: fakeState.config.csrf_token,
-      user_accepts: action.payload.user_accepts,
+      user_accepts: testTouVersion,
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
