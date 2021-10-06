@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postTouVersions } from "../../../redux/actions/postTouVersionsActions";
-import { updatedTouAccept } from "../../../redux/actions/postUpdatedTouAcceptActions";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import {postTouVersions, updatedTouAccept} from "../../../redux/actions/loginActions";
 
 let TermOfUseText = ({ translate, version }) => (
   <div className="tou-text">

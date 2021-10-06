@@ -2,7 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postTouVersionsSaga } from "../../login/redux/sagas/login/postTouVersionsSaga";
-import { postTouVersionsFail } from "../../login/redux/actions/postTouVersionsActions";
+import { postTouVersions } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
@@ -13,12 +13,8 @@ const fakeState = {
     post_to: "https://idp.eduid.docker/tou",
   },
 };
-const action = {
-  type: "POST_UPDATED_TOU_ACCEPT",
-  payload: {
-    versions: ["2016-v1", "2021-v1"],
-  },
-};
+const testTouVersions = ["2016-v1", "2021-v1"];
+const action = postTouVersions(testTouVersions);
 
 describe("first API call to /tou behaves as expected on _SUCCESS", () => {
   const generator = postTouVersionsSaga(action);
@@ -27,7 +23,7 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
     const dataToSend = {
       ref: fakeState.login.ref,
       csrf_token: fakeState.config.csrf_token,
-      versions: action.payload.versions.toString(),
+      versions: testTouVersions.toString(),  // TODO: backend should be changed to expect an array, and toString removed
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
@@ -78,8 +74,7 @@ describe("first API call to /tou behaves as expected on _FAIL", () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_FAIL");
-    expect(failResponse).toEqual(postTouVersionsFail("error"));
+    expect(next.value.PUT.action).toEqual(failResponse);
   });
   it("done after 'POST_IDP_TOU_FAIL'", () => {
     const done = generator.next().done;

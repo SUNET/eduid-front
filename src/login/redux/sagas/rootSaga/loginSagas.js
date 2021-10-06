@@ -1,40 +1,21 @@
 import { takeLatest } from "redux-saga/effects";
-import * as postRefLoginActions from "../../actions/postRefLoginActions";
+import * as loginActions from "../../actions/loginActions";
 import { postRefLoginSaga } from "../login/postRefLoginSaga";
-import * as postUsernamePasswordActions from "../../actions/postUsernamePasswordActions";
 import { postUsernamePasswordSaga } from "../login/postUsernamePasswordSaga";
-import * as postTouVersionsActions from "../../actions/postTouVersionsActions";
 import { postTouVersionsSaga } from "../login/postTouVersionsSaga";
-import * as postUpdatedTouAcceptActions from "../../actions/postUpdatedTouAcceptActions";
 import { postUpdatedTouAcceptSaga } from "../login/postUpdatedTouAcceptSaga";
-import * as postRefForWebauthnChallengeActions from "../../actions/postRefForWebauthnChallengeActions";
 import { postRefForWebauthnChallengeSaga } from "../login/postRefForWebauthnChallengeSaga";
 import { postWebauthnFromAuthenticatorSaga } from "../login/postWebauthnFromAuthenticatorSaga";
 import * as addDataToStoreActions from "../../actions/addDataToStoreActions";
 
 const loginSagas = [
-  takeLatest(postRefLoginActions.POST_LOGIN_REF_TO_NEXT, postRefLoginSaga),
-  takeLatest(
-    postUsernamePasswordActions.POST_USERNAME_PASSWORD,
-    postUsernamePasswordSaga
-  ),
-  takeLatest(postTouVersionsActions.POST_TOU_VERSIONS, postTouVersionsSaga),
-  takeLatest(
-    postUpdatedTouAcceptActions.POST_UPDATED_TOU_ACCEPT,
-    postUpdatedTouAcceptSaga
-  ),
-  takeLatest(
-    postRefForWebauthnChallengeActions.POST_REF_WEBAUTHN_CHALLENGE,
-    postRefForWebauthnChallengeSaga
-  ),
-  takeLatest(
-    addDataToStoreActions.ADD_WEBAUTHN_ASSERTION_TO_STORE,
-    postWebauthnFromAuthenticatorSaga
-  ),
-  takeLatest(
-    postRefForWebauthnChallengeActions.POST_IDP_MFA_AUTH_FAIL,
-    postRefForWebauthnChallengeSaga
-  ),
+  takeLatest(loginActions.useLoginRef.toString(), postRefLoginSaga),
+  takeLatest(loginActions.postUsernamePassword.toString(), postUsernamePasswordSaga),
+  takeLatest(loginActions.postTouVersions.toString(), postTouVersionsSaga),
+  takeLatest(loginActions.updatedTouAccept.toString(), postUpdatedTouAcceptSaga),
+  takeLatest(loginActions.postRefForWebauthnChallenge.toString(), postRefForWebauthnChallengeSaga),
+  takeLatest(addDataToStoreActions.addWebauthnAssertion.toString(), postWebauthnFromAuthenticatorSaga),
+  takeLatest("POST_IDP_MFA_AUTH_FAIL", postRefForWebauthnChallengeSaga),
 ];
 
 export default loginSagas;

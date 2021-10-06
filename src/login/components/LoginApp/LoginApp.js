@@ -3,7 +3,7 @@ import React, { Component, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, withRouter, Redirect } from "react-router-dom";
 import Login from "./Login/Login";
-import { useLoginRef } from "../../redux/actions/postRefLoginActions";
+import { useLoginRef } from "../../redux/actions/loginActions";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
 import ExtraSecurity from "./ResetPassword/ExtraSecurity";

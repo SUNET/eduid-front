@@ -2,7 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUsernamePasswordSaga } from "../../login/redux/sagas/login/postUsernamePasswordSaga";
-import { postUsernamePasswordFail } from "../../login/redux/actions/postUsernamePasswordActions";
+import { postUsernamePassword, useLoginRef } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
@@ -14,13 +14,9 @@ const fakeState = {
   },
 };
 
-const action = {
-  type: "POST_USERNAME_PASSWORD,",
-  payload: {
-    username: "username",
-    password: "password",
-  },
-};
+const testUsername = "test_username";
+const testPassword = "test_password";
+const action = postUsernamePassword(testUsername, testPassword);
 
 const successResponse = {
   type: "POST_IDP_PW_AUTH_SUCCESS",
@@ -49,8 +45,8 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
     const dataToSend = {
       ref: fakeState.login.ref,
       csrf_token: fakeState.config.csrf_token,
-      username: action.payload.username,
-      password: action.payload.password,
+      username: testUsername,
+      password: testPassword,
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
@@ -64,7 +60,7 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
   });
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_LOGIN_REF_TO_NEXT");
+    expect(next.value.PUT.action.type).toEqual(useLoginRef.toString());
   });
   it("done after 'LOAD_DATA_COMPLETE'", () => {
     next = generator.next();
@@ -94,8 +90,7 @@ describe("API call to /pw_auth behaves as expected on _FAIL", () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_PW_AUTH_FAIL");
-    expect(failResponse).toEqual(postUsernamePasswordFail("error"));
+    expect(next.value.PUT.action).toEqual(failResponse);
   });
   it("done after 'LOAD_DATA_COMPLETE'", () => {
     next = generator.next();

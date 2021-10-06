@@ -2,7 +2,6 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postRefForWebauthnChallengeSaga } from "../../login/redux/sagas/login/postRefForWebauthnChallengeSaga";
-import { postRefForWebauthnChallengeFail } from "../../login/redux/actions/postRefForWebauthnChallengeActions";
 
 const fakeState = {
   config: {
@@ -70,8 +69,7 @@ describe("first API call to /mfa behaves as expected on _FAIL", () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_MFA_AUTH_FAIL");
-    expect(failResponse).toEqual(postRefForWebauthnChallengeFail("error"));
+    expect(next.value.PUT.action).toEqual(failResponse);
   });
   it("done after 'POST_IDP_MFA_AUTH_FAIL'", () => {
     const done = generator.next().done;

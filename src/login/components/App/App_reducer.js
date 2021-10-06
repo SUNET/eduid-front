@@ -1,42 +1,19 @@
 import * as actions from "./App_actions";
 import * as loadingDataActions from "../../redux/actions/loadingDataActions";
+import {createReducer} from "@reduxjs/toolkit";
 
-const appData = {
+const initialState = {
   is_loaded: false,
   loading_data: false,
   request_in_progress: false,
 };
 
-let appReducer = (state = appData, action) => {
-  switch (action.type) {
-    case actions.APP_LOADED:
-      return {
-        ...state,
-        is_loaded: true,
-      };
-    case loadingDataActions.LOAD_DATA_REQUEST:
-      return {
-        ...state,
-        loading_data: true,
-      };
-    case loadingDataActions.LOAD_DATA_COMPLETE:
-      return {
-        ...state,
-        loading_data: false,
-      };
-    case loadingDataActions.REQUEST_IN_PROGRESS:
-      return {
-        ...state,
-        request_in_progress: true,
-      };
-    case loadingDataActions.REQUEST_COMPLETED:
-      return {
-        ...state,
-        request_in_progress: false,
-      };
-    default:
-      return state;
-  }
-};
+const appReducer = createReducer(initialState, {
+  [actions.appLoaded]: (state) => { state.is_loaded = true },
+  [loadingDataActions.loadingData]: (state) => { state.loading_data = true },
+  [loadingDataActions.loadingDataComplete]: (state) => { state.loading_data = false },
+  [loadingDataActions.requestInProgress]: (state) => { state.request_in_progress = true },
+  [loadingDataActions.requestCompleted]: (state) => { state.request_in_progress = false },
+})
 
 export default appReducer;

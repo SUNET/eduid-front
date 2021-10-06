@@ -104,12 +104,12 @@ let configReducer = (state = configData, action) => {
         show_sidebar: show_sidebar,
       };
     }
-    case loadingDataActions.LOAD_DATA_REQUEST:
+    case loadingDataActions.loadingData.toString():
       return {
         ...state,
         loading_data: true,
       };
-    case loadingDataActions.LOAD_DATA_COMPLETE:
+    case loadingDataActions.loadingDataComplete.toString():
       return {
         ...state,
         loading_data: false,
