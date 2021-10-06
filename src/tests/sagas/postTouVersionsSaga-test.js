@@ -2,6 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postTouVersionsSaga } from "../../login/redux/sagas/login/postTouVersionsSaga";
+import { postTouVersions } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
@@ -12,12 +13,8 @@ const fakeState = {
     post_to: "https://idp.eduid.docker/tou",
   },
 };
-const action = {
-  type: "POST_UPDATED_TOU_ACCEPT",
-  payload: {
-    versions: ["2016-v1", "2021-v1"],
-  },
-};
+const testTouVersions = ["2016-v1", "2021-v1"];
+const action = postTouVersions(testTouVersions);
 
 describe("first API call to /tou behaves as expected on _SUCCESS", () => {
   const generator = postTouVersionsSaga(action);
