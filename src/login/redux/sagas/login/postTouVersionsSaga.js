@@ -9,7 +9,7 @@ export function* postTouVersionsSaga(action) {
   const url = state.login.post_to;
   const dataToSend = {
     ref: state.login.ref,
-    versions: action.payload.toString(),
+    versions: action.payload.toString(),  // TODO: backend should be changed to expect an array, and toString removed
     csrf_token: state.config.csrf_token,
   };
   try {
