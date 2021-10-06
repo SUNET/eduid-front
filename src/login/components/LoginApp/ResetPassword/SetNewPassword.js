@@ -7,14 +7,13 @@ import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
-import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import {
+import { 
+  saveLinkCode, 
   storeNewPassword,
   setNewPassword, 
   setNewPasswordExtraSecurityPhone, 
   setNewPasswordExtraSecurityToken, 
-  setNewPasswordExtraSecurityExternalMfa  
-} from "../../../redux/actions/postResetNewPasswordActions";
+  setNewPasswordExtraSecurityExternalMfa } from "../../../redux/actions/postResetPasswordActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';

@@ -4,7 +4,7 @@ import {
   putCsrfToken
 } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { setNewPasswordExtraSecurityPhoneFail } from "../../actions/postResetNewPasswordActions";
+import { setNewPasswordExtraSecurityPhoneFail } from "../../actions/postResetPasswordActions";
 import { history } from "../../../components/App/App";
 
 export function* postSetNewPasswordExtraSecurityPhone() {

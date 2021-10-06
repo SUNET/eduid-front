@@ -4,7 +4,6 @@ import { requestConfig } from "../app_init/init_sagas";
 import { postEmailLink } from "../redux/sagas/resetpassword/postResetPasswordSaga";
 import { useLinkCode } from "../redux/sagas/resetpassword/postVerifyEmailSaga";
 import * as postResetPasswordActions from "../redux/actions/postResetPasswordActions";
-import * as postResetNewPasswordActions from "../redux/actions/postResetNewPasswordActions";
 import loginSagas from "../redux/sagas/rootSaga/loginSagas";
 import { requestPhoneCode } from "../redux/sagas/resetpassword/postExtraSecurityPhoneSaga";
 import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPasswordSaga";
@@ -29,10 +28,10 @@ function* rootSaga() {
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE, requestPhoneCode),
     // security phone request failed, trigger /verify-email to get users extra security
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL, useLinkCode),
-    takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD, postSetNewPassword),
-    takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE, postSetNewPasswordExtraSecurityPhone),
-    takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN, postSetNewPasswordExtraSecurityToken),
-    takeLatest(postResetNewPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA, postSetNewPasswordExternalMfa),
+    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD, postSetNewPassword),
+    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE, postSetNewPasswordExtraSecurityPhone),
+    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN, postSetNewPasswordExtraSecurityToken),
+    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA, postSetNewPasswordExternalMfa),
     takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL, useLinkCode),
   ];
 }

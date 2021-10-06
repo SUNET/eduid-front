@@ -2,7 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postSetNewPasswordExtraSecurityPhone } from "../../login/redux/sagas/resetpassword/postSetNewPasswordExtraSecurityPhoneSaga";
-import { setNewPasswordExtraSecurityPhoneFail } from "../../login/redux/actions/postResetNewPasswordActions";
+import { setNewPasswordExtraSecurityPhoneFail } from "../../login/redux/actions/postResetPasswordActions";
 
 const fakeState = {
   config: {

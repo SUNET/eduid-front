@@ -1,5 +1,5 @@
 import * as postActions from "../actions/postResetPasswordActions";
-import * as postNewPasswordActions from "../actions/postResetNewPasswordActions";
+import * as postNewPasswordActions from "../actions/postResetPasswordActions";
 import * as getWebauthnActions from "../actions/getWebauthnAssertionActions";
 
 const data = {
