@@ -10,17 +10,18 @@ td .passwords {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-transform: uppercase;
+    padding: 6px 12px;
     &.second-option {
       background-color: $white;
       border: solid 1px $orange-highlight;
       color: $orange-highlight;
-      text-transform: uppercase;
     }
   }
 }
 
 @media (max-width: 414px) {
-  button.btn {
+  #security-webauthn-button {
     justify-content: center;
   }
 }
