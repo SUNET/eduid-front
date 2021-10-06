@@ -9,7 +9,10 @@ import "../login/styles/index.scss";
 class Security extends Component {
   constructor(props) {
     super(props);
-    this.state = { isAvailablePlatformAuthenticator: false };
+    this.state = { 
+      isAvailablePlatformAuthenticator: false,
+      className: "" 
+    };
   }
 
   componentDidMount(){
@@ -24,7 +27,8 @@ class Security extends Component {
             console.log("Supported."),
             this.setState(() => {
               return {
-                isAvailablePlatformAuthenticator: true
+                isAvailablePlatformAuthenticator: true,
+                className: "second-option"
               };
             });
           } else {
@@ -33,7 +37,8 @@ class Security extends Component {
             ),  
             this.setState(() => {
               return {
-                isAvailablePlatformAuthenticator: false
+                isAvailablePlatformAuthenticator: false,
+                className: "btn-primary"
               };
             });
           }
@@ -43,7 +48,8 @@ class Security extends Component {
       console.log("Not supported."),
       this.setState(() => {
         return {
-          isAvailablePlatformAuthenticator: false
+          isAvailablePlatformAuthenticator: false,
+          className: "btn-primary"
         };
       });
      }
@@ -169,13 +175,13 @@ class Security extends Component {
             {securitykey_table}
             <div className="register-authn-buttons">
              {platformAuthenticatorButton}
-              <EduIDButton
+              <button
                 id="security-webauthn-button"
-                className="settings-button"
+                className={this.state.className}
                 onClick={this.props.handleStartAskingKeyWebauthnDescription}
               >
                 {this.props.translate("security.add_webauthn_token_key")}
-              </EduIDButton>
+              </button>
             </div>
           </div>
         </div>
