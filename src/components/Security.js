@@ -171,7 +171,7 @@ class Security extends Component {
              {platformAuthenticatorButton}
               <EduIDButton
                 id="security-webauthn-button"
-                className="settings-button"
+                className={!this.state.isAvailablePlatformAuthenticator ? " " : "second-option"}
                 onClick={this.props.handleStartAskingKeyWebauthnDescription}
               >
                 {this.props.translate("security.add_webauthn_token_key")}

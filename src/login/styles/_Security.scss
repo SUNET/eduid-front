@@ -1,9 +1,8 @@
 td .passwords {
-  background-color: white;
+  background-color: $white;
 }
 
 .register-authn-buttons {
-  padding-left: 0.3rem;
   margin: 1.5rem 0;
   button {
     margin: 0.5rem 0;
@@ -11,10 +10,17 @@ td .passwords {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    &#security-webauthn-button {
-      background-color:$white;
+    &.second-option {
+      background-color: $white;
       border: solid 1px $orange-highlight;
       color: $orange-highlight;
+      text-transform: uppercase;
     }
+  }
+}
+
+@media (max-width: 414px) {
+  button.btn {
+    justify-content: center;
   }
 }
