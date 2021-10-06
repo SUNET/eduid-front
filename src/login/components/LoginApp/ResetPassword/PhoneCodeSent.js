@@ -14,10 +14,10 @@ import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { requestPhoneCode, savePhoneCode, selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
+import { requestPhoneCode, savePhoneCode, selectExtraSecurity } from "../../../redux/actions/resetPasswordActions";
 import { useHistory } from 'react-router-dom';
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
+import { saveLinkCode } from "../../../redux/actions/resetPasswordActions";
 
 const validate = (values) => {
     const value = values.phone;

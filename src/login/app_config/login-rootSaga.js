@@ -3,7 +3,7 @@ import * as init_actions from "../app_init/init_actions";
 import { requestConfig } from "../app_init/init_sagas";
 import { postEmailLink } from "../redux/sagas/resetpassword/postResetPasswordSaga";
 import { useLinkCode } from "../redux/sagas/resetpassword/postVerifyEmailSaga";
-import * as postResetPasswordActions from "../redux/actions/postResetPasswordActions";
+import * as resetPasswordActions from "../redux/actions/resetPasswordActions";
 import loginSagas from "../redux/sagas/rootSaga/loginSagas";
 import { requestPhoneCode } from "../redux/sagas/resetpassword/postExtraSecurityPhoneSaga";
 import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPasswordSaga";
@@ -23,16 +23,16 @@ function* rootSaga() {
   yield [
     takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, allowLoginSagas),
-    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD, postEmailLink),
+    takeLatest(resetPasswordActions.POST_RESET_PASSWORD, postEmailLink),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, useLinkCode),
-    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE, requestPhoneCode),
+    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE, requestPhoneCode),
     // security phone request failed, trigger /verify-email to get users extra security
-    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL, useLinkCode),
-    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD, postSetNewPassword),
-    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE, postSetNewPasswordExtraSecurityPhone),
-    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN, postSetNewPasswordExtraSecurityToken),
-    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA, postSetNewPasswordExternalMfa),
-    takeLatest(postResetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL, useLinkCode),
+    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL, useLinkCode),
+    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD, postSetNewPassword),
+    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE, postSetNewPasswordExtraSecurityPhone),
+    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN, postSetNewPasswordExtraSecurityToken),
+    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA, postSetNewPasswordExternalMfa),
+    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL, useLinkCode),
   ];
 }
 

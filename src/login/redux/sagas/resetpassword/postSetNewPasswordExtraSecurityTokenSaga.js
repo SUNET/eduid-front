@@ -4,7 +4,7 @@ import {
   putCsrfToken
 } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { setNewPasswordExtraSecurityTokenFail } from "../../actions/postResetPasswordActions";
+import { setNewPasswordExtraSecurityTokenFail } from "../../actions/resetPasswordActions";
 import { history } from "../../../components/App/App";
 import { safeEncode } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 

@@ -3,7 +3,7 @@ import {
   failRequest,
   putCsrfToken
 } from "../../../../sagas/common";
-import { postLinkCodeFail } from "../../actions/postResetPasswordActions";
+import { postLinkCodeFail } from "../../actions/resetPasswordActions";
 import postRequest from "../postDataRequest";
 import { history } from "../../../components/App/App";
 import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFunctions/authenticatorAssertion";

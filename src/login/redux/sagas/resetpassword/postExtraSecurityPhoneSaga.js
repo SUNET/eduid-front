@@ -4,7 +4,7 @@ import {
   putCsrfToken
 } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { requestPhoneCodeFail } from "../../actions/postResetPasswordActions";
+import { requestPhoneCodeFail } from "../../actions/resetPasswordActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import { LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, countFiveMin, clearCountdown, setLocalStorage } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { history } from "../../../components/App/App";

@@ -1,5 +1,5 @@
 import React from "react";
-import { selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
+import { selectExtraSecurity } from "../../../redux/actions/resetPasswordActions";
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { eduidRMAllNotify } from "../../../../actions/Notifications";

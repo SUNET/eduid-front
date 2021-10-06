@@ -1,7 +1,7 @@
 import React, { useEffect }  from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import {  useSelector, useDispatch, connect } from 'react-redux';
-import { postEmailLink, useLinkCode  } from "../../../redux/actions/postResetPasswordActions";
+import { postEmailLink, useLinkCode  } from "../../../redux/actions/resetPasswordActions";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";

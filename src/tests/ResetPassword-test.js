@@ -3,7 +3,7 @@ import React from "react";
 import { mount } from "enzyme";
 import expect from "expect";
 import { addLocaleData } from "react-intl";
-import * as actions from "../login/redux/actions/postResetPasswordActions";
+import * as actions from "../login/redux/actions/resetPasswordActions";
 import ResetPasswordMain from "../login/components/LoginApp/ResetPassword/ResetPasswordMain";
 import { Provider } from "react-intl-redux";
 import { createMemoryHistory } from "history";

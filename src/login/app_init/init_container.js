@@ -1,6 +1,6 @@
 import initStore from "./initStore";
 import { getConfig } from "./init_actions";
-import { saveLinkCode } from "./../redux/actions/postResetPasswordActions";
+import { saveLinkCode } from "./../redux/actions/resetPasswordActions";
 import { addLoginRef } from "./../redux/actions/addDataToStoreActions";
 import { addTouVersions } from "./../redux/actions/addDataToStoreActions";
 

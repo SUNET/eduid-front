@@ -13,7 +13,7 @@ import {
   setNewPassword, 
   setNewPasswordExtraSecurityPhone, 
   setNewPasswordExtraSecurityToken, 
-  setNewPasswordExtraSecurityExternalMfa } from "../../../redux/actions/postResetPasswordActions";
+  setNewPasswordExtraSecurityExternalMfa } from "../../../redux/actions/resetPasswordActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';

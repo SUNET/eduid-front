@@ -8,7 +8,7 @@ import UsernamePwForm from "./UsernamePwForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
-import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
+import { postEmailLink } from "../../../redux/actions/resetPasswordActions";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";

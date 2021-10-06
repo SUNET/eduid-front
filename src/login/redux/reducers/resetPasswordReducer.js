@@ -1,5 +1,5 @@
-import * as postActions from "../actions/postResetPasswordActions";
-import * as postNewPasswordActions from "../actions/postResetPasswordActions";
+import * as resetPasswordActions from "../actions/resetPasswordActions";
+
 import * as getWebauthnActions from "../actions/getWebauthnAssertionActions";
 
 const data = {
@@ -13,32 +13,32 @@ const data = {
 
 let resetPasswordReducer = (state = data, action) => {
   switch (action.type) {
-    case postActions.POST_RESET_PASSWORD:
+    case resetPasswordActions.POST_RESET_PASSWORD:
       return {
         ...state,
         ...action.payload
       };
-    case postActions.SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE:
+    case resetPasswordActions.SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE:
       return {
         ...state,
         ...action.payload
       };
-    case postActions.POST_RESET_PASSWORD_VERIFY_EMAIL:
+    case resetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL:
       return {
         ...state,
         ...action.payload
       };
-    case postActions.POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS:
+    case resetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS:
       return {
         ...state,
         ...action.payload
       };
-    case postActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE:
+    case resetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE:
       return {
         ...state,
         ...action.payload
       };
-    case postActions.SAVE_PHONE_CODE:
+    case resetPasswordActions.SAVE_PHONE_CODE:
       return {
         ...state,
         phone: {
@@ -56,12 +56,12 @@ let resetPasswordReducer = (state = data, action) => {
         ...state,
         ...action.payload
       };
-    case postActions.SELECT_EXTRA_SECURITY_OPTION:
+    case resetPasswordActions.SELECT_EXTRA_SECURITY_OPTION:
       return {
         ...state,
         ...action.payload
       };
-    case postNewPasswordActions.STORE_RESET_PASSWORD_NEW_PASSWORD:
+    case resetPasswordActions.STORE_RESET_PASSWORD_NEW_PASSWORD:
       return {
         ...state,
         ...action.payload
