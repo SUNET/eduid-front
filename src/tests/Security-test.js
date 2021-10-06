@@ -1027,7 +1027,7 @@ describe("Security Container", () => {
   it("Clicks WEBAUTHN", () => {
     expect(dispatch.mock.calls.length).toEqual(0);
     const wrapper = getWrapper();
-    wrapper.find("EduIDButton#security-webauthn-button").simulate("click");
+    wrapper.find("button#security-webauthn-button").simulate("click");
     expect(dispatch.mock.calls.length).toEqual(3);
     expect(dispatch.mock.calls[0][0].type).toEqual(
       notifyActions.RM_ALL_NOTIFICATION
