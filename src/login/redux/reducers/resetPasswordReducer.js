@@ -1,8 +1,8 @@
 import * as resetPasswordActions from "../actions/resetPasswordActions";
-
 import * as getWebauthnActions from "../actions/getWebauthnAssertionActions";
+import { createReducer } from "@reduxjs/toolkit";
 
-const data = {
+const resetPasswordData = {
     email_address: "",
     email_code: "",
     phone: {},
@@ -11,64 +11,70 @@ const data = {
     new_password: null
 };
 
-let resetPasswordReducer = (state = data, action) => {
-  switch (action.type) {
-    case resetPasswordActions.POST_RESET_PASSWORD:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case resetPasswordActions.SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case resetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case resetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case resetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case resetPasswordActions.SAVE_PHONE_CODE:
-      return {
-        ...state,
-        phone: {
-          ...state.phone,
-          ...action.payload
-        }
-      };
-    case getWebauthnActions.GET_WEBAUTHN_ASSERTION:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case getWebauthnActions.GET_WEBAUTHN_ASSERTION_FAIL:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case resetPasswordActions.SELECT_EXTRA_SECURITY_OPTION:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case resetPasswordActions.STORE_RESET_PASSWORD_NEW_PASSWORD:
-      return {
-        ...state,
-        ...action.payload
-      };
-    default:
-      return state;
-  }
-};
+const resetPasswordReducer = createReducer(resetPasswordData, {
+  [resetPasswordActions.savePhoneCode]: (state, action) => {
+    state.phone_code = action.payload
+  },
+  "POST_RESET_PASSWORD": (state, action) => {
+    return {
+      ...state,
+      email_address: action.payload
+    }
+  },
+  "SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE": (state, action) => {
+    return {
+      ...state,
+     ...action.payload
+    }
+  },
+  "POST_RESET_PASSWORD_VERIFY_EMAIL": (state, action) => {
+    return {
+      ...state,
+      ...action.payload
+    }
+  },
+  "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS": (state, action) => {
+    return {
+      ...state,
+      ...action.payload
+    }
+  },
+  "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE": (state, action) => {
+    return {
+      ...state,
+      ...action.payload
+    }
+  },
+  "SAVE_PHONE_CODE": (state, action) => {
+    return {
+      ...state,
+      ...action.payload
+    }
+  },
+  [getWebauthnActions.GET_WEBAUTHN_ASSERTION]: (state, action) => {
+    return {
+      ...state,
+      ...action.payload
+    }
+  },
+  [getWebauthnActions.GET_WEBAUTHN_ASSERTION_FAIL]: (state, action) => {
+    return {
+      ...state,
+      ...action.payload
+    }
+  },
+  "SELECT_EXTRA_SECURITY_OPTION": (state, action) => {
+    return {
+      ...state,
+      ...action.payload
+    }
+  },
+  "STORE_RESET_PASSWORD_NEW_PASSWORD": (state, action) => {
+    return {
+      ...state,
+      ...action.payload
+    }
+  },
+})
 
 export default resetPasswordReducer;
