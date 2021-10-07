@@ -28,11 +28,11 @@ function* rootSaga() {
     takeLatest(resetPasswordActions.requestPhoneCode.toString(), requestPhoneCode),
     // security phone request failed, trigger /verify-email to get users extra security
     takeLatest("POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL", useLinkCode),
-    takeLatest("POST_RESET_PASSWORD_NEW_PASSWORD", postSetNewPassword),
+    takeLatest(resetPasswordActions.setNewPassword.toString(), postSetNewPassword),
     takeLatest(resetPasswordActions.setNewPasswordExtraSecurityPhone.toString(), postSetNewPasswordExtraSecurityPhone),
-    takeLatest("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN", postSetNewPasswordExtraSecurityToken),
-    takeLatest("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA", postSetNewPasswordExternalMfa),
-    takeLatest("POST_RESET_PASSWORD_VERIFY_EMAIL", useLinkCode),
+    takeLatest(resetPasswordActions.setNewPasswordExtraSecurityToken.toString(), postSetNewPasswordExtraSecurityToken),
+    takeLatest(resetPasswordActions.setNewPasswordExtraSecurityExternalMfa.toString(), postSetNewPasswordExternalMfa),
+    takeLatest(resetPasswordActions.useLinkCode.toString(), useLinkCode),
   ];
 }
 
