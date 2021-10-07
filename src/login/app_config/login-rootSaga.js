@@ -32,7 +32,7 @@ function* rootSaga() {
     takeLatest(resetPasswordActions.setNewPasswordExtraSecurityPhone.toString(), postSetNewPasswordExtraSecurityPhone),
     takeLatest(resetPasswordActions.setNewPasswordExtraSecurityToken.toString(), postSetNewPasswordExtraSecurityToken),
     takeLatest(resetPasswordActions.setNewPasswordExtraSecurityExternalMfa.toString(), postSetNewPasswordExternalMfa),
-    takeLatest(resetPasswordActions.useLinkCode.toString(), useLinkCode),
+    takeLatest(resetPasswordActions.requestPhoneCode.toString(), useLinkCode),
   ];
 }
 
