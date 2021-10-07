@@ -57,7 +57,6 @@ class Security extends Component {
 
   render() {
     let btnVerify = "";
-    let platformAuthenticatorButton = "";
     let date_success = "";
 
     let securitykey_table = "";
@@ -91,17 +90,6 @@ class Security extends Component {
             onClick={this.props.handleVerifyWebauthnToken}
           >
             {this.props.translate("security.verify")}
-          </EduIDButton>
-        );
-      }
-
-      if (this.state.isAvailablePlatformAuthenticator) {
-        platformAuthenticatorButton = (
-          <EduIDButton
-            id="security-webauthn-platform-button"
-            onClick={this.props.handleStartAskingDeviceWebauthnDescription}
-          >
-            {this.props.translate("security.add_webauthn_token_device")}
           </EduIDButton>
         );
       }
@@ -174,7 +162,14 @@ class Security extends Component {
           <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
             <div className="register-authn-buttons">
-             {platformAuthenticatorButton}
+              { this.state.isAvailablePlatformAuthenticator && 
+                <EduIDButton
+                  id="security-webauthn-platform-button"
+                  onClick={this.props.handleStartAskingDeviceWebauthnDescription}
+                >
+                  {this.props.translate("security.add_webauthn_token_device")}
+                </EduIDButton>
+              }
               <button
                 id="security-webauthn-button"
                 className={this.state.className}
