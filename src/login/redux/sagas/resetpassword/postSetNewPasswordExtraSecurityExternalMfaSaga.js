@@ -4,7 +4,7 @@ import {
   putCsrfToken
 } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { setNewPasswordExtraSecurityExternalMfaFail } from "../../actions/resetPasswordActions";
+import { resetPasswordSagaFail } from "../../actions/resetPasswordActions";
 import { history } from "../../../components/App/App";
 
 export function* postSetNewPasswordExternalMfa() {
@@ -24,6 +24,6 @@ export function* postSetNewPasswordExternalMfa() {
     }
   }
   catch (error) {
-    yield* failRequest(error, setNewPasswordExtraSecurityExternalMfaFail(error));
+    yield* failRequest(error, resetPasswordSagaFail(error));
   }
 }

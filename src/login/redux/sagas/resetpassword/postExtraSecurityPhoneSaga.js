@@ -4,13 +4,14 @@ import {
   putCsrfToken
 } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { requestPhoneCodeFail } from "../../actions/resetPasswordActions";
+import { resetPasswordSagaFail } from "../../actions/resetPasswordActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import { LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, countFiveMin, clearCountdown, setLocalStorage } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { history } from "../../../components/App/App";
 
 export function* requestPhoneCode() {
   const state = yield select(state => state);
+  console.log("state", state.resetPassword)
   const url = state.config.reset_password_url + "extra-security-phone/";
   const locationUrl = document.location.href;
   const data = {
@@ -36,6 +37,6 @@ export function* requestPhoneCode() {
     }
   }
  } catch (error) {
-    yield* failRequest(error, requestPhoneCodeFail(error));
+    yield* failRequest(error, resetPasswordSagaFail(error));
   }
 }

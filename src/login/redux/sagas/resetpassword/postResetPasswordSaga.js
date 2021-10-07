@@ -4,7 +4,7 @@ import {
   putCsrfToken
 } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { postEmailLinkFail } from "../../actions/resetPasswordActions";
+import { resetPasswordSagaFail } from "../../actions/resetPasswordActions";
 import { history } from "../../../components/App/App";
 import { countFiveMin, LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, clearCountdown, setLocalStorage } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import {
@@ -31,7 +31,7 @@ export function* postEmailLink() {
       history.push(`/reset-password/email-link-sent`);
     }
   } catch (error) {
-    yield* failRequest(error, postEmailLinkFail(error));
+    yield* failRequest(error, resetPasswordSagaFail(error));
   }
   finally {
     yield put(requestCompleted());

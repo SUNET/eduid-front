@@ -4,7 +4,7 @@ import {
   putCsrfToken
 } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { setNewPasswordFail } from "../../actions/resetPasswordActions";
+import { resetPasswordSagaFail } from "../../actions/resetPasswordActions";
 import { history } from "../../../components/App/App";
 
 export function* postSetNewPassword() {
@@ -24,6 +24,6 @@ export function* postSetNewPassword() {
     }
   }
   catch (error) {
-    yield* failRequest(error, setNewPasswordFail(error));
+    yield* failRequest(error, resetPasswordSagaFail(error));
   }
 }

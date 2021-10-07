@@ -3,7 +3,7 @@ import {
   failRequest,
   putCsrfToken
 } from "../../../../sagas/common";
-import { postLinkCodeFail } from "../../actions/resetPasswordActions";
+import { resetPasswordSagaFail } from "../../actions/resetPasswordActions";
 import postRequest from "../postDataRequest";
 import { history } from "../../../components/App/App";
 import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFunctions/authenticatorAssertion";
@@ -29,7 +29,7 @@ export function* useLinkCode() {
       }else return history.push(`/reset-password/email`);
     }
     catch (error) {
-      yield* failRequest(error, postLinkCodeFail(error));
+      yield* failRequest(error, resetPasswordSagaFail(error));
     }
   }
 }
