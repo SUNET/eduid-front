@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
-import { postEmailLink } from "../../../redux/actions/resetPasswordActions";
+import { requestEmailLink } from "../../../redux/actions/resetPasswordActions";
 import { getLocalStorage, countFiveMin, LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, clearCountdown } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 function EmailLinkSent(props){
@@ -13,7 +13,7 @@ function EmailLinkSent(props){
   const sendLink = (e) => {
     e.preventDefault();
     if(email){
-      dispatch(postEmailLink(email));
+      dispatch(requestEmailLink(email));
     }
   };
 

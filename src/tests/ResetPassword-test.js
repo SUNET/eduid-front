@@ -77,7 +77,7 @@ describe("ResetPassword post actions,", () => {
         email_address: fakeState.resetPassword.email
       }
     };
-    expect(actions.postEmailLink(fakeState.resetPassword.email)).toEqual(expectedAction);
+    expect(actions.requestEmailLink(fakeState.resetPassword.email)).toEqual(expectedAction);
   });
 
   it("create an action to get an error when failed post", () => {

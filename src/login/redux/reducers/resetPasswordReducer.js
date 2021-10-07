@@ -15,17 +15,11 @@ const resetPasswordReducer = createReducer(resetPasswordData, {
   [resetPasswordActions.savePhoneCode]: (state, action) => {
     state.phone_code = action.payload
   },
-  "POST_RESET_PASSWORD": (state, action) => {
-    return {
-      ...state,
-      email_address: action.payload
-    }
+  "requestEmailLink": (state, action) => {
+    state.email_address = action.payload
   },
-  "SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE": (state, action) => {
-    return {
-      ...state,
-     ...action.payload
-    }
+  "saveLinkCode": (state, action) => {
+    state.email_code = action.payload
   },
   "POST_RESET_PASSWORD_VERIFY_EMAIL": (state, action) => {
     return {
@@ -39,7 +33,7 @@ const resetPasswordReducer = createReducer(resetPasswordData, {
       ...action.payload
     }
   },
-  "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE": (state, action) => {
+  "requestPhoneCode": (state, action) => {
     return {
       ...state,
       ...action.payload
@@ -64,10 +58,7 @@ const resetPasswordReducer = createReducer(resetPasswordData, {
     }
   },
   "SELECT_EXTRA_SECURITY_OPTION": (state, action) => {
-    return {
-      ...state,
-      ...action.payload
-    }
+    state.selected_option = action.payload
   },
   "STORE_RESET_PASSWORD_NEW_PASSWORD": (state, action) => {
     return {

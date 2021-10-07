@@ -23,16 +23,16 @@ function* rootSaga() {
   yield [
     takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, allowLoginSagas),
-    takeLatest(resetPasswordActions.POST_RESET_PASSWORD, postEmailLink),
+    takeLatest(resetPasswordActions.requestEmailLink.toString(), postEmailLink),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, useLinkCode),
-    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE, requestPhoneCode),
+    takeLatest(resetPasswordActions.requestPhoneCode.toString(), requestPhoneCode),
     // security phone request failed, trigger /verify-email to get users extra security
-    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL, useLinkCode),
-    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD, postSetNewPassword),
-    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE, postSetNewPasswordExtraSecurityPhone),
-    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN, postSetNewPasswordExtraSecurityToken),
-    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA, postSetNewPasswordExternalMfa),
-    takeLatest(resetPasswordActions.POST_RESET_PASSWORD_VERIFY_EMAIL, useLinkCode),
+    takeLatest("POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL", useLinkCode),
+    takeLatest("POST_RESET_PASSWORD_NEW_PASSWORD", postSetNewPassword),
+    takeLatest(resetPasswordActions.setNewPasswordExtraSecurityPhone.toString(), postSetNewPasswordExtraSecurityPhone),
+    takeLatest("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN", postSetNewPasswordExtraSecurityToken),
+    takeLatest("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA", postSetNewPasswordExternalMfa),
+    takeLatest("POST_RESET_PASSWORD_VERIFY_EMAIL", useLinkCode),
   ];
 }
 
