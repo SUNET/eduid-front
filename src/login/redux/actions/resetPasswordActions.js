@@ -1,72 +1,37 @@
-export const POST_RESET_PASSWORD = "POST_RESET_PASSWORD";
-export const POST_RESET_PASSWORD_SUCCESS = "POST_RESET_PASSWORD_SUCCESS";
-export const POST_RESET_PASSWORD_FAIL = "POST_RESET_PASSWORD_FAIL";
-export const SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE = "SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE";
-export const POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL";
-export const POST_RESET_PASSWORD_VERIFY_EMAIL = "POST_RESET_PASSWORD_VERIFY_EMAIL";
-export const POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS = "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS";
-export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE";
-export const POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
-export const SAVE_PHONE_CODE = "SAVE_PHONE_CODE";
-export const SELECT_EXTRA_SECURITY_OPTION = "SELECT_EXTRA_SECURITY_OPTION";
-export const POST_RESET_PASSWORD_NEW_PASSWORD = "POST_RESET_PASSWORD_NEW_PASSWORD";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS = "POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_FAIL = "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA";
-export const POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL = "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL";
-export const STORE_RESET_PASSWORD_NEW_PASSWORD = "STORE_RESET_PASSWORD_NEW_PASSWORD";
+import { createAction } from "@reduxjs/toolkit";
 
-export function postEmailLink(email) {
-  return {
-    type: POST_RESET_PASSWORD,
-    payload: {
-      email_address: email
-    }
-  };
-}
+export const postEmailLink = createAction("POST_RESET_PASSWORD");
 
-export function postEmailLinkFail(err) {
+export const postEmailLinkFail = createAction("POST_RESET_PASSWORD_FAIL", function prepare(err) {
   return {
-    type: POST_RESET_PASSWORD_FAIL,
     error: true,
     payload: {
       message: err.toString()
-    }
-  };
-}
+    },
+ };
+});
 
-export function saveLinkCode(code) {
+export const saveLinkCode = createAction('SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE', function prepare(code) {
   return {
-    type: SAVE_RESET_PASSWORD_VERIFY_EMAIL_CODE,
     payload: {
       email_code: code
     }
   };
-}
+});
 
-export function useLinkCode() {
-  return {
-    type: POST_RESET_PASSWORD_VERIFY_EMAIL,
-  };
-}
+export const useLinkCode = createAction("POST_RESET_PASSWORD_VERIFY_EMAIL");
 
-export function postLinkCodeFail(err) {
+export const postLinkCodeFail = createAction("POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL", function prepare(err) {
   return {
-    type: POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL,
     error: true,
     payload: {
       message: err.toString()
-    }
-  };
-}
+    },
+ };
+});
 
-export function requestPhoneCode(phone) {
+export const requestPhoneCode = createAction("POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE", function prepare(phone) {
   return {
-    type: POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE,
     payload: {
       phone: {
         index: phone.index,
@@ -74,105 +39,81 @@ export function requestPhoneCode(phone) {
       }
     }
   };
-}
+});
 
-export function requestPhoneCodeFail(err) {
+export const requestPhoneCodeFail = createAction("POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL", function prepare(err) {
   return {
-    type: POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL,
     error: true,
     payload: {
       message: err.toString()
-    }
-  };
-}
+    },
+ };
+});
 
-export function savePhoneCode(code) {
+export const savePhoneCode = createAction("SAVE_PHONE_CODE", function prepare(code) {
   return {
-    type: SAVE_PHONE_CODE,
     payload: {
-      phone_code: code
-    }
+        phone_code: code
+      }
   };
-}
+});
 
-export function selectExtraSecurity(option) {
+export const selectExtraSecurity = createAction("SELECT_EXTRA_SECURITY_OPTION", function prepare(option) {
   return {
-    type: SELECT_EXTRA_SECURITY_OPTION,
     payload: {
-      selected_option: option
-    }
+        selected_option: option
+      }
   };
-}
+});
 
-export function storeNewPassword(newPassword) {
+export const storeNewPassword = createAction("STORE_RESET_PASSWORD_NEW_PASSWORD", function prepare(newPassword) {
   return {
-    type: STORE_RESET_PASSWORD_NEW_PASSWORD,
     payload: {
       new_password: newPassword
-    }
+      }
   };
-}
+});
 
-export function setNewPassword() {
-  return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD
-  };
-}
+export const setNewPassword = createAction("POST_RESET_PASSWORD_NEW_PASSWORD");
 
-export function setNewPasswordFail(err) {
+export const setNewPasswordFail = createAction("POST_RESET_PASSWORD_NEW_PASSWORD_FAIL", function prepare(err) {
   return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_FAIL,
     error: true,
     payload: {
       message: err.toString()
-    }
-  };
-}
+    },
+ };
+});
 
-export function setNewPasswordExtraSecurityPhone() {
-  return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE
-  };
-}
+export const setNewPasswordExtraSecurityPhone = createAction("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE");
 
-export function setNewPasswordExtraSecurityPhoneFail(err) {
+export const setNewPasswordExtraSecurityPhoneFail = createAction("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL", function prepare(err) {
   return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL,
     error: true,
     payload: {
       message: err.toString()
-    }
-  };
-}
+    },
+ };
+});
 
-export function setNewPasswordExtraSecurityToken() {
-  return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN
-  };
-}
+export const setNewPasswordExtraSecurityToken = createAction("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN");
 
-export function setNewPasswordExtraSecurityTokenFail(err) {
+export const setNewPasswordExtraSecurityTokenFail = createAction("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL", function prepare(err) {
   return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL,
     error: true,
     payload: {
       message: err.toString()
-    }
-  };
-}
+    },
+ };
+});
 
-export function setNewPasswordExtraSecurityExternalMfa() {
-  return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA
-  };
-}
+export const setNewPasswordExtraSecurityExternalMfa = createAction("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA");
 
-export function setNewPasswordExtraSecurityExternalMfaFail(err) {
+export const setNewPasswordExtraSecurityExternalMfaFail = createAction("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL", function prepare(err) {
   return {
-    type: POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL,
     error: true,
     payload: {
       message: err.toString()
-    }
-  };
-}
+    },
+ };
+});
