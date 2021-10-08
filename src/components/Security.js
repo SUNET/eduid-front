@@ -9,51 +9,44 @@ import "../login/styles/index.scss";
 class Security extends Component {
   constructor(props) {
     super(props);
+
     this.state = { 
-      isAvailablePlatformAuthenticator: false,
       className: "" 
     };
-  }
 
-  componentDidMount(){
-    this.checkWebauthnDevice();
-  }
-
-  checkWebauthnDevice(){
-    if (window.PublicKeyCredential) {
-      PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-        .then((available) => {
-          if (available) {
-            console.log("Supported."),
-            this.setState(() => {
-              return {
-                isAvailablePlatformAuthenticator: true,
-                className: "second-option"
-              };
-            });
-          } else {
-            console.log(
-              "WebAuthn supported, Platform Authenticator *not* supported."
-            ),  
-            this.setState(() => {
-              return {
-                isAvailablePlatformAuthenticator: false,
-                className: "btn-primary"
-              };
-            });
-          }
-        })
-        .catch((err) => console.log(err, "Something went wrong."));
-     } else {
-      console.log("Not supported."),
-      this.setState(() => {
-        return {
-          isAvailablePlatformAuthenticator: false,
-          className: "btn-primary"
-        };
-      });
-     }
-  }
+  let platform = false;
+  if (window.PublicKeyCredential) {
+    platform = PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+      .then((available) => {
+        if (available) {
+          console.log("Supported."),
+          this.setState(() => {
+            return {
+              isPlatformAuthenticatorAvailable: platform,
+              className : "second-option"
+            };
+          });
+        } else {
+          console.log(
+            "WebAuthn supported, Platform Authenticator *not* supported."
+          ),  
+          this.setState(() => {
+            return {
+              className : "btn-primary"
+            };
+          });
+        }
+      })
+      .catch((err) => console.log(err, "Something went wrong."));
+   } else {
+    console.log("Not supported."),
+    this.setState(() => {
+      return {
+        className : "btn-primary"
+      };
+    });
+   }
+}
 
   render() {
     let btnVerify = "";
@@ -162,7 +155,7 @@ class Security extends Component {
           <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
             <div className="register-authn-buttons">
-              { this.state.isAvailablePlatformAuthenticator && 
+              { this.state.isPlatformAuthenticatorAvailable && 
                 <EduIDButton
                   id="security-webauthn-platform-button"
                   onClick={this.props.handleStartAskingDeviceWebauthnDescription}
