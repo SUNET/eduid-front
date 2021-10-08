@@ -10,43 +10,14 @@ class Security extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
-      className: "" 
-    };
-
-  let platform = false;
-  if (window.PublicKeyCredential) {
-    platform = PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-      .then((available) => {
-        if (available) {
-          console.log("Supported."),
-          this.setState(() => {
-            return {
-              isPlatformAuthenticatorAvailable: platform,
-              className : "second-option"
-            };
-          });
-        } else {
-          console.log(
-            "WebAuthn supported, Platform Authenticator *not* supported."
-          ),  
-          this.setState(() => {
-            return {
-              className : "btn-primary"
-            };
-          });
-        }
-      })
-      .catch((err) => console.log(err, "Something went wrong."));
-   } else {
-    console.log("Not supported."),
-    this.setState(() => {
-      return {
-        className : "btn-primary"
+    let platform = false;
+      if (window.PublicKeyCredential) {
+        platform = PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+      }
+      this.state = { 
+        isPlatformAuthenticatorAvailable: platform,
       };
-    });
-   }
-}
+  }
 
   render() {
     let btnVerify = "";
@@ -88,6 +59,7 @@ class Security extends Component {
       }
 
       if (this.state.isPlatformAuthenticatorAvailable) {
+        console.log("isAvailablePlatformAuthenticator", this.state.isPlatformAuthenticatorAvailable)
         platformAuthenticatorButton = (
           <EduIDButton
             id="security-webauthn-platform-button"
@@ -170,7 +142,7 @@ class Security extends Component {
             {platformAuthenticatorButton}
               <button
                 id="security-webauthn-button"
-                className={this.state.className}
+                className={this.state.isPlatformAuthenticatorAvailable ? "second-option" : "btn-primary"}
                 onClick={this.props.handleStartAskingKeyWebauthnDescription}
               >
                 {this.props.translate("security.add_webauthn_token_key")}
