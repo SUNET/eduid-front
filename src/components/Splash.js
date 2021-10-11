@@ -4,7 +4,7 @@ import { Spinner } from "spin.js";
 
 import "../login/styles/index.scss";
 
-const spinnerOpts = {
+export const spinnerOpts = {
   rotate: 0, // The rotation offset
   direction: 1, // 1: clockwise, -1: counterclockwise
   speed: 1, // Rounds per second
