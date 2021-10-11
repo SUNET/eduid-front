@@ -5,18 +5,47 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import "../login/styles/index.scss";
+import { Spinner } from "spin.js";
+import { spinnerOpts } from "../components/Splash";
+
 /*global PublicKeyCredential*/
 class Security extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isPlatformAuthenticatorAvailable : false,
+      isPlatformAuthLoaded: false
+    }
+  }
 
+  componentDidMount() {
+    this.checkWebauthnDevice();
+    if (!this.state.isPlatformAuthLoaded) {
+      const splash = this.refs.eduidSplash;
+      const spinner = new Spinner(spinnerOpts).spin();
+      splash.appendChild(spinner.el);
+    }
+  }
+
+  checkWebauthnDevice(){
     let platform = false;
-      if (window.PublicKeyCredential) {
-        platform = PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
-      }
-      this.state = { 
-        isPlatformAuthenticatorAvailable: platform,
-      };
+    if (window.PublicKeyCredential) {
+      PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+        .then((available) => {
+          platform = available
+        })
+        .catch((err) => {
+          console.log(err, "Couldn't detect presence of a webauthn platform authenticator.")
+        })
+        .finally(()=> {
+          this.setState(() => {
+            return {
+              isPlatformAuthenticatorAvailable : platform,
+              isPlatformAuthLoaded: true
+            }
+        })
+      })
+    }
   }
 
   render() {
@@ -57,9 +86,7 @@ class Security extends Component {
           </EduIDButton>
         );
       }
-
-      if (this.state.isPlatformAuthenticatorAvailable) {
-        console.log("isAvailablePlatformAuthenticator", this.state.isPlatformAuthenticatorAvailable)
+      if(this.state.isPlatformAuthLoaded && this.state.isPlatformAuthenticatorAvailable){
         platformAuthenticatorButton = (
           <EduIDButton
             id="security-webauthn-platform-button"
@@ -131,6 +158,7 @@ class Security extends Component {
 
     return (
       <div id="security-container">
+       {!this.state.isPlatformAuthLoaded && <div ref="eduidSplash" id="eduid-splash-screen" />} 
         <div id="register-securitykey-container">
           <div className="intro">
             <h4>{this.props.translate("security.security-key_title")}</h4>
