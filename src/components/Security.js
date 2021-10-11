@@ -21,6 +21,7 @@ class Security extends Component {
   componentDidMount() {
     this.checkWebauthnDevice();
     if (!this.state.isPlatformAuthLoaded) {
+      // Spinner will be running until state.isPlatformAuthLoaded is updated to true
       const splash = this.refs.eduidSplash;
       const spinner = new Spinner(spinnerOpts).spin();
       splash.appendChild(spinner.el);
@@ -41,6 +42,7 @@ class Security extends Component {
           this.setState(() => {
             return {
               isPlatformAuthenticatorAvailable : platform,
+              // Spinner will be stop when state.isPlatformAuthLoaded is updated to true
               isPlatformAuthLoaded: true
             }
         })
