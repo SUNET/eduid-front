@@ -5,61 +5,55 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import "../login/styles/index.scss";
+import { Spinner } from "spin.js";
+import { spinnerOpts } from "../components/Splash";
+
 /*global PublicKeyCredential*/
 class Security extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      isAvailablePlatformAuthenticator: false,
-      className: "" 
-    };
+    this.state = {
+      isPlatformAuthenticatorAvailable : false,
+      isPlatformAuthLoaded: false
+    }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.checkWebauthnDevice();
+    if (!this.state.isPlatformAuthLoaded) {
+      // Spinner will be running until state.isPlatformAuthLoaded is updated to true
+      const splash = this.refs.eduidSplash;
+      const spinner = new Spinner(spinnerOpts).spin();
+      splash.appendChild(spinner.el);
+    }
   }
 
   checkWebauthnDevice(){
+    let platform = false;
     if (window.PublicKeyCredential) {
       PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
         .then((available) => {
-          if (available) {
-            console.log("Supported."),
-            this.setState(() => {
-              return {
-                isAvailablePlatformAuthenticator: true,
-                className: "second-option"
-              };
-            });
-          } else {
-            console.log(
-              "WebAuthn supported, Platform Authenticator *not* supported."
-            ),  
-            this.setState(() => {
-              return {
-                isAvailablePlatformAuthenticator: false,
-                className: "btn-primary"
-              };
-            });
-          }
+          platform = available
         })
-        .catch((err) => console.log(err, "Something went wrong."));
-     } else {
-      console.log("Not supported."),
-      this.setState(() => {
-        return {
-          isAvailablePlatformAuthenticator: false,
-          className: "btn-primary"
-        };
-      });
-     }
+        .catch((err) => {
+          console.log(err, "Couldn't detect presence of a webauthn platform authenticator.")
+        })
+        .finally(()=> {
+          this.setState(() => {
+            return {
+              isPlatformAuthenticatorAvailable : platform,
+              // Spinner will be stop when state.isPlatformAuthLoaded is updated to true
+              isPlatformAuthLoaded: true
+            }
+        })
+      })
+    }
   }
 
   render() {
     let btnVerify = "";
-    let platformAuthenticatorButton = "";
     let date_success = "";
-
+    let platformAuthenticatorButton = "";
     let securitykey_table = "";
     // filter out password from data
     const tokens = this.props.credentials.filter(
@@ -94,8 +88,7 @@ class Security extends Component {
           </EduIDButton>
         );
       }
-
-      if (this.state.isAvailablePlatformAuthenticator) {
+      if(this.state.isPlatformAuthLoaded && this.state.isPlatformAuthenticatorAvailable){
         platformAuthenticatorButton = (
           <EduIDButton
             id="security-webauthn-platform-button"
@@ -105,6 +98,7 @@ class Security extends Component {
           </EduIDButton>
         );
       }
+
 
       return (
         <tr key={index} className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
@@ -166,6 +160,7 @@ class Security extends Component {
 
     return (
       <div id="security-container">
+       {!this.state.isPlatformAuthLoaded && <div ref="eduidSplash" id="eduid-splash-screen" />} 
         <div id="register-securitykey-container">
           <div className="intro">
             <h4>{this.props.translate("security.security-key_title")}</h4>
@@ -174,10 +169,10 @@ class Security extends Component {
           <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
             <div className="register-authn-buttons">
-             {platformAuthenticatorButton}
+            {platformAuthenticatorButton}
               <button
                 id="security-webauthn-button"
-                className={this.state.className}
+                className={this.state.isPlatformAuthenticatorAvailable ? "second-option" : "btn-primary"}
                 onClick={this.props.handleStartAskingKeyWebauthnDescription}
               >
                 {this.props.translate("security.add_webauthn_token_key")}
