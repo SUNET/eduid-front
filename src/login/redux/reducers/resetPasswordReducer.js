@@ -3,8 +3,8 @@ import * as getWebauthnActions from "../actions/getWebauthnAssertionActions";
 import { createReducer } from "@reduxjs/toolkit";
 
 const resetPasswordData = {
-    email_address: "",
-    email_code: "",
+    email_address: null,
+    email_code: null,
     phone: {},
     webauthn_assertion: null,
     selected_option: null,
@@ -28,6 +28,7 @@ const resetPasswordReducer = createReducer(resetPasswordData, {
     }
   },
   "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS": (state, action) => {
+    // Process a successful response from the /verify-email endpoint.
     return {
       ...state,
       ...action.payload
