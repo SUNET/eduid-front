@@ -13,9 +13,9 @@ class Security extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isPlatformAuthenticatorAvailable : false,
-      isPlatformAuthLoaded: false
-    }
+      isPlatformAuthenticatorAvailable: false,
+      isPlatformAuthLoaded: false,
+    };
   }
 
   componentDidMount() {
@@ -28,33 +28,35 @@ class Security extends Component {
     }
   }
 
-  checkWebauthnDevice(){
+  checkWebauthnDevice() {
     let platform = false;
     if (window.PublicKeyCredential) {
       PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
         .then((available) => {
-          platform = available
+          platform = available;
         })
         .catch((err) => {
-          console.log(err, "Couldn't detect presence of a webauthn platform authenticator.")
+          console.log(
+            err,
+            "Couldn't detect presence of a webauthn platform authenticator."
+          );
         })
-        .finally(()=> {
+        .finally(() => {
           this.setState(() => {
             return {
-              isPlatformAuthenticatorAvailable : platform,
+              isPlatformAuthenticatorAvailable: platform,
               // Spinner will be stop when state.isPlatformAuthLoaded is updated to true
-              isPlatformAuthLoaded: true
-            }
-        })
-      })
-    }else 
+              isPlatformAuthLoaded: true,
+            };
+          });
+        });
+    } else
       this.setState(() => {
         return {
           ...this.state,
-          isPlatformAuthLoaded: true
-        }
-      }
-    )
+          isPlatformAuthLoaded: true,
+        };
+      });
   }
 
   render() {
@@ -96,7 +98,11 @@ class Security extends Component {
       }
 
       return (
-        <tr key={index} className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`} data-token={cred.key}>
+        <tr
+          key={index}
+          className={`webauthn-token-holder ${cred.verified ? "verified" : ""}`}
+          data-token={cred.key}
+        >
           <td>{cred.description}</td>
           <td
             data-toggle="tooltip"
@@ -141,11 +147,17 @@ class Security extends Component {
         <table className="table-form passwords">
           <tbody>
             <tr>
-              <th className="security-name">{this.props.translate("security.description")}</th>
-              <th className="security-creation-date">{this.props.translate("security.creation_date")}</th>
-              <th className="security-last-used-date">{this.props.translate("security.last_used")}</th>
+              <th className="security-name">
+                {this.props.translate("security.description")}
+              </th>
+              <th className="security-creation-date">
+                {this.props.translate("security.creation_date")}
+              </th>
+              <th className="security-last-used-date">
+                {this.props.translate("security.last_used")}
+              </th>
               <th className="security-verify-link" />
-              <th className="security-remove-data"/>
+              <th className="security-remove-data" />
             </tr>
             {securitykey_table_data}
           </tbody>
@@ -155,7 +167,9 @@ class Security extends Component {
 
     return (
       <div id="security-container">
-       {!this.state.isPlatformAuthLoaded && <div ref="eduidSplash" id="eduid-splash-screen" />} 
+        {!this.state.isPlatformAuthLoaded && (
+          <div ref="eduidSplash" id="eduid-splash-screen" />
+        )}
         <div id="register-securitykey-container">
           <div className="intro">
             <h4>{this.props.translate("security.security-key_title")}</h4>
@@ -164,17 +178,23 @@ class Security extends Component {
           <div id="register-webauthn-tokens-area" className="table-responsive">
             {securitykey_table}
             <div className="register-authn-buttons">
-            { this.state.isPlatformAuthenticatorAvailable ?
-              <EduIDButton
-                id="security-webauthn-platform-button"
-                onClick={this.props.handleStartAskingDeviceWebauthnDescription}
-              >
-                {this.props.translate("security.add_webauthn_token_device")}
-              </EduIDButton> : null
-            }
+              {this.state.isPlatformAuthenticatorAvailable ? (
+                <EduIDButton
+                  id="security-webauthn-platform-button"
+                  onClick={
+                    this.props.handleStartAskingDeviceWebauthnDescription
+                  }
+                >
+                  {this.props.translate("security.add_webauthn_token_device")}
+                </EduIDButton>
+              ) : null}
               <button
                 id="security-webauthn-button"
-                className={this.state.isPlatformAuthenticatorAvailable ? "second-option" : "btn-primary"}
+                className={
+                  this.state.isPlatformAuthenticatorAvailable
+                    ? "second-option"
+                    : "btn-primary"
+                }
                 onClick={this.props.handleStartAskingKeyWebauthnDescription}
               >
                 {this.props.translate("security.add_webauthn_token_key")}
@@ -196,7 +216,9 @@ class Security extends Component {
           modalId="describeWebauthnTokenDialog"
           id="describeWebauthnTokenDialogControl"
           title={this.props.translate("security.webauthn-describe-title")}
-          resendLabel={this.props.translate("security.webauthn_credential_type")}
+          resendLabel={this.props.translate(
+            "security.webauthn_credential_type"
+          )}
           placeholder={this.props.translate("security.placeholder")}
           with_resend_link={false}
           showModal={Boolean(this.props.webauthn_asking_description)}
