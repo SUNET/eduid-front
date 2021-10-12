@@ -47,7 +47,14 @@ class Security extends Component {
             }
         })
       })
-    }
+    }else 
+      this.setState(() => {
+        return {
+          ...this.state,
+          isPlatformAuthLoaded: true
+        }
+      }
+    )
   }
 
   render() {
