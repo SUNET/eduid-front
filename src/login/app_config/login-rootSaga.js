@@ -2,10 +2,18 @@ import { takeLatest, select } from "redux-saga/effects";
 import * as init_actions from "../app_init/init_actions";
 import { requestConfig } from "../app_init/init_sagas";
 import { postEmailLink } from "../redux/sagas/resetpassword/postResetPasswordSaga";
-import { useLinkCode } from "../redux/sagas/resetpassword/postVerifyEmailSaga";
-import * as resetPasswordActions from "../redux/actions/resetPasswordActions";
+import { requestLinkCode } from "../redux/sagas/resetpassword/postVerifyEmailSaga";
+import {
+  requestEmailLink,
+  requestPhoneCode,
+  setNewPassword,
+  setNewPasswordExtraSecurityPhone,
+  setNewPasswordExtraSecurityToken,
+  setNewPasswordExtraSecurityExternalMfa,
+  useLinkCode,
+} from "../redux/slices/resetPasswordSlice";
 import loginSagas from "../redux/sagas/rootSaga/loginSagas";
-import { requestPhoneCode } from "../redux/sagas/resetpassword/postExtraSecurityPhoneSaga";
+import { requestPhoneCodeForNewPassword } from "../redux/sagas/resetpassword/postExtraSecurityPhoneSaga";
 import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPasswordSaga";
 import { postSetNewPasswordExtraSecurityPhone } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityPhoneSaga";
 import { postSetNewPasswordExtraSecurityToken } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityTokenSaga";
@@ -23,16 +31,28 @@ function* rootSaga() {
   yield [
     takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, allowLoginSagas),
-    takeLatest(resetPasswordActions.requestEmailLink.toString(), postEmailLink),
-    takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, useLinkCode),
-    takeLatest(resetPasswordActions.requestPhoneCode.toString(), requestPhoneCode),
+    takeLatest(requestEmailLink.type, postEmailLink),
+    takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, requestLinkCode),
+    takeLatest(requestPhoneCode.type, requestPhoneCodeForNewPassword),
     // security phone request failed, trigger /verify-email to get users extra security
-    takeLatest("POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL", useLinkCode),
-    takeLatest(resetPasswordActions.setNewPassword.toString(), postSetNewPassword),
-    takeLatest(resetPasswordActions.setNewPasswordExtraSecurityPhone.toString(), postSetNewPasswordExtraSecurityPhone),
-    takeLatest(resetPasswordActions.setNewPasswordExtraSecurityToken.toString(), postSetNewPasswordExtraSecurityToken),
-    takeLatest(resetPasswordActions.setNewPasswordExtraSecurityExternalMfa.toString(), postSetNewPasswordExternalMfa),
-    takeLatest(resetPasswordActions.useLinkCode.toString(), useLinkCode),
+    takeLatest(
+      "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL",
+      requestLinkCode
+    ),
+    takeLatest(setNewPassword.type, postSetNewPassword),
+    takeLatest(
+      setNewPasswordExtraSecurityPhone.type,
+      postSetNewPasswordExtraSecurityPhone
+    ),
+    takeLatest(
+      setNewPasswordExtraSecurityToken.type,
+      postSetNewPasswordExtraSecurityToken
+    ),
+    takeLatest(
+      setNewPasswordExtraSecurityExternalMfa.type,
+      postSetNewPasswordExternalMfa
+    ),
+    takeLatest(useLinkCode.type, requestLinkCode),
   ];
 }
 
