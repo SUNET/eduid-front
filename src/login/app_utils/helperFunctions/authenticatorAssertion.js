@@ -1,6 +1,8 @@
 import * as CBOR from "../../../sagas/cbor";
-import { getWebauthnAssertion, cancelWebauthnAssertion } from "../../../login/redux/actions/getWebauthnAssertionActions";
-
+import {
+  getWebauthnAssertion,
+  cancelWebauthnAssertion,
+} from "../../../login/redux/slices/resetPasswordSlice";
 
 // 1. Ask backend for a challenge
 // decode the challenge to use it
@@ -20,16 +22,21 @@ export const mfaDecodeMiddleware = (response) => {
 
 // challenge for reset-password
 export const mfaDecodeMiddlewareForResetPassword = (response) => {
-  if (response.payload.extra_security && response.payload.extra_security.tokens && 
-    response.payload.extra_security.tokens.webauthn_options !== undefined) {
-      const raw_options = response.payload.extra_security.tokens.webauthn_options;
-      if (typeof raw_options === "string") {
-        const options = window.atob(
-          raw_options.replace(/_/g, "/").replace(/-/g, "+")
-        );
-        const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
-        response.payload.extra_security.tokens.webauthn_options = CBOR.decode(byte_options.buffer);
-      }
+  if (
+    response.payload.extra_security &&
+    response.payload.extra_security.tokens &&
+    response.payload.extra_security.tokens.webauthn_options !== undefined
+  ) {
+    const raw_options = response.payload.extra_security.tokens.webauthn_options;
+    if (typeof raw_options === "string") {
+      const options = window.atob(
+        raw_options.replace(/_/g, "/").replace(/-/g, "+")
+      );
+      const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
+      response.payload.extra_security.tokens.webauthn_options = CBOR.decode(
+        byte_options.buffer
+      );
+    }
   }
   return response;
 };
@@ -43,10 +50,10 @@ export const assertionFromAuthenticator = async (
     .get(webauthn_challenge)
     .then()
     .catch(() => {
-       // assertion failed / cancled
+      // assertion failed / cancled
       dispatch(cancelWebauthnAssertion());
     });
-  if(webauthnAssertion !== undefined) {
+  if (webauthnAssertion !== undefined) {
     dispatch(getWebauthnAssertion(webauthnAssertion));
   }
 };

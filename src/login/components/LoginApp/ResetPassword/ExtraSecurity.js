@@ -6,8 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
 import {
+  saveLinkCode,
   requestPhoneCode,
   selectExtraSecurity,
+  cancelWebauthnAssertion,
 } from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
@@ -16,8 +18,6 @@ import {
   eduidRMAllNotify,
   eduidNotify,
 } from "../../../../actions/Notifications";
-import { saveLinkCode } from "../../../redux/slices/resetPasswordSlice";
-import { cancelWebauthnAssertion } from "../../../redux/actions/getWebauthnAssertionActions";
 
 const SecurityKeyButton = ({
   selected_option,
