@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 // CreateSlice function will return an object with actions and reducer
-import * as getWebauthnActions from "../actions/getWebauthnAssertionActions";
 
 export const resetPasswordSlice = createSlice({
   name: "resetPassword",
@@ -13,7 +12,7 @@ export const resetPasswordSlice = createSlice({
     new_password: null,
   },
   reducers: {
-    resetPasswordSagaFail: (state, action) => {
+    resetPasswordSagaFail: () => {
       "RESET_PASSWORD_SAGA_FAIL",
         function prepare(err) {
           return {
@@ -27,7 +26,7 @@ export const resetPasswordSlice = createSlice({
     },
 
     savePhoneCode: (state, action) => {
-      state.phone_code = action.payload;
+      state.phone.phone_code = action.payload;
     },
     requestEmailLink: (state, action) => {
       state.email_address = action.payload;
@@ -46,27 +45,33 @@ export const resetPasswordSlice = createSlice({
       ...state,
       ...action.payload,
     }),
-    [getWebauthnActions.GET_WEBAUTHN_ASSERTION]: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
-    [getWebauthnActions.GET_WEBAUTHN_ASSERTION_FAIL]: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
-    storeNewPassword: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
+    getWebauthnAssertion: (state, action) => {
+      state.webauthn_assertion = action.payload;
+    },
+    cancelWebauthnAssertion: (state) => {
+      state.webauthn_assertion = undefined;
+    },
+    storeNewPassword: (state, action) => {
+      state.new_password = action.payload;
+    },
 
     successVerifyEmail: (state, action) => ({
       ...state,
       ...action.payload,
     }),
-    setNewPassword: (state, action) => ({}),
-    setNewPasswordExtraSecurityPhone: (state, action) => ({}),
-    setNewPasswordExtraSecurityToken: (state, action) => ({}),
-    setNewPasswordExtraSecurityExternalMfa: (state, action) => ({}),
+    setNewPassword: (state, action) => ({ ...state, ...action.payload }),
+    setNewPasswordExtraSecurityPhone: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
+    setNewPasswordExtraSecurityToken: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
+    setNewPasswordExtraSecurityExternalMfa: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
   },
 });
 
@@ -84,6 +89,8 @@ export const {
   setNewPasswordExtraSecurityToken,
   setNewPasswordExtraSecurityExternalMfa,
   successVerifyEmail,
+  getWebauthnAssertion,
+  cancelWebauthnAssertion,
 } = resetPasswordSlice.actions;
 
 export default resetPasswordSlice.reducer;
