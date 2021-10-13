@@ -15,13 +15,13 @@ import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import { connect, useSelector, useDispatch } from "react-redux";
 import {
+  saveLinkCode,
   requestPhoneCode,
   savePhoneCode,
   selectExtraSecurity,
 } from "../../../redux/slices/resetPasswordSlice";
 import { useHistory } from "react-router-dom";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-import { saveLinkCode } from "../../../redux/slices/resetPasswordSlice";
 
 const validate = (values) => {
   const value = values.phone;
