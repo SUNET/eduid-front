@@ -70,7 +70,6 @@ function ResetPasswordMain(props) {
       if (errors[0].msg.includes("phone-code")) {
         // dispatch useLinkCode to change path to extra-security for resending sms code
         dispatch(useLinkCode());
-        console.log("type", useLinkCode.type);
       }
     }
   }, [errors]);
