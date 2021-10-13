@@ -12,18 +12,10 @@ export const resetPasswordSlice = createSlice({
     new_password: null,
   },
   reducers: {
-    resetPasswordSagaFail: () => {
-      "RESET_PASSWORD_SAGA_FAIL",
-        function prepare(err) {
-          return {
-            error: true,
-            payload: {
-              message: err.toString(),
-              info: err,
-            },
-          };
-        };
-    },
+    resetPasswordSagaFail: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
 
     savePhoneCode: (state, action) => {
       state.phone.phone_code = action.payload;
@@ -41,10 +33,9 @@ export const resetPasswordSlice = createSlice({
       ...state,
       ...action.payload,
     }),
-    requestPhoneCode: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
+    requestPhoneCode: (state, action) => {
+      state.phone.index = action.payload.index;
+    },
     getWebauthnAssertion: (state, action) => {
       state.webauthn_assertion = action.payload;
     },
@@ -54,7 +45,6 @@ export const resetPasswordSlice = createSlice({
     storeNewPassword: (state, action) => {
       state.new_password = action.payload;
     },
-
     successVerifyEmail: (state, action) => ({
       ...state,
       ...action.payload,
