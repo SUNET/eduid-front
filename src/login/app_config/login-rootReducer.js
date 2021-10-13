@@ -6,7 +6,7 @@ import { intlReducer } from "react-intl-redux";
 import initReducer from "../app_init/init_reducer";
 import appReducer from "../components/App/App_reducer";
 import loginReducer from "../redux/reducers/loginReducer";
-import resetPasswordReducer from "../redux/reducers/resetPasswordReducer";
+import resetPasswordSlice from "../redux/slices/resetPasswordSlice";
 
 const eduIDLoginApp = combineReducers({
   config: initReducer,
@@ -16,7 +16,7 @@ const eduIDLoginApp = combineReducers({
   router: routerReducer,
   form: formReducer,
   intl: intlReducer,
-  resetPassword: resetPasswordReducer
+  resetPassword: resetPasswordSlice,
 });
 
 export default eduIDLoginApp;

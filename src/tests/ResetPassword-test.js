@@ -3,7 +3,7 @@ import React from "react";
 import { mount } from "enzyme";
 import expect from "expect";
 import { addLocaleData } from "react-intl";
-import * as actions from "../login/redux/actions/resetPasswordActions";
+import * as actions from "../login/redux/slices/resetPasswordSlice";
 import ResetPasswordMain from "../login/components/LoginApp/ResetPassword/ResetPasswordMain";
 import { Provider } from "react-intl-redux";
 import { createMemoryHistory } from "history";
@@ -16,32 +16,32 @@ const baseState = {
     request_in_progress: false,
   },
   resetPassword: {
-    email_address: ""
+    email_address: "",
   },
-  config: { 
-    csrf_token: "csrf-token" 
+  config: {
+    csrf_token: "csrf-token",
   },
   notifications: {
-    errors: []
+    errors: [],
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 };
 
-const fakeStore = fakeState => ({
+const fakeStore = (fakeState) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...fakeState })
+  getState: () => ({ ...fakeState }),
 });
 
 function getFakeState(newState) {
   if (newState === undefined) {
-    newState = {}
+    newState = {};
   }
-  return Object.assign(baseState, newState)
+  return Object.assign(baseState, newState);
 }
 
 describe("renders", () => {
@@ -68,16 +68,18 @@ describe("renders", () => {
 
 describe("ResetPassword post actions,", () => {
   const fakeState = getFakeState({
-    resetPassword: { email_address: "test@test.com" }
+    resetPassword: { email_address: "test@test.com" },
   });
   it("create an action to send email link", () => {
     const expectedAction = {
       type: actions.POST_RESET_PASSWORD,
       payload: {
-        email_address: fakeState.resetPassword.email
-      }
+        email_address: fakeState.resetPassword.email,
+      },
     };
-    expect(actions.requestEmailLink(fakeState.resetPassword.email)).toEqual(expectedAction);
+    expect(actions.requestEmailLink(fakeState.resetPassword.email)).toEqual(
+      expectedAction
+    );
   });
 
   it("create an action to get an error when failed post", () => {
@@ -86,8 +88,9 @@ describe("ResetPassword post actions,", () => {
       type: actions.POST_RESET_PASSWORD_FAIL,
       error: true,
       payload: {
-      message: "Bad error"
-    }};
+        message: "Bad error",
+      },
+    };
     expect(actions.postEmailLinkFail(err)).toEqual(expectedAction);
   });
 });
@@ -122,7 +125,7 @@ describe("ResetPasswordMain, send link button ", () => {
     const buttonDisabled = button.prop("disabled");
     input.props().value = "test@test.com";
     input.update();
-    expect(input.props().value).toBe("test@test.com")
+    expect(input.props().value).toBe("test@test.com");
     expect(buttonDisabled).toBeFalsy();
   });
-})
+});
