@@ -21,52 +21,38 @@ const resetPasswordReducer = createReducer(resetPasswordData, {
   [resetPasswordActions.saveLinkCode]: (state, action) => {
     state.email_code = action.payload;
   },
-  [resetPasswordActions.useLinkCode]: (state, action) => {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  },
-  POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS: (state, action) => {
-    // Process a successful response from the /verify-email endpoint.
-    return {
-      ...state,
-      ...action.payload,
-    };
-  },
-  [resetPasswordActions.requestPhoneCode]: (state, action) => {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  },
-  [resetPasswordActions.savePhoneCode]: (state, action) => {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  },
-  [getWebauthnActions.GET_WEBAUTHN_ASSERTION]: (state, action) => {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  },
-  [getWebauthnActions.GET_WEBAUTHN_ASSERTION_FAIL]: (state, action) => {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  },
   [resetPasswordActions.selectExtraSecurity]: (state, action) => {
     state.selected_option = action.payload;
   },
-  [resetPasswordActions.storeNewPassword]: (state, action) => {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  },
+  [resetPasswordActions.useLinkCode]: (state, action) => ({
+    ...state,
+    ...action.payload,
+  }),
+  [resetPasswordActions.requestPhoneCode]: (state, action) => ({
+    ...state,
+    ...action.payload,
+  }),
+  [resetPasswordActions.savePhoneCode]: (state, action) => ({
+    ...state,
+    ...action.payload,
+  }),
+  [getWebauthnActions.GET_WEBAUTHN_ASSERTION]: (state, action) => ({
+    ...state,
+    ...action.payload,
+  }),
+  [getWebauthnActions.GET_WEBAUTHN_ASSERTION_FAIL]: (state, action) => ({
+    ...state,
+    ...action.payload,
+  }),
+  [resetPasswordActions.storeNewPassword]: (state, action) => ({
+    ...state,
+    ...action.payload,
+  }),
+  POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS: (state, action) => ({
+    // Process a successful response from the /verify-email endpoint.
+    ...state,
+    ...action.payload,
+  }),
 });
 
 export default resetPasswordReducer;
