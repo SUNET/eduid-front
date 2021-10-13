@@ -16,7 +16,10 @@ export const resetPasswordSlice = createSlice({
       ...state,
       ...action.payload,
     }),
-
+    resetPasswordSagaSuccess: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
     savePhoneCode: (state, action) => {
       state.phone.phone_code = action.payload;
     },
@@ -45,10 +48,6 @@ export const resetPasswordSlice = createSlice({
     storeNewPassword: (state, action) => {
       state.new_password = action.payload;
     },
-    successVerifyEmail: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
     setNewPassword: (state, action) => ({ ...state, ...action.payload }),
     setNewPasswordExtraSecurityPhone: (state, action) => ({
       ...state,
@@ -67,6 +66,7 @@ export const resetPasswordSlice = createSlice({
 
 export const {
   resetPasswordSagaFail,
+  resetPasswordSagaSuccess,
   savePhoneCode,
   requestEmailLink,
   saveLinkCode,
@@ -78,7 +78,6 @@ export const {
   setNewPasswordExtraSecurityPhone,
   setNewPasswordExtraSecurityToken,
   setNewPasswordExtraSecurityExternalMfa,
-  successVerifyEmail,
   getWebauthnAssertion,
   cancelWebauthnAssertion,
 } = resetPasswordSlice.actions;
