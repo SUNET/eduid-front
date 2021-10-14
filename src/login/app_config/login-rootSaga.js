@@ -30,27 +30,27 @@ function* rootSaga() {
       requestPhoneCodeForNewPassword
     ),
     // security phone request failed, trigger /verify-email to get users extra security
-    // takeLatest(
-    //   "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL",
-    //   requestLinkCode
-    // ),
-    // takeLatest(
-    //   resetPasswordSlice.actions.setNewPassword.type,
-    //   postSetNewPassword
-    // ),
-    // takeLatest(
-    //   resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone.type,
-    //   postSetNewPasswordExtraSecurityPhone
-    // ),
-    // takeLatest(
-    //   resetPasswordSlice.actions.setNewPasswordExtraSecurityToken.type,
-    //   postSetNewPasswordExtraSecurityToken
-    // ),
-    // takeLatest(
-    //   resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa.type,
-    //   postSetNewPasswordExternalMfa
-    // ),
-    // takeLatest(resetPasswordSlice.actions.useLinkCode.type, requestLinkCode),
+    takeLatest(
+      "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL",
+      requestLinkCode
+    ),
+    takeLatest(
+      resetPasswordSlice.actions.setNewPassword.type,
+      postSetNewPassword
+    ),
+    takeLatest(
+      resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone.type,
+      postSetNewPasswordExtraSecurityPhone
+    ),
+    takeLatest(
+      resetPasswordSlice.actions.setNewPasswordExtraSecurityToken.type,
+      postSetNewPasswordExtraSecurityToken
+    ),
+    takeLatest(
+      resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa.type,
+      postSetNewPasswordExternalMfa
+    ),
+    takeLatest(resetPasswordSlice.actions.useLinkCode.type, requestLinkCode),
   ];
 }
 
