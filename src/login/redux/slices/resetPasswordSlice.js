@@ -12,14 +12,14 @@ export const resetPasswordSlice = createSlice({
     new_password: null,
   },
   reducers: {
-    // Common action to signal a caught exception in one of the reset password sagas. Because it ends in _FAIL,
+    // Common action to signal a caught exception in one of the reset password sagas.
     resetPasswordSagaFail: () => ({}),
-    // API call successfully post data save it to store
+    // If API call is successfull, save data to store
     resetPasswordSagaSuccess: (state, action) => ({
       ...state,
       ...action.payload,
     }),
-    // Stor phone_code for API call /new-password-extra-security-phone endpoint.
+    // Store phone_code for API call /new-password-extra-security-phone endpoint.
     savePhoneCode: (state, action) => {
       state.phone.phone_code = action.payload;
     },
@@ -30,7 +30,7 @@ export const resetPasswordSlice = createSlice({
     saveLinkCode: (state, action) => {
       state.email_code = action.payload;
     },
-    // Selected_option for correct endpoint
+    // Depending on selectedOption, this will call correct action of new password.
     selectExtraSecurity: (state, action) => {
       state.selected_option = action.payload;
     },
@@ -42,7 +42,6 @@ export const resetPasswordSlice = createSlice({
     requestPhoneCode: (state, action) => {
       state.phone.index = action.payload.index;
     },
-    //
     getWebauthnAssertion: (state, action) => {
       state.webauthn_assertion = action.payload;
     },
