@@ -71,22 +71,4 @@ export const resetPasswordSlice = createSlice({
   },
 });
 
-export const {
-  resetPasswordSagaFail,
-  resetPasswordSagaSuccess,
-  savePhoneCode,
-  requestEmailLink,
-  saveLinkCode,
-  selectExtraSecurity,
-  useLinkCode,
-  requestPhoneCode,
-  storeNewPassword,
-  setNewPassword,
-  setNewPasswordExtraSecurityPhone,
-  setNewPasswordExtraSecurityToken,
-  setNewPasswordExtraSecurityExternalMfa,
-  getWebauthnAssertion,
-  cancelWebauthnAssertion,
-} = resetPasswordSlice.actions;
-
 export default resetPasswordSlice;
