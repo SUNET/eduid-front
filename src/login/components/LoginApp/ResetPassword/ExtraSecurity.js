@@ -88,14 +88,14 @@ function ExtraSecurity(props) {
       : frejaUrlDomain && frejaUrlDomain.concat("/");
 
   useEffect(() => {
-    dispatch(resetPasswordActions.selectExtraSecurity(null));
-    dispatch(resetPasswordActions.cancelWebauthnAssertion());
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity(null));
+    dispatch(resetPasswordSlice.actions.cancelWebauthnAssertion());
     if (extra_security !== undefined) {
       if (Object.keys(extra_security).length > 0) {
         setExtraSecurity(extra_security);
       }
       if (!Object.keys(extra_security).length) {
-        dispatch(resetPasswordActions.selectExtraSecurity("without"));
+        dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
         history.push(`/reset-password/set-new-password/${emailCode}`);
       }
     }
@@ -106,20 +106,20 @@ function ExtraSecurity(props) {
       const message = window.location.search.split("=")[1];
       const emailCode = urlCode.split("?");
       if (message.includes("completed")) {
-        dispatch(resetPasswordActions.selectExtraSecurity("freja"));
+        dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
         history.push(`/reset-password/set-new-password/${emailCode[0]}`);
       } else if (message.includes("%3AERROR%3A")) {
         const error = message.split("%3AERROR%3A")[1];
         dispatch(eduidNotify(error, "errors"));
         history.push(`/reset-password/extra-security/${emailCode[0]}`);
-        dispatch(resetPasswordActions.saveLinkCode(emailCode[0]));
+        dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode[0]));
       }
     }
   }, [emailCode, suggested_password]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
-    dispatch(resetPasswordActions.selectExtraSecurity("securityKey"));
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
     startTokenAssertion();
     dispatch(eduidRMAllNotify());
   };
