@@ -22,7 +22,7 @@ describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
   it("saga posts the expected data", () => {
     const data = {
       email: fakeState.resetPassword.email_address,
-      csrf_token: fakeState.config.csrf_token
+      csrf_token: fakeState.config.csrf_token,
     };
     const url = fakeState.config.reset_password_url;
     const apiCall = generator.next(fakeState).value;
@@ -34,13 +34,13 @@ describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
       payload: {
         csrf_token: fakeState.config.csrf_token,
         message: "success",
-        email_address: fakeState.resetPassword.email_address
+        email_address: fakeState.resetPassword.email_address,
       },
     };
-  next = generator.next(successResponse);
-  expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-  next = generator.next();
-  expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_SUCCESS");
+    next = generator.next(successResponse);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_SUCCESS");
   });
   it("done after 'REQUEST_COMPLETED'", () => {
     next = generator.next();
@@ -58,7 +58,7 @@ describe(`first API call to "/" behaves as expected on _FAIL`, () => {
   it("saga posts unexpected data", () => {
     const data = {
       email: "not found user",
-      csrf_token: fakeState.config.csrf_token
+      csrf_token: fakeState.config.csrf_token,
     };
     const url = fakeState.config.reset_password_url;
     const apiCall = generator.next(fakeState).value;

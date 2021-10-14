@@ -20,7 +20,7 @@ describe("API call to /verify-email/ behaves as expected on _SUCCESS", () => {
   it("saga posts the expected data", () => {
     const data = {
       email_code: fakeState.resetPassword.email_code,
-      csrf_token: fakeState.config.csrf_token
+      csrf_token: fakeState.config.csrf_token,
     };
     const url = fakeState.config.reset_password_url + "verify-email/";
     const apiCall = generator.next(fakeState).value;
@@ -32,13 +32,15 @@ describe("API call to /verify-email/ behaves as expected on _SUCCESS", () => {
       payload: {
         csrf_token: fakeState.config.csrf_token,
         message: "success",
-        email_code: fakeState.resetPassword.email_code
+        email_code: fakeState.resetPassword.email_code,
       },
     };
-  next = generator.next(successResponse);
-  expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-  next = generator.next();
-  expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS");
+    next = generator.next(successResponse);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual(
+      "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
+    );
   });
 });
 
@@ -48,7 +50,7 @@ describe(`first API call to "/verify-email/" behaves as expected on _FAIL`, () =
   it("saga posts unexpected data", () => {
     const data = {
       email_code: "state not found",
-      csrf_token: fakeState.config.csrf_token
+      csrf_token: fakeState.config.csrf_token,
     };
     const url = fakeState.config.reset_password_url;
     const apiCall = generator.next(fakeState).value;
@@ -66,7 +68,9 @@ describe(`first API call to "/verify-email/" behaves as expected on _FAIL`, () =
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL");
+    expect(next.value.PUT.action.type).toEqual(
+      "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL"
+    );
     expect(failResponse).toEqual(postLinkCodeFail("error"));
   });
   it("done after 'POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL'", () => {

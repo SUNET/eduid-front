@@ -11,7 +11,7 @@ const fakeState = {
   },
   resetPassword: {
     email_code: "f11e2b93-0285-40f9-9081-133b055c60f8",
-    new_password: "fake password" 
+    new_password: "fake password",
   },
 };
 
@@ -30,19 +30,21 @@ describe(`API call to "new-password/" behaves as expected on _SUCCESS`, () => {
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).toEqual(call(postRequest, url, data));
   });
-  
+
   it("_SUCCESS response is followed by the expected action types", () => {
-   const successResponse = {
+    const successResponse = {
       type: "POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS",
       payload: {
         csrf_token: fakeState.config.csrf_token,
         message: "success",
       },
     };
-  next = generator.next(successResponse);
-  expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-  next = generator.next();
-  expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS");
+    next = generator.next(successResponse);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual(
+      "POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS"
+    );
   });
 });
 
@@ -53,9 +55,9 @@ describe(`first API call to "new-password/" behaves as expected on _FAIL`, () =>
     const data = {
       email_code: "state not found",
       csrf_token: fakeState.config.csrf_token,
-      password: "fake password"
+      password: "fake password",
     };
-    const url = fakeState.config.reset_password_url +"new-password/";
+    const url = fakeState.config.reset_password_url + "new-password/";
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).not.toEqual(call(postRequest, url, data));
   });
@@ -71,7 +73,9 @@ describe(`first API call to "new-password/" behaves as expected on _FAIL`, () =>
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_NEW_PASSWORD_FAIL");
+    expect(next.value.PUT.action.type).toEqual(
+      "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL"
+    );
     expect(failResponse).toEqual(setNewPasswordFail("error"));
   });
   it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL"`, () => {

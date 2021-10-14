@@ -22,7 +22,7 @@ const init_container = () => {
     initStore.dispatch(addTouVersions(touVersions));
     // REMOVE: after actions/plugins are removed
     if (url.includes(`mfa`)) {
-      // ignores information after `?` in all urls 
+      // ignores information after `?` in all urls
       if (url.includes(`?`)) {
         const mfaPageUrl = `${window.location.origin}${window.location.pathname}`;
         window.location = mfaPageUrl;
@@ -30,10 +30,9 @@ const init_container = () => {
     }
   }
 
-  if(url.includes(`/email/`)){
+  if (url.includes(`/email/`)) {
     initStore.dispatch(addLoginRef(urlCode));
-  }
-  else if(url.includes(`/email-code/`) || url.includes(`/extra-security/`)) {
+  } else if (url.includes(`/email-code/`) || url.includes(`/extra-security/`)) {
     // pass on code get config for app and
     initStore.dispatch(saveLinkCode(urlCode));
   }
