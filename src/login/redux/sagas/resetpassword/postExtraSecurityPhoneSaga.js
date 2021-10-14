@@ -13,7 +13,6 @@ import { history } from "../../../components/App/App";
 
 export function* requestPhoneCodeForNewPassword() {
   const state = yield select((state) => state);
-  console.log("state", state.resetPassword);
   const url = state.config.reset_password_url + "extra-security-phone/";
   const locationUrl = document.location.href;
   const data = {

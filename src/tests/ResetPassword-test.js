@@ -79,16 +79,6 @@ describe("ResetPassword post actions,", () => {
       expectedAction
     );
   });
-
-  // it("create an action to get an error when failed post", () => {
-  //   const err = "Bad error";
-  //   const expectedAction = {
-  //     type: "resetPassword/resetPasswordSagaFail",
-  //     error: true,
-  //     payload: "Bad error",
-  //   };
-  //   expect(resetPasswordSagaFail(err)).toEqual(expectedAction);
-  // });
 });
 
 describe("ResetPasswordMain, send link button ", () => {
