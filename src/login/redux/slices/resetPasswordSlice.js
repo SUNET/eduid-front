@@ -13,10 +13,7 @@ export const resetPasswordSlice = createSlice({
   },
   reducers: {
     // Common action to signal a caught exception in one of the reset password sagas. Because it ends in _FAIL,
-    resetPasswordSagaFail: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
+    resetPasswordSagaFail: () => ({}),
     // API call successfully post data save it to store
     resetPasswordSagaSuccess: (state, action) => ({
       ...state,
@@ -45,7 +42,7 @@ export const resetPasswordSlice = createSlice({
     requestPhoneCode: (state, action) => {
       state.phone.index = action.payload.index;
     },
-    // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
+    //
     getWebauthnAssertion: (state, action) => {
       state.webauthn_assertion = action.payload;
     },

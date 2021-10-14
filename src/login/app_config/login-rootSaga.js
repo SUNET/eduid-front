@@ -31,8 +31,8 @@ function* rootSaga() {
   yield [
     takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, allowLoginSagas),
-    takeLatest(requestEmailLink.type, postEmailLink),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, requestLinkCode),
+    takeLatest(requestEmailLink.type, postEmailLink),
     takeLatest(requestPhoneCode.type, requestPhoneCodeForNewPassword),
     // security phone request failed, trigger /verify-email to get users extra security
     takeLatest(

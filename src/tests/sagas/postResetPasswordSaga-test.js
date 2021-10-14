@@ -2,7 +2,6 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postEmailLink } from "../../login/redux/sagas/resetpassword/postResetPasswordSaga";
-import { postEmailLinkFail } from "../../login/redux/slices/resetPasswordSlice";
 
 const fakeState = {
   config: {
@@ -77,7 +76,6 @@ describe(`first API call to "/" behaves as expected on _FAIL`, () => {
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_FAIL");
-    expect(failResponse).toEqual(postEmailLinkFail("error"));
   });
   it("done after 'REQUEST_COMPLETED'", () => {
     next = generator.next();

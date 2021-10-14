@@ -2,7 +2,6 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postSetNewPasswordExtraSecurityPhone } from "../../login/redux/sagas/resetpassword/postSetNewPasswordExtraSecurityPhoneSaga";
-import { setNewPasswordExtraSecurityPhoneFail } from "../../login/redux/actions/postResetPasswordActions";
 
 const fakeState = {
   config: {
@@ -13,8 +12,8 @@ const fakeState = {
     email_code: "f11e2b93-0285-40f9-9081-133b055c60f8",
     new_password: "fake password",
     phone: {
-        phone_code: "fake phone code"
-    }
+      phone_code: "fake phone code",
+    },
   },
 };
 
@@ -29,23 +28,27 @@ describe(`API call to "new-password-extra-security-phone/" behaves as expected o
       password: fakeState.resetPassword.new_password,
       csrf_token: fakeState.config.csrf_token,
     };
-    const url = fakeState.config.reset_password_url + "new-password-extra-security-phone/";
+    const url =
+      fakeState.config.reset_password_url +
+      "new-password-extra-security-phone/";
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).toEqual(call(postRequest, url, data));
   });
-  
+
   it("_SUCCESS response is followed by the expected action types", () => {
-   const successResponse = {
+    const successResponse = {
       type: "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS",
       payload: {
         csrf_token: fakeState.config.csrf_token,
         message: "success",
       },
     };
-  next = generator.next(successResponse);
-  expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-  next = generator.next();
-  expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS");
+    next = generator.next(successResponse);
+    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual(
+      "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS"
+    );
   });
 });
 
@@ -56,9 +59,11 @@ describe(`first API call to "new-password-extra-security-phone/" behaves as expe
     const data = {
       email_code: "state not found",
       csrf_token: fakeState.config.csrf_token,
-      password: "fake password"
+      password: "fake password",
     };
-    const url = fakeState.config.reset_password_url +"new-password-extra-security-phone/";
+    const url =
+      fakeState.config.reset_password_url +
+      "new-password-extra-security-phone/";
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).not.toEqual(call(postRequest, url, data));
   });
@@ -74,8 +79,9 @@ describe(`first API call to "new-password-extra-security-phone/" behaves as expe
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL");
-    expect(failResponse).toEqual(setNewPasswordExtraSecurityPhoneFail("error"));
+    expect(next.value.PUT.action.type).toEqual(
+      "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL"
+    );
   });
   it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_PHONE_FAIL"`, () => {
     const done = generator.next().done;
