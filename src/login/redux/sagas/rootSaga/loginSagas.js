@@ -10,11 +10,23 @@ import * as addDataToStoreActions from "../../actions/addDataToStoreActions";
 
 const loginSagas = [
   takeLatest(loginActions.useLoginRef.toString(), postRefLoginSaga),
-  takeLatest(loginActions.postUsernamePassword.toString(), postUsernamePasswordSaga),
+  takeLatest(
+    loginActions.postUsernamePassword.toString(),
+    postUsernamePasswordSaga
+  ),
   takeLatest(loginActions.postTouVersions.toString(), postTouVersionsSaga),
-  takeLatest(loginActions.updatedTouAccept.toString(), postUpdatedTouAcceptSaga),
-  takeLatest(loginActions.postRefForWebauthnChallenge.toString(), postRefForWebauthnChallengeSaga),
-  takeLatest(addDataToStoreActions.addWebauthnAssertion.toString(), postWebauthnFromAuthenticatorSaga),
+  takeLatest(
+    loginActions.updatedTouAccept.toString(),
+    postUpdatedTouAcceptSaga
+  ),
+  takeLatest(
+    loginActions.postRefForWebauthnChallenge.toString(),
+    postRefForWebauthnChallengeSaga
+  ),
+  takeLatest(
+    addDataToStoreActions.addWebauthnAssertion.toString(),
+    postWebauthnFromAuthenticatorSaga
+  ),
   takeLatest("POST_IDP_MFA_AUTH_FAIL", postRefForWebauthnChallengeSaga),
 ];
 
