@@ -1,7 +1,7 @@
 import { put, call, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { resetPasswordSagaFail } from "../../slices/resetPasswordSlice";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
@@ -41,6 +41,9 @@ export function* requestPhoneCodeForNewPassword() {
       }
     }
   } catch (error) {
-    yield* failRequest(error, resetPasswordSagaFail(error));
+    yield* failRequest(
+      error,
+      resetPasswordSlice.actions.resetPasswordSagaFail(error)
+    );
   }
 }

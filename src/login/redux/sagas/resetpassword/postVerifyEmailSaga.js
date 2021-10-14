@@ -1,9 +1,6 @@
 import { put, call, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
-import {
-  resetPasswordSagaFail,
-  resetPasswordSagaSuccess,
-} from "../../slices/resetPasswordSlice";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import postRequest from "../postDataRequest";
 import { history } from "../../../components/App/App";
 import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFunctions/authenticatorAssertion";
@@ -25,7 +22,11 @@ export function* requestLinkCode() {
       yield put(putCsrfToken(decodedWebauthnChallenge));
       yield put(decodedWebauthnChallenge);
       // if API call successfully post data save it to store
-      yield put(resetPasswordSagaSuccess(decodedWebauthnChallenge.payload));
+      yield put(
+        resetPasswordSlice.actions.resetPasswordSagaSuccess(
+          decodedWebauthnChallenge.payload
+        )
+      );
       if (locationUrl.includes("set-new-password")) {
         return history.push(
           `/reset-password/set-new-password/${data.email_code}`
@@ -40,7 +41,10 @@ export function* requestLinkCode() {
         );
       } else return history.push(`/reset-password/email`);
     } catch (error) {
-      yield* failRequest(error, resetPasswordSagaFail(error));
+      yield* failRequest(
+        error,
+        resetPasswordSlice.actions.resetPasswordSagaFail(error)
+      );
     }
   }
 }
