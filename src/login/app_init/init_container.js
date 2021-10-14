@@ -1,6 +1,6 @@
 import initStore from "./initStore";
 import { getConfig } from "./init_actions";
-import { saveLinkCode } from "./../redux/slices/resetPasswordSlice";
+import resetPasswordSlice from "../redux/slices/resetPasswordSlice";
 import { addLoginRef } from "./../redux/actions/addDataToStoreActions";
 import { addTouVersions } from "./../redux/actions/addDataToStoreActions";
 
@@ -34,7 +34,7 @@ const init_container = () => {
     initStore.dispatch(addLoginRef(urlCode));
   } else if (url.includes(`/email-code/`) || url.includes(`/extra-security/`)) {
     // pass on code get config for app and
-    initStore.dispatch(saveLinkCode(urlCode));
+    initStore.dispatch(resetPasswordSlice.actions.saveLinkCode(urlCode));
   }
 };
 

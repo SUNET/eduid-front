@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useSelector, useDispatch, connect } from "react-redux";
-import {
-  requestEmailLink,
-  useLinkCode,
-} from "../../../redux/slices/resetPasswordSlice";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
@@ -69,7 +66,7 @@ function ResetPasswordMain(props) {
       // error message is expired-phone-code
       if (errors[0].msg.includes("phone-code")) {
         // dispatch useLinkCode to change path to extra-security for resending sms code
-        dispatch(useLinkCode());
+        dispatch(resetPasswordSlice.actions.useLinkCode());
       }
     }
   }, [errors]);
@@ -78,7 +75,7 @@ function ResetPasswordMain(props) {
     e.preventDefault();
     const email = document.querySelector("input[name='email']").value;
     if (email) {
-      dispatch(requestEmailLink(email));
+      dispatch(resetPasswordSlice.actions.requestEmailLink(email));
       setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
     }
   };

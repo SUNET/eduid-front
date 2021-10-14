@@ -89,4 +89,4 @@ export const {
   cancelWebauthnAssertion,
 } = resetPasswordSlice.actions;
 
-export default resetPasswordSlice.reducer;
+export default resetPasswordSlice;

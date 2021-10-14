@@ -3,7 +3,7 @@ import React from "react";
 import { mount } from "enzyme";
 import expect from "expect";
 import { addLocaleData } from "react-intl";
-import { requestEmailLink } from "../login/redux/slices/resetPasswordSlice";
+import resetPasswordSlice from "../login/redux/slices/resetPasswordSlice";
 import ResetPasswordMain from "../login/components/LoginApp/ResetPassword/ResetPasswordMain";
 import { Provider } from "react-intl-redux";
 import { createMemoryHistory } from "history";
@@ -72,12 +72,14 @@ describe("ResetPassword post actions,", () => {
   });
   it("create an action to send email link", () => {
     const expectedAction = {
-      type: "resetPassword/requestEmailLink",
+      type: resetPasswordSlice.actions.requestEmailLink.type,
       payload: fakeState.resetPassword.email_address,
     };
-    expect(requestEmailLink(fakeState.resetPassword.email_address)).toEqual(
-      expectedAction
-    );
+    expect(
+      resetPasswordSlice.actions.requestEmailLink(
+        fakeState.resetPassword.email_address
+      )
+    ).toEqual(expectedAction);
   });
 });
 

@@ -14,12 +14,7 @@ import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import { connect, useSelector, useDispatch } from "react-redux";
-import {
-  saveLinkCode,
-  requestPhoneCode,
-  savePhoneCode,
-  selectExtraSecurity,
-} from "../../../redux/slices/resetPasswordSlice";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { useHistory } from "react-router-dom";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
@@ -92,13 +87,13 @@ function PhoneCodeSent(props) {
   }, []);
 
   useEffect(() => {
-    dispatch(saveLinkCode(emailCode));
+    dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode));
   }, [dispatch]);
 
   const resendPhoneCode = (e) => {
     e.preventDefault();
     if (phone) {
-      dispatch(requestPhoneCode(phone));
+      dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
     }
   };
 
@@ -108,8 +103,8 @@ function PhoneCodeSent(props) {
 
     if (phoneCode) {
       history.push(`/reset-password/set-new-password/${emailCode}`);
-      dispatch(savePhoneCode(phoneCode));
-      dispatch(selectExtraSecurity("phoneCode"));
+      dispatch(resetPasswordSlice.actions.savePhoneCode(phoneCode));
+      dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
       dispatch(eduidRMAllNotify());
     }
   };

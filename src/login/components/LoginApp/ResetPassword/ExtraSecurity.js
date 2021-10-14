@@ -5,12 +5,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import { useDispatch, useSelector } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
-import {
-  saveLinkCode,
-  requestPhoneCode,
-  selectExtraSecurity,
-  cancelWebauthnAssertion,
-} from "../../../redux/slices/resetPasswordSlice";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import Splash from "../../../../containers/Splash";
@@ -45,7 +40,7 @@ const SecurityKeyButton = ({
 
 const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch }) => {
   const sendConfirmCode = (phone) => {
-    dispatch(requestPhoneCode(phone));
+    dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
   };
 
   return extraSecurityPhone.map((phone) => {
@@ -93,14 +88,14 @@ function ExtraSecurity(props) {
       : frejaUrlDomain && frejaUrlDomain.concat("/");
 
   useEffect(() => {
-    dispatch(selectExtraSecurity(null));
-    dispatch(cancelWebauthnAssertion());
+    dispatch(resetPasswordActions.selectExtraSecurity(null));
+    dispatch(resetPasswordActions.cancelWebauthnAssertion());
     if (extra_security !== undefined) {
       if (Object.keys(extra_security).length > 0) {
         setExtraSecurity(extra_security);
       }
       if (!Object.keys(extra_security).length) {
-        dispatch(selectExtraSecurity("without"));
+        dispatch(resetPasswordActions.selectExtraSecurity("without"));
         history.push(`/reset-password/set-new-password/${emailCode}`);
       }
     }
@@ -111,20 +106,20 @@ function ExtraSecurity(props) {
       const message = window.location.search.split("=")[1];
       const emailCode = urlCode.split("?");
       if (message.includes("completed")) {
-        dispatch(selectExtraSecurity("freja"));
+        dispatch(resetPasswordActions.selectExtraSecurity("freja"));
         history.push(`/reset-password/set-new-password/${emailCode[0]}`);
       } else if (message.includes("%3AERROR%3A")) {
         const error = message.split("%3AERROR%3A")[1];
         dispatch(eduidNotify(error, "errors"));
         history.push(`/reset-password/extra-security/${emailCode[0]}`);
-        dispatch(saveLinkCode(emailCode[0]));
+        dispatch(resetPasswordActions.saveLinkCode(emailCode[0]));
       }
     }
   }, [emailCode, suggested_password]);
 
   const ShowSecurityKey = (e) => {
     e.preventDefault();
-    dispatch(selectExtraSecurity("securityKey"));
+    dispatch(resetPasswordActions.selectExtraSecurity("securityKey"));
     startTokenAssertion();
     dispatch(eduidRMAllNotify());
   };

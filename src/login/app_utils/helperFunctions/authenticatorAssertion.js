@@ -1,8 +1,5 @@
 import * as CBOR from "../../../sagas/cbor";
-import {
-  getWebauthnAssertion,
-  cancelWebauthnAssertion,
-} from "../../../login/redux/slices/resetPasswordSlice";
+import resetPasswordSlice from "../../redux/slices/resetPasswordSlice";
 
 // 1. Ask backend for a challenge
 // decode the challenge to use it
@@ -51,10 +48,12 @@ export const assertionFromAuthenticator = async (
     .then()
     .catch(() => {
       // assertion failed / cancled
-      dispatch(cancelWebauthnAssertion());
+      dispatch(resetPasswordSlice.actions.cancelWebauthnAssertion());
     });
   if (webauthnAssertion !== undefined) {
-    dispatch(getWebauthnAssertion(webauthnAssertion));
+    dispatch(
+      resetPasswordSlice.actions.getWebauthnAssertion(webauthnAssertion)
+    );
   }
 };
 

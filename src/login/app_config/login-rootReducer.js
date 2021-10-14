@@ -16,7 +16,7 @@ const eduIDLoginApp = combineReducers({
   router: routerReducer,
   form: formReducer,
   intl: intlReducer,
-  resetPassword: resetPasswordSlice,
+  resetPassword: resetPasswordSlice.reducer,
 });
 
 export default eduIDLoginApp;
