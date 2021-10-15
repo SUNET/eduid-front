@@ -1,0 +1,7 @@
+{
+    "high": true,
+    "allowlist": [
+        "1002475",
+        "serialize-javascript"
+    ]
+}
