@@ -22,6 +22,11 @@ export function* requestLinkCode() {
       yield put(putCsrfToken(decodedWebauthnChallenge));
       yield put(decodedWebauthnChallenge);
       // if API call successfully post data save it to store
+      if (
+        decodedWebauthnChallenge.type ===
+        "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
+      ) {
+      }
       yield put(
         resetPasswordSlice.actions.resetPasswordSagaSuccess(
           decodedWebauthnChallenge.payload
@@ -36,9 +41,7 @@ export function* requestLinkCode() {
         decodedWebauthnChallenge.type ===
           "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
       ) {
-        return history.push(
-          `/reset-password/extra-security/${data.email_code}`
-        );
+        history.push(`/reset-password/extra-security/${data.email_code}`);
       } else return history.push(`/reset-password/email`);
     } catch (error) {
       yield* failRequest(
