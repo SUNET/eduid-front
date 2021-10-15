@@ -2,7 +2,10 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUpdatedTouAcceptSaga } from "../../login/redux/sagas/login/postUpdatedTouAcceptSaga";
-import { updatedTouAccept, useLoginRef } from "../../login/redux/actions/loginActions";
+import {
+  updatedTouAccept,
+  useLoginRef,
+} from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {

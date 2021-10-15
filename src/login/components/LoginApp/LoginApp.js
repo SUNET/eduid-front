@@ -12,10 +12,10 @@ import SetNewPassword from "./ResetPassword/SetNewPassword";
 import PropTypes from "prop-types";
 import ResetPasswordSuccess from "./ResetPassword/ResetPasswordSuccess";
 
- const RenderResetPassword = (props) => {
-   return (
-     <>
-     <Route
+const RenderResetPassword = (props) => {
+  return (
+    <>
+      <Route
         exact
         path="/reset-password/"
         component={() => <Redirect to="/reset-password/email" />}
@@ -34,21 +34,21 @@ import ResetPasswordSuccess from "./ResetPassword/ResetPasswordSuccess";
         render={(props) => <ExtraSecurity {...props} />}
       />
       <Route
-         path="/reset-password/phone-code-sent"
-         render={(props) => <PhoneCodeSent {...props} />}
-       />
-       <Route
-         path="/reset-password/set-new-password"
-         render={(props) => <SetNewPassword {...props} />}
-       />
-        <Route
-          exact
-          path="/reset-password/success"
-          render={(props) => <ResetPasswordSuccess {...props} />}
-       />
-     </>
-   )
- };
+        path="/reset-password/phone-code-sent"
+        render={(props) => <PhoneCodeSent {...props} />}
+      />
+      <Route
+        path="/reset-password/set-new-password"
+        render={(props) => <SetNewPassword {...props} />}
+      />
+      <Route
+        exact
+        path="/reset-password/success"
+        render={(props) => <ResetPasswordSuccess {...props} />}
+      />
+    </>
+  );
+};
 
 const RenderLogin = (props) => {
   const dispatch = useDispatch();

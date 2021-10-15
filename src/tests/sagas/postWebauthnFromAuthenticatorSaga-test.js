@@ -3,7 +3,7 @@ import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postWebauthnFromAuthenticatorSaga } from "../../login/redux/sagas/login/postWebauthnFromAuthenticatorSaga";
 import { safeEncode } from "../../login/app_utils/helperFunctions/authenticatorAssertion";
-import {useLoginRef} from "../../login/redux/actions/loginActions";
+import { useLoginRef } from "../../login/redux/actions/loginActions";
 
 /* safeEncode() relies on the DOM, uncomment below to run test in file */
 // import { JSDOM } from "jsdom";
