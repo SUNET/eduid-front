@@ -6,7 +6,6 @@ name: Node.js CI
 on: [push, pull_request]
 
 jobs:
-
   unittests:
     runs-on: ubuntu-18.04
 
@@ -27,13 +26,16 @@ jobs:
       - name: Run tests
         run: |
           make test
-      
+
       - name: Audit production npm packages
         run: npm audit --production
 
       - name: Audit including devDependencies
         # Don't error out on audit warnings about devDependencies
         run: npm audit || true
-      
+
       - name: Run linters
         run: npm run lint
+
+      - name: Allowlist for audit vulnerabilities
+        run: npx audit-ci --config ./audit-ci.json
