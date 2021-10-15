@@ -41,7 +41,9 @@ export function* requestLinkCode() {
         decodedWebauthnChallenge.type ===
           "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
       ) {
-        history.push(`/reset-password/extra-security/${data.email_code}`);
+        return history.push(
+          `/reset-password/extra-security/${data.email_code}`
+        );
       } else return history.push(`/reset-password/email`);
     } catch (error) {
       yield* failRequest(
