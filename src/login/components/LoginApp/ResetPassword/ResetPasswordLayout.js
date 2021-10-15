@@ -1,5 +1,5 @@
 import React from "react";
-import { selectExtraSecurity } from "../../../redux/actions/postResetPasswordActions";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
@@ -8,7 +8,7 @@ const ResetPasswordLayout = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const continueSetPassword = () => {
-    dispatch(selectExtraSecurity("without"));
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     history.push(`/reset-password/set-new-password/${props.emailCode}`);
     dispatch(eduidRMAllNotify());
   };

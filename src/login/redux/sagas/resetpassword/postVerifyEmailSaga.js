@@ -1,11 +1,11 @@
 import { put, call, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
-import { postLinkCodeFail } from "../../actions/postResetPasswordActions";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import postRequest from "../postDataRequest";
 import { history } from "../../../components/App/App";
 import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
-export function* useLinkCode() {
+export function* requestLinkCode() {
   const state = yield select((state) => state);
   const url = state.config.reset_password_url + "verify-email/";
   const locationUrl = document.location.href;
@@ -21,6 +21,17 @@ export function* useLinkCode() {
       );
       yield put(putCsrfToken(decodedWebauthnChallenge));
       yield put(decodedWebauthnChallenge);
+      // if API call successfully post data save it to store
+      if (
+        decodedWebauthnChallenge.type ===
+        "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
+      ) {
+      }
+      yield put(
+        resetPasswordSlice.actions.resetPasswordSagaSuccess(
+          decodedWebauthnChallenge.payload
+        )
+      );
       if (locationUrl.includes("set-new-password")) {
         return history.push(
           `/reset-password/set-new-password/${data.email_code}`
@@ -35,7 +46,10 @@ export function* useLinkCode() {
         );
       } else return history.push(`/reset-password/email`);
     } catch (error) {
-      yield* failRequest(error, postLinkCodeFail(error));
+      yield* failRequest(
+        error,
+        resetPasswordSlice.actions.resetPasswordSagaFail(error)
+      );
     }
   }
 }

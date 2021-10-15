@@ -2,7 +2,6 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postSetNewPasswordExtraSecurityToken } from "../../login/redux/sagas/resetpassword/postSetNewPasswordExtraSecurityTokenSaga";
-import { setNewPasswordExtraSecurityTokenFail } from "../../login/redux/actions/postResetNewPasswordActions";
 import { safeEncode } from "../../login/app_utils/helperFunctions/authenticatorAssertion";
 
 const fakeState = {
@@ -100,7 +99,6 @@ describe(`first API call to "new-password-extra-security-token/" behaves as expe
     expect(next.value.PUT.action.type).toEqual(
       "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL"
     );
-    expect(failResponse).toEqual(setNewPasswordExtraSecurityTokenFail("error"));
   });
   it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL"`, () => {
     const done = generator.next().done;

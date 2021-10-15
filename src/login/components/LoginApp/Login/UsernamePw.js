@@ -8,7 +8,7 @@ import UsernamePwForm from "./UsernamePwForm";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
-import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
@@ -42,7 +42,7 @@ const RenderResetPasswordLink = ({ translate }) => {
       document.querySelector("input[name='email']").value;
     if (email) {
       if (emailPattern.test(email)) {
-        dispatch(postEmailLink(email));
+        dispatch(resetPasswordSlice.actions.requestEmailLink(email));
         setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
       } else history.push(`/reset-password/email/${loginRef}`);
     } else history.push(`/reset-password/email/${loginRef}`);

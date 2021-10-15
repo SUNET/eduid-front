@@ -2,7 +2,6 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postSetNewPasswordExternalMfa } from "../../login/redux/sagas/resetpassword/postSetNewPasswordExtraSecurityExternalMfaSaga";
-import { setNewPasswordExtraSecurityExternalMfaFail } from "../../login/redux/actions/postResetNewPasswordActions";
 
 const fakeState = {
   config: {
@@ -78,9 +77,6 @@ describe(`first API call to "new-password-extra-security-external-mfa/" behaves 
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(
       "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL"
-    );
-    expect(failResponse).toEqual(
-      setNewPasswordExtraSecurityExternalMfaFail("error")
     );
   });
   it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL"`, () => {

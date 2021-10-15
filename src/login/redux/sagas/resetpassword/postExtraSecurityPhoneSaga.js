@@ -1,7 +1,7 @@
 import { put, call, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { requestPhoneCodeFail } from "../../actions/postResetPasswordActions";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
@@ -11,7 +11,7 @@ import {
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { history } from "../../../components/App/App";
 
-export function* requestPhoneCode() {
+export function* requestPhoneCodeForNewPassword() {
   const state = yield select((state) => state);
   const url = state.config.reset_password_url + "extra-security-phone/";
   const locationUrl = document.location.href;
@@ -41,6 +41,9 @@ export function* requestPhoneCode() {
       }
     }
   } catch (error) {
-    yield* failRequest(error, requestPhoneCodeFail(error));
+    yield* failRequest(
+      error,
+      resetPasswordSlice.actions.resetPasswordSagaFail(error)
+    );
   }
 }

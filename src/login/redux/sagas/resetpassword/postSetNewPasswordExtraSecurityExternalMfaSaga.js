@@ -1,7 +1,7 @@
 import { put, call, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
-import { setNewPasswordExtraSecurityExternalMfaFail } from "../../actions/postResetNewPasswordActions";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
 import { history } from "../../../components/App/App";
 
 export function* postSetNewPasswordExternalMfa() {
@@ -27,7 +27,7 @@ export function* postSetNewPasswordExternalMfa() {
   } catch (error) {
     yield* failRequest(
       error,
-      setNewPasswordExtraSecurityExternalMfaFail(error)
+      resetPasswordSlice.actions.resetPasswordSagaFail(error)
     );
   }
 }

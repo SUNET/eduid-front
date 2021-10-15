@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { postEmailLink } from "../../../redux/actions/postResetPasswordActions";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import {
   getLocalStorage,
   countFiveMin,
@@ -18,7 +18,7 @@ function EmailLinkSent(props) {
   const sendLink = (e) => {
     e.preventDefault();
     if (email) {
-      dispatch(postEmailLink(email));
+      dispatch(resetPasswordSlice.actions.requestEmailLink(email));
     }
   };
 

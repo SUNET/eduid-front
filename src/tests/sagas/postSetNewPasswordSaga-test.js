@@ -2,7 +2,6 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postSetNewPassword } from "../../login/redux/sagas/resetpassword/postSetNewPasswordSaga";
-import { setNewPasswordFail } from "../../login/redux/actions/postResetNewPasswordActions";
 
 const fakeState = {
   config: {
@@ -76,7 +75,6 @@ describe(`first API call to "new-password/" behaves as expected on _FAIL`, () =>
     expect(next.value.PUT.action.type).toEqual(
       "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL"
     );
-    expect(failResponse).toEqual(setNewPasswordFail("error"));
   });
   it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL"`, () => {
     const done = generator.next().done;

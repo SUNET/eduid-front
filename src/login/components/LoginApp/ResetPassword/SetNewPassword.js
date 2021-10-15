@@ -7,14 +7,7 @@ import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
 import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
-import { saveLinkCode } from "../../../redux/actions/postResetPasswordActions";
-import {
-  storeNewPassword,
-  setNewPassword,
-  setNewPasswordExtraSecurityPhone,
-  setNewPasswordExtraSecurityToken,
-  setNewPasswordExtraSecurityExternalMfa,
-} from "../../../redux/actions/postResetNewPasswordActions";
+import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -127,7 +120,7 @@ function SetNewPassword(props) {
 
   useEffect(() => {
     setPassword(suggested_password);
-    dispatch(saveLinkCode(emailCode));
+    dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode));
   }, [suggested_password, dispatch]);
 
   // Change path to extra-security without selected option on reload
@@ -153,15 +146,17 @@ function SetNewPassword(props) {
   const clickSetNewPassword = (e) => {
     e.preventDefault();
     const newPassword = e.target["new-password"].value;
-    dispatch(storeNewPassword(newPassword));
+    dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
     if (!selected_option || selected_option === "without") {
-      dispatch(setNewPassword());
+      dispatch(resetPasswordSlice.actions.setNewPassword());
     } else if (selected_option === "phoneCode") {
-      dispatch(setNewPasswordExtraSecurityPhone());
+      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone());
     } else if (selected_option === "securityKey") {
-      dispatch(setNewPasswordExtraSecurityToken());
+      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken());
     } else if (selected_option === "freja") {
-      dispatch(setNewPasswordExtraSecurityExternalMfa());
+      dispatch(
+        resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa()
+      );
     }
   };
 
