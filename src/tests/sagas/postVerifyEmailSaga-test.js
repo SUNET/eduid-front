@@ -73,6 +73,6 @@ describe(`first API call to "/verify-email/" behaves as expected on _FAIL`, () =
   });
   it("done after 'POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL'", () => {
     const done = generator.next().done;
-    expect(done).toEqual(false);
+    expect(done).toEqual(true);
   });
 });
