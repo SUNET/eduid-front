@@ -9,7 +9,6 @@ import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import { addWebauthnAssertion } from "../../../redux/actions/addDataToStoreActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
-
 const assertionFromAuthenticator = async (
   webauthn_challenge,
   dispatch,
@@ -42,7 +41,6 @@ let CloseButton = ({ setSelected }) => {
   );
 };
 
-
 let RetryButton = ({ retryToggle, setRetryToggle }) => {
   const dispatch = useDispatch();
   return (
@@ -58,7 +56,6 @@ let RetryButton = ({ retryToggle, setRetryToggle }) => {
   );
 };
 
-
 let SecurityKeyUnselected = ({ translate, setSelected }) => {
   const webauthn_challenge = useSelector(
     (state) => state.login.mfa.webauthn_challenge
@@ -71,19 +68,19 @@ let SecurityKeyUnselected = ({ translate, setSelected }) => {
     e.preventDefault();
     startTokenAssertion(setSelected);
   };
-  
+
   const startTokenAssertion = (setSelected) => {
-   setSelected(true);
-   if (webauthn_challenge === null) {
+    setSelected(true);
+    if (webauthn_challenge === null) {
       // HACK: skip func if no webauthn_challenge
       return undefined;
     } else {
       if (webauthn_assertion === null) {
         assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
-      } 
+      }
     }
   };
-  
+
   return (
     <Fragment>
       <p className="heading">{translate("login.mfa.primary-option.title")}</p>
@@ -107,21 +104,23 @@ let SecurityKey = (props) => {
       <div className="option">
         {selected ? (
           <>
-          <div className="button-pair selected">
-            <p className="heading">{translate("login.mfa.primary-option.title")}</p>
-            <CloseButton setSelected={setSelected} />
-          </div>
-          <div className="button-pair bottom">
-            <img
-              src={SecurityKeyGif}
-              alt="animation of security key inserted into computer"
-            />
-            <RetryButton
-              retryToggle={retryToggle}
-              setRetryToggle={setRetryToggle}
-            />
-          </div>
-        </>
+            <div className="button-pair selected">
+              <p className="heading">
+                {translate("login.mfa.primary-option.title")}
+              </p>
+              <CloseButton setSelected={setSelected} />
+            </div>
+            <div className="button-pair bottom">
+              <img
+                src={SecurityKeyGif}
+                alt="animation of security key inserted into computer"
+              />
+              <RetryButton
+                retryToggle={retryToggle}
+                setRetryToggle={setRetryToggle}
+              />
+            </div>
+          </>
         ) : (
           <SecurityKeyUnselected setSelected={setSelected} {...props} />
         )}

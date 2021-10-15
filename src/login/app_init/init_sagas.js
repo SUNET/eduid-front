@@ -1,8 +1,5 @@
 import { put, call } from "redux-saga/effects";
-import {
-  checkStatus,
-  getRequest
-} from "../../sagas/common";
+import { checkStatus, getRequest } from "../../sagas/common";
 import * as init_actions from "./init_actions";
 import * as app_actions from "../components/App/App_actions";
 
@@ -19,12 +16,12 @@ export function* requestConfig() {
 export function fetchConfig(url) {
   const request = {
     ...getRequest,
-    redirect: "follow"
+    redirect: "follow",
   };
   return window
     .fetch(url, {
-      ...request
+      ...request,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

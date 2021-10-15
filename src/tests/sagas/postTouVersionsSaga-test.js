@@ -23,7 +23,7 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
     const dataToSend = {
       ref: fakeState.login.ref,
       csrf_token: fakeState.config.csrf_token,
-      versions: testTouVersions.toString(),  // TODO: backend should be changed to expect an array, and toString removed
+      versions: testTouVersions.toString(), // TODO: backend should be changed to expect an array, and toString removed
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;

@@ -17,7 +17,7 @@ export function* postRefForWebauthnChallengeSaga() {
     const decodedChallenge = mfaDecodeMiddleware(encodedChallenge);
     yield put(putCsrfToken(decodedChallenge));
     yield put(decodedChallenge);
-    if (decodedChallenge.payload.finished){
+    if (decodedChallenge.payload.finished) {
       yield put(useLoginRef());
     }
   } catch (error) {

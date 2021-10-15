@@ -7,9 +7,7 @@ import { loginSagaFail } from "../../../redux/actions/loginActions";
 const SubmitSamlResponse = () => {
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
-  const SAMLParameters = useSelector(
-    (state) => state.login.saml_parameters
-  );
+  const SAMLParameters = useSelector((state) => state.login.saml_parameters);
   const targetUrl = useSelector((state) => state.login.post_to);
   useEffect(() => {
     if (
@@ -28,8 +26,16 @@ const SubmitSamlResponse = () => {
     <Fragment>
       {error ? null : <Splash />}
       <form action={targetUrl} method="post">
-        <input type="hidden" name="SAMLResponse" value={SAMLParameters.SAMLResponse} />
-        <input type="hidden" name="RelayState" value={SAMLParameters.RelayState} />
+        <input
+          type="hidden"
+          name="SAMLResponse"
+          value={SAMLParameters.SAMLResponse}
+        />
+        <input
+          type="hidden"
+          name="RelayState"
+          value={SAMLParameters.RelayState}
+        />
         <noscript>
           <input type="submit" value="Continue" />
         </noscript>
