@@ -174,7 +174,7 @@
   "letter.no_state_found": "No state found",
   "letter.placeholder": "Letter confirmation code",
   "letter.resend_code": "Send code",
-  "letter.saved-unconfirmed": "A letter is on it's way to your house",
+  "letter.saved-unconfirmed": "A letter with confirmation code has been sent.",
   "letter.verification_success": "Successfully verified national id number",
   "letter.verify_title": "Add the code you have received by post",
   "letter.wrong-code": "Incorrect verification code",

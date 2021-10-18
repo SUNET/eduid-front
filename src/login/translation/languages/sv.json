@@ -174,7 +174,7 @@
   "letter.no_state_found": "Ingen pågående bekräftning hittades",
   "letter.placeholder": "Bekräftelsekod",
   "letter.resend_code": "Skicka bekräftelsekoden igen",
-  "letter.saved-unconfirmed": "Overifierat personnummer sparat",
+  "letter.saved-unconfirmed": "Ett brev med bekräftelsekod har skickats.",
   "letter.verification_success": "Personnumret är bekräftat",
   "letter.verify_title": "Skriv in koden du fått hemskickad",
   "letter.wrong-code": "Den bekräftelsekod du angett stämmer inte. Var god försök igen",
