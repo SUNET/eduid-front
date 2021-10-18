@@ -2,7 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postTouVersionsSaga } from "../../login/redux/sagas/login/postTouVersionsSaga";
-import { postTouVersions } from "../../login/redux/actions/loginActions";
+import loginSlice from "../../login/redux/slices/loginSlice";
 
 const fakeState = {
   config: {
@@ -14,7 +14,7 @@ const fakeState = {
   },
 };
 const testTouVersions = ["2016-v1", "2021-v1"];
-const action = postTouVersions(testTouVersions);
+const action = loginSlice.actions.postTouVersions(testTouVersions);
 
 describe("first API call to /tou behaves as expected on _SUCCESS", () => {
   const generator = postTouVersionsSaga(action);

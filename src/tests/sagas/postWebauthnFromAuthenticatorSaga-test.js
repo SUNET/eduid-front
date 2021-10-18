@@ -3,8 +3,7 @@ import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postWebauthnFromAuthenticatorSaga } from "../../login/redux/sagas/login/postWebauthnFromAuthenticatorSaga";
 import { safeEncode } from "../../login/app_utils/helperFunctions/authenticatorAssertion";
-import { useLoginRef } from "../../login/redux/actions/loginActions";
-
+import loginSlice from "../../login/redux/slices/loginSlice";
 /* safeEncode() relies on the DOM, uncomment below to run test in file */
 // import { JSDOM } from "jsdom";
 // const mockDom = `<!doctype html><html><body></body></html>`;
@@ -66,7 +65,9 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
   });
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(useLoginRef.toString());
+    expect(next.value.PUT.action.type).toEqual(
+      loginSlice.actions.useLoginRef.toString()
+    );
   });
   it("done after 'POST_IDP_MFA_AUTH_SUCCESS'", () => {
     const done = generator.next().done;

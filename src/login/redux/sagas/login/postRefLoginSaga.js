@@ -2,6 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../actions/loginActions";
+import loginSlice from "../../slices/loginSlice";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 // Call the /next endpoint to see what the backend requires us to do to proceed with this login.
@@ -17,6 +18,7 @@ export function* postRefLoginSaga() {
     yield put(putCsrfToken(response));
     yield put(response);
     if (response.type.endsWith("_SUCCESS")) {
+      yield put(loginSlice.actions.postIdpNextSuccess(response.payload));
       yield put(eduidRMAllNotify());
     }
   } catch (error) {

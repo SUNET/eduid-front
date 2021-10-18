@@ -2,10 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUpdatedTouAcceptSaga } from "../../login/redux/sagas/login/postUpdatedTouAcceptSaga";
-import {
-  updatedTouAccept,
-  useLoginRef,
-} from "../../login/redux/actions/loginActions";
+import loginSlice from "../../login/redux/slices/loginSlice";
 
 const fakeState = {
   config: {
@@ -18,7 +15,7 @@ const fakeState = {
 };
 
 const testTouVersion = "2016-v1";
-const action = updatedTouAccept(testTouVersion);
+const action = loginSlice.actions.updatedTouAccept(testTouVersion);
 
 describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   const generator = postUpdatedTouAcceptSaga(action);
@@ -49,7 +46,9 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   });
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(useLoginRef.toString());
+    expect(next.value.PUT.action.type).toEqual(
+      loginSlice.actions.useLoginRef.toString()
+    );
   });
   it("done after 'useLoginRef'", () => {
     const done = generator.next().done;
