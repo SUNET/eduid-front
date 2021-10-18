@@ -2,10 +2,11 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUsernamePasswordSaga } from "../../login/redux/sagas/login/postUsernamePasswordSaga";
-import {
-  postUsernamePassword,
-  useLoginRef,
-} from "../../login/redux/actions/loginActions";
+import loginSlice from "../../login/redux/slices/loginSlice";
+// import {
+//   postUsernamePassword,
+//   useLoginRef,
+// } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
@@ -19,7 +20,10 @@ const fakeState = {
 
 const testUsername = "test_username";
 const testPassword = "test_password";
-const action = postUsernamePassword(testUsername, testPassword);
+const action = loginSlice.actions.postUsernamePassword(
+  testUsername,
+  testPassword
+);
 
 const successResponse = {
   type: "POST_IDP_PW_AUTH_SUCCESS",
@@ -63,7 +67,9 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
   });
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(useLoginRef.toString());
+    expect(next.value.PUT.action.type).toEqual(
+      loginSlice.actions.useLoginRef.toString()
+    );
   });
   it("done after 'LOAD_DATA_COMPLETE'", () => {
     next = generator.next();
