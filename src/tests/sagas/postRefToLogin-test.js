@@ -40,6 +40,8 @@ describe("API call to /next behaves as expected on _SUCCESS", () => {
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_NEXT_SUCCESS");
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual("login/postIdpNextSuccess");
   });
   it("_SUCCESS response removes success notification", () => {
     next = generator.next();
