@@ -2,7 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import { mfaDecodeMiddleware } from "../../../app_utils/helperFunctions/authenticatorAssertion";
-import { loginSagaFail, useLoginRef } from "../../actions/loginActions";
+import loginSlice from "../../slices/loginSlice";
 
 // Saga to get a webauthn challenge from the /mfa_auth endpoint.
 export function* postRefForWebauthnChallengeSaga() {
@@ -18,9 +18,14 @@ export function* postRefForWebauthnChallengeSaga() {
     yield put(putCsrfToken(decodedChallenge));
     yield put(decodedChallenge);
     if (decodedChallenge.payload.finished) {
-      yield put(useLoginRef());
+      yield put(loginSlice.actions.useLoginRef(state.login.ref));
+    }
+    if (decodedChallenge.type.endsWith("_SUCCESS")) {
+      yield put(
+        loginSlice.actions.postIdpMfaAuthSuccess(decodedChallenge.payload)
+      );
     }
   } catch (error) {
-    yield put(loginSagaFail(error.toString()));
+    yield put(loginSlice.actions.loginSagaFail(error.toString()));
   }
 }
