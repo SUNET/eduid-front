@@ -1,7 +1,7 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
-import { loginSagaFail, useLoginRef } from "../../actions/loginActions";
+import loginSlice from "../../slices/loginSlice";
 import {
   loadingData,
   loadingDataComplete,
@@ -13,8 +13,8 @@ export function* postUsernamePasswordSaga(action) {
   const dataToSend = {
     ref: state.login.ref,
     csrf_token: state.config.csrf_token,
-    username: action.payload.username,
-    password: action.payload.password,
+    username: action.payload.email,
+    password: action.payload.currentPassword,
   };
   try {
     yield put(loadingData());
@@ -22,10 +22,10 @@ export function* postUsernamePasswordSaga(action) {
     yield put(putCsrfToken(response));
     yield put(response);
     if (response.payload.finished) {
-      yield put(useLoginRef());
+      yield put(loginSlice.actions.useLoginRef(state.login.ref));
     }
   } catch (error) {
-    yield put(loginSagaFail(error.toString()));
+    yield put(loginSlice.actions.loginSagaFail(error.toString()));
   } finally {
     yield put(loadingDataComplete());
   }
