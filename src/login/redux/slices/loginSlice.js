@@ -52,9 +52,8 @@ export const loginSlice = createSlice({
       ...state,
       ...action.payload,
     }),
-    postUsernamePassword: (state, { payload }) => ({
+    postUsernamePassword: (state) => ({
       ...state,
-      payload,
     }),
     postTouVersions: (state, action) => ({ ...state, ...action.payload }),
     postRefForWebauthnChallenge: (state, action) => ({
