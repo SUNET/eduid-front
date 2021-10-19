@@ -45,7 +45,7 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("login/postIdpTouSuccess");
   });
-  it("done after 'POST_IDP_TOU_SUCCESS'", () => {
+  it("done after 'POST_IDP_TOU_SUCCESS' and 'login/postIdpTouSuccess'  ", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
