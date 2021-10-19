@@ -3,10 +3,6 @@ import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUsernamePasswordSaga } from "../../login/redux/sagas/login/postUsernamePasswordSaga";
 import loginSlice from "../../login/redux/slices/loginSlice";
-// import {
-//   postUsernamePassword,
-//   useLoginRef,
-// } from "../../login/redux/actions/loginActions";
 
 const fakeState = {
   config: {
