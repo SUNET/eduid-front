@@ -28,11 +28,11 @@ jobs:
           make test
 
       - name: Audit production npm packages
-        run: npm audit --production
+        run: npx audit-ci --skip-dev --config audit-ci.json
 
       - name: Audit including devDependencies
         # Don't error out on audit warnings about devDependencies
-        run: npm audit || true
+        run: npx audit-ci --config audit-ci.json || true
 
       - name: Run linters
         run: npm run lint

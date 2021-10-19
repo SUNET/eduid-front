@@ -26,12 +26,12 @@ export function* requestLinkCode() {
         decodedWebauthnChallenge.type ===
         "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
       ) {
+        yield put(
+          resetPasswordSlice.actions.resetPasswordSagaSuccess(
+            decodedWebauthnChallenge.payload
+          )
+        );
       }
-      yield put(
-        resetPasswordSlice.actions.resetPasswordSagaSuccess(
-          decodedWebauthnChallenge.payload
-        )
-      );
       if (locationUrl.includes("set-new-password")) {
         return history.push(
           `/reset-password/set-new-password/${data.email_code}`

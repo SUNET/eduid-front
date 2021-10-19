@@ -334,7 +334,7 @@ export const userVetting = {
   "letter.saved-unconfirmed": (
     <FormattedMessage
       id="letter.saved-unconfirmed"
-      defaultMessage={`A letter is on it's way to your house`}
+      defaultMessage={`A letter with confirmation code has been sent.`}
     />
   ),
 
