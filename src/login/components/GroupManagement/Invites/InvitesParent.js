@@ -14,11 +14,7 @@ const RenderEditInviteText = () => (
   </div>
 );
 
-const InvitesParent = ({
-  groupsWithInvites,
-  allInvitesFromMe,
-  group,
-}) => {
+const InvitesParent = ({ groupsWithInvites, allInvitesFromMe, group }) => {
   let { identifier } = group;
   let groupHasInvites = groupsWithInvites.includes(identifier);
   const navId = useSelector((state) => state.groups.navId);
@@ -30,10 +26,7 @@ const InvitesParent = ({
         <CreateInvite groupId={identifier} />
       )}
       {groupHasInvites && (
-        <InvitesList
-          groupId={identifier}
-          allInvitesFromMe={allInvitesFromMe}
-        />
+        <InvitesList groupId={identifier} allInvitesFromMe={allInvitesFromMe} />
       )}
     </div>
   );

@@ -29,12 +29,12 @@ class GroupParent extends Component {
   }
 
   toggleGroupsListOrEditGroup = (groupData) => {
-      this.setState((prevState) => {
-        return {
-          editGroup: !prevState.editGroup,
-          group: groupData,
-        };
-      });
+    this.setState((prevState) => {
+      return {
+        editGroup: !prevState.editGroup,
+        group: groupData,
+      };
+    });
   };
 
   render() {
