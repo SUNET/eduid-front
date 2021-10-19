@@ -8,22 +8,16 @@ import { postRefForWebauthnChallengeSaga } from "../login/postRefForWebauthnChal
 import { postWebauthnFromAuthenticatorSaga } from "../login/postWebauthnFromAuthenticatorSaga";
 
 const loginSagas = [
-  takeLatest(loginSlice.actions.useLoginRef.type, postRefLoginSaga),
+  takeLatest(loginSlice.actions.useLoginRef, postRefLoginSaga),
+  takeLatest(loginSlice.actions.postUsernamePassword, postUsernamePasswordSaga),
+  takeLatest(loginSlice.actions.postTouVersions, postTouVersionsSaga),
+  takeLatest(loginSlice.actions.updatedTouAccept, postUpdatedTouAcceptSaga),
   takeLatest(
-    loginSlice.actions.postUsernamePassword.type,
-    postUsernamePasswordSaga
-  ),
-  takeLatest(loginSlice.actions.postTouVersions.type, postTouVersionsSaga),
-  takeLatest(
-    loginSlice.actions.updatedTouAccept.type,
-    postUpdatedTouAcceptSaga
-  ),
-  takeLatest(
-    loginSlice.actions.postRefForWebauthnChallenge.type,
+    loginSlice.actions.postRefForWebauthnChallenge,
     postRefForWebauthnChallengeSaga
   ),
   takeLatest(
-    loginSlice.actions.addWebauthnAssertion.type,
+    loginSlice.actions.addWebauthnAssertion,
     postWebauthnFromAuthenticatorSaga
   ),
   takeLatest("POST_IDP_MFA_AUTH_FAIL", postRefForWebauthnChallengeSaga),
