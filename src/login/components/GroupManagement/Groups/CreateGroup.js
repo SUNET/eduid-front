@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import GroupNameForm from "../GroupNameForm";
+import * as createGroupActions from "../../../redux/actions/createGroupActions";
+import { useDispatch } from "react-redux";
 
 export const CloseButton = () => (
   <svg
@@ -17,6 +19,7 @@ export const CloseButton = () => (
 );
 
 const RenderWizardOrCreateGroupHeading = (props) => {
+  const dispatch = useDispatch();
   return (
     <Fragment>
       <p>
@@ -26,7 +29,7 @@ const RenderWizardOrCreateGroupHeading = (props) => {
         onClick={
           props.hasNoGroups
             ? () => console.log("This will expand a minimised wizard")
-            : props.handleCloseCreateGroup
+            : dispatch(createGroupActions.closeCreateGroup())
         }
       >
         <CloseButton />
