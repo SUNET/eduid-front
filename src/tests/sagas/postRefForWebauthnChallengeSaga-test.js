@@ -38,8 +38,10 @@ describe("first API call to /mfa_auth behaves as expected on _SUCCESS", () => {
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_IDP_MFA_AUTH_SUCCESS");
+    next = generator.next();
+    expect(next.value.PUT.action.type).toEqual("login/postIdpMfaAuthSuccess");
   });
-  it("done after 'POST_IDP_MFA_AUTH_SUCCESS'", () => {
+  it("done after 'POST_IDP_MFA_AUTH_SUCCESS'/ 'login/postIdpMfaAuthSuccess'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

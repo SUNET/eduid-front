@@ -52,8 +52,8 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
     const dataToSend = {
       ref: fakeState.login.ref,
       csrf_token: fakeState.config.csrf_token,
-      username: testUsername,
-      password: testPassword,
+      username: action.payload.testUsername,
+      password: action.payload.testPassword,
     };
     const url = fakeState.login.post_to;
     const apiCall = generator.next(fakeState).value;
