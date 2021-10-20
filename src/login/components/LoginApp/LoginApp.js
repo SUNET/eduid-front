@@ -58,7 +58,7 @@ const RenderLogin = (props) => {
   useEffect(() => {
     // dispatch action when next_url is available and no error message
     errorMessage.length === 0 && next_url !== null
-      ? dispatch(loginSlice.actions.useLoginRef(ref))
+      ? dispatch(loginSlice.actions.callLoginNext(ref))
       : undefined;
   }, [next_url]);
   return <Route path={`/login/`} render={(props) => <Login {...props} />} />;

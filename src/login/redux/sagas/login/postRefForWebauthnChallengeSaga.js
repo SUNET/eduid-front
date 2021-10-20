@@ -18,7 +18,7 @@ export function* postRefForWebauthnChallengeSaga() {
     yield put(putCsrfToken(decodedChallenge));
     yield put(decodedChallenge);
     if (decodedChallenge.payload.finished) {
-      yield put(loginSlice.actions.useLoginRef());
+      yield put(loginSlice.actions.callLoginNext());
     }
     if (decodedChallenge.type.endsWith("_SUCCESS")) {
       yield put(

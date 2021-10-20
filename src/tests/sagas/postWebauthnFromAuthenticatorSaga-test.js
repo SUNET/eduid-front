@@ -66,7 +66,7 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(
-      loginSlice.actions.useLoginRef.toString()
+      loginSlice.actions.callLoginNext.toString()
     );
   });
   it("done after 'POST_IDP_MFA_AUTH_SUCCESS'", () => {

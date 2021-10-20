@@ -8,7 +8,7 @@ import { postRefForWebauthnChallengeSaga } from "../login/postRefForWebauthnChal
 import { postWebauthnFromAuthenticatorSaga } from "../login/postWebauthnFromAuthenticatorSaga";
 
 const loginSagas = [
-  takeLatest(loginSlice.actions.useLoginRef, postRefLoginSaga),
+  takeLatest(loginSlice.actions.callLoginNext, postRefLoginSaga),
   takeLatest(loginSlice.actions.postUsernamePassword, postUsernamePasswordSaga),
   takeLatest(loginSlice.actions.postTouVersions, postTouVersionsSaga),
   takeLatest(loginSlice.actions.updatedTouAccept, postUpdatedTouAcceptSaga),

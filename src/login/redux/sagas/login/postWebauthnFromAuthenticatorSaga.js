@@ -23,7 +23,7 @@ export function* postWebauthnFromAuthenticatorSaga() {
     yield put(putCsrfToken(response));
     yield put(response);
     if (response.payload.finished) {
-      yield put(loginSlice.actions.useLoginRef());
+      yield put(loginSlice.actions.callLoginNext());
     }
   } catch (error) {
     yield put(loginSlice.actions.loginSagaFail(error.toString()));

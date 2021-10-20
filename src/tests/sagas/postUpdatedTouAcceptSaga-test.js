@@ -47,10 +47,10 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(
-      loginSlice.actions.useLoginRef.toString()
+      loginSlice.actions.callLoginNext.toString()
     );
   });
-  it("done after 'useLoginRef'", () => {
+  it("done after 'callLoginNext'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
