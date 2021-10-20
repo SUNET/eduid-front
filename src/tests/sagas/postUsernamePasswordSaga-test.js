@@ -65,7 +65,7 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
   });
-  it("done after 'LOAD_DATA_COMPLETE'  ", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -93,7 +93,7 @@ describe("API call to /pw_auth behaves as expected on _FAIL", () => {
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });
-  it("done after 'LOAD_DATA_COMPLETE'", () => {
+  it("done", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
     const done = generator.next().done;

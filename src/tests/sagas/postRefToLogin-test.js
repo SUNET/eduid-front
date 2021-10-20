@@ -47,7 +47,7 @@ describe("API call to /next behaves as expected on _SUCCESS", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("RM_ALL_NOTIFICATION");
   });
-  it("done after 'RM_ALL_NOTIFICATION'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -79,7 +79,7 @@ describe("API call to /next behaves as expected on _FAIL", () => {
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });
-  it("done after 'POST_IDP_NEXT_FAIL'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

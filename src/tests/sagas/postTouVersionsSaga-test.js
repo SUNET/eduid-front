@@ -43,7 +43,7 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("login/postIdpTouSuccess");
   });
-  it("done after 'login/postIdpTouSuccess'  ", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -76,7 +76,7 @@ describe("first API call to /tou behaves as expected on _FAIL", () => {
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });
-  it("done after 'POST_IDP_TOU_FAIL'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

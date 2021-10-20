@@ -65,7 +65,7 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
       loginSlice.actions.callLoginNext.toString()
     );
   });
-  it("done after 'login/callLoginNext'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -103,7 +103,7 @@ describe("second API call to /mfa behaves as expected on _FAIL", () => {
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });
-  it("done after 'POST_WEBAUTHN_ASSERTION_FAIL'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

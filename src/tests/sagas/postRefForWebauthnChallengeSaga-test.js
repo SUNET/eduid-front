@@ -40,7 +40,7 @@ describe("first API call to /mfa_auth behaves as expected on _SUCCESS", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(successResponse.type);
   });
-  it("done after 'login/postIdpMfaAuthSuccess'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -72,7 +72,7 @@ describe("first API call to /mfa behaves as expected on _FAIL", () => {
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });
-  it("done after 'POST_IDP_MFA_AUTH_FAIL'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
