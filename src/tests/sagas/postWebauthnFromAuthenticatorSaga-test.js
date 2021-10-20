@@ -51,7 +51,7 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_MFA_AUTH_SUCCESS",
+      type: loginSlice.actions.postIdpMfaAuthSuccess.toString(),
       payload: {
         csrf_token: "csrf-token",
         message: "success",
