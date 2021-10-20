@@ -45,9 +45,7 @@ export const loginSlice = createSlice({
       // TODO: if action.payload.finished is true there won't be a challenge in the payload.
       state.mfa.webauthn_challenge = action.payload.webauthn_options;
     },
-    callLoginNext: (state) => ({
-      ...state,
-    }),
+    callLoginNext: () => {},
     loginSagaFail: (state, action) => ({
       ...state,
       ...action.payload,
@@ -56,10 +54,7 @@ export const loginSlice = createSlice({
       ...state,
     }),
     postTouVersions: (state, action) => ({ ...state, ...action.payload }),
-    postRefForWebauthnChallenge: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
+    postRefForWebauthnChallenge: () => {},
     updatedTouAccept: (state, action) => ({
       ...state,
       ...action.payload,
