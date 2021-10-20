@@ -32,21 +32,16 @@ const RenderInvitesToMe = (props) => {
 
 const RenderCreateGroupOrGroupData = (props) => {
   const groupsData = useSelector((state) => state.groups.data);
-
-  // check if user has groups
-  let hasNoGroups = "";
-  if (groupsData !== undefined) {
-    hasNoGroups = groupsData.length === 0;
-  }
   const createGroup = useSelector((state) => state.groups.createGroup);
   const loading = useSelector((state) => state.groups.loading);
   return (
     <>
       {loading ? (
         <p>Loading...</p>
-      ) : createGroup || hasNoGroups ? (
+      ) : createGroup ||
+        (groupsData !== undefined && groupsData.length === 0) ? (
         <CreateGroup {...props} />
-      ) : hasNoGroups ? (
+      ) : groupsData.length ? (
         <GroupsParent {...props} />
       ) : null}
     </>
