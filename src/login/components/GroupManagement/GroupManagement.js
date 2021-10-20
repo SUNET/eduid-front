@@ -42,7 +42,7 @@ const RenderCreateGroupOrGroupData = (props) => {
         (groupsData !== undefined && groupsData.length === 0) ? (
         <CreateGroup {...props} />
       ) : groupsData.length ? (
-        <GroupsParent {...props} />
+        <GroupsParent groupsData={groupsData} {...props} />
       ) : null}
     </>
   );
