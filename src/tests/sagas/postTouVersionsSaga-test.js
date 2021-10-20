@@ -31,7 +31,7 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_TOU_SUCCESS",
+      type: loginSlice.actions.postIdpTouSuccess.toString(),
       payload: {
         csrf_token: "csrf-token",
         version: "2016-v1",
@@ -41,7 +41,7 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("login/postIdpTouSuccess");
+    expect(next.value.PUT.action.type).toEqual(successResponse.type);
   });
   it("done", () => {
     const done = generator.next().done;

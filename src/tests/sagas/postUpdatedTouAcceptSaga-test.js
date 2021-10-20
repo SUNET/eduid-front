@@ -32,7 +32,7 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_TOU_SUCCESS",
+      type: loginSlice.actions.postIdpTouSuccess.toString(),
       payload: {
         csrf_token: "csrf-token",
         message: "success",

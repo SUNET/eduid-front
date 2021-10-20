@@ -4,6 +4,7 @@ import { addLocaleData } from "react-intl";
 addLocaleData("react-intl/locale-data/en");
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postRefLoginSaga } from "../../login/redux/sagas/login/postRefLoginSaga";
+import loginSlice from "../../login/redux/slices/loginSlice";
 
 const fakeState = {
   config: {
@@ -30,7 +31,7 @@ describe("API call to /next behaves as expected on _SUCCESS", () => {
 
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_NEXT_SUCCESS",
+      type: loginSlice.actions.postIdpNextSuccess.toString(),
       payload: {
         csrf_token: "csrf-token",
         message: "success",
@@ -39,9 +40,7 @@ describe("API call to /next behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_NEXT_SUCCESS");
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("login/postIdpNextSuccess");
+    expect(next.value.PUT.action.type).toEqual(successResponse.type);
   });
   it("_SUCCESS response removes success notification", () => {
     next = generator.next();
