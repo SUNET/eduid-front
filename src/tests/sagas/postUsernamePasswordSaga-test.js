@@ -58,18 +58,14 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
   it("_SUCCESS response is followed by the expected action types", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_PW_AUTH_SUCCESS");
   });
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      loginSlice.actions.callLoginNext.toString()
-    );
-  });
-  it("done after 'LOAD_DATA_COMPLETE'", () => {
+    expect(next.value.PUT.action.type).toEqual("login/callLoginNext");
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
+  });
+  it("done after 'LOAD_DATA_COMPLETE'  ", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

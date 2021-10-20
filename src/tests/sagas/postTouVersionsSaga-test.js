@@ -41,11 +41,9 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_SUCCESS");
-    next = generator.next();
     expect(next.value.PUT.action.type).toEqual("login/postIdpTouSuccess");
   });
-  it("done after 'POST_IDP_TOU_SUCCESS' and 'login/postIdpTouSuccess'  ", () => {
+  it("done after 'login/postIdpTouSuccess'  ", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

@@ -27,7 +27,7 @@ describe("first API call to /mfa_auth behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_MFA_AUTH_SUCCESS",
+      type: "login/postIdpMfaAuthSuccess",
       payload: {
         csrf_token: "csrf-token",
         message: "success",
@@ -37,11 +37,9 @@ describe("first API call to /mfa_auth behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_MFA_AUTH_SUCCESS");
-    next = generator.next();
     expect(next.value.PUT.action.type).toEqual("login/postIdpMfaAuthSuccess");
   });
-  it("done after 'POST_IDP_MFA_AUTH_SUCCESS' and 'login/postIdpMfaAuthSuccess'", () => {
+  it("done after 'login/postIdpMfaAuthSuccess'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

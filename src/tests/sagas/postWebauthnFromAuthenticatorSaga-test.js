@@ -61,15 +61,11 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_MFA_AUTH_SUCCESS");
-  });
-  it("{finished: true} fires api call to /next loop ", () => {
-    next = generator.next();
     expect(next.value.PUT.action.type).toEqual(
       loginSlice.actions.callLoginNext.toString()
     );
   });
-  it("done after 'POST_IDP_MFA_AUTH_SUCCESS'", () => {
+  it("done after 'login/callLoginNext'", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
