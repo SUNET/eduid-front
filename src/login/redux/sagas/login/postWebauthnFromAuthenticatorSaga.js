@@ -21,9 +21,13 @@ export function* postWebauthnFromAuthenticatorSaga() {
   try {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
-    yield put(response);
     if (response.payload.finished) {
       yield put(loginSlice.actions.callLoginNext());
+    }
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
     }
   } catch (error) {
     yield put(loginSlice.actions.loginSagaFail(error.toString()));

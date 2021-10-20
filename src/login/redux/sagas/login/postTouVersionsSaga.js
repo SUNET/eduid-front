@@ -15,10 +15,12 @@ export function* postTouVersionsSaga(action) {
   try {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
-    yield put(response);
-    if (response.type.endsWith("_SUCCESS")) {
-      yield put(loginSlice.actions.postIdpTouSuccess(response.payload));
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
     }
+    yield put(loginSlice.actions.postIdpTouSuccess(response.payload));
   } catch (error) {
     yield put(loginSlice.actions.loginSagaFail(error.toString()));
   }
