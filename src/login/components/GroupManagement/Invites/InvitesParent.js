@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import CreateInvite from "./CreateInviteContainer";
+import CreateInvite from "./CreateInvite";
 import InvitesList from "./InvitesList";
 
 const RenderEditInviteText = () => (
