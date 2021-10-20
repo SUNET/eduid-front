@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CreateInviteForm from "./CreateInviteForm.js";
 
-class CreateInvite extends Component {
-  handleCreateInvite = (e) => {
+function CreateInvite(props) {
+  const handleCreateInvite = (e) => {
     e.preventDefault();
     const {
       groupId,
@@ -11,7 +11,7 @@ class CreateInvite extends Component {
       inviteRoles,
       createInviteMember,
       createInviteOwner,
-    } = this.props;
+    } = props;
     // endpoint takes one role per invite
     if (inviteRoles.length > 1) {
       createInviteMember(groupId, inviteEmail);
@@ -25,21 +25,16 @@ class CreateInvite extends Component {
     }
   };
 
-  render() {
-    return (
-      <div className="create-invite">
-        <h3>Invite people to your group</h3>
-        <p>
-          Add an email address and set a membership to invite anyone to join
-          your group.
-        </p>
-        <CreateInviteForm
-          {...this.props}
-          handleSubmit={this.handleCreateInvite}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="create-invite">
+      <h3>Invite people to your group</h3>
+      <p>
+        Add an email address and set a membership to invite anyone to join your
+        group.
+      </p>
+      <CreateInviteForm {...props} handleSubmit={handleCreateInvite} />
+    </div>
+  );
 }
 
 // CreateInvite.propTypes = {};
