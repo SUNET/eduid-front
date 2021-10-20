@@ -1,26 +1,23 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CreateInviteForm from "./CreateInviteForm.js";
+import * as inviteActions from "../../../redux/actions/createInviteActions";
 
 function CreateInvite(props) {
+  const dispatch = useDispatch();
   const handleCreateInvite = (e) => {
     e.preventDefault();
-    const {
-      groupId,
-      inviteEmail,
-      inviteRoles,
-      createInviteMember,
-      createInviteOwner,
-    } = props;
+    const { groupId, inviteEmail, inviteRoles } = props;
     // endpoint takes one role per invite
     if (inviteRoles.length > 1) {
-      createInviteMember(groupId, inviteEmail);
-      createInviteOwner(groupId, inviteEmail);
+      dispatch(inviteActions.createInviteMember(groupId, inviteEmail));
+      dispatch(inviteActions.createInviteOwner(groupId, inviteEmail));
     } else {
       if (inviteRoles.includes("member")) {
-        createInviteMember(groupId, inviteEmail);
+        dispatch(inviteActions.createInviteMember(groupId, inviteEmail));
       } else if (inviteRoles.includes("owner")) {
-        createInviteOwner(groupId, inviteEmail);
+        dispatch(inviteActions.createInviteOwner(groupId, inviteEmail));
       }
     }
   };

@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-import * as inviteActions from "../../../redux/actions/createInviteActions";
 import CreateInvite from "./CreateInvite";
 
 const mapStateToProps = (state) => {
@@ -27,19 +26,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createInviteMember: (groupId, inviteEmail) => {
-      dispatch(inviteActions.createInviteMember(groupId, inviteEmail));
-    },
-    createInviteOwner: (groupId, inviteEmail) => {
-      dispatch(inviteActions.createInviteOwner(groupId, inviteEmail));
-    },
-  };
-};
-
-const CreateInviteContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateInvite);
+const CreateInviteContainer = connect(mapStateToProps, null)(CreateInvite);
 export default i18n(CreateInviteContainer);
