@@ -15,11 +15,13 @@ export function* postRefLoginSaga() {
   try {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
-    yield put(response);
-    if (response.type.endsWith("_SUCCESS")) {
-      yield put(loginSlice.actions.postIdpNextSuccess(response.payload));
-      yield put(eduidRMAllNotify());
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
     }
+    yield put(loginSlice.actions.postIdpNextSuccess(response.payload));
+    yield put(eduidRMAllNotify());
   } catch (error) {
     yield put(loginSlice.actions.loginSagaFail(error.toString()));
   }
