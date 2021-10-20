@@ -13,18 +13,20 @@ export function* postRefForWebauthnChallengeSaga() {
     csrf_token: state.config.csrf_token,
   };
   try {
-    const encodedChallenge = yield call(postRequest, url, dataToSend);
-    const decodedChallenge = mfaDecodeMiddleware(encodedChallenge);
-    yield put(putCsrfToken(decodedChallenge));
-    yield put(decodedChallenge);
-    if (decodedChallenge.payload.finished) {
+    const response = yield call(postRequest, url, dataToSend);
+    yield put(putCsrfToken(response));
+    if (response.payload.finished) {
       yield put(loginSlice.actions.callLoginNext());
     }
-    if (decodedChallenge.type.endsWith("_SUCCESS")) {
-      yield put(
-        loginSlice.actions.postIdpMfaAuthSuccess(decodedChallenge.payload)
-      );
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
     }
+    const decodedResponse = mfaDecodeMiddleware(response);
+    yield put(
+      loginSlice.actions.postIdpMfaAuthSuccess(decodedResponse.payload)
+    );
   } catch (error) {
     yield put(loginSlice.actions.loginSagaFail(error.toString()));
   }
