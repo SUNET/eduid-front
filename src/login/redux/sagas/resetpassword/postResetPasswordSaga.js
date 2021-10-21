@@ -13,6 +13,7 @@ import {
   requestInProgress,
   requestCompleted,
 } from "../../actions/loadingDataActions";
+import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 export function* postEmailLink() {
   const state = yield select((state) => state);
@@ -23,6 +24,7 @@ export function* postEmailLink() {
   };
   try {
     yield put(requestInProgress());
+    yield put(eduidRMAllNotify());
     const response = yield call(postRequest, url, data);
     yield put(putCsrfToken(response));
     if (response.error) {
