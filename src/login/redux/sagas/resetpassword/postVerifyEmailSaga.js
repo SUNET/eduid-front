@@ -8,6 +8,7 @@ import { mfaDecodeMiddlewareForResetPassword } from "../../../app_utils/helperFu
 export function* requestLinkCode() {
   const state = yield select((state) => state);
   const url = state.config.reset_password_url + "verify-email/";
+  const locationUrl = document.location.href;
   if (state.resetPassword.email_code) {
     const data = {
       email_code: state.resetPassword.email_code,
@@ -28,7 +29,15 @@ export function* requestLinkCode() {
           decodedResponse.payload
         )
       );
-      return history.push(`/reset-password/extra-security/${data.email_code}`);
+      // Completed with frejaeid location changes to set-new-password
+      if (locationUrl.includes("set-new-password")) {
+        return history.push(
+          `/reset-password/set-new-password/${data.email_code}`
+        );
+      } else
+        return history.push(
+          `/reset-password/extra-security/${data.email_code}`
+        );
     } catch (error) {
       yield* failRequest(
         error,
