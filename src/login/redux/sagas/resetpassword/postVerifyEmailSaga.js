@@ -27,7 +27,7 @@ export function* requestLinkCode() {
         "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
       ) {
         yield put(
-          resetPasswordSlice.actions.resetPasswordSagaSuccess(
+          resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess(
             decodedWebauthnChallenge.payload
           )
         );

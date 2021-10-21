@@ -45,6 +45,12 @@ export const resetPasswordSlice = createSlice({
     storeNewPassword: (state, action) => {
       state.new_password = action.payload;
     },
+    resetPasswordVerifyEmailSuccess: (state, action) => {
+      state.email_address = action.payload.email_address;
+      state.email_code = action.payload.email_code;
+      state.extra_security = action.payload.extra_security;
+      state.suggested_password = action.payload.suggested_password;
+    },
     // Common action to signal a caught exception in one of the reset password sagas.
     resetPasswordSagaFail: () => {},
     // Action connected to postVerifySaga.
