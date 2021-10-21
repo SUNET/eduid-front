@@ -76,7 +76,7 @@ describe(`first API call to "new-password/" behaves as expected on _FAIL`, () =>
       "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL"
     );
   });
-  it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL"`, () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

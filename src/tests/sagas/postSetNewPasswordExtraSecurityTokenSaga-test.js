@@ -100,7 +100,7 @@ describe(`first API call to "new-password-extra-security-token/" behaves as expe
       "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL"
     );
   });
-  it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL"`, () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

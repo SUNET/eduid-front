@@ -79,7 +79,7 @@ describe(`first API call to "new-password-extra-security-external-mfa/" behaves 
       "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL"
     );
   });
-  it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_EXTERNAL_MFA_FAIL"`, () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

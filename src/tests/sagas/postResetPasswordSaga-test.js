@@ -41,7 +41,7 @@ describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_SUCCESS");
   });
-  it("done after 'REQUEST_COMPLETED'", () => {
+  it("done", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("REQUEST_COMPLETED");
     const done = generator.next().done;
@@ -77,7 +77,7 @@ describe(`first API call to "/" behaves as expected on _FAIL`, () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_FAIL");
   });
-  it("done after 'REQUEST_COMPLETED'", () => {
+  it("done", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("REQUEST_COMPLETED");
     const done = generator.next().done;
