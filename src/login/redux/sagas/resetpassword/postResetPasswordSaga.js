@@ -23,18 +23,20 @@ export function* postEmailLink() {
   };
   try {
     yield put(requestInProgress());
-    const resp = yield call(postRequest, url, data);
-    yield put(putCsrfToken(resp));
-    yield put(resp);
-    if (resp.type === "POST_RESET_PASSWORD_SUCCESS") {
-      clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-      setLocalStorage(
-        LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK,
-        new Date().getTime() + 300000
-      );
-      countFiveMin("email");
-      history.push(`/reset-password/email-link-sent`);
+    const response = yield call(postRequest, url, data);
+    yield put(putCsrfToken(response));
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
     }
+    clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+    setLocalStorage(
+      LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK,
+      new Date().getTime() + 300000
+    );
+    countFiveMin("email");
+    return history.push(`/reset-password/email-link-sent`);
   } catch (error) {
     yield* failRequest(
       error,

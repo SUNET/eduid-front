@@ -12,11 +12,7 @@ export const resetPasswordSlice = createSlice({
     new_password: null,
   },
   reducers: {
-    // If API call is successfull, save data to store
-    resetPasswordSagaSuccess: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
+    resetPasswordSagaSuccess: () => {},
     // Store phone_code for API call /new-password-extra-security-phone endpoint.
     savePhoneCode: (state, action) => {
       state.phone.phone_code = action.payload;

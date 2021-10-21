@@ -13,12 +13,14 @@ export function* postSetNewPassword() {
     csrf_token: state.config.csrf_token,
   };
   try {
-    const resp = yield call(postRequest, url, data);
-    yield put(putCsrfToken(resp));
-    yield put(resp);
-    if (resp.type === "POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS") {
-      return history.push(`/reset-password/success`);
+    const response = yield call(postRequest, url, data);
+    yield put(putCsrfToken(response));
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
     }
+    return history.push(`/reset-password/success`);
   } catch (error) {
     yield* failRequest(
       error,
