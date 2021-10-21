@@ -42,7 +42,9 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("login/callLoginNext");
+    expect(next.value.PUT.action.type).toEqual(
+      loginSlice.actions.callLoginNext.toString()
+    );
   });
   it("done", () => {
     const done = generator.next().done;

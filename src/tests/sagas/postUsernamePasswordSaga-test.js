@@ -61,7 +61,9 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
   });
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("login/callLoginNext");
+    expect(next.value.PUT.action.type).toEqual(
+      loginSlice.actions.callLoginNext.toString()
+    );
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
   });
