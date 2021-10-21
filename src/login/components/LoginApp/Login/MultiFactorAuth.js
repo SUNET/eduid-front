@@ -4,12 +4,12 @@ import SecurityKey from "./SecurityKey";
 import FrejaeID from "./FrejaeID";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import { postRefForWebauthnChallenge } from "../../../redux/actions/loginActions";
+import loginSlice from "../../../redux/slices/loginSlice";
 
 let MultiFactorAuth = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(postRefForWebauthnChallenge());
+    dispatch(loginSlice.actions.postRefForWebauthnChallenge());
   }, []);
   const { translate } = props;
   return (

@@ -2,10 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postUpdatedTouAcceptSaga } from "../../login/redux/sagas/login/postUpdatedTouAcceptSaga";
-import {
-  updatedTouAccept,
-  useLoginRef,
-} from "../../login/redux/actions/loginActions";
+import loginSlice from "../../login/redux/slices/loginSlice";
 
 const fakeState = {
   config: {
@@ -18,7 +15,7 @@ const fakeState = {
 };
 
 const testTouVersion = "2016-v1";
-const action = updatedTouAccept(testTouVersion);
+const action = loginSlice.actions.updatedTouAccept(testTouVersion);
 
 describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   const generator = postUpdatedTouAcceptSaga(action);
@@ -35,7 +32,7 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_TOU_SUCCESS",
+      type: loginSlice.actions.postIdpTouSuccess.toString(),
       payload: {
         csrf_token: "csrf-token",
         message: "success",
@@ -45,13 +42,11 @@ describe("second API call to /tou behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_SUCCESS");
+    expect(next.value.PUT.action.type).toEqual(
+      loginSlice.actions.callLoginNext.toString()
+    );
   });
-  it("{finished: true} fires api call to /next loop ", () => {
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(useLoginRef.toString());
-  });
-  it("done after 'useLoginRef'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -84,7 +79,7 @@ describe("second API call to /tou behaves as expected on _FAIL", () => {
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });
-  it("done after 'POST_IDP_TOU_FAIL'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

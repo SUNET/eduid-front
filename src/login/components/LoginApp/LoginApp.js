@@ -3,7 +3,7 @@ import React, { Component, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, withRouter, Redirect } from "react-router-dom";
 import Login from "./Login/Login";
-import { useLoginRef } from "../../redux/actions/loginActions";
+import loginSlice from "../../redux/slices/loginSlice";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
 import ExtraSecurity from "./ResetPassword/ExtraSecurity";
@@ -58,7 +58,7 @@ const RenderLogin = (props) => {
   useEffect(() => {
     // dispatch action when next_url is available and no error message
     errorMessage.length === 0 && next_url !== null
-      ? dispatch(useLoginRef(ref))
+      ? dispatch(loginSlice.actions.callLoginNext(ref))
       : undefined;
   }, [next_url]);
   return <Route path={`/login/`} render={(props) => <Login {...props} />} />;

@@ -2,7 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postTouVersionsSaga } from "../../login/redux/sagas/login/postTouVersionsSaga";
-import { postTouVersions } from "../../login/redux/actions/loginActions";
+import loginSlice from "../../login/redux/slices/loginSlice";
 
 const fakeState = {
   config: {
@@ -14,7 +14,7 @@ const fakeState = {
   },
 };
 const testTouVersions = ["2016-v1", "2021-v1"];
-const action = postTouVersions(testTouVersions);
+const action = loginSlice.actions.postTouVersions(testTouVersions);
 
 describe("first API call to /tou behaves as expected on _SUCCESS", () => {
   const generator = postTouVersionsSaga(action);
@@ -31,7 +31,7 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_TOU_SUCCESS",
+      type: loginSlice.actions.postIdpTouSuccess.toString(),
       payload: {
         csrf_token: "csrf-token",
         version: "2016-v1",
@@ -41,9 +41,9 @@ describe("first API call to /tou behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_TOU_SUCCESS");
+    expect(next.value.PUT.action.type).toEqual(successResponse.type);
   });
-  it("done after 'POST_IDP_TOU_SUCCESS'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -76,7 +76,7 @@ describe("first API call to /tou behaves as expected on _FAIL", () => {
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });
-  it("done after 'POST_IDP_TOU_FAIL'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
