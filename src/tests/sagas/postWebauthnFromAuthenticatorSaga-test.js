@@ -3,8 +3,7 @@ import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postWebauthnFromAuthenticatorSaga } from "../../login/redux/sagas/login/postWebauthnFromAuthenticatorSaga";
 import { safeEncode } from "../../login/app_utils/helperFunctions/authenticatorAssertion";
-import { useLoginRef } from "../../login/redux/actions/loginActions";
-
+import loginSlice from "../../login/redux/slices/loginSlice";
 /* safeEncode() relies on the DOM, uncomment below to run test in file */
 // import { JSDOM } from "jsdom";
 // const mockDom = `<!doctype html><html><body></body></html>`;
@@ -52,7 +51,7 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_IDP_MFA_AUTH_SUCCESS",
+      type: loginSlice.actions.postIdpMfaAuthSuccess.toString(),
       payload: {
         csrf_token: "csrf-token",
         message: "success",
@@ -62,13 +61,11 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_IDP_MFA_AUTH_SUCCESS");
+    expect(next.value.PUT.action.type).toEqual(
+      loginSlice.actions.callLoginNext.toString()
+    );
   });
-  it("{finished: true} fires api call to /next loop ", () => {
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(useLoginRef.toString());
-  });
-  it("done after 'POST_IDP_MFA_AUTH_SUCCESS'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -106,7 +103,7 @@ describe("second API call to /mfa behaves as expected on _FAIL", () => {
     next = generator.next();
     expect(next.value.PUT.action).toEqual(failResponse);
   });
-  it("done after 'POST_WEBAUTHN_ASSERTION_FAIL'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

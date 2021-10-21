@@ -8,11 +8,11 @@ import { validateEmailOnLogin } from "../../../app_utils/validation/validateEmai
 import emptyValueValidation from "../../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
-import { postUsernamePassword } from "../../../redux/actions/loginActions";
+import loginSlice from "../../../redux/slices/loginSlice";
 
 export const submitUsernamePassword = (values, dispatch) => {
   const { email, "current-password": currentPassword } = values;
-  dispatch(postUsernamePassword(email, currentPassword));
+  dispatch(loginSlice.actions.postUsernamePassword({ email, currentPassword }));
 };
 
 export const validateLoginForm = (values, props) => {

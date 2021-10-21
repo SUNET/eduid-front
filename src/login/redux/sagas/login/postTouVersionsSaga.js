@@ -1,7 +1,7 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
-import { loginSagaFail } from "../../actions/loginActions";
+import loginSlice from "../../slices/loginSlice";
 
 // Saga that posts the versions of the ToU that is available in this bundle to the /tou endpoint.
 export function* postTouVersionsSaga(action) {
@@ -15,8 +15,13 @@ export function* postTouVersionsSaga(action) {
   try {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
-    yield put(response);
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
+    }
+    yield put(loginSlice.actions.postIdpTouSuccess(response.payload));
   } catch (error) {
-    yield put(loginSagaFail(error.toString()));
+    yield put(loginSlice.actions.loginSagaFail(error.toString()));
   }
 }
