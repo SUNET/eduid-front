@@ -45,26 +45,23 @@ export const loginSlice = createSlice({
       // TODO: if action.payload.finished is true there won't be a challenge in the payload.
       state.mfa.webauthn_challenge = action.payload.webauthn_options;
     },
-    loginSagaFail: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
-    postUsernamePassword: (state) => ({
-      ...state,
-    }),
-    postTouVersions: (state, action) => ({ ...state, ...action.payload }),
-    updatedTouAccept: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
     // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
     addWebauthnAssertion: (state, action) => {
       state.mfa.webauthn_assertion = action.payload;
     },
+    // Action connected to postTouVersionsSaga. Posts the versions of the ToU available in this bundle to the /tou endpoint.
+    postTouVersions: () => {},
+    // Action connected to postUpdatedTouAcceptSaga. Will post the version of the ToU the user accepts to the /tou endpoint.
+    updatedTouAccept: () => {},
     // Action connected to postRefLoginSaga.
     callLoginNext: () => {},
     // Action connected to postRefForWebauthnChallengeSaga. Fetches a webauthn challenge from the /mfa_auth endpoint.
     postRefForWebauthnChallenge: () => {},
+    // Common action to signal a caught exception in one of the login app sagas. Because it ends in _FAIL,
+    // the notifyAndDispatch() middleware will inform the user that the operation failed.
+    loginSagaFail: () => {},
+    // Action connected to postUsernamePasswordSaga. Will post username and password to the /pw_auth endpoint.
+    postUsernamePassword: () => {},
   },
 });
 
