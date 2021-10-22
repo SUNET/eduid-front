@@ -40,10 +40,6 @@ describe(`API call to "new-password/" behaves as expected on _SUCCESS`, () => {
     };
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      "POST_RESET_PASSWORD_NEW_PASSWORD_SUCCESS"
-    );
   });
 });
 
@@ -72,9 +68,7 @@ describe(`first API call to "new-password/" behaves as expected on _FAIL`, () =>
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      "POST_RESET_PASSWORD_NEW_PASSWORD_FAIL"
-    );
+    expect(next.value.PUT.action.type).toEqual(failResponse.type);
   });
   it("done", () => {
     const done = generator.next().done;

@@ -70,9 +70,7 @@ describe(`first API call to "/verify-email/" behaves as expected on _FAIL`, () =
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL"
-    );
+    expect(next.value.PUT.action.type).toEqual(failResponse.type);
   });
   it("done", () => {
     const done = generator.next().done;
