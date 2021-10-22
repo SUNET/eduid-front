@@ -10,82 +10,90 @@ class LetterProofingButton extends Component {
     letter_expires_date: "",
     verifyingLetter_sent: false,
     confirmingLetter: false,
-    letter_sent_date: ""
-  }
+    letter_sent_date: "",
+  };
 
-  handleModal=()=>{
+  handleModal = () => {
     this.setState({
       verifyingLetter_sent: this.props.verifyingLetter_sent,
       letter_expired: this.props.letter_expired,
       confirmingLetter: this.props.confirmingLetter,
       letter_sent_date: this.props.letter_sent_date,
-      letter_expires_date: this.props.letter_expires_date
-    })
-  }
+      letter_expires_date: this.props.letter_expires_date,
+    });
+  };
 
-  sendConfirmationCode=(e)=>{
+  sendConfirmationCode = (e) => {
     this.props.sendConfirmationCode(e);
     this.closeConfirmationModal();
-  }
+  };
 
-  closeConfirmationModal=()=>{
+  closeConfirmationModal = () => {
     this.setState({
-      verifyingLetter_sent: false
-    })
-  }
+      verifyingLetter_sent: false,
+    });
+  };
 
-  confirmLetterProofing=(e)=>{
+  confirmLetterProofing = (e) => {
     this.props.confirmLetterProofing(e);
     this.closeNotificationModal();
-  }
+  };
 
-  closeNotificationModal=()=>{
+  closeNotificationModal = () => {
     this.setState({
       letter_sent_date: "",
       confirmingLetter: false,
-      letter_expires_date: ""
-    })
-  }
+      letter_expires_date: "",
+    });
+  };
 
-  formatDateFromBackend = dateFromBackend => {
+  formatDateFromBackend = (dateFromBackend) => {
     let newDate = new Date(dateFromBackend);
-    return newDate.getFullYear()+'-' + ((newDate.getMonth()+1).toString().padStart(2,0))+ '-'+(newDate.getDate().toString().padStart(2,0));
-  }
-  
+    return (
+      newDate.getFullYear() +
+      "-" +
+      (newDate.getMonth() + 1).toString().padStart(2, 0) +
+      "-" +
+      newDate.getDate().toString().padStart(2, 0)
+    );
+  };
+
   render() {
-    const showNotificationModal = 
+    const showNotificationModal =
       (this.state.letter_sent_date === "" && this.state.confirmingLetter) ||
       (this.state.letter_expired && this.state.letter_sent_date !== "");
-    const showConfirmationModal = 
-      !this.state.letter_expired && this.state.letter_sent_date !== "" 
-      &&!this.state.confirmingLetter && this.state.verifyingLetter_sent;
+    const showConfirmationModal =
+      !this.state.letter_expired &&
+      this.state.letter_sent_date !== "" &&
+      !this.state.confirmingLetter &&
+      this.state.verifyingLetter_sent;
     let description = "";
-    if(this.props.disabled){
+    if (this.props.disabled) {
       description = (
         <div className="description">
           {this.props.translate("verify-identity.vetting_explanation_add_nin")}
-        </div> 
-      )
+        </div>
+      );
     } else {
-      if(this.props.letter_sent_date === ""){
-        description = (
-          <div />
-        )
-      }
-      else if(this.props.letter_expired){
+      if (this.props.letter_sent_date === "") {
+        description = <div />;
+      } else if (this.props.letter_expired) {
         description = (
           <>
             <div className="description">
-              {this.props.translate("verify-identity.vetting_letter_code_expired")}
+              {this.props.translate(
+                "verify-identity.vetting_letter_code_expired"
+              )}
               {this.formatDateFromBackend(this.props.letter_expires_date)}
             </div>
             <div className="description">
-              {this.props.translate("verify-identity.vetting_letter_order_new_code")}
+              {this.props.translate(
+                "verify-identity.vetting_letter_order_new_code"
+              )}
             </div>
           </>
-        )
-      }
-      else {
+        );
+      } else {
         description = (
           <>
             <div className="description">
@@ -93,14 +101,14 @@ class LetterProofingButton extends Component {
               {this.formatDateFromBackend(this.props.letter_sent_date)}
             </div>
             <div className="description">
-              {this.props.translate("verify-identity.vetting_letter_valid")} 
+              {this.props.translate("verify-identity.vetting_letter_valid")}
               {this.formatDateFromBackend(this.props.letter_expires_date)}
             </div>
             <div className="description">
               {this.props.translate("verify-identity.vetting_letter_received")}
             </div>
           </>
-        )
+        );
       }
     }
     return (
@@ -108,7 +116,7 @@ class LetterProofingButton extends Component {
         <div className="vetting-button">
           <button
             disabled={this.props.disabled}
-            onClick={()=>this.handleModal()}
+            onClick={() => this.handleModal()}
           >
             <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
@@ -150,7 +158,7 @@ LetterProofingButton.propTypes = {
   sendConfirmationCode: PropTypes.func,
   handleLetterProofing: PropTypes.func,
   confirmLetterProofing: PropTypes.func,
-  handleStopConfirmationLetter: PropTypes.func
+  handleStopConfirmationLetter: PropTypes.func,
 };
 
 export default LetterProofingButton;
