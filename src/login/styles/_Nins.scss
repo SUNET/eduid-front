@@ -27,8 +27,7 @@
     text-align: left;
     & .description {
       margin: 0.5rem 0;
-      display: flex;
-      justify-content: space-between;
+      display: inline-grid;
     } 
     & .explanation-link{
       margin: 0.5rem 0;
