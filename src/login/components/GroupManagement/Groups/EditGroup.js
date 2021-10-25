@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNavId } from "../../../redux/actions/addDataToStoreActions";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import InvitesParent from "../Invites/InvitesParentContainer";
+import InvitesParent from "../Invites/InvitesParent";
 import DeleteGroup from "./DeleteGroup";
 
 const RenderHeader = ({ group, toggleGroupsListOrEditGroup }) => {
