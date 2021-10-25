@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import CreateGroup from "./Groups/CreateGroup";
@@ -49,12 +49,23 @@ const RenderCreateGroupOrGroupData = (props) => {
 };
 
 function GroupManagement(props) {
+  const groupsData = useSelector((state) => state.groups.data);
+  const [hasNoGroups, setHasNoGroups] = useState(false);
+
+  useEffect(() => {
+    if (groupsData !== undefined) {
+      if (groupsData.length === 0) {
+        setHasNoGroups(true);
+      } else setHasNoGroups(false);
+    }
+  }, [hasNoGroups, groupsData]);
+
   return (
     <article>
       <div className="intro">
         <div className="heading">
           <h4>Groups</h4>
-          <RenderCreateGroupButton {...props} />
+          <RenderCreateGroupButton hasNoGroups={hasNoGroups} {...props} />
         </div>
         <p>
           Create groups with other eduID users. What the groups are used for is
@@ -62,7 +73,7 @@ function GroupManagement(props) {
         </p>
         <div className="data-panel">
           <RenderInvitesToMe {...props} />
-          <RenderCreateGroupOrGroupData {...props} />
+          <RenderCreateGroupOrGroupData hasNoGroups={hasNoGroups} {...props} />
         </div>
       </div>
     </article>
