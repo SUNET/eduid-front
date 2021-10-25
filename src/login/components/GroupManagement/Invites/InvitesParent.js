@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CreateInvite from "./CreateInvite";
@@ -16,12 +16,18 @@ const RenderEditInviteText = () => (
 
 const InvitesParent = ({ group }) => {
   let { identifier } = group;
-  let groupHasInvites =
-    groupsWithInvites !== undefined && groupsWithInvites.includes(identifier);
   const navId = useSelector((state) => state.groups.navId);
-  const allInvitesFromMe = useSelector((state) => state.invites.invitesFromMe);
-  const groupsWithInvites =
-    allInvitesFromMe && allInvitesFromMe.map((group) => group.group_identifier);
+  const invitesFromMe = useSelector((state) => state.invites.invitesFromMe);
+  const [allInvitesFromMe, setAllInvitesFromMe] = useState([]);
+  const [groupIdsArray, setGroupIdsArray] = useState([]);
+
+  useEffect(() => {
+    if (invitesFromMe !== undefined) {
+      setAllInvitesFromMe(invitesFromMe);
+      setGroupIdsArray(allInvitesFromMe.map((group) => group.group_identifier));
+    }
+  }, [invitesFromMe]);
+
   return (
     <div className="invites">
       {navId === "edit-invite" ? (
@@ -29,7 +35,7 @@ const InvitesParent = ({ group }) => {
       ) : (
         <CreateInvite groupId={identifier} />
       )}
-      {groupHasInvites && (
+      {groupIdsArray.includes(identifier) && (
         <InvitesList groupId={identifier} allInvitesFromMe={allInvitesFromMe} />
       )}
     </div>
