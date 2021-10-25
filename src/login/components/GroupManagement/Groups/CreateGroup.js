@@ -29,7 +29,7 @@ const RenderWizardOrCreateGroupHeading = (props) => {
         onClick={
           props.hasNoGroups
             ? () => console.log("This will expand a minimised wizard")
-            : dispatch(createGroupActions.closeCreateGroup())
+            : () => dispatch(createGroupActions.closeCreateGroup())
         }
       >
         <CloseButton />
