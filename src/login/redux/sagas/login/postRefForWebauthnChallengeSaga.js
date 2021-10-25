@@ -2,7 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import { mfaDecodeMiddleware } from "../../../app_utils/helperFunctions/authenticatorAssertion";
-import { loginSagaFail, useLoginRef } from "../../actions/loginActions";
+import loginSlice from "../../slices/loginSlice";
 
 // Saga to get a webauthn challenge from the /mfa_auth endpoint.
 export function* postRefForWebauthnChallengeSaga() {
@@ -13,14 +13,21 @@ export function* postRefForWebauthnChallengeSaga() {
     csrf_token: state.config.csrf_token,
   };
   try {
-    const encodedChallenge = yield call(postRequest, url, dataToSend);
-    const decodedChallenge = mfaDecodeMiddleware(encodedChallenge);
-    yield put(putCsrfToken(decodedChallenge));
-    yield put(decodedChallenge);
-    if (decodedChallenge.payload.finished) {
-      yield put(useLoginRef());
+    const response = yield call(postRequest, url, dataToSend);
+    yield put(putCsrfToken(response));
+    if (response.payload.finished) {
+      yield put(loginSlice.actions.callLoginNext());
     }
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
+    }
+    const decodedResponse = mfaDecodeMiddleware(response);
+    yield put(
+      loginSlice.actions.postIdpMfaAuthSuccess(decodedResponse.payload)
+    );
   } catch (error) {
-    yield put(loginSagaFail(error.toString()));
+    yield put(loginSlice.actions.loginSagaFail(error.toString()));
   }
 }

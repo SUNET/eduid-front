@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import {
-  postTouVersions,
-  updatedTouAccept,
-} from "../../../redux/actions/loginActions";
+import loginSlice from "../../../redux/slices/loginSlice";
 
 let TermOfUseText = ({ translate, version }) => (
   <div className="tou-text">
@@ -25,7 +22,7 @@ let AcceptButton = ({ translate, version }) => {
   return (
     <ButtonPrimary
       type="submit"
-      onClick={() => dispatch(updatedTouAccept(version))}
+      onClick={() => dispatch(loginSlice.actions.updatedTouAccept(version))}
       id="accept-button"
       aria-label="accept button"
       aria-disabled={!version}
@@ -44,7 +41,7 @@ let TermOfUse = (props) => {
   );
   const version = useSelector((state) => state.login.tou.version);
   useEffect(() => {
-    dispatch(postTouVersions(availableTouVersions));
+    dispatch(loginSlice.actions.postTouVersions(availableTouVersions));
   }, []);
   return (
     <div className="tou">

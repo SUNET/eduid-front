@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Splash from "../../../../containers/Splash";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import { loginSagaFail } from "../../../redux/actions/loginActions";
+import loginSlice from "../../../redux/slices/loginSlice";
 
 const SubmitSamlResponse = () => {
   const [error, setError] = useState(false);
@@ -19,7 +19,7 @@ const SubmitSamlResponse = () => {
     } else {
       setError(true);
       // TODO: Not really a saga failure, so maybe it should have it's own fail action?
-      dispatch(loginSagaFail("error"));
+      dispatch(loginSlice.actions.loginSagaFail("error"));
     }
   }, []);
   return (

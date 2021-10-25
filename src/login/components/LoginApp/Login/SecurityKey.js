@@ -6,7 +6,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
-import { addWebauthnAssertion } from "../../../redux/actions/addDataToStoreActions";
+import loginSlice from "../../../redux/slices/loginSlice";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 const assertionFromAuthenticator = async (
@@ -22,7 +22,7 @@ const assertionFromAuthenticator = async (
       setSelected(false);
     });
   if (webauthnAssertion !== undefined) {
-    dispatch(addWebauthnAssertion(webauthnAssertion));
+    dispatch(loginSlice.actions.addWebauthnAssertion(webauthnAssertion));
   }
 };
 
