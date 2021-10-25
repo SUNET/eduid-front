@@ -13,7 +13,6 @@ import {
   requestInProgress,
   requestCompleted,
 } from "../../actions/loadingDataActions";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 export function* postEmailLink() {
   const state = yield select((state) => state);
@@ -24,21 +23,17 @@ export function* postEmailLink() {
   };
   try {
     yield put(requestInProgress());
-    yield put(eduidRMAllNotify());
-    const response = yield call(postRequest, url, data);
-    yield put(putCsrfToken(response));
-    if (response.error) {
-      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
-      yield put(response);
-      return;
-    }
-    clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    setLocalStorage(
-      LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK,
-      new Date().getTime() + 300000
-    );
-    countFiveMin("email");
-    return history.push(`/reset-password/email-link-sent`);
+    const resp = yield call(postRequest, url, data);
+    yield put(putCsrfToken(resp));
+    if (!resp.error) {
+      clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+      setLocalStorage(
+        LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK,
+        new Date().getTime() + 300000
+      );
+      countFiveMin("email");
+      return history.push(`/reset-password/email-link-sent`);
+    } else yield put(resp);
   } catch (error) {
     yield* failRequest(
       error,

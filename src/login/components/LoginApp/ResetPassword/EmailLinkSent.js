@@ -11,6 +11,7 @@ import {
   clearCountdown,
 } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
+import { eduidRMAllNotify } from "../../../../actions/Notifications";
 function EmailLinkSent(props) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
@@ -37,6 +38,10 @@ function EmailLinkSent(props) {
     );
     if (emailFromLocalStorage) setEmail(emailFromLocalStorage);
   }, [email]);
+
+  useEffect(() => {
+    dispatch(eduidRMAllNotify());
+  }, []);
 
   return (
     <>

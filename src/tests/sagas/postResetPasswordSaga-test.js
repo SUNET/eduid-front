@@ -18,8 +18,6 @@ describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
   let next = generator.next();
   next = generator.next(fakeState);
   expect(next.value.PUT.action.type).toEqual("REQUEST_IN_PROGRESS");
-  next = generator.next();
-  expect(next.value.PUT.action.type).toEqual("RM_ALL_NOTIFICATION");
   it("saga posts the expected data", () => {
     const data = {
       email: fakeState.resetPassword.email_address,
@@ -40,10 +38,10 @@ describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
     };
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+  });
+  it("done after 'REQUEST_COMPLETED'", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("REQUEST_COMPLETED");
-  });
-  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });
@@ -75,9 +73,9 @@ describe(`first API call to "/" behaves as expected on _FAIL`, () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action).toEqual(failResponse);
+    expect(next.value.PUT.action.type).toEqual(failResponse.type);
   });
-  it("done", () => {
+  it("done after 'REQUEST_COMPLETED'", () => {
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("REQUEST_COMPLETED");
     const done = generator.next().done;
