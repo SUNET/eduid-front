@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import CreateGroup from "./Groups/CreateGroupContainer";
+import CreateGroup from "./Groups/CreateGroup";
 import GroupsParent from "./Groups/GroupsParent";
 import AllInvitesList from "./Invites/AllInvitesList";
 import * as createGroupActions from "../../redux/actions/createGroupActions";
