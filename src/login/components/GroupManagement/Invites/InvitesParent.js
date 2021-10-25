@@ -14,10 +14,14 @@ const RenderEditInviteText = () => (
   </div>
 );
 
-const InvitesParent = ({ groupsWithInvites, allInvitesFromMe, group }) => {
+const InvitesParent = ({ group }) => {
   let { identifier } = group;
-  let groupHasInvites = groupsWithInvites.includes(identifier);
+  let groupHasInvites =
+    groupsWithInvites !== undefined && groupsWithInvites.includes(identifier);
   const navId = useSelector((state) => state.groups.navId);
+  const allInvitesFromMe = useSelector((state) => state.invites.invitesFromMe);
+  const groupsWithInvites =
+    allInvitesFromMe && allInvitesFromMe.map((group) => group.group_identifier);
   return (
     <div className="invites">
       {navId === "edit-invite" ? (
