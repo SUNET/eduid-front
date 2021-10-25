@@ -6,7 +6,7 @@ import GroupsParent from "./Groups/GroupsParent";
 import AllInvitesList from "./Invites/AllInvitesList";
 import * as createGroupActions from "../../redux/actions/createGroupActions";
 
-const RenderCreateGroupButton = (createGroup) => {
+const RenderCreateGroupButton = ({ createGroup }) => {
   const dispatch = useDispatch();
   const handleOpenCreateGroup = () => {
     dispatch(createGroupActions.openCreateGroup());
