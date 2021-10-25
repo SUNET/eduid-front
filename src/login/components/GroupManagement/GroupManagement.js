@@ -8,17 +8,17 @@ import * as createGroupActions from "../../redux/actions/createGroupActions";
 
 const RenderCreateGroupButton = ({ createGroup }) => {
   const dispatch = useDispatch();
-  const handleOpenCreateGroup = () => {
-    dispatch(createGroupActions.openCreateGroup());
-  };
   return (
-    <Fragment>
+    <>
       {!createGroup && (
-        <button className="create-group" onClick={() => handleOpenCreateGroup}>
+        <button
+          className="create-group"
+          onClick={() => dispatch(createGroupActions.openCreateGroup())}
+        >
           create group
         </button>
       )}
-    </Fragment>
+    </>
   );
 };
 
