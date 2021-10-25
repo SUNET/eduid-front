@@ -32,13 +32,12 @@ const RenderInvitesToMe = (props) => {
 
 const RenderCreateGroupOrGroupData = (props) => {
   const groupsData = useSelector((state) => state.groups.data);
-  const createGroup = useSelector((state) => state.groups.createGroup);
   const loading = useSelector((state) => state.groups.loading);
   return (
     <>
       {loading ? (
         <p>Loading...</p>
-      ) : createGroup ||
+      ) : props.createGroup ||
         (groupsData !== undefined && groupsData.length === 0) ? (
         <CreateGroup {...props} />
       ) : groupsData.length ? (
@@ -50,6 +49,7 @@ const RenderCreateGroupOrGroupData = (props) => {
 
 function GroupManagement(props) {
   const groupsData = useSelector((state) => state.groups.data);
+  const createGroup = useSelector((state) => state.groups.createGroup);
   const [hasNoGroups, setHasNoGroups] = useState(false);
 
   useEffect(() => {
@@ -65,7 +65,11 @@ function GroupManagement(props) {
       <div className="intro">
         <div className="heading">
           <h4>Groups</h4>
-          <RenderCreateGroupButton hasNoGroups={hasNoGroups} {...props} />
+          <RenderCreateGroupButton
+            createGroup={createGroup}
+            hasNoGroups={hasNoGroups}
+            {...props}
+          />
         </div>
         <p>
           Create groups with other eduID users. What the groups are used for is
