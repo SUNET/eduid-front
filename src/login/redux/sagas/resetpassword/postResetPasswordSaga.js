@@ -23,9 +23,9 @@ export function* postEmailLink() {
   };
   try {
     yield put(requestInProgress());
-    const resp = yield call(postRequest, url, data);
-    yield put(putCsrfToken(resp));
-    if (!resp.error) {
+    const response = yield call(postRequest, url, data);
+    yield put(putCsrfToken(response));
+    if (!response.error) {
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
       setLocalStorage(
         LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK,
@@ -33,7 +33,7 @@ export function* postEmailLink() {
       );
       countFiveMin("email");
       return history.push(`/reset-password/email-link-sent`);
-    } else yield put(resp);
+    } else yield put(response);
   } catch (error) {
     yield* failRequest(
       error,
