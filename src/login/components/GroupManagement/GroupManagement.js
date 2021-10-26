@@ -33,12 +33,12 @@ const RenderInvitesToMe = (props) => {
 const RenderCreateGroupOrGroupData = (props) => {
   const groupsData = useSelector((state) => state.groups.data);
   const loading = useSelector((state) => state.groups.loading);
+  const createGroup = useSelector((state) => state.groups.createGroup);
   return (
     <>
       {loading ? (
         <p>Loading...</p>
-      ) : props.createGroup ||
-        (groupsData !== undefined && groupsData.length === 0) ? (
+      ) : createGroup || groupsData.length === 0 ? (
         <CreateGroup {...props} />
       ) : groupsData.length ? (
         <GroupsParent groupsData={groupsData} {...props} />
