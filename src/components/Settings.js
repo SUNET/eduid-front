@@ -10,7 +10,7 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
-import GroupManagement from "../login/components/GroupManagement/GroupManagementContainer";
+import GroupManagement from "../login/components/GroupManagement/GroupManagement";
 
 const RenderGroups = () => {
   // functionality to be removed when groups feature is released

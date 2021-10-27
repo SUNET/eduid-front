@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import GroupNameForm from "../GroupNameForm";
+import * as createGroupActions from "../../../redux/actions/createGroupActions";
+import { useDispatch, useSelector } from "react-redux";
 
 export const CloseButton = () => (
   <svg
@@ -17,8 +19,9 @@ export const CloseButton = () => (
 );
 
 const RenderWizardOrCreateGroupHeading = (props) => {
+  const dispatch = useDispatch();
   return (
-    <Fragment>
+    <>
       <p>
         {props.hasNoGroups ? "Create your first group." : "Create a new group."}
       </p>
@@ -26,47 +29,54 @@ const RenderWizardOrCreateGroupHeading = (props) => {
         onClick={
           props.hasNoGroups
             ? () => console.log("This will expand a minimised wizard")
-            : props.handleCloseCreateGroup
+            : () => dispatch(createGroupActions.closeCreateGroup())
         }
       >
         <CloseButton />
       </button>
-    </Fragment>
+    </>
   );
 };
 
-class CreateGroup extends Component {
-  handleGroupName = (e) => {
+function CreateGroup(props) {
+  const dispatch = useDispatch();
+  const groupName = useSelector((state) => state.form.groupName);
+  let groupNameValues = { groupName: "" };
+  if (groupName !== undefined) {
+    groupNameValues = groupName.values;
+  }
+
+  const handleGroupName = (e) => {
     e.preventDefault();
-    let groupName = this.props.values.groupName;
-    this.props.handleCreateGroup(groupName);
+    let groupName = groupNameValues.groupName;
+    let trimmedGroupName = groupName.trim();
+    dispatch(createGroupActions.createGroup(trimmedGroupName));
+    dispatch(createGroupActions.closeCreateGroup());
   };
 
-  render() {
-    return (
-      <Fragment>
-        <div className="wizard">
-          <div className="title">
-            <RenderWizardOrCreateGroupHeading {...this.props} />
-          </div>
-          <p>
-            As the creator of a group you will be an admin, which allows you to
-            edit the group and send out invites.
-          </p>
-          <div className="group-name">
-            <GroupNameForm
-              form={"groupName"}
-              label={"Group name"}
-              placeholder={"Name your group"}
-              helpBlock={""}
-              submitButton={true}
-              handleSubmit={this.handleGroupName}
-            />
-          </div>
+  return (
+    <>
+      <div className="wizard">
+        <div className="title">
+          <RenderWizardOrCreateGroupHeading {...props} />
         </div>
-      </Fragment>
-    );
-  }
+        <p>
+          As the creator of a group you will be an admin, which allows you to
+          edit the group and send out invites.
+        </p>
+        <div className="group-name">
+          <GroupNameForm
+            form={"groupName"}
+            label={"Group name"}
+            placeholder={"Name your group"}
+            helpBlock={""}
+            submitButton={true}
+            handleSubmit={handleGroupName}
+          />
+        </div>
+      </div>
+    </>
+  );
 }
 
 // CreateGroup.propTypes = {};

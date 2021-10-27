@@ -1,45 +1,56 @@
-import React, { Component } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CreateInviteForm from "./CreateInviteForm.js";
+import * as inviteActions from "../../../redux/actions/createInviteActions";
 
-class CreateInvite extends Component {
-  handleCreateInvite = (e) => {
+function CreateInvite(props) {
+  const dispatch = useDispatch();
+  const createInvite = useSelector((state) => state.form.createInvite);
+  let createInviteValues = {};
+  let inviteEmail = {};
+  let inviteRoles = [];
+  if (createInvite !== undefined) {
+    createInviteValues = createInvite.values;
+    inviteEmail = createInviteValues.inviteEmail.email;
+    let rolesArr = Object.entries(createInviteValues.inviteRoles);
+    inviteRoles = rolesArr
+      .map((role) => {
+        if (role.includes(true)) {
+          return role[0];
+        } else {
+          return null;
+        }
+      })
+      .filter((role) => role !== null);
+  }
+
+  const handleCreateInvite = (e) => {
     e.preventDefault();
-    const {
-      groupId,
-      inviteEmail,
-      inviteRoles,
-      createInviteMember,
-      createInviteOwner,
-    } = this.props;
+    const { groupId } = props;
     // endpoint takes one role per invite
     if (inviteRoles.length > 1) {
-      createInviteMember(groupId, inviteEmail);
-      createInviteOwner(groupId, inviteEmail);
+      dispatch(inviteActions.createInviteMember(groupId, inviteEmail));
+      dispatch(inviteActions.createInviteOwner(groupId, inviteEmail));
     } else {
       if (inviteRoles.includes("member")) {
-        createInviteMember(groupId, inviteEmail);
+        dispatch(inviteActions.createInviteMember(groupId, inviteEmail));
       } else if (inviteRoles.includes("owner")) {
-        createInviteOwner(groupId, inviteEmail);
+        dispatch(inviteActions.createInviteOwner(groupId, inviteEmail));
       }
     }
   };
 
-  render() {
-    return (
-      <div className="create-invite">
-        <h3>Invite people to your group</h3>
-        <p>
-          Add an email address and set a membership to invite anyone to join
-          your group.
-        </p>
-        <CreateInviteForm
-          {...this.props}
-          handleSubmit={this.handleCreateInvite}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="create-invite">
+      <h3>Invite people to your group</h3>
+      <p>
+        Add an email address and set a membership to invite anyone to join your
+        group.
+      </p>
+      <CreateInviteForm {...props} handleSubmit={handleCreateInvite} />
+    </div>
+  );
 }
 
 // CreateInvite.propTypes = {};

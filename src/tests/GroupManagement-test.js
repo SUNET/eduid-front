@@ -20,9 +20,9 @@ addLocaleData("react-intl/locale-data/en");
 // global.document = document;
 // global.window = document.defaultView;
 
-import GroupManagement from "../login/components/GroupManagement/GroupManagementContainer";
+import GroupManagement from "../login/components/GroupManagement/GroupManagement";
 import GroupsParent from "../login/components/GroupManagement/Groups/GroupsParent";
-import CreateGroup from "../login/components/GroupManagement/Groups/CreateGroupContainer";
+import CreateGroup from "../login/components/GroupManagement/Groups/CreateGroup";
 import * as getAllGroupDataActions from "../login/redux/actions/getAllGroupMgmtDataActions";
 import * as createGroupActions from "../login/redux/actions/createGroupActions";
 import groupsReducer from "../login/redux/reducers/groupsReducer";
