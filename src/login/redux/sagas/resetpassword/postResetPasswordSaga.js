@@ -33,7 +33,7 @@ export function* postEmailLink() {
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     setLocalStorage(
       LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK,
-      new Date().getTime() + 300000
+      new Date().getTime() + 60 * 5 * 1000
     );
     countFiveMin("email");
     history.push(`/reset-password/email-link-sent`);
