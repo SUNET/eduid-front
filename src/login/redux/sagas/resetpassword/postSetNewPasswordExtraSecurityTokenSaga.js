@@ -32,7 +32,7 @@ export function* postSetNewPasswordExtraSecurityToken() {
       yield put(response);
       return;
     }
-    return history.push(`/reset-password/success`);
+    history.push(`/reset-password/success`);
   } catch (error) {
     yield* failRequest(
       error,

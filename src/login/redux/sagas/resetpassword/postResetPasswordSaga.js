@@ -36,7 +36,7 @@ export function* postEmailLink() {
       new Date().getTime() + 300000
     );
     countFiveMin("email");
-    return history.push(`/reset-password/email-link-sent`);
+    history.push(`/reset-password/email-link-sent`);
   } catch (error) {
     yield* failRequest(
       error,

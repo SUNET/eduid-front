@@ -28,13 +28,9 @@ export function* requestPhoneCodeForNewPassword() {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
       yield put(response);
       if (locationUrl.includes("extra-security")) {
-        return history.push(
-          `/reset-password/extra-security/${data.email_code}`
-        );
+        history.push(`/reset-password/extra-security/${data.email_code}`);
       } else if (locationUrl.includes("phone-code-sent")) {
-        return history.push(
-          `/reset-password/phone-code-sent/${data.email_code}`
-        );
+        history.push(`/reset-password/phone-code-sent/${data.email_code}`);
       }
       return;
     }
@@ -44,7 +40,7 @@ export function* requestPhoneCodeForNewPassword() {
       new Date().getTime() + 300000
     );
     countFiveMin("phone");
-    return history.push(`/reset-password/phone-code-sent/${data.email_code}`);
+    history.push(`/reset-password/phone-code-sent/${data.email_code}`);
   } catch (error) {
     yield* failRequest(
       error,

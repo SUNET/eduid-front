@@ -20,9 +20,10 @@ export function* postSetNewPasswordExtraSecurityPhone() {
     if (response.error) {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
       yield put(response);
-      return history.push(`/reset-password/email`);
+      history.push(`/reset-password/email`);
+      return;
     }
-    return history.push(`/reset-password/success`);
+    history.push(`/reset-password/success`);
   } catch (error) {
     yield* failRequest(
       error,

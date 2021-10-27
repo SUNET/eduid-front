@@ -20,7 +20,8 @@ export function* requestLinkCode() {
       if (response.error) {
         // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
         yield put(response);
-        return history.push(`/reset-password/email`);
+        history.push(`/reset-password/email`);
+        return;
       }
       const decodedResponse = mfaDecodeMiddlewareForResetPassword(response);
       // if API call successfully post data save it to store
@@ -31,13 +32,10 @@ export function* requestLinkCode() {
       );
       // Completed with frejaeid location changes to set-new-password
       if (locationUrl.includes("set-new-password")) {
-        return history.push(
-          `/reset-password/set-new-password/${data.email_code}`
-        );
-      } else
-        return history.push(
-          `/reset-password/extra-security/${data.email_code}`
-        );
+        history.push(`/reset-password/set-new-password/${data.email_code}`);
+      } else {
+        history.push(`/reset-password/extra-security/${data.email_code}`);
+      }
     } catch (error) {
       yield* failRequest(
         error,
