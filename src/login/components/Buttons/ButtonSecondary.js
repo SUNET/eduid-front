@@ -27,7 +27,7 @@ class ButtonSecondary extends Component {
 
 ButtonSecondary.propTypes = {
   onClick: PropTypes.func.isRequired,
-  id: PropTypes.string
+  id: PropTypes.string,
 };
 
 export default ButtonSecondary;

@@ -5,7 +5,7 @@ import ActionMain from "components/ActionMain";
 
 const mapStateToProps = (state) => {
   return {
-    redirect: state.config.redirect
+    redirect: state.config.redirect,
   };
 };
 

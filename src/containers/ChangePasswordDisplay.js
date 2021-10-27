@@ -3,29 +3,29 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import {
   confirmPasswordChange,
   startConfirmationPassword,
-  stopConfirmationPassword
+  stopConfirmationPassword,
 } from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
 import ChangePasswordDisplay from "components/ChangePasswordDisplay";
 
 const mapStateToProps = (state) => {
   return {
-    confirming_change: state.security.confirming_change
+    confirming_change: state.security.confirming_change,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleStartConfirmationPassword: function() {
+    handleStartConfirmationPassword: function () {
       dispatch(eduidRMAllNotify());
       dispatch(startConfirmationPassword());
     },
-    handleStopConfirmationPassword: function() {
+    handleStopConfirmationPassword: function () {
       dispatch(stopConfirmationPassword());
     },
-    handleConfirmationPassword: function() {
+    handleConfirmationPassword: function () {
       dispatch(confirmPasswordChange());
-    }
+    },
   };
 };
 

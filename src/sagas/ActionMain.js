@@ -1,9 +1,5 @@
 import { put, call } from "redux-saga/effects";
-import {
-  checkStatus,
-  getRequest,
-  putCsrfToken
-} from "sagas/common";
+import { checkStatus, getRequest, putCsrfToken } from "sagas/common";
 
 import * as actions from "actions/ActionMain";
 import * as CBOR from "sagas/cbor";
@@ -26,19 +22,19 @@ export function* requestConfig() {
 export function fetchConfig(url) {
   const request = {
     ...getRequest,
-    redirect: "follow"
+    redirect: "follow",
   };
   return window
     .fetch(url, {
-      ...request
+      ...request,
     })
     .then(checkStatus)
-    .then(response => response.json())
-    .then(response => {
+    .then((response) => response.json())
+    .then((response) => {
       if (response.payload && response.payload.webauthn_options !== undefined) {
         const raw_options = response.payload.webauthn_options;
         const options = atob(raw_options.replace(/_/g, "/").replace(/-/g, "+"));
-        const byte_options = Uint8Array.from(options, c => c.charCodeAt(0));
+        const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
         response.payload.webauthn_options = CBOR.decode(byte_options.buffer);
       }
       console.log("Action config: ", response);
@@ -64,12 +60,12 @@ export function* requestNextAction() {
 export function fetchActions(url) {
   const request = {
     ...getRequest,
-    redirect: "follow"
+    redirect: "follow",
   };
   return window
     .fetch(url, {
-      ...request
+      ...request,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

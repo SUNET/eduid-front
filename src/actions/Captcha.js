@@ -8,8 +8,8 @@ export function verifyCaptcha(response) {
   return {
     type: CAPTCHA_VERIFICATION,
     payload: {
-      response: response
-    }
+      response: response,
+    },
   };
 }
 
@@ -17,8 +17,8 @@ export function postCaptcha() {
   return {
     type: POST_SIGNUP_TRYCAPTCHA,
     payload: {
-      disabledButton: true
-    }
+      disabledButton: true,
+    },
   };
 }
 
@@ -28,8 +28,8 @@ export function postCaptchaFail(err) {
     error: true,
     payload: {
       message: err,
-      disabledButton: false
-    }
+      disabledButton: false,
+    },
   };
 }
 
@@ -37,7 +37,7 @@ export function makeCapthaButtonAvailable() {
   return {
     type: IS_CAPTCHA_AVAILABLE,
     payload: {
-      disabledButton: false
-    }
+      disabledButton: false,
+    },
   };
 }

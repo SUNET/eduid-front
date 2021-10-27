@@ -1,13 +1,18 @@
 import { put, select, call } from "redux-saga/effects";
 import { updateIntl } from "react-intl-redux";
-import { startSubmit, stopSubmit, setSubmitSucceeded, setSubmitFailed } from "redux-form";
+import {
+  startSubmit,
+  stopSubmit,
+  setSubmitSucceeded,
+  setSubmitFailed,
+} from "redux-form";
 import { startAsyncValidation, stopAsyncValidation } from "redux-form";
 
 import { newCsrfToken } from "actions/DashboardConfig";
 
 import * as CBOR from "sagas/cbor";
 
-export const checkStatus = function(response) {
+export const checkStatus = function (response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else if (response.status === 0) {
@@ -24,24 +29,24 @@ export const ajaxHeaders = {
   "Accept-Encoding": "gzip,deflate",
   "Cache-Control": "no-store, no-cache, must-revalidate",
   Pragma: "no-cache",
-  "X-Requested-With": "XMLHttpRequest"
+  "X-Requested-With": "XMLHttpRequest",
 };
 
 export const postRequest = {
   method: "post",
   redirect: "manual",
   credentials: "include",
-  headers: ajaxHeaders
+  headers: ajaxHeaders,
 };
 
 export const getRequest = {
   method: "get",
   redirect: "manual",
   credentials: "include",
-  headers: ajaxHeaders
+  headers: ajaxHeaders,
 };
 
-export const putCsrfToken = function(action) {
+export const putCsrfToken = function (action) {
   const token = action.payload.csrf_token;
   if (token !== undefined) {
     delete action.payload.csrf_token;
@@ -51,7 +56,7 @@ export const putCsrfToken = function(action) {
   }
 };
 
-export const failRequest = function*(error, failAction) {
+export const failRequest = function* (error, failAction) {
   if (
     navigator.userAgent.indexOf("Trident/7") > -1 &&
     (error.toString() === "SyntaxError: Invalid character" ||
@@ -66,11 +71,11 @@ export const failRequest = function*(error, failAction) {
 };
 
 export function saveData(getData, formName, startAction, fetcher, failAction) {
-  return function*() {
+  return function* () {
     try {
-      const state = yield select(state => state);
+      const state = yield select((state) => state);
       const data = getData(state);
-      yield put(startAction({...data}));
+      yield put(startAction({ ...data }));
       yield put(startSubmit(formName));
       yield put(startAsyncValidation(formName));
       const resp = yield call(fetcher, state.config, data);
@@ -89,7 +94,7 @@ export function saveData(getData, formName, startAction, fetcher, failAction) {
         yield put(
           updateIntl({
             locale: lang,
-            messages: LOCALIZED_MESSAGES[lang]
+            messages: LOCALIZED_MESSAGES[lang],
           })
         );
       }
@@ -102,15 +107,12 @@ export function saveData(getData, formName, startAction, fetcher, failAction) {
 
 export function safeDecodeCBOR(str) {
   const bytes = atob(str.replace(/_/g, "/").replace(/-/g, "+"));
-  const buff = Uint8Array.from(bytes, c => c.charCodeAt(0));
+  const buff = Uint8Array.from(bytes, (c) => c.charCodeAt(0));
   return CBOR.decode(buff.buffer);
 }
 
 export function safeEncode(obj) {
   const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));
   const unsafeObj = btoa(bytesObj);
-  return unsafeObj
-    .replace(/\//g, "_")
-    .replace(/\+/g, "-")
-    .replace(/=*$/, "");
+  return unsafeObj.replace(/\//g, "_").replace(/\+/g, "-").replace(/=*$/, "");
 }

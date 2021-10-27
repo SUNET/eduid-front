@@ -17,8 +17,8 @@ const mapStateToProps = (state) => {
     verifiedNin = false;
   }
   return {
-    email: email, 
-    nin: state.nins.nin, 
+    email: email,
+    nin: state.nins.nin,
     verifiedNin: verifiedNin,
   };
 };

@@ -80,7 +80,7 @@ Orcid.propTypes = {
   orcid: PropTypes.object,
   handleOrcidConnect: PropTypes.func,
   handleOrcidDelete: PropTypes.func,
-  langs: PropTypes.array
+  langs: PropTypes.array,
 };
 
 export default Orcid;

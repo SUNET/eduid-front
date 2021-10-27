@@ -4,7 +4,7 @@ import * as actions from "actions/CodeVerified";
 const verifiedData = {
   password: "",
   email: "",
-  status: ""
+  status: "",
 };
 
 let verifiedReducer = (state = verifiedData, action) => {
@@ -12,7 +12,7 @@ let verifiedReducer = (state = verifiedData, action) => {
     case actions.GET_SIGNUP_VERIFY_LINK_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     default:
       return state;

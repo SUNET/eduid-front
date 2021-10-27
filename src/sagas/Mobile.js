@@ -4,25 +4,25 @@ import {
   putCsrfToken,
   postRequest,
   saveData,
-  failRequest
+  failRequest,
 } from "sagas/common";
 import * as actions from "actions/Mobile";
 
-const getData = state => ({
+const getData = (state) => ({
   number: state.phones.phone,
   verified: false,
   primary: false,
-  csrf_token: state.config.csrf_token
+  csrf_token: state.config.csrf_token,
 });
 
 export function sendMobile(config, data) {
   return window
     .fetch(config.mobile_url + "new", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export const saveMobile = saveData(
@@ -35,10 +35,10 @@ export const saveMobile = saveData(
 
 export function* requestResendMobileCode() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       data = {
         number: state.phones.confirming,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
     const resp = yield call(requestResend, state.config, data);
     yield put(putCsrfToken(resp));
@@ -52,19 +52,19 @@ export function requestResend(config, data) {
   return window
     .fetch(config.mobile_url + "resend-code", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* requestVerifyMobile() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       data = {
         number: state.phones.confirming,
         code: state.phones.code,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
     const resp = yield call(requestVerify, state.config, data);
     yield put(putCsrfToken(resp));
@@ -78,18 +78,18 @@ export function requestVerify(config, data) {
   return window
     .fetch(config.mobile_url + "verify", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* requestRemoveMobile() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       data = {
         number: state.phones.phone,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
     const resp = yield call(requestRemove, state.config, data);
     yield put(putCsrfToken(resp));
@@ -103,18 +103,18 @@ export function requestRemove(config, data) {
   return window
     .fetch(config.mobile_url + "remove", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* requestMakePrimaryMobile() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       data = {
         number: state.phones.phone,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
     const resp = yield call(requestMakePrimary, state.config, data);
     yield put(putCsrfToken(resp));
@@ -128,8 +128,8 @@ export function requestMakePrimary(config, data) {
   return window
     .fetch(config.mobile_url + "primary", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

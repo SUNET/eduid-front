@@ -8,7 +8,7 @@ import { eduidNotify } from "actions/Notifications";
 
 export function* requestCodeStatus() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       url = SIGNUP_SERVICE_URL + "verify-link/" + state.config.code;
     const codeStatus = yield call(fetchCodeStatus, url);
     yield* requestConfig();
@@ -30,10 +30,10 @@ export function* requestCodeStatus() {
 export function fetchCodeStatus(url) {
   return window
     .fetch(url, {
-      ...getRequest
+      ...getRequest,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* requestConfig() {
@@ -50,12 +50,12 @@ export function* requestConfig() {
 export function fetchConfig(url) {
   const request = {
     ...getRequest,
-    redirect: "follow"
+    redirect: "follow",
   };
   return window
     .fetch(url, {
-      ...request
+      ...request,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

@@ -7,21 +7,21 @@ const mapStateToProps = (state) => {
   let confirmed;
   return {
     dashboard_url: state.config.dashboard_url,
-    confirmed: confirmed
+    confirmed: confirmed,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleLogout: function() {
+    handleLogout: function () {
       dispatch(startLogout());
     },
-    gotoSignin: function(e) {
+    gotoSignin: function (e) {
       e.preventDefault();
       const dataNode = e.target.closest("div"),
         url = dataNode.dataset.dashboard_url;
       document.location.href = url;
-    }
+    },
   };
 };
 

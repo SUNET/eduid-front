@@ -8,10 +8,9 @@ export const POST_ORCID_REMOVE_FAIL = "POST_ORCID_REMOVE_FAIL";
 export const GET_ORCID_CONNECT = "GET_ORCID_CONNECT";
 export const GET_ORCID_CONNECT_FAIL = "GET_ORCID_CONNECT_FAIL";
 
-
 export function getOrcid() {
   return {
-    type: GET_ORCID
+    type: GET_ORCID,
   };
 }
 
@@ -20,14 +19,14 @@ export function getOrcidFail(err) {
     type: GET_ORCID_FAIL,
     error: true,
     payload: {
-      message: err.toString()
-    }
+      message: err.toString(),
+    },
   };
 }
 
 export function startOrcidRemove() {
   return {
-    type: POST_ORCID_REMOVE
+    type: POST_ORCID_REMOVE,
   };
 }
 
@@ -36,14 +35,14 @@ export function startOrcidRemoveFail(err) {
     type: POST_ORCID_REMOVE_FAIL,
     error: true,
     payload: {
-      message: err.toString()
-    }
+      message: err.toString(),
+    },
   };
 }
 
 export function startOrcidConnect() {
   return {
-    type: GET_ORCID_CONNECT
+    type: GET_ORCID_CONNECT,
   };
 }
 
@@ -52,7 +51,7 @@ export function startOrcidConnectFail(err) {
     type: GET_ORCID_CONNECT_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }

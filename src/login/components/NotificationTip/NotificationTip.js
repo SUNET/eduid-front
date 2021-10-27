@@ -1,12 +1,11 @@
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SpeechBubbleTip = (props) => {
   const {
-    active: [active, setActive]
+    active: [active, setActive],
   } = {
     active: useState(false),
-    ...(props.state || {})
+    ...(props.state || {}),
   };
 
   let timeout;
@@ -32,7 +31,11 @@ const SpeechBubbleTip = (props) => {
         // props.position, where the speech bubble tip is rendering on identity or settings
         // props.textLength, for short text styling
         // props.tipText, text inside speech bubble
-        <div className={`speech-bubbletip ${props.position || "identity"} ${props.textLength || ""}`}>
+        <div
+          className={`speech-bubbletip ${props.position || "identity"} ${
+            props.textLength || ""
+          }`}
+        >
           {props.tipText}
         </div>
       )}
@@ -40,15 +43,18 @@ const SpeechBubbleTip = (props) => {
   );
 };
 
-
 function NotificationTip(props) {
   return (
-    <SpeechBubbleTip {...props} tipText={props.tipText} position={props.position}>
+    <SpeechBubbleTip
+      {...props}
+      tipText={props.tipText}
+      position={props.position}
+    >
       <div className="notification-dot">
-        <div className="notification-dot-inner" /> 
+        <div className="notification-dot-inner" />
       </div>
     </SpeechBubbleTip>
-    )
-  }
+  );
+}
 
 export default NotificationTip;

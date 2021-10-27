@@ -45,7 +45,7 @@ class Captcha extends Component {
             </EduIDButton>
           </div>
         </div>
-      </div>
+      </div>,
     ];
   }
 }
@@ -54,14 +54,14 @@ Captcha.propTypes = {
   recaptcha_key: PropTypes.string,
   handleCaptcha: PropTypes.func,
   fetching: PropTypes.bool,
-  setFetching: PropTypes.func
+  setFetching: PropTypes.func,
 };
 
 const LoadingCaptcha = ScriptLoader(
   "https://www.google.com/recaptcha/api.js?render=explicit"
 )(Captcha);
 
-export default props => (
+export default (props) => (
   <FetchingContext.Consumer>
     {({ fetching, setFetching }) => (
       <LoadingCaptcha

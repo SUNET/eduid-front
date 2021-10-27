@@ -3,9 +3,9 @@ import EmailDisplay from "components/EmailDisplay";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
-  const emailAddress = state.emails.emails.filter(email => email.primary);
+  const emailAddress = state.emails.emails.filter((email) => email.primary);
   return {
-    email: emailAddress
+    email: emailAddress,
   };
 };
 

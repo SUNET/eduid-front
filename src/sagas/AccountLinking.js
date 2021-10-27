@@ -4,14 +4,14 @@ import {
   putCsrfToken,
   postRequest,
   getRequest,
-  failRequest
+  failRequest,
 } from "sagas/common";
 import * as actions from "actions/AccountLinking";
 
 export function* requestOrcid() {
   try {
     yield put(actions.getOrcid());
-    const config = yield select(state => state.config);
+    const config = yield select((state) => state.config);
     const orcid = yield call(fetchOrcid, config);
     yield put(putCsrfToken(orcid));
     yield put(orcid);
@@ -22,7 +22,7 @@ export function* requestOrcid() {
 
 export function* requestConnectOrcid(win) {
   try {
-    const config = yield select(state => state.config);
+    const config = yield select((state) => state.config);
     let url = config.orcid_url + "authorize";
 
     if (win !== undefined && win.location !== undefined) {
@@ -38,17 +38,17 @@ export function* requestConnectOrcid(win) {
 export function fetchOrcid(config) {
   return window
     .fetch(config.orcid_url, {
-      ...getRequest
+      ...getRequest,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* requestRemoveOrcid() {
   try {
-    const config = yield select(state => state.config),
+    const config = yield select((state) => state.config),
       data = {
-        csrf_token: config.csrf_token
+        csrf_token: config.csrf_token,
       };
     const resp = yield call(removeOrcid, config, data);
     yield put(putCsrfToken(resp));
@@ -62,8 +62,8 @@ export function removeOrcid(config, data) {
   return window
     .fetch(config.orcid_url + "remove", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

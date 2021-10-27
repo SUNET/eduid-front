@@ -2,35 +2,35 @@ import * as actions from "actions/AccountLinking";
 
 const accountLinkingState = {
   message: "",
-  orcid: null
+  orcid: null,
 };
 
 let accountLinkingReducer = (state = accountLinkingState, action) => {
   switch (action.type) {
     case actions.GET_ORCID:
       return {
-        ...state
+        ...state,
       };
     case actions.GET_PERSONAL_DATA_ORCID_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.GET_ORCID_FAIL:
       return {
         ...state,
-        message: action.payload.message
+        message: action.payload.message,
       };
     case actions.POST_ORCID_REMOVE_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        orcid: {}
+        orcid: {},
       };
     case actions.POST_ORCID_REMOVE_FAIL:
       return {
         ...state,
-        message: action.payload.message
+        message: action.payload.message,
       };
     default:
       return state;

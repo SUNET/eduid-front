@@ -7,18 +7,18 @@ const mapStateToProps = (state) => {
   return {
     orcid: state.account_linking.orcid,
     is_configured: state.config.is_configured,
-    message: state.account_linking.message
+    message: state.account_linking.message,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleOrcidDelete: function() {
+    handleOrcidDelete: function () {
       dispatch(actions.startOrcidRemove());
     },
-    handleOrcidConnect: function() {
+    handleOrcidConnect: function () {
       dispatch(actions.startOrcidConnect());
-    }
+    },
   };
 };
 

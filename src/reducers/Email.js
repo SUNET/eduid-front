@@ -4,7 +4,7 @@ import * as actions from "actions/Email";
 const emailData = {
   email: "",
   acceptingTOU: false,
-  tou_accepted: false
+  tou_accepted: false,
 };
 
 let emailReducer = (state = emailData, action) => {
@@ -13,19 +13,19 @@ let emailReducer = (state = emailData, action) => {
       return {
         ...state,
         ...action.payload,
-        acceptingTOU: true
+        acceptingTOU: true,
       };
     case actions.ACCEPT_TOU:
       return {
         ...state,
         tou_accepted: true,
-        acceptingTOU: false
+        acceptingTOU: false,
       };
     case actions.REJECT_TOU:
       return {
         ...state,
         tou_accepted: false,
-        acceptingTOU: false
+        acceptingTOU: false,
       };
     default:
       return state;

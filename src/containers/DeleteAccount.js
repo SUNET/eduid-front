@@ -3,7 +3,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import {
   confirmDeletion,
   stopConfirmationDeletion,
-  startConfirmationDeletion
+  startConfirmationDeletion,
 } from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
 import DeleteAccount from "components/DeleteAccount";
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
     credentials: state.security.credentials,
     confirming_deletion: state.security.confirming_deletion,
     redirect_to: state.security.location,
-    deleted: state.security.deleted
+    deleted: state.security.deleted,
   };
 };
 
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleConfirmationDeletion: function () {
       dispatch(confirmDeletion());
-    }
+    },
   };
 };
 

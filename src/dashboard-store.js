@@ -19,7 +19,6 @@ import eidasReducer from "reducers/Eidas";
 import groupsReducer from "./login/redux/reducers/groupsReducer";
 import invitesReducer from "./login/redux/reducers/invitesReducer";
 
-
 const eduIDApp = combineReducers({
   router: routerReducer,
   chpass: chpassReducer,

@@ -1,31 +1,30 @@
 const path = require("path");
 const webpackProd = require("./webpack.prod.config");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 
 var webpackStaging = {
   ...webpackProd,
-  devtool: "eval-source-map"
+  devtool: "eval-source-map",
 };
 
 webpackStaging.output = {
   filename: "[name].staging.js",
   publicPath: "https://www.dev.eduid.se/static/front-build/",
-  path: path.join(__dirname, "build")
+  path: path.join(__dirname, "build"),
 };
 
 webpackStaging.plugins = [
   initialConfigPlugin,
-  ...["errors", "login", "dashboard", "signup"].map((entryName) =>{
+  ...["errors", "login", "dashboard", "signup"].map((entryName) => {
     return new HtmlWebpackPlugin({
       hash: true,
       template: `./public/${entryName}.html`,
       filename: `${entryName}.staging.html`,
-      chunks: [`${entryName}`]
-    })
-  })
+      chunks: [`${entryName}`],
+    });
+  }),
 ];
-
 
 webpackStaging.devtool = "source-map";
 

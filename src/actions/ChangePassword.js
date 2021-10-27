@@ -15,7 +15,7 @@ export const SET_ZXCVBN = "SET_ZXCVBN";
 
 export function getSuggestedPassword() {
   return {
-    type: GET_SUGGESTED_PASSWORD
+    type: GET_SUGGESTED_PASSWORD,
   };
 }
 
@@ -24,14 +24,14 @@ export function getSuggestedPasswordFail(err) {
     type: GET_SUGGESTED_PASSWORD_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startPasswordChange() {
   return {
-    type: START_PASSWORD_CHANGE
+    type: START_PASSWORD_CHANGE,
   };
 }
 
@@ -40,8 +40,8 @@ export function postPasswordChange(oldPassword, newPassword) {
     type: POST_PASSWORD_CHANGE,
     payload: {
       old: oldPassword,
-      next: newPassword
-    }
+      next: newPassword,
+    },
   };
 }
 
@@ -50,8 +50,8 @@ export function postPasswordChangeFail(err) {
     type: POST_SECURITY_CHANGE_PASSWORD_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
@@ -59,7 +59,7 @@ export function setZxcvbn(module) {
   return {
     type: SET_ZXCVBN,
     payload: {
-      module: module
-    }
+      module: module,
+    },
   };
 }

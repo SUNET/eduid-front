@@ -14,7 +14,7 @@ class Header extends Component {
       button = (
         <a href={this.props.dashboard_url}>
           <button id="login">
-            <FontAwesomeIcon icon={faUser}/>
+            <FontAwesomeIcon icon={faUser} />
             {this.props.translate("header.signin")}
           </button>
         </a>
@@ -28,7 +28,7 @@ class Header extends Component {
       button = (
         <div id="eduid-button">
           <button id="logout" onClick={this.props.handleLogout}>
-            <FontAwesomeIcon icon={faUser}/>
+            <FontAwesomeIcon icon={faUser} />
             {this.props.translate("header.logout")}
           </button>
         </div>

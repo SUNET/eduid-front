@@ -5,6 +5,6 @@ export const validate = (values) => {
     // let code = codeInput.replace(/\s/g, "");
     // code = code.trim();
     errors.confirmationCode = "required";
-  } 
+  }
   return errors;
 };

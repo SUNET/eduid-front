@@ -15,7 +15,7 @@ const mapStateToProps = () => {
   return {
     //   phones: state.phones.phones,
     primaryPhone: ["079XXXXX97"],
-    primaryPhoneStatus: true
+    primaryPhoneStatus: true,
   };
 };
 

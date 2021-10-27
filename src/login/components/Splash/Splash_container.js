@@ -4,7 +4,7 @@ import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {
-    is_loaded: state.app.is_loaded
+    is_loaded: state.app.is_loaded,
   };
 };
 

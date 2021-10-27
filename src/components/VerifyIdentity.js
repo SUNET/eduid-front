@@ -42,7 +42,7 @@ class VerifyIdentity extends Component {
       return (
         <div key="0" className="intro">
           <h4>{pageHeading}</h4>
-          <p>{pageText}</p>    
+          <p>{pageText}</p>
         </div>
       );
     };
@@ -50,9 +50,7 @@ class VerifyIdentity extends Component {
     // top half of page: add nin/nin added
     let VerifyIdentity_Step1 = () => {
       if (this.props.verifiedNinStatus) {
-        return (
-          <NumberAdded {...this.props} />
-        ) 
+        return <NumberAdded {...this.props} />;
       } else {
         return <AddNumber {...this.props} />;
       }
@@ -67,23 +65,32 @@ class VerifyIdentity extends Component {
       const vettingOptionsKeys = Object.keys(vettingOptionsObject);
       const addedNin = this.props.nins[0];
       vettingButtons = [
-        <div key="1" id="nins-btn-grid"> 
+        <div key="1" id="nins-btn-grid">
           {vettingOptionsKeys.map((key, index) => {
             let helpText = buttonHelpTextArray[index];
             return (
               <div key={index}>
                 {vettingOptionsObject[key]}
-                 {/* vettingRegistry object letter(index 0) and lookup_mobile(index 1) needs nin, 
+                {/* vettingRegistry object letter(index 0) and lookup_mobile(index 1) needs nin, 
                       if index is less then 2 and nin is not added,  
                       else idenx is 1 and mobile number is not verified swedish number class name will be disabled*/}
-                <p key={index} className={"proofing-btn-help" + (index < 2 && !addedNin || index === 1 && !this.props.verifiedSwePhone ? " disabled":"")}>
+                <p
+                  key={index}
+                  className={
+                    "proofing-btn-help" +
+                    ((index < 2 && !addedNin) ||
+                    (index === 1 && !this.props.verifiedSwePhone)
+                      ? " disabled"
+                      : "")
+                  }
+                >
                   {helpText}
                 </p>
               </div>
-            )
+            );
           })}
-        </div>
-      ]
+        </div>,
+      ];
     }
 
     // bottom half of page: vetting on added nin
@@ -108,9 +115,9 @@ class VerifyIdentity extends Component {
       <Fragment>
         <VerifyIdentity_Step1 />
         <AddNin {...this.props} />
-        { this.props.verifiedNinStatus && 
+        {this.props.verifiedNinStatus && (
           <p className="help-text">{recoverIdentityTip}</p>
-        }
+        )}
         <VerifyIdentity_Step2 />
         {vettingButtons}
       </Fragment>

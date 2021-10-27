@@ -5,7 +5,7 @@ const mobileData = {
   confirming: "",
   phones: [],
   phone: "",
-  code: ""
+  code: "",
 };
 
 let mobileReducer = (state = mobileData, action) => {
@@ -13,17 +13,17 @@ let mobileReducer = (state = mobileData, action) => {
     case actions.GET_MOBILES_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.POST_MOBILE_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.START_CONFIRMATION:
       return {
         ...state,
-        confirming: action.payload.phone
+        confirming: action.payload.phone,
       };
 
     case actions.STOP_CONFIRMATION:
@@ -39,34 +39,34 @@ let mobileReducer = (state = mobileData, action) => {
     case actions.START_VERIFY:
       return {
         ...state,
-        code: action.payload.code
+        code: action.payload.code,
       };
 
     case actions.POST_PHONE_VERIFY_SUCCESS:
       return {
         ...state,
         ...state.payload,
-        phones: action.payload.phones
+        phones: action.payload.phones,
       };
     case actions.POST_MOBILE_REMOVE:
       return {
         ...state,
-        phone: action.payload.phone
+        phone: action.payload.phone,
       };
     case actions.POST_PHONE_REMOVE_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.POST_MOBILE_PRIMARY:
       return {
         ...state,
-        phone: action.payload.phone
+        phone: action.payload.phone,
       };
     case actions.POST_MOBILE_PRIMARY_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case "@@redux-form/CHANGE": {
       const form = {};
@@ -75,7 +75,7 @@ let mobileReducer = (state = mobileData, action) => {
       }
       return {
         ...state,
-        ...form
+        ...form,
       };
     }
     default:

@@ -33,14 +33,14 @@ function init_plugin(app, rootSaga, target, component, action) {
   const language = navigator.languages
     ? navigator.languages[0]
     : navigator.language || navigator.userLanguage;
-  const supported = AVAILABLE_LANGUAGES.map(lang => lang[0]);
+  const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
 
   if (supported.includes(language)) {
     const lang_code = language.substring(0, 2);
     store.dispatch(
       updateIntl({
         locale: lang_code,
-        messages: LOCALIZED_MESSAGES[lang_code]
+        messages: LOCALIZED_MESSAGES[lang_code],
       })
     );
   }

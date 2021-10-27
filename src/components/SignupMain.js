@@ -75,35 +75,35 @@ class SignupMain extends Component {
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
         <HeaderContainer {...this.props} />
-          <section id="panel">
-            <NotificationsContainer />
-            <Route
-              exact
-              path={`${BASE_PATH}`}
-              component={() => <Redirect to={redirect} />}
-            />
-            <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
-            <Route
-              path={`${BASE_PATH}/trycaptcha`}
-              component={CaptchaContainer}
-            />
-            <Route
-              path={`${BASE_PATH}/new`}
-              component={AccountCreatedContainer}
-            />
-            <Route
-              path={`${BASE_PATH}/code-verified`}
-              component={CodeVerifiedContainer}
-            />
-            <Route
-              path={`${BASE_PATH}/resend-code`}
-              component={ResendCodeContainer}
-            />
-            <Route
-              path={`${BASE_PATH}/address-used`}
-              component={EmailInUseContainer}
-            />
-          </section>
+        <section id="panel">
+          <NotificationsContainer />
+          <Route
+            exact
+            path={`${BASE_PATH}`}
+            component={() => <Redirect to={redirect} />}
+          />
+          <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
+          <Route
+            path={`${BASE_PATH}/trycaptcha`}
+            component={CaptchaContainer}
+          />
+          <Route
+            path={`${BASE_PATH}/new`}
+            component={AccountCreatedContainer}
+          />
+          <Route
+            path={`${BASE_PATH}/code-verified`}
+            component={CodeVerifiedContainer}
+          />
+          <Route
+            path={`${BASE_PATH}/resend-code`}
+            component={ResendCodeContainer}
+          />
+          <Route
+            path={`${BASE_PATH}/address-used`}
+            component={EmailInUseContainer}
+          />
+        </section>
         <FooterContainer {...this.props} />
       </Router>,
     ];

@@ -6,12 +6,12 @@ import {
   getRequest,
   postRequest,
   saveData,
-  failRequest
+  failRequest,
 } from "sagas/common";
 import {
   getAllUserdata,
   getAllUserdataFail,
-  postUserdataFail
+  postUserdataFail,
 } from "actions/PersonalData";
 
 import * as actions from "actions/DashboardConfig";
@@ -24,7 +24,7 @@ import * as accountLinkingActions from "actions/AccountLinking";
 export function* requestAllPersonalData() {
   try {
     yield put(getAllUserdata());
-    const config = yield select(state => state.config);
+    const config = yield select((state) => state.config);
     let userdata = yield call(fetchAllPersonalData, config);
     yield put(putCsrfToken(userdata));
     if (userdata.type === pdataActions.GET_ALL_USERDATA_SUCCESS) {
@@ -34,8 +34,8 @@ export function* requestAllPersonalData() {
         const ninAction = {
           type: ninActions.GET_NINS_SUCCESS,
           payload: {
-            nins: nins
-          }
+            nins: nins,
+          },
         };
         yield put(ninAction);
       }
@@ -45,8 +45,8 @@ export function* requestAllPersonalData() {
         const emailAction = {
           type: emailActions.GET_EMAILS_SUCCESS,
           payload: {
-            emails: emails
-          }
+            emails: emails,
+          },
         };
         yield put(emailAction);
       }
@@ -56,8 +56,8 @@ export function* requestAllPersonalData() {
         const phoneAction = {
           type: phoneActions.GET_MOBILES_SUCCESS,
           payload: {
-            phones: phones
-          }
+            phones: phones,
+          },
         };
         yield put(phoneAction);
       }
@@ -67,8 +67,8 @@ export function* requestAllPersonalData() {
         const orcidAction = {
           type: accountLinkingActions.GET_PERSONAL_DATA_ORCID_SUCCESS,
           payload: {
-            orcid: orcid
-          }
+            orcid: orcid,
+          },
         };
         yield put(orcidAction);
       }
@@ -79,7 +79,7 @@ export function* requestAllPersonalData() {
         yield put(
           updateIntl({
             locale: lang,
-            messages: LOCALIZED_MESSAGES[lang]
+            messages: LOCALIZED_MESSAGES[lang],
           })
         );
       }
@@ -95,19 +95,19 @@ export function* requestAllPersonalData() {
 export function fetchAllPersonalData(config) {
   return window
     .fetch(config.personal_data_url + "all-user-data", {
-      ...getRequest
+      ...getRequest,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
-const getData = state => {
+const getData = (state) => {
   const data = {
     given_name: state.form.personal_data.values.given_name.trim(),
     surname: state.form.personal_data.values.surname.trim(),
     display_name: state.form.personal_data.values.display_name.trim(),
     language: state.form.personal_data.values.language,
-    csrf_token: state.config.csrf_token
+    csrf_token: state.config.csrf_token,
   };
   delete data.eppn;
   return data;
@@ -117,10 +117,10 @@ export function sendPersonalData(config, data) {
   return window
     .fetch(config.personal_data_url + "user", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export const savePersonalData = saveData(
