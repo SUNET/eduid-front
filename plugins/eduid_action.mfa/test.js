@@ -1,7 +1,4 @@
 import React from "react";
-// import { Provider } from "react-intl-redux";
-// import { mount } from "enzyme";
-import jest from "jest";
 import expect from "expect";
 import { put, call } from "redux-saga/effects";
 
@@ -117,30 +114,27 @@ describe("Some plugin async actions", () => {
         },
       });
     const data = {
-      csrf_token: Buffer.from(
-        String.fromCharCode.apply(null, new Uint8Array(assertion.rawId)),
-        "base64"
+      csrf_token: state.config.csrf_token,
+      credentialId: btoa(
+        String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))
       ),
-      authenticatorData: Buffer.from(
+      authenticatorData: btoa(
         String.fromCharCode.apply(
           null,
           new Uint8Array(assertion.response.authenticatorData)
-        ),
-        "base64"
+        )
       ),
-      clientDataJSON: Buffer.from(
+      clientDataJSON: btoa(
         String.fromCharCode.apply(
           null,
           new Uint8Array(assertion.response.clientDataJSON)
-        ),
-        "base64"
+        )
       ),
-      signature: Buffer.from(
+      signature: btoa(
         String.fromCharCode.apply(
           null,
           new Uint8Array(assertion.response.signature)
-        ),
-        "base64"
+        )
       ),
     };
     const generator = postCompleteWebauthn();
