@@ -33,7 +33,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
   const {
     intlPropName = "intl",
     translatePropName = "translate",
-    withRef = false
+    withRef = false,
   } = options;
   //WrappedComponent.propTypes['translate'] = PropTypes.func;
 
@@ -106,7 +106,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
   // context types for InjectIntl
   InjectIntl.contextTypes = {
     intl: intlShape,
-    translation: PropTypes.func
+    translation: PropTypes.func,
   };
 
   // this is undefined (?)

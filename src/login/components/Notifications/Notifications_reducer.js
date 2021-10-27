@@ -2,7 +2,7 @@ import * as actions from "./Notifications_actions";
 
 const notifications = {
   messages: [],
-  errors: []
+  errors: [],
 };
 
 const notificationsReducer = (state = notifications, action) => {
@@ -13,15 +13,15 @@ const notificationsReducer = (state = notifications, action) => {
           return {
             messages: [],
             errors: [
-              { msg: action.payload.message, vals: action.payload.values }
-            ]
+              { msg: action.payload.message, vals: action.payload.values },
+            ],
           };
         case "messages":
           return {
             messages: [
-              { msg: action.payload.message, vals: action.payload.values }
+              { msg: action.payload.message, vals: action.payload.values },
             ],
-            errors: []
+            errors: [],
           };
         default:
           return state;
@@ -29,12 +29,12 @@ const notificationsReducer = (state = notifications, action) => {
     case actions.RM_ALL_NOTIFICATION:
       return {
         messages: [],
-        errors: []
+        errors: [],
       };
     case "@@router/LOCATION_CHANGE":
       return {
         messages: [],
-        errors: []
+        errors: [],
       };
     default:
       return state;

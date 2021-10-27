@@ -1,6 +1,6 @@
 const mock = require("jest-mock");
 import React from "react";
-import { shallow, mount} from "enzyme";
+import { shallow, mount } from "enzyme";
 import expect from "expect";
 import fetchMock from "fetch-mock";
 import { Provider } from "react-intl-redux";
@@ -15,7 +15,7 @@ import {
   sendGetLetterProofing,
   fetchGetLetterProofing,
   sendLetterCode,
-  fetchLetterCode
+  fetchLetterCode,
 } from "../sagas/LetterProofing";
 
 const messages = require("../login/translation/messageIndex");
@@ -29,33 +29,33 @@ const baseState = {
     letter_expires: "",
     letter_expired: false,
     confirmingLetter: false,
-    code: ""
+    code: "",
   },
-  config: { 
+  config: {
     letter_proofing_url: "http://localhost/letter",
-    csrf_token: "csrf-token" 
+    csrf_token: "csrf-token",
   },
   nins: {
-    nin:""
+    nin: "",
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 };
 
-const fakeStore = fakeState => ({
+const fakeStore = (fakeState) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...fakeState })
+  getState: () => ({ ...fakeState }),
 });
 
 function getFakeState(newState) {
   if (newState === undefined) {
-    newState = {}
+    newState = {};
   }
-  return Object.assign(baseState, newState)
+  return Object.assign(baseState, newState);
 }
 
 describe("LetterProofing Component", () => {
@@ -73,12 +73,12 @@ describe("Letter Proofing, when letter has been expired", () => {
   const fakeState = getFakeState({
     nins: {
       valid_nin: true,
-      nin: "dummy-nin"
+      nin: "dummy-nin",
     },
-  })
+  });
 
   function setupComponent() {
-    const props =  {
+    const props = {
       confirmingLetter: false,
       verifyingLetter: true,
       code: "",
@@ -88,7 +88,7 @@ describe("Letter Proofing, when letter has been expired", () => {
       handleLetterProofing: mock.fn(),
       sendConfirmationLetter: mock.fn(),
       handleConfirmationLetter: mock.fn(),
-      handleStopConfirmationLetter: mock.fn()
+      handleStopConfirmationLetter: mock.fn(),
     };
     const wrapper = shallow(
       <Provider store={fakeStore(fakeState)}>
@@ -103,23 +103,29 @@ describe("Letter Proofing, when letter has been expired", () => {
 
   it("Renders when letter has been expired", () => {
     const { wrapper } = setupComponent();
-    expect(wrapper.find(LetterProofingContainer).props().letter_sent).toEqual("20101010");
-    expect(wrapper.find(LetterProofingContainer).props().letter_expires).toEqual("20101024");
-    expect(wrapper.find(LetterProofingContainer).props().letter_expired).toBeTruthy();
+    expect(wrapper.find(LetterProofingContainer).props().letter_sent).toEqual(
+      "20101010"
+    );
+    expect(
+      wrapper.find(LetterProofingContainer).props().letter_expires
+    ).toEqual("20101024");
+    expect(
+      wrapper.find(LetterProofingContainer).props().letter_expired
+    ).toBeTruthy();
   });
-})
+});
 
 describe("Letter proofing Actions", () => {
   it("should create an action to close the modal for the letter-sent code", () => {
     const expectedAction = {
-      type: actions.STOP_LETTER_VERIFICATION
+      type: actions.STOP_LETTER_VERIFICATION,
     };
     expect(actions.stopLetterVerification()).toEqual(expectedAction);
   });
 
   it("should create an action to trigger sending a letter with the code", () => {
     const expectedAction = {
-      type: actions.POST_LETTER_PROOFING_PROOFING
+      type: actions.POST_LETTER_PROOFING_PROOFING,
     };
     expect(actions.postLetterProofingSendLetter()).toEqual(expectedAction);
   });
@@ -129,8 +135,8 @@ describe("Letter proofing Actions", () => {
       expectedAction = {
         type: actions.POST_LETTER_PROOFING_CODE,
         payload: {
-          code: data.code
-        }
+          code: data.code,
+        },
       };
     expect(actions.postLetterProofingVerificationCode(data)).toEqual(
       expectedAction
@@ -143,8 +149,8 @@ describe("Letter proofing Actions", () => {
       type: actions.POST_LETTER_PROOFING_PROOFING_FAIL,
       error: true,
       payload: {
-        message: err.toString()
-      }
+        message: err.toString(),
+      },
     };
     expect(actions.postLetterProofingSendLetterFail(err)).toEqual(
       expectedAction
@@ -156,8 +162,8 @@ describe("Letter proofing Actions", () => {
       type: actions.POST_LETTER_PROOFING_CODE_FAIL,
       error: true,
       payload: {
-        message: err.toString()
-      }
+        message: err.toString(),
+      },
     };
     expect(actions.postLetterProofingVerificationCodeFail(err)).toEqual(
       expectedAction
@@ -172,21 +178,21 @@ describe("Reducers", () => {
   it("Receives a STOP_LETTER_VERIFICATION action", () => {
     expect(
       letterProofingReducer(letterProofingState, {
-        type: actions.STOP_LETTER_VERIFICATION
+        type: actions.STOP_LETTER_VERIFICATION,
       })
     ).toEqual({
       ...letterProofingState,
-      confirmingLetter: false
+      confirmingLetter: false,
     });
   });
 
   it("Receives a POST_LETTER_PROOFING_CODE action", () => {
     expect(
       letterProofingReducer(letterProofingState, {
-        type: actions.STOP_LETTER_VERIFICATION
+        type: actions.STOP_LETTER_VERIFICATION,
       })
     ).toEqual({
-      ...letterProofingState
+      ...letterProofingState,
     });
   });
 
@@ -195,12 +201,12 @@ describe("Reducers", () => {
       letterProofingReducer(letterProofingState, {
         type: actions.POST_LETTER_PROOFING_PROOFING_SUCCESS,
         payload: {
-          message: "success"
-        }
+          message: "success",
+        },
       })
     ).toEqual({
       ...letterProofingState,
-      message: "success"
+      message: "success",
     });
   });
 
@@ -210,11 +216,11 @@ describe("Reducers", () => {
         type: actions.POST_LETTER_PROOFING_PROOFING_FAIL,
         error: true,
         payload: {
-          message: "err"
-        }
+          message: "err",
+        },
       })
     ).toEqual({
-      ...letterProofingState
+      ...letterProofingState,
     });
   });
 
@@ -223,12 +229,12 @@ describe("Reducers", () => {
       letterProofingReducer(letterProofingState, {
         type: actions.POST_LETTER_PROOFING_CODE,
         payload: {
-          code: "dummy-code"
-        }
+          code: "dummy-code",
+        },
       })
     ).toEqual({
       ...letterProofingState,
-      code: "dummy-code"
+      code: "dummy-code",
     });
   });
 
@@ -238,12 +244,12 @@ describe("Reducers", () => {
         type: actions.POST_LETTER_PROOFING_CODE_SUCCESS,
         payload: {
           success: true,
-          message: "success"
-        }
+          message: "success",
+        },
       })
     ).toEqual({
       ...letterProofingState,
-      message: "success"
+      message: "success",
     });
   });
 
@@ -253,11 +259,11 @@ describe("Reducers", () => {
         type: actions.POST_LETTER_PROOFING_CODE_FAIL,
         error: true,
         payload: {
-          message: "err"
-        }
+          message: "err",
+        },
       })
     ).toEqual({
-      ...letterProofingState
+      ...letterProofingState,
     });
   });
 });
@@ -288,14 +294,14 @@ describe("Async component", () => {
   const fakeState = {
     config: {
       letter_proofing_url: "http://localhost/letter",
-      csrf_token: "csrf-token"
+      csrf_token: "csrf-token",
     },
     nins: {
-      nin: "dummy-nin"
+      nin: "dummy-nin",
     },
     letter_proofing: {
-      code: "dummy-code"
-    }
+      code: "dummy-code",
+    },
   };
 
   it("Sagas sendLetterProfing", () => {
@@ -305,18 +311,20 @@ describe("Async component", () => {
 
     const data = {
       nin: "dummy-nin",
-      csrf_token: "csrf-token"
+      csrf_token: "csrf-token",
     };
 
     const resp = generator.next(fakeState);
-    expect(resp.value).toEqual(call(fetchLetterProofing, fakeState.config, data));
+    expect(resp.value).toEqual(
+      call(fetchLetterProofing, fakeState.config, data)
+    );
 
     const action = {
       type: "POST_LETTER_PROOFING_PROOFING_SUCCESS",
       payload: {
         csrf_token: "csrf-token",
-        message: "success"
-      }
+        message: "success",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -332,14 +340,16 @@ describe("Async component", () => {
 
     const nin = "dummy-nin";
     const resp = generator.next(fakeState);
-    expect(resp.value).toEqual(call(fetchGetLetterProofing, fakeState.config, nin));
+    expect(resp.value).toEqual(
+      call(fetchGetLetterProofing, fakeState.config, nin)
+    );
 
     const action = {
       type: "GET_LETTER_PROOFING_PROOFING_SUCCESS",
       payload: {
         csrf_token: "csrf-token",
-        message: "success"
-      }
+        message: "success",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -355,7 +365,7 @@ describe("Async component", () => {
 
     const data = {
       code: "dummy-code",
-      csrf_token: "csrf-token"
+      csrf_token: "csrf-token",
     };
     const resp = generator.next(fakeState);
     expect(resp.value).toEqual(call(fetchLetterCode, fakeState.config, data));
@@ -364,8 +374,8 @@ describe("Async component", () => {
       type: "POST_LETTER_PROOFING_CODE_SUCCESS",
       payload: {
         csrf_token: "csrf-token",
-        message: "success"
-      }
+        message: "success",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -379,9 +389,9 @@ describe("LetterProofing component, without id number", () => {
   const fakeState = getFakeState({
     nins: {
       valid_nin: false,
-      nins: []
-    }
-  })
+      nins: [],
+    },
+  });
 
   function setupComponent() {
     const wrapper = mount(
@@ -390,17 +400,17 @@ describe("LetterProofing component, without id number", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 
   it("Renders button text, add ID number to get letter", () => {
-    const state = {...fakeState};
-    state.letter_proofing.letter_sent = "",
-    state.letter_proofing.verifyingLetter = false,
-    state.nins.valid_nin = false,
-    state.letter_proofing.letter_expired = false,
-    state.nins.nins[0] = ""
+    const state = { ...fakeState };
+    (state.letter_proofing.letter_sent = ""),
+      (state.letter_proofing.verifyingLetter = false),
+      (state.nins.valid_nin = false),
+      (state.letter_proofing.letter_expired = false),
+      (state.nins.nins[0] = "");
 
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
@@ -410,7 +420,7 @@ describe("LetterProofing component, without id number", () => {
 });
 
 describe("LetterProofing component, letter has been sent", () => {
-  const fakeState = getFakeState()
+  const fakeState = getFakeState();
 
   function setupComponent() {
     const wrapper = mount(
@@ -419,24 +429,24 @@ describe("LetterProofing component, letter has been sent", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 
   it("Renders button text, the letter was sent", () => {
-    const state = {...fakeState};
-    state.letter_proofing.letter_sent = "20201010",
-    state.letter_proofing.verifyingLetter = true,
-    state.nins.valid_nin = true,
-    state.nins.nins[0] = "19881212"
+    const state = { ...fakeState };
+    (state.letter_proofing.letter_sent = "20201010"),
+      (state.letter_proofing.verifyingLetter = true),
+      (state.nins.valid_nin = true),
+      (state.nins.nins[0] = "19881212");
 
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
     const letterSent = description.find("span").at(0);
     const letterValid = description.find("span").at(1);
-    const letterSentDate = description.at(0).prop('children');
+    const letterSentDate = description.at(0).prop("children");
     const checkSentDate = shallow(<div>{letterSentDate}</div>).text();
-    const letterVaildDate = description.at(1).prop('children');
+    const letterVaildDate = description.at(1).prop("children");
     const checkVaildDate = shallow(<div>{letterVaildDate}</div>).text();
     expect(letterSent.exists()).toEqual(true);
     expect(letterSent.text()).toContain("sent");
@@ -448,8 +458,8 @@ describe("LetterProofing component, letter has been sent", () => {
 });
 
 describe("LetterProofing component, when letter has expired", () => {
-  const fakeState = getFakeState()
-  
+  const fakeState = getFakeState();
+
   function setupComponent() {
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -457,25 +467,25 @@ describe("LetterProofing component, when letter has expired", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 
   it("Renders button text, the code has expired", () => {
-    const state = {...fakeState};
-    state.letter_proofing.letter_sent = "20201010",
-    state.letter_proofing.letter_expires = "20201024",
-    state.letter_proofing.verifyingLetter = true,
-    state.letter_proofing.confirmingLetter = false,
-    state.nins.valid_nin = true,
-    state.letter_proofing.letter_expired = true,
-    state.nins.nins[0] = "19881212"
-    
+    const state = { ...fakeState };
+    (state.letter_proofing.letter_sent = "20201010"),
+      (state.letter_proofing.letter_expires = "20201024"),
+      (state.letter_proofing.verifyingLetter = true),
+      (state.letter_proofing.confirmingLetter = false),
+      (state.nins.valid_nin = true),
+      (state.letter_proofing.letter_expired = true),
+      (state.nins.nins[0] = "19881212");
+
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
     const codeExpired = description.find("span").at(0);
     const orderNewLetter = description.find("span").at(1);
-    const expiredDate = description.at(0).prop('children');
+    const expiredDate = description.at(0).prop("children");
     const checkExpiredDate = shallow(<div>{expiredDate}</div>).text();
     expect(codeExpired.exists()).toEqual(true);
     expect(codeExpired.text()).toContain("expired");

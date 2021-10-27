@@ -12,7 +12,7 @@ import * as actions from "actions/ActionMain";
 import { postCompleteWebauthn, requestCompleteWebauthn } from "./root-saga";
 
 const pluginState = {
-  webauthn_assertion: {}
+  webauthn_assertion: {},
 };
 
 const setupComponent = genSetupComponent(pluginState);
@@ -21,7 +21,7 @@ describe("Some Component", () => {
   it("Renders the splash screen", () => {
     const wrapper = setupComponent({
         component: <MainContainer />,
-        overrides: { config: { is_app_loaded: false } }
+        overrides: { config: { is_app_loaded: false } },
       }),
       splash = wrapper.find("div#eduid-splash-screen");
 
@@ -48,7 +48,7 @@ describe("Some Component", () => {
     const creds = window.navigator.credentials;
     Object.defineProperty(window.navigator, "credentials", {
       value: undefined,
-      configurable: true
+      configurable: true,
     });
 
     const wrapper = setupComponent({ component: <MainContainer /> }),
@@ -65,14 +65,14 @@ describe("Some Component", () => {
 
     Object.defineProperty(window.navigator, "credentials", {
       value: creds,
-      configurable: true
+      configurable: true,
     });
   });
 });
 
 describe("Some action reducer", () => {
   const mockState = {
-    webauthn_assertion: {}
+    webauthn_assertion: {},
   };
 
   it("Receives plugin config loaded action", () => {
@@ -80,12 +80,12 @@ describe("Some action reducer", () => {
       actionReducer(mockState, {
         type: "WEBAUTHN_CREDS_GOT",
         payload: {
-          dummy: "assertion"
-        }
+          dummy: "assertion",
+        },
       })
     ).toEqual({
       ...mockState,
-      webauthn_assertion: { dummy: "assertion" }
+      webauthn_assertion: { dummy: "assertion" },
     });
   });
 });
@@ -97,17 +97,17 @@ describe("Some plugin async actions", () => {
         response: {
           authenticatorData: new ArrayBuffer("dummy authn data"),
           clientDataJSON: new ArrayBuffer("dummy json"),
-          signature: new ArrayBuffer("dummy signature")
-        }
+          signature: new ArrayBuffer("dummy signature"),
+        },
       },
       state = getState({
         config: {
           csrf_token: "dummy-token",
-          webauthn_options: ""
+          webauthn_options: "",
         },
         plugin: {
-          webauthn_assertion: assertion
-        }
+          webauthn_assertion: assertion,
+        },
       });
     const data = {
       csrf_token: state.config.csrf_token,
@@ -131,7 +131,7 @@ describe("Some plugin async actions", () => {
           null,
           new Uint8Array(assertion.response.signature)
         )
-      )
+      ),
     };
     const generator = postCompleteWebauthn();
     generator.next();
@@ -140,8 +140,8 @@ describe("Some plugin async actions", () => {
     const action = {
       type: actions.POST_ACTIONS_ACTION_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     generator.next(action);
     delete action.payload.csrf_token;

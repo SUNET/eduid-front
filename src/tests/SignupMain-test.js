@@ -15,7 +15,7 @@ import {
   requestCodeStatus,
   fetchCodeStatus,
   requestConfig,
-  fetchConfig
+  fetchConfig,
 } from "sagas/SignupMain";
 
 import { addLocaleData } from "react-intl";
@@ -36,61 +36,61 @@ const fakeState = {
     is_app_loaded: true,
     //is_fetching: false,
     debug: true,
-    available_languages: []
+    available_languages: [],
   },
   captcha: {
-    captcha_verification: ""
+    captcha_verification: "",
   },
   verified: {
     password: "",
     email: "",
     status: "",
     dashboard_url: "",
-    gotten: false
+    gotten: false,
   },
   email: {
     email: "",
     acceptingTOU: false,
-    tou_accepted: false
+    tou_accepted: false,
   },
   notifications: {
     messages: [],
-    errors: []
+    errors: [],
   },
   intl: {
     locale: "en",
     messages: {
       en: en,
-      sv: sv
-    }
+      sv: sv,
+    },
   },
   emails: {
-    nins: []
+    nins: [],
   },
   nins: {
-    emails: []
-  }
+    emails: [],
+  },
 };
 
 export const getState = (overrides = {}) => {
   const refakeState = { ...fakeState };
-  Object.getOwnPropertyNames(fakeState).forEach(propName => {
+  Object.getOwnPropertyNames(fakeState).forEach((propName) => {
     const overriddenProps = Object.getOwnPropertyNames(overrides);
     if (overriddenProps.includes(propName)) {
       refakeState[propName] = {
         ...fakeState[propName],
-        ...overrides[propName]
+        ...overrides[propName],
       };
     }
   });
   return refakeState;
 };
 
-export const fakeStore = state => ({
+export const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
 export function setupComponent({ component, overrides, store } = {}) {
@@ -108,7 +108,7 @@ describe("SignupMain Component", () => {
   it("Renders the splash screen", () => {
     const wrapper = setupComponent({
         component: <SignupMainContainer />,
-        overrides: { config: { is_app_loaded: false } }
+        overrides: { config: { is_app_loaded: false } },
       }),
       splash = wrapper.find("div#eduid-splash-screen"),
       router = wrapper.find("Router"),
@@ -143,8 +143,8 @@ describe("SignupMain Actions", () => {
     const expectedAction = {
       type: verifiedActions.GET_CODE_STATUS,
       payload: {
-        code: "dummy code"
-      }
+        code: "dummy code",
+      },
     };
     expect(verifiedActions.getCodeStatus("dummy code")).toEqual(expectedAction);
   });
@@ -155,24 +155,24 @@ describe("SignupMain Actions", () => {
       type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(verifiedActions.getCodeStatusFail(err)).toEqual(expectedAction);
   });
 
   it("Should signal the app has loaded", () => {
     const expectedAction = {
-      type: signupActions.APP_LOADED
+      type: signupActions.APP_LOADED,
     };
     expect(signupActions.appLoaded()).toEqual(expectedAction);
   });
 
   //it("Should signal the app is fetching data", () => {
-    //const expectedAction = {
-      //type: signupActions.APP_FETCHING
-    //};
-    //expect(signupActions.appFetching()).toEqual(expectedAction);
+  //const expectedAction = {
+  //type: signupActions.APP_FETCHING
+  //};
+  //expect(signupActions.appFetching()).toEqual(expectedAction);
   //});
 
   it("Should fail when trying to get the config", () => {
@@ -181,8 +181,8 @@ describe("SignupMain Actions", () => {
       type: signupActions.GET_SIGNUP_CONFIG_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(signupActions.getSignupConfigFail(err)).toEqual(expectedAction);
   });
@@ -191,8 +191,8 @@ describe("SignupMain Actions", () => {
     const expectedAction = {
       type: signupActions.NEW_CSRF_TOKEN,
       payload: {
-        csrf_token: "dummy token"
-      }
+        csrf_token: "dummy token",
+      },
     };
     expect(signupActions.newCsrfToken("dummy token")).toEqual(expectedAction);
   });
@@ -209,17 +209,17 @@ describe("SignupMain reducer", () => {
     is_app_loaded: false,
     //is_fetching: false,
     debug: true,
-    available_languages: []
+    available_languages: [],
   };
 
   it("Receives app loaded action", () => {
     expect(
       signupReducer(mockState, {
-        type: signupActions.APP_LOADED
+        type: signupActions.APP_LOADED,
       })
     ).toEqual({
       ...mockState,
-      is_app_loaded: true
+      is_app_loaded: true,
     });
   });
 
@@ -228,8 +228,8 @@ describe("SignupMain reducer", () => {
       signupReducer(mockState, {
         type: verifiedActions.GET_CODE_STATUS,
         payload: {
-          code: "dummy code"
-        }
+          code: "dummy code",
+        },
       })
     ).toEqual({
       ...mockState,
@@ -245,8 +245,8 @@ describe("SignupMain reducer", () => {
         type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       })
     ).toEqual({
       ...mockState,
@@ -267,8 +267,8 @@ describe("SignupMain reducer", () => {
           students_link: "http://example.com",
           technicians_link: "http://example.com",
           staff_link: "http://example.com",
-          faq_link: "http://example.com"
-        }
+          faq_link: "http://example.com",
+        },
       })
     ).toEqual({
       ...mockState,
@@ -281,7 +281,7 @@ describe("SignupMain reducer", () => {
       students_link: "http://example.com",
       technicians_link: "http://example.com",
       staff_link: "http://example.com",
-      faq_link: "http://example.com"
+      faq_link: "http://example.com",
     });
   });
 
@@ -290,30 +290,30 @@ describe("SignupMain reducer", () => {
       signupReducer(mockState, {
         type: signupActions.NEW_CSRF_TOKEN,
         payload: {
-          csrf_token: "dummy token"
-        }
+          csrf_token: "dummy token",
+        },
       })
     ).toEqual({
       ...mockState,
-      csrf_token: "dummy token"
+      csrf_token: "dummy token",
     });
   });
 
   //it("Receives post captcha action", () => {
-    //expect(
-      //signupReducer(mockState, {
-        //type: captchaActions.POST_SIGNUP_TRYCAPTCHA
-      //})
-    //).toEqual({
-      //...mockState,
-      ////is_fetching: true
-    //});
+  //expect(
+  //signupReducer(mockState, {
+  //type: captchaActions.POST_SIGNUP_TRYCAPTCHA
+  //})
+  //).toEqual({
+  //...mockState,
+  ////is_fetching: true
+  //});
   //});
 
   it("Receives post captcha success action", () => {
     expect(
       signupReducer(mockState, {
-        type: captchaActions.POST_SIGNUP_TRYCAPTCHA_SUCCESS
+        type: captchaActions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
       })
     ).toEqual({
       ...mockState,
@@ -324,7 +324,7 @@ describe("SignupMain reducer", () => {
   it("Receives post captcha failure action", () => {
     expect(
       signupReducer(mockState, {
-        type: captchaActions.POST_SIGNUP_TRYCAPTCHA_FAIL
+        type: captchaActions.POST_SIGNUP_TRYCAPTCHA_FAIL,
       })
     ).toEqual({
       ...mockState,
@@ -335,7 +335,7 @@ describe("SignupMain reducer", () => {
   it("Receives verify link success action", () => {
     expect(
       signupReducer(mockState, {
-        type: verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS
+        type: verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS,
       })
     ).toEqual({
       ...mockState,
@@ -346,7 +346,7 @@ describe("SignupMain reducer", () => {
   it("Receives verify link failure action", () => {
     expect(
       signupReducer(mockState, {
-        type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL
+        type: verifiedActions.GET_SIGNUP_VERIFY_LINK_FAIL,
       })
     ).toEqual({
       ...mockState,
@@ -357,7 +357,7 @@ describe("SignupMain reducer", () => {
   it("Receives resend code action", () => {
     expect(
       signupReducer(mockState, {
-        type: resendActions.POST_SIGNUP_RESEND_VERIFICATION
+        type: resendActions.POST_SIGNUP_RESEND_VERIFICATION,
       })
     ).toEqual({
       ...mockState,
@@ -368,7 +368,7 @@ describe("SignupMain reducer", () => {
   it("Receives resend code success action", () => {
     expect(
       signupReducer(mockState, {
-        type: resendActions.POST_SIGNUP_RESEND_VERIFICATION_SUCCESS
+        type: resendActions.POST_SIGNUP_RESEND_VERIFICATION_SUCCESS,
       })
     ).toEqual({
       ...mockState,
@@ -379,7 +379,7 @@ describe("SignupMain reducer", () => {
   it("Receives resend code failure action", () => {
     expect(
       signupReducer(mockState, {
-        type: resendActions.POST_SIGNUP_RESEND_VERIFICATION_FAIL
+        type: resendActions.POST_SIGNUP_RESEND_VERIFICATION_FAIL,
       })
     ).toEqual({
       ...mockState,
@@ -398,8 +398,8 @@ describe("SignupMain async actions", () => {
     const action = {
       type: signupActions.GET_SIGNUP_CONFIG_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     resp = generator.next(action);
     expect(resp.value.PUT.action.type).toEqual(
@@ -414,8 +414,8 @@ describe("SignupMain async actions", () => {
     const state = getState({
       config: {
         csrf_token: "dummy-token",
-        code: "dummy-code"
-      }
+        code: "dummy-code",
+      },
     });
     const url = SIGNUP_SERVICE_URL + "verify-link/" + state.config.code;
     const generator = requestCodeStatus();
@@ -427,8 +427,8 @@ describe("SignupMain async actions", () => {
       type: verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS,
       payload: {
         csrf_token: "csrf-token",
-        status: "verified"
-      }
+        status: "verified",
+      },
     };
     resp = generator.next(action);
 
@@ -438,8 +438,8 @@ describe("SignupMain async actions", () => {
     const action2 = {
       type: signupActions.GET_SIGNUP_CONFIG_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     resp = generator.next(action2);
     expect(resp.value.PUT.action.type).toEqual(

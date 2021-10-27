@@ -13,47 +13,47 @@ import { MemoryRouter } from "react-router-dom";
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
-const fakeStore = state => ({
+const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
 function setupComponent() {
   const store = fakeStore({
     config: {
-      language: "en"
+      language: "en",
     },
     personal_data: {
       data: {
-        eppn: "test-eppn"
-      }
+        eppn: "test-eppn",
+      },
     },
     emails: {
-      emails: []
+      emails: [],
     },
     nins: {
-      nins: []
+      nins: [],
     },
     phones: {
-      phones: []
+      phones: [],
     },
     profile: {
-      pending: []
+      pending: [],
     },
     notifications: {
       messages: [],
-      errors: []
+      errors: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   });
   const props = {
     show_sidebar: true,
-    eppn: "eppn-eppn"
+    eppn: "eppn-eppn",
   };
   const wrapper = mount(
     <Provider store={store}>
@@ -64,7 +64,7 @@ function setupComponent() {
   );
   return {
     props,
-    wrapper
+    wrapper,
   };
 }
 

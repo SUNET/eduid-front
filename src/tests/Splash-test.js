@@ -8,7 +8,7 @@ describe("Splash Component", () => {
   it("Renders", () => {
     const wrapper = setupComponent({
         component: <SplashContainer />,
-        overrides: { config: { is_app_loaded: false } }
+        overrides: { config: { is_app_loaded: false } },
       }),
       splash = wrapper.find("div#eduid-splash-screen");
 
@@ -18,7 +18,7 @@ describe("Splash Component", () => {
   it("Doesn't Render", () => {
     const wrapper = setupComponent({
         component: <SplashContainer />,
-        overrides: { config: { is_app_loaded: true } }
+        overrides: { config: { is_app_loaded: true } },
       }),
       splash = wrapper.find("div#eduid-splash-screen");
 

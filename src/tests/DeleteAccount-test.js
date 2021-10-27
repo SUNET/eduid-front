@@ -11,10 +11,7 @@ import DeleteAccount from "components/DeleteAccount";
 import * as actions from "actions/Security";
 import * as notifyActions from "actions/Notifications";
 import securityReducer from "reducers/Security";
-import {
-  postDeleteAccount,
-  deleteAccount
-} from "sagas/Security";
+import { postDeleteAccount, deleteAccount } from "sagas/Security";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
@@ -47,11 +44,11 @@ describe("DeleteAccount component", () => {
   // beforeEach(() => {
   //   window.beforeunload = () => "";
   // });
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
@@ -60,12 +57,12 @@ describe("DeleteAccount component", () => {
       confirming_deletion: false,
       deleted: false,
       redirect_to: "",
-      location: "dummy-location"
+      location: "dummy-location",
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -75,7 +72,7 @@ describe("DeleteAccount component", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 
@@ -95,11 +92,11 @@ describe("DeleteAccount component", () => {
 });
 
 describe("DeleteAccount component, when confirming_deletion is (false)", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
@@ -108,12 +105,12 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
       confirming_deletion: false,
       deleted: false,
       redirect_to: "",
-      location: "dummy-location"
+      location: "dummy-location",
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -123,7 +120,7 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
@@ -144,22 +141,22 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
 });
 
 describe("DeleteAccount component, when confirming_deletion is (true)", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     security: {
       confirming_deletion: false,
-      location: "dummy-location"
+      location: "dummy-location",
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -169,7 +166,7 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
@@ -255,21 +252,21 @@ describe("DeleteAccount redux functionality", () => {
 
   it("startConfirmationDeletion() should trigger the action START_DELETE_ACCOUNT", () => {
     const expectedAction = {
-      type: actions.START_DELETE_ACCOUNT
+      type: actions.START_DELETE_ACCOUNT,
     };
     expect(actions.startConfirmationDeletion()).toEqual(expectedAction);
   });
 
   it("START_DELETE_ACCOUNT retuns confirming_deletion: true", () => {
     const mockState = {
-      confirming_deletion: false
+      confirming_deletion: false,
     };
     expect(
       securityReducer(mockState, {
-        type: actions.START_DELETE_ACCOUNT
+        type: actions.START_DELETE_ACCOUNT,
       })
     ).toEqual({
-      confirming_deletion: true
+      confirming_deletion: true,
     });
   });
 });
@@ -281,20 +278,20 @@ describe("Logout modal redux functionality", () => {
   });
   it("Modal ACCEPT button should trigger the POST_DELETE_ACCOUNT action ", () => {
     const expectedAction = {
-      type: actions.POST_DELETE_ACCOUNT
+      type: actions.POST_DELETE_ACCOUNT,
     };
     expect(actions.confirmDeletion()).toEqual(expectedAction);
   });
   it("POST_DELETE_ACCOUNT action retuns the current state", () => {
     const mockState = {
-      confirming_deletion: false
+      confirming_deletion: false,
     };
     expect(
       securityReducer(mockState, {
-        type: actions.POST_DELETE_ACCOUNT
+        type: actions.POST_DELETE_ACCOUNT,
       })
     ).toEqual({
-      confirming_deletion: false
+      confirming_deletion: false,
     });
   });
 
@@ -302,26 +299,26 @@ describe("Logout modal redux functionality", () => {
     const mockState = {
       message: "",
       confirming_deletion: false,
-      location: ""
+      location: "",
     };
     const location = "dummy-location";
     expect(
       securityReducer(mockState, {
         type: actions.POST_DELETE_ACCOUNT_SUCCESS,
         payload: {
-          location: location
-        }
+          location: location,
+        },
       })
     ).toEqual({
       message: "",
       location: "dummy-location",
-      confirming_deletion: false
+      confirming_deletion: false,
     });
   });
 
   it("POST_DELETE_ACCOUNT_FAIL action returns an error state", () => {
     const mockState = {
-      confirming_deletion: false
+      confirming_deletion: false,
     };
     const err = "Error";
     expect(
@@ -329,12 +326,12 @@ describe("Logout modal redux functionality", () => {
         type: actions.POST_DELETE_ACCOUNT_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       })
     ).toEqual({
       message: err,
-      confirming_deletion: false
+      confirming_deletion: false,
     });
   });
 
@@ -343,20 +340,20 @@ describe("Logout modal redux functionality", () => {
   });
   it("Modal CANCEL button should trigger the STOP_DELETE_ACCOUNT action ", () => {
     const expectedAction = {
-      type: actions.STOP_DELETE_ACCOUNT
+      type: actions.STOP_DELETE_ACCOUNT,
     };
     expect(actions.stopConfirmationDeletion()).toEqual(expectedAction);
   });
   it("STOP_DELETE_ACCOUNT action retuns confirming_deletion: false", () => {
     const mockState = {
-      confirming_deletion: false
+      confirming_deletion: false,
     };
     expect(
       securityReducer(mockState, {
-        type: actions.STOP_DELETE_ACCOUNT
+        type: actions.STOP_DELETE_ACCOUNT,
       })
     ).toEqual({
-      confirming_deletion: false
+      confirming_deletion: false,
     });
   });
 });
@@ -367,49 +364,49 @@ describe("Logout modal redux functionality", () => {
 describe("DeleteAccount Container", () => {
   let mockProps, language, getWrapper, getState, dispatch, store;
 
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   beforeEach(() => {
-    getState = function(deleting) {
+    getState = function (deleting) {
       return {
         security: {
           message: "",
           code: "",
           confirming_deletion: deleting,
           location: "",
-          deleted: false
+          deleted: false,
         },
         config: {
           csrf_token: "",
           dashboard_url: "/dummy-dash-url/",
-          token_service_url: "/dummy-tok-url/"
+          token_service_url: "/dummy-tok-url/",
         },
         intl: {
           locale: "en",
-          messages: messages
+          messages: messages,
         },
         notifications: {
           messages: [],
-          errors: []
-        }
+          errors: [],
+        },
       };
     };
 
     mockProps = {
       credentials: [],
       language: "en",
-      confirming_deletion: false
+      confirming_deletion: false,
     };
 
-    getWrapper = function({
+    getWrapper = function ({
       deleting = false,
       askingDesc = false,
-      props = mockProps
+      props = mockProps,
     } = {}) {
       store = fakeStore(getState(deleting, askingDesc));
       dispatch = store.dispatch;
@@ -421,9 +418,7 @@ describe("DeleteAccount Container", () => {
       );
       return wrapper;
     };
-    language = getWrapper()
-      .find(DeleteAccountContainer)
-      .props().language;
+    language = getWrapper().find(DeleteAccountContainer).props().language;
   });
 
   afterEach(() => {
@@ -436,10 +431,7 @@ describe("DeleteAccount Container", () => {
 
   it("Clicks delete", () => {
     expect(dispatch.mock.calls.length).toEqual(0);
-    getWrapper()
-      .find("EduIDButton#delete-button")
-      .props()
-      .onClick();
+    getWrapper().find("EduIDButton#delete-button").props().onClick();
     expect(dispatch.mock.calls.length).toEqual(2);
     expect(dispatch.mock.calls[0][0].type).toEqual(
       notifyActions.RM_ALL_NOTIFICATION
@@ -451,15 +443,17 @@ describe("DeleteAccount Container", () => {
 
   it("Clicks confirm delete", () => {
     fetchMock.post("/dummy-sec-url", {
-      type: actions.POST_DELETE_ACCOUNT
+      type: actions.POST_DELETE_ACCOUNT,
     });
 
     const newProps = {
       credentials: [],
       language: "en",
-      confirming_deletion: true
+      confirming_deletion: true,
     };
-    const deleteModal = getWrapper(true, false, newProps).find("NotificationModal");
+    const deleteModal = getWrapper(true, false, newProps).find(
+      "NotificationModal"
+    );
     expect(dispatch.mock.calls.length).toEqual(0);
     deleteModal.props().acceptModal();
     expect(dispatch.mock.calls.length).toEqual(1);
@@ -470,18 +464,18 @@ describe("DeleteAccount Container", () => {
 describe("Async component", () => {
   const mockState = {
     security: {
-      location: ""
+      location: "",
     },
     config: {
       csrf_token: "csrf-token",
       dashboard_url: "/dummy-dash-url/",
       token_service_url: "/dummy-tok-url/",
-      security_url: "/dummy-sec-url"
+      security_url: "/dummy-sec-url",
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   it("Sagas request DeleteAccount", () => {
@@ -493,7 +487,7 @@ describe("Async component", () => {
     expect(next.value.SELECT.args).toEqual([]);
 
     const data = {
-      csrf_token: "csrf-token"
+      csrf_token: "csrf-token",
     };
 
     next = generator.next(mockState);
@@ -502,8 +496,8 @@ describe("Async component", () => {
     const action = {
       type: actions.POST_DELETE_ACCOUNT_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");

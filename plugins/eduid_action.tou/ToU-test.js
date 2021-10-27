@@ -14,9 +14,9 @@ import { requestPostAcceptTOU, postAcceptTOU } from "./root-saga";
 const pluginState = {
   tous: {
     en: "Testing ToU",
-    sv: "Testa ToU"
+    sv: "Testa ToU",
   },
-  version: "test-version"
+  version: "test-version",
 };
 
 const setupComponent = genSetupComponent(pluginState);
@@ -25,7 +25,7 @@ describe("ToU Component", () => {
   it("Renders the splash screen", () => {
     const wrapper = setupComponent({
         component: <MainContainer />,
-        overrides: { config: { is_app_loaded: false } }
+        overrides: { config: { is_app_loaded: false } },
       }),
       splash = wrapper.find("div#eduid-splash-screen");
 
@@ -37,7 +37,7 @@ describe("ToU Component", () => {
       splash = wrapper.find("div#eduid-splash-screen"),
       tou = wrapper.find("div#eduid-tou"),
       buttonAccept = wrapper.find("button#accept-tou-button");
-      // buttonReject = wrapper.find("button#reject-tou-button");
+    // buttonReject = wrapper.find("button#reject-tou-button");
 
     expect(splash.length).toEqual(0);
     expect(tou.length).toEqual(1);
@@ -49,7 +49,7 @@ describe("ToU Component", () => {
   it("Renders Svenska", () => {
     const wrapper = setupComponent({
         component: <MainContainer />,
-        overrides: { intl: { locale: "sv" } }
+        overrides: { intl: { locale: "sv" } },
       }),
       tou = wrapper.find("div#eduid-tou");
 
@@ -61,7 +61,7 @@ describe("ToU Component", () => {
 describe("ToU action reducer", () => {
   const mockState = {
     tous: {},
-    version: ""
+    version: "",
   };
 
   it("Receives plugin config loaded action", () => {
@@ -72,13 +72,13 @@ describe("ToU action reducer", () => {
         type: actions.GET_ACTIONS_CONFIG_SUCCESS,
         payload: {
           tous: newTous,
-          version: newVersion
-        }
+          version: newVersion,
+        },
       })
     ).toEqual({
       ...mockState,
       tous: newTous,
-      version: newVersion
+      version: newVersion,
     });
   });
 });
@@ -87,16 +87,16 @@ describe("ToU plugin async actions", () => {
   it("Tests the post ToU accepted saga", () => {
     const state = getState({
       config: {
-        csrf_token: "dummy-token"
+        csrf_token: "dummy-token",
       },
       plugin: {
-        version: "dummy version"
-      }
+        version: "dummy version",
+      },
     });
     const data = {
       accept: true,
       version: state.plugin.version,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
     const generator = postAcceptTOU();
     generator.next();
@@ -106,8 +106,8 @@ describe("ToU plugin async actions", () => {
     const action = {
       type: actions.POST_ACTIONS_ACTION_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     generator.next(action);
     delete action.payload.csrf_token;

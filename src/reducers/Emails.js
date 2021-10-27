@@ -5,7 +5,7 @@ const emailsData = {
   confirming: "",
   emails: [],
   email: "",
-  code: ""
+  code: "",
 };
 
 let emailsReducer = (state = emailsData, action) => {
@@ -13,26 +13,26 @@ let emailsReducer = (state = emailsData, action) => {
     case actions.GET_EMAILS_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.CHANGE_EMAIL:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.POST_EMAIL:
       return {
-        ...state
+        ...state,
       };
     case actions.POST_EMAIL_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.START_CONFIRMATION:
       return {
         ...state,
-        confirming: action.payload.email
+        confirming: action.payload.email,
       };
     case actions.STOP_CONFIRMATION:
       return {
@@ -47,12 +47,12 @@ let emailsReducer = (state = emailsData, action) => {
     case actions.START_VERIFY:
       return {
         ...state,
-        code: action.payload.code
+        code: action.payload.code,
       };
     case actions.POST_EMAIL_VERIFY_SUCCESS:
       return {
         ...state,
-        emails: action.payload.emails
+        emails: action.payload.emails,
       };
     case actions.POST_EMAIL_VERIFY_FAIL:
       return {
@@ -62,31 +62,31 @@ let emailsReducer = (state = emailsData, action) => {
     case actions.POST_EMAIL_REMOVE:
       return {
         ...state,
-        email: action.payload.email
+        email: action.payload.email,
       };
     case actions.POST_EMAIL_REMOVE_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.POST_EMAIL_PRIMARY:
       return {
         ...state,
-        email: action.payload.email
+        email: action.payload.email,
       };
     case actions.POST_EMAIL_PRIMARY_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
-    case "@@redux-form/CHANGE":{
+    case "@@redux-form/CHANGE": {
       const form = {};
       if (action.meta.form === "emails" && action.meta.field === "email") {
         form.email = action.payload;
       }
       return {
         ...state,
-        ...form
+        ...form,
       };
     }
     default:

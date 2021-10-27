@@ -26,31 +26,31 @@ describe("VerifyIdentity component", () => {
 });
 
 describe("VerifyIdentity component, no nin added ", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     nins: {
-      nins: []
+      nins: [],
     },
     phones: {
-      phones: []
+      phones: [],
     },
     config: {
       is_configured: false,
-      proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"]
+      proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"],
     },
     letter_proofing: {
-      confirmingLetter: false
+      confirmingLetter: false,
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -62,7 +62,7 @@ describe("VerifyIdentity component, no nin added ", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 
@@ -88,36 +88,36 @@ describe("VerifyIdentity component, no nin added ", () => {
 describe("VerifyIdentity component, when nin is saved", () => {
   const fakeState = {
     nins: {
-      nins: []
+      nins: [],
     },
     phones: {
-      phones: []
+      phones: [],
     },
     config: {
       is_configured: false,
       proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"],
       token_verify_idp: "http://dev.test.swedenconnect.se/idp",
-      eidas_url: "http://eidas.eduid.docker:8080/"
+      eidas_url: "http://eidas.eduid.docker:8080/",
     },
     letter_proofing: {
-      confirmingLetter: false
+      confirmingLetter: false,
     },
     lookup_mobile: {
-      showModal: false
+      showModal: false,
     },
     eidas_data: {
-      showModal: false
+      showModal: false,
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   const state = { ...fakeState };
   state.config.is_configured = true;
   state.nins.nins = [
-    { number: "196701100006", verified: false, primary: false }
+    { number: "196701100006", verified: false, primary: false },
   ];
   state.verifiedNinStatus = false;
   // it("Renders number when added", () => {
@@ -156,37 +156,37 @@ describe("VerifyIdentity component, when nin is saved", () => {
 describe("VerifyIdentity component, when nin is saved", () => {
   const fakeState = {
     nins: {
-      nins: []
+      nins: [],
     },
     phones: {
-      phones: []
+      phones: [],
     },
     config: {
       is_configured: false,
       proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"],
       token_verify_idp: "http://dev.test.swedenconnect.se/idp",
-      eidas_url: "http://eidas.eduid.docker:8080/"
+      eidas_url: "http://eidas.eduid.docker:8080/",
     },
     letter_proofing: {
-      confirmingLetter: false
+      confirmingLetter: false,
     },
     lookup_mobile: {
-      showModal: false
+      showModal: false,
     },
     eidas_data: {
-      showModal: false
+      showModal: false,
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   const state = { ...fakeState };
   state.config.is_configured = true;
   state.nins.nins = [
     { number: "196701100456", verified: true, primary: true },
-    { number: "196701100678", verified: true, primary: false }
+    { number: "196701100678", verified: true, primary: false },
   ];
   state.verifiedNinStatus = true;
   // it("Renders number when verified", () => {

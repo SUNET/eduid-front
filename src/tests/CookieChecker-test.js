@@ -42,7 +42,7 @@ describe("Test CookieChecker Component", () => {
     Cookies.set("test", "show");
     const comp = setupComponent({
         cookieName: "bad-name",
-        cookiePattern: "show"
+        cookiePattern: "show",
       }),
       test = comp.find("div#test-cookie-checker");
 
@@ -53,7 +53,7 @@ describe("Test CookieChecker Component", () => {
     Cookies.set("test", "show");
     const comp = setupComponent({
         cookieName: "test",
-        cookiePattern: "bad-pattern"
+        cookiePattern: "bad-pattern",
       }),
       test = comp.find("div#test-cookie-checker");
 

@@ -17,7 +17,7 @@ describe("Account Component", () => {
 
   it("Component has text", () => {
     const fullWrapper = setupComponent({
-      component: <AccountCreatedContainer />
+      component: <AccountCreatedContainer />,
     });
     const p = fullWrapper.find("p");
     expect(p.exists()).toEqual(true);
@@ -25,7 +25,7 @@ describe("Account Component", () => {
   it("Component renders user email (text inlcudes '@')", () => {
     const fullWrapper = setupComponent({
       component: <AccountCreatedContainer />,
-      overrides: { email: { email: "dummy@example.com" } }
+      overrides: { email: { email: "dummy@example.com" } },
     });
 
     const userEmail = fullWrapper.find(".registered-email");

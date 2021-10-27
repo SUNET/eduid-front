@@ -24,21 +24,21 @@ describe("EmailDisplay component", () => {
 });
 
 describe("EmailDisplay component, when no email is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     emails: {
-      emails: []
+      emails: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -48,7 +48,7 @@ describe("EmailDisplay component, when no email is saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
@@ -69,21 +69,21 @@ describe("EmailDisplay component, when no email is saved", () => {
 });
 
 describe("EmailDisplay component, when email is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     emails: {
-      emails: []
+      emails: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -93,14 +93,14 @@ describe("EmailDisplay component, when email is saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
   state.emails.emails = [
     { email: "njons-test@test.com", primary: true, verified: true },
     { email: "njons-testing@email.com", primary: false, verified: false },
-    { email: "njons-best-test@email.com", primary: false, verified: true }
+    { email: "njons-best-test@email.com", primary: false, verified: true },
   ];
   it("Renders the primary email (even if multiple verified)", () => {
     const { wrapper } = setupComponent();
@@ -113,21 +113,21 @@ describe("EmailDisplay component, when email is saved", () => {
 });
 
 describe("EmailDisplay component, when email is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     emails: {
-      emails: []
+      emails: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -137,14 +137,14 @@ describe("EmailDisplay component, when email is saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
   state.emails.emails = [
     { email: "njons-test@test.com", primary: false, verified: true },
     { email: "njons-testing@email.com", primary: false, verified: true },
-    { email: "njons-best-test@email.com", primary: true, verified: true }
+    { email: "njons-best-test@email.com", primary: true, verified: true },
   ];
   it("Renders the primary phone (even if multiple verified and new phone set as primary)", () => {
     const { wrapper } = setupComponent();

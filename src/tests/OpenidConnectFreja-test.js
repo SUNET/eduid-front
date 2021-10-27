@@ -17,7 +17,7 @@ Object.defineProperty(navigator, "userAgent", {
 describe("OIDC Freja Actions", () => {
   it("should create an action to trigger fetching of request data", () => {
     const expectedAction = {
-      type: actions.POST_OIDC_PROOFING_FREJA_PROOFING
+      type: actions.POST_OIDC_PROOFING_FREJA_PROOFING,
     };
     expect(actions.postOpenidFreja()).toEqual(expectedAction);
   });
@@ -29,8 +29,8 @@ describe("OIDC Freja Actions", () => {
       error: true,
       payload: {
         error: true,
-        message: "Bad error"
-      }
+        message: "Bad error",
+      },
     };
     expect(actions.postOpenidFrejaFail(err)).toEqual(expectedAction);
   });
@@ -41,19 +41,19 @@ describe("Reducers", () => {
     error: null,
     iaRequestData: "",
     showModal: true,
-    nin: "190001021234"
+    nin: "190001021234",
   };
 
   it("Receives a POST_OIDC_PROOFING_FREJA_PROOFING action", () => {
     expect(
       openidConnectFrejaReducer(mockState, {
-        type: actions.POST_OIDC_PROOFING_FREJA_PROOFING
+        type: actions.POST_OIDC_PROOFING_FREJA_PROOFING,
       })
     ).toEqual({
       error: null,
       iaRequestData: "",
       showModal: true,
-      nin: "190001021234"
+      nin: "190001021234",
     });
   });
 
@@ -61,13 +61,13 @@ describe("Reducers", () => {
     expect(
       openidConnectFrejaReducer(mockState, {
         type: actions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS,
-        payload: { iaRequestData: "def456" }
+        payload: { iaRequestData: "def456" },
       })
     ).toEqual({
       iaRequestData: "def456",
       error: null,
       showModal: true,
-      nin: "190001021234"
+      nin: "190001021234",
     });
   });
 
@@ -78,15 +78,15 @@ describe("Reducers", () => {
         error: true,
         payload: {
           error: true,
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       iaRequestData: "",
       error: true,
       message: "Bad error",
       showModal: true,
-      nin: "190001021234"
+      nin: "190001021234",
     });
   });
 
@@ -94,13 +94,13 @@ describe("Reducers", () => {
     expect(
       openidConnectFrejaReducer(mockState, {
         type: "DUMMY_ACTION",
-        payload: "dummy payload"
+        payload: "dummy payload",
       })
     ).toEqual({
       iaRequestData: "",
       error: null,
       showModal: true,
-      nin: "190001021234"
+      nin: "190001021234",
     });
   });
 });
@@ -281,20 +281,20 @@ const state = {
   config: {
     oidc_proofing_freja_url:
       "http://localhost/services/oidc-proofing/freja/proofing",
-    csrf_token: "csrf-token"
+    csrf_token: "csrf-token",
   },
   openid_freja_data: {
-    nin: "testing"
+    nin: "testing",
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 };
 
 import {
   initializeOpenidFrejaData,
-  fetchFrejaData
+  fetchFrejaData,
 } from "../sagas/OpenidConnectFreja";
 import { put, call, select } from "redux-saga/effects";
 
@@ -304,14 +304,14 @@ describe("Async component", () => {
 
     let next = generator.next();
 
-    let debug = select(state => state);
+    let debug = select((state) => state);
     delete debug.SELECT.selector;
     expect(next.value).toMatchObject(debug);
 
     const oidcFrejaData = generator.next(state);
     const data = {
       nin: "testing",
-      csrf_token: "csrf-token"
+      csrf_token: "csrf-token",
     };
     expect(oidcFrejaData.value).toEqual(
       call(fetchFrejaData, state.config.oidc_proofing_freja_url, data)
@@ -321,8 +321,8 @@ describe("Async component", () => {
       type: actions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS,
       payload: {
         iaRequestData: "def456",
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
