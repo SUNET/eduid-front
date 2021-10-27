@@ -1,4 +1,3 @@
-# Created by .gitignore support plugin (hsz.mobi)
 .*.swp
 .*.swo
 node_modules/
@@ -9,3 +8,5 @@ dist/
 .npm
 .DS_Store
 .idea/
+*~
+*#

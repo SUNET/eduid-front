@@ -1,15 +1,22 @@
-const mock = require("jest-mock");
 import React from "react";
-import { Provider } from "react-intl-redux";
-import { mount } from "enzyme";
+// import { Provider } from "react-intl-redux";
+// import { mount } from "enzyme";
+import jest from "jest";
 import expect from "expect";
-import { put, call, select } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 
 import { genSetupComponent, getState } from "tests/ActionMain-test";
 import MainContainer from "./component";
 import { actionReducer } from "./store";
 import * as actions from "actions/ActionMain";
 import { postCompleteWebauthn, requestCompleteWebauthn } from "./root-saga";
+
+const mockCredentials = {
+  get: () => {},
+  create: () => {},
+};
+
+global.navigator.credentials = mockCredentials;
 
 const pluginState = {
   webauthn_assertion: {},
@@ -110,27 +117,30 @@ describe("Some plugin async actions", () => {
         },
       });
     const data = {
-      csrf_token: state.config.csrf_token,
-      credentialId: btoa(
-        String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))
+      csrf_token: Buffer.from(
+        String.fromCharCode.apply(null, new Uint8Array(assertion.rawId)),
+        "base64"
       ),
-      authenticatorData: btoa(
+      authenticatorData: Buffer.from(
         String.fromCharCode.apply(
           null,
           new Uint8Array(assertion.response.authenticatorData)
-        )
+        ),
+        "base64"
       ),
-      clientDataJSON: btoa(
+      clientDataJSON: Buffer.from(
         String.fromCharCode.apply(
           null,
           new Uint8Array(assertion.response.clientDataJSON)
-        )
+        ),
+        "base64"
       ),
-      signature: btoa(
+      signature: Buffer.from(
         String.fromCharCode.apply(
           null,
           new Uint8Array(assertion.response.signature)
-        )
+        ),
+        "base64"
       ),
     };
     const generator = postCompleteWebauthn();

@@ -3,7 +3,6 @@ import React from "react";
 import { mount } from "enzyme";
 import expect from "expect";
 import * as actions from "actions/Emails";
-import fetchMock from "fetch-mock";
 import emailsReducer from "reducers/Emails";
 import EmailsContainer from "containers/Emails";
 import { Provider } from "react-intl-redux";
@@ -695,10 +694,6 @@ describe("Emails Container", () => {
     fulldom = wrapper.find(EmailsContainer);
     email = fulldom.props().email;
     language = fulldom.props().language;
-  });
-
-  afterEach(() => {
-    fetchMock.restore();
   });
 
   it("Renders test", () => {

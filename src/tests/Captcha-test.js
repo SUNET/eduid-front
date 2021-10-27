@@ -1,6 +1,5 @@
 import React from "react";
 import expect from "expect";
-import fetchMock from "fetch-mock";
 import { put, call } from "redux-saga/effects";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
@@ -12,7 +11,7 @@ import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
 
 describe("Captcha Component", () => {
   afterEach(() => {
-    fetchMock.restore();
+    fetch.resetMocks();
   });
 
   it("The component does not render 'false' or 'null'", () => {
@@ -25,7 +24,10 @@ describe("Captcha Component", () => {
   });
 
   it("The captcha <div> element renders", () => {
-    fetchMock.get("https://www.google.com/recaptcha/api.js", "dummy-script");
+    fetch.mockResponseOnce(
+      "https://www.google.com/recaptcha/api.js",
+      "dummy-script"
+    );
     const fullWrapper = setupComponent({
       component: <CaptchaContainer />,
     });
@@ -34,7 +36,10 @@ describe("Captcha Component", () => {
   });
 
   it("Renders the OK and CANCEL buttons", () => {
-    fetchMock.get("https://www.google.com/recaptcha/api.js", "dummy-script");
+    fetch.mockResponseOnce(
+      "https://www.google.com/recaptcha/api.js",
+      "dummy-script"
+    );
     const fullWrapper = setupComponent({
       component: <CaptchaContainer />,
     });

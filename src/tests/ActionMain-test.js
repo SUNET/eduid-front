@@ -269,7 +269,7 @@ describe("ActionMain reducer", () => {
   });
 });
 
-window.ACTIONS_SERVICE_URL = "/services/actions2/";
+global.ACTIONS_SERVICE_URL = "/services/actions2/";
 
 describe("ActionMain async actions", () => {
   it("Tests the request config saga", () => {
@@ -278,7 +278,7 @@ describe("ActionMain async actions", () => {
     //     csrf_token: "dummy-token"
     //   }
     // });
-    const url = ACTIONS_SERVICE_URL + "config";
+    const url = global.ACTIONS_SERVICE_URL + "config";
     const generator = requestConfig();
     let resp = generator.next();
     expect(resp.value).toEqual(call(fetchConfig, url));

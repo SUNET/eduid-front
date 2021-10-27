@@ -6,7 +6,6 @@ import expect from "expect";
 import SecurityContainer from "containers/Security";
 import * as actions from "actions/Security";
 import * as notifyActions from "actions/Notifications";
-import fetchMock from "fetch-mock";
 import securityReducer from "reducers/Security";
 import { Provider } from "react-intl-redux";
 import {
@@ -1005,9 +1004,9 @@ describe("Security Container", () => {
     language = getWrapper().find(SecurityContainer).props().language;
   });
 
-  afterEach(() => {
-    fetchMock.restore();
-  });
+  // afterEach(() => {
+  //   fetchMock.restore();
+  // });
 
   it("Renders test", () => {
     expect(language).toEqual("en");

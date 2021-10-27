@@ -20,7 +20,6 @@ import { put, call } from "redux-saga/effects";
 import MobileContainer from "containers/Mobile";
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
-import fetchMock from "fetch-mock";
 
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
@@ -661,10 +660,6 @@ describe("Mobile Container", () => {
     );
     fulldom = wrapper.find(MobileContainer);
     mobile = fulldom.props().mobile;
-  });
-
-  afterEach(() => {
-    fetchMock.restore();
   });
 
   it("Renders test", () => {
