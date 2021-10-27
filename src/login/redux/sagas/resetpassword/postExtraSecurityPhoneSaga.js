@@ -22,24 +22,25 @@ export function* requestPhoneCodeForNewPassword() {
   };
   try {
     yield put(eduidRMAllNotify());
-    const resp = yield call(postRequest, url, data);
-    yield put(putCsrfToken(resp));
-    yield put(resp);
-    if (resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_SUCCESS") {
-      clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
-      setLocalStorage(
-        LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
-        new Date().getTime() + 300000
-      );
-      countFiveMin("phone");
-      history.push(`/reset-password/phone-code-sent/${data.email_code}`);
-    } else if (resp.type === "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL") {
+    const response = yield call(postRequest, url, data);
+    yield put(putCsrfToken(response));
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
       if (locationUrl.includes("extra-security")) {
         history.push(`/reset-password/extra-security/${data.email_code}`);
       } else if (locationUrl.includes("phone-code-sent")) {
         history.push(`/reset-password/phone-code-sent/${data.email_code}`);
       }
+      return;
     }
+    clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
+    setLocalStorage(
+      LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
+      new Date().getTime() + 300000
+    );
+    countFiveMin("phone");
+    history.push(`/reset-password/phone-code-sent/${data.email_code}`);
   } catch (error) {
     yield* failRequest(
       error,

@@ -2,6 +2,7 @@ import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { requestLinkCode } from "../../login/redux/sagas/resetpassword/postVerifyEmailSaga";
+import resetPasswordSlice from "../../login/redux/slices/resetPasswordSlice";
 
 const fakeState = {
   config: {
@@ -27,7 +28,7 @@ describe("API call to /verify-email/ behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS",
+      type: resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess.toString(),
       payload: {
         csrf_token: fakeState.config.csrf_token,
         message: "success",
@@ -37,9 +38,11 @@ describe("API call to /verify-email/ behaves as expected on _SUCCESS", () => {
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
-    );
+    expect(next.value.PUT.action.type).toEqual(successResponse.type);
+  });
+  it("done", () => {
+    const done = generator.next().done;
+    expect(done).toEqual(true);
   });
 });
 
@@ -67,11 +70,9 @@ describe(`first API call to "/verify-email/" behaves as expected on _FAIL`, () =
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      "POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL"
-    );
+    expect(next.value.PUT.action.type).toEqual(failResponse.type);
   });
-  it("done after 'POST_RESET_PASSWORD_VERIFY_EMAIL_FAIL'", () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

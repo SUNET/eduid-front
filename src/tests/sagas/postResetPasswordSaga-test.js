@@ -38,8 +38,6 @@ describe(`API call to "/" behaves as expected on _SUCCESS`, () => {
     };
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_SUCCESS");
   });
   it("done after 'REQUEST_COMPLETED'", () => {
     next = generator.next();
@@ -75,7 +73,7 @@ describe(`first API call to "/" behaves as expected on _FAIL`, () => {
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("POST_RESET_PASSWORD_FAIL");
+    expect(next.value.PUT.action.type).toEqual(failResponse.type);
   });
   it("done after 'REQUEST_COMPLETED'", () => {
     next = generator.next();

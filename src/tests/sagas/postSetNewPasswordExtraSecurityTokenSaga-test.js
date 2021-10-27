@@ -62,10 +62,6 @@ describe(`API call to "new-password-extra-security-token/" behaves as expected o
     };
     next = generator.next(successResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_SUCCESS"
-    );
   });
 });
 
@@ -96,11 +92,9 @@ describe(`first API call to "new-password-extra-security-token/" behaves as expe
     next = generator.next(failResponse);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL"
-    );
+    expect(next.value.PUT.action.type).toEqual(failResponse.type);
   });
-  it(`done after "POST_RESET_PASSWORD_NEW_PASSWORD_EXTRA_SECURITY_TOKEN_FAIL"`, () => {
+  it("done", () => {
     const done = generator.next().done;
     expect(done).toEqual(true);
   });

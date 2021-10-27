@@ -15,36 +15,27 @@ export function* requestLinkCode() {
       csrf_token: state.config.csrf_token,
     };
     try {
-      const encodedWebauthnChallenge = yield call(postRequest, url, data);
-      const decodedWebauthnChallenge = mfaDecodeMiddlewareForResetPassword(
-        encodedWebauthnChallenge
-      );
-      yield put(putCsrfToken(decodedWebauthnChallenge));
-      yield put(decodedWebauthnChallenge);
-      // if API call successfully post data save it to store
-      if (
-        decodedWebauthnChallenge.type ===
-        "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
-      ) {
-        yield put(
-          resetPasswordSlice.actions.resetPasswordSagaSuccess(
-            decodedWebauthnChallenge.payload
-          )
-        );
+      const response = yield call(postRequest, url, data);
+      yield put(putCsrfToken(response));
+      if (response.error) {
+        // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+        yield put(response);
+        history.push(`/reset-password/email`);
+        return;
       }
+      const decodedResponse = mfaDecodeMiddlewareForResetPassword(response);
+      // if API call successfully post data save it to store
+      yield put(
+        resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess(
+          decodedResponse.payload
+        )
+      );
+      // Completed with frejaeid location changes to set-new-password
       if (locationUrl.includes("set-new-password")) {
-        return history.push(
-          `/reset-password/set-new-password/${data.email_code}`
-        );
-      } else if (
-        decodedWebauthnChallenge &&
-        decodedWebauthnChallenge.type ===
-          "POST_RESET_PASSWORD_VERIFY_EMAIL_SUCCESS"
-      ) {
-        return history.push(
-          `/reset-password/extra-security/${data.email_code}`
-        );
-      } else return history.push(`/reset-password/email`);
+        history.push(`/reset-password/set-new-password/${data.email_code}`);
+      } else {
+        history.push(`/reset-password/extra-security/${data.email_code}`);
+      }
     } catch (error) {
       yield* failRequest(
         error,
