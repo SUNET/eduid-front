@@ -8,7 +8,7 @@ const eduIDApp = combineReducers({
   router: routerReducer,
   config: errorsReducer,
   intl: intlReducer,
-  notifications: notificationsReducer
+  notifications: notificationsReducer,
 });
 
 export default eduIDApp;

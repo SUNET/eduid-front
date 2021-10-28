@@ -10,7 +10,7 @@ import * as actions from "actions/ActionMain";
 // see the config params in eduid-developer/etcd/conf.yaml
 const actionData = {
   tous: {},
-  version: ""
+  version: "",
 };
 
 export const actionReducer = (state = actionData, action) => {
@@ -18,7 +18,7 @@ export const actionReducer = (state = actionData, action) => {
     case actions.GET_ACTIONS_CONFIG_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     default:
       return state;
@@ -30,7 +30,7 @@ const App = combineReducers({
   intl: intlReducer,
   config: actionMainReducer,
   plugin: actionReducer,
-  notifications: notificationsReducer
+  notifications: notificationsReducer,
 });
 
 export default App;

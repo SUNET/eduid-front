@@ -36,7 +36,7 @@ class Eidas extends Component {
             </div>
           </button>
         </div>
-        <NotificationModal 
+        <NotificationModal
           modalId="eidas-info-dialog"
           title={this.props.translate("eidas.modal_title")}
           href={this.props.eidas_sp_freja_idp_url}

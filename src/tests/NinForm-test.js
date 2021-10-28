@@ -20,21 +20,21 @@ describe("NinForm Component", () => {
 });
 
 describe("Nin Form renders important elements", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     nins: {
-      nins: []
+      nins: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -44,7 +44,7 @@ describe("Nin Form renders important elements", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 

@@ -62,7 +62,7 @@ class RegisterEmail extends Component {
         </p>
       </div>,
       <div key="1">
-        <NotificationModal  
+        <NotificationModal
           modalId="register-modal"
           title={this.props.translate("tou.header")}
           showModal={this.props.acceptingTOU}
@@ -74,7 +74,7 @@ class RegisterEmail extends Component {
           acceptButtonId={"accept-tou-button"}
           closeButtonId={"reject-tou-button"}
         />
-      </div>
+      </div>,
     ];
   }
 }

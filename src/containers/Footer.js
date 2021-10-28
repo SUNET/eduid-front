@@ -10,42 +10,42 @@ const mapStateToProps = (state) => {
   if (state.config.available_languages !== undefined) {
     // Old format of lists in list, remove after config update
     if (Array.isArray(state.config.available_languages)) {
-      state.config.available_languages.forEach(l => {
+      state.config.available_languages.forEach((l) => {
         languages[l[0]] = l[1];
       });
     } else {
       // This is the new format, keep this after config update
-      languages = state.config.available_languages
+      languages = state.config.available_languages;
     }
   }
   return {
     language: state.intl.locale,
     languages: languages,
     reload_to: state.config.dashboard_url,
-    faq_link: state.config.static_faq_url
+    faq_link: state.config.static_faq_url,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeLanguage: function(e) {
+    changeLanguage: function (e) {
       const lang = e.target.closest(".lang-selected").dataset.lang;
       const msgs = LOCALIZED_MESSAGES[lang];
       dispatch(
         updateIntl({
           locale: lang,
-          messages: msgs
+          messages: msgs,
         })
       );
     },
-    changeDashboardSession: function(reload_to) {
-      return e => {
+    changeDashboardSession: function (reload_to) {
+      return (e) => {
         e.preventDefault();
         Cookies.remove("eduid-dashboard-version");
         Cookies.set("eduid-dashboard-version", "1");
         window.location = reload_to;
       };
-    }
+    },
   };
 };
 

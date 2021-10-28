@@ -75,10 +75,7 @@ export const generalApp = {
   "cm.close": <FormattedMessage id="cm.close" defaultMessage={`CLOSE`} />,
 
   "cm.enter_code": (
-    <FormattedMessage
-      id="cm.enter_code"
-      defaultMessage={`Confirmation code`}
-    />
+    <FormattedMessage id="cm.enter_code" defaultMessage={`Confirmation code`} />
   ),
 
   // code still valid
@@ -96,7 +93,7 @@ export const generalApp = {
     <FormattedMessage id="tl.make_primary" defaultMessage={`MAKE PRIMARY`} />
   ),
 
-  "tl.pending": <FormattedMessage id="tl.pending" defaultMessage={`confirm`} />
+  "tl.pending": <FormattedMessage id="tl.pending" defaultMessage={`confirm`} />,
 };
 
 // export const specificElements = {};

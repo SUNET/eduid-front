@@ -16,8 +16,8 @@ export const validate = (values) => {
 export const validateEmailOnLogin = (values, props) => {
   const errors = {};
   let email = values.email;
-  if (values !== undefined) { 
-    if(!props.pristine){
+  if (values !== undefined) {
+    if (!props.pristine) {
       if (!email) {
         errors.email = "required";
       } else if (!emailPattern.test(email)) {

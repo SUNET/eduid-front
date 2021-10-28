@@ -11,23 +11,22 @@ export const POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS =
 export const POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL =
   "POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL";
 
-
 export function showModal() {
   return {
-    type: SHOW_MOBILE_MODAL
+    type: SHOW_MOBILE_MODAL,
   };
 }
 
 export function closeModal() {
   return {
-    type: CLOSE_MOBILE_MODAL
+    type: CLOSE_MOBILE_MODAL,
   };
 }
 
 export function postLookupMobile() {
-  console.log("this is lookupmobile actions")
+  console.log("this is lookupmobile actions");
   return {
-    type: POST_LOOKUP_MOBILE_PROOFING_PROOFING
+    type: POST_LOOKUP_MOBILE_PROOFING_PROOFING,
   };
 }
 
@@ -36,7 +35,7 @@ export function postLookupMobileFail(err) {
     type: POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }

@@ -1,4 +1,4 @@
-import './public-path';
+import "./public-path";
 try {
   require("entry-points/plugin-common");
 } catch (error) {

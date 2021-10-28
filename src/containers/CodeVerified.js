@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
     dashboard_url: state.config.dashboard_url,
     password: state.verified.password,
     email: state.verified.email,
-    status: state.verified.status
+    status: state.verified.status,
   };
 };
 

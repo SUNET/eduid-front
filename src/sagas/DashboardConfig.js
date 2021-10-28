@@ -1,9 +1,5 @@
 import { put, call } from "redux-saga/effects";
-import {
-  checkStatus,
-  getRequest,
-  failRequest
-} from "sagas/common";
+import { checkStatus, getRequest, failRequest } from "sagas/common";
 import { getConfigFail } from "actions/DashboardConfig";
 
 export function* requestConfig() {
@@ -21,8 +17,8 @@ export function* requestConfig() {
 export function fetchConfig(url) {
   return window
     .fetch(url, {
-      ...getRequest
+      ...getRequest,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

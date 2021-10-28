@@ -9,7 +9,7 @@ table {
   table-layout: fixed;
   & tbody {
     margin-bottom: 1rem;
-    & th:first-child{
+    & th:first-child {
       padding-left: 1.25rem;
     }
     th {
@@ -18,19 +18,19 @@ table {
     }
     & tr.webauthn-token-holder {
       color: $gray;
-      & td:first-child{
+      & td:first-child {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
       }
-    }  
+    }
     & tr.webauthn-token-holder.verified {
       color: $black;
     }
     & tr {
-      background-color:$white;
+      background-color: $white;
       height: 3rem;
-      & td:first-child{
+      & td:first-child {
         padding-left: 1.25rem;
         padding-right: 1.5rem;
       }
@@ -60,14 +60,13 @@ table {
         }
         &.remove-data {
           width: 5%;
-          & .icon-button
-           {
+          & .icon-button {
             margin: 0;
             padding: 0;
           }
         }
         &.primary {
-          color:$black;
+          color: $black;
         }
         &.unverified,
         &.verified,
@@ -81,18 +80,18 @@ table {
     }
   }
 }
-table.table-form.passwords{
-  tr:first-child{
+table.table-form.passwords {
+  tr:first-child {
     font-size: 1rem;
     letter-spacing: 0;
     color: $black;
     font-family: "ProximaNova-Bold";
     height: auto;
   }
-  .security-name{
+  .security-name {
     width: 36%;
   }
-  .security-creation-date{
+  .security-creation-date {
     width: 21%;
   }
   .security-last-used-date {
@@ -110,7 +109,7 @@ table.table-form.passwords{
   .security-creation-date,
   .security-last-used-date,
   .webauthn-token-holder td:nth-child(2),
-  .webauthn-token-holder td:nth-child(3){
+  .webauthn-token-holder td:nth-child(3) {
     display: none;
   }
 }

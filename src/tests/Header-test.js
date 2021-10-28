@@ -17,13 +17,10 @@ describe("Header Component", () => {
   });
   it("Component renders the eduID logo", () => {
     const wrapper = setupComponent({
-      component: <HeaderContainer />
+      component: <HeaderContainer />,
     });
     const logo = wrapper.find("#eduid-logo");
 
     expect(logo.length).toEqual(1);
   });
-
 });
-
-

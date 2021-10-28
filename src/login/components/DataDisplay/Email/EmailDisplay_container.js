@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   //   email: emailAddress
   // };
   return {
-    email: state.getEmailLink.email
+    email: state.getEmailLink.email,
   };
 };
 

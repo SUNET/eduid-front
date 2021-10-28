@@ -7,13 +7,13 @@ export function eduidNotify(msg, level, values = null) {
     payload: {
       message: msg,
       level: level,
-      values: values
-    }
+      values: values,
+    },
   };
 }
 
 export function eduidRMAllNotify() {
   return {
-    type: RM_ALL_NOTIFICATION
+    type: RM_ALL_NOTIFICATION,
   };
 }

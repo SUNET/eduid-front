@@ -3,7 +3,7 @@ import {
   checkStatus,
   putCsrfToken,
   getRequest,
-  failRequest
+  failRequest,
 } from "sagas/common";
 import * as actions from "actions/OpenidConnectFreja";
 
@@ -12,7 +12,7 @@ export function* checkNINAndShowFrejaModal() {
     let nin;
     const input = document.getElementById("nin"),
       unconfirmed = document.getElementById("eduid-unconfirmed-nin"),
-      state = yield select(state => state);
+      state = yield select((state) => state);
 
     // Check if there is a pending NIN before trying form input
     if (unconfirmed) nin = state.nins.nin;
@@ -42,11 +42,11 @@ export function* closeFrejaModal() {
 
 export function* initializeOpenidFrejaData() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       openid_freja_url = state.config.oidc_proofing_freja_url,
       data = {
         nin: state.openid_freja_data.nin,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
 
     console.log("Getting opaque data for NIN: " + state.openid_freja_data.nin);
@@ -71,7 +71,7 @@ export function* initializeOpenidFrejaData() {
 export function* requestOpenidFrejaData() {
   try {
     const openid_freja_url = yield select(
-      state => state.config.oidc_proofing_freja_url
+      (state) => state.config.oidc_proofing_freja_url
     );
     console.log("Checking for existing opaque data");
     const oidcFrejaData = yield call(fetchFrejaData, openid_freja_url);
@@ -84,7 +84,7 @@ export function* requestOpenidFrejaData() {
 
 export function fetchFrejaData(url, data) {
   let options = {
-    ...getRequest
+    ...getRequest,
   };
   if (data) {
     options["body"] = JSON.stringify(data);
@@ -93,5 +93,5 @@ export function fetchFrejaData(url, data) {
   return window
     .fetch(url, options)
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

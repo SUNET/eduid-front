@@ -7,7 +7,7 @@ const lookupMobileData = {
   // code_sent: "",
   // letter_expires: "",
   // letter_expired: false,
-  message: ""
+  message: "",
 };
 
 let lookupMobileProofingReducer = (state = lookupMobileData, action) => {
@@ -15,12 +15,12 @@ let lookupMobileProofingReducer = (state = lookupMobileData, action) => {
     case actions.SHOW_MOBILE_MODAL:
       return {
         ...state,
-        showModal: true
+        showModal: true,
       };
     case actions.CLOSE_MOBILE_MODAL:
       return {
         ...state,
-        showModal: false
+        showModal: false,
       };
     case actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS:
       return {

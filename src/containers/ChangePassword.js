@@ -11,7 +11,7 @@ const pwStrengthMessages = [
   "pwfield.bad",
   "pwfield.weak",
   "pwfield.good",
-  "pwfield.strong"
+  "pwfield.strong",
 ];
 
 const mapStateToProps = (state) => {
@@ -47,17 +47,17 @@ const mapStateToProps = (state) => {
     password_score: score,
     password_strength_msg: pwStrengthMessages[score],
     custom_ready: configEntropy > entropy,
-    cancel_to: "security"
+    cancel_to: "security",
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    noop: function(event) {
+    noop: function (event) {
       event.preventDefault();
     },
 
-    handleStartPasswordChange: function(event) {
+    handleStartPasswordChange: function (event) {
       event.preventDefault();
       const oldPassword = document.getElementsByName(comp.pwFieldOldName)[0]
         .value;
@@ -69,21 +69,21 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.postPasswordChange(oldPassword, newPassword));
     },
 
-    handleStopPasswordChange: function(event) {
+    handleStopPasswordChange: function (event) {
       event.preventDefault();
       this.props.history.push(this.props.cancel_to);
       dispatch(stopConfirmationPassword());
     },
 
-    loadZxcvbn: function() {
-      return new Promise(resolve => {
+    loadZxcvbn: function () {
+      return new Promise((resolve) => {
         require.ensure([], () => {
           const module = require("zxcvbn");
           dispatch(actions.setZxcvbn(module));
           resolve();
         });
       });
-    }
+    },
   };
 };
 

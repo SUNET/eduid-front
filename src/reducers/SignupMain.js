@@ -15,20 +15,20 @@ const configData = {
   debug: true,
   available_languages: [],
   eidas_url: "",
-  mfa_authn_idp: ""
+  mfa_authn_idp: "",
 };
 
 //const fetchingActions = [
-  //actions.GET_SIGNUP_CONFIG,
-  //actions.APP_LOADING,
-  //actions.APP_FETCHING,
-  //verifiedActions.GET_CODE_STATUS,
-  //captchaActions.POST_SIGNUP_TRYCAPTCHA,
-  //resendActions.POST_SIGNUP_RESEND_VERIFICATION,
+//actions.GET_SIGNUP_CONFIG,
+//actions.APP_LOADING,
+//actions.APP_FETCHING,
+//verifiedActions.GET_CODE_STATUS,
+//captchaActions.POST_SIGNUP_TRYCAPTCHA,
+//resendActions.POST_SIGNUP_RESEND_VERIFICATION,
 //];
 
 //const unFetchingActions = [
-  //actions.APP_LOADED,
+//actions.APP_LOADED,
 //];
 
 let signupReducer = (state = configData, action) => {
@@ -36,7 +36,7 @@ let signupReducer = (state = configData, action) => {
     case actions.APP_LOADED:
       return {
         ...state,
-        is_app_loaded: true
+        is_app_loaded: true,
       };
     case verifiedActions.GET_CODE_STATUS:
       return {
@@ -51,24 +51,24 @@ let signupReducer = (state = configData, action) => {
     case actions.NEW_CSRF_TOKEN:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     default:
       //if (action.type.endsWith("_SUCCESS") || action.type.endsWith("_FAIL")) {
-        //return {
-          //...state,
-          //is_fetching: false
-        //};
+      //return {
+      //...state,
+      //is_fetching: false
+      //};
       //} else if (fetchingActions.includes(action.type)) {
-        //return {
-          //...state,
-          //is_fetching: true
-        //};
+      //return {
+      //...state,
+      //is_fetching: true
+      //};
       //} else if (unFetchingActions.includes(action.type)) {
-        //return {
-          //...state,
-          //is_fetching: false
-        //};
+      //return {
+      //...state,
+      //is_fetching: false
+      //};
       //}
       return state;
   }

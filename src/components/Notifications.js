@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Alert from "reactstrap/lib/Alert";
 
 // import "style/Notifications.scss";
-import "../login/styles/index.scss"
+import "../login/styles/index.scss";
 
 class Notifications extends Component {
   render() {
@@ -69,7 +69,7 @@ Notifications.propTypes = {
   errors: PropTypes.array,
   debug: PropTypes.bool,
   handleRMNotification: PropTypes.func,
-  translate: PropTypes.func
+  translate: PropTypes.func,
 };
 
 export default Notifications;

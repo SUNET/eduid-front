@@ -9,7 +9,7 @@ class EmailInUse extends Component {
         <div>
           <h3 className="register-header">
             {this.props.translate("used.email-in-use")({
-              email: this.props.email
+              email: this.props.email,
             })}
           </h3>
           <div id="email-display">
@@ -29,7 +29,7 @@ class EmailInUse extends Component {
 
 EmailInUse.propTypes = {
   translate: PropTypes.func,
-  reset_url: PropTypes.string
+  reset_url: PropTypes.string,
 };
 
 export default EmailInUse;

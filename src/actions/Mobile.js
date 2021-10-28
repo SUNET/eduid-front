@@ -20,13 +20,13 @@ export const POST_MOBILE_PRIMARY_FAIL = "POST_PHONE_PRIMARY_FAIL";
 
 export function getMobiles() {
   return {
-    type: GET_MOBILES_SUCCESS
+    type: GET_MOBILES_SUCCESS,
   };
 }
 
 export function postMobile() {
   return {
-    type: POST_MOBILE
+    type: POST_MOBILE,
   };
 }
 
@@ -35,26 +35,26 @@ export function postMobileFail(err) {
     type: POST_MOBILE_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function stopConfirmation() {
   return {
-    type: STOP_CONFIRMATION
+    type: STOP_CONFIRMATION,
   };
 }
 
 export function startConfirmation(data) {
   return {
     type: START_CONFIRMATION,
-    payload: data
+    payload: data,
   };
 }
 export function startResendMobileCode() {
   return {
-    type: START_RESEND_MOBILE_CODE
+    type: START_RESEND_MOBILE_CODE,
   };
 }
 
@@ -63,15 +63,15 @@ export function resendMobileCodeFail(err) {
     type: START_RESEND_MOBILE_CODE_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startVerify(data) {
   return {
     type: START_VERIFY,
-    payload: data
+    payload: data,
   };
 }
 
@@ -80,15 +80,15 @@ export function startVerifyFail(err) {
     type: POST_PHONE_VERIFY_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startRemove(data) {
   return {
     type: POST_MOBILE_REMOVE,
-    payload: data
+    payload: data,
   };
 }
 
@@ -97,15 +97,15 @@ export function startRemoveFail(err) {
     type: POST_MOBILE_REMOVE_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function makePrimary(data) {
   return {
     type: POST_MOBILE_PRIMARY,
-    payload: data
+    payload: data,
   };
 }
 
@@ -114,7 +114,7 @@ export function makePrimaryFail(err) {
     type: POST_MOBILE_PRIMARY_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }

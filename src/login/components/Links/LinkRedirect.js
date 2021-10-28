@@ -17,6 +17,6 @@ class LinkRedirect extends Component {
   }
 }
 
-LinkRedirect.propTypes = { };
+LinkRedirect.propTypes = {};
 
 export default withRouter(LinkRedirect);

@@ -52,10 +52,10 @@
   border-radius: 50%;
   margin-top: -1rem;
 }
-.notification-dot-inner{
-  background-color:$orange-highlight;
+.notification-dot-inner {
+  background-color: $orange-highlight;
   border: solid 1px $light-gray;
-  top: 10%; 
+  top: 10%;
   left: 10%;
   width: 80%; /* of the notification-dot */
   height: 80%; /* of the notification-dot */
@@ -187,7 +187,7 @@
 }
 
 @media (max-width: 384px) {
-  .speech-bubbletip.settings.en{
+  .speech-bubbletip.settings.en {
     left: 55px;
   }
   .speech-bubbletip.settings.en::before {

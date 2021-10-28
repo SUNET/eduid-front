@@ -4,13 +4,13 @@ import {
   putCsrfToken,
   postRequest,
   getRequest,
-  failRequest
+  failRequest,
 } from "sagas/common";
 import * as actions from "actions/LetterProofing";
 
 export function* sendGetLetterProofing() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       nin = state.nins.nin;
     const response = yield call(fetchGetLetterProofing, state.config, nin);
     yield put(putCsrfToken(response));
@@ -23,18 +23,18 @@ export function* sendGetLetterProofing() {
 export function fetchGetLetterProofing(config) {
   return window
     .fetch(config.letter_proofing_url + "proofing", {
-      ...getRequest
+      ...getRequest,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* sendLetterProofing() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       data = {
         nin: state.nins.nin,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
     const response = yield call(fetchLetterProofing, state.config, data);
     yield put(putCsrfToken(response));
@@ -48,18 +48,18 @@ export function fetchLetterProofing(config, data) {
   return window
     .fetch(config.letter_proofing_url + "proofing", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* sendLetterCode() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       data = {
         code: state.letter_proofing.code,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
 
     const response = yield call(fetchLetterCode, state.config, data);
@@ -74,8 +74,8 @@ export function fetchLetterCode(config, data) {
   return window
     .fetch(config.letter_proofing_url + "verify-code", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

@@ -7,7 +7,7 @@ const letterData = {
   letter_sent: "",
   letter_expires: "",
   letter_expired: false,
-  message: ""
+  message: "",
 };
 
 let letterProofingReducer = (state = letterData, action) => {
@@ -16,13 +16,13 @@ let letterProofingReducer = (state = letterData, action) => {
       return {
         ...state,
         confirmingLetter: false,
-        verifyingLetter: false
+        verifyingLetter: false,
       };
     case actions.STOP_LETTER_VERIFICATION:
       return {
         ...state,
         confirmingLetter: false,
-        verifyingLetter: false
+        verifyingLetter: false,
       };
     case actions.GET_LETTER_PROOFING_PROOFING_SUCCESS: {
       let verifying = false,
@@ -36,27 +36,27 @@ let letterProofingReducer = (state = letterData, action) => {
         ...state,
         ...action.payload,
         verifyingLetter: verifying,
-        confirmingLetter: confirming
+        confirmingLetter: confirming,
       };
     }
     case actions.GET_LETTER_PROOFING_PROOFING_FAIL:
       return {
         ...state,
         verifyingLetter: false,
-        confirmingLetter: false
+        confirmingLetter: false,
       };
     case actions.POST_LETTER_PROOFING_PROOFING_SUCCESS:
       return {
         ...state,
         ...action.payload,
         confirmingLetter: false,
-        verifyingLetter: false
+        verifyingLetter: false,
       };
     case actions.POST_LETTER_PROOFING_PROOFING_FAIL:
       return {
         ...state,
         confirmingLetter: false,
-        verifyingLetter: false
+        verifyingLetter: false,
       };
     case actions.POST_LETTER_PROOFING_CODE:
       return {
@@ -68,13 +68,13 @@ let letterProofingReducer = (state = letterData, action) => {
         ...state,
         message: action.payload.message,
         confirmingLetter: false,
-        verifyingLetter: false
+        verifyingLetter: false,
       };
     case actions.POST_LETTER_PROOFING_CODE_FAIL:
       return {
         ...state,
         confirmingLetter: false,
-        verifyingLetter: false
+        verifyingLetter: false,
       };
     default:
       return state;

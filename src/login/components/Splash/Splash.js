@@ -7,7 +7,7 @@ const spinnerOpts = {
   direction: 1, // 1: clockwise, -1: counterclockwise
   speed: 1, // Rounds per second
   trail: 60, // Afterglow percentage
-  fps: 20 // Frames per second when using setTimeout() as a fallback in IE 9
+  fps: 20, // Frames per second when using setTimeout() as a fallback in IE 9
 };
 
 class Splash extends Component {
@@ -23,14 +23,14 @@ class Splash extends Component {
     const comp = this.props.is_loaded ? (
       ""
     ) : (
-        <div ref="eduidSplash" id="eduid-splash-screen" />
-      );
+      <div ref="eduidSplash" id="eduid-splash-screen" />
+    );
     return comp;
   }
 }
 
 Splash.propTypes = {
-  is_app_loaded: PropTypes.bool
+  is_app_loaded: PropTypes.bool,
 };
 
 export default Splash;

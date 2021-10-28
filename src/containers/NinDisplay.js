@@ -6,21 +6,21 @@ import * as actions from "actions/Nins";
 const mapStateToProps = (state) => {
   return {
     showNinAtProfile: state.nins.showNinAtProfile,
-    showNinAtIdentity: state.nins.showNinAtIdentity
+    showNinAtIdentity: state.nins.showNinAtIdentity,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     handleDelete: function (e) {
-      const ninNumber = e.target.closest(".profile-grid-cell").children[1]
-        .dataset.ninnumber;
+      const ninNumber =
+        e.target.closest(".profile-grid-cell").children[1].dataset.ninnumber;
       dispatch(actions.startRemove(ninNumber));
     },
-    toggleShowNinAtProfile: function() {
+    toggleShowNinAtProfile: function () {
       dispatch(actions.showNinAtProfile());
     },
-    toggleShowNinAtIdentity: function() {
+    toggleShowNinAtIdentity: function () {
       dispatch(actions.showNinAtIdentity());
     },
   };

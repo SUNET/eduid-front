@@ -22,13 +22,13 @@ export const POST_EMAIL_PRIMARY_FAIL = "POST_EMAIL_PRIMARY_FAIL";
 export function changeEmail(data) {
   return {
     type: CHANGE_EMAIL,
-    payload: data
+    payload: data,
   };
 }
 
 export function postEmail() {
   return {
-    type: POST_EMAIL
+    type: POST_EMAIL,
   };
 }
 
@@ -37,27 +37,27 @@ export function postEmailFail(err) {
     type: POST_EMAIL_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startConfirmation(data) {
   return {
     type: START_CONFIRMATION,
-    payload: data
+    payload: data,
   };
 }
 
 export function stopConfirmation() {
   return {
-    type: STOP_CONFIRMATION
+    type: STOP_CONFIRMATION,
   };
 }
 
 export function startResendEmailCode() {
   return {
-    type: START_RESEND_EMAIL_CODE
+    type: START_RESEND_EMAIL_CODE,
   };
 }
 
@@ -66,15 +66,15 @@ export function resendEmailCodeFail(err) {
     type: START_RESEND_EMAIL_CODE_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startVerify(data) {
   return {
     type: START_VERIFY,
-    payload: data
+    payload: data,
   };
 }
 
@@ -83,15 +83,15 @@ export function startVerifyFail(err) {
     type: START_VERIFY_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startRemove(data) {
   return {
     type: POST_EMAIL_REMOVE,
-    payload: data
+    payload: data,
   };
 }
 
@@ -100,15 +100,15 @@ export function startRemoveFail(err) {
     type: POST_EMAIL_REMOVE_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function makePrimary(data) {
   return {
     type: POST_EMAIL_PRIMARY,
-    payload: data
+    payload: data,
   };
 }
 
@@ -117,7 +117,7 @@ export function makePrimaryFail(err) {
     type: POST_EMAIL_PRIMARY_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }

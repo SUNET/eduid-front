@@ -7,43 +7,40 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import ConfirmModalForm from "../../../components/ConfirmModalForm";
 import EduIDButton from "../../../components/EduIDButton";
 
-const RenderCloseButton = ({closeModal}) => {
+const RenderCloseButton = ({ closeModal }) => {
   return (
     <div className="close-button-container">
-      <EduIDButton
-        className="modal-button close-button"
-        onClick={closeModal}
-      >
-      <svg
-        className="remove"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M7 0h2v16H7z" />
-        <path d="M0 9V7h16v2z" />
-      </svg>
+      <EduIDButton className="modal-button close-button" onClick={closeModal}>
+        <svg
+          className="remove"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M7 0h2v16H7z" />
+          <path d="M0 9V7h16v2z" />
+        </svg>
       </EduIDButton>
     </div>
-  )
-}
+  );
+};
 class ConfirmModal extends Component {
   render() {
-    const { 
-      with_resend_link, 
-      handleResend, 
-      resendText, 
-      modalId, 
-      closeModal, 
-      helpBlock, 
+    const {
+      with_resend_link,
+      handleResend,
+      resendText,
+      modalId,
+      closeModal,
+      helpBlock,
       showModal,
-      id, 
-      formEnabled, 
-      handleConfirm, 
+      id,
+      formEnabled,
+      handleConfirm,
       translate,
-      title
+      title,
     } = this.props;
 
     let resendMarkup = "";
@@ -66,21 +63,16 @@ class ConfirmModal extends Component {
         aria-hidden="true"
         data-backdrop="true"
       >
-        <Modal
-          id="confirm-user-data-modal"
-          isOpen={showModal}
-        >
+        <Modal id="confirm-user-data-modal" isOpen={showModal}>
           <ModalHeader>
-            <RenderCloseButton  
-              closeModal={closeModal}
-            />
+            <RenderCloseButton closeModal={closeModal} />
             {title}
           </ModalHeader>
           <ModalBody>
-            <ConfirmModalForm 
-              helpBlock={helpBlock} 
-              inputName={id} 
-              {...this.props} 
+            <ConfirmModalForm
+              helpBlock={helpBlock}
+              inputName={id}
+              {...this.props}
             />
             {resendMarkup}
           </ModalBody>
@@ -106,11 +98,11 @@ ConfirmModal.propTypes = {
   handleResend: PropTypes.func,
   closeModal: PropTypes.func,
   showModal: PropTypes.bool,
-  with_resend_link: PropTypes.bool
+  with_resend_link: PropTypes.bool,
 };
 
 ConfirmModal.defaultProps = {
-  with_resend_link: true
+  with_resend_link: true,
 };
 
 export default ConfirmModal;

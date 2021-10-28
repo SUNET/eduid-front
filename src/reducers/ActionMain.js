@@ -6,7 +6,7 @@ const configData = {
   is_app_loaded: false,
   redirect: "/",
   //is_fetching: false,
-  available_languages: []
+  available_languages: [],
 };
 
 let actionMainReducer = (state = configData, action) => {
@@ -14,22 +14,22 @@ let actionMainReducer = (state = configData, action) => {
     case actions.APP_LOADED:
       return {
         ...state,
-        is_app_loaded: true
+        is_app_loaded: true,
       };
     case actions.GET_ACTIONS_CONFIG_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.NEW_CSRF_TOKEN:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.REDIRECT:
       return {
         ...state,
-        redirect: action.payload.path
+        redirect: action.payload.path,
       };
     default:
       return state;

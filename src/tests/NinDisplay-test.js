@@ -12,22 +12,22 @@ addLocaleData("react-intl/locale-data/en");
 
 history.push("/verify-identity");
 describe("NinDisplay component (/verify-identity), when nin is saved and unverified ", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
   const fakeState = {
     nins: {
       nins: [],
       verifiedNin: [],
-      verifiedNinStatus: false
+      verifiedNinStatus: false,
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -35,14 +35,14 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
       nins: [
         { number: "199901100006", verified: false, primary: false },
         { number: "199901110005", verified: false, primary: false },
-        { number: "199901110004", verified: false, primary: false }
+        { number: "199901110004", verified: false, primary: false },
       ],
       verifiedNin: [],
-      verifiedNinStatus: false
+      verifiedNinStatus: false,
     };
 
     history.push({
-      pathname: "/verify-identity"
+      pathname: "/verify-identity",
     });
 
     const wrapper = mount(
@@ -54,7 +54,7 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
     );
     return {
       props,
-      wrapper
+      wrapper,
     };
   }
 
@@ -73,23 +73,23 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
 });
 
 describe("NinDisplay component (/verify-identity), when a nin is saved and verified ", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     nins: {
       nins: [],
       verifiedNin: [],
-      verifiedNinStatus: false
+      verifiedNinStatus: false,
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -97,10 +97,10 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
       nins: [
         { number: "199901100006", verified: false, primary: false },
         { number: "199901100005", verified: false, primary: false },
-        { number: "199901100004", verified: true, primary: true }
+        { number: "199901100004", verified: true, primary: true },
       ],
       verifiedNin: [{ number: "199901100004", verified: true, primary: true }],
-      verifiedNinStatus: true
+      verifiedNinStatus: true,
     };
     history.push("verify-identity");
     const wrapper = mount(
@@ -112,7 +112,7 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
     );
     return {
       mockProps,
-      wrapper
+      wrapper,
     };
   }
 
@@ -136,27 +136,27 @@ describe("NinDisplay component", () => {
 });
 
 describe("NinDisplay component (profile), when no nin is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     nins: {
-      nins: [{ number: "199901100006", verified: false, primary: false }]
+      nins: [{ number: "199901100006", verified: false, primary: false }],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
   function setupComponent() {
     const mockProps = {
       nins: [],
       verifiedNin: [],
-      verifiedNinStatus: false
+      verifiedNinStatus: false,
     };
 
     const wrapper = mount(
@@ -167,7 +167,7 @@ describe("NinDisplay component (profile), when no nin is saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   // const state = { ...fakeState };
@@ -190,33 +190,33 @@ describe("NinDisplay component (profile), when no nin is saved", () => {
 });
 
 describe("NinDisplay component (profile), when a nin is saved and unverified", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     nins: {
       nins: [],
       verifiedNin: [],
-      verifiedNinStatus: false
+      verifiedNinStatus: false,
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
     const props = {
       nins: [
         { number: "196701100006", verified: false, primary: false },
-        { number: "196701110005", verified: false, primary: false }
+        { number: "196701110005", verified: false, primary: false },
       ],
       verifiedNin: [],
-      verifiedNinStatus: false
+      verifiedNinStatus: false,
     };
 
     const wrapper = mount(
@@ -228,7 +228,7 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
     );
     return {
       props,
-      wrapper
+      wrapper,
     };
   }
   // state.nins = [{ number: "196701110005", verified: false, primary: false }];
@@ -247,31 +247,31 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
 });
 
 describe("NinDisplay component, when a nin is saved and verified", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     nins: {
-      nins: []
+      nins: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
     const props = {
       nins: [
         { number: "196701100006", verified: false, primary: false },
-        { number: "196701110005", verified: true, primary: false }
+        { number: "196701110005", verified: true, primary: false },
       ],
       verifiedNin: [{ number: "196701110005", verified: true, primary: false }],
-      verifiedNinStatus: true
+      verifiedNinStatus: true,
     };
     const wrapper = mount(
       <Provider store={fakeStore(fakeState)}>
@@ -282,7 +282,7 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
     );
     return {
       props,
-      wrapper
+      wrapper,
     };
   }
 

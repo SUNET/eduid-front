@@ -4,7 +4,7 @@ import {
   postOpenidFreja,
   getOpenidFreja,
   showOpenidFrejaModal,
-  hideOpenidFrejaModal
+  hideOpenidFrejaModal,
 } from "actions/OpenidConnectFreja";
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
@@ -16,25 +16,25 @@ const mapStateToProps = (state) => {
     showModal: state.openid_freja_data.showModal,
     error: state.openid_freja_data.error,
     // Used until we deploy the nin component
-    proofing_methods: state.config.proofing_methods
+    proofing_methods: state.config.proofing_methods,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInitializeFrejaProofing: function() {
+    handleInitializeFrejaProofing: function () {
       dispatch(postOpenidFreja());
     },
-    handleFetchFrejaProofing: function() {
+    handleFetchFrejaProofing: function () {
       dispatch(getOpenidFreja());
     },
-    handleShowModal: function() {
+    handleShowModal: function () {
       dispatch(eduidRMAllNotify());
       dispatch(showOpenidFrejaModal());
     },
-    handleHideModal: function() {
+    handleHideModal: function () {
       dispatch(hideOpenidFrejaModal());
-    }
+    },
   };
 };
 

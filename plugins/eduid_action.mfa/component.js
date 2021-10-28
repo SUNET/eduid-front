@@ -125,7 +125,7 @@ Main.propTypes = {
   l10n: PropTypes.func,
   getCredentials: PropTypes.func,
   retry: PropTypes.func,
-  external_mfa_url: PropTypes.string
+  external_mfa_url: PropTypes.string,
 };
 
 const mapStateToProps = (state, props) => {
@@ -136,21 +136,22 @@ const mapStateToProps = (state, props) => {
       options.publicKey = {
         ...options.publicKey,
         challenge: Uint8Array.from(
-          Array.prototype.map.call(atob(options.publicKey.challenge), function(
-            x
-          ) {
-            return x.charCodeAt(0);
-          })
-        )
+          Array.prototype.map.call(
+            atob(options.publicKey.challenge),
+            function (x) {
+              return x.charCodeAt(0);
+            }
+          )
+        ),
       };
-      const allowCreds = options.publicKey.allowCredentials.map(v => {
+      const allowCreds = options.publicKey.allowCredentials.map((v) => {
         return {
           ...v,
           id: Uint8Array.from(
-            Array.prototype.map.call(atob(v.id), function(x) {
+            Array.prototype.map.call(atob(v.id), function (x) {
               return x.charCodeAt(0);
             })
-          )
+          ),
         };
       });
       options.publicKey.allowCredentials = allowCreds;
@@ -184,22 +185,22 @@ const mapStateToProps = (state, props) => {
     webauthn_options: options,
     testing: state.config.testing,
     assertion: state.plugin.webauthn_assertion,
-    external_mfa_url: external_mfa_url
+    external_mfa_url: external_mfa_url,
   };
 };
 
 export const WEBAUTHN_CREDS_GOT = "WEBAUTHN_CREDS_GOT";
 
-const credentialsGot = assertion => ({
+const credentialsGot = (assertion) => ({
   type: WEBAUTHN_CREDS_GOT,
-  payload: assertion
+  payload: assertion,
 });
 
 let credentials_locked = false;
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    getCredentials: function() {
+    getCredentials: function () {
       if (this.props.assertion === null && !credentials_locked) {
         let options = this.props.webauthn_options;
         if (options.publicKey !== undefined) {
@@ -207,7 +208,7 @@ const mapDispatchToProps = (dispatch, props) => {
             credentials_locked = true;
             navigator.credentials
               .get(options)
-              .then(assertion => {
+              .then((assertion) => {
                 if (assertion === null) {
                   dispatch(postActionFail("mfa.error-getting-token"));
                 } else {
@@ -215,7 +216,7 @@ const mapDispatchToProps = (dispatch, props) => {
                 }
                 credentials_locked = false;
               })
-              .catch(error => {
+              .catch((error) => {
                 credentials_locked = false;
                 console.log("Problem getting MFA credentials:", error);
                 if (navigator.appVersion.indexOf("Edge") != -1) {
@@ -235,10 +236,10 @@ const mapDispatchToProps = (dispatch, props) => {
         console.log("Webauthn assertion already gotten");
       }
     },
-    retry: function(e) {
+    retry: function (e) {
       e.preventDefault();
       dispatch(retry());
-    }
+    },
   };
 };
 

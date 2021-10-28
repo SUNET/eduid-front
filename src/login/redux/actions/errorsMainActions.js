@@ -4,13 +4,13 @@ export const UPDATE_CONFIG_DATA_FAIL = "UPDATE_CONFIG_DATA_FAIL";
 
 export function appLoaded() {
   return {
-    type: APP_LOADED
+    type: APP_LOADED,
   };
 }
 
 export function updateErrorsConfigData() {
   return {
-    type: UPDATE_CONFIG_DATA
+    type: UPDATE_CONFIG_DATA,
   };
 }
 
@@ -19,8 +19,7 @@ export function updateErrorsConfigDataFail(err) {
     type: UPDATE_CONFIG_DATA_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
-

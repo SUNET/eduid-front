@@ -23,7 +23,7 @@ class ChangePasswordDisplay extends Component {
             </EduIDButton>
           </div>
         </div>
-        <NotificationModal 
+        <NotificationModal
           modalId="securityConfirmDialog"
           title={this.props.translate("settings.confirm_title_chpass")}
           mainText={this.props.translate("settings.change_info")}
@@ -40,7 +40,7 @@ ChangePasswordDisplay.propTypes = {
   confirming_change: PropTypes.bool,
   handleStartConfirmationPassword: PropTypes.func,
   handleStopConfirmationPassword: PropTypes.func,
-  handleConfirmationPassword: PropTypes.func
+  handleConfirmationPassword: PropTypes.func,
 };
 
 export default ChangePasswordDisplay;

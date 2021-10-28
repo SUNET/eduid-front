@@ -12,8 +12,8 @@ describe("CodeVerified Component", () => {
       password: "dummy-passwd",
       email: "dummy@example.com",
       status: "verified",
-      gotten: false
-    }
+      gotten: false,
+    },
   };
 
   it("The component does not render 'false' or 'null'", () => {
@@ -28,7 +28,7 @@ describe("CodeVerified Component", () => {
   it("Component renders holder for user email and password", () => {
     const fullWrapper = setupComponent({
       component: <CodeVerifiedContainer />,
-      overrides: state
+      overrides: state,
     });
 
     const userDetailsDisplay = fullWrapper.find("#email-display");
@@ -37,7 +37,7 @@ describe("CodeVerified Component", () => {
   it("Component renders user email (text inlcudes '@')", () => {
     const fullWrapper = setupComponent({
       component: <CodeVerifiedContainer />,
-      overrides: state
+      overrides: state,
     });
 
     const userEmailDisplay = fullWrapper.find("#email-display");
@@ -50,7 +50,7 @@ describe("CodeVerified Component", () => {
   it("Component renders a user password", () => {
     const fullWrapper = setupComponent({
       component: <CodeVerifiedContainer />,
-      overrides: state
+      overrides: state,
     });
     const passwd = fullWrapper.find("#user-password");
 
@@ -61,7 +61,7 @@ describe("CodeVerified Component", () => {
   it("Component renders 'go to my eduid' button", () => {
     const fullWrapper = setupComponent({
       component: <CodeVerifiedContainer />,
-      overrides: state
+      overrides: state,
     });
     const buttons = fullWrapper.find("EduIDButton");
     expect(buttons.length).toEqual(1);

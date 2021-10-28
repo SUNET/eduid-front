@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import Input from "./Input";
 
-let ConfirmationCodeInput = props => (
+let ConfirmationCodeInput = (props) => (
   <Field
     type={"text"}
     name={"confirmationCode"}
@@ -19,7 +19,7 @@ let ConfirmationCodeInput = props => (
 ConfirmationCodeInput.propTypes = {
   translate: PropTypes.func,
   // handleAccept: PropTypes.func.isRequired,
-  validate: PropTypes.func
+  validate: PropTypes.func,
 };
 
 export default ConfirmationCodeInput;

@@ -50,7 +50,7 @@ DeleteAccount.propTypes = {
   confirming_deletion: PropTypes.bool,
   handleStartConfirmationDeletion: PropTypes.func,
   handleStopConfirmationDeletion: PropTypes.func,
-  handleConfirmationDeletion: PropTypes.func
+  handleConfirmationDeletion: PropTypes.func,
 };
 
 export default DeleteAccount;

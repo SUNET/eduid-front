@@ -10,19 +10,19 @@ export function requestPostAcceptTOU(data) {
   return window
     .fetch(url, {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* postAcceptTOU() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       data = {
         accept: true,
         version: state.plugin.version,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
     const resp = yield call(requestPostAcceptTOU, data);
     yield put(putCsrfToken(resp));
@@ -35,7 +35,7 @@ export function* postAcceptTOU() {
 function* rootSaga() {
   yield [
     ...defaultSaga,
-    takeLatest(actions.POST_ACTIONS_ACTION, postAcceptTOU)
+    takeLatest(actions.POST_ACTIONS_ACTION, postAcceptTOU),
   ];
 }
 

@@ -5,7 +5,12 @@ import EduIDButton from "components/EduIDButton";
 class CodeVerified extends Component {
   render() {
     return (
-      <form key="2" method="GET" action={this.props.dashboard_url} className="vertical-content-margin">
+      <form
+        key="2"
+        method="GET"
+        action={this.props.dashboard_url}
+        className="vertical-content-margin"
+      >
         <div key="0" id="content">
           <div>
             <h3 className="register-header">
@@ -44,7 +49,7 @@ CodeVerified.propTypes = {
   dashboard_url: PropTypes.string,
   password: PropTypes.string,
   email: PropTypes.string,
-  translate: PropTypes.func
+  translate: PropTypes.func,
 };
 
 export default CodeVerified;

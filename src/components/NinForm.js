@@ -82,8 +82,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addNin: function (e) {
       e.preventDefault();
-      const nin = e.target.closest("#nin-form").firstElementChild
-        .firstElementChild.children[0].value;
+      const nin =
+        e.target.closest("#nin-form").firstElementChild.firstElementChild
+          .children[0].value;
       dispatch(actions.postNin(nin));
     },
   };

@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   return {
     code: state.config.code,
     email: state.email.email,
-    captcha: state.config.captcha
+    captcha: state.config.captcha,
   };
 };
 

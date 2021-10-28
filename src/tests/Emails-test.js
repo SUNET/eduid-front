@@ -19,7 +19,7 @@ import {
   requestRemoveEmail,
   requestRemove,
   requestMakePrimaryEmail,
-  requestMakePrimary
+  requestMakePrimary,
 } from "sagas/Emails";
 import { put, call } from "redux-saga/effects";
 
@@ -30,18 +30,18 @@ describe("Email Actions", () => {
   it("Should change the emails ", () => {
     const data = {
       email: "test@localhost.com",
-      text: "texting"
+      text: "texting",
     };
     const expectedAction = {
       type: actions.CHANGE_EMAIL,
-      payload: data
+      payload: data,
     };
     expect(actions.changeEmail(data)).toEqual(expectedAction);
   });
 
   it("Should post the emails ", () => {
     const expectedAction = {
-      type: actions.POST_EMAIL
+      type: actions.POST_EMAIL,
     };
     expect(actions.postEmail()).toEqual(expectedAction);
   });
@@ -51,7 +51,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.postEmailFail(err)).toEqual(expectedAction);
   });
@@ -59,25 +59,25 @@ describe("Email Actions", () => {
   it("Should start the confirmation ", () => {
     const data = {
       email: "test@localhost.com",
-      text: "texting"
+      text: "texting",
     };
     const expectedAction = {
       type: actions.START_CONFIRMATION,
-      payload: data
+      payload: data,
     };
     expect(actions.startConfirmation(data)).toEqual(expectedAction);
   });
 
   it("Should stop the confirmation ", () => {
     const expectedAction = {
-      type: actions.STOP_CONFIRMATION
+      type: actions.STOP_CONFIRMATION,
     };
     expect(actions.stopConfirmation()).toEqual(expectedAction);
   });
 
   it("Should resend the email code ", () => {
     const expectedAction = {
-      type: actions.START_RESEND_EMAIL_CODE
+      type: actions.START_RESEND_EMAIL_CODE,
     };
     expect(actions.startResendEmailCode()).toEqual(expectedAction);
   });
@@ -87,7 +87,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.START_RESEND_EMAIL_CODE_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.resendEmailCodeFail(err)).toEqual(expectedAction);
   });
@@ -95,11 +95,11 @@ describe("Email Actions", () => {
   it("Should start the verify process", () => {
     const data = {
       email: "john@gmail.com",
-      identifier: "1"
+      identifier: "1",
     };
     const expectedAction = {
       type: actions.START_VERIFY,
-      payload: data
+      payload: data,
     };
 
     expect(actions.startVerify(data)).toEqual(expectedAction);
@@ -110,7 +110,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.START_VERIFY_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.startVerifyFail(err)).toEqual(expectedAction);
   });
@@ -118,11 +118,11 @@ describe("Email Actions", () => {
   it("Should start remove process ", () => {
     const data = {
       email: "john@gmail.com",
-      identifier: "1"
+      identifier: "1",
     };
     const expectedAction = {
       type: actions.POST_EMAIL_REMOVE,
-      payload: data
+      payload: data,
     };
     expect(actions.startRemove(data)).toEqual(expectedAction);
   });
@@ -132,7 +132,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_REMOVE_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.startRemoveFail(err)).toEqual(expectedAction);
   });
@@ -140,11 +140,11 @@ describe("Email Actions", () => {
   it("Should start the make primary process", () => {
     const data = {
       email: "john@gmail.com",
-      identifier: "1"
+      identifier: "1",
     };
     const expectedAction = {
       type: actions.POST_EMAIL_PRIMARY,
-      payload: data
+      payload: data,
     };
     expect(actions.makePrimary(data)).toEqual(expectedAction);
   });
@@ -154,7 +154,7 @@ describe("Email Actions", () => {
     const expectedAction = {
       type: actions.POST_EMAIL_PRIMARY_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.makePrimaryFail(err)).toEqual(expectedAction);
   });
@@ -165,7 +165,7 @@ describe("Reducers", () => {
     message: "",
     confirming: "",
     emails: [],
-    email: ""
+    email: "",
   };
 
   it("Receives a GET_EMAILS_SUCCESS action", () => {
@@ -173,14 +173,14 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.GET_EMAILS_SUCCESS,
         payload: {
-          email: "johnsmith@example.com"
-        }
+          email: "johnsmith@example.com",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: "johnsmith@example.com"
+      email: "johnsmith@example.com",
     });
   });
 
@@ -189,40 +189,40 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.CHANGE_EMAIL,
         payload: {
-          email: "johnsmith@example.com"
-        }
+          email: "johnsmith@example.com",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: "johnsmith@example.com"
+      email: "johnsmith@example.com",
     });
   });
 
   it("Receives a POST_EMAIL action", () => {
     expect(
       emailsReducer(mockState, {
-        type: actions.POST_EMAIL
+        type: actions.POST_EMAIL,
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
   it("Receives a POST_EMAIL_SUCCESS action", () => {
     expect(
       emailsReducer(mockState, {
-        type: actions.POST_EMAIL_SUCCESS
+        type: actions.POST_EMAIL_SUCCESS,
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -231,14 +231,14 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -247,40 +247,40 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.START_CONFIRMATION,
         payload: {
-          email: "test@localhost.com"
-        }
+          email: "test@localhost.com",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "test@localhost.com",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
   it("Receives a STOP_CONFIRMATION action", () => {
     expect(
       emailsReducer(mockState, {
-        type: actions.STOP_CONFIRMATION
+        type: actions.STOP_CONFIRMATION,
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
   it("Receives a START_RESEND_EMAIL_CODE action", () => {
     expect(
       emailsReducer(mockState, {
-        type: actions.START_RESEND_EMAIL_CODE
+        type: actions.START_RESEND_EMAIL_CODE,
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -288,13 +288,13 @@ describe("Reducers", () => {
     expect(
       emailsReducer(mockState, {
         type: actions.START_RESEND_EMAIL_CODE_SUCCESS,
-        message: "emails.resend_success"
+        message: "emails.resend_success",
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -303,14 +303,14 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.START_RESEND_EMAIL_CODE_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -319,15 +319,15 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.START_VERIFY,
         payload: {
-          code: "123456789"
-        }
+          code: "123456789",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
       email: "",
-      code: "123456789"
+      code: "123456789",
     });
   });
 
@@ -336,14 +336,14 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.START_VERIFY_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -352,14 +352,14 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_REMOVE,
         payload: {
-          email: "john@gmail.com"
-        }
+          email: "john@gmail.com",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: "john@gmail.com"
+      email: "john@gmail.com",
     });
   });
 
@@ -367,13 +367,13 @@ describe("Reducers", () => {
     expect(
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_REMOVE_SUCCESS,
-        message: "emails.resend_success"
+        message: "emails.resend_success",
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -382,14 +382,14 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_REMOVE_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -398,14 +398,14 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_PRIMARY,
         payload: {
-          email: "john@gmail.com"
-        }
+          email: "john@gmail.com",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: "john@gmail.com"
+      email: "john@gmail.com",
     });
   });
 
@@ -413,13 +413,13 @@ describe("Reducers", () => {
     expect(
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_PRIMARY_SUCCESS,
-        message: "emails.resend_success"
+        message: "emails.resend_success",
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 
@@ -428,14 +428,14 @@ describe("Reducers", () => {
       emailsReducer(mockState, {
         type: actions.POST_EMAIL_PRIMARY_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       emails: [],
-      email: ""
+      email: "",
     });
   });
 });
@@ -445,17 +445,17 @@ const state = {
     message: "",
     confirming: "",
     emails: [],
-    email: ""
+    email: "",
   },
   config: {
     csrf_token: "123456789",
     emails_url: "test/localhost",
-    email: "email@localhost.com"
+    email: "email@localhost.com",
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 };
 const getState = () => state;
 
@@ -468,7 +468,7 @@ describe("Async component", () => {
       email: state.emails.email,
       verified: false,
       primary: false,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     generator.next(state);
@@ -485,10 +485,10 @@ describe("Async component", () => {
           {
             email: "john@example.com",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
 
     next = generator.next(action);
@@ -511,7 +511,7 @@ describe("Async component", () => {
 
     const data = {
       email: state.emails.confirming,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     const resp = generator.next(state);
@@ -526,10 +526,10 @@ describe("Async component", () => {
           {
             email: "john@example.com",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
 
     next = generator.next(action);
@@ -551,7 +551,7 @@ describe("Async component", () => {
     const data = {
       email: state.emails.confirming,
       code: state.emails.code,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     const resp = generator.next(state);
@@ -566,10 +566,10 @@ describe("Async component", () => {
           {
             email: "john@example.com",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
 
     next = generator.next(action);
@@ -590,7 +590,7 @@ describe("Async component", () => {
 
     const data = {
       email: state.emails.confirming,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     const resp = generator.next(state);
@@ -605,10 +605,10 @@ describe("Async component", () => {
           {
             email: "john@example.com",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
 
     next = generator.next(action);
@@ -629,7 +629,7 @@ describe("Async component", () => {
 
     const data = {
       email: state.emails.confirming,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     const resp = generator.next(state);
@@ -644,10 +644,10 @@ describe("Async component", () => {
           {
             email: "john@example.com",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
 
     next = generator.next(action);
@@ -658,11 +658,11 @@ describe("Async component", () => {
   });
 });
 
-const fakeStore = state => ({
+const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
 describe("Emails Component", () => {
@@ -672,7 +672,7 @@ describe("Emails Component", () => {
   //     form = wrapper.find("form"),
   //     fieldset = wrapper.find("fieldset"),
   //     email = wrapper.find('TextControl[name="email"]');
-    // TODO: not finished
+  // TODO: not finished
   // });
 });
 
@@ -684,7 +684,7 @@ describe("Emails Container", () => {
 
     mockProps = {
       email: "test@localhost.com",
-      language: "en"
+      language: "en",
     };
 
     wrapper = mount(

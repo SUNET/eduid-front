@@ -15,12 +15,12 @@ export function* requestConfig() {
 export function fetchConfig(url) {
   const request = {
     ...getRequest,
-    redirect: "follow"
+    redirect: "follow",
   };
   return window
     .fetch(url, {
-      ...request
+      ...request,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

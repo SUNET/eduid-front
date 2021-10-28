@@ -5,13 +5,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import invariant from "invariant";
-import {
-  intlShape
-} from "react-intl";
+import { intlShape } from "react-intl";
 
 import {
   formattedMessages,
-  unformattedMessages
+  unformattedMessages,
 } from "./login/translation/messageIndex";
 
 // import msgs from "./login/translation/messageIndex"
@@ -32,7 +30,7 @@ export default function i18n(WrappedComponent, options = {}) {
   const {
     intlPropName = "intl",
     l10nPropName = "l10n",
-    withRef = false
+    withRef = false,
   } = options;
 
   //WrappedComponent.propTypes['l10n'] = PropTypes.func;
@@ -87,7 +85,7 @@ export default function i18n(WrappedComponent, options = {}) {
 
   InjectIntl.contextTypes = {
     intl: intlShape,
-    translate: PropTypes.func
+    translate: PropTypes.func,
   };
 
   InjectIntl.WrappedComponent = WrappedComponent;

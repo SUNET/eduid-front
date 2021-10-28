@@ -14,7 +14,7 @@ import {
   requestRemove,
   requestMakePrimaryMobile,
   requestMakePrimary,
-  requestResend
+  requestResend,
 } from "sagas/Mobile";
 import { put, call } from "redux-saga/effects";
 import MobileContainer from "containers/Mobile";
@@ -28,7 +28,7 @@ addLocaleData("react-intl/locale-data/en");
 describe("Mobile Actions", () => {
   it("Should post the mobile ", () => {
     const expectedAction = {
-      type: actions.POST_MOBILE
+      type: actions.POST_MOBILE,
     };
     expect(actions.postMobile()).toEqual(expectedAction);
   });
@@ -38,7 +38,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.postMobileFail(err)).toEqual(expectedAction);
   });
@@ -46,25 +46,25 @@ describe("Mobile Actions", () => {
   it("Should start the confirmation ", () => {
     const data = {
       mobile: 999123123,
-      text: "texting"
+      text: "texting",
     };
     const expectedAction = {
       type: actions.START_CONFIRMATION,
-      payload: data
+      payload: data,
     };
     expect(actions.startConfirmation(data)).toEqual(expectedAction);
   });
 
   it("Should stop the confirmation ", () => {
     const expectedAction = {
-      type: actions.STOP_CONFIRMATION
+      type: actions.STOP_CONFIRMATION,
     };
     expect(actions.stopConfirmation()).toEqual(expectedAction);
   });
 
   it("Should resend the email code ", () => {
     const expectedAction = {
-      type: actions.START_RESEND_MOBILE_CODE
+      type: actions.START_RESEND_MOBILE_CODE,
     };
     expect(actions.startResendMobileCode()).toEqual(expectedAction);
   });
@@ -74,7 +74,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.START_RESEND_MOBILE_CODE_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.resendMobileCodeFail(err)).toEqual(expectedAction);
   });
@@ -82,11 +82,11 @@ describe("Mobile Actions", () => {
   it("Should start the verify process", () => {
     const data = {
       mobile: 999123123,
-      identifier: "1"
+      identifier: "1",
     };
     const expectedAction = {
       type: actions.START_VERIFY,
-      payload: data
+      payload: data,
     };
 
     expect(actions.startVerify(data)).toEqual(expectedAction);
@@ -97,7 +97,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_PHONE_VERIFY_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.startVerifyFail(err)).toEqual(expectedAction);
   });
@@ -105,11 +105,11 @@ describe("Mobile Actions", () => {
   it("Should start remove process ", () => {
     const data = {
       mobile: 999123123,
-      identifier: "1"
+      identifier: "1",
     };
     const expectedAction = {
       type: actions.POST_MOBILE_REMOVE,
-      payload: data
+      payload: data,
     };
     expect(actions.startRemove(data)).toEqual(expectedAction);
   });
@@ -119,7 +119,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_REMOVE_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.startRemoveFail(err)).toEqual(expectedAction);
   });
@@ -127,11 +127,11 @@ describe("Mobile Actions", () => {
   it("Should start the make primary process", () => {
     const data = {
       mobile: 999123123,
-      identifier: "1"
+      identifier: "1",
     };
     const expectedAction = {
       type: actions.POST_MOBILE_PRIMARY,
-      payload: data
+      payload: data,
     };
     expect(actions.makePrimary(data)).toEqual(expectedAction);
   });
@@ -141,7 +141,7 @@ describe("Mobile Actions", () => {
     const expectedAction = {
       type: actions.POST_MOBILE_PRIMARY_FAIL,
       error: true,
-      payload: { message: err }
+      payload: { message: err },
     };
     expect(actions.makePrimaryFail(err)).toEqual(expectedAction);
   });
@@ -153,7 +153,7 @@ describe("", () => {
     confirming: "",
     mobiles: [],
     phone: "",
-    code: ""
+    code: "",
   };
 
   it("Receives a GET_MOBILES_SUCCESS action", () => {
@@ -161,43 +161,43 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.GET_MOBILES_SUCCESS,
         payload: {
-          phone: 999123123
-        }
+          phone: 999123123,
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: 999123123,
-      code: ""
+      code: "",
     });
   });
 
   it("Receives a POST_MOBILE action", () => {
     expect(
       mobileReducer(mockState, {
-        type: actions.POST_MOBILE
+        type: actions.POST_MOBILE,
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
   it("Receives a POST_MOBILE_SUCCESS action", () => {
     expect(
       mobileReducer(mockState, {
-        type: actions.POST_MOBILE_SUCCESS
+        type: actions.POST_MOBILE_SUCCESS,
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
@@ -206,15 +206,15 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
@@ -223,43 +223,43 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.START_CONFIRMATION,
         payload: {
-          phone: 999123123
-        }
+          phone: 999123123,
+        },
       })
     ).toEqual({
       message: "",
       confirming: 999123123,
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
   it("Receives a STOP_CONFIRMATION action", () => {
     expect(
       mobileReducer(mockState, {
-        type: actions.STOP_CONFIRMATION
+        type: actions.STOP_CONFIRMATION,
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
   it("Receives a START_RESEND_MOBILE_CODE action", () => {
     expect(
       mobileReducer(mockState, {
-        type: actions.START_RESEND_MOBILE_CODE
+        type: actions.START_RESEND_MOBILE_CODE,
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
@@ -267,14 +267,14 @@ describe("", () => {
     expect(
       mobileReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE_SUCCESS,
-        message: "mobile.resend_success"
+        message: "mobile.resend_success",
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
@@ -283,15 +283,15 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
@@ -300,15 +300,15 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.START_VERIFY,
         payload: {
-          code: "123456789"
-        }
+          code: "123456789",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: "123456789"
+      code: "123456789",
     });
   });
 
@@ -316,14 +316,14 @@ describe("", () => {
     expect(
       mobileReducer(mockState, {
         type: actions.POST_PHONE_VERIFY_FAIL,
-        payload: { message: "Bad error" }
+        payload: { message: "Bad error" },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
@@ -332,15 +332,15 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_REMOVE,
         payload: {
-          phone: 999123123
-        }
+          phone: 999123123,
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: 999123123,
-      code: ""
+      code: "",
     });
   });
 
@@ -349,15 +349,15 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_REMOVE_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
@@ -366,15 +366,15 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY,
         payload: {
-          phone: 999123123
-        }
+          phone: 999123123,
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: 999123123,
-      code: ""
+      code: "",
     });
   });
 
@@ -382,14 +382,14 @@ describe("", () => {
     expect(
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY_SUCCESS,
-        message: "mobile.resend_success"
+        message: "mobile.resend_success",
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 
@@ -398,15 +398,15 @@ describe("", () => {
       mobileReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY_FAIL,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       message: "",
       confirming: "",
       mobiles: [],
       phone: "",
-      code: ""
+      code: "",
     });
   });
 });
@@ -417,16 +417,16 @@ const state = {
     confirming: "",
     phones: [],
     phone: "",
-    code: ""
+    code: "",
   },
   config: {
     csrf_token: "123456789",
-    mobile_url: "test/localhost"
+    mobile_url: "test/localhost",
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 };
 
 describe("Async component", () => {
@@ -443,7 +443,7 @@ describe("Async component", () => {
       number: state.phones.phone,
       verified: false,
       primary: false,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     generator.next(state);
@@ -460,10 +460,10 @@ describe("Async component", () => {
           {
             number: "999123456",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -485,7 +485,7 @@ describe("Async component", () => {
 
     const data = {
       number: state.phones.confirming,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     const resp = generator.next(state);
@@ -500,10 +500,10 @@ describe("Async component", () => {
           {
             number: "999123456",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -524,7 +524,7 @@ describe("Async component", () => {
     const data = {
       number: state.phones.confirming,
       code: state.phones.code,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     const resp = generator.next(state);
@@ -539,10 +539,10 @@ describe("Async component", () => {
           {
             number: "999123456",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -562,7 +562,7 @@ describe("Async component", () => {
 
     const data = {
       number: state.phones.confirming,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
     const resp = generator.next(state);
 
@@ -576,10 +576,10 @@ describe("Async component", () => {
           {
             number: "999123456",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -599,7 +599,7 @@ describe("Async component", () => {
 
     const data = {
       number: state.phones.phone,
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
 
     const resp = generator.next(state);
@@ -614,10 +614,10 @@ describe("Async component", () => {
           {
             number: "999123456",
             verified: false,
-            primary: false
-          }
-        ]
-      }
+            primary: false,
+          },
+        ],
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -627,11 +627,11 @@ describe("Async component", () => {
   });
 });
 
-const fakeStore = state => ({
+const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
 describe("Mobile Component", () => {
@@ -651,7 +651,7 @@ describe("Mobile Container", () => {
     const store = fakeStore(getState());
 
     mockProps = {
-      mobile: 966123123
+      mobile: 966123123,
     };
 
     wrapper = mount(

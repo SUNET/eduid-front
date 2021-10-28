@@ -7,7 +7,7 @@ import { put, call } from "redux-saga/effects";
 describe("Config Actions", () => {
   it("should create an action to trigger fetching the configuration", () => {
     const expectedAction = {
-      type: actions.GET_JSCONFIG_CONFIG
+      type: actions.GET_JSCONFIG_CONFIG,
     };
     expect(actions.getConfig()).toEqual(expectedAction);
   });
@@ -18,8 +18,8 @@ describe("Config Actions", () => {
       type: actions.GET_JSCONFIG_CONFIG_FAIL,
       error: true,
       payload: {
-        message: "Bad error"
-      }
+        message: "Bad error",
+      },
     };
     expect(actions.getConfigFail(err)).toEqual(expectedAction);
   });
@@ -29,13 +29,13 @@ describe("Config reducers", () => {
   const mockState = {
     csrf_token: "",
     //is_fetching: false,
-    param1: "old value"
+    param1: "old value",
   };
 
   it("Receives a GET_CONFIG action", () => {
     expect(
       configReducer(mockState, {
-        type: actions.GET_JSCONFIG_CONFIG
+        type: actions.GET_JSCONFIG_CONFIG,
       })
     ).toEqual({
       csrf_token: "",
@@ -51,14 +51,14 @@ describe("Config reducers", () => {
         type: actions.GET_JSCONFIG_CONFIG_SUCCESS,
         payload: {
           csrf_token: "",
-          param1: "new value"
-        }
+          param1: "new value",
+        },
       })
     ).toEqual({
       csrf_token: "",
       param1: "new value",
       //is_fetching: false,
-      is_configured: true
+      is_configured: true,
     });
   });
 
@@ -68,14 +68,14 @@ describe("Config reducers", () => {
         type: actions.GET_JSCONFIG_CONFIG_FAIL,
         error: true,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       csrf_token: "",
       param1: "old value",
       //is_fetching: false,
-      is_configured: false
+      is_configured: false,
     });
   });
 
@@ -83,12 +83,12 @@ describe("Config reducers", () => {
     expect(
       configReducer(mockState, {
         type: "DUMMY_ACTION",
-        payload: "dummy payload"
+        payload: "dummy payload",
       })
     ).toEqual({
       csrf_token: "",
       //is_fetching: false,
-      param1: "old value"
+      param1: "old value",
     });
   });
 });
@@ -99,14 +99,14 @@ const mockState = {
     given_name: "",
     surname: "",
     display_name: "",
-    language: ""
+    language: "",
   },
   config: {
     csrf_token: "",
     is_configured: false,
     //is_fetching: false,
-    personal_data_url: "http://localhost/services/personal-data/user"
-  }
+    personal_data_url: "http://localhost/services/personal-data/user",
+  },
 };
 const getState = () => mockState;
 

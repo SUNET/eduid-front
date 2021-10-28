@@ -7,7 +7,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 const mapStateToProps = (state) => {
   return {
     recaptcha_key: state.config.recaptcha_public_key,
-    disabledButton: state.captcha.disabledButton
+    disabledButton: state.captcha.disabledButton,
   };
 };
 
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     loadedCaptcha: () => {
       console.log("Loaded recaptcha");
     },
-    handleCaptcha: response => {
+    handleCaptcha: (response) => {
       dispatch(actions.verifyCaptcha(response));
     },
     sendCaptcha: () => {
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     cancelCaptcha: () => {
       history.push("email");
-    }
+    },
   };
 };
 

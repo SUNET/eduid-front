@@ -5,7 +5,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   let confirmed;
-  const nins = state.nins.nins.filter(nin => nin.verified);
+  const nins = state.nins.nins.filter((nin) => nin.verified);
   if (nins.length >= 1) {
     confirmed = true;
   } else {
@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
     valid_nin: isValid("nins")(state),
     nin: state.nins.nin,
     message: state.nins.message,
-    confirmed: confirmed
+    confirmed: confirmed,
   };
 };
 

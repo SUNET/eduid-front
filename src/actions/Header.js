@@ -4,7 +4,7 @@ export const POST_AUTHN_LOGOUT_FAIL = "POST_AUTHN_LOGOUT_FAIL";
 
 export function startLogout() {
   return {
-    type: POST_LOGOUT
+    type: POST_LOGOUT,
   };
 }
 
@@ -13,7 +13,7 @@ export function postLogoutFail(err) {
     type: POST_AUTHN_LOGOUT_FAIL,
     error: true,
     payload: {
-      message: err.toString()
-    }
+      message: err.toString(),
+    },
   };
 }

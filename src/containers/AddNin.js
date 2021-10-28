@@ -4,7 +4,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {
-    nins: state.nins.nins
+    nins: state.nins.nins,
   };
 };
 

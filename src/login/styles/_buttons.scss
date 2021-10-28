@@ -2,7 +2,8 @@
 
 // --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
 // Login, Logout button in Header
-#login, #logout {
+#login,
+#logout {
   text-transform: none;
   margin-top: 0;
   margin-bottom: 0;
@@ -21,7 +22,7 @@
   svg {
     transform: none;
     margin-right: 6px;
-  } 
+  }
 }
 
 .btn.disabled,
@@ -291,7 +292,8 @@ button.btn-link {
   button.btn {
     font-size: 0.9rem;
   }
-  #login, #logout {
+  #login,
+  #logout {
     font-size: 0.9rem;
     svg {
       width: 12px;

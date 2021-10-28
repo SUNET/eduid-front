@@ -15,7 +15,7 @@ function* rootSaga() {
     takeLatest(signupMainActions.GET_SIGNUP_CONFIG, requestConfig),
     takeLatest(captchaActions.POST_SIGNUP_TRYCAPTCHA, sendCaptcha),
     takeLatest(verifiedActions.GET_CODE_STATUS, requestCodeStatus),
-    takeLatest(resendActions.POST_SIGNUP_RESEND_VERIFICATION, resendCode)
+    takeLatest(resendActions.POST_SIGNUP_RESEND_VERIFICATION, resendCode),
   ];
 }
 

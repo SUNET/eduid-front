@@ -57,7 +57,7 @@ class PendingActions extends Component {
 }
 
 PendingActions.propTypes = {
-  pending: PropTypes.array
+  pending: PropTypes.array,
 };
 
 export default PendingActions;

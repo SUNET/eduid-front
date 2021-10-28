@@ -11,7 +11,7 @@ import {
   requestConfig,
   requestNextAction,
   fetchActions,
-  fetchConfig
+  fetchConfig,
 } from "sagas/ActionMain";
 
 import { addLocaleData } from "react-intl";
@@ -27,45 +27,45 @@ const fakeState = {
     is_app_loaded: true,
     redirect: "/",
     //is_fetching: false,
-    available_languages: []
+    available_languages: [],
   },
   notifications: {
     messages: [],
-    errors: []
+    errors: [],
   },
   intl: {
     locale: "en",
     messages: {
       en: en,
-      sv: sv
-    }
+      sv: sv,
+    },
   },
-  plugin: {}
+  plugin: {},
 };
 
 export const getState = (overrides = {}) => {
   const refakeState = { ...fakeState };
-  Object.getOwnPropertyNames(fakeState).forEach(propName => {
+  Object.getOwnPropertyNames(fakeState).forEach((propName) => {
     const overriddenProps = Object.getOwnPropertyNames(overrides);
     if (overriddenProps.includes(propName)) {
       refakeState[propName] = {
         ...fakeState[propName],
-        ...overrides[propName]
+        ...overrides[propName],
       };
     }
   });
   return refakeState;
 };
 
-export const fakeStore = state => ({
+export const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
 export function genSetupComponent(pluginState) {
-  const setupComponent = function({ component, overrides, store } = {}) {
+  const setupComponent = function ({ component, overrides, store } = {}) {
     if (store === undefined) {
       if (overrides === undefined) {
         overrides = {};
@@ -76,7 +76,7 @@ export function genSetupComponent(pluginState) {
         } else {
           overrides.plugin = {
             ...pluginState,
-            ...overrides.plugin
+            ...overrides.plugin,
           };
         }
       }
@@ -94,7 +94,7 @@ describe("ActionMain Component", () => {
   it("Renders the splash screen", () => {
     const wrapper = setupComponent({
         component: <ActionMainContainer />,
-        overrides: { config: { is_app_loaded: false } }
+        overrides: { config: { is_app_loaded: false } },
       }),
       splash = wrapper.find("div#eduid-splash-screen"),
       router = wrapper.find("Router"),
@@ -129,17 +129,16 @@ describe("ActionMain Component", () => {
 });
 
 describe("ActionMain Actions", () => {
-
   //it("Should signal the app is fetching data", () => {
-    //const expectedAction = {
-      //type: actions.APP_FETCHING
-    //};
-    //expect(actions.appFetching()).toEqual(expectedAction);
+  //const expectedAction = {
+  //type: actions.APP_FETCHING
+  //};
+  //expect(actions.appFetching()).toEqual(expectedAction);
   //});
 
   it("Should get the config", () => {
     const expectedAction = {
-      type: actions.GET_ACTIONS_CONFIG
+      type: actions.GET_ACTIONS_CONFIG,
     };
     expect(actions.getConfig()).toEqual(expectedAction);
   });
@@ -150,15 +149,15 @@ describe("ActionMain Actions", () => {
       type: actions.GET_ACTIONS_CONFIG_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.getConfigFail(err)).toEqual(expectedAction);
   });
 
   it("Should post action data", () => {
     const expectedAction = {
-      type: actions.POST_ACTIONS_ACTION
+      type: actions.POST_ACTIONS_ACTION,
     };
     expect(actions.postAction()).toEqual(expectedAction);
   });
@@ -169,8 +168,8 @@ describe("ActionMain Actions", () => {
       type: actions.POST_ACTIONS_ACTION_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.postActionFail(err)).toEqual(expectedAction);
   });
@@ -179,8 +178,8 @@ describe("ActionMain Actions", () => {
     const expectedAction = {
       type: actions.NEW_CSRF_TOKEN,
       payload: {
-        csrf_token: "dummy token"
-      }
+        csrf_token: "dummy token",
+      },
     };
     expect(actions.newCsrfToken("dummy token")).toEqual(expectedAction);
   });
@@ -189,8 +188,8 @@ describe("ActionMain Actions", () => {
     const expectedAction = {
       type: actions.REDIRECT,
       payload: {
-        path: "dummy/path"
-      }
+        path: "dummy/path",
+      },
     };
     expect(actions.redirect("dummy/path")).toEqual(expectedAction);
   });
@@ -202,28 +201,28 @@ describe("ActionMain reducer", () => {
     is_app_loaded: false,
     redirect: "/",
     //is_fetching: false,
-    available_languages: []
+    available_languages: [],
   };
 
   //it("Receives app fetching action", () => {
-    //expect(
-      //actionWrapperReducer(mockState, {
-        //type: actions.APP_FETCHING
-      //})
-    //).toEqual({
-      //...mockState,
-      ////is_fetching: true
-    //});
+  //expect(
+  //actionWrapperReducer(mockState, {
+  //type: actions.APP_FETCHING
+  //})
+  //).toEqual({
+  //...mockState,
+  ////is_fetching: true
+  //});
   //});
 
   it("Receives app loaded action", () => {
     expect(
       actionMainReducer(mockState, {
-        type: actions.APP_LOADED
+        type: actions.APP_LOADED,
       })
     ).toEqual({
       ...mockState,
-      is_app_loaded: true
+      is_app_loaded: true,
     });
   });
 
@@ -232,12 +231,12 @@ describe("ActionMain reducer", () => {
       actionMainReducer(mockState, {
         type: actions.GET_ACTIONS_CONFIG_SUCCESS,
         payload: {
-          plugin_setting: "dummy setting"
-        }
+          plugin_setting: "dummy setting",
+        },
       })
     ).toEqual({
       ...mockState,
-      plugin_setting: "dummy setting"
+      plugin_setting: "dummy setting",
     });
   });
 
@@ -246,12 +245,12 @@ describe("ActionMain reducer", () => {
       actionMainReducer(mockState, {
         type: actions.NEW_CSRF_TOKEN,
         payload: {
-          csrf_token: "dummy token"
-        }
+          csrf_token: "dummy token",
+        },
       })
     ).toEqual({
       ...mockState,
-      csrf_token: "dummy token"
+      csrf_token: "dummy token",
     });
   });
 
@@ -260,12 +259,12 @@ describe("ActionMain reducer", () => {
       actionMainReducer(mockState, {
         type: actions.REDIRECT,
         payload: {
-          path: "dummy path"
-        }
+          path: "dummy path",
+        },
       })
     ).toEqual({
       ...mockState,
-      redirect: "dummy path"
+      redirect: "dummy path",
     });
   });
 });
@@ -287,8 +286,8 @@ describe("ActionMain async actions", () => {
     const action = {
       type: actions.GET_ACTIONS_CONFIG_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     resp = generator.next(action);
     expect(resp.value.PUT.action.type).toEqual(actions.NEW_CSRF_TOKEN);
@@ -316,8 +315,8 @@ describe("ActionMain async actions", () => {
       action: false,
       url: "http://example.com",
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     resp = generator.next(action);
     expect(resp.value.PUT.action.type).toEqual(actions.NEW_CSRF_TOKEN);
