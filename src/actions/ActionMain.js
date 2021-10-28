@@ -10,22 +10,21 @@ export const NEW_CSRF_TOKEN = "NEW_CSRF_TOKEN";
 export const REDIRECT = "REDIRECT";
 export const RETRY = "RETRY";
 
-
 export function appLoaded() {
   return {
-    type: APP_LOADED
+    type: APP_LOADED,
   };
 }
 
 //export function appFetching() {
-  //return {
-    //type: APP_FETCHING
-  //};
+//return {
+//type: APP_FETCHING
+//};
 //}
 
 export function getConfig() {
   return {
-    type: GET_ACTIONS_CONFIG
+    type: GET_ACTIONS_CONFIG,
   };
 }
 
@@ -34,8 +33,8 @@ export function getConfigSuccess(config) {
     type: GET_ACTIONS_CONFIG_SUCCESS,
     error: false,
     payload: {
-      ...config
-    }
+      ...config,
+    },
   };
 }
 
@@ -44,14 +43,14 @@ export function getConfigFail(err) {
     type: GET_ACTIONS_CONFIG_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function postAction() {
   return {
-    type: POST_ACTIONS_ACTION
+    type: POST_ACTIONS_ACTION,
   };
 }
 
@@ -60,8 +59,8 @@ export function postActionFail(err) {
     type: POST_ACTIONS_ACTION_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
@@ -69,8 +68,8 @@ export function newCsrfToken(token) {
   return {
     type: NEW_CSRF_TOKEN,
     payload: {
-      csrf_token: token
-    }
+      csrf_token: token,
+    },
   };
 }
 
@@ -78,13 +77,13 @@ export function redirect(path) {
   return {
     type: REDIRECT,
     payload: {
-      path: path
-    }
+      path: path,
+    },
   };
 }
 
 export function retry() {
   return {
-    type: RETRY
+    type: RETRY,
   };
 }

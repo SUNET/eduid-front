@@ -21,8 +21,6 @@ ButtonModal.propTypes = {
   id: PropTypes.string,
   className: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-
-  
 };
 
 export default ButtonModal;

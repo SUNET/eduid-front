@@ -9,7 +9,7 @@ const polyfillElClosest_EI = () => {
       Element.prototype.webkitMatchesSelector;
 
   if (!Element.prototype.closest)
-    Element.prototype.closest = function(s) {
+    Element.prototype.closest = function (s) {
       var el = this;
       if (!document.documentElement.contains(el)) {
         return null;

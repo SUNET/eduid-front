@@ -3,7 +3,7 @@ import * as actions from "../actions/errorsMainActions";
 const configData = {
   is_app_loaded: false,
   available_languages: [],
-  static_faq_url: ""
+  static_faq_url: "",
 };
 
 let errorsReducer = (state = configData, action) => {
@@ -17,10 +17,10 @@ let errorsReducer = (state = configData, action) => {
       return {
         is_app_loaded: true,
         available_languages: [
-          ["en", "English"], 
-          ["sv", "Svenska"]
+          ["en", "English"],
+          ["sv", "Svenska"],
         ],
-        static_faq_url: "https://html.eduid.docker/faq.html"
+        static_faq_url: "https://html.eduid.docker/faq.html",
       };
     default:
       return state;

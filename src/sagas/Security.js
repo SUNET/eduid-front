@@ -4,7 +4,7 @@ import {
   putCsrfToken,
   getRequest,
   postRequest,
-  failRequest
+  failRequest,
 } from "sagas/common";
 import {
   getCredentials,
@@ -16,7 +16,7 @@ import {
   tokenRemovedFail,
   registerWebauthnFail,
   beginWebauthnFail,
-  POST_WEBAUTHN_BEGIN_SUCCESS
+  POST_WEBAUTHN_BEGIN_SUCCESS,
 } from "actions/Security";
 import { tokenVerifyFail } from "../actions/Security";
 
@@ -25,7 +25,7 @@ import { safeEncode, safeDecodeCBOR } from "sagas/common";
 export function* requestCredentials() {
   try {
     yield put(getCredentials());
-    const config = yield select(state => state.config);
+    const config = yield select((state) => state.config);
     const credentials = yield call(fetchCredentials, config);
     yield put(putCsrfToken(credentials));
     yield put(credentials);
@@ -37,16 +37,16 @@ export function* requestCredentials() {
 export function fetchCredentials(config) {
   return window
     .fetch(config.security_url + "credentials", {
-      ...getRequest
+      ...getRequest,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* requestPasswordChange(win) {
   try {
     yield put(stopConfirmationPassword());
-    const config = yield select(state => state.config),
+    const config = yield select((state) => state.config),
       tsURL = config.token_service_url,
       chpassURL = tsURL + "chpass",
       dashURL = config.dashboard_url,
@@ -84,9 +84,9 @@ export function* requestPasswordChange(win) {
 export function* postDeleteAccount() {
   try {
     yield put(postConfirmDeletion());
-    const state = yield select(state => state);
+    const state = yield select((state) => state);
     const data = {
-      csrf_token: state.config.csrf_token
+      csrf_token: state.config.csrf_token,
     };
     const resp = yield call(deleteAccount, state.config, data);
     yield put(putCsrfToken(resp));
@@ -100,18 +100,18 @@ export function deleteAccount(config, data) {
   return window
     .fetch(config.security_url + "terminate-account", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* removeWebauthnToken() {
   try {
-    const state = yield select(state => state);
+    const state = yield select((state) => state);
     const data = {
       csrf_token: state.config.csrf_token,
-      credential_key: state.security.webauthn_token_remove
+      credential_key: state.security.webauthn_token_remove,
     };
     const resp = yield call(removeToken, state.config, data);
     yield put(putCsrfToken(resp));
@@ -125,15 +125,15 @@ export function removeToken(config, data) {
   return window
     .fetch(config.security_url + "webauthn/remove", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* verifyWebauthnToken(win) {
   try {
-    const state = yield select(state => state);
+    const state = yield select((state) => state);
     const keyHandle = state.security.webauthn_token_verify;
 
     let idpParam = "?idp=" + state.config.token_verify_idp;
@@ -151,11 +151,11 @@ export function* verifyWebauthnToken(win) {
 
 export function* beginRegisterWebauthn() {
   try {
-    const state = yield select(state => state);
+    const state = yield select((state) => state);
     //if (state.security.webauthn_options.hasOwnProperty('publicKey')) {return}
     const data = {
       csrf_token: state.config.csrf_token,
-      authenticator: state.security.webauthn_authenticator
+      authenticator: state.security.webauthn_authenticator,
     };
     const action = yield call(beginWebauthnRegistration, state.config, data);
     if (action.type === POST_WEBAUTHN_BEGIN_SUCCESS) {
@@ -179,11 +179,11 @@ export function beginWebauthnRegistration(config, data) {
   return window
     .fetch(config.security_url + "webauthn/register/begin", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json())
-    .then(response => {
+    .then((response) => response.json())
+    .then((response) => {
       if (response.payload.registration_data !== undefined) {
         response.payload.registration_data = safeDecodeCBOR(
           response.payload.registration_data
@@ -196,14 +196,14 @@ export function beginWebauthnRegistration(config, data) {
 
 export function* registerWebauthn() {
   try {
-    const state = yield select(state => state);
+    const state = yield select((state) => state);
     const attestation = state.security.webauthn_attestation,
       data = {
         csrf_token: state.config.csrf_token,
         attestationObject: safeEncode(attestation.response.attestationObject),
         clientDataJSON: safeEncode(attestation.response.clientDataJSON),
         credentialId: attestation.id,
-        description: state.security.webauthn_token_description
+        description: state.security.webauthn_token_description,
       };
     const result = yield call(webauthnRegistration, state.config, data);
     yield put(putCsrfToken(result));
@@ -217,8 +217,8 @@ export function webauthnRegistration(config, data) {
   return window
     .fetch(config.security_url + "webauthn/register/complete", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

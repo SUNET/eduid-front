@@ -7,19 +7,19 @@ export function addEmail(email) {
   return {
     type: ADD_EMAIL,
     payload: {
-      email: email
-    }
+      email: email,
+    },
   };
 }
 
 export function acceptTOU() {
   return {
-    type: ACCEPT_TOU
+    type: ACCEPT_TOU,
   };
 }
 
 export function rejectTOU() {
   return {
-    type: REJECT_TOU
+    type: REJECT_TOU,
   };
 }

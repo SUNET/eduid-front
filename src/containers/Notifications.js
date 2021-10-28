@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   return {
     debug: state.config.debug,
     messages: state.notifications.messages,
-    errors: state.notifications.errors
+    errors: state.notifications.errors,
   };
 };
 
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     handleRMNotification(e) {
       e.preventDefault();
       dispatch(actions.eduidRMAllNotify());
-    }
+    },
   };
 };
 

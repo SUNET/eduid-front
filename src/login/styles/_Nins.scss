@@ -24,10 +24,10 @@
     & .description {
       margin: 0.5rem 0;
       display: inline-grid;
-    } 
-    & .explanation-link{
+    }
+    & .explanation-link {
       margin: 0.5rem 0;
-      & a span{
+      & a span {
         color: $black;
         border-bottom: $black solid 1px;
       }
@@ -72,7 +72,7 @@
 }
 
 .vetting-button {
-  & button:disabled{
+  & button:disabled {
     background-color: $light-gray;
     border-color: $gray;
     & .text {

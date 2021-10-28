@@ -3,7 +3,7 @@ import * as actions from "actions/Captcha";
 // see the config params in eduid-developer/etcd/conf.yaml
 const captchaData = {
   captcha_verification: "",
-  disabledButton: false
+  disabledButton: false,
 };
 
 let captchaReducer = (state = captchaData, action) => {
@@ -11,22 +11,22 @@ let captchaReducer = (state = captchaData, action) => {
     case actions.CAPTCHA_VERIFICATION:
       return {
         ...state,
-        captcha_verification: action.payload.response
+        captcha_verification: action.payload.response,
       };
     case actions.POST_SIGNUP_TRYCAPTCHA:
       return {
         ...state,
-        disabledButton: true
+        disabledButton: true,
       };
     case actions.POST_SIGNUP_TRYCAPTCHA_FAIL:
       return {
         ...state,
-        disabledButton: false
+        disabledButton: false,
       };
     case actions.IS_CAPTCHA_AVAILABLE:
       return {
         ...state,
-        disabledButton: false
+        disabledButton: false,
       };
     default:
       return state;

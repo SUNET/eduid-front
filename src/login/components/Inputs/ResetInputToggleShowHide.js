@@ -36,7 +36,7 @@ let ResetInputToggleShowHide = (props) => {
     autoComplete,
     autoFocus,
     ariaLabel,
-    required
+    required,
   } = props;
   const [inputType, setInputType] = useState("password");
 

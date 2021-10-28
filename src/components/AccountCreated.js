@@ -20,7 +20,7 @@ class AccountCreated extends Component {
 }
 
 AccountCreated.propTypes = {
-  email: PropTypes.string
+  email: PropTypes.string,
 };
 
 export default AccountCreated;

@@ -2,7 +2,7 @@ import * as actions from "actions/Eidas";
 
 const eidasData = {
   eidas_sp_freja_idp_url: "",
-  showModal: false
+  showModal: false,
 };
 
 let eidasReducer = (state = eidasData, action) => {
@@ -10,12 +10,12 @@ let eidasReducer = (state = eidasData, action) => {
     case actions.SHOW_EIDAS_MODAL:
       return {
         ...state,
-        showModal: true
+        showModal: true,
       };
     case actions.HIDE_EIDAS_MODAL:
       return {
         ...state,
-        showModal: false
+        showModal: false,
       };
     default:
       return state;

@@ -10,7 +10,7 @@ import { WEBAUTHN_CREDS_GOT } from "./component";
 
 // see the config params in eduid-developer/etcd/conf.yaml
 const actionData = {
-  webauthn_assertion: null
+  webauthn_assertion: null,
 };
 
 export const actionReducer = (state = actionData, action) => {
@@ -18,7 +18,7 @@ export const actionReducer = (state = actionData, action) => {
     case WEBAUTHN_CREDS_GOT:
       return {
         ...state,
-        webauthn_assertion: action.payload
+        webauthn_assertion: action.payload,
       };
     default:
       return state;
@@ -30,7 +30,7 @@ const App = combineReducers({
   intl: intlReducer,
   config: actionMainReducer,
   plugin: actionReducer,
-  notifications: notificationsReducer
+  notifications: notificationsReducer,
 });
 
 export default App;

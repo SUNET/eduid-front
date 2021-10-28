@@ -35,36 +35,36 @@ describe("Profile component", () => {
 });
 
 describe("Profile component", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     config: {
-      language: "en"
+      language: "en",
     },
     personal_data: {
       data: {
         given_name: "",
-        surname: ""
-      }
+        surname: "",
+      },
     },
     emails: {
-      emails: []
+      emails: [],
     },
     nins: {
-      nins: []
+      nins: [],
     },
     phones: {
-      phones: []
+      phones: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -76,7 +76,7 @@ describe("Profile component", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 

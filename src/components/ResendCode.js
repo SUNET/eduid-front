@@ -29,7 +29,7 @@ class ResendCode extends Component {
 }
 
 ResendCode.propTypes = {
-  email: PropTypes.string
+  email: PropTypes.string,
 };
 
 export default ResendCode;

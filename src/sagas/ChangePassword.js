@@ -5,7 +5,7 @@ import {
   putCsrfToken,
   postRequest,
   getRequest,
-  failRequest
+  failRequest,
 } from "sagas/common";
 import * as actions from "actions/ChangePassword";
 import * as comp from "components/ChangePasswordForm";
@@ -13,7 +13,7 @@ import * as comp from "components/ChangePasswordForm";
 export function* requestSuggestedPassword() {
   try {
     yield put(actions.getSuggestedPassword());
-    const config = yield select(state => state.config);
+    const config = yield select((state) => state.config);
     const suggested = yield call(fetchSuggestedPassword, config);
     yield put(putCsrfToken(suggested));
     yield put(suggested);
@@ -25,21 +25,21 @@ export function* requestSuggestedPassword() {
 export function fetchSuggestedPassword(config) {
   return window
     .fetch(config.security_url + "suggested-password", {
-      ...getRequest
+      ...getRequest,
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }
 
 export function* postPasswordChange() {
   try {
     yield put(actions.startPasswordChange());
-    const state = yield select(state => state);
+    const state = yield select((state) => state);
     const config = state.config,
       data = {
         old_password: state.chpass.old_password,
         new_password: state.chpass.new_password,
-        csrf_token: state.config.csrf_token
+        csrf_token: state.config.csrf_token,
       };
     const change = yield call(postPassword, config, data);
     yield put(putCsrfToken(change));
@@ -65,8 +65,8 @@ export function postPassword(config, data) {
   return window
     .fetch(config.security_url + "change-password", {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

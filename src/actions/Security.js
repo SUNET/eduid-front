@@ -40,7 +40,7 @@ export const AUTHENTICATOR = "AUTHENTICATOR";
 
 export function getCredentials() {
   return {
-    type: GET_CREDENTIALS
+    type: GET_CREDENTIALS,
   };
 }
 
@@ -49,26 +49,26 @@ export function getCredentialsFail(err) {
     type: GET_CREDENTIALS_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startConfirmationPassword() {
   return {
-    type: START_CHANGE_PASSWORD
+    type: START_CHANGE_PASSWORD,
   };
 }
 
 export function stopConfirmationPassword() {
   return {
-    type: STOP_CHANGE_PASSWORD
+    type: STOP_CHANGE_PASSWORD,
   };
 }
 
 export function confirmPasswordChange() {
   return {
-    type: GET_CHANGE_PASSWORD
+    type: GET_CHANGE_PASSWORD,
   };
 }
 
@@ -77,32 +77,32 @@ export function getPasswordChangeFail(err) {
     type: GET_CHANGE_PASSWORD_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startConfirmationDeletion() {
   return {
-    type: START_DELETE_ACCOUNT
+    type: START_DELETE_ACCOUNT,
   };
 }
 
 export function stopConfirmationDeletion() {
   return {
-    type: STOP_DELETE_ACCOUNT
+    type: STOP_DELETE_ACCOUNT,
   };
 }
 
 export function confirmDeletion() {
   return {
-    type: POST_DELETE_ACCOUNT
+    type: POST_DELETE_ACCOUNT,
   };
 }
 
 export function postConfirmDeletion() {
   return {
-    type: SEND_POST_DELETE_ACCOUNT
+    type: SEND_POST_DELETE_ACCOUNT,
   };
 }
 
@@ -111,8 +111,8 @@ export function removeAccountFail(err) {
     type: POST_DELETE_ACCOUNT_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
@@ -121,20 +121,20 @@ export function accountRemovedFail(err) {
     type: GET_DELETE_ACCOUNT_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
 export function startAskWebauthnDescription() {
   return {
-    type: START_ASK_WEBAUTHN_DESCRIPTION
+    type: START_ASK_WEBAUTHN_DESCRIPTION,
   };
 }
 
 export function stopAskWebauthnDescription() {
   return {
-    type: STOP_ASK_WEBAUTHN_DESCRIPTION
+    type: STOP_ASK_WEBAUTHN_DESCRIPTION,
   };
 }
 
@@ -142,8 +142,8 @@ export function startWebauthnRegistration(description) {
   return {
     type: START_WEBAUTHN_REGISTRATION,
     payload: {
-      description: description
-    }
+      description: description,
+    },
   };
 }
 
@@ -152,8 +152,8 @@ export function beginWebauthnFail(err) {
     type: POST_WEBAUTHN_BEGIN_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
@@ -162,8 +162,8 @@ export function registerWebauthnFail(err) {
     type: POST_WEBAUTHN_REGISTER_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
@@ -171,8 +171,8 @@ export function postRemoveWebauthnToken(token) {
   return {
     type: POST_WEBAUTHN_REMOVE,
     payload: {
-      token: token
-    }
+      token: token,
+    },
   };
 }
 
@@ -181,8 +181,8 @@ export function tokenRemovedFail(err) {
     type: POST_WEBAUTHN_REMOVE_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
@@ -190,8 +190,8 @@ export function postVerifyWebauthnToken(token) {
   return {
     type: POST_WEBAUTHN_VERIFY,
     payload: {
-      token: token
-    }
+      token: token,
+    },
   };
 }
 
@@ -200,8 +200,8 @@ export function tokenVerifyFail(err) {
     type: POST_WEBAUTHN_VERIFY_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
@@ -209,7 +209,7 @@ export function chooseAuthenticator(choice) {
   return {
     type: AUTHENTICATOR,
     payload: {
-      choice: choice
-    }
+      choice: choice,
+    },
   };
 }

@@ -7,7 +7,7 @@ const openidData = {
     "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
   qr_code: "",
   nin: "",
-  showModal: false
+  showModal: false,
 };
 
 let openidConnectReducer = (state = openidData, action) => {
@@ -15,7 +15,7 @@ let openidConnectReducer = (state = openidData, action) => {
     case actions.POST_OIDC_PROOFING_PROOFING:
       return {
         ...state,
-        nin: action.payload.nin
+        nin: action.payload.nin,
       };
     case actions.POST_OIDC_PROOFING_PROOFING_SUCCESS:
       return {
@@ -27,17 +27,17 @@ let openidConnectReducer = (state = openidData, action) => {
       return {
         ...state,
         error: true,
-        message: action.payload.message
+        message: action.payload.message,
       };
     case actions.SHOW_OIDC_SELEG_MODAL:
       return {
         ...state,
-        showModal: true
+        showModal: true,
       };
     case actions.HIDE_OIDC_SELEG_MODAL:
       return {
         ...state,
-        showModal: false
+        showModal: false,
       };
     default:
       return state;

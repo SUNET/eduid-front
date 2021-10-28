@@ -21,7 +21,7 @@ export const HIDE_OIDC_FREJA_MODAL_SUCCESS = "HIDE_OIDC_FREJA_MODAL_SUCCESS";
 
 export function getOpenidFreja() {
   return {
-    type: GET_OIDC_PROOFING_FREJA_PROOFING
+    type: GET_OIDC_PROOFING_FREJA_PROOFING,
   };
 }
 
@@ -31,14 +31,14 @@ export function getOpenidFrejaFail(message) {
     error: true,
     payload: {
       error: true,
-      message: message
-    }
+      message: message,
+    },
   };
 }
 
 export function postOpenidFreja() {
   return {
-    type: POST_OIDC_PROOFING_FREJA_PROOFING
+    type: POST_OIDC_PROOFING_FREJA_PROOFING,
   };
 }
 
@@ -48,14 +48,14 @@ export function postOpenidFrejaFail(message) {
     error: true,
     payload: {
       error: true,
-      message: message
-    }
+      message: message,
+    },
   };
 }
 
 export function showOpenidFrejaModal() {
   return {
-    type: SHOW_OIDC_FREJA_MODAL
+    type: SHOW_OIDC_FREJA_MODAL,
   };
 }
 
@@ -63,8 +63,8 @@ export function showOpenidFrejaModalSuccess(nin) {
   return {
     type: SHOW_OIDC_FREJA_MODAL_SUCCESS,
     payload: {
-      nin: nin
-    }
+      nin: nin,
+    },
   };
 }
 
@@ -74,19 +74,19 @@ export function showOpenidFrejaModalFail(message) {
     error: true,
     payload: {
       error: true,
-      message: message
-    }
+      message: message,
+    },
   };
 }
 
 export function hideOpenidFrejaModal() {
   return {
-    type: HIDE_OIDC_FREJA_MODAL
+    type: HIDE_OIDC_FREJA_MODAL,
   };
 }
 
 export function hideOpenidFrejaModalSuccess() {
   return {
-    type: HIDE_OIDC_FREJA_MODAL_SUCCESS
+    type: HIDE_OIDC_FREJA_MODAL_SUCCESS,
   };
 }

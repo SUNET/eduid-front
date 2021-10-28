@@ -95,7 +95,7 @@ OpenidConnect.propTypes = {
   qr_code: PropTypes.string,
   handleShowModal: PropTypes.func,
   handleHideModal: PropTypes.func,
-  showModal: PropTypes.bool
+  showModal: PropTypes.bool,
 };
 
 export default OpenidConnect;

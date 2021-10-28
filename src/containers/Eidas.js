@@ -15,19 +15,19 @@ const mapStateToProps = (state) => {
     eidas_sp_url + verify_path + "?idp=" + freja_idp_url;
   return {
     showModal: state.eidas_data.showModal,
-    eidas_sp_freja_idp_url: eidas_sp_freja_idp_url
+    eidas_sp_freja_idp_url: eidas_sp_freja_idp_url,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleShowModal: function() {
+    handleShowModal: function () {
       dispatch(eduidRMAllNotify());
       dispatch(showEidasModal());
     },
-    handleHideModal: function() {
+    handleHideModal: function () {
       dispatch(hideEidasModal());
-    }
+    },
   };
 };
 

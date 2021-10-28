@@ -18,19 +18,19 @@ export const POST_LETTER_PROOFING_CODE_SUCCESS =
 
 export function stopLetterConfirmation() {
   return {
-    type: STOP_LETTER_CONFIRMATION
+    type: STOP_LETTER_CONFIRMATION,
   };
 }
 
 export function stopLetterVerification() {
   return {
-    type: STOP_LETTER_VERIFICATION
+    type: STOP_LETTER_VERIFICATION,
   };
 }
 
 export function getLetterProofingState() {
   return {
-    type: GET_LETTER_PROOFING_PROOFING
+    type: GET_LETTER_PROOFING_PROOFING,
   };
 }
 
@@ -39,14 +39,14 @@ export function getLetterProofingStateFail(err) {
     type: GET_LETTER_PROOFING_PROOFING_FAIL,
     error: true,
     payload: {
-      message: err.toString()
-    }
+      message: err.toString(),
+    },
   };
 }
 
 export function postLetterProofingSendLetter() {
   return {
-    type: POST_LETTER_PROOFING_PROOFING
+    type: POST_LETTER_PROOFING_PROOFING,
   };
 }
 
@@ -55,8 +55,8 @@ export function postLetterProofingSendLetterFail(err) {
     type: POST_LETTER_PROOFING_PROOFING_FAIL,
     error: true,
     payload: {
-      message: err.toString()
-    }
+      message: err.toString(),
+    },
   };
 }
 
@@ -64,8 +64,8 @@ export function postLetterProofingVerificationCode(data) {
   return {
     type: POST_LETTER_PROOFING_CODE,
     payload: {
-      code: data.code
-    }
+      code: data.code,
+    },
   };
 }
 
@@ -74,7 +74,7 @@ export function postLetterProofingVerificationCodeFail(err) {
     type: POST_LETTER_PROOFING_CODE_FAIL,
     error: true,
     payload: {
-      message: err.toString()
-    }
+      message: err.toString(),
+    },
   };
 }

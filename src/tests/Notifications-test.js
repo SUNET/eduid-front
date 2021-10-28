@@ -8,18 +8,18 @@ import * as actions from "actions/Notifications";
 describe("Notifications Component", () => {
   const state = {
     config: {
-      debug: true
+      debug: true,
     },
     notifications: {
       messages: [{ msg: "dummy message", vals: null }],
-      errors: []
-    }
+      errors: [],
+    },
   };
 
   it("Renders the notifications component", () => {
     const wrapper = setupComponent({
         component: <NotificationsContainer />,
-        overrides: state
+        overrides: state,
       }),
       alertElem = wrapper.find("Alert");
 
@@ -30,17 +30,17 @@ describe("Notifications Component", () => {
 
   const prodState = {
     config: {
-      debug: false
+      debug: false,
     },
     notifications: {
-      ...state.notifications
-    }
+      ...state.notifications,
+    },
   };
 
   it("Renders the notifications component - prod", () => {
     const wrapper = setupComponent({
         component: <NotificationsContainer />,
-        overrides: prodState
+        overrides: prodState,
       }),
       alertElem = wrapper.find("Alert");
 
@@ -51,18 +51,18 @@ describe("Notifications Component", () => {
 
   const errorState = {
     config: {
-      ...state.config
+      ...state.config,
     },
     notifications: {
       messages: [],
-      errors: [{ msg: "dummy error", vals: null }]
-    }
+      errors: [{ msg: "dummy error", vals: null }],
+    },
   };
 
   it("Renders the notifications component - error", () => {
     const wrapper = setupComponent({
         component: <NotificationsContainer />,
-        overrides: errorState
+        overrides: errorState,
       }),
       alertElem = wrapper.find("Alert");
 
@@ -79,8 +79,8 @@ describe("Notification Actions", () => {
       payload: {
         message: "dummy message",
         level: "dummy level",
-        values: null
-      }
+        values: null,
+      },
     };
     expect(actions.eduidNotify("dummy message", "dummy level")).toEqual(
       expectedAction
@@ -89,7 +89,7 @@ describe("Notification Actions", () => {
 
   it("Should remove all notifications", () => {
     const expectedAction = {
-      type: actions.RM_ALL_NOTIFICATION
+      type: actions.RM_ALL_NOTIFICATION,
     };
     expect(actions.eduidRMAllNotify()).toEqual(expectedAction);
   });
@@ -103,14 +103,14 @@ describe("Test Notifications Container", () => {
       getState({
         notifications: {
           messages: [{ msg: "dummy", vals: null }],
-          errors: []
-        }
+          errors: [],
+        },
       })
     );
     dispatch = store.dispatch;
     wrapper = setupComponent({
       component: <NotificationsContainer />,
-      store: store
+      store: store,
     });
   });
 
@@ -121,13 +121,10 @@ describe("Test Notifications Container", () => {
       target: {
         closest: () => {
           return { dataset: { level: "messages", index: 0 } };
-        }
-      }
+        },
+      },
     };
-    wrapper
-      .find("button")
-      .props()
-      .onClick(mockEvent);
+    wrapper.find("button").props().onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
 });

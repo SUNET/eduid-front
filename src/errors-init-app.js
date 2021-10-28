@@ -32,25 +32,25 @@ export const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
-const initState = function() {
+const initState = function () {
   store.dispatch(updateErrorsConfigData());
 };
 
 /* render app */
-const init_app = function(target, component) {
+const init_app = function (target, component) {
   let action;
   action = initState;
   const language = navigator.languages
     ? navigator.languages[0]
     : navigator.language || navigator.userLanguage;
-  const supported = AVAILABLE_LANGUAGES.map(lang => lang[0]);
+  const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
   if (supported.includes(language)) {
     const lang_code = language.substring(0, 2);
 
     store.dispatch(
       updateIntl({
         locale: lang_code,
-        messages: LOCALIZED_MESSAGES[lang_code]
+        messages: LOCALIZED_MESSAGES[lang_code],
       })
     );
   }

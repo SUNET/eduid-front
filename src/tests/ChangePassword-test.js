@@ -14,7 +14,7 @@ import {
   requestSuggestedPassword,
   postPasswordChange,
   fetchSuggestedPassword,
-  postPassword
+  postPassword,
 } from "sagas/ChangePassword";
 
 import { addLocaleData } from "react-intl";
@@ -25,7 +25,7 @@ addLocaleData("react-intl/locale-data/en");
 describe("ChangePassword Actions", () => {
   it("Should get a suggested password", () => {
     const expectedAction = {
-      type: actions.GET_SUGGESTED_PASSWORD
+      type: actions.GET_SUGGESTED_PASSWORD,
     };
     expect(actions.getSuggestedPassword()).toEqual(expectedAction);
   });
@@ -36,8 +36,8 @@ describe("ChangePassword Actions", () => {
       type: actions.GET_SUGGESTED_PASSWORD_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.getSuggestedPasswordFail(err)).toEqual(expectedAction);
   });
@@ -49,8 +49,8 @@ describe("ChangePassword Actions", () => {
         type: actions.POST_PASSWORD_CHANGE,
         payload: {
           old: passwd1,
-          next: passwd2
-        }
+          next: passwd2,
+        },
       };
     expect(actions.postPasswordChange(passwd1, passwd2)).toEqual(
       expectedAction
@@ -59,7 +59,7 @@ describe("ChangePassword Actions", () => {
 
   it("Should start password change", () => {
     const expectedAction = {
-      type: actions.START_PASSWORD_CHANGE
+      type: actions.START_PASSWORD_CHANGE,
     };
     expect(actions.startPasswordChange()).toEqual(expectedAction);
   });
@@ -70,8 +70,8 @@ describe("ChangePassword Actions", () => {
         type: actions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       };
     expect(actions.postPasswordChangeFail(err)).toEqual(expectedAction);
   });
@@ -83,20 +83,20 @@ describe("Reducers", () => {
     suggested_password: "",
     old_password: "",
     new_password: "",
-    choose_custom: false
+    choose_custom: false,
   };
 
   it("Receives a GET_SUGGESTED_PASSWORD action", () => {
     expect(
       chpassReducer(mockState, {
-        type: actions.GET_SUGGESTED_PASSWORD
+        type: actions.GET_SUGGESTED_PASSWORD,
       })
     ).toEqual({
       message: "",
       suggested_password: "",
       old_password: "",
       new_password: "",
-      choose_custom: false
+      choose_custom: false,
     });
   });
 
@@ -106,15 +106,15 @@ describe("Reducers", () => {
       chpassReducer(mockState, {
         type: actions.GET_SUGGESTED_PASSWORD_SUCCESS,
         payload: {
-          suggested_password: suggested
-        }
+          suggested_password: suggested,
+        },
       })
     ).toEqual({
       message: "",
       suggested_password: suggested,
       old_password: "",
       new_password: "",
-      choose_custom: false
+      choose_custom: false,
     });
   });
 
@@ -125,15 +125,15 @@ describe("Reducers", () => {
         type: actions.GET_SUGGESTED_PASSWORD_FAIL,
         error: true,
         payload: {
-          message: errMsg
-        }
+          message: errMsg,
+        },
       })
     ).toEqual({
       message: errMsg,
       suggested_password: "",
       old_password: "",
       new_password: "",
-      choose_custom: false
+      choose_custom: false,
     });
   });
 
@@ -145,29 +145,29 @@ describe("Reducers", () => {
         type: actions.POST_PASSWORD_CHANGE,
         payload: {
           old: passwd1,
-          next: passwd2
-        }
+          next: passwd2,
+        },
       })
     ).toEqual({
       message: "",
       suggested_password: "",
       old_password: passwd1,
       new_password: passwd2,
-      choose_custom: false
+      choose_custom: false,
     });
   });
 
   it("Receives a START_PASSWORD_CHANGE action", () => {
     expect(
       chpassReducer(mockState, {
-        type: actions.START_PASSWORD_CHANGE
+        type: actions.START_PASSWORD_CHANGE,
       })
     ).toEqual({
       message: "",
       suggested_password: "",
       old_password: "",
       new_password: "",
-      choose_custom: false
+      choose_custom: false,
     });
   });
 
@@ -177,15 +177,15 @@ describe("Reducers", () => {
       chpassReducer(mockState, {
         type: actions.POST_SECURITY_CHANGE_PASSWORD_SUCCESS,
         payload: {
-          message: msg
-        }
+          message: msg,
+        },
       })
     ).toEqual({
       message: msg,
       suggested_password: "",
       old_password: "",
       new_password: "",
-      choose_custom: false
+      choose_custom: false,
     });
   });
 
@@ -196,15 +196,15 @@ describe("Reducers", () => {
         type: actions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       })
     ).toEqual({
       message: "",
       suggested_password: "",
       old_password: "",
       new_password: "",
-      choose_custom: false
+      choose_custom: false,
     });
   });
 });
@@ -214,14 +214,14 @@ const mockState = {
     suggested_password: "",
     old_password: "old-pw",
     new_password: "new-pw",
-    choose_custom: false
+    choose_custom: false,
   },
   config: {
     csrf_token: "csrf-token",
     dashboard_url: "/dummy-dash-url/",
     token_service_url: "/dummy-tok-url/",
-    security_url: "/dummy-sec-url"
-  }
+    security_url: "/dummy-sec-url",
+  },
 };
 
 describe("Async component", () => {
@@ -232,20 +232,20 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(actions.getSuggestedPassword()));
 
     next = generator.next();
-    const config = state => state.config;
+    const config = (state) => state.config;
     const suggested = generator.next(config);
     expect(suggested.value).toEqual(call(fetchSuggestedPassword, config));
 
     const mockSuggested = {
         payload: {
           csrf_token: "csrf-token",
-          suggested_password: "1234"
-        }
+          suggested_password: "1234",
+        },
       },
       processed = {
         payload: {
-          suggested_password: "1234"
-        }
+          suggested_password: "1234",
+        },
       };
     next = generator.next(mockSuggested);
     next = generator.next(processed);
@@ -263,7 +263,7 @@ describe("Async component", () => {
     const data = {
       csrf_token: "csrf-token",
       old_password: "old-pw",
-      new_password: "new-pw"
+      new_password: "new-pw",
     };
     next = generator.next(mockState);
     expect(next.value).toEqual(call(postPassword, mockState.config, data));
@@ -275,11 +275,11 @@ describe("Async component", () => {
           {
             credential_type: "password",
             created_ts: "",
-            success_ts: ""
-          }
-        ]
+            success_ts: "",
+          },
+        ],
       },
-      type: "POST_SECURITY_CHANGE_PASSWORD_SUCCESS"
+      type: "POST_SECURITY_CHANGE_PASSWORD_SUCCESS",
     };
     next = generator.next(mockCredentials);
     delete mockCredentials.payload.csrf_token;
@@ -289,52 +289,52 @@ describe("Async component", () => {
   });
 });
 
-const fakeStore = state => ({
+const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
-const fakeState = custom => ({
+const fakeState = (custom) => ({
   chpass: {
     message: "",
     suggested_password: "abcd",
     old_password: "",
     new_password: "defg",
-    choose_custom: custom
+    choose_custom: custom,
   },
   config: {
     csrf_token: "",
     security_url: "/dummy-sec-url",
     dashboard_url: "/dummy-dash-url/",
-    token_service_url: "/dummy-tok-url/"
+    token_service_url: "/dummy-tok-url/",
   },
   personal_data: {
     data: {
       given_name: "given-name",
       surname: "surname",
-      display_name: "display-name"
-    }
+      display_name: "display-name",
+    },
   },
   emails: {
-    emails: []
+    emails: [],
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 });
 
 describe("ChangePassword Component suggested", () => {
   it("Renders", () => {
     // const store = fakeStore(fakeState(false)),
-      // { wrapper } = setupComponent(store),
-      // form = wrapper.find("form#passwordsview-form"),
-      // inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
-      // checkBoxCustom = wrapper.find("CheckBox"),
-      // inputSuggested = wrapper.find('TextControl[name="suggested_password"]'),
-      // button = wrapper.find("EduIDButton");
+    // { wrapper } = setupComponent(store),
+    // form = wrapper.find("form#passwordsview-form"),
+    // inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
+    // checkBoxCustom = wrapper.find("CheckBox"),
+    // inputSuggested = wrapper.find('TextControl[name="suggested_password"]'),
+    // button = wrapper.find("EduIDButton");
   });
 });
 
@@ -359,10 +359,10 @@ describe("ChangePassword Container", () => {
       suggested_password: "abcd",
       new_password: "defg",
       user_input: [],
-      password_entropy: 0
+      password_entropy: 0,
     };
 
-    getWrapper = function(custom = false, props = mockProps) {
+    getWrapper = function (custom = false, props = mockProps) {
       const state = fakeState(custom);
       store = fakeStore(state);
       const wrapper = mount(

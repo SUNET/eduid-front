@@ -7,11 +7,8 @@ import ModalFooter from "reactstrap/lib/ModalFooter";
 import i18n from "../../../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../components/EduIDButton";
 
-const RenderCloseButton = ({ 
-  closeButtonId, 
-  closeModal, 
-}) => {
-  return(
+const RenderCloseButton = ({ closeButtonId, closeModal }) => {
+  return (
     <div className="close-button-container">
       <EduIDButton
         id={closeButtonId}
@@ -31,76 +28,64 @@ const RenderCloseButton = ({
         </svg>
       </EduIDButton>
     </div>
-  )
-}
+  );
+};
 
-const RenderAcceptButton = ({ 
-  href, 
-  acceptButtonId, 
-  acceptModal, 
-  acceptButtonText, 
-  translate 
-})=>{
-  return(
-    href ?
+const RenderAcceptButton = ({
+  href,
+  acceptButtonId,
+  acceptModal,
+  acceptButtonText,
+  translate,
+}) => {
+  return href ? (
     <>
       <EduIDButton
         id={acceptButtonId}
         className="modal-button ok-button"
         href={href}
       >
-      {
-        acceptButtonText ? acceptButtonText 
-        : translate("cm.accept")
-      }
+        {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>
-    :
+  ) : (
     <>
       <EduIDButton
         id={acceptButtonId}
         className="modal-button ok-button"
         onClick={acceptModal}
       >
-      {
-        acceptButtonText ? acceptButtonText 
-        : translate("cm.accept")
-      }
+        {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>
-  )
-}
+  );
+};
 
 const RenderModalBody = ({ modalId, mainText }) => {
-  return (
-    modalId === "register-modal" ?
-    <ModalBody 
-      dangerouslySetInnerHTML={{ __html: mainText }} 
-    />
-    : 
+  return modalId === "register-modal" ? (
+    <ModalBody dangerouslySetInnerHTML={{ __html: mainText }} />
+  ) : (
     <ModalBody>
-      <>
-        {mainText}
-      </>
+      <>{mainText}</>
     </ModalBody>
-  )
-}
+  );
+};
 
 class NotificationModal extends Component {
   render() {
-    const { 
-      modalId, 
-      showModal, 
-      title, 
-      mainText, 
-      acceptButtonId, 
-      acceptModal, 
+    const {
+      modalId,
+      showModal,
+      title,
+      mainText,
+      acceptButtonId,
+      acceptModal,
       closeModal,
-      acceptButtonText, 
-      closeButtonId, 
-      closeButtonText, 
+      acceptButtonText,
+      closeButtonId,
+      closeButtonText,
       translate,
-      href
+      href,
     } = this.props;
 
     return (
@@ -113,27 +98,23 @@ class NotificationModal extends Component {
       >
         <Modal isOpen={showModal} className={modalId}>
           <ModalHeader>
-            <RenderCloseButton 
+            <RenderCloseButton
               closeButtonId={closeButtonId}
               closeModal={closeModal}
-              translate={translate} 
-              closeButtonText={closeButtonText} 
+              translate={translate}
+              closeButtonText={closeButtonText}
             />
             {title}
           </ModalHeader>
-          <RenderModalBody 
-            modalId={modalId} 
-            mainText={mainText}
-          />
+          <RenderModalBody modalId={modalId} mainText={mainText} />
           <ModalFooter>
-            <RenderAcceptButton 
+            <RenderAcceptButton
               acceptButtonId={acceptButtonId}
-              acceptModal={acceptModal} 
-              acceptButtonText={acceptButtonText} 
+              acceptModal={acceptModal}
+              acceptButtonText={acceptButtonText}
               translate={translate}
               href={href}
             />
-         
           </ModalFooter>
         </Modal>
       </div>
@@ -148,7 +129,7 @@ NotificationModal.propTypes = {
   closeModal: PropTypes.func,
   acceptModal: PropTypes.func,
   showModal: PropTypes.bool,
-  confirming: PropTypes.bool
+  confirming: PropTypes.bool,
 };
 
 export default i18n(NotificationModal);

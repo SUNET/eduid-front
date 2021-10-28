@@ -5,9 +5,9 @@ import Profile from "components/Profile";
 const mapStateToProps = (state) => {
   let verifiedNinStatus = "";
   let verifiedPhone = "";
-  const nins = state.nins.nins.filter(nin => nin.verified);
+  const nins = state.nins.nins.filter((nin) => nin.verified);
   nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
-  const phones = state.phones.phones.filter(phoneNum => phoneNum.verified);
+  const phones = state.phones.phones.filter((phoneNum) => phoneNum.verified);
   phones.length >= 1 ? (verifiedPhone = true) : (verifiedPhone = false);
 
   return {
@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
     verifiedPhone: verifiedPhone,
     firstName: state.personal_data.data.given_name,
     lastName: state.personal_data.data.surname,
-    message: state.nins.message
+    message: state.nins.message,
   };
 };
 

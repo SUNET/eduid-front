@@ -11,13 +11,13 @@ class PhoneNumDisplay extends Component {
       displayText = [
         <p key="0" className="verified data">
           {this.props.primaryPhone[0]}
-        </p>
+        </p>,
       ];
     } else {
       displayText = [
         <p key="0" className="unverified data">
           {this.props.translate("profile.phone_display_unconfirmed_data")}
-        </p>
+        </p>,
       ];
     }
     // } else {

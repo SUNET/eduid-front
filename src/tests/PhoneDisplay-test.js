@@ -25,21 +25,21 @@ describe("PhoneDisplay component", () => {
 });
 
 describe("PhoneDisplay component, when no phone number is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     phones: {
-      phones: []
+      phones: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -51,7 +51,7 @@ describe("PhoneDisplay component, when no phone number is saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
@@ -72,21 +72,21 @@ describe("PhoneDisplay component, when no phone number is saved", () => {
 });
 
 describe("PhoneDisplay component, when phone numbers is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     phones: {
-      phones: []
+      phones: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -98,12 +98,12 @@ describe("PhoneDisplay component, when phone numbers is saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
   state.phones.phones = [
-    { number: "+46700000079", primary: false, verified: false }
+    { number: "+46700000079", primary: false, verified: false },
   ];
 
   it("Render text when phone numbers are unverified", () => {
@@ -122,21 +122,21 @@ describe("PhoneDisplay component, when phone numbers is saved", () => {
 });
 
 describe("PhoneDisplay component, when phone number is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     phones: {
-      phones: []
+      phones: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -148,14 +148,14 @@ describe("PhoneDisplay component, when phone number is saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
   state.phones.phones = [
     { number: "+46736483364", primary: true, verified: true },
     { number: "+46764008978", primary: false, verified: true },
-    { number: "+46700000079", primary: false, verified: false }
+    { number: "+46700000079", primary: false, verified: false },
   ];
 
   it("Renders the primary phone (even if multiple verified)", () => {
@@ -176,21 +176,21 @@ describe("PhoneDisplay component, when phone number is saved", () => {
 });
 
 describe("PhoneDisplay component, when phone number is saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     phones: {
-      phones: []
+      phones: [],
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -202,14 +202,14 @@ describe("PhoneDisplay component, when phone number is saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
   state.phones.phones = [
     { number: "+46736483364", primary: false, verified: true },
     { number: "+46764008978", primary: true, verified: true },
-    { number: "+46700000079", primary: false, verified: false }
+    { number: "+46700000079", primary: false, verified: false },
   ];
   it("Renders the primary phone (even if multiple verified and new phone set as primary)", () => {
     const { wrapper } = setupComponent();

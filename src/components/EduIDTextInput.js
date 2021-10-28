@@ -5,8 +5,7 @@ import Input from "reactstrap/lib/Input";
 import Label from "reactstrap/lib/Label";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-
-const textInput = props => {
+const textInput = (props) => {
   const {
     input,
     label,
@@ -17,7 +16,7 @@ const textInput = props => {
     translate,
     disabled,
     helpBlock,
-    placeholder
+    placeholder,
   } = props;
   let valid = false,
     invalid = false;
@@ -48,28 +47,22 @@ const textInput = props => {
       return (
         <Fragment key={index}>
           <label key={option[0]} htmlFor={option[1]}>
-          <input
-            className={"radio-input"}
-            key={option[0]}
-            id={option[1]}
-            type='radio'
-            {...input}
-            value={option[0]}
-            checked={option[0]===input.value}
-          />
-          <span key={index}>{option[1]}
-          </span>
+            <input
+              className={"radio-input"}
+              key={option[0]}
+              id={option[1]}
+              type="radio"
+              {...input}
+              value={option[0]}
+              checked={option[0] === input.value}
+            />
+            <span key={index}>{option[1]}</span>
           </label>
         </Fragment>
       );
     });
-    field = (
-      <div className='radio-input-container'>
-        {renderSelectLanguage}
-      </div>
-    );
-  } 
-  else {
+    field = <div className="radio-input-container">{renderSelectLanguage}</div>;
+  } else {
     field = (
       <Input
         type={type}

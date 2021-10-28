@@ -8,8 +8,8 @@ import { setupComponent } from "tests/SignupMain-test";
 describe("EmailInUse Component", () => {
   const state = {
     config: {
-      reset_passwd_url: "http://dummy.example.com/reset-password"
-    }
+      reset_passwd_url: "http://dummy.example.com/reset-password",
+    },
   };
 
   it("Renders the email in use component", () => {
@@ -24,7 +24,7 @@ describe("EmailInUse Component", () => {
 
     it("Component has text", () => {
       const fullWrapper = setupComponent({
-        component: <EmailInUseContainer />
+        component: <EmailInUseContainer />,
       });
       const p = fullWrapper.find("p");
       expect(p.exists()).toEqual(true);
@@ -32,7 +32,7 @@ describe("EmailInUse Component", () => {
     it("Component renders user email (text inlcudes '@')", () => {
       const fullWrapper = setupComponent({
         component: <EmailInUseContainer />,
-        overrides: { email: { email: "dummy@example.com" } }
+        overrides: { email: { email: "dummy@example.com" } },
       });
 
       const userEmail = fullWrapper.find(".register-header");
@@ -42,7 +42,7 @@ describe("EmailInUse Component", () => {
 
     it("Component renders the RESET PASSWORD button", () => {
       const fullWrapper = setupComponent({
-        component: <EmailInUseContainer />
+        component: <EmailInUseContainer />,
       });
       const button = fullWrapper.find("EduIDButton");
       expect(button.exists()).toEqual(true);
@@ -53,7 +53,7 @@ describe("EmailInUse Component", () => {
     it("Component renders a RESET PASSWORD button with a reroute", () => {
       const fullWrapper = setupComponent({
         component: <EmailInUseContainer />,
-        overrides: state
+        overrides: state,
       });
       const link = fullWrapper.find("a");
       expect(link.props().href).toEqual(

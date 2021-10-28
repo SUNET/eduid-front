@@ -1,4 +1,3 @@
-
 @import "./variables.scss";
 
 #dashboard-nav {
@@ -59,7 +58,7 @@
 .profile-grid-cell {
   display: flex;
   flex-direction: column;
-  .display-nin-show-hide{
+  .display-nin-show-hide {
     display: flex;
     button {
       margin-top: 6px;
@@ -141,8 +140,7 @@
 
 @media (max-width: 383px) {
   a.nav-settings.en,
-  a.nav-advanced-settings.en
-  {
+  a.nav-advanced-settings.en {
     margin-top: 2.5rem;
     display: block;
     -webkit-transition: -webkit-transform 0.5s;
@@ -153,15 +151,12 @@
   }
 }
 
-
 @media (max-width: 353px) {
-  a.nav-settings.en
-  {
+  a.nav-settings.en {
     margin-top: 2.5rem;
   }
 
-  a.nav-advanced-settings.en
-  {
+  a.nav-advanced-settings.en {
     margin-top: 0;
     display: block;
     transition: transform 0.5s;

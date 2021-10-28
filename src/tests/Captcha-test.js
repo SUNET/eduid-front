@@ -11,9 +11,9 @@ import captchaReducer from "reducers/Captcha";
 import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
 
 describe("Captcha Component", () => {
-    afterEach(() => {
-      fetchMock.restore();
-    });
+  afterEach(() => {
+    fetchMock.restore();
+  });
 
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
@@ -27,7 +27,7 @@ describe("Captcha Component", () => {
   it("The captcha <div> element renders", () => {
     fetchMock.get("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
-      component: <CaptchaContainer />
+      component: <CaptchaContainer />,
     });
     const captcha = fullWrapper.find("#captcha");
     expect(captcha.exists()).toEqual(true);
@@ -36,7 +36,7 @@ describe("Captcha Component", () => {
   it("Renders the OK and CANCEL buttons", () => {
     fetchMock.get("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
-      component: <CaptchaContainer />
+      component: <CaptchaContainer />,
     });
     const button = fullWrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
@@ -49,8 +49,8 @@ describe("Captcha Actions", () => {
     const expectedAction = {
       type: actions.CAPTCHA_VERIFICATION,
       payload: {
-        response: "dummy response"
-      }
+        response: "dummy response",
+      },
     };
     expect(actions.verifyCaptcha("dummy response")).toEqual(expectedAction);
   });
@@ -62,8 +62,8 @@ describe("Captcha Actions", () => {
       error: true,
       payload: {
         message: err,
-        disabledButton: false
-      }
+        disabledButton: false,
+      },
     };
     expect(actions.postCaptchaFail(err)).toEqual(expectedAction);
   });
@@ -72,8 +72,8 @@ describe("Captcha Actions", () => {
     const expectedAction = {
       type: actions.POST_SIGNUP_TRYCAPTCHA,
       payload: {
-        disabledButton: true
-      }
+        disabledButton: true,
+      },
     };
     expect(actions.postCaptcha()).toEqual(expectedAction);
   });
@@ -81,7 +81,7 @@ describe("Captcha Actions", () => {
 
 describe("Captcha reducer", () => {
   const mockState = {
-    captcha_verification: ""
+    captcha_verification: "",
   };
 
   it("Receives a captcha verification action", () => {
@@ -89,11 +89,11 @@ describe("Captcha reducer", () => {
       captchaReducer(mockState, {
         type: actions.CAPTCHA_VERIFICATION,
         payload: {
-          response: "dummy verification"
-        }
+          response: "dummy verification",
+        },
       })
     ).toEqual({
-      captcha_verification: "dummy verification"
+      captcha_verification: "dummy verification",
     });
   });
 });
@@ -109,10 +109,7 @@ describe("Test captcha Container", () => {
 
   it("Clicks the send captcha button", () => {
     const numCalls = dispatch.mock.calls.length;
-    wrapper
-      .find("EduIDButton#send-captcha-button")
-      .props()
-      .onClick();
+    wrapper.find("EduIDButton#send-captcha-button").props().onClick();
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
 });
@@ -121,15 +118,15 @@ describe("Async actions for captcha", () => {
   it("Tests the send captcha saga", () => {
     const state = getState({
       config: {
-        csrf_token: "dummy-token"
+        csrf_token: "dummy-token",
       },
       email: {
         email: "dummy@example.com",
-        tou_accepted: true
+        tou_accepted: true,
       },
       captcha: {
-        captcha_verification: "dummy response"
-      }
+        captcha_verification: "dummy response",
+      },
     });
     const generator = sendCaptcha();
     let next = generator.next();
@@ -138,7 +135,7 @@ describe("Async actions for captcha", () => {
       email: "dummy@example.com",
       recaptcha_response: "dummy response",
       csrf_token: "dummy-token",
-      tou_accepted: true
+      tou_accepted: true,
     };
     const resp = generator.next(state);
     expect(resp.value).toEqual(call(requestSendCaptcha, data));
@@ -146,8 +143,8 @@ describe("Async actions for captcha", () => {
     const action = {
       type: actions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");

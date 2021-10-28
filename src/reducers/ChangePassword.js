@@ -5,19 +5,19 @@ const chpass = {
   suggested_password: "",
   old_password: "",
   new_password: "",
-  zxcvbn_module: undefined
+  zxcvbn_module: undefined,
 };
 
 let chpassReducer = (state = chpass, action) => {
   switch (action.type) {
     case actions.GET_SUGGESTED_PASSWORD:
       return {
-        ...state
+        ...state,
       };
     case actions.GET_SUGGESTED_PASSWORD_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case actions.GET_SUGGESTED_PASSWORD_FAIL:
       return {
@@ -28,7 +28,7 @@ let chpassReducer = (state = chpass, action) => {
       return {
         ...state,
         old_password: action.payload.old,
-        new_password: action.payload.next
+        new_password: action.payload.next,
       };
     case actions.POST_SECURITY_CHANGE_PASSWORD_SUCCESS:
       return {
@@ -38,7 +38,7 @@ let chpassReducer = (state = chpass, action) => {
     case actions.SET_ZXCVBN:
       return {
         ...state,
-        zxcvbn_module: action.payload.module
+        zxcvbn_module: action.payload.module,
       };
     default:
       return state;

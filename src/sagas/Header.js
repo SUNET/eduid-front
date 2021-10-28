@@ -1,12 +1,10 @@
 import { select } from "redux-saga/effects";
-import {
-  failRequest
-} from "sagas/common";
+import { failRequest } from "sagas/common";
 import { postLogoutFail } from "actions/Header";
 
 export function* requestLogout() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       url = state.config.token_service_url + "logout";
     if (navigator.userAgent.indexOf("Trident/7") > -1) {
       window.location = url;
@@ -16,9 +14,9 @@ export function* requestLogout() {
           method: "get",
           credentials: "same-origin",
           mode: "cors",
-          redirect: "manual"
+          redirect: "manual",
         })
-        .then(resp => {
+        .then((resp) => {
           window.location = resp.url;
         });
     }

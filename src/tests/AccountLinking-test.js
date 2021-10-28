@@ -13,7 +13,7 @@ import {
   requestConnectOrcid,
   requestRemoveOrcid,
   fetchOrcid,
-  removeOrcid
+  removeOrcid,
 } from "sagas/AccountLinking";
 
 import { addLocaleData } from "react-intl";
@@ -24,7 +24,7 @@ addLocaleData("react-intl/locale-data/en");
 describe("AccountLinking Actions", () => {
   it("Should get orcid ", () => {
     const expectedAction = {
-      type: actions.GET_ORCID
+      type: actions.GET_ORCID,
     };
     expect(actions.getOrcid()).toEqual(expectedAction);
   });
@@ -35,22 +35,22 @@ describe("AccountLinking Actions", () => {
       type: actions.GET_ORCID_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.getOrcidFail(err)).toEqual(expectedAction);
   });
 
   it("Should start orcid connect ", () => {
     const expectedAction = {
-      type: actions.GET_ORCID_CONNECT
+      type: actions.GET_ORCID_CONNECT,
     };
     expect(actions.startOrcidConnect()).toEqual(expectedAction);
   });
 
   it("Should start orcid remove ", () => {
     const expectedAction = {
-      type: actions.POST_ORCID_REMOVE
+      type: actions.POST_ORCID_REMOVE,
     };
     expect(actions.startOrcidRemove()).toEqual(expectedAction);
   });
@@ -61,8 +61,8 @@ describe("AccountLinking Actions", () => {
       type: actions.POST_ORCID_REMOVE_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.startOrcidRemoveFail(err)).toEqual(expectedAction);
   });
@@ -71,17 +71,17 @@ describe("AccountLinking Actions", () => {
 describe("Reducers", () => {
   const mockState = {
     message: "",
-    orcid: {}
+    orcid: {},
   };
 
   it("Receives a GET_ORCID action", () => {
     expect(
       accountlinkingReducer(mockState, {
-        type: actions.GET_ORCID
+        type: actions.GET_ORCID,
       })
     ).toEqual({
       message: "",
-      orcid: {}
+      orcid: {},
     });
   });
 
@@ -90,18 +90,18 @@ describe("Reducers", () => {
       id: "https://sandbox.orcid.org/0000-0000-0000-0000",
       name: null,
       given_name: "Test",
-      family_name: "Testsson"
+      family_name: "Testsson",
     };
     expect(
       accountlinkingReducer(mockState, {
         type: actions.GET_PERSONAL_DATA_ORCID_SUCCESS,
         payload: {
-          orcid: orcid
-        }
+          orcid: orcid,
+        },
       })
     ).toEqual({
       message: "",
-      orcid: orcid
+      orcid: orcid,
     });
   });
 
@@ -112,34 +112,34 @@ describe("Reducers", () => {
         type: actions.GET_ORCID_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       })
     ).toEqual({
       message: err,
-      orcid: {}
+      orcid: {},
     });
   });
 
   it("Receives a POST_ORCID_REMOVE action", () => {
     expect(
       accountlinkingReducer(mockState, {
-        type: actions.POST_ORCID_REMOVE
+        type: actions.POST_ORCID_REMOVE,
       })
     ).toEqual({
       message: "",
-      orcid: {}
+      orcid: {},
     });
   });
 
   it("Receives a POST_ORCID_REMOVE_SUCCESS action", () => {
     expect(
       accountlinkingReducer(mockState, {
-        type: actions.POST_ORCID_REMOVE_SUCCESS
+        type: actions.POST_ORCID_REMOVE_SUCCESS,
       })
     ).toEqual({
       message: "",
-      orcid: {}
+      orcid: {},
     });
   });
 
@@ -150,36 +150,36 @@ describe("Reducers", () => {
         type: actions.POST_ORCID_REMOVE_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       })
     ).toEqual({
       message: err,
-      orcid: {}
+      orcid: {},
     });
   });
 });
 
-const fakeStore = state => ({
+const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
 const mockState = {
   account_linking: {
     message: "",
-    orcid: {}
+    orcid: {},
   },
   config: {
     csrf_token: "csrf-token",
-    orcid_url: "/dummy-orcid-url/"
+    orcid_url: "/dummy-orcid-url/",
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 };
 
 describe("Async component", () => {
@@ -190,7 +190,7 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(actions.getOrcid()));
 
     next = generator.next();
-    const config = state => state.config;
+    const config = (state) => state.config;
     const orcid = generator.next(config);
     expect(orcid.value).toEqual(call(fetchOrcid, config));
 
@@ -202,9 +202,9 @@ describe("Async component", () => {
           id: "https://sandbox.orcid.org/0000-0000-0000-0000",
           name: null,
           given_name: "Test",
-          family_name: "Testsson"
-        }
-      }
+          family_name: "Testsson",
+        },
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -217,8 +217,8 @@ describe("Async component", () => {
     const oldLoc = window.location.href;
     let mockWindow = {
       location: {
-        href: oldLoc
-      }
+        href: oldLoc,
+      },
     };
 
     const generator = requestConnectOrcid(mockWindow);
@@ -237,7 +237,7 @@ describe("Async component", () => {
     expect(next.value.SELECT.args).toEqual([]);
 
     const data = {
-      csrf_token: "csrf-token"
+      csrf_token: "csrf-token",
     };
 
     next = generator.next(mockState.config);
@@ -246,8 +246,8 @@ describe("Async component", () => {
     const action = {
       type: actions.POST_ORCID_REMOVE_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -269,7 +269,7 @@ describe("AccountLinking Container", () => {
   let mockProps, language, getWrapper, getState, dispatch, store;
 
   beforeEach(() => {
-    getState = function() {
+    getState = function () {
       return {
         account_linking: {
           message: "",
@@ -277,30 +277,30 @@ describe("AccountLinking Container", () => {
             id: "https://sandbox.orcid.org/0000-0000-0000-0000",
             name: null,
             given_name: "Test",
-            family_name: "Testsson"
-          }
+            family_name: "Testsson",
+          },
         },
         config: {
           csrf_token: "csrf-token",
-          orcid_url: "/dummy-orcid-url/"
+          orcid_url: "/dummy-orcid-url/",
         },
         intl: {
           locale: "en",
-          messages: messages
+          messages: messages,
         },
         notifications: {
           messages: [],
-          errors: []
-        }
+          errors: [],
+        },
       };
     };
 
     mockProps = {
       orcid: {},
-      language: "en"
+      language: "en",
     };
 
-    getWrapper = function({ props = mockProps } = {}) {
+    getWrapper = function ({ props = mockProps } = {}) {
       store = fakeStore(getState());
       dispatch = store.dispatch;
 
@@ -311,9 +311,7 @@ describe("AccountLinking Container", () => {
       );
       return wrapper;
     };
-    language = getWrapper()
-      .find(AccountLinkingContainer)
-      .props().language;
+    language = getWrapper().find(AccountLinkingContainer).props().language;
   });
 
   afterEach(() => {
@@ -326,10 +324,7 @@ describe("AccountLinking Container", () => {
 
   it("Clicks remove orcid", () => {
     expect(dispatch.mock.calls.length).toEqual(0);
-    getWrapper()
-      .find("EduIDButton#remove-orcid-button")
-      .props()
-      .onClick();
+    getWrapper().find("EduIDButton#remove-orcid-button").props().onClick();
     expect(dispatch.mock.calls.length).toEqual(1);
     expect(dispatch.mock.calls[0][0].type).toEqual(actions.POST_ORCID_REMOVE);
   });

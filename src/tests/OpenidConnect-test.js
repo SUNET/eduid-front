@@ -12,8 +12,8 @@ describe("OIDC Actions", () => {
     const expectedAction = {
       type: actions.POST_OIDC_PROOFING_PROOFING,
       payload: {
-        nin: "190102031234"
-      }
+        nin: "190102031234",
+      },
     };
     expect(actions.postOpenidSeleg(nin)).toEqual(expectedAction);
   });
@@ -25,8 +25,8 @@ describe("OIDC Actions", () => {
       error: true,
       payload: {
         error: true,
-        message: "Bad error"
-      }
+        message: "Bad error",
+      },
     };
     expect(actions.postOpenidSelegFail(err)).toEqual(expectedAction);
   });
@@ -38,7 +38,7 @@ describe("Reducers", () => {
     qr_img: "code",
     qr_code: "nonce",
     nin: "",
-    showModal: false
+    showModal: false,
   };
 
   const nin = "190102031234";
@@ -48,15 +48,15 @@ describe("Reducers", () => {
       openidConnectReducer(mockState, {
         type: actions.POST_OIDC_PROOFING_PROOFING,
         payload: {
-          nin: nin
-        }
+          nin: nin,
+        },
       })
     ).toEqual({
       error: "",
       qr_img: "code",
       qr_code: "nonce",
       nin: nin,
-      showModal: false
+      showModal: false,
     });
   });
 
@@ -64,14 +64,14 @@ describe("Reducers", () => {
     expect(
       openidConnectReducer(mockState, {
         type: actions.POST_OIDC_PROOFING_PROOFING_SUCCESS,
-        payload: { qr_img: "new code", qr_code: "new nonce" }
+        payload: { qr_img: "new code", qr_code: "new nonce" },
       })
     ).toEqual({
       error: "",
       qr_img: "new code",
       qr_code: "new nonce",
       nin: "",
-      showModal: false
+      showModal: false,
     });
   });
 
@@ -82,8 +82,8 @@ describe("Reducers", () => {
         error: true,
         payload: {
           error: true,
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
       error: true,
@@ -91,7 +91,7 @@ describe("Reducers", () => {
       nin: "",
       qr_img: "code",
       qr_code: "nonce",
-      showModal: false
+      showModal: false,
     });
   });
 
@@ -99,18 +99,17 @@ describe("Reducers", () => {
     expect(
       openidConnectReducer(mockState, {
         type: "DUMMY_ACTION",
-        payload: "dummy payload"
+        payload: "dummy payload",
       })
     ).toEqual({
       error: "",
       nin: "",
       qr_img: "code",
       qr_code: "nonce",
-      showModal: false
+      showModal: false,
     });
   });
 });
-
 
 // Modals are hard
 /*
@@ -199,21 +198,21 @@ describe("OpenidConnect Container", () => {
 const state = {
   config: {
     oidc_proofing_url: "http://localhost/services/oidc-proofing/proofing",
-    csrf_token: "csrf-token"
+    csrf_token: "csrf-token",
   },
   openid_data: {
-    nin: "testing"
+    nin: "testing",
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 };
 
 import {
   checkNINAndShowSelegModal,
   requestOpenidQRcode,
-  fetchQRcode
+  fetchQRcode,
 } from "../sagas/OpenidConnect";
 import { put, call, select } from "redux-saga/effects";
 
@@ -221,7 +220,7 @@ describe("Async component", () => {
   it("Sagas checkNINAndShowSelegModal", () => {
     const generator = checkNINAndShowSelegModal();
     let next = generator.next();
-    let debug = select(state => state);
+    let debug = select((state) => state);
     delete debug.SELECT.selector;
     expect(next.value).toMatchObject(debug);
   });
@@ -229,14 +228,14 @@ describe("Async component", () => {
   it("Sagas requestOpenidQRcode", () => {
     const generator = requestOpenidQRcode();
     let next = generator.next();
-    let debug = select(state => state);
+    let debug = select((state) => state);
     delete debug.SELECT.selector;
     expect(next.value).toMatchObject(debug);
 
     const oidcData = generator.next(state);
     const data = {
       nin: "testing",
-      csrf_token: "csrf-token"
+      csrf_token: "csrf-token",
     };
 
     expect(oidcData.value).toEqual(
@@ -248,8 +247,8 @@ describe("Async component", () => {
       payload: {
         qr_img: "new code",
         qr_code: "new nonce",
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
 
     next = generator.next(action);

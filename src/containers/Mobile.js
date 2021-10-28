@@ -8,7 +8,7 @@ import {
   startConfirmation,
   stopConfirmation,
   startVerify,
-  startRemove
+  startRemove,
 } from "actions/Mobile";
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
@@ -20,57 +20,58 @@ const mapStateToProps = (state) => {
     phone: state.phones.phone,
     confirming: state.phones.confirming,
     resending: state.phones.resending,
-    default_country_code: state.config.default_country_code
+    default_country_code: state.config.default_country_code,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleAdd: e => {
+    handleAdd: (e) => {
       e.preventDefault();
       dispatch(postMobile());
     },
-    handleResend: function(e) {
+    handleResend: function (e) {
       e.preventDefault();
       dispatch(startResendMobileCode());
       dispatch(stopConfirmation());
     },
-    handleStartConfirmation: function(e) {
+    handleStartConfirmation: function (e) {
       dispatch(eduidRMAllNotify());
       const dataNode = e.target.closest("tr.emailrow"),
         data = {
           identifier: dataNode.getAttribute("data-identifier"),
-          phone: dataNode.getAttribute("data-object")
+          phone: dataNode.getAttribute("data-object"),
         };
 
       dispatch(startConfirmation(data));
     },
-    handleStopConfirmation: function() {
+    handleStopConfirmation: function () {
       dispatch(stopConfirmation());
     },
-    handleConfirm: function() {
+    handleConfirm: function () {
       const data = {
         code: document
           .getElementById("confirmation-code-area")
-          .querySelector("input").value.trim()
+          .querySelector("input")
+          .value.trim(),
       };
       dispatch(startVerify(data));
       dispatch(stopConfirmation());
     },
-    handleRemove: function(e) {
+    handleRemove: function (e) {
       const dataNode = e.target.closest("tr.emailrow"),
         data = {
-          phone: dataNode.getAttribute("data-object")
+          phone: dataNode.getAttribute("data-object"),
         };
       dispatch(startRemove(data));
     },
-    handleMakePrimary: e => {
+    handleMakePrimary: (e) => {
       const dataNode = e.target.closest("tr.emailrow"),
         data = {
-          phone: dataNode.getAttribute("data-object")
+          phone: dataNode.getAttribute("data-object"),
         };
       dispatch(makePrimary(data));
-    }
+    },
   };
 };
 

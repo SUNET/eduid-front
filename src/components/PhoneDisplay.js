@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HashLink } from 'react-router-hash-link';
+import { HashLink } from "react-router-hash-link";
 
 class PhoneDisplay extends Component {
   render() {
@@ -25,7 +25,7 @@ class PhoneDisplay extends Component {
           to={`/profile/settings/#phone`}
           className="display-data unverified"
         >
-         {this.props.translate("profile.phone_display_no_data")}
+          {this.props.translate("profile.phone_display_no_data")}
         </HashLink>,
       ];
     }

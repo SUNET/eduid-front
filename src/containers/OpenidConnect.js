@@ -4,7 +4,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { eduidRMAllNotify } from "../actions/Notifications";
 import {
   showOpenidSelegModal,
-  hideOpenidSelegModal
+  hideOpenidSelegModal,
 } from "../actions/OpenidConnect";
 
 const mapStateToProps = (state) => {
@@ -13,19 +13,19 @@ const mapStateToProps = (state) => {
     qr_code: state.openid_data.qr_code,
     nin: state.openid_data.nin,
     showModal: state.openid_data.showModal,
-    error: state.openid_data.error
+    error: state.openid_data.error,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleShowModal: function() {
+    handleShowModal: function () {
       dispatch(showOpenidSelegModal());
       dispatch(eduidRMAllNotify());
     },
-    handleHideModal: function() {
+    handleHideModal: function () {
       dispatch(hideOpenidSelegModal());
-    }
+    },
   };
 };
 

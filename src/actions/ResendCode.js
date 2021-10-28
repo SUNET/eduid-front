@@ -7,7 +7,7 @@ export const POST_SIGNUP_RESEND_VERIFICATION_FAIL =
 
 export function postResendCode() {
   return {
-    type: POST_SIGNUP_RESEND_VERIFICATION
+    type: POST_SIGNUP_RESEND_VERIFICATION,
   };
 }
 
@@ -16,7 +16,7 @@ export function postResendCodeFail(err) {
     type: POST_SIGNUP_RESEND_VERIFICATION_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }

@@ -1,8 +1,4 @@
-import {
-  checkStatus,
-  postRequest,
-  saveData,
-} from "sagas/common";
+import { checkStatus, postRequest, saveData } from "sagas/common";
 import { postLookupMobileFail } from "actions/LookupMobileProofing";
 import * as ninActions from "actions/Nins";
 
@@ -36,7 +32,7 @@ import * as ninActions from "actions/Nins";
 //   // }
 // }
 
-// take user data into request 
+// take user data into request
 export function fetchLookupMobileProof(config, data) {
   console.log("this is config in fetchLookupMobileProof", config);
   console.log("this is data in fetchLookupMobileProof", data);
@@ -50,7 +46,7 @@ export function fetchLookupMobileProof(config, data) {
     .then((response) => response.json());
 }
 
-// get user data for request  
+// get user data for request
 const getData = (state) => {
   console.log("this is state in get data", state);
   const unconfirmed = document.getElementById("nin-number");

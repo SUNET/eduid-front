@@ -25,24 +25,24 @@ describe("NameDisplay component", () => {
 });
 
 describe("NameDisplay component, when no names are saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     personal_data: {
       data: {
         given_name: "",
-        surname: ""
-      }
+        surname: "",
+      },
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -54,7 +54,7 @@ describe("NameDisplay component, when no names are saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };
@@ -75,24 +75,24 @@ describe("NameDisplay component, when no names are saved", () => {
 });
 
 describe("NameDisplay component, when names are saved", () => {
-  const fakeStore = state => ({
+  const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
     subscribe: mock.fn(),
-    getState: () => ({ ...state })
+    getState: () => ({ ...state }),
   });
 
   const fakeState = {
     personal_data: {
       data: {
         given_name: "",
-        surname: ""
-      }
+        surname: "",
+      },
     },
     intl: {
       locale: "en",
-      messages: messages
-    }
+      messages: messages,
+    },
   };
 
   function setupComponent() {
@@ -102,7 +102,7 @@ describe("NameDisplay component, when names are saved", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
   const state = { ...fakeState };

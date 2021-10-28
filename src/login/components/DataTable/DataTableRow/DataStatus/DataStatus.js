@@ -37,7 +37,7 @@ DataStatus.propTypes = {
   verified: PropTypes.bool.isRequired,
   primary: PropTypes.bool.isRequired,
   handleStartConfirmation: PropTypes.func.isRequired,
-  handleMakePrimary: PropTypes.func.isRequired
+  handleMakePrimary: PropTypes.func.isRequired,
 };
 
 export default i18n(DataStatus);

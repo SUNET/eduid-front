@@ -140,7 +140,7 @@ TableList.propTypes = {
   entries: PropTypes.array,
   handleStartConfirmation: PropTypes.func,
   handleRemove: PropTypes.func,
-  handleMakePrimary: PropTypes.func
+  handleMakePrimary: PropTypes.func,
 };
 
 export default i18n(TableList);

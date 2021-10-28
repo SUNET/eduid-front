@@ -2,7 +2,7 @@ import React from "react";
 
 const FetchingContext = React.createContext({
   fetching: false,
-  setFetching: () => {}
+  setFetching: () => {},
 });
 
 export default FetchingContext;

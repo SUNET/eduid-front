@@ -1,21 +1,17 @@
 import { put, call, select } from "redux-saga/effects";
-import {
-  checkStatus,
-  postRequest,
-  putCsrfToken
-} from "sagas/common";
+import { checkStatus, postRequest, putCsrfToken } from "sagas/common";
 
 import * as actions from "actions/Captcha";
 import { history } from "components/SignupMain";
 
 export function* sendCaptcha() {
   try {
-    const state = yield select(state => state),
+    const state = yield select((state) => state),
       data = {
         email: state.email.email,
         recaptcha_response: state.captcha.captcha_verification,
         csrf_token: state.config.csrf_token,
-        tou_accepted: state.email.tou_accepted
+        tou_accepted: state.email.tou_accepted,
       };
     const resp = yield call(requestSendCaptcha, data);
     yield put(putCsrfToken(resp));
@@ -32,8 +28,8 @@ export function requestSendCaptcha(data) {
   return window
     .fetch(signup_url, {
       ...postRequest,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
     .then(checkStatus)
-    .then(response => response.json());
+    .then((response) => response.json());
 }

@@ -5,22 +5,21 @@ export const GET_SIGNUP_CONFIG_SUCCESS = "GET_JSCONFIG_SIGNUP_CONFIG_SUCCESS";
 export const GET_SIGNUP_CONFIG_FAIL = "GET_SIGNUP_CONFIG_FAIL";
 export const NEW_CSRF_TOKEN = "NEW_CSRF_TOKEN";
 
-
 export function appLoaded() {
   return {
-    type: APP_LOADED
+    type: APP_LOADED,
   };
 }
 
 //export function appFetching() {
-  //return {
-    //type: APP_FETCHING
-  //};
+//return {
+//type: APP_FETCHING
+//};
 //}
 
 export function getSignupConfig() {
   return {
-    type: GET_SIGNUP_CONFIG
+    type: GET_SIGNUP_CONFIG,
   };
 }
 
@@ -29,8 +28,8 @@ export function getSignupConfigFail(err) {
     type: GET_SIGNUP_CONFIG_FAIL,
     error: true,
     payload: {
-      message: err
-    }
+      message: err,
+    },
   };
 }
 
@@ -38,7 +37,7 @@ export function newCsrfToken(token) {
   return {
     type: NEW_CSRF_TOKEN,
     payload: {
-      csrf_token: token
-    }
+      csrf_token: token,
+    },
   };
 }

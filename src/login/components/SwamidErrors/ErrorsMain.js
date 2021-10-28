@@ -6,7 +6,7 @@ import NotificationsContainer from "containers/Notifications";
 import { Router, Route } from "react-router-dom";
 import "../../styles/index.scss";
 import i18n from "../../translation/InjectIntl_HOC_factory";
-import Errors from "./Errors"
+import Errors from "./Errors";
 
 export const history = createBrowserHistory();
 
@@ -15,14 +15,10 @@ class ErrorsMain extends Component {
     return [
       <Router key="1" history={history}>
         <HeaderContainer {...this.props} />
-          <section id="panel">
-            <NotificationsContainer />
-            <Route
-              exact
-              path={`/errors`} 
-              component={Errors}
-            />
-          </section>
+        <section id="panel">
+          <NotificationsContainer />
+          <Route exact path={`/errors`} component={Errors} />
+        </section>
         <FooterContainer {...this.props} />
       </Router>,
     ];

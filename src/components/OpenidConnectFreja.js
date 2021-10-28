@@ -149,7 +149,7 @@ OpenidConnectFreja.propTypes = {
   handleShowModal: PropTypes.func,
   handleHideModal: PropTypes.func,
   showModal: PropTypes.bool,
-  nin: PropTypes.string
+  nin: PropTypes.string,
 };
 
 export default withUserAgent(OpenidConnectFreja);

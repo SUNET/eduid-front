@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
-export const changePassword = { 
+export const changePassword = {
   // help
   "chpass.help-text-general": (
     <FormattedMessage
@@ -217,7 +217,7 @@ export const resetPassword = {
     <FormattedMessage
       id="resetpw.heading-add-email"
       defaultMessage={`Enter your email address registered to your account`}
-    /> 
+    />
   ),
   "resetpw.send-link": (
     <FormattedMessage
@@ -259,38 +259,35 @@ export const resetPassword = {
     <FormattedMessage
       id="resetpw.reset-pw-initialized"
       defaultMessage={`Reset password link has been sent to your email.`}
-    /> 
+    />
   ),
   "resetpw.email-throttled": (
     <FormattedMessage
       id="resetpw.email-throttled"
       defaultMessage={`Reset password link already sent please try again later`}
-    /> 
+    />
   ),
   "resetpw.check-email-link": (values) => (
     <FormattedHTMLMessage
       id="resetpw.check-email-link"
       defaultMessage={`Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours.`}
       values={values}
-    /> 
+    />
   ),
   "resetpw.resend-link": (
     <FormattedHTMLMessage
       id="resetpw.resend-link"
       defaultMessage={`If you didn’t receive the email? Check your junk email, \n or`}
-    /> 
+    />
   ),
   "resetpw.resend-link-button": (
     <FormattedMessage
       id="resetpw.resend-link-button"
       defaultMessage={`resend link`}
-    /> 
+    />
   ),
   "resetpw.resend-timer-in": (
-    <FormattedMessage
-      id="resetpw.resend-timer-in"
-      defaultMessage={`in`}
-    /> 
+    <FormattedMessage id="resetpw.resend-timer-in" defaultMessage={`in`} />
   ),
   "resetpw.extra-security_heading": (
     <FormattedMessage
@@ -309,43 +306,43 @@ export const resetPassword = {
       id="resetpw.extra-phone_send_sms"
       defaultMessage={`Send sms to {phone}`}
       values={values}
-    /> 
+    />
   ),
   "resetpw.use_extra_security_key": (
     <FormattedMessage
       id="resetpw.use_extra_security_key"
       defaultMessage={`Use your security key`}
-    /> 
+    />
   ),
   "resetpw.without_extra_security_heading": (
     <FormattedHTMLMessage
       id="resetpw.without_extra_security_heading"
       defaultMessage={`<b>Continue without extra security option </b> `}
-    /> 
+    />
   ),
   "resetpw.without_extra_security": (
     <FormattedHTMLMessage
       id="resetpw.without_extra_security"
       defaultMessage={`Your account will require confirmation after the password has been reset.`}
-    /> 
+    />
   ),
   "resetpw.continue_reset_password": (
     <FormattedMessage
       id="resetpw.continue_reset_password"
       defaultMessage={`Continue reset password`}
-    /> 
+    />
   ),
   "resetpw.state-not-found": (
     <FormattedMessage
       id="resetpw.state-not-found"
       defaultMessage={`Could not continue the reset password process. Please try again `}
-    /> 
+    />
   ),
   "resetpw.expired-email-code": (
     <FormattedMessage
       id="resetpw.expired-email-code"
       defaultMessage={`Password reset link has expired. Please send link again.`}
-    /> 
+    />
   ),
   "resetpw.set-new-password-heading": (
     <FormattedMessage
@@ -370,10 +367,10 @@ export const resetPassword = {
 
   "mfa.reset-password-tapit": (
     <FormattedMessage
-     id="mfa.reset-password-tapit"
-     defaultMessage={`Use your security key to reset password. If it has a button, tap it.`}
-   />
-   ),
+      id="mfa.reset-password-tapit"
+      defaultMessage={`Use your security key to reset password. If it has a button, tap it.`}
+    />
+  ),
 
   "resetpw.sms-throttled": (
     <FormattedMessage
@@ -409,10 +406,7 @@ export const resetPassword = {
     />
   ),
   "resetpw.enter-code": (
-    <FormattedMessage
-      id="resetpw.enter-code"
-      defaultMessage={`enter code`}
-    />
+    <FormattedMessage id="resetpw.enter-code" defaultMessage={`enter code`} />
   ),
   "resetpw.accept-password": (
     <FormattedMessage
@@ -421,10 +415,7 @@ export const resetPassword = {
     />
   ),
   "resetpw.go-to-eduid": (
-    <FormattedMessage
-      id="resetpw.go-to-eduid"
-      defaultMessage={`Go to eduID`}
-    />
+    <FormattedMessage id="resetpw.go-to-eduid" defaultMessage={`Go to eduID`} />
   ),
   "resetpw.new-password": (
     <FormattedMessage
@@ -463,10 +454,7 @@ export const resetPassword = {
     />
   ),
   "resetpw.go-back": (
-    <FormattedMessage
-      id="resetpw.go-back"
-      defaultMessage={`go back`}
-    />
+    <FormattedMessage id="resetpw.go-back" defaultMessage={`go back`} />
   ),
   "resetpw.copy-to-clipboard": (
     <FormattedMessage

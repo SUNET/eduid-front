@@ -10,8 +10,8 @@ export function postOpenidSeleg(nin) {
   return {
     type: POST_OIDC_PROOFING_PROOFING,
     payload: {
-      nin: nin
-    }
+      nin: nin,
+    },
   };
 }
 
@@ -21,19 +21,19 @@ export function postOpenidSelegFail(message) {
     error: true,
     payload: {
       error: true,
-      message: message
-    }
+      message: message,
+    },
   };
 }
 
 export function showOpenidSelegModal() {
   return {
-    type: SHOW_OIDC_SELEG_MODAL
+    type: SHOW_OIDC_SELEG_MODAL,
   };
 }
 
 export function hideOpenidSelegModal() {
   return {
-    type: HIDE_OIDC_SELEG_MODAL
+    type: HIDE_OIDC_SELEG_MODAL,
   };
 }

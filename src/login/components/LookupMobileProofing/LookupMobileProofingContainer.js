@@ -4,7 +4,7 @@ import { eduidRMAllNotify } from "../../../actions/Notifications";
 import {
   showModal,
   closeModal,
-  postLookupMobile
+  postLookupMobile,
 } from "../../../actions/LookupMobileProofing";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
@@ -21,18 +21,18 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleShowModal: function() {
+    handleShowModal: function () {
       dispatch(eduidRMAllNotify());
       dispatch(showModal());
     },
-    handleCloseModal: function() {
+    handleCloseModal: function () {
       dispatch(eduidRMAllNotify());
       dispatch(closeModal());
     },
-    handleLookupMobile: function() {
+    handleLookupMobile: function () {
       dispatch(closeModal());
       dispatch(postLookupMobile());
-    }
+    },
   };
 };
 

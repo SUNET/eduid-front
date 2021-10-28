@@ -4,14 +4,14 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   let primaryPhoneStatus = "";
-  const primaryPhone = state.phones.phones.filter(phone => phone.primary);
+  const primaryPhone = state.phones.phones.filter((phone) => phone.primary);
   primaryPhone.length === 1
     ? (primaryPhoneStatus = true)
     : (primaryPhoneStatus = false);
   return {
     phones: state.phones.phones,
     primaryPhone,
-    primaryPhoneStatus
+    primaryPhoneStatus,
   };
 };
 

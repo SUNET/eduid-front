@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 
-// this function checks for cookie and sets the public path for the app before the app loads 
+// this function checks for cookie and sets the public path for the app before the app loads
 console.log("Checking if its beta...");
 let cookie = Cookies.get("bundle-version");
 if (cookie) {

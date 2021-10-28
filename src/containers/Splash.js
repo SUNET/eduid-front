@@ -4,7 +4,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {
-    is_app_loaded: state.config.is_app_loaded
+    is_app_loaded: state.config.is_app_loaded,
   };
 };
 

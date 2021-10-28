@@ -6,7 +6,7 @@ import EmailInUse from "components/EmailInUse";
 const mapStateToProps = (state) => {
   return {
     email: state.email.email,
-    reset_password_link: state.config.reset_password_link
+    reset_password_link: state.config.reset_password_link,
   };
 };
 

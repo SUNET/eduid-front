@@ -19,7 +19,7 @@ import {
   registerWebauthn,
   webauthnRegistration,
   removeWebauthnToken,
-  removeToken
+  removeToken,
 } from "sagas/Security";
 
 import { addLocaleData } from "react-intl";
@@ -30,7 +30,7 @@ addLocaleData("react-intl/locale-data/en");
 describe("Security Actions", () => {
   it("Should get the credentials ", () => {
     const expectedAction = {
-      type: actions.GET_CREDENTIALS
+      type: actions.GET_CREDENTIALS,
     };
     expect(actions.getCredentials()).toEqual(expectedAction);
   });
@@ -41,8 +41,8 @@ describe("Security Actions", () => {
       type: actions.GET_CREDENTIALS_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.getCredentialsFail(err)).toEqual(expectedAction);
   });
@@ -63,7 +63,7 @@ describe("Security Actions", () => {
 
   it("Should really start password change ", () => {
     const expectedAction = {
-      type: actions.GET_CHANGE_PASSWORD
+      type: actions.GET_CHANGE_PASSWORD,
     };
     expect(actions.confirmPasswordChange()).toEqual(expectedAction);
   });
@@ -74,8 +74,8 @@ describe("Security Actions", () => {
       type: actions.GET_CHANGE_PASSWORD_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.getPasswordChangeFail(err)).toEqual(expectedAction);
   });
@@ -122,14 +122,14 @@ describe("Security Actions", () => {
 
   it("Should start asking WEBAUTHN description", () => {
     const expectedAction = {
-      type: actions.START_ASK_WEBAUTHN_DESCRIPTION
+      type: actions.START_ASK_WEBAUTHN_DESCRIPTION,
     };
     expect(actions.startAskWebauthnDescription()).toEqual(expectedAction);
   });
 
   it("Should stop asking WEBAUTHN description", () => {
     const expectedAction = {
-      type: actions.STOP_ASK_WEBAUTHN_DESCRIPTION
+      type: actions.STOP_ASK_WEBAUTHN_DESCRIPTION,
     };
     expect(actions.stopAskWebauthnDescription()).toEqual(expectedAction);
   });
@@ -138,8 +138,8 @@ describe("Security Actions", () => {
     const expectedAction = {
       type: actions.START_WEBAUTHN_REGISTRATION,
       payload: {
-        description: "description"
-      }
+        description: "description",
+      },
     };
     expect(actions.startWebauthnRegistration("description")).toEqual(
       expectedAction
@@ -152,8 +152,8 @@ describe("Security Actions", () => {
       type: actions.POST_WEBAUTHN_BEGIN_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.beginWebauthnFail(err)).toEqual(expectedAction);
   });
@@ -164,8 +164,8 @@ describe("Security Actions", () => {
       type: actions.POST_WEBAUTHN_REGISTER_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.registerWebauthnFail(err)).toEqual(expectedAction);
   });
@@ -185,13 +185,13 @@ describe("Reducers", () => {
     webauthn_failed: false,
     webauthn_attestation: {},
     webauthn_token_remove: "",
-    webauthn_token_verify: ""
+    webauthn_token_verify: "",
   };
 
   it("Receives a GET_CREDENTIALS action", () => {
     expect(
       securityReducer(mockState, {
-        type: actions.GET_CREDENTIALS
+        type: actions.GET_CREDENTIALS,
       })
     ).toEqual({
       message: "",
@@ -206,7 +206,7 @@ describe("Reducers", () => {
       webauthn_failed: false,
       webauthn_attestation: {},
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 
@@ -215,15 +215,15 @@ describe("Reducers", () => {
       {
         credential_type: "password",
         created_ts: "",
-        success_ts: ""
-      }
+        success_ts: "",
+      },
     ];
     expect(
       securityReducer(mockState, {
         type: actions.GET_CREDENTIALS_SUCCESS,
         payload: {
-          credentials: credentials
-        }
+          credentials: credentials,
+        },
       })
     ).toEqual({
       message: "",
@@ -238,20 +238,20 @@ describe("Reducers", () => {
       webauthn_failed: false,
       webauthn_attestation: {},
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 
   it("Receives a GET_CREDENTIALS_FAIL action", () => {
     const err = "Error";
-      // error = new Error(err);
+    // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.GET_CREDENTIALS_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       })
     ).toEqual({
       message: err,
@@ -266,7 +266,7 @@ describe("Reducers", () => {
       webauthn_failed: false,
       webauthn_attestation: {},
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 
@@ -509,7 +509,7 @@ describe("Reducers", () => {
   it("Receives a START_ASK_WEBAUTHN_DESCRIPTION action", () => {
     expect(
       securityReducer(mockState, {
-        type: actions.START_ASK_WEBAUTHN_DESCRIPTION
+        type: actions.START_ASK_WEBAUTHN_DESCRIPTION,
       })
     ).toEqual({
       message: "",
@@ -524,14 +524,14 @@ describe("Reducers", () => {
       webauthn_failed: false,
       webauthn_attestation: {},
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 
   it("Receives a STOP_ASK_WEBAUTHN_DESCRIPTION action", () => {
     expect(
       securityReducer(mockState, {
-        type: actions.STOP_ASK_WEBAUTHN_DESCRIPTION
+        type: actions.STOP_ASK_WEBAUTHN_DESCRIPTION,
       })
     ).toEqual({
       message: "",
@@ -546,7 +546,7 @@ describe("Reducers", () => {
       webauthn_failed: false,
       webauthn_attestation: {},
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 
@@ -555,8 +555,8 @@ describe("Reducers", () => {
       securityReducer(mockState, {
         type: actions.START_WEBAUTHN_REGISTRATION,
         payload: {
-          description: "description"
-        }
+          description: "description",
+        },
       })
     ).toEqual({
       message: "",
@@ -571,20 +571,20 @@ describe("Reducers", () => {
       webauthn_failed: false,
       webauthn_attestation: {},
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 
   it("Receives a POST_WEBAUTHN_BEGIN_FAIL action", () => {
     const err = "Error";
-      // error = new Error(err);
+    // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.POST_WEBAUTHN_BEGIN_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       })
     ).toEqual({
       message: err,
@@ -599,7 +599,7 @@ describe("Reducers", () => {
       webauthn_failed: true,
       webauthn_attestation: {},
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 
@@ -612,8 +612,8 @@ describe("Reducers", () => {
       securityReducer(mockState, {
         type: actions.POST_WEBAUTHN_BEGIN_SUCCESS,
         payload: {
-          attestation: "dummy-attestation"
-        }
+          attestation: "dummy-attestation",
+        },
       })
     ).toEqual({
       message: "",
@@ -628,20 +628,20 @@ describe("Reducers", () => {
       webauthn_failed: false,
       webauthn_attestation: "dummy-attestation",
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 
   it("Receives a POST_WEBAUTHN_REGISTER_FAIL action", () => {
     const err = "Error";
-      // error = new Error(err);
+    // error = new Error(err);
     expect(
       securityReducer(mockState, {
         type: actions.POST_WEBAUTHN_REGISTER_FAIL,
         error: true,
         payload: {
-          message: err
-        }
+          message: err,
+        },
       })
     ).toEqual({
       message: err,
@@ -656,16 +656,16 @@ describe("Reducers", () => {
       webauthn_failed: true,
       webauthn_attestation: {},
       webauthn_token_remove: "",
-      webauthn_token_verify: ""
+      webauthn_token_verify: "",
     });
   });
 });
 
-const fakeStore = state => ({
+const fakeStore = (state) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...state })
+  getState: () => ({ ...state }),
 });
 
 const mockState = {
@@ -676,24 +676,24 @@ const mockState = {
       rawId: "dummy-raw-id",
       response: {
         attestationObject: "dummy-attestation-object",
-        clientDataJSON: "dummy-client-data"
+        clientDataJSON: "dummy-client-data",
       },
-      type: "public-key"
+      type: "public-key",
     },
     webauthn_token_remove: "dummy-key",
     webauthn_token_description: "dummy-description",
-    webauthn_authenticator: "cross-platform"
+    webauthn_authenticator: "cross-platform",
   },
   config: {
     csrf_token: "csrf-token",
     dashboard_url: "/dummy-dash-url/",
     token_service_url: "/dummy-tok-url/",
-    security_url: "/dummy-sec-url"
+    security_url: "/dummy-sec-url",
   },
   intl: {
     locale: "en",
-    messages: messages
-  }
+    messages: messages,
+  },
 };
 
 describe("Async component", () => {
@@ -704,7 +704,7 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(actions.getCredentials()));
 
     next = generator.next();
-    const config = state => state.config;
+    const config = (state) => state.config;
     const credentials = generator.next(config);
     expect(credentials.value).toEqual(call(fetchCredentials, config));
 
@@ -716,10 +716,10 @@ describe("Async component", () => {
           {
             credential_type: "password",
             created_ts: "",
-            success_ts: ""
-          }
-        ]
-      }
+            success_ts: "",
+          },
+        ],
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -759,7 +759,7 @@ describe("Async component", () => {
     expect(next.value.SELECT.args).toEqual([]);
 
     const data = {
-      csrf_token: "csrf-token"
+      csrf_token: "csrf-token",
     };
 
     next = generator.next(mockState);
@@ -768,8 +768,8 @@ describe("Async component", () => {
     const action = {
       type: actions.POST_DELETE_ACCOUNT_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -784,7 +784,7 @@ describe("Async component", () => {
     let next = generator.next(mockState);
     const data = {
       csrf_token: "csrf-token",
-      authenticator: "cross-platform"
+      authenticator: "cross-platform",
     };
     expect(next.value).toEqual(
       call(beginWebauthnRegistration, mockState.config, data)
@@ -793,8 +793,8 @@ describe("Async component", () => {
       type: actions.POST_WEBAUTHN_BEGIN_SUCCESS,
       payload: {
         csrf_token: "csrf-token",
-        webauthn_attestation: "dummy"
-      }
+        webauthn_attestation: "dummy",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -824,7 +824,7 @@ describe("Async component", () => {
       ),
       credentialId: attestation.id,
       description: mockState.security.webauthn_token_description,
-      csrf_token: mockState.config.csrf_token
+      csrf_token: mockState.config.csrf_token,
     };
     expect(next.value).toEqual(
       call(webauthnRegistration, mockState.config, data)
@@ -833,8 +833,8 @@ describe("Async component", () => {
       type: actions.POST_WEBAUTHN_REGISTER_SUCCESS,
       payload: {
         csrf_token: mockState.config.csrf_token,
-        credentials: ["dummy-credentials"]
-      }
+        credentials: ["dummy-credentials"],
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -866,7 +866,7 @@ describe("Async component", () => {
       ),
       credentialId: attestation.id,
       description: mockState.security.webauthn_token_description,
-      csrf_token: mockState.config.csrf_token
+      csrf_token: mockState.config.csrf_token,
     };
     expect(next.value).toEqual(
       call(webauthnRegistration, mockState.config, data)
@@ -876,8 +876,8 @@ describe("Async component", () => {
       error: true,
       payload: {
         csrf_token: mockState.config.csrf_token,
-        message: "error"
-      }
+        message: "error",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -895,7 +895,7 @@ describe("Async component", () => {
 
     const data = {
       csrf_token: "csrf-token",
-      credential_key: "dummy-key"
+      credential_key: "dummy-key",
     };
 
     next = generator.next(mockState);
@@ -904,8 +904,8 @@ describe("Async component", () => {
     const action = {
       type: actions.POST_WEBAUTHN_REMOVE_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
@@ -932,7 +932,7 @@ describe("Security Container", () => {
   let mockProps, language, getWrapper, getState, dispatch, store;
 
   beforeEach(() => {
-    getState = function(deleting, askingDescription) {
+    getState = function (deleting, askingDescription) {
       return {
         security: {
           message: "",
@@ -942,15 +942,15 @@ describe("Security Container", () => {
               credential_type: "security.webauthn_credential_type",
               description: "",
               key: "dummy-key",
-              success_ts: "2018-03-28T09:39:11.001371"
+              success_ts: "2018-03-28T09:39:11.001371",
             },
             {
               created_ts: "2018-03-28T09:39:11.001371",
               credential_type: "security.webauthn_credential_type",
               description: "",
               key: "dummy-key-2",
-              success_ts: "2018-03-28T09:39:11.001371"
-            }
+              success_ts: "2018-03-28T09:39:11.001371",
+            },
           ],
           code: "",
           confirming_change: false,
@@ -961,22 +961,22 @@ describe("Security Container", () => {
           webauthn_token_description: "",
           webauthn_failed: false,
           webauthn_attestation: {},
-          webauthn_token_remove: "dummy-token"
+          webauthn_token_remove: "dummy-token",
         },
         config: {
           csrf_token: "",
           security_url: "/dummy-sec-url",
           dashboard_url: "/dummy-dash-url/",
-          token_service_url: "/dummy-tok-url/"
+          token_service_url: "/dummy-tok-url/",
         },
         intl: {
           locale: "en",
-          messages: messages
+          messages: messages,
         },
         notifications: {
           messages: [],
-          errors: []
-        }
+          errors: [],
+        },
       };
     };
 
@@ -984,13 +984,13 @@ describe("Security Container", () => {
       credentials: [],
       language: "en",
       confirming_deletion: false,
-      webauthn_asking_description: false
+      webauthn_asking_description: false,
     };
 
-    getWrapper = function({
+    getWrapper = function ({
       deleting = false,
       askingDesc = false,
-      props = mockProps
+      props = mockProps,
     } = {}) {
       store = fakeStore(getState(deleting, askingDesc));
       dispatch = store.dispatch;
@@ -1002,9 +1002,7 @@ describe("Security Container", () => {
       );
       return wrapper;
     };
-    language = getWrapper()
-      .find(SecurityContainer)
-      .props().language;
+    language = getWrapper().find(SecurityContainer).props().language;
   });
 
   afterEach(() => {
@@ -1078,18 +1076,18 @@ describe("Security Container", () => {
           credential_type: "security.webauthn_credential_type",
           description: "",
           key: "dummy-key",
-          success_ts: "2018-03-28T09:39:11.001371"
+          success_ts: "2018-03-28T09:39:11.001371",
         },
         {
           created_ts: "2018-03-28T09:39:11.001371",
           credential_type: "security.webauthn_credential_type",
           description: "",
           key: "dummy-key-2",
-          success_ts: "2018-03-28T09:39:11.001371"
-        }
+          success_ts: "2018-03-28T09:39:11.001371",
+        },
       ],
       language: "en",
-      confirming_deletion: false
+      confirming_deletion: false,
     };
 
     expect(dispatch.mock.calls.length).toEqual(0);

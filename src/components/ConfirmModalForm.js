@@ -15,12 +15,12 @@ const validate = (values, props) => {
     return errors;
   }
 
-  if (!props.validationPattern.test(value.trim())){
+  if (!props.validationPattern.test(value.trim())) {
     errors[inputName] = props.validationError;
     return errors;
   }
 };
-class ConfirmModalForm extends Component { 
+class ConfirmModalForm extends Component {
   render() {
     return (
       <div id="modal-form">
@@ -45,11 +45,11 @@ class ConfirmModalForm extends Component {
 
 ConfirmModalForm = reduxForm({
   form: "modal-form",
-  validate: validate
+  validate: validate,
 })(ConfirmModalForm);
 
 ConfirmModalForm = connect(() => ({
-  initialValues: {}
+  initialValues: {},
 }))(ConfirmModalForm);
 
 export default i18n(ConfirmModalForm);

@@ -17,38 +17,38 @@ const baseState = {
   lookup_mobile: {},
   config: {
     lookup_mobile_proofing_url: "http://localhost/lookup-mobile",
-    csrf_token: "dummy-token"
+    csrf_token: "dummy-token",
   },
   intl: {
     locale: "en",
-    messages: messages
+    messages: messages,
   },
   phones: {
-    phones: []
+    phones: [],
   },
   nins: {
-    nins: []
-  }
+    nins: [],
+  },
 };
 
-const fakeStore = fakeState => ({
+const fakeStore = (fakeState) => ({
   default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
-  getState: () => ({ ...fakeState })
+  getState: () => ({ ...fakeState }),
 });
 
 function getFakeState(newState) {
   if (newState === undefined) {
-    newState = {}
+    newState = {};
   }
-  return Object.assign(baseState, newState)
+  return Object.assign(baseState, newState);
 }
 
 describe("lookup mobile proofing Actions", () => {
   it("should create an action to trigger checking a mobile phone", () => {
     const expectedAction = {
-      type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING
+      type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING,
     };
     expect(actions.postLookupMobile()).toEqual(expectedAction);
   });
@@ -59,8 +59,8 @@ describe("lookup mobile proofing Actions", () => {
       type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
       error: true,
       payload: {
-        message: "Bad error"
-      }
+        message: "Bad error",
+      },
     };
     expect(actions.postLookupMobileFail(err)).toEqual(expectedAction);
   });
@@ -73,20 +73,20 @@ describe("Reducers", () => {
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING action", () => {
     expect(
       lookupMobileProofingReducer(lookupMobileState, {
-        type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING
+        type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING,
       })
     ).toEqual({
-      ...lookupMobileState
+      ...lookupMobileState,
     });
   });
 
   it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS action", () => {
     expect(
       lookupMobileProofingReducer(lookupMobileState, {
-        type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS
+        type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
       })
     ).toEqual({
-      ...lookupMobileState
+      ...lookupMobileState,
     });
   });
 
@@ -96,11 +96,11 @@ describe("Reducers", () => {
         type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
         error: true,
         payload: {
-          message: "Bad error"
-        }
+          message: "Bad error",
+        },
       })
     ).toEqual({
-      ...lookupMobileState
+      ...lookupMobileState,
     });
   });
 
@@ -108,10 +108,10 @@ describe("Reducers", () => {
     expect(
       lookupMobileProofingReducer(lookupMobileState, {
         type: "DUMMY_ACTION",
-        payload: "dummy payload"
+        payload: "dummy payload",
       })
     ).toEqual({
-      ...lookupMobileState
+      ...lookupMobileState,
     });
   });
 });
@@ -132,7 +132,7 @@ describe("LookupMobile Container", () => {
       buttontext = wrapper.find("button").exists();
       expect(buttontext.exists()).toEqual(true);
       expect(buttontext.text()).toContain("By phone");
-    })
+    });
   });
   afterEach(() => {
     fetchMock.restore();
@@ -143,9 +143,9 @@ describe("LookupMobileProofing component,", () => {
   const fakeState = getFakeState({
     nins: {
       valid_nin: false,
-      nins: []
-    }
-  })
+      nins: [],
+    },
+  });
 
   function setupComponent() {
     const wrapper = mount(
@@ -156,7 +156,7 @@ describe("LookupMobileProofing component,", () => {
       </Provider>
     );
     return {
-      wrapper
+      wrapper,
     };
   }
 
@@ -167,8 +167,8 @@ describe("LookupMobileProofing component,", () => {
   });
 
   it("Renders button text, add ID number to verify phone", () => {
-    const state = {...fakeState};
-    state.nins.nins[0] = ""
+    const state = { ...fakeState };
+    state.nins.nins[0] = "";
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);
@@ -179,9 +179,9 @@ describe("LookupMobileProofing component,", () => {
   });
 
   it("Renders button text, the phone number is added", () => {
-    const state = {...fakeState};
-    state.phones.phones = [{number:"+46700011555"}],
-    state.nins.nins[0] = "19881212"
+    const state = { ...fakeState };
+    (state.phones.phones = [{ number: "+46700011555" }]),
+      (state.nins.nins[0] = "19881212");
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");
     const confirmPhone = explanation.find("span").at(0);
@@ -193,9 +193,11 @@ describe("LookupMobileProofing component,", () => {
   });
 
   it("Renders button text, if the phone number is non swedish", () => {
-    const state = {...fakeState};
-    state.phones.phones = [{number:"+36700011555", primary: true, verified: true}],
-    state.nins.nins[0] = "19881212"
+    const state = { ...fakeState };
+    (state.phones.phones = [
+      { number: "+36700011555", primary: true, verified: true },
+    ]),
+      (state.nins.nins[0] = "19881212");
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);
@@ -206,9 +208,11 @@ describe("LookupMobileProofing component,", () => {
   });
 
   it("Renders button text, when verified swedish phone", () => {
-    const state = {...fakeState};
-    state.phones.phones = [{number:"+46700011555", primary: true, verified: true}],
-    state.nins.nins[0] = "19881212"
+    const state = { ...fakeState };
+    (state.phones.phones = [
+      { number: "+46700011555", primary: true, verified: true },
+    ]),
+      (state.nins.nins[0] = "19881212");
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);

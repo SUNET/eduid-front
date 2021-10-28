@@ -25,7 +25,7 @@ class Main extends Component {
           // className="card-body"
           id="eduid-tou"
           dangerouslySetInnerHTML={{
-            __html: this.props.tous[this.props.lang]
+            __html: this.props.tous[this.props.lang],
           }}
         />
         <div id="tou-buttons">
@@ -52,27 +52,27 @@ class Main extends Component {
 Main.propTypes = {
   tous: PropTypes.object,
   lang: PropTypes.string,
-  acceptTOU: PropTypes.func
+  acceptTOU: PropTypes.func,
 };
 
 const mapStateToProps = (state, props) => {
   return {
     tous: state.plugin.tous,
-    lang: state.intl.locale
+    lang: state.intl.locale,
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    acceptTOU: function(e) {
+    acceptTOU: function (e) {
       e.preventDefault();
       //dispatch(appFetching());
       dispatch(postAction());
     },
-    rejectTOU: function(e) {
+    rejectTOU: function (e) {
       e.preventDefault();
       dispatch(eduidNotify("tou.must-accept", "errors"));
-    }
+    },
   };
 };
 

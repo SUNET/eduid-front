@@ -8,13 +8,13 @@ class EmailDisplay extends Component {
       displayText = [
         <p key="0" className="verified data">
           {this.props.email}
-        </p>
+        </p>,
       ];
     } else {
       displayText = [
         <p key="0" className="no-data data">
           {this.props.translate("profile.email_display_no_data")}
-        </p>
+        </p>,
       ];
     }
     return (

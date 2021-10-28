@@ -22,7 +22,7 @@ describe("ResendCode Component", () => {
 
     it("Component has text", () => {
       const fullWrapper = setupComponent({
-        component: <EmailInUseContainer />
+        component: <EmailInUseContainer />,
       });
       const p = fullWrapper.find("p");
       expect(p.exists()).toEqual(true);
@@ -30,7 +30,7 @@ describe("ResendCode Component", () => {
     it("Component renders user email (text inlcudes '@')", () => {
       const fullWrapper = setupComponent({
         component: <ResendCodeContainer />,
-        overrides: { email: { email: "dummy@example.com" } }
+        overrides: { email: { email: "dummy@example.com" } },
       });
 
       const userEmail = fullWrapper.find(".registered-email");
@@ -40,7 +40,7 @@ describe("ResendCode Component", () => {
 
     it("Component renders the SEND A NEW LINK button", () => {
       const fullWrapper = setupComponent({
-        component: <ResendCodeContainer />
+        component: <ResendCodeContainer />,
       });
       const button = fullWrapper.find("EduIDButton");
       expect(button.exists()).toEqual(true);
@@ -53,7 +53,7 @@ describe("ResendCode Component", () => {
 describe("Resend code Actions", () => {
   it("Should trigger resending a verification code ", () => {
     const expectedAction = {
-      type: actions.POST_SIGNUP_RESEND_VERIFICATION
+      type: actions.POST_SIGNUP_RESEND_VERIFICATION,
     };
     expect(actions.postResendCode()).toEqual(expectedAction);
   });
@@ -64,8 +64,8 @@ describe("Resend code Actions", () => {
       type: actions.POST_SIGNUP_RESEND_VERIFICATION_FAIL,
       error: true,
       payload: {
-        message: err
-      }
+        message: err,
+      },
     };
     expect(actions.postResendCodeFail(err)).toEqual(expectedAction);
   });
@@ -79,16 +79,13 @@ describe("Test Resend code Container", () => {
     dispatch = store.dispatch;
     wrapper = setupComponent({
       component: <ResendCodeContainer />,
-      store: store
+      store: store,
     });
   });
 
   it("Clicks resend code button", () => {
     const numCalls = dispatch.mock.calls.length;
-    wrapper
-      .find("EduIDButton#resend-button")
-      .props()
-      .onClick();
+    wrapper.find("EduIDButton#resend-button").props().onClick();
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
 });
@@ -97,18 +94,18 @@ describe("Resend code async actions", () => {
   it("Tests the request config saga", () => {
     const state = getState({
       email: {
-        email: "dummy@example.com"
+        email: "dummy@example.com",
       },
       config: {
-        csrf_token: "dummy-token"
-      }
+        csrf_token: "dummy-token",
+      },
     });
     const generator = resendCode();
     let next = generator.next();
 
     const data = {
       email: "dummy@example.com",
-      csrf_token: "dummy-token"
+      csrf_token: "dummy-token",
     };
     const resp = generator.next(state);
     expect(resp.value).toEqual(call(requestResendCode, data));
@@ -116,8 +113,8 @@ describe("Resend code async actions", () => {
     const action = {
       type: actions.POST_SIGNUP_RESEND_VERIFICATION_SUCCESS,
       payload: {
-        csrf_token: "csrf-token"
-      }
+        csrf_token: "csrf-token",
+      },
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");

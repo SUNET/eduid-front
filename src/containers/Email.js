@@ -52,6 +52,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const EmailContainer = connect(mapStateToProps, mapDispatchToProps)(RegisterEmail);
+const EmailContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegisterEmail);
 
 export default i18n(EmailContainer);
