@@ -15,7 +15,6 @@ module.exports = function (api) {
         enforceDescriptions: false,
       },
     ],
-    "transform-object-rest-spread",
     "@babel/plugin-transform-flow-strip-types",
     "transform-class-properties",
   ];
