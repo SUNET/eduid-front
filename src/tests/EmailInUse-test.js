@@ -12,7 +12,6 @@ describe("EmailInUse Component", () => {
     },
   };
 
-  it("Renders the email in use component", () => {
     it("The component does not render 'false' or 'null'", () => {
       const wrapper = shallow(
         <IntlProvider locale="en">
@@ -61,4 +60,3 @@ describe("EmailInUse Component", () => {
       );
     });
   });
-});
