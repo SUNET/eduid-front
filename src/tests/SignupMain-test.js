@@ -22,6 +22,7 @@ import { addLocaleData } from "react-intl";
 
 import en from "react-intl/locale-data/en";
 import sv from "react-intl/locale-data/sv";
+import { SIGNUP_CONFIG_URL, SIGNUP_SERVICE_URL } from "../globals";
 
 addLocaleData([...en, ...sv]);
 
@@ -37,6 +38,7 @@ const fakeState = {
     //is_fetching: false,
     debug: true,
     available_languages: [],
+    reset_password_link: "http://dummy.example.com/reset-password",
   },
   captcha: {
     captcha_verification: "",

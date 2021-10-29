@@ -3,6 +3,7 @@ import { checkStatus, postRequest, putCsrfToken } from "sagas/common";
 
 import * as actions from "actions/ResendCode";
 import { history } from "components/SignupMain";
+import { SIGNUP_SERVICE_URL } from "../globals";
 
 export function* resendCode() {
   try {

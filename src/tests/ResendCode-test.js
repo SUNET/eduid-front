@@ -10,7 +10,6 @@ import { IntlProvider } from "react-intl";
 import EmailInUseContainer from "containers/EmailInUse";
 
 describe("ResendCode Component", () => {
-  it("Renders the email in use component", () => {
     it("The component does not render 'false' or 'null'", () => {
       const wrapper = shallow(
         <IntlProvider locale="en">
@@ -47,7 +46,6 @@ describe("ResendCode Component", () => {
       expect(button.length).toEqual(1);
       // expect(button.text()).toContain("reset your password");
     });
-  });
 });
 
 describe("Resend code Actions", () => {

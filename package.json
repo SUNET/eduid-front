@@ -5,9 +5,7 @@
   "browser": "src/entry-points/index.js",
   "scripts": {
     "start": "rm -rf node_modules/.cache && webpack --watch --progress",
-    "test": "karma start",
-    "test-headless": "karma start headless.karma.conf.js",
-    "debug": "karma start --single-run=false --debug --browser Chrome",
+    "test": "jest",
     "build-development": "rm -rf node_modules/.cache && node ./buildPlugins.js && webpack --progress",
     "build-staging": "webpack --config webpack.staging.config.js --mode development",
     "build-production": "webpack --config webpack.prod.config.js --mode production",
@@ -46,20 +44,20 @@
     "url-search-params": "^0.10.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.5",
+    "@babel/core": "^7.4.0",
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.1.2",
-    "@sentry/react": "^5.30.0",
     "autoprefixer": "^8.3.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.3.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-react-intl": "^3.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^5.0.2",
     "css-loader": "^0.28.11",
@@ -72,31 +70,22 @@
     "eslint-plugin-react": "^7.21.5",
     "expect": "^24.5.0",
     "exports-loader": "^0.7.0",
-    "fetch-mock": "^6.4.4",
     "file-loader": "^1.1.11",
     "flow-bin": "^0.71.0",
     "handlebars": "^4.7.6",
-    "html-webpack-plugin": "^4.5.2",
     "history": "^4.9.0",
+    "html-webpack-plugin": "^4.5.2",
     "install": "^0.13.0",
     "istanbul": "^0.4.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
     "jest-mock": "^22.4.3",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.0",
     "json-loader": "^0.5.7",
-    "karma": "^6.3.4",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-cli": "^1.0.1",
-    "karma-coverage": "^2.0.3",
-    "karma-coverage-istanbul-reporter": "^1.4.2",
-    "karma-firefox-launcher": "^1.1.0",
-    "karma-mocha": "^2.0.1",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^4.0.2",
     "lodash": "^4.17.20",
+    "mini-create-react-context": "^0.4.1",
     "mocha": "^9.1.2",
     "node": "^10.16.0",
     "node-sass": "^5.0.0",
@@ -113,10 +102,10 @@
     "react-intl-redux": "^2.0.2",
     "react-intl-translations-manager": "^5.0.3",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-router-redux": "^5.0.0-alpha.8",
+    "react-router-dom": "^5.3.0",
+    "react-router-redux": "^4.0.8",
     "react-spinkit": "^3.0.0",
-    "react-test-renderer": "^16.6.1",
+    "react-test-renderer": "^16.14.0",
     "redux": "^4.0.1",
     "redux-form": "^8.2.0",
     "redux-logger": "^3.0.6",
@@ -137,12 +126,43 @@
     "verbose": true,
     "moduleFileExtensions": [
       "js",
-      "jsx"
+      "json",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
     ],
-    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mocks__/fileMock.js",
+      "\\.(css|less|sass|scss)$": "<rootDir>/src/tests/__mocks__/styleMock.js"
+    },
+    "testEnvironment": "jsdom",
     "testMatch": [
       "/__tests__/**/*-test.[jt]s?(x)",
       "**/?(*)+(test).[jt]s?(x)"
+    ],
+    "roots": [
+      "<rootDir>"
+    ],
+    "modulePaths": [
+      "<rootDir>/src/"
+    ],
+    "moduleDirectories": [
+      "<rootDir>/node_modules"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!spin.js).+\\.js$"
+    ],
+    "setupFiles": [
+      "<rootDir>/src/setupTests.js"
     ]
-  }
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ]
 }

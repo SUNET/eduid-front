@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import * as Sentry from "@sentry/react";
+//import * as Sentry from "@sentry/react";
 import { connect } from "react-redux";
 
 // has to be a class component
@@ -20,21 +20,21 @@ class ErrorBoundary extends Component {
   }
 
   // HACK: update props until state.config.sentry_dsn is updated
-  componentDidUpdate(prevProps) {
-    if (this.props.sentry_dsn !== prevProps.sentry_dsn) {
-      if (this.props.sentry_dsn !== undefined) {
-        // initialise sentry
-        Sentry.init({
-          dsn: this.props.sentry_dsn,
-        });
-        // send error info to sentry
-        Sentry.withScope((scope) => {
-          scope.setExtras(this.state.errorInfo);
-          Sentry.captureException(this.state.error);
-        });
-      }
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.sentry_dsn !== prevProps.sentry_dsn) {
+  //     if (this.props.sentry_dsn !== undefined) {
+  //       // initialise sentry
+  //       Sentry.init({
+  //         dsn: this.props.sentry_dsn,
+  //       });
+  //       // send error info to sentry
+  //       Sentry.withScope((scope) => {
+  //         scope.setExtras(this.state.errorInfo);
+  //         Sentry.captureException(this.state.error);
+  //       });
+  //     }
+  //   }
+  // }
 
   handleReset = () => {
     this.setState({ error: null, errorInfo: null, hasError: false });

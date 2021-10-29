@@ -5,6 +5,7 @@ import { makeCapthaButtonAvailable } from "actions/Captcha";
 import { eduidRMAllNotify } from "actions/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { history } from "components/SignupMain";
+import { SIGNUP_BASE_PATH } from "../globals";
 
 const mapStateToProps = (state) => {
   const lang = state.intl.locale;
@@ -29,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
     handleAccept: (e) => {
       e.preventDefault();
       dispatch(actions.acceptTOU());
-      history.push(BASE_PATH + "/trycaptcha");
+      history.push(SIGNUP_BASE_PATH + "/trycaptcha");
       // remove remained notification message
       dispatch(eduidRMAllNotify());
       // to make captch button active

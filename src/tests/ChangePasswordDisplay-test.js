@@ -3,7 +3,6 @@ import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { put } from "redux-saga/effects";
 import { shallow, mount } from "enzyme";
-import fetchMock from "fetch-mock";
 import { addLocaleData, IntlProvider } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
@@ -364,10 +363,6 @@ describe("Security Container", () => {
       return wrapper;
     };
     language = getWrapper().find(ChangePasswordDisplay).props().language;
-  });
-
-  afterEach(() => {
-    fetchMock.restore();
   });
 
   it("Renders test", () => {

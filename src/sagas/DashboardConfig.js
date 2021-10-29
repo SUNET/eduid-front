@@ -1,10 +1,11 @@
 import { put, call } from "redux-saga/effects";
 import { checkStatus, getRequest, failRequest } from "sagas/common";
 import { getConfigFail } from "actions/DashboardConfig";
+import { DASHBOARD_CONFIG_URL } from "../globals";
 
 export function* requestConfig() {
   const input = document.getElementById("jsconfig_url"),
-    jsconfig_url = input ? input.value : EDUID_CONFIG_URL;
+    jsconfig_url = input ? input.value : DASHBOARD_CONFIG_URL;
   try {
     console.log("Getting config from " + jsconfig_url);
     const config = yield call(fetchConfig, jsconfig_url);

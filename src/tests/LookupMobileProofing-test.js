@@ -6,7 +6,6 @@ import * as actions from "actions/LookupMobileProofing";
 import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
 import { Provider } from "react-intl-redux";
 import { addLocaleData } from "react-intl";
-import fetchMock from "fetch-mock";
 import { MemoryRouter } from "react-router-dom";
 import LookupMobileProofingContainer from "../login/components/LookupMobileProofing/LookupMobileProofingContainer";
 
@@ -133,9 +132,6 @@ describe("LookupMobile Container", () => {
       expect(buttontext.exists()).toEqual(true);
       expect(buttontext.text()).toContain("By phone");
     });
-  });
-  afterEach(() => {
-    fetchMock.restore();
   });
 });
 

@@ -11,6 +11,7 @@ import HeaderContainer from "containers/Header";
 import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
+import { SIGNUP_BASE_PATH } from "../globals";
 
 //export const FetchingContext = React.createContext({
 //fetching: false,
@@ -46,7 +47,7 @@ class ActionMain extends Component {
           <div key="0" id="content" className="horizontal-content-margin">
             <Route
               exact
-              path={`${BASE_PATH}`}
+              path={`${SIGNUP_BASE_PATH}`}
               component={() => <Redirect to={this.props.redirect} />}
             />
             {this.props.children}

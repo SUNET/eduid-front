@@ -2,7 +2,6 @@ const mock = require("jest-mock");
 import React from "react";
 import { shallow, mount } from "enzyme";
 import expect from "expect";
-import fetchMock from "fetch-mock";
 import { Provider } from "react-intl-redux";
 import { IntlProvider, addLocaleData } from "react-intl";
 import { put, call } from "redux-saga/effects";
@@ -283,10 +282,6 @@ describe("LetterProofing Container", () => {
     buttontext = wrapper.find("button").exists();
     expect(buttontext.exists()).toEqual(true);
     expect(buttontext.text()).toContain("By post");
-  });
-
-  afterEach(() => {
-    fetchMock.restore();
   });
 });
 
