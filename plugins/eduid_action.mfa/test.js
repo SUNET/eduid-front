@@ -1,15 +1,19 @@
-const mock = require("jest-mock");
 import React from "react";
-import { Provider } from "react-intl-redux";
-import { mount } from "enzyme";
 import expect from "expect";
-import { put, call, select } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 
 import { genSetupComponent, getState } from "tests/ActionMain-test";
 import MainContainer from "./component";
 import { actionReducer } from "./store";
 import * as actions from "actions/ActionMain";
 import { postCompleteWebauthn, requestCompleteWebauthn } from "./root-saga";
+
+const mockCredentials = {
+  get: () => {},
+  create: () => {},
+};
+
+global.navigator.credentials = mockCredentials;
 
 const pluginState = {
   webauthn_assertion: {},
