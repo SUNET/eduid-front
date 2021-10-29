@@ -11,9 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x]
-    env:
-      PIP_INDEX_URL: https://pypi.sunet.se/simple/
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout@v2
