@@ -38,6 +38,7 @@ const fakeState = {
     //is_fetching: false,
     debug: true,
     available_languages: [],
+    reset_password_link: "http://dummy.example.com/reset-password",
   },
   captcha: {
     captcha_verification: "",
