@@ -17,7 +17,6 @@ module.exports = function (api) {
     ],
     "transform-object-rest-spread",
     "@babel/plugin-transform-flow-strip-types",
-    "react-hot-loader/babel",
     "transform-class-properties",
   ];
 
