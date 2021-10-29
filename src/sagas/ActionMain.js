@@ -4,8 +4,6 @@ import { checkStatus, getRequest, putCsrfToken } from "sagas/common";
 import * as actions from "actions/ActionMain";
 import * as CBOR from "sagas/cbor";
 
-window.CBOR = CBOR;
-
 export function* requestConfig() {
   const actions_url = ACTIONS_SERVICE_URL + "config";
   try {
