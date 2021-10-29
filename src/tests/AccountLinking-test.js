@@ -5,7 +5,6 @@ import { put, call } from "redux-saga/effects";
 import expect from "expect";
 import AccountLinkingContainer from "containers/AccountLinking";
 import * as actions from "actions/AccountLinking";
-import fetchMock from "fetch-mock";
 import accountlinkingReducer from "reducers/AccountLinking";
 import { Provider } from "react-intl-redux";
 import {
@@ -312,10 +311,6 @@ describe("AccountLinking Container", () => {
       return wrapper;
     };
     language = getWrapper().find(AccountLinkingContainer).props().language;
-  });
-
-  afterEach(() => {
-    fetchMock.restore();
   });
 
   it("Renders test", () => {

@@ -6,7 +6,6 @@ import expect from "expect";
 import { BrowserRouter as Router } from "react-router-dom";
 import ChangePasswordContainer from "containers/ChangePassword";
 import * as actions from "actions/ChangePassword";
-import fetchMock from "fetch-mock";
 import chpassReducer from "reducers/ChangePassword";
 import { Provider } from "react-intl-redux";
 
@@ -376,10 +375,6 @@ describe("ChangePassword Container", () => {
     };
     fulldom = getWrapper().find(ChangePasswordContainer);
     chooseCustom = fulldom.props().choose_custom;
-  });
-
-  afterEach(() => {
-    fetchMock.restore();
   });
 
   it("Renders test", () => {

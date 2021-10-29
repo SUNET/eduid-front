@@ -3,7 +3,6 @@ import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { put, call } from "redux-saga/effects";
-import fetchMock from "fetch-mock";
 import { addLocaleData, IntlProvider } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import DeleteAccountContainer from "containers/DeleteAccount";
@@ -421,10 +420,6 @@ describe("DeleteAccount Container", () => {
     language = getWrapper().find(DeleteAccountContainer).props().language;
   });
 
-  afterEach(() => {
-    fetchMock.restore();
-  });
-
   it("Renders test", () => {
     expect(language).toEqual("en");
   });
@@ -442,7 +437,7 @@ describe("DeleteAccount Container", () => {
   });
 
   it("Clicks confirm delete", () => {
-    fetchMock.post("/dummy-sec-url", {
+    fetch.mockResponseOnce("/dummy-sec-url", {
       type: actions.POST_DELETE_ACCOUNT,
     });
 
