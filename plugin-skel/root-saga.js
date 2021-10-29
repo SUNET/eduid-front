@@ -9,7 +9,7 @@ import { postRequest, checkStatus, putCsrfToken } from "sagas/common";
 
 function* rootSaga() {
   yield [
-    ...defaultSaga
+    ...defaultSaga,
     // any additional sagas defined above
   ];
 }

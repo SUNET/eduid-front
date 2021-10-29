@@ -17,7 +17,7 @@ var exec = require("child_process").exec;
  */
 
 function execute(comm, rm) {
-  exec(comm, function(error, stdout, stderr) {
+  exec(comm, function (error, stdout, stderr) {
     console.log("stdout: " + stdout);
     console.log("stderr: " + stderr);
     if (error !== null) {
@@ -29,7 +29,7 @@ function execute(comm, rm) {
   });
 }
 
-filesystem.readdirSync("plugins").forEach(function(plugin) {
+filesystem.readdirSync("plugins").forEach(function (plugin) {
   var config = plugin + ".webpack.config.js";
   var fileContent = `
 

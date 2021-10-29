@@ -26,7 +26,7 @@ const App = combineReducers({
   intl: intlReducer,
   main: actionMainReducer,
   plugin: actionReducer,
-  notifications: notificationsReducer
+  notifications: notificationsReducer,
 });
 
 export default App;

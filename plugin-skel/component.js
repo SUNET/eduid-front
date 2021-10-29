@@ -10,9 +10,7 @@ import "./style.scss";
 
 class Main extends Component {
   render() {
-    return (
-      <ActionMainContainer>// UI for the action</ActionMainContainer>
-    );
+    return <ActionMainContainer>// UI for the action</ActionMainContainer>;
   }
 }
 

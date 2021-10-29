@@ -20,7 +20,7 @@ describe("Some Component", () => {
   it("Renders the splash screen", () => {
     const wrapper = setupComponent({
         component: <MainContainer />,
-        overrides: { main: { is_app_loaded: false } }
+        overrides: { main: { is_app_loaded: false } },
       }),
       splash = wrapper.find("div#eduid-splash-screen");
 
@@ -39,10 +39,10 @@ describe("Some action reducer", () => {
         type: actions.GET_ACTIONS_CONFIG_SUCCESS,
         payload: {
           // some payload
-        }
+        },
       })
     ).toEqual({
-      ...mockState
+      ...mockState,
       // whatever the payload is reduced to
     });
   });
