@@ -18,6 +18,7 @@ import EmailInUseContainer from "containers/EmailInUse";
 import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
+import { SIGNUP_BASE_PATH } from "../globals";
 
 class SignupMain extends Component {
   //constructor(props) {
@@ -36,7 +37,7 @@ class SignupMain extends Component {
   //}
 
   render() {
-    let redirect = `${BASE_PATH}/email`;
+    let redirect = `${SIGNUP_BASE_PATH}/email`;
 
     if (this.props.email) {
       if (this.props.captcha) {
@@ -44,7 +45,7 @@ class SignupMain extends Component {
         } else {
         }
       } else {
-        redirect = `${BASE_PATH}/trycaptcha`;
+        redirect = `${SIGNUP_BASE_PATH}/trycaptcha`;
       }
     }
 
@@ -79,28 +80,31 @@ class SignupMain extends Component {
           <NotificationsContainer />
           <Route
             exact
-            path={`${BASE_PATH}`}
+            path={`${SIGNUP_BASE_PATH}`}
             component={() => <Redirect to={redirect} />}
           />
-          <Route path={`${BASE_PATH}/email`} component={EmailContainer} />
           <Route
-            path={`${BASE_PATH}/trycaptcha`}
+            path={`${SIGNUP_BASE_PATH}/email`}
+            component={EmailContainer}
+          />
+          <Route
+            path={`${SIGNUP_BASE_PATH}/trycaptcha`}
             component={CaptchaContainer}
           />
           <Route
-            path={`${BASE_PATH}/new`}
+            path={`${SIGNUP_BASE_PATH}/new`}
             component={AccountCreatedContainer}
           />
           <Route
-            path={`${BASE_PATH}/code-verified`}
+            path={`${SIGNUP_BASE_PATH}/code-verified`}
             component={CodeVerifiedContainer}
           />
           <Route
-            path={`${BASE_PATH}/resend-code`}
+            path={`${SIGNUP_BASE_PATH}/resend-code`}
             component={ResendCodeContainer}
           />
           <Route
-            path={`${BASE_PATH}/address-used`}
+            path={`${SIGNUP_BASE_PATH}/address-used`}
             component={EmailInUseContainer}
           />
         </section>
