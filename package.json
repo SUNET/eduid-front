@@ -19,6 +19,10 @@
   },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
+  "engines": {
+    "npm": ">=7.21.0",
+    "node": ">=16.8.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
@@ -80,8 +84,7 @@
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.0",
     "json-loader": "^0.5.7",
-    "node": "^10.16.0",
-    "node-sass": "^5.0.0",
+    "sass": "^1.43.4",
     "postcss-loader": "^2.1.4",
     "precss": "^3.1.2",
     "prop-types": "^15.6.1",
