@@ -67,7 +67,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "compression-webpack-plugin": "^5.0.2",
-    "css-loader": "^0.28.11",
+    "css-loader": "^5.0.0",
     "eslint": "^7.14.0",
     "expect": "^27.3.1",
     "exports-loader": "^0.7.0",
