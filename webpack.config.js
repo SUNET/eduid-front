@@ -37,6 +37,9 @@ module.exports = {
     extensions: [".js", ".jsx", ".json"],
     mainFields: ["browser", "module", "main"],
   },
+  optimization: {
+    noEmitOnErrors: true,
+  },
   module: {
     rules: [
       {
@@ -89,6 +92,20 @@ module.exports = {
         test: /\.gif$/,
         loader: "file-loader",
       },
+      {
+        test: require.resolve("es6-promise"),
+        loader: "exports-loader",
+        options: {
+          exports: "global.Promise",
+        },
+      },
+      {
+        test: require.resolve("whatwg-fetch"),
+        loader: "exports-loader",
+        options: {
+          exports: "self.fetch",
+        },
+      },
     ],
   },
   plugins: [
@@ -103,11 +120,6 @@ module.exports = {
     // Initial configuration
     initialConfigPlugin,
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      Promise: "exports-loader?global.Promise!es6-promise",
-      "window.fetch": "exports-loader?global.fetch!whatwg-fetch",
-    }),
-    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.LoaderOptionsPlugin({
       // test: /\.xxx$/, // may apply this only for some modules
       options: {

@@ -31,10 +31,6 @@ webpackProd.plugins = [
       NODE_ENV: JSON.stringify("production"),
     },
   }),
-  new webpack.ProvidePlugin({
-    Promise: "exports-loader?global.Promise!es6-promise",
-    "window.fetch": "exports-loader?self.fetch!whatwg-fetch",
-  }),
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new webpack.optimize.OccurrenceOrderPlugin(true),
   new CompressionPlugin({
@@ -58,6 +54,7 @@ webpackProd.mode = "production";
 
 webpackProd.optimization = {
   minimizer: [new UglifyJsPlugin()],
+  noEmitOnErrors: true,
 };
 
 webpackProd.performance = {
