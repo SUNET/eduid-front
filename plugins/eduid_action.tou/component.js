@@ -3,11 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import i18n from "../../src/login/translation/InjectIntl_HOC_factory";
-//import { appFetching, postAction } from "actions/ActionWrapper";
 import { postAction } from "actions/ActionMain";
 import ActionMainContainer from "containers/ActionMain";
-import HeaderContainer from "containers/HeaderAnon";
-import FooterContainer from "containers/Footer";
 
 import EduIDButton from "components/EduIDButton";
 import { eduidNotify } from "actions/Notifications";

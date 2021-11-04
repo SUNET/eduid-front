@@ -22,18 +22,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleEmail: function (e) {
-      e.preventDefault();
-      const email = document.querySelector("input[name='email']").value;
-      dispatch(actions.addEmail(email));
-    },
     handleAccept: (e) => {
       e.preventDefault();
       dispatch(actions.acceptTOU());
       history.push(SIGNUP_BASE_PATH + "/trycaptcha");
-      // remove remained notification message
+      // remove any remaining notification messages
       dispatch(eduidRMAllNotify());
-      // to make captch button active
+      // to make captcha button active
       dispatch(makeCapthaButtonAvailable());
     },
     handleReject: (e) => {

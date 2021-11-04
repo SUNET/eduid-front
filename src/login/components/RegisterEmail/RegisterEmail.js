@@ -2,15 +2,22 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import CustomInput from "../Inputs/CustomInput";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, submit } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";
+import * as actions from "actions/Email";
+
+
+const submitEmailForm = (values, dispatch) => {
+  const { email } = values;
+  dispatch(actions.addEmail(email));
+};
 
 /* FORM */
-let EmailForm = (props) => (
-  <Form id="register-form" role="form" onSubmit={props.handleEmail}>
+const EmailForm = (props) => (
+  <Form id="register-form" role="form">
     <Field
       type="email"
       name="email"
@@ -25,22 +32,23 @@ let EmailForm = (props) => (
       className="settings-button"
       id="register-button"
       disabled={props.invalid}
-      onClick={props.handleEmail}
+      onClick={() => props.dispatch(submit("emailForm"))}
     >
       {props.translate("email.sign-up-email")}
     </EduIDButton>
   </Form>
 );
 
-EmailForm = reduxForm({
+let EmailReduxForm = reduxForm({
   form: "emailForm",
   validate,
+  onSubmit: submitEmailForm,
 })(EmailForm);
 
-EmailForm = connect(() => ({
+EmailReduxForm = connect(() => ({
   enableReinitialize: true,
   destroyOnUnmount: false,
-}))(EmailForm);
+}))(EmailReduxForm);
 
 /* COMPONENT */
 
@@ -53,7 +61,7 @@ class RegisterEmail extends Component {
         </p>
         <p>{this.props.translate("register.paragraph")}</p>
 
-        <EmailForm {...this.props} />
+        <EmailReduxForm {...this.props} />
         <p className="text-link-container">
           <span>{this.props.translate("register.toLogin")}</span>
           <a className="text-link" href={this.props.dashboard_url}>

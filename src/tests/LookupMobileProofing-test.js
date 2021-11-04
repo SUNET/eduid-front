@@ -31,7 +31,7 @@ const baseState = {
 };
 
 const fakeStore = (fakeState) => ({
-  default: () => {},
+  default: () => { },
   dispatch: mock.fn(),
   subscribe: mock.fn(),
   getState: () => ({ ...fakeState }),
@@ -116,7 +116,7 @@ describe("Reducers", () => {
 });
 
 describe("LookupMobile Container", () => {
-  let mockProps, wrapper, buttontext;
+  let mockProps, wrapper, button;
   const fakeState = getFakeState();
   beforeEach(() => {
     const store = fakeStore(fakeState);
@@ -127,11 +127,12 @@ describe("LookupMobile Container", () => {
         <LookupMobileProofingContainer {...mockProps} />
       </Provider>
     );
-    it("Renders button text", () => {
-      buttontext = wrapper.find("button").exists();
-      expect(buttontext.exists()).toEqual(true);
-      expect(buttontext.text()).toContain("By phone");
-    });
+    button = wrapper.find("button");
+  });
+
+  it("Renders button text", () => {
+    expect(button.exists()).toEqual(true);
+    expect(button.text()).toContain("by phone");
   });
 });
 

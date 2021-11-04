@@ -110,40 +110,46 @@ describe("Email reducer", () => {
 describe("Test email Container", () => {
   let wrapper, dispatch;
 
-  beforeEach(() => {
+  it("Clicks the email button", () => {
     const store = fakeStore(getState());
     dispatch = store.dispatch;
     wrapper = setupComponent({ component: <EmailContainer />, store: store });
+    const input = wrapper.find("input#email");
+    expect(input).toBeDefined();
+    expect(input.exists()).toEqual(true);
+    input.value = "dummy@example.com";
 
-    it("Clicks the email button", () => {
-      wrapper.find("input#email-input").value = "dummy@example.com";
-      const numCalls = dispatch.mock.calls.length;
-      const mockEvent = { preventDefault: () => {} };
-      wrapper.find("EduIDButton#register-button").props().onClick(mockEvent);
+    const button = wrapper.find("EduIDButton#register-button");
+    expect(button).toBeDefined();
+    expect(button.exists()).toEqual(true);
 
-      expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
-    });
+    // Simulate clicking on the button. This should call the forms onSubmit function which will dispatch an action.
+    const numCalls = dispatch.mock.calls.length;
+    button.simulate('click');
+    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+    const submit_event = dispatch.mock.calls[dispatch.mock.calls.length - 1][0];
+    expect(submit_event.type).toEqual('@@redux-form/SUBMIT');
+  });
 
-    it("Clicks the accept tou button", () => {
-      const store = fakeStore(getState({ email: { acceptingTOU: true } }));
-      dispatch = store.dispatch;
-      wrapper = setupComponent({ component: <EmailContainer />, store: store });
-      wrapper.find("input#email-input").value = "dummy@example.com";
-      const numCalls = dispatch.mock.calls.length;
-      const mockEvent = { preventDefault: () => {} };
-      wrapper.find("EduIDButton#accept-tou-button").props().onClick(mockEvent);
-      expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
-    });
+  it("Clicks the accept tou button", () => {
+    const store = fakeStore(getState({ email: { acceptingTOU: true } }));
+    dispatch = store.dispatch;
+    wrapper = setupComponent({ component: <EmailContainer />, store: store });
+    wrapper.find("input#email").value = "dummy@example.com";
+    const numCalls = dispatch.mock.calls.length;
+    const mockEvent = { preventDefault: () => { } };
+    wrapper.find("EduIDButton#accept-tou-button").props().onClick(mockEvent);
+    expect(dispatch.mock.calls.length).toEqual(numCalls + 3);
+  });
 
-    it("Clicks the reject tou button", () => {
-      const store = fakeStore(getState({ email: { acceptingTOU: true } }));
-      dispatch = store.dispatch;
-      wrapper = setupComponent({ component: <EmailContainer />, store: store });
-      wrapper.find("input#email-input").value = "dummy@example.com";
-      const numCalls = dispatch.mock.calls.length;
-      const mockEvent = { preventDefault: () => {} };
-      wrapper.find("EduIDButton#reject-tou-button").props().onClick(mockEvent);
-      expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
-    });
+  it("Clicks the reject tou button", () => {
+    const store = fakeStore(getState({ email: { acceptingTOU: true } }));
+    dispatch = store.dispatch;
+    wrapper = setupComponent({ component: <EmailContainer />, store: store });
+    wrapper.find("input#email").value = "dummy@example.com";
+    const numCalls = dispatch.mock.calls.length;
+    const mockEvent = { preventDefault: () => { } };
+    wrapper.find("EduIDButton#reject-tou-button").props().onClick(mockEvent);
+    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
 });

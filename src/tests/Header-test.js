@@ -2,7 +2,6 @@ import React from "react";
 import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
-// import HeaderAnonContainer from "containers/HeaderAnon";
 import HeaderContainer from "containers/Header";
 import { setupComponent } from "tests/SignupMain-test";
 
