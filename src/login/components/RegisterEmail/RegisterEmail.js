@@ -2,15 +2,22 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import CustomInput from "../Inputs/CustomInput";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, submit } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";
+import * as actions from "actions/Email";
+
+
+const submitEmailForm = (values, dispatch) => {
+  const { email } = values;
+  dispatch(actions.addEmail(email));
+};
 
 /* FORM */
 let EmailForm = (props) => (
-  <Form id="register-form" role="form" onSubmit={props.handleEmail}>
+  <Form id="register-form" role="form">
     <Field
       type="email"
       name="email"
@@ -25,7 +32,7 @@ let EmailForm = (props) => (
       className="settings-button"
       id="register-button"
       disabled={props.invalid}
-      onClick={props.handleEmail}
+      onClick={() => props.dispatch(submit("emailForm"))}
     >
       {props.translate("email.sign-up-email")}
     </EduIDButton>
@@ -35,6 +42,7 @@ let EmailForm = (props) => (
 EmailForm = reduxForm({
   form: "emailForm",
   validate,
+  onSubmit: submitEmailForm,
 })(EmailForm);
 
 EmailForm = connect(() => ({
