@@ -16,7 +16,7 @@ const submitEmailForm = (values, dispatch) => {
 };
 
 /* FORM */
-let EmailForm = (props) => (
+const EmailForm = (props) => (
   <Form id="register-form" role="form">
     <Field
       type="email"
@@ -39,16 +39,16 @@ let EmailForm = (props) => (
   </Form>
 );
 
-EmailForm = reduxForm({
+let EmailReduxForm = reduxForm({
   form: "emailForm",
   validate,
   onSubmit: submitEmailForm,
 })(EmailForm);
 
-EmailForm = connect(() => ({
+EmailReduxForm = connect(() => ({
   enableReinitialize: true,
   destroyOnUnmount: false,
-}))(EmailForm);
+}))(EmailReduxForm);
 
 /* COMPONENT */
 
@@ -61,7 +61,7 @@ class RegisterEmail extends Component {
         </p>
         <p>{this.props.translate("register.paragraph")}</p>
 
-        <EmailForm {...this.props} />
+        <EmailReduxForm {...this.props} />
         <p className="text-link-container">
           <span>{this.props.translate("register.toLogin")}</span>
           <a className="text-link" href={this.props.dashboard_url}>
