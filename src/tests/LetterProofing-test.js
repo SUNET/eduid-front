@@ -44,7 +44,7 @@ const baseState = {
 };
 
 const fakeStore = (fakeState) => ({
-  default: () => {},
+  default: () => { },
   dispatch: mock.fn(),
   subscribe: mock.fn(),
   getState: () => ({ ...fakeState }),
@@ -268,9 +268,9 @@ describe("Reducers", () => {
 });
 
 describe("LetterProofing Container", () => {
-  let mockProps, wrapper, buttontext;
+  let mockProps, wrapper, button;
   const fakeState = getFakeState();
-  beforeEach(() => {
+  it("Renders button text", () => {
     const store = fakeStore(fakeState);
     mockProps = {};
 
@@ -279,9 +279,9 @@ describe("LetterProofing Container", () => {
         <LetterProofingContainer {...mockProps} />
       </Provider>
     );
-    buttontext = wrapper.find("button").exists();
-    expect(buttontext.exists()).toEqual(true);
-    expect(buttontext.text()).toContain("By post");
+    button = wrapper.find("button");
+    expect(button.exists()).toEqual(true);
+    expect(button.text()).toContain("by post");
   });
 });
 
