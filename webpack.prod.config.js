@@ -54,7 +54,7 @@ webpackProd.mode = "production";
 
 webpackProd.optimization = {
   minimizer: [new UglifyJsPlugin()],
-  noEmitOnErrors: true,
+  emitOnErrors: false,
 };
 
 webpackProd.performance = {

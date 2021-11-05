@@ -38,22 +38,18 @@ module.exports = {
     mainFields: ["browser", "module", "main"],
   },
   optimization: {
-    noEmitOnErrors: true,
+    emitOnErrors: false,
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        loaders: ["babel-loader"],
+        loader: "babel-loader",
         exclude: /node_modules/,
       },
       {
-        test: /\.json$/,
-        loader: "json-loader",
-      },
-      {
         test: /\.scss$/,
-        loaders: [
+        use: [
           "style-loader",
           "css-loader",
           "postcss-loader",
@@ -62,35 +58,33 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader",
+        use: [
+          "style-loader",
+          "css-loader",
+        ],
       },
       {
-        test: /\.png$/,
-        loader: "url-loader?limit=100000",
-      },
-      {
-        test: /\.jpg$/,
-        loader: "file-loader",
+        test: /\.(gif|jpg|png)$/,
+        type: 'asset',
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url-loader?limit=10000&mimetype=application/font-woff",
+        type: 'asset',
+        //loader: "url-loader?limit=10000&mimetype=application/font-woff",
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url-loader?limit=10000&mimetype=application/octet-stream",
+        type: 'asset',
+        //loader: "url-loader?limit=10000&mimetype=application/octet-stream",
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file-loader",
+        type: 'asset',
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url-loader?limit=10000&mimetype=image/svg+xml",
-      },
-      {
-        test: /\.gif$/,
-        loader: "file-loader",
+        type: 'asset',
+        //loader: "url-loader?limit=10000&mimetype=image/svg+xml",
       },
       {
         test: require.resolve("es6-promise"),
