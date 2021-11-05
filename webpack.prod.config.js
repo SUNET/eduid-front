@@ -3,7 +3,6 @@ const webpack = require("webpack");
 const webpackConfig = require("./webpack.config");
 const CompressionPlugin = require("compression-webpack-plugin");
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 var webpackProd = {
@@ -32,14 +31,7 @@ webpackProd.plugins = [
     },
   }),
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
-  new webpack.optimize.OccurrenceOrderPlugin(true),
-  new CompressionPlugin({
-    filename: "[path].gz[query]",
-    algorithm: "gzip",
-    test: /\.js$|\.css$|\.html$/,
-    threshold: 10240,
-    minRatio: 0.8,
-  }),
+  new CompressionPlugin(),
   ...["errors", "login", "dashboard", "signup"].map((entryName) => {
     return new HtmlWebpackPlugin({
       hash: true,
@@ -51,11 +43,6 @@ webpackProd.plugins = [
 ];
 
 webpackProd.mode = "production";
-
-webpackProd.optimization = {
-  minimizer: [new UglifyJsPlugin()],
-  noEmitOnErrors: true,
-};
 
 webpackProd.performance = {
   hints: false,
