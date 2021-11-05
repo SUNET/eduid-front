@@ -1,8 +1,3 @@
-// package is deprecated (now available as @ungap/url-search-params)
-// // URL.searchParams polyfill
-//
-// // End polyfill
-
 // this needs ot be imported before React even starts
 import "../app_utils/betaVersion_cookie";
 // checkIfBeta();

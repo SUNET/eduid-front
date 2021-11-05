@@ -22,9 +22,8 @@ if (!Element.prototype.closest)
 // end Polyfill
 
 // URL.searchParams polyfill
-
-window.URLSearchParams = require("url-search-params");
-
+import urlsearch from "@ungap/url-search-params";
+window.URLSearchParams = urlsearch;
 // End polyfill
 
 import React from "react";

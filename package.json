@@ -28,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "0.1.16",
     "@reduxjs/toolkit": "^1.6.2",
+    "@ungap/url-search-params": "^0.2.2",
     "bootstrap": "^4.6.0",
     "intl": "^1.2.5",
     "invariant": "^2.2.4",
@@ -50,8 +51,7 @@
     "redux-form": "^8.3.7",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.2",
-    "spin.js": "^4.1.1",
-    "url-search-params": "^1.1.0"
+    "spin.js": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
