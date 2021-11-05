@@ -65,25 +65,25 @@ module.exports = {
       },
       {
         test: /\.(gif|jpg|png)$/,
-        type: 'asset',
+        type: 'asset/resource',
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'asset',
+        type: 'asset/resource',
         //loader: "url-loader?limit=10000&mimetype=application/font-woff",
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'asset',
+        type: 'asset/resource',
         //loader: "url-loader?limit=10000&mimetype=application/octet-stream",
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'asset',
+        type: 'asset/resource',
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'asset',
+        type: 'asset/resource',
         //loader: "url-loader?limit=10000&mimetype=image/svg+xml",
       },
       {
