@@ -19,8 +19,11 @@ build-production:
 
 build: node_modules build-staging build-production
 
-test: build
+just_test:
 	npm run-script test
+
+test: build just_test
+	# This is the target the CI uses, which is why it includes the build step too
 
 prettier:
 	npx prettier --write .
