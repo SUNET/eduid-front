@@ -44,8 +44,8 @@ const initStore = configureStore({
 sagaMiddleware.run(rootSaga);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof initStore.getState>
+export type LoginRootState = ReturnType<typeof initStore.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof initStore.dispatch
+export type LoginAppDispatch = typeof initStore.dispatch
 
 export default initStore;
