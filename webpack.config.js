@@ -49,41 +49,33 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
       {
         test: /\.css$/,
-        use: [
-          "style-loader",
-          "css-loader",
-        ],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(gif|jpg|png)$/,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'asset/resource',
+        type: "asset/resource",
         //loader: "url-loader?limit=10000&mimetype=application/font-woff",
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'asset/resource',
+        type: "asset/resource",
         //loader: "url-loader?limit=10000&mimetype=application/octet-stream",
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'asset/resource',
+        type: "asset/resource",
         //loader: "url-loader?limit=10000&mimetype=image/svg+xml",
       },
       {

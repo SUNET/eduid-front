@@ -75,13 +75,13 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(stopConfirmationPassword());
     },
 
-    loadZxcvbn: function() {
-      return new Promise(resolve => {
-          const module = require("zxcvbn");
-          dispatch(actions.setZxcvbn(module));
-          resolve();
-        });
-    }
+    loadZxcvbn: function () {
+      return new Promise((resolve) => {
+        const module = require("zxcvbn");
+        dispatch(actions.setZxcvbn(module));
+        resolve();
+      });
+    },
   };
 };
 

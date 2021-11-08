@@ -29,8 +29,8 @@ jobs:
     runs-on: ubuntu-18.04
 
     strategy:
-        matrix:
-          node-version: [16.x]
+      matrix:
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
 
@@ -44,8 +44,8 @@ jobs:
     runs-on: ubuntu-18.04
 
     strategy:
-        matrix:
-          node-version: [16.x]
+      matrix:
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
 
@@ -60,8 +60,8 @@ jobs:
     runs-on: ubuntu-18.04
 
     strategy:
-        matrix:
-          node-version: [16.x]
+      matrix:
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
 
@@ -70,4 +70,3 @@ jobs:
 
       - name: Run linters
         run: npm run lint
-

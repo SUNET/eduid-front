@@ -1,5 +1,3 @@
-
-
 // Polyfill for Element.closest for IE9+
 // see https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
 

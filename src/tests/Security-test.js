@@ -1004,7 +1004,6 @@ describe("Security Container", () => {
     language = getWrapper().find(SecurityContainer).props().language;
   });
 
-
   it("Renders test", () => {
     expect(language).toEqual("en");
   });

@@ -10,42 +10,42 @@ import { IntlProvider } from "react-intl";
 import EmailInUseContainer from "containers/EmailInUse";
 
 describe("ResendCode Component", () => {
-    it("The component does not render 'false' or 'null'", () => {
-      const wrapper = shallow(
-        <IntlProvider locale="en">
-          <ResendCodeContainer />
-        </IntlProvider>
-      );
-      expect(wrapper.isEmptyRender()).toEqual(false);
+  it("The component does not render 'false' or 'null'", () => {
+    const wrapper = shallow(
+      <IntlProvider locale="en">
+        <ResendCodeContainer />
+      </IntlProvider>
+    );
+    expect(wrapper.isEmptyRender()).toEqual(false);
+  });
+
+  it("Component has text", () => {
+    const fullWrapper = setupComponent({
+      component: <EmailInUseContainer />,
+    });
+    const p = fullWrapper.find("p");
+    expect(p.exists()).toEqual(true);
+  });
+  it("Component renders user email (text inlcudes '@')", () => {
+    const fullWrapper = setupComponent({
+      component: <ResendCodeContainer />,
+      overrides: { email: { email: "dummy@example.com" } },
     });
 
-    it("Component has text", () => {
-      const fullWrapper = setupComponent({
-        component: <EmailInUseContainer />,
-      });
-      const p = fullWrapper.find("p");
-      expect(p.exists()).toEqual(true);
-    });
-    it("Component renders user email (text inlcudes '@')", () => {
-      const fullWrapper = setupComponent({
-        component: <ResendCodeContainer />,
-        overrides: { email: { email: "dummy@example.com" } },
-      });
+    const userEmail = fullWrapper.find(".registered-email");
+    expect(userEmail.exists()).toEqual(true);
+    expect(userEmail.text()).toContain("@");
+  });
 
-      const userEmail = fullWrapper.find(".registered-email");
-      expect(userEmail.exists()).toEqual(true);
-      expect(userEmail.text()).toContain("@");
+  it("Component renders the SEND A NEW LINK button", () => {
+    const fullWrapper = setupComponent({
+      component: <ResendCodeContainer />,
     });
-
-    it("Component renders the SEND A NEW LINK button", () => {
-      const fullWrapper = setupComponent({
-        component: <ResendCodeContainer />,
-      });
-      const button = fullWrapper.find("EduIDButton");
-      expect(button.exists()).toEqual(true);
-      expect(button.length).toEqual(1);
-      // expect(button.text()).toContain("reset your password");
-    });
+    const button = fullWrapper.find("EduIDButton");
+    expect(button.exists()).toEqual(true);
+    expect(button.length).toEqual(1);
+    // expect(button.text()).toContain("reset your password");
+  });
 });
 
 describe("Resend code Actions", () => {

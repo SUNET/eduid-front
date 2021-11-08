@@ -125,10 +125,10 @@ describe("Test email Container", () => {
 
     // Simulate clicking on the button. This should call the forms onSubmit function which will dispatch an action.
     const numCalls = dispatch.mock.calls.length;
-    button.simulate('click');
+    button.simulate("click");
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
     const submit_event = dispatch.mock.calls[dispatch.mock.calls.length - 1][0];
-    expect(submit_event.type).toEqual('@@redux-form/SUBMIT');
+    expect(submit_event.type).toEqual("@@redux-form/SUBMIT");
   });
 
   it("Clicks the accept tou button", () => {
@@ -137,7 +137,7 @@ describe("Test email Container", () => {
     wrapper = setupComponent({ component: <EmailContainer />, store: store });
     wrapper.find("input#email").value = "dummy@example.com";
     const numCalls = dispatch.mock.calls.length;
-    const mockEvent = { preventDefault: () => { } };
+    const mockEvent = { preventDefault: () => {} };
     wrapper.find("EduIDButton#accept-tou-button").props().onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 3);
   });
@@ -148,7 +148,7 @@ describe("Test email Container", () => {
     wrapper = setupComponent({ component: <EmailContainer />, store: store });
     wrapper.find("input#email").value = "dummy@example.com";
     const numCalls = dispatch.mock.calls.length;
-    const mockEvent = { preventDefault: () => { } };
+    const mockEvent = { preventDefault: () => {} };
     wrapper.find("EduIDButton#reject-tou-button").props().onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });

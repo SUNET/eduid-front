@@ -44,7 +44,7 @@ const baseState = {
 };
 
 const fakeStore = (fakeState) => ({
-  default: () => { },
+  default: () => {},
   dispatch: mock.fn(),
   subscribe: mock.fn(),
   getState: () => ({ ...fakeState }),

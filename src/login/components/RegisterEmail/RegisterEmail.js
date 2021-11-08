@@ -9,7 +9,6 @@ import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";
 import * as actions from "actions/Email";
 
-
 const submitEmailForm = (values, dispatch) => {
   const { email } = values;
   dispatch(actions.addEmail(email));
