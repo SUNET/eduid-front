@@ -21,7 +21,8 @@
     "esbenp.prettier-vscode",
     "eg2.vscode-npm-script",
     "github.vscode-pull-request-github",
-    "orta.vscode-jest"
+    "orta.vscode-jest",
+    "streetsidesoftware.code-spell-checker"
   ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
