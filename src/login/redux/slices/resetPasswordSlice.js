@@ -30,6 +30,7 @@ export const resetPasswordSlice = createSlice({
     // Action connected to postExtraSecurityPhoneSaga. Will post phone.index to the /extra-security-phone endpoint.
     requestPhoneCode: (state, action) => {
       state.phone.index = action.payload.index;
+      state.phone.number = action.payload.number;
     },
     getWebauthnAssertion: (state, action) => {
       state.webauthn_assertion = action.payload;
