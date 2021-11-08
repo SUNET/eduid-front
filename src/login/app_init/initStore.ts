@@ -1,36 +1,40 @@
-// create redux store and add custom middleware to store
-import { createStore, applyMiddleware, compose } from "redux";
-
 // create middleware
 import createSagaMiddleware from "redux-saga";
 import notifyAndDispatch from "../../notify-middleware";
 import { routerMiddleware } from "react-router-redux";
 import { history } from "../components/App/App";
-import { createLogger } from "redux-logger";
 
-// import all the reducers to add to store
-import allCombinedReducers from "../app_config/login-rootReducer";
 // import all sagas to add to store
 import rootSaga from "../app_config/login-rootSaga";
-
-/* for redux dev tools */
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { configureStore } from "@reduxjs/toolkit";
+import initReducer from "./init_reducer";
+import notificationsReducer from "../components/Notifications/Notifications_reducer";
+import { routerReducer } from "react-router-redux";
+import { reducer as formReducer } from "redux-form";
+import { intlReducer } from "react-intl-redux";
+import appReducer from "../components/App/App_reducer";
+import loginSlice from "../redux/slices/loginSlice";
+import resetPasswordSlice from "../redux/slices/resetPasswordSlice";
+import logger from "redux-logger";
 
 /* setup to run the combined sagas */
 const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware, logger, notifyAndDispatch, routerMiddleware(history)];
 
-const initStore = createStore(
-  // this line is configured and updated in login-reducers.js as the app
-  allCombinedReducers,
-  composeEnhancers(
-    applyMiddleware(
-      sagaMiddleware,
-      createLogger(),
-      notifyAndDispatch,
-      routerMiddleware(history)
-    )
-  )
-);
+const initStore = configureStore({
+  reducer: {
+    config: initReducer,
+    app: appReducer,
+    login: loginSlice.reducer,
+    notifications: notificationsReducer,
+    router: routerReducer,
+    form: formReducer,
+    intl: intlReducer,
+    resetPassword: resetPasswordSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), ...middlewares],
+  devTools: process.env.NODE_ENV !== 'production',
+})
 
 sagaMiddleware.run(rootSaga);
 
