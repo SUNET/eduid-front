@@ -6,8 +6,8 @@ module.exports = {
     mocha: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
-  parser: "babel-eslint",
+  extends: ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
