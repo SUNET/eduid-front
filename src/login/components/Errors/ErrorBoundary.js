@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 //import * as Sentry from "@sentry/react";
 import { connect } from "react-redux";
+import GenericError from "./GenericError";
 
 // has to be a class component
 class ErrorBoundary extends Component {
@@ -41,12 +42,22 @@ class ErrorBoundary extends Component {
   };
 
   render() {
+    /**
+     * TODO: This used to look like this:
+     * <Fragment>
+     *   {hasError && error !== null && errorInfo !== null ? (
+     *     <div id="content" className="horizontal-content-margin">
+     *       <this.props.fallback
+     *
+     * but 'this.props.fallback' was never accepted by eslint. Don't know why, don't know how to fix it,
+     * and don't care at the moment since this is half-finished work anyways. Reverted it to GenericError.
+     */
     const { hasError, error, errorInfo } = this.state;
     return (
       <Fragment>
         {hasError && error !== null && errorInfo !== null ? (
           <div id="content" className="horizontal-content-margin">
-            <this.props.fallback
+            <GenericError
               handleReset={this.handleReset}
               {...this.state}
               {...this.props}
