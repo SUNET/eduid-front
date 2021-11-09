@@ -6,18 +6,17 @@ import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { LoginRootState } from "../../../app_init/initStore";
 
-
-export type SAMLParameters = { SAMLResponse: string, RelayState: string | null }
+export type SAMLParameters = { SAMLResponse: string; RelayState?: string };
 
 export type NextResponse = {
   // The response from the /next API endpoint consists of (in the happy case):
   //   action: what action the backed requires next, or FINISHED
   //   target: the API endpoint for the next action
   //   parameters: SAML parameters for completing the FINISHED 'action'
-  action: string
-  target: string
-  parameters: null | SAMLParameters
-}
+  action: string;
+  target: string;
+  parameters?: SAMLParameters;
+};
 
 // Call the /next endpoint to see what the backend requires us to do to proceed with this login.
 export function* postRefLoginSaga() {
@@ -28,7 +27,8 @@ export function* postRefLoginSaga() {
     csrf_token: state.config.csrf_token,
   };
   try {
-    const response: PayloadAction<NextResponse, string, never, boolean> = yield call(postRequest, url, dataToSend);
+    const response: PayloadAction<NextResponse, string, never, boolean> =
+      yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     if (response.error) {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)

@@ -1,38 +1,37 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { NextResponse, SAMLParameters } from "../sagas/login/postRefLoginSaga";
 
-
 // Define a type for the slice state
 interface LoginState {
-  ref: string | null
-  next_page: string | null
-  post_to: string | null
+  ref?: string;
+  next_page?: string;
+  post_to?: string;
   mfa: {
-    webauthn_challenge: string | null
-    webauthn_assertion: string | null
-  }
-  saml_parameters: null | SAMLParameters
+    webauthn_challenge?: string;
+    webauthn_assertion?: string;
+  };
+  saml_parameters?: SAMLParameters;
   tou: {
-    available_versions: string[] | null
-    version: string | null
-  }
+    available_versions?: string[];
+    version?: string;
+  };
 }
 
 // Define the initial state using that type
 const initialState: LoginState = {
-  ref: null,
-  next_page: null,
-  post_to: null,
+  ref: undefined,
+  next_page: undefined,
+  post_to: undefined,
   mfa: {
-    webauthn_challenge: null,
-    webauthn_assertion: null,
+    webauthn_challenge: undefined,
+    webauthn_assertion: undefined,
   },
-  saml_parameters: null,
+  saml_parameters: undefined,
   tou: {
-    available_versions: null,
-    version: null,
+    available_versions: undefined,
+    version: undefined,
   },
-}
+};
 
 export const loginSlice = createSlice({
   name: "login",
@@ -45,7 +44,9 @@ export const loginSlice = createSlice({
     postIdpNextSuccess: (state, action: PayloadAction<NextResponse>) => {
       // Process a successful response from the /next endpoint.
       const samlParameters =
-        action.payload.action === "FINISHED" ? action.payload.parameters : null;
+        action.payload.action === "FINISHED"
+          ? action.payload.parameters
+          : undefined;
       state.next_page = action.payload.action;
       state.post_to = action.payload.target;
       state.saml_parameters = samlParameters;
@@ -60,7 +61,10 @@ export const loginSlice = createSlice({
       // the TermOfUse (sic) component will render it.
       state.tou.version = action.payload.version;
     },
-    postIdpMfaAuthSuccess: (state, action: PayloadAction<{ webauthn_options: string }>) => {
+    postIdpMfaAuthSuccess: (
+      state,
+      action: PayloadAction<{ webauthn_options: string }>
+    ) => {
       // Process a successful response from the /mfa_auth endpoint. The response will include a webauthn
       // challenge that we store in the state.
       // TODO: if action.payload.finished is true there won't be a challenge in the payload.
@@ -71,18 +75,18 @@ export const loginSlice = createSlice({
       state.mfa.webauthn_assertion = action.payload;
     },
     // Action connected to postTouVersionsSaga. Posts the versions of the ToU available in this bundle to the /tou endpoint.
-    postTouVersions: () => { },
+    postTouVersions: () => {},
     // Action connected to postUpdatedTouAcceptSaga. Will post the version of the ToU the user accepts to the /tou endpoint.
-    updatedTouAccept: () => { },
+    updatedTouAccept: () => {},
     // Action connected to postRefLoginSaga.
-    callLoginNext: () => { },
+    callLoginNext: () => {},
     // Action connected to postRefForWebauthnChallengeSaga. Fetches a webauthn challenge from the /mfa_auth endpoint.
-    postRefForWebauthnChallenge: () => { },
+    postRefForWebauthnChallenge: () => {},
     // Common action to signal a caught exception in one of the login app sagas. Because it ends in _FAIL,
     // the notifyAndDispatch() middleware will inform the user that the operation failed.
-    loginSagaFail: () => { },
+    loginSagaFail: () => {},
     // Action connected to postUsernamePasswordSaga. Will post username and password to the /pw_auth endpoint.
-    postUsernamePassword: () => { },
+    postUsernamePassword: () => {},
   },
 });
 
