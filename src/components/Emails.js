@@ -61,6 +61,10 @@ class Emails extends Component {
         addLinkClass: "hide",
       };
     });
+    // rendering foncus on input, setTimeout for 2 milliseconds to recognise the form
+    setTimeout(() => {
+      document.getElementById("email").focus();
+    }, 200);
   }
 
   render() {
