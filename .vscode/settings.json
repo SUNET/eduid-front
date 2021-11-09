@@ -1,3 +1,11 @@
 {
-  "jest.jestCommandLine": "node_modules/.bin/jest"
+  "jest.jestCommandLine": "node_modules/.bin/jest",
+  "cSpell.words": [
+    "eduid",
+    "initialise",
+    "initialised",
+    "middlewares",
+    "reduxjs",
+    "webauthn"
+  ]
 }
