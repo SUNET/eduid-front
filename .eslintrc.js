@@ -6,7 +6,11 @@ module.exports = {
     mocha: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -15,7 +19,8 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "@typescript-eslint"],
+  root: true,
   rules: {
     "no-useless-escape": "off",
     "react/jsx-key": "off",
