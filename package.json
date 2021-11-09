@@ -141,7 +141,7 @@
       "^.+\\.[jt]sx?$": "ts-jest"
     },
     "transformIgnorePatterns": [
-      "/node_modules/(?!spin.js).+\\.js$"
+      "/node_modules/(?!spin.js|intl-messageformat|@formatjs/icu-messageformat-parser).+\\.js$"
     ],
     "setupFiles": [
       "<rootDir>/src/setupTests.js"
