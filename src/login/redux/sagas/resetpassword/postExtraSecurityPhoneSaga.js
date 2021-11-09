@@ -2,7 +2,10 @@ import { put, call, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
 import postRequest from "../postDataRequest";
 import resetPasswordSlice from "../../slices/resetPasswordSlice";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import {
+  eduidRMAllNotify,
+  eduidNotify,
+} from "../../../../actions/Notifications";
 import {
   LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   countFiveMin,
@@ -34,6 +37,8 @@ export function* requestPhoneCodeForNewPassword() {
       }
       return;
     }
+    // Success message is showing in notification bar
+    yield put(eduidNotify(response.payload.message, "messages"));
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     setLocalStorage(
       LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
