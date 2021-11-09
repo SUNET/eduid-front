@@ -33,6 +33,9 @@ module.exports = {
     "no-prototype-builtins": "off",
     "react/display-name": "off",
     "no-empty": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-this-alias": "off",
   },
   globals: {
     // global variables from init-config and public-path, to prevent having "no-undef" errors
