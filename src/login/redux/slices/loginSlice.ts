@@ -9,13 +9,21 @@ interface LoginState {
   post_to?: string;
   mfa: {
     webauthn_challenge?: string;
-    webauthn_assertion?: string;
+    webauthn_assertion?: webauthnAssertion;
   };
   saml_parameters?: SAMLParameters;
   tou: {
     available_versions?: string[];
     version?: string;
   };
+}
+
+// serialised version of a PublicKeyCredential
+export interface webauthnAssertion {
+  credentialId: string;
+  authenticatorData: string;
+  clientDataJSON: string;
+  signature: string;
 }
 
 // Define the initial state using that type
@@ -71,7 +79,7 @@ export const loginSlice = createSlice({
       state.mfa.webauthn_challenge = action.payload.webauthn_options;
     },
     // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
-    addWebauthnAssertion: (state, action: PayloadAction<string>) => {
+    addWebauthnAssertion: (state, action: PayloadAction<webauthnAssertion>) => {
       state.mfa.webauthn_assertion = action.payload;
     },
     // Action connected to postTouVersionsSaga. Posts the versions of the ToU available in this bundle to the /tou endpoint.

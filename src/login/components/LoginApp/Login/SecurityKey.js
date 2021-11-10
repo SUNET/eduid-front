@@ -8,7 +8,10 @@ import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-import { mfaDecodeMiddleware } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import {
+  mfaDecodeMiddleware,
+  safeEncode,
+} from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 const assertionFromAuthenticator = async (
   webauthn_challenge,
@@ -16,15 +19,22 @@ const assertionFromAuthenticator = async (
   setSelected
 ) => {
   const decoded_challenge = mfaDecodeMiddleware(webauthn_challenge);
-  const webauthnAssertion = await navigator.credentials
+  const credential = await navigator.credentials
     .get(decoded_challenge)
     .then()
     .catch(() => {
       // getting assertion failed
       setSelected(false);
     });
-  if (webauthnAssertion !== undefined) {
-    dispatch(loginSlice.actions.addWebauthnAssertion(webauthnAssertion));
+  if (credential !== undefined) {
+    // webauthnAssertion is of type PublicKeyCredential
+    const encoded_response = {
+      credentialId: safeEncode(credential.rawId),
+      authenticatorData: safeEncode(credential.response.authenticatorData),
+      clientDataJSON: safeEncode(credential.response.clientDataJSON),
+      signature: safeEncode(credential.response.signature),
+    };
+    dispatch(loginSlice.actions.addWebauthnAssertion(encoded_response));
   }
 };
 
