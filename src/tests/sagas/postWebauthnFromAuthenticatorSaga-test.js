@@ -35,23 +35,17 @@ describe("second API call to /mfa_auth behaves as expected on _SUCCESS", () => {
   let next = generator.next();
   it("saga posts the expected data", () => {
     const url = fakeState.login.post_to;
-    const assertion = fakeState.login.mfa.webauthn_assertion;
     const dataToSend = {
       ref: "dummy-ref",
       csrf_token: "csrf-token",
-      webauthn_response: {
-        credentialId: safeEncode(assertion.rawId),
-        authenticatorData: safeEncode(assertion.response.authenticatorData),
-        clientDataJSON: safeEncode(assertion.response.clientDataJSON),
-        signature: safeEncode(assertion.response.signature),
-      },
+      webauthn_response: fakeState.login.mfa.webauthn_assertion,
     };
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).toEqual(call(postRequest, url, dataToSend));
   });
   it("_SUCCESS response is followed by the expected action types", () => {
     const successResponse = {
-      type: loginSlice.actions.postIdpMfaAuthSuccess.toString(),
+      type: loginSlice.actions.addMfaAuthWebauthnChallenge.toString(),
       payload: {
         csrf_token: "csrf-token",
         message: "success",
