@@ -71,11 +71,11 @@ let SecurityKeyUnselected = ({ translate, setSelected }) => {
 
   const startTokenAssertion = (setSelected) => {
     setSelected(true);
-    if (webauthn_challenge === null) {
+    if (webauthn_challenge === undefined) {
       // HACK: skip func if no webauthn_challenge
       return undefined;
     } else {
-      if (webauthn_assertion === null) {
+      if (webauthn_assertion === undefined) {
         assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
       }
     }
