@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
 import { NextResponse, SAMLParameters } from "../sagas/login/postRefLoginSaga";
 
 // Define a type for the slice state
@@ -61,13 +62,12 @@ export const loginSlice = createSlice({
       // the TermOfUse (sic) component will render it.
       state.tou.version = action.payload.version;
     },
-    postIdpMfaAuthSuccess: (
+    addMfaAuthWebauthnChallenge: (
       state,
-      action: PayloadAction<{ webauthn_options: string }>
+      action: PayloadAction<MfaAuthResponse>
     ) => {
       // Process a successful response from the /mfa_auth endpoint. The response will include a webauthn
       // challenge that we store in the state.
-      // TODO: if action.payload.finished is true there won't be a challenge in the payload.
       state.mfa.webauthn_challenge = action.payload.webauthn_options;
     },
     // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.

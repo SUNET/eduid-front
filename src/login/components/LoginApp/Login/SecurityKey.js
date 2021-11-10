@@ -8,14 +8,16 @@ import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { mfaDecodeMiddleware } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 const assertionFromAuthenticator = async (
   webauthn_challenge,
   dispatch,
   setSelected
 ) => {
+  const decoded_challenge = mfaDecodeMiddleware(webauthn_challenge);
   const webauthnAssertion = await navigator.credentials
-    .get(webauthn_challenge)
+    .get(decoded_challenge)
     .then()
     .catch(() => {
       // getting assertion failed
