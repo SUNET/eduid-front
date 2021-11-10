@@ -8,21 +8,33 @@ import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import {
+  mfaDecodeMiddleware,
+  safeEncode,
+} from "../../../app_utils/helperFunctions/authenticatorAssertion";
 
 const assertionFromAuthenticator = async (
   webauthn_challenge,
   dispatch,
   setSelected
 ) => {
-  const webauthnAssertion = await navigator.credentials
-    .get(webauthn_challenge)
+  const decoded_challenge = mfaDecodeMiddleware(webauthn_challenge);
+  const credential = await navigator.credentials
+    .get(decoded_challenge)
     .then()
     .catch(() => {
       // getting assertion failed
       setSelected(false);
     });
-  if (webauthnAssertion !== undefined) {
-    dispatch(loginSlice.actions.addWebauthnAssertion(webauthnAssertion));
+  if (credential !== undefined) {
+    // webauthnAssertion is of type PublicKeyCredential
+    const encoded_response = {
+      credentialId: safeEncode(credential.rawId),
+      authenticatorData: safeEncode(credential.response.authenticatorData),
+      clientDataJSON: safeEncode(credential.response.clientDataJSON),
+      signature: safeEncode(credential.response.signature),
+    };
+    dispatch(loginSlice.actions.addWebauthnAssertion(encoded_response));
   }
 };
 
@@ -71,11 +83,11 @@ let SecurityKeyUnselected = ({ translate, setSelected }) => {
 
   const startTokenAssertion = (setSelected) => {
     setSelected(true);
-    if (webauthn_challenge === null) {
+    if (webauthn_challenge === undefined) {
       // HACK: skip func if no webauthn_challenge
       return undefined;
     } else {
-      if (webauthn_assertion === null) {
+      if (webauthn_assertion === undefined) {
         assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
       }
     }

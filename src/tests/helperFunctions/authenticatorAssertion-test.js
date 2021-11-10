@@ -4,32 +4,26 @@ import {
   mfaDecodeMiddleware,
 } from "../../login/app_utils/helperFunctions/authenticatorAssertion";
 
-/* functions rely on the DOM, uncomment below to run test in file */
-// import { JSDOM } from "jsdom";
-// const mockDom = `<!doctype html><html><body></body></html>`;
-// const { document } = new JSDOM(mockDom).window;
-// global.window = document.defaultView;
-
 describe("mfaDecodeMiddleware returns an object", () => {
-  const encodedChallenge = {
-    payload: {
-      webauthn_options:
-        "oWlwdWJsaWNLZXmjZHJwSWRsZWR1aWQuZG9ja2VyaWNoYWxsZW5nZVggaRbMkVCjtshWaiasyXeKP-z7wWEbVv5CAIWcKgB8ff1wYWxsb3dDcmVkZW50aWFsc4GiYmlkWEBHsIeXZVqNH1X_SgmHU1ELQEfFqPnaVOW06YSy5B64UPC1WPijawhZ45PsmX5no14hkRrDf6Oo3LttEKRffMKhZHR5cGVqcHVibGljLWtleQ",
-    },
-  };
-  const encodedWebauthnOptions = encodedChallenge.payload.webauthn_options;
-  let emptyObj = {};
+  const webauthn_options =
+    "oWlwdWJsaWNLZXmjZHJwSWRsZWR1aWQuZG9ja2VyaWNoYWxsZW5nZVggaRbMkVCjtshWaiasyXeKP" +
+    "-z7wWEbVv5CAIWcKgB8ff1wYWxsb3dDcmVkZW50aWFsc4GiYmlkWEBHsIeXZVqNH1X_SgmHU1ELQE" +
+    "fFqPnaVOW06YSy5B64UPC1WPijawhZ45PsmX5no14hkRrDf6Oo3LttEKRffMKhZHR5cGVqcHVibGl" +
+    "jLWtleQ";
+
   it("with input", () => {
-    let decodedChallenge = mfaDecodeMiddleware(encodedChallenge);
+    let decodedChallenge = mfaDecodeMiddleware(webauthn_options);
     expect(typeof decodedChallenge).toEqual("object");
     expect(Array.isArray(decodedChallenge)).toEqual(false);
+    expect(decodedChallenge.publicKey.rpId).toEqual("eduid.docker");
   });
   it("with empty input", () => {
+    let emptyObj = {};
     let decodedChallenge = mfaDecodeMiddleware(emptyObj);
-    expect(typeof decodedChallenge).toEqual("object");
+    expect(decodedChallenge).toBeUndefined();
   });
-  it("initial webauthn_options not same type as retured webauthn_options", () => {
-    let decodedChallenge = mfaDecodeMiddleware(encodedChallenge);
+  it("initial webauthn_options not same type as returned webauthn_options", () => {
+    let decodedChallenge = mfaDecodeMiddleware(webauthn_options);
     expect(typeof encodedWebauthnOptions).not.toEqual(typeof decodedChallenge);
   });
 });

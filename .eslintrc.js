@@ -6,8 +6,12 @@ module.exports = {
     mocha: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
-  parser: "babel-eslint",
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -15,7 +19,8 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "@typescript-eslint"],
+  root: true,
   rules: {
     "no-useless-escape": "off",
     "react/jsx-key": "off",
@@ -28,6 +33,9 @@ module.exports = {
     "no-prototype-builtins": "off",
     "react/display-name": "off",
     "no-empty": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-this-alias": "off",
   },
   globals: {
     // global variables from init-config and public-path, to prevent having "no-undef" errors

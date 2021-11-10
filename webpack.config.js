@@ -34,7 +34,7 @@ module.exports = {
     // import Example from 'components/Example';
     modules: [path.resolve(__dirname, "src"), "node_modules"],
     // allow us to avoid including extension name
-    extensions: [".js", ".jsx", ".json"],
+    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
     mainFields: ["browser", "module", "main"],
   },
   optimization: {
@@ -45,6 +45,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
       {

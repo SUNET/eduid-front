@@ -3,18 +3,15 @@ import resetPasswordSlice from "../../redux/slices/resetPasswordSlice";
 
 // 1. Ask backend for a challenge
 // decode the challenge to use it
-export const mfaDecodeMiddleware = (response) => {
-  if (response.payload && response.payload.webauthn_options !== undefined) {
-    const raw_options = response.payload.webauthn_options;
-    if (typeof raw_options === "string") {
-      const options = window.atob(
-        raw_options.replace(/_/g, "/").replace(/-/g, "+")
-      );
-      const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
-      response.payload.webauthn_options = CBOR.decode(byte_options.buffer);
-    }
+export const mfaDecodeMiddleware = (webauthn_options) => {
+  if (typeof webauthn_options !== "string") {
+    return undefined;
   }
-  return response;
+  const options = window.atob(
+    webauthn_options.replace(/_/g, "/").replace(/-/g, "+")
+  );
+  const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
+  return CBOR.decode(byte_options.buffer);
 };
 
 // challenge for reset-password
@@ -24,16 +21,10 @@ export const mfaDecodeMiddlewareForResetPassword = (response) => {
     response.payload.extra_security.tokens &&
     response.payload.extra_security.tokens.webauthn_options !== undefined
   ) {
-    const raw_options = response.payload.extra_security.tokens.webauthn_options;
-    if (typeof raw_options === "string") {
-      const options = window.atob(
-        raw_options.replace(/_/g, "/").replace(/-/g, "+")
+    response.payload.extra_security.tokens.webauthn_options =
+      mfaDecodeMiddleware(
+        response.payload.extra_security.tokens.webauthn_options
       );
-      const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
-      response.payload.extra_security.tokens.webauthn_options = CBOR.decode(
-        byte_options.buffer
-      );
-    }
   }
   return response;
 };
@@ -47,7 +38,7 @@ export const assertionFromAuthenticator = async (
     .get(webauthn_challenge)
     .then()
     .catch(() => {
-      // assertion failed / cancled
+      // assertion failed / cancelled
       dispatch(resetPasswordSlice.actions.cancelWebauthnAssertion());
     });
   if (webauthnAssertion !== undefined) {
@@ -57,7 +48,7 @@ export const assertionFromAuthenticator = async (
   }
 };
 
-// 3. Return autheticator assertion to backend for final verification
+// 3. Return authenticator assertion to backend for final verification
 // encode the assertion before post
 export const safeEncode = (obj) => {
   const bytesObj = String.fromCharCode.apply(null, new Uint8Array(obj));

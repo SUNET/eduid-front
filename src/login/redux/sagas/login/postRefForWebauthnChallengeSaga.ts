@@ -1,19 +1,29 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
-import { mfaDecodeMiddleware } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import loginSlice from "../../slices/loginSlice";
+import { LoginRootState } from "../../../app_init/initStore";
+import { PayloadAction } from "@reduxjs/toolkit";
+
+export type MfaAuthResponse = {
+  // The response from the /mfa_auth API endpoint consists of (in the happy case):
+  //   finished: true if backend thinks mfa_auth requirement is satisfied
+  //   webauthn_options: base64-encoded webauthn challenge to pass to navigator.credentials.get()
+  finished: boolean;
+  webauthn_options?: string;
+};
 
 // Saga to get a webauthn challenge from the /mfa_auth endpoint.
 export function* postRefForWebauthnChallengeSaga() {
-  const state = yield select((state) => state);
+  const state: LoginRootState = yield select((state) => state);
   const url = state.login.post_to;
   const dataToSend = {
     ref: state.login.ref,
     csrf_token: state.config.csrf_token,
   };
   try {
-    const response = yield call(postRequest, url, dataToSend);
+    const response: PayloadAction<MfaAuthResponse, string, never, boolean> =
+      yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     if (response.payload.finished) {
       yield put(loginSlice.actions.callLoginNext());
@@ -23,11 +33,8 @@ export function* postRefForWebauthnChallengeSaga() {
       yield put(response);
       return;
     }
-    const decodedResponse = mfaDecodeMiddleware(response);
-    yield put(
-      loginSlice.actions.postIdpMfaAuthSuccess(decodedResponse.payload)
-    );
+    yield put(loginSlice.actions.addMfaAuthWebauthnChallenge(response.payload));
   } catch (error) {
-    yield put(loginSlice.actions.loginSagaFail(error.toString()));
+    yield put(loginSlice.actions.loginSagaFail());
   }
 }
