@@ -1,7 +1,10 @@
 {
   "jest.jestCommandLine": "node_modules/.bin/jest",
   "cSpell.words": [
+    "CBOR",
     "eduid",
+    "fontawesome",
+    "fortawesome",
     "initialisation",
     "initialise",
     "initialised",

@@ -1,4 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  performAuthentication,
+  webauthnAssertion,
+} from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
 import { NextResponse, SAMLParameters } from "../sagas/login/postRefLoginSaga";
 
@@ -16,14 +20,6 @@ interface LoginState {
     available_versions?: string[];
     version?: string;
   };
-}
-
-// serialised version of a PublicKeyCredential
-export interface webauthnAssertion {
-  credentialId: string;
-  authenticatorData: string;
-  clientDataJSON: string;
-  signature: string;
 }
 
 // Define the initial state using that type
@@ -95,6 +91,11 @@ export const loginSlice = createSlice({
     loginSagaFail: () => {},
     // Action connected to postUsernamePasswordSaga. Will post username and password to the /pw_auth endpoint.
     postUsernamePassword: () => {},
+  },
+  extraReducers: (builder) => {
+    builder.addCase(performAuthentication.fulfilled, (state, action) => {
+      state.mfa.webauthn_assertion = action.payload;
+    });
   },
 });
 

@@ -1,45 +1,43 @@
 import React, { Fragment, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
-import loginSlice from "../../../redux/slices/loginSlice";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-import {
-  mfaDecodeMiddleware,
-  safeEncode,
-} from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-const assertionFromAuthenticator = async (
-  webauthn_challenge,
-  dispatch,
-  setSelected
-) => {
-  const decoded_challenge = mfaDecodeMiddleware(webauthn_challenge);
-  const credential = await navigator.credentials
-    .get(decoded_challenge)
-    .then()
-    .catch(() => {
-      // getting assertion failed
-      setSelected(false);
-    });
-  if (credential !== undefined) {
-    // webauthnAssertion is of type PublicKeyCredential
-    const encoded_response = {
-      credentialId: safeEncode(credential.rawId),
-      authenticatorData: safeEncode(credential.response.authenticatorData),
-      clientDataJSON: safeEncode(credential.response.clientDataJSON),
-      signature: safeEncode(credential.response.signature),
-    };
-    dispatch(loginSlice.actions.addWebauthnAssertion(encoded_response));
-  }
-};
+// const assertionFromAuthenticator = async (
+//   webauthn_challenge,
+//   dispatch,
+//   setSelected
+// ) => {
+//   const decoded_challenge = mfaDecodeMiddleware(webauthn_challenge);
+//   const credential = await navigator.credentials
+//     .get(decoded_challenge)
+//     .then()
+//     .catch(() => {
+//       // getting assertion failed
+//       setSelected(false);
+//     });
+//   if (credential instanceof PublicKeyCredential) {
+//     // webauthnAssertion is of type PublicKeyCredential
+//     const encoded_response = {
+//       credentialId: safeEncode(credential.rawId),
+//       authenticatorData: safeEncode(credential.response.authenticatorData),
+//       clientDataJSON: safeEncode(credential.response.clientDataJSON),
+//       signature: safeEncode(credential.response.signature),
+//     };
+//     dispatch(loginSlice.actions.addWebauthnAssertion(encoded_response));
+//   }
+// };
 
-let CloseButton = ({ setSelected }) => {
-  const dispatch = useDispatch();
+const CloseButton = ({ setSelected }): JSX.Element => {
+  const faTimesCasted = faTimes as IconProp;
+  const dispatch = useAppDispatch();
   return (
     <button
       className="icon"
@@ -48,13 +46,14 @@ let CloseButton = ({ setSelected }) => {
         dispatch(eduidRMAllNotify());
       }}
     >
-      <FontAwesomeIcon icon={faTimes} />
+      <FontAwesomeIcon icon={faTimesCasted} />
     </button>
   );
 };
 
-let RetryButton = ({ retryToggle, setRetryToggle }) => {
-  const dispatch = useDispatch();
+const RetryButton = ({ retryToggle, setRetryToggle }): JSX.Element => {
+  const faRedoCasted = faRedo as IconProp;
+  const dispatch = useAppDispatch();
   return (
     <button
       className="icon"
@@ -63,32 +62,39 @@ let RetryButton = ({ retryToggle, setRetryToggle }) => {
         dispatch(eduidRMAllNotify());
       }}
     >
-      <FontAwesomeIcon icon={faRedo} />
+      <FontAwesomeIcon icon={faRedoCasted} />
     </button>
   );
 };
 
-let SecurityKeyUnselected = ({ translate, setSelected }) => {
-  const webauthn_challenge = useSelector(
+interface SecurityKeyUnselectedProps extends SecurityKeyProps {
+  setSelected(val: boolean): void;
+}
+
+const SecurityKeyUnselected = async ({
+  translate,
+  setSelected,
+}: SecurityKeyUnselectedProps): JSX.Element => {
+  const webauthn_challenge = useAppSelector(
     (state) => state.login.mfa.webauthn_challenge
   );
-  const webauthn_assertion = useSelector(
+  const webauthn_assertion = useAppSelector(
     (state) => state.login.mfa.webauthn_assertion
   );
   const dispatch = useDispatch();
-  const ShowSecurityKey = (e) => {
+  const showSecurityKey = (e: React.MouseEvent) => {
     e.preventDefault();
     startTokenAssertion(setSelected);
   };
 
-  const startTokenAssertion = (setSelected) => {
+  const startTokenAssertion = (setSelected: (val: boolean) => void) => {
     setSelected(true);
     if (webauthn_challenge === undefined) {
       // HACK: skip func if no webauthn_challenge
       return undefined;
     } else {
       if (webauthn_assertion === undefined) {
-        assertionFromAuthenticator(webauthn_challenge, dispatch, setSelected);
+        await dispatch(performAuthentication(webauthn_challenge));
       }
     }
   };
@@ -98,7 +104,7 @@ let SecurityKeyUnselected = ({ translate, setSelected }) => {
       <p className="heading">{translate("login.mfa.primary-option.title")}</p>
       <ButtonPrimary
         type="submit"
-        onClick={ShowSecurityKey}
+        onClick={showSecurityKey}
         id="mfa-security-key"
       >
         {translate("login.mfa.primary-option.button")}
@@ -107,7 +113,11 @@ let SecurityKeyUnselected = ({ translate, setSelected }) => {
   );
 };
 
-let SecurityKey = (props) => {
+interface SecurityKeyProps {
+  translate(msg: string): string;
+}
+
+const SecurityKey = (props: SecurityKeyProps): JSX.Element => {
   const { translate } = props;
   const [selected, setSelected] = useState(false);
   const [retryToggle, setRetryToggle] = useState(false);
@@ -146,6 +156,7 @@ let SecurityKey = (props) => {
   );
 };
 
+// run-time type checking in development mode
 SecurityKey.propTypes = {
   translate: PropTypes.func,
 };
