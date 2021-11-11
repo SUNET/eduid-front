@@ -9,6 +9,7 @@ import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { useDispatch } from "react-redux";
 
 // const assertionFromAuthenticator = async (
 //   webauthn_challenge,
@@ -35,7 +36,11 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 //   }
 // };
 
-const CloseButton = ({ setSelected }): JSX.Element => {
+interface CloseButtonProps {
+  setSelected(val: boolean): void;
+}
+
+const CloseButton = ({ setSelected }: CloseButtonProps): JSX.Element => {
   const faTimesCasted = faTimes as IconProp;
   const dispatch = useAppDispatch();
   return (
@@ -51,7 +56,15 @@ const CloseButton = ({ setSelected }): JSX.Element => {
   );
 };
 
-const RetryButton = ({ retryToggle, setRetryToggle }): JSX.Element => {
+interface RetryButtonProps {
+  retryToggle: boolean;
+  setRetryToggle(val: boolean): void;
+}
+
+const RetryButton = ({
+  retryToggle,
+  setRetryToggle,
+}: RetryButtonProps): JSX.Element => {
   const faRedoCasted = faRedo as IconProp;
   const dispatch = useAppDispatch();
   return (
@@ -71,7 +84,7 @@ interface SecurityKeyUnselectedProps extends SecurityKeyProps {
   setSelected(val: boolean): void;
 }
 
-const SecurityKeyUnselected = async ({
+const SecurityKeyUnselected = ({
   translate,
   setSelected,
 }: SecurityKeyUnselectedProps): JSX.Element => {
@@ -82,7 +95,7 @@ const SecurityKeyUnselected = async ({
     (state) => state.login.mfa.webauthn_assertion
   );
   const dispatch = useDispatch();
-  const showSecurityKey = (e: React.MouseEvent) => {
+  const showSecurityKey = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     startTokenAssertion(setSelected);
   };
@@ -94,7 +107,7 @@ const SecurityKeyUnselected = async ({
       return undefined;
     } else {
       if (webauthn_assertion === undefined) {
-        await dispatch(performAuthentication(webauthn_challenge));
+        dispatch(performAuthentication(webauthn_challenge));
       }
     }
   };
