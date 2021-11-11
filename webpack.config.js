@@ -49,7 +49,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
       {
@@ -82,20 +82,6 @@ module.exports = {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         type: "asset/resource",
         //loader: "url-loader?limit=10000&mimetype=image/svg+xml",
-      },
-      {
-        test: require.resolve("es6-promise"),
-        loader: "exports-loader",
-        options: {
-          exports: "global.Promise",
-        },
-      },
-      {
-        test: require.resolve("whatwg-fetch"),
-        loader: "exports-loader",
-        options: {
-          exports: "self.fetch",
-        },
       },
     ],
   },

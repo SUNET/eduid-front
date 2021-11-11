@@ -37,12 +37,6 @@ describe("Delete Account component", () => {
 });
 
 describe("DeleteAccount component", () => {
-  // beforeAll(() => {
-  //   window.beforeunload = () => "";
-  // });
-  // beforeEach(() => {
-  //   window.beforeunload = () => "";
-  // });
   const fakeStore = (state) => ({
     default: () => {},
     dispatch: mock.fn(),
@@ -187,61 +181,6 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
   });
 });
 
-// failed attempt at tests
-// describe("DeleteAccount Container ", () => {
-//   let mockProps, wrapper, button, dispatch;
-
-//   const fakeStore = state => ({
-//     default: () => {},
-//     dispatch: mock.fn(),
-//     subscribe: mock.fn(),
-//     getState: () => ({ ...state })
-//   });
-
-//   const fakeState = {
-//     security: {
-//       confirming_deletion: false
-//     },
-//     intl: {
-//       locale: "en",
-//       messages: messages
-//     }
-//   };
-
-//   function setupComponent() {
-//     mockProps = {};
-
-//     const wrapper = mount(
-//       <Provider store={fakeStore(fakeState)}>
-//         <DeleteAccountContainer {...mockProps} />
-//       </Provider>
-//     );
-//     return {
-//       mockProps,
-//       wrapper
-//     };
-//   }
-
-//   it("Renders", () => {
-//     const { wrapper } = setupComponent();
-//     const button = wrapper.find("EduIDButton");
-//     expect(button.length).toEqual(1);
-//   });
-
-//   it("Clicks", () => {
-//     const state = { ...fakeState };
-//     const { wrapper } = setupComponent();
-//     // console.log(wrapper.debug());
-//     const button = wrapper.find("EduIDButton");
-//     expect(button.exists()).toEqual(true);
-//     expect(state.security.confirming_deletion).toEqual(false);
-//     button.simulate("click");
-//     wrapper.update();
-//     // console.log(wrapper.debug());
-//     // expect(state.security.confirming_deletion).toEqual(true);
-//   });
-// });
-
 describe("DeleteAccount redux functionality", () => {
   it("DeleteAccount button triggers handleStartConfirmationDeletion()", () => {
     // TEST: can we prove that this EduIDButton triggers handleStartConfirmationPassword() > dispatches startConfirmationPassword()
@@ -357,7 +296,7 @@ describe("Logout modal redux functionality", () => {
   });
 });
 
-// ----- TAKEN FROM OLD FILES: SECURTIY TESTS ----- //
+// ----- TAKEN FROM OLD FILES: SECURITY TESTS ----- //
 // container and saga test
 
 describe("DeleteAccount Container", () => {
