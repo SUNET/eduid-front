@@ -6,16 +6,13 @@
     "fontawesome",
     "fortawesome",
     "freja",
-    "initialisation",
-    "initialise",
-    "initialised",
     "middlewares",
     "ORCID",
     "precss",
     "reduxjs",
-    "serialised",
     "urldecode",
     "urlencode",
     "webauthn"
-  ]
+  ],
+  "cSpell.language": "en,en-US,en-GB"
 }
