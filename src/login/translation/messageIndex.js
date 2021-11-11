@@ -93,7 +93,7 @@ export const unformattedMessages = defineMessages({
     id: "chpass.help-text-newpass-tips",
     description: `help text for custom password tips`,
     defaultMessage:
-      "Use upper- and lowercase characters, but not at the beginning or end, Add digits somewhere, but not at the beginning or end, Add special characters, such as  @ $ \\u005c  + _ %, Spaces are ignored",
+      "Use upper- and lowercase characters, but not at the beginning or end\n Add digits somewhere, but not at the beginning or end\n Add special characters, such as  @ $ \\u005c  + _ %\n Spaces are ignored",
   },
   "cm.lost_code": {
     id: "cm.lost_code",
