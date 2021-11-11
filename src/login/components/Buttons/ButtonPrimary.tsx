@@ -4,8 +4,7 @@ import Button from "reactstrap/lib/Button";
 
 interface ButtonPrimaryProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  title: string;
-  showIcon: boolean;
+  id: string;
 }
 
 const ButtonPrimary = ({
