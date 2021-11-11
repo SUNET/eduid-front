@@ -67,6 +67,7 @@
     "@types/react-intl": "^3.0.0",
     "@types/react-intl-redux": "^0.1.15",
     "@types/react-router-redux": "^5.0.20",
+    "@types/reactstrap": "^6.4.4",
     "@types/redux-form": "^8.3.3",
     "@types/redux-logger": "^3.0.9",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
