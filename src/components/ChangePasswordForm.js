@@ -113,12 +113,19 @@ class ChangePasswordForm extends Component {
       );
 
       helpCustom = (
-        <div
-          className="password-format"
-          dangerouslySetInnerHTML={{
-            __html: this.props.translate("chpass.help-text-newpass"),
-          }}
-        />
+        <div className="password-format">
+          <label>
+            {this.props.translate("chpass.help-text-newpass-label")}
+          </label>
+          <ul id="password-custom-help">
+            {this.props
+              .translate("chpass.help-text-newpass-tips")
+              .split("\n")
+              .map((list, index) => {
+                return <li key={index}>{list}</li>;
+              })}
+          </ul>
+        </div>
       );
     } else {
       form = (
