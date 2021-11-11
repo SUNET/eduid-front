@@ -5,12 +5,17 @@
     "eduid",
     "fontawesome",
     "fortawesome",
+    "freja",
     "initialisation",
     "initialise",
     "initialised",
     "middlewares",
+    "ORCID",
+    "precss",
     "reduxjs",
     "serialised",
+    "urldecode",
+    "urlencode",
     "webauthn"
   ]
 }
