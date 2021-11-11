@@ -13,14 +13,14 @@ const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 addLocaleData("react-intl/locale-data/en");
 
-// I am the component that: allows users to chaneg password in settings.
+// I am the component that: allows users to change password in settings.
 // My job is to: I render a  "change password" button > that triggers a modal (the modal has to render two buttons, each with their own functionality)
 
 // Comment N:
 // 1. I attempted a test to show that a simulated click on the 'change password' button sets the confirming_change: bool, but couldn't get it to work (maybe not possible?)
 // 2. I also attempted to grab the name of the onClick function to match it to one we expect, but couldn't get it to work (maybe not possible?)
 // - is it possible to test that a specific button starts the correct chain of events?
-// - is it possible to prove that the ACCEPT button triggers handleConfirmationPAssword() and dispatcehs confirmPasswordChange()
+// - is it possible to prove that the ACCEPT button triggers handleConfirmationPAssword() and dispatches confirmPasswordChange()
 // - is it possible to prove that the CANCEL button triggers handleStopConfirmationPassword and dispatches stopConfirmationPassword()
 
 describe("ChangePasswordDisplay component", () => {
@@ -161,58 +161,6 @@ describe("ChangePasswordDisplay component, when confirming_change is (true)", ()
     expect(button.length).toEqual(2);
   });
 });
-
-// describe("ChangePasswordDisplay Container ", () => {
-//   let mockProps, wrapper, button, dispatch;
-
-//   const fakeStore = state => ({
-//     default: () => {},
-//     dispatch: mock.fn(),
-//     subscribe: mock.fn(),
-//     getState: () => ({ ...state })
-//   });
-
-//   const fakeState = {
-//     security: {
-//       confirming_change: false
-//     },
-//     intl: {
-//       locale: "en",
-//       messages: messages
-//     }
-//   };
-
-//   function setupComponent() {
-//     mockProps = {};
-
-//     const wrapper = mount(
-//       <Provider store={fakeStore(fakeState)}>
-//         <ChangePasswordDisplay {...mockProps} />
-//       </Provider>
-//     );
-//     return {
-//       mockProps,
-//       wrapper
-//     };
-//   }
-
-//   it("Renders", () => {
-//     // expect(button.length).toEqual(1);
-//   });
-
-//   it("Clicks", () => {
-//     const state = { ...fakeState };
-//     const { wrapper } = setupComponent();
-//     // console.log(wrapper.debug());
-//     const button = wrapper.find("EduIDButton");
-//     // expect(button.exists()).toEqual(true);
-//     // expect(state.security.confirming_change).toEqual(false);
-//     // button.simulate("click");
-//     // wrapper.update();
-//     // console.log(wrapper.debug());
-//     // expect(state.security.confirming_change).toEqual(true);
-//   });
-// });
 
 describe("ChangePasswordDisplay redux functionality", () => {
   it("ChangePasswordDisplay button dispatches handlestartConfirmationPassword()", () => {
