@@ -135,7 +135,7 @@ const SecurityKey = (props: SecurityKeyProps): JSX.Element => {
   const [selected, setSelected] = useState(false);
   const [retryToggle, setRetryToggle] = useState(false);
   return (
-    <div className="primary" tabIndex="0">
+    <div className="primary" tabIndex={0}>
       <div className="option">
         {selected ? (
           <>
