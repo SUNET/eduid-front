@@ -9,7 +9,6 @@ import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { useDispatch } from "react-redux";
 
 // const assertionFromAuthenticator = async (
 //   webauthn_challenge,
@@ -94,7 +93,7 @@ const SecurityKeyUnselected = ({
   const webauthn_assertion = useAppSelector(
     (state) => state.login.mfa.webauthn_assertion
   );
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const showSecurityKey = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     startTokenAssertion(setSelected);
