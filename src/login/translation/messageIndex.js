@@ -84,16 +84,18 @@ export const unformattedMessages = defineMessages({
     defaultMessage: `here.`,
     description: "Placeholder for phone text input",
   },
-  "chpass.help-text-newpass": {
-    id: "chpass.help-text-newpass",
-    defaultMessage: `<label>Tip: Choose a strong password</label>
-            <ul id="password-custom-help">
-	            <li>Use upper- and lowercase characters, but not at the beginning or end</li>
-	            <li>Add digits somewhere, but not at the beginning or end</li>
-                <li>Add special characters, such as &#64; &#36; &#92; &#43; &#95; &#37;</li>
-	            <li>Spaces are ignored</li>
-            </ul>`,
-    description: "help text for custom password",
+  "chpass.help-text-newpass-label": {
+    id: "chpass.help-text-newpass-label",
+    description: "help text for custom password label",
+    defaultMessage: "Tip: Choose a strong password",
+  },
+  "chpass.help-text-newpass-tips": {
+    id: "chpass.help-text-newpass-tips",
+    description: "help text for custom password tips",
+    defaultMessage:
+      "Use upper- and lowercase characters, but not at the beginning or end\n" +
+      "Add digits somewhere, but not at the beginning or end\n" +
+      "Add special characters, such as  @ $ \\u005c  + _ %\n Spaces are ignored",
   },
   "cm.lost_code": {
     id: "cm.lost_code",
