@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  performAuthentication,
-  webauthnAssertion,
-} from "../../app_utils/helperFunctions/navigatorCredential";
+import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
 import { NextResponse, SAMLParameters } from "../sagas/login/postRefLoginSaga";
 
@@ -48,10 +45,7 @@ export const loginSlice = createSlice({
     },
     postIdpNextSuccess: (state, action: PayloadAction<NextResponse>) => {
       // Process a successful response from the /next endpoint.
-      const samlParameters =
-        action.payload.action === "FINISHED"
-          ? action.payload.parameters
-          : undefined;
+      const samlParameters = action.payload.action === "FINISHED" ? action.payload.parameters : undefined;
       state.next_page = action.payload.action;
       state.post_to = action.payload.target;
       state.saml_parameters = samlParameters;
@@ -66,17 +60,10 @@ export const loginSlice = createSlice({
       // the TermOfUse (sic) component will render it.
       state.tou.version = action.payload.version;
     },
-    addMfaAuthWebauthnChallenge: (
-      state,
-      action: PayloadAction<MfaAuthResponse>
-    ) => {
+    addMfaAuthWebauthnChallenge: (state, action: PayloadAction<MfaAuthResponse>) => {
       // Process a successful response from the /mfa_auth endpoint. The response will include a webauthn
       // challenge that we store in the state.
       state.mfa.webauthn_challenge = action.payload.webauthn_options;
-    },
-    // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
-    addWebauthnAssertion: (state, action: PayloadAction<webauthnAssertion>) => {
-      state.mfa.webauthn_assertion = action.payload;
     },
     // Action connected to postTouVersionsSaga. Posts the versions of the ToU available in this bundle to the /tou endpoint.
     postTouVersions: () => {},
@@ -94,6 +81,7 @@ export const loginSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(performAuthentication.fulfilled, (state, action) => {
+      // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
       state.mfa.webauthn_assertion = action.payload;
     });
   },

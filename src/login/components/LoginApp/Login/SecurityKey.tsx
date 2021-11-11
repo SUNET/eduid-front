@@ -10,31 +10,6 @@ import { performAuthentication } from "../../../app_utils/helperFunctions/naviga
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-// const assertionFromAuthenticator = async (
-//   webauthn_challenge,
-//   dispatch,
-//   setSelected
-// ) => {
-//   const decoded_challenge = mfaDecodeMiddleware(webauthn_challenge);
-//   const credential = await navigator.credentials
-//     .get(decoded_challenge)
-//     .then()
-//     .catch(() => {
-//       // getting assertion failed
-//       setSelected(false);
-//     });
-//   if (credential instanceof PublicKeyCredential) {
-//     // webauthnAssertion is of type PublicKeyCredential
-//     const encoded_response = {
-//       credentialId: safeEncode(credential.rawId),
-//       authenticatorData: safeEncode(credential.response.authenticatorData),
-//       clientDataJSON: safeEncode(credential.response.clientDataJSON),
-//       signature: safeEncode(credential.response.signature),
-//     };
-//     dispatch(loginSlice.actions.addWebauthnAssertion(encoded_response));
-//   }
-// };
-
 interface CloseButtonProps {
   setSelected(val: boolean): void;
 }
@@ -60,10 +35,7 @@ interface RetryButtonProps {
   setRetryToggle(val: boolean): void;
 }
 
-const RetryButton = ({
-  retryToggle,
-  setRetryToggle,
-}: RetryButtonProps): JSX.Element => {
+const RetryButton = ({ retryToggle, setRetryToggle }: RetryButtonProps): JSX.Element => {
   const faRedoCasted = faRedo as IconProp;
   const dispatch = useAppDispatch();
   return (
@@ -83,16 +55,9 @@ interface SecurityKeyUnselectedProps extends SecurityKeyProps {
   setSelected(val: boolean): void;
 }
 
-const SecurityKeyUnselected = ({
-  translate,
-  setSelected,
-}: SecurityKeyUnselectedProps): JSX.Element => {
-  const webauthn_challenge = useAppSelector(
-    (state) => state.login.mfa.webauthn_challenge
-  );
-  const webauthn_assertion = useAppSelector(
-    (state) => state.login.mfa.webauthn_assertion
-  );
+const SecurityKeyUnselected = ({ translate, setSelected }: SecurityKeyUnselectedProps): JSX.Element => {
+  const webauthn_challenge = useAppSelector((state) => state.login.mfa.webauthn_challenge);
+  const webauthn_assertion = useAppSelector((state) => state.login.mfa.webauthn_assertion);
   const dispatch = useAppDispatch();
   const showSecurityKey = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -106,7 +71,11 @@ const SecurityKeyUnselected = ({
       return undefined;
     } else {
       if (webauthn_assertion === undefined) {
-        dispatch(performAuthentication(webauthn_challenge));
+        dispatch(performAuthentication(webauthn_challenge)).then((ret) => {
+          if (ret.payload === undefined) {
+            setSelected(false);
+          }
+        });
       }
     }
   };
@@ -114,11 +83,7 @@ const SecurityKeyUnselected = ({
   return (
     <Fragment>
       <p className="heading">{translate("login.mfa.primary-option.title")}</p>
-      <ButtonPrimary
-        type="submit"
-        onClick={showSecurityKey}
-        id="mfa-security-key"
-      >
+      <ButtonPrimary type="submit" onClick={showSecurityKey} id="mfa-security-key">
         {translate("login.mfa.primary-option.button")}
       </ButtonPrimary>
     </Fragment>
@@ -139,31 +104,19 @@ const SecurityKey = (props: SecurityKeyProps): JSX.Element => {
         {selected ? (
           <>
             <div className="button-pair selected">
-              <p className="heading">
-                {translate("login.mfa.primary-option.title")}
-              </p>
+              <p className="heading">{translate("login.mfa.primary-option.title")}</p>
               <CloseButton setSelected={setSelected} />
             </div>
             <div className="button-pair bottom">
-              <img
-                src={SecurityKeyGif}
-                alt="animation of security key inserted into computer"
-              />
-              <RetryButton
-                retryToggle={retryToggle}
-                setRetryToggle={setRetryToggle}
-              />
+              <img src={SecurityKeyGif} alt="animation of security key inserted into computer" />
+              <RetryButton retryToggle={retryToggle} setRetryToggle={setRetryToggle} />
             </div>
           </>
         ) : (
           <SecurityKeyUnselected setSelected={setSelected} {...props} />
         )}
       </div>
-      {selected && (
-        <p className="help-link">
-          {translate("login.mfa.primary-option.hint")}
-        </p>
-      )}
+      {selected && <p className="help-link">{translate("login.mfa.primary-option.hint")}</p>}
     </div>
   );
 };

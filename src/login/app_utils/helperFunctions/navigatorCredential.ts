@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as CBOR from "../../../sagas/cbor";
-import { safeEncode } from "./authenticatorAssertion";
+import { safeDecode, safeEncode } from "./base64Utils";
 
 // serialised version of a PublicKeyCredential
 export interface webauthnAssertion {
@@ -10,11 +10,23 @@ export interface webauthnAssertion {
   signature: string;
 }
 
-const decodeChallenge = (webauthn_options: string) => {
+/**
+ * Decode webauthn options (from the eduid backend) before passing it to navigator.credentials.get().
+ *
+ * The return data from this function generally looks like this:
+ *
+ *   { publicKey: { rpId: "eduid.docker",
+ *                  challenge: Uint8Array(32),
+ *                  allowCredentials: [ ... ]
+ *                }
+ *   }
+ *
+ * but since it depends on the input data, we can't type declare it stricter than 'any'.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const decodeChallenge = (webauthn_options: string): { [key: string]: any } | undefined => {
   if (typeof webauthn_options === "string") {
-    const options = window.atob(webauthn_options.replace(/_/g, "/").replace(/-/g, "+"));
-    const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
-    return CBOR.decode(byte_options.buffer);
+    return CBOR.decode(safeDecode(webauthn_options).buffer);
   }
 };
 
@@ -25,7 +37,6 @@ const decodeChallenge = (webauthn_options: string) => {
 export const performAuthentication = createAsyncThunk(
   "eduid/credentials/performAuthentication",
   async (webauthn_challenge: string, thunkAPI): Promise<webauthnAssertion | undefined> => {
-    console.log("STARTING WEBAUTHN: ", webauthn_challenge);
     const decoded_challenge = decodeChallenge(webauthn_challenge);
     const assertion = await navigator.credentials
       .get(decoded_challenge)
@@ -34,21 +45,15 @@ export const performAuthentication = createAsyncThunk(
         // assertion failed / cancelled
         return thunkAPI.rejectWithValue("Authentication failed, or was cancelled");
       });
-    if (assertion instanceof PublicKeyCredential) {
-      console.log("GOT ASSERTION: ", assertion);
+    if (assertion instanceof PublicKeyCredential && assertion.response instanceof AuthenticatorAssertionResponse) {
+      // encode the assertion into strings that can be stored in the state
       const encoded_assertion: webauthnAssertion = {
         credentialId: safeEncode(assertion.rawId),
         authenticatorData: safeEncode(assertion.response.authenticatorData),
         clientDataJSON: safeEncode(assertion.response.clientDataJSON),
         signature: safeEncode(assertion.response.signature),
-
-        // credentialId: "NOT DECODED",
-        // authenticatorData: "",
-        // clientDataJSON: "",
-        // signature: "",
       };
       return encoded_assertion;
     }
-    return undefined;
   }
 );
