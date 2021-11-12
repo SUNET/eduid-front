@@ -6,20 +6,17 @@ import { postTouVersionsSaga } from "../login/postTouVersionsSaga";
 import { postUpdatedTouAcceptSaga } from "../login/postUpdatedTouAcceptSaga";
 import { postRefForWebauthnChallengeSaga } from "../login/postRefForWebauthnChallengeSaga";
 import { postWebauthnFromAuthenticatorSaga } from "../login/postWebauthnFromAuthenticatorSaga";
+import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 
 const loginSagas = [
   takeLatest(loginSlice.actions.callLoginNext, postRefLoginSaga),
   takeLatest(loginSlice.actions.postUsernamePassword, postUsernamePasswordSaga),
   takeLatest(loginSlice.actions.postTouVersions, postTouVersionsSaga),
   takeLatest(loginSlice.actions.updatedTouAccept, postUpdatedTouAcceptSaga),
-  takeLatest(
-    loginSlice.actions.postRefForWebauthnChallenge,
-    postRefForWebauthnChallengeSaga
-  ),
-  takeLatest(
-    loginSlice.actions.addWebauthnAssertion,
-    postWebauthnFromAuthenticatorSaga
-  ),
+  // fetch a webauthn challenge from the backend
+  takeLatest(loginSlice.actions.postRefForWebauthnChallenge, postRefForWebauthnChallengeSaga),
+  // send a webauthn assertion to the backend
+  takeLatest(performAuthentication.fulfilled, postWebauthnFromAuthenticatorSaga),
   takeLatest("POST_IDP_MFA_AUTH_FAIL", postRefForWebauthnChallengeSaga),
 ];
 

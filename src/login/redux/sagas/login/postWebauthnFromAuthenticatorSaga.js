@@ -11,6 +11,10 @@ export function* postWebauthnFromAuthenticatorSaga() {
     csrf_token: state.config.csrf_token,
     webauthn_response: state.login.mfa.webauthn_assertion,
   };
+  if (dataToSend.webauthn_response === undefined) {
+    // if the authentication times out, the state is updated with a value of 'undefined'
+    return;
+  }
   try {
     const response = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));

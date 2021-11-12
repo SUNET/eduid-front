@@ -1,13 +1,18 @@
 {
   "jest.jestCommandLine": "node_modules/.bin/jest",
   "cSpell.words": [
+    "CBOR",
     "eduid",
-    "initialisation",
-    "initialise",
-    "initialised",
+    "fontawesome",
+    "fortawesome",
+    "freja",
     "middlewares",
+    "ORCID",
+    "precss",
     "reduxjs",
-    "serialised",
+    "urldecode",
+    "urlencode",
     "webauthn"
-  ]
+  ],
+  "cSpell.language": "en,en-US,en-GB"
 }
