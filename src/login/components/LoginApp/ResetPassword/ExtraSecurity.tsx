@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import ExtraSecurityToken from "../ResetPassword/ExtraSecurityToken";
+import ExtraSecurityToken from "./ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import Splash from "../../../../containers/Splash";
 import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
