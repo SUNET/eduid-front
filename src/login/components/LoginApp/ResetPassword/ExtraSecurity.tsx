@@ -96,7 +96,7 @@ function ExtraSecurity(props) {
     }
   }, [emailCode, suggested_password]);
 
-  const ShowSecurityKey = (e) => {
+  const ShowSecurityKey = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
     startTokenAssertion();

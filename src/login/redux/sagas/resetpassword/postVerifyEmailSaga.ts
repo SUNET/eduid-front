@@ -29,12 +29,7 @@ export function* requestLinkCode() {
       csrf_token: state.config.csrf_token,
     };
     try {
-      const response: PayloadAction<
-        VerifyEmailResponse,
-        string,
-        never,
-        boolean
-      > = yield call(postRequest, url, data);
+      const response: PayloadAction<VerifyEmailResponse, string, never, boolean> = yield call(postRequest, url, data);
       yield put(putCsrfToken(response));
       if (response.error) {
         // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
@@ -43,22 +38,15 @@ export function* requestLinkCode() {
         return;
       }
       // if API call successfully post data save it to store
-      yield put(
-        resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess(
-          response.payload
-        )
-      );
-      // Completed with frejaeid location changes to set-new-password
+      yield put(resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess(response.payload));
+      // Completed with freja eid location changes to set-new-password
       if (locationUrl.includes("set-new-password")) {
         history.push(`/reset-password/set-new-password/${data.email_code}`);
       } else {
         history.push(`/reset-password/extra-security/${data.email_code}`);
       }
     } catch (error) {
-      yield* failRequest(
-        error,
-        resetPasswordSlice.actions.resetPasswordSagaFail()
-      );
+      yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
     }
   }
 }
