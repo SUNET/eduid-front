@@ -13,8 +13,7 @@ class Orcid extends Component {
     if (this.props.orcid != null) {
       let orcidAuthor = this.props.orcid.name;
       if (!orcidAuthor) {
-        orcidAuthor =
-          this.props.orcid.given_name + " " + this.props.orcid.family_name;
+        orcidAuthor = this.props.orcid.given_name + " " + this.props.orcid.family_name;
       }
       orcidData = (
         <div className="table-responsive">
@@ -31,11 +30,7 @@ class Orcid extends Component {
                   </a>
                 </td>
                 <td>
-                  <EduIDButton
-                    className="btn-link"
-                    id="remove-orcid-button"
-                    onClick={this.props.handleOrcidDelete}
-                  >
+                  <EduIDButton className="btn-link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
                     <svg
                       className="remove"
                       width="16"
@@ -57,18 +52,13 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <Fragment>
-          <PrimaryButton
-            id="connect-orcid-button"
-            onClick={this.props.handleOrcidConnect}
-          >
+          <PrimaryButton id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
             <div className="orcid-logo-container">
               <span className="orcid-logo" />
             </div>
             {this.props.translate("orc.button_connect")}
           </PrimaryButton>
-          <p className="orcid-btn-help">
-            {this.props.translate("orc.long_description")}
-          </p>
+          <p className="orcid-btn-help">{this.props.translate("orc.long_description")}</p>
         </Fragment>
       );
     }

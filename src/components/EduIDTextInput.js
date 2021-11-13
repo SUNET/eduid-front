@@ -6,18 +6,7 @@ import Label from "reactstrap/lib/Label";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const textInput = (props) => {
-  const {
-    input,
-    label,
-    name,
-    meta,
-    selectOptions,
-    type,
-    translate,
-    disabled,
-    helpBlock,
-    placeholder,
-  } = props;
+  const { input, label, name, meta, selectOptions, type, translate, disabled, helpBlock, placeholder } = props;
   let valid = false,
     invalid = false;
   if (meta.touched || meta.submitFailed) {

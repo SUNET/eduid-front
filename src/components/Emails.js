@@ -86,11 +86,7 @@ class Emails extends Component {
             <EmailForm {...this.props} />
           </div>
 
-          <EduIDButton
-            id="add-more-button"
-            className={this.state.addLinkClass}
-            onClick={this.showEmailForm}
-          >
+          <EduIDButton id="add-more-button" className={this.state.addLinkClass} onClick={this.showEmailForm}>
             {this.props.translate("emails.button_add_more")}
           </EduIDButton>
         </div>

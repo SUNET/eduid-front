@@ -46,10 +46,7 @@ let configReducer = (state = configData, action) => {
       };
     case "@@router/LOCATION_CHANGE": {
       let show_sidebar = true;
-      if (
-        urls_with_no_sidebar.filter((v) => action.payload.pathname.endsWith(v))
-          .length > 0
-      ) {
+      if (urls_with_no_sidebar.filter((v) => action.payload.pathname.endsWith(v)).length > 0) {
         show_sidebar = false;
       }
       return {

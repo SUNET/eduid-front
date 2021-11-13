@@ -1,12 +1,6 @@
 import { push } from "react-router-redux";
 import { put, select, call } from "redux-saga/effects";
-import {
-  checkStatus,
-  putCsrfToken,
-  postRequest,
-  getRequest,
-  failRequest,
-} from "sagas/common";
+import { checkStatus, putCsrfToken, postRequest, getRequest, failRequest } from "sagas/common";
 import * as actions from "actions/ChangePassword";
 import * as comp from "components/ChangePasswordForm";
 

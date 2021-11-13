@@ -24,13 +24,7 @@ class GenericConfirmModal extends Component {
     } = this.props;
 
     return (
-      <div
-        id={modalId}
-        tabIndex="-1"
-        role="dialog"
-        aria-hidden="true"
-        data-backdrop="true"
-      >
+      <div id={modalId} tabIndex="-1" role="dialog" aria-hidden="true" data-backdrop="true">
         <Modal isOpen={showModal} className={modalId}>
           <ModalHeader>{title}</ModalHeader>
           {modalId === "register-modal" ? (
@@ -43,18 +37,10 @@ class GenericConfirmModal extends Component {
             </ModalBody>
           )}
           <ModalFooter>
-            <EduIDButton
-              id={acceptButtonId}
-              className="modal-button ok-button"
-              onClick={acceptModal}
-            >
+            <EduIDButton id={acceptButtonId} className="modal-button ok-button" onClick={acceptModal}>
               {acceptButtonText ? acceptButtonText : translate("cm.accept")}
             </EduIDButton>
-            <EduIDButton
-              id={closeButtonId}
-              className="modal-button close-button"
-              onClick={closeModal}
-            >
+            <EduIDButton id={closeButtonId} className="modal-button close-button" onClick={closeModal}>
               {closeButtonText ? closeButtonText : translate("cm.cancel")}
             </EduIDButton>
           </ModalFooter>

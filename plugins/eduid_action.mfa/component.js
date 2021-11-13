@@ -36,17 +36,12 @@ class Main extends Component {
     let mfa_fallback = (
       <div className="text-center">
         <div className="card" id="mfa-try-another-way">
-          <div className="card-header">
-            {this.props.translate("mfa.problems-heading")}
-          </div>
+          <div className="card-header">{this.props.translate("mfa.problems-heading")}</div>
           <div className="card-body">
             <button className="btn-link" onClick={this.props.retry}>
               {this.props.translate("mfa.try-again")}
             </button>
-            <button
-              className="btn-link"
-              onClick={this.handleExternalMFAClick.bind(this)}
-            >
+            <button className="btn-link" onClick={this.handleExternalMFAClick.bind(this)}>
               {this.props.translate("mfa.freja-eid")}
             </button>
           </div>
@@ -62,9 +57,7 @@ class Main extends Component {
               <h2>{this.props.translate("mfa.no-webauthn-support")}</h2>
             </div>
             <div>
-              <p className="lead webauthn-text">
-                {this.props.translate("mfa.no-webauthn-support-text")}
-              </p>
+              <p className="lead webauthn-text">{this.props.translate("mfa.no-webauthn-support-text")}</p>
             </div>
           </div>
           {mfa_fallback}
@@ -136,12 +129,9 @@ const mapStateToProps = (state, props) => {
       options.publicKey = {
         ...options.publicKey,
         challenge: Uint8Array.from(
-          Array.prototype.map.call(
-            atob(options.publicKey.challenge),
-            function (x) {
-              return x.charCodeAt(0);
-            }
-          )
+          Array.prototype.map.call(atob(options.publicKey.challenge), function (x) {
+            return x.charCodeAt(0);
+          })
         ),
       };
       const allowCreds = options.publicKey.allowCredentials.map((v) => {
@@ -161,10 +151,7 @@ const mapStateToProps = (state, props) => {
     }
   }
   let external_mfa_url = "";
-  if (
-    state.config.eidas_url !== undefined &&
-    state.config.mfa_authn_idp !== undefined
-  ) {
+  if (state.config.eidas_url !== undefined && state.config.mfa_authn_idp !== undefined) {
     let eidas_sp_url = state.config.eidas_url;
     let mfa_auth_idp_url = state.config.mfa_authn_idp;
     let verify_path = "mfa-authentication";
@@ -177,8 +164,7 @@ const mapStateToProps = (state, props) => {
       next.concat("/");
     }
     next = next + "redirect-action";
-    external_mfa_url =
-      eidas_sp_url + verify_path + "?idp=" + mfa_auth_idp_url + "&next=" + next;
+    external_mfa_url = eidas_sp_url + verify_path + "?idp=" + mfa_auth_idp_url + "&next=" + next;
     console.log(external_mfa_url);
   }
   return {

@@ -49,11 +49,7 @@ export function handleRetry() {
 }
 
 function* rootSaga() {
-  yield [
-    ...defaultSaga,
-    takeLatest(WEBAUTHN_CREDS_GOT, postCompleteWebauthn),
-    takeLatest(actions.RETRY, handleRetry),
-  ];
+  yield [...defaultSaga, takeLatest(WEBAUTHN_CREDS_GOT, postCompleteWebauthn), takeLatest(actions.RETRY, handleRetry)];
 }
 
 export default rootSaga;

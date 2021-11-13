@@ -3,65 +3,32 @@ import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
 export const userProfile = {
   // dashboard
-  "dashboard.tagline": (
-    <FormattedMessage id="dashboard.tagline" defaultMessage={`eduID for`} />
-  ),
+  "dashboard.tagline": <FormattedMessage id="dashboard.tagline" defaultMessage={`eduID for`} />,
 
   // profile page
-  "profile.name_display_title": (
-    <FormattedMessage id="profile.name_display_title" defaultMessage={`Name`} />
-  ),
-  "profile.name_display_no_data": (
-    <FormattedMessage
-      id="profile.name_display_no_data"
-      defaultMessage={`add name`}
-    />
-  ),
+  "profile.name_display_title": <FormattedMessage id="profile.name_display_title" defaultMessage={`Name`} />,
+  "profile.name_display_no_data": <FormattedMessage id="profile.name_display_no_data" defaultMessage={`add name`} />,
 
-  "profile.phone_display_title": (
-    <FormattedMessage
-      id="profile.phone_display_title"
-      defaultMessage={`Phone number`}
-    />
-  ),
+  "profile.phone_display_title": <FormattedMessage id="profile.phone_display_title" defaultMessage={`Phone number`} />,
 
   "profile.phone_display_unconfirmed_data": (
-    <FormattedMessage
-      id="profile.phone_display_unconfirmed_data"
-      defaultMessage={`confirm added number`}
-    />
+    <FormattedMessage id="profile.phone_display_unconfirmed_data" defaultMessage={`confirm added number`} />
   ),
 
   "profile.phone_display_non-primary_data": (
-    <FormattedMessage
-      id="profile.phone_display_non-primary_data"
-      defaultMessage={`make number primary`}
-    />
+    <FormattedMessage id="profile.phone_display_non-primary_data" defaultMessage={`make number primary`} />
   ),
 
   "profile.phone_display_no_data": (
-    <FormattedMessage
-      id="profile.phone_display_no_data"
-      defaultMessage={`add phone number`}
-    />
+    <FormattedMessage id="profile.phone_display_no_data" defaultMessage={`add phone number`} />
   ),
 
-  "profile.email_display_title": (
-    <FormattedMessage
-      id="profile.email_display_title"
-      defaultMessage={`Email address`}
-    />
-  ),
+  "profile.email_display_title": <FormattedMessage id="profile.email_display_title" defaultMessage={`Email address`} />,
 
-  "profile.eppn_display_title": (
-    <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />
-  ),
+  "profile.eppn_display_title": <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />,
 
   "profile.email_display_no_data": (
-    <FormattedMessage
-      id="profile.email_display_no_data"
-      defaultMessage={`no email added`}
-    />
+    <FormattedMessage id="profile.email_display_no_data" defaultMessage={`no email added`} />
   ),
 
   "dashboard.tagline_unverified": (
@@ -72,27 +39,15 @@ export const userProfile = {
   ),
 
   "dashboard.tagline_verified": (
-    <FormattedMessage
-      id="dashboard.tagline_verified"
-      defaultMessage={`Make eduID more secure`}
-    />
+    <FormattedMessage id="dashboard.tagline_verified" defaultMessage={`Make eduID more secure`} />
   ),
 
   /* ----- DASHBOARDNAV  ------- */
-  "dashboard_nav.profile": (
-    <FormattedMessage id="dashboard_nav.profile" defaultMessage={`Profile`} />
-  ),
-  "dashboard_nav.identity": (
-    <FormattedMessage id="dashboard_nav.identity" defaultMessage={`Identity`} />
-  ),
-  "dashboard_nav.settings": (
-    <FormattedMessage id="dashboard_nav.settings" defaultMessage={`Settings`} />
-  ),
+  "dashboard_nav.profile": <FormattedMessage id="dashboard_nav.profile" defaultMessage={`Profile`} />,
+  "dashboard_nav.identity": <FormattedMessage id="dashboard_nav.identity" defaultMessage={`Identity`} />,
+  "dashboard_nav.settings": <FormattedMessage id="dashboard_nav.settings" defaultMessage={`Settings`} />,
   "dashboard_nav.advanced-settings": (
-    <FormattedMessage
-      id="dashboard_nav.advanced-settings"
-      defaultMessage={`Advanced settings`}
-    />
+    <FormattedMessage id="dashboard_nav.advanced-settings" defaultMessage={`Advanced settings`} />
   ),
   "dashboard_nav.identity-verify-freja": (
     <FormattedHTMLMessage
@@ -118,9 +73,7 @@ export const userProfile = {
       defaultMessage={`<b>Confirm your number</b> to verify your id by phone`}
     />
   ),
-  "dashboard_nav.back": (
-    <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />
-  ),
+  "dashboard_nav.back": <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />,
 
   "verify-identity.unverified_main_title": (
     <FormattedMessage
@@ -161,10 +114,7 @@ export const userProfile = {
 
   /* ----- verifyIdentity  ------- */
   "verify-identity.verified_main_title": (
-    <FormattedMessage
-      id="verify-identity.verified_main_title"
-      defaultMessage={`Your eduID is ready to use`}
-    />
+    <FormattedMessage id="verify-identity.verified_main_title" defaultMessage={`Your eduID is ready to use`} />
   ),
 
   "verify-identity.vetting_post_tagline": (
@@ -182,17 +132,11 @@ export const userProfile = {
   ),
 
   "verify-identity.vetting_letter_sent": (
-    <FormattedMessage
-      id="verify-identity.vetting_letter_sent"
-      defaultMessage={`The letter was sent`}
-    />
+    <FormattedMessage id="verify-identity.vetting_letter_sent" defaultMessage={`The letter was sent`} />
   ),
 
   "verify-identity.vetting_letter_valid": (
-    <FormattedMessage
-      id="verify-identity.vetting_letter_valid"
-      defaultMessage={`The letter is valid to`}
-    />
+    <FormattedMessage id="verify-identity.vetting_letter_valid" defaultMessage={`The letter is valid to`} />
   ),
 
   "verify-identity.vetting_letter_received": (
@@ -203,10 +147,7 @@ export const userProfile = {
   ),
 
   "verify-identity.vetting_letter_code_expired": (
-    <FormattedMessage
-      id="verify-identity.vetting_letter_code_expired"
-      defaultMessage={`The code expired`}
-    />
+    <FormattedMessage id="verify-identity.vetting_letter_code_expired" defaultMessage={`The code expired`} />
   ),
 
   "verify-identity.vetting_letter_order_new_code": (
@@ -238,10 +179,7 @@ export const userProfile = {
   ),
 
   "verify-identity.vetting_link_settings": (
-    <FormattedMessage
-      id="verify-identity.vetting_link_settings"
-      defaultMessage={`Settings`}
-    />
+    <FormattedMessage id="verify-identity.vetting_link_settings" defaultMessage={`Settings`} />
   ),
 
   "verify-identity.vetting_explanation_only_available_swe_number": (
@@ -259,10 +197,7 @@ export const userProfile = {
   ),
 
   "verify-identity.connect-nin_heading": (
-    <FormattedMessage
-      id="verify-identity.connect-nin_heading"
-      defaultMessage={`2. Verify your id number`}
-    />
+    <FormattedMessage id="verify-identity.connect-nin_heading" defaultMessage={`2. Verify your id number`} />
   ),
 
   "verify-identity.connect-nin_description": (
@@ -275,18 +210,10 @@ export const userProfile = {
 
 export const userVetting = {
   /* ----- LETTER PROOFING  ------- */
-  "letter.button_text_request": (
-    <FormattedMessage
-      id="letter.button_text_request"
-      defaultMessage={`by post`}
-    />
-  ),
+  "letter.button_text_request": <FormattedMessage id="letter.button_text_request" defaultMessage={`by post`} />,
 
   "letter.button_text_code": (
-    <FormattedMessage
-      id="letter.button_text_code"
-      defaultMessage={`Enter confirmation code here`}
-    />
+    <FormattedMessage id="letter.button_text_code" defaultMessage={`Enter confirmation code here`} />
   ),
 
   "letter.initialize_proofing_help_text": (
@@ -296,32 +223,18 @@ export const userVetting = {
     />
   ),
 
-  "letter.no_state_found": (
-    <FormattedMessage
-      id="letter.no_state_found"
-      defaultMessage={`No state found`}
-    />
-  ),
+  "letter.no_state_found": <FormattedMessage id="letter.no_state_found" defaultMessage={`No state found`} />,
 
   "letter.letter_sent_msg": (
-    <FormattedMessage
-      id="letter.letter_sent_msg"
-      defaultMessage={`You have been sent a verification letter`}
-    />
+    <FormattedMessage id="letter.letter_sent_msg" defaultMessage={`You have been sent a verification letter`} />
   ),
 
   "letter.already-sent": (
-    <FormattedMessage
-      id="letter.already-sent"
-      defaultMessage={`You have already been sent a verification letter`}
-    />
+    <FormattedMessage id="letter.already-sent" defaultMessage={`You have already been sent a verification letter`} />
   ),
 
   "letter.no-address-found": (
-    <FormattedMessage
-      id="letter.no-address-found"
-      defaultMessage={`No postal address found`}
-    />
+    <FormattedMessage id="letter.no-address-found" defaultMessage={`No postal address found`} />
   ),
 
   "letter.bad-postal-address": (
@@ -332,24 +245,13 @@ export const userVetting = {
   ),
 
   "letter.saved-unconfirmed": (
-    <FormattedMessage
-      id="letter.saved-unconfirmed"
-      defaultMessage={`A letter with confirmation code has been sent.`}
-    />
+    <FormattedMessage id="letter.saved-unconfirmed" defaultMessage={`A letter with confirmation code has been sent.`} />
   ),
 
-  "letter.wrong-code": (
-    <FormattedMessage
-      id="letter.wrong-code"
-      defaultMessage={`Incorrect verification code`}
-    />
-  ),
+  "letter.wrong-code": <FormattedMessage id="letter.wrong-code" defaultMessage={`Incorrect verification code`} />,
 
   "letter.verification_success": (
-    <FormattedMessage
-      id="letter.verification_success"
-      defaultMessage={`Successfully verified national id number`}
-    />
+    <FormattedMessage id="letter.verification_success" defaultMessage={`Successfully verified national id number`} />
   ),
 
   "letter.modal_confirm_title": (
@@ -367,26 +269,15 @@ export const userVetting = {
   ),
 
   "letter.verify_title": (
-    <FormattedMessage
-      id="letter.verify_title"
-      defaultMessage={`Add the code you have received by post`}
-    />
+    <FormattedMessage id="letter.verify_title" defaultMessage={`Add the code you have received by post`} />
   ),
 
   /* ----- Phone Subscription ------- */
 
-  "lmp.button_text_request": (
-    <FormattedMessage
-      id="lmp.button_text_request"
-      defaultMessage={`by phone`}
-    />
-  ),
+  "lmp.button_text_request": <FormattedMessage id="lmp.button_text_request" defaultMessage={`by phone`} />,
 
   "lmp.button_text_code": (
-    <FormattedMessage
-      id="lmp.button_text_code"
-      defaultMessage={`Enter confirmation code here`}
-    />
+    <FormattedMessage id="lmp.button_text_code" defaultMessage={`Enter confirmation code here`} />
   ),
 
   "lmp.initialize_proofing_help_text": (
@@ -428,10 +319,7 @@ export const userVetting = {
 
   /* ----- FREJA------- */
   "eidas.vetting_button_freja": (
-    <FormattedMessage
-      id="eidas.vetting_button_freja"
-      defaultMessage={`with a digital ID-card`}
-    />
+    <FormattedMessage id="eidas.vetting_button_freja" defaultMessage={`with a digital ID-card`} />
   ),
 
   "eidas.initialize_proofing_help_text": (
@@ -442,16 +330,10 @@ export const userVetting = {
   ),
 
   "eidas.modal_title": (
-    <FormattedMessage
-      id="eidas.modal_title"
-      defaultMessage={`Use Freja eID+ and pass a local authorised agent`}
-    />
+    <FormattedMessage id="eidas.modal_title" defaultMessage={`Use Freja eID+ and pass a local authorised agent`} />
   ),
   "eidas.freja_instructions_step1": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step1"
-      defaultMessage={`Install the app`}
-    />
+    <FormattedMessage id="eidas.freja_instructions_step1" defaultMessage={`Install the app`} />
   ),
 
   "eidas.freja_instructions_step2": (
@@ -462,10 +344,7 @@ export const userVetting = {
   ),
 
   "eidas.freja_instructions_step3": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step3"
-      defaultMessage={`The app will generate a QR-code`}
-    />
+    <FormattedMessage id="eidas.freja_instructions_step3" defaultMessage={`The app will generate a QR-code`} />
   ),
 
   "eidas.freja_instructions_step4": (
@@ -489,31 +368,15 @@ export const userVetting = {
     />
   ),
   "eidas.freja_instructions_install_link": (
-    <FormattedMessage
-      id="eidas.freja_instructions_install_link"
-      defaultMessage={`What is Freja eID?`}
-    />
+    <FormattedMessage id="eidas.freja_instructions_install_link" defaultMessage={`What is Freja eID?`} />
   ),
 
-  "eidas.freja_eid_ready": (
-    <FormattedMessage
-      id="eidas.freja_eid_ready"
-      defaultMessage={`Use my Freja eID`}
-    />
-  ),
+  "eidas.freja_eid_ready": <FormattedMessage id="eidas.freja_eid_ready" defaultMessage={`Use my Freja eID`} />,
 
-  "eidas.token_not_found": (
-    <FormattedMessage
-      id="eidas.token_not_found"
-      defaultMessage={`U2F token not found`}
-    />
-  ),
+  "eidas.token_not_found": <FormattedMessage id="eidas.token_not_found" defaultMessage={`U2F token not found`} />,
 
   "eidas.token_not_in_credentials_used": (
-    <FormattedMessage
-      id="eidas.token_not_in_credentials_used"
-      defaultMessage={`U2F token not used for login`}
-    />
+    <FormattedMessage id="eidas.token_not_in_credentials_used" defaultMessage={`U2F token not used for login`} />
   ),
 
   "eidas.nin_not_matching": (
@@ -524,45 +387,28 @@ export const userVetting = {
   ),
 
   "eidas.nin_already_verified": (
-    <FormattedMessage
-      id="eidas.nin_already_verified"
-      defaultMessage={`You have already verified your identity`}
-    />
+    <FormattedMessage id="eidas.nin_already_verified" defaultMessage={`You have already verified your identity`} />
   ),
 
   "eidas.nin_verify_success": (
-    <FormattedMessage
-      id="eidas.nin_verify_success"
-      defaultMessage={`Identity verified successfully`}
-    />
+    <FormattedMessage id="eidas.nin_verify_success" defaultMessage={`Identity verified successfully`} />
   ),
 
   "eidas.token_verify_success": (
-    <FormattedMessage
-      id="eidas.token_verify_success"
-      defaultMessage={`U2F token verified successfully`}
-    />
+    <FormattedMessage id="eidas.token_verify_success" defaultMessage={`U2F token verified successfully`} />
   ),
 
   "eidas.authn_context_mismatch": (
-    <FormattedMessage
-      id="eidas.authn_context_mismatch"
-      defaultMessage={`Wrong authentication context received`}
-    />
+    <FormattedMessage id="eidas.authn_context_mismatch" defaultMessage={`Wrong authentication context received`} />
   ),
 
   "eidas.reauthn_expired": (
-    <FormattedMessage
-      id="eidas.reauthn_expired"
-      defaultMessage={`Authentication has expired. Please try again.`}
-    />
+    <FormattedMessage id="eidas.reauthn_expired" defaultMessage={`Authentication has expired. Please try again.`} />
   ),
 
   /* ----- OIDC SE-LEG ------- */
 
-  "oc.initialize_proofing": (
-    <FormattedMessage id="oc.initialize_proofing" defaultMessage={`SE-LEG`} />
-  ),
+  "oc.initialize_proofing": <FormattedMessage id="oc.initialize_proofing" defaultMessage={`SE-LEG`} />,
 
   "oc.initialize_proofing_help_text": (
     <FormattedHTMLMessage
@@ -571,18 +417,10 @@ export const userVetting = {
     />
   ),
 
-  "oc.modal_title": (
-    <FormattedMessage
-      id="oc.modal_title"
-      defaultMessage={`Confirm using SE-LEG`}
-    />
-  ),
+  "oc.modal_title": <FormattedMessage id="oc.modal_title" defaultMessage={`Confirm using SE-LEG`} />,
 
   "oc.instructions_title": (
-    <FormattedMessage
-      id="oc.instructions_title"
-      defaultMessage={`How to confirm your account using SE-LEG`}
-    />
+    <FormattedMessage id="oc.instructions_title" defaultMessage={`How to confirm your account using SE-LEG`} />
   ),
 
   "oc.instructions_step_1": (
@@ -608,12 +446,7 @@ export const userVetting = {
 
   /* ----- OIDC FREJA------- */
 
-  "ocf.initialize_proofing": (
-    <FormattedMessage
-      id="ocf.initialize_proofing"
-      defaultMessage={`with Freja eID`}
-    />
-  ),
+  "ocf.initialize_proofing": <FormattedMessage id="ocf.initialize_proofing" defaultMessage={`with Freja eID`} />,
 
   "ocf.initialize_proofing_help_text": (
     <FormattedHTMLMessage
@@ -622,12 +455,7 @@ export const userVetting = {
     />
   ),
 
-  "ocf.modal_title": (
-    <FormattedMessage
-      id="ocf.modal_title"
-      defaultMessage={`Confirm using Freja eID`}
-    />
-  ),
+  "ocf.modal_title": <FormattedMessage id="ocf.modal_title" defaultMessage={`Confirm using Freja eID`} />,
 
   "ocf.freja_instructions_title": (
     <FormattedMessage
@@ -672,25 +500,12 @@ export const userVetting = {
   ),
 
   "ocf.freja_instructions_install_link": (
-    <FormattedMessage
-      id="ocf.freja_instructions_install_link"
-      defaultMessage={`I need to install Freja eID`}
-    />
+    <FormattedMessage id="ocf.freja_instructions_install_link" defaultMessage={`I need to install Freja eID`} />
   ),
 
-  "ocf.open_app": (
-    <FormattedMessage
-      id="ocf.open_app"
-      defaultMessage={`I have Freja eID installed`}
-    />
-  ),
+  "ocf.open_app": <FormattedMessage id="ocf.open_app" defaultMessage={`I have Freja eID installed`} />,
 
-  "ocf.not_on_mobile_title": (
-    <FormattedMessage
-      id="ocf.not_on_mobile_title"
-      defaultMessage={`Not using your phone?`}
-    />
-  ),
+  "ocf.not_on_mobile_title": <FormattedMessage id="ocf.not_on_mobile_title" defaultMessage={`Not using your phone?`} />,
 
   "ocf.not_on_mobile_message": (
     <FormattedHTMLMessage
@@ -702,12 +517,7 @@ export const userVetting = {
 
 export const userData = {
   // nins
-  "add_nin.main_title": (
-    <FormattedMessage
-      id="add_nin.main_title"
-      defaultMessage={`1. Add your id number`}
-    />
-  ),
+  "add_nin.main_title": <FormattedMessage id="add_nin.main_title" defaultMessage={`1. Add your id number`} />,
 
   /* ----- NINDISPLAY ------- */
   "nin_display.verify-identity_unverified_main_title": (
@@ -718,74 +528,37 @@ export const userData = {
   ),
 
   "nin_display.verify-identity_verified_main_title": (
-    <FormattedMessage
-      id="nin_display.verify-identity_verified_main_title"
-      defaultMessage={`id number`}
-    />
+    <FormattedMessage id="nin_display.verify-identity_verified_main_title" defaultMessage={`id number`} />
   ),
 
   "nin_display.profile.main_title": (
-    <FormattedMessage
-      id="nin_display.profile.main_title"
-      defaultMessage={`Id number`}
-    />
+    <FormattedMessage id="nin_display.profile.main_title" defaultMessage={`Id number`} />
   ),
 
-  "nin_display.profile.no_nin": (
-    <FormattedMessage
-      id="nin_display.profile.no_nin"
-      defaultMessage={`add id number`}
-    />
-  ),
+  "nin_display.profile.no_nin": <FormattedMessage id="nin_display.profile.no_nin" defaultMessage={`add id number`} />,
 
-  nin_show_last_four_digits: (
-    <FormattedMessage id="nin_show_last_four_digits" defaultMessage={`SHOW`} />
-  ),
+  nin_show_last_four_digits: <FormattedMessage id="nin_show_last_four_digits" defaultMessage={`SHOW`} />,
 
-  nin_hide_last_four_digits: (
-    <FormattedMessage id="nin_hide_last_four_digits" defaultMessage={`HIDE`} />
-  ),
+  nin_hide_last_four_digits: <FormattedMessage id="nin_hide_last_four_digits" defaultMessage={`HIDE`} />,
 
   "nins.input_help_text": (
-    <FormattedMessage
-      id="nins.input_help_text"
-      defaultMessage={"National identity number with 12 digits"}
-    />
+    <FormattedMessage id="nins.input_help_text" defaultMessage={"National identity number with 12 digits"} />
   ),
 
-  "nins.invalid_nin": (
-    <FormattedMessage
-      id="nins.invalid_nin"
-      defaultMessage={`Invalid national id number`}
-    />
-  ),
+  "nins.invalid_nin": <FormattedMessage id="nins.invalid_nin" defaultMessage={`Invalid national id number`} />,
 
   "nins.wrong_length": (
-    <FormattedMessage
-      id="nins.wrong_length"
-      defaultMessage={`A national id number must have 12 digits`}
-    />
+    <FormattedMessage id="nins.wrong_length" defaultMessage={`A national id number must have 12 digits`} />
   ),
 
   "nins.illegal_chars": (
-    <FormattedMessage
-      id="nins.illegal_chars"
-      defaultMessage={`A national id number can only have digits`}
-    />
+    <FormattedMessage id="nins.illegal_chars" defaultMessage={`A national id number can only have digits`} />
   ),
 
-  "nins.valid_nin": (
-    <FormattedMessage
-      id="nins.valid_nin"
-      defaultMessage={`Valid national id number`}
-    />
-  ),
+  "nins.valid_nin": <FormattedMessage id="nins.valid_nin" defaultMessage={`Valid national id number`} />,
 
   "nins.successfully_added": (
-    <FormattedMessage
-      id="nins.successfully_added"
-      defaultMessage={`Your id number was added.`}
-    />
+    <FormattedMessage id="nins.successfully_added" defaultMessage={`Your id number was added.`} />
   ),
 
   "nins.only_one_to_verify": (
@@ -796,10 +569,7 @@ export const userData = {
   ),
 
   "nins.success_removal": (
-    <FormattedMessage
-      id="nins.success_removal"
-      defaultMessage={`Successfully removed national id number`}
-    />
+    <FormattedMessage id="nins.success_removal" defaultMessage={`Successfully removed national id number`} />
   ),
 
   "nins.no-mobile-match": (
@@ -810,19 +580,11 @@ export const userData = {
   ),
 
   "nins.verified_no_rm": (
-    <FormattedMessage
-      id="nins.verified_no_rm"
-      defaultMessage={`You cannot remove your verified national id number`}
-    />
+    <FormattedMessage id="nins.verified_no_rm" defaultMessage={`You cannot remove your verified national id number`} />
   ),
 
   //phone numbers
-  "phone.phone_duplicated": (
-    <FormattedMessage
-      id="phone_duplicated"
-      defaultMessage={`Added number is duplicated`}
-    />
-  ),
+  "phone.phone_duplicated": <FormattedMessage id="phone_duplicated" defaultMessage={`Added number is duplicated`} />,
 
   "phone.phone_format": (
     <FormattedMessage
@@ -855,31 +617,15 @@ export const userData = {
   ),
 
   "phones.input_help_text": (
-    <FormattedMessage
-      id="phones.input_help_text"
-      defaultMessage={"Phone number starting with 0 or +"}
-    />
+    <FormattedMessage id="phones.input_help_text" defaultMessage={"Phone number starting with 0 or +"} />
   ),
 
-  "phones.main_title": (
-    <FormattedMessage
-      id="phones.main_title"
-      defaultMessage={`Mobile phone numbers`}
-    />
-  ),
+  "phones.main_title": <FormattedMessage id="phones.main_title" defaultMessage={`Mobile phone numbers`} />,
 
-  "phones.button_add_more": (
-    <FormattedMessage
-      id="phones.button_add_more"
-      defaultMessage={`+ add more`}
-    />
-  ),
+  "phones.button_add_more": <FormattedMessage id="phones.button_add_more" defaultMessage={`+ add more`} />,
 
   "phones.get-success": (
-    <FormattedMessage
-      id="phones.get-success"
-      defaultMessage={`Successfully retrieved phone numbers`}
-    />
+    <FormattedMessage id="phones.get-success" defaultMessage={`Successfully retrieved phone numbers`} />
   ),
 
   "phones.duplicated": (
@@ -889,12 +635,7 @@ export const userData = {
     />
   ),
 
-  "phones.save-success": (
-    <FormattedMessage
-      id="phones.save-success"
-      defaultMessage={`The phone number was saved`}
-    />
-  ),
+  "phones.save-success": <FormattedMessage id="phones.save-success" defaultMessage={`The phone number was saved`} />,
 
   "phones.unconfirmed_number_not_primary": (
     <FormattedMessage
@@ -904,38 +645,19 @@ export const userData = {
   ),
 
   "phones.primary-success": (
-    <FormattedMessage
-      id="phones.primary-success"
-      defaultMessage={`The phone number was set as primary`}
-    />
+    <FormattedMessage id="phones.primary-success" defaultMessage={`The phone number was set as primary`} />
   ),
 
   "phones.code_expired_send_new": (
-    <FormattedMessage
-      id="phones.code_expired_send_new"
-      defaultMessage={`Expired verification code, sending another`}
-    />
+    <FormattedMessage id="phones.code_expired_send_new" defaultMessage={`Expired verification code, sending another`} />
   ),
 
-  "phones.code_invalid": (
-    <FormattedMessage
-      id="phones.code_invalid"
-      defaultMessage={`Invalid verification code`}
-    />
-  ),
+  "phones.code_invalid": <FormattedMessage id="phones.code_invalid" defaultMessage={`Invalid verification code`} />,
 
-  "phones.invalid_phone": (
-    <FormattedMessage
-      id="phones.invalid_phone"
-      defaultMessage={`Invalid phone number`}
-    />
-  ),
+  "phones.invalid_phone": <FormattedMessage id="phones.invalid_phone" defaultMessage={`Invalid phone number`} />,
 
   "phones.unknown_phone": (
-    <FormattedMessage
-      id="phones.unknown_phone"
-      defaultMessage={`We have no record of the phone number you provided`}
-    />
+    <FormattedMessage id="phones.unknown_phone" defaultMessage={`We have no record of the phone number you provided`} />
   ),
 
   "phones.code_invalid_or_expired": (
@@ -946,17 +668,11 @@ export const userData = {
   ),
 
   "phones.verification-success": (
-    <FormattedMessage
-      id="phones.verification-success"
-      defaultMessage={`Successfully verified phone number`}
-    />
+    <FormattedMessage id="phones.verification-success" defaultMessage={`Successfully verified phone number`} />
   ),
 
   "phones.cannot_remove_unique": (
-    <FormattedMessage
-      id="phones.cannot_remove_unique"
-      defaultMessage={`You must have at least one phone number`}
-    />
+    <FormattedMessage id="phones.cannot_remove_unique" defaultMessage={`You must have at least one phone number`} />
   ),
 
   "phones.cannot_remove_primary": (
@@ -967,18 +683,10 @@ export const userData = {
   ),
 
   "phones.removal-success": (
-    <FormattedMessage
-      id="phones.removal-success"
-      defaultMessage={`Successfully removed phone number`}
-    />
+    <FormattedMessage id="phones.removal-success" defaultMessage={`Successfully removed phone number`} />
   ),
 
-  "phones.code-sent": (
-    <FormattedMessage
-      id="phones.code-sent"
-      defaultMessage={`Successfully sent verification code`}
-    />
-  ),
+  "phones.code-sent": <FormattedMessage id="phones.code-sent" defaultMessage={`Successfully sent verification code`} />,
 
   "phone.e164_format": (
     <FormattedMessage
@@ -998,20 +706,12 @@ export const userData = {
   /* -----  MOBILE ------- */
 
   "mobile.resend_success": (values) => (
-    <FormattedMessage
-      id="mobile.resend_success"
-      defaultMessage={`New code sent to {email}`}
-      values={values}
-    />
+    <FormattedMessage id="mobile.resend_success" defaultMessage={`New code sent to {email}`} values={values} />
   ),
 
-  "mobile.email_label": (
-    <FormattedMessage id="mobile.mobile" defaultMessage={`mobile`} />
-  ),
+  "mobile.email_label": <FormattedMessage id="mobile.mobile" defaultMessage={`mobile`} />,
 
-  "mobile.button_add": (
-    <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />
-  ),
+  "mobile.button_add": <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />,
 
   "mobile.confirm_title": (values) => (
     <FormattedHTMLMessage
@@ -1022,9 +722,7 @@ export const userData = {
   ),
 
   /* ----- PERSONAL DATA------- */
-  "pfilled.completion": (
-    <FormattedMessage id="pfilled.completion" defaultMessage={`Completion`} />
-  ),
+  "pfilled.completion": <FormattedMessage id="pfilled.completion" defaultMessage={`Completion`} />,
 
   "pd.sv_lang": <FormattedMessage id="pd.sv_lang" defaultMessage={`Svenska`} />,
 
@@ -1037,37 +735,19 @@ export const userData = {
     />
   ),
 
-  "pd.main_title": (
-    <FormattedMessage id="pd.main_title" defaultMessage={`Names & language`} />
-  ),
+  "pd.main_title": <FormattedMessage id="pd.main_title" defaultMessage={`Names & language`} />,
 
   "pd.all-data-success": (
-    <FormattedMessage
-      id="pd.all-data-success"
-      defaultMessage={`Successfully retrieved personal information`}
-    />
+    <FormattedMessage id="pd.all-data-success" defaultMessage={`Successfully retrieved personal information`} />
   ),
 
   "pd.pdata-success": (
-    <FormattedMessage
-      id="pd.pdata-success"
-      defaultMessage={`Successfully retrieved personal information`}
-    />
+    <FormattedMessage id="pd.pdata-success" defaultMessage={`Successfully retrieved personal information`} />
   ),
 
-  "pd.save-success": (
-    <FormattedMessage
-      id="pd.save-success"
-      defaultMessage={`Personal information updated`}
-    />
-  ),
+  "pd.save-success": <FormattedMessage id="pd.save-success" defaultMessage={`Personal information updated`} />,
 
-  "pdata.field_required": (
-    <FormattedMessage
-      id="pdata.field_required"
-      defaultMessage={`This field is required`}
-    />
-  ),
+  "pdata.field_required": <FormattedMessage id="pdata.field_required" defaultMessage={`This field is required`} />,
 
   "pd.display_name_input_help_text": (
     <FormattedMessage
@@ -1076,21 +756,9 @@ export const userData = {
     />
   ),
 
-  "pd.no_data_added": (
-    <FormattedMessage
-      id="pd.no_data_added"
-      defaultMessage={`No information has been added.`}
-    />
-  ),
-  "pd.edit.button": (
-    <FormattedMessage id="pd.edit.button" defaultMessage={`edit`} />
-  ),
-  "pd.edit.title": (
-    <FormattedMessage
-      id="pd.edit.title"
-      defaultMessage={`Edit name and language`}
-    />
-  ),
+  "pd.no_data_added": <FormattedMessage id="pd.no_data_added" defaultMessage={`No information has been added.`} />,
+  "pd.edit.button": <FormattedMessage id="pd.edit.button" defaultMessage={`edit`} />,
+  "pd.edit.title": <FormattedMessage id="pd.edit.title" defaultMessage={`Edit name and language`} />,
   "pd.update_locked_names": (
     <FormattedMessage
       id="pd.update_locked_names"
@@ -1107,23 +775,12 @@ export const userData = {
   /* ----- EMAILS------- */
 
   "emails.resend_success": (values) => (
-    <FormattedMessage
-      id="emails.resend_success"
-      defaultMessage={`New code sent to {email}`}
-      values={values}
-    />
+    <FormattedMessage id="emails.resend_success" defaultMessage={`New code sent to {email}`} values={values} />
   ),
 
-  "emails.email_label": (
-    <FormattedMessage id="emails.email" defaultMessage={`Email`} />
-  ),
+  "emails.email_label": <FormattedMessage id="emails.email" defaultMessage={`Email`} />,
 
-  "emails.input_help_text": (
-    <FormattedMessage
-      id="emails.input_help_text"
-      defaultMessage={"A valid email address"}
-    />
-  ),
+  "emails.input_help_text": <FormattedMessage id="emails.input_help_text" defaultMessage={"A valid email address"} />,
 
   "emails.code_invalid": (
     <FormattedMessage
@@ -1139,9 +796,7 @@ export const userData = {
     />
   ),
 
-  "emails.button_add": (
-    <FormattedMessage id="emails.button_add" defaultMessage={`Add`} />
-  ),
+  "emails.button_add": <FormattedMessage id="emails.button_add" defaultMessage={`Add`} />,
 
   "emails.confirm_title": (values) => (
     <FormattedMessage
@@ -1166,25 +821,12 @@ export const userData = {
     />
   ),
 
-  "emails.main_title": (
-    <FormattedMessage
-      id="emails.main_title"
-      defaultMessage={`Email addresses`}
-    />
-  ),
+  "emails.main_title": <FormattedMessage id="emails.main_title" defaultMessage={`Email addresses`} />,
 
-  "emails.button_add_more": (
-    <FormattedMessage
-      id="emails.button_add_more"
-      defaultMessage={`+ add more`}
-    />
-  ),
+  "emails.button_add_more": <FormattedMessage id="emails.button_add_more" defaultMessage={`+ add more`} />,
 
   "emails.get-success": (
-    <FormattedMessage
-      id="emails.get-success"
-      defaultMessage={`Successfully retrieved Email addresses`}
-    />
+    <FormattedMessage id="emails.get-success" defaultMessage={`Successfully retrieved Email addresses`} />
   ),
 
   "emails.duplicated": (
@@ -1194,12 +836,7 @@ export const userData = {
     />
   ),
 
-  "emails.save-success": (
-    <FormattedMessage
-      id="emails.save-success"
-      defaultMessage={`The email address was saved`}
-    />
-  ),
+  "emails.save-success": <FormattedMessage id="emails.save-success" defaultMessage={`The email address was saved`} />,
 
   "emails.unconfirmed_address_not_primary": (
     <FormattedMessage
@@ -1209,31 +846,19 @@ export const userData = {
   ),
 
   "emails.primary-success": (
-    <FormattedMessage
-      id="emails.primary-success"
-      defaultMessage={`The primary email address was updated `}
-    />
+    <FormattedMessage id="emails.primary-success" defaultMessage={`The primary email address was updated `} />
   ),
 
   "emails.code_expired_send_new": (
-    <FormattedMessage
-      id="emails.code_expired_send_new"
-      defaultMessage={`Expired verification code, sending another`}
-    />
+    <FormattedMessage id="emails.code_expired_send_new" defaultMessage={`Expired verification code, sending another`} />
   ),
 
   "emails.verification-success": (
-    <FormattedMessage
-      id="emails.verification-success"
-      defaultMessage={`Successfully verified email address`}
-    />
+    <FormattedMessage id="emails.verification-success" defaultMessage={`Successfully verified email address`} />
   ),
 
   "emails.cannot_remove_unique": (
-    <FormattedMessage
-      id="emails.cannot_remove_unique"
-      defaultMessage={`You must have at least one email address`}
-    />
+    <FormattedMessage id="emails.cannot_remove_unique" defaultMessage={`You must have at least one email address`} />
   ),
 
   "emails.cannot_remove_unique_verified": (
@@ -1244,39 +869,20 @@ export const userData = {
   ),
 
   "emails.removal-success": (
-    <FormattedMessage
-      id="emails.removal-success"
-      defaultMessage={`Successfully removed email address`}
-    />
+    <FormattedMessage id="emails.removal-success" defaultMessage={`Successfully removed email address`} />
   ),
 
-  "emails.code-sent": (
-    <FormattedMessage
-      id="emails.code-sent"
-      defaultMessage={`Successfully sent verification code`}
-    />
-  ),
+  "emails.code-sent": <FormattedMessage id="emails.code-sent" defaultMessage={`Successfully sent verification code`} />,
 
   "emails.cannot_remove_primary": (
-    <FormattedMessage
-      id="emails.cannot_remove_primary"
-      defaultMessage={`You can not delete the primary email`}
-    />
+    <FormattedMessage id="emails.cannot_remove_primary" defaultMessage={`You can not delete the primary email`} />
   ),
 
   "emails.invalid_email": (
-    <FormattedMessage
-      id="emails.invalid_email"
-      defaultMessage={`The entered value does not look like an email`}
-    />
+    <FormattedMessage id="emails.invalid_email" defaultMessage={`The entered value does not look like an email`} />
   ),
 
-  "emails.missing": (
-    <FormattedMessage
-      id="emails.missing"
-      defaultMessage={`You must provide an email address`}
-    />
-  ),
+  "emails.missing": <FormattedMessage id="emails.missing" defaultMessage={`You must provide an email address`} />,
 
   "emails.unknown_email": (
     <FormattedMessage
@@ -1295,36 +901,19 @@ export const userData = {
       />
     ),
 
-  "cred.credential_type": (
-    <FormattedMessage
-      id="cred.credential_type"
-      defaultMessage={`Credential type.`}
-    />
-  ),
+  "cred.credential_type": <FormattedMessage id="cred.credential_type" defaultMessage={`Credential type.`} />,
 
-  "security.description": (
-    <FormattedMessage id="security.description" defaultMessage={`Name`} />
-  ),
+  "security.description": <FormattedMessage id="security.description" defaultMessage={`Name`} />,
 
-  "security.remove": (
-    <FormattedMessage id="security.remove" defaultMessage={`Remove`} />
-  ),
+  "security.remove": <FormattedMessage id="security.remove" defaultMessage={`Remove`} />,
 
-  "security.verify": (
-    <FormattedMessage id="security.verify" defaultMessage={`Verify key`} />
-  ),
+  "security.verify": <FormattedMessage id="security.verify" defaultMessage={`Verify key`} />,
 
-  "security.verified": (
-    <FormattedMessage id="security.verified" defaultMessage={`Verified`} />
-  ),
+  "security.verified": <FormattedMessage id="security.verified" defaultMessage={`Verified`} />,
 
-  "security.main_title": (
-    <FormattedMessage id="security.main_title" defaultMessage={`Security`} />
-  ),
+  "security.main_title": <FormattedMessage id="security.main_title" defaultMessage={`Security`} />,
 
-  "security.credential": (
-    <FormattedMessage id="security.credential" defaultMessage={`Credential`} />
-  ),
+  "security.credential": <FormattedMessage id="security.credential" defaultMessage={`Credential`} />,
   "security.user-update-throttled": (
     <FormattedMessage
       id="security.user-update-throttled"
@@ -1339,23 +928,11 @@ export const userData = {
     />
   ),
 
-  "security.last-used.date": (
-    <FormattedMessage
-      id="security.last-used.date"
-      defaultMessage={`Never used`}
-    />
-  ),
+  "security.last-used.date": <FormattedMessage id="security.last-used.date" defaultMessage={`Never used`} />,
 
-  "security.creation_date": (
-    <FormattedMessage
-      id="security.creation_date"
-      defaultMessage={`Created on`}
-    />
-  ),
+  "security.creation_date": <FormattedMessage id="security.creation_date" defaultMessage={`Created on`} />,
 
-  "security.last_used": (
-    <FormattedMessage id="security.last_used" defaultMessage={`Used on`} />
-  ),
+  "security.last_used": <FormattedMessage id="security.last_used" defaultMessage={`Used on`} />,
 
   "security.u2f.max_allowed_tokens": (
     <FormattedMessage
@@ -1372,17 +949,11 @@ export const userData = {
   ),
 
   "security.u2f.no_token_found": (
-    <FormattedMessage
-      id="security.u2f.no_token_found"
-      defaultMessage={`No U2F token found in your session`}
-    />
+    <FormattedMessage id="security.u2f.no_token_found" defaultMessage={`No U2F token found in your session`} />
   ),
 
   "security.u2f.missing_token": (
-    <FormattedMessage
-      id="security.u2f.missing_token"
-      defaultMessage={`No U2F token found in your session`}
-    />
+    <FormattedMessage id="security.u2f.missing_token" defaultMessage={`No U2F token found in your session`} />
   ),
 
   "security.u2f.missing_challenge_data": (
@@ -1399,46 +970,24 @@ export const userData = {
     />
   ),
 
-  "security.add_u2f_token": (
-    <FormattedMessage
-      id="security.add_u2f_token"
-      defaultMessage={`Add U2F token`}
-    />
-  ),
+  "security.add_u2f_token": <FormattedMessage id="security.add_u2f_token" defaultMessage={`Add U2F token`} />,
 
-  "security.u2f_credential_type": (
-    <FormattedMessage
-      id="security.u2f_credential_type"
-      defaultMessage={`U2F token`}
-    />
-  ),
+  "security.u2f_credential_type": <FormattedMessage id="security.u2f_credential_type" defaultMessage={`U2F token`} />,
 
   "security.u2f_register_success": (
-    <FormattedMessage
-      id="security.u2f_register_success"
-      defaultMessage={`U2F token successfully registered`}
-    />
+    <FormattedMessage id="security.u2f_register_success" defaultMessage={`U2F token successfully registered`} />
   ),
 
   "u2f.action-required": (
-    <FormattedMessage
-      id="u2f.action-required"
-      defaultMessage={`Action required for multi factor authentication`}
-    />
+    <FormattedMessage id="u2f.action-required" defaultMessage={`Action required for multi factor authentication`} />
   ),
 
   "u2f.push-the-button": (
-    <FormattedMessage
-      id="u2f.push-the-button"
-      defaultMessage={`Please touch the button in your U2F key`}
-    />
+    <FormattedMessage id="u2f.push-the-button" defaultMessage={`Please touch the button in your U2F key`} />
   ),
 
   "security.u2f-token-removed": (
-    <FormattedMessage
-      id="security.u2f-token-removed"
-      defaultMessage={`U2F token successfully removed`}
-    />
+    <FormattedMessage id="security.u2f-token-removed" defaultMessage={`U2F token successfully removed`} />
   ),
 
   "security.u2f-describe-title": (
@@ -1449,31 +998,19 @@ export const userData = {
   ),
 
   "security.webauthn_credential_type": (
-    <FormattedMessage
-      id="security.webauthn_credential_type"
-      defaultMessage={`Security key`}
-    />
+    <FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />
   ),
 
   "security.add_webauthn_token_key": (
-    <FormattedMessage
-      id="security.add_webauthn_token_key"
-      defaultMessage={`Add security key`}
-    />
+    <FormattedMessage id="security.add_webauthn_token_key" defaultMessage={`Add security key`} />
   ),
 
   "security.add_webauthn_token_device": (
-    <FormattedMessage
-      id="security.add_webauthn_token_device"
-      defaultMessage={`Register this device as security key`}
-    />
+    <FormattedMessage id="security.add_webauthn_token_device" defaultMessage={`Register this device as security key`} />
   ),
 
   "security.security-key_title": (
-    <FormattedMessage
-      id="security.security-key_title"
-      defaultMessage={`Make your eduID more secure`}
-    />
+    <FormattedMessage id="security.security-key_title" defaultMessage={`Make your eduID more secure`} />
   ),
 
   "security.second-factor": (
@@ -1485,10 +1022,7 @@ export const userData = {
   ),
 
   "security.webauthn-describe-title": (
-    <FormattedMessage
-      id="security.webauthn-describe-title"
-      defaultMessage={`Add a name for your security key`}
-    />
+    <FormattedMessage id="security.webauthn-describe-title" defaultMessage={`Add a name for your security key`} />
   ),
 
   "security.webauthn.max_allowed_tokens": (
@@ -1499,17 +1033,11 @@ export const userData = {
   ),
 
   "security.webauthn_register_success": (
-    <FormattedMessage
-      id="security.webauthn_register_success"
-      defaultMessage={`Security key added`}
-    />
+    <FormattedMessage id="security.webauthn_register_success" defaultMessage={`Security key added`} />
   ),
 
   "security.webauthn-token-removed": (
-    <FormattedMessage
-      id="security.webauthn-token-removed"
-      defaultMessage={`Security key has been removed.`}
-    />
+    <FormattedMessage id="security.webauthn-token-removed" defaultMessage={`Security key has been removed.`} />
   ),
 
   "security.webauthn-missing-pdata": (
@@ -1520,10 +1048,7 @@ export const userData = {
   ),
 
   "security.webauthn-token-notfound": (
-    <FormattedMessage
-      id="security.webauthn-token-notfound"
-      defaultMessage={`Security token not found`}
-    />
+    <FormattedMessage id="security.webauthn-token-notfound" defaultMessage={`Security token not found`} />
   ),
 
   "security.webauthn-noremove-last": (
@@ -1534,20 +1059,12 @@ export const userData = {
   ),
 
   "SecurityMsg.rm_webauthn": (
-    <FormattedMessage
-      id="SecurityMsg.rm_webauthn"
-      defaultMessage={`Security key has been removed.`}
-    />
+    <FormattedMessage id="SecurityMsg.rm_webauthn" defaultMessage={`Security key has been removed.`} />
   ),
 
   /* ----- ACCOUNT LINKING ------- */
 
-  "account_linking.main_title": (
-    <FormattedMessage
-      id="account_linking.main_title"
-      defaultMessage={` ORCID account`}
-    />
-  ),
+  "account_linking.main_title": <FormattedMessage id="account_linking.main_title" defaultMessage={` ORCID account`} />,
 
   "account_linking.long_description": (
     <FormattedMessage
@@ -1559,17 +1076,11 @@ export const userData = {
   /* ----- ORCID ------- */
 
   "orc.authorization_success": (
-    <FormattedMessage
-      id="orc.authorization_success"
-      defaultMessage={`ORCID connected successfully`}
-    />
+    <FormattedMessage id="orc.authorization_success" defaultMessage={`ORCID connected successfully`} />
   ),
 
   "orc.already_connected": (
-    <FormattedMessage
-      id="orc.already_connected"
-      defaultMessage={`ORCID already connected to this account`}
-    />
+    <FormattedMessage id="orc.already_connected" defaultMessage={`ORCID already connected to this account`} />
   ),
 
   "orc.unknown_state": (
@@ -1580,10 +1091,7 @@ export const userData = {
   ),
 
   "orc.sub_mismatch": (
-    <FormattedMessage
-      id="orc.sub_missmatch"
-      defaultMessage={`Subject mismatch when trying to connect ORCID account`}
-    />
+    <FormattedMessage id="orc.sub_missmatch" defaultMessage={`Subject mismatch when trying to connect ORCID account`} />
   ),
 
   "orc.title": <FormattedMessage id="orc.title" defaultMessage={`ORCID`} />,
@@ -1602,18 +1110,11 @@ export const userData = {
     />
   ),
 
-  "orc.button_connect": (
-    <FormattedMessage
-      id="orc.button_connect"
-      defaultMessage={`Add ORCID account`}
-    />
-  ),
+  "orc.button_connect": <FormattedMessage id="orc.button_connect" defaultMessage={`Add ORCID account`} />,
 
   // -------- account id ------- //
 
-  "accountId.main_title": (
-    <FormattedMessage id="accountId.main_title" defaultMessage={`Unique ID`} />
-  ),
+  "accountId.main_title": <FormattedMessage id="accountId.main_title" defaultMessage={`Unique ID`} />,
   "accountId.long_description": (
     <FormattedMessage
       id="accountId.long_description"
@@ -1629,27 +1130,16 @@ export const userData = {
   ),
 
   "accountId.accountId_display_title": (
-    <FormattedMessage
-      id="accountId.accountId_display_title"
-      defaultMessage={`Unique ID`}
-    />
+    <FormattedMessage id="accountId.accountId_display_title" defaultMessage={`Unique ID`} />
   ),
 
   "orc.authorization_fail": (
-    <FormattedMessage
-      id="orc.authorization_fail"
-      defaultMessage={`ORCID authentication failed`}
-    />
+    <FormattedMessage id="orc.authorization_fail" defaultMessage={`ORCID authentication failed`} />
   ),
 
   /* -----  DELETE ACCOUNT ------- */
 
-  "settings.account_title": (
-    <FormattedMessage
-      id="settings.account_title"
-      defaultMessage={`Delete eduID`}
-    />
-  ),
+  "settings.account_title": <FormattedMessage id="settings.account_title" defaultMessage={`Delete eduID`} />,
 
   "settings.account_description": (
     <FormattedMessage
@@ -1659,17 +1149,11 @@ export const userData = {
   ),
 
   "security.button_delete_account": (
-    <FormattedMessage
-      id="security.button_delete_account"
-      defaultMessage={`Delete eduID`}
-    />
+    <FormattedMessage id="security.button_delete_account" defaultMessage={`Delete eduID`} />
   ),
 
   "settings.modal_delete_title": (
-    <FormattedMessage
-      id="settings.modal_delete_title"
-      defaultMessage={`Are you sure you want to delete your eduID?`}
-    />
+    <FormattedMessage id="settings.modal_delete_title" defaultMessage={`Are you sure you want to delete your eduID?`} />
   ),
 
   "delete.modal_info": (
@@ -1679,10 +1163,5 @@ export const userData = {
     />
   ),
 
-  "delete.confirm_button": (
-    <FormattedMessage
-      id="delete.confirm_button"
-      defaultMessage={`Delete my eduID`}
-    />
-  ),
+  "delete.confirm_button": <FormattedMessage id="delete.confirm_button" defaultMessage={`Delete my eduID`} />,
 };

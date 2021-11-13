@@ -24,9 +24,7 @@ describe(`API call to "new-password-extra-security-external-mfa/" behaves as exp
       password: fakeState.resetPassword.new_password,
       csrf_token: fakeState.config.csrf_token,
     };
-    const url =
-      fakeState.config.reset_password_url +
-      "new-password-extra-security-external-mfa/";
+    const url = fakeState.config.reset_password_url + "new-password-extra-security-external-mfa/";
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).toEqual(call(postRequest, url, data));
   });
@@ -53,9 +51,7 @@ describe(`first API call to "new-password-extra-security-external-mfa/" behaves 
       csrf_token: fakeState.config.csrf_token,
       password: "fake password",
     };
-    const url =
-      fakeState.config.reset_password_url +
-      "new-password-extra-security-external-mfa/";
+    const url = fakeState.config.reset_password_url + "new-password-extra-security-external-mfa/";
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).not.toEqual(call(postRequest, url, data));
   });

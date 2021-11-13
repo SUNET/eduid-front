@@ -29,12 +29,7 @@ const RenderErrorMessage = (props) => {
   return (
     errmsg && (
       <FormText>
-        <span
-          role="alert"
-          aria-invalid="true"
-          tabIndex="0"
-          className="input-validate-error"
-        >
+        <span role="alert" aria-invalid="true" tabIndex="0" className="input-validate-error">
           {errmsg}
         </span>
       </FormText>
@@ -63,11 +58,7 @@ const RenderInput = (props) => {
         <Fragment key={index}>
           <label key={option[0]} htmlFor={option[1]}>
             <input
-              className={
-                props.meta.error && props.meta.visited
-                  ? "radio-input error"
-                  : "radio-input"
-              }
+              className={props.meta.error && props.meta.visited ? "radio-input error" : "radio-input"}
               key={option[0]}
               id={option[1]}
               type="radio"
@@ -121,34 +112,13 @@ const customInput = (props) => {
     <FormGroup id={`${input.name}-wrapper`}>
       <RenderLabelAndHelpText {...props} name={input.name} />
       {input.name === "current-password" ? (
-        <PasswordInputElement
-          {...props}
-          name={input.name}
-          valid={valid}
-          invalid={invalid}
-          id={input.name}
-        />
+        <PasswordInputElement {...props} name={input.name} valid={valid} invalid={invalid} id={input.name} />
       ) : input.name === "current-password" ? (
-        <InputToggleShowHide
-          {...props}
-          name={input.name}
-          valid={valid}
-          invalid={invalid}
-        />
+        <InputToggleShowHide {...props} name={input.name} valid={valid} invalid={invalid} />
       ) : (
-        <RenderInput
-          {...props}
-          name={input.name}
-          valid={valid}
-          invalid={invalid}
-        />
+        <RenderInput {...props} name={input.name} valid={valid} invalid={invalid} />
       )}
-      <RenderErrorMessage
-        {...props}
-        name={input.name}
-        valid={valid}
-        invalid={invalid}
-      />
+      <RenderErrorMessage {...props} name={input.name} valid={valid} invalid={invalid} />
     </FormGroup>
   );
 };

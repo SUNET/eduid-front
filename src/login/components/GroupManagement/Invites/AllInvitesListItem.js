@@ -4,14 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
-import {
-  acceptInviteMember,
-  acceptInviteOwner,
-} from "../../../redux/actions/postAcceptInviteActions";
-import {
-  declineInviteMember,
-  declineInviteOwner,
-} from "../../../redux/actions/postDeclineInviteActions";
+import { acceptInviteMember, acceptInviteOwner } from "../../../redux/actions/postAcceptInviteActions";
+import { declineInviteMember, declineInviteOwner } from "../../../redux/actions/postDeclineInviteActions";
 
 const RenderOpenInvite = ({ open, invite }) => {
   const { owner, member } = invite;
@@ -28,9 +22,7 @@ const RenderGroupName = ({ display_name, open }) => {
   return (
     <div className="title hide-overflow list-cell">
       <div className="element-pair">
-        <button className={open ? "dropdown-open" : "dropdown-closed"}>
-          ^
-        </button>
+        <button className={open ? "dropdown-open" : "dropdown-closed"}>^</button>
         <p>{display_name}</p>
       </div>
     </div>
@@ -61,10 +53,7 @@ const RenderRemoveButton = ({ invite }) => {
   };
   return (
     <div className="list-cell">
-      <ButtonRemoveData
-        className="icon-button"
-        onClick={() => handleRejectInvite()}
-      />
+      <ButtonRemoveData className="icon-button" onClick={() => handleRejectInvite()} />
     </div>
   );
 };
@@ -96,11 +85,7 @@ const AllInvitesListItem = ({ invite }) => {
     <li className="closed" onClick={() => setOpen(!open)}>
       <div className="list-grid" id="five-columns">
         <RenderGroupName display_name={invite.display_name} open={open} />
-        <RenderRoleIndicators
-          open={open}
-          member={invite.member}
-          owner={invite.owner}
-        />
+        <RenderRoleIndicators open={open} member={invite.member} owner={invite.owner} />
         <RenderAcceptButton invite={invite} />
         <RenderRemoveButton invite={invite} />
       </div>

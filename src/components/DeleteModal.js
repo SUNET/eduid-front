@@ -24,9 +24,7 @@ class DeleteModal extends Component {
         <Modal isOpen={this.props.showModal} id="delete-account-modal">
           <ModalHeader>{this.props.title}</ModalHeader>
           <ModalBody>
-            <p className="modal-text">
-              {this.props.translate("delete.modal_info")}
-            </p>
+            <p className="modal-text">{this.props.translate("delete.modal_info")}</p>
             {/* <p className="modal-text">
               {this.props.translate("delete.modal_tip")}
             </p> */}

@@ -10,11 +10,7 @@ const SubmitSamlResponse = () => {
   const SAMLParameters = useSelector((state) => state.login.saml_parameters);
   const targetUrl = useSelector((state) => state.login.post_to);
   useEffect(() => {
-    if (
-      document.forms[0] !== undefined ||
-      SAMLParameters !== null ||
-      targetUrl !== null
-    ) {
+    if (document.forms[0] !== undefined || SAMLParameters !== null || targetUrl !== null) {
       document.forms[0].submit();
     } else {
       setError(true);
@@ -26,16 +22,8 @@ const SubmitSamlResponse = () => {
     <Fragment>
       {error ? null : <Splash />}
       <form action={targetUrl} method="post">
-        <input
-          type="hidden"
-          name="SAMLResponse"
-          value={SAMLParameters.SAMLResponse}
-        />
-        <input
-          type="hidden"
-          name="RelayState"
-          value={SAMLParameters.RelayState}
-        />
+        <input type="hidden" name="SAMLResponse" value={SAMLParameters.SAMLResponse} />
+        <input type="hidden" name="RelayState" value={SAMLParameters.RelayState} />
         <noscript>
           <input type="submit" value="Continue" />
         </noscript>

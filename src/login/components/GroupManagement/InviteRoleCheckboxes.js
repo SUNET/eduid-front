@@ -17,18 +17,10 @@ const RenderCheckboxInput = ({ meta, input, id, label, type }) => {
         <p>{label}</p>
       </div>
       {/* input is display:none to allow custom styling of box */}
-      <input
-        id={id}
-        type={type}
-        value={value}
-        checked={value}
-        onChange={onChange}
-      />
+      <input id={id} type={type} value={value} checked={value} onChange={onChange} />
       {error && (
         <div className="small form-text">
-          <span className={"input-validate-error"}>
-            At least one membership must be set to create an invite
-          </span>
+          <span className={"input-validate-error"}>At least one membership must be set to create an invite</span>
         </div>
       )}
     </Fragment>
@@ -48,16 +40,7 @@ let InviteRoleCheckboxes = ({ helpBlock }) => {
         {checkboxNamesLabels.map((checkbox, i) => {
           let role = Object.keys(checkbox).toString();
           let label = Object.values(checkbox).toString();
-          return (
-            <Field
-              key={i}
-              label={label}
-              id={role}
-              component={RenderCheckboxInput}
-              name={role}
-              type="checkbox"
-            />
-          );
+          return <Field key={i} label={label} id={role} component={RenderCheckboxInput} name={role} type="checkbox" />;
         })}
       </div>
     </div>

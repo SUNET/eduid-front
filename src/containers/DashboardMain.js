@@ -31,9 +31,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const DashboardMainContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+const DashboardMainContainer = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default i18n(DashboardMainContainer);

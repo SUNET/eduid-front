@@ -4,40 +4,19 @@ import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 
 let RenderHideButton = ({ setInputType, translate }) => (
-  <button
-    aria-label="hide password"
-    className="show-hide-button"
-    onClick={() => setInputType("password")}
-  >
-    <div className="button-text-container">
-      {translate("nin_hide_last_four_digits")}
-    </div>
+  <button aria-label="hide password" className="show-hide-button" onClick={() => setInputType("password")}>
+    <div className="button-text-container">{translate("nin_hide_last_four_digits")}</div>
   </button>
 );
 
 let RenderShowButton = ({ setInputType, translate }) => (
-  <button
-    aria-label="show password"
-    className="show-hide-button"
-    onClick={() => setInputType("text")}
-  >
+  <button aria-label="show password" className="show-hide-button" onClick={() => setInputType("text")}>
     {translate("nin_show_last_four_digits")}
   </button>
 );
 
 let InputToggleShowHide = (props) => {
-  const {
-    input,
-    name,
-    disabled,
-    placeholder,
-    valid,
-    invalid,
-    autoComplete,
-    autoFocus,
-    ariaLabel,
-    required,
-  } = props;
+  const { input, name, disabled, placeholder, valid, invalid, autoComplete, autoFocus, ariaLabel, required } = props;
   const [inputType, setInputType] = useState("password");
 
   return (

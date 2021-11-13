@@ -23,10 +23,7 @@ let invitesByRole = (invites) => {
   );
   // 4. Match the roles with the list in which it appears
   let invitesByRole = invitesByEmail.map((invite) => {
-    if (
-      memberInvites.includes(invite.email) &&
-      ownerInvites.includes(invite.email)
-    ) {
+    if (memberInvites.includes(invite.email) && ownerInvites.includes(invite.email)) {
       invite.member = true;
       invite.owner = true;
     } else if (memberInvites.includes(invite.email)) {

@@ -49,12 +49,7 @@ class NinForm extends Component {
             helpBlock={this.props.translate("nins.input_help_text")}
           />
         </fieldset>
-        <PrimaryButton
-          id="add-nin-button"
-          disabled={!this.props.valid}
-          onClick={this.props.addNin}
-          key="1"
-        >
+        <PrimaryButton id="add-nin-button" disabled={!this.props.valid} onClick={this.props.addNin} key="1">
           {this.props.translate("emails.button_add")}
         </PrimaryButton>
       </Form>
@@ -82,9 +77,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addNin: function (e) {
       e.preventDefault();
-      const nin =
-        e.target.closest("#nin-form").firstElementChild.firstElementChild
-          .children[0].value;
+      const nin = e.target.closest("#nin-form").firstElementChild.firstElementChild.children[0].value;
       dispatch(actions.postNin(nin));
     },
   };

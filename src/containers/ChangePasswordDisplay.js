@@ -1,10 +1,6 @@
 import { connect } from "react-redux";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import {
-  confirmPasswordChange,
-  startConfirmationPassword,
-  stopConfirmationPassword,
-} from "actions/Security";
+import { confirmPasswordChange, startConfirmationPassword, stopConfirmationPassword } from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
 import ChangePasswordDisplay from "components/ChangePasswordDisplay";
 
@@ -29,9 +25,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const ChangePasswordDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChangePasswordDisplay);
+const ChangePasswordDisplayContainer = connect(mapStateToProps, mapDispatchToProps)(ChangePasswordDisplay);
 
 export default i18n(ChangePasswordDisplayContainer);

@@ -19,9 +19,7 @@ class EmailDisplay extends Component {
     }
     return (
       <div key="3" className="data-display-container">
-        <label key="0">
-          {this.props.translate("profile.email_display_title")}
-        </label>
+        <label key="0">{this.props.translate("profile.email_display_title")}</label>
         <div className="data-display">{displayText}</div>
       </div>
     );

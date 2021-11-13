@@ -21,8 +21,7 @@ function invariantIntlContext({ intl } = {}) {
   // console.log("this is  invariant:", invariant);
   invariant(
     intl,
-    "[React Intl] Could not find required `intl` object. " +
-      "<IntlProvider> needs to exist in the component ancestry."
+    "[React Intl] Could not find required `intl` object. " + "<IntlProvider> needs to exist in the component ancestry."
   );
 }
 
@@ -30,11 +29,7 @@ function invariantIntlContext({ intl } = {}) {
 // InjectIntl is the standard name for a component that deals with translation, but it is unclear to me why this is not a separate component loaded with the needed props in the index.js
 export default function InjectIntl(WrappedComponent, options = {}) {
   // console.log("this is WrappedComponent:", <WrappedComponent />);
-  const {
-    intlPropName = "intl",
-    translatePropName = "translate",
-    withRef = false,
-  } = options;
+  const { intlPropName = "intl", translatePropName = "translate", withRef = false } = options;
   //WrappedComponent.propTypes['translate'] = PropTypes.func;
 
   // make a class for the component InjectIntl and load it with the props intl and i10n
@@ -74,10 +69,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
           }
           // if messageId is in the unformatted variable
         } else if (unformattedMessages[messageId] !== undefined) {
-          return this.context.intl.formatMessage(
-            unformattedMessages[messageId],
-            values
-          );
+          return this.context.intl.formatMessage(unformattedMessages[messageId], values);
           // if messageId cannot be found anywhere in the InjectIntl_HOC_factory file print error message
         } else {
           return "UNKNOWN MESSAGE ID (" + messageId + ")";
@@ -98,9 +90,7 @@ export default function InjectIntl(WrappedComponent, options = {}) {
 
   // creates a string of InjectIntl() and whatever wrapped components are returned from
   // getReactComponentDisplayName() and makes this the .displayName (ReactComponent property) of InjectIntl
-  InjectIntl.displayName = `InjectIntl(${getReactComponentDisplayName(
-    WrappedComponent
-  )})`;
+  InjectIntl.displayName = `InjectIntl(${getReactComponentDisplayName(WrappedComponent)})`;
 
   // context types for InjectIntl
   InjectIntl.contextTypes = {

@@ -18,9 +18,7 @@ class VerifyIdentity extends Component {
       this.props.translate("lmp.initialize_proofing_help_text"),
       this.props.translate("eidas.initialize_proofing_help_text"),
     ];
-    let recoverIdentityTip = this.props.translate(
-      "verify-identity.verified_pw_reset_extra_security"
-    );
+    let recoverIdentityTip = this.props.translate("verify-identity.verified_pw_reset_extra_security");
 
     // nin is not verified (add nin)
     let AddNumber = (props) => {
@@ -78,10 +76,7 @@ class VerifyIdentity extends Component {
                   key={index}
                   className={
                     "proofing-btn-help" +
-                    ((index < 2 && !addedNin) ||
-                    (index === 1 && !this.props.verifiedSwePhone)
-                      ? " disabled"
-                      : "")
+                    ((index < 2 && !addedNin) || (index === 1 && !this.props.verifiedSwePhone) ? " disabled" : "")
                   }
                 >
                   {helpText}
@@ -98,12 +93,8 @@ class VerifyIdentity extends Component {
       if (this.props.is_configured && !this.props.verifiedNinStatus) {
         return (
           <div key="1" className="intro">
-            <h3>
-              {this.props.translate("verify-identity.connect-nin_heading")}
-            </h3>
-            <p>
-              {this.props.translate("verify-identity.connect-nin_description")}
-            </p>
+            <h3>{this.props.translate("verify-identity.connect-nin_heading")}</h3>
+            <p>{this.props.translate("verify-identity.connect-nin_description")}</p>
           </div>
         );
       } else {
@@ -115,9 +106,7 @@ class VerifyIdentity extends Component {
       <Fragment>
         <VerifyIdentity_Step1 />
         <AddNin {...this.props} />
-        {this.props.verifiedNinStatus && (
-          <p className="help-text">{recoverIdentityTip}</p>
-        )}
+        {this.props.verifiedNinStatus && <p className="help-text">{recoverIdentityTip}</p>}
         <VerifyIdentity_Step2 />
         {vettingButtons}
       </Fragment>

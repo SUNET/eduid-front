@@ -46,32 +46,20 @@ class OpenidConnectFreja extends Component {
       );
     } else {
       frejaButton = (
-        <EduIDButton
-          className="btn-link"
-          onClick={this.props.handleInitializeFrejaProofing}
-        >
+        <EduIDButton className="btn-link" onClick={this.props.handleInitializeFrejaProofing}>
           {this.props.translate("ocf.open_app")}
         </EduIDButton>
       );
       if (this.props.iaRequestData) {
         frejaButton = (
-          <EduIDButton
-            className="btn-link"
-            href={
-              "frejaeid://identify?iaRequestData=" + this.props.iaRequestData
-            }
-          >
+          <EduIDButton className="btn-link" href={"frejaeid://identify?iaRequestData=" + this.props.iaRequestData}>
             {this.props.translate("ocf.open_app")}
           </EduIDButton>
         );
       }
       buttonGroup = (
         <ButtonGroup vertical block>
-          <Button
-            className="btn-link"
-            href="https://frejaeid.com/skaffa-freja-eid/"
-            target="_blank"
-          >
+          <Button className="btn-link" href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
             {this.props.translate("ocf.freja_instructions_install_link")}
           </Button>
 
@@ -93,11 +81,7 @@ class OpenidConnectFreja extends Component {
 
     return (
       <div>
-        <form
-          id="openid-connect-freja-form"
-          className="form-horizontal"
-          role="form"
-        >
+        <form id="openid-connect-freja-form" className="form-horizontal" role="form">
           <fieldset id="openid-connect-freja">
             {showModalButton}
             <FormText className="proofing-btn-help" color="muted">
@@ -116,9 +100,7 @@ class OpenidConnectFreja extends Component {
         >
           <Modal show={this.props.showModal} id="openid-connect-freja-modal">
             <Modal.Header>
-              <Modal.Title>
-                {this.props.translate("ocf.modal_title")}
-              </Modal.Title>
+              <Modal.Title>{this.props.translate("ocf.modal_title")}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>

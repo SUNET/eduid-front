@@ -55,9 +55,7 @@ class RegisterEmail extends Component {
   render() {
     return [
       <div key="0" id="content" className="horizontal-content-margin">
-        <p className="heading">
-          {this.props.translate("register.sub-heading")}
-        </p>
+        <p className="heading">{this.props.translate("register.sub-heading")}</p>
         <p>{this.props.translate("register.paragraph")}</p>
 
         <EmailReduxForm {...this.props} />

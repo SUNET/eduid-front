@@ -2,10 +2,7 @@ import { connect } from "react-redux";
 import OpenidConnect from "components/OpenidConnect";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { eduidRMAllNotify } from "../actions/Notifications";
-import {
-  showOpenidSelegModal,
-  hideOpenidSelegModal,
-} from "../actions/OpenidConnect";
+import { showOpenidSelegModal, hideOpenidSelegModal } from "../actions/OpenidConnect";
 
 const mapStateToProps = (state) => {
   return {
@@ -29,9 +26,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const OpenidConnectContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OpenidConnect);
+const OpenidConnectContainer = connect(mapStateToProps, mapDispatchToProps)(OpenidConnect);
 
 export default i18n(OpenidConnectContainer);

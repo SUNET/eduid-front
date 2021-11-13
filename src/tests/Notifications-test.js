@@ -82,9 +82,7 @@ describe("Notification Actions", () => {
         values: null,
       },
     };
-    expect(actions.eduidNotify("dummy message", "dummy level")).toEqual(
-      expectedAction
-    );
+    expect(actions.eduidNotify("dummy message", "dummy level")).toEqual(expectedAction);
   });
 
   it("Should remove all notifications", () => {

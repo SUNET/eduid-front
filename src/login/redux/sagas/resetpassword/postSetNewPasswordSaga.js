@@ -22,9 +22,6 @@ export function* postSetNewPassword() {
     }
     history.push(`/reset-password/success`);
   } catch (error) {
-    yield* failRequest(
-      error,
-      resetPasswordSlice.actions.resetPasswordSagaFail(error)
-    );
+    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail(error));
   }
 }

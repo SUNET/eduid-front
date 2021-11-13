@@ -55,8 +55,6 @@ describe("EmailInUse Component", () => {
       overrides: state,
     });
     const link = fullWrapper.find("a");
-    expect(link.props().href).toEqual(
-      "http://dummy.example.com/reset-password"
-    );
+    expect(link.props().href).toEqual("http://dummy.example.com/reset-password");
   });
 });

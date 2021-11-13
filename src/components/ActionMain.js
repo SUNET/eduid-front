@@ -45,11 +45,7 @@ class ActionMain extends Component {
         <section id="panel">
           <NotificationsContainer />
           <div key="0" id="content" className="horizontal-content-margin">
-            <Route
-              exact
-              path={`${SIGNUP_BASE_PATH}`}
-              component={() => <Redirect to={this.props.redirect} />}
-            />
+            <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={this.props.redirect} />} />
             {this.props.children}
           </div>
         </section>

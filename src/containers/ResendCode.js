@@ -18,9 +18,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const ResendCodeContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ResendCode);
+const ResendCodeContainer = connect(mapStateToProps, mapDispatchToProps)(ResendCode);
 
 export default i18n(ResendCodeContainer);

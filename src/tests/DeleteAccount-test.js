@@ -341,11 +341,7 @@ describe("DeleteAccount Container", () => {
       confirming_deletion: false,
     };
 
-    getWrapper = function ({
-      deleting = false,
-      askingDesc = false,
-      props = mockProps,
-    } = {}) {
+    getWrapper = function ({ deleting = false, askingDesc = false, props = mockProps } = {}) {
       store = fakeStore(getState(deleting, askingDesc));
       dispatch = store.dispatch;
 
@@ -367,12 +363,8 @@ describe("DeleteAccount Container", () => {
     expect(dispatch.mock.calls.length).toEqual(0);
     getWrapper().find("EduIDButton#delete-button").props().onClick();
     expect(dispatch.mock.calls.length).toEqual(2);
-    expect(dispatch.mock.calls[0][0].type).toEqual(
-      notifyActions.RM_ALL_NOTIFICATION
-    );
-    expect(dispatch.mock.calls[1][0].type).toEqual(
-      actions.START_DELETE_ACCOUNT
-    );
+    expect(dispatch.mock.calls[0][0].type).toEqual(notifyActions.RM_ALL_NOTIFICATION);
+    expect(dispatch.mock.calls[1][0].type).toEqual(actions.START_DELETE_ACCOUNT);
   });
 
   it("Clicks confirm delete", () => {
@@ -385,9 +377,7 @@ describe("DeleteAccount Container", () => {
       language: "en",
       confirming_deletion: true,
     };
-    const deleteModal = getWrapper(true, false, newProps).find(
-      "NotificationModal"
-    );
+    const deleteModal = getWrapper(true, false, newProps).find("NotificationModal");
     expect(dispatch.mock.calls.length).toEqual(0);
     deleteModal.props().acceptModal();
     expect(dispatch.mock.calls.length).toEqual(1);

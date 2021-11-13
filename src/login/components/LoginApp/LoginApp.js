@@ -15,37 +15,13 @@ import ResetPasswordSuccess from "./ResetPassword/ResetPasswordSuccess";
 const RenderResetPassword = (props) => {
   return (
     <>
-      <Route
-        exact
-        path="/reset-password/"
-        component={() => <Redirect to="/reset-password/email" />}
-      />
-      <Route
-        path={`/reset-password/email`}
-        render={(props) => <ResetPasswordMain {...props} />}
-      />
-      <Route
-        exact
-        path="/reset-password/email-link-sent"
-        render={(props) => <EmailLinkSent {...props} />}
-      />
-      <Route
-        path="/reset-password/extra-security"
-        render={(props) => <ExtraSecurity {...props} />}
-      />
-      <Route
-        path="/reset-password/phone-code-sent"
-        render={(props) => <PhoneCodeSent {...props} />}
-      />
-      <Route
-        path="/reset-password/set-new-password"
-        render={(props) => <SetNewPassword {...props} />}
-      />
-      <Route
-        exact
-        path="/reset-password/success"
-        render={(props) => <ResetPasswordSuccess {...props} />}
-      />
+      <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />
+      <Route path={`/reset-password/email`} render={(props) => <ResetPasswordMain {...props} />} />
+      <Route exact path="/reset-password/email-link-sent" render={(props) => <EmailLinkSent {...props} />} />
+      <Route path="/reset-password/extra-security" render={(props) => <ExtraSecurity {...props} />} />
+      <Route path="/reset-password/phone-code-sent" render={(props) => <PhoneCodeSent {...props} />} />
+      <Route path="/reset-password/set-new-password" render={(props) => <SetNewPassword {...props} />} />
+      <Route exact path="/reset-password/success" render={(props) => <ResetPasswordSuccess {...props} />} />
     </>
   );
 };
@@ -57,9 +33,7 @@ const RenderLogin = (props) => {
   const errorMessage = useSelector((state) => state.notifications.errors);
   useEffect(() => {
     // dispatch action when next_url is available and no error message
-    errorMessage.length === 0 && next_url !== null
-      ? dispatch(loginSlice.actions.callLoginNext(ref))
-      : undefined;
+    errorMessage.length === 0 && next_url !== null ? dispatch(loginSlice.actions.callLoginNext(ref)) : undefined;
   }, [next_url]);
   return <Route path={`/login/`} render={(props) => <Login {...props} />} />;
 };

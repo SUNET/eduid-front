@@ -17,33 +17,22 @@ const RenderAddPersonalDataPrompt = ({ translate, setEditMode }) => (
 );
 
 const RenderPersonalData = ({ translate }) => {
-  const first_name = useSelector(
-    (state) => state.personal_data.data.given_name
-  );
+  const first_name = useSelector((state) => state.personal_data.data.given_name);
   const last_name = useSelector((state) => state.personal_data.data.surname);
-  const display_name = useSelector(
-    (state) => state.personal_data.data.display_name
-  );
-  const pref_language = useSelector(
-    (state) => state.personal_data.data.language
-  );
+  const display_name = useSelector((state) => state.personal_data.data.display_name);
+  const pref_language = useSelector((state) => state.personal_data.data.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
   let languageLabel;
   if (hasPrefLanguage) {
-    languageLabel =
-      pref_language === "sv"
-        ? translate("pd.sv_lang")
-        : translate("pd.en_lang");
+    languageLabel = pref_language === "sv" ? translate("pd.sv_lang") : translate("pd.en_lang");
   }
   return (
     <div className="personal-data-info">
       <NameDisplay label={translate("pd.given_name")} name={first_name} />
       <NameDisplay label={translate("pd.surname")} name={last_name} />
       <NameDisplay label={translate("pd.display_name")} name={display_name} />
-      {hasPrefLanguage ? (
-        <NameDisplay label={translate("pd.language")} name={languageLabel} />
-      ) : null}
+      {hasPrefLanguage ? <NameDisplay label={translate("pd.language")} name={languageLabel} /> : null}
     </div>
   );
 };
@@ -57,30 +46,17 @@ const RenderEditBox = (props) => {
       <div className="edit-data">
         <div className="title button-pair">
           <p>{props.translate("pd.edit.title")}</p>
-          <button
-            type="button"
-            className="save-button"
-            onClick={() => props.setEditMode(false)}
-          >
+          <button type="button" className="save-button" onClick={() => props.setEditMode(false)}>
             <CloseButton />
           </button>
         </div>
-        <PersonalDataForm
-          setEditMode={props.setEditMode}
-          isVerifiedNin={isVerifiedNin}
-          {...props}
-        />
+        <PersonalDataForm setEditMode={props.setEditMode} isVerifiedNin={isVerifiedNin} {...props} />
       </div>
     </Fragment>
   );
 };
 
-const RenderEditButton = ({
-  setEditMode,
-  hasPersonalData,
-  isEditMode,
-  translate,
-}) => (
+const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode, translate }) => (
   <Fragment>
     {isEditMode ||
       (hasPersonalData && (
@@ -114,22 +90,10 @@ const PersonalDataParent = (props) => {
         <p>{props.translate("pd.long_description")}</p>
         <Fragment>
           {!hasPersonalData && !isEditMode ? (
-            <RenderAddPersonalDataPrompt
-              setEditMode={setEditMode}
-              isEditMode={isEditMode}
-              {...props}
-            />
+            <RenderAddPersonalDataPrompt setEditMode={setEditMode} isEditMode={isEditMode} {...props} />
           ) : null}
-          {hasPersonalData && !isEditMode ? (
-            <RenderPersonalData hasPersonalData={hasPersonalData} {...props} />
-          ) : null}
-          {isEditMode && (
-            <RenderEditBox
-              setEditMode={setEditMode}
-              isEditMode={isEditMode}
-              {...props}
-            />
-          )}
+          {hasPersonalData && !isEditMode ? <RenderPersonalData hasPersonalData={hasPersonalData} {...props} /> : null}
+          {isEditMode && <RenderEditBox setEditMode={setEditMode} isEditMode={isEditMode} {...props} />}
         </Fragment>
       </div>
     </article>

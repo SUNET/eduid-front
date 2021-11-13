@@ -16,9 +16,6 @@ const mapDispatchToProps = () => {
   return {};
 };
 
-const EmailDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EmailDisplay);
+const EmailDisplayContainer = connect(mapStateToProps, mapDispatchToProps)(EmailDisplay);
 
 export default InjectIntl(EmailDisplayContainer);

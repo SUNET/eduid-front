@@ -3,55 +3,29 @@ import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
 export const login = {
   // --- USERNAME & PASSWORD --- //
-  "login.usernamePw.h2-heading": (
-    <FormattedMessage
-      id="login.usernamePw.h2-heading"
-      defaultMessage={`Log in`}
-    />
-  ),
+  "login.usernamePw.h2-heading": <FormattedMessage id="login.usernamePw.h2-heading" defaultMessage={`Log in`} />,
   "login.usernamePw.password-input": (
-    <FormattedMessage
-      id="login.usernamePw.password-input"
-      defaultMessage={`Password`}
-    />
+    <FormattedMessage id="login.usernamePw.password-input" defaultMessage={`Password`} />
   ),
   "login.usernamePw.submit-button-idle": (
-    <FormattedMessage
-      id="login.usernamePw.submit-button-idle"
-      defaultMessage={`Log in`}
-    />
+    <FormattedMessage id="login.usernamePw.submit-button-idle" defaultMessage={`Log in`} />
   ),
   "login.usernamePw.submit-button-busy": (
-    <FormattedMessage
-      id="login.usernamePw.submit-button-busy"
-      defaultMessage={`Logging in`}
-    />
+    <FormattedMessage id="login.usernamePw.submit-button-busy" defaultMessage={`Logging in`} />
   ),
   "login.usernamePw.reset-password-link": (
-    <FormattedMessage
-      id="login.usernamePw.reset-password-link"
-      defaultMessage={`Forgot your password?`}
-    />
+    <FormattedMessage id="login.usernamePw.reset-password-link" defaultMessage={`Forgot your password?`} />
   ),
   "login.usernamePw.register-prompt": (
-    <FormattedMessage
-      id="login.usernamePw.register-prompt"
-      defaultMessage={`Don't have eduID?`}
-    />
+    <FormattedMessage id="login.usernamePw.register-prompt" defaultMessage={`Don't have eduID?`} />
   ),
   "login.usernamePw.register-link": (
-    <FormattedMessage
-      id="login.usernamePw.register-link"
-      defaultMessage={`Register here.`}
-    />
+    <FormattedMessage id="login.usernamePw.register-link" defaultMessage={`Register here.`} />
   ),
 
   // --- MFA --- //
   "login.mfa.h2-heading": (
-    <FormattedMessage
-      id="login.mfa.h2-heading"
-      defaultMessage={`Log in: Extra level of security`}
-    />
+    <FormattedMessage id="login.mfa.h2-heading" defaultMessage={`Log in: Extra level of security`} />
   ),
   "login.mfa.paragraph": (
     <FormattedMessage
@@ -61,23 +35,14 @@ export const login = {
   ),
   // security key
   "login.mfa.primary-option.title": (
-    <FormattedMessage
-      id="login.mfa.primary-option.title"
-      defaultMessage={`Security key`}
-    />
+    <FormattedMessage id="login.mfa.primary-option.title" defaultMessage={`Security key`} />
   ),
   "login.mfa.primary-option.button": (
-    <FormattedMessage
-      id="login.mfa.primary-option.button"
-      defaultMessage={`Use security key`}
-    />
+    <FormattedMessage id="login.mfa.primary-option.button" defaultMessage={`Use security key`} />
   ),
   // freja eid+
   "login.mfa.secondary-option.title": (
-    <FormattedMessage
-      id="login.mfa.secondary-option.title"
-      defaultMessage={`Freja eID+`}
-    />
+    <FormattedMessage id="login.mfa.secondary-option.title" defaultMessage={`Freja eID+`} />
   ),
   "login.mfa.secondary-option.button": (
     <FormattedHTMLMessage
@@ -95,12 +60,7 @@ export const login = {
 
 export const tou = {
   // --- TOU --- //
-  "login.tou.h2-heading": (
-    <FormattedMessage
-      id="login.tou.h2-heading"
-      defaultMessage={`Log in: Terms of use`}
-    />
-  ),
+  "login.tou.h2-heading": <FormattedMessage id="login.tou.h2-heading" defaultMessage={`Log in: Terms of use`} />,
   "login.tou.paragraph": (
     <FormattedMessage
       id="login.tou.paragraph"
@@ -108,10 +68,7 @@ export const tou = {
     />
   ),
   "login.tou.legal-title": (
-    <FormattedMessage
-      id="login.tou.legal-title"
-      defaultMessage={`General rules for eduID users:`}
-    />
+    <FormattedMessage id="login.tou.legal-title" defaultMessage={`General rules for eduID users:`} />
   ),
   // --- TOU: 2016-V1--- //
   "login.tou.version.2016-v1": (
@@ -206,7 +163,5 @@ export const tou = {
       defaultMessage={`Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken.`}
     />
   ),
-  "login.tou.button": (
-    <FormattedMessage id="login.tou.button" defaultMessage={`I accept`} />
-  ),
+  "login.tou.button": <FormattedMessage id="login.tou.button" defaultMessage={`I accept`} />,
 };

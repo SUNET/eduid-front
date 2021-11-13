@@ -56,43 +56,21 @@ class Main extends Component {
             <DashboardNav {...this.props} />
             <div key="0" id="text-content">
               <Route path="/profile/settings/" component={SettingsComponent} />
-              <Route
-                exact
-                path="/profile/"
-                render={(props) => <Profile {...props} />}
-              />
-              <Route
-                path="/profile/verify-identity/"
-                render={(props) => <VerifyIdentity {...props} />}
-              />
-              <Route
-                path="/profile/chpass/"
-                component={ChangePasswordContainer}
-              />
+              <Route exact path="/profile/" render={(props) => <Profile {...props} />} />
+              <Route path="/profile/verify-identity/" render={(props) => <VerifyIdentity {...props} />} />
+              <Route path="/profile/chpass/" component={ChangePasswordContainer} />
               {/* Redirects for old paths */}
-              <Route
-                exact
-                path="/profile/security/"
-                component={() => <Redirect to="/profile/settings/" />}
-              />
+              <Route exact path="/profile/security/" component={() => <Redirect to="/profile/settings/" />} />
               <Route
                 exact
                 path="/profile/accountlinking/"
-                component={() => (
-                  <Redirect to="/profile/settings/advanced-settings/" />
-                )}
+                component={() => <Redirect to="/profile/settings/advanced-settings/" />}
               />
-              <Route
-                exact
-                path="/profile/nins/"
-                component={() => <Redirect to="/profile/verify-identity/" />}
-              />
+              <Route exact path="/profile/nins/" component={() => <Redirect to="/profile/verify-identity/" />} />
               <Route
                 exact
                 path="/profile/emails/"
-                component={() => (
-                  <Redirect to="/profile/settings/personaldata/" />
-                )}
+                component={() => <Redirect to="/profile/settings/personaldata/" />}
               />
             </div>
           </div>

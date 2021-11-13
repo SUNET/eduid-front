@@ -63,14 +63,7 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(
   eduIDApp,
   //    loadPersistedState(),
-  composeEnhancers(
-    applyMiddleware(
-      sagaMiddleware,
-      routerMiddleware(history),
-      notifyAndDispatch,
-      createLogger()
-    )
-  )
+  composeEnhancers(applyMiddleware(sagaMiddleware, routerMiddleware(history), notifyAndDispatch, createLogger()))
 );
 
 //store.subscribe(() => {
@@ -99,9 +92,7 @@ const getConfig = function () {
 /* render app */
 
 const init_app = function (target, component) {
-  const language = navigator.languages
-    ? navigator.languages[0]
-    : navigator.language || navigator.userLanguage;
+  const language = navigator.languages ? navigator.languages[0] : navigator.language || navigator.userLanguage;
   const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
 
   if (supported.includes(language)) {

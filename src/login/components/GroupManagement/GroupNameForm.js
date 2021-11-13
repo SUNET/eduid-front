@@ -7,13 +7,7 @@ import EduIDButton from "../../../components/EduIDButton";
 import emptyValueValidation from "../../app_utils/validation/emptyValueValidation";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
-export let RenderInput = ({
-  placeholder,
-  label,
-  required,
-  form,
-  helpBlock,
-}) => (
+export let RenderInput = ({ placeholder, label, required, form, helpBlock }) => (
   <Field
     label={label}
     required={required}
@@ -32,11 +26,7 @@ let GroupNameForm = (props) => {
     <Form id={`${form}-form`} role="form" onSubmit={handleSubmit}>
       <RenderInput {...props} />
       {submitButton && (
-        <EduIDButton
-          type="submit"
-          className="settings-button"
-          disabled={invalid}
-        >
+        <EduIDButton type="submit" className="settings-button" disabled={invalid}>
           CREATE GROUP
         </EduIDButton>
       )}

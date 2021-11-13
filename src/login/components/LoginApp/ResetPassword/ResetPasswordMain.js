@@ -52,9 +52,7 @@ function ResetPasswordMain(props) {
   const dispatch = useDispatch();
   const url = document.location.href;
   const loginRef = url.split("/email").reverse()[0];
-  const request_in_progress = useSelector(
-    (state) => state.app.request_in_progress
-  );
+  const request_in_progress = useSelector((state) => state.app.request_in_progress);
   const errors = useSelector((state) => state.notifications.errors);
 
   useEffect(() => {
@@ -81,20 +79,10 @@ function ResetPasswordMain(props) {
   };
   return (
     <>
-      {errors && errors[0] && errors[0].msg.includes("phone-code") && (
-        <Splash />
-      )}
+      {errors && errors[0] && errors[0].msg.includes("phone-code") && <Splash />}
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
-      <EmailForm
-        sendLink={sendLink}
-        {...props}
-        request_in_progress={request_in_progress}
-      />
-      <div
-        className={
-          loginRef ? `return-login-link` : `return-login-link disabled`
-        }
-      >
+      <EmailForm sendLink={sendLink} {...props} request_in_progress={request_in_progress} />
+      <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
         <a id="return-login" href={`/login/password/${loginRef}`}>
           {props.translate("resetpw.return-login")}
         </a>

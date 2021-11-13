@@ -1,11 +1,6 @@
 import { put, select, call } from "redux-saga/effects";
 import { updateIntl } from "react-intl-redux";
-import {
-  startSubmit,
-  stopSubmit,
-  setSubmitSucceeded,
-  setSubmitFailed,
-} from "redux-form";
+import { startSubmit, stopSubmit, setSubmitSucceeded, setSubmitFailed } from "redux-form";
 import { startAsyncValidation, stopAsyncValidation } from "redux-form";
 
 import { newCsrfToken } from "actions/DashboardConfig";
@@ -60,8 +55,7 @@ export const putCsrfToken = function (action) {
 export const failRequest = function* (error, failAction) {
   if (
     navigator.userAgent.indexOf("Trident/7") > -1 &&
-    (error.toString() === "SyntaxError: Invalid character" ||
-      error.toString() === "TypeError: Network request failed")
+    (error.toString() === "SyntaxError: Invalid character" || error.toString() === "TypeError: Network request failed")
   ) {
     const next = document.location.href;
     document.location.assign(TOKEN_SERVICE_URL + "?next=" + next);

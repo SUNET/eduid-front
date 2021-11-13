@@ -12,15 +12,11 @@ const notificationsReducer = (state = notifications, action) => {
         case "errors":
           return {
             messages: [],
-            errors: [
-              { msg: action.payload.message, vals: action.payload.values },
-            ],
+            errors: [{ msg: action.payload.message, vals: action.payload.values }],
           };
         case "messages":
           return {
-            messages: [
-              { msg: action.payload.message, vals: action.payload.values },
-            ],
+            messages: [{ msg: action.payload.message, vals: action.payload.values }],
             errors: [],
           };
         default:

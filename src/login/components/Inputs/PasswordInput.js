@@ -14,19 +14,12 @@ let RenderHideButton = ({ setInputType, translate }) => (
     className="show-hide-button"
     onClick={() => setInputType("password")}
   >
-    <div className="button-text-container">
-      {translate("nin_hide_last_four_digits")}
-    </div>
+    <div className="button-text-container">{translate("nin_hide_last_four_digits")}</div>
   </button>
 );
 
 let RenderShowButton = ({ setInputType, translate }) => (
-  <button
-    type="button"
-    aria-label="show password"
-    className="show-hide-button"
-    onClick={() => setInputType("text")}
-  >
+  <button type="button" aria-label="show password" className="show-hide-button" onClick={() => setInputType("text")}>
     {translate("nin_show_last_four_digits")}
   </button>
 );

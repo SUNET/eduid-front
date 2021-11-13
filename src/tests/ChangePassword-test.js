@@ -51,9 +51,7 @@ describe("ChangePassword Actions", () => {
           next: passwd2,
         },
       };
-    expect(actions.postPasswordChange(passwd1, passwd2)).toEqual(
-      expectedAction
-    );
+    expect(actions.postPasswordChange(passwd1, passwd2)).toEqual(expectedAction);
   });
 
   it("Should start password change", () => {

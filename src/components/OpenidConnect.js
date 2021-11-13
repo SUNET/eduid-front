@@ -25,11 +25,7 @@ class OpenidConnect extends Component {
     return (
       <CookieChecker cookieName="show-se-leg">
         <div>
-          <form
-            id="openid-connect-form"
-            className="form-horizontal"
-            role="form"
-          >
+          <form id="openid-connect-form" className="form-horizontal" role="form">
             <fieldset id="openid-connect">
               <EduIDButton
                 className="proofing-button"
@@ -53,23 +49,14 @@ class OpenidConnect extends Component {
             aria-hidden="true"
             data-backdrop="true"
           >
-            <Modal
-              isOpen={this.props.showModal}
-              id="openid-connect-seleg-modal"
-            >
-              <ModalHeader>
-                {this.props.translate("oc.modal_title")}
-              </ModalHeader>
+            <Modal isOpen={this.props.showModal} id="openid-connect-seleg-modal">
+              <ModalHeader>{this.props.translate("oc.modal_title")}</ModalHeader>
 
               <ModalBody>
                 <h4>{this.props.translate("oc.instructions_title")}</h4>
                 {seleg_instructions}
 
-                <img
-                  src={this.props.qr_img}
-                  className="img-responsive center-block"
-                  alt={this.props.qr_code}
-                />
+                <img src={this.props.qr_img} className="img-responsive center-block" alt={this.props.qr_code} />
               </ModalBody>
 
               <ModalFooter>

@@ -26,11 +26,7 @@ class Main extends Component {
           }}
         />
         <div id="tou-buttons">
-          <EduIDButton
-            className="settings-button tou-button"
-            onClick={this.props.acceptTOU}
-            id="accept-tou-button"
-          >
+          <EduIDButton className="settings-button tou-button" onClick={this.props.acceptTOU} id="accept-tou-button">
             {this.props.translate("tou.accept")}
           </EduIDButton>
           {/* <EduIDButton

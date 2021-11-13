@@ -65,25 +65,15 @@ class GroupListItem extends Component {
         <div className="list-grid" id="five-columns">
           <div className="title hide-overflow list-cell">
             <div className="element-pair">
-              <button
-                className={
-                  this.state.openGroup ? "dropdown-open" : "dropdown-closed"
-                }
-              >
-                ^
-              </button>
+              <button className={this.state.openGroup ? "dropdown-open" : "dropdown-closed"}>^</button>
               <p>{display_name}</p>
             </div>
           </div>
           <div className="list-cell">
-            <div className={this.state.openGroup ? "transparent" : null}>
-              {group.is_member ? "X" : null}
-            </div>
+            <div className={this.state.openGroup ? "transparent" : null}>{group.is_member ? "X" : null}</div>
           </div>
           <div className="list-cell">
-            <div className={this.state.openGroup ? "transparent" : null}>
-              {group.is_owner ? "X" : null}
-            </div>
+            <div className={this.state.openGroup ? "transparent" : null}>{group.is_owner ? "X" : null}</div>
           </div>
           <div className="list-cell">
             <button

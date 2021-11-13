@@ -7,10 +7,7 @@ import PropTypes from "prop-types";
 import invariant from "invariant";
 import { intlShape } from "react-intl";
 
-import {
-  formattedMessages,
-  unformattedMessages,
-} from "./login/translation/messageIndex";
+import { formattedMessages, unformattedMessages } from "./login/translation/messageIndex";
 
 function getDisplayName(Component) {
   return Component.displayName || Component.name || "Component";
@@ -19,17 +16,12 @@ function getDisplayName(Component) {
 function invariantIntlContext({ intl } = {}) {
   invariant(
     intl,
-    "[React Intl] Could not find required `intl` object. " +
-      "<IntlProvider> needs to exist in the component ancestry."
+    "[React Intl] Could not find required `intl` object. " + "<IntlProvider> needs to exist in the component ancestry."
   );
 }
 
 export default function i18n(WrappedComponent, options = {}) {
-  const {
-    intlPropName = "intl",
-    l10nPropName = "l10n",
-    withRef = false,
-  } = options;
+  const { intlPropName = "intl", l10nPropName = "l10n", withRef = false } = options;
 
   //WrappedComponent.propTypes['l10n'] = PropTypes.func;
 
@@ -59,10 +51,7 @@ export default function i18n(WrappedComponent, options = {}) {
             return formattedMessages[msgid];
           }
         } else if (unformattedMessages[msgid] !== undefined) {
-          return this.context.intl.formatMessage(
-            unformattedMessages[msgid],
-            values
-          );
+          return this.context.intl.formatMessage(unformattedMessages[msgid], values);
         } else {
           return "UNKNOWN MESSAGE ID (" + msgid + ")";
         }

@@ -27,8 +27,7 @@ export function* postRefLoginSaga() {
     csrf_token: state.config.csrf_token,
   };
   try {
-    const response: PayloadAction<NextResponse, string, never, boolean> =
-      yield call(postRequest, url, dataToSend);
+    const response: PayloadAction<NextResponse, string, never, boolean> = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     if (response.error) {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)

@@ -9,9 +9,7 @@ function DashboardNav(props) {
   const nins = useSelector((state) => state.nins.nins);
   const phones = useSelector((state) => state.phones.phones);
   const verifiedNin = nins.filter((nin) => nin.verified);
-  const verifiedSweNumber = phones.filter(
-    (phone) => phone.verified && phone.number.startsWith("+46")
-  );
+  const verifiedSweNumber = phones.filter((phone) => phone.verified && phone.number.startsWith("+46"));
   const unverifiedNumber = phones.filter((phone) => !phone.verified);
   // depending on languages show different styles
   const selectedLanguage = props.intl.locale;
@@ -24,28 +22,17 @@ function DashboardNav(props) {
     if (!nins.length) {
       // check if nin is not added, then rendering text on IDENTITY tab, only posible to verify with a freja eId
       tipsAtIdentity = (
-        <NotificationTip
-          textLength={"short"}
-          tipText={props.translate("dashboard_nav.identity-verify-freja")}
-        />
+        <NotificationTip textLength={"short"} tipText={props.translate("dashboard_nav.identity-verify-freja")} />
       );
     } else {
       // else user has added id number,rendering text on IDENTITY tab, possible to verify by post and with a freja eId
-      tipsAtIdentity = (
-        <NotificationTip
-          tipText={props.translate("dashboard_nav.identity-verify-post-freja")}
-        />
-      );
+      tipsAtIdentity = <NotificationTip tipText={props.translate("dashboard_nav.identity-verify-post-freja")} />;
       if (phones.length) {
         // then check if there is a number added to the phones array
         if (verifiedSweNumber.length) {
           // if a number is added to the phone array, check if number is verified and a Swedish phone number, rendering text on IDENTITY tab, user can verify by post, phone or freja eId
           tipsAtIdentity = (
-            <NotificationTip
-              tipText={props.translate(
-                "dashboard_nav.identity-verify-post-phone-freja"
-              )}
-            />
+            <NotificationTip tipText={props.translate("dashboard_nav.identity-verify-post-phone-freja")} />
           );
         } else if (unverifiedNumber.length) {
           // else if phone number is not confirmed, rendering text on SETTINGS tab "Confirm your number..."
@@ -66,20 +53,14 @@ function DashboardNav(props) {
         <NavLink exact activeClassName="active" to={`/profile/`}>
           <li>{props.translate("dashboard_nav.profile")}</li>
         </NavLink>
-        <NavLink
-          exact
-          activeClassName="active"
-          to={`/profile/verify-identity/`}
-        >
+        <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
           <li>
             {props.translate("dashboard_nav.identity")}
             {tipsAtIdentity}
           </li>
         </NavLink>
         <NavLink
-          className={
-            tipsAtSettings && active ? `nav-settings ${selectedLanguage}` : null
-          }
+          className={tipsAtSettings && active ? `nav-settings ${selectedLanguage}` : null}
           exact
           activeClassName="active"
           to={`/profile/settings/`}
@@ -90,11 +71,7 @@ function DashboardNav(props) {
           </li>
         </NavLink>
         <NavLink
-          className={
-            tipsAtSettings && active
-              ? `nav-advanced-settings ${selectedLanguage}`
-              : null
-          }
+          className={tipsAtSettings && active ? `nav-advanced-settings ${selectedLanguage}` : null}
           exact
           activeClassName="active"
           to={`/profile/settings/advanced-settings`}

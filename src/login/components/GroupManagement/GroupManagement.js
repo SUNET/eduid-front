@@ -11,10 +11,7 @@ const RenderCreateGroupButton = ({ createGroup }) => {
   return (
     <>
       {!createGroup && (
-        <button
-          className="create-group"
-          onClick={() => dispatch(createGroupActions.openCreateGroup())}
-        >
+        <button className="create-group" onClick={() => dispatch(createGroupActions.openCreateGroup())}>
           create group
         </button>
       )}
@@ -25,9 +22,7 @@ const RenderCreateGroupButton = ({ createGroup }) => {
 const RenderInvitesToMe = (props) => {
   const invites = useSelector((state) => state.invites.invitesToMe);
   const hasInvites = invites.length > 0 ? true : false;
-  return (
-    <Fragment>{hasInvites ? <AllInvitesList {...props} /> : null}</Fragment>
-  );
+  return <Fragment>{hasInvites ? <AllInvitesList {...props} /> : null}</Fragment>;
 };
 
 const RenderCreateGroupOrGroupData = (props) => {
@@ -65,15 +60,11 @@ function GroupManagement(props) {
       <div className="intro">
         <div className="heading">
           <h4>Groups</h4>
-          <RenderCreateGroupButton
-            createGroup={createGroup}
-            hasNoGroups={hasNoGroups}
-            {...props}
-          />
+          <RenderCreateGroupButton createGroup={createGroup} hasNoGroups={hasNoGroups} {...props} />
         </div>
         <p>
-          Create groups with other eduID users. What the groups are used for is
-          up to you and the local services your university provides.
+          Create groups with other eduID users. What the groups are used for is up to you and the local services your
+          university provides.
         </p>
         <div className="data-panel">
           <RenderInvitesToMe {...props} />

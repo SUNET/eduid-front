@@ -32,9 +32,6 @@ const mapDispatchToProps = () => {
   };
 };
 
-const NinsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(VerifyIdentity);
+const NinsContainer = connect(mapStateToProps, mapDispatchToProps)(VerifyIdentity);
 
 export default i18n(NinsContainer);

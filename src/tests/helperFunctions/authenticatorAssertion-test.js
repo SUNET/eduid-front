@@ -1,8 +1,5 @@
 import expect from "expect";
-import {
-  safeEncode,
-  mfaDecodeMiddleware,
-} from "../../login/app_utils/helperFunctions/authenticatorAssertion";
+import { safeEncode, mfaDecodeMiddleware } from "../../login/app_utils/helperFunctions/authenticatorAssertion";
 
 describe("mfaDecodeMiddleware returns an object", () => {
   const webauthn_options =

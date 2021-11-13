@@ -2,10 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import loginSlice from "../../slices/loginSlice";
-import {
-  loadingData,
-  loadingDataComplete,
-} from "../../actions/loadingDataActions";
+import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
 
 export function* postUsernamePasswordSaga(action) {
   const state = yield select((state) => state);

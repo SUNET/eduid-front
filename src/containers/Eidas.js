@@ -11,8 +11,7 @@ const mapStateToProps = (state) => {
   if (!eidas_sp_url.endsWith("/")) {
     eidas_sp_url = eidas_sp_url.concat("/");
   }
-  let eidas_sp_freja_idp_url =
-    eidas_sp_url + verify_path + "?idp=" + freja_idp_url;
+  let eidas_sp_freja_idp_url = eidas_sp_url + verify_path + "?idp=" + freja_idp_url;
   return {
     showModal: state.eidas_data.showModal,
     eidas_sp_freja_idp_url: eidas_sp_freja_idp_url,

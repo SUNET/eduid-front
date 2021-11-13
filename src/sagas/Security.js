@@ -1,11 +1,5 @@
 import { put, select, call } from "redux-saga/effects";
-import {
-  checkStatus,
-  putCsrfToken,
-  getRequest,
-  postRequest,
-  failRequest,
-} from "sagas/common";
+import { checkStatus, putCsrfToken, getRequest, postRequest, failRequest } from "sagas/common";
 import {
   getCredentials,
   getCredentialsFail,
@@ -185,9 +179,7 @@ export function beginWebauthnRegistration(config, data) {
     .then((response) => response.json())
     .then((response) => {
       if (response.payload.registration_data !== undefined) {
-        response.payload.registration_data = safeDecodeCBOR(
-          response.payload.registration_data
-        );
+        response.payload.registration_data = safeDecodeCBOR(response.payload.registration_data);
       }
       console.log("Action config: ", response);
       return response;

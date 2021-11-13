@@ -28,12 +28,7 @@ class DataTableRow extends Component {
         }
 
         return (
-          <tr
-            className={`emailrow ${valueStatus}`}
-            data-identifier={valueName}
-            data-object={value}
-            key={i}
-          >
+          <tr className={`emailrow ${valueStatus}`} data-identifier={valueName} data-object={value} key={i}>
             <td className={valueStatus}>{value}</td>
             <DataStatus
               verified={datum.verified}
@@ -42,10 +37,7 @@ class DataTableRow extends Component {
               handleMakePrimary={this.props.handleMakePrimary}
             />
             <td className="remove-data">
-              <ButtonRemoveData
-                className="icon-button"
-                onClick={this.props.handleRemove}
-              />
+              <ButtonRemoveData className="icon-button" onClick={this.props.handleRemove} />
             </td>
           </tr>
         );

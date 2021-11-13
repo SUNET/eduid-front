@@ -2,27 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "reactstrap/lib/Button";
 
-interface ButtonPrimaryProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonPrimaryProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   id: string;
 }
 
-const ButtonPrimary = ({
-  id,
-  translate,
-  disabled,
-  onClick,
-  type,
-  children,
-}: ButtonPrimaryProps) => (
-  <Button
-    type={type}
-    id={id}
-    translate={translate}
-    disabled={disabled}
-    onClick={onClick}
-    color="primary"
-  >
+const ButtonPrimary = ({ id, translate, disabled, onClick, type, children }: ButtonPrimaryProps) => (
+  <Button type={type} id={id} translate={translate} disabled={disabled} onClick={onClick} color="primary">
     {children}
   </Button>
 );

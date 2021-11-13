@@ -10,13 +10,9 @@ const ExtraSecurityToken = (props) => {
   const history = useHistory();
   const [assertion, setAssertion] = useState(null);
   const webauthn_challenge = useSelector(
-    (state) =>
-      state.resetPassword.extra_security &&
-      state.resetPassword.extra_security.tokens.webauthn_options
+    (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
   );
-  const webauthn_assertion = useSelector(
-    (state) => state.resetPassword.webauthn_assertion
-  );
+  const webauthn_assertion = useSelector((state) => state.resetPassword.webauthn_assertion);
   const emailCode = useSelector((state) => state.resetPassword.email_code);
 
   const retryTokenAssertion = () => {
@@ -25,8 +21,7 @@ const ExtraSecurityToken = (props) => {
 
   useEffect(() => {
     if (webauthn_assertion) setAssertion(webauthn_assertion);
-    if (assertion)
-      history.push(`/reset-password/set-new-password/${emailCode}`);
+    if (assertion) history.push(`/reset-password/set-new-password/${emailCode}`);
   }, [webauthn_assertion, assertion]);
 
   return (
@@ -43,15 +38,9 @@ const ExtraSecurityToken = (props) => {
       </div>
       <div className="text-center">
         <div className="card" id="mfa-try-another-way">
-          <div className="card-header">
-            {props.translate("mfa.problems-heading")}
-          </div>
+          <div className="card-header">{props.translate("mfa.problems-heading")}</div>
           <div className="card-body">
-            <button
-              id="try-token-assertion"
-              className="btn-link"
-              onClick={() => retryTokenAssertion()}
-            >
+            <button id="try-token-assertion" className="btn-link" onClick={() => retryTokenAssertion()}>
               {props.translate("mfa.try-again")}
             </button>
           </div>

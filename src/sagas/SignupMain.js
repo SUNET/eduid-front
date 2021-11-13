@@ -5,11 +5,7 @@ import * as actions from "actions/SignupMain";
 import * as verifiedActions from "actions/CodeVerified";
 import { history } from "components/SignupMain";
 import { eduidNotify } from "actions/Notifications";
-import {
-  SIGNUP_CONFIG_URL,
-  SIGNUP_BASE_PATH,
-  SIGNUP_SERVICE_URL,
-} from "../globals";
+import { SIGNUP_CONFIG_URL, SIGNUP_BASE_PATH, SIGNUP_SERVICE_URL } from "../globals";
 
 export function* requestCodeStatus() {
   try {

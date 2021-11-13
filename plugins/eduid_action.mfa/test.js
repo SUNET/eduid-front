@@ -115,27 +115,10 @@ describe("Some plugin async actions", () => {
       });
     const data = {
       csrf_token: state.config.csrf_token,
-      credentialId: btoa(
-        String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))
-      ),
-      authenticatorData: btoa(
-        String.fromCharCode.apply(
-          null,
-          new Uint8Array(assertion.response.authenticatorData)
-        )
-      ),
-      clientDataJSON: btoa(
-        String.fromCharCode.apply(
-          null,
-          new Uint8Array(assertion.response.clientDataJSON)
-        )
-      ),
-      signature: btoa(
-        String.fromCharCode.apply(
-          null,
-          new Uint8Array(assertion.response.signature)
-        )
-      ),
+      credentialId: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.rawId))),
+      authenticatorData: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.authenticatorData))),
+      clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.clientDataJSON))),
+      signature: btoa(String.fromCharCode.apply(null, new Uint8Array(assertion.response.signature))),
     };
     const generator = postCompleteWebauthn();
     generator.next();

@@ -23,16 +23,11 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 function init_plugin(app, rootSaga, target, component, action) {
   const sagaMiddleware = createSagaMiddleware();
 
-  const store = createStore(
-    app,
-    composeEnhancers(applyMiddleware(sagaMiddleware, notifyAndDispatch))
-  );
+  const store = createStore(app, composeEnhancers(applyMiddleware(sagaMiddleware, notifyAndDispatch)));
 
   sagaMiddleware.run(rootSaga);
 
-  const language = navigator.languages
-    ? navigator.languages[0]
-    : navigator.language || navigator.userLanguage;
+  const language = navigator.languages ? navigator.languages[0] : navigator.language || navigator.userLanguage;
   const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
 
   if (supported.includes(language)) {

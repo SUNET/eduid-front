@@ -6,9 +6,7 @@ import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const LanguageToggler = ({ browserLocale, setLanguage }) => {
   const dispatch = useDispatch();
-  const translateTo = AVAILABLE_LANGUAGES.filter(
-    (lang) => lang[0] !== browserLocale
-  );
+  const translateTo = AVAILABLE_LANGUAGES.filter((lang) => lang[0] !== browserLocale);
   const locale = translateTo[0][0];
   const language = translateTo[0][1];
   return (
@@ -53,11 +51,7 @@ const Nav = (props) => {
     <nav>
       <ul>
         <HelpLink language={language} {...props} />
-        <LanguageToggler
-          setLanguage={setLanguage}
-          browserLocale={browserLocale}
-          {...props}
-        />
+        <LanguageToggler setLanguage={setLanguage} browserLocale={browserLocale} {...props} />
       </ul>
     </nav>
   );

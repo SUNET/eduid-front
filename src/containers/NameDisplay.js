@@ -13,9 +13,6 @@ const mapDispatchToProps = () => {
   return {};
 };
 
-const NameDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NameDisplay);
+const NameDisplayContainer = connect(mapStateToProps, mapDispatchToProps)(NameDisplay);
 
 export default i18n(NameDisplayContainer);

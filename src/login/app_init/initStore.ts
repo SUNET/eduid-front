@@ -39,13 +39,13 @@ const initStore = configureStore({
     resetPassword: resetPasswordSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
-  devTools: process.env.NODE_ENV !== 'production',
-})
+  devTools: process.env.NODE_ENV !== "production",
+});
 sagaMiddleware.run(rootSaga);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type LoginRootState = ReturnType<typeof initStore.getState>
+export type LoginRootState = ReturnType<typeof initStore.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type LoginAppDispatch = typeof initStore.dispatch
+export type LoginAppDispatch = typeof initStore.dispatch;
 
 export default initStore;

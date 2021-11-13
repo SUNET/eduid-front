@@ -57,11 +57,7 @@ class ErrorBoundary extends Component {
       <Fragment>
         {hasError && error !== null && errorInfo !== null ? (
           <div id="content" className="horizontal-content-margin">
-            <GenericError
-              handleReset={this.handleReset}
-              {...this.state}
-              {...this.props}
-            />
+            <GenericError handleReset={this.handleReset} {...this.state} {...this.props} />
           </div>
         ) : (
           this.props.children

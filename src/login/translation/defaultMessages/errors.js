@@ -3,42 +3,22 @@ import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
 export const generalErrors = {
   // non-error errors?
-  "unexpected-success": (
-    <FormattedMessage id="unexpected-success" defaultMessage={`Success`} />
-  ),
+  "unexpected-success": <FormattedMessage id="unexpected-success" defaultMessage={`Success`} />,
 
   // general errors
   out_of_sync: (
-    <FormattedMessage
-      id="out_of_sync"
-      defaultMessage={`User data is out of sync. Reload page to re-sync.`}
-    />
+    <FormattedMessage id="out_of_sync" defaultMessage={`User data is out of sync. Reload page to re-sync.`} />
   ),
 
-  required: (
-    <FormattedMessage id="required" defaultMessage={`*Field cannot be empty`} />
-  ),
+  required: <FormattedMessage id="required" defaultMessage={`*Field cannot be empty`} />,
 
-  "value not changed": (
-    <FormattedMessage
-      id="value not changed"
-      defaultMessage={`The value is not changed`}
-    />
-  ),
+  "value not changed": <FormattedMessage id="value not changed" defaultMessage={`The value is not changed`} />,
 
   "user-out-of-sync": (
-    <FormattedMessage
-      id="user-out-of-sync"
-      defaultMessage={`User data is out of sync. Reload page to re-sync.`}
-    />
+    <FormattedMessage id="user-out-of-sync" defaultMessage={`User data is out of sync. Reload page to re-sync.`} />
   ),
 
-  "Missing error message": (
-    <FormattedMessage
-      id="Missing error message"
-      defaultMessage={`Missing error message`}
-    />
-  ),
+  "Missing error message": <FormattedMessage id="Missing error message" defaultMessage={`Missing error message`} />,
 
   "Temporary technical problems": (
     <FormattedMessage
@@ -54,20 +34,10 @@ export const generalErrors = {
     />
   ),
 
-  "code.unknown-code": (
-    <FormattedMessage
-      id="code.unknown-code"
-      defaultMessage={`Unknown verification code`}
-    />
-  ),
+  "code.unknown-code": <FormattedMessage id="code.unknown-code" defaultMessage={`Unknown verification code`} />,
 
   // system errors
-  error_navet_task: (
-    <FormattedMessage
-      id="error_navet_task"
-      defaultMessage={`Communication problem with Navet`}
-    />
-  ),
+  error_navet_task: <FormattedMessage id="error_navet_task" defaultMessage={`Communication problem with Navet`} />,
 
   error_lookup_mobile_task: (
     <FormattedMessage
@@ -91,10 +61,7 @@ export const generalErrors = {
   ),
 
   "CSRF failed to validate": (
-    <FormattedMessage
-      id="CSRF failed to validate"
-      defaultMessage={`CSRF failed to validate, please reload the page`}
-    />
+    <FormattedMessage id="CSRF failed to validate" defaultMessage={`CSRF failed to validate, please reload the page`} />
   ),
 
   "csrf.try-again": (
@@ -126,12 +93,7 @@ export const generalErrors = {
   ),
 
   // user errors
-  error_in_form: (
-    <FormattedMessage
-      id="error_in_form"
-      defaultMessage={`Check the form below for errors.`}
-    />
-  ),
+  error_in_form: <FormattedMessage id="error_in_form" defaultMessage={`Check the form below for errors.`} />,
 
   // user errors
   "nin needs to be formatted as 18|19|20yymmddxxxx": (
@@ -142,40 +104,23 @@ export const generalErrors = {
   ),
 
   "Missing data for required field.": (
-    <FormattedMessage
-      id="Missing data for required field."
-      defaultMessage={`Missing data for required field`}
-    />
+    <FormattedMessage id="Missing data for required field." defaultMessage={`Missing data for required field`} />
   ),
 
   "Not a valid email address.": (
-    <FormattedMessage
-      id="Not a valid email address."
-      defaultMessage={`Not a valid email address.`}
-    />
+    <FormattedMessage id="Not a valid email address." defaultMessage={`Not a valid email address.`} />
   ),
 
-  "email.invalid_email": (
-    <FormattedMessage
-      id="email.invalid_email"
-      defaultMessage={`The entered email is invalid`}
-    />
-  ),
+  "email.invalid_email": <FormattedMessage id="email.invalid_email" defaultMessage={`The entered email is invalid`} />,
 };
 
 export const specificErrors = {
   // login errors
   "login.wrong_credentials": (
-    <FormattedMessage
-      id="login.wrong_credentials"
-      defaultMessage={`The email address or password was incorrect.`}
-    />
+    <FormattedMessage id="login.wrong_credentials" defaultMessage={`The email address or password was incorrect.`} />
   ),
   "eidas.reauthn_expired": (
-    <FormattedMessage
-      id="eidas.reauthn_expired"
-      defaultMessage={`Authentication has expired. Please try again.`}
-    />
+    <FormattedMessage id="eidas.reauthn_expired" defaultMessage={`Authentication has expired. Please try again.`} />
   ),
   "login.mfa_auth_failure": (
     <FormattedMessage
@@ -184,16 +129,10 @@ export const specificErrors = {
     />
   ),
   "login.not_implemented": (
-    <FormattedMessage
-      id="login.not_implemented"
-      defaultMessage={`There was a problem, please try again.`}
-    />
+    <FormattedMessage id="login.not_implemented" defaultMessage={`There was a problem, please try again.`} />
   ),
   "login.assurance_failure": (
-    <FormattedMessage
-      id="login.assurance_failure"
-      defaultMessage={`An error occurred. Please try again later.`}
-    />
+    <FormattedMessage id="login.assurance_failure" defaultMessage={`An error occurred. Please try again later.`} />
   ),
   "login.assurance_not_possible": (
     <FormattedMessage
@@ -209,10 +148,7 @@ export const specificErrors = {
   ),
 
   "login.no_sso_session": (
-    <FormattedMessage
-      id="login.no_sso_session"
-      defaultMessage={`There was a problem, please reload the page.`}
-    />
+    <FormattedMessage id="login.no_sso_session" defaultMessage={`There was a problem, please reload the page.`} />
   ),
   "login.wrong_user": (
     <FormattedMessage
@@ -227,16 +163,10 @@ export const specificErrors = {
     />
   ),
   "login.general_failure": (
-    <FormattedMessage
-      id="login.general_failure"
-      defaultMessage={`An error occurred. Please try again later.`}
-    />
+    <FormattedMessage id="login.general_failure" defaultMessage={`An error occurred. Please try again later.`} />
   ),
   "login.not_available": (
-    <FormattedMessage
-      id="login.not_available"
-      defaultMessage={`An error occurred. Please try again later.`}
-    />
+    <FormattedMessage id="login.not_available" defaultMessage={`An error occurred. Please try again later.`} />
   ),
   "login.swamid_mfa_required": (
     <FormattedMessage
@@ -257,10 +187,7 @@ export const specificErrors = {
     />
   ),
   "eidas.authn_context_mismatch": (
-    <FormattedMessage
-      id="eidas.authn_context_mismatch"
-      defaultMessage={`Wrong authentication context received`}
-    />
+    <FormattedMessage id="eidas.authn_context_mismatch" defaultMessage={`Wrong authentication context received`} />
   ),
   "eidas.nin_not_matching": (
     <FormattedMessage
@@ -315,10 +242,7 @@ export const specificErrors = {
   // mfa errors
 
   "mfa.no-webauthn-support": (
-    <FormattedMessage
-      id="mfa.no-webauthn-support"
-      defaultMessage={`No support for security keys`}
-    />
+    <FormattedMessage id="mfa.no-webauthn-support" defaultMessage={`No support for security keys`} />
   ),
 
   "mfa.no-webauthn-support-text": (
@@ -328,22 +252,12 @@ export const specificErrors = {
     />
   ),
 
-  "mfa.freja-eid": (
-    <FormattedMessage
-      id="mfa.freja-eid"
-      defaultMessage={`Use Freja eID instead`}
-    />
-  ),
+  "mfa.freja-eid": <FormattedMessage id="mfa.freja-eid" defaultMessage={`Use Freja eID instead`} />,
 
-  "mfa.problems-heading": (
-    <FormattedMessage id="mfa.problems-heading" defaultMessage={`Problems?`} />
-  ),
+  "mfa.problems-heading": <FormattedMessage id="mfa.problems-heading" defaultMessage={`Problems?`} />,
 
   "mfa.error-getting-token": (
-    <FormattedMessage
-      id="mfa.error-getting-token"
-      defaultMessage={`There was a problem using your security key`}
-    />
+    <FormattedMessage id="mfa.error-getting-token" defaultMessage={`There was a problem using your security key`} />
   ),
 
   "mfa.edge-no-u2f": (
@@ -354,17 +268,11 @@ export const specificErrors = {
   ),
 
   "security.u2f_registration_error_unknown": (
-    <FormattedMessage
-      id="security.u2f_registration_error_unknown"
-      defaultMessage={`U2F error: Unknown error`}
-    />
+    <FormattedMessage id="security.u2f_registration_error_unknown" defaultMessage={`U2F error: Unknown error`} />
   ),
 
   "security.u2f_registration_error_bad": (
-    <FormattedMessage
-      id="security.u2f_registration_error_bad"
-      defaultMessage={`U2F error: Bad request`}
-    />
+    <FormattedMessage id="security.u2f_registration_error_bad" defaultMessage={`U2F error: Bad request`} />
   ),
 
   "security.u2f_registration_error_unsupported": (
@@ -375,17 +283,11 @@ export const specificErrors = {
   ),
 
   "security.u2f_registration_error_device": (
-    <FormattedMessage
-      id="security.u2f_registration_error_device"
-      defaultMessage={`U2F error: Device ineligible`}
-    />
+    <FormattedMessage id="security.u2f_registration_error_device" defaultMessage={`U2F error: Device ineligible`} />
   ),
 
   "security.u2f_registration_error_timeout": (
-    <FormattedMessage
-      id="security.u2f_registration_error_timeout"
-      defaultMessage={`U2F error: Timeout`}
-    />
+    <FormattedMessage id="security.u2f_registration_error_timeout" defaultMessage={`U2F error: Timeout`} />
   ),
 
   "security.u2f_registration_error_code": (values) => (
@@ -398,10 +300,7 @@ export const specificErrors = {
 
   // runtime error page
   "runtime_error.generic.title": (
-    <FormattedMessage
-      id="runtime_error.generic.title"
-      defaultMessage={`There was a problem displaying the page.`}
-    />
+    <FormattedMessage id="runtime_error.generic.title" defaultMessage={`There was a problem displaying the page.`} />
   ),
   "runtime_error.generic.description": (
     <FormattedMessage
@@ -410,28 +309,16 @@ export const specificErrors = {
     />
   ),
   "runtime_error.generic.label.reload": (
-    <FormattedMessage
-      id="runtime_error.generic.label.reload"
-      defaultMessage={`Try again:`}
-    />
+    <FormattedMessage id="runtime_error.generic.label.reload" defaultMessage={`Try again:`} />
   ),
   "runtime_error.generic.p.reload": (
-    <FormattedMessage
-      id="runtime_error.generic.reload"
-      defaultMessage={`Reload page`}
-    />
+    <FormattedMessage id="runtime_error.generic.reload" defaultMessage={`Reload page`} />
   ),
   "runtime_error.generic.label.toHome": (
-    <FormattedMessage
-      id="runtime_error.generic.label.toHome"
-      defaultMessage={`Start over:`}
-    />
+    <FormattedMessage id="runtime_error.generic.label.toHome" defaultMessage={`Start over:`} />
   ),
   "runtime_error.generic.p.toHome": (
-    <FormattedMessage
-      id="runtime_error.generic.p.toHome"
-      defaultMessage={`Return to home`}
-    />
+    <FormattedMessage id="runtime_error.generic.p.toHome" defaultMessage={`Return to home`} />
   ),
 
   // captcha error
@@ -443,12 +330,7 @@ export const specificErrors = {
   ),
 
   // email errors
-  mail_duplicated: (
-    <FormattedMessage
-      id="mail_duplicated"
-      defaultMessage={`Added email is duplicated`}
-    />
-  ),
+  mail_duplicated: <FormattedMessage id="mail_duplicated" defaultMessage={`Added email is duplicated`} />,
 
   error_login_failed: (
     <FormattedHTMLMessage
@@ -465,18 +347,10 @@ export const specificErrors = {
   ),
 
   error_edu_person_principal_name: (
-    <FormattedHTMLMessage
-      id="error_edu_person_principal_name"
-      defaultMessage={`eduPersonPrincipalName error`}
-    />
+    <FormattedHTMLMessage id="error_edu_person_principal_name" defaultMessage={`eduPersonPrincipalName error`} />
   ),
 
-  error_edu_person_orcid: (
-    <FormattedHTMLMessage
-      id="error_edu_person_orcid"
-      defaultMessage={`eduPersonOrcid error`}
-    />
-  ),
+  error_edu_person_orcid: <FormattedHTMLMessage id="error_edu_person_orcid" defaultMessage={`eduPersonOrcid error`} />,
 
   error_authentication: (
     <FormattedHTMLMessage
@@ -487,9 +361,7 @@ export const specificErrors = {
     />
   ),
 
-  error_mfa: (
-    <FormattedHTMLMessage id="error_mfa" defaultMessage={"MFA error"} />
-  ),
+  error_mfa: <FormattedHTMLMessage id="error_mfa" defaultMessage={"MFA error"} />,
 
   error_insufficient_privileges: (
     <FormattedHTMLMessage
@@ -501,18 +373,10 @@ export const specificErrors = {
   ),
 
   error_affiliation_student: (
-    <FormattedHTMLMessage
-      id="error_affiliation_student"
-      defaultMessage={"Not student error"}
-    />
+    <FormattedHTMLMessage id="error_affiliation_student" defaultMessage={"Not student error"} />
   ),
 
-  error_assurance_al1: (
-    <FormattedHTMLMessage
-      id="error_assurance_al1"
-      defaultMessage={"Not AL1 error"}
-    />
-  ),
+  error_assurance_al1: <FormattedHTMLMessage id="error_assurance_al1" defaultMessage={"Not AL1 error"} />,
 
   error_access: (
     <FormattedHTMLMessage
@@ -533,23 +397,15 @@ export const specificErrors = {
   error_without_code: (
     <FormattedMessage
       id="error_without_code"
-      defaultMessage={
-        "Insufficient error information received, please retry or contact support"
-      }
+      defaultMessage={"Insufficient error information received, please retry or contact support"}
     />
   ),
 
   error_sp_example_nin: (
-    <FormattedMessage
-      id="error_sp_example_nin"
-      defaultMessage={"You need to verify your eduID account"}
-    />
+    <FormattedMessage id="error_sp_example_nin" defaultMessage={"You need to verify your eduID account"} />
   ),
 
   error_technical_info_heading: (
-    <FormattedHTMLMessage
-      id="error_technical_info_heading"
-      defaultMessage={"Technical Information"}
-    />
+    <FormattedHTMLMessage id="error_technical_info_heading" defaultMessage={"Technical Information"} />
   ),
 };

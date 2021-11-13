@@ -102,11 +102,7 @@ class Mobile extends Component {
           <div className={this.state.formClass}>
             <PhoneForm {...this.props} />
           </div>
-          <EduIDButton
-            id="add-more-button"
-            className={this.state.addLinkClass}
-            onClick={this.showEmailForm}
-          >
+          <EduIDButton id="add-more-button" className={this.state.addLinkClass} onClick={this.showEmailForm}>
             {this.props.translate("phones.button_add_more")}
           </EduIDButton>
         </div>

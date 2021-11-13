@@ -1,11 +1,7 @@
 import { connect } from "react-redux";
 import LookupMobileProofing from "./LookupMobileProofing";
 import { eduidRMAllNotify } from "../../../actions/Notifications";
-import {
-  showModal,
-  closeModal,
-  postLookupMobile,
-} from "../../../actions/LookupMobileProofing";
+import { showModal, closeModal, postLookupMobile } from "../../../actions/LookupMobileProofing";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
@@ -36,9 +32,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const LookupMobileProofingContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LookupMobileProofing);
+const LookupMobileProofingContainer = connect(mapStateToProps, mapDispatchToProps)(LookupMobileProofing);
 
 export default i18n(LookupMobileProofingContainer);

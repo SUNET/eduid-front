@@ -15,9 +15,7 @@ class Captcha extends Component {
 
     return [
       <div key="0" id="content" className="horizontal-content-margin">
-        <h3 className="register-header">
-          {this.props.translate("captcha.verify-human")}
-        </h3>
+        <h3 className="register-header">{this.props.translate("captcha.verify-human")}</h3>
         <div key="1" id="captcha-container">
           <div id="captcha">
             <Recaptcha
@@ -36,11 +34,7 @@ class Captcha extends Component {
             >
               {this.props.translate("captcha.submit")}
             </EduIDButton>
-            <EduIDButton
-              onClick={this.props.cancelCaptcha}
-              className="cancel-button"
-              id="cancel-captcha-button"
-            >
+            <EduIDButton onClick={this.props.cancelCaptcha} className="cancel-button" id="cancel-captcha-button">
               {this.props.translate("captcha.cancel")}
             </EduIDButton>
           </div>
@@ -57,18 +51,10 @@ Captcha.propTypes = {
   setFetching: PropTypes.func,
 };
 
-const LoadingCaptcha = ScriptLoader(
-  "https://www.google.com/recaptcha/api.js?render=explicit"
-)(Captcha);
+const LoadingCaptcha = ScriptLoader("https://www.google.com/recaptcha/api.js?render=explicit")(Captcha);
 
 export default (props) => (
   <FetchingContext.Consumer>
-    {({ fetching, setFetching }) => (
-      <LoadingCaptcha
-        {...props}
-        fetching={fetching}
-        setFetching={setFetching}
-      />
-    )}
+    {({ fetching, setFetching }) => <LoadingCaptcha {...props} fetching={fetching} setFetching={setFetching} />}
   </FetchingContext.Consumer>
 );

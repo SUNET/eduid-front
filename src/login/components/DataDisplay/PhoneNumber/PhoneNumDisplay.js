@@ -30,9 +30,7 @@ class PhoneNumDisplay extends Component {
 
     return (
       <div key="3" className="data-display-container">
-        <label key="0">
-          {this.props.translate("profile.phone_display_title")}
-        </label>
+        <label key="0">{this.props.translate("profile.phone_display_title")}</label>
         <div className="data-display">{displayText}</div>
       </div>
     );

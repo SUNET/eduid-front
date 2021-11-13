@@ -24,10 +24,7 @@ describe("Captcha Component", () => {
   });
 
   it("The captcha <div> element renders", () => {
-    fetch.mockResponseOnce(
-      "https://www.google.com/recaptcha/api.js",
-      "dummy-script"
-    );
+    fetch.mockResponseOnce("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
       component: <CaptchaContainer />,
     });
@@ -36,10 +33,7 @@ describe("Captcha Component", () => {
   });
 
   it("Renders the OK and CANCEL buttons", () => {
-    fetch.mockResponseOnce(
-      "https://www.google.com/recaptcha/api.js",
-      "dummy-script"
-    );
+    fetch.mockResponseOnce("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
       component: <CaptchaContainer />,
     });

@@ -36,9 +36,7 @@ let AcceptButton = ({ translate, version }) => {
 let TermOfUse = (props) => {
   const dispatch = useDispatch();
   const { translate } = props;
-  const availableTouVersions = useSelector(
-    (state) => state.login.tou.available_versions
-  );
+  const availableTouVersions = useSelector((state) => state.login.tou.available_versions);
   const version = useSelector((state) => state.login.tou.version);
   useEffect(() => {
     dispatch(loginSlice.actions.postTouVersions(availableTouVersions));

@@ -16,14 +16,7 @@ const RenderGroups = () => {
   // functionality to be removed when groups feature is released
   const showComponent = useSelector((state) => state.groups.hasCookie);
   return (
-    <Fragment>
-      {showComponent && (
-        <Route
-          path="/profile/settings/personaldata"
-          component={GroupManagement}
-        />
-      )}
-    </Fragment>
+    <Fragment>{showComponent && <Route path="/profile/settings/personaldata" component={GroupManagement} />}</Fragment>
   );
 };
 
@@ -31,44 +24,16 @@ class Settings extends Component {
   render() {
     return (
       <div>
-        <Route
-          exact
-          path="/profile/settings/"
-          component={() => <Redirect to="/profile/settings/personaldata" />}
-        />
-        <Route
-          path="/profile/settings/personaldata"
-          render={(props) => <PersonalDataParent {...props} />}
-        />
-        <Route
-          path="/profile/settings/personaldata"
-          component={EmailsContainer}
-        />
-        <Route
-          path="/profile/settings/personaldata"
-          component={MobileContainer}
-        />
+        <Route exact path="/profile/settings/" component={() => <Redirect to="/profile/settings/personaldata" />} />
+        <Route path="/profile/settings/personaldata" render={(props) => <PersonalDataParent {...props} />} />
+        <Route path="/profile/settings/personaldata" component={EmailsContainer} />
+        <Route path="/profile/settings/personaldata" component={MobileContainer} />
         <RenderGroups />
-        <Route
-          path="/profile/settings/personaldata"
-          component={ChangePasswordDisplay}
-        />
-        <Route
-          path="/profile/settings/personaldata"
-          component={DeleteAccount}
-        />
-        <Route
-          path="/profile/settings/advanced-settings"
-          component={SecurityContainer}
-        />
-        <Route
-          path="/profile/settings/advanced-settings"
-          component={AccountLinkingContainer}
-        />
-        <Route
-          path="/profile/settings/advanced-settings"
-          component={AccountId}
-        />
+        <Route path="/profile/settings/personaldata" component={ChangePasswordDisplay} />
+        <Route path="/profile/settings/personaldata" component={DeleteAccount} />
+        <Route path="/profile/settings/advanced-settings" component={SecurityContainer} />
+        <Route path="/profile/settings/advanced-settings" component={AccountLinkingContainer} />
+        <Route path="/profile/settings/advanced-settings" component={AccountId} />
       </div>
     );
   }

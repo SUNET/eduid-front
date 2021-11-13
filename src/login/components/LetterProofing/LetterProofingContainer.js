@@ -7,8 +7,7 @@ import i18n from "../../translation/InjectIntl_HOC_factory";
 const mapStateToProps = (state) => {
   const confirming = state.letter_proofing.confirmingLetter;
   const valid_nin = isValid("nins")(state);
-  const confirmingLetter =
-    (confirming && valid_nin) || state.letter_proofing.letter_expired;
+  const confirmingLetter = (confirming && valid_nin) || state.letter_proofing.letter_expired;
   let withoutNin = !state.nins.nins[0];
   return {
     disabled: withoutNin,
@@ -28,10 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     sendConfirmationCode: function (e) {
       e.preventDefault();
       const data = {
-        code: document
-          .getElementById("confirmation-code-area")
-          .querySelector("input")
-          .value.trim(),
+        code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
       };
       dispatch(actions.postLetterProofingVerificationCode(data));
       dispatch(actions.stopLetterVerification());
@@ -45,9 +41,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const LetterProofingContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LetterProofingButton);
+const LetterProofingContainer = connect(mapStateToProps, mapDispatchToProps)(LetterProofingButton);
 
 export default i18n(LetterProofingContainer);

@@ -12,20 +12,14 @@ class NameDisplay extends Component {
       ];
     } else {
       userData = [
-        <Link
-          key="1"
-          to={`/profile/settings/`}
-          className="display-data unverified"
-        >
+        <Link key="1" to={`/profile/settings/`} className="display-data unverified">
           {this.props.translate("profile.name_display_no_data")}
         </Link>,
       ];
     }
     return (
       <div key="0" className="profile-grid-cell">
-        <label key="0">
-          {this.props.translate("profile.name_display_title")}
-        </label>
+        <label key="0">{this.props.translate("profile.name_display_title")}</label>
         {userData}
       </div>
     );

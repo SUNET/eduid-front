@@ -209,11 +209,7 @@ const state = {
   },
 };
 
-import {
-  checkNINAndShowSelegModal,
-  requestOpenidQRcode,
-  fetchQRcode,
-} from "../sagas/OpenidConnect";
+import { checkNINAndShowSelegModal, requestOpenidQRcode, fetchQRcode } from "../sagas/OpenidConnect";
 import { put, call, select } from "redux-saga/effects";
 
 describe("Async component", () => {
@@ -238,9 +234,7 @@ describe("Async component", () => {
       csrf_token: "csrf-token",
     };
 
-    expect(oidcData.value).toEqual(
-      call(fetchQRcode, state.config.oidc_proofing_url, data)
-    );
+    expect(oidcData.value).toEqual(call(fetchQRcode, state.config.oidc_proofing_url, data));
 
     const action = {
       type: actions.POST_OIDC_PROOFING_PROOFING_SUCCESS,

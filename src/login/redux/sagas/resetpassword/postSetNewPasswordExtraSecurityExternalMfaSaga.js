@@ -6,9 +6,7 @@ import { history } from "../../../components/App/App";
 
 export function* postSetNewPasswordExternalMfa() {
   const state = yield select((state) => state);
-  const url =
-    state.config.reset_password_url +
-    "new-password-extra-security-external-mfa/";
+  const url = state.config.reset_password_url + "new-password-extra-security-external-mfa/";
   const data = {
     email_code: state.resetPassword.email_code,
     password: state.resetPassword.new_password,
@@ -24,9 +22,6 @@ export function* postSetNewPasswordExternalMfa() {
     }
     history.push(`/reset-password/success`);
   } catch (error) {
-    yield* failRequest(
-      error,
-      resetPasswordSlice.actions.resetPasswordSagaFail(error)
-    );
+    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail(error));
   }
 }

@@ -17,23 +17,13 @@ class TableList extends Component {
         }
         if (entry.primary) {
           return (
-            <tr
-              className="emailrow primary"
-              data-identifier={index}
-              data-object={key}
-              key={key}
-            >
+            <tr className="emailrow primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier status-label">
-                <span className="nobutton verify-status-label">
-                  {this.props.translate("tl.primary")}
-                </span>
+                <span className="nobutton verify-status-label">{this.props.translate("tl.primary")}</span>
               </td>
               <td className="non-identifier data-remove-button">
-                <EduIDButton
-                  className="icon-button"
-                  onClick={this.props.handleRemove}
-                >
+                <EduIDButton className="icon-button" onClick={this.props.handleRemove}>
                   <svg
                     className="remove"
                     width="16"
@@ -51,12 +41,7 @@ class TableList extends Component {
           );
         } else if (entry.verified) {
           return (
-            <tr
-              className="emailrow make-primary"
-              data-identifier={index}
-              data-object={key}
-              key={key}
-            >
+            <tr className="emailrow make-primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier">
                 <EduIDButton
@@ -67,10 +52,7 @@ class TableList extends Component {
                 </EduIDButton>
               </td>
               <td className="non-identifier ">
-                <EduIDButton
-                  className="icon-button"
-                  onClick={this.props.handleRemove}
-                >
+                <EduIDButton className="icon-button" onClick={this.props.handleRemove}>
                   <svg
                     className="remove"
                     width="16"
@@ -88,26 +70,15 @@ class TableList extends Component {
           );
         } else {
           return (
-            <tr
-              className="emailrow make-primary"
-              data-identifier={index}
-              data-object={key}
-              key={key}
-            >
+            <tr className="emailrow make-primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier ">
-                <EduIDButton
-                  className="btn-link verify-status-label"
-                  onClick={this.props.handleStartConfirmation}
-                >
+                <EduIDButton className="btn-link verify-status-label" onClick={this.props.handleStartConfirmation}>
                   {this.props.translate("tl.pending")}
                 </EduIDButton>
               </td>
               <td className="non-identifier">
-                <EduIDButton
-                  className="icon-button"
-                  onClick={this.props.handleRemove}
-                >
+                <EduIDButton className="icon-button" onClick={this.props.handleRemove}>
                   <svg
                     className="remove"
                     width="16"

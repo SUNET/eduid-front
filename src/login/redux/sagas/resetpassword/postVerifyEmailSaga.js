@@ -25,11 +25,7 @@ export function* requestLinkCode() {
       }
       const decodedResponse = mfaDecodeMiddlewareForResetPassword(response);
       // if API call successfully post data save it to store
-      yield put(
-        resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess(
-          decodedResponse.payload
-        )
-      );
+      yield put(resetPasswordSlice.actions.resetPasswordVerifyEmailSuccess(decodedResponse.payload));
       // Completed with frejaeid location changes to set-new-password
       if (locationUrl.includes("set-new-password")) {
         history.push(`/reset-password/set-new-password/${data.email_code}`);
@@ -37,10 +33,7 @@ export function* requestLinkCode() {
         history.push(`/reset-password/extra-security/${data.email_code}`);
       }
     } catch (error) {
-      yield* failRequest(
-        error,
-        resetPasswordSlice.actions.resetPasswordSagaFail(error)
-      );
+      yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail(error));
     }
   }
 }

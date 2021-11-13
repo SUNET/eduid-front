@@ -9,15 +9,11 @@ let FrejaeID = ({ translate }) => {
   const idp = useSelector((state) => state.config.mfa_auth_idp);
   const mfaPage = window.location.href; // return to mfa page on completion
   // ensure url has one slash at the end to be functional in the link
-  const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/")
-    ? frejaUrlDomain
-    : frejaUrlDomain.concat("/");
+  const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain.concat("/");
   return (
     <div className="secondary" tabIndex="0">
       <div className="option">
-        <p className="heading">
-          {translate("login.mfa.secondary-option.title")}
-        </p>
+        <p className="heading">{translate("login.mfa.secondary-option.title")}</p>
         <ButtonSecondary
           type="submit"
           onClick={() => {

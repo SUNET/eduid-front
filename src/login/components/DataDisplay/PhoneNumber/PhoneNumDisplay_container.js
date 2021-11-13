@@ -23,9 +23,6 @@ const mapDispatchToProps = () => {
   return {};
 };
 
-const PhoneNumDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PhoneNumDisplay);
+const PhoneNumDisplayContainer = connect(mapStateToProps, mapDispatchToProps)(PhoneNumDisplay);
 
 export default InjectIntl(PhoneNumDisplayContainer);

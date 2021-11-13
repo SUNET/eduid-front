@@ -295,11 +295,7 @@ describe("Security Container", () => {
       webauthn_asking_description: false,
     };
 
-    getWrapper = function ({
-      deleting = false,
-      askingDesc = false,
-      props = mockProps,
-    } = {}) {
+    getWrapper = function ({ deleting = false, askingDesc = false, props = mockProps } = {}) {
       store = fakeStore(getState(deleting, askingDesc));
       dispatch = store.dispatch;
 
@@ -364,8 +360,6 @@ describe("Async component", () => {
     expect(next.value.SELECT.args).toEqual([]);
 
     generator.next(mockState.config);
-    expect(mockWindow.location.href).toEqual(
-      "/dummy-tok-url/chpass?next=%2Fdummy-dash-url%2Fchpass"
-    );
+    expect(mockWindow.location.href).toEqual("/dummy-tok-url/chpass?next=%2Fdummy-dash-url%2Fchpass");
   });
 });

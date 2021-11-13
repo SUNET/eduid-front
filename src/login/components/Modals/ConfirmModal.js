@@ -69,19 +69,11 @@ class ConfirmModal extends Component {
             {title}
           </ModalHeader>
           <ModalBody>
-            <ConfirmModalForm
-              helpBlock={helpBlock}
-              inputName={id}
-              {...this.props}
-            />
+            <ConfirmModalForm helpBlock={helpBlock} inputName={id} {...this.props} />
             {resendMarkup}
           </ModalBody>
           <ModalFooter>
-            <EduIDButton
-              className="modal-button ok-button"
-              disabled={!formEnabled}
-              onClick={handleConfirm}
-            >
+            <EduIDButton className="modal-button ok-button" disabled={!formEnabled} onClick={handleConfirm}>
               {translate("cm.ok")}
             </EduIDButton>
           </ModalFooter>

@@ -27,10 +27,7 @@ const validate = (values, props) => {
   if (!values[pwFieldOldName]) {
     errors[pwFieldOldName] = "required";
   }
-  if (
-    props.registeredFields &&
-    !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)
-  ) {
+  if (props.registeredFields && !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)) {
     if (!values[pwFieldCustomName]) {
       errors[pwFieldCustomName] = "required";
     } else if (props.custom_ready) {
@@ -67,25 +64,14 @@ class ChangePasswordForm extends Component {
 
     if (this.state.customPassword) {
       const meterHelpBlock = [
-        <meter
-          max="4"
-          value={this.props.password_score}
-          id="password-strength-meter"
-          key="0"
-        />,
+        <meter max="4" value={this.props.password_score} id="password-strength-meter" key="0" />,
         <div className="form-field-error-area" key="1">
-          <FormText>
-            {this.props.translate(this.props.password_strength_msg)}
-          </FormText>
+          <FormText>{this.props.translate(this.props.password_strength_msg)}</FormText>
         </div>,
       ];
 
       button = (
-        <EduIDButton
-          value="custom"
-          className="btn-link"
-          onClick={() => this.togglePasswordType()}
-        >
+        <EduIDButton value="custom" className="btn-link" onClick={() => this.togglePasswordType()}>
           {this.props.translate("chpass.button_suggest_password")}
         </EduIDButton>
       );
@@ -114,9 +100,7 @@ class ChangePasswordForm extends Component {
 
       helpCustom = (
         <div className="password-format">
-          <label>
-            {this.props.translate("chpass.help-text-newpass-label")}
-          </label>
+          <label>{this.props.translate("chpass.help-text-newpass-label")}</label>
           <ul id="password-custom-help">
             {this.props
               .translate("chpass.help-text-newpass-tips")
@@ -141,11 +125,7 @@ class ChangePasswordForm extends Component {
         />
       );
       button = (
-        <EduIDButton
-          value="custom"
-          className="btn-link"
-          onClick={() => this.togglePasswordType()}
-        >
+        <EduIDButton value="custom" className="btn-link" onClick={() => this.togglePasswordType()}>
           {this.props.translate("chpass.button_custom_password")}
         </EduIDButton>
       );
@@ -175,17 +155,12 @@ class ChangePasswordForm extends Component {
           <PrimaryButton
             id="chpass-button"
             className="settings-button"
-            disabled={
-              this.props.submitting || this.props.pristine || this.props.invalid
-            }
+            disabled={this.props.submitting || this.props.pristine || this.props.invalid}
             onClick={this.props.handleStartPasswordChange.bind(this)}
           >
             {this.props.translate("chpass.button_save_password")}
           </PrimaryButton>
-          <EduIDButton
-            className="cancel-button"
-            onClick={this.props.handleStopPasswordChange.bind(this)}
-          >
+          <EduIDButton className="cancel-button" onClick={this.props.handleStopPasswordChange.bind(this)}>
             {this.props.translate("cm.cancel")}
           </EduIDButton>
         </div>

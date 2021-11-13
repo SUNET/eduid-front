@@ -31,12 +31,7 @@ let memberInvites = [
   "both2@email.com",
 ];
 
-let ownerInvites = [
-  "owner1@email.com",
-  "owner1@email.com",
-  "both1@email.com",
-  "both2@email.com",
-];
+let ownerInvites = ["owner1@email.com", "owner1@email.com", "both1@email.com", "both2@email.com"];
 
 describe("invitesByRole returns an array", () => {
   it("with input", () => {
@@ -54,9 +49,7 @@ describe("invitesByRole returns an array", () => {
     let ownerInvitesLength = invites[0].owner_invites.length;
     let invitesFromMeByRole = invitesByRole(invites);
     expect(invitesFromMeByRole.length).toBe(8);
-    expect(invitesFromMeByRole.length).not.toBe(
-      memberInvitesLength + ownerInvitesLength
-    );
+    expect(invitesFromMeByRole.length).not.toBe(memberInvitesLength + ownerInvitesLength);
   });
 
   it("sorted in alpabetical order", () => {

@@ -5,14 +5,7 @@ import * as createGroupActions from "../../../redux/actions/createGroupActions";
 import { useDispatch, useSelector } from "react-redux";
 
 export const CloseButton = () => (
-  <svg
-    className="close"
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg className="close" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M7 0h2v16H7z" />
     <path d="M0 9V7h16v2z" />
   </svg>
@@ -22,9 +15,7 @@ const RenderWizardOrCreateGroupHeading = (props) => {
   const dispatch = useDispatch();
   return (
     <>
-      <p>
-        {props.hasNoGroups ? "Create your first group." : "Create a new group."}
-      </p>
+      <p>{props.hasNoGroups ? "Create your first group." : "Create a new group."}</p>
       <button
         onClick={
           props.hasNoGroups
@@ -60,10 +51,7 @@ function CreateGroup(props) {
         <div className="title">
           <RenderWizardOrCreateGroupHeading {...props} />
         </div>
-        <p>
-          As the creator of a group you will be an admin, which allows you to
-          edit the group and send out invites.
-        </p>
+        <p>As the creator of a group you will be an admin, which allows you to edit the group and send out invites.</p>
         <div className="group-name">
           <GroupNameForm
             form={"groupName"}

@@ -6,18 +6,14 @@ const notifyAndDispatch = () => (next) => (action) => {
       delete action.payload.message;
       delete action.payload.error;
     } else if (action.error && action.payload) {
-      if (
-        action.payload.error &&
-        action.payload.error.csrf_token !== undefined
-      ) {
+      if (action.payload.error && action.payload.error.csrf_token !== undefined) {
         const msg = "csrf.try-again";
         next(actions.eduidNotify(msg, "errors"));
       } else if (action.payload.error && action.payload.error.nin) {
         const msg = action.payload.error.nin[0];
         next(actions.eduidNotify(msg, "errors"));
       } else {
-        const msg =
-          action.payload.errorMsg || action.payload.message || "error_in_form";
+        const msg = action.payload.errorMsg || action.payload.message || "error_in_form";
         next(actions.eduidNotify(msg, "errors"));
       }
       setTimeout(() => {

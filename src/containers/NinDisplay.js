@@ -13,8 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleDelete: function (e) {
-      const ninNumber =
-        e.target.closest(".profile-grid-cell").children[1].dataset.ninnumber;
+      const ninNumber = e.target.closest(".profile-grid-cell").children[1].dataset.ninnumber;
       dispatch(actions.startRemove(ninNumber));
     },
     toggleShowNinAtProfile: function () {
@@ -26,9 +25,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const NinDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NinDisplay);
+const NinDisplayContainer = connect(mapStateToProps, mapDispatchToProps)(NinDisplay);
 
 export default i18n(NinDisplayContainer);

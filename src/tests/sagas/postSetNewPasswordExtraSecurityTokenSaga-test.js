@@ -32,22 +32,12 @@ describe(`API call to "new-password-extra-security-token/" behaves as expected o
       email_code: fakeState.resetPassword.email_code,
       password: fakeState.resetPassword.new_password,
       csrf_token: fakeState.config.csrf_token,
-      authenticatorData: safeEncode(
-        fakeState.resetPassword.webauthn_assertion.response.authenticatorData
-      ),
-      clientDataJSON: safeEncode(
-        fakeState.resetPassword.webauthn_assertion.response.clientDataJSON
-      ),
-      signature: safeEncode(
-        fakeState.resetPassword.webauthn_assertion.response.signature
-      ),
-      credentialId: safeEncode(
-        fakeState.resetPassword.webauthn_assertion.rawId
-      ),
+      authenticatorData: safeEncode(fakeState.resetPassword.webauthn_assertion.response.authenticatorData),
+      clientDataJSON: safeEncode(fakeState.resetPassword.webauthn_assertion.response.clientDataJSON),
+      signature: safeEncode(fakeState.resetPassword.webauthn_assertion.response.signature),
+      credentialId: safeEncode(fakeState.resetPassword.webauthn_assertion.rawId),
     };
-    const url =
-      fakeState.config.reset_password_url +
-      "new-password-extra-security-token/";
+    const url = fakeState.config.reset_password_url + "new-password-extra-security-token/";
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).toEqual(call(postRequest, url, data));
   });
@@ -74,9 +64,7 @@ describe(`first API call to "new-password-extra-security-token/" behaves as expe
       csrf_token: fakeState.config.csrf_token,
       password: "fake password",
     };
-    const url =
-      fakeState.config.reset_password_url +
-      "new-password-extra-security-token/";
+    const url = fakeState.config.reset_password_url + "new-password-extra-security-token/";
     const apiCall = generator.next(fakeState).value;
     expect(apiCall).not.toEqual(call(postRequest, url, data));
   });

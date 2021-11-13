@@ -21,26 +21,18 @@ class LookupMobileProofing extends Component {
           this.props.withoutPhoneNumber ? (
             <>
               {" "}
-              {this.props.translate(
-                "verify-identity.vetting_explanation_add_phone_number"
-              )}{" "}
-              {linkToSettings}
+              {this.props.translate("verify-identity.vetting_explanation_add_phone_number")} {linkToSettings}
             </>
           ) : /* else if, unverified phone number, text will help the user to confirm phone number and 
             the text "setting" is linked to the setting page phone number section */
           this.props.unverifiedNumber ? (
             <>
               {" "}
-              {this.props.translate(
-                "verify-identity.vetting_explanation_confirm_phone_number"
-              )}{" "}
-              {linkToSettings}
+              {this.props.translate("verify-identity.vetting_explanation_confirm_phone_number")} {linkToSettings}
             </>
           ) : /* else if, the verified phone number is not a Swedish number, description text show "only avaiable with Swedish number" */
           this.props.nonSweNumber ? (
-            this.props.translate(
-              "verify-identity.vetting_explanation_only_available_swe_number"
-            )
+            this.props.translate("verify-identity.vetting_explanation_only_available_swe_number")
           ) : null
         }
       </div>

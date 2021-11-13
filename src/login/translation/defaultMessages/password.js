@@ -11,76 +11,38 @@ export const changePassword = {
   ),
 
   /* ----- /chpass ChangePassword ------- */
-  "chpass.main_title": (
-    <FormattedMessage
-      id="chpass.main_title"
-      defaultMessage={`Change your current password`}
-    />
-  ),
+  "chpass.main_title": <FormattedMessage id="chpass.main_title" defaultMessage={`Change your current password`} />,
 
   /* ----- /chpass ChangePasswordForm ------- */
 
-  "chpass.old_password": (
-    <FormattedMessage
-      id="chpass.old_password"
-      defaultMessage={`Current password`}
-    />
-  ),
+  "chpass.old_password": <FormattedMessage id="chpass.old_password" defaultMessage={`Current password`} />,
 
   "chpass.suggested_password": (
-    <FormattedMessage
-      id="chpass.suggested_password"
-      defaultMessage={`Suggested password`}
-    />
+    <FormattedMessage id="chpass.suggested_password" defaultMessage={`Suggested password`} />
   ),
 
   "chpass.button_custom_password": (
-    <FormattedMessage
-      id="chpass.button_custom_password"
-      defaultMessage={`I don't want a suggested password`}
-    />
+    <FormattedMessage id="chpass.button_custom_password" defaultMessage={`I don't want a suggested password`} />
   ),
 
   "chpass.form_custom_password": (
-    <FormattedMessage
-      id="chpass.form_custom_password"
-      defaultMessage={`Enter new password`}
-    />
+    <FormattedMessage id="chpass.form_custom_password" defaultMessage={`Enter new password`} />
   ),
 
   "chpass.form_custom_password_repeat": (
-    <FormattedMessage
-      id="chpass.form_custom_password_repeat"
-      defaultMessage={`Repeat new password`}
-    />
+    <FormattedMessage id="chpass.form_custom_password_repeat" defaultMessage={`Repeat new password`} />
   ),
 
   "chpass.button_suggest_password": (
-    <FormattedMessage
-      id="chpass.button_suggest_password"
-      defaultMessage={`Suggest a password for me`}
-    />
+    <FormattedMessage id="chpass.button_suggest_password" defaultMessage={`Suggest a password for me`} />
   ),
 
-  "chpass.button_save_password": (
-    <FormattedMessage
-      id="chpass.button_save_password"
-      defaultMessage={`Save`}
-    />
-  ),
+  "chpass.button_save_password": <FormattedMessage id="chpass.button_save_password" defaultMessage={`Save`} />,
 
-  "chpass.no_old_pw": (
-    <FormattedMessage
-      id="chpass.no_old_pw"
-      defaultMessage={`Please enter your old password`}
-    />
-  ),
+  "chpass.no_old_pw": <FormattedMessage id="chpass.no_old_pw" defaultMessage={`Please enter your old password`} />,
 
   "chpass.no_reauthn": (
-    <FormattedMessage
-      id="chpass.no_reauthn"
-      defaultMessage={`You must re-authenticate to change your password`}
-    />
+    <FormattedMessage id="chpass.no_reauthn" defaultMessage={`You must re-authenticate to change your password`} />
   ),
 
   "chpass.stale_reauthn": (
@@ -98,17 +60,11 @@ export const changePassword = {
   ),
 
   "chpass.password-changed": (
-    <FormattedMessage
-      id="chpass.password-changed"
-      defaultMessage={`Your password has been changed`}
-    />
+    <FormattedMessage id="chpass.password-changed" defaultMessage={`Your password has been changed`} />
   ),
 
   "chpass.different-repeat": (
-    <FormattedMessage
-      id="chpass.different-repeat"
-      defaultMessage={`The two passwords are different`}
-    />
+    <FormattedMessage id="chpass.different-repeat" defaultMessage={`The two passwords are different`} />
   ),
 
   "chpass.unable-to-verify-old-password": (
@@ -119,38 +75,19 @@ export const changePassword = {
   ),
 
   "chpass.low-password-entropy": (
-    <FormattedMessage
-      id="chpass.low-password-entropy"
-      defaultMessage={`Please provide a stronger password`}
-    />
+    <FormattedMessage id="chpass.low-password-entropy" defaultMessage={`Please provide a stronger password`} />
   ),
 
   // button and info in settings
-  "settings.main_title": (
-    <FormattedMessage
-      id="settings.main_title"
-      defaultMessage={`Change password`}
-    />
-  ),
+  "settings.main_title": <FormattedMessage id="settings.main_title" defaultMessage={`Change password`} />,
 
   "settings.long_description": (
-    <FormattedMessage
-      id="settings.long_description"
-      defaultMessage={`Click the link to change your eduID password.`}
-    />
+    <FormattedMessage id="settings.long_description" defaultMessage={`Click the link to change your eduID password.`} />
   ),
-  "settings.change_password": (
-    <FormattedMessage
-      id="settings.change_password"
-      defaultMessage={`Change password`}
-    />
-  ),
+  "settings.change_password": <FormattedMessage id="settings.change_password" defaultMessage={`Change password`} />,
 
   "settings.confirm_title_chpass": (
-    <FormattedMessage
-      id="settings.confirm_title_chpass"
-      defaultMessage={`For security reasons...`}
-    />
+    <FormattedMessage id="settings.confirm_title_chpass" defaultMessage={`For security reasons...`} />
   ),
 
   "settings.change_info": (
@@ -162,31 +99,15 @@ export const changePassword = {
 
   // password stregth
 
-  "pwfield.terrible": (
-    <FormattedMessage
-      id="pwfield.terrible"
-      defaultMessage={`Extremely weak password`}
-    />
-  ),
+  "pwfield.terrible": <FormattedMessage id="pwfield.terrible" defaultMessage={`Extremely weak password`} />,
 
-  "pwfield.bad": (
-    <FormattedMessage id="pwfield.bad" defaultMessage={`Very weak password`} />
-  ),
+  "pwfield.bad": <FormattedMessage id="pwfield.bad" defaultMessage={`Very weak password`} />,
 
-  "pwfield.weak": (
-    <FormattedMessage id="pwfield.weak" defaultMessage={`Weak password`} />
-  ),
+  "pwfield.weak": <FormattedMessage id="pwfield.weak" defaultMessage={`Weak password`} />,
 
-  "pwfield.good": (
-    <FormattedMessage
-      id="pwfield.good"
-      defaultMessage={`Fairly strong password`}
-    />
-  ),
+  "pwfield.good": <FormattedMessage id="pwfield.good" defaultMessage={`Fairly strong password`} />,
 
-  "pwfield.strong": (
-    <FormattedMessage id="pwfield.strong" defaultMessage={`Strong password`} />
-  ),
+  "pwfield.strong": <FormattedMessage id="pwfield.strong" defaultMessage={`Strong password`} />,
 
   "pwfield.repeat_different": (
     <FormattedMessage
@@ -197,19 +118,11 @@ export const changePassword = {
 
   // password in two factor table, but think this is only security keys now
   "security.password_credential_type": (
-    <FormattedMessage
-      id="security.password_credential_type"
-      defaultMessage={`Password`}
-    />
+    <FormattedMessage id="security.password_credential_type" defaultMessage={`Password`} />
   ),
 
   // links to reset password from sign up
-  "used.reset-password": (
-    <FormattedMessage
-      id="used.reset-password"
-      defaultMessage={`Reset your password`}
-    />
-  ),
+  "used.reset-password": <FormattedMessage id="used.reset-password" defaultMessage={`Reset your password`} />,
 };
 
 export const resetPassword = {
@@ -219,12 +132,7 @@ export const resetPassword = {
       defaultMessage={`Enter your email address registered to your account`}
     />
   ),
-  "resetpw.send-link": (
-    <FormattedMessage
-      id="resetpw.send-link"
-      defaultMessage={`send link to email`}
-    />
-  ),
+  "resetpw.send-link": <FormattedMessage id="resetpw.send-link" defaultMessage={`send link to email`} />,
   "resetpw.user-not-found": (
     <FormattedMessage
       id="resetpw.user-not-found"
@@ -232,29 +140,15 @@ export const resetPassword = {
     />
   ),
   "resetpw.invalid_user": (
-    <FormattedMessage
-      id="resetpw.invalid_user"
-      defaultMessage={"User has not completed signup"}
-    />
+    <FormattedMessage id="resetpw.invalid_user" defaultMessage={"User has not completed signup"} />
   ),
   "resetpw.invalid_session": (
-    <FormattedMessage
-      id="resetpw.invalid_session"
-      defaultMessage={"Invalid session, please try again"}
-    />
+    <FormattedMessage id="resetpw.invalid_session" defaultMessage={"Invalid session, please try again"} />
   ),
   "resetpw.email-send-failure": (
-    <FormattedMessage
-      id="resetpw.email-send-failure"
-      defaultMessage={"Error sending mail, please try again"}
-    />
+    <FormattedMessage id="resetpw.email-send-failure" defaultMessage={"Error sending mail, please try again"} />
   ),
-  "resetpw.return-login": (
-    <FormattedMessage
-      id="resetpw.return-login"
-      defaultMessage={"return to Login"}
-    />
-  ),
+  "resetpw.return-login": <FormattedMessage id="resetpw.return-login" defaultMessage={"return to Login"} />,
   "resetpw.reset-pw-initialized": (
     <FormattedMessage
       id="resetpw.reset-pw-initialized"
@@ -280,20 +174,10 @@ export const resetPassword = {
       defaultMessage={`If you didn’t receive the email? Check your junk email, \n or`}
     />
   ),
-  "resetpw.resend-link-button": (
-    <FormattedMessage
-      id="resetpw.resend-link-button"
-      defaultMessage={`resend link`}
-    />
-  ),
-  "resetpw.resend-timer-in": (
-    <FormattedMessage id="resetpw.resend-timer-in" defaultMessage={`in`} />
-  ),
+  "resetpw.resend-link-button": <FormattedMessage id="resetpw.resend-link-button" defaultMessage={`resend link`} />,
+  "resetpw.resend-timer-in": <FormattedMessage id="resetpw.resend-timer-in" defaultMessage={`in`} />,
   "resetpw.extra-security_heading": (
-    <FormattedMessage
-      id="resetpw.extra-security_heading"
-      defaultMessage={`Select an extra security option`}
-    />
+    <FormattedMessage id="resetpw.extra-security_heading" defaultMessage={`Select an extra security option`} />
   ),
   "resetpw.extra-security_description": (
     <FormattedMessage
@@ -302,17 +186,10 @@ export const resetPassword = {
     />
   ),
   "resetpw.extra-phone_send_sms": (values) => (
-    <FormattedHTMLMessage
-      id="resetpw.extra-phone_send_sms"
-      defaultMessage={`Send sms to {phone}`}
-      values={values}
-    />
+    <FormattedHTMLMessage id="resetpw.extra-phone_send_sms" defaultMessage={`Send sms to {phone}`} values={values} />
   ),
   "resetpw.use_extra_security_key": (
-    <FormattedMessage
-      id="resetpw.use_extra_security_key"
-      defaultMessage={`Use your security key`}
-    />
+    <FormattedMessage id="resetpw.use_extra_security_key" defaultMessage={`Use your security key`} />
   ),
   "resetpw.without_extra_security_heading": (
     <FormattedHTMLMessage
@@ -327,10 +204,7 @@ export const resetPassword = {
     />
   ),
   "resetpw.continue_reset_password": (
-    <FormattedMessage
-      id="resetpw.continue_reset_password"
-      defaultMessage={`Continue reset password`}
-    />
+    <FormattedMessage id="resetpw.continue_reset_password" defaultMessage={`Continue reset password`} />
   ),
   "resetpw.state-not-found": (
     <FormattedMessage
@@ -345,10 +219,7 @@ export const resetPassword = {
     />
   ),
   "resetpw.set-new-password-heading": (
-    <FormattedMessage
-      id="resetpw.set-new-password-heading"
-      defaultMessage={`Set your new password`}
-    />
+    <FormattedMessage id="resetpw.set-new-password-heading" defaultMessage={`Set your new password`} />
   ),
 
   "resetpw.set-new-password-description": (
@@ -359,10 +230,7 @@ export const resetPassword = {
   ),
 
   "resetpw.set-new-password-success": (
-    <FormattedMessage
-      id="resetpw.set-new-password-success"
-      defaultMessage={`Password has been updated.`}
-    />
+    <FormattedMessage id="resetpw.set-new-password-success" defaultMessage={`Password has been updated.`} />
   ),
 
   "mfa.reset-password-tapit": (
@@ -387,10 +255,7 @@ export const resetPassword = {
   ),
 
   "resetpw.send-sms-failed": (
-    <FormattedMessage
-      id="resetpw.send-sms-failed"
-      defaultMessage={`Failed to send phone code`}
-    />
+    <FormattedMessage id="resetpw.send-sms-failed" defaultMessage={`Failed to send phone code`} />
   ),
 
   "resetpw.expired-phone-code": (
@@ -399,47 +264,17 @@ export const resetPassword = {
       defaultMessage={`Phone code has expired. Please send phone code again.`}
     />
   ),
-  "resetpw.received-sms": (
-    <FormattedMessage
-      id="resetpw.received-sms"
-      defaultMessage={`Already received sms? `}
-    />
-  ),
-  "resetpw.enter-code": (
-    <FormattedMessage id="resetpw.enter-code" defaultMessage={`enter code`} />
-  ),
-  "resetpw.accept-password": (
-    <FormattedMessage
-      id="resetpw.accept-password"
-      defaultMessage={`accept password`}
-    />
-  ),
-  "resetpw.go-to-eduid": (
-    <FormattedMessage id="resetpw.go-to-eduid" defaultMessage={`Go to eduID`} />
-  ),
-  "resetpw.new-password": (
-    <FormattedMessage
-      id="resetpw.new-password"
-      defaultMessage={`New password`}
-    />
-  ),
+  "resetpw.received-sms": <FormattedMessage id="resetpw.received-sms" defaultMessage={`Already received sms? `} />,
+  "resetpw.enter-code": <FormattedMessage id="resetpw.enter-code" defaultMessage={`enter code`} />,
+  "resetpw.accept-password": <FormattedMessage id="resetpw.accept-password" defaultMessage={`accept password`} />,
+  "resetpw.go-to-eduid": <FormattedMessage id="resetpw.go-to-eduid" defaultMessage={`Go to eduID`} />,
+  "resetpw.new-password": <FormattedMessage id="resetpw.new-password" defaultMessage={`New password`} />,
   "resetpw.phone-code-unknown": (
-    <FormattedMessage
-      id="resetpw.phone-code-unknown"
-      defaultMessage={`Incorrect phone code. `}
-    />
+    <FormattedMessage id="resetpw.phone-code-unknown" defaultMessage={`Incorrect phone code. `} />
   ),
-  "resetpw.phone-invalid": (
-    <FormattedMessage
-      id="resetpw.phone-invalid"
-      defaultMessage={`Invalid phone number.`}
-    />
-  ),
+  "resetpw.phone-invalid": <FormattedMessage id="resetpw.phone-invalid" defaultMessage={`Invalid phone number.`} />,
   "resetpw.pw-reset-fail": (
-    <FormattedMessage
-      id="resetpw.pw-reset-fail"
-      defaultMessage={`Reset password failed, please try again `}
-    />
+    <FormattedMessage id="resetpw.pw-reset-fail" defaultMessage={`Reset password failed, please try again `} />
   ),
   "resetpw.fido-token-fail": (
     <FormattedMessage
@@ -448,24 +283,9 @@ export const resetPassword = {
     />
   ),
   "resetpw.external-mfa-fail": (
-    <FormattedMessage
-      id="resetpw.external-mfa-fail"
-      defaultMessage={`External MFA failed.`}
-    />
+    <FormattedMessage id="resetpw.external-mfa-fail" defaultMessage={`External MFA failed.`} />
   ),
-  "resetpw.go-back": (
-    <FormattedMessage id="resetpw.go-back" defaultMessage={`go back`} />
-  ),
-  "resetpw.copy-to-clipboard": (
-    <FormattedMessage
-      id="resetpw.copy-to-clipboard"
-      defaultMessage={`Copy to clipboard`}
-    />
-  ),
-  "resetpw.copied-in-clipboard": (
-    <FormattedMessage
-      id="resetpw.copied-in-clipboard"
-      defaultMessage={`Copied!`}
-    />
-  ),
+  "resetpw.go-back": <FormattedMessage id="resetpw.go-back" defaultMessage={`go back`} />,
+  "resetpw.copy-to-clipboard": <FormattedMessage id="resetpw.copy-to-clipboard" defaultMessage={`Copy to clipboard`} />,
+  "resetpw.copied-in-clipboard": <FormattedMessage id="resetpw.copied-in-clipboard" defaultMessage={`Copied!`} />,
 };

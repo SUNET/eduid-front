@@ -102,9 +102,7 @@ describe("PhoneDisplay component, when phone numbers is saved", () => {
     };
   }
   const state = { ...fakeState };
-  state.phones.phones = [
-    { number: "+46700000079", primary: false, verified: false },
-  ];
+  state.phones.phones = [{ number: "+46700000079", primary: false, verified: false }];
 
   it("Render text when phone numbers are unverified", () => {
     const { wrapper } = setupComponent();

@@ -1,10 +1,5 @@
 import { put, select, call } from "redux-saga/effects";
-import {
-  checkStatus,
-  putCsrfToken,
-  getRequest,
-  failRequest,
-} from "sagas/common";
+import { checkStatus, putCsrfToken, getRequest, failRequest } from "sagas/common";
 import * as actions from "actions/OpenidConnectFreja";
 
 export function* checkNINAndShowFrejaModal() {
@@ -58,9 +53,7 @@ export function* initializeOpenidFrejaData() {
       yield put(putCsrfToken(oidcFrejaData));
       yield put(oidcFrejaData);
       if (oidcFrejaData.payload.iaRequestData) {
-        yield (window.location.href =
-          "frejaeid://identify?iaRequestData=" +
-          oidcFrejaData.payload.iaRequestData);
+        yield (window.location.href = "frejaeid://identify?iaRequestData=" + oidcFrejaData.payload.iaRequestData);
       }
     }
   } catch (error) {
@@ -70,9 +63,7 @@ export function* initializeOpenidFrejaData() {
 
 export function* requestOpenidFrejaData() {
   try {
-    const openid_freja_url = yield select(
-      (state) => state.config.oidc_proofing_freja_url
-    );
+    const openid_freja_url = yield select((state) => state.config.oidc_proofing_freja_url);
     console.log("Checking for existing opaque data");
     const oidcFrejaData = yield call(fetchFrejaData, openid_freja_url);
     yield put(putCsrfToken(oidcFrejaData));

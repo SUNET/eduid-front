@@ -8,9 +8,7 @@ const RenderListHeading = () => {
   const navId = useSelector((state) => state.groups.navId);
   let columnNumber = navId === "edit-invite" ? "four-columns" : "three-columns";
   let headingText =
-    columnNumber === "four-columns"
-      ? ["Invites", "Member", "Owner", ""]
-      : ["Invites", "Member", "Owner"];
+    columnNumber === "four-columns" ? ["Invites", "Member", "Owner", ""] : ["Invites", "Member", "Owner"];
   return (
     <div className="list-grid" id={columnNumber}>
       {headingText.map((text, i) => (
@@ -36,9 +34,7 @@ const RenderListItems = ({ invitesForGroup }) => {
 };
 
 const InvitesList = ({ groupId, allInvitesFromMe }) => {
-  let invitesForGroup = allInvitesFromMe.filter(
-    (invite) => invite.group_identifier === groupId
-  );
+  let invitesForGroup = allInvitesFromMe.filter((invite) => invite.group_identifier === groupId);
   return (
     <div className="invites-list">
       <h3>Sent invites</h3>

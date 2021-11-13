@@ -1,10 +1,6 @@
 import { connect } from "react-redux";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import {
-  confirmDeletion,
-  stopConfirmationDeletion,
-  startConfirmationDeletion,
-} from "actions/Security";
+import { confirmDeletion, stopConfirmationDeletion, startConfirmationDeletion } from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
 import DeleteAccount from "components/DeleteAccount";
 
@@ -32,9 +28,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const DeleteAccountContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DeleteAccount);
+const DeleteAccountContainer = connect(mapStateToProps, mapDispatchToProps)(DeleteAccount);
 
 export default i18n(DeleteAccountContainer);

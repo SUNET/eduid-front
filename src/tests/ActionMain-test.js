@@ -7,12 +7,7 @@ import { put, call } from "redux-saga/effects";
 import ActionMainContainer from "containers/ActionMain";
 import * as actions from "actions/ActionMain";
 import actionMainReducer from "reducers/ActionMain";
-import {
-  requestConfig,
-  requestNextAction,
-  fetchActions,
-  fetchConfig,
-} from "sagas/ActionMain";
+import { requestConfig, requestNextAction, fetchActions, fetchConfig } from "sagas/ActionMain";
 
 import { addLocaleData } from "react-intl";
 
@@ -293,9 +288,7 @@ describe("ActionMain async actions", () => {
     expect(resp.value.PUT.action.type).toEqual(actions.NEW_CSRF_TOKEN);
     delete action.payload.csrf_token;
     resp = generator.next();
-    expect(resp.value.PUT.action.type).toEqual(
-      actions.GET_ACTIONS_CONFIG_SUCCESS
-    );
+    expect(resp.value.PUT.action.type).toEqual(actions.GET_ACTIONS_CONFIG_SUCCESS);
     resp = generator.next();
     expect(resp.value).toEqual(put(actions.appLoaded()));
   });

@@ -177,8 +177,7 @@ describe("LookupMobileProofing component,", () => {
 
   it("Renders button text, the phone number is added", () => {
     const state = { ...fakeState };
-    (state.phones.phones = [{ number: "+46700011555" }]),
-      (state.nins.nins[0] = "19881212");
+    (state.phones.phones = [{ number: "+46700011555" }]), (state.nins.nins[0] = "19881212");
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");
     const confirmPhone = explanation.find("span").at(0);
@@ -191,9 +190,7 @@ describe("LookupMobileProofing component,", () => {
 
   it("Renders button text, if the phone number is non swedish", () => {
     const state = { ...fakeState };
-    (state.phones.phones = [
-      { number: "+36700011555", primary: true, verified: true },
-    ]),
+    (state.phones.phones = [{ number: "+36700011555", primary: true, verified: true }]),
       (state.nins.nins[0] = "19881212");
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");
@@ -206,9 +203,7 @@ describe("LookupMobileProofing component,", () => {
 
   it("Renders button text, when verified swedish phone", () => {
     const state = { ...fakeState };
-    (state.phones.phones = [
-      { number: "+46700011555", primary: true, verified: true },
-    ]),
+    (state.phones.phones = [{ number: "+46700011555", primary: true, verified: true }]),
       (state.nins.nins[0] = "19881212");
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");

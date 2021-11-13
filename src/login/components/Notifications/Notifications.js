@@ -13,11 +13,7 @@ class Notifications extends Component {
       if (err.vals !== null) {
         err_msg = err_msg(err.vals);
       }
-      if (
-        !this.props.debug &&
-        err_msg.indexOf !== undefined &&
-        err_msg.indexOf("UNKNOWN MESSAGE ID (") !== -1
-      ) {
+      if (!this.props.debug && err_msg.indexOf !== undefined && err_msg.indexOf("UNKNOWN MESSAGE ID (") !== -1) {
         err_msg = this.props.translate("unexpected-problem");
       }
       return (

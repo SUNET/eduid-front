@@ -13,9 +13,6 @@ const mapDispatchToProps = () => {
   return {};
 };
 
-const AccountCreatedContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AccountCreated);
+const AccountCreatedContainer = connect(mapStateToProps, mapDispatchToProps)(AccountCreated);
 
 export default i18n(AccountCreatedContainer);

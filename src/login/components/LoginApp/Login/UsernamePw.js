@@ -18,28 +18,20 @@ const RenderRegisterLink = ({ translate }) => {
   return (
     <p className="secondary-link">
       {translate("login.usernamePw.register-prompt")}
-      <Link
-        className="text-link"
-        href={toSignup}
-        text={translate("login.usernamePw.register-link")}
-      />
+      <Link className="text-link" href={toSignup} text={translate("login.usernamePw.register-link")} />
     </p>
   );
 };
 
 const RenderResetPasswordLink = ({ translate }) => {
   const loginRef = useSelector((state) => state.login.ref);
-  const request_in_progress = useSelector(
-    (state) => state.app.request_in_progress
-  );
+  const request_in_progress = useSelector((state) => state.app.request_in_progress);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const sendLink = (e) => {
     e.preventDefault();
-    const email =
-      document.querySelector("input[name='email']") &&
-      document.querySelector("input[name='email']").value;
+    const email = document.querySelector("input[name='email']") && document.querySelector("input[name='email']").value;
     if (email) {
       if (emailPattern.test(email)) {
         dispatch(resetPasswordSlice.actions.requestEmailLink(email));
@@ -70,9 +62,7 @@ let UsernamePwFormButton = ({ invalid, dispatch, translate }) => {
       id="login-form-button"
       className={"settings-button"}
     >
-      {loading
-        ? translate("login.usernamePw.submit-button-busy")
-        : translate("login.usernamePw.submit-button-idle")}
+      {loading ? translate("login.usernamePw.submit-button-busy") : translate("login.usernamePw.submit-button-idle")}
     </ButtonPrimary>
   );
 };
@@ -87,9 +77,7 @@ UsernamePwFormButton = reduxForm({
 const UsernamePw = (props) => {
   return (
     <div className="username-pw">
-      <h2 className="heading">
-        {props.translate("login.usernamePw.h2-heading")}
-      </h2>
+      <h2 className="heading">{props.translate("login.usernamePw.h2-heading")}</h2>
       <UsernamePwForm dispatch={props.dispatch} {...props} />
       <div className="button-pair">
         <UsernamePwFormButton {...props} />

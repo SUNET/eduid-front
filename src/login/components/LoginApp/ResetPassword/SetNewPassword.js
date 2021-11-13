@@ -9,11 +9,7 @@ import { connect, useSelector } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faCopy,
-  faArrowLeft,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faCopy, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import PropTypes from "prop-types";
@@ -33,9 +29,7 @@ const validateNewPassword = (values, props) => {
 };
 
 let NewPasswordForm = (props) => {
-  const formValues = useSelector((state) =>
-    getFormValues("new-password-form")(state)
-  );
+  const formValues = useSelector((state) => getFormValues("new-password-form")(state));
   const history = useHistory();
   return (
     <Form
@@ -67,19 +61,13 @@ let NewPasswordForm = (props) => {
           <ButtonSecondary
             className="secondary"
             id="go-back-button"
-            onClick={() =>
-              history.push(`/reset-password/extra-security/${props.emailCode}`)
-            }
+            onClick={() => history.push(`/reset-password/extra-security/${props.emailCode}`)}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
             {props.translate("resetpw.go-back")}
           </ButtonSecondary>
         )}
-        <EduIDButton
-          className="settings-button"
-          id="new-password-button"
-          disabled={props.invalid}
-        >
+        <EduIDButton className="settings-button" id="new-password-button" disabled={props.invalid}>
           {props.translate("resetpw.accept-password")}
         </EduIDButton>
       </div>
@@ -105,15 +93,9 @@ function SetNewPassword(props) {
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
   const dispatch = useDispatch();
-  const suggested_password = useSelector(
-    (state) => state.resetPassword.suggested_password
-  );
-  const selected_option = useSelector(
-    (state) => state.resetPassword.selected_option
-  );
-  const extra_security = useSelector(
-    (state) => state.resetPassword.extra_security
-  );
+  const suggested_password = useSelector((state) => state.resetPassword.suggested_password);
+  const selected_option = useSelector((state) => state.resetPassword.selected_option);
+  const extra_security = useSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState(null);
   const [toolTipText, setToolTipText] = useState("resetpw.copy-to-clipboard");
   const ref = useRef(null);
@@ -154,18 +136,14 @@ function SetNewPassword(props) {
     } else if (selected_option === "securityKey") {
       dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken());
     } else if (selected_option === "freja") {
-      dispatch(
-        resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa()
-      );
+      dispatch(resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa());
     }
   };
 
   return (
     <>
       {!password && <Splash />}
-      <p className="heading">
-        {props.translate("resetpw.set-new-password-heading")}
-      </p>
+      <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
       <p>{props.translate("resetpw.set-new-password-description")}</p>
       <div className="reset-password-input">
         <label>{props.translate("resetpw.new-password")}</label>
@@ -176,11 +154,7 @@ function SetNewPassword(props) {
           defaultValue={password && password}
           readOnly={true}
         />
-        <button
-          id="clipboard"
-          className="icon copybutton"
-          onClick={copyToClipboard}
-        >
+        <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}>
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
           <div className="tool-tip-text" id="tool-tip">

@@ -12,9 +12,6 @@ const mapDispatchToProps = () => {
   return {};
 };
 
-const AccountIdContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AccountId);
+const AccountIdContainer = connect(mapStateToProps, mapDispatchToProps)(AccountId);
 
 export default i18n(AccountIdContainer);

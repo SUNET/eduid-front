@@ -8,8 +8,8 @@ const RenderEditInviteText = () => (
   <div className="edit-invite">
     <h3>Manage memberships in your group</h3>
     <p>
-      As members, users belong to the group and as owners, they can also edit
-      the group and who belongs to it. Users can also be removed from the group.
+      As members, users belong to the group and as owners, they can also edit the group and who belongs to it. Users can
+      also be removed from the group.
     </p>
   </div>
 );
@@ -30,14 +30,8 @@ const InvitesParent = ({ group }) => {
 
   return (
     <div className="invites">
-      {navId === "edit-invite" ? (
-        <RenderEditInviteText />
-      ) : (
-        <CreateInvite groupId={identifier} />
-      )}
-      {groupIdsArray.includes(identifier) && (
-        <InvitesList groupId={identifier} allInvitesFromMe={allInvitesFromMe} />
-      )}
+      {navId === "edit-invite" ? <RenderEditInviteText /> : <CreateInvite groupId={identifier} />}
+      {groupIdsArray.includes(identifier) && <InvitesList groupId={identifier} allInvitesFromMe={allInvitesFromMe} />}
     </div>
   );
 };

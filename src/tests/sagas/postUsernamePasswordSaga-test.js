@@ -16,10 +16,7 @@ const fakeState = {
 
 const testUsername = "test_username";
 const testPassword = "test_password";
-const action = loginSlice.actions.postUsernamePassword(
-  testUsername,
-  testPassword
-);
+const action = loginSlice.actions.postUsernamePassword(testUsername, testPassword);
 
 const successResponse = {
   type: "POST_IDP_PW_AUTH_SUCCESS",
@@ -61,9 +58,7 @@ describe("API call to /pw_auth behaves as expected on _SUCCESS", () => {
   });
   it("{finished: true} fires api call to /next loop ", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      loginSlice.actions.callLoginNext.toString()
-    );
+    expect(next.value.PUT.action.type).toEqual(loginSlice.actions.callLoginNext.toString());
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual("LOAD_DATA_COMPLETE");
   });

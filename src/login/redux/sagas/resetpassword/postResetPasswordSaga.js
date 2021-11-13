@@ -9,10 +9,7 @@ import {
   clearCountdown,
   setLocalStorage,
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
-import {
-  requestInProgress,
-  requestCompleted,
-} from "../../actions/loadingDataActions";
+import { requestInProgress, requestCompleted } from "../../actions/loadingDataActions";
 
 export function* postEmailLink() {
   const state = yield select((state) => state);
@@ -31,17 +28,11 @@ export function* postEmailLink() {
       return;
     }
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    setLocalStorage(
-      LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK,
-      new Date().getTime() + 60 * 5 * 1000
-    );
+    setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK, new Date().getTime() + 60 * 5 * 1000);
     countFiveMin("email");
     history.push(`/reset-password/email-link-sent`);
   } catch (error) {
-    yield* failRequest(
-      error,
-      resetPasswordSlice.actions.resetPasswordSagaFail(error)
-    );
+    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail(error));
   } finally {
     yield put(requestCompleted());
   }

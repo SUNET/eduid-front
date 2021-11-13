@@ -24,6 +24,6 @@ test: build just_test
 	# This is the target the CI uses, which is why it includes the build step too
 
 prettier:
-	npx prettier --write .
+	npx prettier --write --print-width 120 .
 
 .PHONY: clean build build-staging build-production test prettier

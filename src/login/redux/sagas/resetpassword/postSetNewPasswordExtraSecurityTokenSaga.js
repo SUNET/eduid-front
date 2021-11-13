@@ -7,20 +7,13 @@ import { safeEncode } from "../../../app_utils/helperFunctions/authenticatorAsse
 
 export function* postSetNewPasswordExtraSecurityToken() {
   const state = yield select((state) => state);
-  const url =
-    state.config.reset_password_url + "new-password-extra-security-token/";
+  const url = state.config.reset_password_url + "new-password-extra-security-token/";
   const data = {
     email_code: state.resetPassword.email_code,
     password: state.resetPassword.new_password,
-    authenticatorData: safeEncode(
-      state.resetPassword.webauthn_assertion.response.authenticatorData
-    ),
-    clientDataJSON: safeEncode(
-      state.resetPassword.webauthn_assertion.response.clientDataJSON
-    ),
-    signature: safeEncode(
-      state.resetPassword.webauthn_assertion.response.signature
-    ),
+    authenticatorData: safeEncode(state.resetPassword.webauthn_assertion.response.authenticatorData),
+    clientDataJSON: safeEncode(state.resetPassword.webauthn_assertion.response.clientDataJSON),
+    signature: safeEncode(state.resetPassword.webauthn_assertion.response.signature),
     credentialId: safeEncode(state.resetPassword.webauthn_assertion.rawId),
     csrf_token: state.config.csrf_token,
   };
@@ -34,9 +27,6 @@ export function* postSetNewPasswordExtraSecurityToken() {
     }
     history.push(`/reset-password/success`);
   } catch (error) {
-    yield* failRequest(
-      error,
-      resetPasswordSlice.actions.resetPasswordSagaFail(error)
-    );
+    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail(error));
   }
 }

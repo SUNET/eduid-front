@@ -44,10 +44,7 @@ function CreateInvite(props) {
   return (
     <div className="create-invite">
       <h3>Invite people to your group</h3>
-      <p>
-        Add an email address and set a membership to invite anyone to join your
-        group.
-      </p>
+      <p>Add an email address and set a membership to invite anyone to join your group.</p>
       <CreateInviteForm {...props} handleSubmit={handleCreateInvite} />
     </div>
   );

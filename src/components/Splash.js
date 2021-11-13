@@ -22,11 +22,7 @@ class Splash extends Component {
   }
 
   render() {
-    const comp = this.props.is_app_loaded ? (
-      ""
-    ) : (
-      <div ref="eduidSplash" id="eduid-splash-screen" />
-    );
+    const comp = this.props.is_app_loaded ? "" : <div ref="eduidSplash" id="eduid-splash-screen" />;
     return comp;
   }
 }

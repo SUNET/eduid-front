@@ -48,10 +48,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleConfirm: function () {
       const data = {
-        code: document
-          .getElementById("confirmation-code-area")
-          .querySelector("input")
-          .value.trim(),
+        code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
       };
       dispatch(startVerify(data));
       dispatch(stopConfirmation());

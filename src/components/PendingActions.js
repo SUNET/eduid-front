@@ -7,18 +7,12 @@ class PendingActions extends Component {
   render() {
     let pdataMissing = true,
       toShow = this.props.pending.map((missing, index) => {
-        if (
-          ["given_name", "surname", "display_name", "language"].indexOf(
-            missing
-          ) >= 0
-        ) {
+        if (["given_name", "surname", "display_name", "language"].indexOf(missing) >= 0) {
           if (pdataMissing) {
             pdataMissing = false;
             return (
               <li key={index} className="pending-action-item">
-                <a href="/profile/personaldata">
-                  {this.props.translate("pending.pdata")}
-                </a>
+                <a href="/profile/personaldata">{this.props.translate("pending.pdata")}</a>
               </li>
             );
           }

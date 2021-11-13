@@ -12,10 +12,7 @@ class CookieChecker extends Component {
       // if value (only a proof that a cookie with your determined props.cookieName is present)
       if (cookie) {
         // check if there is a cookiePattern (Y: use it, N: leave it blank)
-        const pattern =
-          this.props.cookiePattern !== undefined
-            ? this.props.cookiePattern
-            : "";
+        const pattern = this.props.cookiePattern !== undefined ? this.props.cookiePattern : "";
         // dset a regex to match for your pattern
         const regex = new RegExp(pattern);
         // test against the pattern

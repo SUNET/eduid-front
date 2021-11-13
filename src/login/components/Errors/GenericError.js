@@ -44,9 +44,7 @@ const ToHomeOption = ({ translate }) => {
 const GenericError = (props) => (
   <Fragment>
     <div className="error-boundary">
-      <h2 className="heading">
-        {props.translate("runtime_error.generic.title")}
-      </h2>
+      <h2 className="heading">{props.translate("runtime_error.generic.title")}</h2>
       <p>{props.translate("runtime_error.generic.description")}</p>
       <div className="options">
         <TryAgainOption {...props} />

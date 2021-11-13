@@ -6,9 +6,7 @@ const injectTranslation = () => {
   // check if we have translation for preferred browser language
   const selectedBrowserLanguage = navigator.language;
   const translatedLanguages = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
-  const isTranslatedLanguage = translatedLanguages.includes(
-    selectedBrowserLanguage
-  );
+  const isTranslatedLanguage = translatedLanguages.includes(selectedBrowserLanguage);
   // check if we have translation for preferred browser language
   const browserLocale = isTranslatedLanguage ? selectedBrowserLanguage : "en";
   // sets the <html lang=""> to the interface language

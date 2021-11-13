@@ -100,9 +100,7 @@ describe("Security Actions", () => {
         description: "description",
       },
     };
-    expect(actions.startWebauthnRegistration("description")).toEqual(
-      expectedAction
-    );
+    expect(actions.startWebauthnRegistration("description")).toEqual(expectedAction);
   });
 
   it("Should signal failure when trying to enroll for WEBAUTHN", () => {
@@ -482,9 +480,7 @@ describe("Async component", () => {
       csrf_token: "csrf-token",
       authenticator: "cross-platform",
     };
-    expect(next.value).toEqual(
-      call(beginWebauthnRegistration, mockState.config, data)
-    );
+    expect(next.value).toEqual(call(beginWebauthnRegistration, mockState.config, data));
     const action = {
       type: actions.POST_WEBAUTHN_BEGIN_SUCCESS,
       payload: {
@@ -495,9 +491,7 @@ describe("Async component", () => {
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      actions.POST_WEBAUTHN_BEGIN_SUCCESS
-    );
+    expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_BEGIN_SUCCESS);
   });
 
   it("Sagas WEBAUTHN register", () => {
@@ -506,25 +500,13 @@ describe("Async component", () => {
     let next = generator.next(mockState);
     const attestation = mockState.security.webauthn_attestation;
     const data = {
-      attestationObject: btoa(
-        String.fromCharCode.apply(
-          null,
-          new Uint8Array(attestation.response.attestationObject)
-        )
-      ),
-      clientDataJSON: btoa(
-        String.fromCharCode.apply(
-          null,
-          new Uint8Array(attestation.response.clientDataJSON)
-        )
-      ),
+      attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
+      clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
       credentialId: attestation.id,
       description: mockState.security.webauthn_token_description,
       csrf_token: mockState.config.csrf_token,
     };
-    expect(next.value).toEqual(
-      call(webauthnRegistration, mockState.config, data)
-    );
+    expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
     const action = {
       type: actions.POST_WEBAUTHN_REGISTER_SUCCESS,
       payload: {
@@ -537,9 +519,7 @@ describe("Async component", () => {
     expect(next.value.PUT.action.payload.csrf_token).toEqual("csrf-token");
     delete action.payload.csrf_token;
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      actions.POST_WEBAUTHN_REGISTER_SUCCESS
-    );
+    expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_REGISTER_SUCCESS);
   });
 
   it("Sagas WEBAUTHN register error", () => {
@@ -548,25 +528,13 @@ describe("Async component", () => {
     let next = generator.next(mockState);
     const attestation = mockState.security.webauthn_attestation;
     const data = {
-      attestationObject: btoa(
-        String.fromCharCode.apply(
-          null,
-          new Uint8Array(attestation.response.attestationObject)
-        )
-      ),
-      clientDataJSON: btoa(
-        String.fromCharCode.apply(
-          null,
-          new Uint8Array(attestation.response.clientDataJSON)
-        )
-      ),
+      attestationObject: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.attestationObject))),
+      clientDataJSON: btoa(String.fromCharCode.apply(null, new Uint8Array(attestation.response.clientDataJSON))),
       credentialId: attestation.id,
       description: mockState.security.webauthn_token_description,
       csrf_token: mockState.config.csrf_token,
     };
-    expect(next.value).toEqual(
-      call(webauthnRegistration, mockState.config, data)
-    );
+    expect(next.value).toEqual(call(webauthnRegistration, mockState.config, data));
     const action = {
       type: actions.POST_WEBAUTHN_REGISTER_SUCCESS,
       error: true,
@@ -579,9 +547,7 @@ describe("Async component", () => {
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
     delete action.payload.csrf_token;
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual(
-      actions.POST_WEBAUTHN_REGISTER_SUCCESS
-    );
+    expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_REGISTER_SUCCESS);
   });
 
   it("Sagas WEBAUTHN remove token", () => {
@@ -670,11 +636,7 @@ describe("Security Container", () => {
       webauthn_asking_description: false,
     };
 
-    getWrapper = function ({
-      deleting = false,
-      askingDesc = false,
-      props = mockProps,
-    } = {}) {
+    getWrapper = function ({ deleting = false, askingDesc = false, props = mockProps } = {}) {
       store = fakeStore(getState(deleting, askingDesc));
       dispatch = store.dispatch;
 
@@ -706,13 +668,9 @@ describe("Security Container", () => {
     const wrapper = getWrapper();
     wrapper.find("button#security-webauthn-button").simulate("click");
     expect(dispatch.mock.calls.length).toEqual(3);
-    expect(dispatch.mock.calls[0][0].type).toEqual(
-      notifyActions.RM_ALL_NOTIFICATION
-    );
+    expect(dispatch.mock.calls[0][0].type).toEqual(notifyActions.RM_ALL_NOTIFICATION);
     expect(dispatch.mock.calls[1][0].type).toEqual(actions.AUTHENTICATOR);
-    expect(dispatch.mock.calls[2][0].type).toEqual(
-      actions.START_ASK_WEBAUTHN_DESCRIPTION
-    );
+    expect(dispatch.mock.calls[2][0].type).toEqual(actions.START_ASK_WEBAUTHN_DESCRIPTION);
   });
 
   it("Clicks remove WEBAUTHN token", () => {
@@ -742,8 +700,6 @@ describe("Security Container", () => {
     const btn = wrapper.find("button.btn-remove-webauthn").first();
     btn.simulate("click");
     expect(dispatch.mock.calls.length).toEqual(1);
-    expect(dispatch.mock.calls[0][0].type).toEqual(
-      "POST_WEBAUTHN_WEBAUTHN_REMOVE"
-    );
+    expect(dispatch.mock.calls[0][0].type).toEqual("POST_WEBAUTHN_WEBAUTHN_REMOVE");
   });
 });

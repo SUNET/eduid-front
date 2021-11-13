@@ -75,11 +75,7 @@ describe("ResetPassword post actions,", () => {
       type: resetPasswordSlice.actions.requestEmailLink.type,
       payload: fakeState.resetPassword.email_address,
     };
-    expect(
-      resetPasswordSlice.actions.requestEmailLink(
-        fakeState.resetPassword.email_address
-      )
-    ).toEqual(expectedAction);
+    expect(resetPasswordSlice.actions.requestEmailLink(fakeState.resetPassword.email_address)).toEqual(expectedAction);
   });
 });
 

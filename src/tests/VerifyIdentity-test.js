@@ -104,9 +104,7 @@ describe("VerifyIdentity component, when nin is saved", () => {
 
   const state = { ...fakeState };
   state.config.is_configured = true;
-  state.nins.nins = [
-    { number: "196701100006", verified: false, primary: false },
-  ];
+  state.nins.nins = [{ number: "196701100006", verified: false, primary: false }];
   state.verifiedNinStatus = false;
 });
 

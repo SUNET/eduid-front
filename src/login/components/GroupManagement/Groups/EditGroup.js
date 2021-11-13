@@ -23,18 +23,12 @@ const RenderHeader = ({ group, toggleGroupsListOrEditGroup }) => {
 };
 
 const RenderNav = () => {
-  const [navId, setNavId] = useState(
-    useSelector((state) => state.groups.navId)
-  );
+  const [navId, setNavId] = useState(useSelector((state) => state.groups.navId));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(addNavId(navId));
   }, [navId]);
-  const navContent = [
-    { "create-invite": "Invite" },
-    { "edit-invite": "Membership" },
-    { "delete-group": "Delete" },
-  ];
+  const navContent = [{ "create-invite": "Invite" }, { "edit-invite": "Membership" }, { "delete-group": "Delete" }];
   return (
     <nav>
       {navContent.map((item, i) => {
@@ -57,27 +51,16 @@ const RenderNavParent = ({ group, toggleGroupsListOrEditGroup }) => {
   if (navId === "create-invite" || navId === "edit-invite") {
     return <InvitesParent group={group} />;
   } else if (navId === "delete-group") {
-    return (
-      <DeleteGroup
-        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
-        groupId={group.identifier}
-      />
-    );
+    return <DeleteGroup toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup} groupId={group.identifier} />;
   }
 };
 
 const EditGroup = ({ group, toggleGroupsListOrEditGroup }) => {
   return (
     <div className="edit-data">
-      <RenderHeader
-        group={group}
-        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
-      />
+      <RenderHeader group={group} toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup} />
       <RenderNav />
-      <RenderNavParent
-        toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup}
-        group={group}
-      />
+      <RenderNavParent toggleGroupsListOrEditGroup={toggleGroupsListOrEditGroup} group={group} />
     </div>
   );
 };

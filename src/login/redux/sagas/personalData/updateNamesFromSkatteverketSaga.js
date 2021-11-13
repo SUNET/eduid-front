@@ -3,10 +3,7 @@ import postDataRequest from "../postDataRequest";
 import * as actions from "../../actions/updateNamesFromSkatteverketActions";
 import { putCsrfToken } from "../../../../sagas/common";
 import { getInitialUserdata } from "../../../../actions/DashboardConfig";
-import {
-  loadingData,
-  loadingDataComplete,
-} from "../../actions/loadingDataActions";
+import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
 
 export function* updateNamesFromSkatteverketSaga() {
   const state = yield select((state) => state);

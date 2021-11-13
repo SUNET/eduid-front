@@ -25,28 +25,13 @@ function* rootSaga() {
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, allowLoginSagas),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, requestLinkCode),
     takeLatest(resetPasswordSlice.actions.requestEmailLink, postEmailLink),
-    takeLatest(
-      resetPasswordSlice.actions.requestPhoneCode,
-      requestPhoneCodeForNewPassword
-    ),
+    takeLatest(resetPasswordSlice.actions.requestPhoneCode, requestPhoneCodeForNewPassword),
     // security phone request failed, trigger /verify-email to get users extra security
-    takeLatest(
-      "POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL",
-      requestLinkCode
-    ),
+    takeLatest("POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL", requestLinkCode),
     takeLatest(resetPasswordSlice.actions.setNewPassword, postSetNewPassword),
-    takeLatest(
-      resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone,
-      postSetNewPasswordExtraSecurityPhone
-    ),
-    takeLatest(
-      resetPasswordSlice.actions.setNewPasswordExtraSecurityToken,
-      postSetNewPasswordExtraSecurityToken
-    ),
-    takeLatest(
-      resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa,
-      postSetNewPasswordExternalMfa
-    ),
+    takeLatest(resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone, postSetNewPasswordExtraSecurityPhone),
+    takeLatest(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken, postSetNewPasswordExtraSecurityToken),
+    takeLatest(resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa, postSetNewPasswordExternalMfa),
     takeLatest(resetPasswordSlice.actions.useLinkCode, requestLinkCode),
   ];
 }

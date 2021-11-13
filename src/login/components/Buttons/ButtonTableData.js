@@ -5,11 +5,7 @@ import Button from "reactstrap/lib/Button";
 class ButtonTable extends Component {
   render() {
     return (
-      <Button
-        className={this.props.className}
-        onClick={this.props.onClick}
-        color="primary"
-      >
+      <Button className={this.props.className} onClick={this.props.onClick} color="primary">
         {this.props.buttonText}
       </Button>
     );

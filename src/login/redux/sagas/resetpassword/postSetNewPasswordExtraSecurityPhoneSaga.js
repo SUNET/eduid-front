@@ -6,8 +6,7 @@ import { history } from "../../../components/App/App";
 
 export function* postSetNewPasswordExtraSecurityPhone() {
   const state = yield select((state) => state);
-  const url =
-    state.config.reset_password_url + "new-password-extra-security-phone/";
+  const url = state.config.reset_password_url + "new-password-extra-security-phone/";
   const data = {
     email_code: state.resetPassword.email_code,
     phone_code: state.resetPassword.phone.phone_code,
@@ -25,9 +24,6 @@ export function* postSetNewPasswordExtraSecurityPhone() {
     }
     history.push(`/reset-password/success`);
   } catch (error) {
-    yield* failRequest(
-      error,
-      resetPasswordSlice.actions.resetPasswordSagaFail(error)
-    );
+    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail(error));
   }
 }

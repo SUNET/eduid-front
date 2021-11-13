@@ -11,12 +11,7 @@ import * as captchaActions from "actions/Captcha";
 import * as verifiedActions from "actions/CodeVerified";
 import * as resendActions from "actions/ResendCode";
 import signupReducer from "reducers/SignupMain";
-import {
-  requestCodeStatus,
-  fetchCodeStatus,
-  requestConfig,
-  fetchConfig,
-} from "sagas/SignupMain";
+import { requestCodeStatus, fetchCodeStatus, requestConfig, fetchConfig } from "sagas/SignupMain";
 
 import { addLocaleData } from "react-intl";
 
@@ -404,9 +399,7 @@ describe("SignupMain async actions", () => {
       },
     };
     resp = generator.next(action);
-    expect(resp.value.PUT.action.type).toEqual(
-      signupActions.GET_SIGNUP_CONFIG_SUCCESS
-    );
+    expect(resp.value.PUT.action.type).toEqual(signupActions.GET_SIGNUP_CONFIG_SUCCESS);
     resp = generator.next();
     delete action.payload.csrf_token;
     expect(resp.value).toEqual(put(signupActions.appLoaded()));
@@ -444,16 +437,12 @@ describe("SignupMain async actions", () => {
       },
     };
     resp = generator.next(action2);
-    expect(resp.value.PUT.action.type).toEqual(
-      signupActions.GET_SIGNUP_CONFIG_SUCCESS
-    );
+    expect(resp.value.PUT.action.type).toEqual(signupActions.GET_SIGNUP_CONFIG_SUCCESS);
     resp = generator.next();
     delete action.payload.csrf_token;
     expect(resp.value).toEqual(put(signupActions.appLoaded()));
 
     resp = generator.next();
-    expect(resp.value.PUT.action.type).toEqual(
-      verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS
-    );
+    expect(resp.value.PUT.action.type).toEqual(verifiedActions.GET_SIGNUP_VERIFY_LINK_SUCCESS);
   });
 });

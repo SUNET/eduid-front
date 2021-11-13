@@ -7,9 +7,7 @@ export const mfaDecodeMiddleware = (webauthn_options) => {
   if (typeof webauthn_options !== "string") {
     return undefined;
   }
-  const options = window.atob(
-    webauthn_options.replace(/_/g, "/").replace(/-/g, "+")
-  );
+  const options = window.atob(webauthn_options.replace(/_/g, "/").replace(/-/g, "+"));
   const byte_options = Uint8Array.from(options, (c) => c.charCodeAt(0));
   return CBOR.decode(byte_options.buffer);
 };
@@ -21,19 +19,15 @@ export const mfaDecodeMiddlewareForResetPassword = (response) => {
     response.payload.extra_security.tokens &&
     response.payload.extra_security.tokens.webauthn_options !== undefined
   ) {
-    response.payload.extra_security.tokens.webauthn_options =
-      mfaDecodeMiddleware(
-        response.payload.extra_security.tokens.webauthn_options
-      );
+    response.payload.extra_security.tokens.webauthn_options = mfaDecodeMiddleware(
+      response.payload.extra_security.tokens.webauthn_options
+    );
   }
   return response;
 };
 
 // 2. Open authenticator
-export const assertionFromAuthenticator = async (
-  webauthn_challenge,
-  dispatch
-) => {
+export const assertionFromAuthenticator = async (webauthn_challenge, dispatch) => {
   const webauthnAssertion = await navigator.credentials
     .get(webauthn_challenge)
     .then()
@@ -42,9 +36,7 @@ export const assertionFromAuthenticator = async (
       dispatch(resetPasswordSlice.actions.cancelWebauthnAssertion());
     });
   if (webauthnAssertion !== undefined) {
-    dispatch(
-      resetPasswordSlice.actions.getWebauthnAssertion(webauthnAssertion)
-    );
+    dispatch(resetPasswordSlice.actions.getWebauthnAssertion(webauthnAssertion));
   }
 };
 

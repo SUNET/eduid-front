@@ -21,10 +21,7 @@ const ResetPasswordLayout = (props) => {
         <p className="decription-without-security">
           {props.linkInfoHeading}
           {props.linkInfoText}
-          <a
-            id="continue-without-security"
-            onClick={() => continueSetPassword()}
-          >
+          <a id="continue-without-security" onClick={() => continueSetPassword()}>
             {" "}
             {props.linkText}
           </a>

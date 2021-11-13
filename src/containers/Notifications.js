@@ -20,9 +20,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const NotificationsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Notifications);
+const NotificationsContainer = connect(mapStateToProps, mapDispatchToProps)(Notifications);
 
 export default i18n(NotificationsContainer);

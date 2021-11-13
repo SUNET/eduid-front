@@ -22,9 +22,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const AccountLinkingContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AccountLinking);
+const AccountLinkingContainer = connect(mapStateToProps, mapDispatchToProps)(AccountLinking);
 
 export default i18n(AccountLinkingContainer);

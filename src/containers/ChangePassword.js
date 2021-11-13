@@ -6,13 +6,7 @@ import * as comp from "components/ChangePasswordForm";
 import * as actions from "actions/ChangePassword";
 import { stopConfirmationPassword } from "actions/Security";
 
-const pwStrengthMessages = [
-  "pwfield.terrible",
-  "pwfield.bad",
-  "pwfield.weak",
-  "pwfield.good",
-  "pwfield.strong",
-];
+const pwStrengthMessages = ["pwfield.terrible", "pwfield.bad", "pwfield.weak", "pwfield.good", "pwfield.strong"];
 
 const mapStateToProps = (state) => {
   let userInput = [];
@@ -21,10 +15,7 @@ const mapStateToProps = (state) => {
   userInput.push(state.personal_data.data.display_name);
   userInput.concat(state.emails.emails);
   const customPassword =
-    (state.form &&
-      state.form.chpass &&
-      state.form.chpass.values &&
-      state.form.chpass.values[comp.pwFieldCustomName]) ||
+    (state.form && state.form.chpass && state.form.chpass.values && state.form.chpass.values[comp.pwFieldCustomName]) ||
     "";
   let score = 0,
     configEntropy = state.config.password_entropy,
@@ -59,12 +50,10 @@ const mapDispatchToProps = (dispatch) => {
 
     handleStartPasswordChange: function (event) {
       event.preventDefault();
-      const oldPassword = document.getElementsByName(comp.pwFieldOldName)[0]
-        .value;
+      const oldPassword = document.getElementsByName(comp.pwFieldOldName)[0].value;
       let newPassword = this.props.suggested_password;
       if (this.state.customPassword) {
-        newPassword = document.getElementsByName(comp.pwFieldCustomName)[0]
-          .value;
+        newPassword = document.getElementsByName(comp.pwFieldCustomName)[0].value;
       }
       dispatch(actions.postPasswordChange(oldPassword, newPassword));
     },
@@ -85,9 +74,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const ChangePasswordContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChangePassword);
+const ChangePasswordContainer = connect(mapStateToProps, mapDispatchToProps)(ChangePassword);
 
 export default i18n(ChangePasswordContainer);

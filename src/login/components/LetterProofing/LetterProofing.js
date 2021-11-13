@@ -70,9 +70,7 @@ class LetterProofingButton extends Component {
     let description = "";
     if (this.props.disabled) {
       description = (
-        <div className="description">
-          {this.props.translate("verify-identity.vetting_explanation_add_nin")}
-        </div>
+        <div className="description">{this.props.translate("verify-identity.vetting_explanation_add_nin")}</div>
       );
     } else {
       if (this.props.letter_sent_date === "") {
@@ -81,16 +79,10 @@ class LetterProofingButton extends Component {
         description = (
           <>
             <div className="description">
-              {this.props.translate(
-                "verify-identity.vetting_letter_code_expired"
-              )}
+              {this.props.translate("verify-identity.vetting_letter_code_expired")}
               {this.formatDateFromBackend(this.props.letter_expires_date)}
             </div>
-            <div className="description">
-              {this.props.translate(
-                "verify-identity.vetting_letter_order_new_code"
-              )}
-            </div>
+            <div className="description">{this.props.translate("verify-identity.vetting_letter_order_new_code")}</div>
           </>
         );
       } else {
@@ -104,9 +96,7 @@ class LetterProofingButton extends Component {
               {this.props.translate("verify-identity.vetting_letter_valid")}
               {this.formatDateFromBackend(this.props.letter_expires_date)}
             </div>
-            <div className="description">
-              {this.props.translate("verify-identity.vetting_letter_received")}
-            </div>
+            <div className="description">{this.props.translate("verify-identity.vetting_letter_received")}</div>
           </>
         );
       }
@@ -114,17 +104,12 @@ class LetterProofingButton extends Component {
     return (
       <div>
         <div className="vetting-button">
-          <button
-            disabled={this.props.disabled}
-            onClick={() => this.handleModal()}
-          >
+          <button disabled={this.props.disabled} onClick={() => this.handleModal()}>
             <div className="text">
               {this.props.translate("verify-identity.vetting_post_tagline")}
               {description}
             </div>
-            <div className="name">
-              {this.props.translate("letter.button_text_request")}
-            </div>
+            <div className="name">{this.props.translate("letter.button_text_request")}</div>
           </button>
         </div>
         <NotificationModal

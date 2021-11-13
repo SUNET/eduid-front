@@ -279,8 +279,7 @@ describe("OpenidConnectFreja Container after initiated vetting", () => {
 
 const state = {
   config: {
-    oidc_proofing_freja_url:
-      "http://localhost/services/oidc-proofing/freja/proofing",
+    oidc_proofing_freja_url: "http://localhost/services/oidc-proofing/freja/proofing",
     csrf_token: "csrf-token",
   },
   openid_freja_data: {
@@ -292,10 +291,7 @@ const state = {
   },
 };
 
-import {
-  initializeOpenidFrejaData,
-  fetchFrejaData,
-} from "../sagas/OpenidConnectFreja";
+import { initializeOpenidFrejaData, fetchFrejaData } from "../sagas/OpenidConnectFreja";
 import { put, call, select } from "redux-saga/effects";
 
 describe("Async component", () => {
@@ -313,9 +309,7 @@ describe("Async component", () => {
       nin: "testing",
       csrf_token: "csrf-token",
     };
-    expect(oidcFrejaData.value).toEqual(
-      call(fetchFrejaData, state.config.oidc_proofing_freja_url, data)
-    );
+    expect(oidcFrejaData.value).toEqual(call(fetchFrejaData, state.config.oidc_proofing_freja_url, data));
 
     const action = {
       type: actions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS,

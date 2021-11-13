@@ -78,35 +78,13 @@ class SignupMain extends Component {
         <HeaderContainer {...this.props} />
         <section id="panel">
           <NotificationsContainer />
-          <Route
-            exact
-            path={`${SIGNUP_BASE_PATH}`}
-            component={() => <Redirect to={redirect} />}
-          />
-          <Route
-            path={`${SIGNUP_BASE_PATH}/email`}
-            component={EmailContainer}
-          />
-          <Route
-            path={`${SIGNUP_BASE_PATH}/trycaptcha`}
-            component={CaptchaContainer}
-          />
-          <Route
-            path={`${SIGNUP_BASE_PATH}/new`}
-            component={AccountCreatedContainer}
-          />
-          <Route
-            path={`${SIGNUP_BASE_PATH}/code-verified`}
-            component={CodeVerifiedContainer}
-          />
-          <Route
-            path={`${SIGNUP_BASE_PATH}/resend-code`}
-            component={ResendCodeContainer}
-          />
-          <Route
-            path={`${SIGNUP_BASE_PATH}/address-used`}
-            component={EmailInUseContainer}
-          />
+          <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={redirect} />} />
+          <Route path={`${SIGNUP_BASE_PATH}/email`} component={EmailContainer} />
+          <Route path={`${SIGNUP_BASE_PATH}/trycaptcha`} component={CaptchaContainer} />
+          <Route path={`${SIGNUP_BASE_PATH}/new`} component={AccountCreatedContainer} />
+          <Route path={`${SIGNUP_BASE_PATH}/code-verified`} component={CodeVerifiedContainer} />
+          <Route path={`${SIGNUP_BASE_PATH}/resend-code`} component={ResendCodeContainer} />
+          <Route path={`${SIGNUP_BASE_PATH}/address-used`} component={EmailInUseContainer} />
         </section>
         <FooterContainer {...this.props} />
       </Router>,

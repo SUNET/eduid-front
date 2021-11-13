@@ -1,11 +1,5 @@
 import { put, select, call } from "redux-saga/effects";
-import {
-  checkStatus,
-  putCsrfToken,
-  postRequest,
-  saveData,
-  failRequest,
-} from "sagas/common";
+import { checkStatus, putCsrfToken, postRequest, saveData, failRequest } from "sagas/common";
 import * as actions from "actions/Emails";
 
 const getData = (state) => ({
@@ -25,13 +19,7 @@ export function sendEmail(config, data) {
     .then((response) => response.json());
 }
 
-export const saveEmail = saveData(
-  getData,
-  "emails",
-  () => ({ type: "NOOP_ACTION" }),
-  sendEmail,
-  actions.postEmailFail
-);
+export const saveEmail = saveData(getData, "emails", () => ({ type: "NOOP_ACTION" }), sendEmail, actions.postEmailFail);
 
 export function* requestResendEmailCode() {
   try {

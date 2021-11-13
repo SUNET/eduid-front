@@ -16,9 +16,7 @@ import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 const RenderLockedNames = ({ translate }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.config.loading_data);
-  const given_name = useSelector(
-    (state) => state.personal_data.data.given_name
-  );
+  const given_name = useSelector((state) => state.personal_data.data.given_name);
   const surname = useSelector((state) => state.personal_data.data.surname);
   return (
     <Fragment>
@@ -66,21 +64,12 @@ const RenderEditableNames = (props) => {
           placeholder={props.translate("pd.surname")}
         />
       </div>
-      <p className="hint">
-        {props.translate("pd.hint.names_locked_when_verified")}
-      </p>
+      <p className="hint">{props.translate("pd.hint.names_locked_when_verified")}</p>
     </Fragment>
   );
 };
 
-let RenderSavePersonalDataButton = ({
-  pdata,
-  pristine,
-  submitting,
-  translate,
-  initialValues,
-  hasPersonalData,
-}) => {
+let RenderSavePersonalDataButton = ({ pdata, pristine, submitting, translate, initialValues, hasPersonalData }) => {
   const loading = useSelector((state) => state.config.loading_data);
   const [isDisable, setIsDisable] = useState(false);
   useEffect(() => {
@@ -120,9 +109,7 @@ let RenderSavePersonalDataButton = ({
 
 let PersonalDataForm = (props) => {
   const dispatch = useDispatch();
-  const available_languages = useSelector(
-    (state) => state.config.available_languages
-  );
+  const available_languages = useSelector((state) => state.config.available_languages);
   const personal_data = useSelector((state) => state.personal_data.data);
   const [pdata, setPdata] = useState(personal_data);
   // setPdata key and value.
@@ -145,11 +132,7 @@ let PersonalDataForm = (props) => {
       }}
     >
       <div className="name-inputs">
-        {props.isVerifiedNin ? (
-          <RenderLockedNames {...props} />
-        ) : (
-          <RenderEditableNames {...props} />
-        )}
+        {props.isVerifiedNin ? <RenderLockedNames {...props} /> : <RenderEditableNames {...props} />}
       </div>
       <Field
         component={CustomInput}
@@ -168,11 +151,7 @@ let PersonalDataForm = (props) => {
         selectOptions={available_languages}
         label={props.translate("pd.language")}
       />
-      <RenderSavePersonalDataButton
-        hasPersonalData={props.hasPersonalData}
-        pdata={pdata}
-        {...props}
-      />
+      <RenderSavePersonalDataButton hasPersonalData={props.hasPersonalData} pdata={pdata} {...props} />
     </Form>
   );
 };

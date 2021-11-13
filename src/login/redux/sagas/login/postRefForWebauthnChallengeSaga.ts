@@ -22,8 +22,7 @@ export function* postRefForWebauthnChallengeSaga() {
     csrf_token: state.config.csrf_token,
   };
   try {
-    const response: PayloadAction<MfaAuthResponse, string, never, boolean> =
-      yield call(postRequest, url, dataToSend);
+    const response: PayloadAction<MfaAuthResponse, string, never, boolean> = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
     if (response.payload.finished) {
       yield put(loginSlice.actions.callLoginNext());

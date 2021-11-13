@@ -38,9 +38,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const OpenidConnectFrejaContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OpenidConnectFreja);
+const OpenidConnectFrejaContainer = connect(mapStateToProps, mapDispatchToProps)(OpenidConnectFreja);
 
 export default i18n(OpenidConnectFrejaContainer);

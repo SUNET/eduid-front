@@ -8,24 +8,13 @@ const LOCAL_STORAGE_PERSISTED_GROUP = "persistedGroup";
 
 class GroupParent extends Component {
   state = {
-    editGroup:
-      JSON.parse(
-        window.localStorage.getItem(LOCAL_STORAGE_PERSISTED_EDIT_GROUP)
-      ) || false,
-    group:
-      JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_PERSISTED_GROUP)) ||
-      "",
+    editGroup: JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_PERSISTED_EDIT_GROUP)) || false,
+    group: JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_PERSISTED_GROUP)) || "",
   };
 
   componentDidUpdate() {
-    window.localStorage.setItem(
-      LOCAL_STORAGE_PERSISTED_EDIT_GROUP,
-      this.state.editGroup
-    );
-    window.localStorage.setItem(
-      LOCAL_STORAGE_PERSISTED_GROUP,
-      JSON.stringify(this.state.group)
-    );
+    window.localStorage.setItem(LOCAL_STORAGE_PERSISTED_EDIT_GROUP, this.state.editGroup);
+    window.localStorage.setItem(LOCAL_STORAGE_PERSISTED_GROUP, JSON.stringify(this.state.group));
   }
 
   toggleGroupsListOrEditGroup = (groupData) => {
@@ -47,10 +36,7 @@ class GroupParent extends Component {
             toggleGroupsListOrEditGroup={this.toggleGroupsListOrEditGroup}
           />
         ) : (
-          <GroupsList
-            {...this.props}
-            toggleGroupsListOrEditGroup={this.toggleGroupsListOrEditGroup}
-          />
+          <GroupsList {...this.props} toggleGroupsListOrEditGroup={this.toggleGroupsListOrEditGroup} />
         )}
       </Fragment>
     );

@@ -5,9 +5,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 const mapStateToProps = (state) => {
   let primaryPhoneStatus = "";
   const primaryPhone = state.phones.phones.filter((phone) => phone.primary);
-  primaryPhone.length === 1
-    ? (primaryPhoneStatus = true)
-    : (primaryPhoneStatus = false);
+  primaryPhone.length === 1 ? (primaryPhoneStatus = true) : (primaryPhoneStatus = false);
   return {
     phones: state.phones.phones,
     primaryPhone,
@@ -19,9 +17,6 @@ const mapDispatchToProps = () => {
   return {};
 };
 
-const PhoneDisplayContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PhoneDisplay);
+const PhoneDisplayContainer = connect(mapStateToProps, mapDispatchToProps)(PhoneDisplay);
 
 export default i18n(PhoneDisplayContainer);

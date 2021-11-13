@@ -7,13 +7,7 @@ import AccountLinkingContainer from "containers/AccountLinking";
 import * as actions from "actions/AccountLinking";
 import accountlinkingReducer from "reducers/AccountLinking";
 import { Provider } from "react-intl-redux";
-import {
-  requestOrcid,
-  requestConnectOrcid,
-  requestRemoveOrcid,
-  fetchOrcid,
-  removeOrcid,
-} from "sagas/AccountLinking";
+import { requestOrcid, requestConnectOrcid, requestRemoveOrcid, fetchOrcid, removeOrcid } from "sagas/AccountLinking";
 
 import { addLocaleData } from "react-intl";
 

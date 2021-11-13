@@ -10,53 +10,29 @@ export const generalInstructions = {
   //   <FormattedMessage id="main.confirmed" defaultMessage={`Confirmed`} />
   // ),
 
-  faq_link: (
-    <FormattedMessage
-      id="faq_link"
-      defaultMessage={`For more information see the `}
-    />
-  ),
+  faq_link: <FormattedMessage id="faq_link" defaultMessage={`For more information see the `} />,
 
   // link sent to email (resend link)
   "resend.link-sent": (
-    <FormattedMessage
-      id="resend.link-sent"
-      defaultMessage={`A link has been sent to your email address.`}
-    />
+    <FormattedMessage id="resend.link-sent" defaultMessage={`A link has been sent to your email address.`} />
   ),
 
   "resend.email-label": (
-    <FormattedMessage
-      id="resend.email-label"
-      defaultMessage={`Complete registration by clicking the link sent to:`}
-    />
+    <FormattedMessage id="resend.email-label" defaultMessage={`Complete registration by clicking the link sent to:`} />
   ),
 
-  "resend.button": (
-    <FormattedMessage
-      id="resend.button"
-      defaultMessage={`Send a new confirmation link`}
-    />
-  ),
+  "resend.button": <FormattedMessage id="resend.button" defaultMessage={`Send a new confirmation link`} />,
 
   "signup.verification-resent": (
-    <FormattedMessage
-      id="signup.verification-resent"
-      defaultMessage={`Verification email resent`}
-    />
+    <FormattedMessage id="signup.verification-resent" defaultMessage={`Verification email resent`} />
   ),
 
   "signup.registering-resend-code": (
-    <FormattedMessage
-      id="signup.registering-resend-code"
-      defaultMessage={`Verification email resent`}
-    />
+    <FormattedMessage id="signup.registering-resend-code" defaultMessage={`Verification email resent`} />
   ),
 
   // mfa instructions
-  "mfa.try-again": (
-    <FormattedMessage id="mfa.try-again" defaultMessage={`Try again`} />
-  ),
+  "mfa.try-again": <FormattedMessage id="mfa.try-again" defaultMessage={`Try again`} />,
   "mfa.login-tapit": (
     <FormattedMessage
       id="mfa.login-tapit"

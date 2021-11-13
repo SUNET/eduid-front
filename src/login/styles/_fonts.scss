@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Akkurat";
-  src: url("../../fonts/Akkurat-Mono.ttf") format("truetype"),
-    url("../../fonts/Akkurat-Mono.woff") format("woff");
+  src: url("../../fonts/Akkurat-Mono.ttf") format("truetype"), url("../../fonts/Akkurat-Mono.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -9,8 +8,7 @@
 @font-face {
   font-family: "ProximaNova-Light";
   src: url("../../fonts/ProximaNova-Light.ttf") format("truetype"),
-    url("../../fonts/ProximaNova-Light.woff") format("woff"),
-    url("../../fonts/ProximaNova-Light.woff2") format("woff2");
+    url("../../fonts/ProximaNova-Light.woff") format("woff"), url("../../fonts/ProximaNova-Light.woff2") format("woff2");
 
   font-weight: normal;
   font-style: normal;
@@ -28,8 +26,7 @@
 @font-face {
   font-family: "ProximaNova-Bold";
   src: url("../../fonts/ProximaNova-Bold.ttf") format("truetype"),
-    url("../../fonts/ProximaNova-Bold.woff") format("woff"),
-    url("../../fonts/ProximaNova-Bold.woff2") format("woff2");
+    url("../../fonts/ProximaNova-Bold.woff") format("woff"), url("../../fonts/ProximaNova-Bold.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }

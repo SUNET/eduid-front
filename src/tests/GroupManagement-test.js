@@ -71,9 +71,7 @@ describe("Actions trigger the correct types:", () => {
         message: "Bad error",
       },
     };
-    expect(getAllGroupDataActions.getAllGroupsDataFail(err)).toEqual(
-      expectedAction
-    );
+    expect(getAllGroupDataActions.getAllGroupsDataFail(err)).toEqual(expectedAction);
   });
 
   it("openCreateGroup() > OPEN_CREATE_GROUP_PANEL", () => {

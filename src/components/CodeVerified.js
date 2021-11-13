@@ -5,20 +5,11 @@ import EduIDButton from "components/EduIDButton";
 class CodeVerified extends Component {
   render() {
     return (
-      <form
-        key="2"
-        method="GET"
-        action={this.props.dashboard_url}
-        className="vertical-content-margin"
-      >
+      <form key="2" method="GET" action={this.props.dashboard_url} className="vertical-content-margin">
         <div key="0" id="content">
           <div>
-            <h3 className="register-header">
-              {this.props.translate("finish.registration-complete")}
-            </h3>
-            <p className="lead">
-              {this.props.translate("finish.registration-details")}
-            </p>
+            <h3 className="register-header">{this.props.translate("finish.registration-complete")}</h3>
+            <p className="lead">{this.props.translate("finish.registration-details")}</p>
             <div id="email-display">
               <label>Email</label>
               <h3 id="user-email" className="register-header">
@@ -31,11 +22,7 @@ class CodeVerified extends Component {
                 </mark>
               </h3>
             </div>
-            <EduIDButton
-              id="gotit-button"
-              className="settings-button"
-              type="submit"
-            >
+            <EduIDButton id="gotit-button" className="settings-button" type="submit">
               {this.props.translate("finish.got-it")}
             </EduIDButton>
           </div>

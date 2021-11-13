@@ -33,9 +33,7 @@ function EmailLinkSent(props) {
   }, []);
 
   useEffect(() => {
-    const emailFromLocalStorage = getLocalStorage(
-      LOCAL_STORAGE_PERSISTED_EMAIL
-    );
+    const emailFromLocalStorage = getLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL);
     if (emailFromLocalStorage) setEmail(emailFromLocalStorage);
   }, [email]);
 

@@ -59,9 +59,7 @@ describe("ChangePasswordForm renders", () => {
   it("old and new password inputs render", () => {
     const { wrapper } = setupComponent();
     const oldPwInput = wrapper.find("input[name='old-password-field']");
-    const suggestedPwInput = wrapper.find(
-      "input[name='suggested-password-field']"
-    );
+    const suggestedPwInput = wrapper.find("input[name='suggested-password-field']");
     expect(oldPwInput.exists()).toEqual(true);
     expect(suggestedPwInput.exists()).toEqual(true);
   });

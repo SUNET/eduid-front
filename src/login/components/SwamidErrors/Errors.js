@@ -24,20 +24,10 @@ function Errors(props) {
       ")";
 
     setTechInformation({
-      errorurl_ts:
-        errorurl_ts && errorurl_ts !== "ERRORURL_TS"
-          ? errorurl_ts + newDateUrlTs
-          : undefined,
-      errorurl_rp:
-        errorurl_rp && errorurl_rp !== "ERRORURL_RP" ? errorurl_rp : undefined,
-      errorurl_tid:
-        errorurl_tid && errorurl_tid !== "ERRORURL_TID"
-          ? errorurl_tid
-          : undefined,
-      errorurl_ctx:
-        errorurl_ctx && errorurl_ctx !== "ERRORURL_CTX"
-          ? errorurl_ctx
-          : undefined,
+      errorurl_ts: errorurl_ts && errorurl_ts !== "ERRORURL_TS" ? errorurl_ts + newDateUrlTs : undefined,
+      errorurl_rp: errorurl_rp && errorurl_rp !== "ERRORURL_RP" ? errorurl_rp : undefined,
+      errorurl_tid: errorurl_tid && errorurl_tid !== "ERRORURL_TID" ? errorurl_tid : undefined,
+      errorurl_ctx: errorurl_ctx && errorurl_ctx !== "ERRORURL_CTX" ? errorurl_ctx : undefined,
     });
   }, []);
 
@@ -47,8 +37,7 @@ function Errors(props) {
   let errorurlRp = query.get("errorurl_rp");
   let specificMessages = {};
   Object.keys(swamidErrorData).map((key) => {
-    if (errorurlRp && errorurlRp.includes(key))
-      return (specificMessages = swamidErrorData[errorurlRp]);
+    if (errorurlRp && errorurlRp.includes(key)) return (specificMessages = swamidErrorData[errorurlRp]);
   });
 
   const checkErrorUrlCtx = (messages) => {
@@ -58,9 +47,7 @@ function Errors(props) {
         Object.keys(result).map((urlCtx) => {
           if (errorurlCtx && errorurlCtx.includes(urlCtx)) {
             return (isSpecificError = (
-              <div className="specific-error">
-                {props.translate(Object.values(result[urlCtx]).toString())}
-              </div>
+              <div className="specific-error">{props.translate(Object.values(result[urlCtx]).toString())}</div>
             ));
           }
         });
@@ -85,9 +72,7 @@ function Errors(props) {
     ) : errorurlCode === "OTHER_ERROR" ? (
       props.translate("error_access")
     ) : (
-      <div className="specific-error">
-        {props.translate("error_without_code")}
-      </div>
+      <div className="specific-error">{props.translate("error_without_code")}</div>
     );
 
   let isTechnicalInfoNotEmpty = Object.keys(techInformation).some((key) => {
@@ -111,9 +96,7 @@ function Errors(props) {
         {isTechnicalInfoNotEmpty ? (
           <>
             {isSpecificError ? isSpecificError : showErrorCode}
-            <div className={"technical-info-heading"}>
-              {props.translate("error_technical_info_heading")}
-            </div>
+            <div className={"technical-info-heading"}>{props.translate("error_technical_info_heading")}</div>
             <div className={"technical-info-box"}>{technicalInformation}</div>
           </>
         ) : (

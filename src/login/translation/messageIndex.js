@@ -7,11 +7,7 @@ import { generalInstructions } from "./defaultMessages/instructions";
 import { changePassword, resetPassword } from "./defaultMessages/password";
 import { register } from "./defaultMessages/register";
 import { generalApp } from "./defaultMessages/generalApp";
-import {
-  userData,
-  userProfile,
-  userVetting,
-} from "./defaultMessages/userProfile";
+import { userData, userProfile, userVetting } from "./defaultMessages/userProfile";
 
 export const formattedMessages = {
   ...generalApp,
@@ -45,8 +41,7 @@ export const unformattedMessages = defineMessages({
   },
   "emails.confirm_help_text": {
     id: "emails.confirm_help_text",
-    defaultMessage:
-      "Code is formatted as five groups of characters and numbers, separated by hyphens",
+    defaultMessage: "Code is formatted as five groups of characters and numbers, separated by hyphens",
     description: "Help text for email confirmation code",
   },
   "confirmation.code_invalid_format": {

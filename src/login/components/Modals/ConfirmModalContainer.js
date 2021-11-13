@@ -5,8 +5,7 @@ import { isValid, isSubmitting } from "redux-form";
 
 const mapStateToProps = (state) => {
   return {
-    formEnabled:
-      isValid("modal-form")(state) && !isSubmitting("modal-form")(state),
+    formEnabled: isValid("modal-form")(state) && !isSubmitting("modal-form")(state),
   };
 };
 

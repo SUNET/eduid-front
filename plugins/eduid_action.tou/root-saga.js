@@ -33,10 +33,7 @@ export function* postAcceptTOU() {
 }
 
 function* rootSaga() {
-  yield [
-    ...defaultSaga,
-    takeLatest(actions.POST_ACTIONS_ACTION, postAcceptTOU),
-  ];
+  yield [...defaultSaga, takeLatest(actions.POST_ACTIONS_ACTION, postAcceptTOU)];
 }
 
 export default rootSaga;

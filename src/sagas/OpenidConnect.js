@@ -1,10 +1,5 @@
 import { put, select, call } from "redux-saga/effects";
-import {
-  checkStatus,
-  putCsrfToken,
-  postRequest,
-  failRequest,
-} from "sagas/common";
+import { checkStatus, putCsrfToken, postRequest, failRequest } from "sagas/common";
 import * as actions from "../actions/OpenidConnect";
 import { postOpenidSelegFail } from "../actions/OpenidConnect";
 

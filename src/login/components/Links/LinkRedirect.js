@@ -5,12 +5,7 @@ import { withRouter } from "react-router-dom";
 class LinkRedirect extends Component {
   render() {
     return (
-      <Link
-        id={this.props.id}
-        className={this.props.className}
-        to={this.props.to}
-        onClick={this.props.onClick}
-      >
+      <Link id={this.props.id} className={this.props.className} to={this.props.to} onClick={this.props.onClick}>
         {this.props.text}
       </Link>
     );

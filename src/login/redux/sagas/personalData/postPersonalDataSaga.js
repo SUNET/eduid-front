@@ -3,10 +3,7 @@ import postRequest from "../postDataRequest";
 import { updateIntl } from "react-intl-redux";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../../../actions/PersonalData";
-import {
-  loadingData,
-  loadingDataComplete,
-} from "../../actions/loadingDataActions";
+import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
 export function* postPersonalDataSaga(action) {

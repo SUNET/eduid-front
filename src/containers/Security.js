@@ -65,9 +65,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(stopAskWebauthnDescription());
     },
     handleStartWebauthnRegistration: function () {
-      const description = document
-        .getElementById("describeWebauthnTokenDialogControl")
-        .value.trim();
+      const description = document.getElementById("describeWebauthnTokenDialogControl").value.trim();
       dispatch(stopAskWebauthnDescription());
       dispatch(startWebauthnRegistration(description));
     },
@@ -82,9 +80,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const SecurityContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Security);
+const SecurityContainer = connect(mapStateToProps, mapDispatchToProps)(Security);
 
 export default i18n(SecurityContainer);

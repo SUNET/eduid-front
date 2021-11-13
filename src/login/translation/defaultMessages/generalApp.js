@@ -3,36 +3,21 @@ import { FormattedMessage } from "react-intl";
 
 export const generalApp = {
   // header
-  "header.signup": (
-    <FormattedMessage id="header.signup" defaultMessage={`SIGN UP`} />
-  ),
+  "header.signup": <FormattedMessage id="header.signup" defaultMessage={`SIGN UP`} />,
 
-  "header.signin": (
-    <FormattedMessage id="header.signin" defaultMessage={`Log in`} />
-  ),
+  "header.signin": <FormattedMessage id="header.signin" defaultMessage={`Log in`} />,
 
   // this is in the footer!
   "header.faq": <FormattedMessage id="header.faq" defaultMessage={`Help`} />,
 
-  "header.logout": (
-    <FormattedMessage id="header.logout" defaultMessage={`Logout`} />
-  ),
+  "header.logout": <FormattedMessage id="header.logout" defaultMessage={`Logout`} />,
 
-  "main.welcome": (
-    <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID`} />
-  ),
+  "main.welcome": <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID`} />,
 
-  "banner.tagline": (
-    <FormattedMessage
-      id="banner.tagline"
-      defaultMessage={`eduID is easier and safer login.`}
-    />
-  ),
+  "banner.tagline": <FormattedMessage id="banner.tagline" defaultMessage={`eduID is easier and safer login.`} />,
 
   // footer
-  "main.copyright": (
-    <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2021`} />
-  ),
+  "main.copyright": <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2021`} />,
 
   "beta-link.to-stable": (
     <FormattedMessage
@@ -54,12 +39,7 @@ export const generalApp = {
   button_add: <FormattedMessage id="button_add" defaultMessage={`Add`} />,
 
   // sucess
-  "actions.action-completed": (
-    <FormattedMessage
-      id="actions.action-completed"
-      defaultMessage={`Success`}
-    />
-  ),
+  "actions.action-completed": <FormattedMessage id="actions.action-completed" defaultMessage={`Success`} />,
 
   // modal
   /* ----- ConfirmModal  ------- */
@@ -74,9 +54,7 @@ export const generalApp = {
 
   "cm.close": <FormattedMessage id="cm.close" defaultMessage={`CLOSE`} />,
 
-  "cm.enter_code": (
-    <FormattedMessage id="cm.enter_code" defaultMessage={`Confirmation code`} />
-  ),
+  "cm.enter_code": <FormattedMessage id="cm.enter_code" defaultMessage={`Confirmation code`} />,
 
   // code still valid
   "still-valid-code": (
@@ -89,9 +67,7 @@ export const generalApp = {
   // buttons in email/phone table
   "tl.primary": <FormattedMessage id="tl.primary" defaultMessage={`PRIMARY`} />,
 
-  "tl.make_primary": (
-    <FormattedMessage id="tl.make_primary" defaultMessage={`MAKE PRIMARY`} />
-  ),
+  "tl.make_primary": <FormattedMessage id="tl.make_primary" defaultMessage={`MAKE PRIMARY`} />,
 
   "tl.pending": <FormattedMessage id="tl.pending" defaultMessage={`confirm`} />,
 };

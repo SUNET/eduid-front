@@ -102,15 +102,9 @@ describe("Letter Proofing, when letter has been expired", () => {
 
   it("Renders when letter has been expired", () => {
     const { wrapper } = setupComponent();
-    expect(wrapper.find(LetterProofingContainer).props().letter_sent).toEqual(
-      "20101010"
-    );
-    expect(
-      wrapper.find(LetterProofingContainer).props().letter_expires
-    ).toEqual("20101024");
-    expect(
-      wrapper.find(LetterProofingContainer).props().letter_expired
-    ).toBeTruthy();
+    expect(wrapper.find(LetterProofingContainer).props().letter_sent).toEqual("20101010");
+    expect(wrapper.find(LetterProofingContainer).props().letter_expires).toEqual("20101024");
+    expect(wrapper.find(LetterProofingContainer).props().letter_expired).toBeTruthy();
   });
 });
 
@@ -137,9 +131,7 @@ describe("Letter proofing Actions", () => {
           code: data.code,
         },
       };
-    expect(actions.postLetterProofingVerificationCode(data)).toEqual(
-      expectedAction
-    );
+    expect(actions.postLetterProofingVerificationCode(data)).toEqual(expectedAction);
   });
 
   it("should create an action to signal an error sending the letter", () => {
@@ -151,9 +143,7 @@ describe("Letter proofing Actions", () => {
         message: err.toString(),
       },
     };
-    expect(actions.postLetterProofingSendLetterFail(err)).toEqual(
-      expectedAction
-    );
+    expect(actions.postLetterProofingSendLetterFail(err)).toEqual(expectedAction);
   });
   it("should create an action to signal an error verifying the code", () => {
     const err = new Error("Bad error");
@@ -164,9 +154,7 @@ describe("Letter proofing Actions", () => {
         message: err.toString(),
       },
     };
-    expect(actions.postLetterProofingVerificationCodeFail(err)).toEqual(
-      expectedAction
-    );
+    expect(actions.postLetterProofingVerificationCodeFail(err)).toEqual(expectedAction);
   });
 });
 
@@ -310,9 +298,7 @@ describe("Async component", () => {
     };
 
     const resp = generator.next(fakeState);
-    expect(resp.value).toEqual(
-      call(fetchLetterProofing, fakeState.config, data)
-    );
+    expect(resp.value).toEqual(call(fetchLetterProofing, fakeState.config, data));
 
     const action = {
       type: "POST_LETTER_PROOFING_PROOFING_SUCCESS",
@@ -335,9 +321,7 @@ describe("Async component", () => {
 
     const nin = "dummy-nin";
     const resp = generator.next(fakeState);
-    expect(resp.value).toEqual(
-      call(fetchGetLetterProofing, fakeState.config, nin)
-    );
+    expect(resp.value).toEqual(call(fetchGetLetterProofing, fakeState.config, nin));
 
     const action = {
       type: "GET_LETTER_PROOFING_PROOFING_SUCCESS",
