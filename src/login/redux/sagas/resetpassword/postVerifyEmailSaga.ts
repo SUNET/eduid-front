@@ -9,13 +9,13 @@ import { PayloadAction } from "@reduxjs/toolkit";
 export type extraSecurityParameters = {
   external_mfa: boolean;
   phone_numbers?: [];
-  tokens: object;
+  tokens: { webauthn_options: string };
 };
 
 export type VerifyEmailResponse = {
   email_address: string;
   email_code: string;
-  extra_security?: extraSecurityParameters;
+  extra_security: extraSecurityParameters;
   suggested_password: string;
 };
 
