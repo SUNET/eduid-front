@@ -13,7 +13,7 @@ module.exports = function (api) {
       },
     ],
     [
-      "react-intl",
+      "formatjs",
       {
         messagesDir: "./src/login/translation",
         enforceDescriptions: false,
