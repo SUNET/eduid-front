@@ -12,7 +12,7 @@ import Splash from "../../../../containers/Splash";
 import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
 import { Dispatch } from "redux";
 interface SecurityKeyButtonProps {
-  selected_option: string;
+  selected_option: string | null;
   extraSecurityKey: Array<any>;
   translate(msg: string): string;
   ShowSecurityKey: React.MouseEventHandler<HTMLButtonElement>;
@@ -23,7 +23,7 @@ const SecurityKeyButton = ({
   extraSecurityKey,
   translate,
   ShowSecurityKey,
-}: SecurityKeyButtonProps) => {
+}: SecurityKeyButtonProps): JSX.Element | JSX.Element[] | null => {
   return !selected_option ? (
     Object.values(extraSecurityKey).map((security) => {
       return (
