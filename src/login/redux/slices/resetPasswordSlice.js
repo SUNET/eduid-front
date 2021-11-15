@@ -10,6 +10,10 @@ export const resetPasswordSlice = createSlice({
     webauthn_assertion: null,
     selected_option: null,
     new_password: null,
+    suggested_password: null,
+    extra_security: {
+      tokens: { webauthn_options: null },
+    },
   },
   reducers: {
     // Store phone_code for API call /new-password-extra-security-phone endpoint.
