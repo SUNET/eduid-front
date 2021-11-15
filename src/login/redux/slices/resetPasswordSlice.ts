@@ -4,11 +4,12 @@ import { performAuthentication, webauthnAssertion } from "../../app_utils/helper
 // Define a type for the slice state
 
 export type ExtraSecurity = { external_mfa: boolean; phone_numbers?: []; tokens: { webauthn_options: string } };
+export type Phone = { index?: string; number?: string; phone_code?: string };
 
 interface ResetPasswordState {
   email_address?: string;
   email_code?: string;
-  phone: { index?: string; number?: string; phone_code?: string };
+  phone: { index?: number; number?: string; phone_code?: string };
   webauthn_assertion?: webauthnAssertion;
   selected_option?: string;
   new_password?: string;
@@ -48,16 +49,16 @@ export const resetPasswordSlice = createSlice({
       state.selected_option = action.payload;
     },
     // Action connected to postExtraSecurityPhoneSaga. Will post phone.index to the /extra-security-phone endpoint.
-    requestPhoneCode: (state, action: PayloadAction<{ index: string; number: string }>) => {
+    requestPhoneCode: (state, action: PayloadAction<{ index: number; number: string }>) => {
       state.phone.index = action.payload.index;
       state.phone.number = action.payload.number;
     },
-    getWebauthnAssertion: (state, action) => {
-      state.webauthn_assertion = action.payload;
-    },
-    cancelWebauthnAssertion: (state) => {
-      state.webauthn_assertion = undefined;
-    },
+    // getWebauthnAssertion: (state, action) => {
+    //   state.webauthn_assertion = action.payload;
+    // },
+    // cancelWebauthnAssertion: (state) => {
+    //   state.webauthn_assertion = undefined;
+    // },
     storeNewPassword: (state, action: PayloadAction<string>) => {
       state.new_password = action.payload;
     },
@@ -87,6 +88,12 @@ export const resetPasswordSlice = createSlice({
     setNewPasswordExtraSecurityToken: () => {},
     // Action connected to postSetNewPasswordExternalMfaSaga. Will post stored phone_code, new_password to the /new-password-extra-security-external-mfa endpoint.
     setNewPasswordExtraSecurityExternalMfa: () => {},
+  },
+  extraReducers: (builder) => {
+    builder.addCase(performAuthentication.fulfilled, (state, action) => {
+      // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
+      state.webauthn_assertion = action.payload;
+    });
   },
 });
 

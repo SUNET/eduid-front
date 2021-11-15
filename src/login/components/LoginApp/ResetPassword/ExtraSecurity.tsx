@@ -7,13 +7,13 @@ import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes, { object } from "prop-types";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "./ExtraSecurityToken";
-import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 import Splash from "../../../../containers/Splash";
 import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
 import { Dispatch } from "redux";
 
 interface SecurityKeyButtonProps {
-  selected_option: string;
+  selected_option?: string;
   extraSecurityKey: Array<any>;
   translate(msg: string): string;
   ShowSecurityKey: React.MouseEventHandler<HTMLButtonElement>;
@@ -163,9 +163,18 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
   };
 
   const startTokenAssertion = () => {
-    const webauthn_challenge = extra_security.tokens.webauthn_options;
-    if (extra_security.tokens.webauthn_options) {
-      assertionFromAuthenticator(webauthn_challenge, dispatch);
+    const webauthn_challenge = useAppSelector(
+      (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
+    );
+    const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
+
+    if (webauthn_challenge === undefined) {
+      // HACK: skip func if no webauthn_challenge
+      return undefined;
+    } else {
+      if (webauthn_assertion === undefined) {
+        dispatch(performAuthentication(webauthn_challenge));
+      }
     }
   };
 
