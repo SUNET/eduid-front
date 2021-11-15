@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import ResetPasswordLayout from "./ResetPasswordLayout";
 import PropTypes from "prop-types";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
@@ -10,8 +10,20 @@ import ExtraSecurityToken from "./ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
 import Splash from "../../../../containers/Splash";
 import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
+import { Dispatch } from "redux";
+interface SecurityKeyButtonProps {
+  selected_option: string;
+  extraSecurityKey: Array<any>;
+  translate(msg: string): string;
+  ShowSecurityKey: React.MouseEventHandler<HTMLButtonElement>;
+}
 
-const SecurityKeyButton = ({ selected_option, extraSecurityKey, translate, ShowSecurityKey }) => {
+const SecurityKeyButton = ({
+  selected_option,
+  extraSecurityKey,
+  translate,
+  ShowSecurityKey,
+}: SecurityKeyButtonProps) => {
   return !selected_option ? (
     Object.values(extraSecurityKey).map((security) => {
       return (
@@ -25,8 +37,21 @@ const SecurityKeyButton = ({ selected_option, extraSecurityKey, translate, ShowS
   ) : null;
 };
 
-const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch }) => {
-  const sendConfirmCode = (phone) => {
+interface SecurityWithSMSButtonProps {
+  extraSecurityPhone: object;
+  translate(msg: string): string;
+  dispatch: Dispatch;
+  history: {
+    push(url: string): void;
+  };
+}
+
+const SecurityWithSMSButton = ({
+  extraSecurityPhone,
+  translate,
+  dispatch,
+}: SecurityWithSMSButtonProps): JSX.Element => {
+  const sendConfirmCode = (phone: Array<any>) => {
     dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
   };
 
@@ -48,19 +73,23 @@ const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch }) => {
   });
 };
 
-function ExtraSecurity(props) {
+interface ExtraSecurityProps {
+  translate(msg: string): string;
+}
+
+function ExtraSecurity(props: ExtraSecurityProps) {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const [extraSecurity, setExtraSecurity] = useState(null);
-  const selected_option = useSelector((state) => state.resetPassword.selected_option);
-  const extra_security = useSelector((state) => state.resetPassword.extra_security);
+  const dispatch = useAppDispatch();
+  const [extraSecurity, setExtraSecurity] = useState(null as any);
+  const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
+  const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const url = document.location.href;
   const urlCode = url.split("/").reverse()[0];
-  const emailCode = useSelector((state) => state.resetPassword.email_code);
-  const suggested_password = useSelector((state) => state.resetPassword.suggested_password);
+  const emailCode = useAppSelector((state) => state.resetPassword.email_code);
+  const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
   // compose external link
-  const frejaUrlDomain = useSelector((state) => state.config.eidas_url);
-  const idp = useSelector((state) => state.config.mfa_auth_idp);
+  const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
+  const idp = useAppSelector((state) => state.config.mfa_auth_idp);
   const mfaPage = window.location.href; // return to mfa page on completion
   // ensure url has one slash at the end to be functional in the link
   const frejaUrlDomainSlash =
