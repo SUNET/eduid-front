@@ -11,6 +11,7 @@ import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/a
 import Splash from "../../../../containers/Splash";
 import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
 import { Dispatch } from "redux";
+
 interface SecurityKeyButtonProps {
   selected_option: string | null;
   extraSecurityKey: Array<any>;
@@ -23,39 +24,56 @@ const SecurityKeyButton = ({
   extraSecurityKey,
   translate,
   ShowSecurityKey,
-}: SecurityKeyButtonProps): JSX.Element | JSX.Element[] | null => {
-  return !selected_option ? (
-    Object.values(extraSecurityKey).map((security) => {
-      return (
-        <EduIDButton className={"settings-button"} id="extra-security-key" key={security} onClick={ShowSecurityKey}>
-          {translate("login.mfa.primary-option.button")}
-        </EduIDButton>
-      );
-    })
-  ) : selected_option === "securityKey" ? (
-    <ExtraSecurityToken />
-  ) : null;
+}: SecurityKeyButtonProps) => {
+  return (
+    <>
+      {!selected_option ? (
+        <>
+          {Object.values(extraSecurityKey).map((security) => {
+            return (
+              <>
+                {
+                  <EduIDButton
+                    className={"settings-button"}
+                    id="extra-security-key"
+                    key={security}
+                    onClick={ShowSecurityKey}
+                  >
+                    {translate("login.mfa.primary-option.button")}
+                  </EduIDButton>
+                }
+              </>
+            );
+          })}
+        </>
+      ) : selected_option === "securityKey" ? (
+        <ExtraSecurityToken />
+      ) : null}
+      ;
+    </>
+  );
 };
 
+type ExtraSecurityPhoneInfo = Object[];
+
+// interface ExtraSecurityPhone extends Array<ExtraSecurityPhoneInfo> {}
+
 interface SecurityWithSMSButtonProps {
-  extraSecurityPhone: object;
-  translate(msg: string): string;
+  extraSecurityPhone: ExtraSecurityPhoneInfo;
+  translate(msg: string): any;
   dispatch: Dispatch;
   history: {
     push(url: string): void;
   };
+  emailCode: string | null;
 }
 
-const SecurityWithSMSButton = ({
-  extraSecurityPhone,
-  translate,
-  dispatch,
-}: SecurityWithSMSButtonProps): JSX.Element => {
-  const sendConfirmCode = (phone: Array<any>) => {
+const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch }: SecurityWithSMSButtonProps) => {
+  const sendConfirmCode = (phone: object) => {
     dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
   };
 
-  return extraSecurityPhone.map((phone) => {
+  return extraSecurityPhone.map((phone: any) => {
     return (
       <div key={phone.index}>
         <EduIDButton
@@ -77,7 +95,7 @@ interface ExtraSecurityProps {
   translate(msg: string): string;
 }
 
-function ExtraSecurity(props: ExtraSecurityProps) {
+function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
   const history = useHistory();
   const dispatch = useAppDispatch();
   const [extraSecurity, setExtraSecurity] = useState(null as any);
@@ -145,54 +163,59 @@ function ExtraSecurity(props: ExtraSecurityProps) {
   };
 
   return (
-    <ResetPasswordLayout
-      heading={props.translate("resetpw.extra-security_heading")}
-      description={props.translate("resetpw.extra-security_description")}
-      linkInfoHeading={props.translate("resetpw.without_extra_security_heading")}
-      linkInfoText={props.translate("resetpw.without_extra_security")}
-      linkText={props.translate("resetpw.continue_reset_password")}
-      emailCode={emailCode}
-    >
-      {!extraSecurity && <Splash />}
-      {extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0 ? (
-        <SecurityKeyButton
-          selected_option={selected_option}
-          ShowSecurityKey={ShowSecurityKey}
-          extraSecurityKey={Object.keys(extraSecurity.tokens)}
-          translate={props.translate}
-        />
-      ) : null}
-      {!selected_option && extraSecurity && extraSecurity.external_mfa && (
-        <div>
-          <EduIDButton
-            type="submit"
-            className="settings-button"
-            id="extra-security-freja"
-            onClick={() => {
-              window.location = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
-              dispatch(eduidRMAllNotify());
-            }}
-          >
-            {props.translate("eidas.freja_eid_ready")}
-          </EduIDButton>
-        </div>
-      )}
-      {!selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? (
-        <>
-          <SecurityWithSMSButton
-            extraSecurityPhone={extraSecurity.phone_numbers}
-            translate={props.translate}
-            dispatch={dispatch}
-            history={history}
-            emailCode={emailCode}
-          />
-          <p className="enter-phone-code">
-            {props.translate("resetpw.received-sms")}
-            <a onClick={() => toPhoneCodeForm()}>{props.translate("resetpw.enter-code")} </a>
-          </p>
-        </>
-      ) : null}
-    </ResetPasswordLayout>
+    <>
+      {
+        <ResetPasswordLayout
+          heading={props.translate("resetpw.extra-security_heading")}
+          description={props.translate("resetpw.extra-security_description")}
+          linkInfoHeading={props.translate("resetpw.without_extra_security_heading")}
+          linkInfoText={props.translate("resetpw.without_extra_security")}
+          linkText={props.translate("resetpw.continue_reset_password")}
+          emailCode={emailCode}
+        >
+          {!extraSecurity && <Splash />}
+          {extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0 ? (
+            <SecurityKeyButton
+              selected_option={selected_option}
+              ShowSecurityKey={ShowSecurityKey}
+              extraSecurityKey={Object.keys(extraSecurity.tokens)}
+              translate={props.translate}
+            />
+          ) : null}
+          {!selected_option && extraSecurity && extraSecurity.external_mfa && (
+            <div>
+              <EduIDButton
+                type="submit"
+                className="settings-button"
+                id="extra-security-freja"
+                onClick={() => {
+                  window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+                  dispatch(eduidRMAllNotify());
+                }}
+              >
+                {props.translate("eidas.freja_eid_ready")}
+              </EduIDButton>
+            </div>
+          )}
+          {!selected_option && extraSecurity && extraSecurity.phone_numbers.length > 0 ? (
+            <>
+              <SecurityWithSMSButton
+                extraSecurityPhone={extraSecurity.phone_numbers}
+                translate={props.translate}
+                dispatch={dispatch}
+                history={history}
+                emailCode={emailCode}
+              />
+              <p className="enter-phone-code">
+                {props.translate("resetpw.received-sms")}
+                <a onClick={() => toPhoneCodeForm()}>{props.translate("resetpw.enter-code")} </a>
+              </p>
+            </>
+          ) : null}
+        </ResetPasswordLayout>
+      }
+      ;
+    </>
   );
 }
 
