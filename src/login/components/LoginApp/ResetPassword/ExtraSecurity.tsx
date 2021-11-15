@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import ResetPasswordLayout from "./ResetPasswordLayout";
-import PropTypes from "prop-types";
+import PropTypes, { object } from "prop-types";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "./ExtraSecurityToken";
 import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
@@ -13,7 +13,7 @@ import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications
 import { Dispatch } from "redux";
 
 interface SecurityKeyButtonProps {
-  selected_option: string | null;
+  selected_option: string;
   extraSecurityKey: Array<any>;
   translate(msg: string): string;
   ShowSecurityKey: React.MouseEventHandler<HTMLButtonElement>;
@@ -54,16 +54,20 @@ const SecurityKeyButton = ({
   );
 };
 
-type ExtraSecurityPhoneInfo = Object[];
-
 interface SecurityWithSMSButtonProps {
-  extraSecurityPhone: ExtraSecurityPhoneInfo;
+  extraSecurityPhone: Array<PhoneInterface>;
   translate(msg: string): any;
   dispatch: Dispatch;
   history: {
     push(url: string): void;
   };
-  emailCode: string | null;
+  emailCode?: string;
+}
+
+interface PhoneInterface {
+  index: number;
+  number: string;
+  phone_code: string;
 }
 
 const SecurityWithSMSButton = ({
@@ -71,13 +75,13 @@ const SecurityWithSMSButton = ({
   translate,
   dispatch,
 }: SecurityWithSMSButtonProps): JSX.Element => {
-  const sendConfirmCode = (phone: object) => {
+  const sendConfirmCode = (phone: PhoneInterface) => {
     dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
   };
 
   return (
     <>
-      {extraSecurityPhone.map((phone: any) => {
+      {extraSecurityPhone.map((phone: PhoneInterface) => {
         return (
           <div key={phone.index}>
             {
@@ -122,8 +126,8 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
     frejaUrlDomain && frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain && frejaUrlDomain.concat("/");
 
   useEffect(() => {
-    dispatch(resetPasswordSlice.actions.selectExtraSecurity(null));
-    dispatch(resetPasswordSlice.actions.cancelWebauthnAssertion());
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity(""));
+    // dispatch(resetPasswordSlice.actions.cancelWebauthnAssertion());
     if (extra_security !== undefined) {
       if (Object.keys(extra_security).length > 0) {
         setExtraSecurity(extra_security);
