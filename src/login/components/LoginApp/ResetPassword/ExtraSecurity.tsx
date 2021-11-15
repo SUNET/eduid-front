@@ -56,8 +56,6 @@ const SecurityKeyButton = ({
 
 type ExtraSecurityPhoneInfo = Object[];
 
-// interface ExtraSecurityPhone extends Array<ExtraSecurityPhoneInfo> {}
-
 interface SecurityWithSMSButtonProps {
   extraSecurityPhone: ExtraSecurityPhoneInfo;
   translate(msg: string): any;
@@ -68,27 +66,37 @@ interface SecurityWithSMSButtonProps {
   emailCode: string | null;
 }
 
-const SecurityWithSMSButton = ({ extraSecurityPhone, translate, dispatch }: SecurityWithSMSButtonProps) => {
+const SecurityWithSMSButton = ({
+  extraSecurityPhone,
+  translate,
+  dispatch,
+}: SecurityWithSMSButtonProps): JSX.Element => {
   const sendConfirmCode = (phone: object) => {
     dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
   };
 
-  return extraSecurityPhone.map((phone: any) => {
-    return (
-      <div key={phone.index}>
-        <EduIDButton
-          className={"settings-button"}
-          id="extra-security-phone"
-          key={phone.index}
-          onClick={() => sendConfirmCode(phone)}
-        >
-          {translate("resetpw.extra-phone_send_sms")({
-            phone: phone.number.replace(/^.{10}/g, "**********"),
-          })}
-        </EduIDButton>
-      </div>
-    );
-  });
+  return (
+    <>
+      {extraSecurityPhone.map((phone: any) => {
+        return (
+          <div key={phone.index}>
+            {
+              <EduIDButton
+                className={"settings-button"}
+                id="extra-security-phone"
+                key={phone.index}
+                onClick={() => sendConfirmCode(phone)}
+              >
+                {translate("resetpw.extra-phone_send_sms")({
+                  phone: phone.number.replace(/^.{10}/g, "**********"),
+                })}
+              </EduIDButton>
+            }
+          </div>
+        );
+      })}
+    </>
+  );
 };
 
 interface ExtraSecurityProps {
