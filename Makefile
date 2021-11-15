@@ -9,11 +9,9 @@ node_modules: package-lock.json
 
 build-staging:
 	npm run build-staging
-	npm run manage:plugins:staging
 
 build-production:
 	npm run build-production
-	npm run manage:plugins:production
 
 build: node_modules build-staging build-production
 
