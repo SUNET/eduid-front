@@ -1,18 +1,39 @@
 import React, { Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import UsernamePw from "./UsernamePw";
 import TermOfUse from "./TermsOfUse";
 import MultiFactorAuth from "./MultiFactorAuth";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import PropTypes from "prop-types";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
+import loginSlice from "../../../redux/slices/loginSlice";
 
-const Login = (props) => {
-  let history = useHistory();
-  const next_page = useSelector((state) => state.login.next_page);
-  const ref = useSelector((state) => state.login.ref);
+interface LoginProps {
+  translate(msg: string): string;
+}
+
+// URL parameters passed to this component
+interface LoginParams {
+  ref?: string;
+}
+
+const Login = (props: LoginProps): JSX.Element => {
+  const history = useHistory();
+  const next_page = useAppSelector((state) => state.login.next_page);
+  const params = useParams() as LoginParams;
+  const dispatch = useAppDispatch();
+  let ref = useAppSelector((state) => state.login.ref);
+
+  if (ref === undefined && params.ref !== undefined) {
+    ref = params.ref;
+    dispatch(loginSlice.actions.addLoginRef(ref));
+  }
+
   useEffect(() => {
+    /* Changing URL is apparently what triggers browsers password managers.
+     * For the rest of the functions, I guess it serves some small troubleshooting purpose
+     * to be able to see particularly the ref in the URL of screenshots from users...
+     */
     if (next_page === "USERNAMEPASSWORD") {
       history.push(`/login/password/${ref}`);
     } else if (next_page === "TOU") {
@@ -23,6 +44,7 @@ const Login = (props) => {
       history.push(`/login/finished/${ref}`);
     }
   }, [next_page]);
+
   return (
     <Fragment>
       {next_page === "USERNAMEPASSWORD" ? (
@@ -38,9 +60,5 @@ const Login = (props) => {
   );
 };
 
-Login.propTypes = {
-  history: PropTypes.object,
-  location: PropTypes.shape({ pathname: PropTypes.string }),
-};
-
+// InjectIntl 'invents' the translate prop
 export default InjectIntl(Login);

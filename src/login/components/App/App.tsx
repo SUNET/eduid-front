@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Splash from "../Splash/Splash_container";
@@ -11,7 +11,11 @@ import Footer from "../Footer/Footer";
 import "../../styles/index.scss";
 
 export const history = createBrowserHistory();
-class App extends Component {
+
+class App extends React.Component {
+  // run-time type checking in development mode
+  static propTypes = {};
+
   render() {
     return (
       <>
@@ -30,7 +34,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {};
 
 export default App;

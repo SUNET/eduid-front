@@ -10,10 +10,11 @@ import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPassw
 import { postSetNewPasswordExtraSecurityPhone } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityPhoneSaga";
 import { postSetNewPasswordExtraSecurityToken } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityTokenSaga";
 import { postSetNewPasswordExternalMfa } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityExternalMfaSaga";
+import { postRefLoginSaga } from "../redux/sagas/login/postRefLoginSaga";
 
-export const getLoginRef = (state) => state.login.ref;
 function* allowLoginSagas() {
-  let ref = yield select(getLoginRef);
+  // Apparently enables all the sagas for /login when the ref is present in the state?
+  let ref = yield select((state) => state.login.ref);
   if (ref) {
     yield [...loginSagas];
   }
@@ -24,6 +25,8 @@ function* rootSaga() {
     takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, allowLoginSagas),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, requestLinkCode),
+    // call the /next endpoint as soon as loading configuration is complete
+    takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, postRefLoginSaga),
     takeLatest(resetPasswordSlice.actions.requestEmailLink, postEmailLink),
     takeLatest(resetPasswordSlice.actions.requestPhoneCode, requestPhoneCodeForNewPassword),
     // security phone request failed, trigger /verify-email to get users extra security
