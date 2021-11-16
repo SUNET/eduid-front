@@ -10,7 +10,6 @@ import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPassw
 import { postSetNewPasswordExtraSecurityPhone } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityPhoneSaga";
 import { postSetNewPasswordExtraSecurityToken } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityTokenSaga";
 import { postSetNewPasswordExternalMfa } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityExternalMfaSaga";
-import { performAuthentication } from "../app_utils/helperFunctions/navigatorCredential";
 
 export const getLoginRef = (state) => state.login.ref;
 function* allowLoginSagas() {
@@ -31,8 +30,7 @@ function* rootSaga() {
     takeLatest("POST_RESET_PASSWORD_EXTRA_SECURITY_PHONE_FAIL", requestLinkCode),
     takeLatest(resetPasswordSlice.actions.setNewPassword, postSetNewPassword),
     takeLatest(resetPasswordSlice.actions.setNewPasswordExtraSecurityPhone, postSetNewPasswordExtraSecurityPhone),
-    takeLatest(performAuthentication.fulfilled, postSetNewPasswordExtraSecurityToken),
-    // send a webauthn assertion to the backend
+    takeLatest(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken, postSetNewPasswordExtraSecurityToken),
     takeLatest(resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa, postSetNewPasswordExternalMfa),
     takeLatest(resetPasswordSlice.actions.useLinkCode, requestLinkCode),
   ];
