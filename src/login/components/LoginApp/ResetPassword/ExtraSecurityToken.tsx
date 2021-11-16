@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { useHistory } from "react-router-dom";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
-// import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+
 interface ExtraSecurityToken {
   translate(msg: string): string;
   webauthn_challenge: string;
