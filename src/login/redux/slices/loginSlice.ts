@@ -6,6 +6,7 @@ import { NextResponse, SAMLParameters } from "../sagas/login/postRefLoginSaga";
 // Define a type for the slice state
 interface LoginState {
   ref?: string;
+  start_url?: string;
   next_page?: string;
   post_to?: string;
   mfa: {
@@ -29,9 +30,10 @@ export const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    addLoginRef: (state, action: PayloadAction<string>) => {
+    addLoginRef: (state, action: PayloadAction<{ ref: string; start_url: string }>) => {
       // Add the login reference (currently an UUID extracted from the URL), to the store.
-      state.ref = action.payload;
+      state.ref = action.payload.ref;
+      state.start_url = action.payload.start_url;
     },
     postIdpNextSuccess: (state, action: PayloadAction<NextResponse>) => {
       // Process a successful response from the /next endpoint.

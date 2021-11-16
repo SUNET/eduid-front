@@ -11,9 +11,10 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
   // compose external link
   const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
   const idp = useAppSelector((state) => state.config.mfa_auth_idp);
-  const mfaPage = window.location.href; // return to mfa page on completion
+  const startUrl = useAppSelector((state) => state.config.start_url);
   // ensure url has one slash at the end to be functional in the link
   const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain.concat("/");
+
   return (
     <div className="secondary" tabIndex={0}>
       <div className="option">
@@ -21,7 +22,7 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
         <ButtonSecondary
           type="submit"
           onClick={() => {
-            window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+            window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${startUrl}`;
           }}
           id="mfa-freja"
         >

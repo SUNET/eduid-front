@@ -25,8 +25,8 @@ const Login = (props: LoginProps): JSX.Element => {
   let ref = useAppSelector((state) => state.login.ref);
 
   if (ref === undefined && params.ref !== undefined) {
-    ref = params.ref;
-    dispatch(loginSlice.actions.addLoginRef(ref));
+    ref = params.ref; // need ref below too
+    dispatch(loginSlice.actions.addLoginRef({ ref: ref, start_url: window.location.href }));
   }
 
   useEffect(() => {
