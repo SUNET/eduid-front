@@ -6,7 +6,11 @@ import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import loginSlice from "../../../redux/slices/loginSlice";
 
-let MultiFactorAuth = (props) => {
+interface MultiFactorAuthProps {
+  translate(msg: string): string;
+}
+
+const MultiFactorAuth = (props: MultiFactorAuthProps): JSX.Element => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loginSlice.actions.postRefForWebauthnChallenge());
@@ -15,7 +19,7 @@ let MultiFactorAuth = (props) => {
   return (
     <div className="mfa">
       <h2 className="heading">{translate("login.mfa.h2-heading")}</h2>
-      <p tabIndex="0">{translate("login.mfa.paragraph")}</p>
+      <p tabIndex={0}>{translate("login.mfa.paragraph")}</p>
       <div className="options">
         <SecurityKey {...props} />
         <FrejaeID {...props} />
@@ -24,6 +28,7 @@ let MultiFactorAuth = (props) => {
   );
 };
 
+// run-time type checking in development mode
 MultiFactorAuth.propTypes = {
   translate: PropTypes.func,
 };
