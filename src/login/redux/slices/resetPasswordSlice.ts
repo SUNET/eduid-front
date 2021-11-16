@@ -1,10 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // CreateSlice function will return an object with actions and reducer
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
-// Define a type for the slice state
 
-export type ExtraSecurity = { external_mfa: boolean; phone_numbers?: []; tokens: { webauthn_options: string } };
-export type Phone = { index?: string; number?: string; phone_code?: string };
+// Define a type for the slice state
+export type ExtraSecurityType = {
+  external_mfa: boolean;
+  phone_numbers: [];
+  tokens: { webauthn_options: string };
+};
+export type Phone = { index: string; number: string; phone_code: string };
 
 interface ResetPasswordState {
   email_address?: string;
@@ -14,7 +18,7 @@ interface ResetPasswordState {
   selected_option?: string;
   new_password?: string;
   suggested_password?: string;
-  extra_security?: ExtraSecurity;
+  extra_security?: ExtraSecurityType;
 }
 
 // Define the initial state using that type
@@ -53,12 +57,6 @@ export const resetPasswordSlice = createSlice({
       state.phone.index = action.payload.index;
       state.phone.number = action.payload.number;
     },
-    // getWebauthnAssertion: (state, action) => {
-    //   state.webauthn_assertion = action.payload;
-    // },
-    // cancelWebauthnAssertion: (state) => {
-    //   state.webauthn_assertion = undefined;
-    // },
     storeNewPassword: (state, action: PayloadAction<string>) => {
       state.new_password = action.payload;
     },
@@ -67,7 +65,7 @@ export const resetPasswordSlice = createSlice({
       action: PayloadAction<{
         email_address: string;
         email_code: string;
-        extra_security: ExtraSecurity;
+        extra_security: ExtraSecurityType;
         suggested_password: string;
       }>
     ) => {
