@@ -49,7 +49,6 @@ const SecurityKeyButton = ({
       ) : selected_option === "securityKey" ? (
         <ExtraSecurityToken />
       ) : null}
-      ;
     </>
   );
 };
@@ -234,7 +233,6 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
           ) : null}
         </ResetPasswordLayout>
       }
-      ;
     </>
   );
 }
