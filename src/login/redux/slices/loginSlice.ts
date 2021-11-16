@@ -21,18 +21,8 @@ interface LoginState {
 
 // Define the initial state using that type
 const initialState: LoginState = {
-  ref: undefined,
-  next_page: undefined,
-  post_to: undefined,
-  mfa: {
-    webauthn_challenge: undefined,
-    webauthn_assertion: undefined,
-  },
-  saml_parameters: undefined,
-  tou: {
-    available_versions: undefined,
-    version: undefined,
-  },
+  mfa: {},
+  tou: {},
 };
 
 export const loginSlice = createSlice({
