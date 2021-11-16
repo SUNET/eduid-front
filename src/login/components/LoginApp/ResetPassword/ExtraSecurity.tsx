@@ -56,7 +56,9 @@ const SecurityKeyButton = ({
 
 interface SecurityWithSMSButtonProps {
   extraSecurityPhone: Array<PhoneInterface>;
-  translate(msg: string): string;
+  //TODO: add specific type
+  /* eslint-disable @typescript-eslint/no-explicit-any*/
+  translate(msg: string): any;
   dispatch: Dispatch;
   history: {
     push(url: string): void;
