@@ -5,17 +5,12 @@ import postRequest from "../postDataRequest";
 import { history } from "../../../components/App/App";
 import { LoginRootState } from "../../../app_init/initStore";
 import { PayloadAction } from "@reduxjs/toolkit";
-
-export type extraSecurityParameters = {
-  external_mfa: boolean;
-  phone_numbers?: [];
-  tokens: { webauthn_options: string };
-};
+import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 
 export type VerifyEmailResponse = {
   email_address: string;
   email_code: string;
-  extra_security: extraSecurityParameters;
+  extra_security: ExtraSecurityType;
   suggested_password: string;
 };
 
