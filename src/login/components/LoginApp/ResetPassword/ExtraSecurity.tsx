@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import ResetPasswordLayout from "./ResetPasswordLayout";
-import PropTypes, { object } from "prop-types";
+import PropTypes from "prop-types";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "./ExtraSecurityToken";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
@@ -14,7 +14,7 @@ import { Dispatch } from "redux";
 
 interface SecurityKeyButtonProps {
   selected_option?: string;
-  extraSecurityKey: Array<any>;
+  extraSecurityKey: Array<string>;
   translate(msg: string): string;
   ShowSecurityKey: React.MouseEventHandler<HTMLButtonElement>;
 }
@@ -55,7 +55,7 @@ const SecurityKeyButton = ({
 
 interface SecurityWithSMSButtonProps {
   extraSecurityPhone: Array<PhoneInterface>;
-  translate(msg: string): any;
+  translate(msg: string): string;
   dispatch: Dispatch;
   history: {
     push(url: string): void;
@@ -149,8 +149,8 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
       if (message.includes("completed")) {
         dispatch(resetPasswordSlice.actions.selectExtraSecurity("freja"));
         history.push(`/reset-password/set-new-password/${emailCode[0]}`);
-      } else if (message.includes("%3AERROR%3A")) {
-        const error = message.split("%3AERROR%3A")[1];
+      } else if (message.includes("%3A" + "ERROR%3A")) {
+        const error = message.split("%3A" + "ERROR%3A")[1];
         dispatch(eduidNotify(error, "errors"));
         history.push(`/reset-password/extra-security/${emailCode[0]}`);
         dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode[0]));
