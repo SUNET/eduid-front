@@ -11,6 +11,7 @@ import { performAuthentication } from "../../../app_utils/helperFunctions/naviga
 import Splash from "../../../../containers/Splash";
 import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
 import { Dispatch } from "redux";
+import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 
 interface SecurityKeyButtonProps {
   selected_option?: string;
@@ -109,7 +110,7 @@ interface ExtraSecurityProps {
 function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
   const history = useHistory();
   const dispatch = useAppDispatch();
-  const [extraSecurity, setExtraSecurity] = useState(null as any);
+  const [extraSecurity, setExtraSecurity] = useState<ExtraSecurityType | null>(null);
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const url = document.location.href;
