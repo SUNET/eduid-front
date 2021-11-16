@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useHistory } from "react-router-dom";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -31,7 +31,7 @@ const SecurityKeyButton = ({
         <>
           {Object.values(extraSecurityKey).map((security) => {
             return (
-              <>
+              <Fragment key={security}>
                 {
                   <EduIDButton
                     className={"settings-button"}
@@ -42,7 +42,7 @@ const SecurityKeyButton = ({
                     {translate("login.mfa.primary-option.button")}
                   </EduIDButton>
                 }
-              </>
+              </Fragment>
             );
           })}
         </>
