@@ -10,7 +10,7 @@ import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPassw
 import { postSetNewPasswordExtraSecurityPhone } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityPhoneSaga";
 import { postSetNewPasswordExtraSecurityToken } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityTokenSaga";
 import { postSetNewPasswordExternalMfa } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityExternalMfaSaga";
-import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
+import { performAuthentication } from "../app_utils/helperFunctions/navigatorCredential";
 
 export const getLoginRef = (state) => state.login.ref;
 function* allowLoginSagas() {
