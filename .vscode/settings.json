@@ -12,7 +12,9 @@
     "reduxjs",
     "urldecode",
     "urlencode",
-    "webauthn"
+    "webauthn",
+    "resetpw",
+    "eidas"
   ],
   "cSpell.language": "en,en-US,en-GB"
 }
