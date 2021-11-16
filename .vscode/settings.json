@@ -14,7 +14,8 @@
     "urlencode",
     "webauthn",
     "resetpw",
-    "eidas"
+    "eidas",
+    "tapit"
   ],
   "cSpell.language": "en,en-US,en-GB"
 }
