@@ -94,7 +94,7 @@ const SecurityWithSMSButton = ({
                 onClick={() => sendConfirmCode(phone)}
               >
                 {translate("resetpw.extra-phone_send_sms")({
-                  phone: phone.number.replace(/^.{10}/g, "**********"),
+                  phone: phone.number.replaceAll("X", "*"),
                 })}
               </EduIDButton>
             }
