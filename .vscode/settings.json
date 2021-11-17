@@ -16,6 +16,9 @@
     "reduxjs",
     "urldecode",
     "urlencode",
+    "resetpw",
+    "eidas",
+    "tapit"
     "USERNAMEPASSWORD",
     "webauthn"
   ],

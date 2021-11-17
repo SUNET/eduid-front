@@ -1,22 +1,33 @@
 import React, { useState, useEffect } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { useHistory } from "react-router-dom";
-import { assertionFromAuthenticator } from "../../../app_utils/helperFunctions/authenticatorAssertion";
+import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 
-const ExtraSecurityToken = (props) => {
-  const dispatch = useDispatch();
+interface ExtraSecurityTokenProps {
+  translate(msg: string): string;
+  webauthn_challenge: string;
+}
+
+const ExtraSecurityToken = (props: ExtraSecurityTokenProps): JSX.Element => {
+  const dispatch = useAppDispatch();
   const history = useHistory();
-  const [assertion, setAssertion] = useState(null);
-  const webauthn_challenge = useSelector(
+  const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
+  const emailCode = useAppSelector((state) => state.resetPassword.email_code);
+  const [assertion, setAssertion] = useState(webauthn_assertion);
+  const webauthn_challenge = useAppSelector(
     (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
   );
-  const webauthn_assertion = useSelector((state) => state.resetPassword.webauthn_assertion);
-  const emailCode = useSelector((state) => state.resetPassword.email_code);
 
   const retryTokenAssertion = () => {
-    assertionFromAuthenticator(webauthn_challenge, dispatch);
+    if (webauthn_challenge === undefined) {
+      return undefined;
+    } else {
+      if (webauthn_assertion === undefined) {
+        dispatch(performAuthentication(webauthn_challenge));
+      }
+    }
   };
 
   useEffect(() => {
