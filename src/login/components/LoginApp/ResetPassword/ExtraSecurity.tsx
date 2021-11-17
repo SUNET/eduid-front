@@ -25,7 +25,7 @@ const SecurityKeyButton = ({
   extraSecurityKey,
   translate,
   ShowSecurityKey,
-}: SecurityKeyButtonProps) => {
+}: SecurityKeyButtonProps): JSX.Element => {
   return (
     <>
       {!selected_option ? (
