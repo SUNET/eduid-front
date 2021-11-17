@@ -29,10 +29,7 @@ describe(`API call to "new-password-extra-security-token/" behaves as expected o
       email_code: fakeState.resetPassword.email_code,
       password: fakeState.resetPassword.new_password,
       csrf_token: fakeState.config.csrf_token,
-      authenticatorData: fakeState.resetPassword.webauthn_assertion.authenticatorData,
-      clientDataJSON: fakeState.resetPassword.webauthn_assertion.clientDataJSON,
-      signature: fakeState.resetPassword.webauthn_assertion.signature,
-      credentialId: fakeState.resetPassword.webauthn_assertion.credentialId,
+      ...fakeState.resetPassword.webauthn_assertion,
     };
     const url = fakeState.config.reset_password_url + "new-password-extra-security-token/";
     const apiCall = generator.next(fakeState).value;

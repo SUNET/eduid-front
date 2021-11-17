@@ -10,11 +10,8 @@ export function* postSetNewPasswordExtraSecurityToken() {
   const data = {
     email_code: state.resetPassword.email_code,
     password: state.resetPassword.new_password,
-    authenticatorData: state.resetPassword.webauthn_assertion.authenticatorData,
-    clientDataJSON: state.resetPassword.webauthn_assertion.clientDataJSON,
-    signature: state.resetPassword.webauthn_assertion.signature,
-    credentialId: state.resetPassword.webauthn_assertion.credentialId,
     csrf_token: state.config.csrf_token,
+    ...state.resetPassword.webauthn_assertion,
   };
   try {
     const response = yield call(postRequest, url, data);
