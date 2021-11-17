@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import { useSelector, useDispatch, connect } from "react-redux";
+import { connect } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
@@ -49,11 +50,11 @@ EmailForm = connect(() => ({
   destroyOnUnmount: false,
 }))(EmailForm);
 function ResetPasswordMain(props): JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const url = document.location.href;
   const loginRef = url.split("/email").reverse()[0];
-  const request_in_progress = useSelector((state) => state.app.request_in_progress);
-  const errors = useSelector((state) => state.notifications.errors);
+  const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
+  const errors = useAppSelector((state) => state.notifications.errors);
 
   useEffect(() => {
     clearCountdown();
@@ -69,7 +70,7 @@ function ResetPasswordMain(props): JSX.Element {
     }
   }, [errors]);
 
-  const sendLink = (e) => {
+  const sendLink = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const email = document.querySelector("input[name='email']").value;
     if (email) {
