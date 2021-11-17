@@ -5,12 +5,12 @@ import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { useHistory } from "react-router-dom";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 
-interface ExtraSecurityToken {
+interface ExtraSecurityTokenProps {
   translate(msg: string): string;
   webauthn_challenge: string;
 }
 
-const ExtraSecurityToken = (props: ExtraSecurityToken): JSX.Element => {
+const ExtraSecurityToken = (props: ExtraSecurityTokenProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
