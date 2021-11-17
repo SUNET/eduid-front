@@ -50,8 +50,7 @@
     "redux-form": "^8.3.7",
     "redux-logger": "^4.0.0",
     "redux-saga": "^0.16.2",
-    "spin.js": "^4.1.1",
-    "tslib": "^2.3.1"
+    "spin.js": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
