@@ -14,7 +14,18 @@ import Splash from "../../../../containers/Splash";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
-let EmailForm = (props): JSX.Element => (
+export interface EmailProps {
+  email: string;
+}
+interface EmailFormProps {
+  sendLink: React.FormEvent<HTMLFormElement>;
+  translate(msg: string): string;
+  invalid: boolean;
+  request_in_progress: boolean;
+  validate: any;
+}
+
+let EmailForm = (props: EmailFormProps): JSX.Element => (
   <Form id="reset-password-form" role="form" onSubmit={props.sendLink}>
     <Field
       type="email"
@@ -39,7 +50,7 @@ let EmailForm = (props): JSX.Element => (
   </Form>
 );
 
-EmailForm = reduxForm({
+EmailForm = reduxForm<EmailProps>({
   form: "reset-pass-email-form",
   validate,
   touchOnChange: true,
@@ -49,7 +60,13 @@ EmailForm = connect(() => ({
   enableReinitialize: true,
   destroyOnUnmount: false,
 }))(EmailForm);
-function ResetPasswordMain(props): JSX.Element {
+
+interface ResetPasswordMainProps {
+  messages?: { msg: unknown[] };
+  errors: unknown[];
+  translate(msg: string): string;
+}
+function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
   const dispatch = useAppDispatch();
   const url = document.location.href;
   const loginRef = url.split("/email").reverse()[0];
@@ -72,7 +89,7 @@ function ResetPasswordMain(props): JSX.Element {
 
   const sendLink = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    const email = document.querySelector("input[name='email']").value;
+    const email = (document.querySelector("input[name='email']") as HTMLInputElement).value;
     if (email) {
       dispatch(resetPasswordSlice.actions.requestEmailLink(email));
       setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
