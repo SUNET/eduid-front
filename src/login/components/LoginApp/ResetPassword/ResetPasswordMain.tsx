@@ -13,7 +13,7 @@ import Splash from "../../../../containers/Splash";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
-let EmailForm = (props) => (
+let EmailForm = (props): JSX.Element => (
   <Form id="reset-password-form" role="form" onSubmit={props.sendLink}>
     <Field
       type="email"
@@ -48,7 +48,7 @@ EmailForm = connect(() => ({
   enableReinitialize: true,
   destroyOnUnmount: false,
 }))(EmailForm);
-function ResetPasswordMain(props) {
+function ResetPasswordMain(props): JSX.Element {
   const dispatch = useDispatch();
   const url = document.location.href;
   const loginRef = url.split("/email").reverse()[0];
