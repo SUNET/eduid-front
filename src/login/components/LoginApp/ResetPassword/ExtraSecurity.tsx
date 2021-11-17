@@ -126,7 +126,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
     (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
   );
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
-  const mfaPage = window.location.href; // return to mfa page on completion
+  const currentPage = window.location.href; // return to current page on completion
   // ensure url has one slash at the end to be functional in the link
   const frejaUrlDomainSlash =
     frejaUrlDomain && frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain && frejaUrlDomain.concat("/");
@@ -211,7 +211,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
                 className="settings-button"
                 id="extra-security-freja"
                 onClick={() => {
-                  window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${mfaPage}`;
+                  window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${currentPage}`;
                   dispatch(eduidRMAllNotify());
                 }}
               >
