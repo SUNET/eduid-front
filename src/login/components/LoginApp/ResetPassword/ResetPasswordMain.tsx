@@ -28,7 +28,7 @@ interface EmailFormProps extends WrappedFieldProps {
 }
 
 let EmailForm = (props: EmailFormProps): JSX.Element => {
-  const sendLink = (e: React.FormEvent<HTMLFormElement>) => {
+  const requestEmailLink = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const email = (document.querySelector("input[name='email']") as HTMLInputElement).value;
     if (email) {
@@ -37,7 +37,7 @@ let EmailForm = (props: EmailFormProps): JSX.Element => {
     }
   };
   return (
-    <Form id="reset-password-form" role="form" onSubmit={sendLink}>
+    <Form id="reset-password-form" role="form" onSubmit={requestEmailLink}>
       <Field
         type="email"
         name="email"
