@@ -28,7 +28,7 @@ interface EmailFormProps extends WrappedFieldProps {
 }
 
 let EmailForm = (props: EmailFormProps): JSX.Element => {
-  const sendLink = (e: React.MouseEvent<HTMLElement>) => {
+  const sendLink = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const email = (document.querySelector("input[name='email']") as HTMLInputElement).value;
     if (email) {
@@ -54,7 +54,7 @@ let EmailForm = (props: EmailFormProps): JSX.Element => {
         className="settings-button"
         id="reset-password-button"
         disabled={props.invalid || props.request_in_progress}
-        onClick={sendLink}
+        // onClick={sendLink}
       >
         {props.translate("resetpw.send-link")}
       </EduIDButton>
@@ -78,7 +78,6 @@ type ErrorType = {
 };
 
 interface ResetPasswordMainProps {
-  errors: unknown[];
   translate(msg: string): string;
   sendLink: (event: React.MouseEventHandler<HTMLFormElement>) => string;
 }
