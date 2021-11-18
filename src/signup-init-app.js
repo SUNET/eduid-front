@@ -15,7 +15,7 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./signup-root-saga";
 import { createLogger } from "redux-logger";
 import { Provider } from "react-intl-redux";
-import { updateIntl } from "react-intl-redux";
+import { updateIntl } from "./reducers/Internationalisation";
 import { createStore, applyMiddleware, compose } from "redux";
 
 import eduIDApp from "./signup-store";

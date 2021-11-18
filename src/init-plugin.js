@@ -11,7 +11,7 @@ import ReactDOM from "react-dom";
 
 import createSagaMiddleware from "redux-saga";
 import { Provider } from "react-intl-redux";
-import { updateIntl } from "react-intl-redux";
+import { updateIntl } from "./reducers/Internationalisation";
 import { createStore, applyMiddleware, compose } from "redux";
 
 import notifyAndDispatch from "./notify-middleware";

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { updateIntl } from "react-intl-redux";
+import { updateIntl } from "../reducers/Internationalisation";
 import Cookies from "js-cookie";
 
 import Footer from "components/Footer";

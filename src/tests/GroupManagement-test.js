@@ -8,18 +8,6 @@ import { MemoryRouter } from "react-router-dom";
 import { addLocaleData } from "react-intl";
 addLocaleData("react-intl/locale-data/en");
 
-/* uncomment below to run test in specific file */
-// import { configure } from "enzyme";
-// import Adapter from "enzyme-adapter-react-16";
-// import jsdom from "jsdom";
-// configure({ adapter: new Adapter() });
-// const { JSDOM } = jsdom;
-// const { document } = new JSDOM("<!doctype html><html><body></body></html>", {
-//   url: "http://localhost/",
-// }).window;
-// global.document = document;
-// global.window = document.defaultView;
-
 import GroupManagement from "../login/components/GroupManagement/GroupManagement";
 import GroupsParent from "../login/components/GroupManagement/Groups/GroupsParent";
 import CreateGroup from "../login/components/GroupManagement/Groups/CreateGroup";

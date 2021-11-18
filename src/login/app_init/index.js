@@ -16,7 +16,6 @@ import injectTranslation from "../app_utils/injectTranslation";
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
 import sv from "react-intl/locale-data/sv";
-// import { updateIntl } from "react-intl-redux";
 
 // utils to check support or compatibility
 import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";

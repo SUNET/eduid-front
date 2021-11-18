@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { intlReducer } from "react-intl-redux";
+import { intlReducer } from "./reducers/Internationalisation";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import personalDataReducer from "reducers/PersonalData";

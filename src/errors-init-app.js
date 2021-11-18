@@ -5,7 +5,7 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./errors-root-saga";
 import { createLogger } from "redux-logger";
 import { Provider } from "react-intl-redux";
-import { updateIntl } from "react-intl-redux";
+import { updateIntl } from "./reducers/Internationalisation";
 import { createStore, applyMiddleware, compose } from "redux";
 import eduIDApp from "./errors-store";
 import notifyAndDispatch from "./notify-middleware";

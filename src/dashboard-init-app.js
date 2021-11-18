@@ -15,60 +15,24 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./dashboard-root-saga";
 import { createLogger } from "redux-logger";
 import { Provider } from "react-intl-redux";
-import { updateIntl } from "react-intl-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import eduIDApp from "./dashboard-store";
 import notifyAndDispatch from "./notify-middleware";
 import * as configActions from "actions/DashboardConfig";
 import { eduidNotify } from "actions/Notifications";
+import { updateIntl } from "./reducers/Internationalisation";
 
 import { history } from "components/DashboardMain";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-/* to load persisted state from local storage */
-
-// const loadPersistedState = () => {
-//   try {
-//     const serializedState = localStorage.getItem("eduid-state");
-//     if (serializedState === null) {
-//       return undefined;
-//     }
-//     return {
-//       ...JSON.parse(serializedState),
-//       notifications: {
-//         errors: [],
-//         messages: []
-//       }
-//     };
-//   } catch (err) {
-//     return undefined;
-//   }
-// };
-
-// const saveState = state => {
-//   try {
-//     const serialized = JSON.stringify(state);
-//     localStorage.setItem("eduid-state", serialized);
-//   } catch (err) {
-//     console.log("Cannot save the state: ", err);
-//   }
-// };
-
-/* Store */
-
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   eduIDApp,
-  //    loadPersistedState(),
   composeEnhancers(applyMiddleware(sagaMiddleware, routerMiddleware(history), notifyAndDispatch, createLogger()))
 );
-
-//store.subscribe(() => {
-//  saveState(store.getState());
-//});
 
 sagaMiddleware.run(rootSaga);
 

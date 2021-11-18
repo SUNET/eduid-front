@@ -8,17 +8,6 @@ const messages = require("../login/translation/messageIndex");
 const mock = require("jest-mock");
 addLocaleData("react-intl/locale-data/en");
 
-// describe("NameDisplay component", () => {
-//   it("Does not render 'false' or 'null'", () => {
-//     const wrapper = shallow(
-//       <IntlProvider locale="en">
-//         <AccountIdContainer />
-//       </IntlProvider>
-//     );
-//     expect(wrapper.isEmptyRender()).toEqual(false);
-//   });
-// });
-
 describe("AccountId component renders", () => {
   const props = {
     data: {
@@ -71,27 +60,7 @@ describe("AccountId component renders", () => {
   };
 
   function setupComponent() {
-    // const props = {
-    // data: {
-    //   eppn: "eppn-dummy"{...props}
-    // }
-    // };
-
-    // history.push({
-    //   pathname: "/verify-identity"
-    // });
-    // const state = { ...fakeState };
-    // state.personal_data.data.given_name = "";
-    // state.personal_data.data.surname = "";
-    const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
-        {/* <Router history={history}> */}
-        <AccountIdContainer />
-        {/* </Router> */}
-      </Provider>
-    );
     return {
-      // props,
       wrapper,
     };
   }

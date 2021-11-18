@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { intlReducer } from "react-intl-redux";
 import { routerReducer } from "react-router-redux";
+import { intlReducer } from "./reducers/Internationalisation";
 import errorsReducer from "./login/redux/reducers/errorsMainReducer";
-import notificationsReducer from "reducers/Notifications";
+import notificationsReducer from "./reducers/Notifications";
 
 const eduIDApp = combineReducers({
   router: routerReducer,
