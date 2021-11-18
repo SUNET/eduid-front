@@ -3,7 +3,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { connect } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, InjectedFormProps } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -17,7 +17,7 @@ export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 export interface EmailProps {
   email: string;
 }
-interface EmailFormProps {
+interface EmailFormProps extends InjectedFormProps {
   sendLink: React.FormEvent<HTMLFormElement>;
   translate(msg: string): string;
   invalid: boolean;
