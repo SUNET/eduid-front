@@ -3,7 +3,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { connect } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { Field, reduxForm, WrappedFieldProps } from "redux-form";
+import { Field, reduxForm, InjectedFormProps } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -11,33 +11,24 @@ import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
 import Splash from "../../../../containers/Splash";
-import { Dispatch } from "redux";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
-export interface EmailProps {
-  email: string;
+interface EmailFormData {
+  email?: string;
 }
-interface EmailFormProps extends WrappedFieldProps {
-  sendLink: (event: React.FormEvent<HTMLFormElement>) => void;
-  translate(msg: string): any;
-  invalid: boolean;
+interface EmailFormProps {
+  requestEmailLink: (event: React.FormEvent<HTMLFormElement>) => void;
+  translate(msg: string): string;
   request_in_progress: boolean;
-  validate: string;
-  dispatch: Dispatch;
+  invalid: boolean;
 }
 
-let EmailForm = (props: EmailFormProps): JSX.Element => {
-  const requestEmailLink = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const email = (document.querySelector("input[name='email']") as HTMLInputElement).value;
-    if (email) {
-      props.dispatch(resetPasswordSlice.actions.requestEmailLink(email));
-      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
-    }
-  };
+const EmailForm: React.FC<EmailFormProps & InjectedFormProps<EmailFormData, EmailFormProps>> = (
+  props: EmailFormProps
+): JSX.Element => {
   return (
-    <Form id="reset-password-form" role="form" onSubmit={requestEmailLink}>
+    <Form id="reset-password-form" role="form" onSubmit={props.requestEmailLink}>
       <Field
         type="email"
         name="email"
@@ -45,7 +36,6 @@ let EmailForm = (props: EmailFormProps): JSX.Element => {
         componentClass="input"
         id="email-input"
         component={CustomInput}
-        translate={props.translate}
         placeholder="name@example.com"
         required={true}
         helpBlock={props.translate("emails.input_help_text")}
@@ -62,16 +52,18 @@ let EmailForm = (props: EmailFormProps): JSX.Element => {
   );
 };
 
-EmailForm = reduxForm<EmailProps>({
+const AllEmailForm = reduxForm<EmailFormData, EmailFormProps>({
   form: "reset-pass-email-form",
   validate,
   touchOnChange: true,
-})(EmailForm);
-
-EmailForm = connect(() => ({
   enableReinitialize: true,
   destroyOnUnmount: false,
-}))(EmailForm);
+})(EmailForm);
+
+// EmailForm = connect(() => ({
+//   enableReinitialize: true,
+//   destroyOnUnmount: false,
+// }))(AllEmailForm);
 
 type ErrorType = {
   msg: unknown[];
@@ -79,9 +71,11 @@ type ErrorType = {
 
 interface ResetPasswordMainProps {
   translate(msg: string): string;
-  sendLink: (event: React.MouseEventHandler<HTMLFormElement>) => string;
+  request_in_progress: boolean;
 }
-function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
+function ResetPasswordMain(
+  props: ResetPasswordMainProps & InjectedFormProps<EmailFormData, EmailFormProps>
+): JSX.Element {
   const dispatch = useAppDispatch();
   const url = document.location.href;
   const loginRef = url.split("/email").reverse()[0];
@@ -102,11 +96,20 @@ function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
     }
   }, [errors]);
 
+  const requestEmailLink = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const email = (document.querySelector("input[name='email']") as HTMLInputElement).value;
+    if (email) {
+      dispatch(resetPasswordSlice.actions.requestEmailLink(email));
+      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
+    }
+  };
+
   return (
     <>
       {errors && typeof errors[0] && (errors[0] as ErrorType).msg.includes("phone-code") && <Splash />}
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
-      <EmailForm dispatch={dispatch} {...props} request_in_progress={request_in_progress} />
+      <EmailForm requestEmailLink={requestEmailLink} {...props} request_in_progress={request_in_progress} />
       <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
         <a id="return-login" href={`/login/password/${loginRef}`}>
           {props.translate("resetpw.return-login")}
@@ -122,4 +125,4 @@ ResetPasswordMain.propTypes = {
   invalid: PropTypes.bool,
 };
 
-export default InjectIntl(ResetPasswordMain);
+export default InjectIntl(connect(ResetPasswordMain, AllEmailForm));
