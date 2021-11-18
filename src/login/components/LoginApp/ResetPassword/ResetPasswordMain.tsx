@@ -60,6 +60,8 @@ const AllEmailForm = reduxForm<EmailFormData, EmailFormProps>({
   destroyOnUnmount: false,
 })(EmailForm);
 
+connect(() => ({}))(AllEmailForm);
+
 // EmailForm = connect(() => ({
 //   enableReinitialize: true,
 //   destroyOnUnmount: false,
@@ -124,5 +126,4 @@ ResetPasswordMain.propTypes = {
   sendLink: PropTypes.func,
   invalid: PropTypes.bool,
 };
-
-export default InjectIntl(connect(ResetPasswordMain, AllEmailForm));
+export default InjectIntl(ResetPasswordMain);
