@@ -3,7 +3,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { connect } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { Field, reduxForm, InjectedFormProps } from "redux-form";
+import { Field, reduxForm, WrappedFieldProps } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -11,44 +11,56 @@ import { validate } from "../../../app_utils/validation/validateEmail";
 import PropTypes from "prop-types";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
 import Splash from "../../../../containers/Splash";
+import { Dispatch } from "redux";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
 export interface EmailProps {
   email: string;
 }
-interface EmailFormProps extends InjectedFormProps {
-  sendLink: React.FormEvent<HTMLFormElement>;
-  translate(msg: string): string;
+interface EmailFormProps extends WrappedFieldProps {
+  sendLink: (event: React.FormEvent<HTMLFormElement>) => void;
+  translate(msg: string): any;
   invalid: boolean;
   request_in_progress: boolean;
-  validate: any;
+  validate: string;
+  dispatch: Dispatch;
 }
 
-let EmailForm = (props: EmailFormProps): JSX.Element => (
-  <Form id="reset-password-form" role="form" onSubmit={props.sendLink}>
-    <Field
-      type="email"
-      name="email"
-      label={props.translate("profile.email_display_title")}
-      componentClass="input"
-      id="email-input"
-      component={CustomInput}
-      translate={props.translate}
-      placeholder="name@example.com"
-      required={true}
-      helpBlock={props.translate("emails.input_help_text")}
-    />
-    <EduIDButton
-      className="settings-button"
-      id="reset-password-button"
-      disabled={props.invalid || props.request_in_progress}
-      onClick={props.sendLink}
-    >
-      {props.translate("resetpw.send-link")}
-    </EduIDButton>
-  </Form>
-);
+let EmailForm = (props: EmailFormProps): JSX.Element => {
+  const sendLink = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const email = (document.querySelector("input[name='email']") as HTMLInputElement).value;
+    if (email) {
+      props.dispatch(resetPasswordSlice.actions.requestEmailLink(email));
+      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
+    }
+  };
+  return (
+    <Form id="reset-password-form" role="form" onSubmit={sendLink}>
+      <Field
+        type="email"
+        name="email"
+        label={props.translate("profile.email_display_title")}
+        componentClass="input"
+        id="email-input"
+        component={CustomInput}
+        translate={props.translate}
+        placeholder="name@example.com"
+        required={true}
+        helpBlock={props.translate("emails.input_help_text")}
+      />
+      <EduIDButton
+        className="settings-button"
+        id="reset-password-button"
+        disabled={props.invalid || props.request_in_progress}
+        onClick={sendLink}
+      >
+        {props.translate("resetpw.send-link")}
+      </EduIDButton>
+    </Form>
+  );
+};
 
 EmailForm = reduxForm<EmailProps>({
   form: "reset-pass-email-form",
@@ -61,10 +73,14 @@ EmailForm = connect(() => ({
   destroyOnUnmount: false,
 }))(EmailForm);
 
+type ErrorType = {
+  msg: unknown[];
+};
+
 interface ResetPasswordMainProps {
-  messages?: { msg: unknown[] };
   errors: unknown[];
   translate(msg: string): string;
+  sendLink: (event: React.MouseEventHandler<HTMLFormElement>) => string;
 }
 function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
   const dispatch = useAppDispatch();
@@ -80,26 +96,18 @@ function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
   useEffect(() => {
     if (errors && errors[0]) {
       // error message is expired-phone-code
-      if (errors[0].msg.includes("phone-code")) {
+      if ((errors[0] as ErrorType).msg.includes("phone-code")) {
         // dispatch useLinkCode to change path to extra-security for resending sms code
         dispatch(resetPasswordSlice.actions.useLinkCode());
       }
     }
   }, [errors]);
 
-  const sendLink = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    const email = (document.querySelector("input[name='email']") as HTMLInputElement).value;
-    if (email) {
-      dispatch(resetPasswordSlice.actions.requestEmailLink(email));
-      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
-    }
-  };
   return (
     <>
-      {errors && errors[0] && errors[0].msg.includes("phone-code") && <Splash />}
+      {errors && typeof errors[0] && (errors[0] as ErrorType).msg.includes("phone-code") && <Splash />}
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
-      <EmailForm sendLink={sendLink} {...props} request_in_progress={request_in_progress} />
+      <EmailForm dispatch={dispatch} {...props} request_in_progress={request_in_progress} />
       <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
         <a id="return-login" href={`/login/password/${loginRef}`}>
           {props.translate("resetpw.return-login")}
