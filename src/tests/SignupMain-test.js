@@ -13,13 +13,7 @@ import * as resendActions from "actions/ResendCode";
 import signupReducer from "reducers/SignupMain";
 import { requestCodeStatus, fetchCodeStatus, requestConfig, fetchConfig } from "sagas/SignupMain";
 
-import { addLocaleData } from "react-intl";
-
-import en from "react-intl/locale-data/en";
-import sv from "react-intl/locale-data/sv";
 import { SIGNUP_CONFIG_URL, SIGNUP_SERVICE_URL } from "../globals";
-
-addLocaleData([...en, ...sv]);
 
 const fakeState = {
   config: {
@@ -56,10 +50,7 @@ const fakeState = {
   },
   intl: {
     locale: "en",
-    messages: {
-      en: en,
-      sv: sv,
-    },
+    messages: {},
   },
   emails: {
     nins: [],

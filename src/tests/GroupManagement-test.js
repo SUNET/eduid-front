@@ -5,8 +5,6 @@ import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
 
 import GroupManagement from "../login/components/GroupManagement/GroupManagement";
 import GroupsParent from "../login/components/GroupManagement/Groups/GroupsParent";

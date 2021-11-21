@@ -22,7 +22,7 @@ describe("Account Component", () => {
     const p = fullWrapper.find("p");
     expect(p.exists()).toEqual(true);
   });
-  it("Component renders user email (text inlcudes '@')", () => {
+  it("Component renders user email (text includes '@')", () => {
     const fullWrapper = setupComponent({
       component: <AccountCreatedContainer />,
       overrides: { email: { email: "dummy@example.com" } },
@@ -33,9 +33,3 @@ describe("Account Component", () => {
     expect(userEmail.text()).toContain("@");
   });
 });
-
-// beforeEach(() => {
-//   const store = fakeStore(getState());
-//   dispatch = store.dispatch;
-//   wrapper = setupComponent({ component: <CaptchaContainer />, store: store });
-// });

@@ -2,11 +2,10 @@ import React from "react";
 import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import NameDisplay from "containers/NameDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 import { MemoryRouter } from "react-router-dom";
 
 // my job is to: control the display of the name (either retrieved on vetting) or added by user in the profile

@@ -2,14 +2,12 @@ const mock = require("jest-mock");
 import React from "react";
 import { mount } from "enzyme";
 import expect from "expect";
-import { addLocaleData } from "react-intl";
 import resetPasswordSlice from "../login/redux/slices/resetPasswordSlice";
 import ResetPasswordMain from "../login/components/LoginApp/ResetPassword/ResetPasswordMain";
 import { Provider } from "react-intl-redux";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 const baseState = {
   app: {

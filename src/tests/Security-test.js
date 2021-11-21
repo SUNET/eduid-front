@@ -21,10 +21,7 @@ import {
   removeToken,
 } from "sagas/Security";
 
-import { addLocaleData } from "react-intl";
-
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 describe("Security Actions", () => {
   it("Should get the credentials ", () => {

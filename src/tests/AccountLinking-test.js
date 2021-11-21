@@ -9,10 +9,7 @@ import accountlinkingReducer from "reducers/AccountLinking";
 import { Provider } from "react-intl-redux";
 import { requestOrcid, requestConnectOrcid, requestRemoveOrcid, fetchOrcid, removeOrcid } from "sagas/AccountLinking";
 
-import { addLocaleData } from "react-intl";
-
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 describe("AccountLinking Actions", () => {
   it("Should get orcid ", () => {

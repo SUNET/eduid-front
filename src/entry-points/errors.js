@@ -25,12 +25,7 @@ window.URLSearchParams = urlsearch;
 // End polyfill
 
 import React from "react";
-import { addLocaleData } from "react-intl";
 import init_app from "errors-init-app";
 import ErrorsMain from "../login/components/SwamidErrors/ErrorsMain";
-import en from "react-intl/locale-data/en";
-import sv from "react-intl/locale-data/sv";
-
-addLocaleData([...en, ...sv]);
 
 init_app(document.getElementById("root"), <ErrorsMain />);

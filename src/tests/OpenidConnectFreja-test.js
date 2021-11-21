@@ -1,18 +1,8 @@
 import expect from "expect";
 import * as actions from "actions/OpenidConnectFreja";
 import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
-import { addLocaleData } from "react-intl";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
-
-/**
-Object.defineProperty(navigator, "userAgent", {
-  get: function () {
-    return this.testUserAgent;
-  }
-});
-**/
 
 describe("OIDC Freja Actions", () => {
   it("should create an action to trigger fetching of request data", () => {

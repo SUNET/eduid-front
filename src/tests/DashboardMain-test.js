@@ -3,7 +3,7 @@ import React from "react";
 import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import expect from "expect";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import Header from "containers/Header";
 import Footer from "containers/Footer";
 import MainContainer from "containers/DashboardMain";
@@ -11,7 +11,6 @@ import Notifications from "containers/Notifications";
 import { MemoryRouter } from "react-router-dom";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 const fakeStore = (state) => ({
   default: () => {},

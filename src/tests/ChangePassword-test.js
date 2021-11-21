@@ -16,10 +16,7 @@ import {
   postPassword,
 } from "sagas/ChangePassword";
 
-import { addLocaleData } from "react-intl";
-
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 describe("ChangePassword Actions", () => {
   it("Should get a suggested password", () => {

@@ -1,24 +1,10 @@
 import React from "react";
 import expect from "expect";
 import { mount } from "enzyme";
-import { addLocaleData } from "react-intl";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 import { Provider } from "react-intl-redux";
 const mock = require("jest-mock");
-addLocaleData("react-intl/locale-data/en");
-
-/* uncomment below to run test in specific file */
-// import { configure } from "enzyme";
-// import Adapter from "enzyme-adapter-react-16";
-// import jsdom from "jsdom";
-// configure({ adapter: new Adapter() });
-// const { JSDOM } = jsdom;
-// const { document } = new JSDOM("<!doctype html><html><body></body></html>", {
-//   url: "http://localhost/",
-// }).window;
-// global.document = document;
-// global.window = document.defaultView;
 
 import Login from "../login/components/LoginApp/Login/Login";
 import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";

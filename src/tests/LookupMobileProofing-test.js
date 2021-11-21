@@ -5,12 +5,10 @@ import expect from "expect";
 import * as actions from "actions/LookupMobileProofing";
 import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
 import { Provider } from "react-intl-redux";
-import { addLocaleData } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
 import LookupMobileProofingContainer from "../login/components/LookupMobileProofing/LookupMobileProofingContainer";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 const baseState = {
   lookup_mobile: {},

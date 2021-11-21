@@ -9,13 +9,6 @@ import * as actions from "actions/ActionMain";
 import actionMainReducer from "reducers/ActionMain";
 import { requestConfig, requestNextAction, fetchActions, fetchConfig } from "sagas/ActionMain";
 
-import { addLocaleData } from "react-intl";
-
-import en from "react-intl/locale-data/en";
-import sv from "react-intl/locale-data/sv";
-
-addLocaleData([...en, ...sv]);
-
 const fakeState = {
   config: {
     csrf_token: "",
@@ -30,10 +23,7 @@ const fakeState = {
   },
   intl: {
     locale: "en",
-    messages: {
-      en: en,
-      sv: sv,
-    },
+    messages: {},
   },
   plugin: {},
 };

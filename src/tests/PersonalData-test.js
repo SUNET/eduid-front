@@ -6,8 +6,6 @@ import * as ninActions from "actions/Nins";
 import personalDataReducer from "reducers/PersonalData";
 import { requestAllPersonalData, fetchAllPersonalData } from "../sagas/PersonalData";
 import { put, call } from "redux-saga/effects";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
 
 describe("Personal Data Actions", () => {
   it("Should get the data user for personal data", () => {

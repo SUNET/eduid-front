@@ -1,9 +1,6 @@
 import expect from "expect";
 import * as actions from "actions/Eidas";
 import eidasReducer from "reducers/Eidas";
-import { addLocaleData } from "react-intl";
-
-addLocaleData("react-intl/locale-data/en");
 
 describe("Eidas Actions", () => {
   it("should create an action to trigger modal window", () => {

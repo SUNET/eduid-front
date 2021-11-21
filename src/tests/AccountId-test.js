@@ -1,12 +1,10 @@
 import React from "react";
 import expect from "expect";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import AccountIdContainer from "containers/AccountId";
-import { addLocaleData, IntlProvider } from "react-intl";
-import { Provider } from "react-intl-redux";
+import { IntlProvider } from "react-intl";
 const messages = require("../login/translation/messageIndex");
 const mock = require("jest-mock");
-addLocaleData("react-intl/locale-data/en");
 
 describe("AccountId component renders", () => {
   const props = {

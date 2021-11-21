@@ -1,13 +1,11 @@
 import expect from "expect";
 import * as actions from "actions/OpenidConnect";
 import openidConnectReducer from "reducers/OpenidConnect";
-import { addLocaleData } from "react-intl";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 describe("OIDC Actions", () => {
-  it("should create an action to trigger fetching a qrcode", () => {
+  it("should create an action to trigger fetching a qr-code", () => {
     const nin = "190102031234";
     const expectedAction = {
       type: actions.POST_OIDC_PROOFING_PROOFING,
@@ -18,7 +16,7 @@ describe("OIDC Actions", () => {
     expect(actions.postOpenidSeleg(nin)).toEqual(expectedAction);
   });
 
-  it("should create an action to signal an error fetching a qrcode", () => {
+  it("should create an action to signal an error fetching a qr-code", () => {
     const err = "Bad error";
     const expectedAction = {
       type: actions.POST_OIDC_PROOFING_PROOFING_FAIL,

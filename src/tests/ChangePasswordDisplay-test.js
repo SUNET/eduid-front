@@ -3,7 +3,7 @@ import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { put } from "redux-saga/effects";
 import { shallow, mount } from "enzyme";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
 import * as actions from "actions/Security";
@@ -11,7 +11,6 @@ import securityReducer from "reducers/Security";
 import { requestPasswordChange } from "sagas/Security";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: allows users to change password in settings.
 // My job is to: I render a  "change password" button > that triggers a modal (the modal has to render two buttons, each with their own functionality)

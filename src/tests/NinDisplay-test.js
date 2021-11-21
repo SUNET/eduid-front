@@ -3,12 +3,11 @@ import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
 import { Router } from "react-router-dom";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import { history } from "components/DashboardMain";
 import NinDisplay from "containers/NinDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 history.push("/verify-identity");
 describe("NinDisplay component (/verify-identity), when nin is saved and unverified ", () => {

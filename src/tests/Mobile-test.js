@@ -19,10 +19,8 @@ import {
 import { put, call } from "redux-saga/effects";
 import MobileContainer from "containers/Mobile";
 import { Provider } from "react-intl-redux";
-import { addLocaleData } from "react-intl";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 describe("Mobile Actions", () => {
   it("Should post the mobile ", () => {

@@ -6,7 +6,6 @@ import * as actions from "actions/Emails";
 import emailsReducer from "reducers/Emails";
 import EmailsContainer from "containers/Emails";
 import { Provider } from "react-intl-redux";
-import { addLocaleData } from "react-intl";
 
 import {
   requestResend,
@@ -23,7 +22,6 @@ import {
 import { put, call } from "redux-saga/effects";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 describe("Email Actions", () => {
   it("Should change the emails ", () => {

@@ -13,17 +13,12 @@ import App from "../components/App/App";
 
 // translation (i18n) import available languages
 import injectTranslation from "../app_utils/injectTranslation";
-import { addLocaleData } from "react-intl";
-import en from "react-intl/locale-data/en";
-import sv from "react-intl/locale-data/sv";
-
 // utils to check support or compatibility
 import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";
 
 /* run all utils and set up the translation */
 injectTranslation();
 polyfillElClosest_EI();
-addLocaleData([...en, ...sv]);
 
 /* render reactIndex.js */
 const initDomTarget = document.getElementById("root");

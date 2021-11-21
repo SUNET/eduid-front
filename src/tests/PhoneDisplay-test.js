@@ -2,11 +2,10 @@ import React from "react";
 import expect from "expect";
 import { Provider } from "react-intl-redux";
 import { shallow, mount } from "enzyme";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import PhoneDisplay from "containers/PhoneDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 import { MemoryRouter } from "react-router-dom";
 
 // my job is to: control the display of the phone number in the profile registered by user in settings

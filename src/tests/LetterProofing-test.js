@@ -18,7 +18,6 @@ import {
 } from "../sagas/LetterProofing";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 const baseState = {
   letter_proofing: {
