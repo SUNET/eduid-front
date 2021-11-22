@@ -1,6 +1,6 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from "react-intl";
@@ -74,11 +74,11 @@ describe("AddNin component, when no nin is saved", () => {
       proofing_methods: [],
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <AddNin {...props} />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -149,11 +149,11 @@ describe("AddNin component, when a nin is saved", () => {
       proofing_methods: [],
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <AddNin {...props} />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,

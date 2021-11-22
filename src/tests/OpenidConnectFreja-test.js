@@ -189,9 +189,9 @@ describe("OpenidConnectFreja Container before initiated vetting", () => {
 
     wrapper = mount(
         <IntlProvider locale={'en'} messages={messages}>
-          <Provider store={store}>
+          <ReduxIntlProvider store={store}>
             <OpenidConnectFrejaContainer {...mockProps}/>
-          </Provider>
+          </ReduxIntlProvider>
         </IntlProvider>
     );
 
@@ -243,9 +243,9 @@ describe("OpenidConnectFreja Container after initiated vetting", () => {
 
     wrapper = mount(
         <IntlProvider locale={'en'} messages={messages}>
-          <Provider store={store}>
+          <ReduxIntlProvider store={store}>
             <OpenidConnectFrejaContainer {...mockProps}/>
-          </Provider>
+          </ReduxIntlProvider>
         </IntlProvider>
     );
 

@@ -18,7 +18,7 @@ import {
 } from "sagas/Mobile";
 import { put, call } from "redux-saga/effects";
 import MobileContainer from "containers/Mobile";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 
 const messages = require("../login/translation/messageIndex");
 
@@ -652,9 +652,9 @@ describe("Mobile Container", () => {
     };
 
     wrapper = mount(
-      <Provider store={store}>
+      <ReduxIntlProvider store={store}>
         <MobileContainer {...mockProps} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     fulldom = wrapper.find(MobileContainer);
     mobile = fulldom.props().mobile;

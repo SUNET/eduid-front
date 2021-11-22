@@ -1,6 +1,6 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { put, call } from "redux-saga/effects";
 import { IntlProvider } from "react-intl";
@@ -59,9 +59,9 @@ describe("DeleteAccount component", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <DeleteAccountContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -107,9 +107,9 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <DeleteAccountContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -153,9 +153,9 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <DeleteAccountContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -345,9 +345,9 @@ describe("DeleteAccount Container", () => {
       dispatch = store.dispatch;
 
       const wrapper = mount(
-        <Provider store={store}>
+        <ReduxIntlProvider store={store}>
           <DeleteAccountContainer {...props} />
-        </Provider>
+        </ReduxIntlProvider>
       );
       return wrapper;
     };

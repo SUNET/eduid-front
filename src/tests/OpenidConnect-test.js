@@ -156,9 +156,9 @@ describe("OpenidConnect Container", () => {
     };
 
     wrapper = mount(
-        <Provider store={store}>
+        <ReduxIntlProvider store={store}>
             <OpenidConnectContainer {...mockProps}/>
-        </Provider>
+        </ReduxIntlProvider>
     );
 
     fulltext = wrapper.find(OpenidConnectContainer).text();

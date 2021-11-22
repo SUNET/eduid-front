@@ -6,7 +6,7 @@ import expect from "expect";
 import AccountLinkingContainer from "containers/AccountLinking";
 import * as actions from "actions/AccountLinking";
 import accountlinkingReducer from "reducers/AccountLinking";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { requestOrcid, requestConnectOrcid, requestRemoveOrcid, fetchOrcid, removeOrcid } from "sagas/AccountLinking";
 
 const messages = require("../login/translation/messageIndex");
@@ -295,9 +295,9 @@ describe("AccountLinking Container", () => {
       dispatch = store.dispatch;
 
       const wrapper = mount(
-        <Provider store={store}>
+        <ReduxIntlProvider store={store}>
           <AccountLinkingContainer {...props} />
-        </Provider>
+        </ReduxIntlProvider>
       );
       return wrapper;
     };

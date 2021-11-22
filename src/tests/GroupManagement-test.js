@@ -2,7 +2,7 @@ const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 
@@ -117,11 +117,11 @@ describe("<GroupManagement/> correctly renders:", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <GroupManagement {...props} />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

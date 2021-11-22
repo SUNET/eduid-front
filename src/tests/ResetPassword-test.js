@@ -4,7 +4,7 @@ import { mount } from "enzyme";
 import expect from "expect";
 import resetPasswordSlice from "../login/redux/slices/resetPasswordSlice";
 import ResetPasswordMain from "../login/components/LoginApp/ResetPassword/ResetPasswordMain";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 const messages = require("../login/translation/messageIndex");
@@ -47,11 +47,11 @@ describe("renders", () => {
   function setupComponent() {
     const history = createMemoryHistory();
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <ResetPasswordMain />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -82,11 +82,11 @@ describe("ResetPasswordMain, send link button ", () => {
   function setupComponent() {
     const history = createMemoryHistory();
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <ResetPasswordMain />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

@@ -1,6 +1,6 @@
 const mock = require("jest-mock");
 import React from "react";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount } from "enzyme";
 import expect from "expect";
 import { put, call } from "redux-saga/effects";
@@ -88,7 +88,7 @@ export function setupComponent({ component, overrides, store } = {}) {
     }
     store = fakeStore(getState(overrides));
   }
-  const wrapper = mount(<Provider store={store}>{component}</Provider>);
+  const wrapper = mount(<ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>);
   return wrapper;
 }
 

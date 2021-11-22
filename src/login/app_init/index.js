@@ -6,7 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // App.js = store, action and component required to render app
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import initStore from "./initStore";
 import initContainer from "./init_container";
 import App from "../components/App/App";
@@ -23,9 +23,9 @@ polyfillElClosest_EI();
 /* render reactIndex.js */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
-  <Provider store={initStore}>
+  <ReduxIntlProvider store={initStore}>
     <App />
-  </Provider>,
+  </ReduxIntlProvider>,
   initDomTarget,
   initContainer
 );

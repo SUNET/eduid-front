@@ -1,6 +1,6 @@
 const mock = require("jest-mock");
 import React from "react";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import expect from "expect";
 import { IntlProvider } from "react-intl";
@@ -55,11 +55,11 @@ function setupComponent() {
     eppn: "eppn-eppn",
   };
   const wrapper = mount(
-    <Provider store={store}>
+    <ReduxIntlProvider store={store}>
       <MemoryRouter>
         <MainContainer {...props} />
       </MemoryRouter>
-    </Provider>
+    </ReduxIntlProvider>
   );
   return {
     props,

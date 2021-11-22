@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import ChangePasswordContainer from "containers/ChangePassword";
 import * as actions from "actions/ChangePassword";
 import chpassReducer from "reducers/ChangePassword";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 
 import {
   requestSuggestedPassword,
@@ -360,11 +360,11 @@ describe("ChangePassword Container", () => {
       const state = fakeState(custom);
       store = fakeStore(state);
       const wrapper = mount(
-        <Provider store={store}>
+        <ReduxIntlProvider store={store}>
           <Router>
             <ChangePasswordContainer {...props} />
           </Router>
-        </Provider>
+        </ReduxIntlProvider>
       );
       return wrapper;
     };

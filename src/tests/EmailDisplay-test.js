@@ -1,12 +1,11 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import EmailDisplay from "containers/EmailDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 // my job is to: control the display of the email address registered at signup in the profile
 
@@ -43,9 +42,9 @@ describe("EmailDisplay component, when no email is saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <EmailDisplay />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -88,9 +87,9 @@ describe("EmailDisplay component, when email is saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <EmailDisplay />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -132,9 +131,9 @@ describe("EmailDisplay component, when email is saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <EmailDisplay />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

@@ -2,7 +2,7 @@ import React from "react";
 import expect from "expect";
 import { shallow, mount } from "enzyme/build";
 import { IntlProvider } from "react-intl";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import ChangePasswordForm from "components/ChangePasswordForm";
 
 const mock = require("jest-mock");
@@ -47,9 +47,9 @@ describe("ChangePasswordForm renders", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <ChangePasswordForm {...props} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

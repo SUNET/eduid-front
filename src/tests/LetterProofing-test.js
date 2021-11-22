@@ -2,8 +2,8 @@ const mock = require("jest-mock");
 import React from "react";
 import { shallow, mount } from "enzyme";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
-import { IntlProvider, addLocaleData } from "react-intl";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import { IntlProvider } from "react-intl";
 import { put, call } from "redux-saga/effects";
 import * as actions from "actions/LetterProofing";
 import letterProofingReducer from "reducers/LetterProofing";
@@ -89,9 +89,9 @@ describe("Letter Proofing, when letter has been expired", () => {
       handleStopConfirmationLetter: mock.fn(),
     };
     const wrapper = shallow(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <LetterProofingContainer {...props} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -262,9 +262,9 @@ describe("LetterProofing Container", () => {
     mockProps = {};
 
     wrapper = mount(
-      <Provider store={store}>
+      <ReduxIntlProvider store={store}>
         <LetterProofingContainer {...mockProps} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     button = wrapper.find("button");
     expect(button.exists()).toEqual(true);
@@ -373,9 +373,9 @@ describe("LetterProofing component, without id number", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <LetterProofingContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -402,9 +402,9 @@ describe("LetterProofing component, letter has been sent", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <LetterProofingContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -440,9 +440,9 @@ describe("LetterProofing component, when letter has expired", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <LetterProofingContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

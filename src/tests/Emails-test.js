@@ -5,7 +5,7 @@ import expect from "expect";
 import * as actions from "actions/Emails";
 import emailsReducer from "reducers/Emails";
 import EmailsContainer from "containers/Emails";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 
 import {
   requestResend,
@@ -685,9 +685,9 @@ describe("Emails Container", () => {
     };
 
     wrapper = mount(
-      <Provider store={store}>
+      <ReduxIntlProvider store={store}>
         <EmailsContainer {...mockProps} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     fulldom = wrapper.find(EmailsContainer);
     email = fulldom.props().email;

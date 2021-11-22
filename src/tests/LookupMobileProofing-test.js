@@ -4,7 +4,7 @@ import { mount } from "enzyme";
 import expect from "expect";
 import * as actions from "actions/LookupMobileProofing";
 import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { MemoryRouter } from "react-router-dom";
 import LookupMobileProofingContainer from "../login/components/LookupMobileProofing/LookupMobileProofingContainer";
 
@@ -121,9 +121,9 @@ describe("LookupMobile Container", () => {
     mockProps = {};
 
     wrapper = mount(
-      <Provider store={store}>
+      <ReduxIntlProvider store={store}>
         <LookupMobileProofingContainer {...mockProps} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     button = wrapper.find("button");
   });
@@ -144,11 +144,11 @@ describe("LookupMobileProofing component,", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <LookupMobileProofingContainer />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

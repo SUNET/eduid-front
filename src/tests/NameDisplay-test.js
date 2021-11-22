@@ -1,6 +1,6 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { IntlProvider } from "react-intl";
 import NameDisplay from "containers/NameDisplay";
@@ -46,11 +46,11 @@ describe("NameDisplay component, when no names are saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <NameDisplay />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -96,9 +96,9 @@ describe("NameDisplay component, when names are saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <NameDisplay />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
