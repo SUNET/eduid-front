@@ -272,7 +272,7 @@
     "string": "Tip: Use the app to find your nearest agent"
   },
   "eidas.initialize_proofing_help_text": {
-    "string": "To use this option you will need to first create a digital ID-card in the '<a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a>' app."
+    "string": "To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app."
   },
   "eidas.modal_title": {
     "string": "Use Freja eID+ and pass a local authorised agent"
@@ -794,10 +794,10 @@
     "string": "SE-LEG"
   },
   "oc.initialize_proofing_help_text": {
-    "string": "To use this option you need to visit a '<a href=\"https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/\" target=\"_blank\">SE-LEG RA</a>' and show identification."
+    "string": "To use this option you need to visit a {seleg_info_link} and show identification."
   },
   "oc.instructions_step_1": {
-    "string": "Visit the nearest library on this list: '<ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>'"
+    "string": "Visit the nearest library on this list:"
   },
   "oc.instructions_step_2": {
     "string": "Bring your chosen form of ID and the QR code below and ask the librarian for a verification of your eduID account."
@@ -842,13 +842,13 @@
     "string": "with Freja eID"
   },
   "ocf.initialize_proofing_help_text": {
-    "string": "To use this option you need to have the '<a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID app</a>' installed on your device."
+    "string": "To use this option you need to have the {skaffa_freja_eid_link} app installed on your device."
   },
   "ocf.modal_title": {
     "string": "Confirm using Freja eID"
   },
   "ocf.not_on_mobile_message": {
-    "string": "You need to switch to a mobile device (iOS or Android) with '<a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a>' installed before you will be able to confirm your account using Freja eID."
+    "string": "You need to switch to a mobile device (iOS or Android) with {skaffa_freja_eid_link} installed before you will be able to confirm your account using Freja eID."
   },
   "ocf.not_on_mobile_title": {
     "string": "Not using your phone?"
@@ -857,7 +857,7 @@
     "string": "I have Freja eID installed"
   },
   "orc.about_link": {
-    "string": "Learn more about ORCID in eduID from our '<a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>'."
+    "string": "Learn more about ORCID in eduID from our {faq_link}."
   },
   "orc.already_connected": {
     "string": "ORCID already connected to this account"
@@ -874,7 +874,7 @@
   "orc.long_description": {
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
-  "orc.sub_missmatch": {
+  "orc.sub_mismatch": {
     "string": "Subject mismatch when trying to connect ORCID account"
   },
   "orc.title": {

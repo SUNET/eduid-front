@@ -325,7 +325,14 @@ export const userVetting = {
   "eidas.initialize_proofing_help_text": (
     <FormattedMessage
       id="eidas.initialize_proofing_help_text"
-      defaultMessage={`To use this option you will need to first create a digital ID-card in the '<a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a>' app.`}
+      defaultMessage={`To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app.`}
+      values={{
+        skaffa_freja_eid_link: (
+          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+            Freja eID
+          </a>
+        ),
+      }}
     />
   ),
 
@@ -413,7 +420,14 @@ export const userVetting = {
   "oc.initialize_proofing_help_text": (
     <FormattedMessage
       id="oc.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to visit a '<a href="https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/" target="_blank">SE-LEG RA</a>' and show identification.`}
+      defaultMessage={`To use this option you need to visit a {seleg_info_link} and show identification.`}
+      values={{
+        seleg_info_link: (
+          <a href="https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/" target="_blank">
+            SE-LEG RA
+          </a>
+        ),
+      }}
     />
   ),
 
@@ -424,10 +438,7 @@ export const userVetting = {
   ),
 
   "oc.instructions_step_1": (
-    <FormattedMessage
-      id="oc.instructions_step_1"
-      defaultMessage={`Visit the nearest library on this list: '<ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>'`}
-    />
+    <FormattedMessage id="oc.instructions_step_1" defaultMessage={`Visit the nearest library on this list:`} />
   ),
 
   "oc.instructions_step_2": (
@@ -451,7 +462,14 @@ export const userVetting = {
   "ocf.initialize_proofing_help_text": (
     <FormattedMessage
       id="ocf.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to have the '<a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID app</a>' installed on your device.`}
+      defaultMessage={`To use this option you need to have the {skaffa_freja_eid_link} app installed on your device.`}
+      values={{
+        skaffa_freja_eid_link: (
+          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+            Freja eID
+          </a>
+        ),
+      }}
     />
   ),
 
@@ -510,7 +528,14 @@ export const userVetting = {
   "ocf.not_on_mobile_message": (
     <FormattedMessage
       id="ocf.not_on_mobile_message"
-      defaultMessage={`You need to switch to a mobile device (iOS or Android) with '<a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID</a>' installed before you will be able to confirm your account using Freja eID.`}
+      defaultMessage={`You need to switch to a mobile device (iOS or Android) with {skaffa_freja_eid_link} installed before you will be able to confirm your account using Freja eID.`}
+      values={{
+        skaffa_freja_eid_link: (
+          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+            Freja eID
+          </a>
+        ),
+      }}
     />
   ),
 };
@@ -586,7 +611,7 @@ export const userData = {
   //phone numbers
   "phone.phone_duplicated": <FormattedMessage id="phone_duplicated" defaultMessage={`Added number is duplicated`} />,
 
-  "phone.phone_format": (
+  "{phone.phone_format}": (
     <FormattedMessage
       id="phone_format"
       defaultMessage={`Invalid telephone number. It must be a valid Swedish number, or written
@@ -1091,7 +1116,7 @@ export const userData = {
   ),
 
   "orc.sub_mismatch": (
-    <FormattedMessage id="orc.sub_missmatch" defaultMessage={`Subject mismatch when trying to connect ORCID account`} />
+    <FormattedMessage id="orc.sub_mismatch" defaultMessage={`Subject mismatch when trying to connect ORCID account`} />
   ),
 
   "orc.title": <FormattedMessage id="orc.title" defaultMessage={`ORCID`} />,
@@ -1099,14 +1124,21 @@ export const userData = {
   "orc.long_description": (
     <FormattedMessage
       id="orc.long_description"
-      defaultMessage={` ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with.`}
+      defaultMessage={`ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with.`}
     />
   ),
 
   "orc.about_link": (
     <FormattedMessage
       id="orc.about_link"
-      defaultMessage={`Learn more about ORCID in eduID from our '<a href="https://www.eduid.se/en/faq.html">FAQ</a>'.`}
+      defaultMessage={`Learn more about ORCID in eduID from our {faq_link}.`}
+      values={{
+        faq_link: (
+          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+            FAQ
+          </a>
+        ),
+      }}
     />
   ),
 
@@ -1125,7 +1157,7 @@ export const userData = {
   "accountId.short_description": (
     <FormattedMessage
       id="accountId.short_description"
-      defaultMessage={` You might be asked to share this information if you need technical support.`}
+      defaultMessage={`You might be asked to share this information if you need technical support.`}
     />
   ),
 
