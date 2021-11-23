@@ -424,14 +424,15 @@ describe("LetterProofing component, letter has been sent", () => {
     const letterValid = description.find("span").at(1);
     const letterSentDate = description.at(0).prop("children");
     const checkSentDate = shallow(<div>{letterSentDate}</div>).text();
-    const letterVaildDate = description.at(1).prop("children");
-    const checkVaildDate = shallow(<div>{letterVaildDate}</div>).text();
+    const letterValidDate = description.at(1).prop("children");
+    const checkValidDate = shallow(<div>{letterValidDate}</div>).text();
+    expect(description.exists()).toEqual(true);
     expect(letterSent.exists()).toEqual(true);
     expect(letterSent.text()).toContain("sent");
     expect(letterValid.exists()).toEqual(true);
     expect(letterValid.text()).toContain("valid to");
     expect(checkSentDate).toContain("NaN");
-    expect(checkVaildDate).toContain("NaN");
+    expect(checkValidDate).toContain("NaN");
   });
 });
 
