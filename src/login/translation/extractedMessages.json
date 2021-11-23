@@ -1,0 +1,1549 @@
+{
+  "CSRF failed to validate": {
+    "defaultMessage": "CSRF failed to validate, please reload the page"
+  },
+  "Error: Gateway Time-out": {
+    "defaultMessage": "The remote service is taking too long to respond, please try again"
+  },
+  "Error: Internal Server Error": {
+    "defaultMessage": "There was an error (500) servicing your request. The administrator has been alerted. Please try again later."
+  },
+  "Error: NOT FOUND": {
+    "defaultMessage": "There was an error (404) servicing your request. The administrator has been alerted. Please try again later."
+  },
+  "Error: Service Unavailable": {
+    "defaultMessage": "Service Unavailable. Check your internet connection."
+  },
+  "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
+    "defaultMessage": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
+  },
+  "Missing data for required field.": {
+    "defaultMessage": "Missing data for required field"
+  },
+  "Missing error message": {
+    "defaultMessage": "Missing error message"
+  },
+  "No connection to authorization endpoint": {
+    "defaultMessage": "No connection to authorization endpoint, please try again later"
+  },
+  "Not a valid email address.": {
+    "defaultMessage": "Not a valid email address."
+  },
+  "SecurityMsg.rm_webauthn": {
+    "defaultMessage": "Security key has been removed."
+  },
+  "Temporary technical problems": {
+    "defaultMessage": "Temporary technical problems, please try again later"
+  },
+  "accountId.accountId_display_title": {
+    "defaultMessage": "Unique ID"
+  },
+  "accountId.long_description": {
+    "defaultMessage": "This is an automatically generated unique identifier for your eduID."
+  },
+  "accountId.main_title": {
+    "defaultMessage": "Unique ID"
+  },
+  "accountId.short_description": {
+    "defaultMessage": "You might be asked to share this information if you need technical support."
+  },
+  "account_linking.long_description": {
+    "defaultMessage": "If you are a reseacher with an ORCID iD you can share it with your eduID."
+  },
+  "account_linking.main_title": {
+    "defaultMessage": "ORCID account"
+  },
+  "actions.action-completed": {
+    "defaultMessage": "Success"
+  },
+  "add_nin.main_title": {
+    "defaultMessage": "1. Add your id number"
+  },
+  "banner.tagline": {
+    "defaultMessage": "eduID is easier and safer login."
+  },
+  "beta-link.to-stable": {
+    "defaultMessage": "The new eduID is under development, click here to go back to the stable version"
+  },
+  "button_add": {
+    "defaultMessage": "Add"
+  },
+  "button_save": {
+    "defaultMessage": "Save"
+  },
+  "captcha.cancel": {
+    "defaultMessage": "Cancel"
+  },
+  "captcha.one-step-left": {
+    "defaultMessage": "Only one more step left!"
+  },
+  "captcha.submit": {
+    "defaultMessage": "Done"
+  },
+  "captcha.verify-human": {
+    "defaultMessage": "Confirm that you are a human."
+  },
+  "chpass.button_custom_password": {
+    "defaultMessage": "I don't want a suggested password"
+  },
+  "chpass.button_save_password": {
+    "defaultMessage": "Save"
+  },
+  "chpass.button_suggest_password": {
+    "defaultMessage": "Suggest a password for me"
+  },
+  "chpass.different-repeat": {
+    "defaultMessage": "The two passwords are different"
+  },
+  "chpass.form_custom_password": {
+    "defaultMessage": "Enter new password"
+  },
+  "chpass.form_custom_password_repeat": {
+    "defaultMessage": "Repeat new password"
+  },
+  "chpass.help-text-general": {
+    "defaultMessage": "You can change your current password using this form. A strong password has been generated for you. You can accept the generated password by clicking \"Change password\" or you can opt to choose your own password using the checkbox."
+  },
+  "chpass.help-text-newpass-label": {
+    "defaultMessage": "Tip: Choose a strong password",
+    "description": "help text for custom password label"
+  },
+  "chpass.help-text-newpass-tips": {
+    "defaultMessage": "Use upper- and lowercase characters, but not at the beginning or end Add digits somewhere, but not at the beginning or end Add special characters, such as @ $ \\u005c % Spaces are ignored",
+    "description": "help text for custom password tips"
+  },
+  "chpass.low-password-entropy": {
+    "defaultMessage": "Please provide a stronger password"
+  },
+  "chpass.main_title": {
+    "defaultMessage": "Change your current password"
+  },
+  "chpass.no_old_pw": {
+    "defaultMessage": "Please enter your old password"
+  },
+  "chpass.no_reauthn": {
+    "defaultMessage": "You must re-authenticate to change your password"
+  },
+  "chpass.old_password": {
+    "defaultMessage": "Current password"
+  },
+  "chpass.password-changed": {
+    "defaultMessage": "Your password has been changed"
+  },
+  "chpass.stale_authn_info": {
+    "defaultMessage": "Stale re-authentication. Please re-initiate the process."
+  },
+  "chpass.stale_reauthn": {
+    "defaultMessage": "Stale re-authentication. Please re-initiate the process."
+  },
+  "chpass.suggested_password": {
+    "defaultMessage": "Suggested password"
+  },
+  "chpass.unable-to-verify-old-password": {
+    "defaultMessage": "There were problems trying to verify your old credentials. If you are certain that they are correct, please contact the administrator"
+  },
+  "cm.accept": {
+    "defaultMessage": "ACCEPT"
+  },
+  "cm.cancel": {
+    "defaultMessage": "CANCEL"
+  },
+  "cm.close": {
+    "defaultMessage": "CLOSE"
+  },
+  "cm.enter_code": {
+    "defaultMessage": "Confirmation code"
+  },
+  "cm.finish": {
+    "defaultMessage": "FINISH"
+  },
+  "cm.lost_code": {
+    "defaultMessage": "Is the code not working?",
+    "description": "Lost code problem description"
+  },
+  "cm.ok": {
+    "defaultMessage": "OK"
+  },
+  "cm.resend_code": {
+    "defaultMessage": "Send a new confirmation code",
+    "description": "Lost code problem solution"
+  },
+  "code.unknown-code": {
+    "defaultMessage": "Unknown verification code"
+  },
+  "confirmation.code_invalid_format": {
+    "defaultMessage": "Invalid confirmation code",
+    "description": "error text for invalid confirmation code"
+  },
+  "created.account-created": {
+    "defaultMessage": "A link has been sent to your email address."
+  },
+  "created.back_to_signup": {
+    "defaultMessage": "Back to signup"
+  },
+  "created.confirm-registration": {
+    "defaultMessage": "Confirm your email to log in to eduID."
+  },
+  "created.email-label": {
+    "defaultMessage": "Complete registration by clicking the link sent to:"
+  },
+  "created.email-sent": {
+    "defaultMessage": "Click the confirmation link sent to {email} to be able log in to eduID"
+  },
+  "cred.credential_type": {
+    "defaultMessage": "Credential type."
+  },
+  "csrf.try-again": {
+    "defaultMessage": "There was a problem with your submission, please try again"
+  },
+  "dashboard.tagline": {
+    "defaultMessage": "eduID for"
+  },
+  "dashboard.tagline_unverified": {
+    "defaultMessage": "Don't forget to connect your identity to eduID"
+  },
+  "dashboard.tagline_verified": {
+    "defaultMessage": "Make eduID more secure"
+  },
+  "dashboard_nav.advanced-settings": {
+    "defaultMessage": "Advanced settings"
+  },
+  "dashboard_nav.back": {
+    "defaultMessage": "< Back"
+  },
+  "dashboard_nav.identity": {
+    "defaultMessage": "Identity"
+  },
+  "dashboard_nav.identity-verify-freja": {
+    "defaultMessage": "You can verify <b>with a digital ID-card</b>"
+  },
+  "dashboard_nav.identity-verify-post-freja": {
+    "defaultMessage": "You can verify <b>by post</b> or <b>with a digital ID-card</b>"
+  },
+  "dashboard_nav.identity-verify-post-phone-freja": {
+    "defaultMessage": "You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>"
+  },
+  "dashboard_nav.profile": {
+    "defaultMessage": "Profile"
+  },
+  "dashboard_nav.settings": {
+    "defaultMessage": "Settings"
+  },
+  "dashboard_nav.settings-confirm-phone": {
+    "defaultMessage": "<b>Confirm your number</b> to verify your id by phone"
+  },
+  "delete.confirm_button": {
+    "defaultMessage": "Delete my eduID"
+  },
+  "delete.modal_info": {
+    "defaultMessage": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
+  },
+  "eidas.authn_context_mismatch": {
+    "defaultMessage": "Wrong authentication context received"
+  },
+  "eidas.error_missing_nin": {
+    "defaultMessage": "Please add a national identity number and try again"
+  },
+  "eidas.error_unknown_error": {
+    "defaultMessage": "Temporary technical difficulties, please try again later"
+  },
+  "eidas.freja_eid_ready": {
+    "defaultMessage": "Use my Freja eID"
+  },
+  "eidas.freja_instructions_install_link": {
+    "defaultMessage": "What is Freja eID?"
+  },
+  "eidas.freja_instructions_step1": {
+    "defaultMessage": "Install the app"
+  },
+  "eidas.freja_instructions_step2": {
+    "defaultMessage": "Create a Freja eID Plus account (awarded the ‘Svensk e-legitimation’ quality mark)"
+  },
+  "eidas.freja_instructions_step3": {
+    "defaultMessage": "The app will generate a QR-code"
+  },
+  "eidas.freja_instructions_step4": {
+    "defaultMessage": "Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity"
+  },
+  "eidas.freja_instructions_step5": {
+    "defaultMessage": "Freja eID is now ready to be used with your eduID"
+  },
+  "eidas.freja_instructions_tip_1": {
+    "defaultMessage": "Tip: Use the app to find your nearest agent"
+  },
+  "eidas.initialize_proofing_help_text": {
+    "defaultMessage": "To use this option you will need to first create a digital ID-card in the '<a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a>' app."
+  },
+  "eidas.modal_title": {
+    "defaultMessage": "Use Freja eID+ and pass a local authorised agent"
+  },
+  "eidas.nin_already_verified": {
+    "defaultMessage": "You have already verified your identity"
+  },
+  "eidas.nin_not_matching": {
+    "defaultMessage": "The identity does not match the one verified for this eduID"
+  },
+  "eidas.nin_verify_success": {
+    "defaultMessage": "Identity verified successfully"
+  },
+  "eidas.reauthn_expired": {
+    "defaultMessage": "Authentication has expired. Please try again."
+  },
+  "eidas.token_not_found": {
+    "defaultMessage": "U2F token not found"
+  },
+  "eidas.token_not_in_credentials_used": {
+    "defaultMessage": "U2F token not used for login"
+  },
+  "eidas.token_verify_success": {
+    "defaultMessage": "U2F token verified successfully"
+  },
+  "eidas.vetting_button_freja": {
+    "defaultMessage": "with a digital ID-card"
+  },
+  "email.invalid_email": {
+    "defaultMessage": "The entered email is invalid"
+  },
+  "email.sign-up-email": {
+    "defaultMessage": "Create eduID"
+  },
+  "emails.add_new": {
+    "defaultMessage": "A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses."
+  },
+  "emails.button_add": {
+    "defaultMessage": "Add"
+  },
+  "emails.button_add_more": {
+    "defaultMessage": "+ add more"
+  },
+  "emails.cannot_remove_primary": {
+    "defaultMessage": "You can not delete the primary email"
+  },
+  "emails.cannot_remove_unique": {
+    "defaultMessage": "You must have at least one email address"
+  },
+  "emails.cannot_remove_unique_verified": {
+    "defaultMessage": "You must have at least one verified email address"
+  },
+  "emails.code-sent": {
+    "defaultMessage": "Successfully sent verification code"
+  },
+  "emails.code_expired_send_new": {
+    "defaultMessage": "Expired verification code, sending another"
+  },
+  "emails.code_invalid": {
+    "defaultMessage": "The confirmation code is invalid, please try again or request a new code"
+  },
+  "emails.code_invalid_or_expired": {
+    "defaultMessage": "The confirmation code is invalid or has expired, please try again or request a new code"
+  },
+  "emails.confirm_email_placeholder": {
+    "defaultMessage": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "description": "Placeholder for email text input"
+  },
+  "emails.confirm_help_text": {
+    "defaultMessage": "Code is formatted as five groups of characters and numbers, separated by hyphens",
+    "description": "Help text for email confirmation code"
+  },
+  "emails.confirm_title": {
+    "defaultMessage": "Click the link or enter the code sent to {email} here"
+  },
+  "emails.duplicated": {
+    "defaultMessage": "That email address is already in use, please choose another"
+  },
+  "emails.email": {
+    "defaultMessage": "Email"
+  },
+  "emails.get-success": {
+    "defaultMessage": "Successfully retrieved Email addresses"
+  },
+  "emails.input_help_text": {
+    "defaultMessage": "A valid email address"
+  },
+  "emails.invalid_email": {
+    "defaultMessage": "The entered value does not look like an email"
+  },
+  "emails.long_description": {
+    "defaultMessage": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
+  },
+  "emails.main_title": {
+    "defaultMessage": "Email addresses"
+  },
+  "emails.missing": {
+    "defaultMessage": "You must provide an email address"
+  },
+  "emails.primary-success": {
+    "defaultMessage": "The primary email address was updated"
+  },
+  "emails.removal-success": {
+    "defaultMessage": "Successfully removed email address"
+  },
+  "emails.resend_success": {
+    "defaultMessage": "New code sent to {email}"
+  },
+  "emails.save-success": {
+    "defaultMessage": "The email address was saved"
+  },
+  "emails.unconfirmed_address_not_primary": {
+    "defaultMessage": "You need to confim and email address before it can be made primary"
+  },
+  "emails.unknown_email": {
+    "defaultMessage": "We have no record of the email address you provided"
+  },
+  "emails.verification-success": {
+    "defaultMessage": "Successfully verified email address"
+  },
+  "error_access": {
+    "defaultMessage": "Access error <ul><li>An error occurred when accessing the service.</li><li>If you think you should be able to access the service, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
+  },
+  "error_access_an_error_occurred": {
+    "defaultMessage": "Error unclear, something stuck somewhere"
+  },
+  "error_affiliation_student": {
+    "defaultMessage": "Not student error"
+  },
+  "error_assurance_al1": {
+    "defaultMessage": "Not AL1 error"
+  },
+  "error_authentication": {
+    "defaultMessage": "Authentication error <ul><li>The service you tried to access failed during the authentication stage.</li><li>This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again.</li><li>If you cannot resolve the issue yourself, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
+  },
+  "error_edu_person_orcid": {
+    "defaultMessage": "eduPersonOrcid error"
+  },
+  "error_edu_person_principal_name": {
+    "defaultMessage": "eduPersonPrincipalName error"
+  },
+  "error_identification_failed": {
+    "defaultMessage": "Identification failed <ul><li>The service that you tried to access did not get all required attributes for identification and/or personalization.</li><li>This may be because your institution is missing those attributes or that your institution is not configured to release those attributes to the service you tried to access.</li><li>Please contact support at your institution and include the name of the service you tried to access, any missing attributes if you know what they are (the service may have informed you) and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
+  },
+  "error_in_form": {
+    "defaultMessage": "Check the form below for errors."
+  },
+  "error_insufficient_privileges": {
+    "defaultMessage": "Insufficient privileges <ul><li>The service that you tried to access requires privileges that you do not have.</li><li>Typical requirements include:</li><div><li>A confirmed user account, or high identity assurance level (AL)</li><li>To confirm your user account, you need to visit IT Service Desk and identify yourself using your national ID card or passport.</li><li>Affiliation</li><li>Your affiliation describes your relationship with the Blue Star University. The set of attributes include for example student and employee. If you are a student and the service you tried to access did not receive the student affiliation, please contact IT Service Desk to correct this.</li><li>Some specific entitlements</li><li>Entitlements are specific privileges at specific services. </li><li>If you are missing entitlements that you think you should have (e.g. you should be able to access this service), please contact IT Service Desk to resolve this.</li></div><li>If you think you should have access, please contact support at your institution and include the name of the service you tried to access, any privileges that were noted as missing and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
+  },
+  "error_login_failed": {
+    "defaultMessage": "Login failed <ul><li>Login failed at the service you tried to access. Please see below for possible reasons and actions.</li></ul>"
+  },
+  "error_lookup_mobile_task": {
+    "defaultMessage": "Your phone number could not be found in the registry. Please try another method."
+  },
+  "error_mfa": {
+    "defaultMessage": "MFA error"
+  },
+  "error_navet_task": {
+    "defaultMessage": "Communication problem with Navet"
+  },
+  "error_sp_example_nin": {
+    "defaultMessage": "You need to verify your eduID account"
+  },
+  "error_technical_info_heading": {
+    "defaultMessage": "Technical Information"
+  },
+  "error_without_code": {
+    "defaultMessage": "Insufficient error information received, please retry or contact support"
+  },
+  "faq_link": {
+    "defaultMessage": "For more information see the"
+  },
+  "finish.access-more": {
+    "defaultMessage": "Access more"
+  },
+  "finish.can-now-login": {
+    "defaultMessage": "You can now log in"
+  },
+  "finish.confirm-identity": {
+    "defaultMessage": "CONFIRM IDENTITY"
+  },
+  "finish.finish": {
+    "defaultMessage": "FINISH"
+  },
+  "finish.got-it": {
+    "defaultMessage": "go to my eduid"
+  },
+  "finish.registration-complete": {
+    "defaultMessage": "You have completed the registration for eduID."
+  },
+  "finish.registration-details": {
+    "defaultMessage": "These are your login details for eduID."
+  },
+  "finish.sites-accept": {
+    "defaultMessage": "Your account is now ready for use with sites that accept"
+  },
+  "finish.to-dashboard": {
+    "defaultMessage": "To get access to additional sites that require a confirmed identity, proceed to the dashboard."
+  },
+  "finish.unconfirmed-identities": {
+    "defaultMessage": "unconfirmed identities"
+  },
+  "foot.change-version-tip": {
+    "defaultMessage": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
+  },
+  "header.faq": {
+    "defaultMessage": "Help"
+  },
+  "header.logout": {
+    "defaultMessage": "Logout"
+  },
+  "header.signin": {
+    "defaultMessage": "Log in"
+  },
+  "header.signup": {
+    "defaultMessage": "SIGN UP"
+  },
+  "letter.already-sent": {
+    "defaultMessage": "You have already been sent a verification letter"
+  },
+  "letter.bad-postal-address": {
+    "defaultMessage": "The registered postal address is not a valid address"
+  },
+  "letter.button_text_code": {
+    "defaultMessage": "Enter confirmation code here"
+  },
+  "letter.button_text_request": {
+    "defaultMessage": "by post"
+  },
+  "letter.initialize_proofing_help_text": {
+    "defaultMessage": "The letter will contain a code that for security reasons expires in two weeks."
+  },
+  "letter.letter_sent_msg": {
+    "defaultMessage": "You have been sent a verification letter"
+  },
+  "letter.lost_code": {
+    "defaultMessage": "When you click on the \"Send code\" link a letter with a verification code will be sent to your official post address.",
+    "description": "Text for letter proofing confirm dialog"
+  },
+  "letter.modal_confirm_info": {
+    "defaultMessage": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
+  },
+  "letter.modal_confirm_title": {
+    "defaultMessage": "Use a confirmation code sent by post to your house"
+  },
+  "letter.no-address-found": {
+    "defaultMessage": "No postal address found"
+  },
+  "letter.no_state_found": {
+    "defaultMessage": "No state found"
+  },
+  "letter.placeholder": {
+    "defaultMessage": "Letter confirmation code",
+    "description": "Placeholder for letter proofing text input"
+  },
+  "letter.resend_code": {
+    "defaultMessage": "Send code",
+    "description": "Text for letter code resend button"
+  },
+  "letter.saved-unconfirmed": {
+    "defaultMessage": "A letter with confirmation code has been sent."
+  },
+  "letter.verification_success": {
+    "defaultMessage": "Successfully verified national id number"
+  },
+  "letter.verify_title": {
+    "defaultMessage": "Add the code you have received by post"
+  },
+  "letter.wrong-code": {
+    "defaultMessage": "Incorrect verification code"
+  },
+  "lmp.button_text_code": {
+    "defaultMessage": "Enter confirmation code here"
+  },
+  "lmp.button_text_request": {
+    "defaultMessage": "by phone"
+  },
+  "lmp.confirm_info": {
+    "defaultMessage": "This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity."
+  },
+  "lmp.initialize_proofing_help_text": {
+    "defaultMessage": "The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers."
+  },
+  "lmp.initialize_proofing_help_text_tip_1": {
+    "defaultMessage": "Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers"
+  },
+  "lmp.modal_confirm_title": {
+    "defaultMessage": "Check if your phone number is connected to your id number."
+  },
+  "lmp.verification_success": {
+    "defaultMessage": "Your national id number has been successfully verified"
+  },
+  "login.assurance_failure": {
+    "defaultMessage": "An error occurred. Please try again later."
+  },
+  "login.assurance_not_possible": {
+    "defaultMessage": "The service requires something that eduID cannot provide. Contact the service owner for help."
+  },
+  "login.bad_ref": {
+    "defaultMessage": "The was a problem a problem with the reference number in the URL, please reload the page."
+  },
+  "login.credential_expired": {
+    "defaultMessage": "The credential has expired because it was not used in 18 months. Perform a password reset or log in using some other credential."
+  },
+  "login.general_failure": {
+    "defaultMessage": "An error occurred. Please try again later."
+  },
+  "login.mfa.h2-heading": {
+    "defaultMessage": "Log in: Extra level of security"
+  },
+  "login.mfa.paragraph": {
+    "defaultMessage": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
+  },
+  "login.mfa.primary-option.button": {
+    "defaultMessage": "Use security key"
+  },
+  "login.mfa.primary-option.hint": {
+    "defaultMessage": "If your security key has a button, don’t forget to tap it."
+  },
+  "login.mfa.primary-option.title": {
+    "defaultMessage": "Security key"
+  },
+  "login.mfa.secondary-option.button": {
+    "defaultMessage": "Use my '<span class=\"verbatim\">Freja&nbsp;eID+</span>'"
+  },
+  "login.mfa.secondary-option.title": {
+    "defaultMessage": "Freja eID+"
+  },
+  "login.mfa_auth_failure": {
+    "defaultMessage": "There was a problem with the authentication, please try again."
+  },
+  "login.no_sso_session": {
+    "defaultMessage": "There was a problem, please reload the page."
+  },
+  "login.not_available": {
+    "defaultMessage": "An error occurred. Please try again later."
+  },
+  "login.not_implemented": {
+    "defaultMessage": "There was a problem, please try again."
+  },
+  "login.swamid_mfa_required": {
+    "defaultMessage": "The service requires Person-Proofed multi-factor authentication (SWAMID MFA). Visit the eduID dashboard to add a verified Security Key."
+  },
+  "login.tou.button": {
+    "defaultMessage": "I accept"
+  },
+  "login.tou.h2-heading": {
+    "defaultMessage": "Log in: Terms of use"
+  },
+  "login.tou.legal-title": {
+    "defaultMessage": "General rules for eduID users:"
+  },
+  "login.tou.legal-warning": {
+    "defaultMessage": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
+  },
+  "login.tou.paragraph": {
+    "defaultMessage": "We need an updated acceptance from you of the eduID terms of use."
+  },
+  "login.tou.version.2016-v1": {
+    "defaultMessage": "'<ul tabIndex=\"0\"> <p>The following generally applies:</p> <li> <p> that all usage of user accounts follow Sweden&apos;s laws and by-laws, </p> </li> <li> <p> that all personal information that you provide, such as name and contact information shall be truthful, </p> </li> <li> <p> that user accounts, password and codes are individual and shall only be used by the intended individual, </p> </li> <li> <p> that SUNET&apos;s ethical rules regulate the &ldquo;other&ldquo; usage. </p> </li> </ul> <ul tabIndex=\"0\"> <p>SUNET judges unethical behaviour to be when someone:</p> <li> <p> attempts to gain access to network resources that they do not have the right </p> </li> <li> <p>attempts to conceal their user identity</p> </li> <li> <p> attempts to interfere or disrupt the intended usage of the network </p> </li> <li> <p> clearly wastes available resources (personnel, hardware or software) </p> </li> <li> <p>attempts to disrupt or destroy computer-based information</p> </li> <li> <p>infringes on the privacy of others</p> </li> <li> <p>attempts to insult or offend others</p> </li> </ul>'"
+  },
+  "login.tou.version.2021-v1": {
+    "defaultMessage": "'<ul tabIndex=\"0\"> <p>The following generally applies:</p> <li> <p> This a test version of terms of use version 1 from 2021, </p> </li> <li> <p> The versioning allows us to update terms if needed and keep parallel versions at the same time, </p> </li> <li> <p> And still ensure that we serve the correct version a specific users need to acccept, </p> </li> </ul>'"
+  },
+  "login.user_temporary_locked": {
+    "defaultMessage": "This account has reached the limit for incorrect logins and is temporarily disabled. Try again next calendar month."
+  },
+  "login.user_terminated": {
+    "defaultMessage": "This account has been terminated, but is still present. Perform a password reset to cancel termination."
+  },
+  "login.usernamePw.h2-heading": {
+    "defaultMessage": "Log in"
+  },
+  "login.usernamePw.password-input": {
+    "defaultMessage": "Password"
+  },
+  "login.usernamePw.register-link": {
+    "defaultMessage": "Register here."
+  },
+  "login.usernamePw.register-prompt": {
+    "defaultMessage": "Don't have eduID?"
+  },
+  "login.usernamePw.reset-password-link": {
+    "defaultMessage": "Forgot your password?"
+  },
+  "login.usernamePw.submit-button-busy": {
+    "defaultMessage": "Logging in"
+  },
+  "login.usernamePw.submit-button-idle": {
+    "defaultMessage": "Log in"
+  },
+  "login.wrong_credentials": {
+    "defaultMessage": "The email address or password was incorrect."
+  },
+  "login.wrong_user": {
+    "defaultMessage": "It was not possible to complete the login. Please try again."
+  },
+  "mail_duplicated": {
+    "defaultMessage": "Added email is duplicated"
+  },
+  "main.copyright": {
+    "defaultMessage": "SUNET 2013-2021"
+  },
+  "main.welcome": {
+    "defaultMessage": "Welcome to eduID"
+  },
+  "mfa.edge-no-u2f": {
+    "defaultMessage": "There is a problem with the Edge browser and U2F security keys. Please try with Firefox or Chrome."
+  },
+  "mfa.error-getting-token": {
+    "defaultMessage": "There was a problem using your security key"
+  },
+  "mfa.extra-security-enabled": {
+    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
+  },
+  "mfa.freja-eid": {
+    "defaultMessage": "Use Freja eID instead"
+  },
+  "mfa.login-tapit": {
+    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
+  },
+  "mfa.no-webauthn-support": {
+    "defaultMessage": "No support for security keys"
+  },
+  "mfa.no-webauthn-support-text": {
+    "defaultMessage": "You have registered a security key for authentication, but this browser does not support them. Please use another browser to use your security keys."
+  },
+  "mfa.problems-heading": {
+    "defaultMessage": "Problems?"
+  },
+  "mfa.reset-password-tapit": {
+    "defaultMessage": "Use your security key to reset password. If it has a button, tap it."
+  },
+  "mfa.try-again": {
+    "defaultMessage": "Try again"
+  },
+  "mfa.two-factor-authn": {
+    "defaultMessage": "Use your security key to log in. If it has a button, tap it."
+  },
+  "mobile.button_add": {
+    "defaultMessage": "Add"
+  },
+  "mobile.confirm_mobile_placeholder": {
+    "defaultMessage": "Phone confirmation code",
+    "description": "Placeholder for phone text input"
+  },
+  "mobile.confirm_title": {
+    "defaultMessage": "Enter the code sent to <b>{phone}</b>"
+  },
+  "mobile.mobile": {
+    "defaultMessage": "mobile"
+  },
+  "mobile.resend_success": {
+    "defaultMessage": "New code sent to {email}"
+  },
+  "nin needs to be formatted as 18|19|20yymmddxxxx": {
+    "defaultMessage": "National identity number needs to be in the form of yyyymmddxxxx"
+  },
+  "nin_display.profile.main_title": {
+    "defaultMessage": "Id number"
+  },
+  "nin_display.profile.no_nin": {
+    "defaultMessage": "add id number"
+  },
+  "nin_display.verify-identity_unverified_main_title": {
+    "defaultMessage": "1. Your added id number"
+  },
+  "nin_display.verify-identity_verified_main_title": {
+    "defaultMessage": "id number"
+  },
+  "nin_hide_last_four_digits": {
+    "defaultMessage": "HIDE"
+  },
+  "nin_show_last_four_digits": {
+    "defaultMessage": "SHOW"
+  },
+  "nins.illegal_chars": {
+    "defaultMessage": "A national id number can only have digits"
+  },
+  "nins.input_help_text": {
+    "defaultMessage": "National identity number with 12 digits"
+  },
+  "nins.input_placeholder": {
+    "defaultMessage": "yyyymmddnnnn"
+  },
+  "nins.invalid_nin": {
+    "defaultMessage": "Invalid national id number"
+  },
+  "nins.no-mobile-match": {
+    "defaultMessage": "No phone number matching the given national id number"
+  },
+  "nins.only_one_to_verify": {
+    "defaultMessage": "You can only have one unverified national id number to verify it. Please remove the unwanted ones."
+  },
+  "nins.success_removal": {
+    "defaultMessage": "Successfully removed national id number"
+  },
+  "nins.successfully_added": {
+    "defaultMessage": "Your id number was added."
+  },
+  "nins.valid_nin": {
+    "defaultMessage": "Valid national id number"
+  },
+  "nins.verified_no_rm": {
+    "defaultMessage": "You cannot remove your verified national id number"
+  },
+  "nins.wrong_length": {
+    "defaultMessage": "A national id number must have 12 digits"
+  },
+  "oc.error_missing_nin": {
+    "defaultMessage": "Please add a national identity number and try again"
+  },
+  "oc.error_unknown_error": {
+    "defaultMessage": "Temporary technical difficulties, please try again later"
+  },
+  "oc.initialize_proofing": {
+    "defaultMessage": "SE-LEG"
+  },
+  "oc.initialize_proofing_help_text": {
+    "defaultMessage": "To use this option you need to visit a '<a href=\"https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/\" target=\"_blank\">SE-LEG RA</a>' and show identification."
+  },
+  "oc.instructions_step_1": {
+    "defaultMessage": "Visit the nearest library on this list: '<ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>'"
+  },
+  "oc.instructions_step_2": {
+    "defaultMessage": "Bring your chosen form of ID and the QR code below and ask the librarian for a verification of your eduID account."
+  },
+  "oc.instructions_step_3": {
+    "defaultMessage": "Within a couple of hours you account should be verified."
+  },
+  "oc.instructions_title": {
+    "defaultMessage": "How to confirm your account using SE-LEG"
+  },
+  "oc.modal_title": {
+    "defaultMessage": "Confirm using SE-LEG"
+  },
+  "ocf.error_missing_nin": {
+    "defaultMessage": "Please add a national identity number and try again"
+  },
+  "ocf.error_unknown_error": {
+    "defaultMessage": "Temporary technical difficulties, please try again later"
+  },
+  "ocf.freja_instructions_install_link": {
+    "defaultMessage": "I need to install Freja eID"
+  },
+  "ocf.freja_instructions_step_1": {
+    "defaultMessage": "Install the Freja eID app on your mobile device."
+  },
+  "ocf.freja_instructions_step_2": {
+    "defaultMessage": "Open the app and follow the instructions to reach Freja eID+ (Plus) status."
+  },
+  "ocf.freja_instructions_step_3": {
+    "defaultMessage": "Bring your chosen form of ID to an authorized agent and ask them to scan the QR-code in the Freja eID app. There is a map function in the Freja eID app to help you locate your nearest agent."
+  },
+  "ocf.freja_instructions_step_4": {
+    "defaultMessage": "Return here using your mobile phone and click the link at the bottom of the page. The app will open."
+  },
+  "ocf.freja_instructions_step_5": {
+    "defaultMessage": "Approve that Freja eID sends your personal identity number to eduID. Done!"
+  },
+  "ocf.freja_instructions_title": {
+    "defaultMessage": "How to confirm your account using Freja eID"
+  },
+  "ocf.initialize_proofing": {
+    "defaultMessage": "with Freja eID"
+  },
+  "ocf.initialize_proofing_help_text": {
+    "defaultMessage": "To use this option you need to have the '<a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID app</a>' installed on your device."
+  },
+  "ocf.modal_title": {
+    "defaultMessage": "Confirm using Freja eID"
+  },
+  "ocf.not_on_mobile_message": {
+    "defaultMessage": "You need to switch to a mobile device (iOS or Android) with '<a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a>' installed before you will be able to confirm your account using Freja eID."
+  },
+  "ocf.not_on_mobile_title": {
+    "defaultMessage": "Not using your phone?"
+  },
+  "ocf.open_app": {
+    "defaultMessage": "I have Freja eID installed"
+  },
+  "orc.about_link": {
+    "defaultMessage": "Learn more about ORCID in eduID from our '<a href=\"https://www.eduid.se/en/faq.html\">FAQ</a>'."
+  },
+  "orc.already_connected": {
+    "defaultMessage": "ORCID already connected to this account"
+  },
+  "orc.authorization_fail": {
+    "defaultMessage": "ORCID authentication failed"
+  },
+  "orc.authorization_success": {
+    "defaultMessage": "ORCID connected successfully"
+  },
+  "orc.button_connect": {
+    "defaultMessage": "Add ORCID account"
+  },
+  "orc.long_description": {
+    "defaultMessage": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
+  },
+  "orc.sub_missmatch": {
+    "defaultMessage": "Subject mismatch when trying to connect ORCID account"
+  },
+  "orc.title": {
+    "defaultMessage": "ORCID"
+  },
+  "orc.unknown_state": {
+    "defaultMessage": "State was unknown when trying to connect ORCID account"
+  },
+  "out_of_sync": {
+    "defaultMessage": "User data is out of sync. Reload page to re-sync."
+  },
+  "pd.all-data-success": {
+    "defaultMessage": "Successfully retrieved personal information"
+  },
+  "pd.choose-language": {
+    "defaultMessage": "Choose language"
+  },
+  "pd.display_name": {
+    "defaultMessage": "Display name"
+  },
+  "pd.display_name_input_help_text": {
+    "defaultMessage": "Some services will show this instead of your first and last name."
+  },
+  "pd.display_name_inputplaceholder": {
+    "defaultMessage": "First and last name"
+  },
+  "pd.display_name_placeholder": {
+    "defaultMessage": "Optional alias"
+  },
+  "pd.edit.button": {
+    "defaultMessage": "edit"
+  },
+  "pd.edit.title": {
+    "defaultMessage": "Edit name and language"
+  },
+  "pd.en_lang": {
+    "defaultMessage": "English"
+  },
+  "pd.given_name": {
+    "defaultMessage": "First name"
+  },
+  "pd.hint.names_locked_when_verified": {
+    "defaultMessage": "First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
+  },
+  "pd.language": {
+    "defaultMessage": "Language"
+  },
+  "pd.long_description": {
+    "defaultMessage": "This information may be used to personalise services that you access with your eduID."
+  },
+  "pd.main_title": {
+    "defaultMessage": "Names & language"
+  },
+  "pd.no_data_added": {
+    "defaultMessage": "No information has been added."
+  },
+  "pd.pdata-success": {
+    "defaultMessage": "Successfully retrieved personal information"
+  },
+  "pd.save-success": {
+    "defaultMessage": "Personal information updated"
+  },
+  "pd.surname": {
+    "defaultMessage": "Last name"
+  },
+  "pd.sv_lang": {
+    "defaultMessage": "Svenska"
+  },
+  "pd.update_locked_names": {
+    "defaultMessage": "Update first and last names from the Swedish Population Register."
+  },
+  "pdata.field_required": {
+    "defaultMessage": "This field is required"
+  },
+  "pfilled.completion": {
+    "defaultMessage": "Completion"
+  },
+  "phone.e164_format": {
+    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written using international notation, starting with '+' and followed by 10-20 digits."
+  },
+  "phone.swedish_mobile_format": {
+    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written using international notation, starting with '+' and followed by 10-20 digits."
+  },
+  "phone_duplicated": {
+    "defaultMessage": "Added number is duplicated"
+  },
+  "phone_format": {
+    "defaultMessage": "Invalid telephone number. It must be a valid Swedish number, or written using international notation, starting with '+' and followed by 6-20 digits."
+  },
+  "phones.add_new": {
+    "defaultMessage": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of numbers."
+  },
+  "phones.button_add_more": {
+    "defaultMessage": "+ add more"
+  },
+  "phones.cannot_remove_primary": {
+    "defaultMessage": "You cannot remove your primary phone number"
+  },
+  "phones.cannot_remove_unique": {
+    "defaultMessage": "You must have at least one phone number"
+  },
+  "phones.code-sent": {
+    "defaultMessage": "Successfully sent verification code"
+  },
+  "phones.code_expired_send_new": {
+    "defaultMessage": "Expired verification code, sending another"
+  },
+  "phones.code_invalid": {
+    "defaultMessage": "Invalid verification code"
+  },
+  "phones.code_invalid_or_expired": {
+    "defaultMessage": "The confirmation code is invalid or it has expired, please try again or request a new code"
+  },
+  "phones.duplicated": {
+    "defaultMessage": "That phone number is already in use, please choose another"
+  },
+  "phones.get-success": {
+    "defaultMessage": "Successfully retrieved phone numbers"
+  },
+  "phones.input_help_text": {
+    "defaultMessage": "Phone number starting with 0 or +"
+  },
+  "phones.input_placeholder": {
+    "defaultMessage": "Phone number"
+  },
+  "phones.invalid_phone": {
+    "defaultMessage": "Invalid phone number"
+  },
+  "phones.long_description": {
+    "defaultMessage": "You can connect one or more mobile phone numbers to your eduID, but one has to be set as primary."
+  },
+  "phones.main_title": {
+    "defaultMessage": "Mobile phone numbers"
+  },
+  "phones.primary-success": {
+    "defaultMessage": "The phone number was set as primary"
+  },
+  "phones.removal-success": {
+    "defaultMessage": "Successfully removed phone number"
+  },
+  "phones.save-success": {
+    "defaultMessage": "The phone number was saved"
+  },
+  "phones.unconfirmed_number_not_primary": {
+    "defaultMessage": "An unconfirmed phone number cannot be set as primary"
+  },
+  "phones.unknown_phone": {
+    "defaultMessage": "We have no record of the phone number you provided"
+  },
+  "phones.verification-success": {
+    "defaultMessage": "Successfully verified phone number"
+  },
+  "placeholder.password": {
+    "defaultMessage": "enter password",
+    "description": "placeholder text for password input"
+  },
+  "profile.email_display_no_data": {
+    "defaultMessage": "no email added"
+  },
+  "profile.email_display_title": {
+    "defaultMessage": "Email address"
+  },
+  "profile.eppn_display_title": {
+    "defaultMessage": "eppn"
+  },
+  "profile.name_display_no_data": {
+    "defaultMessage": "add name"
+  },
+  "profile.name_display_title": {
+    "defaultMessage": "Name"
+  },
+  "profile.phone_display_no_data": {
+    "defaultMessage": "add phone number"
+  },
+  "profile.phone_display_non-primary_data": {
+    "defaultMessage": "make number primary"
+  },
+  "profile.phone_display_title": {
+    "defaultMessage": "Phone number"
+  },
+  "profile.phone_display_unconfirmed_data": {
+    "defaultMessage": "confirm added number"
+  },
+  "pwfield.bad": {
+    "defaultMessage": "Very weak password"
+  },
+  "pwfield.good": {
+    "defaultMessage": "Fairly strong password"
+  },
+  "pwfield.repeat_different": {
+    "defaultMessage": "The repeated password is different from the first"
+  },
+  "pwfield.strong": {
+    "defaultMessage": "Strong password"
+  },
+  "pwfield.terrible": {
+    "defaultMessage": "Extremely weak password"
+  },
+  "pwfield.weak": {
+    "defaultMessage": "Weak password"
+  },
+  "register.create-account": {
+    "defaultMessage": "Sign up with your email address to start."
+  },
+  "register.paragraph": {
+    "defaultMessage": "Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number."
+  },
+  "register.sub-heading": {
+    "defaultMessage": "Register your email address to create your eduID."
+  },
+  "register.toLogin": {
+    "defaultMessage": "If you already have eduID you can log in",
+    "description": "Signup instructions"
+  },
+  "required": {
+    "defaultMessage": "*Field cannot be empty"
+  },
+  "resend.button": {
+    "defaultMessage": "Send a new confirmation link"
+  },
+  "resend.email-label": {
+    "defaultMessage": "Complete registration by clicking the link sent to:"
+  },
+  "resend.link-sent": {
+    "defaultMessage": "A link has been sent to your email address."
+  },
+  "resetpw.accept-password": {
+    "defaultMessage": "accept password"
+  },
+  "resetpw.check-email-link": {
+    "defaultMessage": "Please check your email <b>{email}</b> to continue. Link is valid for 2 hours."
+  },
+  "resetpw.continue_reset_password": {
+    "defaultMessage": "Continue reset password"
+  },
+  "resetpw.copied-in-clipboard": {
+    "defaultMessage": "Copied!"
+  },
+  "resetpw.copy-to-clipboard": {
+    "defaultMessage": "Copy to clipboard"
+  },
+  "resetpw.email-send-failure": {
+    "defaultMessage": "Error sending mail, please try again"
+  },
+  "resetpw.email-throttled": {
+    "defaultMessage": "Reset password link already sent please try again later"
+  },
+  "resetpw.enter-code": {
+    "defaultMessage": "enter code"
+  },
+  "resetpw.expired-email-code": {
+    "defaultMessage": "Password reset link has expired. Please send link again."
+  },
+  "resetpw.expired-phone-code": {
+    "defaultMessage": "Phone code has expired. Please send phone code again."
+  },
+  "resetpw.external-mfa-fail": {
+    "defaultMessage": "External MFA failed."
+  },
+  "resetpw.extra-phone_send_sms": {
+    "defaultMessage": "Send sms to {phone}"
+  },
+  "resetpw.extra-security_description": {
+    "defaultMessage": "A password reset using an extra security option will keep your account confirmed."
+  },
+  "resetpw.extra-security_heading": {
+    "defaultMessage": "Select an extra security option"
+  },
+  "resetpw.fido-token-fail": {
+    "defaultMessage": "There was a problem using your security key for resetting password"
+  },
+  "resetpw.go-back": {
+    "defaultMessage": "go back"
+  },
+  "resetpw.go-to-eduid": {
+    "defaultMessage": "Go to eduID"
+  },
+  "resetpw.heading-add-email": {
+    "defaultMessage": "Enter your email address registered to your account"
+  },
+  "resetpw.invalid_session": {
+    "defaultMessage": "Invalid session, please try again"
+  },
+  "resetpw.invalid_user": {
+    "defaultMessage": "User has not completed signup"
+  },
+  "resetpw.new-password": {
+    "defaultMessage": "New password"
+  },
+  "resetpw.phone-code-unknown": {
+    "defaultMessage": "Incorrect phone code."
+  },
+  "resetpw.phone-invalid": {
+    "defaultMessage": "Invalid phone number."
+  },
+  "resetpw.pw-reset-fail": {
+    "defaultMessage": "Reset password failed, please try again"
+  },
+  "resetpw.received-sms": {
+    "defaultMessage": "Already received sms?"
+  },
+  "resetpw.resend-link": {
+    "defaultMessage": "If you didn’t receive the email? Check your junk email, or"
+  },
+  "resetpw.resend-link-button": {
+    "defaultMessage": "resend link"
+  },
+  "resetpw.resend-timer-in": {
+    "defaultMessage": "in"
+  },
+  "resetpw.reset-pw-initialized": {
+    "defaultMessage": "Reset password link has been sent to your email."
+  },
+  "resetpw.return-login": {
+    "defaultMessage": "return to Login"
+  },
+  "resetpw.send-link": {
+    "defaultMessage": "send link to email"
+  },
+  "resetpw.send-sms-failed": {
+    "defaultMessage": "Failed to send phone code"
+  },
+  "resetpw.send-sms-success": {
+    "defaultMessage": "One time verification code has been sent to your phone."
+  },
+  "resetpw.set-new-password-description": {
+    "defaultMessage": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password."
+  },
+  "resetpw.set-new-password-heading": {
+    "defaultMessage": "Set your new password"
+  },
+  "resetpw.set-new-password-success": {
+    "defaultMessage": "Password has been updated."
+  },
+  "resetpw.sms-throttled": {
+    "defaultMessage": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one."
+  },
+  "resetpw.state-not-found": {
+    "defaultMessage": "Could not continue the reset password process. Please try again"
+  },
+  "resetpw.use_extra_security_key": {
+    "defaultMessage": "Use your security key"
+  },
+  "resetpw.user-not-found": {
+    "defaultMessage": "User does not exist, please check your email address"
+  },
+  "resetpw.without_extra_security": {
+    "defaultMessage": "Your account will require confirmation after the password has been reset."
+  },
+  "resetpw.without_extra_security_heading": {
+    "defaultMessage": "<b>Continue without extra security option </b>"
+  },
+  "runtime_error.generic.description": {
+    "defaultMessage": "The issue has been reported to the team."
+  },
+  "runtime_error.generic.label.reload": {
+    "defaultMessage": "Try again:"
+  },
+  "runtime_error.generic.label.toHome": {
+    "defaultMessage": "Start over:"
+  },
+  "runtime_error.generic.p.toHome": {
+    "defaultMessage": "Return to home"
+  },
+  "runtime_error.generic.reload": {
+    "defaultMessage": "Reload page"
+  },
+  "runtime_error.generic.title": {
+    "defaultMessage": "There was a problem displaying the page."
+  },
+  "security.add_u2f_token": {
+    "defaultMessage": "Add U2F token"
+  },
+  "security.add_webauthn_token_device": {
+    "defaultMessage": "Register this device as security key"
+  },
+  "security.add_webauthn_token_key": {
+    "defaultMessage": "Add security key"
+  },
+  "security.button_delete_account": {
+    "defaultMessage": "Delete eduID"
+  },
+  "security.confirm_security_placeholder": {
+    "defaultMessage": "Describe your security key",
+    "description": "Placeholder for security key text input"
+  },
+  "security.creation_date": {
+    "defaultMessage": "Created on"
+  },
+  "security.credential": {
+    "defaultMessage": "Credential"
+  },
+  "security.description": {
+    "defaultMessage": "Name"
+  },
+  "security.description_invalid_format": {
+    "defaultMessage": "The description is too long",
+    "description": "Error message for max length"
+  },
+  "security.help_text": {
+    "defaultMessage": "max 50 characters",
+    "description": "Help text for security key max length"
+  },
+  "security.last-used.date": {
+    "defaultMessage": "Never used"
+  },
+  "security.last_used": {
+    "defaultMessage": "Used on"
+  },
+  "security.main_title": {
+    "defaultMessage": "Security"
+  },
+  "security.password_credential_type": {
+    "defaultMessage": "Password"
+  },
+  "security.remove": {
+    "defaultMessage": "Remove"
+  },
+  "security.second-factor": {
+    "defaultMessage": "Add a security key as a second layer of identification, beyond email and password, to prove you are the owner of your eduID."
+  },
+  "security.security-key_title": {
+    "defaultMessage": "Make your eduID more secure"
+  },
+  "security.u2f-describe-title": {
+    "defaultMessage": "Enter a description for the U2F token you are about to register"
+  },
+  "security.u2f-token-removed": {
+    "defaultMessage": "U2F token successfully removed"
+  },
+  "security.u2f.description_to_long": {
+    "defaultMessage": "You tried to set a U2F token description long"
+  },
+  "security.u2f.max_allowed_tokens": {
+    "defaultMessage": "You already have the maximum allowed number of tokens"
+  },
+  "security.u2f.missing_challenge_data": {
+    "defaultMessage": "Found no U2F challenge data in your session"
+  },
+  "security.u2f.missing_enrollment_data": {
+    "defaultMessage": "Found no U2F enrollment data in your session"
+  },
+  "security.u2f.missing_token": {
+    "defaultMessage": "No U2F token found in your session"
+  },
+  "security.u2f.no_token_found": {
+    "defaultMessage": "No U2F token found in your session"
+  },
+  "security.u2f_credential_type": {
+    "defaultMessage": "U2F token"
+  },
+  "security.u2f_register_success": {
+    "defaultMessage": "U2F token successfully registered"
+  },
+  "security.u2f_registration_error_bad": {
+    "defaultMessage": "U2F error: Bad request"
+  },
+  "security.u2f_registration_error_code": {
+    "defaultMessage": "U2F failed with error code: {errorCode}"
+  },
+  "security.u2f_registration_error_device": {
+    "defaultMessage": "U2F error: Device ineligible"
+  },
+  "security.u2f_registration_error_timeout": {
+    "defaultMessage": "U2F error: Timeout"
+  },
+  "security.u2f_registration_error_unknown": {
+    "defaultMessage": "U2F error: Unknown error"
+  },
+  "security.u2f_registration_error_unsupported": {
+    "defaultMessage": "U2F error: Configuration unsupported"
+  },
+  "security.user-update-throttled": {
+    "defaultMessage": "Too many attempts to update names have been made. Try again later."
+  },
+  "security.user-updated": {
+    "defaultMessage": "First and last names are up-to-date with those registered in the Swedish Population Register."
+  },
+  "security.verified": {
+    "defaultMessage": "Verified"
+  },
+  "security.verify": {
+    "defaultMessage": "Verify key"
+  },
+  "security.webauthn-describe-title": {
+    "defaultMessage": "Add a name for your security key"
+  },
+  "security.webauthn-missing-pdata": {
+    "defaultMessage": "You should add your personal data before adding a security key"
+  },
+  "security.webauthn-noremove-last": {
+    "defaultMessage": "You are not allowed to remove your only security key"
+  },
+  "security.webauthn-token-notfound": {
+    "defaultMessage": "Security token not found"
+  },
+  "security.webauthn-token-removed": {
+    "defaultMessage": "Security key has been removed."
+  },
+  "security.webauthn.max_allowed_tokens": {
+    "defaultMessage": "You are not allowed to register more security keys"
+  },
+  "security.webauthn_credential_type": {
+    "defaultMessage": "Security key"
+  },
+  "security.webauthn_register_success": {
+    "defaultMessage": "Security key added"
+  },
+  "settings.account_description": {
+    "defaultMessage": "Click the link to permanently delete your eduID."
+  },
+  "settings.account_title": {
+    "defaultMessage": "Delete eduID"
+  },
+  "settings.change_info": {
+    "defaultMessage": "You will need to log in again to change your password."
+  },
+  "settings.change_password": {
+    "defaultMessage": "Change password"
+  },
+  "settings.confirm_title_chpass": {
+    "defaultMessage": "For security reasons..."
+  },
+  "settings.long_description": {
+    "defaultMessage": "Click the link to change your eduID password."
+  },
+  "settings.main_title": {
+    "defaultMessage": "Change password"
+  },
+  "settings.modal_delete_title": {
+    "defaultMessage": "Are you sure you want to delete your eduID?"
+  },
+  "signup.recaptcha-not-verified": {
+    "defaultMessage": "There was a problem verifying that you are a human. Please try again"
+  },
+  "signup.registering-address-used": {
+    "defaultMessage": "The email address you entered is already in use"
+  },
+  "signup.registering-input": {
+    "defaultMessage": "Email address"
+  },
+  "signup.registering-new": {
+    "defaultMessage": "Email address successfully registered"
+  },
+  "signup.registering-resend-code": {
+    "defaultMessage": "Verification email resent"
+  },
+  "signup.verification-resent": {
+    "defaultMessage": "Verification email resent"
+  },
+  "still-valid-code": {
+    "defaultMessage": "You have recently been sent a verification code. Please wait at least 5 minutes to request a new one."
+  },
+  "text.link": {
+    "defaultMessage": "here.",
+    "description": "Placeholder for phone text input"
+  },
+  "tl.make_primary": {
+    "defaultMessage": "MAKE PRIMARY"
+  },
+  "tl.pending": {
+    "defaultMessage": "confirm"
+  },
+  "tl.primary": {
+    "defaultMessage": "PRIMARY"
+  },
+  "tou.accept": {
+    "defaultMessage": "Accept"
+  },
+  "tou.cancel": {
+    "defaultMessage": "Cancel"
+  },
+  "tou.header": {
+    "defaultMessage": "General rules for eduID users"
+  },
+  "tou.must-accept": {
+    "defaultMessage": "You must accept the new terms of use before continuing"
+  },
+  "tou.not-tou": {
+    "defaultMessage": "There were problems retrieving the current ToU, please contact the site administrators."
+  },
+  "u2f.action-required": {
+    "defaultMessage": "Action required for multi factor authentication"
+  },
+  "u2f.push-the-button": {
+    "defaultMessage": "Please touch the button in your U2F key"
+  },
+  "unexpected-problem": {
+    "defaultMessage": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
+  },
+  "unexpected-success": {
+    "defaultMessage": "Success"
+  },
+  "used.email-in-use": {
+    "defaultMessage": "An eduID is already using {email}"
+  },
+  "used.email-label": {
+    "defaultMessage": "If this is your eduID, you can reset your password to log back in."
+  },
+  "used.reset-password": {
+    "defaultMessage": "Reset your password"
+  },
+  "user-out-of-sync": {
+    "defaultMessage": "User data is out of sync. Reload page to re-sync."
+  },
+  "value not changed": {
+    "defaultMessage": "The value is not changed"
+  },
+  "verify-identity.add-nin_heading": {
+    "defaultMessage": "1. Add your id number"
+  },
+  "verify-identity.connect-nin_description": {
+    "defaultMessage": "Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another."
+  },
+  "verify-identity.connect-nin_heading": {
+    "defaultMessage": "2. Verify your id number"
+  },
+  "verify-identity.unverified_main_title": {
+    "defaultMessage": "Connect your identity to your eduID"
+  },
+  "verify-identity.unverified_page-description": {
+    "defaultMessage": "To be able to use eduID you have to prove your identity. Add your national id number and verify it in real life."
+  },
+  "verify-identity.verified_main_title": {
+    "defaultMessage": "Your eduID is ready to use"
+  },
+  "verify-identity.verified_page-description": {
+    "defaultMessage": "The below id number is now connected to this eduID. Use your eduID to log in to sevices related to higher education."
+  },
+  "verify-identity.verified_pw_reset_extra_security": {
+    "defaultMessage": "Add a phone number or a security key to your eduID to keep your identity at password reset."
+  },
+  "verify-identity.vetting_explanation_add_nin": {
+    "defaultMessage": "Start by adding your ID number above"
+  },
+  "verify-identity.vetting_explanation_add_phone_number": {
+    "defaultMessage": "Start by adding your phone number in"
+  },
+  "verify-identity.vetting_explanation_confirm_phone_number": {
+    "defaultMessage": "Confirm your phone number in"
+  },
+  "verify-identity.vetting_explanation_only_available_swe_number": {
+    "defaultMessage": "Only possible with Swedish phone number"
+  },
+  "verify-identity.vetting_freja_tagline": {
+    "defaultMessage": "For you able to create a Freja eID by visiting one of the authorised agents"
+  },
+  "verify-identity.vetting_letter_code_expired": {
+    "defaultMessage": "The code expired"
+  },
+  "verify-identity.vetting_letter_order_new_code": {
+    "defaultMessage": "Click here to order a new code"
+  },
+  "verify-identity.vetting_letter_received": {
+    "defaultMessage": "Click here again when you have received the letter"
+  },
+  "verify-identity.vetting_letter_sent": {
+    "defaultMessage": "The letter was sent"
+  },
+  "verify-identity.vetting_letter_valid": {
+    "defaultMessage": "The letter is valid to"
+  },
+  "verify-identity.vetting_link_settings": {
+    "defaultMessage": "Settings"
+  },
+  "verify-identity.vetting_phone_tagline": {
+    "defaultMessage": "For you with a Swedish phone number registered in your name"
+  },
+  "verify-identity.vetting_post_tagline": {
+    "defaultMessage": "For you registered at your current address"
+  }
+}
