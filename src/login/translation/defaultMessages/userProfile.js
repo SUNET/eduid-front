@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export const userProfile = {
   // dashboard
@@ -50,25 +50,25 @@ export const userProfile = {
     <FormattedMessage id="dashboard_nav.advanced-settings" defaultMessage={`Advanced settings`} />
   ),
   "dashboard_nav.identity-verify-freja": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="dashboard_nav.identity-verify-freja"
       defaultMessage={`You can verify <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.identity-verify-post-freja": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="dashboard_nav.identity-verify-post-freja"
       defaultMessage={`You can verify <b>by post</b> or <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.identity-verify-post-phone-freja": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="dashboard_nav.identity-verify-post-phone-freja"
       defaultMessage={`You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.settings-confirm-phone": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="dashboard_nav.settings-confirm-phone"
       defaultMessage={`<b>Confirm your number</b> to verify your id by phone`}
     />
@@ -323,7 +323,7 @@ export const userVetting = {
   ),
 
   "eidas.initialize_proofing_help_text": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="eidas.initialize_proofing_help_text"
       defaultMessage={`To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app.`}
     />
@@ -411,7 +411,7 @@ export const userVetting = {
   "oc.initialize_proofing": <FormattedMessage id="oc.initialize_proofing" defaultMessage={`SE-LEG`} />,
 
   "oc.initialize_proofing_help_text": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="oc.initialize_proofing_help_text"
       defaultMessage={`To use this option you need to visit a <a href="https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/" target="_blank">SE-LEG RA</a> and show identification.`}
     />
@@ -424,7 +424,7 @@ export const userVetting = {
   ),
 
   "oc.instructions_step_1": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="oc.instructions_step_1"
       defaultMessage={`Visit the nearest library on this list: <ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>`}
     />
@@ -449,7 +449,7 @@ export const userVetting = {
   "ocf.initialize_proofing": <FormattedMessage id="ocf.initialize_proofing" defaultMessage={`with Freja eID`} />,
 
   "ocf.initialize_proofing_help_text": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="ocf.initialize_proofing_help_text"
       defaultMessage={`To use this option you need to have the <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID app</a> installed on your device.`}
     />
@@ -508,7 +508,7 @@ export const userVetting = {
   "ocf.not_on_mobile_title": <FormattedMessage id="ocf.not_on_mobile_title" defaultMessage={`Not using your phone?`} />,
 
   "ocf.not_on_mobile_message": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="ocf.not_on_mobile_message"
       defaultMessage={`You need to switch to a mobile device (iOS or Android) with <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID</a> installed before you will be able to confirm your account using Freja eID.`}
     />
@@ -714,7 +714,7 @@ export const userData = {
   "mobile.button_add": <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />,
 
   "mobile.confirm_title": (values) => (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="mobile.confirm_title"
       defaultMessage={`Enter the code sent to <b>{phone}</b>`}
       values={values}
@@ -809,7 +809,7 @@ export const userData = {
   "emails.long_description": (
     <FormattedMessage
       id="emails.long_description"
-      defaultMessage={`You can connect one or more email addresses with your eduID 
+      defaultMessage={`You can connect one or more email addresses with your eduID
           account and select one to be your primary email address.`}
     />
   ),
@@ -1016,7 +1016,7 @@ export const userData = {
   "security.second-factor": (
     <FormattedMessage
       id="security.second-factor"
-      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are 
+      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are
     the owner of your eduID.`}
     />
   ),
@@ -1104,7 +1104,7 @@ export const userData = {
   ),
 
   "orc.about_link": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="orc.about_link"
       defaultMessage={`Learn more about ORCID in eduID from our <a href="https://www.eduid.se/en/faq.html">FAQ</a>.`}
     />

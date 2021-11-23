@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export const generalErrors = {
   // non-error errors?
@@ -333,27 +333,27 @@ export const specificErrors = {
   mail_duplicated: <FormattedMessage id="mail_duplicated" defaultMessage={`Added email is duplicated`} />,
 
   error_login_failed: (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="error_login_failed"
       defaultMessage={`Login failed <ul><li>Login failed at the service you tried to access. Please see below for possible reasons and actions.</li></ul>`}
     />
   ),
 
   error_identification_failed: (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="error_identification_failed"
       defaultMessage={`Identification failed <ul><li>The service that you tried to access did not get all required attributes for identification and/or personalization.</li><li>This may be because your institution is missing those attributes or that your institution is not configured to release those attributes to the service you tried to access.</li><li>Please contact support at your institution and include the name of the service you tried to access, any missing attributes if you know what they are (the service may have informed you) and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>`}
     />
   ),
 
   error_edu_person_principal_name: (
-    <FormattedHTMLMessage id="error_edu_person_principal_name" defaultMessage={`eduPersonPrincipalName error`} />
+    <FormattedMessage id="error_edu_person_principal_name" defaultMessage={`eduPersonPrincipalName error`} />
   ),
 
-  error_edu_person_orcid: <FormattedHTMLMessage id="error_edu_person_orcid" defaultMessage={`eduPersonOrcid error`} />,
+  error_edu_person_orcid: <FormattedMessage id="error_edu_person_orcid" defaultMessage={`eduPersonOrcid error`} />,
 
   error_authentication: (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="error_authentication"
       defaultMessage={
         "Authentication error <ul><li>The service you tried to access failed during the authentication stage.</li><li>This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again.</li><li>If you cannot resolve the issue yourself, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
@@ -361,10 +361,10 @@ export const specificErrors = {
     />
   ),
 
-  error_mfa: <FormattedHTMLMessage id="error_mfa" defaultMessage={"MFA error"} />,
+  error_mfa: <FormattedMessage id="error_mfa" defaultMessage={"MFA error"} />,
 
   error_insufficient_privileges: (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="error_insufficient_privileges"
       defaultMessage={
         "Insufficient privileges <ul><li>The service that you tried to access requires privileges that you do not have.</li><li>Typical requirements include:</li><div><li>A confirmed user account, or high identity assurance level (AL)</li><li>To confirm your user account, you need to visit IT Service Desk and identify yourself using your national ID card or passport.</li><li>Affiliation</li><li>Your affiliation describes your relationship with the Blue Star University. The set of attributes include for example student and employee. If you are a student and the service you tried to access did not receive the student affiliation, please contact IT Service Desk to correct this.</li><li>Some specific entitlements</li><li>Entitlements are specific privileges at specific services. </li><li>If you are missing entitlements that you think you should have (e.g. you should be able to access this service), please contact IT Service Desk to resolve this.</li></div><li>If you think you should have access, please contact support at your institution and include the name of the service you tried to access, any privileges that were noted as missing and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
@@ -372,14 +372,12 @@ export const specificErrors = {
     />
   ),
 
-  error_affiliation_student: (
-    <FormattedHTMLMessage id="error_affiliation_student" defaultMessage={"Not student error"} />
-  ),
+  error_affiliation_student: <FormattedMessage id="error_affiliation_student" defaultMessage={"Not student error"} />,
 
-  error_assurance_al1: <FormattedHTMLMessage id="error_assurance_al1" defaultMessage={"Not AL1 error"} />,
+  error_assurance_al1: <FormattedMessage id="error_assurance_al1" defaultMessage={"Not AL1 error"} />,
 
   error_access: (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="error_access"
       defaultMessage={
         "Access error <ul><li>An error occurred when accessing the service.</li><li>If you think you should be able to access the service, please contact support at your institution and include the name of the service you tried to access, any error information given by the service and, if possible, a screenshot of the error message at the service (including the address bar at the top of the web browser) and also of this message.</li></ul>"
@@ -388,10 +386,7 @@ export const specificErrors = {
   ),
 
   error_access_an_error_occurred: (
-    <FormattedHTMLMessage
-      id="error_access_an_error_occurred"
-      defaultMessage={"Error unclear, something stuck somewhere"}
-    />
+    <FormattedMessage id="error_access_an_error_occurred" defaultMessage={"Error unclear, something stuck somewhere"} />
   ),
 
   error_without_code: (
@@ -406,6 +401,6 @@ export const specificErrors = {
   ),
 
   error_technical_info_heading: (
-    <FormattedHTMLMessage id="error_technical_info_heading" defaultMessage={"Technical Information"} />
+    <FormattedMessage id="error_technical_info_heading" defaultMessage={"Technical Information"} />
   ),
 };

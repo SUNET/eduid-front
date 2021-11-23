@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export const changePassword = {
   // help
@@ -162,14 +162,14 @@ export const resetPassword = {
     />
   ),
   "resetpw.check-email-link": (values) => (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="resetpw.check-email-link"
       defaultMessage={`Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours.`}
       values={values}
     />
   ),
   "resetpw.resend-link": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="resetpw.resend-link"
       defaultMessage={`If you didn’t receive the email? Check your junk email, \n or`}
     />
@@ -186,19 +186,19 @@ export const resetPassword = {
     />
   ),
   "resetpw.extra-phone_send_sms": (values) => (
-    <FormattedHTMLMessage id="resetpw.extra-phone_send_sms" defaultMessage={`Send sms to {phone}`} values={values} />
+    <FormattedMessage id="resetpw.extra-phone_send_sms" defaultMessage={`Send sms to {phone}`} values={values} />
   ),
   "resetpw.use_extra_security_key": (
     <FormattedMessage id="resetpw.use_extra_security_key" defaultMessage={`Use your security key`} />
   ),
   "resetpw.without_extra_security_heading": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="resetpw.without_extra_security_heading"
       defaultMessage={`<b>Continue without extra security option </b> `}
     />
   ),
   "resetpw.without_extra_security": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="resetpw.without_extra_security"
       defaultMessage={`Your account will require confirmation after the password has been reset.`}
     />

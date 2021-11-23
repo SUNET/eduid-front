@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export const login = {
   // --- USERNAME & PASSWORD --- //
@@ -45,7 +45,7 @@ export const login = {
     <FormattedMessage id="login.mfa.secondary-option.title" defaultMessage={`Freja eID+`} />
   ),
   "login.mfa.secondary-option.button": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="login.mfa.secondary-option.button"
       defaultMessage={`Use my <span class="verbatim">Freja&nbsp;eID+</span>`}
     />
@@ -72,7 +72,7 @@ export const tou = {
   ),
   // --- TOU: 2016-V1--- //
   "login.tou.version.2016-v1": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="login.tou.version.2016-v1"
       defaultMessage={`<ul tabIndex="0">
       <p>The following generally applies:</p>
@@ -135,7 +135,7 @@ export const tou = {
   ),
   // --- TOU: 2021-V1--- //
   "login.tou.version.2021-v1": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="login.tou.version.2021-v1"
       defaultMessage={`<ul tabIndex="0">
        <p>The following generally applies:</p>
