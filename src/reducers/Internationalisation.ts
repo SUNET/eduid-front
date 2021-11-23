@@ -8,7 +8,7 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface intlState {
+export interface intlState {
   locale: string;
   formats: string;
   messages: string;
@@ -25,7 +25,7 @@ export const intlSlice = createSlice({
   initialState,
   reducers: {
     updateIntl: (state, action: PayloadAction<intlState>) => {
-      state = action.payload;
+      return action.payload; // using return replaces the whole state, 'state = action.payload' doesn't work with immer
     },
   },
 });

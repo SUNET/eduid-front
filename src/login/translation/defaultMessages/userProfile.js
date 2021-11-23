@@ -325,7 +325,7 @@ export const userVetting = {
   "eidas.initialize_proofing_help_text": (
     <FormattedMessage
       id="eidas.initialize_proofing_help_text"
-      defaultMessage={`To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app.`}
+      defaultMessage={`To use this option you will need to first create a digital ID-card in the '<a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a>' app.`}
     />
   ),
 
@@ -413,7 +413,7 @@ export const userVetting = {
   "oc.initialize_proofing_help_text": (
     <FormattedMessage
       id="oc.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to visit a <a href="https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/" target="_blank">SE-LEG RA</a> and show identification.`}
+      defaultMessage={`To use this option you need to visit a '<a href="https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/" target="_blank">SE-LEG RA</a>' and show identification.`}
     />
   ),
 
@@ -426,7 +426,7 @@ export const userVetting = {
   "oc.instructions_step_1": (
     <FormattedMessage
       id="oc.instructions_step_1"
-      defaultMessage={`Visit the nearest library on this list: <ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>`}
+      defaultMessage={`Visit the nearest library on this list: '<ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>'`}
     />
   ),
 
@@ -451,7 +451,7 @@ export const userVetting = {
   "ocf.initialize_proofing_help_text": (
     <FormattedMessage
       id="ocf.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to have the <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID app</a> installed on your device.`}
+      defaultMessage={`To use this option you need to have the '<a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID app</a>' installed on your device.`}
     />
   ),
 
@@ -510,7 +510,7 @@ export const userVetting = {
   "ocf.not_on_mobile_message": (
     <FormattedMessage
       id="ocf.not_on_mobile_message"
-      defaultMessage={`You need to switch to a mobile device (iOS or Android) with <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID</a> installed before you will be able to confirm your account using Freja eID.`}
+      defaultMessage={`You need to switch to a mobile device (iOS or Android) with '<a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID</a>' installed before you will be able to confirm your account using Freja eID.`}
     />
   ),
 };
@@ -1106,7 +1106,7 @@ export const userData = {
   "orc.about_link": (
     <FormattedMessage
       id="orc.about_link"
-      defaultMessage={`Learn more about ORCID in eduID from our <a href="https://www.eduid.se/en/faq.html">FAQ</a>.`}
+      defaultMessage={`Learn more about ORCID in eduID from our '<a href="https://www.eduid.se/en/faq.html">FAQ</a>'.`}
     />
   ),
 
