@@ -9,7 +9,7 @@
     "build-development": "rm -rf node_modules/.cache && node ./buildPlugins.js && webpack --progress",
     "build-staging": "webpack --config webpack.staging.config.js --mode development",
     "build-production": "webpack --config webpack.prod.config.js --mode production",
-    "translations:extract": "formatjs extract src/**/*.{js,ts,tsx} --out-file src/login/translation/extractedMessages.json",
+    "translations:extract": "formatjs extract src/**/*.{js,ts,tsx} --out-file src/login/translation/extractedMessages.json --format transifex",
     "manage:translations": "node ./translationRunner.js",
     "manage:plugins:development": "node ./buildPlugins.js",
     "manage:plugins:staging": "node ./buildPlugins.staging.js",
