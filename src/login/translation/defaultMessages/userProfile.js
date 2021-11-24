@@ -108,7 +108,7 @@ export const userProfile = {
   "verify-identity.verified_page-description": (
     <FormattedMessage
       id="verify-identity.verified_page-description"
-      defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to sevices related to higher education.`}
+      defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to services related to higher education.`}
     />
   ),
 
