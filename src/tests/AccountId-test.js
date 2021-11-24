@@ -1,50 +1,21 @@
 import React from "react";
 import expect from "expect";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import AccountIdContainer from "containers/AccountId";
-import { IntlProvider } from "react-intl";
+import { ReduxIntlProvider } from "../components/ReduxIntl";
 const messages = require("../login/translation/messageIndex");
 const mock = require("jest-mock");
 
-describe("AccountId component renders", () => {
-  const props = {
-    data: {
-      given_name: "",
-      surname: "",
-      display_name: "",
-      language: "",
-      eppn: "dummy-eppn",
-    },
-  };
-  const wrapper = shallow(
-    <IntlProvider locale="en">
-      <AccountIdContainer {...props} />
-    </IntlProvider>
-  );
-  it("Component does not render 'null' or 'false'", () => {
-    expect(wrapper.isEmptyRender()).toEqual(false);
-  });
-  it("Component receives user data as props", () => {
-    expect(wrapper.props()).toEqual({
-      data: {
-        display_name: "",
-        eppn: "dummy-eppn",
-        given_name: "",
-        language: "",
-        surname: "",
-      },
-    });
-  });
-  expect(wrapper.props().data.eppn).toEqual("dummy-eppn");
+const fakeStore = (fakeState) => ({
+  default: () => {},
+  dispatch: mock.fn(),
+  subscribe: mock.fn(),
+  getState: () => ({ ...fakeState }),
 });
 
 describe("AccountId component renders", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
+  let wrapper;
+
   const fakeState = {
     personal_data: {
       data: {
@@ -57,21 +28,23 @@ describe("AccountId component renders", () => {
     },
   };
 
-  function setupComponent() {
-    return {
-      wrapper,
-    };
-  }
+  beforeEach(() => {
+    const store = fakeStore(fakeState);
+
+    wrapper = mount(
+      <ReduxIntlProvider store={store}>
+        <AccountIdContainer />
+      </ReduxIntlProvider>
+    );
+  });
 
   it("Component renders h4 heading", () => {
-    const { wrapper } = setupComponent();
     const heading = wrapper.find("h4");
     expect(heading.exists()).toBe(true);
     expect(heading.text()).toContain("Unique ID");
   });
 
   it("Component renders eppn", () => {
-    const { wrapper } = setupComponent();
     const eppn = wrapper.find(".display-data");
     expect(eppn.exists()).toBe(true);
     expect(eppn.text()).toContain("dummy-eppn");

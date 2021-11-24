@@ -178,7 +178,7 @@ describe("LookupMobileProofing component,", () => {
     (state.phones.phones = [{ number: "+46700011555" }]), (state.nins.nins[0] = "19881212");
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");
-    const confirmPhone = explanation.find("span").at(0);
+    const confirmPhone = explanation.at(0);
     expect(confirmPhone.exists()).toEqual(true);
     expect(confirmPhone.text()).toContain("Confirm");
 

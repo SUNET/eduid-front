@@ -3,6 +3,7 @@ import { routerReducer } from "react-router-redux";
 
 import actionMainReducer from "reducers/ActionMain";
 import notificationsReducer from "reducers/Notifications";
+import { intlReducer } from "../../src/reducers/Internationalisation";
 
 import * as actions from "actions/ActionMain";
 
