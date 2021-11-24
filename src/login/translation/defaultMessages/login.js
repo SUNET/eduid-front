@@ -48,7 +48,7 @@ export const login = {
     <FormattedMessage
       id="login.mfa.secondary-option.button"
       defaultMessage={`Use my {freja_eidplus_verbatim}`}
-      values={{ freja_eidplus_verbatim: <span class="verbatim">Freja&nbsp;eID+</span> }}
+      values={{ freja_eidplus_verbatim: <span className="verbatim">Freja&nbsp;eID+</span> }}
     />
   ),
   "login.mfa.primary-option.hint": (
