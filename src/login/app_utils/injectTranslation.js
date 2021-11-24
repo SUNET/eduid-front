@@ -1,5 +1,5 @@
 import initStore from "../app_init/initStore";
-import { updateIntl } from "react-intl-redux";
+import { updateIntl } from "../../reducers/Internationalisation";
 
 // i18n
 const injectTranslation = () => {

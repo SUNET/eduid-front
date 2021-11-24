@@ -45,19 +45,6 @@ describe("Footer Component", () => {
     expect(copyright.text().includes("SUNET")).toEqual(true);
   });
 
-  // it("Renders the footer links ", () => {
-  //   const wrapper = setupComponent({
-  //     component: <FooterContainer />,
-  //     overrides: state
-  //   });
-  //   const nav = wrapper.find("nav");
-  //   console.log(wrapper.debug());
-  //   expect(nav.exists()).toEqual(true);
-
-  //   const link = wrapper.find("a");
-  //   expect(link.length).toEqual(4);
-  // });
-
   it("Renders the language selector component", () => {
     const wrapper = setupComponent({
         component: <FooterContainer />,
@@ -71,31 +58,3 @@ describe("Footer Component", () => {
     expect(link.text()).toEqual("Svenska");
   });
 });
-
-// describe("Test footer Container", () => {
-//   let wrapper, dispatch;
-
-//   beforeEach(() => {
-//     const store = fakeStore(getState({ config: config }));
-//     dispatch = store.dispatch;
-//     wrapper = setupComponent({ component: <FooterContainer />, store: store });
-//   });
-
-// it("Clicks a language selector button", () => {
-//   const numCalls = dispatch.mock.calls.length;
-//   const mockEvent = {
-//     preventDefault: () => {},
-//     target: {
-//       closest: () => {
-//         return { dataset: { lang: "sv" } };
-//       }
-//     }
-//   };
-//   wrapper
-//     .find("span.langselector")
-//     .find("a")
-//     .props()
-//     .onClick(mockEvent);
-//   expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
-// });
-// });

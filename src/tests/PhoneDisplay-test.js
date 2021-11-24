@@ -1,12 +1,11 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import PhoneDisplay from "containers/PhoneDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 import { MemoryRouter } from "react-router-dom";
 
 // my job is to: control the display of the phone number in the profile registered by user in settings
@@ -44,11 +43,11 @@ describe("PhoneDisplay component, when no phone number is saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <PhoneDisplay />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -91,11 +90,11 @@ describe("PhoneDisplay component, when phone numbers is saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <PhoneDisplay />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -139,11 +138,11 @@ describe("PhoneDisplay component, when phone number is saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <PhoneDisplay />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -193,11 +192,11 @@ describe("PhoneDisplay component, when phone number is saved", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <PhoneDisplay />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

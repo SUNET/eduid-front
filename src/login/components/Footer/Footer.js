@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateIntl } from "react-intl-redux";
 import PropTypes from "prop-types";
+import { updateIntl } from "../../../reducers/Internationalisation";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const LanguageToggler = ({ browserLocale, setLanguage }) => {

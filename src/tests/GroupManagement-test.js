@@ -2,23 +2,9 @@ const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import { addLocaleData } from "react-intl";
-addLocaleData("react-intl/locale-data/en");
-
-/* uncomment below to run test in specific file */
-// import { configure } from "enzyme";
-// import Adapter from "enzyme-adapter-react-16";
-// import jsdom from "jsdom";
-// configure({ adapter: new Adapter() });
-// const { JSDOM } = jsdom;
-// const { document } = new JSDOM("<!doctype html><html><body></body></html>", {
-//   url: "http://localhost/",
-// }).window;
-// global.document = document;
-// global.window = document.defaultView;
 
 import GroupManagement from "../login/components/GroupManagement/GroupManagement";
 import GroupsParent from "../login/components/GroupManagement/Groups/GroupsParent";
@@ -131,11 +117,11 @@ describe("<GroupManagement/> correctly renders:", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <GroupManagement {...props} />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

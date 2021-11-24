@@ -1,9 +1,9 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { put, call } from "redux-saga/effects";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import DeleteAccountContainer from "containers/DeleteAccount";
 import DeleteAccount from "components/DeleteAccount";
@@ -13,7 +13,6 @@ import securityReducer from "reducers/Security";
 import { postDeleteAccount, deleteAccount } from "sagas/Security";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: allows users to delete their account in settings.
 // My job is to: I render a "Delete account" button > that triggers a modal (the modal has to render two buttons, each with their own functionality).
@@ -60,9 +59,9 @@ describe("DeleteAccount component", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <DeleteAccountContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -108,9 +107,9 @@ describe("DeleteAccount component, when confirming_deletion is (false)", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <DeleteAccountContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -154,9 +153,9 @@ describe("DeleteAccount component, when confirming_deletion is (true)", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <DeleteAccountContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -346,9 +345,9 @@ describe("DeleteAccount Container", () => {
       dispatch = store.dispatch;
 
       const wrapper = mount(
-        <Provider store={store}>
+        <ReduxIntlProvider store={store}>
           <DeleteAccountContainer {...props} />
-        </Provider>
+        </ReduxIntlProvider>
       );
       return wrapper;
     };

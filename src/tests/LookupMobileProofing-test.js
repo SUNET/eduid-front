@@ -4,13 +4,11 @@ import { mount } from "enzyme";
 import expect from "expect";
 import * as actions from "actions/LookupMobileProofing";
 import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
-import { Provider } from "react-intl-redux";
-import { addLocaleData } from "react-intl";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { MemoryRouter } from "react-router-dom";
 import LookupMobileProofingContainer from "../login/components/LookupMobileProofing/LookupMobileProofingContainer";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 const baseState = {
   lookup_mobile: {},
@@ -123,9 +121,9 @@ describe("LookupMobile Container", () => {
     mockProps = {};
 
     wrapper = mount(
-      <Provider store={store}>
+      <ReduxIntlProvider store={store}>
         <LookupMobileProofingContainer {...mockProps} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     button = wrapper.find("button");
   });
@@ -146,11 +144,11 @@ describe("LookupMobileProofing component,", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <LookupMobileProofingContainer />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -180,7 +178,7 @@ describe("LookupMobileProofing component,", () => {
     (state.phones.phones = [{ number: "+46700011555" }]), (state.nins.nins[0] = "19881212");
     const { wrapper } = setupComponent();
     const explanation = wrapper.find("div.explanation-link");
-    const confirmPhone = explanation.find("span").at(0);
+    const confirmPhone = explanation.at(0);
     expect(confirmPhone.exists()).toEqual(true);
     expect(confirmPhone.text()).toContain("Confirm");
 

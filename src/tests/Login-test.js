@@ -1,24 +1,10 @@
 import React from "react";
 import expect from "expect";
 import { mount } from "enzyme";
-import { addLocaleData } from "react-intl";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 const mock = require("jest-mock");
-addLocaleData("react-intl/locale-data/en");
-
-/* uncomment below to run test in specific file */
-// import { configure } from "enzyme";
-// import Adapter from "enzyme-adapter-react-16";
-// import jsdom from "jsdom";
-// configure({ adapter: new Adapter() });
-// const { JSDOM } = jsdom;
-// const { document } = new JSDOM("<!doctype html><html><body></body></html>", {
-//   url: "http://localhost/",
-// }).window;
-// global.document = document;
-// global.window = document.defaultView;
 
 import Login from "../login/components/LoginApp/Login/Login";
 import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
@@ -72,11 +58,11 @@ describe("Login component renders", () => {
       location: { pathname: "/login/e0367c25-3853-45a9-806" },
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <Login {...props} />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -112,11 +98,11 @@ describe("Login renders the UsernamePw as expected", () => {
       location: { pathname: "/login/e0367c25-3853-45a9-806" },
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <Login />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -151,11 +137,11 @@ describe("Login renders the TermsOfUse as expected", () => {
       location: { pathname: "/login/e0367c25-3853-45a9-806" },
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <Login />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -191,11 +177,11 @@ describe("Login renders the MultiFactorAuth as expected", () => {
       location: { pathname: "/login/e0367c25-3853-45a9-806" },
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <Login />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -227,11 +213,11 @@ describe("Login does not render any component if page is not one of the above", 
   function setupComponent() {
     const history = createMemoryHistory();
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <Login />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

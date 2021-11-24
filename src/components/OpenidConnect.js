@@ -16,6 +16,12 @@ class OpenidConnect extends Component {
       <div className="well" id="openid-connect-seleg-instructions">
         <ol>
           <li>{this.props.translate("oc.instructions_step_1")}</li>
+          <ul>
+            <li>Mjölby: Burensköldsvägen 13</li>
+            <li>Motala: Repslagaregatan 1</li>
+            <li>Söderköping: Margaretagatan 19</li>
+            <li>Åtvidaberg: B-fabriksgränd 4</li>
+          </ul>
           <li>{this.props.translate("oc.instructions_step_2")}</li>
           <li>{this.props.translate("oc.instructions_step_3")}</li>
         </ol>

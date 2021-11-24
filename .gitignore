@@ -10,3 +10,5 @@ dist/
 .idea/
 *~
 *#
+src/login/translation/src/
+i18n/

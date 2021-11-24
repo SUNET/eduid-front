@@ -6,32 +6,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // App.js = store, action and component required to render app
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import initStore from "./initStore";
 import initContainer from "./init_container";
 import App from "../components/App/App";
 
 // translation (i18n) import available languages
 import injectTranslation from "../app_utils/injectTranslation";
-import { addLocaleData } from "react-intl";
-import en from "react-intl/locale-data/en";
-import sv from "react-intl/locale-data/sv";
-// import { updateIntl } from "react-intl-redux";
-
 // utils to check support or compatibility
 import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";
 
 /* run all utils and set up the translation */
 injectTranslation();
 polyfillElClosest_EI();
-addLocaleData([...en, ...sv]);
 
 /* render reactIndex.js */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
-  <Provider store={initStore}>
+  <ReduxIntlProvider store={initStore}>
     <App />
-  </Provider>,
+  </ReduxIntlProvider>,
   initDomTarget,
   initContainer
 );

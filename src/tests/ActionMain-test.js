@@ -1,6 +1,6 @@
 const mock = require("jest-mock");
 import React from "react";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { mount } from "enzyme";
 import expect from "expect";
 import { put, call } from "redux-saga/effects";
@@ -8,13 +8,6 @@ import ActionMainContainer from "containers/ActionMain";
 import * as actions from "actions/ActionMain";
 import actionMainReducer from "reducers/ActionMain";
 import { requestConfig, requestNextAction, fetchActions, fetchConfig } from "sagas/ActionMain";
-
-import { addLocaleData } from "react-intl";
-
-import en from "react-intl/locale-data/en";
-import sv from "react-intl/locale-data/sv";
-
-addLocaleData([...en, ...sv]);
 
 const fakeState = {
   config: {
@@ -30,10 +23,7 @@ const fakeState = {
   },
   intl: {
     locale: "en",
-    messages: {
-      en: en,
-      sv: sv,
-    },
+    messages: {},
   },
   plugin: {},
 };
@@ -77,7 +67,7 @@ export function genSetupComponent(pluginState) {
       }
       store = fakeStore(getState(overrides));
     }
-    const wrapper = mount(<Provider store={store}>{component}</Provider>);
+    const wrapper = mount(<ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>);
     return wrapper;
   };
   return setupComponent;

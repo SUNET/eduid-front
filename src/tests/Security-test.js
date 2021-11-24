@@ -7,7 +7,7 @@ import SecurityContainer from "containers/Security";
 import * as actions from "actions/Security";
 import * as notifyActions from "actions/Notifications";
 import securityReducer from "reducers/Security";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import {
   requestCredentials,
   fetchCredentials,
@@ -21,10 +21,7 @@ import {
   removeToken,
 } from "sagas/Security";
 
-import { addLocaleData } from "react-intl";
-
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 describe("Security Actions", () => {
   it("Should get the credentials ", () => {
@@ -641,9 +638,9 @@ describe("Security Container", () => {
       dispatch = store.dispatch;
 
       const wrapper = mount(
-        <Provider store={store}>
+        <ReduxIntlProvider store={store}>
           <SecurityContainer {...props} />
-        </Provider>
+        </ReduxIntlProvider>
       );
       return wrapper;
     };

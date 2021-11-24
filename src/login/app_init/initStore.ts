@@ -11,11 +11,11 @@ import initReducer from "./init_reducer";
 import notificationsReducer from "../components/Notifications/Notifications_reducer";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
-import { intlReducer } from "react-intl-redux";
 import appReducer from "../components/App/App_reducer";
 import loginSlice from "../redux/slices/loginSlice";
 import resetPasswordSlice from "../redux/slices/resetPasswordSlice";
 import logger from "redux-logger";
+import intlSlice from "../../reducers/Internationalisation";
 
 /* setup to run the combined sagas */
 const sagaMiddleware = createSagaMiddleware();
@@ -35,7 +35,7 @@ const initStore = configureStore({
     notifications: notificationsReducer as Reducer<NotificationStateType>,
     router: routerReducer,
     form: formReducer,
-    intl: intlReducer,
+    intl: intlSlice.reducer,
     resetPassword: resetPasswordSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),

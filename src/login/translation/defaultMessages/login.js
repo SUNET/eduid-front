@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export const login = {
   // --- USERNAME & PASSWORD --- //
@@ -45,9 +45,10 @@ export const login = {
     <FormattedMessage id="login.mfa.secondary-option.title" defaultMessage={`Freja eID+`} />
   ),
   "login.mfa.secondary-option.button": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="login.mfa.secondary-option.button"
-      defaultMessage={`Use my <span class="verbatim">Freja&nbsp;eID+</span>`}
+      defaultMessage={`Use my {freja_eidplus_verbatim}`}
+      values={{ freja_eidplus_verbatim: <span className="verbatim">Freja&nbsp;eID+</span> }}
     />
   ),
   "login.mfa.primary-option.hint": (
@@ -72,13 +73,13 @@ export const tou = {
   ),
   // --- TOU: 2016-V1--- //
   "login.tou.version.2016-v1": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="login.tou.version.2016-v1"
-      defaultMessage={`<ul tabIndex="0">
+      defaultMessage={`'<ul tabIndex="0">
       <p>The following generally applies:</p>
       <li>
         <p>
-          that all usage of user accounts follow Sweden&apos;s laws and by-laws,
+          that all usage of user accounts follow the laws and by-laws of Sweden,
         </p>
       </li>
       <li>
@@ -130,14 +131,14 @@ export const tou = {
       <li>
         <p>attempts to insult or offend others</p>
       </li>
-    </ul>`}
+    </ul>'`}
     />
   ),
   // --- TOU: 2021-V1--- //
   "login.tou.version.2021-v1": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="login.tou.version.2021-v1"
-      defaultMessage={`<ul tabIndex="0">
+      defaultMessage={`'<ul tabIndex="0">
        <p>The following generally applies:</p>
       <li>
         <p>
@@ -154,7 +155,7 @@ export const tou = {
           And still ensure that we serve the correct version a specific users need to acccept,
         </p>
       </li>
-    </ul>`}
+    </ul>'`}
     />
   ),
   "login.tou.legal-warning": (
