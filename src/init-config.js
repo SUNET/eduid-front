@@ -3,12 +3,8 @@ const langs = [
   ["en", "English"],
   ["sv", "Svenska"],
 ];
-// require all translation files in langs array
-const messages = Object.assign(
-  ...langs.map(([key]) => ({
-    [key]: require(`./login/translation/languages/${key}`),
-  }))
-);
+
+const messages = require("./login/translation/messages").messages;
 
 module.exports = {
   initialConfigPlugin: new webpack.DefinePlugin({

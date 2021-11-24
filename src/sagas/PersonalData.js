@@ -1,5 +1,5 @@
 import { put, select, call } from "redux-saga/effects";
-import { updateIntl } from "react-intl-redux";
+import { updateIntl } from "../reducers/Internationalisation";
 import { checkStatus, putCsrfToken, getRequest, postRequest, saveData, failRequest } from "sagas/common";
 import { getAllUserdata, getAllUserdataFail, postUserdataFail } from "actions/PersonalData";
 

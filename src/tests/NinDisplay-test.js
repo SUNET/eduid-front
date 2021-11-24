@@ -1,14 +1,13 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { Router } from "react-router-dom";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import { history } from "components/DashboardMain";
 import NinDisplay from "containers/NinDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 history.push("/verify-identity");
 describe("NinDisplay component (/verify-identity), when nin is saved and unverified ", () => {
@@ -46,11 +45,11 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
     });
 
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <NinDisplay {...props} />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -104,11 +103,11 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
     };
     history.push("verify-identity");
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <NinDisplay {...mockProps} />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       mockProps,
@@ -160,11 +159,11 @@ describe("NinDisplay component (profile), when no nin is saved", () => {
     };
 
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <NinDisplay {...mockProps} />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -220,11 +219,11 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
     };
 
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <NinDisplay {...props} />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -274,11 +273,11 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
       verifiedNinStatus: true,
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <Router history={history}>
           <NinDisplay {...props} />
         </Router>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,

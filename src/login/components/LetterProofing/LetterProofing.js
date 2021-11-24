@@ -80,7 +80,7 @@ class LetterProofingButton extends Component {
           <>
             <div className="description">
               {this.props.translate("verify-identity.vetting_letter_code_expired")}
-              {this.formatDateFromBackend(this.props.letter_expires_date)}
+              <span id="letter_expires_date">{this.formatDateFromBackend(this.props.letter_expires_date)}</span>
             </div>
             <div className="description">{this.props.translate("verify-identity.vetting_letter_order_new_code")}</div>
           </>
@@ -90,11 +90,11 @@ class LetterProofingButton extends Component {
           <>
             <div className="description">
               {this.props.translate("verify-identity.vetting_letter_sent")}
-              {this.formatDateFromBackend(this.props.letter_sent_date)}
+              <span id="letter_sent_date">{this.formatDateFromBackend(this.props.letter_sent_date)}</span>
             </div>
             <div className="description">
               {this.props.translate("verify-identity.vetting_letter_valid")}
-              {this.formatDateFromBackend(this.props.letter_expires_date)}
+              <span id="letter_expires_date">{this.formatDateFromBackend(this.props.letter_expires_date)}</span>
             </div>
             <div className="description">{this.props.translate("verify-identity.vetting_letter_received")}</div>
           </>

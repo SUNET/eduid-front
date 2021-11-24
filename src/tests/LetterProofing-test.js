@@ -2,8 +2,8 @@ const mock = require("jest-mock");
 import React from "react";
 import { shallow, mount } from "enzyme";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
-import { IntlProvider, addLocaleData } from "react-intl";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import { IntlProvider } from "react-intl";
 import { put, call } from "redux-saga/effects";
 import * as actions from "actions/LetterProofing";
 import letterProofingReducer from "reducers/LetterProofing";
@@ -18,7 +18,6 @@ import {
 } from "../sagas/LetterProofing";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 const baseState = {
   letter_proofing: {
@@ -90,9 +89,9 @@ describe("Letter Proofing, when letter has been expired", () => {
       handleStopConfirmationLetter: mock.fn(),
     };
     const wrapper = shallow(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <LetterProofingContainer {...props} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -263,9 +262,9 @@ describe("LetterProofing Container", () => {
     mockProps = {};
 
     wrapper = mount(
-      <Provider store={store}>
+      <ReduxIntlProvider store={store}>
         <LetterProofingContainer {...mockProps} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     button = wrapper.find("button");
     expect(button.exists()).toEqual(true);
@@ -374,9 +373,9 @@ describe("LetterProofing component, without id number", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <LetterProofingContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -403,9 +402,9 @@ describe("LetterProofing component, letter has been sent", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <LetterProofingContainer />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,
@@ -414,46 +413,34 @@ describe("LetterProofing component, letter has been sent", () => {
 
   it("Renders button text, the letter was sent", () => {
     const state = { ...fakeState };
-    (state.letter_proofing.letter_sent = "20201010"),
+    (state.letter_proofing.letter_sent = "2021-11-23T17:37:15.799000+00:00"),
+      (state.letter_proofing.letter_expires = "2021-12-07T23:59:59.799000+00:00"),
       (state.letter_proofing.verifyingLetter = true),
       (state.nins.valid_nin = true),
       (state.nins.nins[0] = "19881212");
 
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
-    const letterSent = description.find("span").at(0);
-    const letterValid = description.find("span").at(1);
-    const letterSentDate = description.at(0).prop("children");
-    const checkSentDate = shallow(<div>{letterSentDate}</div>).text();
-    const letterVaildDate = description.at(1).prop("children");
-    const checkVaildDate = shallow(<div>{letterVaildDate}</div>).text();
+    const letterSent = description.at(0);
+    const letterSentDate = wrapper.find("#letter_sent_date");
+    const letterValid = description.at(1);
+    const letterValidDate = description.find("#letter_expires_date");
+
+    expect(description.exists()).toEqual(true);
+
     expect(letterSent.exists()).toEqual(true);
-    expect(letterSent.text()).toContain("sent");
+    expect(letterSent.text()).toContain("The letter was sent");
+    expect(letterSentDate.text()).toEqual("2021-11-23");
+
     expect(letterValid.exists()).toEqual(true);
-    expect(letterValid.text()).toContain("valid to");
-    expect(checkSentDate).toContain("NaN");
-    expect(checkVaildDate).toContain("NaN");
+    expect(letterValid.text()).toContain("The letter is valid to");
+    expect(letterValidDate.text()).toEqual("2021-12-07");
   });
-});
-
-describe("LetterProofing component, when letter has expired", () => {
-  const fakeState = getFakeState();
-
-  function setupComponent() {
-    const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
-        <LetterProofingContainer />
-      </Provider>
-    );
-    return {
-      wrapper,
-    };
-  }
 
   it("Renders button text, the code has expired", () => {
     const state = { ...fakeState };
-    (state.letter_proofing.letter_sent = "20201010"),
-      (state.letter_proofing.letter_expires = "20201024"),
+    (state.letter_proofing.letter_sent = "2021-11-23T17:37:15.799000+00:00"),
+      (state.letter_proofing.letter_expires = "2021-12-07T23:59:59.799000+00:00"),
       (state.letter_proofing.verifyingLetter = true),
       (state.letter_proofing.confirmingLetter = false),
       (state.nins.valid_nin = true),
@@ -462,14 +449,16 @@ describe("LetterProofing component, when letter has expired", () => {
 
     const { wrapper } = setupComponent();
     const description = wrapper.find("div.description");
-    const codeExpired = description.find("span").at(0);
-    const orderNewLetter = description.find("span").at(1);
-    const expiredDate = description.at(0).prop("children");
-    const checkExpiredDate = shallow(<div>{expiredDate}</div>).text();
+    const codeExpired = description.at(0);
+    const orderNewLetter = description.at(1);
+    const letterValidDate = description.find("#letter_expires_date");
+
+    expect(description.exists()).toEqual(true);
+
     expect(codeExpired.exists()).toEqual(true);
     expect(codeExpired.text()).toContain("expired");
     expect(orderNewLetter.exists()).toEqual(true);
     expect(orderNewLetter.text()).toContain("order a new code");
-    expect(checkExpiredDate).toContain("NaN");
+    expect(letterValidDate.text()).toEqual("2021-12-07");
   });
 });

@@ -2,7 +2,7 @@ import React from "react";
 import expect from "expect";
 import { shallow, mount } from "enzyme/build";
 import { IntlProvider } from "react-intl";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import NinForm from "components/NinForm";
 
 const mock = require("jest-mock");
@@ -39,9 +39,9 @@ describe("Nin Form renders important elements", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <NinForm />
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

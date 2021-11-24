@@ -1,13 +1,12 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import VerifyIdentity from "containers/VerifyIdentity";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 // I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
 // My job is to: if there is a nin: display vetting buttons, if nin is verified: remove buttons
@@ -55,11 +54,11 @@ describe("VerifyIdentity component, no nin added ", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <VerifyIdentity />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

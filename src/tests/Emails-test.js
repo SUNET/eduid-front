@@ -5,8 +5,7 @@ import expect from "expect";
 import * as actions from "actions/Emails";
 import emailsReducer from "reducers/Emails";
 import EmailsContainer from "containers/Emails";
-import { Provider } from "react-intl-redux";
-import { addLocaleData } from "react-intl";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 
 import {
   requestResend,
@@ -23,7 +22,6 @@ import {
 import { put, call } from "redux-saga/effects";
 
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 describe("Email Actions", () => {
   it("Should change the emails ", () => {
@@ -687,9 +685,9 @@ describe("Emails Container", () => {
     };
 
     wrapper = mount(
-      <Provider store={store}>
+      <ReduxIntlProvider store={store}>
         <EmailsContainer {...mockProps} />
-      </Provider>
+      </ReduxIntlProvider>
     );
     fulldom = wrapper.find(EmailsContainer);
     email = fulldom.props().email;

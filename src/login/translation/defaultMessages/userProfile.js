@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export const userProfile = {
   // dashboard
@@ -50,25 +50,25 @@ export const userProfile = {
     <FormattedMessage id="dashboard_nav.advanced-settings" defaultMessage={`Advanced settings`} />
   ),
   "dashboard_nav.identity-verify-freja": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="dashboard_nav.identity-verify-freja"
       defaultMessage={`You can verify <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.identity-verify-post-freja": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="dashboard_nav.identity-verify-post-freja"
       defaultMessage={`You can verify <b>by post</b> or <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.identity-verify-post-phone-freja": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="dashboard_nav.identity-verify-post-phone-freja"
       defaultMessage={`You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>`}
     />
   ),
   "dashboard_nav.settings-confirm-phone": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="dashboard_nav.settings-confirm-phone"
       defaultMessage={`<b>Confirm your number</b> to verify your id by phone`}
     />
@@ -108,7 +108,7 @@ export const userProfile = {
   "verify-identity.verified_page-description": (
     <FormattedMessage
       id="verify-identity.verified_page-description"
-      defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to sevices related to higher education.`}
+      defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to services related to higher education.`}
     />
   ),
 
@@ -323,9 +323,16 @@ export const userVetting = {
   ),
 
   "eidas.initialize_proofing_help_text": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="eidas.initialize_proofing_help_text"
-      defaultMessage={`To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app.`}
+      defaultMessage={`To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app.`}
+      values={{
+        skaffa_freja_eid_link: (
+          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+            Freja eID
+          </a>
+        ),
+      }}
     />
   ),
 
@@ -411,9 +418,16 @@ export const userVetting = {
   "oc.initialize_proofing": <FormattedMessage id="oc.initialize_proofing" defaultMessage={`SE-LEG`} />,
 
   "oc.initialize_proofing_help_text": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="oc.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to visit a <a href="https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/" target="_blank">SE-LEG RA</a> and show identification.`}
+      defaultMessage={`To use this option you need to visit a {seleg_info_link} and show identification.`}
+      values={{
+        seleg_info_link: (
+          <a href="https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/" target="_blank">
+            SE-LEG RA
+          </a>
+        ),
+      }}
     />
   ),
 
@@ -424,10 +438,7 @@ export const userVetting = {
   ),
 
   "oc.instructions_step_1": (
-    <FormattedHTMLMessage
-      id="oc.instructions_step_1"
-      defaultMessage={`Visit the nearest library on this list: <ul><li>Mjölby: Burensköldsvägen 13</li><li>Motala: Repslagaregatan 1</li><li>Söderköping: Margaretagatan 19</li><li>Åtvidaberg: B-fabriksgränd 4</li></ul>`}
-    />
+    <FormattedMessage id="oc.instructions_step_1" defaultMessage={`Visit the nearest library on this list:`} />
   ),
 
   "oc.instructions_step_2": (
@@ -449,9 +460,16 @@ export const userVetting = {
   "ocf.initialize_proofing": <FormattedMessage id="ocf.initialize_proofing" defaultMessage={`with Freja eID`} />,
 
   "ocf.initialize_proofing_help_text": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="ocf.initialize_proofing_help_text"
-      defaultMessage={`To use this option you need to have the <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID app</a> installed on your device.`}
+      defaultMessage={`To use this option you need to have the {skaffa_freja_eid_link} app installed on your device.`}
+      values={{
+        skaffa_freja_eid_link: (
+          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+            Freja eID
+          </a>
+        ),
+      }}
     />
   ),
 
@@ -508,9 +526,16 @@ export const userVetting = {
   "ocf.not_on_mobile_title": <FormattedMessage id="ocf.not_on_mobile_title" defaultMessage={`Not using your phone?`} />,
 
   "ocf.not_on_mobile_message": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="ocf.not_on_mobile_message"
-      defaultMessage={`You need to switch to a mobile device (iOS or Android) with <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">Freja eID</a> installed before you will be able to confirm your account using Freja eID.`}
+      defaultMessage={`You need to switch to a mobile device (iOS or Android) with {skaffa_freja_eid_link} installed before you will be able to confirm your account using Freja eID.`}
+      values={{
+        skaffa_freja_eid_link: (
+          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+            Freja eID
+          </a>
+        ),
+      }}
     />
   ),
 };
@@ -714,7 +739,7 @@ export const userData = {
   "mobile.button_add": <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />,
 
   "mobile.confirm_title": (values) => (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="mobile.confirm_title"
       defaultMessage={`Enter the code sent to <b>{phone}</b>`}
       values={values}
@@ -809,7 +834,7 @@ export const userData = {
   "emails.long_description": (
     <FormattedMessage
       id="emails.long_description"
-      defaultMessage={`You can connect one or more email addresses with your eduID 
+      defaultMessage={`You can connect one or more email addresses with your eduID
           account and select one to be your primary email address.`}
     />
   ),
@@ -1016,7 +1041,7 @@ export const userData = {
   "security.second-factor": (
     <FormattedMessage
       id="security.second-factor"
-      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are 
+      defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are
     the owner of your eduID.`}
     />
   ),
@@ -1091,7 +1116,7 @@ export const userData = {
   ),
 
   "orc.sub_mismatch": (
-    <FormattedMessage id="orc.sub_missmatch" defaultMessage={`Subject mismatch when trying to connect ORCID account`} />
+    <FormattedMessage id="orc.sub_mismatch" defaultMessage={`Subject mismatch when trying to connect ORCID account`} />
   ),
 
   "orc.title": <FormattedMessage id="orc.title" defaultMessage={`ORCID`} />,
@@ -1099,14 +1124,21 @@ export const userData = {
   "orc.long_description": (
     <FormattedMessage
       id="orc.long_description"
-      defaultMessage={` ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with.`}
+      defaultMessage={`ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with.`}
     />
   ),
 
   "orc.about_link": (
-    <FormattedHTMLMessage
+    <FormattedMessage
       id="orc.about_link"
-      defaultMessage={`Learn more about ORCID in eduID from our <a href="https://www.eduid.se/en/faq.html">FAQ</a>.`}
+      defaultMessage={`Learn more about ORCID in eduID from our {faq_link}.`}
+      values={{
+        faq_link: (
+          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+            FAQ
+          </a>
+        ),
+      }}
     />
   ),
 
@@ -1125,7 +1157,7 @@ export const userData = {
   "accountId.short_description": (
     <FormattedMessage
       id="accountId.short_description"
-      defaultMessage={` You might be asked to share this information if you need technical support.`}
+      defaultMessage={`You might be asked to share this information if you need technical support.`}
     />
   ),
 

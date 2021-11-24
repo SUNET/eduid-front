@@ -1,6 +1,6 @@
 import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
-import { updateIntl } from "react-intl-redux";
+import { updateIntl } from "../../../../reducers/Internationalisation";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../../../actions/PersonalData";
 import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";

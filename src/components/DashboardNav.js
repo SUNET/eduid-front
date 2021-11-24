@@ -12,15 +12,15 @@ function DashboardNav(props) {
   const verifiedSweNumber = phones.filter((phone) => phone.verified && phone.number.startsWith("+46"));
   const unverifiedNumber = phones.filter((phone) => !phone.verified);
   // depending on languages show different styles
-  const selectedLanguage = props.intl.locale;
+  const selectedLanguage = useSelector((state) => state.intl.locale);
 
   let tipsAtIdentity = "";
   let tipsAtSettings = "";
 
   if (!verifiedNin.length) {
-    // when user is accessing the profile checke if user has an unverified nin
+    // when user is accessing the profile check if user has an unverified nin
     if (!nins.length) {
-      // check if nin is not added, then rendering text on IDENTITY tab, only posible to verify with a freja eId
+      // check if nin is not added, then rendering text on IDENTITY tab, only possible to verify with a freja eId
       tipsAtIdentity = (
         <NotificationTip textLength={"short"} tipText={props.translate("dashboard_nav.identity-verify-freja")} />
       );

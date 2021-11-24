@@ -10,3 +10,6 @@ dist/
 .idea/
 *~
 *#
+src/login/translation/src/
+i18n/
+sshfs_mount/

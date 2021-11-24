@@ -1,9 +1,9 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import Profile from "containers/Profile";
 import NinDisplay from "containers/NinDisplay";
 import NameDisplay from "containers/NameDisplay";
@@ -12,7 +12,6 @@ import EmailDisplay from "containers/EmailDisplay";
 import VerifyIdentity from "containers/VerifyIdentity";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: populates the profile landing page with user data.
 // My job is to: display one of multiple states for the following user data:
@@ -69,11 +68,11 @@ describe("Profile component", () => {
 
   function setupComponent() {
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <Profile />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       wrapper,

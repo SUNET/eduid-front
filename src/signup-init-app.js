@@ -14,8 +14,8 @@ import { routerMiddleware } from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./signup-root-saga";
 import { createLogger } from "redux-logger";
-import { Provider } from "react-intl-redux";
-import { updateIntl } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import { updateIntl } from "./reducers/Internationalisation";
 import { createStore, applyMiddleware, compose } from "redux";
 
 import eduIDApp from "./signup-store";
@@ -74,7 +74,7 @@ const init_app = function (target, component) {
       })
     );
   }
-  app = <Provider store={store}>{component}</Provider>;
+  app = <ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>;
   ReactDOM.render(app, target, action);
 };
 

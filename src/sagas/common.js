@@ -1,7 +1,7 @@
 import { put, select, call } from "redux-saga/effects";
-import { updateIntl } from "react-intl-redux";
 import { startSubmit, stopSubmit, setSubmitSucceeded, setSubmitFailed } from "redux-form";
 import { startAsyncValidation, stopAsyncValidation } from "redux-form";
+import { updateIntl } from "../reducers/Internationalisation";
 
 import { newCsrfToken } from "actions/DashboardConfig";
 

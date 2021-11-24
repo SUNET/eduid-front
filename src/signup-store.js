@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
-import { intlReducer } from "react-intl-redux";
 import { reducer as formReducer } from "redux-form";
 import { routerReducer } from "react-router-redux";
 
-import captchaReducer from "reducers/Captcha";
-import signupReducer from "reducers/SignupMain";
-import emailReducer from "reducers/Email";
-import verifiedReducer from "reducers/CodeVerified";
-import notificationsReducer from "reducers/Notifications";
+import { intlReducer } from "./reducers/Internationalisation";
+import captchaReducer from "./reducers/Captcha";
+import signupReducer from "./reducers/SignupMain";
+import emailReducer from "./reducers/Email";
+import verifiedReducer from "./reducers/CodeVerified";
+import notificationsReducer from "./reducers/Notifications";
 
 const eduIDApp = combineReducers({
   config: signupReducer,

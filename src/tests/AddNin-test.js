@@ -1,13 +1,12 @@
 import React from "react";
 import expect from "expect";
-import { Provider } from "react-intl-redux";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import AddNin from "containers/AddNin";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
-addLocaleData("react-intl/locale-data/en");
 
 // I am the component that: displays the nin input form or the added nin in the vetting process.
 // My job is to:
@@ -75,11 +74,11 @@ describe("AddNin component, when no nin is saved", () => {
       proofing_methods: [],
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <AddNin {...props} />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
@@ -150,11 +149,11 @@ describe("AddNin component, when a nin is saved", () => {
       proofing_methods: [],
     };
     const wrapper = mount(
-      <Provider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore(fakeState)}>
         <MemoryRouter>
           <AddNin {...props} />
         </MemoryRouter>
-      </Provider>
+      </ReduxIntlProvider>
     );
     return {
       props,
