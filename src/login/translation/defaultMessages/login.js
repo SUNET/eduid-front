@@ -47,7 +47,8 @@ export const login = {
   "login.mfa.secondary-option.button": (
     <FormattedMessage
       id="login.mfa.secondary-option.button"
-      defaultMessage={`Use my '<span class="verbatim">Freja&nbsp;eID+</span>'`}
+      defaultMessage={`Use my {freja_eidplus_verbatim}`}
+      values={{ freja_eidplus_verbatim: <span class="verbatim">Freja&nbsp;eID+</span> }}
     />
   ),
   "login.mfa.primary-option.hint": (
@@ -78,7 +79,7 @@ export const tou = {
       <p>The following generally applies:</p>
       <li>
         <p>
-          that all usage of user accounts follow Sweden&apos;s laws and by-laws,
+          that all usage of user accounts follow the laws and by-laws of Sweden,
         </p>
       </li>
       <li>

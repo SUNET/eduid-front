@@ -611,7 +611,7 @@ export const userData = {
   //phone numbers
   "phone.phone_duplicated": <FormattedMessage id="phone_duplicated" defaultMessage={`Added number is duplicated`} />,
 
-  "{phone.phone_format}": (
+  "phone.phone_format": (
     <FormattedMessage
       id="phone_format"
       defaultMessage={`Invalid telephone number. It must be a valid Swedish number, or written

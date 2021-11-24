@@ -598,7 +598,7 @@
     "string": "Security key"
   },
   "login.mfa.secondary-option.button": {
-    "string": "Use my '<span class=\"verbatim\">Freja&nbsp;eID+</span>'"
+    "string": "Use my {freja_eidplus_verbatim}"
   },
   "login.mfa.secondary-option.title": {
     "string": "Freja eID+"
@@ -634,7 +634,7 @@
     "string": "We need an updated acceptance from you of the eduID terms of use."
   },
   "login.tou.version.2016-v1": {
-    "string": "'<ul tabIndex=\"0\"> <p>The following generally applies:</p> <li> <p> that all usage of user accounts follow Sweden&apos;s laws and by-laws, </p> </li> <li> <p> that all personal information that you provide, such as name and contact information shall be truthful, </p> </li> <li> <p> that user accounts, password and codes are individual and shall only be used by the intended individual, </p> </li> <li> <p> that SUNET&apos;s ethical rules regulate the &ldquo;other&ldquo; usage. </p> </li> </ul> <ul tabIndex=\"0\"> <p>SUNET judges unethical behaviour to be when someone:</p> <li> <p> attempts to gain access to network resources that they do not have the right </p> </li> <li> <p>attempts to conceal their user identity</p> </li> <li> <p> attempts to interfere or disrupt the intended usage of the network </p> </li> <li> <p> clearly wastes available resources (personnel, hardware or software) </p> </li> <li> <p>attempts to disrupt or destroy computer-based information</p> </li> <li> <p>infringes on the privacy of others</p> </li> <li> <p>attempts to insult or offend others</p> </li> </ul>'"
+    "string": "'<ul tabIndex=\"0\"> <p>The following generally applies:</p> <li> <p> that all usage of user accounts follow the laws and by-laws of Sweden, </p> </li> <li> <p> that all personal information that you provide, such as name and contact information shall be truthful, </p> </li> <li> <p> that user accounts, password and codes are individual and shall only be used by the intended individual, </p> </li> <li> <p> that SUNET&apos;s ethical rules regulate the &ldquo;other&ldquo; usage. </p> </li> </ul> <ul tabIndex=\"0\"> <p>SUNET judges unethical behaviour to be when someone:</p> <li> <p> attempts to gain access to network resources that they do not have the right </p> </li> <li> <p>attempts to conceal their user identity</p> </li> <li> <p> attempts to interfere or disrupt the intended usage of the network </p> </li> <li> <p> clearly wastes available resources (personnel, hardware or software) </p> </li> <li> <p>attempts to disrupt or destroy computer-based information</p> </li> <li> <p>infringes on the privacy of others</p> </li> <li> <p>attempts to insult or offend others</p> </li> </ul>'"
   },
   "login.tou.version.2021-v1": {
     "string": "'<ul tabIndex=\"0\"> <p>The following generally applies:</p> <li> <p> This a test version of terms of use version 1 from 2021, </p> </li> <li> <p> The versioning allows us to update terms if needed and keep parallel versions at the same time, </p> </li> <li> <p> And still ensure that we serve the correct version a specific users need to acccept, </p> </li> </ul>'"
@@ -1502,7 +1502,7 @@
     "string": "Your eduID is ready to use"
   },
   "verify-identity.verified_page-description": {
-    "string": "The below id number is now connected to this eduID. Use your eduID to log in to sevices related to higher education."
+    "string": "The below id number is now connected to this eduID. Use your eduID to log in to services related to higher education."
   },
   "verify-identity.verified_pw_reset_extra_security": {
     "string": "Add a phone number or a security key to your eduID to keep your identity at password reset."
