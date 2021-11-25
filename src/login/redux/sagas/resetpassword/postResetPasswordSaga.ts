@@ -10,15 +10,15 @@ import {
   setLocalStorage,
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { requestInProgress, requestCompleted } from "../../actions/loadingDataActions";
-import { LoginRootState } from "../../../app_init/initStore";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { useAppSelector } from "../../../app_init/hooks";
 
 export type PostEmailLinkResponse = {
   email: string;
 };
 
 export function* postEmailLink() {
-  const state: LoginRootState = yield select((state) => state);
+  const state = useAppSelector((state) => state);
   const url = state.config.reset_password_url;
   const data = {
     email: state.resetPassword.email_address,
