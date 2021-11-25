@@ -10,9 +10,14 @@ import {
   setLocalStorage,
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { requestInProgress, requestCompleted } from "../../actions/loadingDataActions";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { LoginRootState } from "../../../app_init/initStore";
+interface PostEmailLinkResponse {
+  email: string;
+}
 
 export function* postEmailLink() {
-  const state = yield select((state) => state);
+  const state: LoginRootState = yield select((state) => state);
   const url = state.config.reset_password_url;
   const data = {
     email: state.resetPassword.email_address,
@@ -20,7 +25,7 @@ export function* postEmailLink() {
   };
   try {
     yield put(requestInProgress());
-    const response = yield call(postRequest, url, data);
+    const response: PayloadAction<PostEmailLinkResponse, string, never, boolean> = yield call(postRequest, url, data);
     yield put(putCsrfToken(response));
     if (response.error) {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
@@ -32,7 +37,7 @@ export function* postEmailLink() {
     countFiveMin("email");
     history.push(`/reset-password/email-link-sent`);
   } catch (error) {
-    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail(error));
+    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   } finally {
     yield put(requestCompleted());
   }
