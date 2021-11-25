@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { translate } from "../../../../login/translation";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { InjectedFormProps } from "redux-form";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
-import EmailForm, { EmailFormProps } from "./EmailForm";
+import EmailForm from "./EmailForm";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
