@@ -20,7 +20,7 @@ import polyfillElClosest_EI from "../app_utils/el.closest_IE_polyfill";
 injectTranslation();
 polyfillElClosest_EI();
 
-/* render reactIndex.js */
+/* render app */
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={initStore}>
