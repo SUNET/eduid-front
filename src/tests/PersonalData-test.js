@@ -2,7 +2,6 @@ import expect from "expect";
 import * as actions from "actions/PersonalData";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
-import * as ninActions from "actions/Nins";
 import personalDataReducer from "reducers/PersonalData";
 import { requestAllPersonalData, fetchAllPersonalData } from "../sagas/PersonalData";
 import { put, call } from "redux-saga/effects";

@@ -1,5 +1,4 @@
 import expect from "expect";
-import { decode } from "punycode";
 import { decodeChallenge } from "../login/app_utils/helperFunctions/navigatorCredential";
 import { safeDecode, safeEncode } from "../login/app_utils/helperFunctions/base64Utils";
 
