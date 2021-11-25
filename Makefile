@@ -24,4 +24,7 @@ test: build just_test
 prettier:
 	npx prettier --write --print-width 120 .
 
-.PHONY: clean build build-staging build-production test prettier
+sshfs_sync:
+	fswatch -o build/ | while read n; do rsync -a --delete build/ sshfs_mount/; done
+
+.PHONY: clean build build-staging build-production test prettier sshfs_sync

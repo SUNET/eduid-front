@@ -17,7 +17,7 @@ class LoginApp extends React.Component {
       <div id="content" className="horizontal-content-margin">
         <Route path={`/login/:ref`} render={(props) => <Login {...props} />} />
         <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />
-        <Route path={`/reset-password/email`} render={(props) => <ResetPasswordMain {...props} />} />
+        <Route path={`/reset-password/email`} component={ResetPasswordMain} />
         <Route exact path="/reset-password/email-link-sent" render={(props) => <EmailLinkSent {...props} />} />
         <Route path="/reset-password/extra-security" render={(props) => <ExtraSecurity {...props} />} />
         <Route path="/reset-password/phone-code-sent" render={(props) => <PhoneCodeSent {...props} />} />

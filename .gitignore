@@ -1,6 +1,7 @@
 .*.swp
 .*.swo
 node_modules/
+sshfs_mount/
 coverage/
 npm-debug.log
 build/
@@ -12,3 +13,4 @@ dist/
 *#
 src/login/translation/src/
 i18n/
+sshfs_mount/
