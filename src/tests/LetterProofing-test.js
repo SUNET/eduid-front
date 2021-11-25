@@ -434,7 +434,7 @@ describe("LetterProofing component, letter has been sent", () => {
 
     expect(letterValid.exists()).toEqual(true);
     expect(letterValid.text()).toContain("The letter is valid to");
-    expect(letterValidDate.text()).toEqual("2021-12-08");
+    expect(letterValidDate.text()).toEqual("2021-12-07");
   });
 
   it("Renders button text, the code has expired", () => {
@@ -459,6 +459,6 @@ describe("LetterProofing component, letter has been sent", () => {
     expect(codeExpired.text()).toContain("expired");
     expect(orderNewLetter.exists()).toEqual(true);
     expect(orderNewLetter.text()).toContain("order a new code");
-    expect(letterValidDate.text()).toEqual("2021-12-08");
+    expect(letterValidDate.text()).toEqual("2021-12-07");
   });
 });
