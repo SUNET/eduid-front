@@ -39,7 +39,7 @@ const EmailForm: React.FC<EmailFormProps & InjectedFormProps<EmailFormData, Emai
         className="settings-button"
         id="reset-password-button"
         disabled={props.invalid || props.request_in_progress}
-        // onClick={sendLink}
+        onClick={props.requestEmailLink}
       >
         {props.translate("resetpw.send-link")}
       </EduIDButton>
