@@ -8,7 +8,7 @@ import EmailForm from "./EmailForm";
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
 type ErrorType = {
-  msg: string[];
+  msg: string;
 };
 
 interface ResetPasswordMainProps {
@@ -30,7 +30,7 @@ function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
   useEffect(() => {
     if (errors && errors[0]) {
       // error message is expired-phone-code
-      if ((errors[0] as ErrorType).msg.includes("phone-code")) {
+      if ((errors[0] as ErrorType).msg.match("resetpw.expired-phone-code")) {
         // dispatch useLinkCode to change path to extra-security for resending sms code
         dispatch(resetPasswordSlice.actions.useLinkCode());
       }
