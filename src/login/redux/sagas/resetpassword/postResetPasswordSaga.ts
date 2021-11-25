@@ -24,7 +24,6 @@ export function* postEmailLink() {
     email: state.resetPassword.email_address,
     csrf_token: state.config.csrf_token,
   };
-  console.log("email", state.resetPassword.email_address);
   try {
     yield put(requestInProgress());
     const response: PayloadAction<PostEmailLinkResponse, string, never, boolean> = yield call(postRequest, url, data);
