@@ -1,6 +1,7 @@
 .*.swp
 .*.swo
 node_modules/
+sshfs_mount/
 coverage/
 npm-debug.log
 build/
