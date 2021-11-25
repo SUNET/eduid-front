@@ -5,7 +5,6 @@ import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { InjectedFormProps } from "redux-form";
 import PropTypes from "prop-types";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
-import Splash from "../../../../containers/Splash";
 import EmailForm, { EmailFormData, EmailFormProps } from "./EmailForm";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
@@ -52,10 +51,6 @@ function ResetPasswordMain(
 
   return (
     <>
-      {errors &&
-        typeof errors[0] !== undefined &&
-        (errors[0] as ErrorType).msg !== undefined &&
-        (errors[0] as ErrorType).msg.includes("phone-code") && <Splash />}
       <p className="heading">{props.translate("resetpw.heading-add-email")}</p>
       <EmailForm requestEmailLink={requestEmailLink} {...props} request_in_progress={request_in_progress} />
       <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
