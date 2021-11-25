@@ -1,7 +1,7 @@
 import React from "react";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
+import { translate } from "../../../../login/translation";
 import { connect } from "react-redux";
-import { Field, reduxForm, InjectedFormProps } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
@@ -14,26 +14,23 @@ export interface EmailFormData {
 }
 export interface EmailFormProps {
   requestEmailLink: (event: React.FormEvent<HTMLFormElement>) => void;
-  translate(msg: string): string;
   request_in_progress: boolean;
   invalid: boolean;
 }
 
-const EmailForm: React.FC<EmailFormProps & InjectedFormProps<EmailFormData, EmailFormProps>> = (
-  props: EmailFormProps
-): JSX.Element => {
+const EmailForm = (props: EmailFormProps): JSX.Element => {
   return (
     <Form id="reset-password-form" role="form" onSubmit={props.requestEmailLink}>
       <Field
         type="email"
         name="email"
-        label={props.translate("profile.email_display_title")}
+        label={translate("profile.email_display_title")}
         componentClass="input"
         id="email-input"
         component={CustomInput}
         placeholder="name@example.com"
         required={true}
-        helpBlock={props.translate("emails.input_help_text")}
+        helpBlock={translate("emails.input_help_text")}
       />
       <EduIDButton
         className="settings-button"
@@ -41,7 +38,7 @@ const EmailForm: React.FC<EmailFormProps & InjectedFormProps<EmailFormData, Emai
         disabled={props.invalid || props.request_in_progress}
         onClick={props.requestEmailLink}
       >
-        {props.translate("resetpw.send-link")}
+        {translate("resetpw.send-link")}
       </EduIDButton>
     </Form>
   );
@@ -54,4 +51,4 @@ const DecoratedEmailForm = reduxForm<EmailFormData, EmailFormProps>({
 
 connect(() => ({ touchOnChange: true, enableReinitialize: true, destroyOnUnmount: false }))(DecoratedEmailForm);
 
-export default InjectIntl(DecoratedEmailForm);
+export default DecoratedEmailForm;
