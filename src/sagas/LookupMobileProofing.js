@@ -1,6 +1,6 @@
 import { checkStatus, postRequest, saveData } from "sagas/common";
 import { postLookupMobileFail } from "actions/LookupMobileProofing";
-import * as ninActions from "actions/Nins";
+import { changeNindata } from "reducers/Nins";
 
 // export function* requestLookupMobileProof() {
 //   console.log("this is lookupMobileData response");
@@ -58,10 +58,4 @@ const getData = (state) => {
 };
 
 // function in rootSaga.js
-export const saveLMPNinData = saveData(
-  getData,
-  "nins",
-  ninActions.changeNindata,
-  fetchLookupMobileProof,
-  postLookupMobileFail
-);
+export const saveLMPNinData = saveData(getData, "nins", changeNindata, fetchLookupMobileProof, postLookupMobileFail);

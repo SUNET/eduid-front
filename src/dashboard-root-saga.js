@@ -45,6 +45,7 @@ import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
 import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga";
+import ninsSlice, { startRemove } from "reducers/Nins";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -96,7 +97,7 @@ function* rootSaga() {
     takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
     takeLatest(ninActions.POST_NIN, postNin),
     takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
-    takeLatest(ninActions.POST_NIN_REMOVE, requestRemoveNin),
+    takeLatest(ninsSlice.actions.startRemove.type, requestRemoveNin),
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
     takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestAllPersonalData),
     takeEvery(letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),

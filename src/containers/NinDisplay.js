@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import NinDisplay from "components/NinDisplay";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import * as actions from "actions/Nins";
+import ninsSlice from "reducers/Nins";
 
 const mapStateToProps = (state) => {
   return {
@@ -14,13 +14,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleDelete: function (e) {
       const ninNumber = e.target.closest(".profile-grid-cell").children[1].dataset.ninnumber;
-      dispatch(actions.startRemove(ninNumber));
+      dispatch(ninsSlice.actions.startRemove(ninNumber));
     },
     toggleShowNinAtProfile: function () {
-      dispatch(actions.showNinAtProfile());
+      dispatch(ninsSlice.actions.showNinAtProfile());
     },
     toggleShowNinAtIdentity: function () {
-      dispatch(actions.showNinAtIdentity());
+      dispatch(ninsSlice.actions.showNinAtIdentity());
     },
   };
 };
