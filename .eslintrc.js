@@ -38,8 +38,6 @@ module.exports = {
     EDUID_COOKIE_NAME: true,
     LOGIN_CONFIG_URL: true,
     PASSWORD_SERVICE_URL: true,
-    AVAILABLE_LANGUAGES: true,
-    LOCALIZED_MESSAGES: true,
     GROUP_MGMT_URL: true,
     ACTIONS_SERVICE_URL: true,
     __webpack_public_path__: true,

@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 
 import Footer from "components/Footer";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
+import { LOCALIZED_MESSAGES } from "globals";
 
 const mapStateToProps = (state) => {
   let languages = {};

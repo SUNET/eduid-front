@@ -11,6 +11,7 @@ import eduIDApp from "./errors-store";
 import notifyAndDispatch from "./notify-middleware";
 import { history } from "./login/components/SwamidErrors/ErrorsMain";
 import { updateErrorsConfigData } from "./login/redux/actions/errorsMainActions";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

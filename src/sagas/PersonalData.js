@@ -9,6 +9,8 @@ import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
 import * as pdataActions from "actions/PersonalData";
 import * as accountLinkingActions from "actions/AccountLinking";
+import { LOCALIZED_MESSAGES } from "globals";
+import { GET_NINS_SUCCESS } from "reducers/Nins";
 
 export function* requestAllPersonalData() {
   try {
