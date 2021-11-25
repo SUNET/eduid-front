@@ -62,11 +62,6 @@ const AllEmailForm = reduxForm<EmailFormData, EmailFormProps>({
 
 connect(() => ({}))(AllEmailForm);
 
-// EmailForm = connect(() => ({
-//   enableReinitialize: true,
-//   destroyOnUnmount: false,
-// }))(AllEmailForm);
-
 type ErrorType = {
   msg: unknown[];
 };
