@@ -11,14 +11,13 @@ import {
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { requestInProgress, requestCompleted } from "../../actions/loadingDataActions";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { useAppSelector } from "../../../app_init/hooks";
-
+import { LoginRootState } from "../../../app_init/initStore";
 interface PostEmailLinkResponse {
   email: string;
 }
 
 export function* postEmailLink() {
-  const state = useAppSelector((state) => state);
+  const state: LoginRootState = yield select((state) => state);
   const url = state.config.reset_password_url;
   const data = {
     email: state.resetPassword.email_address,
