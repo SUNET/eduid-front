@@ -13,9 +13,9 @@ import { requestInProgress, requestCompleted } from "../../actions/loadingDataAc
 import { PayloadAction } from "@reduxjs/toolkit";
 import { useAppSelector } from "../../../app_init/hooks";
 
-export type PostEmailLinkResponse = {
+interface PostEmailLinkResponse {
   email: string;
-};
+}
 
 export function* postEmailLink() {
   const state = useAppSelector((state) => state);
