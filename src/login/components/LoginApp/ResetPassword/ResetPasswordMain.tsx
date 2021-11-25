@@ -3,7 +3,6 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { InjectedFormProps } from "redux-form";
-import PropTypes from "prop-types";
 import { clearCountdown, setLocalStorage } from "./CountDownTimer";
 import EmailForm, { EmailFormData, EmailFormProps } from "./EmailForm";
 
@@ -62,9 +61,4 @@ function ResetPasswordMain(
   );
 }
 
-ResetPasswordMain.propTypes = {
-  translate: PropTypes.func,
-  sendLink: PropTypes.func,
-  invalid: PropTypes.bool,
-};
 export default InjectIntl(ResetPasswordMain);
