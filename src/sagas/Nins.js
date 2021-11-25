@@ -1,6 +1,7 @@
 import { put, select, call } from "redux-saga/effects";
 import { checkStatus, putCsrfToken, postRequest, getRequest, failRequest } from "sagas/common";
 import * as actions from "actions/Nins";
+import { GET_NINS_FAIL } from "reducers/Nins";
 
 export function* requestNins() {
   try {
@@ -10,7 +11,7 @@ export function* requestNins() {
     yield put(putCsrfToken(nins));
     yield put(nins);
   } catch (error) {
-    yield* failRequest(error, actions.getNinsFail);
+    yield* failRequest(error, GET_NINS_FAIL);
   }
 }
 

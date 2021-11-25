@@ -2,10 +2,10 @@ import expect from "expect";
 import * as actions from "actions/PersonalData";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
-import * as ninActions from "actions/Nins";
 import personalDataReducer from "reducers/PersonalData";
 import { requestAllPersonalData, fetchAllPersonalData } from "../sagas/PersonalData";
 import { put, call } from "redux-saga/effects";
+import { GET_NINS_SUCCESS } from "reducers/Nins";
 
 describe("Personal Data Actions", () => {
   it("Should get the data user for personal data", () => {
@@ -204,12 +204,7 @@ describe("Async component", () => {
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
 
-    action = {
-      type: ninActions.GET_NINS_SUCCESS,
-      payload: {
-        nins: [],
-      },
-    };
+    action = GET_NINS_SUCCESS({ nins: [] });
     next = generator.next(action);
     expect(next.value).toEqual(put(action));
 

@@ -23,6 +23,7 @@ import notifyAndDispatch from "./notify-middleware";
 import { getSignupConfig } from "actions/SignupMain";
 import { getCodeStatus } from "actions/CodeVerified";
 import { history } from "components/SignupMain";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

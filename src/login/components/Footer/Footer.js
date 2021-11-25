@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { updateIntl } from "../../../reducers/Internationalisation";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 
 const LanguageToggler = ({ browserLocale, setLanguage }) => {
   const dispatch = useDispatch();

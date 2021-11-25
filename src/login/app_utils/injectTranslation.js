@@ -1,5 +1,6 @@
 import initStore from "../app_init/initStore";
 import { updateIntl } from "../../reducers/Internationalisation";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 
 // i18n
 const injectTranslation = () => {

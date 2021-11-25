@@ -6,7 +6,7 @@ import { updateIntl } from "../reducers/Internationalisation";
 import { newCsrfToken } from "actions/DashboardConfig";
 
 import * as CBOR from "sagas/cbor";
-import { TOKEN_SERVICE_URL } from "../globals";
+import { LOCALIZED_MESSAGES, TOKEN_SERVICE_URL } from "../globals";
 
 export const checkStatus = function (response) {
   if (response.status >= 200 && response.status < 300) {

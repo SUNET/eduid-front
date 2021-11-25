@@ -16,6 +16,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 
 import notifyAndDispatch from "./notify-middleware";
 import { eduidNotify } from "actions/Notifications";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 
 /* for redux dev tools */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

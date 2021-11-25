@@ -18,9 +18,23 @@
     "urlencode",
     "resetpw",
     "eidas",
-    "tapit"
+    "tapit",
     "USERNAMEPASSWORD",
-    "webauthn"
+    "webauthn",
+    "nins",
+    "NIN",
+    "nin",
+    "Userdata",
+    "pdata",
+    "OIDC",
+    "SELEG",
+    "Seleg",
+    "chpass",
+    "eppn",
+    "Skatteverket",
+    "SKATTEVERKET",
+    "Nindata",
+    "NINDATA"
   ],
   "cSpell.language": "en,en-US,en-GB,sv"
 }

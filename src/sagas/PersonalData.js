@@ -4,11 +4,12 @@ import { checkStatus, putCsrfToken, getRequest, postRequest, saveData, failReque
 import { getAllUserdata, getAllUserdataFail, postUserdataFail } from "actions/PersonalData";
 
 import * as actions from "actions/DashboardConfig";
-import * as ninActions from "actions/Nins";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
 import * as pdataActions from "actions/PersonalData";
 import * as accountLinkingActions from "actions/AccountLinking";
+import { LOCALIZED_MESSAGES } from "globals";
+import { GET_NINS_SUCCESS } from "reducers/Nins";
 
 export function* requestAllPersonalData() {
   try {
@@ -20,13 +21,8 @@ export function* requestAllPersonalData() {
       const nins = userdata.payload.nins;
       delete userdata.payload.nins;
       if (nins !== undefined) {
-        const ninAction = {
-          type: ninActions.GET_NINS_SUCCESS,
-          payload: {
-            nins: nins,
-          },
-        };
-        yield put(ninAction);
+        // update nins in the state by pretending we received a GET_NINS response from the backend
+        yield put(GET_NINS_SUCCESS({ nins: nins }));
       }
       const emails = userdata.payload.emails;
       delete userdata.payload.emails;

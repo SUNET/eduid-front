@@ -45,7 +45,6 @@ sagaMiddleware.run(rootSaga);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type LoginRootState = ReturnType<typeof initStore.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type LoginAppDispatch = typeof initStore.dispatch;
 
 export default initStore;
