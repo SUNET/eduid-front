@@ -23,11 +23,19 @@
   "Missing error message": {
     "string": "Missing error message"
   },
+  "NWR60d": {
+    "developer_comment": "On-mouse-over tooltip for Settings tab",
+    "string": "<b>Confirm your number</b> to verify your id by phone"
+  },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
   },
   "Not a valid email address.": {
     "string": "Not a valid email address."
+  },
+  "Qb8Ypj": {
+    "developer_comment": "On-mouse-over tooltip for Identity tabXXX",
+    "string": "a digital ID-card"
   },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
@@ -58,6 +66,10 @@
   },
   "add_nin.main_title": {
     "string": "1. Add your id number"
+  },
+  "ai3koJ": {
+    "developer_comment": "On-mouse-over tooltip for Identity tab",
+    "string": "some other option"
   },
   "banner.tagline": {
     "string": "eduID is easier and safer login."
@@ -213,15 +225,6 @@
   },
   "dashboard_nav.identity": {
     "string": "Identity"
-  },
-  "dashboard_nav.identity-verify-freja": {
-    "string": "You can verify <b>with a digital ID-card</b>"
-  },
-  "dashboard_nav.identity-verify-post-freja": {
-    "string": "You can verify <b>by post</b> or <b>with a digital ID-card</b>"
-  },
-  "dashboard_nav.identity-verify-post-phone-freja": {
-    "string": "You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>"
   },
   "dashboard_nav.profile": {
     "string": "Profile"
@@ -885,6 +888,10 @@
   },
   "out_of_sync": {
     "string": "User data is out of sync. Reload page to re-sync."
+  },
+  "p0j92s": {
+    "developer_comment": "On-mouse-over tooltip for Identity tab",
+    "string": "You can verify your identity with"
   },
   "pd.all-data-success": {
     "string": "Successfully retrieved personal information"

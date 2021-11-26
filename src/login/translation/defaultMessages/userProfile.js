@@ -49,24 +49,6 @@ export const userProfile = {
   "dashboard_nav.advanced-settings": (
     <FormattedMessage id="dashboard_nav.advanced-settings" defaultMessage={`Advanced settings`} />
   ),
-  "dashboard_nav.identity-verify-freja": (
-    <FormattedMessage
-      id="dashboard_nav.identity-verify-freja"
-      defaultMessage={`You can verify <b>with a digital ID-card</b>`}
-    />
-  ),
-  "dashboard_nav.identity-verify-post-freja": (
-    <FormattedMessage
-      id="dashboard_nav.identity-verify-post-freja"
-      defaultMessage={`You can verify <b>by post</b> or <b>with a digital ID-card</b>`}
-    />
-  ),
-  "dashboard_nav.identity-verify-post-phone-freja": (
-    <FormattedMessage
-      id="dashboard_nav.identity-verify-post-phone-freja"
-      defaultMessage={`You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>`}
-    />
-  ),
   "dashboard_nav.settings-confirm-phone": (
     <FormattedMessage
       id="dashboard_nav.settings-confirm-phone"
