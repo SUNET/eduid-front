@@ -5,6 +5,7 @@ const precss = require("precss");
 const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const transform = require("@formatjs/ts-transformer").transform;
 
 module.exports = {
   mode: "development",
@@ -49,7 +50,17 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              getCustomTransformers() {
+                return { before: [transform({ overrideIdFn: "[sha512:contenthash:base64:6]" })] };
+              },
+            },
+          },
+        ],
+
         exclude: /node_modules/,
       },
       {
