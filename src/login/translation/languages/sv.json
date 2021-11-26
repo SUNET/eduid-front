@@ -1,194 +1,425 @@
 {
-  "CSRF failed to validate": { "string": "CSRF-koden var fel, var god ladda om sidan" },
-  "Error: Gateway Time-out": { "string": "The remote service is taking too long to respond, please try again" },
+  "CSRF failed to validate": {
+    "string": "CSRF-koden var fel, var god ladda om sidan"
+  },
+  "Error: Gateway Time-out": {
+    "string": "The remote service is taking too long to respond, please try again"
+  },
   "Error: Internal Server Error": {
     "string": "Ett problem (500) uppstod. De ansvariga är underrättade. Var god försök senare."
   },
-  "Error: NOT FOUND": { "string": "Ett problem (404) uppstod. Sidan kan inte hittas." },
-  "Error: Service Unavailable": { "string": "Tjänsten är inte tillgänglig. Är du ansluten till nätverket?" },
+  "Error: NOT FOUND": {
+    "string": "Ett problem (404) uppstod. Sidan kan inte hittas."
+  },
+  "Error: Service Unavailable": {
+    "string": "Tjänsten är inte tillgänglig. Är du ansluten till nätverket?"
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "Säkerhetsnyckeln är redan registrerad med eduID"
   },
-  "Missing data for required field.": { "string": "Information saknas i ett obligatorisk fält" },
-  "Missing error message": { "string": "Felmeddelande saknas" },
+  "Missing data for required field.": {
+    "string": "Information saknas i ett obligatorisk fält"
+  },
+  "Missing error message": {
+    "string": "Felmeddelande saknas"
+  },
   "No connection to authorization endpoint": {
     "string": "Anslutningen till auktoriseringsservern misslyckades. Var god försök senare"
   },
-  "Not a valid email address.": { "string": "Ogiltig e-postadress." },
-  "SecurityMsg.rm_webauthn": { "string": "Säkerhetsnyckel har tagits bort." },
-  "Temporary technical problems": { "string": "Temporärt tekniskt fel, var god försök senare" },
-  "accountId.accountId_display_title": { "string": "Unikt ID" },
+  "Not a valid email address.": {
+    "string": "Ogiltig e-postadress."
+  },
+  "SecurityMsg.rm_webauthn": {
+    "string": "Säkerhetsnyckel har tagits bort."
+  },
+  "Temporary technical problems": {
+    "string": "Temporärt tekniskt fel, var god försök senare"
+  },
+  "accountId.accountId_display_title": {
+    "string": "Unikt ID"
+  },
   "accountId.long_description": {
     "string": "Detta är ett autogenererat unikt id för ditt eduID som du kan behöva ange när du ber om teknisk support."
   },
-  "accountId.main_title": { "string": "Unikt ID" },
-  "accountId.short_description": { "string": " " },
+  "accountId.main_title": {
+    "string": "Unikt ID"
+  },
+  "accountId.short_description": {
+    "string": "Du kan bli tillfrågad om den här information om du ber om teknisk support."
+  },
   "account_linking.long_description": {
     "string": "Om du är forskare med ett ORCID iD kan du dela det med ditt eduID."
   },
-  "account_linking.main_title": { "string": "Länka till ditt ORCID konto" },
-  "actions.action-completed": { "string": "Klart" },
-  "add_nin.main_title": { "string": "1. Lägg till ditt personnummer" },
-  "banner.tagline": { "string": "eduID är enklare och säkrare inloggning." },
+  "account_linking.main_title": {
+    "string": "Länka till ditt ORCID konto"
+  },
+  "actions.action-completed": {
+    "string": "Klart"
+  },
+  "add_nin.main_title": {
+    "string": "1. Lägg till ditt personnummer"
+  },
+  "banner.tagline": {
+    "string": "eduID är enklare och säkrare inloggning."
+  },
   "beta-link.to-stable": {
     "string": "Nya eduID är under uppbyggnad, klicka här för att återvända till den stabila versionen"
   },
-  "button_add": { "string": "Lägg till" },
-  "button_save": { "string": "Spara" },
-  "captcha.cancel": { "string": "Avbryt" },
-  "captcha.one-step-left": { "string": "Bara en sak till!" },
-  "captcha.submit": { "string": "Skicka" },
-  "captcha.verify-human": { "string": "eduID måste verifiera att du är en människa och inte en maskin." },
-  "chpass.button_custom_password": { "string": "Jag vill inte använda det rekommenderade lösenordet" },
-  "chpass.button_save_password": { "string": "Spara" },
-  "chpass.button_suggest_password": { "string": "Rekommendera ett lösenord" },
-  "chpass.different-repeat": { "string": "Det nya och repeterade lösenordet är olika" },
-  "chpass.form_custom_password": { "string": "Skriv ditt nya lösenord" },
-  "chpass.form_custom_password_repeat": { "string": "Repetera ditt nya lösenord" },
+  "button_add": {
+    "string": "Lägg till"
+  },
+  "button_save": {
+    "string": "Spara"
+  },
+  "captcha.cancel": {
+    "string": "Avbryt"
+  },
+  "captcha.one-step-left": {
+    "string": "Bara en sak till!"
+  },
+  "captcha.submit": {
+    "string": "Skicka"
+  },
+  "captcha.verify-human": {
+    "string": "eduID måste verifiera att du är en människa och inte en maskin."
+  },
+  "chpass.button_custom_password": {
+    "string": "Jag vill inte använda det rekommenderade lösenordet"
+  },
+  "chpass.button_save_password": {
+    "string": "Spara"
+  },
+  "chpass.button_suggest_password": {
+    "string": "Rekommendera ett lösenord"
+  },
+  "chpass.different-repeat": {
+    "string": "Det nya och repeterade lösenordet är olika"
+  },
+  "chpass.form_custom_password": {
+    "string": "Skriv ditt nya lösenord"
+  },
+  "chpass.form_custom_password_repeat": {
+    "string": "Repetera ditt nya lösenord"
+  },
   "chpass.help-text-general": {
     "string": "Här kan du byta ditt lösenord. Ett säkert lösenord har genererats till dig. Du väljer att använda det genererade lösenordet genom att klicka \"Byt lösenord\". Vill du använda ett eget lösenord så gör du det genom att klicka i rutan för eget lösenord."
   },
-  "chpass.help-text-newpass-label": { "string": "Tänk på att välja ett säkert lösenord" },
+  "chpass.help-text-newpass-label": {
+    "developer_comment": "help text for custom password label",
+    "string": "Tänk på att välja ett säkert lösenord"
+  },
   "chpass.help-text-newpass-tips": {
+    "developer_comment": "help text for custom password tips",
     "string": "Använd stora och små bokstäver (inte bara första bokstaven)\n Lägg till en eller flera siffror någonstans i mitten av lösenordet\n Använd specialtecken som @ $ \\u005c  + _ %\n Blanksteg (mellanslag) ignoreras"
   },
-  "chpass.low-password-entropy": { "string": "Var god välj ett starkare lösenord" },
-  "chpass.main_title": { "string": "Byt ditt lösenord" },
-  "chpass.no_old_pw": { "string": "Skriv in ditt nuvarande lösenord" },
-  "chpass.no_reauthn": { "string": "Du måste logga in igen för att ändra ditt lösenord" },
-  "chpass.old_password": { "string": "Skriv ditt nuvarande lösenord" },
-  "chpass.password-changed": { "string": "Lösenordet har ändrats" },
-  "chpass.stale_authn_info": { "string": "Inloggningsinformationen har gått ut. Var god försök igen." },
-  "chpass.stale_reauthn": { "string": "Inloggningsinformationen har gått ut. Var god försök igen." },
-  "chpass.suggested_password": { "string": "Rekommenderat lösenord" },
+  "chpass.low-password-entropy": {
+    "string": "Var god välj ett starkare lösenord"
+  },
+  "chpass.main_title": {
+    "string": "Byt ditt lösenord"
+  },
+  "chpass.no_old_pw": {
+    "string": "Skriv in ditt nuvarande lösenord"
+  },
+  "chpass.no_reauthn": {
+    "string": "Du måste logga in igen för att ändra ditt lösenord"
+  },
+  "chpass.old_password": {
+    "string": "Skriv ditt nuvarande lösenord"
+  },
+  "chpass.password-changed": {
+    "string": "Lösenordet har ändrats"
+  },
+  "chpass.stale_authn_info": {
+    "string": "Inloggningsinformationen har gått ut. Var god försök igen."
+  },
+  "chpass.stale_reauthn": {
+    "string": "Inloggningsinformationen har gått ut. Var god försök igen."
+  },
+  "chpass.suggested_password": {
+    "string": "Rekommenderat lösenord"
+  },
   "chpass.unable-to-verify-old-password": {
     "string": "Ett fel har uppstått vid ändring av ditt lösenord. Vänligen försök igen eller kontakta supporten om problemet kvarstår."
   },
-  "cm.accept": { "string": "ACCEPTERA" },
-  "cm.cancel": { "string": "AVBRYT" },
-  "cm.close": { "string": "STÄNG" },
-  "cm.enter_code": { "string": "Bekräftelsekod" },
-  "cm.finish": { "string": "KLAR" },
-  "cm.lost_code": { "string": "Tappat bort din bekräftelsekod?" },
-  "cm.ok": { "string": "OK" },
-  "cm.resend_code": { "string": "Skicka bekräftelsekoden igen" },
-  "code.unknown-code": { "string": "Okänd bekräftelsekod" },
-  "confirmation.code_invalid_format": { "string": "Ogiltig bekräftelsekod" },
-  "created.account-created": { "string": "Kontot skapades" },
-  "created.back_to_signup": { "string": "Tillbaka till registreringen" },
-  "created.confirm-registration": { "string": "Bekräfta registrering" },
-  "created.email-label": { "string": "Slutför skapandet av ditt eduID genom att klicka länken skickad till:" },
+  "cm.accept": {
+    "string": "ACCEPTERA"
+  },
+  "cm.cancel": {
+    "string": "AVBRYT"
+  },
+  "cm.close": {
+    "string": "STÄNG"
+  },
+  "cm.enter_code": {
+    "string": "Bekräftelsekod"
+  },
+  "cm.finish": {
+    "string": "KLAR"
+  },
+  "cm.lost_code": {
+    "developer_comment": "Lost code problem description",
+    "string": "Tappat bort din bekräftelsekod?"
+  },
+  "cm.ok": {
+    "string": "OK"
+  },
+  "cm.resend_code": {
+    "developer_comment": "Lost code problem solution",
+    "string": "Skicka bekräftelsekoden igen"
+  },
+  "code.unknown-code": {
+    "string": "Okänd bekräftelsekod"
+  },
+  "confirmation.code_invalid_format": {
+    "developer_comment": "error text for invalid confirmation code",
+    "string": "Ogiltig bekräftelsekod"
+  },
+  "created.account-created": {
+    "string": "Kontot skapades"
+  },
+  "created.back_to_signup": {
+    "string": "Tillbaka till registreringen"
+  },
+  "created.confirm-registration": {
+    "string": "Bekräfta registrering"
+  },
+  "created.email-label": {
+    "string": "Slutför skapandet av ditt eduID genom att klicka länken skickad till:"
+  },
   "created.email-sent": {
     "string": "Ett e-postmeddelande med instruktioner för hur du kommer vidare har skickats till {email}"
   },
-  "cred.credential_type": { "string": "Inloggningsuppgiftstyp" },
-  "csrf.try-again": { "string": "Ett problem uppstod, var vänlig försök igen" },
-  "dashboard.tagline": { "string": "eduID för" },
-  "dashboard.tagline_unverified": { "string": "Glöm inte att koppla din identitet till ditt eduID" },
-  "dashboard.tagline_verified": { "string": "Gör ditt eduID säkrare" },
-  "dashboard.welcome": { "string": "eduID för" },
-  "dashboard_nav.advanced-settings": { "string": "Avancerade inställningar" },
-  "dashboard_nav.back": { "string": "< Tillbaka" },
-  "dashboard_nav.identity": { "string": "Identitet" },
-  "dashboard_nav.identity-verify-freja": { "string": "Du kan verifiera <b>med digitalt ID-kort</b>" },
+  "cred.credential_type": {
+    "string": "Inloggningsuppgiftstyp"
+  },
+  "csrf.try-again": {
+    "string": "Ett problem uppstod, var vänlig försök igen"
+  },
+  "dashboard.tagline": {
+    "string": "eduID för"
+  },
+  "dashboard.tagline_unverified": {
+    "string": "Glöm inte att koppla din identitet till ditt eduID"
+  },
+  "dashboard.tagline_verified": {
+    "string": "Gör ditt eduID säkrare"
+  },
+  "dashboard_nav.advanced-settings": {
+    "string": "Avancerade inställningar"
+  },
+  "dashboard_nav.back": {
+    "string": "< Tillbaka"
+  },
+  "dashboard_nav.identity": {
+    "string": "Identitet"
+  },
+  "dashboard_nav.identity-verify-freja": {
+    "string": "Du kan verifiera <b>med digitalt ID-kort</b>"
+  },
   "dashboard_nav.identity-verify-post-freja": {
     "string": "Du kan verifiera <b>via post</b>, <b>med digitalt ID-kort</b>"
   },
   "dashboard_nav.identity-verify-post-phone-freja": {
     "string": "Du kan verifiera <b>via post</b>, <b>telefon</b> eller <b>digitalt ID-kort</b>"
   },
-  "dashboard_nav.profile": { "string": "Profil" },
-  "dashboard_nav.settings": { "string": "Inställningar" },
+  "dashboard_nav.profile": {
+    "string": "Profil"
+  },
+  "dashboard_nav.settings": {
+    "string": "Inställningar"
+  },
   "dashboard_nav.settings-confirm-phone": {
     "string": "<b>Bekräfta ditt telefonnummer</b> för att kunna verifera ditt ID via telefon"
   },
-  "delete.confirm_button": { "string": "Radera mitt eduID" },
+  "delete.confirm_button": {
+    "string": "Radera mitt eduID"
+  },
   "delete.modal_info": {
     "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om du väljer att ta bort ditt eduID kommer du att behöva logga in igen en sista gång."
   },
-  "delete.modal_tip": { "string": "Efter att du klickat på knappen kommer du behöva logga in en sista gång." },
-  "eidas.authn_context_mismatch": { "string": "Mottog fel representation av tillitsnivå" },
-  "eidas.error_missing_nin": { "string": "Skriv in ett personnummer och försök igen" },
-  "eidas.error_unknown_error": { "string": "Temporärt tekniskt fel. Var god försök igen senare" },
-  "eidas.freja_eid_ready": { "string": "Använd mitt Freja eID" },
-  "eidas.freja_instructions_install_link": { "string": "Vad är Freja eID?" },
-  "eidas.freja_instructions_step1": { "string": "Installera appen" },
-  "eidas.freja_instructions_step2": { "string": "Skapa ett Freja eID Plus konto (godkänd svensk e-legitimation)" },
-  "eidas.freja_instructions_step3": { "string": "Appen genererar en QR-kod" },
+  "eidas.authn_context_mismatch": {
+    "string": "Mottog fel representation av tillitsnivå"
+  },
+  "eidas.error_missing_nin": {
+    "string": "Skriv in ett personnummer och försök igen"
+  },
+  "eidas.error_unknown_error": {
+    "string": "Temporärt tekniskt fel. Var god försök igen senare"
+  },
+  "eidas.freja_eid_ready": {
+    "string": "Använd mitt Freja eID"
+  },
+  "eidas.freja_instructions_install_link": {
+    "string": "Vad är Freja eID?"
+  },
+  "eidas.freja_instructions_step1": {
+    "string": "Installera appen"
+  },
+  "eidas.freja_instructions_step2": {
+    "string": "Skapa ett Freja eID Plus konto (godkänd svensk e-legitimation)"
+  },
+  "eidas.freja_instructions_step3": {
+    "string": "Appen genererar en QR-kod"
+  },
   "eidas.freja_instructions_step4": {
     "string": "Gå till närmsta ombud, visa giltigt ID tillsammans med QR-koden i din telefon och låt dem bevisa din identitet"
   },
-  "eidas.freja_instructions_step5": { "string": "Freja eID är redo att användas med ditt eduID" },
-  "eidas.freja_instructions_tip_1": { "string": "Tips: Du kan hitta närmsta ombud i appen" },
+  "eidas.freja_instructions_step5": {
+    "string": "Freja eID är redo att användas med ditt eduID"
+  },
+  "eidas.freja_instructions_tip_1": {
+    "string": "Tips: Du kan hitta närmsta ombud i appen"
+  },
   "eidas.initialize_proofing_help_text": {
     "string": "För att använda det här alternativet måste du först skaffa ett digitalt ID-kort i <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> appen."
   },
-  "eidas.modal_title": { "string": "Med Freja eID appen kan du skapa ett digitalt ID-kort" },
-  "eidas.nin_already_verified": { "string": "Du har redan bekräftat din identitet" },
-  "eidas.nin_not_matching": { "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID" },
-  "eidas.nin_verify_success": { "string": "Din identitet är bekräftad" },
-  "eidas.reauthn_expired": { "string": "Autentiseringen har gått ut. Var god försök igen." },
-  "eidas.token_not_found": { "string": "Säkerhetsnyckeln hittades inte" },
-  "eidas.token_not_in_credentials_used": { "string": "Säkerhetsnyckeln användes inte vid inloggning" },
-  "eidas.token_verify_success": { "string": "Säkerhetsnyckeln verifierad" },
-  "eidas.vetting_button_freja": { "string": "med digitalt ID-kort" },
-  "email.invalid_email": { "string": "Ogiltig e-postadress" },
-  "email.sign-up-email": { "string": "Skapa eduID" },
+  "eidas.modal_title": {
+    "string": "Med Freja eID appen kan du skapa ett digitalt ID-kort"
+  },
+  "eidas.nin_already_verified": {
+    "string": "Du har redan bekräftat din identitet"
+  },
+  "eidas.nin_not_matching": {
+    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
+  },
+  "eidas.nin_verify_success": {
+    "string": "Din identitet är bekräftad"
+  },
+  "eidas.reauthn_expired": {
+    "string": "Autentiseringen har gått ut. Var god försök igen."
+  },
+  "eidas.token_not_found": {
+    "string": "Säkerhetsnyckeln hittades inte"
+  },
+  "eidas.token_not_in_credentials_used": {
+    "string": "Säkerhetsnyckeln användes inte vid inloggning"
+  },
+  "eidas.token_verify_success": {
+    "string": "Säkerhetsnyckeln verifierad"
+  },
+  "eidas.vetting_button_freja": {
+    "string": "med digitalt ID-kort"
+  },
+  "email.invalid_email": {
+    "string": "Ogiltig e-postadress"
+  },
+  "email.sign-up-email": {
+    "string": "Skapa eduID"
+  },
   "emails.add_new": {
     "string": "A new email address will receieve a link to click or a confirmation code that can be used by clicking Confirm in the table."
   },
-  "emails.button_add": { "string": "Lägg till" },
-  "emails.button_add_more": { "string": "+ lägg till fler" },
-  "emails.cannot_remove_primary": { "string": "Du kan inte ta bort din primära e-postadress" },
-  "emails.cannot_remove_unique": { "string": "Du måste ha minst en e-postadress knuten till ditt konto" },
+  "emails.button_add": {
+    "string": "Lägg till"
+  },
+  "emails.button_add_more": {
+    "string": "+ lägg till fler"
+  },
+  "emails.cannot_remove_primary": {
+    "string": "Du kan inte ta bort din primära e-postadress"
+  },
+  "emails.cannot_remove_unique": {
+    "string": "Du måste ha minst en e-postadress knuten till ditt konto"
+  },
   "emails.cannot_remove_unique_verified": {
     "string": "Du måste ha minst en verifierad e-postadress knuten till ditt konto"
   },
-  "emails.code-sent": { "string": "En ny bekräftelsekod har skickats" },
-  "emails.code_expired_send_new": { "string": "Bekräftelsekoden har gått ut. En ny har skickats." },
-  "emails.code_invalid": { "string": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod" },
+  "emails.code-sent": {
+    "string": "En ny bekräftelsekod har skickats"
+  },
+  "emails.code_expired_send_new": {
+    "string": "Bekräftelsekoden har gått ut. En ny har skickats."
+  },
+  "emails.code_invalid": {
+    "string": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod"
+  },
   "emails.code_invalid_or_expired": {
     "string": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod"
   },
-  "emails.confirm_email_placeholder": { "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" },
+  "emails.confirm_email_placeholder": {
+    "developer_comment": "Placeholder for email text input",
+    "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  },
   "emails.confirm_help_text": {
+    "developer_comment": "Help text for email confirmation code",
     "string": "Koden är formaterad som fem grupper med tecken och nummer, åtskilda av bindestreck"
   },
-  "emails.confirm_title": { "string": "Klicka på länken eller skriv in koden som skickats till {email} här" },
-  "emails.duplicated": { "string": "E-postadressen är redan tagen. Var god använd en annan." },
-  "emails.email": { "string": "E-postadress" },
-  "emails.get-success": { "string": "E-postadresser hämtade" },
-  "emails.input_help_text": { "string": "En giltig e-postadress" },
-  "emails.invalid_email": { "string": "Ogiltig e-postadress" },
+  "emails.confirm_title": {
+    "string": "Klicka på länken eller skriv in koden som skickats till {email} här"
+  },
+  "emails.duplicated": {
+    "string": "E-postadressen är redan tagen. Var god använd en annan."
+  },
+  "emails.email": {
+    "string": "E-postadress"
+  },
+  "emails.get-success": {
+    "string": "E-postadresser hämtade"
+  },
+  "emails.input_help_text": {
+    "string": "En giltig e-postadress"
+  },
+  "emails.invalid_email": {
+    "string": "Ogiltig e-postadress"
+  },
   "emails.long_description": {
     "string": "Du kan koppla en eller flera av dina e-postadresser till ditt eduID-konto\noch därefter välja vilken av dem som ska vara primär."
   },
-  "emails.main_title": { "string": "E-postadresser" },
-  "emails.missing": { "string": "E-postadress saknas" },
-  "emails.primary-success": { "string": "Din primära e-postadress har ändrats" },
-  "emails.removal-success": { "string": "E-postadress borttagen" },
-  "emails.resend_success": { "string": "En ny bekräftelsekod har skickats till {email}" },
-  "emails.save-success": { "string": "E-postadressen sparad" },
+  "emails.main_title": {
+    "string": "E-postadresser"
+  },
+  "emails.missing": {
+    "string": "E-postadress saknas"
+  },
+  "emails.primary-success": {
+    "string": "Din primära e-postadress har ändrats"
+  },
+  "emails.removal-success": {
+    "string": "E-postadress borttagen"
+  },
+  "emails.resend_success": {
+    "string": "En ny bekräftelsekod har skickats till {email}"
+  },
+  "emails.save-success": {
+    "string": "E-postadressen sparad"
+  },
   "emails.unconfirmed_address_not_primary": {
     "string": "Du måste bekräfta din e-postadress innan den kan sättas som primär e-postadress"
   },
-  "emails.unknown_email": { "string": "Okänd e-postadress" },
-  "emails.verification-success": { "string": "E-postadressen bekräftad" },
+  "emails.unknown_email": {
+    "string": "Okänd e-postadress"
+  },
+  "emails.verification-success": {
+    "string": "E-postadressen bekräftad"
+  },
   "error_access": {
     "string": "Inloggningsproblem <ul><li>Ett fel uppstod vid inloggning i tjänsten.</li><li>Om du tror att du ska kunna använda tjänsten, kontakta din organisation och ange vilken tjänst du försökte nå, eventuella felmeddelanden du fick samt, om möjligt, en skärmdump med felmeddelandena inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida.</li></ul>"
   },
-  "error_access_an_error_occurred": { "string": "Fel oklart, något fastnat någonstans" },
-  "error_affiliation_student": { "string": "Du har ingen student behörighet" },
-  "error_assurance_al1": { "string": "Du har inte rätt behörighet för AL1 " },
+  "error_access_an_error_occurred": {
+    "string": "Fel oklart, något fastnat någonstans"
+  },
+  "error_affiliation_student": {
+    "string": "Du har ingen student behörighet"
+  },
+  "error_assurance_al1": {
+    "string": "Du har inte rätt behörighet för AL1 "
+  },
   "error_authentication": {
     "string": "Inloggning misslyckades <ul><li>Ett fel uppstod i tjänsten du försökte nå i samband med inloggning.</li><li>Detta kan bero på att ytterligare steg krävs vid inloggning, till exempel användning av tvåfaktorsinloggning. Vänligen försök igen.</li><li>Om du inte lyckas lösa problemet, kontakta din organisation och ange vilken tjänst du försökte nå, eventuella felmeddelande du fick samt, om möjligt, en skärmdump med felmeddelandena inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida.</li></ul>"
   },
-  "error_edu_person_orcid": { "string": "eduPersonOrcid fel" },
-  "error_edu_person_principal_name": { "string": "eduPersonPrincipalName fel" },
+  "error_edu_person_orcid": {
+    "string": "eduPersonOrcid fel"
+  },
+  "error_edu_person_principal_name": {
+    "string": "eduPersonPrincipalName fel"
+  },
   "error_identification_failed": {
     "string": "Attribut saknas <ul><li>Tjänsten du försökte nå fick inte de attribut den behöver för att identifiera dig eller för att personanpassa tjänsten.</li><li>Detta kan bero på att din organisation saknar dessa uppgifter om dig eller att organisationens inloggningstjänst inte är konfigurerat för att skicka attributen till tjänsten du försökte nå.</li><li>Kontakta din organisation och ange vilken tjänst du försökte nå, vilka attribut som saknades om du vet vilka dessa är (tjänsten kan ha berättat detta för er) samt, om möjligt, en skärmdump med eventuella felmeddelanden som tjänsten gav dig inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida.</li></ul>"
   },
-  "error_in_form": { "string": "Formulärfel. Se nedan för specifikt felmeddelande" },
+  "error_in_form": {
+    "string": "Formulärfel. Se nedan för specifikt felmeddelande"
+  },
   "error_insufficient_privileges": {
     "string": "Behörighet saknas <ul><li>Du saknar behörighet till tjänsten du försökte nå.</li><li>Typiska behörighetskrav:</li><div><li>En bekräftad användare, även kallad SWAMID AL2</li><li>Identiteter bekräftas oftast genom besök i organisationens servicedesk eller motsvarande under uppvisande av legitimation.</li><li>Association till organisationen (även kallat affiliation)</li><li>Din affiliation beskriver din relation till din organisation. Vanliga affiliations inkluderar student och employee. Om du exempelvis är en student och tjänsten du försökte nå inte fick affiliation student så behöver du kontakta din organisation för att lösa detta.</li><li>En specifik behörighet (även kallat entitlement)</li><li>Entitlements är specifika behörigheter till specifika tjänster. Om du saknar entitlements du anser att du ska ha (d.v.s. att du skall kunna använda tjänsten du försökte nå) så behöver du kontakta din organisation för att rätta till detta.</li></div><li>Om du anser att du ska ha behörighet till tjänsten, kontakta din organisation och ange vilken tjänst du försökte nå, vilka behörigheter du anser du ska ha, eventuella felmeddelande du fick samt, om möjligt, en skärmdump med felmeddelandena inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida.</li></ul>"
   },
@@ -198,58 +429,129 @@
   "error_lookup_mobile_task": {
     "string": "Ditt telefonnummer kunde inte hittas i registret. Var god prova en annan metod."
   },
-  "error_mfa": { "string": "MFA fel" },
-  "error_navet_task": { "string": "Problem att nå Navet" },
-  "error_sp_example_nin": { "string": "Du behöver verifiera ditt eduID konto" },
-  "error_technical_info_heading": { "string": "Teknisk information" },
+  "error_mfa": {
+    "string": "MFA fel"
+  },
+  "error_navet_task": {
+    "string": "Problem att nå Navet"
+  },
+  "error_sp_example_nin": {
+    "string": "Du behöver verifiera ditt eduID konto"
+  },
+  "error_technical_info_heading": {
+    "string": "Teknisk information"
+  },
   "error_without_code": {
     "string": "Otillräckligt med information om felet mottagits, vänligen prova igen eller kontakta support"
   },
-  "faq_link": { "string": "För mer information, se " },
-  "finish.access-more": { "string": "Kom åt mer" },
-  "finish.can-now-login": { "string": "Du kan nu logga in" },
-  "finish.confirm-identity": { "string": "BEKRÄFTA IDENTITET" },
-  "finish.finish": { "string": "SLUTFÖR" },
-  "finish.got-it": { "string": "Klart" },
-  "finish.registration-complete": { "string": "Registrering av ditt eduID är klar." },
-  "finish.registration-details": { "string": "Detta är dina inloggningsuppgifter för eduID." },
-  "finish.sites-accept": { "string": "Ditt konto är nu klart att användas med webbplatser som accepterar" },
+  "faq_link": {
+    "string": "För mer information, se "
+  },
+  "finish.access-more": {
+    "string": "Kom åt mer"
+  },
+  "finish.can-now-login": {
+    "string": "Du kan nu logga in"
+  },
+  "finish.confirm-identity": {
+    "string": "BEKRÄFTA IDENTITET"
+  },
+  "finish.finish": {
+    "string": "SLUTFÖR"
+  },
+  "finish.got-it": {
+    "string": "Klart"
+  },
+  "finish.registration-complete": {
+    "string": "Registrering av ditt eduID är klar."
+  },
+  "finish.registration-details": {
+    "string": "Detta är dina inloggningsuppgifter för eduID."
+  },
+  "finish.sites-accept": {
+    "string": "Ditt konto är nu klart att användas med webbplatser som accepterar"
+  },
   "finish.to-dashboard": {
     "string": "Fortsätt till din profilsida för att få åtkomst till webbplatser som kräver en bekräftad identitet."
   },
-  "finish.unconfirmed-identities": { "string": "Obekräftade identiteter" },
+  "finish.unconfirmed-identities": {
+    "string": "Obekräftade identiteter"
+  },
   "foot.change-version-tip": {
     "string": "Om du stöter på något problem så kan du byta till en tidigare version av appen."
   },
-  "header.faq": { "string": "Hjälp" },
-  "header.logout": { "string": "Logga ut" },
-  "header.signin": { "string": "Logga in" },
-  "header.signup": { "string": "REGISTRERING" },
-  "letter.already-sent": { "string": "Ett brev är redan på väg till din folkbokföringsadress" },
-  "letter.bad-postal-address": { "string": "Ofullständig postadress" },
-  "letter.button_text_code": { "string": "Skriv bekräftelsekoden här" },
-  "letter.button_text_request": { "string": "via post" },
+  "header.faq": {
+    "string": "Hjälp"
+  },
+  "header.logout": {
+    "string": "Logga ut"
+  },
+  "header.signin": {
+    "string": "Logga in"
+  },
+  "header.signup": {
+    "string": "REGISTRERING"
+  },
+  "letter.already-sent": {
+    "string": "Ett brev är redan på väg till din folkbokföringsadress"
+  },
+  "letter.bad-postal-address": {
+    "string": "Ofullständig postadress"
+  },
+  "letter.button_text_code": {
+    "string": "Skriv bekräftelsekoden här"
+  },
+  "letter.button_text_request": {
+    "string": "via post"
+  },
   "letter.initialize_proofing_help_text": {
     "string": "Brevet innehåller en bekräftelsekod som av säkerhetsskäl går ut efter två veckor."
   },
-  "letter.letter_sent_msg": { "string": "Ett brev med en kod har skickats till din folkbokföringsadress" },
+  "letter.letter_sent_msg": {
+    "string": "Ett brev med en kod har skickats till din folkbokföringsadress"
+  },
   "letter.lost_code": {
+    "developer_comment": "Text for letter proofing confirm dialog",
     "string": "Om du klickar på \"Skicka\"-knappen kommer en kod att skickas till din folkbokföringsadress."
   },
   "letter.modal_confirm_info": {
     "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
   },
-  "letter.modal_confirm_title": { "string": "Få en bekräftelsekod via post" },
-  "letter.no-address-found": { "string": "Ingen postadress hittades" },
-  "letter.no_state_found": { "string": "Ingen pågående bekräftning hittades" },
-  "letter.placeholder": { "string": "Bekräftelsekod" },
-  "letter.resend_code": { "string": "Skicka bekräftelsekoden igen" },
-  "letter.saved-unconfirmed": { "string": "Ett brev med bekräftelsekod har skickats." },
-  "letter.verification_success": { "string": "Personnumret är bekräftat" },
-  "letter.verify_title": { "string": "Skriv in koden du fått hemskickad" },
-  "letter.wrong-code": { "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen" },
-  "lmp.button_text_code": { "string": "Skriv bekräftelsekoden här" },
-  "lmp.button_text_request": { "string": "via telefon" },
+  "letter.modal_confirm_title": {
+    "string": "Få en bekräftelsekod via post"
+  },
+  "letter.no-address-found": {
+    "string": "Ingen postadress hittades"
+  },
+  "letter.no_state_found": {
+    "string": "Ingen pågående bekräftning hittades"
+  },
+  "letter.placeholder": {
+    "developer_comment": "Placeholder for letter proofing text input",
+    "string": "Bekräftelsekod"
+  },
+  "letter.resend_code": {
+    "developer_comment": "Text for letter code resend button",
+    "string": "Skicka bekräftelsekoden igen"
+  },
+  "letter.saved-unconfirmed": {
+    "string": "Ett brev med bekräftelsekod har skickats."
+  },
+  "letter.verification_success": {
+    "string": "Personnumret är bekräftat"
+  },
+  "letter.verify_title": {
+    "string": "Skriv in koden du fått hemskickad"
+  },
+  "letter.wrong-code": {
+    "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
+  },
+  "lmp.button_text_code": {
+    "string": "Skriv bekräftelsekoden här"
+  },
+  "lmp.button_text_request": {
+    "string": "via telefon"
+  },
   "lmp.confirm_info": {
     "string": "Du kan acceptera en sökning i telefonregistret för att se om ditt telefonnummer finns lagrat tillsammans med ditt personnummer. Om dina uppgifter inte lagts till i registret av din mobiloperatör kommer vi inte kunna bevisa din identitet via telefonnummer."
   },
@@ -259,40 +561,78 @@
   "lmp.initialize_proofing_help_text_tip_1": {
     "string": "Tips: Registret med telefonnummer uppdateras av mobiloperatörerna och innehåller inte nödvändigtvis alla nummer."
   },
-  "lmp.modal_confirm_title": { "string": "Kolla om ditt telefonnummer är kopplat till ditt personnummer." },
-  "lmp.verification_success": { "string": "Ditt personummer har verifierats" },
-  "login.assurance_failure": { "string": "Tillfälligt fel, var god försök igen senare." },
+  "lmp.modal_confirm_title": {
+    "string": "Kolla om ditt telefonnummer är kopplat till ditt personnummer."
+  },
+  "lmp.verification_success": {
+    "string": "Ditt personummer har verifierats"
+  },
+  "login.assurance_failure": {
+    "string": "Tillfälligt fel, var god försök igen senare."
+  },
   "login.assurance_not_possible": {
     "string": "Tjänsten kräver något som eduID inte kan tillhandahålla. Kontakta ägaren av tjänsten för hjälp."
   },
-  "login.bad_ref": { "string": "Ett problem med referensnumret i URLen uppstod, var god ladda om sidan." },
+  "login.bad_ref": {
+    "string": "Ett problem med referensnumret i URLen uppstod, var god ladda om sidan."
+  },
   "login.credential_expired": {
     "string": "Tjänsten kräver något som eduID inte kan tillhandahålla. Kontakta ägaren av tjänsten för hjälp."
   },
-  "login.general_failure": { "string": "Tillfälligt fel, var god försök igen senare." },
-  "login.mfa.h2-heading": { "string": "Logga in: Extra nivå av säkerhet" },
+  "login.general_failure": {
+    "string": "Tillfälligt fel, var god försök igen senare."
+  },
+  "login.mfa.h2-heading": {
+    "string": "Logga in: Extra nivå av säkerhet"
+  },
   "login.mfa.paragraph": {
     "string": "Du måste välja en andra metod att autentisera dig själv. Detta hjälper att garantera att bara du kan komma åt ditt eduID."
   },
-  "login.mfa.primary-option.button": { "string": "Använd min säkerhetsnyckel" },
-  "login.mfa.primary-option.hint": { "string": "Om din säkerhetsnyckel har en knapp, glöm inte att trycka på den." },
-  "login.mfa.primary-option.title": { "string": "Säkerhetsnyckel" },
-  "login.mfa.secondary-option.button": { "string": "Använd mitt <span class=\"verbatim\">Freja&nbsp;eID+</span>" },
-  "login.mfa.secondary-option.title": { "string": "Freja eID+" },
-  "login.mfa_auth_failure": { "string": "Ett problem med autentiseringen uppstod, var vänlig försök igen." },
-  "login.no_sso_session": { "string": "Ett problem uppstod, var god ladda om sidan." },
-  "login.not_available": { "string": "Tillfälligt fel, var god försök igen senare." },
-  "login.not_implemented": { "string": "Ett problem uppstod, var vänlig försök igen." },
+  "login.mfa.primary-option.button": {
+    "string": "Använd min säkerhetsnyckel"
+  },
+  "login.mfa.primary-option.hint": {
+    "string": "Om din säkerhetsnyckel har en knapp, glöm inte att trycka på den."
+  },
+  "login.mfa.primary-option.title": {
+    "string": "Säkerhetsnyckel"
+  },
+  "login.mfa.secondary-option.button": {
+    "string": "Använd mitt <span class=\"verbatim\">Freja&nbsp;eID+</span>"
+  },
+  "login.mfa.secondary-option.title": {
+    "string": "Freja eID+"
+  },
+  "login.mfa_auth_failure": {
+    "string": "Ett problem med autentiseringen uppstod, var vänlig försök igen."
+  },
+  "login.no_sso_session": {
+    "string": "Ett problem uppstod, var god ladda om sidan."
+  },
+  "login.not_available": {
+    "string": "Tillfälligt fel, var god försök igen senare."
+  },
+  "login.not_implemented": {
+    "string": "Ett problem uppstod, var vänlig försök igen."
+  },
   "login.swamid_mfa_required": {
     "string": "Tjänsten kräver personverifierad multifaktor (SWAMID MFA). Besök eduIDs dashboard för att lägga till en verifierad säkerhetsnyckel."
   },
-  "login.tou.button": { "string": "Jag accepterar" },
-  "login.tou.h2-heading": { "string": "Logga in: Användarvillkor" },
-  "login.tou.legal-title": { "string": "Allmänna regler för eduIDanvändare:" },
+  "login.tou.button": {
+    "string": "Jag accepterar"
+  },
+  "login.tou.h2-heading": {
+    "string": "Logga in: Användarvillkor"
+  },
+  "login.tou.legal-title": {
+    "string": "Allmänna regler för eduIDanvändare:"
+  },
   "login.tou.legal-warning": {
     "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
   },
-  "login.tou.paragraph": { "string": "Vi behöver ett uppdaterat accepterande från dig av eduIDs användarvillkor." },
+  "login.tou.paragraph": {
+    "string": "Vi behöver ett uppdaterat accepterande från dig av eduIDs användarvillkor."
+  },
   "login.tou.version.2016-v1": {
     "string": "<ul tabIndex=\"0\">\n     <p>För eduID.se gäller generellt</p>\n      <li>\n        <p>\n          att all användning av användarkonton ska följa Sveriges lagar och förordningar,\n        </p>\n      </li>\n      <li>\n        <p>\n          att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl,\n        </p>\n      </li>\n      <li>\n        <p>\n          att användarkonton, lösenord och koder är personliga och får endast användas av innehavaren,\n        </p>\n      </li>\n      <li>\n        <p>\n          att SUNET:s etiska regler reglerar övrig tillåten användning.\n        </p>\n      </li>\n    </ul>\n    <ul tabIndex=\"0\">\n      <p>SUNET bedömer som oetiskt när någon:</p>\n      <li>\n        <p>\n          försöker få tillgång till nätverksresurser utan att ha rätt till det</p>\n      </li>\n      <li>\n        <p>försöker dölja sin användaridentitet</p>\n      </li>\n      <li>\n        <p>\n          försöker störa eller avbryta den avsedda användningen av nätverken\n        </p>\n      </li>\n      <li>\n        <p>\n         uppenbart slösar med tillgängliga resurser (personal, maskinvara eller programvara)\n        </p>\n      </li>\n      <li>\n        <p>försöker skada eller förstöra den datorbaserade informationen</p>\n      </li>\n      <li>\n        <p>gör intrång i andras privatliv</p>\n      </li>\n      <li>\n        <p>försöker förolämpa eller förnedra andra</p>\n      </li>\n    </ul>"
   },
@@ -305,68 +645,154 @@
   "login.user_terminated": {
     "string": "Detta konto har avslutats, men finns kvar några dagar. Gör en lösenordsåterställning för att ångra avslutet."
   },
-  "login.usernamePw.h2-heading": { "string": "Logga in" },
-  "login.usernamePw.password-input": { "string": "Lösenord" },
-  "login.usernamePw.register-link": { "string": "Registrera dig här." },
-  "login.usernamePw.register-prompt": { "string": "Har du inte eduID?" },
-  "login.usernamePw.reset-password-link": { "string": "Glömt ditt lösenord?" },
-  "login.usernamePw.submit-button-busy": { "string": "Loggar in" },
-  "login.usernamePw.submit-button-idle": { "string": "Logga in" },
-  "login.wrong_credentials": { "string": "E-postadressen eller lösenordet är felaktigt." },
-  "login.wrong_user": { "string": "Det gick inte att slutföra inloggningen. Var god försök igen." },
-  "mail_duplicated": { "string": "E-postadressen finns redan i listan" },
-  "main.confirmed": { "string": "Bekräftad" },
-  "main.copyright": { "string": "SUNET 2013-2021" },
-  "main.unconfirmed": { "string": "Obekräftad" },
-  "main.welcome": { "string": "Välkommen till eduID" },
+  "login.usernamePw.h2-heading": {
+    "string": "Logga in"
+  },
+  "login.usernamePw.password-input": {
+    "string": "Lösenord"
+  },
+  "login.usernamePw.register-link": {
+    "string": "Registrera dig här."
+  },
+  "login.usernamePw.register-prompt": {
+    "string": "Har du inte eduID?"
+  },
+  "login.usernamePw.reset-password-link": {
+    "string": "Glömt ditt lösenord?"
+  },
+  "login.usernamePw.submit-button-busy": {
+    "string": "Loggar in"
+  },
+  "login.usernamePw.submit-button-idle": {
+    "string": "Logga in"
+  },
+  "login.wrong_credentials": {
+    "string": "E-postadressen eller lösenordet är felaktigt."
+  },
+  "login.wrong_user": {
+    "string": "Det gick inte att slutföra inloggningen. Var god försök igen."
+  },
+  "mail_duplicated": {
+    "string": "E-postadressen finns redan i listan"
+  },
+  "main.copyright": {
+    "string": "SUNET 2013-2021"
+  },
+  "main.welcome": {
+    "string": "Välkommen till eduID"
+  },
   "mfa.edge-no-u2f": {
     "string": "Det är för närvarande ett problem med browsern Edge och U2F-säkerhetsnycklar. Vänligen försök igen med Firefox eller Chrome."
   },
-  "mfa.error-getting-token": { "string": "Det uppstod ett problem med din säkerhetsnyckel" },
-  "mfa.extra-security-enabled": { "string": "Extra säkerhet påslaget för det här kontot" },
-  "mfa.fake-authn": { "string": "Fejkad authn vid testning" },
-  "mfa.freja-eid": { "string": "Använd Freja eID i stället" },
-  "mfa.login-tapit": { "string": "Använd din säkerhetsnyckel för att logga in. Om den har en knapp, tryck på den nu." },
-  "mfa.no-webauthn-support": { "string": "Säkerhetsnycklar stöds inte" },
+  "mfa.error-getting-token": {
+    "string": "Det uppstod ett problem med din säkerhetsnyckel"
+  },
+  "mfa.extra-security-enabled": {
+    "string": "Extra säkerhet påslaget för det här kontot"
+  },
+  "mfa.freja-eid": {
+    "string": "Använd Freja eID i stället"
+  },
+  "mfa.login-tapit": {
+    "string": "Använd din säkerhetsnyckel för att logga in. Om den har en knapp, tryck på den nu."
+  },
+  "mfa.no-webauthn-support": {
+    "string": "Säkerhetsnycklar stöds inte"
+  },
   "mfa.no-webauthn-support-text": {
     "string": "Du har registrerat en säkerhetsnyckel för tvåfaktorsautentisering men din webbläsare har inget stöd för dom. Försök med en annan browser för att använda din säkerhetsnyckel."
   },
-  "mfa.problems-heading": { "string": "Problem?" },
+  "mfa.problems-heading": {
+    "string": "Problem?"
+  },
   "mfa.reset-password-tapit": {
     "string": "Använd din säkerhetsnyckel för att återställa lösenordet. Om den har en knapp, tryck på den nu."
   },
-  "mfa.try-again": { "string": "Försök igen" },
-  "mfa.two-factor-authn": { "string": "Tvåfaktorsautentisering" },
-  "mobile.button_add": { "string": "Lägg till" },
-  "mobile.confirm_mobile_placeholder": { "string": "Bekräftelsekod" },
-  "mobile.confirm_title": { "string": "Skriv in koden som skickats till <b>{phone}</b>" },
-  "mobile.mobile": { "string": "Telefon" },
-  "mobile.resend_success": { "string": "Ny bekräftelsekod skickad till {email}" },
+  "mfa.try-again": {
+    "string": "Försök igen"
+  },
+  "mfa.two-factor-authn": {
+    "string": "Tvåfaktorsautentisering"
+  },
+  "mobile.button_add": {
+    "string": "Lägg till"
+  },
+  "mobile.confirm_mobile_placeholder": {
+    "developer_comment": "Placeholder for phone text input",
+    "string": "Bekräftelsekod"
+  },
+  "mobile.confirm_title": {
+    "string": "Skriv in koden som skickats till <b>{phone}</b>"
+  },
+  "mobile.mobile": {
+    "string": "Telefon"
+  },
+  "mobile.resend_success": {
+    "string": "Ny bekräftelsekod skickad till {email}"
+  },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "Skriv in personnumret med 12 siffror och försök igen"
   },
-  "nin_display.profile.main_title": { "string": "Personnummer" },
-  "nin_display.profile.no_nin": { "string": "lägg till personnummer" },
-  "nin_display.verify-identity_unverified_main_title": { "string": "1. Ditt personnummer" },
-  "nin_display.verify-identity_verified_main_title": { "string": "Personnummer" },
-  "nin_hide_last_four_digits": { "string": "DÖLJ" },
-  "nin_show_last_four_digits": { "string": "VISA" },
-  "nins.illegal_chars": { "string": "Endast siffror är tillåtna" },
-  "nins.input_help_text": { "string": "Personnummer med 12 siffror" },
-  "nins.input_placeholder": { "string": "ååååmmddnnnn" },
-  "nins.invalid_nin": { "string": "Ogiltigt personnummer" },
-  "nins.no-mobile-match": { "string": "Inga abonnemangsuppgifter som matchar personnumret hittades" },
+  "nin_display.profile.main_title": {
+    "string": "Personnummer"
+  },
+  "nin_display.profile.no_nin": {
+    "string": "lägg till personnummer"
+  },
+  "nin_display.verify-identity_unverified_main_title": {
+    "string": "1. Ditt personnummer"
+  },
+  "nin_display.verify-identity_verified_main_title": {
+    "string": "Personnummer"
+  },
+  "nin_hide_last_four_digits": {
+    "string": "DÖLJ"
+  },
+  "nin_show_last_four_digits": {
+    "string": "VISA"
+  },
+  "nins.illegal_chars": {
+    "string": "Endast siffror är tillåtna"
+  },
+  "nins.input_help_text": {
+    "string": "Personnummer med 12 siffror"
+  },
+  "nins.input_placeholder": {
+    "string": "ååååmmddnnnn"
+  },
+  "nins.invalid_nin": {
+    "string": "Ogiltigt personnummer"
+  },
+  "nins.no-mobile-match": {
+    "string": "Inga abonnemangsuppgifter som matchar personnumret hittades"
+  },
   "nins.only_one_to_verify": {
     "string": "Du kan bara bekräfta ett personnummer åt gången. Var god ta bort oönskade personnummer."
   },
-  "nins.success_removal": { "string": "Personnummer har tagits bort" },
-  "nins.successfully_added": { "string": "Personnummer har lagts till." },
-  "nins.valid_nin": { "string": "Giltigt personnummer" },
-  "nins.verified_no_rm": { "string": "Du kan inte ta bort ditt bekräftade personnummer" },
-  "nins.wrong_length": { "string": "Skriv personnummer med 12 siffror" },
-  "oc.error_missing_nin": { "string": "Skriv in ett personnummer och försök igen" },
-  "oc.error_unknown_error": { "string": "Temporärt tekniskt fel. Var god försök igen senare" },
-  "oc.initialize_proofing": { "string": "SE-LEG" },
+  "nins.success_removal": {
+    "string": "Personnummer har tagits bort"
+  },
+  "nins.successfully_added": {
+    "string": "Personnummer har lagts till."
+  },
+  "nins.valid_nin": {
+    "string": "Giltigt personnummer"
+  },
+  "nins.verified_no_rm": {
+    "string": "Du kan inte ta bort ditt bekräftade personnummer"
+  },
+  "nins.wrong_length": {
+    "string": "Skriv personnummer med 12 siffror"
+  },
+  "oc.error_missing_nin": {
+    "string": "Skriv in ett personnummer och försök igen"
+  },
+  "oc.error_unknown_error": {
+    "string": "Temporärt tekniskt fel. Var god försök igen senare"
+  },
+  "oc.initialize_proofing": {
+    "string": "SE-LEG"
+  },
   "oc.initialize_proofing_help_text": {
     "string": "För att använda det här alternativet måste du besöka en <a href=\"https://www.sunet.se/samarbeten/projekt-nationell-tjanst-for-grundidentifiering/\" target=\"_blank\">SE-LEG RA</a> och visa legitimation."
   },
@@ -376,13 +802,27 @@
   "oc.instructions_step_2": {
     "string": "Visa QR-koden och vald legitimation för bibliotekarien. Berätta att du vill bekräfta ditt eduID-konto."
   },
-  "oc.instructions_step_3": { "string": "Inom några timmar ska ditt konto vara verifierat." },
-  "oc.instructions_title": { "string": "Hur du lättast verifierar ditt konto med SE-LEG" },
-  "oc.modal_title": { "string": "Verifiera med SE-LEG" },
-  "ocf.error_missing_nin": { "string": "Skriv in ett personnummer och försök igen" },
-  "ocf.error_unknown_error": { "string": "Temporärt tekniskt fel. Var god försök igen senare" },
-  "ocf.freja_instructions_install_link": { "string": "Jag har inte Freja eID-appen installerad" },
-  "ocf.freja_instructions_step_1": { "string": "Installera Freja eID-appen på din mobil." },
+  "oc.instructions_step_3": {
+    "string": "Inom några timmar ska ditt konto vara verifierat."
+  },
+  "oc.instructions_title": {
+    "string": "Hur du lättast verifierar ditt konto med SE-LEG"
+  },
+  "oc.modal_title": {
+    "string": "Verifiera med SE-LEG"
+  },
+  "ocf.error_missing_nin": {
+    "string": "Skriv in ett personnummer och försök igen"
+  },
+  "ocf.error_unknown_error": {
+    "string": "Temporärt tekniskt fel. Var god försök igen senare"
+  },
+  "ocf.freja_instructions_install_link": {
+    "string": "Jag har inte Freja eID-appen installerad"
+  },
+  "ocf.freja_instructions_step_1": {
+    "string": "Installera Freja eID-appen på din mobil."
+  },
   "ocf.freja_instructions_step_2": {
     "string": "Öppna appen och följ instruktionerna för att uppnå Freja eID+ (Plus) nivå."
   },
@@ -395,313 +835,715 @@
   "ocf.freja_instructions_step_5": {
     "string": "Godkänn i appen att Freja eID skickar ditt personnummer till eduID. Klart!"
   },
-  "ocf.freja_instructions_title": { "string": "Hur du lättast verifierar ditt konto med Freja eID" },
-  "ocf.initialize_proofing": { "string": "FREJA EID" },
+  "ocf.freja_instructions_title": {
+    "string": "Hur du lättast verifierar ditt konto med Freja eID"
+  },
+  "ocf.initialize_proofing": {
+    "string": "FREJA EID"
+  },
   "ocf.initialize_proofing_help_text": {
     "string": "För att använda det här alternativet så behöver du installera <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID-appen</a>."
   },
-  "ocf.modal_title": { "string": "Verifiera med Freja eID" },
+  "ocf.modal_title": {
+    "string": "Verifiera med Freja eID"
+  },
   "ocf.not_on_mobile_message": {
     "string": "Du måste använda en mobil (iOS eller Android) med <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID-appen</a> installerad för att kunna verifiera ditt konto med Freja eID."
   },
-  "ocf.not_on_mobile_title": { "string": "Använder du inte din mobil?" },
-  "ocf.open_app": { "string": "Jag har Freja eID-appen installerad" },
-  "orc.about_link": { "string": "Läs mer om ORCID i eduID i vår <a href=\"https://www.eduid.se/faq.html\">FAQ</a>." },
-  "orc.already_connected": { "string": "Ditt ORCID-konto är redan kopplat till det här kontot" },
-  "orc.authorization_fail": { "string": "ORCID-inloggningen misslyckades" },
-  "orc.authorization_success": { "string": "Ditt ORCID-konto har kopplats till det här kontot" },
-  "orc.button_connect": { "string": "Länka ORCID konto" },
+  "ocf.not_on_mobile_title": {
+    "string": "Använder du inte din mobil?"
+  },
+  "ocf.open_app": {
+    "string": "Jag har Freja eID-appen installerad"
+  },
+  "orc.about_link": {
+    "string": "Läs mer om ORCID i eduID i vår <a href=\"https://www.eduid.se/faq.html\">FAQ</a>."
+  },
+  "orc.already_connected": {
+    "string": "Ditt ORCID-konto är redan kopplat till det här kontot"
+  },
+  "orc.authorization_fail": {
+    "string": "ORCID-inloggningen misslyckades"
+  },
+  "orc.authorization_success": {
+    "string": "Ditt ORCID-konto har kopplats till det här kontot"
+  },
+  "orc.button_connect": {
+    "string": "Länka ORCID konto"
+  },
   "orc.long_description": {
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
   },
-  "orc.sub_missmatch": { "string": "\"Subject\" skilde sig åt när ORCID-kontot skulle kopplas" },
-  "orc.title": { "string": "ORCID" },
-  "orc.unknown_state": { "string": "\"State\" var okänt när ORCID-kontot skulle kopplas" },
-  "out_of_sync": { "string": "Användardata ur synk. Var god ladda om sidan." },
-  "pd.all-data-success": { "string": "Kontodata laddat" },
-  "pd.choose-language": { "string": "Välj språk" },
-  "pd.display_name": { "string": "Visningsnamn" },
-  "pd.display_name_input_help_text": { "string": "Vissa tjänster visar detta i stället för förnamn och efternamn." },
-  "pd.display_name_inputplaceholder": { "string": "Förnamn Efternamn" },
-  "pd.display_name_placeholder": { "string": "Valfritt alias" },
-  "pd.edit.button": { "string": "ändra" },
-  "pd.edit.title": { "string": "Ändra namn och språk" },
-  "pd.en_lang": { "string": "English" },
-  "pd.given_name": { "string": "Förnamn" },
+  "orc.sub_mismatch": {
+    "string": "Fel subjekt vid länkning med ORCID"
+  },
+  "orc.title": {
+    "string": "ORCID"
+  },
+  "orc.unknown_state": {
+    "string": "\"State\" var okänt när ORCID-kontot skulle kopplas"
+  },
+  "out_of_sync": {
+    "string": "Användardata ur synk. Var god ladda om sidan."
+  },
+  "pd.all-data-success": {
+    "string": "Kontodata laddat"
+  },
+  "pd.choose-language": {
+    "string": "Välj språk"
+  },
+  "pd.display_name": {
+    "string": "Visningsnamn"
+  },
+  "pd.display_name_input_help_text": {
+    "string": "Vissa tjänster visar detta i stället för förnamn och efternamn."
+  },
+  "pd.display_name_inputplaceholder": {
+    "string": "Förnamn Efternamn"
+  },
+  "pd.display_name_placeholder": {
+    "string": "Valfritt alias"
+  },
+  "pd.edit.button": {
+    "string": "ändra"
+  },
+  "pd.edit.title": {
+    "string": "Ändra namn och språk"
+  },
+  "pd.en_lang": {
+    "string": "English"
+  },
+  "pd.given_name": {
+    "string": "Förnamn"
+  },
   "pd.hint.names_locked_when_verified": {
     "string": "För- och efternamn kommer att ersättas med de från folkbokföringen om du verifierar ditt eduID med ditt personummer."
   },
-  "pd.language": { "string": "Språk" },
+  "pd.language": {
+    "string": "Språk"
+  },
   "pd.long_description": {
     "string": "Den här informationen kan komma att användas för att anpassa tjänster som du når med ditt eduID."
   },
-  "pd.main_title": { "string": "Namn & språk" },
-  "pd.no_data_added": { "string": "Ingen information har lagts till." },
-  "pd.pdata-success": { "string": "Personlig information laddad" },
-  "pd.save-success": { "string": "Personlig information sparad" },
-  "pd.surname": { "string": "Efternamn" },
-  "pd.sv_lang": { "string": "Svenska" },
-  "pd.update_locked_names": { "string": "Uppdatera för- och efternamn från folkbokföringen." },
-  "pdata.field_required": { "string": "Obligatoriskt" },
-  "pfilled.completion": { "string": "Profilstatus" },
+  "pd.main_title": {
+    "string": "Namn & språk"
+  },
+  "pd.no_data_added": {
+    "string": "Ingen information har lagts till."
+  },
+  "pd.pdata-success": {
+    "string": "Personlig information laddad"
+  },
+  "pd.save-success": {
+    "string": "Personlig information sparad"
+  },
+  "pd.surname": {
+    "string": "Efternamn"
+  },
+  "pd.sv_lang": {
+    "string": "Svenska"
+  },
+  "pd.update_locked_names": {
+    "string": "Uppdatera för- och efternamn från folkbokföringen."
+  },
+  "pdata.field_required": {
+    "string": "Obligatoriskt"
+  },
+  "pfilled.completion": {
+    "string": "Profilstatus"
+  },
   "phone.e164_format": {
     "string": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror."
   },
   "phone.swedish_mobile_format": {
     "string": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 10-20 siffror."
   },
-  "phone_duplicated": { "string": "Telefonnumret är redan tillagt" },
+  "phone_duplicated": {
+    "string": "Telefonnumret är redan tillagt"
+  },
   "phone_format": {
     "string": "Ogiltigt telefonnummer. Skriv ett svensk nummer eller ett internationellt nummer som börjar med '+' följt av 6-20 siffror."
   },
   "phones.add_new": {
     "string": "Ett nytt telefonnummer kommer att ta emot en verifieringskod som kan användas genom att klicka Bekräfta i listan med nummer."
   },
-  "phones.button_add_more": { "string": "+ lägg till fler" },
-  "phones.cannot_remove_primary": { "string": "Du kan inte ta bort ditt primära telefonnummer" },
-  "phones.cannot_remove_unique": { "string": "Du kan inte ta bort ditt enda telefonnummer" },
-  "phones.code-sent": { "string": "En ny bekräftelsekod har skickats till dig" },
-  "phones.code_expired_send_new": { "string": "Bekräftelsekoden har gått ut. En har ny skickats." },
-  "phones.code_invalid": { "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen" },
-  "phones.code_invalid_or_expired": { "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen" },
-  "phones.duplicated": { "string": "Telefonnumret du angett används redan. Försök med ett annat." },
-  "phones.get-success": { "string": "Telefonnummer laddades" },
-  "phones.input_help_text": { "string": "Telefonnummer som börjar med 0 eller +" },
-  "phones.input_placeholder": { "string": "Telefonnummer" },
-  "phones.invalid_phone": { "string": "Ogiltigt telefonnummer" },
+  "phones.button_add_more": {
+    "string": "+ lägg till fler"
+  },
+  "phones.cannot_remove_primary": {
+    "string": "Du kan inte ta bort ditt primära telefonnummer"
+  },
+  "phones.cannot_remove_unique": {
+    "string": "Du kan inte ta bort ditt enda telefonnummer"
+  },
+  "phones.code-sent": {
+    "string": "En ny bekräftelsekod har skickats till dig"
+  },
+  "phones.code_expired_send_new": {
+    "string": "Bekräftelsekoden har gått ut. En har ny skickats."
+  },
+  "phones.code_invalid": {
+    "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
+  },
+  "phones.code_invalid_or_expired": {
+    "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
+  },
+  "phones.duplicated": {
+    "string": "Telefonnumret du angett används redan. Försök med ett annat."
+  },
+  "phones.get-success": {
+    "string": "Telefonnummer laddades"
+  },
+  "phones.input_help_text": {
+    "string": "Telefonnummer som börjar med 0 eller +"
+  },
+  "phones.input_placeholder": {
+    "string": "Telefonnummer"
+  },
+  "phones.invalid_phone": {
+    "string": "Ogiltigt telefonnummer"
+  },
   "phones.long_description": {
     "string": "Du kan koppla ett eller flera av dina mobiltelefonnummer till ditt eduID-konto och därefter välja vilket av dem som ska vara primär."
   },
-  "phones.main_title": { "string": "Telefonnummer" },
-  "phones.primary-success": { "string": "Ditt primära telefonnummer har ändrats" },
-  "phones.removal-success": { "string": "Telefonnummer har tagits bort" },
-  "phones.save-success": { "string": "Telefonnummer sparades" },
+  "phones.main_title": {
+    "string": "Telefonnummer"
+  },
+  "phones.primary-success": {
+    "string": "Ditt primära telefonnummer har ändrats"
+  },
+  "phones.removal-success": {
+    "string": "Telefonnummer har tagits bort"
+  },
+  "phones.save-success": {
+    "string": "Telefonnummer sparades"
+  },
   "phones.unconfirmed_number_not_primary": {
     "string": "Du kan inte sätta ett obekräftat telefonnummer som primärt nummer"
   },
-  "phones.unknown_phone": { "string": "Telefonumret du angav kan inte hittas" },
-  "phones.verification-success": { "string": "Telefonnummer har bekräftats" },
-  "placeholder.password": { "string": "ange lösenord" },
-  "profile.email_display_no_data": { "string": "ingen e-postadress sparad" },
-  "profile.email_display_title": { "string": "E-postadress" },
-  "profile.eppn_display_title": { "string": "eppn" },
-  "profile.name_display_no_data": { "string": "lägg till namn" },
-  "profile.name_display_title": { "string": "Namn" },
-  "profile.phone_display_no_data": { "string": "lägg till telefonnummer" },
-  "profile.phone_display_non-primary_data": { "string": "gör till primärt" },
-  "profile.phone_display_title": { "string": "Telefonnummer" },
-  "profile.phone_display_unconfirmed_data": { "string": "bekräfta telefonnummer" },
-  "pwfield.bad": { "string": "Mycket svagt lösenord" },
-  "pwfield.good": { "string": "Ganska starkt lösenord" },
-  "pwfield.repeat_different": { "string": "Lösenorden är olika" },
-  "pwfield.strong": { "string": "Starkt lösenord" },
-  "pwfield.terrible": { "string": "Extremt svagt lösenord" },
-  "pwfield.weak": { "string": "Svagt lösenord" },
-  "register.create-account": { "string": "Skapa ett eduID med din e-postadress för att börja." },
+  "phones.unknown_phone": {
+    "string": "Telefonumret du angav kan inte hittas"
+  },
+  "phones.verification-success": {
+    "string": "Telefonnummer har bekräftats"
+  },
+  "placeholder.password": {
+    "developer_comment": "placeholder text for password input",
+    "string": "ange lösenord"
+  },
+  "profile.email_display_no_data": {
+    "string": "ingen e-postadress sparad"
+  },
+  "profile.email_display_title": {
+    "string": "E-postadress"
+  },
+  "profile.eppn_display_title": {
+    "string": "eppn"
+  },
+  "profile.name_display_no_data": {
+    "string": "lägg till namn"
+  },
+  "profile.name_display_title": {
+    "string": "Namn"
+  },
+  "profile.phone_display_no_data": {
+    "string": "lägg till telefonnummer"
+  },
+  "profile.phone_display_non-primary_data": {
+    "string": "gör till primärt"
+  },
+  "profile.phone_display_title": {
+    "string": "Telefonnummer"
+  },
+  "profile.phone_display_unconfirmed_data": {
+    "string": "bekräfta telefonnummer"
+  },
+  "pwfield.bad": {
+    "string": "Mycket svagt lösenord"
+  },
+  "pwfield.good": {
+    "string": "Ganska starkt lösenord"
+  },
+  "pwfield.repeat_different": {
+    "string": "Lösenorden är olika"
+  },
+  "pwfield.strong": {
+    "string": "Starkt lösenord"
+  },
+  "pwfield.terrible": {
+    "string": "Extremt svagt lösenord"
+  },
+  "pwfield.weak": {
+    "string": "Svagt lösenord"
+  },
+  "register.create-account": {
+    "string": "Skapa ett eduID med din e-postadress för att börja."
+  },
   "register.paragraph": {
     "string": "När du har skapat ditt eduID kan du logga in och koppla det till ditt svenska personnummer."
   },
-  "register.sub-heading": { "string": "Registrera din e-postadress för att skapa ditt eduID." },
-  "register.toLogin": { "string": "Om du redan har ett eduID kan du logga in" },
-  "required": { "string": "*Fältet kan inte vara tomt" },
-  "resend.button": { "string": "Skicka ett nytt verifieringsmeddelande" },
-  "resend.email-label": { "string": "Slutför skapandet av eduID genom att klicka länken skickad till:" },
-  "resend.link-sent": { "string": "En länk har skickats till din e-postadress." },
-  "resetpw.accept-password": { "string": "acceptera lösenord" },
+  "register.sub-heading": {
+    "string": "Registrera din e-postadress för att skapa ditt eduID."
+  },
+  "register.toLogin": {
+    "developer_comment": "Signup instructions",
+    "string": "Om du redan har ett eduID kan du logga in"
+  },
+  "required": {
+    "string": "*Fältet kan inte vara tomt"
+  },
+  "resend.button": {
+    "string": "Skicka ett nytt verifieringsmeddelande"
+  },
+  "resend.email-label": {
+    "string": "Slutför skapandet av eduID genom att klicka länken skickad till:"
+  },
+  "resend.link-sent": {
+    "string": "En länk har skickats till din e-postadress."
+  },
+  "resetpw.accept-password": {
+    "string": "acceptera lösenord"
+  },
   "resetpw.check-email-link": {
     "string": "Kontrollera din e-postadress <b>{email}</b> för att fortsätta. \n Länken är giltig i två timmar."
   },
-  "resetpw.continue_reset_password": { "string": "Forsätt återställ lösenordet" },
-  "resetpw.copied-in-clipboard": { "string": "Kopierat!" },
-  "resetpw.copy-to-clipboard": { "string": "Kopiera till urklipp" },
-  "resetpw.email-send-failure": { "string": "Misslyckades att skicka e-post, vänligen försök igen" },
-  "resetpw.email-throttled": { "string": "Återställ lösenordslänken har redan skickats, försök igen senare" },
-  "resetpw.enter-code": { "string": "skriv in koden" },
+  "resetpw.continue_reset_password": {
+    "string": "Forsätt återställ lösenordet"
+  },
+  "resetpw.copied-in-clipboard": {
+    "string": "Kopierat!"
+  },
+  "resetpw.copy-to-clipboard": {
+    "string": "Kopiera till urklipp"
+  },
+  "resetpw.email-send-failure": {
+    "string": "Misslyckades att skicka e-post, vänligen försök igen"
+  },
+  "resetpw.email-throttled": {
+    "string": "Återställ lösenordslänken har redan skickats, försök igen senare"
+  },
+  "resetpw.enter-code": {
+    "string": "skriv in koden"
+  },
   "resetpw.expired-email-code": {
     "string": "Länken för lösenordsåterställning är inte längre giltig. Skicka länken igen."
   },
-  "resetpw.expired-phone-code": { "string": "Telefonkoden har gått ut. Skicka telefonkoden igen." },
-  "resetpw.external-mfa-fail": { "string": "Externt MFA misslyckades" },
-  "resetpw.extra-phone_send_sms": { "string": "Skicka sms till {phone}" },
+  "resetpw.expired-phone-code": {
+    "string": "Telefonkoden har gått ut. Skicka telefonkoden igen."
+  },
+  "resetpw.external-mfa-fail": {
+    "string": "Externt MFA misslyckades"
+  },
+  "resetpw.extra-phone_send_sms": {
+    "string": "Skicka sms till {phone}"
+  },
   "resetpw.extra-security_description": {
     "string": "Genom att återställa lösenordet med ett extra säkerhetsalternativ så kommer kontot att förbli verifierat."
   },
-  "resetpw.extra-security_heading": { "string": "Välj ett extra säkerhetsalternativ" },
+  "resetpw.extra-security_heading": {
+    "string": "Välj ett extra säkerhetsalternativ"
+  },
   "resetpw.fido-token-fail": {
     "string": "Det uppstod ett problem med din säkerhetsnyckel för återställning av lösenordet"
   },
-  "resetpw.go-back": { "string": "gå tillbaka" },
-  "resetpw.go-to-eduid": { "string": "Gå till eduID" },
-  "resetpw.heading-add-email": { "string": "Ange din e-postadress registrerad till ditt konto" },
-  "resetpw.invalid_session": { "string": "Ogiltig session, var god försök igen." },
-  "resetpw.invalid_user": { "string": "Användaren har inte slutfört registreringen" },
-  "resetpw.new-password": { "string": "Nytt lösenord" },
-  "resetpw.phone-code-unknown": { "string": "Felaktig telefonkod." },
-  "resetpw.phone-invalid": { "string": "Ogiltigt telefonnummer." },
-  "resetpw.pw-reset-fail": { "string": "Återställning av lösenordet misslyckades, vänligen försök igen" },
-  "resetpw.received-sms": { "string": "Redan fått sms? " },
-  "resetpw.resend-link": { "string": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller" },
-  "resetpw.resend-link-button": { "string": "skicka länk igen" },
-  "resetpw.resend-timer-in": { "string": "om" },
-  "resetpw.reset-pw-initialized": { "string": "Återställningslänken har skickats till din epost." },
-  "resetpw.return-login": { "string": "återgå till inloggningen" },
-  "resetpw.send-link": { "string": "Skicka länk till e-postadress" },
-  "resetpw.send-sms-failed": { "string": "Det gick inte att skicka telefonkoden" },
-  "resetpw.send-sms-success": { "string": "En engångskod har skickats till din telefon." },
+  "resetpw.go-back": {
+    "string": "gå tillbaka"
+  },
+  "resetpw.go-to-eduid": {
+    "string": "Gå till eduID"
+  },
+  "resetpw.heading-add-email": {
+    "string": "Ange din e-postadress registrerad till ditt konto"
+  },
+  "resetpw.invalid_session": {
+    "string": "Ogiltig session, var god försök igen."
+  },
+  "resetpw.invalid_user": {
+    "string": "Användaren har inte slutfört registreringen"
+  },
+  "resetpw.new-password": {
+    "string": "Nytt lösenord"
+  },
+  "resetpw.phone-code-unknown": {
+    "string": "Felaktig telefonkod."
+  },
+  "resetpw.phone-invalid": {
+    "string": "Ogiltigt telefonnummer."
+  },
+  "resetpw.pw-reset-fail": {
+    "string": "Återställning av lösenordet misslyckades, vänligen försök igen"
+  },
+  "resetpw.received-sms": {
+    "string": "Redan fått sms? "
+  },
+  "resetpw.resend-link": {
+    "string": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller"
+  },
+  "resetpw.resend-link-button": {
+    "string": "skicka länk igen"
+  },
+  "resetpw.resend-timer-in": {
+    "string": "om"
+  },
+  "resetpw.reset-pw-initialized": {
+    "string": "Återställningslänken har skickats till din epost."
+  },
+  "resetpw.return-login": {
+    "string": "återgå till inloggningen"
+  },
+  "resetpw.send-link": {
+    "string": "Skicka länk till e-postadress"
+  },
+  "resetpw.send-sms-failed": {
+    "string": "Det gick inte att skicka telefonkoden"
+  },
+  "resetpw.send-sms-success": {
+    "string": "En engångskod har skickats till din telefon."
+  },
   "resetpw.set-new-password-description": {
     "string": "Ett säkert lösenord har genererats till dig. För att komma vidare behöver du kopiera det till Repetera ditt nya lösenord och klicka Acceptera lösenord."
   },
-  "resetpw.set-new-password-heading": { "string": "Skapa ditt nya lösenord" },
-  "resetpw.set-new-password-success": { "string": "Lösenordet har uppdaterats" },
+  "resetpw.set-new-password-heading": {
+    "string": "Skapa ditt nya lösenord"
+  },
+  "resetpw.set-new-password-success": {
+    "string": "Lösenordet har uppdaterats"
+  },
   "resetpw.sms-throttled": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
   },
   "resetpw.state-not-found": {
     "string": "Det gick inte att fortsätta återställningen av lösenordet. Var god försök igen."
   },
-  "resetpw.use_extra_security_key": { "string": "Använd din säkerhetsnyckel" },
-  "resetpw.user-not-found": { "string": "Användaren finns inte, kontrollera e-postadressen" },
+  "resetpw.use_extra_security_key": {
+    "string": "Använd din säkerhetsnyckel"
+  },
+  "resetpw.user-not-found": {
+    "string": "Användaren finns inte, kontrollera e-postadressen"
+  },
   "resetpw.without_extra_security": {
     "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
   },
-  "resetpw.without_extra_security_heading": { "string": "<b>Forsätt utan extra säkerhetsalternativ </b>" },
-  "runtime_error.generic.description": { "string": "Problemet har rapporterats till teamet." },
-  "runtime_error.generic.label.reload": { "string": "Försök igen:" },
-  "runtime_error.generic.label.toHome": { "string": "Börja om:" },
-  "runtime_error.generic.p.toHome": { "string": "Återvänd till startsidan" },
-  "runtime_error.generic.reload": { "string": "Ladda om sidan" },
-  "runtime_error.generic.title": { "string": "Något gick fel när sidan laddades." },
-  "security.add_u2f_token": { "string": "Lägg till säkerhetsnyckel" },
-  "security.add_webauthn_token_device": { "string": "Registrera den här enheten som en säkerhetsnyckel" },
-  "security.add_webauthn_token_key": { "string": "Lägg till säkerhetsnyckel" },
-  "security.button_delete_account": { "string": "Radera eduID" },
-  "security.confirm_security_placeholder": { "string": "Beskriv din säkerhetsnyckel" },
-  "security.creation_date": { "string": "Skapad den" },
-  "security.credential": { "string": "Lösenord" },
-  "security.description": { "string": "Namn" },
-  "security.description_invalid_format": { "string": "Beskrivningen är för lång" },
-  "security.help_text": { "string": "max 50 tecken" },
-  "security.last-used.date": { "string": "Aldrig använd" },
-  "security.last_used": { "string": "Senast använd" },
-  "security.main_title": { "string": "Säkerhet" },
-  "security.password_credential_type": { "string": "Lösenord" },
-  "security.remove": { "string": "Ta bort" },
+  "resetpw.without_extra_security_heading": {
+    "string": "<b>Forsätt utan extra säkerhetsalternativ </b>"
+  },
+  "runtime_error.generic.description": {
+    "string": "Problemet har rapporterats till teamet."
+  },
+  "runtime_error.generic.label.reload": {
+    "string": "Försök igen:"
+  },
+  "runtime_error.generic.label.toHome": {
+    "string": "Börja om:"
+  },
+  "runtime_error.generic.p.toHome": {
+    "string": "Återvänd till startsidan"
+  },
+  "runtime_error.generic.reload": {
+    "string": "Ladda om sidan"
+  },
+  "runtime_error.generic.title": {
+    "string": "Något gick fel när sidan laddades."
+  },
+  "security.add_u2f_token": {
+    "string": "Lägg till säkerhetsnyckel"
+  },
+  "security.add_webauthn_token_device": {
+    "string": "Registrera den här enheten som en säkerhetsnyckel"
+  },
+  "security.add_webauthn_token_key": {
+    "string": "Lägg till säkerhetsnyckel"
+  },
+  "security.button_delete_account": {
+    "string": "Radera eduID"
+  },
+  "security.confirm_security_placeholder": {
+    "developer_comment": "Placeholder for security key text input",
+    "string": "Beskriv din säkerhetsnyckel"
+  },
+  "security.creation_date": {
+    "string": "Skapad den"
+  },
+  "security.credential": {
+    "string": "Lösenord"
+  },
+  "security.description": {
+    "string": "Namn"
+  },
+  "security.description_invalid_format": {
+    "developer_comment": "Error message for max length",
+    "string": "Beskrivningen är för lång"
+  },
+  "security.help_text": {
+    "developer_comment": "Help text for security key max length",
+    "string": "max 50 tecken"
+  },
+  "security.last-used.date": {
+    "string": "Aldrig använd"
+  },
+  "security.last_used": {
+    "string": "Senast använd"
+  },
+  "security.main_title": {
+    "string": "Säkerhet"
+  },
+  "security.password_credential_type": {
+    "string": "Lösenord"
+  },
+  "security.remove": {
+    "string": "Ta bort"
+  },
   "security.second-factor": {
     "string": "Lägg till ett extra sätt, utöver email och lösenord, för att kunna identifiera dig så du är säker på att bara du har tillgång till ditt eduID."
   },
-  "security.security-key_title": { "string": "Gör ditt eduID säkrare" },
+  "security.security-key_title": {
+    "string": "Gör ditt eduID säkrare"
+  },
   "security.u2f-describe-title": {
     "string": "Ge säkerhetsnyckeln ett namn så du kan skilja dem åt om du lägger till fler."
   },
-  "security.u2f-token-removed": { "string": "Säkerhetsnyckeln har tagits bort" },
-  "security.u2f.description_to_long": { "string": "För lång beskrivning" },
-  "security.u2f.max_allowed_tokens": { "string": "Du har redan max antal registrerade säkerhetsnycklar" },
-  "security.u2f.missing_challenge_data": { "string": "Inget U2F-data hittades i sessionen" },
-  "security.u2f.missing_enrollment_data": { "string": "Inget U2F-data hittades i sessionen" },
-  "security.u2f.missing_token": { "string": "Ingen säkerhetsnyckel hittades i sessionen" },
-  "security.u2f.no_token_found": { "string": "Ingen säkerhetsnyckel hittades i sessionen" },
-  "security.u2f_credential_type": { "string": "Säkerhetsnyckel" },
-  "security.u2f_register_success": { "string": "Säkerhetsnyckel registrerad" },
-  "security.u2f_registration_error_bad": { "string": "U2F-fel: Ogiltig förfrågan" },
-  "security.u2f_registration_error_code": { "string": "U2F-fel. Felkod: {errorCode}" },
-  "security.u2f_registration_error_device": { "string": "U2F-fel: Oläsbar säkerhetsnyckel" },
-  "security.u2f_registration_error_timeout": { "string": "U2F-fel: Begäran tog för lång tid" },
-  "security.u2f_registration_error_unknown": { "string": "U2F-fel: Okänt fel" },
-  "security.u2f_registration_error_unsupported": { "string": "U2F-fel: Felaktig konfiguration" },
+  "security.u2f-token-removed": {
+    "string": "Säkerhetsnyckeln har tagits bort"
+  },
+  "security.u2f.description_to_long": {
+    "string": "För lång beskrivning"
+  },
+  "security.u2f.max_allowed_tokens": {
+    "string": "Du har redan max antal registrerade säkerhetsnycklar"
+  },
+  "security.u2f.missing_challenge_data": {
+    "string": "Inget U2F-data hittades i sessionen"
+  },
+  "security.u2f.missing_enrollment_data": {
+    "string": "Inget U2F-data hittades i sessionen"
+  },
+  "security.u2f.missing_token": {
+    "string": "Ingen säkerhetsnyckel hittades i sessionen"
+  },
+  "security.u2f.no_token_found": {
+    "string": "Ingen säkerhetsnyckel hittades i sessionen"
+  },
+  "security.u2f_credential_type": {
+    "string": "Säkerhetsnyckel"
+  },
+  "security.u2f_register_success": {
+    "string": "Säkerhetsnyckel registrerad"
+  },
+  "security.u2f_registration_error_bad": {
+    "string": "U2F-fel: Ogiltig förfrågan"
+  },
+  "security.u2f_registration_error_code": {
+    "string": "U2F-fel. Felkod: {errorCode}"
+  },
+  "security.u2f_registration_error_device": {
+    "string": "U2F-fel: Oläsbar säkerhetsnyckel"
+  },
+  "security.u2f_registration_error_timeout": {
+    "string": "U2F-fel: Begäran tog för lång tid"
+  },
+  "security.u2f_registration_error_unknown": {
+    "string": "U2F-fel: Okänt fel"
+  },
+  "security.u2f_registration_error_unsupported": {
+    "string": "U2F-fel: Felaktig konfiguration"
+  },
   "security.user-update-throttled": {
     "string": "För många försök att uppdatera namnen har gjorts. Var vänlig försök igen senare."
   },
-  "security.user-updated": { "string": "För- och efternamn är uppdaterade till de från folkbokföringen." },
-  "security.verified": { "string": "Verifierad" },
-  "security.verify": { "string": "Verifiera" },
-  "security.webauthn-describe-title": { "string": "Ge ett namn till din säkerhetsnyckel" },
+  "security.user-updated": {
+    "string": "För- och efternamn är uppdaterade till de från folkbokföringen."
+  },
+  "security.verified": {
+    "string": "Verifierad"
+  },
+  "security.verify": {
+    "string": "Verifiera"
+  },
+  "security.webauthn-describe-title": {
+    "string": "Ge ett namn till din säkerhetsnyckel"
+  },
   "security.webauthn-missing-pdata": {
     "string": "Du måste lägga till personlig data innan du kan lägga till en säkerhetsnyckel"
   },
-  "security.webauthn-noremove-last": { "string": "Du kan inte ta bort din enda säkerhetsnyckel" },
-  "security.webauthn-token-notfound": { "string": "Säkerhetsnyckeln hittades inte" },
-  "security.webauthn-token-removed": { "string": "Säkerhetsnyckel har tagits bort." },
-  "security.webauthn.max_allowed_tokens": { "string": "Du kan inte registrera fler säkerhetsnycklar" },
-  "security.webauthn_credential_type": { "string": "Säkerhetsnyckel" },
-  "security.webauthn_register_success": { "string": "Säkerhetsnyckel registrerad" },
+  "security.webauthn-noremove-last": {
+    "string": "Du kan inte ta bort din enda säkerhetsnyckel"
+  },
+  "security.webauthn-token-notfound": {
+    "string": "Säkerhetsnyckeln hittades inte"
+  },
+  "security.webauthn-token-removed": {
+    "string": "Säkerhetsnyckel har tagits bort."
+  },
+  "security.webauthn.max_allowed_tokens": {
+    "string": "Du kan inte registrera fler säkerhetsnycklar"
+  },
+  "security.webauthn_credential_type": {
+    "string": "Säkerhetsnyckel"
+  },
+  "security.webauthn_register_success": {
+    "string": "Säkerhetsnyckel registrerad"
+  },
   "settings.account_description": {
     "string": "Om du väljer att ta bort ditt eduID kommer all information du sparat rensas permanent."
   },
-  "settings.account_title": { "string": "Ta bort eduID" },
+  "settings.account_title": {
+    "string": "Ta bort eduID"
+  },
   "settings.change_info": {
     "string": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya."
   },
-  "settings.change_password": { "string": "Byt lösenord" },
-  "settings.confirm_title_chpass": { "string": "Av säkerhetsskäl..." },
+  "settings.change_password": {
+    "string": "Byt lösenord"
+  },
+  "settings.confirm_title_chpass": {
+    "string": "Av säkerhetsskäl..."
+  },
   "settings.long_description": {
     "string": "Du kan antingen använda ett rekommenderat lösenord som vi skapar åt dig eller ett du väljer helt själv."
   },
-  "settings.main_title": { "string": "Byt lösenord" },
-  "settings.modal_delete_title": { "string": "Är du säker på att du vill ta bort ditt eduID?" },
-  "signup.recaptcha-not-verified": { "string": "Vi kunde inte verifiera att du är människa. Var vänlig försök igen." },
-  "signup.registering-address-used": { "string": "E-postadressen används redan" },
-  "signup.registering-input": { "string": "E-postadress" },
-  "signup.registering-new": { "string": "E-postadressen har registrerats" },
-  "signup.registering-resend-code": { "string": "Ett nytt verifieringsmeddelande har skickats" },
-  "signup.verification-resent": { "string": "Ett nytt verifieringsmeddelande har skickats" },
-  "still-valid-code": { "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod." },
-  "text.link": { "string": "här." },
-  "tl.make_primary": { "string": "GÖR PRIMÄR" },
-  "tl.pending": { "string": "Bekräfta" },
-  "tl.primary": { "string": "PRIMÄR" },
-  "tou.accept": { "string": "Godkänn" },
-  "tou.cancel": { "string": "Avbryt" },
-  "tou.header": { "string": "Användarvillkor för eduID.se" },
-  "tou.must-accept": { "string": "Du måste godkänna användarvillkoren innan du kan fortsätta" },
-  "tou.not-tou": { "string": "Ett problem att hämta användarvillkoren uppstod. Var god försök senare." },
-  "u2f.action-required": { "string": "Autentisering med säkerhetsnyckel" },
-  "u2f.push-the-button": { "string": "Tryck på knappen på din U2F-säkerhetsnyckel" },
+  "settings.main_title": {
+    "string": "Byt lösenord"
+  },
+  "settings.modal_delete_title": {
+    "string": "Är du säker på att du vill ta bort ditt eduID?"
+  },
+  "signup.recaptcha-not-verified": {
+    "string": "Vi kunde inte verifiera att du är människa. Var vänlig försök igen."
+  },
+  "signup.registering-address-used": {
+    "string": "E-postadressen används redan"
+  },
+  "signup.registering-input": {
+    "string": "E-postadress"
+  },
+  "signup.registering-new": {
+    "string": "E-postadressen har registrerats"
+  },
+  "signup.registering-resend-code": {
+    "string": "Ett nytt verifieringsmeddelande har skickats"
+  },
+  "signup.verification-resent": {
+    "string": "Ett nytt verifieringsmeddelande har skickats"
+  },
+  "still-valid-code": {
+    "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
+  },
+  "text.link": {
+    "developer_comment": "Placeholder for phone text input",
+    "string": "här."
+  },
+  "tl.make_primary": {
+    "string": "GÖR PRIMÄR"
+  },
+  "tl.pending": {
+    "string": "Bekräfta"
+  },
+  "tl.primary": {
+    "string": "PRIMÄR"
+  },
+  "tou.accept": {
+    "string": "Godkänn"
+  },
+  "tou.cancel": {
+    "string": "Avbryt"
+  },
+  "tou.header": {
+    "string": "Användarvillkor för eduID.se"
+  },
+  "tou.must-accept": {
+    "string": "Du måste godkänna användarvillkoren innan du kan fortsätta"
+  },
+  "tou.not-tou": {
+    "string": "Ett problem att hämta användarvillkoren uppstod. Var god försök senare."
+  },
+  "u2f.action-required": {
+    "string": "Autentisering med säkerhetsnyckel"
+  },
+  "u2f.push-the-button": {
+    "string": "Tryck på knappen på din U2F-säkerhetsnyckel"
+  },
   "unexpected-problem": {
     "string": "Ett okänt fel inträffade. Var god försök igen och kontakta supporten om felet kvarstår."
   },
-  "unexpected-success": { "string": "Klart" },
-  "used.email-in-use": { "string": "Ett eduID konto använder redan {email}" },
-  "used.email-label": { "string": "Om detta är ditt eduID, kan du återställa lösenord för att kunna logga in igen." },
-  "used.forgot-password": { "string": "Glömt ditt lösenord?" },
-  "used.reset-password": { "string": "Återställ lösenord" },
-  "user-out-of-sync": { "string": "Användardata är ur synk. Var god försök igen." },
-  "value not changed": { "string": "Värdet är inte ändrat" },
-  "verify-identity.add-nin_heading": { "string": "1. Lägg till ditt personnummer" },
+  "unexpected-success": {
+    "string": "Klart"
+  },
+  "used.email-in-use": {
+    "string": "Ett eduID konto använder redan {email}"
+  },
+  "used.email-label": {
+    "string": "Om detta är ditt eduID, kan du återställa lösenord för att kunna logga in igen."
+  },
+  "used.reset-password": {
+    "string": "Återställ lösenord"
+  },
+  "user-out-of-sync": {
+    "string": "Användardata är ur synk. Var god försök igen."
+  },
+  "value not changed": {
+    "string": "Värdet är inte ändrat"
+  },
+  "verify-identity.add-nin_heading": {
+    "string": "1. Lägg till ditt personnummer"
+  },
   "verify-identity.connect-nin_description": {
     "string": "Välj ett sätt att bekräfta att du har tillgång till det angivna personnumret. Om en av metoderna inte fungerar får du prova en annan."
   },
-  "verify-identity.connect-nin_heading": { "string": "2. Bekräfta ditt personnummer" },
-  "verify-identity.connect_nin_title": { "string": "2. Välj en metod för att bevisa att personnumret är ditt" },
-  "verify-identity.unverified_main_title": { "string": "Koppla din identitet till ditt eduID" },
+  "verify-identity.connect-nin_heading": {
+    "string": "2. Bekräfta ditt personnummer"
+  },
+  "verify-identity.unverified_main_title": {
+    "string": "Koppla din identitet till ditt eduID"
+  },
   "verify-identity.unverified_page-description": {
     "string": "För att kunna använda eduID måste du bevisa din identitet. Lägg till ditt personnummer och bekräfta det i verkliga livet."
   },
-  "verify-identity.verified_main_title": { "string": "Ditt eduID är redo att användas" },
+  "verify-identity.verified_main_title": {
+    "string": "Ditt eduID är redo att användas"
+  },
   "verify-identity.verified_page-description": {
     "string": "Personnumret nedan är nu kopplat till detta eduID. Använd ditt eduID för att logga in till olika tjänster inom högskolan."
   },
   "verify-identity.verified_pw_reset_extra_security": {
     "string": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord."
   },
-  "verify-identity.vetting_explanation_add_nin": { "string": "Börja med att lägga till ditt personnummer här ovan" },
+  "verify-identity.vetting_explanation_add_nin": {
+    "string": "Börja med att lägga till ditt personnummer här ovan"
+  },
   "verify-identity.vetting_explanation_add_phone_number": {
     "string": "Börja med att lägga till ditt telefonnummer under\n"
   },
-  "verify-identity.vetting_explanation_confirm_phone_number": { "string": "Bekräfta ditt telefonnummer under\n" },
+  "verify-identity.vetting_explanation_confirm_phone_number": {
+    "string": "Bekräfta ditt telefonnummer under\n"
+  },
   "verify-identity.vetting_explanation_only_available_swe_number": {
     "string": "Bara möjligt med svenskt telefonnummer"
   },
   "verify-identity.vetting_freja_tagline": {
     "string": "För dig som har eller kan skapa Freja eID genom att besöka ett ombud i Sverige"
   },
-  "verify-identity.vetting_letter_code_expired": { "string": "Koden gick ut" },
-  "verify-identity.vetting_letter_order_new_code": { "string": "Tryck här om du vill beställa en ny kod" },
-  "verify-identity.vetting_letter_received": { "string": "Tryck här igen när du har fått brevet" },
-  "verify-identity.vetting_letter_sent": { "string": "Ett brev skickades" },
-  "verify-identity.vetting_letter_valid": { "string": "Brevet är giltigt till" },
-  "verify-identity.vetting_link_settings": { "string": "Inställningar" },
+  "verify-identity.vetting_letter_code_expired": {
+    "string": "Koden gick ut"
+  },
+  "verify-identity.vetting_letter_order_new_code": {
+    "string": "Tryck här om du vill beställa en ny kod"
+  },
+  "verify-identity.vetting_letter_received": {
+    "string": "Tryck här igen när du har fått brevet"
+  },
+  "verify-identity.vetting_letter_sent": {
+    "string": "Ett brev skickades"
+  },
+  "verify-identity.vetting_letter_valid": {
+    "string": "Brevet är giltigt till"
+  },
+  "verify-identity.vetting_link_settings": {
+    "string": "Inställningar"
+  },
   "verify-identity.vetting_phone_tagline": {
     "string": "För dig som har ett svenskt telefonabonnemang i ditt eget namn"
   },
-  "verify-identity.vetting_post_tagline": { "string": "För dig som har tillgång till din folkbokföringsaddress" }
+  "verify-identity.vetting_post_tagline": {
+    "string": "För dig som har tillgång till din folkbokföringsaddress"
+  }
 }
