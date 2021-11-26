@@ -69,9 +69,9 @@ class VerifyIdentity extends Component {
             return (
               <div key={index}>
                 {vettingOptionsObject[key]}
-                {/* vettingRegistry object letter(index 0) and lookup_mobile(index 1) needs nin, 
-                      if index is less then 2 and nin is not added,  
-                      else idenx is 1 and mobile number is not verified swedish number class name will be disabled*/}
+                {/* vettingRegistry object letter(index 0) and lookup_mobile(index 1) needs nin,
+                      if index is less then 2 and nin is not added,
+                      else index is 1 and mobile number is not verified swedish number class name will be disabled*/}
                 <p
                   key={index}
                   className={
