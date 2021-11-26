@@ -1,14 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { Form } from "reactstrap";
-import { Field, reduxForm } from "redux-form";
+import { Field, FormProps, FormSubmitHandler, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
 import CustomInput from "../login/components/Inputs/CustomInput";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
+import { useIntl } from "react-intl";
+import { translate } from "login/translation";
+import { DashboardRootState } from "dashboard-init-app";
+import { useDashboardAppDispatch } from "dashboard-hooks";
 
-const validate = (values) => {
+const validate = (values: { nin: string }) => {
   let value = values.nin;
   // accept only digits
   if (/[^0-9]+/.test(value)) return { nin: "nins.illegal_chars" };
@@ -20,8 +23,8 @@ const validate = (values) => {
     bEven = false;
   value = value.slice(2); // To pass the Luhn check only use the 10 last digits
   for (let n = value.length - 1; n >= 0; n--) {
-    let cDigit = value.charAt(n),
-      nDigit = parseInt(cDigit, 10);
+    const cDigit = value.charAt(n);
+    let nDigit = parseInt(cDigit, 10);
     if (bEven) {
       if ((nDigit *= 2) > 9) nDigit -= 9;
     }
@@ -34,55 +37,71 @@ const validate = (values) => {
   return {};
 };
 
-class NinForm extends Component {
-  render() {
-    return (
-      <Form id="nin-form" role="form" onSubmit={this.props.addNin}>
-        <fieldset id="nins-form" className="tabpane">
-          <Field
-            component={CustomInput}
-            componentClass="input"
-            type="text"
-            name="nin"
-            label={this.props.translate("nin_display.profile.main_title")}
-            placeholder={this.props.translate("nins.input_placeholder")}
-            helpBlock={this.props.translate("nins.input_help_text")}
-          />
-        </fieldset>
-        <PrimaryButton id="add-nin-button" disabled={!this.props.valid} onClick={this.props.addNin} key="1">
-          {this.props.translate("emails.button_add")}
-        </PrimaryButton>
-      </Form>
-    );
-  }
+export interface NinFormData {
+  nin?: string;
 }
 
-NinForm = reduxForm({
+//interface ValuesProps extends React.FormEventHandler<HTMLFormElement> {
+interface ValuesProps {
+  nin: string;
+}
+
+interface NinFormProps {
+  valid: boolean;
+  //handleSubmit?: (data: NinFormData, dispatch: Dispatch<any>, props: IOwnProps) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  handleSubmit: any;
+}
+
+const NinForm = (props: NinFormProps): JSX.Element => {
+  const { handleSubmit } = props;
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({ id: "nins.input_placeholder", defaultMessage: "yyyymmddnnnn" });
+  const dispatch = useDashboardAppDispatch();
+
+  const submitNinForm = (values: ValuesProps) => {
+    const nin = values.nin;
+    if (nin) {
+      dispatch(actions.postNin(nin));
+    }
+    return 1;
+  };
+
+  return (
+    <Form id="nin-form" role="form" onSubmit={handleSubmit(submitNinForm)}>
+      <fieldset id="nins-form" className="tabpane">
+        <Field
+          component={CustomInput}
+          componentClass="input"
+          type="text"
+          name="nin"
+          label={translate("nin_display.profile.main_title")}
+          placeholder={placeholder}
+          helpBlock={translate("nins.input_help_text")}
+        />
+      </fieldset>
+      <PrimaryButton id="add-nin-button" disabled={!props.valid} type="submit" key="1">
+        {translate("emails.button_add")}
+      </PrimaryButton>
+    </Form>
+  );
+};
+
+const DecoratedNinForm = reduxForm<NinFormData, NinFormProps>({
   form: "nins",
-  destroyOnUnmount: false,
-  enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
-  keepValuesOnReinitialize: true,
-  updateUnregisteredFields: true,
-  validate: validate,
+  validate,
 })(NinForm);
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: DashboardRootState) => {
   return {
     initialValues: { nin: state.nins.nin },
+    touchOnChange: true,
+    enableReinitialize: true,
+    destroyOnUnmount: false,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addNin: function (e) {
-      e.preventDefault();
-      const nin = e.target.closest("#nin-form").firstElementChild.firstElementChild.children[0].value;
-      dispatch(actions.postNin(nin));
-    },
-  };
-};
+connect(mapStateToProps)(DecoratedNinForm);
 
-const NinFormContainer = connect(mapStateToProps, mapDispatchToProps)(NinForm);
-
-export default i18n(NinFormContainer);
+export default DecoratedNinForm;
