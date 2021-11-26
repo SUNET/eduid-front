@@ -95,7 +95,7 @@ function* rootSaga() {
     takeLatest(letterActions.POST_LETTER_PROOFING_PROOFING, sendLetterProofing),
     takeLatest(letterActions.GET_LETTER_PROOFING_PROOFING, sendGetLetterProofing),
     takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
-    takeLatest(ninActions.POST_NIN, postNin),
+    takeLatest(ninActions.postNin.type, postNin),
     takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
     takeLatest(ninsSlice.actions.startRemove.type, requestRemoveNin),
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
