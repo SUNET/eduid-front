@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { translate } from "../../../../login/translation";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { clearCountdown, setLocalStorage } from "./CountDownTimer";
+import { clearCountdown } from "./CountDownTimer";
 import EmailForm from "./EmailForm";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
@@ -14,6 +14,8 @@ type ErrorType = {
 interface ResetPasswordMainProps {
   invalid: boolean;
   request_in_progress: boolean;
+  /* eslint-disable @typescript-eslint/no-explicit-any*/
+  handleSubmit: any;
 }
 
 function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
@@ -37,19 +39,10 @@ function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
     }
   }, [errors]);
 
-  const requestEmailLink = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const email = (document.querySelector("input[name='email']") as HTMLInputElement).value;
-    if (email) {
-      dispatch(resetPasswordSlice.actions.requestEmailLink(email));
-      setLocalStorage(LOCAL_STORAGE_PERSISTED_EMAIL, email);
-    }
-  };
-
   return (
     <>
       <p className="heading">{translate("resetpw.heading-add-email")}</p>
-      <EmailForm requestEmailLink={requestEmailLink} {...props} request_in_progress={request_in_progress} />
+      <EmailForm {...props} request_in_progress={request_in_progress} />
       <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
         <a id="return-login" href={`/login/password/${loginRef}`}>
           {translate("resetpw.return-login")}
