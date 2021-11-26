@@ -16,7 +16,6 @@ export interface EmailFormData {
   email?: string;
 }
 export interface EmailFormProps {
-  // requestEmailLink: (event: React.FormEvent<HTMLFormElement>) => void;
   request_in_progress: boolean;
   invalid: boolean;
   /* eslint-disable @typescript-eslint/no-explicit-any*/
