@@ -55,7 +55,7 @@ const NinForm = (props: NinFormProps): JSX.Element => {
   const { handleSubmit } = props;
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({ id: "nins.input_placeholder", defaultMessage: "yyyymmddnnnn" });
+  const placeholder = intl.formatMessage({ defaultMessage: "yyyymmddnnnn", description: "Swedish NIN template" });
   const dispatch = useDashboardAppDispatch();
 
   const submitNinForm = (values: ValuesProps) => {

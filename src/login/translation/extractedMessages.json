@@ -23,19 +23,15 @@
   "Missing error message": {
     "string": "Missing error message"
   },
-  "NWR60d": {
-    "developer_comment": "On-mouse-over tooltip for Settings tab",
-    "string": "<b>Confirm your number</b> to verify your id by phone"
-  },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
   },
   "Not a valid email address.": {
     "string": "Not a valid email address."
   },
-  "Qb8Ypj": {
-    "developer_comment": "On-mouse-over tooltip for Identity tabXXX",
-    "string": "a digital ID-card"
+  "O0z0/P": {
+    "developer_comment": "Dashboard navigation tooltip",
+    "string": "Add and verify your phone number for better security"
   },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
@@ -66,10 +62,6 @@
   },
   "add_nin.main_title": {
     "string": "1. Add your id number"
-  },
-  "ai3koJ": {
-    "developer_comment": "On-mouse-over tooltip for Identity tab",
-    "string": "some other option"
   },
   "banner.tagline": {
     "string": "eduID is easier and safer login."
@@ -675,6 +667,10 @@
   "login.wrong_user": {
     "string": "It was not possible to complete the login. Please try again."
   },
+  "lpvPcL": {
+    "developer_comment": "Dashboard navigation tooltip",
+    "string": "Verify your identity to get the most ouf of your eduID"
+  },
   "mail_duplicated": {
     "string": "Added email is duplicated"
   },
@@ -759,9 +755,6 @@
   },
   "nins.input_help_text": {
     "string": "National identity number with 12 digits"
-  },
-  "nins.input_placeholder": {
-    "string": "yyyymmddnnnn"
   },
   "nins.invalid_nin": {
     "string": "Invalid national id number"
@@ -888,10 +881,6 @@
   },
   "out_of_sync": {
     "string": "User data is out of sync. Reload page to re-sync."
-  },
-  "p0j92s": {
-    "developer_comment": "On-mouse-over tooltip for Identity tab",
-    "string": "You can verify your identity with"
   },
   "pd.all-data-success": {
     "string": "Successfully retrieved personal information"
@@ -1233,6 +1222,10 @@
   },
   "resetpw.without_extra_security_heading": {
     "string": "<b>Continue without extra security option </b>"
+  },
+  "rhrt8v": {
+    "developer_comment": "Swedish NIN template",
+    "string": "yyyymmddnnnn"
   },
   "runtime_error.generic.description": {
     "string": "The issue has been reported to the team."
