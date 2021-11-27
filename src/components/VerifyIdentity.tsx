@@ -75,15 +75,22 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
         <p className={"proofing-btn-help" + (disabled_if === true ? " disabled" : "")}>{translate(msg)}</p>;
       };
 
+      // proofing via letter requires the user to have added a NIN first
+      const letterProofingDisabled = !addedNin;
+      // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
+      const lookupMobileDisabled = !addedNin || !this.props.hasVerifiedSwePhone;
+
+      // TODO: Maybe the help texts ought to move into the containers? Isn't that what containers are for - to group components?
+
       vettingButtons = (
         <div id="nins-btn-grid">
-            <LetterProofingContainer disabled={disabled} />
-            {buttonHelpText("letter.initialize_proofing_help_text", !addedNin)}
           <div>
+            <LetterProofingContainer disabled={letterProofingDisabled} />
+            {buttonHelpText("letter.initialize_proofing_help_text", letterProofingDisabled)}
           </div>
-            <LookupMobileProofingContainer disabled={disabled} {...this.props} />
-            {buttonHelpText("lmp.initialize_proofing_help_text", !addedNin || !this.props.hasVerifiedSwePhone)}
           <div>
+            <LookupMobileProofingContainer disabled={lookupMobileDisabled} {...this.props} />
+            {buttonHelpText("lmp.initialize_proofing_help_text", lookupMobileDisabled)}
           </div>
           <div>
             <EidasContainer disabled={disabled} />
