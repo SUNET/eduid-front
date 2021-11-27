@@ -1,18 +1,23 @@
 import React, { Component, Fragment } from "react";
 import AddNin from "containers/AddNin";
-import vettingRegistry from "vetting-registry";
 
 import "../login/styles/index.scss";
 import { NinInfo } from "reducers/Nins";
 import { translate } from "login/translation";
+import OpenidConnectContainer from "containers/OpenidConnect";
+import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
+import LetterProofingContainer from "login/components/LetterProofing/LetterProofingContainer";
+import LookupMobileProofingContainer from "login/components/LookupMobileProofing/LookupMobileProofingContainer";
+import EidasContainer from "containers/Eidas";
 
 interface VerifyIdentityProps {
   nins: NinInfo[]; // all the user's nins
   verifiedNin: NinInfo[]; // all _verified_ nins
-  verifiedSwePhone: boolean; // true if the user has a verified Swedish phone
+  hasVerifiedSwePhone: boolean; // true if the user has a verified Swedish phone
+  hasVerifiedNin: boolean; // true if at least one nin in 'nins' is verified
   is_configured: boolean; // state.config.is_configured - app is configured I guess?
-  verifiedNinStatus: boolean; // true if at least one nin in 'nins' is verified
   letter_verification: boolean; // state.letter_proofing.confirmingLetter
+  // TODO: proofing_methods seems unused? Used in some sub-component?
   proofing_methods: string[]; // proofing_methods from jsconfig (['letter', 'lookup_mobile', 'oidc', 'eidas']))
   message: string; // state.nins.message
 }
@@ -21,11 +26,6 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
   render() {
     // page text depend on nin status (verified or not)
     let pageHeading, pageText, vettingButtons;
-    const buttonHelpTextArray = [
-      translate("letter.initialize_proofing_help_text"),
-      translate("lmp.initialize_proofing_help_text"),
-      translate("eidas.initialize_proofing_help_text"),
-    ];
     const recoverIdentityTip = translate("verify-identity.verified_pw_reset_extra_security");
 
     // nin is not verified (add nin)
@@ -55,7 +55,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
 
     // top half of page: add nin/nin added
     const VerifyIdentity_Step1 = () => {
-      if (this.props.verifiedNinStatus) {
+      if (this.props.hasVerifiedNin) {
         return <NumberAdded />;
       } else {
         return <AddNumber />;
@@ -64,43 +64,46 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
 
     // this is where the buttons are generated
     // this needs to be outside of <VerifyIdentity_Step2> for the second modal to render
-    if (this.props.is_configured && !this.props.verifiedNinStatus) {
-      //this is an object listing all the vetting components in another file (src/vetting-registry.js)
+    if (this.props.is_configured && !this.props.hasVerifiedNin) {
       // BUG: used to be 'vettingRegistry(!this.props.valid_nin);' but there is no such prop.
       //      I guess the intent was to disable the buttons when the user is verified already?
-      const vettingOptionsObject = vettingRegistry(!undefined) as { [key: string]: JSX.Element };
-      // extract the keys from the vettingOptionsObject
-      const vettingOptionsKeys = Object.keys(vettingOptionsObject);
+      const disabled = !undefined;
+
       const addedNin = this.props.nins[0];
-      vettingButtons = [
-        <div key="1" id="nins-btn-grid">
-          {vettingOptionsKeys.map((key, index) => {
-            const helpText = buttonHelpTextArray[index];
-            return (
-              <div key={index}>
-                {vettingOptionsObject[key]}
-                {/* vettingRegistry object letter(index 0) and lookup_mobile(index 1) needs nin,
-                      if index is less then 2 and nin is not added,
-                      else index is 1 and mobile number is not verified Swedish number class name will be disabled*/}
-                <p
-                  key={index}
-                  className={
-                    "proofing-btn-help" +
-                    ((index < 2 && !addedNin) || (index === 1 && !this.props.verifiedSwePhone) ? " disabled" : "")
-                  }
-                >
-                  {helpText}
-                </p>
-              </div>
-            );
-          })}
-        </div>,
-      ];
+
+      const buttonHelpText = (msg: string, key: string, disabled_if?: boolean) => {
+        <p key={key} className={"proofing-btn-help" + (disabled_if === true ? " disabled" : "")}>
+          {translate(msg)}
+        </p>;
+      };
+
+      vettingButtons = (
+        <div id="nins-btn-grid">
+          <div key="1">
+            <LetterProofingContainer disabled={disabled} />
+            {buttonHelpText("letter.initialize_proofing_help_text", "1", !addedNin)}
+          </div>
+          <div key="2">
+            <LookupMobileProofingContainer disabled={disabled} {...this.props} />
+            {buttonHelpText("lmp.initialize_proofing_help_text", "2", !addedNin || !this.props.hasVerifiedSwePhone)}
+          </div>
+          <div key="3">
+            <EidasContainer disabled={disabled} />
+            {buttonHelpText("eidas.initialize_proofing_help_text", "3")}
+          </div>
+          <div key="4">
+            <OpenidConnectContainer disabled={disabled} />
+          </div>
+          <div key="5">
+            <OpenidConnectFrejaContainer disabled={disabled} />
+          </div>
+        </div>
+      );
     }
 
     // bottom half of page: vetting on added nin
     const VerifyIdentity_Step2 = () => {
-      if (this.props.is_configured && !this.props.verifiedNinStatus) {
+      if (this.props.is_configured && !this.props.hasVerifiedNin) {
         return (
           <div key="1" className="intro">
             <h3>{translate("verify-identity.connect-nin_heading")}</h3>
@@ -116,7 +119,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       <Fragment>
         <VerifyIdentity_Step1 />
         <AddNin />
-        {this.props.verifiedNinStatus && <p className="help-text">{recoverIdentityTip}</p>}
+        {this.props.hasVerifiedNin && <p className="help-text">{recoverIdentityTip}</p>}
         <VerifyIdentity_Step2 />
         {vettingButtons}
       </Fragment>
