@@ -1,27 +1,38 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import { withRouter } from "react-router-dom";
 import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
 
 import "../login/styles/index.scss";
+import { NinInfo } from "reducers/Nins";
 
-class VerifyIdentity extends Component {
+interface VerifyIdentityProps {
+  translate(msg: string): string;
+  nins: NinInfo[]; // all the user's nins
+  verifiedNin: NinInfo[]; // all _verified_ nins
+  verifiedSwePhone: boolean; // true if the user has a verified Swedish phone
+  is_configured: boolean; // state.config.is_configured - app is configured I guess?
+  verifiedNinStatus: boolean; // true if at least one nin in 'nins' is verified
+  letter_verification: boolean; // state.letter_proofing.confirmingLetter
+  proofing_methods: string[]; // proofing_methods from jsconfig (['letter', 'lookup_mobile', 'oidc', 'eidas']))
+  message: string; // state.nins.message
+}
+
+class VerifyIdentity extends Component<VerifyIdentityProps> {
   render() {
     // page text depend on nin status (verified or not)
     let pageHeading = "";
     let pageText = "";
-    let vettingButtons = "";
-    let buttonHelpTextArray = [
+    let vettingButtons;
+    const buttonHelpTextArray = [
       this.props.translate("letter.initialize_proofing_help_text"),
       this.props.translate("lmp.initialize_proofing_help_text"),
       this.props.translate("eidas.initialize_proofing_help_text"),
     ];
-    let recoverIdentityTip = this.props.translate("verify-identity.verified_pw_reset_extra_security");
+    const recoverIdentityTip = this.props.translate("verify-identity.verified_pw_reset_extra_security");
 
     // nin is not verified (add nin)
-    let AddNumber = (props) => {
+    const AddNumber = (props: VerifyIdentityProps) => {
       pageHeading = props.translate("verify-identity.unverified_main_title");
       pageText = props.translate("verify-identity.unverified_page-description");
       return (
@@ -33,7 +44,7 @@ class VerifyIdentity extends Component {
       );
     };
 
-    let NumberAdded = (props) => {
+    const NumberAdded = (props: VerifyIdentityProps) => {
       // nin is verified (nin added)
       pageHeading = props.translate("verify-identity.verified_main_title");
       pageText = props.translate("verify-identity.verified_page-description");
@@ -46,7 +57,7 @@ class VerifyIdentity extends Component {
     };
 
     // top half of page: add nin/nin added
-    let VerifyIdentity_Step1 = () => {
+    const VerifyIdentity_Step1 = () => {
       if (this.props.verifiedNinStatus) {
         return <NumberAdded {...this.props} />;
       } else {
@@ -58,20 +69,22 @@ class VerifyIdentity extends Component {
     // this needs to be outside of <VerifyIdentity_Step2> for the second modal to render
     if (this.props.is_configured && !this.props.verifiedNinStatus) {
       //this is an object listing all the vetting components in another file (src/vetting-registry.js)
-      const vettingOptionsObject = vettingRegistry(!this.props.valid_nin);
+      // BUG: used to be 'vettingRegistry(!this.props.valid_nin);' but there is no such prop.
+      //      I guess the intent was to disable the buttons when the user is verified already?
+      const vettingOptionsObject = vettingRegistry(!undefined) as { [key: string]: JSX.Element };
       // extract the keys from the vettingOptionsObject
       const vettingOptionsKeys = Object.keys(vettingOptionsObject);
       const addedNin = this.props.nins[0];
       vettingButtons = [
         <div key="1" id="nins-btn-grid">
           {vettingOptionsKeys.map((key, index) => {
-            let helpText = buttonHelpTextArray[index];
+            const helpText = buttonHelpTextArray[index];
             return (
               <div key={index}>
                 {vettingOptionsObject[key]}
                 {/* vettingRegistry object letter(index 0) and lookup_mobile(index 1) needs nin,
                       if index is less then 2 and nin is not added,
-                      else index is 1 and mobile number is not verified swedish number class name will be disabled*/}
+                      else index is 1 and mobile number is not verified Swedish number class name will be disabled*/}
                 <p
                   key={index}
                   className={
@@ -89,7 +102,7 @@ class VerifyIdentity extends Component {
     }
 
     // bottom half of page: vetting on added nin
-    let VerifyIdentity_Step2 = () => {
+    const VerifyIdentity_Step2 = () => {
       if (this.props.is_configured && !this.props.verifiedNinStatus) {
         return (
           <div key="1" className="intro">
@@ -114,12 +127,4 @@ class VerifyIdentity extends Component {
   }
 }
 
-VerifyIdentity.propTypes = {
-  nin: PropTypes.string,
-  nins: PropTypes.array,
-  validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
-  proofing_methods: PropTypes.array,
-};
-
-export default i18n(withRouter(VerifyIdentity));
+export default i18n(VerifyIdentity);
