@@ -29,7 +29,7 @@ export function* postNin(nin) {
   try {
     const state = yield select((state) => state),
       data = {
-        nin: state.nins.nin, // TODO: We ought to pass nin from the argument, not from the state. Perhaps we can remove state.nins.nin then?
+        nin: nin,
         csrf_token: state.config.csrf_token,
       };
     const resp = yield call(postNinAdd, state.config, data);
