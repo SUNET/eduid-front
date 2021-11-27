@@ -71,30 +71,28 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
 
       const addedNin = this.props.nins[0];
 
-      const buttonHelpText = (msg: string, key: string, disabled_if?: boolean) => {
-        <p key={key} className={"proofing-btn-help" + (disabled_if === true ? " disabled" : "")}>
-          {translate(msg)}
-        </p>;
+      const buttonHelpText = (msg: string, disabled_if?: boolean) => {
+        <p className={"proofing-btn-help" + (disabled_if === true ? " disabled" : "")}>{translate(msg)}</p>;
       };
 
       vettingButtons = (
         <div id="nins-btn-grid">
-          <div key="1">
             <LetterProofingContainer disabled={disabled} />
-            {buttonHelpText("letter.initialize_proofing_help_text", "1", !addedNin)}
+            {buttonHelpText("letter.initialize_proofing_help_text", !addedNin)}
+          <div>
           </div>
-          <div key="2">
             <LookupMobileProofingContainer disabled={disabled} {...this.props} />
-            {buttonHelpText("lmp.initialize_proofing_help_text", "2", !addedNin || !this.props.hasVerifiedSwePhone)}
+            {buttonHelpText("lmp.initialize_proofing_help_text", !addedNin || !this.props.hasVerifiedSwePhone)}
+          <div>
           </div>
-          <div key="3">
+          <div>
             <EidasContainer disabled={disabled} />
-            {buttonHelpText("eidas.initialize_proofing_help_text", "3")}
+            {buttonHelpText("eidas.initialize_proofing_help_text")}
           </div>
-          <div key="4">
+          <div>
             <OpenidConnectContainer disabled={disabled} />
           </div>
-          <div key="5">
+          <div>
             <OpenidConnectFrejaContainer disabled={disabled} />
           </div>
         </div>
