@@ -26,19 +26,15 @@ export function fetchNins(config) {
 
 // function to post nins
 export function* postNin(nin) {
-  console.log("you're in postNin: ", nin);
   try {
     const state = yield select((state) => state),
       data = {
         nin: state.nins.nin, // TODO: We ought to pass nin from the argument, not from the state. Perhaps we can remove state.nins.nin then?
         csrf_token: state.config.csrf_token,
       };
-    console.log("this is data in postNin:", data);
     const resp = yield call(postNinAdd, state.config, data);
-    console.log("this is resp in postNin:", resp);
     // BUG: the response from the backend contains an empty list of nins, so we fetch it again somewhere after this...
     //      Fix the backend and avoid having to re-fetch nins from the backend.
-    console.log("this is token in resp postNin:", resp.payload.csrf_token);
     yield put(putCsrfToken(resp));
     yield put(resp);
   } catch (error) {
@@ -48,7 +44,6 @@ export function* postNin(nin) {
 
 // function to reach endpoint to post nin
 export function postNinAdd(config, data) {
-  console.log("this is data in postNinFetch:", data);
   return window
     .fetch("/services/security/" + "add-nin", {
       ...postRequest,

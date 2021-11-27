@@ -41,14 +41,12 @@ export interface NinFormData {
   nin?: string;
 }
 
-//interface ValuesProps extends React.FormEventHandler<HTMLFormElement> {
 interface ValuesProps {
   nin: string;
 }
 
 interface NinFormProps {
   valid: boolean;
-  //handleSubmit?: (data: NinFormData, dispatch: Dispatch<any>, props: IOwnProps) => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleSubmit: any;
 }
