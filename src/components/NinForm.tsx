@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Form } from "reactstrap";
-import { Field, FormProps, FormSubmitHandler, reduxForm } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
 import CustomInput from "../login/components/Inputs/CustomInput";
@@ -55,7 +55,11 @@ const NinForm = (props: NinFormProps): JSX.Element => {
   const { handleSubmit } = props;
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({ defaultMessage: "yyyymmddnnnn", description: "Swedish NIN template" });
+  const placeholder = intl.formatMessage({
+    id: "nins.input_placeholder",
+    defaultMessage: "yyyymmddnnnn",
+    description: "Swedish NIN template",
+  });
   const dispatch = useDashboardAppDispatch();
 
   const submitNinForm = (values: ValuesProps) => {
