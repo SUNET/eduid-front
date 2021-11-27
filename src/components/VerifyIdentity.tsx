@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from "react";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
 import AddNin from "containers/AddNin";
 import vettingRegistry from "vetting-registry";
 
 import "../login/styles/index.scss";
 import { NinInfo } from "reducers/Nins";
+import { translate } from "login/translation";
 
 interface VerifyIdentityProps {
-  translate(msg: string): string;
   nins: NinInfo[]; // all the user's nins
   verifiedNin: NinInfo[]; // all _verified_ nins
   verifiedSwePhone: boolean; // true if the user has a verified Swedish phone
@@ -21,33 +20,31 @@ interface VerifyIdentityProps {
 class VerifyIdentity extends Component<VerifyIdentityProps> {
   render() {
     // page text depend on nin status (verified or not)
-    let pageHeading = "";
-    let pageText = "";
-    let vettingButtons;
+    let pageHeading, pageText, vettingButtons;
     const buttonHelpTextArray = [
-      this.props.translate("letter.initialize_proofing_help_text"),
-      this.props.translate("lmp.initialize_proofing_help_text"),
-      this.props.translate("eidas.initialize_proofing_help_text"),
+      translate("letter.initialize_proofing_help_text"),
+      translate("lmp.initialize_proofing_help_text"),
+      translate("eidas.initialize_proofing_help_text"),
     ];
-    const recoverIdentityTip = this.props.translate("verify-identity.verified_pw_reset_extra_security");
+    const recoverIdentityTip = translate("verify-identity.verified_pw_reset_extra_security");
 
     // nin is not verified (add nin)
-    const AddNumber = (props: VerifyIdentityProps) => {
-      pageHeading = props.translate("verify-identity.unverified_main_title");
-      pageText = props.translate("verify-identity.unverified_page-description");
+    const AddNumber = () => {
+      pageHeading = translate("verify-identity.unverified_main_title");
+      pageText = translate("verify-identity.unverified_page-description");
       return (
         <div key="0" className="intro">
           <h4>{pageHeading}</h4>
           <p>{pageText}</p>
-          <h3>{props.translate("verify-identity.add-nin_heading")}</h3>
+          <h3>{translate("verify-identity.add-nin_heading")}</h3>
         </div>
       );
     };
 
-    const NumberAdded = (props: VerifyIdentityProps) => {
+    const NumberAdded = () => {
       // nin is verified (nin added)
-      pageHeading = props.translate("verify-identity.verified_main_title");
-      pageText = props.translate("verify-identity.verified_page-description");
+      pageHeading = translate("verify-identity.verified_main_title");
+      pageText = translate("verify-identity.verified_page-description");
       return (
         <div key="0" className="intro">
           <h4>{pageHeading}</h4>
@@ -59,9 +56,9 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
     // top half of page: add nin/nin added
     const VerifyIdentity_Step1 = () => {
       if (this.props.verifiedNinStatus) {
-        return <NumberAdded {...this.props} />;
+        return <NumberAdded />;
       } else {
-        return <AddNumber {...this.props} />;
+        return <AddNumber />;
       }
     };
 
@@ -106,8 +103,8 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       if (this.props.is_configured && !this.props.verifiedNinStatus) {
         return (
           <div key="1" className="intro">
-            <h3>{this.props.translate("verify-identity.connect-nin_heading")}</h3>
-            <p>{this.props.translate("verify-identity.connect-nin_description")}</p>
+            <h3>{translate("verify-identity.connect-nin_heading")}</h3>
+            <p>{translate("verify-identity.connect-nin_description")}</p>
           </div>
         );
       } else {
@@ -118,7 +115,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
     return (
       <Fragment>
         <VerifyIdentity_Step1 />
-        <AddNin {...this.props} />
+        <AddNin />
         {this.props.verifiedNinStatus && <p className="help-text">{recoverIdentityTip}</p>}
         <VerifyIdentity_Step2 />
         {vettingButtons}
@@ -127,4 +124,4 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
   }
 }
 
-export default i18n(VerifyIdentity);
+export default VerifyIdentity;
