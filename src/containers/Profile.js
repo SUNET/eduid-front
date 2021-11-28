@@ -3,12 +3,11 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 import Profile from "components/Profile";
 
 const mapStateToProps = (state) => {
-  let verifiedNinStatus = "";
-  let verifiedPhone = "";
   const nins = state.nins.nins.filter((nin) => nin.verified);
-  nins.length >= 1 ? (verifiedNinStatus = true) : (verifiedNinStatus = false);
   const phones = state.phones.phones.filter((phoneNum) => phoneNum.verified);
-  phones.length >= 1 ? (verifiedPhone = true) : (verifiedPhone = false);
+
+  const verifiedNinStatus = nins.length >= 1;
+  const verifiedPhone = phones.length >= 1;
 
   return {
     nins: state.nins.nins, // all nin info
