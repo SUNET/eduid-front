@@ -22,11 +22,6 @@ const initialState: NinState = {
   nins: [],
 };
 
-interface ninsMeta {
-  form: string;
-  field: string;
-}
-
 export const GET_NINS_SUCCESS = createAction<{ nins: NinInfo[] }>("GET_PERSONAL_DATA_NINS_SUCCESS");
 export const GET_NINS_FAIL = createAction<{ message: string }>("GET_PERSONAL_DATA_NINS_FAIL");
 export const POST_NIN_REMOVE_SUCCESS =
