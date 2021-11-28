@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 class AddNin extends Component {
   render() {
     if (this.props.nins.length) {
-      return <NinDisplay removeNin={this.removeNin} {...this.props} />;
+      return <NinDisplay removeNin={this.removeNin} showDeleteButton {...this.props} />;
     } else {
       return <NinForm addNin={this.addNin} {...this.props} />;
     }

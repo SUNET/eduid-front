@@ -1,53 +1,52 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
 import EduIDButton from "components/EduIDButton";
 import ninsSlice, { NinInfo } from "reducers/Nins";
-import { connect } from "react-redux";
-import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
 import { translate } from "login/translation";
+import { useDashboardAppDispatch } from "dashboard-hooks";
 
 interface NinDisplayProps {
   nins: NinInfo[]; // all nins
-  verifiedNinStatus: boolean; // is the added nin verified?
   verifiedNin: NinInfo[]; // all verified nins
-  showNinAtProfile: boolean; // show last four digits or not
-  showNinAtIdentity: boolean; // show last four digits or not
-  toggleShowNinAtProfile(): void;
-  toggleShowNinAtIdentity(): void;
   handleDelete: (e: React.MouseEvent<HTMLElement>) => void;
   delete?: boolean; // probable BUG: don't know where this comes from
+  showDeleteButton: boolean;
 }
 
 const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
-  const url = props.history.location.pathname;
-  let toggleShowNin,
-    showNin,
-    nin = "";
+  const [showFullNin, setShowFullNin] = useState(false); // show the last four digits of the NIN or not
+  const dispatch = useDashboardAppDispatch();
+  const verifiedNins = props.nins.filter((nin) => nin.verified);
+  const nin = verifiedNins[0] || props.nins[0];
 
-  if (props.verifiedNinStatus)
-    //if nin is verified, verifiedNin[0]number will be present
-    nin = props.verifiedNin[0].number;
-  //else nin is not verified, nins[0].number will be present
-  else nin = props.nins[0].number;
-
-  if (url === "/profile/") {
-    (toggleShowNin = props.toggleShowNinAtProfile), (showNin = props.showNinAtProfile);
-  } else {
-    (toggleShowNin = props.toggleShowNinAtIdentity), (showNin = props.showNinAtIdentity);
-  }
+  const handleDelete = function (e: React.MouseEvent<HTMLElement>): void {
+    // TODO: We should be able to just use 'nin.number' from the enclosing function, right? Why go digging after it in the HTML?
+    const target = e.target as HTMLElement;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const cell = target.closest(".profile-grid-cell") as unknown as any;
+    if (cell) {
+      // TODO: investigate proper type for cell.children[1], ts says it has no 'dataset'
+      const ninNumber = cell.children[1].dataset.ninnumber;
+      dispatch(ninsSlice.actions.startRemove(ninNumber));
+    }
+  };
 
   return (
-    <div data-ninnumber={nin} className={`${props.delete ? "data-with-delete" : "display-nin-show-hide"}`}>
-      <p id="nin-number" className={`display-data ${props.verifiedNinStatus ? "verified" : "unverified"}`}>
-        {showNin ? nin : nin.replace(/\d{4}$/, "****")}
+    <div data-ninnumber={nin.number} className={`${props.delete ? "data-with-delete" : "display-nin-show-hide"}`}>
+      <p id="nin-number" className={`display-data ${nin.verified ? "verified" : "unverified"}`}>
+        {showFullNin ? nin.number : nin.number.replace(/.{4}$/, "****")}
       </p>
-      <button className="show-hide-button" onClick={toggleShowNin}>
-        {showNin ? translate("nin_hide_last_four_digits") : translate("nin_show_last_four_digits")}
+      <button
+        className="show-hide-button"
+        onClick={() => {
+          setShowFullNin(!showFullNin);
+        }}
+      >
+        {showFullNin ? translate("nin_hide_last_four_digits") : translate("nin_show_last_four_digits")}
       </button>
-      {url === "/profile/verify-identity/" && !props.verifiedNinStatus && (
-        // if location path name is "/profile/verify-identity/" and nin is not verified, button for deleting of nin number will appear
-        <EduIDButton className="icon-button" onClick={props.handleDelete}>
+      {props.showDeleteButton && !nin.verified && (
+        // if showDeleteButton is true and nin is not verified, button for deleting of nin number will appear
+        <EduIDButton className="icon-button" onClick={handleDelete}>
           <svg
             key="0"
             className="remove"
@@ -84,34 +83,4 @@ export class NinDisplay extends Component<NinDisplayProps> {
   }
 }
 
-const mapStateToProps = (state: DashboardRootState) => {
-  return {
-    showNinAtProfile: state.nins.showNinAtProfile,
-    showNinAtIdentity: state.nins.showNinAtIdentity,
-  };
-};
-
-const mapDispatchToProps = (dispatch: DashboardAppDispatch) => {
-  return {
-    handleDelete: function (e: React.MouseEvent<HTMLElement>): void {
-      const target = e.target as HTMLElement;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const cell = target.closest(".profile-grid-cell") as unknown as any;
-      if (cell) {
-        // TODO: investigate proper type for cell.children[1], ts says it has no 'dataset'
-        const ninNumber = cell.children[1].dataset.ninnumber;
-        dispatch(ninsSlice.actions.startRemove(ninNumber));
-      }
-    },
-    toggleShowNinAtProfile: function () {
-      dispatch(ninsSlice.actions.showNinAtProfile());
-    },
-    toggleShowNinAtIdentity: function () {
-      dispatch(ninsSlice.actions.showNinAtIdentity());
-    },
-  };
-};
-
-connect(mapStateToProps, mapDispatchToProps)(NinDisplay);
-
-export default withRouter(NinDisplay);
+export default NinDisplay;
