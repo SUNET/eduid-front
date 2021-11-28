@@ -374,7 +374,7 @@ describe("LetterProofing component, without id number", () => {
   function setupComponent() {
     const wrapper = mount(
       <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <LetterProofingContainer />
+        <LetterProofingContainer disabled />
       </ReduxIntlProvider>
     );
     return {
