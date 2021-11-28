@@ -1,13 +1,28 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import EduIDButton from "components/EduIDButton";
+import ninsSlice, { NinInfo } from "reducers/Nins";
+import { connect } from "react-redux";
+import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
+import { translate } from "login/translation";
 
-const RenderShowHideNin = (props) => {
+interface NinDisplayProps {
+  nins: NinInfo[]; // all nins
+  verifiedNinStatus: boolean; // is the added nin verified?
+  verifiedNin: NinInfo[]; // all verified nins
+  showNinAtProfile: boolean; // show last four digits or not
+  showNinAtIdentity: boolean; // show last four digits or not
+  toggleShowNinAtProfile(): void;
+  toggleShowNinAtIdentity(): void;
+  handleDelete: (e: React.MouseEvent<HTMLElement>) => void;
+  delete?: boolean; // probable BUG: don't know where this comes from
+}
+
+const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
   const url = props.history.location.pathname;
-  let toggleShowNin = "",
-    showNin = "",
+  let toggleShowNin,
+    showNin,
     nin = "";
 
   if (props.verifiedNinStatus)
@@ -28,7 +43,7 @@ const RenderShowHideNin = (props) => {
         {showNin ? nin : nin.replace(/\d{4}$/, "****")}
       </p>
       <button className="show-hide-button" onClick={toggleShowNin}>
-        {showNin ? props.translate("nin_hide_last_four_digits") : props.translate("nin_show_last_four_digits")}
+        {showNin ? translate("nin_hide_last_four_digits") : translate("nin_show_last_four_digits")}
       </button>
       {url === "/profile/verify-identity/" && !props.verifiedNinStatus && (
         // if location path name is "/profile/verify-identity/" and nin is not verified, button for deleting of nin number will appear
@@ -50,15 +65,16 @@ const RenderShowHideNin = (props) => {
     </div>
   );
 };
-export class NinDisplay extends Component {
+
+export class NinDisplay extends Component<NinDisplayProps> {
   render() {
     return (
       <div className="profile-grid-cell">
-        <label key="0">{this.props.translate("nin_display.profile.main_title")}</label>
+        <label key="0">{translate("nin_display.profile.main_title")}</label>
         {this.props.nins.length === 0 ? (
           // if nins is not added, user is able to navigate to identity
           <Link to={`/profile/verify-identity/`} className="display-data unverified">
-            {this.props.translate("nin_display.profile.no_nin")}
+            {translate("nin_display.profile.no_nin")}
           </Link>
         ) : (
           <RenderShowHideNin {...this.props} />
@@ -68,11 +84,6 @@ export class NinDisplay extends Component {
   }
 }
 
-NinDisplay.propTypes = {
-  nins: PropTypes.array,
-  verifiedNin: PropTypes.array,
-  verifiedNinStatus: PropTypes.bool,
-  handleDelete: PropTypes.func,
 const mapStateToProps = (state: DashboardRootState) => {
   return {
     showNinAtProfile: state.nins.showNinAtProfile,
