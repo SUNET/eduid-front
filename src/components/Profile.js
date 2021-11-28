@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import NameDisplay from "containers/NameDisplay";
-import NinDisplay from "containers/NinDisplay";
+import NinDisplay from "components/NinDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";
 import { withRouter } from "react-router-dom";
-
-// import "style/base.scss";
 
 class Profile extends Component {
   render() {

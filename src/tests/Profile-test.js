@@ -5,7 +5,7 @@ import { shallow, mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import Profile from "containers/Profile";
-import NinDisplay from "containers/NinDisplay";
+import NinDisplay from "components/NinDisplay";
 import NameDisplay from "containers/NameDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";

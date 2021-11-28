@@ -5,7 +5,7 @@ import { shallow, mount } from "enzyme";
 import { Router } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import { history } from "components/DashboardMain";
-import NinDisplay from "containers/NinDisplay";
+import NinDisplay from "components/NinDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 

@@ -73,6 +73,34 @@ NinDisplay.propTypes = {
   verifiedNin: PropTypes.array,
   verifiedNinStatus: PropTypes.bool,
   handleDelete: PropTypes.func,
+const mapStateToProps = (state: DashboardRootState) => {
+  return {
+    showNinAtProfile: state.nins.showNinAtProfile,
+    showNinAtIdentity: state.nins.showNinAtIdentity,
+  };
 };
+
+const mapDispatchToProps = (dispatch: DashboardAppDispatch) => {
+  return {
+    handleDelete: function (e: React.MouseEvent<HTMLElement>): void {
+      const target = e.target as HTMLElement;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const cell = target.closest(".profile-grid-cell") as unknown as any;
+      if (cell) {
+        // TODO: investigate proper type for cell.children[1], ts says it has no 'dataset'
+        const ninNumber = cell.children[1].dataset.ninnumber;
+        dispatch(ninsSlice.actions.startRemove(ninNumber));
+      }
+    },
+    toggleShowNinAtProfile: function () {
+      dispatch(ninsSlice.actions.showNinAtProfile());
+    },
+    toggleShowNinAtIdentity: function () {
+      dispatch(ninsSlice.actions.showNinAtIdentity());
+    },
+  };
+};
+
+connect(mapStateToProps, mapDispatchToProps)(NinDisplay);
 
 export default withRouter(NinDisplay);

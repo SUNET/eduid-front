@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NinForm from "./NinForm";
-import NinDisplay from "containers/NinDisplay";
+import NinDisplay from "components/NinDisplay";
 import { withRouter } from "react-router-dom";
-
-// import "style/DashboardMain.scss";
 
 class AddNin extends Component {
   render() {
