@@ -29,6 +29,10 @@
   "Not a valid email address.": {
     "string": "Ogiltig e-postadress."
   },
+  "O0z0/P": {
+    "developer_comment": "Dashboard navigation tooltip",
+    "string": "Lägg till och bekräfta ditt telefonnummer för bättre säkerhet"
+  },
   "SecurityMsg.rm_webauthn": {
     "string": "Säkerhetsnyckel har tagits bort."
   },
@@ -213,15 +217,6 @@
   },
   "dashboard_nav.identity": {
     "string": "Identitet"
-  },
-  "dashboard_nav.identity-verify-freja": {
-    "string": "Du kan verifiera <b>med digitalt ID-kort</b>"
-  },
-  "dashboard_nav.identity-verify-post-freja": {
-    "string": "Du kan verifiera <b>via post</b>, <b>med digitalt ID-kort</b>"
-  },
-  "dashboard_nav.identity-verify-post-phone-freja": {
-    "string": "Du kan verifiera <b>via post</b>, <b>telefon</b> eller <b>digitalt ID-kort</b>"
   },
   "dashboard_nav.profile": {
     "string": "Profil"
@@ -672,6 +667,10 @@
   "login.wrong_user": {
     "string": "Det gick inte att slutföra inloggningen. Var god försök igen."
   },
+  "lpvPcL": {
+    "developer_comment": "Dashboard navigation tooltip",
+    "string": "Verifiera din identitet för att få ut mer av ditt eduID"
+  },
   "mail_duplicated": {
     "string": "E-postadressen finns redan i listan"
   },
@@ -756,9 +755,6 @@
   },
   "nins.input_help_text": {
     "string": "Personnummer med 12 siffror"
-  },
-  "nins.input_placeholder": {
-    "string": "ååååmmddnnnn"
   },
   "nins.invalid_nin": {
     "string": "Ogiltigt personnummer"
@@ -875,7 +871,7 @@
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
   },
   "orc.sub_mismatch": {
-    "string": "Fel subjekt vid länkning med ORCID"
+    "string": "\"Subject\" var fel när ORCID-kontot skulle kopplas"
   },
   "orc.title": {
     "string": "ORCID"
@@ -1226,6 +1222,10 @@
   },
   "resetpw.without_extra_security_heading": {
     "string": "<b>Forsätt utan extra säkerhetsalternativ </b>"
+  },
+  "rhrt8v": {
+    "developer_comment": "Swedish NIN template",
+    "string": "ååååmmddnnnn"
   },
   "runtime_error.generic.description": {
     "string": "Problemet har rapporterats till teamet."
