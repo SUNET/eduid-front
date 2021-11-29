@@ -25,7 +25,7 @@ function EmailLinkSent(): JSX.Element {
   };
 
   useEffect(() => {
-    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
+    const count = JSON.parse(getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK) || "");
     if (count || count > -1) {
       countFiveMin("email");
     } else if (count <= -1) {
@@ -46,13 +46,11 @@ function EmailLinkSent(): JSX.Element {
     <>
       <div id="reset-pass-display">
         <FormattedMessage
-          defaultMessage="Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours."
-          description="Reset Password email link sent message"
+          id="resetpw.check-email-link"
           values={{
-            b: (chunks: string) => <b>{chunks}</b>,
+            email: <b>{email}</b>,
           }}
         />
-        {/* <p>{translate("resetpw.check-email-link")({ email: email })}</p> */}
         <div className="timer">
           <p>
             {translate("resetpw.resend-link")}
