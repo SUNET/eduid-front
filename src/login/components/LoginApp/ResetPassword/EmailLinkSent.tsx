@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
@@ -12,7 +10,10 @@ import {
 } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-function EmailLinkSent(props) {
+import { translate } from "../../../../login/translation";
+import { FormattedMessage } from "react-intl";
+
+function EmailLinkSent(): JSX.Element {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
 
@@ -44,15 +45,22 @@ function EmailLinkSent(props) {
   return (
     <>
       <div id="reset-pass-display">
-        <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
+        <FormattedMessage
+          defaultMessage="Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours."
+          description="Reset Password email link sent message"
+          values={{
+            b: (chunks: string) => <b>{chunks}</b>,
+          }}
+        />
+        {/* <p>{translate("resetpw.check-email-link")({ email: email })}</p> */}
         <div className="timer">
           <p>
-            {props.translate("resetpw.resend-link")}
+            {translate("resetpw.resend-link")}
             <a id={"resend-email"} onClick={sendLink}>
-              {props.translate("resetpw.resend-link-button")}
+              {translate("resetpw.resend-link-button")}
             </a>
             <span id="timer-in" className="display-none">
-              {props.translate("resetpw.resend-timer-in")}{" "}
+              {translate("resetpw.resend-timer-in")}{" "}
             </span>
             <span id="count-down-time-email" />
           </p>
@@ -68,4 +76,4 @@ EmailLinkSent.propTypes = {
   invalid: PropTypes.bool,
 };
 
-export default InjectIntl(withRouter(EmailLinkSent));
+export default EmailLinkSent;
