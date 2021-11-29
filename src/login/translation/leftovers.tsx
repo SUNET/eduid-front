@@ -132,6 +132,5 @@ export const leftoverMessages = {
   "pd.display_name_input_placeholder": (
     <FormattedMessage id="pd.display_name_inputplaceholder" defaultMessage={`First and last name`} />
   ),
-  "nins.input_placeholder": <FormattedMessage id="nins.input_placeholder" defaultMessage={`yyyymmddnnnn`} />,
   "phones.input_placeholder": <FormattedMessage id="phones.input_placeholder" defaultMessage={`Phone number`} />,
 };

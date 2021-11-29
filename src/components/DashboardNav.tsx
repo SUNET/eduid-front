@@ -1,55 +1,73 @@
 import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { NavLink, withRouter } from "react-router-dom";
 import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import { translate } from "../login/translation";
 
+// TODO: make a typed slice out of phone (like nins) and move this there
+//       (and remove "as PhoneInfo[]" below, since it will be deduced automatically)
 interface PhoneInfo {
   number: string;
   verified: boolean;
   primary: boolean;
 }
 
-function DashboardNav() {
+function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false);
   const nins = useDashboardAppSelector((state) => state.nins.nins);
   const phones = useDashboardAppSelector((state) => state.phones.phones as PhoneInfo[]);
   const verifiedNin = nins.filter((nin) => nin.verified);
-  const verifiedSweNumber = phones.filter((phone) => phone.verified && phone.number.startsWith("+46"));
-  const unverifiedNumber = phones.filter((phone) => !phone.verified);
+  const verifiedPhones = phones.filter((phone) => phone.verified);
   // depending on languages show different styles
-  const selectedLanguage = useDashboardAppSelector((state) => state.intl.locale);
+  const selectedLanguage = useDashboardAppSelector((state) => state.intl.locale) as string;
 
-  let tipsAtIdentity, tipsAtSettings;
-
-  if (!verifiedNin.length) {
-    // when user is accessing the profile check if user has an unverified nin
-    if (!nins.length) {
-      // check if nin is not added, then rendering text on IDENTITY tab, only possible to verify with a freja eId
-      tipsAtIdentity = (
-        <NotificationTip textLength={"short"} tipText={translate("dashboard_nav.identity-verify-freja")} />
-      );
-    } else {
-      // else user has added id number,rendering text on IDENTITY tab, possible to verify by post and with a freja eId
-      tipsAtIdentity = <NotificationTip tipText={translate("dashboard_nav.identity-verify-post-freja")} />;
-      if (phones.length) {
-        // then check if there is a number added to the phones array
-        if (verifiedSweNumber.length) {
-          // if a number is added to the phone array, check if number is verified and a Swedish phone number, rendering text on IDENTITY tab, user can verify by post, phone or freja eId
-          tipsAtIdentity = <NotificationTip tipText={translate("dashboard_nav.identity-verify-post-phone-freja")} />;
-        } else if (unverifiedNumber.length) {
-          // else if phone number is not confirmed, rendering text on SETTINGS tab "Confirm your number..."
-          tipsAtSettings = (
-            <NotificationTip
-              position={`settings ${selectedLanguage}`}
-              state={{ active: [active, setActive] }}
-              tipText={translate("dashboard_nav.settings-confirm-phone")}
-            />
-          );
-        }
-      }
+  /*
+   * Render on-mouse-over tip at the "Identity" tab nudging the user to proof their identity
+   */
+  function tips_at_identity(): JSX.Element | undefined {
+    if (verifiedNin.length) {
+      // user has a verified nin already, no tips necessary
+      return undefined;
     }
+
+    return (
+      <NotificationTip
+        position={`settings ${selectedLanguage}`}
+        tipText={
+          <FormattedMessage
+            defaultMessage="Verify your identity to get the most ouf of your eduID"
+            description="Dashboard navigation tooltip"
+          />
+        }
+      />
+    );
   }
+
+  /*
+   * Render on-mouse-over tip at the "Settings" tab telling the user to confirm any unconfirmed phone numbers
+   */
+  function tips_at_settings(): JSX.Element | undefined {
+    if (verifiedPhones.length) {
+      // one or more registered phones, don't need to tell the user anything
+      return undefined;
+    }
+
+    return (
+      <NotificationTip
+        position={`settings ${selectedLanguage}`}
+        tipText={
+          <FormattedMessage
+            defaultMessage="Add and verify your phone number for better security"
+            description="Dashboard navigation tooltip"
+          />
+        }
+      />
+    );
+  }
+
+  const tipsAtSettings = tips_at_settings();
+
   return (
     <nav id="dashboard-nav">
       <ul>
@@ -59,7 +77,7 @@ function DashboardNav() {
         <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
           <li>
             {translate("dashboard_nav.identity")}
-            {tipsAtIdentity}
+            {tips_at_identity()}
           </li>
         </NavLink>
         <NavLink

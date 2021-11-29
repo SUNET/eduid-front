@@ -25,18 +25,16 @@ export function fetchNins(config) {
 }
 
 // function to post nins
-export function* postNin() {
-  console.log("you're in postNin");
+export function* postNin(nin) {
   try {
     const state = yield select((state) => state),
       data = {
-        nin: state.nins.nin,
+        nin: nin,
         csrf_token: state.config.csrf_token,
       };
-    console.log("this is data in postNin:", data);
-    const resp = yield call(postNinFetch, state.config, data);
-    console.log("this is resp in postNin:", resp);
-    console.log("this is token in resp postNin:", resp.payload.csrf_token);
+    const resp = yield call(postNinAdd, state.config, data);
+    // BUG: the response from the backend contains an empty list of nins, so we fetch it again somewhere after this...
+    //      Fix the backend and avoid having to re-fetch nins from the backend.
     yield put(putCsrfToken(resp));
     yield put(resp);
   } catch (error) {
@@ -45,8 +43,7 @@ export function* postNin() {
 }
 
 // function to reach endpoint to post nin
-export function postNinFetch(config, data) {
-  console.log("this is data in postNinFetch:", data);
+export function postNinAdd(config, data) {
   return window
     .fetch("/services/security/" + "add-nin", {
       ...postRequest,

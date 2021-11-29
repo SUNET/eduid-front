@@ -34,7 +34,8 @@
     "Skatteverket",
     "SKATTEVERKET",
     "Nindata",
-    "NINDATA"
+    "NINDATA",
+    "Luhn"
   ],
   "cSpell.language": "en,en-US,en-GB,sv"
 }

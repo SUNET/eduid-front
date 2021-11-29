@@ -29,6 +29,10 @@
   "Not a valid email address.": {
     "string": "Not a valid email address."
   },
+  "O0z0/P": {
+    "developer_comment": "Dashboard navigation tooltip",
+    "string": "Add and verify your phone number for better security"
+  },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
   },
@@ -213,15 +217,6 @@
   },
   "dashboard_nav.identity": {
     "string": "Identity"
-  },
-  "dashboard_nav.identity-verify-freja": {
-    "string": "You can verify <b>with a digital ID-card</b>"
-  },
-  "dashboard_nav.identity-verify-post-freja": {
-    "string": "You can verify <b>by post</b> or <b>with a digital ID-card</b>"
-  },
-  "dashboard_nav.identity-verify-post-phone-freja": {
-    "string": "You can verify <b>by post</b>, <b>phone</b> or <b>with a digital ID-card</b>"
   },
   "dashboard_nav.profile": {
     "string": "Profile"
@@ -672,6 +667,10 @@
   "login.wrong_user": {
     "string": "It was not possible to complete the login. Please try again."
   },
+  "lpvPcL": {
+    "developer_comment": "Dashboard navigation tooltip",
+    "string": "Verify your identity to get the most ouf of your eduID"
+  },
   "mail_duplicated": {
     "string": "Added email is duplicated"
   },
@@ -756,9 +755,6 @@
   },
   "nins.input_help_text": {
     "string": "National identity number with 12 digits"
-  },
-  "nins.input_placeholder": {
-    "string": "yyyymmddnnnn"
   },
   "nins.invalid_nin": {
     "string": "Invalid national id number"
@@ -1226,6 +1222,10 @@
   },
   "resetpw.without_extra_security_heading": {
     "string": "<b>Continue without extra security option </b>"
+  },
+  "rhrt8v": {
+    "developer_comment": "Swedish NIN template",
+    "string": "yyyymmddnnnn"
   },
   "runtime_error.generic.description": {
     "string": "The issue has been reported to the team."
