@@ -45,12 +45,14 @@ function EmailLinkSent(): JSX.Element {
   return (
     <>
       <div id="reset-pass-display">
-        <FormattedMessage
-          id="resetpw.check-email-link"
-          values={{
-            email: <b>{email}</b>,
-          }}
-        />
+        <p>
+          <FormattedMessage
+            id="resetpw.check-email-link"
+            values={{
+              email: <b>{email}</b>,
+            }}
+          />
+        </p>
         <div className="timer">
           <p>
             {translate("resetpw.resend-link")}
