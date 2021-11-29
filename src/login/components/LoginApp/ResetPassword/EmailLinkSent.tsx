@@ -38,7 +38,7 @@ function EmailLinkSent(): JSX.Element {
 
   useEffect(() => {
     dispatch(eduidRMAllNotify());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
