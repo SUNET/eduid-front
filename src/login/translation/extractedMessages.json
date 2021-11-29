@@ -1172,15 +1172,6 @@
   "resetpw.received-sms": {
     "string": "Already received sms?"
   },
-  "resetpw.resend-link": {
-    "string": "If you didn’t receive the email? Check your junk email, or"
-  },
-  "resetpw.resend-link-button": {
-    "string": "resend link"
-  },
-  "resetpw.resend-timer-in": {
-    "string": "in"
-  },
   "resetpw.reset-pw-initialized": {
     "string": "Reset password link has been sent to your email."
   },

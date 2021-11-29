@@ -1176,12 +1176,6 @@
   "resetpw.received-sms": {
     "string": "Redan fått sms? "
   },
-  "resetpw.resend-link": {
-    "string": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller"
-  },
-  "resetpw.resend-link-button": {
-    "string": "skicka länk igen"
-  },
   "resetpw.resend-timer-in": {
     "string": "om"
   },

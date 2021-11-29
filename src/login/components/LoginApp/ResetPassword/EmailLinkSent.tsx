@@ -9,7 +9,6 @@ import {
 } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-import { translate } from "../../../../login/translation";
 import { FormattedMessage } from "react-intl";
 
 function EmailLinkSent(): JSX.Element {
@@ -46,7 +45,8 @@ function EmailLinkSent(): JSX.Element {
       <div id="reset-pass-display">
         <p>
           <FormattedMessage
-            id="resetpw.check-email-link"
+            defaultMessage="Please check your email {email} to continue. Link is valid for 2 hours."
+            description="Reset Password email link sent description"
             values={{
               email: <b>{email}</b>,
             }}
@@ -54,12 +54,15 @@ function EmailLinkSent(): JSX.Element {
         </p>
         <div className="timer">
           <p>
-            {translate("resetpw.resend-link")}
+            <FormattedMessage
+              defaultMessage="If you didn’t receive the email? Check your junk email, or."
+              description="Reset Password email link sent"
+            />
             <a id={"resend-email"} onClick={sendLink}>
-              {translate("resetpw.resend-link-button")}
+              <FormattedMessage defaultMessage="resend link" description="Reset Password email link button" />
             </a>
             <span id="timer-in" className="display-none">
-              {translate("resetpw.resend-timer-in")}{" "}
+              <FormattedMessage defaultMessage="in" description="Reset Password timer" />
             </span>
             <span id="count-down-time-email" />
           </p>

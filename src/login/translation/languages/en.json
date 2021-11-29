@@ -1176,12 +1176,6 @@
   "resetpw.received-sms": {
     "string": "Already received sms? "
   },
-  "resetpw.resend-link": {
-    "string": "If you didn’t receive the email? Check your junk email, \n or"
-  },
-  "resetpw.resend-link-button": {
-    "string": "resend link"
-  },
   "resetpw.resend-timer-in": {
     "string": "in"
   },
