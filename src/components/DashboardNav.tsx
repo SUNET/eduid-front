@@ -1,7 +1,7 @@
-import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useDashboardAppSelector } from "dashboard-hooks";
 import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import { translate } from "../login/translation";
 
@@ -103,4 +103,4 @@ function DashboardNav(): JSX.Element {
   );
 }
 
-export default withRouter(DashboardNav);
+export default DashboardNav;
