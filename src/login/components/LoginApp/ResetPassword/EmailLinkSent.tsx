@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { useAppDispatch } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import {
@@ -69,11 +68,5 @@ function EmailLinkSent(): JSX.Element {
     </>
   );
 }
-
-EmailLinkSent.propTypes = {
-  translate: PropTypes.func,
-  sendLink: PropTypes.func,
-  invalid: PropTypes.bool,
-};
 
 export default EmailLinkSent;
