@@ -24,9 +24,9 @@ function EmailLinkSent(): JSX.Element {
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    if (count || count > -1) {
+    if (count > -1) {
       countFiveMin("email");
-    } else if (count <= -1) {
+    } else {
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     }
   }, []);
