@@ -164,7 +164,7 @@ export const resetPassword = {
   "resetpw.check-email-link": (values) => (
     <FormattedMessage
       id="resetpw.check-email-link"
-      defaultMessage={`Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours.`}
+      defaultMessage={`Please check your email {email} to continue. \n          Link is valid for 2 hours.`}
       values={values}
     />
   ),
