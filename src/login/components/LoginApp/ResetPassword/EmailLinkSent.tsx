@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import {
   getLocalStorage,
@@ -14,10 +14,10 @@ import { translate } from "../../../../login/translation";
 import { FormattedMessage } from "react-intl";
 
 function EmailLinkSent(): JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
 
-  const sendLink = (e) => {
+  const sendLink = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email) {
       dispatch(resetPasswordSlice.actions.requestEmailLink(email));
