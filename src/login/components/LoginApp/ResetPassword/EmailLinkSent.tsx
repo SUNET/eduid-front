@@ -46,7 +46,7 @@ function EmailLinkSent(): JSX.Element {
         <p>
           <FormattedMessage
             defaultMessage="Please check your email {email} to continue. Link is valid for 2 hours."
-            description="Reset Password email link sent description"
+            description="Reset Password email link sent"
             values={{
               email: <b>{email}</b>,
             }}
@@ -59,10 +59,10 @@ function EmailLinkSent(): JSX.Element {
               description="Reset Password email link sent"
             />
             <a id={"resend-email"} onClick={sendLink}>
-              <FormattedMessage defaultMessage="resend link" description="Reset Password email link button" />
+              <FormattedMessage defaultMessage="resend link" description="Reset Password email link sent" />
             </a>
             <span id="timer-in" className="display-none">
-              <FormattedMessage defaultMessage="in" description="Reset Password timer" />
+              <FormattedMessage defaultMessage="in" description="Reset Password email link sent" />
             </span>
             <span id="count-down-time-email" />
           </p>
