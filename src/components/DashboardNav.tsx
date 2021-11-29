@@ -55,6 +55,7 @@ function DashboardNav(): JSX.Element {
 
     return (
       <NotificationTip
+        state={{ active: [active, setActive] }}
         position={`settings ${selectedLanguage}`}
         tipText={
           <FormattedMessage
