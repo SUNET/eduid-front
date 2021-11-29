@@ -11,8 +11,6 @@ interface NinState {
   nin: string;
   rmNin: string;
   nins: NinInfo[];
-  showNinAtProfile: boolean;
-  showNinAtIdentity: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any; // this rabbit-hole leads to lookup-mobile-proofing and looks unused??? oh my.
 }
@@ -22,14 +20,7 @@ const initialState: NinState = {
   nin: "", // the nin-number from the first entry in nins (wut?)
   rmNin: "", // the nin-number we've most recently asked the backend to remove (wut?)
   nins: [],
-  showNinAtProfile: false,
-  showNinAtIdentity: false,
 };
-
-interface ninsMeta {
-  form: string;
-  field: string;
-}
 
 export const GET_NINS_SUCCESS = createAction<{ nins: NinInfo[] }>("GET_PERSONAL_DATA_NINS_SUCCESS");
 export const GET_NINS_FAIL = createAction<{ message: string }>("GET_PERSONAL_DATA_NINS_FAIL");
@@ -38,24 +29,12 @@ export const POST_NIN_REMOVE_SUCCESS =
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const changeNindata = createAction<{ data: any }>("CHANGE_NINDATA");
 
-const redux_form_CHANGE = createAction("@@redux-form/CHANGE", function prepare(payload, meta: ninsMeta) {
-  return {
-    payload: payload,
-    meta: meta,
-  };
-});
-
 const ninsSlice = createSlice({
   name: "nins",
   initialState,
   reducers: {
-    showNinAtProfile: (state) => {
-      state.showNinAtProfile = !state.showNinAtProfile;
-    },
-    showNinAtIdentity: (state) => {
-      state.showNinAtIdentity = !state.showNinAtIdentity;
-    },
     startRemove: (state, action: PayloadAction<string>) => {
+      // TODO: What's this? Investigate why we need to remember the payload here
       state.rmNin = action.payload;
     },
   },
@@ -85,11 +64,6 @@ const ninsSlice = createSlice({
         // is even used... there is talk about "fixing the lookup mobile button" in commit 7831834,
         // but is there actually anything that can dispatch "POST_LOOKUP_MOBILE_PROOFING_PROOFING"?
         state.data = action.payload;
-      })
-      .addCase(redux_form_CHANGE, (state, action) => {
-        if (action.meta.form === "nins" && action.meta.field === "nin") {
-          state.nin = action.payload;
-        }
       });
   },
 });

@@ -8,9 +8,7 @@ const mapStateToProps = (state) => {
   const confirming = state.letter_proofing.confirmingLetter;
   const valid_nin = isValid("nins")(state);
   const confirmingLetter = (confirming && valid_nin) || state.letter_proofing.letter_expired;
-  let withoutNin = !state.nins.nins[0];
   return {
-    disabled: withoutNin,
     confirmingLetter: confirmingLetter,
     verifyingLetter_sent: state.letter_proofing.verifyingLetter,
     letter_sent_date: state.letter_proofing.letter_sent,

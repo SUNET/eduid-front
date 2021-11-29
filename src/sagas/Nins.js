@@ -25,11 +25,11 @@ export function fetchNins(config) {
 }
 
 // function to post nins
-export function* postNin(nin) {
+export function* postNin(action) {
   try {
     const state = yield select((state) => state),
       data = {
-        nin: nin,
+        nin: action.payload,
         csrf_token: state.config.csrf_token,
       };
     const resp = yield call(postNinAdd, state.config, data);

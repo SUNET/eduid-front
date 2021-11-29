@@ -1,7 +1,7 @@
-import { useDashboardAppSelector } from "dashboard-hooks";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useDashboardAppSelector } from "dashboard-hooks";
 import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import { translate } from "../login/translation";
 
@@ -25,7 +25,7 @@ function DashboardNav(): JSX.Element {
   /*
    * Render on-mouse-over tip at the "Identity" tab nudging the user to proof their identity
    */
-  function tips_at_identity(): JSX.Element | undefined {
+  function getTipsAtIdentity(): JSX.Element | undefined {
     if (verifiedNin.length) {
       // user has a verified nin already, no tips necessary
       return undefined;
@@ -47,7 +47,7 @@ function DashboardNav(): JSX.Element {
   /*
    * Render on-mouse-over tip at the "Settings" tab telling the user to confirm any unconfirmed phone numbers
    */
-  function tips_at_settings(): JSX.Element | undefined {
+  function getTipsAtSettings(): JSX.Element | undefined {
     if (verifiedPhones.length) {
       // one or more registered phones, don't need to tell the user anything
       return undefined;
@@ -55,6 +55,7 @@ function DashboardNav(): JSX.Element {
 
     return (
       <NotificationTip
+        state={{ active: [active, setActive] }}
         position={`settings ${selectedLanguage}`}
         tipText={
           <FormattedMessage
@@ -66,7 +67,10 @@ function DashboardNav(): JSX.Element {
     );
   }
 
-  const tipsAtSettings = tips_at_settings();
+  const tipsAtSettings = getTipsAtSettings();
+  /* Styling needs to be different for the two languages we have because of different lengths */
+  const settingsClass = tipsAtSettings && active ? `nav-settings ${selectedLanguage}` : undefined;
+  const advancedSettingsClass = tipsAtSettings && active ? `nav-advanced-settings ${selectedLanguage}` : undefined;
 
   return (
     <nav id="dashboard-nav">
@@ -77,22 +81,17 @@ function DashboardNav(): JSX.Element {
         <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
           <li>
             {translate("dashboard_nav.identity")}
-            {tips_at_identity()}
+            {getTipsAtIdentity()}
           </li>
         </NavLink>
-        <NavLink
-          className={tipsAtSettings && active ? `nav-settings ${selectedLanguage}` : undefined}
-          exact
-          activeClassName="active"
-          to={`/profile/settings/`}
-        >
+        <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/`}>
           <li>
             {translate("dashboard_nav.settings")}
             {tipsAtSettings}
           </li>
         </NavLink>
         <NavLink
-          className={tipsAtSettings && active ? `nav-advanced-settings ${selectedLanguage}` : undefined}
+          className={advancedSettingsClass}
           exact
           activeClassName="active"
           to={`/profile/settings/advanced-settings`}
@@ -104,4 +103,4 @@ function DashboardNav(): JSX.Element {
   );
 }
 
-export default withRouter(DashboardNav);
+export default DashboardNav;
