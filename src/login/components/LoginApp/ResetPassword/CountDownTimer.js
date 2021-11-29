@@ -8,7 +8,7 @@ export const clearCountdown = (key) => {
 };
 
 export const getLocalStorage = (key) => {
-  return window.localStorage ? window.localStorage.getItem(key) : "";
+  return window.localStorage ? JSON.parse(window.localStorage.getItem(key)) : "";
 };
 
 export const setLocalStorage = (key, val) => {

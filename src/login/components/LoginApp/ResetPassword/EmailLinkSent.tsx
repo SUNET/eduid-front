@@ -23,7 +23,7 @@ function EmailLinkSent(): JSX.Element {
   };
 
   useEffect(() => {
-    const count = JSON.parse(getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK) || "");
+    const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     if (count || count > -1) {
       countFiveMin("email");
     } else if (count <= -1) {
@@ -66,6 +66,7 @@ function EmailLinkSent(): JSX.Element {
             </span>
             <span id="count-down-time-email" />
           </p>
+          <h1>{email}</h1>
         </div>
       </div>
     </>
