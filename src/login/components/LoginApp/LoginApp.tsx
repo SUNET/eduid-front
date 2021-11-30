@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import Login from "./Login/Login";
 import ResetPasswordMain from "./ResetPassword/ResetPasswordMain";
 import EmailLinkSent from "./ResetPassword/EmailLinkSent";
@@ -15,14 +15,17 @@ class LoginApp extends React.Component {
   render() {
     return (
       <div id="content" className="horizontal-content-margin">
-        <Route path={`/login/:ref`} render={(props) => <Login {...props} />} />
-        <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />
-        <Route path={`/reset-password/email`} component={ResetPasswordMain} />
-        <Route exact path="/reset-password/email-link-sent" render={(props) => <EmailLinkSent {...props} />} />
-        <Route path="/reset-password/extra-security" render={(props) => <ExtraSecurity {...props} />} />
-        <Route path="/reset-password/phone-code-sent" render={(props) => <PhoneCodeSent {...props} />} />
-        <Route path="/reset-password/set-new-password" render={(props) => <SetNewPassword {...props} />} />
-        <Route exact path="/reset-password/success" render={(props) => <ResetPasswordSuccess {...props} />} />
+        <Switch>
+          <Route exact path={`/login/password/:ref`} render={(props) => <Login {...props} />} />
+          <Route exact path={`/login/:ref`} render={(props) => <Login {...props} />} />
+          <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />
+          <Route path={`/reset-password/email`} component={ResetPasswordMain} />
+          <Route exact path="/reset-password/email-link-sent" render={(props) => <EmailLinkSent {...props} />} />
+          <Route path="/reset-password/extra-security" render={(props) => <ExtraSecurity {...props} />} />
+          <Route path="/reset-password/phone-code-sent" render={(props) => <PhoneCodeSent {...props} />} />
+          <Route path="/reset-password/set-new-password" render={(props) => <SetNewPassword {...props} />} />
+          <Route exact path="/reset-password/success" render={(props) => <ResetPasswordSuccess {...props} />} />
+        </Switch>
       </div>
     );
   }
