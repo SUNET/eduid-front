@@ -58,7 +58,7 @@ function EmailLinkSent(): JSX.Element {
         <div className="timer">
           <p>
             <FormattedMessage
-              defaultMessage="If you didn’t receive the email? Check your junk email, or."
+              defaultMessage="If you didn’t receive the email? Check your junk email, or"
               description="Reset Password email link sent"
             />
             <a id={"resend-email"} onClick={sendLink}>

@@ -1,8 +1,4 @@
 {
-  "1xkSDz": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you didn’t receive the email? Check your junk email, or."
-  },
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
@@ -244,6 +240,10 @@
   },
   "delete.modal_info": {
     "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
+  },
+  "eMHJVJ": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you didn’t receive the email? Check your junk email, or"
   },
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
