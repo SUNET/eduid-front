@@ -24,8 +24,11 @@ function EmailLinkSent(): JSX.Element {
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    if (count > -1) {
-      countFiveMin("email");
+    if (count && typeof count === "string") {
+      const parsedCount = JSON.parse(count);
+      if (parsedCount > -1) {
+        countFiveMin("email");
+      }
     } else {
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     }
@@ -62,11 +65,10 @@ function EmailLinkSent(): JSX.Element {
               <FormattedMessage defaultMessage="resend link" description="Reset Password email link sent" />
             </a>
             <span id="timer-in" className="display-none">
-              <FormattedMessage defaultMessage="in" description="Reset Password email link sent" />
+              <FormattedMessage defaultMessage="in " description="Reset Password email link sent" />
             </span>
             <span id="count-down-time-email" />
           </p>
-          <h1>{email}</h1>
         </div>
       </div>
     </>
