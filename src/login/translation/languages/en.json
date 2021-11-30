@@ -1100,9 +1100,6 @@
   "resetpw.accept-password": {
     "string": "accept password"
   },
-  "resetpw.check-email-link": {
-    "string": "Please check your email <b>{email}</b> to continue. \n Link is valid for 2 hours."
-  },
   "resetpw.continue_reset_password": {
     "string": "Continue reset password"
   },
@@ -1171,12 +1168,6 @@
   },
   "resetpw.received-sms": {
     "string": "Already received sms? "
-  },
-  "resetpw.resend-link": {
-    "string": "If you didn’t receive the email? Check your junk email, \n or"
-  },
-  "resetpw.resend-link-button": {
-    "string": "resend link"
   },
   "resetpw.resend-timer-in": {
     "string": "in"

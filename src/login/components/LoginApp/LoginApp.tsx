@@ -18,7 +18,7 @@ class LoginApp extends React.Component {
         <Route path={`/login/:ref`} render={(props) => <Login {...props} />} />
         <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />
         <Route path={`/reset-password/email`} component={ResetPasswordMain} />
-        <Route exact path="/reset-password/email-link-sent" render={(props) => <EmailLinkSent {...props} />} />
+        <Route exact path="/reset-password/email-link-sent" component={EmailLinkSent} />
         <Route path="/reset-password/extra-security" render={(props) => <ExtraSecurity {...props} />} />
         <Route path="/reset-password/phone-code-sent" render={(props) => <PhoneCodeSent {...props} />} />
         <Route path="/reset-password/set-new-password" render={(props) => <SetNewPassword {...props} />} />

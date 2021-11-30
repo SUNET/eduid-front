@@ -122,9 +122,6 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
   // compose external link
   const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
   const idp = useAppSelector((state) => state.config.mfa_auth_idp);
-  const webauthn_challenge = useAppSelector(
-    (state) => state.resetPassword.extra_security && state.resetPassword.extra_security.tokens.webauthn_options
-  );
   const webauthn_assertion = useAppSelector((state) => state.resetPassword.webauthn_assertion);
   const currentPage = window.location.href; // return to current page on completion
   // ensure url has one slash at the end to be functional in the link
@@ -169,6 +166,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
   };
 
   const startTokenAssertion = () => {
+    const webauthn_challenge = extra_security && extra_security.tokens.webauthn_options;
     if (webauthn_challenge === undefined) {
       // HACK: skip func if no webauthn_challenge
       return undefined;

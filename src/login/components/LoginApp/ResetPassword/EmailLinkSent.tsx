@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import {
   getLocalStorage,
@@ -12,11 +9,13 @@ import {
 } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
-function EmailLinkSent(props) {
-  const dispatch = useDispatch();
+import { FormattedMessage } from "react-intl";
+
+function EmailLinkSent(): JSX.Element {
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
 
-  const sendLink = (e) => {
+  const sendLink = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email) {
       dispatch(resetPasswordSlice.actions.requestEmailLink(email));
@@ -25,9 +24,12 @@ function EmailLinkSent(props) {
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
-    if (count || count > -1) {
-      countFiveMin("email");
-    } else if (count <= -1) {
+    if (count && typeof count === "string") {
+      const parsedCount = JSON.parse(count);
+      if (parsedCount > -1) {
+        countFiveMin("email");
+      }
+    } else {
       clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
     }
   }, []);
@@ -39,20 +41,31 @@ function EmailLinkSent(props) {
 
   useEffect(() => {
     dispatch(eduidRMAllNotify());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <div id="reset-pass-display">
-        <p>{props.translate("resetpw.check-email-link")({ email: email })}</p>
+        <p>
+          <FormattedMessage
+            defaultMessage="Please check your email {email} to continue. Link is valid for 2 hours."
+            description="Reset Password email link sent"
+            values={{
+              email: <b>{email}</b>,
+            }}
+          />
+        </p>
         <div className="timer">
           <p>
-            {props.translate("resetpw.resend-link")}
+            <FormattedMessage
+              defaultMessage="If you didn’t receive the email? Check your junk email, or"
+              description="Reset Password email link sent"
+            />
             <a id={"resend-email"} onClick={sendLink}>
-              {props.translate("resetpw.resend-link-button")}
+              <FormattedMessage defaultMessage="resend link" description="Reset Password email link sent" />
             </a>
             <span id="timer-in" className="display-none">
-              {props.translate("resetpw.resend-timer-in")}{" "}
+              <FormattedMessage defaultMessage="in " description="Reset Password email link sent" />
             </span>
             <span id="count-down-time-email" />
           </p>
@@ -62,10 +75,4 @@ function EmailLinkSent(props) {
   );
 }
 
-EmailLinkSent.propTypes = {
-  translate: PropTypes.func,
-  sendLink: PropTypes.func,
-  invalid: PropTypes.bool,
-};
-
-export default InjectIntl(withRouter(EmailLinkSent));
+export default EmailLinkSent;
