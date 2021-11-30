@@ -35,7 +35,7 @@ const baseState: LoginRootState = {
 
 type LoginStoreType = typeof loginStore;
 
-const fakeStore = (fakeState: LoginRootState): LoginStoreType => ({
+const fakeStore = (fakeState: LoginRootState) => ({
   ...loginStore,
   dispatch: mock.fn() as unknown as LoginAppDispatch,
   getState: (): LoginRootState =>
@@ -46,81 +46,72 @@ const fakeStore = (fakeState: LoginRootState): LoginStoreType => ({
     }),
 });
 
-// return (optional) newState with baseState overriding it
-function getFakeState(newState = {}): LoginRootState {
-  return Object.assign(baseState, newState);
+function setupComponent(store: LoginStoreType) {
+  const history = createMemoryHistory();
+  const props = {
+    location: { pathname: "/login/e0367c25-3853-45a9-806" },
+  };
+  const wrapper = mount(
+    <ReduxIntlProvider store={store as LoginStoreType}>
+      <Router history={history}>
+        <Login {...props} />
+      </Router>
+    </ReduxIntlProvider>
+  );
+  return {
+    props,
+    wrapper,
+  };
 }
 
 describe("Login component renders", () => {
-  const fakeState = getFakeState();
-  function setupComponent() {
-    const history = createMemoryHistory();
-    const props = {
-      location: { pathname: "/login/e0367c25-3853-45a9-806" },
-    };
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <Login {...props} />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
+  let store: LoginStoreType;
+  let state: LoginRootState;
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore(baseState);
+    state = store.getState();
+  });
 
   it("renders 'null' or 'false' when not given a state.login.next_page", () => {
-    const { wrapper } = setupComponent();
+    const { wrapper } = setupComponent(store);
     expect(wrapper.isEmptyRender()).toEqual(true);
   });
 
   it("to not render 'null' or 'false' when given a state.login.next_page", () => {
-    const state = fakeState;
     state.login.next_page = "USERNAMEPASSWORD";
-    const { wrapper, props } = setupComponent();
+    const { wrapper, props } = setupComponent(store);
     props.location.pathname = "/login/password/e0367c25-3853-45a9-806";
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
   it("renders on an appropriate url", () => {
-    const { props } = setupComponent();
+    const { props } = setupComponent(store);
     expect(props.location.pathname).toContain("login");
     expect(props.location.pathname).not.toContain("reset");
   });
 });
 
 describe("Login renders the UsernamePw as expected", () => {
-  const fakeState = getFakeState();
-  function setupComponent() {
-    const history = createMemoryHistory();
-    const props = {
-      location: { pathname: "/login/e0367c25-3853-45a9-806" },
-    };
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <Login />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
+  let store: LoginStoreType;
+  let state: LoginRootState;
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore(baseState);
+    state = store.getState();
+  });
 
   it("page=USERNAMEPASSWORD renders UsernamePw", () => {
-    const state = { ...fakeState };
     state.login.next_page = "USERNAMEPASSWORD";
-    const { wrapper } = setupComponent();
+    const { wrapper } = setupComponent(store);
     const page = wrapper.find(UsernamePw);
     expect(page.exists()).toBe(true);
   });
 
   it("UsernamePw renders on an appropriate url", () => {
-    const { wrapper, props } = setupComponent();
+    const { wrapper, props } = setupComponent(store);
     props.location.pathname = "/login/password/e0367c25-3853-45a9-806";
     expect(props.location.pathname).toContain("password");
     const page = wrapper.find(UsernamePw);
@@ -131,36 +122,25 @@ describe("Login renders the UsernamePw as expected", () => {
 });
 
 describe("Login renders the TermsOfUse as expected", () => {
-  const fakeState = getFakeState();
-  function setupComponent() {
-    const history = createMemoryHistory();
-    const props = {
-      location: { pathname: "/login/e0367c25-3853-45a9-806" },
-    };
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <Login />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
+  let store: LoginStoreType;
+  let state: LoginRootState;
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore(baseState);
+    state = store.getState();
+  });
 
   it("page=TOU renders TermsOfUse", () => {
-    const state = { ...fakeState };
     state.login.next_page = "TOU";
     state.login.tou.version = "2016-v1";
-    const { wrapper } = setupComponent();
+    const { wrapper } = setupComponent(store);
     const page = wrapper.find(TermsOfUse);
     expect(page.exists()).toBe(true);
   });
 
   it("TermsOfUse renders on an appropriate url", () => {
-    const { wrapper, props } = setupComponent();
+    const { wrapper, props } = setupComponent(store);
     props.location.pathname = "/login/tou/e0367c25-3853-45a9-806";
     expect(props.location.pathname).toContain("tou");
     const page = wrapper.find(TermsOfUse);
@@ -171,35 +151,24 @@ describe("Login renders the TermsOfUse as expected", () => {
 });
 
 describe("Login renders the MultiFactorAuth as expected", () => {
-  const fakeState = getFakeState();
-  function setupComponent() {
-    const history = createMemoryHistory();
-    const props = {
-      location: { pathname: "/login/e0367c25-3853-45a9-806" },
-    };
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <Login />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
+  let store: LoginStoreType;
+  let state: LoginRootState;
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore(baseState);
+    state = store.getState();
+  });
 
   it("page=MFA renders MultiFactorAuth", () => {
-    const state = { ...fakeState };
     state.login.next_page = "MFA";
-    const { wrapper } = setupComponent();
+    const { wrapper } = setupComponent(store);
     const page = wrapper.find(MultiFactorAuth);
     expect(page.exists()).toBe(true);
   });
 
   it("MultiFactorAuth renders on an appropriate url", () => {
-    const { wrapper, props } = setupComponent();
+    const { wrapper, props } = setupComponent(store);
     props.location.pathname = "/login/mfa/e0367c25-3853-45a9-806";
     expect(props.location.pathname).toContain("mfa");
     const page = wrapper.find(MultiFactorAuth);
@@ -210,25 +179,18 @@ describe("Login renders the MultiFactorAuth as expected", () => {
 });
 
 describe("Login does not render any component if page is not one of the above", () => {
-  const fakeState = getFakeState();
-  function setupComponent() {
-    const history = createMemoryHistory();
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <Login />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      wrapper,
-    };
-  }
+  let store: LoginStoreType;
+  let state: LoginRootState;
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore(baseState);
+    state = store.getState();
+  });
 
   it("NOSUCHPAGE does not render any of the components", () => {
-    const state = { ...fakeState };
     state.login.next_page = "NOSUCHPAGE";
-    const { wrapper } = setupComponent();
+    const { wrapper } = setupComponent(store);
     const page = wrapper.find(UsernamePw);
     expect(page.exists()).toBe(false);
   });
