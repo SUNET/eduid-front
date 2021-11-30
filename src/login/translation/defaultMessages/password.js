@@ -161,20 +161,6 @@ export const resetPassword = {
       defaultMessage={`Reset password link already sent please try again later`}
     />
   ),
-  "resetpw.check-email-link": (values) => (
-    <FormattedMessage
-      id="resetpw.check-email-link"
-      defaultMessage={`Please check your email <b>{email}</b> to continue. \n          Link is valid for 2 hours.`}
-      values={values}
-    />
-  ),
-  "resetpw.resend-link": (
-    <FormattedMessage
-      id="resetpw.resend-link"
-      defaultMessage={`If you didn’t receive the email? Check your junk email, \n or`}
-    />
-  ),
-  "resetpw.resend-link-button": <FormattedMessage id="resetpw.resend-link-button" defaultMessage={`resend link`} />,
   "resetpw.resend-timer-in": <FormattedMessage id="resetpw.resend-timer-in" defaultMessage={`in`} />,
   "resetpw.extra-security_heading": (
     <FormattedMessage id="resetpw.extra-security_heading" defaultMessage={`Select an extra security option`} />

@@ -1100,9 +1100,6 @@
   "resetpw.accept-password": {
     "string": "acceptera lösenord"
   },
-  "resetpw.check-email-link": {
-    "string": "Kontrollera din e-postadress <b>{email}</b> för att fortsätta. \n Länken är giltig i två timmar."
-  },
   "resetpw.continue_reset_password": {
     "string": "Forsätt återställ lösenordet"
   },
@@ -1171,12 +1168,6 @@
   },
   "resetpw.received-sms": {
     "string": "Redan fått sms? "
-  },
-  "resetpw.resend-link": {
-    "string": "Om du inte fick e-postmeddelandet? Kontrollera skräppost, \n eller"
-  },
-  "resetpw.resend-link-button": {
-    "string": "skicka länk igen"
   },
   "resetpw.resend-timer-in": {
     "string": "om"

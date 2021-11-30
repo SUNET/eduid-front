@@ -23,6 +23,10 @@
   "Missing error message": {
     "string": "Missing error message"
   },
+  "NXRtQx": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Please check your email {email} to continue. Link is valid for 2 hours."
+  },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
   },
@@ -38,6 +42,10 @@
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
+  },
+  "UFBYoo": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "resend link"
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -232,6 +240,10 @@
   },
   "delete.modal_info": {
     "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
+  },
+  "eMHJVJ": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you didn’t receive the email? Check your junk email, or"
   },
   "eidas.authn_context_mismatch": {
     "string": "Wrong authentication context received"
@@ -756,6 +768,10 @@
   "nins.input_help_text": {
     "string": "National identity number with 12 digits"
   },
+  "nins.input_placeholder": {
+    "developer_comment": "Swedish NIN template",
+    "string": "yyyymmddnnnn"
+  },
   "nins.invalid_nin": {
     "string": "Invalid national id number"
   },
@@ -1100,9 +1116,6 @@
   "resetpw.accept-password": {
     "string": "accept password"
   },
-  "resetpw.check-email-link": {
-    "string": "Please check your email <b>{email}</b> to continue. Link is valid for 2 hours."
-  },
   "resetpw.continue_reset_password": {
     "string": "Continue reset password"
   },
@@ -1172,12 +1185,6 @@
   "resetpw.received-sms": {
     "string": "Already received sms?"
   },
-  "resetpw.resend-link": {
-    "string": "If you didn’t receive the email? Check your junk email, or"
-  },
-  "resetpw.resend-link-button": {
-    "string": "resend link"
-  },
   "resetpw.resend-timer-in": {
     "string": "in"
   },
@@ -1223,10 +1230,6 @@
   "resetpw.without_extra_security_heading": {
     "string": "<b>Continue without extra security option </b>"
   },
-  "rhrt8v": {
-    "developer_comment": "Swedish NIN template",
-    "string": "yyyymmddnnnn"
-  },
   "runtime_error.generic.description": {
     "string": "The issue has been reported to the team."
   },
@@ -1244,6 +1247,10 @@
   },
   "runtime_error.generic.title": {
     "string": "There was a problem displaying the page."
+  },
+  "s3zRsg": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "in"
   },
   "security.add_u2f_token": {
     "string": "Add U2F token"
