@@ -26,6 +26,10 @@ export function* postRefLoginSaga() {
     ref: state.login.ref,
     csrf_token: state.config.csrf_token,
   };
+  if (state.login.ref === undefined) {
+    // workaround for Login and ResetPassword having to share sagas reacting to GET_JSCONFIG_LOGIN_CONFIG_SUCCESS
+    return undefined;
+  }
   try {
     const response: PayloadAction<NextResponse, string, never, boolean> = yield call(postRequest, url, dataToSend);
     yield put(putCsrfToken(response));
