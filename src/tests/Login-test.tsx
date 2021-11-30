@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import expect from "expect";
 import { mount } from "enzyme";
@@ -10,11 +11,9 @@ import Login from "../login/components/LoginApp/Login/Login";
 import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
 import TermsOfUse from "../login/components/LoginApp/Login/TermsOfUse";
 import MultiFactorAuth from "../login/components/LoginApp/Login/MultiFactorAuth";
+import loginStore, { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
 
-const baseState = {
-  app: {
-    loading_data: null,
-  },
+const baseState: LoginRootState = {
   config: {
     next_url: "http://localhost/next",
     mfa_auth_idp: "https//swedenconnect.idp/",
@@ -23,30 +22,32 @@ const baseState = {
   },
   login: {
     ref: "e0367c25-3853-45a9-806",
-    next_page: null,
     tou: {},
     mfa: {},
   },
-  form: [],
-  intl: {
-    locale: "en",
-  },
-  notifications: {
-    errors: [],
-  },
+  app: { is_loaded: true, loading_data: false, request_in_progress: false },
+  notifications: undefined as any,
+  router: undefined as any,
+  form: undefined as any,
+  intl: { locale: "en", messages: {} },
+  resetPassword: undefined as any,
 };
 
-const fakeStore = (fakeState) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...fakeState }),
+type LoginStoreType = typeof loginStore;
+
+const fakeStore = (fakeState: LoginRootState): LoginStoreType => ({
+  ...loginStore,
+  dispatch: mock.fn() as unknown as LoginAppDispatch,
+  getState: (): LoginRootState =>
+    // return a copy of the state in loginStore
+    ({
+      ...loginStore.getState(),
+      ...fakeState,
+    }),
 });
 
-function getFakeState(newState) {
-  if (newState === undefined) {
-    newState = {};
-  }
+// return (optional) newState with baseState overriding it
+function getFakeState(newState = {}): LoginRootState {
   return Object.assign(baseState, newState);
 }
 
@@ -76,7 +77,7 @@ describe("Login component renders", () => {
   });
 
   it("to not render 'null' or 'false' when given a state.login.next_page", () => {
-    const state = { ...fakeState };
+    const state = fakeState;
     state.login.next_page = "USERNAMEPASSWORD";
     const { wrapper, props } = setupComponent();
     props.location.pathname = "/login/password/e0367c25-3853-45a9-806";
@@ -224,9 +225,9 @@ describe("Login does not render any component if page is not one of the above", 
     };
   }
 
-  it(" MOCKPAGE does not render any of the componets", () => {
+  it("NOSUCHPAGE does not render any of the components", () => {
     const state = { ...fakeState };
-    state.login.next_page = "MOCKPAGE";
+    state.login.next_page = "NOSUCHPAGE";
     const { wrapper } = setupComponent();
     const page = wrapper.find(UsernamePw);
     expect(page.exists()).toBe(false);
