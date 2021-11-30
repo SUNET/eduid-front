@@ -30,18 +30,13 @@ const Login = (props: LoginProps): JSX.Element => {
   }
 
   useEffect(() => {
-    /* Changing URL is apparently what triggers browsers password managers.
-     * For the rest of the functions, I guess it serves some small troubleshooting purpose
-     * to be able to see particularly the ref in the URL of screenshots from users...
+    /* Changing URL is apparently what triggers browsers password managers, so we
+     * change to/from 'login/password' when that module is used.
      */
     if (next_page === "USERNAMEPASSWORD") {
       history.push(`/login/password/${ref}`);
-    } else if (next_page === "TOU") {
-      history.push(`/login/tou/${ref}`);
-    } else if (next_page === "MFA") {
-      history.push(`/login/mfa/${ref}`);
-    } else if (next_page === "FINISHED") {
-      history.push(`/login/finished/${ref}`);
+    } else {
+      history.push(`/login/${ref}`);
     }
   }, [next_page]);
 

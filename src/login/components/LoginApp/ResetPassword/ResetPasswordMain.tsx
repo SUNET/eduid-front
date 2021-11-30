@@ -20,8 +20,7 @@ interface ResetPasswordMainProps {
 
 function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const url = document.location.href;
-  const loginRef = url.split("/email").reverse()[0];
+  const loginRef = useAppSelector((state) => state.login.ref);
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
   const errors = useAppSelector((state) => state.notifications.errors);
 
@@ -44,7 +43,7 @@ function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
       <p className="heading">{translate("resetpw.heading-add-email")}</p>
       <EmailForm {...props} request_in_progress={request_in_progress} />
       <div className={loginRef ? `return-login-link` : `return-login-link disabled`}>
-        <a id="return-login" href={`/login/password/${loginRef}`}>
+        <a id="return-login" href={`/login/${loginRef}`}>
           {translate("resetpw.return-login")}
         </a>
       </div>
