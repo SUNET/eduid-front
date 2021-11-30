@@ -26,6 +26,9 @@ const baseState = {
     locale: "en",
     messages: messages,
   },
+  login: {
+    ref: undefined,
+  },
 };
 
 const fakeStore = (fakeState) => ({
