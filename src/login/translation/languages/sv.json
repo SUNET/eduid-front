@@ -1104,9 +1104,6 @@
   "resetpw.accept-password": {
     "string": "acceptera lösenord"
   },
-  "resetpw.check-email-link": {
-    "string": "Kontrollera din e-postadress {email} för att fortsätta. \n Länken är giltig i två timmar."
-  },
   "resetpw.continue_reset_password": {
     "string": "Forsätt återställ lösenordet"
   },

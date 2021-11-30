@@ -1104,9 +1104,6 @@
   "resetpw.accept-password": {
     "string": "accept password"
   },
-  "resetpw.check-email-link": {
-    "string": "Please check your email {email} to continue. \n Link is valid for 2 hours."
-  },
   "resetpw.continue_reset_password": {
     "string": "Continue reset password"
   },
