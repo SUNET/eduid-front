@@ -22,7 +22,7 @@ const baseState: LoginRootState = {
   },
   login: {
     ref: "e0367c25-3853-45a9-806",
-    tou: {},
+    tou: { available_versions: ["1999-v1"] },
     mfa: {},
   },
   app: { is_loaded: true, loading_data: false, request_in_progress: false },
@@ -52,7 +52,7 @@ function setupComponent(store: LoginStoreType) {
     location: { pathname: "/login/e0367c25-3853-45a9-806" },
   };
   const wrapper = mount(
-    <ReduxIntlProvider store={store as LoginStoreType}>
+    <ReduxIntlProvider store={store}>
       <Router history={history}>
         <Login {...props} />
       </Router>
@@ -140,9 +140,9 @@ describe("Login renders the TermsOfUse as expected", () => {
   });
 
   it("TermsOfUse renders on an appropriate url", () => {
+    state.login.next_page = "TOU";
+    state.login.tou.version = "2016-v1";
     const { wrapper, props } = setupComponent(store);
-    props.location.pathname = "/login/tou/e0367c25-3853-45a9-806";
-    expect(props.location.pathname).toContain("tou");
     const page = wrapper.find(TermsOfUse);
     expect(page.exists()).toBe(true);
     expect(props.location.pathname).not.toContain("password");
