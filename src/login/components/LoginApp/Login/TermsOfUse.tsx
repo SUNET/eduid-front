@@ -3,18 +3,30 @@ import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { translate } from "login/translation";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
+import { FormattedMessage } from "react-intl";
 
-const TermsOfUseText = ({ version }: { version?: string }) => (
-  <div className="tou-text">
-    <p className="heading" tabIndex={0}>
-      {translate("login.tou.legal-title")}
-    </p>
-    {version !== null ? translate(`login.tou.version.${version}`) : null}
-    <p tabIndex={0} className="heading">
-      {translate("login.tou.legal-warning")}
-    </p>
-  </div>
-);
+const TermsOfUseText = ({ version }: { version?: string }) => {
+  // const ToU2016v1 = () => {
+  //   return <div>...</div>;
+  // };
+  // {version === "2016-v1" ? <ToU2016v1 /> : undefined}
+
+  return (
+    <div className="tou-text">
+      <p className="heading" tabIndex={0}>
+        <FormattedMessage defaultMessage="General rules for eduID users:" description="Terms of use (common header)" />
+      </p>
+      {version !== null ? translate(`login.tou.version.${version}`) : null}
+      <p tabIndex={0} className="heading">
+        <FormattedMessage
+          defaultMessage={`Any person found violating or suspected of violating these rules can be disable
+          from eduID.se for investigation. Furthermore, legal action can be taken.`}
+          description="Terms of use (common footer)"
+        />
+      </p>
+    </div>
+  );
+};
 
 const AcceptButton = ({ version }: { version?: string }) => {
   const dispatch = useAppDispatch();
@@ -27,7 +39,7 @@ const AcceptButton = ({ version }: { version?: string }) => {
       aria-disabled={!version}
       disabled={!version}
     >
-      {translate("login.tou.button")}
+      <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
     </ButtonPrimary>
   );
 };
@@ -44,8 +56,15 @@ const TermsOfUse = (): JSX.Element => {
   }, []);
   return (
     <div className="tou">
-      <h2 className="heading">{translate("login.tou.h2-heading")}</h2>
-      <p tabIndex={0}>{translate("login.tou.paragraph")}</p>
+      <h2 className="heading">
+        <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
+      </h2>
+      <p tabIndex={0}>
+        <FormattedMessage
+          defaultMessage="We need an updated acceptance from you of the eduID terms of use."
+          description="Terms of use (banner text)"
+        />
+      </p>
       <TermsOfUseText version={version} />
       <AcceptButton version={version} />
     </div>

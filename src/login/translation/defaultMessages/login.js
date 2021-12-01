@@ -61,16 +61,6 @@ export const login = {
 
 export const tou = {
   // --- TOU --- //
-  "login.tou.h2-heading": <FormattedMessage id="login.tou.h2-heading" defaultMessage={`Log in: Terms of use`} />,
-  "login.tou.paragraph": (
-    <FormattedMessage
-      id="login.tou.paragraph"
-      defaultMessage={`We need an updated acceptance from you of the eduID terms of use.`}
-    />
-  ),
-  "login.tou.legal-title": (
-    <FormattedMessage id="login.tou.legal-title" defaultMessage={`General rules for eduID users:`} />
-  ),
   // --- TOU: 2016-V1--- //
   "login.tou.version.2016-v1": (
     <FormattedMessage
@@ -152,17 +142,10 @@ export const tou = {
       </li>
       <li>
         <p>
-          And still ensure that we serve the correct version a specific users need to acccept,
+          And still ensure that we serve the correct version a specific users need to accept,
         </p>
       </li>
     </ul>'`}
     />
   ),
-  "login.tou.legal-warning": (
-    <FormattedMessage
-      id="login.tou.legal-warning"
-      defaultMessage={`Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken.`}
-    />
-  ),
-  "login.tou.button": <FormattedMessage id="login.tou.button" defaultMessage={`I accept`} />,
 };
