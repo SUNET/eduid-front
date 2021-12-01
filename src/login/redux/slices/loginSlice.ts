@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ToUs } from "login/components/LoginApp/Login/TermsOfUse";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
 import { NextResponse, SAMLParameters } from "../sagas/login/postRefLoginSaga";
@@ -15,7 +16,7 @@ interface LoginState {
   };
   saml_parameters?: SAMLParameters;
   tou: {
-    available_versions?: string[];
+    available_versions: string[];
     version?: string;
   };
 }
@@ -23,7 +24,7 @@ interface LoginState {
 // Define the initial state using that type
 const initialState: LoginState = {
   mfa: {},
-  tou: {},
+  tou: { available_versions: Object.keys(ToUs) },
 };
 
 export const loginSlice = createSlice({
@@ -41,10 +42,6 @@ export const loginSlice = createSlice({
       state.next_page = action.payload.action;
       state.post_to = action.payload.target;
       state.saml_parameters = samlParameters;
-    },
-    addTouVersions: (state, action: PayloadAction<string[]>) => {
-      // During app initialisation, we figure out what versions of the TOU we have. Store that in the state.
-      state.tou.available_versions = action.payload;
     },
     postIdpTouSuccess: (state, action: PayloadAction<{ version: string }>) => {
       // Process a successful response from the /tou endpoint. We posted our available TOU versions to the
