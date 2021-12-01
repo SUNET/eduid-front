@@ -23,6 +23,10 @@
   "Missing error message": {
     "string": "Felmeddelande saknas"
   },
+  "NXRtQx": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "En länk har skickats till din e-postadress  {email}. Länken är giltig i två timmar."
+  },
   "No connection to authorization endpoint": {
     "string": "Anslutningen till auktoriseringsservern misslyckades. Var god försök senare"
   },
@@ -38,6 +42,10 @@
   },
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
+  },
+  "UFBYoo": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "skicka länken igen"
   },
   "accountId.accountId_display_title": {
     "string": "Unikt ID"
@@ -232,6 +240,10 @@
   },
   "delete.modal_info": {
     "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om du väljer att ta bort ditt eduID kommer du att behöva logga in igen en sista gång."
+  },
+  "eMHJVJ": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Har du inte fått e-postmeddelandet? Kontrollera din skräppost, eller"
   },
   "eidas.authn_context_mismatch": {
     "string": "Mottog fel representation av tillitsnivå"
@@ -756,6 +768,10 @@
   "nins.input_help_text": {
     "string": "Personnummer med 12 siffror"
   },
+  "nins.input_placeholder": {
+    "developer_comment": "Swedish NIN template",
+    "string": "ååååmmddnnnn"
+  },
   "nins.invalid_nin": {
     "string": "Ogiltigt personnummer"
   },
@@ -1214,10 +1230,6 @@
   "resetpw.without_extra_security_heading": {
     "string": "<b>Forsätt utan extra säkerhetsalternativ </b>"
   },
-  "rhrt8v": {
-    "developer_comment": "Swedish NIN template",
-    "string": "ååååmmddnnnn"
-  },
   "runtime_error.generic.description": {
     "string": "Problemet har rapporterats till teamet."
   },
@@ -1235,6 +1247,10 @@
   },
   "runtime_error.generic.title": {
     "string": "Något gick fel när sidan laddades."
+  },
+  "s3zRsg": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "om"
   },
   "security.add_u2f_token": {
     "string": "Lägg till säkerhetsnyckel"
