@@ -139,14 +139,29 @@
       "<rootDir>/node_modules"
     ],
     "transform": {
-      "^.+\\.[jt]sx?$": "ts-jest"
+      "^.+\\.[tj]sx?$": "ts-jest"
     },
     "transformIgnorePatterns": [
       "/node_modules/(?!spin.js|intl-messageformat|@formatjs/icu-messageformat-parser).+\\.js$"
     ],
     "setupFiles": [
       "<rootDir>/src/setupTests.js"
-    ]
+    ],
+    "globals": {
+      "ts-jest": {
+        "astTransformers": {
+          "before": [
+            {
+              "path": "@formatjs/ts-transformer/ts-jest-integration",
+              "options": {
+                "overrideIdFn": "[sha512:contenthash:base64:6]",
+                "ast": true
+              }
+            }
+          ]
+        }
+      }
+    }
   },
   "moduleDirectories": [
     "node_modules",

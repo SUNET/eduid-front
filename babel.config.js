@@ -17,6 +17,8 @@ module.exports = function (api) {
       {
         messagesDir: "./src/login/translation",
         enforceDescriptions: false,
+        idInterpolationPattern: "[sha512:contenthash:base64:6]",
+        ast: true,
       },
     ],
     "@babel/plugin-transform-flow-strip-types",
