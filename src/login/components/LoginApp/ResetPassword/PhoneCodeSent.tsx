@@ -22,6 +22,12 @@ interface ValuesProps {
   [key: string]: string;
 }
 
+export interface PhoneCodeFormProps {
+  invalid: boolean;
+  /* eslint-disable @typescript-eslint/no-explicit-any*/
+  handleSubmit: any;
+}
+
 const validate = (values: ValuesProps) => {
   const value = values.phone;
   const errors = { phone: "" };
@@ -36,8 +42,9 @@ const validate = (values: ValuesProps) => {
   }
 };
 
-let PhoneCodeForm = (props) => (
-  <Form id="phone-code-form" role="form" onSubmit={props.savePhoneCode}>
+const PhoneCodeForm = (props: PhoneCodeFormProps): JSX.Element => {
+  const { handleSubmit } = props;
+  <Form id="phone-code-form" role="form" onSubmit={handleSubmit(props.savePhoneCode)}>
     <Field
       component={CustomInput}
       componentClass="input"
@@ -53,22 +60,22 @@ let PhoneCodeForm = (props) => (
     >
       {props.translate("cm.ok")}
     </EduIDButton>
-  </Form>
-);
+  </Form>;
+};
 
-PhoneCodeForm = reduxForm({
+const DecoratedPhoneForm = reduxForm({
   form: "phone-code-form",
   validate,
 })(PhoneCodeForm);
 
-PhoneCodeForm = connect(() => ({
+connect(() => ({
   enableReinitialize: true,
   initialValues: {
     phone: "",
   },
   touchOnChange: true,
   destroyOnUnmount: false,
-}))(PhoneCodeForm);
+}))(DecoratedPhoneForm);
 
 function PhoneCodeSent(props) {
   const phone = useSelector((state) => state.resetPassword.phone);
@@ -79,12 +86,11 @@ function PhoneCodeSent(props) {
 
   useEffect(() => {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
-    if (count) {
-      if (count > -1 && Object.keys(phone).length) {
+    if (count && typeof count === "string") {
+      const parsedCount = JSON.parse(count);
+      if (parsedCount > -1 && Object.keys(phone).length) {
         countFiveMin("phone");
-      } else if (count <= -1) {
-        clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
-      }
+      } else clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     }
   }, []);
 
