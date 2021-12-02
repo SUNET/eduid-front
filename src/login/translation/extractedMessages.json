@@ -1,4 +1,8 @@
 {
+  "9UKtfS": {
+    "developer_comment": "Reset Password phone code sent(Resend code link button)",
+    "string": "Send a new confirmation code"
+  },
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
@@ -42,6 +46,10 @@
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
+  },
+  "TmkRXi": {
+    "developer_comment": "Reset Password phone code sent (OK button)",
+    "string": "OK"
   },
   "UFBYoo": {
     "developer_comment": "Reset Password email link sent",
@@ -498,6 +506,14 @@
   },
   "header.signup": {
     "string": "SIGN UP"
+  },
+  "irC/sN": {
+    "developer_comment": "Reset Password phone code sent",
+    "string": "Enter the code sent to {phone}"
+  },
+  "j0jEk2": {
+    "developer_comment": "Reset Password phone code sent (Input label)",
+    "string": "Confirmation code"
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
@@ -1549,5 +1565,9 @@
   },
   "verify-identity.vetting_post_tagline": {
     "string": "For you registered at your current address"
+  },
+  "wUi3zr": {
+    "developer_comment": "Reset Password phone code sent",
+    "string": "in"
   }
 }
