@@ -1169,9 +1169,6 @@
   "resetpw.received-sms": {
     "string": "Already received sms? "
   },
-  "resetpw.resend-timer-in": {
-    "string": "in"
-  },
   "resetpw.reset-pw-initialized": {
     "string": "Reset password link has been sent to your email."
   },
