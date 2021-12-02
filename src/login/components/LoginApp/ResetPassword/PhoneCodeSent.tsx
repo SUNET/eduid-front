@@ -18,9 +18,13 @@ import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { useHistory } from "react-router-dom";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
-const validate = (values) => {
+interface ValuesProps {
+  [key: string]: string;
+}
+
+const validate = (values: ValuesProps) => {
   const value = values.phone;
-  let errors = {};
+  const errors = { phone: "" };
   if (!value || !value.trim()) {
     errors.phone = "required";
     return errors;
