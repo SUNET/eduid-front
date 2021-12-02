@@ -11,10 +11,10 @@ export const ToUs: { [key: string]: () => ReactElement } = {
   "1999-v1": () => {
     return (
       <React.Fragment>
+        <p>
+          <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+        </p>
         <ul tabIndex={0}>
-          <p>
-            <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
-          </p>
           <li>
             <p>This a test version of terms of use version 1 from 2021,</p>
           </li>
@@ -33,10 +33,10 @@ export const ToUs: { [key: string]: () => ReactElement } = {
 
     return (
       <React.Fragment>
+        <p>
+          <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+        </p>
         <ul tabIndex={0}>
-          <p>
-            <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
-          </p>
           {intl
             .formatMessage({
               id: "ToU.2016-v1.first_paragraph",
@@ -50,11 +50,7 @@ export const ToUs: { [key: string]: () => ReactElement } = {
             })
             .split("|")
             .map((list, index) => {
-              return (
-                <p>
-                  <li key={index}>{list}</li>
-                </p>
-              );
+              return <li key={index}>{list}</li>;
             })}
         </ul>
         <ul tabIndex={0}>
@@ -94,11 +90,7 @@ export const ToUs: { [key: string]: () => ReactElement } = {
               description="ToU 2016-v1 second paragraph"
             />,
           ].map((list, index) => {
-            return (
-              <p>
-                <li key={index}>{list}</li>
-              </p>
-            );
+            return <li key={index}>{list}</li>;
           })}
         </ul>
       </React.Fragment>
