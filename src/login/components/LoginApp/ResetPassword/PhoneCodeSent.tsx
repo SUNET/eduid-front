@@ -44,23 +44,36 @@ const validate = (values: ValuesProps) => {
 
 const PhoneCodeForm = (props: PhoneCodeFormProps): JSX.Element => {
   const { handleSubmit } = props;
-  <Form id="phone-code-form" role="form" onSubmit={handleSubmit(props.savePhoneCode)}>
-    <Field
-      component={CustomInput}
-      componentClass="input"
-      type="text"
-      label={props.translate("cm.enter_code")}
-      name="phone"
-    />
-    <EduIDButton
-      className="settings-button"
-      id="save-phone-button"
-      disabled={props.invalid}
-      onClick={props.handlePhoneCode}
-    >
-      {props.translate("cm.ok")}
-    </EduIDButton>
-  </Form>;
+
+  const handlePhoneCode = (e) => {
+    e.preventDefault();
+    const phoneCode = document.querySelector("input#phone").value;
+    if (phoneCode) {
+      history.push(`/reset-password/set-new-password/${emailCode}`);
+      dispatch(resetPasswordSlice.actions.savePhoneCode(phoneCode));
+      dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
+      dispatch(eduidRMAllNotify());
+    }
+  };
+  return (
+    <Form id="phone-code-form" role="form" onSubmit={handleSubmit(props.savePhoneCode)}>
+      <Field
+        component={CustomInput}
+        componentClass="input"
+        type="text"
+        label={props.translate("cm.enter_code")}
+        name="phone"
+      />
+      <EduIDButton
+        className="settings-button"
+        id="save-phone-button"
+        disabled={props.invalid}
+        onClick={handlePhoneCode}
+      >
+        {props.translate("cm.ok")}
+      </EduIDButton>
+    </Form>
+  );
 };
 
 const DecoratedPhoneForm = reduxForm({
@@ -105,18 +118,6 @@ function PhoneCodeSent(props) {
     }
   };
 
-  const handlePhoneCode = (e) => {
-    e.preventDefault();
-    const phoneCode = document.querySelector("input#phone").value;
-
-    if (phoneCode) {
-      history.push(`/reset-password/set-new-password/${emailCode}`);
-      dispatch(resetPasswordSlice.actions.savePhoneCode(phoneCode));
-      dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
-      dispatch(eduidRMAllNotify());
-    }
-  };
-
   return (
     <>
       <div id="reset-pass-display">
@@ -125,7 +126,7 @@ function PhoneCodeSent(props) {
             phone: phone.number && phone.number.replace(/^.{10}/g, "**********"),
           })}
         </p>
-        <PhoneCodeForm handlePhoneCode={handlePhoneCode} phone={phone} {...props} />
+        <PhoneCodeForm phone={phone} {...props} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
             {props.translate("cm.resend_code")}
