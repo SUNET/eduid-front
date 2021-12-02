@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { withRouter } from "react-router-dom";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import {
   clearCountdown,
@@ -13,10 +11,12 @@ import EduIDButton from "../../../../components/EduIDButton";
 import Form from "reactstrap/lib/Form";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { useHistory } from "react-router-dom";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { useAppDispatch } from "../../../app_init/hooks";
+import { translate } from "../../../../login/translation";
 
 interface ValuesProps {
   [key: string]: string;
@@ -26,6 +26,7 @@ export interface PhoneCodeFormProps {
   invalid: boolean;
   /* eslint-disable @typescript-eslint/no-explicit-any*/
   handleSubmit: any;
+  emailCode: string;
 }
 
 const validate = (values: ValuesProps) => {
@@ -44,24 +45,25 @@ const validate = (values: ValuesProps) => {
 
 const PhoneCodeForm = (props: PhoneCodeFormProps): JSX.Element => {
   const { handleSubmit } = props;
+  const history = useHistory();
+  const dispatch = useAppDispatch();
 
-  const handlePhoneCode = (e) => {
-    e.preventDefault();
-    const phoneCode = document.querySelector("input#phone").value;
-    if (phoneCode) {
-      history.push(`/reset-password/set-new-password/${emailCode}`);
-      dispatch(resetPasswordSlice.actions.savePhoneCode(phoneCode));
+  const handlePhoneCode = (values: ValuesProps) => {
+    const phone = values.phone;
+    if (phone) {
+      history.push(`/reset-password/set-new-password/${props.emailCode}`);
+      dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
       dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
       dispatch(eduidRMAllNotify());
     }
   };
   return (
-    <Form id="phone-code-form" role="form" onSubmit={handleSubmit(props.savePhoneCode)}>
+    <Form id="phone-code-form" role="form" onSubmit={handleSubmit(handlePhoneCode)}>
       <Field
         component={CustomInput}
         componentClass="input"
         type="text"
-        label={props.translate("cm.enter_code")}
+        label={translate("cm.enter_code")}
         name="phone"
       />
       <EduIDButton
@@ -70,7 +72,7 @@ const PhoneCodeForm = (props: PhoneCodeFormProps): JSX.Element => {
         disabled={props.invalid}
         onClick={handlePhoneCode}
       >
-        {props.translate("cm.ok")}
+        {translate("cm.ok")}
       </EduIDButton>
     </Form>
   );
@@ -92,8 +94,7 @@ connect(() => ({
 
 function PhoneCodeSent(props) {
   const phone = useSelector((state) => state.resetPassword.phone);
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const dispatch = useAppDispatch();
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
 
@@ -122,17 +123,17 @@ function PhoneCodeSent(props) {
     <>
       <div id="reset-pass-display">
         <p>
-          {props.translate("mobile.confirm_title")({
+          {translate("mobile.confirm_title")({
             phone: phone.number && phone.number.replace(/^.{10}/g, "**********"),
           })}
         </p>
-        <PhoneCodeForm phone={phone} {...props} />
+        <PhoneCodeForm emailCode={emailCode} phone={phone} {...props} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
-            {props.translate("cm.resend_code")}
+            {translate("cm.resend_code")}
           </a>
           <span id="timer-in" className="display-none">
-            {props.translate("resetpw.resend-timer-in")}{" "}
+            {translate("resetpw.resend-timer-in")}{" "}
           </span>
           <span id="count-down-time-phone" />
         </div>
@@ -146,4 +147,4 @@ PhoneCodeSent.propTypes = {
   invalid: PropTypes.bool,
 };
 
-export default InjectIntl(withRouter(PhoneCodeSent));
+export default PhoneCodeSent;
