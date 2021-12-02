@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import {
   clearCountdown,
   countFiveMin,
@@ -17,13 +16,11 @@ import { useHistory } from "react-router-dom";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { FormattedMessage } from "react-intl";
-interface PhoneCodeFormData {
-  phone?: string;
-}
-interface ValuesProps {
-  [key: string]: string;
-}
+import { PhoneInterface } from "./ExtraSecurity";
 
+export interface PhoneCodeFormData {
+  phone: string;
+}
 export interface PhoneCodeProps {
   invalid: boolean;
   /* eslint-disable @typescript-eslint/no-explicit-any*/
@@ -31,7 +28,7 @@ export interface PhoneCodeProps {
   emailCode: string;
 }
 
-const validate = (values: ValuesProps) => {
+const validate = (values: { phone: string }) => {
   const value = values.phone;
   const errors = { phone: "" };
   if (!value || !value.trim()) {
@@ -43,6 +40,7 @@ const validate = (values: ValuesProps) => {
     errors.phone = "confirmation.code_invalid_format";
     return errors;
   }
+  return {};
 };
 
 const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
@@ -50,7 +48,7 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
   const history = useHistory();
   const dispatch = useAppDispatch();
 
-  const handlePhoneCode = (values: ValuesProps) => {
+  const handlePhoneCode = (values: { phone: string }) => {
     const phone = values.phone;
     if (phone) {
       history.push(`/reset-password/set-new-password/${props.emailCode}`);
@@ -75,12 +73,7 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
         }
         name="phone"
       />
-      <EduIDButton
-        className="settings-button"
-        id="save-phone-button"
-        disabled={props.invalid}
-        onClick={handlePhoneCode}
-      >
+      <EduIDButton className="settings-button" id="save-phone-button" disabled={props.invalid}>
         <FormattedMessage defaultMessage="OK" description="Reset Password phone code sent (OK button)" />
         {/* {translate("cm.ok")} */}
       </EduIDButton>
@@ -88,7 +81,7 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
   );
 };
 
-const DecoratedPhoneForm = reduxForm<PhoneCodeFormData, PhoneCodeProps>({
+export const DecoratedPhoneForm = reduxForm<PhoneCodeFormData, PhoneCodeProps>({
   form: "phone-code-form",
   validate,
 })(PhoneCodeForm);
@@ -125,7 +118,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
   const resendPhoneCode = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (phone) {
-      dispatch(resetPasswordSlice.actions.requestPhoneCode(phone));
+      dispatch(resetPasswordSlice.actions.requestPhoneCode(phone as PhoneInterface));
     }
   };
 
@@ -141,7 +134,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
             }}
           />
         </p>
-        <PhoneCodeForm emailCode={emailCode} phone={phone} {...props} />
+        <DecoratedPhoneForm {...props} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
             <FormattedMessage
@@ -158,10 +151,5 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
     </>
   );
 }
-
-PhoneCodeSent.propTypes = {
-  translate: PropTypes.func.isRequired,
-  invalid: PropTypes.bool,
-};
 
 export default PhoneCodeSent;
