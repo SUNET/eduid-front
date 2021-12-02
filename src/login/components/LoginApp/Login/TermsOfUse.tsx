@@ -2,100 +2,93 @@ import React, { ReactElement, useEffect } from "react";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
-// TODO: If we decide to not use the intl.formatMessage approach, this object doesn't need to
-//       hold functional components anymore (in order to use the useIntl() hook) and can be
-//       simplified to just { [key: string]: ReactElement }
-export const ToUs: { [key: string]: () => ReactElement } = {
-  "1999-v1": () => {
-    return (
-      <React.Fragment>
-        <p>
-          <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
-        </p>
-        <ul tabIndex={0}>
-          <li>
-            <p>This a test version of terms of use version 1 from 2021,</p>
-          </li>
-          <li>
-            <p>The versioning allows us to update terms if needed and keep parallel versions at the same time,</p>
-          </li>
-          <li>
-            <p>And still ensure that we serve the correct version a specific users need to accept,</p>
-          </li>
-        </ul>
-      </React.Fragment>
-    );
-  },
-  "2016-v1": () => {
-    const intl = useIntl();
+export const ToUs: { [key: string]: ReactElement } = {
+  "1999-v1": (
+    <React.Fragment>
+      <p>
+        <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+      </p>
+      <ul tabIndex={0}>
+        <li>
+          <p>This a test version of terms of use version 1 from 2021,</p>
+        </li>
+        <li>
+          <p>The versioning allows us to update terms if needed and keep parallel versions at the same time,</p>
+        </li>
+        <li>
+          <p>And still ensure that we serve the correct version a specific users need to accept,</p>
+        </li>
+      </ul>
+    </React.Fragment>
+  ),
 
-    return (
-      <React.Fragment>
+  "2016-v1": (
+    <React.Fragment>
+      <p>
+        <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+      </p>
+      <ul tabIndex={0}>
+        {[
+          <FormattedMessage
+            defaultMessage="that all usage of user accounts follow the laws and by-laws of Sweden,"
+            description="ToU first paragraph"
+          />,
+          <FormattedMessage
+            defaultMessage={`that all personal information that you provide,
+                               such as name and contact information shall be truthful,`}
+            description="ToU first paragraph"
+          />,
+          <FormattedMessage
+            defaultMessage={`that user accounts, password and codes are individual and
+                               shall only be used by the intended individual,`}
+            description="ToU first paragraph"
+          />,
+          <FormattedMessage
+            defaultMessage="that SUNET's ethical rules regulate the “other” usage."
+            description="ToU first paragraph"
+          />,
+        ].map((list, index) => {
+          return <li key={index}>{list}</li>;
+        })}
+      </ul>
+      <ul tabIndex={0}>
         <p>
-          <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+          <FormattedMessage
+            defaultMessage="SUNET judges unethical behaviour to be when someone:"
+            description="ToU 2016-v1 paragraph 2 heading"
+          />
         </p>
-        <ul tabIndex={0}>
-          {intl
-            .formatMessage({
-              id: "ToU.2016-v1.first_paragraph",
-              defaultMessage: `
-              that all usage of user accounts follow the laws and by-laws of Sweden,|
-              that all personal information that you provide, such as name and contact information shall be truthful,|
-              that user accounts, password and codes are individual and shall only be used by the intended individual,|
-              that SUNET's ethical rules regulate the “other” usage.
-              `,
-              description: "ToU 2016-v1 first paragraph",
-            })
-            .split("|")
-            .map((list, index) => {
-              return <li key={index}>{list}</li>;
-            })}
-        </ul>
-        <ul tabIndex={0}>
-          <p>
-            <FormattedMessage
-              defaultMessage="SUNET judges unethical behaviour to be when someone:"
-              description="ToU 2016-v1 paragraph 2 heading"
-            />
-          </p>
-          {[
-            <FormattedMessage
-              defaultMessage="attempts to gain access to network resources that they do not have the right"
-              description="ToU 2016-v1 second paragraph"
-            />,
-            <FormattedMessage
-              defaultMessage="attempts to conceal their user identity"
-              description="ToU 2016-v1 second paragraph"
-            />,
-            <FormattedMessage
-              defaultMessage="attempts to interfere or disrupt the intended usage of the network"
-              description="ToU 2016-v1 second paragraph"
-            />,
-            <FormattedMessage
-              defaultMessage="clearly wastes available resources (personnel, hardware or software)"
-              description="ToU 2016-v1 second paragraph"
-            />,
-            <FormattedMessage
-              defaultMessage="attempts to disrupt or destroy computer-based information"
-              description="ToU 2016-v1 second paragraph"
-            />,
-            <FormattedMessage
-              defaultMessage="infringes on the privacy of others"
-              description="ToU 2016-v1 second paragraph"
-            />,
-            <FormattedMessage
-              defaultMessage="attempts to insult or offend others"
-              description="ToU 2016-v1 second paragraph"
-            />,
-          ].map((list, index) => {
-            return <li key={index}>{list}</li>;
-          })}
-        </ul>
-      </React.Fragment>
-    );
-  },
+        {[
+          <FormattedMessage
+            defaultMessage="attempts to gain access to network resources that they do not have the right"
+            description="ToU second paragraph"
+          />,
+          <FormattedMessage
+            defaultMessage="attempts to conceal their user identity"
+            description="ToU second paragraph"
+          />,
+          <FormattedMessage
+            defaultMessage="attempts to interfere or disrupt the intended usage of the network"
+            description="ToU second paragraph"
+          />,
+          <FormattedMessage
+            defaultMessage="clearly wastes available resources (personnel, hardware or software)"
+            description="ToU second paragraph"
+          />,
+          <FormattedMessage
+            defaultMessage="attempts to disrupt or destroy computer-based information"
+            description="ToU second paragraph"
+          />,
+          <FormattedMessage defaultMessage="infringes on the privacy of others" description="ToU second paragraph" />,
+          <FormattedMessage defaultMessage="attempts to insult or offend others" description="ToU second paragraph" />,
+        ].map((list, index) => {
+          return <li key={index}>{list}</li>;
+        })}
+      </ul>
+    </React.Fragment>
+  ),
 };
 
 const TermsOfUseText = ({ version }: { version?: string }) => {
@@ -104,7 +97,7 @@ const TermsOfUseText = ({ version }: { version?: string }) => {
       <p className="heading" tabIndex={0}>
         <FormattedMessage defaultMessage="General rules for eduID users:" description="Terms of use (common header)" />
       </p>
-      {version !== undefined ? ToUs[version]() : undefined}
+      {version !== undefined ? ToUs[version] : undefined}
       <p tabIndex={0} className="heading">
         <FormattedMessage
           defaultMessage={`Any person found violating or suspected of violating these rules can be disabled
