@@ -22,9 +22,9 @@ export interface PhoneCodeFormData {
   phone: string;
 }
 export interface PhoneCodeProps {
-  invalid: boolean;
   /* eslint-disable @typescript-eslint/no-explicit-any*/
   handleSubmit: any;
+  invalid: boolean;
   emailCode: string;
 }
 
@@ -57,14 +57,13 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
       dispatch(eduidRMAllNotify());
     }
   };
+
   return (
     <Form id="phone-code-form" role="form" onSubmit={handleSubmit(handlePhoneCode)}>
       <Field
         component={CustomInput}
         componentClass="input"
         type="text"
-        Confirmation
-        code
         label={
           <FormattedMessage
             defaultMessage="Confirmation code"
@@ -75,7 +74,6 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
       />
       <EduIDButton className="settings-button" id="save-phone-button" disabled={props.invalid}>
         <FormattedMessage defaultMessage="OK" description="Reset Password phone code sent (OK button)" />
-        {/* {translate("cm.ok")} */}
       </EduIDButton>
     </Form>
   );
