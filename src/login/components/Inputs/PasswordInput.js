@@ -6,6 +6,7 @@ import CustomInput from "./CustomInput";
 import Input from "reactstrap/lib/Input";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
+import { useIntl } from "react-intl";
 
 let RenderHideButton = ({ setInputType, translate }) => (
   <button
@@ -55,6 +56,14 @@ export let PasswordInputElement = (props) => {
 };
 
 let PasswordInput = ({ translate }) => {
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "placeholder.password",
+    defaultMessage: "enter password",
+    description: "placeholder text for password input",
+  });
+
   return (
     <Field
       type="password"
@@ -63,7 +72,7 @@ let PasswordInput = ({ translate }) => {
       autoComplete="current-password"
       required="true"
       label={translate("login.usernamePw.password-input")}
-      placeholder={translate("placeholder.password")}
+      placeholder={placeholder}
       helpBlock={""}
     />
   );

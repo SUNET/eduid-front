@@ -3,6 +3,14 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
   },
+  "0ui6m3": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that SUNET's ethical rules regulate the “other” usage."
+  },
+  "8P/lJJ": {
+    "developer_comment": "ToU paragraph 1 heading",
+    "string": "The following generally applies:"
+  },
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
@@ -18,6 +26,18 @@
   "Error: Service Unavailable": {
     "string": "Service Unavailable. Check your internet connection."
   },
+  "FQZGJ7": {
+    "developer_comment": "Terms of use (common header)",
+    "string": "General rules for eduID users:"
+  },
+  "Fx0KB8": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
+  },
+  "GGa/Fj": {
+    "developer_comment": "Terms of use (banner text)",
+    "string": "We need an updated acceptance from you of the eduID terms of use."
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
   },
@@ -31,6 +51,10 @@
     "developer_comment": "Reset Password email link sent",
     "string": "Please check your email {email} to continue. Link is valid for 2 hours."
   },
+  "Nl9ooO": {
+    "developer_comment": "ToU 2016-v1 second paragraph",
+    "string": "attempts to disrupt or destroy computer-based information"
+  },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
   },
@@ -41,8 +65,20 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Add and verify your phone number for better security"
   },
+  "Q4abON": {
+    "developer_comment": "ToU 2016-v1 second paragraph",
+    "string": "attempts to gain access to network resources that they do not have the right"
+  },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
+  },
+  "SuxgmQ": {
+    "developer_comment": "ToU 2016-v1 paragraph 2 heading",
+    "string": "SUNET judges unethical behaviour to be when someone:"
+  },
+  "TB48BD": {
+    "developer_comment": "ToU 2016-v1 second paragraph",
+    "string": "attempts to insult or offend others"
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
@@ -51,9 +87,21 @@
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
   },
+  "UEl6B1": {
+    "developer_comment": "Terms of use (h2 heading)",
+    "string": "Log in: Terms of use"
+  },
   "UFBYoo": {
     "developer_comment": "Reset Password email link sent",
     "string": "resend link"
+  },
+  "UsKzM/": {
+    "developer_comment": "ToU 2016-v1 second paragraph",
+    "string": "infringes on the privacy of others"
+  },
+  "aQ3bnz": {
+    "developer_comment": "ToU 2016-v1 second paragraph",
+    "string": "attempts to interfere or disrupt the intended usage of the network"
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -495,6 +543,10 @@
   "foot.change-version-tip": {
     "string": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
   },
+  "gmUTmI": {
+    "developer_comment": "ToU 2016-v1 second paragraph",
+    "string": "clearly wastes available resources (personnel, hardware or software)"
+  },
   "header.faq": {
     "string": "Help"
   },
@@ -514,6 +566,10 @@
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
+  },
+  "j/H5/N": {
+    "developer_comment": "Terms of use (accept button text)",
+    "string": "I accept"
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
@@ -640,27 +696,6 @@
   },
   "login.swamid_mfa_required": {
     "string": "The service requires Person-Proofed multi-factor authentication (SWAMID MFA). Visit the eduID dashboard to add a verified Security Key."
-  },
-  "login.tou.button": {
-    "string": "I accept"
-  },
-  "login.tou.h2-heading": {
-    "string": "Log in: Terms of use"
-  },
-  "login.tou.legal-title": {
-    "string": "General rules for eduID users:"
-  },
-  "login.tou.legal-warning": {
-    "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
-  },
-  "login.tou.paragraph": {
-    "string": "We need an updated acceptance from you of the eduID terms of use."
-  },
-  "login.tou.version.2016-v1": {
-    "string": "'<ul tabIndex=\"0\"> <p>The following generally applies:</p> <li> <p> that all usage of user accounts follow the laws and by-laws of Sweden, </p> </li> <li> <p> that all personal information that you provide, such as name and contact information shall be truthful, </p> </li> <li> <p> that user accounts, password and codes are individual and shall only be used by the intended individual, </p> </li> <li> <p> that SUNET&apos;s ethical rules regulate the &ldquo;other&ldquo; usage. </p> </li> </ul> <ul tabIndex=\"0\"> <p>SUNET judges unethical behaviour to be when someone:</p> <li> <p> attempts to gain access to network resources that they do not have the right </p> </li> <li> <p>attempts to conceal their user identity</p> </li> <li> <p> attempts to interfere or disrupt the intended usage of the network </p> </li> <li> <p> clearly wastes available resources (personnel, hardware or software) </p> </li> <li> <p>attempts to disrupt or destroy computer-based information</p> </li> <li> <p>infringes on the privacy of others</p> </li> <li> <p>attempts to insult or offend others</p> </li> </ul>'"
-  },
-  "login.tou.version.2021-v1": {
-    "string": "'<ul tabIndex=\"0\"> <p>The following generally applies:</p> <li> <p> This a test version of terms of use version 1 from 2021, </p> </li> <li> <p> The versioning allows us to update terms if needed and keep parallel versions at the same time, </p> </li> <li> <p> And still ensure that we serve the correct version a specific users need to acccept, </p> </li> </ul>'"
   },
   "login.user_temporary_locked": {
     "string": "This account has reached the limit for incorrect logins and is temporarily disabled. Try again next calendar month."
@@ -811,6 +846,14 @@
   },
   "nins.wrong_length": {
     "string": "A national id number must have 12 digits"
+  },
+  "o2Jbwm": {
+    "developer_comment": "Terms of use (common footer)",
+    "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action can be taken."
+  },
+  "obrRPr": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that user accounts, password and codes are individual and shall only be used by the intended individual,"
   },
   "oc.error_missing_nin": {
     "string": "Please add a national identity number and try again"
@@ -1569,5 +1612,13 @@
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
+  },
+  "wxAJK5": {
+    "developer_comment": "ToU 2016-v1 second paragraph",
+    "string": "attempts to conceal their user identity"
+  },
+  "ylul60": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that all usage of user accounts follow the laws and by-laws of Sweden,"
   }
 }

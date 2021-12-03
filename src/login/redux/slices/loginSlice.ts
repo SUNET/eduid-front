@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ToUs } from "login/components/LoginApp/Login/TermsOfUse";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
 import { NextResponse, SAMLParameters } from "../sagas/login/postRefLoginSaga";
@@ -15,7 +16,7 @@ interface LoginState {
   };
   saml_parameters?: SAMLParameters;
   tou: {
-    available_versions?: string[];
+    available_versions: string[];
     version?: string;
   };
 }
@@ -23,7 +24,7 @@ interface LoginState {
 // Define the initial state using that type
 const initialState: LoginState = {
   mfa: {},
-  tou: {},
+  tou: { available_versions: Object.keys(ToUs) },
 };
 
 export const loginSlice = createSlice({
@@ -42,14 +43,10 @@ export const loginSlice = createSlice({
       state.post_to = action.payload.target;
       state.saml_parameters = samlParameters;
     },
-    addTouVersions: (state, action: PayloadAction<string[]>) => {
-      // During app initialisation, we figure out what versions of the TOU we have. Store that in the state.
-      state.tou.available_versions = action.payload;
-    },
     postIdpTouSuccess: (state, action: PayloadAction<{ version: string }>) => {
       // Process a successful response from the /tou endpoint. We posted our available TOU versions to the
       // backend, and it returns which one it wants us to show to the user. Record that in the state, so that
-      // the TermOfUse (sic) component will render it.
+      // the TermsOfUse component will render it.
       state.tou.version = action.payload.version;
     },
     addMfaAuthWebauthnChallenge: (state, action: PayloadAction<MfaAuthResponse>) => {
@@ -57,10 +54,16 @@ export const loginSlice = createSlice({
       // challenge that we store in the state.
       state.mfa.webauthn_challenge = action.payload.webauthn_options;
     },
+    /*
+     * TODO: These actions that are not related to updating the state shouldn't really be here,
+     *       even though it is nice to have them here to simplify imports elsewhere.
+     */
     // Action connected to postTouVersionsSaga. Posts the versions of the ToU available in this bundle to the /tou endpoint.
-    postTouVersions: () => {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    postTouVersions: (_state, _action) => {},
     // Action connected to postUpdatedTouAcceptSaga. Will post the version of the ToU the user accepts to the /tou endpoint.
-    updatedTouAccept: () => {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    updatedTouAccept: (_state, _action) => {},
     // Action connected to postRefLoginSaga.
     callLoginNext: () => {},
     // Action connected to postRefForWebauthnChallengeSaga. Fetches a webauthn challenge from the /mfa_auth endpoint.
