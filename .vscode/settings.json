@@ -35,7 +35,11 @@
     "SKATTEVERKET",
     "Nindata",
     "NINDATA",
-    "Luhn"
+    "Luhn",
+    "swedenconnect",
+    "Svenska",
+    "immer"
   ],
-  "cSpell.language": "en,en-US,en-GB,sv"
+  "cSpell.language": "en,en-US,en-GB,sv",
+  "editor.rulers": [120]
 }

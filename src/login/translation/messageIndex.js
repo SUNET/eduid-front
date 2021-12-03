@@ -1,6 +1,6 @@
 // import content from other files
 import { generalErrors, specificErrors } from "./defaultMessages/errors";
-import { login, tou } from "./defaultMessages/login";
+import { login } from "./defaultMessages/login";
 import { generalInstructions } from "./defaultMessages/instructions";
 import { changePassword, resetPassword } from "./defaultMessages/password";
 import { register } from "./defaultMessages/register";
@@ -13,7 +13,6 @@ export const formattedMessages = {
   ...generalErrors,
   ...specificErrors,
   ...login,
-  ...tou,
   ...generalInstructions,
   ...changePassword,
   ...register,

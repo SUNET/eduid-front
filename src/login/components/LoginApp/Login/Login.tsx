@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import UsernamePw from "./UsernamePw";
-import TermOfUse from "./TermsOfUse";
+import TermsOfUse from "./TermsOfUse";
 import MultiFactorAuth from "./MultiFactorAuth";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
@@ -45,7 +45,7 @@ const Login = (props: LoginProps): JSX.Element => {
       {next_page === "USERNAMEPASSWORD" ? (
         <UsernamePw {...props} />
       ) : next_page === "TOU" ? (
-        <TermOfUse {...props} />
+        <TermsOfUse />
       ) : next_page === "MFA" ? (
         <MultiFactorAuth {...props} />
       ) : next_page === "FINISHED" ? (
