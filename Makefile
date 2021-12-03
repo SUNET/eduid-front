@@ -24,10 +24,11 @@ test: build just_test
 prettier:
 	npx prettier --write --print-width 120 .
 
-sshfs_sync:
-	fswatch -o build/ | while read n; do rsync -a --delete build/ sshfs_mount/; done
+sync_dev_files:
+	test -n '$(DEV)' || exit 1
+	fswatch -o build/ | while read n; do rsync -a --delete build/ eduid@eduid-developer-${DEV}.sunet.se:/opt/eduid/src/eduid-front/build/; done
 
 translation:
 	npm run translations:extract
 
-.PHONY: clean build build-staging build-production test prettier sshfs_sync translation
+.PHONY: clean build build-staging build-production test prettier sync_dev_files translation
