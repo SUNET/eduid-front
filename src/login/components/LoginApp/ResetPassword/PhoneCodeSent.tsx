@@ -93,6 +93,7 @@ connect(() => ({
 
 function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
   const phone = useAppSelector((state) => state.resetPassword.phone);
+  // After sending phone code it will be saved in state.resetPassword.phone
   const dispatch = useAppDispatch();
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
@@ -102,6 +103,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
     if (count && typeof count === "string") {
       const parsedCount = JSON.parse(count);
       if (parsedCount > -1 && phone.number) {
+        // If count is still remained in local storage and user has sent phone code, run count down timer
         countFiveMin("phone");
       } else clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     }
@@ -109,6 +111,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
 
   useEffect(() => {
     dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode));
+    // Reload page will redirect user to extra security page
   }, [dispatch]);
 
   const resendPhoneCode = (e: React.MouseEvent<HTMLElement>) => {
@@ -123,6 +126,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
           <FormattedMessage
             defaultMessage="Enter the code sent to {phone}"
             description="Reset Password phone code sent"
+            // when user is directed by click "enter phone code" from extra security page, state.resetPassword.phone.number is undefined
             values={{
               phone: <b>{phone.number && phone.number.replace(/^.{10}/g, "**********")}</b>,
             }}
