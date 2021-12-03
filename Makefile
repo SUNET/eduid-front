@@ -31,4 +31,4 @@ sync_dev_files:
 translation:
 	npm run translations:extract
 
-.PHONY: clean build build-staging build-production test prettier sshfs_sync translation
+.PHONY: clean build build-staging build-production test prettier sync_dev_files translation
