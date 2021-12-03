@@ -50,12 +50,10 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
 
   const handlePhoneCode = (values: { phone: string }) => {
     const phone = values.phone;
-    if (phone) {
-      history.push(`/reset-password/set-new-password/${props.emailCode}`);
-      dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
-      dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
-      dispatch(eduidRMAllNotify());
-    }
+    history.push(`/reset-password/set-new-password/${props.emailCode}`);
+    dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
+    dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
+    dispatch(eduidRMAllNotify());
   };
 
   return (
@@ -103,7 +101,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
     const count = getLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     if (count && typeof count === "string") {
       const parsedCount = JSON.parse(count);
-      if (parsedCount > -1 && Object.keys(phone).length) {
+      if (parsedCount > -1 && phone.number) {
         countFiveMin("phone");
       } else clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     }
@@ -115,9 +113,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
 
   const resendPhoneCode = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    if (phone) {
-      dispatch(resetPasswordSlice.actions.requestPhoneCode(phone as PhoneInterface));
-    }
+    dispatch(resetPasswordSlice.actions.requestPhoneCode(phone as PhoneInterface));
   };
 
   return (
