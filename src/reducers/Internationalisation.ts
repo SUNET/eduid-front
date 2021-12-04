@@ -10,8 +10,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface intlState {
   locale: string;
+  messages: { [key: string]: string };
   formats?: string;
-  messages: { [key: string]: { [key: string]: string } };
 }
 
 const initialState: intlState = {
