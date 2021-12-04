@@ -10,7 +10,7 @@ import * as accountLinkingActions from "actions/AccountLinking";
 import { LOCALIZED_MESSAGES } from "globals";
 import { GET_NINS_SUCCESS } from "reducers/Nins";
 import { DashboardRootState } from "dashboard-init-app";
-import { AllUserData } from "apis/personal_data";
+import { AllUserData } from "apis/personalData";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { getRequest } from "sagas/ts_common";
 import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
