@@ -24,6 +24,7 @@ const format_for_react_intl = (data) => {
   return result;
 };
 
+// the proper TypeScript type for messages would be { [key: string]: { [key: string]: string } }
 const messages = { en: format_for_react_intl(en), sv: format_for_react_intl(sv) };
 
 module.exports = { messages: messages };
