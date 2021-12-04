@@ -1,48 +1,37 @@
-export const GET_ALL_USERDATA = "GET_ALL_USERDATA";
+import { createAction } from "@reduxjs/toolkit";
+import { PersonalDataData } from "reducers/PersonalData";
+
 export const GET_ALL_USERDATA_SUCCESS = "GET_PERSONAL_DATA_ALL_USER_DATA_SUCCESS";
-export const GET_ALL_USERDATA_FAIL = "GET_PERSONAL_DATA_ALL_USER_DATA_FAIL";
 export const GET_USERDATA_SUCCESS = "GET_PERSONAL_DATA_USER_SUCCESS";
-export const CHANGE_USERDATA = "CHANGE_USERDATA";
-export const POST_USERDATA = "POST_USERDATA";
-export const POST_USERDATA_SUCCESS = "POST_PERSONAL_DATA_USER_SUCCESS";
-export const POST_USERDATA_FAIL = "POST_PERSONAL_DATA_USER_FAIL";
 
-export function getAllUserdata() {
-  return {
-    type: GET_ALL_USERDATA,
-  };
-}
+// TODO: This actions seems to be a NO-OP? It is dispatched by the requestAllPersonalData saga but never consumed.
+export const getAllUserdata = createAction("GET_ALL_USERDATA");
 
-export function getAllUserdataFail(err) {
+export const GET_ALL_USERDATA_FAIL = createAction<{ message: string }>("GET_PERSONAL_DATA_ALL_USER_DATA_FAIL");
+
+export const postUserdata = createAction<PersonalDataData>("postUserdata");
+
+// Fake an error response from the backend. The action ending in _FAIL ought to mean the notification
+// middleware picks this error up and shows something to the user.
+export const getAllUserdataFail = createAction(
+  "GET_PERSONAL_DATA_ALL_USER_DATA_FAIL",
+  function prepare(message: string) {
+    return {
+      error: true,
+      payload: {
+        message,
+      },
+    };
+  }
+);
+
+// Fake an error response from the backend. The action ending in _FAIL ought to mean the notification
+// middleware picks this error up and shows something to the user.
+export const postUserdataFail = createAction("POST_PERSONAL_DATA_USER_FAIL", function prepare(message: string) {
   return {
-    type: GET_ALL_USERDATA_FAIL,
     error: true,
     payload: {
-      message: err,
+      message,
     },
   };
-}
-
-export function changeUserdata(data) {
-  return {
-    type: CHANGE_USERDATA,
-    payload: data,
-  };
-}
-
-export function postUserdata(pdata) {
-  return {
-    type: POST_USERDATA,
-    personalData: { ...pdata },
-  };
-}
-
-export function postUserdataFail(err) {
-  return {
-    type: POST_USERDATA_FAIL,
-    error: true,
-    payload: {
-      message: err,
-    },
-  };
-}
+});

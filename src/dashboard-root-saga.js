@@ -70,7 +70,7 @@ function* rootSaga() {
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestCredentials),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, requestSuggestedPassword),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS, sendGetLetterProofing),
-    takeLatest(pdataActions.POST_USERDATA, postPersonalDataSaga),
+    takeLatest(pdataActions.postUserdata.type, postPersonalDataSaga),
     takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),
     takeLatest(openidActions.SHOW_OIDC_SELEG_MODAL, sagasOpenid.checkNINAndShowSelegModal),
     takeLatest(openidActions.POST_OIDC_PROOFING_PROOFING, sagasOpenid.requestOpenidQRcode),

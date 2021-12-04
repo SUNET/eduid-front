@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { intlReducer } from "./reducers/Internationalisation";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
-import personalDataReducer from "reducers/PersonalData";
+import personalDataSlice from "reducers/PersonalData";
 import emailsReducer from "reducers/Emails";
 import configReducer from "reducers/DashboardConfig";
 import openidConnectReducer from "reducers/OpenidConnect";
@@ -30,7 +30,7 @@ const eduIDApp = combineReducers({
   lookup_mobile: lookupMobileProofingReducer,
   nins: ninsSlice.reducer,
   openid_freja_data: openidConnectFrejaReducer,
-  personal_data: personalDataReducer,
+  personal_data: personalDataSlice.reducer,
   phones: mobileReducer,
   letter_proofing: letterProofingReducer,
   notifications: notificationsReducer,

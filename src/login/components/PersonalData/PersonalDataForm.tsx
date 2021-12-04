@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
@@ -11,18 +10,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { postUserdata } from "../../../actions/PersonalData";
 import { updateNamesFromSkatteverket } from "../../redux/actions/updateNamesFromSkatteverketActions";
-import InjectIntl from "../../translation/InjectIntl_HOC_factory";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { translate } from "login/translation";
+import { DashboardRootState } from "dashboard-init-app";
+import { PersonalDataData } from "reducers/PersonalData";
 
-const RenderLockedNames = ({ translate }) => {
-  const dispatch = useDispatch();
-  const loading = useSelector((state) => state.config.loading_data);
-  const given_name = useSelector((state) => state.personal_data.data.given_name);
-  const surname = useSelector((state) => state.personal_data.data.surname);
+interface NameStrings {
+  first: string;
+  last: string;
+  display: string;
+}
+
+/*
+ * If the user has a verified NIN, editing the first and last name is not permitted because we get
+ * the legal names from Skatteverket. There is however a button to request renewal of the names
+ * from Skatteverket, which the user can use to speed up syncing in case of name change.
+ */
+const RenderLockedNames = (props: { names: NameStrings }) => {
+  const dispatch = useDashboardAppDispatch();
+  const loading = useDashboardAppSelector((state) => state.config.loading_data);
+  const given_name = useDashboardAppSelector((state) => state.personal_data.data.given_name);
+  const surname = useDashboardAppSelector((state) => state.personal_data.data.surname);
   return (
     <Fragment>
       <div className="external-names">
-        <NameDisplay label={translate("pd.given_name")} name={given_name} />
-        <NameDisplay label={translate("pd.surname")} name={surname} />
+        <NameDisplay label={props.names.first} name={given_name} />
+        <NameDisplay label={props.names.last} name={surname} />
       </div>
       <div className="icon-text">
         <button
@@ -41,7 +54,7 @@ const RenderLockedNames = ({ translate }) => {
   );
 };
 
-const RenderEditableNames = (props) => {
+const RenderEditableNames = (props: { names: NameStrings }) => {
   return (
     <Fragment>
       <div className="input-pair">
@@ -51,8 +64,8 @@ const RenderEditableNames = (props) => {
           componentClass="input"
           type="text"
           name="given_name"
-          label={props.translate("pd.given_name")}
-          placeholder={props.translate("pd.given_name")}
+          label={props.names.first}
+          placeholder={props.names.first}
         />
         <Field
           component={CustomInput}
@@ -60,17 +73,31 @@ const RenderEditableNames = (props) => {
           componentClass="input"
           type="text"
           name="surname"
-          label={props.translate("pd.surname")}
-          placeholder={props.translate("pd.surname")}
+          label={props.names.last}
+          placeholder={props.names.last}
         />
       </div>
-      <p className="hint">{props.translate("pd.hint.names_locked_when_verified")}</p>
+      <p className="hint">{translate("pd.hint.names_locked_when_verified")}</p>
     </Fragment>
   );
 };
 
-let RenderSavePersonalDataButton = ({ pdata, pristine, submitting, translate, initialValues, hasPersonalData }) => {
-  const loading = useSelector((state) => state.config.loading_data);
+interface RenderSavePersonalDataButtonProps {
+  pdata: PersonalDataData;
+  pristine: boolean;
+  submitting: boolean;
+  initialValues: PersonalDataData;
+  hasPersonalData: boolean;
+}
+
+const RenderSavePersonalDataButton = ({
+  pdata,
+  pristine,
+  submitting,
+  initialValues,
+  hasPersonalData,
+}: RenderSavePersonalDataButtonProps) => {
+  const loading = useDashboardAppSelector((state) => state.config.loading_data);
   const [isDisable, setIsDisable] = useState(false);
   useEffect(() => {
     const disableSaveButton = () => {
@@ -107,32 +134,55 @@ let RenderSavePersonalDataButton = ({ pdata, pristine, submitting, translate, in
   );
 };
 
-let PersonalDataForm = (props) => {
-  const dispatch = useDispatch();
-  const available_languages = useSelector((state) => state.config.available_languages);
-  const personal_data = useSelector((state) => state.personal_data.data);
+interface FormData {
+  name: string;
+  value: string;
+}
+
+interface PersonalDataFormProps {
+  isVerifiedNin: boolean;
+  setEditMode(value: boolean): void;
+  hasPersonalData: boolean; // is eppn present in PersonalDataData or not?
+  names: NameStrings;
+
+  initialValues: PersonalDataData;
+
+  pristine: boolean; // injected by redux-form
+  submitting: boolean; // injected by redux-form
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  handleSubmit: any; // injected by redux-form, haven't figured out how to type it yet
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  handleChange: any; // injected by redux-form, haven't figured out how to type it yet
+}
+
+const PersonalDataForm = (props: PersonalDataFormProps) => {
+  const { names } = props;
+  const dispatch = useDashboardAppDispatch();
+  const available_languages = useDashboardAppSelector((state) => state.config.available_languages);
+  const personal_data = useDashboardAppSelector((state) => state.personal_data.data);
   const [pdata, setPdata] = useState(personal_data);
   // setPdata key and value.
-  const handleFormChange = (field) => {
+  const formChange = (field: FormData) => {
     setPdata({ ...pdata, [field.name]: field.value.trim() });
   };
   // submit data
-  const submitForm = (e) => {
-    e.preventDefault();
+  const formSubmit = () => {
     dispatch(postUserdata(pdata));
-    props.setEditMode(false);
+    props.setEditMode(false); // tell parent component we're done editing
   };
+
   return (
     <Form
       id="personaldataview-form"
       role="form"
-      onChange={(e) => handleFormChange(e.target)}
-      onSubmit={(e) => {
-        submitForm(e);
+      onChange={(e) => {
+        formChange(e.target as unknown as FormData);
       }}
+      onSubmit={props.handleSubmit(formSubmit)}
     >
       <div className="name-inputs">
-        {props.isVerifiedNin ? <RenderLockedNames {...props} /> : <RenderEditableNames {...props} />}
+        {props.isVerifiedNin ? <RenderLockedNames names={names} /> : <RenderEditableNames names={names} />}
       </div>
       <Field
         component={CustomInput}
@@ -140,34 +190,34 @@ let PersonalDataForm = (props) => {
         componentClass="input"
         type="text"
         name="display_name"
-        label={props.translate("pd.display_name")}
-        placeholder={props.translate("pd.display_name_placeholder")}
-        helpBlock={props.translate("pd.display_name_input_help_text")}
+        label={names.display}
+        placeholder={names.display}
+        helpBlock={translate("pd.display_name_input_help_text")}
       />
       <Field
         component={CustomInput}
         required={true}
         name="language"
         selectOptions={available_languages}
-        label={props.translate("pd.language")}
+        label={translate("pd.language")}
       />
-      <RenderSavePersonalDataButton hasPersonalData={props.hasPersonalData} pdata={pdata} {...props} />
+      <RenderSavePersonalDataButton pdata={pdata} {...props} />
     </Form>
   );
 };
 
-PersonalDataForm = reduxForm({
+const DecoratedPersonalDataForm = reduxForm({
   form: "personal_data",
   destroyOnUnmount: false,
-  enableReinitialize: true,
-  keepValuesOnReinitialize: true,
+  enableReinitialize: true, // When set to true, the form will reinitialize every time the initialValues prop changes
+  keepDirtyOnReinitialize: true, // keep user edits to the value even if initialValues prop changes
   updateUnregisteredFields: true,
-  validate: validatePersonalData,
+  validate: validatePersonalData, // TODO: move the validator into this file?
   touchOnChange: true,
 })(PersonalDataForm);
 
-PersonalDataForm = connect((state) => ({
+const FinalPersonalDataForm = connect((state: DashboardRootState) => ({
   initialValues: state.personal_data.data,
-}))(PersonalDataForm);
+}))(DecoratedPersonalDataForm);
 
-export default InjectIntl(PersonalDataForm);
+export default FinalPersonalDataForm;

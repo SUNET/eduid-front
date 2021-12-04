@@ -122,8 +122,6 @@ export const leftoverMessages = {
       description="Placeholder for letter proofing text input"
     />
   ),
-  "pd.given_name": <FormattedMessage id="pd.given_name" defaultMessage={`First name`} />,
-  "pd.surname": <FormattedMessage id="pd.surname" defaultMessage={`Last name`} />,
   "pd.display_name": <FormattedMessage id="pd.display_name" defaultMessage={`Display name`} />,
   "pd.display_name_placeholder": (
     <FormattedMessage id="pd.display_name_placeholder" defaultMessage={`Optional alias`} />
