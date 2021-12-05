@@ -3,12 +3,24 @@
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules regulate the “other” usage."
   },
+  "1IV4F9": {
+    "developer_comment": "ToU second paragraph",
+    "string": "attempts to conceal their user identity"
+  },
+  "6t9/LE": {
+    "developer_comment": "ToU second paragraph",
+    "string": "attempts to disrupt or destroy computer-based information"
+  },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
     "string": "The following generally applies:"
   },
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
+  },
+  "E8b/ig": {
+    "developer_comment": "ToU second paragraph",
+    "string": "attempts to gain access to network resources that they do not have the right"
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
@@ -37,6 +49,10 @@
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
   },
+  "KMnlUQ": {
+    "developer_comment": "ToU second paragraph",
+    "string": "infringes on the privacy of others"
+  },
   "Missing data for required field.": {
     "string": "Missing data for required field"
   },
@@ -46,10 +62,6 @@
   "NXRtQx": {
     "developer_comment": "Reset Password email link sent",
     "string": "Please check your email {email} to continue. Link is valid for 2 hours."
-  },
-  "Nl9ooO": {
-    "developer_comment": "ToU 2016-v1 second paragraph",
-    "string": "attempts to disrupt or destroy computer-based information"
   },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
@@ -61,20 +73,12 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Add and verify your phone number for better security"
   },
-  "Q4abON": {
-    "developer_comment": "ToU 2016-v1 second paragraph",
-    "string": "attempts to gain access to network resources that they do not have the right"
-  },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
   },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
-  },
-  "TB48BD": {
-    "developer_comment": "ToU 2016-v1 second paragraph",
-    "string": "attempts to insult or offend others"
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
@@ -86,14 +90,6 @@
   "UFBYoo": {
     "developer_comment": "Reset Password email link sent",
     "string": "resend link"
-  },
-  "UsKzM/": {
-    "developer_comment": "ToU 2016-v1 second paragraph",
-    "string": "infringes on the privacy of others"
-  },
-  "aQ3bnz": {
-    "developer_comment": "ToU 2016-v1 second paragraph",
-    "string": "attempts to interfere or disrupt the intended usage of the network"
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -534,10 +530,6 @@
   },
   "foot.change-version-tip": {
     "string": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
-  },
-  "gmUTmI": {
-    "developer_comment": "ToU 2016-v1 second paragraph",
-    "string": "clearly wastes available resources (personnel, hardware or software)"
   },
   "header.faq": {
     "string": "Help"
@@ -1131,6 +1123,14 @@
   "pwfield.weak": {
     "string": "Weak password"
   },
+  "pzYR/3": {
+    "developer_comment": "ToU second paragraph",
+    "string": "clearly wastes available resources (personnel, hardware or software)"
+  },
+  "qw1OJJ": {
+    "developer_comment": "ToU second paragraph",
+    "string": "attempts to insult or offend others"
+  },
   "register.create-account": {
     "string": "Sign up with your email address to start."
   },
@@ -1596,9 +1596,9 @@
   "verify-identity.vetting_post_tagline": {
     "string": "For you registered at your current address"
   },
-  "wxAJK5": {
-    "developer_comment": "ToU 2016-v1 second paragraph",
-    "string": "attempts to conceal their user identity"
+  "vzVCa4": {
+    "developer_comment": "ToU second paragraph",
+    "string": "attempts to interfere or disrupt the intended usage of the network"
   },
   "ylul60": {
     "developer_comment": "ToU first paragraph",
