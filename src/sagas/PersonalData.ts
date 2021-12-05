@@ -85,6 +85,10 @@ export function* requestAllPersonalData() {
         );
       }
     }
+
+    if (response.payload.ladok !== undefined) {
+    }
+
     yield put(actions.appLoaded());
   } catch (error) {
     yield* failRequest(error, getAllUserdataFail);

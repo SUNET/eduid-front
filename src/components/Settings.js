@@ -11,6 +11,7 @@ import SecurityContainer from "containers/Security";
 import DeleteAccount from "containers/DeleteAccount";
 import AccountId from "containers/AccountId";
 import GroupManagement from "../login/components/GroupManagement/GroupManagement";
+import LadokContainer from "./Ladok";
 
 const RenderGroups = () => {
   // functionality to be removed when groups feature is released
@@ -31,6 +32,7 @@ class Settings extends Component {
         <RenderGroups />
         <Route path="/profile/settings/personaldata" component={ChangePasswordDisplay} />
         <Route path="/profile/settings/personaldata" component={DeleteAccount} />
+        <Route path="/profile/settings/advanced-settings" component={LadokContainer} />
         <Route path="/profile/settings/advanced-settings" component={SecurityContainer} />
         <Route path="/profile/settings/advanced-settings" component={AccountLinkingContainer} />
         <Route path="/profile/settings/advanced-settings" component={AccountId} />
