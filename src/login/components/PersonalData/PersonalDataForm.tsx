@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Form from "reactstrap/lib/Form";
@@ -83,51 +83,18 @@ const RenderEditableNames = (props: { names: NameStrings }) => {
 };
 
 interface RenderSavePersonalDataButtonProps {
-  pdata: PersonalDataData;
+  invalid: boolean;
   pristine: boolean;
   submitting: boolean;
-  initialValues: PersonalDataData;
-  hasPersonalData: boolean;
 }
 
-const RenderSavePersonalDataButton = ({
-  pdata,
-  pristine,
-  submitting,
-  initialValues,
-  hasPersonalData,
-}: RenderSavePersonalDataButtonProps) => {
+const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderSavePersonalDataButtonProps) => {
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
-  const [isDisable, setIsDisable] = useState(false);
-  useEffect(() => {
-    const disableSaveButton = () => {
-      const userValues = Object.entries(pdata);
-      const initValues = Object.entries(initialValues);
-      return userValues.some((entry, i) => {
-        const value = entry[1].trim();
-        if (!value || value === "") {
-          setIsDisable(true);
-        } else {
-          if (pristine) {
-            return undefined;
-          } else if (value === initValues[i][1]) {
-            setIsDisable(true);
-          }
-          setIsDisable(false);
-        }
-      });
-    };
-    if (hasPersonalData) {
-      disableSaveButton();
-    } else {
-      return undefined;
-    }
-  }, [pdata, isDisable]);
   return (
     <ButtonPrimary
       id="personal-data-button"
       className="settings-button"
-      disabled={pristine || submitting || isDisable || loading}
+      disabled={loading || pristine || invalid || submitting}
     >
       {translate("button_save")}
     </ButtonPrimary>
@@ -147,6 +114,7 @@ interface PersonalDataFormProps {
 
   initialValues: PersonalDataData;
 
+  invalid: boolean; // injected by redux-form
   pristine: boolean; // injected by redux-form
   submitting: boolean; // injected by redux-form
 
@@ -201,7 +169,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
         selectOptions={available_languages}
         label={translate("pd.language")}
       />
-      <RenderSavePersonalDataButton pdata={pdata} {...props} />
+      <RenderSavePersonalDataButton {...props} />
     </Form>
   );
 };
