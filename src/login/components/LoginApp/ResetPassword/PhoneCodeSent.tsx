@@ -28,7 +28,7 @@ export interface PhoneCodeProps {
   emailCode: string;
 }
 
-const validate = (values: { phone: string }) => {
+const validate = (values: PhoneCodeFormData) => {
   const value = values.phone;
   const errors = { phone: "" };
   if (!value || !value.trim()) {
