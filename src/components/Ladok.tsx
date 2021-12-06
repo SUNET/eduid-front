@@ -24,18 +24,22 @@ const LadokContainer = (): JSX.Element => {
             <ReactSwitch onChange={handleSwitchChange} checked={switchChecked} className="switch" />
           </div>
           <div>
-            {switchChecked ? (
-              <LadokUniversitiesDropdown />
-            ) : (
-              <p className="ladok-connect-help">
-                <FormattedMessage
-                  defaultMessage="Data from Ladok might give you access to more services"
-                  description="Ladok account linking"
-                />
-              </p>
-            )}
+            <p className="ladok-connect-help">
+              <FormattedMessage
+                defaultMessage="Data from Ladok might give you access to more services"
+                description="Ladok account linking"
+              />
+            </p>
           </div>
+          {switchChecked ? <LadokUniversitiesDropdown /> : undefined}
           {switchChecked ? <LadokLinkStatus /> : undefined}
+          <p className="help-text">
+            <FormattedMessage
+              defaultMessage={`Linking your eduID account with data from Ladok is necessary
+                               if you want to access a service requiring a European Student Identifier`}
+              description="Ladok account linking"
+            />
+          </p>
         </div>
       </div>
     </article>
