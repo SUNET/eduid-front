@@ -1228,9 +1228,6 @@
   "resetpw.received-sms": {
     "string": "Redan fått sms? "
   },
-  "resetpw.resend-timer-in": {
-    "string": "om"
-  },
   "resetpw.reset-pw-initialized": {
     "string": "Återställningslänken har skickats till din epost."
   },
