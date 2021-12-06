@@ -26,34 +26,6 @@ describe("Personal Data Actions", () => {
     };
     expect(actions.getAllUserdataFail(err)).toEqual(expectedAction);
   });
-
-  // it("shouldn't update personal data user", () => {
-  //   const data = {
-  //     name: "Pablo",
-  //   };
-  //   const data_error = {
-  //     name: "Pablo",
-  //     language: "en",
-  //   };
-  //   const expectedAction = {
-  //     type: actions.CHANGE_USERDATA,
-  //     payload: data_error,
-  //   };
-  //   expect(actions.changeUserdata(data)).not.toEqual(expectedAction);
-  // });
-
-  //   it("should update personal data user", () => {
-  //     const data = {
-  //       name: "Pablo",
-  //       language: "en",
-  //     };
-
-  //     const expectedAction = {
-  //       type: actions.CHANGE_USERDATA,
-  //       payload: data,
-  //     };
-  //     expect(actions.changeUserdata(data)).toEqual(expectedAction);
-  //   });
 });
 
 describe("Reducers", () => {
