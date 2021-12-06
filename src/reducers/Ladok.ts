@@ -1,18 +1,23 @@
 import { createAction, createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PDLadok } from "apis/personalData";
+import { DashboardRootState } from "dashboard-init-app";
 import { checkStatus } from "sagas/common";
 import { getRequest } from "sagas/ts_common";
+
+interface LadokUniversityData {
+  [key: string]: LadokUniversity;
+}
 
 interface LadokState {
   linked: boolean;
   external_id?: string;
   uni_ladok_name?: string;
-  unis?: { [key: string]: LadokUniversity };
+  unis?: LadokUniversityData;
   unis_fetch_failed?: boolean;
 }
 
 export interface LadokUniversity {
-  names: { [key: string]: string }; // mapping from locale name to name of university
+  names: { [locale: string]: string }; // mapping from locale name to name of university
 }
 
 export interface LadokUniversitiesResponse {
@@ -28,10 +33,51 @@ const initialState: LadokState = { linked: false };
  */
 export const fetchLadokUniversities = createAsyncThunk("ladok/fetchUniversities", async (args, thunkAPI) => {
   try {
-    const fetchResponse = await fetch("/ladok/universities", { ...getRequest, signal: thunkAPI.signal });
-    console.log("FETCH RESPONSE: ", fetchResponse);
-    const response: PayloadAction<LadokUniversitiesResponse> = checkStatus(fetchResponse);
-    console.log("LADOK UNIS: ", response.payload.universities);
+    const state = thunkAPI.getState() as DashboardRootState;
+
+    let ladok_url = state.config.ladok_url;
+    if (!ladok_url.endsWith("/")) {
+      ladok_url = ladok_url.concat("/");
+    }
+    const universities_url = ladok_url + "universities";
+
+    const response: PayloadAction<LadokUniversitiesResponse> = await fetch(universities_url, {
+      ...getRequest,
+      signal: thunkAPI.signal,
+    })
+      .then(checkStatus)
+      .then((response) => response.json());
+
+    if (response.payload.universities) {
+      /*
+       * The backend returns data like
+       *  {'Uni-A': {name_sv: 'Svenskt namn',
+       *             name_en: 'English name',
+       *            }
+       *  }
+       *
+       * While we want to store it as
+       *
+       *  {'Uni-A': {names: {sv: 'Svenskt namn',
+       *                     en: 'English name',
+       *                    }
+       *             }
+       *  }
+       *
+       * Since that makes it easier to find the name using our locale, so we re-format it before dispatching it.
+       */
+      const uni_data: LadokUniversityData = {};
+      Object.keys(response.payload.universities).forEach((key) => {
+        uni_data[key] = {
+          names: {
+            en: response.payload.universities[key].name_en,
+            sv: response.payload.universities[key].name_sv,
+          },
+        };
+      });
+      thunkAPI.dispatch(ladokSlice.actions.updateUniversities(uni_data));
+    }
+
     return response.payload.universities;
   } catch (error) {
     if (error instanceof Error) {
@@ -64,17 +110,15 @@ const ladokSlice = createSlice({
       state.uni_ladok_name = action.payload.university.ladok_name;
       state.linked = action.payload.external_id !== undefined && action.payload.university !== undefined;
     },
+    updateUniversities: (state, action: PayloadAction<LadokUniversityData>) => {
+      state.unis = action.payload;
+      state.unis_fetch_failed = false;
+    },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchLadokUniversities.fulfilled, (state, action) => {
-        console.log("FULFILLED IN REDUCER WITH ACTION: ", action);
-        state.unis_fetch_failed = false;
-      })
-      .addCase(fetchLadokUniversities.rejected, (state, action) => {
-        console.log("REJECTED IN REDUCER WITH ACTION: ", action);
-        state.unis_fetch_failed = true;
-      });
+    builder.addCase(fetchLadokUniversities.rejected, (state) => {
+      state.unis_fetch_failed = true;
+    });
   },
 });
 

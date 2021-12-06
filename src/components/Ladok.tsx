@@ -74,21 +74,21 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      <p>
-        <div className="universities">
-          <div className="text">
+      <div className="universities">
+        <div className="text">
+          <p>
             <FormattedMessage defaultMessage="Choose your university" description="Ladok account linking" />
-          </div>
-          <div className="box">
-            <InputGroup>
-              <InputGroupText>Placeholder for universities dropdown</InputGroupText>
-            </InputGroup>
-          </div>
+          </p>
         </div>
-        <div>
-          <p className="universities-status">{statusMessage !== undefined ? statusMessage : undefined}</p>
+        <div className="box">
+          <InputGroup>
+            <InputGroupText>Placeholder for universities dropdown</InputGroupText>
+          </InputGroup>
         </div>
-      </p>
+      </div>
+      <div>
+        <p className="universities-status">{statusMessage !== undefined ? statusMessage : undefined}</p>
+      </div>
     </React.Fragment>
   );
 };
