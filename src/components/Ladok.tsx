@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
 import ReactSwitch from "react-switch";
-import { fetchLadokUniversities } from "reducers/Ladok";
-import { InputGroup } from "reactstrap";
-import InputGroupText from "reactstrap/lib/InputGroupText";
+import { fetchLadokUniversities, linkUser } from "reducers/Ladok";
+import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
+import DropdownToggle from "reactstrap/lib/DropdownToggle";
+import DropdownMenu from "reactstrap/lib/DropdownMenu";
+import DropdownItem from "reactstrap/lib/DropdownItem";
 
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.linked);
@@ -47,9 +49,11 @@ const LadokContainer = (): JSX.Element => {
 };
 
 const LadokUniversitiesDropdown = (): JSX.Element => {
+  const locale = useDashboardAppSelector((state) => state.intl.locale);
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unis_fetch_failed);
   const [statusMessage, setStatusMessage] = useState<JSX.Element | undefined>(undefined);
+  const [dropdownOpen, setOpen] = useState(false);
 
   const dispatch = useDashboardAppDispatch();
 
@@ -72,18 +76,48 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     }
   }, [fetchFailed]);
 
+  function handleOnClick(e: React.SyntheticEvent): void {
+    const ladok_name = e.currentTarget.getAttribute("uni");
+    if (ladok_name) {
+      dispatch(linkUser({ ladok_name }));
+    }
+  }
+
+  // populate dropdown list of universities
+  const unis: JSX.Element[] = [];
+  if (ladokUnis !== undefined) {
+    Object.keys(ladokUnis).forEach((key) => {
+      unis.push(
+        <DropdownItem key={key} uni={key} onClick={handleOnClick}>
+          {ladokUnis[key].names[locale]}
+        </DropdownItem>
+      );
+    });
+  }
+
   return (
     <React.Fragment>
       <div className="universities">
         <div className="text">
           <p>
-            <FormattedMessage defaultMessage="Choose your university" description="Ladok account linking" />
+            <FormattedMessage
+              defaultMessage="Some universities allow eduID to fetch data from Ladok"
+              description="Ladok account linking"
+            />
           </p>
         </div>
         <div className="box">
-          <InputGroup>
-            <InputGroupText>Placeholder for universities dropdown</InputGroupText>
-          </InputGroup>
+          <ButtonDropdown
+            toggle={() => {
+              setOpen(!dropdownOpen);
+            }}
+            isOpen={dropdownOpen}
+          >
+            <DropdownToggle className="btn-primary" caret disabled={fetchFailed}>
+              <FormattedMessage defaultMessage="Choose your university" description="Ladok account linking" />
+            </DropdownToggle>
+            <DropdownMenu>{unis}</DropdownMenu>
+          </ButtonDropdown>
         </div>
       </div>
       <div>
