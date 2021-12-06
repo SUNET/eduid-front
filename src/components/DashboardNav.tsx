@@ -84,7 +84,7 @@ function DashboardNav(): JSX.Element {
             {getTipsAtIdentity()}
           </li>
         </NavLink>
-        <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/`}>
+        <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/personaldata`}>
           <li>
             {translate("dashboard_nav.settings")}
             {tipsAtSettings}

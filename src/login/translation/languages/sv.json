@@ -1,6 +1,26 @@
 {
+  "0ui6m3": {
+    "developer_comment": "ToU first paragraph",
+    "string": "att SUNET:s etiska regler reglerar övrig tillåten användning. "
+  },
+  "1IV4F9": {
+    "developer_comment": "ToU second paragraph",
+    "string": "försöker dölja sin användaridentitet"
+  },
+  "6t9/LE": {
+    "developer_comment": "ToU second paragraph",
+    "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
+  },
+  "8P/lJJ": {
+    "developer_comment": "ToU paragraph 1 heading",
+    "string": "För eduID.se gäller generellt"
+  },
   "CSRF failed to validate": {
     "string": "CSRF-koden var fel, var god ladda om sidan"
+  },
+  "E8b/ig": {
+    "developer_comment": "ToU second paragraph",
+    "string": "försöker få tillgång till nätverksresurser utan att ha rätt till det"
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
@@ -14,8 +34,24 @@
   "Error: Service Unavailable": {
     "string": "Tjänsten är inte tillgänglig. Är du ansluten till nätverket?"
   },
+  "FQZGJ7": {
+    "developer_comment": "Terms of use (common header)",
+    "string": "Allmänna regler för eduID-användare:"
+  },
+  "Fx0KB8": {
+    "developer_comment": "ToU first paragraph",
+    "string": "att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl, "
+  },
+  "GGa/Fj": {
+    "developer_comment": "Terms of use (banner text)",
+    "string": "Vi behöver ett uppdaterat accepterande av eduIDs användarvillkor från dig."
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "Säkerhetsnyckeln är redan registrerad med eduID"
+  },
+  "KMnlUQ": {
+    "developer_comment": "ToU second paragraph",
+    "string": "gör intrång i andras privatliv"
   },
   "Missing data for required field.": {
     "string": "Information saknas i ett obligatorisk fält"
@@ -40,8 +76,16 @@
   "SecurityMsg.rm_webauthn": {
     "string": "Säkerhetsnyckel har tagits bort."
   },
+  "SuxgmQ": {
+    "developer_comment": "ToU 2016-v1 paragraph 2 heading",
+    "string": "SUNET bedömer som oetiskt när någon:"
+  },
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
+  },
+  "UEl6B1": {
+    "developer_comment": "Terms of use (h2 heading)",
+    "string": "Logga in: Användarvillkor"
   },
   "UFBYoo": {
     "developer_comment": "Reset Password email link sent",
@@ -499,6 +543,10 @@
   "header.signup": {
     "string": "REGISTRERING"
   },
+  "j/H5/N": {
+    "developer_comment": "Terms of use (accept button text)",
+    "string": "Jag accepterar"
+  },
   "letter.already-sent": {
     "string": "Ett brev är redan på väg till din folkbokföringsadress"
   },
@@ -624,27 +672,6 @@
   },
   "login.swamid_mfa_required": {
     "string": "Tjänsten kräver personverifierad multifaktor (SWAMID MFA). Besök eduIDs dashboard för att lägga till en verifierad säkerhetsnyckel."
-  },
-  "login.tou.button": {
-    "string": "Jag accepterar"
-  },
-  "login.tou.h2-heading": {
-    "string": "Logga in: Användarvillkor"
-  },
-  "login.tou.legal-title": {
-    "string": "Allmänna regler för eduIDanvändare:"
-  },
-  "login.tou.legal-warning": {
-    "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
-  },
-  "login.tou.paragraph": {
-    "string": "Vi behöver ett uppdaterat accepterande från dig av eduIDs användarvillkor."
-  },
-  "login.tou.version.2016-v1": {
-    "string": "<ul tabIndex=\"0\">\n     <p>För eduID.se gäller generellt</p>\n      <li>\n        <p>\n          att all användning av användarkonton ska följa Sveriges lagar och förordningar,\n        </p>\n      </li>\n      <li>\n        <p>\n          att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl,\n        </p>\n      </li>\n      <li>\n        <p>\n          att användarkonton, lösenord och koder är personliga och får endast användas av innehavaren,\n        </p>\n      </li>\n      <li>\n        <p>\n          att SUNET:s etiska regler reglerar övrig tillåten användning.\n        </p>\n      </li>\n    </ul>\n    <ul tabIndex=\"0\">\n      <p>SUNET bedömer som oetiskt när någon:</p>\n      <li>\n        <p>\n          försöker få tillgång till nätverksresurser utan att ha rätt till det</p>\n      </li>\n      <li>\n        <p>försöker dölja sin användaridentitet</p>\n      </li>\n      <li>\n        <p>\n          försöker störa eller avbryta den avsedda användningen av nätverken\n        </p>\n      </li>\n      <li>\n        <p>\n         uppenbart slösar med tillgängliga resurser (personal, maskinvara eller programvara)\n        </p>\n      </li>\n      <li>\n        <p>försöker skada eller förstöra den datorbaserade informationen</p>\n      </li>\n      <li>\n        <p>gör intrång i andras privatliv</p>\n      </li>\n      <li>\n        <p>försöker förolämpa eller förnedra andra</p>\n      </li>\n    </ul>"
-  },
-  "login.tou.version.2021-v1": {
-    "string": "<ul>\n      <p>Det här är en test version av användarvillkoren:</p>\n      <li>\n        <p>\n          den hrä versionen är från 2021,\n        </p>\n      </li>\n      <li>\n        <p>\n          Detta visar att den version backend bestämmer,\n        </p>\n      </li>\n    </ul>\n    <ul>\n      <p>Detta är en testrubrik:</p>\n      <li>\n        <p>\n        är den version som visas\n        </p>\n      </li>\n    </ul>"
   },
   "login.user_temporary_locked": {
     "string": "Detta konto har nått gränsen för antal felaktiga inloggningar och är tillfälligt spärrat. Försök igen nästa kalendermånad."
@@ -795,6 +822,14 @@
   },
   "nins.wrong_length": {
     "string": "Skriv personnummer med 12 siffror"
+  },
+  "o2Jbwm": {
+    "developer_comment": "Terms of use (common footer)",
+    "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
+  },
+  "obrRPr": {
+    "developer_comment": "ToU first paragraph",
+    "string": "att användarkonton, lösenord och koder är personliga och får endast användas av innehavaren, "
   },
   "oc.error_missing_nin": {
     "string": "Skriv in ett personnummer och försök igen"
@@ -1087,6 +1122,14 @@
   },
   "pwfield.weak": {
     "string": "Svagt lösenord"
+  },
+  "pzYR/3": {
+    "developer_comment": "ToU second paragraph",
+    "string": "uppenbart slösar med tillgängliga resurser (personal, maskinvara eller programvara) "
+  },
+  "qw1OJJ": {
+    "developer_comment": "ToU second paragraph",
+    "string": "försöker förolämpa eller förnedra andra"
   },
   "register.create-account": {
     "string": "Skapa ett eduID med din e-postadress för att börja."
@@ -1549,5 +1592,13 @@
   },
   "verify-identity.vetting_post_tagline": {
     "string": "För dig som har tillgång till din folkbokföringsaddress"
+  },
+  "vzVCa4": {
+    "developer_comment": "ToU second paragraph",
+    "string": "försöker störa eller avbryta den avsedda användningen av nätverken "
+  },
+  "ylul60": {
+    "developer_comment": "ToU first paragraph",
+    "string": "att all användning av användarkonton ska följa Sveriges lagar och förordningar, "
   }
 }
