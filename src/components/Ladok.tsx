@@ -1,19 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
-import ReactSwitch from "react-switch";
 import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
 import DropdownToggle from "reactstrap/lib/DropdownToggle";
-import DropdownMenu from "reactstrap/lib/DropdownMenu";
-import DropdownItem from "reactstrap/lib/DropdownItem";
 import { fetchLadokUniversities, linkUser } from "../apis/eduidLadok";
+import { useIntl } from "react-intl";
+// import { Form, Field } from "react-final-form";
+
+// export const SelectUniversityForm = (): JSX.Element => {
+//   const onSubmit = async (values: any) => {
+//     console.log("[VALUES]", values);
+//   };
+//   return (
+//     <Form onSubmit={onSubmit}>
+//       {({ handleSubmit }) => (
+//         <form onSubmit={handleSubmit}>
+//           <div>
+//             <label></label>
+//             <Field name="select university" component="select">
+//               <option />
+//               <option value="KTH">KTH</option>
+//               <option value="KONSTFACK">KONSTFACK</option>
+//               <option value="STOCKHOLMUNIVERSITY">STOCKHOLM UNIVERSITY</option>
+//             </Field>
+//           </div>
+//         </form>
+//       )}
+//     </Form>
+//   );
+// };
 
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.linked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
 
-  const handleSwitchChange = async (checked: boolean) => {
-    setSwitchChecked(checked);
+  const handleSwitchChange = (): void => {
+    setSwitchChecked(!switchChecked);
   };
   return (
     <article className="ladok-container">
@@ -23,7 +45,17 @@ const LadokContainer = (): JSX.Element => {
             <h4>
               <FormattedMessage defaultMessage="Link your account to Ladok" description="Ladok account linking" />
             </h4>
-            <ReactSwitch onChange={handleSwitchChange} checked={switchChecked} className="switch" />
+            <label className="toggle flex-between" htmlFor="ladok-connection">
+              Link your account to Ladok
+              <input
+                onChange={handleSwitchChange}
+                className="toggle-checkbox"
+                type="checkbox"
+                checked={switchChecked}
+                id="ladok-connection"
+              />
+              <div className="toggle-switch"></div>
+            </label>
           </div>
           <div>
             <p className="ladok-connect-help">
@@ -56,6 +88,13 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const [dropdownOpen, setOpen] = useState(false);
 
   const dispatch = useDashboardAppDispatch();
+  const intl = useIntl();
+
+  const placeholder = intl.formatMessage({
+    id: "ladok.dropdown_placeholder",
+    defaultMessage: "Choose your university",
+    description: "Ladok account linking",
+  });
 
   useEffect(() => {
     if (ladokUnis === undefined) {
@@ -76,8 +115,8 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     }
   }, [fetchFailed]);
 
-  function handleOnClick(e: React.SyntheticEvent): void {
-    const ladok_name = e.currentTarget.getAttribute("uni");
+  function handleOnChange(e: React.SyntheticEvent): void {
+    const ladok_name = (e.target as HTMLTextAreaElement).value;
     if (ladok_name) {
       dispatch(linkUser({ ladok_name }));
     }
@@ -88,9 +127,9 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   if (ladokUnis !== undefined) {
     Object.keys(ladokUnis).forEach((key) => {
       unis.push(
-        <DropdownItem key={key} uni={key} onClick={handleOnClick}>
+        <option key={key} value={key}>
           {ladokUnis[key].names[locale]}
-        </DropdownItem>
+        </option>
       );
     });
   }
@@ -107,17 +146,22 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
           </p>
         </div>
         <div className="box">
-          <ButtonDropdown
+          {/* <ButtonDropdown
             toggle={() => {
               setOpen(!dropdownOpen);
             }}
             isOpen={dropdownOpen}
-          >
-            <DropdownToggle className="btn-primary" caret disabled={fetchFailed}>
+          > */}
+          {/* <DropdownToggle className="btn-primary" caret disabled={fetchFailed}>
               <FormattedMessage defaultMessage="Choose your university" description="Ladok account linking" />
-            </DropdownToggle>
-            <DropdownMenu>{unis}</DropdownMenu>
-          </ButtonDropdown>
+            </DropdownToggle> */}
+          <select onChange={handleOnChange}>
+            <option selected disabled hidden>
+              {placeholder}
+            </option>
+            {unis}
+          </select>
+          {/* </ButtonDropdown> */}
         </div>
       </div>
       <div>
