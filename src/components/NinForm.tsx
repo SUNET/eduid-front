@@ -48,7 +48,7 @@ interface ValuesProps {
 interface NinFormProps {
   valid: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleSubmit: any;
+  handleSubmit: any; // injected by redux-form, haven't figured out how to type it yet
 }
 
 const NinForm = (props: NinFormProps): JSX.Element => {
@@ -104,6 +104,6 @@ const mapStateToProps = (state: DashboardRootState) => {
   };
 };
 
-connect(mapStateToProps)(DecoratedNinForm);
+const FinalNinForm = connect(mapStateToProps)(DecoratedNinForm);
 
-export default DecoratedNinForm;
+export default FinalNinForm;
