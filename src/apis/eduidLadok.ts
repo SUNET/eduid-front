@@ -4,14 +4,9 @@
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { PDLadok } from "./personalData";
-import { DashboardRootState } from "../dashboard-init-app";
+import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { getRequest, postRequest } from "../sagas/ts_common";
 import { checkStatus } from "../sagas/common";
-import ladokSlice from "../reducers/Ladok";
-
-export interface foo {
-  bar: string;
-}
 
 export interface LadokUniversityData {
   [key: string]: LadokUniversity;
@@ -34,7 +29,11 @@ export interface LadokLinkUserResponse {
  * @function fetchLadokUniversities
  * @desc Redux async thunk to get info about universities eduID can access in Ladok.
  */
-export const fetchLadokUniversities = createAsyncThunk("ladok/fetchUniversities", async (args, thunkAPI) => {
+export const fetchLadokUniversities = createAsyncThunk<
+  LadokUniversityData,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("ladok/fetchUniversities", async (args, thunkAPI) => {
   try {
     const state = thunkAPI.getState() as DashboardRootState;
 
@@ -83,9 +82,8 @@ export const fetchLadokUniversities = createAsyncThunk("ladok/fetchUniversities"
         },
       };
     });
-    thunkAPI.dispatch(ladokSlice.actions.updateUniversities(uni_data));
 
-    return response.payload.universities;
+    return uni_data;
   } catch (error) {
     if (error instanceof Error) {
       thunkAPI.dispatch(fetchUniversitiesFail(error.toString()));
@@ -100,7 +98,11 @@ export const fetchLadokUniversities = createAsyncThunk("ladok/fetchUniversities"
  * @function linkUser
  * @desc Redux async thunk to attempt linking an eduID user to Ladok data from a university.
  */
-export const linkUser = createAsyncThunk("ladok/linkUser", async (args: { ladok_name: string }, thunkAPI) => {
+export const linkUser = createAsyncThunk<
+  PDLadok,
+  { ladok_name: string },
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("ladok/linkUser", async (args, thunkAPI) => {
   try {
     const state = thunkAPI.getState() as DashboardRootState;
 
@@ -129,9 +131,7 @@ export const linkUser = createAsyncThunk("ladok/linkUser", async (args: { ladok_
       return thunkAPI.rejectWithValue(undefined);
     }
 
-    thunkAPI.dispatch(ladokSlice.actions.updateLadok(response.payload.ladok));
-
-    return response.payload.ladok.external_id;
+    return response.payload.ladok;
   } catch (error) {
     if (error instanceof Error) {
       thunkAPI.dispatch(linkUserFail(error.toString()));

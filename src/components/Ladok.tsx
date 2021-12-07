@@ -6,7 +6,7 @@ import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
 import DropdownToggle from "reactstrap/lib/DropdownToggle";
 import DropdownMenu from "reactstrap/lib/DropdownMenu";
 import DropdownItem from "reactstrap/lib/DropdownItem";
-import {fetchLadokUniversities, linkUser} from "../apis/eduidLadok";
+import { fetchLadokUniversities, linkUser } from "../apis/eduidLadok";
 
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.linked);

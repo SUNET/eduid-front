@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {PDLadok} from "apis/personalData";
-import {fetchLadokUniversities, LadokUniversityData} from "../apis/eduidLadok";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PDLadok } from "apis/personalData";
+import { fetchLadokUniversities, linkUser, LadokUniversityData } from "../apis/eduidLadok";
 
 interface LadokState {
   linked: boolean;
@@ -22,15 +22,22 @@ const ladokSlice = createSlice({
       state.uni_ladok_name = action.payload.university.ladok_name;
       state.linked = action.payload.external_id !== undefined && action.payload.university !== undefined;
     },
-    updateUniversities: (state, action: PayloadAction<LadokUniversityData>) => {
-      state.unis = action.payload;
-      state.unis_fetch_failed = false;
-    },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchLadokUniversities.rejected, (state) => {
-      state.unis_fetch_failed = true;
-    });
+    builder
+      .addCase(fetchLadokUniversities.fulfilled, (state, action) => {
+        state.unis = action.payload;
+        state.unis_fetch_failed = false;
+      })
+      .addCase(fetchLadokUniversities.rejected, (state) => {
+        state.unis_fetch_failed = true;
+      })
+      .addCase(linkUser.fulfilled, (state, action) => {
+        // TODO: Duplicated in updateLadok reducer above
+        state.external_id = action.payload.external_id;
+        state.uni_ladok_name = action.payload.university.ladok_name;
+        state.linked = action.payload.external_id !== undefined && action.payload.university !== undefined;
+      });
   },
 });
 
