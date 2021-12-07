@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
 import ReactSwitch from "react-switch";
-import { fetchLadokUniversities, linkUser } from "reducers/Ladok";
 import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
 import DropdownToggle from "reactstrap/lib/DropdownToggle";
 import DropdownMenu from "reactstrap/lib/DropdownMenu";
 import DropdownItem from "reactstrap/lib/DropdownItem";
+import {fetchLadokUniversities, linkUser} from "../apis/eduidLadok";
 
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.linked);
