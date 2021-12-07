@@ -182,7 +182,8 @@ input:focus {
 //Switch toggle
 .toggle {
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
 }
 .toggle-switch {
   display: inline-block;
@@ -201,7 +202,6 @@ input:focus {
     display: block;
     background: linear-gradient(to bottom, #fff 0%, #eee 100%);
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
     width: 24px;
     height: 24px;
     position: absolute;
@@ -211,10 +211,9 @@ input:focus {
   }
   .toggle:hover &:before {
     background: linear-gradient(to bottom, #fff 0%, #fff 100%);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
   }
   .toggle-checkbox:checked + & {
-    background: #28A745;
+    background: #ff4500;
     &:before {
       left: 30px;
     }

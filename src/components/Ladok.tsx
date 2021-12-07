@@ -15,44 +15,44 @@ const LadokContainer = (): JSX.Element => {
     setSwitchChecked(!switchChecked);
   };
   return (
-    <article className="ladok-container">
-      <div id="ladok-container">
-        <div className="intro">
-          <div className="heading">
-            <h4>
-              <FormattedMessage defaultMessage="Link your account to Ladok" description="Ladok account linking" />
-            </h4>
+    <article id="ladok-container" className="ladok-container">
+      <h3 className="heading-4">
+        <FormattedMessage defaultMessage="Ladok information" description="Ladok account linking" />
+      </h3>
 
-            <label className="toggle">
-              <input
-                onChange={handleSwitchChange}
-                className="toggle-checkbox"
-                type="checkbox"
-                checked={switchChecked}
-              />
-              <div className="toggle-switch"></div>
-              <span className="toggle-label">ON</span>
-            </label>
-          </div>
-          <div>
-            <p className="ladok-connect-help">
-              <FormattedMessage
-                defaultMessage="Data from Ladok might give you access to more services"
-                description="Ladok account linking"
-              />
-            </p>
-          </div>
-          {switchChecked ? <LadokUniversitiesDropdown /> : undefined}
-          {switchChecked ? <LadokLinkStatus /> : undefined}
-          <p className="help-text">
-            <FormattedMessage
-              defaultMessage={`Linking your eduID account with data from Ladok is necessary
-                               if you want to access a service requiring a European Student Identifier`}
-              description="Ladok account linking"
-            />
-          </p>
-        </div>
-      </div>
+      <p>
+        <FormattedMessage
+          defaultMessage="Data from Ladok might give you access to more services. Some universities allow eduID to fetch data from Ladok."
+          description="Ladok account linking"
+        />
+      </p>
+
+      <fieldset>
+        <label className="toggle flex-between" htmlFor="ladok-connection">
+          Link your account to Ladok
+          <input
+            onChange={handleSwitchChange}
+            className="toggle-checkbox"
+            type="checkbox"
+            checked={switchChecked}
+            id="ladok-connection"
+          />
+          <div className="toggle-switch"></div>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        {switchChecked ? <LadokUniversitiesDropdown /> : undefined}
+        {switchChecked ? <LadokLinkStatus /> : undefined}
+      </fieldset>
+
+      <p className="help-text">
+        <FormattedMessage
+          defaultMessage={`Linking your eduID account with data from Ladok is necessary
+                                if you want to access a service requiring a European Student Identifier`}
+          description="Ladok account linking"
+        />
+      </p>
     </article>
   );
 };
@@ -90,6 +90,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     if (ladok_name) {
       dispatch(linkUser({ ladok_name }));
     }
+    console.log("ladok name:", ladok_name);
   }
 
   // populate dropdown list of universities
@@ -97,41 +98,24 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   if (ladokUnis !== undefined) {
     Object.keys(ladokUnis).forEach((key) => {
       unis.push(
-        <DropdownItem key={key} uni={key} onClick={handleOnClick}>
+        <option key={key} value={key} onClick={handleOnClick}>
           {ladokUnis[key].names[locale]}
-        </DropdownItem>
+        </option>
       );
     });
   }
 
   return (
     <React.Fragment>
-      <div className="universities">
-        <div className="text">
-          <p>
-            <FormattedMessage
-              defaultMessage="Some universities allow eduID to fetch data from Ladok"
-              description="Ladok account linking"
-            />
-          </p>
-        </div>
-        <div className="box">
-          <ButtonDropdown
-            toggle={() => {
-              setOpen(!dropdownOpen);
-            }}
-            isOpen={dropdownOpen}
-          >
-            <DropdownToggle className="btn-primary" caret disabled={fetchFailed}>
-              <FormattedMessage defaultMessage="Choose your university" description="Ladok account linking" />
-            </DropdownToggle>
-            <DropdownMenu>{unis}</DropdownMenu>
-          </ButtonDropdown>
-        </div>
-      </div>
-      <div>
-        <p className="universities-status">{statusMessage !== undefined ? statusMessage : undefined}</p>
-      </div>
+      <span className="flex-between">
+        <label htmlFor="ladok-universities">
+          <FormattedMessage defaultMessage="Select university" description="Ladok account linking" />
+        </label>
+
+        <select id="ladok-universities">{unis}</select>
+      </span>
+
+      <div className="universities-status">{statusMessage !== undefined ? statusMessage : undefined}</div>
     </React.Fragment>
   );
 };
@@ -140,21 +124,21 @@ const LadokLinkStatus = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.linked);
   return (
     <React.Fragment>
-      <div>
-        <p className="ladok-link-status">
-          {isLinked === true ? (
-            <FormattedMessage
-              defaultMessage="STATUS: Your account is linked with Ladok"
-              description="Ladok account linking"
-            />
-          ) : (
-            <FormattedMessage
-              defaultMessage="STATUS: No information could be found in Ladok using this university"
-              description="Ladok account linking"
-            />
-          )}
-        </p>
-      </div>
+      {isLinked === true ? (
+        <div className="status status-on">
+          <FormattedMessage
+            defaultMessage="STATUS: Your account is linked with Ladok"
+            description="Ladok account linking"
+          />
+        </div>
+      ) : (
+        <div className="status status-off">
+          <FormattedMessage
+            defaultMessage="STATUS: No information could be found in Ladok using this university"
+            description="Ladok account linking"
+          />
+        </div>
+      )}
     </React.Fragment>
   );
 };
