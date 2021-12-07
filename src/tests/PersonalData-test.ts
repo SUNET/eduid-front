@@ -197,6 +197,10 @@ describe("Async component", () => {
     next = generator.next();
     expect(next.value).toEqual(put(action5 as unknown as any));
 
+    // The saga triggers some other sagas with this action
+    next = generator.next();
+    expect(next.value).toEqual(put(actions.GET_USERDATA_SUCCESS()));
+
     // The saga informs whomever it concerns that it is done
     next = generator.next();
     expect(next.value).toEqual(put(appLoaded()));
