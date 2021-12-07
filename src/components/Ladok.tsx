@@ -115,6 +115,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         <select id="ladok-universities">{unis}</select>
       </span>
 
+      {/* Är detta annan status än LadokLinkStatus? */}
       <div className="universities-status">{statusMessage !== undefined ? statusMessage : undefined}</div>
     </React.Fragment>
   );
