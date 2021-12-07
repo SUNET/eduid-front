@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
-import ReactSwitch from "react-switch";
 import { fetchLadokUniversities, linkUser } from "reducers/Ladok";
 import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
 import DropdownToggle from "reactstrap/lib/DropdownToggle";
@@ -12,8 +11,8 @@ const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.linked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
 
-  const handleSwitchChange = async (checked: boolean) => {
-    setSwitchChecked(checked);
+  const handleSwitchChange = (): void => {
+    setSwitchChecked(!switchChecked);
   };
   return (
     <article className="ladok-container">
@@ -23,7 +22,17 @@ const LadokContainer = (): JSX.Element => {
             <h4>
               <FormattedMessage defaultMessage="Link your account to Ladok" description="Ladok account linking" />
             </h4>
-            <ReactSwitch onChange={handleSwitchChange} checked={switchChecked} className="switch" />
+
+            <label className="toggle">
+              <input
+                onChange={handleSwitchChange}
+                className="toggle-checkbox"
+                type="checkbox"
+                checked={switchChecked}
+              />
+              <div className="toggle-switch"></div>
+              <span className="toggle-label">ON</span>
+            </label>
           </div>
           <div>
             <p className="ladok-connect-help">
