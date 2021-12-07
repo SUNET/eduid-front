@@ -24,6 +24,10 @@ export interface LadokUniversitiesResponse {
   universities: { [key: string]: { name_en: string; name_sv: string } };
 }
 
+export interface LadokLinkUserResponse {
+  ladok: PDLadok;
+}
+
 const initialState: LadokState = { linked: false };
 
 /**
@@ -49,7 +53,9 @@ export const fetchLadokUniversities = createAsyncThunk("ladok/fetchUniversities"
       .then((response) => response.json());
 
     if (response.error) {
-      throw new Error("Error returned from backend");
+      // dispatch fail responses so that notification middleware will show them to the user
+      thunkAPI.dispatch(response);
+      return thunkAPI.rejectWithValue(undefined);
     }
 
     /*
@@ -111,7 +117,7 @@ export const linkUser = createAsyncThunk("ladok/linkUser", async (args: { ladok_
       ladok_name: args.ladok_name,
     };
 
-    const response: PayloadAction<{ ladok: PDLadok }, string, never, boolean> = await fetch(link_user_url, {
+    const response: PayloadAction<LadokLinkUserResponse, string, never, boolean> = await fetch(link_user_url, {
       ...postRequest,
       body: JSON.stringify(data),
       signal: thunkAPI.signal,
@@ -120,7 +126,9 @@ export const linkUser = createAsyncThunk("ladok/linkUser", async (args: { ladok_
       .then((response) => response.json());
 
     if (response.error) {
-      throw new Error("Error returned from backend");
+      // dispatch fail responses so that notification middleware will show them to the user
+      thunkAPI.dispatch(response);
+      return thunkAPI.rejectWithValue(undefined);
     }
 
     thunkAPI.dispatch(ladokSlice.actions.updateLadok(response.payload.ladok));
