@@ -24,6 +24,9 @@ export interface LadokLinkUserResponse {
   ladok: PDLadok;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface LadokUnlinkUserResponse {}
+
 function makeLadokRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
@@ -91,6 +94,7 @@ export const fetchLadokUniversities = createAsyncThunk<
     }
   }
 });
+
 /**
  * @public
  * @function linkUser
@@ -115,6 +119,41 @@ export const linkUser = createAsyncThunk<
     }
 
     // clear any displayed errors (presumably from selecting another university right before this)
+    thunkAPI.dispatch(eduidRMAllNotify());
+
+    return response.payload;
+  } catch (error) {
+    if (error instanceof Error) {
+      thunkAPI.dispatch(ladokFail(error.toString()));
+      return thunkAPI.rejectWithValue(error.toString());
+    } else {
+      throw error;
+    }
+  }
+});
+
+/**
+ * @public
+ * @function unlinkUser
+ * @desc Redux async thunk to unlink the users account from Ladok.
+ */
+export const unlinkUser = createAsyncThunk<
+  LadokUnlinkUserResponse,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("ladok/unlinkUser", async (args, thunkAPI) => {
+  try {
+    const body: KeyValues = {};
+
+    const response = await makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "unlink-user", body);
+
+    if (response.error) {
+      // dispatch fail responses so that notification middleware will show them to the user
+      thunkAPI.dispatch(response);
+      return thunkAPI.rejectWithValue(undefined);
+    }
+
+    // clear any displayed errors or messages
     thunkAPI.dispatch(eduidRMAllNotify());
 
     return response.payload;

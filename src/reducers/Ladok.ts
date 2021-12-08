@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PDLadok } from "apis/personalData";
-import { fetchLadokUniversities, linkUser, LadokUniversityData } from "../apis/eduidLadok";
+import { fetchLadokUniversities, linkUser, LadokUniversityData, unlinkUser } from "../apis/eduidLadok";
 
 interface LadokState {
   linked: boolean;
@@ -37,6 +37,11 @@ const ladokSlice = createSlice({
         state.external_id = action.payload.ladok.external_id;
         state.uni_ladok_name = action.payload.ladok.university.ladok_name;
         state.linked = action.payload.ladok.external_id !== undefined && action.payload.ladok.university !== undefined;
+      })
+      .addCase(unlinkUser.fulfilled, (state) => {
+        state.external_id = undefined;
+        state.uni_ladok_name = undefined;
+        state.linked = false;
       });
   },
 });
