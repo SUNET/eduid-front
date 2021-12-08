@@ -44,7 +44,6 @@
     "react-router-hash-link": "^2.4.3",
     "react-router-redux": "^4.0.8",
     "react-script-loader-hoc": "^1.2.2",
-    "react-switch": "^6.0.0",
     "react-useragent": "^1.1.2",
     "reactstrap": "^6.5.0",
     "redux": "^4.1.2",
