@@ -28,7 +28,7 @@ const LadokContainer = (): JSX.Element => {
 
       <fieldset>
         <label className="toggle flex-between" htmlFor="ladok-connection">
-          Link your account to Ladok
+          <span>Link your account to Ladok</span>
           <input
             onChange={handleSwitchChange}
             className="toggle-checkbox"
@@ -114,12 +114,12 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     <React.Fragment>
       <div className="universities">
         {/* <div className="text"> */}
-        <p>
+        {/* <p>
           <FormattedMessage
             defaultMessage="Some universities allow eduID to fetch data from Ladok"
             description="Ladok account linking"
           />
-        </p>
+        </p> */}
         {/* </div> */}
         {/* <span className="flex-between"> */}
         {/* <ButtonDropdown

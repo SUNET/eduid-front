@@ -184,39 +184,39 @@ input:focus {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .toggle-switch {
   display: inline-block;
   background: #ccc;
   border-radius: 16px;
-  width: 58px;
-  height: 32px;
+  width: 54px;
+  height: 28px;
   position: relative;
   vertical-align: middle;
-  transition: background 0.25s;
+  transition: all 0.25s;
   &:before,
   &:after {
     content: "";
   }
   &:before {
     display: block;
-    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    background: #fff;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     position: absolute;
-    top: 4px;
-    left: 4px;
+    top: 3px;
+    left: 3px;
     transition: left 0.25s;
   }
   .toggle:hover &:before {
-    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+    transform: scale(0.85);
   }
   .toggle-checkbox:checked + & {
     background: #28a745;
     &:before {
-      left: 30px;
+      left: 29px;
     }
   }
 }
@@ -224,11 +224,11 @@ input:focus {
   position: absolute;
   visibility: hidden;
 }
-.toggle-label {
-  margin-left: 5px;
-  position: relative;
-  top: 2px;
-}
+// .toggle-label {
+//   margin-left: 5px;
+//   position: relative;
+//   top: 2px;
+// }
 
 @media (max-width: 568px) {
   .form-control,
