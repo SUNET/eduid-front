@@ -211,7 +211,7 @@ input:focus {
     transition: left 0.25s;
   }
   .toggle:hover &:before {
-    transform: scale(0.85);
+    transform: scale(0.9);
   }
   .toggle-checkbox:checked + & {
     background: #28a745;
@@ -223,6 +223,7 @@ input:focus {
 .toggle-checkbox {
   position: absolute;
   visibility: hidden;
+  width: auto;
 }
 // .toggle-label {
 //   margin-left: 5px;

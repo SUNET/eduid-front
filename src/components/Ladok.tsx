@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
-// import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
-// import DropdownToggle from "reactstrap/lib/DropdownToggle";
 import { fetchLadokUniversities, linkUser } from "../apis/eduidLadok";
 import { useIntl } from "react-intl";
 
@@ -61,7 +59,6 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unis_fetch_failed);
   const [statusMessage, setStatusMessage] = useState<JSX.Element | undefined>(undefined);
-  // const [dropdownOpen, setOpen] = useState(false);
 
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
@@ -112,38 +109,16 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      <div className="universities">
-        {/* <div className="text"> */}
-        {/* <p>
-          <FormattedMessage
-            defaultMessage="Some universities allow eduID to fetch data from Ladok"
-            description="Ladok account linking"
-          />
-        </p> */}
-        {/* </div> */}
-        {/* <span className="flex-between"> */}
-        {/* <ButtonDropdown
-            toggle={() => {
-              setOpen(!dropdownOpen);
-            }}
-            isOpen={dropdownOpen}
-          >
-            <DropdownToggle className="btn-primary" caret disabled={fetchFailed}>
-              <FormattedMessage defaultMessage="Choose your university" description="Ladok account linking" />
-            </DropdownToggle>
-          </ButtonDropdown> */}
-        <label htmlFor="ladok-universities">
-          <FormattedMessage defaultMessage="Select university" description="Ladok account linking" />
-        </label>
-        <select defaultValue="" onChange={handleOnChange} disabled={fetchFailed}>
-          <option hidden value="">
-            {placeholder}
-          </option>
-          {unis}
-        </select>
-        {/* </ButtonDropdown> */}
-        {/* </span> */}
-      </div>
+      <label htmlFor="ladok-universities">
+        <FormattedMessage defaultMessage="Select university" description="Ladok account linking" />
+      </label>
+      <select defaultValue="" onChange={handleOnChange} disabled={fetchFailed}>
+        <option hidden value="">
+          {placeholder}
+        </option>
+        {unis}
+      </select>
+
       {/* Är detta annan status än LadokLinkStatus? */}
       <div className="universities-status">{statusMessage !== undefined ? statusMessage : undefined}</div>
     </React.Fragment>
