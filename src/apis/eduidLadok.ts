@@ -2,10 +2,13 @@
  * Code and data structures for talking to the eduid-ladok backend microservice.
  */
 
-import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk, PayloadAction, AnyAction } from "@reduxjs/toolkit";
 import { PDLadok } from "./personalData";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { checkStatus, getRequest, postRequest } from "../sagas/ts_common";
+import { BackendError } from "./common";
+import { newCsrfToken } from "actions/DashboardConfig";
+import { eduidRMAllNotify } from "actions/Notifications";
 
 export interface LadokUniversityData {
   [key: string]: LadokUniversity;
@@ -28,12 +31,34 @@ export interface KeyValues {
   [key: string]: any;
 }
 
+interface DashboardThunkAPI {
+  getState: () => DashboardRootState;
+  dispatch: DashboardAppDispatch;
+  signal: AbortSignal;
+}
+
+/*
+ * Any response received from the backend might contain an updated CSRF token, which needs to be
+ * passed to the backend on any subsequent requests. Update the value in the store if it changes.
+ */
+function updateCsrf(action: { payload: { csrf_token?: string } }, thunkAPI: DashboardThunkAPI) {
+  if (action.payload.csrf_token === undefined) return action;
+  const state = thunkAPI.getState();
+  if (action.payload.csrf_token != state.config.csrf_token) {
+    thunkAPI.dispatch(newCsrfToken(action.payload.csrf_token));
+  }
+  delete action.payload.csrf_token;
+  return action;
+}
+
 function makeLadokRequest<T>(
-  state: DashboardRootState,
+  thunkAPI: DashboardThunkAPI,
   endpoint: string,
-  data: KeyValues = {},
-  body?: KeyValues
+  body?: KeyValues,
+  data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
+  const state = thunkAPI.getState();
+
   let ladok_url = state.config.ladok_url;
   if (!ladok_url.endsWith("/")) {
     ladok_url = ladok_url.concat("/");
@@ -52,11 +77,13 @@ function makeLadokRequest<T>(
     ...req,
     ...data,
     body: body !== undefined ? JSON.stringify(body) : undefined,
+    signal: thunkAPI.signal,
   };
 
   return fetch(url, request)
     .then(checkStatus)
-    .then(async (response) => (await response.json()) as PayloadAction<T, string, never, boolean>);
+    .then(async (response) => (await response.json()) as PayloadAction<T, string, never, boolean>)
+    .then((action) => updateCsrf(action, thunkAPI) as PayloadAction<T, string, never, boolean>);
 }
 
 /**
@@ -70,11 +97,7 @@ export const fetchLadokUniversities = createAsyncThunk<
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("ladok/fetchUniversities", async (args, thunkAPI) => {
   try {
-    const state = thunkAPI.getState() as DashboardRootState;
-
-    const response = await makeLadokRequest<LadokUniversitiesResponse>(state, "universities", {
-      signal: thunkAPI.signal,
-    });
+    const response = await makeLadokRequest<LadokUniversitiesResponse>(thunkAPI, "universities");
 
     if (response.error) {
       // dispatch fail responses so that notification middleware will show them to the user
@@ -130,24 +153,20 @@ export const linkUser = createAsyncThunk<
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("ladok/linkUser", async (args, thunkAPI) => {
   try {
-    const state = thunkAPI.getState() as DashboardRootState;
-
     const body: KeyValues = {
       ladok_name: args.ladok_name,
     };
 
-    const response = await makeLadokRequest<LadokLinkUserResponse>(
-      state,
-      "link-user",
-      { signal: thunkAPI.signal },
-      body
-    );
+    const response = await makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "link-user", body);
 
     if (response.error) {
       // dispatch fail responses so that notification middleware will show them to the user
       thunkAPI.dispatch(response);
       return thunkAPI.rejectWithValue(undefined);
     }
+
+    // clear any displayed errors (presumably from selecting another university right before this)
+    thunkAPI.dispatch(eduidRMAllNotify());
 
     return response.payload;
   } catch (error) {
