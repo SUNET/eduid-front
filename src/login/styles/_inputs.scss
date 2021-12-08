@@ -211,9 +211,10 @@ input:focus {
   }
   .toggle:hover &:before {
     background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
   }
   .toggle-checkbox:checked + & {
-    background: #ff4500;
+    background: #28a745;
     &:before {
       left: 30px;
     }
