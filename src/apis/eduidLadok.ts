@@ -134,7 +134,7 @@ export const fetchLadokUniversities = createAsyncThunk<
     return uni_data;
   } catch (error) {
     if (error instanceof Error) {
-      thunkAPI.dispatch(fetchUniversitiesFail(error.toString()));
+      thunkAPI.dispatch(ladokFail(error.toString()));
       return thunkAPI.rejectWithValue(error.toString());
     } else {
       throw error;
@@ -170,7 +170,7 @@ export const linkUser = createAsyncThunk<
     return response.payload;
   } catch (error) {
     if (error instanceof Error) {
-      thunkAPI.dispatch(linkUserFail(error.toString()));
+      thunkAPI.dispatch(ladokFail(error.toString()));
       return thunkAPI.rejectWithValue(error.toString());
     } else {
       throw error;
@@ -180,18 +180,7 @@ export const linkUser = createAsyncThunk<
 
 // Fake an error response from the backend. The action ending in _FAIL will make the notification
 // middleware picks this error up and shows something to the user.
-export const fetchUniversitiesFail = createAction("FETCH_LADOK_UNIVERSITIES_FAIL", function prepare(message: string) {
-  return {
-    error: true,
-    payload: {
-      message,
-    },
-  };
-});
-
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
-export const linkUserFail = createAction("LADOK_LINK_USER_FAIL", function prepare(message: string) {
+export const ladokFail = createAction("LADOK_FAIL", function prepare(message: string) {
   return {
     error: true,
     payload: {
