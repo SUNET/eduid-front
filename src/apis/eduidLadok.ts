@@ -5,8 +5,7 @@
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { PDLadok } from "./personalData";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
-import { getRequest, postRequest } from "../sagas/ts_common";
-import { checkStatus } from "../sagas/common";
+import { checkStatus, getRequest, postRequest } from "../sagas/ts_common";
 
 export interface LadokUniversityData {
   [key: string]: LadokUniversity;
@@ -29,22 +28,24 @@ export interface KeyValues {
   [key: string]: any;
 }
 
-function makeLadokRequest(
+function makeLadokRequest<T>(
   state: DashboardRootState,
   endpoint: string,
   data: KeyValues = {},
   body?: KeyValues
-): Promise<KeyValues> {
+): Promise<PayloadAction<T, string, never, boolean>> {
   let ladok_url = state.config.ladok_url;
   if (!ladok_url.endsWith("/")) {
     ladok_url = ladok_url.concat("/");
   }
   const url = ladok_url + endpoint;
 
+  // Add the current CSRF token
   if (body !== undefined && body.csrf_token === undefined) {
     body.csrf_token = state.config.csrf_token;
   }
 
+  // do POST if there is a body, otherwise GET
   const req = body === undefined ? getRequest : postRequest;
 
   const request: RequestInit = {
@@ -55,7 +56,7 @@ function makeLadokRequest(
 
   return fetch(url, request)
     .then(checkStatus)
-    .then((response) => response.json());
+    .then(async (response) => (await response.json()) as PayloadAction<T, string, never, boolean>);
 }
 
 /**
@@ -71,12 +72,9 @@ export const fetchLadokUniversities = createAsyncThunk<
   try {
     const state = thunkAPI.getState() as DashboardRootState;
 
-    const response = (await makeLadokRequest(state, "universities", { signal: thunkAPI.signal })) as PayloadAction<
-      LadokUniversitiesResponse,
-      string,
-      never,
-      boolean
-    >;
+    const response = await makeLadokRequest<LadokUniversitiesResponse>(state, "universities", {
+      signal: thunkAPI.signal,
+    });
 
     if (response.error) {
       // dispatch fail responses so that notification middleware will show them to the user
@@ -138,12 +136,12 @@ export const linkUser = createAsyncThunk<
       ladok_name: args.ladok_name,
     };
 
-    const response = (await makeLadokRequest(state, "link-user", { signal: thunkAPI.signal }, body)) as PayloadAction<
-      LadokLinkUserResponse,
-      string,
-      never,
-      boolean
-    >;
+    const response = await makeLadokRequest<LadokLinkUserResponse>(
+      state,
+      "link-user",
+      { signal: thunkAPI.signal },
+      body
+    );
 
     if (response.error) {
       // dispatch fail responses so that notification middleware will show them to the user
