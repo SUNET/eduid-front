@@ -22,7 +22,7 @@ body {
   // height: 100vh;
   flex-direction: column;
 
-  // this is commented out to accomodate DashboardMain, should be introduced again for login app
+  // this is commented out to accommodate DashboardMain, should be introduced again for login app
   // background-color: #f4f4f4;
 }
 
@@ -34,7 +34,8 @@ body {
   background-color: #f4f4f4;
 }
 
-// same styling as .phoneview-form-container, #delete-account-container,#change-password-container in Email.js = replaced thes ewith with <article>
+// same styling as .phoneview-form-container, #delete-account-container,#change-password-container
+// in Email.js = replaced these with with <article>
 article {
   margin-top: 2rem;
 }

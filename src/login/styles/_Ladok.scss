@@ -1,0 +1,23 @@
+.ladok-container {
+  h4 {
+    color: black; // placeholder
+  }
+
+  p.ladok-link-status {
+    text-align: right;
+  }
+
+  p.universities-status {
+    text-align: right;
+    color: red;
+  }
+}
+
+.universities {
+  display: flex;
+  justify-content: space-evenly;
+  // .text {
+  // }
+  // .box {
+  // }
+}

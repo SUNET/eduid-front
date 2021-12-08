@@ -18,6 +18,7 @@ import notificationsReducer from "reducers/Notifications";
 import eidasReducer from "reducers/Eidas";
 import groupsReducer from "./login/redux/reducers/groupsReducer";
 import invitesReducer from "./login/redux/reducers/invitesReducer";
+import ladokSlice from "reducers/Ladok";
 
 const eduIDApp = combineReducers({
   router: routerReducer,
@@ -37,6 +38,7 @@ const eduIDApp = combineReducers({
   account_linking: accountLinkingReducer,
   security: securityReducer,
   eidas_data: eidasReducer,
+  ladok: ladokSlice.reducer,
   form: formReducer,
   intl: intlReducer,
 });

@@ -7,6 +7,9 @@ import { requestAllPersonalData, fetchAllPersonalData } from "../sagas/PersonalD
 import { put, call } from "redux-saga/effects";
 import { GET_NINS_SUCCESS } from "reducers/Nins";
 import { appLoaded } from "actions/DashboardConfig";
+import { PDLadok } from "apis/personalData";
+import Footer from "login/components/Footer/Footer";
+import ladokSlice from "reducers/Ladok";
 
 const personalDataReducer = personalDataSlice.reducer;
 
@@ -136,6 +139,10 @@ describe("Async component", () => {
     // The saga calls fetchAllPersonalData
     expect(next.value).toEqual(call(fetchAllPersonalData, fakeState.config));
 
+    const pd_ladok: PDLadok = {
+      external_id: "foo",
+      university: { ladok_name: "TEST", name_en: "eng", name_sv: "sve" },
+    };
     const response = {
       type: actions.GET_ALL_USERDATA_SUCCESS,
       payload: {
@@ -148,6 +155,7 @@ describe("Async component", () => {
         nins: [],
         emails: [],
         phones: [],
+        ladok: pd_ladok,
       },
     };
 
@@ -197,9 +205,9 @@ describe("Async component", () => {
     next = generator.next();
     expect(next.value).toEqual(put(action5 as unknown as any));
 
-    // The saga triggers some other sagas with this action
+    // The saga passes Ladok linking data on to the ladok reducer
     next = generator.next();
-    expect(next.value).toEqual(put(actions.GET_USERDATA_SUCCESS()));
+    expect(next.value).toEqual(put(ladokSlice.actions.updateLadok(pd_ladok)));
 
     // The saga informs whomever it concerns that it is done
     next = generator.next();
