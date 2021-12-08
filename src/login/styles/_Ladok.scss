@@ -14,8 +14,8 @@
 }
 
 .universities {
-  display: flex;
-  justify-content: space-evenly;
+  // display: flex;
+  // justify-content: space-evenly;
   // .text {
   // }
   // .box {
@@ -54,9 +54,11 @@ fieldset {
 }
 select {
   padding: 10px;
-  border-color: #ff4500;
+  border-color: $orange-highlight;
   border-radius: 3px;
   min-width: 350px;
+  height: 3rem;
+  background-color: $white;
 }
 .heading-4 {
   //@extend h4;

@@ -1,34 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
-import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
-import DropdownToggle from "reactstrap/lib/DropdownToggle";
+// import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
+// import DropdownToggle from "reactstrap/lib/DropdownToggle";
 import { fetchLadokUniversities, linkUser } from "../apis/eduidLadok";
 import { useIntl } from "react-intl";
-// import { Form, Field } from "react-final-form";
-
-// export const SelectUniversityForm = (): JSX.Element => {
-//   const onSubmit = async (values: any) => {
-//     console.log("[VALUES]", values);
-//   };
-//   return (
-//     <Form onSubmit={onSubmit}>
-//       {({ handleSubmit }) => (
-//         <form onSubmit={handleSubmit}>
-//           <div>
-//             <label></label>
-//             <Field name="select university" component="select">
-//               <option />
-//               <option value="KTH">KTH</option>
-//               <option value="KONSTFACK">KONSTFACK</option>
-//               <option value="STOCKHOLMUNIVERSITY">STOCKHOLM UNIVERSITY</option>
-//             </Field>
-//           </div>
-//         </form>
-//       )}
-//     </Form>
-//   );
-// };
 
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.linked);
@@ -85,7 +61,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unis_fetch_failed);
   const [statusMessage, setStatusMessage] = useState<JSX.Element | undefined>(undefined);
-  const [dropdownOpen, setOpen] = useState(false);
+  // const [dropdownOpen, setOpen] = useState(false);
 
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
@@ -137,32 +113,36 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   return (
     <React.Fragment>
       <div className="universities">
-        <div className="text">
-          <p>
-            <FormattedMessage
-              defaultMessage="Some universities allow eduID to fetch data from Ladok"
-              description="Ladok account linking"
-            />
-          </p>
-        </div>
-        <span className="flex-between">
-          {/* <ButtonDropdown
+        {/* <div className="text"> */}
+        <p>
+          <FormattedMessage
+            defaultMessage="Some universities allow eduID to fetch data from Ladok"
+            description="Ladok account linking"
+          />
+        </p>
+        {/* </div> */}
+        {/* <span className="flex-between"> */}
+        {/* <ButtonDropdown
             toggle={() => {
               setOpen(!dropdownOpen);
             }}
             isOpen={dropdownOpen}
-          > */}
-          {/* <DropdownToggle className="btn-primary" caret disabled={fetchFailed}>
+          >
+            <DropdownToggle className="btn-primary" caret disabled={fetchFailed}>
               <FormattedMessage defaultMessage="Choose your university" description="Ladok account linking" />
-            </DropdownToggle> */}
-          <select defaultValue="" onChange={handleOnChange}>
-            <option hidden value="">
-              {placeholder}
-            </option>
-            {unis}
-          </select>
-          {/* </ButtonDropdown> */}
-        </span>
+            </DropdownToggle>
+          </ButtonDropdown> */}
+        <label htmlFor="ladok-universities">
+          <FormattedMessage defaultMessage="Select university" description="Ladok account linking" />
+        </label>
+        <select defaultValue="" onChange={handleOnChange} disabled={fetchFailed}>
+          <option hidden value="">
+            {placeholder}
+          </option>
+          {unis}
+        </select>
+        {/* </ButtonDropdown> */}
+        {/* </span> */}
       </div>
       {/* Är detta annan status än LadokLinkStatus? */}
       <div className="universities-status">{statusMessage !== undefined ? statusMessage : undefined}</div>
