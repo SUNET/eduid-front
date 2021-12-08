@@ -13,11 +13,52 @@
   }
 }
 
-.universities {
+article {
+  margin: 2rem 0;
+}
+fieldset {
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  height: auto;
+  max-height: 600px;
+
+  & > * {
+    margin: 1.5rem 0 0;
+  }
+  &:empty {
+    max-height: 0;
+  }
+}
+.flex-between {
   display: flex;
-  justify-content: space-evenly;
-  // .text {
-  // }
-  // .box {
-  // }
+  justify-content: space-between;
+}
+.status {
+  margin-top: 1rem;
+
+  &-on {
+    color: green;
+  }
+  &-off {
+    color: red;
+  }
+}
+select {
+  padding: 5px;
+  border-color: $orange-highlight;
+  border-radius: 3px;
+  width: 100%;
+  height: 3rem;
+  background-color: $white;
+  height: 40px;
+}
+option:hover {
+  background-color: yellow;
+}
+.heading-4 {
+  //@extend h4;
+  font-size: 1.5rem;
+  line-height: 2.125rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }

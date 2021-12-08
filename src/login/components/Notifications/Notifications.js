@@ -25,7 +25,7 @@ class Notifications extends Component {
           isOpen={true}
           toggle={this.props.handleRMNotification}
         >
-          {err_msg}
+          <span>{err_msg}</span>
         </Alert>
       );
     });
@@ -52,7 +52,7 @@ class Notifications extends Component {
             isOpen={true}
             toggle={this.props.handleRMNotification}
           >
-            {success_msg}
+            <span>{success_msg}</span>
           </Alert>
         );
       });
