@@ -21,3 +21,47 @@
   // .box {
   // }
 }
+article {
+  margin: 2rem 0;
+}
+fieldset {
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  height: auto;
+  max-height: 600px;
+
+  & > * {
+    margin: 1.5rem 0 0;
+  }
+  &:empty {
+    max-height: 0;
+  }
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.status {
+  margin-top: 1rem;
+  text-align: right;
+
+  &-on {
+    color: green;
+  }
+  &-off {
+    color: red;
+  }
+}
+select {
+  padding: 10px;
+  border-color: #ff4500;
+  border-radius: 3px;
+  min-width: 350px;
+}
+.heading-4 {
+  //@extend h4;
+  font-size: 1.5rem;
+  line-height: 2.125rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
