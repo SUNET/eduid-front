@@ -2,13 +2,12 @@
  * Code and data structures for talking to the eduid-ladok backend microservice.
  */
 
-import { createAction, createAsyncThunk, PayloadAction, AnyAction } from "@reduxjs/toolkit";
-import { PDLadok } from "./personalData";
-import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
-import { checkStatus, getRequest, postRequest } from "../sagas/ts_common";
-import { BackendError } from "./common";
+import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { newCsrfToken } from "actions/DashboardConfig";
 import { eduidRMAllNotify } from "actions/Notifications";
+import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
+import { checkStatus, getRequest, postRequest } from "../sagas/ts_common";
+import { PDLadok } from "./personalData";
 
 export interface LadokUniversityData {
   [key: string]: LadokUniversity;
