@@ -34,9 +34,9 @@ const ladokSlice = createSlice({
       })
       .addCase(linkUser.fulfilled, (state, action) => {
         // TODO: Duplicated in updateLadok reducer above
-        state.external_id = action.payload.external_id;
-        state.uni_ladok_name = action.payload.university.ladok_name;
-        state.linked = action.payload.external_id !== undefined && action.payload.university !== undefined;
+        state.external_id = action.payload.ladok.external_id;
+        state.uni_ladok_name = action.payload.ladok.university.ladok_name;
+        state.linked = action.payload.ladok.external_id !== undefined && action.payload.ladok.university !== undefined;
       });
   },
 });

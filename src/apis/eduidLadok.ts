@@ -24,6 +24,40 @@ export interface LadokLinkUserResponse {
   ladok: PDLadok;
 }
 
+export interface KeyValues {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+
+function makeLadokRequest(
+  state: DashboardRootState,
+  endpoint: string,
+  data: KeyValues = {},
+  body?: KeyValues
+): Promise<KeyValues> {
+  let ladok_url = state.config.ladok_url;
+  if (!ladok_url.endsWith("/")) {
+    ladok_url = ladok_url.concat("/");
+  }
+  const url = ladok_url + endpoint;
+
+  if (body !== undefined && body.csrf_token === undefined) {
+    body.csrf_token = state.config.csrf_token;
+  }
+
+  const req = body === undefined ? getRequest : postRequest;
+
+  const request: RequestInit = {
+    ...req,
+    ...data,
+    body: body !== undefined ? JSON.stringify(body) : undefined,
+  };
+
+  return fetch(url, request)
+    .then(checkStatus)
+    .then((response) => response.json());
+}
+
 /**
  * @public
  * @function fetchLadokUniversities
@@ -37,18 +71,12 @@ export const fetchLadokUniversities = createAsyncThunk<
   try {
     const state = thunkAPI.getState() as DashboardRootState;
 
-    let ladok_url = state.config.ladok_url;
-    if (!ladok_url.endsWith("/")) {
-      ladok_url = ladok_url.concat("/");
-    }
-    const universities_url = ladok_url + "universities";
-
-    const response: PayloadAction<LadokUniversitiesResponse, string, never, boolean> = await fetch(universities_url, {
-      ...getRequest,
-      signal: thunkAPI.signal,
-    })
-      .then(checkStatus)
-      .then((response) => response.json());
+    const response = (await makeLadokRequest(state, "universities", { signal: thunkAPI.signal })) as PayloadAction<
+      LadokUniversitiesResponse,
+      string,
+      never,
+      boolean
+    >;
 
     if (response.error) {
       // dispatch fail responses so that notification middleware will show them to the user
@@ -99,31 +127,23 @@ export const fetchLadokUniversities = createAsyncThunk<
  * @desc Redux async thunk to attempt linking an eduID user to Ladok data from a university.
  */
 export const linkUser = createAsyncThunk<
-  PDLadok,
+  LadokLinkUserResponse,
   { ladok_name: string },
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("ladok/linkUser", async (args, thunkAPI) => {
   try {
     const state = thunkAPI.getState() as DashboardRootState;
 
-    let ladok_url = state.config.ladok_url;
-    if (!ladok_url.endsWith("/")) {
-      ladok_url = ladok_url.concat("/");
-    }
-    const link_user_url = ladok_url + "link-user";
-
-    const data = {
-      csrf_token: state.config.csrf_token,
+    const body: KeyValues = {
       ladok_name: args.ladok_name,
     };
 
-    const response: PayloadAction<LadokLinkUserResponse, string, never, boolean> = await fetch(link_user_url, {
-      ...postRequest,
-      body: JSON.stringify(data),
-      signal: thunkAPI.signal,
-    })
-      .then(checkStatus)
-      .then((response) => response.json());
+    const response = (await makeLadokRequest(state, "link-user", { signal: thunkAPI.signal }, body)) as PayloadAction<
+      LadokLinkUserResponse,
+      string,
+      never,
+      boolean
+    >;
 
     if (response.error) {
       // dispatch fail responses so that notification middleware will show them to the user
@@ -131,7 +151,7 @@ export const linkUser = createAsyncThunk<
       return thunkAPI.rejectWithValue(undefined);
     }
 
-    return response.payload.ladok;
+    return response.payload;
   } catch (error) {
     if (error instanceof Error) {
       thunkAPI.dispatch(linkUserFail(error.toString()));
