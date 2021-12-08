@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
     nins: state.nins.nins,
     verifiedNin: nins,
     verifiedSwePhone: verifiedSwePhone,
-    verifiedNinStatus: verifiedNinStatus,
+    hasVerifiedNin: verifiedNinStatus,
     is_configured: state.config.is_configured,
     letter_verification: state.letter_proofing.confirmingLetter,
     proofing_methods: state.config.proofing_methods,
