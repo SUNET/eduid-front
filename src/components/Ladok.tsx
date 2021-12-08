@@ -155,8 +155,8 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
           {/* <DropdownToggle className="btn-primary" caret disabled={fetchFailed}>
               <FormattedMessage defaultMessage="Choose your university" description="Ladok account linking" />
             </DropdownToggle> */}
-          <select onChange={handleOnChange}>
-            <option selected disabled hidden>
+          <select defaultValue="" onChange={handleOnChange}>
+            <option hidden value="">
               {placeholder}
             </option>
             {unis}
