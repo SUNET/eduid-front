@@ -3,10 +3,9 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { newCsrfToken } from "actions/DashboardConfig";
 import { eduidRMAllNotify } from "actions/Notifications";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
-import { checkStatus, getRequest, postRequest } from "../sagas/ts_common";
+import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 import { PDLadok } from "./personalData";
 
 export interface LadokUniversityData {
@@ -25,64 +24,15 @@ export interface LadokLinkUserResponse {
   ladok: PDLadok;
 }
 
-export interface KeyValues {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}
-
-interface DashboardThunkAPI {
-  getState: () => DashboardRootState;
-  dispatch: DashboardAppDispatch;
-  signal: AbortSignal;
-}
-
-/*
- * Any response received from the backend might contain an updated CSRF token, which needs to be
- * passed to the backend on any subsequent requests. Update the value in the store if it changes.
- */
-function updateCsrf(action: { payload: { csrf_token?: string } }, thunkAPI: DashboardThunkAPI) {
-  if (action.payload.csrf_token === undefined) return action;
-  const state = thunkAPI.getState();
-  if (action.payload.csrf_token != state.config.csrf_token) {
-    thunkAPI.dispatch(newCsrfToken(action.payload.csrf_token));
-  }
-  delete action.payload.csrf_token;
-  return action;
-}
-
 function makeLadokRequest<T>(
-  thunkAPI: DashboardThunkAPI,
+  thunkAPI: RequestThunkAPI,
   endpoint: string,
   body?: KeyValues,
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  let ladok_url = state.config.ladok_url;
-  if (!ladok_url.endsWith("/")) {
-    ladok_url = ladok_url.concat("/");
-  }
-  const url = ladok_url + endpoint;
-
-  // Add the current CSRF token
-  if (body !== undefined && body.csrf_token === undefined) {
-    body.csrf_token = state.config.csrf_token;
-  }
-
-  // do POST if there is a body, otherwise GET
-  const req = body === undefined ? getRequest : postRequest;
-
-  const request: RequestInit = {
-    ...req,
-    ...data,
-    body: body !== undefined ? JSON.stringify(body) : undefined,
-    signal: thunkAPI.signal,
-  };
-
-  return fetch(url, request)
-    .then(checkStatus)
-    .then(async (response) => (await response.json()) as PayloadAction<T, string, never, boolean>)
-    .then((action) => updateCsrf(action, thunkAPI) as PayloadAction<T, string, never, boolean>);
+  return makeRequest(thunkAPI, state.config.ladok_url, endpoint, body, data);
 }
 
 /**
