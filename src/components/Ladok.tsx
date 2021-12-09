@@ -99,9 +99,10 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const unis: JSX.Element[] = [];
   if (ladokUnis !== undefined) {
     Object.keys(ladokUnis).forEach((key) => {
+      const uni_name = ladokUnis[key].names[locale] || ladokUnis[key].names.en;
       unis.push(
         <option key={key} value={key}>
-          {ladokUnis[key].names[locale]}
+          {uni_name}
         </option>
       );
     });
