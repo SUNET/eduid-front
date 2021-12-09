@@ -66,6 +66,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
   const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
+  const [selectUni, setSelectUni] = useState(ladok_name);
 
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
@@ -88,6 +89,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     const ladok_name = (e.target as HTMLTextAreaElement).value;
     if (ladok_name) {
       dispatch(linkUser({ ladok_name }));
+      setSelectUni(ladok_name);
     }
   }
 
@@ -109,7 +111,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
       <label htmlFor="ladok-universities">
         <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
       </label>
-      <select value={ladok_name} onChange={handleOnChange} disabled={fetchFailed}>
+      <select value={selectUni} onChange={handleOnChange} disabled={fetchFailed}>
         <option hidden value="">
           {placeholder}
         </option>
