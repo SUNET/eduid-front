@@ -48,12 +48,8 @@ const LadokContainer = (): JSX.Element => {
           <div className="toggle-switch"></div>
         </label>
       </fieldset>
-
-      <fieldset>
-        {switchChecked ? <LadokUniversitiesDropdown /> : undefined}
-        {switchChecked ? <LadokLinkStatus /> : undefined}
-      </fieldset>
-
+      <fieldset>{switchChecked ? <LadokLinkStatus /> : undefined}</fieldset>
+      <fieldset>{switchChecked ? <LadokUniversitiesDropdown /> : undefined}</fieldset>
       <p className="help-text">
         <FormattedMessage
           defaultMessage={`Linking your eduID account with data from Ladok is necessary
