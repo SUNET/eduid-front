@@ -21,13 +21,12 @@ fieldset {
   transition: max-height 0.5s ease-in-out;
   height: auto;
   max-height: 600px;
-
-  & > * {
-    margin: 1.5rem 0 0;
-  }
   &:empty {
     max-height: 0;
   }
+}
+fieldset + fieldset:not(:empty) {
+  margin-top: 1.25em;
 }
 .flex-between {
   display: flex;
