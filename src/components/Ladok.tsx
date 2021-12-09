@@ -163,12 +163,7 @@ const LadokLinkStatus = (): JSX.Element => {
           />
         </div>
       ) : (
-        <div className="status status-off">
-          <FormattedMessage
-            defaultMessage="Choose a higher education institution in the list"
-            description="Ladok account linking"
-          />
-        </div>
+        <React.Fragment />
       )}
     </React.Fragment>
   );
