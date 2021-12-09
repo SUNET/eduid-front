@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { FormattedMessage } from "react-intl";
+import React, { useEffect, useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
-import { useIntl } from "react-intl";
 
 const LadokContainer = (): JSX.Element => {
-  const isLinked = useDashboardAppSelector((state) => state.ladok.linked);
+  const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
   const dispatch = useDashboardAppDispatch();
 
@@ -31,7 +30,7 @@ const LadokContainer = (): JSX.Element => {
       <p>
         <FormattedMessage
           defaultMessage={`Data from Ladok might give you access to more services.
-                          Some universities allow eduID to fetch data from Ladok.`}
+                          Some higher education institutions allow eduID to fetch data from Ladok.`}
           description="Ladok account linking"
         />
       </p>
@@ -69,14 +68,15 @@ const LadokContainer = (): JSX.Element => {
 const LadokUniversitiesDropdown = (): JSX.Element => {
   const locale = useDashboardAppSelector((state) => state.intl.locale);
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
-  const fetchFailed = useDashboardAppSelector((state) => state.ladok.unis_fetch_failed);
+  const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
+  const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
 
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
 
   const placeholder = intl.formatMessage({
     id: "ladok.dropdown_placeholder",
-    defaultMessage: "Choose your university",
+    defaultMessage: "Available higher education institutions",
     description: "Ladok account linking",
   });
 
@@ -110,7 +110,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   return (
     <React.Fragment>
       <label htmlFor="ladok-universities">
-        <FormattedMessage defaultMessage="Select university" description="Ladok account linking" />
+        <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
       </label>
       <select defaultValue="" onChange={handleOnChange} disabled={fetchFailed}>
         <option hidden value="">
@@ -122,7 +122,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
       <div className="universities-status">
         {fetchFailed ? (
           <FormattedMessage
-            defaultMessage="The list of universities could not be loaded at this time"
+            defaultMessage="The list of higher education institutions could not be loaded at this time"
             description="Ladok account linking"
           />
         ) : undefined}
@@ -132,9 +132,9 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
 };
 
 const LadokLinkStatus = (): JSX.Element => {
-  const isLinked = useDashboardAppSelector((state) => state.ladok.linked);
+  const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
   const unis = useDashboardAppSelector((state) => state.ladok.unis);
-  const ladok_name = useDashboardAppSelector((state) => state.ladok.uni_ladok_name);
+  const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
   const locale = useDashboardAppSelector((state) => state.intl.locale);
 
   let university_name = "unknown";
@@ -163,7 +163,10 @@ const LadokLinkStatus = (): JSX.Element => {
         </div>
       ) : (
         <div className="status status-off">
-          <FormattedMessage defaultMessage="Choose a university in the list" description="Ladok account linking" />
+          <FormattedMessage
+            defaultMessage="Choose a higher education institution in the list"
+            description="Ladok account linking"
+          />
         </div>
       )}
     </React.Fragment>
