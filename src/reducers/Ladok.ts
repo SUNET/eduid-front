@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PDLadok } from "apis/personalData";
-import { fetchLadokUniversities, linkUser, LadokUniversityData } from "../apis/eduidLadok";
+import { fetchLadokUniversities, linkUser, LadokUniversityData, unlinkUser } from "../apis/eduidLadok";
 
 interface LadokState {
-  linked: boolean;
-  external_id?: string;
-  uni_ladok_name?: string;
-  unis?: LadokUniversityData;
-  unis_fetch_failed?: boolean;
+  isLinked: boolean;
+  ladokName?: string; // copied from data.university.ladok_name for convenience
+  data?: PDLadok; // data as loaded from backend
+  unis?: LadokUniversityData; // data as loaded from backend
+  unisFetchFailed?: boolean;
 }
 
-const initialState: LadokState = { linked: false };
+const initialState: LadokState = { isLinked: false };
 
 const ladokSlice = createSlice({
   name: "ladok",
@@ -18,25 +18,30 @@ const ladokSlice = createSlice({
   reducers: {
     updateLadok: (state, action: PayloadAction<PDLadok>) => {
       /* Update user state from a personal-data all-user-data backend response */
-      state.external_id = action.payload.external_id;
-      state.uni_ladok_name = action.payload.university.ladok_name;
-      state.linked = action.payload.external_id !== undefined && action.payload.university !== undefined;
+      state.data = action.payload;
+      state.ladokName = state.data.university.ladok_name;
+      state.isLinked = action.payload.external_id !== undefined && action.payload.university !== undefined;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchLadokUniversities.fulfilled, (state, action) => {
         state.unis = action.payload;
-        state.unis_fetch_failed = false;
+        state.unisFetchFailed = false;
       })
       .addCase(fetchLadokUniversities.rejected, (state) => {
-        state.unis_fetch_failed = true;
+        state.unisFetchFailed = true;
       })
       .addCase(linkUser.fulfilled, (state, action) => {
-        // TODO: Duplicated in updateLadok reducer above
-        state.external_id = action.payload.external_id;
-        state.uni_ladok_name = action.payload.university.ladok_name;
-        state.linked = action.payload.external_id !== undefined && action.payload.university !== undefined;
+        state.data = action.payload.ladok;
+        state.ladokName = state.data.university.ladok_name;
+        state.isLinked =
+          action.payload.ladok.external_id !== undefined && action.payload.ladok.university !== undefined;
+      })
+      .addCase(unlinkUser.fulfilled, (state) => {
+        state.data = undefined;
+        state.ladokName = undefined;
+        state.isLinked = false;
       });
   },
 });

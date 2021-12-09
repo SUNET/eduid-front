@@ -3,10 +3,10 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { PDLadok } from "./personalData";
+import { eduidRMAllNotify } from "actions/Notifications";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
-import { getRequest, postRequest } from "../sagas/ts_common";
-import { checkStatus } from "../sagas/common";
+import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
+import { PDLadok } from "./personalData";
 
 export interface LadokUniversityData {
   [key: string]: LadokUniversity;
@@ -24,6 +24,20 @@ export interface LadokLinkUserResponse {
   ladok: PDLadok;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface LadokUnlinkUserResponse {}
+
+function makeLadokRequest<T>(
+  thunkAPI: RequestThunkAPI,
+  endpoint: string,
+  body?: KeyValues,
+  data?: KeyValues
+): Promise<PayloadAction<T, string, never, boolean>> {
+  const state = thunkAPI.getState();
+
+  return makeRequest(thunkAPI, state.config.ladok_url, endpoint, body, data);
+}
+
 /**
  * @public
  * @function fetchLadokUniversities
@@ -35,20 +49,7 @@ export const fetchLadokUniversities = createAsyncThunk<
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("ladok/fetchUniversities", async (args, thunkAPI) => {
   try {
-    const state = thunkAPI.getState() as DashboardRootState;
-
-    let ladok_url = state.config.ladok_url;
-    if (!ladok_url.endsWith("/")) {
-      ladok_url = ladok_url.concat("/");
-    }
-    const universities_url = ladok_url + "universities";
-
-    const response: PayloadAction<LadokUniversitiesResponse, string, never, boolean> = await fetch(universities_url, {
-      ...getRequest,
-      signal: thunkAPI.signal,
-    })
-      .then(checkStatus)
-      .then((response) => response.json());
+    const response = await makeLadokRequest<LadokUniversitiesResponse>(thunkAPI, "universities");
 
     if (response.error) {
       // dispatch fail responses so that notification middleware will show them to the user
@@ -86,44 +87,30 @@ export const fetchLadokUniversities = createAsyncThunk<
     return uni_data;
   } catch (error) {
     if (error instanceof Error) {
-      thunkAPI.dispatch(fetchUniversitiesFail(error.toString()));
+      thunkAPI.dispatch(ladokFail(error.toString()));
       return thunkAPI.rejectWithValue(error.toString());
     } else {
       throw error;
     }
   }
 });
+
 /**
  * @public
  * @function linkUser
  * @desc Redux async thunk to attempt linking an eduID user to Ladok data from a university.
  */
 export const linkUser = createAsyncThunk<
-  PDLadok,
+  LadokLinkUserResponse,
   { ladok_name: string },
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("ladok/linkUser", async (args, thunkAPI) => {
   try {
-    const state = thunkAPI.getState() as DashboardRootState;
-
-    let ladok_url = state.config.ladok_url;
-    if (!ladok_url.endsWith("/")) {
-      ladok_url = ladok_url.concat("/");
-    }
-    const link_user_url = ladok_url + "link-user";
-
-    const data = {
-      csrf_token: state.config.csrf_token,
+    const body: KeyValues = {
       ladok_name: args.ladok_name,
     };
 
-    const response: PayloadAction<LadokLinkUserResponse, string, never, boolean> = await fetch(link_user_url, {
-      ...postRequest,
-      body: JSON.stringify(data),
-      signal: thunkAPI.signal,
-    })
-      .then(checkStatus)
-      .then((response) => response.json());
+    const response = await makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "link-user", body);
 
     if (response.error) {
       // dispatch fail responses so that notification middleware will show them to the user
@@ -131,10 +118,48 @@ export const linkUser = createAsyncThunk<
       return thunkAPI.rejectWithValue(undefined);
     }
 
-    return response.payload.ladok;
+    // clear any displayed errors (presumably from selecting another university right before this)
+    thunkAPI.dispatch(eduidRMAllNotify());
+
+    return response.payload;
   } catch (error) {
     if (error instanceof Error) {
-      thunkAPI.dispatch(linkUserFail(error.toString()));
+      thunkAPI.dispatch(ladokFail(error.toString()));
+      return thunkAPI.rejectWithValue(error.toString());
+    } else {
+      throw error;
+    }
+  }
+});
+
+/**
+ * @public
+ * @function unlinkUser
+ * @desc Redux async thunk to unlink the users account from Ladok.
+ */
+export const unlinkUser = createAsyncThunk<
+  LadokUnlinkUserResponse,
+  undefined,
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("ladok/unlinkUser", async (args, thunkAPI) => {
+  try {
+    const body: KeyValues = {};
+
+    const response = await makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "unlink-user", body);
+
+    if (response.error) {
+      // dispatch fail responses so that notification middleware will show them to the user
+      thunkAPI.dispatch(response);
+      return thunkAPI.rejectWithValue(undefined);
+    }
+
+    // clear any displayed errors or messages
+    thunkAPI.dispatch(eduidRMAllNotify());
+
+    return response.payload;
+  } catch (error) {
+    if (error instanceof Error) {
+      thunkAPI.dispatch(ladokFail(error.toString()));
       return thunkAPI.rejectWithValue(error.toString());
     } else {
       throw error;
@@ -144,18 +169,7 @@ export const linkUser = createAsyncThunk<
 
 // Fake an error response from the backend. The action ending in _FAIL will make the notification
 // middleware picks this error up and shows something to the user.
-export const fetchUniversitiesFail = createAction("FETCH_LADOK_UNIVERSITIES_FAIL", function prepare(message: string) {
-  return {
-    error: true,
-    payload: {
-      message,
-    },
-  };
-});
-
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
-export const linkUserFail = createAction("LADOK_LINK_USER_FAIL", function prepare(message: string) {
+export const ladokFail = createAction("LADOK_FAIL", function prepare(message: string) {
   return {
     error: true,
     payload: {

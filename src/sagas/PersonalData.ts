@@ -14,7 +14,6 @@ import { AllUserData } from "apis/personalData";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { getRequest } from "sagas/ts_common";
 import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
-import loginSlice from "login/redux/slices/loginSlice";
 import ladokSlice from "reducers/Ladok";
 
 /*
