@@ -7,19 +7,18 @@
 .orcid-logo {
   display: inline-flex;
   align-self: center;
-  height: 1.25em;
-  width: 1.25em;
-  top: 0.125em;
-
+  height: 1.35em;
+  width: 1.35em;
+  top: 0.3em;
   position: relative;
-  background: url(../../../img/vector_iD_icon.svg);
+  // background: url(../../../img/vector_iD_icon-w.svg);
 }
 
 .orcid-logo-container {
   display: inline-flex;
   align-items: center;
-  padding-left: 0.25em;
-  padding-right: 0.25em;
+  // padding-left: 0.25em;
+  padding-right: 0.35em;
   fill: currentColor;
 }
 
