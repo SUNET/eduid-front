@@ -149,15 +149,23 @@ const LadokLinkStatus = (): JSX.Element => {
   return (
     <React.Fragment>
       {isLinked === true ? (
-        <div className="status status-on">
-          <FormattedMessage
-            defaultMessage="Your account is linked with Ladok information from {university}"
-            description="Ladok account linking"
-            values={{
-              university: university_name,
-            }}
-          />
-        </div>
+        <fieldset className="flex-between">
+          <label>
+            <FormattedMessage
+              defaultMessage="Your account is linked with Ladok information from"
+              description="Ladok account linking"
+            />
+          </label>
+          <div className="text-large">
+            <FormattedMessage
+              defaultMessage="{university}"
+              description="Ladok account linking"
+              values={{
+                university: university_name,
+              }}
+            />
+          </div>
+        </fieldset>
       ) : (
         <React.Fragment />
       )}

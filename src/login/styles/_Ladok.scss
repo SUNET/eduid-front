@@ -31,6 +31,7 @@ fieldset + fieldset:not(:empty) {
 .flex-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .status {
   margin-top: 1rem;
@@ -44,7 +45,6 @@ fieldset + fieldset:not(:empty) {
 }
 select {
   padding: 5px;
-  border-color: $orange-highlight;
   border-radius: 3px;
   width: 100%;
   height: 3rem;
@@ -60,4 +60,12 @@ option:hover {
   line-height: 2.125rem;
   margin-bottom: 1rem;
   font-weight: 700;
+}
+
+.text-large {
+  font-size: 1.25rem;
+}
+
+strong {
+  font-weight: 600;
 }
