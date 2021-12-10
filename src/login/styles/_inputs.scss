@@ -214,7 +214,7 @@ input:focus {
     transform: scale(0.9);
   }
   .toggle-checkbox:checked + & {
-    background: #28a745;
+    background: $orange-highlight;
     &:before {
       left: 29px;
     }

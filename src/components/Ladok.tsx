@@ -48,16 +48,12 @@ const LadokContainer = (): JSX.Element => {
           <div className="toggle-switch"></div>
         </label>
       </fieldset>
-
-      <fieldset>
-        {switchChecked ? <LadokUniversitiesDropdown /> : undefined}
-        {switchChecked ? <LadokLinkStatus /> : undefined}
-      </fieldset>
-
+      <fieldset>{switchChecked ? <LadokLinkStatus /> : undefined}</fieldset>
+      <fieldset>{switchChecked ? <LadokUniversitiesDropdown /> : undefined}</fieldset>
       <p className="help-text">
         <FormattedMessage
           defaultMessage={`Linking your eduID account with data from Ladok is necessary
-                                if you want to access a service requiring a European Student Identifier`}
+                                if you want to access a service requiring a European Student Identifier.`}
           description="Ladok account linking"
         />
       </p>
@@ -70,6 +66,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
   const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
+  const [selectUni, setSelectUni] = useState(ladok_name);
 
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
@@ -92,16 +89,18 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     const ladok_name = (e.target as HTMLTextAreaElement).value;
     if (ladok_name) {
       dispatch(linkUser({ ladok_name }));
+      setSelectUni(ladok_name);
     }
   }
 
   // populate dropdown list of universities
   const unis: JSX.Element[] = [];
   if (ladokUnis !== undefined) {
-    Object.keys(ladokUnis).forEach((key) => {
-      const uni_name = ladokUnis[key].names[locale] || ladokUnis[key].names.en;
+    Object.values(ladokUnis).forEach((item) => {
+      // Get the name of the university in the users locale, fallback to English and then to ladok_name.
+      const uni_name = item.name[locale] || item.name.en || item.ladok_name;
       unis.push(
-        <option key={key} value={key}>
+        <option key={item.ladok_name} value={item.ladok_name}>
           {uni_name}
         </option>
       );
@@ -113,7 +112,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
       <label htmlFor="ladok-universities">
         <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
       </label>
-      <select value={ladok_name} onChange={handleOnChange} disabled={fetchFailed}>
+      <select value={selectUni} onChange={handleOnChange} disabled={fetchFailed}>
         <option hidden value="">
           {placeholder}
         </option>
@@ -140,12 +139,12 @@ const LadokLinkStatus = (): JSX.Element => {
 
   let university_name = "unknown";
   if (unis && ladok_name && unis[ladok_name]) {
-    if (locale && unis[ladok_name]) {
+    if (locale) {
       const uni = unis[ladok_name];
-      if (uni.names[locale]) {
-        university_name = uni.names[locale];
-      } else if (uni.names.en) {
-        university_name = uni.names.en;
+      if (uni.name[locale]) {
+        university_name = uni.name[locale];
+      } else if (uni.name.en) {
+        university_name = uni.name.en;
       }
     }
   }
@@ -153,22 +152,25 @@ const LadokLinkStatus = (): JSX.Element => {
   return (
     <React.Fragment>
       {isLinked === true ? (
-        <div className="status status-on">
-          <FormattedMessage
-            defaultMessage="Your account is linked with Ladok information from {university}"
-            description="Ladok account linking"
-            values={{
-              university: university_name,
-            }}
-          />
-        </div>
+        <fieldset className="flex-between">
+          <label>
+            <FormattedMessage
+              defaultMessage="Your account is linked with Ladok information from"
+              description="Ladok account linking"
+            />
+          </label>
+          <div className="text-large">
+            <FormattedMessage
+              defaultMessage="{university}"
+              description="Ladok account linking"
+              values={{
+                university: university_name,
+              }}
+            />
+          </div>
+        </fieldset>
       ) : (
-        <div className="status status-off">
-          <FormattedMessage
-            defaultMessage="Choose a higher education institution in the list"
-            description="Ladok account linking"
-          />
-        </div>
+        <React.Fragment />
       )}
     </React.Fragment>
   );
