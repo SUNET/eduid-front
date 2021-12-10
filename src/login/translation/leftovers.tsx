@@ -10,13 +10,6 @@ export const leftoverMessages = {
     />
   ),
   "pd.choose-language": <FormattedMessage id="pd.choose-language" defaultMessage={`Choose language`} />,
-  "emails.placeholder": (
-    <FormattedMessage
-      id="emails.confirm_email_placeholder"
-      defaultMessage={`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`}
-      description="Placeholder for email text input"
-    />
-  ),
   "emails.confirm_help_text": (
     <FormattedMessage
       id="emails.confirm_help_text"
@@ -36,20 +29,6 @@ export const leftoverMessages = {
       id="security.description_invalid_format"
       defaultMessage={`The description is too long`}
       description="Error message for max length"
-    />
-  ),
-  "mobile.placeholder": (
-    <FormattedMessage
-      id="mobile.confirm_mobile_placeholder"
-      defaultMessage={`Phone confirmation code`}
-      description="Placeholder for phone text input"
-    />
-  ),
-  "security.placeholder": (
-    <FormattedMessage
-      id="security.confirm_security_placeholder"
-      defaultMessage={`Describe your security key`}
-      description="Placeholder for security key text input"
     />
   ),
   "security.help_text": (
@@ -115,14 +94,6 @@ export const leftoverMessages = {
       description="Text for letter code resend button"
     />
   ),
-  "letter.placeholder": (
-    <FormattedMessage
-      id="letter.placeholder"
-      defaultMessage={`Letter confirmation code`}
-      description="Placeholder for letter proofing text input"
-    />
-  ),
   "pd.display_name": <FormattedMessage id="pd.display_name" defaultMessage={`Display name`} />,
   "pd.language": <FormattedMessage id="pd.language" defaultMessage={`Language`} />,
-  "phones.input_placeholder": <FormattedMessage id="phones.input_placeholder" defaultMessage={`Phone number`} />,
 };

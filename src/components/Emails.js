@@ -76,6 +76,13 @@ class Emails extends Component {
   }
 
   render() {
+    // placeholder can't be an Element, we need to get the actual translated string here
+    const placeholder = this.props.intl.formatMessage({
+      id: "emails.confirm_email_placeholder",
+      defaultMessage: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      description: "Placeholder for email code input",
+    });
+
     return (
       <div className="emailsview-form-container">
         <div className="intro">
@@ -107,7 +114,7 @@ class Emails extends Component {
           resendLabel={this.props.translate("cm.enter_code")}
           resendHelp={this.props.translate("cm.lost_code")}
           resendText={this.props.translate("cm.resend_code")}
-          placeholder={this.props.translate("emails.placeholder")}
+          placeholder={placeholder}
           showModal={Boolean(this.props.confirming)}
           closeModal={this.props.handleStopConfirmation}
           handleResend={this.props.handleResend}

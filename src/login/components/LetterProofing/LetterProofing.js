@@ -101,6 +101,14 @@ class LetterProofingButton extends Component {
         );
       }
     }
+
+    // placeholder can't be an Element, we need to get the actual translated string here
+    const placeholder = this.props.intl.formatMessage({
+      id: "letter.placeholder",
+      defaultMessage: "Letter confirmation code",
+      description: "Placeholder for letter proofing text input",
+    });
+
     return (
       <div>
         <div className="vetting-button">
@@ -125,7 +133,7 @@ class LetterProofingButton extends Component {
           id="letterConfirmDialogControl"
           title={this.props.translate("letter.verify_title")}
           resendLabel={this.props.translate("cm.enter_code")}
-          placeholder={this.props.translate("letter.placeholder")}
+          placeholder={placeholder}
           showModal={showConfirmationModal}
           closeModal={this.closeConfirmationModal}
           handleConfirm={this.sendConfirmationCode}

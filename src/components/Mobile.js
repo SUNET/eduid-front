@@ -10,6 +10,7 @@ import TableList from "../login/components/DataTable/DataTable";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
+import { useIntl } from "react-intl";
 
 const validate = (values, props) => {
   let phone = values.number;
@@ -30,6 +31,14 @@ const validate = (values, props) => {
 };
 
 let PhoneForm = (props) => {
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "placeholder.phone",
+    defaultMessage: "Phone number",
+    description: "placeholder text for phone input",
+  });
+
   return (
     <Form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
@@ -39,7 +48,7 @@ let PhoneForm = (props) => {
           componentClass="input"
           type="text"
           name="number"
-          placeholder={props.translate("phones.input_placeholder")}
+          placeholder={placeholder}
           helpBlock={props.translate("phones.input_help_text")}
         />
       </fieldset>
@@ -86,6 +95,13 @@ class Mobile extends Component {
   }
 
   render() {
+    // placeholder can't be an Element, we need to get the actual translated string here
+    const placeholder = this.props.intl.formatMessage({
+      id: "mobile.confirm_mobile_placeholder",
+      defaultMessage: "Phone confirmation code",
+      description: "placeholder text for phone code input",
+    });
+
     return (
       <div className="phoneview-form-container" id="phone">
         <div className="intro">
@@ -115,7 +131,7 @@ class Mobile extends Component {
           resendLabel={this.props.translate("cm.enter_code")}
           resendHelp={this.props.translate("cm.lost_code")}
           resendText={this.props.translate("cm.resend_code")}
-          placeholder={this.props.translate("mobile.placeholder")}
+          placeholder={placeholder}
           showModal={Boolean(this.props.confirming)}
           closeModal={this.props.handleStopConfirmation}
           handleResend={this.props.handleResend}

@@ -409,7 +409,7 @@
     "string": "The confirmation code is invalid or has expired, please try again or request a new code"
   },
   "emails.confirm_email_placeholder": {
-    "developer_comment": "Placeholder for email text input",
+    "developer_comment": "Placeholder for email code input",
     "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   },
   "emails.confirm_help_text": {
@@ -795,7 +795,7 @@
     "string": "Add"
   },
   "mobile.confirm_mobile_placeholder": {
-    "developer_comment": "Placeholder for phone text input",
+    "developer_comment": "placeholder text for phone code input",
     "string": "Phone confirmation code"
   },
   "mobile.confirm_title": {
@@ -1083,9 +1083,6 @@
   "phones.input_help_text": {
     "string": "Phone number starting with 0 or +"
   },
-  "phones.input_placeholder": {
-    "string": "Phone number"
-  },
   "phones.invalid_phone": {
     "string": "Invalid phone number"
   },
@@ -1113,9 +1110,17 @@
   "phones.verification-success": {
     "string": "Successfully verified phone number"
   },
+  "placeholder.email": {
+    "developer_comment": "placeholder text for email input",
+    "string": "name@example.com"
+  },
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
     "string": "enter password"
+  },
+  "placeholder.phone": {
+    "developer_comment": "placeholder text for phone input",
+    "string": "Phone number"
   },
   "profile.email_display_no_data": {
     "string": "no email added"
@@ -1343,10 +1348,6 @@
   "security.button_delete_account": {
     "string": "Delete eduID"
   },
-  "security.confirm_security_placeholder": {
-    "developer_comment": "Placeholder for security key text input",
-    "string": "Describe your security key"
-  },
   "security.creation_date": {
     "string": "Created on"
   },
@@ -1375,6 +1376,10 @@
   },
   "security.password_credential_type": {
     "string": "Password"
+  },
+  "security.placeholder": {
+    "developer_comment": "placeholder text for security key description input",
+    "string": "Describe your security key"
   },
   "security.remove": {
     "string": "Remove"

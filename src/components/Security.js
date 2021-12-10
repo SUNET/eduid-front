@@ -138,6 +138,13 @@ class Security extends Component {
       );
     }
 
+    // placeholder can't be an Element, we need to get the actual translated string here
+    const placeholder = this.props.intl.formatMessage({
+      id: "security.placeholder",
+      defaultMessage: "Describe your security key",
+      description: "placeholder text for security key description input",
+    });
+
     return (
       <div id="security-container">
         {!this.state.isPlatformAuthLoaded && <div ref="eduidSplash" id="eduid-splash-screen" />}
@@ -182,7 +189,7 @@ class Security extends Component {
           id="describeWebauthnTokenDialogControl"
           title={this.props.translate("security.webauthn-describe-title")}
           resendLabel={this.props.translate("security.webauthn_credential_type")}
-          placeholder={this.props.translate("security.placeholder")}
+          placeholder={placeholder}
           with_resend_link={false}
           showModal={Boolean(this.props.webauthn_asking_description)}
           closeModal={this.props.handleStopAskingWebauthnDescription}
