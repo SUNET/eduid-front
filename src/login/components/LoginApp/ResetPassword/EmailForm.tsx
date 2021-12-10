@@ -76,6 +76,8 @@ const DecoratedEmailForm = reduxForm<EmailFormData, EmailFormProps>({
   validate,
 })(EmailForm);
 
-connect(() => ({ touchOnChange: true, enableReinitialize: true, destroyOnUnmount: false }))(DecoratedEmailForm);
+const ConnectedForm = connect(() => ({ touchOnChange: true, enableReinitialize: true, destroyOnUnmount: false }))(
+  DecoratedEmailForm
+);
 
-export default DecoratedEmailForm;
+export default ConnectedForm;
