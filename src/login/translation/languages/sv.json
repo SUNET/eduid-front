@@ -15,6 +15,10 @@
     "developer_comment": "ToU paragraph 1 heading",
     "string": "För eduID.se gäller generellt"
   },
+  "9UKtfS": {
+    "developer_comment": "Reset Password phone code sent(Resend code link button)",
+    "string": "Skicka bekräftelsekoden igen"
+  },
   "CSRF failed to validate": {
     "string": "CSRF-koden var fel, var god ladda om sidan"
   },
@@ -53,6 +57,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "gör intrång i andras privatliv"
   },
+  "KqTxEn": {
+    "developer_comment": "Ladok account linking",
+    "string": "Välj lärosäte"
+  },
   "Missing data for required field.": {
     "string": "Information saknas i ett obligatorisk fält"
   },
@@ -73,6 +81,10 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Lägg till och bekräfta ditt telefonnummer för bättre säkerhet"
   },
+  "P/GBQg": {
+    "developer_comment": "Ladok account linking",
+    "string": "Listan med lärosäten kan inte laddas just nu"
+  },
   "SecurityMsg.rm_webauthn": {
     "string": "Säkerhetsnyckel har tagits bort."
   },
@@ -83,6 +95,10 @@
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
   },
+  "TmkRXi": {
+    "developer_comment": "Reset Password phone code sent (OK button)",
+    "string": "OK"
+  },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Logga in: Användarvillkor"
@@ -90,6 +106,10 @@
   "UFBYoo": {
     "developer_comment": "Reset Password email link sent",
     "string": "skicka länken igen"
+  },
+  "VmITR8": {
+    "developer_comment": "Ladok account linking",
+    "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
   },
   "accountId.accountId_display_title": {
     "string": "Unikt ID"
@@ -531,6 +551,10 @@
   "foot.change-version-tip": {
     "string": "Om du stöter på något problem så kan du byta till en tidigare version av appen."
   },
+  "gM6ziT": {
+    "developer_comment": "Ladok account linking",
+    "string": "Ditt konto är länkat med Ladok-information från"
+  },
   "header.faq": {
     "string": "Hjälp"
   },
@@ -543,9 +567,24 @@
   "header.signup": {
     "string": "REGISTRERING"
   },
+  "irC/sN": {
+    "developer_comment": "Reset Password phone code sent",
+    "string": "Skriv in koden som skickats till {phone}"
+  },
   "j/H5/N": {
     "developer_comment": "Terms of use (accept button text)",
     "string": "Jag accepterar"
+  },
+  "j0jEk2": {
+    "developer_comment": "Reset Password phone code sent (Input label)",
+    "string": "Bekräftelsekod"
+  },
+  "ladok.dropdown_placeholder": {
+    "developer_comment": "Ladok account linking",
+    "string": "Tillgängliga lärosäten"
+  },
+  "ladok.no-data-for-user": {
+    "string": "Ingen information om dig från det lärosätet hittades i Ladok"
   },
   "letter.already-sent": {
     "string": "Ett brev är redan på väg till din folkbokföringsadress"
@@ -945,10 +984,8 @@
   "pd.display_name_input_help_text": {
     "string": "Vissa tjänster visar detta i stället för förnamn och efternamn."
   },
-  "pd.display_name_inputplaceholder": {
-    "string": "Förnamn Efternamn"
-  },
   "pd.display_name_placeholder": {
+    "developer_comment": "Display name label/template (edit personal data)",
     "string": "Valfritt alias"
   },
   "pd.edit.button": {
@@ -961,6 +998,7 @@
     "string": "English"
   },
   "pd.given_name": {
+    "developer_comment": "First name label/template (edit personal data)",
     "string": "Förnamn"
   },
   "pd.hint.names_locked_when_verified": {
@@ -985,6 +1023,7 @@
     "string": "Personlig information sparad"
   },
   "pd.surname": {
+    "developer_comment": "Last name label/template (edit personal data)",
     "string": "Efternamn"
   },
   "pd.sv_lang": {
@@ -1475,6 +1514,10 @@
   "still-valid-code": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
   },
+  "t2g4sA": {
+    "developer_comment": "Ladok account linking",
+    "string": "Ladok information"
+  },
   "text.link": {
     "developer_comment": "Placeholder for phone text input",
     "string": "här."
@@ -1596,6 +1639,14 @@
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken "
+  },
+  "wUi3zr": {
+    "developer_comment": "Reset Password phone code sent",
+    "string": "om"
+  },
+  "yJgjTe": {
+    "developer_comment": "Ladok account linking",
+    "string": "Att länka ditt eduID-konto med Ladok är nödvändigt om du vill komma åt en tjänst som kräver en European Student Identifier."
   },
   "ylul60": {
     "developer_comment": "ToU first paragraph",
