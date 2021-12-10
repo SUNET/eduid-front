@@ -30,7 +30,7 @@ const LadokContainer = (): JSX.Element => {
       <p>
         <FormattedMessage
           defaultMessage={`Data from Ladok might give you access to more services.
-                          Some higher education institutions allow eduID to fetch data from Ladok.`}
+                           Some higher education institutions allow eduID to fetch data from Ladok.`}
           description="Ladok account linking"
         />
       </p>
@@ -53,7 +53,7 @@ const LadokContainer = (): JSX.Element => {
       <p className="help-text">
         <FormattedMessage
           defaultMessage={`Linking your eduID account with data from Ladok is necessary
-                                if you want to access a service requiring a European Student Identifier.`}
+                           if you want to access a service requiring a European Student Identifier.`}
           description="Ladok account linking"
         />
       </p>
