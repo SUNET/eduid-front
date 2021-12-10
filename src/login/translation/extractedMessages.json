@@ -15,6 +15,10 @@
     "developer_comment": "ToU paragraph 1 heading",
     "string": "The following generally applies:"
   },
+  "9P0HXs": {
+    "developer_comment": "help text for custom password tips",
+    "string": "Add digits somewhere, but not at the beginning or end"
+  },
   "9UKtfS": {
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
@@ -67,6 +71,10 @@
   "Missing error message": {
     "string": "Missing error message"
   },
+  "NLtimS": {
+    "developer_comment": "help text for custom password tips",
+    "string": "Use upper- and lowercase characters, but not at the beginning or end"
+  },
   "NXRtQx": {
     "developer_comment": "Reset Password email link sent",
     "string": "Please check your email {email} to continue. Link is valid for 2 hours."
@@ -85,6 +93,10 @@
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
   },
+  "RLocCj": {
+    "developer_comment": "help text for custom password tips",
+    "string": "Spaces are ignored"
+  },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
   },
@@ -98,6 +110,10 @@
   "TmkRXi": {
     "developer_comment": "Reset Password phone code sent (OK button)",
     "string": "OK"
+  },
+  "TvZvvF": {
+    "developer_comment": "help text for custom password tips",
+    "string": "Add special characters, such as @ $ + _ %"
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
