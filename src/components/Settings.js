@@ -32,9 +32,9 @@ class Settings extends Component {
         <RenderGroups />
         <Route path="/profile/settings/personaldata" component={ChangePasswordDisplay} />
         <Route path="/profile/settings/personaldata" component={DeleteAccount} />
-        <Route path="/profile/settings/advanced-settings" component={LadokContainer} />
         <Route path="/profile/settings/advanced-settings" component={SecurityContainer} />
         <Route path="/profile/settings/advanced-settings" component={AccountLinkingContainer} />
+        <Route path="/profile/settings/advanced-settings" component={LadokContainer} />
         <Route path="/profile/settings/advanced-settings" component={AccountId} />
       </div>
     );
