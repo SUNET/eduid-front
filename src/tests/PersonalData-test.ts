@@ -1,15 +1,14 @@
-import expect from "expect";
-import * as actions from "actions/PersonalData";
+import { appLoaded } from "actions/DashboardConfig";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
-import personalDataSlice from "reducers/PersonalData";
-import { requestAllPersonalData, fetchAllPersonalData } from "../sagas/PersonalData";
-import { put, call } from "redux-saga/effects";
-import { GET_NINS_SUCCESS } from "reducers/Nins";
-import { appLoaded } from "actions/DashboardConfig";
-import { PDLadok } from "apis/personalData";
-import Footer from "login/components/Footer/Footer";
+import * as actions from "actions/PersonalData";
+import { LadokData } from "apis/eduidLadok";
+import expect from "expect";
 import ladokSlice from "reducers/Ladok";
+import { GET_NINS_SUCCESS } from "reducers/Nins";
+import personalDataSlice from "reducers/PersonalData";
+import { call, put } from "redux-saga/effects";
+import { fetchAllPersonalData, requestAllPersonalData } from "../sagas/PersonalData";
 
 const personalDataReducer = personalDataSlice.reducer;
 
@@ -167,9 +166,9 @@ describe("Async component", () => {
     // The saga calls fetchAllPersonalData
     expect(next.value).toEqual(call(fetchAllPersonalData, fakeState.config));
 
-    const pd_ladok: PDLadok = {
+    const pd_ladok: LadokData = {
       external_id: "foo",
-      university: { ladok_name: "TEST", name_en: "eng", name_sv: "sve" },
+      university: { ladok_name: "TEST", name: { en: "eng", sv: "sve" } },
     };
     const response = {
       type: actions.GET_ALL_USERDATA_SUCCESS,

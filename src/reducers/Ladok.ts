@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PDLadok } from "apis/personalData";
-import { fetchLadokUniversities, linkUser, LadokUniversityData, unlinkUser } from "../apis/eduidLadok";
+import { fetchLadokUniversities, LadokData, LadokUniversityData, linkUser, unlinkUser } from "../apis/eduidLadok";
 
 interface LadokState {
   isLinked: boolean;
   ladokName?: string; // copied from data.university.ladok_name for convenience
-  data?: PDLadok; // data as loaded from backend
-  unis?: LadokUniversityData; // data as loaded from backend
+  data?: LadokData; // data about a user's link to ladok, as loaded from backend
+  unis?: LadokUniversityData; // data about all available universities, as loaded from backend
   unisFetchFailed?: boolean;
 }
 
@@ -16,7 +15,7 @@ const ladokSlice = createSlice({
   name: "ladok",
   initialState,
   reducers: {
-    updateLadok: (state, action: PayloadAction<PDLadok>) => {
+    updateLadok: (state, action: PayloadAction<LadokData>) => {
       /* Update user state from a personal-data all-user-data backend response */
       state.data = action.payload;
       state.ladokName = state.data.university.ladok_name;

@@ -53,7 +53,7 @@ const LadokContainer = (): JSX.Element => {
       <p className="help-text">
         <FormattedMessage
           defaultMessage={`Linking your eduID account with data from Ladok is necessary
-                                if you want to access a service requiring a European Student Identifier`}
+                                if you want to access a service requiring a European Student Identifier.`}
           description="Ladok account linking"
         />
       </p>
@@ -96,10 +96,11 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   // populate dropdown list of universities
   const unis: JSX.Element[] = [];
   if (ladokUnis !== undefined) {
-    Object.keys(ladokUnis).forEach((key) => {
-      const uni_name = ladokUnis[key].names[locale] || ladokUnis[key].names.en;
+    Object.values(ladokUnis).forEach((item) => {
+      // Get the name of the university in the users locale, fallback to English and then to ladok_name.
+      const uni_name = item.name[locale] || item.name.en || item.ladok_name;
       unis.push(
-        <option key={key} value={key}>
+        <option key={item.ladok_name} value={item.ladok_name}>
           {uni_name}
         </option>
       );
@@ -138,12 +139,12 @@ const LadokLinkStatus = (): JSX.Element => {
 
   let university_name = "unknown";
   if (unis && ladok_name && unis[ladok_name]) {
-    if (locale && unis[ladok_name]) {
+    if (locale) {
       const uni = unis[ladok_name];
-      if (uni.names[locale]) {
-        university_name = uni.names[locale];
-      } else if (uni.names.en) {
-        university_name = uni.names.en;
+      if (uni.name[locale]) {
+        university_name = uni.name[locale];
+      } else if (uni.name.en) {
+        university_name = uni.name.en;
       }
     }
   }

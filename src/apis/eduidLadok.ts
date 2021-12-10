@@ -6,22 +6,28 @@ import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 import { eduidRMAllNotify } from "actions/Notifications";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
-import { PDLadok } from "./personalData";
 
 export interface LadokUniversityData {
   [key: string]: LadokUniversity;
 }
 
 export interface LadokUniversity {
-  names: { [locale: string]: string }; // mapping from locale name to name of university
+  ladok_name: string;
+  name: { [locale: string]: string }; // mapping from locale name to name of university
+}
+
+// Data about a user in Ladok
+export interface LadokData {
+  external_id: string; // Ladok's unique and stable identifier for a user
+  university: LadokUniversity; // The source of the information
 }
 
 export interface LadokUniversitiesResponse {
-  universities: { [key: string]: { name_en: string; name_sv: string } };
+  universities: LadokUniversityData;
 }
 
 export interface LadokLinkUserResponse {
-  ladok: PDLadok;
+  ladok: LadokData;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -57,34 +63,7 @@ export const fetchLadokUniversities = createAsyncThunk<
       return thunkAPI.rejectWithValue(undefined);
     }
 
-    /*
-     * The backend returns data like
-     *  {'Uni-A': {name_sv: 'Svenskt namn',
-     *             name_en: 'English name',
-     *            }
-     *  }
-     *
-     * While we want to store it as
-     *
-     *  {'Uni-A': {names: {sv: 'Svenskt namn',
-     *                     en: 'English name',
-     *                    }
-     *             }
-     *  }
-     *
-     * Since that makes it easier to find the name using our locale, so we re-format it before dispatching it.
-     */
-    const uni_data: LadokUniversityData = {};
-    Object.keys(response.payload.universities).forEach((key) => {
-      uni_data[key] = {
-        names: {
-          en: response.payload.universities[key].name_en,
-          sv: response.payload.universities[key].name_sv,
-        },
-      };
-    });
-
-    return uni_data;
+    return response.payload.universities;
   } catch (error) {
     if (error instanceof Error) {
       thunkAPI.dispatch(ladokFail(error.toString()));
