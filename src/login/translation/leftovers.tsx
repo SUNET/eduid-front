@@ -76,17 +76,6 @@ export const leftoverMessages = {
       description="help text for custom password label"
     />
   ),
-  "chpass.help-text-newpass-tips": (
-    <FormattedMessage
-      id="chpass.help-text-newpass-tips"
-      defaultMessage={`
-      Use upper- and lowercase characters, but not at the beginning or end
-      Add digits somewhere, but not at the beginning or end
-      Add special characters, such as  @ $ \\u005c %
-      Spaces are ignored`}
-      description="help text for custom password tips"
-    />
-  ),
   "cm.lost_code": (
     <FormattedMessage
       id="cm.lost_code"

@@ -184,10 +184,6 @@
     "developer_comment": "help text for custom password label",
     "string": "Tänk på att välja ett säkert lösenord"
   },
-  "chpass.help-text-newpass-tips": {
-    "developer_comment": "help text for custom password tips",
-    "string": "Använd stora och små bokstäver (inte bara första bokstaven)\n Lägg till en eller flera siffror någonstans i mitten av lösenordet\n Använd specialtecken som @ $ \\u005c  + _ %\n Blanksteg (mellanslag) ignoreras"
-  },
   "chpass.low-password-entropy": {
     "string": "Var god välj ett starkare lösenord"
   },

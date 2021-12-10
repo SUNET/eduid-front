@@ -2,19 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-
 import FormText from "reactstrap/lib/FormText";
-// import Label from "reactstrap/lib/Label";
-// import Button from "reactstrap/lib/Button";
 import ButtonGroup from "reactstrap/lib/ButtonGroup";
-
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-
 import EduIDButton from "components/EduIDButton";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import TextInput from "components/EduIDTextInput";
-
-// import "style/ChangePassword.scss";
+import { FormattedMessage } from "react-intl";
 
 export const pwFieldCustomName = "custom-password-field",
   pwFieldRepeatName = "repeat-password-field",
@@ -102,12 +96,26 @@ class ChangePasswordForm extends Component {
         <div className="password-format">
           <label>{this.props.translate("chpass.help-text-newpass-label")}</label>
           <ul id="password-custom-help">
-            {this.props
-              .translate("chpass.help-text-newpass-tips")
-              .split("\n")
-              .map((list, index) => {
-                return <li key={index}>{list}</li>;
-              })}
+            {[
+              <FormattedMessage
+                defaultMessage={`Use upper- and lowercase characters, but not at the beginning or end`}
+                description="help text for custom password tips"
+              />,
+              <FormattedMessage
+                defaultMessage={`Add digits somewhere, but not at the beginning or end`}
+                description="help text for custom password tips"
+              />,
+              <FormattedMessage
+                defaultMessage={`Add special characters, such as  @ $ \ + _ %`}
+                description="help text for custom password tips"
+              />,
+              <FormattedMessage
+                defaultMessage={`Spaces are ignored`}
+                description="help text for custom password tips"
+              />,
+            ].map((list, index) => {
+              return <li key={index}>{list}</li>;
+            })}
           </ul>
         </div>
       );
