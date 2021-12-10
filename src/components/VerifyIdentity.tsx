@@ -72,7 +72,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       const addedNin = this.props.nins[0];
 
       const buttonHelpText = (msg: string, disabled_if?: boolean) => {
-        <p className={"proofing-btn-help" + (disabled_if === true ? " disabled" : "")}>{translate(msg)}</p>;
+        return <p className={"proofing-btn-help" + (disabled_if === true ? " disabled" : "")}>{translate(msg)}</p>;
       };
 
       // proofing via letter requires the user to have added a NIN first
