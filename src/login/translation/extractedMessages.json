@@ -1582,10 +1582,6 @@
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
-  "vTCKf9": {
-    "developer_comment": "help text for custom password tips",
-    "string": "Add special characters, such as @ $ \\u005c %"
-  },
   "value not changed": {
     "string": "The value is not changed"
   },
