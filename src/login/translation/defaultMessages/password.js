@@ -161,7 +161,6 @@ export const resetPassword = {
       defaultMessage={`Reset password link already sent please try again later`}
     />
   ),
-  "resetpw.resend-timer-in": <FormattedMessage id="resetpw.resend-timer-in" defaultMessage={`in`} />,
   "resetpw.extra-security_heading": (
     <FormattedMessage id="resetpw.extra-security_heading" defaultMessage={`Select an extra security option`} />
   ),

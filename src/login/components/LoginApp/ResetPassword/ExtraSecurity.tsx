@@ -66,10 +66,10 @@ interface SecurityWithSMSButtonProps {
   emailCode?: string;
 }
 
-interface PhoneInterface {
+export interface PhoneInterface {
   index: number;
   number: string;
-  phone_code: string;
+  phone_code?: string;
 }
 
 const SecurityWithSMSButton = ({
