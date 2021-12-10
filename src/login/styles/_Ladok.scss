@@ -1,15 +1,15 @@
 .ladok-container {
   h4 {
-    color: black; // placeholder
+    color: $black; // placeholder
   }
 
   p.ladok-link-status {
     text-align: right;
   }
 
-  p.universities-status {
-    text-align: right;
-    color: red;
+  .universities-status {
+    color: $orange-highlight;
+    font-size: 1rem;
   }
 }
 
