@@ -204,13 +204,17 @@ describe("Async component", () => {
     next = generator.next();
     expect(next.value).toEqual(put(action5 as unknown as any));
 
+    const action6 = {
+      type: "GET_PERSONAL_DATA_USER_SUCCESS",
+    };
+
     // The saga passes Ladok linking data on to the ladok reducer
     next = generator.next();
     expect(next.value).toEqual(put(ladokSlice.actions.updateLadok(pd_ladok)));
 
     // The saga informs whomever it concerns that it is done
     next = generator.next();
-    expect(next.value).toEqual(put(appLoaded()));
+    expect(next.value).toEqual(put(action6 as unknown as any));
 
     expect(generator.next().done).toEqual(true);
   });
