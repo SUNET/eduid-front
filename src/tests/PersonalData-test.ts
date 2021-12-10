@@ -1,12 +1,14 @@
-import expect from "expect";
-import * as actions from "actions/PersonalData";
+import { appLoaded } from "actions/DashboardConfig";
 import * as emailActions from "actions/Emails";
 import * as phoneActions from "actions/Mobile";
-import personalDataSlice from "reducers/PersonalData";
-import { requestAllPersonalData, fetchAllPersonalData } from "../sagas/PersonalData";
-import { put, call } from "redux-saga/effects";
+import * as actions from "actions/PersonalData";
+import { LadokData } from "apis/eduidLadok";
+import expect from "expect";
+import ladokSlice from "reducers/Ladok";
 import { GET_NINS_SUCCESS } from "reducers/Nins";
-import { appLoaded } from "actions/DashboardConfig";
+import personalDataSlice from "reducers/PersonalData";
+import { call, put } from "redux-saga/effects";
+import { fetchAllPersonalData, requestAllPersonalData } from "../sagas/PersonalData";
 
 const personalDataReducer = personalDataSlice.reducer;
 
@@ -136,6 +138,10 @@ describe("Async component", () => {
     // The saga calls fetchAllPersonalData
     expect(next.value).toEqual(call(fetchAllPersonalData, fakeState.config));
 
+    const pd_ladok: LadokData = {
+      external_id: "foo",
+      university: { ladok_name: "TEST", name: { en: "eng", sv: "sve" } },
+    };
     const response = {
       type: actions.GET_ALL_USERDATA_SUCCESS,
       payload: {
@@ -148,6 +154,7 @@ describe("Async component", () => {
         nins: [],
         emails: [],
         phones: [],
+        ladok: pd_ladok,
       },
     };
 
@@ -197,9 +204,16 @@ describe("Async component", () => {
     next = generator.next();
     expect(next.value).toEqual(put(action5 as unknown as any));
 
-    // The saga triggers some other sagas with this action
+    const action6 = {
+      type: "GET_PERSONAL_DATA_USER_SUCCESS",
+    };
+
+    // The saga passes Ladok linking data on to the ladok reducer
     next = generator.next();
-    expect(next.value).toEqual(put(actions.GET_USERDATA_SUCCESS()));
+    expect(next.value).toEqual(put(ladokSlice.actions.updateLadok(pd_ladok)));
+
+    next = generator.next();
+    expect(next.value).toEqual(put(action6 as unknown as any));
 
     // The saga informs whomever it concerns that it is done
     next = generator.next();

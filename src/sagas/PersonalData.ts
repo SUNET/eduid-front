@@ -14,6 +14,7 @@ import { AllUserData } from "apis/personalData";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { getRequest } from "sagas/ts_common";
 import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
+import ladokSlice from "reducers/Ladok";
 
 /*
  * Bulk-fetch a lot of user data at once from the all-user-data endpoint.
@@ -84,6 +85,10 @@ export function* requestAllPersonalData() {
           })
         );
       }
+    }
+
+    if (response.payload.ladok !== undefined) {
+      yield put(ladokSlice.actions.updateLadok(response.payload.ladok));
     }
 
     // Dispatch a fake GET_USERDATA_SUCCESS. Will trigger some other sagas that fetch even more info.

@@ -1,12 +1,10 @@
 label {
   display: flex;
-  font-size: 0.75rem;
-  font-family: "ProximaNova-Bold";
+  font-size: 1rem;
+  font-family: "ProximaNova-bold";
   letter-spacing: 0.5px;
   line-height: 1;
-  font-weight: 700;
-  color: #161616;
+  color: $black;
   padding: 0 0 0.1875rem 0.125rem;
-  margin: 0;
   margin-right: 5px;
 }

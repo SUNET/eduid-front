@@ -1,4 +1,5 @@
 import { NinInfo } from "reducers/Nins";
+import { LadokData } from "./eduidLadok";
 
 /*
  * Code and data structures for talking to the eduid-personal_data backend microservice.
@@ -13,7 +14,7 @@ export interface AllUserData {
   phones: PDPhone[];
   surname?: string;
   orcid?: PDOrcid;
-  ladok?: PDLadok;
+  ladok?: LadokData;
 }
 
 export interface PDEmail {
@@ -26,17 +27,6 @@ export interface PDPhone {
   number: string;
   primary: boolean;
   verified: boolean;
-}
-
-export interface PDLadok {
-  external_id: string;
-  university: PDLadokUni;
-}
-
-export interface PDLadokUni {
-  ladok_name: string;
-  name_sv: string;
-  name_en: string;
 }
 
 export interface PDOrcid {
