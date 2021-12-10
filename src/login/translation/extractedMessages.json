@@ -184,10 +184,6 @@
     "developer_comment": "help text for custom password label",
     "string": "Tip: Choose a strong password"
   },
-  "chpass.help-text-newpass-tips": {
-    "developer_comment": "help text for custom password tips",
-    "string": "Use upper- and lowercase characters, but not at the beginning or end Add digits somewhere, but not at the beginning or end Add special characters, such as @ $ \\u005c % Spaces are ignored"
-  },
   "chpass.low-password-entropy": {
     "string": "Please provide a stronger password"
   },
