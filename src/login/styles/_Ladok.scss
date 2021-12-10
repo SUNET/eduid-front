@@ -32,6 +32,10 @@ fieldset + fieldset:not(:empty) {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  label {
+    padding: 0;
+    margin: 0;
+  }
 }
 .status {
   margin-top: 1rem;
