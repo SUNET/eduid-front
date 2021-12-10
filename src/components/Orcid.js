@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import EduIDButton from "components/EduIDButton";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
+import orcidIcon from "../../img/vector_iD_icon-w.svg";
 
 // import "style/AccountLinking.scss";
 
@@ -24,7 +25,7 @@ class Orcid extends Component {
                   {orcidAuthor}
                   <a href={this.props.orcid.id}>
                     <div className="orcid-logo-container">
-                      <span className="orcid-logo" />
+                      <img className="orcid-logo" src={orcidIcon} />
                     </div>
                     {this.props.orcid.id}
                   </a>
@@ -54,7 +55,7 @@ class Orcid extends Component {
         <Fragment>
           <PrimaryButton id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
             <div className="orcid-logo-container">
-              <span className="orcid-logo" />
+              <img className="orcid-logo" src={orcidIcon} />
             </div>
             {this.props.translate("orc.button_connect")}
           </PrimaryButton>
