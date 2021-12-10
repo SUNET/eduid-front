@@ -212,9 +212,12 @@ describe("Async component", () => {
     next = generator.next();
     expect(next.value).toEqual(put(ladokSlice.actions.updateLadok(pd_ladok)));
 
-    // The saga informs whomever it concerns that it is done
     next = generator.next();
     expect(next.value).toEqual(put(action6 as unknown as any));
+
+    // The saga informs whomever it concerns that it is done
+    next = generator.next();
+    expect(next.value).toEqual(put(appLoaded()));
 
     expect(generator.next().done).toEqual(true);
   });
