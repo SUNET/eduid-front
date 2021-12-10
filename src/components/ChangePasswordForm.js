@@ -106,7 +106,7 @@ class ChangePasswordForm extends Component {
                 description="help text for custom password tips"
               />,
               <FormattedMessage
-                defaultMessage={`Add special characters, such as  @ $ \\u005c %`}
+                defaultMessage={`Add special characters, such as  @ $ \ + _ %`}
                 description="help text for custom password tips"
               />,
               <FormattedMessage
