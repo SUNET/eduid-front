@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-
 import EduIDButton from "components/EduIDButton";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import orcidIcon from "../../img/vector_iD_icon-w.svg";
-// import "style/AccountLinking.scss";
 
 class Orcid extends Component {
   render() {
