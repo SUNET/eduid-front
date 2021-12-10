@@ -123,12 +123,6 @@ export const leftoverMessages = {
     />
   ),
   "pd.display_name": <FormattedMessage id="pd.display_name" defaultMessage={`Display name`} />,
-  "pd.display_name_placeholder": (
-    <FormattedMessage id="pd.display_name_placeholder" defaultMessage={`Optional alias`} />
-  ),
   "pd.language": <FormattedMessage id="pd.language" defaultMessage={`Language`} />,
-  "pd.display_name_input_placeholder": (
-    <FormattedMessage id="pd.display_name_inputplaceholder" defaultMessage={`First and last name`} />
-  ),
   "phones.input_placeholder": <FormattedMessage id="phones.input_placeholder" defaultMessage={`Phone number`} />,
 };
