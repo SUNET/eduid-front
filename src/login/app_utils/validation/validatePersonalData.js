@@ -7,12 +7,6 @@ const validatePersonalData = (values, props) => {
       if (!values[inputName] || emptyStringPattern.test(values[inputName])) {
         errors[inputName] = "required";
       }
-      //none of the fields value properties differ from their initial properties will get error message.
-      else if (props.pristine) {
-        errors[inputName] = "value not changed";
-      } else if (values[inputName].trim() === props.initialValues[inputName]) {
-        errors[inputName] = "value not changed";
-      }
     });
   }
   return errors;

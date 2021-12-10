@@ -28,34 +28,6 @@ describe("Personal Data Actions", () => {
     };
     expect(actions.getAllUserdataFail(err)).toEqual(expectedAction);
   });
-
-  // it("shouldn't update personal data user", () => {
-  //   const data = {
-  //     name: "Pablo",
-  //   };
-  //   const data_error = {
-  //     name: "Pablo",
-  //     language: "en",
-  //   };
-  //   const expectedAction = {
-  //     type: actions.CHANGE_USERDATA,
-  //     payload: data_error,
-  //   };
-  //   expect(actions.changeUserdata(data)).not.toEqual(expectedAction);
-  // });
-
-  //   it("should update personal data user", () => {
-  //     const data = {
-  //       name: "Pablo",
-  //       language: "en",
-  //     };
-
-  //     const expectedAction = {
-  //       type: actions.CHANGE_USERDATA,
-  //       payload: data,
-  //     };
-  //     expect(actions.changeUserdata(data)).toEqual(expectedAction);
-  //   });
 });
 
 describe("Reducers", () => {
@@ -235,6 +207,10 @@ describe("Async component", () => {
     // The saga passes Ladok linking data on to the ladok reducer
     next = generator.next();
     expect(next.value).toEqual(put(ladokSlice.actions.updateLadok(pd_ladok)));
+
+    // The saga triggers some other sagas with this action
+    next = generator.next();
+    expect(next.value).toEqual(put(actions.GET_USERDATA_SUCCESS()));
 
     // The saga informs whomever it concerns that it is done
     next = generator.next();

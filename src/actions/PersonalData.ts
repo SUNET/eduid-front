@@ -2,7 +2,7 @@ import { createAction } from "@reduxjs/toolkit";
 import { PersonalDataData } from "reducers/PersonalData";
 
 export const GET_ALL_USERDATA_SUCCESS = "GET_PERSONAL_DATA_ALL_USER_DATA_SUCCESS";
-export const GET_USERDATA_SUCCESS = "GET_PERSONAL_DATA_USER_SUCCESS";
+export const GET_USERDATA_SUCCESS = createAction("GET_PERSONAL_DATA_USER_SUCCESS");
 
 // TODO: This actions seems to be a NO-OP? It is dispatched by the requestAllPersonalData saga but never consumed.
 export const getAllUserdata = createAction("GET_ALL_USERDATA");

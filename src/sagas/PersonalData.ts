@@ -1,7 +1,7 @@
 import { put, select, call } from "redux-saga/effects";
 import { updateIntl } from "../reducers/Internationalisation";
 import { checkStatus, putCsrfToken, failRequest } from "sagas/common";
-import { getAllUserdata, getAllUserdataFail } from "actions/PersonalData";
+import { getAllUserdata, getAllUserdataFail, GET_USERDATA_SUCCESS } from "actions/PersonalData";
 
 import * as actions from "actions/DashboardConfig";
 import * as emailActions from "actions/Emails";
@@ -90,6 +90,10 @@ export function* requestAllPersonalData() {
     if (response.payload.ladok !== undefined) {
       yield put(ladokSlice.actions.updateLadok(response.payload.ladok));
     }
+
+    // Dispatch a fake GET_USERDATA_SUCCESS. Will trigger some other sagas that fetch even more info.
+    // TODO: these other sagas should maybe be triggered by something else? The appLoaded below perhaps?
+    yield put(GET_USERDATA_SUCCESS());
 
     yield put(actions.appLoaded());
   } catch (error) {
