@@ -91,6 +91,10 @@ export function* requestAllPersonalData() {
       yield put(ladokSlice.actions.updateLadok(response.payload.ladok));
     }
 
+    // Dispatch a fake GET_USERDATA_SUCCESS. Will trigger some other sagas that fetch even more info.
+    // TODO: these other sagas should maybe be triggered by something else? The appLoaded below perhaps?
+    yield put(GET_USERDATA_SUCCESS());
+
     yield put(actions.appLoaded());
   } catch (error) {
     yield* failRequest(error, getAllUserdataFail);
