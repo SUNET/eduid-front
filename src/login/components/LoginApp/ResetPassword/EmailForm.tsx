@@ -9,6 +9,7 @@ import { validate } from "../../../app_utils/validation/validateEmail";
 import { useAppDispatch } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { setLocalStorage } from "./CountDownTimer";
+import { useIntl } from "react-intl";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
@@ -29,6 +30,13 @@ interface ValuesProps {
 const EmailForm = (props: EmailFormProps): JSX.Element => {
   const { handleSubmit } = props;
   const dispatch = useAppDispatch();
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "placeholder.email",
+    defaultMessage: "name@example.com",
+    description: "placeholder text for email input",
+  });
 
   const submitEmailForm = (values: ValuesProps) => {
     const email = values.email;
@@ -47,7 +55,7 @@ const EmailForm = (props: EmailFormProps): JSX.Element => {
         componentClass="input"
         id="email-input"
         component={CustomInput}
-        placeholder="name@example.com"
+        placeholder={placeholder}
         required={true}
         helpBlock={translate("emails.input_help_text")}
       />

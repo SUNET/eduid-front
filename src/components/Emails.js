@@ -10,8 +10,16 @@ import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
 import { validate } from "../login/app_utils/validation/validateEmail";
 import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
+import { useIntl } from "react-intl";
 
 let EmailForm = (props) => {
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "placeholder.email",
+    defaultMessage: "name@example.com",
+    description: "placeholder text for email input",
+  });
   return (
     <Form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="emails-form" className="tabpane">
@@ -21,7 +29,7 @@ let EmailForm = (props) => {
           componentClass="input"
           type="text"
           name="email"
-          placeholder="name@example.com"
+          placeholder={placeholder}
           helpBlock={props.translate("emails.input_help_text")}
         />
       </fieldset>
