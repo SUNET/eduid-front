@@ -596,7 +596,7 @@
     "string": "Available higher education institutions"
   },
   "ladok.no-data-for-user": {
-    "string": "No information for you found in Ladok with that higher education institution"
+    "string": "No information for you found in Ladok with that higher education institution."
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"

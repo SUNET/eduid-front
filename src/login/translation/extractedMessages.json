@@ -595,8 +595,14 @@
     "developer_comment": "Ladok account linking",
     "string": "Available higher education institutions"
   },
+  "ladok.missing-university": {
+    "string": "Unknown higher education institution. Please try again later."
+  },
   "ladok.no-data-for-user": {
-    "string": "No information for you found in Ladok with that institution"
+    "string": "No information for you found in Ladok with that institution."
+  },
+  "ladok.no-verified-nin": {
+    "string": "You need a verified Swedish national identity number to link your account with Ladok"
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
