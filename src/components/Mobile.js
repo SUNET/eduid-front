@@ -1,15 +1,16 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
-import Form from "reactstrap/lib/Form";
-
-import CustomInput from "../login/components/Inputs/CustomInput";
 import EduIDButton from "components/EduIDButton";
+import { translate } from "login/translation";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { useIntl } from "react-intl";
+import { connect } from "react-redux";
+import Form from "reactstrap/lib/Form";
+import { Field, reduxForm } from "redux-form";
+import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import TableList from "../login/components/DataTable/DataTable";
+import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
-import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 
 const validate = (values, props) => {
   let phone = values.number;
@@ -30,17 +31,25 @@ const validate = (values, props) => {
 };
 
 let PhoneForm = (props) => {
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "placeholder.phone",
+    defaultMessage: "Phone number",
+    description: "placeholder text for phone input",
+  });
+
   return (
     <Form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
       <fieldset id="phone-form" className="tabpane">
         <Field
-          label={props.translate("profile.phone_display_title")}
+          label={translate("profile.phone_display_title")}
           component={CustomInput}
           componentClass="input"
           type="text"
           name="number"
-          placeholder={props.translate("phones.input_placeholder")}
-          helpBlock={props.translate("phones.input_help_text")}
+          placeholder={placeholder}
+          helpBlock={translate("phones.input_help_text")}
         />
       </fieldset>
       <EduIDButton
@@ -49,7 +58,7 @@ let PhoneForm = (props) => {
         disabled={!props.valid_phone}
         onClick={props.handleAdd}
       >
-        {props.translate("mobile.button_add")}
+        {translate("mobile.button_add")}
       </EduIDButton>
     </Form>
   );
@@ -65,67 +74,66 @@ PhoneForm = connect((state) => ({
   enableReinitialize: true,
 }))(PhoneForm);
 
-class Mobile extends Component {
-  constructor(props) {
-    super(props);
-    this.showEmailForm = this.showEmailForm.bind(this);
-    this.state = { formClass: "hide", addLinkClass: "btn-link" };
-  }
+function Mobile(props) {
+  const [formClass, setFormClass] = useState("hide");
+  const [addLinkClass, setAddLinkClass] = useState("btn-link");
 
-  showEmailForm() {
-    this.setState(() => {
-      return {
-        formClass: "form-content",
-        addLinkClass: "hide",
-      };
-    });
-    // rendering focus on input, setTimeout for 2 milliseconds to recognize the form
+  function showEmailForm() {
+    setFormClass("form-content");
+    setAddLinkClass("hide");
+    // rendering focus on input, setTimeout for 200 milliseconds to recognize the form
     setTimeout(() => {
       document.getElementById("number").focus();
     }, 200);
   }
 
-  render() {
-    return (
-      <div className="phoneview-form-container" id="phone">
-        <div className="intro">
-          <h4>{this.props.translate("phones.main_title")}</h4>
-          <p>{this.props.translate("phones.long_description")}</p>
-        </div>
-        <div id="phone-display">
-          <TableList
-            data={this.props.phones}
-            handleStartConfirmation={this.props.handleStartConfirmation}
-            handleRemove={this.props.handleRemove}
-            handleMakePrimary={this.props.handleMakePrimary}
-          />
-          <div className={this.state.formClass}>
-            <PhoneForm {...this.props} />
-          </div>
-          <EduIDButton id="add-more-button" className={this.state.addLinkClass} onClick={this.showEmailForm}>
-            {this.props.translate("phones.button_add_more")}
-          </EduIDButton>
-        </div>
-        <ConfirmModal
-          modalId="phoneConfirmDialog"
-          id="phoneConfirmDialogControl"
-          title={this.props.translate("mobile.confirm_title", {
-            phone: this.props.confirming,
-          })}
-          resendLabel={this.props.translate("cm.enter_code")}
-          resendHelp={this.props.translate("cm.lost_code")}
-          resendText={this.props.translate("cm.resend_code")}
-          placeholder={this.props.translate("mobile.placeholder")}
-          showModal={Boolean(this.props.confirming)}
-          closeModal={this.props.handleStopConfirmation}
-          handleResend={this.props.handleResend}
-          handleConfirm={this.props.handleConfirm}
-          validationPattern={shortCodePattern}
-          validationError={"confirmation.code_invalid_format"}
-        />
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "mobile.confirm_mobile_placeholder",
+    defaultMessage: "Phone confirmation code",
+    description: "placeholder text for phone code input",
+  });
+
+  return (
+    <div className="phoneview-form-container" id="phone">
+      <div className="intro">
+        <h4>{translate("phones.main_title")}</h4>
+        <p>{translate("phones.long_description")}</p>
       </div>
-    );
-  }
+      <div id="phone-display">
+        <TableList
+          data={props.phones}
+          handleStartConfirmation={props.handleStartConfirmation}
+          handleRemove={props.handleRemove}
+          handleMakePrimary={props.handleMakePrimary}
+        />
+        <div className={formClass}>
+          <PhoneForm {...props} />
+        </div>
+        <EduIDButton id="add-more-button" className={addLinkClass} onClick={showEmailForm}>
+          {translate("phones.button_add_more")}
+        </EduIDButton>
+      </div>
+      <ConfirmModal
+        modalId="phoneConfirmDialog"
+        id="phoneConfirmDialogControl"
+        title={translate("mobile.confirm_title", {
+          phone: props.confirming,
+        })}
+        resendLabel={translate("cm.enter_code")}
+        resendHelp={translate("cm.lost_code")}
+        resendText={translate("cm.resend_code")}
+        placeholder={placeholder}
+        showModal={Boolean(props.confirming)}
+        closeModal={props.handleStopConfirmation}
+        handleResend={props.handleResend}
+        handleConfirm={props.handleConfirm}
+        validationPattern={shortCodePattern}
+        validationError={"confirmation.code_invalid_format"}
+      />
+    </div>
+  );
 }
 
 Mobile.propTypes = {

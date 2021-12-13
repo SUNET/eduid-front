@@ -11,7 +11,6 @@ import {
   startRemove,
 } from "actions/Mobile";
 import { eduidRMAllNotify } from "actions/Notifications";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {
@@ -74,4 +73,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const MobileContainer = connect(mapStateToProps, mapDispatchToProps)(Mobile);
 
-export default i18n(MobileContainer);
+export default MobileContainer;

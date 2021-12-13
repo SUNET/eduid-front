@@ -1,53 +1,47 @@
-import React, { Component } from "react";
+import { translate } from "login/translation";
 import PropTypes from "prop-types";
-import NotificationModal from "../Modals/NotificationModal";
-import ConfirmModal from "../Modals/ConfirmModalContainer";
+import React, { useState } from "react";
+import { useIntl } from "react-intl";
 import { shortCodePattern } from "../../app_utils/validation/regexPatterns";
+import ConfirmModal from "../Modals/ConfirmModalContainer";
+import NotificationModal from "../Modals/NotificationModal";
 
-class LetterProofingButton extends Component {
-  state = {
-    letter_expired: false,
-    letter_expires_date: "",
-    verifyingLetter_sent: false,
-    confirmingLetter: false,
-    letter_sent_date: "",
-  };
+function LetterProofingButton(props) {
+  const [letterExpired, setLetterExpired] = useState(false);
+  const [letterExpiresDate, setLetterExpiresDate] = useState("");
+  const [verifyingLetterSent, setVerifyingLetterSent] = useState(false);
+  const [confirmingLetter, setConfirmingLetter] = useState(false);
+  const [letterSentDate, setLetterSentDate] = useState("");
 
-  handleModal = () => {
-    this.setState({
-      verifyingLetter_sent: this.props.verifyingLetter_sent,
-      letter_expired: this.props.letter_expired,
-      confirmingLetter: this.props.confirmingLetter,
-      letter_sent_date: this.props.letter_sent_date,
-      letter_expires_date: this.props.letter_expires_date,
-    });
-  };
+  function handleModal() {
+    setVerifyingLetterSent(props.verifyingLetter_sent);
+    setLetterExpired(props.letter_expired);
+    setConfirmingLetter(props.confirmingLetter);
+    setLetterSentDate(props.letter_sent_date);
+    setLetterExpiresDate(props.letter_expires_date);
+  }
 
-  sendConfirmationCode = (e) => {
-    this.props.sendConfirmationCode(e);
-    this.closeConfirmationModal();
-  };
+  function sendConfirmationCode(e) {
+    props.sendConfirmationCode(e);
+    closeConfirmationModal();
+  }
 
-  closeConfirmationModal = () => {
-    this.setState({
-      verifyingLetter_sent: false,
-    });
-  };
+  function closeConfirmationModal() {
+    setVerifyingLetterSent(false);
+  }
 
-  confirmLetterProofing = (e) => {
-    this.props.confirmLetterProofing(e);
-    this.closeNotificationModal();
-  };
+  function confirmLetterProofing(e) {
+    props.confirmLetterProofing(e);
+    closeNotificationModal();
+  }
 
-  closeNotificationModal = () => {
-    this.setState({
-      letter_sent_date: "",
-      confirmingLetter: false,
-      letter_expires_date: "",
-    });
-  };
+  function closeNotificationModal() {
+    setLetterSentDate("");
+    setConfirmingLetter(false);
+    setLetterExpiresDate("");
+  }
 
-  formatDateFromBackend = (dateFromBackend) => {
+  function formatDateFromBackend(dateFromBackend) {
     let newDate = new Date(dateFromBackend);
     return (
       newDate.getFullYear() +
@@ -56,89 +50,89 @@ class LetterProofingButton extends Component {
       "-" +
       newDate.getDate().toString().padStart(2, 0)
     );
-  };
+  }
 
-  render() {
-    const showNotificationModal =
-      (this.state.letter_sent_date === "" && this.state.confirmingLetter) ||
-      (this.state.letter_expired && this.state.letter_sent_date !== "");
-    const showConfirmationModal =
-      !this.state.letter_expired &&
-      this.state.letter_sent_date !== "" &&
-      !this.state.confirmingLetter &&
-      this.state.verifyingLetter_sent;
-    let description = "";
-    if (this.props.disabled) {
+  const showNotificationModal = (letterSentDate === "" && confirmingLetter) || (letterExpired && letterSentDate !== "");
+  const showConfirmationModal = !letterExpired && letterSentDate !== "" && !confirmingLetter && verifyingLetterSent;
+  let description = "";
+  if (props.disabled) {
+    description = <div className="description">{translate("verify-identity.vetting_explanation_add_nin")}</div>;
+  } else {
+    if (props.letter_sent_date === "") {
+      description = <div />;
+    } else if (props.letter_expired) {
       description = (
-        <div className="description">{this.props.translate("verify-identity.vetting_explanation_add_nin")}</div>
+        <>
+          <div className="description">
+            {translate("verify-identity.vetting_letter_code_expired")}
+            <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
+          </div>
+          <div className="description">{translate("verify-identity.vetting_letter_order_new_code")}</div>
+        </>
       );
     } else {
-      if (this.props.letter_sent_date === "") {
-        description = <div />;
-      } else if (this.props.letter_expired) {
-        description = (
-          <>
-            <div className="description">
-              {this.props.translate("verify-identity.vetting_letter_code_expired")}
-              <span id="letter_expires_date">{this.formatDateFromBackend(this.props.letter_expires_date)}</span>
-            </div>
-            <div className="description">{this.props.translate("verify-identity.vetting_letter_order_new_code")}</div>
-          </>
-        );
-      } else {
-        description = (
-          <>
-            <div className="description">
-              {this.props.translate("verify-identity.vetting_letter_sent")}
-              <span id="letter_sent_date">{this.formatDateFromBackend(this.props.letter_sent_date)}</span>
-            </div>
-            <div className="description">
-              {this.props.translate("verify-identity.vetting_letter_valid")}
-              <span id="letter_expires_date">{this.formatDateFromBackend(this.props.letter_expires_date)}</span>
-            </div>
-            <div className="description">{this.props.translate("verify-identity.vetting_letter_received")}</div>
-          </>
-        );
-      }
+      description = (
+        <>
+          <div className="description">
+            {translate("verify-identity.vetting_letter_sent")}
+            <span id="letter_sent_date">{formatDateFromBackend(props.letter_sent_date)}</span>
+          </div>
+          <div className="description">
+            {translate("verify-identity.vetting_letter_valid")}
+            <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
+          </div>
+          <div className="description">{translate("verify-identity.vetting_letter_received")}</div>
+        </>
+      );
     }
-    return (
-      <div>
-        <div className="vetting-button">
-          <button disabled={this.props.disabled} onClick={() => this.handleModal()}>
-            <div className="text">
-              {this.props.translate("verify-identity.vetting_post_tagline")}
-              {description}
-            </div>
-            <div className="name">{this.props.translate("letter.button_text_request")}</div>
-          </button>
-        </div>
-        <NotificationModal
-          modalId="letterGenericConfirmDialog"
-          title={this.props.translate("letter.modal_confirm_title")}
-          mainText={this.props.translate("letter.modal_confirm_info")}
-          showModal={showNotificationModal}
-          closeModal={this.closeNotificationModal}
-          acceptModal={this.confirmLetterProofing}
-        />
-        <ConfirmModal
-          modalId="letterConfirmDialog"
-          id="letterConfirmDialogControl"
-          title={this.props.translate("letter.verify_title")}
-          resendLabel={this.props.translate("cm.enter_code")}
-          placeholder={this.props.translate("letter.placeholder")}
-          showModal={showConfirmationModal}
-          closeModal={this.closeConfirmationModal}
-          handleConfirm={this.sendConfirmationCode}
-          with_resend_link={false}
-          validationPattern={shortCodePattern}
-          validationError={"confirmation.code_invalid_format"}
-        />
-      </div>
-    );
   }
+
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "letter.placeholder",
+    defaultMessage: "Letter confirmation code",
+    description: "Placeholder for letter proofing text input",
+  });
+
+  return (
+    <div>
+      <div className="vetting-button">
+        <button disabled={props.disabled} onClick={() => handleModal()}>
+          <div className="text">
+            {translate("verify-identity.vetting_post_tagline")}
+            {description}
+          </div>
+          <div className="name">{translate("letter.button_text_request")}</div>
+        </button>
+      </div>
+      <NotificationModal
+        modalId="letterGenericConfirmDialog"
+        title={translate("letter.modal_confirm_title")}
+        mainText={translate("letter.modal_confirm_info")}
+        showModal={showNotificationModal}
+        closeModal={closeNotificationModal}
+        acceptModal={confirmLetterProofing}
+      />
+      <ConfirmModal
+        modalId="letterConfirmDialog"
+        id="letterConfirmDialogControl"
+        title={translate("letter.verify_title")}
+        resendLabel={translate("cm.enter_code")}
+        placeholder={placeholder}
+        showModal={showConfirmationModal}
+        closeModal={closeConfirmationModal}
+        handleConfirm={sendConfirmationCode}
+        with_resend_link={false}
+        validationPattern={shortCodePattern}
+        validationError={"confirmation.code_invalid_format"}
+      />
+    </div>
+  );
 }
 
 LetterProofingButton.propTypes = {
+  disabled: PropTypes.bool,
   confirmingLetter: PropTypes.bool,
   sendConfirmationCode: PropTypes.func,
   handleLetterProofing: PropTypes.func,

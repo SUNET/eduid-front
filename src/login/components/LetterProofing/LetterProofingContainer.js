@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import { isValid } from "redux-form";
 import LetterProofingButton from "./LetterProofing";
 import * as actions from "../../../actions/LetterProofing";
-import i18n from "../../translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   const confirming = state.letter_proofing.confirmingLetter;
@@ -41,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const LetterProofingContainer = connect(mapStateToProps, mapDispatchToProps)(LetterProofingButton);
 
-export default i18n(LetterProofingContainer);
+export default LetterProofingContainer;

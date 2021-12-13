@@ -8,6 +8,7 @@ import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";
 import * as actions from "actions/Email";
+import { useIntl } from "react-intl";
 
 const submitEmailForm = (values, dispatch) => {
   const { email } = values;
@@ -15,28 +16,37 @@ const submitEmailForm = (values, dispatch) => {
 };
 
 /* FORM */
-const EmailForm = (props) => (
-  <Form id="register-form" role="form">
-    <Field
-      type="email"
-      name="email"
-      label={props.translate("signup.registering-input")}
-      componentClass="input"
-      id="email-input"
-      component={CustomInput}
-      translate={props.translate}
-      placeholder="name@example.com"
-    />
-    <EduIDButton
-      className="settings-button"
-      id="register-button"
-      disabled={props.invalid}
-      onClick={() => props.dispatch(submit("emailForm"))}
-    >
-      {props.translate("email.sign-up-email")}
-    </EduIDButton>
-  </Form>
-);
+const EmailForm = (props) => {
+  const intl = useIntl();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "placeholder.email",
+    defaultMessage: "name@example.com",
+    description: "placeholder text for email input",
+  });
+  return (
+    <Form id="register-form" role="form">
+      <Field
+        type="email"
+        name="email"
+        label={props.translate("signup.registering-input")}
+        componentClass="input"
+        id="email-input"
+        component={CustomInput}
+        translate={props.translate}
+        placeholder={placeholder}
+      />
+      <EduIDButton
+        className="settings-button"
+        id="register-button"
+        disabled={props.invalid}
+        onClick={() => props.dispatch(submit("emailForm"))}
+      >
+        {props.translate("email.sign-up-email")}
+      </EduIDButton>
+    </Form>
+  );
+};
 
 let EmailReduxForm = reduxForm({
   form: "emailForm",
