@@ -1324,7 +1324,7 @@
     "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
   },
   "resetpw.without_extra_security_heading": {
-    "string": "<b>Forsätt utan extra säkerhetsalternativ </b>"
+    "string": "Forsätt utan extra säkerhetsalternativ"
   },
   "runtime_error.generic.description": {
     "string": "Problemet har rapporterats till teamet."
