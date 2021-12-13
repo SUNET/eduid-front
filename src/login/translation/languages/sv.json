@@ -73,7 +73,7 @@
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
-    "string": "Använd stora och små bokstäver (inte bara första bokstaven)"
+    "string": "Blanda stora och små bokstäver (inte bara första bokstaven)"
   },
   "NXRtQx": {
     "developer_comment": "Reset Password email link sent",
@@ -421,7 +421,7 @@
     "string": "Ogiltig bekräftelsekod. Var god prova igen eller begär en ny bekräftelsekod"
   },
   "emails.confirm_email_placeholder": {
-    "developer_comment": "Placeholder for email text input",
+    "developer_comment": "Placeholder for email code input",
     "string": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   },
   "emails.confirm_help_text": {
@@ -807,7 +807,7 @@
     "string": "Lägg till"
   },
   "mobile.confirm_mobile_placeholder": {
-    "developer_comment": "Placeholder for phone text input",
+    "developer_comment": "placeholder text for phone code input",
     "string": "Bekräftelsekod"
   },
   "mobile.confirm_title": {
@@ -1095,9 +1095,6 @@
   "phones.input_help_text": {
     "string": "Telefonnummer som börjar med 0 eller +"
   },
-  "phones.input_placeholder": {
-    "string": "Telefonnummer"
-  },
   "phones.invalid_phone": {
     "string": "Ogiltigt telefonnummer"
   },
@@ -1125,9 +1122,17 @@
   "phones.verification-success": {
     "string": "Telefonnummer har bekräftats"
   },
+  "placeholder.email": {
+    "developer_comment": "placeholder text for email input",
+    "string": "namn@example.com"
+  },
   "placeholder.password": {
     "developer_comment": "placeholder text for password input",
     "string": "ange lösenord"
+  },
+  "placeholder.phone": {
+    "developer_comment": "placeholder text for phone input",
+    "string": "Telefonnummer"
   },
   "profile.email_display_no_data": {
     "string": "ingen e-postadress sparad"
@@ -1319,7 +1324,7 @@
     "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
   },
   "resetpw.without_extra_security_heading": {
-    "string": "Forsätt utan extra säkerhetsalternativ"
+    "string": "<b>Forsätt utan extra säkerhetsalternativ </b>"
   },
   "runtime_error.generic.description": {
     "string": "Problemet har rapporterats till teamet."
@@ -1355,10 +1360,6 @@
   "security.button_delete_account": {
     "string": "Radera eduID"
   },
-  "security.confirm_security_placeholder": {
-    "developer_comment": "Placeholder for security key text input",
-    "string": "Beskriv din säkerhetsnyckel"
-  },
   "security.creation_date": {
     "string": "Skapad den"
   },
@@ -1387,6 +1388,10 @@
   },
   "security.password_credential_type": {
     "string": "Lösenord"
+  },
+  "security.placeholder": {
+    "developer_comment": "placeholder text for security key description input",
+    "string": "Beskriv din säkerhetsnyckel"
   },
   "security.remove": {
     "string": "Ta bort"
