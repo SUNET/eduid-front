@@ -15,9 +15,9 @@ function LetterProofingButton(props) {
 
   function handleModal() {
     setVerifyingLetterSent(props.verifyingLetter_sent);
-    setLetterExpired(props.letterExpired);
+    setLetterExpired(props.letter_expired);
     setConfirmingLetter(props.confirmingLetter);
-    setLetterSentDate(props.letterSentDate);
+    setLetterSentDate(props.letter_sent_date);
     setLetterExpiresDate(props.letter_expires_date);
   }
 
