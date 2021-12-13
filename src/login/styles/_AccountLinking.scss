@@ -4,22 +4,36 @@
 
 // @import "../variables.scss";
 
-.orcid-logo {
-  display: inline-flex;
-  align-self: center;
-  height: 1.35em;
-  width: 1.35em;
-  top: 0.3em;
-  position: relative;
-  // background: url(../../../img/vector_iD_icon-w.svg);
-}
-
 .orcid-logo-container {
   display: inline-flex;
-  align-items: center;
+  // align-items: center;
   // padding-left: 0.25em;
   padding-right: 0.35em;
   fill: currentColor;
+
+  span.orcid-logo {
+    background: url(../../../img/vector_iD_icon.svg);
+    background-repeat: no-repeat;
+    margin-right: 0.3em;
+    align-self: start;
+    top: 0;
+    min-width: 22px;
+  }
+
+  .orcid-logo {
+    display: inline-flex;
+    align-self: center;
+    height: 22px;
+    width: 22px;
+    top: 0.3em;
+    position: relative;
+  }
+
+  .orcid-link {
+    font-size: 1.25rem;
+    padding-bottom: 0.5em;
+    word-break: break-word;
+  }
 }
 
 .orcid-logo-container label {

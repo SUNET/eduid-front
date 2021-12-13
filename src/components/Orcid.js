@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-
 import EduIDButton from "components/EduIDButton";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import orcidIcon from "../../img/vector_iD_icon-w.svg";
-
-// import "style/AccountLinking.scss";
 
 class Orcid extends Component {
   render() {
@@ -22,28 +19,28 @@ class Orcid extends Component {
             <tbody>
               <tr className="emailrow">
                 <td>
-                  {orcidAuthor}
+                  <div className="flex-between">
+                    {orcidAuthor}
+                    <EduIDButton className="btn-link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
+                      <svg
+                        className="remove"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M7 0h2v16H7z" />
+                        <path d="M0 9V7h16v2z" />
+                      </svg>
+                    </EduIDButton>
+                  </div>
                   <a href={this.props.orcid.id}>
                     <div className="orcid-logo-container">
-                      <img className="orcid-logo" src={orcidIcon} />
+                      <span className="orcid-logo" />
+                      <span className="orcid-link">{this.props.orcid.id}</span>
                     </div>
-                    {this.props.orcid.id}
                   </a>
-                </td>
-                <td>
-                  <EduIDButton className="btn-link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
-                    <svg
-                      className="remove"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M7 0h2v16H7z" />
-                      <path d="M0 9V7h16v2z" />
-                    </svg>
-                  </EduIDButton>
                 </td>
               </tr>
             </tbody>
