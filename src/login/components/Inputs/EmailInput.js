@@ -1,7 +1,6 @@
 import React from "react";
 import { Field } from "redux-form";
 import CustomInput from "./CustomInput";
-import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useIntl } from "react-intl";
 import { translate } from "login/translation";
@@ -31,7 +30,6 @@ const EmailInput = ({ required, autoFocus }) => {
 };
 
 EmailInput.propTypes = {
-  translate: PropTypes.func.isRequired,
   required: PropTypes.bool,
   autoFocus: PropTypes.bool,
 };
