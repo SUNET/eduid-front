@@ -8,6 +8,7 @@ import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";
 import * as actions from "actions/Email";
+import { useIntl } from "react-intl";
 
 const submitEmailForm = (values, dispatch) => {
   const { email } = values;

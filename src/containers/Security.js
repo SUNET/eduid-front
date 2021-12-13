@@ -15,7 +15,6 @@ import {
   chooseAuthenticator,
 } from "actions/Security";
 import { eduidRMAllNotify } from "actions/Notifications";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {
@@ -82,4 +81,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const SecurityContainer = connect(mapStateToProps, mapDispatchToProps)(Security);
 
-export default i18n(SecurityContainer);
+export default SecurityContainer;

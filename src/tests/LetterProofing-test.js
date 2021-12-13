@@ -286,7 +286,7 @@ describe("Async component", () => {
     },
   };
 
-  it("Sagas sendLetterProfing", () => {
+  it("Sagas sendLetterProofing", () => {
     const generator = sendLetterProofing();
 
     let next = generator.next();
@@ -313,7 +313,7 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(action));
   });
 
-  it("Sagas sendGetLetterProfing", () => {
+  it("Sagas sendGetLetterProofing", () => {
     const generator = sendGetLetterProofing();
 
     let next = generator.next();
