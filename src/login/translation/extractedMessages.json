@@ -1319,7 +1319,7 @@
     "string": "Your account will require confirmation after the password has been reset."
   },
   "resetpw.without_extra_security_heading": {
-    "string": "<b>Continue without extra security option </b>"
+    "string": "Continue without extra security option"
   },
   "runtime_error.generic.description": {
     "string": "The issue has been reported to the team."

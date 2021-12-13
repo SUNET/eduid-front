@@ -179,7 +179,7 @@ export const resetPassword = {
   "resetpw.without_extra_security_heading": (
     <FormattedMessage
       id="resetpw.without_extra_security_heading"
-      defaultMessage={`<b>Continue without extra security option </b> `}
+      defaultMessage={`Continue without extra security option`}
     />
   ),
   "resetpw.without_extra_security": (
