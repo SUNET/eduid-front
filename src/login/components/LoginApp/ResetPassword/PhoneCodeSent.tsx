@@ -50,7 +50,6 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
 
   const handlePhoneCode = (values: { phone: string }) => {
     const phone = values.phone;
-    console.log("props.emailCode", props.emailCode);
     history.push(`/reset-password/set-new-password/${props.emailCode}`);
     dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
@@ -111,7 +110,6 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
   }, []);
 
   useEffect(() => {
-    console.log("PhoneCodeSent emailCode", emailCode);
     dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode));
     // Reload page will redirect user to extra security page
   }, [dispatch]);
