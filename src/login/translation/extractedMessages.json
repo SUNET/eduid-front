@@ -602,7 +602,7 @@
     "string": "No information for you found in Ladok with that institution."
   },
   "ladok.no-verified-nin": {
-    "string": "You need a verified Swedish national identity number to link your account with Ladok"
+    "string": "You need a verified Swedish national identity number to link your account with Ladok."
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
