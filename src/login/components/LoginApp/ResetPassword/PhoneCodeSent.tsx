@@ -50,6 +50,7 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
 
   const handlePhoneCode = (values: { phone: string }) => {
     const phone = values.phone;
+    console.log("props.emailCode", props.emailCode);
     history.push(`/reset-password/set-new-password/${props.emailCode}`);
     dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
@@ -70,12 +71,7 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
         }
         name="phone"
       />
-      <EduIDButton
-        onClick={handlePhoneCode}
-        className="settings-button"
-        id="save-phone-button"
-        disabled={props.invalid}
-      >
+      <EduIDButton className="settings-button" id="save-phone-button" disabled={props.invalid}>
         <FormattedMessage defaultMessage="OK" description="Reset Password phone code sent (OK button)" />
       </EduIDButton>
     </Form>
@@ -87,7 +83,7 @@ const DecoratedPhoneForm = reduxForm<PhoneCodeFormData, PhoneCodeProps>({
   validate,
 })(PhoneCodeForm);
 
-export const ConnectedPhoneForm = connect(() => ({
+const ConnectedPhoneForm = connect(() => ({
   enableReinitialize: true,
   initialValues: {
     phone: "",
@@ -115,6 +111,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
   }, []);
 
   useEffect(() => {
+    console.log("PhoneCodeSent emailCode", emailCode);
     dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode));
     // Reload page will redirect user to extra security page
   }, [dispatch]);
@@ -137,7 +134,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
             }}
           />
         </p>
-        <ConnectedPhoneForm {...props} />
+        <ConnectedPhoneForm {...props} emailCode={emailCode} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
             <FormattedMessage
