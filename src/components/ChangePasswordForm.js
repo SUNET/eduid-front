@@ -122,7 +122,7 @@ class ChangePasswordForm extends Component {
     } else {
       form = (
         <Field
-          className="suggetsed-password"
+          className="suggested-password"
           component={TextInput}
           componentClass="input"
           type="text"
