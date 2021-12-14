@@ -355,7 +355,7 @@
     "string": "Tips: Du kan hitta närmsta ombud i appen"
   },
   "eidas.initialize_proofing_help_text": {
-    "string": "För att använda det här alternativet måste du först skaffa ett digitalt ID-kort i <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> appen."
+    "string": "För att använda det här alternativet måste du först skaffa ett digitalt ID-kort i {skaffa_freja_eid_link} appen."
   },
   "eidas.modal_title": {
     "string": "Med Freja eID appen kan du skapa ett digitalt ID-kort"

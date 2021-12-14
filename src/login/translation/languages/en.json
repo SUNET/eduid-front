@@ -355,7 +355,7 @@
     "string": "Tip: Use the app to find your nearest agent"
   },
   "eidas.initialize_proofing_help_text": {
-    "string": "To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app."
+    "string": "To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app."
   },
   "eidas.modal_title": {
     "string": "Use Freja eID+ and pass a local authorised agent"
