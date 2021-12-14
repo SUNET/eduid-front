@@ -23,7 +23,12 @@ const personalDataSlice = createSlice({
   initialState,
   reducers: {
     updatePersonalData: (state, action: PayloadAction<PersonalDataData>) => {
-      state.data = action.payload;
+      return {
+        data: {
+          eppn: state.data.eppn,
+          ...action.payload,
+        },
+      };
     },
   },
   extraReducers: (builder) => {
