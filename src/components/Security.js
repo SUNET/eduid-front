@@ -9,6 +9,7 @@ import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import "../login/styles/index.scss";
 import { useIntl } from "react-intl";
+import CookieChecker from "./../components/CookieChecker";
 
 function Security(props) {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
@@ -92,12 +93,15 @@ function Security(props) {
           <SecurityKeyTable {...props} />
           <div className="register-authn-buttons">
             {isPlatformAuthenticatorAvailable ? (
-              <EduIDButton
-                id="security-webauthn-platform-button"
-                onClick={props.handleStartAskingDeviceWebauthnDescription}
-              >
-                {translate("security.add_webauthn_token_device")}
-              </EduIDButton>
+              // TODO: will remove CookieChecker when user can authenticate with other devices
+              <CookieChecker cookieName="show-platform-auth">
+                <EduIDButton
+                  id="security-webauthn-platform-button"
+                  onClick={props.handleStartAskingDeviceWebauthnDescription}
+                >
+                  {translate("security.add_webauthn_token_device")}
+                </EduIDButton>
+              </CookieChecker>
             ) : null}
             <button
               id="security-webauthn-button"
