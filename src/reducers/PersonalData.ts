@@ -24,7 +24,10 @@ const personalDataSlice = createSlice({
   reducers: {
     updatePersonalData: (state, action: PayloadAction<PersonalDataData>) => {
       return {
+        // TODO:move eppn outside of state.personalData.data
+        // and remove "eppn: state.data.eppn"
         data: {
+          // to prevent the disappearance of eppn when the user is updating personal-data
           eppn: state.data.eppn,
           ...action.payload,
         },
