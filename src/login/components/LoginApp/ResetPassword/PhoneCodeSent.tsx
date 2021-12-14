@@ -70,19 +70,24 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
         }
         name="phone"
       />
-      <EduIDButton className="settings-button" id="save-phone-button" disabled={props.invalid}>
+      <EduIDButton
+        onClick={handlePhoneCode}
+        className="settings-button"
+        id="save-phone-button"
+        disabled={props.invalid}
+      >
         <FormattedMessage defaultMessage="OK" description="Reset Password phone code sent (OK button)" />
       </EduIDButton>
     </Form>
   );
 };
 
-export const DecoratedPhoneForm = reduxForm<PhoneCodeFormData, PhoneCodeProps>({
+const DecoratedPhoneForm = reduxForm<PhoneCodeFormData, PhoneCodeProps>({
   form: "phone-code-form",
   validate,
 })(PhoneCodeForm);
 
-connect(() => ({
+export const ConnectedPhoneForm = connect(() => ({
   enableReinitialize: true,
   initialValues: {
     phone: "",
@@ -132,7 +137,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
             }}
           />
         </p>
-        <DecoratedPhoneForm {...props} />
+        <ConnectedPhoneForm {...props} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
             <FormattedMessage
