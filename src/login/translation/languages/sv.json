@@ -23,6 +23,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Skicka bekräftelsekoden igen"
   },
+  "CH6SNS": {
+    "developer_comment": "Ladok account linking",
+    "string": "Länka ditt konto till Ladok"
+  },
   "CSRF failed to validate": {
     "string": "CSRF-koden var fel, var god ladda om sidan"
   },
@@ -113,7 +117,7 @@
   },
   "TvZvvF": {
     "developer_comment": "help text for custom password tips",
-    "string": "Använd specialtecken som@ $ + _ %"
+    "string": "Använd specialtecken som @ $ + _ %"
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
@@ -355,7 +359,7 @@
     "string": "Tips: Du kan hitta närmsta ombud i appen"
   },
   "eidas.initialize_proofing_help_text": {
-    "string": "För att använda det här alternativet måste du först skaffa ett digitalt ID-kort i {skaffa_freja_eid_link} appen."
+    "string": "För att använda det här alternativet måste du först skaffa ett digitalt ID-kort i <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> appen."
   },
   "eidas.modal_title": {
     "string": "Med Freja eID appen kan du skapa ett digitalt ID-kort"
@@ -595,8 +599,14 @@
     "developer_comment": "Ladok account linking",
     "string": "Tillgängliga lärosäten"
   },
+  "ladok.missing-university": {
+    "string": "Okänd lärosäten. Vänligen försök igen senare."
+  },
   "ladok.no-data-for-user": {
-    "string": "Ingen information om dig från det lärosätet hittades i Ladok"
+    "string": "Ingen information om dig hittades för detta lärosäten."
+  },
+  "ladok.no-verified-nin": {
+    "string": "Du behöver ett svenskt personnummer för att länka ditt konto med Ladok."
   },
   "letter.already-sent": {
     "string": "Ett brev är redan på väg till din folkbokföringsadress"
@@ -704,7 +714,7 @@
     "string": "Säkerhetsnyckel"
   },
   "login.mfa.secondary-option.button": {
-    "string": "Använd mitt {freja_eidplus_verbatim}"
+    "string": "Använd mitt <span class=\"verbatim\">Freja&nbsp;eID+</span>"
   },
   "login.mfa.secondary-option.title": {
     "string": "Freja eID+"
@@ -1324,7 +1334,7 @@
     "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
   },
   "resetpw.without_extra_security_heading": {
-    "string": "Forsätt utan extra säkerhetsalternativ"
+    "string": "<b>Forsätt utan extra säkerhetsalternativ </b>"
   },
   "runtime_error.generic.description": {
     "string": "Problemet har rapporterats till teamet."
