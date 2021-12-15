@@ -704,7 +704,7 @@
     "string": "Säkerhetsnyckel"
   },
   "login.mfa.secondary-option.button": {
-    "string": "Använd mitt <span class=\"verbatim\">Freja&nbsp;eID+</span>"
+    "string": "Använd mitt {freja_eidplus_verbatim}"
   },
   "login.mfa.secondary-option.title": {
     "string": "Freja eID+"
