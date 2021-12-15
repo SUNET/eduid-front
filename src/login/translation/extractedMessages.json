@@ -23,6 +23,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
   },
+  "CH6SNS": {
+    "developer_comment": "Ladok account linking",
+    "string": "Link your account to Ladok"
+  },
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
