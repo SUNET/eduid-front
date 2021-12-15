@@ -811,7 +811,7 @@
     "string": "Bekräftelsekod"
   },
   "mobile.confirm_title": {
-    "string": "Skriv in koden som skickats till <b>{phone}</b>"
+    "string": "Skriv in koden som skickats till {phone}"
   },
   "mobile.mobile": {
     "string": "Telefon"
