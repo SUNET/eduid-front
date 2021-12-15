@@ -11,7 +11,7 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
   // compose external link
   const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
   const idp = useAppSelector((state) => state.config.mfa_auth_idp);
-  const startUrl = useAppSelector((state) => state.config.start_url);
+  const startUrl = useAppSelector((state) => state.login.start_url);
   // ensure url has one slash at the end to be functional in the link
   const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain.concat("/");
 
