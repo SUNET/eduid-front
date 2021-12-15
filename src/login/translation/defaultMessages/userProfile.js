@@ -721,11 +721,7 @@ export const userData = {
   "mobile.button_add": <FormattedMessage id="mobile.button_add" defaultMessage={`Add`} />,
 
   "mobile.confirm_title": (values) => (
-    <FormattedMessage
-      id="mobile.confirm_title"
-      defaultMessage={`Enter the code sent to <b>{phone}</b>`}
-      values={values}
-    />
+    <FormattedMessage id="mobile.confirm_title" defaultMessage={`Enter the code sent to {phone}`} values={values} />
   ),
 
   /* ----- PERSONAL DATA------- */
