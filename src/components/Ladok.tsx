@@ -37,7 +37,9 @@ const LadokContainer = (): JSX.Element => {
 
       <fieldset>
         <label className="toggle flex-between" htmlFor="ladok-connection">
-          <span>Link your account to Ladok</span>
+          <span>
+            <FormattedMessage defaultMessage={`Link your account to Ladok`} description="Ladok account linking" />
+          </span>
           <input
             onChange={handleSwitchChange}
             className="toggle-checkbox"
