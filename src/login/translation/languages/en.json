@@ -23,6 +23,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
   },
+  "CH6SNS": {
+    "developer_comment": "Ladok account linking",
+    "string": "Link your account to Ladok"
+  },
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
@@ -355,7 +359,7 @@
     "string": "Tip: Use the app to find your nearest agent"
   },
   "eidas.initialize_proofing_help_text": {
-    "string": "To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app."
+    "string": "To use this option you will need to first create a digital ID-card in the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> app."
   },
   "eidas.modal_title": {
     "string": "Use Freja eID+ and pass a local authorised agent"
@@ -595,8 +599,14 @@
     "developer_comment": "Ladok account linking",
     "string": "Available higher education institutions"
   },
+  "ladok.missing-university": {
+    "string": "Unknown higher education institution. Please try again later."
+  },
   "ladok.no-data-for-user": {
-    "string": "No information for you found in Ladok with that higher education institution."
+    "string": "No information for you found in Ladok with that institution."
+  },
+  "ladok.no-verified-nin": {
+    "string": "You need a verified Swedish national identity number to link your account with Ladok."
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
@@ -704,7 +714,7 @@
     "string": "Security key"
   },
   "login.mfa.secondary-option.button": {
-    "string": "Use my {freja_eidplus_verbatim}"
+    "string": "Use my <span class=\"verbatim\">Freja&nbsp;eID+</span>"
   },
   "login.mfa.secondary-option.title": {
     "string": "Freja eID+"
@@ -1651,7 +1661,7 @@
     "string": "For you with a Swedish phone number registered in your name"
   },
   "verify-identity.vetting_post_tagline": {
-    "string": "For you registered at your current address"
+    "string": "For you registered at your current address}"
   },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
