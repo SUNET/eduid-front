@@ -4,70 +4,34 @@ import { mount } from "enzyme";
 import { put, call } from "redux-saga/effects";
 import expect from "expect";
 import { BrowserRouter as Router } from "react-router-dom";
-import ChangePasswordContainer from "containers/ChangePassword";
-import * as actions from "actions/ChangePassword";
-import chpassReducer from "reducers/ChangePassword";
+import chpassSlice from "reducers/ChangePassword";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 
-import {
-  requestSuggestedPassword,
-  postPasswordChange,
-  fetchSuggestedPassword,
-  postPassword,
-} from "sagas/ChangePassword";
+import { requestSuggestedPassword, postPasswordChange, postPassword } from "sagas/ChangePassword";
+import { ChangePasswordContainer } from "components/ChangePassword";
+import { fetchSuggestedPassword } from "apis/eduidSecurity";
 
 const messages = require("../login/translation/messageIndex");
 
 describe("ChangePassword Actions", () => {
   it("Should get a suggested password", () => {
     const expectedAction = {
-      type: actions.GET_SUGGESTED_PASSWORD,
+      type: fetchSuggestedPassword.type,
     };
-    expect(actions.getSuggestedPassword()).toEqual(expectedAction);
-  });
-
-  it("Should fail when trying to get a suggested password", () => {
-    const err = "Bad error";
-    const expectedAction = {
-      type: actions.GET_SUGGESTED_PASSWORD_FAIL,
-      error: true,
-      payload: {
-        message: err,
-      },
-    };
-    expect(actions.getSuggestedPasswordFail(err)).toEqual(expectedAction);
+    expect(fetchSuggestedPassword()).toEqual(expectedAction);
   });
 
   it("Post password change (new and old)", () => {
     const passwd1 = "1234",
       passwd2 = "5678",
       expectedAction = {
-        type: actions.POST_PASSWORD_CHANGE,
+        type: postPasswordChange.type,
         payload: {
           old: passwd1,
-          next: passwd2,
+          new: passwd2,
         },
       };
-    expect(actions.postPasswordChange(passwd1, passwd2)).toEqual(expectedAction);
-  });
-
-  it("Should start password change", () => {
-    const expectedAction = {
-      type: actions.START_PASSWORD_CHANGE,
-    };
-    expect(actions.startPasswordChange()).toEqual(expectedAction);
-  });
-
-  it("Fail starting passwd change", () => {
-    const err = "Error",
-      expectedAction = {
-        type: actions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
-        error: true,
-        payload: {
-          message: err,
-        },
-      };
-    expect(actions.postPasswordChangeFail(err)).toEqual(expectedAction);
+    expect(postPasswordChange(passwd1, passwd2)).toEqual(expectedAction);
   });
 });
 
@@ -80,30 +44,21 @@ describe("Reducers", () => {
     choose_custom: false,
   };
 
-  it("Receives a GET_SUGGESTED_PASSWORD action", () => {
+  it("Receives a fetchSuggestedPassword action", () => {
     expect(
-      chpassReducer(mockState, {
-        type: actions.GET_SUGGESTED_PASSWORD,
+      chpassSlice.reducer(mockState, fetchSuggestedPassword()).toEqual({
+        message: "",
+        suggested_password: "",
+        old_password: "",
+        new_password: "",
+        choose_custom: false,
       })
-    ).toEqual({
-      message: "",
-      suggested_password: "",
-      old_password: "",
-      new_password: "",
-      choose_custom: false,
-    });
+    );
   });
 
   it("Receives a GET_SUGGESTED_PASSWORD_SUCCESS action", () => {
     const suggested = "2345";
-    expect(
-      chpassReducer(mockState, {
-        type: actions.GET_SUGGESTED_PASSWORD_SUCCESS,
-        payload: {
-          suggested_password: suggested,
-        },
-      })
-    ).toEqual({
+    expect(chpassSlice.reducer(mockState, fetchSuggestedPassword.fulfilled(suggested))).toEqual({
       message: "",
       suggested_password: suggested,
       old_password: "",
@@ -115,7 +70,7 @@ describe("Reducers", () => {
   it("Receives a GET_SUGGESTED_PASSWORD_FAIL action", () => {
     const errMsg = "Bad error";
     expect(
-      chpassReducer(mockState, {
+      chpassSlice.reducer(mockState, {
         type: actions.GET_SUGGESTED_PASSWORD_FAIL,
         error: true,
         payload: {
@@ -131,15 +86,15 @@ describe("Reducers", () => {
     });
   });
 
-  it("Receives a POST_PASSWORD_CHANGE action", () => {
+  it("Receives a postPasswordChange action", () => {
     const passwd1 = "1234",
       passwd2 = "5678";
     expect(
-      chpassReducer(mockState, {
-        type: actions.POST_PASSWORD_CHANGE,
+      chpassSlice.reducer(mockState, {
+        type: actions.postPasswordChange.type,
         payload: {
           old: passwd1,
-          next: passwd2,
+          new: passwd2,
         },
       })
     ).toEqual({
@@ -153,7 +108,7 @@ describe("Reducers", () => {
 
   it("Receives a START_PASSWORD_CHANGE action", () => {
     expect(
-      chpassReducer(mockState, {
+      chpassSlice.reducer(mockState, {
         type: actions.START_PASSWORD_CHANGE,
       })
     ).toEqual({
@@ -168,7 +123,7 @@ describe("Reducers", () => {
   it("Receives a POST_SECURITY_CHANGE_PASSWORD_SUCCESS action", () => {
     const msg = "message";
     expect(
-      chpassReducer(mockState, {
+      chpassSlice.reducer(mockState, {
         type: actions.POST_SECURITY_CHANGE_PASSWORD_SUCCESS,
         payload: {
           message: msg,
@@ -186,7 +141,7 @@ describe("Reducers", () => {
   it("Receives a POST_SECURITY_CHANGE_PASSWORD_FAIL action", () => {
     const err = "Error";
     expect(
-      chpassReducer(mockState, {
+      chpassSlice.reducer(mockState, {
         type: actions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
         error: true,
         payload: {

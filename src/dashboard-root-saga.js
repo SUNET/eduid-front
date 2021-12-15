@@ -1,51 +1,47 @@
-import { takeLatest, takeEvery, select } from "redux-saga/effects";
-import { put } from "redux-saga/effects";
-import * as configActions from "actions/DashboardConfig";
-import * as pdataActions from "actions/PersonalData";
-import * as emailActions from "actions/Emails";
-import * as mobileActions from "actions/Mobile";
-import * as openidActions from "actions/OpenidConnect";
-import * as securityActions from "actions/Security";
 import * as accountLinkingActions from "actions/AccountLinking";
-import * as pwActions from "actions/ChangePassword";
-import * as ninActions from "actions/Nins";
-import * as openidFrejaActions from "actions/OpenidConnectFreja";
+import * as configActions from "actions/DashboardConfig";
+import * as emailActions from "actions/Emails";
+import * as headerActions from "actions/Header";
 import * as letterActions from "actions/LetterProofing";
 import * as lmpActions from "actions/LookupMobileProofing";
-import * as headerActions from "actions/Header";
-import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updateNamesFromSkatteverketActions";
-
-import { requestAllPersonalData } from "sagas/PersonalData";
+import * as mobileActions from "actions/Mobile";
+import * as ninActions from "actions/Nins";
+import * as openidActions from "actions/OpenidConnect";
+import * as openidFrejaActions from "actions/OpenidConnectFreja";
+import * as pdataActions from "actions/PersonalData";
+import * as securityActions from "actions/Security";
+import ninsSlice from "reducers/Nins";
+import { put, select, takeEvery, takeLatest } from "redux-saga/effects";
+import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/AccountLinking";
+import { requestConfig } from "sagas/DashboardConfig";
 import {
-  saveEmail,
+  requestMakePrimaryEmail,
+  requestRemoveEmail,
   requestResendEmailCode,
   requestVerifyEmail,
-  requestRemoveEmail,
-  requestMakePrimaryEmail,
+  saveEmail,
 } from "sagas/Emails";
+import { requestLogout } from "sagas/Header";
+import { sendGetLetterProofing, sendLetterCode, sendLetterProofing } from "sagas/LetterProofing";
+import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import * as sagasMobile from "sagas/Mobile";
-import * as sagasOpenidFreja from "sagas/OpenidConnectFreja";
+import { postNin, requestNins, requestRemoveNin } from "sagas/Nins";
 import * as sagasOpenid from "sagas/OpenidConnect";
-import { requestConfig } from "sagas/DashboardConfig";
-import { requestRemoveOrcid, requestOrcid, requestConnectOrcid } from "sagas/AccountLinking";
+import * as sagasOpenidFreja from "sagas/OpenidConnectFreja";
+import { requestAllPersonalData } from "sagas/PersonalData";
 import {
-  requestCredentials,
-  requestPasswordChange,
-  postDeleteAccount,
   beginRegisterWebauthn,
+  postDeleteAccount,
   registerWebauthn,
   removeWebauthnToken,
+  requestCredentials,
+  requestPasswordChange,
   verifyWebauthnToken,
 } from "sagas/Security";
-import { requestSuggestedPassword, postPasswordChange } from "sagas/ChangePassword";
-import { requestNins, requestRemoveNin, postNin } from "sagas/Nins";
-import { sendLetterProofing, sendGetLetterProofing, sendLetterCode } from "sagas/LetterProofing";
-import { requestLogout } from "sagas/Header";
-import { saveLMPNinData } from "sagas/LookupMobileProofing";
-import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
-import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
+import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updateNamesFromSkatteverketActions";
 import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga";
-import ninsSlice from "reducers/Nins";
+import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
+import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -68,7 +64,7 @@ function* rootSaga() {
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, allowGroupsSagas),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestCredentials),
-    takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestSuggestedPassword),
+    //takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestSuggestedPassword),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, sendGetLetterProofing),
     takeLatest(pdataActions.postUserdata.type, postPersonalDataSaga),
     takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),
@@ -90,7 +86,6 @@ function* rootSaga() {
     takeLatest(mobileActions.START_RESEND_MOBILE_CODE, sagasMobile.requestResendMobileCode),
     takeLatest(mobileActions.START_VERIFY, sagasMobile.requestVerifyMobile),
     takeLatest(securityActions.GET_CHANGE_PASSWORD, requestPasswordChange),
-    takeLatest(pwActions.POST_PASSWORD_CHANGE, postPasswordChange),
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeLatest(letterActions.POST_LETTER_PROOFING_PROOFING, sendLetterProofing),
     takeLatest(letterActions.GET_LETTER_PROOFING_PROOFING, sendGetLetterProofing),
