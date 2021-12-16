@@ -7,9 +7,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import chpassSlice from "reducers/ChangePassword";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 
-import { requestSuggestedPassword, postPasswordChange, postPassword } from "sagas/ChangePassword";
 import { ChangePasswordContainer } from "components/ChangePassword";
 import { fetchSuggestedPassword } from "apis/eduidSecurity";
+import { requestPasswordChange } from "sagas/Security";
 
 const messages = require("../login/translation/messageIndex");
 
@@ -25,13 +25,13 @@ describe("ChangePassword Actions", () => {
     const passwd1 = "1234",
       passwd2 = "5678",
       expectedAction = {
-        type: postPasswordChange.type,
+        type: requestPasswordChange.type,
         payload: {
           old: passwd1,
           new: passwd2,
         },
       };
-    expect(postPasswordChange(passwd1, passwd2)).toEqual(expectedAction);
+    expect(requestPasswordChange(passwd1, passwd2)).toEqual(expectedAction);
   });
 });
 

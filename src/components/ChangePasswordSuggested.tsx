@@ -70,7 +70,7 @@ function BareChangePasswordSuggestedForm(props: ChangePasswordChildFormProps & C
       </fieldset>
       <div id="password-suggestion">
         <ButtonGroup>
-          <EduIDButton value="custom" className="btn-link" onClick={props.togglePasswordType}>
+          <EduIDButton value="custom" className="btn-link" id="pwmode-button" onClick={props.togglePasswordType}>
             {translate("chpass.button_custom_password")}
           </EduIDButton>
         </ButtonGroup>
