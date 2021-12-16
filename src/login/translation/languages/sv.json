@@ -600,13 +600,13 @@
     "string": "Tillgängliga lärosäten"
   },
   "ladok.missing-university": {
-    "string": "Okänd lärosäten. Vänligen försök igen senare."
+    "string": "Okänt lärosäte. Vänligen försök igen senare."
   },
   "ladok.no-data-for-user": {
-    "string": "Ingen information om dig hittades för detta lärosäten."
+    "string": "Ingen information om dig hittades i Ladok för detta lärosäte."
   },
   "ladok.no-verified-nin": {
-    "string": "Du behöver ett svenskt personnummer för att länka ditt konto med Ladok."
+    "string": "Du behöver verifiera ditt svenskt personnummer för att länka ditt konto med Ladok."
   },
   "letter.already-sent": {
     "string": "Ett brev är redan på väg till din folkbokföringsadress"
@@ -714,7 +714,7 @@
     "string": "Säkerhetsnyckel"
   },
   "login.mfa.secondary-option.button": {
-    "string": "Använd mitt <span class=\"verbatim\">Freja&nbsp;eID+</span>"
+    "string": "Använd mitt {freja_eidplus_verbatim}"
   },
   "login.mfa.secondary-option.title": {
     "string": "Freja eID+"
@@ -1334,7 +1334,7 @@
     "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
   },
   "resetpw.without_extra_security_heading": {
-    "string": "<b>Forsätt utan extra säkerhetsalternativ </b>"
+    "string": "Fortsätt utan extra säkerhetsalternativ"
   },
   "runtime_error.generic.description": {
     "string": "Problemet har rapporterats till teamet."
