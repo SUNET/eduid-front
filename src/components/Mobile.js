@@ -99,7 +99,6 @@ function Mobile(props) {
     {
       id: "mobile.confirm_title",
       defaultMessage: "Enter the code sent to {phone}",
-      description: "Title for phone code input",
     },
     { phone: props.confirming }
   );

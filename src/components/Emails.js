@@ -81,7 +81,6 @@ function Emails(props) {
     {
       id: "emails.confirm_title",
       defaultMessage: "Click the link or enter the code sent to {email} here",
-      description: "Title for email code input",
     },
     { email: props.confirming }
   );
