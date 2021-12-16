@@ -23,6 +23,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Skicka bekräftelsekoden igen"
   },
+  "CH6SNS": {
+    "developer_comment": "Ladok account linking",
+    "string": "Länka ditt konto till Ladok"
+  },
   "CSRF failed to validate": {
     "string": "CSRF-koden var fel, var god ladda om sidan"
   },
@@ -113,7 +117,7 @@
   },
   "TvZvvF": {
     "developer_comment": "help text for custom password tips",
-    "string": "Använd specialtecken som@ $ + _ %"
+    "string": "Använd specialtecken som @ $ + _ %"
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
@@ -595,8 +599,14 @@
     "developer_comment": "Ladok account linking",
     "string": "Tillgängliga lärosäten"
   },
+  "ladok.missing-university": {
+    "string": "Okänt lärosäte. Vänligen försök igen senare."
+  },
   "ladok.no-data-for-user": {
-    "string": "Ingen information om dig från det lärosätet hittades i Ladok"
+    "string": "Ingen information om dig hittades i Ladok för detta lärosäte."
+  },
+  "ladok.no-verified-nin": {
+    "string": "Du behöver verifiera ditt svenska personnummer för att länka ditt konto med Ladok."
   },
   "letter.already-sent": {
     "string": "Ett brev är redan på väg till din folkbokföringsadress"
@@ -940,13 +950,13 @@
     "string": "FREJA EID"
   },
   "ocf.initialize_proofing_help_text": {
-    "string": "För att använda det här alternativet så behöver du installera <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID-appen</a>."
+    "string": "För att använda det här alternativet så behöver du installera {skaffa_freja_eid_link}."
   },
   "ocf.modal_title": {
     "string": "Verifiera med Freja eID"
   },
   "ocf.not_on_mobile_message": {
-    "string": "Du måste använda en mobil (iOS eller Android) med <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID-appen</a> installerad för att kunna verifiera ditt konto med Freja eID."
+    "string": "Du måste använda en mobil (iOS eller Android) med {skaffa_freja_eid_link} installerad för att kunna verifiera ditt konto med Freja eID."
   },
   "ocf.not_on_mobile_title": {
     "string": "Använder du inte din mobil?"
@@ -1324,7 +1334,7 @@
     "string": "Ditt konto kommer att behöva verifieras efter att lösenordet har återställts."
   },
   "resetpw.without_extra_security_heading": {
-    "string": "Forsätt utan extra säkerhetsalternativ"
+    "string": "Fortsätt utan extra säkerhetsalternativ"
   },
   "runtime_error.generic.description": {
     "string": "Problemet har rapporterats till teamet."
