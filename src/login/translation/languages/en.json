@@ -714,7 +714,7 @@
     "string": "Security key"
   },
   "login.mfa.secondary-option.button": {
-    "string": "Use my <span class=\"verbatim\">Freja&nbsp;eID+</span>"
+    "string": "Use my {freja_eidplus_verbatim}"
   },
   "login.mfa.secondary-option.title": {
     "string": "Freja eID+"
