@@ -23,6 +23,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
   },
+  "CH6SNS": {
+    "developer_comment": "Ladok account linking",
+    "string": "Link your account to Ladok"
+  },
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
@@ -595,8 +599,14 @@
     "developer_comment": "Ladok account linking",
     "string": "Available higher education institutions"
   },
+  "ladok.missing-university": {
+    "string": "Unknown higher education institution. Please try again later."
+  },
   "ladok.no-data-for-user": {
     "string": "No information for you found in Ladok with that higher education institution."
+  },
+  "ladok.no-verified-nin": {
+    "string": "You need a verified Swedish national identity number to link your account with Ladok."
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
@@ -940,13 +950,13 @@
     "string": "with Freja eID"
   },
   "ocf.initialize_proofing_help_text": {
-    "string": "To use this option you need to have the <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID app</a> installed on your device."
+    "string": "To use this option you need to have the {skaffa_freja_eid_link} installed on your device."
   },
   "ocf.modal_title": {
     "string": "Confirm using Freja eID"
   },
   "ocf.not_on_mobile_message": {
-    "string": "You need to switch to a mobile device (iOS or Android) with <a href=\"https://frejaeid.com/skaffa-freja-eid/\" target=\"_blank\">Freja eID</a> installed before you will be able to confirm your account using Freja eID."
+    "string": "You need to switch to a mobile device (iOS or Android) with {skaffa_freja_eid_link} installed before you will be able to confirm your account using Freja eID."
   },
   "ocf.not_on_mobile_title": {
     "string": "Not using your phone?"
