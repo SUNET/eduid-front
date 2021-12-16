@@ -77,12 +77,12 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
   );
 };
 
-export const DecoratedPhoneForm = reduxForm<PhoneCodeFormData, PhoneCodeProps>({
+const DecoratedPhoneForm = reduxForm<PhoneCodeFormData, PhoneCodeProps>({
   form: "phone-code-form",
   validate,
 })(PhoneCodeForm);
 
-connect(() => ({
+const ConnectedPhoneForm = connect(() => ({
   enableReinitialize: true,
   initialValues: {
     phone: "",
@@ -132,7 +132,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
             }}
           />
         </p>
-        <DecoratedPhoneForm {...props} />
+        <ConnectedPhoneForm {...props} emailCode={emailCode} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
             <FormattedMessage

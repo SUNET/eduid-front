@@ -77,6 +77,15 @@ function Emails(props) {
     description: "Placeholder for email code input",
   });
 
+  const title = intl.formatMessage(
+    {
+      id: "emails.confirm_title",
+      defaultMessage: "Click the link or enter the code sent to {email} here",
+      description: "Title for email code input",
+    },
+    { email: props.confirming }
+  );
+
   return (
     <div className="emailsview-form-container">
       <div className="intro">
@@ -102,9 +111,10 @@ function Emails(props) {
       <ConfirmModal
         modalId="emailConfirmDialog"
         id="emailConfirmDialogControl"
-        title={translate("emails.confirm_title", {
-          email: props.confirming,
-        })}
+        // title={translate("emails.confirm_title", {
+        //   email: props.confirming,
+        // })}
+        title={title}
         resendLabel={translate("cm.enter_code")}
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}

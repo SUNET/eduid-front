@@ -23,6 +23,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
   },
+  "CH6SNS": {
+    "developer_comment": "Ladok account linking",
+    "string": "Link your account to Ladok"
+  },
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
@@ -602,7 +606,7 @@
     "string": "No information for you found in Ladok with that institution."
   },
   "ladok.no-verified-nin": {
-    "string": "You need a verified Swedish national identity number to link your account with Ladok"
+    "string": "You need a verified Swedish national identity number to link your account with Ladok."
   },
   "letter.already-sent": {
     "string": "You have already been sent a verification letter"
@@ -817,7 +821,7 @@
     "string": "Phone confirmation code"
   },
   "mobile.confirm_title": {
-    "string": "Enter the code sent to <b>{phone}</b>"
+    "string": "Enter the code sent to {phone}"
   },
   "mobile.mobile": {
     "string": "mobile"

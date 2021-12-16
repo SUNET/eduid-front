@@ -95,6 +95,15 @@ function Mobile(props) {
     description: "placeholder text for phone code input",
   });
 
+  const title = intl.formatMessage(
+    {
+      id: "mobile.confirm_title",
+      defaultMessage: "Enter the code sent to {phone}",
+      description: "Title for phone code input",
+    },
+    { phone: props.confirming }
+  );
+
   return (
     <div className="phoneview-form-container" id="phone">
       <div className="intro">
@@ -118,9 +127,7 @@ function Mobile(props) {
       <ConfirmModal
         modalId="phoneConfirmDialog"
         id="phoneConfirmDialogControl"
-        title={translate("mobile.confirm_title", {
-          phone: props.confirming,
-        })}
+        title={title}
         resendLabel={translate("cm.enter_code")}
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
