@@ -3,8 +3,7 @@ import expect from "expect";
 import { shallow, mount } from "enzyme";
 import { IntlProvider } from "react-intl";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-import ChangePasswordForm from "components/ChangePasswordForm";
-import { ChangePasswordProps } from "components/ChangePassword";
+import ChangePasswordForm, { ChangePasswordFormProps } from "components/ChangePasswordForm";
 import { DashboardAppDispatch, DashboardRootState, dashboardStore } from "dashboard-init-app";
 import chpassSlice, { ChangePasswordState } from "reducers/ChangePassword";
 
@@ -51,11 +50,7 @@ const fakeStore = (fakeState: DashboardRootState) => ({
     }),
 });
 
-const test_props: ChangePasswordProps = {
-  password_entropy: 0,
-  password_score: 0,
-  password_strength_msg: "testing",
-  custom_ready: false,
+const test_props: ChangePasswordFormProps = {
   cancel_to: "cancel_url",
 };
 

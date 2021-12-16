@@ -4,7 +4,7 @@ const security = {
   message: "",
   credentials: [],
   code: "",
-  confirming_change: false,
+  confirming_change: false, // Show a modal when the user clicks 'change password'
   confirming_deletion: false,
   location: "",
   deleted: false,

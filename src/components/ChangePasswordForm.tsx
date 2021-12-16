@@ -2,12 +2,10 @@ import { changePassword } from "apis/eduidSecurity";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import { ChangePasswordProps } from "./ChangePassword";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
-export interface ChangePasswordFormProps extends ChangePasswordProps {
-  suggested_password?: string;
+export interface ChangePasswordFormProps {
   cancel_to: string; // URL to direct browser to when user cancels password change
 }
 

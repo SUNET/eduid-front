@@ -1,24 +1,26 @@
-import { stopConfirmationPassword } from "actions/Security";
-import { changePassword } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
-import { useDashboardAppDispatch } from "dashboard-hooks";
 import { DashboardRootState } from "dashboard-init-app";
 import { translate } from "login/translation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { useHistory } from "react-router";
 import ButtonGroup from "reactstrap/lib/ButtonGroup";
 import FormText from "reactstrap/lib/FormText";
-import { DecoratedFormProps, Field, InjectedFormProps, reduxForm } from "redux-form";
+import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
+import PasswordStrengthMeter, { PasswordStrengthData } from "./PasswordStrengthMeter";
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
 
 interface ChangePasswordCustomFormData {
   custom?: string;
   repeat?: string;
   old?: string;
+  score?: number;
+  too_weak?: boolean;
 }
 
 interface FormData {
@@ -26,10 +28,11 @@ interface FormData {
   value: string;
 }
 
-type ChangePasswordCustomInjectedProps = InjectedFormProps<ChangePasswordCustomFormData, ChangePasswordChildFormProps>;
+type ChangePasswordCustomInjectedProps = InjectedFormProps<ChangePasswordCustomFormData, ChangePasswordCustomFormProps>;
 
-function BareChangePasswordCustomForm(props: ChangePasswordChildFormProps & ChangePasswordCustomInjectedProps) {
+function BareChangePasswordCustomForm(props: ChangePasswordCustomFormProps & ChangePasswordCustomInjectedProps) {
   const [formData, setFormData] = useState<ChangePasswordCustomFormData>({});
+  const [passwordData, setPasswordData] = useState<PasswordStrengthData>({});
 
   // update component state with any changes to the form fields, so that we can get the values
   // on submit without going fishing in the DOM
@@ -38,12 +41,11 @@ function BareChangePasswordCustomForm(props: ChangePasswordChildFormProps & Chan
     props.updateFormDataCallback({ old: formData.old, new: formData.custom });
   };
 
-  const meterHelpBlock = [
-    <meter max="4" value={props.password_score} id="password-strength-meter" key="0" />,
-    <div className="form-field-error-area" key="1">
-      <FormText>{translate(props.password_strength_msg)}</FormText>
-    </div>,
-  ];
+  useEffect(() => {
+    // Propagate score as calculated by the PasswordStrengthMeter (and passed back here using it's passScoreUp prop)
+    // to the hidden input value of the form, so that it will be available in this forms validate() function.
+    props.change("score", passwordData.score);
+  }, [passwordData]);
 
   return (
     <form
@@ -96,7 +98,7 @@ function BareChangePasswordCustomForm(props: ChangePasswordChildFormProps & Chan
             componentClass="input"
             type="password"
             label={translate("chpass.form_custom_password")}
-            helpBlock={meterHelpBlock}
+            helpBlock={<PasswordStrengthMeter password={formData.custom} passStateUp={setPasswordData} />}
             id="custom-password-field"
             name="custom"
           />
@@ -108,6 +110,7 @@ function BareChangePasswordCustomForm(props: ChangePasswordChildFormProps & Chan
             label={translate("chpass.form_custom_password_repeat")}
             name="repeat"
           />
+          <Field component={TextInput} componentClass="input" type="hidden" id="password-score-field" name="score" />
         </div>
       </fieldset>
       <div id="password-suggestion">
@@ -134,18 +137,16 @@ function BareChangePasswordCustomForm(props: ChangePasswordChildFormProps & Chan
   );
 }
 
-const validate = (
-  values: ChangePasswordCustomFormData,
-  props: DecoratedFormProps<ChangePasswordCustomFormData, ChangePasswordChildFormProps, string>
-) => {
+const validate = (values: ChangePasswordCustomFormData) => {
   const errors: { [key: string]: string } = {};
   if (!values.old) {
     errors.old = "required";
   }
 
+  console.log("VALIDATE: ", values);
   if (!values.custom) {
     errors.custom = "required";
-  } else if (props.custom_ready) {
+  } else if (!values.score || values.score < 2) {
     errors.custom = "chpass.low-password-entropy";
   }
   if (!values.repeat) {
@@ -156,20 +157,18 @@ const validate = (
   return errors;
 };
 
-const ReduxChangePasswordCustomForm = reduxForm<ChangePasswordCustomFormData, ChangePasswordChildFormProps>({
+const ReduxChangePasswordCustomForm = reduxForm<ChangePasswordCustomFormData, ChangePasswordCustomFormProps>({
   form: "chpassCustom",
   validate,
+  enableReinitialize: true,
 })(BareChangePasswordCustomForm);
 
-const ChangePasswordCustomForm = connect((state: DashboardRootState) => {
-  const initialValues: { [key: string]: string } = {};
-  //   if (state.chpass.) {
-  //     initialValues[pwFieldSuggestedName] = state.chpass.suggested_password;
-  //   }
+function mapStateToProps(state: DashboardRootState) {
+  const initialValues: ChangePasswordCustomFormData = { score: 0 };
+
   return {
     initialValues: initialValues,
-    enableReinitialize: true,
   };
-})(ReduxChangePasswordCustomForm);
+}
 
-export default ChangePasswordCustomForm;
+export default connect(mapStateToProps)(ReduxChangePasswordCustomForm);
