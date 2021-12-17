@@ -1,5 +1,6 @@
 import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
+import { useDashboardAppSelector } from "dashboard-hooks";
 import { DashboardRootState } from "dashboard-init-app";
 import { translate } from "login/translation";
 import React, { useState } from "react";
@@ -26,13 +27,16 @@ type ChangePasswordSuggestedInjectedProps = InjectedFormProps<
 >;
 
 function BareChangePasswordSuggestedForm(props: ChangePasswordChildFormProps & ChangePasswordSuggestedInjectedProps) {
-  const [formData, setFormData] = useState<ChangePasswordSuggestedFormData>({});
+  const suggested = useDashboardAppSelector((state) => state.chpass.suggested_password);
+  // Need to initialise formData with the suggested password. Since it won't be changed in the form, it won't
+  // reach formData through the formChange function.
+  const [formData, setFormData] = useState<ChangePasswordSuggestedFormData>({ suggested });
 
   // update component state with any changes to the form fields, so that we can get the values
   // on submit without going fishing in the DOM
   const formChange = (field: FormData) => {
     setFormData({ ...formData, [field.name]: field.value.trim() });
-    props.updateFormDataCallback({ old: formData.old, new: formData.suggested });
+    props.updateFormDataCallback({ old: formData.old, new: suggested });
   };
 
   return (
