@@ -2,8 +2,8 @@ import { eduidRMAllNotify } from "actions/Notifications";
 import { confirmPasswordChange, startConfirmationPassword, stopConfirmationPassword } from "actions/Security";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "login/translation";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 
 function ChangePasswordDisplay() {
@@ -23,23 +23,53 @@ function ChangePasswordDisplay() {
     dispatch(confirmPasswordChange());
   }
 
+  // TODO: Remove ids from FormattedMessage later, when it won't cause a lot of red warnings in the console log
   return (
     <div>
       <div id="change-password-container">
         <div className="intro">
-          <h4>{translate("settings.main_title")} </h4>
-          <p>{translate("settings.long_description")}</p>
+          <h4>
+            <FormattedMessage
+              id="settings.main_title"
+              defaultMessage="Change password"
+              description="Dashboard change password"
+            />
+          </h4>
+          <p>
+            <FormattedMessage
+              id="settings.long_description"
+              defaultMessage="Click the link to change your eduID password."
+              description="Dashboard change password"
+            />
+          </p>
         </div>
         <div id="change-password">
           <EduIDButton id="security-change-button" className="btn-link" onClick={handleStartConfirmationPassword}>
-            {translate("settings.change_password")}
+            <FormattedMessage
+              id="settings.change_password"
+              defaultMessage="Change password"
+              description="Dashboard change password"
+            />
           </EduIDButton>
         </div>
       </div>
+
       <NotificationModal
         modalId="securityConfirmDialog"
-        title={translate("settings.confirm_title_chpass")}
-        mainText={translate("settings.change_info")}
+        title={
+          <FormattedMessage
+            id="settings.confirm_title_chpass"
+            defaultMessage="For security reasons..."
+            description="Dashboard change password"
+          />
+        }
+        mainText={
+          <FormattedMessage
+            id="settings.change_info"
+            defaultMessage="You will need to log in again to change your password."
+            description="Dashboard change password"
+          />
+        }
         showModal={confirming_change}
         closeModal={handleStopConfirmationPassword}
         acceptModal={handleConfirmationPassword}
