@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import Form from "reactstrap/lib/Form";
-import { useDispatch } from "react-redux";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import EduIDButton from "../../../../components/EduIDButton";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,10 +15,33 @@ import PropTypes from "prop-types";
 import Splash from "../../../../containers/Splash";
 import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import { getFormValues } from "redux-form";
+import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-const validateNewPassword = (values, props) => {
+interface NewPasswordFormData {
+  newPassword?: string;
+}
+
+interface NewPasswordFormProps {
+  clickSetNewPassword: (event: React.FormEvent<HTMLFormElement>) => void;
+  translate(msg: string): string;
+  extra_security?: ExtraSecurityType;
+  emailCode: string;
+  invalid: boolean;
+  suggested_password: string | undefined;
+  newPassword: string;
+  errors: string;
+}
+
+interface valueProps {
+  [key: string]: string;
+}
+
+const validateNewPassword = (values: valueProps, props: NewPasswordFormProps) => {
   const newPassword = "new-password";
-  const errors = {};
+  const errors: { [key: string]: string } = {};
+
   if (!values[newPassword] || emptyStringPattern.test(values[newPassword])) {
     errors[newPassword] = "required";
   } else if (values[newPassword] !== props.suggested_password) {
@@ -28,8 +50,8 @@ const validateNewPassword = (values, props) => {
   return errors;
 };
 
-let NewPasswordForm = (props) => {
-  const formValues = useSelector((state) => getFormValues("new-password-form")(state));
+const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
+  const formValues: { [key: string]: string } = useAppSelector((state) => getFormValues("new-password-form")(state));
   const history = useHistory();
   return (
     <Form
@@ -63,7 +85,7 @@ let NewPasswordForm = (props) => {
             id="go-back-button"
             onClick={() => history.push(`/reset-password/extra-security/${props.emailCode}`)}
           >
-            <FontAwesomeIcon icon={faArrowLeft} />
+            <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             {props.translate("resetpw.go-back")}
           </ButtonSecondary>
         )}
@@ -75,30 +97,31 @@ let NewPasswordForm = (props) => {
   );
 };
 
-NewPasswordForm = reduxForm({
+const SetNewPasswordForm = reduxForm<NewPasswordFormData, NewPasswordFormProps>({
   form: "new-password-form",
+  validate: validateNewPassword,
 })(NewPasswordForm);
 
-NewPasswordForm = connect(() => ({
+const ConnectedNewPasswordForm = connect(() => ({
   enableReinitialize: true,
   initialValues: {
-    "new-password": "",
+    newPassword: "",
   },
   destroyOnUnmount: false,
   touchOnChange: true,
-  validate: validateNewPassword,
-}))(NewPasswordForm);
-function SetNewPassword(props) {
+}))(SetNewPasswordForm);
+
+function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
   const history = useHistory();
   const url = document.location.href;
   const emailCode = url.split("/").reverse()[0];
-  const dispatch = useDispatch();
-  const suggested_password = useSelector((state) => state.resetPassword.suggested_password);
-  const selected_option = useSelector((state) => state.resetPassword.selected_option);
-  const extra_security = useSelector((state) => state.resetPassword.extra_security);
-  const [password, setPassword] = useState(null);
+  const dispatch = useAppDispatch();
+  const suggested_password = useAppSelector((state) => state.resetPassword.suggested_password);
+  const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
+  const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
+  const [password, setPassword] = useState<string | undefined>(undefined);
   const [toolTipText, setToolTipText] = useState("resetpw.copy-to-clipboard");
-  const ref = useRef(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setPassword(suggested_password);
@@ -113,21 +136,24 @@ function SetNewPassword(props) {
   }, [selected_option]);
 
   const copyToClipboard = () => {
-    ref.current.select();
-    document.execCommand("copy");
-    setToolTipText("resetpw.copied-in-clipboard");
-    document.getElementById("icon-copy").style.display = "none";
-    document.getElementById("icon-check").style.display = "inline";
-    setTimeout(() => {
-      document.getElementById("icon-copy").style.display = "inline";
-      document.getElementById("icon-check").style.display = "none";
-      setToolTipText("resetpw.copy-to-clipboard");
-    }, 1000);
+    if (ref && ref.current) {
+      ref.current.select();
+      document.execCommand("copy");
+      setToolTipText("resetpw.copied-in-clipboard");
+      (document.getElementById("icon-copy") as HTMLInputElement).style.display = "none";
+      (document.getElementById("icon-check") as HTMLInputElement).style.display = "inline";
+      setTimeout(() => {
+        (document.getElementById("icon-copy") as HTMLInputElement).style.display = "inline";
+        (document.getElementById("icon-check") as HTMLInputElement).style.display = "none";
+        setToolTipText("resetpw.copy-to-clipboard");
+      }, 1000);
+    }
   };
 
-  const clickSetNewPassword = (e) => {
+  const clickSetNewPassword = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    const newPassword = e.target["new-password"].value;
+    const target = e.target as HTMLFormElement;
+    const newPassword = target && target["new-password"].value;
     dispatch(resetPasswordSlice.actions.storeNewPassword(newPassword));
     if (!selected_option || selected_option === "without") {
       dispatch(resetPasswordSlice.actions.setNewPassword());
@@ -155,14 +181,14 @@ function SetNewPassword(props) {
           readOnly={true}
         />
         <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}>
-          <FontAwesomeIcon id={"icon-copy"} icon={faCopy} />
-          <FontAwesomeIcon id={"icon-check"} icon={faCheck} />
+          <FontAwesomeIcon id={"icon-copy"} icon={faCopy as IconProp} />
+          <FontAwesomeIcon id={"icon-check"} icon={faCheck as IconProp} />
           <div className="tool-tip-text" id="tool-tip">
             {props.translate(toolTipText)}
           </div>
         </button>
       </div>
-      <NewPasswordForm
+      <ConnectedNewPasswordForm
         {...props}
         suggested_password={suggested_password}
         clickSetNewPassword={clickSetNewPassword}
