@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
-import PropTypes from "prop-types";
 import Splash from "../../../../containers/Splash";
 import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import { getFormValues } from "redux-form";
@@ -76,7 +75,6 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
         component={CustomInput}
         required={true}
         label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
-        // label={props.translate("chpass.form_custom_password_repeat")}
         placeholder="xxxx xxxx xxxx"
       />
 
@@ -89,12 +87,10 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
           >
             <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
-            {/* {props.translate("resetpw.go-back")} */}
           </ButtonSecondary>
         )}
         <EduIDButton className="settings-button" id="new-password-button" disabled={props.invalid}>
           <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
-          {/* {props.translate("resetpw.accept-password")} */}
         </EduIDButton>
       </div>
     </Form>
@@ -179,7 +175,6 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
       {!password && <Splash />}
       <p className="heading">
         <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
-        {/* {props.translate("resetpw.set-new-password-heading")} */}
       </p>
       <p>
         <FormattedMessage
@@ -187,9 +182,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
           description="Set new password"
         />
       </p>
-      {/* <p>{props.translate("resetpw.set-new-password-description")}</p> */}
       <div className="reset-password-input">
-        {/* <label>{props.translate("resetpw.new-password")}</label> */}
         <label>
           <FormattedMessage defaultMessage="New password" description="Set new password" />
         </label>
@@ -204,9 +197,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy as IconProp} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck as IconProp} />
           <div className="tool-tip-text" id="tool-tip">
-            {/* <span>{toolTip}</span> */}
             {intl.formatMessage(toolTipText)}
-            {/* {props.translate(toolTipText)} */}
           </div>
         </button>
       </div>
@@ -220,11 +211,5 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
     </>
   );
 }
-
-SetNewPassword.propTypes = {
-  translate: PropTypes.func,
-  suggested_password: PropTypes.string,
-  invalid: PropTypes.bool,
-};
 
 export default SetNewPassword;
