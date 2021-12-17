@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import Form from "reactstrap/lib/Form";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field } from "redux-form";
 import { reduxForm } from "redux-form";
@@ -18,6 +17,8 @@ import { getFormValues } from "redux-form";
 import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 interface NewPasswordFormData {
   newPassword?: string;
@@ -74,7 +75,8 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
         name="new-password"
         component={CustomInput}
         required={true}
-        label={props.translate("chpass.form_custom_password_repeat")}
+        label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
+        // label={props.translate("chpass.form_custom_password_repeat")}
         placeholder="xxxx xxxx xxxx"
       />
 
@@ -86,11 +88,13 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
             onClick={() => history.push(`/reset-password/extra-security/${props.emailCode}`)}
           >
             <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-            {props.translate("resetpw.go-back")}
+            <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
+            {/* {props.translate("resetpw.go-back")} */}
           </ButtonSecondary>
         )}
         <EduIDButton className="settings-button" id="new-password-button" disabled={props.invalid}>
-          {props.translate("resetpw.accept-password")}
+          <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
+          {/* {props.translate("resetpw.accept-password")} */}
         </EduIDButton>
       </div>
     </Form>
@@ -120,8 +124,12 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState<string | undefined>(undefined);
-  const [toolTipText, setToolTipText] = useState("resetpw.copy-to-clipboard");
+  const [toolTipText, setToolTipText] = useState<object>({
+    id: "resetpw.copy-to-clipboard",
+    defaultMessage: "Copy to clipboard",
+  });
   const ref = useRef<HTMLInputElement>(null);
+  const intl = useIntl();
 
   useEffect(() => {
     setPassword(suggested_password);
@@ -139,13 +147,13 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
     if (ref && ref.current) {
       ref.current.select();
       document.execCommand("copy");
-      setToolTipText("resetpw.copied-in-clipboard");
+      setToolTipText({ id: "resetpw.copied-in-clipboard", defaultMessage: "Copied!" });
       (document.getElementById("icon-copy") as HTMLInputElement).style.display = "none";
       (document.getElementById("icon-check") as HTMLInputElement).style.display = "inline";
       setTimeout(() => {
         (document.getElementById("icon-copy") as HTMLInputElement).style.display = "inline";
         (document.getElementById("icon-check") as HTMLInputElement).style.display = "none";
-        setToolTipText("resetpw.copy-to-clipboard");
+        setToolTipText({ id: "resetpw.copy-to-clipboard", defaultMessage: "Copy to clipboard" });
       }, 1000);
     }
   };
@@ -169,10 +177,22 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
   return (
     <>
       {!password && <Splash />}
-      <p className="heading">{props.translate("resetpw.set-new-password-heading")}</p>
-      <p>{props.translate("resetpw.set-new-password-description")}</p>
+      <p className="heading">
+        <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
+        {/* {props.translate("resetpw.set-new-password-heading")} */}
+      </p>
+      <p>
+        <FormattedMessage
+          defaultMessage="A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password."
+          description="Set new password"
+        />
+      </p>
+      {/* <p>{props.translate("resetpw.set-new-password-description")}</p> */}
       <div className="reset-password-input">
-        <label>{props.translate("resetpw.new-password")}</label>
+        {/* <label>{props.translate("resetpw.new-password")}</label> */}
+        <label>
+          <FormattedMessage defaultMessage="New password" description="Set new password" />
+        </label>
         <input
           name="copy-new-password"
           id="copy-new-password"
@@ -184,7 +204,9 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy as IconProp} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck as IconProp} />
           <div className="tool-tip-text" id="tool-tip">
-            {props.translate(toolTipText)}
+            {/* <span>{toolTip}</span> */}
+            {intl.formatMessage(toolTipText)}
+            {/* {props.translate(toolTipText)} */}
           </div>
         </button>
       </div>
@@ -205,4 +227,4 @@ SetNewPassword.propTypes = {
   invalid: PropTypes.bool,
 };
 
-export default InjectIntl(SetNewPassword);
+export default SetNewPassword;
