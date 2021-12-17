@@ -89,15 +89,7 @@ describe("Reducers", () => {
   it("Receives a postPasswordChange action", () => {
     const passwd1 = "1234",
       passwd2 = "5678";
-    expect(
-      chpassSlice.reducer(mockState, {
-        type: actions.postPasswordChange.type,
-        payload: {
-          old: passwd1,
-          new: passwd2,
-        },
-      })
-    ).toEqual({
+    expect(chpassSlice.reducer(mockState, requestPasswordChange({ old: passwd1, new: passwd2 }))).toEqual({
       message: "",
       suggested_password: "",
       old_password: passwd1,

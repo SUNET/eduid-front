@@ -143,7 +143,6 @@ const validate = (values: ChangePasswordCustomFormData) => {
     errors.old = "required";
   }
 
-  console.log("VALIDATE: ", values);
   if (!values.custom) {
     errors.custom = "required";
   } else if (!values.score || values.score < 2) {
