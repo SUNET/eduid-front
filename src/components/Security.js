@@ -7,7 +7,6 @@ import { spinnerOpts } from "../components/Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-import "../login/styles/index.scss";
 import { useIntl } from "react-intl";
 import CookieChecker from "./../components/CookieChecker";
 

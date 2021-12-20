@@ -1,6 +1,25 @@
+import { PayloadAction } from "@reduxjs/toolkit";
 import * as actions from "actions/Security";
 
-const security = {
+export interface SecurityState {
+  message?: string;
+  credentials: unknown[];
+  code?: string;
+  confirming_change: boolean;
+  confirming_deletion: boolean;
+  location: string;
+  deleted: boolean;
+  webauthn_asking_description: boolean;
+  webauthn_token_description?: string;
+  webauthn_failed: boolean;
+  webauthn_attestation: unknown;
+  webauthn_token_remove: string;
+  webauthn_token_verify: string;
+  webauthn_authenticator: string;
+}
+
+// export this for use in tests
+export const initialState: SecurityState = {
   message: "",
   credentials: [],
   code: "",
@@ -17,7 +36,7 @@ const security = {
   webauthn_authenticator: "",
 };
 
-let securityReducer = (state = security, action) => {
+const securityReducer = (state = initialState, action: PayloadAction<any>) => {
   switch (action.type) {
     case actions.GET_CREDENTIALS_SUCCESS:
       return {
