@@ -105,30 +105,6 @@ describe("ChangePasswordDisplay component, when showModal is (true)", () => {
   });
 });
 
-describe("ChangePasswordDisplay redux functionality", () => {
-  it("startConfirmationPassword() should trigger the action START_CHANGE_PASSWORD", () => {
-    const expectedAction = {
-      type: actions.START_CHANGE_PASSWORD,
-    };
-    expect(actions.initiatePasswordChange()).toEqual(expectedAction);
-  });
-
-  it("START_CHANGE_PASSWORD returns showModal: true", () => {
-    const mockState = {
-      ...securityInitialState,
-      showModal: false,
-    };
-    expect(
-      securityReducer(mockState, {
-        type: actions.START_CHANGE_PASSWORD,
-        payload: {},
-      })
-    ).toEqual({
-      showModal: true,
-    });
-  });
-});
-
 // ----- MODAL STUFF ----- //
 describe("Logout modal redux functionality", () => {
   // TEST: 2. Can we prove this modal redirects?
@@ -152,6 +128,7 @@ describe("Logout modal redux functionality", () => {
         payload: {},
       })
     ).toEqual({
+      ...securityInitialState,
       showModal: false,
     });
   });
@@ -170,6 +147,7 @@ describe("Logout modal redux functionality", () => {
         },
       })
     ).toEqual({
+      ...securityInitialState,
       message: err,
       showModal: false,
     });
