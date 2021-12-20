@@ -18,7 +18,7 @@ const ResetPasswordLayout = (props) => {
       <div id="reset-pass-display">
         <p>{props.description}</p>
         {props.children}
-        <p className="decription-without-security">
+        <p className="description-without-security">
           <strong>{props.linkInfoHeading}</strong>
           <br />
           {props.linkInfoText}
