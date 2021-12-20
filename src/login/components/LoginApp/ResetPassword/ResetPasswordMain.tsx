@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { translate } from "../../../../login/translation";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
-import { clearCountdown } from "./CountDownTimer";
+import { clearCountdown, LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK } from "./CountDownTimer";
 import EmailForm from "./EmailForm";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
@@ -25,7 +25,7 @@ function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
   const errors = useAppSelector((state) => state.notifications.errors);
 
   useEffect(() => {
-    clearCountdown();
+    clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
   }, []);
 
   useEffect(() => {
