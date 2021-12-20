@@ -120,12 +120,9 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
   const [password, setPassword] = useState<string | undefined>(undefined);
-  const [toolTipText, setToolTipText] = useState<object>({
-    id: "resetpw.copy-to-clipboard",
-    defaultMessage: "Copy to clipboard",
-  });
+  const [tooltipCopied, setTooltipCopied] = useState(false); // say "Copy to clipboard" or "Copied!" in tooltip
+
   const ref = useRef<HTMLInputElement>(null);
-  const intl = useIntl();
 
   useEffect(() => {
     setPassword(suggested_password);
@@ -143,13 +140,13 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
     if (ref && ref.current) {
       ref.current.select();
       document.execCommand("copy");
-      setToolTipText({ id: "resetpw.copied-in-clipboard", defaultMessage: "Copied!" });
+      setTooltipCopied(true);
       (document.getElementById("icon-copy") as HTMLInputElement).style.display = "none";
       (document.getElementById("icon-check") as HTMLInputElement).style.display = "inline";
       setTimeout(() => {
         (document.getElementById("icon-copy") as HTMLInputElement).style.display = "inline";
         (document.getElementById("icon-check") as HTMLInputElement).style.display = "none";
-        setToolTipText({ id: "resetpw.copy-to-clipboard", defaultMessage: "Copy to clipboard" });
+        setTooltipCopied(false);
       }, 1000);
     }
   };
@@ -178,7 +175,8 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password."
+          defaultMessage={`A strong password has been generated for you. To proceed you will need to repeat copy the
+                          password in to the Repeat new password field and click Accept Password.`}
           description="Set new password"
         />
       </p>
@@ -197,7 +195,11 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy as IconProp} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck as IconProp} />
           <div className="tool-tip-text" id="tool-tip">
-            {intl.formatMessage(toolTipText)}
+            {tooltipCopied ? (
+              <FormattedMessage defaultMessage="Copied!" description="Reset password copy password tooltip" />
+            ) : (
+              <FormattedMessage defaultMessage="Copy to clipboard" description="Reset password copy password tooltip" />
+            )}
           </div>
         </button>
       </div>
