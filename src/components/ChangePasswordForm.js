@@ -16,6 +16,8 @@ export const pwFieldCustomName = "custom-password-field",
   pwFieldSuggestedName = "suggested-password-field",
   pwFieldChooser = "choose-custom-field";
 
+let customPwIsActive = false;
+
 const validate = (values, props) => {
   const errors = {};
   if (!values[pwFieldOldName]) {
@@ -23,9 +25,11 @@ const validate = (values, props) => {
   }
   if (props.registeredFields && !props.registeredFields.hasOwnProperty(pwFieldSuggestedName)) {
     if (!values[pwFieldCustomName]) {
-      errors[pwFieldCustomName] = "required";
+      errors[pwFieldCustomName] = "required",
+      customPwIsActive = false;
     } else if (props.custom_ready) {
-      errors[pwFieldCustomName] = "chpass.low-password-entropy";
+      errors[pwFieldCustomName] = "chpass.low-password-entropy",
+      customPwIsActive = true;
     }
     if (!values[pwFieldRepeatName]) {
       errors[pwFieldRepeatName] = "required";
@@ -58,12 +62,13 @@ class ChangePasswordForm extends Component {
 
     if (this.state.customPassword) {
       const meterHelpBlock = [
-        <meter max="4" value={this.props.password_score} id="password-strength-meter" key="0" />,
-        <div className="form-field-error-area" key="1">
-          <FormText>{this.props.translate(this.props.password_strength_msg)}</FormText>
-        </div>,
-      ];
-
+        <span className={customPwIsActive ? 'meter-wrapper active' : 'meter-wrapper'}>
+          <meter max="4" value={this.props.password_score} id="password-strength-meter" key="0" />
+          <div className="form-field-error-area" key="1">
+            <FormText>{this.props.translate(this.props.password_strength_msg)}</FormText>
+          </div>
+        </span>,
+      ];  
       button = (
         <EduIDButton value="custom" className="btn-link" onClick={() => this.togglePasswordType()}>
           {this.props.translate("chpass.button_suggest_password")}
