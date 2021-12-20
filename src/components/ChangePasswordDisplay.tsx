@@ -5,8 +5,12 @@ import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 
-function ChangePasswordDisplay() {
-  const [showModal, setShowModal] = useState(false);
+interface ChangePasswordDisplayProps {
+  showModal?: boolean;
+}
+
+function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
+  const [showModal, setShowModal] = useState<boolean>(props.showModal === true);
   const dispatch = useDashboardAppDispatch();
 
   function handleAcceptModal() {

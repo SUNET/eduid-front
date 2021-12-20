@@ -147,34 +147,26 @@ describe("API calls", () => {
 });
 
 describe("ChangePassword Container", () => {
-  let fulldom, mockProps, chooseCustom, getWrapper, store;
+  let getWrapper;
 
   beforeEach(() => {
-    mockProps = {
-      choose_custom: false,
-      suggested_password: "abcd",
-      new_password: "defg",
-      user_input: [],
-      password_entropy: 0,
-    };
+    getWrapper = function () {
+      const store = fakeStore();
 
-    getWrapper = function (custom = false, props = mockProps) {
-      //const state = fakeState(custom);
-      store = fakeStore(custom);
       const wrapper = mount(
         <ReduxIntlProvider store={store}>
           <Router>
-            <ChangePasswordContainer {...props} />
+            <ChangePasswordContainer />
           </Router>
         </ReduxIntlProvider>
       );
       return wrapper;
     };
-    fulldom = getWrapper().find(ChangePasswordContainer);
-    chooseCustom = fulldom.props().choose_custom;
   });
 
   it("Renders test", () => {
-    expect(chooseCustom).toEqual(false);
+    const wrapper = getWrapper();
+    const button = wrapper.find("#pwmode-button");
+    expect(button.exists()).toEqual(true);
   });
 });
