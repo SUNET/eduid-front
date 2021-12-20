@@ -1,53 +1,11 @@
 import ChangePasswordForm, { ChangePasswordFormProps } from "components/ChangePasswordForm";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-import { DashboardAppDispatch, DashboardRootState, dashboardStore } from "dashboard-init-app";
+import { DashboardRootState } from "dashboard-init-app";
 import { mount, ReactWrapper, shallow } from "enzyme";
 import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { ChangePasswordState } from "reducers/ChangePassword";
-
-const mock = require("jest-mock");
-
-const baseState: DashboardRootState = {
-  config: {
-    security_url: "http://security.docker",
-    csrf_token: "csrf-token",
-  },
-  router: undefined as any,
-  form: undefined as any,
-  intl: { locale: "en", messages: {} },
-
-  chpass: {} as ChangePasswordState,
-  emails: undefined as any,
-  groups: undefined as any,
-  invites: undefined as any,
-  openid_data: undefined as any,
-  lookup_mobile: undefined as any,
-  nins: undefined as any,
-  openid_freja_data: undefined as any,
-  personal_data: undefined as any,
-  phones: undefined as any,
-  letter_proofing: undefined as any,
-  notifications: undefined as any,
-  account_linking: undefined as any,
-  security: undefined as any,
-  eidas_data: undefined as any,
-  ladok: undefined as any,
-};
-
-type DashboardStoreType = typeof dashboardStore;
-
-const fakeStore = (fakeState: DashboardRootState) => ({
-  ...dashboardStore,
-  dispatch: mock.fn() as unknown as DashboardAppDispatch,
-  getState: (): DashboardRootState =>
-    // return a copy of the state in loginStore
-    ({
-      ...dashboardStore.getState(),
-      ...fakeState,
-    }),
-});
+import { DashboardStoreType, dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
 
 const test_props: ChangePasswordFormProps = {
   cancel_to: "cancel_url",
@@ -70,7 +28,7 @@ describe("ChangePasswordForm renders", () => {
 
   beforeEach(() => {
     // re-init store and state before each test to get isolation
-    store = fakeStore(baseState);
+    store = fakeStore();
     state = store.getState();
   });
 
@@ -113,7 +71,7 @@ describe("ChangePasswordForm renders", () => {
       personal_data: { data: {} },
       emails: {},
     };
-    store = fakeStore({ ...baseState, ...test_state });
+    store = fakeStore({ ...dashboardTestState, ...test_state });
     const { wrapper } = setupComponent(store);
 
     let pwModeButton = wrapper.find("#pwmode-button");

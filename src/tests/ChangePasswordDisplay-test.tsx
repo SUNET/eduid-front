@@ -1,16 +1,15 @@
-import React from "react";
-import expect from "expect";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { put } from "redux-saga/effects";
-import { shallow, mount } from "enzyme";
-import { IntlProvider } from "react-intl";
-import NotificationModal from "../login/components/Modals/NotificationModal";
-import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
 import * as actions from "actions/Security";
+import ChangePasswordDisplay from "components/ChangePasswordDisplay";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import { mount, shallow } from "enzyme";
+import expect from "expect";
+import React from "react";
+import { IntlProvider } from "react-intl";
 import securityReducer from "reducers/Security";
+import { put } from "redux-saga/effects";
 import { requestPasswordChange } from "sagas/Security";
-const mock = require("jest-mock");
-const messages = require("../login/translation/messageIndex");
+import NotificationModal from "../login/components/Modals/NotificationModal";
+import { dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
 
 // I am the component that: allows users to change password in settings.
 // My job is to: I render a  "change password" button > that triggers a modal (the modal has to render two buttons, each with their own functionality)
@@ -34,26 +33,9 @@ describe("ChangePasswordDisplay component", () => {
 });
 
 describe("ChangePasswordDisplay component", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
-
-  const fakeState = {
-    security: {
-      confirming_change: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
   function setupComponent() {
     const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore()}>
         <ChangePasswordDisplay />
       </ReduxIntlProvider>
     );
@@ -76,26 +58,9 @@ describe("ChangePasswordDisplay component", () => {
 });
 
 describe("ChangePasswordDisplay component, when confirming_change is (false)", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
-
-  const fakeState = {
-    security: {
-      confirming_change: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
   function setupComponent() {
     const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore()}>
         <ChangePasswordDisplay />
       </ReduxIntlProvider>
     );
@@ -118,26 +83,9 @@ describe("ChangePasswordDisplay component, when confirming_change is (false)", (
 });
 
 describe("ChangePasswordDisplay component, when confirming_change is (true)", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
-
-  const fakeState = {
-    security: {
-      confirming_change: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
   function setupComponent() {
     const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
+      <ReduxIntlProvider store={fakeStore()}>
         <ChangePasswordDisplay />
       </ReduxIntlProvider>
     );
@@ -145,7 +93,7 @@ describe("ChangePasswordDisplay component, when confirming_change is (true)", ()
       wrapper,
     };
   }
-  const state = { ...fakeState };
+  const state = { ...dashboardTestState };
   // set confirming_change to true
   state.security.confirming_change = true;
   it("renders a modal", () => {
@@ -162,22 +110,14 @@ describe("ChangePasswordDisplay component, when confirming_change is (true)", ()
 });
 
 describe("ChangePasswordDisplay redux functionality", () => {
-  it("ChangePasswordDisplay button dispatches handlestartConfirmationPassword()", () => {
-    // TEST: prove that this EduIDButton triggers handleStartConfirmationPassword() > dispatches startConfirmationPassword()
-    // const expectedAction = {
-    //   type: actions.START_CHANGE_PASSWORD
-    // };
-    // expect(actions.startConfirmationPassword()).toEqual(expectedAction);
-  });
-
   it("startConfirmationPassword() should trigger the action START_CHANGE_PASSWORD", () => {
     const expectedAction = {
       type: actions.START_CHANGE_PASSWORD,
     };
-    expect(actions.startConfirmationPassword()).toEqual(expectedAction);
+    expect(actions.initiatePasswordChange()).toEqual(expectedAction);
   });
 
-  it("START_CHANGE_PASSWORD retuns confirming_change: true", () => {
+  it("START_CHANGE_PASSWORD returns confirming_change: true", () => {
     const mockState = {
       confirming_change: false,
     };
@@ -201,9 +141,9 @@ describe("Logout modal redux functionality", () => {
     const expectedAction = {
       type: actions.GET_CHANGE_PASSWORD,
     };
-    expect(actions.confirmPasswordChange()).toEqual(expectedAction);
+    expect(actions.initiatePasswordChange()).toEqual(expectedAction);
   });
-  it("GET_CHANGE_PASSWORD action retuns the current state", () => {
+  it("GET_CHANGE_PASSWORD action returns the current state", () => {
     const mockState = {
       confirming_change: false,
     };
@@ -216,7 +156,7 @@ describe("Logout modal redux functionality", () => {
     });
   });
 
-  it("GET_CHANGE_PASSWORD_FAIL action retuns an error state", () => {
+  it("GET_CHANGE_PASSWORD_FAIL action returns an error state", () => {
     const mockState = {
       confirming_change: false,
     };
@@ -244,7 +184,7 @@ describe("Logout modal redux functionality", () => {
     };
     expect(actions.stopConfirmationPassword()).toEqual(expectedAction);
   });
-  it("STOP_CHANGE_PASSWORD action retuns confirming_change: false", () => {
+  it("STOP_CHANGE_PASSWORD action returns confirming_change: false", () => {
     const mockState = {
       confirming_change: false,
     };
@@ -295,7 +235,8 @@ describe("Security Container", () => {
     };
 
     getWrapper = function ({ deleting = false, askingDesc = false, props = mockProps } = {}) {
-      store = fakeStore(getState(deleting, askingDesc));
+      //store = fakeStore(getState(deleting, askingDesc));
+      store = fakeStore();
       dispatch = store.dispatch;
 
       const wrapper = mount(
@@ -319,32 +260,32 @@ describe("Security Container", () => {
   });
 });
 
-const fakeStore = (state) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...state }),
-});
+// const fakeStore = (state) => ({
+//   default: () => {},
+//   dispatch: mock.fn(),
+//   subscribe: mock.fn(),
+//   getState: () => ({ ...state }),
+// });
 
-const mockState = {
-  security: {
-    location: "dummy-location",
-  },
-  config: {
-    csrf_token: "csrf-token",
-    dashboard_url: "/dummy-dash-url/",
-    token_service_url: "/dummy-tok-url/",
-    security_url: "/dummy-sec-url",
-  },
-  intl: {
-    locale: "en",
-    messages: messages,
-  },
-};
+// const mockState = {
+//   security: {
+//     location: "dummy-location",
+//   },
+//   config: {
+//     csrf_token: "csrf-token",
+//     dashboard_url: "/dummy-dash-url/",
+//     token_service_url: "/dummy-tok-url/",
+//     security_url: "/dummy-sec-url",
+//   },
+//   intl: {
+//     locale: "en",
+//     messages: messages,
+//   },
+// };
 describe("Async component", () => {
   it("Sagas requestPasswordChange", () => {
     const oldLoc = window.location.href;
-    let mockWindow = {
+    const mockWindow = {
       location: {
         href: oldLoc,
       },

@@ -10,9 +10,6 @@ export const changePassword = {
     />
   ),
 
-  /* ----- /chpass ChangePassword ------- */
-  "chpass.main_title": <FormattedMessage id="chpass.main_title" defaultMessage={`Change your current password`} />,
-
   /* ----- /chpass ChangePasswordForm ------- */
 
   "chpass.old_password": <FormattedMessage id="chpass.old_password" defaultMessage={`Current password`} />,

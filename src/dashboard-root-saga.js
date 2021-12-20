@@ -85,7 +85,7 @@ function* rootSaga() {
     takeLatest(mobileActions.POST_MOBILE_PRIMARY, sagasMobile.requestMakePrimaryMobile),
     takeLatest(mobileActions.START_RESEND_MOBILE_CODE, sagasMobile.requestResendMobileCode),
     takeLatest(mobileActions.START_VERIFY, sagasMobile.requestVerifyMobile),
-    takeLatest(securityActions.GET_CHANGE_PASSWORD, requestPasswordChange),
+    takeLatest(securityActions.initiatePasswordChange.type, requestPasswordChange),
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeLatest(letterActions.POST_LETTER_PROOFING_PROOFING, sendLetterProofing),
     takeLatest(letterActions.GET_LETTER_PROOFING_PROOFING, sendGetLetterProofing),

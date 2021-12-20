@@ -71,7 +71,6 @@ export const changePassword = createAsyncThunk<
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("chpass/changePassword", async (args, thunkAPI) => {
   try {
-    console.log("IN THUNK: ", args);
     const response = await makeSecurityRequest<ChangePasswordResponse>(thunkAPI, "change-password", args);
 
     if (response.error) {

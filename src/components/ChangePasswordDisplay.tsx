@@ -1,29 +1,20 @@
-import { eduidRMAllNotify } from "actions/Notifications";
-import { confirmPasswordChange, startConfirmationPassword, stopConfirmationPassword } from "actions/Security";
+import { initiatePasswordChange } from "actions/Security";
 import EduIDButton from "components/EduIDButton";
-import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React from "react";
+import { useDashboardAppDispatch } from "dashboard-hooks";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 
 function ChangePasswordDisplay() {
-  const confirming_change = useDashboardAppSelector((state) => state.security.confirming_change);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDashboardAppDispatch();
 
-  function handleStartConfirmationPassword() {
-    dispatch(eduidRMAllNotify());
-    // TODO: This action sets state.security.confirming_change to true, which shows the securityConfirmDialog modal
-    //       below. I think we can replace this with a simple useState() in this component.
-    dispatch(startConfirmationPassword());
-  }
-  function handleStopConfirmationPassword() {
-    dispatch(stopConfirmationPassword());
-  }
-  function handleConfirmationPassword() {
-    dispatch(confirmPasswordChange());
+  function handleAcceptModal() {
+    dispatch(initiatePasswordChange());
   }
 
   // TODO: Remove ids from FormattedMessage later, when it won't cause a lot of red warnings in the console log
+  //       before this is merged after the holidays.
   return (
     <div>
       <div id="change-password-container">
@@ -44,7 +35,13 @@ function ChangePasswordDisplay() {
           </p>
         </div>
         <div id="change-password">
-          <EduIDButton id="security-change-button" className="btn-link" onClick={handleStartConfirmationPassword}>
+          <EduIDButton
+            id="security-change-button"
+            className="btn-link"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
             <FormattedMessage
               id="settings.change_password"
               defaultMessage="Change password"
@@ -70,9 +67,11 @@ function ChangePasswordDisplay() {
             description="Dashboard change password"
           />
         }
-        showModal={confirming_change}
-        closeModal={handleStopConfirmationPassword}
-        acceptModal={handleConfirmationPassword}
+        showModal={showModal}
+        closeModal={() => {
+          setShowModal(false);
+        }}
+        acceptModal={handleAcceptModal}
       />
     </div>
   );

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Security from "components/Security";
 import {
-  confirmPasswordChange,
+  initiatePasswordChange,
   startConfirmationPassword,
   stopConfirmationPassword,
   confirmDeletion,
@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(stopConfirmationPassword());
     },
     handleConfirmationPassword: () => {
-      dispatch(confirmPasswordChange());
+      dispatch(initiatePasswordChange());
     },
     handleStartConfirmationDeletion: function () {
       dispatch(eduidRMAllNotify());

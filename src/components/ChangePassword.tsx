@@ -1,7 +1,7 @@
 import { fetchSuggestedPassword } from "apis/eduidSecurity";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { translate } from "login/translation";
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 import ChangePasswordForm from "./ChangePasswordForm";
 
 function ChangePassword() {
@@ -16,15 +16,23 @@ function ChangePassword() {
     }
   }, [suggested_password, is_app_loaded]);
 
+  // TODO: Remove ids from FormattedMessage later, when it won't cause a lot of red warnings in the console log
+  //       before this is merged after the holidays.
   return (
-    <Fragment>
+    <React.Fragment>
       <div className="intro">
-        <h4>{translate("chpass.main_title")}</h4>
+        <h4>
+          <FormattedMessage
+            id="chpass.main_title"
+            defaultMessage="Change your current password"
+            description="Dashboard change password"
+          />
+        </h4>
       </div>
       <div id="changePasswordDialog">
         <ChangePasswordForm cancel_to="security" />
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 }
 

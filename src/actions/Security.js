@@ -49,20 +49,8 @@ export function getCredentialsFail(err) {
   };
 }
 
-export function startConfirmationPassword() {
-  return {
-    type: START_CHANGE_PASSWORD,
-  };
-}
-
-export function stopConfirmationPassword() {
-  return {
-    type: STOP_CHANGE_PASSWORD,
-  };
-}
-
 // this action doesn't GET anything, it starts SHOWING the change password components
-export const confirmPasswordChange = createAction(GET_CHANGE_PASSWORD);
+export const initiatePasswordChange = createAction(GET_CHANGE_PASSWORD);
 
 export function getPasswordChangeFail(err) {
   return {
