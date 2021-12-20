@@ -1,26 +1,25 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../../app_init/hooks";
+import { FormattedMessage } from "react-intl";
 
-function ResetPasswordSuccess(props) {
-  const toHome = useSelector((state) => state.config.eduid_site_url);
+function ResetPasswordSuccess(): JSX.Element {
+  const toHome = useAppSelector((state) => state.config.eduid_site_url);
 
   return (
     <>
       <div id="reset-pass-display">
-        <p>{props.translate("resetpw.set-new-password-success")}</p>
+        <p>
+          <FormattedMessage
+            defaultMessage="Password has been updated."
+            description="Reset Password set new password success"
+          />
+        </p>
         <a id="return-login" href={toHome}>
-          {props.translate("resetpw.go-to-eduid")}
+          <FormattedMessage defaultMessage="Go to eduID" description="Reset Password go to eduID" />
         </a>
       </div>
     </>
   );
 }
 
-ResetPasswordSuccess.propTypes = {
-  translate: PropTypes.func,
-};
-
-export default InjectIntl(withRouter(ResetPasswordSuccess));
+export default ResetPasswordSuccess;
