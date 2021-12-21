@@ -1,72 +1,79 @@
+import { useAppDispatch } from "login/app_init/hooks";
+import { LoginAppDispatch } from "login/app_init/initStore";
+import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
 import React from "react";
 import { connect } from "react-redux";
-import { reduxForm, submit } from "redux-form";
 import Form from "reactstrap/lib/Form";
+import { reduxForm, submit } from "redux-form";
+import emptyValueValidation from "../../../app_utils/validation/emptyValueValidation";
+import { validate as validateEmail } from "../../../app_utils/validation/validateEmail";
 import EmailInput from "../../Inputs/EmailInput";
 import PasswordInput from "../../Inputs/PasswordInput";
-import { validateEmailOnLogin } from "../../../app_utils/validation/validateEmail";
-import emptyValueValidation from "../../../app_utils/validation/emptyValueValidation";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import PropTypes from "prop-types";
-import loginSlice from "../../../redux/slices/loginSlice";
 
-export const submitUsernamePassword = (values, dispatch) => {
+interface UsernamePwFormData {
+  email?: string;
+  "current-password"?: string;
+}
+
+export const submitUsernamePassword = (values: UsernamePwFormData, dispatch: LoginAppDispatch) => {
   const { email, "current-password": currentPassword } = values;
-  dispatch(loginSlice.actions.postUsernamePassword({ email, currentPassword }));
-};
-
-export const validateLoginForm = (values, props) => {
-  const { "current-password": currentPassword } = values;
-  // props for checking if values is changed(pristine is false) to prevent activation of validation when emapty input
-  let emailValidation = validateEmailOnLogin(values, props);
-  let passwordValidation = emptyValueValidation({
-    ["current-password"]: currentPassword,
-  });
-  let errors = {};
-  errors = {
-    email: emailValidation.email,
-    ["current-password"]: passwordValidation["current-password"],
-  };
-  return errors;
-};
-
-const handleKeyDown = (e, dispatch) => {
-  if (e.which === 13) {
-    // e.which === 13, event is to click the enter button
-    e.preventDefault();
-    dispatch(submit("usernamePwForm"));
+  if (email && currentPassword) {
+    dispatch(callUsernamePasswordSaga({ email, currentPassword }));
   }
 };
 
-let UsernamePwForm = ({ props, dispatch }) => (
-  <Form
-    id="login-form"
-    aria-label="login form"
-    onSubmit={submitUsernamePassword}
-    onKeyDown={(e) => handleKeyDown(e, dispatch)}
-  >
-    <EmailInput {...props} autoFocus={true} required={true} />
-    <PasswordInput {...props} />
-  </Form>
-);
+export const validateLoginForm = (values: UsernamePwFormData, ownProps: { pristine: boolean }): UsernamePwFormData => {
+  const { "current-password": currentPassword } = values;
+  let errors: UsernamePwFormData = {};
+  if (!ownProps.pristine) {
+    // prevent activation of validation when input is empty
+    errors = { ...errors, ...validateEmail(values) };
+  }
+  errors = {
+    ...errors,
+    ...emptyValueValidation({
+      ["current-password"]: currentPassword,
+    }),
+  };
 
-UsernamePwForm = reduxForm({
+  return errors;
+};
+
+function UsernamePwForm() {
+  const dispatch = useAppDispatch();
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
+    if (e.which === 13) {
+      // e.which === 13, event is to click the enter button
+      e.preventDefault();
+      dispatch(submit("usernamePwForm"));
+    }
+  };
+
+  return (
+    <Form id="login-form" aria-label="login form" onKeyDown={(e) => handleKeyDown(e)}>
+      <EmailInput autoFocus={true} required={true} />
+      <PasswordInput />
+    </Form>
+  );
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface UsernamePwFormProps {}
+
+const ReduxUsernamePwForm = reduxForm<UsernamePwFormData, UsernamePwFormProps>({
   form: "usernamePwForm",
   validate: validateLoginForm,
   onSubmit: submitUsernamePassword,
 })(UsernamePwForm);
 
-UsernamePwForm = connect(() => ({
+const ConnectedUsernamePwForm = connect(() => ({
   initialValues: {
     email: "",
     ["current-password"]: "",
   },
   destroyOnUnmount: false,
   touchOnChange: true,
-}))(UsernamePwForm);
+}))(ReduxUsernamePwForm);
 
-UsernamePwForm.propTypes = {
-  translate: PropTypes.func.isRequired,
-};
-
-export default InjectIntl(UsernamePwForm);
+export default ConnectedUsernamePwForm;

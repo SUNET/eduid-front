@@ -1,11 +1,12 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { newCsrfToken } from "actions/DashboardConfig";
 import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
+import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
 import { checkStatus, getRequest, postRequest } from "sagas/ts_common";
 
 export interface RequestThunkAPI {
-  getState: () => DashboardRootState;
-  dispatch: DashboardAppDispatch;
+  getState: () => DashboardRootState | LoginRootState;
+  dispatch: DashboardAppDispatch | LoginAppDispatch;
   signal: AbortSignal;
 }
 
