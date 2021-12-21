@@ -27,6 +27,7 @@ const fakeState = {
         },
       },
     },
+    authn_options: {},
   },
 };
 

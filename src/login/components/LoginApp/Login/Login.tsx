@@ -1,3 +1,4 @@
+import { fetchAuthnOptions } from "apis/eduidLogin";
 import React, { Fragment, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
@@ -22,6 +23,7 @@ const Login = (): JSX.Element => {
   if (ref === undefined && params.ref !== undefined) {
     ref = params.ref; // need ref below too
     dispatch(loginSlice.actions.addLoginRef({ ref: ref, start_url: window.location.href }));
+    dispatch(fetchAuthnOptions({ ref: ref }));
   }
 
   useEffect(() => {

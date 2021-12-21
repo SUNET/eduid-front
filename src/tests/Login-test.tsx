@@ -24,6 +24,7 @@ const baseState: LoginRootState = {
     ref: "e0367c25-3853-45a9-806",
     tou: { available_versions: ["1999-v1"] },
     mfa: {},
+    authn_options: {},
   },
   app: { is_loaded: true, loading_data: false, request_in_progress: false },
   notifications: undefined as any,
@@ -54,7 +55,7 @@ function setupComponent(store: LoginStoreType) {
   const wrapper = mount(
     <ReduxIntlProvider store={store}>
       <Router history={history}>
-        <Login {...props} />
+        <Login />
       </Router>
     </ReduxIntlProvider>
   );

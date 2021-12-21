@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchAuthnOptions, LoginAuthnOptions } from "apis/eduidLogin";
 import { ToUs } from "login/components/LoginApp/Login/TermsOfUse";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
@@ -19,12 +20,14 @@ interface LoginState {
     available_versions: string[];
     version?: string;
   };
+  authn_options: LoginAuthnOptions;
 }
 
-// Define the initial state using that type
-const initialState: LoginState = {
+// Define the initial state using that type. Export for use as a baseline in tests.
+export const initialState: LoginState = {
   mfa: {},
   tou: { available_versions: Object.keys(ToUs) },
+  authn_options: {},
 };
 
 export const loginSlice = createSlice({
@@ -71,14 +74,17 @@ export const loginSlice = createSlice({
     // Common action to signal a caught exception in one of the login app sagas. Because it ends in _FAIL,
     // the notifyAndDispatch() middleware will inform the user that the operation failed.
     loginSagaFail: () => {},
-    // Action connected to postUsernamePasswordSaga. Will post username and password to the /pw_auth endpoint.
-    postUsernamePassword: () => {},
   },
   extraReducers: (builder) => {
-    builder.addCase(performAuthentication.fulfilled, (state, action) => {
-      // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
-      state.mfa.webauthn_assertion = action.payload;
-    });
+    builder
+      .addCase(performAuthentication.fulfilled, (state, action) => {
+        // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
+        state.mfa.webauthn_assertion = action.payload;
+      })
+      .addCase(fetchAuthnOptions.fulfilled, (state, action) => {
+        // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
+        state.authn_options = action.payload;
+      });
   },
 });
 
