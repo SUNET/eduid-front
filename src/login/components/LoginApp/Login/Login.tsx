@@ -1,23 +1,18 @@
 import React, { Fragment, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import UsernamePw from "./UsernamePw";
-import TermsOfUse from "./TermsOfUse";
-import MultiFactorAuth from "./MultiFactorAuth";
-import SubmitSamlResponse from "./SubmitSamlResponse";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
-
-interface LoginProps {
-  translate(msg: string): string;
-}
+import MultiFactorAuth from "./MultiFactorAuth";
+import SubmitSamlResponse from "./SubmitSamlResponse";
+import TermsOfUse from "./TermsOfUse";
+import UsernamePw from "./UsernamePw";
 
 // URL parameters passed to this component
 interface LoginParams {
   ref?: string;
 }
 
-const Login = (props: LoginProps): JSX.Element => {
+const Login = (): JSX.Element => {
   const history = useHistory();
   const next_page = useAppSelector((state) => state.login.next_page);
   const params = useParams() as LoginParams;
@@ -43,11 +38,11 @@ const Login = (props: LoginProps): JSX.Element => {
   return (
     <Fragment>
       {next_page === "USERNAMEPASSWORD" ? (
-        <UsernamePw {...props} />
+        <UsernamePw />
       ) : next_page === "TOU" ? (
         <TermsOfUse />
       ) : next_page === "MFA" ? (
-        <MultiFactorAuth {...props} />
+        <MultiFactorAuth />
       ) : next_page === "FINISHED" ? (
         <SubmitSamlResponse />
       ) : null}
@@ -55,5 +50,4 @@ const Login = (props: LoginProps): JSX.Element => {
   );
 };
 
-// InjectIntl 'invents' the translate prop
-export default InjectIntl(Login);
+export default Login;
