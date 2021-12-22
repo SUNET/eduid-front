@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import { translate } from "login/translation";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { reduxForm, submit } from "redux-form";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
@@ -51,7 +52,7 @@ function RenderResetPasswordLink(): JSX.Element {
   );
 }
 
-function UsernamePwFormButtonInner(props: { invalid: boolean }): JSX.Element {
+function UsernamePwSubmitButton(props: { invalid: boolean }): JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
   const dispatch = useAppDispatch();
   return (
@@ -68,23 +69,41 @@ function UsernamePwFormButtonInner(props: { invalid: boolean }): JSX.Element {
   );
 }
 
+// Connect the UsernamePwSubmitButton to the UsernamePwForm, in order to get the "invalid" prop from that form
 const UsernamePwFormButton = reduxForm({
   form: "usernamePwForm",
   destroyOnUnmount: false,
-})(UsernamePwFormButtonInner);
+})(UsernamePwSubmitButton);
 
-const UsernamePw = (props: any) => {
+function UsernamePwOtherDeviceButton(): JSX.Element | null {
+  const options = useAppSelector((state) => state.login.authn_options);
+
+  if (!options.other_device) {
+    return null;
+  }
+
+  return (
+    <ButtonPrimary type="submit" onClick={() => {}} id="login-other-device-button" className={"settings-button"}>
+      <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
+    </ButtonPrimary>
+  );
+}
+
+function UsernamePw() {
   return (
     <div className="username-pw">
-      <h2 className="heading">{translate("login.usernamePw.h2-heading")}</h2>
+      <h2 className="heading">
+        <FormattedMessage id="login.usernamePw.h2-heading" defaultMessage="Log in" />
+      </h2>
       <UsernamePwForm />
       <div className="button-pair">
-        <UsernamePwFormButton {...props} />
-        <RenderResetPasswordLink {...props} />
+        <UsernamePwFormButton />
+        <UsernamePwOtherDeviceButton />
+        <RenderResetPasswordLink />
       </div>
-      <RenderRegisterLink {...props} />
+      <RenderRegisterLink />
     </div>
   );
-};
+}
 
 export default UsernamePw;

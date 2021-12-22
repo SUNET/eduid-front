@@ -15,6 +15,7 @@ interface LoginParams {
 
 const Login = (): JSX.Element => {
   const history = useHistory();
+  const base_url = useAppSelector((state) => state.config.base_url);
   const next_page = useAppSelector((state) => state.login.next_page);
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();
@@ -23,8 +24,14 @@ const Login = (): JSX.Element => {
   if (ref === undefined && params.ref !== undefined) {
     ref = params.ref; // need ref below too
     dispatch(loginSlice.actions.addLoginRef({ ref: ref, start_url: window.location.href }));
-    dispatch(fetchAuthnOptions({ ref: ref }));
   }
+
+  useEffect(() => {
+    // Fetching authn_options depends on state.config being loaded first (base_url being set)
+    if (base_url && ref) {
+      dispatch(fetchAuthnOptions({ ref: ref }));
+    }
+  }, [base_url, ref]);
 
   useEffect(() => {
     /* Changing URL is apparently what triggers browsers password managers, so we

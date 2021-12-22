@@ -22,7 +22,7 @@ function makeLoginRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  return makeRequest(thunkAPI, state.config.login_url, endpoint, body, data);
+  return makeRequest(thunkAPI, state.config.base_url, endpoint, body, data);
 }
 
 /**
