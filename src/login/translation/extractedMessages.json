@@ -7,6 +7,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
   },
+  "4+GwOq": {
+    "developer_comment": "Set new password",
+    "string": "New password"
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
@@ -23,6 +27,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
   },
+  "B4vR5O": {
+    "developer_comment": "Set new password",
+    "string": "Repeat new password"
+  },
   "CH6SNS": {
     "developer_comment": "Ladok account linking",
     "string": "Link your account to Ladok"
@@ -30,9 +38,21 @@
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
+  "D7/IyL": {
+    "developer_comment": "Set new password (accept button)",
+    "string": "accept password"
+  },
+  "DuBOC3": {
+    "developer_comment": "Set new password",
+    "string": "Set your new password"
+  },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right"
+  },
+  "EMcaPD": {
+    "developer_comment": "Set new password",
+    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password."
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
@@ -570,6 +590,10 @@
   "gM6ziT": {
     "developer_comment": "Ladok account linking",
     "string": "Your account is linked with Ladok information from"
+  },
+  "gbZoh/": {
+    "developer_comment": "Set new password (go back to eduID button)",
+    "string": "go back"
   },
   "header.faq": {
     "string": "Help"
