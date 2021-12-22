@@ -34,7 +34,7 @@
     "mini-create-react-context": "^0.4.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-intl": "^5.22.0",
+    "react-intl": "^5.23.0",
     "react-recaptcha": "^2.3.10",
     "react-redux": "^7.2.6",
     "react-router": "^5.2.1",
