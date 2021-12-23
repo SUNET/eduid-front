@@ -1,11 +1,13 @@
+import { requestUseOtherDevice } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
+import loginSlice from "login/redux/slices/loginSlice";
+import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
 import { translate } from "login/translation";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { reduxForm, submit } from "redux-form";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
@@ -75,15 +77,25 @@ const UsernamePwFormButton = reduxForm({
   destroyOnUnmount: false,
 })(UsernamePwSubmitButton);
 
-function UsernamePwOtherDeviceButton(): JSX.Element | null {
+function UsernamePwAnotherDeviceButton(): JSX.Element | null {
+  const loginRef = useAppSelector((state) => state.login.ref);
   const options = useAppSelector((state) => state.login.authn_options);
+  const dispatch = useAppDispatch();
 
   if (!options.other_device) {
     return null;
   }
 
+  function handleOnClick() {
+    // TODO: get email from form here
+    if (loginRef) {
+      dispatch(requestUseOtherDevice({ ref: loginRef, username: undefined }));
+    }
+    dispatch(loginSlice.actions.startLoginWithAnotherDevice());
+  }
+
   return (
-    <ButtonPrimary type="submit" onClick={() => {}} id="login-other-device-button" className={"settings-button"}>
+    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button" className={"settings-button"}>
       <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
     </ButtonPrimary>
   );
@@ -98,7 +110,7 @@ function UsernamePw() {
       <UsernamePwForm />
       <div className="button-pair">
         <UsernamePwFormButton />
-        <UsernamePwOtherDeviceButton />
+        <UsernamePwAnotherDeviceButton />
         <RenderResetPasswordLink />
       </div>
       <RenderRegisterLink />

@@ -1,11 +1,13 @@
 import { fetchAuthnOptions } from "apis/eduidLogin";
 import React, { Fragment, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
 import MultiFactorAuth from "./MultiFactorAuth";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
+import UseAnotherDevice from "./UseAnotherDevice";
 import UsernamePw from "./UsernamePw";
 
 // URL parameters passed to this component
@@ -48,13 +50,20 @@ const Login = (): JSX.Element => {
     <Fragment>
       {next_page === "USERNAMEPASSWORD" ? (
         <UsernamePw />
+      ) : next_page === "ANOTHER_DEVICE" ? (
+        <UseAnotherDevice />
       ) : next_page === "TOU" ? (
         <TermsOfUse />
       ) : next_page === "MFA" ? (
         <MultiFactorAuth />
       ) : next_page === "FINISHED" ? (
         <SubmitSamlResponse />
-      ) : null}
+      ) : next_page !== undefined ? (
+        <h2 className="heading">
+          <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown login state." />
+        </h2>
+      ) : // show nothing before next_page is initialised
+      null}
     </Fragment>
   );
 };

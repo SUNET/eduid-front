@@ -31,6 +31,36 @@
   }
 }
 
+.use-another-device {
+  .step {
+    display: inline-block;
+    font-size: 1rem;
+    vertical-align: top;
+    .num {
+      padding-right: 8px;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  }
+  img.qr-code {
+    width: 480px;
+  }
+
+  input[type="text"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid gray;
+    display: inline-block;
+    font-size: 2rem;
+    margin: 0 5px;
+    width: 2.5rem;
+    text-align: center;
+  }
+  input.fixed {
+    border-bottom: none;
+  }
+}
+
 a.send-link {
   text-decoration: underline;
   &:hover {

@@ -43,15 +43,14 @@ function UsernamePwForm() {
   const dispatch = useAppDispatch();
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
-    if (e.which === 13) {
-      // e.which === 13, event is to click the enter button
+    if (e.key.toLowerCase() === "enter") {
       e.preventDefault();
       dispatch(submit("usernamePwForm"));
     }
   };
 
   return (
-    <Form id="login-form" aria-label="login form" onKeyDown={(e) => handleKeyDown(e)}>
+    <Form id="login-form" aria-label="login form" onKeyDown={handleKeyDown}>
       <EmailInput autoFocus={true} required={true} />
       <PasswordInput />
     </Form>

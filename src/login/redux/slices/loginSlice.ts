@@ -1,5 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchAuthnOptions, LoginAuthnOptions } from "apis/eduidLogin";
+import {
+  fetchAuthnOptions,
+  LoginAuthnOptions,
+  requestUseOtherDevice,
+  LoginRequestOtherResponse,
+} from "apis/eduidLogin";
 import { ToUs } from "login/components/LoginApp/Login/TermsOfUse";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
@@ -21,6 +26,7 @@ interface LoginState {
     version?: string;
   };
   authn_options: LoginAuthnOptions;
+  other_device?: LoginRequestOtherResponse;
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -38,6 +44,9 @@ export const loginSlice = createSlice({
       // Add the login reference (currently an UUID extracted from the URL), to the store.
       state.ref = action.payload.ref;
       state.start_url = action.payload.start_url;
+    },
+    startLoginWithAnotherDevice: (state) => {
+      state.next_page = "ANOTHER_DEVICE";
     },
     postIdpNextSuccess: (state, action: PayloadAction<NextResponse>) => {
       // Process a successful response from the /next endpoint.
@@ -84,6 +93,10 @@ export const loginSlice = createSlice({
       .addCase(fetchAuthnOptions.fulfilled, (state, action) => {
         // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
         state.authn_options = action.payload;
+      })
+      .addCase(requestUseOtherDevice.fulfilled, (state, action) => {
+        // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
+        state.other_device = action.payload;
       });
   },
 });
