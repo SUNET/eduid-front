@@ -17,7 +17,6 @@ import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FormattedMessage } from "react-intl";
-import { useIntl } from "react-intl";
 
 interface NewPasswordFormData {
   newPassword?: string;
