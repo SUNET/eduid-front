@@ -271,6 +271,4 @@ export const resetPassword = {
     <FormattedMessage id="resetpw.external-mfa-fail" defaultMessage={`External MFA failed.`} />
   ),
   "resetpw.go-back": <FormattedMessage id="resetpw.go-back" defaultMessage={`go back`} />,
-  "resetpw.copy-to-clipboard": <FormattedMessage id="resetpw.copy-to-clipboard" defaultMessage={`Copy to clipboard`} />,
-  "resetpw.copied-in-clipboard": <FormattedMessage id="resetpw.copied-in-clipboard" defaultMessage={`Copied!`} />,
 };
