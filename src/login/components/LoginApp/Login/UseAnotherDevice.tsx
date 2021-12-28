@@ -5,7 +5,7 @@ import { Field, Form } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
 function UseAnotherDevice() {
-  const other_device = useAppSelector((state) => state.login.other_device);
+  const other_device = useAppSelector((state) => state.login.other_device1);
 
   return (
     <div className="use-another-device">

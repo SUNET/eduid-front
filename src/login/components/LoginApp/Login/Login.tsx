@@ -1,10 +1,11 @@
-import { fetchAuthnOptions } from "apis/eduidLogin";
+import { fetchAuthnOptions, fetchNext } from "apis/eduidLogin";
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Redirect } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
 import MultiFactorAuth from "./MultiFactorAuth";
+import LoginOtherDeviceFinish from "./OtherDeviceFinish";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
 import UseAnotherDevice from "./UseAnotherDevice";
@@ -36,6 +37,13 @@ const Login = (): JSX.Element => {
   }, [base_url, ref]);
 
   useEffect(() => {
+    // Ask the backend what to do
+    if (base_url && !next_page && ref) {
+      dispatch(fetchNext({ ref }));
+    }
+  }, [base_url, ref, next_page]);
+
+  useEffect(() => {
     /* Changing URL is apparently what triggers browsers password managers, so we
      * change to/from 'login/password' when that module is used.
      */
@@ -47,7 +55,7 @@ const Login = (): JSX.Element => {
   }, [next_page]);
 
   return (
-    <Fragment>
+    <React.Fragment>
       {next_page === "USERNAMEPASSWORD" ? (
         <UsernamePw />
       ) : next_page === "ANOTHER_DEVICE" ? (
@@ -57,15 +65,21 @@ const Login = (): JSX.Element => {
       ) : next_page === "MFA" ? (
         <MultiFactorAuth />
       ) : next_page === "FINISHED" ? (
-        <SubmitSamlResponse />
+        <RenderFinished />
       ) : next_page !== undefined ? (
         <h2 className="heading">
           <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown login state." />
         </h2>
       ) : // show nothing before next_page is initialised
       null}
-    </Fragment>
+    </React.Fragment>
   );
 };
+
+function RenderFinished(): JSX.Element {
+  const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
+
+  return <React.Fragment>{SAMLParameters ? <SubmitSamlResponse /> : <LoginOtherDeviceFinish />}</React.Fragment>;
+}
 
 export default Login;

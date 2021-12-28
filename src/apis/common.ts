@@ -35,16 +35,21 @@ function updateCsrf(action: { payload: { csrf_token?: string } }, thunkAPI: Requ
 export function makeRequest<T>(
   thunkAPI: RequestThunkAPI,
   base_url: string,
-  endpoint: string,
+  endpoint?: string,
   body?: KeyValues,
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!base_url.endsWith("/")) {
-    base_url = base_url.concat("/");
+  let url;
+  if (endpoint) {
+    if (!base_url.endsWith("/")) {
+      base_url = base_url.concat("/");
+    }
+    url = base_url + endpoint;
+  } else {
+    url = base_url;
   }
-  const url = base_url + endpoint;
 
   // Add the current CSRF token
   if (body !== undefined && body.csrf_token === undefined) {
