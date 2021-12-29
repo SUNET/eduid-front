@@ -117,7 +117,7 @@ export const fetchNext = createAsyncThunk<
   };
 
   // TODO: We also have the full next_url in config, should we remove that?
-  return makeLoginRequest<LoginNextResponse>(thunkAPI, "next", undefined, body)
+  return makeLoginRequest<LoginNextResponse>(thunkAPI, "next", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -147,8 +147,10 @@ async function makeLoginRequest<T>(
     } catch (error) {
       if (error instanceof Error) {
         thunkAPI.dispatch(loginFail(error.toString()));
+        reject(error.toString());
+      } else {
+        reject(error);
       }
-      reject(error);
     }
   });
 }
