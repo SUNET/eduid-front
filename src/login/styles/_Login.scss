@@ -32,6 +32,11 @@
 }
 
 .use-another-device {
+  $qr_width: 480px;
+  $clock_size: 1.5rem;
+  $clock_padding: 1rem;
+  $meter_align: $clock_size + $clock_padding;
+
   .step {
     display: inline-block;
     font-size: 1rem;
@@ -43,14 +48,30 @@
     }
   }
   img.qr-code {
-    width: 480px;
+    width: $qr_width;
+  }
+  span.short_code {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    width: $qr_width;
+  }
+
+  span.short_code.device2 {
+    text-align: left;
+    padding-left: $meter_align;
+  }
+
+  .buttons.device2 {
+    padding-left: $meter_align;
   }
 
   input[type="text"] {
+    display: inline-block;
     background-color: transparent;
     border: none;
     border-bottom: 2px solid gray;
-    display: inline-block;
     font-size: 2rem;
     margin: 0 5px;
     width: 2.5rem;
@@ -58,6 +79,32 @@
   }
   input.fixed {
     border-bottom: none;
+  }
+
+  .developer {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    font-size: 1rem;
+    justify-content: flex-end;
+  }
+
+  .time-left {
+    .clock {
+      color: gray;
+      padding-right: $clock_padding;
+      svg {
+        height: $clock_size;
+        width: $clock_size;
+        transform: rotate(0);
+      }
+    }
+
+    display: flex;
+
+    meter {
+      width: 50%;
+    }
   }
 }
 

@@ -88,13 +88,9 @@ function RenderOtherDevice(props: { data: LoginRequestOtherResponse }): JSX.Elem
         </span>
       </div>
       <img className="qr-code" src={data.qr_img} />
-
-      <div>
-        <p>
-          <span>Debug: </span>
-          <a href={data.other_url}>{data.other_url}</a>
-        </p>
-      </div>
+      <p>
+        <span className="short_code">ID# {data.short_code}</span>
+      </p>
 
       <div className="step">
         <span className="num">2.</span>
@@ -128,6 +124,13 @@ function RenderOtherDevice(props: { data: LoginRequestOtherResponse }): JSX.Elem
           </form>
         )}
       />
+
+      <div className="developer">
+        <span>Developer: </span>
+        <span>
+          <a href={data.other_url}>{data.other_url}</a>
+        </span>
+      </div>
     </React.Fragment>
   );
 }
