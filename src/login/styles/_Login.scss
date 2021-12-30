@@ -89,7 +89,14 @@
     justify-content: flex-end;
   }
 
+  .device-info-row {
+    font-size: 1rem;
+  }
+
   .time-left {
+    display: flex;
+    align-items: baseline;
+
     .clock {
       color: gray;
       padding-right: $clock_padding;
@@ -100,10 +107,15 @@
       }
     }
 
-    display: flex;
-
     meter {
       width: 50%;
+    }
+
+    span.timer {
+      padding-left: 1rem;
+      font-family: "Akkurat";
+      color: $gray;
+      font-size: 1rem;
     }
   }
 }

@@ -1,11 +1,12 @@
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchNext, fetchUseOtherDevice, LoginUseOtherResponse } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { TimeRemaining, TimeRemainingWrapper } from "./TimeRemaining";
 
 // URL parameters passed to this component
 interface UseOtherParams {
@@ -18,6 +19,7 @@ function LoginOtherDevice() {
   const base_url = useAppSelector((state) => state.config.base_url);
   const params = useParams() as UseOtherParams;
   const dispatch = useAppDispatch();
+  const [timerIsZero, setTimerIsZero] = useState(false);
 
   let state_id: string | undefined;
 
@@ -31,6 +33,10 @@ function LoginOtherDevice() {
       dispatch(fetchUseOtherDevice({ state_id: state_id }));
     }
   }, [base_url, state_id]);
+
+  function handleTimerReachZero() {
+    setTimerIsZero(true);
+  }
 
   return (
     <div className="use-another-device">
@@ -50,8 +56,15 @@ function LoginOtherDevice() {
           <p>
             <span className="short_code device2">ID# {other.data.short_code}</span>
           </p>
-          <ExpiresMeter data={other.data} />
-          <ProceedLoginButton />
+          <TimeRemainingWrapper
+            name="other-device-expires"
+            value={other.data.expires_in}
+            onReachZero={handleTimerReachZero}
+          >
+            <ExpiresMeter data={other.data} />
+          </TimeRemainingWrapper>
+
+          <ProceedLoginButton disabled={timerIsZero} />
         </>
       )}
     </div>
@@ -59,13 +72,36 @@ function LoginOtherDevice() {
 }
 
 function InfoAboutOtherDevice(props: { data: LoginUseOtherResponse }): JSX.Element | null {
+  const proximityMessages: { [key: string]: JSX.Element } = {
+    SAME: (
+      <FormattedMessage
+        defaultMessage="(The same as now)"
+        description="Use another device IP proximity"
+      ></FormattedMessage>
+    ),
+    NEAR: (
+      <FormattedMessage
+        defaultMessage="(Close to your address now)"
+        description="Use another device IP proximity"
+      ></FormattedMessage>
+    ),
+    FAR: (
+      <FormattedMessage
+        defaultMessage="(Far from your address now)"
+        description="Use another device IP proximity"
+      ></FormattedMessage>
+    ),
+  };
+  const proximity: JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
     <div className="table-responsive">
       <table className="table table-striped">
         <tbody>
           <tr className="device-info-row">
             <td>IP address</td>
-            <td>{props.data.device1_info.addr}</td>
+            <td>
+              {props.data.device1_info.addr} {proximity}
+            </td>
           </tr>
           <tr className="device-info-row">
             <td>Description</td>
@@ -77,7 +113,16 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherResponse }): JSX.Eleme
   );
 }
 
-function ExpiresMeter(props: { data: LoginUseOtherResponse }): JSX.Element | null {
+interface ExpiresMeterProps {
+  data: LoginUseOtherResponse;
+  time_remaining?: TimeRemaining;
+}
+
+function ExpiresMeter(props: ExpiresMeterProps): JSX.Element | null {
+  // convince TypeScript that TimeRemainingWrapper has added the time_remaining prop
+  if (props.time_remaining === undefined) {
+    return null;
+  }
   return (
     <div className="time-left">
       <span className="clock">
@@ -85,17 +130,20 @@ function ExpiresMeter(props: { data: LoginUseOtherResponse }): JSX.Element | nul
       </span>
       <meter
         className="other-device-expires-meter"
-        low={props.data.expires_max * 0.1}
+        low={props.data.expires_max * 0.2}
         max={props.data.expires_max}
-        value={props.data.expires_in}
+        value={props.time_remaining.total_seconds}
         id="expires-meter"
         key="0"
       />
+      <span className="timer">
+        {props.time_remaining.minutes}:{props.time_remaining.seconds}
+      </span>
     </div>
   );
 }
 
-function ProceedLoginButton(): JSX.Element | null {
+function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
   const other = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -115,7 +163,7 @@ function ProceedLoginButton(): JSX.Element | null {
         onClick={handleOnClick}
         id="proceed-other-device-button"
         className={"settings-button"}
-        disabled={!other}
+        disabled={!other || props.disabled}
       >
         <FormattedMessage defaultMessage="Log in the other device" description="Login OtherDevice" />
       </ButtonPrimary>
