@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Field, Form } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
-import { ExpiresMeter } from "./OtherDevice";
+import { ExpiresMeter } from "./ExpiresMeter";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 
 /*
