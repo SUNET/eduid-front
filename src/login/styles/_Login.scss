@@ -33,23 +33,31 @@
 
 .use-another-device {
   $qr_width: 480px;
+
   $clock_size: 1.5rem;
   $clock_padding: 1rem;
   $meter_align: $clock_size + $clock_padding;
+
+  $step_num_size: 1.5rem;
+  $step_num_padding: 0.5rem;
+  $step_num_align: $step_num_size + $step_num_padding;
 
   .step {
     display: inline-block;
     font-size: 1rem;
     vertical-align: top;
+    line-height: 300%;
     .num {
-      padding-right: 8px;
+      padding-right: $step_num_padding;
       font-weight: bold;
-      font-size: 1.5rem;
+      font-size: $step_num_size;
     }
   }
+
   img.qr-code {
     width: $qr_width;
   }
+
   span.short_code {
     display: inline-block;
     font-weight: bold;
@@ -63,10 +71,21 @@
     padding-left: $meter_align;
   }
 
+  .buttons.device1 {
+    padding-left: $step_num_align;
+  }
+
   .buttons.device2 {
     padding-left: $meter_align;
   }
 
+  .short-code-input {
+    padding-left: $step_num_align;
+  }
+
+  .expiration-info.device1 {
+    padding-left: $step_num_align;
+  }
   input[type="text"] {
     display: inline-block;
     background-color: transparent;
@@ -78,10 +97,12 @@
     text-align: center;
   }
   input.fixed {
+    // the pure-text "inputs", S, K and -
     border-bottom: none;
   }
 
   .developer {
+    // show QR URL at the bottom for non-production environments
     display: flex;
     flex-direction: column;
     height: 10rem;
@@ -93,7 +114,7 @@
     font-size: 1rem;
   }
 
-  .time-left {
+  .expires-meter {
     display: flex;
     align-items: baseline;
 

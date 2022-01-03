@@ -61,10 +61,12 @@ function LoginOtherDevice() {
             value={other.data.expires_in}
             onReachZero={handleTimerReachZero}
           >
-            <ExpiresMeter data={other.data} />
+            <ExpiresMeter expires_max={other.data.expires_max} />
           </TimeRemainingWrapper>
 
-          <ProceedLoginButton disabled={timerIsZero} />
+          {other.data.state === "PENDING" ? (
+            <ProceedLoginButton disabled={timerIsZero} />
+          ) : other.data.state === "FINISHED" ? null : null}
         </>
       )}
     </div>
@@ -114,24 +116,23 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherResponse }): JSX.Eleme
 }
 
 interface ExpiresMeterProps {
-  data: LoginUseOtherResponse;
+  expires_max: number;
   time_remaining?: TimeRemaining;
 }
 
-function ExpiresMeter(props: ExpiresMeterProps): JSX.Element | null {
+export function ExpiresMeter(props: ExpiresMeterProps): JSX.Element | null {
   // convince TypeScript that TimeRemainingWrapper has added the time_remaining prop
   if (props.time_remaining === undefined) {
     return null;
   }
   return (
-    <div className="time-left">
+    <div className="expires-meter">
       <span className="clock">
         <FontAwesomeIcon icon={faClock} />
       </span>
       <meter
-        className="other-device-expires-meter"
-        low={props.data.expires_max * 0.2}
-        max={props.data.expires_max}
+        low={props.expires_max * 0.2}
+        max={props.expires_max}
         value={props.time_remaining.total_seconds}
         id="expires-meter"
         key="0"

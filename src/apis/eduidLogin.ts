@@ -37,10 +37,11 @@ export const fetchAuthnOptions = createAsyncThunk<
 export interface LoginRequestOtherResponse {
   expires_in: number;
   expires_max: number;
-  other_url: string;
   qr_img: string;
+  qr_url: string;
   short_code: string;
   state_id: string;
+  state: string;
 }
 
 /**
@@ -68,8 +69,9 @@ export interface LoginUseOtherResponse {
   device1_info: DeviceInfo;
   expires_in: number;
   expires_max: number;
-  short_code: string;
   login_ref: string;
+  short_code: string;
+  state: string;
 }
 
 export interface DeviceInfo {
