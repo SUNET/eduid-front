@@ -7,13 +7,13 @@ import ExtraSecurity from "./ResetPassword/ExtraSecurity";
 import PhoneCodeSent from "./ResetPassword/PhoneCodeSent";
 import SetNewPassword from "./ResetPassword/SetNewPassword";
 import ResetPasswordSuccess from "./ResetPassword/ResetPasswordSuccess";
-import LoginOtherDevice from "./Login/OtherDevice";
+import UseOtherDevice2 from "./Login/UseOtherDevice2";
 
 function LoginApp(): JSX.Element {
   return (
     <div id="content" className="horizontal-content-margin">
       <Switch>
-        <Route exact path={`/login/other/:state_id`} component={LoginOtherDevice} />
+        <Route exact path={`/login/other/:state_id`} component={UseOtherDevice2} />
         <Route exact path={`/login/password/:ref`} component={Login} />
         <Route exact path={`/login/:ref`} component={Login} />
         <Route exact path="/reset-password/" component={() => <Redirect to="/reset-password/email" />} />

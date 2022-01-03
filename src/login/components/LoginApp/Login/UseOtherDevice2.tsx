@@ -1,4 +1,4 @@
-import { fetchNext, fetchUseOtherDevice, LoginUseOtherResponse } from "apis/eduidLogin";
+import { fetchNext, fetchUseOtherDevice2, LoginUseOtherDevice2Response } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import React, { useEffect, useState } from "react";
@@ -13,7 +13,7 @@ interface UseOtherParams {
 }
 
 // This is the page rendered by the link in the QR code, so this is on device #2
-function LoginOtherDevice() {
+function UseOtherDevice2() {
   const other = useAppSelector((state) => state.login.other_device2);
   const base_url = useAppSelector((state) => state.config.base_url);
   const params = useParams() as UseOtherParams;
@@ -29,7 +29,7 @@ function LoginOtherDevice() {
   useEffect(() => {
     // Fetching authn_options depends on state.config being loaded first (base_url being set)
     if (base_url && state_id) {
-      dispatch(fetchUseOtherDevice({ state_id: state_id }));
+      dispatch(fetchUseOtherDevice2({ state_id: state_id }));
     }
   }, [base_url, state_id]);
 
@@ -72,7 +72,7 @@ function LoginOtherDevice() {
   );
 }
 
-function InfoAboutOtherDevice(props: { data: LoginUseOtherResponse }): JSX.Element | null {
+function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JSX.Element | null {
   const proximityMessages: { [key: string]: JSX.Element } = {
     SAME: (
       <FormattedMessage
@@ -142,4 +142,4 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
   );
 }
 
-export default LoginOtherDevice;
+export default UseOtherDevice2;

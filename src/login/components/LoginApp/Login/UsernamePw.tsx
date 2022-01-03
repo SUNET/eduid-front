@@ -1,4 +1,4 @@
-import { requestUseOtherDevice } from "apis/eduidLogin";
+import { fetchUseOtherDevice1 } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
@@ -89,7 +89,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   function handleOnClick() {
     // TODO: get email from form here
     if (loginRef) {
-      dispatch(requestUseOtherDevice({ ref: loginRef, username: undefined }));
+      dispatch(fetchUseOtherDevice1({ ref: loginRef, username: undefined }));
     }
     dispatch(loginSlice.actions.startLoginWithAnotherDevice());
   }

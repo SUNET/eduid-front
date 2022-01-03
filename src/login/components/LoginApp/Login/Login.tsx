@@ -1,14 +1,14 @@
-import { fetchAuthnOptions, fetchNext, fetchUseOtherDevice } from "apis/eduidLogin";
+import { fetchAuthnOptions, fetchNext, fetchUseOtherDevice2 } from "apis/eduidLogin";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
 import MultiFactorAuth from "./MultiFactorAuth";
-import LoginOtherDevice from "./OtherDevice";
+import UseOtherDevice2 from "./UseOtherDevice2";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
-import UseAnotherDevice from "./UseAnotherDevice";
+import UseOtherDevice1 from "./UseOtherDevice1";
 import UsernamePw from "./UsernamePw";
 
 // URL parameters passed to this component
@@ -59,7 +59,7 @@ const Login = (): JSX.Element => {
       {next_page === "USERNAMEPASSWORD" ? (
         <UsernamePw />
       ) : next_page === "ANOTHER_DEVICE" ? (
-        <UseAnotherDevice />
+        <UseOtherDevice1 />
       ) : next_page === "TOU" ? (
         <TermsOfUse />
       ) : next_page === "MFA" ? (
@@ -85,11 +85,11 @@ function RenderFinished(): JSX.Element {
     // refresh other_device2 state on component load
     if (!SAMLParameters && target) {
       // the 'target' from the FINISHED next response holds the state_id
-      dispatch(fetchUseOtherDevice({ state_id: target }));
+      dispatch(fetchUseOtherDevice2({ state_id: target }));
     }
   }, []);
 
-  return <React.Fragment>{SAMLParameters ? <SubmitSamlResponse /> : <LoginOtherDevice />}</React.Fragment>;
+  return <React.Fragment>{SAMLParameters ? <SubmitSamlResponse /> : <UseOtherDevice2 />}</React.Fragment>;
 }
 
 export default Login;

@@ -6,13 +6,14 @@ import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
-/***********************************************************************************/
+/*********************************************************************************************************************/
 export interface LoginAuthnOptions {
-  password?: boolean;
-  other_device?: boolean;
-  webauthn?: boolean;
   freja_eidplus?: boolean;
+  other_device?: boolean;
+  password?: boolean;
   username?: string;
+  usernamepassword?: boolean;
+  webauthn?: boolean;
 }
 /**
  * @public
@@ -33,8 +34,8 @@ export const fetchAuthnOptions = createAsyncThunk<
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
-/***********************************************************************************/
-export interface LoginRequestOtherResponse {
+/*********************************************************************************************************************/
+export interface LoginUseOtherDevice1Response {
   expires_in: number;
   expires_max: number;
   qr_img: string;
@@ -46,11 +47,11 @@ export interface LoginRequestOtherResponse {
 
 /**
  * @public
- * @function requestUseOtherDevice
+ * @function fetchUseOtherDevice1
  * @desc     Request login using another device. Used on device 1 to get a QR code from the backend.
  */
-export const requestUseOtherDevice = createAsyncThunk<
-  LoginRequestOtherResponse, // return type
+export const fetchUseOtherDevice1 = createAsyncThunk<
+  LoginUseOtherDevice1Response, // return type
   { ref: string; username?: string }, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("login/api/requestOtherDevice", async (args, thunkAPI) => {
@@ -59,13 +60,13 @@ export const requestUseOtherDevice = createAsyncThunk<
     username: args.username,
   };
 
-  return makeLoginRequest<LoginRequestOtherResponse>(thunkAPI, "request_other", body)
+  return makeLoginRequest<LoginUseOtherDevice1Response>(thunkAPI, "use_other_1", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
-/***********************************************************************************/
-export interface LoginUseOtherResponse {
+/*********************************************************************************************************************/
+export interface LoginUseOtherDevice2Response {
   device1_info: DeviceInfo;
   expires_in: number;
   expires_max: number;
@@ -82,19 +83,19 @@ export interface DeviceInfo {
 
 /**
  * @public
- * @function fetchUseOtherDevice
+ * @function fetchUseOtherDevice2
  * @desc     Request to login on another device (on the device scanning the QR code, device 2).
  */
-export const fetchUseOtherDevice = createAsyncThunk<
-  { state_id: string; data: LoginUseOtherResponse }, // return type
+export const fetchUseOtherDevice2 = createAsyncThunk<
+  { state_id: string; data: LoginUseOtherDevice2Response }, // return type
   { state_id: string }, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
->("login/api/useOtherDevice", async (args, thunkAPI) => {
+>("login/api/useOtherDevice2", async (args, thunkAPI) => {
   const body: KeyValues = {
     state_id: args.state_id,
   };
 
-  return makeLoginRequest<LoginUseOtherResponse>(thunkAPI, "use_other", body)
+  return makeLoginRequest<LoginUseOtherDevice2Response>(thunkAPI, "use_other_2", body)
     .then((response) => ({
       state_id: args.state_id,
       data: response.payload,
@@ -102,7 +103,7 @@ export const fetchUseOtherDevice = createAsyncThunk<
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
-/***********************************************************************************/
+/*********************************************************************************************************************/
 export interface LoginNextResponse {
   // The response from the /next API endpoint consists of (in the happy case):
   //   action: what action the backed requires next, or FINISHED
@@ -134,7 +135,7 @@ export const fetchNext = createAsyncThunk<
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
-/***********************************************************************************/
+/*********************************************************************************************************************/
 async function makeLoginRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
@@ -167,6 +168,7 @@ async function makeLoginRequest<T>(
   });
 }
 
+/*********************************************************************************************************************/
 // Fake an error response from the backend. The action ending in _FAIL will make the notification
 // middleware picks this error up and shows something to the user.
 export const loginFail = createAction("login_FAIL", function prepare(message: string) {

@@ -2,10 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   fetchAuthnOptions,
   LoginAuthnOptions,
-  requestUseOtherDevice,
-  LoginRequestOtherResponse,
-  fetchUseOtherDevice,
-  LoginUseOtherResponse,
+  fetchUseOtherDevice1,
+  LoginUseOtherDevice1Response,
+  fetchUseOtherDevice2,
+  LoginUseOtherDevice2Response,
   fetchNext,
 } from "apis/eduidLogin";
 import { ToUs } from "login/components/LoginApp/Login/TermsOfUse";
@@ -29,8 +29,8 @@ interface LoginState {
     version?: string;
   };
   authn_options: LoginAuthnOptions;
-  other_device1?: LoginRequestOtherResponse; // state on device 1 (rendering QR code)
-  other_device2?: { state_id: string; data: LoginUseOtherResponse }; // state on device 2 (scanning QR code)
+  other_device1?: LoginUseOtherDevice1Response; // state on device 1 (rendering QR code)
+  other_device2?: { state_id: string; data: LoginUseOtherDevice2Response }; // state on device 2 (scanning QR code)
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -100,11 +100,11 @@ export const loginSlice = createSlice({
         // Store results of fetching possible authentication options from the backend.
         state.authn_options = action.payload;
       })
-      .addCase(requestUseOtherDevice.fulfilled, (state, action) => {
+      .addCase(fetchUseOtherDevice1.fulfilled, (state, action) => {
         // Store the result for the user requesting to use another device to log in.
         state.other_device1 = action.payload;
       })
-      .addCase(fetchUseOtherDevice.fulfilled, (state, action) => {
+      .addCase(fetchUseOtherDevice2.fulfilled, (state, action) => {
         // Store the result from fetching state about logging in on another device (from this device).
         state.other_device2 = action.payload;
       })

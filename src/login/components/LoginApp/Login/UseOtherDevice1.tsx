@@ -1,4 +1,4 @@
-import { fetchNext, LoginRequestOtherResponse } from "apis/eduidLogin";
+import { fetchNext, LoginUseOtherDevice1Response } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import React, { useState } from "react";
@@ -14,7 +14,7 @@ import { TimeRemainingWrapper } from "components/TimeRemaining";
  * This component runs on device #1 and shows the QR code to the user. It then waits
  * for the user to submit a "response code" in a form, to complete the login on this device.
  */
-function UseAnotherDevice() {
+function UseOtherDevice1() {
   const other_device = useAppSelector((state) => state.login.other_device1);
 
   return (
@@ -28,7 +28,7 @@ function UseAnotherDevice() {
   );
 }
 
-function RenderOtherDevice(props: { data: LoginRequestOtherResponse }): JSX.Element {
+function RenderOtherDevice(props: { data: LoginUseOtherDevice1Response }): JSX.Element {
   const { data } = props;
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
@@ -199,4 +199,4 @@ function DeveloperInfo(props: { qr_url: string }) {
     </div>
   );
 }
-export default UseAnotherDevice;
+export default UseOtherDevice1;
