@@ -6,7 +6,7 @@ import { Field, Form } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { ExpiresMeter } from "./OtherDevice";
-import { TimeRemainingWrapper } from "./TimeRemaining";
+import { TimeRemainingWrapper } from "components/TimeRemaining";
 
 /*
  * Start the "Login using another device" login flow.

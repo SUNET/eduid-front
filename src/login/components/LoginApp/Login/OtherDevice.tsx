@@ -6,7 +6,7 @@ import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
-import { TimeRemaining, TimeRemainingWrapper } from "./TimeRemaining";
+import { TimeRemaining, TimeRemainingWrapper } from "components/TimeRemaining";
 
 // URL parameters passed to this component
 interface UseOtherParams {
