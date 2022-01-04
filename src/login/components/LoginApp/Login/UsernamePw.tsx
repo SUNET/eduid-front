@@ -1,4 +1,4 @@
-import { fetchUseOtherDevice1 } from "apis/eduidLogin";
+import { fetchNext, fetchUseOtherDevice1 } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
@@ -86,11 +86,20 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
     return null;
   }
 
-  function handleOnClick() {
-    // TODO: get email from form here
+  async function handleOnClick() {
+    // TODO: get email from form here, and provide it as 'username' so that it is passed to device2
     if (loginRef) {
       dispatch(fetchUseOtherDevice1({ ref: loginRef, username: undefined }));
+      // Mode correct, but slower version:
+      //await dispatch(fetchUseOtherDevice1({ ref: loginRef, username: undefined }));
+      //dispatch(fetchNext({ ref: loginRef }));
     }
+    // TODO: we _could_ await the fetchUseOtherDevice1 response above, and then dispatch fetchNext, in order
+    //       for the backend to tell us it has decided we should now log in using another device. This would
+    //       be more correct, and also handle backend issues better, but it really takes noticeable time before
+    //       the UseOtherDevice1 page starts rendering, so we would need a spinner on the button or something
+    //       before doing that (and disable the button while we're waiting). For now, send off the button click
+    //       event to the backend and then "cheat", switching over to the UseOtherDevice1 page manually.
     dispatch(loginSlice.actions.startLoginWithAnotherDevice());
   }
 

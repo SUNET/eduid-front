@@ -1,79 +1,83 @@
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchNext, fetchUseOtherDevice2, LoginUseOtherDevice2Response } from "apis/eduidLogin";
+import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
-import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { ExpiresMeter } from "./ExpiresMeter";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ResponseCodeForm } from "./ResponseCodeForm";
 
-// URL parameters passed to this component
+// optional URL parameters passed to this component
 interface UseOtherParams {
   state_id?: string;
 }
 
 // This is the page rendered by the link in the QR code, so this is on device #2
 function UseOtherDevice2() {
-  const other = useAppSelector((state) => state.login.other_device2);
+  const data = useAppSelector((state) => state.login.other_device2);
+  const loginRef = useAppSelector((state) => state.login.ref);
   const base_url = useAppSelector((state) => state.config.base_url);
   const params = useParams() as UseOtherParams;
   const dispatch = useAppDispatch();
-  const [timerIsZero, setTimerIsZero] = useState(false);
 
-  let state_id: string | undefined;
-
-  if (!other || (other.data.login_ref == undefined && params.state_id !== undefined)) {
-    state_id = params.state_id; // need ref below too
-  }
+  const state_id = params.state_id;
 
   useEffect(() => {
-    // Fetching authn_options depends on state.config being loaded first (base_url being set)
-    if (base_url && state_id) {
+    // Fetching data from backend depends on state.config being loaded first (base_url being set)
+    if (base_url && !loginRef && state_id) {
+      // When the user follows the QR code, there is no loginRef but there is a state_id
       dispatch(fetchUseOtherDevice2({ state_id: state_id }));
     }
-  }, [base_url, state_id]);
+  }, [base_url, state_id, loginRef]);
+
+  useEffect(() => {
+    if (loginRef) {
+      // refresh state on page reload
+      dispatch(fetchUseOtherDevice2({ ref: loginRef }));
+    }
+  }, []);
+
+  return (
+    <div className="use-another-device device2">
+      <h2 className="heading">
+        <FormattedMessage defaultMessage="Log in on another device" />
+      </h2>
+
+      {data ? <RenderOtherDevice2 data={data} /> : null}
+    </div>
+  );
+}
+
+function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.Element {
+  const { data } = props;
+  const [timerIsZero, setTimerIsZero] = useState(false);
 
   function handleTimerReachZero() {
     setTimerIsZero(true);
   }
 
   return (
-    <div className="use-another-device">
-      <h2 className="heading">
-        <FormattedMessage defaultMessage="Log in on another device" />
-      </h2>
-      {other === undefined ? (
-        <p>
-          <FormattedMessage defaultMessage="The request was not found, or has expired" />
-        </p>
-      ) : (
-        <React.Fragment>
-          <InfoAboutOtherDevice data={other.data} />
+    <React.Fragment>
+      <InfoAboutOtherDevice data={data} />
 
-          <TimeRemainingWrapper
-            name="other-device-expires"
-            value={other.data.expires_in}
-            onReachZero={handleTimerReachZero}
-          >
-            <ExpiresMeter expires_max={other.data.expires_max} />
-          </TimeRemainingWrapper>
+      <TimeRemainingWrapper name="other-device-expires" value={data.expires_in} onReachZero={handleTimerReachZero}>
+        <ExpiresMeter expires_max={data.expires_max} />
+      </TimeRemainingWrapper>
 
-          {other.data.state === "IN_PROGRESS" ? (
-            <ProceedLoginButton disabled={timerIsZero} />
-          ) : other.data.state === "FINISHED" ? (
-            <RenderFinished data={other.data} isExpired={timerIsZero} />
-          ) : other.data !== undefined ? (
-            <h2 className="heading">
-              <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown state, please try again." />
-            </h2>
-          ) : // show nothing before next_page is initialised
-          null}
-        </React.Fragment>
-      )}
-    </div>
+      {data.state === "IN_PROGRESS" ? (
+        <ProceedLoginButton disabled={timerIsZero} />
+      ) : data.state === "FINISHED" ? (
+        <RenderFinished data={data} isExpired={timerIsZero} />
+      ) : data !== undefined ? (
+        <h2 className="heading">
+          <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown state, please try again." />
+        </h2>
+      ) : // show nothing before next_page is initialised
+      null}
+    </React.Fragment>
   );
 }
 
@@ -130,15 +134,15 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
 }
 
 function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
-  const other = useAppSelector((state) => state.login.other_device2);
+  const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const history = useHistory();
 
   function handleOnClick() {
-    if (other && other.data && other.data.login_ref) {
-      dispatch(fetchNext({ ref: other.data.login_ref }));
+    if (data && data.login_ref) {
+      dispatch(fetchNext({ ref: data.login_ref }));
       // Send the user off to the regular login flow when they click the button
-      history.push(`/login/${other.data.login_ref}`);
+      history.push(`/login/${data.login_ref}`);
     }
   }
 
@@ -149,7 +153,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
         onClick={handleOnClick}
         id="proceed-other-device-button"
         className={"settings-button"}
-        disabled={!other || props.disabled}
+        disabled={!data || props.disabled}
       >
         <FormattedMessage defaultMessage="Log in the other device" description="Login OtherDevice" />
       </ButtonPrimary>
@@ -195,14 +199,15 @@ function RenderFinished(props: { isExpired: boolean; data: LoginUseOtherDevice2R
           defaultMessage="After using the code on the other device, you should close this browser window."
           description="Use another device, finished"
         />
-
-        <ResponseCodeForm
-          submitDisabled={true}
-          showButton={false}
-          inputsDisabled={true}
-          value={props.data.short_code}
-        />
       </div>
+
+      <ResponseCodeForm
+        extra_className="device2"
+        submitDisabled={true}
+        showButton={false}
+        inputsDisabled={true}
+        value={props.data.short_code}
+      />
 
       <div className="phishing-warning">
         <span className="triangle">

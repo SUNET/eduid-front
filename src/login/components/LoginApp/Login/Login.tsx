@@ -78,16 +78,6 @@ const Login = (): JSX.Element => {
 
 function RenderFinished(): JSX.Element {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
-  const target = useAppSelector((state) => state.login.post_to);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    // refresh other_device2 state on component load
-    if (!SAMLParameters && target) {
-      // the 'target' from the FINISHED next response holds the state_id
-      dispatch(fetchUseOtherDevice2({ state_id: target }));
-    }
-  }, []);
 
   return <React.Fragment>{SAMLParameters ? <SubmitSamlResponse /> : <UseOtherDevice2 />}</React.Fragment>;
 }

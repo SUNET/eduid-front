@@ -42,9 +42,10 @@
   $step_num_padding: 0.5rem;
   $step_num_align: $step_num_size + $step_num_padding;
 
+  font-size: 1rem;
+
   .step {
     display: inline-block;
-    font-size: 1rem;
     vertical-align: top;
     line-height: 300%;
     .num {
@@ -67,14 +68,18 @@
   }
 
   .buttons {
-    padding-left: $step_num_align;
+    display: flex;
+    column-gap: 1rem;
   }
 
-  .buttons {
+  .buttons.device1 {
+    padding-left: 0;
+  }
+  .buttons.device2 {
     padding-left: $meter_align;
   }
 
-  .short-code-input {
+  .response-code-form {
     padding-left: $step_num_align;
   }
 
@@ -102,12 +107,12 @@
     display: flex;
     flex-direction: column;
     height: 10rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     justify-content: flex-end;
   }
 
   .device-info-row {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .expires-meter {
@@ -132,7 +137,6 @@
       padding-left: 1rem;
       font-family: "Akkurat";
       color: $gray;
-      font-size: 1rem;
     }
   }
 
@@ -140,7 +144,6 @@
     display: flex;
     flex-direction: column;
     padding-left: $meter_align;
-    font-size: 1rem;
 
     span.short_code.device2 {
       text-align: left;
@@ -149,7 +152,6 @@
 
   .finished.device2 {
     $warning_size: $clock_size;
-    font-size: 1.25rem;
     padding-top: 1rem;
 
     display: flex;
@@ -167,6 +169,7 @@
       display: flex;
       align-items: baseline;
       row-gap: 1rem;
+      font-size: 1.25rem;
 
       .text {
         background-color: lightgray;

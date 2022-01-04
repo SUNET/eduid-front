@@ -30,7 +30,7 @@ interface LoginState {
   };
   authn_options: LoginAuthnOptions;
   other_device1?: LoginUseOtherDevice1Response; // state on device 1 (rendering QR code)
-  other_device2?: { state_id: string; data: LoginUseOtherDevice2Response }; // state on device 2 (scanning QR code)
+  other_device2?: LoginUseOtherDevice2Response; // state on device 2 (scanning QR code)
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -50,7 +50,7 @@ export const loginSlice = createSlice({
       state.start_url = action.payload.start_url;
     },
     startLoginWithAnotherDevice: (state) => {
-      state.next_page = "ANOTHER_DEVICE";
+      state.next_page = "OTHER_DEVICE";
     },
     postIdpNextSuccess: (state, action: PayloadAction<NextResponse>) => {
       // Process a successful response from the /next endpoint.

@@ -30,12 +30,12 @@ function UseOtherDevice1() {
         <FormattedMessage defaultMessage="Log in using another device" />
       </h2>
 
-      {other_device ? <RenderOtherDevice data={other_device} /> : null}
+      {other_device ? <RenderOtherDevice1 data={other_device} /> : null}
     </div>
   );
 }
 
-function RenderOtherDevice(props: { data: LoginUseOtherDevice1Response }): JSX.Element {
+function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.Element {
   const { data } = props;
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
@@ -76,7 +76,12 @@ function RenderOtherDevice(props: { data: LoginUseOtherDevice1Response }): JSX.E
         </TimeRemainingWrapper>
       </div>
 
-      <ResponseCodeForm submitDisabled={submitDisabled} showButton={true} inputsDisabled={false} />
+      <ResponseCodeForm
+        extra_className="device1"
+        submitDisabled={submitDisabled}
+        showButton={true}
+        inputsDisabled={false}
+      />
 
       <DeveloperInfo {...data} />
     </React.Fragment>

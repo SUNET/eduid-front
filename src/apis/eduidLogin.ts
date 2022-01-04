@@ -90,19 +90,19 @@ export interface DeviceInfo {
  * @desc     Request to login on another device (on the device scanning the QR code, device 2).
  */
 export const fetchUseOtherDevice2 = createAsyncThunk<
-  { state_id: string; data: LoginUseOtherDevice2Response }, // return type
-  { state_id: string }, // args type
+  LoginUseOtherDevice2Response, // return type
+  { ref?: string; state_id?: string }, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("login/api/useOtherDevice2", async (args, thunkAPI) => {
+  // The backend endpoint will use 'ref' if it is provided, but when the user follows the QR code
+  // there is no pending request (with a 'ref') at first, only a state_id parameter from the QR URL.
   const body: KeyValues = {
+    ref: args.ref,
     state_id: args.state_id,
   };
 
   return makeLoginRequest<LoginUseOtherDevice2Response>(thunkAPI, "use_other_2", body)
-    .then((response) => ({
-      state_id: args.state_id,
-      data: response.payload,
-    }))
+    .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
