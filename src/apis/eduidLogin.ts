@@ -43,6 +43,7 @@ export interface LoginUseOtherDevice1Response {
   short_code: string;
   state_id: string;
   state: string;
+  message?: string;
 }
 
 /**
@@ -54,7 +55,7 @@ export const fetchUseOtherDevice1 = createAsyncThunk<
   LoginUseOtherDevice1Response, // return type
   { ref: string; username?: string }, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
->("login/api/requestOtherDevice", async (args, thunkAPI) => {
+>("login/api/useOtherDevice1", async (args, thunkAPI) => {
   const body: KeyValues = {
     ref: args.ref,
     username: args.username,
@@ -62,7 +63,9 @@ export const fetchUseOtherDevice1 = createAsyncThunk<
 
   return makeLoginRequest<LoginUseOtherDevice1Response>(thunkAPI, "use_other_1", body)
     .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
+    .catch((err) => {
+      return thunkAPI.rejectWithValue(err);
+    });
 });
 
 /*********************************************************************************************************************/
@@ -151,9 +154,12 @@ async function makeLoginRequest<T>(
       const response = await makeRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
 
       if (response.error) {
-        // dispatch fail responses so that notification middleware will show them to the user
+        // Dispatch fail responses so that notification middleware will show them to the user.
+        // The current implementation in notify-middleware.js _removes_ error and payload.message from
+        // response, so we clone it first so we can reject the promise with the full error response.
+        const saved = JSON.parse(JSON.stringify(response));
         thunkAPI.dispatch(response);
-        reject(response);
+        reject(saved);
       }
 
       resolve(response);

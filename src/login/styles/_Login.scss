@@ -66,16 +66,11 @@
     width: $qr_width;
   }
 
-  span.short_code.device2 {
-    text-align: left;
-    padding-left: $meter_align;
-  }
-
-  .buttons.device1 {
+  .buttons {
     padding-left: $step_num_align;
   }
 
-  .buttons.device2 {
+  .buttons {
     padding-left: $meter_align;
   }
 
@@ -86,6 +81,7 @@
   .expiration-info.device1 {
     padding-left: $step_num_align;
   }
+
   input[type="text"] {
     display: inline-block;
     background-color: transparent;
@@ -137,6 +133,53 @@
       font-family: "Akkurat";
       color: $gray;
       font-size: 1rem;
+    }
+  }
+
+  .other-device-info.device2 {
+    display: flex;
+    flex-direction: column;
+    padding-left: $meter_align;
+    font-size: 1rem;
+
+    span.short_code.device2 {
+      text-align: left;
+    }
+  }
+
+  .finished.device2 {
+    $warning_size: $clock_size;
+    font-size: 1.25rem;
+    padding-top: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    .response-code {
+      display: flex;
+      flex-direction: column;
+      padding-left: $meter_align;
+      row-gap: 1rem;
+    }
+
+    .phishing-warning {
+      display: flex;
+      align-items: baseline;
+      row-gap: 1rem;
+
+      .text {
+        background-color: lightgray;
+      }
+      .triangle {
+        color: red;
+        padding-right: 1rem;
+        svg {
+          height: $warning_size;
+          width: $warning_size;
+          transform: rotate(0);
+        }
+      }
     }
   }
 }

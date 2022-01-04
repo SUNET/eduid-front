@@ -104,9 +104,15 @@ export const loginSlice = createSlice({
         // Store the result for the user requesting to use another device to log in.
         state.other_device1 = action.payload;
       })
+      .addCase(fetchUseOtherDevice1.rejected, (state) => {
+        state.other_device1 = undefined;
+      })
       .addCase(fetchUseOtherDevice2.fulfilled, (state, action) => {
         // Store the result from fetching state about logging in on another device (from this device).
         state.other_device2 = action.payload;
+      })
+      .addCase(fetchUseOtherDevice2.rejected, (state) => {
+        state.other_device2 = undefined;
       })
       .addCase(fetchNext.fulfilled, (state, action) => {
         // Store the result from asking the backend what action to perform next

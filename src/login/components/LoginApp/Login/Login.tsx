@@ -58,7 +58,7 @@ const Login = (): JSX.Element => {
     <React.Fragment>
       {next_page === "USERNAMEPASSWORD" ? (
         <UsernamePw />
-      ) : next_page === "ANOTHER_DEVICE" ? (
+      ) : next_page === "OTHER_DEVICE" ? (
         <UseOtherDevice1 />
       ) : next_page === "TOU" ? (
         <TermsOfUse />
@@ -68,7 +68,7 @@ const Login = (): JSX.Element => {
         <RenderFinished />
       ) : next_page !== undefined ? (
         <h2 className="heading">
-          <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown login state." />
+          <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown state, please try again." />
         </h2>
       ) : // show nothing before next_page is initialised
       null}

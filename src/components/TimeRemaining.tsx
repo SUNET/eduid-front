@@ -59,35 +59,42 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Elem
     setTimeRemaining(tr);
   }, [secondsLeft]);
 
-  // Set up a timer at the chosen interval
-  const interval = props.interval || 1000;
-  const timer = setInterval(() => {
-    const now = new Date().getTime();
-    // Load and parse the end time from local storage
-    const endStr = getLocalStorage(`${props.name}.end`);
-    if (!endStr) {
-      clearInterval(timer);
-      return undefined;
-    }
-    const end = parseInt(endStr);
-    // calculate remaining number of secondsLeft
-    let remaining = Math.floor((end - now) / 1000);
-    if (remaining < 0) {
-      // handle time-warp gracefully, never showing a value less than zero
-      remaining = 0;
-    }
-
-    setSecondsLeft(remaining);
-
-    if (remaining <= 0) {
-      clearInterval(timer);
-      removeLocalStorage(`${props.name}.end`);
-      if (props.onReachZero) {
-        // call the callback provided
-        props.onReachZero();
+  useEffect(() => {
+    // Set up a timer at the chosen interval
+    const interval = props.interval || 1000;
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      // Load and parse the end time from local storage
+      const endStr = getLocalStorage(`${props.name}.end`);
+      if (!endStr) {
+        clearInterval(timer);
+        return undefined;
       }
-    }
-  }, interval);
+      const end = parseInt(endStr);
+      // calculate remaining number of secondsLeft
+      let remaining = Math.floor((end - now) / 1000);
+      if (remaining < 0) {
+        // handle time-warp gracefully, never showing a value less than zero
+        remaining = 0;
+      }
+
+      setSecondsLeft(remaining);
+
+      if (remaining <= 0) {
+        clearInterval(timer);
+        removeLocalStorage(`${props.name}.end`);
+        if (props.onReachZero) {
+          // call the callback provided
+          props.onReachZero();
+        }
+      }
+    }, interval);
+
+    return () => {
+      // remove timer on component unmount
+      clearInterval(timer);
+    };
+  });
 
   // Add the time_remaining prop to all the children of this component.
   const childrenWithProps = React.Children.map(props.children, (child) => {
