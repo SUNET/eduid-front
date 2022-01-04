@@ -105,13 +105,13 @@
   }
 }
 
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   #profile-grid {
     width: calc(80% - 2rem);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
   #profile-grid {
     width: calc(100% - 1.25rem);
   }
@@ -120,7 +120,7 @@
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   #profile-grid {
     grid-template-columns: 1fr;
   }

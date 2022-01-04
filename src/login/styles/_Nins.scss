@@ -107,7 +107,7 @@
   color: $gray;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
   #connect-nin-number {
     margin-top: 3rem;
     & .btn.icon-button {
@@ -121,7 +121,7 @@
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   #nin {
     & input {
       font-size: 1rem;

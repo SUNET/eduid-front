@@ -288,7 +288,7 @@ button.btn-link {
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: $bp-xs) {
   button.btn {
     font-size: 0.9rem;
   }

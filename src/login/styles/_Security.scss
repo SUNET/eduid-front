@@ -23,7 +23,7 @@ td .passwords {
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: $bp-xs) {
   #security-webauthn-button {
     justify-content: center;
     font-size: 14px;

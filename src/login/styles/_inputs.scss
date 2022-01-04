@@ -231,7 +231,7 @@ input:focus {
 //   top: 2px;
 // }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   .form-control,
   input,
   .radio-input-container span {

@@ -157,7 +157,7 @@ p.modal-text {
   margin-top: 0;
 }
 
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   // ---- modals ----- //
   #register-modal,
   #delete-account-modal,
@@ -218,7 +218,7 @@ p.modal-text {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
   .modal-dialog {
     max-width: calc(100% - 40px);
   }

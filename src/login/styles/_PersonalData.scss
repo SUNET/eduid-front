@@ -9,7 +9,7 @@
     margin-bottom: 0;
     width: fit-content;
     align-self: center;
-    @media (max-width: 568px) {
+    @media (max-width: $bp-sm) {
       &.btn {
         font-size: unset;
         width: unset;
@@ -66,14 +66,14 @@
   display: flex;
   flex: 1;
   flex-wrap: wrap;
-  @media (max-width: 568px) {
+  @media (max-width: $bp-sm) {
     flex-direction: column;
   }
 }
 
 #personaldataview-form {
   margin-top: 0;
-  @media (max-width: 568px) {
+  @media (max-width: $bp-sm) {
     .radio-input-container span,
     .form-control,
     input {
@@ -97,12 +97,12 @@
   }
   .form-group {
     flex: 1;
-    @media (max-width: 568px) {
+    @media (max-width: $bp-sm) {
       margin-top: 1rem;
     }
     &:last-child {
       margin-left: 1rem;
-      @media (max-width: 568px) {
+      @media (max-width: $bp-sm) {
         margin-left: 0;
       }
     }

@@ -53,7 +53,7 @@ small {
   }
 }
 // // this is here ONLY to counteract bootstrap
-@media (min-width: 1200px) {
+@media (min-width: $bp-xl) {
   #root.container {
     max-width: 100%;
   }
@@ -63,12 +63,12 @@ small {
     max-width: 100%;
   }
 }
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   #root.vertical-content-margin {
     width: 75%;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: $bp-md) {
   body {
     background-color: inherit;
   }

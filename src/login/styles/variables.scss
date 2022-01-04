@@ -16,11 +16,50 @@ $close: #c4c4c4;
 $dark-gray: #d8d8d8;
 $mid-gray: #ebebeb;
 
-$line-height: 1.4;
-$margin: 1rem;
-
 /*
  * Typography
  * ========================================================================== */
 
 $font: "Roboto-Black";
+
+/*
+ * Miscellaneous
+ * ========================================================================== */
+
+$line-height: 1.4;
+$margin: 1rem;
+
+/*
+ * Breakpoints
+ * ========================================================================== */
+
+$bp-xs: 414px;
+$bp-sm: 568px;
+$bp-md: 768px;
+$bp-lg: 823px;
+$bp-xl: 1200px;
+//$bp-xxl: 1400px;
+
+// #content {
+//   @media (max-width: $bp-xl) {
+//     background: cyan;
+//   }
+//   @media (max-width: $bp-lg) {
+//     background: yellow;
+//   }
+//   @media (max-width: $bp-md) {
+//     background: green;
+//   }
+//   @media (max-width: $bp-sm) {
+//     background: blue;
+//   }
+//   @media (max-width: $bp-xs) {
+//     background: red;
+//   }
+//   @media (min-width: $bp-xxl) {
+//     background: magenta;
+//   }
+//   @media (min-width: $bp-sm) and (max-width: $bp-md) {
+//     //
+//   }
+// }

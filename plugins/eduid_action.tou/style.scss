@@ -31,13 +31,13 @@
   margin-left: 15px;
 }
 
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   #eduid-tou {
     width: 75%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
   #eduid-tou {
     width: calc(100% - 40px);
   }
@@ -50,7 +50,4 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
-}
-
-@media (max-width: 414px) {
 }
