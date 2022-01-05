@@ -2,6 +2,14 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
+import ReactDOM from "react-dom";
+import { Form, Field } from "react-final-form";
+import Select from "react-select";
+
+const SelectAdapter = ({ input, ...rest }: any) => {
+  console.log("INPUT", input);
+  return <Select {...input} {...rest} />;
+};
 
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
@@ -120,6 +128,22 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         </option>
         {unis}
       </select>
+
+      <Form
+        onSubmit={() => {}}
+        render={({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <Field
+              name="hello"
+              component={SelectAdapter}
+              options={[
+                { label: "Skola A", value: "s-a" },
+                { label: "Skola B", value: "s-b" },
+              ]}
+            />
+          </form>
+        )}
+      />
 
       <div className="universities-status">
         {fetchFailed ? (
