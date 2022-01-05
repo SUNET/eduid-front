@@ -2,7 +2,7 @@ import { fetchNext } from "apis/eduidLogin";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import React from "react";
-import { Field, Form } from "react-final-form";
+import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 
@@ -19,63 +19,7 @@ export function ResponseCodeForm(props: ResponseCodeProps): JSX.Element {
   const dispatch = useAppDispatch();
   const history = useHistory();
 
-  // TODO: Handle backspace, moving to the preceding field *after* clearing the contents of this one
-  // TODO: Add final-form validation to the form
-  function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
-    console.log("Key up: ", event.key.toLowerCase());
-    if (event.key.toLowerCase() === "enter") {
-      event.preventDefault();
-      //dispatch(submit("usernamePwForm"));
-    } else if (isDigit(event.key.toLowerCase())) {
-      // focus the next input field
-      const form = event.currentTarget.form;
-      // disabled inputs are placeholders, filter them out
-      const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
-      const index = inputs.indexOf(event.currentTarget);
-      if (index < 0) {
-        // bail of the current input could not be found
-        return undefined;
-      }
-      const lastIndex = inputs.length - 1;
-      console.log(`Current index ${index} of ${lastIndex}`);
-      if (index > -1 && index < inputs.length - 1) {
-        console.log(`Advancing focus to index ${index + 1} of ${lastIndex}`);
-        inputs[index + 1].focus();
-      }
-    }
-  }
-
-  function isDigit(c: string) {
-    return c >= "0" && c <= "9";
-  }
-
   function onSubmit() {}
-
-  interface CodeFieldProps {
-    num: number;
-    value: string;
-    disabled?: boolean;
-    fixed?: boolean;
-    autoFocus?: boolean;
-  }
-
-  // helper-function to make for tidy code with one line per input field below
-  function CodeField({ num, value, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
-    return (
-      <Field
-        name={`code${num}`}
-        component="input"
-        type="text"
-        maxLength="1"
-        pattern="[0-9]"
-        placeholder={value}
-        disabled={disabled === true ? "disabled" : undefined}
-        className={fixed === true ? "fixed" : undefined}
-        autoFocus={autoFocus}
-        onKeyUp={handleKeyUp}
-      />
-    );
-  }
 
   function handleLoginButtonOnClick() {
     if (login_ref) {
@@ -109,48 +53,122 @@ export function ResponseCodeForm(props: ResponseCodeProps): JSX.Element {
   return (
     <React.Fragment>
       <div className={`response-code-input ${props.extra_className}`}>
-        <Form
+        <FinalForm
           onSubmit={onSubmit}
           initialValues={initialValues}
-          render={({ handleSubmit, form, submitting, pristine, values }) => (
-            <form onSubmit={handleSubmit} className="response-code-form">
-              <div>
-                <CodeField num={0} value="S" disabled={true} fixed={true} />
-                <CodeField num={1} value="K" disabled={true} fixed={true} />
-                <CodeField num={2} value="" disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
-                <CodeField num={3} value="" disabled={props.inputsDisabled} />
-                <CodeField num={4} value="" disabled={props.inputsDisabled} />
-                <CodeField num={5} value="-" disabled={true} fixed={true} />
-                <CodeField num={6} value="" disabled={props.inputsDisabled} />
-                <CodeField num={7} value="" disabled={props.inputsDisabled} />
-                <CodeField num={8} value="" disabled={props.inputsDisabled} />
-              </div>
-              {props.showButton ? (
-                <div className={`buttons ${props.extra_className}`}>
-                  <ButtonPrimary
-                    type="submit"
-                    onClick={handleLoginButtonOnClick}
-                    id="response-code-submit-button"
-                    className={"settings-button"}
-                    disabled={props.submitDisabled}
-                  >
-                    <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-                  </ButtonPrimary>
-
-                  <ButtonPrimary
-                    type="submit"
-                    onClick={handleAbortButtonOnClick}
-                    id="response-code-abort-button"
-                    className={"settings-button"}
-                  >
-                    <FormattedMessage defaultMessage="Abort" description="Use another device, finished" />
-                  </ButtonPrimary>
-                </div>
-              ) : null}
-            </form>
-          )}
+          render={(formProps: FormRenderProps) => {
+            return (
+              <ShortCodeForm
+                {...formProps}
+                {...props}
+                handleAbort={handleAbortButtonOnClick}
+                handleLogin={handleLoginButtonOnClick}
+              />
+            );
+          }}
         />
       </div>
     </React.Fragment>
+  );
+}
+
+interface ShortCodeFormProps {
+  handleAbort: () => void;
+  handleLogin: () => void;
+}
+
+function ShortCodeForm(props: FormRenderProps & ResponseCodeProps & ShortCodeFormProps) {
+  return (
+    <form onSubmit={props.handleSubmit} className="response-code-form">
+      <div>
+        <CodeField num={0} value="S" disabled={true} />
+        <CodeField num={1} value="K" disabled={true} />
+        <CodeField num={2} value="" disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+        <CodeField num={3} value="" disabled={props.inputsDisabled} />
+        <CodeField num={4} value="" disabled={props.inputsDisabled} />
+        <CodeField num={5} value="-" disabled={true} fixed={true} />
+        <CodeField num={6} value="" disabled={props.inputsDisabled} />
+        <CodeField num={7} value="" disabled={props.inputsDisabled} />
+        <CodeField num={8} value="" disabled={props.inputsDisabled} />
+      </div>
+      {props.showButton ? (
+        <div className={`buttons ${props.extra_className}`}>
+          <ButtonPrimary
+            type="submit"
+            onClick={props.handleLogin}
+            id="response-code-submit-button"
+            className={"settings-button"}
+            disabled={props.submitDisabled}
+          >
+            <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
+          </ButtonPrimary>
+
+          <ButtonPrimary
+            type="submit"
+            onClick={props.handleAbort}
+            id="response-code-abort-button"
+            className={"settings-button"}
+          >
+            <FormattedMessage defaultMessage="Abort" description="Use another device, finished" />
+          </ButtonPrimary>
+        </div>
+      ) : null}
+    </form>
+  );
+}
+
+interface CodeFieldProps {
+  num: number;
+  value: string;
+  disabled?: boolean;
+  fixed?: boolean;
+  autoFocus?: boolean;
+}
+
+// helper-function to make for tidy code with one line per input field below
+function CodeField({ num, value, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
+  // TODO: Handle backspace, moving to the preceding field *after* clearing the contents of this one
+  // TODO: Add final-form validation to the form
+  function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
+    function isDigit(c: string) {
+      return c >= "0" && c <= "9";
+    }
+
+    console.log("Key up: ", event.key.toLowerCase());
+    if (event.key.toLowerCase() === "enter") {
+      event.preventDefault();
+      //dispatch(submit("usernamePwForm"));
+    } else if (isDigit(event.key.toLowerCase())) {
+      // focus the next input field
+      const form = event.currentTarget.form;
+      // disabled inputs are placeholders, filter them out
+      const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
+      const index = inputs.indexOf(event.currentTarget);
+      if (index < 0) {
+        // bail of the current input could not be found
+        return undefined;
+      }
+      const lastIndex = inputs.length - 1;
+      console.log(`Current index ${index} of ${lastIndex}`);
+      if (index > -1 && index < inputs.length - 1) {
+        console.log(`Advancing focus to index ${index + 1} of ${lastIndex}`);
+        inputs[index + 1].focus();
+      }
+    }
+  }
+
+  return (
+    <FinalField
+      name={`code${num}`}
+      component="input"
+      type="text"
+      maxLength="1"
+      pattern="[0-9]"
+      placeholder={value}
+      disabled={disabled === true ? "disabled" : undefined}
+      className={fixed === true ? "fixed" : undefined}
+      autoFocus={autoFocus}
+      onKeyUp={handleKeyUp}
+    />
   );
 }
