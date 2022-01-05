@@ -89,7 +89,7 @@ describe("API calls", () => {
       const actualActions = store.getActions().map((action) => action.type);
       expect(actualActions).toEqual([
         "chpass/fetchSuggestedPassword/pending",
-        "SECURITY_FAIL",
+        "security_FAIL",
         "chpass/fetchSuggestedPassword/rejected",
       ]);
 
@@ -107,7 +107,7 @@ describe("API calls", () => {
       expect(store.getActions()[1]).toEqual({
         error: true,
         payload: { message: "Error: testing" },
-        type: "SECURITY_FAIL",
+        type: "security_FAIL",
       });
     });
   });
