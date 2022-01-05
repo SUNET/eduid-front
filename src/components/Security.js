@@ -118,8 +118,6 @@ function Security(props) {
         title={translate("security.confirm_title_chpass")}
         mainText={translate("security.change_info")}
         showModal={props.confirming_change}
-        closeModal={props.handleStopConfirmationPassword}
-        acceptModal={props.handleConfirmationPassword}
       />
 
       <ConfirmModal
