@@ -206,7 +206,7 @@ function RenderFinished(props: { isExpired: boolean; data: LoginUseOtherDevice2R
         submitDisabled={true}
         showButton={false}
         inputsDisabled={true}
-        value={props.data.short_code}
+        code={props.data.short_code}
       />
 
       <div className="phishing-warning">

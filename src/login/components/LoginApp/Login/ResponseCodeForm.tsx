@@ -11,7 +11,11 @@ interface ResponseCodeProps {
   submitDisabled: boolean;
   inputsDisabled: boolean;
   showButton: boolean;
-  value?: string;
+  code?: string;
+}
+
+interface ResponseCodeValues {
+  v: string[];
 }
 
 export function ResponseCodeForm(props: ResponseCodeProps): JSX.Element {
@@ -37,26 +41,18 @@ export function ResponseCodeForm(props: ResponseCodeProps): JSX.Element {
     }
   }
 
-  const valueChars = (props.value || "").split("");
-  const initialValues = {
-    // code0 is 'S'
-    // code1 is 'K'
-    code2: valueChars[0],
-    code3: valueChars[1],
-    code4: valueChars[2],
-    // code5 is '-'
-    code6: valueChars[3],
-    code7: valueChars[4],
-    code8: valueChars[5],
+  const valueChars = (props.code || "").split("");
+  const initialValues: ResponseCodeValues = {
+    v: ["S", "K", valueChars[0], valueChars[1], valueChars[2], "-", valueChars[3], valueChars[4], valueChars[5]],
   };
 
   return (
     <React.Fragment>
       <div className={`response-code-input ${props.extra_className}`}>
-        <FinalForm
+        <FinalForm<ResponseCodeValues>
           onSubmit={onSubmit}
           initialValues={initialValues}
-          render={(formProps: FormRenderProps) => {
+          render={(formProps) => {
             return (
               <ShortCodeForm
                 {...formProps}
@@ -66,18 +62,33 @@ export function ResponseCodeForm(props: ResponseCodeProps): JSX.Element {
               />
             );
           }}
+          validate={validate_code}
         />
       </div>
     </React.Fragment>
   );
 }
 
-interface ShortCodeFormProps {
+function validate_code(values: ResponseCodeValues) {
+  const err: { [key: string]: string } = {};
+
+  // the code is formatted as SK123-456, ignore positions S, K and -
+  const positions = [2, 3, 4, 6, 7, 8];
+  positions.forEach((pos) => {
+    if (!isDigit(values.v[pos])) {
+      const name = `v[${pos}]`;
+      err[name] = "Not a digit";
+    }
+  });
+  return err;
+}
+
+interface ShortCodeFormProps extends ResponseCodeProps {
   handleAbort: () => void;
   handleLogin: () => void;
 }
 
-function ShortCodeForm(props: FormRenderProps & ResponseCodeProps & ShortCodeFormProps) {
+function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ShortCodeFormProps) {
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div>
@@ -98,7 +109,7 @@ function ShortCodeForm(props: FormRenderProps & ResponseCodeProps & ShortCodeFor
             onClick={props.handleLogin}
             id="response-code-submit-button"
             className={"settings-button"}
-            disabled={props.submitDisabled}
+            disabled={props.submitDisabled || props.submitting || props.invalid}
           >
             <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
           </ButtonPrimary>
@@ -108,8 +119,9 @@ function ShortCodeForm(props: FormRenderProps & ResponseCodeProps & ShortCodeFor
             onClick={props.handleAbort}
             id="response-code-abort-button"
             className={"settings-button"}
+            disabled={props.submitting}
           >
-            <FormattedMessage defaultMessage="Abort" description="Use another device, finished" />
+            <FormattedMessage defaultMessage="Abort" description="Login OtherDevice" />
           </ButtonPrimary>
         </div>
       ) : null}
@@ -130,10 +142,6 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
   // TODO: Handle backspace, moving to the preceding field *after* clearing the contents of this one
   // TODO: Add final-form validation to the form
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
-    function isDigit(c: string) {
-      return c >= "0" && c <= "9";
-    }
-
     console.log("Key up: ", event.key.toLowerCase());
     if (event.key.toLowerCase() === "enter") {
       event.preventDefault();
@@ -158,17 +166,21 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
   }
 
   return (
-    <FinalField
-      name={`code${num}`}
+    <FinalField<number>
+      name={`v[${num}]`}
       component="input"
       type="text"
       maxLength="1"
       pattern="[0-9]"
       placeholder={value}
-      disabled={disabled === true ? "disabled" : undefined}
-      className={fixed === true ? "fixed" : undefined}
+      disabled={disabled === true ? "disabled" : null}
+      className={fixed === true ? "fixed" : null}
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
     />
   );
+}
+
+function isDigit(c: string) {
+  return c >= "0" && c <= "9";
 }

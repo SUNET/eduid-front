@@ -37,7 +37,7 @@ function UseOtherDevice1() {
 
 function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.Element {
   const { data } = props;
-  const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [submitDisabled, setSubmitDisabled] = useState(false);
 
   function handleTimerReachZero() {
     setSubmitDisabled(true);
