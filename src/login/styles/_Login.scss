@@ -87,21 +87,29 @@
     padding-left: $step_num_align;
   }
 
-  input[type="text"] {
-    display: inline-block;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid gray;
-    font-size: 2rem;
-    margin: 0 5px;
-    width: 2.5rem;
-    text-align: center;
-  }
-  input.fixed {
-    // the pure-text "inputs", S, K and -
-    border-bottom: none;
-  }
+  .response-code-inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
+    input[type="text"] {
+      display: inline-block;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid gray;
+      font-size: 2rem;
+      margin: 0 5px;
+      width: 2.5rem;
+      text-align: center;
+    }
+    input.fixed {
+      // the pure-text "inputs", S, K and -
+      border-bottom: none;
+    }
+    .nowrap-group {
+      flex-wrap: nowrap;
+    }
+  }
   .developer {
     // show QR URL at the bottom for non-production environments
     display: flex;

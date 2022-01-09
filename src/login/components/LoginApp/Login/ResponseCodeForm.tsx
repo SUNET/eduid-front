@@ -91,16 +91,20 @@ interface ShortCodeFormProps extends ResponseCodeProps {
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ShortCodeFormProps) {
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
-      <div>
+      <div className="response-code-inputs">
         <CodeField num={0} value="S" disabled={true} />
         <CodeField num={1} value="K" disabled={true} />
-        <CodeField num={2} value="" disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
-        <CodeField num={3} value="" disabled={props.inputsDisabled} />
-        <CodeField num={4} value="" disabled={props.inputsDisabled} />
+        <span className="nowrap-group">
+          <CodeField num={2} value="" disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+          <CodeField num={3} value="" disabled={props.inputsDisabled} />
+          <CodeField num={4} value="" disabled={props.inputsDisabled} />
+        </span>
         <CodeField num={5} value="-" disabled={true} fixed={true} />
-        <CodeField num={6} value="" disabled={props.inputsDisabled} />
-        <CodeField num={7} value="" disabled={props.inputsDisabled} />
-        <CodeField num={8} value="" disabled={props.inputsDisabled} />
+        <span className="nowrap-group">
+          <CodeField num={6} value="" disabled={props.inputsDisabled} />
+          <CodeField num={7} value="" disabled={props.inputsDisabled} />
+          <CodeField num={8} value="" disabled={props.inputsDisabled} />
+        </span>
       </div>
       {props.showButton ? (
         <div className={`buttons ${props.extra_className}`}>
