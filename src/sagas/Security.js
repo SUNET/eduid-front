@@ -3,7 +3,6 @@ import { checkStatus, putCsrfToken, getRequest, postRequest, failRequest } from 
 import {
   getCredentials,
   getCredentialsFail,
-  stopConfirmationPassword,
   getPasswordChangeFail,
   postConfirmDeletion,
   accountRemovedFail,
@@ -37,14 +36,14 @@ export function fetchCredentials(config) {
     .then((response) => response.json());
 }
 
+// perform re-authentication when entering "change password" mode
 export function* requestPasswordChange(win) {
   try {
-    yield put(stopConfirmationPassword());
     const config = yield select((state) => state.config),
       tsURL = config.token_service_url,
       chpassURL = tsURL + "chpass",
       dashURL = config.dashboard_url,
-      nextURL = dashURL + "chpass",
+      nextURL = dashURL + "chpass", // the "chpass" path will route to the ChangePasswordContainer when we get back
       url = chpassURL + "?next=" + encodeURIComponent(nextURL);
 
     if (win !== undefined && win.location !== undefined) {

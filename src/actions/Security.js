@@ -1,3 +1,5 @@
+import { createAction } from "@reduxjs/toolkit";
+
 export const GET_CREDENTIALS = "GET_CREDENTIALS";
 export const GET_CREDENTIALS_SUCCESS = "GET_SECURITY_CREDENTIALS_SUCCESS";
 export const GET_CREDENTIALS_FAIL = "GET_SECURITY_CREDENTIALS_FAIL";
@@ -47,23 +49,8 @@ export function getCredentialsFail(err) {
   };
 }
 
-export function startConfirmationPassword() {
-  return {
-    type: START_CHANGE_PASSWORD,
-  };
-}
-
-export function stopConfirmationPassword() {
-  return {
-    type: STOP_CHANGE_PASSWORD,
-  };
-}
-
-export function confirmPasswordChange() {
-  return {
-    type: GET_CHANGE_PASSWORD,
-  };
-}
+// this action doesn't GET anything, it starts SHOWING the change password components
+export const initiatePasswordChange = createAction(GET_CHANGE_PASSWORD);
 
 export function getPasswordChangeFail(err) {
   return {
