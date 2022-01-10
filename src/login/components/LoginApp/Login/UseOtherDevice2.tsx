@@ -204,7 +204,6 @@ function RenderFinished(props: { isExpired: boolean; data: LoginUseOtherDevice2R
       <ResponseCodeForm
         extra_className="device2"
         submitDisabled={true}
-        showButton={false}
         inputsDisabled={true}
         code={props.data.short_code}
       />

@@ -29,10 +29,14 @@ const Login = (): JSX.Element => {
     dispatch(loginSlice.actions.addLoginRef({ ref: ref, start_url: window.location.href }));
   }
 
+  console.log(`FETCH PARAMS: ${base_url} ${ref}`);
   useEffect(() => {
     // Fetching authn_options depends on state.config being loaded first (base_url being set)
     if (base_url && ref) {
+      console.log(`FETCHING OPTIONS: ${base_url} ${ref}`);
       dispatch(fetchAuthnOptions({ ref: ref }));
+    } else {
+      console.log(`NOT FETCHING OPTIONS: ${base_url} ${ref}`);
     }
   }, [base_url, ref]);
 

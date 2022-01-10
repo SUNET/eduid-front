@@ -6,59 +6,40 @@ import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-f
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 
-interface ResponseCodeProps {
+interface ResponseCodeFormProps {
   extra_className: string;
   submitDisabled: boolean;
   inputsDisabled: boolean;
-  showButton: boolean;
   code?: string;
+  handleAbort?: () => void;
+  handleLogin?: () => void;
 }
 
 interface ResponseCodeValues {
   v: string[];
 }
 
-export function ResponseCodeForm(props: ResponseCodeProps): JSX.Element {
-  const login_ref = useAppSelector((state) => state.login.ref);
-  const dispatch = useAppDispatch();
-  const history = useHistory();
-
-  function onSubmit() {}
-
-  function handleLoginButtonOnClick() {
-    if (login_ref) {
-      dispatch(fetchNext({ ref: login_ref }));
-      // Send the user off to the regular login flow when they click the button
-      history.push(`/login/${login_ref}`);
-    }
-  }
-
-  function handleAbortButtonOnClick() {
-    if (login_ref) {
-      dispatch(fetchNext({ ref: login_ref }));
-      // Send the user off to the regular login flow when they click the button
-      history.push(`/login/${login_ref}`);
-    }
-  }
-
+export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
   const valueChars = (props.code || "").split("");
   const initialValues: ResponseCodeValues = {
     v: ["S", "K", valueChars[0], valueChars[1], valueChars[2], "-", valueChars[3], valueChars[4], valueChars[5]],
   };
 
+  function handleSubmit() {}
+
   return (
     <React.Fragment>
       <div className={`response-code-input ${props.extra_className}`}>
         <FinalForm<ResponseCodeValues>
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           initialValues={initialValues}
           render={(formProps) => {
             return (
               <ShortCodeForm
                 {...formProps}
                 {...props}
-                handleAbort={handleAbortButtonOnClick}
-                handleLogin={handleLoginButtonOnClick}
+                handleAbort={props.handleAbort}
+                handleLogin={props.handleLogin}
               />
             );
           }}
@@ -83,12 +64,7 @@ function validate_code(values: ResponseCodeValues) {
   return err;
 }
 
-interface ShortCodeFormProps extends ResponseCodeProps {
-  handleAbort: () => void;
-  handleLogin: () => void;
-}
-
-function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ShortCodeFormProps) {
+function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="response-code-inputs">
@@ -106,27 +82,31 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ShortCodeFor
           <CodeField num={8} value="" disabled={props.inputsDisabled} />
         </span>
       </div>
-      {props.showButton ? (
+      {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
-          <ButtonPrimary
-            type="submit"
-            onClick={props.handleLogin}
-            id="response-code-submit-button"
-            className={"settings-button"}
-            disabled={props.submitDisabled || props.submitting || props.invalid}
-          >
-            <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-          </ButtonPrimary>
+          {props.handleLogin && (
+            <ButtonPrimary
+              type="submit"
+              onClick={props.handleLogin}
+              id="response-code-submit-button"
+              className={"settings-button"}
+              disabled={props.submitDisabled || props.submitting || props.invalid}
+            >
+              <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
+            </ButtonPrimary>
+          )}
 
-          <ButtonPrimary
-            type="submit"
-            onClick={props.handleAbort}
-            id="response-code-abort-button"
-            className={"settings-button"}
-            disabled={props.submitting}
-          >
-            <FormattedMessage defaultMessage="Abort" description="Login OtherDevice" />
-          </ButtonPrimary>
+          {props.handleAbort && (
+            <ButtonPrimary
+              type="submit"
+              onClick={props.handleAbort}
+              id="response-code-abort-button"
+              className={"settings-button"}
+              disabled={props.submitting}
+            >
+              <FormattedMessage defaultMessage="Abort" description="Login OtherDevice" />
+            </ButtonPrimary>
+          )}
         </div>
       ) : null}
     </form>

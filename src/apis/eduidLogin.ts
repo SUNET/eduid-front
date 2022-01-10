@@ -40,8 +40,8 @@ type OtherDeviceState = "NEW" | "IN_PROGRESS" | "ABORTED" | "FINISHED";
 export interface LoginUseOtherDevice1Response {
   expires_in: number;
   expires_max: number;
-  qr_img: string;
-  qr_url: string;
+  qr_img?: string;
+  qr_url?: string;
   short_code: string;
   state_id: string;
   state: OtherDeviceState;

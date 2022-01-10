@@ -52,6 +52,11 @@ export const loginSlice = createSlice({
     startLoginWithAnotherDevice: (state) => {
       state.next_page = "OTHER_DEVICE";
     },
+    stopLoginWithAnotherDevice: (state) => {
+      // Abort/cancel/recover from use another device state
+      state.next_page = undefined;
+      state.other_device1 = undefined;
+    },
     postIdpNextSuccess: (state, action: PayloadAction<NextResponse>) => {
       // Process a successful response from the /next endpoint.
       // TODO: Use the fetchNext thunk instead, and remove this
@@ -102,7 +107,13 @@ export const loginSlice = createSlice({
       })
       .addCase(fetchUseOtherDevice1.fulfilled, (state, action) => {
         // Store the result for the user requesting to use another device to log in.
-        state.other_device1 = action.payload;
+        if (action.payload.state == "ABORTED") {
+          // Remove state in frontend too when backend confirms the request has been aborted
+          state.other_device1 = undefined;
+          state.next_page = undefined;
+        } else {
+          state.other_device1 = action.payload;
+        }
       })
       .addCase(fetchUseOtherDevice1.rejected, (state) => {
         state.other_device1 = undefined;
