@@ -39,7 +39,6 @@ module.exports = {
     LOGIN_CONFIG_URL: true,
     PASSWORD_SERVICE_URL: true,
     GROUP_MGMT_URL: true,
-    ACTIONS_SERVICE_URL: true,
     __webpack_public_path__: true,
   },
   settings: {
