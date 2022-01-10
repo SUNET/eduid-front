@@ -28,13 +28,6 @@ function UseOtherDevice1() {
     }
   }, []);
 
-  function handleCancelButtonOnClick() {
-    // Exit from "use another device"
-    dispatch(loginSlice.actions.stopLoginWithAnotherDevice());
-    // Send the user off to the regular login flow when they click the button
-    history.push(`/login/${loginRef}`);
-  }
-
   let error = undefined;
   if (other_device) {
     if (other_device.state != "NEW" && other_device.state != "IN_PROGRESS") {
@@ -53,24 +46,40 @@ function UseOtherDevice1() {
       </h2>
 
       {!error && other_device && <RenderOtherDevice1 data={other_device} />}
-      {error && (
-        <React.Fragment>
-          <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-            {error}
-          </div>
-          <div>
-            <ButtonPrimary
-              type="submit"
-              onClick={handleCancelButtonOnClick}
-              id="response-code-cancel-button"
-              className={"settings-button"}
-            >
-              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
-            </ButtonPrimary>
-          </div>
-        </React.Fragment>
-      )}
+      {error && <RenderFatalError error={error} />}
     </div>
+  );
+}
+
+// Render a fatal error message with a CANCEL button that will reset the use-other-device state
+function RenderFatalError(props: { error: JSX.Element }) {
+  const dispatch = useAppDispatch();
+  const history = useHistory();
+  const loginRef = useAppSelector((state) => state.login.ref);
+
+  function handleCancelButtonOnClick() {
+    // Exit from "use another device"
+    dispatch(loginSlice.actions.stopLoginWithAnotherDevice());
+    // Send the user off to the regular login flow when they click the button
+    history.push(`/login/${loginRef}`);
+  }
+
+  return (
+    <React.Fragment>
+      <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
+        {props.error}
+      </div>
+      <div>
+        <ButtonPrimary
+          type="submit"
+          onClick={handleCancelButtonOnClick}
+          id="response-code-cancel-button"
+          className={"settings-button"}
+        >
+          <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+        </ButtonPrimary>
+      </div>
+    </React.Fragment>
   );
 }
 
@@ -78,11 +87,14 @@ function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.
   const { data } = props;
   const login_ref = useAppSelector((state) => state.login.ref);
   const [submitDisabled, setSubmitDisabled] = useState(false);
+  const [isExpired, setIsExpired] = useState(false);
+
   const dispatch = useAppDispatch();
   const history = useHistory();
 
   function handleTimerReachZero() {
     setSubmitDisabled(true);
+    setIsExpired(true);
   }
 
   function handleLoginButtonOnClick() {
@@ -101,11 +113,12 @@ function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.
   }
 
   useEffect(() => {
-    console.log("PROPS DATA STATE CHANGED TO ", props.data.state);
     if (props.data.state != "NEW" && props.data.state != "IN_PROGRESS") {
       setSubmitDisabled(true);
     }
   }, [props.data.state]);
+
+  const expiredMessage = <FormattedMessage defaultMessage="The code has expired" description="Use another device #1" />;
 
   return (
     <React.Fragment>
@@ -140,13 +153,17 @@ function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.
         </TimeRemainingWrapper>
       </div>
 
-      <ResponseCodeForm
-        extra_className="device1"
-        submitDisabled={submitDisabled}
-        inputsDisabled={false}
-        handleLogin={handleLoginButtonOnClick}
-        handleAbort={handleAbortButtonOnClick}
-      />
+      {isExpired ? (
+        <RenderFatalError error={expiredMessage} />
+      ) : (
+        <ResponseCodeForm
+          extra_className="device1"
+          submitDisabled={submitDisabled}
+          inputsDisabled={false}
+          handleLogin={handleLoginButtonOnClick}
+          handleAbort={handleAbortButtonOnClick}
+        />
+      )}
 
       <DeveloperInfo {...data} />
     </React.Fragment>
