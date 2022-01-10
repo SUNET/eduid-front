@@ -38,11 +38,13 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
     setFormData(values);
   }
 
-  function handleSubmit(event: React.MouseEvent<HTMLElement>) {
+  async function handleSubmit(event: React.MouseEvent<HTMLElement>) {
     // Callback from sub-component when the user clicks on the button to change password
     event.preventDefault();
     if (formData.old && formData.new) {
-      dispatch(changePassword({ old_password: formData.old, new_password: formData.new }));
+      await dispatch(changePassword({ old_password: formData.old, new_password: formData.new })).then(
+        (response) => response.type === "chpass/changePassword/fulfilled" && history.push("security")
+      );
     }
   }
 
