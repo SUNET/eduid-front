@@ -1,10 +1,8 @@
-import { fetchNext } from "apis/eduidLogin";
-import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
+import { FORM_ERROR } from "final-form";
 import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router-dom";
 
 interface ResponseCodeFormProps {
   extra_className: string;
@@ -56,9 +54,11 @@ function validate_code(values: ResponseCodeValues) {
   // the code is formatted as SK123-456, ignore positions S, K and -
   const positions = [2, 3, 4, 6, 7, 8];
   positions.forEach((pos) => {
-    if (!isDigit(values.v[pos])) {
+    if (values.v[pos] && values.v[pos].length && !isDigit(values.v[pos])) {
       const name = `v[${pos}]`;
       err[name] = "Not a digit";
+      // Set the form-wide error too. This is what is currently displayed.
+      err[FORM_ERROR] = "Not a digit";
     }
   });
   return err;
@@ -82,6 +82,11 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
           <CodeField num={8} value="" disabled={props.inputsDisabled} />
         </span>
       </div>
+      {props.error && (
+        <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
+          {props.error}
+        </div>
+      )}
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
           {props.handleLogin && (
