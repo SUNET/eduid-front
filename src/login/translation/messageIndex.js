@@ -7,7 +7,8 @@ import { register } from "./defaultMessages/register";
 import { generalApp } from "./defaultMessages/generalApp";
 import { userData, userProfile, userVetting } from "./defaultMessages/userProfile";
 import { leftoverMessages } from "./leftovers";
-import { apiResponses } from "./defaultMessages/ladok";
+import * as ladok from "./defaultMessages/ladok";
+import * as security from "./defaultMessages/security";
 
 export const formattedMessages = {
   ...generalApp,
@@ -22,5 +23,6 @@ export const formattedMessages = {
   ...userProfile,
   ...userVetting,
   ...leftoverMessages,
-  ...apiResponses,
+  ...ladok.apiResponses,
+  ...security.apiResponses,
 };

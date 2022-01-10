@@ -20,7 +20,7 @@ export interface KeyValues {
  * passed to the backend on any subsequent requests. Update the value in the store if it changes.
  */
 function updateCsrf(action: { payload: { csrf_token?: string } }, thunkAPI: RequestThunkAPI) {
-  if (action.payload.csrf_token === undefined) return action;
+  if (action.payload === undefined || action.payload.csrf_token === undefined) return action;
   const state = thunkAPI.getState();
   if (action.payload.csrf_token != state.config.csrf_token) {
     thunkAPI.dispatch(newCsrfToken(action.payload.csrf_token));

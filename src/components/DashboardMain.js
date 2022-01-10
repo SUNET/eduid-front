@@ -7,14 +7,13 @@ import { createBrowserHistory } from "history";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
 import FooterContainer from "containers/Footer";
-import ChangePasswordContainer from "containers/ChangePassword";
 import SettingsComponent from "./Settings";
 import DashboardNav from "./DashboardNav";
 import VerifyIdentity from "containers/VerifyIdentity";
 import Profile from "containers/Profile";
 import NotificationsContainer from "containers/Notifications";
 import checkForCookie from "../login/app_utils/checkForCookie";
-import "../login/styles/index.scss";
+import { ChangePasswordContainer } from "./ChangePassword";
 
 export const history = createBrowserHistory();
 
