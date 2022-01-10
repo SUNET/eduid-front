@@ -35,6 +35,8 @@ export const fetchAuthnOptions = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+type OtherDeviceState = "NEW" | "IN_PROGRESS" | "ABORTED" | "FINISHED";
+
 export interface LoginUseOtherDevice1Response {
   expires_in: number;
   expires_max: number;
@@ -42,8 +44,15 @@ export interface LoginUseOtherDevice1Response {
   qr_url: string;
   short_code: string;
   state_id: string;
-  state: string;
+  state: OtherDeviceState;
   message?: string;
+}
+
+export interface LoginUseOtherDevice1Request {
+  ref: string;
+  username?: string;
+  action?: "ABORT" | "SUBMIT_CODE";
+  response_code?: string;
 }
 
 /**
@@ -53,13 +62,10 @@ export interface LoginUseOtherDevice1Response {
  */
 export const fetchUseOtherDevice1 = createAsyncThunk<
   LoginUseOtherDevice1Response, // return type
-  { ref: string; username?: string }, // args type
+  LoginUseOtherDevice1Request, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("login/api/useOtherDevice1", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    ref: args.ref,
-    username: args.username,
-  };
+  const body: KeyValues = args;
 
   return makeLoginRequest<LoginUseOtherDevice1Response>(thunkAPI, "use_other_1", body)
     .then((response) => response.payload)
@@ -75,12 +81,12 @@ export interface LoginUseOtherDevice2Response {
   expires_max: number;
   login_ref: string;
   short_code: string;
-  state: string;
+  state: OtherDeviceState;
 }
 
 export interface DeviceInfo {
   addr: string;
-  proximity: string;
+  proximity: "SAME" | "NEAR" | "FAR";
   description?: string;
 }
 
