@@ -1,16 +1,16 @@
-import React, { Component, Fragment } from "react";
-import { Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
-import ChangePasswordDisplay from "containers/ChangePasswordDisplay";
-import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
+import AccountId from "containers/AccountId";
+import AccountLinkingContainer from "containers/AccountLinking";
+import DeleteAccount from "containers/DeleteAccount";
 import EmailsContainer from "containers/Emails";
 import MobileContainer from "containers/Mobile";
-import AccountLinkingContainer from "containers/AccountLinking";
 import SecurityContainer from "containers/Security";
-import DeleteAccount from "containers/DeleteAccount";
-import AccountId from "containers/AccountId";
+import React, { Component, Fragment } from "react";
+import { useSelector } from "react-redux";
+import { Redirect, Route } from "react-router-dom";
 import GroupManagement from "../login/components/GroupManagement/GroupManagement";
+import PersonalDataParent from "../login/components/PersonalData/PersonalDataParent";
+import i18n from "../login/translation/InjectIntl_HOC_factory";
+import ChangePasswordDisplay from "./ChangePasswordDisplay";
 import LadokContainer from "./Ladok";
 
 const RenderGroups = () => {

@@ -13,7 +13,7 @@ const groupsData = {
   payload: "",
 };
 
-let groupsReducer = (state = groupsData, action) => {
+const groupsReducer = (state = groupsData, action) => {
   switch (action.type) {
     case addDataToStore.ADD_COOKIE_STATUS_TO_STORE:
       return {

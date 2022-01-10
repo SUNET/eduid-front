@@ -11,7 +11,7 @@ import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
 import mobileReducer from "reducers/Mobile";
 import accountLinkingReducer from "reducers/AccountLinking";
 import securityReducer from "reducers/Security";
-import chpassReducer from "reducers/ChangePassword";
+import chpassSlice from "reducers/ChangePassword";
 import ninsSlice from "reducers/Nins";
 import letterProofingReducer from "reducers/LetterProofing";
 import notificationsReducer from "reducers/Notifications";
@@ -22,19 +22,19 @@ import ladokSlice from "reducers/Ladok";
 
 const eduIDApp = combineReducers({
   router: routerReducer,
-  chpass: chpassReducer,
+  chpass: chpassSlice.reducer,
   config: configReducer,
   emails: emailsReducer,
-  groups: groupsReducer,
-  invites: invitesReducer,
-  openid_data: openidConnectReducer,
+  groups: groupsReducer as unknown as any,
+  invites: invitesReducer as unknown as any,
+  openid_data: openidConnectReducer as unknown as any,
   lookup_mobile: lookupMobileProofingReducer,
   nins: ninsSlice.reducer,
-  openid_freja_data: openidConnectFrejaReducer,
+  openid_freja_data: openidConnectFrejaReducer as unknown as any,
   personal_data: personalDataSlice.reducer,
   phones: mobileReducer,
   letter_proofing: letterProofingReducer,
-  notifications: notificationsReducer,
+  notifications: notificationsReducer as unknown as any,
   account_linking: accountLinkingReducer,
   security: securityReducer,
   eidas_data: eidasReducer,

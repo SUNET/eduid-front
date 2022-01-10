@@ -10,9 +10,6 @@ export const changePassword = {
     />
   ),
 
-  /* ----- /chpass ChangePassword ------- */
-  "chpass.main_title": <FormattedMessage id="chpass.main_title" defaultMessage={`Change your current password`} />,
-
   /* ----- /chpass ChangePasswordForm ------- */
 
   "chpass.old_password": <FormattedMessage id="chpass.old_password" defaultMessage={`Current password`} />,
@@ -78,26 +75,7 @@ export const changePassword = {
     <FormattedMessage id="chpass.low-password-entropy" defaultMessage={`Please provide a stronger password`} />
   ),
 
-  // button and info in settings
-  "settings.main_title": <FormattedMessage id="settings.main_title" defaultMessage={`Change password`} />,
-
-  "settings.long_description": (
-    <FormattedMessage id="settings.long_description" defaultMessage={`Click the link to change your eduID password.`} />
-  ),
-  "settings.change_password": <FormattedMessage id="settings.change_password" defaultMessage={`Change password`} />,
-
-  "settings.confirm_title_chpass": (
-    <FormattedMessage id="settings.confirm_title_chpass" defaultMessage={`For security reasons...`} />
-  ),
-
-  "settings.change_info": (
-    <FormattedMessage
-      id="settings.change_info"
-      defaultMessage={`You will need to log in again to change your password.`}
-    />
-  ),
-
-  // password stregth
+  // password strength
 
   "pwfield.terrible": <FormattedMessage id="pwfield.terrible" defaultMessage={`Extremely weak password`} />,
 

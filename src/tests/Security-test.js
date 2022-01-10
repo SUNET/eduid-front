@@ -61,7 +61,7 @@ describe("Security Actions", () => {
     const expectedAction = {
       type: actions.GET_CHANGE_PASSWORD,
     };
-    expect(actions.confirmPasswordChange()).toEqual(expectedAction);
+    expect(actions.initiatePasswordChange()).toEqual(expectedAction);
   });
 
   it("Should fail when trying to change password", () => {

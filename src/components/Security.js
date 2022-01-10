@@ -7,7 +7,6 @@ import { spinnerOpts } from "../components/Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-import "../login/styles/index.scss";
 import { useIntl } from "react-intl";
 import CookieChecker from "./../components/CookieChecker";
 
@@ -119,8 +118,6 @@ function Security(props) {
         title={translate("security.confirm_title_chpass")}
         mainText={translate("security.change_info")}
         showModal={props.confirming_change}
-        closeModal={props.handleStopConfirmationPassword}
-        acceptModal={props.handleConfirmationPassword}
       />
 
       <ConfirmModal

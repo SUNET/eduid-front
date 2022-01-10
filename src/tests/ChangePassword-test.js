@@ -1,75 +1,13 @@
-const mock = require("jest-mock");
-import React from "react";
-import { mount } from "enzyme";
-import { put, call } from "redux-saga/effects";
-import expect from "expect";
-import { BrowserRouter as Router } from "react-router-dom";
-import ChangePasswordContainer from "containers/ChangePassword";
-import * as actions from "actions/ChangePassword";
-import chpassReducer from "reducers/ChangePassword";
+import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
+import { ChangePasswordContainer } from "components/ChangePassword";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-
-import {
-  requestSuggestedPassword,
-  postPasswordChange,
-  fetchSuggestedPassword,
-  postPassword,
-} from "sagas/ChangePassword";
-
-const messages = require("../login/translation/messageIndex");
-
-describe("ChangePassword Actions", () => {
-  it("Should get a suggested password", () => {
-    const expectedAction = {
-      type: actions.GET_SUGGESTED_PASSWORD,
-    };
-    expect(actions.getSuggestedPassword()).toEqual(expectedAction);
-  });
-
-  it("Should fail when trying to get a suggested password", () => {
-    const err = "Bad error";
-    const expectedAction = {
-      type: actions.GET_SUGGESTED_PASSWORD_FAIL,
-      error: true,
-      payload: {
-        message: err,
-      },
-    };
-    expect(actions.getSuggestedPasswordFail(err)).toEqual(expectedAction);
-  });
-
-  it("Post password change (new and old)", () => {
-    const passwd1 = "1234",
-      passwd2 = "5678",
-      expectedAction = {
-        type: actions.POST_PASSWORD_CHANGE,
-        payload: {
-          old: passwd1,
-          next: passwd2,
-        },
-      };
-    expect(actions.postPasswordChange(passwd1, passwd2)).toEqual(expectedAction);
-  });
-
-  it("Should start password change", () => {
-    const expectedAction = {
-      type: actions.START_PASSWORD_CHANGE,
-    };
-    expect(actions.startPasswordChange()).toEqual(expectedAction);
-  });
-
-  it("Fail starting passwd change", () => {
-    const err = "Error",
-      expectedAction = {
-        type: actions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
-        error: true,
-        payload: {
-          message: err,
-        },
-      };
-    expect(actions.postPasswordChangeFail(err)).toEqual(expectedAction);
-  });
-});
+import { mount } from "enzyme";
+import expect from "expect";
+import fetchMock from "jest-fetch-mock";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import chpassSlice from "reducers/ChangePassword";
+import { fakeStore } from "./helperFunctions/DashboardTestApp";
 
 describe("Reducers", () => {
   const mockState = {
@@ -80,125 +18,20 @@ describe("Reducers", () => {
     choose_custom: false,
   };
 
-  it("Receives a GET_SUGGESTED_PASSWORD action", () => {
-    expect(
-      chpassReducer(mockState, {
-        type: actions.GET_SUGGESTED_PASSWORD,
-      })
-    ).toEqual({
-      message: "",
-      suggested_password: "",
-      old_password: "",
-      new_password: "",
-      choose_custom: false,
-    });
-  });
-
-  it("Receives a GET_SUGGESTED_PASSWORD_SUCCESS action", () => {
+  it("Receives a fetchSuggestedPassword.fulfilled action", () => {
     const suggested = "2345";
-    expect(
-      chpassReducer(mockState, {
-        type: actions.GET_SUGGESTED_PASSWORD_SUCCESS,
-        payload: {
-          suggested_password: suggested,
-        },
-      })
-    ).toEqual({
-      message: "",
+    expect(chpassSlice.reducer(mockState, fetchSuggestedPassword.fulfilled(suggested))).toEqual({
+      ...mockState,
       suggested_password: suggested,
-      old_password: "",
-      new_password: "",
-      choose_custom: false,
     });
   });
 
-  it("Receives a GET_SUGGESTED_PASSWORD_FAIL action", () => {
-    const errMsg = "Bad error";
-    expect(
-      chpassReducer(mockState, {
-        type: actions.GET_SUGGESTED_PASSWORD_FAIL,
-        error: true,
-        payload: {
-          message: errMsg,
-        },
-      })
-    ).toEqual({
-      message: errMsg,
-      suggested_password: "",
-      old_password: "",
-      new_password: "",
-      choose_custom: false,
-    });
-  });
-
-  it("Receives a POST_PASSWORD_CHANGE action", () => {
-    const passwd1 = "1234",
-      passwd2 = "5678";
-    expect(
-      chpassReducer(mockState, {
-        type: actions.POST_PASSWORD_CHANGE,
-        payload: {
-          old: passwd1,
-          next: passwd2,
-        },
-      })
-    ).toEqual({
-      message: "",
-      suggested_password: "",
-      old_password: passwd1,
-      new_password: passwd2,
-      choose_custom: false,
-    });
-  });
-
-  it("Receives a START_PASSWORD_CHANGE action", () => {
-    expect(
-      chpassReducer(mockState, {
-        type: actions.START_PASSWORD_CHANGE,
-      })
-    ).toEqual({
-      message: "",
-      suggested_password: "",
-      old_password: "",
-      new_password: "",
-      choose_custom: false,
-    });
-  });
-
-  it("Receives a POST_SECURITY_CHANGE_PASSWORD_SUCCESS action", () => {
-    const msg = "message";
-    expect(
-      chpassReducer(mockState, {
-        type: actions.POST_SECURITY_CHANGE_PASSWORD_SUCCESS,
-        payload: {
-          message: msg,
-        },
-      })
-    ).toEqual({
-      message: msg,
-      suggested_password: "",
-      old_password: "",
-      new_password: "",
-      choose_custom: false,
-    });
-  });
-
-  it("Receives a POST_SECURITY_CHANGE_PASSWORD_FAIL action", () => {
-    const err = "Error";
-    expect(
-      chpassReducer(mockState, {
-        type: actions.POST_SECURITY_CHANGE_PASSWORD_FAIL,
-        error: true,
-        payload: {
-          message: err,
-        },
-      })
-    ).toEqual({
-      message: "",
-      suggested_password: "",
-      old_password: "",
-      new_password: "",
-      choose_custom: false,
+  it("Receives a fetchSuggestedPassword.fulfilled action", () => {
+    // Verify that suggested_password is cleared on changePassword.fulfilled
+    const previousState = { ...mockState, suggested_password: "foo" };
+    expect(chpassSlice.reducer(previousState, changePassword.fulfilled())).toEqual({
+      ...mockState,
+      suggested_password: undefined,
     });
   });
 });
@@ -218,213 +51,122 @@ const mockState = {
   },
 };
 
-describe("Async component", () => {
-  it("Sagas requestSuggestedPassword", () => {
-    const generator = requestSuggestedPassword();
+describe("API calls", () => {
+  it("fetches suggested password", () => {
+    const store = fakeStore(mockState);
+    const suggested = "12345";
 
-    let next = generator.next();
-    expect(next.value).toEqual(put(actions.getSuggestedPassword()));
+    fetchMock.doMockIf(
+      `${mockState.config.security_url}/suggested-password`,
+      JSON.stringify({ payload: { suggested_password: suggested } })
+    );
 
-    next = generator.next();
-    const config = (state) => state.config;
-    const suggested = generator.next(config);
-    expect(suggested.value).toEqual(call(fetchSuggestedPassword, config));
+    return store.dispatch(fetchSuggestedPassword()).then(() => {
+      const actualActions = store.getActions().map((action) => action.type);
+      expect(actualActions).toEqual([
+        "chpass/fetchSuggestedPassword/pending",
+        "chpass/fetchSuggestedPassword/fulfilled",
+      ]);
 
-    const mockSuggested = {
-        payload: {
-          csrf_token: "csrf-token",
-          suggested_password: "1234",
-        },
-      },
-      processed = {
-        payload: {
-          suggested_password: "1234",
-        },
-      };
-    next = generator.next(mockSuggested);
-    next = generator.next(processed);
-    expect(next.value).toEqual(put(mockSuggested));
+      // apply all actions to the reducer, and verify the state afterwards
+      const stateBefore = { ...store.getState() };
+      let newState = { ...store.getState() };
+      store.getActions().forEach((action) => {
+        newState = chpassSlice.reducer(newState, action);
+      });
+
+      // we expect the suggested_password in the state to have been updated with the value from the mock response
+      expect(newState).toEqual({ ...stateBefore, suggested_password: suggested });
+    });
   });
 
-  it("Sagas postPasswordChange", () => {
-    const generator = postPasswordChange();
+  it("fails fetching suggested password", () => {
+    const store = fakeStore(mockState);
 
-    let next = generator.next();
-    expect(next.value).toEqual(put(actions.startPasswordChange()));
+    fetch.mockReject(new Error("testing"));
 
-    next = generator.next();
+    return store.dispatch(fetchSuggestedPassword()).then(() => {
+      const actualActions = store.getActions().map((action) => action.type);
+      expect(actualActions).toEqual([
+        "chpass/fetchSuggestedPassword/pending",
+        "security_FAIL",
+        "chpass/fetchSuggestedPassword/rejected",
+      ]);
 
-    const data = {
-      csrf_token: "csrf-token",
-      old_password: "old-pw",
-      new_password: "new-pw",
-    };
-    next = generator.next(mockState);
-    expect(next.value).toEqual(call(postPassword, mockState.config, data));
+      // apply all actions to the reducer, and verify the state afterwards
+      const stateBefore = { ...store.getState() };
+      let newState = { ...store.getState() };
+      store.getActions().forEach((action) => {
+        newState = chpassSlice.reducer(newState, action);
+      });
 
-    let mockCredentials = {
-      payload: {
+      // We don't expect the state to change at all on a failed request. Showing errors is done in the
+      // notification middleware reacting to the _FAIL action.
+      expect(newState).toEqual(stateBefore);
+
+      expect(store.getActions()[1]).toEqual({
+        error: true,
+        payload: { message: "Error: testing" },
+        type: "security_FAIL",
+      });
+    });
+  });
+
+  it("can change password", () => {
+    const store = fakeStore({ ...mockState, suggested_password: "abc123" });
+    const oldPassword = "12345";
+    const newPassword = "secret";
+
+    fetchMock.doMockIf(`${mockState.config.security_url}/change-password`, JSON.stringify({}));
+
+    return store.dispatch(changePassword({ old_password: oldPassword, new_password: newPassword })).then(() => {
+      const actualActions = store.getActions().map((action) => action.type);
+      expect(actualActions).toEqual(["chpass/changePassword/pending", "chpass/changePassword/fulfilled"]);
+
+      // apply all actions to the reducer, and verify the state afterwards
+      const stateBefore = { ...store.getState() };
+      let newState = { ...store.getState() };
+      store.getActions().forEach((action) => {
+        newState = chpassSlice.reducer(newState, action);
+      });
+
+      // we expect the suggested_password to be cleared on a successful password change
+      expect(newState).toEqual({ ...stateBefore, suggested_password: undefined });
+
+      expect(JSON.parse(fetch.mock.calls[0][1].body)).toEqual({
         csrf_token: "csrf-token",
-        credentials: [
-          {
-            credential_type: "password",
-            created_ts: "",
-            success_ts: "",
-          },
-        ],
-      },
-      type: "POST_SECURITY_CHANGE_PASSWORD_SUCCESS",
-    };
-    next = generator.next(mockCredentials);
-    delete mockCredentials.payload.csrf_token;
-    generator.next(mockCredentials);
-    next = generator.next();
-    expect(next.value).toEqual(put(mockCredentials));
+        new_password: "secret",
+        old_password: "12345",
+      });
+    });
   });
-});
 
-const fakeStore = (state) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...state }),
-});
-
-const fakeState = (custom) => ({
-  chpass: {
-    message: "",
-    suggested_password: "abcd",
-    old_password: "",
-    new_password: "defg",
-    choose_custom: custom,
-  },
-  config: {
-    csrf_token: "",
-    security_url: "/dummy-sec-url",
-    dashboard_url: "/dummy-dash-url/",
-    token_service_url: "/dummy-tok-url/",
-  },
-  personal_data: {
-    data: {
-      given_name: "given-name",
-      surname: "surname",
-      display_name: "display-name",
-    },
-  },
-  emails: {
-    emails: [],
-  },
-  intl: {
-    locale: "en",
-    messages: messages,
-  },
-});
-
-describe("ChangePassword Component suggested", () => {
-  it("Renders", () => {
-    // const store = fakeStore(fakeState(false)),
-    // { wrapper } = setupComponent(store),
-    // form = wrapper.find("form#passwordsview-form"),
-    // inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
-    // checkBoxCustom = wrapper.find("CheckBox"),
-    // inputSuggested = wrapper.find('TextControl[name="suggested_password"]'),
-    // button = wrapper.find("EduIDButton");
-  });
-});
-
-describe("ChangePassword Component custom", () => {
-  it("Renders", () => {
-    // const store = fakeStore(fakeState(true)),
-    //   { wrapper, props } = setupComponent(store, true),
-    //   form = wrapper.find("form#passwordsview-form"),
-    //   inputOldPassword = wrapper.find('TextControl[name="old_password"]'),
-    //   checkBoxCustom = wrapper.find("CheckBox"),
-    //   inputCustom = wrapper.find("PasswordField"),
-    //   button = wrapper.find("EduIDButton");
+  afterEach(() => {
+    fetchMock.resetMocks();
   });
 });
 
 describe("ChangePassword Container", () => {
-  let fulldom, mockProps, chooseCustom, getWrapper, store;
+  let getWrapper;
 
   beforeEach(() => {
-    mockProps = {
-      choose_custom: false,
-      suggested_password: "abcd",
-      new_password: "defg",
-      user_input: [],
-      password_entropy: 0,
-    };
+    getWrapper = function () {
+      const store = fakeStore();
 
-    getWrapper = function (custom = false, props = mockProps) {
-      const state = fakeState(custom);
-      store = fakeStore(state);
       const wrapper = mount(
         <ReduxIntlProvider store={store}>
           <Router>
-            <ChangePasswordContainer {...props} />
+            <ChangePasswordContainer />
           </Router>
         </ReduxIntlProvider>
       );
       return wrapper;
     };
-    fulldom = getWrapper().find(ChangePasswordContainer);
-    chooseCustom = fulldom.props().choose_custom;
   });
 
   it("Renders test", () => {
-    expect(chooseCustom).toEqual(false);
-  });
-
-  /* TODO - fix these tests
-   *
-  it("Clicks change suggested", () => {
     const wrapper = getWrapper();
-
-    expect(dispatch.mock.calls.length).toEqual(0);
-    wrapper.find('TextControl#old_password').state.value = '1234';
-    wrapper.find('EduIDButton#chpass-button').props().onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(1);
-    const arg = dispatch.mock.calls[0][0];
-    expect(arg.type).toEqual(actions.POST_PASSWORD_CHANGE);
-    expect(arg.payload.old).toEqual('1234');
-    expect(arg.payload.next).toEqual('abcd');
+    const button = wrapper.find("#pwmode-button");
+    expect(button.exists()).toEqual(true);
   });
-
-  it("Clicks change custom", () => {
-    const newProps = {
-            choose_custom: true,
-            new_password: 'abcd',
-            user_input: [],
-            password_entropy: 0
-          },
-          wrapper = getWrapper(true, newProps);
-
-    expect(dispatch.mock.calls.length).toEqual(0);
-    wrapper.find('TextControl').state.value = '1234';
-    wrapper.find('EduIDButton#chpass-button').props().onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(1);
-    const arg = dispatch.mock.calls[0][0];
-    expect(arg.type).toEqual(actions.POST_PASSWORD_CHANGE);
-    expect(arg.payload.old).toEqual('1234');
-    expect(arg.payload.next).toEqual('defg');
-  });
-
-  it("Clicks change custom", () => {
-    const newProps = {
-            choose_custom: true,
-            new_password: '',
-            user_input: [],
-            password_entropy: 0
-          },
-          wrapper = getWrapper(true, newProps),
-          props = wrapper.find('ChangePassword').props();
-
-    expect(dispatch.mock.calls.length).toEqual(0);
-    wrapper.find('TextControl')[0].instance().state.value = '1234';
-    wrapper.find('#chpass-button').props().onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(1);
-    expect(dispatch.mock.calls[0].type).toEqual(actions.POST_PASSWORD_CHANGE);
-  });
-  */
 });
