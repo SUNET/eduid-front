@@ -178,6 +178,11 @@ function RenderFinished(props: { isExpired: boolean; data: LoginUseOtherDevice2R
     }
   }
 
+  function handleSubmit(): undefined {
+    // No-op, have to provide it to the form but we don't expect submissions on device 2.
+    return undefined;
+  }
+
   if (props.isExpired) {
     // TODO: show this as a modal window, greying out all the other content?
 
@@ -211,6 +216,7 @@ function RenderFinished(props: { isExpired: boolean; data: LoginUseOtherDevice2R
         submitDisabled={true}
         inputsDisabled={true}
         code={props.data.short_code}
+        handleSubmitCode={handleSubmit}
       />
 
       <div className="phishing-warning">

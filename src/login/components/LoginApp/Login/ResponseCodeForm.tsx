@@ -9,11 +9,12 @@ interface ResponseCodeFormProps {
   submitDisabled: boolean;
   inputsDisabled: boolean;
   code?: string;
-  handleAbort?: () => void;
-  handleLogin?: () => void;
+  handleSubmitCode: (values: ResponseCodeValues, event: any) => undefined;
+  handleAbort?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleLogin?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-interface ResponseCodeValues {
+export interface ResponseCodeValues {
   v: string[];
 }
 
@@ -23,13 +24,11 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
     v: ["S", "K", valueChars[0], valueChars[1], valueChars[2], "-", valueChars[3], valueChars[4], valueChars[5]],
   };
 
-  function handleSubmit() {}
-
   return (
     <React.Fragment>
       <div className={`response-code-input ${props.extra_className}`}>
         <FinalForm<ResponseCodeValues>
-          onSubmit={handleSubmit}
+          onSubmit={props.handleSubmitCode}
           initialValues={initialValues}
           render={(formProps) => {
             return (
