@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 function removeLocalStorage(key: string) {
-  return window.localStorage.removeItem(key);
+  if (window.localStorage) {
+    return window.localStorage.removeItem(key);
+  }
 }
 
 function getLocalStorage(key: string) {
@@ -15,11 +17,27 @@ function setLocalStorage(key: string, val: string) {
   return val;
 }
 
+function loadEndDate(name: string, unique_id?: string): Date | undefined {
+  const data = JSON.parse(getLocalStorage(name) || "{}") as StoredData;
+  if (!data.end || data.id != unique_id) {
+    // No data, or non-matching unique id
+    return undefined;
+  }
+
+  try {
+    return new Date(data.end);
+  } catch (error) {
+    return undefined;
+  }
+}
+
 interface TimeRemainingWrapperProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   name: string;
+  unique_id?: string;
   value: number;
   interval?: number;
   onReachZero?: () => void;
+  debug?: boolean;
 }
 
 // additional props provided to all children
@@ -31,6 +49,10 @@ export interface TimeRemaining {
   total_seconds: number;
 }
 
+interface StoredData {
+  id?: string;
+  end: string;
+}
 export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Element {
   const [secondsLeft, setSecondsLeft] = useState(props.value > 0 ? props.value : 0);
 
@@ -43,8 +65,12 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Elem
     //   a) not have to have a synchronised clock with the backend and
     //   b) to handle time-warps, such as when someone suspends their computer and later resumes it
     //   c) to handle page reloads
-    const end = new Date().getTime() + secondsLeft * 1000;
-    setLocalStorage(`${props.name}.end`, end.toString());
+    let end = new Date().getTime();
+    // get rid of milliseconds to make debugging easier
+    end = end - (end % 1000);
+    end = end + secondsLeft * 1000;
+    const data: StoredData = { id: props.unique_id, end: new Date(end).toISOString() };
+    setLocalStorage(props.name, JSON.stringify(data));
   }, []);
 
   useEffect(() => {
@@ -63,16 +89,17 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Elem
     // Set up a timer at the chosen interval
     const interval = props.interval || 1000;
     const timer = setInterval(() => {
-      const now = new Date().getTime();
+      const now = new Date();
       // Load and parse the end time from local storage
-      const endStr = getLocalStorage(`${props.name}.end`);
-      if (!endStr) {
+      const end = loadEndDate(props.name, props.unique_id);
+      if (!end) {
+        // detect if the unique id changes, and cancel this timer if it does
+        setSecondsLeft(0);
         clearInterval(timer);
         return undefined;
       }
-      const end = parseInt(endStr);
       // calculate remaining number of secondsLeft
-      let remaining = Math.floor((end - now) / 1000);
+      let remaining = Math.floor((end.getTime() - now.getTime()) / 1000);
       if (remaining < 0) {
         // handle time-warp gracefully, never showing a value less than zero
         remaining = 0;
@@ -82,7 +109,7 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Elem
 
       if (remaining <= 0) {
         clearInterval(timer);
-        removeLocalStorage(`${props.name}.end`);
+        removeLocalStorage(props.name);
         if (props.onReachZero) {
           // call the callback provided
           props.onReachZero();
@@ -94,7 +121,7 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Elem
       // remove timer on component unmount
       clearInterval(timer);
     };
-  });
+  }, [props]);
 
   // Add the time_remaining prop to all the children of this component.
   const childrenWithProps = React.Children.map(props.children, (child) => {
@@ -104,5 +131,28 @@ export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): JSX.Elem
     return child;
   });
 
-  return <React.Fragment>{childrenWithProps}</React.Fragment>;
+  return (
+    <React.Fragment>
+      {props.debug && <RenderDebugInfo {...props} secondsLeft={secondsLeft} />}
+      {childrenWithProps}
+    </React.Fragment>
+  );
+}
+
+function RenderDebugInfo(props: TimeRemainingWrapperProps & { secondsLeft: number }): JSX.Element {
+  const end2 = loadEndDate(props.name, props.unique_id) || new Date();
+  const now2 = new Date();
+  const diff2 = Math.floor((end2.getTime() - now2.getTime()) / 1000);
+
+  return (
+    <React.Fragment>
+      <div className="time-remaining-wrapper-debug">
+        Debug info:
+        <div>{getLocalStorage(props.name)}</div>
+        <div>{`${props.name} ends at ${end2.toISOString()}`}</div>
+        <div>{`now ${now2.toISOString()}, diff ${diff2}`}</div>
+        <div>{`secondsLeft ${props.secondsLeft}`}</div>
+      </div>
+    </React.Fragment>
+  );
 }

@@ -148,7 +148,12 @@ function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.
       </div>
 
       <div className="expiration-info device1">
-        <TimeRemainingWrapper name="other-device-expires" value={data.expires_in} onReachZero={handleTimerReachZero}>
+        <TimeRemainingWrapper
+          name="other-device-expires"
+          unique_id={data.short_code}
+          value={data.expires_in}
+          onReachZero={handleTimerReachZero}
+        >
           <ExpiresMeter expires_max={data.expires_max} />
         </TimeRemainingWrapper>
       </div>
