@@ -1,14 +1,14 @@
-import { fetchAuthnOptions, fetchNext, fetchUseOtherDevice2 } from "apis/eduidLogin";
+import { fetchAuthnOptions, fetchNext } from "apis/eduidLogin";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
 import MultiFactorAuth from "./MultiFactorAuth";
-import UseOtherDevice2 from "./UseOtherDevice2";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
+import UseOtherDevice2 from "./UseOtherDevice2";
 import UsernamePw from "./UsernamePw";
 
 // URL parameters passed to this component
@@ -29,14 +29,10 @@ const Login = (): JSX.Element => {
     dispatch(loginSlice.actions.addLoginRef({ ref: ref, start_url: window.location.href }));
   }
 
-  console.log(`FETCH PARAMS: ${base_url} ${ref}`);
   useEffect(() => {
     // Fetching authn_options depends on state.config being loaded first (base_url being set)
     if (base_url && ref) {
-      console.log(`FETCHING OPTIONS: ${base_url} ${ref}`);
       dispatch(fetchAuthnOptions({ ref: ref }));
-    } else {
-      console.log(`NOT FETCHING OPTIONS: ${base_url} ${ref}`);
     }
   }, [base_url, ref]);
 
