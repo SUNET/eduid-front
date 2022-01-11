@@ -53,15 +53,22 @@ function validate_code(values: ResponseCodeValues) {
   // the code is formatted as SK123-456, ignore positions S, K and -
   const positions = [2, 3, 4, 6, 7, 8];
   positions.forEach((pos) => {
-    if (values.v[pos] && values.v[pos].length && !isDigit(values.v[pos])) {
+    if (!values.v[pos] || !isDigit(values.v[pos])) {
+      // Record an (invisible) failure as long as one of the inputs doesn't contain a valid digit, to keep
+      // the submit button disabled until all fields hold a valid digit.
       const name = `v[${pos}]`;
       err[name] = "Not a digit";
-      // Set the form-wide error too. This is what is currently displayed.
+    }
+    if (values.v[pos] && values.v[pos].length && !isDigit(values.v[pos])) {
+      // Set the form-wide error too. This is what is currently displayed, so only show error when there actually is
+      // a non-digit there, not for empty values.
       err[FORM_ERROR] = "Not a digit";
     }
   });
   return err;
 }
+
+//type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   return (
@@ -94,7 +101,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               onClick={props.handleLogin}
               id="response-code-submit-button"
               className={"settings-button"}
-              disabled={props.submitDisabled || props.submitting || props.invalid}
+              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
             </ButtonPrimary>

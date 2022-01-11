@@ -1,6 +1,11 @@
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fetchNext, fetchUseOtherDevice2, LoginUseOtherDevice2Response } from "apis/eduidLogin";
+import {
+  fetchNext,
+  fetchUseOtherDevice2,
+  LoginUseOtherDevice2Response,
+  UseOtherDevice2ResponseLoggedIn,
+} from "apis/eduidLogin";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
@@ -74,8 +79,8 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
 
       {data.state === "IN_PROGRESS" ? (
         <ProceedLoginButton disabled={timerIsZero} />
-      ) : data.state === "FINISHED" ? (
-        <RenderFinished data={data} isExpired={timerIsZero} />
+      ) : data.state === "LOGGED_IN" ? (
+        <RenderLoggedIn data={data} isExpired={timerIsZero} />
       ) : data !== undefined ? (
         <h2 className="heading">
           <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown state, please try again." />
@@ -166,7 +171,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
   );
 }
 
-function RenderFinished(props: { isExpired: boolean; data: LoginUseOtherDevice2Response }): JSX.Element {
+function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2ResponseLoggedIn }): JSX.Element {
   const dispatch = useAppDispatch();
   const history = useHistory();
 
@@ -215,7 +220,7 @@ function RenderFinished(props: { isExpired: boolean; data: LoginUseOtherDevice2R
         extra_className="device2"
         submitDisabled={true}
         inputsDisabled={true}
-        code={props.data.short_code}
+        code={props.data.response_code}
         handleSubmitCode={handleSubmit}
       />
 

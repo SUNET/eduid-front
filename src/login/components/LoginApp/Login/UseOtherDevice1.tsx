@@ -1,4 +1,4 @@
-import { fetchUseOtherDevice1, LoginUseOtherDevice1Response } from "apis/eduidLogin";
+import { fetchUseOtherDevice1, LoginUseOtherDevice1Response, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
@@ -16,24 +16,24 @@ import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
  */
 function UseOtherDevice1() {
   const other_device = useAppSelector((state) => state.login.other_device1);
+  const username = useAppSelector((state) => state.login.authn_options.username);
   const loginRef = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (loginRef && !other_device) {
       // refresh state on page reload
-      dispatch(fetchUseOtherDevice1({ ref: loginRef }));
+      dispatch(fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: username }));
     }
   }, []);
 
+  const hasQrCode = other_device && (other_device.state === "NEW" || other_device.state === "IN_PROGRESS");
   let error = undefined;
-  if (other_device) {
-    if (other_device.state != "NEW" && other_device.state != "IN_PROGRESS") {
-      if (other_device.state == "ABORTED") {
-        error = <FormattedMessage defaultMessage="The request has been aborted" description="Use other device" />;
-      } else {
-        error = <FormattedMessage defaultMessage="The request is not valid anymore" description="Use other device" />;
-      }
+  if (!hasQrCode && other_device) {
+    if (other_device.state === "ABORTED") {
+      error = <FormattedMessage defaultMessage="The request has been aborted" description="Use other device" />;
+    } else {
+      error = <FormattedMessage defaultMessage="The request is not valid anymore" description="Use other device" />;
     }
   }
 
@@ -43,7 +43,7 @@ function UseOtherDevice1() {
         <FormattedMessage defaultMessage="Log in using another device" />
       </h2>
 
-      {!error && other_device && <RenderOtherDevice1 data={other_device} />}
+      {!error && hasQrCode && <RenderOtherDevice1 data={other_device} />}
       {error && <RenderFatalError error={error} />}
     </div>
   );
@@ -77,20 +77,19 @@ function RenderFatalError(props: { error: JSX.Element }) {
   );
 }
 
-function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.Element {
+function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX.Element {
   const { data } = props;
   const login_ref = useAppSelector((state) => state.login.ref);
-  const [submitDisabled, setSubmitDisabled] = useState(false);
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
 
   function handleTimerReachZero() {
-    setSubmitDisabled(true);
     setIsExpired(true);
   }
 
   // have to pass a function to ResponseCodeForm in order for it to show the button
-  function handleLoginButtonOnClick(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleLoginButtonOnClick() {
+    console.log("CLICKED LOG IN");
     return undefined;
   }
 
@@ -103,15 +102,18 @@ function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.
   }
 
   function handleSubmitCode(values: ResponseCodeValues) {
+    const code = values.v.join("");
+    const match = code.match(/^SK(\d\d\d)-(\d\d\d)$/);
+    if (match?.length == 3) {
+      // match[0] is whole matched string, [1] and [2] are the groups of digits
+      const digits = match[1] + match[2];
+      if (login_ref) {
+        dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "SUBMIT_CODE", response_code: digits }));
+      }
+    }
 
     return undefined;
   }
-
-  useEffect(() => {
-    if (props.data.state != "NEW" && props.data.state != "IN_PROGRESS") {
-      setSubmitDisabled(true);
-    }
-  }, [props.data.state]);
 
   const expiredMessage = <FormattedMessage defaultMessage="The code has expired" description="Use another device #1" />;
 
@@ -158,7 +160,7 @@ function RenderOtherDevice1(props: { data: LoginUseOtherDevice1Response }): JSX.
       ) : (
         <ResponseCodeForm
           extra_className="device1"
-          submitDisabled={submitDisabled}
+          submitDisabled={false}
           inputsDisabled={false}
           handleLogin={handleLoginButtonOnClick}
           handleAbort={handleAbortButtonOnClick}
