@@ -1,14 +1,17 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, InputHTMLAttributes } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
 import ReactDOM from "react-dom";
 import { Form, Field } from "react-final-form";
 import Select from "react-select";
 
-const SelectAdapter = ({ input, ...rest }: any) => {
-  console.log("INPUT", input);
-  return <Select {...input} {...rest} />;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  input: { name: string };
+}
+
+const SelectAdapter = ({ input }: InputProps) => {
+  return <Select {...input} />;
 };
 
 const LadokContainer = (): JSX.Element => {
