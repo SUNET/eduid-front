@@ -134,6 +134,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
             <Field
               name="hello"
               component={SelectAdapter}
+              placeholder={placeholder}
               options={[
                 { label: "Skola A", value: "s-a" },
                 { label: "Skola B", value: "s-b" },
