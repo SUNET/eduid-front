@@ -9,7 +9,7 @@ interface ResponseCodeFormProps {
   submitDisabled: boolean;
   inputsDisabled: boolean;
   code?: string;
-  handleSubmitCode: (values: ResponseCodeValues, event: any) => undefined;
+  handleSubmitCode: (values: ResponseCodeValues) => undefined;
   handleAbort?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleLogin?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
