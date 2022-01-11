@@ -1,24 +1,56 @@
-.ladok-container {
-  h4 {
-    color: $black; // placeholder
-  }
+.ladok {
+  //&-container {}
 
-  p.ladok-link-status {
+  &-university-name {
+    flex-grow: 1;
     text-align: right;
+    white-space: nowrap;
   }
 
-  .universities-status {
+  &-universities-status {
     color: $orange-highlight;
     font-size: 1rem;
   }
+  /*
+  p&-link-status {
+    text-align: right;
+  }
 
+  h4 {
+    color: $black; // placeholder
+  }
+*/
   svg {
     transform: none;
   }
+
+  @media (max-width: 768px) {
+    &-university {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 }
 
+/** Possible utility/generic classes below **/
+
+//TODO - make more generic for whole tab/section
 article {
   margin: 1rem 0 2rem;
+}
+
+fieldset + fieldset:not(:empty) {
+  margin-top: 1.25em;
+}
+
+select {
+  padding: 5px;
+  border-radius: 3px;
+  width: 100%;
+  height: 3rem;
+  background-color: $white;
+  height: 40px;
+  margin-top: 3px;
 }
 
 .flex-between {
@@ -30,25 +62,6 @@ article {
     margin: 0;
   }
 }
-.status {
-  margin-top: 1rem;
-
-  &-on {
-    color: green;
-  }
-  &-off {
-    color: red;
-  }
-}
-select {
-  padding: 5px;
-  border-radius: 3px;
-  width: 100%;
-  height: 3rem;
-  background-color: $white;
-  height: 40px;
-  margin-top: 3px;
-}
 
 .heading-4 {
   //@extend h4;
@@ -57,22 +70,11 @@ select {
   margin-bottom: 1rem;
   font-weight: 700;
 }
-/* Possible utility-classes */
+
 .text-large {
   font-size: 1.25rem;
 }
-.ladok-university-name {
-  flex-grow: 1;
-  text-align: right;
-  white-space: nowrap;
-}
-strong {
-  font-weight: bold;
-}
 
-@media (max-width: 768px) {
-  .ladok-university {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+strong {
+  @extend b;
 }
