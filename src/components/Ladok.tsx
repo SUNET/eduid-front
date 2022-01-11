@@ -28,7 +28,7 @@ const LadokContainer = (): JSX.Element => {
   useEffect(() => setSwitchChecked(isLinked), [isLinked]);
 
   return (
-    <article id="ladok-container" className="ladok-container">
+    <article id="ladok-container" className="ladok">
       <h3 className="heading-4">
         <FormattedMessage defaultMessage="Ladok information" description="Ladok account linking" />
       </h3>
@@ -143,7 +143,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         )}
       />
 
-      <div className="universities-status">
+      <div className="ladok-universities-status">
         {fetchFailed ? (
           <FormattedMessage
             defaultMessage="The list of higher education institutions could not be loaded at this time"
