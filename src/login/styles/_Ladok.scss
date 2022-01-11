@@ -24,6 +24,10 @@
     transform: none;
   }
 
+  input {
+    height: initial;
+  }
+
   @media (max-width: 768px) {
     &-university {
       flex-direction: column;
