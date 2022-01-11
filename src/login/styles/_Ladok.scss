@@ -16,18 +16,7 @@
 article {
   margin: 1rem 0 2rem;
 }
-fieldset {
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
-  height: auto;
-  max-height: 600px;
-  &:empty {
-    max-height: 0;
-  }
-}
-fieldset + fieldset:not(:empty) {
-  margin-top: 1.25em;
-}
+
 .flex-between {
   display: flex;
   justify-content: space-between;
