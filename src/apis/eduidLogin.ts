@@ -35,25 +35,45 @@ export const fetchAuthnOptions = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
-type OtherDeviceState = "NEW" | "IN_PROGRESS" | "ABORTED" | "FINISHED";
 
-export interface LoginUseOtherDevice1Response {
-  expires_in: number;
-  expires_max: number;
-  qr_img?: string;
-  qr_url?: string;
-  short_code: string;
-  state_id: string;
-  state: OtherDeviceState;
-  message?: string;
-}
+export type LoginUseOtherDevice1Request = UseOtherDevice1Fetch | UseOtherDevice1Abort | UseOtherDevice1SubmitCode;
+export type LoginUseOtherDevice1Response = UseOtherDevice1ResponseWithQR | UseOtherDevice1ResponseWithoutQR;
 
-export interface LoginUseOtherDevice1Request {
+/* Request types */
+interface UseOtherDevice1Fetch {
+  action: "FETCH";
   ref: string;
   username?: string;
-  action?: "ABORT" | "SUBMIT_CODE";
-  response_code?: string;
 }
+
+interface UseOtherDevice1Abort {
+  action: "ABORT";
+  ref: string;
+}
+
+interface UseOtherDevice1SubmitCode {
+  action: "SUBMIT_CODE";
+  ref: string;
+  response_code: string;
+}
+
+/* Response types */
+interface UseOtherDevice1ResponseCommon {
+  expires_in: number;
+  expires_max: number;
+  short_code: string;
+  state_id: string;
+}
+
+export type UseOtherDevice1ResponseWithQR = UseOtherDevice1ResponseCommon & {
+  state: "NEW" | "IN_PROGRESS";
+  qr_img: string;
+  qr_url: string;
+};
+
+export type UseOtherDevice1ResponseWithoutQR = UseOtherDevice1ResponseCommon & {
+  state: "LOGGED_IN" | "ABORTED" | "FINISHED" | "DENIED";
+};
 
 /**
  * @public
@@ -75,19 +95,41 @@ export const fetchUseOtherDevice1 = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
-export interface LoginUseOtherDevice2Response {
+
+export type LoginUseOtherDevice2Request = UseOtherDevice2WithRef | UseOtherDevice2WithStateId;
+export type LoginUseOtherDevice2Response = UseOtherDevice2Response | UseOtherDevice2ResponseLoggedIn;
+
+/* Response types */
+interface UseOtherDevice2ResponseCommon {
   device1_info: DeviceInfo;
   expires_in: number;
   expires_max: number;
   login_ref: string;
   short_code: string;
-  state: OtherDeviceState;
 }
+
+export type UseOtherDevice2Response = UseOtherDevice2ResponseCommon & {
+  state: "IN_PROGRESS" | "ABORTED" | "FINISHED" | "DENIED";
+};
+
+export type UseOtherDevice2ResponseLoggedIn = UseOtherDevice2ResponseCommon & {
+  state: "LOGGED_IN";
+  response_code: string;
+};
 
 export interface DeviceInfo {
   addr: string;
   proximity: "SAME" | "NEAR" | "FAR";
   description?: string;
+}
+
+/* Request types */
+interface UseOtherDevice2WithRef {
+  ref: string;
+}
+
+interface UseOtherDevice2WithStateId {
+  state_id: string;
 }
 
 /**
@@ -97,15 +139,12 @@ export interface DeviceInfo {
  */
 export const fetchUseOtherDevice2 = createAsyncThunk<
   LoginUseOtherDevice2Response, // return type
-  { ref?: string; state_id?: string }, // args type
+  LoginUseOtherDevice2Request, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("login/api/useOtherDevice2", async (args, thunkAPI) => {
   // The backend endpoint will use 'ref' if it is provided, but when the user follows the QR code
   // there is no pending request (with a 'ref') at first, only a state_id parameter from the QR URL.
-  const body: KeyValues = {
-    ref: args.ref,
-    state_id: args.state_id,
-  };
+  const body: KeyValues = args;
 
   return makeLoginRequest<LoginUseOtherDevice2Response>(thunkAPI, "use_other_2", body)
     .then((response) => response.payload)
