@@ -10,9 +10,15 @@ import {
   setLocalStorage,
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
 import { history } from "../../../components/App/App";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { LoginRootState } from "../../../app_init/initStore";
+
+interface RequestPhoneCodeResponse {
+  message: string;
+}
 
 export function* requestPhoneCodeForNewPassword() {
-  const state = yield select((state) => state);
+  const state: LoginRootState = yield select((state) => state);
   const url = state.config.reset_password_url + "extra-security-phone/";
   const locationUrl = document.location.href;
   const data = {
@@ -22,7 +28,11 @@ export function* requestPhoneCodeForNewPassword() {
   };
   try {
     yield put(eduidRMAllNotify());
-    const response = yield call(postRequest, url, data);
+    const response: PayloadAction<RequestPhoneCodeResponse, string, never, boolean> = yield call(
+      postRequest,
+      url,
+      data
+    );
     yield put(putCsrfToken(response));
     if (response.error) {
       // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
@@ -41,6 +51,6 @@ export function* requestPhoneCodeForNewPassword() {
     countFiveMin("phone");
     history.push(`/reset-password/phone-code-sent/${data.email_code}`);
   } catch (error) {
-    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail(error));
+    yield* failRequest(error, resetPasswordSlice.actions.resetPasswordSagaFail());
   }
 }
