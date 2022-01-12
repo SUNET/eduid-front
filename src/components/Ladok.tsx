@@ -7,7 +7,7 @@ import Select from "react-select";
 
 //TODO: add specific type for rest
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const SelectAdapter = ({ input, ...rest }: any) => <Select {...input} {...rest} />;
+const SelectAdapter = ({ input, ...rest }: any) => <Select {...input} {...rest} isSearchable={false} />;
 
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
