@@ -14,7 +14,6 @@ import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 interface ChangePasswordSuggestedFormData {
   old?: string;
   suggested?: string;
-  new?: string;
 }
 
 interface FormData {
