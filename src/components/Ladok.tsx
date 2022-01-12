@@ -5,10 +5,6 @@ import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok
 import { Form, Field } from "react-final-form";
 import Select from "react-select";
 
-//TODO: add specific type for rest
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const SelectAdapter = ({ input, ...rest }: any) => <Select {...input} {...rest} isSearchable={false} />;
-
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
@@ -102,22 +98,22 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   }
 
   // populate dropdown list of universities
-  const unis: JSX.Element[] = [];
+  const unis: object[] = [];
   if (ladokUnis !== undefined) {
     Object.values(ladokUnis).forEach((item) => {
       // Get the name of the university in the users locale, fallback to English and then to ladok_name.
       const uni_name = item.name[locale] || item.name.en || item.ladok_name;
-      unis.push(
-        <option key={item.ladok_name} value={item.ladok_name}>
-          {uni_name}
-        </option>
-      );
+      unis.push({ label: uni_name, value: item.ladok_name });
     });
   }
 
+  //TODO: add specific type for rest
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const SelectAdapter = ({ input, ...rest }: any) => <Select {...input} {...rest} isSearchable={false} />;
+
   return (
     <React.Fragment>
-      <label htmlFor="ladok-universities">
+      {/* <label htmlFor="ladok-universities">
         <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
       </label>
       <select value={selectUni} onChange={handleOnChange} disabled={fetchFailed}>
@@ -125,8 +121,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
           {placeholder}
         </option>
         {unis}
-      </select>
-
+      </select> */}
       <Form
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
@@ -135,10 +130,10 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
               name="hello"
               component={SelectAdapter}
               placeholder={placeholder}
-              options={[
-                { label: "Skola A", value: "s-a" },
-                { label: "Skola B", value: "s-b" },
-              ]}
+              value={selectUni}
+              onChange={handleOnChange}
+              disabled={fetchFailed}
+              options={unis.length ? unis : null}
             />
           </form>
         )}
