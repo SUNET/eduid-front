@@ -82,9 +82,12 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
       ) : data.state === "LOGGED_IN" ? (
         <RenderLoggedIn data={data} isExpired={timerIsZero} />
       ) : data !== undefined ? (
-        <h2 className="heading">
-          <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown state, please try again." />
-        </h2>
+        <div className="finished device2">
+          <FormattedMessage
+            defaultMessage="Request complete, you should close this browser window."
+            description="Use another device, finished"
+          />
+        </div>
       ) : // show nothing before next_page is initialised
       null}
     </React.Fragment>

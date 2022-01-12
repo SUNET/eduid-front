@@ -66,13 +66,13 @@ interface UseOtherDevice1ResponseCommon {
 }
 
 export type UseOtherDevice1ResponseWithQR = UseOtherDevice1ResponseCommon & {
-  state: "NEW" | "IN_PROGRESS";
+  state: "NEW" | "IN_PROGRESS" | "LOGGED_IN";
   qr_img: string;
   qr_url: string;
 };
 
 export type UseOtherDevice1ResponseWithoutQR = UseOtherDevice1ResponseCommon & {
-  state: "LOGGED_IN" | "ABORTED" | "FINISHED" | "DENIED";
+  state: "ABORTED" | "FINISHED" | "DENIED";
 };
 
 /**

@@ -27,7 +27,9 @@ function UseOtherDevice1() {
     }
   }, []);
 
-  const hasQrCode = other_device && (other_device.state === "NEW" || other_device.state === "IN_PROGRESS");
+  const hasQrCode =
+    other_device &&
+    (other_device.state === "NEW" || other_device.state === "IN_PROGRESS" || other_device.state == "LOGGED_IN");
   let error = undefined;
   if (!hasQrCode && other_device) {
     if (other_device.state === "ABORTED") {
