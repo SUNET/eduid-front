@@ -127,7 +127,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Field
-              name="hello"
+              name="ladok"
               component={SelectAdapter}
               placeholder={placeholder}
               value={selectUni}
