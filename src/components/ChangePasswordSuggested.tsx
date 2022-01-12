@@ -35,8 +35,8 @@ function BareChangePasswordSuggestedForm(props: ChangePasswordChildFormProps & C
   // update component state with any changes to the form fields, so that we can get the values
   // on submit without going fishing in the DOM
   const formChange = (field: FormData) => {
-    setFormData({ ...formData, [field.name]: field.value.trim() });
-    props.updateFormDataCallback({ old: formData.old, new: suggested });
+    setFormData({ ...formData });
+    props.updateFormDataCallback({ old: field.value.trim(), new: suggested });
   };
 
   return (
