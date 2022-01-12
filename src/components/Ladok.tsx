@@ -5,6 +5,11 @@ import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok
 import { Form, Field } from "react-final-form";
 import Select from "react-select";
 
+interface SelectedUniProps {
+  label: string;
+  value: string;
+}
+
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
@@ -89,8 +94,8 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     }
   }, [ladokUnis]);
 
-  function handleOnChange(e: React.SyntheticEvent): void {
-    const ladok_name = (e.target as HTMLTextAreaElement).value;
+  function handleOnChange(selectedUni: SelectedUniProps): void {
+    const ladok_name = selectedUni.value;
     if (ladok_name) {
       dispatch(linkUser({ ladok_name }));
       setSelectUni(ladok_name);
