@@ -2,7 +2,7 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
-import { Form, Field } from "react-final-form";
+import { Form as FinalForm, Field } from "react-final-form";
 import Select from "react-select";
 
 interface SelectedUniProps {
@@ -127,7 +127,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         </option>
         {unis}
       </select> */}
-      <Form
+      <FinalForm
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
