@@ -75,8 +75,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
   const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
-  const [selectUni, setSelectUni] = useState(ladok_name);
-  const [objectUni, setObjectSelectUni] = useState({});
+  const [selectUni, setSelectUni] = useState({});
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
 
@@ -95,19 +94,20 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   }, [ladokUnis]);
 
   useEffect(() => {
-    if (ladokUnis === undefined) {
-      // initiate fetching of universities metadata when the user indicates they
-      // are interested in linking their account
-      dispatch(fetchLadokUniversities());
+    if (ladokUnis !== undefined) {
+      Object.values(ladokUnis).forEach((item) => {
+        if (item.ladok_name === ladok_name) {
+          const uni_name = item.name[locale] || item.name.en || item.ladok_name;
+          setSelectUni({ label: uni_name, value: item.ladok_name });
+        }
+      });
     }
   }, [ladokUnis]);
 
   function handleOnChange(selectedUni: SelectedUniProps): void {
     const ladok_name = selectedUni.value;
     if (ladok_name) {
-      // dispatch(linkUser({ ladok_name }));
-      setSelectUni(ladok_name);
-      setObjectSelectUni(selectedUni);
+      setSelectUni(selectedUni);
       dispatch(linkUser({ ladok_name }));
     }
   }
@@ -133,7 +133,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         {...input}
         {...rest}
         onChange={handleOnChange}
-        value={objectUni}
+        value={selectUni}
         isSearchable={false}
         className="react-select-container"
         classNamePrefix="react-select"
@@ -143,15 +143,6 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      {/* <label htmlFor="ladok-universities">
-        <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
-      </label>
-      <select value={selectUni} onChange={handleOnChange} disabled={fetchFailed}>
-        <option hidden value="">
-          {placeholder}
-        </option>
-        {unis}
-      </select> */}
       <FinalForm
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
