@@ -7,10 +7,6 @@ import EmailForm from "./EmailForm";
 
 export const LOCAL_STORAGE_PERSISTED_EMAIL = "email";
 
-type ErrorType = {
-  msg: string;
-};
-
 interface ResetPasswordMainProps {
   invalid: boolean;
   request_in_progress: boolean;
@@ -22,21 +18,21 @@ function ResetPasswordMain(props: ResetPasswordMainProps): JSX.Element {
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);
   const request_in_progress = useAppSelector((state) => state.app.request_in_progress);
-  const errors = useAppSelector((state) => state.notifications.errors);
+  const error = useAppSelector((state) => state.notifications.error);
 
   useEffect(() => {
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_LINK);
   }, []);
 
   useEffect(() => {
-    if (errors && errors[0]) {
+    if (error) {
       // error message is expired-phone-code
-      if ((errors[0] as ErrorType).msg.match("resetpw.expired-phone-code")) {
+      if (error.message.match("resetpw.expired-phone-code")) {
         // dispatch useLinkCode to change path to extra-security for resending sms code
         dispatch(resetPasswordSlice.actions.useLinkCode());
       }
     }
-  }, [errors]);
+  }, [error]);
 
   return (
     <>

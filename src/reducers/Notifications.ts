@@ -1,50 +1,41 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Notification {
-  level: "errors" | "messages";
+export interface eduidNotification {
+  level: "error" | "info";
   message: string;
-  values?: unknown[];
 }
 
-export interface Message {
-  msg: string;
-  vals?: unknown[];
-}
 // Define a type for the slice state
 interface NotificationState {
-  messages: Message[];
-  errors: Message[];
+  info?: eduidNotification;
+  error?: eduidNotification;
 }
 
-const initialState: NotificationState = {
-  messages: [],
-  errors: [],
-};
+const initialState: NotificationState = {};
 
 export const notificationsSlice = createSlice({
   name: "notifications",
   initialState,
   reducers: {
-    showNotification: (state, action: PayloadAction<Notification>) => {
-      const msg: Message = { msg: action.payload.message, vals: action.payload.values };
+    showNotification: (state, action: PayloadAction<eduidNotification>) => {
       switch (action.payload.level) {
-        case "errors":
-          state.errors = [msg];
+        case "error":
+          state.error = action.payload;
           break;
-        case "messages":
-          state.errors = [msg];
+        case "info":
+          state.info = action.payload;
           break;
       }
     },
     clearNotifications: (state) => {
-      state.errors = [];
-      state.messages = [];
+      state.error = undefined;
+      state.info = undefined;
     },
   },
   extraReducers: (builder) => {
     builder.addCase("@@router/LOCATION_CHANGE", (state) => {
-      state.errors = [];
-      state.messages = [];
+      state.error = undefined;
+      state.info = undefined;
     });
   },
 });

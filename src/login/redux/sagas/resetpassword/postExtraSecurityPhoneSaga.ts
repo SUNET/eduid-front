@@ -45,7 +45,7 @@ export function* requestPhoneCodeForNewPassword() {
       return;
     }
     // Success message is showing in notification bar
-    yield put(showNotification({ message: response.payload.message, level: "messages" }));
+    yield put(showNotification({ message: response.payload.message, level: "info" }));
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
     countFiveMin("phone");

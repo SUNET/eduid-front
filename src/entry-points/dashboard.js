@@ -43,9 +43,9 @@ const getConfig = function () {
     let msg = params.get("msg");
     if (msg !== null) {
       if (msg.indexOf(":ERROR:") === 0) {
-        dispatch(showNotification({ message: msg.substr(7), level: "errors" }));
+        dispatch(showNotification({ message: msg.substr(7), level: "error" }));
       } else {
-        dispatch(showNotification({ message: msg, level: "messages" }));
+        dispatch(showNotification({ message: msg, level: "info" }));
       }
     }
   }

@@ -151,7 +151,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
         history.push(`/reset-password/set-new-password/${emailCode[0]}`);
       } else if (message.includes("%3A" + "ERROR%3A")) {
         const error = message.split("%3A" + "ERROR%3A")[1];
-        dispatch(showNotification({ message: error, level: "errors" }));
+        dispatch(showNotification({ message: error, level: "error" }));
         history.push(`/reset-password/extra-security/${emailCode[0]}`);
         dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode[0]));
       }

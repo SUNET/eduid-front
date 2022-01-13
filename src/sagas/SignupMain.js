@@ -15,10 +15,10 @@ export function* requestCodeStatus() {
     yield* requestConfig();
     if (codeStatus.payload.status === "unknown-code") {
       history.push(SIGNUP_BASE_PATH + "/email");
-      yield put(showNotification({ message: "code.unknown-code", level: "messages" }));
+      yield put(showNotification({ message: "code.unknown-code", level: "info" }));
     } else if (codeStatus.payload.status === "already-verified") {
       history.push(SIGNUP_BASE_PATH + "/resend-code");
-      yield put(showNotification({ message: "code.already-verified", level: "messages" }));
+      yield put(showNotification({ message: "code.already-verified", level: "info" }));
     } else if (codeStatus.payload.status === "verified") {
       yield put(codeStatus);
       history.push(SIGNUP_BASE_PATH + "/code-verified");
