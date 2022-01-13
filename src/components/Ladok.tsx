@@ -115,13 +115,18 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   //TODO: add specific type for rest
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const SelectAdapter = ({ input, ...rest }: any) => (
-    <Select
-      {...input}
-      {...rest}
-      isSearchable={false}
-      className="react-select-container"
-      classNamePrefix="react-select"
-    />
+    <>
+      <label htmlFor="ladok-universities">
+        <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
+      </label>
+      <Select
+        {...input}
+        {...rest}
+        isSearchable={false}
+        className="react-select-container"
+        classNamePrefix="react-select"
+      />
+    </>
   );
 
   return (
@@ -139,12 +144,6 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="ladok-universities">
-              <FormattedMessage
-                defaultMessage="Select higher education institution"
-                description="Ladok account linking"
-              />
-            </label>
             <Field
               name="ladok-universities"
               component={SelectAdapter}
