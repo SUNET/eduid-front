@@ -114,7 +114,15 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
 
   //TODO: add specific type for rest
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const SelectAdapter = ({ input, ...rest }: any) => <Select {...input} {...rest} isSearchable={false} />;
+  const SelectAdapter = ({ input, ...rest }: any) => (
+    <Select
+      {...input}
+      {...rest}
+      isSearchable={false}
+      className="react-select-container"
+      classNamePrefix="react-select"
+    />
+  );
 
   return (
     <React.Fragment>
@@ -131,8 +139,14 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
+            <label htmlFor="ladok-universities">
+              <FormattedMessage
+                defaultMessage="Select higher education institution"
+                description="Ladok account linking"
+              />
+            </label>
             <Field
-              name="ladok"
+              name="ladok-universities"
               component={SelectAdapter}
               placeholder={placeholder}
               value={selectUni}
@@ -177,7 +191,7 @@ const LadokLinkStatus = (): JSX.Element => {
   return (
     <React.Fragment>
       {isLinked === true ? (
-        <fieldset className="ladok-university flex-between">
+        <div className="ladok-university flex-between">
           <label>
             <FormattedMessage
               defaultMessage="Your account is linked with Ladok information from"
@@ -185,7 +199,7 @@ const LadokLinkStatus = (): JSX.Element => {
             />
           </label>
           <div className="text-large ladok-university-name">{university_name}</div>
-        </fieldset>
+        </div>
       ) : (
         <React.Fragment />
       )}

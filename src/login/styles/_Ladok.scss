@@ -46,6 +46,9 @@ article {
 fieldset + fieldset:not(:empty) {
   margin-top: 1.25em;
 }
+fieldset > form {
+  margin-top: 0;
+}
 
 select {
   padding: 5px;
