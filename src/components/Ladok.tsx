@@ -94,6 +94,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   }, [ladokUnis]);
 
   useEffect(() => {
+    if (!ladok_name) setSelectUni({ label: placeholder, value: "" });
     if (ladokUnis !== undefined) {
       Object.values(ladokUnis).forEach((item) => {
         if (item.ladok_name === ladok_name) {
@@ -102,7 +103,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         }
       });
     }
-  }, [ladokUnis]);
+  }, [ladokUnis, ladok_name]);
 
   function handleOnChange(selectedUni: SelectedUniProps): void {
     const ladok_name = selectedUni.value;
@@ -150,7 +151,6 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
             <Field
               name="ladok-universities"
               component={SelectAdapter}
-              placeholder={placeholder}
               disabled={fetchFailed}
               options={unis.length ? unis : null}
             />
