@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Button from "reactstrap/lib/Button";
+import Button from "reactstrap/Button";
 
 class ButtonModal extends Component {
   render() {

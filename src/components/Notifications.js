@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Alert from "reactstrap/lib/Alert";
-
-// import "style/Notifications.scss";
-import "../login/styles/index.scss";
+import { Alert } from "reactstrap";
 
 class Notifications extends Component {
   render() {

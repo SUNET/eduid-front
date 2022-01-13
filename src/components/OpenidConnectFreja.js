@@ -1,11 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withUserAgent } from "react-useragent";
 import EduIDButton from "components/EduIDButton";
-import FormText from "reactstrap/lib/FormText";
-import Button from "reactstrap/lib/Button";
-import ButtonGroup from "reactstrap/lib/ButtonGroup";
-import Modal from "reactstrap/lib/Modal";
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { withUserAgent } from "react-useragent";
+import { Button, ButtonGroup, FormText, Modal } from "reactstrap";
 
 class OpenidConnectFreja extends Component {
   render() {

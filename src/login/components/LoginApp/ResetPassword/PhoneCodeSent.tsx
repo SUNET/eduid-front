@@ -7,7 +7,7 @@ import {
 } from "./CountDownTimer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import EduIDButton from "../../../../components/EduIDButton";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
