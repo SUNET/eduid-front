@@ -8,7 +8,7 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import DeleteAccountContainer from "containers/DeleteAccount";
 import DeleteAccount from "components/DeleteAccount";
 import * as actions from "actions/Security";
-import * as notifyActions from "actions/Notifications";
+import * as notifyActions from "reducers/Notifications";
 import securityReducer from "reducers/Security";
 import { postDeleteAccount, deleteAccount } from "sagas/Security";
 const mock = require("jest-mock");

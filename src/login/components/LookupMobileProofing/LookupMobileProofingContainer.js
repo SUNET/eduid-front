@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import LookupMobileProofing from "./LookupMobileProofing";
-import { eduidRMAllNotify } from "../../../actions/Notifications";
+import { clearNotifications } from "../../../reducers/Notifications";
 import { showModal, closeModal, postLookupMobile } from "../../../actions/LookupMobileProofing";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 
@@ -18,11 +18,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleShowModal: function () {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       dispatch(showModal());
     },
     handleCloseModal: function () {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       dispatch(closeModal());
     },
     handleLookupMobile: function () {

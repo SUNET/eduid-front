@@ -8,7 +8,7 @@ import { history } from "../components/App/App";
 import rootSaga from "../app_config/login-rootSaga";
 import { configureStore, Reducer } from "@reduxjs/toolkit";
 import initReducer from "./init_reducer";
-import notificationsReducer from "../components/Notifications/Notifications_reducer";
+import { notificationsSlice } from "reducers/Notifications";
 import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import appReducer from "../components/App/App_reducer";
@@ -21,18 +21,12 @@ import intlSlice from "../../reducers/Internationalisation";
 const sagaMiddleware = createSagaMiddleware();
 const middlewares = [sagaMiddleware, logger, notifyAndDispatch, routerMiddleware(history)];
 
-// TODO: Type the notificationsReducer instead of defining a type here
-type NotificationStateType = {
-  messages: unknown[];
-  errors: unknown[];
-};
-
 const initStore = configureStore({
   reducer: {
     config: initReducer,
     app: appReducer,
     login: loginSlice.reducer,
-    notifications: notificationsReducer as Reducer<NotificationStateType>,
+    notifications: notificationsSlice.reducer,
     router: routerReducer,
     form: formReducer,
     intl: intlSlice.reducer,

@@ -3,7 +3,7 @@ import expect from "expect";
 
 import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import NotificationsContainer from "containers/Notifications";
-import * as actions from "actions/Notifications";
+import * as actions from "reducers/Notifications";
 
 describe("Notifications Component", () => {
   const state = {
@@ -82,14 +82,14 @@ describe("Notification Actions", () => {
         values: null,
       },
     };
-    expect(actions.eduidNotify("dummy message", "dummy level")).toEqual(expectedAction);
+    expect(actions.showNotification({ message: "dummy message", level: "dummy level" })).toEqual(expectedAction);
   });
 
   it("Should remove all notifications", () => {
     const expectedAction = {
       type: actions.RM_ALL_NOTIFICATION,
     };
-    expect(actions.eduidRMAllNotify()).toEqual(expectedAction);
+    expect(actions.clearNotifications()).toEqual(expectedAction);
   });
 });
 

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Notifications from "components/Notifications";
-import * as actions from "actions/Notifications";
+import * as actions from "reducers/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleRMNotification(e) {
       e.preventDefault();
-      dispatch(actions.eduidRMAllNotify());
+      dispatch(actions.clearNotifications());
     },
   };
 };

@@ -4,7 +4,7 @@ import { checkStatus, getRequest } from "sagas/common";
 import * as actions from "actions/SignupMain";
 import * as verifiedActions from "actions/CodeVerified";
 import { history } from "components/SignupMain";
-import { eduidNotify } from "actions/Notifications";
+import { showNotification } from "reducers/Notifications";
 import { SIGNUP_CONFIG_URL, SIGNUP_BASE_PATH, SIGNUP_SERVICE_URL } from "../globals";
 
 export function* requestCodeStatus() {
@@ -15,10 +15,10 @@ export function* requestCodeStatus() {
     yield* requestConfig();
     if (codeStatus.payload.status === "unknown-code") {
       history.push(SIGNUP_BASE_PATH + "/email");
-      yield put(eduidNotify("code.unknown-code", "messages"));
+      yield put(showNotification({ message: "code.unknown-code", level: "messages" }));
     } else if (codeStatus.payload.status === "already-verified") {
       history.push(SIGNUP_BASE_PATH + "/resend-code");
-      yield put(eduidNotify("code.already-verified", "messages"));
+      yield put(showNotification({ message: "code.already-verified", level: "messages" }));
     } else if (codeStatus.payload.status === "verified") {
       yield put(codeStatus);
       history.push(SIGNUP_BASE_PATH + "/code-verified");

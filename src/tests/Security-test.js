@@ -5,7 +5,7 @@ import { put, call } from "redux-saga/effects";
 import expect from "expect";
 import SecurityContainer from "containers/Security";
 import * as actions from "actions/Security";
-import * as notifyActions from "actions/Notifications";
+import * as notifyActions from "reducers/Notifications";
 import securityReducer from "reducers/Security";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import {

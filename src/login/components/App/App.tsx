@@ -5,10 +5,10 @@ import Splash from "../Splash/Splash_container";
 import Banner from "../Banner/Banner";
 import ErrorBoundaryContainer from "../Errors/ErrorBoundary";
 import GenericError from "../Errors/GenericError";
-import Notifications from "../Notifications/Notifications_container";
 import LoginApp from "../LoginApp/LoginApp";
 import Footer from "../Footer/Footer";
 import "../../styles/index.scss";
+import Notifications from "containers/Notifications";
 
 export const history = createBrowserHistory();
 

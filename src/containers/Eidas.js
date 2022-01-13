@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Eidas from "components/Eidas";
 import { showEidasModal, hideEidasModal } from "actions/Eidas";
-import { eduidRMAllNotify } from "actions/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleShowModal: function () {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       dispatch(showEidasModal());
     },
     handleHideModal: function () {
