@@ -76,7 +76,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
   const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
   const [selectUni, setSelectUni] = useState(ladok_name);
-
+  const [objectUni, setObjectSelectUni] = useState({});
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
 
@@ -94,11 +94,21 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     }
   }, [ladokUnis]);
 
+  useEffect(() => {
+    if (ladokUnis === undefined) {
+      // initiate fetching of universities metadata when the user indicates they
+      // are interested in linking their account
+      dispatch(fetchLadokUniversities());
+    }
+  }, [ladokUnis]);
+
   function handleOnChange(selectedUni: SelectedUniProps): void {
     const ladok_name = selectedUni.value;
     if (ladok_name) {
-      dispatch(linkUser({ ladok_name }));
+      // dispatch(linkUser({ ladok_name }));
       setSelectUni(ladok_name);
+      setObjectSelectUni(selectedUni);
+      dispatch(linkUser({ ladok_name }));
     }
   }
 
@@ -122,6 +132,8 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
       <Select
         {...input}
         {...rest}
+        onChange={handleOnChange}
+        value={objectUni}
         isSearchable={false}
         className="react-select-container"
         classNamePrefix="react-select"
@@ -148,8 +160,6 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
               name="ladok-universities"
               component={SelectAdapter}
               placeholder={placeholder}
-              value={selectUni}
-              onChange={handleOnChange}
               disabled={fetchFailed}
               options={unis.length ? unis : null}
             />
