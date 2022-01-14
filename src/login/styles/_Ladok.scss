@@ -1,4 +1,6 @@
 .ladok {
+  //&-container {}
+
   &-university-name {
     flex-grow: 1;
     text-align: right;
@@ -9,7 +11,15 @@
     color: $orange-highlight;
     font-size: 1rem;
   }
+  /*
+  p&-link-status {
+    text-align: right;
+  }
 
+  h4 {
+    color: $black; // placeholder
+  }
+*/
   svg {
     transform: none;
   }
@@ -64,6 +74,7 @@ select {
 }
 
 .heading-4 {
+  //@extend h4;
   font-size: 1.5rem;
   line-height: 2.125rem;
   margin-bottom: 1rem;
