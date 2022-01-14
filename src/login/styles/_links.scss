@@ -5,21 +5,26 @@ a {
   font-family: "Akkurat";
   text-decoration: none;
   transition: all 0.2s ease;
+
   &:hover {
     text-decoration: none;
     color: #ff4500;
   }
+
   &.text-link {
     font-family: "ProximaNova-Regular";
     text-decoration: underline;
     line-height: 1.4;
     margin-left: 0.375rem;
+
     &:hover {
       text-decoration: none;
+
       // border-bottom: solid transparent 1px;
       color: #ff4500;
     }
   }
+
   // hiding opt in beta link
   &#stable-link.hidden {
     display: none;

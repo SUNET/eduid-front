@@ -16,37 +16,45 @@
 article {
   margin: 1rem 0 2rem;
 }
+
 fieldset {
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
   height: auto;
   max-height: 600px;
+
   &:empty {
     max-height: 0;
   }
 }
+
 fieldset + fieldset:not(:empty) {
   margin-top: 1.25em;
 }
+
 .flex-between {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   label {
     padding: 0;
     margin: 0;
   }
 }
+
 .status {
   margin-top: 1rem;
 
   &-on {
     color: green;
   }
+
   &-off {
     color: red;
   }
 }
+
 select {
   padding: 5px;
   border-radius: 3px;
@@ -64,15 +72,18 @@ select {
   margin-bottom: 1rem;
   font-weight: 700;
 }
+
 /* Possible utility-classes */
 .text-large {
   font-size: 1.25rem;
 }
+
 .ladok-university-name {
   flex-grow: 1;
   text-align: right;
   white-space: nowrap;
 }
+
 strong {
   font-weight: bold;
 }

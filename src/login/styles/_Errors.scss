@@ -4,11 +4,14 @@
     font-family: "ProximaNova-bold";
     font-size: 1.5rem;
   }
+
   & ul {
     margin-bottom: 3.5rem;
     font-size: 1.25rem;
+
     div {
       margin-left: 2rem;
+
       li:nth-child(1),
       li:nth-child(3),
       li:nth-child(5) {
@@ -16,40 +19,49 @@
         margin-top: 1rem;
         font-family: "ProximaNova-bold";
       }
+
       li:nth-child(even) {
         margin-top: 0;
       }
     }
   }
+
   & li {
     line-height: 1.5;
     font-family: "ProximaNova-Regular";
   }
+
   & .technical-info-heading span {
     font-family: "ProximaNova-Bold";
     font-size: 1.25rem;
   }
+
   & .technical-info-box {
     background-color: $white;
     padding: 1rem;
+
     .technical-info-text {
       display: flex;
       justify-content: flex-start;
+
       p {
         font-size: 1rem;
         padding-bottom: 0;
       }
+
       p:first-child {
         text-transform: uppercase;
         font-family: "ProximaNova-Bold";
         width: 8.125rem;
         padding-right: 1rem;
       }
+
       p:last-child {
         color: $orange-highlight;
       }
     }
   }
+
   .specific-error {
     margin-bottom: 1.5rem;
   }
@@ -64,22 +76,27 @@
   .options {
     margin-top: 2rem;
     display: flex;
+
     @media (max-width: 414px) {
       flex-direction: column;
       flex-wrap: wrap;
     }
   }
+
   .option {
     margin-right: 5rem;
     margin-bottom: 2rem;
+
     .icon-text {
       display: flex;
       align-items: baseline;
+
       p {
         margin-left: 1rem;
         font-family: "ProximaNova-Regular";
         color: $black;
       }
+
       button,
       button:active,
       button:focus,

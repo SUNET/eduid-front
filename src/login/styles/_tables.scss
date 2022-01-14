@@ -7,45 +7,57 @@ table {
   font-size: 1.5rem;
   font-family: "ProximaNova-Light";
   table-layout: fixed;
+
   & tbody {
     margin-bottom: 1rem;
+
     & th:first-child {
       padding-left: 1.25rem;
     }
+
     th {
       padding-top: 0.625rem;
       line-height: 1;
     }
+
     & tr.webauthn-token-holder {
       color: $gray;
+
       & td:first-child {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
       }
     }
+
     & tr.webauthn-token-holder.verified {
       color: $black;
     }
+
     & tr {
       background-color: $white;
       height: 3rem;
+
       & td:first-child {
         padding-left: 1.25rem;
         padding-right: 1.5rem;
       }
+
       & td {
         word-wrap: break-word;
         text-align: left;
         vertical-align: middle;
         line-height: 1;
+
         &.value-status,
         &.verify {
           width: 25%;
+
           & button {
             margin: 0;
             padding: 0;
           }
+
           & label {
             font-family: "ProximaNova-Regular";
             font-weight: 700;
@@ -53,27 +65,33 @@ table {
             font-size: 0.75rem;
           }
         }
+
         .verified {
           text-transform: uppercase;
           padding: 0.625rem 1.25rem;
           font-family: "ProximaNova-Regular";
           font-weight: 700;
         }
+
         &.remove-data {
           width: 5%;
+
           & .icon-button {
             margin: 0;
             padding: 0;
           }
         }
+
         &.primary {
           color: $black;
         }
+
         &.unverified,
         &.verified,
         &.primary {
           padding: 0.625rem 1.25rem;
         }
+
         .btn-remove-webauthn {
           padding: 0;
         }
@@ -81,6 +99,7 @@ table {
     }
   }
 }
+
 table.table-form.passwords {
   tr:first-child {
     font-size: 1rem;
@@ -89,18 +108,23 @@ table.table-form.passwords {
     font-family: "ProximaNova-Bold";
     height: auto;
   }
+
   .security-name {
     width: 36%;
   }
+
   .security-creation-date {
     width: 21%;
   }
+
   .security-last-used-date {
     width: 21%;
   }
+
   .security-verify-link {
     width: 17%;
   }
+
   .security-remove-data {
     width: 5%;
   }
