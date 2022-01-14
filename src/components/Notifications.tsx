@@ -4,7 +4,7 @@ import { Alert } from "reactstrap";
 import { eduidNotification } from "reducers/Notifications";
 
 interface NotificationsProps {
-  message: eduidNotification;
+  info: eduidNotification;
   error: eduidNotification;
   debug: boolean;
   handleRMNotification: () => void;
@@ -15,8 +15,8 @@ function isString(translated: JSX.Element | string): translated is string {
 }
 
 function Notifications(props: NotificationsProps) {
-  // show errors first, regular messages second
-  const show: eduidNotification = props.error || props.message;
+  // show errors first, information second
+  const show: eduidNotification = props.error || props.info;
 
   if (!show) {
     // no messages to show

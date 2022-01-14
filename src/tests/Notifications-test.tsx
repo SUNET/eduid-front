@@ -1,61 +1,52 @@
-import React from "react";
-import expect from "expect";
-
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
 import NotificationsContainer from "containers/Notifications";
-import * as actions from "reducers/Notifications";
+import { DashboardRootState } from "dashboard-init-app";
+import { ReactWrapper } from "enzyme";
+import expect from "expect";
+import React from "react";
+import { notificationsSlice, NotificationState } from "reducers/Notifications";
+import { MockStoreEnhanced } from "redux-mock-store";
+import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
 describe("Notifications Component", () => {
-  const state = {
+  const test_state: { config: { debug: boolean }; notifications: NotificationState } = {
     config: {
-      debug: true,
+      debug: true, // prevents unknown messages (such as "dummy message") from being generalised
     },
     notifications: {
-      messages: [{ msg: "dummy message", vals: null }],
-      errors: [],
+      info: { message: "dummy message", level: "info" },
     },
   };
 
   it("Renders the notifications component", () => {
     const wrapper = setupComponent({
         component: <NotificationsContainer />,
-        overrides: state,
+        overrides: test_state,
       }),
       alertElem = wrapper.find("Alert");
-
     expect(alertElem.length).toEqual(1);
     expect(alertElem.props().color).toEqual("success");
     expect(alertElem.text()).toContain("dummy message");
   });
 
-  const prodState = {
-    config: {
-      debug: false,
-    },
-    notifications: {
-      ...state.notifications,
-    },
-  };
-
   it("Renders the notifications component - prod", () => {
     const wrapper = setupComponent({
         component: <NotificationsContainer />,
-        overrides: prodState,
+        overrides: { ...test_state, config: { debug: false } },
       }),
       alertElem = wrapper.find("Alert");
 
     expect(alertElem.length).toEqual(1);
     expect(alertElem.props().color).toEqual("success");
-    expect(alertElem.text()).not.toContain("dummy message");
+
+    // with state.config.debug being false, unknown messages should be generalised so this should
+    // say "Success" with the current translations
+    expect(alertElem.text()).toContain("Success");
   });
 
   const errorState = {
-    config: {
-      ...state.config,
-    },
+    ...test_state,
     notifications: {
-      messages: [],
-      errors: [{ msg: "dummy error", vals: null }],
+      error: { message: "dummy error", level: "error" },
     },
   };
 
@@ -72,57 +63,35 @@ describe("Notifications Component", () => {
   });
 });
 
-describe("Notification Actions", () => {
-  it("Should add new notification ", () => {
-    const expectedAction = {
-      type: actions.NEW_NOTIFICATION,
-      payload: {
-        message: "dummy message",
-        level: "dummy level",
-        values: null,
-      },
-    };
-    expect(actions.showNotification({ message: "dummy message", level: "dummy level" })).toEqual(expectedAction);
-  });
-
-  it("Should remove all notifications", () => {
-    const expectedAction = {
-      type: actions.RM_ALL_NOTIFICATION,
-    };
-    expect(actions.clearNotifications()).toEqual(expectedAction);
-  });
-});
-
 describe("Test Notifications Container", () => {
-  let wrapper, dispatch;
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
+
+  const test_state: { notifications: NotificationState } = {
+    notifications: {
+      info: { message: "dummy", level: "info" },
+    },
+  };
 
   beforeEach(() => {
-    const store = fakeStore(
-      getState({
-        notifications: {
-          messages: [{ msg: "dummy", vals: null }],
-          errors: [],
-        },
-      })
-    );
-    dispatch = store.dispatch;
+    // re-init store and state before each test to get isolation
+    store = fakeStore({ ...dashboardTestState, ...test_state });
+    state = store.getState();
+
     wrapper = setupComponent({
       component: <NotificationsContainer />,
       store: store,
     });
   });
 
-  it("Clicks a language selector button", () => {
-    const numCalls = dispatch.mock.calls.length;
-    const mockEvent = {
-      preventDefault: () => {},
-      target: {
-        closest: () => {
-          return { dataset: { level: "messages", index: 0 } };
-        },
-      },
-    };
-    wrapper.find("button").props().onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+  it("Clicks the dismiss button", () => {
+    const button = wrapper.find('button[aria-label="Close"]');
+    expect(button.exists()).toEqual(true);
+
+    button.first().simulate("click");
+
+    const actualActions = store.getActions().map((action) => action.type);
+    expect(actualActions).toEqual([notificationsSlice.actions.clearNotifications.type]);
   });
 });
