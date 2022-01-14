@@ -1,8 +1,8 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState, InputHTMLAttributes } from "react";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
-import { Form as FinalForm, Field as FinalField } from "react-final-form";
+import { Form as FinalForm, Field as FinalField, FieldRenderProps } from "react-final-form";
 import Select from "react-select";
 
 interface SelectedUniProps {
@@ -121,9 +121,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     });
   }
 
-  //TODO: add specific type for rest
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const SelectAdapter = ({ input, ...rest }: any) => (
+  const SelectAdapter = ({ input, ...rest }: FieldRenderProps<string, HTMLElement>) => (
     <>
       <label htmlFor="ladok-universities">
         <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
@@ -131,7 +129,9 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
       <Select
         {...input}
         {...rest}
-        onChange={handleOnChange}
+        onChange={(e) => {
+          handleOnChange(e as unknown as SelectedUniProps);
+        }}
         value={selectUni}
         isSearchable={false}
         className="react-select-container"
