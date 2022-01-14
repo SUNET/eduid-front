@@ -34,7 +34,11 @@ function Notifications(props: NotificationsProps) {
 
   return (
     <div className="notifications-area">
-      <Alert color={show.level === "error" ? "danger" : "success"} toggle={props.handleRMNotification}>
+      <Alert
+        color={show.level === "error" ? "danger" : "success"}
+        toggle={props.handleRMNotification}
+        closeClassName="close"
+      >
         <span>{msg}</span>
       </Alert>
     </div>
