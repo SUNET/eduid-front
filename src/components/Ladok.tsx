@@ -176,7 +176,7 @@ const LadokLinkStatus = (): JSX.Element => {
   const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
   const locale = useDashboardAppSelector((state) => state.intl.locale);
 
-  let university_name = "unknown";
+  let university_name = "";
   if (unis && ladok_name && unis[ladok_name]) {
     if (locale) {
       const uni = unis[ladok_name];

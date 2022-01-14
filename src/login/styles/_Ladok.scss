@@ -31,7 +31,10 @@
   @media (max-width: 768px) {
     &-university {
       flex-direction: column;
-      align-items: flex-start;
+
+      &.flex-between {
+        align-items: flex-start;
+      }
     }
   }
 }

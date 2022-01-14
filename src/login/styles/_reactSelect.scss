@@ -5,27 +5,18 @@ form .react-select {
   }
 
   &__control {
-    border: 2px solid $gray;
+    border: 2px solid $dark-gray;
 
     .react-select__indicator {
       color: $gray;
     }
   }
   &__control:hover {
-    border: 2px solid $orange-highlight;
+    border: 2px solid $gray;
     box-shadow: none;
-
-    .react-select__indicator {
-      color: $orange-highlight;
-    }
   }
   &__control--is-focused {
     box-shadow: none;
-  }
-
-  &__indicator &:hover,
-  &__indicator:hover {
-    color: $orange-highlight;
   }
 
   &__indicator-separator {
@@ -37,11 +28,11 @@ form .react-select {
     color: $black;
   }
 
-  &__option:hover,
-  &__option:active,
-  &__option:focus,
-  &__option--is-focused,
-  &__option--is-selected {
+  &__option--is-focused {
     background-color: $orange-opaque;
+  }
+  &__option--is-selected {
+    color: initial;
+    background-color: darken($orange-opaque, 5%);
   }
 }
