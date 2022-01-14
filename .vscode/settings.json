@@ -17,6 +17,7 @@
     "Luhn",
     "middlewares",
     "namn",
+    "newpass",
     "nin",
     "NIN",
     "Nindata",
@@ -25,7 +26,9 @@
     "OIDC",
     "ORCID",
     "pdata",
+    "personaldata",
     "precss",
+    "pwfield",
     "reduxjs",
     "resetpw",
     "Seleg",
@@ -40,7 +43,8 @@
     "urlencode",
     "Userdata",
     "USERNAMEPASSWORD",
-    "webauthn"
+    "webauthn",
+    "zxcvbn"
   ],
   "cSpell.language": "en,en-US,en-GB,sv",
   "editor.rulers": [120]

@@ -4,7 +4,18 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { eduidRMAllNotify } from "../../../../actions/Notifications";
 
-const ResetPasswordLayout = (props) => {
+interface ResetPasswordLayoutProps {
+  emailCode?: string;
+  heading: string;
+  // ReactNode allows multiple elements, strings, numbers, fragments, portals
+  children?: React.ReactNode;
+  description: string;
+  linkInfoText: string;
+  linkInfoHeading: string;
+  linkText: string;
+}
+
+const ResetPasswordLayout = (props: ResetPasswordLayoutProps): JSX.Element => {
   const dispatch = useDispatch();
   const history = useHistory();
   const continueSetPassword = () => {
