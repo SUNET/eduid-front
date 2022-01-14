@@ -1,8 +1,8 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, InputHTMLAttributes } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
-import { Form as FinalForm, Field } from "react-final-form";
+import { Form as FinalForm, Field as FinalField } from "react-final-form";
 import Select from "react-select";
 
 interface SelectedUniProps {
@@ -86,23 +86,21 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   });
 
   useEffect(() => {
+    if (!ladok_name) setSelectUni({ label: placeholder, value: "" });
+    // if ladok is active and non university is selected, select box label will be placeholder
     if (ladokUnis === undefined) {
       // initiate fetching of universities metadata when the user indicates they
       // are interested in linking their account
       dispatch(fetchLadokUniversities());
     }
-  }, [ladokUnis]);
-
-  useEffect(() => {
-    if (!ladok_name) setSelectUni({ label: placeholder, value: "" });
-    if (ladokUnis !== undefined) {
+    // this will update the label and value for selected university from backend
+    else
       Object.values(ladokUnis).forEach((item) => {
         if (item.ladok_name === ladok_name) {
           const uni_name = item.name[locale] || item.name.en || item.ladok_name;
           setSelectUni({ label: uni_name, value: item.ladok_name });
         }
       });
-    }
   }, [ladokUnis, ladok_name]);
 
   function handleOnChange(selectedUni: SelectedUniProps): void {
@@ -148,7 +146,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <Field
+            <FinalField
               name="ladok-universities"
               component={SelectAdapter}
               disabled={fetchFailed}
@@ -175,7 +173,7 @@ const LadokLinkStatus = (): JSX.Element => {
   const unis = useDashboardAppSelector((state) => state.ladok.unis);
   const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
   const locale = useDashboardAppSelector((state) => state.intl.locale);
-
+  // Initial university name will be empty string until information has been updated
   let university_name = "";
   if (unis && ladok_name && unis[ladok_name]) {
     if (locale) {
