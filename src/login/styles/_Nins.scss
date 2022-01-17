@@ -1,11 +1,12 @@
 #connect-nin-number-container {
   margin-top: 30px;
+
   &:empty {
     display: none;
   }
 }
 
-/*--- styles for vetting buttons ---*/
+/* --- styles for vetting buttons --- */
 #nins-btn-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
@@ -21,33 +22,40 @@
     text-transform: uppercase;
     align-self: flex-start;
     text-align: left;
+
     & .description {
       margin: 0.5rem 0;
+
       span {
         display: block;
       }
     }
+
     & .explanation-link {
       margin: 0.5rem 0;
+
       & a span {
         color: $black;
         border-bottom: $black solid 1px;
       }
+
       & a span:hover {
         color: $orange-highlight;
         border-bottom: transparent solid 1px;
       }
     }
   }
+
   & .name {
     align-self: flex-end;
     font-size: 1.125rem;
     line-height: 1;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     text-transform: uppercase;
   }
+
   & button {
-    margin-left: 0px;
+    margin-left: 0;
     margin-bottom: 0.5rem;
     font-family: "ProximaNova-Bold";
     line-height: 1;
@@ -58,12 +66,13 @@
     border-radius: 20px;
     width: 300px;
     height: 300px;
-    box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
+    box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
     cursor: pointer;
+
     &:hover {
       transform: scale(0.99);
       border: solid $orange-highlight 2px;
@@ -77,18 +86,23 @@
   & button:disabled {
     background-color: $light-gray;
     border-color: $gray;
+
     & .text {
       color: $gray;
+
       & .description {
         color: $black;
       }
+
       & .explanation-link {
         color: $black;
       }
     }
+
     & .name {
       color: $gray;
     }
+
     &:hover {
       transform: unset;
     }
@@ -96,7 +110,7 @@
 }
 
 .proofing-btn-help {
-  margin: 0 0.5rem 1rem 0.5rem;
+  margin: 0 0.5rem 1rem;
   line-height: 1.2;
   color: $black;
   font-size: 0.875rem;
@@ -110,6 +124,7 @@
 @media (max-width: 768px) {
   #connect-nin-number {
     margin-top: 3rem;
+
     & .btn.icon-button {
       padding: 0;
     }
@@ -125,6 +140,7 @@
   #nin {
     & input {
       font-size: 1rem;
+
       &::placeholder {
         font-size: 1rem;
       }
