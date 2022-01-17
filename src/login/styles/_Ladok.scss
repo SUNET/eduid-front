@@ -1,58 +1,46 @@
-.ladok-container {
-  h4 {
-    color: $black; // placeholder
-  }
-
-  p.ladok-link-status {
+.ladok {
+  &-university-name {
+    flex-grow: 1;
     text-align: right;
+    white-space: nowrap;
   }
 
-  .universities-status {
+  &-universities-status {
     color: $orange-highlight;
     font-size: 1rem;
   }
+
+  svg {
+    transform: none;
+  }
+
+  input {
+    height: initial;
+  }
+
+  @media (max-width: 768px) {
+    &-university {
+      flex-direction: column;
+
+      &.flex-between {
+        align-items: flex-start;
+      }
+    }
+  }
 }
 
+/** Possible utility/generic classes below **/
+
+//TODO - make more generic for whole tab/section
 article {
   margin: 1rem 0 2rem;
-}
-
-fieldset {
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
-  height: auto;
-  max-height: 600px;
-
-  &:empty {
-    max-height: 0;
-  }
 }
 
 fieldset + fieldset:not(:empty) {
   margin-top: 1.25em;
 }
-
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  label {
-    padding: 0;
-    margin: 0;
-  }
-}
-
-.status {
-  margin-top: 1rem;
-
-  &-on {
-    color: green;
-  }
-
-  &-off {
-    color: red;
-  }
+fieldset > form {
+  margin-top: 0;
 }
 
 select {
@@ -65,8 +53,17 @@ select {
   margin-top: 3px;
 }
 
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  label {
+    padding: 0;
+    margin: 0;
+  }
+}
+
 .heading-4 {
-  //@extend h4;
   font-size: 1.5rem;
   line-height: 2.125rem;
   margin-bottom: 1rem;
@@ -86,11 +83,5 @@ select {
 
 strong {
   font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .ladok-university {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  @extend b;
 }

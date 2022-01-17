@@ -1,0 +1,38 @@
+/** react-select style overrides, final-form element prefixed by "react-select" **/
+form .react-select {
+  &-container {
+    padding-top: 2px;
+  }
+
+  &__control {
+    border: 2px solid $dark-gray;
+
+    .react-select__indicator {
+      color: $gray;
+    }
+  }
+  &__control:hover {
+    border: 2px solid $gray;
+    box-shadow: none;
+  }
+  &__control--is-focused {
+    box-shadow: none;
+  }
+
+  &__indicator-separator {
+    width: 0;
+  }
+
+  &__placeholder {
+    font-family: "ProximaNova-Regular";
+    color: $black;
+  }
+
+  &__option--is-focused {
+    background-color: $orange-opaque;
+  }
+  &__option--is-selected {
+    color: initial;
+    background-color: darken($orange-opaque, 5%);
+  }
+}
