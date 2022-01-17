@@ -9,6 +9,11 @@ export function* sendGetLetterProofing() {
       nin = state.nins.nin;
     const response = yield call(fetchGetLetterProofing, state.config, nin);
     yield put(putCsrfToken(response));
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
+    }
     yield put(response);
     yield put(eduidRMAllNotify());
   } catch (error) {
