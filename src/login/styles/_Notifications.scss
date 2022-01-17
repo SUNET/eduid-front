@@ -20,8 +20,8 @@
   align-items: baseline;
   height: auto;
 
-  .alert-danger,
-  .alert-success {
+  &.alert-danger,
+  &.alert-success {
     color: $orange-highlight;
     background-color: $orange-opaque;
     border: none;
