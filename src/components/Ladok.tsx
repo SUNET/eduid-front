@@ -75,7 +75,6 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
   const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
-  const [selectUni, setSelectUni] = useState({});
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
 
@@ -84,23 +83,27 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     defaultMessage: "Available higher education institutions",
     description: "Ladok account linking",
   });
+  // if no university is selected, select box label will be placeholder
+  const [selectUni, setSelectUni] = useState<SelectedUniProps>({ label: placeholder, value: "" });
+  const unis: SelectedUniProps[] = [];
 
   useEffect(() => {
-    if (!ladok_name) setSelectUni({ label: placeholder, value: "" });
-    // if ladok is active and non university is selected, select box label will be placeholder
     if (ladokUnis === undefined) {
       // initiate fetching of universities metadata when the user indicates they
       // are interested in linking their account
       dispatch(fetchLadokUniversities());
-    }
-    // this will update the label and value for selected university from backend
-    else
+    } else {
+      // populate dropdown list of universities
       Object.values(ladokUnis).forEach((item) => {
-        if (item.ladok_name === ladok_name) {
-          const uni_name = item.name[locale] || item.name.en || item.ladok_name;
-          setSelectUni({ label: uni_name, value: item.ladok_name });
+        // Get the name of the university in the users locale, fallback to English and then to ladok_name.
+        const uni_name = item.name[locale] || item.name.en || item.ladok_name;
+        const curr: SelectedUniProps = { label: uni_name, value: item.ladok_name };
+        unis.push(curr);
+        if (item.ladok_name == ladok_name) {
+          setSelectUni(curr);
         }
       });
+    }
   }, [ladokUnis, ladok_name]);
 
   function handleOnChange(selectedUni: SelectedUniProps): void {
@@ -111,16 +114,6 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     }
   }
 
-  // populate dropdown list of universities
-  const unis: object[] = [];
-  if (ladokUnis !== undefined) {
-    Object.values(ladokUnis).forEach((item) => {
-      // Get the name of the university in the users locale, fallback to English and then to ladok_name.
-      const uni_name = item.name[locale] || item.name.en || item.ladok_name;
-      unis.push({ label: uni_name, value: item.ladok_name });
-    });
-  }
-
   const SelectAdapter = ({ input, ...rest }: FieldRenderProps<string, HTMLElement>) => (
     <>
       <label htmlFor="ladok-universities">
@@ -129,8 +122,8 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
       <Select
         {...input}
         {...rest}
-        onChange={(e) => {
-          handleOnChange(e as unknown as SelectedUniProps);
+        onChange={(e: SelectedUniProps) => {
+          handleOnChange(e);
         }}
         value={selectUni}
         isSearchable={false}
