@@ -6,13 +6,14 @@
 
 .orcid-logo-container {
   display: inline-flex;
+
   // align-items: center;
   // padding-left: 0.25em;
   padding-right: 0.35em;
   fill: currentColor;
 
   span.orcid-logo {
-    background: url(../../../img/vector_iD_icon.svg);
+    background: url("../../../img/vector_iD_icon.svg");
     background-repeat: no-repeat;
     margin-right: 0.3em;
     align-self: start;
@@ -40,7 +41,7 @@
   margin: 0 0 0 10px;
 }
 
-//streamline this styling with the other help text across the website (.help-text)
+// streamline this styling with the other help text across the website (.help-text)
 .orcid-btn-help {
   margin: 0;
   line-height: 1.2;
@@ -49,7 +50,7 @@
   margin-top: 15px;
 }
 
-//remove this when all button styles are refactored
+// remove this when all button styles are refactored
 #connect-orcid-button {
   line-height: 2;
   margin-bottom: 0;
