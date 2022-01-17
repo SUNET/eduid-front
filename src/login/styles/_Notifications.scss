@@ -19,18 +19,21 @@
   flex-direction: row-reverse;
   align-items: baseline;
   height: auto;
+
   &.alert-danger,
   &.alert-success {
     color: $orange-highlight;
     background-color: $orange-opaque;
     border: none;
   }
+
   & span {
     font-size: 1rem;
     width: 58%;
     max-width: 870px;
     margin: 0 auto;
   }
+
   & .close {
     position: inherit;
     font-size: inherit;
@@ -38,6 +41,7 @@
     margin: 0;
     height: auto;
     text-shadow: unset;
+
     &:hover {
       color: $orange-highlight;
     }
@@ -52,6 +56,7 @@
   border-radius: 50%;
   margin-top: -1rem;
 }
+
 .notification-dot-inner {
   background-color: $orange-highlight;
   border: solid 1px $light-gray;
@@ -75,8 +80,8 @@
   position: absolute;
   border-radius: 4px;
   left: calc(50%);
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  transform: translateX(-50%);
   transform: translateX(-50%);
   padding: 6px;
   color: $white;
@@ -101,18 +106,14 @@
   position: absolute;
   pointer-events: none;
   border-width: 6px;
+  top: 100%;
+  border-top-color: $black;
 }
 
 /* Absolute positioning */
 .speech-bubbletip {
   top: calc(50px * -1);
   left: calc(50% * -1);
-}
-
-/* CSS border triangles */
-.speech-bubbletip::before {
-  top: 100%;
-  border-top-color: $black;
 }
 
 .speech-bubbletip::before,
@@ -132,13 +133,16 @@
 @media (max-width: 768px) {
   .alert.alert-dismissible {
     padding: 0.75rem 1rem 0.75rem 0.5rem;
+
     & span {
       width: calc(80% - 1.25rem);
     }
   }
+
   .speech-bubbletip.settings.sv {
     left: -100px;
   }
+
   .speech-bubbletip.settings.sv::before {
     left: 74%;
   }
@@ -163,24 +167,31 @@
     white-space: normal;
     top: -65px;
   }
+
   .speech-bubbletip.identity.short {
     top: -52px;
   }
+
   .speech-bubbletip.settings.en {
     left: -80px;
   }
+
   .speech-bubbletip.settings.sv {
     left: 5px;
   }
+
   .speech-bubbletip.identity {
     left: -56px;
   }
+
   .speech-bubbletip.identity::before {
     left: 70%;
   }
+
   .speech-bubbletip.settings.en::before {
     left: 80%;
   }
+
   .speech-bubbletip.settings.sv::before {
     left: 48%;
   }
@@ -190,6 +201,7 @@
   .speech-bubbletip.settings.en {
     left: 55px;
   }
+
   .speech-bubbletip.settings.en::before {
     left: 30%;
   }
@@ -199,6 +211,7 @@
   .notifications-area {
     margin-bottom: 0;
   }
+
   .alert.alert-dismissible {
     & span {
       width: calc(100% - #{2 * $margin});

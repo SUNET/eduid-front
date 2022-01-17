@@ -1,20 +1,24 @@
 .personal-data {
   margin-top: 0;
   margin-bottom: 1rem;
+
   label {
     font-size: 1rem;
     padding: 0 0 0.1875rem 0.125rem;
   }
+
   button {
     margin-bottom: 0;
     width: fit-content;
     align-self: center;
+
     @media (max-width: 568px) {
       &.btn {
         font-size: unset;
         width: unset;
       }
     }
+
     &.icon {
       &:disabled,
       &.disabled {
@@ -23,26 +27,32 @@
       }
     }
   }
+
   .title {
     align-items: center;
     margin-bottom: 1rem;
+
     p {
       padding-bottom: 0;
     }
   }
+
   .name-inputs {
     .hint {
       margin-top: 1rem;
     }
+
     .icon-text {
       display: flex;
       align-items: baseline;
       margin-bottom: 1rem;
+
       p {
         margin-left: 1rem;
         padding-bottom: 0;
       }
     }
+
     button:active,
     button:focus,
     button:active:focus {
@@ -59,13 +69,16 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .hint {
   font-size: 1rem;
 }
+
 .input-pair {
   display: flex;
   flex: 1;
   flex-wrap: wrap;
+
   @media (max-width: 568px) {
     flex-direction: column;
   }
@@ -73,16 +86,19 @@
 
 #personaldataview-form {
   margin-top: 0;
+
   @media (max-width: 568px) {
     .radio-input-container span,
     .form-control,
     input {
       font-size: 1.5rem;
+
       &::placeholder {
         font-size: 1.5rem;
       }
     }
   }
+
   #language-wrapper {
     margin-top: 1rem;
   }
@@ -91,22 +107,28 @@
 // styles for input on white bg
 .edit-data {
   margin-bottom: 2rem;
+
   .form-control,
   input {
     background-color: #f4f4f4;
   }
+
   .form-group {
     flex: 1;
+
     @media (max-width: 568px) {
       margin-top: 1rem;
     }
+
     &:last-child {
       margin-left: 1rem;
+
       @media (max-width: 568px) {
         margin-left: 0;
       }
     }
   }
+
   p.verified {
     padding-bottom: 0;
   }
@@ -119,6 +141,7 @@
   flex: 1;
   margin-bottom: 0;
 }
+
 .personal-data-info .profile-grid-cell {
   margin-bottom: 1rem;
 }
@@ -130,6 +153,7 @@
     flex-basis: 13rem;
     justify-content: unset;
     margin-right: 1rem;
+
     .display-data {
       font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
       margin-top: 0;

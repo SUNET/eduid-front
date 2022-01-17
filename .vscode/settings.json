@@ -1,6 +1,7 @@
 {
   "jest.jestCommandLine": "node_modules/.bin/jest",
   "cSpell.words": [
+    "bubbletip",
     "CBOR",
     "checkmark",
     "chpass",
@@ -40,6 +41,7 @@
     "Signup",
     "Skatteverket",
     "SKATTEVERKET",
+    "stylelint",
     "Svenska",
     "Svenskt",
     "swedenconnect",
@@ -52,5 +54,10 @@
     "zxcvbn"
   ],
   "cSpell.language": "en,en-US,en-GB,sv",
-  "editor.rulers": [120]
+  "editor.rulers": [120],
+  "[scss]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  }
 }

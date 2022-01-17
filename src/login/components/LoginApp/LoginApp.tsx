@@ -21,8 +21,8 @@ function LoginApp(): JSX.Element {
         <Route exact path="/reset-password/email-link-sent" component={EmailLinkSent} />
         <Route path="/reset-password/extra-security" render={(props) => <ExtraSecurity {...props} />} />
         <Route path="/reset-password/phone-code-sent" component={PhoneCodeSent} />
+        <Route exact path="/reset-password/success" component={ResetPasswordSuccess} />
         <Route path="/reset-password/set-new-password" component={SetNewPassword} />
-        <Route exact path="/reset-password/success" render={(props) => <ResetPasswordSuccess {...props} />} />
       </Switch>
     </div>
   );

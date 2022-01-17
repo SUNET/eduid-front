@@ -1,7 +1,14 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
+import { Form as FinalForm, Field as FinalField, FieldRenderProps } from "react-final-form";
+import Select, { SingleValue } from "react-select";
+
+interface SelectedUniProps {
+  label: string;
+  value: string;
+}
 
 const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
@@ -22,7 +29,7 @@ const LadokContainer = (): JSX.Element => {
   useEffect(() => setSwitchChecked(isLinked), [isLinked]);
 
   return (
-    <article id="ladok-container" className="ladok-container">
+    <article id="ladok-container" className="ladok">
       <h3 className="heading-4">
         <FormattedMessage defaultMessage="Ladok information" description="Ladok account linking" />
       </h3>
@@ -67,9 +74,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const locale = useDashboardAppSelector((state) => state.intl.locale);
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
-  const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
-  const [selectUni, setSelectUni] = useState(ladok_name);
-
+  const ladokName = useDashboardAppSelector((state) => state.ladok.ladokName);
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
 
@@ -78,6 +83,8 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     defaultMessage: "Available higher education institutions",
     description: "Ladok account linking",
   });
+  // if no university is selected, select box label will be placeholder
+  const [selected, setSelected] = useState<SelectedUniProps>({ label: placeholder, value: "" });
 
   useEffect(() => {
     if (ladokUnis === undefined) {
@@ -87,41 +94,71 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     }
   }, [ladokUnis]);
 
-  function handleOnChange(e: React.SyntheticEvent): void {
-    const ladok_name = (e.target as HTMLTextAreaElement).value;
-    if (ladok_name) {
-      dispatch(linkUser({ ladok_name }));
-      setSelectUni(ladok_name);
+  function handleOnChange(newValue: SingleValue<SelectedUniProps>): void {
+    if (newValue && newValue.value) {
+      setSelected(newValue);
+      dispatch(linkUser({ ladok_name: newValue.value }));
     }
   }
 
-  // populate dropdown list of universities
-  const unis: JSX.Element[] = [];
-  if (ladokUnis !== undefined) {
+  // Convert ladokUnis to an array of SelectedUniProps that works with the Select component
+  const selectOptions: SelectedUniProps[] = useMemo(() => {
+    if (ladokUnis === undefined) {
+      return [];
+    }
+
+    const res: SelectedUniProps[] = [];
+
     Object.values(ladokUnis).forEach((item) => {
       // Get the name of the university in the users locale, fallback to English and then to ladok_name.
-      const uni_name = item.name[locale] || item.name.en || item.ladok_name;
-      unis.push(
-        <option key={item.ladok_name} value={item.ladok_name}>
-          {uni_name}
-        </option>
-      );
-    });
-  }
+      const localised = item.name[locale] || item.name.en || item.ladok_name;
+      const curr: SelectedUniProps = { label: localised, value: item.ladok_name };
 
-  return (
-    <React.Fragment>
+      // initialise 'selected'
+      if (item.ladok_name == ladokName) {
+        setSelected(curr);
+      }
+
+      res.push(curr);
+    });
+
+    return res;
+  }, [ladokUnis]);
+
+  const SelectAdapter = ({ input, ...rest }: FieldRenderProps<string, HTMLElement>) => (
+    <>
       <label htmlFor="ladok-universities">
         <FormattedMessage defaultMessage="Select higher education institution" description="Ladok account linking" />
       </label>
-      <select value={selectUni} onChange={handleOnChange} disabled={fetchFailed}>
-        <option hidden value="">
-          {placeholder}
-        </option>
-        {unis}
-      </select>
+      <Select
+        {...input}
+        {...rest}
+        onChange={handleOnChange}
+        value={selected}
+        isSearchable={false}
+        className="react-select-container"
+        classNamePrefix="react-select"
+      />
+    </>
+  );
 
-      <div className="universities-status">
+  return (
+    <React.Fragment>
+      <FinalForm
+        onSubmit={() => {}}
+        render={({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <FinalField
+              name="ladok-universities"
+              component={SelectAdapter}
+              disabled={fetchFailed}
+              options={selectOptions}
+            />
+          </form>
+        )}
+      />
+
+      <div className="ladok-universities-status">
         {fetchFailed ? (
           <FormattedMessage
             defaultMessage="The list of higher education institutions could not be loaded at this time"
@@ -138,8 +175,8 @@ const LadokLinkStatus = (): JSX.Element => {
   const unis = useDashboardAppSelector((state) => state.ladok.unis);
   const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
   const locale = useDashboardAppSelector((state) => state.intl.locale);
-
-  let university_name = "unknown";
+  // Initial university name will be empty string until information has been updated
+  let university_name = "";
   if (unis && ladok_name && unis[ladok_name]) {
     if (locale) {
       const uni = unis[ladok_name];
@@ -154,7 +191,7 @@ const LadokLinkStatus = (): JSX.Element => {
   return (
     <React.Fragment>
       {isLinked === true ? (
-        <fieldset className="ladok-university flex-between">
+        <div className="ladok-university flex-between">
           <label>
             <FormattedMessage
               defaultMessage="Your account is linked with Ladok information from"
@@ -162,7 +199,7 @@ const LadokLinkStatus = (): JSX.Element => {
             />
           </label>
           <div className="text-large ladok-university-name">{university_name}</div>
-        </fieldset>
+        </div>
       ) : (
         <React.Fragment />
       )}
