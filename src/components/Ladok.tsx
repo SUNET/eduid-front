@@ -1,9 +1,9 @@
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { fetchLadokUniversities, linkUser, unlinkUser } from "../apis/eduidLadok";
 import { Form as FinalForm, Field as FinalField, FieldRenderProps } from "react-final-form";
-import Select from "react-select";
+import Select, { SingleValue } from "react-select";
 
 interface SelectedUniProps {
   label: string;
@@ -74,7 +74,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
   const locale = useDashboardAppSelector((state) => state.intl.locale);
   const ladokUnis = useDashboardAppSelector((state) => state.ladok.unis);
   const fetchFailed = useDashboardAppSelector((state) => state.ladok.unisFetchFailed);
-  const ladok_name = useDashboardAppSelector((state) => state.ladok.ladokName);
+  const ladokName = useDashboardAppSelector((state) => state.ladok.ladokName);
   const dispatch = useDashboardAppDispatch();
   const intl = useIntl();
 
@@ -84,35 +84,46 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
     description: "Ladok account linking",
   });
   // if no university is selected, select box label will be placeholder
-  const [selectUni, setSelectUni] = useState<SelectedUniProps>({ label: placeholder, value: "" });
-  const unis: SelectedUniProps[] = [];
+  const [selected, setSelected] = useState<SelectedUniProps>({ label: placeholder, value: "" });
 
   useEffect(() => {
     if (ladokUnis === undefined) {
       // initiate fetching of universities metadata when the user indicates they
       // are interested in linking their account
       dispatch(fetchLadokUniversities());
-    } else {
-      // populate dropdown list of universities
-      Object.values(ladokUnis).forEach((item) => {
-        // Get the name of the university in the users locale, fallback to English and then to ladok_name.
-        const uni_name = item.name[locale] || item.name.en || item.ladok_name;
-        const curr: SelectedUniProps = { label: uni_name, value: item.ladok_name };
-        unis.push(curr);
-        if (item.ladok_name == ladok_name) {
-          setSelectUni(curr);
-        }
-      });
     }
-  }, [ladokUnis, ladok_name]);
+  }, [ladokUnis]);
 
-  function handleOnChange(selectedUni: SelectedUniProps): void {
-    const ladok_name = selectedUni.value;
-    if (ladok_name) {
-      setSelectUni(selectedUni);
-      dispatch(linkUser({ ladok_name }));
+  function handleOnChange(newValue: SingleValue<SelectedUniProps>): void {
+    if (newValue && newValue.value) {
+      setSelected(newValue);
+      dispatch(linkUser({ ladok_name: newValue.value }));
     }
   }
+
+  // Convert ladokUnis to an array of SelectedUniProps that works with the Select component
+  const selectOptions: SelectedUniProps[] = useMemo(() => {
+    if (ladokUnis === undefined) {
+      return [];
+    }
+
+    const res: SelectedUniProps[] = [];
+
+    Object.values(ladokUnis).forEach((item) => {
+      // Get the name of the university in the users locale, fallback to English and then to ladok_name.
+      const localised = item.name[locale] || item.name.en || item.ladok_name;
+      const curr: SelectedUniProps = { label: localised, value: item.ladok_name };
+
+      // initialise 'selected'
+      if (item.ladok_name == ladokName) {
+        setSelected(curr);
+      }
+
+      res.push(curr);
+    });
+
+    return res;
+  }, [ladokUnis]);
 
   const SelectAdapter = ({ input, ...rest }: FieldRenderProps<string, HTMLElement>) => (
     <>
@@ -122,10 +133,8 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
       <Select
         {...input}
         {...rest}
-        onChange={(e: SelectedUniProps) => {
-          handleOnChange(e);
-        }}
-        value={selectUni}
+        onChange={handleOnChange}
+        value={selected}
         isSearchable={false}
         className="react-select-container"
         classNamePrefix="react-select"
@@ -143,7 +152,7 @@ const LadokUniversitiesDropdown = (): JSX.Element => {
               name="ladok-universities"
               component={SelectAdapter}
               disabled={fetchFailed}
-              options={unis.length ? unis : null}
+              options={selectOptions}
             />
           </form>
         )}
