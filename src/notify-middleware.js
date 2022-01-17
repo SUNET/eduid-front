@@ -2,10 +2,7 @@ import * as actions from "./login/components/Notifications/Notifications_actions
 
 const notifyAndDispatch = () => (next) => (action) => {
   if (action.type.endsWith("SUCCESS") || action.type.endsWith("FAIL")) {
-    if (action.type.startsWith("GET_LETTER")) {
-      delete action.payload.message;
-      delete action.payload.error;
-    } else if (action.error && action.payload) {
+    if (action.error && action.payload) {
       if (action.payload.error && action.payload.error.csrf_token !== undefined) {
         const msg = "csrf.try-again";
         next(actions.eduidNotify(msg, "errors"));
