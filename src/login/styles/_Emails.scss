@@ -14,6 +14,7 @@
 #phonesview-form,
 #nin-form {
   flex-direction: row;
+
   & button {
     margin: 1.6rem 0 0 1rem;
   }
@@ -36,6 +37,7 @@
 
 #add-more-button {
   text-transform: lowercase;
+
   &.hide {
     display: none;
   }
@@ -55,6 +57,7 @@
   #nin-form {
     flex-direction: column;
     align-items: unset;
+
     & button {
       margin-left: 0;
       margin-bottom: 2rem;

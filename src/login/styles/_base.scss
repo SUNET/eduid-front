@@ -19,6 +19,7 @@ body {
 #root {
   display: flex;
   flex: 1;
+
   // height: 100vh;
   flex-direction: column;
 
@@ -46,10 +47,13 @@ article {
   padding: 0;
   width: 58%;
   max-width: 870px;
+
   // max-width: 43.5rem;
-  // this margin covers the notifications (check in the new login app why it is like this - plan for dashboard to have notifications under nav)
+  // this margin covers the notifications (check in the new login app why it is like this - plan for dashboard to have
+  // notifications under nav)
   // margin: -2.25rem auto 0 auto;
   margin: 0 auto;
+
   // this is added to prevent margin collapse (look for other solution if causing problems)
   display: flex;
   flex-direction: column;
@@ -70,6 +74,7 @@ fieldset {
   height: 0.125rem;
   width: 0;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #7c7c7c;
   border-radius: 1rem;
