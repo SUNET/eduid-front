@@ -1,9 +1,13 @@
+import { translate } from "login/translation";
 import React, { Fragment } from "react";
 import { FormGroup, FormText, Input, Label } from "reactstrap";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
 
-const textInput = (props) => {
-  const { input, label, name, meta, selectOptions, type, translate, disabled, helpBlock, placeholder } = props;
+interface TextInputProps {
+  label: string;
+}
+
+const TextInput = (props: TextInputProps) => {
+  const { input, label, name, meta, selectOptions, type, disabled, helpBlock, placeholder } = props;
   let valid = false,
     invalid = false;
   if (meta.touched || meta.submitFailed) {
@@ -14,17 +18,14 @@ const textInput = (props) => {
     }
   }
   const errmsg = (invalid && translate(meta.error)) || "";
-  let feedback = "",
-    help;
+  let help = <FormText>{helpBlock}</FormText>;
   if (errmsg !== "") {
-    feedback = <span className="eduid-field-error">{errmsg}</span>;
+    const feedback = <span className="eduid-field-error">{errmsg}</span>;
     help = (
       <FormText>
         {feedback} | {helpBlock}
       </FormText>
     );
-  } else {
-    help = <FormText>{helpBlock}</FormText>;
   }
 
   let field;
@@ -62,7 +63,7 @@ const textInput = (props) => {
       />
     );
   }
-  let labelElem = "";
+  let labelElem = null;
   if (label) {
     labelElem = <Label for={name}>{label}</Label>;
   }
@@ -75,4 +76,5 @@ const textInput = (props) => {
     </FormGroup>
   );
 };
-export default i18n(textInput);
+
+export default TextInput;

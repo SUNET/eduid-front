@@ -1,7 +1,12 @@
 import { changePassword } from "apis/eduidSecurity";
+import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch } from "dashboard-hooks";
+import { translate } from "login/translation";
 import React, { useState } from "react";
+import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { useHistory } from "react-router";
+import { ButtonGroup } from "reactstrap";
+import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
@@ -10,11 +15,11 @@ export interface ChangePasswordFormProps {
 }
 
 // These are the props we pass to the sub-components with the different forms
-export interface ChangePasswordChildFormProps {
-  togglePasswordType: () => void;
-  updateFormDataCallback: (values: ChangePasswordFormData) => void;
-  handleSubmit: (event: React.MouseEvent<HTMLElement>) => void;
-  handleCancel: (event: React.MouseEvent<HTMLElement>) => void;
+export interface ChangePasswordChildFormProps extends FormRenderProps<ChangePasswordFormData> {
+  // togglePasswordType: () => void;
+  // updateFormDataCallback: (values: ChangePasswordFormData) => void;
+  // handleSubmit: (event: React.MouseEvent<HTMLElement>) => void;
+  // handleCancel: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 interface ChangePasswordFormData {
@@ -24,7 +29,6 @@ interface ChangePasswordFormData {
 
 function ChangePasswordForm(props: ChangePasswordFormProps) {
   const [renderSuggested, setRenderSuggested] = useState(true);
-  const [formData, setFormData] = useState<ChangePasswordFormData>({});
   const dispatch = useDashboardAppDispatch();
   const history = useHistory();
 
@@ -33,16 +37,10 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
     setRenderSuggested(!renderSuggested);
   }
 
-  function updateFormDataCallback(values: ChangePasswordFormData) {
-    // Callback from the sub-components when the user enters old/new password
-    setFormData(values);
-  }
-
-  async function handleSubmit(event: React.MouseEvent<HTMLElement>) {
+  async function handleSubmitPasswords(values: ChangePasswordFormData) {
     // Callback from sub-component when the user clicks on the button to change password
-    event.preventDefault();
-    if (formData.old && formData.new) {
-      const response = await dispatch(changePassword({ old_password: formData.old, new_password: formData.new }));
+    if (values.old && values.new) {
+      const response = await dispatch(changePassword({ old_password: values.old, new_password: values.new }));
       if (changePassword.fulfilled.match(response)) {
         history.push("security");
       }
@@ -56,20 +54,51 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
   }
 
   const child_props: ChangePasswordChildFormProps = {
-    togglePasswordType,
-    updateFormDataCallback,
-    handleSubmit,
-    handleCancel,
+    // togglePasswordType,
+    // updateFormDataCallback,
+    // handleSubmit,
+    // handleCancel,
   };
 
+  const initialValues = {};
+
   return (
-    <React.Fragment>
-      {renderSuggested ? (
-        <ChangePasswordSuggestedForm {...child_props} />
-      ) : (
-        <ChangePasswordCustomForm {...child_props} />
-      )}
-    </React.Fragment>
+    <FinalForm<ChangePasswordFormData>
+      onSubmit={handleSubmitPasswords}
+      initialValues={initialValues}
+      render={(formProps) => {
+        return (
+          <React.Fragment>
+            {renderSuggested ? (
+              <ChangePasswordSuggestedForm {...child_props} />
+            ) : (
+              <ChangePasswordCustomForm {...child_props} />
+            )}
+
+            <div id="password-suggestion">
+              <ButtonGroup>
+                <EduIDButton value="custom" className="btn-link" id="pwmode-button" onClick={togglePasswordType}>
+                  {translate("chpass.button_custom_password")}
+                </EduIDButton>
+              </ButtonGroup>
+            </div>
+            <div id="chpass-form" className="tabpane">
+              <PrimaryButton
+                id="chpass-button"
+                className="settings-button"
+                disabled={formProps.submitting || formProps.pristine || formProps.invalid}
+                onClick={formProps.handleSubmit}
+              >
+                {translate("chpass.button_save_password")}
+              </PrimaryButton>
+              <EduIDButton className="cancel-button" onClick={handleCancel}>
+                {translate("cm.cancel")}
+              </EduIDButton>
+            </div>
+          </React.Fragment>
+        );
+      }}
+    />
   );
 }
 

@@ -1,15 +1,13 @@
-import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { DashboardRootState } from "dashboard-init-app";
 import { translate } from "login/translation";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { ButtonGroup } from "reactstrap";
 import { FormText } from "reactstrap";
-import { Field, InjectedFormProps, reduxForm } from "redux-form";
-import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
+
+import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 
 interface ChangePasswordSuggestedFormData {
   old?: string;
@@ -21,34 +19,13 @@ interface FormData {
   value: string;
 }
 
-type ChangePasswordSuggestedInjectedProps = InjectedFormProps<
-  ChangePasswordSuggestedFormData,
-  ChangePasswordChildFormProps
->;
-
-function BareChangePasswordSuggestedForm(props: ChangePasswordChildFormProps & ChangePasswordSuggestedInjectedProps) {
+export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFormProps) {
   const suggested = useDashboardAppSelector((state) => state.chpass.suggested_password);
-  // Need to initialise formData with the suggested password. Since it won't be changed in the form, it won't
-  // reach formData through the formChange function.
-  const [formData, setFormData] = useState<ChangePasswordSuggestedFormData>({ suggested });
-
-  // update component state with any changes to the form fields, so that we can get the values
-  // on submit without going fishing in the DOM
-  const formChange = (field: FormData) => {
-    setFormData({ ...formData });
-    props.updateFormDataCallback({ old: field.value.trim(), new: suggested });
-  };
 
   return (
-    <form
-      id="passwordsview-form"
-      role="form"
-      onChange={(e) => {
-        formChange(e.target as unknown as FormData);
-      }}
-    >
+    <React.Fragment>
       <fieldset>
-        <Field
+        <FinalField<string>
           component={TextInput}
           componentClass="input"
           type="password"
@@ -61,7 +38,7 @@ function BareChangePasswordSuggestedForm(props: ChangePasswordChildFormProps & C
         </div>
       </fieldset>
       <fieldset>
-        <Field
+        <FinalField<string>
           className="suggested-password"
           component={TextInput}
           componentClass="input"
@@ -72,53 +49,33 @@ function BareChangePasswordSuggestedForm(props: ChangePasswordChildFormProps & C
           disabled={true}
         />
       </fieldset>
-      <div id="password-suggestion">
-        <ButtonGroup>
-          <EduIDButton value="custom" className="btn-link" id="pwmode-button" onClick={props.togglePasswordType}>
-            {translate("chpass.button_custom_password")}
-          </EduIDButton>
-        </ButtonGroup>
-      </div>
-      <div id="chpass-form" className="tabpane">
-        <PrimaryButton
-          id="chpass-button"
-          className="settings-button"
-          disabled={props.submitting || props.pristine || props.invalid}
-          onClick={props.handleSubmit}
-        >
-          {translate("chpass.button_save_password")}
-        </PrimaryButton>
-        <EduIDButton className="cancel-button" onClick={props.handleCancel}>
-          {translate("cm.cancel")}
-        </EduIDButton>
-      </div>
-    </form>
+    </React.Fragment>
   );
 }
 
-const validate = (values: ChangePasswordSuggestedFormData) => {
-  const errors: { [key: string]: string } = {};
-  if (!values.old) {
-    errors.old = "required";
-  }
+// const validate = (values: ChangePasswordSuggestedFormData) => {
+//   const errors: { [key: string]: string } = {};
+//   if (!values.old) {
+//     errors.old = "required";
+//   }
 
-  return errors;
-};
+//   return errors;
+// };
 
-const ReduxChangeSuggestedPasswordForm = reduxForm<ChangePasswordSuggestedFormData, ChangePasswordChildFormProps>({
-  form: "chpass",
-  validate,
-})(BareChangePasswordSuggestedForm);
+// const ReduxChangeSuggestedPasswordForm = reduxForm<ChangePasswordSuggestedFormData, ChangePasswordChildFormProps>({
+//   form: "chpass",
+//   validate,
+// })(BareChangePasswordSuggestedForm);
 
-const ChangePasswordSuggestedForm = connect((state: DashboardRootState) => {
-  const initialValues: { [key: string]: string } = {};
-  if (state.chpass.suggested_password) {
-    initialValues.suggested = state.chpass.suggested_password;
-  }
-  return {
-    initialValues: initialValues,
-    enableReinitialize: true,
-  };
-})(ReduxChangeSuggestedPasswordForm);
+// const ChangePasswordSuggestedForm = connect((state: DashboardRootState) => {
+//   const initialValues: { [key: string]: string } = {};
+//   if (state.chpass.suggested_password) {
+//     initialValues.suggested = state.chpass.suggested_password;
+//   }
+//   return {
+//     initialValues: initialValues,
+//     enableReinitialize: true,
+//   };
+// })(ReduxChangeSuggestedPasswordForm);
 
-export default ChangePasswordSuggestedForm;
+// export default ChangePasswordSuggestedForm;
