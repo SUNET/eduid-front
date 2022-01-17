@@ -6,9 +6,11 @@
 .mfa {
   display: flex;
   flex-direction: column;
+
   .heading {
     line-height: $line-height;
   }
+
   button.btn {
     width: fit-content;
   }
@@ -18,13 +20,16 @@
 .username-pw {
   form {
     margin-top: 0;
+
     .form-group {
       margin-bottom: $margin;
     }
+
     button {
       margin: 0.25rem 0 #{3 * $margin};
     }
   }
+
   .secondary-link {
     font-size: 1rem;
     align-self: flex-end;
@@ -33,6 +38,7 @@
 
 a.send-link {
   text-decoration: underline;
+
   &:hover {
     text-decoration: none;
   }
@@ -41,6 +47,7 @@ a.send-link {
 a.send-link.disabled {
   color: $gray;
   text-decoration: none;
+
   &:hover {
     cursor: not-allowed;
   }
@@ -51,14 +58,17 @@ a.send-link.disabled {
   .tou-text {
     margin-top: $margin;
     margin-bottom: $margin;
+
     p {
       line-height: $line-height;
       margin-bottom: 0;
       padding-bottom: 0;
     }
+
     ul {
       margin-bottom: #{1rem * $line-height};
       list-style-type: disc;
+
       li {
         font-size: 1.25rem;
         margin: 0;
@@ -66,6 +76,7 @@ a.send-link.disabled {
       }
     }
   }
+
   button {
     align-self: center;
   }
@@ -78,23 +89,29 @@ a.send-link.disabled {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: #{2 * $margin};
+
     .primary {
       margin: 0 #{3 * $margin} #{3.5 * $margin} 0;
+
       .bottom {
         align-items: flex-end;
       }
+
       .selected .heading {
         margin-bottom: 0;
       }
+
       img {
         max-width: 178px;
       }
+
       // duplicate in _buttons.scss
       .icon {
         background: transparent;
         padding: 0;
         margin: 0;
         height: auto;
+
         svg {
           color: $black;
           height: 1rem;
@@ -102,6 +119,7 @@ a.send-link.disabled {
           transform: rotate(0);
         }
       }
+
       .help-link {
         max-width: 350px;
         margin-top: 0.5rem;
@@ -110,10 +128,11 @@ a.send-link.disabled {
         padding-bottom: 0;
       }
     }
+
     .option {
       border-radius: 20px;
       background: $white;
-      box-shadow: 0 4px 14px rgba(89, 89, 89, 0.07);
+      box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
       padding: 1rem;
       width: 350px;
       height: 168px;
@@ -131,6 +150,7 @@ a.send-link.disabled {
     margin-bottom: 0;
   }
 }
+
 .mfa .secondary .option {
   button,
   button:active,
@@ -143,6 +163,7 @@ a.send-link.disabled {
     text-transform: uppercase;
     margin-top: 2.75rem;
     margin-bottom: 0;
+
     .verbatim {
       text-transform: none;
     }
@@ -159,15 +180,18 @@ a.send-link.disabled {
       font-size: 1rem;
     }
   }
+
   .username-pw .button-pair {
     flex-direction: column-reverse;
   }
+
   .username-pw .secondary-link {
     margin-top: #{3 * $margin};
     display: flex;
     flex-direction: column;
     align-items: flex-end;
   }
+
   .tou .tou-text {
     margin-top: #{2 * $margin};
   }
@@ -179,9 +203,11 @@ a.send-link.disabled {
     .primary {
       margin-right: 0;
     }
+
     .primary,
     .secondary {
       flex: 1;
+
       .option {
         width: unset;
       }

@@ -2,6 +2,7 @@
 
 .form-control {
   display: flex;
+
   &:focus {
     color: #161616;
     background-color: #fff;
@@ -13,18 +14,21 @@
 
 input[type="radio"] {
   /* remove standard background appearance */
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
+  appearance: none;
+  appearance: none;
+
   /* create custom radiobutton appearance */
   display: inline-block;
   width: 1rem;
   height: 1rem;
   align-self: center;
+
   /* background-color only for content */
   background-clip: content-box;
-  box-shadow: 0 5px 17px rgba(89, 89, 89, 0.07);
+  box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
   border: 2px solid $orange-highlight;
+
   // border: 1px solid $black;
   //  background-color: $white;
   background-color: transparent;
@@ -43,6 +47,7 @@ input[type="radio"]:checked.error {
   color: white;
   opacity: 0.8;
   border: none;
+
   // background-color: $orange-highlight;
 }
 
@@ -50,6 +55,7 @@ input[type="radio"]:checked.error {
 .radio-input-container {
   display: flex;
   height: 3rem;
+
   // display: flex;
   // flex: 1;
   // align-items: center;
@@ -117,14 +123,17 @@ input:focus {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+
   & label {
     letter-spacing: 0;
     font-size: 1rem;
     margin-left: -2px;
   }
+
   & .label-required {
     color: $orange-highlight;
   }
+
   & .help-block {
     font-size: 1rem;
     text-transform: lowercase;
@@ -141,9 +150,11 @@ input:focus {
 .password-input {
   display: flex;
   position: relative;
+
   input[name="current-password"].is-valid {
     background-image: none;
   }
+
   .checkmark,
   .show-hide-button {
     position: absolute;
@@ -155,18 +166,22 @@ input:focus {
     border: none;
     cursor: pointer;
   }
+
   .show-hide-button {
     right: 1rem;
     color: $black;
     font-size: 1rem;
   }
+
   .is-valid ~ .show-hide-button {
     right: 3rem;
   }
+
   .checkmark {
     color: #28a745;
     right: 0.625rem;
     align-self: center;
+
     svg {
       height: 1.5rem;
       width: 1.5rem;
@@ -174,6 +189,7 @@ input:focus {
     }
   }
 }
+
 #copy-new-password {
   border-bottom: none;
   background-color: $orange-opaque;
@@ -186,6 +202,7 @@ input:focus {
   justify-content: space-between;
   align-items: center;
 }
+
 .toggle-switch {
   display: inline-block;
   background: #ccc;
@@ -195,11 +212,13 @@ input:focus {
   position: relative;
   vertical-align: middle;
   transition: all 0.25s;
-  &:before,
-  &:after {
+
+  &::before,
+  &::after {
     content: "";
   }
-  &:before {
+
+  &::before {
     display: block;
     background: #fff;
     border-radius: 50%;
@@ -210,21 +229,26 @@ input:focus {
     left: 3px;
     transition: left 0.25s;
   }
-  .toggle:hover &:before {
+
+  .toggle:hover &::before {
     transform: scale(0.9);
   }
+
   .toggle-checkbox:checked + & {
     background: $orange-highlight;
-    &:before {
+
+    &::before {
       left: 29px;
     }
   }
 }
+
 .toggle-checkbox {
   position: absolute;
   visibility: hidden;
   width: auto;
 }
+
 // .toggle-label {
 //   margin-left: 5px;
 //   position: relative;
@@ -237,9 +261,11 @@ input:focus {
   .radio-input-container span {
     font-size: 1rem;
   }
+
   .input-container {
     margin: 0;
   }
+
   .form-control::placeholder,
   input::placeholder {
     font-size: 1rem;

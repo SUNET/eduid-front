@@ -6,6 +6,7 @@
   justify-content: center;
   width: 60%;
   margin: 0 20%;
+
   & #modal-form {
     & form {
       margin-top: 0;
@@ -18,10 +19,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   & .close-button-container {
     display: flex;
     justify-content: flex-end;
   }
+
   padding: 0 0 1.5rem 2.25rem;
 }
 
@@ -34,26 +37,32 @@ h5.modal-title {
 .modal-content {
   background-color: $white;
   border-radius: 20px;
+
   & .modal-header {
     border-bottom: none;
     padding: 0;
   }
+
   & .modal-body {
     padding: 0 2.25rem;
     display: flex;
     flex-direction: column;
     font-size: 1.25rem;
     line-height: 1.4;
+
     & button.btn.settings-button {
-      margin: 0 0 1rem 0;
+      margin: 0 0 1rem;
     }
+
     & input {
       background-color: $light-gray;
     }
   }
+
   & .modal-footer {
     border-top: none;
     padding: 0;
+
     & a {
       display: flex;
       align-items: center;
@@ -72,6 +81,7 @@ h5.modal-title {
 
 .resend-code-container {
   margin-top: 1rem;
+
   & a {
     font-size: 1rem;
   }
@@ -80,20 +90,24 @@ h5.modal-title {
 // temporary styling for register tou
 .register-modal {
   & .modal-body {
-    padding: 0 2rem 1rem 2rem;
+    padding: 0 2rem 1rem;
+
     & p {
       font-size: 1rem;
       padding-bottom: 0;
     }
+
     & ul {
       margin-left: 2rem;
       list-style-type: disc;
+
       & li {
         margin: 0.75rem 0;
         line-height: 1;
       }
     }
   }
+
   & .modal-footer {
     & button {
       margin: 0;
@@ -110,20 +124,25 @@ ol {
     line-height: 1;
     font-size: 1.25rem;
     margin: 0 0 2rem 2rem;
+
     & li {
       margin-bottom: 1rem;
+
       & span {
         line-height: 1.4;
       }
     }
+
     & label {
       color: #7c7c7c;
       margin: 1rem 0;
     }
   }
+
   & a {
     font-size: 1rem;
     text-decoration: underline;
+
     &:hover {
       color: #ff4500;
       text-decoration: none;
@@ -136,6 +155,7 @@ ol {
     flex-direction: column;
     padding: 0 1rem;
   }
+
   & label {
     margin-bottom: 30px;
     color: #7c7c7c;
@@ -166,10 +186,12 @@ p.modal-text {
     width: calc(100% - 1.25rem);
     margin: auto 1rem;
   }
+
   .modal {
     width: 100%;
     margin: 0;
   }
+
   .modal-content {
     // .modal-title {
     // & span {
@@ -181,19 +203,23 @@ p.modal-text {
       // padding: 1rem;
       // font-size: 1rem;
       & button.btn.settings-button {
-        margin: 0 0 1rem 0;
+        margin: 0 0 1rem;
       }
+
       & .form-control,
       & input {
         font-size: 1.25rem;
+
         &::placeholder {
           font-size: 1.25rem;
         }
       }
+
       & p {
         font-size: 1rem;
       }
     }
+
     & .modal-footer {
       padding: 0;
     }

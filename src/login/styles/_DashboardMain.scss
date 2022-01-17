@@ -7,27 +7,34 @@
     flex-wrap: wrap;
     margin-left: -0.1875rem;
     margin-bottom: 0;
+
     & li {
       margin: 0.5rem 2rem 0.5rem 0;
       flex: 1;
     }
+
     & a {
       color: $black;
       padding: 0 0.1875rem;
+
       & span {
         border-bottom: $black solid 1px;
       }
+
       // styling for when menu item is clicked
       &.active {
         color: $orange-highlight;
+
         & span {
           border-bottom: transparent solid 1px;
         }
       }
+
       // styling for when hovering the menu item
       &:hover {
         color: $orange-highlight;
         border-bottom: transparent solid 1px;
+
         & span {
           border-bottom: transparent solid 1px;
         }
@@ -48,6 +55,7 @@
   grid-column-gap: 2rem;
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(2, auto);
+
   & label {
     font-family: "ProximaNova-Bold";
     font-size: 1rem;
@@ -58,32 +66,40 @@
 .profile-grid-cell {
   display: flex;
   flex-direction: column;
+
   .display-nin-show-hide {
     display: flex;
+
     button {
       margin-top: 6px;
     }
   }
+
   & .data-with-delete {
     display: flex;
     flex-direction: row;
     align-items: center;
+
     & p {
       font-size: 2.25rem;
       font-family: "ProximaNova-Regular";
       margin-bottom: 0;
       padding-bottom: 0;
     }
+
     & .display-data {
       margin-top: 0;
     }
   }
+
   & a span {
     border-bottom: solid 1px $orange-highlight;
+
     &:hover {
       border-bottom: solid 1px transparent;
     }
   }
+
   & .display-data {
     font-family: "ProximaNova-Light";
     font-size: 2rem;
@@ -96,9 +112,11 @@
     &.no-data {
       color: gray;
     }
+
     &.unverified {
       color: $orange-highlight;
     }
+
     &.verified {
       color: $black;
     }
@@ -115,6 +133,7 @@
   #profile-grid {
     width: calc(100% - 1.25rem);
   }
+
   #profile-grid {
     grid-row-gap: 2rem;
   }
@@ -130,9 +149,9 @@
   a.nav-settings.sv {
     margin-top: 2.5rem;
     display: block;
-    -webkit-transition: -webkit-transform 0.5s;
     transition: -webkit-transform 0.5s;
-    -o-transition: transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
     transition: transform 0.5s;
     transition: transform 0.5s, -webkit-transform 0.5s;
   }
@@ -143,9 +162,9 @@
   a.nav-advanced-settings.en {
     margin-top: 2.5rem;
     display: block;
-    -webkit-transition: -webkit-transform 0.5s;
     transition: -webkit-transform 0.5s;
-    -o-transition: transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
     transition: transform 0.5s;
     transition: transform 0.5s, -webkit-transform 0.5s;
   }
