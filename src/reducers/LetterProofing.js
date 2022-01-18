@@ -7,7 +7,6 @@ const letterData = {
   letter_sent: "",
   letter_expires: "",
   letter_expired: false,
-  message: "",
   showConfirmModal: false,
   showNotificationModal: false,
 };
