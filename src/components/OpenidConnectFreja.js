@@ -1,7 +1,7 @@
 import EduIDButton from "components/EduIDButton";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { withUserAgent } from "react-useragent";
+import { isAndroid, isIOS } from "react-device-detect";
 import { Button, ButtonGroup, FormText, Modal } from "reactstrap";
 
 class OpenidConnectFreja extends Component {
@@ -18,8 +18,7 @@ class OpenidConnectFreja extends Component {
       }
     }
 
-    const supportedDevices = ["AndroidOS", "iOS"];
-    const isMobile = supportedDevices.includes(this.props.ua.os);
+    const isMobile = isAndroid || isIOS;
     const freja_instructions = (
       <div className="well" id="openid-connect-freja-instructions">
         <ol>
@@ -131,4 +130,4 @@ OpenidConnectFreja.propTypes = {
   nin: PropTypes.string,
 };
 
-export default withUserAgent(OpenidConnectFreja);
+export default OpenidConnectFreja;
