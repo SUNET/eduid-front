@@ -9,6 +9,7 @@ const letterData = {
   letter_expired: false,
   message: "",
   showConfirmModal: false,
+  showNotificationModal: false,
 };
 
 let letterProofingReducer = (state = letterData, action) => {
@@ -28,19 +29,26 @@ let letterProofingReducer = (state = letterData, action) => {
     case actions.GET_LETTER_PROOFING_PROOFING_SUCCESS: {
       let verifying = false,
         confirming = false,
-        showModal = false;
+        showConfirm = false,
+        showNotification = false;
       if (action.payload.letter_sent === undefined) {
         confirming = true;
+        showNotification = true;
+      } else if (action.payload.letter_expired) {
+        showNotification = true;
+        showConfirm = false;
       } else {
         verifying = true;
-        showModal = true;
+        showConfirm = true;
+        showNotification = false;
       }
       return {
         ...state,
         ...action.payload,
         verifyingLetter: verifying,
         confirmingLetter: confirming,
-        showConfirmModal: showModal,
+        showConfirmModal: showConfirm,
+        showNotificationModal: showNotification,
       };
     }
     case actions.GET_LETTER_PROOFING_PROOFING_FAIL:
@@ -48,7 +56,7 @@ let letterProofingReducer = (state = letterData, action) => {
         ...state,
         verifyingLetter: false,
         confirmingLetter: false,
-        showModal: true,
+        showNotificationModal: true,
       };
     case actions.POST_LETTER_PROOFING_PROOFING_SUCCESS:
       return {
