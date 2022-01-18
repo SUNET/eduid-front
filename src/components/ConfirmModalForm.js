@@ -24,7 +24,7 @@ class ConfirmModalForm extends Component {
   render() {
     return (
       <div id="modal-form">
-        <Form id={this.props.inputName + "-form"} role="form">
+        <Form id={this.props.inputName + "-form"} role="form" onSubmit={this.props.handleConfirm}>
           <div id="confirmation-code-area">
             <Field
               component={CustomInput}
