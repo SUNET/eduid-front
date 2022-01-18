@@ -22,12 +22,21 @@ export function* sendGetLetterProofing() {
 }
 
 export function fetchGetLetterProofing(config) {
+  // const result = {
+  //   error: true,
+  //   payload: {
+  //     csrf_token: "7c77af180c7bc2d7cf616e0cf97a1bd890b66a8d",
+  //     message: "letter.not-sent",
+  //   },
+  //   type: "GET_LETTER_PROOFING_PROOFING_FAIL",
+  // };
   return window
     .fetch(config.letter_proofing_url + "proofing", {
       ...getRequest,
     })
     .then(checkStatus)
     .then((response) => response.json());
+  // .then(() => result);
 }
 
 export function* sendLetterProofing() {
