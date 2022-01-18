@@ -132,14 +132,8 @@
       "/__tests__/**/*-test.[jt]s?(x)",
       "**/?(*)+(test).[jt]s?(x)"
     ],
-    "roots": [
-      "<rootDir>"
-    ],
     "modulePaths": [
       "<rootDir>/src/"
-    ],
-    "moduleDirectories": [
-      "<rootDir>/node_modules"
     ],
     "transform": {
       "^.+\\.[tj]sx?$": "ts-jest"
