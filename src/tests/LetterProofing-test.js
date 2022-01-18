@@ -27,6 +27,8 @@ const baseState = {
     letter_expires: "",
     letter_expired: false,
     confirmingLetter: false,
+    showConfirmModal: false,
+    showNotificationModal: false,
     code: "",
   },
   config: {
@@ -193,6 +195,7 @@ describe("Reducers", () => {
     ).toEqual({
       ...letterProofingState,
       message: "success",
+      showConfirmModal: true,
     });
   });
 
