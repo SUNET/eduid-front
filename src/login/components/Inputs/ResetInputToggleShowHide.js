@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Input from "reactstrap/Input";
+import { Input } from "reactstrap";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 
