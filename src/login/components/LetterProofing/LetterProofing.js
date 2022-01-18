@@ -7,35 +7,19 @@ import ConfirmModal from "../Modals/ConfirmModalContainer";
 import NotificationModal from "../Modals/NotificationModal";
 
 function LetterProofingButton(props) {
-  const [letterExpired, setLetterExpired] = useState(false);
-  const [letterExpiresDate, setLetterExpiresDate] = useState("");
-  const [verifyingLetterSent, setVerifyingLetterSent] = useState(false);
-  const [confirmingLetter, setConfirmingLetter] = useState(false);
-  const [letterSentDate, setLetterSentDate] = useState("");
-
-  const [showNotification, setNotificationModal] = useState(false);
-  const [showConfirmation, setConfirmationModal] = useState(false);
+  const [letterProofingState, setLetterProofingState] = useState({});
 
   function handleModal() {
-    setVerifyingLetterSent(props.verifyingLetter_sent);
-    setLetterExpired(props.letter_expired);
-    setConfirmingLetter(props.confirmingLetter);
-    setLetterSentDate(props.letter_sent_date);
-    setLetterExpiresDate(props.letter_expires_date);
-
-    if (
-      (!props.showConfirmModal && props.showModal) ||
-      (letterSentDate === "" && confirmingLetter) ||
-      (letterExpired && letterSentDate !== "")
-    ) {
-      setNotificationModal(true);
-    }
-    if (
-      props.showConfirmModal ||
-      (!letterExpired && letterSentDate !== "" && !confirmingLetter && verifyingLetterSent)
-    ) {
-      setConfirmationModal(true);
-    }
+    setLetterProofingState({
+      ...letterProofingState,
+      verifyingLetter: props.verifyingLetter_sent,
+      letterExpired: props.letter_expired,
+      confirmingLetter: props.confirmingLetter,
+      letterSentDate: props.letter_sent_date,
+      letterExpiresDate: props.letter_expires_date,
+      showNotification: props.showNotificationModal,
+      showConfirmModal: props.showConfirmModal,
+    });
   }
 
   function sendConfirmationCode(e) {
@@ -44,8 +28,7 @@ function LetterProofingButton(props) {
   }
 
   function closeConfirmationModal() {
-    setVerifyingLetterSent(false);
-    setConfirmationModal(!showConfirmation);
+    setLetterProofingState({ ...letterProofingState, showConfirmModal: false });
   }
 
   function confirmLetterProofing(e) {
@@ -54,10 +37,7 @@ function LetterProofingButton(props) {
   }
 
   function closeNotificationModal() {
-    setLetterSentDate("");
-    setConfirmingLetter(false);
-    setLetterExpiresDate("");
-    setNotificationModal(!showNotification);
+    setLetterProofingState({ ...letterProofingState, showNotification: false });
   }
 
   function formatDateFromBackend(dateFromBackend) {
@@ -127,7 +107,7 @@ function LetterProofingButton(props) {
         modalId="letterGenericConfirmDialog"
         title={translate("letter.modal_confirm_title")}
         mainText={translate("letter.modal_confirm_info")}
-        showModal={showNotification}
+        showModal={letterProofingState.showNotification}
         closeModal={closeNotificationModal}
         acceptModal={confirmLetterProofing}
       />
@@ -137,7 +117,7 @@ function LetterProofingButton(props) {
         title={translate("letter.verify_title")}
         resendLabel={translate("cm.enter_code")}
         placeholder={placeholder}
-        showModal={showConfirmation}
+        showModal={letterProofingState.showConfirmModal}
         closeModal={closeConfirmationModal}
         handleConfirm={sendConfirmationCode}
         with_resend_link={false}
