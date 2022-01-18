@@ -11,7 +11,6 @@ function LetterProofingButton(props) {
 
   function handleModal() {
     setLetterProofingState({
-      ...letterProofingState,
       verifyingLetter: props.verifyingLetter_sent,
       letterExpired: props.letter_expired,
       confirmingLetter: props.confirmingLetter,
