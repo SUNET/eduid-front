@@ -50,13 +50,24 @@ let letterProofingReducer = (state = letterData, action) => {
         showNotificationModal: showNotification,
       };
     }
-    case actions.GET_LETTER_PROOFING_PROOFING_FAIL:
+    case actions.GET_LETTER_PROOFING_PROOFING_FAIL: {
+      let showConfirm = false,
+        showNotification = false;
+      if (state.letter_expires === "") {
+        showConfirm = false;
+        showNotification = true;
+      } else {
+        showConfirm = true;
+        showNotification = false;
+      }
       return {
         ...state,
         verifyingLetter: false,
         confirmingLetter: false,
-        showNotificationModal: true,
+        showConfirmModal: showConfirm,
+        showNotificationModal: showNotification,
       };
+    }
     case actions.POST_LETTER_PROOFING_PROOFING_SUCCESS:
       return {
         ...state,

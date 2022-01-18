@@ -7,18 +7,13 @@ const mapStateToProps = (state) => {
   const confirming = state.letter_proofing.confirmingLetter;
   const valid_nin = isValid("nins")(state);
   const confirmingLetter = (confirming && valid_nin) || state.letter_proofing.letter_expired;
-  // TODO: figure out better logic for showNotificationModal
-  const showNotificationModal = state.letter_proofing.showConfirmModal
-    ? false
-    : state.letter_proofing.showNotificationModal;
-
   return {
     confirmingLetter: confirmingLetter,
     verifyingLetter_sent: state.letter_proofing.verifyingLetter,
     letter_sent_date: state.letter_proofing.letter_sent,
     letter_expires_date: state.letter_proofing.letter_expires,
     letter_expired: state.letter_proofing.letter_expired,
-    showNotificationModal: showNotificationModal,
+    showNotificationModal: state.letter_proofing.showNotificationModal,
     showConfirmModal: state.letter_proofing.showConfirmModal,
   };
 };
