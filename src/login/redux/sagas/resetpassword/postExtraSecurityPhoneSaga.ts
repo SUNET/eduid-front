@@ -1,17 +1,17 @@
-import { put, call, select } from "redux-saga/effects";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { showNotification, clearNotifications } from "reducers/Notifications";
+import { call, put, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
-import postRequest from "../postDataRequest";
-import resetPasswordSlice from "../../slices/resetPasswordSlice";
-import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
+import { LoginRootState } from "../../../app_init/initStore";
+import { history } from "../../../components/App/App";
 import {
-  LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
-  countFiveMin,
   clearCountdown,
+  countFiveMin,
+  LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE,
   setLocalStorage,
 } from "../../../components/LoginApp/ResetPassword/CountDownTimer";
-import { history } from "../../../components/App/App";
-import { PayloadAction } from "@reduxjs/toolkit";
-import { LoginRootState } from "../../../app_init/initStore";
+import resetPasswordSlice from "../../slices/resetPasswordSlice";
+import postRequest from "../postDataRequest";
 
 interface RequestPhoneCodeResponse {
   message: string;
@@ -27,7 +27,7 @@ export function* requestPhoneCodeForNewPassword() {
     phone_index: state.resetPassword.phone.index,
   };
   try {
-    yield put(eduidRMAllNotify());
+    yield put(clearNotifications());
     const response: PayloadAction<RequestPhoneCodeResponse, string, never, boolean> = yield call(
       postRequest,
       url,
@@ -45,7 +45,7 @@ export function* requestPhoneCodeForNewPassword() {
       return;
     }
     // Success message is showing in notification bar
-    yield put(eduidNotify(response.payload.message, "messages"));
+    yield put(showNotification({ message: response.payload.message, level: "info" }));
     clearCountdown(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE);
     setLocalStorage(LOCAL_STORAGE_PERSISTED_COUNT_RESEND_PHONE_CODE, new Date().getTime() + 300000);
     countFiveMin("phone");

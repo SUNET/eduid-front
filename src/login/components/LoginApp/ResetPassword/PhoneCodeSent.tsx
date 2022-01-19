@@ -7,13 +7,13 @@ import {
 } from "./CountDownTimer";
 import { shortCodePattern } from "../../../app_utils/validation/regexPatterns";
 import EduIDButton from "../../../../components/EduIDButton";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { useHistory } from "react-router-dom";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { clearNotifications } from "../../../../reducers/Notifications";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { FormattedMessage } from "react-intl";
 import { PhoneInterface } from "./ExtraSecurity";
@@ -53,7 +53,7 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
     history.push(`/reset-password/set-new-password/${props.emailCode}`);
     dispatch(resetPasswordSlice.actions.savePhoneCode(phone));
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("phoneCode"));
-    dispatch(eduidRMAllNotify());
+    dispatch(clearNotifications());
   };
 
   return (

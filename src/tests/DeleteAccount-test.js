@@ -8,9 +8,9 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import DeleteAccountContainer from "containers/DeleteAccount";
 import DeleteAccount from "components/DeleteAccount";
 import * as actions from "actions/Security";
-import * as notifyActions from "actions/Notifications";
 import securityReducer from "reducers/Security";
 import { postDeleteAccount, deleteAccount } from "sagas/Security";
+import { notificationsSlice } from "reducers/Notifications";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 
@@ -194,7 +194,7 @@ describe("DeleteAccount redux functionality", () => {
     expect(actions.startConfirmationDeletion()).toEqual(expectedAction);
   });
 
-  it("START_DELETE_ACCOUNT retuns confirming_deletion: true", () => {
+  it("START_DELETE_ACCOUNT returns confirming_deletion: true", () => {
     const mockState = {
       confirming_deletion: false,
     };
@@ -219,7 +219,7 @@ describe("Logout modal redux functionality", () => {
     };
     expect(actions.confirmDeletion()).toEqual(expectedAction);
   });
-  it("POST_DELETE_ACCOUNT action retuns the current state", () => {
+  it("POST_DELETE_ACCOUNT action returns the current state", () => {
     const mockState = {
       confirming_deletion: false,
     };
@@ -281,7 +281,7 @@ describe("Logout modal redux functionality", () => {
     };
     expect(actions.stopConfirmationDeletion()).toEqual(expectedAction);
   });
-  it("STOP_DELETE_ACCOUNT action retuns confirming_deletion: false", () => {
+  it("STOP_DELETE_ACCOUNT action returns confirming_deletion: false", () => {
     const mockState = {
       confirming_deletion: false,
     };
@@ -362,7 +362,7 @@ describe("DeleteAccount Container", () => {
     expect(dispatch.mock.calls.length).toEqual(0);
     getWrapper().find("EduIDButton#delete-button").props().onClick();
     expect(dispatch.mock.calls.length).toEqual(2);
-    expect(dispatch.mock.calls[0][0].type).toEqual(notifyActions.RM_ALL_NOTIFICATION);
+    expect(dispatch.mock.calls[0][0].type).toEqual(notificationsSlice.actions.clearNotifications.type);
     expect(dispatch.mock.calls[1][0].type).toEqual(actions.START_DELETE_ACCOUNT);
   });
 

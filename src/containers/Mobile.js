@@ -10,7 +10,7 @@ import {
   startVerify,
   startRemove,
 } from "actions/Mobile";
-import { eduidRMAllNotify } from "actions/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 
 const mapStateToProps = (state) => {
   return {
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(stopConfirmation());
     },
     handleStartConfirmation: function (e) {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       const dataNode = e.target.closest("tr.emailrow"),
         data = {
           identifier: dataNode.getAttribute("data-identifier"),

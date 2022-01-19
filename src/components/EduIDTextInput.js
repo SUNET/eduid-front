@@ -1,8 +1,5 @@
 import React, { Fragment } from "react";
-import FormText from "reactstrap/lib/FormText";
-import FormGroup from "reactstrap/lib/FormGroup";
-import Input from "reactstrap/lib/Input";
-import Label from "reactstrap/lib/Label";
+import { FormGroup, FormText, Input, Label } from "reactstrap";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const textInput = (props) => {

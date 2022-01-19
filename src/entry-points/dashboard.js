@@ -32,7 +32,7 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import { updateIntl } from "reducers/Internationalisation";
 import { dashboardStore } from "dashboard-init-app";
 import * as configActions from "actions/DashboardConfig";
-import { eduidNotify } from "actions/Notifications";
+import { showNotification } from "reducers/Notifications";
 
 /* Get configuration */
 const getConfig = function () {
@@ -43,9 +43,9 @@ const getConfig = function () {
     let msg = params.get("msg");
     if (msg !== null) {
       if (msg.indexOf(":ERROR:") === 0) {
-        dispatch(eduidNotify(msg.substr(7), "errors"));
+        dispatch(showNotification({ message: msg.substr(7), level: "error" }));
       } else {
-        dispatch(eduidNotify(msg, "messages"));
+        dispatch(showNotification({ message: msg, level: "info" }));
       }
     }
   }

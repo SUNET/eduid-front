@@ -12,7 +12,7 @@ import {
   stopAskWebauthnDescription,
   chooseAuthenticator,
 } from "actions/Security";
-import { eduidRMAllNotify } from "actions/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 
 const mapStateToProps = (state) => {
   return {
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(initiatePasswordChange());
     },
     handleStartConfirmationDeletion: function () {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       dispatch(startConfirmationDeletion());
     },
     handleStopConfirmationDeletion: function () {
@@ -42,12 +42,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(confirmDeletion());
     },
     handleStartAskingKeyWebauthnDescription: function () {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       dispatch(chooseAuthenticator("cross-platform"));
       dispatch(startAskWebauthnDescription());
     },
     handleStartAskingDeviceWebauthnDescription: function () {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       dispatch(chooseAuthenticator("platform"));
       dispatch(startAskWebauthnDescription());
     },

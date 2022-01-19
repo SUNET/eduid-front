@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "reactstrap/lib/Button";
+import { Button } from "reactstrap";
 
 interface ButtonPrimaryProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   id: string;

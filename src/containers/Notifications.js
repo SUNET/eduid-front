@@ -1,13 +1,12 @@
 import { connect } from "react-redux";
 import Notifications from "components/Notifications";
-import * as actions from "actions/Notifications";
-import i18n from "../login/translation/InjectIntl_HOC_factory";
+import * as actions from "reducers/Notifications";
 
 const mapStateToProps = (state) => {
   return {
     debug: state.config.debug,
-    messages: state.notifications.messages,
-    errors: state.notifications.errors,
+    info: state.notifications.info,
+    error: state.notifications.error,
   };
 };
 
@@ -15,11 +14,15 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleRMNotification(e) {
       e.preventDefault();
-      dispatch(actions.eduidRMAllNotify());
+      dispatch(actions.clearNotifications());
     },
   };
 };
 
+/* This container, being untyped JavaScript, lets us get away with mapping state from either
+ * eduID application (login, dashboard, signup, error, ...) to this shared component until we
+ * figure out how to do that in a typed fashion.
+ */
 const NotificationsContainer = connect(mapStateToProps, mapDispatchToProps)(Notifications);
 
-export default i18n(NotificationsContainer);
+export default NotificationsContainer;

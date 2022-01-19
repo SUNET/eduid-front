@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "login/translation";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
-import Input from "reactstrap/lib/Input";
+import { Input } from "reactstrap";
 import { Field } from "redux-form";
 import CustomInput from "./CustomInput";
 

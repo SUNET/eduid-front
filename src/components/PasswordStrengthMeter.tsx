@@ -1,7 +1,7 @@
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { translate } from "login/translation";
 import React, { useEffect, useState } from "react";
-import FormText from "reactstrap/lib/FormText";
+import { FormText } from "reactstrap";
 import zxcvbn from "zxcvbn";
 
 interface PasswordStrengthMeterProps {

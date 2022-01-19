@@ -4,7 +4,7 @@ import { updateIntl } from "../../../../reducers/Internationalisation";
 import { putCsrfToken } from "../../../../sagas/common";
 import * as actions from "../../../../actions/PersonalData";
 import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { clearNotifications } from "../../../../reducers/Notifications";
 import { LOCALIZED_MESSAGES } from "globals";
 import { DashboardRootState } from "dashboard-init-app";
 import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
@@ -43,7 +43,7 @@ export function* postPersonalDataSaga(action: PayloadAction<PersonalDataData>) {
         );
       }
     }
-    yield put(eduidRMAllNotify());
+    yield put(clearNotifications());
   } catch (error) {
     if (error instanceof Error) {
       yield put(actions.postUserdataFail(error.toString()));

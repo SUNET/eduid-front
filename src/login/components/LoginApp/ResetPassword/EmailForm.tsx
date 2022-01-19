@@ -2,7 +2,7 @@ import React from "react";
 import { translate } from "../../../../login/translation";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import CustomInput from "../../Inputs/CustomInput";
 import EduIDButton from "../../../../components/EduIDButton";
 import { validate } from "../../../app_utils/validation/validateEmail";

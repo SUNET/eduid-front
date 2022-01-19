@@ -3,7 +3,7 @@ import { LoginAppDispatch } from "login/app_init/initStore";
 import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
 import React from "react";
 import { connect } from "react-redux";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import { reduxForm, submit } from "redux-form";
 import emptyValueValidation from "../../../app_utils/validation/emptyValueValidation";
 import { validate as validateEmail } from "../../../app_utils/validation/validateEmail";
