@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import CustomInput from "../Inputs/CustomInput";
 import { Field, reduxForm, submit } from "redux-form";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";

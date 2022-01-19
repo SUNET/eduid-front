@@ -1,7 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import Form from "reactstrap/lib/Form";
 import ButtonPrimary from "../Buttons/ButtonPrimary";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
@@ -14,6 +13,7 @@ import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hook
 import { translate } from "login/translation";
 import { DashboardRootState } from "dashboard-init-app";
 import { PersonalDataData } from "reducers/PersonalData";
+import { Form } from "reactstrap";
 
 interface NameStrings {
   first: string;

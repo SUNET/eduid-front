@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import CustomInput from "../../Inputs/CustomInput";
 import { Field } from "redux-form";
 import { reduxForm } from "redux-form";

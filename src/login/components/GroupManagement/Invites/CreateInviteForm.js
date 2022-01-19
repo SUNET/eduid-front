@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { reduxForm, FormSection } from "redux-form";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import EmailInput from "../../Inputs/EmailInput";
 import InviteRoleCheckboxes from "../InviteRoleCheckboxes";
 import EduIDButton from "../../../../components/EduIDButton";

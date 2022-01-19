@@ -6,7 +6,7 @@ import {
   showOpenidFrejaModal,
   hideOpenidFrejaModal,
 } from "actions/OpenidConnectFreja";
-import { eduidRMAllNotify } from "actions/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getOpenidFreja());
     },
     handleShowModal: function () {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       dispatch(showOpenidFrejaModal());
     },
     handleHideModal: function () {

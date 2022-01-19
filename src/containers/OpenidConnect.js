@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import OpenidConnect from "components/OpenidConnect";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
-import { eduidRMAllNotify } from "../actions/Notifications";
+import { clearNotifications } from "../reducers/Notifications";
 import { showOpenidSelegModal, hideOpenidSelegModal } from "../actions/OpenidConnect";
 
 const mapStateToProps = (state) => {
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleShowModal: function () {
       dispatch(showOpenidSelegModal());
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
     },
     handleHideModal: function () {
       dispatch(hideOpenidSelegModal());
