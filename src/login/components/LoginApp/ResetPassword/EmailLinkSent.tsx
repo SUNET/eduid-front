@@ -8,7 +8,7 @@ import {
   clearCountdown,
 } from "./CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "./ResetPasswordMain";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { clearNotifications } from "../../../../reducers/Notifications";
 import { FormattedMessage } from "react-intl";
 
 function EmailLinkSent(): JSX.Element {
@@ -40,7 +40,7 @@ function EmailLinkSent(): JSX.Element {
   }, [email]);
 
   useEffect(() => {
-    dispatch(eduidRMAllNotify());
+    dispatch(clearNotifications());
   }, [dispatch]);
 
   return (

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import { confirmDeletion, stopConfirmationDeletion, startConfirmationDeletion } from "actions/Security";
-import { eduidRMAllNotify } from "actions/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 import DeleteAccount from "components/DeleteAccount";
 
 const mapStateToProps = (state) => {
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleStartConfirmationDeletion: function () {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       dispatch(startConfirmationDeletion());
     },
     handleStopConfirmationDeletion: function () {

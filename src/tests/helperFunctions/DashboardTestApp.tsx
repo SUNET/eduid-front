@@ -1,6 +1,9 @@
+import React from "react";
+import { ReduxIntlProvider } from "components/ReduxIntl";
 import { DashboardRootState, dashboardStore } from "dashboard-init-app";
+import { mount, ReactWrapper } from "enzyme";
 import { ChangePasswordState } from "reducers/ChangePassword";
-import createMockStore from "redux-mock-store";
+import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
 
 export const dashboardTestState: DashboardRootState = {
@@ -31,8 +34,26 @@ export const dashboardTestState: DashboardRootState = {
 
 export type DashboardStoreType = typeof dashboardStore;
 
-export function fakeStore(state: DashboardRootState = dashboardTestState) {
+export function fakeStore(state: DashboardRootState = dashboardTestState): MockStoreEnhanced<DashboardRootState> {
   const middlewares = [thunk];
   const store = createMockStore<DashboardRootState>(middlewares);
   return store(state);
+}
+
+interface setupComponentArgs {
+  component: JSX.Element;
+  store?: DashboardStoreType;
+  overrides?: { [key: string]: unknown };
+}
+
+export function setupComponent({ component, store, overrides }: setupComponentArgs): ReactWrapper {
+  if (store === undefined) {
+    if (overrides) {
+      store = fakeStore({ ...dashboardTestState, ...overrides });
+    } else {
+      store = fakeStore();
+    }
+  }
+  const wrapper = mount(<ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>);
+  return wrapper;
 }

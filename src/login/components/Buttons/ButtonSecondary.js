@@ -1,8 +1,6 @@
-import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Button from "reactstrap/lib/Button";
-
-// import "style/EduIDButton.scss";
+import React, { Component } from "react";
+import { Button } from "reactstrap";
 
 class ButtonSecondary extends Component {
   render() {

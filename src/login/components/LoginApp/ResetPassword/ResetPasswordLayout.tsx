@@ -1,8 +1,8 @@
+import { resetPasswordSlice } from "login/redux/slices/resetPasswordSlice";
 import React from "react";
-import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 
 interface ResetPasswordLayoutProps {
   emailCode?: string;
@@ -21,7 +21,7 @@ const ResetPasswordLayout = (props: ResetPasswordLayoutProps): JSX.Element => {
   const continueSetPassword = () => {
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("without"));
     history.push(`/reset-password/set-new-password/${props.emailCode}`);
-    dispatch(eduidRMAllNotify());
+    dispatch(clearNotifications());
   };
   return (
     <>
