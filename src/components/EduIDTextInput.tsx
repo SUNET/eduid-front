@@ -1,80 +1,47 @@
 import { translate } from "login/translation";
-import React, { Fragment } from "react";
+import React from "react";
+import { FieldRenderProps } from "react-final-form";
 import { FormGroup, FormText, Input, Label } from "reactstrap";
 
+// TODO: This is the interface for additional parameters we pass here from the forms, through
+//       react-final-form's Field. The FieldRenderProps allows them through as '[key: string]: any;'
+//       but I can't get it to work if I try to add this interface to the type of the props argument.
 interface TextInputProps {
-  label: string;
+  label?: string;
+  helpBlock: React.ReactNode;
 }
 
-const TextInput = (props: TextInputProps) => {
-  const { input, label, name, meta, selectOptions, type, disabled, helpBlock, placeholder } = props;
+export default function TextInput(props: FieldRenderProps<string>) {
+  const { label, helpBlock } = props;
   let valid = false,
     invalid = false;
-  if (meta.touched || meta.submitFailed) {
-    if (meta.error) {
-      invalid = true;
-    } else {
-      valid = true;
-    }
+  if (props.meta.touched || props.meta.submitFailed) {
+    invalid = Boolean(props.meta.error);
+    valid = !invalid;
   }
-  const errmsg = (invalid && translate(meta.error)) || "";
+  const errorMsg = (invalid && translate(props.meta.error)) || "";
   let help = <FormText>{helpBlock}</FormText>;
-  if (errmsg !== "") {
-    const feedback = <span className="eduid-field-error">{errmsg}</span>;
+  if (errorMsg !== "") {
+    const feedback = <span className="eduid-field-error">{errorMsg}</span>;
     help = (
       <FormText>
-        {feedback} | {helpBlock}
+        {feedback} {helpBlock && "|"} {helpBlock}
       </FormText>
     );
   }
 
-  let field;
-  if (selectOptions) {
-    const renderSelectLanguage = selectOptions.map((option, index) => {
-      return (
-        <Fragment key={index}>
-          <label key={option[0]} htmlFor={option[1]}>
-            <input
-              className={"radio-input"}
-              key={option[0]}
-              id={option[1]}
-              type="radio"
-              {...input}
-              value={option[0]}
-              checked={option[0] === input.value}
-            />
-            <span key={index}>{option[1]}</span>
-          </label>
-        </Fragment>
-      );
-    });
-    field = <div className="radio-input-container">{renderSelectLanguage}</div>;
-  } else {
-    field = (
+  return (
+    <FormGroup id={props.input.name}>
+      {label && <Label for={props.name}>{label}</Label>}
       <Input
-        type={type}
-        disabled={disabled}
-        placeholder={placeholder}
-        id={name}
-        name={name}
+        id={props.name}
         valid={valid}
         invalid={invalid}
-        {...input}
+        type={props.type}
+        {...props.input}
+        disabled={props.disabled}
       />
-    );
-  }
-  let labelElem = null;
-  if (label) {
-    labelElem = <Label for={name}>{label}</Label>;
-  }
-
-  return (
-    <FormGroup id={input.name}>
-      {labelElem}
-      {field}
       {help}
     </FormGroup>
   );
-};
-
-export default TextInput;
+}

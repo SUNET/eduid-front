@@ -8,7 +8,7 @@ import { IntlProvider } from "react-intl";
 import { DashboardStoreType, dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
 
 const test_props: ChangePasswordFormProps = {
-  cancel_to: "cancel_url",
+  finish_url: "cancel_url",
 };
 
 describe("ChangePasswordForm Component", () => {

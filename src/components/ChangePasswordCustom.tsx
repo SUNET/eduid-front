@@ -1,56 +1,63 @@
-import EduIDButton from "components/EduIDButton";
 import TextInput from "components/EduIDTextInput";
-import { DashboardRootState } from "dashboard-init-app";
 import { translate } from "login/translation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Field as FinalField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import { connect } from "react-redux";
-import { ButtonGroup, FormText } from "reactstrap";
-import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
+import { FormText } from "reactstrap";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 import PasswordStrengthMeter, { PasswordStrengthData } from "./PasswordStrengthMeter";
-import { Form as FinalForm, Field as FinalField } from "react-final-form";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {}
 
-interface ChangePasswordCustomFormData {
-  custom?: string;
-  repeat?: string;
-  old?: string;
-  score?: number;
-  too_weak?: boolean;
-}
-
-interface FormData {
-  name: string;
-  value: string;
-}
-
 export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {
-  const [formData, setFormData] = useState<ChangePasswordCustomFormData>({});
   const [passwordData, setPasswordData] = useState<PasswordStrengthData>({});
 
-  useEffect(() => {
-    // Propagate score as calculated by the PasswordStrengthMeter (and passed back here using it's passScoreUp prop)
-    // to the hidden input value of the form, so that it will be available in this forms validate() function.
-    props.change("score", passwordData.score);
-  }, [passwordData]);
+  function updatePasswordData(value: PasswordStrengthData) {
+    // This function is called when the password strength meter has calculated password strength
+    // on the current value in the form. We need to trigger validation of the field again at this
+    // point, since validation uses this calculated value (and will already have executed when we
+    // get here).
+    setPasswordData(value);
+    props.formProps.form.change("custom", props.formProps.values.custom);
+  }
+
+  // Form field validators
+  const required = (value?: string) => (value ? undefined : "required");
+
+  function strongEnough(value?: string): string | undefined {
+    // check that the custom password is strong enough, using a score computed in the
+    // PasswordStrengthMeter component.
+    if (!value) {
+      return "required";
+    }
+    if (passwordData.isTooWeak !== false) {
+      return "chpass.low-password-entropy";
+    }
+  }
+
+  function mustMatch(value?: string): string | undefined {
+    // validate that the repeated password is the same as the first one (called 'custom')
+    if (!value) {
+      return "required";
+    }
+    if (value !== props.formProps.values.custom) {
+      return "chpass.different-repeat";
+    }
+  }
 
   return (
-    <form id="passwordsview-form" role="form">
+    <form id="passwordsview-form" role="form" onSubmit={props.formProps.handleSubmit}>
       <fieldset>
-        <FinalField<string>
+        <FinalField
+          name="old"
           component={TextInput}
           componentClass="input"
           type="password"
           id="old-password-field"
           label={translate("chpass.old_password")}
-          name="old"
+          validate={required}
         />
-        <div className="form-field-error-area">
-          <FormText />
-        </div>
       </fieldset>
       <div className="password-format">
         <label>{translate("chpass.help-text-newpass-label")}</label>
@@ -78,66 +85,28 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
       <fieldset>
         <div>
           <FinalField
+            name="custom"
             component={TextInput}
             componentClass="input"
             type="password"
             label={translate("chpass.form_custom_password")}
-            helpBlock={<PasswordStrengthMeter password={formData.custom} passStateUp={setPasswordData} />}
+            helpBlock={
+              <PasswordStrengthMeter password={props.formProps.values.custom} passStateUp={updatePasswordData} />
+            }
             id="custom-password-field"
-            name="custom"
+            validate={strongEnough}
           />
           <FinalField
+            name="repeat"
             component={TextInput}
             componentClass="input"
             type="password"
             id="repeat-password-field"
             label={translate("chpass.form_custom_password_repeat")}
-            name="repeat"
-          />
-          <FinalField
-            component={TextInput}
-            componentClass="input"
-            type="hidden"
-            id="password-score-field"
-            name="score"
+            validate={mustMatch}
           />
         </div>
       </fieldset>
     </form>
   );
 }
-
-// const validate = (values: ChangePasswordCustomFormData) => {
-//   const errors: { [key: string]: string } = {};
-//   if (!values.old) {
-//     errors.old = "required";
-//   }
-
-//   if (!values.custom) {
-//     errors.custom = "required";
-//   } else if (!values.score || values.score < 2) {
-//     errors.custom = "chpass.low-password-entropy";
-//   }
-//   if (!values.repeat) {
-//     errors.repeat = "required";
-//   } else if (values.repeat !== values.custom) {
-//     errors.repeat = "chpass.different-repeat";
-//   }
-//   return errors;
-// };
-
-// const ReduxChangePasswordCustomForm = reduxForm<ChangePasswordCustomFormData, ChangePasswordCustomFormProps>({
-//   form: "chpassCustom",
-//   validate,
-//   enableReinitialize: true,
-// })(BareChangePasswordCustomForm);
-
-// function mapStateToProps(state: DashboardRootState) {
-//   const initialValues: ChangePasswordCustomFormData = { score: 0 };
-
-//   return {
-//     initialValues: initialValues,
-//   };
-// }
-
-// export default connect(mapStateToProps)(ReduxChangePasswordCustomForm);

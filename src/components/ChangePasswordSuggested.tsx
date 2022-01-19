@@ -1,81 +1,39 @@
 import TextInput from "components/EduIDTextInput";
-import { useDashboardAppSelector } from "dashboard-hooks";
-import { DashboardRootState } from "dashboard-init-app";
 import { translate } from "login/translation";
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import React from "react";
+import { Field as FinalField } from "react-final-form";
 import { FormText } from "reactstrap";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 
-import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
-
-interface ChangePasswordSuggestedFormData {
-  old?: string;
-  suggested?: string;
-}
-
-interface FormData {
-  name: string;
-  value: string;
-}
-
 export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFormProps) {
-  const suggested = useDashboardAppSelector((state) => state.chpass.suggested_password);
+  // Form field validator
+  const required = (value: string) => (value ? undefined : "required");
 
   return (
-    <React.Fragment>
+    <form id="passwordsview-form" role="form" onSubmit={props.formProps.handleSubmit}>
       <fieldset>
         <FinalField<string>
+          name="old"
           component={TextInput}
           componentClass="input"
           type="password"
           id="old-password-field"
           label={translate("chpass.old_password")}
-          name="old"
+          validate={required}
         />
-        <div className="form-field-error-area">
-          <FormText />
-        </div>
       </fieldset>
       <fieldset>
         <FinalField<string>
-          className="suggested-password"
+          name="suggested"
           component={TextInput}
           componentClass="input"
           type="text"
-          name="suggested"
           id="suggested-password-field"
+          className="suggested-password"
           label={translate("chpass.suggested_password")}
           disabled={true}
         />
       </fieldset>
-    </React.Fragment>
+    </form>
   );
 }
-
-// const validate = (values: ChangePasswordSuggestedFormData) => {
-//   const errors: { [key: string]: string } = {};
-//   if (!values.old) {
-//     errors.old = "required";
-//   }
-
-//   return errors;
-// };
-
-// const ReduxChangeSuggestedPasswordForm = reduxForm<ChangePasswordSuggestedFormData, ChangePasswordChildFormProps>({
-//   form: "chpass",
-//   validate,
-// })(BareChangePasswordSuggestedForm);
-
-// const ChangePasswordSuggestedForm = connect((state: DashboardRootState) => {
-//   const initialValues: { [key: string]: string } = {};
-//   if (state.chpass.suggested_password) {
-//     initialValues.suggested = state.chpass.suggested_password;
-//   }
-//   return {
-//     initialValues: initialValues,
-//     enableReinitialize: true,
-//   };
-// })(ReduxChangeSuggestedPasswordForm);
-
-// export default ChangePasswordSuggestedForm;
