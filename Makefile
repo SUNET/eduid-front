@@ -1,5 +1,6 @@
 clean:
 	rm -f package-lock.json
+	rm -f build/*
 	rm -rf node_modules
 
 
