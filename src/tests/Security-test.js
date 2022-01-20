@@ -5,7 +5,6 @@ import { put, call } from "redux-saga/effects";
 import expect from "expect";
 import SecurityContainer from "containers/Security";
 import * as actions from "actions/Security";
-import * as notifyActions from "reducers/Notifications";
 import securityReducer from "reducers/Security";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import {
@@ -20,6 +19,7 @@ import {
   removeWebauthnToken,
   removeToken,
 } from "sagas/Security";
+import { notificationsSlice } from "reducers/Notifications";
 
 const messages = require("../login/translation/messageIndex");
 
@@ -665,7 +665,7 @@ describe("Security Container", () => {
     const wrapper = getWrapper();
     wrapper.find("button#security-webauthn-button").simulate("click");
     expect(dispatch.mock.calls.length).toEqual(3);
-    expect(dispatch.mock.calls[0][0].type).toEqual(notifyActions.RM_ALL_NOTIFICATION);
+    expect(dispatch.mock.calls[0][0].type).toEqual(notificationsSlice.actions.clearNotifications.type);
     expect(dispatch.mock.calls[1][0].type).toEqual(actions.AUTHENTICATOR);
     expect(dispatch.mock.calls[2][0].type).toEqual(actions.START_ASK_WEBAUTHN_DESCRIPTION);
   });

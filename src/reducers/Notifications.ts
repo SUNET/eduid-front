@@ -6,12 +6,13 @@ export interface eduidNotification {
 }
 
 // Define a type for the slice state
-interface NotificationState {
+export interface NotificationState {
   info?: eduidNotification;
   error?: eduidNotification;
 }
 
-const initialState: NotificationState = {};
+// export for use in tests
+export const initialState: NotificationState = {};
 
 export const notificationsSlice = createSlice({
   name: "notifications",

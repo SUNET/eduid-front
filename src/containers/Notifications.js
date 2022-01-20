@@ -5,7 +5,7 @@ import * as actions from "reducers/Notifications";
 const mapStateToProps = (state) => {
   return {
     debug: state.config.debug,
-    message: state.notifications.message,
+    info: state.notifications.info,
     error: state.notifications.error,
   };
 };

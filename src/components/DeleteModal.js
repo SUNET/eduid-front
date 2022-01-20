@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Modal from "reactstrap/Modal";
-import ModalHeader from "reactstrap/ModalHeader";
-import ModalBody from "reactstrap/ModalBody";
-import ModalFooter from "reactstrap/ModalFooter";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "components/EduIDButton";
 import ButtonModal from "../login/components/Buttons/ButtonModal";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
 // import "../style/EduIDButton.scss";
 
