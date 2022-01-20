@@ -9,6 +9,8 @@ import { FormGroup, FormText, Input, Label } from "reactstrap";
 interface TextInputProps {
   label?: string;
   helpBlock: React.ReactNode;
+  disabled?: boolean;
+  autocomplete?: string;
 }
 
 export default function TextInput(props: FieldRenderProps<string>) {
@@ -40,6 +42,7 @@ export default function TextInput(props: FieldRenderProps<string>) {
         type={props.type}
         {...props.input}
         disabled={props.disabled}
+        autoComplete={props.autocomplete}
       />
       {help}
     </FormGroup>

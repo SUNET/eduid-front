@@ -2,7 +2,6 @@ import TextInput from "components/EduIDTextInput";
 import { translate } from "login/translation";
 import React from "react";
 import { Field as FinalField } from "react-final-form";
-import { FormText } from "reactstrap";
 import { ChangePasswordChildFormProps } from "./ChangePasswordForm";
 
 export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFormProps) {
@@ -20,6 +19,7 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
           id="old-password-field"
           label={translate("chpass.old_password")}
           validate={required}
+          autocomplete="current-password"
         />
       </fieldset>
       <fieldset>
@@ -32,6 +32,7 @@ export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFo
           className="suggested-password"
           label={translate("chpass.suggested_password")}
           disabled={true}
+          autocomplete="new-password"
         />
       </fieldset>
     </form>

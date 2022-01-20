@@ -57,6 +57,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
           id="old-password-field"
           label={translate("chpass.old_password")}
           validate={required}
+          autocomplete="current-password"
         />
       </fieldset>
       <div className="password-format">
@@ -95,6 +96,7 @@ export default function ChangePasswordCustomForm(props: ChangePasswordCustomForm
             }
             id="custom-password-field"
             validate={strongEnough}
+            autocomplete="new-password"
           />
           <FinalField
             name="repeat"
