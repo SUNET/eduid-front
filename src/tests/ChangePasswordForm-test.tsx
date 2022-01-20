@@ -83,8 +83,8 @@ describe("ChangePasswordForm renders", () => {
     // now click the button switching to custom password mode
     pwModeButton.first().simulate("click");
 
-    // the shown input fields should have changed to old, custom, repeat (and the hidden score)
-    expect(inputNames(wrapper)).toEqual(["custom", "old", "repeat", "score"]);
+    // the shown input fields should have changed to old, custom, repeat
+    expect(inputNames(wrapper)).toEqual(["custom", "old", "repeat"]);
 
     // find the button again, should have the same id on the custom password page
     pwModeButton = wrapper.find("#pwmode-button");
