@@ -42,7 +42,7 @@ function LetterProofingButton(props) {
     setLetterSentDate("");
     setRequestLetterAllowed(false);
     setLetterExpiresDate("");
-    setLetterPending(!letterPending);
+    setLetterPending(false);
   }
 
   function formatDateFromBackend(dateFromBackend) {
