@@ -75,7 +75,7 @@ function LetterProofingButton(props) {
         <>
           <div className="description">
             {translate("verify-identity.vetting_letter_code_expired")}
-            <span id="letter_expires_date">{formatDateFromBackend()}</span>
+            <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
           </div>
           <div className="description">{translate("verify-identity.vetting_letter_order_new_code")}</div>
         </>
