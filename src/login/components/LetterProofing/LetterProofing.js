@@ -10,15 +10,18 @@ function LetterProofingButton(props) {
   const [letterExpired, setLetterExpired] = useState(false);
   const [letterExpiresDate, setLetterExpiresDate] = useState("");
   const [verifyingLetterSent, setVerifyingLetterSent] = useState(false);
-  const [confirmingLetter, setConfirmingLetter] = useState(false);
+  const [requestLetterAllowed, setRequestLetterAllowed] = useState(false);
   const [letterSentDate, setLetterSentDate] = useState("");
+  const [letterPending, setLetterPending] = useState(false);
 
   function handleModal() {
     setVerifyingLetterSent(props.verifyingLetter_sent);
     setLetterExpired(props.letter_expired);
-    setConfirmingLetter(props.confirmingLetter);
+    setRequestLetterAllowed(props.requestLetterAllowed);
     setLetterSentDate(props.letter_sent_date);
     setLetterExpiresDate(props.letter_expires_date);
+    // To enable  opening of notification modal for retrying request letter once received get letter proofing fail
+    setLetterPending(props.letter_sent_date === "" && !props.letter_expired);
   }
 
   function sendConfirmationCode(e) {
@@ -37,8 +40,9 @@ function LetterProofingButton(props) {
 
   function closeNotificationModal() {
     setLetterSentDate("");
-    setConfirmingLetter(false);
+    setRequestLetterAllowed(false);
     setLetterExpiresDate("");
+    setLetterPending(!letterPending);
   }
 
   function formatDateFromBackend(dateFromBackend) {
@@ -51,9 +55,15 @@ function LetterProofingButton(props) {
       newDate.getDate().toString().padStart(2, 0)
     );
   }
+  // LetterSentDate is passed and letter has expired
+  const letterCodeExpired = letterExpired && letterSentDate !== "";
+  // Not request letter yet
+  const letterNotRequested = letterSentDate === "" && requestLetterAllowed;
+  const letterCodeValid = !letterExpired && letterSentDate !== "";
+  // Open Modal to request letter or verify code
+  const showNotificationModal = letterPending || letterNotRequested || letterCodeExpired;
+  const showConfirmationModal = letterCodeValid && !requestLetterAllowed && verifyingLetterSent;
 
-  const showNotificationModal = (letterSentDate === "" && confirmingLetter) || (letterExpired && letterSentDate !== "");
-  const showConfirmationModal = !letterExpired && letterSentDate !== "" && !confirmingLetter && verifyingLetterSent;
   let description = "";
   if (props.disabled) {
     description = <div className="description">{translate("verify-identity.vetting_explanation_add_nin")}</div>;
@@ -65,7 +75,7 @@ function LetterProofingButton(props) {
         <>
           <div className="description">
             {translate("verify-identity.vetting_letter_code_expired")}
-            <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
+            <span id="letter_expires_date">{formatDateFromBackend()}</span>
           </div>
           <div className="description">{translate("verify-identity.vetting_letter_order_new_code")}</div>
         </>
