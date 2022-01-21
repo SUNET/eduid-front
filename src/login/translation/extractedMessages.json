@@ -50,10 +50,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right"
   },
-  "EMcaPD": {
-    "developer_comment": "Set new password",
-    "string": "A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click Accept Password."
-  },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
   },
@@ -77,6 +73,10 @@
   "GGa/Fj": {
     "developer_comment": "Terms of use (banner text)",
     "string": "We need an updated acceptance from you of the eduID terms of use."
+  },
+  "HqrAl+": {
+    "developer_comment": "Reset password copy password tooltip",
+    "string": "Copied!"
   },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
@@ -116,6 +116,10 @@
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
+  },
+  "PwI8gG": {
+    "developer_comment": "Reset Password set new password success",
+    "string": "Password has been updated."
   },
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
@@ -228,6 +232,7 @@
     "string": "Please provide a stronger password"
   },
   "chpass.main_title": {
+    "developer_comment": "Dashboard change password",
     "string": "Change your current password"
   },
   "chpass.no_old_pw": {
@@ -666,6 +671,9 @@
   "letter.no_state_found": {
     "string": "No state found"
   },
+  "letter.not-sent": {
+    "string": "Letter send request failed. Please try again."
+  },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
     "string": "Letter confirmation code"
@@ -852,6 +860,10 @@
   },
   "mobile.resend_success": {
     "string": "New code sent to {email}"
+  },
+  "n5fMlW": {
+    "developer_comment": "Set new password",
+    "string": "A strong password has been generated for you. To proceed you will need to repeat copy the password in to the Repeat new password field and click Accept Password."
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
@@ -1252,12 +1264,6 @@
   "resetpw.continue_reset_password": {
     "string": "Continue reset password"
   },
-  "resetpw.copied-in-clipboard": {
-    "string": "Copied!"
-  },
-  "resetpw.copy-to-clipboard": {
-    "string": "Copy to clipboard"
-  },
   "resetpw.email-send-failure": {
     "string": "Error sending mail, please try again"
   },
@@ -1420,6 +1426,9 @@
   "security.main_title": {
     "string": "Security"
   },
+  "security.no_reauthn": {
+    "string": "Missing authentication"
+  },
   "security.password_credential_type": {
     "string": "Password"
   },
@@ -1435,6 +1444,9 @@
   },
   "security.security-key_title": {
     "string": "Make your eduID more secure"
+  },
+  "security.stale_reauthn": {
+    "string": "Expired authentication"
   },
   "security.u2f-describe-title": {
     "string": "Enter a description for the U2F token you are about to register"
@@ -1527,18 +1539,23 @@
     "string": "Delete eduID"
   },
   "settings.change_info": {
+    "developer_comment": "Dashboard change password",
     "string": "You will need to log in again to change your password."
   },
   "settings.change_password": {
+    "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
   "settings.confirm_title_chpass": {
+    "developer_comment": "Dashboard change password",
     "string": "For security reasons..."
   },
   "settings.long_description": {
+    "developer_comment": "Dashboard change password",
     "string": "Click the link to change your eduID password."
   },
   "settings.main_title": {
+    "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
   "settings.modal_delete_title": {
@@ -1568,6 +1585,10 @@
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
+  },
+  "tQpfHe": {
+    "developer_comment": "Reset Password go to eduID",
+    "string": "Go to eduID"
   },
   "text.link": {
     "developer_comment": "Placeholder for phone text input",
@@ -1602,6 +1623,10 @@
   },
   "u2f.push-the-button": {
     "string": "Please touch the button in your U2F key"
+  },
+  "ugLZcg": {
+    "developer_comment": "Reset password copy password tooltip",
+    "string": "Copy to clipboard"
   },
   "unexpected-problem": {
     "string": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
