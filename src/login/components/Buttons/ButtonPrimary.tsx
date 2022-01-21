@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "reactstrap/lib/Button";
+import { Button } from "reactstrap";
 
 interface ButtonPrimaryProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   id: string;

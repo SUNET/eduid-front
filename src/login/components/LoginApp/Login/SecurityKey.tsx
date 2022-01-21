@@ -5,7 +5,7 @@ import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SecurityKeyGif from "../../../../../img/computer_animation.gif";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { clearNotifications } from "../../../../reducers/Notifications";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -22,7 +22,7 @@ const CloseButton = ({ setSelected }: CloseButtonProps): JSX.Element => {
       className="icon"
       onClick={() => {
         setSelected(false);
-        dispatch(eduidRMAllNotify());
+        dispatch(clearNotifications());
       }}
     >
       <FontAwesomeIcon icon={faTimesCasted} />
@@ -43,7 +43,7 @@ const RetryButton = ({ retryToggle, setRetryToggle }: RetryButtonProps): JSX.Ele
       className="icon"
       onClick={() => {
         setRetryToggle(!retryToggle);
-        dispatch(eduidRMAllNotify());
+        dispatch(clearNotifications());
       }}
     >
       <FontAwesomeIcon icon={faRedoCasted} />

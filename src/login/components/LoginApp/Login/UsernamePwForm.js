@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { reduxForm, submit } from "redux-form";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import EmailInput from "../../Inputs/EmailInput";
 import PasswordInput from "../../Inputs/PasswordInput";
 import { validateEmailOnLogin } from "../../../app_utils/validation/validateEmail";

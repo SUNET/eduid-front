@@ -3,7 +3,7 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { eduidRMAllNotify } from "actions/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
@@ -98,7 +98,7 @@ export const linkUser = createAsyncThunk<
     }
 
     // clear any displayed errors (presumably from selecting another university right before this)
-    thunkAPI.dispatch(eduidRMAllNotify());
+    thunkAPI.dispatch(clearNotifications());
 
     return response.payload;
   } catch (error) {
@@ -133,7 +133,7 @@ export const unlinkUser = createAsyncThunk<
     }
 
     // clear any displayed errors or messages
-    thunkAPI.dispatch(eduidRMAllNotify());
+    thunkAPI.dispatch(clearNotifications());
 
     return response.payload;
   } catch (error) {

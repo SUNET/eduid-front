@@ -3,7 +3,7 @@ import { Field } from "redux-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import CustomInput from "./CustomInput";
-import Input from "reactstrap/lib/Input";
+import { Input } from "reactstrap";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import PropTypes from "prop-types";
 import { useIntl } from "react-intl";

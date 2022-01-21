@@ -10,7 +10,7 @@ import {
   startRemove,
   makePrimary,
 } from "actions/Emails";
-import { eduidRMAllNotify } from "actions/Notifications";
+import { clearNotifications } from "reducers/Notifications";
 import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(stopConfirmation());
     },
     handleStartConfirmation: function (e) {
-      dispatch(eduidRMAllNotify());
+      dispatch(clearNotifications());
       const dataNode = e.target.closest("tr.emailrow"),
         data = {
           identifier: dataNode.getAttribute("data-identifier"),

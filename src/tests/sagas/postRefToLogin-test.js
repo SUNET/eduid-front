@@ -3,6 +3,7 @@ import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
 import { postRefLoginSaga } from "../../login/redux/sagas/login/postRefLoginSaga";
 import loginSlice from "../../login/redux/slices/loginSlice";
+import { notificationsSlice } from "reducers/Notifications";
 
 const fakeState = {
   config: {
@@ -12,6 +13,7 @@ const fakeState = {
   login: {
     ref: "dummy-ref",
   },
+  notifications: {},
 };
 
 describe("API call to /next behaves as expected on _SUCCESS", () => {
@@ -42,7 +44,7 @@ describe("API call to /next behaves as expected on _SUCCESS", () => {
   });
   it("_SUCCESS response removes success notification", () => {
     next = generator.next();
-    expect(next.value.PUT.action.type).toEqual("RM_ALL_NOTIFICATION");
+    expect(next.value.PUT.action.type).toEqual(notificationsSlice.actions.clearNotifications.type);
   });
   it("done", () => {
     const done = generator.next().done;

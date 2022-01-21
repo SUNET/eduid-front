@@ -7,7 +7,7 @@ import captchaReducer from "./reducers/Captcha";
 import signupReducer from "./reducers/SignupMain";
 import emailReducer from "./reducers/Email";
 import verifiedReducer from "./reducers/CodeVerified";
-import notificationsReducer from "./reducers/Notifications";
+import { notificationsSlice } from "reducers/Notifications";
 
 const eduIDApp = combineReducers({
   config: signupReducer,
@@ -17,7 +17,7 @@ const eduIDApp = combineReducers({
   router: routerReducer,
   form: formReducer,
   intl: intlReducer,
-  notifications: notificationsReducer,
+  notifications: notificationsSlice.reducer,
 });
 
 export default eduIDApp;

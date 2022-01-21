@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
 import { connect } from "react-redux";
-import Form from "reactstrap/lib/Form";
+import { Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import TableList from "../login/components/DataTable/DataTable";

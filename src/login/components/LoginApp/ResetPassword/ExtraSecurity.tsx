@@ -9,7 +9,7 @@ import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "./ExtraSecurityToken";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 import Splash from "../../../../containers/Splash";
-import { eduidRMAllNotify, eduidNotify } from "../../../../actions/Notifications";
+import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { Dispatch } from "redux";
 import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 
@@ -151,7 +151,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
         history.push(`/reset-password/set-new-password/${emailCode[0]}`);
       } else if (message.includes("%3A" + "ERROR%3A")) {
         const error = message.split("%3A" + "ERROR%3A")[1];
-        dispatch(eduidNotify(error, "errors"));
+        dispatch(showNotification({ message: error, level: "error" }));
         history.push(`/reset-password/extra-security/${emailCode[0]}`);
         dispatch(resetPasswordSlice.actions.saveLinkCode(emailCode[0]));
       }
@@ -162,7 +162,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
     e.preventDefault();
     dispatch(resetPasswordSlice.actions.selectExtraSecurity("securityKey"));
     startTokenAssertion();
-    dispatch(eduidRMAllNotify());
+    dispatch(clearNotifications());
   };
 
   const startTokenAssertion = () => {
@@ -178,7 +178,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
   };
 
   const toPhoneCodeForm = () => {
-    dispatch(eduidRMAllNotify());
+    dispatch(clearNotifications());
     history.push(`/reset-password/phone-code-sent/${emailCode}`);
   };
 
@@ -210,7 +210,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
                 id="extra-security-freja"
                 onClick={() => {
                   window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${currentPage}`;
-                  dispatch(eduidRMAllNotify());
+                  dispatch(clearNotifications());
                 }}
               >
                 {props.translate("eidas.freja_eid_ready")}

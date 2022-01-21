@@ -2,7 +2,7 @@ import { call, select, put } from "redux-saga/effects";
 import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import loginSlice from "../../slices/loginSlice";
-import { eduidRMAllNotify } from "../../../../actions/Notifications";
+import { clearNotifications } from "../../../../reducers/Notifications";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { LoginRootState } from "../../../app_init/initStore";
 
@@ -39,7 +39,7 @@ export function* postRefLoginSaga() {
       return;
     }
     yield put(loginSlice.actions.postIdpNextSuccess(response.payload));
-    yield put(eduidRMAllNotify());
+    yield put(clearNotifications());
   } catch (error) {
     yield put(loginSlice.actions.loginSagaFail());
   }

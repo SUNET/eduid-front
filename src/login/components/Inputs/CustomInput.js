@@ -1,9 +1,6 @@
-import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import FormGroup from "reactstrap/lib/FormGroup";
-import FormText from "reactstrap/lib/FormText";
-import Input from "reactstrap/lib/Input";
-import Label from "reactstrap/lib/Label";
+import React, { Fragment } from "react";
+import { FormGroup, FormText, Input, Label } from "reactstrap";
 import i18n from "../../translation/InjectIntl_HOC_factory";
 import InputToggleShowHide from "./InputToggleShowHide";
 import { PasswordInputElement } from "./PasswordInput";
