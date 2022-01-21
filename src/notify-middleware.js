@@ -2,7 +2,7 @@ import { showNotification } from "reducers/Notifications";
 
 showNotification;
 const notifyAndDispatch = () => (next) => (action) => {
-  if (action.type.endsWith("SUCCESS") || action.type.endsWith("FAIL")) {
+  if (action.type.endsWith("FAIL")) {
     if (action.error && action.payload) {
       if (action.payload.error && action.payload.error.csrf_token !== undefined) {
         const msg = "csrf.try-again";
