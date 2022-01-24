@@ -29,7 +29,7 @@ function UseOtherDevice1() {
 
   const hasQrCode =
     other_device &&
-    (other_device.state === "NEW" || other_device.state === "IN_PROGRESS" || other_device.state == "LOGGED_IN");
+    (other_device.state === "NEW" || other_device.state === "IN_PROGRESS" || other_device.state == "AUTHENTICATED");
   let error = undefined;
   if (!hasQrCode && other_device) {
     if (other_device.state === "ABORTED") {
@@ -129,7 +129,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
       </div>
       <img className="qr-code" src={data.qr_img} />
       <p>
-        <span className="short_code">ID# {data.short_code}</span>
+        <span className="short_code">ID# {data.display_id}</span>
       </p>
 
       <div className="step">
@@ -149,7 +149,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
       <div className="expiration-info device1">
         <TimeRemainingWrapper
           name="other-device-expires"
-          unique_id={data.short_code}
+          unique_id={data.display_id}
           value={data.expires_in}
           onReachZero={handleTimerReachZero}
         >

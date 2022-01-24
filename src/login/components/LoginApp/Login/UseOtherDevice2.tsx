@@ -79,7 +79,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
 
       {data.state === "IN_PROGRESS" ? (
         <ProceedLoginButton disabled={timerIsZero} />
-      ) : data.state === "LOGGED_IN" ? (
+      ) : data.state === "AUTHENTICATED" ? (
         <RenderLoggedIn data={data} isExpired={timerIsZero} />
       ) : data !== undefined ? (
         <div className="finished device2">

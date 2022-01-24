@@ -61,12 +61,12 @@ interface UseOtherDevice1SubmitCode {
 interface UseOtherDevice1ResponseCommon {
   expires_in: number;
   expires_max: number;
-  short_code: string;
+  display_id: string;
   state_id: string;
 }
 
 export type UseOtherDevice1ResponseWithQR = UseOtherDevice1ResponseCommon & {
-  state: "NEW" | "IN_PROGRESS" | "LOGGED_IN";
+  state: "NEW" | "IN_PROGRESS" | "AUTHENTICATED";
   qr_img: string;
   qr_url: string;
 };
@@ -113,7 +113,7 @@ export type UseOtherDevice2Response = UseOtherDevice2ResponseCommon & {
 };
 
 export type UseOtherDevice2ResponseLoggedIn = UseOtherDevice2ResponseCommon & {
-  state: "LOGGED_IN";
+  state: "AUTHENTICATED";
   response_code: string;
 };
 
