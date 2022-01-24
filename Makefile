@@ -1,6 +1,7 @@
 clean:
 	rm -f package-lock.json
-	rm -rf build node_modules
+	rm -f build/*
+	rm -rf node_modules
 
 
 node_modules: package-lock.json
