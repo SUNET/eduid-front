@@ -74,16 +74,6 @@
   font-size: 1rem;
 }
 
-.input-pair {
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-
-  @media (max-width: 568px) {
-    flex-direction: column;
-  }
-}
-
 #personaldataview-form {
   margin-top: 0;
 
