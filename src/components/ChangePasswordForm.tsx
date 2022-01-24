@@ -1,30 +1,34 @@
 import { changePassword } from "apis/eduidSecurity";
-import { useDashboardAppDispatch } from "dashboard-hooks";
+import EduIDButton from "components/EduIDButton";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { translate } from "login/translation";
 import React, { useState } from "react";
+import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { useHistory } from "react-router";
+import { ButtonGroup } from "reactstrap";
+import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
 export interface ChangePasswordFormProps {
-  cancel_to: string; // URL to direct browser to when user cancels password change
+  finish_url: string; // URL to direct browser to when user cancels password change, or completes it
 }
 
 // These are the props we pass to the sub-components with the different forms
 export interface ChangePasswordChildFormProps {
-  togglePasswordType: () => void;
-  updateFormDataCallback: (values: ChangePasswordFormData) => void;
-  handleSubmit: (event: React.MouseEvent<HTMLElement>) => void;
-  handleCancel: (event: React.MouseEvent<HTMLElement>) => void;
+  formProps: FormRenderProps<ChangePasswordFormData>;
 }
 
 interface ChangePasswordFormData {
-  old?: string;
-  new?: string;
+  old?: string; // used by both modes
+  custom?: string; // used with custom password
+  score?: number; // used with custom password
+  suggested?: string; // used with suggested password
 }
 
 function ChangePasswordForm(props: ChangePasswordFormProps) {
-  const [renderSuggested, setRenderSuggested] = useState(true);
-  const [formData, setFormData] = useState<ChangePasswordFormData>({});
+  const suggested = useDashboardAppSelector((state) => state.chpass.suggested_password);
+  const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const dispatch = useDashboardAppDispatch();
   const history = useHistory();
 
@@ -33,18 +37,14 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
     setRenderSuggested(!renderSuggested);
   }
 
-  function updateFormDataCallback(values: ChangePasswordFormData) {
-    // Callback from the sub-components when the user enters old/new password
-    setFormData(values);
-  }
-
-  async function handleSubmit(event: React.MouseEvent<HTMLElement>) {
+  async function handleSubmitPasswords(values: ChangePasswordFormData) {
+    // Use the right form field for the currently displayed password mode
+    const newPassword = renderSuggested ? values.suggested : values.custom;
     // Callback from sub-component when the user clicks on the button to change password
-    event.preventDefault();
-    if (formData.old && formData.new) {
-      const response = await dispatch(changePassword({ old_password: formData.old, new_password: formData.new }));
+    if (values.old && newPassword) {
+      const response = await dispatch(changePassword({ old_password: values.old, new_password: newPassword }));
       if (changePassword.fulfilled.match(response)) {
-        history.push("security");
+        history.push(props.finish_url);
       }
     }
   }
@@ -52,24 +52,51 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     // Callback from sub-component when the user clicks on the button to abort changing password
     event.preventDefault();
-    history.push(props.cancel_to);
+    // TODO: should clear passwords from form to avoid browser password manager asking user to save the password
+    history.push(props.finish_url);
   }
 
-  const child_props: ChangePasswordChildFormProps = {
-    togglePasswordType,
-    updateFormDataCallback,
-    handleSubmit,
-    handleCancel,
-  };
+  const initialValues = { suggested };
 
   return (
-    <React.Fragment>
-      {renderSuggested ? (
-        <ChangePasswordSuggestedForm {...child_props} />
-      ) : (
-        <ChangePasswordCustomForm {...child_props} />
-      )}
-    </React.Fragment>
+    <FinalForm<ChangePasswordFormData>
+      onSubmit={handleSubmitPasswords}
+      initialValues={initialValues}
+      render={(formProps) => {
+        const child_props: ChangePasswordChildFormProps = { formProps };
+
+        return (
+          <React.Fragment>
+            {renderSuggested ? (
+              <ChangePasswordSuggestedForm {...child_props} />
+            ) : (
+              <ChangePasswordCustomForm {...child_props} />
+            )}
+
+            <div id="password-suggestion">
+              <ButtonGroup>
+                <EduIDButton className="btn-link" id="pwmode-button" onClick={togglePasswordType}>
+                  {translate(renderSuggested ? "chpass.button_custom_password" : "chpass.button_suggest_password")}
+                </EduIDButton>
+              </ButtonGroup>
+            </div>
+            <div id="chpass-form" className="tabpane">
+              <PrimaryButton
+                id="chpass-button"
+                className="settings-button"
+                disabled={formProps.submitting || formProps.invalid}
+                onClick={formProps.handleSubmit}
+              >
+                {translate("chpass.button_save_password")}
+              </PrimaryButton>
+              <EduIDButton className="cancel-button" onClick={handleCancel}>
+                {translate("cm.cancel")}
+              </EduIDButton>
+            </div>
+          </React.Fragment>
+        );
+      }}
+    />
   );
 }
 
