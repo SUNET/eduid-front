@@ -1,18 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  fetchAuthnOptions,
-  LoginAuthnOptions,
-  fetchUseOtherDevice1,
-  LoginUseOtherDevice1Response,
-  fetchUseOtherDevice2,
-  LoginUseOtherDevice2Response,
   fetchNext,
+  fetchUseOtherDevice1,
+  fetchUseOtherDevice2,
+  LoginAuthnOptions,
+  LoginNextResponse,
+  LoginUseOtherDevice1Response,
+  LoginUseOtherDevice2Response,
+  SAMLParameters,
 } from "apis/eduidLogin";
 import { ToUs } from "login/components/LoginApp/Login/TermsOfUse";
-import { userInfo } from "os";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
-import { NextResponse, SAMLParameters } from "../sagas/login/postRefLoginSaga";
 
 // Define a type for the slice state
 interface LoginState {
@@ -61,13 +60,14 @@ export const loginSlice = createSlice({
       state.next_page = undefined;
       state.other_device1 = undefined;
     },
-    postIdpNextSuccess: (state, action: PayloadAction<NextResponse>) => {
+    postIdpNextSuccess: (state, action: PayloadAction<LoginNextResponse>) => {
       // Process a successful response from the /next endpoint.
       // TODO: Use the fetchNext thunk instead, and remove this
       const samlParameters = action.payload.action === "FINISHED" ? action.payload.parameters : undefined;
       state.next_page = action.payload.action;
       state.post_to = action.payload.target;
       state.saml_parameters = samlParameters;
+      if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
     },
     postIdpTouSuccess: (state, action: PayloadAction<{ version: string }>) => {
       // Process a successful response from the /tou endpoint. We posted our available TOU versions to the
@@ -105,10 +105,6 @@ export const loginSlice = createSlice({
         // Store the result from navigator.credentials.get() in the state, after the user used a webauthn credential.
         state.mfa.webauthn_assertion = action.payload;
       })
-      .addCase(fetchAuthnOptions.fulfilled, (state, action) => {
-        // Store results of fetching possible authentication options from the backend.
-        state.authn_options = action.payload;
-      })
       .addCase(fetchUseOtherDevice1.fulfilled, (state, action) => {
         // Store the result for the user requesting to use another device to log in.
         if (action.payload.state === "ABORTED" || action.payload.state === "FINISHED") {
@@ -137,6 +133,7 @@ export const loginSlice = createSlice({
         state.next_page = action.payload.action;
         state.post_to = action.payload.target;
         state.saml_parameters = samlParameters;
+        if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
       });
   },
 });

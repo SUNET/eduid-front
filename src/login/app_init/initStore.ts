@@ -1,21 +1,17 @@
-// create middleware
+import { configureStore } from "@reduxjs/toolkit";
+import { routerMiddleware, routerReducer } from "react-router-redux";
+import { notificationsSlice } from "reducers/Notifications";
+import { reducer as formReducer } from "redux-form";
+import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import notifyAndDispatch from "../../notify-middleware";
-import { routerMiddleware } from "react-router-redux";
-import { history } from "../components/App/App";
-
-// import all sagas to add to store
+import intlSlice from "../../reducers/Internationalisation";
 import rootSaga from "../app_config/login-rootSaga";
-import { configureStore, Reducer } from "@reduxjs/toolkit";
-import initReducer from "./init_reducer";
-import { notificationsSlice } from "reducers/Notifications";
-import { routerReducer } from "react-router-redux";
-import { reducer as formReducer } from "redux-form";
+import { history } from "../components/App/App";
 import appReducer from "../components/App/App_reducer";
 import loginSlice from "../redux/slices/loginSlice";
 import resetPasswordSlice from "../redux/slices/resetPasswordSlice";
-import logger from "redux-logger";
-import intlSlice from "../../reducers/Internationalisation";
+import initReducer from "./init_reducer";
 
 /* setup to run the combined sagas */
 const sagaMiddleware = createSagaMiddleware();

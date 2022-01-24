@@ -7,34 +7,6 @@ import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
-export interface LoginAuthnOptions {
-  freja_eidplus?: boolean;
-  other_device?: boolean;
-  password?: boolean;
-  username?: string;
-  usernamepassword?: boolean;
-  webauthn?: boolean;
-}
-/**
- * @public
- * @function fetchAuthnOptions
- * @desc     Get info about available options for authentication.
- */
-export const fetchAuthnOptions = createAsyncThunk<
-  LoginAuthnOptions,
-  { ref: string },
-  { dispatch: LoginAppDispatch; state: LoginRootState }
->("login/api/fetchAuthnOptions", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    ref: args.ref,
-  };
-
-  return makeLoginRequest<LoginAuthnOptions>(thunkAPI, "authn_options", body)
-    .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
-});
-
-/*********************************************************************************************************************/
 
 export type LoginUseOtherDevice1Request = UseOtherDevice1Fetch | UseOtherDevice1Abort | UseOtherDevice1SubmitCode;
 export type LoginUseOtherDevice1Response = UseOtherDevice1ResponseWithQR | UseOtherDevice1ResponseWithoutQR;
@@ -160,8 +132,19 @@ export interface LoginNextResponse {
   action: string;
   target: string;
   parameters?: SAMLParameters;
+  authn_options?: LoginAuthnOptions;
 }
+
 export type SAMLParameters = { SAMLResponse: string; RelayState?: string };
+
+export interface LoginAuthnOptions {
+  freja_eidplus?: boolean;
+  other_device?: boolean;
+  password?: boolean;
+  username?: string;
+  usernamepassword?: boolean;
+  webauthn?: boolean;
+}
 
 /**
  * @public

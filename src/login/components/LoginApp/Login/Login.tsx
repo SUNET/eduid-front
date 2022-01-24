@@ -1,4 +1,4 @@
-import { fetchAuthnOptions, fetchNext } from "apis/eduidLogin";
+import { fetchNext } from "apis/eduidLogin";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
@@ -28,13 +28,6 @@ const Login = (): JSX.Element => {
     ref = params.ref; // need ref below too
     dispatch(loginSlice.actions.addLoginRef({ ref: ref, start_url: window.location.href }));
   }
-
-  useEffect(() => {
-    // Fetching authn_options depends on state.config being loaded first (base_url being set)
-    if (base_url && ref) {
-      dispatch(fetchAuthnOptions({ ref: ref }));
-    }
-  }, [base_url, ref]);
 
   useEffect(() => {
     // Ask the backend what to do

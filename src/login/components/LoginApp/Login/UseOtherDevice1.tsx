@@ -1,4 +1,4 @@
-import { fetchUseOtherDevice1, LoginUseOtherDevice1Response, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
+import { fetchUseOtherDevice1, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
