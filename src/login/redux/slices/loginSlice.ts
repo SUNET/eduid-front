@@ -50,8 +50,8 @@ export const loginSlice = createSlice({
       state.start_url = action.payload.start_url;
     },
     startLoginWithAnotherDevice: (state, action: PayloadAction<{ username?: string }>) => {
-      if (action.payload.username && !state.authn_options.username) {
-        state.authn_options.username = action.payload.username;
+      if (action.payload.username && !state.authn_options.forced_username) {
+        state.authn_options.forced_username = action.payload.username;
       }
       state.next_page = "OTHER_DEVICE";
     },
@@ -108,12 +108,10 @@ export const loginSlice = createSlice({
       .addCase(fetchUseOtherDevice1.fulfilled, (state, action) => {
         // Store the result for the user requesting to use another device to log in.
         if (action.payload.state === "ABORTED" || action.payload.state === "FINISHED") {
-          console.log("DONE ", action.payload.state);
           // Remove state in frontend too when backend confirms the request has been aborted or finished
           state.other_device1 = undefined;
           state.next_page = undefined;
         } else {
-          console.log("NOT DONE ", action.payload.state);
           state.other_device1 = action.payload;
         }
       })

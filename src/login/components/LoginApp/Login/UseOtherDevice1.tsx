@@ -16,14 +16,15 @@ import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
  */
 function UseOtherDevice1() {
   const other_device = useAppSelector((state) => state.login.other_device1);
-  const username = useAppSelector((state) => state.login.authn_options.username);
+  const username = useAppSelector((state) => state.login.authn_options.forced_username);
   const loginRef = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (loginRef && !other_device) {
       // refresh state on page reload
-      dispatch(fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: username }));
+      const _name = username ? username : undefined; // backend is picky and won't allow null
+      dispatch(fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: _name }));
     }
   }, []);
 
@@ -91,7 +92,6 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
   // have to pass a function to ResponseCodeForm in order for it to show the button
   function handleLoginButtonOnClick() {
-    console.log("CLICKED LOG IN");
     return undefined;
   }
 

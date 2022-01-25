@@ -141,7 +141,7 @@ export interface LoginAuthnOptions {
   freja_eidplus?: boolean;
   other_device?: boolean;
   password?: boolean;
-  username?: string;
+  forced_username?: string;
   usernamepassword?: boolean;
   webauthn?: boolean;
 }
