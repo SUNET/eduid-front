@@ -3,23 +3,8 @@ import { FormattedMessage } from "react-intl";
 
 export const login = {
   // --- USERNAME & PASSWORD --- //
-  "login.usernamePw.password-input": (
-    <FormattedMessage id="login.usernamePw.password-input" defaultMessage={`Password`} />
-  ),
-  "login.usernamePw.submit-button-idle": (
-    <FormattedMessage id="login.usernamePw.submit-button-idle" defaultMessage={`Log in`} />
-  ),
-  "login.usernamePw.submit-button-busy": (
-    <FormattedMessage id="login.usernamePw.submit-button-busy" defaultMessage={`Logging in`} />
-  ),
   "login.usernamePw.reset-password-link": (
     <FormattedMessage id="login.usernamePw.reset-password-link" defaultMessage={`Forgot your password?`} />
-  ),
-  "login.usernamePw.register-prompt": (
-    <FormattedMessage id="login.usernamePw.register-prompt" defaultMessage={`Don't have eduID?`} />
-  ),
-  "login.usernamePw.register-link": (
-    <FormattedMessage id="login.usernamePw.register-link" defaultMessage={`Register here.`} />
   ),
 
   // --- MFA --- //

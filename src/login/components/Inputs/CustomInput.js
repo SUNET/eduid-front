@@ -109,9 +109,7 @@ const customInput = (props) => {
     <FormGroup id={`${input.name}-wrapper`}>
       <RenderLabelAndHelpText {...props} name={input.name} />
       {input.name === "current-password" ? (
-        <PasswordInputElement {...props} name={input.name} valid={valid} invalid={invalid} id={input.name} />
-      ) : input.name === "current-password" ? (
-        <InputToggleShowHide {...props} name={input.name} valid={valid} invalid={invalid} />
+        <PasswordInputElement {...props} name={input.name} id={input.name} valid={valid} invalid={invalid} />
       ) : (
         <RenderInput {...props} name={input.name} valid={valid} invalid={invalid} />
       )}

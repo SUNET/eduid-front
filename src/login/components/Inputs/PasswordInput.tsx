@@ -2,12 +2,13 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "login/translation";
 import React, { useState } from "react";
-import { useIntl } from "react-intl";
-import { Input } from "reactstrap";
-import { Field } from "redux-form";
+import { Field as FinalField } from "react-final-form";
+import { FormattedMessage, useIntl } from "react-intl";
+import { Input, InputProps } from "reactstrap";
+import { InputType } from "reactstrap/types/lib/Input";
 import CustomInput from "./CustomInput";
 
-function RenderHideButton(props: { setInputType: (value: string) => void }) {
+function RenderHideButton(props: { setInputType: (value: InputType) => void }) {
   return (
     <button
       type="button"
@@ -20,7 +21,7 @@ function RenderHideButton(props: { setInputType: (value: string) => void }) {
   );
 }
 
-function RenderShowButton(props: { setInputType: (value: string) => void }) {
+function RenderShowButton(props: { setInputType: (value: InputType) => void }) {
   return (
     <button
       type="button"
@@ -33,23 +34,13 @@ function RenderShowButton(props: { setInputType: (value: string) => void }) {
   );
 }
 
-interface PasswordInputElementProps {
-  input: any;
-  type: any;
-  placeholder: string;
-  valid: boolean;
-  invalid: boolean;
-  autoComplete: any;
-  ariaLabel: any;
-  required: boolean;
-  id: string;
-}
-export function PasswordInputElement(props: PasswordInputElementProps): JSX.Element {
+export function PasswordInputElement(props: InputProps): JSX.Element {
   const { input } = props;
-  const [inputType, setInputType] = useState(props.type);
+  const [inputType, setInputType] = useState(props.input.type);
   return (
     <div className="password-input">
       <Input
+        {...input}
         type={inputType}
         placeholder={props.placeholder}
         valid={props.valid}
@@ -58,10 +49,9 @@ export function PasswordInputElement(props: PasswordInputElementProps): JSX.Elem
         aria-label={props.ariaLabel}
         aria-required={props.required}
         id={props.id}
-        {...input}
       />
       {props.valid ? (
-        <div className="checkmark ">
+        <div className="checkmark">
           <FontAwesomeIcon icon={faCheck} />
         </div>
       ) : null}
@@ -74,7 +64,7 @@ export function PasswordInputElement(props: PasswordInputElementProps): JSX.Elem
   );
 }
 
-export function PasswordInput(): JSX.Element {
+export default function PasswordInput(props: { name?: string }): JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -83,18 +73,19 @@ export function PasswordInput(): JSX.Element {
     description: "placeholder text for password input",
   });
 
+  const required = (value: string) => (value ? undefined : "required");
+
   return (
-    <Field
+    <FinalField
       type="password"
-      name="current-password"
+      name={props.name || "current-password"}
       component={CustomInput}
       autoComplete="current-password"
       required={true}
-      label={translate("login.usernamePw.password-input")}
+      label={<FormattedMessage defaultMessage="Password" description="password input field label" />}
       placeholder={placeholder}
       helpBlock={""}
+      validate={required}
     />
   );
 }
-
-export default PasswordInput;
