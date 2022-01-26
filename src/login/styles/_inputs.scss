@@ -33,6 +33,9 @@ input[type="radio"] {
   //  background-color: $white;
   background-color: transparent;
   border-radius: 50%;
+
+  /* to prevent overwrite from input padding, this ensures that the radio button remains round */
+  padding: 0;
 }
 
 /* appearance for checked radiobutton */
