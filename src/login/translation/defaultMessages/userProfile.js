@@ -544,10 +544,6 @@ export const userData = {
 
   "nin_display.profile.no_nin": <FormattedMessage id="nin_display.profile.no_nin" defaultMessage={`add id number`} />,
 
-  nin_show_last_four_digits: <FormattedMessage id="nin_show_last_four_digits" defaultMessage={`SHOW`} />,
-
-  nin_hide_last_four_digits: <FormattedMessage id="nin_hide_last_four_digits" defaultMessage={`HIDE`} />,
-
   "nins.input_help_text": (
     <FormattedMessage id="nins.input_help_text" defaultMessage={"National identity number with 12 digits"} />
   ),

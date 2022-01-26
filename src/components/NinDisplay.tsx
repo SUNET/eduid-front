@@ -4,6 +4,7 @@ import EduIDButton from "components/EduIDButton";
 import ninsSlice, { NinInfo } from "reducers/Nins";
 import { translate } from "login/translation";
 import { useDashboardAppDispatch } from "dashboard-hooks";
+import { FormattedMessage } from "react-intl";
 
 interface NinDisplayProps {
   nins: NinInfo[]; // all nins
@@ -42,7 +43,11 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
           setShowFullNin(!showFullNin);
         }}
       >
-        {showFullNin ? translate("nin_hide_last_four_digits") : translate("nin_show_last_four_digits")}
+        {showFullNin ? (
+          <FormattedMessage defaultMessage="HIDE" description="nin/password button label" />
+        ) : (
+          <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
+        )}
       </button>
       {props.showDeleteButton && !nin.verified && (
         // if showDeleteButton is true and nin is not verified, button for deleting of nin number will appear
