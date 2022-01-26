@@ -1,11 +1,17 @@
-import PropTypes from "prop-types";
+import { translate } from "login/translation";
 import React, { Fragment } from "react";
+import { FieldRenderProps } from "react-final-form";
 import { FormGroup, FormText, Input, Label } from "reactstrap";
-import i18n from "../../translation/InjectIntl_HOC_factory";
-import InputToggleShowHide from "./InputToggleShowHide";
 import { PasswordInputElement } from "./PasswordInput";
 
-const RenderLabelAndHelpText = (props) => {
+interface CustomInputProps extends FieldRenderProps<string> {
+  label?: string;
+  helpBlock?: React.ReactNode;
+  disabled?: boolean;
+  autocomplete?: string;
+}
+
+const RenderLabelAndHelpText = (props: CustomInputProps) => {
   const { label, name, helpBlock, required } = props;
   return (
     <div className={"input-label-helptext-container"}>
@@ -20,13 +26,13 @@ const RenderLabelAndHelpText = (props) => {
   );
 };
 
-const RenderErrorMessage = (props) => {
-  const { meta, translate, invalid } = props;
+const RenderErrorMessage = (props: CustomInputProps) => {
+  const { meta, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
   return (
     errmsg && (
       <FormText>
-        <span role="alert" aria-invalid="true" tabIndex="0" className="input-validate-error">
+        <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
           {errmsg}
         </span>
       </FormText>
@@ -34,23 +40,10 @@ const RenderErrorMessage = (props) => {
   );
 };
 
-const RenderInput = (props) => {
-  const {
-    input,
-    name,
-    selectOptions,
-    type,
-    disabled,
-    placeholder,
-    valid,
-    invalid,
-    autoComplete,
-    autoFocus,
-    ariaLabel,
-    required,
-  } = props;
+const RenderInput = (props: CustomInputProps) => {
+  const { input, selectOptions, valid } = props;
   if (selectOptions) {
-    const renderSelectLanguage = selectOptions.map((option, index) => {
+    const renderSelect = selectOptions.map((option: string[], index: number) => {
       return (
         <Fragment key={index}>
           <label key={option[0]} htmlFor={option[1]}>
@@ -69,29 +62,20 @@ const RenderInput = (props) => {
       );
     });
 
-    return <div className="radio-input-container">{renderSelectLanguage}</div>;
-  } else {
-    return (
-      <Input
-        type={type}
-        disabled={disabled}
-        id={name}
-        placeholder={placeholder}
-        name={name}
-        valid={input.value !== "" && valid}
-        invalid={invalid}
-        autoComplete={autoComplete}
-        autoFocus={autoFocus}
-        aria-label={ariaLabel}
-        aria-required={required}
-        required={required}
-        {...input}
-      />
-    );
+    return <div className="radio-input-container">{renderSelect}</div>;
   }
+  return (
+    <Input
+      id={input.name}
+      type={props.type}
+      valid={input.value !== "" && valid}
+      aria-required={input.required}
+      {...input}
+    />
+  );
 };
 
-const customInput = (props) => {
+export default function CustomInput(props: FieldRenderProps<string>): JSX.Element {
   const { meta, input } = props;
 
   let valid = false,
@@ -111,25 +95,9 @@ const customInput = (props) => {
       {input.name === "current-password" ? (
         <PasswordInputElement {...props} name={input.name} id={input.name} valid={valid} invalid={invalid} />
       ) : (
-        <RenderInput {...props} name={input.name} valid={valid} invalid={invalid} />
+        <RenderInput {...props} valid={valid} invalid={invalid} />
       )}
       <RenderErrorMessage {...props} name={input.name} valid={valid} invalid={invalid} />
     </FormGroup>
   );
-};
-
-customInput.propTypes = {
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  meta: PropTypes.object,
-  input: PropTypes.object,
-  name: PropTypes.string,
-  selectOptions: PropTypes.array,
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-  placeholder: PropTypes.string,
-  valid: PropTypes.bool,
-  invalid: PropTypes.bool,
-  translate: PropTypes.func,
-};
-
-export default i18n(customInput);
+}
