@@ -1,8 +1,10 @@
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "login/translation";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { FieldRenderProps } from "react-final-form";
-import { FormGroup, FormText, Input, Label } from "reactstrap";
-import { PasswordInputElement } from "./PasswordInput";
+import { FormattedMessage } from "react-intl";
+import { FormGroup, FormText, Input, InputProps, Label } from "reactstrap";
 
 interface CustomInputProps extends FieldRenderProps<string> {
   label?: string;
@@ -101,3 +103,52 @@ const InputElement = (props: CustomInputProps): JSX.Element => {
     />
   );
 };
+
+/**
+ * Render a Password input component, with a checkmark if something has been entered and a Show/Hide button
+ * to toggle between text-input and password-input.
+ * @param props
+ * @returns
+ */
+export function PasswordInputElement(props: InputProps): JSX.Element {
+  const { input } = props;
+  const [showPassword, setShowPassword] = useState(false);
+
+  function toggleShowPassword() {
+    setShowPassword(!showPassword);
+  }
+
+  return (
+    <div className="password-input">
+      <Input
+        {...input}
+        type={showPassword ? "text" : "password"}
+        placeholder={props.placeholder}
+        valid={props.valid}
+        invalid={props.invalid}
+        autoComplete={props.autoComplete}
+        aria-label={props.ariaLabel}
+        aria-required={props.required}
+        id={props.id}
+      />
+      {props.valid ? (
+        <div className="checkmark">
+          <FontAwesomeIcon icon={faCheck} />
+        </div>
+      ) : null}
+
+      <button
+        type="button"
+        aria-label={showPassword ? "hide password" : "show password"}
+        className="show-hide-button"
+        onClick={toggleShowPassword}
+      >
+        {showPassword ? (
+          <FormattedMessage defaultMessage="HIDE" description="nin/password button label" />
+        ) : (
+          <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
+        )}
+      </button>
+    </div>
+  );
+}
