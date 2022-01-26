@@ -1,6 +1,11 @@
 import * as actions from "actions/DashboardConfig";
 import * as loadingDataActions from "../login/redux/actions/loadingDataActions";
 
+interface commonConfig {
+  debug: boolean;
+  environment: "dev" | "staging" | "production";
+}
+
 // see the config params in eduid-developer/etcd/conf.yaml
 const configData = {
   is_configured: false,
