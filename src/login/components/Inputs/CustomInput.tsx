@@ -11,7 +11,34 @@ interface CustomInputProps extends FieldRenderProps<string> {
   autocomplete?: string;
 }
 
-const RenderLabelAndHelpText = (props: CustomInputProps) => {
+export default function CustomInput(props: FieldRenderProps<string>): JSX.Element {
+  const { meta, input } = props;
+
+  let valid = false,
+    invalid = false;
+
+  if (meta.touched || meta.submitFailed) {
+    if (meta.error) {
+      invalid = true;
+    } else {
+      valid = true;
+    }
+  }
+
+  return (
+    <FormGroup id={`${input.name}-wrapper`}>
+      <RenderLabelAndHelpText {...props} name={input.name} />
+      {input.name === "current-password" ? (
+        <PasswordInputElement {...props} name={input.name} id={input.name} valid={valid} invalid={invalid} />
+      ) : (
+        <InputElement {...props} valid={valid} invalid={invalid} />
+      )}
+      <RenderErrorMessage {...props} name={input.name} valid={valid} invalid={invalid} />
+    </FormGroup>
+  );
+}
+
+const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
   const { label, name, helpBlock, required } = props;
   return (
     <div className={"input-label-helptext-container"}>
@@ -26,7 +53,7 @@ const RenderLabelAndHelpText = (props: CustomInputProps) => {
   );
 };
 
-const RenderErrorMessage = (props: CustomInputProps) => {
+const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
   const { meta, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
   return (
@@ -40,7 +67,7 @@ const RenderErrorMessage = (props: CustomInputProps) => {
   );
 };
 
-const RenderInput = (props: CustomInputProps) => {
+const InputElement = (props: CustomInputProps): JSX.Element => {
   const { input, selectOptions, valid } = props;
   if (selectOptions) {
     const renderSelect = selectOptions.map((option: string[], index: number) => {
@@ -74,30 +101,3 @@ const RenderInput = (props: CustomInputProps) => {
     />
   );
 };
-
-export default function CustomInput(props: FieldRenderProps<string>): JSX.Element {
-  const { meta, input } = props;
-
-  let valid = false,
-    invalid = false;
-
-  if (meta.touched || meta.submitFailed) {
-    if (meta.error) {
-      invalid = true;
-    } else {
-      valid = true;
-    }
-  }
-
-  return (
-    <FormGroup id={`${input.name}-wrapper`}>
-      <RenderLabelAndHelpText {...props} name={input.name} />
-      {input.name === "current-password" ? (
-        <PasswordInputElement {...props} name={input.name} id={input.name} valid={valid} invalid={invalid} />
-      ) : (
-        <RenderInput {...props} valid={valid} invalid={invalid} />
-      )}
-      <RenderErrorMessage {...props} name={input.name} valid={valid} invalid={invalid} />
-    </FormGroup>
-  );
-}
