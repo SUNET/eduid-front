@@ -38,26 +38,35 @@
   }
 
   .name-inputs {
-    .hint {
-      margin-top: 1rem;
-      font-size: 1rem;
-    }
+    .help-text {
+      margin: 0.5rem 0 0;
 
+    }
     .icon-text {
       display: flex;
       align-items: baseline;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      
+      button.icon-only {      
+        &:hover,
+        &:active,
+        &:focus,
+        &:active:focus {
+          transform: rotate(180deg);
+          padding: initial;
+        }
 
-      p {
-        margin-left: 1rem;
-        padding-bottom: 0;
+        svg {
+          color: $orange-highlight;
+        }
       }
-    }
 
-    button:active,
-    button:focus,
-    button:active:focus {
-      transform: rotate(180deg);
+      label.hint {
+        font-family: inherit;
+        line-height: 1.2; 
+        margin: 0 0 0 .5rem;
+        padding: 0;
+      }
     }
   }
 }
@@ -129,17 +138,13 @@
   margin-bottom: 0;
 }
 
-.personal-data-info .profile-grid-cell {
-  margin-bottom: 1rem;
-}
-
 .external-names,
 .personal-data-info {
   .profile-grid-cell {
     flex: 1;
     flex-basis: 13rem;
     justify-content: unset;
-    margin-right: 1rem;
+    margin: 0 1rem 1rem 0;
 
     .display-data {
       font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;

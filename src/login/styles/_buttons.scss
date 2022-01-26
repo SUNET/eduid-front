@@ -305,6 +305,15 @@ button.btn-link {
   }
 }
 
+button.icon-only {
+  @extend .icon;
+  box-shadow: none;
+  background: transparent;
+  border-color: transparent;
+  margin:0;
+  padding: 0;
+}
+
 @media (max-width: 414px) {
   button.btn {
     font-size: 0.9rem;
