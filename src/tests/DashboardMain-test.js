@@ -51,7 +51,6 @@ function setupComponent() {
     },
   });
   const props = {
-    show_sidebar: true,
     eppn: "eppn-eppn",
   };
   const wrapper = mount(
