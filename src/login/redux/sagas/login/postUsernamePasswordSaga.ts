@@ -3,9 +3,24 @@ import postRequest from "../postDataRequest";
 import { putCsrfToken } from "../../../../sagas/common";
 import loginSlice from "../../slices/loginSlice";
 import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
+import { createAction, PayloadAction } from "@reduxjs/toolkit";
+import { loginFail } from "apis/eduidLogin";
+import { LoginRootState } from "login/app_init/initStore";
 
-export function* postUsernamePasswordSaga(action) {
-  const state = yield select((state) => state);
+interface UsernamePassword {
+  email: string;
+  currentPassword: string;
+}
+
+interface UsernamePasswordResponse {
+  finished?: boolean;
+}
+
+// Action connected to postUsernamePasswordSaga. Will post username and password to the /pw_auth endpoint.
+export const callUsernamePasswordSaga = createAction<UsernamePassword>("login/callPostUsernamePassword");
+
+export function* postUsernamePasswordSaga(action: PayloadAction<UsernamePassword>) {
+  const state: LoginRootState = yield select((state) => state);
   const url = state.login.post_to;
   const dataToSend = {
     ref: state.login.ref,
@@ -15,7 +30,11 @@ export function* postUsernamePasswordSaga(action) {
   };
   try {
     yield put(loadingData());
-    const response = yield call(postRequest, url, dataToSend);
+    const response: PayloadAction<UsernamePasswordResponse, string, never, boolean> = yield call(
+      postRequest,
+      url,
+      dataToSend
+    );
     yield put(putCsrfToken(response));
     if (response.payload.finished) {
       yield put(loginSlice.actions.callLoginNext());
@@ -26,7 +45,9 @@ export function* postUsernamePasswordSaga(action) {
       return;
     }
   } catch (error) {
-    yield put(loginSlice.actions.loginSagaFail(error.toString()));
+    if (error instanceof Error) {
+      yield put(loginFail(error.toString()));
+    }
   } finally {
     yield put(loadingDataComplete());
   }

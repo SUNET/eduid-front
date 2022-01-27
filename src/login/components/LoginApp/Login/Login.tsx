@@ -1,24 +1,24 @@
-import React, { Fragment, useEffect } from "react";
+import { fetchNext } from "apis/eduidLogin";
+import React, { useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
-import UsernamePw from "./UsernamePw";
-import TermsOfUse from "./TermsOfUse";
-import MultiFactorAuth from "./MultiFactorAuth";
-import SubmitSamlResponse from "./SubmitSamlResponse";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
-
-interface LoginProps {
-  translate(msg: string): string;
-}
+import MultiFactorAuth from "./MultiFactorAuth";
+import SubmitSamlResponse from "./SubmitSamlResponse";
+import TermsOfUse from "./TermsOfUse";
+import UseOtherDevice1 from "./UseOtherDevice1";
+import UseOtherDevice2 from "./UseOtherDevice2";
+import UsernamePw from "./UsernamePw";
 
 // URL parameters passed to this component
 interface LoginParams {
   ref?: string;
 }
 
-const Login = (props: LoginProps): JSX.Element => {
+const Login = (): JSX.Element => {
   const history = useHistory();
+  const base_url = useAppSelector((state) => state.config.base_url);
   const next_page = useAppSelector((state) => state.login.next_page);
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();
@@ -28,6 +28,13 @@ const Login = (props: LoginProps): JSX.Element => {
     ref = params.ref; // need ref below too
     dispatch(loginSlice.actions.addLoginRef({ ref: ref, start_url: window.location.href }));
   }
+
+  useEffect(() => {
+    // Ask the backend what to do
+    if (base_url && !next_page && ref) {
+      dispatch(fetchNext({ ref }));
+    }
+  }, [base_url, ref, next_page]);
 
   useEffect(() => {
     /* Changing URL is apparently what triggers browsers password managers, so we
@@ -41,19 +48,31 @@ const Login = (props: LoginProps): JSX.Element => {
   }, [next_page]);
 
   return (
-    <Fragment>
+    <React.Fragment>
       {next_page === "USERNAMEPASSWORD" ? (
-        <UsernamePw {...props} />
+        <UsernamePw />
+      ) : next_page === "OTHER_DEVICE" ? (
+        <UseOtherDevice1 />
       ) : next_page === "TOU" ? (
         <TermsOfUse />
       ) : next_page === "MFA" ? (
-        <MultiFactorAuth {...props} />
+        <MultiFactorAuth />
       ) : next_page === "FINISHED" ? (
-        <SubmitSamlResponse />
-      ) : null}
-    </Fragment>
+        <RenderFinished />
+      ) : next_page !== undefined ? (
+        <h2 className="heading">
+          <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown state, please try again." />
+        </h2>
+      ) : // show nothing before next_page is initialised
+      null}
+    </React.Fragment>
   );
 };
 
-// InjectIntl 'invents' the translate prop
-export default InjectIntl(Login);
+function RenderFinished(): JSX.Element {
+  const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
+
+  return <React.Fragment>{SAMLParameters ? <SubmitSamlResponse /> : <UseOtherDevice2 />}</React.Fragment>;
+}
+
+export default Login;

@@ -3,7 +3,6 @@ import { FormattedMessage } from "react-intl";
 
 export const login = {
   // --- USERNAME & PASSWORD --- //
-  "login.usernamePw.h2-heading": <FormattedMessage id="login.usernamePw.h2-heading" defaultMessage={`Log in`} />,
   "login.usernamePw.password-input": (
     <FormattedMessage id="login.usernamePw.password-input" defaultMessage={`Password`} />
   ),
