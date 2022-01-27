@@ -740,6 +740,9 @@
   "letter.no_state_found": {
     "string": "No state found"
   },
+  "letter.not-sent": {
+    "string": "Letter send request failed. Please try again."
+  },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
     "string": "Letter confirmation code"

@@ -254,6 +254,10 @@ export const userVetting = {
     <FormattedMessage id="letter.verify_title" defaultMessage={`Add the code you have received by post`} />
   ),
 
+  "letter.not-sent": (
+    <FormattedMessage id="letter.not-sent" defaultMessage={`Letter send request failed. Please try again.`} />
+  ),
+
   /* ----- Phone Subscription ------- */
 
   "lmp.button_text_request": <FormattedMessage id="lmp.button_text_request" defaultMessage={`by phone`} />,
