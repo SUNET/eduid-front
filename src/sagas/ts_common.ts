@@ -12,7 +12,7 @@ export const checkStatus = function (response: Response): Response {
     document.location.assign(TOKEN_SERVICE_URL + "?next=" + next);
     throw new Error("Request needs authentication");
   } else {
-    throw new Error(response.statusText);
+    throw new Error(`HTTP ${response.status} ${response.statusText}`);
   }
 };
 

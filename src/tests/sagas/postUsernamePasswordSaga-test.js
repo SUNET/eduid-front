@@ -1,7 +1,10 @@
 import expect from "expect";
 import { call } from "redux-saga/effects";
 import postRequest from "../../login/redux/sagas/postDataRequest";
-import { postUsernamePasswordSaga } from "../../login/redux/sagas/login/postUsernamePasswordSaga";
+import {
+  callUsernamePasswordSaga,
+  postUsernamePasswordSaga,
+} from "../../login/redux/sagas/login/postUsernamePasswordSaga";
 import loginSlice from "../../login/redux/slices/loginSlice";
 
 const fakeState = {
@@ -16,7 +19,7 @@ const fakeState = {
 
 const testUsername = "test_username";
 const testPassword = "test_password";
-const action = loginSlice.actions.postUsernamePassword(testUsername, testPassword);
+const action = callUsernamePasswordSaga(testUsername, testPassword);
 
 const successResponse = {
   type: "POST_IDP_PW_AUTH_SUCCESS",

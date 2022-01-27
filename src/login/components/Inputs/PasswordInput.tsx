@@ -1,31 +1,50 @@
-import React, { useState } from "react";
-import { Field } from "redux-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import CustomInput from "./CustomInput";
-import { Input } from "reactstrap";
-import InjectIntl from "../../translation/InjectIntl_HOC_factory";
-import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { translate } from "login/translation";
+import React, { useState } from "react";
 import { useIntl } from "react-intl";
+import { Input } from "reactstrap";
+import { Field } from "redux-form";
+import CustomInput from "./CustomInput";
 
-let RenderHideButton = ({ setInputType, translate }) => (
-  <button
-    type="button"
-    aria-label="hide password"
-    className="show-hide-button"
-    onClick={() => setInputType("password")}
-  >
-    <div className="button-text-container">{translate("nin_hide_last_four_digits")}</div>
-  </button>
-);
+function RenderHideButton(props: { setInputType: (value: string) => void }) {
+  return (
+    <button
+      type="button"
+      aria-label="hide password"
+      className="show-hide-button"
+      onClick={() => props.setInputType("password")}
+    >
+      <div className="button-text-container">{translate("nin_hide_last_four_digits")}</div>
+    </button>
+  );
+}
 
-let RenderShowButton = ({ setInputType, translate }) => (
-  <button type="button" aria-label="show password" className="show-hide-button" onClick={() => setInputType("text")}>
-    {translate("nin_show_last_four_digits")}
-  </button>
-);
+function RenderShowButton(props: { setInputType: (value: string) => void }) {
+  return (
+    <button
+      type="button"
+      aria-label="show password"
+      className="show-hide-button"
+      onClick={() => props.setInputType("text")}
+    >
+      {translate("nin_show_last_four_digits")}
+    </button>
+  );
+}
 
-export let PasswordInputElement = (props) => {
+interface PasswordInputElementProps {
+  input: any;
+  type: any;
+  placeholder: string;
+  valid: boolean;
+  invalid: boolean;
+  autoComplete: any;
+  ariaLabel: any;
+  required: boolean;
+  id: string;
+}
+export function PasswordInputElement(props: PasswordInputElementProps): JSX.Element {
   const { input } = props;
   const [inputType, setInputType] = useState(props.type);
   return (
@@ -53,9 +72,9 @@ export let PasswordInputElement = (props) => {
       ) : null}
     </div>
   );
-};
+}
 
-let PasswordInput = ({ translate }) => {
+export function PasswordInput(): JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -70,16 +89,12 @@ let PasswordInput = ({ translate }) => {
       name="current-password"
       component={CustomInput}
       autoComplete="current-password"
-      required="true"
+      required={true}
       label={translate("login.usernamePw.password-input")}
       placeholder={placeholder}
       helpBlock={""}
     />
   );
-};
+}
 
-PasswordInput.propTypes = {
-  translate: PropTypes.func.isRequired,
-};
-
-export default InjectIntl(PasswordInput);
+export default PasswordInput;

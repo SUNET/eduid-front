@@ -40,15 +40,16 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
       <div className="icon-text">
         <button
           type="button"
-          className="icon"
+          className="icon-only"
           disabled={loading}
+          aria-label="name-check"
           onClick={() => {
             dispatch(updateNamesFromSkatteverket());
           }}
         >
           <FontAwesomeIcon icon={faRedo} />
         </button>
-        <p className="hint">{translate("pd.update_locked_names")}</p>
+        <label htmlFor="name-check" className="hint">{translate("pd.update_locked_names")}</label>
       </div>
     </Fragment>
   );
@@ -77,7 +78,7 @@ const RenderEditableNames = (props: { names: NameStrings }) => {
           placeholder={props.names.last}
         />
       </div>
-      <p className="hint">{translate("pd.hint.names_locked_when_verified")}</p>
+      <p className="help-text">{translate("pd.hint.names_locked_when_verified")}</p>
     </Fragment>
   );
 };
