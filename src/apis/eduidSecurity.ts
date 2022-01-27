@@ -4,7 +4,7 @@
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
-import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
+import { RequestThunkAPI, KeyValues, makeRequest } from "./common";
 
 /*********************************************************************************************************************/
 export interface SuggestedPasswordResponse {
@@ -63,6 +63,10 @@ function makeSecurityRequest<T>(
   return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
     try {
       const state = thunkAPI.getState();
+
+      if (!state.config.security_url) {
+        throw new Error("Missing configuration security_url");
+      }
 
       const response = await makeRequest<T>(thunkAPI, state.config.security_url, endpoint, body, data);
 

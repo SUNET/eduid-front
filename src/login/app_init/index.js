@@ -1,4 +1,4 @@
-// this needs ot be imported before React even starts
+// this needs to be imported before React even starts
 import "../app_utils/betaVersion_cookie";
 // checkIfBeta();
 

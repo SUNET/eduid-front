@@ -1,5 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { newCsrfToken } from "actions/DashboardConfig";
+import { storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
 import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
 import { checkStatus, getRequest, postRequest } from "sagas/ts_common";
@@ -9,6 +9,8 @@ export interface RequestThunkAPI {
   dispatch: DashboardAppDispatch | LoginAppDispatch;
   signal: AbortSignal;
 }
+
+//export type RequestThunkAPI = LoginRequestThunkAPI | DashboardRequestThunkAPI;
 
 export interface KeyValues {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,7 +25,7 @@ function updateCsrf(action: { payload: { csrf_token?: string } }, thunkAPI: Requ
   if (action.payload === undefined || action.payload.csrf_token === undefined) return action;
   const state = thunkAPI.getState();
   if (action.payload.csrf_token != state.config.csrf_token) {
-    thunkAPI.dispatch(newCsrfToken(action.payload.csrf_token));
+    thunkAPI.dispatch(storeCsrfToken(action.payload.csrf_token));
   }
   delete action.payload.csrf_token;
   return action;
@@ -56,6 +58,15 @@ export function makeRequest<T>(
     body.csrf_token = state.config.csrf_token;
   }
 
+  return makeBareRequest<T>(thunkAPI, url, body, data);
+}
+
+export function makeBareRequest<T>(
+  thunkAPI: RequestThunkAPI,
+  url: string,
+  body?: KeyValues,
+  data?: KeyValues
+): Promise<PayloadAction<T, string, never, boolean>> {
   // do POST if there is a body, otherwise GET
   const req = body === undefined ? getRequest : postRequest;
 

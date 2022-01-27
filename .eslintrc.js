@@ -36,7 +36,6 @@ module.exports = {
   globals: {
     // global variables from init-config and public-path, to prevent having "no-undef" errors
     EDUID_COOKIE_NAME: true,
-    LOGIN_CONFIG_URL: true,
     PASSWORD_SERVICE_URL: true,
     GROUP_MGMT_URL: true,
     __webpack_public_path__: true,

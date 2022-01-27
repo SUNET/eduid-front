@@ -2,7 +2,9 @@ import { put, call } from "redux-saga/effects";
 import { checkStatus, getRequest } from "../../sagas/common";
 import * as init_actions from "./init_actions";
 import * as app_actions from "../components/App/App_actions";
+import { LOGIN_CONFIG_URL } from "globals";
 
+// XXX UNUSED NOW
 export function* requestConfig() {
   try {
     const config = yield call(fetchConfig, LOGIN_CONFIG_URL);

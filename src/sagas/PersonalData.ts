@@ -26,7 +26,13 @@ export function* requestAllPersonalData() {
   try {
     yield put(getAllUserdata());
     const state: DashboardRootState = yield select((state) => state);
-    const response: PayloadAction<AllUserData, string, never, boolean> = yield call(fetchAllPersonalData, state.config);
+    if (!state.config.personal_data_url) {
+      throw new Error("Missing configuration personal_data_url");
+    }
+    const response: PayloadAction<AllUserData, string, never, boolean> = yield call(
+      fetchAllPersonalData,
+      state.config.personal_data_url
+    );
     yield put(putCsrfToken(response));
 
     if (response.error) {
@@ -101,9 +107,9 @@ export function* requestAllPersonalData() {
   }
 }
 
-export function fetchAllPersonalData(config: { personal_data_url: string }) {
+export function fetchAllPersonalData(base_url: string) {
   return window
-    .fetch(config.personal_data_url + "all-user-data", {
+    .fetch(base_url + "all-user-data", {
       ...getRequest,
     })
     .then(checkStatus)

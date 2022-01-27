@@ -11,7 +11,7 @@ import { history } from "../components/App/App";
 import appReducer from "../components/App/App_reducer";
 import loginSlice from "../redux/slices/loginSlice";
 import resetPasswordSlice from "../redux/slices/resetPasswordSlice";
-import initConfig from "./init_config";
+import configSlice from "../redux/reducers/configSlice";
 
 /* setup to run the combined sagas */
 const sagaMiddleware = createSagaMiddleware();
@@ -19,7 +19,7 @@ const middlewares = [sagaMiddleware, logger, notifyAndDispatch, routerMiddleware
 
 const initStore = configureStore({
   reducer: {
-    config: initConfig,
+    config: configSlice.reducer,
     app: appReducer,
     login: loginSlice.reducer,
     notifications: notificationsSlice.reducer,

@@ -1,6 +1,5 @@
+import { fetchJsConfig } from "apis/eduidJsConfig";
 import { takeLatest } from "redux-saga/effects";
-import * as init_actions from "../app_init/init_actions";
-import { requestConfig } from "../app_init/init_sagas";
 import { requestPhoneCodeForNewPassword } from "../redux/sagas/resetpassword/postExtraSecurityPhoneSaga";
 import { postEmailLink } from "../redux/sagas/resetpassword/postResetPasswordSaga";
 import { postSetNewPasswordExternalMfa } from "../redux/sagas/resetpassword/postSetNewPasswordExtraSecurityExternalMfaSaga";
@@ -13,8 +12,8 @@ import resetPasswordSlice from "../redux/slices/resetPasswordSlice";
 
 function* rootSaga() {
   yield [
-    takeLatest(init_actions.GET_CONFIG, requestConfig),
-    takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, requestLinkCode),
+    //takeLatest(init_actions.GET_CONFIG, requestConfig),
+    takeLatest(fetchJsConfig.fulfilled.type, requestLinkCode),
     ...loginSagas,
     takeLatest(resetPasswordSlice.actions.requestEmailLink, postEmailLink),
     takeLatest(resetPasswordSlice.actions.requestPhoneCode, requestPhoneCodeForNewPassword),

@@ -179,6 +179,10 @@ async function makeLoginRequest<T>(
     try {
       const state = thunkAPI.getState();
 
+      if (!state.config.base_url) {
+        throw new Error("Missing configuration base_url");
+      }
+
       const response = await makeRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
 
       if (response.error) {

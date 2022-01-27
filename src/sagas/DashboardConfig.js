@@ -3,6 +3,7 @@ import { checkStatus, getRequest, failRequest } from "sagas/common";
 import { getConfigFail } from "actions/DashboardConfig";
 import { DASHBOARD_CONFIG_URL } from "../globals";
 
+// TODO: bye
 export function* requestConfig() {
   const input = document.getElementById("jsconfig_url"),
     jsconfig_url = input ? input.value : DASHBOARD_CONFIG_URL;

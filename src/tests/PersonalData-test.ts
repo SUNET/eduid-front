@@ -136,7 +136,7 @@ describe("Async component", () => {
     next = generator.next(fakeState as unknown as any);
 
     // The saga calls fetchAllPersonalData
-    expect(next.value).toEqual(call(fetchAllPersonalData, fakeState.config));
+    expect(next.value).toEqual(call(fetchAllPersonalData, fakeState.config.personal_data_url));
 
     const pd_ladok: LadokData = {
       external_id: "foo",

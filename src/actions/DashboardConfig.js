@@ -1,3 +1,5 @@
+/// XXX MOVE TO CONFIG SLICE
+
 export const APP_LOADED = "APP_LOADED";
 export const GET_JSCONFIG_CONFIG = "GET_JSCONFIG_CONFIG";
 export const GET_JSCONFIG_CONFIG_SUCCESS = "GET_JSCONFIG_CONFIG_SUCCESS";
@@ -33,11 +35,11 @@ export function getInitialUserdata() {
   };
 }
 
-export function newCsrfToken(token) {
-  return {
-    type: NEW_CSRF_TOKEN,
-    payload: {
-      csrf_token: token,
-    },
-  };
-}
+// export function newCsrfToken(token) {
+//   return {
+//     type: NEW_CSRF_TOKEN,
+//     payload: {
+//       csrf_token: token,
+//     },
+//   };
+// }

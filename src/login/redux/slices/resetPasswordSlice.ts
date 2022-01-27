@@ -10,7 +10,7 @@ export type ExtraSecurityType = {
 };
 export type Phone = { index: string; number: string; phone_code: string };
 
-interface ResetPasswordState {
+export interface ResetPasswordState {
   email_address?: string;
   email_code?: string;
   phone: { index?: number; number?: string; phone_code?: string };

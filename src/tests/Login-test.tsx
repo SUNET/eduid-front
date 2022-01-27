@@ -12,14 +12,16 @@ import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
 import TermsOfUse from "../login/components/LoginApp/Login/TermsOfUse";
 import MultiFactorAuth from "../login/components/LoginApp/Login/MultiFactorAuth";
 import loginStore, { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
+import { LoginConfig, initialState as LoginInitialConfig } from "login/redux/reducers/configSlice";
 
 const baseState: LoginRootState = {
   config: {
+    ...LoginInitialConfig,
     next_url: "http://localhost/next",
     mfa_auth_idp: "https//swedenconnect.idp/",
     eidas_url: "http://eidas.docker",
     csrf_token: "csrf-token",
-  },
+  } as LoginConfig,
   login: {
     ref: "e0367c25-3853-45a9-806",
     tou: { available_versions: ["1999-v1"] },

@@ -3,10 +3,9 @@ import { startSubmit, stopSubmit, setSubmitSucceeded, setSubmitFailed } from "re
 import { startAsyncValidation, stopAsyncValidation } from "redux-form";
 import { updateIntl } from "../reducers/Internationalisation";
 
-import { newCsrfToken } from "actions/DashboardConfig";
-
 import * as CBOR from "sagas/cbor";
 import { LOCALIZED_MESSAGES, TOKEN_SERVICE_URL } from "../globals";
+import { storeCsrfToken } from "commonConfig";
 
 export const checkStatus = function (response) {
   if (response.status >= 200 && response.status < 300) {
@@ -46,7 +45,7 @@ export const putCsrfToken = function (action) {
   const token = action.payload.csrf_token;
   if (token !== undefined) {
     delete action.payload.csrf_token;
-    return newCsrfToken(token);
+    return storeCsrfToken(token);
   } else {
     return { type: "NOOP_ACTION" };
   }

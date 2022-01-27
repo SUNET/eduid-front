@@ -10,10 +10,10 @@ import * as openidActions from "actions/OpenidConnect";
 import * as openidFrejaActions from "actions/OpenidConnectFreja";
 import * as pdataActions from "actions/PersonalData";
 import * as securityActions from "actions/Security";
+import { fetchJsConfig } from "apis/eduidJsConfig";
 import ninsSlice from "reducers/Nins";
-import { put, select, takeEvery, takeLatest } from "redux-saga/effects";
+import { select, takeEvery, takeLatest } from "redux-saga/effects";
 import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/AccountLinking";
-import { requestConfig } from "sagas/DashboardConfig";
 import {
   requestMakePrimaryEmail,
   requestRemoveEmail,
@@ -43,10 +43,6 @@ import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPerso
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
 
-function* configSaga() {
-  yield put(configActions.getInitialUserdata());
-}
-
 // get cookie status out of store
 export const getCookieStatus = (state) => state.groups.hasCookie;
 // allow access based on status
@@ -59,12 +55,9 @@ function* allowGroupsSagas() {
 
 function* rootSaga() {
   yield [
-    takeLatest(configActions.GET_JSCONFIG_CONFIG, requestConfig),
-    takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSaga),
-    takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, allowGroupsSagas),
+    takeLatest(fetchJsConfig.fulfilled.type, allowGroupsSagas),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestCredentials),
-    //takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestSuggestedPassword),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, sendGetLetterProofing),
     takeLatest(pdataActions.postUserdata.type, postPersonalDataSaga),
     takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),

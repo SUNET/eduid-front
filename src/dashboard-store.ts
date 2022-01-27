@@ -4,7 +4,7 @@ import { routerReducer } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import personalDataSlice from "reducers/PersonalData";
 import emailsReducer from "reducers/Emails";
-import configReducer from "reducers/DashboardConfig";
+import configSlice from "reducers/DashboardConfig";
 import openidConnectReducer from "reducers/OpenidConnect";
 import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
 import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
@@ -23,7 +23,7 @@ import ladokSlice from "reducers/Ladok";
 const eduIDApp = combineReducers({
   router: routerReducer,
   chpass: chpassSlice.reducer,
-  config: configReducer,
+  config: configSlice.reducer,
   emails: emailsReducer,
   groups: groupsReducer as unknown as any,
   invites: invitesReducer as unknown as any,

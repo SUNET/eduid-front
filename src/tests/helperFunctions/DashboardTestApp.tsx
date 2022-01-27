@@ -5,11 +5,13 @@ import { mount, ReactWrapper } from "enzyme";
 import { ChangePasswordState } from "reducers/ChangePassword";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
+import { DashboardConfig, initialState as DashboardInitialConfig } from "reducers/DashboardConfig";
 
 export const dashboardTestState: DashboardRootState = {
   config: {
+    ...DashboardInitialConfig,
     csrf_token: "csrf-token",
-  },
+  } as DashboardConfig,
   router: undefined as any,
   form: undefined as any,
   intl: { locale: "en", messages: {} },

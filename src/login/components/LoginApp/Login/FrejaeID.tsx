@@ -12,6 +12,12 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
   const frejaUrlDomain = useAppSelector((state) => state.config.eidas_url);
   const idp = useAppSelector((state) => state.config.mfa_auth_idp);
   const startUrl = useAppSelector((state) => state.login.start_url);
+
+  if (!frejaUrlDomain) {
+    console.error("Missing configuration for Freja eID");
+    return <div className="secondary" tabIndex={0}></div>;
+  }
+
   // ensure url has one slash at the end to be functional in the link
   const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain.concat("/");
 
