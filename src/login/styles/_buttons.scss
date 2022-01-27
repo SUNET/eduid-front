@@ -305,6 +305,7 @@ button.btn-link {
   }
 }
 
+/* Instance/icon unique styles to be set in targeted css */
 button.icon-only {
   @extend .icon;
   box-shadow: none;
