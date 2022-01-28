@@ -4,11 +4,12 @@ import LetterProofingButton from "./LetterProofing";
 import * as actions from "../../../actions/LetterProofing";
 
 const mapStateToProps = (state) => {
-  const confirming = state.letter_proofing.confirmingLetter;
-  const valid_nin = isValid("nins")(state);
-  const confirmingLetter = (confirming && valid_nin) || state.letter_proofing.letter_expired;
+  const letterVerification = state.letter_proofing.confirmingLetter;
+  const swedishNin = isValid("nins")(state);
+  const requestLetterAllowed = (letterVerification && swedishNin) || state.letter_proofing.letter_expired;
+
   return {
-    confirmingLetter: confirmingLetter,
+    requestLetterAllowed,
     verifyingLetter_sent: state.letter_proofing.verifyingLetter,
     letter_sent_date: state.letter_proofing.letter_sent,
     letter_expires_date: state.letter_proofing.letter_expires,
