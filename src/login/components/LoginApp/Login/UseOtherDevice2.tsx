@@ -47,9 +47,9 @@ function UseOtherDevice2() {
 
   return (
     <div className="use-another-device device2">
-      <h2 className="heading">
+      <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in on another device" />
-      </h2>
+      </h3>
 
       {data ? <RenderOtherDevice2 data={data} /> : null}
     </div>
@@ -122,8 +122,8 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
         <FormattedMessage defaultMessage="You are using this device to log in on another device:" />
       </p>
 
-      <div className="table-responsive">
-        <table className="table table-striped">
+      <figure className="table-responsive">
+        <table className="table">
           <tbody>
             <tr className="device-info-row">
               <td>IP address</td>
@@ -137,11 +137,11 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
             </tr>
           </tbody>
         </table>
-      </div>
 
-      <p>
-        <span className="short_code device2">ID# {props.data.short_code}</span>
-      </p>
+        <figcaption className="short-code device2">ID# {props.data.short_code}</figcaption>
+
+      </figure>
+
     </div>
   );
 }

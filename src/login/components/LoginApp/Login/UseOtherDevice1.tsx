@@ -42,9 +42,9 @@ function UseOtherDevice1() {
 
   return (
     <div className="use-another-device device1">
-      <h2 className="heading">
+      <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in using another device" />
-      </h2>
+      </h3>
 
       {!error && hasQrCode && <RenderOtherDevice1 data={other_device} />}
       {error && <RenderFatalError error={error} />}
@@ -66,7 +66,7 @@ function RenderFatalError(props: { error: JSX.Element }) {
       <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
         {props.error}
       </div>
-      <div>
+      <div className="buttons">
         <ButtonPrimary
           type="submit"
           onClick={handleCancelButtonOnClick}
@@ -121,54 +121,50 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
   return (
     <React.Fragment>
-      <div className="step">
-        <span className="num">1.</span>
-        <span className="text">
+      <ol className="numbered-steps">
+
+        <li>
           <FormattedMessage defaultMessage="Scan this QR-code with your other device" />
-        </span>
-      </div>
-      <img className="qr-code" src={data.qr_img} />
-      <p>
-        <span className="short_code">ID# {data.display_id}</span>
-      </p>
 
-      <div className="step">
-        <span className="num">2.</span>
-        <span className="text">
+          <figure>  
+            <img className="qr-code" src={data.qr_img} />
+            <figcaption className="short-code">ID# {data.display_id}</figcaption>
+          </figure>
+        </li>
+
+        <li>
           <FormattedMessage defaultMessage="Log in on the other device" />
-        </span>
-      </div>
+        </li>
 
-      <div className="step">
-        <span className="num">3.</span>
-        <span className="text">
+        <li>
           <FormattedMessage defaultMessage="Enter the response code shown on the other device here" />
-        </span>
-      </div>
 
-      <div className="expiration-info device1">
-        <TimeRemainingWrapper
-          name="other-device-expires"
-          unique_id={data.display_id}
-          value={data.expires_in}
-          onReachZero={handleTimerReachZero}
-        >
-          <ExpiresMeter expires_max={data.expires_max} />
-        </TimeRemainingWrapper>
-      </div>
+          <div className="expiration-info device1">
+            <TimeRemainingWrapper
+              name="other-device-expires"
+              unique_id={data.display_id}
+              value={data.expires_in}
+              onReachZero={handleTimerReachZero}
+            >
+              <ExpiresMeter expires_max={data.expires_max} />
+            </TimeRemainingWrapper>
+          </div>
+     
+          {isExpired ? (
+            <RenderFatalError error={expiredMessage} />
+          ) : (
+            <ResponseCodeForm
+              extra_className="device1"
+              submitDisabled={false}
+              inputsDisabled={false}
+              handleLogin={handleLoginButtonOnClick}
+              handleAbort={handleAbortButtonOnClick}
+              handleSubmitCode={handleSubmitCode}
+            />
+          )}  
+        </li>
 
-      {isExpired ? (
-        <RenderFatalError error={expiredMessage} />
-      ) : (
-        <ResponseCodeForm
-          extra_className="device1"
-          submitDisabled={false}
-          inputsDisabled={false}
-          handleLogin={handleLoginButtonOnClick}
-          handleAbort={handleAbortButtonOnClick}
-          handleSubmitCode={handleSubmitCode}
-        />
-      )}
+      </ol>
 
       <DeveloperInfo {...data} />
     </React.Fragment>
