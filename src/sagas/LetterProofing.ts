@@ -57,9 +57,13 @@ export function* sendLetterProofing() {
       state.config,
       data
     );
-    console.log("[response]", response);
     yield put(putCsrfToken(response));
-    yield put(response);
+    if (response.error) {
+      // Errors are handled in notifyAndDispatch() (in notify-middleware.js)
+      yield put(response);
+      return;
+    }
+    yield put(letterProofingSlice.actions.postLetterProofingSuccess(response.payload));
   } catch (error) {
     yield* failRequest(error, letterProofingSlice.actions.letterProofingSagaFail);
     // yield* failRequest(error, actions.postLetterProofingSendLetterFail);

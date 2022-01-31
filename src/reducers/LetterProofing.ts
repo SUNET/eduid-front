@@ -35,22 +35,19 @@ const letterProofingSlice = createSlice({
         state.verifyingLetter = true;
       }
       state.letter_expires_in_days = action.payload.letter_expires_in_days;
-      state.letter_sent = action.payload.letter_sent;
       state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
       state.letter_sent = action.payload.letter_sent;
       state.letter_expires = action.payload.letter_expires;
       state.letter_expired = action.payload.letter_expired;
     },
     postLetterProofingSuccess: (state, action: PayloadAction<LetterProofingState>) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
       state.letter_sent = action.payload.letter_sent;
       state.letter_expires = action.payload.letter_expires;
       state.letter_expired = action.payload.letter_expired;
-      state.confirmingLetter = false;
-      state.verifyingLetter = false;
-    },
-    postLetterProofingFail: (state) => {
-      state.confirmingLetter = false;
-      state.verifyingLetter = false;
+      state.letter_expires_in_days = action.payload.letter_expires_in_days;
+      state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
     },
     postLetterProofingVerificationCode: (state, action) => {
       state.code = action.payload.code;
@@ -59,12 +56,11 @@ const letterProofingSlice = createSlice({
       state.confirmingLetter = false;
       state.verifyingLetter = false;
     },
-    postLetterProofingCodeFail: (state) => {
+    // Common action to signal a caught exception in one of the letter Proofing sagas.
+    letterProofingSagaFail: (state) => {
       state.confirmingLetter = false;
       state.verifyingLetter = false;
     },
-    // Common action to signal a caught exception in one of the reset password sagas.
-    letterProofingSagaFail: () => {},
   },
 });
 
