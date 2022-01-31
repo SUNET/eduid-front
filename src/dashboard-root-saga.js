@@ -2,7 +2,7 @@ import * as accountLinkingActions from "actions/AccountLinking";
 import * as configActions from "actions/DashboardConfig";
 import * as emailActions from "actions/Emails";
 import * as headerActions from "actions/Header";
-import * as letterActions from "actions/LetterProofing";
+import letterProofingSlice from "reducers/LetterProofing";
 import * as lmpActions from "actions/LookupMobileProofing";
 import * as mobileActions from "actions/Mobile";
 import * as ninActions from "actions/Nins";
@@ -87,16 +87,16 @@ function* rootSaga() {
     takeLatest(mobileActions.START_VERIFY, sagasMobile.requestVerifyMobile),
     takeLatest(securityActions.initiatePasswordChange.type, requestPasswordChange),
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
-    takeLatest(letterActions.POST_LETTER_PROOFING_PROOFING, sendLetterProofing),
-    takeLatest(letterActions.GET_LETTER_PROOFING_PROOFING, sendGetLetterProofing),
-    takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
+    takeLatest(letterProofingSlice.actions.postLetterProofingSendLetter, sendLetterProofing),
+    takeLatest(letterProofingSlice.actions.getLetterProofingState, sendGetLetterProofing),
+    takeLatest(letterProofingSlice.actions.postLetterProofingVerificationCode, sendLetterCode),
     takeLatest(ninActions.postNin.type, postNin),
     takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
     takeLatest(ninsSlice.actions.startRemove.type, requestRemoveNin),
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
-    takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestAllPersonalData),
-    takeEvery(letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
-    takeEvery(letterActions.POST_LETTER_PROOFING_CODE_SUCCESS, requestAllPersonalData),
+    takeEvery(letterProofingSlice.actions.stopLetterVerification, requestAllPersonalData),
+    takeEvery(letterProofingSlice.actions.postLetterProofingSuccess, requestAllPersonalData),
+    takeEvery(letterProofingSlice.actions.postLetterProofingCodeSuccess, requestAllPersonalData),
     takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
     takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL, requestNins),
     takeEvery(openidActions.POST_OIDC_PROOFING_PROOFING_SUCCESS, requestNins),
