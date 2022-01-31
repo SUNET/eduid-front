@@ -1,5 +1,4 @@
 import { translate } from "login/translation";
-import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
 import { shortCodePattern } from "../../app_utils/validation/regexPatterns";
@@ -15,7 +14,7 @@ interface LetterProofingProps {
   disabled: any;
 }
 
-function LetterProofingButton(props: LetterProofingProps) {
+function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
@@ -131,14 +130,5 @@ function LetterProofingButton(props: LetterProofingProps) {
     </div>
   );
 }
-
-LetterProofingButton.propTypes = {
-  disabled: PropTypes.bool,
-  confirmingLetter: PropTypes.bool,
-  sendConfirmationCode: PropTypes.func,
-  handleLetterProofing: PropTypes.func,
-  confirmLetterProofing: PropTypes.func,
-  handleStopConfirmationLetter: PropTypes.func,
-};
 
 export default LetterProofingButton;
