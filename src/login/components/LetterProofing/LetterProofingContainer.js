@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
 import LetterProofingButton from "./LetterProofing";
-import * as actions from "../../../actions/LetterProofing";
+import letterProofingSlice from "reducers/LetterProofing";
 
 const mapStateToProps = (state) => {
   const letterVerification = state.letter_proofing.confirmingLetter;
@@ -20,21 +20,21 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     confirmLetterProofing: function () {
-      dispatch(actions.postLetterProofingSendLetter());
+      dispatch(letterProofingSlice.actions.postLetterProofingSendLetter());
     },
     sendConfirmationCode: function (e) {
       e.preventDefault();
       const data = {
         code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
       };
-      dispatch(actions.postLetterProofingVerificationCode(data));
-      dispatch(actions.stopLetterVerification());
+      dispatch(letterProofingSlice.actions.postLetterProofingVerificationCode(data));
+      dispatch(letterProofingSlice.actions.stopLetterVerification());
     },
     handleStopConfirmationLetter: function () {
-      dispatch(actions.stopLetterConfirmation());
+      dispatch(letterProofingSlice.actions.stopLetterConfirmation());
     },
     handleStopVerificationLetter: function () {
-      dispatch(actions.stopLetterVerification());
+      dispatch(letterProofingSlice.actions.stopLetterVerification());
     },
   };
 };
