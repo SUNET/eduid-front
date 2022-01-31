@@ -5,8 +5,17 @@ import { useIntl } from "react-intl";
 import { shortCodePattern } from "../../app_utils/validation/regexPatterns";
 import ConfirmModal from "../Modals/ConfirmModalContainer";
 import NotificationModal from "../Modals/NotificationModal";
+interface LetterProofingProps {
+  letter_sent_date: string;
+  letter_expired?: boolean;
+  requestLetterAllowed?: boolean;
+  letter_expires_date: string;
+  sendConfirmationCode: any;
+  confirmLetterProofing: any;
+  disabled: any;
+}
 
-function LetterProofingButton(props) {
+function LetterProofingButton(props: LetterProofingProps) {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
@@ -24,18 +33,18 @@ function LetterProofingButton(props) {
     }
   }
 
-  function sendConfirmationCode(e) {
+  function sendConfirmationCode(e: React.MouseEvent<HTMLElement>) {
     props.sendConfirmationCode(e);
     setShowConfirmationModal(false);
   }
 
-  function confirmLetterProofing(e) {
+  function confirmLetterProofing(e: React.MouseEvent<HTMLElement>) {
     props.confirmLetterProofing(e);
     setShowNotificationModal(false);
   }
 
-  function formatDateFromBackend(dateFromBackend) {
-    let newDate = new Date(dateFromBackend);
+  function formatDateFromBackend(dateFromBackend: any) {
+    const newDate = dateFromBackend && new Date(dateFromBackend);
     return (
       newDate.getFullYear() +
       "-" +
@@ -45,7 +54,7 @@ function LetterProofingButton(props) {
     );
   }
 
-  let description = "";
+  let description = undefined;
   if (props.disabled) {
     description = <div className="description">{translate("verify-identity.vetting_explanation_add_nin")}</div>;
   } else {
