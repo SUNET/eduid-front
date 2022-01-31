@@ -121,7 +121,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
   return (
     <React.Fragment>
-      <ol className="numbered-steps">
+      <ol className="listed-steps">
 
         <li>
           <FormattedMessage defaultMessage="Scan this QR-code with your other device" />

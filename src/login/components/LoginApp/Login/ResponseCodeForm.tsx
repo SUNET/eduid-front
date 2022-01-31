@@ -94,31 +94,33 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
         </div>
       )}
       {props.handleAbort || props.handleLogin ? (
-        <div className={`buttons ${props.extra_className}`}>
-          {props.handleLogin && (
-            <ButtonPrimary
-              type="submit"
-              onClick={props.handleLogin}
-              id="response-code-submit-button"
-              className={"settings-button"}
-              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
-            >
-              <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-            </ButtonPrimary>
-          )}
+        <li>
+          <div className={`buttons ${props.extra_className}`}>
+            {props.handleLogin && (
+              <ButtonPrimary
+                type="submit"
+                onClick={props.handleLogin}
+                id="response-code-submit-button"
+                className={"settings-button"}
+                disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
+              >
+                <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
+              </ButtonPrimary>
+            )}
 
-          {props.handleAbort && (
-            <ButtonPrimary
-              type="submit"
-              onClick={props.handleAbort}
-              id="response-code-abort-button"
-              className={"settings-button"}
-              disabled={props.submitting}
-            >
-              <FormattedMessage defaultMessage="Abort" description="Login OtherDevice" />
-            </ButtonPrimary>
-          )}
-        </div>
+            {props.handleAbort && (
+              <ButtonPrimary
+                type="submit"
+                onClick={props.handleAbort}
+                id="response-code-abort-button"
+                className={"settings-button"}
+                disabled={props.submitting}
+              >
+                <FormattedMessage defaultMessage="Abort" description="Login OtherDevice" />
+              </ButtonPrimary>
+            )}
+          </div>
+        </li>
       ) : null}
     </form>
   );

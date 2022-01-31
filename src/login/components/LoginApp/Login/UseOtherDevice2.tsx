@@ -66,30 +66,38 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
 
   return (
     <React.Fragment>
-      <InfoAboutOtherDevice data={data} />
 
-      <TimeRemainingWrapper
-        name="other-device-expires"
-        unique_id={data.short_code}
-        value={data.expires_in}
-        onReachZero={handleTimerReachZero}
-      >
-        <ExpiresMeter expires_max={data.expires_max} />
-      </TimeRemainingWrapper>
+      
 
-      {data.state === "IN_PROGRESS" ? (
-        <ProceedLoginButton disabled={timerIsZero} />
-      ) : data.state === "AUTHENTICATED" ? (
-        <RenderLoggedIn data={data} isExpired={timerIsZero} />
-      ) : data !== undefined ? (
-        <div className="finished device2">
+      <ol className="listed-steps">
+        <li>
+          <InfoAboutOtherDevice data={data} />
+
+          <TimeRemainingWrapper
+          name="other-device-expires"
+          unique_id={data.short_code}
+          value={data.expires_in}
+          onReachZero={handleTimerReachZero}
+          >
+            <ExpiresMeter expires_max={data.expires_max} />
+          </TimeRemainingWrapper>
+        </li>
+  
+        {data.state === "IN_PROGRESS" ? (
+          <li><ProceedLoginButton disabled={timerIsZero} /></li>
+        ) : data.state === "AUTHENTICATED" ? (
+          <li><RenderLoggedIn data={data} isExpired={timerIsZero} /></li>
+        ) : data !== undefined ? (
+          <li>
           <FormattedMessage
             defaultMessage="Request complete, you should close this browser window."
             description="Use another device, finished"
           />
-        </div>
-      ) : // show nothing before next_page is initialised
-      null}
+          </li>
+        ) : // show nothing before next_page is initialised
+        null}
+      </ol>
+      
     </React.Fragment>
   );
 }
@@ -117,10 +125,10 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
   };
   const proximity: JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
-    <div className="other-device-info device2">
-      <p>
-        <FormattedMessage defaultMessage="You are using this device to log in on another device:" />
-      </p>
+ 
+    <div>
+  
+      <FormattedMessage defaultMessage="You are using this device to log in on another device:" />
 
       <figure className="table-responsive">
         <table className="table">
@@ -160,6 +168,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
   }
 
   return (
+
     <div className="buttons device2">
       <ButtonPrimary
         type="submit"
@@ -171,6 +180,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
         <FormattedMessage defaultMessage="Log in the other device" description="Login OtherDevice" />
       </ButtonPrimary>
     </div>
+  
   );
 }
 
@@ -190,21 +200,24 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
     // No-op, have to provide it to the form but we don't expect submissions on device 2.
     return undefined;
   }
-
+ 
   if (props.isExpired) {
     // TODO: show this as a modal window, greying out all the other content?
 
     return (
+  
       <div className="finished device2">
         <FormattedMessage
           defaultMessage="The code has expired, you should close this browser window."
           description="Use another device, finished"
         />
       </div>
+    
     );
   }
 
   return (
+ 
     <div className="finished device2">
       <div className="response-code">
         <FormattedMessage
@@ -249,7 +262,9 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
         </ButtonPrimary>
       </div>
     </div>
+  
   );
+ 
 }
 
 export default UseOtherDevice2;

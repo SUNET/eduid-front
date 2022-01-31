@@ -103,7 +103,7 @@
       background-color: transparent;
       border: none;
       border-bottom: 2px solid gray;
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       margin: 0 5px;
       width: 2.5rem;
       text-align: center;
@@ -177,12 +177,12 @@
     flex-direction: column;
     row-gap: 1rem;
 
-    .response-code {
-      display: flex;
-      flex-direction: column;
-      padding-left: $meter_align;
-      row-gap: 1rem;
-    }
+    // .response-code {
+    //   display: flex;
+    //   flex-direction: column;
+    //   padding-left: $meter_align;
+    //   row-gap: 1rem;
+    // }
 
     .phishing-warning {
       display: flex;
@@ -387,7 +387,7 @@ a.send-link.disabled {
 
 .use-another-device {
 
-  .numbered-steps {
+  .listed-steps {
     margin-top: 2em;
 
     figure {
@@ -404,11 +404,11 @@ a.send-link.disabled {
 }
 
 /* Move to List component */
-.numbered-steps {
+.listed-steps {
   margin-left: 2.25em;
 
   li {
-    font-size: 1.25em;
+    font-size: 1.25rem;
     line-height: 1.25;
     margin-bottom: 1.5em;
 
@@ -419,6 +419,18 @@ a.send-link.disabled {
     }
   }
 }
+// ul.listed-steps {
+//   list-style: disc;
+
+//   li {
+//     margin-left: -.5em;
+//     padding-left: .25em;
+
+//     &::marker {
+//       font-size: 1.25em;
+//     }
+//   }
+// }
 
 /* Move to Figure component */
 figure {
