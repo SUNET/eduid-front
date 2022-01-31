@@ -44,7 +44,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
 
   function formatDateFromBackend(dateFromBackend: any) {
     const newDate: any = new Date(dateFromBackend);
-    console.log("newDate", newDate);
     return (
       newDate.getFullYear() +
       "-" +
