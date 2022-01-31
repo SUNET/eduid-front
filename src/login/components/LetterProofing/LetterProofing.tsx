@@ -20,10 +20,10 @@ function LetterProofingButton(props: LetterProofingProps) {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   function handleModal() {
-    const letterPending = props.letter_sent_date === "" && !props.letter_expired;
+    const letterPending = props.letter_sent_date === undefined && !props.letter_expired;
     const letterCodeExpired = props.letter_expired && props.letter_sent_date !== "";
     // Not request letter yet
-    const letterNotRequested = props.letter_sent_date === "" && props.requestLetterAllowed;
+    const letterNotRequested = props.letter_sent_date === undefined && props.requestLetterAllowed;
 
     // Open Modal to request letter or verify code
     if (letterPending || letterNotRequested || letterCodeExpired) {
@@ -44,7 +44,8 @@ function LetterProofingButton(props: LetterProofingProps) {
   }
 
   function formatDateFromBackend(dateFromBackend: any) {
-    const newDate = dateFromBackend && new Date(dateFromBackend);
+    const newDate: any = new Date(dateFromBackend);
+    console.log("newDate", newDate);
     return (
       newDate.getFullYear() +
       "-" +
@@ -54,11 +55,11 @@ function LetterProofingButton(props: LetterProofingProps) {
     );
   }
 
-  let description = undefined;
+  let description = null;
   if (props.disabled) {
     description = <div className="description">{translate("verify-identity.vetting_explanation_add_nin")}</div>;
   } else {
-    if (props.letter_sent_date === "") {
+    if (props.letter_sent_date === undefined) {
       description = <div />;
     } else if (props.letter_expired) {
       description = (
