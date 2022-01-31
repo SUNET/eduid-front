@@ -1,84 +1,71 @@
-import * as actions from "actions/LetterProofing";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const letterData = {
-  confirmingLetter: false,
-  verifyingLetter: false,
-  code: "",
-  letter_sent: "",
-  letter_expires: "",
-  letter_expired: false,
-  message: "",
-};
+export interface LetterProofingState {
+  confirmingLetter?: boolean;
+  verifyingLetter?: boolean;
+  code?: string;
+  letter_sent?: string;
+  letter_expires?: string;
+  letter_expired?: boolean;
+  letter_expires_in_days?: number;
+  letter_sent_days_ago?: number;
+}
 
-let letterProofingReducer = (state = letterData, action) => {
-  switch (action.type) {
-    case actions.STOP_LETTER_CONFIRMATION:
-      return {
-        ...state,
-        confirmingLetter: false,
-        verifyingLetter: false,
-      };
-    case actions.STOP_LETTER_VERIFICATION:
-      return {
-        ...state,
-        confirmingLetter: false,
-        verifyingLetter: false,
-      };
-    case actions.GET_LETTER_PROOFING_PROOFING_SUCCESS: {
-      let verifying = false,
-        confirming = false;
+const initialState: LetterProofingState = {};
+
+const letterProofingSlice = createSlice({
+  name: "letterProofing",
+  initialState,
+  reducers: {
+    getLetterProofingState: () => {},
+    // Trigger action on click ACCEPT button in Notification Modal
+    postLetterProofingSendLetter: () => {},
+    stopLetterConfirmation: (state) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+    },
+    stopLetterVerification: (state) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+    },
+    getLetterProofingSuccess: (state, action: PayloadAction<LetterProofingState>) => {
       if (action.payload.letter_sent === undefined) {
-        confirming = true;
+        state.confirmingLetter = true;
       } else {
-        verifying = true;
+        state.verifyingLetter = true;
       }
-      return {
-        ...state,
-        ...action.payload,
-        verifyingLetter: verifying,
-        confirmingLetter: confirming,
-      };
-    }
-    case actions.GET_LETTER_PROOFING_PROOFING_FAIL:
-      return {
-        ...state,
-        verifyingLetter: false,
-        confirmingLetter: false,
-      };
-    case actions.POST_LETTER_PROOFING_PROOFING_SUCCESS:
-      return {
-        ...state,
-        ...action.payload,
-        confirmingLetter: false,
-        verifyingLetter: false,
-      };
-    case actions.POST_LETTER_PROOFING_PROOFING_FAIL:
-      return {
-        ...state,
-        confirmingLetter: false,
-        verifyingLetter: false,
-      };
-    case actions.POST_LETTER_PROOFING_CODE:
-      return {
-        ...state,
-        ...action.payload,
-      };
-    case actions.POST_LETTER_PROOFING_CODE_SUCCESS:
-      return {
-        ...state,
-        message: action.payload.message,
-        confirmingLetter: false,
-        verifyingLetter: false,
-      };
-    case actions.POST_LETTER_PROOFING_CODE_FAIL:
-      return {
-        ...state,
-        confirmingLetter: false,
-        verifyingLetter: false,
-      };
-    default:
-      return state;
-  }
-};
+      state.letter_expires_in_days = action.payload.letter_expires_in_days;
+      state.letter_sent = action.payload.letter_sent;
+      state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
+      state.letter_sent = action.payload.letter_sent;
+      state.letter_expires = action.payload.letter_expires;
+      state.letter_expired = action.payload.letter_expired;
+    },
+    postLetterProofingSuccess: (state, action: PayloadAction<LetterProofingState>) => {
+      state.letter_sent = action.payload.letter_sent;
+      state.letter_expires = action.payload.letter_expires;
+      state.letter_expired = action.payload.letter_expired;
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+    },
+    postLetterProofingFail: (state) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+    },
+    postLetterProofingVerificationCode: (state, action) => {
+      state.code = action.payload.code;
+    },
+    postLetterProofingCodeSuccess: (state) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+    },
+    postLetterProofingCodeFail: (state) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+    },
+    // Common action to signal a caught exception in one of the reset password sagas.
+    letterProofingSagaFail: () => {},
+  },
+});
 
-export default letterProofingReducer;
+export default letterProofingSlice;
