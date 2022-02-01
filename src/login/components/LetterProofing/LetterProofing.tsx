@@ -4,6 +4,11 @@ import { useIntl } from "react-intl";
 import { shortCodePattern } from "../../app_utils/validation/regexPatterns";
 import ConfirmModal from "../Modals/ConfirmModalContainer";
 import NotificationModal from "../Modals/NotificationModal";
+import { connect } from "react-redux";
+import { isValid } from "redux-form";
+import letterProofingSlice from "reducers/LetterProofing";
+import { useDashboardAppSelector } from "dashboard-hooks";
+
 interface LetterProofingProps {
   letter_sent_date: string;
   letter_expired?: boolean;
@@ -11,13 +16,16 @@ interface LetterProofingProps {
   letter_expires_date: string;
   sendConfirmationCode: any;
   confirmLetterProofing: any;
-  disabled: any;
+  disabled: boolean;
 }
 
 function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
+  const letterVerification = useDashboardAppSelector((state) => state.letter_proofing.confirmingLetter);
+  const swedishNin = useDashboardAppSelector((state) => state.nins);
+  console.log("swedishNin", swedishNin);
   function handleModal() {
     const letterPending = props.letter_sent_date === undefined && !props.letter_expired;
     const letterCodeExpired = props.letter_expired && props.letter_sent_date !== "";
@@ -130,4 +138,44 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   );
 }
 
-export default LetterProofingButton;
+//TODO: Remove container
+
+const mapStateToProps = (state: any) => {
+  const letterVerification = state.letter_proofing.confirmingLetter;
+  const swedishNin = isValid("nins")(state);
+  const requestLetterAllowed = (letterVerification && swedishNin) || state.letter_proofing.letter_expired;
+
+  return {
+    requestLetterAllowed,
+    verifyingLetter_sent: state.letter_proofing.verifyingLetter,
+    letter_sent_date: state.letter_proofing.letter_sent,
+    letter_expires_date: state.letter_proofing.letter_expires,
+    letter_expired: state.letter_proofing.letter_expired,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    confirmLetterProofing: function () {
+      dispatch(letterProofingSlice.actions.postLetterProofingSendLetter());
+    },
+    sendConfirmationCode: function (e: any) {
+      e.preventDefault();
+      // const data = {
+      //   code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
+      // };
+      // dispatch(letterProofingSlice.actions.postLetterProofingVerificationCode(data));
+      dispatch(letterProofingSlice.actions.stopLetterVerification());
+    },
+    handleStopConfirmationLetter: function () {
+      dispatch(letterProofingSlice.actions.stopLetterConfirmation());
+    },
+    handleStopVerificationLetter: function () {
+      dispatch(letterProofingSlice.actions.stopLetterVerification());
+    },
+  };
+};
+
+const LetterProofingContainer = connect(mapStateToProps, mapDispatchToProps)(LetterProofingButton);
+
+export default LetterProofingContainer;

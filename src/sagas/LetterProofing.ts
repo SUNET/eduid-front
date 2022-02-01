@@ -66,7 +66,6 @@ export function* sendLetterProofing() {
     yield put(letterProofingSlice.actions.postLetterProofingSuccess(response.payload));
   } catch (error) {
     yield* failRequest(error, letterProofingSlice.actions.letterProofingSagaFail);
-    // yield* failRequest(error, actions.postLetterProofingSendLetterFail);
   }
 }
 
@@ -102,7 +101,6 @@ export function* sendLetterCode() {
     yield put(letterProofingSlice.actions.postLetterProofingCodeSuccess());
   } catch (error) {
     yield* failRequest(error, letterProofingSlice.actions.letterProofingSagaFail);
-    // yield* failRequest(error, actions.postLetterProofingVerificationCodeFail);
   }
 }
 
