@@ -2,7 +2,7 @@ import React from "react";
 import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
-import FooterContainer from "containers/Footer";
+import Footer from "../login/components/Footer/Footer";
 import { setupComponent } from "tests/SignupMain-test";
 
 const config = {
@@ -30,7 +30,7 @@ describe("Footer Component", () => {
   it("Component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <FooterContainer />
+        <Footer />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -38,7 +38,7 @@ describe("Footer Component", () => {
 
   it("Component renders copyright", () => {
     const wrapper = setupComponent({
-      component: <FooterContainer />,
+      component: <Footer />,
     });
     const copyright = wrapper.find("#copyright");
     expect(copyright.exists()).toEqual(true);
@@ -47,7 +47,7 @@ describe("Footer Component", () => {
 
   it("Renders the language selector component", () => {
     const wrapper = setupComponent({
-        component: <FooterContainer />,
+        component: <Footer />,
         overrides: state,
       }),
       p = wrapper.find("p.lang-selected"),
