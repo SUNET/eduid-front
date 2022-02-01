@@ -669,9 +669,6 @@
     "developer_comment": "Use another device, finished",
     "string": "Never give this code to someone else, as they might steal your login."
   },
-  "header.faq": {
-    "string": "Help"
-  },
   "header.logout": {
     "string": "Logout"
   },
@@ -878,9 +875,6 @@
   },
   "mail_duplicated": {
     "string": "Added email is duplicated"
-  },
-  "main.copyright": {
-    "string": "SUNET 2013-2021"
   },
   "main.welcome": {
     "string": "Welcome to eduID"
