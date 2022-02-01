@@ -86,7 +86,7 @@ class SignupMain extends Component {
           <Route path={`${SIGNUP_BASE_PATH}/resend-code`} component={ResendCodeContainer} />
           <Route path={`${SIGNUP_BASE_PATH}/address-used`} component={EmailInUseContainer} />
         </section>
-        <Footer {...this.props} />
+        <Footer />
       </Router>,
     ];
   }

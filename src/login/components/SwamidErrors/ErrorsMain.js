@@ -19,7 +19,7 @@ class ErrorsMain extends Component {
           <NotificationsContainer />
           <Route exact path={`/errors`} component={Errors} />
         </section>
-        <Footer {...this.props} />
+        <Footer />
       </Router>,
     ];
   }
