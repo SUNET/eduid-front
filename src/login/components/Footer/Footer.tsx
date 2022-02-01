@@ -1,66 +1,64 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { updateIntl } from "../../../reducers/Internationalisation";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { FormattedMessage } from "react-intl";
 
-const LanguageToggler = ({ browserLocale, setLanguage }) => {
-  const dispatch = useDispatch();
+const Footer = (): JSX.Element => {
+  const browserLocale = useDashboardAppSelector((state) => state.intl.locale);
+  const toHome = useDashboardAppSelector((state) => state.config.eduid_site_url);
+  const [browserLanguage, setLanguage] = useState(browserLocale);
+  const dispatch = useDashboardAppDispatch();
+  const toHelp = browserLanguage === "en" ? `/en/faq.html` : `/faq.html`;
   const translateTo = AVAILABLE_LANGUAGES.filter((lang) => lang[0] !== browserLocale);
+  const messages = LOCALIZED_MESSAGES as unknown as { [key: string]: { [key: string]: string } };
   const locale = translateTo[0][0];
   const language = translateTo[0][1];
-  return (
-    <li id="language-selector">
-      <p className="lang-selected">
-        <a
-          onClick={() => {
-            // sets the <html lang=""> to the interface language
-            document.documentElement.lang = locale;
-            setLanguage(locale);
-            dispatch(
-              updateIntl({
-                locale: locale,
-                messages: LOCALIZED_MESSAGES[locale],
-              })
-            );
-          }}
-        >
-          {language}
-        </a>
-      </p>
-    </li>
-  );
-};
 
-const HelpLink = ({ language, translate }) => {
-  const toHome = useSelector((state) => state.config.eduid_site_url);
-  const toHelp = language === "en" ? `/en/faq.html` : `/faq.html`;
-  return (
-    <li>
-      <a className="help-link" href={`${toHome}${toHelp}`}>
-        {translate("header.faq")}
-      </a>
-    </li>
-  );
-};
+  // TODO: Figure out what this code is used for, from Footer container
+  // changeDashboardSession: function (reload_to) {
+  //   return (e) => {
+  //     e.preventDefault();
+  //     Cookies.remove("eduid-dashboard-version");
+  //     Cookies.set("eduid-dashboard-version", "1");
+  //     window.location = reload_to;
+  //   };
+  // }
 
-const Nav = (props) => {
-  const browserLocale = useSelector((state) => state.intl.locale);
-  const [language, setLanguage] = useState(browserLocale);
-  return (
-    <nav>
-      <ul>
-        <HelpLink language={language} {...props} />
-        <LanguageToggler setLanguage={setLanguage} browserLocale={browserLocale} {...props} />
-      </ul>
-    </nav>
-  );
-};
-
-const Footer = (props) => {
   return (
     <footer key="0" id="footer">
-      <p id="copyright">&copy;{props.translate("main.copyright")}</p>
-      <Nav {...props} />
+      <p id="copyright">
+        &copy;&nbsp;
+        <FormattedMessage defaultMessage="SUNET 2013-2022" description="Footer copyright" />
+      </p>
+      <nav>
+        <ul>
+          <li>
+            <a className="help-link" href={`${toHome}${toHelp}`}>
+              <FormattedMessage defaultMessage="Help" description="Footer faq" />
+            </a>
+          </li>
+          <li id="language-selector">
+            <p className="lang-selected">
+              <a
+                onClick={() => {
+                  // sets the <html lang=""> to the interface language
+                  document.documentElement.lang = locale;
+                  setLanguage(locale);
+                  dispatch(
+                    updateIntl({
+                      locale: locale,
+                      messages: messages[locale],
+                    })
+                  );
+                }}
+              >
+                {language}
+              </a>
+            </p>
+          </li>
+        </ul>
+      </nav>
     </footer>
   );
 };
