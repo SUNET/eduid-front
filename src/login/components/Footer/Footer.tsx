@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
 import { updateIntl } from "../../../reducers/Internationalisation";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
@@ -65,10 +64,6 @@ const Footer = (props) => {
       <Nav {...props} />
     </footer>
   );
-};
-
-Footer.propTypes = {
-  translate: PropTypes.func,
 };
 
 export default InjectIntl(Footer);
