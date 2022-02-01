@@ -1,5 +1,4 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { LoginConfig } from "login/redux/reducers/configSlice";
 import { call, put, select } from "redux-saga/effects";
 import { failRequest, putCsrfToken } from "../../../../sagas/common";
 import { LoginRootState } from "../../../app_init/initStore";
@@ -16,14 +15,13 @@ export type VerifyEmailResponse = {
 };
 
 export function* requestLinkCode() {
-  const config: LoginConfig = yield select((state: LoginRootState) => state.config);
-  const email_code: string = yield select((state: LoginRootState) => state.resetPassword.email_code);
-  const url = config.reset_password_url + "verify-email/";
+  const state: LoginRootState = yield select((state) => state);
+  const url = state.config.reset_password_url + "verify-email/";
   const locationUrl = document.location.href;
-  if (email_code) {
+  if (state.resetPassword.email_code) {
     const data = {
-      email_code: email_code,
-      csrf_token: config.csrf_token,
+      email_code: state.resetPassword.email_code,
+      csrf_token: state.config.csrf_token,
     };
     try {
       const response: PayloadAction<VerifyEmailResponse, string, never, boolean> = yield call(postRequest, url, data);

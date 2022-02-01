@@ -31,6 +31,9 @@ const configSlice = createSlice({
       .addCase(fetchJsConfig.fulfilled, (state, action) => {
         return { ...state, ...action.payload, is_configured: true };
       })
+      .addCase(fetchJsConfig.rejected, (state) => {
+        state.is_configured = false;
+      })
       .addCase(storeCsrfToken, (state, action) => {
         state.csrf_token = action.payload;
       })

@@ -17,6 +17,7 @@ const fakeState = {
 describe("API call to /verify-email/ behaves as expected on _SUCCESS", () => {
   const generator = requestLinkCode();
   let next = generator.next();
+
   it("saga posts the expected data", () => {
     const data = {
       email_code: fakeState.resetPassword.email_code,

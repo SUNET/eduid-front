@@ -29,6 +29,6 @@ interface APIEndpoints {
 // The apps have their separate config slices, but all config slices need to listen for this
 // common event emitted when a new CSRF token is received in a response from the backend, and
 // store it in the config (as csrf_token from CommonJsConfig).
-export const storeCsrfToken = createAction<string>("storeCsrfToken");
+export const storeCsrfToken = createAction<string>("NEW_CSRF_TOKEN");
 
 export interface EduidJSAppCommonConfig extends CommonConfig, CommonJsConfig, APIEndpoints {}

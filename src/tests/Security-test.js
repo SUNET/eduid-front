@@ -513,7 +513,7 @@ describe("Async component", () => {
     };
     next = generator.next(action);
     expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
-    expect(next.value.PUT.action.payload.csrf_token).toEqual("csrf-token");
+    expect(next.value.PUT.action.payload).toEqual("csrf-token");
     delete action.payload.csrf_token;
     next = generator.next();
     expect(next.value.PUT.action.type).toEqual(actions.POST_WEBAUTHN_REGISTER_SUCCESS);
