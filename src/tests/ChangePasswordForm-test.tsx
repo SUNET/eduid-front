@@ -1,11 +1,9 @@
 import ChangePasswordForm, { ChangePasswordFormProps } from "components/ChangePasswordForm";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { DashboardRootState } from "dashboard-init-app";
-import { mount, ReactWrapper, shallow } from "enzyme";
+import { ReactWrapper, shallow } from "enzyme";
 import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { DashboardStoreType, dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
+import { setupComponent } from "./helperFunctions/DashboardTestApp";
 
 const test_props: ChangePasswordFormProps = {
   finish_url: "cancel_url",
@@ -23,28 +21,15 @@ describe("ChangePasswordForm Component", () => {
 });
 
 describe("ChangePasswordForm renders", () => {
-  let store: DashboardStoreType;
-  let state: DashboardRootState;
-
-  beforeEach(() => {
-    // re-init store and state before each test to get isolation
-    store = fakeStore();
-    state = store.getState();
-  });
-
-  function setupComponent(store: DashboardStoreType) {
-    const wrapper = mount(
-      <ReduxIntlProvider store={store}>
-        <ChangePasswordForm {...test_props} />
-      </ReduxIntlProvider>
-    );
-    return {
-      wrapper,
-    };
+  function getWrapper() {
+    return setupComponent({
+      component: <ChangePasswordForm {...test_props} />,
+      overrides: { chpass: { suggested_password: "secret" }, personal_data: { data: {} }, emails: {} },
+    });
   }
 
   it("old and new password inputs render", () => {
-    const { wrapper } = setupComponent(store);
+    const wrapper = getWrapper();
     const oldPwInput = wrapper.find("input[name='old']");
     const suggestedPwInput = wrapper.find("input[name='suggested']");
     const customPwInput = wrapper.find("input[name='custom']");
@@ -55,7 +40,7 @@ describe("ChangePasswordForm renders", () => {
   });
 
   it("save password button renders", () => {
-    const { wrapper } = setupComponent(store);
+    const wrapper = getWrapper();
     const savePwButton = wrapper.find("#chpass-button");
     expect(savePwButton.exists()).toEqual(true);
   });
@@ -67,12 +52,8 @@ describe("ChangePasswordForm renders", () => {
         .map((node) => node.props().name)
         .sort();
     }
-    const test_state = {
-      personal_data: { data: {} },
-      emails: {},
-    };
-    store = fakeStore({ ...dashboardTestState, ...test_state });
-    const { wrapper } = setupComponent(store);
+
+    const wrapper = getWrapper();
 
     let pwModeButton = wrapper.find("#pwmode-button");
     expect(pwModeButton.exists()).toEqual(true);

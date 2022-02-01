@@ -1,13 +1,10 @@
 import { changePassword, fetchSuggestedPassword } from "apis/eduidSecurity";
 import { ChangePasswordContainer } from "components/ChangePassword";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { mount } from "enzyme";
 import expect from "expect";
 import fetchMock from "jest-fetch-mock";
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import chpassSlice from "reducers/ChangePassword";
-import { fakeStore } from "./helperFunctions/DashboardTestApp";
+import { fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
 describe("Reducers", () => {
   const mockState = {
@@ -151,16 +148,10 @@ describe("ChangePassword Container", () => {
 
   beforeEach(() => {
     getWrapper = function () {
-      const store = fakeStore();
-
-      const wrapper = mount(
-        <ReduxIntlProvider store={store}>
-          <Router>
-            <ChangePasswordContainer />
-          </Router>
-        </ReduxIntlProvider>
-      );
-      return wrapper;
+      return setupComponent({
+        component: <ChangePasswordContainer />,
+        overrides: { chpass: { suggested_password: "secret" } },
+      });
     };
   });
 

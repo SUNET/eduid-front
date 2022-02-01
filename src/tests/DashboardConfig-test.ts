@@ -1,42 +1,36 @@
 import expect from "expect";
-import configSlice from "reducers/DashboardConfig";
+import configSlice, { DashboardConfig, initialState as DashboardInitialConfig } from "reducers/DashboardConfig";
 import { fetchJsConfig } from "apis/eduidJsConfig";
 
 describe("Config reducers", () => {
-  const mockState = {
+  const mockState: DashboardConfig = {
+    ...DashboardInitialConfig,
     csrf_token: "",
-    param1: "old value",
+    personal_data_url: "old value",
   };
+
+  const mockRequest = { url: "/jsconfig" };
 
   it("Receives a GET_CONFIG_SUCCESS action", () => {
     expect(
       configSlice.reducer(
         mockState,
-        fetchJsConfig.fulfilled({
-          csrf_token: "",
-          param1: "new value",
-        })
+        fetchJsConfig.fulfilled(
+          {
+            csrf_token: "",
+            personal_data_url: "new value",
+          },
+          "fakeRequestId",
+          mockRequest
+        )
       )
-    ).toEqual({
-      csrf_token: "",
-      param1: "new value",
-      is_configured: true,
-    });
+    ).toEqual({ ...mockState, personal_data_url: "new value", is_configured: true });
   });
 
   it("Receives a GET_CONFIG_FAIL action", () => {
     expect(
-      configSlice.reducer(
-        mockState,
-        fetchJsConfig.rejected({
-          message: "Bad error",
-        })
-      )
-    ).toEqual({
-      csrf_token: "",
-      param1: "old value",
-      is_configured: false,
-    });
+      configSlice.reducer(mockState, fetchJsConfig.rejected(new Error("Bad error"), "fakeRequestId", mockRequest))
+    ).toEqual({ ...mockState, is_configured: false });
   });
 
   it("Receives a DUMMY action", () => {
@@ -45,23 +39,6 @@ describe("Config reducers", () => {
         type: "DUMMY_ACTION",
         payload: "dummy payload",
       })
-    ).toEqual({
-      csrf_token: "",
-      param1: "old value",
-    });
+    ).toEqual(mockState);
   });
 });
-
-const mockState = {
-  personal_data: {
-    given_name: "",
-    surname: "",
-    display_name: "",
-    language: "",
-  },
-  config: {
-    csrf_token: "",
-    is_configured: false,
-    personal_data_url: "http://localhost/services/personal-data/user",
-  },
-};
