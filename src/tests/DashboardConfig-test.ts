@@ -1,7 +1,5 @@
 import expect from "expect";
 import configSlice from "reducers/DashboardConfig";
-import { requestConfig, fetchConfig } from "../sagas/DashboardConfig";
-import { put, call } from "redux-saga/effects";
 import { fetchJsConfig } from "apis/eduidJsConfig";
 
 describe("Config reducers", () => {
@@ -67,18 +65,3 @@ const mockState = {
     personal_data_url: "http://localhost/services/personal-data/user",
   },
 };
-const getState = () => mockState;
-
-describe("Async component", () => {
-  it("Sagas requestConfig", () => {
-    const generator = requestConfig(getState);
-
-    const url = "/services/jsconfig/config";
-    let next = generator.next(url);
-    expect(next.value).toEqual(call(fetchConfig, url));
-
-    const config = next.value;
-    next = generator.next(next.value);
-    expect(next.value).toEqual(put(config));
-  });
-});
