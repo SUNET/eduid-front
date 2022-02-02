@@ -10,10 +10,17 @@ const Footer = (): JSX.Element => {
   const [browserLanguage, setLanguage] = useState(browserLocale);
   const dispatch = useDashboardAppDispatch();
   const toHelp = browserLanguage === "en" ? `/en/faq.html` : `/faq.html`;
-  const translateTo = AVAILABLE_LANGUAGES.filter((lang) => lang[0] !== browserLocale);
+
+  let translateTo: any = [];
+  let locale: any = [];
+  let language: any = [];
+
+  if (AVAILABLE_LANGUAGES !== undefined) {
+    translateTo = AVAILABLE_LANGUAGES.filter((lang) => lang[0] !== browserLocale);
+    locale = translateTo[0][0];
+    language = translateTo[0][1];
+  }
   const messages = LOCALIZED_MESSAGES as unknown as { [key: string]: { [key: string]: string } };
-  const locale = translateTo[0][0];
-  const language = translateTo[0][1];
 
   // TODO: Figure out what this code is used for, from Footer container
   // changeDashboardSession: function (reload_to) {
@@ -39,8 +46,9 @@ const Footer = (): JSX.Element => {
             </a>
           </li>
           <li id="language-selector">
-            <p className="lang-selected">
+            <p className="lang-selected" data-lang={language}>
               <a
+                className="change-language"
                 onClick={() => {
                   // sets the <html lang=""> to the interface language
                   document.documentElement.lang = locale;
