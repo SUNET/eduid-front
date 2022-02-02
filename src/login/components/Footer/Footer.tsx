@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { updateIntl } from "../../../reducers/Internationalisation";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
@@ -6,10 +6,9 @@ import { FormattedMessage } from "react-intl";
 
 const Footer = (): JSX.Element => {
   const browserLocale = useDashboardAppSelector((state) => state.intl.locale);
-  const toHome = useDashboardAppSelector((state) => state.config.eduid_site_url);
-  const [browserLanguage, setLanguage] = useState(browserLocale);
+  const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-  const toHelp = browserLanguage === "en" ? `/en/faq.html` : `/faq.html`;
+  const faqUrl = browserLocale === "en" ? `/en/faq.html` : `/faq.html`;
   const messages = LOCALIZED_MESSAGES as unknown as { [key: string]: { [key: string]: string } };
 
   let translateTo: string[][] = [];
@@ -41,7 +40,7 @@ const Footer = (): JSX.Element => {
       <nav>
         <ul>
           <li>
-            <a className="help-link" href={`${toHome}${toHelp}`}>
+            <a className="help-link" href={`${eduidHomeUrl}${faqUrl}`}>
               <FormattedMessage defaultMessage="Help" description="Footer faq" />
             </a>
           </li>
@@ -52,7 +51,6 @@ const Footer = (): JSX.Element => {
                 onClick={() => {
                   // sets the <html lang=""> to the interface language
                   document.documentElement.lang = locale;
-                  setLanguage(locale);
                   dispatch(
                     updateIntl({
                       locale: locale,
