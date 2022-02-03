@@ -45,9 +45,8 @@ const Footer = (): JSX.Element => {
             </a>
           </li>
           <li id="language-selector">
-            <p className="lang-selected" data-lang={language}>
+            <p className="lang-selected" data-lang={locale}>
               <a
-                className="change-language"
                 onClick={() => {
                   // sets the <html lang=""> to the interface language
                   document.documentElement.lang = locale;
