@@ -52,7 +52,7 @@ function UseOtherDevice1() {
   );
 }
 
-// Render a fatal error message with a CANCEL button that will reset the use-other-device state
+// Render a fatal error message with a CANCEL button that will reset the use-other-device 
 function RenderFatalError(props: { error: JSX.Element }) {
   const dispatch = useAppDispatch();
 
