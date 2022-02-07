@@ -79,9 +79,12 @@
 
     @media (max-width: 414px) {
       flex-direction: column-reverse;
-      margin-left: -2.25rem;
 
-      button + button {
+      &:not(.device2) {
+        margin-left: -2.25rem;
+      }
+
+      button:nth-child(n + 2) {
         margin-bottom: 0.5rem;
       }
     }
@@ -114,14 +117,14 @@
         border: none;
         border-bottom: 2px solid gray;
         font-size: 1.5rem;
-        margin: 0 5px;
+        margin: 5px 10px 5px 0;
         width: 2.5rem;
         text-align: center;
       }
 
-      > input[type="text"]:first-of-type {
-        margin-left: 0;
-      }
+      // > input[type="text"]:first-of-type {
+      //   margin-left: 0;
+      // }
 
       input.fixed {
         // the pure-text "inputs", S, K and -
@@ -424,7 +427,7 @@ a.send-link.disabled {
       }
 
       @media (max-width: 568px) {
-        margin-left: -2em;
+        margin-left: -1.75em;
       }
     }
   }
