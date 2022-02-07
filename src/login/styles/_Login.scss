@@ -188,17 +188,15 @@
       display: flex;
       align-items: baseline;
       row-gap: 1rem;
-      font-size: 1.25rem;
+      font-size: 1rem;
+      color: red;
+      margin-top: 0.5em;
 
-      .text {
-        background-color: lightgray;
-      }
       .triangle {
-        color: red;
-        padding-right: 1rem;
+        padding-right: 0.75rem;
         svg {
-          height: $warning_size;
-          width: $warning_size;
+          height: $warning_size * 0.75;
+          width: $warning_size * 0.75;
           transform: rotate(0);
         }
       }
@@ -386,16 +384,14 @@ a.send-link.disabled {
 }
 
 .use-another-device {
-
   .listed-steps {
     margin-top: 2em;
 
     figure {
-
       img.qr-code {
         width: 200px;
       }
-  
+
       @media (max-width: 568px) {
         margin-left: -2em;
       }
@@ -415,7 +411,7 @@ a.send-link.disabled {
     &::marker {
       font-size: 1em;
       font-family: "Akkurat";
-      font-weight: bold; 
+      font-weight: bold;
     }
   }
 }
@@ -442,6 +438,6 @@ figure {
   figcaption {
     font-size: 1rem;
     font-weight: bold;
-    font-family: "Akkurat";    
+    font-family: "Akkurat";
   }
 }
