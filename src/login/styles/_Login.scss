@@ -118,14 +118,17 @@
         width: 2.5rem;
         text-align: center;
       }
+
       > input[type="text"]:first-of-type {
         margin-left: 0;
       }
+
       input.fixed {
         // the pure-text "inputs", S, K and -
         border-bottom: none;
         background: transparent;
       }
+
       .nowrap-group {
         flex-wrap: nowrap;
       }
@@ -166,6 +169,7 @@
     .clock {
       color: gray;
       padding-right: $clock_padding;
+
       svg {
         height: $clock_size;
         width: $clock_size;
@@ -196,8 +200,8 @@
 
   .finished.device2 {
     $warning_size: $clock_size;
-    padding-top: 1rem;
 
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
@@ -219,6 +223,7 @@
 
       .triangle {
         padding-right: 0.75rem;
+
         svg {
           height: $warning_size * 0.75;
           width: $warning_size * 0.75;
@@ -304,6 +309,7 @@ a.send-link.disabled {
         padding: 0;
         margin: 0;
         height: auto;
+        border: none;
 
         svg {
           color: $black;
@@ -440,6 +446,7 @@ a.send-link.disabled {
     }
   }
 }
+
 // ul.listed-steps {
 //   list-style: disc;
 
