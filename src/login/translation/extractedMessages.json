@@ -7,10 +7,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
   },
-  "1s4l1Q": {
-    "developer_comment": "Use another device, finished",
-    "string": "The code has expired, you should close this browser window."
-  },
   "4+GwOq": {
     "developer_comment": "Set new password",
     "string": "New password"
@@ -87,6 +83,10 @@
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
   },
+  "G94CxN": {
+    "developer_comment": "Use another device, finished",
+    "string": "Don't share this code with anyone, as it might compromise your credentials."
+  },
   "GGa/Fj": {
     "developer_comment": "Terms of use (banner text)",
     "string": "We need an updated acceptance from you of the eduID terms of use."
@@ -113,10 +113,6 @@
     "developer_comment": "Ladok account linking",
     "string": "Select higher education institution"
   },
-  "Lqd32u": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Log in the other device"
-  },
   "Missing data for required field.": {
     "string": "Missing data for required field"
   },
@@ -141,27 +137,13 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Add and verify your phone number for better security"
   },
-  "OIbuGV": {
-    "developer_comment": "Use another device, finished",
-    "string": "Abort"
-  },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
   },
-  "Ph7uf5": {
-    "string": "Enter the response code shown on the other device here"
-  },
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
-  },
-  "QFwPuA": {
-    "string": "You are using this device to log in on another device:"
-  },
-  "QVC89L": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Abort"
   },
   "R3n7aY": {
     "developer_comment": "Use other device",
@@ -170,6 +152,10 @@
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
     "string": "Spaces are ignored"
+  },
+  "SBSMfO": {
+    "developer_comment": "Use another device, finished",
+    "string": "The code has expired, you are advised to close this browser window"
   },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
@@ -192,6 +178,9 @@
   "TvZvvF": {
     "developer_comment": "help text for custom password tips",
     "string": "Add special characters, such as @ $ + _ %"
+  },
+  "U5eTH/": {
+    "string": "Note that you are using this device to log in on the device below"
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
@@ -410,6 +399,14 @@
   },
   "delete.modal_info": {
     "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
+  },
+  "eEmxA4": {
+    "developer_comment": "Use another device, finished",
+    "string": "After using the code on the other device, you are advised to close this browser window."
+  },
+  "eKpiiX": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Log in this device"
   },
   "eMHJVJ": {
     "developer_comment": "Reset Password email link sent",
@@ -665,10 +662,6 @@
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "go back"
   },
-  "h3XW6A": {
-    "developer_comment": "Use another device, finished",
-    "string": "Never give this code to someone else, as they might steal your login."
-  },
   "header.faq": {
     "string": "Help"
   },
@@ -692,6 +685,9 @@
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
+  },
+  "j6UxLp": {
+    "string": "Enter the response code shown on the other device in the form below"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -937,10 +933,6 @@
   "n5fMlW": {
     "developer_comment": "Set new password",
     "string": "A strong password has been generated for you. To proceed you will need to repeat copy the password in to the Repeat new password field and click Accept Password."
-  },
-  "nKrk+V": {
-    "developer_comment": "Use another device, finished",
-    "string": "After using the code on the other device, you should close this browser window."
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
@@ -1309,6 +1301,10 @@
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
+  },
+  "qHqnkz": {
+    "developer_comment": "Use another device, finished",
+    "string": "Use the response code below to continue logging in on the other device"
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
@@ -1800,10 +1796,6 @@
   "verify-identity.vetting_post_tagline": {
     "string": "For you registered at your current address"
   },
-  "vn7Z/D": {
-    "developer_comment": "Use another device, finished",
-    "string": "Use this response code on the other device to transfer this login there."
-  },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to interfere or disrupt the intended usage of the network"
@@ -1811,6 +1803,10 @@
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
+  },
+  "xCrGiU": {
+    "developer_comment": "Use another device, finished",
+    "string": "Cancel"
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
