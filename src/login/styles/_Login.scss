@@ -211,6 +211,7 @@ a.send-link.disabled {
     }
   }
 }
+
 // TODO: make .button-pair and .buttons same
 .username-pw .button-pair {
   @media (max-width: 414px) {
@@ -226,6 +227,7 @@ a.send-link.disabled {
   $clock_size: 1.5rem;
   $clock_padding: 1rem;
   $meter_align: $clock_size + $clock_padding;
+
   font-size: 1rem;
 
   .buttons {
@@ -235,6 +237,7 @@ a.send-link.disabled {
 
     @media (max-width: 414px) {
       flex-direction: column-reverse;
+      margin-left: -2.25rem;
 
       // &:not(.device2) {
       //   margin-left: -2.25rem;
@@ -244,6 +247,7 @@ a.send-link.disabled {
         margin-bottom: 0.5rem;
       }
     }
+
     &.device2 {
       margin-top: 0;
     }
@@ -374,6 +378,7 @@ a.send-link.disabled {
     height: 10rem;
     font-size: 0.8rem;
     justify-content: flex-end;
+    word-wrap: break-word;
   }
 }
 
