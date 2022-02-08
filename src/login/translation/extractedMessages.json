@@ -91,6 +91,10 @@
     "developer_comment": "Terms of use (banner text)",
     "string": "We need an updated acceptance from you of the eduID terms of use."
   },
+  "HCjfX4": {
+    "developer_comment": "Footer copyright",
+    "string": "SUNET 2013-2022"
+  },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copied!"
@@ -116,6 +120,10 @@
   "Lqd32u": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in the other device"
+  },
+  "MPTvRv": {
+    "developer_comment": "Footer faq",
+    "string": "Help"
   },
   "Missing data for required field.": {
     "string": "Missing data for required field"
@@ -669,9 +677,6 @@
     "developer_comment": "Use another device, finished",
     "string": "Never give this code to someone else, as they might steal your login."
   },
-  "header.faq": {
-    "string": "Help"
-  },
   "header.logout": {
     "string": "Logout"
   },
@@ -878,9 +883,6 @@
   },
   "mail_duplicated": {
     "string": "Added email is duplicated"
-  },
-  "main.copyright": {
-    "string": "SUNET 2013-2021"
   },
   "main.welcome": {
     "string": "Welcome to eduID"

@@ -6,7 +6,7 @@ import { createBrowserHistory } from "history";
 //import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import HeaderContainer from "containers/Header";
-import FooterContainer from "containers/Footer";
+import Footer from "../login/components/Footer/Footer";
 import SettingsComponent from "./Settings";
 import DashboardNav from "./DashboardNav";
 import VerifyIdentity from "containers/VerifyIdentity";
@@ -74,7 +74,7 @@ class Main extends Component {
             </div>
           </div>
         </section>
-        <FooterContainer {...this.props} />
+        <Footer />
       </Router>,
     ];
   }
