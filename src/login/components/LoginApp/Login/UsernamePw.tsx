@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { reduxForm, submit } from "redux-form";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
+import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
@@ -91,9 +92,9 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button" className="secondary">
+    <ButtonSecondary type="submit" onClick={handleOnClick} id="login-other-device-button" className="secondary">
       <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
-    </ButtonPrimary>
+    </ButtonSecondary>
   );
 }
 
