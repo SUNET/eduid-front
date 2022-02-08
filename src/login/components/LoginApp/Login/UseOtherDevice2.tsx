@@ -202,7 +202,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
     return (
       <div className="finished device2">
         <FormattedMessage
-          defaultMessage="The code has expired, you are advised to close this browser window"
+          defaultMessage="The code has expired, please close this browser window"
           description="Use another device, finished"
         />
       </div>
@@ -219,7 +219,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
       </div>
       <div className="response-code text-small">
         <FormattedMessage
-          defaultMessage="After using the code on the other device, you are advised to close this browser window."
+          defaultMessage="After using the code on the other device, please close this browser window."
           description="Use another device, finished"
         />
       </div>

@@ -145,6 +145,10 @@
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
   },
+  "R0rN2Z": {
+    "developer_comment": "Use another device, finished",
+    "string": "The code has expired, please close this browser window"
+  },
   "R3n7aY": {
     "developer_comment": "Use other device",
     "string": "The request has been aborted"
@@ -152,10 +156,6 @@
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
     "string": "Spaces are ignored"
-  },
-  "SBSMfO": {
-    "developer_comment": "Use another device, finished",
-    "string": "The code has expired, you are advised to close this browser window"
   },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
@@ -201,6 +201,10 @@
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Cancel"
+  },
+  "Z4yZ3N": {
+    "developer_comment": "Use another device, finished",
+    "string": "After using the code on the other device, please close this browser window."
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -399,10 +403,6 @@
   },
   "delete.modal_info": {
     "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
-  },
-  "eEmxA4": {
-    "developer_comment": "Use another device, finished",
-    "string": "After using the code on the other device, you are advised to close this browser window."
   },
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
