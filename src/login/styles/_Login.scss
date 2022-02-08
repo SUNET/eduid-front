@@ -294,12 +294,13 @@ a.send-link.disabled {
   // TODO make timer component (login, reset pw..)
   .expires-meter {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     margin: 1em 0;
     color: $gray;
 
     .clock {
       padding-right: $clock_padding;
+      line-height: 1;
 
       svg {
         height: $clock_size;
@@ -314,6 +315,7 @@ a.send-link.disabled {
 
     span.timer {
       padding-left: 1rem;
+      margin-top: 0;
       font-family: "Akkurat";
     }
   }
@@ -328,7 +330,7 @@ a.send-link.disabled {
 
     .phishing-warning {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       row-gap: 1rem;
       font-size: 1rem;
       color: $dark-orange;
