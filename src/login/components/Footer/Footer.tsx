@@ -21,6 +21,17 @@ const Footer = (): JSX.Element => {
     language = translateTo[0][1];
   }
 
+  const changeLanguage = () => {
+    if (locale) {
+      dispatch(
+        updateIntl({
+          locale: locale,
+          messages: messages[locale],
+        })
+      );
+    }
+  };
+
   return (
     <footer key="0" id="footer">
       <p id="copyright">
@@ -36,20 +47,7 @@ const Footer = (): JSX.Element => {
           </li>
           <li id="language-selector">
             <p className="lang-selected" data-lang={locale}>
-              <a
-                onClick={() => {
-                  // sets the <html lang=""> to the interface language
-                  document.documentElement.lang = locale;
-                  dispatch(
-                    updateIntl({
-                      locale: locale,
-                      messages: messages[locale],
-                    })
-                  );
-                }}
-              >
-                {language}
-              </a>
+              <a onClick={changeLanguage}>{language}</a>
             </p>
           </li>
         </ul>
