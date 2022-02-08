@@ -238,6 +238,8 @@
 }
 
 a.send-link {
+  width: fit-content;
+
   &:hover {
     text-decoration: underline;
   }
