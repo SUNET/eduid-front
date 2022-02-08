@@ -75,7 +75,6 @@ class Main extends Component {
           </div>
         </section>
         <Footer />
-        {/* <FooterContainer {...this.props} /> */}
       </Router>,
     ];
   }

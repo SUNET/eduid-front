@@ -21,16 +21,6 @@ const Footer = (): JSX.Element => {
     language = translateTo[0][1];
   }
 
-  // TODO: Figure out what this code is used for, from Footer container
-  // changeDashboardSession: function (reload_to) {
-  //   return (e) => {
-  //     e.preventDefault();
-  //     Cookies.remove("eduid-dashboard-version");
-  //     Cookies.set("eduid-dashboard-version", "1");
-  //     window.location = reload_to;
-  //   };
-  // }
-
   return (
     <footer key="0" id="footer">
       <p id="copyright">
