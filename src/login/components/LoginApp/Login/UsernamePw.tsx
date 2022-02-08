@@ -48,7 +48,7 @@ function RenderResetPasswordLink(): JSX.Element {
     <LinkRedirect
       id={"link-forgot-password"}
       to={"/"}
-      className={`send-link ${request_in_progress ? "disabled" : ""}`}
+      className={`send-link text-small ${request_in_progress ? "disabled" : ""}`}
       onClick={sendLink}
       text={translate("login.usernamePw.reset-password-link")}
     />
@@ -110,8 +110,7 @@ function UsernamePw() {
         <UsernamePwAnotherDeviceButton />
         <UsernamePwFormButton />
       </div>
-      {/* TODO: Move to header */}
-      {/* <RenderRegisterLink /> */}
+      <RenderRegisterLink />
     </div>
   );
 }
