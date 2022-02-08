@@ -91,7 +91,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button" className={"settings-button"}>
+    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button" className="secondary">
       <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
     </ButtonPrimary>
   );
@@ -104,12 +104,13 @@ function UsernamePw() {
         <FormattedMessage id="login.usernamePw.h2-heading" defaultMessage="Log in" />
       </h2>
       <UsernamePwForm />
+      <RenderResetPasswordLink />
       <div className="button-pair">
-        <UsernamePwFormButton />
         <UsernamePwAnotherDeviceButton />
-        <RenderResetPasswordLink />
+        <UsernamePwFormButton />
       </div>
-      <RenderRegisterLink />
+      {/* TODO: Move to header */}
+      {/* <RenderRegisterLink /> */}
     </div>
   );
 }
