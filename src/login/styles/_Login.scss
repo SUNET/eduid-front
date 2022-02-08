@@ -211,6 +211,16 @@ a.send-link.disabled {
     }
   }
 }
+// TODO: make .button-pair and .buttons same
+.username-pw .button-pair {
+  @media (max-width: 414px) {
+    flex-direction: column-reverse;
+
+    button:nth-child(n + 2) {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
 
 .use-another-device {
   $clock_size: 1.5rem;
@@ -234,14 +244,8 @@ a.send-link.disabled {
         margin-bottom: 0.5rem;
       }
     }
-  }
-
-  // TODO: make .button-pair and .buttons same
-  .username-pw .button-pair {
-    @media (max-width: 414px) {
-      button:nth-child(n + 2) {
-        margin-bottom: 0.5rem;
-      }
+    &.device2 {
+      margin-top: 0;
     }
   }
 
@@ -250,6 +254,7 @@ a.send-link.disabled {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      margin-bottom: 1rem;
 
       input[type="text"] {
         display: inline-block;
