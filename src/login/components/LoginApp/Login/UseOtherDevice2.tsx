@@ -81,14 +81,20 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
         </li>
 
         {data.state === "IN_PROGRESS" ? (
-          <ProceedLoginButton disabled={timerIsZero} />
+          <li>
+            <ProceedLoginButton disabled={timerIsZero} />
+          </li>
         ) : data.state === "AUTHENTICATED" ? (
-          <RenderLoggedIn data={data} isExpired={timerIsZero} />
+          <li>
+            <RenderLoggedIn data={data} isExpired={timerIsZero} />
+          </li>
         ) : data !== undefined ? (
-          <FormattedMessage
-            defaultMessage="Request complete, you should close this browser window."
-            description="Use another device, finished"
-          />
+          <li>
+            <FormattedMessage
+              defaultMessage="Request complete, you should close this browser window."
+              description="Use another device, finished"
+            />
+          </li>
         ) : // show nothing before next_page is initialised
         null}
       </ol>
