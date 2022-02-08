@@ -226,9 +226,9 @@ a.send-link.disabled {
     @media (max-width: 414px) {
       flex-direction: column-reverse;
 
-      &:not(.device2) {
-        margin-left: -2.25rem;
-      }
+      // &:not(.device2) {
+      //   margin-left: -2.25rem;
+      // }
 
       button:nth-child(n + 2) {
         margin-bottom: 0.5rem;
@@ -335,7 +335,7 @@ a.send-link.disabled {
       margin-top: 0.5em;
 
       .triangle {
-        padding-right: 0.75rem;
+        padding-right: 0.5rem;
 
         svg {
           height: $warning_size * 0.75;

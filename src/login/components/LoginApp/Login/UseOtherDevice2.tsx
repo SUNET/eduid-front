@@ -1,4 +1,4 @@
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   fetchNext,
@@ -82,6 +82,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
 
         {data.state === "IN_PROGRESS" ? (
           <li>
+            <FormattedMessage defaultMessage="Log in this device" description="Login OtherDevice" />
             <ProceedLoginButton disabled={timerIsZero} />
           </li>
         ) : data.state === "AUTHENTICATED" ? (
@@ -126,7 +127,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
   const proximity: JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
     <div>
-      <FormattedMessage defaultMessage="You are using this device to log in on another device:" />
+      <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
 
       <figure className="table-responsive">
         <table className="table">
@@ -172,7 +173,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
         className={"settings-button"}
         disabled={!data || props.disabled}
       >
-        <FormattedMessage defaultMessage="Log in the other device" description="Login OtherDevice" />
+        <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
       </ButtonPrimary>
     </div>
   );
@@ -201,7 +202,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
     return (
       <div className="finished device2">
         <FormattedMessage
-          defaultMessage="The code has expired, you should close this browser window."
+          defaultMessage="The code has expired, you are advised to close this browser window"
           description="Use another device, finished"
         />
       </div>
@@ -212,13 +213,13 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
     <div className="finished device2">
       <div className="response-code">
         <FormattedMessage
-          defaultMessage="Use this response code on the other device to transfer this login there."
+          defaultMessage="Use the response code below to continue logging in on the other device"
           description="Use another device, finished"
         />
       </div>
       <div className="response-code text-small">
         <FormattedMessage
-          defaultMessage="After using the code on the other device, you should close this browser window."
+          defaultMessage="After using the code on the other device, you are advised to close this browser window."
           description="Use another device, finished"
         />
       </div>
@@ -233,11 +234,11 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
 
       <div className="phishing-warning">
         <span className="triangle">
-          <FontAwesomeIcon icon={faExclamationTriangle} />
+          <FontAwesomeIcon icon={faExclamationCircle} />
         </span>
-        <span className="text">
+        <span className="text text-small">
           <FormattedMessage
-            defaultMessage="Never give this code to someone else, as they might steal your login."
+            defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
             description="Use another device, finished"
           />
         </span>
@@ -249,7 +250,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           id="proceed-other-device-button"
           className={"settings-button"}
         >
-          <FormattedMessage defaultMessage="Abort" description="Use another device, finished" />
+          <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
         </ButtonPrimary>
       </div>
     </div>

@@ -52,7 +52,7 @@ function UseOtherDevice1() {
   );
 }
 
-// Render a fatal error message with a CANCEL button that will reset the use-other-device 
+// Render a fatal error message with a CANCEL button that will reset the use-other-device
 function RenderFatalError(props: { error: JSX.Element }) {
   const dispatch = useAppDispatch();
 
@@ -122,13 +122,12 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   return (
     <React.Fragment>
       <ol className="listed-steps">
-
         <li>
           <FormattedMessage defaultMessage="Scan this QR-code with your other device" />
 
-          <figure>  
+          <figure>
             <img className="qr-code" src={data.qr_img} />
-            <figcaption className="short-code">ID# {data.display_id}</figcaption>
+            <figcaption className="short-code">ID# {data.short_code}</figcaption>
           </figure>
         </li>
 
@@ -137,7 +136,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
         </li>
 
         <li>
-          <FormattedMessage defaultMessage="Enter the response code shown on the other device here" />
+          <FormattedMessage defaultMessage="Enter the response code shown on the other device in the form below" />
 
           <div className="expiration-info device1">
             <TimeRemainingWrapper
@@ -149,7 +148,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
               <ExpiresMeter expires_max={data.expires_max} />
             </TimeRemainingWrapper>
           </div>
-     
+
           {isExpired ? (
             <RenderFatalError error={expiredMessage} />
           ) : (
@@ -161,9 +160,8 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
               handleAbort={handleAbortButtonOnClick}
               handleSubmitCode={handleSubmitCode}
             />
-          )}  
+          )}
         </li>
-
       </ol>
 
       <DeveloperInfo {...data} />

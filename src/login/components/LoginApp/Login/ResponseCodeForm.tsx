@@ -104,7 +104,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               className={"settings-button"}
               disabled={props.submitting}
             >
-              <FormattedMessage defaultMessage="Abort" description="Login OtherDevice" />
+              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
             </ButtonSecondary>
           )}
 
