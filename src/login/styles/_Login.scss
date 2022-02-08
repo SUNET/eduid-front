@@ -298,7 +298,7 @@ a.send-link.disabled {
     margin: 1em 0;
     color: $gray;
 
-    .clock {
+    .expires-symbol {
       padding-right: $clock_padding;
       line-height: 1;
 
@@ -313,7 +313,7 @@ a.send-link.disabled {
       width: 50%;
     }
 
-    span.timer {
+    .timer {
       padding-left: 1rem;
       margin-top: 0;
       font-family: "Akkurat";
@@ -336,7 +336,7 @@ a.send-link.disabled {
       color: $dark-orange;
       margin-top: 0.5em;
 
-      .triangle {
+      .warning-symbol {
         padding-right: 0.5rem;
 
         svg {
