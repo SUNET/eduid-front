@@ -258,7 +258,7 @@ a.send-link.disabled {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
 
       input[type="text"] {
         display: inline-block;
@@ -343,7 +343,6 @@ a.send-link.disabled {
       row-gap: 1rem;
       font-size: 1rem;
       color: $dark-orange;
-      margin-top: 0.5em;
 
       .warning-symbol {
         padding-right: 0.5rem;
