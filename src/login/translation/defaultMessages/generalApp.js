@@ -7,17 +7,11 @@ export const generalApp = {
 
   "header.signin": <FormattedMessage id="header.signin" defaultMessage={`Log in`} />,
 
-  // this is in the footer!
-  "header.faq": <FormattedMessage id="header.faq" defaultMessage={`Help`} />,
-
   "header.logout": <FormattedMessage id="header.logout" defaultMessage={`Logout`} />,
 
   "main.welcome": <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID`} />,
 
   "banner.tagline": <FormattedMessage id="banner.tagline" defaultMessage={`eduID is easier and safer login.`} />,
-
-  // footer
-  "main.copyright": <FormattedMessage id="main.copyright" defaultMessage={` SUNET 2013-2021`} />,
 
   "beta-link.to-stable": (
     <FormattedMessage

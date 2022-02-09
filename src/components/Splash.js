@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Spinner } from "spin.js";
+import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 import "../login/styles/index.scss";
 

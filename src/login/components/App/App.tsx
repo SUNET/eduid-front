@@ -29,7 +29,7 @@ class App extends React.Component {
             </Router>
           </ErrorBoundaryContainer>
         </section>
-        <Footer {...this.props} />
+        <Footer />
       </>
     );
   }

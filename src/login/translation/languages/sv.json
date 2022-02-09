@@ -669,9 +669,6 @@
     "developer_comment": "Use another device, finished",
     "string": "Visa aldrig den här koden för någon annan eftersom de då kan stjäla din inloggning."
   },
-  "header.faq": {
-    "string": "Hjälp"
-  },
   "header.logout": {
     "string": "Logga ut"
   },
@@ -875,9 +872,6 @@
   },
   "mail_duplicated": {
     "string": "E-postadressen finns redan i listan"
-  },
-  "main.copyright": {
-    "string": "SUNET 2013-2021"
   },
   "main.welcome": {
     "string": "Välkommen till eduID"

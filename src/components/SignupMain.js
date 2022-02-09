@@ -3,7 +3,7 @@ import { Router, Route, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 //import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
-import FooterContainer from "containers/Footer";
+import Footer from "../login/components/Footer/Footer";
 import HeaderContainer from "containers/Header";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
@@ -86,7 +86,7 @@ class SignupMain extends Component {
           <Route path={`${SIGNUP_BASE_PATH}/resend-code`} component={ResendCodeContainer} />
           <Route path={`${SIGNUP_BASE_PATH}/address-used`} component={EmailInUseContainer} />
         </section>
-        <FooterContainer {...this.props} />
+        <Footer />
       </Router>,
     ];
   }
