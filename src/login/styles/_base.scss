@@ -84,7 +84,7 @@ fieldset {
 //   background-color: #ececec;
 // }
 
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(80% - 2rem);

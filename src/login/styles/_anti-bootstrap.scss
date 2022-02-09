@@ -67,7 +67,7 @@ small {
   }
 }
 
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   #root.vertical-content-margin {
     width: 75%;
   }

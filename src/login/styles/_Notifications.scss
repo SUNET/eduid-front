@@ -121,7 +121,7 @@
   left: 52%;
 }
 
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   .alert.alert-dismissible {
     & span {
       width: calc(80% - 2rem);
