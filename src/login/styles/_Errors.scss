@@ -116,7 +116,7 @@
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   .technical-info-text {
     flex-direction: column;
 

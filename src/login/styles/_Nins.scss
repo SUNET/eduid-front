@@ -136,7 +136,7 @@
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   #nin {
     & input {
       font-size: 1rem;
