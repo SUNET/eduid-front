@@ -7,7 +7,6 @@ import NotificationModal from "../Modals/NotificationModal";
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
 import letterProofingSlice from "reducers/LetterProofing";
-import { useDashboardAppSelector } from "dashboard-hooks";
 
 interface LetterProofingProps {
   letter_sent_date: string;
@@ -23,9 +22,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
-  const letterVerification = useDashboardAppSelector((state) => state.letter_proofing.confirmingLetter);
-  const swedishNin = useDashboardAppSelector((state) => state.nins);
-  console.log("swedishNin", swedishNin);
   function handleModal() {
     const letterPending = props.letter_sent_date === undefined && !props.letter_expired;
     const letterCodeExpired = props.letter_expired && props.letter_sent_date !== "";
@@ -141,9 +137,9 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
 //TODO: Remove container
 
 const mapStateToProps = (state: any) => {
-  const letterVerification = state.letter_proofing.confirmingLetter;
+  const letterVerification: boolean = state.letter_proofing.confirmingLetter;
   const swedishNin = isValid("nins")(state);
-  const requestLetterAllowed = (letterVerification && swedishNin) || state.letter_proofing.letter_expired;
+  const requestLetterAllowed: boolean = (letterVerification && swedishNin) || state.letter_proofing.letter_expired;
 
   return {
     requestLetterAllowed,
@@ -161,10 +157,11 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     sendConfirmationCode: function (e: any) {
       e.preventDefault();
-      // const data = {
-      //   code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
-      // };
-      // dispatch(letterProofingSlice.actions.postLetterProofingVerificationCode(data));
+      const codeValue = document.getElementById("confirmation-code-area");
+      const data = {
+        code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
+      };
+      dispatch(letterProofingSlice.actions.postLetterProofingVerificationCode(data));
       dispatch(letterProofingSlice.actions.stopLetterVerification());
     },
     handleStopConfirmationLetter: function () {
