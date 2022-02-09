@@ -129,7 +129,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
   .alert.alert-dismissible {
     padding: 0.75rem 1rem 0.75rem 0.5rem;
 

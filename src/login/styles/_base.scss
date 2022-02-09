@@ -91,7 +91,7 @@ fieldset {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(80% - 1.25rem);

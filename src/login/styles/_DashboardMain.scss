@@ -129,7 +129,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
   #profile-grid {
     width: calc(100% - 1.25rem);
   }

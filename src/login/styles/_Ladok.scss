@@ -18,7 +18,7 @@
     height: initial;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $bp-md) {
     &-university {
       flex-direction: column;
 
