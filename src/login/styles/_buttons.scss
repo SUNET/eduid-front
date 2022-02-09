@@ -258,6 +258,7 @@ button.btn-link {
   border: none;
   box-shadow: none;
   margin: 0;
+  text-decoration: none;
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -266,6 +267,7 @@ button.btn-link {
     color: $orange-highlight;
     background-color: transparent;
     transform: scale(1);
+    text-decoration: underline;
   }
 }
 
