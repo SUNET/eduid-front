@@ -17,6 +17,7 @@ article {
       text-transform: lowercase;
       margin: 0 0 1rem;
       height: 100%;
+
       &:hover {
         text-decoration: underline;
       }
@@ -109,6 +110,7 @@ article {
       margin: 0;
       padding: 0;
       height: 1rem;
+      border: none;
     }
   }
 
