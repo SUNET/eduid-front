@@ -72,13 +72,14 @@ button,
 button.btn-secondary,
 button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
-button.btn-secondary:not(:disabled):not(.disabled):active:focus {
+button.btn-secondary:not(:disabled):not(.disabled):active:focus,
+button.btn-secondary:not(:disabled):not(.disabled):hover {
+  margin-top: 1rem;
   color: $orange-highlight;
-  text-transform: none;
-  text-decoration: none;
-  border: none;
-  background-color: $orange-opaque;
-  margin: 0 0 2rem -0.25rem;
+  border: solid 2px $orange-highlight;
+  text-transform: uppercase;
+  background-color: $white;
+  box-shadow: none;
 }
 
 button.btn:hover {
@@ -101,13 +102,6 @@ button.btn-primary:hover {
     border: none;
     transform: scale(1);
   }
-}
-
-button.btn-secondary:hover {
-  background-color: $orange-opaque;
-  color: $orange-highlight;
-  border: none;
-  outline: 0;
 }
 
 button.close {
@@ -311,7 +305,7 @@ button.icon-only {
   box-shadow: none;
   background: transparent;
   border-color: transparent;
-  margin:0;
+  margin: 0;
   padding: 0;
 }
 
