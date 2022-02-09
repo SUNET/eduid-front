@@ -1531,8 +1531,8 @@
   "security.security-key_title": {
     "string": "Make your eduID more secure"
   },
-  "security.stale_reauthn": {
-    "string": "Expired authentication"
+  "security.stale_authn_info": {
+    "string": "The authentication expired. Please try again."
   },
   "security.u2f-describe-title": {
     "string": "Enter a description for the U2F token you are about to register"
