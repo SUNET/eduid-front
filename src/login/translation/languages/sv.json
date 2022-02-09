@@ -91,6 +91,10 @@
     "developer_comment": "Terms of use (banner text)",
     "string": "Vi behöver ett uppdaterat accepterande av eduIDs användarvillkor från dig."
   },
+  "HCjfX4": {
+    "developer_comment": "Footer copyright",
+    "string": "SUNET 2013-2022"
+  },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
     "string": "Kopierat!"
@@ -116,6 +120,10 @@
   "Lqd32u": {
     "developer_comment": "Login OtherDevice",
     "string": "Logga in den andra enheten"
+  },
+  "MPTvRv": {
+    "developer_comment": "Footer faq",
+    "string": "Hjälp"
   },
   "Missing data for required field.": {
     "string": "Information saknas i ett obligatorisk fält"
@@ -736,6 +744,9 @@
   },
   "letter.no_state_found": {
     "string": "Ingen pågående bekräftning hittades"
+  },
+  "letter.not-sent": {
+    "string": "Begäran om att skicka ett brev misslyckades. Var vänlig försök igen."
   },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
@@ -1520,8 +1531,8 @@
   "security.security-key_title": {
     "string": "Gör ditt eduID säkrare"
   },
-  "security.stale_reauthn": {
-    "string": "Autenticeringen har gått ut"
+  "security.stale_authn_info": {
+    "string": "Inloggningen har gått ut. Var vänlig försök igen."
   },
   "security.u2f-describe-title": {
     "string": "Ge säkerhetsnyckeln ett namn så du kan skilja dem åt om du lägger till fler."
