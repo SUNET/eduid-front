@@ -68,7 +68,7 @@ h3 {
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: $bp-xs) {
   #captcha {
     transform: scale(0.9);
     margin-bottom: 0;
