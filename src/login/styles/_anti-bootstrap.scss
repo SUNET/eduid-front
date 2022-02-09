@@ -55,7 +55,7 @@ small {
 }
 
 // // this is here ONLY to counteract bootstrap
-@media (min-width: 1200px) {
+@media (min-width: $bp-xl) {
   #root.container {
     max-width: 100%;
   }
