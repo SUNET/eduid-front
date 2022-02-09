@@ -105,7 +105,7 @@ function Security(props) {
             ) : null}
             <button
               id="security-webauthn-button"
-              className={isPlatformAuthenticatorAvailable ? "second-option" : "btn-primary"}
+              className={isPlatformAuthenticatorAvailable ? "second-option" : "btn btn-primary"}
               onClick={props.handleStartAskingKeyWebauthnDescription}
             >
               {translate("security.add_webauthn_token_key")}

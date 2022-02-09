@@ -74,7 +74,7 @@ button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
 button.btn-secondary:not(:disabled):not(.disabled):active:focus,
 button.btn-secondary:not(:disabled):not(.disabled):hover {
-  margin-top: 1rem;
+  // margin-top: 1rem;
   color: $orange-highlight;
   border: solid 2px $orange-highlight;
   text-transform: uppercase;
@@ -258,6 +258,7 @@ button.btn-link {
   border: none;
   box-shadow: none;
   margin: 0;
+  text-decoration: none;
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -266,6 +267,7 @@ button.btn-link {
     color: $orange-highlight;
     background-color: transparent;
     transform: scale(1);
+    text-decoration: underline;
   }
 }
 
