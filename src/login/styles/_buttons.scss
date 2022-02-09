@@ -70,10 +70,10 @@ button.btn-primary:not(:disabled):not(.disabled):active:focus {
 
 button,
 button.btn-secondary,
-button.btn-secondary:not(:disabled):active,
-button.btn-secondary:not(:disabled):focus,
-button.btn-secondary:not(:disabled):active:focus,
-button.btn-secondary:not(:disabled):hover {
+button.btn-secondary:not(:disabled):not(.disabled):active,
+button.btn-secondary:not(:disabled):not(.disabled):focus,
+button.btn-secondary:not(:disabled):not(.disabled):active:focus,
+button.btn-secondary:not(:disabled):not(.disabled):hover {
   margin-top: 1rem;
   color: $orange-highlight;
   border: solid 2px $orange-highlight;
