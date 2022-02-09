@@ -9,6 +9,7 @@ import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { useIntl } from "react-intl";
 import CookieChecker from "./../components/CookieChecker";
+import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 
 function Security(props) {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);

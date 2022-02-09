@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { reduxForm, submit } from "redux-form";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
+import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
@@ -47,7 +48,7 @@ function RenderResetPasswordLink(): JSX.Element {
     <LinkRedirect
       id={"link-forgot-password"}
       to={"/"}
-      className={`send-link ${request_in_progress ? "disabled" : ""}`}
+      className={`send-link text-small ${request_in_progress ? "disabled" : ""}`}
       onClick={sendLink}
       text={translate("login.usernamePw.reset-password-link")}
     />
@@ -91,9 +92,9 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button" className={"settings-button"}>
+    <ButtonSecondary type="submit" onClick={handleOnClick} id="login-other-device-button" className="secondary">
       <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
-    </ButtonPrimary>
+    </ButtonSecondary>
   );
 }
 
@@ -104,10 +105,10 @@ function UsernamePw() {
         <FormattedMessage id="login.usernamePw.h2-heading" defaultMessage="Log in" />
       </h2>
       <UsernamePwForm />
+      <RenderResetPasswordLink />
       <div className="button-pair">
-        <UsernamePwFormButton />
         <UsernamePwAnotherDeviceButton />
-        <RenderResetPasswordLink />
+        <UsernamePwFormButton />
       </div>
       <RenderRegisterLink />
     </div>

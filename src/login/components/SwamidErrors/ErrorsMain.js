@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { createBrowserHistory } from "history";
-import FooterContainer from "containers/Footer";
+import Footer from "../Footer/Footer";
 import HeaderContainer from "containers/Header";
 import NotificationsContainer from "containers/Notifications";
 import { Router, Route } from "react-router-dom";
@@ -19,7 +19,7 @@ class ErrorsMain extends Component {
           <NotificationsContainer />
           <Route exact path={`/errors`} component={Errors} />
         </section>
-        <FooterContainer {...this.props} />
+        <Footer />
       </Router>,
     ];
   }
