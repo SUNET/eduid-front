@@ -143,8 +143,12 @@ function SecurityKeyTable(props) {
   let btnVerify = "";
   let date_success = "";
 
-  // filter out password from data
-  const tokens = props.credentials.filter((cred) => cred.credential_type !== "security.password_credential_type");
+  // get FIDO tokens from list of all user credentials
+  const tokens = props.credentials.filter(
+    (cred) =>
+      cred.credential_type == "security.u2f_credential_type" ||
+      cred.credential_type == "security.webauthn_credential_type"
+  );
 
   // data that goes onto the table
   const securitykey_table_data = tokens.map((cred, index) => {
