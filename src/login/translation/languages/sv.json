@@ -720,9 +720,6 @@
   "letter.button_text_code": {
     "string": "Skriv bekräftelsekoden här"
   },
-  "letter.button_text_request": {
-    "string": "via post"
-  },
   "letter.initialize_proofing_help_text": {
     "string": "Brevet innehåller en bekräftelsekod som av säkerhetsskäl går ut efter två veckor."
   },
@@ -732,12 +729,6 @@
   "letter.lost_code": {
     "developer_comment": "Text for letter proofing confirm dialog",
     "string": "Om du klickar på \"Skicka\"-knappen kommer en kod att skickas till din folkbokföringsadress."
-  },
-  "letter.modal_confirm_info": {
-    "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
-  },
-  "letter.modal_confirm_title": {
-    "string": "Få en bekräftelsekod via post"
   },
   "letter.no-address-found": {
     "string": "Ingen postadress hittades"
@@ -761,9 +752,6 @@
   },
   "letter.verification_success": {
     "string": "Personnumret är bekräftat"
-  },
-  "letter.verify_title": {
-    "string": "Skriv in koden du fått hemskickad"
   },
   "letter.wrong-code": {
     "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
@@ -1778,29 +1766,11 @@
   "verify-identity.vetting_freja_tagline": {
     "string": "För dig som har eller kan skapa Freja eID genom att besöka ett ombud i Sverige"
   },
-  "verify-identity.vetting_letter_code_expired": {
-    "string": "Koden gick ut"
-  },
-  "verify-identity.vetting_letter_order_new_code": {
-    "string": "Tryck här om du vill beställa en ny kod"
-  },
-  "verify-identity.vetting_letter_received": {
-    "string": "Tryck här igen när du har fått brevet"
-  },
-  "verify-identity.vetting_letter_sent": {
-    "string": "Ett brev skickades"
-  },
-  "verify-identity.vetting_letter_valid": {
-    "string": "Brevet är giltigt till"
-  },
   "verify-identity.vetting_link_settings": {
     "string": "Inställningar"
   },
   "verify-identity.vetting_phone_tagline": {
     "string": "För dig som har ett svenskt telefonabonnemang i ditt eget namn"
-  },
-  "verify-identity.vetting_post_tagline": {
-    "string": "För dig som har tillgång till din folkbokföringsaddress"
   },
   "vn7Z/D": {
     "developer_comment": "Use another device, finished",

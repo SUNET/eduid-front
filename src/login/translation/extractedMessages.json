@@ -724,9 +724,6 @@
   "letter.button_text_code": {
     "string": "Enter confirmation code here"
   },
-  "letter.button_text_request": {
-    "string": "by post"
-  },
   "letter.initialize_proofing_help_text": {
     "string": "The letter will contain a code that for security reasons expires in two weeks."
   },
@@ -736,12 +733,6 @@
   "letter.lost_code": {
     "developer_comment": "Text for letter proofing confirm dialog",
     "string": "When you click on the \"Send code\" link a letter with a verification code will be sent to your official post address."
-  },
-  "letter.modal_confirm_info": {
-    "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
-  },
-  "letter.modal_confirm_title": {
-    "string": "Use a confirmation code sent by post to your house"
   },
   "letter.no-address-found": {
     "string": "No postal address found"
@@ -765,9 +756,6 @@
   },
   "letter.verification_success": {
     "string": "Successfully verified national id number"
-  },
-  "letter.verify_title": {
-    "string": "Add the code you have received by post"
   },
   "letter.wrong-code": {
     "string": "Incorrect verification code"
@@ -1782,29 +1770,11 @@
   "verify-identity.vetting_freja_tagline": {
     "string": "For you able to create a Freja eID by visiting one of the authorised agents"
   },
-  "verify-identity.vetting_letter_code_expired": {
-    "string": "The code expired"
-  },
-  "verify-identity.vetting_letter_order_new_code": {
-    "string": "Click here to order a new code"
-  },
-  "verify-identity.vetting_letter_received": {
-    "string": "Click here again when you have received the letter"
-  },
-  "verify-identity.vetting_letter_sent": {
-    "string": "The letter was sent"
-  },
-  "verify-identity.vetting_letter_valid": {
-    "string": "The letter is valid to"
-  },
   "verify-identity.vetting_link_settings": {
     "string": "Settings"
   },
   "verify-identity.vetting_phone_tagline": {
     "string": "For you with a Swedish phone number registered in your name"
-  },
-  "verify-identity.vetting_post_tagline": {
-    "string": "For you registered at your current address"
   },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",

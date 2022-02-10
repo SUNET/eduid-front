@@ -84,7 +84,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
         <>
           <div className="description">
             <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
-            {/* {translate("verify-identity.vetting_letter_code_expired")} */}
             <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
           </div>
           <div className="description">
@@ -92,7 +91,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
               defaultMessage="Click here to order a new code"
               description="explanation text for letter proofing"
             />
-            {/* {translate("verify-identity.vetting_letter_order_new_code")}       */}
           </div>
         </>
       );
@@ -101,7 +99,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
         <>
           <div className="description">
             <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
-            {/* {translate("verify-identity.vetting_letter_sent")} */}
             <span id="letter_sent_date">{formatDateFromBackend(props.letter_sent_date)}</span>
           </div>
           <div className="description">
@@ -109,7 +106,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
               defaultMessage="The letter is valid to"
               description="explanation text for letter proofing"
             />
-            {/* {translate("verify-identity.vetting_letter_valid")} */}
             <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
           </div>
           <div className="description">
@@ -117,7 +113,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
               defaultMessage="Click here again when you have received the letter"
               description="explanation text for letter proofing"
             />
-            {/* {translate("verify-identity.vetting_letter_received")} */}
           </div>
         </>
       );
@@ -163,21 +158,17 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
               defaultMessage="For you registered at your current address"
               description="explanation text for letter proofing"
             />
-            {/* {translate("verify-identity.vetting_post_tagline")} */}
             {description}
           </div>
           <div className="name">
             <FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />
-            {/* {translate("letter.button_text_request")} */}
           </div>
         </button>
       </div>
       <NotificationModal
         modalId="letterGenericConfirmDialog"
         title={notificationModalTitle}
-        // title={translate("letter.modal_confirm_title")}
         mainText={mainText}
-        // mainText={translate("letter.modal_confirm_info")}
         showModal={showNotificationModal}
         closeModal={() => setShowNotificationModal(false)}
         acceptModal={confirmLetterProofing}
@@ -186,9 +177,7 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
         modalId="letterConfirmDialog"
         id="letterConfirmDialogControl"
         title={confirmModalTitle}
-        // title={translate("letter.verify_title")}
         resendLabel={resendLabel}
-        // resendLabel={translate("cm.enter_code")}
         placeholder={placeholder}
         showModal={showConfirmationModal}
         closeModal={() => setShowConfirmationModal(false)}
