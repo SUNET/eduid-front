@@ -22,7 +22,7 @@ import {
   saveEmail,
 } from "sagas/Emails";
 import { requestLogout } from "sagas/Header";
-import { sendGetLetterProofing, sendLetterCode, sendLetterProofing } from "sagas/LetterProofing";
+import { sendLetterCode } from "sagas/LetterProofing";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import * as sagasMobile from "sagas/Mobile";
 import { postNin, requestNins, requestRemoveNin } from "sagas/Nins";
@@ -64,8 +64,6 @@ function* rootSaga() {
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, allowGroupsSagas),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestCredentials),
-    //takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestSuggestedPassword),
-    takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, sendGetLetterProofing),
     takeLatest(pdataActions.postUserdata.type, postPersonalDataSaga),
     takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),
     takeLatest(openidActions.SHOW_OIDC_SELEG_MODAL, sagasOpenid.checkNINAndShowSelegModal),
@@ -87,8 +85,6 @@ function* rootSaga() {
     takeLatest(mobileActions.START_VERIFY, sagasMobile.requestVerifyMobile),
     takeLatest(securityActions.initiatePasswordChange.type, requestPasswordChange),
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
-    takeLatest(letterProofingSlice.actions.postLetterProofingSendLetter, sendLetterProofing),
-    takeLatest(letterProofingSlice.actions.getLetterProofingState, sendGetLetterProofing),
     takeLatest(letterProofingSlice.actions.postLetterProofingVerificationCode, sendLetterCode),
     takeLatest(ninActions.postNin.type, postNin),
     takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
