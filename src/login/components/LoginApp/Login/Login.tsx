@@ -36,13 +36,6 @@ const Login = (): JSX.Element => {
   }, [base_url, ref, next_page, params]);
 
   useEffect(() => {
-    // Ask the backend what to do
-    if (base_url && !next_page && ref) {
-      dispatch(fetchNext({ ref }));
-    }
-  }, [base_url, ref, next_page]);
-
-  useEffect(() => {
     /* Changing URL is apparently what triggers browsers password managers, so we
      * change to/from 'login/password' when that module is used.
      */
