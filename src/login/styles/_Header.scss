@@ -31,13 +31,13 @@ header {
   margin: 0;
 }
 
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   .tagline {
     margin: 3rem 0 1.5rem;
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: $bp-xs) {
   #eduid-logo {
     width: 105px;
     height: 36px;
