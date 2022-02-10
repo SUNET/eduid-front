@@ -142,7 +142,7 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   );
 }
 
-//TODO: Remove container and fix error in VerifyIdentity.tsx, props.disabled is boolean
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mapStateToProps = (state: DashboardRootState, props: any) => {
   const letterVerification = state.letter_proofing.confirmingLetter;
   const swedishNin = isValid("nins")(state);
