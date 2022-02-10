@@ -9,6 +9,7 @@ import { isValid } from "redux-form";
 import letterProofingSlice from "reducers/LetterProofing";
 import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
+
 interface LetterProofingProps {
   letter_sent_date: string;
   letter_expired?: boolean;
@@ -18,7 +19,6 @@ interface LetterProofingProps {
   confirmLetterProofing: () => void;
   disabled: boolean;
 }
-
 function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
@@ -39,7 +39,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   }
 
   function sendConfirmationCode(e: React.MouseEvent<HTMLElement>) {
-    console.log("e", e);
     e.preventDefault();
     const codeValue = document.getElementById("confirmation-code-area");
     const data = {
@@ -143,14 +142,14 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   );
 }
 
-//TODO: Remove container
-
-const mapStateToProps = (state: DashboardRootState) => {
+//TODO: Remove container and fix error in VerifyIdentity.tsx, props.disabled is boolean
+const mapStateToProps = (state: DashboardRootState, props: any) => {
   const letterVerification = state.letter_proofing.confirmingLetter;
   const swedishNin = isValid("nins")(state);
   const requestLetterAllowed = (letterVerification && swedishNin) || state.letter_proofing.letter_expired;
-
+  const disabled: boolean = props.disabled;
   return {
+    disabled,
     requestLetterAllowed,
     verifyingLetter_sent: state.letter_proofing.verifyingLetter,
     letter_sent_date: state.letter_proofing.letter_sent,
@@ -158,29 +157,6 @@ const mapStateToProps = (state: DashboardRootState) => {
     letter_expired: state.letter_proofing.letter_expired,
   };
 };
-
-// const mapDispatchToProps = (dispatch: any) => {
-//   return {
-//     confirmLetterProofing: function () {
-//       dispatch(letterProofingSlice.actions.postLetterProofingSendLetter());
-//     },
-//     sendConfirmationCode: function (e: React.MouseEvent<HTMLElement>) {
-//       e.preventDefault();
-//       const codeValue = document.getElementById("confirmation-code-area");
-//       const data = {
-//         code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
-//       };
-//       dispatch(letterProofingSlice.actions.postLetterProofingVerificationCode(data));
-//       dispatch(letterProofingSlice.actions.stopLetterVerification());
-//     },
-//     handleStopConfirmationLetter: function () {
-//       dispatch(letterProofingSlice.actions.stopLetterConfirmation());
-//     },
-//     handleStopVerificationLetter: function () {
-//       dispatch(letterProofingSlice.actions.stopLetterVerification());
-//     },
-//   };
-// };
 
 const LetterProofingContainer = connect(mapStateToProps, null)(LetterProofingButton);
 
