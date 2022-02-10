@@ -1,4 +1,4 @@
-import { translate } from "login/translation";
+import { FormattedMessage } from "react-intl";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
 import { shortCodePattern } from "../../app_utils/validation/regexPatterns";
@@ -67,7 +67,15 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
 
   let description = null;
   if (props.disabled) {
-    description = <div className="description">{translate("verify-identity.vetting_explanation_add_nin")}</div>;
+    description = (
+      <div className="description">
+        <FormattedMessage
+          defaultMessage="Start by adding your ID number above"
+          description="explanation text for letter proofing"
+        />
+        {/* {translate("verify-identity.explanation_add_nin")} */}
+      </div>
+    );
   } else {
     if (props.letter_sent_date === undefined) {
       description = <div />;
@@ -75,24 +83,42 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
       description = (
         <>
           <div className="description">
-            {translate("verify-identity.vetting_letter_code_expired")}
+            <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
+            {/* {translate("verify-identity.vetting_letter_code_expired")} */}
             <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
           </div>
-          <div className="description">{translate("verify-identity.vetting_letter_order_new_code")}</div>
+          <div className="description">
+            <FormattedMessage
+              defaultMessage="Click here to order a new code"
+              description="explanation text for letter proofing"
+            />
+            {/* {translate("verify-identity.vetting_letter_order_new_code")}       */}
+          </div>
         </>
       );
     } else {
       description = (
         <>
           <div className="description">
-            {translate("verify-identity.vetting_letter_sent")}
+            <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
+            {/* {translate("verify-identity.vetting_letter_sent")} */}
             <span id="letter_sent_date">{formatDateFromBackend(props.letter_sent_date)}</span>
           </div>
           <div className="description">
-            {translate("verify-identity.vetting_letter_valid")}
+            <FormattedMessage
+              defaultMessage="The letter is valid to"
+              description="explanation text for letter proofing"
+            />
+            {/* {translate("verify-identity.vetting_letter_valid")} */}
             <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
           </div>
-          <div className="description">{translate("verify-identity.vetting_letter_received")}</div>
+          <div className="description">
+            <FormattedMessage
+              defaultMessage="Click here again when you have received the letter"
+              description="explanation text for letter proofing"
+            />
+            {/* {translate("verify-identity.vetting_letter_received")} */}
+          </div>
         </>
       );
     }
@@ -106,21 +132,52 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
     description: "Placeholder for letter proofing text input",
   });
 
+  const notificationModalTitle = (
+    <FormattedMessage
+      defaultMessage="Use a confirmation code sent by post to your house"
+      description="explanation text for letter proofing"
+    />
+  );
+  const mainText = (
+    <FormattedMessage
+      defaultMessage="The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
+      description="explanation text for letter proofing"
+    />
+  );
+  const resendLabel = (
+    <FormattedMessage defaultMessage="Confirmation code" description="explanation text for letter proofing" />
+  );
+  const confirmModalTitle = (
+    <FormattedMessage
+      defaultMessage="Add the code you have received by post"
+      description="explanation text for letter proofing"
+    />
+  );
+
   return (
     <div>
       <div className="vetting-button">
         <button disabled={props.disabled} onClick={() => handleModal()}>
           <div className="text">
-            {translate("verify-identity.vetting_post_tagline")}
+            <FormattedMessage
+              defaultMessage="For you registered at your current address"
+              description="explanation text for letter proofing"
+            />
+            {/* {translate("verify-identity.vetting_post_tagline")} */}
             {description}
           </div>
-          <div className="name">{translate("letter.button_text_request")}</div>
+          <div className="name">
+            <FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />
+            {/* {translate("letter.button_text_request")} */}
+          </div>
         </button>
       </div>
       <NotificationModal
         modalId="letterGenericConfirmDialog"
-        title={translate("letter.modal_confirm_title")}
-        mainText={translate("letter.modal_confirm_info")}
+        title={notificationModalTitle}
+        // title={translate("letter.modal_confirm_title")}
+        mainText={mainText}
+        // mainText={translate("letter.modal_confirm_info")}
         showModal={showNotificationModal}
         closeModal={() => setShowNotificationModal(false)}
         acceptModal={confirmLetterProofing}
@@ -128,8 +185,10 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
       <ConfirmModal
         modalId="letterConfirmDialog"
         id="letterConfirmDialogControl"
-        title={translate("letter.verify_title")}
-        resendLabel={translate("cm.enter_code")}
+        title={confirmModalTitle}
+        // title={translate("letter.verify_title")}
+        resendLabel={resendLabel}
+        // resendLabel={translate("cm.enter_code")}
         placeholder={placeholder}
         showModal={showConfirmationModal}
         closeModal={() => setShowConfirmationModal(false)}
