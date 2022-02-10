@@ -130,7 +130,7 @@ table.table-form.passwords {
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   .security-creation-date,
   .security-last-used-date,
   .webauthn-token-holder td:nth-child(2),
