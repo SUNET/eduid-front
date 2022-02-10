@@ -73,7 +73,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
           defaultMessage="Start by adding your ID number above"
           description="explanation text for letter proofing"
         />
-        {/* {translate("verify-identity.explanation_add_nin")} */}
       </div>
     );
   } else {
@@ -127,28 +126,6 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
     description: "Placeholder for letter proofing text input",
   });
 
-  const notificationModalTitle = (
-    <FormattedMessage
-      defaultMessage="Use a confirmation code sent by post to your house"
-      description="explanation text for letter proofing"
-    />
-  );
-  const mainText = (
-    <FormattedMessage
-      defaultMessage="The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
-      description="explanation text for letter proofing"
-    />
-  );
-  const resendLabel = (
-    <FormattedMessage defaultMessage="Confirmation code" description="explanation text for letter proofing" />
-  );
-  const confirmModalTitle = (
-    <FormattedMessage
-      defaultMessage="Add the code you have received by post"
-      description="explanation text for letter proofing"
-    />
-  );
-
   return (
     <div>
       <div className="vetting-button">
@@ -167,8 +144,19 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
       </div>
       <NotificationModal
         modalId="letterGenericConfirmDialog"
-        title={notificationModalTitle}
-        mainText={mainText}
+        title={
+          <FormattedMessage
+            defaultMessage="Use a confirmation code sent by post to your house"
+            description="explanation text for letter proofing"
+          />
+        }
+        mainText={
+          <FormattedMessage
+            defaultMessage="The letter will contain a code that you enter here to verify your identity. 
+                            The code sent to you will expire in 2 weeks starting from now"
+            description="explanation text for letter proofing"
+          />
+        }
         showModal={showNotificationModal}
         closeModal={() => setShowNotificationModal(false)}
         acceptModal={confirmLetterProofing}
@@ -176,8 +164,15 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
       <ConfirmModal
         modalId="letterConfirmDialog"
         id="letterConfirmDialogControl"
-        title={confirmModalTitle}
-        resendLabel={resendLabel}
+        title={
+          <FormattedMessage
+            defaultMessage="Add the code you have received by post"
+            description="explanation text for letter proofing"
+          />
+        }
+        resendLabel={
+          <FormattedMessage defaultMessage="Confirmation code" description="explanation text for letter proofing" />
+        }
         placeholder={placeholder}
         showModal={showConfirmationModal}
         closeModal={() => setShowConfirmationModal(false)}
