@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchLetterProofingState } from "apis/letterProofing";
 
 export interface LetterProofingState {
   confirmingLetter?: boolean;
@@ -17,9 +18,7 @@ const letterProofingSlice = createSlice({
   name: "letterProofing",
   initialState,
   reducers: {
-    getLetterProofingState: () => {},
     // Trigger action on click ACCEPT button in Notification Modal
-    postLetterProofingSendLetter: () => {},
     stopLetterConfirmation: (state) => {
       state.confirmingLetter = false;
       state.verifyingLetter = false;
@@ -27,18 +26,6 @@ const letterProofingSlice = createSlice({
     stopLetterVerification: (state) => {
       state.confirmingLetter = false;
       state.verifyingLetter = false;
-    },
-    getLetterProofingSuccess: (state, action: PayloadAction<LetterProofingState>) => {
-      if (action.payload.letter_sent === undefined) {
-        state.confirmingLetter = true;
-      } else {
-        state.verifyingLetter = true;
-      }
-      state.letter_expires_in_days = action.payload.letter_expires_in_days;
-      state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
-      state.letter_sent = action.payload.letter_sent;
-      state.letter_expires = action.payload.letter_expires;
-      state.letter_expired = action.payload.letter_expired;
     },
     postLetterProofingSuccess: (state, action: PayloadAction<LetterProofingState>) => {
       state.confirmingLetter = false;
@@ -61,6 +48,21 @@ const letterProofingSlice = createSlice({
       state.confirmingLetter = false;
       state.verifyingLetter = false;
     },
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchLetterProofingState.fulfilled, (state, action: PayloadAction<LetterProofingState>) => {
+      if (action.payload.letter_sent === undefined) {
+        state.confirmingLetter = true;
+      } else {
+        state.verifyingLetter = true;
+      }
+      state.letter_expires_in_days = action.payload.letter_expires_in_days;
+      state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
+      state.letter_sent = action.payload.letter_sent;
+      state.letter_expires = action.payload.letter_expires;
+      state.letter_expired = action.payload.letter_expired;
+    });
   },
 });
 
