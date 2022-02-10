@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
@@ -9,6 +9,7 @@ import { isValid } from "redux-form";
 import letterProofingSlice from "reducers/LetterProofing";
 import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
+import { fetchLetterProofingState } from "apis/letterProofing";
 
 interface LetterProofingProps {
   letter_sent_date: string;
@@ -23,6 +24,10 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const dispatch = useDashboardAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchLetterProofingState());
+  }, [dispatch]);
 
   function handleModal() {
     const letterPending = props.letter_sent_date === undefined && !props.letter_expired;
@@ -50,7 +55,7 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   }
 
   function confirmLetterProofing() {
-    dispatch(letterProofingSlice.actions.postLetterProofingSendLetter());
+    dispatch(fetchLetterProofingState());
     setShowNotificationModal(false);
   }
 
