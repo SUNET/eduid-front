@@ -7,7 +7,7 @@ import { IntlProvider } from "react-intl";
 import { put, call } from "redux-saga/effects";
 import * as actions from "actions/LetterProofing";
 import letterProofingReducer from "reducers/LetterProofing";
-import LetterProofingContainer from "../login/components/LetterProofing/LetterProofingContainer";
+import LetterProofingContainer from "components/LetterProofing";
 import {
   sendLetterProofing,
   fetchLetterProofing,
