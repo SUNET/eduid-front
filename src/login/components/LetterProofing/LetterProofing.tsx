@@ -26,7 +26,7 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
 
   function handleModal() {
     const letterPending = props.letter_sent_date === undefined && !props.letter_expired;
-    const letterCodeExpired = props.letter_expired && props.letter_sent_date !== "";
+    const letterCodeExpired = props.letter_expired && props.letter_sent_date !== undefined;
     // Not request letter yet
     const letterNotRequested = props.letter_sent_date === undefined && props.requestLetterAllowed;
 
