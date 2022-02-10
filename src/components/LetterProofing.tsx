@@ -1,9 +1,9 @@
 import { FormattedMessage } from "react-intl";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
-import { shortCodePattern } from "../../app_utils/validation/regexPatterns";
-import ConfirmModal from "../Modals/ConfirmModalContainer";
-import NotificationModal from "../Modals/NotificationModal";
+import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
+import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
+import NotificationModal from "../login/components/Modals/NotificationModal";
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
 import letterProofingSlice from "reducers/LetterProofing";

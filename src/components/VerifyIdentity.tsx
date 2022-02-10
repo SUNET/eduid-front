@@ -6,7 +6,7 @@ import { NinInfo } from "reducers/Nins";
 import { translate } from "login/translation";
 import OpenidConnectContainer from "containers/OpenidConnect";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
-import LetterProofingContainer from "login/components/LetterProofing/LetterProofing";
+import LetterProofingContainer from "components/LetterProofing";
 import LookupMobileProofingContainer from "login/components/LookupMobileProofing/LookupMobileProofingContainer";
 import EidasContainer from "containers/Eidas";
 
