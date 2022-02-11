@@ -49,9 +49,9 @@ class Main extends Component {
           {this.props.translate("beta-link.to-stable")}
         </a>
         <HeaderContainer {...this.props} />
-        <section id="panel">
+        <section id="panel" className="panel">
           <NotificationsContainer />
-          <div key="0" id="content" className="horizontal-content-margin">
+          <div key="0" id="content" className="horizontal-content-margin content">
             <DashboardNav {...this.props} />
             <div key="0" id="text-content">
               <Route path="/profile/settings/" component={SettingsComponent} />

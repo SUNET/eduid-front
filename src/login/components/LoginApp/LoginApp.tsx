@@ -11,7 +11,7 @@ import UseOtherDevice2 from "./Login/UseOtherDevice2";
 
 function LoginApp(): JSX.Element {
   return (
-    <div id="content" className="horizontal-content-margin">
+    <div id="content" className="horizontal-content-margin content">
       <Switch>
         <Route exact path={`/login/other/:state_id`} component={UseOtherDevice2} />
         <Route exact path={`/login/password/:ref`} component={Login} />
