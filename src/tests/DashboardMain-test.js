@@ -5,7 +5,7 @@ import { shallow, mount } from "enzyme";
 import expect from "expect";
 import { IntlProvider } from "react-intl";
 import Header from "containers/Header";
-import Footer from "containers/Footer";
+import Footer from "../login/components/Footer/Footer";
 import MainContainer from "containers/DashboardMain";
 import Notifications from "containers/Notifications";
 import { MemoryRouter } from "react-router-dom";

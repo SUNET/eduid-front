@@ -7,6 +7,20 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
   },
+  "4+GwOq": {
+    "developer_comment": "Set new password",
+    "string": "New password"
+  },
+  "4WguDO": {
+    "string": "Developer info, not shown in production:"
+  },
+  "5ajfFQ": {
+    "developer_comment": "Login UsernamePw",
+    "string": "Log in using another device"
+  },
+  "5l4hxp": {
+    "string": "Log in on another device"
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
@@ -23,6 +37,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
   },
+  "B4vR5O": {
+    "developer_comment": "Set new password",
+    "string": "Repeat new password"
+  },
   "CH6SNS": {
     "developer_comment": "Ladok account linking",
     "string": "Link your account to Ladok"
@@ -30,9 +48,20 @@
   "CSRF failed to validate": {
     "string": "CSRF failed to validate, please reload the page"
   },
+  "D7/IyL": {
+    "developer_comment": "Set new password (accept button)",
+    "string": "Accept password"
+  },
+  "DuBOC3": {
+    "developer_comment": "Set new password",
+    "string": "Set your new password"
+  },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right to"
+  },
+  "Ek2FGc": {
+    "string": "Log in on the other device"
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
@@ -54,20 +83,47 @@
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
   },
+  "G94CxN": {
+    "developer_comment": "Use another device, finished",
+    "string": "Don't share this code with anyone, as it might compromise your credentials."
+  },
   "GGa/Fj": {
     "developer_comment": "Terms of use (banner text)",
     "string": "We need an updated acceptance of the eduID terms of use from you."
   },
+  "HCjfX4": {
+    "developer_comment": "Footer copyright",
+    "string": "SUNET 2013-2022"
+  },
+  "HqrAl+": {
+    "developer_comment": "Reset password copy password tooltip",
+    "string": "Copied!"
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
+  },
+  "Jn07OV": {
+    "string": "Ooops, how did you get here? Unknown state, please try again."
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
   },
+  "KjyITI": {
+    "developer_comment": "Use another device, finished",
+    "string": "Request complete, you should close this browser window."
+  },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
     "string": "Select higher education institution"
+  },
+  "Lqd32u": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Log in the other device"
+  },
+  "MPTvRv": {
+    "developer_comment": "Footer faq",
+    "string": "Help"
   },
   "Missing data for required field.": {
     "string": "Missing data for required field"
@@ -97,9 +153,25 @@
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
   },
+  "PwI8gG": {
+    "developer_comment": "Reset Password set new password success",
+    "string": "Password has been updated."
+  },
+  "R0rN2Z": {
+    "developer_comment": "Use another device, finished",
+    "string": "The code has expired, please close this browser window"
+  },
+  "R3n7aY": {
+    "developer_comment": "Use other device",
+    "string": "The request has been aborted"
+  },
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
     "string": "Spaces are ignored"
+  },
+  "SX9bpK": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Log in"
   },
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
@@ -119,6 +191,9 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add special characters, such as @ $ + _ %"
   },
+  "U5eTH/": {
+    "string": "Note that you are using this device to log in on the device below"
+  },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Log in: Terms of use"
@@ -127,9 +202,21 @@
     "developer_comment": "Reset Password email link sent",
     "string": "resend link"
   },
+  "VLu1fI": {
+    "developer_comment": "Use other device",
+    "string": "The request is not valid anymore"
+  },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
+  },
+  "YxJ0EU": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Cancel"
+  },
+  "Z4yZ3N": {
+    "developer_comment": "Use another device, finished",
+    "string": "After using this code on the first device, please close this browser window."
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -154,6 +241,10 @@
   },
   "add_nin.main_title": {
     "string": "1. Add your id number"
+  },
+  "bCY5Fs": {
+    "developer_comment": "Use another device IP proximity",
+    "string": "(Close to your address now)"
   },
   "banner.tagline": {
     "string": "eduID is easier and safer login."
@@ -208,6 +299,7 @@
     "string": "Please provide a stronger password"
   },
   "chpass.main_title": {
+    "developer_comment": "Dashboard change password",
     "string": "Change your current password"
   },
   "chpass.no_old_pw": {
@@ -259,6 +351,9 @@
   "cm.resend_code": {
     "developer_comment": "Lost code problem solution",
     "string": "Send a new confirmation code"
+  },
+  "coWKVJ": {
+    "string": "Log in using another device"
   },
   "code.unknown-code": {
     "string": "Unknown verification code"
@@ -320,6 +415,10 @@
   },
   "delete.modal_info": {
     "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time"
+  },
+  "eKpiiX": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Log in this device"
   },
   "eMHJVJ": {
     "developer_comment": "Reset Password email link sent",
@@ -571,8 +670,13 @@
     "developer_comment": "Ladok account linking",
     "string": "Your account is linked with Ladok information from"
   },
-  "header.faq": {
-    "string": "Help"
+  "gbZoh/": {
+    "developer_comment": "Set new password (go back to eduID button)",
+    "string": "Go back"
+  },
+  "h3XW6A": {
+    "developer_comment": "Use another device, finished",
+    "string": "Never give this code to someone else, as they might steal your login."
   },
   "header.logout": {
     "string": "Logout"
@@ -594,6 +698,9 @@
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
+  },
+  "j6UxLp": {
+    "string": "Enter the response code shown on the other device in the form below"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -641,6 +748,9 @@
   },
   "letter.no_state_found": {
     "string": "No state found"
+  },
+  "letter.not-sent": {
+    "string": "Letter send request failed. Please try again."
   },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
@@ -771,11 +881,12 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Verify your identity to get the most ouf of your eduID"
   },
+  "mXkdvt": {
+    "developer_comment": "Use another device IP proximity",
+    "string": "(Far from your address now)"
+  },
   "mail_duplicated": {
     "string": "Added email is duplicated"
-  },
-  "main.copyright": {
-    "string": "SUNET 2013-2021"
   },
   "main.welcome": {
     "string": "Welcome to eduID"
@@ -828,6 +939,10 @@
   },
   "mobile.resend_success": {
     "string": "New code sent to {email}"
+  },
+  "n5fMlW": {
+    "developer_comment": "Set new password",
+    "string": "A strong password has been generated for you. To proceed you will need to repeat the password into the Repeat new password field and click Accept Password."
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "National identity number needs to be in the form of yyyymmddxxxx"
@@ -883,6 +998,10 @@
   },
   "nins.wrong_length": {
     "string": "A national id number must have 12 digits"
+  },
+  "noNGvR": {
+    "developer_comment": "Use another device #1",
+    "string": "The code has expired"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
@@ -1193,9 +1312,16 @@
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
   },
+  "qHqnkz": {
+    "developer_comment": "Use another device, finished",
+    "string": "Use the response code below to continue logging in on the first device"
+  },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
+  },
+  "rB8pRP": {
+    "string": "Scan this QR-code with your other device"
   },
   "register.create-account": {
     "string": "Sign up with your email address to start."
@@ -1228,12 +1354,6 @@
   "resetpw.continue_reset_password": {
     "string": "Continue reset password"
   },
-  "resetpw.copied-in-clipboard": {
-    "string": "Copied!"
-  },
-  "resetpw.copy-to-clipboard": {
-    "string": "Copy to clipboard"
-  },
   "resetpw.email-send-failure": {
     "string": "Error sending mail, please try again"
   },
@@ -1265,7 +1385,7 @@
     "string": "There was a problem using your security key for resetting password"
   },
   "resetpw.go-back": {
-    "string": "go back"
+    "string": "Go back"
   },
   "resetpw.go-to-eduid": {
     "string": "Go to eduID"
@@ -1396,6 +1516,9 @@
   "security.main_title": {
     "string": "Security"
   },
+  "security.no_reauthn": {
+    "string": "Missing authentication"
+  },
   "security.password_credential_type": {
     "string": "Password"
   },
@@ -1411,6 +1534,9 @@
   },
   "security.security-key_title": {
     "string": "Make your eduID more secure"
+  },
+  "security.stale_authn_info": {
+    "string": "The authentication expired. Please try again."
   },
   "security.u2f-describe-title": {
     "string": "Enter a description for the U2F token you are about to register"
@@ -1503,18 +1629,23 @@
     "string": "Delete eduID"
   },
   "settings.change_info": {
+    "developer_comment": "Dashboard change password",
     "string": "You will need to log in again to change your password."
   },
   "settings.change_password": {
+    "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
   "settings.confirm_title_chpass": {
+    "developer_comment": "Dashboard change password",
     "string": "For security reasons..."
   },
   "settings.long_description": {
+    "developer_comment": "Dashboard change password",
     "string": "Click the link to change your eduID password."
   },
   "settings.main_title": {
+    "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
   "settings.modal_delete_title": {
@@ -1544,6 +1675,10 @@
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
+  },
+  "tQpfHe": {
+    "developer_comment": "Reset Password go to eduID",
+    "string": "Go to eduID"
   },
   "text.link": {
     "developer_comment": "Placeholder for phone text input",
@@ -1579,6 +1714,10 @@
   "u2f.push-the-button": {
     "string": "Please touch the button in your U2F key"
   },
+  "ugLZcg": {
+    "developer_comment": "Reset password copy password tooltip",
+    "string": "Copy to clipboard"
+  },
   "unexpected-problem": {
     "string": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
   },
@@ -1596,6 +1735,10 @@
   },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
+  },
+  "v8XEXB": {
+    "developer_comment": "Use another device IP proximity",
+    "string": "(The same as now)"
   },
   "value not changed": {
     "string": "The value is not changed"
@@ -1619,7 +1762,7 @@
     "string": "Your eduID is ready to use"
   },
   "verify-identity.verified_page-description": {
-    "string": "The below id number is now connected to this eduID. Use your eduID to log in to services related to higher education."
+    "string": "The Swedish national identity number below is now connected to your eduID."
   },
   "verify-identity.verified_pw_reset_extra_security": {
     "string": "Add a phone number or a security key to your eduID to keep your identity at password reset."
@@ -1670,6 +1813,10 @@
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
+  },
+  "xCrGiU": {
+    "developer_comment": "Use another device, finished",
+    "string": "Cancel"
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",

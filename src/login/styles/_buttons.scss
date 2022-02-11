@@ -72,13 +72,14 @@ button,
 button.btn-secondary,
 button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
-button.btn-secondary:not(:disabled):not(.disabled):active:focus {
+button.btn-secondary:not(:disabled):not(.disabled):active:focus,
+button.btn-secondary:not(:disabled):not(.disabled):hover {
+  // margin-top: 1rem;
   color: $orange-highlight;
-  text-transform: none;
-  text-decoration: none;
-  border: none;
-  background-color: $orange-opaque;
-  margin: 0 0 2rem -0.25rem;
+  border: solid 2px $orange-highlight;
+  text-transform: uppercase;
+  background-color: $white;
+  box-shadow: none;
 }
 
 button.btn:hover {
@@ -101,13 +102,6 @@ button.btn-primary:hover {
     border: none;
     transform: scale(1);
   }
-}
-
-button.btn-secondary:hover {
-  background-color: $orange-opaque;
-  color: $orange-highlight;
-  border: none;
-  outline: 0;
 }
 
 button.close {
@@ -264,6 +258,7 @@ button.btn-link {
   border: none;
   box-shadow: none;
   margin: 0;
+  text-decoration: none;
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -272,6 +267,7 @@ button.btn-link {
     color: $orange-highlight;
     background-color: transparent;
     transform: scale(1);
+    text-decoration: underline;
   }
 }
 
@@ -305,7 +301,17 @@ button.btn-link {
   }
 }
 
-@media (max-width: 414px) {
+/* Instance/icon unique styles to be set in targeted css */
+button.icon-only {
+  @extend .icon;
+  box-shadow: none;
+  background: transparent;
+  border-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: $bp-xs) {
   button.btn {
     font-size: 0.9rem;
   }

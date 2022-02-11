@@ -12,7 +12,7 @@
     width: fit-content;
     align-self: center;
 
-    @media (max-width: 568px) {
+    @media (max-width: $bp-sm) {
       &.btn {
         font-size: unset;
         width: unset;
@@ -23,7 +23,7 @@
       &:disabled,
       &.disabled {
         opacity: 0.5;
-        background: #f4f4f4;
+        background: $light-gray;
       }
     }
   }
@@ -38,25 +38,34 @@
   }
 
   .name-inputs {
-    .hint {
-      margin-top: 1rem;
+    .help-text {
+      margin: 0.5rem 0 0;
     }
-
     .icon-text {
       display: flex;
       align-items: baseline;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
 
-      p {
-        margin-left: 1rem;
-        padding-bottom: 0;
+      button.icon-only {
+        &:hover,
+        &:active,
+        &:focus,
+        &:active:focus {
+          transform: rotate(180deg);
+          padding: initial;
+        }
+
+        svg {
+          color: $orange-highlight;
+        }
       }
-    }
 
-    button:active,
-    button:focus,
-    button:active:focus {
-      transform: rotate(180deg);
+      label.hint {
+        font-family: inherit;
+        line-height: 1.2;
+        margin: 0 0 0 0.5rem;
+        padding: 0;
+      }
     }
   }
 }
@@ -70,24 +79,10 @@
   flex-wrap: wrap;
 }
 
-.hint {
-  font-size: 1rem;
-}
-
-.input-pair {
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-
-  @media (max-width: 568px) {
-    flex-direction: column;
-  }
-}
-
 #personaldataview-form {
   margin-top: 0;
 
-  @media (max-width: 568px) {
+  @media (max-width: $bp-sm) {
     .radio-input-container span,
     .form-control,
     input {
@@ -110,20 +105,20 @@
 
   .form-control,
   input {
-    background-color: #f4f4f4;
+    background-color: $light-gray;
   }
 
   .form-group {
     flex: 1;
 
-    @media (max-width: 568px) {
+    @media (max-width: $bp-sm) {
       margin-top: 1rem;
     }
 
     &:last-child {
       margin-left: 1rem;
 
-      @media (max-width: 568px) {
+      @media (max-width: $bp-sm) {
         margin-left: 0;
       }
     }
@@ -142,17 +137,13 @@
   margin-bottom: 0;
 }
 
-.personal-data-info .profile-grid-cell {
-  margin-bottom: 1rem;
-}
-
 .external-names,
 .personal-data-info {
   .profile-grid-cell {
     flex: 1;
     flex-basis: 13rem;
     justify-content: unset;
-    margin-right: 1rem;
+    margin: 0 1rem 1rem 0;
 
     .display-data {
       font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;

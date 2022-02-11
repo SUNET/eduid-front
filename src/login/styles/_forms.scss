@@ -28,7 +28,7 @@ form {
   color: transparent;
 }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   #reset-password-email-form {
     flex-direction: column;
     align-items: unset;

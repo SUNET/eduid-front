@@ -67,45 +67,45 @@ fieldset {
   width: 100%;
 }
 
-// scrollbar for tables
-::-webkit-scrollbar {
-  margin-top: -1rem;
-  width: 0.125rem;
-  height: 0.125rem;
-  width: 0;
-}
+// TODO: Remove after checking scrollbar in tables
+// ::-webkit-scrollbar {
+//   margin-top: -1rem;
+//   width: 0.125rem;
+//   height: 0.125rem;
+//   width: 0;
+// }
 
-::-webkit-scrollbar-thumb {
-  background-color: #7c7c7c;
-  border-radius: 1rem;
-}
+// ::-webkit-scrollbar-thumb {
+//   background-color: #7c7c7c;
+//   border-radius: 1rem;
+// }
 
-::-webkit-scrollbar-track {
-  background-color: #ececec;
-}
+// ::-webkit-scrollbar-track {
+//   background-color: #ececec;
+// }
 
-@media (max-width: 823px) {
+@media (max-width: $bp-lg) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(80% - 2rem);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(80% - 1.25rem);
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(100% - 1.25rem);
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: $bp-xs) {
   .horizontal-content-margin,
   .vertical-content-margin {
     width: calc(100% - #{2 * $margin});

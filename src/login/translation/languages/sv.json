@@ -7,6 +7,20 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker dölja sin användaridentitet"
   },
+  "4+GwOq": {
+    "developer_comment": "Set new password",
+    "string": "Nytt lösenord"
+  },
+  "4WguDO": {
+    "string": "Utvecklarinformation, visas inte i produktion:"
+  },
+  "5ajfFQ": {
+    "developer_comment": "Login UsernamePw",
+    "string": "Logga in med hjälp av en annan enhet"
+  },
+  "5l4hxp": {
+    "string": "Logga in på en annan enhet"
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
@@ -23,6 +37,10 @@
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Skicka bekräftelsekoden igen"
   },
+  "B4vR5O": {
+    "developer_comment": "Set new password",
+    "string": "Repetera ditt nya lösenord"
+  },
   "CH6SNS": {
     "developer_comment": "Ladok account linking",
     "string": "Länka ditt konto till Ladok"
@@ -30,9 +48,20 @@
   "CSRF failed to validate": {
     "string": "CSRF-koden var fel, var god ladda om sidan"
   },
+  "D7/IyL": {
+    "developer_comment": "Set new password (accept button)",
+    "string": "Acceptera lösenord"
+  },
+  "DuBOC3": {
+    "developer_comment": "Set new password",
+    "string": "Skapa ditt nya lösenord"
+  },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker få tillgång till nätverksresurser utan att ha rätt till det"
+  },
+  "Ek2FGc": {
+    "string": "Logga in på den andra enheten"
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
@@ -54,20 +83,47 @@
     "developer_comment": "ToU first paragraph",
     "string": "att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl, "
   },
+  "G94CxN": {
+    "developer_comment": "Use another device, finished",
+    "string": "Dela inte koden med någon annan då det kan kompromettera din eduID identitet."
+  },
   "GGa/Fj": {
     "developer_comment": "Terms of use (banner text)",
     "string": "Vi behöver ett uppdaterat accepterande av eduIDs användarvillkor från dig."
   },
+  "HCjfX4": {
+    "developer_comment": "Footer copyright",
+    "string": "SUNET 2013-2022"
+  },
+  "HqrAl+": {
+    "developer_comment": "Reset password copy password tooltip",
+    "string": "Kopierat!"
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "Säkerhetsnyckeln är redan registrerad med eduID"
+  },
+  "Jn07OV": {
+    "string": "Hoppsan, hur hamnade du här? Ogiltigt tillstånd, var vänlig försök igen."
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "gör intrång i andras privatliv"
   },
+  "KjyITI": {
+    "developer_comment": "Use another device, finished",
+    "string": "Inloggningen slutförd, du bör stänga det här fönstret nu."
+  },
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
     "string": "Välj lärosäte"
+  },
+  "Lqd32u": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Logga in den andra enheten"
+  },
+  "MPTvRv": {
+    "developer_comment": "Footer faq",
+    "string": "Hjälp"
   },
   "Missing data for required field.": {
     "string": "Information saknas i ett obligatorisk fält"
@@ -97,9 +153,25 @@
     "developer_comment": "Ladok account linking",
     "string": "Listan med lärosäten kan inte laddas just nu"
   },
+  "PwI8gG": {
+    "developer_comment": "Reset Password set new password success",
+    "string": "Lösenordet har uppdaterats"
+  },
+  "R0rN2Z": {
+    "developer_comment": "Use another device, finished",
+    "string": "Koden har gått ut och du bör stänga det här fönstret"
+  },
+  "R3n7aY": {
+    "developer_comment": "Use other device",
+    "string": "Begäran har avbrutits"
+  },
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
     "string": "Blanksteg (mellanslag) ignoreras"
+  },
+  "SX9bpK": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Logga in"
   },
   "SecurityMsg.rm_webauthn": {
     "string": "Säkerhetsnyckel har tagits bort."
@@ -119,6 +191,9 @@
     "developer_comment": "help text for custom password tips",
     "string": "Använd specialtecken som @ $ + _ %"
   },
+  "U5eTH/": {
+    "string": "Notera att du använder den här enheten för att logga in på enheten nedan"
+  },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Logga in: Användarvillkor"
@@ -127,9 +202,21 @@
     "developer_comment": "Reset Password email link sent",
     "string": "skicka länken igen"
   },
+  "VLu1fI": {
+    "developer_comment": "Use other device",
+    "string": "Inloggningen är inte giltig längre"
+  },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
+  },
+  "YxJ0EU": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Avbryt"
+  },
+  "Z4yZ3N": {
+    "developer_comment": "Use another device, finished",
+    "string": "Efter att du har använt den här koden i den första enheten bör du stänga det här fönstret."
   },
   "accountId.accountId_display_title": {
     "string": "Unikt ID"
@@ -154,6 +241,10 @@
   },
   "add_nin.main_title": {
     "string": "1. Lägg till ditt personnummer"
+  },
+  "bCY5Fs": {
+    "developer_comment": "Use another device IP proximity",
+    "string": "(Nära din adress nu)"
   },
   "banner.tagline": {
     "string": "eduID är enklare och säkrare inloggning."
@@ -208,6 +299,7 @@
     "string": "Var god välj ett starkare lösenord"
   },
   "chpass.main_title": {
+    "developer_comment": "Dashboard change password",
     "string": "Byt ditt lösenord"
   },
   "chpass.no_old_pw": {
@@ -259,6 +351,9 @@
   "cm.resend_code": {
     "developer_comment": "Lost code problem solution",
     "string": "Skicka bekräftelsekoden igen"
+  },
+  "coWKVJ": {
+    "string": "Logga in med hjälp av en annan enhet"
   },
   "code.unknown-code": {
     "string": "Okänd bekräftelsekod"
@@ -320,6 +415,10 @@
   },
   "delete.modal_info": {
     "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om du väljer att ta bort ditt eduID kommer du att behöva logga in igen en sista gång."
+  },
+  "eKpiiX": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Logga in den här enheten"
   },
   "eMHJVJ": {
     "developer_comment": "Reset Password email link sent",
@@ -571,8 +670,13 @@
     "developer_comment": "Ladok account linking",
     "string": "Ditt konto är länkat med Ladok-information från"
   },
-  "header.faq": {
-    "string": "Hjälp"
+  "gbZoh/": {
+    "developer_comment": "Set new password (go back to eduID button)",
+    "string": "gå tillbaka"
+  },
+  "h3XW6A": {
+    "developer_comment": "Use another device, finished",
+    "string": "Visa aldrig den här koden för någon annan eftersom de då kan stjäla din inloggning."
   },
   "header.logout": {
     "string": "Logga ut"
@@ -594,6 +698,9 @@
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Bekräftelsekod"
+  },
+  "j6UxLp": {
+    "string": "Skriv in koden som visas i den andra enheten i fältet nedan"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -641,6 +748,9 @@
   },
   "letter.no_state_found": {
     "string": "Ingen pågående bekräftning hittades"
+  },
+  "letter.not-sent": {
+    "string": "Begäran om att skicka ett brev misslyckades. Var vänlig försök igen."
   },
   "letter.placeholder": {
     "developer_comment": "Placeholder for letter proofing text input",
@@ -771,11 +881,12 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Verifiera din identitet för att få ut mer av ditt eduID"
   },
+  "mXkdvt": {
+    "developer_comment": "Use another device IP proximity",
+    "string": "(Långt från din adress nu)"
+  },
   "mail_duplicated": {
     "string": "E-postadressen finns redan i listan"
-  },
-  "main.copyright": {
-    "string": "SUNET 2013-2021"
   },
   "main.welcome": {
     "string": "Välkommen till eduID"
@@ -828,6 +939,10 @@
   },
   "mobile.resend_success": {
     "string": "Ny bekräftelsekod skickad till {email}"
+  },
+  "n5fMlW": {
+    "developer_comment": "Set new password",
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta behöver du repetera det i rutan nedanför och klicka på Acceptera."
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "Skriv in personnumret med 12 siffror och försök igen"
@@ -883,6 +998,10 @@
   },
   "nins.wrong_length": {
     "string": "Skriv personnummer med 12 siffror"
+  },
+  "noNGvR": {
+    "developer_comment": "Use another device #1",
+    "string": "Koden har gått ut"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
@@ -1193,9 +1312,16 @@
     "developer_comment": "ToU second paragraph",
     "string": "uppenbart slösar med tillgängliga resurser (personal, maskinvara eller programvara) "
   },
+  "qHqnkz": {
+    "developer_comment": "Use another device, finished",
+    "string": "Använd koden nedan för att fortsätta inloggningen i den första enheten"
+  },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker förolämpa eller förnedra andra"
+  },
+  "rB8pRP": {
+    "string": "Skanna QR-koden med din andra enhet"
   },
   "register.create-account": {
     "string": "Skapa ett eduID med din e-postadress för att börja."
@@ -1223,16 +1349,10 @@
     "string": "En länk har skickats till din e-postadress."
   },
   "resetpw.accept-password": {
-    "string": "acceptera lösenord"
+    "string": "Acceptera lösenord"
   },
   "resetpw.continue_reset_password": {
     "string": "Fortsätt återställa lösenordet"
-  },
-  "resetpw.copied-in-clipboard": {
-    "string": "Kopierat!"
-  },
-  "resetpw.copy-to-clipboard": {
-    "string": "Kopiera till urklipp"
   },
   "resetpw.email-send-failure": {
     "string": "Misslyckades att skicka e-post, vänligen försök igen"
@@ -1396,6 +1516,9 @@
   "security.main_title": {
     "string": "Säkerhet"
   },
+  "security.no_reauthn": {
+    "string": "Autenticering saknas"
+  },
   "security.password_credential_type": {
     "string": "Lösenord"
   },
@@ -1411,6 +1534,9 @@
   },
   "security.security-key_title": {
     "string": "Gör ditt eduID säkrare"
+  },
+  "security.stale_authn_info": {
+    "string": "Inloggningen har gått ut. Var vänlig försök igen."
   },
   "security.u2f-describe-title": {
     "string": "Ge säkerhetsnyckeln ett namn så du kan skilja dem åt om du lägger till fler."
@@ -1464,7 +1590,7 @@
     "string": "För många försök att uppdatera namnen har gjorts. Var vänlig försök igen senare."
   },
   "security.user-updated": {
-    "string": "För- och efternamn är uppdaterade till de från folkbokföringen."
+    "string": "För- och efternamn har hämtats från folkbokföringen."
   },
   "security.verified": {
     "string": "Verifierad"
@@ -1503,18 +1629,23 @@
     "string": "Ta bort eduID"
   },
   "settings.change_info": {
+    "developer_comment": "Dashboard change password",
     "string": "Du kommer behöva logga in igen med ditt nuvarande lösenord för att kunna skriva in det nya."
   },
   "settings.change_password": {
+    "developer_comment": "Dashboard change password",
     "string": "Byt lösenord"
   },
   "settings.confirm_title_chpass": {
+    "developer_comment": "Dashboard change password",
     "string": "Av säkerhetsskäl..."
   },
   "settings.long_description": {
+    "developer_comment": "Dashboard change password",
     "string": "Du kan antingen använda ett rekommenderat lösenord som vi skapar åt dig eller ett du väljer helt själv."
   },
   "settings.main_title": {
+    "developer_comment": "Dashboard change password",
     "string": "Byt lösenord"
   },
   "settings.modal_delete_title": {
@@ -1544,6 +1675,10 @@
   "t2g4sA": {
     "developer_comment": "Ladok account linking",
     "string": "Ladok information"
+  },
+  "tQpfHe": {
+    "developer_comment": "Reset Password go to eduID",
+    "string": "Gå till eduID"
   },
   "text.link": {
     "developer_comment": "Placeholder for phone text input",
@@ -1579,6 +1714,10 @@
   "u2f.push-the-button": {
     "string": "Tryck på knappen på din U2F-säkerhetsnyckel"
   },
+  "ugLZcg": {
+    "developer_comment": "Reset password copy password tooltip",
+    "string": "Kopiera till urklipp"
+  },
   "unexpected-problem": {
     "string": "Ett okänt fel inträffade. Var god försök igen och kontakta supporten om felet kvarstår."
   },
@@ -1596,6 +1735,10 @@
   },
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
+  },
+  "v8XEXB": {
+    "developer_comment": "Use another device IP proximity",
+    "string": "(Samma som nu)"
   },
   "value not changed": {
     "string": "Värdet är inte ändrat"
@@ -1619,7 +1762,7 @@
     "string": "Ditt eduID är redo att användas"
   },
   "verify-identity.verified_page-description": {
-    "string": "Personnumret nedan är nu kopplat till detta eduID. Använd ditt eduID för att logga in till olika tjänster inom högskolan."
+    "string": "Personnumret nedan är nu kopplat till din eduID."
   },
   "verify-identity.verified_pw_reset_extra_security": {
     "string": "Lägg till ett telefonnummer eller en säkerhetsnyckel för att behålla din identitet om du återställer ditt lösenord."
@@ -1670,6 +1813,10 @@
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "om"
+  },
+  "xCrGiU": {
+    "developer_comment": "Use another device, finished",
+    "string": "Avbryt"
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",

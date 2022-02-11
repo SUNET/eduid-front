@@ -15,7 +15,7 @@ export function ExpiresMeter(props: ExpiresMeterProps): JSX.Element | null {
   }
   return (
     <div className="expires-meter">
-      <span className="clock">
+      <span className="expires-symbol">
         <FontAwesomeIcon icon={faClock} />
       </span>
       <meter

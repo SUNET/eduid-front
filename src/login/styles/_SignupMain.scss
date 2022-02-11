@@ -52,7 +52,7 @@ h3 {
   justify-content: center;
 }
 
-@media (max-width: 568px) {
+@media (max-width: $bp-sm) {
   #register-form {
     flex-direction: column;
     align-items: unset;
@@ -68,7 +68,7 @@ h3 {
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: $bp-xs) {
   #captcha {
     transform: scale(0.9);
     margin-bottom: 0;

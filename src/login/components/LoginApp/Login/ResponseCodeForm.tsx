@@ -1,4 +1,5 @@
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
+import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FORM_ERROR } from "final-form";
@@ -26,7 +27,7 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 
   return (
     <React.Fragment>
-      <div className={`response-code-input ${props.extra_className}`}>
+      <div className={`response-code-input-wrapper ${props.extra_className}`}>
         <FinalForm<ResponseCodeValues>
           onSubmit={props.handleSubmitCode}
           initialValues={initialValues}
@@ -95,6 +96,18 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
       )}
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
+          {props.handleAbort && (
+            <ButtonSecondary
+              type="submit"
+              onClick={props.handleAbort}
+              id="response-code-abort-button"
+              className={"settings-button"}
+              disabled={props.submitting}
+            >
+              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+            </ButtonSecondary>
+          )}
+
           {props.handleLogin && (
             <ButtonPrimary
               type="submit"
@@ -104,18 +117,6 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-            </ButtonPrimary>
-          )}
-
-          {props.handleAbort && (
-            <ButtonPrimary
-              type="submit"
-              onClick={props.handleAbort}
-              id="response-code-abort-button"
-              className={"settings-button"}
-              disabled={props.submitting}
-            >
-              <FormattedMessage defaultMessage="Abort" description="Login OtherDevice" />
             </ButtonPrimary>
           )}
         </div>
