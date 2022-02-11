@@ -7,10 +7,6 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker dölja sin användaridentitet"
   },
-  "1s4l1Q": {
-    "developer_comment": "Use another device, finished",
-    "string": "Koden har gått ut och du bör stänga det här fönstret."
-  },
   "4+GwOq": {
     "developer_comment": "Set new password",
     "string": "Nytt lösenord"
@@ -87,6 +83,10 @@
     "developer_comment": "ToU first paragraph",
     "string": "att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl, "
   },
+  "G94CxN": {
+    "developer_comment": "Use another device, finished",
+    "string": "Dela inte koden med någon annan då det kan kompromettera din eduID identitet."
+  },
   "GGa/Fj": {
     "developer_comment": "Terms of use (banner text)",
     "string": "Vi behöver ett uppdaterat accepterande av eduIDs användarvillkor från dig."
@@ -149,27 +149,17 @@
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Lägg till och bekräfta ditt telefonnummer för bättre säkerhet"
   },
-  "OIbuGV": {
-    "developer_comment": "Use another device, finished",
-    "string": "Avbryt"
-  },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "Listan med lärosäten kan inte laddas just nu"
-  },
-  "Ph7uf5": {
-    "string": "Skriv in svarskoden som visas på den andra enheten här"
   },
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
     "string": "Lösenordet har uppdaterats"
   },
-  "QFwPuA": {
-    "string": "Du använder den här enheten för att logga in på en annan enhet:"
-  },
-  "QVC89L": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Avbryt"
+  "R0rN2Z": {
+    "developer_comment": "Use another device, finished",
+    "string": "Koden har gått ut och du bör stänga det här fönstret"
   },
   "R3n7aY": {
     "developer_comment": "Use other device",
@@ -201,6 +191,9 @@
     "developer_comment": "help text for custom password tips",
     "string": "Använd specialtecken som @ $ + _ %"
   },
+  "U5eTH/": {
+    "string": "Notera att du använder den här enheten för att logga in på enheten nedan"
+  },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Logga in: Användarvillkor"
@@ -220,6 +213,10 @@
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Avbryt"
+  },
+  "Z4yZ3N": {
+    "developer_comment": "Use another device, finished",
+    "string": "Efter att du har använt koden i den första enheten bör du stänga det här fönstret."
   },
   "accountId.accountId_display_title": {
     "string": "Unikt ID"
@@ -418,6 +415,10 @@
   },
   "delete.modal_info": {
     "string": "När du tar bort ditt eduID kommer all information du sparat rensas permanent. Om du väljer att ta bort ditt eduID kommer du att behöva logga in igen en sista gång."
+  },
+  "eKpiiX": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Logga in den här enheten"
   },
   "eMHJVJ": {
     "developer_comment": "Reset Password email link sent",
@@ -698,6 +699,9 @@
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Bekräftelsekod"
   },
+  "j6UxLp": {
+    "string": "Skriv in koden som visas i den andra enheten i fältet nedan"
+  },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
     "string": "Tillgängliga lärosäten"
@@ -939,10 +943,6 @@
   "n5fMlW": {
     "developer_comment": "Set new password",
     "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta behöver du repetera det i rutan nedanför och klicka på Acceptera."
-  },
-  "nKrk+V": {
-    "developer_comment": "Use another device, finished",
-    "string": "Efter du har använt koden på den andra enheten bör du stänga det här fönstret."
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "Skriv in personnumret med 12 siffror och försök igen"
@@ -1311,6 +1311,10 @@
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "uppenbart slösar med tillgängliga resurser (personal, maskinvara eller programvara) "
+  },
+  "qHqnkz": {
+    "developer_comment": "Use another device, finished",
+    "string": "Använd koden nedan för att fortsätta inloggningen i den första enheten"
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
@@ -1802,10 +1806,6 @@
   "verify-identity.vetting_post_tagline": {
     "string": "För dig som har tillgång till din folkbokföringsaddress"
   },
-  "vn7Z/D": {
-    "developer_comment": "Use another device, finished",
-    "string": "Använd den här svarskoden på den andra enheten för att överföra den här inloggningen dit."
-  },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken "
@@ -1813,6 +1813,10 @@
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "om"
+  },
+  "xCrGiU": {
+    "developer_comment": "Use another device, finished",
+    "string": "Avbryt"
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",
