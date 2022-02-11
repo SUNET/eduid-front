@@ -61,7 +61,7 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
       <div className="edit-data">
         <div className="title button-pair">
           <p>{translate("pd.edit.title")}</p>
-          <button type="button" className="save-button" onClick={() => props.setEditMode(false)}>
+          <button id="cancel-edit-data" type="button" onClick={() => props.setEditMode(false)}>
             <CloseButton />
           </button>
         </div>

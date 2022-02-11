@@ -1,4 +1,4 @@
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   fetchNext,
@@ -47,9 +47,9 @@ function UseOtherDevice2() {
 
   return (
     <div className="use-another-device device2">
-      <h2 className="heading">
+      <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in on another device" />
-      </h2>
+      </h3>
 
       {data ? <RenderOtherDevice2 data={data} /> : null}
     </div>
@@ -66,30 +66,39 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
 
   return (
     <React.Fragment>
-      <InfoAboutOtherDevice data={data} />
+      <ol className="listed-steps">
+        <li>
+          <InfoAboutOtherDevice data={data} />
 
-      <TimeRemainingWrapper
-        name="other-device-expires"
-        unique_id={data.short_code}
-        value={data.expires_in}
-        onReachZero={handleTimerReachZero}
-      >
-        <ExpiresMeter expires_max={data.expires_max} />
-      </TimeRemainingWrapper>
+          <TimeRemainingWrapper
+            name="other-device-expires"
+            unique_id={data.short_code}
+            value={data.expires_in}
+            onReachZero={handleTimerReachZero}
+          >
+            <ExpiresMeter expires_max={data.expires_max} />
+          </TimeRemainingWrapper>
+        </li>
 
-      {data.state === "IN_PROGRESS" ? (
-        <ProceedLoginButton disabled={timerIsZero} />
-      ) : data.state === "AUTHENTICATED" ? (
-        <RenderLoggedIn data={data} isExpired={timerIsZero} />
-      ) : data !== undefined ? (
-        <div className="finished device2">
-          <FormattedMessage
-            defaultMessage="Request complete, you should close this browser window."
-            description="Use another device, finished"
-          />
-        </div>
-      ) : // show nothing before next_page is initialised
-      null}
+        {data.state === "IN_PROGRESS" ? (
+          <li>
+            <FormattedMessage defaultMessage="Log in this device" description="Login OtherDevice" />
+            <ProceedLoginButton disabled={timerIsZero} />
+          </li>
+        ) : data.state === "AUTHENTICATED" ? (
+          <li>
+            <RenderLoggedIn data={data} isExpired={timerIsZero} />
+          </li>
+        ) : data !== undefined ? (
+          <li>
+            <FormattedMessage
+              defaultMessage="Request complete, you should close this browser window."
+              description="Use another device, finished"
+            />
+          </li>
+        ) : // show nothing before next_page is initialised
+        null}
+      </ol>
     </React.Fragment>
   );
 }
@@ -117,13 +126,11 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
   };
   const proximity: JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
-    <div className="other-device-info device2">
-      <p>
-        <FormattedMessage defaultMessage="You are using this device to log in on another device:" />
-      </p>
+    <div>
+      <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
 
-      <div className="table-responsive">
-        <table className="table table-striped">
+      <figure className="table-responsive">
+        <table className="table">
           <tbody>
             <tr className="device-info-row">
               <td>IP address</td>
@@ -137,11 +144,9 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
             </tr>
           </tbody>
         </table>
-      </div>
 
-      <p>
-        <span className="short_code device2">ID# {props.data.short_code}</span>
-      </p>
+        <figcaption className="short-code device2">ID# {props.data.short_code}</figcaption>
+      </figure>
     </div>
   );
 }
@@ -168,7 +173,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
         className={"settings-button"}
         disabled={!data || props.disabled}
       >
-        <FormattedMessage defaultMessage="Log in the other device" description="Login OtherDevice" />
+        <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
       </ButtonPrimary>
     </div>
   );
@@ -197,7 +202,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
     return (
       <div className="finished device2">
         <FormattedMessage
-          defaultMessage="The code has expired, you should close this browser window."
+          defaultMessage="The code has expired, please close this browser window"
           description="Use another device, finished"
         />
       </div>
@@ -208,13 +213,13 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
     <div className="finished device2">
       <div className="response-code">
         <FormattedMessage
-          defaultMessage="Use this response code on the other device to transfer this login there."
+          defaultMessage="Use the response code below to continue logging in on the other device"
           description="Use another device, finished"
         />
       </div>
-      <div className="response-code">
+      <div className="response-code text-small">
         <FormattedMessage
-          defaultMessage="After using the code on the other device, you should close this browser window."
+          defaultMessage="After using the code on the other device, please close this browser window."
           description="Use another device, finished"
         />
       </div>
@@ -228,12 +233,12 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
       />
 
       <div className="phishing-warning">
-        <span className="triangle">
-          <FontAwesomeIcon icon={faExclamationTriangle} />
+        <span className="warning-symbol">
+          <FontAwesomeIcon icon={faExclamationCircle} />
         </span>
-        <span className="text">
+        <span className="text-small">
           <FormattedMessage
-            defaultMessage="Never give this code to someone else, as they might steal your login."
+            defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
             description="Use another device, finished"
           />
         </span>
@@ -245,7 +250,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           id="proceed-other-device-button"
           className={"settings-button"}
         >
-          <FormattedMessage defaultMessage="Abort" description="Use another device, finished" />
+          <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
         </ButtonPrimary>
       </div>
     </div>

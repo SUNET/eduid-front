@@ -41,6 +41,7 @@ export type UseOtherDevice1ResponseWithQR = UseOtherDevice1ResponseCommon & {
   state: "NEW" | "IN_PROGRESS" | "AUTHENTICATED";
   qr_img: string;
   qr_url: string;
+  short_code: string;
 };
 
 export type UseOtherDevice1ResponseWithoutQR = UseOtherDevice1ResponseCommon & {
