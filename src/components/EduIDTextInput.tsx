@@ -3,17 +3,14 @@ import React from "react";
 import { FieldRenderProps } from "react-final-form";
 import { FormGroup, FormText, Input, Label } from "reactstrap";
 
-// TODO: This is the interface for additional parameters we pass here from the forms, through
-//       react-final-form's Field. The FieldRenderProps allows them through as '[key: string]: any;'
-//       but I can't get it to work if I try to add this interface to the type of the props argument.
-interface TextInputProps {
+interface TextInputProps extends FieldRenderProps<string> {
   label?: string;
-  helpBlock: React.ReactNode;
+  helpBlock?: React.ReactNode;
   disabled?: boolean;
   autocomplete?: string;
 }
 
-export default function TextInput(props: FieldRenderProps<string>) {
+export default function TextInput(props: TextInputProps) {
   const { label, helpBlock } = props;
   let valid = false,
     invalid = false;
