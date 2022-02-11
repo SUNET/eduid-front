@@ -214,6 +214,8 @@ a.send-link.disabled {
 
 // TODO: make .button-pair and .buttons same
 .username-pw .button-pair {
+  padding-top: 0.75rem;
+
   @media (max-width: $bp-xs) {
     flex-direction: column-reverse;
 
