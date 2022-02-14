@@ -5,6 +5,7 @@
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
+import { clearNotifications } from "reducers/Notifications";
 
 /*********************************************************************************************************************/
 export interface LetterProofingResponse {
@@ -133,6 +134,8 @@ function makeLetterProofingConfirmCode<T>(
         reject(saved);
       }
 
+      // remove remained error messages
+      thunkAPI.dispatch(clearNotifications());
       resolve(response);
     } catch (error) {
       if (error instanceof Error) {

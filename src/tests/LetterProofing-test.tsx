@@ -5,53 +5,62 @@ import expect from "expect";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { IntlProvider } from "react-intl";
 import { put, call } from "redux-saga/effects";
-import * as actions from "actions/LetterProofing";
 import letterProofingReducer from "reducers/LetterProofing";
 import LetterProofingContainer from "components/LetterProofing";
-import {
-  sendLetterProofing,
-  fetchLetterProofing,
-  sendGetLetterProofing,
-  fetchGetLetterProofing,
-  sendLetterCode,
-  fetchLetterCode,
-} from "../sagas/LetterProofing";
+// import {
+//   sendLetterProofing,
+//   fetchLetterProofing,
+//   sendGetLetterProofing,
+//   fetchGetLetterProofing,
+//   sendLetterCode,
+//   fetchLetterCode,
+// } from "../sagas/LetterProofing";
 
 const messages = require("../login/translation/messageIndex");
+import { dashboardStore, DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 
-const baseState = {
-  letter_proofing: {
-    message: "",
-    letter_sent: "",
-    verifyingLetter: false,
-    letter_expires: "",
-    letter_expired: false,
-    confirmingLetter: false,
-    code: "",
-  },
+const baseState: DashboardRootState = {
+  letter_proofing: {},
   config: {
     letter_proofing_url: "http://localhost/letter",
     csrf_token: "csrf-token",
   },
   nins: {
+    message: "",
     nin: "",
+    rmNin: "",
+    nins: [],
   },
-  intl: {
-    locale: "en",
-    messages: messages,
-  },
+  notifications: undefined as any,
+  router: undefined as any,
+  chpass: {},
+  emails: {},
+  groups: undefined as any,
+  invites: undefined as any,
+  openid_data: undefined as any,
+  lookup_mobile: {},
+  openid_freja_data: undefined as unknown as any,
+  personal_data: undefined as any,
+  phones: {},
+  account_linking: undefined as any,
+  security: undefined as any,
+  eidas_data: undefined as any,
+  ladok: undefined as any,
+  form: undefined as any,
+  intl: { locale: "en", messages: {} },
 };
 
-const fakeStore = (fakeState) => ({
+const fakeStore = (fakeState: DashboardRootState) => ({
+  ...dashboardStore,
   default: () => {},
-  dispatch: mock.fn(),
+  dispatch: mock.fn() as unknown as DashboardAppDispatch,
   subscribe: mock.fn(),
-  getState: () => ({ ...fakeState }),
+  getState: (): DashboardRootState => ({ ...dashboardStore.getState(), ...fakeState }),
 });
 
-function getFakeState(newState) {
-  if (newState === undefined) {
-    newState = {};
+function getFakeState(newState: DashboardRootState) {
+  if (newState == undefined) {
+    return;
   }
   return Object.assign(baseState, newState);
 }
