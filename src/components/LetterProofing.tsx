@@ -9,7 +9,7 @@ import { isValid } from "redux-form";
 import letterProofingSlice from "reducers/LetterProofing";
 import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
-import { fetchLetterProofingState } from "apis/letterProofing";
+import { fetchLetterProofingState, postRequestLetter, confirmLetterProofingCode } from "apis/letterProofing";
 
 interface LetterProofingProps {
   letter_sent_date: string;
@@ -19,6 +19,7 @@ interface LetterProofingProps {
   sendConfirmationCode: (e: React.MouseEvent<HTMLElement>) => void;
   confirmLetterProofing: () => void;
   disabled: boolean;
+  swedishNin: string;
 }
 function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
@@ -49,13 +50,16 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
     const data = {
       code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
     };
-    dispatch(letterProofingSlice.actions.postLetterProofingVerificationCode(data));
+    if (data.code) {
+      dispatch(confirmLetterProofingCode({ code: data.code }));
+    }
     dispatch(letterProofingSlice.actions.stopLetterVerification());
     setShowConfirmationModal(false);
   }
 
   function confirmLetterProofing() {
-    dispatch(fetchLetterProofingState());
+    dispatch(postRequestLetter());
+    // dispatch(letterProofingSlice.actions.postRequestLetter());
     setShowNotificationModal(false);
   }
 
@@ -198,6 +202,7 @@ const mapStateToProps = (state: DashboardRootState, props: any) => {
   const disabled: boolean = props.disabled;
   return {
     disabled,
+    swedishNin,
     requestLetterAllowed,
     verifyingLetter_sent: state.letter_proofing.verifyingLetter,
     letter_sent_date: state.letter_proofing.letter_sent,
