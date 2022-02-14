@@ -2,8 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/letterProofing";
 
 export interface LetterProofingState {
-  confirmingLetter?: boolean;
-  verifyingLetter?: boolean;
   code?: string;
   letter_sent?: string;
   letter_expires?: string;
@@ -19,18 +17,10 @@ const letterProofingSlice = createSlice({
   initialState,
   reducers: {
     // Common action to signal a caught exception in one of the letter Proofing sagas.
-    letterProofingSagaFail: (state) => {
-      state.confirmingLetter = false;
-      state.verifyingLetter = false;
-    },
+    letterProofingSagaFail: () => {},
   },
   extraReducers: (builder) => {
     builder.addCase(fetchLetterProofingState.fulfilled, (state, action: PayloadAction<LetterProofingState>) => {
-      if (action.payload.letter_sent === undefined) {
-        state.confirmingLetter = true;
-      } else {
-        state.verifyingLetter = true;
-      }
       state.letter_expires_in_days = action.payload.letter_expires_in_days;
       state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
       state.letter_sent = action.payload.letter_sent;
@@ -38,8 +28,6 @@ const letterProofingSlice = createSlice({
       state.letter_expired = action.payload.letter_expired;
     });
     builder.addCase(postRequestLetter.fulfilled, (state, action: PayloadAction<LetterProofingState>) => {
-      state.confirmingLetter = false;
-      state.verifyingLetter = false;
       state.letter_sent = action.payload.letter_sent;
       state.letter_expires = action.payload.letter_expires;
       state.letter_expired = action.payload.letter_expired;
@@ -47,8 +35,11 @@ const letterProofingSlice = createSlice({
       state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
     });
     builder.addCase(confirmLetterCode.fulfilled, (state) => {
-      state.confirmingLetter = false;
-      state.verifyingLetter = false;
+      state.letter_sent = undefined;
+      state.letter_expires = undefined;
+      state.letter_expired = undefined;
+      state.letter_expires_in_days = undefined;
+      state.letter_sent_days_ago = undefined;
     });
   },
 });

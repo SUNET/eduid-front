@@ -99,7 +99,7 @@ export const confirmLetterCode = createAsyncThunk<
   LetterProofingResponse, // return type
   { code: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("letterProofing/confirmCode", async (args, thunkAPI) => {
+>("letterProofing/confirmLetterCode", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const data: KeyValues = {
     code: args.code,

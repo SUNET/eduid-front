@@ -16,7 +16,6 @@ interface LetterProofingProps {
   requestLetterAllowed?: boolean;
   letter_expires_date: string;
   sendConfirmationCode: (e: React.MouseEvent<HTMLElement>) => void;
-  confirmLetterProofing: () => void;
   disabled: boolean;
   swedishNin: string;
 }
@@ -193,15 +192,13 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mapStateToProps = (state: DashboardRootState, props: any) => {
-  const letterVerification = state.letter_proofing.confirmingLetter;
   const swedishNin = isValid("nins")(state);
-  const requestLetterAllowed = (letterVerification && swedishNin) || state.letter_proofing.letter_expired;
+  const requestLetterAllowed = swedishNin || state.letter_proofing.letter_expired;
   const disabled: boolean = props.disabled;
   return {
     disabled,
     swedishNin,
     requestLetterAllowed,
-    verifyingLetter_sent: state.letter_proofing.verifyingLetter,
     letter_sent_date: state.letter_proofing.letter_sent,
     letter_expires_date: state.letter_proofing.letter_expires,
     letter_expired: state.letter_proofing.letter_expired,
