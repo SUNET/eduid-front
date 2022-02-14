@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchLetterProofingState } from "apis/letterProofing";
+import { fetchLetterProofingState, postRequestLetter, confirmLetterProofingCode } from "apis/letterProofing";
 
 export interface LetterProofingState {
   confirmingLetter?: boolean;
@@ -18,12 +18,22 @@ const letterProofingSlice = createSlice({
   name: "letterProofing",
   initialState,
   reducers: {
+    postRequestLetter: () => {},
     // Trigger action on click ACCEPT button in Notification Modal
     stopLetterConfirmation: (state) => {
       state.confirmingLetter = false;
       state.verifyingLetter = false;
     },
     stopLetterVerification: (state) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+    },
+    postLetterProofingCodeSuccess: (state) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+    },
+    // Common action to signal a caught exception in one of the letter Proofing sagas.
+    letterProofingSagaFail: (state) => {
       state.confirmingLetter = false;
       state.verifyingLetter = false;
     },
@@ -36,20 +46,7 @@ const letterProofingSlice = createSlice({
       state.letter_expires_in_days = action.payload.letter_expires_in_days;
       state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
     },
-    postLetterProofingVerificationCode: (state, action) => {
-      state.code = action.payload.code;
-    },
-    postLetterProofingCodeSuccess: (state) => {
-      state.confirmingLetter = false;
-      state.verifyingLetter = false;
-    },
-    // Common action to signal a caught exception in one of the letter Proofing sagas.
-    letterProofingSagaFail: (state) => {
-      state.confirmingLetter = false;
-      state.verifyingLetter = false;
-    },
   },
-
   extraReducers: (builder) => {
     builder.addCase(fetchLetterProofingState.fulfilled, (state, action: PayloadAction<LetterProofingState>) => {
       if (action.payload.letter_sent === undefined) {
@@ -62,6 +59,19 @@ const letterProofingSlice = createSlice({
       state.letter_sent = action.payload.letter_sent;
       state.letter_expires = action.payload.letter_expires;
       state.letter_expired = action.payload.letter_expired;
+    });
+    builder.addCase(postRequestLetter.fulfilled, (state, action: PayloadAction<LetterProofingState>) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
+      state.letter_sent = action.payload.letter_sent;
+      state.letter_expires = action.payload.letter_expires;
+      state.letter_expired = action.payload.letter_expired;
+      state.letter_expires_in_days = action.payload.letter_expires_in_days;
+      state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
+    });
+    builder.addCase(confirmLetterProofingCode.fulfilled, (state) => {
+      state.confirmingLetter = false;
+      state.verifyingLetter = false;
     });
   },
 });
