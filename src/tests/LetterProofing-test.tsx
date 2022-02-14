@@ -6,7 +6,7 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import { IntlProvider } from "react-intl";
 import { put, call } from "redux-saga/effects";
 import letterProofingSlice from "../reducers/LetterProofing";
-import LetterProofingContainer from "components/LetterProofing";
+import LetterProofingContainer, { LetterProofingProps } from "components/LetterProofing";
 // import {
 //   sendLetterProofing,
 //   fetchLetterProofing,
@@ -18,7 +18,7 @@ import LetterProofingContainer from "components/LetterProofing";
 
 const messages = require("../login/translation/messageIndex");
 import { dashboardStore, DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
-import { reducer } from "redux-form";
+import { setupComponent } from "./helperFunctions/DashboardTestApp";
 
 const baseState: DashboardRootState = {
   letter_proofing: {},
@@ -51,31 +51,31 @@ const baseState: DashboardRootState = {
   intl: { locale: "en", messages: {} },
 };
 
-const fakeStore = (fakeState: DashboardRootState) => ({
-  ...dashboardStore,
-  default: () => {},
-  dispatch: mock.fn() as unknown as DashboardAppDispatch,
-  subscribe: mock.fn(),
-  getState: (): DashboardRootState => ({ ...dashboardStore.getState(), ...fakeState }),
-});
+// const fakeStore = (fakeState: DashboardRootState) => ({
+//   ...dashboardStore,
+//   default: () => {},
+//   dispatch: mock.fn() as unknown as DashboardAppDispatch,
+//   subscribe: mock.fn(),
+//   getState: (): DashboardRootState => ({ ...dashboardStore.getState(), ...fakeState }),
+// });
 
-function getFakeState(newState: DashboardRootState) {
-  if (newState == undefined) {
-    return;
-  }
-  return Object.assign(baseState, newState);
-}
+// function getFakeState(newState: DashboardRootState) {
+//   if (newState == undefined) {
+//     return;
+//   }
+//   return Object.assign(baseState, newState);
+// }
 
-describe("LetterProofing Component", () => {
-  it("The component does not render 'false' or 'null'", () => {
-    const wrapper = shallow(
-      <IntlProvider locale="en">
-        <LetterProofingContainer />
-      </IntlProvider>
-    );
-    expect(wrapper.isEmptyRender()).toEqual(false);
-  });
-});
+// describe("LetterProofing Component", () => {
+//   it("The component does not render 'false' or 'null'", () => {
+//     const wrapper = shallow(
+//       <IntlProvider locale="en">
+//         <LetterProofingContainer />
+//       </IntlProvider>
+//     );
+//     expect(wrapper.isEmptyRender()).toEqual(false);
+//   });
+// });
 
 // describe("Letter Proofing, when letter has been expired", () => {
 //   const fakeState = getFakeState({
@@ -407,71 +407,84 @@ describe("LetterProofing Component", () => {
 //   });
 // });
 
-// describe("LetterProofing component, letter has been sent", () => {
-//   const fakeState = getFakeState();
+describe("LetterProofing component, letter has been sent", () => {
+  function getWrapper() {
+    return setupComponent({
+      component: <LetterProofingContainer {...test_props} />,
+      overrides: {
+        letter_proofing: {
+          letter_sent: "2021-11-23T17:37:15.799000+00:00",
+          letter_expires: "2021-12-07T23:59:59.799000+00:00",
+        },
+        nins: { valid_nin: true, nins: ["19881212"] },
+      },
+    });
+  }
+  it("Renders button text, the letter was sent", () => {
+    const wrapper = getWrapper();
+    const description = wrapper.find("div.description");
+    const letterSent = description.at(0);
+    const letterSentDate = wrapper.find("#letter_sent_date");
+    const letterValid = description.at(1);
+    const letterValidDate = description.find("#letter_expires_date");
 
-//   function setupComponent() {
-//     const wrapper = mount(
-//       <ReduxIntlProvider store={fakeStore(fakeState)}>
-//         <LetterProofingContainer />
-//       </ReduxIntlProvider>
-//     );
-//     return {
-//       wrapper,
-//     };
-//   }
+    expect(description.exists()).toEqual(true);
 
-//   it("Renders button text, the letter was sent", () => {
-//     const state = { ...fakeState };
-//     (state.letter_proofing.letter_sent = "2021-11-23T17:37:15.799000+00:00"),
-//       (state.letter_proofing.letter_expires = "2021-12-07T23:59:59.799000+00:00"),
-//       (state.letter_proofing.verifyingLetter = true),
-//       (state.nins.valid_nin = true),
-//       (state.nins.nins[0] = "19881212");
+    expect(letterSent.exists()).toEqual(true);
+    expect(letterSent.text()).toContain("The letter was sent");
+    expect(letterSentDate.text()).toEqual("2021-11-23");
 
-//     const { wrapper } = setupComponent();
-//     const description = wrapper.find("div.description");
-//     const letterSent = description.at(0);
-//     const letterSentDate = wrapper.find("#letter_sent_date");
-//     const letterValid = description.at(1);
-//     const letterValidDate = description.find("#letter_expires_date");
+    expect(letterValid.exists()).toEqual(true);
+    expect(letterValid.text()).toContain("The letter is valid to");
+    expect(letterValidDate.text()).toEqual("2021-12-07");
+  });
+});
 
-//     expect(description.exists()).toEqual(true);
+describe("LetterProofing component, letter has been sent", () => {
+  function getWrapper() {
+    return setupComponent({
+      component: <LetterProofingContainer {...test_props} />,
+      overrides: {
+        letter_proofing: {
+          letter_sent: "2021-11-23T17:37:15.799000+00:00",
+          letter_expires: "2021-12-07T23:59:59.799000+00:00",
+          letter_expired: true,
+        },
+        nins: { valid_nin: true, nins: ["19881212"] },
+      },
+    });
+  }
+  it("Renders button text, the code has expired", () => {
+    const wrapper = getWrapper();
+    const description = wrapper.find("div.description");
+    const codeExpired = description.at(0);
+    const orderNewLetter = description.at(1);
+    const letterValidDate = description.find("#letter_expires_date");
 
-//     expect(letterSent.exists()).toEqual(true);
-//     expect(letterSent.text()).toContain("The letter was sent");
-//     expect(letterSentDate.text()).toEqual("2021-11-23");
+    expect(description.exists()).toEqual(true);
 
-//     expect(letterValid.exists()).toEqual(true);
-//     expect(letterValid.text()).toContain("The letter is valid to");
-//     expect(letterValidDate.text()).toEqual("2021-12-07");
-//   });
+    expect(codeExpired.exists()).toEqual(true);
+    expect(codeExpired.text()).toContain("expired");
+    expect(orderNewLetter.exists()).toEqual(true);
+    expect(orderNewLetter.text()).toContain("order a new code");
+    expect(letterValidDate.text()).toEqual("2021-12-07");
+  });
+});
 
-//   it("Renders button text, the code has expired", () => {
-//     const state = { ...fakeState };
-//     (state.letter_proofing.letter_sent = "2021-11-23T17:37:15.799000+00:00"),
-//       (state.letter_proofing.letter_expires = "2021-12-07T23:59:59.799000+00:00"),
-//       (state.letter_proofing.verifyingLetter = true),
-//       (state.letter_proofing.confirmingLetter = false),
-//       (state.nins.valid_nin = true),
-//       (state.letter_proofing.letter_expired = true),
-//       (state.nins.nins[0] = "19881212");
+const test_props = {
+  disabled: false,
+};
 
-//     const { wrapper } = setupComponent();
-//     const description = wrapper.find("div.description");
-//     const codeExpired = description.at(0);
-//     const orderNewLetter = description.at(1);
-//     const letterValidDate = description.find("#letter_expires_date");
-
-//     expect(description.exists()).toEqual(true);
-
-//     expect(codeExpired.exists()).toEqual(true);
-//     expect(codeExpired.text()).toContain("expired");
-//     expect(orderNewLetter.exists()).toEqual(true);
-//     expect(orderNewLetter.text()).toContain("order a new code");
-//     expect(letterValidDate.text()).toEqual("2021-12-07");
-//   });
-// });
+describe("LetterProofing Component", () => {
+  it("The component does not render 'false' or 'null'", () => {
+    const wrapper = shallow(
+      <IntlProvider locale="en">
+        <LetterProofingContainer {...test_props} />
+      </IntlProvider>
+    );
+    expect(wrapper.isEmptyRender()).toEqual(false);
+  });
+});
 
 describe("LetterProofing Slice", () => {
   it("fetchLetterProofingState is fulfilled", () => {
