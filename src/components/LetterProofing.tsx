@@ -6,7 +6,6 @@ import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { connect } from "react-redux";
 import { isValid } from "redux-form";
-import letterProofingSlice from "reducers/LetterProofing";
 import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/letterProofing";
@@ -53,13 +52,11 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
     if (data.code) {
       dispatch(confirmLetterCode({ code: data.code }));
     }
-    dispatch(letterProofingSlice.actions.stopLetterVerification());
     setShowConfirmationModal(false);
   }
 
   function confirmLetterProofing() {
     dispatch(postRequestLetter());
-    // dispatch(letterProofingSlice.actions.postRequestLetter());
     setShowNotificationModal(false);
   }
 
