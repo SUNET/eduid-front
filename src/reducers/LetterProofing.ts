@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchLetterProofingState, postRequestLetter, confirmLetterProofingCode } from "apis/letterProofing";
+import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/letterProofing";
 
 export interface LetterProofingState {
   confirmingLetter?: boolean;
@@ -69,7 +69,7 @@ const letterProofingSlice = createSlice({
       state.letter_expires_in_days = action.payload.letter_expires_in_days;
       state.letter_sent_days_ago = action.payload.letter_sent_days_ago;
     });
-    builder.addCase(confirmLetterProofingCode.fulfilled, (state) => {
+    builder.addCase(confirmLetterCode.fulfilled, (state) => {
       state.confirmingLetter = false;
       state.verifyingLetter = false;
     });

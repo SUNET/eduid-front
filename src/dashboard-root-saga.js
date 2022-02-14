@@ -41,7 +41,7 @@ import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updat
 import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga";
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
-import { confirmLetterProofingCode } from "./apis/letterProofing";
+import { confirmLetterCode } from "./apis/letterProofing";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -91,7 +91,7 @@ function* rootSaga() {
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
     takeEvery(letterProofingSlice.actions.stopLetterVerification, requestAllPersonalData),
     takeEvery(letterProofingSlice.actions.postLetterProofingSuccess, requestAllPersonalData),
-    takeEvery(confirmLetterProofingCode.fulfilled, requestAllPersonalData),
+    takeEvery(confirmLetterCode.fulfilled, requestAllPersonalData),
     takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
     takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL, requestNins),
     takeEvery(openidActions.POST_OIDC_PROOFING_PROOFING_SUCCESS, requestNins),

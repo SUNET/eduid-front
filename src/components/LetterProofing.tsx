@@ -9,7 +9,7 @@ import { isValid } from "redux-form";
 import letterProofingSlice from "reducers/LetterProofing";
 import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
-import { fetchLetterProofingState, postRequestLetter, confirmLetterProofingCode } from "apis/letterProofing";
+import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/letterProofing";
 
 interface LetterProofingProps {
   letter_sent_date: string;
@@ -51,7 +51,7 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
       code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
     };
     if (data.code) {
-      dispatch(confirmLetterProofingCode({ code: data.code }));
+      dispatch(confirmLetterCode({ code: data.code }));
     }
     dispatch(letterProofingSlice.actions.stopLetterVerification());
     setShowConfirmationModal(false);
