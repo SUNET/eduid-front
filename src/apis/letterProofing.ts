@@ -131,7 +131,7 @@ function makeLetterProofingConfirmCode<T>(
         // response, so we clone it first so we can reject the promise with the full error response.
         const saved = JSON.parse(JSON.stringify(response));
         thunkAPI.dispatch(response);
-        reject(saved);
+        return reject(saved);
       }
 
       // remove remained error messages
