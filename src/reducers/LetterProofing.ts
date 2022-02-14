@@ -18,7 +18,7 @@ const letterProofingSlice = createSlice({
   name: "letterProofing",
   initialState,
   reducers: {
-    postRequestLetter: () => {},
+    // postRequestLetter: () => {},
     // Trigger action on click ACCEPT button in Notification Modal
     stopLetterConfirmation: (state) => {
       state.confirmingLetter = false;
