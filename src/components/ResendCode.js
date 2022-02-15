@@ -5,7 +5,7 @@ import EduIDButton from "components/EduIDButton";
 class ResendCode extends Component {
   render() {
     return (
-      <div id="content" className="horizontal-content-margin">
+      <div id="content" className="horizontal-content-margin content">
         <h3 className="register-header">{this.props.translate("resend.link-sent")}</h3>
         <div id="email-display">
           <p>{this.props.translate("resend.email-label")}</p>
