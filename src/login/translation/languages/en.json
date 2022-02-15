@@ -29,6 +29,10 @@
     "developer_comment": "ToU paragraph 1 heading",
     "string": "The following generally applies:"
   },
+  "9CnPOD": {
+    "developer_comment": "Login front page",
+    "string": "Don't have eduID?"
+  },
   "9P0HXs": {
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
@@ -91,9 +95,17 @@
     "developer_comment": "Terms of use (banner text)",
     "string": "We need an updated acceptance of the eduID terms of use from you."
   },
+  "GMXbvp": {
+    "developer_comment": "password input field label",
+    "string": "Password"
+  },
   "HCjfX4": {
     "developer_comment": "Footer copyright",
     "string": "SUNET 2013-2022"
+  },
+  "Hn7D2R": {
+    "developer_comment": "nin/password button label",
+    "string": "SHOW"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
@@ -116,10 +128,6 @@
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
     "string": "Select higher education institution"
-  },
-  "Lqd32u": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Log in the other device"
   },
   "MPTvRv": {
     "developer_comment": "Footer faq",
@@ -210,6 +218,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
   },
+  "Vz/80o": {
+    "developer_comment": "Login front page",
+    "string": "Register here."
+  },
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Cancel"
@@ -257,6 +269,10 @@
   },
   "button_save": {
     "string": "Save"
+  },
+  "cBe8pC": {
+    "developer_comment": "nin/password button label",
+    "string": "HIDE"
   },
   "captcha.cancel": {
     "string": "Cancel"
@@ -674,10 +690,6 @@
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "Go back"
   },
-  "h3XW6A": {
-    "developer_comment": "Use another device, finished",
-    "string": "Never give this code to someone else, as they might steal your login."
-  },
   "header.logout": {
     "string": "Logout"
   },
@@ -838,26 +850,8 @@
   "login.user_terminated": {
     "string": "This account has been terminated, but is still present. Perform a password reset to cancel termination."
   },
-  "login.usernamePw.h2-heading": {
-    "string": "Log in"
-  },
-  "login.usernamePw.password-input": {
-    "string": "Password"
-  },
-  "login.usernamePw.register-link": {
-    "string": "Register here."
-  },
-  "login.usernamePw.register-prompt": {
-    "string": "Don't have eduID?"
-  },
   "login.usernamePw.reset-password-link": {
     "string": "Forgot your password?"
-  },
-  "login.usernamePw.submit-button-busy": {
-    "string": "Logging in"
-  },
-  "login.usernamePw.submit-button-idle": {
-    "string": "Log in"
   },
   "login.wrong_credentials": {
     "string": "The email address or password was incorrect."
@@ -946,12 +940,6 @@
   },
   "nin_display.verify-identity_verified_main_title": {
     "string": "National id number"
-  },
-  "nin_hide_last_four_digits": {
-    "string": "HIDE"
-  },
-  "nin_show_last_four_digits": {
-    "string": "SHOW"
   },
   "nins.illegal_chars": {
     "string": "A national id number can only have digits"
@@ -1307,6 +1295,10 @@
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
+  },
+  "r5p+mD": {
+    "developer_comment": "Login front page",
+    "string": "Logging in"
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
@@ -1723,6 +1715,10 @@
   },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
+  },
+  "uzoZmv": {
+    "developer_comment": "Login front page",
+    "string": "Log in"
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
