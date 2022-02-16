@@ -4,24 +4,25 @@ import { useIntl } from "react-intl";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import NotificationModal from "../login/components/Modals/NotificationModal";
-import { connect } from "react-redux";
 import { isValid } from "redux-form";
-import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/letterProofing";
+import { useDashboardAppSelector } from "dashboard-hooks";
 
-interface LetterProofingProps {
-  letter_sent_date: string;
-  letter_expired?: boolean;
-  requestLetterAllowed?: boolean;
-  letter_expires_date: string;
-  sendConfirmationCode: (e: React.MouseEvent<HTMLElement>) => void;
+export interface LetterProofingProps {
   disabled: boolean;
-  swedishNin: string;
 }
-function LetterProofingButton(props: LetterProofingProps): JSX.Element {
+
+export default function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const nins = useDashboardAppSelector((state) => state.nins);
+  const letter_expired = useDashboardAppSelector((state) => state.letter_proofing.letter_expired);
+  const letter_sent_date = useDashboardAppSelector((state) => state.letter_proofing.letter_sent);
+  const letter_expires_date = useDashboardAppSelector((state) => state.letter_proofing.letter_expires);
+  const disabled: boolean = props.disabled;
+  const swedishNin = isValid("nins")(nins);
+  const requestLetterAllowed = swedishNin || letter_expired;
   const dispatch = useDashboardAppDispatch();
 
   useEffect(() => {
@@ -29,10 +30,10 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   }, [dispatch]);
 
   function handleModal() {
-    const letterPending = props.letter_sent_date === undefined && !props.letter_expired;
-    const letterCodeExpired = props.letter_expired && props.letter_sent_date !== undefined;
+    const letterPending = letter_sent_date === undefined && !letter_expired;
+    const letterCodeExpired = letter_expired && letter_sent_date !== undefined;
     // Not request letter yet
-    const letterNotRequested = props.letter_sent_date === undefined && props.requestLetterAllowed;
+    const letterNotRequested = letter_sent_date === undefined && requestLetterAllowed;
 
     // Open Modal to request letter or verify code
     if (letterPending || letterNotRequested || letterCodeExpired) {
@@ -71,7 +72,7 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   }
 
   let description = null;
-  if (props.disabled) {
+  if (disabled) {
     description = (
       <div className="description">
         <FormattedMessage
@@ -81,14 +82,14 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
       </div>
     );
   } else {
-    if (props.letter_sent_date === undefined) {
+    if (letter_sent_date === undefined) {
       description = <div />;
-    } else if (props.letter_expired) {
+    } else if (letter_expired) {
       description = (
         <>
           <div className="description">
             <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
-            <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
+            <span id="letter_expires_date">{formatDateFromBackend(letter_expires_date as string)}</span>
           </div>
           <div className="description">
             <FormattedMessage
@@ -103,14 +104,14 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
         <>
           <div className="description">
             <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
-            <span id="letter_sent_date">{formatDateFromBackend(props.letter_sent_date)}</span>
+            <span id="letter_sent_date">{formatDateFromBackend(letter_sent_date)}</span>
           </div>
           <div className="description">
             <FormattedMessage
               defaultMessage="The letter is valid to"
               description="explanation text for letter proofing"
             />
-            <span id="letter_expires_date">{formatDateFromBackend(props.letter_expires_date)}</span>
+            <span id="letter_expires_date">{formatDateFromBackend(letter_expires_date as string)}</span>
           </div>
           <div className="description">
             <FormattedMessage
@@ -134,7 +135,7 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
   return (
     <div>
       <div className="vetting-button">
-        <button disabled={props.disabled} onClick={() => handleModal()}>
+        <button disabled={disabled} onClick={() => handleModal()}>
           <div className="text">
             <FormattedMessage
               defaultMessage="For you registered at your current address"
@@ -189,22 +190,3 @@ function LetterProofingButton(props: LetterProofingProps): JSX.Element {
     </div>
   );
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const mapStateToProps = (state: DashboardRootState, props: any) => {
-  const swedishNin = isValid("nins")(state);
-  const requestLetterAllowed = swedishNin || state.letter_proofing.letter_expired;
-  const disabled: boolean = props.disabled;
-  return {
-    disabled,
-    swedishNin,
-    requestLetterAllowed,
-    letter_sent_date: state.letter_proofing.letter_sent,
-    letter_expires_date: state.letter_proofing.letter_expires,
-    letter_expired: state.letter_proofing.letter_expired,
-  };
-};
-
-const LetterProofingContainer = connect(mapStateToProps, null)(LetterProofingButton);
-
-export default LetterProofingContainer;

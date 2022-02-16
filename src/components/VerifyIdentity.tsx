@@ -6,7 +6,7 @@ import { NinInfo } from "reducers/Nins";
 import { translate } from "login/translation";
 import OpenidConnectContainer from "containers/OpenidConnect";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
-import LetterProofingContainer from "components/LetterProofing";
+import LetterProofingButton from "components/LetterProofing";
 import LookupMobileProofingContainer from "login/components/LookupMobileProofing/LookupMobileProofingContainer";
 import EidasContainer from "containers/Eidas";
 
@@ -84,7 +84,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       vettingButtons = (
         <div id="nins-btn-grid">
           <div>
-            <LetterProofingContainer disabled={letterProofingDisabled} />
+            <LetterProofingButton disabled={letterProofingDisabled} />
             {buttonHelpText("letter.initialize_proofing_help_text", letterProofingDisabled)}
           </div>
           <div>
