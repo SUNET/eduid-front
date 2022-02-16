@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import expect from "expect";
 import { IntlProvider } from "react-intl";
 import letterProofingSlice from "../reducers/LetterProofing";
-import LetterProofingContainer from "components/LetterProofing";
+import LetterProofingButton from "components/LetterProofing";
 import { DashboardRootState } from "../dashboard-init-app";
 import { setupComponent } from "./helperFunctions/DashboardTestApp";
 
@@ -42,45 +42,39 @@ describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <LetterProofingContainer />
+        <LetterProofingButton disabled />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 });
 
-describe("Letter Proofing, when letter has been expired", () => {
+describe("Letter Proofing, with disabled props", () => {
   const props = {
-    letter_sent: "20101010",
-    letter_expires: "20101024",
-    letter_expired: true,
+    disabled: true,
   };
 
   function getWrapper() {
     return setupComponent({
-      component: <LetterProofingContainer {...props} />,
+      component: <LetterProofingButton {...props} />,
       overrides: {
         letter_proofing: {
-          letter_sent: "20101010",
-          letter_expires: "20101024",
           letter_expired: true,
         },
-        nins: { nins: ["20000101"] },
+        nins: { nins: ["20001010"] },
       },
     });
   }
-  it("Renders when letter has been expired", () => {
+  it("Renders, button disabled ", () => {
     const wrapper = getWrapper();
-    expect(wrapper.find(LetterProofingContainer).props().letter_sent).toEqual("20101010");
-    expect(wrapper.find(LetterProofingContainer).props().letter_expires).toEqual("20101024");
-    expect(wrapper.find(LetterProofingContainer).props().letter_expired).toBeTruthy();
+    expect(wrapper.find(LetterProofingButton).prop("disabled"));
   });
 });
 
 describe("LetterProofing component, without id number", () => {
   function getWrapper() {
     return setupComponent({
-      component: <LetterProofingContainer disabled />,
+      component: <LetterProofingButton disabled />,
       overrides: {
         letter_proofing: {
           letter_sent: undefined,
@@ -101,7 +95,7 @@ describe("LetterProofing component, without id number", () => {
 describe("LetterProofing component, letter has been sent", () => {
   function getWrapper() {
     return setupComponent({
-      component: <LetterProofingContainer disabled={false} />,
+      component: <LetterProofingButton disabled={false} />,
       overrides: {
         letter_proofing: {
           letter_sent: "2021-11-23T13:37:15.799000+00:00",
@@ -132,7 +126,7 @@ describe("LetterProofing component, letter has been sent", () => {
 describe("LetterProofing component, letter has been sent", () => {
   function getWrapper() {
     return setupComponent({
-      component: <LetterProofingContainer disabled={false} />,
+      component: <LetterProofingButton disabled={false} />,
       overrides: {
         letter_proofing: {
           letter_sent: "2021-11-23T13:37:15.799000+00:00",
@@ -164,7 +158,7 @@ describe("LetterProofing Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <LetterProofingContainer disable={false} />
+        <LetterProofingButton disabled={false} />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
