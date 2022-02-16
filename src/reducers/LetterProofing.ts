@@ -15,10 +15,7 @@ const initialState: LetterProofingState = {};
 const letterProofingSlice = createSlice({
   name: "letterProofing",
   initialState,
-  reducers: {
-    // Common action to signal a caught exception in one of the letter Proofing sagas.
-    letterProofingSagaFail: () => {},
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchLetterProofingState.fulfilled, (state, action: PayloadAction<LetterProofingState>) => {
       state.letter_expires_in_days = action.payload.letter_expires_in_days;
