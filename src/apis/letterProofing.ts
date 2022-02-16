@@ -15,7 +15,6 @@ export interface LetterProofingResponse {
   letter_sent?: string;
   letter_sent_days_ago?: number;
   message?: string;
-  code?: string;
 }
 
 /**
@@ -72,7 +71,7 @@ function makeLetterProofingRequest<T>(
 /**
  * @public
  * @function postRequestLetter
- * @desc Redux async thunk to get letter proofing state from the backend.
+ * @desc Redux async thunk to request letter from the backend.
  */
 export const postRequestLetter = createAsyncThunk<
   LetterProofingResponse, // return type
@@ -90,6 +89,10 @@ export const postRequestLetter = createAsyncThunk<
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
+export interface ConfirmLetterCodeResponse {
+  message?: string;
+}
+
 /**
  * @public
  * @function confirmLetterCode
@@ -105,7 +108,7 @@ export const confirmLetterCode = createAsyncThunk<
     code: args.code,
     csrf_token: state.config.csrf_token,
   };
-  return makeLetterProofingConfirmCode<LetterProofingResponse>(thunkAPI, "verify-code", data)
+  return makeLetterProofingConfirmCode<ConfirmLetterCodeResponse>(thunkAPI, "verify-code", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
