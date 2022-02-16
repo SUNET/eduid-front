@@ -10,7 +10,7 @@ interface SelectedUniProps {
   value: string;
 }
 
-const LadokContainer = () => {
+const LadokContainer = (): JSX.Element => {
   const isLinked = useDashboardAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
   const dispatch = useDashboardAppDispatch();
