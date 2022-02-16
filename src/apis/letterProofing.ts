@@ -32,42 +32,6 @@ export const fetchLetterProofingState = createAsyncThunk<
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
-/*********************************************************************************************************************/
-function makeLetterProofingRequest<T>(
-  thunkAPI: RequestThunkAPI,
-  endpoint: string,
-  body?: KeyValues,
-  data?: KeyValues
-): Promise<PayloadAction<T, string, never, boolean>> {
-  // Since the whole body of the executor is enclosed in try/catch, this linter warning is excused.
-  // eslint-disable-next-line no-async-promise-executor
-  return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
-    try {
-      const state = thunkAPI.getState();
-
-      const response = await makeRequest<T>(thunkAPI, state.config.letter_proofing_url, endpoint, body, data);
-
-      if (response.error) {
-        // Dispatch fail responses so that notification middleware will show them to the user.
-        // The current implementation in notify-middleware.js _removes_ error and payload.message from
-        // response, so we clone it first so we can reject the promise with the full error response.
-        const saved = JSON.parse(JSON.stringify(response));
-        thunkAPI.dispatch(response);
-        reject(saved);
-      }
-
-      resolve(response);
-    } catch (error) {
-      if (error instanceof Error) {
-        thunkAPI.dispatch(letterProofingFail(error.toString()));
-        reject(error.toString());
-      } else {
-        reject(error);
-      }
-    }
-  });
-}
-
 /**
  * @public
  * @function postRequestLetter
@@ -108,13 +72,13 @@ export const confirmLetterCode = createAsyncThunk<
     code: args.code,
     csrf_token: state.config.csrf_token,
   };
-  return makeLetterProofingConfirmCode<ConfirmLetterCodeResponse>(thunkAPI, "verify-code", data)
+  return makeLetterProofingRequest<ConfirmLetterCodeResponse>(thunkAPI, "verify-code", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
-function makeLetterProofingConfirmCode<T>(
+function makeLetterProofingRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
   body?: KeyValues,
@@ -136,7 +100,6 @@ function makeLetterProofingConfirmCode<T>(
         thunkAPI.dispatch(response);
         return reject(saved);
       }
-
       // remove remained error messages
       thunkAPI.dispatch(clearNotifications());
       resolve(response);
