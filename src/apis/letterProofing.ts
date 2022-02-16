@@ -96,7 +96,7 @@ export interface ConfirmLetterCodeResponse {
 /**
  * @public
  * @function confirmLetterCode
- * @desc Redux async thunk to confirm letter proofing code.
+ * @desc Redux async thunk to confirm letter proofing code with backend.
  */
 export const confirmLetterCode = createAsyncThunk<
   LetterProofingResponse, // return type
