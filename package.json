@@ -23,7 +23,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "0.1.16",
+    "@fortawesome/react-fontawesome": "0.1.17",
     "@reduxjs/toolkit": "^1.7.1",
     "@ungap/url-search-params": "^0.2.2",
     "bootstrap": "^5.1.3",
