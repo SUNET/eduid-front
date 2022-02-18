@@ -11,7 +11,7 @@ import { clearNotifications } from "reducers/Notifications";
 export interface LetterProofingResponse {
   letter_expired?: boolean;
   letter_expires?: string;
-  letter_expires_in_day?: number;
+  letter_expires_in_days?: number;
   letter_sent?: string;
   letter_sent_days_ago?: number;
   message?: string;
