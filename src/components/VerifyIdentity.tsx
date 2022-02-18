@@ -6,7 +6,7 @@ import { NinInfo } from "reducers/Nins";
 import { translate } from "login/translation";
 import OpenidConnectContainer from "containers/OpenidConnect";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
-import LetterProofingContainer from "login/components/LetterProofing/LetterProofingContainer";
+import LetterProofingButton from "components/LetterProofing";
 import LookupMobileProofingContainer from "login/components/LookupMobileProofing/LookupMobileProofingContainer";
 import EidasContainer from "containers/Eidas";
 
@@ -79,13 +79,12 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       const letterProofingDisabled = !addedNin;
       // proofing via mobile requires the user to have added a NIN first, and have a verified Swedish mobile phone
       const lookupMobileDisabled = !addedNin || !this.props.hasVerifiedSwePhone;
-
       // TODO: Maybe the help texts ought to move into the containers? Isn't that what containers are for - to group components?
 
       vettingButtons = (
         <div id="nins-btn-grid">
           <div>
-            <LetterProofingContainer disabled={letterProofingDisabled} />
+            <LetterProofingButton disabled={letterProofingDisabled} />
             {buttonHelpText("letter.initialize_proofing_help_text", letterProofingDisabled)}
           </div>
           <div>

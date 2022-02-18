@@ -13,7 +13,7 @@ import accountLinkingReducer from "reducers/AccountLinking";
 import securityReducer from "reducers/Security";
 import chpassSlice from "reducers/ChangePassword";
 import ninsSlice from "reducers/Nins";
-import letterProofingReducer from "reducers/LetterProofing";
+import letterProofingSlice from "reducers/LetterProofing";
 import { notificationsSlice } from "reducers/Notifications";
 import eidasReducer from "reducers/Eidas";
 import groupsReducer from "./login/redux/reducers/groupsReducer";
@@ -33,7 +33,7 @@ const eduIDApp = combineReducers({
   openid_freja_data: openidConnectFrejaReducer as unknown as any,
   personal_data: personalDataSlice.reducer,
   phones: mobileReducer,
-  letter_proofing: letterProofingReducer,
+  letter_proofing: letterProofingSlice.reducer,
   notifications: notificationsSlice.reducer,
   account_linking: accountLinkingReducer,
   security: securityReducer,

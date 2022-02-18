@@ -99,43 +99,10 @@ export const userProfile = {
     <FormattedMessage id="verify-identity.verified_main_title" defaultMessage={`Your eduID is ready to use`} />
   ),
 
-  "verify-identity.vetting_post_tagline": (
-    <FormattedMessage
-      id="verify-identity.vetting_post_tagline"
-      defaultMessage={`For you registered at your current address`}
-    />
-  ),
-
   "verify-identity.vetting_phone_tagline": (
     <FormattedMessage
       id="verify-identity.vetting_phone_tagline"
       defaultMessage={`For you with a Swedish phone number registered in your name`}
-    />
-  ),
-
-  "verify-identity.vetting_letter_sent": (
-    <FormattedMessage id="verify-identity.vetting_letter_sent" defaultMessage={`The letter was sent`} />
-  ),
-
-  "verify-identity.vetting_letter_valid": (
-    <FormattedMessage id="verify-identity.vetting_letter_valid" defaultMessage={`The letter is valid to`} />
-  ),
-
-  "verify-identity.vetting_letter_received": (
-    <FormattedMessage
-      id="verify-identity.vetting_letter_received"
-      defaultMessage={`Click here again when you have received the letter`}
-    />
-  ),
-
-  "verify-identity.vetting_letter_code_expired": (
-    <FormattedMessage id="verify-identity.vetting_letter_code_expired" defaultMessage={`The code expired`} />
-  ),
-
-  "verify-identity.vetting_letter_order_new_code": (
-    <FormattedMessage
-      id="verify-identity.vetting_letter_order_new_code"
-      defaultMessage={`Click here to order a new code`}
     />
   ),
 
@@ -192,8 +159,6 @@ export const userProfile = {
 
 export const userVetting = {
   /* ----- LETTER PROOFING  ------- */
-  "letter.button_text_request": <FormattedMessage id="letter.button_text_request" defaultMessage={`by post`} />,
-
   "letter.button_text_code": (
     <FormattedMessage id="letter.button_text_code" defaultMessage={`Enter confirmation code here`} />
   ),
@@ -234,24 +199,6 @@ export const userVetting = {
 
   "letter.verification_success": (
     <FormattedMessage id="letter.verification_success" defaultMessage={`Successfully verified national id number`} />
-  ),
-
-  "letter.modal_confirm_title": (
-    <FormattedMessage
-      id="letter.modal_confirm_title"
-      defaultMessage={`Use a confirmation code sent by post to your house`}
-    />
-  ),
-
-  "letter.modal_confirm_info": (
-    <FormattedMessage
-      id="letter.modal_confirm_info"
-      defaultMessage={`The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now`}
-    />
-  ),
-
-  "letter.verify_title": (
-    <FormattedMessage id="letter.verify_title" defaultMessage={`Add the code you have received by post`} />
   ),
 
   "letter.not-sent": (
