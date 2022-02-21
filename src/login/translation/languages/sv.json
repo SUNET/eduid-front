@@ -29,6 +29,10 @@
     "developer_comment": "ToU paragraph 1 heading",
     "string": "För eduID.se gäller generellt"
   },
+  "9CnPOD": {
+    "developer_comment": "Login front page",
+    "string": "Har du inte eduID?"
+  },
   "9P0HXs": {
     "developer_comment": "help text for custom password tips",
     "string": "Lägg till en eller flera siffror någonstans i mitten av lösenordet"
@@ -91,9 +95,17 @@
     "developer_comment": "Terms of use (banner text)",
     "string": "Vi behöver ett uppdaterat accepterande av eduIDs användarvillkor från dig."
   },
+  "GMXbvp": {
+    "developer_comment": "password input field label",
+    "string": "Lösenord"
+  },
   "HCjfX4": {
     "developer_comment": "Footer copyright",
     "string": "SUNET 2013-2022"
+  },
+  "Hn7D2R": {
+    "developer_comment": "nin/password button label",
+    "string": "VISA"
   },
   "HqrAl+": {
     "developer_comment": "Reset password copy password tooltip",
@@ -116,10 +128,6 @@
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
     "string": "Välj lärosäte"
-  },
-  "Lqd32u": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Logga in den andra enheten"
   },
   "MPTvRv": {
     "developer_comment": "Footer faq",
@@ -210,6 +218,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
   },
+  "Vz/80o": {
+    "developer_comment": "Login front page",
+    "string": "Registrera dig här."
+  },
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Avbryt"
@@ -257,6 +269,10 @@
   },
   "button_save": {
     "string": "Spara"
+  },
+  "cBe8pC": {
+    "developer_comment": "nin/password button label",
+    "string": "DÖLJ"
   },
   "captcha.cancel": {
     "string": "Avbryt"
@@ -674,10 +690,6 @@
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "gå tillbaka"
   },
-  "h3XW6A": {
-    "developer_comment": "Use another device, finished",
-    "string": "Visa aldrig den här koden för någon annan eftersom de då kan stjäla din inloggning."
-  },
   "header.logout": {
     "string": "Logga ut"
   },
@@ -724,9 +736,6 @@
   "letter.button_text_code": {
     "string": "Skriv bekräftelsekoden här"
   },
-  "letter.button_text_request": {
-    "string": "via post"
-  },
   "letter.initialize_proofing_help_text": {
     "string": "Brevet innehåller en bekräftelsekod som av säkerhetsskäl går ut efter två veckor."
   },
@@ -736,12 +745,6 @@
   "letter.lost_code": {
     "developer_comment": "Text for letter proofing confirm dialog",
     "string": "Om du klickar på \"Skicka\"-knappen kommer en kod att skickas till din folkbokföringsadress."
-  },
-  "letter.modal_confirm_info": {
-    "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
-  },
-  "letter.modal_confirm_title": {
-    "string": "Få en bekräftelsekod via post"
   },
   "letter.no-address-found": {
     "string": "Ingen postadress hittades"
@@ -765,9 +768,6 @@
   },
   "letter.verification_success": {
     "string": "Personnumret är bekräftat"
-  },
-  "letter.verify_title": {
-    "string": "Skriv in koden du fått hemskickad"
   },
   "letter.wrong-code": {
     "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
@@ -850,26 +850,8 @@
   "login.user_terminated": {
     "string": "Detta konto har avslutats, men finns kvar några dagar. Gör en lösenordsåterställning för att ångra avslutet."
   },
-  "login.usernamePw.h2-heading": {
-    "string": "Logga in"
-  },
-  "login.usernamePw.password-input": {
-    "string": "Lösenord"
-  },
-  "login.usernamePw.register-link": {
-    "string": "Registrera dig här."
-  },
-  "login.usernamePw.register-prompt": {
-    "string": "Har du inte eduID?"
-  },
   "login.usernamePw.reset-password-link": {
     "string": "Glömt ditt lösenord?"
-  },
-  "login.usernamePw.submit-button-busy": {
-    "string": "Loggar in"
-  },
-  "login.usernamePw.submit-button-idle": {
-    "string": "Logga in"
   },
   "login.wrong_credentials": {
     "string": "E-postadressen eller lösenordet är felaktigt."
@@ -958,12 +940,6 @@
   },
   "nin_display.verify-identity_verified_main_title": {
     "string": "Personnummer"
-  },
-  "nin_hide_last_four_digits": {
-    "string": "DÖLJ"
-  },
-  "nin_show_last_four_digits": {
-    "string": "VISA"
   },
   "nins.illegal_chars": {
     "string": "Endast siffror är tillåtna"
@@ -1319,6 +1295,10 @@
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker förolämpa eller förnedra andra"
+  },
+  "r5p+mD": {
+    "developer_comment": "Login front page",
+    "string": "Loggar in"
   },
   "rB8pRP": {
     "string": "Skanna QR-koden med din andra enhet"
@@ -1736,6 +1716,10 @@
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
+  "uzoZmv": {
+    "developer_comment": "Login front page",
+    "string": "Logga in"
+  },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(Samma som nu)"
@@ -1782,29 +1766,15 @@
   "verify-identity.vetting_freja_tagline": {
     "string": "För dig som har eller kan skapa Freja eID genom att besöka ett ombud i Sverige"
   },
-  "verify-identity.vetting_letter_code_expired": {
-    "string": "Koden gick ut"
-  },
-  "verify-identity.vetting_letter_order_new_code": {
-    "string": "Tryck här om du vill beställa en ny kod"
-  },
-  "verify-identity.vetting_letter_received": {
-    "string": "Tryck här igen när du har fått brevet"
-  },
-  "verify-identity.vetting_letter_sent": {
-    "string": "Ett brev skickades"
-  },
-  "verify-identity.vetting_letter_valid": {
-    "string": "Brevet är giltigt till"
-  },
   "verify-identity.vetting_link_settings": {
     "string": "Inställningar"
   },
   "verify-identity.vetting_phone_tagline": {
     "string": "För dig som har ett svenskt telefonabonnemang i ditt eget namn"
   },
-  "verify-identity.vetting_post_tagline": {
-    "string": "För dig som har tillgång till din folkbokföringsaddress"
+  "vn7Z/D": {
+    "developer_comment": "Use another device, finished",
+    "string": "Använd den här svarskoden på den andra enheten för att överföra den här inloggningen dit."
   },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",

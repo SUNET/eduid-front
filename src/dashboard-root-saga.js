@@ -2,7 +2,6 @@ import * as accountLinkingActions from "actions/AccountLinking";
 import * as configActions from "actions/DashboardConfig";
 import * as emailActions from "actions/Emails";
 import * as headerActions from "actions/Header";
-import * as letterActions from "actions/LetterProofing";
 import * as lmpActions from "actions/LookupMobileProofing";
 import * as mobileActions from "actions/Mobile";
 import * as ninActions from "actions/Nins";
@@ -22,7 +21,6 @@ import {
   saveEmail,
 } from "sagas/Emails";
 import { requestLogout } from "sagas/Header";
-import { sendGetLetterProofing, sendLetterCode, sendLetterProofing } from "sagas/LetterProofing";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import * as sagasMobile from "sagas/Mobile";
 import { postNin, requestNins, requestRemoveNin } from "sagas/Nins";
@@ -42,6 +40,7 @@ import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updat
 import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga";
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
+import { confirmLetterCode, postRequestLetter } from "./apis/letterProofing";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -64,8 +63,6 @@ function* rootSaga() {
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, allowGroupsSagas),
     takeLatest(configActions.GET_INITIAL_USERDATA, requestAllPersonalData),
     takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestCredentials),
-    //takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, requestSuggestedPassword),
-    takeLatest(pdataActions.GET_USERDATA_SUCCESS.type, sendGetLetterProofing),
     takeLatest(pdataActions.postUserdata.type, postPersonalDataSaga),
     takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),
     takeLatest(openidActions.SHOW_OIDC_SELEG_MODAL, sagasOpenid.checkNINAndShowSelegModal),
@@ -87,16 +84,12 @@ function* rootSaga() {
     takeLatest(mobileActions.START_VERIFY, sagasMobile.requestVerifyMobile),
     takeLatest(securityActions.initiatePasswordChange.type, requestPasswordChange),
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
-    takeLatest(letterActions.POST_LETTER_PROOFING_PROOFING, sendLetterProofing),
-    takeLatest(letterActions.GET_LETTER_PROOFING_PROOFING, sendGetLetterProofing),
-    takeLatest(letterActions.POST_LETTER_PROOFING_CODE, sendLetterCode),
     takeLatest(ninActions.postNin.type, postNin),
     takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
     takeLatest(ninsSlice.actions.startRemove.type, requestRemoveNin),
     takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
-    takeEvery(letterActions.STOP_LETTER_VERIFICATION, requestAllPersonalData),
-    takeEvery(letterActions.POST_LETTER_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
-    takeEvery(letterActions.POST_LETTER_PROOFING_CODE_SUCCESS, requestAllPersonalData),
+    takeEvery(postRequestLetter.fulfilled, requestAllPersonalData),
+    takeEvery(confirmLetterCode.fulfilled, requestAllPersonalData),
     takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
     takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL, requestNins),
     takeEvery(openidActions.POST_OIDC_PROOFING_PROOFING_SUCCESS, requestNins),
