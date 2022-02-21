@@ -32,6 +32,10 @@
 
   .secondary-link {
     align-self: flex-end;
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -41,6 +45,7 @@ a.send-link {
   &:hover {
     text-decoration: underline;
   }
+
   @media (max-width: $bp-xs) {
     align-self: center;
     border-top: 1px solid $close;
@@ -230,12 +235,14 @@ a.send-link.disabled {
         &:nth-child(n + 2) {
           margin-bottom: 1rem;
         }
+
         svg {
           transform: rotate(0);
           margin-right: 8px;
         }
       }
     }
+
     @media (max-width: $bp-xs) {
       flex-direction: column-reverse;
       padding-top: 0.5rem;
