@@ -51,8 +51,8 @@ export default function UsernamePw() {
                 <RenderResetPasswordLink />
 
                 <div className="button-pair">
-                  <UsernamePwAnotherDeviceButton />
                   <UsernamePwSubmitButton {...formProps} />
+                  <UsernamePwAnotherDeviceButton />
                 </div>
               </div>
               <RenderRegisterLink />
