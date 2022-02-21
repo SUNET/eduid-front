@@ -7,7 +7,6 @@ import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
-import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
@@ -16,6 +15,8 @@ import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import EmailInput from "login/components/Inputs/EmailInput";
 import PasswordInput from "login/components/Inputs/PasswordInput";
 import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 
 interface UsernamePwFormData {
   email?: string;
@@ -140,7 +141,8 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button" className="primary">
+    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button">
+      <FontAwesomeIcon icon={faQrcode} />
       <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
     </ButtonPrimary>
   );
