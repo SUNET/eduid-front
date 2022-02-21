@@ -7,6 +7,18 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker dölja sin användaridentitet"
   },
+  "1KseiC": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Börja med att lägga till ditt personnummer här ovan"
+  },
+  "385FXU": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
+  },
+  "3ioK05": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Tryck här igen när du har fått brevet"
+  },
   "4+GwOq": {
     "developer_comment": "Set new password",
     "string": "Nytt lösenord"
@@ -29,6 +41,10 @@
     "developer_comment": "ToU paragraph 1 heading",
     "string": "För eduID.se gäller generellt"
   },
+  "8eobOo": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Ett brev skickades"
+  },
   "9CnPOD": {
     "developer_comment": "Login front page",
     "string": "Har du inte eduID?"
@@ -40,6 +56,18 @@
   "9UKtfS": {
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Skicka bekräftelsekoden igen"
+  },
+  "9fTOcF": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "via post"
+  },
+  "ABLcOw": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Koden gick ut"
+  },
+  "AzNlzq": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Skriv in koden du fått hemskickad"
   },
   "B4vR5O": {
     "developer_comment": "Set new password",
@@ -59,6 +87,10 @@
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Skapa ditt nya lösenord"
+  },
+  "E8EtNL": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Brevet är giltigt till"
   },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
@@ -209,6 +241,10 @@
   "UFBYoo": {
     "developer_comment": "Reset Password email link sent",
     "string": "skicka länken igen"
+  },
+  "V7OJ7r": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Få en bekräftelsekod via post"
   },
   "VLu1fI": {
     "developer_comment": "Use other device",
@@ -714,6 +750,10 @@
   "j6UxLp": {
     "string": "Skriv in koden som visas i den andra enheten i fältet nedan"
   },
+  "l+PAQr": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "För dig som har tillgång till din folkbokföringsaddress"
+  },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
     "string": "Tillgängliga lärosäten"
@@ -924,7 +964,7 @@
   },
   "n5fMlW": {
     "developer_comment": "Set new password",
-    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta behöver du repetera det i rutan nedanför och klicka på Acceptera."
+    "string": "Ett starkt lösenord har genererats åt dig. För att fortsätta behöver du skriva in det igen."
   },
   "nin needs to be formatted as 18|19|20yymmddxxxx": {
     "string": "Skriv in personnumret med 12 siffror och försök igen"
@@ -1239,6 +1279,10 @@
     "developer_comment": "placeholder text for phone input",
     "string": "Telefonnummer"
   },
+  "ppCiRH": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Tryck här om du vill beställa en ny kod"
+  },
   "profile.email_display_no_data": {
     "string": "ingen e-postadress sparad"
   },
@@ -1287,6 +1331,10 @@
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "uppenbart slösar med tillgängliga resurser (personal, maskinvara eller programvara) "
+  },
+  "q4ENsq": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Bekräftelsekod"
   },
   "qHqnkz": {
     "developer_comment": "Use another device, finished",
@@ -1338,13 +1386,13 @@
     "string": "Misslyckades att skicka e-post, vänligen försök igen"
   },
   "resetpw.email-throttled": {
-    "string": "Återställ lösenordslänken har redan skickats, försök igen senare"
+    "string": "Länken för att återställa lösenordet har redan skickats, vänligen försök igen senare."
   },
   "resetpw.enter-code": {
     "string": "skriv in koden"
   },
   "resetpw.expired-email-code": {
-    "string": "Länken för lösenordsåterställning är inte längre giltig. Skicka länken igen."
+    "string": "Länken för lösenordsåterställning är inte längre giltig. Begär en ny länk."
   },
   "resetpw.expired-phone-code": {
     "string": "Telefonkoden har gått ut. Skicka telefonkoden igen."
@@ -1771,10 +1819,6 @@
   },
   "verify-identity.vetting_phone_tagline": {
     "string": "För dig som har ett svenskt telefonabonnemang i ditt eget namn"
-  },
-  "vn7Z/D": {
-    "developer_comment": "Use another device, finished",
-    "string": "Använd den här svarskoden på den andra enheten för att överföra den här inloggningen dit."
   },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
