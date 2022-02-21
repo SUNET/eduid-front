@@ -7,6 +7,18 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
   },
+  "1KseiC": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Start by adding your ID number above"
+  },
+  "385FXU": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
+  },
+  "3ioK05": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Click here again when you have received the letter"
+  },
   "4+GwOq": {
     "developer_comment": "Set new password",
     "string": "New password"
@@ -29,6 +41,10 @@
     "developer_comment": "ToU paragraph 1 heading",
     "string": "The following generally applies:"
   },
+  "8eobOo": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "The letter was sent"
+  },
   "9CnPOD": {
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
@@ -40,6 +56,18 @@
   "9UKtfS": {
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
+  },
+  "9fTOcF": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "by post"
+  },
+  "ABLcOw": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "The code expired"
+  },
+  "AzNlzq": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Add the code you have received by post"
   },
   "B4vR5O": {
     "developer_comment": "Set new password",
@@ -59,6 +87,10 @@
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Set your new password"
+  },
+  "E8EtNL": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "The letter is valid to"
   },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
@@ -209,6 +241,10 @@
   "UFBYoo": {
     "developer_comment": "Reset Password email link sent",
     "string": "resend link"
+  },
+  "V7OJ7r": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Use a confirmation code sent by post to your house"
   },
   "VLu1fI": {
     "developer_comment": "Use other device",
@@ -713,6 +749,10 @@
   },
   "j6UxLp": {
     "string": "Enter the response code shown on the other device in the form below"
+  },
+  "l+PAQr": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "For you registered at your current address"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -1239,6 +1279,10 @@
     "developer_comment": "placeholder text for phone input",
     "string": "Phone number"
   },
+  "ppCiRH": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Click here to order a new code"
+  },
   "profile.email_display_no_data": {
     "string": "no email added"
   },
@@ -1287,6 +1331,10 @@
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
+  },
+  "q4ENsq": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Confirmation code"
   },
   "qHqnkz": {
     "developer_comment": "Use another device, finished",
