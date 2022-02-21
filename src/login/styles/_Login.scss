@@ -213,14 +213,25 @@ a.send-link.disabled {
 }
 
 // TODO: make .button-pair and .buttons same
-.username-pw .button-pair {
-  padding-top: 0.75rem;
+.username-pw {
+  .button-wrapper {
+    display: flex;
+    justify-content: space-between;
 
-  @media (max-width: $bp-xs) {
-    flex-direction: column-reverse;
+    .button-pair {
+      //padding-top: 0.75rem;
 
-    button:nth-child(n + 2) {
-      margin-bottom: 0.5rem;
+      // @media (max-width: $bp-xs) {
+      flex-direction: column-reverse;
+      align-items: flex-end;
+
+      button:nth-child(n + 2) {
+        margin-bottom: 0.5rem;
+      }
+      //}
+    }
+    @media (max-width: $bp-xs) {
+      flex-direction: column-reverse;
     }
   }
 }

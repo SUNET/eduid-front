@@ -46,12 +46,14 @@ export default function UsernamePw() {
               <EmailInput name="email" autoFocus={true} required={true} />
               <PasswordInput name="current-password" />
 
-              <RenderResetPasswordLink />
-              <div className="button-pair">
-                <UsernamePwAnotherDeviceButton />
-                <UsernamePwSubmitButton {...formProps} />
-              </div>
+              <div className="button-wrapper">
+                <RenderResetPasswordLink />
 
+                <div className="button-pair">
+                  <UsernamePwAnotherDeviceButton />
+                  <UsernamePwSubmitButton {...formProps} />
+                </div>
+              </div>
               <RenderRegisterLink />
             </form>
           );
