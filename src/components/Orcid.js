@@ -7,10 +7,9 @@ import orcidIcon from "../../img/vector_iD_icon-w.svg";
 class Orcid extends Component {
   render() {
     let orcidData;
-
     if (this.props.orcid != null) {
       let orcidAuthor = this.props.orcid.name;
-      if (!orcidAuthor) {
+      if (orcidAuthor !== undefined) {
         orcidAuthor = this.props.orcid.given_name + " " + this.props.orcid.family_name;
       }
       orcidData = (
