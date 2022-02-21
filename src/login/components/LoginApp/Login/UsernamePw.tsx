@@ -138,8 +138,8 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <ButtonSecondary type="submit" onClick={handleOnClick} id="login-other-device-button" className="secondary">
+    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button" className="primary">
       <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
-    </ButtonSecondary>
+    </ButtonPrimary>
   );
 }
