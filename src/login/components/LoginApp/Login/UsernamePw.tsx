@@ -67,13 +67,10 @@ export default function UsernamePw() {
 function RenderRegisterLink(): JSX.Element {
   const toSignup = useAppSelector((state) => state.config.signup_url);
   return (
-    <p className="secondary-link">
-      <FormattedMessage defaultMessage="Don't have eduID?" description="Login front page" />
-      <Link
-        className="text-link"
-        href={toSignup}
-        text={<FormattedMessage defaultMessage="Register here." description="Login front page" />}
-      />
+    <p className="secondary-link text-small">
+      <FormattedMessage defaultMessage="Don't have eduID? " description="Login front page" />
+      &nbsp;
+      <Link href={toSignup} text={<FormattedMessage defaultMessage=" Register" description="Login front page" />} />
     </p>
   );
 }
@@ -143,7 +140,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   return (
     <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button">
       <FontAwesomeIcon icon={faQrcode} />
-      <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
+      <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
     </ButtonPrimary>
   );
 }
