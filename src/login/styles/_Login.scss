@@ -26,12 +26,11 @@
     }
 
     button {
-      margin: 0.25rem 0 #{3 * $margin};
+      margin: 0.25rem 0 #{2 * $margin};
     }
   }
 
   .secondary-link {
-    font-size: 1rem;
     align-self: flex-end;
   }
 }
@@ -41,6 +40,11 @@ a.send-link {
 
   &:hover {
     text-decoration: underline;
+  }
+  @media (max-width: $bp-xs) {
+    align-self: center;
+    border-top: 1px solid $close;
+    padding: 1.5rem 3rem 0;
   }
 }
 
@@ -183,10 +187,8 @@ a.send-link.disabled {
   }
 
   .username-pw .secondary-link {
-    margin-top: #{3 * $margin};
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    margin-top: #{1 * $margin};
+    align-self: center;
   }
 
   .tou .tou-text {
@@ -219,19 +221,24 @@ a.send-link.disabled {
     justify-content: space-between;
 
     .button-pair {
-      //padding-top: 0.75rem;
-
-      // @media (max-width: $bp-xs) {
       flex-direction: column-reverse;
       align-items: flex-end;
 
-      button:nth-child(n + 2) {
-        margin-bottom: 0.5rem;
+      button {
+        min-width: 125px;
+
+        &:nth-child(n + 2) {
+          margin-bottom: 1rem;
+        }
+        svg {
+          transform: rotate(0);
+          margin-right: 8px;
+        }
       }
-      //}
     }
     @media (max-width: $bp-xs) {
       flex-direction: column-reverse;
+      padding-top: 0.5rem;
     }
   }
 }
