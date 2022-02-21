@@ -51,7 +51,7 @@ function EmailLinkSent(): JSX.Element {
             defaultMessage="Please check your email {email} to continue. Link is valid for 2 hours."
             description="Reset Password email link sent"
             values={{
-              email: <b>{email}</b>,
+              email: <strong>{email}</strong>,
             }}
           />
         </p>

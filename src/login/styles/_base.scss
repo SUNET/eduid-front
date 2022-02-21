@@ -27,12 +27,16 @@ body {
   // background-color: #f4f4f4;
 }
 
-#panel {
+.panel {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-bottom: 2rem;
+  padding-bottom: 6rem;
   background-color: #f4f4f4;
+
+  @media (max-width: $bp-lg) {
+    padding-bottom: 4rem;
+  }
 }
 
 // same styling as .phoneview-form-container, #delete-account-container,#change-password-container
@@ -59,8 +63,12 @@ article {
   flex-direction: column;
 }
 
-#content {
+.content {
   padding-top: 3rem;
+
+  @media (max-width: $bp-lg) {
+    padding-top: 2rem;
+  }
 }
 
 fieldset {

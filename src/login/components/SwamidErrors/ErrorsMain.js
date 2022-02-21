@@ -15,7 +15,7 @@ class ErrorsMain extends Component {
     return [
       <Router key="1" history={history}>
         <HeaderContainer {...this.props} />
-        <section id="panel">
+        <section id="panel" className="panel">
           <NotificationsContainer />
           <Route exact path={`/errors`} component={Errors} />
         </section>

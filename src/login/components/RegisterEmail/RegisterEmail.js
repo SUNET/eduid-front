@@ -64,7 +64,7 @@ EmailReduxForm = connect(() => ({
 class RegisterEmail extends Component {
   render() {
     return [
-      <div key="0" id="content" className="horizontal-content-margin">
+      <div key="0" id="content" className="horizontal-content-margin content">
         <p className="heading">{this.props.translate("register.sub-heading")}</p>
         <p>{this.props.translate("register.paragraph")}</p>
 

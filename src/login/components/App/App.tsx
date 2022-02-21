@@ -21,7 +21,7 @@ class App extends React.Component {
       <>
         <Splash />
         <Banner {...this.props} />
-        <section id="panel">
+        <section id="panel" className="panel">
           <Notifications />
           <ErrorBoundaryContainer {...this.props} fallback={GenericError}>
             <Router history={history}>
