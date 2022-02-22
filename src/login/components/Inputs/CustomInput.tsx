@@ -100,6 +100,7 @@ const InputElement = (props: CustomInputProps): JSX.Element => {
       placeholder={props.placeholder}
       valid={input.value !== "" && valid}
       aria-required={input.required}
+      invalid={props.invalid}
       {...input}
     />
   );
