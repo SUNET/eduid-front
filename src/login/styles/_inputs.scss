@@ -159,7 +159,6 @@ input:focus {
     background-image: none;
   }
 
-  .checkmark,
   .show-hide-button {
     position: absolute;
     background: transparent;
@@ -175,22 +174,6 @@ input:focus {
     right: 1rem;
     color: $black;
     font-size: 1rem;
-  }
-
-  .is-valid ~ .show-hide-button {
-    right: 3rem;
-  }
-
-  .checkmark {
-    color: #28a745;
-    right: 0.625rem;
-    align-self: center;
-
-    svg {
-      height: 1.5rem;
-      width: 1.5rem;
-      transform: rotate(0);
-    }
   }
 }
 
