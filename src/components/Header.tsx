@@ -7,7 +7,7 @@ import { startLogout } from "actions/Header";
 import { FormattedMessage } from "react-intl";
 
 interface HeaderProps {
-  email?: any;
+  email?: string;
 }
 
 const Header = (props: HeaderProps): JSX.Element => {
@@ -16,7 +16,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const dispatch = useDashboardAppDispatch();
   let tagline = <FormattedMessage defaultMessage="Default tagline" description="eduID is easier and safer login." />;
-  let button: any = "";
+  let button;
 
   function handleLogout() {
     dispatch(startLogout());
