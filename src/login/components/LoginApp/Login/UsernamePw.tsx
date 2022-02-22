@@ -47,14 +47,17 @@ export default function UsernamePw() {
               <EmailInput name="email" autoFocus={true} required={true} />
               <PasswordInput name="current-password" />
 
-              <div className="button-pair">
-                <UsernamePwSubmitButton {...formProps} />
-                <UsernamePwAnotherDeviceButton />
+              <div className="flex-between">
+                <div className="button-pair">
+                  <UsernamePwSubmitButton {...formProps} />
+                  <UsernamePwAnotherDeviceButton />
+                </div>
+
+                <div>
+                  <RenderResetPasswordLink />
+                  <RenderRegisterLink />
+                </div>
               </div>
-
-              <RenderResetPasswordLink />
-
-              <RenderRegisterLink />
             </form>
           );
         }}
@@ -68,7 +71,7 @@ function RenderRegisterLink(): JSX.Element {
   return (
     <p className="secondary-link text-small">
       <FormattedMessage defaultMessage="Don't have eduID? " description="Login front page" />
-      &nbsp;
+      &nbsp;&nbsp;
       <Link href={toSignup} text={<FormattedMessage defaultMessage=" Register" description="Login front page" />} />
     </p>
   );

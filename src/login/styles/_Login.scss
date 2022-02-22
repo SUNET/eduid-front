@@ -40,19 +40,14 @@
 }
 
 a.send-link {
-  width: fit-content;
-  align-self: center;
-  text-align: center;
-  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+  display: inline-block;
 
   &:hover {
     text-decoration: underline;
   }
-
-  @media (max-width: $bp-xs) {
-    border-top: 1px solid $close;
-    margin-top: 0.5rem;
-    padding: 1.5rem 3rem 1rem;
+  @media (max-width: $bp-sm) {
+    margin: 1rem 0;
   }
 }
 
@@ -221,8 +216,10 @@ a.send-link.disabled {
 .username-pw {
   .button-pair {
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     margin: 0.5rem 0;
+    width: 100%;
 
     button {
       svg {
@@ -233,12 +230,23 @@ a.send-link.disabled {
 
     @media (min-width: $bp-xs) {
       flex-direction: row;
+      width: auto;
 
       button {
         min-width: 100px;
-        margin-left: 8px;
-        margin-right: 8px;
+
+        &:nth-child(n + 2) {
+          margin-left: 1rem;
+        }
       }
+    }
+  }
+  .flex-between {
+    flex-direction: row;
+    text-align: right;
+    @media (max-width: $bp-md) {
+      flex-direction: column;
+      text-align: center;
     }
   }
 }
@@ -252,7 +260,6 @@ a.send-link.disabled {
 
   .buttons {
     display: flex;
-    justify-content: center;
     column-gap: 1rem;
     margin: 1em 0;
 
