@@ -2,7 +2,7 @@ import React from "react";
 import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
-import Header from "component/Header";
+import Header from "../components/Header";
 import { setupComponent } from "tests/SignupMain-test";
 
 describe("Header Component", () => {

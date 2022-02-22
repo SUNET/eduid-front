@@ -4,7 +4,7 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import expect from "expect";
 import { IntlProvider } from "react-intl";
-import Header from "containers/Header";
+import Header from "../components/Header";
 import Footer from "../login/components/Footer/Footer";
 import MainContainer from "containers/DashboardMain";
 import Notifications from "containers/Notifications";
