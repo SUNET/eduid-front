@@ -2,23 +2,29 @@ import React, { Fragment } from "react";
 import "../login/styles/index.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { startLogout } from "actions/Header";
 
 interface HeaderProps {
-  translate: any;
-  button: any;
-  dashboard_url: string;
-  email: string;
-  handleLogout: any;
+  translate?: any;
+  email?: any;
 }
 
 const Header = (props: HeaderProps): JSX.Element => {
   const url = location.pathname;
+  const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
+  const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
+  const dispatch = useDashboardAppDispatch();
   let tagline = props.translate("banner.tagline");
   let button: any = "";
 
+  function handleLogout() {
+    dispatch(startLogout());
+  }
+
   if (url.includes("register")) {
     button = (
-      <a href={props.dashboard_url}>
+      <a href={dashboard_url}>
         <button id="login">
           <FontAwesomeIcon icon={faUser} />
           {props.translate("header.signin")}
@@ -33,12 +39,15 @@ const Header = (props: HeaderProps): JSX.Element => {
     );
     button = (
       <div id="eduid-button">
-        <button id="logout" onClick={props.handleLogout}>
+        <button id="logout" onClick={handleLogout}>
           <FontAwesomeIcon icon={faUser} />
           {props.translate("header.logout")}
         </button>
       </div>
     );
+  } else if (url.includes("login")) {
+    tagline = <Fragment>{props.translate("dashboard.tagline")}</Fragment>;
+    button = <a href={signup_url}>REGISTER</a>;
   } else {
     button = <div />;
   }
@@ -46,7 +55,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   return (
     <section className="banner">
       <header>
-        <a href={props.dashboard_url}>
+        <a href={dashboard_url}>
           <div id="eduid-logo" />
         </a>
         {button}

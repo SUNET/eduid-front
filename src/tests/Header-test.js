@@ -2,21 +2,21 @@ import React from "react";
 import expect from "expect";
 import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
-import HeaderContainer from "containers/Header";
+import Header from "component/Header";
 import { setupComponent } from "tests/SignupMain-test";
 
 describe("Header Component", () => {
   it("Component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <HeaderContainer />
+        <Header />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
   it("Component renders the eduID logo", () => {
     const wrapper = setupComponent({
-      component: <HeaderContainer />,
+      component: <Header />,
     });
     const logo = wrapper.find("#eduid-logo");
 
