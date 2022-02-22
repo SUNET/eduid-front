@@ -35,6 +35,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     tagline = (
       <Fragment>
         <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
+        &nbsp;
         {props.email}
       </Fragment>
     );
