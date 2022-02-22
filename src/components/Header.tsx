@@ -1,7 +1,5 @@
 import React, { Fragment } from "react";
 import "../login/styles/index.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { startLogout } from "actions/Header";
 import { FormattedMessage } from "react-intl";
@@ -33,7 +31,6 @@ const Header = (props: HeaderProps): JSX.Element => {
   if (url.includes("register")) {
     button = (
       <button className="header-button" id="login" onClick={handleLogin}>
-        <FontAwesomeIcon icon={faUser} />
         <FormattedMessage defaultMessage="Log in" description="Header login" />
       </button>
     );
@@ -47,7 +44,6 @@ const Header = (props: HeaderProps): JSX.Element => {
     );
     button = (
       <button className="header-button" id="logout" onClick={handleLogout}>
-        <FontAwesomeIcon icon={faUser} />
         <FormattedMessage defaultMessage="Logout" description="Header login" />
       </button>
     );
