@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { startLogout } from "actions/Header";
+import { FormattedMessage } from "react-intl";
 
 interface HeaderProps {
-  translate?: any;
   email?: any;
 }
 
@@ -15,7 +15,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const dispatch = useDashboardAppDispatch();
-  let tagline = props.translate("banner.tagline");
+  let tagline = <FormattedMessage defaultMessage="Default tagline" description="eduID is easier and safer login." />;
   let button: any = "";
 
   function handleLogout() {
@@ -27,26 +27,35 @@ const Header = (props: HeaderProps): JSX.Element => {
       <a href={dashboard_url}>
         <button id="login">
           <FontAwesomeIcon icon={faUser} />
-          {props.translate("header.signin")}
+          <FormattedMessage defaultMessage="Log in" description="Header login" />
+          {/* {props.translate("header.signin")} */}
         </button>
       </a>
     );
   } else if (url.includes("profile")) {
     tagline = (
       <Fragment>
-        {props.translate("dashboard.tagline")} {props.email}
+        <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
+        {/* {props.translate("dashboard.tagline")}  */}
+        {props.email}
       </Fragment>
     );
     button = (
       <div id="eduid-button">
         <button id="logout" onClick={handleLogout}>
           <FontAwesomeIcon icon={faUser} />
-          {props.translate("header.logout")}
+          <FormattedMessage defaultMessage="Logout" description="Header login" />
+          {/* {props.translate("header.logout")} */}
         </button>
       </div>
     );
   } else if (url.includes("login")) {
-    tagline = <Fragment>{props.translate("dashboard.tagline")}</Fragment>;
+    tagline = (
+      <Fragment>
+        <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
+        {/* {props.translate("dashboard.tagline")} */}
+      </Fragment>
+    );
     button = <a href={signup_url}>REGISTER</a>;
   } else {
     button = <div />;
