@@ -28,7 +28,6 @@ const Header = (props: HeaderProps): JSX.Element => {
         <button id="login">
           <FontAwesomeIcon icon={faUser} />
           <FormattedMessage defaultMessage="Log in" description="Header login" />
-          {/* {props.translate("header.signin")} */}
         </button>
       </a>
     );
@@ -36,7 +35,6 @@ const Header = (props: HeaderProps): JSX.Element => {
     tagline = (
       <Fragment>
         <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
-        {/* {props.translate("dashboard.tagline")}  */}
         {props.email}
       </Fragment>
     );
@@ -45,7 +43,6 @@ const Header = (props: HeaderProps): JSX.Element => {
         <button id="logout" onClick={handleLogout}>
           <FontAwesomeIcon icon={faUser} />
           <FormattedMessage defaultMessage="Logout" description="Header login" />
-          {/* {props.translate("header.logout")} */}
         </button>
       </div>
     );
@@ -53,7 +50,6 @@ const Header = (props: HeaderProps): JSX.Element => {
     tagline = (
       <Fragment>
         <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
-        {/* {props.translate("dashboard.tagline")} */}
       </Fragment>
     );
     button = <a href={signup_url}>REGISTER</a>;

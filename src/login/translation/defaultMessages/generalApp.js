@@ -5,10 +5,6 @@ export const generalApp = {
   // header
   "header.signup": <FormattedMessage id="header.signup" defaultMessage={`SIGN UP`} />,
 
-  "header.signin": <FormattedMessage id="header.signin" defaultMessage={`Log in`} />,
-
-  "header.logout": <FormattedMessage id="header.logout" defaultMessage={`Logout`} />,
-
   "main.welcome": <FormattedMessage id="main.welcome" defaultMessage={`Welcome to eduID`} />,
 
   "banner.tagline": <FormattedMessage id="banner.tagline" defaultMessage={`eduID is easier and safer login.`} />,
