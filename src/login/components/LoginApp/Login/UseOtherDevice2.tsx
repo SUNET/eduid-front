@@ -223,25 +223,26 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           description="Use another device, finished"
         />
       </div>
+      <div>
+        <ResponseCodeForm
+          extra_className="device2"
+          submitDisabled={true}
+          inputsDisabled={true}
+          code={props.data.response_code}
+          handleSubmitCode={handleSubmit}
+        />
 
-      <ResponseCodeForm
-        extra_className="device2"
-        submitDisabled={true}
-        inputsDisabled={true}
-        code={props.data.response_code}
-        handleSubmitCode={handleSubmit}
-      />
-
-      <div className="phishing-warning">
-        <span className="warning-symbol">
-          <FontAwesomeIcon icon={faExclamationCircle} />
-        </span>
-        <span className="text-small">
-          <FormattedMessage
-            defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
-            description="Use another device, finished"
-          />
-        </span>
+        <div className="phishing-warning">
+          <span className="warning-symbol">
+            <FontAwesomeIcon icon={faExclamationCircle} />
+          </span>
+          <span className="text-small">
+            <FormattedMessage
+              defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
+              description="Use another device, finished"
+            />
+          </span>
+        </div>
       </div>
       <div className="buttons device2">
         <ButtonPrimary

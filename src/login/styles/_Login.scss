@@ -286,7 +286,6 @@ a.send-link.disabled {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      margin-bottom: 0.5rem;
 
       input[type="text"] {
         display: inline-block;
@@ -313,7 +312,7 @@ a.send-link.disabled {
     &.device2 .response-code-inputs {
       background-color: $white;
       width: fit-content;
-      padding: 0.5rem 1rem;
+      padding: 1rem;
 
       input {
         border-bottom: none;
@@ -365,12 +364,17 @@ a.send-link.disabled {
     flex-direction: column;
     row-gap: 1rem;
 
+    .response-code-form {
+      background: $white;
+    }
+
     .phishing-warning {
       display: flex;
       align-items: center;
-      row-gap: 1rem;
       font-size: 1rem;
       color: $dark-orange;
+      background: $white;
+      padding: 0 1rem 1.5rem;
 
       .warning-symbol {
         padding-right: 0.5rem;
