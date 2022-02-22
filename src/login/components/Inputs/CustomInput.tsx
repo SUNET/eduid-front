@@ -133,11 +133,6 @@ export function PasswordInputElement(props: InputProps): JSX.Element {
         aria-required={props.required}
         id={props.id}
       />
-      {props.valid ? (
-        <div className="checkmark">
-          <FontAwesomeIcon icon={faCheck} />
-        </div>
-      ) : null}
 
       <button
         type="button"
