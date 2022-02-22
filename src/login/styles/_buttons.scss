@@ -2,8 +2,7 @@
 
 // --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
 // Login, Logout button in Header
-#login,
-#logout {
+.header-button {
   text-transform: none;
   margin-top: 0;
   margin-bottom: 0;
@@ -11,7 +10,7 @@
   color: $black;
   background-color: $white;
   box-shadow: none;
-  border: solid 1px $orange-highlight;
+  border: solid 2px $orange-highlight;
   padding: 6px 12px;
 
   &:hover {
@@ -304,6 +303,7 @@ button.btn-link {
 /* Instance/icon unique styles to be set in targeted css */
 button.icon-only {
   @extend .icon;
+
   box-shadow: none;
   background: transparent;
   border-color: transparent;
