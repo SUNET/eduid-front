@@ -22,14 +22,20 @@ const Header = (props: HeaderProps): JSX.Element => {
     dispatch(startLogout());
   }
 
+  function handleRegister() {
+    document.location.href = signup_url;
+  }
+
+  function handleLogin() {
+    document.location.href = dashboard_url;
+  }
+
   if (url.includes("register")) {
     button = (
-      <a href={dashboard_url}>
-        <button id="login">
-          <FontAwesomeIcon icon={faUser} />
-          <FormattedMessage defaultMessage="Log in" description="Header login" />
-        </button>
-      </a>
+      <button id="login" onClick={handleLogin}>
+        <FontAwesomeIcon icon={faUser} />
+        <FormattedMessage defaultMessage="Log in" description="Header login" />
+      </button>
     );
   } else if (url.includes("profile")) {
     tagline = (
@@ -40,12 +46,10 @@ const Header = (props: HeaderProps): JSX.Element => {
       </Fragment>
     );
     button = (
-      <div id="eduid-button">
-        <button id="logout" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faUser} />
-          <FormattedMessage defaultMessage="Logout" description="Header login" />
-        </button>
-      </div>
+      <button id="logout" onClick={handleLogout}>
+        <FontAwesomeIcon icon={faUser} />
+        <FormattedMessage defaultMessage="Logout" description="Header login" />
+      </button>
     );
   } else if (url.includes("login")) {
     tagline = (
@@ -53,7 +57,11 @@ const Header = (props: HeaderProps): JSX.Element => {
         <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
       </Fragment>
     );
-    button = <a href={signup_url}>REGISTER</a>;
+    button = (
+      <button id="register" onClick={handleRegister}>
+        <FormattedMessage defaultMessage="Register" description="Header register" />
+      </button>
+    );
   } else {
     button = <div />;
   }
