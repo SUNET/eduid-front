@@ -1,4 +1,8 @@
 {
+  "/ANjhk": {
+    "developer_comment": "Header register",
+    "string": "Registrera"
+  },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "att SUNET:s etiska regler reglerar övrig tillåten användning. "
@@ -15,6 +19,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
   },
+  "3R4Ypi": {
+    "developer_comment": "Default tagline",
+    "string": "eduID är enklare och säkrare inloggning."
+  },
   "3ioK05": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Tryck här igen när du har fått brevet"
@@ -26,16 +34,20 @@
   "4WguDO": {
     "string": "Utvecklarinformation, visas inte i produktion:"
   },
-  "5ajfFQ": {
-    "developer_comment": "Login UsernamePw",
-    "string": "Logga in med hjälp av en annan enhet"
-  },
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
+  },
+  "5lHsOL": {
+    "developer_comment": "Login front page",
+    "string": "Registrera"
   },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
+  },
+  "891gyK": {
+    "developer_comment": "Login UsernamePw",
+    "string": "Annan enhet"
   },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
@@ -130,6 +142,10 @@
   "GMXbvp": {
     "developer_comment": "password input field label",
     "string": "Lösenord"
+  },
+  "GX77Th": {
+    "developer_comment": "Header tagline",
+    "string": "eduID för"
   },
   "HCjfX4": {
     "developer_comment": "Footer copyright",
@@ -250,13 +266,13 @@
     "developer_comment": "Use other device",
     "string": "Inloggningen är inte giltig längre"
   },
+  "VlSXpR": {
+    "developer_comment": "Header login",
+    "string": "Logga in"
+  },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
-  },
-  "Vz/80o": {
-    "developer_comment": "Login front page",
-    "string": "Registrera dig här."
   },
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
@@ -722,6 +738,10 @@
   "gbZoh/": {
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "gå tillbaka"
+  },
+  "hRXpVn": {
+    "developer_comment": "Header logout",
+    "string": "Logga ut"
   },
   "header.signup": {
     "string": "REGISTRERING"
