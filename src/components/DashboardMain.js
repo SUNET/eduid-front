@@ -48,7 +48,7 @@ class Main extends Component {
         <a id="stable-link" className="hidden" href="/feature/no-beta">
           {this.props.translate("beta-link.to-stable")}
         </a>
-        <Header {...this.props} />
+        <Header {...this.props} showLogout={true} />
         <section id="panel" className="panel">
           <NotificationsContainer />
           <div key="0" id="content" className="horizontal-content-margin content">
