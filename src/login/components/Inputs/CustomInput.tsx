@@ -100,6 +100,7 @@ const InputElement = (props: CustomInputProps): JSX.Element => {
       placeholder={props.placeholder}
       valid={input.value !== "" && valid}
       aria-required={input.required}
+      invalid={props.invalid}
       {...input}
     />
   );
@@ -132,11 +133,6 @@ export function PasswordInputElement(props: InputProps): JSX.Element {
         aria-required={props.required}
         id={props.id}
       />
-      {props.valid ? (
-        <div className="checkmark">
-          <FontAwesomeIcon icon={faCheck} />
-        </div>
-      ) : null}
 
       <button
         type="button"

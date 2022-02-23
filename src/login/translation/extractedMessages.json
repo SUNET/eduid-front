@@ -34,16 +34,20 @@
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
-  "5ajfFQ": {
-    "developer_comment": "Login UsernamePw",
-    "string": "Log in using another device"
-  },
   "5l4hxp": {
     "string": "Log in on another device"
+  },
+  "5lHsOL": {
+    "developer_comment": "Login front page",
+    "string": "Register"
   },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
+  },
+  "891gyK": {
+    "developer_comment": "Login UsernamePw",
+    "string": "Other device"
   },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
@@ -269,10 +273,6 @@
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
-  },
-  "Vz/80o": {
-    "developer_comment": "Login front page",
-    "string": "Register here."
   },
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",

@@ -7,7 +7,6 @@ import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
 import ButtonPrimary from "../../Buttons/ButtonPrimary";
-import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
@@ -16,6 +15,8 @@ import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import EmailInput from "login/components/Inputs/EmailInput";
 import PasswordInput from "login/components/Inputs/PasswordInput";
 import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 
 interface UsernamePwFormData {
   email?: string;
@@ -46,13 +47,17 @@ export default function UsernamePw() {
               <EmailInput name="email" autoFocus={true} required={true} />
               <PasswordInput name="current-password" />
 
-              <RenderResetPasswordLink />
-              <div className="button-pair">
-                <UsernamePwAnotherDeviceButton />
-                <UsernamePwSubmitButton {...formProps} />
-              </div>
+              <div className="flex-between">
+                <div className="button-pair">
+                  <UsernamePwSubmitButton {...formProps} />
+                  <UsernamePwAnotherDeviceButton />
+                </div>
 
-              <RenderRegisterLink />
+                <div>
+                  <RenderResetPasswordLink />
+                  <RenderRegisterLink />
+                </div>
+              </div>
             </form>
           );
         }}
@@ -64,13 +69,10 @@ export default function UsernamePw() {
 function RenderRegisterLink(): JSX.Element {
   const toSignup = useAppSelector((state) => state.config.signup_url);
   return (
-    <p className="secondary-link">
-      <FormattedMessage defaultMessage="Don't have eduID?" description="Login front page" />
-      <Link
-        className="text-link"
-        href={toSignup}
-        text={<FormattedMessage defaultMessage="Register here." description="Login front page" />}
-      />
+    <p className="secondary-link text-small">
+      <FormattedMessage defaultMessage="Don't have eduID? " description="Login front page" />
+      &nbsp;&nbsp;
+      <Link href={toSignup} text={<FormattedMessage defaultMessage=" Register" description="Login front page" />} />
     </p>
   );
 }
@@ -138,8 +140,9 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <ButtonSecondary type="submit" onClick={handleOnClick} id="login-other-device-button" className="secondary">
-      <FormattedMessage defaultMessage="Log in using another device" description="Login UsernamePw" />
-    </ButtonSecondary>
+    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button">
+      <FontAwesomeIcon icon={faQrcode} />
+      <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
+    </ButtonPrimary>
   );
 }
