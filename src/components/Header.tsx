@@ -44,7 +44,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     );
     button = (
       <button className="header-button" id="logout" onClick={handleLogout}>
-        <FormattedMessage defaultMessage="Logout" description="Header login" />
+        <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </button>
     );
   } else if (url.includes("login")) {
