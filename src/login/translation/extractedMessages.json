@@ -61,10 +61,6 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
   },
-  "9Sx2oS": {
-    "developer_comment": "Header login",
-    "string": "Logout"
-  },
   "9UKtfS": {
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
@@ -742,6 +738,10 @@
   "gbZoh/": {
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "go back"
+  },
+  "hRXpVn": {
+    "developer_comment": "Header logout",
+    "string": "Log out"
   },
   "header.signup": {
     "string": "SIGN UP"
