@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <>
         <Splash />
-        <Header showRegister />
+        <Header showRegister={true} />
         <section id="panel" className="panel">
           <Notifications />
           <ErrorBoundaryContainer {...this.props} fallback={GenericError}>

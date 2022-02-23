@@ -75,7 +75,7 @@ class SignupMain extends Component {
     return [
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
-        <Header {...this.props} showLogin />
+        <Header {...this.props} showLogin={true} />
         <section id="panel" className="panel">
           <NotificationsContainer />
           <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={redirect} />} />
