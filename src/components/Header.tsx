@@ -12,6 +12,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const url = location.pathname;
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
+  const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
   let tagline = <FormattedMessage defaultMessage="eduID is easier and safer login." description="Default tagline" />;
   let button;
@@ -60,7 +61,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   return (
     <section className="banner">
       <header>
-        <a href={dashboard_url}>
+        <a href={dashboard_url ? dashboard_url : eduid_site_url}>
           <div id="eduid-logo" />
         </a>
         {button}
