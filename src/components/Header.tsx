@@ -6,10 +6,12 @@ import { FormattedMessage } from "react-intl";
 
 interface HeaderProps {
   email?: string;
+  showLogin?: boolean;
+  showLogout?: boolean;
+  showRegister?: boolean;
 }
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const url = location.pathname;
   const signup_url = useDashboardAppSelector((state) => state.config.signup_url);
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
@@ -29,13 +31,13 @@ const Header = (props: HeaderProps): JSX.Element => {
     document.location.href = dashboard_url;
   }
 
-  if (url.includes("register")) {
+  if (props.showLogin) {
     button = (
       <button className="header-button" id="login" onClick={handleLogin}>
         <FormattedMessage defaultMessage="Log in" description="Header login" />
       </button>
     );
-  } else if (url.includes("profile")) {
+  } else if (props.showLogout) {
     tagline = (
       <Fragment>
         <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
@@ -48,7 +50,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </button>
     );
-  } else if (url.includes("login")) {
+  } else if (props.showRegister) {
     button = (
       <button className="header-button" id="register" onClick={handleRegister}>
         <FormattedMessage defaultMessage="Register" description="Header register" />
