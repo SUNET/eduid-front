@@ -6,7 +6,7 @@ class CodeVerified extends Component {
   render() {
     return (
       <form key="2" method="GET" action={this.props.dashboard_url} className="vertical-content-margin">
-        <div key="0" id="content">
+        <div key="0" id="content" className="content">
           <div>
             <h3 className="register-header">{this.props.translate("finish.registration-complete")}</h3>
             <p className="lead">{this.props.translate("finish.registration-details")}</p>

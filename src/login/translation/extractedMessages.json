@@ -1,4 +1,8 @@
 {
+  "/ANjhk": {
+    "developer_comment": "Header register",
+    "string": "Register"
+  },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules regulate the “other” usage."
@@ -7,6 +11,22 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
   },
+  "1KseiC": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Start by adding your ID number above"
+  },
+  "385FXU": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
+  },
+  "3R4Ypi": {
+    "developer_comment": "Default tagline",
+    "string": "eduID is easier and safer login."
+  },
+  "3ioK05": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Click here again when you have received the letter"
+  },
   "4+GwOq": {
     "developer_comment": "Set new password",
     "string": "New password"
@@ -14,20 +34,28 @@
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
-  "5ajfFQ": {
-    "developer_comment": "Login UsernamePw",
-    "string": "Log in using another device"
-  },
   "5l4hxp": {
     "string": "Log in on another device"
+  },
+  "5lHsOL": {
+    "developer_comment": "Login front page",
+    "string": "Register"
   },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
   },
+  "891gyK": {
+    "developer_comment": "Login UsernamePw",
+    "string": "Other device"
+  },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
     "string": "The following generally applies:"
+  },
+  "8eobOo": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "The letter was sent"
   },
   "9CnPOD": {
     "developer_comment": "Login front page",
@@ -40,6 +68,18 @@
   "9UKtfS": {
     "developer_comment": "Reset Password phone code sent(Resend code link button)",
     "string": "Send a new confirmation code"
+  },
+  "9fTOcF": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "by post"
+  },
+  "ABLcOw": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "The code expired"
+  },
+  "AzNlzq": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Add the code you have received by post"
   },
   "B4vR5O": {
     "developer_comment": "Set new password",
@@ -59,6 +99,10 @@
   "DuBOC3": {
     "developer_comment": "Set new password",
     "string": "Set your new password"
+  },
+  "E8EtNL": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "The letter is valid to"
   },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
@@ -98,6 +142,10 @@
   "GMXbvp": {
     "developer_comment": "password input field label",
     "string": "Password"
+  },
+  "GX77Th": {
+    "developer_comment": "Header tagline",
+    "string": "eduID for"
   },
   "HCjfX4": {
     "developer_comment": "Footer copyright",
@@ -210,17 +258,21 @@
     "developer_comment": "Reset Password email link sent",
     "string": "resend link"
   },
+  "V7OJ7r": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Use a confirmation code sent by post to your house"
+  },
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "The request is not valid anymore"
   },
+  "VlSXpR": {
+    "developer_comment": "Header login",
+    "string": "Log in"
+  },
   "VmITR8": {
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
-  },
-  "Vz/80o": {
-    "developer_comment": "Login front page",
-    "string": "Register here."
   },
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
@@ -398,9 +450,6 @@
   },
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
-  },
-  "dashboard.tagline": {
-    "string": "eduID for"
   },
   "dashboard.tagline_unverified": {
     "string": "Don't forget to connect your identity to eduID"
@@ -690,11 +739,9 @@
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "go back"
   },
-  "header.logout": {
-    "string": "Logout"
-  },
-  "header.signin": {
-    "string": "Log in"
+  "hRXpVn": {
+    "developer_comment": "Header logout",
+    "string": "Log out"
   },
   "header.signup": {
     "string": "SIGN UP"
@@ -713,6 +760,10 @@
   },
   "j6UxLp": {
     "string": "Enter the response code shown on the other device in the form below"
+  },
+  "l+PAQr": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "For you registered at your current address"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -1239,6 +1290,10 @@
     "developer_comment": "placeholder text for phone input",
     "string": "Phone number"
   },
+  "ppCiRH": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Click here to order a new code"
+  },
   "profile.email_display_no_data": {
     "string": "no email added"
   },
@@ -1287,6 +1342,10 @@
   "pzYR/3": {
     "developer_comment": "ToU second paragraph",
     "string": "clearly wastes available resources (personnel, hardware or software)"
+  },
+  "q4ENsq": {
+    "developer_comment": "explanation text for letter proofing",
+    "string": "Confirmation code"
   },
   "qHqnkz": {
     "developer_comment": "Use another device, finished",

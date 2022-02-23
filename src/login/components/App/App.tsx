@@ -2,7 +2,7 @@ import React from "react";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Splash from "../Splash/Splash_container";
-import Banner from "../Banner/Banner";
+import Header from "../../../components/Header";
 import ErrorBoundaryContainer from "../Errors/ErrorBoundary";
 import GenericError from "../Errors/GenericError";
 import LoginApp from "../LoginApp/LoginApp";
@@ -20,8 +20,8 @@ class App extends React.Component {
     return (
       <>
         <Splash />
-        <Banner {...this.props} />
-        <section id="panel">
+        <Header />
+        <section id="panel" className="panel">
           <Notifications />
           <ErrorBoundaryContainer {...this.props} fallback={GenericError}>
             <Router history={history}>

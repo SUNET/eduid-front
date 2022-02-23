@@ -26,21 +26,28 @@
     }
 
     button {
-      margin: 0.25rem 0 #{3 * $margin};
+      margin: 0.25rem 0 #{1 * $margin};
     }
   }
 
   .secondary-link {
-    font-size: 1rem;
-    align-self: flex-end;
+    align-self: center;
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 a.send-link {
-  width: fit-content;
+  margin: 0.5rem 0;
+  display: inline-block;
 
   &:hover {
     text-decoration: underline;
+  }
+  @media (max-width: $bp-sm) {
+    margin: 1rem 0;
   }
 }
 
@@ -182,13 +189,6 @@ a.send-link.disabled {
     }
   }
 
-  .username-pw .secondary-link {
-    margin-top: #{3 * $margin};
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
   .tou .tou-text {
     margin-top: #{2 * $margin};
   }
@@ -213,14 +213,40 @@ a.send-link.disabled {
 }
 
 // TODO: make .button-pair and .buttons same
-.username-pw .button-pair {
-  padding-top: 0.75rem;
+.username-pw {
+  .button-pair {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0.5rem 0;
+    width: 100%;
 
-  @media (max-width: $bp-xs) {
-    flex-direction: column-reverse;
+    button {
+      svg {
+        transform: rotate(0);
+        margin-right: 8px;
+      }
+    }
 
-    button:nth-child(n + 2) {
-      margin-bottom: 0.5rem;
+    @media (min-width: $bp-xs) {
+      flex-direction: row;
+      width: auto;
+
+      button {
+        min-width: 100px;
+
+        &:nth-child(n + 2) {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+  .flex-between {
+    flex-direction: row;
+    text-align: right;
+    @media (max-width: $bp-md) {
+      flex-direction: column;
+      text-align: center;
     }
   }
 }
@@ -237,13 +263,13 @@ a.send-link.disabled {
     column-gap: 1rem;
     margin: 1em 0;
 
+    button {
+      min-width: 100px;
+    }
+
     @media (max-width: $bp-xs) {
       flex-direction: column-reverse;
       margin-left: -2.25rem;
-
-      // &:not(.device2) {
-      //   margin-left: -2.25rem;
-      // }
 
       button:nth-child(n + 2) {
         margin-bottom: 0.5rem;
@@ -260,7 +286,6 @@ a.send-link.disabled {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      margin-bottom: 0.5rem;
 
       input[type="text"] {
         display: inline-block;
@@ -287,7 +312,7 @@ a.send-link.disabled {
     &.device2 .response-code-inputs {
       background-color: $white;
       width: fit-content;
-      padding: 0.5rem 1rem;
+      padding: 1rem;
 
       input {
         border-bottom: none;
@@ -339,12 +364,17 @@ a.send-link.disabled {
     flex-direction: column;
     row-gap: 1rem;
 
+    .response-code-form {
+      background: $white;
+    }
+
     .phishing-warning {
       display: flex;
       align-items: center;
-      row-gap: 1rem;
       font-size: 1rem;
       color: $dark-orange;
+      background: $white;
+      padding: 0 1rem 1.5rem;
 
       .warning-symbol {
         padding-right: 0.5rem;

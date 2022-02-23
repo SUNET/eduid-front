@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createBrowserHistory } from "history";
 import Footer from "../Footer/Footer";
-import HeaderContainer from "containers/Header";
+import Header from "../../../components/Header";
 import NotificationsContainer from "containers/Notifications";
 import { Router, Route } from "react-router-dom";
 import "../../styles/index.scss";
@@ -14,8 +14,8 @@ class ErrorsMain extends Component {
   render() {
     return [
       <Router key="1" history={history}>
-        <HeaderContainer {...this.props} />
-        <section id="panel">
+        <Header {...this.props} />
+        <section id="panel" className="panel">
           <NotificationsContainer />
           <Route exact path={`/errors`} component={Errors} />
         </section>

@@ -5,7 +5,7 @@ import { createBrowserHistory } from "history";
 
 //import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
-import HeaderContainer from "containers/Header";
+import Header from "../components/Header";
 import Footer from "../login/components/Footer/Footer";
 import SettingsComponent from "./Settings";
 import DashboardNav from "./DashboardNav";
@@ -48,10 +48,10 @@ class Main extends Component {
         <a id="stable-link" className="hidden" href="/feature/no-beta">
           {this.props.translate("beta-link.to-stable")}
         </a>
-        <HeaderContainer {...this.props} />
-        <section id="panel">
+        <Header {...this.props} />
+        <section id="panel" className="panel">
           <NotificationsContainer />
-          <div key="0" id="content" className="horizontal-content-margin">
+          <div key="0" id="content" className="horizontal-content-margin content">
             <DashboardNav {...this.props} />
             <div key="0" id="text-content">
               <Route path="/profile/settings/" component={SettingsComponent} />
