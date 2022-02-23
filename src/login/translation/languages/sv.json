@@ -435,9 +435,6 @@
   "csrf.try-again": {
     "string": "Ett problem uppstod, var vänlig försök igen"
   },
-  "dashboard.tagline": {
-    "string": "eduID för"
-  },
   "dashboard.tagline_unverified": {
     "string": "Glöm inte att koppla din identitet till ditt eduID"
   },
@@ -725,12 +722,6 @@
   "gbZoh/": {
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "gå tillbaka"
-  },
-  "header.logout": {
-    "string": "Logga ut"
-  },
-  "header.signin": {
-    "string": "Logga in"
   },
   "header.signup": {
     "string": "REGISTRERING"

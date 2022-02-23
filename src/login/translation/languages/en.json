@@ -399,9 +399,6 @@
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
   },
-  "dashboard.tagline": {
-    "string": "eduID for"
-  },
   "dashboard.tagline_unverified": {
     "string": "Don't forget to connect your identity to eduID"
   },
@@ -689,12 +686,6 @@
   "gbZoh/": {
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "Go back"
-  },
-  "header.logout": {
-    "string": "Logout"
-  },
-  "header.signin": {
-    "string": "Log in"
   },
   "header.signup": {
     "string": "SIGN UP"

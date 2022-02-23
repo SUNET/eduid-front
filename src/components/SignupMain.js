@@ -4,7 +4,7 @@ import { createBrowserHistory } from "history";
 //import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import Footer from "../login/components/Footer/Footer";
-import HeaderContainer from "containers/Header";
+import Header from "components/Header";
 import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CodeVerifiedContainer from "containers/CodeVerified";
@@ -75,7 +75,7 @@ class SignupMain extends Component {
     return [
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
-        <HeaderContainer {...this.props} />
+        <Header {...this.props} />
         <section id="panel" className="panel">
           <NotificationsContainer />
           <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={redirect} />} />

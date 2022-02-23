@@ -2,9 +2,6 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const userProfile = {
-  // dashboard
-  "dashboard.tagline": <FormattedMessage id="dashboard.tagline" defaultMessage={`eduID for`} />,
-
   // profile page
   "profile.name_display_title": <FormattedMessage id="profile.name_display_title" defaultMessage={`Name`} />,
   "profile.name_display_no_data": <FormattedMessage id="profile.name_display_no_data" defaultMessage={`add name`} />,
