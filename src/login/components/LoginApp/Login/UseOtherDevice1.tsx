@@ -86,10 +86,6 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
 
-  // function handleTimerReachZero() {
-  //   setIsExpired(true);
-  // }
-
   // have to pass a function to ResponseCodeForm in order for it to show the button
   function handleLoginButtonOnClick() {
     return undefined;
