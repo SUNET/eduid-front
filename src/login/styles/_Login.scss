@@ -267,6 +267,10 @@ a.send-link.disabled {
       min-width: 100px;
     }
 
+    @media (max-width: $bp-md) {
+      justify-content: center;
+    }
+
     @media (max-width: $bp-xs) {
       flex-direction: column-reverse;
       margin-left: -2.25rem;
@@ -286,36 +290,53 @@ a.send-link.disabled {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      background: $white;
+      padding: 1.5rem 1rem;
 
       input[type="text"] {
         display: inline-block;
-        background-color: $white;
-        border: none;
-        border-bottom: 2px solid $gray;
+        border: 1px solid $close;
         font-size: 1.5rem;
         margin: 5px 10px 5px 0;
         width: 2.5rem;
         text-align: center;
+
+        &:focus {
+          box-shadow: none;
+          border: 2px solid $gray;
+        }
       }
 
       input.fixed {
         // the pure-text "inputs", S, K and -
-        border-bottom: none;
-        background: transparent;
+        border: none;
       }
 
       .nowrap-group {
         flex-wrap: nowrap;
       }
+      @media (max-width: $bp-md) {
+        justify-content: center;
+        margin: 0 auto;
+
+        input[type="text"] {
+          margin: 5px 0;
+          width: 2.25rem;
+
+          &:not(:last-child) {
+            margin-right: -1px;
+          }
+        }
+      }
     }
 
     &.device2 .response-code-inputs {
-      background-color: $white;
+      //background-color: $white;
       width: fit-content;
       padding: 1rem;
 
       input {
-        border-bottom: none;
+        border: none;
         width: 1.5rem;
         padding: 0;
       }
