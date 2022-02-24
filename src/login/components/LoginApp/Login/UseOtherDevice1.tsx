@@ -5,7 +5,6 @@ import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { ExpiresMeter } from "./ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
 
 /*
@@ -85,10 +84,6 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   const login_ref = useAppSelector((state) => state.login.ref);
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
-
-  // function handleTimerReachZero() {
-  //   setIsExpired(true);
-  // }
 
   // have to pass a function to ResponseCodeForm in order for it to show the button
   function handleLoginButtonOnClick() {
