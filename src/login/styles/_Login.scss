@@ -46,6 +46,7 @@ a.send-link {
   &:hover {
     text-decoration: underline;
   }
+
   @media (max-width: $bp-sm) {
     margin: 1rem 0;
   }
@@ -241,9 +242,11 @@ a.send-link.disabled {
       }
     }
   }
+
   .flex-between {
     flex-direction: row;
     text-align: right;
+
     @media (max-width: $bp-md) {
       flex-direction: column;
       text-align: center;
@@ -315,6 +318,7 @@ a.send-link.disabled {
       .nowrap-group {
         flex-wrap: nowrap;
       }
+
       @media (max-width: $bp-md) {
         justify-content: center;
         margin: 0 auto;
@@ -371,7 +375,6 @@ a.send-link.disabled {
     }
 
     .timer {
-      padding-left: 1rem;
       margin-top: 0;
       font-family: "Akkurat";
     }
