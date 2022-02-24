@@ -96,6 +96,11 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
           <CodeField num={8} value="" disabled={props.inputsDisabled} />
         </span>
       </div>
+      {props.error && (
+        <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
+          {props.error}
+        </div>
+      )}
       <div className="expiration-info device1">
         <TimeRemainingWrapper
           name="other-device-expires"
@@ -106,11 +111,6 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
           <ExpiresMeter showMeter={false} expires_max={props.data.expires_max} />
         </TimeRemainingWrapper>
       </div>
-      {props.error && (
-        <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-          {props.error}
-        </div>
-      )}
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
           {props.handleAbort && (
