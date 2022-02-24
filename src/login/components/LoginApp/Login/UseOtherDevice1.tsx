@@ -1,5 +1,5 @@
 import { fetchUseOtherDevice1, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
-import { TimeRemainingWrapper } from "components/TimeRemaining";
+
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import loginSlice from "login/redux/slices/loginSlice";
@@ -86,9 +86,9 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
 
-  function handleTimerReachZero() {
-    setIsExpired(true);
-  }
+  // function handleTimerReachZero() {
+  //   setIsExpired(true);
+  // }
 
   // have to pass a function to ResponseCodeForm in order for it to show the button
   function handleLoginButtonOnClick() {
@@ -138,17 +138,6 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
         <li>
           <FormattedMessage defaultMessage="Enter the response code shown on the other device in the form below" />
 
-          <div className="expiration-info device1">
-            <TimeRemainingWrapper
-              name="other-device-expires"
-              unique_id={data.display_id}
-              value={data.expires_in}
-              onReachZero={handleTimerReachZero}
-            >
-              <ExpiresMeter expires_max={data.expires_max} />
-            </TimeRemainingWrapper>
-          </div>
-
           {isExpired ? (
             <RenderFatalError error={expiredMessage} />
           ) : (
@@ -159,6 +148,8 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
               handleLogin={handleLoginButtonOnClick}
               handleAbort={handleAbortButtonOnClick}
               handleSubmitCode={handleSubmitCode}
+              data={data}
+              setIsExpired={setIsExpired}
             />
           )}
         </li>
