@@ -288,10 +288,11 @@ a.send-link.disabled {
   .response-code-input-wrapper {
     .flex-between {
       background: $white;
+      width: 100%;
 
       @media (max-width: $bp-md) {
         flex-direction: column-reverse;
-        padding-top: 1rem;
+        padding-top: 0.5rem;
       }
     }
     .response-code-inputs {
@@ -322,6 +323,7 @@ a.send-link.disabled {
 
         &[value="-"] {
           border: none;
+          width: 1.5rem;
         }
       }
 
@@ -371,7 +373,7 @@ a.send-link.disabled {
   .expires-meter {
     display: flex;
     align-items: center;
-    margin: 0.5rem 1rem;
+    margin: 0.5rem 1rem 0.5rem 0;
     color: $gray;
     font-size: 1rem;
 
