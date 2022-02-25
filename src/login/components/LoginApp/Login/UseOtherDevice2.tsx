@@ -228,6 +228,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           extra_className="device2"
           submitDisabled={true}
           inputsDisabled={true}
+          data={props.data}
           code={props.data.response_code}
           handleSubmitCode={handleSubmit}
         />
