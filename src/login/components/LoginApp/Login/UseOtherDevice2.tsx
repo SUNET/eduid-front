@@ -70,14 +70,14 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
         <li>
           <InfoAboutOtherDevice data={data} />
 
-          <TimeRemainingWrapper
+          {/* <TimeRemainingWrapper
             name="other-device-expires"
             unique_id={data.short_code}
             value={data.expires_in}
             onReachZero={handleTimerReachZero}
           >
             <ExpiresMeter expires_max={data.expires_max} />
-          </TimeRemainingWrapper>
+          </TimeRemainingWrapper> */}
         </li>
 
         {data.state === "IN_PROGRESS" ? (
