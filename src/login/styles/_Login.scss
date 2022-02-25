@@ -312,7 +312,11 @@ a.send-link.disabled {
 
       input.fixed {
         // the pure-text "inputs", S, K and -
-        border: none;
+        color: $gray;
+
+        &[value="-"] {
+          border: none;
+        }
       }
 
       .nowrap-group {
