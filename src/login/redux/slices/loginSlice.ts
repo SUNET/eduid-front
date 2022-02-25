@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  fetchNewDevice,
   fetchNext,
   fetchUseOtherDevice1,
   fetchUseOtherDevice2,
+  IdPAction,
   LoginAuthnOptions,
   LoginNextResponse,
   LoginUseOtherDevice1Response,
@@ -16,8 +18,10 @@ import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga"
 // Define a type for the slice state
 interface LoginState {
   ref?: string;
+  this_device?: string;
   start_url?: string; // what to use as 'return URL' when sending the user off for external authentication (Freja)
-  next_page?: string; // should be called 'current page'
+  next_page?: IdPAction; // should be called 'current page'
+  fetching_next?: boolean;
   post_to?: string; // the target endpoint for the action at the current page
   mfa: {
     webauthn_challenge?: string;
@@ -48,6 +52,10 @@ export const loginSlice = createSlice({
       // Add the login reference (currently an UUID extracted from the URL), to the store.
       state.ref = action.payload.ref;
       state.start_url = action.payload.start_url;
+    },
+    addThisDevice: (state, action: PayloadAction<string>) => {
+      // Add the identifier for this device from local storage.
+      state.this_device = action.payload;
     },
     startLoginWithAnotherDevice: (state, action: PayloadAction<{ username?: string }>) => {
       if (action.payload.username && !state.authn_options.forced_username) {
@@ -90,8 +98,10 @@ export const loginSlice = createSlice({
     // Action connected to postUpdatedTouAcceptSaga. Will post the version of the ToU the user accepts to the /tou endpoint.
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     updatedTouAccept: (_state, _action) => {},
-    // Action connected to postRefLoginSaga.
-    callLoginNext: () => {},
+    callLoginNext: (state) => {
+      // Trigger the Login component fetching of next action to perform from the backend.
+      state.next_page = undefined;
+    },
     // Action connected to postRefForWebauthnChallengeSaga. Fetches a webauthn challenge from the /mfa_auth endpoint.
     // TODO: Use the fetchNext thunk instead, and remove this
     postRefForWebauthnChallenge: () => {},
@@ -125,6 +135,9 @@ export const loginSlice = createSlice({
       .addCase(fetchUseOtherDevice2.rejected, (state) => {
         state.other_device2 = undefined;
       })
+      .addCase(fetchNext.pending, (state) => {
+        state.fetching_next = true;
+      })
       .addCase(fetchNext.fulfilled, (state, action) => {
         // Store the result from asking the backend what action to perform next
         const samlParameters = action.payload.action === "FINISHED" ? action.payload.parameters : undefined;
@@ -132,6 +145,13 @@ export const loginSlice = createSlice({
         state.post_to = action.payload.target;
         state.saml_parameters = samlParameters;
         if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
+        state.fetching_next = false;
+      })
+      .addCase(fetchNext.rejected, (state) => {
+        state.fetching_next = false;
+      })
+      .addCase(fetchNewDevice.fulfilled, (state, action) => {
+        state.this_device = action.payload.new_device;
       });
   },
 });
