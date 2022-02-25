@@ -29,7 +29,6 @@ const Login = (): JSX.Element => {
 
   useEffect(() => {
     if (!this_device) {
-      console.log("Load this_device from local storage, key ", THIS_DEVICE_KEY);
       // try to initialise this_device from local storage
       if (window.localStorage) {
         this_device = window.localStorage.getItem(THIS_DEVICE_KEY) || undefined;
