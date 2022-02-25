@@ -19,6 +19,7 @@ interface LoginState {
   ref?: string;
   start_url?: string; // what to use as 'return URL' when sending the user off for external authentication (Freja)
   next_page?: IdPAction; // should be called 'current page'
+  fetching_next?: boolean;
   post_to?: string; // the target endpoint for the action at the current page
   mfa: {
     webauthn_challenge?: string;
@@ -92,7 +93,9 @@ export const loginSlice = createSlice({
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     updatedTouAccept: (_state, _action) => {},
     // Action connected to postRefLoginSaga.
-    callLoginNext: () => {},
+    callLoginNext: (state) => {
+      state.next_page = undefined;
+    },
     // Action connected to postRefForWebauthnChallengeSaga. Fetches a webauthn challenge from the /mfa_auth endpoint.
     // TODO: Use the fetchNext thunk instead, and remove this
     postRefForWebauthnChallenge: () => {},
@@ -126,6 +129,9 @@ export const loginSlice = createSlice({
       .addCase(fetchUseOtherDevice2.rejected, (state) => {
         state.other_device2 = undefined;
       })
+      .addCase(fetchNext.pending, (state) => {
+        state.fetching_next = true;
+      })
       .addCase(fetchNext.fulfilled, (state, action) => {
         // Store the result from asking the backend what action to perform next
         const samlParameters = action.payload.action === "FINISHED" ? action.payload.parameters : undefined;
@@ -133,6 +139,10 @@ export const loginSlice = createSlice({
         state.post_to = action.payload.target;
         state.saml_parameters = samlParameters;
         if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
+        state.fetching_next = false;
+      })
+      .addCase(fetchNext.rejected, (state) => {
+        state.fetching_next = false;
       });
   },
 });
