@@ -255,10 +255,7 @@ a.send-link.disabled {
 }
 
 .use-another-device {
-  $clock_size: 1.5rem;
-  $clock_padding: 1rem;
-  $meter_align: $clock_size + $clock_padding;
-
+  $clock_size: 1rem;
   font-size: 1rem;
 
   .buttons {
@@ -289,17 +286,26 @@ a.send-link.disabled {
   }
 
   .response-code-input-wrapper {
+    .flex-between {
+      background: $white;
+
+      @media (max-width: $bp-md) {
+        flex-direction: column-reverse;
+        padding-top: 1rem;
+      }
+    }
     .response-code-inputs {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       background: $white;
       padding: 1.5rem 1rem;
+      width: 100%;
 
       input[type="text"] {
         display: inline-block;
         border: 1px solid $close;
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         margin: 5px 10px 5px 0;
         width: 2.5rem;
         text-align: center;
@@ -341,12 +347,17 @@ a.send-link.disabled {
     &.device2 .response-code-inputs {
       //background-color: $white;
       width: fit-content;
-      padding: 1rem;
+      padding: 0.5rem 1rem;
 
       input {
         border: none;
-        width: 1.5rem;
+        width: 1.75rem;
         padding: 0;
+
+        &.fixed {
+          // the pure-text "inputs", S, K and -
+          color: initial;
+        }
       }
     }
   }
@@ -360,11 +371,12 @@ a.send-link.disabled {
   .expires-meter {
     display: flex;
     align-items: center;
-    margin: 1em 0;
+    margin: 0.5rem 1rem;
     color: $gray;
+    font-size: 1rem;
 
     .expires-symbol {
-      padding-right: $clock_padding;
+      padding-right: 0.5rem;
       line-height: 1;
 
       svg {
@@ -382,18 +394,41 @@ a.send-link.disabled {
       margin-top: 0;
       font-family: "Akkurat";
     }
+
+    &.circular {
+      border: 2px solid lightgrey;
+      border-radius: 100%;
+      width: 4rem;
+      height: 4rem;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      color: green;
+      font-size: 0.9rem;
+
+      .expires-symbol {
+        display: none;
+      }
+    }
   }
 
   .finished.device2 {
-    $warning_size: $clock_size;
-
-    padding-top: 1rem;
+    $warning_size: 1.5rem;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
 
     .response-code-form {
       background: $white;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.5rem;
+
+      @media (max-width: $bp-md) {
+        flex-direction: column-reverse;
+        padding-top: 1rem;
+      }
     }
 
     .phishing-warning {
@@ -428,6 +463,10 @@ a.send-link.disabled {
         margin-left: -1.75em;
       }
     }
+  }
+
+  .input-validate-error {
+    margin-top: 1rem;
   }
 
   .developer {
