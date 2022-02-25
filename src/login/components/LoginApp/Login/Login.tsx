@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";
 import MultiFactorAuth from "./MultiFactorAuth";
+import { NewDevice, THIS_DEVICE_KEY } from "./NewDevice";
 import SubmitSamlResponse from "./SubmitSamlResponse";
 import TermsOfUse from "./TermsOfUse";
 import UseOtherDevice1 from "./UseOtherDevice1";
@@ -23,9 +24,21 @@ const Login = (): JSX.Element => {
   const base_url = useAppSelector((state) => state.config.base_url);
   const next_page = useAppSelector((state) => state.login.next_page);
   const fetching_next = useAppSelector((state) => state.login.fetching_next);
+  let this_device = useAppSelector((state) => state.login.this_device);
   let ref = useAppSelector((state) => state.login.ref);
 
   useEffect(() => {
+    if (!this_device) {
+      console.log("Load this_device from local storage, key ", THIS_DEVICE_KEY);
+      // try to initialise this_device from local storage
+      if (window.localStorage) {
+        this_device = window.localStorage.getItem(THIS_DEVICE_KEY) || undefined;
+        if (this_device) {
+          dispatch(loginSlice.actions.addThisDevice(this_device));
+        }
+      }
+    }
+
     // Ask the backend what to do
     if (base_url && !next_page && ref && !fetching_next) {
       dispatch(fetchNext({ ref, this_device }));
@@ -49,7 +62,7 @@ const Login = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      null}
+      {next_page === "NEW_DEVICE" && <NewDevice />}
       {next_page === "OTHER_DEVICE" && <UseOtherDevice1 />}
       {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
       {next_page === "TOU" && <TermsOfUse />}

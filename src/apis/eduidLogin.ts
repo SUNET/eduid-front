@@ -128,6 +128,7 @@ export const fetchUseOtherDevice2 = createAsyncThunk<
 
 interface LoginNextRequest {
   ref: string;
+  this_device?: string;
 }
 
 export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED";
@@ -166,6 +167,28 @@ export const fetchNext = createAsyncThunk<
 >("login/api/fetchNext", async (args, thunkAPI) => {
   // TODO: We also have the full next_url in config, should we remove that?
   return makeLoginRequest<LoginNextResponse>(thunkAPI, "next", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+/*********************************************************************************************************************/
+
+export interface LoginNewDeviceResponse {
+  // The response from the /new_device API endpoint consists of (in the happy case):
+  //   new_device: a string to store in local storage, and pass on any subsequent requests to /next
+  new_device: string;
+}
+
+/**
+ * @public
+ * @function fetchNewDevice
+ * @desc     Request the backend to initialise a new "known device", to recognise this device in the future.
+ */
+export const fetchNewDevice = createAsyncThunk<
+  LoginNewDeviceResponse, // return type
+  { ref: string }, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchNewDevice", async (args, thunkAPI) => {
+  return makeLoginRequest<LoginNewDeviceResponse>(thunkAPI, "new_device", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
