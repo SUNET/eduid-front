@@ -125,12 +125,20 @@ export const fetchUseOtherDevice2 = createAsyncThunk<
 });
 
 /*********************************************************************************************************************/
+
+interface LoginNextRequest {
+  ref: string;
+  this_device?: string;
+}
+
+export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED";
+
 export interface LoginNextResponse {
   // The response from the /next API endpoint consists of (in the happy case):
   //   action: what action the backed requires next, or FINISHED
   //   target: the API endpoint for the next action
   //   parameters: SAML parameters for completing the FINISHED 'action'
-  action: string;
+  action: IdPAction;
   target: string;
   parameters?: SAMLParameters;
   authn_options?: LoginAuthnOptions;
@@ -154,15 +162,33 @@ export interface LoginAuthnOptions {
  */
 export const fetchNext = createAsyncThunk<
   LoginNextResponse, // return type
-  { ref: string }, // args type
+  LoginNextRequest, // args type
   { dispatch: LoginAppDispatch; state: LoginRootState }
 >("login/api/fetchNext", async (args, thunkAPI) => {
-  const body: KeyValues = {
-    ref: args.ref,
-  };
-
   // TODO: We also have the full next_url in config, should we remove that?
-  return makeLoginRequest<LoginNextResponse>(thunkAPI, "next", body)
+  return makeLoginRequest<LoginNextResponse>(thunkAPI, "next", args)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+/*********************************************************************************************************************/
+
+export interface LoginNewDeviceResponse {
+  // The response from the /new_device API endpoint consists of (in the happy case):
+  //   new_device: a string to store in local storage, and pass on any subsequent requests to /next
+  new_device: string;
+}
+
+/**
+ * @public
+ * @function fetchNewDevice
+ * @desc     Request the backend to initialise a new "known device", to recognise this device in the future.
+ */
+export const fetchNewDevice = createAsyncThunk<
+  LoginNewDeviceResponse, // return type
+  { ref: string }, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchNewDevice", async (args, thunkAPI) => {
+  return makeLoginRequest<LoginNewDeviceResponse>(thunkAPI, "new_device", args)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

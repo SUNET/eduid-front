@@ -12,6 +12,7 @@ import UsernamePw from "../login/components/LoginApp/Login/UsernamePw";
 import TermsOfUse from "../login/components/LoginApp/Login/TermsOfUse";
 import MultiFactorAuth from "../login/components/LoginApp/Login/MultiFactorAuth";
 import loginStore, { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
+import { IdPAction } from "apis/eduidLogin";
 
 const baseState: LoginRootState = {
   config: {
@@ -190,7 +191,8 @@ describe("Login does not render any component if page is not one of the above", 
   });
 
   it("NOSUCHPAGE does not render any of the components", () => {
-    state.login.next_page = "NOSUCHPAGE";
+    // simulate the backend telling us about an IdPAction we don't know about
+    state.login.next_page = "NOSUCHPAGE" as IdPAction;
     const { wrapper } = setupComponent(store);
     const page = wrapper.find(UsernamePw);
     expect(page.exists()).toBe(false);

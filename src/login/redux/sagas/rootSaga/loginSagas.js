@@ -1,6 +1,5 @@
 import { takeLatest } from "redux-saga/effects";
 import loginSlice from "../../slices/loginSlice";
-import { postRefLoginSaga } from "../login/postRefLoginSaga";
 import { callUsernamePasswordSaga, postUsernamePasswordSaga } from "../login/postUsernamePasswordSaga";
 import { postTouVersionsSaga } from "../login/postTouVersionsSaga";
 import { postUpdatedTouAcceptSaga } from "../login/postUpdatedTouAcceptSaga";
@@ -9,7 +8,6 @@ import { postWebauthnFromAuthenticatorSaga } from "../login/postWebauthnFromAuth
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
 
 const loginSagas = [
-  takeLatest(loginSlice.actions.callLoginNext, postRefLoginSaga),
   takeLatest(callUsernamePasswordSaga, postUsernamePasswordSaga),
   takeLatest(loginSlice.actions.postTouVersions, postTouVersionsSaga),
   takeLatest(loginSlice.actions.updatedTouAccept, postUpdatedTouAcceptSaga),
