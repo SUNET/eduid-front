@@ -3,6 +3,7 @@ import {
   fetchNext,
   fetchUseOtherDevice1,
   fetchUseOtherDevice2,
+  IdPAction,
   LoginAuthnOptions,
   LoginNextResponse,
   LoginUseOtherDevice1Response,
@@ -17,7 +18,7 @@ import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga"
 interface LoginState {
   ref?: string;
   start_url?: string; // what to use as 'return URL' when sending the user off for external authentication (Freja)
-  next_page?: string; // should be called 'current page'
+  next_page?: IdPAction; // should be called 'current page'
   post_to?: string; // the target endpoint for the action at the current page
   mfa: {
     webauthn_challenge?: string;

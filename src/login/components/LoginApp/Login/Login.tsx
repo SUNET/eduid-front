@@ -48,22 +48,13 @@ const Login = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      {next_page === "USERNAMEPASSWORD" ? (
-        <UsernamePw />
-      ) : next_page === "OTHER_DEVICE" ? (
-        <UseOtherDevice1 />
-      ) : next_page === "TOU" ? (
-        <TermsOfUse />
-      ) : next_page === "MFA" ? (
-        <MultiFactorAuth />
-      ) : next_page === "FINISHED" ? (
-        <RenderFinished />
-      ) : next_page !== undefined ? (
-        <h2 className="heading">
-          <FormattedMessage defaultMessage="Ooops, how did you get here? Unknown state, please try again." />
-        </h2>
-      ) : // show nothing before next_page is initialised
       null}
+      {next_page === "OTHER_DEVICE" && <UseOtherDevice1 />}
+      {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
+      {next_page === "TOU" && <TermsOfUse />}
+      {next_page === "MFA" && <MultiFactorAuth />}
+      {next_page === "FINISHED" && <RenderFinished />}
+      {/* show nothing before next_page is initialised */}
     </React.Fragment>
   );
 };
