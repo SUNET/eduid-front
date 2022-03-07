@@ -38,10 +38,10 @@ const Footer = (): JSX.Element => {
         <a href="https://www.sunet.se/">
           <img src="/assets/images/sunet_logo.svg" alt="sunet-logo" className="sunet-logo" />
         </a>
-        <p id="copyright" className="text-small">
+        <span className="copyright">
           &copy;
           <FormattedMessage defaultMessage="2013-2022" description="Footer copyright" />
-        </p>
+        </span>
       </div>
 
       <nav>
