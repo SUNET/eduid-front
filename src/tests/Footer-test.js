@@ -40,9 +40,9 @@ describe("Footer Component", () => {
     const wrapper = setupComponent({
       component: <Footer />,
     });
-    const copyright = wrapper.find("#copyright");
+    const copyright = wrapper.find("span");
     expect(copyright.exists()).toEqual(true);
-    expect(copyright.text().includes("SUNET")).toEqual(true);
+    expect(copyright.text().includes("2013")).toEqual(true);
   });
 
   it("Renders the language selector component", () => {
