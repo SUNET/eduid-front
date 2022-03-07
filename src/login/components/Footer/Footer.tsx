@@ -34,10 +34,14 @@ const Footer = (): JSX.Element => {
 
   return (
     <footer key="0" id="footer">
-      <p id="copyright">
-        &copy;&nbsp;
-        <FormattedMessage defaultMessage="SUNET 2013-2022" description="Footer copyright" />
-      </p>
+      <div className="logo-wrapper">
+        <img src="/assets/images/sunet_logo.svg" alt="sunet-logo" className="sunet-logo" />
+        <p id="copyright" className="text-small">
+          &copy;&nbsp;
+          <FormattedMessage defaultMessage="2013-2022" description="Footer copyright" />
+        </p>
+      </div>
+
       <nav>
         <ul>
           <li>
