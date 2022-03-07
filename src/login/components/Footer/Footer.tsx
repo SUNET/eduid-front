@@ -35,9 +35,11 @@ const Footer = (): JSX.Element => {
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
-        <img src="/assets/images/sunet_logo.svg" alt="sunet-logo" className="sunet-logo" />
+        <a href="https://www.sunet.se/">
+          <img src="/assets/images/sunet_logo.svg" alt="sunet-logo" className="sunet-logo" />
+        </a>
         <p id="copyright" className="text-small">
-          &copy;&nbsp;
+          &copy;
           <FormattedMessage defaultMessage="2013-2022" description="Footer copyright" />
         </p>
       </div>
