@@ -40,7 +40,7 @@ describe("Footer Component", () => {
     const wrapper = setupComponent({
       component: <Footer />,
     });
-    const copyright = wrapper.find("span");
+    const copyright = wrapper.find(".logo-wrapper span");
     expect(copyright.exists()).toEqual(true);
     expect(copyright.text().includes("2013")).toEqual(true);
   });
