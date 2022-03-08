@@ -52,9 +52,9 @@ const Footer = (): JSX.Element => {
             </a>
           </li>
           <li id="language-selector">
-            <p className="lang-selected" data-lang={locale}>
-              <a onClick={changeLanguage}>{language}</a>
-            </p>
+            <a className="lang-selected" data-lang={locale} onClick={changeLanguage}>
+              {language}
+            </a>
           </li>
         </ul>
       </nav>
