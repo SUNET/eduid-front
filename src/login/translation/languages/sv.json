@@ -127,6 +127,10 @@
     "developer_comment": "Terms of use (common header)",
     "string": "Allmänna regler för eduID-användare:"
   },
+  "Fw5FJ3": {
+    "developer_comment": "Footer copyright",
+    "string": "2013-2022"
+  },
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
     "string": "att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl, "
@@ -147,10 +151,6 @@
     "developer_comment": "Header tagline",
     "string": "eduID för"
   },
-  "HCjfX4": {
-    "developer_comment": "Footer copyright",
-    "string": "SUNET 2013-2022"
-  },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "VISA"
@@ -161,9 +161,6 @@
   },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "Säkerhetsnyckeln är redan registrerad med eduID"
-  },
-  "Jn07OV": {
-    "string": "Hoppsan, hur hamnade du här? Ogiltigt tillstånd, var vänlig försök igen."
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
