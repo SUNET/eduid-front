@@ -158,9 +158,14 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
   // TODO: Add final-form validation to the form
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
     console.log("Key up: ", event.key.toLowerCase());
+    const active = document.activeElement;
     if (event.key.toLowerCase() === "enter") {
       event.preventDefault();
       //dispatch(submit("usernamePwForm"));
+    } else if (event.key.toLowerCase() === "arrowright" && active?.nextSibling) {
+      (active.nextSibling as HTMLElement).focus();
+    } else if (event.key.toLowerCase() === "arrowleft" && active?.previousSibling) {
+      (active.previousSibling as HTMLElement).focus();
     } else if (isDigit(event.key.toLowerCase())) {
       // focus the next input field
       const form = event.currentTarget.form;
