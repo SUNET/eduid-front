@@ -86,15 +86,15 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
           {/* <CodeField num={0} value="S" disabled={true} fixed={true} />
         <CodeField num={1} value="K" disabled={true} fixed={true} /> */}
           <span className="nowrap-group">
-            <CodeField num={2} value="" disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
-            <CodeField num={3} value="" disabled={props.inputsDisabled} />
-            <CodeField num={4} value="" disabled={props.inputsDisabled} />
-          </span>
+            <CodeField num={2} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+            <CodeField num={3} disabled={props.inputsDisabled} />
+            <CodeField num={4} disabled={props.inputsDisabled} />
+            {/* </span>
           <CodeField num={5} value="-" disabled={true} fixed={true} />
-          <span className="nowrap-group">
-            <CodeField num={6} value="" disabled={props.inputsDisabled} />
-            <CodeField num={7} value="" disabled={props.inputsDisabled} />
-            <CodeField num={8} value="" disabled={props.inputsDisabled} />
+          <span className="nowrap-group"> */}
+            <CodeField num={6} disabled={props.inputsDisabled} />
+            <CodeField num={7} disabled={props.inputsDisabled} />
+            <CodeField num={8} disabled={props.inputsDisabled} />
           </span>
         </div>
         <div className="expiration-info device1">
@@ -146,7 +146,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
 
 interface CodeFieldProps {
   num: number;
-  value: string;
+  value?: string;
   disabled?: boolean;
   fixed?: boolean;
   autoFocus?: boolean;
@@ -157,14 +157,17 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
   // TODO: Handle backspace, moving to the preceding field *after* clearing the contents of this one
   // TODO: Add final-form validation to the form
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
-    console.log("Key up: ", event.key.toLowerCase());
     const active = document.activeElement;
-    if (event.key.toLowerCase() === "enter") {
-      event.preventDefault();
-      //dispatch(submit("usernamePwForm"));
-    } else if (event.key.toLowerCase() === "arrowright" && active?.nextSibling) {
+    if (
+      (event.key.toLowerCase() === "enter" && active?.nextSibling) ||
+      (event.key.toLowerCase() === "arrowright" && active?.nextSibling)
+    ) {
       (active.nextSibling as HTMLElement).focus();
-    } else if (event.key.toLowerCase() === "arrowleft" && active?.previousSibling) {
+      //dispatch(submit("usernamePwForm"));
+    } else if (
+      (event.key.toLowerCase() === "arrowleft" && active?.previousSibling) ||
+      (event.key.toLowerCase() === "backspace" && active?.previousSibling)
+    ) {
       (active.previousSibling as HTMLElement).focus();
     } else if (isDigit(event.key.toLowerCase())) {
       // focus the next input field
