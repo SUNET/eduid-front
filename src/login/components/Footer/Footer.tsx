@@ -34,10 +34,16 @@ const Footer = (): JSX.Element => {
 
   return (
     <footer key="0" id="footer">
-      <p id="copyright">
-        &copy;&nbsp;
-        <FormattedMessage defaultMessage="SUNET 2013-2022" description="Footer copyright" />
-      </p>
+      <div className="logo-wrapper">
+        <a href="https://www.sunet.se/">
+          <div className="sunet-logo" />
+        </a>
+        <span>
+          &copy;
+          <FormattedMessage defaultMessage="2013-2022" description="Footer copyright" />
+        </span>
+      </div>
+
       <nav>
         <ul>
           <li>
@@ -46,9 +52,9 @@ const Footer = (): JSX.Element => {
             </a>
           </li>
           <li id="language-selector">
-            <p className="lang-selected" data-lang={locale}>
+            <span className="lang-selected" data-lang={locale}>
               <a onClick={changeLanguage}>{language}</a>
-            </p>
+            </span>
           </li>
         </ul>
       </nav>

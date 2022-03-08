@@ -127,6 +127,10 @@
     "developer_comment": "Terms of use (common header)",
     "string": "General rules for eduID users:"
   },
+  "Fw5FJ3": {
+    "developer_comment": "Footer copyright",
+    "string": "2013-2022"
+  },
   "Fx0KB8": {
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
@@ -147,10 +151,6 @@
     "developer_comment": "Header tagline",
     "string": "eduID for"
   },
-  "HCjfX4": {
-    "developer_comment": "Footer copyright",
-    "string": "SUNET 2013-2022"
-  },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "SHOW"
@@ -161,9 +161,6 @@
   },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
-  },
-  "Jn07OV": {
-    "string": "Ooops, how did you get here? Unknown state, please try again."
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",

@@ -40,9 +40,9 @@ describe("Footer Component", () => {
     const wrapper = setupComponent({
       component: <Footer />,
     });
-    const copyright = wrapper.find("#copyright");
+    const copyright = wrapper.find(".logo-wrapper span");
     expect(copyright.exists()).toEqual(true);
-    expect(copyright.text().includes("SUNET")).toEqual(true);
+    expect(copyright.text().includes("2013")).toEqual(true);
   });
 
   it("Renders the language selector component", () => {
@@ -50,8 +50,8 @@ describe("Footer Component", () => {
         component: <Footer />,
         overrides: state,
       }),
-      p = wrapper.find("p.lang-selected"),
-      link = wrapper.find("p.lang-selected").find("a");
+      p = wrapper.find("span.lang-selected"),
+      link = wrapper.find("span.lang-selected").find("a");
 
     expect(p.length).toEqual(1);
     expect(link.length).toEqual(1);
