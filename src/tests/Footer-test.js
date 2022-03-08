@@ -50,8 +50,8 @@ describe("Footer Component", () => {
         component: <Footer />,
         overrides: state,
       }),
-      p = wrapper.find("p.lang-selected"),
-      link = wrapper.find("p.lang-selected").find("a");
+      p = wrapper.find("span.lang-selected"),
+      link = wrapper.find("span.lang-selected").find("a");
 
     expect(p.length).toEqual(1);
     expect(link.length).toEqual(1);
