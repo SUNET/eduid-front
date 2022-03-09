@@ -41,32 +41,10 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
               />
             );
           }}
-          validate={validate_code}
         />
       </div>
     </React.Fragment>
   );
-}
-
-function validate_code(values: ResponseCodeValues) {
-  const err: { [key: string]: string } = {};
-
-  // the code is formatted as SK123-456, ignore positions S, K and -
-  const positions = [2, 3, 4, 6, 7, 8];
-  positions.forEach((pos) => {
-    if (!values.v[pos] || !isDigit(values.v[pos])) {
-      // Record an (invisible) failure as long as one of the inputs doesn't contain a valid digit, to keep
-      // the submit button disabled until all fields hold a valid digit.
-      const name = `v[${pos}]`;
-      err[name] = "Not a digit";
-    }
-    if (values.v[pos] && values.v[pos].length && !isDigit(values.v[pos])) {
-      // Set the form-wide error too. This is what is currently displayed, so only show error when there actually is
-      // a non-digit there, not for empty values.
-      err[FORM_ERROR] = "Not a digit";
-    }
-  });
-  return err;
 }
 
 //type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
