@@ -315,6 +315,10 @@ a.send-link.disabled {
           box-shadow: none;
           border: 2px solid $gray;
         }
+
+        &:nth-child(3n) {
+          margin-right: 1.5rem;
+        }
       }
 
       input.fixed {
@@ -339,7 +343,7 @@ a.send-link.disabled {
           margin: 5px 0;
           width: 2.25rem;
 
-          &:not(:last-child) {
+          &:not(:last-child):not(:nth-child(3n)) {
             margin-right: -1px;
           }
         }

@@ -83,15 +83,10 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="flex-between">
         <div className="response-code-inputs">
-          {/* <CodeField num={0} value="S" disabled={true} fixed={true} />
-        <CodeField num={1} value="K" disabled={true} fixed={true} /> */}
           <span className="nowrap-group">
             <CodeField num={2} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
             <CodeField num={3} disabled={props.inputsDisabled} />
             <CodeField num={4} disabled={props.inputsDisabled} />
-            {/* </span>
-          <CodeField num={5} value="-" disabled={true} fixed={true} />
-          <span className="nowrap-group"> */}
             <CodeField num={6} disabled={props.inputsDisabled} />
             <CodeField num={7} disabled={props.inputsDisabled} />
             <CodeField num={8} disabled={props.inputsDisabled} />
