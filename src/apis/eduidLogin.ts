@@ -5,7 +5,7 @@
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
-
+import { clearNotifications } from "reducers/Notifications";
 /*********************************************************************************************************************/
 
 export type LoginUseOtherDevice1Request = UseOtherDevice1Fetch | UseOtherDevice1Abort | UseOtherDevice1SubmitCode;
@@ -214,9 +214,10 @@ async function makeLoginRequest<T>(
         // response, so we clone it first so we can reject the promise with the full error response.
         const saved = JSON.parse(JSON.stringify(response));
         thunkAPI.dispatch(response);
-        reject(saved);
+        return reject(saved);
       }
-
+      // remove remained error messages
+      thunkAPI.dispatch(clearNotifications());
       resolve(response);
     } catch (error) {
       if (error instanceof Error) {
