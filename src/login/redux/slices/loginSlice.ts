@@ -125,9 +125,9 @@ export const loginSlice = createSlice({
           state.other_device1 = action.payload;
         }
       })
-      .addCase(fetchUseOtherDevice1.rejected, (state) => {
-        state.other_device1 = undefined;
-      })
+      // .addCase(fetchUseOtherDevice1.rejected, (state) => {
+      //   state.other_device1 = undefined;
+      // })
       .addCase(fetchUseOtherDevice2.fulfilled, (state, action) => {
         // Store the result from fetching state about logging in on another device (from this device).
         state.other_device2 = action.payload;
