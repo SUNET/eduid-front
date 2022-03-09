@@ -163,6 +163,13 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
     }
   }
 
+  function onlyAllowedNumericalInput(e: React.KeyboardEvent<HTMLFormElement>) {
+    e = e || window.event;
+    const charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
+    const charStr = String.fromCharCode(charCode);
+    if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
+  }
+
   return (
     <FinalField<number>
       name={`v[${num}]`}
@@ -176,6 +183,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
       className={fixed === true ? "fixed" : null}
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
+      onKeyPress={onlyAllowedNumericalInput}
     />
   );
 }
