@@ -6,13 +6,11 @@ import {
   LoginUseOtherDevice2Response,
   UseOtherDevice2ResponseLoggedIn,
 } from "apis/eduidLogin";
-import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
-import { ExpiresMeter } from "./ExpiresMeter";
 import { ResponseCodeForm } from "./ResponseCodeForm";
 
 // optional URL parameters passed to this component
@@ -60,24 +58,11 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
   const { data } = props;
   const [timerIsZero, setTimerIsZero] = useState(false);
 
-  function handleTimerReachZero() {
-    setTimerIsZero(true);
-  }
-
   return (
     <React.Fragment>
       <ol className="listed-steps">
         <li>
           <InfoAboutOtherDevice data={data} />
-
-          {/* <TimeRemainingWrapper
-            name="other-device-expires"
-            unique_id={data.short_code}
-            value={data.expires_in}
-            onReachZero={handleTimerReachZero}
-          >
-            <ExpiresMeter expires_max={data.expires_max} />
-          </TimeRemainingWrapper> */}
         </li>
 
         {data.state === "IN_PROGRESS" ? (
