@@ -164,10 +164,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
     ) {
       (active.nextSibling as HTMLElement).focus();
       //dispatch(submit("usernamePwForm"));
-    } else if (
-      (event.key.toLowerCase() === "arrowleft" && active?.previousSibling) ||
-      (event.key.toLowerCase() === "backspace" && active?.previousSibling)
-    ) {
+    } else if (event.key.toLowerCase() === "arrowleft" && active?.previousSibling) {
       (active.previousSibling as HTMLElement).focus();
     } else if (isDigit(event.key.toLowerCase())) {
       // focus the next input field
