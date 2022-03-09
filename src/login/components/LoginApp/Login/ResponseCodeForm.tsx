@@ -2,7 +2,6 @@ import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
-import { FORM_ERROR } from "final-form";
 import { FormattedMessage } from "react-intl";
 
 interface ResponseCodeFormProps {
