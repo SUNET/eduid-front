@@ -167,9 +167,10 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
     <FinalField<number>
       name={`v[${num}]`}
       component="input"
-      type="number"
+      type="text"
       maxLength="1"
       pattern="[0-9]"
+      inputmode="numeric"
       placeholder={value}
       disabled={disabled === true ? "disabled" : null}
       className={fixed === true ? "fixed" : null}
