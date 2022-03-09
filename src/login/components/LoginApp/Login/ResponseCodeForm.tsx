@@ -184,7 +184,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
     <FinalField<number>
       name={`v[${num}]`}
       component="input"
-      type="text"
+      type="number"
       maxLength="1"
       pattern="[0-9]"
       placeholder={value}

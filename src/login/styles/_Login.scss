@@ -303,7 +303,7 @@ a.send-link.disabled {
       padding: 1.5rem 1rem;
       width: 100%;
 
-      input[type="text"] {
+      input {
         display: inline-block;
         border: 1px solid $close;
         font-size: 1.75rem;
@@ -335,11 +335,20 @@ a.send-link.disabled {
         flex-wrap: nowrap;
       }
 
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
       @media (max-width: $bp-md) {
         justify-content: center;
         margin: 0 auto;
 
-        input[type="text"] {
+        input {
           margin: 5px 0;
           width: 2.25rem;
 
