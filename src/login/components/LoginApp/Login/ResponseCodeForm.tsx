@@ -4,8 +4,6 @@ import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FORM_ERROR } from "final-form";
 import { FormattedMessage } from "react-intl";
-import { TimeRemainingWrapper } from "components/TimeRemaining";
-import { ExpiresMeter } from "./ExpiresMeter";
 
 interface ResponseCodeFormProps {
   extra_className: string;
@@ -15,8 +13,6 @@ interface ResponseCodeFormProps {
   handleSubmitCode: (values: ResponseCodeValues) => undefined;
   handleAbort?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleLogin?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  data?: any;
-  setIsExpired?: any;
 }
 
 export interface ResponseCodeValues {
@@ -76,9 +72,6 @@ function validate_code(values: ResponseCodeValues) {
 //type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
-  function handleTimerReachZero() {
-    props.setIsExpired(true);
-  }
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="flex-between">
@@ -91,16 +84,6 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
             <CodeField num={7} disabled={props.inputsDisabled} />
             <CodeField num={8} disabled={props.inputsDisabled} />
           </span>
-        </div>
-        <div className="expiration-info device1">
-          <TimeRemainingWrapper
-            name="other-device-expires"
-            unique_id={props.data.display_id}
-            value={props.data.expires_in}
-            onReachZero={handleTimerReachZero}
-          >
-            <ExpiresMeter showMeter={false} expires_max={props.data.expires_max} />
-          </TimeRemainingWrapper>
         </div>
       </div>
       {props.error && (
