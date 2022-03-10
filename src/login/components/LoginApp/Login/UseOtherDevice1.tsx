@@ -53,7 +53,7 @@ function UseOtherDevice1() {
 }
 
 // Render a fatal error message with a CANCEL button that will reset the use-other-device
-function RenderFatalError(props: { error: JSX.Element }) {
+function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: () => void }) {
   const dispatch = useAppDispatch();
 
   function handleCancelButtonOnClick() {
@@ -75,6 +75,15 @@ function RenderFatalError(props: { error: JSX.Element }) {
         >
           <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
         </ButtonPrimary>
+
+        <ButtonPrimary
+          type="submit"
+          id="refresh-get-new-code"
+          className={"settings-button"}
+          onClick={props.handleNewQRCodeOnClick}
+        >
+          <FormattedMessage defaultMessage="Refresh" description="Login OtherDevice" />
+        </ButtonPrimary>
       </div>
     </React.Fragment>
   );
@@ -83,6 +92,7 @@ function RenderFatalError(props: { error: JSX.Element }) {
 function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX.Element {
   const { data } = props;
   const login_ref = useAppSelector((state) => state.login.ref);
+  const username = useAppSelector((state) => state.login.authn_options.forced_username);
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -100,6 +110,16 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     if (login_ref) {
       // Tell backend we're abandoning the request to login using another device
       dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "ABORT" }));
+      setIsExpired(false);
+    }
+  }
+
+  function handleNewQRCodeOnClick() {
+    // Get new code
+    if (login_ref) {
+      // refresh state on page reload
+      const _name = username ? username : undefined; // backend is picky and won't allow null
+      dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "FETCH", username: _name }));
     }
   }
 
@@ -150,7 +170,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
           </div>
 
           {isExpired ? (
-            <RenderFatalError error={expiredMessage} />
+            <RenderFatalError error={expiredMessage} handleNewQRCodeOnClick={handleNewQRCodeOnClick} />
           ) : (
             <ResponseCodeForm
               extra_className="device1"
