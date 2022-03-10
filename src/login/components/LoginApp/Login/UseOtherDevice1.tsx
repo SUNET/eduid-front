@@ -74,7 +74,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
           id="response-code-cancel-button"
           className={"settings-button"}
         >
-          <FormattedMessage defaultMessage="Back to Login" description="Login OtherDevice" />
+          <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
         </ButtonSecondary>
         <ButtonPrimary
           type="submit"
@@ -82,7 +82,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
           className={"settings-button"}
           onClick={props.handleNewQRCodeOnClick}
         >
-          <FormattedMessage defaultMessage="Continue with New QR code" description="Login OtherDevice" />
+          <FormattedMessage defaultMessage="Retry with QR code" description="Login OtherDevice" />
         </ButtonPrimary>
       </div>
     </React.Fragment>
@@ -138,12 +138,8 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
   const expiredMessage = (
     <>
-      {/* <h3>
-        <FormattedMessage defaultMessage="The code has expired" description="Use another device #1" />
-      </h3> */}
-
       <FormattedMessage
-        defaultMessage="Inloggningen avbröts, eller tog för lång tid av säkerhetsskäl finns det en tidsbegränsning"
+        defaultMessage="the login attempt was aborted or exceeded the allowed time limit for safety reasons please try again"
         description="Use another device #1"
       />
     </>
