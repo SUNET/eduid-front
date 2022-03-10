@@ -200,12 +200,12 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
     // TODO: show this as a modal window, greying out all the other content?
 
     return (
-      <div className="finished device2">
+      <p>
         <FormattedMessage
           defaultMessage="The code has expired, please close this browser window"
           description="Use another device, finished"
         />
-      </div>
+      </p>
     );
   }
 
