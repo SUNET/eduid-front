@@ -67,18 +67,20 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
   return (
     <React.Fragment>
       <ol className="listed-steps">
-        <li>
-          <InfoAboutOtherDevice data={data} />
+        {!timerIsZero ? (
+          <li>
+            <InfoAboutOtherDevice data={data} />
 
-          <TimeRemainingWrapper
-            name="other-device-expires"
-            unique_id={data.short_code}
-            value={data.expires_in}
-            onReachZero={handleTimerReachZero}
-          >
-            <ExpiresMeter expires_max={data.expires_max} />
-          </TimeRemainingWrapper>
-        </li>
+            <TimeRemainingWrapper
+              name="other-device-expires"
+              unique_id={data.short_code}
+              value={data.expires_in}
+              onReachZero={handleTimerReachZero}
+            >
+              <ExpiresMeter expires_max={data.expires_max} />
+            </TimeRemainingWrapper>
+          </li>
+        ) : null}
 
         {data.state === "IN_PROGRESS" ? (
           <li>
@@ -86,9 +88,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
             <ProceedLoginButton disabled={timerIsZero} />
           </li>
         ) : data.state === "AUTHENTICATED" ? (
-          <li>
-            <RenderLoggedIn data={data} isExpired={timerIsZero} />
-          </li>
+          <RenderLoggedIn data={data} isExpired={timerIsZero} />
         ) : data !== undefined ? (
           <li>
             <FormattedMessage
@@ -210,51 +210,53 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
   }
 
   return (
-    <div className="finished device2">
-      <div className="response-code">
-        <FormattedMessage
-          defaultMessage="Use the response code below to continue logging in on the other device"
-          description="Use another device, finished"
-        />
-      </div>
-      <div className="response-code text-small">
-        <FormattedMessage
-          defaultMessage="After using the code on the other device, please close this browser window."
-          description="Use another device, finished"
-        />
-      </div>
-      <div>
-        <ResponseCodeForm
-          extra_className="device2"
-          submitDisabled={true}
-          inputsDisabled={true}
-          code={props.data.response_code}
-          handleSubmitCode={handleSubmit}
-        />
+    <li>
+      <div className="finished device2">
+        <div className="response-code">
+          <FormattedMessage
+            defaultMessage="Use the response code below to continue logging in on the other device"
+            description="Use another device, finished"
+          />
+        </div>
+        <div className="response-code text-small">
+          <FormattedMessage
+            defaultMessage="After using the code on the other device, please close this browser window."
+            description="Use another device, finished"
+          />
+        </div>
+        <div>
+          <ResponseCodeForm
+            extra_className="device2"
+            submitDisabled={true}
+            inputsDisabled={true}
+            code={props.data.response_code}
+            handleSubmitCode={handleSubmit}
+          />
 
-        <div className="phishing-warning">
-          <span className="warning-symbol">
-            <FontAwesomeIcon icon={faExclamationCircle} />
-          </span>
-          <span className="text-small">
-            <FormattedMessage
-              defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
-              description="Use another device, finished"
-            />
-          </span>
+          <div className="phishing-warning">
+            <span className="warning-symbol">
+              <FontAwesomeIcon icon={faExclamationCircle} />
+            </span>
+            <span className="text-small">
+              <FormattedMessage
+                defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
+                description="Use another device, finished"
+              />
+            </span>
+          </div>
+        </div>
+        <div className="buttons device2">
+          <ButtonPrimary
+            type="submit"
+            onClick={handleOnClick}
+            id="proceed-other-device-button"
+            className={"settings-button"}
+          >
+            <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
+          </ButtonPrimary>
         </div>
       </div>
-      <div className="buttons device2">
-        <ButtonPrimary
-          type="submit"
-          onClick={handleOnClick}
-          id="proceed-other-device-button"
-          className={"settings-button"}
-        >
-          <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
-        </ButtonPrimary>
-      </div>
-    </div>
+    </li>
   );
 }
 
