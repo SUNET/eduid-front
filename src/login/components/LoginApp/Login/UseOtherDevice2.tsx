@@ -64,23 +64,34 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
     setTimerIsZero(true);
   }
 
+  if (timerIsZero) {
+    // TODO: show this as a modal window, greying out all the other content?
+
+    return (
+      <p>
+        <FormattedMessage
+          defaultMessage="The code has expired, please close this browser window"
+          description="Use another device, finished"
+        />
+      </p>
+    );
+  }
+
   return (
     <React.Fragment>
       <ol className="listed-steps">
-        {!timerIsZero ? (
-          <li>
-            <InfoAboutOtherDevice data={data} />
+        <li>
+          <InfoAboutOtherDevice data={data} />
 
-            <TimeRemainingWrapper
-              name="other-device-expires"
-              unique_id={data.short_code}
-              value={data.expires_in}
-              onReachZero={handleTimerReachZero}
-            >
-              <ExpiresMeter expires_max={data.expires_max} />
-            </TimeRemainingWrapper>
-          </li>
-        ) : null}
+          <TimeRemainingWrapper
+            name="other-device-expires"
+            unique_id={data.short_code}
+            value={data.expires_in}
+            onReachZero={handleTimerReachZero}
+          >
+            <ExpiresMeter expires_max={data.expires_max} />
+          </TimeRemainingWrapper>
+        </li>
 
         {data.state === "IN_PROGRESS" ? (
           <li>
