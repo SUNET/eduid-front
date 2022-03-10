@@ -110,7 +110,6 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     if (login_ref) {
       // Tell backend we're abandoning the request to login using another device
       dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "ABORT" }));
-      setIsExpired(false);
     }
   }
 
@@ -120,6 +119,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
       // refresh state on page reload
       const _name = username ? username : undefined; // backend is picky and won't allow null
       dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "FETCH", username: _name }));
+      setIsExpired(false);
     }
   }
 
@@ -157,17 +157,18 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
         <li>
           <FormattedMessage defaultMessage="Enter the response code shown on the other device in the form below" />
-
-          <div className="expiration-info device1">
-            <TimeRemainingWrapper
-              name="other-device-expires"
-              unique_id={data.display_id}
-              value={data.expires_in}
-              onReachZero={handleTimerReachZero}
-            >
-              <ExpiresMeter expires_max={data.expires_max} />
-            </TimeRemainingWrapper>
-          </div>
+          {!isExpired ? (
+            <div className="expiration-info device1">
+              <TimeRemainingWrapper
+                name="other-device-expires"
+                unique_id={data.display_id}
+                value={data.expires_in}
+                onReachZero={handleTimerReachZero}
+              >
+                <ExpiresMeter expires_max={data.expires_max} />
+              </TimeRemainingWrapper>
+            </div>
+          ) : null}
 
           {isExpired ? (
             <RenderFatalError error={expiredMessage} handleNewQRCodeOnClick={handleNewQRCodeOnClick} />
