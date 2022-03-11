@@ -256,6 +256,7 @@ a.send-link.disabled {
 
 .use-another-device {
   $clock_size: 1.25rem;
+
   font-size: 1rem;
 
   .buttons {
@@ -295,6 +296,7 @@ a.send-link.disabled {
         padding-top: 1rem;
       }
     }
+
     .response-code-inputs {
       display: flex;
       flex-direction: row;
@@ -337,11 +339,12 @@ a.send-link.disabled {
 
       input[type="number"]::-webkit-outer-spin-button,
       input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
+        appearance: none;
         margin: 0;
       }
+
       input[type="number"] {
-        -moz-appearance: textfield;
+        appearance: textfield;
       }
 
       @media (max-width: $bp-md) {
@@ -386,9 +389,10 @@ a.send-link.disabled {
   .expires-meter {
     display: flex;
     align-items: center;
-    margin: 0.5rem 1rem 0.5rem 0;
+    margin: 1rem 1rem 0 0;
     color: $black;
     font-size: 1.25rem;
+    justify-content: flex-end;
 
     .expires-symbol {
       padding-right: 0.5rem;
@@ -429,6 +433,7 @@ a.send-link.disabled {
 
   .finished.device2 {
     $warning_size: 1.5rem;
+
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
@@ -511,6 +516,10 @@ a.send-link.disabled {
       font-family: "Akkurat";
       font-weight: bold;
     }
+  }
+
+  p {
+    margin-left: -1.75em;
   }
 }
 
