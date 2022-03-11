@@ -208,8 +208,6 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
   }
 
   if (props.isExpired) {
-    // TODO: show this as a modal window, greying out all the other content?
-
     return (
       <p>
         <FormattedMessage
