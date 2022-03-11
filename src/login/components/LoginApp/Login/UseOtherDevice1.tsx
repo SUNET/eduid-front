@@ -163,7 +163,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
           </li>
 
           <li>
-            <FormattedMessage defaultMessage="Enter the response code shown on the other device in the form below" />
+            <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
             <div className="expiration-info device1">
               <TimeRemainingWrapper
                 name="other-device-expires"

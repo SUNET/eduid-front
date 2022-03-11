@@ -223,7 +223,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
       <div className="finished device2">
         <div className="response-code">
           <FormattedMessage
-            defaultMessage="Use the response code below to continue logging in on the other device"
+            defaultMessage="Use the response code below in the first device to continue logging in."
             description="Use another device, finished"
           />
         </div>
