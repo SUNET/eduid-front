@@ -2,6 +2,7 @@ import { fetchUseOtherDevice1, UseOtherDevice1ResponseWithQR } from "apis/eduidL
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
+import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
 import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -53,7 +54,7 @@ function UseOtherDevice1() {
 }
 
 // Render a fatal error message with a CANCEL button that will reset the use-other-device
-function RenderFatalError(props: { error: JSX.Element }) {
+function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: () => void }) {
   const dispatch = useAppDispatch();
 
   function handleCancelButtonOnClick() {
@@ -67,13 +68,21 @@ function RenderFatalError(props: { error: JSX.Element }) {
         {props.error}
       </div>
       <div className="buttons">
-        <ButtonPrimary
+        <ButtonSecondary
           type="submit"
           onClick={handleCancelButtonOnClick}
           id="response-code-cancel-button"
           className={"settings-button"}
         >
           <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+        </ButtonSecondary>
+        <ButtonPrimary
+          type="submit"
+          id="refresh-get-new-code"
+          className={"settings-button"}
+          onClick={props.handleNewQRCodeOnClick}
+        >
+          <FormattedMessage defaultMessage="Retry with QR code" description="Login OtherDevice" />
         </ButtonPrimary>
       </div>
     </React.Fragment>
@@ -83,6 +92,7 @@ function RenderFatalError(props: { error: JSX.Element }) {
 function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX.Element {
   const { data } = props;
   const login_ref = useAppSelector((state) => state.login.ref);
+  const username = useAppSelector((state) => state.login.authn_options.forced_username);
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -103,6 +113,15 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     }
   }
 
+  function handleNewQRCodeOnClick() {
+    // Get new code
+    if (login_ref) {
+      const _name = username ? username : undefined; // backend is picky and won't allow null
+      dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "FETCH", username: _name }));
+      setIsExpired(false);
+    }
+  }
+
   function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
     const match = code.match(/^SK(\d\d\d)-(\d\d\d)$/);
@@ -117,41 +136,45 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     return undefined;
   }
 
-  const expiredMessage = <FormattedMessage defaultMessage="The code has expired" description="Use another device #1" />;
+  const expiredMessage = (
+    <>
+      <FormattedMessage
+        defaultMessage="The login attempt was aborted or exceeded the time limit. Please try again."
+        description="Use another device #1"
+      />
+    </>
+  );
 
   return (
     <React.Fragment>
-      <ol className="listed-steps">
-        <li>
-          <FormattedMessage defaultMessage="Scan this QR-code with your other device" />
+      {!isExpired ? (
+        <ol className="listed-steps">
+          <li>
+            <FormattedMessage defaultMessage="Scan this QR-code with your other device" />
 
-          <figure>
-            <img className="qr-code" src={data.qr_img} />
-            <figcaption className="short-code">ID# {data.short_code}</figcaption>
-          </figure>
-        </li>
+            <figure>
+              <img className="qr-code" src={data.qr_img} />
+              <figcaption className="short-code">ID# {data.short_code}</figcaption>
+            </figure>
+          </li>
 
-        <li>
-          <FormattedMessage defaultMessage="Log in on the other device" />
-        </li>
+          <li>
+            <FormattedMessage defaultMessage="Log in on the other device" />
+          </li>
 
-        <li>
-          <FormattedMessage defaultMessage="Enter the response code shown on the other device in the form below" />
+          <li>
+            <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
+            <div className="expiration-info device1">
+              <TimeRemainingWrapper
+                name="other-device-expires"
+                unique_id={data.display_id}
+                value={data.expires_in}
+                onReachZero={handleTimerReachZero}
+              >
+                <ExpiresMeter expires_max={data.expires_max} />
+              </TimeRemainingWrapper>
+            </div>
 
-          <div className="expiration-info device1">
-            <TimeRemainingWrapper
-              name="other-device-expires"
-              unique_id={data.display_id}
-              value={data.expires_in}
-              onReachZero={handleTimerReachZero}
-            >
-              <ExpiresMeter expires_max={data.expires_max} />
-            </TimeRemainingWrapper>
-          </div>
-
-          {isExpired ? (
-            <RenderFatalError error={expiredMessage} />
-          ) : (
             <ResponseCodeForm
               extra_className="device1"
               submitDisabled={false}
@@ -160,10 +183,11 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
               handleAbort={handleAbortButtonOnClick}
               handleSubmitCode={handleSubmitCode}
             />
-          )}
-        </li>
-      </ol>
-
+          </li>
+        </ol>
+      ) : (
+        <RenderFatalError error={expiredMessage} handleNewQRCodeOnClick={handleNewQRCodeOnClick} />
+      )}
       <DeveloperInfo {...data} />
     </React.Fragment>
   );
