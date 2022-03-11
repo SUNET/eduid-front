@@ -1,4 +1,8 @@
 {
+  "/8yhnq": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Retry with QR code"
+  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Register"
@@ -159,6 +163,10 @@
     "developer_comment": "Reset password copy password tooltip",
     "string": "Copied!"
   },
+  "I+NQu2": {
+    "developer_comment": "Use another device #1",
+    "string": "The login attempt was aborted or exceeded the time limit. Please try again."
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
   },
@@ -209,10 +217,6 @@
   "PwI8gG": {
     "developer_comment": "Reset Password set new password success",
     "string": "Password has been updated."
-  },
-  "R0rN2Z": {
-    "developer_comment": "Use another device, finished",
-    "string": "The code has expired, please close this browser window"
   },
   "R3n7aY": {
     "developer_comment": "Use other device",
@@ -736,6 +740,10 @@
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "go back"
   },
+  "hEOTTF": {
+    "developer_comment": "Use another device, finished",
+    "string": "The code has expired, please close this browser window."
+  },
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Log out"
@@ -1022,10 +1030,6 @@
   },
   "nins.wrong_length": {
     "string": "A national id number must have 12 digits"
-  },
-  "noNGvR": {
-    "developer_comment": "Use another device #1",
-    "string": "The code has expired"
   },
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
