@@ -486,11 +486,6 @@ a.send-link.disabled {
     }
   }
 
-  .input-validate-error {
-    margin-top: 1rem;
-    color: $dark-orange;
-  }
-
   .developer {
     // show QR URL at the bottom for non-production environments
     display: flex;
