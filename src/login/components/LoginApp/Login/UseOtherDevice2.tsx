@@ -70,7 +70,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
     return (
       <p>
         <FormattedMessage
-          defaultMessage="The code has expired, please close this browser window"
+          defaultMessage="The code has expired, please close this browser window."
           description="Use another device, finished"
         />
       </p>
@@ -213,7 +213,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
     return (
       <p>
         <FormattedMessage
-          defaultMessage="The code has expired, please close this browser window"
+          defaultMessage="The code has expired, please close this browser window."
           description="Use another device, finished"
         />
       </p>

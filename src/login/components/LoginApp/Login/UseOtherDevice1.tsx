@@ -139,7 +139,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   const expiredMessage = (
     <>
       <FormattedMessage
-        defaultMessage="the login attempt was aborted or exceeded the allowed time limit for safety reasons please try again"
+        defaultMessage="The login attempt was aborted or exceeded the time limit. Please try again."
         description="Use another device #1"
       />
     </>
