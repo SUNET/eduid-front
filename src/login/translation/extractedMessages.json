@@ -233,6 +233,9 @@
   "SecurityMsg.rm_webauthn": {
     "string": "Security key has been removed."
   },
+  "SgvXTp": {
+    "string": "Enter the six digit response code shown on the other device in the form below"
+  },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
@@ -763,12 +766,13 @@
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
   },
-  "j6UxLp": {
-    "string": "Enter the response code shown on the other device in the form below"
-  },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
     "string": "For you registered at your current address"
+  },
+  "l2zA68": {
+    "developer_comment": "Use another device, finished",
+    "string": "Use the response code below in the first device to continue logging in."
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -1347,10 +1351,6 @@
   "q4ENsq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Confirmation code"
-  },
-  "qHqnkz": {
-    "developer_comment": "Use another device, finished",
-    "string": "Use the response code below to continue logging in on the other device"
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
