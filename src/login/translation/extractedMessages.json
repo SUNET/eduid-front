@@ -286,6 +286,10 @@
     "developer_comment": "Use another device, finished",
     "string": "After using the code on the other device, please close this browser window."
   },
+  "Zc8y4k": {
+    "developer_comment": "Use another device, finished",
+    "string": "Use the response code below in the first device to continue logging in"
+  },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
   },
@@ -769,10 +773,6 @@
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
     "string": "For you registered at your current address"
-  },
-  "l2zA68": {
-    "developer_comment": "Use another device, finished",
-    "string": "Use the response code below in the first device to continue logging in."
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
