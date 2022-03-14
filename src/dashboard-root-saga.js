@@ -41,6 +41,7 @@ import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPerso
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
 import { confirmLetterCode, postRequestLetter } from "./apis/letterProofing";
+import { all } from "redux-saga/effects";
 
 function* configSaga() {
   yield put(configActions.getInitialUserdata());
@@ -57,7 +58,7 @@ function* allowGroupsSagas() {
 }
 
 function* rootSaga() {
-  yield [
+  yield all([
     takeLatest(configActions.GET_JSCONFIG_CONFIG, requestConfig),
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, configSaga),
     takeLatest(configActions.GET_JSCONFIG_CONFIG_SUCCESS, allowGroupsSagas),
@@ -102,7 +103,7 @@ function* rootSaga() {
     takeEvery(accountLinkingActions.POST_ORCID_REMOVE, requestRemoveOrcid),
     takeEvery(accountLinkingActions.POST_ORCID_REMOVE_SUCCESS, requestOrcid),
     takeEvery(accountLinkingActions.GET_ORCID_CONNECT, requestConnectOrcid),
-  ];
+  ]);
 }
 
 export default rootSaga;

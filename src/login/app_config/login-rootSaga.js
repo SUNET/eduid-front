@@ -10,9 +10,10 @@ import { postSetNewPassword } from "../redux/sagas/resetpassword/postSetNewPassw
 import { requestLinkCode } from "../redux/sagas/resetpassword/postVerifyEmailSaga";
 import loginSagas from "../redux/sagas/rootSaga/loginSagas";
 import resetPasswordSlice from "../redux/slices/resetPasswordSlice";
+import { all } from "redux-saga/effects";
 
 function* rootSaga() {
-  yield [
+  yield all([
     takeLatest(init_actions.GET_CONFIG, requestConfig),
     takeLatest(init_actions.GET_JSCONFIG_LOGIN_CONFIG_SUCCESS, requestLinkCode),
     ...loginSagas,
@@ -25,7 +26,7 @@ function* rootSaga() {
     takeLatest(resetPasswordSlice.actions.setNewPasswordExtraSecurityToken, postSetNewPasswordExtraSecurityToken),
     takeLatest(resetPasswordSlice.actions.setNewPasswordExtraSecurityExternalMfa, postSetNewPasswordExternalMfa),
     takeLatest(resetPasswordSlice.actions.useLinkCode, requestLinkCode),
-  ];
+  ]);
 }
 
 export default rootSaga;
