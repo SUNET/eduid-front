@@ -79,10 +79,12 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
           .fill("")
           .map((_, index) => (
             <CodeField
+              key={index}
               num={index}
               value=""
               disabled={index === 0 || index === 1 || index === 5 ? true : false}
               autoFocus={index === 2 ? true : false}
+              onFocus={(e: any) => e.target.select()}
             />
           ))}
       </div>
@@ -128,34 +130,75 @@ interface CodeFieldProps {
   disabled?: boolean;
   fixed?: boolean;
   autoFocus?: boolean;
+  onFocus?: any;
 }
 
 // helper-function to make for tidy code with one line per input field below
-function CodeField({ num, value, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
+function CodeField({ num, value, onFocus, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
   // TODO: Handle backspace, moving to the preceding field *after* clearing the contents of this one
   // TODO: Add final-form validation to the form
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
-    console.log("Key up: ", event.key.toLowerCase());
-    if (event.key.toLowerCase() === "enter") {
-      event.preventDefault();
-      //dispatch(submit("usernamePwForm"));
-    } else if (isDigit(event.key.toLowerCase())) {
-      // focus the next input field
-      const form = event.currentTarget.form;
-      // disabled inputs are placeholders, filter them out
-      const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
-      const index = inputs.indexOf(event.currentTarget);
-      if (index < 0) {
-        // bail of the current input could not be found
-        return undefined;
+    const pressedKey = event.key;
+    const form = event.currentTarget.form;
+    const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
+    const index = inputs.indexOf(event.currentTarget);
+    switch (pressedKey) {
+      case "Backspace":
+      case "Delete": {
+        event.preventDefault();
+        if (inputs[index].value) {
+        } else {
+          inputs[index - 1].focus();
+          // focusPrevInput();
+        }
+        break;
       }
-      const lastIndex = inputs.length - 1;
-      console.log(`Current index ${index} of ${lastIndex}`);
-      if (index > -1 && index < inputs.length - 1) {
-        console.log(`Advancing focus to index ${index + 1} of ${lastIndex}`);
-        inputs[index + 1].focus();
+      case "ArrowLeft": {
+        event.preventDefault();
+        if (inputs[index - 1] !== undefined) {
+          inputs[index - 1].focus();
+        }
+
+        // focusPrevInput();
+        break;
+      }
+      case "ArrowRight": {
+        event.preventDefault();
+        if (inputs[index + 1] !== undefined) {
+          inputs[index + 1].focus();
+        }
+        // focusNextInput();
+
+        break;
+      }
+      default: {
+        if (pressedKey.match(/(\w|\s)/g)) {
+          event.preventDefault();
+        }
       }
     }
+
+    // console.log("Key up: ", event.key.toLowerCase());
+    // if (event.key.toLowerCase() === "enter") {
+    //   event.preventDefault();
+    //   //dispatch(submit("usernamePwForm"));
+    // } else if (isDigit(event.key.toLowerCase())) {
+    //   // focus the next input field
+    //   const form = event.currentTarget.form;
+    //   // disabled inputs are placeholders, filter them out
+    //   const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
+    //   const index = inputs.indexOf(event.currentTarget);
+    //   if (index < 0) {
+    //     // bail of the current input could not be found
+    //     return undefined;
+    //   }
+    //   const lastIndex = inputs.length - 1;
+    //   console.log(`Current index ${index} of ${lastIndex}`);
+    //   if (index > -1 && index < inputs.length - 1) {
+    //     console.log(`Advancing focus to index ${index + 1} of ${lastIndex}`);
+    //     inputs[index + 1].focus();
+    //   }
+    // }
   }
 
   return (
@@ -170,6 +213,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
       className={fixed === true ? "fixed" : null}
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
+      onFocus={onFocus}
     />
   );
 }
