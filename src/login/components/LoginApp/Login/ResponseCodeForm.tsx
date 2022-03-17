@@ -75,19 +75,16 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="response-code-inputs">
-        <CodeField num={0} value="S" disabled={true} />
-        <CodeField num={1} value="K" disabled={true} />
-        <span className="nowrap-group">
-          <CodeField num={2} value="" disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
-          <CodeField num={3} value="" disabled={props.inputsDisabled} />
-          <CodeField num={4} value="" disabled={props.inputsDisabled} />
-        </span>
-        <CodeField num={5} value="-" disabled={true} fixed={true} />
-        <span className="nowrap-group">
-          <CodeField num={6} value="" disabled={props.inputsDisabled} />
-          <CodeField num={7} value="" disabled={props.inputsDisabled} />
-          <CodeField num={8} value="" disabled={props.inputsDisabled} />
-        </span>
+        {Array(9)
+          .fill("")
+          .map((_, index) => (
+            <CodeField
+              num={index}
+              value=""
+              disabled={index === 0 || index === 1 || index === 5 ? true : false}
+              autoFocus={index === 2 ? true : false}
+            />
+          ))}
       </div>
       {props.error && (
         <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
