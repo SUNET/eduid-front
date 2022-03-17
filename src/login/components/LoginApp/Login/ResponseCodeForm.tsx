@@ -1,6 +1,6 @@
 import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
-import React from "react";
+import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FORM_ERROR } from "final-form";
 import { FormattedMessage } from "react-intl";
@@ -84,7 +84,6 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               value=""
               disabled={index === 0 || index === 1 || index === 5 ? true : false}
               autoFocus={index === 2 ? true : false}
-              onFocus={(e: any) => e.target.select()}
             />
           ))}
       </div>
@@ -130,12 +129,10 @@ interface CodeFieldProps {
   disabled?: boolean;
   fixed?: boolean;
   autoFocus?: boolean;
-  onFocus?: any;
-  onChange?: any;
 }
 
 // helper-function to make for tidy code with one line per input field below
-function CodeField({ num, value, onFocus, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
+function CodeField({ num, value, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
     const pressedKey = event.key;
     const form = event.currentTarget.form;
@@ -183,7 +180,7 @@ function CodeField({ num, value, onFocus, disabled = false, fixed = false, autoF
       className={fixed === true ? "fixed" : null}
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
-      onFocus={onFocus}
+      onFocus={(event: FocusEvent<HTMLInputElement>) => event.target.select()}
     />
   );
 }
