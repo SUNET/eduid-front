@@ -49,15 +49,10 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 //type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
-  let emptyValues = false;
-
   // the code is formatted as SK123-456, ignore positions S, K and -
   const positions = [2, 3, 4, 6, 7, 8];
-  positions.forEach((pos) => {
-    if (!props.values.v[pos]) {
-      return (emptyValues = true);
-    }
-    return (emptyValues = false);
+  const validInputs = positions.filter((pos) => {
+    return props.values.v[pos] == undefined;
   });
 
   return (
@@ -100,7 +95,9 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               onClick={props.handleLogin}
               id="response-code-submit-button"
               className={"settings-button"}
-              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine || emptyValues}
+              disabled={
+                validInputs.length > 0 || props.submitDisabled || props.submitting || props.invalid || props.pristine
+              }
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
             </ButtonPrimary>
@@ -129,8 +126,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
     switch (pressedKey) {
       case "Backspace":
       case "Delete": {
-        if (inputs[index].value) {
-        } else {
+        if (inputs[index - 1] !== undefined) {
           inputs[index - 1].focus();
         }
         break;
