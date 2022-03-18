@@ -71,7 +71,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               num={index}
               value=""
               disabled={index === 0 || index === 1 || index === 5 ? true : false}
-              autoFocus={index === 2 ? true : false}
+              autoFocus={index === 2 && !props.inputsDisabled ? true : false}
             />
           ))}
       </div>
