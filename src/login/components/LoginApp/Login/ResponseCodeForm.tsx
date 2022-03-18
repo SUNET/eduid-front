@@ -2,7 +2,6 @@ import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
 import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
-import { FORM_ERROR } from "final-form";
 import { FormattedMessage } from "react-intl";
 
 interface ResponseCodeFormProps {
@@ -41,37 +40,26 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
               />
             );
           }}
-          validate={validate_code}
         />
       </div>
     </React.Fragment>
   );
 }
 
-function validate_code(values: ResponseCodeValues) {
-  const err: { [key: string]: string } = {};
+//type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
+
+function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
+  let emptyValues = false;
 
   // the code is formatted as SK123-456, ignore positions S, K and -
   const positions = [2, 3, 4, 6, 7, 8];
   positions.forEach((pos) => {
-    if (!values.v[pos] || !isDigit(values.v[pos])) {
-      // Record an (invisible) failure as long as one of the inputs doesn't contain a valid digit, to keep
-      // the submit button disabled until all fields hold a valid digit.
-      const name = `v[${pos}]`;
-      err[name] = "Not a digit";
+    if (!props.values.v[pos]) {
+      return (emptyValues = true);
     }
-    if (values.v[pos] && values.v[pos].length && !isDigit(values.v[pos])) {
-      // Set the form-wide error too. This is what is currently displayed, so only show error when there actually is
-      // a non-digit there, not for empty values.
-      err[FORM_ERROR] = "Not a digit";
-    }
+    return (emptyValues = false);
   });
-  return err;
-}
 
-//type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
-
-function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="response-code-inputs">
@@ -112,7 +100,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               onClick={props.handleLogin}
               id="response-code-submit-button"
               className={"settings-button"}
-              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
+              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine || emptyValues}
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
             </ButtonPrimary>
