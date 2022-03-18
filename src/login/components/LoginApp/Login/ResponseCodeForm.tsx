@@ -160,12 +160,21 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
         break;
       }
       default: {
-        if (index > -1 && index < inputs.length - 1) {
-          inputs[index + 1].focus();
+        if (isDigit(pressedKey)) {
+          if (index > -1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
         }
         break;
       }
     }
+  }
+
+  function onlyAllowedNumericalInput(e: React.KeyboardEvent<HTMLFormElement>) {
+    e = e || window.event;
+    const charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
+    const charStr = String.fromCharCode(charCode);
+    if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
   }
 
   return (
@@ -181,6 +190,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
       onFocus={(event: FocusEvent<HTMLInputElement>) => event.target.select()}
+      onKeyPress={onlyAllowedNumericalInput}
     />
   );
 }
