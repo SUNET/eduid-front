@@ -147,7 +147,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
       }
       default: {
         if (isDigit(pressedKey)) {
-          if (index > -1 && index < inputs.length - 1) {
+          if (inputs[index + 1] !== undefined) {
             inputs[index + 1].focus();
           }
         }
