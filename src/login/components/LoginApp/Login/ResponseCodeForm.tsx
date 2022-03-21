@@ -157,7 +157,6 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
   }
 
   function onlyAllowedNumericalInput(e: React.KeyboardEvent<HTMLFormElement>) {
-    e = e || window.event;
     const charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
     const charStr = String.fromCharCode(charCode);
     if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
