@@ -2,33 +2,33 @@
 
 // --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
 // Login, Logout button in Header
-.header-button {
-  text-transform: none;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: "Akkurat";
-  color: $orange-highlight;
-  background-color: $white;
-  box-shadow: none;
-  border: solid 2px $orange-highlight;
-  padding: 0.5rem 1rem;
-  height: auto;
-  text-transform: uppercase;
-  font-size: 0.8rem;
+// .header-button {
+//   text-transform: none;
+//   margin-top: 0;
+//   margin-bottom: 0;
+//   font-family: "Akkurat";
+//   color: $orange-highlight;
+//   background-color: $white;
+//   box-shadow: none;
+//   border: solid 2px $orange-highlight;
+//   padding: 0.5rem 1rem;
+//   height: auto;
+//   text-transform: uppercase;
+//   font-size: 0.8rem;
 
-  &:hover {
-    transform: scale(0.95);
-  }
+//   &:hover {
+//     transform: scale(0.95);
+//   }
 
-  span:hover {
-    color: $orange-highlight;
-  }
+//   span:hover {
+//     color: $orange-highlight;
+//   }
 
-  svg {
-    transform: none;
-    margin-right: 6px;
-  }
-}
+//   svg {
+//     transform: none;
+//     margin-right: 6px;
+//   }
+// }
 
 .btn.disabled,
 .btn:disabled {
@@ -61,7 +61,6 @@ button.btn {
   }
 }
 
-button,
 button.btn-primary,
 button.btn-primary:not(:disabled):not(.disabled):active,
 button.btn-primary:not(:disabled):not(.disabled):focus,
@@ -70,7 +69,6 @@ button.btn-primary:not(:disabled):not(.disabled):active:focus {
   background-color: $orange-highlight;
 }
 
-button,
 button.btn-secondary,
 button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
@@ -82,6 +80,16 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   text-transform: uppercase;
   background-color: $white;
   box-shadow: none;
+
+  // Login, Logout, Register button in Header
+  &.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    width: fit-content;
+    height: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 button.btn:hover {
@@ -223,7 +231,6 @@ button.btn.icon-button {
   }
 }
 
-button.btn.btn.btn-primary,
 button.verify-status-label {
   color: #ff500d;
   font-size: 0.75rem;
@@ -261,6 +268,7 @@ button.btn-link {
   box-shadow: none;
   margin: 0;
   text-decoration: none;
+  padding: 0;
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -320,10 +328,6 @@ button.icon-only {
 
 @media (max-width: $bp-xs) {
   button.btn {
-    font-size: 0.9rem;
-  }
-
-  .header-button {
     font-size: 0.9rem;
   }
 
