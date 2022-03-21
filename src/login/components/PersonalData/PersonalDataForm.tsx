@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import ButtonPrimary from "../Buttons/ButtonPrimary";
+// import ButtonPrimary from "../Buttons/ButtonPrimary";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
 import validatePersonalData from "../../app_utils/validation/validatePersonalData";
@@ -14,6 +14,7 @@ import { translate } from "login/translation";
 import { DashboardRootState } from "dashboard-init-app";
 import { PersonalDataData } from "reducers/PersonalData";
 import { Form } from "reactstrap";
+import EduIDButton from "../../../components/EduIDButton";
 
 interface NameStrings {
   first: string;
@@ -49,7 +50,9 @@ const RenderLockedNames = (props: { names: NameStrings }) => {
         >
           <FontAwesomeIcon icon={faRedo} />
         </button>
-        <label htmlFor="name-check" className="hint">{translate("pd.update_locked_names")}</label>
+        <label htmlFor="name-check" className="hint">
+          {translate("pd.update_locked_names")}
+        </label>
       </div>
     </Fragment>
   );
@@ -92,13 +95,9 @@ interface RenderSavePersonalDataButtonProps {
 const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderSavePersonalDataButtonProps) => {
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
   return (
-    <ButtonPrimary
-      id="personal-data-button"
-      className="settings-button"
-      disabled={loading || pristine || invalid || submitting}
-    >
+    <EduIDButton id="personal-data-button" color="primary" disabled={loading || pristine || invalid || submitting}>
       {translate("button_save")}
-    </ButtonPrimary>
+    </EduIDButton>
   );
 };
 
