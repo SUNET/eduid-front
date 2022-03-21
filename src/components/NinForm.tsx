@@ -10,6 +10,7 @@ import { useIntl } from "react-intl";
 import { translate } from "login/translation";
 import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
+import EduIDButton from "./EduIDButton";
 
 const validate = (values: { nin: string }) => {
   let value = values.nin;
@@ -83,9 +84,9 @@ const NinForm = (props: NinFormProps): JSX.Element => {
           helpBlock={translate("nins.input_help_text")}
         />
       </fieldset>
-      <PrimaryButton id="add-nin-button" disabled={!props.valid} type="submit" key="1">
+      <EduIDButton id="add-nin-button" color="primary" disabled={!props.valid} type="submit" key="1">
         {translate("emails.button_add")}
-      </PrimaryButton>
+      </EduIDButton>
     </Form>
   );
 };

@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
-import ButtonPrimary from "../../Buttons/ButtonPrimary";
+// import ButtonPrimary from "../../Buttons/ButtonPrimary";
+import EduIDButton from "../../../../components/EduIDButton";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -83,9 +84,9 @@ const SecurityKeyUnselected = ({ translate, setSelected }: SecurityKeyUnselected
   return (
     <Fragment>
       <p className="heading">{translate("login.mfa.primary-option.title")}</p>
-      <ButtonPrimary type="submit" onClick={showSecurityKey} id="mfa-security-key">
+      <EduIDButton color="primary" type="submit" onClick={showSecurityKey} id="mfa-security-key">
         {translate("login.mfa.primary-option.button")}
-      </ButtonPrimary>
+      </EduIDButton>
     </Fragment>
   );
 };

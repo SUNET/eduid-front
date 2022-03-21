@@ -173,6 +173,7 @@ function SecurityKeyTable(props) {
       btnVerify = (
         <EduIDButton
           color="link"
+          size="sm"
           // className="btn-link nobutton verify-status-label"
           onClick={props.handleVerifyWebauthnToken}
         >

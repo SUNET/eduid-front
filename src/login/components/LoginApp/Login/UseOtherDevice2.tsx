@@ -8,7 +8,8 @@ import {
 } from "apis/eduidLogin";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
+// import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
+import EduIDButton from "components/EduIDButton";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
@@ -177,7 +178,8 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
 
   return (
     <div className="buttons device2">
-      <ButtonPrimary
+      <EduIDButton
+        color="primary"
         type="submit"
         onClick={handleOnClick}
         id="proceed-other-device-button"
@@ -185,7 +187,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
         disabled={!data || props.disabled}
       >
         <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-      </ButtonPrimary>
+      </EduIDButton>
     </div>
   );
 }
@@ -255,14 +257,15 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           </div>
         </div>
         <div className="buttons device2">
-          <ButtonPrimary
+          <EduIDButton
+            color="primary"
             type="submit"
             onClick={handleOnClick}
             id="proceed-other-device-button"
             className={"settings-button"}
           >
             <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
-          </ButtonPrimary>
+          </EduIDButton>
         </div>
       </div>
     </li>

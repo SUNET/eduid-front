@@ -86,19 +86,16 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
               </ButtonGroup>
             </div>
             <div id="chpass-form" className="tabpane">
-              <PrimaryButton
+              <EduIDButton
                 id="chpass-button"
-                className="settings-button"
+                color="primary"
+                // className="settings-button"
                 disabled={formProps.submitting || formProps.invalid}
                 onClick={formProps.handleSubmit}
               >
                 {translate("chpass.button_save_password")}
-              </PrimaryButton>
-              <EduIDButton
-                color="warning"
-                // className="cancel-button"
-                onClick={handleCancel}
-              >
+              </EduIDButton>
+              <EduIDButton className="cancel-button" onClick={handleCancel}>
                 {translate("cm.cancel")}
               </EduIDButton>
             </div>

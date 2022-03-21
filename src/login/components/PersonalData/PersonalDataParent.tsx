@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from "react";
 import PersonalDataForm from "./PersonalDataForm";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
-import ButtonPrimary from "../Buttons/ButtonPrimary";
+// import ButtonPrimary from "../Buttons/ButtonPrimary";
 import { CloseButton } from "../../components/GroupManagement/Groups/CreateGroup";
 import { translate } from "login/translation";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { useIntl } from "react-intl";
+import EduIDButton from "../../../components/EduIDButton";
 
 interface NameStrings {
   first: string;
@@ -20,9 +21,9 @@ interface RenderAddPersonalDataPromptProps {
 const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromptProps) => (
   <div className="button-pair">
     <p>{translate("pd.no_data_added")}</p>
-    <ButtonPrimary id="add-personal-data" onClick={() => setEditMode(true)}>
+    <EduIDButton color="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
       {translate("button_add")}
-    </ButtonPrimary>
+    </EduIDButton>
   </div>
 );
 
@@ -81,9 +82,9 @@ const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }: RenderEd
   <Fragment>
     {isEditMode ||
       (hasPersonalData && (
-        <button className="create-group" onClick={() => setEditMode(true)}>
+        <EduIDButton color="link" onClick={() => setEditMode(true)}>
           {translate("pd.edit.button")}
-        </button>
+        </EduIDButton>
       ))}
   </Fragment>
 );

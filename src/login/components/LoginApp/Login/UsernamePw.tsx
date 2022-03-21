@@ -6,7 +6,8 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
-import ButtonPrimary from "../../Buttons/ButtonPrimary";
+// import ButtonPrimary from "../../Buttons/ButtonPrimary";
+import EduIDButton from "components/EduIDButton";
 import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
@@ -109,12 +110,13 @@ function RenderResetPasswordLink(): JSX.Element {
 function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
   return (
-    <ButtonPrimary
+    <EduIDButton
+      color="primary"
       type="submit"
       disabled={props.invalid || props.pristine || loading}
       aria-disabled={props.invalid || loading}
       id="login-form-button"
-      className="settings-button"
+      // className="settings-button"
       onClick={props.handleSubmit}
     >
       {loading ? (
@@ -122,7 +124,7 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
       ) : (
         <FormattedMessage defaultMessage="Log in" description="Login front page" />
       )}
-    </ButtonPrimary>
+    </EduIDButton>
   );
 }
 
@@ -140,9 +142,9 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button">
+    <EduIDButton color="primary" type="submit" onClick={handleOnClick} id="login-other-device-button">
       <FontAwesomeIcon icon={faQrcode} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
-    </ButtonPrimary>
+    </EduIDButton>
   );
 }

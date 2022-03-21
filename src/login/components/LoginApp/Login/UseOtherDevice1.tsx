@@ -1,8 +1,9 @@
 import { fetchUseOtherDevice1, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
-import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
+// import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
+import EduIDButton from "components/EduIDButton";
+// import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
 import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -68,22 +69,24 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
         {props.error}
       </div>
       <div className="buttons">
-        <ButtonSecondary
+        <EduIDButton
+          color="secondary"
           type="submit"
           onClick={handleCancelButtonOnClick}
           id="response-code-cancel-button"
           className={"settings-button"}
         >
           <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
-        </ButtonSecondary>
-        <ButtonPrimary
+        </EduIDButton>
+        <EduIDButton
+          color="primary"
           type="submit"
           id="refresh-get-new-code"
           className={"settings-button"}
           onClick={props.handleNewQRCodeOnClick}
         >
           <FormattedMessage defaultMessage="Retry with QR code" description="Login OtherDevice" />
-        </ButtonPrimary>
+        </EduIDButton>
       </div>
     </React.Fragment>
   );

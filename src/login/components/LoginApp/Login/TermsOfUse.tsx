@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect } from "react";
-import ButtonPrimary from "../../Buttons/ButtonPrimary";
+// import ButtonPrimary from "../../Buttons/ButtonPrimary";
+import EduIDButton from "components/EduIDButton";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import { FormattedMessage } from "react-intl";
@@ -112,8 +113,9 @@ const TermsOfUseText = ({ version }: { version?: string }) => {
 const AcceptButton = ({ version }: { version?: string }) => {
   const dispatch = useAppDispatch();
   return (
-    <ButtonPrimary
+    <EduIDButton
       type="submit"
+      color="primary"
       onClick={() => dispatch(loginSlice.actions.updatedTouAccept(version))}
       id="accept-button"
       aria-label="accept button"
@@ -121,7 +123,7 @@ const AcceptButton = ({ version }: { version?: string }) => {
       disabled={!version}
     >
       <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
-    </ButtonPrimary>
+    </EduIDButton>
   );
 };
 

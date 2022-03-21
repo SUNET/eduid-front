@@ -1,4 +1,5 @@
-import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
+// import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
+import EduIDButton from "../../../../components/EduIDButton";
 import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
 import React from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
@@ -109,15 +110,16 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
           )}
 
           {props.handleLogin && (
-            <ButtonPrimary
+            <EduIDButton
               type="submit"
               onClick={props.handleLogin}
               id="response-code-submit-button"
-              className={"settings-button"}
+              color="primary"
+              // className={"settings-button"}
               disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-            </ButtonPrimary>
+            </EduIDButton>
           )}
         </div>
       ) : null}

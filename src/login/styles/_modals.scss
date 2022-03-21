@@ -50,9 +50,9 @@ h5.modal-title {
     font-size: 1.25rem;
     line-height: 1.4;
 
-    & button.btn.settings-button {
-      margin: 0 0 1rem;
-    }
+    // & button.btn.settings-button {
+    //   margin: 0 0 1rem;
+    // }
 
     & input {
       background-color: $light-gray;
@@ -202,9 +202,9 @@ p.modal-text {
     & .modal-body {
       // padding: 1rem;
       // font-size: 1rem;
-      & button.btn.settings-button {
-        margin: 0 0 1rem;
-      }
+      // & button.btn.settings-button {
+      //   margin: 0 0 1rem;
+      // }
 
       & .form-control,
       & input {
