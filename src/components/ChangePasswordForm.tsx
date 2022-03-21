@@ -75,7 +75,12 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
 
             <div id="password-suggestion">
               <ButtonGroup>
-                <EduIDButton className="btn-link" id="pwmode-button" onClick={togglePasswordType}>
+                <EduIDButton
+                  color="link"
+                  // className="btn-link"
+                  id="pwmode-button"
+                  onClick={togglePasswordType}
+                >
                   {translate(renderSuggested ? "chpass.button_custom_password" : "chpass.button_suggest_password")}
                 </EduIDButton>
               </ButtonGroup>
@@ -89,7 +94,11 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
               >
                 {translate("chpass.button_save_password")}
               </PrimaryButton>
-              <EduIDButton className="cancel-button" onClick={handleCancel}>
+              <EduIDButton
+                color="warning"
+                // className="cancel-button"
+                onClick={handleCancel}
+              >
                 {translate("cm.cancel")}
               </EduIDButton>
             </div>

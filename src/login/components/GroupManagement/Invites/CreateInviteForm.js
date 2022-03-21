@@ -28,7 +28,12 @@ let CreateInviteForm = (props) => {
         <FormSection name={"inviteRoles"}>
           <InviteRoleCheckboxes {...props} helpBlock={"select one or more"} />
         </FormSection>
-        <EduIDButton type={"submit"} className={"settings-button"} disabled={invalid}>
+        <EduIDButton
+          type={"submit"}
+          color="primary"
+          // className={"settings-button"}
+          disabled={invalid}
+        >
           Send Invite
         </EduIDButton>
       </Form>

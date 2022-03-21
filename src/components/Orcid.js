@@ -21,7 +21,12 @@ class Orcid extends Component {
                 <td>
                   <div className="flex-between">
                     {orcidAuthor}
-                    <EduIDButton className="btn-link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
+                    <EduIDButton
+                      color="link"
+                      // className="btn-link"
+                      id="remove-orcid-button"
+                      onClick={this.props.handleOrcidDelete}
+                    >
                       <svg
                         className="remove"
                         width="16"

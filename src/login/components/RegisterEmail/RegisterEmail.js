@@ -37,7 +37,8 @@ const EmailForm = (props) => {
         placeholder={placeholder}
       />
       <EduIDButton
-        className="settings-button"
+        color="primary"
+        // className="settings-button"
         id="register-button"
         disabled={props.invalid}
         onClick={() => props.dispatch(submit("emailForm"))}

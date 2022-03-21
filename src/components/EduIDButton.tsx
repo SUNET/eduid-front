@@ -7,7 +7,7 @@ interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 
 // An ordinary <Button> with color="primary", and mandatory id
 const EduIDButton = (props: EduIDButtonProps) => (
-  <Button {...props} className={"eduid-button" + props.className ? props.className : ""}>
+  <Button {...props} color={props.color}>
     {props.children}
   </Button>
 );

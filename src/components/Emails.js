@@ -36,7 +36,8 @@ let EmailForm = (props) => {
       </fieldset>
       <EduIDButton
         id="email-button"
-        className="settings-button"
+        color="primary"
+        // className="settings-button"
         disabled={!props.valid_email}
         onClick={props.handleAdd}
       >

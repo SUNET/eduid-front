@@ -28,7 +28,8 @@ class DeleteModal extends Component {
           </ModalBody>
           <ModalFooter>
             <EduIDButton
-              className="settings-button delete-button"
+              color="primary"
+              // className="settings-button delete-button"
               ref={(button) => {
                 this.deleteButton = button;
               }}

@@ -7,7 +7,12 @@ import EduIDButton from "../../../components/EduIDButton";
 const RenderCloseButton = ({ closeButtonId, closeModal }) => {
   return (
     <div className="close-button-container">
-      <EduIDButton id={closeButtonId} className="modal-button close-button" onClick={closeModal}>
+      <EduIDButton
+        id={closeButtonId}
+        color="warning"
+        // className="modal-button close-button"
+        onClick={closeModal}
+      >
         <svg
           className="remove"
           width="16"
@@ -27,13 +32,23 @@ const RenderCloseButton = ({ closeButtonId, closeModal }) => {
 const RenderAcceptButton = ({ href, acceptButtonId, acceptModal, acceptButtonText, translate }) => {
   return href ? (
     <>
-      <EduIDButton id={acceptButtonId} className="modal-button ok-button" href={href}>
+      <EduIDButton
+        id={acceptButtonId}
+        color="primary"
+        // className="modal-button ok-button"
+        href={href}
+      >
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>
   ) : (
     <>
-      <EduIDButton id={acceptButtonId} className="modal-button ok-button" onClick={acceptModal}>
+      <EduIDButton
+        id={acceptButtonId}
+        color="primary"
+        // className="modal-button ok-button"
+        onClick={acceptModal}
+      >
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>

@@ -34,7 +34,12 @@ class GenericConfirmModal extends Component {
             </ModalBody>
           )}
           <ModalFooter>
-            <EduIDButton id={acceptButtonId} className="modal-button ok-button" onClick={acceptModal}>
+            <EduIDButton
+              id={acceptButtonId}
+              color="primary"
+              // className="modal-button ok-button"
+              onClick={acceptModal}
+            >
               {acceptButtonText ? acceptButtonText : translate("cm.accept")}
             </EduIDButton>
             <EduIDButton id={closeButtonId} className="modal-button close-button" onClick={closeModal}>

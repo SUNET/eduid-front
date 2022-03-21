@@ -8,7 +8,13 @@ import { validate } from "../../app_utils/validation/validateEmail";
 import InjectIntl from "../../translation/InjectIntl_HOC_factory";
 
 const RenderSubmitButton = ({ invalid, translate }) => (
-  <EduIDButton id="email-button" type="submit" className="settings-button" disabled={invalid}>
+  <EduIDButton
+    id="email-button"
+    type="submit"
+    color="primary"
+    //  className="settings-button"
+    disabled={invalid}
+  >
     {translate("emails.button_add")}
   </EduIDButton>
 );

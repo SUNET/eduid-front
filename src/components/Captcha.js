@@ -27,7 +27,8 @@ class Captcha extends Component {
           </div>
           <div id="captcha-buttons">
             <EduIDButton
-              className="settings-button captcha"
+              color="primary"
+              // className="settings-button captcha"
               onClick={this.props.sendCaptcha}
               id="send-captcha-button"
               disabled={this.props.disabledButton}

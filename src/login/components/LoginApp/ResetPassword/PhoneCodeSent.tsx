@@ -70,7 +70,12 @@ const PhoneCodeForm = (props: PhoneCodeProps): JSX.Element => {
         }
         name="phone"
       />
-      <EduIDButton className="settings-button" id="save-phone-button" disabled={props.invalid}>
+      <EduIDButton
+        color="primary"
+        // className="settings-button"
+        id="save-phone-button"
+        disabled={props.invalid}
+      >
         <FormattedMessage defaultMessage="OK" description="Reset Password phone code sent (OK button)" />
       </EduIDButton>
     </Form>

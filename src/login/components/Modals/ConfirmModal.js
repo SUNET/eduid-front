@@ -7,7 +7,11 @@ import EduIDButton from "../../../components/EduIDButton";
 const RenderCloseButton = ({ closeModal }) => {
   return (
     <div className="close-button-container">
-      <EduIDButton className="modal-button close-button" onClick={closeModal}>
+      <EduIDButton
+        color="warning"
+        // className="modal-button close-button"
+        onClick={closeModal}
+      >
         <svg
           className="remove"
           width="16"
@@ -70,7 +74,12 @@ class ConfirmModal extends Component {
             {resendMarkup}
           </ModalBody>
           <ModalFooter>
-            <EduIDButton className="modal-button ok-button" disabled={!formEnabled} onClick={handleConfirm}>
+            <EduIDButton
+              color="primary"
+              // className="modal-button ok-button"
+              disabled={!formEnabled}
+              onClick={handleConfirm}
+            >
               {translate("cm.ok")}
             </EduIDButton>
           </ModalFooter>

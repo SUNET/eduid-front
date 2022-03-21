@@ -12,7 +12,12 @@ class ResendCode extends Component {
           <h3 className="register-header registered-email">{this.props.email}</h3>
         </div>
 
-        <EduIDButton id="resend-button" className="settings-button" onClick={this.props.handleResend}>
+        <EduIDButton
+          id="resend-button"
+          color="primary"
+          // className="settings-button"
+          onClick={this.props.handleResend}
+        >
           {this.props.translate("resend.button")}
         </EduIDButton>
       </div>

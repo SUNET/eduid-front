@@ -61,7 +61,8 @@ const EmailForm = (props: EmailFormProps): JSX.Element => {
       />
       <EduIDButton
         type="submit"
-        className="settings-button"
+        color="primary"
+        // className="settings-button"
         id="reset-password-button"
         disabled={props.invalid || props.request_in_progress}
       >

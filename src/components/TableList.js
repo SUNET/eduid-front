@@ -23,7 +23,11 @@ class TableList extends Component {
                 <span className="nobutton verify-status-label">{this.props.translate("tl.primary")}</span>
               </td>
               <td className="non-identifier data-remove-button">
-                <EduIDButton className="icon-button" onClick={this.props.handleRemove}>
+                <EduIDButton
+                  color="link"
+                  // className="icon-button"
+                  onClick={this.props.handleRemove}
+                >
                   <svg
                     className="remove"
                     width="16"
@@ -45,14 +49,19 @@ class TableList extends Component {
               <td className="identifier data">{key}</td>
               <td className="non-identifier">
                 <EduIDButton
-                  className="btn-link verify-label verify-status-label"
+                  color="link"
+                  // className="btn-link verify-label verify-status-label"
                   onClick={this.props.handleMakePrimary}
                 >
                   {this.props.translate("tl.make_primary")}
                 </EduIDButton>
               </td>
               <td className="non-identifier ">
-                <EduIDButton className="icon-button" onClick={this.props.handleRemove}>
+                <EduIDButton
+                  // className="icon-button"
+                  color="link"
+                  onClick={this.props.handleRemove}
+                >
                   <svg
                     className="remove"
                     width="16"
@@ -73,12 +82,20 @@ class TableList extends Component {
             <tr className="emailrow make-primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier ">
-                <EduIDButton className="btn-link verify-status-label" onClick={this.props.handleStartConfirmation}>
+                <EduIDButton
+                  color="link"
+                  // className="btn-link verify-status-label"
+                  onClick={this.props.handleStartConfirmation}
+                >
                   {this.props.translate("tl.pending")}
                 </EduIDButton>
               </td>
               <td className="non-identifier">
-                <EduIDButton className="icon-button" onClick={this.props.handleRemove}>
+                <EduIDButton
+                  color="link"
+                  // className="icon-button"
+                  onClick={this.props.handleRemove}
+                >
                   <svg
                     className="remove"
                     width="16"

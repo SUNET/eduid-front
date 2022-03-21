@@ -42,13 +42,21 @@ class OpenidConnectFreja extends Component {
       );
     } else {
       frejaButton = (
-        <EduIDButton className="btn-link" onClick={this.props.handleInitializeFrejaProofing}>
+        <EduIDButton
+          // className="btn-link"
+          color="link"
+          onClick={this.props.handleInitializeFrejaProofing}
+        >
           {this.props.translate("ocf.open_app")}
         </EduIDButton>
       );
       if (this.props.iaRequestData) {
         frejaButton = (
-          <EduIDButton className="btn-link" href={"frejaeid://identify?iaRequestData=" + this.props.iaRequestData}>
+          <EduIDButton
+            // className="btn-link"
+            color="link"
+            href={"frejaeid://identify?iaRequestData=" + this.props.iaRequestData}
+          >
             {this.props.translate("ocf.open_app")}
           </EduIDButton>
         );
@@ -66,7 +74,8 @@ class OpenidConnectFreja extends Component {
 
     showModalButton = (
       <EduIDButton
-        className="proofing-button"
+        // className="proofing-button"
+        color="primary"
         id="openid-connect-freja-show-modal"
         onClick={this.props.handleShowModal}
         block
