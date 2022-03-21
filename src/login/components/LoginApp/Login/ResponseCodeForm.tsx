@@ -125,21 +125,21 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
     const form = event.currentTarget.form;
     const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
     const index = inputs.indexOf(event.currentTarget);
-    switch (pressedKey) {
-      case "Backspace":
-      case "Delete": {
+    switch (pressedKey.toLowerCase()) {
+      case "backspace":
+      case "delete": {
         if (inputs[index - 1] !== undefined) {
           inputs[index - 1].focus();
         }
         break;
       }
-      case "ArrowLeft": {
+      case "arrowleft": {
         if (inputs[index - 1] !== undefined) {
           inputs[index - 1].focus();
         }
         break;
       }
-      case "ArrowRight": {
+      case "arrowright": {
         if (inputs[index + 1] !== undefined) {
           inputs[index + 1].focus();
         }
