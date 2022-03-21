@@ -51,7 +51,7 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   // the code is formatted as SK123-456, ignore positions S, K and -
   const positions = [2, 3, 4, 6, 7, 8];
-  const validInputs = positions.filter((pos) => {
+  const invalidInputs = positions.filter((pos) => {
     return props.values.v[pos] == undefined;
   });
 
@@ -96,7 +96,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               id="response-code-submit-button"
               className={"settings-button"}
               disabled={
-                validInputs.length > 0 || props.submitDisabled || props.submitting || props.invalid || props.pristine
+                invalidInputs.length > 0 || props.submitDisabled || props.submitting || props.invalid || props.pristine
               }
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
