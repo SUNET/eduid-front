@@ -3,8 +3,9 @@
 header {
   display: flex;
   justify-content: space-between;
-  margin: 1rem;
+  padding: 1rem;
   align-items: center;
+  box-shadow: 0 5px 10px $mid-gray;
 }
 
 .banner {
@@ -22,9 +23,9 @@ header {
   }
 }
 
-#eduid-logo {
-  width: 160px;
-  height: 50px;
+.eduid-logo {
+  width: 140px;
+  height: 40px;
   background-image: url(../../../img/ds-eduID-logo-black320x120px.png);
   background-size: contain;
   background-repeat: no-repeat;
