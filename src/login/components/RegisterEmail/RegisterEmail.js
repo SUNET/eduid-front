@@ -12,11 +12,14 @@ import { useIntl } from "react-intl";
 
 const submitEmailForm = (values, dispatch) => {
   const { email } = values;
-  dispatch(actions.addEmail(email));
+  if (email) {
+    dispatch(actions.addEmail(email));
+  }
 };
 
 /* FORM */
 const EmailForm = (props) => {
+  const { handleSubmit } = props;
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -25,7 +28,7 @@ const EmailForm = (props) => {
     description: "placeholder text for email input",
   });
   return (
-    <Form id="register-form" role="form">
+    <Form id="register-form" role="form" onSubmit={handleSubmit(submitEmailForm)}>
       <Field
         type="email"
         name="email"
