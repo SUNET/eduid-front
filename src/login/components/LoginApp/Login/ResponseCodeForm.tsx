@@ -164,7 +164,6 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
       type="text"
       maxLength="1"
       pattern="[0-9]"
-      inputMode="numeric"
       placeholder={value}
       disabled={disabled === true ? "disabled" : null}
       className={fixed === true ? "fixed" : null}
