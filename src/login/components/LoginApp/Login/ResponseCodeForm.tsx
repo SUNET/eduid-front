@@ -156,7 +156,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
     }
   }
 
-  function handleCodeFieldInput(e: React.KeyboardEvent<HTMLFormElement>) {
+  function handleCodeFieldKeyPress(e: React.KeyboardEvent<HTMLFormElement>) {
     if (!isDigit(e.key)) e.preventDefault();
   }
 
@@ -173,7 +173,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
       onFocus={(event: FocusEvent<HTMLInputElement>) => event.target.select()}
-      onKeyPress={handleCodeFieldInput}
+      onKeyPress={handleCodeFieldKeyPress}
     />
   );
 }
