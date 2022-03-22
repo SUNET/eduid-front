@@ -9,8 +9,8 @@ h1 {
   font-weight: 700;
   font-family: "ProximaNova-Regular";
 
-  @media (max-width: $bp-xs) {
-    font-size: 2rem;
+  @media (max-width: $bp-md) {
+    font-size: 1.75rem;
     word-wrap: break-word;
     word-break: break-word;
   }

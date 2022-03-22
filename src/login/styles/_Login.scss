@@ -274,7 +274,6 @@ a.send-link.disabled {
 
     @media (max-width: $bp-xs) {
       flex-direction: column-reverse;
-      margin-left: -2.25rem;
 
       button:nth-child(n + 2) {
         margin-bottom: 0.5rem;
@@ -283,6 +282,12 @@ a.send-link.disabled {
 
     &.device2 {
       margin-top: 0;
+    }
+  }
+
+  li .buttons {
+    @media (max-width: $bp-xs) {
+      margin-left: -2.25rem;
     }
   }
 
@@ -411,7 +416,7 @@ a.send-link.disabled {
 
     .timer {
       margin-top: 0;
-      font-family: "Akkurat";
+      font-family: Akkurat;
     }
 
     &.circular {
@@ -508,7 +513,7 @@ a.send-link.disabled {
 
     &::marker {
       font-size: 1em;
-      font-family: "Akkurat";
+      font-family: Akkurat;
       font-weight: bold;
     }
   }
@@ -528,6 +533,6 @@ figure {
   figcaption {
     font-size: 1rem;
     font-weight: bold;
-    font-family: "Akkurat";
+    font-family: Akkurat;
   }
 }
