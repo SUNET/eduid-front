@@ -89,6 +89,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
             <FormattedMessage defaultMessage="Log in this device" description="Login OtherDevice" />
             <div className="expiration-info">
               <ProceedLoginButton disabled={timerIsZero} />
+
               <TimeRemainingWrapper
                 name="other-device-expires"
                 unique_id={data.short_code}
@@ -100,7 +101,19 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
             </div>
           </li>
         ) : data.state === "AUTHENTICATED" ? (
-          <RenderLoggedIn data={data} isExpired={timerIsZero} />
+          <li>
+            <div className="expiration-info">
+              <RenderLoggedIn data={data} isExpired={timerIsZero} />
+              <TimeRemainingWrapper
+                name="other-device-expires"
+                unique_id={data.short_code}
+                value={data.expires_in}
+                onReachZero={handleTimerReachZero}
+              >
+                <ExpiresMeter expires_max={data.expires_max} />
+              </TimeRemainingWrapper>
+            </div>
+          </li>
         ) : data !== undefined ? (
           <li>
             <FormattedMessage
@@ -220,53 +233,51 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
   }
 
   return (
-    <li>
-      <div className="finished device2">
-        <div className="response-code">
-          <FormattedMessage
-            defaultMessage="Use the response code below in the first device to continue logging in"
-            description="Use another device, finished"
-          />
-        </div>
-        <div className="response-code text-small">
-          <FormattedMessage
-            defaultMessage="After using the code on the other device, please close this browser window."
-            description="Use another device, finished"
-          />
-        </div>
-        <div>
-          <ResponseCodeForm
-            extra_className="device2"
-            submitDisabled={true}
-            inputsDisabled={true}
-            code={props.data.response_code}
-            handleSubmitCode={handleSubmit}
-          />
+    <div className="finished device2">
+      <div className="response-code">
+        <FormattedMessage
+          defaultMessage="Use the response code below in the first device to continue logging in"
+          description="Use another device, finished"
+        />
+      </div>
+      <div className="response-code text-small">
+        <FormattedMessage
+          defaultMessage="After using the code on the other device, please close this browser window."
+          description="Use another device, finished"
+        />
+      </div>
+      <div>
+        <ResponseCodeForm
+          extra_className="device2"
+          submitDisabled={true}
+          inputsDisabled={true}
+          code={props.data.response_code}
+          handleSubmitCode={handleSubmit}
+        />
 
-          <div className="phishing-warning">
-            <span className="warning-symbol">
-              <FontAwesomeIcon icon={faExclamationCircle} />
-            </span>
-            <span className="text-small">
-              <FormattedMessage
-                defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
-                description="Use another device, finished"
-              />
-            </span>
-          </div>
-        </div>
-        <div className="buttons device2">
-          <ButtonPrimary
-            type="submit"
-            onClick={handleOnClick}
-            id="proceed-other-device-button"
-            className={"settings-button"}
-          >
-            <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
-          </ButtonPrimary>
+        <div className="phishing-warning">
+          <span className="warning-symbol">
+            <FontAwesomeIcon icon={faExclamationCircle} />
+          </span>
+          <span className="text-small">
+            <FormattedMessage
+              defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
+              description="Use another device, finished"
+            />
+          </span>
         </div>
       </div>
-    </li>
+      <div className="buttons device2">
+        <ButtonPrimary
+          type="submit"
+          onClick={handleOnClick}
+          id="proceed-other-device-button"
+          className={"settings-button"}
+        >
+          <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
+        </ButtonPrimary>
+      </div>
+    </div>
   );
 }
 

@@ -445,15 +445,10 @@ a.send-link.disabled {
     .response-code-form {
       background: $white;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding-top: 0.5rem;
       margin-top: 0.5rem;
-
-      @media (max-width: $bp-md) {
-        flex-direction: column-reverse;
-        padding-top: 1rem;
-      }
     }
 
     .phishing-warning {
