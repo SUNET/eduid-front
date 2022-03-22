@@ -82,20 +82,22 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
       <ol className="listed-steps">
         <li>
           <InfoAboutOtherDevice data={data} />
-          <TimeRemainingWrapper
-            name="other-device-expires"
-            unique_id={data.short_code}
-            value={data.expires_in}
-            onReachZero={handleTimerReachZero}
-          >
-            <ExpiresMeter expires_max={data.expires_max} />
-          </TimeRemainingWrapper>
         </li>
 
         {data.state === "IN_PROGRESS" ? (
           <li>
             <FormattedMessage defaultMessage="Log in this device" description="Login OtherDevice" />
-            <ProceedLoginButton disabled={timerIsZero} />
+            <div className="expiration-info">
+              <ProceedLoginButton disabled={timerIsZero} />
+              <TimeRemainingWrapper
+                name="other-device-expires"
+                unique_id={data.short_code}
+                value={data.expires_in}
+                onReachZero={handleTimerReachZero}
+              >
+                <ExpiresMeter expires_max={data.expires_max} />
+              </TimeRemainingWrapper>
+            </div>
           </li>
         ) : data.state === "AUTHENTICATED" ? (
           <RenderLoggedIn data={data} isExpired={timerIsZero} />
