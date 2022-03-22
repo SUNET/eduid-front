@@ -118,7 +118,7 @@ interface CodeFieldProps {
   autoFocus?: boolean;
 }
 
-// helper-function to make for tidy code with one line per input field below
+// helper-component to make for tidy code with one line per input field in ShortCodeForm
 function CodeField({ num, value, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
     const pressedKey = event.key;
@@ -157,9 +157,7 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
   }
 
   function onlyAllowedNumericalInput(e: React.KeyboardEvent<HTMLFormElement>) {
-    const charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
-    const charStr = String.fromCharCode(charCode);
-    if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
+    if (!isDigit(e.key)) e.preventDefault();
   }
 
   return (
