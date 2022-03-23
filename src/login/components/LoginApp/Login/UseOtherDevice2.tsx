@@ -80,14 +80,12 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
   return (
     <React.Fragment>
       <ol className="listed-steps">
-        <li>
-          <InfoAboutOtherDevice data={data} />
-        </li>
+        <InfoAboutOtherDevice data={data} />
 
         {data.state === "IN_PROGRESS" ? (
           <li>
             <FormattedMessage defaultMessage="Log in this device" description="Login OtherDevice" />
-            <div className="expiration-info x-adjust">
+            <div className="expiration-info">
               <ProceedLoginButton disabled={timerIsZero} />
 
               <TimeRemainingWrapper
@@ -104,7 +102,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
         ) : data.state === "AUTHENTICATED" ? (
           <li>
             <RenderLoggedIn data={data} isExpired={timerIsZero} />
-            <div className="expiration-info x-adjust">
+            <div className="expiration-info">
               <TimeRemainingWrapper
                 name="other-device-expires"
                 unique_id={data.short_code}
@@ -152,7 +150,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
   };
   const proximity: JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
-    <div>
+    <li>
       <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
 
       <figure className="table-responsiv x-adjust">
@@ -173,7 +171,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
 
         <figcaption className="short-code device2">ID# {props.data.short_code}</figcaption>
       </figure>
-    </div>
+    </li>
   );
 }
 
@@ -235,18 +233,17 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
 
   return (
     <div className="finished device2">
-      <div className="response-code">
-        <FormattedMessage
-          defaultMessage="Use the response code below in the first device to continue logging in"
-          description="Use another device, finished"
-        />
-      </div>
-      <div className="response-code text-small">
+      <FormattedMessage
+        defaultMessage="Use the response code below in the first device to continue logging in"
+        description="Use another device, finished"
+      />
+
+      <span className="text-small">
         <FormattedMessage
           defaultMessage="After using the code on the other device, please close this browser window."
           description="Use another device, finished"
         />
-      </div>
+      </span>
       <div className="x-adjust">
         <ResponseCodeForm
           extra_className="device2"
