@@ -244,7 +244,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           description="Use another device, finished"
         />
       </span>
-      <div className="x-adjust">
+      <div className="x-adjust figure">
         <ResponseCodeForm
           extra_className="device2"
           submitDisabled={true}

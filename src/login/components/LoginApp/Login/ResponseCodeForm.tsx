@@ -26,7 +26,7 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 
   return (
     <React.Fragment>
-      <div className={`response-code-input-wrapper ${props.extra_className}`}>
+      <div className={`${props.extra_className}`}>
         <FinalForm<ResponseCodeValues>
           onSubmit={props.handleSubmitCode}
           initialValues={initialValues}
