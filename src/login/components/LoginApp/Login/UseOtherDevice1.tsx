@@ -152,7 +152,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
           <li>
             <FormattedMessage defaultMessage="Scan this QR-code with your other device" />
 
-            <figure>
+            <figure className="x-adjust">
               <img className="qr-code" src={data.qr_img} />
               <figcaption className="short-code">ID# {data.short_code}</figcaption>
             </figure>
@@ -164,7 +164,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
 
           <li>
             <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
-            <div className="expiration-info">
+            <div className="expiration-info x-adjust">
               <ResponseCodeForm
                 extra_className="device1"
                 submitDisabled={false}

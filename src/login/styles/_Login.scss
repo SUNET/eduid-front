@@ -286,10 +286,11 @@ a.send-link.disabled {
   }
 
   li .buttons {
-    @media (max-width: $bp-xs) {
-      margin-left: -2.25rem;
-    }
-  }
+  // li .buttons {
+  //   @media (max-width: $bp-xs) {
+  //     @extend .x-adjust;
+  //   }
+  // }
 
   .response-code-input-wrapper {
     .response-code-inputs {
@@ -303,7 +304,7 @@ a.send-link.disabled {
 
       input {
         display: inline-block;
-        border: 1px solid $close;
+        border: 1px solid $gray;
         font-size: 1.75rem;
         margin: 5px 10px 5px 0;
         width: 2.5rem;
@@ -311,7 +312,8 @@ a.send-link.disabled {
 
         &:focus {
           box-shadow: none;
-          border: 2px solid $gray;
+          border: 2px solid $black;
+          position: relative;
         }
 
         &:nth-child(3) {
@@ -478,8 +480,10 @@ a.send-link.disabled {
       img.qr-code {
         width: 200px;
       }
+    }
 
-      @media (max-width: $bp-sm) {
+    @media (max-width: $bp-sm) {
+      .x-adjust {
         margin-left: -1.75em;
       }
     }

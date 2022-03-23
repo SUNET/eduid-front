@@ -87,13 +87,14 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
         {data.state === "IN_PROGRESS" ? (
           <li>
             <FormattedMessage defaultMessage="Log in this device" description="Login OtherDevice" />
-            <div className="expiration-info">
+            <div className="expiration-info x-adjust">
               <ProceedLoginButton disabled={timerIsZero} />
 
               <TimeRemainingWrapper
                 name="other-device-expires"
                 unique_id={data.short_code}
                 value={data.expires_in}
+                className="x-adjust"
                 onReachZero={handleTimerReachZero}
               >
                 <ExpiresMeter expires_max={data.expires_max} />
@@ -102,8 +103,8 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
           </li>
         ) : data.state === "AUTHENTICATED" ? (
           <li>
-            <div className="expiration-info">
-              <RenderLoggedIn data={data} isExpired={timerIsZero} />
+            <RenderLoggedIn data={data} isExpired={timerIsZero} />
+            <div className="expiration-info x-adjust">
               <TimeRemainingWrapper
                 name="other-device-expires"
                 unique_id={data.short_code}
@@ -154,7 +155,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
     <div>
       <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
 
-      <figure className="table-responsive">
+      <figure className="table-responsiv x-adjust">
         <table className="table">
           <tbody>
             <tr className="device-info-row">
@@ -246,7 +247,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           description="Use another device, finished"
         />
       </div>
-      <div>
+      <div className="x-adjust">
         <ResponseCodeForm
           extra_className="device2"
           submitDisabled={true}
@@ -267,7 +268,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           </span>
         </div>
       </div>
-      <div className="buttons device2">
+      <div className="buttons device2 x-adjust">
         <ButtonPrimary
           type="submit"
           onClick={handleOnClick}
