@@ -53,6 +53,10 @@
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
   },
+  "8KywNU": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that user accounts, password, security keys and codes are individual and shall only be used by the intended individual,"
+  },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
     "string": "The following generally applies:"
@@ -1038,10 +1042,6 @@
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action may be taken."
-  },
-  "obrRPr": {
-    "developer_comment": "ToU first paragraph",
-    "string": "that user accounts, password and codes are individual and shall only be used by the intended individual,"
   },
   "oc.error_missing_nin": {
     "string": "Please add a national identity number and try again"
