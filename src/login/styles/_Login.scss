@@ -255,19 +255,21 @@ a.send-link.disabled {
 }
 
 .use-another-device {
-  $clock_size: 1.5rem;
-  $clock_padding: 1rem;
-  $meter_align: $clock_size + $clock_padding;
+  $clock_size: 1.25rem;
 
   font-size: 1rem;
 
   .buttons {
     display: flex;
     column-gap: 1rem;
-    margin: 1em 0;
+    margin: 1em 0 0;
 
     button {
       min-width: 100px;
+    }
+
+    @media (max-width: $bp-md) {
+      justify-content: center;
     }
 
     @media (max-width: $bp-xs) {
@@ -283,49 +285,85 @@ a.send-link.disabled {
     }
   }
 
-  li .buttons {
-    @media (max-width: $bp-xs) {
-      margin-left: -2.25rem;
-    }
-  }
-
   .response-code-input-wrapper {
     .response-code-inputs {
       display: flex;
       flex-direction: row;
+      justify-content: center;
       flex-wrap: wrap;
+      background: $white;
+      padding: 1.5rem 1rem;
+      width: 100%;
 
-      input[type="text"] {
+      input {
         display: inline-block;
-        background-color: $white;
-        border: none;
-        border-bottom: 2px solid $gray;
-        font-size: 1.5rem;
+        border: 1px solid $gray;
+        font-size: 1.75rem;
         margin: 5px 10px 5px 0;
         width: 2.5rem;
         text-align: center;
+
+        &:focus {
+          box-shadow: none;
+          border: 2px solid $black;
+          position: relative;
+        }
+
+        &:nth-child(3) {
+          margin-right: 1.5rem;
+        }
       }
 
       input.fixed {
         // the pure-text "inputs", S, K and -
-        border-bottom: none;
-        background: transparent;
+        color: $gray;
+
+        &[value="-"] {
+          border: none;
+          width: 1.5rem;
+        }
       }
 
       .nowrap-group {
         flex-wrap: nowrap;
       }
+
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        appearance: textfield;
+      }
+
+      @media (max-width: $bp-md) {
+        input {
+          margin: 5px 0;
+          width: 2.25rem;
+
+          &:not(:last-child):not(:nth-child(3n)) {
+            margin-right: -1px;
+          }
+        }
+      }
     }
 
     &.device2 .response-code-inputs {
-      background-color: $white;
+      //background-color: $white;
       width: fit-content;
-      padding: 1rem;
+      padding: 0.5rem 1rem;
 
       input {
-        border-bottom: none;
-        width: 1.5rem;
+        border: none;
+        width: 1.75rem;
         padding: 0;
+
+        &.fixed {
+          // the pure-text "inputs", S, K and -
+          color: initial;
+        }
       }
     }
   }
@@ -335,15 +373,25 @@ a.send-link.disabled {
     border-bottom: 1px solid $dark-gray;
   }
 
+  .expiration-info {
+    position: relative;
+    @extend .x-adjust;
+  }
+
   // TODO make timer component (login, reset pw..)
   .expires-meter {
-    display: flex;
-    align-items: center;
-    margin: 1em 0;
-    color: $gray;
+    color: $black;
+    font-size: 1.25rem;
+    text-align: center;
+
+    @media (min-width: $bp-md) {
+      position: absolute;
+      bottom: 2.75rem;
+      right: 0;
+    }
 
     .expires-symbol {
-      padding-right: $clock_padding;
+      padding-right: 0.5rem;
       line-height: 1;
 
       svg {
@@ -358,22 +406,41 @@ a.send-link.disabled {
     }
 
     .timer {
-      padding-left: 1rem;
       margin-top: 0;
       font-family: Akkurat;
+    }
+
+    &.circular {
+      border: 2px solid lightgrey;
+      border-radius: 100%;
+      width: 4rem;
+      height: 4rem;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      color: green;
+      font-size: 0.9rem;
+
+      .expires-symbol {
+        display: none;
+      }
     }
   }
 
   .finished.device2 {
-    $warning_size: $clock_size;
+    $warning_size: 1.5rem;
 
-    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
 
     .response-code-form {
       background: $white;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
     }
 
     .phishing-warning {
@@ -403,9 +470,11 @@ a.send-link.disabled {
       img.qr-code {
         width: 200px;
       }
+    }
 
-      @media (max-width: $bp-sm) {
-        margin-left: -1.75em;
+    @media (max-width: $bp-sm) {
+      .x-adjust {
+        margin-left: #{-1 * $list-indent};
       }
     }
   }
@@ -423,7 +492,7 @@ a.send-link.disabled {
 
 /* Move to List component */
 .listed-steps {
-  margin-left: 2.25em;
+  margin-left: $list-indent;
 
   li {
     font-size: 1.25rem;
@@ -435,10 +504,6 @@ a.send-link.disabled {
       font-family: Akkurat;
       font-weight: bold;
     }
-  }
-
-  p {
-    margin-left: -1.75em;
   }
 }
 
