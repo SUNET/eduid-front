@@ -41,7 +41,7 @@ export const ToUs: { [key: string]: ReactElement } = {
             description="ToU first paragraph"
           />,
           <FormattedMessage
-            defaultMessage={`that user accounts, password and codes are individual and
+            defaultMessage={`that user accounts, password, security keys and codes are individual and
                                shall only be used by the intended individual,`}
             description="ToU first paragraph"
           />,
