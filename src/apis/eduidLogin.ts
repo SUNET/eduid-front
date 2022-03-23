@@ -5,6 +5,7 @@
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
+
 /*********************************************************************************************************************/
 
 export type LoginUseOtherDevice1Request = UseOtherDevice1Fetch | UseOtherDevice1Abort | UseOtherDevice1SubmitCode;
@@ -215,6 +216,7 @@ async function makeLoginRequest<T>(
         thunkAPI.dispatch(response);
         reject(saved);
       }
+
       resolve(response);
     } catch (error) {
       if (error instanceof Error) {
