@@ -153,7 +153,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
     <li>
       <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
 
-      <figure className="table-responsiv x-adjust">
+      <figure className="table-responsive x-adjust">
         <table className="table">
           <tbody>
             <tr className="device-info-row">
