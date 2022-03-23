@@ -285,12 +285,6 @@ a.send-link.disabled {
     }
   }
 
-  li .buttons {
-    @media (max-width: $bp-xs) {
-      margin-left: -2.25rem;
-    }
-  }
-
   .response-code-input-wrapper {
     .response-code-inputs {
       display: flex;
@@ -303,7 +297,7 @@ a.send-link.disabled {
 
       input {
         display: inline-block;
-        border: 1px solid $close;
+        border: 1px solid $gray;
         font-size: 1.75rem;
         margin: 5px 10px 5px 0;
         width: 2.5rem;
@@ -311,7 +305,8 @@ a.send-link.disabled {
 
         &:focus {
           box-shadow: none;
-          border: 2px solid $gray;
+          border: 2px solid $black;
+          position: relative;
         }
 
         &:nth-child(3) {
@@ -380,14 +375,11 @@ a.send-link.disabled {
 
   .expiration-info {
     position: relative;
+    @extend .x-adjust;
   }
 
   // TODO make timer component (login, reset pw..)
   .expires-meter {
-    // display: flex;
-    // align-items: center;
-    // justify-content: flex-end;
-    // margin: 1rem 1rem 0 0;
     color: $black;
     font-size: 1.25rem;
     text-align: center;
@@ -478,9 +470,11 @@ a.send-link.disabled {
       img.qr-code {
         width: 200px;
       }
+    }
 
-      @media (max-width: $bp-sm) {
-        margin-left: -1.75em;
+    @media (max-width: $bp-sm) {
+      .x-adjust {
+        margin-left: #{-1 * $list-indent};
       }
     }
   }
@@ -498,7 +492,7 @@ a.send-link.disabled {
 
 /* Move to List component */
 .listed-steps {
-  margin-left: 2.25em;
+  margin-left: $list-indent;
 
   li {
     font-size: 1.25rem;
@@ -510,10 +504,6 @@ a.send-link.disabled {
       font-family: Akkurat;
       font-weight: bold;
     }
-  }
-
-  p {
-    margin-left: -1.75em;
   }
 }
 

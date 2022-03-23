@@ -80,9 +80,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
   return (
     <React.Fragment>
       <ol className="listed-steps">
-        <li>
-          <InfoAboutOtherDevice data={data} />
-        </li>
+        <InfoAboutOtherDevice data={data} />
 
         {data.state === "IN_PROGRESS" ? (
           <li>
@@ -94,6 +92,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
                 name="other-device-expires"
                 unique_id={data.short_code}
                 value={data.expires_in}
+                className="x-adjust"
                 onReachZero={handleTimerReachZero}
               >
                 <ExpiresMeter expires_max={data.expires_max} />
@@ -102,8 +101,8 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
           </li>
         ) : data.state === "AUTHENTICATED" ? (
           <li>
+            <RenderLoggedIn data={data} isExpired={timerIsZero} />
             <div className="expiration-info">
-              <RenderLoggedIn data={data} isExpired={timerIsZero} />
               <TimeRemainingWrapper
                 name="other-device-expires"
                 unique_id={data.short_code}
@@ -151,10 +150,10 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
   };
   const proximity: JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
-    <div>
+    <li>
       <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
 
-      <figure className="table-responsive">
+      <figure className="table-responsiv x-adjust">
         <table className="table">
           <tbody>
             <tr className="device-info-row">
@@ -172,7 +171,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
 
         <figcaption className="short-code device2">ID# {props.data.short_code}</figcaption>
       </figure>
-    </div>
+    </li>
   );
 }
 
@@ -234,19 +233,18 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
 
   return (
     <div className="finished device2">
-      <div className="response-code">
-        <FormattedMessage
-          defaultMessage="Use the response code below in the first device to continue logging in"
-          description="Use another device, finished"
-        />
-      </div>
-      <div className="response-code text-small">
+      <FormattedMessage
+        defaultMessage="Use the response code below in the first device to continue logging in"
+        description="Use another device, finished"
+      />
+
+      <span className="text-small">
         <FormattedMessage
           defaultMessage="After using the code on the other device, please close this browser window."
           description="Use another device, finished"
         />
-      </div>
-      <div>
+      </span>
+      <div className="x-adjust">
         <ResponseCodeForm
           extra_className="device2"
           submitDisabled={true}
@@ -267,7 +265,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           </span>
         </div>
       </div>
-      <div className="buttons device2">
+      <div className="buttons device2 x-adjust">
         <ButtonPrimary
           type="submit"
           onClick={handleOnClick}
