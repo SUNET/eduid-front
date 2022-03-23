@@ -474,7 +474,7 @@ a.send-link.disabled {
 
     @media (max-width: $bp-sm) {
       .x-adjust {
-        margin-left: -$steps-indent;
+        margin-left: #{-1 * $list-indent};
       }
     }
   }
@@ -492,8 +492,7 @@ a.send-link.disabled {
 
 /* Move to List component */
 .listed-steps {
-  $steps-indent: 2.25em;
-  margin-left: $steps-indent;
+  margin-left: $list-indent;
 
   li {
     font-size: 1.25rem;
