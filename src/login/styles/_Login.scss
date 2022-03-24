@@ -404,18 +404,12 @@ a.send-link.disabled {
     }
 
     .phishing-warning {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
       color: $dark-orange;
 
       .warning-symbol {
         padding-right: 0.5rem;
 
         svg {
-          height: $warning_size * 0.75;
-          width: $warning_size * 0.75;
           transform: rotate(0);
         }
       }

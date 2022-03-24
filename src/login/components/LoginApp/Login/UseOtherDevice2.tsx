@@ -258,11 +258,11 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           handleSubmitCode={handleSubmit}
         />
 
-        <div className="phishing-warning">
+        <div className="phishing-warning text-small">
           <span className="warning-symbol">
             <FontAwesomeIcon icon={faExclamationCircle} />
           </span>
-          <span className="text-small">
+          <span>
             <FormattedMessage
               defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
               description="Use another device, finished"
