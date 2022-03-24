@@ -272,7 +272,7 @@ a.send-link.disabled {
     }
 
     @media (max-width: $bp-xs) {
-      flex-direction: column;
+      flex-direction: column-reverse;
 
       button:nth-child(n + 1) {
         margin-bottom: 0.5rem;

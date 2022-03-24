@@ -180,7 +180,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
                 value={data.expires_in}
                 onReachZero={handleTimerReachZero}
               >
-                <ExpiresMeter expires_max={data.expires_max} />
+                <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
               </TimeRemainingWrapper>
             </div>
           </li>

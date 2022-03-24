@@ -92,10 +92,9 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
                 name="other-device-expires"
                 unique_id={data.short_code}
                 value={data.expires_in}
-                className="x-adjust"
                 onReachZero={handleTimerReachZero}
               >
-                <ExpiresMeter expires_max={data.expires_max} />
+                <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
               </TimeRemainingWrapper>
             </div>
           </li>
@@ -109,7 +108,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
                 value={data.expires_in}
                 onReachZero={handleTimerReachZero}
               >
-                <ExpiresMeter expires_max={data.expires_max} />
+                <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
               </TimeRemainingWrapper>
             </div>
           </li>
@@ -157,13 +156,19 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
         <table className="table">
           <tbody>
             <tr className="device-info-row">
-              <td>IP address</td>
+              <td>
+                <FormattedMessage defaultMessage="IP address" description="device info" />
+              </td>
+
               <td>
                 {props.data.device1_info.addr} {proximity}
               </td>
             </tr>
             <tr className="device-info-row">
-              <td>Description</td>
+              <td>
+                <FormattedMessage defaultMessage="Description" description="device info" />
+              </td>
+
               <td>{props.data.device1_info.description}</td>
             </tr>
           </tbody>
