@@ -284,12 +284,17 @@ a.send-link.disabled {
     }
   }
 
+  .device-info-row {
+    font-size: 0.8rem;
+    border-bottom: 1px solid $dark-gray;
+  }
+
   .response-code-inputs {
     input {
       display: inline-block;
       border: 1px solid $gray;
       font-size: 1.75rem;
-      margin: 5px 10px 5px 0;
+      margin: 5px;
       width: 2.5rem;
       text-align: center;
 
@@ -304,50 +309,30 @@ a.send-link.disabled {
       }
     }
 
-    .nowrap-group {
-      flex-wrap: nowrap;
-    }
-
-    input[type="number"]::-webkit-outer-spin-button,
-    input[type="number"]::-webkit-inner-spin-button {
-      appearance: none;
-      margin: 0;
-    }
-
-    input[type="number"] {
-      appearance: textfield;
-    }
-
     @media (max-width: $bp-md) {
       input {
-        margin: 5px 0;
-        width: 2.25rem;
+        margin: 5px -1px 5px 0;
 
-        &:not(:last-child):not(:nth-child(3n)) {
-          margin-right: -1px;
+        &:nth-child(3) {
+          margin-right: 1rem;
         }
       }
     }
   }
 
+  &.device1 .response-code-inputs {
+    @extend .figure;
+  }
   &.device2 .response-code-inputs {
-    //background-color: $white;
-    width: fit-content;
-    padding: 0.5rem 1rem;
-
     input {
       border: none;
       width: 1.75rem;
       padding: 0;
-    }
-  }
-  &.device1 .response-code-inputs {
-    @extend .figure;
-  }
 
-  .device-info-row {
-    font-size: 0.8rem;
-    border-bottom: 1px solid $dark-gray;
+      &:nth-child(3) {
+        margin-right: 1rem;
+      }
+    }
   }
 
   .expiration-info {
