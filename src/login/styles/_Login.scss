@@ -304,16 +304,6 @@ a.send-link.disabled {
       }
     }
 
-    input.fixed {
-      // the pure-text "inputs", S, K and -
-      color: $gray;
-
-      &[value="-"] {
-        border: none;
-        width: 1.5rem;
-      }
-    }
-
     .nowrap-group {
       flex-wrap: nowrap;
     }
@@ -349,11 +339,6 @@ a.send-link.disabled {
       border: none;
       width: 1.75rem;
       padding: 0;
-
-      &.fixed {
-        // the pure-text "inputs", S, K and -
-        color: initial;
-      }
     }
   }
   &.device1 .response-code-inputs {
