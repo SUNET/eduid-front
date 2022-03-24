@@ -53,6 +53,10 @@
     "developer_comment": "Login UsernamePw",
     "string": "Annan enhet"
   },
+  "8KywNU": {
+    "developer_comment": "ToU first paragraph",
+    "string": "att användarkonton, lösenord, säkerhetsnycklar och koder är personliga och får endast användas av innehavaren,"
+  },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
     "string": "För eduID.se gäller generellt"
@@ -1038,10 +1042,6 @@
   "o2Jbwm": {
     "developer_comment": "Terms of use (common footer)",
     "string": "Den som överträder, eller misstänks överträda, ovanstående regler kan stängas av från eduID.se. Dessutom kan rättsliga åtgärder komma att vidtas."
-  },
-  "obrRPr": {
-    "developer_comment": "ToU first paragraph",
-    "string": "att användarkonton, lösenord och koder är personliga och får endast användas av innehavaren, "
   },
   "oc.error_missing_nin": {
     "string": "Skriv in ett personnummer och försök igen"

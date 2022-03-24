@@ -140,7 +140,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <ButtonPrimary type="submit" onClick={handleOnClick} id="login-other-device-button">
+    <ButtonPrimary onClick={handleOnClick} id="login-other-device-button">
       <FontAwesomeIcon icon={faQrcode} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
     </ButtonPrimary>

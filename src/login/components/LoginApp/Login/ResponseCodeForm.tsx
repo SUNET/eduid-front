@@ -75,17 +75,6 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
 
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
-          {props.handleAbort && (
-            <ButtonSecondary
-              type="submit"
-              onClick={props.handleAbort}
-              id="response-code-abort-button"
-              className={"settings-button"}
-              disabled={props.submitting}
-            >
-              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
-            </ButtonSecondary>
-          )}
           {props.handleLogin && (
             <ButtonPrimary
               type="submit"
@@ -98,6 +87,17 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
             </ButtonPrimary>
+          )}
+          {props.handleAbort && (
+            <ButtonSecondary
+              type="submit"
+              onClick={props.handleAbort}
+              id="response-code-abort-button"
+              className={"settings-button"}
+              disabled={props.submitting}
+            >
+              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+            </ButtonSecondary>
           )}
         </div>
       ) : null}
