@@ -95,7 +95,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
                 className="x-adjust"
                 onReachZero={handleTimerReachZero}
               >
-                <ExpiresMeter expires_max={data.expires_max} />
+                <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
               </TimeRemainingWrapper>
             </div>
           </li>
@@ -109,7 +109,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
                 value={data.expires_in}
                 onReachZero={handleTimerReachZero}
               >
-                <ExpiresMeter expires_max={data.expires_max} />
+                <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
               </TimeRemainingWrapper>
             </div>
           </li>
