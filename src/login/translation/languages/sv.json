@@ -143,6 +143,10 @@
     "developer_comment": "ToU first paragraph",
     "string": "att man är sanningsenlig vid uppgivande av personlig information som namn, kontaktuppgifter el. dyl, "
   },
+  "G1b2Mj": {
+    "developer_comment": "device info",
+    "string": "IP address"
+  },
   "G94CxN": {
     "developer_comment": "Use another device, finished",
     "string": "Dela inte koden med någon annan då det kan kompromettera din eduID identitet."
@@ -213,6 +217,10 @@
   "O0z0/P": {
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Lägg till och bekräfta ditt telefonnummer för bättre säkerhet"
+  },
+  "O7HVVj": {
+    "developer_comment": "device info",
+    "string": "Beskrivning"
   },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
