@@ -143,6 +143,10 @@
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
   },
+  "G1b2Mj": {
+    "developer_comment": "device info",
+    "string": "IP address"
+  },
   "G94CxN": {
     "developer_comment": "Use another device, finished",
     "string": "Don't share this code with anyone, as it might compromise your credentials."
@@ -213,6 +217,10 @@
   "O0z0/P": {
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Add and verify your phone number for better security"
+  },
+  "O7HVVj": {
+    "developer_comment": "device info",
+    "string": "Description"
   },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",

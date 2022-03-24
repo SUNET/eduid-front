@@ -6,7 +6,7 @@ import { TimeRemaining } from "components/TimeRemaining";
 interface ExpiresMeterProps {
   expires_max: number;
   time_remaining?: TimeRemaining;
-  showMeter?: boolean;
+  showMeter: boolean;
 }
 
 export function ExpiresMeter(props: ExpiresMeterProps): JSX.Element | null {
