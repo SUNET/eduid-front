@@ -156,13 +156,19 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
         <table className="table">
           <tbody>
             <tr className="device-info-row">
-              <td>IP address</td>
+              <td>
+                <FormattedMessage defaultMessage="IP address" description="device info" />
+              </td>
+
               <td>
                 {props.data.device1_info.addr} {proximity}
               </td>
             </tr>
             <tr className="device-info-row">
-              <td>Description</td>
+              <td>
+                <FormattedMessage defaultMessage="Description" description="device info" />
+              </td>
+
               <td>{props.data.device1_info.description}</td>
             </tr>
           </tbody>
