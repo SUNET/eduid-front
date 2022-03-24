@@ -931,9 +931,6 @@
   "login.wrong_user": {
     "string": "It was not possible to complete the login. Please try again."
   },
-  "login.state_not_found": {
-    "string": "There was a problem. Please restart login attempt"
-  },
   "lpvPcL": {
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Verify your identity to get the most ouf of your eduID"
