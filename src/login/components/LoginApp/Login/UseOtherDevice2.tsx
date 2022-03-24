@@ -92,7 +92,6 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response }): JSX.
                 name="other-device-expires"
                 unique_id={data.short_code}
                 value={data.expires_in}
-                className="x-adjust"
                 onReachZero={handleTimerReachZero}
               >
                 <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
