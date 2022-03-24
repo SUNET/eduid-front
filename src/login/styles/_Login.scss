@@ -255,10 +255,6 @@ a.send-link.disabled {
 }
 
 .use-another-device {
-  $clock_size: 1.25rem;
-
-  font-size: 1rem;
-
   .buttons {
     display: flex;
     column-gap: 1rem;
@@ -286,21 +282,9 @@ a.send-link.disabled {
         margin-bottom: 1.5rem;
       }
     }
-
-    &.device2 {
-      margin-top: 0;
-    }
   }
 
   .response-code-inputs {
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: center;
-    // flex-wrap: wrap;
-    // background: $white;
-    // padding: 1.5rem 1rem;
-    // width: 100%;
-
     input {
       display: inline-block;
       border: 1px solid $gray;
@@ -404,8 +388,8 @@ a.send-link.disabled {
       line-height: 1;
 
       svg {
-        height: $clock_size;
-        width: $clock_size;
+        height: 1.25rem;
+        width: 1.25rem;
         transform: rotate(0);
       }
     }
