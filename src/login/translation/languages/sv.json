@@ -1167,7 +1167,7 @@
   },
   "pd.display_name_placeholder": {
     "developer_comment": "Display name label/template (edit personal data)",
-    "string": "Valfritt alias"
+    "string": "Visningsnamn"
   },
   "pd.edit.button": {
     "string": "ändra"
