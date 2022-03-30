@@ -1,6 +1,5 @@
 import { fetchNext } from "apis/eduidLogin";
 import React, { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import loginSlice from "../../../redux/slices/loginSlice";

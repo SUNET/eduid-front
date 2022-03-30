@@ -2,7 +2,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 2rem 1rem;
+  padding: 1rem;
   border-top: 6px solid $orange-highlight;
   background-color: $light-gray;
   font-size: 0.9rem;
@@ -23,7 +23,7 @@ footer {
 }
 
 nav a {
-  line-height: 1.5;
+  line-height: 1.7rem;
   margin-top: 0;
   margin-bottom: 0;
   border-bottom: solid 1px transparent;
@@ -65,4 +65,20 @@ footer nav .lang-selected {
 .non-selected {
   margin: 0;
   display: none;
+}
+
+@media (max-width: $bp-xs) {
+  footer {
+    align-items: flex-end;
+
+    nav ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .help-link {
+        margin-right: 0;
+      }
+    }
+  }
 }

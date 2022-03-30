@@ -65,7 +65,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     <section className="banner">
       <header>
         <a href={dashboard_url ? dashboard_url : eduid_site_url}>
-          <div id="eduid-logo" />
+          <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}
       </header>

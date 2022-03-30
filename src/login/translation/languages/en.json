@@ -53,6 +53,10 @@
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
   },
+  "8KywNU": {
+    "developer_comment": "ToU first paragraph",
+    "string": "that user accounts, password, security keys and codes are individual and shall only be used by the intended individual,"
+  },
   "8P/lJJ": {
     "developer_comment": "ToU paragraph 1 heading",
     "string": "The following generally applies:"
@@ -139,6 +143,10 @@
     "developer_comment": "ToU first paragraph",
     "string": "that all personal information that you provide, such as name and contact information shall be truthful,"
   },
+  "G1b2Mj": {
+    "developer_comment": "device info",
+    "string": "IP address"
+  },
   "G94CxN": {
     "developer_comment": "Use another device, finished",
     "string": "Don't share this code with anyone, as it might compromise your credentials."
@@ -209,6 +217,10 @@
   "O0z0/P": {
     "developer_comment": "Dashboard navigation tooltip",
     "string": "Add and verify your phone number for better security"
+  },
+  "O7HVVj": {
+    "developer_comment": "device info",
+    "string": "Description"
   },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
@@ -1039,10 +1051,6 @@
     "developer_comment": "Terms of use (common footer)",
     "string": "Any person found violating or suspected of violating these rules can be disabled from eduID.se for investigation. Furthermore, legal action may be taken."
   },
-  "obrRPr": {
-    "developer_comment": "ToU first paragraph",
-    "string": "that user accounts, password and codes are individual and shall only be used by the intended individual,"
-  },
   "oc.error_missing_nin": {
     "string": "Please add a national identity number and try again"
   },
@@ -1159,7 +1167,7 @@
   },
   "pd.display_name_placeholder": {
     "developer_comment": "Display name label/template (edit personal data)",
-    "string": "Optional alias"
+    "string": "Display name"
   },
   "pd.edit.button": {
     "string": "edit"

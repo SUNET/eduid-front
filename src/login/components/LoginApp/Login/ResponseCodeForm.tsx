@@ -1,9 +1,8 @@
 // import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import EduIDButton from "../../../../components/EduIDButton";
 import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
-import React from "react";
+import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
-import { FORM_ERROR } from "final-form";
 import { FormattedMessage } from "react-intl";
 
 interface ResponseCodeFormProps {
@@ -42,52 +41,31 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
               />
             );
           }}
-          validate={validate_code}
         />
       </div>
     </React.Fragment>
   );
 }
 
-function validate_code(values: ResponseCodeValues) {
-  const err: { [key: string]: string } = {};
-
-  // the code is formatted as SK123-456, ignore positions S, K and -
-  const positions = [2, 3, 4, 6, 7, 8];
-  positions.forEach((pos) => {
-    if (!values.v[pos] || !isDigit(values.v[pos])) {
-      // Record an (invisible) failure as long as one of the inputs doesn't contain a valid digit, to keep
-      // the submit button disabled until all fields hold a valid digit.
-      const name = `v[${pos}]`;
-      err[name] = "Not a digit";
-    }
-    if (values.v[pos] && values.v[pos].length && !isDigit(values.v[pos])) {
-      // Set the form-wide error too. This is what is currently displayed, so only show error when there actually is
-      // a non-digit there, not for empty values.
-      err[FORM_ERROR] = "Not a digit";
-    }
-  });
-  return err;
-}
-
 //type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
+  // the code is formatted as SK123-456, ignore positions S, K and -
+  const positions = [2, 3, 4, 6, 7, 8];
+  const invalidInputs = positions.filter((pos) => {
+    return props.values.v[pos] == undefined;
+  });
+
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="response-code-inputs">
-        <CodeField num={0} value="S" disabled={true} />
-        <CodeField num={1} value="K" disabled={true} />
         <span className="nowrap-group">
-          <CodeField num={2} value="" disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
-          <CodeField num={3} value="" disabled={props.inputsDisabled} />
-          <CodeField num={4} value="" disabled={props.inputsDisabled} />
-        </span>
-        <CodeField num={5} value="-" disabled={true} fixed={true} />
-        <span className="nowrap-group">
-          <CodeField num={6} value="" disabled={props.inputsDisabled} />
-          <CodeField num={7} value="" disabled={props.inputsDisabled} />
-          <CodeField num={8} value="" disabled={props.inputsDisabled} />
+          <CodeField num={2} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+          <CodeField num={3} disabled={props.inputsDisabled} />
+          <CodeField num={4} disabled={props.inputsDisabled} />
+          <CodeField num={6} disabled={props.inputsDisabled} />
+          <CodeField num={7} disabled={props.inputsDisabled} />
+          <CodeField num={8} disabled={props.inputsDisabled} />
         </span>
       </div>
       {props.error && (
@@ -95,20 +73,9 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
           {props.error}
         </div>
       )}
+
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
-          {props.handleAbort && (
-            <ButtonSecondary
-              type="submit"
-              onClick={props.handleAbort}
-              id="response-code-abort-button"
-              className={"settings-button"}
-              disabled={props.submitting}
-            >
-              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
-            </ButtonSecondary>
-          )}
-
           {props.handleLogin && (
             <EduIDButton
               type="submit"
@@ -121,6 +88,17 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
             </EduIDButton>
           )}
+          {props.handleAbort && (
+            <ButtonSecondary
+              type="submit"
+              onClick={props.handleAbort}
+              id="response-code-abort-button"
+              className={"settings-button"}
+              disabled={props.submitting}
+            >
+              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+            </ButtonSecondary>
+          )}
         </div>
       ) : null}
     </form>
@@ -129,38 +107,52 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
 
 interface CodeFieldProps {
   num: number;
-  value: string;
+  value?: string;
   disabled?: boolean;
   fixed?: boolean;
   autoFocus?: boolean;
 }
 
-// helper-function to make for tidy code with one line per input field below
+// helper-component to make for tidy code with one line per input field in ShortCodeForm
 function CodeField({ num, value, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
-  // TODO: Handle backspace, moving to the preceding field *after* clearing the contents of this one
-  // TODO: Add final-form validation to the form
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
-    console.log("Key up: ", event.key.toLowerCase());
-    if (event.key.toLowerCase() === "enter") {
-      event.preventDefault();
-      //dispatch(submit("usernamePwForm"));
-    } else if (isDigit(event.key.toLowerCase())) {
-      // focus the next input field
-      const form = event.currentTarget.form;
-      // disabled inputs are placeholders, filter them out
-      const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
-      const index = inputs.indexOf(event.currentTarget);
-      if (index < 0) {
-        // bail of the current input could not be found
-        return undefined;
+    const pressedKey = event.key;
+    const form = event.currentTarget.form;
+    const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
+    const index = inputs.indexOf(event.currentTarget);
+    switch (pressedKey.toLowerCase()) {
+      case "backspace":
+      case "delete": {
+        if (inputs[index - 1] !== undefined) {
+          inputs[index - 1].focus();
+        }
+        break;
       }
-      const lastIndex = inputs.length - 1;
-      console.log(`Current index ${index} of ${lastIndex}`);
-      if (index > -1 && index < inputs.length - 1) {
-        console.log(`Advancing focus to index ${index + 1} of ${lastIndex}`);
-        inputs[index + 1].focus();
+      case "arrowleft": {
+        if (inputs[index - 1] !== undefined) {
+          inputs[index - 1].focus();
+        }
+        break;
+      }
+      case "arrowright": {
+        if (inputs[index + 1] !== undefined) {
+          inputs[index + 1].focus();
+        }
+        break;
+      }
+      default: {
+        if (isDigit(pressedKey)) {
+          if (inputs[index + 1] !== undefined) {
+            inputs[index + 1].focus();
+          }
+        }
+        break;
       }
     }
+  }
+
+  function handleCodeFieldKeyPress(e: React.KeyboardEvent<HTMLFormElement>) {
+    if (!isDigit(e.key)) e.preventDefault();
   }
 
   return (
@@ -175,6 +167,8 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
       className={fixed === true ? "fixed" : null}
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
+      onFocus={(event: FocusEvent<HTMLInputElement>) => event.target.select()}
+      onKeyPress={handleCodeFieldKeyPress}
     />
   );
 }
