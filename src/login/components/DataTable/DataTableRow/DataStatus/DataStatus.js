@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../../translation/InjectIntl_HOC_factory";
 // import ButtonTableData from "../../../Buttons/ButtonTableData";
-import EduIDButton from "../../../../../components/EduIDButton";
+import EduIDButton from "components/EduIDButton";
 
 class DataStatus extends Component {
   render() {

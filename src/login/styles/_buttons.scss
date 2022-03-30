@@ -38,7 +38,7 @@
 a.btn,
 button,
 button.btn {
-  font-family: "Akkurat";
+  font-family: Akkurat;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1rem;
@@ -169,7 +169,7 @@ button.ok-button,
 
 /* color for CANCEL and CLOSE buttons in modals */
 // ----- buttons that close modals ----  //
-button.close-button {
+button.btn-close {
   background-color: transparent;
   padding: 1rem 1rem 0;
   margin: 0 !important;

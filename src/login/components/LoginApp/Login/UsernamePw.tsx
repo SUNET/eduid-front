@@ -97,13 +97,18 @@ function RenderResetPasswordLink(): JSX.Element {
   };
 
   return (
-    <LinkRedirect
+    <EduIDButton
       id={"link-forgot-password"}
-      to={"/"}
-      className={`send-link text-small ${request_in_progress ? "disabled" : ""}`}
+      // to={"/"}
+      color="link"
+      size="sm"
+      className={`${request_in_progress ? "disabled" : ""}`}
+      // className={`send-link text-small ${request_in_progress ? "disabled" : ""}`}
       onClick={sendLink}
-      text={translate("login.usernamePw.reset-password-link")}
-    />
+      // text={translate("login.usernamePw.reset-password-link")}
+    >
+      {translate("login.usernamePw.reset-password-link")}
+    </EduIDButton>
   );
 }
 

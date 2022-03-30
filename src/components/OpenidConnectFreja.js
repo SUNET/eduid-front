@@ -63,9 +63,9 @@ class OpenidConnectFreja extends Component {
       }
       buttonGroup = (
         <ButtonGroup vertical block>
-          <Button className="btn-link" href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+          <EduIDButton color="link" href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
             {this.props.translate("ocf.freja_instructions_install_link")}
-          </Button>
+          </EduIDButton>
 
           {frejaButton}
         </ButtonGroup>

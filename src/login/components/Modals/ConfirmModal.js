@@ -8,7 +8,7 @@ const RenderCloseButton = ({ closeModal }) => {
   return (
     <div className="close-button-container">
       <EduIDButton
-        color="warning"
+        color="close"
         // className="modal-button close-button"
         onClick={closeModal}
       >

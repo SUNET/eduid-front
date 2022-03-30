@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonSecondary from "../../Buttons/ButtonSecondary";
+import EduIDButton from "components/EduIDButton";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useAppSelector } from "../../../app_init/hooks";
 
@@ -19,7 +20,8 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
     <div className="secondary" tabIndex={0}>
       <div className="option">
         <p className="heading">{translate("login.mfa.secondary-option.title")}</p>
-        <ButtonSecondary
+        <EduIDButton
+          color="secondary"
           type="submit"
           onClick={() => {
             window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${startUrl}`;
@@ -27,7 +29,7 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
           id="mfa-freja"
         >
           {translate("login.mfa.secondary-option.button")}
-        </ButtonSecondary>
+        </EduIDButton>
       </div>
     </div>
   );

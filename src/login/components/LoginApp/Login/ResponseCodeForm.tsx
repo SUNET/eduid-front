@@ -1,6 +1,7 @@
 // import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import EduIDButton from "../../../../components/EduIDButton";
-import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
+// import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
+
 import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -82,22 +83,21 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               onClick={props.handleLogin}
               id="response-code-submit-button"
               color="primary"
-              // className={"settings-button"}
               disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
             </EduIDButton>
           )}
           {props.handleAbort && (
-            <ButtonSecondary
+            <EduIDButton
               type="submit"
+              color="secondary"
               onClick={props.handleAbort}
               id="response-code-abort-button"
-              className={"settings-button"}
               disabled={props.submitting}
             >
               <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
-            </ButtonSecondary>
+            </EduIDButton>
           )}
         </div>
       ) : null}

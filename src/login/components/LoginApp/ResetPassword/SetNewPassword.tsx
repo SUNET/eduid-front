@@ -11,7 +11,7 @@ import { faCheck, faCopy, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router-dom";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
 import Splash from "../../../../containers/Splash";
-import ButtonSecondary from "../../Buttons/ButtonSecondary";
+// import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import { getFormValues } from "redux-form";
 import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
@@ -79,14 +79,14 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
 
       <div className="new-password-button-container">
         {props.extra_security && Object.keys(props.extra_security).length > 0 && (
-          <ButtonSecondary
-            className="secondary"
+          <EduIDButton
+            color="secondary"
             id="go-back-button"
             onClick={() => history.push(`/reset-password/extra-security/${props.emailCode}`)}
           >
             <FontAwesomeIcon icon={faArrowLeft as IconProp} />
             <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
-          </ButtonSecondary>
+          </EduIDButton>
         )}
         <EduIDButton
           color="primary"
