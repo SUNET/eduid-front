@@ -362,18 +362,6 @@ a.send-link.disabled {
     .response-code-form {
       align-items: center;
     }
-
-    .phishing-warning {
-      color: $dark-orange;
-
-      .warning-symbol {
-        padding-right: 0.5rem;
-
-        svg {
-          transform: rotate(0);
-        }
-      }
-    }
   }
 
   .listed-steps {

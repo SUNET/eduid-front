@@ -258,7 +258,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           handleSubmitCode={handleSubmit}
         />
 
-        <div className="phishing-warning text-small">
+        <div className="warning-text">
           <span className="warning-symbol">
             <FontAwesomeIcon icon={faExclamationCircle} />
           </span>
