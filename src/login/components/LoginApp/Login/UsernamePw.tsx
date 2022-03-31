@@ -6,8 +6,7 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
-// import ButtonPrimary from "../../Buttons/ButtonPrimary";
-import EduIDButton from "components/EduIDButton";
+import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
@@ -97,31 +96,25 @@ function RenderResetPasswordLink(): JSX.Element {
   };
 
   return (
-    <EduIDButton
+    <LinkRedirect
       id={"link-forgot-password"}
-      // to={"/"}
-      color="link"
-      size="sm"
-      className={`${request_in_progress ? "disabled" : ""}`}
-      // className={`send-link text-small ${request_in_progress ? "disabled" : ""}`}
+      to={"/"}
+      className={`send-link text-small ${request_in_progress ? "disabled" : ""}`}
       onClick={sendLink}
-      // text={translate("login.usernamePw.reset-password-link")}
-    >
-      {translate("login.usernamePw.reset-password-link")}
-    </EduIDButton>
+      text={translate("login.usernamePw.reset-password-link")}
+    />
   );
 }
 
 function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX.Element {
   const loading = useAppSelector((state) => state.app.loading_data);
   return (
-    <EduIDButton
-      color="primary"
+    <ButtonPrimary
       type="submit"
       disabled={props.invalid || props.pristine || loading}
       aria-disabled={props.invalid || loading}
       id="login-form-button"
-      // className="settings-button"
+      className="settings-button"
       onClick={props.handleSubmit}
     >
       {loading ? (
@@ -129,7 +122,7 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
       ) : (
         <FormattedMessage defaultMessage="Log in" description="Login front page" />
       )}
-    </EduIDButton>
+    </ButtonPrimary>
   );
 }
 
@@ -147,9 +140,9 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <EduIDButton color="primary" type="submit" onClick={handleOnClick} id="login-other-device-button">
+    <ButtonPrimary onClick={handleOnClick} id="login-other-device-button">
       <FontAwesomeIcon icon={faQrcode} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
-    </EduIDButton>
+    </ButtonPrimary>
   );
 }
