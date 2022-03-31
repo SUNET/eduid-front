@@ -12,7 +12,7 @@ const RenderCloseButton = ({ closeModal }) => {
         // className="modal-button close-button"
         onClick={closeModal}
       >
-        <svg
+        {/* <svg
           className="remove"
           width="16"
           height="16"
@@ -22,7 +22,7 @@ const RenderCloseButton = ({ closeModal }) => {
         >
           <path d="M7 0h2v16H7z" />
           <path d="M0 9V7h16v2z" />
-        </svg>
+        </svg> */}
       </EduIDButton>
     </div>
   );
