@@ -1,0 +1,18 @@
+/* styles for ordered list with large number */
+@import "variables.scss";
+
+.listed-steps {
+  margin-left: $list-indent;
+
+  li {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    margin-bottom: 2em;
+
+    &::marker {
+      font-size: 1em;
+      font-family: Akkurat;
+      font-weight: bold;
+    }
+  }
+}
