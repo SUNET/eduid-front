@@ -59,7 +59,7 @@ EmailForm = connect((state) => ({
 
 function Emails(props) {
   const [formClass, setFormClass] = useState("hide");
-  const [addLinkClass, setAddLinkClass] = useState("btn-link");
+  const [addLinkClass, setAddLinkClass] = useState("");
 
   function showEmailForm() {
     setFormClass("form-content");
@@ -105,7 +105,7 @@ function Emails(props) {
           <EmailForm {...props} />
         </div>
 
-        <EduIDButton id="add-more-button" className={addLinkClass} onClick={showEmailForm}>
+        <EduIDButton id="add-more-button" color="link" className={addLinkClass} onClick={showEmailForm}>
           {translate("emails.button_add_more")}
         </EduIDButton>
       </div>

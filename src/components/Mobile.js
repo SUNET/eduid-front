@@ -77,7 +77,7 @@ PhoneForm = connect((state) => ({
 
 function Mobile(props) {
   const [formClass, setFormClass] = useState("hide");
-  const [addLinkClass, setAddLinkClass] = useState("btn-link");
+  const [addLinkClass, setAddLinkClass] = useState("");
 
   function showEmailForm() {
     setFormClass("form-content");
