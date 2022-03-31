@@ -155,7 +155,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
       <figure className="table-responsive x-adjust">
         <table className="table">
           <tbody>
-            <tr className="device-info-row">
+            <tr className="border-row">
               <td>
                 <FormattedMessage defaultMessage="IP address" description="device info" />
               </td>
@@ -164,7 +164,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
                 {props.data.device1_info.addr} {proximity}
               </td>
             </tr>
-            <tr className="device-info-row">
+            <tr className="border-row">
               <td>
                 <FormattedMessage defaultMessage="Description" description="device info" />
               </td>
