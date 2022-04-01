@@ -115,7 +115,7 @@ function Mobile(props) {
         <div className={formClass}>
           <PhoneForm {...props} />
         </div>
-        <EduIDButton id="add-more-button" color="link" className={addLinkClass + "lowercase"} onClick={showEmailForm}>
+        <EduIDButton id="add-more-button" color="link" className={addLinkClass + " lowercase"} onClick={showEmailForm}>
           {translate("phones.button_add_more")}
         </EduIDButton>
       </div>
