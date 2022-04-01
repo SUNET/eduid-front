@@ -6,14 +6,8 @@ import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeButtonId, closeModal }) => {
   return (
-    <div className="close-button-container">
-      <EduIDButton
-        id={closeButtonId}
-        color="close"
-        // className="modal-button close-button"
-        onClick={closeModal}
-      >
-        {/* <svg
+    <EduIDButton id={closeButtonId} color="close" className="float-right" onClick={closeModal}>
+      {/* <svg
           className="remove"
           width="16"
           height="16"
@@ -24,8 +18,7 @@ const RenderCloseButton = ({ closeButtonId, closeModal }) => {
           <path d="M7 0h2v16H7z" />
           <path d="M0 9V7h16v2z" />
         </svg> */}
-      </EduIDButton>
-    </div>
+    </EduIDButton>
   );
 };
 
@@ -86,13 +79,13 @@ class NotificationModal extends Component {
       <div id={modalId} tabIndex="-1" role="dialog" aria-hidden="true" data-backdrop="true">
         <Modal isOpen={showModal} className={modalId}>
           <ModalHeader>
+            {title}
             <RenderCloseButton
               closeButtonId={closeButtonId}
               closeModal={closeModal}
               translate={translate}
               closeButtonText={closeButtonText}
             />
-            {title}
           </ModalHeader>
           <RenderModalBody modalId={modalId} mainText={mainText} />
           <ModalFooter>

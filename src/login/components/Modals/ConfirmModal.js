@@ -6,13 +6,12 @@ import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeModal }) => {
   return (
-    <div className="close-button-container">
-      <EduIDButton
-        color="close"
-        // className="modal-button close-button"
-        onClick={closeModal}
-      >
-        {/* <svg
+    <EduIDButton
+      color="close"
+      // className="modal-button close-button"
+      onClick={closeModal}
+    >
+      {/* <svg
           className="remove"
           width="16"
           height="16"
@@ -23,8 +22,7 @@ const RenderCloseButton = ({ closeModal }) => {
           <path d="M7 0h2v16H7z" />
           <path d="M0 9V7h16v2z" />
         </svg> */}
-      </EduIDButton>
-    </div>
+    </EduIDButton>
   );
 };
 class ConfirmModal extends Component {
@@ -66,8 +64,8 @@ class ConfirmModal extends Component {
       >
         <Modal id="confirm-user-data-modal" isOpen={showModal}>
           <ModalHeader>
-            <RenderCloseButton closeModal={closeModal} />
             {title}
+            <RenderCloseButton closeModal={closeModal} />
           </ModalHeader>
           <ModalBody>
             <ConfirmModalForm helpBlock={helpBlock} inputName={id} {...this.props} />
