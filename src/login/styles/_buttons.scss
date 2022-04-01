@@ -39,6 +39,7 @@ button.btn {
   color: $white;
   background-color: $orange-highlight;
   box-shadow: none;
+  min-width: 100px;
 }
 
 button.btn-secondary,
@@ -50,8 +51,9 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   border: solid 2px $orange-highlight;
   background-color: $white;
   box-shadow: none;
+  min-width: 100px;
 
-  // Login, Logout, Register button in Header
+  /* Login, Logout, Register button in Header */
   &.btn-sm {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
@@ -62,84 +64,12 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   }
 }
 
-// button.btn-primary:hover {
-//   background-color: $orange-highlight;
-//   border: none;
-
-//   &:disabled,
-//   .disabled {
-//     background-color: $orange-highlight;
-//     opacity: 0.4;
-//     border: none;
-//     transform: scale(1);
-//   }
-// }
-
-// button.close {
-//   padding: 0.625rem 1.25rem;
-//   background-color: transparent;
-//   margin: 0;
-//   transition: all 0.3s ease;
-//   border: none;
-//   box-shadow: none;
-// }
-
-// button.close:hover {
-//   transform: scale(1.2);
-// }
-
-/* MODALS */
-// a.btn,
-// button#accept-tou-button {
-//   box-shadow: none;
-//   border: solid 1px transparent;
-//   margin: 1rem 2rem;
-//   color: $white;
-
-//   &:hover {
-//     background: transparent;
-//     transform: scale(1);
-//   }
-
-//   &:disabled,
-//   .disabled {
-//     color: $white;
-//     opacity: 0.4;
-//     background-color: $orange-highlight;
-//     pointer-events: none;
-//   }
-// }
-
-/* color for OK and ACCEPT buttons in modals */
-// ----- buttons with actions in modals ----  //
-// a.ok-button,
-// button.ok-button,
-// #accept-tou-button {
-//   background-color: $orange-highlight;
-
-//   &:hover,
-//   &:not(:disabled):not(.disabled):active,
-//   &:not(:disabled):not(.disabled):focus,
-//   &:not(:disabled):not(.disabled):active:focus {
-//     background-color: $orange-opaque;
-//     border: solid 1px $orange-highlight;
-//     color: $orange-highlight;
-//   }
-// }
-
 /* color for CANCEL and CLOSE buttons in modals */
 // ----- buttons that close modals ----  //
 button.btn-close {
   background-color: transparent;
   margin: 0;
   box-shadow: none;
-
-  // height: 100%;
-
-  // & svg {
-  //   fill: $close;
-  //   align-self: center;
-  // }
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -154,74 +84,6 @@ button.btn-close {
     font-size: 0.7rem;
   }
 }
-
-// ----- buttons that captcha, reset-password cancel ----  //
-// button.cancel-button {
-//   color: $black;
-//   margin: 0.5rem 1rem !important;
-//   padding: 1rem;
-//   box-shadow: none;
-//   background-color: transparent;
-
-//   &:hover,
-//   &:not(:disabled):not(.disabled):active,
-//   &:not(:disabled):not(.disabled):focus,
-//   &:not(:disabled):not(.disabled):active:focus {
-//     color: $gray;
-//     background-color: transparent;
-//     border: solid 1px $gray;
-//   }
-// }
-
-/* styles for REMOVE icons */
-// ----- buttons that remove data ----  //
-// button.btn.btn-sm,
-// button.btn.icon-button {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: transparent;
-//   border: solid 1px transparent;
-//   box-shadow: none;
-//   margin: 0;
-//   padding: 0 1rem;
-//   height: auto;
-
-//   &:hover,
-//   &:not(:disabled):not(.disabled):active,
-//   &:not(:disabled):not(.disabled):focus,
-//   &:not(:disabled):not(.disabled):active:focus {
-//     background-color: transparent;
-//     border: solid 1px transparent;
-//   }
-// }
-
-// button.verify-status-label {
-//   color: #ff500d;
-//   font-size: 0.75rem;
-//   background-color: transparent;
-//   border: solid 1px transparent;
-//   box-shadow: none;
-
-//   &:hover,
-//   &:not(:disabled):not(.disabled):active,
-//   &:not(:disabled):not(.disabled):focus,
-//   &:not(:disabled):not(.disabled):active:focus {
-//     background-color: transparent;
-//     text-decoration: underline;
-//     border: solid 1px transparent;
-//     outline: none;
-//   }
-// }
-
-// .show-hide-button {
-//   color: #ff500d;
-//   font-size: 0.75rem;
-//   background-color: transparent;
-//   border: solid 1px transparent;
-//   box-shadow: none;
-//   margin: 0;
-// }
 
 /* styles for links that are also buttons */
 button.btn-link {
@@ -258,36 +120,6 @@ button.btn-link {
   }
 }
 
-// .modal-footer button.delete-button {
-//   margin: 0.5rem 1rem;
-// }
-
-// retry/reload icon button
-// .icon-text {
-//   button,
-//   button:active,
-//   button:focus,
-//   button:active:focus {
-//     border: transparent solid 2px;
-//     margin-top: 0;
-//     padding: 0.75rem;
-//     background-color: $white;
-//     border-radius: 50%;
-
-//     &.icon {
-//       background-color: $white;
-//       height: auto;
-
-//       svg {
-//         color: $black;
-//         height: 1rem;
-//         width: 1rem;
-//         transform: rotate(0);
-//       }
-//     }
-//   }
-// }
-
 .flex-buttons {
   display: flex;
   column-gap: 1rem;
@@ -323,21 +155,8 @@ button.icon-only {
     width: 100%;
   }
 
-  // button.ok-button,
-  // a.ok-button,
-  // button.btn-secondary,
-  // #security-webauthn-button,
-  // #connect-orcid-button,
-  // #new-password-button {
-  //   width: 100%;
-  // }
-
   button.btn.btn-link {
     width: auto;
     padding: 0;
   }
-
-  // .show-hide-button {
-  //   padding: 0.625rem 0.5rem;
-  // }
 }
