@@ -116,6 +116,20 @@
   }
 }
 
+// small reddish alert with exclamation symbol
+.warning-text {
+  color: $dark-orange;
+  @extend .text-small;
+
+  .warning-symbol {
+    padding-right: 0.5rem;
+
+    svg {
+      transform: rotate(0);
+    }
+  }
+}
+
 @media (max-width: $bp-sm) {
   .technical-info-text {
     flex-direction: column;

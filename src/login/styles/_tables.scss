@@ -38,6 +38,11 @@ table {
       background-color: $white;
       height: 3rem;
 
+      &.border-row {
+        font-size: 0.8rem;
+        border-bottom: 1px solid $dark-gray;
+      }
+
       & td:first-child {
         padding-left: 1.25rem;
         padding-right: 1.5rem;

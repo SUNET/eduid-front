@@ -43,6 +43,13 @@ h6 {
   color: $black;
 }
 
+.heading-4 {
+  font-size: 1.5rem;
+  line-height: 2.125rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
 p {
   font-size: 1.25rem;
   line-height: 1.5;
@@ -95,4 +102,16 @@ h2.heading {
 
 .horizontal-content-margin {
   margin-top: 1.5rem;
+}
+
+.text-large {
+  font-size: 1.25rem;
+}
+.text-small {
+  font-size: 0.9rem;
+}
+
+strong {
+  font-weight: bold;
+  @extend b;
 }

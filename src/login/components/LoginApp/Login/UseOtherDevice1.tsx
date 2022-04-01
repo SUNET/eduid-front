@@ -14,6 +14,7 @@ import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
  * This component runs on device #1 and shows the QR code to the user. It then waits
  * for the user to submit a "response code" in a form, to complete the login on this device.
  */
+
 function UseOtherDevice1() {
   const other_device = useAppSelector((state) => state.login.other_device1);
   const username = useAppSelector((state) => state.login.authn_options.forced_username);

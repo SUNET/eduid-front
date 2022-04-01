@@ -25,7 +25,7 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 
   return (
     <React.Fragment>
-      <div className={`response-code-input-wrapper ${props.extra_className}`}>
+      <div className={`${props.extra_className}`}>
         <FinalForm<ResponseCodeValues>
           onSubmit={props.handleSubmitCode}
           initialValues={initialValues}
@@ -57,14 +57,12 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="response-code-inputs">
-        <span className="nowrap-group">
-          <CodeField num={2} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
-          <CodeField num={3} disabled={props.inputsDisabled} />
-          <CodeField num={4} disabled={props.inputsDisabled} />
-          <CodeField num={6} disabled={props.inputsDisabled} />
-          <CodeField num={7} disabled={props.inputsDisabled} />
-          <CodeField num={8} disabled={props.inputsDisabled} />
-        </span>
+        <CodeField num={2} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+        <CodeField num={3} disabled={props.inputsDisabled} />
+        <CodeField num={4} disabled={props.inputsDisabled} />
+        <CodeField num={6} disabled={props.inputsDisabled} />
+        <CodeField num={7} disabled={props.inputsDisabled} />
+        <CodeField num={8} disabled={props.inputsDisabled} />
       </div>
       {props.error && (
         <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
@@ -106,12 +104,11 @@ interface CodeFieldProps {
   num: number;
   value?: string;
   disabled?: boolean;
-  fixed?: boolean;
   autoFocus?: boolean;
 }
 
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
-function CodeField({ num, value, disabled = false, fixed = false, autoFocus = undefined }: CodeFieldProps) {
+function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
     const pressedKey = event.key;
     const form = event.currentTarget.form;
@@ -161,7 +158,6 @@ function CodeField({ num, value, disabled = false, fixed = false, autoFocus = un
       pattern="[0-9]"
       placeholder={value}
       disabled={disabled === true ? "disabled" : null}
-      className={fixed === true ? "fixed" : null}
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
       onFocus={(event: FocusEvent<HTMLInputElement>) => event.target.select()}

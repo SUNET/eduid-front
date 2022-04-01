@@ -155,7 +155,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
       <figure className="table-responsive x-adjust">
         <table className="table">
           <tbody>
-            <tr className="device-info-row">
+            <tr className="border-row">
               <td>
                 <FormattedMessage defaultMessage="IP address" description="device info" />
               </td>
@@ -164,7 +164,7 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
                 {props.data.device1_info.addr} {proximity}
               </td>
             </tr>
-            <tr className="device-info-row">
+            <tr className="border-row">
               <td>
                 <FormattedMessage defaultMessage="Description" description="device info" />
               </td>
@@ -249,7 +249,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           description="Use another device, finished"
         />
       </span>
-      <div className="x-adjust">
+      <div className="x-adjust figure">
         <ResponseCodeForm
           extra_className="device2"
           submitDisabled={true}
@@ -258,11 +258,11 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
           handleSubmitCode={handleSubmit}
         />
 
-        <div className="phishing-warning">
+        <div className="warning-text">
           <span className="warning-symbol">
             <FontAwesomeIcon icon={faExclamationCircle} />
           </span>
-          <span className="text-small">
+          <span>
             <FormattedMessage
               defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
               description="Use another device, finished"
