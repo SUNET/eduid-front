@@ -694,7 +694,7 @@ describe("Security Container", () => {
 
     expect(dispatch.mock.calls.length).toEqual(0);
     const wrapper = getWrapper(true, newProps);
-    const btn = wrapper.find("button.btn-remove-webauthn").first();
+    const btn = wrapper.find("button#remove-webauthn").first();
     btn.simulate("click");
     expect(dispatch.mock.calls.length).toEqual(1);
     expect(dispatch.mock.calls[0][0].type).toEqual("POST_WEBAUTHN_WEBAUTHN_REMOVE");

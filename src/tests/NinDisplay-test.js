@@ -65,7 +65,7 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
 
   it("Renders the saved number and show/hide", () => {
     const { wrapper } = setupComponent();
-    const button = wrapper.find("button.show-hide-button");
+    const button = wrapper.find("button#show-hide-button");
     expect(button.exists()).toEqual(true);
     expect(button.length).toEqual(1);
   });
