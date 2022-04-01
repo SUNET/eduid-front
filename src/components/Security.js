@@ -104,13 +104,13 @@ function Security(props) {
                 </EduIDButton>
               </CookieChecker>
             ) : null}
-            <button
+            <EduIDButton
               id="security-webauthn-button"
-              className={isPlatformAuthenticatorAvailable ? "second-option" : "btn btn-primary"}
+              color="primary"
               onClick={props.handleStartAskingKeyWebauthnDescription}
             >
               {translate("security.add_webauthn_token_key")}
-            </button>
+            </EduIDButton>
           </div>
         </div>
       </div>
@@ -171,12 +171,7 @@ function SecurityKeyTable(props) {
       );
     } else {
       btnVerify = (
-        <EduIDButton
-          color="link"
-          size="sm"
-          // className="btn-link nobutton verify-status-label"
-          onClick={props.handleVerifyWebauthnToken}
-        >
+        <EduIDButton color="link" size="sm" onClick={props.handleVerifyWebauthnToken}>
           {translate("security.verify")}
         </EduIDButton>
       );
