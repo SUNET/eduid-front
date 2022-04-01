@@ -13,7 +13,6 @@ const DeleteGroup = ({ groupId, toggleGroupsListOrEditGroup }) => {
       <EduIDButton
         type="submit"
         color="primary"
-        // className="settings-button"
         onClick={() => {
           dispatch(deleteGroup(groupId));
           toggleGroupsListOrEditGroup("");

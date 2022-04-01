@@ -94,12 +94,13 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
 
 button.btn:hover {
   border: none;
-}
-
-button.btn-primary:hover,
-button.btn-secondary:hover {
   transform: scale(0.95);
 }
+
+// button.btn-primary:hover,
+// button.btn-secondary:hover {
+//   transform: scale(0.95);
+// }
 
 button.btn-primary:hover {
   background-color: $orange-highlight;
@@ -128,8 +129,7 @@ button.close:hover {
 }
 
 /* MODALS */
-a.btn.modal-button,
-button.btn.modal-button,
+a.btn,
 button#accept-tou-button {
   box-shadow: none;
   border: solid 1px transparent;
@@ -173,12 +173,14 @@ button.btn-close {
   background-color: transparent;
   padding: 1rem 1rem 0;
   margin: 0 !important;
-  height: 100%;
+  box-shadow: none;
 
-  & svg {
-    fill: $close;
-    align-self: center;
-  }
+  // height: 100%;
+
+  // & svg {
+  //   fill: $close;
+  //   align-self: center;
+  // }
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -188,25 +190,29 @@ button.btn-close {
     background-color: transparent;
     box-shadow: none;
   }
+
+  &.btn-sm {
+    font-size: 0.7rem;
+  }
 }
 
 // ----- buttons that captcha, reset-password cancel ----  //
-button.cancel-button {
-  color: $black;
-  margin: 0.5rem 1rem !important;
-  padding: 1rem;
-  box-shadow: none;
-  background-color: transparent;
+// button.cancel-button {
+//   color: $black;
+//   margin: 0.5rem 1rem !important;
+//   padding: 1rem;
+//   box-shadow: none;
+//   background-color: transparent;
 
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    color: $gray;
-    background-color: transparent;
-    border: solid 1px $gray;
-  }
-}
+//   &:hover,
+//   &:not(:disabled):not(.disabled):active,
+//   &:not(:disabled):not(.disabled):focus,
+//   &:not(:disabled):not(.disabled):active:focus {
+//     color: $gray;
+//     background-color: transparent;
+//     border: solid 1px $gray;
+//   }
+// }
 
 /* styles for REMOVE icons */
 // ----- buttons that remove data ----  //
@@ -283,6 +289,14 @@ button.btn-link {
   &.btn-sm {
     font-size: 0.75rem;
   }
+
+  &.lowercase {
+    text-transform: lowercase;
+
+    &.hide {
+      display: none;
+    }
+  }
 }
 
 .modal-footer button.delete-button {
@@ -315,6 +329,20 @@ button.btn-link {
   }
 }
 
+.flex-buttons {
+  display: flex;
+  column-gap: 1rem;
+  margin: 1em 0 0;
+
+  button {
+    min-width: 100px;
+  }
+
+  button[type="submit"] {
+    order: 2;
+  }
+}
+
 /* Instance/icon unique styles to be set in targeted css */
 button.icon-only {
   @extend .icon;
@@ -331,8 +359,8 @@ button.icon-only {
     font-size: 0.9rem;
   }
 
-  button.modal-button.ok-button,
-  a.modal-button.ok-button,
+  button.ok-button,
+  a.ok-button,
   button.btn-secondary,
   #security-webauthn-button,
   #connect-orcid-button,
@@ -341,8 +369,7 @@ button.icon-only {
   }
 
   button.btn.btn-link,
-  .delete-button,
-  #add-more-button {
+  .delete-button {
     width: auto;
     padding: 0;
   }

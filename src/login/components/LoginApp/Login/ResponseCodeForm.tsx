@@ -1,7 +1,4 @@
-// import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
 import EduIDButton from "../../../../components/EduIDButton";
-// import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
-
 import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";

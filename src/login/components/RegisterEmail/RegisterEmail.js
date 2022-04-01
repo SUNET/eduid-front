@@ -41,7 +41,6 @@ const EmailForm = (props) => {
       />
       <EduIDButton
         color="primary"
-        // className="settings-button"
         id="register-button"
         disabled={props.invalid}
         onClick={() => props.dispatch(submit("emailForm"))}

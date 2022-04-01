@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect } from "react";
-// import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import EduIDButton from "components/EduIDButton";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";

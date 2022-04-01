@@ -1,7 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-// import ButtonPrimary from "../Buttons/ButtonPrimary";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
 import CustomInput from "../Inputs/CustomInput";
 import validatePersonalData from "../../app_utils/validation/validatePersonalData";

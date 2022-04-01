@@ -1,6 +1,6 @@
+import EduIDButton from "components/EduIDButton";
 import React, { Component, Fragment } from "react";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
-import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
 
 export const RenderOwnerList = (props) => {
   let owners = props.group.owners;
@@ -85,8 +85,9 @@ class GroupListItem extends Component {
             </button>
           </div>
           <div className="list-cell">
-            <ButtonRemoveData
-              className="icon-button"
+            <EduIDButton
+              color="close"
+              size="sm"
               onClick={() => {
                 console.log("you clicked the cross");
               }}

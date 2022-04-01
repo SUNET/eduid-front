@@ -34,13 +34,7 @@ const SecurityKeyButton = ({
             return (
               <Fragment key={security}>
                 {
-                  <EduIDButton
-                    color="primary"
-                    // className={"settings-button"}
-                    id="extra-security-key"
-                    key={security}
-                    onClick={ShowSecurityKey}
-                  >
+                  <EduIDButton color="primary" id="extra-security-key" key={security} onClick={ShowSecurityKey}>
                     {translate("login.mfa.primary-option.button")}
                   </EduIDButton>
                 }
@@ -90,7 +84,6 @@ const SecurityWithSMSButton = ({
             {
               <EduIDButton
                 color="primary"
-                // className={"settings-button"}
                 id="extra-security-phone"
                 key={phone.index}
                 onClick={() => sendConfirmCode(phone)}
@@ -209,7 +202,6 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
               <EduIDButton
                 type="submit"
                 color="primary"
-                // className="settings-button"
                 id="extra-security-freja"
                 onClick={() => {
                   window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${currentPage}`;

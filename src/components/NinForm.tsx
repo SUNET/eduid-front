@@ -5,7 +5,6 @@ import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
 import CustomInput from "../login/components/Inputs/CustomInput";
-import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import { useIntl } from "react-intl";
 import { translate } from "login/translation";
 import { DashboardRootState } from "dashboard-init-app";

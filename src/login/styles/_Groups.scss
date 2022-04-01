@@ -14,7 +14,6 @@ article {
       background-color: transparent;
       box-shadow: 0 0 0;
       border: none;
-      text-transform: lowercase;
       margin: 0 0 1rem;
       height: 100%;
 
@@ -338,12 +337,6 @@ button.accept {
     }
   }
 
-  // .settings-button {
-  //   width: fit-content;
-  //   align-self: center;
-  //   margin-bottom: 1rem;
-  // }
-
   .delete-group,
   .edit-invite {
     display: flex;
@@ -416,12 +409,6 @@ button.accept {
       }
     }
   }
-
-  // .settings-button {
-  //   width: fit-content;
-  //   align-self: center;
-  //   margin-bottom: 1rem;
-  // }
 }
 
 .transparent {

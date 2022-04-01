@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-// import ButtonPrimary from "../../Buttons/ButtonPrimary";
 import EduIDButton from "../../../../components/EduIDButton";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";

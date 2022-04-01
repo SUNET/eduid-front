@@ -88,12 +88,7 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
             <FormattedMessage defaultMessage="go back" description="Set new password (go back to eduID button)" />
           </EduIDButton>
         )}
-        <EduIDButton
-          color="primary"
-          // className="settings-button"
-          id="new-password-button"
-          disabled={props.invalid}
-        >
+        <EduIDButton color="primary" id="new-password-button" disabled={props.invalid}>
           <FormattedMessage defaultMessage="accept password" description="Set new password (accept button)" />
         </EduIDButton>
       </div>

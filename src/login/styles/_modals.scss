@@ -23,13 +23,14 @@
   & .close-button-container {
     display: flex;
     justify-content: flex-end;
+    margin: 1rem 0.5rem 0;
   }
 
   padding: 0 0 1.5rem 2.25rem;
 }
 
 h5.modal-title {
-  font-family: "ProximaNova-Bold";
+  font-family: ProximaNova-Bold;
   line-height: 1.4;
   font-size: 1.25rem;
 }
@@ -41,6 +42,10 @@ h5.modal-title {
   & .modal-header {
     border-bottom: none;
     padding: 0;
+
+    // .btn-close {
+    //   background: none;
+    // }
   }
 
   & .modal-body {
@@ -49,10 +54,6 @@ h5.modal-title {
     flex-direction: column;
     font-size: 1.25rem;
     line-height: 1.4;
-
-    // & button.btn.settings-button {
-    //   margin: 0 0 1rem;
-    // }
 
     & input {
       background-color: $light-gray;
@@ -193,19 +194,7 @@ p.modal-text {
   }
 
   .modal-content {
-    // .modal-title {
-    // & span {
-    // font-size: 1rem;
-    // padding: 1rem 0 0 1rem;
-    // }
-    // }
     & .modal-body {
-      // padding: 1rem;
-      // font-size: 1rem;
-      // & button.btn.settings-button {
-      //   margin: 0 0 1rem;
-      // }
-
       & .form-control,
       & input {
         font-size: 1.25rem;

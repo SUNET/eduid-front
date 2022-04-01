@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../translation/InjectIntl_HOC_factory";
-
 import DataStatus from "./DataStatus/DataStatus";
-import ButtonRemoveData from "../../Buttons/ButtonRemoveData";
+import EduIDButton from "components/EduIDButton";
 
 class DataTableRow extends Component {
   render() {
@@ -37,7 +36,7 @@ class DataTableRow extends Component {
               handleMakePrimary={this.props.handleMakePrimary}
             />
             <td className="remove-data">
-              <ButtonRemoveData className="icon-button" onClick={this.props.handleRemove} />
+              <EduIDButton color="close" size="sm" onClick={this.props.handleRemove} />
             </td>
           </tr>
         );

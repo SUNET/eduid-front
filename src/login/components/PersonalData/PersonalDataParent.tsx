@@ -1,8 +1,6 @@
 import React, { Fragment, useState } from "react";
 import PersonalDataForm from "./PersonalDataForm";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
-// import ButtonPrimary from "../Buttons/ButtonPrimary";
-import { CloseButton } from "../../components/GroupManagement/Groups/CreateGroup";
 import { translate } from "login/translation";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { useIntl } from "react-intl";
@@ -62,9 +60,7 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
       <div className="edit-data">
         <div className="title button-pair">
           <p>{translate("pd.edit.title")}</p>
-          <button id="cancel-edit-data" type="button" onClick={() => props.setEditMode(false)}>
-            <CloseButton />
-          </button>
+          <EduIDButton color="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
         </div>
         <PersonalDataForm isVerifiedNin={isVerifiedNin} {...props} />
       </div>
@@ -82,7 +78,7 @@ const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }: RenderEd
   <Fragment>
     {isEditMode ||
       (hasPersonalData && (
-        <EduIDButton color="link" onClick={() => setEditMode(true)}>
+        <EduIDButton color="link" className="lowercase" onClick={() => setEditMode(true)}>
           {translate("pd.edit.button")}
         </EduIDButton>
       ))}

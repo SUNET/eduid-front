@@ -6,7 +6,6 @@ import React, { useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { useHistory } from "react-router";
 import { ButtonGroup } from "reactstrap";
-import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
@@ -90,17 +89,12 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
                 type="submit"
                 id="chpass-button"
                 color="primary"
-                // className="settings-button"
                 disabled={formProps.submitting || formProps.invalid}
                 onClick={formProps.handleSubmit}
               >
                 {translate("chpass.button_save_password")}
               </EduIDButton>
-              <EduIDButton
-                color="secondary"
-                // className="cancel-button"
-                onClick={handleCancel}
-              >
+              <EduIDButton color="secondary" onClick={handleCancel}>
                 {translate("cm.cancel")}
               </EduIDButton>
             </div>
