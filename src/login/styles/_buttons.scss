@@ -1,35 +1,5 @@
 @import "./variables.scss";
 
-// --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
-// Login, Logout button in Header
-// .header-button {
-//   text-transform: none;
-//   margin-top: 0;
-//   margin-bottom: 0;
-//   font-family: "Akkurat";
-//   color: $orange-highlight;
-//   background-color: $white;
-//   box-shadow: none;
-//   border: solid 2px $orange-highlight;
-//   padding: 0.5rem 1rem;
-//   height: auto;
-//   text-transform: uppercase;
-//   font-size: 0.8rem;
-
-//   &:hover {
-//     transform: scale(0.95);
-//   }
-
-//   span:hover {
-//     color: $orange-highlight;
-//   }
-
-//   svg {
-//     transform: none;
-//     margin-right: 6px;
-//   }
-// }
-
 .btn.disabled,
 .btn:disabled {
   opacity: 0.4;
@@ -45,8 +15,6 @@ button.btn {
   text-transform: uppercase;
   height: 3rem;
   border-radius: 20px;
-
-  // margin: 1rem 0 2rem;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
   transition: all 0.5s ease;
   outline: 0;
@@ -78,11 +46,8 @@ button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
 button.btn-secondary:not(:disabled):not(.disabled):active:focus,
 button.btn-secondary:not(:disabled):not(.disabled):hover {
-  // margin-top: 1rem;
   color: $orange-highlight;
   border: solid 2px $orange-highlight;
-
-  // text-transform: uppercase;
   background-color: $white;
   box-shadow: none;
 
@@ -95,11 +60,6 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
     margin-top: 0;
     margin-bottom: 0;
   }
-}
-
-.btn:not(.disabled):hover {
-  border: none;
-  transform: scale(0.95);
 }
 
 // button.btn-primary:hover {
@@ -264,7 +224,6 @@ button.btn-close {
 // }
 
 /* styles for links that are also buttons */
-a.btn-link,
 button.btn-link {
   background-color: transparent;
   color: $orange-highlight;

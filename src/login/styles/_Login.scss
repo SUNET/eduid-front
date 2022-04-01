@@ -39,7 +39,7 @@
   }
 }
 
-a.btn-link {
+a {
   margin: 0.5rem 0;
   display: inline-block;
 
@@ -52,7 +52,7 @@ a.btn-link {
   }
 }
 
-a.btn-link.disabled {
+a .disabled {
   color: $gray;
   text-decoration: none;
 

@@ -28,7 +28,7 @@ class ConfirmModal extends Component {
     if (with_resend_link) {
       resendMarkup = (
         <div className="resend-code-container">
-          <a href="#" onClick={handleResend} className="btn-link">
+          <a href="#" onClick={handleResend}>
             {resendText}
           </a>
         </div>
