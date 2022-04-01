@@ -255,14 +255,9 @@ a.send-link.disabled {
 }
 
 .use-another-device {
-  $clock_size: 1.25rem;
-
-  font-size: 1rem;
-
   .buttons {
     display: flex;
     column-gap: 1rem;
-    margin: 1em 0 0;
 
     button {
       min-width: 100px;
@@ -287,98 +282,52 @@ a.send-link.disabled {
         margin-bottom: 1.5rem;
       }
     }
-
-    &.device2 {
-      margin-top: 0;
-    }
   }
 
-  .response-code-input-wrapper {
-    .response-code-inputs {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;
-      background: $white;
-      padding: 1.5rem 1rem;
-      width: 100%;
+  .response-code-inputs {
+    input {
+      display: inline-block;
+      border: 1px solid $gray;
+      font-size: 1.75rem;
+      margin: 5px;
+      width: 2.5rem;
+      text-align: center;
 
+      &:focus {
+        box-shadow: none;
+        border: 2px solid $black;
+        position: relative;
+      }
+
+      &:nth-child(3) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media (max-width: $bp-md) {
       input {
-        display: inline-block;
-        border: 1px solid $gray;
-        font-size: 1.75rem;
-        margin: 5px 10px 5px 0;
-        width: 2.5rem;
-        text-align: center;
-
-        &:focus {
-          box-shadow: none;
-          border: 2px solid $black;
-          position: relative;
-        }
+        margin: 5px -1px 5px 0;
 
         &:nth-child(3) {
-          margin-right: 1.5rem;
-        }
-      }
-
-      input.fixed {
-        // the pure-text "inputs", S, K and -
-        color: $gray;
-
-        &[value="-"] {
-          border: none;
-          width: 1.5rem;
-        }
-      }
-
-      .nowrap-group {
-        flex-wrap: nowrap;
-      }
-
-      input[type="number"]::-webkit-outer-spin-button,
-      input[type="number"]::-webkit-inner-spin-button {
-        appearance: none;
-        margin: 0;
-      }
-
-      input[type="number"] {
-        appearance: textfield;
-      }
-
-      @media (max-width: $bp-md) {
-        input {
-          margin: 5px 0;
-          width: 2.25rem;
-
-          &:not(:last-child):not(:nth-child(3n)) {
-            margin-right: -1px;
-          }
-        }
-      }
-    }
-
-    &.device2 .response-code-inputs {
-      //background-color: $white;
-      width: fit-content;
-      padding: 0.5rem 1rem;
-
-      input {
-        border: none;
-        width: 1.75rem;
-        padding: 0;
-
-        &.fixed {
-          // the pure-text "inputs", S, K and -
-          color: initial;
+          margin-right: 1rem;
         }
       }
     }
   }
 
-  .device-info-row {
-    font-size: 0.8rem;
-    border-bottom: 1px solid $dark-gray;
+  &.device1 .response-code-inputs {
+    @extend .figure;
+  }
+  &.device2 .response-code-inputs {
+    input {
+      border: none;
+      width: 1.75rem;
+      padding: 0;
+
+      &:nth-child(3) {
+        margin-right: 1rem;
+      }
+    }
   }
 
   .expiration-info {
@@ -387,55 +336,17 @@ a.send-link.disabled {
     @extend .x-adjust;
   }
 
-  // TODO make timer component (login, reset pw..)
   .expires-meter {
-    color: $black;
-    font-size: 1.25rem;
-    text-align: center;
-
     @media (min-width: $bp-md) {
       position: absolute;
       bottom: 2.75rem;
       right: 0;
     }
-
-    .expires-symbol {
-      padding-right: 0.5rem;
-      line-height: 1;
-
-      svg {
-        height: $clock_size;
-        width: $clock_size;
-        transform: rotate(0);
-      }
-    }
-
-    meter {
-      width: 50%;
-    }
-
-    .timer {
-      margin-top: 0;
-      font-family: Akkurat;
-    }
-
-    &.circular {
-      border: 2px solid lightgrey;
-      border-radius: 100%;
-      width: 4rem;
-      height: 4rem;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      color: green;
-      font-size: 0.9rem;
-
-      .expires-symbol {
-        display: none;
-      }
-    }
   }
 
+  form.response-code-form {
+    margin-top: 0;
+  }
   .finished.device2 {
     $warning_size: 1.5rem;
 
@@ -444,31 +355,7 @@ a.send-link.disabled {
     row-gap: 1rem;
 
     .response-code-form {
-      background: $white;
-      flex-direction: row;
-      justify-content: center;
       align-items: center;
-      padding-top: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .phishing-warning {
-      display: flex;
-      align-items: center;
-      font-size: 1rem;
-      color: $dark-orange;
-      background: $white;
-      padding: 0 1rem 1.5rem;
-
-      .warning-symbol {
-        padding-right: 0.5rem;
-
-        svg {
-          height: $warning_size * 0.75;
-          width: $warning_size * 0.75;
-          transform: rotate(0);
-        }
-      }
     }
   }
 
@@ -496,36 +383,5 @@ a.send-link.disabled {
     font-size: 0.8rem;
     justify-content: flex-end;
     word-wrap: break-word;
-  }
-}
-
-/* Move to List component */
-.listed-steps {
-  margin-left: $list-indent;
-
-  li {
-    font-size: 1.25rem;
-    line-height: 1.25;
-    margin-bottom: 1.5em;
-
-    &::marker {
-      font-size: 1em;
-      font-family: Akkurat;
-      font-weight: bold;
-    }
-  }
-}
-
-/* Move to Figure component */
-figure {
-  background: $white;
-  text-align: center;
-  margin: 1em 0 2em;
-  padding: 1em 1em 1.5em;
-
-  figcaption {
-    font-size: 1rem;
-    font-weight: bold;
-    font-family: Akkurat;
   }
 }

@@ -63,28 +63,8 @@ select {
   }
 }
 
-.heading-4 {
-  font-size: 1.5rem;
-  line-height: 2.125rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-/* Possible utility-classes */
-.text-large {
-  font-size: 1.25rem;
-}
-.text-small {
-  font-size: 0.9rem;
-}
-
 .ladok-university-name {
   flex-grow: 1;
   text-align: right;
   white-space: nowrap;
-}
-
-strong {
-  font-weight: bold;
-  @extend b;
 }
