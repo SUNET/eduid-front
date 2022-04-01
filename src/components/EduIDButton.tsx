@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 
 interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   id?: string;
+  color: string;
   size?: string;
 }
 
