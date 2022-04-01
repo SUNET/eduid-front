@@ -193,23 +193,7 @@ function SecurityKeyTable(props) {
         </td>
         <td>{btnVerify}</td>
         <td>
-          <EduIDButton
-            color="link"
-            // className="btn-link btn-remove-webauthn"
-            onClick={props.handleRemoveWebauthnToken}
-          >
-            <svg
-              className="remove"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M7 0h2v16H7z" />
-              <path d="M0 9V7h16v2z" />
-            </svg>
-          </EduIDButton>
+          <EduIDButton color="close" size="sm" onClick={props.handleRemoveWebauthnToken}></EduIDButton>
         </td>
       </tr>
     );
