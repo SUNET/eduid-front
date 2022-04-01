@@ -5,43 +5,19 @@ import i18n from "../../../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeButtonId, closeModal }) => {
-  return (
-    <EduIDButton id={closeButtonId} color="close" className="float-right" onClick={closeModal}>
-      {/* <svg
-          className="remove"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M7 0h2v16H7z" />
-          <path d="M0 9V7h16v2z" />
-        </svg> */}
-    </EduIDButton>
-  );
+  return <EduIDButton id={closeButtonId} color="close" className="float-right" onClick={closeModal}></EduIDButton>;
 };
 
 const RenderAcceptButton = ({ href, acceptButtonId, acceptModal, acceptButtonText, translate }) => {
   return href ? (
     <>
-      <EduIDButton
-        id={acceptButtonId}
-        color="primary"
-        // className="modal-button ok-button"
-        href={href}
-      >
+      <EduIDButton id={acceptButtonId} color="primary" href={href}>
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>
   ) : (
     <>
-      <EduIDButton
-        id={acceptButtonId}
-        color="primary"
-        // className="modal-button ok-button"
-        onClick={acceptModal}
-      >
+      <EduIDButton id={acceptButtonId} color="primary" onClick={acceptModal}>
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>

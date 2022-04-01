@@ -39,7 +39,7 @@
   }
 }
 
-a.send-link {
+a.btn-link {
   margin: 0.5rem 0;
   display: inline-block;
 
@@ -52,7 +52,7 @@ a.send-link {
   }
 }
 
-a.send-link.disabled {
+a.btn-link.disabled {
   color: $gray;
   text-decoration: none;
 

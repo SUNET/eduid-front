@@ -1,5 +1,4 @@
 import React from "react";
-import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import EduIDButton from "components/EduIDButton";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import { useAppSelector } from "../../../app_init/hooks";

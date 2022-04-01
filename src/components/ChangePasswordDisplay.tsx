@@ -42,7 +42,6 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
           <EduIDButton
             id="security-change-button"
             color="link"
-            // className="btn-link"
             onClick={() => {
               setShowModal(true);
             }}

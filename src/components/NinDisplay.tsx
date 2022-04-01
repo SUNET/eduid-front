@@ -40,7 +40,6 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
       <EduIDButton
         color="link"
         size="sm"
-        // className="show-hide-button"
         onClick={() => {
           setShowFullNin(!showFullNin);
         }}
@@ -53,20 +52,7 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
       </EduIDButton>
       {props.showDeleteButton && !nin.verified && (
         // if showDeleteButton is true and nin is not verified, button for deleting of nin number will appear
-        <EduIDButton color="close" size="sm" onClick={handleDelete}>
-          {/* <svg
-            key="0"
-            className="remove"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M7 0h2v16H7z" />
-            <path d="M0 9V7h16v2z" />
-          </svg> */}
-        </EduIDButton>
+        <EduIDButton color="close" size="sm" onClick={handleDelete}></EduIDButton>
       )}
     </div>
   );
