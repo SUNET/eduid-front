@@ -11,9 +11,9 @@
     line-height: $line-height;
   }
 
-  button.btn {
-    width: fit-content;
-  }
+  // button.btn {
+  //   width: fit-content;
+  // }
 }
 
 // username and password
@@ -145,33 +145,36 @@ a .disabled {
       padding: 1rem;
       width: 350px;
       height: 168px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }
 
 // styles to counteract bootstrap button styles (.mfa)
-.option {
-  button,
-  button:active,
-  button:focus,
-  button:active:focus {
-    margin-top: 2.75rem;
-    margin-bottom: 0;
-  }
-}
+// .option {
+//   button,
+//   button:active,
+//   button:focus,
+//   button:active:focus {
+//     margin-top: 2.75rem;
+//     margin-bottom: 0;
+//   }
+// }
 
 .mfa .secondary .option {
-  button,
-  button:active,
-  button:focus,
-  button:active:focus {
-    color: $orange-highlight;
-    border: none;
-    border: solid 2px $orange-highlight;
-    background-color: $white;
-    text-transform: uppercase;
-    margin-top: 2.75rem;
-    margin-bottom: 0;
+  // button,
+  // button:active,
+  // button:focus,
+  // button:active:focus {
+  //   color: $orange-highlight;
+  //   border: none;
+  //   border: solid 2px $orange-highlight;
+  //   background-color: $white;
+  //   text-transform: uppercase;
+  //   margin-top: 2.75rem;
+  //   margin-bottom: 0;
 
     .verbatim {
       text-transform: none;
@@ -234,7 +237,7 @@ a .disabled {
       width: auto;
 
       button {
-        min-width: 100px;
+        // min-width: 100px;
 
         &:nth-child(n + 2) {
           margin-left: 1rem;
@@ -318,6 +321,7 @@ a .disabled {
   &.device1 .response-code-inputs {
     @extend .figure;
   }
+
   &.device2 .response-code-inputs {
     input {
       border: none;
@@ -347,6 +351,7 @@ a .disabled {
   form.response-code-form {
     margin-top: 0;
   }
+
   .finished.device2 {
     $warning_size: 1.5rem;
 
