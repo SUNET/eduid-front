@@ -10,9 +10,8 @@
   margin-top: 1rem;
 }
 
-#emailsview-form,
-#phonesview-form,
-#nin-form {
+// single input form, single input and button in a form
+.single-input-form {
   flex-direction: row;
 
   & button {
@@ -52,9 +51,7 @@
 }
 
 @media (max-width: $bp-sm) {
-  #emailsview-form,
-  #phonesview-form,
-  #nin-form {
+  .single-input-form {
     flex-direction: column;
     align-items: unset;
 

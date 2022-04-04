@@ -40,7 +40,7 @@ let PhoneForm = (props) => {
   });
 
   return (
-    <Form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="phonesview-form" role="form" onSubmit={props.handleAdd} className="single-input-form">
       <fieldset id="phone-form" className="tabpane">
         <Field
           label={translate("profile.phone_display_title")}

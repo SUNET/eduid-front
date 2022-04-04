@@ -22,7 +22,7 @@ let EmailForm = (props) => {
     description: "placeholder text for email input",
   });
   return (
-    <Form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="emailsview-form" role="form" onSubmit={props.handleAdd} className="single-input-form">
       <fieldset id="emails-form" className="tabpane">
         <Field
           label={translate("profile.email_display_title")}
