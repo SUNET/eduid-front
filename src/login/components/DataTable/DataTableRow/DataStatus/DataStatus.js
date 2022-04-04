@@ -12,14 +12,14 @@ class DataStatus extends Component {
         dataStatus = <label>{this.props.translate("tl.primary")}</label>;
       } else {
         dataStatus = (
-          <EduIDButton color="link" size="sm" onClick={this.props.handleMakePrimary}>
+          <EduIDButton buttonStyle="link" size="sm" onClick={this.props.handleMakePrimary}>
             {this.props.translate("tl.make_primary")}
           </EduIDButton>
         );
       }
     } else {
       dataStatus = (
-        <EduIDButton color="link" size="sm" onClick={this.props.handleStartConfirmation}>
+        <EduIDButton buttonStyle="link" size="sm" onClick={this.props.handleStartConfirmation}>
           {this.props.translate("tl.pending")}
         </EduIDButton>
       );

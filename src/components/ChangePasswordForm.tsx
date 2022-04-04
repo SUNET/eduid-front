@@ -74,7 +74,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
 
             <div id="password-suggestion">
               <ButtonGroup>
-                <EduIDButton color="link" id="pwmode-button" onClick={togglePasswordType}>
+                <EduIDButton buttonStyle="link" id="pwmode-button" onClick={togglePasswordType}>
                   {translate(renderSuggested ? "chpass.button_custom_password" : "chpass.button_suggest_password")}
                 </EduIDButton>
               </ButtonGroup>
@@ -83,13 +83,13 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
               <EduIDButton
                 type="submit"
                 id="chpass-button"
-                color="primary"
+                buttonStyle="primary"
                 disabled={formProps.submitting || formProps.invalid}
                 onClick={formProps.handleSubmit}
               >
                 {translate("chpass.button_save_password")}
               </EduIDButton>
-              <EduIDButton color="secondary" onClick={handleCancel}>
+              <EduIDButton buttonStyle="secondary" onClick={handleCancel}>
                 {translate("cm.cancel")}
               </EduIDButton>
             </div>

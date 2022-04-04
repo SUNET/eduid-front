@@ -77,7 +77,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               type="submit"
               onClick={props.handleLogin}
               id="response-code-submit-button"
-              color="primary"
+              buttonStyle="primary"
               disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
@@ -86,7 +86,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
           {props.handleAbort && (
             <EduIDButton
               type="submit"
-              color="secondary"
+              buttonStyle="secondary"
               onClick={props.handleAbort}
               id="response-code-abort-button"
               disabled={props.submitting}

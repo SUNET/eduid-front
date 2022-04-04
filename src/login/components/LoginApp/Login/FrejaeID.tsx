@@ -20,7 +20,7 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
       <div className="option">
         <p className="heading">{translate("login.mfa.secondary-option.title")}</p>
         <EduIDButton
-          color="secondary"
+          buttonStyle="secondary"
           type="submit"
           onClick={() => {
             window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${startUrl}`;

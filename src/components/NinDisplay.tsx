@@ -38,7 +38,7 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
         {showFullNin ? nin.number : nin.number.replace(/.{4}$/, "****")}
       </p>
       <EduIDButton
-        color="link"
+        buttonStyle="link"
         size="sm"
         onClick={() => {
           setShowFullNin(!showFullNin);
@@ -52,7 +52,7 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
       </EduIDButton>
       {props.showDeleteButton && !nin.verified && (
         // if showDeleteButton is true and nin is not verified, button for deleting of nin number will appear
-        <EduIDButton color="close" size="sm" onClick={handleDelete}></EduIDButton>
+        <EduIDButton buttonStyle="close" size="sm" onClick={handleDelete}></EduIDButton>
       )}
     </div>
   );

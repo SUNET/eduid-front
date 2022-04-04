@@ -23,7 +23,7 @@ class TableList extends Component {
                 <span className="nobutton verify-status-label">{this.props.translate("tl.primary")}</span>
               </td>
               <td className="non-identifier data-remove-button">
-                <EduIDButton color="link" onClick={this.props.handleRemove}>
+                <EduIDButton buttonStyle="link" onClick={this.props.handleRemove}>
                   <svg
                     className="remove"
                     width="16"
@@ -44,12 +44,12 @@ class TableList extends Component {
             <tr className="emailrow make-primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier">
-                <EduIDButton color="link" onClick={this.props.handleMakePrimary}>
+                <EduIDButton buttonStyle="link" onClick={this.props.handleMakePrimary}>
                   {this.props.translate("tl.make_primary")}
                 </EduIDButton>
               </td>
               <td className="non-identifier ">
-                <EduIDButton color="close" onClick={this.props.handleRemove}></EduIDButton>
+                <EduIDButton buttonStyle="close" onClick={this.props.handleRemove}></EduIDButton>
               </td>
             </tr>
           );
@@ -58,12 +58,12 @@ class TableList extends Component {
             <tr className="emailrow make-primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier ">
-                <EduIDButton color="link" onClick={this.props.handleStartConfirmation}>
+                <EduIDButton buttonStyle="link" onClick={this.props.handleStartConfirmation}>
                   {this.props.translate("tl.pending")}
                 </EduIDButton>
               </td>
               <td className="non-identifier">
-                <EduIDButton color="close" onClick={this.props.handleRemove}></EduIDButton>
+                <EduIDButton buttonStyle="close" onClick={this.props.handleRemove}></EduIDButton>
               </td>
             </tr>
           );

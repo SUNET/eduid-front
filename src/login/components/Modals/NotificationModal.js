@@ -5,19 +5,21 @@ import i18n from "../../../login/translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeButtonId, closeModal }) => {
-  return <EduIDButton id={closeButtonId} color="close" className="float-right" onClick={closeModal}></EduIDButton>;
+  return (
+    <EduIDButton id={closeButtonId} buttonStyle="close" className="float-right" onClick={closeModal}></EduIDButton>
+  );
 };
 
 const RenderAcceptButton = ({ href, acceptButtonId, acceptModal, acceptButtonText, translate }) => {
   return href ? (
     <>
-      <EduIDButton id={acceptButtonId} color="primary" href={href}>
+      <EduIDButton id={acceptButtonId} buttonStyle="primary" href={href}>
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>
   ) : (
     <>
-      <EduIDButton id={acceptButtonId} color="primary" onClick={acceptModal}>
+      <EduIDButton id={acceptButtonId} buttonStyle="primary" onClick={acceptModal}>
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>

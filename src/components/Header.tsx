@@ -34,7 +34,7 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   if (props.showLogin) {
     button = (
-      <EduIDButton color="secondary" size="sm" id="login" onClick={handleLogin}>
+      <EduIDButton buttonStyle="secondary" size="sm" id="login" onClick={handleLogin}>
         <FormattedMessage defaultMessage="Log in" description="Header login" />
       </EduIDButton>
     );
@@ -47,13 +47,13 @@ const Header = (props: HeaderProps): JSX.Element => {
       </Fragment>
     );
     button = (
-      <EduIDButton color="secondary" size="sm" id="logout" onClick={handleLogout}>
+      <EduIDButton buttonStyle="secondary" size="sm" id="logout" onClick={handleLogout}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
       </EduIDButton>
     );
   } else if (props.showRegister) {
     button = (
-      <EduIDButton color="secondary" size="sm" id="register" onClick={handleRegister}>
+      <EduIDButton buttonStyle="secondary" size="sm" id="register" onClick={handleRegister}>
         <FormattedMessage defaultMessage="Register" description="Header register" />
       </EduIDButton>
     );

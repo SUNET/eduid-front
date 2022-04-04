@@ -20,7 +20,7 @@ class Orcid extends Component {
                 <td>
                   <div className="flex-between">
                     {orcidAuthor}
-                    <EduIDButton color="link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
+                    <EduIDButton buttonStyle="link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
                       <svg
                         className="remove"
                         width="16"
@@ -49,7 +49,7 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <Fragment>
-          <EduIDButton color="primary" id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
+          <EduIDButton buttonStyle="primary" id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
             <div className="orcid-logo-container">
               <img className="orcid-logo" src={orcidIcon} />
             </div>

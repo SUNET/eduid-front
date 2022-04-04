@@ -97,7 +97,7 @@ function Security(props) {
               <CookieChecker cookieName="show-platform-auth">
                 <EduIDButton
                   id="security-webauthn-platform-button"
-                  color="primary"
+                  buttonStyle="primary"
                   onClick={props.handleStartAskingDeviceWebauthnDescription}
                 >
                   {translate("security.add_webauthn_token_device")}
@@ -106,7 +106,7 @@ function Security(props) {
             ) : null}
             <EduIDButton
               id="security-webauthn-button"
-              color="primary"
+              buttonStyle="primary"
               onClick={props.handleStartAskingKeyWebauthnDescription}
             >
               {translate("security.add_webauthn_token_key")}
@@ -171,7 +171,7 @@ function SecurityKeyTable(props) {
       );
     } else {
       btnVerify = (
-        <EduIDButton color="link" size="sm" onClick={props.handleVerifyWebauthnToken}>
+        <EduIDButton buttonStyle="link" size="sm" onClick={props.handleVerifyWebauthnToken}>
           {translate("security.verify")}
         </EduIDButton>
       );
@@ -188,7 +188,7 @@ function SecurityKeyTable(props) {
         </td>
         <td>{btnVerify}</td>
         <td>
-          <EduIDButton color="close" size="sm" onClick={props.handleRemoveWebauthnToken}></EduIDButton>
+          <EduIDButton buttonStyle="close" size="sm" onClick={props.handleRemoveWebauthnToken}></EduIDButton>
         </td>
       </tr>
     );

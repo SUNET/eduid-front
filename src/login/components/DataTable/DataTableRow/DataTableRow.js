@@ -36,7 +36,7 @@ class DataTableRow extends Component {
               handleMakePrimary={this.props.handleMakePrimary}
             />
             <td className="remove-data">
-              <EduIDButton color="close" size="sm" onClick={this.props.handleRemove} />
+              <EduIDButton buttonStyle="close" size="sm" onClick={this.props.handleRemove} />
             </td>
           </tr>
         );

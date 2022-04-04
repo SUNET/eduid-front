@@ -5,7 +5,7 @@ import ConfirmModalForm from "../../../components/ConfirmModalForm";
 import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeModal }) => {
-  return <EduIDButton color="close" onClick={closeModal}></EduIDButton>;
+  return <EduIDButton buttonStyle="close" onClick={closeModal}></EduIDButton>;
 };
 class ConfirmModal extends Component {
   render() {
@@ -54,7 +54,7 @@ class ConfirmModal extends Component {
             {resendMarkup}
           </ModalBody>
           <ModalFooter>
-            <EduIDButton color="primary" disabled={!formEnabled} onClick={handleConfirm}>
+            <EduIDButton buttonStyle="primary" disabled={!formEnabled} onClick={handleConfirm}>
               {translate("cm.ok")}
             </EduIDButton>
           </ModalFooter>
