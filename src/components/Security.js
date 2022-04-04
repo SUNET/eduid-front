@@ -188,7 +188,12 @@ function SecurityKeyTable(props) {
         </td>
         <td>{btnVerify}</td>
         <td>
-          <EduIDButton buttonStyle="close" size="sm" onClick={props.handleRemoveWebauthnToken}></EduIDButton>
+          <EduIDButton
+            id="remove-webauthn"
+            buttonStyle="close"
+            size="sm"
+            onClick={props.handleRemoveWebauthnToken}
+          ></EduIDButton>
         </td>
       </tr>
     );

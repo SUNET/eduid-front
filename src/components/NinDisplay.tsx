@@ -38,6 +38,7 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
         {showFullNin ? nin.number : nin.number.replace(/.{4}$/, "****")}
       </p>
       <EduIDButton
+        id="show-hide-button"
         buttonStyle="link"
         size="sm"
         onClick={() => {
