@@ -64,6 +64,16 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   }
 }
 
+button.btn-primary:hover,
+button.btn-secondary:hover {
+  transform: scale(0.95);
+
+  &:disabled,
+  .disabled {
+    transform: scale(1);
+  }
+}
+
 /* color for CANCEL and CLOSE buttons in modals */
 // ----- buttons that close modals ----  //
 button.btn-close {
