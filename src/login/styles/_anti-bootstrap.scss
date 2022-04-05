@@ -1,6 +1,6 @@
 @import "./variables.scss";
 
-#nin-form .form-group {
+.single-input-form .form-group {
   margin-bottom: 0;
 
   & .text-muted {
@@ -12,7 +12,7 @@
 .form-control,
 input {
   background-color: white;
-  font-family: "ProximaNova-Regular";
+  font-family: ProximaNova-Regular;
   font-size: 1.5rem;
   font-weight: 500;
   color: #161616;

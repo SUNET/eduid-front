@@ -1,35 +1,5 @@
 @import "./variables.scss";
 
-// --- UNCOMMENT THESE STYLES WHEN UPDATING THE BUTTON STYLE
-// Login, Logout button in Header
-.header-button {
-  text-transform: none;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: "Akkurat";
-  color: $orange-highlight;
-  background-color: $white;
-  box-shadow: none;
-  border: solid 2px $orange-highlight;
-  padding: 0.5rem 1rem;
-  height: auto;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-
-  &:hover {
-    transform: scale(0.95);
-  }
-
-  span:hover {
-    color: $orange-highlight;
-  }
-
-  svg {
-    transform: none;
-    margin-right: 6px;
-  }
-}
-
 .btn.disabled,
 .btn:disabled {
   opacity: 0.4;
@@ -38,14 +8,14 @@
 a.btn,
 button,
 button.btn {
-  font-family: "Akkurat";
+  font-family: Akkurat;
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1rem;
+
+  // line-height: 1rem;
   text-transform: uppercase;
   height: 3rem;
   border-radius: 20px;
-  margin: 1rem 0 2rem;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
   transition: all 0.5s ease;
   outline: 0;
@@ -61,116 +31,56 @@ button.btn {
   }
 }
 
-button,
-button.btn-primary,
-button.btn-primary:not(:disabled):not(.disabled):active,
-button.btn-primary:not(:disabled):not(.disabled):focus,
-button.btn-primary:not(:disabled):not(.disabled):active:focus {
+.btn-primary,
+.btn-primary,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled):focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled):hover {
   color: $white;
   background-color: $orange-highlight;
+  box-shadow: none;
+  min-width: 100px;
 }
 
-button,
 button.btn-secondary,
 button.btn-secondary:not(:disabled):not(.disabled):active,
 button.btn-secondary:not(:disabled):not(.disabled):focus,
 button.btn-secondary:not(:disabled):not(.disabled):active:focus,
 button.btn-secondary:not(:disabled):not(.disabled):hover {
-  // margin-top: 1rem;
   color: $orange-highlight;
   border: solid 2px $orange-highlight;
-  text-transform: uppercase;
   background-color: $white;
   box-shadow: none;
-}
+  min-width: 100px;
 
-button.btn:hover {
-  border: none;
+  /* Login, Logout, Register button in Header */
+  &.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    width: fit-content;
+    height: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 button.btn-primary:hover,
 button.btn-secondary:hover {
   transform: scale(0.95);
-}
-
-button.btn-primary:hover {
-  background-color: $orange-highlight;
-  border: none;
 
   &:disabled,
   .disabled {
-    background-color: $orange-highlight;
-    opacity: 0.4;
-    border: none;
     transform: scale(1);
-  }
-}
-
-button.close {
-  padding: 0.625rem 1.25rem;
-  background-color: transparent;
-  margin: 0;
-  transition: all 0.3s ease;
-  border: none;
-  box-shadow: none;
-}
-
-button.close:hover {
-  transform: scale(1.2);
-}
-
-/* MODALS */
-a.btn.modal-button,
-button.btn.modal-button,
-button#accept-tou-button {
-  box-shadow: none;
-  border: solid 1px transparent;
-  margin: 1rem 2rem;
-  color: $white;
-
-  &:hover {
-    background: transparent;
-    transform: scale(1);
-  }
-
-  &:disabled,
-  .disabled {
-    color: $white;
-    opacity: 0.4;
-    background-color: $orange-highlight;
-    pointer-events: none;
-  }
-}
-
-/* color for OK and ACCEPT buttons in modals */
-// ----- buttons with actions in modals ----  //
-a.ok-button,
-button.ok-button,
-#accept-tou-button {
-  background-color: $orange-highlight;
-
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: $orange-opaque;
-    border: solid 1px $orange-highlight;
-    color: $orange-highlight;
   }
 }
 
 /* color for CANCEL and CLOSE buttons in modals */
 // ----- buttons that close modals ----  //
-button.close-button {
+button.btn-close {
   background-color: transparent;
-  padding: 1rem 1rem 0;
-  margin: 0 !important;
-  height: 100%;
-
-  & svg {
-    fill: $close;
-    align-self: center;
-  }
+  margin: 0;
+  box-shadow: none;
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -180,79 +90,13 @@ button.close-button {
     background-color: transparent;
     box-shadow: none;
   }
-}
 
-// ----- buttons that captcha, reset-password cancel ----  //
-button.cancel-button {
-  color: $black;
-  margin: 0.5rem 1rem !important;
-  padding: 1rem;
-  box-shadow: none;
-  background-color: transparent;
-
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    color: $gray;
-    background-color: transparent;
-    border: solid 1px $gray;
+  &.btn-sm {
+    font-size: 0.7rem;
   }
-}
-
-/* styles for REMOVE icons */
-// ----- buttons that remove data ----  //
-// button.btn.btn-sm,
-button.btn.icon-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: solid 1px transparent;
-  box-shadow: none;
-  margin: 0;
-  padding: 0 1rem;
-  height: auto;
-
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: transparent;
-    border: solid 1px transparent;
-  }
-}
-
-button.btn.table-button.btn.btn-primary,
-button.btn-link.nobutton.verify-status-label {
-  color: #ff500d;
-  font-size: 0.75rem;
-  background-color: transparent;
-  border: solid 1px transparent;
-  box-shadow: none;
-
-  &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
-    background-color: transparent;
-    text-decoration: underline;
-    border: solid 1px transparent;
-    outline: none;
-  }
-}
-
-.show-hide-button {
-  color: #ff500d;
-  font-size: 0.75rem;
-  background-color: transparent;
-  border: solid 1px transparent;
-  box-shadow: none;
-  margin: 0;
 }
 
 /* styles for links that are also buttons */
-a.btn-link,
 button.btn-link {
   background-color: transparent;
   color: $orange-highlight;
@@ -261,6 +105,7 @@ button.btn-link {
   box-shadow: none;
   margin: 0;
   text-decoration: none;
+  padding: 0;
 
   &:hover,
   &:not(:disabled):not(.disabled):active,
@@ -270,37 +115,52 @@ button.btn-link {
     background-color: transparent;
     transform: scale(1);
     text-decoration: underline;
+    box-shadow: none;
   }
-}
 
-.modal-footer button.delete-button {
-  margin: 0.5rem 1rem;
-}
+  &.btn-sm {
+    font-size: 0.75rem;
+  }
 
-// retry/reload icon button
-.icon-text {
-  button,
-  button:active,
-  button:focus,
-  button:active:focus {
-    border: transparent solid 2px;
-    margin-top: 0;
-    padding: 0.75rem;
-    background-color: $white;
-    border-radius: 50%;
+  &.lowercase {
+    text-transform: lowercase;
 
-    &.icon {
-      background-color: $white;
-      height: auto;
-
-      svg {
-        color: $black;
-        height: 1rem;
-        width: 1rem;
-        transform: rotate(0);
-      }
+    &.hide {
+      display: none;
     }
   }
+}
+
+.flex-buttons {
+  display: flex;
+  column-gap: 1rem;
+  margin: 1em 0 0;
+
+  button {
+    min-width: 100px;
+  }
+
+  button[type="submit"] {
+    order: 2;
+  }
+}
+
+// login username-pw / reset-password set-new-password
+.show-hide-button {
+  position: absolute;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 0 0;
+  border: none;
+  cursor: pointer;
+}
+
+.show-hide-button {
+  right: 1rem;
+  color: $black;
+  font-size: 1rem;
 }
 
 /* Instance/icon unique styles to be set in targeted css */
@@ -319,28 +179,13 @@ button.icon-only {
     font-size: 0.9rem;
   }
 
-  .header-button {
-    font-size: 0.9rem;
-  }
-
-  button.modal-button.ok-button,
-  a.modal-button.ok-button,
-  button.btn-secondary,
-  #security-webauthn-button,
-  #connect-orcid-button,
-  #new-password-button {
+  button.btn-primary,
+  button.btn-secondary {
     width: 100%;
   }
 
-  button.btn.btn-link,
-  .delete-button,
-  #security-change-button,
-  #add-more-button {
+  button.btn.btn-link {
     width: auto;
     padding: 0;
-  }
-
-  .show-hide-button {
-    padding: 0.625rem 0.5rem;
   }
 }

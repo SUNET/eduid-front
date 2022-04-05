@@ -5,23 +5,7 @@ import ConfirmModalForm from "../../../components/ConfirmModalForm";
 import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeModal }) => {
-  return (
-    <div className="close-button-container">
-      <EduIDButton className="modal-button close-button" onClick={closeModal}>
-        <svg
-          className="remove"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M7 0h2v16H7z" />
-          <path d="M0 9V7h16v2z" />
-        </svg>
-      </EduIDButton>
-    </div>
-  );
+  return <EduIDButton buttonStyle="close" onClick={closeModal}></EduIDButton>;
 };
 class ConfirmModal extends Component {
   render() {
@@ -44,7 +28,7 @@ class ConfirmModal extends Component {
     if (with_resend_link) {
       resendMarkup = (
         <div className="resend-code-container">
-          <a href="#" onClick={handleResend} className="resend-code">
+          <a href="#" onClick={handleResend}>
             {resendText}
           </a>
         </div>
@@ -62,15 +46,15 @@ class ConfirmModal extends Component {
       >
         <Modal id="confirm-user-data-modal" isOpen={showModal}>
           <ModalHeader>
-            <RenderCloseButton closeModal={closeModal} />
             {title}
+            <RenderCloseButton closeModal={closeModal} />
           </ModalHeader>
           <ModalBody>
             <ConfirmModalForm helpBlock={helpBlock} inputName={id} {...this.props} />
             {resendMarkup}
           </ModalBody>
           <ModalFooter>
-            <EduIDButton className="modal-button ok-button" disabled={!formEnabled} onClick={handleConfirm}>
+            <EduIDButton buttonStyle="primary" disabled={!formEnabled} onClick={handleConfirm}>
               {translate("cm.ok")}
             </EduIDButton>
           </ModalFooter>

@@ -57,7 +57,7 @@
   grid-template-rows: repeat(2, auto);
 
   & label {
-    font-family: "ProximaNova-Bold";
+    font-family: ProximaNova-Bold;
     font-size: 1rem;
     width: 100%;
   }
@@ -70,8 +70,9 @@
   .display-nin-show-hide {
     display: flex;
 
+    // show and hide button
     button {
-      margin-top: 6px;
+      margin: 6px 1rem;
     }
   }
 
@@ -82,7 +83,7 @@
 
     & p {
       font-size: 2.25rem;
-      font-family: "ProximaNova-Regular";
+      font-family: ProximaNova-Regular;
       margin-bottom: 0;
       padding-bottom: 0;
     }
@@ -101,7 +102,7 @@
   }
 
   & .display-data {
-    font-family: "ProximaNova-Light";
+    font-family: ProximaNova-Light;
     font-size: 2rem;
     line-height: 1;
     margin-left: 0.1875rem;

@@ -37,8 +37,10 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
       <p id="nin-number" className={`display-data ${nin.verified ? "verified" : "unverified"}`}>
         {showFullNin ? nin.number : nin.number.replace(/.{4}$/, "****")}
       </p>
-      <button
-        className="show-hide-button"
+      <EduIDButton
+        id="show-hide-button"
+        buttonStyle="link"
+        size="sm"
         onClick={() => {
           setShowFullNin(!showFullNin);
         }}
@@ -48,23 +50,10 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
         ) : (
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
         )}
-      </button>
+      </EduIDButton>
       {props.showDeleteButton && !nin.verified && (
         // if showDeleteButton is true and nin is not verified, button for deleting of nin number will appear
-        <EduIDButton className="icon-button" onClick={handleDelete}>
-          <svg
-            key="0"
-            className="remove"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M7 0h2v16H7z" />
-            <path d="M0 9V7h16v2z" />
-          </svg>
-        </EduIDButton>
+        <EduIDButton buttonStyle="close" size="sm" onClick={handleDelete}></EduIDButton>
       )}
     </div>
   );

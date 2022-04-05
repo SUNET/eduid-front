@@ -5,11 +5,11 @@ import { Field, reduxForm } from "redux-form";
 import * as actions from "actions/Nins";
 
 import CustomInput from "../login/components/Inputs/CustomInput";
-import PrimaryButton from "../login/components/Buttons/ButtonPrimary";
 import { useIntl } from "react-intl";
 import { translate } from "login/translation";
 import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
+import EduIDButton from "./EduIDButton";
 
 const validate = (values: { nin: string }) => {
   let value = values.nin;
@@ -71,7 +71,7 @@ const NinForm = (props: NinFormProps): JSX.Element => {
   };
 
   return (
-    <Form id="nin-form" role="form" onSubmit={handleSubmit(submitNinForm)}>
+    <Form id="nin-form" role="form" onSubmit={handleSubmit(submitNinForm)} className="single-input-form">
       <fieldset id="nins-form" className="tabpane">
         <Field
           component={CustomInput}
@@ -83,9 +83,9 @@ const NinForm = (props: NinFormProps): JSX.Element => {
           helpBlock={translate("nins.input_help_text")}
         />
       </fieldset>
-      <PrimaryButton id="add-nin-button" disabled={!props.valid} type="submit" key="1">
+      <EduIDButton id="add-nin-button" buttonStyle="primary" disabled={!props.valid} type="submit" key="1">
         {translate("emails.button_add")}
-      </PrimaryButton>
+      </EduIDButton>
     </Form>
   );
 };
