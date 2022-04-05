@@ -23,17 +23,23 @@ import {
   makePrimary,
 } from "actions/Emails";
 import { clearNotifications } from "reducers/Notifications";
+import { useDispatch } from "react-redux";
 
 let EmailForm = (props) => {
   const intl = useIntl();
+  const dispatch = useDispatch();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "placeholder.email",
     defaultMessage: "name@example.com",
     description: "placeholder text for email input",
   });
+  const handleAdd = (e) => {
+    e.preventDefault();
+    dispatch(postEmail());
+  };
   return (
-    <Form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="emailsview-form" role="form" onSubmit={handleAdd}>
       <fieldset id="emails-form" className="tabpane">
         <Field
           label={translate("profile.email_display_title")}
@@ -45,12 +51,7 @@ let EmailForm = (props) => {
           helpBlock={translate("emails.input_help_text")}
         />
       </fieldset>
-      <EduIDButton
-        id="email-button"
-        className="settings-button"
-        disabled={!props.valid_email}
-        onClick={props.handleAdd}
-      >
+      <EduIDButton id="email-button" className="settings-button" disabled={!props.valid_email} onClick={handleAdd}>
         {translate("emails.button_add")}
       </EduIDButton>
     </Form>
@@ -147,7 +148,6 @@ Emails.propTypes = {
   emails: PropTypes.array,
   confirming: PropTypes.string,
   handleResend: PropTypes.func,
-  handleAdd: PropTypes.func,
   handleStartConfirmation: PropTypes.func,
   handleStopConfirmation: PropTypes.func,
   handleRemoveEmail: PropTypes.func,
@@ -165,10 +165,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleAdd: (e) => {
-      e.preventDefault();
-      dispatch(postEmail());
-    },
+    // handleAdd: (e) => {
+    //   e.preventDefault();
+    //   dispatch(postEmail());
+    // },
     handleResend: function (e) {
       e.preventDefault();
       dispatch(startResendEmailCode());
