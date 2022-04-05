@@ -4,7 +4,7 @@ import { mount } from "enzyme";
 import expect from "expect";
 import * as actions from "actions/Emails";
 import emailsReducer from "reducers/Emails";
-import EmailsContainer from "containers/Emails";
+import EmailsContainer from "components/Emails";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 
 import {

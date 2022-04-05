@@ -12,6 +12,17 @@ import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
 import EduIDButton from "./EduIDButton";
+import { isValid } from "redux-form";
+import {
+  postEmail,
+  startConfirmation,
+  stopConfirmation,
+  startResendEmailCode,
+  startVerify,
+  startRemove,
+  makePrimary,
+} from "actions/Emails";
+import { clearNotifications } from "reducers/Notifications";
 
 let EmailForm = (props) => {
   const intl = useIntl();
@@ -142,4 +153,60 @@ Emails.propTypes = {
   handleRemoveEmail: PropTypes.func,
 };
 
-export default Emails;
+const mapStateToProps = (state) => {
+  return {
+    emails: state.emails.emails,
+    valid_email: isValid("emails")(state),
+    email: state.emails.email,
+    confirming: state.emails.confirming,
+    resending: state.emails.resending,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleAdd: (e) => {
+      e.preventDefault();
+      dispatch(postEmail());
+    },
+    handleResend: function (e) {
+      e.preventDefault();
+      dispatch(startResendEmailCode());
+      dispatch(stopConfirmation());
+    },
+    handleStartConfirmation: function (e) {
+      dispatch(clearNotifications());
+      const dataNode = e.target.closest("tr.emailrow"),
+        data = {
+          identifier: dataNode.getAttribute("data-identifier"),
+          email: dataNode.getAttribute("data-object"),
+        };
+      dispatch(startConfirmation(data));
+    },
+    handleStopConfirmation: function () {
+      dispatch(stopConfirmation());
+    },
+    handleConfirm: function () {
+      const data = {
+        code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
+      };
+      dispatch(startVerify(data));
+      dispatch(stopConfirmation());
+    },
+    handleRemove: function (e) {
+      const dataNode = e.target.closest("tr.emailrow"),
+        data = {
+          email: dataNode.getAttribute("data-object"),
+        };
+      dispatch(startRemove(data));
+    },
+    handleMakePrimary: (e) => {
+      const dataNode = e.target.closest("tr.emailrow"),
+        data = {
+          email: dataNode.getAttribute("data-object"),
+        };
+      dispatch(makePrimary(data));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Emails);
