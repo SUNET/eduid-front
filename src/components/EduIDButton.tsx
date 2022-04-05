@@ -6,7 +6,7 @@ interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
   size?: string;
   buttonStyle: string;
 }
-// depends on reactstrap props color button will display as primary, secondary, link or close button
+// depends on props.buttonStyle, button will display as primary, secondary, link or close button
 const EduIDButton = (props: EduIDButtonProps) => (
   <Button {...props} size={props.size} color={props.buttonStyle}>
     {props.children}
