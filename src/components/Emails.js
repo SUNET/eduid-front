@@ -23,7 +23,7 @@ import {
   makePrimary,
 } from "actions/Emails";
 import { clearNotifications } from "reducers/Notifications";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 let EmailForm = (props) => {
   const intl = useIntl();
@@ -38,6 +38,10 @@ let EmailForm = (props) => {
     e.preventDefault();
     dispatch(postEmail());
   };
+
+  const emails = useSelector((state) => state.emails.emails);
+  const valid_email = isValid("emails")(emails);
+
   return (
     <Form id="emailsview-form" role="form" onSubmit={handleAdd}>
       <fieldset id="emails-form" className="tabpane">
@@ -51,7 +55,7 @@ let EmailForm = (props) => {
           helpBlock={translate("emails.input_help_text")}
         />
       </fieldset>
-      <EduIDButton id="email-button" className="settings-button" disabled={!props.valid_email} onClick={handleAdd}>
+      <EduIDButton id="email-button" className="settings-button" disabled={!valid_email} onClick={handleAdd}>
         {translate("emails.button_add")}
       </EduIDButton>
     </Form>
@@ -71,6 +75,11 @@ EmailForm = connect((state) => ({
 function Emails(props) {
   const [formClass, setFormClass] = useState("hide");
   const [addLinkClass, setAddLinkClass] = useState("btn-link");
+  const dispatch = useDispatch();
+  const emails = useSelector((state) => state.emails.emails);
+  // const email = useSelector((state) => state.emails.email);
+  const confirming = useSelector((state) => state.emails.confirming);
+  // const resending = useSelector((state) => state.emails.resending);
 
   function showEmailForm() {
     setFormClass("form-content");
@@ -95,8 +104,51 @@ function Emails(props) {
       defaultMessage: "Click the link or enter the code sent to {email} here",
       description: "Title for email code input",
     },
-    { email: props.confirming }
+    { email: confirming }
   );
+
+  const handleResend = (e) => {
+    e.preventDefault();
+    dispatch(startResendEmailCode());
+    dispatch(stopConfirmation());
+  };
+
+  const handleStartConfirmation = (e) => {
+    dispatch(clearNotifications());
+    const dataNode = e.target.closest("tr.emailrow"),
+      data = {
+        identifier: dataNode.getAttribute("data-identifier"),
+        email: dataNode.getAttribute("data-object"),
+      };
+    dispatch(startConfirmation(data));
+  };
+
+  const handleStopConfirmation = () => {
+    dispatch(stopConfirmation());
+  };
+
+  const handleConfirm = () => {
+    const data = {
+      code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
+    };
+    dispatch(startVerify(data));
+    dispatch(stopConfirmation());
+  };
+
+  const handleRemove = (e) => {
+    const dataNode = e.target.closest("tr.emailrow"),
+      data = {
+        email: dataNode.getAttribute("data-object"),
+      };
+    dispatch(startRemove(data));
+  };
+  const handleMakePrimary = (e) => {
+    const dataNode = e.target.closest("tr.emailrow"),
+      data = {
+        email: dataNode.getAttribute("data-object"),
+      };
+    dispatch(makePrimary(data));
+  };
 
   return (
     <div className="emailsview-form-container">
@@ -107,10 +159,10 @@ function Emails(props) {
       <div id="email-display">
         <DataTable
           {...props}
-          data={props.emails}
-          handleStartConfirmation={props.handleStartConfirmation}
-          handleRemove={props.handleRemove}
-          handleMakePrimary={props.handleMakePrimary}
+          data={emails}
+          handleStartConfirmation={handleStartConfirmation}
+          handleRemove={handleRemove}
+          handleMakePrimary={handleMakePrimary}
         />
         <div className={formClass}>
           <EmailForm {...props} />
@@ -131,10 +183,10 @@ function Emails(props) {
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
         placeholder={placeholder}
-        showModal={Boolean(props.confirming)}
-        closeModal={props.handleStopConfirmation}
-        handleResend={props.handleResend}
-        handleConfirm={props.handleConfirm}
+        showModal={Boolean(confirming)}
+        closeModal={handleStopConfirmation}
+        handleResend={handleResend}
+        handleConfirm={handleConfirm}
         helpBlock={translate("emails.confirm_help_text")}
         validationPattern={longCodePattern}
         validationError={"confirmation.code_invalid_format"}
@@ -143,70 +195,4 @@ function Emails(props) {
   );
 }
 
-Emails.propTypes = {
-  longDescription: PropTypes.string,
-  emails: PropTypes.array,
-  confirming: PropTypes.string,
-  handleResend: PropTypes.func,
-  handleStartConfirmation: PropTypes.func,
-  handleStopConfirmation: PropTypes.func,
-  handleRemoveEmail: PropTypes.func,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    emails: state.emails.emails,
-    valid_email: isValid("emails")(state),
-    email: state.emails.email,
-    confirming: state.emails.confirming,
-    resending: state.emails.resending,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // handleAdd: (e) => {
-    //   e.preventDefault();
-    //   dispatch(postEmail());
-    // },
-    handleResend: function (e) {
-      e.preventDefault();
-      dispatch(startResendEmailCode());
-      dispatch(stopConfirmation());
-    },
-    handleStartConfirmation: function (e) {
-      dispatch(clearNotifications());
-      const dataNode = e.target.closest("tr.emailrow"),
-        data = {
-          identifier: dataNode.getAttribute("data-identifier"),
-          email: dataNode.getAttribute("data-object"),
-        };
-      dispatch(startConfirmation(data));
-    },
-    handleStopConfirmation: function () {
-      dispatch(stopConfirmation());
-    },
-    handleConfirm: function () {
-      const data = {
-        code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
-      };
-      dispatch(startVerify(data));
-      dispatch(stopConfirmation());
-    },
-    handleRemove: function (e) {
-      const dataNode = e.target.closest("tr.emailrow"),
-        data = {
-          email: dataNode.getAttribute("data-object"),
-        };
-      dispatch(startRemove(data));
-    },
-    handleMakePrimary: (e) => {
-      const dataNode = e.target.closest("tr.emailrow"),
-        data = {
-          email: dataNode.getAttribute("data-object"),
-        };
-      dispatch(makePrimary(data));
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Emails);
+export default Emails;
