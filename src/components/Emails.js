@@ -1,5 +1,4 @@
 import { translate } from "login/translation";
-import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
 import { connect } from "react-redux";
