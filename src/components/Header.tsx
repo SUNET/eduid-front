@@ -69,7 +69,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         {button}
       </header>
       <div className="vertical-content-margin">
-        <h1 className="tagline">{tagline}</h1>
+        <div className="tagline">{tagline}</div>
       </div>
     </section>
   );

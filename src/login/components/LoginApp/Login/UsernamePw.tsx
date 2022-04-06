@@ -34,9 +34,11 @@ export default function UsernamePw() {
 
   return (
     <div className="username-pw">
-      <h2 className="heading">
-        <FormattedMessage defaultMessage="Log in" description="Login front page" />
-      </h2>
+      <div className="heading-wrapper">
+        <h1 className="heading">
+          <FormattedMessage defaultMessage="Log in" description="Login front page" />
+        </h1>
+      </div>
       <FinalForm<UsernamePwFormData>
         id="login-form"
         aria-label="login form"

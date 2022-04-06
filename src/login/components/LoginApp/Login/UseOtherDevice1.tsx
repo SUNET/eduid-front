@@ -44,9 +44,9 @@ function UseOtherDevice1() {
 
   return (
     <div className="use-another-device device1">
-      <h3 className="heading heading-4">
+      <h1>
         <FormattedMessage defaultMessage="Log in using another device" />
-      </h3>
+      </h1>
 
       {!error && hasQrCode && <RenderOtherDevice1 data={other_device} />}
       {error && <RenderFatalError error={error} />}
