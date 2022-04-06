@@ -22,11 +22,11 @@ import {
   makePrimary,
 } from "actions/Emails";
 import { clearNotifications } from "reducers/Notifications";
-import { useDispatch, useSelector } from "react-redux";
+import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 
 let EmailForm = (props) => {
   const intl = useIntl();
-  const dispatch = useDispatch();
+  const dispatch = useDashboardAppDispatch();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "placeholder.email",
@@ -38,7 +38,7 @@ let EmailForm = (props) => {
     dispatch(postEmail());
   };
 
-  const emails = useSelector((state) => state.emails.emails);
+  const emails = useDashboardAppSelector((state) => state.emails.emails);
   const valid_email = isValid("emails")(emails);
 
   return (
@@ -74,10 +74,10 @@ EmailForm = connect((state) => ({
 function Emails(props) {
   const [formClass, setFormClass] = useState("hide");
   const [addLinkClass, setAddLinkClass] = useState("btn-link");
-  const dispatch = useDispatch();
-  const emails = useSelector((state) => state.emails.emails);
+  const dispatch = useDashboardAppDispatch;
+  const emails = useDashboardAppSelector((state) => state.emails.emails);
   // const email = useSelector((state) => state.emails.email);
-  const confirming = useSelector((state) => state.emails.confirming);
+  const confirming = useDashboardAppSelector((state) => state.emails.confirming);
   // const resending = useSelector((state) => state.emails.resending);
 
   function showEmailForm() {
