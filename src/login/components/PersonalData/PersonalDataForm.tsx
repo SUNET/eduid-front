@@ -96,7 +96,7 @@ const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderS
   return (
     <EduIDButton
       id="personal-data-button"
-      buttonStyle="primary"
+      buttonstyle="primary"
       disabled={loading || pristine || invalid || submitting}
     >
       {translate("button_save")}

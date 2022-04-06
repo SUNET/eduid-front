@@ -22,7 +22,7 @@ class CodeVerified extends Component {
                 </mark>
               </h3>
             </div>
-            <EduIDButton id="gotit-button" buttonStyle="primary" type="submit">
+            <EduIDButton id="gotit-button" buttonstyle="primary" type="submit">
               {this.props.translate("finish.got-it")}
             </EduIDButton>
           </div>

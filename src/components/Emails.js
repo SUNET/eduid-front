@@ -34,7 +34,7 @@ let EmailForm = (props) => {
           helpBlock={translate("emails.input_help_text")}
         />
       </fieldset>
-      <EduIDButton id="email-button" buttonStyle="primary" disabled={!props.valid_email} onClick={props.handleAdd}>
+      <EduIDButton id="email-button" buttonstyle="primary" disabled={!props.valid_email} onClick={props.handleAdd}>
         {translate("emails.button_add")}
       </EduIDButton>
     </Form>
@@ -101,7 +101,7 @@ function Emails(props) {
 
         <EduIDButton
           id="add-more-button"
-          buttonStyle="link"
+          buttonstyle="link"
           className={addLinkClass + " lowercase"}
           onClick={showEmailForm}
         >

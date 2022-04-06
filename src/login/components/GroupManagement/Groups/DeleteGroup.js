@@ -12,7 +12,7 @@ const DeleteGroup = ({ groupId, toggleGroupsListOrEditGroup }) => {
       <p>Deleting the group will permanently remove it from all its users.</p>
       <EduIDButton
         type="submit"
-        buttonStyle="primary"
+        buttonstyle="primary"
         onClick={() => {
           dispatch(deleteGroup(groupId));
           toggleGroupsListOrEditGroup("");

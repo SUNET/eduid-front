@@ -83,7 +83,7 @@ const SecurityKeyUnselected = ({ translate, setSelected }: SecurityKeyUnselected
   return (
     <Fragment>
       <p className="heading">{translate("login.mfa.primary-option.title")}</p>
-      <EduIDButton buttonStyle="primary" type="submit" onClick={showSecurityKey} id="mfa-security-key">
+      <EduIDButton buttonstyle="primary" type="submit" onClick={showSecurityKey} id="mfa-security-key">
         {translate("login.mfa.primary-option.button")}
       </EduIDButton>
     </Fragment>
