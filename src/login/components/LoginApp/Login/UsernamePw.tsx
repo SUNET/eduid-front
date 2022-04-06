@@ -10,13 +10,15 @@ import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
-import { Form as FinalForm, FormRenderProps } from "react-final-form";
+import { Form as FinalForm, FormRenderProps, Field as FinalField } from "react-final-form";
 import EmailInput from "login/components/Inputs/EmailInput";
 import PasswordInput from "login/components/Inputs/PasswordInput";
 import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
+import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
+import { forgetThisDevice } from "./NewDevice";
 
 interface UsernamePwFormData {
   email?: string;
@@ -44,7 +46,7 @@ export default function UsernamePw() {
         render={(formProps: FormRenderProps<UsernamePwFormData>) => {
           return (
             <form onSubmit={formProps.handleSubmit}>
-              <EmailInput name="email" autoFocus={true} required={true} />
+              <UsernameInputPart />
               <PasswordInput name="current-password" />
 
               <div className="flex-between">
@@ -64,6 +66,49 @@ export default function UsernamePw() {
       ></FinalForm>
     </div>
   );
+}
+
+function UsernameInputPart(): JSX.Element {
+  const authn_options = useAppSelector((state) => state.login.authn_options);
+  const dispatch = useAppDispatch();
+
+  function handleClickWrongPerson() {
+    forgetThisDevice(dispatch);
+    // re-fetch '/next' now that the conditions for logging in has changed
+    dispatch(loginSlice.actions.callLoginNext());
+  }
+
+  if (authn_options.forced_username) {
+    return (
+      <React.Fragment>
+        <div>
+          <h2>
+            <FormattedMessage
+              defaultMessage="Welcome back, {username}"
+              description="Login username input"
+              values={{
+                username: <b>{authn_options.display_name}</b>,
+              }}
+            />
+            &nbsp;&nbsp;
+            <EduIDButton buttonstyle="link" id="wrong-person-button" onClick={handleClickWrongPerson}>
+              {<FormattedMessage defaultMessage="Not you?" description="Login username input" />}
+            </EduIDButton>
+          </h2>
+        </div>
+
+        <FinalField
+          required={true}
+          disabled={true}
+          component={TextInput}
+          componentClass="input"
+          name="email"
+          defaultValue={authn_options.forced_username}
+        />
+      </React.Fragment>
+    );
+  }
+  return <EmailInput name="email" autoFocus={true} required={true} />;
 }
 
 function RenderRegisterLink(): JSX.Element {
