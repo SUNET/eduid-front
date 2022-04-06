@@ -5,25 +5,25 @@ td .passwords {
 .register-authn-buttons {
   margin: 1.5rem 0;
 
-  button {
-    margin: 0.5rem 0;
-    width: fit-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-transform: uppercase;
-    padding: 6px 12px;
+  // button {
+  //   margin: 0.5rem 0;
+  //   width: fit-content;
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   text-transform: uppercase;
+  //   padding: 6px 12px;
 
-    &.second-option {
-      @extend .btn-primary;
-    }
+  //   &.second-option {
+  //     @extend .btn-primary;
+  //   }
 
-    + button.second-option {
-      background-color: $white;
-      border: solid 1px $orange-highlight;
-      color: $orange-highlight;
-    }
-  }
+  //   + button.second-option {
+  //     background-color: $white;
+  //     border: solid 1px $orange-highlight;
+  //     color: $orange-highlight;
+  //   }
+  // }
 }
 
 @media (max-width: $bp-xs) {

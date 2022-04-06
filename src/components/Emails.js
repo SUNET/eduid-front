@@ -167,7 +167,12 @@ function Emails(props) {
           <EmailForm {...props} />
         </div>
 
-        <EduIDButton id="add-more-button" className={addLinkClass} onClick={showEmailForm}>
+        <EduIDButton
+          id="add-more-button"
+          buttonStyle="link"
+          className={addLinkClass + " lowercase"}
+          onClick={showEmailForm}
+        >
           {translate("emails.button_add_more")}
         </EduIDButton>
       </div>

@@ -14,7 +14,6 @@ article {
       background-color: transparent;
       box-shadow: 0 0 0;
       border: none;
-      text-transform: lowercase;
       margin: 0 0 1rem;
       height: 100%;
 
@@ -98,7 +97,7 @@ article {
     align-items: baseline;
 
     p {
-      font-family: "ProximaNova-Bold";
+      font-family: ProximaNova-Bold;
     }
 
     button {
@@ -116,7 +115,7 @@ article {
 
   nav {
     display: flex;
-    font-family: "Akkurat";
+    font-family: Akkurat;
     margin-bottom: 1rem;
 
     li {
@@ -161,7 +160,7 @@ article {
     p {
       padding: 0 0 0 0.75rem;
       font-size: 1.5rem;
-      font-family: "ProximaNova-Light";
+      font-family: ProximaNova-Light;
     }
   }
 
@@ -213,7 +212,7 @@ article {
       p {
         padding: 0 0 0 0.75rem;
         font-size: 1.5rem;
-        font-family: "ProximaNova-Light";
+        font-family: ProximaNova-Light;
       }
 
       button {
@@ -231,7 +230,7 @@ article {
           text-decoration: none;
           transform: rotate(180deg);
           transform-origin: center center;
-          font-family: "ProximaNova-Bold";
+          font-family: ProximaNova-Bold;
         }
 
         &.dropdown-open {
@@ -239,7 +238,7 @@ article {
           transform: rotate(0deg);
           text-decoration: none;
           transform-origin: center center;
-          font-family: "ProximaNova-Bold";
+          font-family: ProximaNova-Bold;
         }
       }
     }
@@ -260,7 +259,7 @@ button.accept {
     .list-cell {
       p {
         padding: 0;
-        font-family: "ProximaNova-Regular";
+        font-family: ProximaNova-Regular;
       }
     }
   }
@@ -329,19 +328,13 @@ button.accept {
     font-size: 1.25rem;
     line-height: 1.5;
     margin: 0;
-    font-family: "ProximaNova-Bold";
+    font-family: ProximaNova-Bold;
   }
 
   .invites .title {
     p {
       padding: 0;
     }
-  }
-
-  .settings-button {
-    width: fit-content;
-    align-self: center;
-    margin-bottom: 1rem;
   }
 
   .delete-group,
@@ -370,7 +363,7 @@ button.accept {
     line-height: 1;
   }
 
-  #emailsview-form,
+  .single-input-form,
   #create-invite-form {
     margin-top: 0;
   }
@@ -415,12 +408,6 @@ button.accept {
         margin-bottom: 0.5rem;
       }
     }
-  }
-
-  .settings-button {
-    width: fit-content;
-    align-self: center;
-    margin-bottom: 1rem;
   }
 }
 

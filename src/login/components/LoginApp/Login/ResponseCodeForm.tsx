@@ -1,5 +1,4 @@
-import ButtonPrimary from "login/components/Buttons/ButtonPrimary";
-import ButtonSecondary from "login/components/Buttons/ButtonSecondary";
+import EduIDButton from "../../../../components/EduIDButton";
 import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
@@ -74,28 +73,26 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
           {props.handleLogin && (
-            <ButtonPrimary
+            <EduIDButton
               type="submit"
               onClick={props.handleLogin}
               id="response-code-submit-button"
-              className={"settings-button"}
-              disabled={
-                invalidInputs.length > 0 || props.submitDisabled || props.submitting || props.invalid || props.pristine
-              }
+              buttonStyle="primary"
+              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
             >
               <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-            </ButtonPrimary>
+            </EduIDButton>
           )}
           {props.handleAbort && (
-            <ButtonSecondary
+            <EduIDButton
               type="submit"
+              buttonStyle="secondary"
               onClick={props.handleAbort}
               id="response-code-abort-button"
-              className={"settings-button"}
               disabled={props.submitting}
             >
               <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
-            </ButtonSecondary>
+            </EduIDButton>
           )}
         </div>
       ) : null}

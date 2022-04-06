@@ -10,13 +10,12 @@
   margin-top: 1rem;
 }
 
-#emailsview-form,
-#phonesview-form,
-#nin-form {
+// single input form, single input and button in a form
+.single-input-form {
   flex-direction: row;
 
   & button {
-    margin: 1.6rem 0 0 1rem;
+    margin: 1.3rem 0 0 1rem;
   }
 }
 
@@ -35,14 +34,6 @@
   color: $orange-highlight;
 }
 
-#add-more-button {
-  text-transform: lowercase;
-
-  &.hide {
-    display: none;
-  }
-}
-
 .form-content {
   width: 100%;
 }
@@ -52,9 +43,7 @@
 }
 
 @media (max-width: $bp-sm) {
-  #emailsview-form,
-  #phonesview-form,
-  #nin-form {
+  .single-input-form {
     flex-direction: column;
     align-items: unset;
 

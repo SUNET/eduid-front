@@ -6,34 +6,20 @@ import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeButtonId, closeModal }) => {
   return (
-    <div className="close-button-container">
-      <EduIDButton id={closeButtonId} className="modal-button close-button" onClick={closeModal}>
-        <svg
-          className="remove"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M7 0h2v16H7z" />
-          <path d="M0 9V7h16v2z" />
-        </svg>
-      </EduIDButton>
-    </div>
+    <EduIDButton id={closeButtonId} buttonStyle="close" className="float-right" onClick={closeModal}></EduIDButton>
   );
 };
 
 const RenderAcceptButton = ({ href, acceptButtonId, acceptModal, acceptButtonText, translate }) => {
   return href ? (
     <>
-      <EduIDButton id={acceptButtonId} className="modal-button ok-button" href={href}>
+      <EduIDButton id={acceptButtonId} buttonStyle="primary" href={href}>
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>
   ) : (
     <>
-      <EduIDButton id={acceptButtonId} className="modal-button ok-button" onClick={acceptModal}>
+      <EduIDButton id={acceptButtonId} buttonStyle="primary" onClick={acceptModal}>
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>
@@ -71,13 +57,13 @@ class NotificationModal extends Component {
       <div id={modalId} tabIndex="-1" role="dialog" aria-hidden="true" data-backdrop="true">
         <Modal isOpen={showModal} className={modalId}>
           <ModalHeader>
+            {title}
             <RenderCloseButton
               closeButtonId={closeButtonId}
               closeModal={closeModal}
               translate={translate}
               closeButtonText={closeButtonText}
             />
-            {title}
           </ModalHeader>
           <RenderModalBody modalId={modalId} mainText={mainText} />
           <ModalFooter>
