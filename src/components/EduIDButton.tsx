@@ -4,11 +4,11 @@ import { Button } from "reactstrap";
 interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   id?: string;
   size?: string;
-  buttonStyle?: string;
+  buttonstyle: string;
 }
-// depends on props.buttonStyle, button will display as primary, secondary, link or close button
+// depends on props.buttonstyle, button will display as primary, secondary, link or close button
 const EduIDButton = (props: EduIDButtonProps) => (
-  <Button {...props} size={props.size} color={props.buttonStyle}>
+  <Button {...props} size={props.size} color={props.buttonstyle}>
     {props.children}
   </Button>
 );

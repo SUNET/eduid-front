@@ -110,7 +110,7 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
   const loading = useAppSelector((state) => state.app.loading_data);
   return (
     <EduIDButton
-      buttonStyle="primary"
+      buttonstyle="primary"
       type="submit"
       disabled={props.invalid || props.pristine || loading}
       aria-disabled={props.invalid || loading}
@@ -140,7 +140,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <EduIDButton buttonStyle="primary" onClick={handleOnClick} id="login-other-device-button">
+    <EduIDButton buttonstyle="primary" onClick={handleOnClick} id="login-other-device-button">
       <FontAwesomeIcon icon={faQrcode} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
     </EduIDButton>

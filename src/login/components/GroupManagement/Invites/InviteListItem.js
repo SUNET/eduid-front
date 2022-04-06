@@ -19,7 +19,7 @@ const RenderRoleIndicators = ({ member, owner }) => (
 const RenderRemoveButton = () => (
   <div className="list-cell">
     <EduIDButton
-      buttonStyle="close"
+      buttonstyle="close"
       size="sm"
       onClick={() => {
         console.log("you clicked the cross");

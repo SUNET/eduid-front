@@ -114,7 +114,7 @@ const AcceptButton = ({ version }: { version?: string }) => {
   return (
     <EduIDButton
       type="submit"
-      buttonStyle="primary"
+      buttonstyle="primary"
       onClick={() => dispatch(loginSlice.actions.updatedTouAccept(version))}
       id="accept-button"
       aria-label="accept button"

@@ -52,7 +52,7 @@ let PhoneForm = (props) => {
           helpBlock={translate("phones.input_help_text")}
         />
       </fieldset>
-      <EduIDButton id="mobile-button" buttonStyle="primary" disabled={!props.valid_phone} onClick={props.handleAdd}>
+      <EduIDButton id="mobile-button" buttonstyle="primary" disabled={!props.valid_phone} onClick={props.handleAdd}>
         {translate("mobile.button_add")}
       </EduIDButton>
     </Form>
@@ -117,7 +117,7 @@ function Mobile(props) {
         </div>
         <EduIDButton
           id="add-more-button"
-          buttonStyle="link"
+          buttonstyle="link"
           className={addLinkClass + " lowercase"}
           onClick={showEmailForm}
         >

@@ -69,7 +69,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
       </div>
       <div className="buttons">
         <EduIDButton
-          buttonStyle="secondary"
+          buttonstyle="secondary"
           type="submit"
           onClick={handleCancelButtonOnClick}
           id="response-code-cancel-button"
@@ -77,7 +77,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
           <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
         </EduIDButton>
         <EduIDButton
-          buttonStyle="primary"
+          buttonstyle="primary"
           type="submit"
           id="refresh-get-new-code"
           onClick={props.handleNewQRCodeOnClick}

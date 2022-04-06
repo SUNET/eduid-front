@@ -83,7 +83,7 @@ const NinForm = (props: NinFormProps): JSX.Element => {
           helpBlock={translate("nins.input_help_text")}
         />
       </fieldset>
-      <EduIDButton id="add-nin-button" buttonStyle="primary" disabled={!props.valid} type="submit" key="1">
+      <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={!props.valid} type="submit" key="1">
         {translate("emails.button_add")}
       </EduIDButton>
     </Form>
