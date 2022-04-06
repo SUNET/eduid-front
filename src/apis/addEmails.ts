@@ -7,21 +7,26 @@ import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app"
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
-export interface AddEmailsResponse {
+export interface RemoveEmailResponse {
   message?: string;
 }
 
 /**
  * @public
- * @function fetchLetterProofingState
+ * @function requestRemoveEmail
  * @desc Redux async thunk to get letter proofing state from the backend.
  */
-export const getEmailDataState = createAsyncThunk<
-  AddEmailsResponse, // return type
-  undefined, // args type
+export const requestRemoveEmail = createAsyncThunk<
+  RemoveEmailResponse, // return type
+  { email: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("letterProofing/fetchLetterProofingState", async (args, thunkAPI) => {
-  return makeAddEmailRequest<AddEmailsResponse>(thunkAPI, "new")
+>("addEmails/removeEmail", async (args, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const data: KeyValues = {
+    email: state.emails.email,
+    csrf_token: state.config.csrf_token,
+  };
+  return makeAddEmailRequest<RemoveEmailResponse>(thunkAPI, "remove", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });

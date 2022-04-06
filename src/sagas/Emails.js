@@ -72,30 +72,30 @@ export function requestVerify(config, data) {
     .then((response) => response.json());
 }
 
-export function* requestRemoveEmail() {
-  try {
-    const state = yield select((state) => state),
-      data = {
-        email: state.emails.email,
-        csrf_token: state.config.csrf_token,
-      };
-    const resp = yield call(requestRemove, state.config, data);
-    yield put(putCsrfToken(resp));
-    yield put(resp);
-  } catch (error) {
-    yield* failRequest(error, actions.startRemoveFail);
-  }
-}
+// export function* requestRemoveEmail() {
+//   try {
+//     const state = yield select((state) => state),
+//       data = {
+//         email: state.emails.email,
+//         csrf_token: state.config.csrf_token,
+//       };
+//     const resp = yield call(requestRemove, state.config, data);
+//     yield put(putCsrfToken(resp));
+//     yield put(resp);
+//   } catch (error) {
+//     yield* failRequest(error, actions.startRemoveFail);
+//   }
+// }
 
-export function requestRemove(config, data) {
-  return window
-    .fetch(config.emails_url + "remove", {
-      ...postRequest,
-      body: JSON.stringify(data),
-    })
-    .then(checkStatus)
-    .then((response) => response.json());
-}
+// export function requestRemove(config, data) {
+//   return window
+//     .fetch(config.emails_url + "remove", {
+//       ...postRequest,
+//       body: JSON.stringify(data),
+//     })
+//     .then(checkStatus)
+//     .then((response) => response.json());
+// }
 
 export function* requestMakePrimaryEmail() {
   try {

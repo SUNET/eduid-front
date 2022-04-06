@@ -1,6 +1,6 @@
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as actions from "actions/Emails";
-import { getEmailDataState } from "apis/addEmails";
+import { requestRemoveEmail } from "apis/addEmails";
 
 import { PDEmail } from "apis/personalData";
 

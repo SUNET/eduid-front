@@ -23,6 +23,7 @@ import {
 } from "actions/Emails";
 import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { requestRemoveEmail } from "apis/addEmails";
 
 let EmailForm = (props) => {
   const intl = useIntl();
@@ -139,8 +140,9 @@ function Emails(props) {
       data = {
         email: dataNode.getAttribute("data-object"),
       };
-    dispatch(startRemove(data));
+    dispatch(requestRemoveEmail(data));
   };
+
   const handleMakePrimary = (e) => {
     const dataNode = e.target.closest("tr.emailrow"),
       data = {

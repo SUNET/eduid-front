@@ -76,7 +76,7 @@ function* rootSaga() {
     takeLatest(emailActions.POST_EMAIL, saveEmail),
     takeLatest(emailActions.START_RESEND_EMAIL_CODE, requestResendEmailCode),
     takeLatest(emailActions.START_VERIFY, requestVerifyEmail),
-    takeLatest(emailActions.POST_EMAIL_REMOVE, requestRemoveEmail),
+    // takeLatest(emailActions.POST_EMAIL_REMOVE, requestRemoveEmail),
     takeLatest(emailActions.POST_EMAIL_PRIMARY, requestMakePrimaryEmail),
     takeLatest(mobileActions.POST_MOBILE, sagasMobile.saveMobile),
     takeLatest(mobileActions.POST_MOBILE_REMOVE, sagasMobile.requestRemoveMobile),
