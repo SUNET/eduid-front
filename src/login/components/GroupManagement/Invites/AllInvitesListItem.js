@@ -53,7 +53,7 @@ const RenderRemoveButton = ({ invite }) => {
   };
   return (
     <div className="list-cell">
-      <EduIDButton buttonStyle="close" size="sm" onClick={() => handleRejectInvite()} />
+      <EduIDButton buttonstyle="close" size="sm" onClick={() => handleRejectInvite()} />
     </div>
   );
 };

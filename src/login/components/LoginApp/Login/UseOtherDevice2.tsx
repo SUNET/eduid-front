@@ -196,7 +196,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
   return (
     <div className="buttons device2">
       <EduIDButton
-        buttonStyle="primary"
+        buttonstyle="primary"
         type="submit"
         onClick={handleOnClick}
         id="proceed-other-device-button"
@@ -271,7 +271,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
         </div>
       </div>
       <div className="buttons device2 x-adjust">
-        <EduIDButton buttonStyle="primary" onClick={handleOnClick} id="proceed-other-device-button">
+        <EduIDButton buttonstyle="primary" onClick={handleOnClick} id="proceed-other-device-button">
           <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
         </EduIDButton>
       </div>
