@@ -22,7 +22,7 @@ let EmailForm = (props) => {
     description: "placeholder text for email input",
   });
   return (
-    <Form id="emailsview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="emailsview-form" role="form" onSubmit={props.handleAdd} className="single-input-form">
       <fieldset id="emails-form" className="tabpane">
         <Field
           label={translate("profile.email_display_title")}
@@ -34,12 +34,7 @@ let EmailForm = (props) => {
           helpBlock={translate("emails.input_help_text")}
         />
       </fieldset>
-      <EduIDButton
-        id="email-button"
-        className="settings-button"
-        disabled={!props.valid_email}
-        onClick={props.handleAdd}
-      >
+      <EduIDButton id="email-button" buttonStyle="primary" disabled={!props.valid_email} onClick={props.handleAdd}>
         {translate("emails.button_add")}
       </EduIDButton>
     </Form>
@@ -58,7 +53,7 @@ EmailForm = connect((state) => ({
 
 function Emails(props) {
   const [formClass, setFormClass] = useState("hide");
-  const [addLinkClass, setAddLinkClass] = useState("btn-link");
+  const [addLinkClass, setAddLinkClass] = useState("");
 
   function showEmailForm() {
     setFormClass("form-content");
@@ -104,7 +99,12 @@ function Emails(props) {
           <EmailForm {...props} />
         </div>
 
-        <EduIDButton id="add-more-button" className={addLinkClass} onClick={showEmailForm}>
+        <EduIDButton
+          id="add-more-button"
+          buttonStyle="link"
+          className={addLinkClass + " lowercase"}
+          onClick={showEmailForm}
+        >
           {translate("emails.button_add_more")}
         </EduIDButton>
       </div>

@@ -40,7 +40,7 @@ let PhoneForm = (props) => {
   });
 
   return (
-    <Form id="phonesview-form" role="form" onSubmit={props.handleAdd}>
+    <Form id="phonesview-form" role="form" onSubmit={props.handleAdd} className="single-input-form">
       <fieldset id="phone-form" className="tabpane">
         <Field
           label={translate("profile.phone_display_title")}
@@ -52,12 +52,7 @@ let PhoneForm = (props) => {
           helpBlock={translate("phones.input_help_text")}
         />
       </fieldset>
-      <EduIDButton
-        id="mobile-button"
-        className="settings-button"
-        disabled={!props.valid_phone}
-        onClick={props.handleAdd}
-      >
+      <EduIDButton id="mobile-button" buttonStyle="primary" disabled={!props.valid_phone} onClick={props.handleAdd}>
         {translate("mobile.button_add")}
       </EduIDButton>
     </Form>
@@ -76,7 +71,7 @@ PhoneForm = connect((state) => ({
 
 function Mobile(props) {
   const [formClass, setFormClass] = useState("hide");
-  const [addLinkClass, setAddLinkClass] = useState("btn-link");
+  const [addLinkClass, setAddLinkClass] = useState("");
 
   function showEmailForm() {
     setFormClass("form-content");
@@ -120,7 +115,12 @@ function Mobile(props) {
         <div className={formClass}>
           <PhoneForm {...props} />
         </div>
-        <EduIDButton id="add-more-button" className={addLinkClass} onClick={showEmailForm}>
+        <EduIDButton
+          id="add-more-button"
+          buttonStyle="link"
+          className={addLinkClass + " lowercase"}
+          onClick={showEmailForm}
+        >
           {translate("phones.button_add_more")}
         </EduIDButton>
       </div>

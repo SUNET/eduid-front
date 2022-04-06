@@ -26,7 +26,7 @@ let GroupNameForm = (props) => {
     <Form id={`${form}-form`} role="form" onSubmit={handleSubmit}>
       <RenderInput {...props} />
       {submitButton && (
-        <EduIDButton type="submit" className="settings-button" disabled={invalid}>
+        <EduIDButton type="submit" buttonStyle="primary" disabled={invalid}>
           CREATE GROUP
         </EduIDButton>
       )}

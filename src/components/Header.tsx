@@ -3,6 +3,7 @@ import "../login/styles/index.scss";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { startLogout } from "actions/Header";
 import { FormattedMessage } from "react-intl";
+import EduIDButton from "components/EduIDButton";
 
 interface HeaderProps {
   email?: string;
@@ -33,9 +34,9 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   if (props.showLogin) {
     button = (
-      <button className="header-button" id="login" onClick={handleLogin}>
+      <EduIDButton buttonStyle="secondary" size="sm" id="login" onClick={handleLogin}>
         <FormattedMessage defaultMessage="Log in" description="Header login" />
-      </button>
+      </EduIDButton>
     );
   } else if (props.showLogout) {
     tagline = (
@@ -46,15 +47,15 @@ const Header = (props: HeaderProps): JSX.Element => {
       </Fragment>
     );
     button = (
-      <button className="header-button" id="logout" onClick={handleLogout}>
+      <EduIDButton buttonStyle="secondary" size="sm" id="logout" onClick={handleLogout}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
-      </button>
+      </EduIDButton>
     );
   } else if (props.showRegister) {
     button = (
-      <button className="header-button" id="register" onClick={handleRegister}>
+      <EduIDButton buttonStyle="secondary" size="sm" id="register" onClick={handleRegister}>
         <FormattedMessage defaultMessage="Register" description="Header register" />
-      </button>
+      </EduIDButton>
     );
   } else {
     button = <div />;

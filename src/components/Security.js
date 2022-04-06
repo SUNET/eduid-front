@@ -97,19 +97,20 @@ function Security(props) {
               <CookieChecker cookieName="show-platform-auth">
                 <EduIDButton
                   id="security-webauthn-platform-button"
+                  buttonStyle="primary"
                   onClick={props.handleStartAskingDeviceWebauthnDescription}
                 >
                   {translate("security.add_webauthn_token_device")}
                 </EduIDButton>
               </CookieChecker>
             ) : null}
-            <button
+            <EduIDButton
               id="security-webauthn-button"
-              className={isPlatformAuthenticatorAvailable ? "second-option" : "btn btn-primary"}
+              buttonStyle="primary"
               onClick={props.handleStartAskingKeyWebauthnDescription}
             >
               {translate("security.add_webauthn_token_key")}
-            </button>
+            </EduIDButton>
           </div>
         </div>
       </div>
@@ -170,7 +171,7 @@ function SecurityKeyTable(props) {
       );
     } else {
       btnVerify = (
-        <EduIDButton className="btn-link nobutton verify-status-label" onClick={props.handleVerifyWebauthnToken}>
+        <EduIDButton buttonStyle="link" size="sm" onClick={props.handleVerifyWebauthnToken}>
           {translate("security.verify")}
         </EduIDButton>
       );
@@ -187,19 +188,12 @@ function SecurityKeyTable(props) {
         </td>
         <td>{btnVerify}</td>
         <td>
-          <EduIDButton className="btn-link btn-remove-webauthn" onClick={props.handleRemoveWebauthnToken}>
-            <svg
-              className="remove"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M7 0h2v16H7z" />
-              <path d="M0 9V7h16v2z" />
-            </svg>
-          </EduIDButton>
+          <EduIDButton
+            id="remove-webauthn"
+            buttonStyle="close"
+            size="sm"
+            onClick={props.handleRemoveWebauthnToken}
+          ></EduIDButton>
         </td>
       </tr>
     );

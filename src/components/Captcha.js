@@ -27,14 +27,14 @@ class Captcha extends Component {
           </div>
           <div id="captcha-buttons">
             <EduIDButton
-              className="settings-button captcha"
+              buttonStyle="primary"
               onClick={this.props.sendCaptcha}
               id="send-captcha-button"
               disabled={this.props.disabledButton}
             >
               {this.props.translate("captcha.submit")}
             </EduIDButton>
-            <EduIDButton onClick={this.props.cancelCaptcha} className="cancel-button" id="cancel-captcha-button">
+            <EduIDButton onClick={this.props.cancelCaptcha} buttonStyle="secondary" id="cancel-captcha-button">
               {this.props.translate("captcha.cancel")}
             </EduIDButton>
           </div>

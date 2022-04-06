@@ -1,11 +1,10 @@
 import React, { Fragment, useState } from "react";
 import PersonalDataForm from "./PersonalDataForm";
 import NameDisplay from "../DataDisplay/Name/NameDisplay";
-import ButtonPrimary from "../Buttons/ButtonPrimary";
-import { CloseButton } from "../../components/GroupManagement/Groups/CreateGroup";
 import { translate } from "login/translation";
 import { useDashboardAppSelector } from "dashboard-hooks";
 import { useIntl } from "react-intl";
+import EduIDButton from "../../../components/EduIDButton";
 
 interface NameStrings {
   first: string;
@@ -20,9 +19,9 @@ interface RenderAddPersonalDataPromptProps {
 const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromptProps) => (
   <div className="button-pair">
     <p>{translate("pd.no_data_added")}</p>
-    <ButtonPrimary id="add-personal-data" onClick={() => setEditMode(true)}>
+    <EduIDButton buttonStyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
       {translate("button_add")}
-    </ButtonPrimary>
+    </EduIDButton>
   </div>
 );
 
@@ -61,9 +60,7 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
       <div className="edit-data">
         <div className="title button-pair">
           <p>{translate("pd.edit.title")}</p>
-          <button id="cancel-edit-data" type="button" onClick={() => props.setEditMode(false)}>
-            <CloseButton />
-          </button>
+          <EduIDButton buttonStyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
         </div>
         <PersonalDataForm isVerifiedNin={isVerifiedNin} {...props} />
       </div>
@@ -81,9 +78,9 @@ const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }: RenderEd
   <Fragment>
     {isEditMode ||
       (hasPersonalData && (
-        <button className="create-group" onClick={() => setEditMode(true)}>
+        <EduIDButton buttonStyle="link" className="lowercase" onClick={() => setEditMode(true)}>
           {translate("pd.edit.button")}
-        </button>
+        </EduIDButton>
       ))}
   </Fragment>
 );

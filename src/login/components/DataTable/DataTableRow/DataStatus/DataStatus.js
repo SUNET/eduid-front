@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import i18n from "../../../../translation/InjectIntl_HOC_factory";
-import ButtonTableData from "../../../Buttons/ButtonTableData";
+import EduIDButton from "components/EduIDButton";
 
 class DataStatus extends Component {
   render() {
@@ -12,20 +12,16 @@ class DataStatus extends Component {
         dataStatus = <label>{this.props.translate("tl.primary")}</label>;
       } else {
         dataStatus = (
-          <ButtonTableData
-            className="table-button"
-            onClick={this.props.handleMakePrimary}
-            buttonText={this.props.translate("tl.make_primary")}
-          />
+          <EduIDButton buttonStyle="link" size="sm" onClick={this.props.handleMakePrimary}>
+            {this.props.translate("tl.make_primary")}
+          </EduIDButton>
         );
       }
     } else {
       dataStatus = (
-        <ButtonTableData
-          className="table-button"
-          buttonText={this.props.translate("tl.pending")}
-          onClick={this.props.handleStartConfirmation}
-        />
+        <EduIDButton buttonStyle="link" size="sm" onClick={this.props.handleStartConfirmation}>
+          {this.props.translate("tl.pending")}
+        </EduIDButton>
       );
     }
 

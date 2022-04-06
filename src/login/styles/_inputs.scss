@@ -68,7 +68,7 @@ input[type="radio"]:checked.error {
     font-size: 1.5rem;
     align-self: center;
     color: $black;
-    font-family: "ProximaNova-Regular";
+    font-family: ProximaNova-Regular;
     font-weight: normal;
     text-transform: capitalize;
     margin: 0 2rem 0 0;
@@ -85,7 +85,7 @@ input[type="radio"]:checked.error {
 
 .form-control::placeholder,
 input::placeholder {
-  font-family: "ProximaNova-Regular";
+  font-family: ProximaNova-Regular;
   font-size: 1.5rem;
 }
 
@@ -157,23 +157,6 @@ input:focus {
 
   input[name="current-password"].is-valid {
     background-image: none;
-  }
-
-  .show-hide-button {
-    position: absolute;
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
-    box-shadow: 0 0 0;
-    border: none;
-    cursor: pointer;
-  }
-
-  .show-hide-button {
-    right: 1rem;
-    color: $black;
-    font-size: 1rem;
   }
 }
 
