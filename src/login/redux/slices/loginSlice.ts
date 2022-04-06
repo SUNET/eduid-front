@@ -19,6 +19,8 @@ import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga"
 interface LoginState {
   ref?: string;
   this_device?: string;
+  previous_this_device?: string; // when disabling 'remember me', this_device is remembered here if the user regrets it
+  remember_me?: boolean;
   start_url?: string; // what to use as 'return URL' when sending the user off for external authentication (Freja)
   next_page?: IdPAction; // should be called 'current page'
   fetching_next?: boolean;
@@ -56,6 +58,17 @@ export const loginSlice = createSlice({
     addThisDevice: (state, action: PayloadAction<string>) => {
       // Add the identifier for this device from local storage.
       state.this_device = action.payload;
+    },
+    clearThisDevice: (state) => {
+      if (state.this_device !== undefined) {
+        // Move contents from this_device to previous_this_device
+        state.previous_this_device = state.this_device;
+      }
+      state.this_device = undefined;
+    },
+    setRememberMe: (state, action: PayloadAction<boolean>) => {
+      // Set the 'remember me' user preference.
+      state.remember_me = action.payload;
     },
     startLoginWithAnotherDevice: (state, action: PayloadAction<{ username?: string }>) => {
       if (action.payload.username && !state.authn_options.forced_username) {
