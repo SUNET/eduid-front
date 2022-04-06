@@ -12,20 +12,23 @@ export type LoginUseOtherDevice1Request = UseOtherDevice1Fetch | UseOtherDevice1
 export type LoginUseOtherDevice1Response = UseOtherDevice1ResponseWithQR | UseOtherDevice1ResponseWithoutQR;
 
 /* Request types */
-interface UseOtherDevice1Fetch {
-  action: "FETCH";
+interface UseOtherDevice1CommonRequest {
   ref: string;
+  this_device?: string;
+  remember_me?: boolean;
+}
+
+interface UseOtherDevice1Fetch extends UseOtherDevice1CommonRequest {
+  action: "FETCH";
   username?: string;
 }
 
-interface UseOtherDevice1Abort {
+interface UseOtherDevice1Abort extends UseOtherDevice1CommonRequest {
   action: "ABORT";
-  ref: string;
 }
 
-interface UseOtherDevice1SubmitCode {
+interface UseOtherDevice1SubmitCode extends UseOtherDevice1CommonRequest {
   action: "SUBMIT_CODE";
-  ref: string;
   response_code: string;
 }
 
@@ -129,6 +132,7 @@ export const fetchUseOtherDevice2 = createAsyncThunk<
 interface LoginNextRequest {
   ref: string;
   this_device?: string;
+  remember_me: boolean;
 }
 
 export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED";
@@ -153,6 +157,7 @@ export interface LoginAuthnOptions {
   forced_username?: string;
   usernamepassword?: boolean;
   webauthn?: boolean;
+  display_name?: string;
 }
 
 /**
