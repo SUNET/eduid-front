@@ -1,6 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as actions from "actions/Emails";
 import { getEmailDataState } from "apis/addEmails";
+
+export interface NinInfo {
+  number: string;
+  verified: boolean;
+  primary: boolean;
+}
 
 export interface EmailDataState {
   message?: string;
@@ -18,16 +24,17 @@ const initialState: EmailDataState = {
   code: "",
 };
 
+export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: any }>("GET_EMAIL_ALL_SUCCESS");
+
 const emailsSlice = createSlice({
   name: "emails",
   initialState,
   reducers: {},
-  // extraReducers: (builder) => {
-  //   builder.addCase(getEmailDataState.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
-  //     state.emails = action.payload.emails;
-  //     state.email = action.payload.email;
-  //   });
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(getEmailDataState.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      state.emails = action.payload.emails;
+    });
+  },
 });
 
 export default emailsSlice;

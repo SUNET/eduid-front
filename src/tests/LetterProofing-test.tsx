@@ -22,7 +22,7 @@ const baseState: DashboardRootState = {
   notifications: undefined as any,
   router: undefined as any,
   chpass: {},
-  emails: {},
+  emails: undefined as any,
   groups: undefined as any,
   invites: undefined as any,
   openid_data: undefined as any,
