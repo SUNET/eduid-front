@@ -91,7 +91,7 @@ function UsernameInputPart(): JSX.Element {
               }}
             />
             &nbsp;&nbsp;
-            <EduIDButton buttonStyle="link" id="wrong-person-button" onClick={handleClickWrongPerson}>
+            <EduIDButton buttonstyle="link" id="wrong-person-button" onClick={handleClickWrongPerson}>
               {<FormattedMessage defaultMessage="Not you?" description="Login username input" />}
             </EduIDButton>
           </h2>
