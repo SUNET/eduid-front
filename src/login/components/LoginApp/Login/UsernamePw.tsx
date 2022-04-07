@@ -46,8 +46,12 @@ export default function UsernamePw() {
         render={(formProps: FormRenderProps<UsernamePwFormData>) => {
           return (
             <form onSubmit={formProps.handleSubmit}>
-              <UsernameInputPart />
-              <PasswordInput name="current-password" />
+              <fieldset>
+                <UsernameInputPart />
+              </fieldset>
+              <fieldset>
+                <PasswordInput name="current-password" />
+              </fieldset>
 
               <div className="flex-between">
                 <div className="button-pair">
@@ -104,6 +108,7 @@ function UsernameInputPart(): JSX.Element {
           componentClass="input"
           name="email"
           defaultValue={authn_options.forced_username}
+          label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
         />
       </React.Fragment>
     );
