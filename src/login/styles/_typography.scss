@@ -21,7 +21,7 @@ h6 {
 h1 {
   font-size: 1.75rem;
   font-family: "ProximaNova-Regular";
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
   @media (max-width: $bp-md) {
     font-size: 1.5rem;
@@ -43,6 +43,7 @@ h3 {
 }
 
 h4 {
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
   // padding: 0;
   // margin: 0;
@@ -70,7 +71,9 @@ p {
   margin-top: 1rem 0;
   padding-bottom: 1rem;
 }
-
+p.preamble {
+  margin-bottom: 1rem;
+}
 p.verified {
   color: $black;
 }

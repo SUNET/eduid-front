@@ -29,7 +29,24 @@ header {
     margin-right: 0.375rem;
   }
 }
+.tagline-wrapper {
+  font-family: "ProximaNova-light";
 
+  @media (min-width: $bp-md) {
+    width: 100vw;
+    left: 0;
+    position: absolute;
+
+    > div {
+      width: auto;
+    }
+  }
+  @media (max-width: $bp-md) {
+    > div {
+      width: auto;
+    }
+  }
+}
 .eduid-logo {
   width: 140px;
   height: 40px;
