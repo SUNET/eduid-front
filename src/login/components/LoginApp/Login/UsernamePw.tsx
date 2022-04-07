@@ -81,20 +81,24 @@ function UsernameInputPart(): JSX.Element {
   if (authn_options.forced_username) {
     return (
       <React.Fragment>
-        <div>
-          <h2>
+        <div className="welcome-back-container">
+          <h3>
             <FormattedMessage
               defaultMessage="Welcome back, {username}"
               description="Login username input"
               values={{
-                username: <b>{authn_options.display_name}</b>,
+                username: <strong>{authn_options.display_name}</strong>,
               }}
             />
-            &nbsp;&nbsp;
-            <EduIDButton buttonstyle="link" id="wrong-person-button" onClick={handleClickWrongPerson}>
+            <EduIDButton
+              className="lowercase"
+              buttonstyle="link"
+              id="wrong-person-button"
+              onClick={handleClickWrongPerson}
+            >
               {<FormattedMessage defaultMessage="Not you?" description="Login username input" />}
             </EduIDButton>
-          </h2>
+          </h3>
         </div>
 
         <FinalField
