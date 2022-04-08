@@ -33,7 +33,7 @@ form {
 .form-control:disabled,
 .form-control[readonly] {
   border-bottom: none;
-  color: gray;
+  color: $gray;
 }
 
 @media (max-width: $bp-sm) {
