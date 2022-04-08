@@ -25,54 +25,54 @@ import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { requestRemoveEmail } from "apis/addEmails";
 
-let EmailForm = (props) => {
-  const intl = useIntl();
-  const dispatch = useDashboardAppDispatch();
-  // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({
-    id: "placeholder.email",
-    defaultMessage: "name@example.com",
-    description: "placeholder text for email input",
-  });
-  const handleAdd = (e) => {
-    e.preventDefault();
-    dispatch(postEmail());
-  };
+// let EmailForm = (props: any) => {
+//   const intl = useIntl();
+//   const dispatch = useDashboardAppDispatch();
+//   // placeholder can't be an Element, we need to get the actual translated string here
+//   const placeholder = intl.formatMessage({
+//     id: "placeholder.email",
+//     defaultMessage: "name@example.com",
+//     description: "placeholder text for email input",
+//   });
+//   const handleAdd = (e: any) => {
+//     e.preventDefault();
+//     dispatch(postEmail());
+//   };
 
-  const emails = useDashboardAppSelector((state) => state.emails.emails);
-  const valid_email = isValid("emails")(emails);
+//   const emails = useDashboardAppSelector((state) => state.emails.emails);
+//   // const valid_email = isValid("emails")(emails);
 
-  return (
-    <Form id="emailsview-form" role="form" onSubmit={handleAdd}>
-      <fieldset id="emails-form" className="tabpane">
-        <Field
-          label={translate("profile.email_display_title")}
-          component={CustomInput}
-          componentClass="input"
-          type="text"
-          name="email"
-          placeholder={placeholder}
-          helpBlock={translate("emails.input_help_text")}
-        />
-      </fieldset>
-      <EduIDButton id="email-button" buttonstyle="primary" disabled={!props.valid_email} onClick={props.handleAdd}>
-        {translate("emails.button_add")}
-      </EduIDButton>
-    </Form>
-  );
-};
+//   return (
+//     <Form id="emailsview-form" role="form" onSubmit={handleAdd}>
+//       <fieldset id="emails-form" className="tabpane">
+//         <Field
+//           label={translate("profile.email_display_title")}
+//           component={CustomInput}
+//           componentClass="input"
+//           type="text"
+//           name="email"
+//           placeholder={placeholder}
+//           helpBlock={translate("emails.input_help_text")}
+//         />
+//       </fieldset>
+//       <EduIDButton id="email-button" buttonstyle="primary" disabled={!valid_email} onClick={props.handleAdd}>
+//         {translate("emails.button_add")}
+//       </EduIDButton>
+//     </Form>
+//   );
+// };
 
-EmailForm = reduxForm({
-  form: "emails",
-  validate,
-})(EmailForm);
+// EmailForm = reduxForm({
+//   form: "emails",
+//   validate,
+// })(EmailForm);
 
-EmailForm = connect((state) => ({
-  initialValues: { email: state.emails.email },
-  enableReinitialize: true,
-}))(EmailForm);
+// EmailForm = connect((state) => ({
+//   initialValues: { email: state.emails.email },
+//   enableReinitialize: true,
+// }))(EmailForm);
 
-function Emails(props) {
+function Emails(props: any) {
   const [formClass, setFormClass] = useState("hide");
   const [addLinkClass, setAddLinkClass] = useState("btn-link");
   const dispatch = useDashboardAppDispatch;
@@ -81,14 +81,21 @@ function Emails(props) {
   const confirming = useDashboardAppSelector((state) => state.emails.confirming);
   // const resending = useSelector((state) => state.emails.resending);
 
-  function showEmailForm() {
-    setFormClass("form-content");
-    setAddLinkClass("hide");
-    // rendering focus on input, setTimeout for 2 milliseconds to recognize the form
-    setTimeout(() => {
-      document.getElementById("email").focus();
-    }, 200);
+  function handleRemove(e: any) {
+    const dataNode = e.target.closest("tr.emailrow");
+    const email: string = dataNode.getAttribute("data-object");
+
+    dispatch(requestRemoveEmail({ email: email }));
   }
+
+  // function showEmailForm() {
+  //   setFormClass("form-content");
+  //   setAddLinkClass("hide");
+  //   // rendering focus on input, setTimeout for 2 milliseconds to recognize the form
+  //   setTimeout(() => {
+  //     document.getElementById("email").focus();
+  //   }, 200);
+  // }
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -107,49 +114,41 @@ function Emails(props) {
     { email: confirming }
   );
 
-  const handleResend = (e) => {
-    e.preventDefault();
-    dispatch(startResendEmailCode());
-    dispatch(stopConfirmation());
-  };
+  // const handleResend = (e) => {
+  //   e.preventDefault();
+  //   dispatch(startResendEmailCode());
+  //   dispatch(stopConfirmation());
+  // };
 
-  const handleStartConfirmation = (e) => {
-    dispatch(clearNotifications());
-    const dataNode = e.target.closest("tr.emailrow"),
-      data = {
-        identifier: dataNode.getAttribute("data-identifier"),
-        email: dataNode.getAttribute("data-object"),
-      };
-    dispatch(startConfirmation(data));
-  };
+  // const handleStartConfirmation = (e) => {
+  //   dispatch(clearNotifications());
+  //   const dataNode = e.target.closest("tr.emailrow"),
+  //     data = {
+  //       identifier: dataNode.getAttribute("data-identifier"),
+  //       email: dataNode.getAttribute("data-object"),
+  //     };
+  //   dispatch(startConfirmation(data));
+  // };
 
-  const handleStopConfirmation = () => {
-    dispatch(stopConfirmation());
-  };
+  // const handleStopConfirmation = () => {
+  //   dispatch(stopConfirmation());
+  // };
 
-  const handleConfirm = () => {
-    const data = {
-      code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
-    };
-    dispatch(startVerify(data));
-    dispatch(stopConfirmation());
-  };
+  // const handleConfirm = () => {
+  //   const data = {
+  //     code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
+  //   };
+  //   dispatch(startVerify(data));
+  //   dispatch(stopConfirmation());
+  // };
 
-  const handleRemove = (e) => {
-    const dataNode = e.target.closest("tr.emailrow"),
-      data = {
-        email: dataNode.getAttribute("data-object"),
-      };
-    dispatch(requestRemoveEmail(data));
-  };
-
-  const handleMakePrimary = (e) => {
-    const dataNode = e.target.closest("tr.emailrow"),
-      data = {
-        email: dataNode.getAttribute("data-object"),
-      };
-    dispatch(makePrimary(data));
-  };
+  // const handleMakePrimary = (e) => {
+  //   const dataNode = e.target.closest("tr.emailrow"),
+  //     data = {
+  //       email: dataNode.getAttribute("data-object"),
+  //     };
+  //   dispatch(makePrimary(data));
+  // };
 
   return (
     <div className="emailsview-form-container">
@@ -161,19 +160,17 @@ function Emails(props) {
         <DataTable
           {...props}
           data={emails}
-          handleStartConfirmation={handleStartConfirmation}
+          // handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
-          handleMakePrimary={handleMakePrimary}
+          // handleMakePrimary={handleMakePrimary}
         />
-        <div className={formClass}>
-          <EmailForm {...props} />
-        </div>
+        <div className={formClass}>{/* <EmailForm {...props} /> */}</div>
 
         <EduIDButton
           id="add-more-button"
           buttonstyle="link"
           className={addLinkClass + " lowercase"}
-          onClick={showEmailForm}
+          // onClick={showEmailForm}
         >
           {translate("emails.button_add_more")}
         </EduIDButton>
@@ -190,9 +187,9 @@ function Emails(props) {
         resendText={translate("cm.resend_code")}
         placeholder={placeholder}
         showModal={Boolean(confirming)}
-        closeModal={handleStopConfirmation}
-        handleResend={handleResend}
-        handleConfirm={handleConfirm}
+        // closeModal={handleStopConfirmation}
+        // handleResend={handleResend}
+        // handleConfirm={handleConfirm}
         helpBlock={translate("emails.confirm_help_text")}
         validationPattern={longCodePattern}
         validationError={"confirmation.code_invalid_format"}
