@@ -85,7 +85,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
           id="refresh-get-new-code"
           onClick={props.handleNewQRCodeOnClick}
         >
-          <FormattedMessage defaultMessage="Retry with QR code" description="Login OtherDevice" />
+          <FormattedMessage defaultMessage="Retry" description="Login OtherDevice" />
         </EduIDButton>
       </div>
     </React.Fragment>
