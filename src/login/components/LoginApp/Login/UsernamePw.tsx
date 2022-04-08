@@ -46,9 +46,7 @@ export default function UsernamePw() {
         render={(formProps: FormRenderProps<UsernamePwFormData>) => {
           return (
             <form onSubmit={formProps.handleSubmit}>
-              <fieldset>
-                <UsernameInputPart />
-              </fieldset>
+              <UsernameInputPart />
               <fieldset>
                 <PasswordInput name="current-password" />
               </fieldset>
@@ -103,16 +101,17 @@ function UsernameInputPart(): JSX.Element {
             </a>
           </p>
         </div>
-
-        <FinalField
-          required={true}
-          disabled={true}
-          component={TextInput}
-          componentClass="input"
-          name="email"
-          defaultValue={authn_options.forced_username}
-          label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
-        />
+        <fieldset>
+          <FinalField
+            required={true}
+            disabled={true}
+            component={TextInput}
+            componentClass="input"
+            name="email"
+            defaultValue={authn_options.forced_username}
+            label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
+          />
+        </fieldset>
       </React.Fragment>
     );
   }
