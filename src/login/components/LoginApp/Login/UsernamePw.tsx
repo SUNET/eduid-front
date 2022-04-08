@@ -94,15 +94,14 @@ function UsernameInputPart(): JSX.Element {
                 username: <strong>{authn_options.display_name}</strong>,
               }}
             />
-            <EduIDButton
-              className="lowercase"
-              buttonstyle="link"
-              id="wrong-person-button"
-              onClick={handleClickWrongPerson}
-            >
-              {<FormattedMessage defaultMessage="Not you?" description="Login username input" />}
-            </EduIDButton>
           </h3>
+          <p className="text-small">
+            <FormattedMessage defaultMessage="Is this not you?" description="Login username input" />
+            &nbsp;&nbsp;
+            <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+              <FormattedMessage defaultMessage="Login as another user" description="Login username input" />
+            </a>
+          </p>
         </div>
 
         <FinalField
