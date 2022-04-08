@@ -93,13 +93,9 @@ function UsernameInputPart(): JSX.Element {
               }}
             />
           </h3>
-          {/* <div className="text-small">
-             <FormattedMessage defaultMessage="Is this not you?" description="Login username input" /> 
-            &nbsp;&nbsp;*/}
           <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
             <FormattedMessage defaultMessage="Different user?" description="Login username input" />
           </a>
-          {/* </div> */}
         </div>
         <fieldset>
           <FinalField
