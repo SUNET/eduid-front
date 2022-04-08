@@ -86,20 +86,20 @@ function UsernameInputPart(): JSX.Element {
         <div className="welcome-back-container">
           <h3>
             <FormattedMessage
-              defaultMessage="Welcome back, {username}"
+              defaultMessage="Welcome back, {username}!"
               description="Login username input"
               values={{
                 username: <strong>{authn_options.display_name}</strong>,
               }}
             />
           </h3>
-          <p className="text-small">
-            <FormattedMessage defaultMessage="Is this not you?" description="Login username input" />
-            &nbsp;&nbsp;
-            <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
-              <FormattedMessage defaultMessage="Login as another user" description="Login username input" />
-            </a>
-          </p>
+          {/* <div className="text-small">
+             <FormattedMessage defaultMessage="Is this not you?" description="Login username input" /> 
+            &nbsp;&nbsp;*/}
+          <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+            <FormattedMessage defaultMessage="Different user?" description="Login username input" />
+          </a>
+          {/* </div> */}
         </div>
         <fieldset>
           <FinalField
