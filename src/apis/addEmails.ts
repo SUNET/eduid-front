@@ -14,16 +14,17 @@ export interface RemoveEmailResponse {
 /**
  * @public
  * @function requestRemoveEmail
- * @desc Redux async thunk to get letter proofing state from the backend.
+ * @desc Redux async thunk to get emails state from the backend.
  */
 export const requestRemoveEmail = createAsyncThunk<
   RemoveEmailResponse, // return type
   { email: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("addEmails/removeEmail", async (args, thunkAPI) => {
+>("emails/removeEmail", async (args, thunkAPI) => {
+  console.log("API");
   const state = thunkAPI.getState();
   const data: KeyValues = {
-    email: state.emails.email,
+    email: args.email,
     csrf_token: state.config.csrf_token,
   };
   return makeAddEmailRequest<RemoveEmailResponse>(thunkAPI, "remove", data)
