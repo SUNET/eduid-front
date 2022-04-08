@@ -9,6 +9,7 @@ import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 /*********************************************************************************************************************/
 export interface RemoveEmailResponse {
   message?: string;
+  email?: string;
 }
 
 /**
@@ -20,8 +21,7 @@ export const requestRemoveEmail = createAsyncThunk<
   RemoveEmailResponse, // return type
   { email: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("emails/removeEmail", async (args, thunkAPI) => {
-  console.log("API");
+>("emails/requestRemoveEmail", async (args, thunkAPI) => {
   const state = thunkAPI.getState();
   const data: KeyValues = {
     email: args.email,

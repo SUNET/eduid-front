@@ -36,6 +36,9 @@ const emailsSlice = createSlice({
     builder.addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailDataState>) => {
       state.emails = action.payload.emails;
     });
+    builder.addCase(requestRemoveEmail.fulfilled, (state) => {
+      console.log(state);
+    });
   },
 });
 
