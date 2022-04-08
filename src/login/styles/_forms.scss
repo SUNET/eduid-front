@@ -6,12 +6,14 @@ form {
   flex-direction: column;
   margin-top: 1.25rem;
 }
+
 .element-pair,
 .button-pair {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
 }
+
 .element-pair {
   margin-top: 1rem;
   align-items: unset;
@@ -28,10 +30,17 @@ form {
   color: transparent;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  border-bottom: none;
+  color: gray;
+}
+
 @media (max-width: $bp-sm) {
   #reset-password-email-form {
     flex-direction: column;
     align-items: unset;
+
     button {
       width: 100%;
       margin-top: 1rem;
