@@ -82,8 +82,8 @@ export function RememberMeCheckbox(): JSX.Element | null {
     return null;
   }
 
-  if (!next_page || next_page === "TOU") {
-    // Don't show this component on the ToU screen, or before next_page is initialised
+  if (!next_page || next_page === "TOU" || next_page == "OTHER_DEVICE") {
+    // Don't show this component on some screens, or before next_page is initialised
     return null;
   }
 
