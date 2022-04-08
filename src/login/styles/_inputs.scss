@@ -131,7 +131,7 @@ input:focus {
     letter-spacing: 0;
     font-size: 1rem;
     margin-left: -2px;
-    margin-bottom: 0;
+    //margin-bottom: 0;
   }
 
   & .label-required {
@@ -240,4 +240,9 @@ input:focus {
   input::placeholder {
     font-size: 1rem;
   }
+}
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 50px white inset;
 }

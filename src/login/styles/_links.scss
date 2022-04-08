@@ -2,26 +2,25 @@
 
 a {
   color: $orange-highlight;
-  font-family: "Akkurat";
+  font-family: Akkurat;
   text-decoration: none;
   transition: all 0.2s ease;
+  cursor: pointer;
 
   &:hover {
     text-decoration: none;
-    color: #ff4500;
+    color: $orange-highlight;
   }
 
   &.text-link {
-    font-family: "ProximaNova-Regular";
+    font-family: ProximaNova-Regular;
     text-decoration: underline;
     line-height: 1.4;
     margin-left: 0.375rem;
 
     &:hover {
       text-decoration: none;
-
-      // border-bottom: solid transparent 1px;
-      color: #ff4500;
+      color: $orange-highlight;
     }
   }
 
