@@ -48,12 +48,6 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 //type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
-  // the code is formatted as SK123-456, ignore positions S, K and -
-  const positions = [2, 3, 4, 6, 7, 8];
-  const invalidInputs = positions.filter((pos) => {
-    return props.values.v[pos] == undefined;
-  });
-
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="response-code-inputs">
@@ -72,17 +66,6 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
 
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
-          {props.handleLogin && (
-            <EduIDButton
-              type="submit"
-              onClick={props.handleLogin}
-              id="response-code-submit-button"
-              buttonstyle="primary"
-              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
-            >
-              <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
-            </EduIDButton>
-          )}
           {props.handleAbort && (
             <EduIDButton
               type="submit"
@@ -92,6 +75,17 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
               disabled={props.submitting}
             >
               <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+            </EduIDButton>
+          )}
+          {props.handleLogin && (
+            <EduIDButton
+              type="submit"
+              onClick={props.handleLogin}
+              id="response-code-submit-button"
+              buttonstyle="primary"
+              disabled={props.submitDisabled || props.submitting || props.invalid || props.pristine}
+            >
+              <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
             </EduIDButton>
           )}
         </div>
