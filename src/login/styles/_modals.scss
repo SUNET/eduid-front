@@ -138,7 +138,7 @@ ol {
     }
 
     & label {
-      color: #7c7c7c;
+      color: $gray;
       margin: 1rem 0;
     }
   }
@@ -162,7 +162,7 @@ ol {
 
   & label {
     margin-bottom: 30px;
-    color: #7c7c7c;
+    color: $gray;
     font-size: 1rem;
     text-transform: none;
     line-height: 1.5;

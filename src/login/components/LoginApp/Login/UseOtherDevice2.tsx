@@ -1,14 +1,10 @@
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  fetchNext,
-  fetchUseOtherDevice2,
-  LoginUseOtherDevice2Response,
-  UseOtherDevice2ResponseLoggedIn,
-} from "apis/eduidLogin";
+import { fetchUseOtherDevice2, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
+import EduIDButton from "components/EduIDButton";
 import { TimeRemainingWrapper } from "components/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
-import EduIDButton from "components/EduIDButton";
+import loginSlice from "login/redux/slices/loginSlice";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
@@ -187,7 +183,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
 
   function handleOnClick() {
     if (data && data.login_ref) {
-      dispatch(fetchNext({ ref: data.login_ref }));
+      dispatch(loginSlice.actions.callLoginNext);
       // Send the user off to the regular login flow when they click the button
       history.push(`/login/${data.login_ref}`);
     }
@@ -196,7 +192,7 @@ function ProceedLoginButton(props: { disabled: boolean }): JSX.Element {
   return (
     <div className="buttons device2">
       <EduIDButton
-        buttonStyle="primary"
+        buttonstyle="primary"
         type="submit"
         onClick={handleOnClick}
         id="proceed-other-device-button"
@@ -214,7 +210,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
 
   function handleOnClick() {
     if (props.data.login_ref) {
-      dispatch(fetchNext({ ref: props.data.login_ref }));
+      dispatch(loginSlice.actions.callLoginNext);
       // Send the user off to the regular login flow when they click the button
       history.push(`/login/${props.data.login_ref}`);
     }
@@ -271,7 +267,7 @@ function RenderLoggedIn(props: { isExpired: boolean; data: UseOtherDevice2Respon
         </div>
       </div>
       <div className="buttons device2 x-adjust">
-        <EduIDButton buttonStyle="primary" onClick={handleOnClick} id="proceed-other-device-button">
+        <EduIDButton buttonstyle="primary" onClick={handleOnClick} id="proceed-other-device-button">
           <FormattedMessage defaultMessage="Cancel" description="Use another device, finished" />
         </EduIDButton>
       </div>

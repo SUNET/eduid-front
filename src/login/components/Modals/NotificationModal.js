@@ -6,20 +6,20 @@ import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeButtonId, closeModal }) => {
   return (
-    <EduIDButton id={closeButtonId} buttonStyle="close" className="float-right" onClick={closeModal}></EduIDButton>
+    <EduIDButton id={closeButtonId} buttonstyle="close" className="float-right" onClick={closeModal}></EduIDButton>
   );
 };
 
 const RenderAcceptButton = ({ href, acceptButtonId, acceptModal, acceptButtonText, translate }) => {
   return href ? (
     <>
-      <EduIDButton id={acceptButtonId} buttonStyle="primary" href={href}>
+      <EduIDButton id={acceptButtonId} buttonstyle="primary" href={href}>
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>
   ) : (
     <>
-      <EduIDButton id={acceptButtonId} buttonStyle="primary" onClick={acceptModal}>
+      <EduIDButton id={acceptButtonId} buttonstyle="primary" onClick={acceptModal}>
         {acceptButtonText ? acceptButtonText : translate("cm.accept")}
       </EduIDButton>
     </>

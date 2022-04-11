@@ -42,20 +42,20 @@ class OpenidConnectFreja extends Component {
       );
     } else {
       frejaButton = (
-        <EduIDButton buttonStyle="link" onClick={this.props.handleInitializeFrejaProofing}>
+        <EduIDButton buttonstyle="link" onClick={this.props.handleInitializeFrejaProofing}>
           {this.props.translate("ocf.open_app")}
         </EduIDButton>
       );
       if (this.props.iaRequestData) {
         frejaButton = (
-          <EduIDButton buttonStyle="link" href={"frejaeid://identify?iaRequestData=" + this.props.iaRequestData}>
+          <EduIDButton buttonstyle="link" href={"frejaeid://identify?iaRequestData=" + this.props.iaRequestData}>
             {this.props.translate("ocf.open_app")}
           </EduIDButton>
         );
       }
       buttonGroup = (
         <ButtonGroup vertical block>
-          <EduIDButton buttonStyle="link" href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+          <EduIDButton buttonstyle="link" href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
             {this.props.translate("ocf.freja_instructions_install_link")}
           </EduIDButton>
 
@@ -66,7 +66,7 @@ class OpenidConnectFreja extends Component {
 
     showModalButton = (
       <EduIDButton
-        buttonStyle="primary"
+        buttonstyle="primary"
         id="openid-connect-freja-show-modal"
         onClick={this.props.handleShowModal}
         block
@@ -80,7 +80,7 @@ class OpenidConnectFreja extends Component {
         <form id="openid-connect-freja-form" className="form-horizontal" role="form">
           <fieldset id="openid-connect-freja">
             {showModalButton}
-            <FormText className="proofing-btn-help" buttonStyle="muted">
+            <FormText className="proofing-btn-help" buttonstyle="muted">
               {this.props.translate("ocf.initialize_proofing_help_text")}
             </FormText>
           </fieldset>

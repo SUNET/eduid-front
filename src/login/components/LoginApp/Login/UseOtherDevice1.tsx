@@ -19,13 +19,16 @@ function UseOtherDevice1() {
   const other_device = useAppSelector((state) => state.login.other_device1);
   const username = useAppSelector((state) => state.login.authn_options.forced_username);
   const loginRef = useAppSelector((state) => state.login.ref);
+  const this_device = useAppSelector((state) => state.login.this_device);
+  const remember_me = useAppSelector((state) => state.login.remember_me);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (loginRef && !other_device) {
       // refresh state on page reload
       const _name = username ? username : undefined; // backend is picky and won't allow null
-      dispatch(fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: _name }));
+      dispatch(fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: _name, this_device, remember_me }));
     }
   }, []);
 
@@ -69,7 +72,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
       </div>
       <div className="buttons">
         <EduIDButton
-          buttonStyle="secondary"
+          buttonstyle="secondary"
           type="submit"
           onClick={handleCancelButtonOnClick}
           id="response-code-cancel-button"
@@ -77,7 +80,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
           <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
         </EduIDButton>
         <EduIDButton
-          buttonStyle="primary"
+          buttonstyle="primary"
           type="submit"
           id="refresh-get-new-code"
           onClick={props.handleNewQRCodeOnClick}
@@ -93,6 +96,8 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   const { data } = props;
   const login_ref = useAppSelector((state) => state.login.ref);
   const username = useAppSelector((state) => state.login.authn_options.forced_username);
+  const this_device = useAppSelector((state) => state.login.this_device);
+  const remember_me = useAppSelector((state) => state.login.remember_me);
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -117,7 +122,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     // Get new code
     if (login_ref) {
       const _name = username ? username : undefined; // backend is picky and won't allow null
-      dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "FETCH", username: _name }));
+      dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "FETCH", username: _name, this_device, remember_me }));
       setIsExpired(false);
     }
   }
@@ -129,7 +134,15 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
       // match[0] is whole matched string, [1] and [2] are the groups of digits
       const digits = match[1] + match[2];
       if (login_ref) {
-        dispatch(fetchUseOtherDevice1({ ref: login_ref, action: "SUBMIT_CODE", response_code: digits }));
+        dispatch(
+          fetchUseOtherDevice1({
+            ref: login_ref,
+            action: "SUBMIT_CODE",
+            response_code: digits,
+            this_device,
+            remember_me,
+          })
+        );
       }
     }
 

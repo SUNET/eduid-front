@@ -19,7 +19,7 @@ interface RenderAddPersonalDataPromptProps {
 const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromptProps) => (
   <div className="button-pair">
     <p>{translate("pd.no_data_added")}</p>
-    <EduIDButton buttonStyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
+    <EduIDButton buttonstyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
       {translate("button_add")}
     </EduIDButton>
   </div>
@@ -60,7 +60,7 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
       <div className="edit-data">
         <div className="title button-pair">
           <p>{translate("pd.edit.title")}</p>
-          <EduIDButton buttonStyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
+          <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
         </div>
         <PersonalDataForm isVerifiedNin={isVerifiedNin} {...props} />
       </div>
@@ -78,7 +78,7 @@ const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }: RenderEd
   <Fragment>
     {isEditMode ||
       (hasPersonalData && (
-        <EduIDButton buttonStyle="link" className="lowercase" onClick={() => setEditMode(true)}>
+        <EduIDButton buttonstyle="link" className="lowercase" onClick={() => setEditMode(true)}>
           {translate("pd.edit.button")}
         </EduIDButton>
       ))}

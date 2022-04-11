@@ -10,13 +10,15 @@ import Link from "../../Links/Link";
 import LinkRedirect from "../../Links/LinkRedirect";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
-import { Form as FinalForm, FormRenderProps } from "react-final-form";
+import { Form as FinalForm, FormRenderProps, Field as FinalField } from "react-final-form";
 import EmailInput from "login/components/Inputs/EmailInput";
 import PasswordInput from "login/components/Inputs/PasswordInput";
 import { callUsernamePasswordSaga } from "login/redux/sagas/login/postUsernamePasswordSaga";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
+import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
+import { forgetThisDevice } from "./NewDevice";
 
 interface UsernamePwFormData {
   email?: string;
@@ -51,8 +53,10 @@ export default function UsernamePw() {
         render={(formProps: FormRenderProps<UsernamePwFormData>) => {
           return (
             <form onSubmit={formProps.handleSubmit}>
-              <EmailInput name="email" autoFocus={true} required={true} />
-              <PasswordInput name="current-password" />
+              <UsernameInputPart />
+              <fieldset>
+                <PasswordInput name="current-password" />
+              </fieldset>
 
               <div className="flex-between">
                 <div className="button-pair">
@@ -71,6 +75,50 @@ export default function UsernamePw() {
       ></FinalForm>
     </div>
   );
+}
+
+function UsernameInputPart(): JSX.Element {
+  const authn_options = useAppSelector((state) => state.login.authn_options);
+  const dispatch = useAppDispatch();
+
+  function handleClickWrongPerson() {
+    forgetThisDevice(dispatch);
+    // re-fetch '/next' now that the conditions for logging in has changed
+    dispatch(loginSlice.actions.callLoginNext());
+  }
+
+  if (authn_options.forced_username) {
+    return (
+      <React.Fragment>
+        <div className="welcome-back-container">
+          <h3>
+            <FormattedMessage
+              defaultMessage="Welcome back, {username}!"
+              description="Login username input"
+              values={{
+                username: <strong>{authn_options.display_name}</strong>,
+              }}
+            />
+          </h3>
+          <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+            <FormattedMessage defaultMessage="Different user?" description="Login username input" />
+          </a>
+        </div>
+        <fieldset>
+          <FinalField
+            required={true}
+            disabled={true}
+            component={TextInput}
+            componentClass="input"
+            name="email"
+            defaultValue={authn_options.forced_username}
+            label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
+          />
+        </fieldset>
+      </React.Fragment>
+    );
+  }
+  return <EmailInput name="email" autoFocus={true} required={true} />;
 }
 
 function RenderRegisterLink(): JSX.Element {
@@ -117,7 +165,7 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
   const loading = useAppSelector((state) => state.app.loading_data);
   return (
     <EduIDButton
-      buttonStyle="primary"
+      buttonstyle="primary"
       type="submit"
       disabled={props.invalid || props.pristine || loading}
       aria-disabled={props.invalid || loading}
@@ -147,7 +195,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <EduIDButton buttonStyle="primary" onClick={handleOnClick} id="login-other-device-button">
+    <EduIDButton buttonstyle="primary" onClick={handleOnClick} id="login-other-device-button">
       <FontAwesomeIcon icon={faQrcode} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
     </EduIDButton>
