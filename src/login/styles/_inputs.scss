@@ -130,7 +130,8 @@ input:focus {
   & label {
     letter-spacing: 0;
     font-size: 1rem;
-    margin-left: -2px;
+
+    // margin-left: -2px;
     //margin-bottom: 0;
   }
 
@@ -141,7 +142,6 @@ input:focus {
   & .help-block {
     font-size: 1rem;
     text-transform: lowercase;
-    padding-bottom: 3px;
   }
 }
 
@@ -244,5 +244,5 @@ input:focus {
 
 input:-webkit-autofill {
   background-color: transparent !important;
-  -webkit-box-shadow: 0 0 0 50px white inset;
+  box-shadow: 0 0 0 50px white inset;
 }
