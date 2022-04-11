@@ -82,7 +82,7 @@ function Security(props) {
   });
 
   return (
-    <div id="security-container">
+    <article id="security-container">
       {!isPlatformAuthLoaded && <div ref={spinnerRef} id="eduid-splash-screen" />}
       <div id="register-securitykey-container">
         <div className="intro">
@@ -136,7 +136,7 @@ function Security(props) {
         validationPattern={securityKeyPattern}
         validationError={"security.description_invalid_format"}
       />
-    </div>
+    </article>
   );
 }
 

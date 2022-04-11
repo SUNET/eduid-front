@@ -100,7 +100,7 @@ function Mobile(props) {
   );
 
   return (
-    <div className="phoneview-form-container" id="phone">
+    <article className="phoneview-form-container" id="phone">
       <div className="intro">
         <h3>{translate("phones.main_title")}</h3>
         <p>{translate("phones.long_description")}</p>
@@ -139,7 +139,7 @@ function Mobile(props) {
         validationPattern={shortCodePattern}
         validationError={"confirmation.code_invalid_format"}
       />
-    </div>
+    </article>
   );
 }
 

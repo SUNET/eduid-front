@@ -16,16 +16,15 @@ class DeleteAccount extends Component {
     }
 
     return (
-      <div>
-        <div id="delete-account-container">
-          <div className="intro">
-            <h3>{this.props.translate("settings.account_title")}</h3>
-            <p>{this.props.translate("settings.account_description")}</p>
-          </div>
-          <EduIDButton buttonstyle="link" id="delete-button" onClick={this.props.handleStartConfirmationDeletion}>
-            {this.props.translate("security.button_delete_account")}
-          </EduIDButton>
+      <article id="delete-account-container">
+        <div className="intro">
+          <h3>{this.props.translate("settings.account_title")}</h3>
+          <p>{this.props.translate("settings.account_description")}</p>
         </div>
+        <EduIDButton buttonstyle="link" id="delete-button" onClick={this.props.handleStartConfirmationDeletion}>
+          {this.props.translate("security.button_delete_account")}
+        </EduIDButton>
+
         <NotificationModal
           title={this.props.translate("settings.modal_delete_title")}
           showModal={this.props.confirming_deletion}
@@ -35,7 +34,7 @@ class DeleteAccount extends Component {
           acceptButtonText={this.props.translate("delete.confirm_button")}
           acceptButtonId={"delete-button"}
         />
-      </div>
+      </article>
     );
   }
 }

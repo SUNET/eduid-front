@@ -41,8 +41,18 @@ body {
 
 // same styling as .phoneview-form-container, #delete-account-container,#change-password-container
 // in Email.js = replaced these with with <article>
-article {
-  margin-top: 2rem;
+#text-content article {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid $dark-gray;
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  @media (max-width: $bp-md) {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
 }
 
 // this is a horizontal-margin and should be renamed

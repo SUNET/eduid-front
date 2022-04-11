@@ -20,7 +20,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
   // TODO: Remove ids from FormattedMessage later, when it won't cause a lot of red warnings in the console log
   //       before this is merged after the holidays.
   return (
-    <div>
+    <article>
       <div id="change-password-container">
         <div className="intro">
           <h3>
@@ -77,7 +77,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
         }}
         acceptModal={handleAcceptModal}
       />
-    </div>
+    </article>
   );
 }
 

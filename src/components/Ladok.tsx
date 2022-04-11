@@ -30,7 +30,7 @@ const LadokContainer = (): JSX.Element => {
 
   return (
     <article id="ladok-container" className="ladok">
-      <h3 className="heading-4">
+      <h3>
         <FormattedMessage defaultMessage="Ladok information" description="Ladok account linking" />
       </h3>
 
