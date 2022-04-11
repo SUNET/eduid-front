@@ -79,14 +79,16 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
         >
           <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
         </EduIDButton>
-        <EduIDButton
-          buttonstyle="primary"
-          type="submit"
-          id="refresh-get-new-code"
-          onClick={props.handleNewQRCodeOnClick}
-        >
-          <FormattedMessage defaultMessage="Retry" description="Login OtherDevice" />
-        </EduIDButton>
+        {props.handleNewQRCodeOnClick && (
+          <EduIDButton
+            buttonstyle="primary"
+            type="submit"
+            id="refresh-get-new-code"
+            onClick={props.handleNewQRCodeOnClick}
+          >
+            <FormattedMessage defaultMessage="Retry" description="Login OtherDevice" />
+          </EduIDButton>
+        )}
       </div>
     </React.Fragment>
   );
