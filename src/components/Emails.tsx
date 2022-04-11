@@ -23,27 +23,29 @@ import {
 } from "actions/Emails";
 import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { requestRemoveEmail } from "apis/addEmails";
+import { requestRemoveEmail, postNewEmail } from "apis/addEmails";
 
 const EmailForm = (props: any) => {
   const intl = useIntl();
   const dispatch = useDashboardAppDispatch();
+  const { handleSubmit } = props;
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
     id: "placeholder.email",
     defaultMessage: "name@example.com",
     description: "placeholder text for email input",
   });
-  const handleAdd = (e: any) => {
-    e.preventDefault();
-    dispatch(postEmail());
+
+  const handleAdd = (values: { email: string }) => {
+    const email = values.email;
+    dispatch(postNewEmail({ email: email }));
   };
 
   const emails = useDashboardAppSelector((state) => state.emails);
   const valid_email = isValid("emails")(emails);
 
   return (
-    <Form id="emailsview-form" role="form" onSubmit={handleAdd}>
+    <Form id="emailsview-form" role="form" onSubmit={handleSubmit(handleAdd)}>
       <fieldset id="emails-form" className="tabpane">
         <Field
           label={translate("profile.email_display_title")}
