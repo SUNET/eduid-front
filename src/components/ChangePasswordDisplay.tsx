@@ -23,13 +23,13 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
     <div>
       <div id="change-password-container">
         <div className="intro">
-          <h4>
+          <h3>
             <FormattedMessage
               id="settings.main_title"
               defaultMessage="Change password"
               description="Dashboard change password"
             />
-          </h4>
+          </h3>
           <p>
             <FormattedMessage
               id="settings.long_description"

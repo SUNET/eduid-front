@@ -19,7 +19,7 @@ class DeleteAccount extends Component {
       <div>
         <div id="delete-account-container">
           <div className="intro">
-            <h4>{this.props.translate("settings.account_title")}</h4>
+            <h3>{this.props.translate("settings.account_title")}</h3>
             <p>{this.props.translate("settings.account_description")}</p>
           </div>
           <EduIDButton buttonstyle="link" id="delete-button" onClick={this.props.handleStartConfirmationDeletion}>

@@ -34,9 +34,9 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       pageText = translate("verify-identity.unverified_page-description");
       return (
         <div key="0" className="intro">
-          <h4>{pageHeading}</h4>
+          <h3>{pageHeading}</h3>
           <p>{pageText}</p>
-          <h3>{translate("verify-identity.add-nin_heading")}</h3>
+          <h4>{translate("verify-identity.add-nin_heading")}</h4>
         </div>
       );
     };
@@ -47,7 +47,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       pageText = translate("verify-identity.verified_page-description");
       return (
         <div key="0" className="intro">
-          <h4>{pageHeading}</h4>
+          <h3>{pageHeading}</h3>
           <p>{pageText}</p>
         </div>
       );

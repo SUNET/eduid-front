@@ -359,9 +359,10 @@ a .disabled {
   }
 
   .expires-meter {
+    margin-top: 1.5rem;
     @media (min-width: $bp-md) {
       position: absolute;
-      bottom: 1rem;
+      bottom: 0.5rem;
       right: 0;
     }
   }
@@ -383,8 +384,6 @@ a .disabled {
   }
 
   .listed-steps {
-    margin-top: 2em;
-
     figure {
       img.qr-code {
         width: 200px;

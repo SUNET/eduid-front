@@ -86,7 +86,7 @@ function Security(props) {
       {!isPlatformAuthLoaded && <div ref={spinnerRef} id="eduid-splash-screen" />}
       <div id="register-securitykey-container">
         <div className="intro">
-          <h4>{translate("security.security-key_title")}</h4>
+          <h3>{translate("security.security-key_title")}</h3>
           <p>{translate("security.second-factor")}</p>
         </div>
         <div id="register-webauthn-tokens-area" className="table-responsive">

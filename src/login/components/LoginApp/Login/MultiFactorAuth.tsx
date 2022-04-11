@@ -18,8 +18,12 @@ const MultiFactorAuth = (props: MultiFactorAuthProps): JSX.Element => {
   const { translate } = props;
   return (
     <div className="mfa">
-      <h2 className="heading">{translate("login.mfa.h2-heading")}</h2>
-      <p tabIndex={0}>{translate("login.mfa.paragraph")}</p>
+      <h1>{translate("login.mfa.h2-heading")}</h1>
+      <div className="preamble">
+        <p className="preamble" tabIndex={0}>
+          {translate("login.mfa.paragraph")}
+        </p>
+      </div>
       <div className="options">
         <SecurityKey {...props} />
         <FrejaeID {...props} />

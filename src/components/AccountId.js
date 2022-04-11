@@ -8,7 +8,7 @@ class AccountId extends Component {
       <div>
         <div id="uniqueId-container">
           <div className="intro">
-            <h4>{this.props.translate("accountId.main_title")}</h4>
+            <h3>{this.props.translate("accountId.main_title")}</h3>
             <p>{this.props.translate("accountId.long_description")}</p>
           </div>
           <div key="1" className="profile-grid-cell">
