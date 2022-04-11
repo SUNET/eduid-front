@@ -112,7 +112,7 @@ input:focus {
 .input-label-helptext-container {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
+  align-items: baseline;
 
   & label {
     letter-spacing: 0;
