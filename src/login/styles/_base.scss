@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "variables";
 
 /* overall structure of page */
 * {
@@ -8,7 +8,7 @@
 
 body {
   min-height: 100vh;
-  font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
+  font-family: ProximaNova-Regular, Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #161616;
