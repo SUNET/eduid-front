@@ -26,9 +26,6 @@ input[type="radio"] {
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
   border: 2px solid $orange-highlight;
-
-  // border: 1px solid $black;
-  //  background-color: $white;
   background-color: transparent;
   border-radius: 50%;
 
@@ -48,8 +45,6 @@ input[type="radio"]:checked.error {
   color: $white;
   opacity: 0.8;
   border: none;
-
-  // background-color: $orange-highlight;
 }
 
 /* optional styles for centering radio buttons */
@@ -57,11 +52,6 @@ input[type="radio"]:checked.error {
   display: flex;
   height: 3rem;
 
-  // display: flex;
-  // flex: 1;
-  // align-items: center;
-  // height: 3rem;
-  // margin-left: -2px;
   span {
     font-size: 1.5rem;
     align-self: center;
@@ -212,12 +202,6 @@ input:focus {
   visibility: hidden;
   width: auto;
 }
-
-// .toggle-label {
-//   margin-left: 5px;
-//   position: relative;
-//   top: 2px;
-// }
 
 @media (max-width: $bp-sm) {
   .form-control,
