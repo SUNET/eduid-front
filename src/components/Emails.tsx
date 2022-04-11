@@ -25,52 +25,53 @@ import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { requestRemoveEmail } from "apis/addEmails";
 
-// let EmailForm = (props: any) => {
-//   const intl = useIntl();
-//   const dispatch = useDashboardAppDispatch();
-//   // placeholder can't be an Element, we need to get the actual translated string here
-//   const placeholder = intl.formatMessage({
-//     id: "placeholder.email",
-//     defaultMessage: "name@example.com",
-//     description: "placeholder text for email input",
-//   });
-//   const handleAdd = (e: any) => {
-//     e.preventDefault();
-//     dispatch(postEmail());
-//   };
+const EmailForm = (props: any) => {
+  const intl = useIntl();
+  const dispatch = useDashboardAppDispatch();
+  // placeholder can't be an Element, we need to get the actual translated string here
+  const placeholder = intl.formatMessage({
+    id: "placeholder.email",
+    defaultMessage: "name@example.com",
+    description: "placeholder text for email input",
+  });
+  const handleAdd = (e: any) => {
+    e.preventDefault();
+    dispatch(postEmail());
+  };
 
-//   const emails = useDashboardAppSelector((state) => state.emails.emails);
-//   // const valid_email = isValid("emails")(emails);
+  const emails = useDashboardAppSelector((state) => state.emails);
+  const valid_email = isValid("emails")(emails);
 
-//   return (
-//     <Form id="emailsview-form" role="form" onSubmit={handleAdd}>
-//       <fieldset id="emails-form" className="tabpane">
-//         <Field
-//           label={translate("profile.email_display_title")}
-//           component={CustomInput}
-//           componentClass="input"
-//           type="text"
-//           name="email"
-//           placeholder={placeholder}
-//           helpBlock={translate("emails.input_help_text")}
-//         />
-//       </fieldset>
-//       <EduIDButton id="email-button" buttonstyle="primary" disabled={!valid_email} onClick={props.handleAdd}>
-//         {translate("emails.button_add")}
-//       </EduIDButton>
-//     </Form>
-//   );
-// };
+  return (
+    <Form id="emailsview-form" role="form" onSubmit={handleAdd}>
+      <fieldset id="emails-form" className="tabpane">
+        <Field
+          label={translate("profile.email_display_title")}
+          component={CustomInput}
+          componentClass="input"
+          type="text"
+          name="email"
+          placeholder={placeholder}
+          helpBlock={translate("emails.input_help_text")}
+        />
+      </fieldset>
+      <EduIDButton id="email-button" buttonstyle="primary" disabled={!valid_email} onClick={props.handleAdd}>
+        {translate("emails.button_add")}
+      </EduIDButton>
+    </Form>
+  );
+};
 
-// EmailForm = reduxForm({
-//   form: "emails",
-//   validate,
-// })(EmailForm);
+const DecoratedEmailForm = reduxForm({
+  form: "emails",
+  validate,
+})(EmailForm);
 
-// EmailForm = connect((state) => ({
-//   initialValues: { email: state.emails.email },
-//   enableReinitialize: true,
-// }))(EmailForm);
+const FinalEmailForm = connect((state) => ({
+  initialValues: { email: "" },
+  // initialValues: { email: state.emails.email },
+  enableReinitialize: true,
+}))(DecoratedEmailForm);
 
 function Emails(props: any) {
   const [formClass, setFormClass] = useState("hide");
@@ -88,14 +89,14 @@ function Emails(props: any) {
     // dispatch(requestRemoveEmail());
   }
 
-  // function showEmailForm() {
-  //   setFormClass("form-content");
-  //   setAddLinkClass("hide");
-  //   // rendering focus on input, setTimeout for 2 milliseconds to recognize the form
-  //   setTimeout(() => {
-  //     document.getElementById("email").focus();
-  //   }, 200);
-  // }
+  function showEmailForm() {
+    setFormClass("form-content");
+    setAddLinkClass("hide");
+    // rendering focus on input, setTimeout for 2 milliseconds to recognize the form
+    setTimeout(() => {
+      (document.getElementById("email") as HTMLInputElement).focus();
+    }, 200);
+  }
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -164,13 +165,15 @@ function Emails(props: any) {
           handleRemove={handleRemove}
           // handleMakePrimary={handleMakePrimary}
         />
-        <div className={formClass}>{/* <EmailForm {...props} /> */}</div>
+        <div className={formClass}>
+          <FinalEmailForm {...props} />
+        </div>
 
         <EduIDButton
           id="add-more-button"
           buttonstyle="link"
           className={addLinkClass + " lowercase"}
-          // onClick={showEmailForm}
+          onClick={showEmailForm}
         >
           {translate("emails.button_add_more")}
         </EduIDButton>
