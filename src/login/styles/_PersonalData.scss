@@ -2,32 +2,6 @@
   margin-top: 0;
   margin-bottom: 1rem;
 
-  label {
-    font-size: 1rem;
-    padding: 0 0 0.1875rem 0.125rem;
-  }
-
-  // button {
-  //   margin-bottom: 0;
-  //   width: fit-content;
-  //   align-self: center;
-
-  //   @media (max-width: $bp-sm) {
-  //     &.btn {
-  //       font-size: unset;
-  //       width: unset;
-  //     }
-  //   }
-
-  //   &.icon {
-  //     &:disabled,
-  //     &.disabled {
-  //       // opacity: 0.5;
-  //       background: $light-gray;
-  //     }
-  //   }
-  // }
-
   .title {
     align-items: center;
     margin-bottom: 1rem;
@@ -147,7 +121,7 @@
     margin: 0 1rem 1rem 0;
 
     .display-data {
-      font-family: ProximaNova-Regular, Arial, Helvetica, sans-serif;
+      font-family: $proxima-regular;
       margin-top: 0;
       line-height: $line-height;
       font-size: 1.5rem;
