@@ -4,9 +4,9 @@
   display: flex;
 
   &:focus {
-    color: #161616;
-    background-color: #fff;
-    border-color: gray;
+    color: $black;
+    background-color: $white;
+    border-color: $gray;
     box-shadow: 0 0 0 0.2rem $mid-gray;
     outline: 0;
   }
@@ -15,10 +15,8 @@
 input[type="radio"] {
   /* remove standard background appearance */
   appearance: none;
-  appearance: none;
-  appearance: none;
 
-  /* create custom radiobutton appearance */
+  /* create custom radio button appearance */
   display: inline-block;
   width: 1rem;
   height: 1rem;
@@ -47,14 +45,14 @@ input[type="radio"]:checked {
 
 input[type="radio"]:checked.error {
   background: $dark-orange;
-  color: white;
+  color: $white;
   opacity: 0.8;
   border: none;
 
   // background-color: $orange-highlight;
 }
 
-/* optional styles for centering radiobuttons */
+/* optional styles for centering radio buttons */
 .radio-input-container {
   display: flex;
   height: 3rem;
@@ -68,7 +66,7 @@ input[type="radio"]:checked.error {
     font-size: 1.5rem;
     align-self: center;
     color: $black;
-    font-family: ProximaNova-Regular;
+    font-family: $proxima-regular;
     font-weight: normal;
     text-transform: capitalize;
     margin: 0 2rem 0 0;
@@ -85,7 +83,7 @@ input[type="radio"]:checked.error {
 
 .form-control::placeholder,
 input::placeholder {
-  font-family: ProximaNova-Regular;
+  font-family: $proxima-regular;
   font-size: 1.5rem;
 }
 
@@ -123,16 +121,12 @@ input:focus {
 
 .input-label-helptext-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   align-items: center;
 
   & label {
     letter-spacing: 0;
     font-size: 1rem;
-
-    // margin-left: -2px;
-    //margin-bottom: 0;
   }
 
   & .label-required {
@@ -165,7 +159,7 @@ input:focus {
   background-color: $orange-opaque;
 }
 
-//Switch toggle
+// Switch toggle
 .toggle {
   cursor: pointer;
   display: flex;
@@ -190,7 +184,7 @@ input:focus {
 
   &::before {
     display: block;
-    background: #fff;
+    background: $white;
     border-radius: 50%;
     width: 22px;
     height: 22px;
@@ -244,5 +238,5 @@ input:focus {
 
 input:-webkit-autofill {
   background-color: transparent !important;
-  box-shadow: 0 0 0 50px white inset;
+  box-shadow: 0 0 0 50px $white inset;
 }
