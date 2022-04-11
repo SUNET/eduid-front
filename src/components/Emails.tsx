@@ -75,7 +75,7 @@ import { requestRemoveEmail } from "apis/addEmails";
 function Emails(props: any) {
   const [formClass, setFormClass] = useState("hide");
   const [addLinkClass, setAddLinkClass] = useState("btn-link");
-  const dispatch = useDashboardAppDispatch;
+  const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   // const email = useSelector((state) => state.emails.email);
   const confirming = useDashboardAppSelector((state) => state.emails.confirming);
@@ -84,8 +84,8 @@ function Emails(props: any) {
   function handleRemove(e: any) {
     const dataNode = e.target.closest("tr.emailrow");
     const email: string = dataNode.getAttribute("data-object");
-
     dispatch(requestRemoveEmail({ email: email }));
+    // dispatch(requestRemoveEmail());
   }
 
   // function showEmailForm() {
