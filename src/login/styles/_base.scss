@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "variables";
 
 /* overall structure of page */
 * {
@@ -8,10 +8,10 @@
 
 body {
   min-height: 100vh;
-  font-family: "ProximaNova-Regular", Arial, Helvetica, sans-serif;
+  font-family: $proxima-regular;
   font-size: 16px;
   line-height: 1.5;
-  color: #161616;
+  color: $black;
   scroll-behavior: smooth;
   display: flex;
 }
@@ -32,7 +32,7 @@ body {
   flex-direction: column;
   flex: 1;
   padding-bottom: 6rem;
-  background-color: #f4f4f4;
+  background-color: $light-gray;
 
   @media (max-width: $bp-lg) {
     padding-bottom: 4rem;
@@ -51,11 +51,6 @@ article {
   padding: 0;
   width: 58%;
   max-width: 870px;
-
-  // max-width: 43.5rem;
-  // this margin covers the notifications (check in the new login app why it is like this - plan for dashboard to have
-  // notifications under nav)
-  // margin: -2.25rem auto 0 auto;
   margin: 0 auto;
 
   // this is added to prevent margin collapse (look for other solution if causing problems)
