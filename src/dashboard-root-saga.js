@@ -15,7 +15,7 @@ import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/Acc
 import { requestConfig } from "sagas/DashboardConfig";
 import {
   requestMakePrimaryEmail,
-  requestRemoveEmail,
+  // requestRemoveEmail,
   requestResendEmailCode,
   requestVerifyEmail,
   saveEmail,
