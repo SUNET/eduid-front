@@ -67,14 +67,11 @@ const Header = (props: HeaderProps): JSX.Element => {
         <a href={dashboard_url ? dashboard_url : eduid_site_url}>
           <div id="eduid-logo" className="eduid-logo" />
         </a>
-        <div className="tagline-wrapper">
+        {button}
+        <div className="tagline">
           <div className="horizontal-content-margin">{tagline}</div>
         </div>
-        {button}
       </header>
-      {/* <div className="vertical-content-margin">
-        <div className="tagline">{tagline}</div>
-      </div> */}
     </section>
   );
 };
