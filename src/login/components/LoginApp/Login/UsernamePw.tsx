@@ -37,14 +37,15 @@ export default function UsernamePw() {
   return (
     <div className="username-pw">
       <div className="heading-wrapper">
-        <h1 className="heading">
+        <h1>
           <FormattedMessage defaultMessage="Log in" description="Login front page" />
         </h1>
-        <p className="preamble">
-          Du använder eduID för åtkomst till <strong>Ladok för studenter</strong>
-          <br />
-          Logga in genom att...
-        </p>
+        <div className="preamble">
+          <p>
+            Du använder eduID för åtkomst till <strong>Ladok för studenter</strong>
+          </p>
+          <p>Logga in genom att...</p>
+        </div>
       </div>
       <FinalForm<UsernamePwFormData>
         id="login-form"

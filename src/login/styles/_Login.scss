@@ -31,14 +31,17 @@
     }
 
     .welcome-back-container {
-      padding: 1rem 0;
+      margin: 0 0 1rem;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
 
       @media (max-width: $bp-sm) {
         flex-direction: column;
         align-items: flex-start;
+        h3 {
+          margin-bottom: 0.5em;
+        }
       }
     }
   }

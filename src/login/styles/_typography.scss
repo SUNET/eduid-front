@@ -9,6 +9,7 @@ h4,
 h5,
 h6 {
   margin-top: 0;
+  margin-bottom: 1em;
   line-height: 1.2;
   font-family: "ProximaNova-Bold";
 
@@ -19,32 +20,31 @@ h6 {
 }
 
 h1 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-family: "ProximaNova-Regular";
-  margin-bottom: 1rem;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.75rem;
+  }
+}
+
+h2 {
+  font-size: 1.75rem;
 
   @media (max-width: $bp-md) {
     font-size: 1.5rem;
   }
 }
 
-h2 {
+h3 {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
-
   @media (max-width: $bp-md) {
     font-size: 1.25rem;
   }
 }
 
-h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
 h4 {
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
   // padding: 0;
   // margin: 0;
 }
@@ -54,9 +54,9 @@ h5 {
   margin: 0;
 }
 
-h6 {
-  color: $black;
-}
+// h6 {
+//   color: $black;
+// }
 
 // .heading-4 {
 //   font-size: 1.5rem;
@@ -65,14 +65,22 @@ h6 {
 //   font-weight: 700;
 // }
 
+.preamble {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.125rem;
+  }
+}
+
 p {
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-top: 1rem 0;
-  padding-bottom: 1rem;
-}
-p.preamble {
   margin-bottom: 1rem;
+  ~ p {
+    margin-top: -0.5rem;
+  }
 }
 p.verified {
   color: $black;
@@ -88,9 +96,9 @@ p.no-data.data {
   color: gray;
 }
 
-p.steps {
-  padding-bottom: 0;
-}
+// p.steps {
+//   padding-bottom: 0;
+// }
 
 // .intro {
 //   & h4 {
@@ -117,9 +125,9 @@ p.steps {
 //   margin-bottom: 1rem;
 // }
 
-.horizontal-content-margin {
-  margin-top: 1.5rem;
-}
+// .horizontal-content-margin {
+//   margin-top: 1.5rem;
+// }
 
 .text-large {
   font-size: 1.25rem;
