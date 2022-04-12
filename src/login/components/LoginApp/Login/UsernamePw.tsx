@@ -47,7 +47,9 @@ export default function UsernamePw() {
           return (
             <form onSubmit={formProps.handleSubmit}>
               <UsernameInputPart />
-              <PasswordInput name="current-password" />
+              <fieldset>
+                <PasswordInput name="current-password" />
+              </fieldset>
 
               <div className="flex-between">
                 <div className="button-pair">
@@ -81,30 +83,31 @@ function UsernameInputPart(): JSX.Element {
   if (authn_options.forced_username) {
     return (
       <React.Fragment>
-        <div>
-          <h2>
+        <div className="welcome-back-container">
+          <h3>
             <FormattedMessage
-              defaultMessage="Welcome back, {username}"
+              defaultMessage="Welcome back, {username}!"
               description="Login username input"
               values={{
-                username: <b>{authn_options.display_name}</b>,
+                username: <strong>{authn_options.display_name}</strong>,
               }}
             />
-            &nbsp;&nbsp;
-            <EduIDButton buttonstyle="link" id="wrong-person-button" onClick={handleClickWrongPerson}>
-              {<FormattedMessage defaultMessage="Not you?" description="Login username input" />}
-            </EduIDButton>
-          </h2>
+          </h3>
+          <a className="text-small" id="wrong-person-button" onClick={handleClickWrongPerson}>
+            <FormattedMessage defaultMessage="Different user?" description="Login username input" />
+          </a>
         </div>
-
-        <FinalField
-          required={true}
-          disabled={true}
-          component={TextInput}
-          componentClass="input"
-          name="email"
-          defaultValue={authn_options.forced_username}
-        />
+        <fieldset>
+          <FinalField
+            required={true}
+            disabled={true}
+            component={TextInput}
+            componentClass="input"
+            name="email"
+            defaultValue={authn_options.forced_username}
+            label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
+          />
+        </fieldset>
       </React.Fragment>
     );
   }

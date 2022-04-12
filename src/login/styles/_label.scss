@@ -1,10 +1,9 @@
 label {
   display: flex;
   font-size: 1rem;
-  font-family: "ProximaNova-bold";
+  font-family: $proxima-bold;
   letter-spacing: 0.5px;
   line-height: 1;
   color: $black;
-  padding: 0 0 0.1875rem 0.125rem;
-  margin-right: 5px;
+  margin: 0 5px 5px 0;
 }
