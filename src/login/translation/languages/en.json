@@ -65,6 +65,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter was sent"
   },
+  "99NK5u": {
+    "developer_comment": "Login remember user device",
+    "string": "Remember me on this device"
+  },
   "9CnPOD": {
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
@@ -266,6 +270,10 @@
   "U5eTH/": {
     "string": "Note that you are using this device to log in on the device below"
   },
+  "UALuL9": {
+    "developer_comment": "Login username input",
+    "string": "Different user?"
+  },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Log in: Terms of use"
@@ -301,6 +309,10 @@
   "Zc8y4k": {
     "developer_comment": "Use another device, finished",
     "string": "Use the response code below in the first device to continue logging in"
+  },
+  "ZeHd75": {
+    "developer_comment": "username input field label",
+    "string": "Username"
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -781,6 +793,10 @@
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
+  },
+  "kXrfeE": {
+    "developer_comment": "Login remember user device",
+    "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
   },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
@@ -1359,6 +1375,10 @@
   "q4ENsq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Confirmation code"
+  },
+  "qHomsQ": {
+    "developer_comment": "Login username input",
+    "string": "Welcome back, {username}!"
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
