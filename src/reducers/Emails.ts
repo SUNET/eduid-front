@@ -1,6 +1,6 @@
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as actions from "actions/Emails";
-import { requestRemoveEmail } from "apis/addEmails";
+import { requestRemoveEmail, postNewEmail, requestResendEmailCode } from "apis/addEmails";
 
 import { PDEmail } from "apis/personalData";
 
@@ -31,13 +31,21 @@ export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: PDEmail[] }>("GET_EM
 const emailsSlice = createSlice({
   name: "emails",
   initialState,
-  reducers: {},
+  reducers: {
+    // startConfirmationEmail: (state, action: PayloadAction<string>) => {},
+  },
   extraReducers: (builder) => {
     builder.addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailDataState>) => {
       state.emails = action.payload.emails;
     });
     builder.addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
       state.emails = action.payload.emails;
+    });
+    builder.addCase(postNewEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      state.emails = action.payload.emails;
+    });
+    builder.addCase(requestResendEmailCode.fulfilled, (state) => {
+      state.confirming = undefined;
     });
   },
 });
