@@ -86,8 +86,7 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response; params:
         )}
         {data.state === "FINISHED" && (
           <FormattedMessage defaultMessage="Request completed." description="Use other device 2" />
-        )}
-        &nbsp;
+        )}{" "}
         <FormattedMessage defaultMessage="You should close this browser window." description="Use other device 2" />
       </p>
     );
@@ -282,7 +281,7 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
   }
 
   return (
-    <li>
+    <p>
       <div className="finished device2">
         <FormattedMessage
           defaultMessage="Use the response code below in the first device to continue logging in"
@@ -301,6 +300,7 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
             submitDisabled={true}
             inputsDisabled={true}
             code={props.data.response_code}
+            codeRequired={true}
             handleSubmitCode={handleSubmit}
           />
 
@@ -317,7 +317,7 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
           </div>
         </div>
       </div>
-    </li>
+    </p>
   );
 }
 
