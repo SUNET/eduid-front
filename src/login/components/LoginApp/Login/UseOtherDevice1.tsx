@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { ExpiresMeter } from "./ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
+import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 
 /*
  * Start the "Login using another device" login flow.
@@ -16,11 +17,12 @@ import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
  */
 
 function UseOtherDevice1() {
-  const other_device = useAppSelector((state) => state.login.other_device1);
-  const username = useAppSelector((state) => state.login.authn_options.forced_username);
   const loginRef = useAppSelector((state) => state.login.ref);
-  const this_device = useAppSelector((state) => state.login.this_device);
+  const other_device = useAppSelector((state) => state.login.other_device1);
   const remember_me = useAppSelector((state) => state.login.remember_me);
+  const service_info = useAppSelector((state) => state.login.service_info);
+  const this_device = useAppSelector((state) => state.login.this_device);
+  const username = useAppSelector((state) => state.login.authn_options.forced_username);
 
   const dispatch = useAppDispatch();
 
@@ -49,6 +51,8 @@ function UseOtherDevice1() {
       <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in using another device" />
       </h3>
+
+      <LoginAtServiceInfo service_info={service_info} />
 
       {!error && hasQrCode && <RenderOtherDevice1 data={other_device} />}
       {error && <RenderFatalError error={error} />}

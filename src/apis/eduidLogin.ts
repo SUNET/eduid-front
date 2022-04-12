@@ -158,6 +158,7 @@ export interface LoginNextResponse {
   target: string;
   parameters?: SAMLParameters;
   authn_options?: LoginAuthnOptions;
+  service_info?: ServiceInfo;
 }
 
 export type SAMLParameters = { SAMLResponse: string; RelayState?: string };
