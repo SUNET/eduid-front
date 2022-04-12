@@ -38,6 +38,7 @@ interface UseOtherDevice1ResponseCommon {
   expires_max: number;
   display_id: string;
   state_id: string;
+  response_code_required?: boolean;
 }
 
 export type UseOtherDevice1ResponseWithQR = UseOtherDevice1ResponseCommon & {
@@ -72,6 +73,17 @@ export const fetchUseOtherDevice1 = createAsyncThunk<
 
 /*********************************************************************************************************************/
 
+/* Request types */
+interface UseOtherDevice2WithRef {
+  ref: string;
+  action?: "ABORT";
+}
+
+interface UseOtherDevice2WithStateId {
+  state_id: string;
+  action?: "ABORT";
+}
+
 export type LoginUseOtherDevice2Request = UseOtherDevice2WithRef | UseOtherDevice2WithStateId;
 export type LoginUseOtherDevice2Response = UseOtherDevice2Response | UseOtherDevice2ResponseLoggedIn;
 
@@ -82,6 +94,9 @@ interface UseOtherDevice2ResponseCommon {
   expires_max: number;
   login_ref: string;
   short_code: string;
+  username?: string;
+  display_name?: string;
+  response_code_required?: boolean;
 }
 
 export type UseOtherDevice2Response = UseOtherDevice2ResponseCommon & {
@@ -93,19 +108,16 @@ export type UseOtherDevice2ResponseLoggedIn = UseOtherDevice2ResponseCommon & {
   response_code: string;
 };
 
+export interface ServiceInfo {
+  display_name: { [key: string]: string }; // SP display name in different locales
+}
+
 export interface DeviceInfo {
   addr: string;
   proximity: "SAME" | "NEAR" | "FAR";
   description?: string;
-}
-
-/* Request types */
-interface UseOtherDevice2WithRef {
-  ref: string;
-}
-
-interface UseOtherDevice2WithStateId {
-  state_id: string;
+  is_known_device: boolean;
+  service_info: ServiceInfo;
 }
 
 /**

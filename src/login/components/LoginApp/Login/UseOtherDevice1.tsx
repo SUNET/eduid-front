@@ -100,6 +100,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
   const username = useAppSelector((state) => state.login.authn_options.forced_username);
   const this_device = useAppSelector((state) => state.login.this_device);
   const remember_me = useAppSelector((state) => state.login.remember_me);
+  const response_code_required = useAppSelector((state) => state.login.other_device1?.response_code_required);
   const [isExpired, setIsExpired] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -151,6 +152,23 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
     return undefined;
   }
 
+  function handleContinueWithoutCode() {
+    // If the user is known on device #1, the correct response code is not required by the backend
+    if (login_ref) {
+      dispatch(
+        fetchUseOtherDevice1({
+          ref: login_ref,
+          action: "SUBMIT_CODE",
+          response_code: "000000",
+          this_device,
+          remember_me,
+        })
+      );
+    }
+
+    return undefined;
+  }
+
   const expiredMessage = (
     <>
       <FormattedMessage
@@ -178,15 +196,21 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): JSX
           </li>
 
           <li>
-            <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
+            {response_code_required === false ? (
+              <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
+            ) : (
+              <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
+            )}
             <div className="expiration-info">
               <ResponseCodeForm
+                codeRequired={response_code_required}
                 extra_className="device1"
                 submitDisabled={false}
                 inputsDisabled={false}
                 handleLogin={handleLoginButtonOnClick}
                 handleAbort={handleAbortButtonOnClick}
                 handleSubmitCode={handleSubmitCode}
+                handleContinueWithoutCode={handleContinueWithoutCode}
               />
 
               <TimeRemainingWrapper

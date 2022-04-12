@@ -4,6 +4,7 @@ import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-f
 import { FormattedMessage } from "react-intl";
 
 interface ResponseCodeFormProps {
+  codeRequired?: boolean;
   extra_className: string;
   submitDisabled: boolean;
   inputsDisabled: boolean;
@@ -11,6 +12,7 @@ interface ResponseCodeFormProps {
   handleSubmitCode: (values: ResponseCodeValues) => undefined;
   handleAbort?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleLogin?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleContinueWithoutCode?: () => void;
 }
 
 export interface ResponseCodeValues {
@@ -25,27 +27,46 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 
   return (
     <React.Fragment>
-      <div className={`${props.extra_className}`}>
-        <FinalForm<ResponseCodeValues>
-          onSubmit={props.handleSubmitCode}
-          initialValues={initialValues}
-          render={(formProps) => {
-            return (
-              <ShortCodeForm
-                {...formProps}
-                {...props}
-                handleAbort={props.handleAbort}
-                handleLogin={props.handleLogin}
-              />
-            );
-          }}
-        />
+      <div className={props.extra_className}>
+        {props.codeRequired ? (
+          <FinalForm<ResponseCodeValues>
+            onSubmit={props.handleSubmitCode}
+            initialValues={initialValues}
+            render={(formProps) => {
+              return (
+                <ShortCodeForm
+                  {...formProps}
+                  {...props}
+                  handleAbort={props.handleAbort}
+                  handleLogin={props.handleLogin}
+                />
+              );
+            }}
+          />
+        ) : (
+          <div className="buttons">
+            <EduIDButton
+              buttonstyle="secondary"
+              type="submit"
+              onClick={props.handleAbort}
+              id="response-code-cancel-button"
+            >
+              <FormattedMessage defaultMessage="Cancel" description="Login OtherDevice" />
+            </EduIDButton>
+            <EduIDButton
+              type="submit"
+              buttonstyle="primary"
+              onClick={props.handleContinueWithoutCode}
+              id="response-code-continue-button"
+            >
+              <FormattedMessage defaultMessage="Continue" description="Login OtherDevice" />
+            </EduIDButton>
+          </div>
+        )}
       </div>
     </React.Fragment>
   );
 }
-
-//type FixedFormRenderProps = Omit<FormRenderProps<ResponseCodeValues>, "handleSubmit">;
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   return (
