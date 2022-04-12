@@ -10,6 +10,7 @@ import {
   LoginUseOtherDevice1Response,
   LoginUseOtherDevice2Response,
   SAMLParameters,
+  ServiceInfo,
 } from "apis/eduidLogin";
 import { ToUs } from "login/components/LoginApp/Login/TermsOfUse";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
@@ -37,6 +38,7 @@ interface LoginState {
   authn_options: LoginAuthnOptions;
   other_device1?: LoginUseOtherDevice1Response; // state on device 1 (rendering QR code)
   other_device2?: LoginUseOtherDevice2Response; // state on device 2 (scanning QR code)
+  service_info?: ServiceInfo;
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -159,6 +161,7 @@ export const loginSlice = createSlice({
         state.saml_parameters = samlParameters;
         if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
         state.fetching_next = false;
+        state.service_info = action.payload.service_info;
       })
       .addCase(fetchNext.rejected, (state) => {
         state.fetching_next = false;
