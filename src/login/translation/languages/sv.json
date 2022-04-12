@@ -290,7 +290,7 @@
   },
   "UALuL9": {
     "developer_comment": "Login username input",
-    "string": "Annan användare?"
+    "string": "Inte du?"
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
@@ -457,7 +457,7 @@
     "string": "Bekräftelsekod"
   },
   "cm.finish": {
-    "string": "KLAR"
+    "string": "SLUTFÖR"
   },
   "cm.lost_code": {
     "developer_comment": "Lost code problem description",
@@ -680,7 +680,7 @@
     "string": "E-postadress borttagen"
   },
   "emails.resend_success": {
-    "string": "En ny bekräftelsekod har skickats till {email}"
+    "string": "Ny bekräftelsekod skickad till {email}"
   },
   "emails.save-success": {
     "string": "E-postadressen sparad"
@@ -826,7 +826,7 @@
   },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
-    "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten kan inloggningen göras enklare och säkrare"
+    "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten, kommer inloggningen göras enklare och säkrare"
   },
   "kz8YmP": {
     "string": "Du loggar in som {display_name} ({username}) på den andra enheten"
@@ -1010,7 +1010,7 @@
     "string": "Använd Freja eID i stället"
   },
   "mfa.login-tapit": {
-    "string": "Använd din säkerhetsnyckel för att logga in. Om den har en knapp, tryck på den nu."
+    "string": "Extra säkerhet påslaget för det här kontot"
   },
   "mfa.no-webauthn-support": {
     "string": "Säkerhetsnycklar stöds inte"
@@ -1028,7 +1028,7 @@
     "string": "Försök igen"
   },
   "mfa.two-factor-authn": {
-    "string": "Tvåfaktorsautentisering"
+    "string": "Extra säkerhet påslaget för det här kontot"
   },
   "mobile.button_add": {
     "string": "Lägg till"
@@ -1203,10 +1203,10 @@
     "string": "\"State\" var okänt när ORCID-kontot skulle kopplas"
   },
   "out_of_sync": {
-    "string": "Användardata ur synk. Var god ladda om sidan."
+    "string": "Användardata är ur synk. Var god försök igen."
   },
   "pd.all-data-success": {
-    "string": "Kontodata laddat"
+    "string": "Personlig information laddad"
   },
   "pd.choose-language": {
     "string": "Välj språk"
@@ -1296,10 +1296,10 @@
     "string": "Du kan inte ta bort ditt enda telefonnummer"
   },
   "phones.code-sent": {
-    "string": "En ny bekräftelsekod har skickats till dig"
+    "string": "En ny bekräftelsekod har skickats"
   },
   "phones.code_expired_send_new": {
-    "string": "Bekräftelsekoden har gått ut. En har ny skickats."
+    "string": "Bekräftelsekoden har gått ut. En ny har skickats."
   },
   "phones.code_invalid": {
     "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
@@ -1447,10 +1447,10 @@
     "string": "Skicka ett nytt verifieringsmeddelande"
   },
   "resend.email-label": {
-    "string": "Slutför skapandet av eduID genom att klicka länken skickad till:"
+    "string": "Slutför skapandet av ditt eduID genom att klicka länken skickad till:"
   },
   "resend.link-sent": {
-    "string": "En länk har skickats till din e-postadress."
+    "string": "Kontot skapades"
   },
   "resetpw.accept-password": {
     "string": "Acceptera lösenord"
@@ -1730,7 +1730,7 @@
     "string": "Om du väljer att ta bort ditt eduID kommer all information du sparat rensas permanent."
   },
   "settings.account_title": {
-    "string": "Ta bort eduID"
+    "string": "Radera eduID"
   },
   "settings.change_info": {
     "developer_comment": "Dashboard change password",
