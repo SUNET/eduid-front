@@ -1,11 +1,11 @@
 {
-  "/8yhnq": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Försök igen"
-  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Registrera"
+  },
+  "/ZW9w8": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Försök igen"
   },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
@@ -45,9 +45,17 @@
     "developer_comment": "Login front page",
     "string": "Registrera"
   },
+  "5zpZKp": {
+    "developer_comment": "Use other device 2",
+    "string": "Stäng det här fönstret och fortsätt på den andra enheten."
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker störa eller avbryta den avsedda användningen av nätverken"
+  },
+  "71fMkJ": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Fortsätt"
   },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
@@ -186,6 +194,9 @@
     "developer_comment": "ToU second paragraph",
     "string": "gör intrång i andras privatliv"
   },
+  "KWAMem": {
+    "string": "Klicka på \"fortsätt\" här när du har loggat in på den andra enheten"
+  },
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Inloggningen slutförd, du bör stänga det här fönstret nu."
@@ -238,6 +249,9 @@
     "developer_comment": "Use other device",
     "string": "Begäran har avbrutits"
   },
+  "RHOeL5": {
+    "string": "Använd eduID för att komma åt {service_name}"
+  },
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
     "string": "Blanksteg (mellanslag) ignoreras"
@@ -251,6 +265,10 @@
   },
   "SgvXTp": {
     "string": "Skriv in den sexsiffriga svarskoden som visas i den andra enheten i fältet nedan"
+  },
+  "Skhd4q": {
+    "developer_comment": "Use other device 2",
+    "string": "Färdigt."
   },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
@@ -782,6 +800,18 @@
   "header.signup": {
     "string": "REGISTRERING"
   },
+  "hg+a52": {
+    "developer_comment": "Use other device 2",
+    "string": "Du kan stänga det här fönstret."
+  },
+  "hk4i0h": {
+    "developer_comment": "Use other device 2",
+    "string": "Avbrutet."
+  },
+  "hq/xBV": {
+    "developer_comment": "Use other device 2",
+    "string": "Åtkomst nekad."
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Skriv in koden som skickats till {phone}"
@@ -797,6 +827,9 @@
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten kan inloggningen göras enklare och säkrare"
+  },
+  "kz8YmP": {
+    "string": "Du loggar in som {display_name} ({username}) på den andra enheten"
   },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
@@ -888,7 +921,7 @@
     "string": "Tjänsten kräver något som eduID inte kan tillhandahålla. Kontakta ägaren av tjänsten för hjälp."
   },
   "login.bad_ref": {
-    "string": "Ett problem med referensnumret i URLen uppstod, var god ladda om sidan."
+    "string": "Hittades ej"
   },
   "login.credential_expired": {
     "string": "Tjänsten kräver något som eduID inte kan tillhandahålla. Kontakta ägaren av tjänsten för hjälp."
@@ -921,13 +954,16 @@
     "string": "Ett problem med autentiseringen uppstod, var vänlig försök igen."
   },
   "login.no_sso_session": {
-    "string": "Ett problem uppstod, var god ladda om sidan."
+    "string": "Sessionen hittades inte. Var god försök igen."
   },
   "login.not_available": {
     "string": "Tillfälligt fel, var god försök igen senare."
   },
   "login.not_implemented": {
     "string": "Ett problem uppstod, var vänlig försök igen."
+  },
+  "login.state_not_found": {
+    "string": "Hittades ej"
   },
   "login.swamid_mfa_required": {
     "string": "Tjänsten kräver personverifierad multifaktor (SWAMID MFA). Besök eduIDs dashboard för att lägga till en verifierad säkerhetsnyckel."
@@ -945,7 +981,7 @@
     "string": "E-postadressen eller lösenordet är felaktigt."
   },
   "login.wrong_user": {
-    "string": "Det gick inte att slutföra inloggningen. Var god försök igen."
+    "string": "Fel användare. Du kan inte logga in som den användaren i det här sammanhanget."
   },
   "lpvPcL": {
     "developer_comment": "Dashboard navigation tooltip",
