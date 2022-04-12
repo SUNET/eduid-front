@@ -1,7 +1,7 @@
 {
   "/8yhnq": {
     "developer_comment": "Login OtherDevice",
-    "string": "Försök igen med QR kod"
+    "string": "Försök igen"
   },
   "/ANjhk": {
     "developer_comment": "Header register",
@@ -67,7 +67,7 @@
   },
   "99NK5u": {
     "developer_comment": "Login remember user device",
-    "string": "Kom ihåg mig"
+    "string": "Kom ihåg mig på den här enheten"
   },
   "9CnPOD": {
     "developer_comment": "Login front page",
