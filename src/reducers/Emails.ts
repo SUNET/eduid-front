@@ -32,7 +32,9 @@ const emailsSlice = createSlice({
   name: "emails",
   initialState,
   reducers: {
-    // startConfirmationEmail: (state, action: PayloadAction<string>) => {},
+    startConfirmationEmail: (state, action: PayloadAction<EmailDataState>) => {
+      state.confirming = action.payload.email;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailDataState>) => {

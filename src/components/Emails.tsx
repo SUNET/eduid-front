@@ -14,7 +14,7 @@ import EduIDButton from "./EduIDButton";
 import { isValid } from "redux-form";
 import {
   postEmail,
-  startConfirmation,
+  // startConfirmation,
   stopConfirmation,
   startResendEmailCode,
   startVerify,
@@ -22,8 +22,9 @@ import {
   makePrimary,
 } from "actions/Emails";
 import { clearNotifications } from "reducers/Notifications";
+import emailsSlice from "reducers/Emails";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { requestRemoveEmail, postNewEmail } from "apis/addEmails";
+import { requestRemoveEmail, postNewEmail, requestResendEmailCode } from "apis/addEmails";
 
 const EmailForm = (props: any) => {
   const intl = useIntl();
@@ -39,6 +40,8 @@ const EmailForm = (props: any) => {
   const handleAdd = (values: { email: string }) => {
     const email = values.email;
     dispatch(postNewEmail({ email: email }));
+    props.setFormClass("hide");
+    props.setAddLinkClass("show");
   };
 
   const emails = useDashboardAppSelector((state) => state.emails);
@@ -84,6 +87,7 @@ function Emails(props: any) {
   const confirming = useDashboardAppSelector((state) => state.emails.confirming);
   // const resending = useSelector((state) => state.emails.resending);
 
+  console.log("confirming", confirming);
   function handleRemove(e: any) {
     const dataNode = e.target.closest("tr.emailrow");
     const email: string = dataNode.getAttribute("data-object");
@@ -117,41 +121,44 @@ function Emails(props: any) {
     { email: confirming }
   );
 
-  // const handleResend = (e) => {
-  //   e.preventDefault();
-  //   dispatch(startResendEmailCode());
-  //   dispatch(stopConfirmation());
-  // };
+  function handleResend(e: any) {
+    e.preventDefault();
+    dispatch(requestResendEmailCode());
+    // dispatch(startResendEmailCode());
+    // dispatch(stopConfirmation());
+  }
 
-  // const handleStartConfirmation = (e) => {
-  //   dispatch(clearNotifications());
-  //   const dataNode = e.target.closest("tr.emailrow"),
-  //     data = {
-  //       identifier: dataNode.getAttribute("data-identifier"),
-  //       email: dataNode.getAttribute("data-object"),
-  //     };
-  //   dispatch(startConfirmation(data));
-  // };
+  function handleStartConfirmation(e: any) {
+    // dispatch(clearNotifications());
+    const dataNode = e.target.closest("tr.emailrow"),
+      data = {
+        identifier: dataNode.getAttribute("data-identifier"),
+        email: dataNode.getAttribute("data-object"),
+      };
+    dispatch(emailsSlice.actions.startConfirmationEmail(data));
+  }
 
   // const handleStopConfirmation = () => {
   //   dispatch(stopConfirmation());
   // };
 
-  // const handleConfirm = () => {
-  //   const data = {
-  //     code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
-  //   };
-  //   dispatch(startVerify(data));
-  //   dispatch(stopConfirmation());
-  // };
+  function handleConfirm(e: any) {
+    console.log("e", e);
+    // const data = {
+    //   code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
+    // };
+    // dispatch(startVerify(data));
+    // dispatch(stopConfirmation());
+  }
 
-  // const handleMakePrimary = (e) => {
-  //   const dataNode = e.target.closest("tr.emailrow"),
-  //     data = {
-  //       email: dataNode.getAttribute("data-object"),
-  //     };
-  //   dispatch(makePrimary(data));
-  // };
+  function handleMakePrimary(e: any) {
+    console.log("[handleMakePrimary]: e", e);
+    // const dataNode = e.target.closest("tr.emailrow"),
+    //   data = {
+    //     email: dataNode.getAttribute("data-object"),
+    //   };
+    // dispatch(makePrimary(data));
+  }
 
   return (
     <div className="emailsview-form-container">
@@ -163,12 +170,12 @@ function Emails(props: any) {
         <DataTable
           {...props}
           data={emails}
-          // handleStartConfirmation={handleStartConfirmation}
+          handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
-          // handleMakePrimary={handleMakePrimary}
+          handleMakePrimary={handleMakePrimary}
         />
         <div className={formClass}>
-          <FinalEmailForm {...props} />
+          <FinalEmailForm {...props} setFormClass={setFormClass} setAddLinkClass={setAddLinkClass} />
         </div>
 
         <EduIDButton
@@ -193,8 +200,8 @@ function Emails(props: any) {
         placeholder={placeholder}
         showModal={Boolean(confirming)}
         // closeModal={handleStopConfirmation}
-        // handleResend={handleResend}
-        // handleConfirm={handleConfirm}
+        handleResend={handleResend}
+        handleConfirm={handleConfirm}
         helpBlock={translate("emails.confirm_help_text")}
         validationPattern={longCodePattern}
         validationError={"confirmation.code_invalid_format"}
