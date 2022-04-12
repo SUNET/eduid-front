@@ -397,11 +397,9 @@ a .disabled {
 
   .developer {
     // show QR URL at the bottom for non-production environments
-    display: flex;
-    flex-direction: column;
     height: 10rem;
     font-size: 0.8rem;
-    justify-content: flex-end;
-    word-wrap: break-word;
+    overflow: hidden;
+    word-break: break-all;
   }
 }
