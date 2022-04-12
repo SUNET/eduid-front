@@ -1,7 +1,7 @@
 {
   "/8yhnq": {
     "developer_comment": "Login OtherDevice",
-    "string": "Försök igen med QR kod"
+    "string": "Försök igen"
   },
   "/ANjhk": {
     "developer_comment": "Header register",
@@ -64,6 +64,10 @@
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Ett brev skickades"
+  },
+  "99NK5u": {
+    "developer_comment": "Login remember user device",
+    "string": "Kom ihåg mig på den här enheten"
   },
   "9CnPOD": {
     "developer_comment": "Login front page",
@@ -266,6 +270,10 @@
   "U5eTH/": {
     "string": "Notera att du använder den här enheten för att logga in på enheten nedan"
   },
+  "UALuL9": {
+    "developer_comment": "Login username input",
+    "string": "Annan användare?"
+  },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Logga in: Användarvillkor"
@@ -301,6 +309,10 @@
   "Zc8y4k": {
     "developer_comment": "Use another device, finished",
     "string": "Använd koden nedan i första enheten för att fortsätta inloggningen"
+  },
+  "ZeHd75": {
+    "developer_comment": "username input field label",
+    "string": "Användarnamn"
   },
   "accountId.accountId_display_title": {
     "string": "Unikt ID"
@@ -781,6 +793,10 @@
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Bekräftelsekod"
+  },
+  "kXrfeE": {
+    "developer_comment": "Login remember user device",
+    "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten, kommer inloggningen göras enklare och säkrare"
   },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
@@ -1359,6 +1375,10 @@
   "q4ENsq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Bekräftelsekod"
+  },
+  "qHomsQ": {
+    "developer_comment": "Login username input",
+    "string": "Välkommen tillbaka, {username}!"
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
