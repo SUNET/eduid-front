@@ -51,7 +51,8 @@
     "Userdata",
     "USERNAMEPASSWORD",
     "webauthn",
-    "zxcvbn"
+    "zxcvbn",
+    "buttonstyle"
   ],
   "cSpell.language": "en,en-US,en-GB,sv",
   "editor.rulers": [120],
