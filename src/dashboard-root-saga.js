@@ -16,9 +16,9 @@ import { requestConfig } from "sagas/DashboardConfig";
 import {
   requestMakePrimaryEmail,
   // requestRemoveEmail,
-  requestResendEmailCode,
-  requestVerifyEmail,
-  saveEmail,
+  // requestResendEmailCode,
+  // requestVerifyEmail,
+  // saveEmail,
 } from "sagas/Emails";
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
@@ -73,9 +73,9 @@ function* rootSaga() {
     takeLatest(openidFrejaActions.GET_OIDC_PROOFING_FREJA_PROOFING, sagasOpenidFreja.requestOpenidFrejaData),
     takeLatest(openidFrejaActions.SHOW_OIDC_FREJA_MODAL, sagasOpenidFreja.checkNINAndShowFrejaModal),
     takeLatest(openidFrejaActions.HIDE_OIDC_FREJA_MODAL, sagasOpenidFreja.closeFrejaModal),
-    takeLatest(emailActions.POST_EMAIL, saveEmail),
-    takeLatest(emailActions.START_RESEND_EMAIL_CODE, requestResendEmailCode),
-    takeLatest(emailActions.START_VERIFY, requestVerifyEmail),
+    // takeLatest(emailActions.POST_EMAIL, saveEmail),
+    // takeLatest(emailActions.START_RESEND_EMAIL_CODE, requestResendEmailCode),
+    // takeLatest(emailActions.START_VERIFY, requestVerifyEmail),
     // takeLatest(emailActions.POST_EMAIL_REMOVE, requestRemoveEmail),
     takeLatest(emailActions.POST_EMAIL_PRIMARY, requestMakePrimaryEmail),
     takeLatest(mobileActions.POST_MOBILE, sagasMobile.saveMobile),
