@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import SecurityKey from "./SecurityKey";
 import FrejaeID from "./FrejaeID";
 import PropTypes from "prop-types";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import loginSlice from "../../../redux/slices/loginSlice";
+import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 
 interface MultiFactorAuthProps {
   translate(msg: string): string;
 }
 
 const MultiFactorAuth = (props: MultiFactorAuthProps): JSX.Element => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const service_info = useAppSelector((state) => state.login.service_info);
   useEffect(() => {
     dispatch(loginSlice.actions.postRefForWebauthnChallenge());
   }, []);
@@ -19,6 +21,7 @@ const MultiFactorAuth = (props: MultiFactorAuthProps): JSX.Element => {
   return (
     <div className="mfa">
       <h2 className="heading">{translate("login.mfa.h2-heading")}</h2>
+      <LoginAtServiceInfo service_info={service_info} />
       <p tabIndex={0}>{translate("login.mfa.paragraph")}</p>
       <div className="options">
         <SecurityKey {...props} />

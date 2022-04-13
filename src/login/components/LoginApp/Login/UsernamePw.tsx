@@ -19,6 +19,7 @@ import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import { forgetThisDevice } from "./NewDevice";
+import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 
 interface UsernamePwFormData {
   email?: string;
@@ -27,6 +28,7 @@ interface UsernamePwFormData {
 
 export default function UsernamePw() {
   const dispatch = useAppDispatch();
+  const service_info = useAppSelector((state) => state.login.service_info);
 
   function handleSubmitUsernamePw(values: UsernamePwFormData) {
     if (values.email && values["current-password"]) {
@@ -39,6 +41,7 @@ export default function UsernamePw() {
       <h2 className="heading">
         <FormattedMessage defaultMessage="Log in" description="Login front page" />
       </h2>
+      <LoginAtServiceInfo service_info={service_info} />
       <FinalForm<UsernamePwFormData>
         id="login-form"
         aria-label="login form"
