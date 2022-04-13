@@ -1,6 +1,12 @@
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as actions from "actions/Emails";
-import { requestRemoveEmail, postNewEmail, requestResendEmailCode } from "apis/addEmails";
+import {
+  requestRemoveEmail,
+  postNewEmail,
+  requestResendEmailCode,
+  requestVerifyEmail,
+  requestMakePrimaryEmail,
+} from "apis/addEmails";
 
 import { PDEmail } from "apis/personalData";
 
@@ -15,7 +21,6 @@ export interface EmailDataState {
   confirming?: string;
   emails?: PDEmail[];
   email?: string;
-  code?: string;
 }
 
 const initialState: EmailDataState = {
@@ -23,7 +28,6 @@ const initialState: EmailDataState = {
   confirming: "",
   emails: [],
   email: "",
-  code: "",
 };
 
 export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: PDEmail[] }>("GET_EMAIL_ALL_SUCCESS");
@@ -34,6 +38,9 @@ const emailsSlice = createSlice({
   reducers: {
     startConfirmationEmail: (state, action: PayloadAction<EmailDataState>) => {
       state.confirming = action.payload.email;
+    },
+    stopConfirmation: (state) => {
+      state.confirming = undefined;
     },
   },
   extraReducers: (builder) => {
@@ -46,8 +53,14 @@ const emailsSlice = createSlice({
     builder.addCase(postNewEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
       state.emails = action.payload.emails;
     });
-    builder.addCase(requestResendEmailCode.fulfilled, (state) => {
-      state.confirming = undefined;
+    builder.addCase(requestResendEmailCode.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      state.emails = action.payload.emails;
+    });
+    builder.addCase(requestVerifyEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      state.emails = action.payload.emails;
+    });
+    builder.addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      state.emails = action.payload.emails;
     });
   },
 });

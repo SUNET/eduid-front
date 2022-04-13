@@ -7,6 +7,32 @@ import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app"
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
+export interface requestMakePrimaryEmailResponse {
+  message?: string;
+  email?: string;
+}
+
+/**
+ * @public
+ * @function requestMakePrimaryEmail
+ * @desc Redux async thunk to get emails state from the backend.
+ */
+export const requestMakePrimaryEmail = createAsyncThunk<
+  requestMakePrimaryEmailResponse, // return type
+  { email: string }, // args type
+  { dispatch: DashboardAppDispatch; state: DashboardRootState }
+>("emails/requestMakePrimaryEmail", async (args, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const data: KeyValues = {
+    email: args.email,
+    csrf_token: state.config.csrf_token,
+  };
+  return makeAddEmailRequest<requestMakePrimaryEmailResponse>(thunkAPI, "primary", data)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 export interface requestVerifyEmailResponse {
   message?: string;
   email?: string;
@@ -19,7 +45,7 @@ export interface requestVerifyEmailResponse {
  * @desc Redux async thunk to get emails state from the backend.
  */
 export const requestVerifyEmail = createAsyncThunk<
-  requestResendEmailCodeResponse, // return type
+  requestVerifyEmailResponse, // return type
   { code: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("emails/requestVerifyEmail", async (args, thunkAPI) => {
@@ -29,7 +55,7 @@ export const requestVerifyEmail = createAsyncThunk<
     code: args.code,
     csrf_token: state.config.csrf_token,
   };
-  return makeAddEmailRequest<requestResendEmailCodeResponse>(thunkAPI, "verify", data)
+  return makeAddEmailRequest<requestVerifyEmailResponse>(thunkAPI, "verify", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
