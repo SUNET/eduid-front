@@ -88,7 +88,6 @@ function Emails(props: any) {
         email: dataNode.getAttribute("data-object"),
       };
     dispatch(emailsSlice.actions.startConfirmationEmail(data));
-    dispatch(requestResendEmailCode());
   }
 
   function handleStopConfirmation() {
