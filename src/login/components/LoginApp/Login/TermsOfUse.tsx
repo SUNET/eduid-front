@@ -3,7 +3,6 @@ import EduIDButton from "components/EduIDButton";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import { FormattedMessage } from "react-intl";
-import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 
 export const ToUs: { [key: string]: ReactElement } = {
   "1999-v1": (
@@ -132,7 +131,7 @@ const TermsOfUse = (): JSX.Element => {
   const availableTouVersions = useAppSelector((state) => state.login.tou.available_versions);
   // version is the version of the ToU the backend requests we ask the user to accept
   const version = useAppSelector((state) => state.login.tou.version);
-  const service_info = useAppSelector((state) => state.login.service_info);
+
   useEffect(() => {
     // TODO: So we render the ToU page, and *then* we fire off the request to ask the backend what version to show?
     //       We ought to send that request as soon as the backend /next call says that ToU is next.
@@ -143,7 +142,6 @@ const TermsOfUse = (): JSX.Element => {
       <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
       </h3>
-      <LoginAtServiceInfo service_info={service_info} />
       <p tabIndex={0}>
         <FormattedMessage
           defaultMessage="We need an updated acceptance from you of the eduID terms of use."
