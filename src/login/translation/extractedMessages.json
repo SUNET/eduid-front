@@ -929,12 +929,6 @@
   "login.general_failure": {
     "string": "An error occurred. Please try again later."
   },
-  "login.mfa.h2-heading": {
-    "string": "Log in: Extra level of security"
-  },
-  "login.mfa.paragraph": {
-    "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
-  },
   "login.mfa.primary-option.button": {
     "string": "Use security key"
   },
