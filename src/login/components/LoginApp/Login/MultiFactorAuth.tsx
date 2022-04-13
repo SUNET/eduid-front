@@ -2,38 +2,36 @@ import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import SecurityKey from "./SecurityKey";
 import FrejaeID from "./FrejaeID";
-import PropTypes from "prop-types";
-import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+import { FormattedMessage } from "react-intl";
 
-interface MultiFactorAuthProps {
-  translate(msg: string): string;
-}
-
-const MultiFactorAuth = (props: MultiFactorAuthProps): JSX.Element => {
+const MultiFactorAuth = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const service_info = useAppSelector((state) => state.login.service_info);
   useEffect(() => {
     dispatch(loginSlice.actions.postRefForWebauthnChallenge());
   }, []);
-  const { translate } = props;
   return (
     <div className="mfa">
-      <h3 className="heading heading-4">{translate("login.mfa.h2-heading")}</h3>
+      <h3 className="heading heading-4">
+        <FormattedMessage defaultMessage="Log in: Extra level of security" description="Login Mfa heading" />
+
+        {/* {translate("login.mfa.h2-heading")}*/}
+      </h3>
       <LoginAtServiceInfo service_info={service_info} />
-      <p tabIndex={0}>{translate("login.mfa.paragraph")}</p>
+      <p tabIndex={0}>
+        <FormattedMessage
+          defaultMessage="You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
+          description="Login Mfa paragraph"
+        />
+      </p>
       <div className="options">
-        <SecurityKey {...props} />
-        <FrejaeID {...props} />
+        <SecurityKey />
+        <FrejaeID />
       </div>
     </div>
   );
 };
 
-// run-time type checking in development mode
-MultiFactorAuth.propTypes = {
-  translate: PropTypes.func,
-};
-
-export default InjectIntl(MultiFactorAuth);
+export default MultiFactorAuth;
