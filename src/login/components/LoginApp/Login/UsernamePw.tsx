@@ -38,9 +38,9 @@ export default function UsernamePw() {
 
   return (
     <div className="username-pw">
-      <h2 className="heading">
+      <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in" description="Login front page" />
-      </h2>
+      </h3>
       <LoginAtServiceInfo service_info={service_info} />
       <FinalForm<UsernamePwFormData>
         id="login-form"

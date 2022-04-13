@@ -140,9 +140,9 @@ const TermsOfUse = (): JSX.Element => {
   }, []);
   return (
     <div className="tou">
-      <h2 className="heading">
+      <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
-      </h2>
+      </h3>
       <LoginAtServiceInfo service_info={service_info} />
       <p tabIndex={0}>
         <FormattedMessage
