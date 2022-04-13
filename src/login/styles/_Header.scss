@@ -22,11 +22,11 @@ header {
   }
 
   .tagline {
-    font-family: "ProximaNova-light";
-    font-size: 0.9rem;
+    font-family: "ProximaNova-Bold";
+    font-size: 1rem;
 
     @media (min-width: $bp-lg) {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       width: 100vw;
       left: 0;
       position: absolute;
