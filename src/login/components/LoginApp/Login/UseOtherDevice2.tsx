@@ -137,6 +137,8 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response; params:
           <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
         </TimeRemainingWrapper>
       </div>
+
+      {data.state === "AUTHENTICATED" && <DeveloperInfo data={data} />}
     </React.Fragment>
   );
 }
@@ -321,4 +323,22 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
   );
 }
 
+function DeveloperInfo(props: { data: UseOtherDevice2ResponseLoggedIn }) {
+  const env = useAppSelector((state) => state.config.environment);
+  if (env != "dev" && env != "staging") {
+    return null;
+  }
+  return (
+    <div className="developer">
+      <p></p>
+      <span>
+        <FormattedMessage defaultMessage="Developer info, not shown in production:" />
+      </span>
+      <p>
+        Response code:
+        <span id="response_code">{props.data.response_code}</span>
+      </p>
+    </div>
+  );
+}
 export default UseOtherDevice2;
