@@ -1,6 +1,5 @@
 import * as accountLinkingActions from "actions/AccountLinking";
 import * as configActions from "actions/DashboardConfig";
-import * as emailActions from "actions/Emails";
 import * as headerActions from "actions/Header";
 import * as lmpActions from "actions/LookupMobileProofing";
 import * as mobileActions from "actions/Mobile";
@@ -13,13 +12,6 @@ import ninsSlice from "reducers/Nins";
 import { put, select, takeEvery, takeLatest } from "redux-saga/effects";
 import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/AccountLinking";
 import { requestConfig } from "sagas/DashboardConfig";
-import {
-  requestMakePrimaryEmail,
-  // requestRemoveEmail,
-  // requestResendEmailCode,
-  // requestVerifyEmail,
-  // saveEmail,
-} from "sagas/Emails";
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import * as sagasMobile from "sagas/Mobile";
@@ -73,11 +65,6 @@ function* rootSaga() {
     takeLatest(openidFrejaActions.GET_OIDC_PROOFING_FREJA_PROOFING, sagasOpenidFreja.requestOpenidFrejaData),
     takeLatest(openidFrejaActions.SHOW_OIDC_FREJA_MODAL, sagasOpenidFreja.checkNINAndShowFrejaModal),
     takeLatest(openidFrejaActions.HIDE_OIDC_FREJA_MODAL, sagasOpenidFreja.closeFrejaModal),
-    // takeLatest(emailActions.POST_EMAIL, saveEmail),
-    // takeLatest(emailActions.START_RESEND_EMAIL_CODE, requestResendEmailCode),
-    // takeLatest(emailActions.START_VERIFY, requestVerifyEmail),
-    // takeLatest(emailActions.POST_EMAIL_REMOVE, requestRemoveEmail),
-    takeLatest(emailActions.POST_EMAIL_PRIMARY, requestMakePrimaryEmail),
     takeLatest(mobileActions.POST_MOBILE, sagasMobile.saveMobile),
     takeLatest(mobileActions.POST_MOBILE_REMOVE, sagasMobile.requestRemoveMobile),
     takeLatest(mobileActions.POST_MOBILE_PRIMARY, sagasMobile.requestMakePrimaryMobile),
