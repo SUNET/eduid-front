@@ -24,7 +24,7 @@ import {
 import { clearNotifications } from "reducers/Notifications";
 import emailsSlice from "reducers/Emails";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { requestRemoveEmail, postNewEmail, requestResendEmailCode } from "apis/addEmails";
+import { requestRemoveEmail, postNewEmail, requestResendEmailCode, requestVerifyEmail } from "apis/addEmails";
 
 const EmailForm = (props: any) => {
   const intl = useIntl();
@@ -136,18 +136,24 @@ function Emails(props: any) {
         email: dataNode.getAttribute("data-object"),
       };
     dispatch(emailsSlice.actions.startConfirmationEmail(data));
+    dispatch(requestResendEmailCode());
   }
 
-  // const handleStopConfirmation = () => {
-  //   dispatch(stopConfirmation());
-  // };
+  function handleStopConfirmation() {
+    dispatch(emailsSlice.actions.stopConfirmation());
+    // dispatch(stopConfirmation());
+  }
 
-  function handleConfirm(e: any) {
-    console.log("e", e);
-    // const data = {
-    //   code: document.getElementById("confirmation-code-area").querySelector("input").value.trim(),
-    // };
-    // dispatch(startVerify(data));
+  function handleConfirm() {
+    const codeValue = document.getElementById("confirmation-code-area");
+    const data = {
+      code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
+    };
+    if (data.code) {
+      dispatch(requestVerifyEmail({ code: data.code }));
+      dispatch(emailsSlice.actions.stopConfirmation());
+    }
+
     // dispatch(stopConfirmation());
   }
 
@@ -199,7 +205,7 @@ function Emails(props: any) {
         resendText={translate("cm.resend_code")}
         placeholder={placeholder}
         showModal={Boolean(confirming)}
-        // closeModal={handleStopConfirmation}
+        closeModal={handleStopConfirmation}
         handleResend={handleResend}
         handleConfirm={handleConfirm}
         helpBlock={translate("emails.confirm_help_text")}
