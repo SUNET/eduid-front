@@ -1,17 +1,13 @@
 import { translate } from "login/translation";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
-import { connect } from "react-redux";
-import { Form } from "reactstrap";
-import { Field, reduxForm } from "redux-form";
 import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
-import { validate, validateEmailField } from "../login/app_utils/validation/validateEmail";
+import { validateEmailField } from "../login/app_utils/validation/validateEmail";
 import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
 import EduIDButton from "./EduIDButton";
-import { isValid } from "redux-form";
 import { clearNotifications } from "reducers/Notifications";
 import emailsSlice from "reducers/Emails";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
@@ -22,7 +18,7 @@ import {
   requestVerifyEmail,
   requestMakePrimaryEmail,
 } from "apis/addEmails";
-import { Form as FinalForm, Field as FinalField, FieldRenderProps } from "react-final-form";
+import { Form as FinalForm, Field as FinalField } from "react-final-form";
 
 interface EmailFormData {
   email?: string;
@@ -33,9 +29,7 @@ function Emails(props: any) {
   const [addLinkClass, setAddLinkClass] = useState("btn-link");
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
-  // const email = useSelector((state) => state.emails.email);
   const confirming = useDashboardAppSelector((state) => state.emails.confirming);
-  // const resending = useSelector((state) => state.emails.resending);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -84,8 +78,6 @@ function Emails(props: any) {
   function handleResend(e: any) {
     e.preventDefault();
     dispatch(requestResendEmailCode());
-    // dispatch(startResendEmailCode());
-    // dispatch(stopConfirmation());
   }
 
   function handleStartConfirmation(e: any) {
