@@ -9,9 +9,11 @@ import { FormattedMessage } from "react-intl";
 const MultiFactorAuth = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const service_info = useAppSelector((state) => state.login.service_info);
+
   useEffect(() => {
     dispatch(loginSlice.actions.postRefForWebauthnChallenge());
   }, []);
+
   return (
     <div className="mfa">
       <h3 className="heading heading-4">
