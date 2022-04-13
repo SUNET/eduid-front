@@ -16,8 +16,6 @@ const MultiFactorAuth = (): JSX.Element => {
     <div className="mfa">
       <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in: Extra level of security" description="Login Mfa heading" />
-
-        {/* {translate("login.mfa.h2-heading")}*/}
       </h3>
       <LoginAtServiceInfo service_info={service_info} />
       <p tabIndex={0}>
