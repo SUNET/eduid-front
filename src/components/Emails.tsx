@@ -12,19 +12,16 @@ import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
 import EduIDButton from "./EduIDButton";
 import { isValid } from "redux-form";
-import {
-  postEmail,
-  // startConfirmation,
-  stopConfirmation,
-  startResendEmailCode,
-  startVerify,
-  startRemove,
-  makePrimary,
-} from "actions/Emails";
 import { clearNotifications } from "reducers/Notifications";
 import emailsSlice from "reducers/Emails";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { requestRemoveEmail, postNewEmail, requestResendEmailCode, requestVerifyEmail } from "apis/addEmails";
+import {
+  requestRemoveEmail,
+  postNewEmail,
+  requestResendEmailCode,
+  requestVerifyEmail,
+  requestMakePrimaryEmail,
+} from "apis/addEmails";
 
 const EmailForm = (props: any) => {
   const intl = useIntl();
@@ -129,7 +126,7 @@ function Emails(props: any) {
   }
 
   function handleStartConfirmation(e: any) {
-    // dispatch(clearNotifications());
+    dispatch(clearNotifications());
     const dataNode = e.target.closest("tr.emailrow"),
       data = {
         identifier: dataNode.getAttribute("data-identifier"),
@@ -141,7 +138,6 @@ function Emails(props: any) {
 
   function handleStopConfirmation() {
     dispatch(emailsSlice.actions.stopConfirmation());
-    // dispatch(stopConfirmation());
   }
 
   function handleConfirm() {
@@ -149,21 +145,16 @@ function Emails(props: any) {
     const data = {
       code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
     };
-    if (data.code) {
-      dispatch(requestVerifyEmail({ code: data.code }));
-      dispatch(emailsSlice.actions.stopConfirmation());
-    }
-
-    // dispatch(stopConfirmation());
+    if (data.code) dispatch(requestVerifyEmail({ code: data.code }));
+    dispatch(emailsSlice.actions.stopConfirmation());
   }
 
   function handleMakePrimary(e: any) {
-    console.log("[handleMakePrimary]: e", e);
-    // const dataNode = e.target.closest("tr.emailrow"),
-    //   data = {
-    //     email: dataNode.getAttribute("data-object"),
-    //   };
-    // dispatch(makePrimary(data));
+    const dataNode = e.target.closest("tr.emailrow"),
+      data = {
+        email: dataNode.getAttribute("data-object"),
+      };
+    dispatch(requestMakePrimaryEmail({ email: data.email }));
   }
 
   return (
