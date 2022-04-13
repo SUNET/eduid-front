@@ -171,6 +171,10 @@
     "developer_comment": "password input field label",
     "string": "Lösenord"
   },
+  "GOpzll": {
+    "developer_comment": "Login Mfa heading",
+    "string": "Logga in: Extra nivå av säkerhet"
+  },
   "GX77Th": {
     "developer_comment": "Header tagline",
     "string": "eduID för"
@@ -1903,6 +1907,10 @@
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "om"
+  },
+  "xBsfUj": {
+    "developer_comment": "Login Mfa paragraph",
+    "string": "Du måste välja en andra metod att autentisera dig själv. Detta hjälper att garantera att bara du kan komma åt ditt eduID."
   },
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
