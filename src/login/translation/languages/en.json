@@ -1,11 +1,11 @@
 {
-  "/8yhnq": {
-    "developer_comment": "Login OtherDevice",
-    "string": "Retry with QR code"
-  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Register"
+  },
+  "/ZW9w8": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Retry"
   },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
@@ -45,9 +45,17 @@
     "developer_comment": "Login front page",
     "string": "Register"
   },
+  "5zpZKp": {
+    "developer_comment": "Use other device 2",
+    "string": "You can now close this window and continue on the other device."
+  },
   "6t9/LE": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to disrupt or destroy computer-based information"
+  },
+  "71fMkJ": {
+    "developer_comment": "Login OtherDevice",
+    "string": "Continue"
   },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
@@ -64,6 +72,10 @@
   "8eobOo": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter was sent"
+  },
+  "99NK5u": {
+    "developer_comment": "Login remember user device",
+    "string": "Remember me on this device"
   },
   "9CnPOD": {
     "developer_comment": "Login front page",
@@ -182,6 +194,9 @@
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
   },
+  "KWAMem": {
+    "string": "Click \"continue\" once you have logged in on the other device"
+  },
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Request complete, you should close this browser window."
@@ -234,6 +249,9 @@
     "developer_comment": "Use other device",
     "string": "The request has been aborted"
   },
+  "RHOeL5": {
+    "string": "Use eduID to access {service_name}"
+  },
   "RLocCj": {
     "developer_comment": "help text for custom password tips",
     "string": "Spaces are ignored"
@@ -247,6 +265,10 @@
   },
   "SgvXTp": {
     "string": "Enter the six digit response code shown on the other device in the form below"
+  },
+  "Skhd4q": {
+    "developer_comment": "Use other device 2",
+    "string": "Request completed."
   },
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
@@ -265,6 +287,10 @@
   },
   "U5eTH/": {
     "string": "Note that you are using this device to log in on the device below"
+  },
+  "UALuL9": {
+    "developer_comment": "Login username input",
+    "string": "Not you?"
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
@@ -301,6 +327,10 @@
   "Zc8y4k": {
     "developer_comment": "Use another device, finished",
     "string": "Use the response code below in the first device to continue logging in"
+  },
+  "ZeHd75": {
+    "developer_comment": "username input field label",
+    "string": "Username"
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -770,6 +800,18 @@
   "header.signup": {
     "string": "SIGN UP"
   },
+  "hg+a52": {
+    "developer_comment": "Use other device 2",
+    "string": "You should close this browser window."
+  },
+  "hk4i0h": {
+    "developer_comment": "Use other device 2",
+    "string": "Request cancelled."
+  },
+  "hq/xBV": {
+    "developer_comment": "Use other device 2",
+    "string": "Request denied."
+  },
   "irC/sN": {
     "developer_comment": "Reset Password phone code sent",
     "string": "Enter the code sent to {phone}"
@@ -781,6 +823,13 @@
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
+  },
+  "kXrfeE": {
+    "developer_comment": "Login remember user device",
+    "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
+  },
+  "kz8YmP": {
+    "string": "You are logging in as {display_name} ({username}) on the other device"
   },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
@@ -872,7 +921,7 @@
     "string": "The service requires something that eduID cannot provide. Contact the service owner for help."
   },
   "login.bad_ref": {
-    "string": "The was a problem a problem with the reference number in the URL, please reload the page."
+    "string": "Not found"
   },
   "login.credential_expired": {
     "string": "The credential has expired because it was not used in 18 months. Perform a password reset or log in using some other credential."
@@ -905,13 +954,16 @@
     "string": "There was a problem with the authentication, please try again."
   },
   "login.no_sso_session": {
-    "string": "There was a problem, please reload the page."
+    "string": "Session not found. Please try again."
   },
   "login.not_available": {
     "string": "An error occurred. Please try again later."
   },
   "login.not_implemented": {
     "string": "There was a problem, please try again."
+  },
+  "login.state_not_found": {
+    "string": "Not found"
   },
   "login.swamid_mfa_required": {
     "string": "The service requires Person-Proofed multi-factor authentication (SWAMID MFA). Visit the eduID dashboard to add a verified Security Key."
@@ -929,7 +981,7 @@
     "string": "The email address or password was incorrect."
   },
   "login.wrong_user": {
-    "string": "It was not possible to complete the login. Please try again."
+    "string": "Wrong user. You can't log in as this user in this context."
   },
   "lpvPcL": {
     "developer_comment": "Dashboard navigation tooltip",
@@ -1359,6 +1411,10 @@
   "q4ENsq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Confirmation code"
+  },
+  "qHomsQ": {
+    "developer_comment": "Login username input",
+    "string": "Welcome back, {username}!"
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",

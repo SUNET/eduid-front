@@ -140,20 +140,16 @@ export const specificErrors = {
       defaultMessage={`The service requires something that eduID cannot provide. Contact the service owner for help.`}
     />
   ),
-  "login.bad_ref": (
-    <FormattedMessage
-      id="login.bad_ref"
-      defaultMessage={`The was a problem a problem with the reference number in the URL, please reload the page.`}
-    />
-  ),
+  "login.bad_ref": <FormattedMessage id="login.bad_ref" defaultMessage="Not found" />,
+  "login.state_not_found": <FormattedMessage id="login.state_not_found" defaultMessage="Not found" />,
 
   "login.no_sso_session": (
-    <FormattedMessage id="login.no_sso_session" defaultMessage={`There was a problem, please reload the page.`} />
+    <FormattedMessage id="login.no_sso_session" defaultMessage="Session not found. Please try again." />
   ),
   "login.wrong_user": (
     <FormattedMessage
       id="login.wrong_user"
-      defaultMessage={`It was not possible to complete the login. Please try again.`}
+      defaultMessage="Wrong user. You can't log in as this user in this context."
     />
   ),
   "login.credential_expired": (
