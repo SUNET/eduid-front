@@ -60,6 +60,11 @@ function Emails(props: any) {
     setAddLinkClass("show");
   }
 
+  function handleCancel() {
+    setFormClass("hide");
+    setAddLinkClass("show");
+  }
+
   function handleRemove(e: any) {
     const dataNode = e.target.closest("tr.emailrow");
     const email: string = dataNode.getAttribute("data-object");
@@ -141,14 +146,19 @@ function Emails(props: any) {
                     helpBlock={translate("emails.input_help_text")}
                     validate={validateEmailField}
                   />
-                  <EduIDButton
-                    id="email-button"
-                    buttonstyle="primary"
-                    disabled={props.invalid}
-                    onClick={props.handleSubmit}
-                  >
-                    {translate("emails.button_add")}
-                  </EduIDButton>
+                  <div className="flex-buttons">
+                    <EduIDButton
+                      id="email-button"
+                      buttonstyle="primary"
+                      disabled={props.invalid}
+                      onClick={props.handleSubmit}
+                    >
+                      {translate("emails.button_add")}
+                    </EduIDButton>
+                    <EduIDButton id="email-button" buttonstyle="secondary" onClick={handleCancel}>
+                      {translate("cm.cancel")}
+                    </EduIDButton>
+                  </div>
                 </form>
               );
             }}
