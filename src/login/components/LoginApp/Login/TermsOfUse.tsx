@@ -131,6 +131,7 @@ const TermsOfUse = (): JSX.Element => {
   const availableTouVersions = useAppSelector((state) => state.login.tou.available_versions);
   // version is the version of the ToU the backend requests we ask the user to accept
   const version = useAppSelector((state) => state.login.tou.version);
+
   useEffect(() => {
     // TODO: So we render the ToU page, and *then* we fire off the request to ask the backend what version to show?
     //       We ought to send that request as soon as the backend /next call says that ToU is next.
@@ -138,9 +139,9 @@ const TermsOfUse = (): JSX.Element => {
   }, []);
   return (
     <div className="tou">
-      <h2 className="heading">
+      <h3 className="heading heading-4">
         <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
-      </h2>
+      </h3>
       <p tabIndex={0}>
         <FormattedMessage
           defaultMessage="We need an updated acceptance from you of the eduID terms of use."
