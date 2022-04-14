@@ -116,6 +116,9 @@ function Emails(props: any) {
     dispatch(requestMakePrimaryEmail({ email: data.email }));
   }
 
+  const emailData = {
+    email: "",
+  };
   return (
     <div className="emailsview-form-container">
       <div className="intro">
@@ -133,9 +136,10 @@ function Emails(props: any) {
         <div className={formClass}>
           <FinalForm<EmailFormData>
             onSubmit={handleAdd}
-            render={(props) => {
+            initialValues={emailData}
+            render={({ handleSubmit }) => {
               return (
-                <form onSubmit={props.handleSubmit}>
+                <form onSubmit={handleSubmit}>
                   <FinalField
                     label={translate("profile.email_display_title")}
                     component={CustomInput}
@@ -144,7 +148,7 @@ function Emails(props: any) {
                     name="email"
                     placeholder={placeholderEmail}
                     helpBlock={translate("emails.input_help_text")}
-                    validate={validateEmailField}
+                    validate={props.pristine ? validateEmailField : undefined}
                   />
                   <div className="flex-buttons">
                     <EduIDButton
@@ -155,7 +159,7 @@ function Emails(props: any) {
                     >
                       {translate("emails.button_add")}
                     </EduIDButton>
-                    <EduIDButton id="email-button" buttonstyle="secondary" onClick={handleCancel}>
+                    <EduIDButton id="email-button" buttonstyle="secondary" onClick={handleCancel} disabled={false}>
                       {translate("cm.cancel")}
                     </EduIDButton>
                   </div>
