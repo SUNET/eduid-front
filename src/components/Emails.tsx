@@ -1,8 +1,8 @@
 import { translate } from "login/translation";
 import React, { useState } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
-import { validateEmailField } from "../login/app_utils/validation/validateEmail";
+import { validateEmailInForm } from "../login/app_utils/validation/validateEmail";
 import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
@@ -33,13 +33,13 @@ function Emails(props: any) {
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholderEmail = intl.formatMessage({
+  const emailPlaceholder = intl.formatMessage({
     id: "placeholder.email",
     defaultMessage: "name@example.com",
     description: "placeholder text for email input",
   });
 
-  const placeholderModal = intl.formatMessage({
+  const modalPlaceholder = intl.formatMessage({
     id: "emails.confirm_email_placeholder",
     defaultMessage: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     description: "Placeholder for email code input",
@@ -55,6 +55,7 @@ function Emails(props: any) {
   );
 
   function handleAdd(values: EmailFormData) {
+    console.log("emails", emails);
     if (values.email) dispatch(postNewEmail({ email: values.email }));
     setFormClass("hide");
     setAddLinkClass("show");
@@ -116,14 +117,21 @@ function Emails(props: any) {
     dispatch(requestMakePrimaryEmail({ email: data.email }));
   }
 
-  const emailData = {
-    email: "",
-  };
   return (
     <div className="emailsview-form-container">
       <div className="intro">
-        <h4>{translate("emails.main_title")}</h4>
-        <p>{translate("emails.long_description")}</p>
+        <h4>
+          {" "}
+          <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
+          {/* {translate("emails.main_title")} */}
+        </h4>
+        <p>
+          <FormattedMessage
+            defaultMessage="You can connect one or more email addresses with your eduID account and select one to be your primary email address."
+            description="Emails description"
+          />
+          {/* {translate("emails.long_description")} */}
+        </p>
       </div>
       <div id="email-display">
         <DataTable
@@ -136,31 +144,39 @@ function Emails(props: any) {
         <div className={formClass}>
           <FinalForm<EmailFormData>
             onSubmit={handleAdd}
-            initialValues={emailData}
-            render={({ handleSubmit }) => {
+            initialValues={{
+              email: "",
+            }}
+            validate={validateEmailInForm}
+            render={(props) => {
               return (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={props.handleSubmit}>
                   <FinalField
                     label={translate("profile.email_display_title")}
                     component={CustomInput}
                     componentClass="input"
                     type="text"
                     name="email"
-                    placeholder={placeholderEmail}
-                    helpBlock={translate("emails.input_help_text")}
-                    validate={props.pristine ? validateEmailField : undefined}
+                    placeholder={emailPlaceholder}
+                    helpBlock={
+                      // translate("emails.input_help_text")
+                      <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
+                    }
+                    onChange={() => console.log("values", props.values["email"])}
                   />
                   <div className="flex-buttons">
                     <EduIDButton
                       id="email-button"
                       buttonstyle="primary"
-                      disabled={props.invalid}
+                      disabled={!props.valid || props.submitting || props.invalid || props.pristine}
                       onClick={props.handleSubmit}
                     >
-                      {translate("emails.button_add")}
+                      <FormattedMessage defaultMessage="Add" description="Emails button add" />
+                      {/* {translate("emails.button_add")} */}
                     </EduIDButton>
                     <EduIDButton id="email-button" buttonstyle="secondary" onClick={handleCancel} disabled={false}>
-                      {translate("cm.cancel")}
+                      <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
+                      {/* {translate("cm.cancel")} */}
                     </EduIDButton>
                   </div>
                 </form>
@@ -175,7 +191,8 @@ function Emails(props: any) {
           className={addLinkClass + " lowercase"}
           onClick={showEmailForm}
         >
-          {translate("emails.button_add_more")}
+          <FormattedMessage defaultMessage="+ add more" description="Emails button add more" />
+          {/* {translate("emails.button_add_more")} */}
         </EduIDButton>
       </div>
       <ConfirmModal
@@ -188,7 +205,7 @@ function Emails(props: any) {
         resendLabel={translate("cm.enter_code")}
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
-        placeholder={placeholderModal}
+        placeholder={modalPlaceholder}
         showModal={Boolean(confirming)}
         closeModal={handleStopConfirmation}
         handleResend={handleResend}
