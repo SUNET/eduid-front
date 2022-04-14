@@ -54,14 +54,17 @@ function Emails(props: any) {
     { email: confirming }
   );
 
-  function handleAdd(values: EmailFormData) {
+  function handleAdd(values: EmailFormData, form: any) {
     console.log("emails", emails);
     if (values.email) dispatch(postNewEmail({ email: values.email }));
     setFormClass("hide");
     setAddLinkClass("show");
+    form.reset();
   }
 
-  function handleCancel() {
+  function handleCancel(form: any) {
+    console.log(form);
+    form.reset();
     setFormClass("hide");
     setAddLinkClass("show");
   }
@@ -162,7 +165,7 @@ function Emails(props: any) {
                       // translate("emails.input_help_text")
                       <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
                     }
-                    onChange={() => console.log("values", props.values["email"])}
+                    onChange={() => console.log("values", props)}
                   />
                   <div className="flex-buttons">
                     <EduIDButton
@@ -174,7 +177,12 @@ function Emails(props: any) {
                       <FormattedMessage defaultMessage="Add" description="Emails button add" />
                       {/* {translate("emails.button_add")} */}
                     </EduIDButton>
-                    <EduIDButton id="email-button" buttonstyle="secondary" onClick={handleCancel} disabled={false}>
+                    <EduIDButton
+                      id="email-button"
+                      buttonstyle="secondary"
+                      onClick={() => handleCancel(props.form)}
+                      disabled={false}
+                    >
                       <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
                       {/* {translate("cm.cancel")} */}
                     </EduIDButton>
