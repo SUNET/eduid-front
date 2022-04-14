@@ -19,6 +19,7 @@ import {
   requestMakePrimaryEmail,
 } from "apis/addEmails";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
+import { copyFile } from "fs";
 
 interface EmailFormData {
   email?: string;
@@ -27,6 +28,7 @@ interface EmailFormData {
 function Emails(props: any) {
   const [formClass, setFormClass] = useState("hide");
   const [addLinkClass, setAddLinkClass] = useState("btn-link");
+  const [duplicatedEmail, setDisabledButton] = useState(false);
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
   const confirming = useDashboardAppSelector((state) => state.emails.confirming);
@@ -53,6 +55,15 @@ function Emails(props: any) {
     },
     { email: confirming }
   );
+
+  function handleChange(event: any) {
+    const singleEmail = emails.emails;
+    const duplicatedEmail =
+      singleEmail && Object.values(singleEmail).filter((email, index) => email.email === event.target.value);
+    if (duplicatedEmail?.length) {
+      setDisabledButton(true);
+    }
+  }
 
   function handleAdd(values: EmailFormData, form: any) {
     console.log("emails", emails);
@@ -153,36 +164,31 @@ function Emails(props: any) {
             validate={validateEmailInForm}
             render={(props) => {
               return (
-                <form onSubmit={props.handleSubmit}>
+                <form onSubmit={props.handleSubmit} onChange={handleChange}>
                   <FinalField
                     label={translate("profile.email_display_title")}
                     component={CustomInput}
                     componentClass="input"
                     type="text"
                     name="email"
+                    disabled={duplicatedEmail}
                     placeholder={emailPlaceholder}
                     helpBlock={
                       // translate("emails.input_help_text")
                       <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
                     }
-                    onChange={() => console.log("values", props)}
                   />
                   <div className="flex-buttons">
                     <EduIDButton
                       id="email-button"
                       buttonstyle="primary"
-                      disabled={!props.valid || props.submitting || props.invalid || props.pristine}
+                      disabled={!props.valid || props.submitting || props.invalid || props.pristine || duplicatedEmail}
                       onClick={props.handleSubmit}
                     >
                       <FormattedMessage defaultMessage="Add" description="Emails button add" />
                       {/* {translate("emails.button_add")} */}
                     </EduIDButton>
-                    <EduIDButton
-                      id="email-button"
-                      buttonstyle="secondary"
-                      onClick={() => handleCancel(props.form)}
-                      disabled={false}
-                    >
+                    <EduIDButton id="email-button" buttonstyle="secondary" onClick={() => handleCancel(props.form)}>
                       <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
                       {/* {translate("cm.cancel")} */}
                     </EduIDButton>
