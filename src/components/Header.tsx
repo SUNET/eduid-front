@@ -17,10 +17,11 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-  let tagline = <FormattedMessage defaultMessage="eduID is easier and safer login." description="Default tagline" />;
+  let tagline;
   let button;
 
   function handleLogout() {
+    console.log("logout");
     dispatch(startLogout());
   }
 
