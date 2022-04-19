@@ -109,10 +109,11 @@ describe("NameDisplay component, when names are saved", () => {
   state.personal_data.data.surname = "Account User";
   it("Renders the first and last name when saved", () => {
     const { wrapper } = setupComponent();
-    const names = wrapper.find("p");
+    const names = wrapper.find("div");
+
     expect(names.exists()).toEqual(true);
-    expect(names.text()).toContain("EduID Account User");
-    expect(names.text()).not.toContain("Account User EduID");
-    expect(names.text()).not.toContain("Testaren Test Testsson");
+    expect(names.at(0).text()).toContain("EduID Account User");
+    expect(names.at(0).text()).not.toContain("Account User EduID");
+    expect(names.at(1).text()).not.toContain("Testaren Test Testsson");
   });
 });

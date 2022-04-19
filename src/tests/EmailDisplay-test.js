@@ -61,9 +61,9 @@ describe("EmailDisplay component, when no email is saved", () => {
 
   it("Renders text when no email is saved", () => {
     const { wrapper } = setupComponent();
-    const emailText = wrapper.find("p");
+    const emailText = wrapper.find("div");
     expect(emailText.exists()).toEqual(true);
-    expect(emailText.text()).toContain("no");
+    expect(emailText.at(0).text()).toContain("no");
   });
 });
 
@@ -97,17 +97,17 @@ describe("EmailDisplay component, when email is saved", () => {
   }
   const state = { ...fakeState };
   state.emails.emails = [
-    { email: "njons-test@test.com", primary: true, verified: true },
-    { email: "njons-testing@email.com", primary: false, verified: false },
-    { email: "njons-best-test@email.com", primary: false, verified: true },
+    { email: "primary-test@test.com", primary: true, verified: true },
+    { email: "testing@email.com", primary: false, verified: false },
+    { email: "test1@email.com", primary: false, verified: true },
   ];
   it("Renders the primary email (even if multiple verified)", () => {
     const { wrapper } = setupComponent();
-    const primaryEmail = wrapper.find("p");
+    const primaryEmail = wrapper.find("div");
     expect(primaryEmail.exists()).toEqual(true);
-    expect(primaryEmail.text()).toContain("njons-test@test.com");
-    expect(primaryEmail.text()).not.toContain("njons-testing@email.com");
-    expect(primaryEmail.text()).not.toContain("njons-best-test@email.com");
+    expect(primaryEmail.at(0).text()).toContain("primary-test@test.com");
+    expect(primaryEmail.at(0).text()).not.toContain("testing@email.com");
+    expect(primaryEmail.at(0).text()).not.toContain("test1@email.com");
   });
 });
 
@@ -141,16 +141,16 @@ describe("EmailDisplay component, when email is saved", () => {
   }
   const state = { ...fakeState };
   state.emails.emails = [
-    { email: "njons-test@test.com", primary: false, verified: true },
-    { email: "njons-testing@email.com", primary: false, verified: true },
-    { email: "njons-best-test@email.com", primary: true, verified: true },
+    { email: "test@test.com", primary: false, verified: true },
+    { email: "testing@email.com", primary: false, verified: true },
+    { email: "primary-test@email.com", primary: true, verified: true },
   ];
   it("Renders the primary phone (even if multiple verified and new phone set as primary)", () => {
     const { wrapper } = setupComponent();
-    const primaryEmail = wrapper.find("p");
+    const primaryEmail = wrapper.find("div");
     expect(primaryEmail.exists()).toEqual(true);
-    expect(primaryEmail.text()).toContain("njons-best-test@email.com");
-    expect(primaryEmail.text()).not.toContain("njons-testing@email.com");
-    expect(primaryEmail.text()).not.toContain("njons-test@test.com");
+    expect(primaryEmail.at(0).text()).toContain("primary-test@email.com");
+    expect(primaryEmail.at(0).text()).not.toContain("testing@email.com");
+    expect(primaryEmail.at(0).text()).not.toContain("test@test.com");
   });
 });
