@@ -63,7 +63,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}
-        <div className="tagline">{userName}</div>
+        {userName}
       </header>
     </section>
   );
