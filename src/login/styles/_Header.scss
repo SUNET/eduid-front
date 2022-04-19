@@ -22,20 +22,12 @@ header {
   }
 
   .tagline {
-    font-family: "ProximaNova-Bold";
     font-size: 1rem;
+    text-align: right;
+    width: 100%;
 
-    @media (min-width: $bp-lg) {
-      font-size: 1.5rem;
-      width: 100vw;
-      left: 0;
-      position: absolute;
-    }
-    @media (max-width: $bp-lg) {
-      > .horizontal-content-margin {
-        width: auto;
-        margin-top: 0.5rem;
-      }
+    @media (min-width: $bp-sm) {
+      padding-right: 1rem;
     }
   }
 

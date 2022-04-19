@@ -42,8 +42,8 @@ const Header = (props: HeaderProps): JSX.Element => {
   } else if (props.showLogout) {
     tagline = (
       <Fragment>
-        <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
-        &nbsp;
+        {/* <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
+        &nbsp; */}
         {props.email}
       </Fragment>
     );
@@ -69,9 +69,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}
-        <div className="tagline">
-          <div className="horizontal-content-margin">{tagline}</div>
-        </div>
+        <div className="tagline">{tagline}</div>
       </header>
     </section>
   );
