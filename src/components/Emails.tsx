@@ -164,7 +164,10 @@ function Emails(props: any) {
             validate={validateEmailInForm}
             render={(props) => {
               return (
-                <form onSubmit={props.handleSubmit} onChange={handleChange}>
+                <form
+                  onSubmit={props.handleSubmit}
+                  // onChange={handleChange}
+                >
                   <FinalField
                     label={translate("profile.email_display_title")}
                     component={CustomInput}
@@ -182,7 +185,7 @@ function Emails(props: any) {
                     <EduIDButton
                       id="email-button"
                       buttonstyle="primary"
-                      disabled={!props.valid || props.submitting || props.invalid || props.pristine || duplicatedEmail}
+                      disabled={!props.valid || props.submitting || props.invalid || props.pristine}
                       onClick={props.handleSubmit}
                     >
                       <FormattedMessage defaultMessage="Add" description="Emails button add" />
