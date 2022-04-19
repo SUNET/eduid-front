@@ -20,6 +20,7 @@ import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import { forgetThisDevice } from "./NewDevice";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+import { LoginAbortButton } from "./LoginAbortButton";
 
 interface UsernamePwFormData {
   email?: string;
@@ -59,6 +60,7 @@ export default function UsernamePw() {
 
               <div className="flex-between">
                 <div className="button-pair">
+                  <LoginAbortButton />
                   <UsernamePwSubmitButton {...formProps} />
                   <UsernamePwAnotherDeviceButton />
                 </div>
