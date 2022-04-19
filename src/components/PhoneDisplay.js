@@ -7,15 +7,15 @@ class PhoneDisplay extends Component {
     if (this.props.phones.length) {
       if (this.props.primaryPhoneStatus) {
         userData = [
-          <p key="0" className="display-data verified">
+          <div key="0" className="display-data verified">
             {this.props.primaryPhone[0].number}
-          </p>,
+          </div>,
         ];
       } else {
         userData = [
-          <p key="0" className="display-data no-data">
+          <div key="0" className="display-data no-data">
             {this.props.phones[0].number}
-          </p>,
+          </div>,
         ];
       }
     } else {

@@ -12,7 +12,7 @@ class AccountId extends Component {
         </div>
         <div key="1" className="profile-grid-cell">
           <label key="0">{this.props.translate("profile.eppn_display_title")}</label>
-          <p className="display-data verified">{this.props.eppn}</p>
+          <div className="display-data verified">{this.props.eppn}</div>
           <p className="help-text">{this.props.translate("accountId.short_description")}</p>
         </div>
       </article>

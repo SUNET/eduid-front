@@ -3,10 +3,14 @@
 
 table {
   width: 100%;
-  color: gray;
+  //color: gray;
   font-size: 1.5rem;
   font-family: ProximaNova-Light;
   table-layout: fixed;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.25rem;
+  }
 
   & tbody {
     margin-bottom: 1rem;
