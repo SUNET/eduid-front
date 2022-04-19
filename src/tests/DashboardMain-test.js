@@ -6,9 +6,9 @@ import expect from "expect";
 import { IntlProvider } from "react-intl";
 import Header from "../components/Header";
 import Footer from "../login/components/Footer/Footer";
-import MainContainer from "containers/DashboardMain";
 import Notifications from "containers/Notifications";
 import { MemoryRouter } from "react-router-dom";
+import { DashboardMain } from "components/DashboardMain";
 
 const messages = require("../login/translation/messageIndex");
 
@@ -57,7 +57,7 @@ function setupComponent() {
   const wrapper = mount(
     <ReduxIntlProvider store={store}>
       <MemoryRouter>
-        <MainContainer {...props} />
+        <DashboardMain {...props} />
       </MemoryRouter>
     </ReduxIntlProvider>
   );
@@ -71,7 +71,7 @@ describe("Main Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <MainContainer />
+        <DashboardMain />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);

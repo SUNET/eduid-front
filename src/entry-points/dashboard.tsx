@@ -1,6 +1,6 @@
 import * as configActions from "actions/DashboardConfig";
+import { DashboardMain } from "components/DashboardMain";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-import DashboardMainContainer from "containers/DashboardMain";
 import { dashboardStore } from "dashboard-init-app";
 import { setupLanguage } from "login/translation";
 import React from "react";
@@ -36,7 +36,7 @@ setupLanguage(dashboardStore.dispatch);
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={dashboardStore}>
-    <DashboardMainContainer />
+    <DashboardMain />
   </ReduxIntlProvider>,
   initDomTarget,
   getConfig

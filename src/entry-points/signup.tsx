@@ -1,7 +1,7 @@
 import { getCodeStatus } from "actions/CodeVerified";
 import { getSignupConfig } from "actions/SignupMain";
 import { ReduxIntlProvider } from "components/ReduxIntl";
-import SignupMainContainer from "containers/SignupMain";
+import SignupMain from "components/SignupMain";
 import { setupLanguage } from "login/translation";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -39,7 +39,7 @@ setupLanguage(signupStore.dispatch);
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={signupStore}>
-    <SignupMainContainer />
+    <SignupMain />
   </ReduxIntlProvider>,
   initDomTarget,
   getConfig

@@ -1,40 +1,37 @@
-import React, { Component } from "react";
-import { Router, Route, Redirect } from "react-router-dom";
-import { createBrowserHistory } from "history";
-import SplashContainer from "containers/Splash";
-import Footer from "../login/components/Footer/Footer";
 import Header from "components/Header";
-import EmailContainer from "containers/Email";
 import AccountCreatedContainer from "containers/AccountCreated";
-import CodeVerifiedContainer from "containers/CodeVerified";
-import ResendCodeContainer from "containers/ResendCode";
 import CaptchaContainer from "containers/Captcha";
-import NotificationsContainer from "containers/Notifications";
+import CodeVerifiedContainer from "containers/CodeVerified";
+import EmailContainer from "containers/Email";
 import EmailInUseContainer from "containers/EmailInUse";
-
+import NotificationsContainer from "containers/Notifications";
+import ResendCodeContainer from "containers/ResendCode";
+import SplashContainer from "containers/Splash";
+import { createBrowserHistory } from "history";
+import React from "react";
+import { Redirect, Route, Router } from "react-router-dom";
+import { useSignupAppSelector } from "signup-hooks";
+import { SIGNUP_BASE_PATH } from "../globals";
+import Footer from "../login/components/Footer/Footer";
 import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
-import { SIGNUP_BASE_PATH } from "../globals";
 
-class SignupMain extends Component {
-  render() {
-    let redirect = `${SIGNUP_BASE_PATH}/email`;
+export function SignupMain(): JSX.Element {
+  const email = useSignupAppSelector((state) => state.email.email);
+  const captcha = useSignupAppSelector((state) => state.config.captcha);
 
-    if (this.props.email) {
-      if (this.props.captcha) {
-        if (this.props.code) {
-        } else {
-        }
-      } else {
-        redirect = `${SIGNUP_BASE_PATH}/trycaptcha`;
-      }
-    }
+  let redirect = `${SIGNUP_BASE_PATH}/email`;
 
-    return [
+  if (email && !captcha) {
+    redirect = `${SIGNUP_BASE_PATH}/trycaptcha`;
+  }
+
+  return (
+    <React.Fragment>
       <SplashContainer key="0" />,
       <Router key="1" history={history}>
-        <Header {...this.props} showLogin={true} />
+        <Header email={email} showLogin={true} />
         <section id="panel" className="panel">
           <NotificationsContainer />
           <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={redirect} />} />
@@ -46,11 +43,9 @@ class SignupMain extends Component {
           <Route path={`${SIGNUP_BASE_PATH}/address-used`} component={EmailInUseContainer} />
         </section>
         <Footer />
-      </Router>,
-    ];
-  }
+      </Router>
+    </React.Fragment>
+  );
 }
-
-SignupMain.propTypes = {};
 
 export default SignupMain;

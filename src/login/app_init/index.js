@@ -3,7 +3,7 @@ import { polyfillsInit } from "entry-points/polyfills-common";
 import { setupLanguage } from "login/translation";
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "../components/App/App";
+import { LoginMain } from "../components/App/App";
 import initStore from "./initStore";
 import initContainer from "./init_container";
 
@@ -17,7 +17,7 @@ setupLanguage(initStore.dispatch);
 const initDomTarget = document.getElementById("root");
 ReactDOM.render(
   <ReduxIntlProvider store={initStore}>
-    <App />
+    <LoginMain />
   </ReduxIntlProvider>,
   initDomTarget,
   initContainer

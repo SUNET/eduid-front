@@ -12,27 +12,20 @@ import Notifications from "containers/Notifications";
 
 export const history = createBrowserHistory();
 
-class App extends React.Component {
-  // run-time type checking in development mode
-  static propTypes = {};
-
-  render() {
-    return (
-      <>
-        <Splash />
-        <Header showRegister={true} />
-        <section id="panel" className="panel">
-          <Notifications />
-          <ErrorBoundaryContainer {...this.props} fallback={GenericError}>
-            <Router history={history}>
-              <LoginApp />
-            </Router>
-          </ErrorBoundaryContainer>
-        </section>
-        <Footer />
-      </>
-    );
-  }
+export function LoginMain(): JSX.Element {
+  return (
+    <React.Fragment>
+      <Splash />
+      <Header showRegister={true} />
+      <section id="panel" className="panel">
+        <Notifications />
+        <ErrorBoundaryContainer fallback={GenericError}>
+          <Router history={history}>
+            <LoginApp />
+          </Router>
+        </ErrorBoundaryContainer>
+      </section>
+      <Footer />
+    </React.Fragment>
+  );
 }
-
-export default App;

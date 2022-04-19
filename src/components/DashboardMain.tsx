@@ -2,8 +2,8 @@ import NotificationsContainer from "containers/Notifications";
 import Profile from "containers/Profile";
 import SplashContainer from "containers/Splash";
 import VerifyIdentity from "containers/VerifyIdentity";
+import { useDashboardAppSelector } from "dashboard-hooks";
 import { createBrowserHistory } from "history";
-import PropTypes from "prop-types";
 import React from "react";
 import { Redirect, Route, Router } from "react-router-dom";
 import Header from "../components/Header";
@@ -14,19 +14,47 @@ import SettingsComponent from "./Settings";
 
 export const history = createBrowserHistory();
 
-function Main(props) {
+// TODO: Move this to the emails reducer when turning it into TypeScript
+export interface EmailInfo {
+  email: string;
+  verified: boolean;
+  primary: boolean;
+}
+
+export function DashboardMain() {
+  const emails: EmailInfo[] = useDashboardAppSelector((state) => state.emails.emails);
+  const all_nins = useDashboardAppSelector((state) => state.nins.nins);
+
+  let email, verifiedNin;
+  if (emails.length >= 1) {
+    email = emails.filter((mail) => mail.primary)[0].email;
+  } else {
+    email = "";
+  }
+  const nins = all_nins.filter((nin) => nin.verified);
+  if (nins.length >= 1) {
+    verifiedNin = true;
+  } else {
+    verifiedNin = false;
+  }
+
+  // TODO: Instead of passing these props indiscriminately to sub-components, have them fetch their own state
+  const props = {
+    //eppn
+    email: email,
+    //nin: state.nins.nin,
+    verifiedNin: verifiedNin,
+  };
+
   return (
     <React.Fragment>
       <SplashContainer key="0" />
       <Router key="1" history={history}>
-        <a id="stable-link" className="hidden" href="/feature/no-beta">
-          {props.translate("beta-link.to-stable")}
-        </a>
         <Header {...props} showLogout={true} />
         <section id="panel" className="panel">
           <NotificationsContainer />
           <div key="0" id="content" className="horizontal-content-margin content">
-            <DashboardNav {...props} />
+            <DashboardNav />
             <div key="0" id="text-content">
               <Route path="/profile/settings/" component={SettingsComponent} />
               <Route exact path="/profile/" render={(props) => <Profile {...props} />} />
@@ -53,10 +81,3 @@ function Main(props) {
     </React.Fragment>
   );
 }
-
-Main.propTypes = {
-  eppn: PropTypes.string,
-  messages: PropTypes.object,
-};
-
-export default Main;
