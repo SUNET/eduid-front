@@ -34,9 +34,9 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
 
   return (
     <div data-ninnumber={nin.number} className={`${props.delete ? "data-with-delete" : "display-nin-show-hide"}`}>
-      <p id="nin-number" className={`display-data ${nin.verified ? "verified" : "unverified"}`}>
+      <div id="nin-number" className={`display-data ${nin.verified ? "verified" : "unverified"}`}>
         {showFullNin ? nin.number : nin.number.replace(/.{4}$/, "****")}
-      </p>
+      </div>
       <EduIDButton
         id="show-hide-button"
         buttonstyle="link"

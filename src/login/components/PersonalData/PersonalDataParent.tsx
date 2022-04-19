@@ -119,7 +119,7 @@ const PersonalDataParent = () => {
     <article className="personal-data">
       <div className="intro">
         <div className="heading">
-          <h4>{translate("pd.main_title")}</h4>
+          <h3>{translate("pd.main_title")}</h3>
           <RenderEditButton hasPersonalData={hasPersonalData} setEditMode={setEditMode} isEditMode={isEditMode} />
         </div>
         <p>{translate("pd.long_description")}</p>

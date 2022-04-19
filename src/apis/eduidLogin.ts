@@ -7,6 +7,35 @@ import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
+export interface LoginAbortRequest {
+  ref: string;
+}
+
+export interface LoginAbortResponse {
+  finished: boolean;
+}
+
+
+/**
+ * @public
+ * @function fetchAbort
+ * @desc     Request the backend to abort the current login request.
+ */
+export const fetchAbort = createAsyncThunk<
+  LoginAbortResponse, // return type
+  LoginAbortRequest, // args type
+  { dispatch: LoginAppDispatch; state: LoginRootState }
+>("login/api/fetchAbort", async (args, thunkAPI) => {
+  const body: KeyValues = {
+    ref: args.ref,
+  };
+
+  return makeLoginRequest<LoginAbortResponse>(thunkAPI, "abort", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
 
 export type LoginUseOtherDevice1Request = UseOtherDevice1Fetch | UseOtherDevice1Abort | UseOtherDevice1SubmitCode;
 export type LoginUseOtherDevice1Response = UseOtherDevice1ResponseWithQR | UseOtherDevice1ResponseWithoutQR;

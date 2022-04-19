@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   fetchNewDevice,
+  fetchAbort,
   fetchNext,
   fetchUseOtherDevice1,
   fetchUseOtherDevice2,
@@ -149,6 +150,12 @@ export const loginSlice = createSlice({
       })
       .addCase(fetchUseOtherDevice2.rejected, (state) => {
         state.other_device2 = undefined;
+      })
+      .addCase(fetchAbort.fulfilled, (state, action) => {
+        if (action.payload.finished) {
+          // Trigger fetching of /next on successful abort
+          state.next_page = undefined;
+        }
       })
       .addCase(fetchNext.pending, (state) => {
         state.fetching_next = true;

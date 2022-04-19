@@ -20,6 +20,7 @@ import TextInput from "components/EduIDTextInput";
 import EduIDButton from "components/EduIDButton";
 import { forgetThisDevice } from "./NewDevice";
 import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+import { LoginAbortButton } from "./LoginAbortButton";
 
 interface UsernamePwFormData {
   email?: string;
@@ -38,10 +39,13 @@ export default function UsernamePw() {
 
   return (
     <div className="username-pw">
-      <h3 className="heading heading-4">
+      <h1>
         <FormattedMessage defaultMessage="Log in" description="Login front page" />
-      </h3>
-      <LoginAtServiceInfo service_info={service_info} />
+      </h1>
+      <div className="preamble">
+        <LoginAtServiceInfo service_info={service_info} />
+      </div>
+
       <FinalForm<UsernamePwFormData>
         id="login-form"
         aria-label="login form"
@@ -56,6 +60,7 @@ export default function UsernamePw() {
 
               <div className="flex-between">
                 <div className="button-pair">
+                  <LoginAbortButton />
                   <UsernamePwSubmitButton {...formProps} />
                   <UsernamePwAnotherDeviceButton />
                 </div>

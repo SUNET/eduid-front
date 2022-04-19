@@ -30,12 +30,6 @@
 }
 
 /** Possible utility/generic classes below **/
-
-//TODO - make more generic for whole tab/section
-article {
-  margin: 1rem 0 2rem;
-}
-
 fieldset + fieldset:not(:empty) {
   margin-top: 1.25em;
 }

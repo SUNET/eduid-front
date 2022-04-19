@@ -39,7 +39,7 @@ describe("AccountId component renders", () => {
   });
 
   it("Component renders h4 heading", () => {
-    const heading = wrapper.find("h4");
+    const heading = wrapper.find("h3");
     expect(heading.exists()).toBe(true);
     expect(heading.text()).toContain("Unique ID");
   });
