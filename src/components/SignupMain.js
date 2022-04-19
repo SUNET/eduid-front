@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Router, Route, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
-//import FetchingContext from "components/FetchingContext";
 import SplashContainer from "containers/Splash";
 import Footer from "../login/components/Footer/Footer";
 import Header from "components/Header";
@@ -13,29 +12,12 @@ import CaptchaContainer from "containers/Captcha";
 import NotificationsContainer from "containers/Notifications";
 import EmailInUseContainer from "containers/EmailInUse";
 
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "style/base.scss";
 import "../login/styles/index.scss";
 
 export const history = createBrowserHistory();
 import { SIGNUP_BASE_PATH } from "../globals";
 
 class SignupMain extends Component {
-  //constructor(props) {
-  //super(props);
-
-  //this.state = {
-  //fetching: props.is_fetching,
-  //setFetching: this.setFetching.bind(this)
-  //};
-  //}
-
-  //setFetching(fetching) {
-  //this.setState({
-  //fetching: fetching
-  //});
-  //}
-
   render() {
     let redirect = `${SIGNUP_BASE_PATH}/email`;
 
@@ -49,29 +31,6 @@ class SignupMain extends Component {
       }
     }
 
-    // return (
-    //   <FetchingContext.Provider value={this.state}>
-    //     <SplashContainer />
-    //     <div className="container-fluid">
-    //       <HeaderContainer withButtons={true} />
-    //       <Router history={history}>
-    //         <div className="jumbotron">
-    //           <div className="row">
-    //             <div className="col-lg-2" />
-    //             <div className="col-lg-8">
-    //               <NotificationsContainer />
-    //             </div>
-    //             <div className="col-lg-2" />
-    //
-    //       </Router>
-    //       <FooterContainer />
-    //     </div>
-    //   </FetchingContext.Provider>
-    // );
-
-    // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
-    // should wrap the splash container and router once we get back to using
-    // it.
     return [
       <SplashContainer key="0" />,
       <Router key="1" history={history}>

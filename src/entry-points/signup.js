@@ -1,3 +1,13 @@
+// URL.searchParams polyfill
+import urlsearch from "@ungap/url-search-params";
+import { getCodeStatus } from "actions/CodeVerified";
+import { getSignupConfig } from "actions/SignupMain";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import SignupMainContainer from "containers/SignupMain";
+import { setupLanguage } from "login/translation";
+import React from "react";
+import ReactDOM from "react-dom";
+import { signupStore } from "signup-init-app";
 import "./public-path";
 
 // Polyfill for Element.closest for IE9+
@@ -17,16 +27,37 @@ if (!Element.prototype.closest)
     return null;
   };
 
-// end Polyfill
-
-// URL.searchParams polyfill
-import urlsearch from "@ungap/url-search-params";
 window.URLSearchParams = urlsearch;
-// End polyfill
 
-import React from "react";
+/* Get configuration */
+const getConfig = function () {
+  const findCode = function (path) {
+    const re = new RegExp("/code/(.+)$"),
+      match = re.exec(path);
+    if (match !== null) {
+      return match[1];
+    }
+    return "";
+  };
 
-import init_app from "signup-init-app";
-import SignupMainContainer from "containers/SignupMain";
+  const path = window.location.pathname;
+  const code = findCode(path);
+  if (code) {
+    signupStore.dispatch(getCodeStatus(code));
+  } else {
+    signupStore.dispatch(getSignupConfig());
+  }
+};
 
-init_app(document.getElementById("root"), <SignupMainContainer />);
+/* Get the language from the browser and initialise locale with the best match */
+setupLanguage(signupStore.dispatch);
+
+/* render app */
+const initDomTarget = document.getElementById("root");
+ReactDOM.render(
+  <ReduxIntlProvider store={signupStore}>
+    <SignupMainContainer />
+  </ReduxIntlProvider>,
+  initDomTarget,
+  getConfig
+);

@@ -1,3 +1,11 @@
+import urlsearch from "@ungap/url-search-params";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import { errorsStore } from "errors-init-app";
+import { updateErrorsConfigData } from "login/redux/actions/errorsMainActions";
+import { setupLanguage } from "login/translation";
+import React from "react";
+import ReactDOM from "react-dom";
+import ErrorsMain from "../login/components/SwamidErrors/ErrorsMain";
 import "./public-path";
 
 // Polyfill for Element.closest for IE9+
@@ -17,15 +25,22 @@ if (!Element.prototype.closest)
     return null;
   };
 
-// end Polyfill
-
-// URL.searchParams polyfill
-import urlsearch from "@ungap/url-search-params";
 window.URLSearchParams = urlsearch;
-// End polyfill
 
-import React from "react";
-import init_app from "errors-init-app";
-import ErrorsMain from "../login/components/SwamidErrors/ErrorsMain";
+/* Get configuration */
+const getConfig = function () {
+  errorsStore.dispatch(updateErrorsConfigData());
+};
 
-init_app(document.getElementById("root"), <ErrorsMain />);
+/* Get the language from the browser and initialise locale with the best match */
+setupLanguage(errorsStore.dispatch);
+
+/* render app */
+const initDomTarget = document.getElementById("root");
+ReactDOM.render(
+  <ReduxIntlProvider store={errorsStore}>
+    <ErrorsMain />
+  </ReduxIntlProvider>,
+  initDomTarget,
+  getConfig
+);

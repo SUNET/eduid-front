@@ -6,77 +6,26 @@
  * it with the redux store.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-
-import { routerMiddleware } from "react-router-redux";
-
-import createSagaMiddleware from "redux-saga";
-import rootSaga from "./signup-root-saga";
-import { createLogger } from "redux-logger";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { updateIntl } from "./reducers/Internationalisation";
-import { createStore, applyMiddleware, compose } from "redux";
-
-import eduIDApp from "./signup-store";
-import notifyAndDispatch from "./notify-middleware";
-import { getSignupConfig } from "actions/SignupMain";
-import { getCodeStatus } from "actions/CodeVerified";
+import { configureStore } from "@reduxjs/toolkit";
 import { history } from "components/SignupMain";
-import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import { routerMiddleware } from "react-router-redux";
+import logger from "redux-logger";
+import createSagaMiddleware from "redux-saga";
+import notifyAndDispatch from "./notify-middleware";
+import rootSaga from "./signup-root-saga";
+import eduIDApp from "./signup-store";
 
-/* for redux dev tools */
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-/* Store */
-
+/* setup to run the combined sagas */
 const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware, routerMiddleware(history), notifyAndDispatch, logger];
 
-export const store = createStore(
-  eduIDApp,
-  composeEnhancers(applyMiddleware(sagaMiddleware, routerMiddleware(history), notifyAndDispatch, createLogger()))
-);
-
+export const signupStore = configureStore({
+  reducer: eduIDApp,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
+  devTools: process.env.NODE_ENV !== "production",
+});
 sagaMiddleware.run(rootSaga);
 
-/* render app */
-
-const findCode = function (path) {
-  const re = new RegExp("/code/(.+)$"),
-    match = re.exec(path);
-  if (match !== null) {
-    return match[1];
-  }
-  return "";
-};
-
-const initState = function () {
-  const path = window.location.pathname;
-  const code = findCode(path);
-  if (code) {
-    store.dispatch(getCodeStatus(code));
-  } else {
-    store.dispatch(getSignupConfig());
-  }
-};
-
-const init_app = function (target, component) {
-  let app, action;
-  action = initState;
-  const language = navigator.languages ? navigator.languages[0] : navigator.language || navigator.userLanguage;
-  const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
-
-  if (supported.includes(language)) {
-    const lang_code = language.substring(0, 2);
-    store.dispatch(
-      updateIntl({
-        locale: lang_code,
-        messages: LOCALIZED_MESSAGES[lang_code],
-      })
-    );
-  }
-  app = <ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>;
-  ReactDOM.render(app, target, action);
-};
-
-export default init_app;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type SignupRootState = ReturnType<typeof signupStore.getState>;
+export type SignupAppDispatch = typeof signupStore.dispatch;

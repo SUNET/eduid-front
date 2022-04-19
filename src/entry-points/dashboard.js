@@ -1,5 +1,12 @@
+import urlsearch from "@ungap/url-search-params";
+import * as configActions from "actions/DashboardConfig";
+import { ReduxIntlProvider } from "components/ReduxIntl";
+import DashboardMainContainer from "containers/DashboardMain";
+import { dashboardStore } from "dashboard-init-app";
+import { setupLanguage } from "login/translation";
 import React from "react";
 import ReactDOM from "react-dom";
+import { showNotification } from "reducers/Notifications";
 import "./public-path";
 
 // Polyfill for Element.closest for IE9+
@@ -19,20 +26,7 @@ if (!Element.prototype.closest)
     return null;
   };
 
-// end Polyfill
-
-// URL.searchParams polyfill
-import urlsearch from "@ungap/url-search-params";
 window.URLSearchParams = urlsearch;
-// End polyfill
-
-import DashboardMainContainer from "containers/DashboardMain";
-import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { updateIntl } from "reducers/Internationalisation";
-import { dashboardStore } from "dashboard-init-app";
-import * as configActions from "actions/DashboardConfig";
-import { showNotification } from "reducers/Notifications";
 
 /* Get configuration */
 const getConfig = function () {
@@ -52,18 +46,7 @@ const getConfig = function () {
 };
 
 /* Get the language from the browser and initialise locale with the best match */
-const language = navigator.languages ? navigator.languages[0] : navigator.language;
-const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
-
-if (supported.includes(language)) {
-  const lang_code = language.substring(0, 2);
-  dashboardStore.dispatch(
-    updateIntl({
-      locale: lang_code,
-      messages: LOCALIZED_MESSAGES[lang_code],
-    })
-  );
-}
+setupLanguage(dashboardStore.dispatch);
 
 /* render app */
 const initDomTarget = document.getElementById("root");

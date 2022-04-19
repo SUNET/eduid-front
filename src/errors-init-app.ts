@@ -1,53 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { configureStore } from "@reduxjs/toolkit";
 import { routerMiddleware } from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./errors-root-saga";
-import { createLogger } from "redux-logger";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { updateIntl } from "./reducers/Internationalisation";
-import { createStore, applyMiddleware, compose } from "redux";
 import eduIDApp from "./errors-store";
-import notifyAndDispatch from "./notify-middleware";
 import { history } from "./login/components/SwamidErrors/ErrorsMain";
-import { updateErrorsConfigData } from "./login/redux/actions/errorsMainActions";
-import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import notifyAndDispatch from "./notify-middleware";
+import logger from "redux-logger";
 
-/* for redux dev tools */
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-/* Store */
+/* setup to run the combined sagas */
 const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware, routerMiddleware(history), notifyAndDispatch, logger];
 
-export const store = createStore(
-  eduIDApp,
-  composeEnhancers(applyMiddleware(sagaMiddleware, routerMiddleware(history), notifyAndDispatch, createLogger()))
-);
-
+export const errorsStore = configureStore({
+  reducer: eduIDApp,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
+  devTools: process.env.NODE_ENV !== "production",
+});
 sagaMiddleware.run(rootSaga);
 
-const initState = function () {
-  store.dispatch(updateErrorsConfigData());
-};
-
-/* render app */
-const init_app = function (target, component) {
-  let action;
-  action = initState;
-  const language = navigator.languages ? navigator.languages[0] : navigator.language || navigator.userLanguage;
-  const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
-  if (supported.includes(language)) {
-    const lang_code = language.substring(0, 2);
-
-    store.dispatch(
-      updateIntl({
-        locale: lang_code,
-        messages: LOCALIZED_MESSAGES[lang_code],
-      })
-    );
-  }
-  const app = <ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>;
-  ReactDOM.render(app, target, action);
-};
-
-export default init_app;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type ErrorsRootState = ReturnType<typeof errorsStore.getState>;
+export type ErrorsAppDispatch = typeof errorsStore.dispatch;
