@@ -17,10 +17,11 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-  let tagline;
+  let userName;
   let button;
 
   function handleLogout() {
+    console.log("logout");
     dispatch(startLogout());
   }
 
@@ -39,13 +40,7 @@ const Header = (props: HeaderProps): JSX.Element => {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    tagline = (
-      <Fragment>
-        <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
-        &nbsp;
-        {props.email}
-      </Fragment>
-    );
+    userName = <Fragment>{props.email}</Fragment>;
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
@@ -68,9 +63,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}
-        <div className="tagline">
-          <div className="horizontal-content-margin">{tagline}</div>
-        </div>
+        <div className="tagline">{userName}</div>
       </header>
     </section>
   );
