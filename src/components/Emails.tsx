@@ -132,13 +132,12 @@ function Emails(props: any) {
   }
 
   return (
-    <div className="emailsview-form-container">
+    <article className="emailsview-form-container">
       <div className="intro">
-        <h4>
-          {" "}
+        <h3>
           <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
           {/* {translate("emails.main_title")} */}
-        </h4>
+        </h3>
         <p>
           <FormattedMessage
             defaultMessage="You can connect one or more email addresses with your eduID account and select one to be your primary email address."
@@ -231,7 +230,7 @@ function Emails(props: any) {
         validationPattern={longCodePattern}
         validationError={"confirmation.code_invalid_format"}
       />
-    </div>
+    </article>
   );
 }
 
