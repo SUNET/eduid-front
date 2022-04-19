@@ -243,10 +243,11 @@ function DeveloperInfo(props: { qr_url?: string }) {
   }
   return (
     <div className="developer">
+      <p></p>
       <span>
         <FormattedMessage defaultMessage="Developer info, not shown in production:" />
       </span>
-      <span>
+      <span id="qr_url">
         <a href={props.qr_url}>{props.qr_url}</a>
       </span>
     </div>

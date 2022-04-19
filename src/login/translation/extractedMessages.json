@@ -171,6 +171,10 @@
     "developer_comment": "password input field label",
     "string": "Password"
   },
+  "GOpzll": {
+    "developer_comment": "Login Mfa heading",
+    "string": "Log in: Extra level of security"
+  },
   "GX77Th": {
     "developer_comment": "Header tagline",
     "string": "eduID for"
@@ -1903,6 +1907,10 @@
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
+  },
+  "xBsfUj": {
+    "developer_comment": "Login Mfa paragraph",
+    "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
   },
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
