@@ -24,11 +24,17 @@ export const translate = (messageId: string): JSX.Element | string => {
  * @param dispatch The current apps dispatch
  */
 export function setupLanguage(dispatch: Dispatch) {
-  const language = navigator.languages ? navigator.languages[0] : navigator.language;
-  const supported = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
+  const selectedBrowserLanguage = navigator.languages ? navigator.languages[0] : navigator.language;
+  const translatedLanguages = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
 
-  if (supported.includes(language)) {
-    const lang_code = language.substring(0, 2);
+  const isTranslatedLanguage = translatedLanguages.includes(selectedBrowserLanguage);
+  // check if we have translation for preferred browser language
+  const browserLocale = isTranslatedLanguage ? selectedBrowserLanguage : "en";
+  // sets the <html lang=""> to the interface language
+  document.documentElement.lang = browserLocale;
+
+  if (translatedLanguages.includes(selectedBrowserLanguage)) {
+    const lang_code = selectedBrowserLanguage.substring(0, 2);
     if (messages[lang_code]) {
       dispatch(
         updateIntl({
