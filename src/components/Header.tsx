@@ -21,7 +21,6 @@ const Header = (props: HeaderProps): JSX.Element => {
   let button;
 
   function handleLogout() {
-    console.log("logout");
     dispatch(startLogout());
   }
 
@@ -40,7 +39,7 @@ const Header = (props: HeaderProps): JSX.Element => {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    userName = <Fragment>{props.email}</Fragment>;
+    userName = <div className="header-user">{props.email}</div>;
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
@@ -63,7 +62,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}
-        <div className="header-user">{userName}</div>
+        {userName}
       </header>
     </section>
   );
