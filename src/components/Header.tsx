@@ -21,7 +21,6 @@ const Header = (props: HeaderProps): JSX.Element => {
   let button;
 
   function handleLogout() {
-    console.log("logout");
     dispatch(startLogout());
   }
 
