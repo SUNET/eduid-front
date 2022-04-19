@@ -110,7 +110,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       if (this.props.is_configured && !this.props.hasVerifiedNin) {
         return (
           <div key="1" className="intro">
-            <h3>{translate("verify-identity.connect-nin_heading")}</h3>
+            <h4>{translate("verify-identity.connect-nin_heading")}</h4>
             <p>{translate("verify-identity.connect-nin_description")}</p>
           </div>
         );
