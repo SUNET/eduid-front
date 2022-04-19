@@ -11,7 +11,7 @@ import "./public-path";
 
 /* Get configuration */
 const getConfig = function () {
-  const findCode = function (path) {
+  const findCode = function (path: string) {
     const re = new RegExp("/code/(.+)$"),
       match = re.exec(path);
     if (match !== null) {

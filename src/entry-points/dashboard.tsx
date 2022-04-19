@@ -13,9 +13,9 @@ import "./public-path";
 const getConfig = function () {
   const dispatch = dashboardStore.dispatch;
   dispatch(configActions.getConfig());
-  let params = new URLSearchParams(document.location.search);
+  const params = new URLSearchParams(document.location.search);
   if (params) {
-    let msg = params.get("msg");
+    const msg = params.get("msg");
     if (msg !== null) {
       if (msg.indexOf(":ERROR:") === 0) {
         dispatch(showNotification({ message: msg.substr(7), level: "error" }));
