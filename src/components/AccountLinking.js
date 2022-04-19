@@ -7,13 +7,15 @@ import "../login/styles/index.scss";
 class AccountLinking extends Component {
   render() {
     return (
-      <div id="orcid-connect-container">
+      <article id="orcid-connect-container">
         <div className="intro">
-          <h4>{this.props.translate("account_linking.main_title")}</h4>
+          <h3>{this.props.translate("account_linking.main_title")}</h3>
           <p>{this.props.translate("account_linking.long_description")}</p>
         </div>
-        <Orcid {...this.props} />
-      </div>
+        <div>
+          <Orcid {...this.props} />
+        </div>
+      </article>
     );
   }
 }

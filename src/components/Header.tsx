@@ -17,7 +17,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dashboard_url = useDashboardAppSelector((state) => state.config.dashboard_url);
   const eduid_site_url = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-  let tagline = <FormattedMessage defaultMessage="eduID is easier and safer login." description="Default tagline" />;
+  let userName;
   let button;
 
   function handleLogout() {
@@ -39,13 +39,7 @@ const Header = (props: HeaderProps): JSX.Element => {
       </EduIDButton>
     );
   } else if (props.showLogout) {
-    tagline = (
-      <Fragment>
-        <FormattedMessage defaultMessage="eduID for" description="Header tagline" />
-        &nbsp;
-        {props.email}
-      </Fragment>
-    );
+    userName = <div className="header-user">{props.email}</div>;
     button = (
       <EduIDButton buttonstyle="secondary" size="sm" id="logout" onClick={handleLogout}>
         <FormattedMessage defaultMessage="Log out" description="Header logout" />
@@ -68,10 +62,8 @@ const Header = (props: HeaderProps): JSX.Element => {
           <div id="eduid-logo" className="eduid-logo" />
         </a>
         {button}
+        {userName}
       </header>
-      <div className="vertical-content-margin">
-        <h1 className="tagline">{tagline}</h1>
-      </div>
     </section>
   );
 };

@@ -40,9 +40,9 @@ function UseOtherDevice2() {
 
   return (
     <div className="use-another-device device2">
-      <h3 className="heading heading-4">
+      <h1>
         <FormattedMessage defaultMessage="Log in on another device" />
-      </h3>
+      </h1>
 
       {data ? <RenderOtherDevice2 data={data} params={params} /> : null}
     </div>

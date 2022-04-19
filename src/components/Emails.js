@@ -82,9 +82,9 @@ function Emails(props) {
   );
 
   return (
-    <div className="emailsview-form-container">
+    <article className="emailsview-form-container">
       <div className="intro">
-        <h4>{translate("emails.main_title")}</h4>
+        <h3>{translate("emails.main_title")}</h3>
         <p>{translate("emails.long_description")}</p>
       </div>
       <div id="email-display">
@@ -127,7 +127,7 @@ function Emails(props) {
         validationPattern={longCodePattern}
         validationError={"confirmation.code_invalid_format"}
       />
-    </div>
+    </article>
   );
 }
 

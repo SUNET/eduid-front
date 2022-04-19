@@ -69,10 +69,12 @@
 
   .display-nin-show-hide {
     display: flex;
+    padding-bottom: 1.5rem;
 
     // show and hide button
     button {
-      margin: 6px 1rem;
+      margin-left: 1rem;
+      height: auto;
     }
   }
 
@@ -100,27 +102,27 @@
       border-bottom: solid 1px transparent;
     }
   }
+}
 
-  & .display-data {
-    font-family: ProximaNova-Light;
-    font-size: 2rem;
-    line-height: 1;
-    margin-left: 0.1875rem;
-    margin-top: 1rem;
-    padding-bottom: 0;
-    word-wrap: break-word;
+.display-data {
+  font-family: ProximaNova-Light;
+  font-size: 1.5rem;
+  word-wrap: break-word;
 
-    &.no-data {
-      color: gray;
-    }
+  &.no-data {
+    color: $gray;
+  }
 
-    &.unverified {
-      color: $orange-highlight;
-    }
+  &.unverified {
+    color: $orange-highlight;
+  }
 
-    &.verified {
-      color: $black;
-    }
+  &.verified {
+    color: $black;
+  }
+
+  @media (max-width: $bp-md) {
+    font-size: 1.25rem;
   }
 }
 

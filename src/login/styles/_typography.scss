@@ -2,36 +2,51 @@
 
 @import "variables.scss";
 
-h1 {
-  font-size: 2.25rem;
-  line-height: 1.2;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
-  font-weight: 700;
-  font-family: "ProximaNova-Regular";
+  margin-bottom: 1em;
+  line-height: 1.2;
+  font-family: "ProximaNova-Bold";
 
   @media (max-width: $bp-md) {
-    font-size: 1.75rem;
     word-wrap: break-word;
     word-break: break-word;
   }
 }
 
+h1 {
+  font-size: 1.8rem;
+  font-family: "ProximaNova-Regular";
+
+  @media (max-width: $bp-md) {
+    font-size: 1.65rem;
+  }
+}
+
 h2 {
-  font-size: 28px;
-  line-height: 42px;
-  font-weight: 700;
-  margin-top: 0;
+  font-size: 1.65rem;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.5rem;
+  }
 }
 
 h3 {
-  font-size: 24px;
-  line-height: 34px;
+  font-size: 1.5rem;
+  @media (max-width: $bp-md) {
+    font-size: 1.25rem;
+  }
 }
 
 h4 {
-  font-size: 18px;
-  padding: 0;
-  margin: 0;
+  font-size: 1.25rem;
+  // padding: 0;
+  // margin: 0;
 }
 
 h5 {
@@ -39,24 +54,27 @@ h5 {
   margin: 0;
 }
 
-h6 {
-  color: $black;
-}
+// h6 {
+//   color: $black;
+// }
 
-.heading-4 {
+.preamble {
   font-size: 1.5rem;
-  line-height: 2.125rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
+  margin-bottom: 2rem;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.125rem;
+  }
 }
 
 p {
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-top: 1rem 0;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  ~ p {
+    margin-top: -0.5rem;
+  }
 }
-
 p.verified {
   color: $black;
 }
@@ -68,41 +86,41 @@ p.data {
 }
 
 p.no-data.data {
-  color: gray;
+  color: $gray;
 }
 
-p.steps {
-  padding-bottom: 0;
-}
+// p.steps {
+//   padding-bottom: 0;
+// }
 
-.intro {
-  & h4 {
-    font-size: 1.5rem;
-    line-height: 2.125rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-  }
+// .intro {
+//   & h4 {
+//     font-size: 1.5rem;
+//     line-height: 2.125rem;
+//     margin-bottom: 1rem;
+//     font-weight: 700;
+//   }
 
-  & h3 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-}
+//   & h3 {
+//     margin-top: 1rem;
+//     margin-bottom: 1rem;
+//   }
+// }
 
-span.heading,
-p.heading,
-h2.heading {
-  font-family: "ProximaNova-Bold";
-  letter-spacing: unset;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  padding-bottom: 0;
-  margin-bottom: 1rem;
-}
+// span.heading,
+// p.heading,
+// h2.heading {
+//   font-family: "ProximaNova-Bold";
+//   letter-spacing: unset;
+//   font-size: 1.25rem;
+//   line-height: 1.5;
+//   padding-bottom: 0;
+//   margin-bottom: 1rem;
+// }
 
-.horizontal-content-margin {
-  margin-top: 1.5rem;
-}
+// .horizontal-content-margin {
+//   margin-top: 1.5rem;
+// }
 
 .text-large {
   font-size: 1.25rem;

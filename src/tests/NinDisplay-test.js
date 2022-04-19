@@ -59,8 +59,8 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
 
   it("Renders the saved number", () => {
     const { wrapper } = setupComponent();
-    const number = wrapper.find("p");
-    expect(number.text()).toContain("****");
+    const number = wrapper.find("div");
+    expect(number.at(0).text()).toContain("****");
   });
 
   it("Renders the saved number and show/hide", () => {
@@ -117,8 +117,8 @@ describe("NinDisplay component (/verify-identity), when a nin is saved and verif
 
   it("Renders the saved number", () => {
     const { wrapper } = setupComponent();
-    const number = wrapper.find("p");
-    expect(number.text()).toBe("19990110****");
+    const number = wrapper.find("div");
+    expect(number.at(0).text()).toContain("19990110****");
   });
 });
 
@@ -233,9 +233,9 @@ describe("NinDisplay component (profile), when a nin is saved and unverified", (
   // state.nins = [{ number: "196701110005", verified: false, primary: false }];
   it("Renders a nonclickable number if a nin has been added nin", () => {
     const { wrapper } = setupComponent();
-    const unverifiedNumber = wrapper.find("p");
+    const unverifiedNumber = wrapper.find("div");
     expect(unverifiedNumber.exists()).toEqual(true);
-    expect(unverifiedNumber.text()).toContain("19670110****");
+    expect(unverifiedNumber.at(0).text()).toContain("19670110****");
   });
 
   it("Renders a show/hide button", () => {

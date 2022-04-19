@@ -33,11 +33,13 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       pageHeading = translate("verify-identity.unverified_main_title");
       pageText = translate("verify-identity.unverified_page-description");
       return (
-        <div key="0" className="intro">
-          <h4>{pageHeading}</h4>
-          <p>{pageText}</p>
-          <h3>{translate("verify-identity.add-nin_heading")}</h3>
-        </div>
+        <>
+          <div className="intro">
+            <h3>{pageHeading}</h3>
+            <p>{pageText}</p>
+          </div>
+          <h4>{translate("verify-identity.add-nin_heading")}</h4>
+        </>
       );
     };
 
@@ -46,10 +48,10 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       pageHeading = translate("verify-identity.verified_main_title");
       pageText = translate("verify-identity.verified_page-description");
       return (
-        <div key="0" className="intro">
-          <h4>{pageHeading}</h4>
+        <>
+          <h3>{pageHeading}</h3>
           <p>{pageText}</p>
-        </div>
+        </>
       );
     };
 
@@ -109,10 +111,10 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
     const VerifyIdentity_Step2 = () => {
       if (this.props.is_configured && !this.props.hasVerifiedNin) {
         return (
-          <div key="1" className="intro">
-            <h3>{translate("verify-identity.connect-nin_heading")}</h3>
+          <>
+            <h4>{translate("verify-identity.connect-nin_heading")}</h4>
             <p>{translate("verify-identity.connect-nin_description")}</p>
-          </div>
+          </>
         );
       } else {
         return <div />;

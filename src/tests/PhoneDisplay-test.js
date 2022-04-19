@@ -105,16 +105,16 @@ describe("PhoneDisplay component, when phone numbers is saved", () => {
 
   it("Render text when phone numbers are unverified", () => {
     const { wrapper } = setupComponent();
-    const primaryPhone = wrapper.find("p");
+    const primaryPhone = wrapper.find("div");
     expect(primaryPhone.exists()).toEqual(true);
-    expect(primaryPhone.text()).not.toContain("no");
+    expect(primaryPhone.at(0).text()).not.toContain("no");
   });
 
   it("Does not render phone numbers that are unverified", () => {
     const { wrapper } = setupComponent();
-    const primaryPhone = wrapper.find("p");
+    const primaryPhone = wrapper.find("div");
     expect(primaryPhone.exists()).toEqual(true);
-    expect(primaryPhone.text()).toContain("+46700000079");
+    expect(primaryPhone.at(0).text()).toContain("+46700000079");
   });
 });
 
@@ -157,18 +157,18 @@ describe("PhoneDisplay component, when phone number is saved", () => {
 
   it("Renders the primary phone (even if multiple verified)", () => {
     const { wrapper } = setupComponent();
-    const primaryPhone = wrapper.find("p");
+    const primaryPhone = wrapper.find("div");
     expect(primaryPhone.exists()).toEqual(true);
-    expect(primaryPhone.text()).toContain("+46736483364");
-    expect(primaryPhone.text()).not.toContain("+46764008978");
-    expect(primaryPhone.text()).not.toContain("+46700000079");
+    expect(primaryPhone.at(0).text()).toContain("+46736483364");
+    expect(primaryPhone.at(0).text()).not.toContain("+46764008978");
+    expect(primaryPhone.at(0).text()).not.toContain("+46700000079");
   });
 
   it("Does not render numbers that are unverified", () => {
     const { wrapper } = setupComponent();
-    const primaryPhone = wrapper.find("p");
+    const primaryPhone = wrapper.find("div");
     expect(primaryPhone.exists()).toEqual(true);
-    expect(primaryPhone.text()).toContain("+46736483364");
+    expect(primaryPhone.at(0).text()).toContain("+46736483364");
   });
 });
 
@@ -210,10 +210,10 @@ describe("PhoneDisplay component, when phone number is saved", () => {
   ];
   it("Renders the primary phone (even if multiple verified and new phone set as primary)", () => {
     const { wrapper } = setupComponent();
-    const primaryPhone = wrapper.find("p");
+    const primaryPhone = wrapper.find("div");
     expect(primaryPhone.exists()).toEqual(true);
-    expect(primaryPhone.text()).toContain("+46764008978");
-    expect(primaryPhone.text()).not.toContain("+46736483364");
-    expect(primaryPhone.text()).not.toContain("+46700000079");
+    expect(primaryPhone.at(0).text()).toContain("+46764008978");
+    expect(primaryPhone.at(0).text()).not.toContain("+46736483364");
+    expect(primaryPhone.at(0).text()).not.toContain("+46700000079");
   });
 });
