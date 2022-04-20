@@ -59,7 +59,7 @@ function DataTableRow(props: any) {
       }
 
       return (
-        <tr className={`emailrow ${valueStatus}`} data-identifier={valueName} data-object={value} key={i}>
+        <tr className={`email-row ${valueStatus}`} data-identifier={valueName} data-object={value} key={i}>
           <td className={valueStatus}>{value as any}</td>
           <DataStatus
             verified={datum.verified}

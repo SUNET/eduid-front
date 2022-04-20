@@ -74,7 +74,7 @@ function Emails() {
   }
 
   function handleRemove(e: React.KeyboardEvent<HTMLFormElement>) {
-    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.emailrow");
+    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.email-row");
     const email = dataNode && dataNode.getAttribute("data-object");
     if (email) {
       dispatch(requestRemoveEmail({ email: email }));
@@ -96,7 +96,7 @@ function Emails() {
 
   function handleStartConfirmation(e: React.KeyboardEvent<HTMLFormElement>) {
     dispatch(clearNotifications());
-    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.emailrow"),
+    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.email-row"),
       email = dataNode && dataNode.getAttribute("data-object");
     if (email) dispatch(emailsSlice.actions.startConfirmationEmail({ email: email }));
   }
@@ -115,7 +115,7 @@ function Emails() {
   }
 
   function handleMakePrimary(e: React.KeyboardEvent<HTMLFormElement>) {
-    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.emailrow"),
+    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.email-row"),
       data = {
         email: dataNode && dataNode.getAttribute("data-object"),
       };
@@ -130,7 +130,8 @@ function Emails() {
         </h3>
         <p>
           <FormattedMessage
-            defaultMessage="You can connect one or more email addresses with your eduID account and select one to be your primary email address."
+            defaultMessage="You can connect one or more email addresses with your eduID account and select one to be 
+            your primary email address."
             description="Emails description"
           />
         </p>
