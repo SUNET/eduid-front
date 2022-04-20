@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import EduIDButton from "components/EduIDButton";
 import { FormattedMessage } from "react-intl";
+import { EmailInfo } from "../../../reducers/Emails";
+import { PDPhone } from "../../../apis/personalData";
 
 function DataStatus(props: any) {
   let dataStatus;
@@ -77,7 +79,14 @@ function DataTableRow(props: any) {
   return <Fragment>{row}</Fragment>;
 }
 
-function DataTable(props: any) {
+interface DataTableProps {
+  data?: EmailInfo[] | PDPhone[];
+  handleStartConfirmation?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
+  handleMakePrimary?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
+  handleRemove?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
+}
+
+function DataTable(props: DataTableProps) {
   const data = props.data;
 
   return (

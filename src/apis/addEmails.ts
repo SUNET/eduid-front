@@ -161,12 +161,12 @@ function makeAddEmailRequest<T>(
         // response, so we clone it first so we can reject the promise with the full error response.
         const saved = JSON.parse(JSON.stringify(response));
         thunkAPI.dispatch(response);
-        return reject(saved);
+        reject(saved);
       }
       resolve(response);
     } catch (error) {
       if (error instanceof Error) {
-        //   thunkAPI.dispatch(letterProofingFail(error.toString()));
+        thunkAPI.dispatch(addEmailFail(error.toString()));
         reject(error.toString());
       } else {
         reject(error);
@@ -174,3 +174,15 @@ function makeAddEmailRequest<T>(
     }
   });
 }
+
+/*********************************************************************************************************************/
+// Fake an error response from the backend. The action ending in _FAIL will make the notification
+// middleware picks this error up and shows something to the user.
+export const addEmailFail = createAction("addEmail_FAIL", function prepare(message: string) {
+  return {
+    error: true,
+    payload: {
+      message,
+    },
+  };
+});

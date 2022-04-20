@@ -24,10 +24,10 @@ interface EmailFormData {
   email?: string;
 }
 
-function Emails(props: any) {
+function Emails() {
   const [formClass, setFormClass] = useState("hide");
   const [addLinkClass, setAddLinkClass] = useState("btn-link");
-  const [duplicatedEmail, setDisabledButton] = useState(false);
+  // const [duplicatedEmail, setDisabledButton] = useState(false);
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
   const confirming = useDashboardAppSelector((state) => state.emails.confirming);
@@ -64,17 +64,15 @@ function Emails(props: any) {
   //   }
   // }
 
-  function handleAdd(values: EmailFormData, form: any) {
-    console.log("emails", emails);
+  function handleAdd(values: EmailFormData) {
     if (values.email) dispatch(postNewEmail({ email: values.email }));
-    setFormClass("hide");
-    setAddLinkClass("show");
-    form.reset();
+    // setFormClass("hide");
+    // setAddLinkClass("show");
+    // form.reset();
   }
 
-  function handleCancel(form: any) {
-    console.log(form);
-    form.reset();
+  function handleCancel() {
+    // form.reset();
     setFormClass("hide");
     setAddLinkClass("show");
   }
@@ -108,7 +106,7 @@ function Emails(props: any) {
       // identifier: dataNode && dataNode.getAttribute("data-identifier"),
       email = dataNode && dataNode.getAttribute("data-object");
     // };
-    if (email) dispatch(emailsSlice.actions.startConfirmationEmail(email));
+    if (email) dispatch(emailsSlice.actions.startConfirmationEmail({ email: email }));
   }
 
   function handleStopConfirmation() {
@@ -124,12 +122,12 @@ function Emails(props: any) {
     dispatch(emailsSlice.actions.stopConfirmation());
   }
 
-  function handleMakePrimary(e: any) {
-    const dataNode = e.target.closest("tr.emailrow"),
+  function handleMakePrimary(e: React.KeyboardEvent<HTMLFormElement>) {
+    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.emailrow"),
       data = {
-        email: dataNode.getAttribute("data-object"),
+        email: dataNode && dataNode.getAttribute("data-object"),
       };
-    dispatch(requestMakePrimaryEmail({ email: data.email }));
+    if (data.email) dispatch(requestMakePrimaryEmail({ email: data.email }));
   }
 
   return (
@@ -149,7 +147,7 @@ function Emails(props: any) {
       </div>
       <div id="email-display">
         <DataTable
-          {...props}
+          // {...props}
           data={emails.emails}
           handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
@@ -158,9 +156,9 @@ function Emails(props: any) {
         <div className={formClass}>
           <FinalForm<EmailFormData>
             onSubmit={handleAdd}
-            initialValues={{
-              email: "",
-            }}
+            // initialValues={{
+            //   email: "",
+            // }}
             validate={validateEmailInForm}
             render={(props) => {
               return (
@@ -174,7 +172,7 @@ function Emails(props: any) {
                     componentClass="input"
                     type="text"
                     name="email"
-                    disabled={duplicatedEmail}
+                    // disabled={duplicatedEmail}
                     placeholder={emailPlaceholder}
                     helpBlock={
                       // translate("emails.input_help_text")
@@ -191,7 +189,7 @@ function Emails(props: any) {
                       <FormattedMessage defaultMessage="Add" description="Emails button add" />
                       {/* {translate("emails.button_add")} */}
                     </EduIDButton>
-                    <EduIDButton id="email-button" buttonstyle="secondary" onClick={() => handleCancel(props.form)}>
+                    <EduIDButton id="email-button" buttonstyle="secondary" onClick={handleCancel}>
                       <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
                       {/* {translate("cm.cancel")} */}
                     </EduIDButton>

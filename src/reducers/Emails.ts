@@ -1,5 +1,6 @@
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as actions from "actions/Emails";
+import { startVerify } from "actions/Mobile";
 import {
   requestRemoveEmail,
   postNewEmail,
@@ -29,6 +30,7 @@ const initialState: EmailDataState = {
 };
 
 export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: EmailInfo[] }>("GET_EMAIL_ALL_SUCCESS");
+export const POST_EMAIL_NEW_FAIL = createAction<{ message: string }>("POST_EMAIL_NEW_FAIL");
 
 const emailsSlice = createSlice({
   name: "emails",
