@@ -11,15 +11,9 @@ import Footer from "../login/components/Footer/Footer";
 import { ChangePasswordContainer } from "./ChangePassword";
 import DashboardNav from "./DashboardNav";
 import SettingsComponent from "./Settings";
+import { EmailInfo } from "./../reducers/Emails";
 
 export const history = createBrowserHistory();
-
-// TODO: Move this to the emails reducer when turning it into TypeScript
-export interface EmailInfo {
-  email: string;
-  verified: boolean;
-  primary: boolean;
-}
 
 export function DashboardMain() {
   const emails: EmailInfo[] = useDashboardAppSelector((state) => state.emails.emails);
