@@ -10,7 +10,7 @@ import {
 
 import { PDEmail } from "apis/personalData";
 
-export interface EmailsInfo {
+export interface EmailInfo {
   email: string;
   verified: boolean;
   primary: boolean;
