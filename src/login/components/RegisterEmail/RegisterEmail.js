@@ -76,7 +76,7 @@ class RegisterEmail extends Component {
         <p className="preamble">{this.props.translate("register.paragraph")}</p>
 
         <EmailReduxForm {...this.props} />
-        <p className="text-link-container">
+        <p>
           <span>{this.props.translate("register.toLogin")}</span>
           <a className="text-link" href={this.props.dashboard_url}>
             <span>{this.props.translate("text.link")}</span>
