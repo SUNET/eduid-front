@@ -5,7 +5,6 @@ import { mount } from "enzyme";
 import expect from "expect";
 import { put, call } from "redux-saga/effects";
 
-import SignupMainContainer from "containers/SignupMain";
 import * as signupActions from "actions/SignupMain";
 import * as captchaActions from "actions/Captcha";
 import * as verifiedActions from "actions/CodeVerified";
@@ -14,6 +13,7 @@ import signupReducer from "reducers/SignupMain";
 import { requestCodeStatus, fetchCodeStatus, requestConfig, fetchConfig } from "sagas/SignupMain";
 
 import { SIGNUP_CONFIG_URL, SIGNUP_SERVICE_URL } from "../globals";
+import SignupMain from "components/SignupMain";
 
 const fakeState = {
   config: {
@@ -95,7 +95,7 @@ export function setupComponent({ component, overrides, store } = {}) {
 describe("SignupMain Component", () => {
   it("Renders the splash screen", () => {
     const wrapper = setupComponent({
-        component: <SignupMainContainer />,
+        component: <SignupMain />,
         overrides: { config: { is_app_loaded: false } },
       }),
       splash = wrapper.find("div#eduid-splash-screen"),
@@ -108,14 +108,14 @@ describe("SignupMain Component", () => {
   });
 
   it("Doesn't Render the splash screen", () => {
-    const wrapper = setupComponent({ component: <SignupMainContainer /> }),
+    const wrapper = setupComponent({ component: <SignupMain /> }),
       splash = wrapper.find("div#eduid-splash-screen");
 
     expect(splash.length).toEqual(0);
   });
 
   it("Renders the email form", () => {
-    const wrapper = setupComponent({ component: <SignupMainContainer /> }),
+    const wrapper = setupComponent({ component: <SignupMain /> }),
       splash = wrapper.find("div#eduid-splash-screen"),
       router = wrapper.find("Router"),
       routes = wrapper.find("Route");
