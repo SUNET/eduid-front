@@ -9,13 +9,6 @@ export const generalApp = {
 
   "banner.tagline": <FormattedMessage id="banner.tagline" defaultMessage={`eduID is easier and safer login.`} />,
 
-  "beta-link.to-stable": (
-    <FormattedMessage
-      id="beta-link.to-stable"
-      defaultMessage={`The new eduID is under development, click here to go back to the stable version`}
-    />
-  ),
-
   "foot.change-version-tip": (
     <FormattedMessage
       id="foot.change-version-tip"

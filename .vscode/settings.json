@@ -2,6 +2,7 @@
   "jest.jestCommandLine": "node_modules/.bin/jest",
   "cSpell.words": [
     "bubbletip",
+    "buttonstyle",
     "CBOR",
     "checkmark",
     "chpass",
@@ -44,6 +45,7 @@
     "stylelint",
     "Svenska",
     "Svenskt",
+    "Swamid",
     "swedenconnect",
     "tapit",
     "urldecode",
@@ -51,8 +53,7 @@
     "Userdata",
     "USERNAMEPASSWORD",
     "webauthn",
-    "zxcvbn",
-    "buttonstyle"
+    "zxcvbn"
   ],
   "cSpell.language": "en,en-US,en-GB,sv",
   "editor.rulers": [120],

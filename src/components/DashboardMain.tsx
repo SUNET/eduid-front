@@ -1,58 +1,60 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Router, Route, Redirect } from "react-router-dom";
-import { createBrowserHistory } from "history";
-
-//import FetchingContext from "components/FetchingContext";
+import NotificationsContainer from "containers/Notifications";
+import Profile from "containers/Profile";
 import SplashContainer from "containers/Splash";
+import VerifyIdentity from "containers/VerifyIdentity";
+import { useDashboardAppSelector } from "dashboard-hooks";
+import { createBrowserHistory } from "history";
+import React from "react";
+import { Redirect, Route, Router } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../login/components/Footer/Footer";
-import SettingsComponent from "./Settings";
-import DashboardNav from "./DashboardNav";
-import VerifyIdentity from "containers/VerifyIdentity";
-import Profile from "containers/Profile";
-import NotificationsContainer from "containers/Notifications";
-import checkForCookie from "../login/app_utils/checkForCookie";
 import { ChangePasswordContainer } from "./ChangePassword";
+import DashboardNav from "./DashboardNav";
+import SettingsComponent from "./Settings";
 
 export const history = createBrowserHistory();
 
-// cookie info
-const cookieName = "show-groups";
-const cookiePattern = "";
+// TODO: Move this to the emails reducer when turning it into TypeScript
+export interface EmailInfo {
+  email: string;
+  verified: boolean;
+  primary: boolean;
+}
 
-class Main extends Component {
-  state = {
-    hasCookie: checkForCookie(cookieName, cookiePattern),
-    //fetching: props.is_fetching,
-    //setFetching: this.setFetching.bind(this)
-  };
+export function DashboardMain() {
+  const emails: EmailInfo[] = useDashboardAppSelector((state) => state.emails.emails);
+  const all_nins = useDashboardAppSelector((state) => state.nins.nins);
 
-  componentDidMount() {
-    this.props.handleCheckCookieStatus(this.state.hasCookie);
+  let email, verifiedNin;
+  if (emails.length >= 1) {
+    email = emails.filter((mail) => mail.primary)[0].email;
+  } else {
+    email = "";
+  }
+  const nins = all_nins.filter((nin) => nin.verified);
+  if (nins.length >= 1) {
+    verifiedNin = true;
+  } else {
+    verifiedNin = false;
   }
 
-  //setFetching(fetching) {
-  //this.setState({
-  //fetching: fetching
-  //});
-  //}
+  // TODO: Instead of passing these props indiscriminately to sub-components, have them fetch their own state
+  const props = {
+    //eppn
+    email: email,
+    //nin: state.nins.nin,
+    verifiedNin: verifiedNin,
+  };
 
-  render() {
-    // XXX <FetchingContext.Provider value={this.state}> ... </FetchingContext.Provider>
-    // should wrap the splash container and router once we get back to using
-    // it.
-    return [
-      <SplashContainer key="0" />,
+  return (
+    <React.Fragment>
+      <SplashContainer key="0" />
       <Router key="1" history={history}>
-        <a id="stable-link" className="hidden" href="/feature/no-beta">
-          {this.props.translate("beta-link.to-stable")}
-        </a>
-        <Header {...this.props} showLogout={true} />
+        <Header {...props} showLogout={true} />
         <section id="panel" className="panel">
           <NotificationsContainer />
           <div key="0" id="content" className="horizontal-content-margin content">
-            <DashboardNav {...this.props} />
+            <DashboardNav />
             <div key="0" id="text-content">
               <Route path="/profile/settings/" component={SettingsComponent} />
               <Route exact path="/profile/" render={(props) => <Profile {...props} />} />
@@ -75,14 +77,7 @@ class Main extends Component {
           </div>
         </section>
         <Footer />
-      </Router>,
-    ];
-  }
+      </Router>
+    </React.Fragment>
+  );
 }
-
-Main.propTypes = {
-  eppn: PropTypes.string,
-  messages: PropTypes.object,
-};
-
-export default Main;
