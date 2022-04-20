@@ -19,7 +19,6 @@ import {
   requestMakePrimaryEmail,
 } from "apis/addEmails";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
-import { copyFile } from "fs";
 
 interface EmailFormData {
   email?: string;
@@ -56,14 +55,14 @@ function Emails(props: any) {
     { email: confirming }
   );
 
-  function handleChange(event: any) {
-    const singleEmail = emails.emails;
-    const duplicatedEmail =
-      singleEmail && Object.values(singleEmail).filter((email, index) => email.email === event.target.value);
-    if (duplicatedEmail?.length) {
-      setDisabledButton(true);
-    }
-  }
+  // function handleChange(e: React.KeyboardEvent<HTMLFormElement>) {
+  //   const singleEmail = emails.emails;
+  //   const duplicatedEmail =
+  //     singleEmail && Object.values(singleEmail).filter((email, index) => email.email === e.target.value);
+  //   if (duplicatedEmail?.length) {
+  //     setDisabledButton(true);
+  //   }
+  // }
 
   function handleAdd(values: EmailFormData, form: any) {
     console.log("emails", emails);
@@ -80,10 +79,12 @@ function Emails(props: any) {
     setAddLinkClass("show");
   }
 
-  function handleRemove(e: any) {
-    const dataNode = e.target.closest("tr.emailrow");
-    const email: string = dataNode.getAttribute("data-object");
-    dispatch(requestRemoveEmail({ email: email }));
+  function handleRemove(e: React.KeyboardEvent<HTMLFormElement>) {
+    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.emailrow");
+    const email = dataNode && dataNode.getAttribute("data-object");
+    if (email) {
+      dispatch(requestRemoveEmail({ email: email }));
+    }
   }
 
   function showEmailForm() {
@@ -95,19 +96,19 @@ function Emails(props: any) {
     }, 200);
   }
 
-  function handleResend(e: any) {
+  function handleResend(e: React.KeyboardEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(requestResendEmailCode());
   }
 
-  function handleStartConfirmation(e: any) {
+  function handleStartConfirmation(e: React.KeyboardEvent<HTMLFormElement>) {
     dispatch(clearNotifications());
-    const dataNode = e.target.closest("tr.emailrow"),
-      data = {
-        identifier: dataNode.getAttribute("data-identifier"),
-        email: dataNode.getAttribute("data-object"),
-      };
-    dispatch(emailsSlice.actions.startConfirmationEmail(data));
+    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.emailrow"),
+      // data = {
+      // identifier: dataNode && dataNode.getAttribute("data-identifier"),
+      email = dataNode && dataNode.getAttribute("data-object");
+    // };
+    if (email) dispatch(emailsSlice.actions.startConfirmationEmail(email));
   }
 
   function handleStopConfirmation() {
