@@ -26,8 +26,6 @@ interface EmailFormData {
 
 function Emails() {
   const [showEmailForm, setShowEmailForm] = useState(false);
-  // const [formClass, setFormClass] = useState("hide");
-  // const [addLinkClass, setAddLinkClass] = useState("btn-link");
   const [duplicatedEmail, setDisabledButton] = useState(false);
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
@@ -68,16 +66,10 @@ function Emails() {
 
   function handleAdd(values: EmailFormData) {
     if (values.email) dispatch(postNewEmail({ email: values.email }));
-    // setFormClass("hide");
-    // setAddLinkClass("show");
-    // form.reset();
     setShowEmailForm(false);
   }
 
   function handleCancel() {
-    // form.reset();
-    // setFormClass("hide");
-    // setAddLinkClass("show");
     setShowEmailForm(false);
   }
 
@@ -91,8 +83,6 @@ function Emails() {
 
   function handleEmailForm() {
     setShowEmailForm(true);
-    // setFormClass("form-content");
-    // setAddLinkClass("hide");
     // rendering focus on input, setTimeout for 2 milliseconds to recognize the form
     setTimeout(() => {
       (document.getElementById("email") as HTMLInputElement).focus();
@@ -107,10 +97,7 @@ function Emails() {
   function handleStartConfirmation(e: React.KeyboardEvent<HTMLFormElement>) {
     dispatch(clearNotifications());
     const dataNode = (e.target as HTMLTextAreaElement).closest("tr.emailrow"),
-      // data = {
-      // identifier: dataNode && dataNode.getAttribute("data-identifier"),
       email = dataNode && dataNode.getAttribute("data-object");
-    // };
     if (email) dispatch(emailsSlice.actions.startConfirmationEmail({ email: email }));
   }
 
@@ -140,19 +127,16 @@ function Emails() {
       <div className="intro">
         <h3>
           <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
-          {/* {translate("emails.main_title")} */}
         </h3>
         <p>
           <FormattedMessage
             defaultMessage="You can connect one or more email addresses with your eduID account and select one to be your primary email address."
             description="Emails description"
           />
-          {/* {translate("emails.long_description")} */}
         </p>
       </div>
       <div id="email-display">
         <DataTable
-          // {...props}
           data={emails.emails}
           handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
@@ -177,7 +161,6 @@ function Emails() {
                     // disabled={duplicatedEmail}
                     placeholder={emailPlaceholder}
                     helpBlock={
-                      // translate("emails.input_help_text")
                       <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
                     }
                   />
@@ -189,11 +172,9 @@ function Emails() {
                       onClick={props.handleSubmit}
                     >
                       <FormattedMessage defaultMessage="Add" description="Emails button add" />
-                      {/* {translate("emails.button_add")} */}
                     </EduIDButton>
                     <EduIDButton id="email-button" buttonstyle="secondary" onClick={handleCancel}>
                       <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
-                      {/* {translate("cm.cancel")} */}
                     </EduIDButton>
                   </div>
                 </form>
@@ -203,16 +184,12 @@ function Emails() {
         ) : (
           <EduIDButton id="add-more-button" buttonstyle="link" className={" lowercase"} onClick={handleEmailForm}>
             <FormattedMessage defaultMessage="+ add more" description="Emails button add more" />
-            {/* {translate("emails.button_add_more")} */}
           </EduIDButton>
         )}
       </div>
       <ConfirmModal
         modalId="emailConfirmDialog"
         id="emailConfirmDialogControl"
-        // title={translate("emails.confirm_title", {
-        //   email: props.confirming,
-        // })}
         title={title}
         resendLabel={translate("cm.enter_code")}
         resendHelp={translate("cm.lost_code")}
