@@ -36,6 +36,9 @@ fieldset + fieldset:not(:empty) {
 fieldset > form {
   margin-top: 0;
 }
+fieldset:only-of-type {
+  margin-bottom: 1.25em;
+}
 
 select {
   padding: 5px;

@@ -29,24 +29,28 @@ const EmailForm = (props) => {
   });
   return (
     <Form id="register-form" role="form" onSubmit={handleSubmit(submitEmailForm)}>
-      <Field
-        type="email"
-        name="email"
-        label={props.translate("signup.registering-input")}
-        componentClass="input"
-        id="email-input"
-        component={CustomInput}
-        translate={props.translate}
-        placeholder={placeholder}
-      />
-      <EduIDButton
-        buttonstyle="primary"
-        id="register-button"
-        disabled={props.invalid}
-        onClick={() => props.dispatch(submit("emailForm"))}
-      >
-        {props.translate("email.sign-up-email")}
-      </EduIDButton>
+      <fieldset>
+        <Field
+          type="email"
+          name="email"
+          label={props.translate("signup.registering-input")}
+          componentClass="input"
+          id="email-input"
+          component={CustomInput}
+          translate={props.translate}
+          placeholder={placeholder}
+        />
+        <div className="buttons">
+          <EduIDButton
+            buttonstyle="primary"
+            id="register-button"
+            disabled={props.invalid}
+            onClick={() => props.dispatch(submit("emailForm"))}
+          >
+            {props.translate("email.sign-up-email")}
+          </EduIDButton>
+        </div>
+      </fieldset>
     </Form>
   );
 };
@@ -68,8 +72,8 @@ class RegisterEmail extends Component {
   render() {
     return [
       <div key="0" id="content" className="horizontal-content-margin content">
-        <p className="heading">{this.props.translate("register.sub-heading")}</p>
-        <p>{this.props.translate("register.paragraph")}</p>
+        <h1 className="heading">{this.props.translate("register.sub-heading")}</h1>
+        <p className="preamble">{this.props.translate("register.paragraph")}</p>
 
         <EmailReduxForm {...this.props} />
         <p className="text-link-container">
