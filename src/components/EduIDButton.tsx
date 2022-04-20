@@ -8,9 +8,12 @@ interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 }
 // depends on props.buttonstyle, button will display as primary, secondary, link or close button
 const EduIDButton = (props: EduIDButtonProps) => (
-  <Button {...props} size={props.size} color={props.buttonstyle}>
-    {props.children}
-  </Button>
+  console.log("props", props),
+  (
+    <Button {...props} size={props.size} color={props.buttonstyle}>
+      {props.children}
+    </Button>
+  )
 );
 
 export default EduIDButton;
