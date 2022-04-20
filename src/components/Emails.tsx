@@ -25,9 +25,10 @@ interface EmailFormData {
 }
 
 function Emails() {
-  const [formClass, setFormClass] = useState("hide");
-  const [addLinkClass, setAddLinkClass] = useState("btn-link");
-  // const [duplicatedEmail, setDisabledButton] = useState(false);
+  const [showEmailForm, setShowEmailForm] = useState(false);
+  // const [formClass, setFormClass] = useState("hide");
+  // const [addLinkClass, setAddLinkClass] = useState("btn-link");
+  const [duplicatedEmail, setDisabledButton] = useState(false);
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
   const confirming = useDashboardAppSelector((state) => state.emails.confirming);
@@ -55,26 +56,29 @@ function Emails() {
     { email: confirming }
   );
 
-  // function handleChange(e: React.KeyboardEvent<HTMLFormElement>) {
-  //   const singleEmail = emails.emails;
-  //   const duplicatedEmail =
-  //     singleEmail && Object.values(singleEmail).filter((email, index) => email.email === e.target.value);
-  //   if (duplicatedEmail?.length) {
-  //     setDisabledButton(true);
-  //   }
-  // }
+  function handleChange(e: React.KeyboardEvent<HTMLFormElement>) {
+    const singleEmail = emails.emails;
+    const duplicatedEmail =
+      singleEmail &&
+      Object.values(singleEmail).filter((email, index) => email.email === (e.target as HTMLTextAreaElement).value);
+    if (duplicatedEmail?.length) {
+      setDisabledButton(true);
+    }
+  }
 
   function handleAdd(values: EmailFormData) {
     if (values.email) dispatch(postNewEmail({ email: values.email }));
     // setFormClass("hide");
     // setAddLinkClass("show");
     // form.reset();
+    setShowEmailForm(false);
   }
 
   function handleCancel() {
     // form.reset();
-    setFormClass("hide");
-    setAddLinkClass("show");
+    // setFormClass("hide");
+    // setAddLinkClass("show");
+    setShowEmailForm(false);
   }
 
   function handleRemove(e: React.KeyboardEvent<HTMLFormElement>) {
@@ -85,9 +89,10 @@ function Emails() {
     }
   }
 
-  function showEmailForm() {
-    setFormClass("form-content");
-    setAddLinkClass("hide");
+  function handleEmailForm() {
+    setShowEmailForm(true);
+    // setFormClass("form-content");
+    // setAddLinkClass("hide");
     // rendering focus on input, setTimeout for 2 milliseconds to recognize the form
     setTimeout(() => {
       (document.getElementById("email") as HTMLInputElement).focus();
@@ -153,19 +158,16 @@ function Emails() {
           handleRemove={handleRemove}
           handleMakePrimary={handleMakePrimary}
         />
-        <div className={formClass}>
+        {showEmailForm ? (
           <FinalForm<EmailFormData>
             onSubmit={handleAdd}
-            // initialValues={{
-            //   email: "",
-            // }}
+            initialValues={{
+              email: "",
+            }}
             validate={validateEmailInForm}
             render={(props) => {
               return (
-                <form
-                  onSubmit={props.handleSubmit}
-                  // onChange={handleChange}
-                >
+                <form onSubmit={props.handleSubmit} onChange={handleChange}>
                   <FinalField
                     label={translate("profile.email_display_title")}
                     component={CustomInput}
@@ -198,17 +200,12 @@ function Emails() {
               );
             }}
           />
-        </div>
-
-        <EduIDButton
-          id="add-more-button"
-          buttonstyle="link"
-          className={addLinkClass + " lowercase"}
-          onClick={showEmailForm}
-        >
-          <FormattedMessage defaultMessage="+ add more" description="Emails button add more" />
-          {/* {translate("emails.button_add_more")} */}
-        </EduIDButton>
+        ) : (
+          <EduIDButton id="add-more-button" buttonstyle="link" className={" lowercase"} onClick={handleEmailForm}>
+            <FormattedMessage defaultMessage="+ add more" description="Emails button add more" />
+            {/* {translate("emails.button_add_more")} */}
+          </EduIDButton>
+        )}
       </div>
       <ConfirmModal
         modalId="emailConfirmDialog"
