@@ -23,7 +23,6 @@ export function Errors() {
   }, []);
 
   const isUnknown =
-    errorURL.code &&
     errorURL.code !== "IDENTIFICATION_FAILURE" &&
     errorURL.code !== "AUTHENTICATION_FAILURE" &&
     errorURL.code !== "AUTHORIZATION_FAILURE" &&
@@ -56,7 +55,7 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
           return (
             <div className={"technical-info-text"} key={key}>
               <p>{key.toUpperCase()}</p>
-              <p>{key === "date" ? value.toISOString() : value}</p>
+              <p>{key === "date" && value ? value.toISOString() : value}</p>
             </div>
           );
         })}
