@@ -8,8 +8,6 @@ import {
   requestMakePrimaryEmail,
 } from "apis/addEmails";
 
-import { PDEmail } from "apis/personalData";
-
 export interface EmailInfo {
   email: string;
   verified: boolean;
@@ -19,7 +17,7 @@ export interface EmailInfo {
 export interface EmailDataState {
   message?: string;
   confirming?: string;
-  emails?: PDEmail[];
+  emails?: EmailInfo[];
   email?: string;
 }
 
@@ -30,7 +28,7 @@ const initialState: EmailDataState = {
   email: "",
 };
 
-export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: PDEmail[] }>("GET_EMAIL_ALL_SUCCESS");
+export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: EmailInfo[] }>("GET_EMAIL_ALL_SUCCESS");
 
 const emailsSlice = createSlice({
   name: "emails",
