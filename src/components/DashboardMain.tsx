@@ -16,7 +16,7 @@ import { EmailInfo } from "./../reducers/Emails";
 export const history = createBrowserHistory();
 
 export function DashboardMain() {
-  const emails: EmailInfo[] = useDashboardAppSelector((state) => state.emails.emails);
+  const emails: EmailInfo[] = useDashboardAppSelector((state) => state.emails.emails) as [];
   const all_nins = useDashboardAppSelector((state) => state.nins.nins);
 
   let email, verifiedNin;
