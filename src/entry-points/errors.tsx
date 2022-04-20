@@ -4,7 +4,7 @@ import { updateErrorsConfigData } from "login/redux/actions/errorsMainActions";
 import { setupLanguage } from "login/translation";
 import React from "react";
 import ReactDOM from "react-dom";
-import ErrorsMain from "../login/components/SwamidErrors/ErrorsMain";
+import { ErrorsMain } from "../login/components/SwamidErrors/ErrorsMain";
 import { polyfillsInit } from "./polyfills-common";
 import "./public-path";
 

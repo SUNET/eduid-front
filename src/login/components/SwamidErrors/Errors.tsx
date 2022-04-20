@@ -1,110 +1,66 @@
 import React, { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router-dom";
 import "../../styles/index.scss";
-import i18n from "../../translation/InjectIntl_HOC_factory";
-import { swamidErrorData } from "./swamidErrorData";
+import { AuthenticationFailure } from "./AuthenticationFailure";
+import { AuthorizationFailure } from "./AuthorizationFailure";
+import { errorURLData, parseErrorURL } from "./errorURLParser";
+import { IdentificationFailure } from "./IdentificationFailure";
+import { OtherError } from "./OtherError";
+import { UnknownError } from "./UnknownError";
 
-function Errors(props) {
-  let query = new URLSearchParams(useLocation().search);
-  const [techInformation, setTechInformation] = useState({});
+export interface FailureComponentProps {
+  errorURL: errorURLData;
+}
+
+export function Errors() {
+  /* Parse the URL from query parameters */
+  const query = new URLSearchParams(useLocation().search);
+
+  const [errorURL, setErrorURL] = useState<errorURLData>({});
   useEffect(() => {
-    let errorurl_ts = query.get("errorurl_ts");
-    let errorurl_rp = query.get("errorurl_rp");
-    let errorurl_tid = query.get("errorurl_tid");
-    let errorurl_ctx = query.get("errorurl_ctx");
-    //Convert unix time stamp to (YYYY-MM-DD) format
-    const convertUnixDate = new Date(errorurl_ts * 1000);
-    const newDateUrlTs =
-      " (" +
-      convertUnixDate.getFullYear() +
-      "-" +
-      (convertUnixDate.getMonth() + 1).toString() +
-      "-" +
-      convertUnixDate.getDate().toString() +
-      ")";
-
-    setTechInformation({
-      errorurl_ts: errorurl_ts && errorurl_ts !== "ERRORURL_TS" ? errorurl_ts + newDateUrlTs : undefined,
-      errorurl_rp: errorurl_rp && errorurl_rp !== "ERRORURL_RP" ? errorurl_rp : undefined,
-      errorurl_tid: errorurl_tid && errorurl_tid !== "ERRORURL_TID" ? errorurl_tid : undefined,
-      errorurl_ctx: errorurl_ctx && errorurl_ctx !== "ERRORURL_CTX" ? errorurl_ctx : undefined,
-    });
+    setErrorURL(parseErrorURL(query));
   }, []);
 
-  let isSpecificError = "";
-  let errorurlCode = query.get("errorurl_code");
-  let errorurlCtx = query.get("errorurl_ctx");
-  let errorurlRp = query.get("errorurl_rp");
-  let specificMessages = {};
-  Object.keys(swamidErrorData).map((key) => {
-    if (errorurlRp && errorurlRp.includes(key)) return (specificMessages = swamidErrorData[errorurlRp]);
-  });
-
-  const checkErrorUrlCtx = (messages) => {
-    Object.keys(messages).map((key) => {
-      if (key === errorurlCode) {
-        let result = messages[key];
-        Object.keys(result).map((urlCtx) => {
-          if (errorurlCtx && errorurlCtx.includes(urlCtx)) {
-            return (isSpecificError = (
-              <div className="specific-error">{props.translate(Object.values(result[urlCtx]).toString())}</div>
-            ));
-          }
-        });
-      }
-    });
-  };
-
-  if (specificMessages)
-    //specific messages is present, checkErrorUrlCtx function run with swamidErrorData[sp.example.com]
-    checkErrorUrlCtx(specificMessages);
-  if (!isSpecificError)
-    //isSpecificError is not returned, checkErrorUrlCtx function run with swamidErrorData.common
-    checkErrorUrlCtx(swamidErrorData.common);
-
-  let showErrorCode =
-    errorurlCode === "IDENTIFICATION_FAILURE" ? (
-      props.translate("error_identification_failed")
-    ) : errorurlCode === "AUTHENTICATION_FAILURE" ? (
-      props.translate("error_authentication")
-    ) : errorurlCode === "AUTHORIZATION_FAILURE" ? (
-      props.translate("error_insufficient_privileges")
-    ) : errorurlCode === "OTHER_ERROR" ? (
-      props.translate("error_access")
-    ) : (
-      <div className="specific-error">{props.translate("error_without_code")}</div>
-    );
-
-  let isTechnicalInfoNotEmpty = Object.keys(techInformation).some((key) => {
-    if (techInformation[key] !== undefined) {
-      return true;
-    } else return false;
-  });
-
-  let technicalInformation = Object.keys(techInformation).map((key) => {
-    return (
-      <div className={"technical-info-text"} key={key}>
-        <p>{key.toUpperCase()}</p>
-        <p>{techInformation[key]}</p>
-      </div>
-    );
-  });
+  const isUnknown =
+    errorURL.code &&
+    errorURL.code !== "IDENTIFICATION_FAILURE" &&
+    errorURL.code !== "AUTHENTICATION_FAILURE" &&
+    errorURL.code !== "AUTHORIZATION_FAILURE" &&
+    errorURL.code !== "OTHER_ERROR";
 
   return (
     <div className="horizontal-content-margin">
       <div className="swamid-error">
-        {isTechnicalInfoNotEmpty ? (
-          <>
-            {isSpecificError ? isSpecificError : showErrorCode}
-            <div className={"technical-info-heading"}>{props.translate("error_technical_info_heading")}</div>
-            <div className={"technical-info-box"}>{technicalInformation}</div>
-          </>
-        ) : (
-          <>{showErrorCode}</>
-        )}
+        {errorURL.code === "IDENTIFICATION_FAILURE" && <IdentificationFailure errorURL={errorURL} />}
+        {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure errorURL={errorURL} />}
+        {errorURL.code === "AUTHORIZATION_FAILURE" && <AuthorizationFailure errorURL={errorURL} />}
+        {errorURL.code === "OTHER_ERROR" && <OtherError errorURL={errorURL} />}
+        {isUnknown && <UnknownError errorURL={errorURL} />}
+        <ErrorTechnicalInfo errorURL={errorURL} />
       </div>
     </div>
   );
 }
 
-export default i18n(Errors);
+export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Element {
+  return (
+    <React.Fragment>
+      <div className={"technical-info-heading"}>
+        <p>
+          <FormattedMessage defaultMessage={"Technical Information"} description="errorURL" />
+        </p>
+      </div>
+      <div className={"technical-info-box"}>
+        {Object.entries(props.errorURL).map(([key, value]) => {
+          return (
+            <div className={"technical-info-text"} key={key}>
+              <p>{key.toUpperCase()}</p>
+              <p>{key === "date" ? value.toISOString() : value}</p>
+            </div>
+          );
+        })}
+      </div>
+    </React.Fragment>
+  );
+}
