@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
 import { ExpiresMeter } from "./ExpiresMeter";
-import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
+//import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { ResponseCodeForm } from "./ResponseCodeForm";
 
 // optional URL parameters passed to this component
