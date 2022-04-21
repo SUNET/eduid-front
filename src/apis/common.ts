@@ -1,11 +1,16 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { newCsrfToken } from "actions/DashboardConfig";
-import { DashboardAppDispatch, DashboardRootState } from "dashboard-init-app";
-import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
+import { EduidJSAppCommonConfig } from "commonConfig";
+import { DashboardAppDispatch } from "dashboard-init-app";
+import { LoginAppDispatch } from "login/app_init/initStore";
 import { checkStatus, getRequest, postRequest } from "sagas/ts_common";
 
+export interface StateWithCommonConfig {
+  config: EduidJSAppCommonConfig;
+}
+
 export interface RequestThunkAPI {
-  getState: () => DashboardRootState | LoginRootState;
+  getState: () => StateWithCommonConfig;
   dispatch: DashboardAppDispatch | LoginAppDispatch;
   signal: AbortSignal;
 }
@@ -56,6 +61,15 @@ export function makeRequest<T>(
     body.csrf_token = state.config.csrf_token;
   }
 
+  return makeBareRequest<T>(thunkAPI, url, body, data);
+}
+
+export function makeBareRequest<T>(
+  thunkAPI: RequestThunkAPI,
+  url: string,
+  body?: KeyValues,
+  data?: KeyValues
+): Promise<PayloadAction<T, string, never, boolean>> {
   // do POST if there is a body, otherwise GET
   const req = body === undefined ? getRequest : postRequest;
 
