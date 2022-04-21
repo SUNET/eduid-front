@@ -36,6 +36,10 @@ form {
   color: $gray;
 }
 
+fieldset:not(:empty) {
+  margin-bottom: 1.25em;
+}
+
 @media (max-width: $bp-sm) {
   #reset-password-email-form {
     flex-direction: column;
