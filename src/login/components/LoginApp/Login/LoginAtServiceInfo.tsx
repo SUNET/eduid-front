@@ -14,7 +14,7 @@ export function LoginAtServiceInfo(props: LoginAtServiceInfoProps): JSX.Element 
   const locale = useAppSelector((state) => state.intl.locale);
   let service_name;
 
-  if (props.service_info === undefined || props.service_info.display_name === undefined) {
+  if (!props.service_info?.display_name) {
     return null;
   }
 
