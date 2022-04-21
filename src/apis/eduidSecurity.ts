@@ -64,6 +64,10 @@ function makeSecurityRequest<T>(
     try {
       const state = thunkAPI.getState();
 
+      if (!state.config.security_url) {
+        throw new Error("Missing configuration security_url");
+      }
+
       const response = await makeRequest<T>(thunkAPI, state.config.security_url, endpoint, body, data);
 
       if (response.error) {

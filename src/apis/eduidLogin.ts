@@ -15,7 +15,6 @@ export interface LoginAbortResponse {
   finished: boolean;
 }
 
-
 /**
  * @public
  * @function fetchAbort
@@ -252,6 +251,10 @@ async function makeLoginRequest<T>(
   return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
     try {
       const state = thunkAPI.getState();
+
+      if (!state.config.base_url) {
+        throw new Error("Missing configuration base_url");
+      }
 
       const response = await makeRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
 
