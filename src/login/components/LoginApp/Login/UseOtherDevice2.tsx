@@ -96,7 +96,8 @@ function RenderOtherDevice2(props: { data: LoginUseOtherDevice2Response; params:
     <React.Fragment>
       {data.state === "IN_PROGRESS" && (
         <ol className="listed-steps">
-          <LoginAtServiceInfo service_info={data.device1_info.service_info} />
+          {/* <LoginAtServiceInfo service_info={data.device1_info.service_info} />*/}
+
           {data.device1_info.is_known_device ? (
             <InfoAboutKnownDevice data={data} />
           ) : (

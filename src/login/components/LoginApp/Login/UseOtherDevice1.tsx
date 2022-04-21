@@ -51,8 +51,9 @@ function UseOtherDevice1() {
       <h1>
         <FormattedMessage defaultMessage="Log in using another device" />
       </h1>
-
-      <LoginAtServiceInfo service_info={service_info} />
+      <div className="preamble">
+        <LoginAtServiceInfo service_info={service_info} />
+      </div>
 
       {!error && hasQrCode && <RenderOtherDevice1 data={other_device} />}
       {error && <RenderFatalError error={error} />}
