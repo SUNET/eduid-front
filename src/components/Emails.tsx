@@ -54,11 +54,11 @@ function Emails() {
     { email: confirming }
   );
 
-  function handleChange(e: React.KeyboardEvent<HTMLFormElement>) {
+  function handleChange(event: React.KeyboardEvent<HTMLFormElement>) {
     const singleEmail = emails.emails;
     const duplicatedEmail =
       singleEmail &&
-      Object.values(singleEmail).filter((email, index) => email.email === (e.target as HTMLTextAreaElement).value);
+      Object.values(singleEmail).filter((email, index) => email.email === (event.target as HTMLTextAreaElement).value);
     if (duplicatedEmail?.length) {
       setDisabledButton(true);
     }
@@ -73,8 +73,8 @@ function Emails() {
     setShowEmailForm(false);
   }
 
-  function handleRemove(e: React.KeyboardEvent<HTMLFormElement>) {
-    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.email-row");
+  function handleRemove(event: React.KeyboardEvent<HTMLButtonElement>) {
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row");
     const email = dataNode && dataNode.getAttribute("data-object");
     if (email) {
       dispatch(requestRemoveEmail({ email: email }));
@@ -94,9 +94,9 @@ function Emails() {
     dispatch(requestResendEmailCode());
   }
 
-  function handleStartConfirmation(e: React.KeyboardEvent<HTMLFormElement>) {
+  function handleStartConfirmation(event: React.KeyboardEvent<HTMLButtonElement>) {
     dispatch(clearNotifications());
-    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.email-row"),
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row"),
       email = dataNode && dataNode.getAttribute("data-object");
     if (email) dispatch(emailsSlice.actions.startConfirmationEmail({ email: email }));
   }
@@ -114,7 +114,7 @@ function Emails() {
     dispatch(emailsSlice.actions.stopConfirmation());
   }
 
-  function handleMakePrimary(e: React.KeyboardEvent<HTMLFormElement>) {
+  function handleMakePrimary(e: React.KeyboardEvent<HTMLButtonElement>) {
     const dataNode = (e.target as HTMLTextAreaElement).closest("tr.email-row"),
       data = {
         email: dataNode && dataNode.getAttribute("data-object"),

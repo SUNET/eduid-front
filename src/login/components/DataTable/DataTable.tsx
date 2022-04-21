@@ -32,55 +32,7 @@ function DataStatus(props: any) {
   return <td className="value-status">{dataStatus}</td>;
 }
 
-// function DataTableRow(props: any) {
-//   const data = props.data;
-
-//   let row: any = [];
-
-//   if (data) {
-//     row = data.map((datum: any, i: number) => {
-//       const keysArray = Object.keys(datum);
-//       const valueArray = Object.values(datum);
-//       const valueName = keysArray[0];
-//       const value = valueArray[0];
-
-//       let valueStatus = "unverified";
-//       if (datum.verified) {
-//         valueStatus = "verified";
-//         if (datum.primary) {
-//           valueStatus = "primary";
-//         }
-//       }
-
-//       return (
-//         <tr className={`email-row ${valueStatus}`} data-identifier={valueName} data-object={value} key={i}>
-//           <td className={valueStatus}>{value as string}</td>
-//           <DataStatus
-//             verified={datum.verified}
-//             primary={datum.primary}
-//             handleStartConfirmation={props.handleStartConfirmation}
-//             handleMakePrimary={props.handleMakePrimary}
-//           />
-//           <td className="remove-data">
-//             <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
-//           </td>
-//         </tr>
-//       );
-//     });
-//   } else {
-//     row = <div />;
-//   }
-//   return <Fragment>{row}</Fragment>;
-// }
-
-interface DataTableProps {
-  data?: EmailInfo[] | PDPhone[];
-  handleStartConfirmation?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
-  handleMakePrimary?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
-  handleRemove?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
-}
-
-function DataTable(props: DataTableProps) {
+function DataTableRow(props: any) {
   const data = props.data;
 
   let row: any = [];
@@ -110,7 +62,7 @@ function DataTable(props: DataTableProps) {
             handleMakePrimary={props.handleMakePrimary}
           />
           <td className="remove-data">
-            <EduIDButton buttonstyle="close" size="sm" onClick={() => props.handleRemove} />
+            <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
           </td>
         </tr>
       );
@@ -118,18 +70,29 @@ function DataTable(props: DataTableProps) {
   } else {
     row = <div />;
   }
+  return <Fragment>{row}</Fragment>;
+}
+
+interface DataTableProps {
+  data?: EmailInfo[] | PDPhone[];
+  handleStartConfirmation?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
+  handleMakePrimary?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
+  handleRemove?: (e: React.KeyboardEvent<HTMLFormElement>) => void;
+}
+
+function DataTable(props: DataTableProps) {
+  const data = props.data;
 
   return (
     <div className="table-responsive">
       <table className="table-form">
         <tbody>
-          {row}
-          {/* <DataTableRow
+          <DataTableRow
             data={data}
             handleStartConfirmation={props.handleStartConfirmation}
             handleMakePrimary={props.handleMakePrimary}
             handleRemove={props.handleRemove}
-          /> */}
+          />
         </tbody>
       </table>
     </div>
