@@ -29,7 +29,7 @@ export function SignupMain(): JSX.Element {
 
   return (
     <React.Fragment>
-      <SplashContainer key="0" />,
+      <SplashContainer key="0" />
       <Router key="1" history={history}>
         <Header email={email} showLogin={true} />
         <section id="panel" className="panel">
