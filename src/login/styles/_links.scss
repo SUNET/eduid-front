@@ -1,9 +1,8 @@
 @import "variables";
 
-// TO DO find all textual links and add class, remove styling from a.
 a {
   color: $orange-highlight;
-  font-family: Akkurat;
+  font-family: $Akkurat;
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
