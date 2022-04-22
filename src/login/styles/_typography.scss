@@ -63,7 +63,7 @@ h5 {
   margin-bottom: 1.75rem;
 
   @media (max-width: $bp-md) {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     margin-bottom: 1.5rem;
   }
 }
@@ -72,8 +72,13 @@ p {
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: 1rem;
+
   + p {
     margin-top: -0.5rem;
+  }
+
+  @media (max-width: $bp-md) {
+    font-size: 1.125rem;
   }
 }
 p.verified {
@@ -130,6 +135,9 @@ p.no-data.data {
   font-size: 0.9rem;
 }
 
+*.text-left {
+  text-align: left;
+}
 strong {
   font-weight: bold;
   @extend b;

@@ -29,7 +29,7 @@ export function Errors() {
     errorURL.code !== "OTHER_ERROR";
 
   return (
-    <div className="horizontal-content-margin">
+    <div className="horizontal-content-margin content">
       <div className="swamid-error">
         {errorURL.code === "IDENTIFICATION_FAILURE" && <IdentificationFailure errorURL={errorURL} />}
         {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure errorURL={errorURL} />}
@@ -45,12 +45,27 @@ export function Errors() {
 export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Element {
   return (
     <React.Fragment>
-      <div className={"technical-info-heading"}>
-        <p>
-          <FormattedMessage defaultMessage={"Technical Information"} description="errorURL" />
-        </p>
-      </div>
-      <div className={"technical-info-box"}>
+      <figure className={"figure"}>
+        <table className={"error-info"}>
+          <thead>
+            <figcaption>
+              <FormattedMessage defaultMessage={"Technical Information"} description="errorURL" />
+            </figcaption>
+          </thead>
+          <tbody>
+            {Object.entries(props.errorURL).map(([key, value]) => {
+              return (
+                <tr className={""} key={key}>
+                  <td className="">
+                    <strong>{key.toUpperCase()}</strong>
+                  </td>
+                  <td>{key === "date" && value ? value.toISOString() : value}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        {/* <div className={"technical-info-box"}>
         {Object.entries(props.errorURL).map(([key, value]) => {
           return (
             <div className={"technical-info-text"} key={key}>
@@ -59,7 +74,8 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
             </div>
           );
         })}
-      </div>
+      </div> */}
+      </figure>
     </React.Fragment>
   );
 }

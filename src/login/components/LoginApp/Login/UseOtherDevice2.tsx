@@ -193,7 +193,9 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
           <tbody>
             <tr className="border-row">
               <td>
-                <FormattedMessage defaultMessage="IP address" description="device info" />
+                <strong>
+                  <FormattedMessage defaultMessage="IP address" description="device info" />
+                </strong>
               </td>
 
               <td>
@@ -202,7 +204,9 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): JS
             </tr>
             <tr className="border-row">
               <td>
-                <FormattedMessage defaultMessage="Description" description="device info" />
+                <strong>
+                  <FormattedMessage defaultMessage="Description" description="device info" />
+                </strong>
               </td>
 
               <td>{props.data.device1_info.description}</td>

@@ -139,3 +139,12 @@
     }
   }
 }
+
+.error-info {
+  text-align: left;
+
+  tr td:last-child {
+    width: 75%;
+    color: $dark-orange;
+  }
+}
