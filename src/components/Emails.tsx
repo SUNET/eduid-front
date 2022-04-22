@@ -19,6 +19,7 @@ import {
   requestMakePrimaryEmail,
 } from "apis/addEmails";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
+import { FORM_ERROR } from "final-form";
 
 interface EmailFormData {
   email?: string;
@@ -54,10 +55,23 @@ function Emails() {
   );
 
   async function handleAdd(values: EmailFormData) {
+    const singleEmail = emails.emails;
+    const duplicatedEmail =
+      singleEmail && Object.values(singleEmail).filter((email, _index) => email.email === values.email);
+
     if (values.email) {
       const response = await dispatch(postNewEmail({ email: values.email }));
       if (postNewEmail.fulfilled.match(response)) {
-        setShowEmailForm(false);
+        return setShowEmailForm(false);
+      } else if (values.email === (duplicatedEmail !== undefined && duplicatedEmail[0].email)) {
+        return {
+          [FORM_ERROR]: (
+            <FormattedMessage
+              defaultMessage="That email address is already in use, please choose another"
+              description="Duplicate email"
+            />
+          ),
+        };
       }
     } else setShowEmailForm(true);
   }
@@ -143,26 +157,32 @@ function Emails() {
               email: "",
             }}
             validate={validateEmailInForm}
-            render={(props) => {
+            render={({ submitError, handleSubmit, submitting, pristine, invalid, valid, values }) => {
               return (
-                <form onSubmit={props.handleSubmit}>
+                <form onSubmit={handleSubmit}>
                   <FinalField
                     label={translate("profile.email_display_title")}
                     component={CustomInput}
                     componentClass="input"
                     type="text"
                     name="email"
+                    submitError={submitError}
                     placeholder={emailPlaceholder}
                     helpBlock={
                       <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
                     }
                   />
+                  {submitError && (
+                    <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
+                      {submitError}
+                    </span>
+                  )}
                   <div className="flex-buttons">
                     <EduIDButton
                       id="email-button"
                       buttonstyle="primary"
-                      disabled={!props.valid || props.submitting || props.invalid || props.pristine}
-                      onClick={props.handleSubmit}
+                      disabled={invalid || pristine}
+                      onClick={handleSubmit}
                     >
                       <FormattedMessage defaultMessage="Add" description="Emails button add" />
                     </EduIDButton>
