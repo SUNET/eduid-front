@@ -30,13 +30,6 @@
 }
 
 /** Possible utility/generic classes below **/
-fieldset + fieldset:not(:empty) {
-  margin-top: 1.25em;
-}
-fieldset > form {
-  margin-top: 0;
-}
-
 select {
   padding: 5px;
   border-radius: 3px;
@@ -55,10 +48,4 @@ select {
     padding: 0;
     margin: 0;
   }
-}
-
-.ladok-university-name {
-  flex-grow: 1;
-  text-align: right;
-  white-space: nowrap;
 }

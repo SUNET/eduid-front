@@ -15,7 +15,7 @@ class Captcha extends Component {
 
     return [
       <div key="0" id="content" className="horizontal-content-margin content">
-        <h3 className="register-header">{this.props.translate("captcha.verify-human")}</h3>
+        <h1 className="register-header">{this.props.translate("captcha.verify-human")}</h1>
         <div key="1" id="captcha-container">
           <div id="captcha">
             <Recaptcha
@@ -25,7 +25,10 @@ class Captcha extends Component {
               verifyCallback={this.props.handleCaptcha}
             />
           </div>
-          <div id="captcha-buttons">
+          <div id="captcha-buttons" className="buttons">
+            <EduIDButton onClick={this.props.cancelCaptcha} buttonstyle="secondary" id="cancel-captcha-button">
+              {this.props.translate("captcha.cancel")}
+            </EduIDButton>
             <EduIDButton
               buttonstyle="primary"
               onClick={this.props.sendCaptcha}
@@ -33,9 +36,6 @@ class Captcha extends Component {
               disabled={this.props.disabledButton}
             >
               {this.props.translate("captcha.submit")}
-            </EduIDButton>
-            <EduIDButton onClick={this.props.cancelCaptcha} buttonstyle="secondary" id="cancel-captcha-button">
-              {this.props.translate("captcha.cancel")}
             </EduIDButton>
           </div>
         </div>

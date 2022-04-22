@@ -1,6 +1,7 @@
 {
   "jest.jestCommandLine": "node_modules/.bin/jest",
   "cSpell.words": [
+    "Akkurat",
     "bubbletip",
     "buttonstyle",
     "CBOR",
