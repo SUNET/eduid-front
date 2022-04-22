@@ -267,7 +267,7 @@ a .disabled {
     flex-direction: row;
     text-align: right;
 
-    @media (max-width: $bp-md) {
+    @media (max-width: $bp-xl) {
       flex-direction: column;
       text-align: center;
     }
