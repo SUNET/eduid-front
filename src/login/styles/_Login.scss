@@ -39,6 +39,7 @@
       @media (max-width: $bp-sm) {
         flex-direction: column;
         align-items: flex-start;
+
         h3 {
           margin-bottom: 0.5em;
         }
@@ -166,6 +167,11 @@ a .disabled {
       justify-content: space-between;
     }
   }
+}
+
+.border-line {
+  margin: 0.5rem 0 2rem;
+  border-bottom: 1px solid $dark-gray;
 }
 
 // styles to counteract bootstrap button styles (.mfa)
@@ -330,6 +336,7 @@ a .disabled {
 
   .expires-meter {
     margin-top: 1.5rem;
+
     @media (min-width: $bp-md) {
       position: absolute;
       bottom: 0.5rem;
