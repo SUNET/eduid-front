@@ -5,10 +5,10 @@ class AccountCreated extends Component {
   render() {
     return (
       <div id="content" className="horizontal-content-margin content">
-        <h3 className="register-header">{this.props.translate("created.account-created")}</h3>
+        <h1 className="register-header">{this.props.translate("created.account-created")}</h1>
         <div id="email-display">
-          <p>{this.props.translate("created.email-label")}</p>
-          <h3 className="register-header registered-email">{this.props.email}</h3>
+          <p className="preamble">{this.props.translate("created.email-label")}</p>
+          <h4 className="register-header registered-email">{this.props.email}</h4>
         </div>
       </div>
     );
