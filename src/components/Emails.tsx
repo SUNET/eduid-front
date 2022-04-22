@@ -152,7 +152,6 @@ function Emails() {
                     componentClass="input"
                     type="text"
                     name="email"
-                    // disabled={duplicatedEmail}
                     placeholder={emailPlaceholder}
                     helpBlock={
                       <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
