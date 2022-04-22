@@ -66,7 +66,7 @@ function Emails() {
     setShowEmailForm(false);
   }
 
-  function handleRemove(event: React.KeyboardEvent<HTMLButtonElement>) {
+  function handleRemove(event: React.MouseEvent<HTMLElement>) {
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row");
     const email = dataNode && dataNode.getAttribute("data-object");
     if (email) {
@@ -82,12 +82,12 @@ function Emails() {
     }, 200);
   }
 
-  function handleResend(e: React.KeyboardEvent<HTMLFormElement>) {
-    e.preventDefault();
+  function handleResend(event: React.MouseEvent<HTMLElement>) {
+    event.preventDefault();
     dispatch(requestResendEmailCode());
   }
 
-  function handleStartConfirmation(event: React.KeyboardEvent<HTMLButtonElement>) {
+  function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row"),
       email = dataNode && dataNode.getAttribute("data-object");
@@ -107,8 +107,8 @@ function Emails() {
     dispatch(emailsSlice.actions.stopConfirmation());
   }
 
-  function handleMakePrimary(e: React.KeyboardEvent<HTMLButtonElement>) {
-    const dataNode = (e.target as HTMLTextAreaElement).closest("tr.email-row"),
+  function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row"),
       data = {
         email: dataNode && dataNode.getAttribute("data-object"),
       };

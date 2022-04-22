@@ -6,16 +6,16 @@ import { PDPhone } from "../../../apis/personalData";
 
 interface DataTableProps {
   data?: EmailInfo[] | PDPhone[];
-  handleStartConfirmation: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  handleMakePrimary: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  handleRemove: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
+  handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
+  handleRemove: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 interface DataStatusProps {
   verified: boolean;
   primary: boolean;
-  handleStartConfirmation: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  handleMakePrimary: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  handleStartConfirmation: (event: React.MouseEvent<HTMLElement>) => void;
+  handleMakePrimary: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 function DataStatus(props: DataStatusProps) {
@@ -30,14 +30,14 @@ function DataStatus(props: DataStatusProps) {
       );
     } else {
       dataStatus = (
-        <EduIDButton buttonstyle="link" size="sm" onClick={() => props.handleMakePrimary}>
+        <EduIDButton buttonstyle="link" size="sm" onClick={props.handleMakePrimary}>
           <FormattedMessage defaultMessage="MAKE PRIMARY" description="Make primary button" />
         </EduIDButton>
       );
     }
   } else {
     dataStatus = (
-      <EduIDButton buttonstyle="link" size="sm" onClick={() => props.handleStartConfirmation}>
+      <EduIDButton buttonstyle="link" size="sm" onClick={props.handleStartConfirmation}>
         <FormattedMessage defaultMessage="confirm" description="confirm button" />
       </EduIDButton>
     );
@@ -46,7 +46,7 @@ function DataStatus(props: DataStatusProps) {
   return <td className="value-status">{dataStatus}</td>;
 }
 
-function DataTableRow(props: any) {
+function DataTableRow(props: DataTableProps) {
   const data = props.data;
   let row;
 
