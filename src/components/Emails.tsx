@@ -26,7 +26,6 @@ interface EmailFormData {
 
 function Emails() {
   const [showEmailForm, setShowEmailForm] = useState(false);
-  const [duplicatedEmail, setDisabledButton] = useState(false);
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
   const confirming = useDashboardAppSelector((state) => state.emails.confirming);
@@ -54,19 +53,13 @@ function Emails() {
     { email: confirming }
   );
 
-  function handleChange(event: React.KeyboardEvent<HTMLFormElement>) {
-    const singleEmail = emails.emails;
-    const duplicatedEmail =
-      singleEmail &&
-      Object.values(singleEmail).filter((email, index) => email.email === (event.target as HTMLTextAreaElement).value);
-    if (duplicatedEmail?.length) {
-      setDisabledButton(true);
-    }
-  }
-
-  function handleAdd(values: EmailFormData) {
-    if (values.email) dispatch(postNewEmail({ email: values.email }));
-    setShowEmailForm(false);
+  async function handleAdd(values: EmailFormData) {
+    if (values.email) {
+      const response = await dispatch(postNewEmail({ email: values.email }));
+      if (postNewEmail.fulfilled.match(response)) {
+        setShowEmailForm(false);
+      }
+    } else setShowEmailForm(true);
   }
 
   function handleCancel() {
@@ -152,7 +145,7 @@ function Emails() {
             validate={validateEmailInForm}
             render={(props) => {
               return (
-                <form onSubmit={props.handleSubmit} onChange={handleChange}>
+                <form onSubmit={props.handleSubmit}>
                   <FinalField
                     label={translate("profile.email_display_title")}
                     component={CustomInput}
@@ -183,7 +176,7 @@ function Emails() {
             }}
           />
         ) : (
-          <EduIDButton id="add-more-button" buttonstyle="link" className={" lowercase"} onClick={handleEmailForm}>
+          <EduIDButton id="add-more-button" buttonstyle="link" className=" lowercase" onClick={handleEmailForm}>
             <FormattedMessage defaultMessage="+ add more" description="Emails button add more" />
           </EduIDButton>
         )}
