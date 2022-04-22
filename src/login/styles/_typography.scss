@@ -11,7 +11,7 @@ h6 {
   margin-top: 0;
   margin-bottom: 1em;
   line-height: 1.2;
-  font-family: "ProximaNova-Bold";
+  font-family: ProximaNova-Bold;
 
   @media (max-width: $bp-md) {
     word-wrap: break-word;
@@ -21,7 +21,7 @@ h6 {
 
 h1 {
   font-size: 1.8rem;
-  font-family: "ProximaNova-Regular";
+  font-family: ProximaNova-Regular;
 
   @media (max-width: $bp-md) {
     font-size: 1.65rem;
@@ -38,6 +38,7 @@ h2 {
 
 h3 {
   font-size: 1.5rem;
+
   @media (max-width: $bp-md) {
     font-size: 1.25rem;
   }
@@ -45,6 +46,7 @@ h3 {
 
 h4 {
   font-size: 1.25rem;
+
   // padding: 0;
   // margin: 0;
 }
@@ -70,11 +72,13 @@ h5 {
 p {
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+
   ~ p {
     margin-top: -0.5rem;
   }
 }
+
 p.verified {
   color: $black;
 }
@@ -125,11 +129,13 @@ p.no-data.data {
 .text-large {
   font-size: 1.25rem;
 }
+
 .text-small {
   font-size: 0.9rem;
 }
 
 strong {
   font-weight: bold;
+
   @extend b;
 }
