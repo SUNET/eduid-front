@@ -160,7 +160,9 @@ function Emails() {
               return (
                 <form onSubmit={handleSubmit}>
                   <FinalField
-                    label={translate("profile.email_display_title")}
+                    label={
+                      <FormattedMessage defaultMessage="Email address" description="profile email display title" />
+                    }
                     component={CustomInput}
                     componentClass="input"
                     type="text"
