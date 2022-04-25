@@ -14,6 +14,7 @@ interface CommonJsConfig {
   eduid_site_url?: string;
   signup_url?: string;
   reset_password_url?: string;
+  dashboard_url?: string;
 }
 
 // typing in the apis become too complicated if these are not shared in all configs,
@@ -30,6 +31,6 @@ interface APIEndpoints {
 // The apps have their separate config slices, but all config slices need to listen for this
 // common event emitted when a new CSRF token is received in a response from the backend, and
 // store it in the config (as csrf_token from CommonJsConfig).
-export const storeCsrfToken = createAction<string>("NEW_CSRF_TOKEN");
+export const storeCsrfToken = createAction<string>("storeCsrfToken");
 
 export interface EduidJSAppCommonConfig extends CommonConfig, CommonJsConfig, APIEndpoints {}
