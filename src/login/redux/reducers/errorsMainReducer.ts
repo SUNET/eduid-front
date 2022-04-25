@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchJsConfig } from "apis/eduidJsConfig";
+import { fetchErrorInfo, LoginErrorInfoResponse } from "apis/eduidLogin";
 import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 
 export interface ErrorsConfig extends EduidJSAppCommonConfig {
-  static_faq_url?: string;
+  error_info?: LoginErrorInfoResponse;
+  error_info_url?: string;
 }
 
 // export for use in tests
@@ -20,6 +22,9 @@ const configSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchErrorInfo.fulfilled, (state, action) => {
+        state.error_info = action.payload;
+      })
       .addCase(fetchJsConfig.fulfilled, (state, action) => {
         return { ...state, ...action.payload, is_configured: true };
       })
