@@ -8,9 +8,6 @@ export function AuthorizationFailure(props: FailureComponentProps): JSX.Element 
       <h1>
         <FormattedMessage defaultMessage="Insufficient privileges" description="ErrorURL authorization failure" />
       </h1>
-      <p className="preamble">
-        This is the error that you have encoured while trying to identify yourself towards Swamid.
-      </p>
       <p>
         <FormattedMessage
           defaultMessage="The service that you tried to access requires privileges that you do not have."

@@ -139,6 +139,11 @@ table.table-form.passwords {
   }
 }
 
+caption {
+  caption-side: top;
+  color: inherit;
+}
+
 @media (max-width: $bp-sm) {
   .security-creation-date,
   .security-last-used-date,

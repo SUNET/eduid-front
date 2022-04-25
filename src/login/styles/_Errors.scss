@@ -1,4 +1,8 @@
 .swamid-error {
+  h1 {
+    color: $dark-orange;
+  }
+
   & span {
     line-height: 1.5;
     font-family: "ProximaNova-bold";
@@ -143,8 +147,28 @@
 .error-info {
   text-align: left;
 
-  tr td:last-child {
-    width: 75%;
-    color: $dark-orange;
+  tr {
+    height: auto;
+  }
+  td {
+    &:first-child {
+      text-transform: uppercase;
+      padding-left: 0;
+    }
+    &:last-child {
+      color: $dark-orange;
+    }
+
+    @media (max-width: $bp-md) {
+      font-size: 1rem;
+    }
+  }
+  th,
+  td {
+    padding-bottom: 0.75rem;
+
+    &:last-child {
+      width: 70%;
+    }
   }
 }
