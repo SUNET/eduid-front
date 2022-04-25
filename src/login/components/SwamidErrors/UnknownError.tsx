@@ -16,7 +16,8 @@ export function UnknownError(props: FailureComponentProps): JSX.Element {
       </p>
       <p>
         <FormattedMessage
-          defaultMessage={`Please trying again. Contact eduID support if the problem persists.`}
+          defaultMessage={`Please try again. Contact eduID support if the problem persists, and make sure to
+                           include the Technical Information below.`}
           description="ErrorURL other error"
         />
       </p>

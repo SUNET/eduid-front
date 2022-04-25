@@ -5,7 +5,7 @@ export type errorURLCode =
   | "OTHER_ERROR";
 
 export interface errorURLData {
-  code?: errorURLCode;
+  code?: errorURLCode | "EDUID_ERROR";
   ts?: string;
   rp?: string;
   tid?: string;
@@ -19,11 +19,11 @@ export interface errorURLData {
  * @returns errorURL data
  */
 export function parseErrorURL(query: URLSearchParams): errorURLData {
-  const code = query.get("errorurl_code");
-  const ts = query.get("errorurl_ts");
-  const rp = query.get("errorurl_rp");
-  const tid = query.get("errorurl_tid");
-  const ctx = query.get("errorurl_ctx");
+  const code = query.get("code");
+  const ts = query.get("ts");
+  const rp = query.get("rp");
+  const tid = query.get("tid");
+  const ctx = query.get("ctx");
   let parsedDate: Date | undefined;
 
   if (ts && ts !== "ERRORURL_TS") {

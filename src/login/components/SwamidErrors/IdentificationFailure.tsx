@@ -1,8 +1,21 @@
-import React from "react";
+import { fetchErrorInfo } from "apis/eduidLogin";
+import { notStrictEqual } from "assert";
+import { useErrorsAppDispatch, useErrorsAppSelector } from "errors-hooks";
+import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
 export function IdentificationFailure(props: FailureComponentProps): JSX.Element {
+  const dispatch = useErrorsAppDispatch();
+  const is_configured = useErrorsAppSelector((state) => state.config.is_configured);
+
+  useEffect(() => {
+    if (is_configured) {
+      // call fetchErrorInfo once state.config.error_info_url is initialised
+      dispatch(fetchErrorInfo());
+    }
+  }, [is_configured]);
+
   return (
     <React.Fragment>
       <h1>
@@ -14,6 +27,23 @@ export function IdentificationFailure(props: FailureComponentProps): JSX.Element
 }
 
 function MissingNin(): JSX.Element {
+  const error_info = useErrorsAppSelector((state) => state.config.error_info);
+
+  function SpecificMessage(): JSX.Element {
+    if (error_info?.logged_in && error_info.has_locked_nin && !error_info.has_verified_nin) {
+      <FormattedMessage
+        defaultMessage={`You need to re-confirm your identity in the eduID Dashboard to access this service.`}
+        description="ErrorURL identification failure"
+      />;
+    }
+    return (
+      <FormattedMessage
+        defaultMessage={`If you have a Swedish National Identity Number, go to the eduID dashboard and confirm it.`}
+        description="ErrorURL identification failure"
+      />
+    );
+  }
+
   return (
     <React.Fragment>
       <p>
@@ -24,10 +54,7 @@ function MissingNin(): JSX.Element {
         />
       </p>
       <p>
-        <FormattedMessage
-          defaultMessage={`If you have a Swedish National Identity Number, go to the eduID dashboard and confirm it.`}
-          description="ErrorURL identification failure"
-        />
+        <SpecificMessage />
       </p>
     </React.Fragment>
   );

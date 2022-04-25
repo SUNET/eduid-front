@@ -1,6 +1,7 @@
+import { fetchJsConfig } from "apis/eduidJsConfig";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { errorsStore } from "errors-init-app";
-import { updateErrorsConfigData } from "login/redux/actions/errorsMainActions";
+import { ERRORS_CONFIG_URL } from "globals";
 import { setupLanguage } from "login/translation";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -10,7 +11,7 @@ import "./public-path";
 
 /* Get configuration */
 const getConfig = function () {
-  errorsStore.dispatch(updateErrorsConfigData());
+  errorsStore.dispatch(fetchJsConfig({ url: ERRORS_CONFIG_URL }));
 };
 
 /* Initialise common polyfills for missing browser functionality */
