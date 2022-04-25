@@ -2,7 +2,7 @@ import { translate } from "login/translation";
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
-import { validateEmailInForm } from "../login/app_utils/validation/validateEmail";
+import { validateEmailField } from "../login/app_utils/validation/validateEmail";
 import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
@@ -19,7 +19,6 @@ import {
   requestMakePrimaryEmail,
 } from "apis/addEmails";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
-import { FORM_ERROR } from "final-form";
 
 interface EmailFormData {
   email?: string;
@@ -55,23 +54,10 @@ function Emails() {
   );
 
   async function handleAdd(values: EmailFormData) {
-    const singleEmail = emails.emails;
-    const duplicatedEmail =
-      singleEmail && Object.values(singleEmail).filter((email, _index) => email.email === values.email);
-
     if (values.email) {
       const response = await dispatch(postNewEmail({ email: values.email }));
       if (postNewEmail.fulfilled.match(response)) {
         return setShowEmailForm(false);
-      } else if (values.email === (duplicatedEmail !== undefined && duplicatedEmail[0].email)) {
-        return {
-          [FORM_ERROR]: (
-            <FormattedMessage
-              defaultMessage="That email address is already in use, please choose another"
-              description="Duplicate email"
-            />
-          ),
-        };
       }
     } else setShowEmailForm(true);
   }
@@ -129,6 +115,19 @@ function Emails() {
     if (data.email) dispatch(requestMakePrimaryEmail({ email: data.email }));
   }
 
+  function validateDuplicateEmailInForm(values: EmailFormData): EmailFormData {
+    const errors: EmailFormData = {};
+    const singleEmail = emails.emails;
+    const duplicatedEmail =
+      singleEmail && Object.values(singleEmail).filter((email, _index) => email.email === values.email);
+    if (values !== undefined) {
+      if (duplicatedEmail?.length) {
+        errors.email = "emails.duplicated";
+      } else errors.email = validateEmailField(values.email);
+    }
+    return errors;
+  }
+
   return (
     <article className="emails-view-form-container">
       <div className="intro">
@@ -156,8 +155,8 @@ function Emails() {
             initialValues={{
               email: "",
             }}
-            validate={validateEmailInForm}
-            render={({ submitError, handleSubmit, submitting, pristine, invalid, valid, values }) => {
+            validate={validateDuplicateEmailInForm}
+            render={({ handleSubmit, pristine, invalid }) => {
               return (
                 <form onSubmit={handleSubmit}>
                   <FinalField
@@ -166,17 +165,11 @@ function Emails() {
                     componentClass="input"
                     type="text"
                     name="email"
-                    submitError={submitError}
                     placeholder={emailPlaceholder}
                     helpBlock={
                       <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
                     }
                   />
-                  {submitError && (
-                    <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-                      {submitError}
-                    </span>
-                  )}
                   <div className="flex-buttons">
                     <EduIDButton
                       id="email-button"
