@@ -1,9 +1,10 @@
-import { PayloadAction } from "@reduxjs/toolkit";
-import { newCsrfToken } from "actions/DashboardConfig";
-import { EduidJSAppCommonConfig } from "commonConfig";
+import { createAction, PayloadAction } from "@reduxjs/toolkit";
+import { EduidJSAppCommonConfig, storeCsrfToken } from "commonConfig";
 import { DashboardAppDispatch } from "dashboard-init-app";
+import { ErrorsAppDispatch } from "errors-init-app";
 import { LoginAppDispatch } from "login/app_init/initStore";
 import { checkStatus, getRequest, postRequest } from "sagas/ts_common";
+import { SignupAppDispatch } from "signup-init-app";
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;
@@ -11,7 +12,7 @@ export interface StateWithCommonConfig {
 
 export interface RequestThunkAPI {
   getState: () => StateWithCommonConfig;
-  dispatch: DashboardAppDispatch | LoginAppDispatch;
+  dispatch: DashboardAppDispatch | ErrorsAppDispatch | LoginAppDispatch | SignupAppDispatch;
   signal: AbortSignal;
 }
 
@@ -28,12 +29,60 @@ function updateCsrf(action: { payload: { csrf_token?: string } }, thunkAPI: Requ
   if (action.payload === undefined || action.payload.csrf_token === undefined) return action;
   const state = thunkAPI.getState();
   if (action.payload.csrf_token != state.config.csrf_token) {
-    thunkAPI.dispatch(newCsrfToken(action.payload.csrf_token));
+    thunkAPI.dispatch(storeCsrfToken(action.payload.csrf_token));
   }
   delete action.payload.csrf_token;
   return action;
 }
 
+/*********************************************************************************************************************/
+export async function makeGenericRequest<T>(
+  thunkAPI: RequestThunkAPI,
+  base_url: string,
+  endpoint?: string,
+  body?: KeyValues,
+  data?: KeyValues
+): Promise<PayloadAction<T, string, never, boolean>> {
+  // Since the whole body of the executor is enclosed in try/catch, this linter warning is excused.
+  // eslint-disable-next-line no-async-promise-executor
+  return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
+    try {
+      const response = await makeRequest<T>(thunkAPI, base_url, endpoint, body, data);
+
+      if (response.error) {
+        // Dispatch fail responses so that notification middleware will show them to the user.
+        // The current implementation in notify-middleware.js _removes_ error and payload.message from
+        // response, so we clone it first so we can reject the promise with the full error response.
+        const saved = JSON.parse(JSON.stringify(response));
+        thunkAPI.dispatch(response);
+        reject(saved);
+      }
+
+      resolve(response);
+    } catch (error) {
+      if (error instanceof Error) {
+        thunkAPI.dispatch(genericApiFail(error.toString()));
+        reject(error.toString());
+      } else {
+        reject(error);
+      }
+    }
+  });
+}
+
+/*********************************************************************************************************************/
+// Fake an error response from the backend. The action ending in _FAIL will make the notification
+// middleware picks this error up and shows something to the user.
+export const genericApiFail = createAction("genericApi_FAIL", function prepare(message: string) {
+  return {
+    error: true,
+    payload: {
+      message,
+    },
+  };
+});
+
+/*********************************************************************************************************************/
 /*
  * Return a promise that will make an API call to an eduID backend, for use in async thunks.
  */
@@ -64,6 +113,11 @@ export function makeRequest<T>(
   return makeBareRequest<T>(thunkAPI, url, body, data);
 }
 
+/*********************************************************************************************************************/
+/*
+ * Return a promise that will make an API call to an eduID backend, for use in async thunks.
+ * Less restricted than makeRequest above.
+ */
 export function makeBareRequest<T>(
   thunkAPI: RequestThunkAPI,
   url: string,
