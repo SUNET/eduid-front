@@ -9,6 +9,7 @@ import { AuthorizationFailure } from "./AuthorizationFailure";
 import { errorURLData, parseErrorURL } from "./errorURLParser";
 import { IdentificationFailure } from "./IdentificationFailure";
 import { OtherError } from "./OtherError";
+import { EduidError } from "./EduidError";
 import { UnknownError } from "./UnknownError";
 
 export interface FailureComponentProps {
@@ -36,7 +37,8 @@ export function Errors() {
     errorURL.code !== "IDENTIFICATION_FAILURE" &&
     errorURL.code !== "AUTHENTICATION_FAILURE" &&
     errorURL.code !== "AUTHORIZATION_FAILURE" &&
-    errorURL.code !== "OTHER_ERROR";
+    errorURL.code !== "OTHER_ERROR" &&
+    errorURL.code !== "EDUID_ERROR";
 
   return (
     <div className="horizontal-content-margin">
@@ -44,6 +46,7 @@ export function Errors() {
         {errorURL.code === "IDENTIFICATION_FAILURE" && <IdentificationFailure errorURL={errorURL} />}
         {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure errorURL={errorURL} />}
         {errorURL.code === "AUTHORIZATION_FAILURE" && <AuthorizationFailure errorURL={errorURL} />}
+        {errorURL.code === "EDUID_ERROR" && <EduidError errorURL={errorURL} />}
         {errorURL.code === "OTHER_ERROR" && <OtherError errorURL={errorURL} />}
         {isUnknown && <UnknownError errorURL={errorURL} />}
         <div className="flex-between">

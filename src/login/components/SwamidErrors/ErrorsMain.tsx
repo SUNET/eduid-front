@@ -11,13 +11,15 @@ export const history = createBrowserHistory();
 
 export function ErrorsMain(): JSX.Element {
   return (
-    <Router history={history}>
-      <Header />
-      <section id="panel" className="panel">
-        <NotificationsContainer />
-        <Route exact path={`/errors`} component={Errors} />
-      </section>
-      <Footer />
-    </Router>
+    <React.StrictMode>
+      <Router history={history}>
+        <Header />
+        <section id="panel" className="panel">
+          <NotificationsContainer />
+          <Route exact path={`/errors`} component={Errors} />
+        </section>
+        <Footer />
+      </Router>
+    </React.StrictMode>
   );
 }

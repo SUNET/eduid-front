@@ -5,7 +5,7 @@ export type errorURLCode =
   | "OTHER_ERROR";
 
 export interface errorURLData {
-  code?: errorURLCode;
+  code?: errorURLCode | "EDUID_ERROR";
   ts?: string;
   rp?: string;
   tid?: string;
