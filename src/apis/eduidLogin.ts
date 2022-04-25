@@ -2,9 +2,10 @@
  * Code and data structures for talking to the eduid-idp (login) backend microservice.
  */
 
-import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { ErrorsAppDispatch, ErrorsRootState } from "errors-init-app";
 import { LoginAppDispatch, LoginRootState } from "login/app_init/initStore";
-import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
+import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
 /*********************************************************************************************************************/
 export interface LoginAbortRequest {
@@ -30,6 +31,51 @@ export const fetchAbort = createAsyncThunk<
   };
 
   return makeLoginRequest<LoginAbortResponse>(thunkAPI, "abort", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface LoginErrorInfoResponseLoggedIn {
+  logged_in: true;
+  eppn: string;
+  has_mfa: boolean;
+  has_verified_nin: boolean;
+  has_locked_nin: boolean;
+}
+
+export interface LoginErrorInfoResponseNotLoggedIn {
+  logged_in: false;
+}
+
+export type LoginErrorInfoResponse = LoginErrorInfoResponseLoggedIn | LoginErrorInfoResponseNotLoggedIn;
+
+/**
+ * @public
+ * @function fetchErrorInfo
+ * @desc     Get info about logged in user to make errors more precise.
+ */
+export const fetchErrorInfo = createAsyncThunk<
+  LoginErrorInfoResponse, // return type
+  undefined, // args type
+  { dispatch: LoginAppDispatch | ErrorsAppDispatch; state: LoginRootState | ErrorsRootState }
+>("login/api/fetchErrorInfo", async (args, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const base_url = state.config.base_url || state.config.error_info_url;
+
+  if (!base_url) {
+    return { logged_in: false };
+  }
+
+  let endpoint: string | undefined = "error_info";
+  if (state.config.error_info_url) {
+    /* For the errors app, we have the full URL in base_url from above */
+    endpoint = undefined;
+  }
+
+  const body: KeyValues = {};
+
+  return makeGenericRequest<LoginErrorInfoResponse>(thunkAPI, base_url, endpoint, body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -246,47 +292,11 @@ async function makeLoginRequest<T>(
   body?: KeyValues,
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
-  // Since the whole body of the executor is enclosed in try/catch, this linter warning is excused.
-  // eslint-disable-next-line no-async-promise-executor
-  return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
-    try {
-      const state = thunkAPI.getState();
+  const state = thunkAPI.getState();
 
-      if (!state.config.base_url) {
-        throw new Error("Missing configuration base_url");
-      }
+  if (!state.config.base_url) {
+    throw new Error("Missing configuration base_url");
+  }
 
-      const response = await makeRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
-
-      if (response.error) {
-        // Dispatch fail responses so that notification middleware will show them to the user.
-        // The current implementation in notify-middleware.js _removes_ error and payload.message from
-        // response, so we clone it first so we can reject the promise with the full error response.
-        const saved = JSON.parse(JSON.stringify(response));
-        thunkAPI.dispatch(response);
-        reject(saved);
-      }
-
-      resolve(response);
-    } catch (error) {
-      if (error instanceof Error) {
-        thunkAPI.dispatch(loginFail(error.toString()));
-        reject(error.toString());
-      } else {
-        reject(error);
-      }
-    }
-  });
+  return makeGenericRequest<T>(thunkAPI, state.config.base_url, endpoint, body, data);
 }
-
-/*********************************************************************************************************************/
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
-export const loginFail = createAction("login_FAIL", function prepare(message: string) {
-  return {
-    error: true,
-    payload: {
-      message,
-    },
-  };
-});
