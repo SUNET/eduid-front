@@ -1,11 +1,11 @@
-import { call, select, put } from "redux-saga/effects";
-import postRequest from "../postDataRequest";
-import { putCsrfToken } from "../../../../sagas/common";
-import loginSlice from "../../slices/loginSlice";
-import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
 import { createAction, PayloadAction } from "@reduxjs/toolkit";
-import { loginFail } from "apis/eduidLogin";
+import { genericApiFail } from "apis/common";
 import { LoginRootState } from "login/app_init/initStore";
+import { call, put, select } from "redux-saga/effects";
+import { putCsrfToken } from "../../../../sagas/common";
+import { loadingData, loadingDataComplete } from "../../actions/loadingDataActions";
+import loginSlice from "../../slices/loginSlice";
+import postRequest from "../postDataRequest";
 
 interface UsernamePassword {
   email: string;
@@ -46,7 +46,7 @@ export function* postUsernamePasswordSaga(action: PayloadAction<UsernamePassword
     }
   } catch (error) {
     if (error instanceof Error) {
-      yield put(loginFail(error.toString()));
+      yield put(genericApiFail(error.toString()));
     }
   } finally {
     yield put(loadingDataComplete());
