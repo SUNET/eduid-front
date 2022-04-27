@@ -1,5 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "login/translation";
 import React, { Fragment, useState } from "react";
 import { FieldRenderProps } from "react-final-form";
@@ -50,7 +48,7 @@ const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
           {required && <span className="label-required">*</span>}
         </Label>
       )}
-      {helpBlock && <span className={"help-block"}>{helpBlock}</span>}
+      {helpBlock && <span className="help-block">{helpBlock}</span>}
     </div>
   );
 };
@@ -58,14 +56,15 @@ const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
 const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
   const { meta, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
-  return invalid && !meta.pristine ? (
-    <FormText>
-      <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-        {errmsg}
-      </span>
-    </FormText>
-  ) : (
-    <></>
+  return (
+    invalid &&
+    !meta.pristine && (
+      <FormText>
+        <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
+          {errmsg}
+        </span>
+      </FormText>
+    )
   );
 };
 
