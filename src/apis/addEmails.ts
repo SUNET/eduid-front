@@ -153,7 +153,7 @@ function makeAddEmailRequest<T>(
     try {
       const state = thunkAPI.getState();
 
-      const response = await makeRequest<T>(thunkAPI, state.config.emails_url, endpoint, body, data);
+      const response = await makeRequest<T>(thunkAPI, state.config.emails_url as string, endpoint, body, data);
 
       if (response.error) {
         // Dispatch fail responses so that notification middleware will show them to the user.
