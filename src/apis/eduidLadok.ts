@@ -33,17 +33,6 @@ export interface LadokLinkUserResponse {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface LadokUnlinkUserResponse {}
 
-function makeLadokRequest<T>(
-  thunkAPI: RequestThunkAPI,
-  endpoint: string,
-  body?: KeyValues,
-  data?: KeyValues
-): Promise<PayloadAction<T, string, never, boolean>> {
-  const state = thunkAPI.getState();
-
-  return makeRequest(thunkAPI, state.config.ladok_url, endpoint, body, data);
-}
-
 /**
  * @public
  * @function fetchLadokUniversities
@@ -84,31 +73,13 @@ export const linkUser = createAsyncThunk<
   { ladok_name: string },
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("ladok/linkUser", async (args, thunkAPI) => {
-  try {
-    const body: KeyValues = {
-      ladok_name: args.ladok_name,
-    };
+  const body: KeyValues = {
+    ladok_name: args.ladok_name,
+  };
 
-    const response = await makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "link-user", body);
-
-    if (response.error) {
-      // dispatch fail responses so that notification middleware will show them to the user
-      thunkAPI.dispatch(response);
-      return thunkAPI.rejectWithValue(undefined);
-    }
-
-    // clear any displayed errors (presumably from selecting another university right before this)
-    thunkAPI.dispatch(clearNotifications());
-
-    return response.payload;
-  } catch (error) {
-    if (error instanceof Error) {
-      thunkAPI.dispatch(ladokFail(error.toString()));
-      return thunkAPI.rejectWithValue(error.toString());
-    } else {
-      throw error;
-    }
-  }
+  return makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "link-user", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /**
@@ -121,30 +92,49 @@ export const unlinkUser = createAsyncThunk<
   undefined,
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("ladok/unlinkUser", async (args, thunkAPI) => {
-  try {
-    const body: KeyValues = {};
-
-    const response = await makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "unlink-user", body);
-
-    if (response.error) {
-      // dispatch fail responses so that notification middleware will show them to the user
-      thunkAPI.dispatch(response);
-      return thunkAPI.rejectWithValue(undefined);
-    }
-
-    // clear any displayed errors or messages
-    thunkAPI.dispatch(clearNotifications());
-
-    return response.payload;
-  } catch (error) {
-    if (error instanceof Error) {
-      thunkAPI.dispatch(ladokFail(error.toString()));
-      return thunkAPI.rejectWithValue(error.toString());
-    } else {
-      throw error;
-    }
-  }
+  return makeLadokRequest<LadokLinkUserResponse>(thunkAPI, "unlink-user")
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
 });
+
+function makeLadokRequest<T>(
+  thunkAPI: RequestThunkAPI,
+  endpoint: string,
+  body?: KeyValues,
+  data?: KeyValues
+): Promise<PayloadAction<T, string, never, boolean>> {
+  // Since the whole body of the executor is enclosed in try/catch, this linter warning is excused.
+  // eslint-disable-next-line no-async-promise-executor
+  return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
+    try {
+      const state = thunkAPI.getState();
+
+      if (!state.config.ladok_url) {
+        throw new Error("Missing configuration ladok_url");
+      }
+
+      const response = await makeRequest<T>(thunkAPI, state.config.ladok_url, endpoint, body, data);
+
+      if (response.error) {
+        // Dispatch fail responses so that notification middleware will show them to the user.
+        // The current implementation in notify-middleware.js _removes_ error and payload.message from
+        // response, so we clone it first so we can reject the promise with the full error response.
+        const saved = JSON.parse(JSON.stringify(response));
+        thunkAPI.dispatch(response);
+        reject(saved);
+      }
+
+      resolve(response);
+    } catch (error) {
+      if (error instanceof Error) {
+        thunkAPI.dispatch(ladokFail(error.toString()));
+        reject(error.toString());
+      } else {
+        reject(error);
+      }
+    }
+  });
+}
 
 // Fake an error response from the backend. The action ending in _FAIL will make the notification
 // middleware picks this error up and shows something to the user.

@@ -190,7 +190,9 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
     return null;
   }
 
-  async function handleOnClick() {
+  async function handleOnClick(e: React.MouseEvent<HTMLElement>) {
+    e.preventDefault(); // don't submit the form when this button is clicked
+
     // TODO: get email from the form here, and provide it as 'username' so that it is passed to device2
     dispatch(loginSlice.actions.startLoginWithAnotherDevice({ username: undefined }));
   }

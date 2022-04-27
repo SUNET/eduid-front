@@ -1,5 +1,4 @@
 import { formattedMessages } from "./messageIndex";
-import { AVAILABLE_LANGUAGES } from "globals";
 import { Dispatch } from "redux";
 import { updateIntl } from "reducers/Internationalisation";
 import { messages as untypedMessages } from "login/translation/messages";
@@ -24,24 +23,23 @@ export const translate = (messageId: string): JSX.Element | string => {
  * @param dispatch The current apps dispatch
  */
 export function setupLanguage(dispatch: Dispatch) {
-  const selectedBrowserLanguage = navigator.languages ? navigator.languages[0] : navigator.language;
-  const translatedLanguages = AVAILABLE_LANGUAGES.map((lang) => lang[0]);
+  const selectedBrowserLanguage: string = navigator.languages ? navigator.languages[0] : navigator.language;
+  let lang_code = selectedBrowserLanguage.substring(0, 2); /* selectedBrowserLanguage is e.g. "en-US" */
 
-  const isTranslatedLanguage = translatedLanguages.includes(selectedBrowserLanguage);
-  // check if we have translation for preferred browser language
-  const browserLocale = isTranslatedLanguage ? selectedBrowserLanguage : "en";
-  // sets the <html lang=""> to the interface language
-  document.documentElement.lang = browserLocale;
-
-  if (translatedLanguages.includes(selectedBrowserLanguage)) {
-    const lang_code = selectedBrowserLanguage.substring(0, 2);
-    if (messages[lang_code]) {
-      dispatch(
-        updateIntl({
-          locale: lang_code,
-          messages: messages[lang_code],
-        })
-      );
-    }
+  /* Check if there are translations for the users' language */
+  if (messages[lang_code]) {
+    // sets the <html lang=""> to the interface language (the full one, e.g. "en-US" and not "en")
+    document.documentElement.lang = selectedBrowserLanguage;
+  } else {
+    /* Default language */
+    lang_code = "en";
+    document.documentElement.lang = "en";
   }
+
+  dispatch(
+    updateIntl({
+      locale: lang_code,
+      messages: messages[lang_code],
+    })
+  );
 }

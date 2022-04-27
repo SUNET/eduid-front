@@ -1,22 +1,28 @@
-import React from "react";
-import { updateIntl } from "../../../reducers/Internationalisation";
-import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
+import React from "react";
 import { FormattedMessage } from "react-intl";
+import { updateIntl } from "../../../reducers/Internationalisation";
 
 const Footer = (): JSX.Element => {
-  const browserLocale = useDashboardAppSelector((state) => state.intl.locale);
+  const currentLocale = useDashboardAppSelector((state) => state.intl.locale);
   const eduidHomeUrl = useDashboardAppSelector((state) => state.config.eduid_site_url);
   const dispatch = useDashboardAppDispatch();
-  const faqUrl = browserLocale === "en" ? `/en/faq.html` : `/faq.html`;
+  const faqUrl = currentLocale === "en" ? `/en/faq.html` : `/faq.html`;
   const messages = LOCALIZED_MESSAGES as unknown as { [key: string]: { [key: string]: string } };
 
   let translateTo: string[][] = [];
   let locale = "";
   let language = "";
 
+  /* Figure out the locale and name of the _other_ language
+   * (when Swedish is selected, show option to change to English).
+   * TODO: Obviously only works when there are a total of two different languages here.
+   */
   if (AVAILABLE_LANGUAGES !== undefined) {
-    translateTo = AVAILABLE_LANGUAGES.filter((lang) => lang[0] !== browserLocale);
+    /* Filter out all the available languages _except_ the currently used one */
+    translateTo = Object.entries(AVAILABLE_LANGUAGES).filter(([_locale, _language]) => _locale !== currentLocale);
+    /* Offer the user the choice to switch to the other language below */
     locale = translateTo[0][0];
     language = translateTo[0][1];
   }

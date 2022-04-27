@@ -8,23 +8,29 @@ class CodeVerified extends Component {
       <form key="2" method="GET" action={this.props.dashboard_url} className="vertical-content-margin">
         <div key="0" id="content" className="content">
           <div>
-            <h3 className="register-header">{this.props.translate("finish.registration-complete")}</h3>
-            <p className="lead">{this.props.translate("finish.registration-details")}</p>
+            <h1 className="register-header">{this.props.translate("finish.registration-complete")}</h1>
+            <p className="preamble">{this.props.translate("finish.registration-details")}</p>
             <div id="email-display">
-              <label>Email</label>
-              <h3 id="user-email" className="register-header">
-                {this.props.email}
-              </h3>
-              <label>Password</label>
-              <h3 className="register-header registered-email">
-                <mark id="user-password" className="force-select-all">
-                  {this.props.password}
-                </mark>
-              </h3>
+              <fieldset>
+                <label>Email</label>
+                <div id="user-email" className="register-header display-data">
+                  {this.props.email}
+                </div>
+              </fieldset>
+              <fieldset>
+                <label>Password</label>
+                <div className="register-header registered-email display-data">
+                  <mark id="user-password" className="force-select-all">
+                    {this.props.password}
+                  </mark>
+                </div>
+              </fieldset>
             </div>
-            <EduIDButton id="gotit-button" buttonstyle="primary" type="submit">
-              {this.props.translate("finish.got-it")}
-            </EduIDButton>
+            <div className="buttons">
+              <EduIDButton id="gotit-button" buttonstyle="primary" type="submit">
+                {this.props.translate("finish.got-it")}
+              </EduIDButton>
+            </div>
           </div>
         </div>
       </form>
