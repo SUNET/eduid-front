@@ -1,4 +1,3 @@
-import EduIDButton from "components/EduIDButton";
 import { useErrorsAppSelector } from "errors-hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -49,13 +48,12 @@ export function Errors() {
         {errorURL.code === "EDUID_ERROR" && <EduidError errorURL={errorURL} />}
         {errorURL.code === "OTHER_ERROR" && <OtherError errorURL={errorURL} />}
         {isUnknown && <UnknownError errorURL={errorURL} />}
-
+        You can review your settings at the
         <p>
           You can review your settings at the &nbsp;
-          <EduIDButton buttonstyle="link" id="dashboard-button" onClick={handleDashboardOnClick}>
+          <a className="link" id="dashboard-button" onClick={handleDashboardOnClick}>
             <FormattedMessage defaultMessage="eduID Dashboard" description="Errors button" />
-          </EduIDButton>
-          .
+          </a>
         </p>
         <ErrorTechnicalInfo errorURL={errorURL} />
       </div>
@@ -69,10 +67,10 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
   return (
     <React.Fragment>
       <div className="figure">
-        <table className={"error-info"}>
+        <table className="error-info">
           <caption>
             <h3>
-              <FormattedMessage defaultMessage={"Technical Information"} description="errorURL" />
+              <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
             </h3>
           </caption>
           <thead>
