@@ -173,16 +173,17 @@ function Emails() {
                     }
                   />
                   <div className="flex-buttons">
+                    <EduIDButton id="cancel-adding-email" buttonstyle="secondary" onClick={handleCancel}>
+                      <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
+                    </EduIDButton>
                     <EduIDButton
-                      id="email-button"
+                      type="submit"
+                      id="add-email"
                       buttonstyle="primary"
                       disabled={invalid || pristine}
                       onClick={handleSubmit}
                     >
                       <FormattedMessage defaultMessage="Add" description="Emails button add" />
-                    </EduIDButton>
-                    <EduIDButton id="email-button" buttonstyle="secondary" onClick={handleCancel}>
-                      <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
                     </EduIDButton>
                   </div>
                 </form>
