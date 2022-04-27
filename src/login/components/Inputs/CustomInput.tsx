@@ -41,7 +41,7 @@ export default function CustomInput(props: FieldRenderProps<string>): JSX.Elemen
 const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
   const { label, name, helpBlock, required } = props;
   return (
-    <div className={"input-label-helptext-container"}>
+    <div className="input-label-help-text-container">
       {label && (
         <Label aria-required="true" htmlFor={name}>
           {label}
