@@ -28,7 +28,7 @@ function PasswordStrengthMeter(props: PasswordStrengthMeterProps) {
     if (pdata.given_name) userInput.push(pdata.given_name);
     if (pdata.surname) userInput.push(pdata.surname);
     if (pdata.display_name) userInput.push(pdata.display_name);
-    userInput = userInput.concat(emails.toString());
+    userInput = userInput.concat(emails.map((x) => x.email));
 
     let score = 0,
       minEntropy = minRequiredEntropy / 5,
