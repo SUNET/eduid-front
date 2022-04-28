@@ -19,71 +19,65 @@ interface DataStatusProps {
 }
 
 function DataStatus(props: DataStatusProps) {
-  let dataStatus;
-
-  if (props.verified) {
-    if (props.primary) {
-      dataStatus = (
-        <label>
-          <FormattedMessage defaultMessage="PRIMARY" description="primary label" />
-        </label>
-      );
-    } else {
-      dataStatus = (
-        <EduIDButton buttonstyle="link" size="sm" onClick={props.handleMakePrimary}>
-          <FormattedMessage defaultMessage="MAKE PRIMARY" description="Make primary button" />
-        </EduIDButton>
-      );
-    }
-  } else {
-    dataStatus = (
+  if (!props.verified) {
+    return (
       <EduIDButton buttonstyle="link" size="sm" onClick={props.handleStartConfirmation}>
         <FormattedMessage defaultMessage="confirm" description="confirm button" />
       </EduIDButton>
     );
-  }
-
-  return <td className="value-status">{dataStatus}</td>;
+  } else if (props.primary) {
+    return (
+      <label>
+        <FormattedMessage defaultMessage="PRIMARY" description="primary label" />
+      </label>
+    );
+  } else
+    return (
+      <EduIDButton buttonstyle="link" size="sm" onClick={props.handleMakePrimary}>
+        <FormattedMessage defaultMessage="MAKE PRIMARY" description="Make primary button" />
+      </EduIDButton>
+    );
 }
 
 function DataTableRow(props: DataTableProps) {
-  const data = props.data;
-  let row;
-
-  if (!data) {
-    row = <div />;
+  if (!props.data) {
+    return <Fragment />;
   } else {
-    row = data.map((datum: { verified: boolean; primary: boolean }, i: number) => {
-      const keysArray = Object.keys(datum);
-      const valueArray = Object.values(datum);
-      const valueName = keysArray[0];
-      const value = valueArray[0];
+    return (
+      <Fragment>
+        {props.data.map((datum: { verified: boolean; primary: boolean }, i: number) => {
+          const keysArray = Object.keys(datum);
+          const valueArray = Object.values(datum);
+          const valueName = keysArray[0];
+          const value = valueArray[0];
 
-      let valueStatus = "unverified";
-      if (datum.verified) {
-        valueStatus = "verified";
-        if (datum.primary) {
-          valueStatus = "primary";
-        }
-      }
+          let valueStatus;
+          if (!datum.verified) {
+            valueStatus = "unverified";
+          } else if (datum.primary) {
+            valueStatus = "primary";
+          } else valueStatus = "verified";
 
-      return (
-        <tr className={`email-row ${valueStatus}`} data-identifier={valueName} data-object={value} key={i}>
-          <td className={valueStatus}>{value}</td>
-          <DataStatus
-            verified={datum.verified}
-            primary={datum.primary}
-            handleStartConfirmation={props.handleStartConfirmation}
-            handleMakePrimary={props.handleMakePrimary}
-          />
-          <td className="remove-data">
-            <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
-          </td>
-        </tr>
-      );
-    });
+          return (
+            <tr className={`email-row ${datum.verified}`} data-identifier={valueName} data-object={value} key={i}>
+              <td className={valueStatus}>{value}</td>
+              <td className="value-status">
+                <DataStatus
+                  verified={datum.verified}
+                  primary={datum.primary}
+                  handleStartConfirmation={props.handleStartConfirmation}
+                  handleMakePrimary={props.handleMakePrimary}
+                />
+              </td>
+              <td className="remove-data">
+                <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
+              </td>
+            </tr>
+          );
+        })}
+      </Fragment>
+    );
   }
-  return <Fragment>{row}</Fragment>;
 }
 
 function DataTable(props: DataTableProps) {
