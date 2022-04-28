@@ -41,13 +41,6 @@ export function* requestAllPersonalData() {
     }
     if (response.payload.emails !== undefined) {
       yield put(GET_EMAIL_ALL_SUCCESS({ emails: response.payload.emails }));
-      // const emailAction = {
-      //   type: GET_EMAIL_ALL_SUCCESS,
-      //   payload: {
-      //     emails: response.payload.emails,
-      //   },
-      // };
-      // yield put(emailAction);
     }
     if (response.payload.phones !== undefined) {
       const phoneAction = {
