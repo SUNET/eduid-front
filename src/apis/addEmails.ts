@@ -24,10 +24,8 @@ export const requestMakePrimaryEmail = createAsyncThunk<
   { email: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("emails/requestMakePrimaryEmail", async (args, thunkAPI) => {
-  const state = thunkAPI.getState();
   const data: KeyValues = {
     email: args.email,
-    csrf_token: state.config.csrf_token,
   };
   return makeEmailsRequest<requestMakePrimaryEmailResponse>(thunkAPI, "primary", data)
     .then((response) => response.payload)
@@ -56,7 +54,6 @@ export const requestVerifyEmail = createAsyncThunk<
   const data: KeyValues = {
     email: state.emails.confirming,
     code: args.code,
-    csrf_token: state.config.csrf_token,
   };
   return makeEmailsRequest<requestVerifyEmailResponse>(thunkAPI, "verify", data)
     .then((response) => response.payload)
@@ -83,7 +80,6 @@ export const requestResendEmailCode = createAsyncThunk<
   const state = thunkAPI.getState();
   const data: KeyValues = {
     email: state.emails.confirming,
-    csrf_token: state.config.csrf_token,
   };
   return makeEmailsRequest<requestResendEmailCodeResponse>(thunkAPI, "resend-code", data)
     .then((response) => response.payload)
@@ -107,12 +103,10 @@ export const postNewEmail = createAsyncThunk<
   { email: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("emails/postNewEmail", async (args, thunkAPI) => {
-  const state = thunkAPI.getState();
   const data: KeyValues = {
     email: args.email,
     verified: false,
     primary: false,
-    csrf_token: state.config.csrf_token,
   };
   return makeEmailsRequest<RemoveEmailResponse>(thunkAPI, "new", data)
     .then((response) => response.payload)
@@ -136,10 +130,8 @@ export const requestRemoveEmail = createAsyncThunk<
   { email: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("emails/requestRemoveEmail", async (args, thunkAPI) => {
-  const state = thunkAPI.getState();
   const data: KeyValues = {
     email: args.email,
-    csrf_token: state.config.csrf_token,
   };
   return makeEmailsRequest<RemoveEmailResponse>(thunkAPI, "remove", data)
     .then((response) => response.payload)
