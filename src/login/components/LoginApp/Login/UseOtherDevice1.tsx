@@ -72,9 +72,7 @@ function RenderFatalError(props: { error: JSX.Element; handleNewQRCodeOnClick?: 
 
   return (
     <React.Fragment>
-      <div role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-        {props.error}
-      </div>
+      <p>{props.error}</p>
       <div className="buttons">
         <EduIDButton
           buttonstyle="secondary"
