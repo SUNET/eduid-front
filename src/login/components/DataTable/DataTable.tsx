@@ -25,59 +25,59 @@ function DataStatus(props: DataStatusProps) {
         <FormattedMessage defaultMessage="confirm" description="confirm button" />
       </EduIDButton>
     );
-  } else if (props.primary) {
+  }
+  if (props.primary) {
     return (
       <label>
-        <FormattedMessage defaultMessage="PRIMARY" description="primary label" />
+        <FormattedMessage defaultMessage="primary" description="primary label" />
       </label>
     );
-  } else
-    return (
-      <EduIDButton buttonstyle="link" size="sm" onClick={props.handleMakePrimary}>
-        <FormattedMessage defaultMessage="MAKE PRIMARY" description="Make primary button" />
-      </EduIDButton>
-    );
+  }
+  return (
+    <EduIDButton buttonstyle="link" size="sm" onClick={props.handleMakePrimary}>
+      <FormattedMessage defaultMessage="make primary" description="Make primary button" />
+    </EduIDButton>
+  );
 }
 
-function DataTableRow(props: DataTableProps) {
+function DataTableRows(props: DataTableProps) {
   if (!props.data) {
-    return <Fragment />;
-  } else {
-    return (
-      <Fragment>
-        {props.data.map((datum: { verified: boolean; primary: boolean }, i: number) => {
-          const keysArray = Object.keys(datum);
-          const valueArray = Object.values(datum);
-          const valueName = keysArray[0];
-          const value = valueArray[0];
-
-          let valueStatus;
-          if (!datum.verified) {
-            valueStatus = "unverified";
-          } else if (datum.primary) {
-            valueStatus = "primary";
-          } else valueStatus = "verified";
-
-          return (
-            <tr className={`email-row ${datum.verified}`} data-identifier={valueName} data-object={value} key={i}>
-              <td className={valueStatus}>{value}</td>
-              <td className="value-status">
-                <DataStatus
-                  verified={datum.verified}
-                  primary={datum.primary}
-                  handleStartConfirmation={props.handleStartConfirmation}
-                  handleMakePrimary={props.handleMakePrimary}
-                />
-              </td>
-              <td className="remove-data">
-                <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
-              </td>
-            </tr>
-          );
-        })}
-      </Fragment>
-    );
+    return null;
   }
+  return (
+    <Fragment>
+      {props.data.map((datum: { verified: boolean; primary: boolean }, i: number) => {
+        const keysArray = Object.keys(datum);
+        const valueArray = Object.values(datum);
+        const valueName = keysArray[0];
+        const value = valueArray[0];
+
+        let valueStatus;
+        if (!datum.verified) {
+          valueStatus = "unverified";
+        } else if (datum.primary) {
+          valueStatus = "primary";
+        } else valueStatus = "verified";
+
+        return (
+          <tr className={`email-row ${datum.verified}`} data-identifier={valueName} data-object={value} key={i}>
+            <td className={valueStatus}>{value}</td>
+            <td className="value-status">
+              <DataStatus
+                verified={datum.verified}
+                primary={datum.primary}
+                handleStartConfirmation={props.handleStartConfirmation}
+                handleMakePrimary={props.handleMakePrimary}
+              />
+            </td>
+            <td className="remove-data">
+              <EduIDButton buttonstyle="close" size="sm" onClick={props.handleRemove} />
+            </td>
+          </tr>
+        );
+      })}
+    </Fragment>
+  );
 }
 
 function DataTable(props: DataTableProps) {
@@ -85,7 +85,7 @@ function DataTable(props: DataTableProps) {
     <div className="table-responsive">
       <table className="table-form">
         <tbody>
-          <DataTableRow {...props} />
+          <DataTableRows {...props} />
         </tbody>
       </table>
     </div>
