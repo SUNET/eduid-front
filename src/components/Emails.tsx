@@ -9,7 +9,6 @@ import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
 import EduIDButton from "./EduIDButton";
 import { clearNotifications } from "reducers/Notifications";
-import emailsSlice from "reducers/Emails";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import {
   requestRemoveEmail,
