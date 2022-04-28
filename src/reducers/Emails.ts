@@ -15,7 +15,6 @@ export interface EmailInfo {
 
 export interface EmailDataState {
   message?: string;
-  // confirming?: string;
   emails: EmailInfo[];
   email?: string;
 }
