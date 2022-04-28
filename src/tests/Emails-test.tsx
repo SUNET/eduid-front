@@ -2,15 +2,12 @@ const mock = require("jest-mock");
 import React from "react";
 import { shallow } from "enzyme";
 import expect from "expect";
-import emailsSlice from "reducers/Emails";
+import emailsSlice, { initialState as emailsInitialState } from "reducers/Emails";
 import EmailsComponent from "components/Emails";
-import { put, call } from "redux-saga/effects";
 import { DashboardRootState } from "../dashboard-init-app";
 import { IntlProvider } from "react-intl";
 import { setupComponent } from "./helperFunctions/DashboardTestApp";
 import DataTable from "../login/components/DataTable/DataTable";
-
-const messages = require("../login/translation/messageIndex");
 
 const baseState: DashboardRootState = {
   letter_proofing: {},
@@ -27,7 +24,7 @@ const baseState: DashboardRootState = {
   notifications: undefined as any,
   router: undefined as any,
   chpass: {},
-  emails: {},
+  emails: emailsInitialState,
   groups: undefined as any,
   invites: undefined as any,
   openid_data: undefined as any,

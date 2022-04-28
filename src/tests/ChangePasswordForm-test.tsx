@@ -6,6 +6,7 @@ import expect from "expect";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { DashboardStoreType, dashboardTestState, fakeStore } from "./helperFunctions/DashboardTestApp";
+import { initialState as emailsInitialState } from "reducers/Emails";
 
 const test_props: ChangePasswordFormProps = {
   finish_url: "cancel_url",
@@ -69,7 +70,7 @@ describe("ChangePasswordForm renders", () => {
     }
     const test_state = {
       personal_data: { data: {} },
-      emails: {},
+      emails: emailsInitialState,
     };
     store = fakeStore({ ...dashboardTestState, ...test_state });
     const { wrapper } = setupComponent(store);
