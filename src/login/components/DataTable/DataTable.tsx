@@ -50,7 +50,9 @@ function DataTableRow(props: DataTableProps) {
   const data = props.data;
   let row;
 
-  if (data) {
+  if (!data) {
+    row = <div />;
+  } else {
     row = data.map((datum: { verified: boolean; primary: boolean }, i: number) => {
       const keysArray = Object.keys(datum);
       const valueArray = Object.values(datum);
@@ -80,24 +82,16 @@ function DataTableRow(props: DataTableProps) {
         </tr>
       );
     });
-  } else {
-    row = <div />;
   }
   return <Fragment>{row}</Fragment>;
 }
 
 function DataTable(props: DataTableProps) {
-  const data = props.data;
   return (
     <div className="table-responsive">
       <table className="table-form">
         <tbody>
-          <DataTableRow
-            data={data}
-            handleStartConfirmation={props.handleStartConfirmation}
-            handleMakePrimary={props.handleMakePrimary}
-            handleRemove={props.handleRemove}
-          />
+          <DataTableRow {...props} />
         </tbody>
       </table>
     </div>
