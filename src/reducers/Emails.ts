@@ -15,7 +15,7 @@ export interface EmailInfo {
 
 export interface EmailDataState {
   message?: string;
-  confirming?: string;
+  // confirming?: string;
   emails: EmailInfo[];
   email?: string;
 }
@@ -29,14 +29,7 @@ export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: EmailInfo[] }>("GET_
 const emailsSlice = createSlice({
   name: "emails",
   initialState,
-  reducers: {
-    startConfirmationEmail: (state, action: PayloadAction<{ email: string }>) => {
-      state.confirming = action.payload.email;
-    },
-    stopConfirmation: (state) => {
-      state.confirming = "";
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailDataState>) => {

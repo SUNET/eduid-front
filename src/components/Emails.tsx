@@ -26,9 +26,10 @@ interface EmailFormData {
 
 function Emails() {
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [confirmingEmail, setConfirmingEmail] = useState<null | string>("");
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
-  const confirming = useDashboardAppSelector((state) => state.emails.confirming);
+  // const confirming = useDashboardAppSelector((state) => state.emails.confirming);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -50,7 +51,7 @@ function Emails() {
       defaultMessage: "Click the link or enter the code sent to {email} here",
       description: "Title for email code input",
     },
-    { email: confirming }
+    { email: confirmingEmail }
   );
 
   async function handleAdd(values: EmailFormData) {
@@ -85,18 +86,18 @@ function Emails() {
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    dispatch(requestResendEmailCode());
+    if (confirmingEmail) dispatch(requestResendEmailCode({ email: confirmingEmail }));
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row"),
-      email = dataNode && dataNode.getAttribute("data-object");
-    if (email) dispatch(emailsSlice.actions.startConfirmationEmail({ email: email }));
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row");
+    const email = dataNode && dataNode.getAttribute("data-object");
+    if (email) setConfirmingEmail(email);
   }
 
   function handleStopConfirmation() {
-    dispatch(emailsSlice.actions.stopConfirmation());
+    setConfirmingEmail(null);
   }
 
   function handleConfirm() {
@@ -104,8 +105,8 @@ function Emails() {
     const data = {
       code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
     };
-    if (data.code) dispatch(requestVerifyEmail({ code: data.code }));
-    dispatch(emailsSlice.actions.stopConfirmation());
+    if (data.code && confirmingEmail) dispatch(requestVerifyEmail({ code: data.code, email: confirmingEmail }));
+    setConfirmingEmail(null);
   }
 
   function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
@@ -205,7 +206,7 @@ function Emails() {
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
         placeholder={modalPlaceholder}
-        showModal={Boolean(confirming)}
+        showModal={Boolean(confirmingEmail)}
         closeModal={handleStopConfirmation}
         handleResend={handleResend}
         handleConfirm={handleConfirm}

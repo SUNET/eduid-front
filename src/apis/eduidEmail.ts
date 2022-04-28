@@ -38,12 +38,11 @@ export const requestMakePrimaryEmail = createAsyncThunk<
  */
 export const requestVerifyEmail = createAsyncThunk<
   EmailResponse, // return type
-  { code: string }, // args type
+  { code: string; email: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("emails/requestVerifyEmail", async (args, thunkAPI) => {
-  const state = thunkAPI.getState();
   const data: KeyValues = {
-    email: state.emails.confirming,
+    email: args.email,
     code: args.code,
   };
   return makeEmailsRequest<EmailResponse>(thunkAPI, "verify", data)
@@ -59,12 +58,11 @@ export const requestVerifyEmail = createAsyncThunk<
  */
 export const requestResendEmailCode = createAsyncThunk<
   EmailResponse, // return type
-  undefined, // args type
+  { email: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
 >("emails/requestResendEmailCode", async (args, thunkAPI) => {
-  const state = thunkAPI.getState();
   const data: KeyValues = {
-    email: state.emails.confirming,
+    email: args.email,
   };
   return makeEmailsRequest<EmailResponse>(thunkAPI, "resend-code", data)
     .then((response) => response.payload)
