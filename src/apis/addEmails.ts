@@ -15,7 +15,7 @@ export interface requestMakePrimaryEmailResponse {
 /**
  * @public
  * @function requestMakePrimaryEmail
- * @desc Redux async thunk to get emails state from the backend.
+ * @desc Redux async thunk to request an email to become primary.
  */
 export const requestMakePrimaryEmail = createAsyncThunk<
   requestMakePrimaryEmailResponse, // return type
@@ -42,7 +42,7 @@ export interface requestVerifyEmailResponse {
 /**
  * @public
  * @function requestVerifyEmail
- * @desc Redux async thunk to get emails state from the backend.
+ * @desc Redux async thunk to attempt to verify email using verification code.
  */
 export const requestVerifyEmail = createAsyncThunk<
   requestVerifyEmailResponse, // return type
@@ -69,7 +69,7 @@ export interface requestResendEmailCodeResponse {
 /**
  * @public
  * @function requestResendEmailCode
- * @desc Redux async thunk to get emails state from the backend.
+ * @desc Redux async thunk to request new code for verification by email.
  */
 export const requestResendEmailCode = createAsyncThunk<
   requestResendEmailCodeResponse, // return type
@@ -95,7 +95,7 @@ export interface postNewEmailResponse {
 /**
  * @public
  * @function postNewEmail
- * @desc Redux async thunk to get emails state from the backend.
+ * @desc Redux async thunk to add a new email.
  */
 export const postNewEmail = createAsyncThunk<
   postNewEmailResponse, // return type
@@ -123,7 +123,7 @@ export interface RemoveEmailResponse {
 /**
  * @public
  * @function requestRemoveEmail
- * @desc Redux async thunk to get emails state from the backend.
+ * @desc Redux async thunk to remove an email.
  */
 export const requestRemoveEmail = createAsyncThunk<
   RemoveEmailResponse, // return type

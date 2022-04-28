@@ -57,6 +57,7 @@ function Emails() {
     if (values.email) {
       const response = await dispatch(postNewEmail({ email: values.email }));
       if (postNewEmail.fulfilled.match(response)) {
+        // email form closed when user have successfully added an email
         return setShowEmailForm(false);
       }
     } else setShowEmailForm(true);
@@ -115,7 +116,7 @@ function Emails() {
     if (data.email) dispatch(requestMakePrimaryEmail({ email: data.email }));
   }
 
-  function validateDuplicateEmailInForm(values: EmailFormData): EmailFormData {
+  function validateEmailsInForm(values: EmailFormData): EmailFormData {
     const errors: EmailFormData = {};
     const singleEmail = emails.emails;
     const duplicatedEmail =
@@ -155,7 +156,7 @@ function Emails() {
             initialValues={{
               email: "",
             }}
-            validate={validateDuplicateEmailInForm}
+            validate={validateEmailsInForm}
             render={({ handleSubmit, pristine, invalid }) => {
               return (
                 <form onSubmit={handleSubmit}>
@@ -210,7 +211,7 @@ function Emails() {
         handleConfirm={handleConfirm}
         helpBlock={translate("emails.confirm_help_text")}
         validationPattern={longCodePattern}
-        validationError={"confirmation.code_invalid_format"}
+        validationError="confirmation.code_invalid_format"
       />
     </article>
   );
