@@ -57,7 +57,7 @@ const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
   const { meta, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
   if (!invalid || meta.pristine) {
-    return <Fragment></Fragment>;
+    return <Fragment />;
   }
   return (
     <FormText>
