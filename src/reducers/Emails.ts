@@ -14,17 +14,14 @@ export interface EmailInfo {
 }
 
 export interface EmailDataState {
-  message: string;
-  confirming: string;
+  message?: string;
+  confirming?: string;
   emails: EmailInfo[];
-  email: string;
+  email?: string;
 }
 
 export const initialState: EmailDataState = {
-  message: "",
-  confirming: "",
   emails: [],
-  email: "",
 };
 
 export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: EmailInfo[] }>("GET_EMAIL_ALL_SUCCESS");
@@ -33,7 +30,7 @@ const emailsSlice = createSlice({
   name: "emails",
   initialState,
   reducers: {
-    startConfirmationEmail: (state, action) => {
+    startConfirmationEmail: (state, action: PayloadAction<{ email: string }>) => {
       state.confirming = action.payload.email;
     },
     stopConfirmation: (state) => {
@@ -42,22 +39,22 @@ const emailsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(GET_EMAIL_ALL_SUCCESS, (state, action) => {
+      .addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailDataState>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestRemoveEmail.fulfilled, (state, action) => {
+      .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(postNewEmail.fulfilled, (state, action) => {
+      .addCase(postNewEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestResendEmailCode.fulfilled, (state, action) => {
+      .addCase(requestResendEmailCode.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestVerifyEmail.fulfilled, (state, action) => {
+      .addCase(requestVerifyEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestMakePrimaryEmail.fulfilled, (state, action) => {
+      .addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
         state.emails = action.payload.emails;
       });
   },
