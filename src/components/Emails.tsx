@@ -17,7 +17,7 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
   requestMakePrimaryEmail,
-} from "apis/addEmails";
+} from "apis/eduidEmail";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
 
 interface EmailFormData {

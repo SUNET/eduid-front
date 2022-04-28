@@ -5,7 +5,7 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
   requestMakePrimaryEmail,
-} from "apis/addEmails";
+} from "apis/eduidEmail";
 
 export interface EmailInfo {
   email: string;
