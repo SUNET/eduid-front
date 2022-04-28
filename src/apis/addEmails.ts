@@ -4,12 +4,14 @@
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
-import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
+import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
+import { EmailInfo } from "reducers/Emails";
 
 /*********************************************************************************************************************/
 export interface requestMakePrimaryEmailResponse {
   message?: string;
   email?: string;
+  emails: EmailInfo[];
 }
 
 /**
@@ -27,7 +29,7 @@ export const requestMakePrimaryEmail = createAsyncThunk<
     email: args.email,
     csrf_token: state.config.csrf_token,
   };
-  return makeAddEmailRequest<requestMakePrimaryEmailResponse>(thunkAPI, "primary", data)
+  return makeEmailsRequest<requestMakePrimaryEmailResponse>(thunkAPI, "primary", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -37,6 +39,7 @@ export interface requestVerifyEmailResponse {
   message?: string;
   email?: string;
   code?: string;
+  emails: EmailInfo[];
 }
 
 /**
@@ -55,7 +58,7 @@ export const requestVerifyEmail = createAsyncThunk<
     code: args.code,
     csrf_token: state.config.csrf_token,
   };
-  return makeAddEmailRequest<requestVerifyEmailResponse>(thunkAPI, "verify", data)
+  return makeEmailsRequest<requestVerifyEmailResponse>(thunkAPI, "verify", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -64,6 +67,7 @@ export const requestVerifyEmail = createAsyncThunk<
 export interface requestResendEmailCodeResponse {
   message?: string;
   email?: string;
+  emails: EmailInfo[];
 }
 
 /**
@@ -81,7 +85,7 @@ export const requestResendEmailCode = createAsyncThunk<
     email: state.emails.confirming,
     csrf_token: state.config.csrf_token,
   };
-  return makeAddEmailRequest<requestResendEmailCodeResponse>(thunkAPI, "resend-code", data)
+  return makeEmailsRequest<requestResendEmailCodeResponse>(thunkAPI, "resend-code", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -90,6 +94,7 @@ export const requestResendEmailCode = createAsyncThunk<
 export interface postNewEmailResponse {
   message?: string;
   email?: string;
+  emails: EmailInfo[];
 }
 
 /**
@@ -109,7 +114,7 @@ export const postNewEmail = createAsyncThunk<
     primary: false,
     csrf_token: state.config.csrf_token,
   };
-  return makeAddEmailRequest<RemoveEmailResponse>(thunkAPI, "new", data)
+  return makeEmailsRequest<RemoveEmailResponse>(thunkAPI, "new", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -118,6 +123,7 @@ export const postNewEmail = createAsyncThunk<
 export interface RemoveEmailResponse {
   message?: string;
   email?: string;
+  emails: EmailInfo[];
 }
 
 /**
@@ -135,54 +141,23 @@ export const requestRemoveEmail = createAsyncThunk<
     email: args.email,
     csrf_token: state.config.csrf_token,
   };
-  return makeAddEmailRequest<RemoveEmailResponse>(thunkAPI, "remove", data)
+  return makeEmailsRequest<RemoveEmailResponse>(thunkAPI, "remove", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
-function makeAddEmailRequest<T>(
+async function makeEmailsRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
   body?: KeyValues,
   data?: KeyValues
 ): Promise<PayloadAction<T, string, never, boolean>> {
-  // Since the whole body of the executor is enclosed in try/catch, this linter warning is excused.
-  // eslint-disable-next-line no-async-promise-executor
-  return new Promise<PayloadAction<T, string, never, boolean>>(async (resolve, reject) => {
-    try {
-      const state = thunkAPI.getState();
+  const state = thunkAPI.getState();
 
-      const response = await makeRequest<T>(thunkAPI, state.config.emails_url as string, endpoint, body, data);
+  if (!state.config.emails_url) {
+    throw new Error("Missing configuration emails_url");
+  }
 
-      if (response.error) {
-        // Dispatch fail responses so that notification middleware will show them to the user.
-        // The current implementation in notify-middleware.js _removes_ error and payload.message from
-        // response, so we clone it first so we can reject the promise with the full error response.
-        const saved = JSON.parse(JSON.stringify(response));
-        thunkAPI.dispatch(response);
-        reject(saved);
-      }
-      resolve(response);
-    } catch (error) {
-      if (error instanceof Error) {
-        thunkAPI.dispatch(addEmailFail(error.toString()));
-        reject(error.toString());
-      } else {
-        reject(error);
-      }
-    }
-  });
+  return makeGenericRequest<T>(thunkAPI, state.config.emails_url, endpoint, body, data);
 }
-
-/*********************************************************************************************************************/
-// Fake an error response from the backend. The action ending in _FAIL will make the notification
-// middleware picks this error up and shows something to the user.
-export const addEmailFail = createAction("addEmail_FAIL", function prepare(message: string) {
-  return {
-    error: true,
-    payload: {
-      message,
-    },
-  };
-});
