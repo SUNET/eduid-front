@@ -5,16 +5,9 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
   requestMakePrimaryEmail,
+  EmailsResponse,
+  EmailInfo,
 } from "apis/eduidEmail";
-
-export interface EmailInfo {
-  email: string;
-  verified: boolean;
-  primary: boolean;
-}
-export interface EmailsResponse {
-  emails: EmailInfo[];
-}
 
 export const initialState: EmailsResponse = {
   emails: [],

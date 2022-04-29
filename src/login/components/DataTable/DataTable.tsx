@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import EduIDButton from "components/EduIDButton";
 import { FormattedMessage } from "react-intl";
-import { EmailInfo } from "../../../reducers/Emails";
+import { EmailInfo } from "../../../apis/eduidEmail";
 import { PDPhone } from "../../../apis/personalData";
 
 interface DataTableProps {

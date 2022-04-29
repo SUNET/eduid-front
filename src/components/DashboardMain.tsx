@@ -11,7 +11,7 @@ import Footer from "../login/components/Footer/Footer";
 import { ChangePasswordContainer } from "./ChangePassword";
 import DashboardNav from "./DashboardNav";
 import SettingsComponent from "./Settings";
-import { EmailInfo } from "./../reducers/Emails";
+import { EmailInfo } from "../apis/eduidEmail";
 
 export const history = createBrowserHistory();
 

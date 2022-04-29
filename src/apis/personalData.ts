@@ -1,6 +1,6 @@
 import { NinInfo } from "reducers/Nins";
 import { LadokData } from "./eduidLadok";
-import { EmailInfo } from "reducers/Emails";
+import { EmailInfo } from "apis/eduidEmail";
 
 /*
  * Code and data structures for talking to the eduid-personal_data backend microservice.

@@ -5,7 +5,16 @@
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
-import { EmailsResponse } from "reducers/Emails";
+
+export interface EmailInfo {
+  email: string;
+  verified: boolean;
+  primary: boolean;
+}
+
+export interface EmailsResponse {
+  emails: EmailInfo[];
+}
 
 /*********************************************************************************************************************/
 
