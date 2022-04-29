@@ -5,7 +5,6 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
   requestMakePrimaryEmail,
-  EmailResponse,
 } from "apis/eduidEmail";
 
 export interface EmailInfo {
@@ -13,8 +12,11 @@ export interface EmailInfo {
   verified: boolean;
   primary: boolean;
 }
+export interface EmailsResponse {
+  emails: EmailInfo[];
+}
 
-export const initialState: EmailResponse = {
+export const initialState: EmailsResponse = {
   emails: [],
 };
 
@@ -26,22 +28,22 @@ const emailsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailResponse>) => {
+      .addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
+      .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(postNewEmail.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
+      .addCase(postNewEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestResendEmailCode.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
+      .addCase(requestResendEmailCode.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestVerifyEmail.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
+      .addCase(requestVerifyEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
+      .addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       });
   },
