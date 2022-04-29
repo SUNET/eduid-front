@@ -43,6 +43,10 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "An unknown error occurred when accessing the service."
   },
+  "4KkuhD": {
+    "developer_comment": "ErrorURL eduid error",
+    "string": "Not logged in"
+  },
   "4WguDO": {
     "string": "Developer info, not shown in production:"
   },
@@ -65,9 +69,21 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
+  "7rcGK1": {
+    "developer_comment": "column value label",
+    "string": "Value"
+  },
+  "85yuW9": {
+    "developer_comment": "ErrorURL eduid error",
+    "string": "You are not logged in, or the session expired."
+  },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
+  },
+  "8HceTn": {
+    "developer_comment": "Emails input help text",
+    "string": "A valid email address"
   },
   "8KywNU": {
     "developer_comment": "ToU first paragraph",
@@ -143,6 +159,10 @@
   "Ek2FGc": {
     "string": "Log in on the other device"
   },
+  "EqjCQt": {
+    "developer_comment": "Errors go to dashboard instruction",
+    "string": "You can review your settings at the"
+  },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
   },
@@ -203,8 +223,16 @@
     "developer_comment": "Use another device #1",
     "string": "The login attempt was aborted or exceeded the time limit. Please try again."
   },
+  "Ifusv7": {
+    "developer_comment": "Emails main title",
+    "string": "Email addresses"
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "You are attempting to register an authenticator that contains one of the credentials already registered with the relying party"
+  },
+  "Ipp+o7": {
+    "developer_comment": "confirm button",
+    "string": "confirm"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -225,6 +253,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Select higher education institution"
   },
+  "LNBvhT": {
+    "developer_comment": "Errors button",
+    "string": "eduID Dashboard"
+  },
   "MPTvRv": {
     "developer_comment": "Footer faq",
     "string": "Help"
@@ -234,6 +266,10 @@
   },
   "Missing error message": {
     "string": "Missing error message"
+  },
+  "MnbIkV": {
+    "developer_comment": "no error information message",
+    "string": "There is no technical information available"
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -247,6 +283,10 @@
     "developer_comment": "errorURL",
     "string": "Technical Information"
   },
+  "NgScX1": {
+    "developer_comment": "Emails button add",
+    "string": "Add"
+  },
   "No connection to authorization endpoint": {
     "string": "No connection to authorization endpoint, please try again later"
   },
@@ -256,6 +296,10 @@
   "NrTT6J": {
     "developer_comment": "Login button",
     "string": "Abort"
+  },
+  "NuVGSk": {
+    "developer_comment": "column eduID identifier label",
+    "string": "eduID identifier"
   },
   "O0z0/P": {
     "developer_comment": "Dashboard navigation tooltip",
@@ -305,6 +349,10 @@
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
+  },
+  "TNLn8n": {
+    "developer_comment": "Emails description",
+    "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
@@ -399,6 +447,10 @@
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
     "string": "(Close to your address now)"
+  },
+  "bCqIxV": {
+    "developer_comment": "profile email display title",
+    "string": "Email address"
   },
   "banner.tagline": {
     "string": "eduID is easier and safer login."
@@ -651,9 +703,6 @@
   "emails.button_add": {
     "string": "Add"
   },
-  "emails.button_add_more": {
-    "string": "+ add more"
-  },
   "emails.cannot_remove_primary": {
     "string": "You can not delete the primary email"
   },
@@ -701,12 +750,6 @@
   "emails.invalid_email": {
     "string": "The entered value does not look like an email"
   },
-  "emails.long_description": {
-    "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
-  },
-  "emails.main_title": {
-    "string": "Email addresses"
-  },
   "emails.missing": {
     "string": "You must provide an email address"
   },
@@ -739,6 +782,10 @@
   },
   "error_navet_task": {
     "string": "Communication problem with Navet"
+  },
+  "ewgN8J": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "You need to re-confirm your identity in the eduID Dashboard to access this service."
   },
   "faq_link": {
     "string": "For more information see the"
@@ -776,6 +823,10 @@
   "foot.change-version-tip": {
     "string": "This is an experimental version. If you experience any problem while using the app, you can switch to the old version."
   },
+  "fr8eQq": {
+    "developer_comment": "Emails button cancel",
+    "string": "Cancel"
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "An error occurred when accessing the service."
@@ -787,6 +838,10 @@
   "gM6ziT": {
     "developer_comment": "Ladok account linking",
     "string": "Your account is linked with Ladok information from"
+  },
+  "gaVV7S": {
+    "developer_comment": "ErrorURL other error",
+    "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
   "gbZoh/": {
     "developer_comment": "Set new password (go back to eduID button)",
@@ -834,6 +889,14 @@
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access did not get all required attributes for identification and/or personalisation."
+  },
+  "kBBMlk": {
+    "developer_comment": "Emails button add more",
+    "string": "+ add more"
+  },
+  "kN1GC+": {
+    "developer_comment": "Make primary button",
+    "string": "make primary"
   },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
@@ -1597,10 +1660,6 @@
     "developer_comment": "Reset Password email link sent",
     "string": "in"
   },
-  "sC0ATo": {
-    "developer_comment": "ErrorURL other error",
-    "string": "Please trying again. Contact eduID support if the problem persists."
-  },
   "security.add_u2f_token": {
     "string": "Add U2F token"
   },
@@ -1851,6 +1910,10 @@
   "unexpected-success": {
     "string": "Success"
   },
+  "uo1E1v": {
+    "developer_comment": "column name label",
+    "string": "Name"
+  },
   "used.email-in-use": {
     "string": "An eduID is already using {email}"
   },
@@ -1866,6 +1929,10 @@
   "uzoZmv": {
     "developer_comment": "Login front page",
     "string": "Log in"
+  },
+  "v/ccFv": {
+    "developer_comment": "primary label",
+    "string": "primary"
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",

@@ -618,9 +618,6 @@
   "emails.button_add": {
     "string": "Add"
   },
-  "emails.button_add_more": {
-    "string": "+ add more"
-  },
   "emails.cannot_remove_primary": {
     "string": "You can not delete the primary email"
   },
@@ -667,12 +664,6 @@
   },
   "emails.invalid_email": {
     "string": "The entered value does not look like an email"
-  },
-  "emails.long_description": {
-    "string": "You can connect one or more email addresses with your eduID \n          account and select one to be your primary email address."
-  },
-  "emails.main_title": {
-    "string": "Email addresses"
   },
   "emails.missing": {
     "string": "You must provide an email address"

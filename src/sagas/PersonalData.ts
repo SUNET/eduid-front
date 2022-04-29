@@ -4,7 +4,7 @@ import { checkStatus, putCsrfToken, failRequest } from "sagas/common";
 import { getAllUserdata, getAllUserdataFail, GET_USERDATA_SUCCESS } from "actions/PersonalData";
 
 import * as actions from "actions/DashboardConfig";
-import * as emailActions from "actions/Emails";
+import { GET_EMAIL_ALL_SUCCESS } from "reducers/Emails";
 import * as phoneActions from "actions/Mobile";
 import * as accountLinkingActions from "actions/AccountLinking";
 import { LOCALIZED_MESSAGES } from "globals";
@@ -40,13 +40,7 @@ export function* requestAllPersonalData() {
       yield put(GET_NINS_SUCCESS({ nins: response.payload.nins }));
     }
     if (response.payload.emails !== undefined) {
-      const emailAction = {
-        type: emailActions.GET_EMAILS_SUCCESS,
-        payload: {
-          emails: response.payload.emails,
-        },
-      };
-      yield put(emailAction);
+      yield put(GET_EMAIL_ALL_SUCCESS({ emails: response.payload.emails }));
     }
     if (response.payload.phones !== undefined) {
       const phoneAction = {

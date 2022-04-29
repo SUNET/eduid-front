@@ -1,5 +1,4 @@
 import { fetchErrorInfo } from "apis/eduidLogin";
-import { notStrictEqual } from "assert";
 import { useErrorsAppDispatch, useErrorsAppSelector } from "errors-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
@@ -32,13 +31,13 @@ function MissingNin(): JSX.Element {
   function SpecificMessage(): JSX.Element {
     if (error_info?.logged_in && error_info.has_locked_nin && !error_info.has_verified_nin) {
       <FormattedMessage
-        defaultMessage={`You need to re-confirm your identity in the eduID Dashboard to access this service.`}
+        defaultMessage="You need to re-confirm your identity in the eduID Dashboard to access this service."
         description="ErrorURL identification failure"
       />;
     }
     return (
       <FormattedMessage
-        defaultMessage={`If you have a Swedish National Identity Number, go to the eduID dashboard and confirm it.`}
+        defaultMessage="If you have a Swedish National Identity Number, go to the eduID dashboard and confirm it."
         description="ErrorURL identification failure"
       />
     );
@@ -65,15 +64,15 @@ function Default(): JSX.Element {
     <React.Fragment>
       <p>
         <FormattedMessage
-          defaultMessage={`The service that you tried to access did not get all required attributes for
-                           identification and/or personalisation.`}
+          defaultMessage="The service that you tried to access did not get all required attributes for
+                           identification and/or personalisation."
           description="ErrorURL identification failure"
         />
       </p>
       <p>
         <FormattedMessage
-          defaultMessage={`This may be because eduID is missing those attributes or that eduID is not configured
-                           to release those attributes to the service you tried to access.`}
+          defaultMessage="This may be because eduID is missing those attributes or that eduID is not configured
+                           to release those attributes to the service you tried to access."
           description="ErrorURL identification failure"
         />
       </p>

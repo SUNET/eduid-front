@@ -3,6 +3,7 @@ import { ReduxIntlProvider } from "components/ReduxIntl";
 import { DashboardRootState, dashboardStore } from "dashboard-init-app";
 import { mount, ReactWrapper } from "enzyme";
 import { ChangePasswordState } from "reducers/ChangePassword";
+import { initialState as emailsInitialState } from "reducers/Emails";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
 
@@ -15,7 +16,7 @@ export const dashboardTestState: DashboardRootState = {
   intl: { locale: "en", messages: {} },
 
   chpass: {} as ChangePasswordState,
-  emails: undefined as any,
+  emails: emailsInitialState,
   groups: undefined as any,
   invites: undefined as any,
   openid_data: undefined as any,

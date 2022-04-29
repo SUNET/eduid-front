@@ -618,9 +618,6 @@
   "emails.button_add": {
     "string": "Lägg till"
   },
-  "emails.button_add_more": {
-    "string": "+ lägg till fler"
-  },
   "emails.cannot_remove_primary": {
     "string": "Du kan inte ta bort din primära e-postadress"
   },
@@ -667,12 +664,6 @@
   },
   "emails.invalid_email": {
     "string": "Ogiltig e-postadress"
-  },
-  "emails.long_description": {
-    "string": "Du kan koppla en eller flera av dina e-postadresser till ditt eduID-konto\noch därefter välja vilken av dem som ska vara primär."
-  },
-  "emails.main_title": {
-    "string": "E-postadresser"
   },
   "emails.missing": {
     "string": "E-postadress saknas"

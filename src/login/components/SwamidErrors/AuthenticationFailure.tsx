@@ -16,8 +16,8 @@ export function AuthenticationFailure(props: FailureComponentProps): JSX.Element
       </p>
       <p>
         <FormattedMessage
-          defaultMessage={`This may be because it requires additional steps which did not occur during login
-                           (such as using a second factor). Please try again.`}
+          defaultMessage="This may be because it requires additional steps which did not occur during login
+                           (such as using a second factor). Please try again."
           description="ErrorURL authentication failure"
         />
       </p>
