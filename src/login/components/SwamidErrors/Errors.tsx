@@ -48,9 +48,12 @@ export function Errors() {
         {errorURL.code === "EDUID_ERROR" && <EduidError errorURL={errorURL} />}
         {errorURL.code === "OTHER_ERROR" && <OtherError errorURL={errorURL} />}
         {isUnknown && <UnknownError errorURL={errorURL} />}
-        You can review your settings at the
         <p>
-          You can review your settings at the &nbsp;
+          <FormattedMessage
+            defaultMessage="You can review your settings at the"
+            description="Errors go to dashboard instruction"
+          />
+          &nbsp;
           <a className="link" id="dashboard-button" onClick={handleDashboardOnClick}>
             <FormattedMessage defaultMessage="eduID Dashboard" description="Errors button" />
           </a>
@@ -68,40 +71,67 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
     <React.Fragment>
       <div className="figure">
         <table className="error-info">
-          <caption>
-            <h3>
-              <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
-            </h3>
-          </caption>
-          <thead>
-            <tr>
-              <th className="figcaption">Name</th>
-              <th className="figcaption">Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            {error_info?.logged_in && (
-              <tr key="eppn">
-                <td>
-                  <strong>eduID identifier</strong>
-                </td>
-                <td>{error_info.eppn}</td>
-              </tr>
-            )}
-            {Object.entries(props.errorURL).map(([key, value]) => {
-              if (!value) {
-                return null;
-              }
-              return (
-                <tr key={key}>
-                  <td>
-                    <strong>{key}</strong>
-                  </td>
-                  <td>{key === "date" && value ? value.toISOString() : value}</td>
+          {error_info !== undefined ? (
+            <>
+              <caption>
+                <h3>
+                  <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
+                </h3>
+              </caption>
+              <thead>
+                <tr>
+                  <th className="figcaption">
+                    <FormattedMessage defaultMessage="Name" description="column name label" />
+                  </th>
+                  <th className="figcaption">
+                    <FormattedMessage defaultMessage="Value" description="column value label" />
+                  </th>
                 </tr>
-              );
-            })}
-          </tbody>
+              </thead>
+
+              <tbody>
+                {error_info?.logged_in && (
+                  <tr key="eppn">
+                    <td>
+                      <strong>
+                        <FormattedMessage
+                          defaultMessage="eduID identifier"
+                          description="column eduID identifier label"
+                        />
+                      </strong>
+                    </td>
+                    <td>{error_info.eppn}</td>
+                  </tr>
+                )}
+                {Object.entries(props.errorURL).map(([key, value]) => {
+                  if (!value) {
+                    return null;
+                  }
+                  return (
+                    <tr key={key}>
+                      <td>
+                        <strong>{key}</strong>
+                      </td>
+                      <td>{key === "date" && value ? value.toISOString() : value}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </>
+          ) : (
+            <tbody>
+              <tr>
+                <td className="plain-cell">
+                  <strong>
+                    <FormattedMessage
+                      defaultMessage="There is no technical information available"
+                      description="no error information available"
+                    />
+                  </strong>
+                </td>
+              </tr>
+            </tbody>
+          )}
         </table>
       </div>
     </React.Fragment>
