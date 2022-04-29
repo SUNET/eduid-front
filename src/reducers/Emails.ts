@@ -5,6 +5,7 @@ import {
   requestResendEmailCode,
   requestVerifyEmail,
   requestMakePrimaryEmail,
+  EmailResponse,
 } from "apis/eduidEmail";
 
 export interface EmailInfo {
@@ -13,13 +14,7 @@ export interface EmailInfo {
   primary: boolean;
 }
 
-export interface EmailDataState {
-  message?: string;
-  emails: EmailInfo[];
-  email?: string;
-}
-
-export const initialState: EmailDataState = {
+export const initialState: EmailResponse = {
   emails: [],
 };
 
@@ -31,22 +26,22 @@ const emailsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailDataState>) => {
+      .addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(postNewEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      .addCase(postNewEmail.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestResendEmailCode.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      .addCase(requestResendEmailCode.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestVerifyEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      .addCase(requestVerifyEmail.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
         state.emails = action.payload.emails;
       })
-      .addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailDataState>) => {
+      .addCase(requestMakePrimaryEmail.fulfilled, (state, action: PayloadAction<EmailResponse>) => {
         state.emails = action.payload.emails;
       });
   },
