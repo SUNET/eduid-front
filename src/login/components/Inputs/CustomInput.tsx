@@ -54,11 +54,13 @@ const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
 };
 
 const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
-  const { meta, invalid } = props;
-  const errmsg = (invalid && translate(meta.error)) || "";
-  if (!invalid || meta.pristine) {
+  const { meta } = props;
+
+  if (meta.pristine || !meta.error) {
     return <Fragment />;
   }
+
+  const errmsg = translate(meta.error) || "";
   return (
     <FormText>
       <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
