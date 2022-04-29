@@ -28,7 +28,6 @@ function Emails() {
   const [confirmingEmail, setConfirmingEmail] = useState<null | string>("");
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
-  // const confirming = useDashboardAppSelector((state) => state.emails.confirming);
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
