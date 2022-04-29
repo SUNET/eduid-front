@@ -61,15 +61,6 @@ export const register = {
     />
   ),
 
-  // eduID created
-  "created.account-created": (
-    <FormattedMessage id="created.account-created" defaultMessage={`A link has been sent to your email address.`} />
-  ),
-
-  "created.email-label": (
-    <FormattedMessage id="created.email-label" defaultMessage={`Complete registration by clicking the link sent to:`} />
-  ),
-
   // eduID (email) verified
   "created.back_to_signup": <FormattedMessage id="created.back_to_signup" defaultMessage={`Back to signup`} />,
 
@@ -97,20 +88,6 @@ export const register = {
   "used.email-in-use": (values) => (
     <FormattedMessage id="used.email-in-use" defaultMessage={`An eduID is already using {email}`} values={values} />
   ),
-
-  // eduID registration complete
-  "finish.registration-complete": (
-    <FormattedMessage
-      id="finish.registration-complete"
-      defaultMessage={`You have completed the registration for eduID.`}
-    />
-  ),
-
-  "finish.registration-details": (
-    <FormattedMessage id="finish.registration-details" defaultMessage={`These are your login details for eduID.`} />
-  ),
-
-  "finish.got-it": <FormattedMessage id="finish.got-it" defaultMessage={`go to my eduid`} />,
 
   "finish.can-now-login": <FormattedMessage id="finish.can-now-login" defaultMessage={`You can now log in`} />,
 
