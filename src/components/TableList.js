@@ -17,7 +17,7 @@ class TableList extends Component {
         }
         if (entry.primary) {
           return (
-            <tr className="emailrow primary" data-identifier={index} data-object={key} key={key}>
+            <tr className="email-row primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier status-label">
                 <span className="nobutton verify-status-label">{this.props.translate("tl.primary")}</span>
@@ -41,7 +41,7 @@ class TableList extends Component {
           );
         } else if (entry.verified) {
           return (
-            <tr className="emailrow make-primary" data-identifier={index} data-object={key} key={key}>
+            <tr className="email-row make-primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier">
                 <EduIDButton buttonstyle="link" onClick={this.props.handleMakePrimary}>
@@ -55,7 +55,7 @@ class TableList extends Component {
           );
         } else {
           return (
-            <tr className="emailrow make-primary" data-identifier={index} data-object={key} key={key}>
+            <tr className="email-row make-primary" data-identifier={index} data-object={key} key={key}>
               <td className="identifier data">{key}</td>
               <td className="non-identifier ">
                 <EduIDButton buttonstyle="link" onClick={this.props.handleStartConfirmation}>

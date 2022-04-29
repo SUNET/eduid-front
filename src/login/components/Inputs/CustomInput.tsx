@@ -1,5 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "login/translation";
 import React, { Fragment, useState } from "react";
 import { FieldRenderProps } from "react-final-form";
@@ -43,14 +41,14 @@ export default function CustomInput(props: FieldRenderProps<string>): JSX.Elemen
 const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
   const { label, name, helpBlock, required } = props;
   return (
-    <div className={"input-label-helptext-container"}>
+    <div className="input-label-help-text-container">
       {label && (
         <Label aria-required="true" htmlFor={name}>
           {label}
           {required && <span className="label-required">*</span>}
         </Label>
       )}
-      {helpBlock && <span className={"help-block"}>{helpBlock}</span>}
+      {helpBlock && <span className="help-block">{helpBlock}</span>}
     </div>
   );
 };
@@ -58,14 +56,15 @@ const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
 const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
   const { meta, invalid } = props;
   const errmsg = (invalid && translate(meta.error)) || "";
+  if (!invalid || meta.pristine) {
+    return <Fragment />;
+  }
   return (
-    errmsg && (
-      <FormText>
-        <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-          {errmsg}
-        </span>
-      </FormText>
-    )
+    <FormText>
+      <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
+        {errmsg}
+      </span>
+    </FormText>
   );
 };
 
