@@ -125,7 +125,7 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
                   <strong>
                     <FormattedMessage
                       defaultMessage="There is no technical information available"
-                      description="no error information available"
+                      description="no error information message"
                     />
                   </strong>
                 </td>

@@ -16,7 +16,7 @@ export function ErrorsMain(): JSX.Element {
         <Header />
         <section id="panel" className="panel">
           <NotificationsContainer />
-          <Route exact path={`/errors`} component={Errors} />
+          <Route exact path="/errors" component={Errors} />
         </section>
         <Footer />
       </Router>

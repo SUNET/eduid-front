@@ -16,7 +16,7 @@ export function AuthorizationFailure(props: FailureComponentProps): JSX.Element 
       </p>
       <p>
         <FormattedMessage
-          defaultMessage={`You may need to confirm your identity in the eduID Dashboard before trying again.`}
+          defaultMessage="You may need to confirm your identity in the eduID Dashboard before trying again."
           description="ErrorURL authentication failure"
         />
       </p>
