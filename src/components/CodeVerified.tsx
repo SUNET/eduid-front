@@ -1,48 +1,55 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import EduIDButton from "components/EduIDButton";
+import { FormattedMessage } from "react-intl";
 
-class CodeVerified extends Component {
-  render() {
-    return (
-      <form key="2" method="GET" action={this.props.dashboard_url} className="vertical-content-margin">
-        <div key="0" id="content" className="content">
-          <div>
-            <h1 className="register-header">{this.props.translate("finish.registration-complete")}</h1>
-            <p className="preamble">{this.props.translate("finish.registration-details")}</p>
-            <div id="email-display">
-              <fieldset>
-                <label>Email</label>
-                <div id="user-email" className="register-header display-data">
-                  {this.props.email}
-                </div>
-              </fieldset>
-              <fieldset>
-                <label>Password</label>
-                <div className="register-header registered-email display-data">
-                  <mark id="user-password" className="force-select-all">
-                    {this.props.password}
-                  </mark>
-                </div>
-              </fieldset>
-            </div>
-            <div className="buttons">
-              <EduIDButton id="gotit-button" buttonstyle="primary" type="submit">
-                {this.props.translate("finish.got-it")}
-              </EduIDButton>
-            </div>
-          </div>
-        </div>
-      </form>
-    );
-  }
+interface CodeVerifiedProps {
+  dashboard_url: string;
+  email: string;
+  password: string;
 }
 
-CodeVerified.propTypes = {
-  dashboard_url: PropTypes.string,
-  password: PropTypes.string,
-  email: PropTypes.string,
-  translate: PropTypes.func,
-};
+function CodeVerified(props: CodeVerifiedProps) {
+  return (
+    <form key="2" method="GET" action={props.dashboard_url} className="vertical-content-margin content">
+      <h1 className="register-header">
+        <FormattedMessage
+          defaultMessage="You have completed the registration for eduID."
+          description="Registration complete"
+        />
+      </h1>
+      <p className="preamble">
+        <FormattedMessage
+          defaultMessage="These are your login details for eduID."
+          description="Registration finished"
+        />
+      </p>
+      <div id="email-display">
+        <fieldset>
+          <label>
+            <FormattedMessage defaultMessage="Email address" description="Email label" />
+          </label>
+          <div id="user-email" className="register-header display-data">
+            {props.email}
+          </div>
+        </fieldset>
+        <fieldset>
+          <label>
+            <FormattedMessage defaultMessage="Password" description="Password label" />
+          </label>
+          <div className="register-header registered-email display-data">
+            <mark id="user-password" className="force-select-all">
+              {props.password}
+            </mark>
+          </div>
+        </fieldset>
+      </div>
+      <div className="buttons">
+        <EduIDButton id="gotit-button" buttonstyle="link" className="normal-case" type="submit">
+          <FormattedMessage defaultMessage="Go to my eduid" description="go to eudID link text" />
+        </EduIDButton>
+      </div>
+    </form>
+  );
+}
 
 export default CodeVerified;
