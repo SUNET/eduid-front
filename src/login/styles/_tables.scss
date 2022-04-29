@@ -1,11 +1,10 @@
-/* styles for tables displaying userinfo on settings page */
-@import "variables.scss";
+/* styles for tables displaying user info on settings page */
+@import "variables";
 
 table {
   width: 100%;
-  //color: gray;
   font-size: 1.25rem;
-  font-family: ProximaNova-Light;
+  font-family: $proxima-light;
   table-layout: fixed;
 
   @media (max-width: $bp-md) {
@@ -17,11 +16,63 @@ table {
 
     & th:first-child {
       padding-left: 1.25rem;
-    }
-
-    th {
       padding-top: 0.625rem;
       line-height: 1;
+    }
+
+    & td {
+      word-wrap: break-word;
+      text-align: left;
+      vertical-align: middle;
+      line-height: 1;
+
+      &.value-status,
+      &.verify {
+        width: 25%;
+
+        & button {
+          margin: 0;
+          padding: 0;
+        }
+
+        & label {
+          font-family: $proxima-regular;
+          font-weight: 700;
+          padding: 0;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+        }
+      }
+
+      .verified {
+        text-transform: uppercase;
+        padding: 0.625rem 1.25rem;
+        font-family: $proxima-regular;
+        font-weight: 700;
+      }
+
+      &.remove-data {
+        width: 8%;
+
+        & .icon-button {
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      &.primary {
+        color: $black;
+      }
+
+      &.unverified,
+      &.verified,
+      &.primary {
+        padding: 0.625rem 1.25rem;
+      }
+
+      .btn-remove-webauthn {
+        padding: 0;
+      }
     }
 
     & tr.webauthn-token-holder {
@@ -31,6 +82,8 @@ table {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        padding-left: 1.25rem;
+        padding-right: 1.5rem;
       }
     }
 
@@ -47,63 +100,9 @@ table {
         border-bottom: 1px solid $dark-gray;
       }
 
-      & td:first-child {
+      &td:first-child {
         padding-left: 1.25rem;
         padding-right: 1.5rem;
-      }
-
-      & td {
-        word-wrap: break-word;
-        text-align: left;
-        vertical-align: middle;
-        line-height: 1;
-
-        &.value-status,
-        &.verify {
-          width: 25%;
-
-          & button {
-            margin: 0;
-            padding: 0;
-          }
-
-          & label {
-            font-family: ProximaNova-Regular;
-            font-weight: 700;
-            padding: 0;
-            font-size: 0.75rem;
-          }
-        }
-
-        .verified {
-          text-transform: uppercase;
-          padding: 0.625rem 1.25rem;
-          font-family: ProximaNova-Regular;
-          font-weight: 700;
-        }
-
-        &.remove-data {
-          width: 8%;
-
-          & .icon-button {
-            margin: 0;
-            padding: 0;
-          }
-        }
-
-        &.primary {
-          color: $black;
-        }
-
-        &.unverified,
-        &.verified,
-        &.primary {
-          padding: 0.625rem 1.25rem;
-        }
-
-        .btn-remove-webauthn {
-          padding: 0;
-        }
       }
     }
   }
@@ -114,7 +113,7 @@ table.table-form.passwords {
     font-size: 1rem;
     letter-spacing: 0;
     color: $black;
-    font-family: ProximaNova-Bold;
+    font-family: $proxima-bold;
     height: auto;
   }
 

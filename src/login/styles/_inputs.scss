@@ -109,7 +109,7 @@ input:focus {
   letter-spacing: 0.025rem;
 }
 
-.input-label-helptext-container {
+.input-label-help-text-container {
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
@@ -130,8 +130,8 @@ input:focus {
 }
 
 .input-validate-error {
-  font-size: 1.25rem;
-  color: $black;
+  font-size: 1rem;
+  color: $dark-orange;
 }
 
 // login username-pw / reset-password set-new-password

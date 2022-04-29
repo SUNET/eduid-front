@@ -753,24 +753,12 @@ export const userData = {
     />
   ),
 
-  "emails.long_description": (
-    <FormattedMessage
-      id="emails.long_description"
-      defaultMessage={`You can connect one or more email addresses with your eduID
-          account and select one to be your primary email address.`}
-    />
-  ),
-
   "emails.add_new": (
     <FormattedMessage
       id="emails.add_new"
       defaultMessage={`A new email address will receive a link to click or a confirmation code that can be used by clicking Confirm in the list of email addresses.`}
     />
   ),
-
-  "emails.main_title": <FormattedMessage id="emails.main_title" defaultMessage={`Email addresses`} />,
-
-  "emails.button_add_more": <FormattedMessage id="emails.button_add_more" defaultMessage={`+ add more`} />,
 
   "emails.get-success": (
     <FormattedMessage id="emails.get-success" defaultMessage={`Successfully retrieved Email addresses`} />

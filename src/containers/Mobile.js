@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleStartConfirmation: function (e) {
       dispatch(clearNotifications());
-      const dataNode = e.target.closest("tr.emailrow"),
+      const dataNode = e.target.closest("tr.email-row"),
         data = {
           identifier: dataNode.getAttribute("data-identifier"),
           phone: dataNode.getAttribute("data-object"),
@@ -55,14 +55,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(stopConfirmation());
     },
     handleRemove: function (e) {
-      const dataNode = e.target.closest("tr.emailrow"),
+      const dataNode = e.target.closest("tr.email-row"),
         data = {
           phone: dataNode.getAttribute("data-object"),
         };
       dispatch(startRemove(data));
     },
     handleMakePrimary: (e) => {
-      const dataNode = e.target.closest("tr.emailrow"),
+      const dataNode = e.target.closest("tr.email-row"),
         data = {
           phone: dataNode.getAttribute("data-object"),
         };
