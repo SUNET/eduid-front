@@ -69,6 +69,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Continue"
   },
+  "7rcGK1": {
+    "developer_comment": "column value label",
+    "string": "Value"
+  },
   "85yuW9": {
     "developer_comment": "ErrorURL eduid error",
     "string": "You are not logged in, or the session expired."
@@ -100,10 +104,6 @@
   "9CnPOD": {
     "developer_comment": "Login front page",
     "string": "Don't have eduID?"
-  },
-  "9Jbbd6": {
-    "developer_comment": "Errors button",
-    "string": "Dashboard"
   },
   "9P0HXs": {
     "developer_comment": "help text for custom password tips",
@@ -158,6 +158,10 @@
   },
   "Ek2FGc": {
     "string": "Log in on the other device"
+  },
+  "EqjCQt": {
+    "developer_comment": "Errors go to dashboard instruction",
+    "string": "You can review your settings at the"
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
@@ -249,6 +253,10 @@
     "developer_comment": "Ladok account linking",
     "string": "Select higher education institution"
   },
+  "LNBvhT": {
+    "developer_comment": "Errors button",
+    "string": "eduID Dashboard"
+  },
   "MPTvRv": {
     "developer_comment": "Footer faq",
     "string": "Help"
@@ -258,6 +266,10 @@
   },
   "Missing error message": {
     "string": "Missing error message"
+  },
+  "MnbIkV": {
+    "developer_comment": "no error information message",
+    "string": "There is no technical information available"
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
@@ -284,6 +296,10 @@
   "NrTT6J": {
     "developer_comment": "Login button",
     "string": "Abort"
+  },
+  "NuVGSk": {
+    "developer_comment": "column eduID identifier label",
+    "string": "eduID identifier"
   },
   "O0z0/P": {
     "developer_comment": "Dashboard navigation tooltip",
@@ -1893,6 +1909,10 @@
   },
   "unexpected-success": {
     "string": "Success"
+  },
+  "uo1E1v": {
+    "developer_comment": "column name label",
+    "string": "Name"
   },
   "used.email-in-use": {
     "string": "An eduID is already using {email}"
