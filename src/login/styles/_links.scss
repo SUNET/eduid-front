@@ -1,6 +1,7 @@
 @import "variables";
 
-a {
+a,
+.text-link {
   color: $orange-highlight;
   font-family: $akkurat;
   text-decoration: none;
