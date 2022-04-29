@@ -67,7 +67,7 @@ function Emails() {
   }
 
   function handleRemove(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row");
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
     const email = dataNode && dataNode.getAttribute("data-object");
     if (email) {
       dispatch(requestRemoveEmail({ email: email }));
@@ -89,7 +89,7 @@ function Emails() {
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row");
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
     const email = dataNode && dataNode.getAttribute("data-object");
     if (email) setConfirmingEmail(email);
   }
@@ -108,7 +108,7 @@ function Emails() {
   }
 
   function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email-row"),
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email"),
       data = {
         email: dataNode && dataNode.getAttribute("data-object"),
       };
