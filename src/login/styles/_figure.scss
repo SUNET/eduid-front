@@ -8,9 +8,11 @@ figure,
   margin: 1em 0;
   padding: 1em;
 
-  figcaption {
+  figcaption,
+  .figcaption {
     font-size: 1rem;
     font-weight: bold;
     font-family: $akkurat;
+    color: $black;
   }
 }

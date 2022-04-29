@@ -1,7 +1,11 @@
 .swamid-error {
+  h1 {
+    color: $dark-orange;
+  }
+
   & span {
     line-height: 1.5;
-    font-family: "ProximaNova-bold";
+    font-family: ProximaNova-bold;
     font-size: 1.5rem;
   }
 
@@ -17,7 +21,7 @@
       li:nth-child(5) {
         list-style-type: disc;
         margin-top: 1rem;
-        font-family: "ProximaNova-bold";
+        font-family: ProximaNova-bold;
       }
 
       li:nth-child(even) {
@@ -28,11 +32,11 @@
 
   & li {
     line-height: 1.5;
-    font-family: "ProximaNova-Regular";
+    font-family: ProximaNova-Regular;
   }
 
   & .technical-info-heading span {
-    font-family: "ProximaNova-Bold";
+    font-family: ProximaNova-Bold;
     font-size: 1.25rem;
   }
 
@@ -51,7 +55,7 @@
 
       p:first-child {
         text-transform: uppercase;
-        font-family: "ProximaNova-Bold";
+        font-family: ProximaNova-Bold;
         width: 8.125rem;
         padding-right: 1rem;
       }
@@ -93,7 +97,7 @@
 
       p {
         margin-left: 1rem;
-        font-family: "ProximaNova-Regular";
+        font-family: ProximaNova-Regular;
         color: $black;
       }
 
@@ -119,6 +123,7 @@
 // small reddish alert with exclamation symbol
 .warning-text {
   color: $dark-orange;
+
   @extend .text-small;
 
   .warning-symbol {
@@ -136,6 +141,38 @@
 
     p:last-child {
       color: $orange-highlight;
+    }
+  }
+}
+
+.error-info {
+  text-align: left;
+
+  tr {
+    height: auto;
+  }
+
+  td:not(.plain-cell) {
+    &:first-child {
+      text-transform: uppercase;
+      padding-left: 0;
+    }
+
+    &:last-child {
+      color: $dark-orange;
+    }
+
+    @media (max-width: $bp-md) {
+      font-size: 1rem;
+    }
+  }
+
+  th,
+  td {
+    padding: 0.325rem 0;
+
+    &:last-child {
+      width: 70%;
     }
   }
 }

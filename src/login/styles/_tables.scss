@@ -3,12 +3,12 @@
 
 table {
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-family: $proxima-light;
   table-layout: fixed;
 
   @media (max-width: $bp-md) {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 
   & tbody {
@@ -136,6 +136,11 @@ table.table-form.passwords {
   .security-remove-data {
     width: 5%;
   }
+}
+
+caption {
+  caption-side: top;
+  color: inherit;
 }
 
 @media (max-width: $bp-sm) {

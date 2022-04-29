@@ -1,4 +1,3 @@
-import EduIDButton from "components/EduIDButton";
 import { useErrorsAppSelector } from "errors-hooks";
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -41,7 +40,7 @@ export function Errors() {
     errorURL.code !== "EDUID_ERROR";
 
   return (
-    <div className="horizontal-content-margin">
+    <div className="horizontal-content-margin content">
       <div className="swamid-error">
         {errorURL.code === "IDENTIFICATION_FAILURE" && <IdentificationFailure errorURL={errorURL} />}
         {errorURL.code === "AUTHENTICATION_FAILURE" && <AuthenticationFailure errorURL={errorURL} />}
@@ -49,12 +48,16 @@ export function Errors() {
         {errorURL.code === "EDUID_ERROR" && <EduidError errorURL={errorURL} />}
         {errorURL.code === "OTHER_ERROR" && <OtherError errorURL={errorURL} />}
         {isUnknown && <UnknownError errorURL={errorURL} />}
-        <div className="flex-between">
-          <div className="button-pair"></div>
-          <EduIDButton buttonstyle="primary" type="submit" id="dashboard-button" onClick={handleDashboardOnClick}>
-            <FormattedMessage defaultMessage="Dashboard" description="Errors button" />
-          </EduIDButton>
-        </div>
+        <p>
+          <FormattedMessage
+            defaultMessage="You can review your settings at the"
+            description="Errors go to dashboard instruction"
+          />
+          &nbsp;
+          <a className="link" id="dashboard-button" onClick={handleDashboardOnClick}>
+            <FormattedMessage defaultMessage="eduID Dashboard" description="Errors button" />
+          </a>
+        </p>
         <ErrorTechnicalInfo errorURL={errorURL} />
       </div>
     </div>
@@ -66,29 +69,70 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
 
   return (
     <React.Fragment>
-      <div className={"technical-info-heading"}>
-        <p>
-          <FormattedMessage defaultMessage={"Technical Information"} description="errorURL" />
-        </p>
-      </div>
-      <div className={"technical-info-box"}>
-        {error_info?.logged_in && (
-          <div className={"technical-info-text"} key="eppn">
-            <p>eduID identifier</p>
-            <p>{error_info.eppn}</p>
-          </div>
-        )}
-        {Object.entries(props.errorURL).map(([key, value]) => {
-          if (!value) {
-            return null;
-          }
-          return (
-            <div className={"technical-info-text"} key={key}>
-              <p>{key.toUpperCase()}</p>
-              <p>{key === "date" && value ? value.toISOString() : value}</p>
-            </div>
-          );
-        })}
+      <div className="figure">
+        <table className="error-info">
+          {error_info === undefined ? (
+            <tbody>
+              <tr>
+                <td className="plain-cell">
+                  <strong>
+                    <FormattedMessage
+                      defaultMessage="There is no technical information available"
+                      description="no error information message"
+                    />
+                  </strong>
+                </td>
+              </tr>
+            </tbody>
+          ) : (
+            <React.Fragment>
+              <caption>
+                <h3>
+                  <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
+                </h3>
+              </caption>
+              <thead>
+                <tr>
+                  <th className="figcaption">
+                    <FormattedMessage defaultMessage="Name" description="column name label" />
+                  </th>
+                  <th className="figcaption">
+                    <FormattedMessage defaultMessage="Value" description="column value label" />
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {error_info?.logged_in && (
+                  <tr key="eppn">
+                    <td>
+                      <strong>
+                        <FormattedMessage
+                          defaultMessage="eduID identifier"
+                          description="column eduID identifier label"
+                        />
+                      </strong>
+                    </td>
+                    <td>{error_info.eppn}</td>
+                  </tr>
+                )}
+                {Object.entries(props.errorURL).map(([key, value]) => {
+                  if (!value) {
+                    return null;
+                  }
+                  return (
+                    <tr key={key}>
+                      <td>
+                        <strong>{key}</strong>
+                      </td>
+                      <td>{key === "date" && value ? value.toISOString() : value}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </React.Fragment>
+          )}
+        </table>
       </div>
     </React.Fragment>
   );
