@@ -25,7 +25,7 @@ interface EmailFormData {
 
 function Emails() {
   const [showEmailForm, setShowEmailForm] = useState(false);
-  const [confirmingEmail, setConfirmingEmail] = useState<null | string>("");
+  const [confirmingEmail, setConfirmingEmail] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
 
@@ -95,7 +95,7 @@ function Emails() {
   }
 
   function handleStopConfirmation() {
-    setConfirmingEmail(null);
+    setConfirmingEmail(undefined);
   }
 
   function handleConfirm() {
@@ -104,7 +104,7 @@ function Emails() {
       code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
     };
     if (data.code && confirmingEmail) dispatch(requestVerifyEmail({ code: data.code, email: confirmingEmail }));
-    setConfirmingEmail(null);
+    setConfirmingEmail(undefined);
   }
 
   function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
