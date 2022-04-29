@@ -121,6 +121,10 @@ button.btn-link {
     font-size: 0.75rem;
   }
 
+  &.normal-case {
+    text-transform: none;
+  }
+
   &.lowercase {
     text-transform: lowercase;
 

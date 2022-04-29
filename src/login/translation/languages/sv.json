@@ -484,17 +484,11 @@
     "developer_comment": "error text for invalid confirmation code",
     "string": "Ogiltig bekräftelsekod"
   },
-  "created.account-created": {
-    "string": "Kontot skapades"
-  },
   "created.back_to_signup": {
     "string": "Tillbaka till registreringen"
   },
   "created.confirm-registration": {
     "string": "Bekräfta registrering"
-  },
-  "created.email-label": {
-    "string": "Slutför skapandet av ditt eduID genom att klicka länken skickad till:"
   },
   "created.email-sent": {
     "string": "Ett e-postmeddelande med instruktioner för hur du kommer vidare har skickats till {email}"
@@ -754,15 +748,6 @@
   },
   "finish.finish": {
     "string": "SLUTFÖR"
-  },
-  "finish.got-it": {
-    "string": "Klart"
-  },
-  "finish.registration-complete": {
-    "string": "Registrering av ditt eduID är klar."
-  },
-  "finish.registration-details": {
-    "string": "Detta är dina inloggningsuppgifter för eduID."
   },
   "finish.sites-accept": {
     "string": "Ditt konto är nu klart att användas med webbplatser som accepterar"
