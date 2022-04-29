@@ -71,8 +71,21 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
     <React.Fragment>
       <div className="figure">
         <table className="error-info">
-          {error_info !== undefined ? (
-            <>
+          {error_info === undefined ? (
+            <tbody>
+              <tr>
+                <td className="plain-cell">
+                  <strong>
+                    <FormattedMessage
+                      defaultMessage="There is no technical information available"
+                      description="no error information message"
+                    />
+                  </strong>
+                </td>
+              </tr>
+            </tbody>
+          ) : (
+            <React.Fragment>
               <caption>
                 <h3>
                   <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
@@ -117,20 +130,7 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
                   );
                 })}
               </tbody>
-            </>
-          ) : (
-            <tbody>
-              <tr>
-                <td className="plain-cell">
-                  <strong>
-                    <FormattedMessage
-                      defaultMessage="There is no technical information available"
-                      description="no error information message"
-                    />
-                  </strong>
-                </td>
-              </tr>
-            </tbody>
+            </React.Fragment>
           )}
         </table>
       </div>
