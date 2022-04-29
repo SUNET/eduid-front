@@ -223,7 +223,9 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
               />
               <p className="enter-phone-code">
                 {props.translate("resetpw.received-sms")}&nbsp;
-                <a onClick={() => toPhoneCodeForm()}>{props.translate("resetpw.enter-code")} </a>
+                <a className="text-link" onClick={() => toPhoneCodeForm()}>
+                  {props.translate("resetpw.enter-code")}
+                </a>
               </p>
             </>
           ) : null}
