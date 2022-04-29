@@ -69,7 +69,6 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 }
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
-  console.log("props.error", props.error);
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="response-code-inputs">
