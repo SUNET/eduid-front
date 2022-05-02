@@ -3,19 +3,10 @@ import { translate } from "login/translation";
 import React, { useState } from "react";
 import { useIntl, FormattedMessage } from "react-intl";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
-import TableList from "../login/components/DataTable/DataTable";
+import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
-// import {
-//   makePrimary,
-//   postMobile,
-//   startResendMobileCode,
-//   startConfirmation,
-//   stopConfirmation,
-//   startVerify,
-//   startRemove,
-// } from "actions/Mobile";
 import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import {
@@ -49,53 +40,11 @@ const validate = (values: any) => {
   }
 };
 
-// const PhoneForm = (props: any) => {
-//   const intl = useIntl();
-//   // placeholder can't be an Element, we need to get the actual translated string here
-//   const placeholder = intl.formatMessage({
-//     id: "placeholder.phone",
-//     defaultMessage: "Phone number",
-//     description: "placeholder text for phone input",
-//   });
-
-//   return (
-//     // <Form id="phonesview-form" role="form" onSubmit={props.handleAdd} className="single-input-form">
-//     //   <fieldset id="phone-form" className="tabpane">
-//     //     <Field
-//     //       label={translate("profile.phone_display_title")}
-//     //       component={CustomInput}
-//     //       componentClass="input"
-//     //       type="text"
-//     //       name="number"
-//     //       placeholder={placeholder}
-//     //       helpBlock={translate("phones.input_help_text")}
-//     //     />
-//     //   </fieldset>
-//     //   <EduIDButton id="mobile-button" buttonstyle="primary" disabled={!props.valid_phone} onClick={props.handleAdd}>
-//     //     {translate("mobile.button_add")}
-//     //   </EduIDButton>
-//     // </Form>
-//   );
-// };
-
-// const DecoratedPhoneForm = reduxForm({
-//   form: "phones",
-//   // validate,
-// })(PhoneForm);
-
-// const FinalePhoneForm = connect((state) => ({
-//   initialValues: { number: "" },
-//   enableReinitialize: true,
-// }))(DecoratedPhoneForm);
-
 function Phones() {
   const [showPhoneForm, setShowPhoneForm] = useState(false);
   const [confirmingPhone, setConfirmingPhone] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
-  // const confirming = useDashboardAppSelector((state) => state.phones.confirming);
-  // const resending = useDashboardAppSelector((state) => state.phones.resending);
-  // const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
 
   function handleMobileForm() {
     setShowPhoneForm(true);
@@ -109,7 +58,7 @@ function Phones() {
     if (values.number) {
       const response = await dispatch(postNewPhone({ number: values.number }));
       if (postNewPhone.fulfilled.match(response)) {
-        // phone number form closed when user have successfully added an email
+        // phone number form closed when user have successfully added phone number
         return setShowPhoneForm(false);
       }
     } else setShowPhoneForm(true);
@@ -184,13 +133,12 @@ function Phones() {
         <p>{translate("phones.long_description")}</p>
       </div>
       <div id="phone-display">
-        <TableList
+        <DataTable
           data={phones.phones}
           handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
           handleMakePrimary={handleMakePrimary}
         />
-        {/* <div className={formClass}> */}
         {showPhoneForm ? (
           <FinalForm<any>
             onSubmit={handleAdd}
@@ -229,31 +177,10 @@ function Phones() {
             }}
           />
         ) : (
-          //   <Form id="phonesview-form" role="form" onSubmit={handleAdd} className="single-input-form">
-          //   <fieldset id="phone-form" className="tabpane">
-          //     <Field
-          //       label={translate("profile.phone_display_title")}
-          //       component={CustomInput}
-          //       componentClass="input"
-          //       type="text"
-          //       name="number"
-          //       placeholder={placeholder}
-          //       helpBlock={translate("phones.input_help_text")}
-          //     />
-          //   </fieldset>
-          //   <EduIDButton id="mobile-button" buttonstyle="primary"  type="submit"
-          //   disabled={invalid || pristine}
-          //   // disabled={!valid_phone}
-          //   onClick={handleAdd}>
-          //     {translate("mobile.button_add")}
-          //   </EduIDButton>
-          // </Form>
           <EduIDButton id="add-more-button" buttonstyle="link" className={" lowercase"} onClick={handleMobileForm}>
             {translate("phones.button_add_more")}
           </EduIDButton>
         )}
-
-        {/* </div> */}
       </div>
       <ConfirmModal
         modalId="phoneConfirmDialog"
