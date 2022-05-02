@@ -19,7 +19,12 @@ import {
 } from "actions/Mobile";
 import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
+import { postNewPhone } from "apis/eduidPhone";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
+
+interface PhoneFormData {
+  number?: string;
+}
 
 const validate = (values: any) => {
   let phone = values.number;
@@ -78,25 +83,30 @@ const validate = (values: any) => {
 //   enableReinitialize: true,
 // }))(DecoratedPhoneForm);
 
-function Phone(props: any) {
-  const [showMobileForm, setShowMobileForm] = useState(false);
+function Phones(props: any) {
+  const [showPhoneForm, setShowPhoneForm] = useState(false);
   const dispatch = useDashboardAppDispatch();
-  const phones = useDashboardAppSelector((state) => state.phones.phones);
-  const confirming = useDashboardAppSelector((state) => state.phones.confirming);
-  const resending = useDashboardAppSelector((state) => state.phones.resending);
+  const phones = useDashboardAppSelector((state) => state.phones);
+  // const confirming = useDashboardAppSelector((state) => state.phones.confirming);
+  // const resending = useDashboardAppSelector((state) => state.phones.resending);
   // const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
 
   function handleMobileForm() {
-    setShowMobileForm(true);
+    setShowPhoneForm(true);
     // rendering focus on input, setTimeout for 200 milliseconds to recognize the form
     setTimeout(() => {
       (document.getElementById("number") as HTMLInputElement).focus();
     }, 200);
   }
 
-  function handleAdd(event: React.MouseEvent<HTMLElement>) {
-    event.preventDefault();
-    dispatch(postMobile());
+  async function handleAdd(values: PhoneFormData) {
+    if (values.number) {
+      const response = await dispatch(postNewPhone({ number: values.number }));
+      if (postNewPhone.fulfilled.match(response)) {
+        // phone number form closed when user have successfully added an email
+        return setShowPhoneForm(false);
+      }
+    } else setShowPhoneForm(true);
   }
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
@@ -146,7 +156,7 @@ function Phone(props: any) {
   }
 
   function handleCancel() {
-    setShowMobileForm(false);
+    setShowPhoneForm(false);
   }
 
   const intl = useIntl();
@@ -162,8 +172,8 @@ function Phone(props: any) {
       id: "mobile.confirm_title",
       defaultMessage: "Enter the code sent to {phone}",
       description: "Title for phone code input",
-    },
-    { phone: confirming }
+    }
+    // { phone: confirming }
   );
 
   return (
@@ -174,13 +184,13 @@ function Phone(props: any) {
       </div>
       <div id="phone-display">
         <TableList
-          data={phones}
+          // data={phones.phones}
           handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
           handleMakePrimary={handleMakePrimary}
         />
         {/* <div className={formClass}> */}
-        {showMobileForm ? (
+        {showPhoneForm ? (
           <FinalForm<any>
             onSubmit={handleAdd}
             initialValues={{
@@ -252,7 +262,7 @@ function Phone(props: any) {
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
         placeholder={placeholder}
-        showModal={Boolean(confirming)}
+        // showModal={Boolean(confirming)}
         closeModal={handleStopConfirmation}
         handleResend={handleResend}
         handleConfirm={handleConfirm}
@@ -263,4 +273,4 @@ function Phone(props: any) {
   );
 }
 
-export default Phone;
+export default Phones;

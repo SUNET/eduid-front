@@ -2,30 +2,30 @@ import { put, select, call } from "redux-saga/effects";
 import { checkStatus, putCsrfToken, postRequest, saveData, failRequest } from "sagas/common";
 import * as actions from "actions/Mobile";
 
-const getData = (state) => ({
-  number: state.phones.phone,
-  verified: false,
-  primary: false,
-  csrf_token: state.config.csrf_token,
-});
+// const getData = (state) => ({
+//   number: state.phones.phone,
+//   verified: false,
+//   primary: false,
+//   csrf_token: state.config.csrf_token,
+// });
 
-export function sendMobile(config, data) {
-  return window
-    .fetch(config.mobile_url + "new", {
-      ...postRequest,
-      body: JSON.stringify(data),
-    })
-    .then(checkStatus)
-    .then((response) => response.json());
-}
+// export function sendMobile(config, data) {
+//   return window
+//     .fetch(config.mobile_url + "new", {
+//       ...postRequest,
+//       body: JSON.stringify(data),
+//     })
+//     .then(checkStatus)
+//     .then((response) => response.json());
+// }
 
-export const saveMobile = saveData(
-  getData,
-  "phones",
-  () => ({ type: "NOOP_ACTION" }),
-  sendMobile,
-  actions.postMobileFail
-);
+// export const saveMobile = saveData(
+//   getData,
+//   "phones",
+//   () => ({ type: "NOOP_ACTION" }),
+//   sendMobile,
+//   actions.postMobileFail
+// );
 
 export function* requestResendMobileCode() {
   try {

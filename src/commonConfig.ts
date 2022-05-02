@@ -26,7 +26,7 @@ interface APIEndpoints {
   personal_data_url?: string;
   ladok_url?: string;
   emails_url?: string;
-  mobile_url?: string;
+  phone_url?: string;
   base_url?: string; // TODO: This is the login app base URL, rename to login_base_url?
 }
 
