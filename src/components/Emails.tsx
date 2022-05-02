@@ -166,9 +166,6 @@ function Emails() {
                     type="text"
                     name="email"
                     placeholder={emailPlaceholder}
-                    helpBlock={
-                      <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
-                    }
                     validate={validateEmailsInForm}
                   />
                   <div className="flex-buttons">
