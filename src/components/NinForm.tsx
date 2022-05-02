@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
-import * as actions from "actions/Nins";
 
 import CustomInput from "../login/components/Inputs/CustomInput";
 import { useIntl } from "react-intl";
@@ -10,6 +9,7 @@ import { translate } from "login/translation";
 import { DashboardRootState } from "dashboard-init-app";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import EduIDButton from "./EduIDButton";
+import { addNin } from "apis/eduidSecurity";
 
 const validate = (values: { nin: string }) => {
   let value = values.nin;
@@ -65,7 +65,7 @@ const NinForm = (props: NinFormProps): JSX.Element => {
   const submitNinForm = (values: ValuesProps) => {
     const nin = values.nin;
     if (nin) {
-      dispatch(actions.postNin(nin));
+      dispatch(addNin(nin));
     }
     return 1;
   };

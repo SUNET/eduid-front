@@ -1,4 +1,6 @@
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { addNin, removeNin } from "apis/eduidSecurity";
+import { fetchNins } from "apis/personalData";
 
 export interface NinInfo {
   number: string;
@@ -24,8 +26,9 @@ const initialState: NinState = {
 
 export const GET_NINS_SUCCESS = createAction<{ nins: NinInfo[] }>("GET_PERSONAL_DATA_NINS_SUCCESS");
 export const GET_NINS_FAIL = createAction<{ message: string }>("GET_PERSONAL_DATA_NINS_FAIL");
-export const POST_NIN_REMOVE_SUCCESS =
-  createAction<{ success: boolean; message: string; nins: NinInfo[] }>("POST_NIN_REMOVE_SUCCESS");
+export const POST_NIN_REMOVE_SUCCESS = createAction<{ success: boolean; message: string; nins: NinInfo[] }>(
+  "POST_NIN_REMOVE_SUCCESS"
+);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const changeNindata = createAction<{ data: any }>("CHANGE_NINDATA");
 
@@ -33,31 +36,21 @@ const ninsSlice = createSlice({
   name: "nins",
   initialState,
   reducers: {
-    startRemove: (state, action: PayloadAction<string>) => {
-      // TODO: What's this? Investigate why we need to remember the payload here
-      state.rmNin = action.payload;
+    setNins: (state, action: PayloadAction<NinInfo[]>) => {
+      // Update nins in state. Called after bulk-fetch of personal data.
+      state.nins = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(GET_NINS_SUCCESS, (state, action) => {
-        const nins = action.payload.nins;
-        state.nins = nins;
-        if (nins.length) {
-          // TODO: this state.nin, wouldn't it be reasonable to put the primary (verified) NIN there?
-          state.nin = nins[0].number;
-        }
-      })
-      .addCase(GET_NINS_FAIL, (state, action) => {
-        state.message = action.payload.message;
-      })
-      .addCase(POST_NIN_REMOVE_SUCCESS, (state, action) => {
-        // TODO: old code chucked action.payload.success into state as well, was it ever used?
-        state.message = action.payload.message;
+      .addCase(fetchNins.fulfilled, (state, action) => {
         state.nins = action.payload.nins;
-        // TODO: old code didn't update state.nin here, but it is probably a bug to not do that?
-        //       ... but, sigh, it looks like we have a saga that triggers on this action too,
-        //           and refreshes the nins with another GET request to the backend ¯\_(ツ)_/¯
+      })
+      .addCase(addNin.fulfilled, (state, action) => {
+        state.nins = action.payload.nins;
+      })
+      .addCase(removeNin.fulfilled, (state, action) => {
+        state.nins = action.payload.nins;
       })
       .addCase(changeNindata, (state, action) => {
         // What is this? A rabbit-hole that leads to lookup-mobile-proofing. I'm not sure it

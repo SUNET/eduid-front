@@ -1,15 +1,16 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import EduIDButton from "components/EduIDButton";
-import ninsSlice, { NinInfo } from "reducers/Nins";
+import { NinInfo } from "reducers/Nins";
 import { translate } from "login/translation";
 import { useDashboardAppDispatch } from "dashboard-hooks";
 import { FormattedMessage } from "react-intl";
+import { removeNin } from "apis/eduidSecurity";
 
 interface NinDisplayProps {
   nins: NinInfo[]; // all nins
   verifiedNin: NinInfo[]; // all verified nins
-  handleDelete: (e: React.MouseEvent<HTMLElement>) => void;
+  handleDelete: () => void;
   delete?: boolean; // probable BUG: don't know where this comes from
   showDeleteButton: boolean;
 }
@@ -20,16 +21,8 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
   const verifiedNins = props.nins.filter((nin) => nin.verified);
   const nin = verifiedNins[0] || props.nins[0];
 
-  const handleDelete = function (e: React.MouseEvent<HTMLElement>): void {
-    // TODO: We should be able to just use 'nin.number' from the enclosing function, right? Why go digging after it in the HTML?
-    const target = e.target as HTMLElement;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const cell = target.closest(".profile-grid-cell") as unknown as any;
-    if (cell) {
-      // TODO: investigate proper type for cell.children[1], ts says it has no 'dataset'
-      const ninNumber = cell.children[1].dataset.ninnumber;
-      dispatch(ninsSlice.actions.startRemove(ninNumber));
-    }
+  const handleDelete = function (): void {
+    dispatch(removeNin(nin.number));
   };
 
   return (

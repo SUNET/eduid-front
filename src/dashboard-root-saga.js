@@ -3,19 +3,17 @@ import * as configActions from "actions/DashboardConfig";
 import * as headerActions from "actions/Header";
 import * as lmpActions from "actions/LookupMobileProofing";
 import * as mobileActions from "actions/Mobile";
-import * as ninActions from "actions/Nins";
 import * as openidActions from "actions/OpenidConnect";
 import * as openidFrejaActions from "actions/OpenidConnectFreja";
 import * as pdataActions from "actions/PersonalData";
 import * as securityActions from "actions/Security";
-import ninsSlice from "reducers/Nins";
 import { put, select, takeEvery, takeLatest } from "redux-saga/effects";
 import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/AccountLinking";
 import { requestConfig } from "sagas/DashboardConfig";
 import { requestLogout } from "sagas/Header";
 import { saveLMPNinData } from "sagas/LookupMobileProofing";
 import * as sagasMobile from "sagas/Mobile";
-import { postNin, requestNins, requestRemoveNin } from "sagas/Nins";
+import { requestNins } from "sagas/Nins";
 import * as sagasOpenid from "sagas/OpenidConnect";
 import * as sagasOpenidFreja from "sagas/OpenidConnectFreja";
 import { requestAllPersonalData } from "sagas/PersonalData";
@@ -72,10 +70,6 @@ function* rootSaga() {
     takeLatest(mobileActions.START_VERIFY, sagasMobile.requestVerifyMobile),
     takeLatest(securityActions.initiatePasswordChange.type, requestPasswordChange),
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
-    takeLatest(ninActions.postNin.type, postNin),
-    takeEvery(ninActions.POST_NIN_SUCCESS, requestNins),
-    takeLatest(ninsSlice.actions.startRemove.type, requestRemoveNin),
-    takeEvery(ninActions.POST_NIN_REMOVE_SUCCESS, requestNins),
     takeEvery(postRequestLetter.fulfilled, requestAllPersonalData),
     takeEvery(confirmLetterCode.fulfilled, requestAllPersonalData),
     takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
