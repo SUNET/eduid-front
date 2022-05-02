@@ -85,10 +85,6 @@
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
   },
-  "8HceTn": {
-    "developer_comment": "Emails input help text",
-    "string": "A valid email address"
-  },
   "8KywNU": {
     "developer_comment": "ToU first paragraph",
     "string": "that user accounts, password, security keys and codes are individual and shall only be used by the intended individual,"
@@ -317,6 +313,10 @@
     "developer_comment": "ErrorURL authorization failure",
     "string": "Insufficient privileges"
   },
+  "Ok/e72": {
+    "developer_comment": "Add emails description",
+    "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
+  },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "The list of higher education institutions could not be loaded at this time"
@@ -365,10 +365,6 @@
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
-  },
-  "TNLn8n": {
-    "developer_comment": "Emails description",
-    "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
