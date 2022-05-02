@@ -1797,8 +1797,14 @@
   "security.verify": {
     "string": "Verifiera"
   },
+  "security.webauthn-attestation-fail": {
+    "string": "Det gick inte att verifiera säkerhetsnyckeln."
+  },
   "security.webauthn-describe-title": {
     "string": "Ge ett namn till din säkerhetsnyckel"
+  },
+  "security.webauthn-metadata-fail": {
+    "string": "Det gick inte att validera säkerhetsnyckelns metadata."
   },
   "security.webauthn-missing-pdata": {
     "string": "Du måste lägga till personlig data innan du kan lägga till en säkerhetsnyckel"
