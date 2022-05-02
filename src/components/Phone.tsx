@@ -78,7 +78,7 @@ const validate = (values: any) => {
 //   enableReinitialize: true,
 // }))(DecoratedPhoneForm);
 
-function Mobile(props: any) {
+function Phone(props: any) {
   const [showMobileForm, setShowMobileForm] = useState(false);
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones.phones);
@@ -263,4 +263,4 @@ function Mobile(props: any) {
   );
 }
 
-export default Mobile;
+export default Phone;

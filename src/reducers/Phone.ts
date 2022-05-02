@@ -8,7 +8,7 @@ const mobileData = {
   code: "",
 };
 
-let mobileReducer = (state = mobileData, action) => {
+const phoneReducer = (state = mobileData, action: any) => {
   switch (action.type) {
     case actions.GET_MOBILES_SUCCESS:
       return {
@@ -42,12 +42,12 @@ let mobileReducer = (state = mobileData, action) => {
         code: action.payload.code,
       };
 
-    case actions.POST_PHONE_VERIFY_SUCCESS:
-      return {
-        ...state,
-        ...state.payload,
-        phones: action.payload.phones,
-      };
+    // case actions.POST_PHONE_VERIFY_SUCCESS:
+    //   return {
+    //     ...state,
+    //     ...state.payload,
+    //     phones: action.payload.phones,
+    //   };
     case actions.POST_MOBILE_REMOVE:
       return {
         ...state,
@@ -68,18 +68,18 @@ let mobileReducer = (state = mobileData, action) => {
         ...state,
         ...action.payload,
       };
-    case "@@redux-form/CHANGE": {
-      const form = {};
-      if (action.meta.form === "phones" && action.meta.field === "number") {
-        form.phone = action.payload;
-      }
-      return {
-        ...state,
-        ...form,
-      };
-    }
+    // case "@@redux-form/CHANGE": {
+    //   const form = {};
+    //   if (action.meta.form === "phones" && action.meta.field === "number") {
+    //     form.phone = action.payload;
+    //   }
+    //   return {
+    //     ...state,
+    //     ...form,
+    //   };
+    // }
     default:
       return state;
   }
 };
-export default mobileReducer;
+export default phoneReducer;

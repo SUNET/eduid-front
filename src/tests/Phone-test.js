@@ -3,19 +3,19 @@ import React from "react";
 import { mount } from "enzyme";
 import expect from "expect";
 import * as actions from "actions/Mobile";
-import mobileReducer from "reducers/Mobile";
-import {
-  saveMobile,
-  sendMobile,
-  requestRemoveMobile,
-  requestVerifyMobile,
-  requestVerify,
-  requestResendMobileCode,
-  requestRemove,
-  requestMakePrimaryMobile,
-  requestMakePrimary,
-  requestResend,
-} from "sagas/Mobile";
+import phoneReducer from "reducers/Phone";
+// import {
+//   saveMobile,
+//   sendMobile,
+//   requestRemoveMobile,
+//   requestVerifyMobile,
+//   requestVerify,
+//   requestResendMobileCode,
+//   requestRemove,
+//   requestMakePrimaryMobile,
+//   requestMakePrimary,
+//   requestResend,
+// } from "sagas/Mobile";
 import { put, call } from "redux-saga/effects";
 import MobileContainer from "containers/Mobile";
 import { ReduxIntlProvider } from "components/ReduxIntl";
@@ -172,7 +172,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_MOBILE,
       })
     ).toEqual({
@@ -186,7 +186,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_SUCCESS action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_MOBILE_SUCCESS,
       })
     ).toEqual({
@@ -200,7 +200,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_MOBILE_FAIL,
         payload: {
           message: "Bad error",
@@ -217,7 +217,7 @@ describe("", () => {
 
   it("Receives a START_CONFIRMATION action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.START_CONFIRMATION,
         payload: {
           phone: 999123123,
@@ -234,7 +234,7 @@ describe("", () => {
 
   it("Receives a STOP_CONFIRMATION action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.STOP_CONFIRMATION,
       })
     ).toEqual({
@@ -248,7 +248,7 @@ describe("", () => {
 
   it("Receives a START_RESEND_MOBILE_CODE action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE,
       })
     ).toEqual({
@@ -262,7 +262,7 @@ describe("", () => {
 
   it("Receives a START_RESEND_MOBILE_CODE_SUCCESS action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE_SUCCESS,
         message: "mobile.resend_success",
       })
@@ -277,7 +277,7 @@ describe("", () => {
 
   it("Receives a START_RESEND_MOBILE_CODE_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.START_RESEND_MOBILE_CODE_FAIL,
         payload: {
           message: "Bad error",
@@ -294,7 +294,7 @@ describe("", () => {
 
   it("Receives a START_VERIFY action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.START_VERIFY,
         payload: {
           code: "123456789",
@@ -311,7 +311,7 @@ describe("", () => {
 
   it("Receives a POST_PHONE_VERIFY_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_PHONE_VERIFY_FAIL,
         payload: { message: "Bad error" },
       })
@@ -326,7 +326,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_REMOVE action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_MOBILE_REMOVE,
         payload: {
           phone: 999123123,
@@ -343,7 +343,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_REMOVE_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_MOBILE_REMOVE_FAIL,
         payload: {
           message: "Bad error",
@@ -360,7 +360,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_PRIMARY action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY,
         payload: {
           phone: 999123123,
@@ -377,7 +377,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_PRIMARY_SUCCESS action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY_SUCCESS,
         message: "mobile.resend_success",
       })
@@ -392,7 +392,7 @@ describe("", () => {
 
   it("Receives a POST_MOBILE_PRIMARY_FAIL action", () => {
     expect(
-      mobileReducer(mockState, {
+      phoneReducer(mockState, {
         type: actions.POST_MOBILE_PRIMARY_FAIL,
         payload: {
           message: "Bad error",
