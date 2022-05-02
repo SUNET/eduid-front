@@ -30,7 +30,7 @@ const baseState: DashboardRootState = {
   lookup_mobile: {},
   openid_freja_data: undefined as unknown as any,
   personal_data: undefined as any,
-  phones: {},
+  phones: undefined as any,
   account_linking: undefined as any,
   security: undefined as any,
   eidas_data: undefined as any,
