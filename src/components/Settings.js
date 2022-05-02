@@ -1,7 +1,7 @@
 import AccountId from "containers/AccountId";
 import AccountLinkingContainer from "containers/AccountLinking";
 import DeleteAccount from "containers/DeleteAccount";
-import EmailsContainer from "containers/Emails";
+import EmailsContainer from "components/Emails";
 import MobileContainer from "containers/Mobile";
 import SecurityContainer from "containers/Security";
 import React, { Component, Fragment } from "react";

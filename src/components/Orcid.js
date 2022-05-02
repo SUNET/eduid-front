@@ -16,7 +16,7 @@ class Orcid extends Component {
         <div className="table-responsive">
           <table className="table table-striped table-form">
             <tbody>
-              <tr className="emailrow">
+              <tr className="email-row">
                 <td>
                   <div className="flex-between">
                     {orcidAuthor}

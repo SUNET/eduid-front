@@ -1,5 +1,5 @@
 import { appLoaded } from "actions/DashboardConfig";
-import * as emailActions from "actions/Emails";
+import { GET_EMAIL_ALL_SUCCESS } from "reducers/Emails";
 import * as phoneActions from "actions/Mobile";
 import * as actions from "actions/PersonalData";
 import { LadokData } from "apis/eduidLadok";
@@ -171,12 +171,7 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(action2));
 
     // The saga sends the emails on to the nins reducer
-    const action3 = {
-      type: emailActions.GET_EMAILS_SUCCESS,
-      payload: {
-        emails: [],
-      },
-    };
+    const action3 = GET_EMAIL_ALL_SUCCESS({ emails: [] });
     next = generator.next(action3 as unknown as any);
     expect(next.value).toEqual(put(action3));
 
