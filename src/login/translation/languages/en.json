@@ -1797,8 +1797,14 @@
   "security.verify": {
     "string": "Verify key"
   },
+  "security.webauthn-attestation-fail": {
+    "string": "Failed to verify the attestation for the security key."
+  },
   "security.webauthn-describe-title": {
     "string": "Add a name for your security key"
+  },
+  "security.webauthn-metadata-fail": {
+    "string": "Failed to validate the security key against metadata."
   },
   "security.webauthn-missing-pdata": {
     "string": "You should add your personal data before adding a security key"
