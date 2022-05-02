@@ -14,26 +14,15 @@ interface CustomInputProps extends FieldRenderProps<string> {
 export default function CustomInput(props: FieldRenderProps<string>): JSX.Element {
   const { meta, input } = props;
 
-  let valid = false,
-    invalid = false;
-
-  if (meta.touched || meta.submitFailed) {
-    if (meta.error) {
-      invalid = true;
-    } else {
-      valid = true;
-    }
-  }
-
   return (
     <FormGroup id={`${input.name}-wrapper`}>
       <RenderLabelAndHelpText {...props} name={input.name} />
       {input.name === "current-password" ? (
-        <PasswordInputElement {...props} name={input.name} id={input.name} valid={valid} invalid={invalid} />
+        <PasswordInputElement {...props} name={input.name} id={input.name} valid={meta.valid} invalid={meta.invalid} />
       ) : (
-        <InputElement {...props} valid={valid} invalid={invalid} />
+        <InputElement {...props} valid={meta.valid} invalid={meta.invalid} />
       )}
-      <RenderErrorMessage {...props} name={input.name} valid={valid} invalid={invalid} />
+      <RenderErrorMessage {...props} name={input.name} />
     </FormGroup>
   );
 }
