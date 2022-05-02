@@ -3,6 +3,10 @@
     "developer_comment": "Header register",
     "string": "Registrera"
   },
+  "/XXYdv": {
+    "developer_comment": "Register Account created",
+    "string": "Kontot skapades"
+  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Försök igen"
@@ -10,6 +14,10 @@
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "att SUNET:s etiska regler reglerar övrig tillåten användning. "
+  },
+  "12hWj7": {
+    "developer_comment": "ErrorURL authentication failure",
+    "string": "Eventuellt behöver du säkerställa din identitet i eduID Dashboard innan du försöker igen."
   },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
@@ -23,17 +31,25 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Om du accepterar att få ett brev hem måste du skriva in bekräftelsekoden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
   },
-  "3R4Ypi": {
-    "developer_comment": "Default tagline",
-    "string": "eduID är enklare och säkrare inloggning."
-  },
   "3ioK05": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Tryck här igen när du har fått brevet"
   },
+  "3iy3CU": {
+    "developer_comment": "ErrorURL authentication failure",
+    "string": "Tjänsten du försökte använda avbröts under autentisering."
+  },
   "4+GwOq": {
     "developer_comment": "Set new password",
     "string": "Nytt lösenord"
+  },
+  "40kUIs": {
+    "developer_comment": "ErrorURL unknown error",
+    "string": "Ett okänt fel inträffade när du försökte använda tjänsten."
+  },
+  "4KkuhD": {
+    "developer_comment": "ErrorURL eduid error",
+    "string": "Ej inloggad"
   },
   "4WguDO": {
     "string": "Utvecklarinformation, visas inte i produktion:"
@@ -57,9 +73,21 @@
     "developer_comment": "Login OtherDevice",
     "string": "Fortsätt"
   },
+  "7rcGK1": {
+    "developer_comment": "column value label",
+    "string": "Värde"
+  },
+  "85yuW9": {
+    "developer_comment": "ErrorURL eduid error",
+    "string": "Du är ej inloggad, eller så avslutades sessionen."
+  },
   "891gyK": {
     "developer_comment": "Login UsernamePw",
     "string": "Annan enhet"
+  },
+  "8HceTn": {
+    "developer_comment": "Emails input help text",
+    "string": "En giltig e-postadress"
   },
   "8KywNU": {
     "developer_comment": "ToU first paragraph",
@@ -97,6 +125,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Koden gick ut"
   },
+  "AOo5zL": {
+    "developer_comment": "ErrorURL other error",
+    "string": "Eventuellt behöver du säkerställa din identitet i eduID Dashboard innan du försöker igen."
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Skriv in koden du fått hemskickad"
@@ -128,8 +160,16 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker få tillgång till nätverksresurser utan att ha rätt till det"
   },
+  "EW3NC1": {
+    "developer_comment": "Email label",
+    "string": "E-postadress"
+  },
   "Ek2FGc": {
     "string": "Logga in på den andra enheten"
+  },
+  "EqjCQt": {
+    "developer_comment": "Errors go to dashboard instruction",
+    "string": "Du har åtkomst till dina inställningar i"
   },
   "Error: Gateway Time-out": {
     "string": "The remote service is taking too long to respond, please try again"
@@ -142,6 +182,10 @@
   },
   "Error: Service Unavailable": {
     "string": "Tjänsten är inte tillgänglig. Är du ansluten till nätverket?"
+  },
+  "FEMdsB": {
+    "developer_comment": "ErrorURL other error",
+    "string": "Åtkomstfel"
   },
   "FQZGJ7": {
     "developer_comment": "Terms of use (common header)",
@@ -175,10 +219,6 @@
     "developer_comment": "Login Mfa heading",
     "string": "Logga in: Extra nivå av säkerhet"
   },
-  "GX77Th": {
-    "developer_comment": "Header tagline",
-    "string": "eduID för"
-  },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
     "string": "VISA"
@@ -191,8 +231,16 @@
     "developer_comment": "Use another device #1",
     "string": "Inloggningsförsöket avbröts eller tog för lång tid. Var vänlig försök igen."
   },
+  "Ifusv7": {
+    "developer_comment": "Emails main title",
+    "string": "E-postadresser"
+  },
   "InvalidStateError: The user attempted to register an authenticator that contains one of the credentials already registered with the relying party.": {
     "string": "Säkerhetsnyckeln är redan registrerad med eduID"
+  },
+  "Ipp+o7": {
+    "developer_comment": "confirm button",
+    "string": "Bekräfta"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -201,6 +249,10 @@
   "KWAMem": {
     "string": "Klicka på \"fortsätt\" här när du har loggat in på den andra enheten"
   },
+  "KeIhmQ": {
+    "developer_comment": "ErrorURL authentication failure",
+    "string": "Autentiseringsfel"
+  },
   "KjyITI": {
     "developer_comment": "Use another device, finished",
     "string": "Inloggningen slutförd, du bör stänga det här fönstret nu."
@@ -208,6 +260,10 @@
   "KqTxEn": {
     "developer_comment": "Ladok account linking",
     "string": "Välj lärosäte"
+  },
+  "LNBvhT": {
+    "developer_comment": "Errors button",
+    "string": "eduID Dashboard"
   },
   "MPTvRv": {
     "developer_comment": "Footer faq",
@@ -219,6 +275,10 @@
   "Missing error message": {
     "string": "Felmeddelande saknas"
   },
+  "MnbIkV": {
+    "developer_comment": "no error information message",
+    "string": "Det finns ingen detaljerad information tillgänglig"
+  },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
     "string": "Blanda stora och små bokstäver (inte bara första bokstaven)"
@@ -227,11 +287,23 @@
     "developer_comment": "Reset Password email link sent",
     "string": "En länk har skickats till din e-postadress  {email}. Länken är giltig i två timmar."
   },
+  "NeWubz": {
+    "developer_comment": "errorURL",
+    "string": "Teknisk information"
+  },
+  "NgScX1": {
+    "developer_comment": "Emails button add",
+    "string": "Lägg till"
+  },
   "No connection to authorization endpoint": {
     "string": "Anslutningen till auktoriseringsservern misslyckades. Var god försök senare"
   },
   "Not a valid email address.": {
     "string": "Ogiltig e-postadress."
+  },
+  "NuVGSk": {
+    "developer_comment": "column eduID identifier label",
+    "string": "eduID-identifierare"
   },
   "O0z0/P": {
     "developer_comment": "Dashboard navigation tooltip",
@@ -240,6 +312,10 @@
   "O7HVVj": {
     "developer_comment": "device info",
     "string": "Beskrivning"
+  },
+  "O9PJiz": {
+    "developer_comment": "ErrorURL authorization failure",
+    "string": "Otillräcklig behörighet"
   },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
@@ -260,6 +336,18 @@
     "developer_comment": "help text for custom password tips",
     "string": "Blanksteg (mellanslag) ignoreras"
   },
+  "RywJRW": {
+    "developer_comment": "Register email label",
+    "string": "Slutför skapandet av ditt eduID genom att klicka länken skickad till:"
+  },
+  "SJUMOA": {
+    "developer_comment": "Reset Password heading",
+    "string": "Återställ lösenord"
+  },
+  "SL6O2c": {
+    "developer_comment": "Password label",
+    "string": "Lösenord"
+  },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
     "string": "Logga in"
@@ -277,6 +365,10 @@
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET bedömer som oetiskt när någon:"
+  },
+  "TNLn8n": {
+    "developer_comment": "Emails description",
+    "string": "Du kan koppla en eller flera av dina e-postadresser till ditt eduID-konto\noch därefter välja vilken av dem som ska vara primär."
   },
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
@@ -304,6 +396,10 @@
     "developer_comment": "Reset Password email link sent",
     "string": "skicka länken igen"
   },
+  "V690+Q": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "Identifiering misslyckades"
+  },
   "V7OJ7r": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Få en bekräftelsekod via post"
@@ -320,6 +416,14 @@
     "developer_comment": "Ladok account linking",
     "string": "Data från Ladok kan ge dig tillgång till fler tjänster. Vissa lärosäten låter eduID hämta data från Ladok."
   },
+  "YGVN20": {
+    "developer_comment": "go to eudID link text",
+    "string": "Gå till eduID"
+  },
+  "YqZO+p": {
+    "developer_comment": "Login button",
+    "string": "Avbryt"
+  },
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Avbryt"
@@ -328,6 +432,10 @@
     "developer_comment": "Use another device, finished",
     "string": "Efter att du har använt den här koden i den första enheten bör du stänga det här fönstret."
   },
+  "ZHgxHT": {
+    "developer_comment": "ErrorURL unknown error",
+    "string": "Åtkomstfel"
+  },
   "Zc8y4k": {
     "developer_comment": "Use another device, finished",
     "string": "Använd koden nedan i första enheten för att fortsätta inloggningen"
@@ -335,6 +443,10 @@
   "ZeHd75": {
     "developer_comment": "username input field label",
     "string": "Användarnamn"
+  },
+  "ZyrvXd": {
+    "developer_comment": "Registration complete",
+    "string": "Registrering av ditt eduID är klar."
   },
   "accountId.accountId_display_title": {
     "string": "Unikt ID"
@@ -364,11 +476,12 @@
     "developer_comment": "Use another device IP proximity",
     "string": "(Nära din adress nu)"
   },
+  "bCqIxV": {
+    "developer_comment": "profile email display title",
+    "string": "E-postadress"
+  },
   "banner.tagline": {
     "string": "eduID är enklare och säkrare inloggning."
-  },
-  "beta-link.to-stable": {
-    "string": "Nya eduID är under uppbyggnad, klicka här för att återvända till den stabila versionen"
   },
   "button_add": {
     "string": "Lägg till"
@@ -683,56 +796,18 @@
   "emails.verification-success": {
     "string": "E-postadressen bekräftad"
   },
-  "error_access": {
-    "string": "Inloggningsproblem <ul><li>Ett fel uppstod vid inloggning i tjänsten.</li><li>Om du tror att du ska kunna använda tjänsten, kontakta din organisation och ange vilken tjänst du försökte nå, eventuella felmeddelanden du fick samt, om möjligt, en skärmdump med felmeddelandena inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida.</li></ul>"
-  },
-  "error_access_an_error_occurred": {
-    "string": "Fel oklart, något fastnat någonstans"
-  },
-  "error_affiliation_student": {
-    "string": "Du har ingen student behörighet"
-  },
-  "error_assurance_al1": {
-    "string": "Du har inte rätt behörighet för AL1 "
-  },
-  "error_authentication": {
-    "string": "Inloggning misslyckades <ul><li>Ett fel uppstod i tjänsten du försökte nå i samband med inloggning.</li><li>Detta kan bero på att ytterligare steg krävs vid inloggning, till exempel användning av tvåfaktorsinloggning. Vänligen försök igen.</li><li>Om du inte lyckas lösa problemet, kontakta din organisation och ange vilken tjänst du försökte nå, eventuella felmeddelande du fick samt, om möjligt, en skärmdump med felmeddelandena inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida.</li></ul>"
-  },
-  "error_edu_person_orcid": {
-    "string": "eduPersonOrcid fel"
-  },
-  "error_edu_person_principal_name": {
-    "string": "eduPersonPrincipalName fel"
-  },
-  "error_identification_failed": {
-    "string": "Attribut saknas <ul><li>Tjänsten du försökte nå fick inte de attribut den behöver för att identifiera dig eller för att personanpassa tjänsten.</li><li>Detta kan bero på att din organisation saknar dessa uppgifter om dig eller att organisationens inloggningstjänst inte är konfigurerat för att skicka attributen till tjänsten du försökte nå.</li><li>Kontakta din organisation och ange vilken tjänst du försökte nå, vilka attribut som saknades om du vet vilka dessa är (tjänsten kan ha berättat detta för er) samt, om möjligt, en skärmdump med eventuella felmeddelanden som tjänsten gav dig inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida.</li></ul>"
-  },
   "error_in_form": {
     "string": "Formulärfel. Se nedan för specifikt felmeddelande"
-  },
-  "error_insufficient_privileges": {
-    "string": "Behörighet saknas <ul><li>Du saknar behörighet till tjänsten du försökte nå.</li><li>Typiska behörighetskrav:</li><div><li>En bekräftad användare, även kallad SWAMID AL2</li><li>Identiteter bekräftas oftast genom besök i organisationens servicedesk eller motsvarande under uppvisande av legitimation.</li><li>Association till organisationen (även kallat affiliation)</li><li>Din affiliation beskriver din relation till din organisation. Vanliga affiliations inkluderar student och employee. Om du exempelvis är en student och tjänsten du försökte nå inte fick affiliation student så behöver du kontakta din organisation för att lösa detta.</li><li>En specifik behörighet (även kallat entitlement)</li><li>Entitlements är specifika behörigheter till specifika tjänster. Om du saknar entitlements du anser att du ska ha (d.v.s. att du skall kunna använda tjänsten du försökte nå) så behöver du kontakta din organisation för att rätta till detta.</li></div><li>Om du anser att du ska ha behörighet till tjänsten, kontakta din organisation och ange vilken tjänst du försökte nå, vilka behörigheter du anser du ska ha, eventuella felmeddelande du fick samt, om möjligt, en skärmdump med felmeddelandena inklusive webbadressen högst upp i webbläsaren och motsvarande från denna sida.</li></ul>"
-  },
-  "error_login_failed": {
-    "string": "Problem vid inloggning <ul><li>Inloggning till tjänsten misslyckades. Se nedan för möjliga orsaker och åtgärder.</li></ul>"
   },
   "error_lookup_mobile_task": {
     "string": "Ditt telefonnummer kunde inte hittas i registret. Var god prova en annan metod."
   },
-  "error_mfa": {
-    "string": "MFA fel"
-  },
   "error_navet_task": {
     "string": "Problem att nå Navet"
   },
-  "error_sp_example_nin": {
-    "string": "Du behöver verifiera ditt eduID konto"
-  },
-  "error_technical_info_heading": {
-    "string": "Teknisk information"
-  },
-  "error_without_code": {
-    "string": "Otillräckligt med information om felet mottagits, vänligen prova igen eller kontakta support"
+  "ewgN8J": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "Du behöver bekräfta din identitet i eduID Dashboard för åtkomst till den här tjänsten."
   },
   "faq_link": {
     "string": "För mer information, se "
@@ -761,9 +836,25 @@
   "foot.change-version-tip": {
     "string": "Om du stöter på något problem så kan du byta till en tidigare version av appen."
   },
+  "fr8eQq": {
+    "developer_comment": "Emails button cancel",
+    "string": "Avbryt"
+  },
+  "g9BiU8": {
+    "developer_comment": "ErrorURL other error",
+    "string": "Ett fel uppstod under åtkomst till tjänsten."
+  },
+  "gGJgga": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "Om du har ett svenskt personnummer, bekräfta det i eduID Dashboard."
+  },
   "gM6ziT": {
     "developer_comment": "Ladok account linking",
     "string": "Ditt konto är länkat med Ladok-information från"
+  },
+  "gaVV7S": {
+    "developer_comment": "ErrorURL other error",
+    "string": "Var vänlig försök igen. Kontakta eduID support om problemet kvarstår och inkludera den detaljerade informationen nedan."
   },
   "gbZoh/": {
     "developer_comment": "Set new password (go back to eduID button)",
@@ -776,6 +867,10 @@
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Logga ut"
+  },
+  "hcvQ9B": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "Tjänsten du försöker använda kräver ett \"bekräftat\" svenskt personnummer."
   },
   "header.signup": {
     "string": "REGISTRERING"
@@ -804,9 +899,25 @@
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Bekräftelsekod"
   },
+  "j9OZka": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "Tjänsten du söker åtkomst till behöver ytterligare attribut för identifiering och/eller personalisering."
+  },
+  "kBBMlk": {
+    "developer_comment": "Emails button add more",
+    "string": "+ lägg till fler"
+  },
+  "kN1GC+": {
+    "developer_comment": "Make primary button",
+    "string": "gör primär"
+  },
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Genom att tillåta eduID att komma ihåg dig på den här enheten, kommer inloggningen göras enklare och säkrare"
+  },
+  "kffxhw": {
+    "developer_comment": "Registration finished",
+    "string": "Detta är dina inloggningsuppgifter för eduID."
   },
   "kz8YmP": {
     "string": "Du loggar in som {display_name} ({username}) på den andra enheten"
@@ -962,6 +1073,10 @@
   },
   "login.wrong_user": {
     "string": "Fel användare. Du kan inte logga in som den användaren i det här sammanhanget."
+  },
+  "lox37q": {
+    "developer_comment": "ErrorURL authentication failure",
+    "string": "Det kan bero på att det krävs ytterligare steg under inloggning (t.ex. tvåfaktorsautentisering). Var god försök igen."
   },
   "lpvPcL": {
     "developer_comment": "Dashboard navigation tooltip",
@@ -1798,6 +1913,10 @@
   "u2f.push-the-button": {
     "string": "Tryck på knappen på din U2F-säkerhetsnyckel"
   },
+  "uWVxmX": {
+    "developer_comment": "ErrorURL authorization failure",
+    "string": "Tjänsten som du söker åtkomst till kräver ytterligare rättigheter."
+  },
   "ugLZcg": {
     "developer_comment": "Reset password copy password tooltip",
     "string": "Kopiera till urklipp"
@@ -1807,6 +1926,10 @@
   },
   "unexpected-success": {
     "string": "Klart"
+  },
+  "uo1E1v": {
+    "developer_comment": "column name label",
+    "string": "Namn"
   },
   "used.email-in-use": {
     "string": "Ett eduID konto använder redan {email}"
@@ -1823,6 +1946,10 @@
   "uzoZmv": {
     "developer_comment": "Login front page",
     "string": "Logga in"
+  },
+  "v/ccFv": {
+    "developer_comment": "primary label",
+    "string": "Primär"
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
@@ -1899,5 +2026,9 @@
   "ylul60": {
     "developer_comment": "ToU first paragraph",
     "string": "att all användning av användarkonton ska följa Sveriges lagar och förordningar, "
+  },
+  "zV24f+": {
+    "developer_comment": "ErrorURL identification failure",
+    "string": "Det kan bero på att eduID saknar de attributen eller för att eduID inte är konfigurerat för att dela den informationen med tjänsten du söker åtkomst till."
   }
 }
