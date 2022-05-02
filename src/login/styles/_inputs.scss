@@ -84,9 +84,13 @@ input:focus {
   box-shadow: 0 0 0 0.2rem $mid-gray;
 }
 
-.form-control.is-valid:focus {
-  border-color: $valid-green;
-  box-shadow: 0 0 0 0.2rem $mid-gray;
+.form-control.is-valid {
+  background-image: none;
+
+  &:focus {
+    border-color: $valid-green;
+    box-shadow: 0 0 0 0.2rem $mid-gray;
+  }
 }
 
 /* invalid form input */
@@ -95,11 +99,10 @@ input:focus {
   border-bottom: 2px solid $orange-highlight;
   background-image: none;
   padding-right: 8px;
-}
 
-.form-control.is-invalid:focus {
-  border-color: $orange-highlight;
-  box-shadow: 0 0 0 0.2rem $mid-gray;
+  &:focus {
+    box-shadow: 0 0 0 0.2rem $mid-gray;
+  }
 }
 
 /* error message */
