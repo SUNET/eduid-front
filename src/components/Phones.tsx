@@ -7,19 +7,24 @@ import TableList from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
 import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import "../login/styles/index.scss";
-import { isValid } from "redux-form";
-import {
-  makePrimary,
-  postMobile,
-  startResendMobileCode,
-  startConfirmation,
-  stopConfirmation,
-  startVerify,
-  startRemove,
-} from "actions/Mobile";
+// import {
+//   makePrimary,
+//   postMobile,
+//   startResendMobileCode,
+//   startConfirmation,
+//   stopConfirmation,
+//   startVerify,
+//   startRemove,
+// } from "actions/Mobile";
 import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
-import { postNewPhone } from "apis/eduidPhone";
+import {
+  postNewPhone,
+  requestMakePrimaryPhone,
+  requestVerifyPhone,
+  requestResendPhoneCode,
+  requestRemovePhone,
+} from "apis/eduidPhone";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
 
 interface PhoneFormData {
@@ -83,8 +88,9 @@ const validate = (values: any) => {
 //   enableReinitialize: true,
 // }))(DecoratedPhoneForm);
 
-function Phones(props: any) {
+function Phones() {
   const [showPhoneForm, setShowPhoneForm] = useState(false);
+  const [confirmingPhone, setConfirmingPhone] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
   // const confirming = useDashboardAppSelector((state) => state.phones.confirming);
@@ -111,23 +117,18 @@ function Phones(props: any) {
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    dispatch(startResendMobileCode());
-    dispatch(stopConfirmation());
+    if (confirmingPhone) dispatch(requestResendPhoneCode({ number: confirmingPhone }));
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number"),
-      data = {
-        identifier: dataNode && dataNode.getAttribute("data-identifier"),
-        phone: dataNode && dataNode.getAttribute("data-object"),
-      };
-
-    dispatch(startConfirmation(data));
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+    const number = dataNode && dataNode.getAttribute("data-object");
+    if (number) setConfirmingPhone(number);
   }
 
   function handleStopConfirmation() {
-    dispatch(stopConfirmation());
+    setConfirmingPhone(undefined);
   }
 
   function handleConfirm() {
@@ -135,16 +136,16 @@ function Phones(props: any) {
     const data = {
       code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
     };
-    dispatch(startVerify(data));
-    dispatch(stopConfirmation());
+    if (data.code && confirmingPhone) dispatch(requestVerifyPhone({ code: data.code, number: confirmingPhone }));
+    setConfirmingPhone(undefined);
   }
 
   function handleRemove(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number"),
-      data = {
-        phone: dataNode && dataNode.getAttribute("data-object"),
-      };
-    dispatch(startRemove(data));
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+    const number = dataNode && dataNode.getAttribute("data-object");
+    if (number) {
+      dispatch(requestRemovePhone({ number: number }));
+    }
   }
 
   function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
@@ -152,7 +153,7 @@ function Phones(props: any) {
       data = {
         phone: dataNode && dataNode.getAttribute("data-object"),
       };
-    dispatch(makePrimary(data));
+    if (data.phone) dispatch(requestMakePrimaryPhone({ number: data.phone }));
   }
 
   function handleCancel() {
@@ -172,8 +173,8 @@ function Phones(props: any) {
       id: "mobile.confirm_title",
       defaultMessage: "Enter the code sent to {phone}",
       description: "Title for phone code input",
-    }
-    // { phone: confirming }
+    },
+    { phone: confirmingPhone }
   );
 
   return (
@@ -184,7 +185,7 @@ function Phones(props: any) {
       </div>
       <div id="phone-display">
         <TableList
-          // data={phones.phones}
+          data={phones.phones}
           handleStartConfirmation={handleStartConfirmation}
           handleRemove={handleRemove}
           handleMakePrimary={handleMakePrimary}
@@ -262,7 +263,7 @@ function Phones(props: any) {
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
         placeholder={placeholder}
-        // showModal={Boolean(confirming)}
+        showModal={Boolean(confirmingPhone)}
         closeModal={handleStopConfirmation}
         handleResend={handleResend}
         handleConfirm={handleConfirm}

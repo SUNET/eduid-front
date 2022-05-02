@@ -5,7 +5,7 @@ import { getAllUserdata, getAllUserdataFail, GET_USERDATA_SUCCESS } from "action
 
 import * as actions from "actions/DashboardConfig";
 import { GET_EMAIL_ALL_SUCCESS } from "reducers/Emails";
-import * as phoneActions from "actions/Mobile";
+import { GET_PHONE_ALL_SUCCESS } from "reducers/Phones";
 import * as accountLinkingActions from "actions/AccountLinking";
 import { LOCALIZED_MESSAGES } from "globals";
 import { GET_NINS_SUCCESS } from "reducers/Nins";
@@ -43,13 +43,7 @@ export function* requestAllPersonalData() {
       yield put(GET_EMAIL_ALL_SUCCESS({ emails: response.payload.emails }));
     }
     if (response.payload.phones !== undefined) {
-      const phoneAction = {
-        type: phoneActions.GET_MOBILES_SUCCESS,
-        payload: {
-          phones: response.payload.phones,
-        },
-      };
-      yield put(phoneAction);
+      yield put(GET_PHONE_ALL_SUCCESS({ phones: response.payload.phones }));
     }
     if (response.payload.orcid !== undefined) {
       const orcidAction = {

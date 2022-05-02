@@ -1,6 +1,6 @@
 import { appLoaded } from "actions/DashboardConfig";
 import { GET_EMAIL_ALL_SUCCESS } from "reducers/Emails";
-import * as phoneActions from "actions/Mobile";
+import { GET_PHONE_ALL_SUCCESS } from "reducers/Phones";
 import * as actions from "actions/PersonalData";
 import { LadokData } from "apis/eduidLadok";
 import expect from "expect";
@@ -176,12 +176,7 @@ describe("Async component", () => {
     expect(next.value).toEqual(put(action3));
 
     // The saga sends the mobiles on to the mobiles reducer
-    const action4 = {
-      type: phoneActions.GET_MOBILES_SUCCESS,
-      payload: {
-        phones: [],
-      },
-    };
+    const action4 = GET_PHONE_ALL_SUCCESS({ phones: [] });
     next = generator.next(action4 as unknown as any);
     expect(next.value).toEqual(put(action4));
 
