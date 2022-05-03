@@ -1,6 +1,7 @@
 @import "variables";
 
-a {
+a,
+.text-link {
   color: $orange-highlight;
   font-family: $akkurat;
   text-decoration: none;
@@ -8,7 +9,6 @@ a {
   cursor: pointer;
 
   &:hover {
-    text-decoration: none;
     color: $orange-highlight;
   }
 

@@ -3,6 +3,10 @@
     "developer_comment": "Header register",
     "string": "Register"
   },
+  "/XXYdv": {
+    "developer_comment": "Register Account created",
+    "string": "A link has been sent to your email address."
+  },
   "/ZW9w8": {
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
@@ -81,10 +85,6 @@
     "developer_comment": "Login UsernamePw",
     "string": "Other device"
   },
-  "8HceTn": {
-    "developer_comment": "Emails input help text",
-    "string": "A valid email address"
-  },
   "8KywNU": {
     "developer_comment": "ToU first paragraph",
     "string": "that user accounts, password, security keys and codes are individual and shall only be used by the intended individual,"
@@ -155,6 +155,10 @@
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to gain access to network resources that they do not have the right"
+  },
+  "EW3NC1": {
+    "developer_comment": "Email label",
+    "string": "Email address"
   },
   "Ek2FGc": {
     "string": "Log in on the other device"
@@ -293,10 +297,6 @@
   "Not a valid email address.": {
     "string": "Not a valid email address."
   },
-  "NrTT6J": {
-    "developer_comment": "Login button",
-    "string": "Abort"
-  },
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
@@ -312,6 +312,10 @@
   "O9PJiz": {
     "developer_comment": "ErrorURL authorization failure",
     "string": "Insufficient privileges"
+  },
+  "Ok/e72": {
+    "developer_comment": "Add emails description",
+    "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
   },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
@@ -332,6 +336,18 @@
     "developer_comment": "help text for custom password tips",
     "string": "Spaces are ignored"
   },
+  "RywJRW": {
+    "developer_comment": "Register email label",
+    "string": "Complete registration by clicking the link sent to:"
+  },
+  "SJUMOA": {
+    "developer_comment": "Reset Password heading",
+    "string": "Reset password"
+  },
+  "SL6O2c": {
+    "developer_comment": "Password label",
+    "string": "Password"
+  },
   "SX9bpK": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in"
@@ -349,10 +365,6 @@
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
-  },
-  "TNLn8n": {
-    "developer_comment": "Emails description",
-    "string": "You can connect one or more email addresses with your eduID account and select one to be your primary email address."
   },
   "Temporary technical problems": {
     "string": "Temporary technical problems, please try again later"
@@ -400,6 +412,14 @@
     "developer_comment": "Ladok account linking",
     "string": "Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
   },
+  "YGVN20": {
+    "developer_comment": "go to eudID link text",
+    "string": "Go to my eduid"
+  },
+  "YqZO+p": {
+    "developer_comment": "Login button",
+    "string": "Cancel"
+  },
   "YxJ0EU": {
     "developer_comment": "Login OtherDevice",
     "string": "Cancel"
@@ -419,6 +439,10 @@
   "ZeHd75": {
     "developer_comment": "username input field label",
     "string": "Username"
+  },
+  "ZyrvXd": {
+    "developer_comment": "Registration complete",
+    "string": "You have completed the registration for eduID."
   },
   "accountId.accountId_display_title": {
     "string": "Unique ID"
@@ -569,17 +593,11 @@
     "developer_comment": "error text for invalid confirmation code",
     "string": "Invalid confirmation code"
   },
-  "created.account-created": {
-    "string": "A link has been sent to your email address."
-  },
   "created.back_to_signup": {
     "string": "Back to signup"
   },
   "created.confirm-registration": {
     "string": "Confirm your email to log in to eduID."
-  },
-  "created.email-label": {
-    "string": "Complete registration by clicking the link sent to:"
   },
   "created.email-sent": {
     "string": "Click the confirmation link sent to {email} to be able log in to eduID"
@@ -802,15 +820,6 @@
   "finish.finish": {
     "string": "FINISH"
   },
-  "finish.got-it": {
-    "string": "go to my eduid"
-  },
-  "finish.registration-complete": {
-    "string": "You have completed the registration for eduID."
-  },
-  "finish.registration-details": {
-    "string": "These are your login details for eduID."
-  },
   "finish.sites-accept": {
     "string": "Your account is now ready for use with sites that accept"
   },
@@ -901,6 +910,10 @@
   "kXrfeE": {
     "developer_comment": "Login remember user device",
     "string": "Allowing eduID to remember you on this device makes logging in easier and more secure"
+  },
+  "kffxhw": {
+    "developer_comment": "Registration finished",
+    "string": "These are your login details for eduID."
   },
   "kz8YmP": {
     "string": "You are logging in as {display_name} ({username}) on the other device"
@@ -1768,8 +1781,14 @@
   "security.verify": {
     "string": "Verify key"
   },
+  "security.webauthn-attestation-fail": {
+    "string": "Failed to verify the attestation for the security key."
+  },
   "security.webauthn-describe-title": {
     "string": "Add a name for your security key"
+  },
+  "security.webauthn-metadata-fail": {
+    "string": "Failed to validate the security key against metadata."
   },
   "security.webauthn-missing-pdata": {
     "string": "You should add your personal data before adding a security key"

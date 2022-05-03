@@ -115,17 +115,16 @@ function Emails() {
     if (data.email) dispatch(requestMakePrimaryEmail({ email: data.email }));
   }
 
-  function validateEmailsInForm(values: EmailFormData): EmailFormData {
-    const errors: EmailFormData = {};
-    const singleEmail = emails.emails;
-    const duplicatedEmail =
-      singleEmail && Object.values(singleEmail).filter((email, _index) => email.email === values.email);
-    if (values !== undefined) {
-      if (duplicatedEmail?.length) {
-        errors.email = "emails.duplicated";
-      } else errors.email = validateEmailField(values.email);
+  function validateEmailsInForm(value: string): string | undefined {
+    if (!value) {
+      return "required";
     }
-    return errors;
+    /* Check if the value (new email-address) is already present in the list of the users' e-mail addresses */
+    const is_duplicate = emails.emails.find((x) => x.email === value);
+    if (is_duplicate) {
+      return "emails.duplicated";
+    }
+    return validateEmailField(value);
   }
 
   return (
@@ -136,9 +135,9 @@ function Emails() {
         </h3>
         <p>
           <FormattedMessage
-            defaultMessage="You can connect one or more email addresses with your eduID account and select one to be 
-            your primary email address."
-            description="Emails description"
+            defaultMessage={`You can connect one or more email addresses with your eduID account and select one to be 
+            your primary email address.`}
+            description="Add emails description"
           />
         </p>
       </div>
@@ -155,7 +154,6 @@ function Emails() {
             initialValues={{
               email: "",
             }}
-            validate={validateEmailsInForm}
             render={({ handleSubmit, pristine, invalid }) => {
               return (
                 <form onSubmit={handleSubmit}>
@@ -168,9 +166,7 @@ function Emails() {
                     type="text"
                     name="email"
                     placeholder={emailPlaceholder}
-                    helpBlock={
-                      <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
-                    }
+                    validate={validateEmailsInForm}
                   />
                   <div className="flex-buttons">
                     <EduIDButton id="cancel-adding-email" buttonstyle="secondary" onClick={handleCancel}>

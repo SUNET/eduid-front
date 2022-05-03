@@ -74,7 +74,7 @@ function ChangePasswordForm(props: ChangePasswordFormProps) {
 
             <div id="password-suggestion">
               <ButtonGroup>
-                <EduIDButton buttonstyle="link" id="pwmode-button" onClick={togglePasswordType}>
+                <EduIDButton buttonstyle="link" className="normal-case" id="pwmode-button" onClick={togglePasswordType}>
                   {translate(renderSuggested ? "chpass.button_custom_password" : "chpass.button_suggest_password")}
                 </EduIDButton>
               </ButtonGroup>
