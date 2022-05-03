@@ -53,7 +53,7 @@ export async function makeGenericRequest<T>(
         // Dispatch fail responses so that notification middleware will show them to the user.
         // The current implementation in notify-middleware.js _removes_ error and payload.message from
         // response, so we clone it first so we can reject the promise with the full error response.
-        const saved = JSON.parse(JSON.stringify(response));
+        const saved = JSON.parse(JSON.stringify(response.payload));
         thunkAPI.dispatch(response);
         reject(saved);
       }
