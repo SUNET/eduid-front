@@ -38,13 +38,19 @@ function Phones() {
   }
 
   async function handleAdd(values: PhoneFormData) {
-    if (values.number) {
-      const response = await dispatch(postNewPhone({ number: values.number }));
-      if (postNewPhone.fulfilled.match(response)) {
-        // phone number form closed when user have successfully added phone number
-        return setShowPhoneForm(false);
-      }
-    } else setShowPhoneForm(true);
+    let value = values.number;
+    if (!value) {
+      return;
+    }
+    if (value.startsWith("0")) {
+      value = "+" + default_country_code + value.substring(1);
+    }
+    const response = await dispatch(postNewPhone({ number: value }));
+    if (postNewPhone.fulfilled.match(response)) {
+      // phone number form closed when user have successfully added phone number
+      return setShowPhoneForm(false);
+    }
+    return setShowPhoneForm(true);
   }
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
@@ -111,21 +117,22 @@ function Phones() {
 
   function validatePhonesInForm(value: string): string | undefined {
     const errors: PhoneFormData = {};
-    if (!value) {
+    let phone = value;
+    if (!phone) {
       return "required";
     }
-    value = value.replace(/ /g, "");
-    if (!value.startsWith("00")) {
-      return "phone.e164_format";
+    if (phone.startsWith("0")) {
+      phone = phone.substring(1);
     }
-    if (value.startsWith("0")) {
-      value = "+" + default_country_code + value.substr(1);
+    if (phone.startsWith("+46")) {
+      phone = phone.substring(3);
     }
     const pattern = /^\+[1-9]\d{6,20}$/;
-    if (!pattern.test(value)) {
-      return "phone.phone_format";
+    const startWithZeroPattern = /0([-\s]?\d){6,20}/;
+    if (!pattern.test(phone) && !startWithZeroPattern.test(phone)) {
+      return "phones.invalid";
     }
-    const is_duplicate = phones.phones.find((x) => x.number === value);
+    const is_duplicate = phones.phones.find((x) => x.number.substring(3) === phone);
     if (is_duplicate) {
       return "phones.duplicated";
     }
