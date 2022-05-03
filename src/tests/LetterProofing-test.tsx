@@ -6,6 +6,7 @@ import letterProofingSlice from "../reducers/LetterProofing";
 import LetterProofingButton from "components/LetterProofing";
 import { DashboardRootState } from "../dashboard-init-app";
 import { setupComponent } from "./helperFunctions/DashboardTestApp";
+import { initialState as ninsInitialState } from "reducers/Nins";
 
 const baseState: DashboardRootState = {
   letter_proofing: {},
@@ -13,12 +14,7 @@ const baseState: DashboardRootState = {
     letter_proofing_url: "http://localhost/letter",
     csrf_token: "csrf-token",
   },
-  nins: {
-    message: "",
-    nin: "",
-    rmNin: "",
-    nins: [],
-  },
+  nins: ninsInitialState,
   notifications: undefined as any,
   router: undefined as any,
   chpass: {},

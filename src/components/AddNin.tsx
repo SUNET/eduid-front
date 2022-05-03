@@ -1,22 +1,14 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import NinForm from "./NinForm";
 import NinDisplay from "components/NinDisplay";
-import { withRouter } from "react-router-dom";
+import NinForm from "./NinForm";
+import { useDashboardAppSelector } from "dashboard-hooks";
+import React from "react";
 
-class AddNin extends Component {
-  render() {
-    if (this.props.nins.length) {
-      return <NinDisplay removeNin={this.removeNin} showDeleteButton {...this.props} />;
-    } else {
-      return <NinForm addNin={this.addNin} {...this.props} />;
-    }
+export default function AddNin(): JSX.Element {
+  const nin = useDashboardAppSelector((state) => state.nins.first_nin);
+
+  if (nin) {
+    return <NinDisplay nin={nin} allowDelete={true} />;
+  } else {
+    return <NinForm />;
   }
 }
-
-AddNin.propTypes = {
-  nins: PropTypes.array,
-  validateNin: PropTypes.func,
-};
-
-export default withRouter(AddNin);

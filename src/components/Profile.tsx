@@ -1,30 +1,19 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-
-import NameDisplay from "containers/NameDisplay";
 import NinDisplay from "components/NinDisplay";
-import PhoneDisplay from "containers/PhoneDisplay";
 import EmailDisplay from "containers/EmailDisplay";
-import { withRouter } from "react-router-dom";
+import NameDisplay from "containers/NameDisplay";
+import PhoneDisplay from "containers/PhoneDisplay";
+import { useDashboardAppSelector } from "dashboard-hooks";
+import React from "react";
 
-class Profile extends Component {
-  render() {
-    return (
-      <div key="1" id="profile-grid">
-        <NameDisplay key="0" />
-        <NinDisplay key="1" {...this.props} />
-        <PhoneDisplay key="2" />
-        <EmailDisplay key="3" />
-      </div>
-    );
-  }
+export default function Profile(): JSX.Element {
+  const first_nin = useDashboardAppSelector((state) => state.nins.first_nin);
+
+  return (
+    <div id="profile-grid">
+      <NameDisplay />
+      <NinDisplay nin={first_nin} allowDelete={false} />
+      <PhoneDisplay />
+      <EmailDisplay />
+    </div>
+  );
 }
-
-Profile.propTypes = {
-  nin: PropTypes.string,
-  nins: PropTypes.array,
-  validateNin: PropTypes.func,
-  handleDelete: PropTypes.func,
-};
-
-export default withRouter(Profile);

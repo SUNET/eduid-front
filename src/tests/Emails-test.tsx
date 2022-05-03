@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import expect from "expect";
 import emailsSlice, { initialState as emailsInitialState } from "reducers/Emails";
+import { initialState as ninsInitialState } from "reducers/Nins";
 import EmailsComponent from "components/Emails";
 import { DashboardRootState } from "../dashboard-init-app";
 import { IntlProvider } from "react-intl";
@@ -14,12 +15,7 @@ const baseState: DashboardRootState = {
     emails_url: "http://localhost/emails",
     csrf_token: "csrf-token",
   },
-  nins: {
-    message: "",
-    nin: "",
-    rmNin: "",
-    nins: [],
-  },
+  nins: ninsInitialState,
   notifications: undefined as any,
   router: undefined as any,
   chpass: {},
