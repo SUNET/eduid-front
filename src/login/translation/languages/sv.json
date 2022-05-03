@@ -1281,9 +1281,6 @@
   "phones.add_new": {
     "string": "Ett nytt telefonnummer kommer att ta emot en verifieringskod som kan användas genom att klicka Bekräfta i listan med nummer."
   },
-  "phones.button_add_more": {
-    "string": "+ lägg till fler"
-  },
   "phones.cannot_remove_primary": {
     "string": "Du kan inte ta bort ditt primära telefonnummer"
   },
@@ -1308,17 +1305,8 @@
   "phones.get-success": {
     "string": "Telefonnummer laddades"
   },
-  "phones.input_help_text": {
-    "string": "Telefonnummer som börjar med 0 eller +"
-  },
   "phones.invalid_phone": {
     "string": "Ogiltigt telefonnummer"
-  },
-  "phones.long_description": {
-    "string": "Du kan koppla ett eller flera av dina mobiltelefonnummer till ditt eduID-konto och därefter välja vilket av dem som ska vara primär."
-  },
-  "phones.main_title": {
-    "string": "Telefonnummer"
   },
   "phones.primary-success": {
     "string": "Ditt primära telefonnummer har ändrats"

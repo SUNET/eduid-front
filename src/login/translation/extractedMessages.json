@@ -1364,9 +1364,6 @@
   "phones.add_new": {
     "string": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of numbers."
   },
-  "phones.button_add_more": {
-    "string": "+ add more"
-  },
   "phones.cannot_remove_primary": {
     "string": "You cannot remove your primary phone number"
   },
@@ -1391,17 +1388,8 @@
   "phones.get-success": {
     "string": "Successfully retrieved phone numbers"
   },
-  "phones.input_help_text": {
-    "string": "Phone number starting with 0 or +"
-  },
   "phones.invalid_phone": {
     "string": "Invalid phone number"
-  },
-  "phones.long_description": {
-    "string": "You can connect one or more mobile phone numbers to your eduID, but one has to be set as primary."
-  },
-  "phones.main_title": {
-    "string": "Mobile phone numbers"
   },
   "phones.primary-success": {
     "string": "The phone number was set as primary"

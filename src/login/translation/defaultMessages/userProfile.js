@@ -567,14 +567,6 @@ export const userData = {
     />
   ),
 
-  "phones.input_help_text": (
-    <FormattedMessage id="phones.input_help_text" defaultMessage={"Phone number starting with 0 or +"} />
-  ),
-
-  "phones.main_title": <FormattedMessage id="phones.main_title" defaultMessage={`Mobile phone numbers`} />,
-
-  "phones.button_add_more": <FormattedMessage id="phones.button_add_more" defaultMessage={`+ add more`} />,
-
   "phones.get-success": (
     <FormattedMessage id="phones.get-success" defaultMessage={`Successfully retrieved phone numbers`} />
   ),

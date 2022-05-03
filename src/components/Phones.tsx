@@ -22,29 +22,12 @@ interface PhoneFormData {
   number?: string;
 }
 
-const validate = (values: any) => {
-  let phone = values.number;
-  if (!phone) {
-    return { number: "required" };
-  }
-  phone = phone.replace(/ /g, "");
-  if (phone.startsWith("00")) {
-    return { number: "phone.e164_format" };
-  }
-  if (phone.startsWith("0")) {
-    phone = "+" + 46 + phone.substr(1);
-  }
-  const pattern = /^\+[1-9]\d{6,20}$/;
-  if (!pattern.test(phone)) {
-    return { number: "phone.phone_format" };
-  }
-};
-
 function Phones() {
   const [showPhoneForm, setShowPhoneForm] = useState(false);
   const [confirmingPhone, setConfirmingPhone] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
+  const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
 
   function handleMobileForm() {
     setShowPhoneForm(true);
@@ -126,11 +109,38 @@ function Phones() {
     { phone: confirmingPhone }
   );
 
+  function validate(values: PhoneFormData): PhoneFormData {
+    const errors: PhoneFormData = {};
+    let phone = values.number;
+    if (!phone) {
+      return { number: "required" };
+    }
+    phone = phone.replace(/ /g, "");
+    if (phone.startsWith("00")) {
+      return { number: "phone.e164_format" };
+    }
+    if (phone.startsWith("0")) {
+      phone = "+" + default_country_code + phone.substr(1);
+    }
+    const pattern = /^\+[1-9]\d{6,20}$/;
+    if (!pattern.test(phone)) {
+      return { number: "phone.phone_format" };
+    }
+    return errors;
+  }
+
   return (
     <article className="phone-view-form-container" id="phone">
       <div className="intro">
-        <h3>{translate("phones.main_title")}</h3>
-        <p>{translate("phones.long_description")}</p>
+        <h3>
+          <FormattedMessage defaultMessage="Mobile phone numbers" description="Phones main title" />
+        </h3>
+        <p>
+          <FormattedMessage
+            defaultMessage="You can connect one or more mobile phone numbers to your eduID, but one has to be set as primary."
+            description="Phones long description"
+          />
+        </p>
       </div>
       <div id="phone-display">
         <DataTable
@@ -140,7 +150,7 @@ function Phones() {
           handleMakePrimary={handleMakePrimary}
         />
         {showPhoneForm ? (
-          <FinalForm<any>
+          <FinalForm<PhoneFormData>
             onSubmit={handleAdd}
             initialValues={{
               number: "",
@@ -150,13 +160,18 @@ function Phones() {
               return (
                 <form onSubmit={handleSubmit}>
                   <FinalField
-                    label={translate("profile.phone_display_title")}
+                    label={<FormattedMessage defaultMessage="Phone number" description="Phone display title" />}
                     component={CustomInput}
                     componentClass="input"
                     type="text"
                     name="number"
                     placeholder={placeholder}
-                    helpBlock={translate("phones.input_help_text")}
+                    helpBlock={
+                      <FormattedMessage
+                        defaultMessage="Phone number starting with 0 or +"
+                        description="Phones input help text"
+                      />
+                    }
                   />
                   <div className="flex-buttons">
                     <EduIDButton id="cancel-adding-mobile" buttonstyle="secondary" onClick={handleCancel}>
@@ -177,8 +192,8 @@ function Phones() {
             }}
           />
         ) : (
-          <EduIDButton id="add-more-button" buttonstyle="link" className={" lowercase"} onClick={handleMobileForm}>
-            {translate("phones.button_add_more")}
+          <EduIDButton id="add-more-button" buttonstyle="link" className=" lowercase" onClick={handleMobileForm}>
+            <FormattedMessage defaultMessage=" + add more" description="button add more" />
           </EduIDButton>
         )}
       </div>
