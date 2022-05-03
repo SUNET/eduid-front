@@ -1,35 +1,21 @@
-import * as actions from "actions/LookupMobileProofing";
+import { createSlice } from "@reduxjs/toolkit";
+import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
 
-const lookupMobileData = {
-  showModal: false,
-  // verifyingMobile: false,
-  // code: "",
-  // code_sent: "",
-  // letter_expires: "",
-  // letter_expired: false,
-  message: "",
-};
+interface LookupMobileProofingState {
+  message?: string; // should be unused, whole reducer and this left more as a placeholder
+}
 
-let lookupMobileProofingReducer = (state = lookupMobileData, action) => {
-  switch (action.type) {
-    case actions.SHOW_MOBILE_MODAL:
-      return {
-        ...state,
-        showModal: true,
-      };
-    case actions.CLOSE_MOBILE_MODAL:
-      return {
-        ...state,
-        showModal: false,
-      };
-    case actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS:
-      return {
-        ...state,
-        ...action.payload,
-      };
-    default:
-      return state;
-  }
-};
+const initialState: LookupMobileProofingState = {};
 
-export default lookupMobileProofingReducer;
+const lookupMobileProofingSlice = createSlice({
+  name: "lookupMobileProofing",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(lookupMobileProofing.fulfilled, (state, action) => {
+      state.message = action.payload.message;
+    });
+  },
+});
+
+export default lookupMobileProofingSlice;

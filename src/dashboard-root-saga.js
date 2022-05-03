@@ -1,7 +1,6 @@
 import * as accountLinkingActions from "actions/AccountLinking";
 import * as configActions from "actions/DashboardConfig";
 import * as headerActions from "actions/Header";
-import * as lmpActions from "actions/LookupMobileProofing";
 import * as mobileActions from "actions/Mobile";
 import * as openidActions from "actions/OpenidConnect";
 import * as openidFrejaActions from "actions/OpenidConnectFreja";
@@ -11,7 +10,7 @@ import { put, select, takeEvery, takeLatest } from "redux-saga/effects";
 import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/AccountLinking";
 import { requestConfig } from "sagas/DashboardConfig";
 import { requestLogout } from "sagas/Header";
-import { saveLMPNinData } from "sagas/LookupMobileProofing";
+import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
 import * as sagasMobile from "sagas/Mobile";
 import { requestNins } from "sagas/Nins";
 import * as sagasOpenid from "sagas/OpenidConnect";
@@ -58,7 +57,6 @@ function* rootSaga() {
     takeLatest(updateNamesFromSkatteverketActions.UPDATE_NAMES_FROM_SKATTEVERKET, updateNamesFromSkatteverketSaga),
     takeLatest(openidActions.SHOW_OIDC_SELEG_MODAL, sagasOpenid.checkNINAndShowSelegModal),
     takeLatest(openidActions.POST_OIDC_PROOFING_PROOFING, sagasOpenid.requestOpenidQRcode),
-    takeLatest(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING, saveLMPNinData),
     takeLatest(openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING, sagasOpenidFreja.initializeOpenidFrejaData),
     takeLatest(openidFrejaActions.GET_OIDC_PROOFING_FREJA_PROOFING, sagasOpenidFreja.requestOpenidFrejaData),
     takeLatest(openidFrejaActions.SHOW_OIDC_FREJA_MODAL, sagasOpenidFreja.checkNINAndShowFrejaModal),
@@ -72,8 +70,8 @@ function* rootSaga() {
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeEvery(postRequestLetter.fulfilled, requestAllPersonalData),
     takeEvery(confirmLetterCode.fulfilled, requestAllPersonalData),
-    takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS, requestAllPersonalData),
-    takeEvery(lmpActions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL, requestNins),
+    takeEvery(lookupMobileProofing.fulfilled, requestAllPersonalData),
+    takeEvery(lookupMobileProofing.rejected, requestNins),
     takeEvery(openidActions.POST_OIDC_PROOFING_PROOFING_SUCCESS, requestNins),
     takeEvery(openidFrejaActions.POST_OIDC_PROOFING_FREJA_PROOFING_SUCCESS, requestNins),
     takeEvery(headerActions.POST_LOGOUT, requestLogout),
