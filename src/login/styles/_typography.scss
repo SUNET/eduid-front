@@ -64,11 +64,18 @@ h5 {
 
 .preamble {
   font-size: 1.375rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid $dark-gray;
+
+  // &:not(div) {
+  //   padding-bottom: 0.875rem;
+  // }
 
   @media (max-width: $bp-md) {
     font-size: 1.25rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
   }
 }
 
