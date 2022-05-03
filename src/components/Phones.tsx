@@ -109,24 +109,27 @@ function Phones() {
     { phone: confirmingPhone }
   );
 
-  function validate(values: PhoneFormData): PhoneFormData {
+  function validatePhonesInForm(value: string): string | undefined {
     const errors: PhoneFormData = {};
-    let phone = values.number;
-    if (!phone) {
-      return { number: "required" };
+    if (!value) {
+      return "required";
     }
-    phone = phone.replace(/ /g, "");
-    if (phone.startsWith("00")) {
-      return { number: "phone.e164_format" };
+    value = value.replace(/ /g, "");
+    if (!value.startsWith("00")) {
+      return "phone.e164_format";
     }
-    if (phone.startsWith("0")) {
-      phone = "+" + default_country_code + phone.substr(1);
+    if (value.startsWith("0")) {
+      value = "+" + default_country_code + value.substr(1);
     }
     const pattern = /^\+[1-9]\d{6,20}$/;
-    if (!pattern.test(phone)) {
-      return { number: "phone.phone_format" };
+    if (!pattern.test(value)) {
+      return "phone.phone_format";
     }
-    return errors;
+    const is_duplicate = phones.phones.find((x) => x.number === value);
+    if (is_duplicate) {
+      return "phones.duplicated";
+    }
+    return errors.number;
   }
 
   return (
@@ -137,7 +140,8 @@ function Phones() {
         </h3>
         <p>
           <FormattedMessage
-            defaultMessage="You can connect one or more mobile phone numbers to your eduID, but one has to be set as primary."
+            defaultMessage={`You can connect one or more mobile phone numbers to your eduID, 
+            but one has to be set as primary.`}
             description="Phones long description"
           />
         </p>
@@ -155,7 +159,6 @@ function Phones() {
             initialValues={{
               number: "",
             }}
-            validate={validate}
             render={({ handleSubmit, pristine, invalid }) => {
               return (
                 <form onSubmit={handleSubmit}>
@@ -165,6 +168,7 @@ function Phones() {
                     componentClass="input"
                     type="text"
                     name="number"
+                    validate={validatePhonesInForm}
                     placeholder={placeholder}
                     helpBlock={
                       <FormattedMessage
