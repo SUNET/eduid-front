@@ -1,17 +1,19 @@
-import React from "react";
-import expect from "expect";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { shallow, mount } from "enzyme";
-import { MemoryRouter } from "react-router-dom";
-import { IntlProvider } from "react-intl";
-import Profile from "containers/Profile";
 import NinDisplay from "components/NinDisplay";
+import Profile from "components/Profile";
+import VerifyIdentity from "components/VerifyIdentity";
+import EmailDisplay from "containers/EmailDisplay";
 import NameDisplay from "containers/NameDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
-import EmailDisplay from "containers/EmailDisplay";
-import VerifyIdentity from "containers/VerifyIdentity";
-const mock = require("jest-mock");
-const messages = require("../login/translation/messageIndex");
+import { DashboardRootState } from "dashboard-init-app";
+import { ReactWrapper, shallow } from "enzyme";
+import expect from "expect";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router-dom";
+import { ninStateFromNinList } from "reducers/Nins";
+import { initialState as personalDataInitialState } from "reducers/PersonalData";
+import { MockStoreEnhanced } from "redux-mock-store";
+import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
 // I am the component that: populates the profile landing page with user data.
 // My job is to: display one of multiple states for the following user data:
@@ -34,77 +36,59 @@ describe("Profile component", () => {
 });
 
 describe("Profile component", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
 
-  const fakeState = {
-    config: {
-      language: "en",
-    },
-    personal_data: {
-      data: {
-        given_name: "",
-        surname: "",
+  const test_nins = ninStateFromNinList([{ number: "197801010000", verified: true, primary: false }]);
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({
+      ...dashboardTestState,
+      nins: test_nins,
+      phones: {
+        message: "",
+        confirming: "",
+        phones: [],
+        phone: "",
+        code: "",
       },
-    },
-    emails: {
-      emails: [],
-    },
-    nins: {
-      nins: [],
-    },
-    phones: {
-      phones: [],
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
+      personal_data: personalDataInitialState,
+    });
+    state = store.getState();
 
-  function setupComponent() {
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
+    wrapper = setupComponent({
+      component: (
         <MemoryRouter>
           <Profile />
         </MemoryRouter>
-      </ReduxIntlProvider>
-    );
-    return {
-      wrapper,
-    };
-  }
+      ),
+      store: store,
+    });
+  });
 
   it("Renders <NameDisplay/> ", () => {
-    const { wrapper } = setupComponent();
     const nameDisplay = wrapper.find(NameDisplay);
     expect(nameDisplay.exists()).toEqual(true);
   });
 
   it("Does renders <NinDisplay/> ", () => {
-    const { wrapper } = setupComponent();
     const ninDisplay = wrapper.find(NinDisplay);
     expect(ninDisplay.exists()).toEqual(true);
   });
 
   it("Renders <PhoneDisplay/> ", () => {
-    const { wrapper } = setupComponent();
     const phoneDisplay = wrapper.find(PhoneDisplay);
     expect(phoneDisplay.exists()).toEqual(true);
   });
 
   it("Renders <EmailDisplay/> ", () => {
-    const { wrapper } = setupComponent();
     const emailDisplay = wrapper.find(EmailDisplay);
     expect(emailDisplay.exists()).toEqual(true);
   });
 
   it("Does not render <VerifyIdentity /> ", () => {
-    const { wrapper } = setupComponent();
     const verifyIdentity = wrapper.find(VerifyIdentity);
     expect(verifyIdentity.exists()).toEqual(false);
   });

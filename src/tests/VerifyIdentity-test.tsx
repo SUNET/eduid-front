@@ -1,13 +1,20 @@
-import React from "react";
+import AddNin from "components/AddNin";
+import LetterProofingButton from "components/LetterProofing";
+import VerifyIdentity from "components/VerifyIdentity";
+import { DashboardRootState } from "dashboard-init-app";
+import { ReactWrapper, shallow } from "enzyme";
 import expect from "expect";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { shallow, mount } from "enzyme";
-import { MemoryRouter } from "react-router-dom";
+import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
+import React from "react";
 import { IntlProvider } from "react-intl";
-import VerifyIdentity from "containers/VerifyIdentity";
-const mock = require("jest-mock");
-const messages = require("../login/translation/messageIndex");
+import { MemoryRouter } from "react-router-dom";
+import { ninStateFromNinList } from "reducers/Nins";
+import { MockStoreEnhanced } from "redux-mock-store";
+import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
+import EidasContainer from "containers/Eidas";
 
+// const mock = require("jest-mock");
+// const messages = require("../login/translation/messageIndex");
 // I am VerifyIdentityProcess: I hold the nin input/display and show the vetting buttons once there is a valid nin
 // My job is to: if there is a nin: display vetting buttons, if nin is verified: remove buttons
 
@@ -25,122 +32,114 @@ describe("VerifyIdentity component", () => {
 });
 
 describe("VerifyIdentity component, no nin added ", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
 
-  const fakeState = {
-    nins: {
-      nins: [],
-    },
-    phones: {
-      phones: [],
-    },
-    config: {
-      is_configured: false,
-      proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"],
-    },
-    letter_proofing: {
-      confirmingLetter: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
+  const test_nins = ninStateFromNinList([]);
 
-  function setupComponent() {
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({
+      ...dashboardTestState,
+      config: { is_configured: true, eidas_url: "http://localhost/eidas", token_verify_idp: "token-idp" },
+      nins: test_nins,
+      phones: {
+        message: "",
+        confirming: "",
+        phones: [],
+        phone: "",
+        code: "",
+      },
+      eidas_data: { eidas_sp_freja_idp_url: "eidas_freja", showModal: false },
+      letter_proofing: {},
+      openid_data: {},
+      openid_freja_data: {},
+    });
+    state = store.getState();
+
+    wrapper = setupComponent({
+      component: (
         <MemoryRouter>
           <VerifyIdentity />
         </MemoryRouter>
-      </ReduxIntlProvider>
-    );
-    return {
-      wrapper,
-    };
-  }
+      ),
+      store: store,
+    });
+  });
 
   it("Renders a header", () => {
-    const { wrapper } = setupComponent();
     const header = wrapper.find("h4");
     expect(header.exists()).toEqual(true);
+    // Two steps displayed: 1. add NIN 2. choose option below
+    expect(header.length).toEqual(2);
+  });
+
+  it("Renders Letter Proofing ", () => {
+    const component = wrapper.find(LetterProofingButton);
+    expect(component.exists()).toEqual(true);
+
+    // vetting option should be disabled when there is no NIN
+    expect(component.find("button").prop("disabled")).toEqual(true);
+  });
+
+  it("Renders Mobile Proofing ", () => {
+    const component = wrapper.find(LookupMobileProofing);
+    expect(component.exists()).toEqual(true);
+
+    // vetting option should be disabled when there is no NIN
+    expect(component.find("button").prop("disabled")).toEqual(true);
+  });
+
+  it("Renders Freja Proofing ", () => {
+    const component = wrapper.find(EidasContainer);
+    expect(component.exists()).toEqual(true);
+
+    // vetting option should be enabled, even when there is no NIN
+    expect(component.find("button").prop("disabled")).toBeFalsy();
   });
 });
 
-describe("VerifyIdentity component, when nin is saved", () => {
-  const fakeState = {
-    nins: {
-      nins: [],
-    },
-    phones: {
-      phones: [],
-    },
-    config: {
-      is_configured: false,
-      proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"],
-      token_verify_idp: "http://dev.test.swedenconnect.se/idp",
-      eidas_url: "http://eidas.eduid.docker:8080/",
-    },
-    letter_proofing: {
-      confirmingLetter: false,
-    },
-    lookup_mobile: {
-      showModal: false,
-    },
-    eidas_data: {
-      showModal: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
+describe("VerifyIdentity component, NIN already added ", () => {
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
 
-  const state = { ...fakeState };
-  state.config.is_configured = true;
-  state.nins.nins = [{ number: "196701100006", verified: false, primary: false }];
-  state.verifiedNinStatus = false;
-});
+  const test_nins = ninStateFromNinList([{ number: "197801010000", verified: true, primary: true }]);
 
-describe("VerifyIdentity component, when nin is saved", () => {
-  const fakeState = {
-    nins: {
-      nins: [],
-    },
-    phones: {
-      phones: [],
-    },
-    config: {
-      is_configured: false,
-      proofing_methods: ["letter", "lookup_mobile", "oidc", "eidas"],
-      token_verify_idp: "http://dev.test.swedenconnect.se/idp",
-      eidas_url: "http://eidas.eduid.docker:8080/",
-    },
-    letter_proofing: {
-      confirmingLetter: false,
-    },
-    lookup_mobile: {
-      showModal: false,
-    },
-    eidas_data: {
-      showModal: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({
+      ...dashboardTestState,
+      config: { is_configured: true, eidas_url: "http://localhost/eidas", token_verify_idp: "token-idp" },
+      nins: test_nins,
+      phones: {
+        message: "",
+        confirming: "",
+        phones: [],
+        phone: "",
+        code: "",
+      },
+      eidas_data: { eidas_sp_freja_idp_url: "eidas_freja", showModal: false },
+      letter_proofing: {},
+      openid_data: {},
+      openid_freja_data: {},
+    });
+    state = store.getState();
 
-  const state = { ...fakeState };
-  state.config.is_configured = true;
-  state.nins.nins = [
-    { number: "196701100456", verified: true, primary: true },
-    { number: "196701100678", verified: true, primary: false },
-  ];
-  state.verifiedNinStatus = true;
+    wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <VerifyIdentity />
+        </MemoryRouter>
+      ),
+      store: store,
+    });
+  });
+
+  it("Renders a header", () => {
+    const header = wrapper.find("h3");
+    expect(header.exists()).toEqual(true);
+    expect(header.text()).toContain("ready to use");
+  });
 });

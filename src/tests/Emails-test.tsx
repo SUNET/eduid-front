@@ -1,39 +1,11 @@
-import React from "react";
+import EmailsComponent from "components/Emails";
 import { shallow } from "enzyme";
 import expect from "expect";
-import emailsSlice, { initialState as emailsInitialState } from "reducers/Emails";
-import { initialState as ninsInitialState } from "reducers/Nins";
-import EmailsComponent from "components/Emails";
-import { DashboardRootState } from "../dashboard-init-app";
+import React from "react";
 import { IntlProvider } from "react-intl";
-import { setupComponent } from "./helperFunctions/DashboardTestApp";
+import emailsSlice from "reducers/Emails";
 import DataTable from "../login/components/DataTable/DataTable";
-
-const baseState: DashboardRootState = {
-  letter_proofing: {},
-  config: {
-    emails_url: "http://localhost/emails",
-    csrf_token: "csrf-token",
-  },
-  nins: ninsInitialState,
-  notifications: undefined as any,
-  router: undefined as any,
-  chpass: {},
-  emails: emailsInitialState,
-  groups: undefined as any,
-  invites: undefined as any,
-  openid_data: undefined as any,
-  lookup_mobile: {},
-  openid_freja_data: undefined as unknown as any,
-  personal_data: undefined as any,
-  phones: {},
-  account_linking: undefined as any,
-  security: undefined as any,
-  eidas_data: undefined as any,
-  ladok: undefined as any,
-  form: undefined as any,
-  intl: { locale: "en", messages: {} },
-};
+import { dashboardTestState, setupComponent } from "./helperFunctions/DashboardTestApp";
 
 describe("Emails Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -51,18 +23,20 @@ describe("Emails component, primary ", () => {
     return setupComponent({
       component: <EmailsComponent />,
       overrides: {
-        emails: [
-          {
-            email: "test@test.se",
-            verified: true,
-            primary: true,
-          },
-          {
-            email: "test1@test.se",
-            verified: false,
-            primary: false,
-          },
-        ],
+        emails: {
+          emails: [
+            {
+              email: "test@test.se",
+              verified: true,
+              primary: true,
+            },
+            {
+              email: "test1@test.se",
+              verified: false,
+              primary: false,
+            },
+          ],
+        },
       },
     });
   }
@@ -81,7 +55,7 @@ describe("Emails Slice", () => {
         emails: { email: "test@test.se", verified: false, primary: false },
       },
     };
-    const state = emailsSlice.reducer(baseState.emails, action);
+    const state = emailsSlice.reducer(dashboardTestState.emails, action);
     expect(state).toEqual(action.payload);
   });
   it("postNewEmail is fulfilled", () => {
@@ -91,7 +65,7 @@ describe("Emails Slice", () => {
         emails: { email: "test@test.se", verified: false, primary: false },
       },
     };
-    const state = emailsSlice.reducer(baseState.emails, action);
+    const state = emailsSlice.reducer(dashboardTestState.emails, action);
     expect(state).toEqual(action.payload);
   });
   it("requestResendEmailCode is fulfilled", () => {
@@ -101,7 +75,7 @@ describe("Emails Slice", () => {
         emails: { email: "test@test.se", verified: false, primary: false },
       },
     };
-    const state = emailsSlice.reducer(baseState.emails, action);
+    const state = emailsSlice.reducer(dashboardTestState.emails, action);
     expect(state).toEqual(action.payload);
   });
   it("requestMakePrimaryEmail is fulfilled", () => {
@@ -111,7 +85,7 @@ describe("Emails Slice", () => {
         emails: { email: "test@test.se", verified: false, primary: true },
       },
     };
-    const state = emailsSlice.reducer(baseState.emails, action);
+    const state = emailsSlice.reducer(dashboardTestState.emails, action);
     expect(state).toEqual(action.payload);
   });
 });

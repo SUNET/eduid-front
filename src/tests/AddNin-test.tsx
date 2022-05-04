@@ -1,12 +1,15 @@
-import React from "react";
+import AddNin from "components/AddNin";
+import { DashboardRootState } from "dashboard-init-app";
+import { ReactWrapper, shallow } from "enzyme";
 import expect from "expect";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { shallow, mount } from "enzyme";
-import { MemoryRouter } from "react-router-dom";
+import React from "react";
 import { IntlProvider } from "react-intl";
-import AddNin from "containers/AddNin";
-const mock = require("jest-mock");
-const messages = require("../login/translation/messageIndex");
+import { MemoryRouter } from "react-router-dom";
+import { ninStateFromNinList } from "reducers/Nins";
+import { MockStoreEnhanced } from "redux-mock-store";
+import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
+
+//const mock = require("jest-mock");
 
 // I am the component that: displays the nin input form or the added nin in the vetting process.
 // My job is to:
@@ -27,152 +30,69 @@ describe("AddNin component", () => {
 });
 
 describe("AddNin component, when no nin is saved", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
+
+  const test_nins = ninStateFromNinList([]);
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    // state = store.getState();
+
+    wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <AddNin />
+        </MemoryRouter>
+      ),
+      store: store,
+    });
   });
 
-  const fakeState = {
-    config: {
-      language: "en",
-    },
-    personal_data: {
-      data: {
-        eppn: "test-eppn",
-      },
-    },
-    emails: {
-      emails: [],
-    },
-    nins: {
-      nins: [],
-    },
-    phones: {
-      phones: [],
-    },
-    profile: {
-      pending: [],
-    },
-    notifications: {
-      messages: [],
-      errors: [],
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
-  function setupComponent() {
-    const props = {
-      nins: [],
-      nin: "",
-      valid_nin: true,
-      verifyingLetter: false,
-      proofing_methods: [],
-    };
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <MemoryRouter>
-          <AddNin {...props} />
-        </MemoryRouter>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
-  const state = { ...fakeState };
-  state.nins.nins = [];
-
   it("Renders <NinForm/> ", () => {
-    const { wrapper } = setupComponent();
     const ninForm = wrapper.find("#nin-form");
     expect(ninForm.exists()).toEqual(true);
   });
 
   it("Does not render <NinDisplay/> ", () => {
-    const { wrapper } = setupComponent();
     const ninDisplay = wrapper.find(".profile-grid-cell");
     expect(ninDisplay.exists()).toEqual(false);
   });
 });
 
 describe("AddNin component, when a nin is saved", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
 
-  const fakeState = {
-    config: {
-      language: "en",
-    },
-    personal_data: {
-      data: {
-        eppn: "test-eppn",
-      },
-    },
-    emails: {
-      emails: [],
-    },
-    nins: {
-      nins: [],
-    },
-    phones: {
-      phones: [],
-    },
-    profile: {
-      pending: [],
-    },
-    notifications: {
-      messages: [],
-      errors: [],
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
-  function setupComponent() {
-    const props = {
-      nins: [],
-      nin: "",
-      valid_nin: true,
-      verifyingLetter: false,
-      proofing_methods: [],
-    };
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <MemoryRouter>
-          <AddNin {...props} />
-        </MemoryRouter>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
-  const state = { ...fakeState };
-  state.nins.nins = [
+  const test_nins = ninStateFromNinList([
     { number: "196701100006", verified: false, primary: false },
     { number: "196701110005", verified: false, primary: false },
-  ];
+  ]);
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    state = store.getState();
+
+    wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <AddNin />
+        </MemoryRouter>
+      ),
+      store: store,
+    });
+  });
+
   it("Renders <NinDisplay/> ", () => {
-    const { wrapper } = setupComponent();
     const ninDisplay = wrapper.find(".display-data");
     expect(ninDisplay.exists()).toEqual(true);
   });
 
   it("Does not render <NinForm/> ", () => {
-    const { wrapper } = setupComponent();
     const ninForm = wrapper.find("#nin-form");
     expect(ninForm.exists()).toEqual(false);
   });

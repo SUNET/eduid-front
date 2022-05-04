@@ -1,70 +1,49 @@
-import React from "react";
-import expect from "expect";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { shallow, mount } from "enzyme";
-import { Router } from "react-router-dom";
-import { IntlProvider } from "react-intl";
+import AddNin from "components/AddNin";
 import { history } from "components/DashboardMain";
 import NinDisplay from "components/NinDisplay";
+import { DashboardRootState } from "dashboard-init-app";
+import { ReactWrapper, shallow } from "enzyme";
+import expect from "expect";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router";
+import { ninStateFromNinList } from "reducers/Nins";
+import { MockStoreEnhanced } from "redux-mock-store";
+import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 const mock = require("jest-mock");
-const messages = require("../login/translation/messageIndex");
 
-history.push("/verify-identity");
 describe("NinDisplay component (/verify-identity), when nin is saved and unverified ", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
-  });
-  const fakeState = {
-    nins: {
-      nins: [],
-      verifiedNin: [],
-      verifiedNinStatus: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
 
-  function setupComponent() {
-    const props = {
-      nins: [
-        { number: "199901100006", verified: false, primary: false },
-        { number: "199901110005", verified: false, primary: false },
-        { number: "199901110004", verified: false, primary: false },
-      ],
-      verifiedNin: [],
-      verifiedNinStatus: false,
-    };
+  const test_nins = ninStateFromNinList([
+    { number: "199901100006", verified: false, primary: false },
+    { number: "199901110005", verified: false, primary: false },
+    { number: "199901110004", verified: false, primary: false },
+  ]);
 
-    history.push({
-      pathname: "/verify-identity",
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    state = store.getState();
+
+    wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <AddNin />
+        </MemoryRouter>
+      ),
+      store: store,
     });
-
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <NinDisplay {...props} />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
+  });
 
   it("Renders the saved number", () => {
-    const { wrapper } = setupComponent();
     const number = wrapper.find("div");
     expect(number.at(0).text()).toContain("****");
   });
 
   it("Renders the saved number and show/hide", () => {
-    const { wrapper } = setupComponent();
     const button = wrapper.find("button#show-hide-button");
     expect(button.exists()).toEqual(true);
     expect(button.length).toEqual(1);
@@ -72,51 +51,32 @@ describe("NinDisplay component (/verify-identity), when nin is saved and unverif
 });
 
 describe("NinDisplay component (/verify-identity), when a nin is saved and verified ", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
+
+  const test_nins = ninStateFromNinList([
+    { number: "199901100006", verified: false, primary: false },
+    { number: "199901100005", verified: false, primary: false },
+    { number: "199901100004", verified: true, primary: true },
+  ]);
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    state = store.getState();
+
+    wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <AddNin />
+        </MemoryRouter>
+      ),
+      store: store,
+    });
   });
 
-  const fakeState = {
-    nins: {
-      nins: [],
-      verifiedNin: [],
-      verifiedNinStatus: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
-  function setupComponent() {
-    const mockProps = {
-      nins: [
-        { number: "199901100006", verified: false, primary: false },
-        { number: "199901100005", verified: false, primary: false },
-        { number: "199901100004", verified: true, primary: true },
-      ],
-      verifiedNin: [{ number: "199901100004", verified: true, primary: true }],
-      verifiedNinStatus: true,
-    };
-    history.push("verify-identity");
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <NinDisplay {...mockProps} />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      mockProps,
-      wrapper,
-    };
-  }
-
   it("Renders the saved number", () => {
-    const { wrapper } = setupComponent();
     const number = wrapper.find("div");
     expect(number.at(0).text()).toContain("19990110****");
   });
@@ -135,158 +95,103 @@ describe("NinDisplay component", () => {
 });
 
 describe("NinDisplay component (profile), when no nin is saved", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
+
+  const test_nins = ninStateFromNinList([]);
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    state = store.getState();
+
+    wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <NinDisplay nin={state.nins.first_nin} />
+        </MemoryRouter>
+      ),
+      store: store,
+    });
   });
 
-  const fakeState = {
-    nins: {
-      nins: [{ number: "199901100006", verified: false, primary: false }],
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-  function setupComponent() {
-    const mockProps = {
-      nins: [],
-      verifiedNin: [],
-      verifiedNinStatus: false,
-    };
-
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <NinDisplay {...mockProps} />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      wrapper,
-    };
-  }
-  // const state = { ...fakeState };
-  // state.nins = [];
-  it("Renders an 'add id number' box", () => {
-    history.push("/profile");
-    const state = { ...fakeState };
-    state.nins = [{ number: "199901100006", verified: false, primary: false }];
-    const { wrapper } = setupComponent();
+  it("Renders an 'add id number' box on the Identity tab", () => {
     const noNumber = wrapper.find("a");
     expect(noNumber.exists()).toEqual(true);
     expect(noNumber.text()).toContain("add id number");
   });
 
-  it("Renders a link to '/profile/verify-identity/'", () => {
-    const { wrapper } = setupComponent();
+  it("Renders a link to '/profile/verify-identity/' on the Profile tab", () => {
     const noNumber = wrapper.find("a");
     expect(noNumber.props().href).toBe("/profile/verify-identity/");
   });
 });
 
 describe("NinDisplay component (profile), when a nin is saved and unverified", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
+
+  const test_nins = ninStateFromNinList([
+    { number: "196701100006", verified: false, primary: false },
+    { number: "196701110005", verified: false, primary: false },
+  ]);
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    state = store.getState();
+
+    wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <AddNin />
+        </MemoryRouter>
+      ),
+      store: store,
+    });
   });
 
-  const fakeState = {
-    nins: {
-      nins: [],
-      verifiedNin: [],
-      verifiedNinStatus: false,
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
-  function setupComponent() {
-    const props = {
-      nins: [
-        { number: "196701100006", verified: false, primary: false },
-        { number: "196701110005", verified: false, primary: false },
-      ],
-      verifiedNin: [],
-      verifiedNinStatus: false,
-    };
-
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <NinDisplay {...props} />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
-  // state.nins = [{ number: "196701110005", verified: false, primary: false }];
-  it("Renders a nonclickable number if a nin has been added nin", () => {
-    const { wrapper } = setupComponent();
+  it("Renders a non-clickable number if a nin has been added nin", () => {
     const unverifiedNumber = wrapper.find("div");
     expect(unverifiedNumber.exists()).toEqual(true);
     expect(unverifiedNumber.at(0).text()).toContain("19670110****");
   });
 
   it("Renders a show/hide button", () => {
-    const { wrapper } = setupComponent();
     const unverifiedNumber = wrapper.find("button");
-    expect(unverifiedNumber.text()).toContain("SHOW");
+    expect(unverifiedNumber).toHaveLength(2);
+    expect(unverifiedNumber.at(0).text()).toContain("SHOW");
   });
 });
 
 describe("NinDisplay component, when a nin is saved and verified", () => {
-  const fakeStore = (state) => ({
-    default: () => {},
-    dispatch: mock.fn(),
-    subscribe: mock.fn(),
-    getState: () => ({ ...state }),
+  let store: MockStoreEnhanced<DashboardRootState>;
+  let state;
+  let wrapper: ReactWrapper;
+
+  const test_nins = ninStateFromNinList([
+    { number: "196701100006", verified: false, primary: false },
+    { number: "196701110005", verified: true, primary: true },
+  ]);
+
+  beforeEach(() => {
+    // re-init store and state before each test to get isolation
+    store = fakeStore({ ...dashboardTestState, nins: test_nins });
+    state = store.getState();
+
+    wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <AddNin />
+        </MemoryRouter>
+      ),
+      store: store,
+    });
   });
 
-  const fakeState = {
-    nins: {
-      nins: [],
-    },
-    intl: {
-      locale: "en",
-      messages: messages,
-    },
-  };
-
-  function setupComponent() {
-    const props = {
-      nins: [
-        { number: "196701100006", verified: false, primary: false },
-        { number: "196701110005", verified: true, primary: false },
-      ],
-      verifiedNin: [{ number: "196701110005", verified: true, primary: false }],
-      verifiedNinStatus: true,
-    };
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <Router history={history}>
-          <NinDisplay {...props} />
-        </Router>
-      </ReduxIntlProvider>
-    );
-    return {
-      props,
-      wrapper,
-    };
-  }
-
   it("Renders a static number (not clickable)", () => {
-    const { wrapper } = setupComponent();
     const verifiedNumber = wrapper.find(".verified");
     expect(verifiedNumber.exists()).toEqual(true);
     const link = wrapper.find("a");
@@ -294,7 +199,6 @@ describe("NinDisplay component, when a nin is saved and verified", () => {
   });
 
   it("Renders only the verified number", () => {
-    const { wrapper } = setupComponent();
     const verifiedNumber = wrapper.find(".verified");
     expect(verifiedNumber.text()).toContain("19670111****");
   });

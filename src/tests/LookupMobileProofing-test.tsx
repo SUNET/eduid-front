@@ -1,209 +1,119 @@
-const mock = require("jest-mock");
-import React from "react";
-import { mount } from "enzyme";
+import { DashboardRootState } from "dashboard-init-app";
+import { ReactWrapper } from "enzyme";
 import expect from "expect";
-import * as actions from "actions/LookupMobileProofing";
-import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
-import { ReduxIntlProvider } from "components/ReduxIntl";
-import { MemoryRouter } from "react-router-dom";
-import LookupMobileProofingContainer from "../login/components/LookupMobileProofing/LookupMobileProofingContainer";
+import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
+import React from "react";
+import { MemoryRouter } from "react-router";
+import { ninStateFromNinList } from "reducers/Nins";
+import { MockStoreEnhanced } from "redux-mock-store";
+import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
+//const mock = require("jest-mock");
 
-const messages = require("../login/translation/messageIndex");
+describe("LookupMobile component", () => {
+  let store: MockStoreEnhanced<DashboardRootState>;
 
-const baseState = {
-  lookup_mobile: {},
-  config: {
-    lookup_mobile_proofing_url: "http://localhost/lookup-mobile",
-    csrf_token: "dummy-token",
-  },
-  intl: {
-    locale: "en",
-    messages: messages,
-  },
-  phones: {
-    phones: [],
-  },
-  nins: {
-    nins: [],
-  },
-};
-
-const fakeStore = (fakeState) => ({
-  default: () => {},
-  dispatch: mock.fn(),
-  subscribe: mock.fn(),
-  getState: () => ({ ...fakeState }),
-});
-
-function getFakeState(newState) {
-  if (newState === undefined) {
-    newState = {};
-  }
-  return Object.assign(baseState, newState);
-}
-
-describe("lookup mobile proofing Actions", () => {
-  it("should create an action to trigger checking a mobile phone", () => {
-    const expectedAction = {
-      type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING,
-    };
-    expect(actions.postLookupMobile()).toEqual(expectedAction);
-  });
-
-  it("should create an action to signal an error checking a mobile phone", () => {
-    const err = "Bad error";
-    const expectedAction = {
-      type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
-      error: true,
-      payload: {
-        message: "Bad error",
-      },
-    };
-    expect(actions.postLookupMobileFail(err)).toEqual(expectedAction);
-  });
-});
-
-describe("Reducers", () => {
-  const fakeState = getFakeState();
-  const lookupMobileState = fakeState.lookup_mobile;
-
-  it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING action", () => {
-    expect(
-      lookupMobileProofingReducer(lookupMobileState, {
-        type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING,
-      })
-    ).toEqual({
-      ...lookupMobileState,
-    });
-  });
-
-  it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS action", () => {
-    expect(
-      lookupMobileProofingReducer(lookupMobileState, {
-        type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_SUCCESS,
-      })
-    ).toEqual({
-      ...lookupMobileState,
-    });
-  });
-
-  it("Receives a POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL action", () => {
-    expect(
-      lookupMobileProofingReducer(lookupMobileState, {
-        type: actions.POST_LOOKUP_MOBILE_PROOFING_PROOFING_FAIL,
-        error: true,
-        payload: {
-          message: "Bad error",
-        },
-      })
-    ).toEqual({
-      ...lookupMobileState,
-    });
-  });
-
-  it("Receives a DUMMY action", () => {
-    expect(
-      lookupMobileProofingReducer(lookupMobileState, {
-        type: "DUMMY_ACTION",
-        payload: "dummy payload",
-      })
-    ).toEqual({
-      ...lookupMobileState,
-    });
-  });
-});
-
-describe("LookupMobile Container", () => {
-  let mockProps, wrapper, button;
-  const fakeState = getFakeState();
   beforeEach(() => {
-    const store = fakeStore(fakeState);
-    mockProps = {};
-
-    wrapper = mount(
-      <ReduxIntlProvider store={store}>
-        <LookupMobileProofingContainer {...mockProps} />
-      </ReduxIntlProvider>
-    );
-    button = wrapper.find("button");
+    // re-init store and state before each test to get isolation
+    store = fakeStore({
+      ...dashboardTestState,
+      nins: ninStateFromNinList([]),
+      phones: {
+        message: "",
+        confirming: "",
+        phones: [],
+        phone: "",
+        code: "",
+      },
+      config: { lookup_mobile_proofing_url: "http://localhost/lookup-mobile" },
+    });
   });
+
+  function getWrapper(overrides?: Partial<DashboardRootState>): ReactWrapper {
+    if (!overrides) {
+      return setupComponent({
+        component: (
+          <MemoryRouter>
+            <LookupMobileProofing disabled={false} />
+          </MemoryRouter>
+        ),
+        store,
+        overrides,
+      });
+    }
+    return setupComponent({
+      component: (
+        <MemoryRouter>
+          <LookupMobileProofing disabled={false} />
+        </MemoryRouter>
+      ),
+      overrides,
+    });
+  }
 
   it("Renders button text", () => {
+    const wrapper = getWrapper();
+    const button = wrapper.find("button");
     expect(button.exists()).toEqual(true);
     expect(button.text()).toContain("by phone");
   });
-});
-
-describe("LookupMobileProofing component,", () => {
-  const fakeState = getFakeState({
-    nins: {
-      valid_nin: false,
-      nins: [],
-    },
-  });
-
-  function setupComponent() {
-    const wrapper = mount(
-      <ReduxIntlProvider store={fakeStore(fakeState)}>
-        <MemoryRouter>
-          <LookupMobileProofingContainer />
-        </MemoryRouter>
-      </ReduxIntlProvider>
-    );
-    return {
-      wrapper,
-    };
-  }
 
   it("Renders a vetting button", () => {
-    const { wrapper } = setupComponent();
+    const wrapper = getWrapper();
     const button = wrapper.find("button");
     expect(button.exists()).toEqual(true);
   });
 
   it("Renders button text, add ID number to verify phone", () => {
-    const state = { ...fakeState };
-    state.nins.nins[0] = "";
-    const { wrapper } = setupComponent();
+    const wrapper = getWrapper();
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);
     expect(explanation.text()).toContain("ID number");
 
+    /* 'disabled' is passed as prop to component, and set to false in setupComponent so even if the
+     * button gives an error message it should not be disabled here */
     const buttonDisabled = wrapper.find("button").prop("disabled");
-    expect(buttonDisabled).toBeTruthy();
+    expect(buttonDisabled).toBeFalsy();
   });
 
   it("Renders button text, the phone number is added", () => {
-    const state = { ...fakeState };
-    (state.phones.phones = [{ number: "+46700011555" }]), (state.nins.nins[0] = "19881212");
-    const { wrapper } = setupComponent();
+    const wrapper = getWrapper({
+      nins: ninStateFromNinList([{ number: "198812120000", verified: false, primary: true }]),
+      phones: { phones: [{ number: "+46700011555", verified: false, primary: true }] },
+    });
+
     const explanation = wrapper.find("div.explanation-link");
     const confirmPhone = explanation.at(0);
     expect(confirmPhone.exists()).toEqual(true);
     expect(confirmPhone.text()).toContain("Confirm");
 
+    /* 'disabled' is passed as prop to component, and set to false in setupComponent so even if the
+     * button gives an error message it should not be disabled here */
     const buttonDisabled = wrapper.find("button").prop("disabled");
-    expect(buttonDisabled).toBeTruthy();
+    expect(buttonDisabled).toBeFalsy();
   });
 
   it("Renders button text, if the phone number is non swedish", () => {
-    const state = { ...fakeState };
-    (state.phones.phones = [{ number: "+36700011555", primary: true, verified: true }]),
-      (state.nins.nins[0] = "19881212");
-    const { wrapper } = setupComponent();
+    const wrapper = getWrapper({
+      nins: ninStateFromNinList([{ number: "198812120000", verified: false, primary: true }]),
+      phones: { phones: [{ number: "+36700011555", verified: true, primary: true }] },
+    });
+
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);
     expect(explanation.text()).toContain("Swedish");
 
+    /* 'disabled' is passed as prop to component, and set to false in setupComponent so even if the
+     * button gives an error message it should not be disabled here */
     const buttonDisabled = wrapper.find("button").prop("disabled");
-    expect(buttonDisabled).toBeTruthy();
+    expect(buttonDisabled).toBeFalsy();
   });
 
   it("Renders button text, when verified swedish phone", () => {
-    const state = { ...fakeState };
-    (state.phones.phones = [{ number: "+46700011555", primary: true, verified: true }]),
-      (state.nins.nins[0] = "19881212");
-    const { wrapper } = setupComponent();
+    const wrapper = getWrapper({
+      nins: ninStateFromNinList([{ number: "198812120000", verified: false, primary: true }]),
+      phones: { phones: [{ number: "+46700011555", verified: true, primary: true }] },
+    });
+
     const explanation = wrapper.find("div.explanation-link");
     expect(explanation.exists()).toEqual(true);
     expect(explanation.text()).toContain("");
