@@ -17,7 +17,7 @@ function CodeVerified(props: CodeVerifiedProps) {
           description="Registration complete"
         />
       </h1>
-      <p className="preamble">
+      <p>
         <FormattedMessage
           defaultMessage="These are your login details for eduID."
           description="Registration finished"

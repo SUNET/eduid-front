@@ -38,7 +38,7 @@ export function LoginAtServiceInfo(props: LoginAtServiceInfoProps): JSX.Element 
           }}
         />
       </p>
-      <div className="border-line" />
+      {/* <div className="border-line" /> */}
     </>
   );
 }

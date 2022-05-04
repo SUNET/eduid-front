@@ -51,7 +51,7 @@ function UseOtherDevice1() {
       <h1>
         <FormattedMessage defaultMessage="Log in using another device" />
       </h1>
-      <div className="preamble">
+      <div className="lead">
         <LoginAtServiceInfo service_info={service_info} />
       </div>
 

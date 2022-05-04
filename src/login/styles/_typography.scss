@@ -62,15 +62,11 @@ h5 {
 //   color: $black;
 // }
 
-.preamble {
+.lead {
   font-size: 1.375rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.875rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid $dark-gray;
-
-  // &:not(div) {
-  //   padding-bottom: 0.875rem;
-  // }
 
   @media (max-width: $bp-md) {
     font-size: 1.25rem;
