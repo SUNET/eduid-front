@@ -6,6 +6,7 @@ import { ChangePasswordState } from "reducers/ChangePassword";
 import { initialState as emailsInitialState } from "reducers/Emails";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
+import { NinState } from "reducers/Nins";
 
 export const dashboardTestState: DashboardRootState = {
   config: {
@@ -21,7 +22,7 @@ export const dashboardTestState: DashboardRootState = {
   invites: undefined as any,
   openid_data: undefined as any,
   lookup_mobile: undefined as any,
-  nins: undefined as any,
+  nins: undefined as any as NinState,
   openid_freja_data: undefined as any,
   personal_data: undefined as any,
   phones: undefined as any,
@@ -44,7 +45,7 @@ export function fakeStore(state: DashboardRootState = dashboardTestState): MockS
 interface setupComponentArgs {
   component: JSX.Element;
   store?: DashboardStoreType;
-  overrides?: { [key: string]: unknown };
+  overrides?: Partial<DashboardRootState>;
 }
 
 export function setupComponent({ component, store, overrides }: setupComponentArgs): ReactWrapper {
