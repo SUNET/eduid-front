@@ -3,6 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { showNotification } from "reducers/Notifications";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
@@ -92,7 +93,13 @@ export const postNewPhone = createAsyncThunk<
   };
   return makePhonesRequest<PhonesResponse>(thunkAPI, "new", data)
     .then((response) => response.payload)
-    .catch((err) => thunkAPI.rejectWithValue(err));
+    .catch((err) => {
+      return (
+        // Show correct error message instead of "Check the form below for errors."
+        thunkAPI.dispatch(showNotification({ message: err.error.number, level: "error" })),
+        thunkAPI.rejectWithValue(err)
+      );
+    });
 });
 
 /*********************************************************************************************************************/
