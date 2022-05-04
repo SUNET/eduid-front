@@ -8,7 +8,7 @@ export interface NinInfo {
   primary: boolean;
 }
 
-interface NinState {
+export interface NinState {
   nins: NinInfo[];
   first_nin?: NinInfo; // the primary nin, or if there are no primary nins the first one from the list
   is_confirmed_identity: boolean; // True if the user has a confirmed identity, not necessarily a NIN
@@ -20,7 +20,8 @@ export const initialState: NinState = {
   is_confirmed_identity: false,
 };
 
-function ninStateFromNinList(nins: NinInfo[]): NinState {
+// export this for use in tests
+export function ninStateFromNinList(nins: NinInfo[]): NinState {
   // Deduce some information about the nins given as input, and return a full state
   const _primary = nins.filter((nin) => nin.primary);
   const primary = _primary.length ? _primary[0] : nins[0];
