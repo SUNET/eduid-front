@@ -40,7 +40,7 @@ button.btn {
   background-color: $orange-highlight;
   box-shadow: none;
   width: 100px;
-  min-width: fit-content;
+  min-width: min-content;
   padding: 0 1.25rem;
 }
 
@@ -54,7 +54,7 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   background-color: $white;
   box-shadow: none;
   width: 100px;
-  min-width: fit-content;
+  min-width: min-content;
   padding: 0 1.25rem;
 
   /* Login, Logout, Register button in Header */
