@@ -2,12 +2,13 @@ import React from "react";
 import expect from "expect";
 
 import { setupComponent } from "tests/SignupMain-test";
-import SplashContainer from "containers/Splash";
+import Splash from "components/Splash";
 
 describe("Splash Component", () => {
   it("Renders", () => {
     const wrapper = setupComponent({
-        component: <SplashContainer />,
+        component: <Splash showChildren={false} />,
+        store: undefined,
         overrides: { config: { is_app_loaded: false } },
       }),
       splash = wrapper.find("div#eduid-splash-screen");
@@ -17,7 +18,8 @@ describe("Splash Component", () => {
 
   it("Doesn't Render", () => {
     const wrapper = setupComponent({
-        component: <SplashContainer />,
+        component: <Splash showChildren={true} />,
+        store: undefined,
         overrides: { config: { is_app_loaded: true } },
       }),
       splash = wrapper.find("div#eduid-splash-screen");
