@@ -61,6 +61,7 @@ function NinForm(): JSX.Element {
 
   return (
     <FinalForm<NinFormData>
+      id="nin-form"
       onSubmit={submitNinForm}
       initialValues={{
         nin: nin?.number || "",
