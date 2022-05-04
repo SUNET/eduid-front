@@ -118,8 +118,17 @@ function Phones() {
   function validatePhonesInForm(value: string): string | undefined {
     const errors: PhoneFormData = {};
     let phone = value;
+
     if (!phone) {
       return "required";
+    }
+    if (!phone.startsWith("0") && !phone.startsWith("+")) {
+      return "phones.invalid";
+    }
+    const patternWithCountryCode = /^\+[1-9]\d[0-9]{6,20}$/;
+    const startWithZeroPattern = /0([-\s]?\d)[0-9]{6,20}/;
+    if (!patternWithCountryCode.test(phone) && !startWithZeroPattern.test(phone)) {
+      return "phones.invalid";
     }
     if (phone.startsWith("0")) {
       phone = phone.substring(1);
@@ -127,12 +136,8 @@ function Phones() {
     if (phone.startsWith("+46")) {
       phone = phone.substring(3);
     }
-    const pattern = /^\+[1-9]\d{6,20}$/;
-    const startWithZeroPattern = /0([-\s]?\d){6,20}/;
-    if (!pattern.test(phone) && !startWithZeroPattern.test(phone)) {
-      return "phones.invalid";
-    }
     const is_duplicate = phones.phones.find((x) => x.number.substring(3) === phone);
+
     if (is_duplicate) {
       return "phones.duplicated";
     }
