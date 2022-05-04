@@ -26,11 +26,11 @@ export const requestMakePrimaryPhone = createAsyncThunk<
   PhonesResponse, // return type
   { number: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("emails/requestMakePrimaryPhone", async (args, thunkAPI) => {
+>("phones/requestMakePrimaryPhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
   };
-  return makeEmailsRequest<PhonesResponse>(thunkAPI, "primary", data)
+  return makePhonesRequest<PhonesResponse>(thunkAPI, "primary", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -45,12 +45,12 @@ export const requestVerifyPhone = createAsyncThunk<
   PhonesResponse, // return type
   { code: string; number: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("emails/requestVerifyPhone", async (args, thunkAPI) => {
+>("phones/requestVerifyPhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
     code: args.code,
   };
-  return makeEmailsRequest<PhonesResponse>(thunkAPI, "verify", data)
+  return makePhonesRequest<PhonesResponse>(thunkAPI, "verify", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -65,11 +65,11 @@ export const requestResendPhoneCode = createAsyncThunk<
   PhonesResponse, // return type
   { number: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("emails/requestResendPhoneCode", async (args, thunkAPI) => {
+>("phones/requestResendPhoneCode", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
   };
-  return makeEmailsRequest<PhonesResponse>(thunkAPI, "resend-code", data)
+  return makePhonesRequest<PhonesResponse>(thunkAPI, "resend-code", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -84,13 +84,13 @@ export const postNewPhone = createAsyncThunk<
   PhonesResponse, // return type
   { number: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("emails/postNewPhone", async (args, thunkAPI) => {
+>("phones/postNewPhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
     verified: false,
     primary: false,
   };
-  return makeEmailsRequest<PhonesResponse>(thunkAPI, "new", data)
+  return makePhonesRequest<PhonesResponse>(thunkAPI, "new", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -105,17 +105,17 @@ export const requestRemovePhone = createAsyncThunk<
   PhonesResponse, // return type
   { number: string }, // args type
   { dispatch: DashboardAppDispatch; state: DashboardRootState }
->("emails/requestRemovePhone", async (args, thunkAPI) => {
+>("phones/requestRemovePhone", async (args, thunkAPI) => {
   const data: KeyValues = {
     number: args.number,
   };
-  return makeEmailsRequest<PhonesResponse>(thunkAPI, "remove", data)
+  return makePhonesRequest<PhonesResponse>(thunkAPI, "remove", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
-async function makeEmailsRequest<T>(
+async function makePhonesRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
   body?: KeyValues,
