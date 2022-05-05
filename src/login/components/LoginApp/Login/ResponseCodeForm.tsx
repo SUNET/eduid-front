@@ -123,8 +123,14 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
     const pressedKey = event.key;
     const form = event.currentTarget.form;
-    const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
+    const inputs = [...form].filter((input: HTMLElement) => input.tagName.toLowerCase() === "input");
     const index = inputs.indexOf(event.currentTarget);
+    const checkIfInputHasValue = inputs.find((input: { value?: string }) => !input.value);
+
+    if (checkIfInputHasValue === undefined) {
+      //  (document.getElementById("response-code-submit-button")as HTMLElement).addEventListener("click", props.handleLogin);
+    }
+
     switch (pressedKey.toLowerCase()) {
       case "backspace":
       case "delete": {
