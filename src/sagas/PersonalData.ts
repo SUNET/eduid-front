@@ -8,9 +8,9 @@ import { GET_EMAIL_ALL_SUCCESS } from "reducers/Emails";
 import { GET_PHONE_ALL_SUCCESS } from "reducers/Phones";
 import * as accountLinkingActions from "actions/AccountLinking";
 import { LOCALIZED_MESSAGES } from "globals";
-import { GET_NINS_SUCCESS } from "reducers/Nins";
+import ninsSlice from "reducers/Nins";
 import { DashboardRootState } from "dashboard-init-app";
-import { AllUserData } from "apis/personalData";
+import { AllUserData } from "apis/eduidPersonalData";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { getRequest } from "sagas/ts_common";
 import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
@@ -36,8 +36,8 @@ export function* requestAllPersonalData() {
     }
 
     if (response.payload.nins !== undefined) {
-      // update nins in the state by pretending we received a GET_NINS response from the backend
-      yield put(GET_NINS_SUCCESS({ nins: response.payload.nins }));
+      // update nins in the state
+      yield put(ninsSlice.actions.setNins(response.payload.nins));
     }
     if (response.payload.emails !== undefined) {
       yield put(GET_EMAIL_ALL_SUCCESS({ emails: response.payload.emails }));

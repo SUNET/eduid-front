@@ -23,6 +23,7 @@ interface CommonJsConfig {
 interface APIEndpoints {
   security_url?: string;
   letter_proofing_url?: string;
+  lookup_mobile_proofing_url?: string;
   personal_data_url?: string;
   ladok_url?: string;
   emails_url?: string;

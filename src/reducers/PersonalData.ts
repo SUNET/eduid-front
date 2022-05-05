@@ -14,7 +14,8 @@ interface PersonalDataState {
   data: PersonalDataData;
 }
 
-const initialState: PersonalDataState = {
+// export for use in tests
+export const initialState: PersonalDataState = {
   data: {},
 };
 
