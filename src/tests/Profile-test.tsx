@@ -48,11 +48,7 @@ describe("Profile component", () => {
       ...dashboardTestState,
       nins: test_nins,
       phones: {
-        message: "",
-        confirming: "",
         phones: [],
-        phone: "",
-        code: "",
       },
       personal_data: personalDataInitialState,
     });

@@ -1,11 +1,7 @@
 const mock = require("jest-mock");
 import React from "react";
-import { mount } from "enzyme";
 import expect from "expect";
-import phonesReducer from "reducers/Phones";
-import { put, call } from "redux-saga/effects";
 import PhonesComponent from "components/Phones";
-import { ReduxIntlProvider } from "components/ReduxIntl";
 import { IntlProvider } from "react-intl";
 import { shallow } from "enzyme";
 import { dashboardTestState, setupComponent } from "./helperFunctions/DashboardTestApp";
@@ -36,7 +32,7 @@ describe("Phones component, primary ", () => {
               primary: true,
             },
             {
-              email: "+46070000001",
+              number: "+46070000001",
               verified: false,
               primary: false,
             },
