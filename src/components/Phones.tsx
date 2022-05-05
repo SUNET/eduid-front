@@ -24,7 +24,7 @@ interface PhoneFormData {
 
 function Phones() {
   const [showPhoneForm, setShowPhoneForm] = useState(false);
-  const [confirmingPhone, setConfirmingPhone] = useState<string | undefined>();
+  const [selectedPhoneNumber, setSelectPhoneNumber] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
   const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
@@ -51,26 +51,28 @@ function Phones() {
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    if (confirmingPhone) dispatch(requestResendPhoneCode({ number: confirmingPhone }));
+    if (selectedPhoneNumber) dispatch(requestResendPhoneCode({ number: selectedPhoneNumber }));
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
     const phoneNumber = dataNode?.getAttribute("data-object");
-    if (phoneNumber) setConfirmingPhone(phoneNumber);
+    if (phoneNumber) setSelectPhoneNumber(phoneNumber);
   }
 
   function handleStopConfirmation() {
-    setConfirmingPhone(undefined);
+    setSelectPhoneNumber(undefined);
   }
 
   function handleConfirm() {
     const confirmationCode = document.getElementById("confirmation-code-area");
-    const code = confirmationCode?.querySelector("input") as HTMLInputElement;
-    const codeValue = code.value.trim();
-    if (codeValue && confirmingPhone) dispatch(requestVerifyPhone({ code: codeValue, number: confirmingPhone }));
-    setConfirmingPhone(undefined);
+    const code = confirmationCode?.querySelector("input");
+    if (code && selectedPhoneNumber) {
+      const trimmed = code.value.trim();
+      if (trimmed) dispatch(requestVerifyPhone({ code: trimmed, number: selectedPhoneNumber }));
+      setSelectPhoneNumber(undefined);
+    }
   }
 
   function handleRemove(event: React.MouseEvent<HTMLElement>) {
@@ -94,9 +96,9 @@ function Phones() {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
-    id: "mobile.confirm_mobile_placeholder",
-    defaultMessage: "Phone confirmation code",
-    description: "placeholder text for phone code input",
+    id: "placeholder.phone",
+    defaultMessage: "Phone number",
+    description: "placeholder text for phone input",
   });
 
   const title = intl.formatMessage(
@@ -105,7 +107,7 @@ function Phones() {
       defaultMessage: "Enter the code sent to {phone}",
       description: "Title for phone code input",
     },
-    { phone: confirmingPhone }
+    { phone: selectedPhoneNumber }
   );
 
   function validatePhonesInForm(value: string): string | undefined {
@@ -214,7 +216,7 @@ function Phones() {
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
         placeholder={placeholder}
-        showModal={Boolean(confirmingPhone)}
+        showModal={Boolean(selectedPhoneNumber)}
         closeModal={handleStopConfirmation}
         handleResend={handleResend}
         handleConfirm={handleConfirm}
