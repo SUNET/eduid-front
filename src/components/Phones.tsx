@@ -29,7 +29,7 @@ function Phones() {
   const phones = useDashboardAppSelector((state) => state.phones);
   const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
 
-  function handleMobileForm() {
+  function handlePhoneForm() {
     setShowPhoneForm(true);
     // rendering focus on input, setTimeout for 200 milliseconds to recognize the form
     setTimeout(() => {
@@ -208,7 +208,7 @@ function Phones() {
             }}
           />
         ) : (
-          <EduIDButton id="add-more-button" buttonstyle="link" className=" lowercase" onClick={handleMobileForm}>
+          <EduIDButton id="add-more-button" buttonstyle="link" className=" lowercase" onClick={handlePhoneForm}>
             <FormattedMessage defaultMessage=" + add more" description="button add more" />
           </EduIDButton>
         )}

@@ -31,7 +31,7 @@ export const requestMakePrimaryPhone = createAsyncThunk<
   const data: KeyValues = {
     number: args.number,
   };
-  return makePhonesRequest<PhonesResponse>(thunkAPI, "primary", data)
+  return makePhoneRequest<PhonesResponse>(thunkAPI, "primary", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -51,7 +51,7 @@ export const requestVerifyPhone = createAsyncThunk<
     number: args.number,
     code: args.code,
   };
-  return makePhonesRequest<PhonesResponse>(thunkAPI, "verify", data)
+  return makePhoneRequest<PhonesResponse>(thunkAPI, "verify", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -70,7 +70,7 @@ export const requestResendPhoneCode = createAsyncThunk<
   const data: KeyValues = {
     number: args.number,
   };
-  return makePhonesRequest<PhonesResponse>(thunkAPI, "resend-code", data)
+  return makePhoneRequest<PhonesResponse>(thunkAPI, "resend-code", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -91,7 +91,7 @@ export const postNewPhone = createAsyncThunk<
     verified: false,
     primary: false,
   };
-  return makePhonesRequest<PhonesResponse>(thunkAPI, "new", data)
+  return makePhoneRequest<PhonesResponse>(thunkAPI, "new", data)
     .then((response) => response.payload)
     .catch((err) => {
       return (
@@ -116,13 +116,13 @@ export const requestRemovePhone = createAsyncThunk<
   const data: KeyValues = {
     number: args.number,
   };
-  return makePhonesRequest<PhonesResponse>(thunkAPI, "remove", data)
+  return makePhoneRequest<PhonesResponse>(thunkAPI, "remove", data)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
 
 /*********************************************************************************************************************/
-async function makePhonesRequest<T>(
+async function makePhoneRequest<T>(
   thunkAPI: RequestThunkAPI,
   endpoint: string,
   body?: KeyValues,
