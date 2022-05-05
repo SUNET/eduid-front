@@ -68,7 +68,7 @@ function Emails() {
 
   function handleRemove(event: React.MouseEvent<HTMLElement>) {
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
-    const email = dataNode && dataNode.getAttribute("data-object");
+    const email = dataNode?.getAttribute("data-object");
     if (email) {
       dispatch(requestRemoveEmail({ email: email }));
     }
@@ -76,10 +76,6 @@ function Emails() {
 
   function handleEmailForm() {
     setShowEmailForm(true);
-    // rendering focus on input, setTimeout for 2 milliseconds to recognize the form
-    setTimeout(() => {
-      (document.getElementById("email") as HTMLInputElement).focus();
-    }, 200);
   }
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
@@ -90,7 +86,7 @@ function Emails() {
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
-    const email = dataNode && dataNode.getAttribute("data-object");
+    const email = dataNode?.getAttribute("data-object");
     if (email) setConfirmingEmail(email);
   }
 
@@ -99,20 +95,17 @@ function Emails() {
   }
 
   function handleConfirm() {
-    const codeValue = document.getElementById("confirmation-code-area");
-    const data = {
-      code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
-    };
-    if (data.code && confirmingEmail) dispatch(requestVerifyEmail({ code: data.code, email: confirmingEmail }));
+    const confirmationCode = document.getElementById("confirmation-code-area");
+    const code = confirmationCode?.querySelector("input") as HTMLInputElement;
+    const codeValue = code.value.trim();
+    if (codeValue && confirmingEmail) dispatch(requestVerifyEmail({ code: codeValue, email: confirmingEmail }));
     setConfirmingEmail(undefined);
   }
 
   function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email"),
-      data = {
-        email: dataNode && dataNode.getAttribute("data-object"),
-      };
-    if (data.email) dispatch(requestMakePrimaryEmail({ email: data.email }));
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
+    const email = dataNode?.getAttribute("data-object");
+    if (email) dispatch(requestMakePrimaryEmail({ email: email }));
   }
 
   function validateEmailsInForm(value: string): string | undefined {
@@ -167,6 +160,7 @@ function Emails() {
                     name="email"
                     placeholder={emailPlaceholder}
                     validate={validateEmailsInForm}
+                    autoFocus
                   />
                   <div className="flex-buttons">
                     <EduIDButton id="cancel-adding-email" buttonstyle="secondary" onClick={handleCancel}>

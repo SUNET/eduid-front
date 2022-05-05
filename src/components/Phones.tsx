@@ -31,10 +31,6 @@ function Phones() {
 
   function handlePhoneForm() {
     setShowPhoneForm(true);
-    // rendering focus on input, setTimeout for 200 milliseconds to recognize the form
-    setTimeout(() => {
-      (document.getElementById("number") as HTMLInputElement).focus();
-    }, 200);
   }
 
   async function handleAdd(values: PhoneFormData) {
