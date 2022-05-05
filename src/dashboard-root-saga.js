@@ -29,7 +29,7 @@ import * as updateNamesFromSkatteverketActions from "./login/redux/actions/updat
 import { postPersonalDataSaga } from "./login/redux/sagas/personalData/postPersonalDataSaga";
 import { updateNamesFromSkatteverketSaga } from "./login/redux/sagas/personalData/updateNamesFromSkatteverketSaga";
 import groupsSagas from "./login/redux/sagas/rootSaga/groupManagementSagas";
-import { confirmLetterCode, postRequestLetter } from "./apis/letterProofing";
+import { confirmLetterCode, postRequestLetter } from "./apis/eduidLetterProofing";
 import { all } from "redux-saga/effects";
 
 function* configSaga() {

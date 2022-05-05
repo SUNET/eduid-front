@@ -85,10 +85,6 @@
     "developer_comment": "Login UsernamePw",
     "string": "Annan enhet"
   },
-  "8HceTn": {
-    "developer_comment": "Emails input help text",
-    "string": "En giltig e-postadress"
-  },
   "8KywNU": {
     "developer_comment": "ToU first paragraph",
     "string": "att användarkonton, lösenord, säkerhetsnycklar och koder är personliga och får endast användas av innehavaren,"
@@ -201,7 +197,7 @@
   },
   "G1b2Mj": {
     "developer_comment": "device info",
-    "string": "IP address"
+    "string": "IP adress"
   },
   "G94CxN": {
     "developer_comment": "Use another device, finished",
@@ -317,6 +313,10 @@
     "developer_comment": "ErrorURL authorization failure",
     "string": "Otillräcklig behörighet"
   },
+  "Ok/e72": {
+    "developer_comment": "Add emails description",
+    "string": "Du kan koppla en eller flera av dina e-postadresser till ditt eduID-konto och därefter välja vilken av dem som ska vara primär."
+  },
   "P/GBQg": {
     "developer_comment": "Ladok account linking",
     "string": "Listan med lärosäten kan inte laddas just nu"
@@ -365,10 +365,6 @@
   "SuxgmQ": {
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET bedömer som oetiskt när någon:"
-  },
-  "TNLn8n": {
-    "developer_comment": "Emails description",
-    "string": "Du kan koppla en eller flera av dina e-postadresser till ditt eduID-konto\noch därefter välja vilken av dem som ska vara primär."
   },
   "Temporary technical problems": {
     "string": "Temporärt tekniskt fel, var god försök senare"
@@ -1797,8 +1793,14 @@
   "security.verify": {
     "string": "Verifiera"
   },
+  "security.webauthn-attestation-fail": {
+    "string": "Det gick inte att verifiera säkerhetsnyckeln."
+  },
   "security.webauthn-describe-title": {
     "string": "Ge ett namn till din säkerhetsnyckel"
+  },
+  "security.webauthn-metadata-fail": {
+    "string": "Det gick inte att validera säkerhetsnyckelns metadata."
   },
   "security.webauthn-missing-pdata": {
     "string": "Du måste lägga till personlig data innan du kan lägga till en säkerhetsnyckel"
@@ -1989,7 +1991,7 @@
     "string": "Börja med att lägga till ditt telefonnummer under\n"
   },
   "verify-identity.vetting_explanation_confirm_phone_number": {
-    "string": "Bekräfta ditt telefonnummer under\n"
+    "string": "Bekräfta ditt telefonnummer under"
   },
   "verify-identity.vetting_explanation_only_available_swe_number": {
     "string": "Bara möjligt med svenskt telefonnummer"

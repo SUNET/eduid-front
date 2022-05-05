@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/letterProofing";
+import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/eduidLetterProofing";
 
 export interface LetterProofingState {
   code?: string;

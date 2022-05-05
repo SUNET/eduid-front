@@ -10,7 +10,7 @@ export interface LookupMobileProofingResponse {
 
 /**
  * @public
- * @function fetchNins
+ * @function lookupMobileProofing
  * @desc Redux async thunk to invoke the backend endpoint that will try to perform a mobile proofing of this user.
  */
 export const lookupMobileProofing = createAsyncThunk<

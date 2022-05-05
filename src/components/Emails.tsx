@@ -135,9 +135,9 @@ function Emails() {
         </h3>
         <p>
           <FormattedMessage
-            defaultMessage="You can connect one or more email addresses with your eduID account and select one to be 
-            your primary email address."
-            description="Emails description"
+            defaultMessage={`You can connect one or more email addresses with your eduID account and select one to be 
+            your primary email address.`}
+            description="Add emails description"
           />
         </p>
       </div>
@@ -166,9 +166,6 @@ function Emails() {
                     type="text"
                     name="email"
                     placeholder={emailPlaceholder}
-                    helpBlock={
-                      <FormattedMessage defaultMessage="A valid email address" description="Emails input help text" />
-                    }
                     validate={validateEmailsInForm}
                   />
                   <div className="flex-buttons">
