@@ -61,8 +61,8 @@ function Phones() {
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
-    const number = dataNode && dataNode.getAttribute("data-object");
-    if (number) setConfirmingPhone(number);
+    const phoneNumber = dataNode?.getAttribute("data-object");
+    if (phoneNumber) setConfirmingPhone(phoneNumber);
   }
 
   function handleStopConfirmation() {
@@ -70,28 +70,25 @@ function Phones() {
   }
 
   function handleConfirm() {
-    const codeValue = document.getElementById("confirmation-code-area");
-    const data = {
-      code: codeValue && (codeValue.querySelector("input") as HTMLInputElement).value.trim(),
-    };
-    if (data.code && confirmingPhone) dispatch(requestVerifyPhone({ code: data.code, number: confirmingPhone }));
+    const confirmationCode = document.getElementById("confirmation-code-area");
+    const code = confirmationCode?.querySelector("input") as HTMLInputElement;
+    const codeValue = code.value.trim();
+    if (codeValue && confirmingPhone) dispatch(requestVerifyPhone({ code: codeValue, number: confirmingPhone }));
     setConfirmingPhone(undefined);
   }
 
   function handleRemove(event: React.MouseEvent<HTMLElement>) {
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
-    const number = dataNode && dataNode.getAttribute("data-object");
-    if (number) {
-      dispatch(requestRemovePhone({ number: number }));
+    const phoneNumber = dataNode?.getAttribute("data-object");
+    if (phoneNumber) {
+      dispatch(requestRemovePhone({ number: phoneNumber }));
     }
   }
 
   function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
-    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number"),
-      data = {
-        phone: dataNode && dataNode.getAttribute("data-object"),
-      };
-    if (data.phone) dispatch(requestMakePrimaryPhone({ number: data.phone }));
+    const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
+    const phoneNumber = dataNode?.getAttribute("data-object");
+    if (phoneNumber) dispatch(requestMakePrimaryPhone({ number: phoneNumber }));
   }
 
   function handleCancel() {
