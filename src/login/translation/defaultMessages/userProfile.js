@@ -490,8 +490,6 @@ export const userData = {
     <FormattedMessage id="nin_display.profile.main_title" defaultMessage={`Id number`} />
   ),
 
-  "nin_display.profile.no_nin": <FormattedMessage id="nin_display.profile.no_nin" defaultMessage={`add id number`} />,
-
   "nins.input_help_text": (
     <FormattedMessage id="nins.input_help_text" defaultMessage={"National identity number with 12 digits"} />
   ),
