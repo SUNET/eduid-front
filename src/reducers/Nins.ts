@@ -1,6 +1,6 @@
-import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchNins } from "apis/eduidPersonalData";
 import { addNin, removeNin } from "apis/eduidSecurity";
-import { fetchNins } from "apis/personalData";
 
 export interface NinInfo {
   number: string;

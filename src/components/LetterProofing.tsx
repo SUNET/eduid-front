@@ -6,7 +6,7 @@ import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { isValid } from "redux-form";
 import { useDashboardAppDispatch } from "dashboard-hooks";
-import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/letterProofing";
+import { fetchLetterProofingState, postRequestLetter, confirmLetterCode } from "apis/eduidLetterProofing";
 import { useDashboardAppSelector } from "dashboard-hooks";
 
 export interface LetterProofingProps {
@@ -158,7 +158,7 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
         }
         mainText={
           <FormattedMessage
-            defaultMessage="The letter will contain a code that you enter here to verify your identity. 
+            defaultMessage="The letter will contain a code that you enter here to verify your identity.
                             The code sent to you will expire in 2 weeks starting from now"
             description="explanation text for letter proofing"
           />
