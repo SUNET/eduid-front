@@ -754,12 +754,7 @@ export const userData = {
     <FormattedMessage id="emails.get-success" defaultMessage={`Successfully retrieved Email addresses`} />
   ),
 
-  "emails.duplicated": (
-    <FormattedMessage
-      id="emails.duplicated"
-      defaultMessage={`That email address is already in use, please choose another`}
-    />
-  ),
+  "emails.duplicated": <FormattedMessage id="emails.duplicated" defaultMessage={`The number is already in the list`} />,
 
   "emails.save-success": <FormattedMessage id="emails.save-success" defaultMessage={`The email address was saved`} />,
 

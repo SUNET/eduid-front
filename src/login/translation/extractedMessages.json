@@ -754,7 +754,7 @@
     "string": "Click the link or enter the code sent to {email} here"
   },
   "emails.duplicated": {
-    "string": "That email address is already in use, please choose another"
+    "string": "The email is already in the list"
   },
   "emails.email": {
     "string": "Email"
@@ -1396,7 +1396,7 @@
     "string": "The confirmation code is invalid or it has expired, please try again or request a new code"
   },
   "phones.duplicated": {
-    "string": "That phone number is already in use, please choose another"
+    "string": "The number is already in the list"
   },
   "phones.get-success": {
     "string": "Successfully retrieved phone numbers"
