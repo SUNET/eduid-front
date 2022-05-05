@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import AddNin from "containers/AddNin";
-
 import "../login/styles/index.scss";
 import { NinInfo } from "reducers/Nins";
 import { translate } from "login/translation";
@@ -25,22 +24,25 @@ interface VerifyIdentityProps {
 class VerifyIdentity extends Component<VerifyIdentityProps> {
   render() {
     // page text depend on nin status (verified or not)
-    let pageHeading, pageText, vettingButtons;
+    let pageHeading, pageText, vettingButtons /*, intro */;
     const recoverIdentityTip = translate("verify-identity.verified_pw_reset_extra_security");
+
+    pageHeading = translate("verify-identity.unverified_main_title");
+    pageText = translate("verify-identity.unverified_page-description");
+
+    /*intro = (
+       <div className="intro">
+         <h1>{pageHeading}</h1>
+         <div className="lead">
+           <p>{pageText}</p>
+         </div>
+       </div>
+     );*/
 
     // nin is not verified (add nin)
     const AddNumber = () => {
-      pageHeading = translate("verify-identity.unverified_main_title");
-      pageText = translate("verify-identity.unverified_page-description");
       return (
         <>
-          <div className="intro">
-            <h1>{pageHeading}</h1>
-            <div className="lead">
-              <p>{pageText}</p>
-            </div>
-          </div>
-
           <h4>{translate("verify-identity.add-nin_heading")}</h4>
         </>
       );
@@ -50,16 +52,20 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       // nin is verified (nin added)
       pageHeading = translate("verify-identity.verified_main_title");
       pageText = translate("verify-identity.verified_page-description");
+
       return (
         <>
           <h4>{pageHeading}</h4>
-          <p>{pageText}</p>
+          <p className="x-adjust">{pageText}</p>
         </>
       );
     };
 
     // top half of page: add nin/nin added
     const VerifyIdentity_Step1 = () => {
+      pageHeading = translate("verify-identity.unverified_main_title");
+      pageText = translate("verify-identity.unverified_page-description");
+
       if (this.props.hasVerifiedNin) {
         return <NumberAdded />;
       } else {
@@ -87,7 +93,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
       // TODO: Maybe the help texts ought to move into the containers? Isn't that what containers are for - to group components?
 
       vettingButtons = (
-        <div id="nins-btn-grid">
+        <div id="nins-btn-grid" className="x-adjust">
           <div>
             <LetterProofingButton disabled={letterProofingDisabled} />
             {buttonHelpText("letter.initialize_proofing_help_text", letterProofingDisabled)}
@@ -116,7 +122,7 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
         return (
           <>
             <h4>{translate("verify-identity.connect-nin_heading")}</h4>
-            <p>{translate("verify-identity.connect-nin_description")}</p>
+            <p className="x-adjust">{translate("verify-identity.connect-nin_description")}</p>
           </>
         );
       } else {
@@ -126,11 +132,24 @@ class VerifyIdentity extends Component<VerifyIdentityProps> {
 
     return (
       <Fragment>
-        <VerifyIdentity_Step1 />
-        <AddNin />
-        {this.props.hasVerifiedNin && <p className="help-text">{recoverIdentityTip}</p>}
-        <VerifyIdentity_Step2 />
-        {vettingButtons}
+        <div className="intro">
+          <h1>{pageHeading}</h1>
+          <div className="lead">
+            <p>{pageText}</p>
+          </div>
+        </div>
+        {/* {intro} */}
+        <ol className="listed-steps">
+          <li>
+            <VerifyIdentity_Step1 />
+            <AddNin />
+            {this.props.hasVerifiedNin && <p className="help-text">{recoverIdentityTip}</p>}
+          </li>
+          <li>
+            <VerifyIdentity_Step2 />
+            {vettingButtons}
+          </li>
+        </ol>
       </Fragment>
     );
   }

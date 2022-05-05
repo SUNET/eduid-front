@@ -71,7 +71,7 @@ const NinForm = (props: NinFormProps): JSX.Element => {
   };
 
   return (
-    <Form id="nin-form" role="form" onSubmit={handleSubmit(submitNinForm)} className="single-input-form">
+    <Form id="nin-form" role="form" onSubmit={handleSubmit(submitNinForm)} className="single-input-form x-adjust">
       <fieldset id="nins-form" className="tabpane">
         <Field
           component={CustomInput}

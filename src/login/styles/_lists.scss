@@ -5,7 +5,7 @@
   margin-left: $list-indent;
 
   li {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.25;
     margin-bottom: 2em;
 
@@ -13,6 +13,14 @@
       font-size: 1em;
       font-family: $akkurat;
       font-weight: bold;
+    }
+    fieldset:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  @media (max-width: $bp-sm) {
+    .x-adjust {
+      margin-left: #{-1 * $list-indent};
     }
   }
 }
