@@ -96,7 +96,7 @@ export const postNewPhone = createAsyncThunk<
     .catch((err) => {
       return (
         // Show correct error message instead of "Check the form below for errors."
-        thunkAPI.dispatch(showNotification({ message: err.error.number, level: "error" })),
+        thunkAPI.dispatch(showNotification({ message: err.payload.error.number, level: "error" })),
         thunkAPI.rejectWithValue(err)
       );
     });
