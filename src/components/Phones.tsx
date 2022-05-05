@@ -38,19 +38,16 @@ function Phones() {
   }
 
   async function handleAdd(values: PhoneFormData) {
-    let value = values.number;
-    if (!value) {
-      return;
+    const number = toE164Number(values.number, default_country_code);
+
+    if (number.startsWith("+")) {
+      const response = await dispatch(postNewPhone({ number: number }));
+      if (postNewPhone.fulfilled.match(response)) {
+        // phone number form closed when user have successfully added phone number
+        return setShowPhoneForm(false);
+      }
+      return setShowPhoneForm(true);
     }
-    if (value.startsWith("0")) {
-      value = "+" + default_country_code + value.substring(1);
-    }
-    const response = await dispatch(postNewPhone({ number: value }));
-    if (postNewPhone.fulfilled.match(response)) {
-      // phone number form closed when user have successfully added phone number
-      return setShowPhoneForm(false);
-    }
-    return setShowPhoneForm(true);
   }
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
@@ -113,32 +110,21 @@ function Phones() {
   );
 
   function validatePhonesInForm(value: string): string | undefined {
-    const errors: PhoneFormData = {};
-    let phone = value;
+    const number = toE164Number(value, default_country_code);
 
-    if (!phone) {
-      return "required";
+    if (!number.startsWith("+")) {
+      // value was not valid, and 'number' is a validation error string
+      return number;
     }
-    if (!phone.startsWith("0") && !phone.startsWith("+")) {
-      return "phones.invalid";
-    }
-    const patternWithCountryCode = /^\+[1-9]\d[0-9]{6,20}$/;
-    const startWithZeroPattern = /0([-\s]?\d)[0-9]{6,20}/;
-    if (!patternWithCountryCode.test(phone) && !startWithZeroPattern.test(phone)) {
-      return "phones.invalid";
-    }
-    if (phone.startsWith("0")) {
-      phone = phone.substring(1);
-    }
-    if (phone.startsWith("+46")) {
-      phone = phone.substring(3);
-    }
-    const is_duplicate = phones.phones.find((x) => x.number.substring(3) === phone);
+
+    const is_duplicate = phones.phones.find((x) => x.number === number);
 
     if (is_duplicate) {
       return "phones.duplicated";
     }
-    return errors.number;
+
+    // value is valid
+    return undefined;
   }
 
   return (
@@ -149,7 +135,7 @@ function Phones() {
         </h3>
         <p>
           <FormattedMessage
-            defaultMessage={`You can connect one or more mobile phone numbers to your eduID, 
+            defaultMessage={`You can connect one or more mobile phone numbers to your eduID,
             but one has to be set as primary.`}
             description="Phones long description"
           />
@@ -227,6 +213,39 @@ function Phones() {
       />
     </article>
   );
+}
+
+/**
+ * Ensure a number is in E.164 format (starting with + and a country code).
+ * The return value is valid if it starts with "+", and a validation error string otherwise.
+ *
+ * @param number Phone number, possibly not in E.164 format
+ */
+function toE164Number(number: string | undefined, default_country_code: string): string {
+  if (!number) {
+    return "required";
+  }
+
+  const patternWithCountryCode = /^\+[1-9]\d{6,20}$/;
+
+  if (patternWithCountryCode.test(number)) {
+    // Already a valid E.164 number.
+    return number;
+  }
+
+  if (number.startsWith("+")) {
+    // This must be either the string "+" or a string starting with "+0". No country code begins with "0".
+    return "phones.invalid";
+  }
+
+  const oneLeadingZero = /^0[1-9]\d{6,20}$/;
+  if (oneLeadingZero.test(number)) {
+    // Replace a single leading zero with the default country code and call it valid.
+    return "+" + default_country_code + number.substring(1);
+  }
+
+  // If we got here, the number was not valid (too short or long, or contained an alphabetic character probably).
+  return "phones.invalid";
 }
 
 export default Phones;
