@@ -25,7 +25,7 @@ interface EmailFormData {
 
 function Emails() {
   const [showEmailForm, setShowEmailForm] = useState(false);
-  const [confirmingEmail, setConfirmingEmail] = useState<string | undefined>();
+  const [selectedEmail, setSelectEmail] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const emails = useDashboardAppSelector((state) => state.emails);
 
@@ -49,7 +49,7 @@ function Emails() {
       defaultMessage: "Click the link or enter the code sent to {email} here",
       description: "Title for email code input",
     },
-    { email: confirmingEmail }
+    { email: selectedEmail }
   );
 
   async function handleAdd(values: EmailFormData) {
@@ -80,26 +80,26 @@ function Emails() {
 
   function handleResend(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    if (confirmingEmail) dispatch(requestResendEmailCode({ email: confirmingEmail }));
+    if (selectedEmail) dispatch(requestResendEmailCode({ email: selectedEmail }));
   }
 
   function handleStartConfirmation(event: React.MouseEvent<HTMLElement>) {
     dispatch(clearNotifications());
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.email");
     const email = dataNode?.getAttribute("data-object");
-    if (email) setConfirmingEmail(email);
+    if (email) setSelectEmail(email);
   }
 
   function handleStopConfirmation() {
-    setConfirmingEmail(undefined);
+    setSelectEmail(undefined);
   }
 
   function handleConfirm() {
     const confirmationCode = document.getElementById("confirmation-code-area");
     const code = confirmationCode?.querySelector("input") as HTMLInputElement;
     const codeValue = code.value.trim();
-    if (codeValue && confirmingEmail) dispatch(requestVerifyEmail({ code: codeValue, email: confirmingEmail }));
-    setConfirmingEmail(undefined);
+    if (codeValue && selectedEmail) dispatch(requestVerifyEmail({ code: codeValue, email: selectedEmail }));
+    setSelectEmail(undefined);
   }
 
   function handleMakePrimary(event: React.MouseEvent<HTMLElement>) {
@@ -194,7 +194,7 @@ function Emails() {
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
         placeholder={modalPlaceholder}
-        showModal={Boolean(confirmingEmail)}
+        showModal={Boolean(selectedEmail)}
         closeModal={handleStopConfirmation}
         handleResend={handleResend}
         handleConfirm={handleConfirm}
