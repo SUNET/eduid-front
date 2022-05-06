@@ -112,10 +112,10 @@ function VerifyIdentity(): JSX.Element | null {
   const VerifyIdentity_Step2 = () => {
     if (!hasVerifiedNin) {
       return (
-        <>
+        <li>
           <h4>{translate("verify-identity.connect-nin_heading")}</h4>
           <p className="x-adjust">{translate("verify-identity.connect-nin_description")}</p>
-        </>
+        </li>
       );
     } else {
       return <div />;
@@ -136,10 +136,9 @@ function VerifyIdentity(): JSX.Element | null {
           <AddNin />
           {hasVerifiedNin && <p className="help-text">{recoverIdentityTip}</p>}
         </li>
-        <li>
-          <VerifyIdentity_Step2 />
-          {vettingButtons}
-        </li>
+
+        <VerifyIdentity_Step2 />
+        {vettingButtons}
       </ol>
     </Fragment>
   );
