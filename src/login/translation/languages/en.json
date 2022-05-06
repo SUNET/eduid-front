@@ -753,9 +753,6 @@
   "emails.confirm_title": {
     "string": "Click the link or enter the code sent to {email} here"
   },
-  "emails.duplicated": {
-    "string": "That email address is already in use, please choose another"
-  },
   "emails.email": {
     "string": "Email"
   },
@@ -1377,9 +1374,6 @@
   "phones.add_new": {
     "string": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of phone numbers."
   },
-  "phones.button_add_more": {
-    "string": "+ add more"
-  },
   "phones.cannot_remove_primary": {
     "string": "You cannot remove your primary phone number"
   },
@@ -1398,23 +1392,11 @@
   "phones.code_invalid_or_expired": {
     "string": "The confirmation code is invalid or it has expired, please try again or request a new code"
   },
-  "phones.duplicated": {
-    "string": "That phone number is already in use, please choose another"
-  },
   "phones.get-success": {
     "string": "Successfully retrieved phone numbers"
   },
-  "phones.input_help_text": {
-    "string": "Phone number starting with 0 or +"
-  },
   "phones.invalid_phone": {
     "string": "Invalid phone number"
-  },
-  "phones.long_description": {
-    "string": "You can connect one or more mobile phone numbers to\n           your eduID, but one has to be set as the primary one."
-  },
-  "phones.main_title": {
-    "string": "Mobile phone numbers"
   },
   "phones.primary-success": {
     "string": "The phone number was set as primary"

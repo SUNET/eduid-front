@@ -45,11 +45,7 @@ describe("VerifyIdentity component, no nin added ", () => {
       config: { is_configured: true, eidas_url: "http://localhost/eidas", token_verify_idp: "token-idp" },
       nins: test_nins,
       phones: {
-        message: "",
-        confirming: "",
         phones: [],
-        phone: "",
-        code: "",
       },
       eidas_data: { eidas_sp_freja_idp_url: "eidas_freja", showModal: false },
       letter_proofing: {},
@@ -114,11 +110,7 @@ describe("VerifyIdentity component, NIN already added ", () => {
       config: { is_configured: true, eidas_url: "http://localhost/eidas", token_verify_idp: "token-idp" },
       nins: test_nins,
       phones: {
-        message: "",
-        confirming: "",
         phones: [],
-        phone: "",
-        code: "",
       },
       eidas_data: { eidas_sp_freja_idp_url: "eidas_freja", showModal: false },
       letter_proofing: {},

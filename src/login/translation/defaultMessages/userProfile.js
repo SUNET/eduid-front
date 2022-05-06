@@ -565,23 +565,8 @@ export const userData = {
     />
   ),
 
-  "phones.input_help_text": (
-    <FormattedMessage id="phones.input_help_text" defaultMessage={"Phone number starting with 0 or +"} />
-  ),
-
-  "phones.main_title": <FormattedMessage id="phones.main_title" defaultMessage={`Mobile phone numbers`} />,
-
-  "phones.button_add_more": <FormattedMessage id="phones.button_add_more" defaultMessage={`+ add more`} />,
-
   "phones.get-success": (
     <FormattedMessage id="phones.get-success" defaultMessage={`Successfully retrieved phone numbers`} />
-  ),
-
-  "phones.duplicated": (
-    <FormattedMessage
-      id="phones.duplicated"
-      defaultMessage={`That phone number is already in use, please choose another`}
-    />
   ),
 
   "phones.save-success": <FormattedMessage id="phones.save-success" defaultMessage={`The phone number was saved`} />,
@@ -760,13 +745,6 @@ export const userData = {
 
   "emails.get-success": (
     <FormattedMessage id="emails.get-success" defaultMessage={`Successfully retrieved Email addresses`} />
-  ),
-
-  "emails.duplicated": (
-    <FormattedMessage
-      id="emails.duplicated"
-      defaultMessage={`That email address is already in use, please choose another`}
-    />
   ),
 
   "emails.save-success": <FormattedMessage id="emails.save-success" defaultMessage={`The email address was saved`} />,

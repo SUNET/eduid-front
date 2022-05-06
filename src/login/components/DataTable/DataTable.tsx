@@ -60,7 +60,7 @@ function DataTableRows(props: DataTableProps) {
         } else valueStatus = "verified";
 
         return (
-          <tr className={`email-row ${datum.verified}`} data-identifier={valueName} data-object={value} key={i}>
+          <tr className={`${valueName} ${valueStatus}`} data-identifier={valueName} data-object={value} key={i}>
             <td className={valueStatus}>{value}</td>
             <td className="value-status">
               <DataStatus

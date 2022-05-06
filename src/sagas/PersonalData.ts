@@ -4,8 +4,8 @@ import { checkStatus, putCsrfToken, failRequest } from "sagas/common";
 import { getAllUserdata, getAllUserdataFail, GET_USERDATA_SUCCESS } from "actions/PersonalData";
 
 import * as actions from "actions/DashboardConfig";
-import { GET_EMAIL_ALL_SUCCESS } from "reducers/Emails";
-import * as phoneActions from "actions/Mobile";
+import emailsSlice from "reducers/Emails";
+import phonesSlice from "reducers/Phones";
 import * as accountLinkingActions from "actions/AccountLinking";
 import { LOCALIZED_MESSAGES } from "globals";
 import ninsSlice from "reducers/Nins";
@@ -40,16 +40,10 @@ export function* requestAllPersonalData() {
       yield put(ninsSlice.actions.setNins(response.payload.nins));
     }
     if (response.payload.emails !== undefined) {
-      yield put(GET_EMAIL_ALL_SUCCESS({ emails: response.payload.emails }));
+      yield put(emailsSlice.actions.setEmails(response.payload.emails));
     }
     if (response.payload.phones !== undefined) {
-      const phoneAction = {
-        type: phoneActions.GET_MOBILES_SUCCESS,
-        payload: {
-          phones: response.payload.phones,
-        },
-      };
-      yield put(phoneAction);
+      yield put(phonesSlice.actions.setPhones(response.payload.phones));
     }
     if (response.payload.orcid !== undefined) {
       const orcidAction = {
