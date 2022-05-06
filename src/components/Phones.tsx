@@ -24,7 +24,7 @@ interface PhoneFormData {
 
 function Phones() {
   const [showPhoneForm, setShowPhoneForm] = useState(false);
-  const [selectedPhoneNumber, setSelectPhoneNumber] = useState<string | undefined>();
+  const [selectedPhoneNumber, setSelectedPhoneNumber] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
   const default_country_code = useDashboardAppSelector((state) => state.config.default_country_code);
@@ -55,11 +55,11 @@ function Phones() {
     dispatch(clearNotifications());
     const dataNode = (event.target as HTMLTextAreaElement).closest("tr.number");
     const phoneNumber = dataNode?.getAttribute("data-object");
-    if (phoneNumber) setSelectPhoneNumber(phoneNumber);
+    if (phoneNumber) setSelectedPhoneNumber(phoneNumber);
   }
 
   function handleStopConfirmation() {
-    setSelectPhoneNumber(undefined);
+    setSelectedPhoneNumber(undefined);
   }
 
   function handleConfirm() {
@@ -68,7 +68,7 @@ function Phones() {
     if (code && selectedPhoneNumber) {
       const trimmed = code.value.trim();
       if (trimmed) dispatch(requestVerifyPhone({ code: trimmed, number: selectedPhoneNumber }));
-      setSelectPhoneNumber(undefined);
+      setSelectedPhoneNumber(undefined);
     }
   }
 
