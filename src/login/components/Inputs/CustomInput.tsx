@@ -92,6 +92,7 @@ const InputElement = (props: CustomInputProps): JSX.Element => {
       aria-required={input.required}
       invalid={props.invalid}
       {...input}
+      autoFocus={props.autoFocus}
     />
   );
 };

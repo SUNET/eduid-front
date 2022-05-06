@@ -5,18 +5,10 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import { translate } from "../login/translation";
 
-// TODO: make a typed slice out of phone (like nins) and move this there
-//       (and remove "as PhoneInfo[]" below, since it will be deduced automatically)
-interface PhoneInfo {
-  number: string;
-  verified: boolean;
-  primary: boolean;
-}
-
 function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false);
   const nins = useDashboardAppSelector((state) => state.nins.nins);
-  const phones = useDashboardAppSelector((state) => state.phones.phones as PhoneInfo[]);
+  const phones = useDashboardAppSelector((state) => state.phones.phones);
   const verifiedNin = nins.filter((nin) => nin.verified);
   const verifiedPhones = phones.filter((phone) => phone.verified);
   // depending on languages show different styles

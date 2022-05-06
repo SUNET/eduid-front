@@ -1,4 +1,6 @@
-import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchNins } from "apis/eduidPersonalData";
+import { addNin, removeNin } from "apis/eduidSecurity";
 
 export interface NinInfo {
   number: string;
@@ -6,64 +8,45 @@ export interface NinInfo {
   primary: boolean;
 }
 
-interface NinState {
-  message: string;
-  nin: string;
-  rmNin: string;
+export interface NinState {
   nins: NinInfo[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data?: any; // this rabbit-hole leads to lookup-mobile-proofing and looks unused??? oh my.
+  first_nin?: NinInfo; // the primary nin, or if there are no primary nins the first one from the list
+  is_confirmed_identity: boolean; // True if the user has a confirmed identity, not necessarily a NIN
 }
 
-const initialState: NinState = {
-  message: "", // an error(?) message returned from the backend
-  nin: "", // the nin-number from the first entry in nins (wut?)
-  rmNin: "", // the nin-number we've most recently asked the backend to remove (wut?)
+// export this for use in tests
+export const initialState: NinState = {
   nins: [],
+  is_confirmed_identity: false,
 };
 
-export const GET_NINS_SUCCESS = createAction<{ nins: NinInfo[] }>("GET_PERSONAL_DATA_NINS_SUCCESS");
-export const GET_NINS_FAIL = createAction<{ message: string }>("GET_PERSONAL_DATA_NINS_FAIL");
-export const POST_NIN_REMOVE_SUCCESS =
-  createAction<{ success: boolean; message: string; nins: NinInfo[] }>("POST_NIN_REMOVE_SUCCESS");
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const changeNindata = createAction<{ data: any }>("CHANGE_NINDATA");
+// export this for use in tests
+export function ninStateFromNinList(nins: NinInfo[]): NinState {
+  // Deduce some information about the nins given as input, and return a full state
+  const _primary = nins.filter((nin) => nin.primary);
+  const primary = _primary.length ? _primary[0] : nins[0];
+  return { nins: nins, is_confirmed_identity: !!primary?.verified, first_nin: primary };
+}
 
 const ninsSlice = createSlice({
   name: "nins",
   initialState,
   reducers: {
-    startRemove: (state, action: PayloadAction<string>) => {
-      // TODO: What's this? Investigate why we need to remember the payload here
-      state.rmNin = action.payload;
+    setNins: (state, action: PayloadAction<NinInfo[]>) => {
+      // Update nins in state. Called after bulk-fetch of personal data.
+      return ninStateFromNinList(action.payload);
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(GET_NINS_SUCCESS, (state, action) => {
-        const nins = action.payload.nins;
-        state.nins = nins;
-        if (nins.length) {
-          // TODO: this state.nin, wouldn't it be reasonable to put the primary (verified) NIN there?
-          state.nin = nins[0].number;
-        }
+      .addCase(fetchNins.fulfilled, (state, action) => {
+        return ninStateFromNinList(action.payload.nins);
       })
-      .addCase(GET_NINS_FAIL, (state, action) => {
-        state.message = action.payload.message;
+      .addCase(addNin.fulfilled, (state, action) => {
+        return ninStateFromNinList(action.payload.nins);
       })
-      .addCase(POST_NIN_REMOVE_SUCCESS, (state, action) => {
-        // TODO: old code chucked action.payload.success into state as well, was it ever used?
-        state.message = action.payload.message;
-        state.nins = action.payload.nins;
-        // TODO: old code didn't update state.nin here, but it is probably a bug to not do that?
-        //       ... but, sigh, it looks like we have a saga that triggers on this action too,
-        //           and refreshes the nins with another GET request to the backend ¯\_(ツ)_/¯
-      })
-      .addCase(changeNindata, (state, action) => {
-        // What is this? A rabbit-hole that leads to lookup-mobile-proofing. I'm not sure it
-        // is even used... there is talk about "fixing the lookup mobile button" in commit 7831834,
-        // but is there actually anything that can dispatch "POST_LOOKUP_MOBILE_PROOFING_PROOFING"?
-        state.data = action.payload;
+      .addCase(removeNin.fulfilled, (state, action) => {
+        return ninStateFromNinList(action.payload.nins);
       });
   },
 });

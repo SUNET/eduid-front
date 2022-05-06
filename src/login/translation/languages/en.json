@@ -1,4 +1,8 @@
 {
+  "+YwDxB": {
+    "developer_comment": "button add",
+    "string": "Add"
+  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Register"
@@ -47,12 +51,20 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "An unknown error occurred when accessing the service."
   },
+  "4J565T": {
+    "developer_comment": "NIN display link text",
+    "string": "add id number"
+  },
   "4KkuhD": {
     "developer_comment": "ErrorURL eduid error",
     "string": "Not logged in"
   },
   "4WguDO": {
     "string": "Developer info, not shown in production:"
+  },
+  "56cz7x": {
+    "developer_comment": "Phone display title",
+    "string": "Phone number"
   },
   "5l4hxp": {
     "string": "Log in on another device"
@@ -124,6 +136,10 @@
   "AOo5zL": {
     "developer_comment": "ErrorURL other error",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
+  },
+  "ARpH/T": {
+    "developer_comment": "Phones input help text",
+    "string": "Phone number starting with 0 or +"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -214,6 +230,10 @@
   "GOpzll": {
     "developer_comment": "Login Mfa heading",
     "string": "Log in: Extra level of security"
+  },
+  "HgjRtU": {
+    "developer_comment": "button add more",
+    "string": "+ add more"
   },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
@@ -432,6 +452,10 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "Access Error"
   },
+  "ZQcORE": {
+    "developer_comment": "Phones long description",
+    "string": "You can connect one or more mobile phone numbers to your eduID, but one has to be set as the primary one."
+  },
   "Zc8y4k": {
     "developer_comment": "Use another device, finished",
     "string": "Use the response code below in the first device to continue logging in"
@@ -466,7 +490,7 @@
     "string": "Success"
   },
   "add_nin.main_title": {
-    "string": "1. Add your id number"
+    "string": "Add your id number"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -753,9 +777,6 @@
   "emails.confirm_title": {
     "string": "Click the link or enter the code sent to {email} here"
   },
-  "emails.duplicated": {
-    "string": "That email address is already in use, please choose another"
-  },
   "emails.email": {
     "string": "Email"
   },
@@ -836,6 +857,10 @@
     "developer_comment": "Emails button cancel",
     "string": "Cancel"
   },
+  "fuyJ7x": {
+    "developer_comment": "button cancel",
+    "string": "Cancel"
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "An error occurred when accessing the service."
@@ -891,6 +916,10 @@
     "developer_comment": "Terms of use (accept button text)",
     "string": "I accept"
   },
+  "j0hRyW": {
+    "developer_comment": "Phones main title",
+    "string": "Mobile phone numbers"
+  },
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Confirmation code"
@@ -898,10 +927,6 @@
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access did not get all required attributes for identification and/or personalisation."
-  },
-  "kBBMlk": {
-    "developer_comment": "Emails button add more",
-    "string": "+ add more"
   },
   "kN1GC+": {
     "developer_comment": "Make primary button",
@@ -920,7 +945,7 @@
   },
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
-    "string": "For you registered at your current address"
+    "string": "For you officially registered at an address in Sweden"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -1147,11 +1172,8 @@
   "nin_display.profile.main_title": {
     "string": "Id number"
   },
-  "nin_display.profile.no_nin": {
-    "string": "add id number"
-  },
   "nin_display.verify-identity_unverified_main_title": {
-    "string": "1. Your added id number"
+    "string": "Your added id number"
   },
   "nin_display.verify-identity_verified_main_title": {
     "string": "National id number"
@@ -1377,9 +1399,6 @@
   "phones.add_new": {
     "string": "A new phone number will receive a confirmation code for you to use by clicking Confirm in the list of phone numbers."
   },
-  "phones.button_add_more": {
-    "string": "+ add more"
-  },
   "phones.cannot_remove_primary": {
     "string": "You cannot remove your primary phone number"
   },
@@ -1398,23 +1417,14 @@
   "phones.code_invalid_or_expired": {
     "string": "The confirmation code is invalid or it has expired, please try again or request a new code"
   },
-  "phones.duplicated": {
-    "string": "That phone number is already in use, please choose another"
-  },
   "phones.get-success": {
     "string": "Successfully retrieved phone numbers"
-  },
-  "phones.input_help_text": {
-    "string": "Phone number starting with 0 or +"
   },
   "phones.invalid_phone": {
     "string": "Invalid phone number"
   },
   "phones.long_description": {
-    "string": "You can connect one or more mobile phone numbers to\n           your eduID, but one has to be set as the primary one."
-  },
-  "phones.main_title": {
-    "string": "Mobile phone numbers"
+    "string": "You can connect one or more mobile phone numbers to your eduID, but one has to be set as the primary one."
   },
   "phones.primary-success": {
     "string": "The phone number was set as primary"
@@ -1967,7 +1977,7 @@
     "string": "Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another."
   },
   "verify-identity.connect-nin_heading": {
-    "string": "2. Verify your id number"
+    "string": "Verify your id number"
   },
   "verify-identity.unverified_main_title": {
     "string": "Connect your identity to your eduID"

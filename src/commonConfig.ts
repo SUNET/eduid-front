@@ -23,9 +23,11 @@ interface CommonJsConfig {
 interface APIEndpoints {
   security_url?: string;
   letter_proofing_url?: string;
+  lookup_mobile_proofing_url?: string;
   personal_data_url?: string;
   ladok_url?: string;
   emails_url?: string;
+  phone_url?: string;
   base_url?: string; // TODO: This is the login app base URL, rename to login_base_url?
 }
 

@@ -4,13 +4,13 @@ import { checkStatus, putCsrfToken, failRequest } from "sagas/common";
 import { getAllUserdata, getAllUserdataFail, GET_USERDATA_SUCCESS } from "actions/PersonalData";
 
 import * as actions from "actions/DashboardConfig";
-import { GET_EMAIL_ALL_SUCCESS } from "reducers/Emails";
-import * as phoneActions from "actions/Mobile";
+import emailsSlice from "reducers/Emails";
+import phonesSlice from "reducers/Phones";
 import * as accountLinkingActions from "actions/AccountLinking";
 import { LOCALIZED_MESSAGES } from "globals";
-import { GET_NINS_SUCCESS } from "reducers/Nins";
+import ninsSlice from "reducers/Nins";
 import { DashboardRootState } from "dashboard-init-app";
-import { AllUserData } from "apis/personalData";
+import { AllUserData } from "apis/eduidPersonalData";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { getRequest } from "sagas/ts_common";
 import personalDataSlice, { PersonalDataData } from "reducers/PersonalData";
@@ -36,20 +36,14 @@ export function* requestAllPersonalData() {
     }
 
     if (response.payload.nins !== undefined) {
-      // update nins in the state by pretending we received a GET_NINS response from the backend
-      yield put(GET_NINS_SUCCESS({ nins: response.payload.nins }));
+      // update nins in the state
+      yield put(ninsSlice.actions.setNins(response.payload.nins));
     }
     if (response.payload.emails !== undefined) {
-      yield put(GET_EMAIL_ALL_SUCCESS({ emails: response.payload.emails }));
+      yield put(emailsSlice.actions.setEmails(response.payload.emails));
     }
     if (response.payload.phones !== undefined) {
-      const phoneAction = {
-        type: phoneActions.GET_MOBILES_SUCCESS,
-        payload: {
-          phones: response.payload.phones,
-        },
-      };
-      yield put(phoneAction);
+      yield put(phonesSlice.actions.setPhones(response.payload.phones));
     }
     if (response.payload.orcid !== undefined) {
       const orcidAction = {

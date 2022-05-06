@@ -3,12 +3,12 @@ import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper } from "enzyme";
 import expect from "expect";
 import React from "react";
-import { notificationsSlice, NotificationState } from "reducers/Notifications";
+import { notificationsSlice } from "reducers/Notifications";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
 
 describe("Notifications Component", () => {
-  const test_state: { config: { debug: boolean }; notifications: NotificationState } = {
+  const test_state: Partial<DashboardRootState> = {
     config: {
       debug: true, // prevents unknown messages (such as "dummy message") from being generalised
     },
@@ -43,7 +43,7 @@ describe("Notifications Component", () => {
     expect(alertElem.text()).toContain("Success");
   });
 
-  const errorState = {
+  const errorState: Partial<DashboardRootState> = {
     ...test_state,
     notifications: {
       error: { message: "dummy error", level: "error" },
@@ -68,7 +68,7 @@ describe("Test Notifications Container", () => {
   let state;
   let wrapper: ReactWrapper;
 
-  const test_state: { notifications: NotificationState } = {
+  const test_state: Partial<DashboardRootState> = {
     notifications: {
       info: { message: "dummy", level: "info" },
     },
