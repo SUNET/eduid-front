@@ -13,17 +13,21 @@ export const initialState: PhonesResponse = {
   phones: [],
 };
 
-export const getPhones = createAction<{ phones: PhoneInfo[] }>("GET_PHONE_ALL_SUCCESS");
+export function phonesStateFromPhoneList(phones: PhoneInfo[]): PhonesResponse {
+  return { phones: phones };
+}
 
 const phonesSlice = createSlice({
   name: "phones",
   initialState,
-  reducers: {},
+  reducers: {
+    setPhones: (state, action: PayloadAction<PhoneInfo[]>) => {
+      // Update phones in state. Called after bulk-fetch of personal data.
+      return phonesStateFromPhoneList(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(getPhones, (state, action: PayloadAction<PhonesResponse>) => {
-        state.phones = action.payload.phones;
-      })
       .addCase(requestRemovePhone.fulfilled, (state, action: PayloadAction<PhonesResponse>) => {
         state.phones = action.payload.phones;
       })
