@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { Spinner } from "spin.js";
 import { spinnerOpts } from "../components/Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
-import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { useIntl } from "react-intl";
 import CookieChecker from "./../components/CookieChecker";

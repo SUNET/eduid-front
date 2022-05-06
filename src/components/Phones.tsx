@@ -5,7 +5,7 @@ import { useIntl, FormattedMessage } from "react-intl";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
-import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import "../login/styles/index.scss";
 import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";

@@ -5,7 +5,7 @@ import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
 import { validateEmailField } from "../login/app_utils/validation/validateEmail";
 import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
-import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import "../login/styles/index.scss";
 import EduIDButton from "./EduIDButton";
 import { clearNotifications } from "reducers/Notifications";
