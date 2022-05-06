@@ -7,6 +7,7 @@ import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMo
 import { translate } from "login/translation";
 import React, { Fragment } from "react";
 import AddNin from "./AddNin";
+import { FormattedMessage } from "react-intl";
 
 // TODO: make a typed slice out of phone (like nins) and move this there
 //       (and remove "as PhoneInfo[]" below, since it will be deduced automatically)
@@ -119,8 +120,18 @@ function VerifyIdentity(): JSX.Element | null {
     } else {
       return (
         <li>
-          <h4>{translate("verify-identity.improve-security_heading")}</h4>
-          <p className="x-adjust">{translate("verify-identity.verified_pw_reset_extra_security")}</p>
+          <h4>
+            <FormattedMessage
+              defaultMessage={`Improve your identification`}
+              description="verify identity improve security heading"
+            />
+          </h4>
+          <p className="x-adjust">
+            <FormattedMessage
+              defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at password reset under Settings.`}
+              description="verify identity improve security description"
+            />
+          </p>
         </li>
       );
     }
