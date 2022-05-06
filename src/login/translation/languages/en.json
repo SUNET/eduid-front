@@ -753,9 +753,6 @@
   "emails.confirm_title": {
     "string": "Click the link or enter the code sent to {email} here"
   },
-  "emails.duplicated": {
-    "string": "That email address is already in use, please choose another"
-  },
   "emails.email": {
     "string": "Email"
   },
@@ -1394,9 +1391,6 @@
   },
   "phones.code_invalid_or_expired": {
     "string": "The confirmation code is invalid or it has expired, please try again or request a new code"
-  },
-  "phones.duplicated": {
-    "string": "That phone number is already in use, please choose another"
   },
   "phones.get-success": {
     "string": "Successfully retrieved phone numbers"

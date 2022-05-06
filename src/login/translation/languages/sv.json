@@ -753,9 +753,6 @@
   "emails.confirm_title": {
     "string": "Klicka på länken eller skriv in koden som skickats till {email} här"
   },
-  "emails.duplicated": {
-    "string": "E-postadressen är redan tagen. Var god använd en annan."
-  },
   "emails.email": {
     "string": "E-postadress"
   },
@@ -1394,9 +1391,6 @@
   },
   "phones.code_invalid_or_expired": {
     "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
-  },
-  "phones.duplicated": {
-    "string": "Telefonnumret du angett används redan. Försök med ett annat."
   },
   "phones.get-success": {
     "string": "Telefonnummer laddades"

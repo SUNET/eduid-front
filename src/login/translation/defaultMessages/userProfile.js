@@ -569,13 +569,6 @@ export const userData = {
     <FormattedMessage id="phones.get-success" defaultMessage={`Successfully retrieved phone numbers`} />
   ),
 
-  "phones.duplicated": (
-    <FormattedMessage
-      id="phones.duplicated"
-      defaultMessage={`That phone number is already in use, please choose another`}
-    />
-  ),
-
   "phones.save-success": <FormattedMessage id="phones.save-success" defaultMessage={`The phone number was saved`} />,
 
   "phones.unconfirmed_number_not_primary": (
@@ -753,8 +746,6 @@ export const userData = {
   "emails.get-success": (
     <FormattedMessage id="emails.get-success" defaultMessage={`Successfully retrieved Email addresses`} />
   ),
-
-  "emails.duplicated": <FormattedMessage id="emails.duplicated" defaultMessage={`The number is already in the list`} />,
 
   "emails.save-success": <FormattedMessage id="emails.save-success" defaultMessage={`The email address was saved`} />,
 

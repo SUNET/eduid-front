@@ -233,7 +233,7 @@ function toE164Number(number: string | undefined, default_country_code: string):
 
   if (number.startsWith("+")) {
     // This must be either the string "+" or a string starting with "+0". No country code begins with "0".
-    return "phones.invalid";
+    return "phones.invalid_phone";
   }
 
   const oneLeadingZero = /^0[1-9]\d{6,20}$/;
@@ -243,7 +243,7 @@ function toE164Number(number: string | undefined, default_country_code: string):
   }
 
   // If we got here, the number was not valid (too short or long, or contained an alphabetic character probably).
-  return "phones.invalid";
+  return "phones.invalid_phone";
 }
 
 export default Phones;
