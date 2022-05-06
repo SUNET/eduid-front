@@ -19,7 +19,6 @@ interface PhoneInfo {
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
   let pageHeading, pageText, vettingButtons;
-  const recoverIdentityTip = translate("verify-identity.verified_pw_reset_extra_security");
 
   const nin = useDashboardAppSelector((state) => state.nins.first_nin);
   const isConfigured = useDashboardAppSelector((state) => state.config.is_configured);
@@ -118,7 +117,12 @@ function VerifyIdentity(): JSX.Element | null {
         </li>
       );
     } else {
-      return <div />;
+      return (
+        <li>
+          <h4>{translate("verify-identity.improve-security_heading")}</h4>
+          <p className="x-adjust">{translate("verify-identity.verified_pw_reset_extra_security")}</p>
+        </li>
+      );
     }
   };
 
@@ -134,7 +138,6 @@ function VerifyIdentity(): JSX.Element | null {
         <li>
           <VerifyIdentity_Step1 />
           <AddNin />
-          {hasVerifiedNin && <p className="help-text">{recoverIdentityTip}</p>}
         </li>
 
         <VerifyIdentity_Step2 />
