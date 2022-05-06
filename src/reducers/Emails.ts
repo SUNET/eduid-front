@@ -13,7 +13,7 @@ export const initialState: EmailsResponse = {
   emails: [],
 };
 
-export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: EmailInfo[] }>("GET_EMAIL_ALL_SUCCESS");
+export const getEmails = createAction<{ emails: EmailInfo[] }>("GET_EMAIL_ALL_SUCCESS");
 
 const emailsSlice = createSlice({
   name: "emails",
@@ -21,7 +21,7 @@ const emailsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailsResponse>) => {
+      .addCase(getEmails, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       })
       .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
