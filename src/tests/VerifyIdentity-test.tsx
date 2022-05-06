@@ -130,7 +130,7 @@ describe("VerifyIdentity component, NIN already added ", () => {
   });
 
   it("Renders a header", () => {
-    const header = wrapper.find("h3");
+    const header = wrapper.find("h4");
     expect(header.exists()).toEqual(true);
     expect(header.text()).toContain("ready to use");
   });
