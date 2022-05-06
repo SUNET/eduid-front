@@ -19,6 +19,7 @@
     }
   }
   @media (max-width: $bp-sm) {
+    /* counteracts additional list left margin in mobile mode */
     .x-adjust {
       margin-left: #{-1 * $list-indent};
     }
