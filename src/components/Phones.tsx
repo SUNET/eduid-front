@@ -92,10 +92,16 @@ function Phones() {
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({
+  const phonePlaceholder = intl.formatMessage({
     id: "placeholder.phone",
     defaultMessage: "Phone number",
     description: "placeholder text for phone input",
+  });
+
+  const modalPlaceholder = intl.formatMessage({
+    id: "mobile.confirm_mobile_placeholder",
+    defaultMessage: "Phone confirmation code",
+    description: "placeholder text for phone code input",
   });
 
   const title = intl.formatMessage(
@@ -162,7 +168,7 @@ function Phones() {
                     type="text"
                     name="number"
                     validate={validatePhonesInForm}
-                    placeholder={placeholder}
+                    placeholder={phonePlaceholder}
                     helpBlock={
                       <FormattedMessage
                         defaultMessage="Phone number starting with 0 or +"
@@ -201,7 +207,7 @@ function Phones() {
         resendLabel={translate("cm.enter_code")}
         resendHelp={translate("cm.lost_code")}
         resendText={translate("cm.resend_code")}
-        placeholder={placeholder}
+        placeholder={modalPlaceholder}
         showModal={Boolean(selectedPhoneNumber)}
         closeModal={handleStopConfirmation}
         handleResend={handleResend}
