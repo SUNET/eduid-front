@@ -1,4 +1,8 @@
 {
+  "+YwDxB": {
+    "developer_comment": "button add",
+    "string": "Lägg till"
+  },
   "/ANjhk": {
     "developer_comment": "Header register",
     "string": "Registrera"
@@ -47,12 +51,20 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "Ett okänt fel inträffade när du försökte använda tjänsten."
   },
+  "4J565T": {
+    "developer_comment": "NIN display link text",
+    "string": "lägg till personnummer"
+  },
   "4KkuhD": {
     "developer_comment": "ErrorURL eduid error",
     "string": "Inte inloggad"
   },
   "4WguDO": {
     "string": "Utvecklarinformation, visas inte i produktion:"
+  },
+  "56cz7x": {
+    "developer_comment": "Phone display title",
+    "string": "Telefonnummer"
   },
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
@@ -124,6 +136,10 @@
   "AOo5zL": {
     "developer_comment": "ErrorURL other error",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
+  },
+  "ARpH/T": {
+    "developer_comment": "Phones input help text",
+    "string": "Telefonnummer som börjar med 0 eller +"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -214,6 +230,10 @@
   "GOpzll": {
     "developer_comment": "Login Mfa heading",
     "string": "Logga in: Extra nivå av säkerhet"
+  },
+  "HgjRtU": {
+    "developer_comment": "button add more",
+    "string": "+ lägg till fler"
   },
   "Hn7D2R": {
     "developer_comment": "nin/password button label",
@@ -432,6 +452,10 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "Åtkomstfel"
   },
+  "ZQcORE": {
+    "developer_comment": "Phones long description",
+    "string": "Du kan koppla ett eller flera av dina mobiltelefonnummer till ditt eduID-konto och därefter välja vilket av dem som ska vara primär."
+  },
   "Zc8y4k": {
     "developer_comment": "Use another device, finished",
     "string": "Använd koden nedan i första enheten för att fortsätta inloggningen"
@@ -466,7 +490,7 @@
     "string": "Klart"
   },
   "add_nin.main_title": {
-    "string": "1. Lägg till ditt personnummer"
+    "string": "Lägg till ditt personnummer"
   },
   "bCY5Fs": {
     "developer_comment": "Use another device IP proximity",
@@ -833,6 +857,10 @@
     "developer_comment": "Emails button cancel",
     "string": "Avbryt"
   },
+  "fuyJ7x": {
+    "developer_comment": "button cancel",
+    "string": "Avbryt"
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "Ett fel uppstod under åtkomst till tjänsten."
@@ -888,6 +916,10 @@
     "developer_comment": "Terms of use (accept button text)",
     "string": "Jag accepterar"
   },
+  "j0hRyW": {
+    "developer_comment": "Phones main title",
+    "string": "Telefonnummer"
+  },
   "j0jEk2": {
     "developer_comment": "Reset Password phone code sent (Input label)",
     "string": "Bekräftelsekod"
@@ -895,10 +927,6 @@
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Tjänsten du försöker komma åt behöver ytterligare attribut för identifiering och/eller personalisering."
-  },
-  "kBBMlk": {
-    "developer_comment": "Emails button add more",
-    "string": "+ lägg till fler"
   },
   "kN1GC+": {
     "developer_comment": "Make primary button",
@@ -1143,9 +1171,6 @@
   },
   "nin_display.profile.main_title": {
     "string": "Personnummer"
-  },
-  "nin_display.profile.no_nin": {
-    "string": "lägg till personnummer"
   },
   "nin_display.verify-identity_unverified_main_title": {
     "string": "1. Ditt personnummer"
@@ -1397,6 +1422,9 @@
   },
   "phones.invalid_phone": {
     "string": "Ogiltigt telefonnummer"
+  },
+  "phones.long_description": {
+    "string": "Du kan koppla ett eller flera av dina mobiltelefonnummer till ditt eduID-konto och därefter välja vilket av dem som ska vara primär."
   },
   "phones.primary-success": {
     "string": "Ditt primära telefonnummer har ändrats"
@@ -1943,7 +1971,7 @@
     "string": "Värdet är inte ändrat"
   },
   "verify-identity.add-nin_heading": {
-    "string": "1. Lägg till ditt personnummer"
+    "string": "Lägg till ditt personnummer"
   },
   "verify-identity.connect-nin_description": {
     "string": "Välj ett sätt att bekräfta att du har tillgång till det angivna personnumret. Om en av metoderna inte fungerar får du prova en annan."
