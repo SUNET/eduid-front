@@ -1149,6 +1149,10 @@
   "mobile.button_add": {
     "string": "Add"
   },
+  "mobile.confirm_mobile_placeholder": {
+    "developer_comment": "placeholder text for phone code input",
+    "string": "Phone confirmation code"
+  },
   "mobile.confirm_title": {
     "string": "Enter the code sent to {phone}"
   },
