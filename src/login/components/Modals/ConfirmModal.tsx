@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactChild } from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import EduIDButton from "../../../components/EduIDButton";
 import { FormattedMessage } from "react-intl";
@@ -8,19 +8,16 @@ import { Form as FinalForm, Field as FinalField } from "react-final-form";
 interface ConfirmModalProps {
   closeModal: React.MouseEventHandler<HTMLButtonElement>;
   handleConfirm: React.MouseEventHandler<HTMLButtonElement>;
-  handleResend?: React.MouseEventHandler<HTMLAnchorElement>;
   id: string;
   modalId: string;
   placeholder: string;
   showModal: boolean;
   validationError: string;
   validationPattern: RegExp;
-  with_resend_link?: string;
-  resendHelp?: any;
-  resendLabel: any;
-  resendText?: any;
-  title: any;
-  helpBlock?: any;
+  modalFormLabel: ReactChild;
+  title: ReactChild;
+  helpBlock?: ReactChild;
+  resendMarkup?: ReactChild;
 }
 
 function ConfirmModal(props: ConfirmModalProps): JSX.Element {
@@ -32,19 +29,6 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
       return props.validationError;
     }
   }
-
-  let resendMarkup: any;
-  if (!props.with_resend_link) {
-    resendMarkup = undefined;
-  }
-
-  resendMarkup = (
-    <div className="resend-code-container">
-      <a href="#" onClick={props.handleResend}>
-        {props.resendText}
-      </a>
-    </div>
-  );
 
   return (
     <div
@@ -66,7 +50,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
             [props.modalId]: "",
           }}
           {...props}
-          render={(props: any) => (
+          render={({ submitting, invalid }) => (
             <React.Fragment>
               <ModalBody>
                 <form id={props.modalId + "-form"} role="form">
@@ -75,7 +59,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                       component={CustomInput}
                       componentClass="input"
                       type="text"
-                      label={props.resendLabel}
+                      label={props.modalFormLabel}
                       placeholder={props.placeholder}
                       id={props.modalId}
                       name={props.modalId}
@@ -84,14 +68,10 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                     />
                   </div>
                 </form>
-                {resendMarkup}
+                {!props.resendMarkup ? null : props.resendMarkup}
               </ModalBody>
               <ModalFooter>
-                <EduIDButton
-                  buttonstyle="primary"
-                  disabled={props.submitting || props.invalid}
-                  onClick={props.handleConfirm}
-                >
+                <EduIDButton buttonstyle="primary" disabled={submitting || invalid} onClick={props.handleConfirm}>
                   <FormattedMessage defaultMessage="ok" description="ok button" />
                 </EduIDButton>
               </ModalFooter>

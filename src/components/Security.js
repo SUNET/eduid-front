@@ -10,6 +10,7 @@ import NotificationModal from "../login/components/Modals/NotificationModal";
 import { useIntl } from "react-intl";
 import CookieChecker from "./../components/CookieChecker";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
+import { FormattedMessage } from "react-intl";
 
 function Security(props) {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
@@ -126,9 +127,8 @@ function Security(props) {
         modalId="describeWebauthnTokenDialog"
         id="describeWebauthnTokenDialogControl"
         title={translate("security.webauthn-describe-title")}
-        resendLabel={translate("security.webauthn_credential_type")}
+        modalFormLabel={<FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />}
         placeholder={placeholder}
-        with_resend_link={false}
         showModal={Boolean(props.webauthn_asking_description)}
         closeModal={props.handleStopAskingWebauthnDescription}
         handleConfirm={props.handleStartWebauthnRegistration}

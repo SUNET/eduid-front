@@ -908,10 +908,6 @@ export const userData = {
     />
   ),
 
-  "security.webauthn_credential_type": (
-    <FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />
-  ),
-
   "security.add_webauthn_token_key": (
     <FormattedMessage id="security.add_webauthn_token_key" defaultMessage={`Add security key`} />
   ),

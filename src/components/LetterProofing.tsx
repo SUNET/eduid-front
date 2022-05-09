@@ -176,7 +176,7 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
             description="explanation text for letter proofing"
           />
         }
-        resendLabel={
+        modalFormLabel={
           <FormattedMessage defaultMessage="Confirmation code" description="explanation text for letter proofing" />
         }
         placeholder={placeholder}

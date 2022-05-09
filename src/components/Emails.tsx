@@ -1,4 +1,3 @@
-import { translate } from "login/translation";
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
@@ -190,15 +189,24 @@ function Emails() {
         modalId="emailConfirmDialog"
         id="emailConfirmDialogControl"
         title={title}
-        resendLabel={translate("cm.enter_code")}
-        resendHelp={translate("cm.lost_code")}
-        resendText={translate("cm.resend_code")}
+        modalFormLabel={<FormattedMessage id="enter confirmation code" defaultMessage={`Confirmation code`} />}
+        resendMarkup={
+          <div className="resend-code-container">
+            <a href="#" onClick={handleResend}>
+              <FormattedMessage id="resend code" defaultMessage={`Send a new confirmation code`} />
+            </a>
+          </div>
+        }
         placeholder={modalPlaceholder}
         showModal={Boolean(selectedEmail)}
         closeModal={handleStopConfirmation}
-        handleResend={handleResend}
         handleConfirm={handleConfirm}
-        helpBlock={translate("emails.confirm_help_text")}
+        helpBlock={
+          <FormattedMessage
+            id="Help text for email confirmation code"
+            defaultMessage={`Code is formatted as five groups of characters and numbers, separated by hyphens`}
+          />
+        }
         validationPattern={longCodePattern}
         validationError="confirmation.code_invalid_format"
       />

@@ -603,10 +603,6 @@
   "cm.ok": {
     "string": "OK"
   },
-  "cm.resend_code": {
-    "developer_comment": "Lost code problem solution",
-    "string": "Send a new confirmation code"
-  },
   "coWKVJ": {
     "string": "Log in using another device"
   },
@@ -1830,9 +1826,6 @@
   },
   "security.webauthn.max_allowed_tokens": {
     "string": "You are not allowed to register more security keys"
-  },
-  "security.webauthn_credential_type": {
-    "string": "Security key"
   },
   "security.webauthn_register_success": {
     "string": "Security key added"
