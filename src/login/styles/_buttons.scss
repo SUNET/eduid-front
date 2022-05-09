@@ -11,10 +11,10 @@ button.btn {
   font-family: $akkurat;
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1;
   text-transform: uppercase;
   height: 3rem;
-  border-radius: 20px;
+  border-radius: 1.5rem;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
   transition: all 0.5s ease;
   outline: 0;
@@ -40,6 +40,8 @@ button.btn {
   background-color: $orange-highlight;
   box-shadow: none;
   min-width: 100px;
+  //min-width: min-content;
+  padding: 0 1.25rem;
 }
 
 button.btn-secondary,
@@ -52,12 +54,15 @@ button.btn-secondary:not(:disabled):not(.disabled):hover {
   background-color: $white;
   box-shadow: none;
   min-width: 100px;
+  //min-width: min-content;
+  padding: 0 1.25rem;
 
   /* Login, Logout, Register button in Header */
   &.btn-sm {
     padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    width: fit-content;
+    font-size: 13px;
+    min-width: fit-content;
+    width: auto;
     height: auto;
     margin-top: 0;
     margin-bottom: 0;

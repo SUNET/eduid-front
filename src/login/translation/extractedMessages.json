@@ -632,6 +632,10 @@
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
   },
+  "dI6LjD": {
+    "developer_comment": "verify identity improve security heading",
+    "string": "Improve your identification"
+  },
   "dashboard.tagline_unverified": {
     "string": "Don't forget to connect your identity to eduID"
   },
@@ -2030,6 +2034,10 @@
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
     "string": "Cancel"
+  },
+  "xsCSvh": {
+    "developer_comment": "verify identity improve security description",
+    "string": "Add a phone number or a security key to your eduID to keep your identity at password reset under Settings."
   },
   "yJgjTe": {
     "developer_comment": "Ladok account linking",

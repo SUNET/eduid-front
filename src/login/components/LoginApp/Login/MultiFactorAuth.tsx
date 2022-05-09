@@ -17,16 +17,17 @@ const MultiFactorAuth = (): JSX.Element => {
   return (
     <div className="mfa">
       <h1>
-        {" "}
         <FormattedMessage defaultMessage="Log in: Extra level of security" description="Login Mfa heading" />
       </h1>
-      <div className="preamble">
+      <div className="lead">
         <LoginAtServiceInfo service_info={service_info} />
+      </div>
+      <p>
         <FormattedMessage
           defaultMessage="You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
           description="Login Mfa paragraph"
         />
-      </div>
+      </p>
       <div className="options">
         <SecurityKey />
         <FrejaeID />
