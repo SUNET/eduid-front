@@ -25,9 +25,11 @@ header {
     font-size: 1rem;
     text-align: right;
     width: 100%;
+    font-family: $proxima-bold;
 
     @media (min-width: $bp-sm) {
       padding-right: 1rem;
+      font-size: 1.125rem;
     }
   }
 

@@ -1,6 +1,6 @@
 /* typography */
 
-@import "variables.scss";
+@import "variables";
 
 h1,
 h2,
@@ -59,13 +59,20 @@ h5 {
   margin-bottom: 0.75em;
 }
 
-.preamble {
+// h6 {
+//   color: $black;
+// }
+
+.lead {
   font-size: 1.375rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $dark-gray;
 
   @media (max-width: $bp-md) {
     font-size: 1.25rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
   }
 }
 

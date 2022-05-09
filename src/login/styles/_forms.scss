@@ -36,6 +36,15 @@ form {
   color: $gray;
 }
 
+input.form-control,
+input.form-control.is-valid,
+input.form-control.is-invalid,
+input.form-control:focus,
+input.form-control.is-valid:focus,
+input.form-control.is-invalid:focus {
+  border-color: initial;
+}
+
 fieldset:not(:empty) {
   margin-bottom: 1.25em;
 }

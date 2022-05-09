@@ -68,7 +68,7 @@ function NinForm(): JSX.Element {
       }}
       render={({ handleSubmit, pristine, invalid }) => {
         return (
-          <form onSubmit={handleSubmit} className="single-input-form">
+          <form onSubmit={handleSubmit} className="single-input-form x-adjust">
             <fieldset id="nins-form" className="tabpane">
               <FinalField
                 component={CustomInput}
