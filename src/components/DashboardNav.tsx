@@ -66,30 +66,35 @@ function DashboardNav(): JSX.Element {
 
   return (
     <nav id="dashboard-nav">
+      <h5>eduID Dashboard:</h5>
       <ul>
-        <NavLink exact activeClassName="active" to={`/profile/`}>
-          <li>{translate("dashboard_nav.profile")}</li>
-        </NavLink>
-        <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
-          <li>
+        <li>
+          <NavLink exact activeClassName="active" to={`/profile/`}>
+            {translate("dashboard_nav.profile")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
             {translate("dashboard_nav.identity")}
             {getTipsAtIdentity()}
-          </li>
-        </NavLink>
-        <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/personaldata`}>
-          <li>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/personaldata`}>
             {translate("dashboard_nav.settings")}
             {tipsAtSettings}
-          </li>
-        </NavLink>
-        <NavLink
-          className={advancedSettingsClass}
-          exact
-          activeClassName="active"
-          to={`/profile/settings/advanced-settings`}
-        >
-          <li>{translate("dashboard_nav.advanced-settings")}</li>
-        </NavLink>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={advancedSettingsClass}
+            exact
+            activeClassName="active"
+            to={`/profile/settings/advanced-settings`}
+          >
+            {translate("dashboard_nav.advanced-settings")}
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
