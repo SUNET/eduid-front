@@ -48,14 +48,15 @@ h3 {
 h4 {
   font-size: 1.25rem;
   margin-bottom: 0.75em;
-
-  // padding: 0;
-  // margin: 0;
 }
 
 h5 {
+  font-family: $akkurat;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8rem;
   padding: 0;
-  margin: 0;
+  margin-bottom: 0.75em;
 }
 
 // h6 {
