@@ -61,7 +61,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
           <EduIDButton buttonstyle="close" onClick={props.closeModal}></EduIDButton>
         </ModalHeader>
         <FinalForm
-          onSubmit={() => {}}
+          onSubmit={props.handleConfirm}
           initialValues={{
             [props.modalId]: "",
           }}
