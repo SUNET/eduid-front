@@ -7,11 +7,12 @@
   width: 60%;
   margin: 0 20%;
 
-  & #modal-form {
-    & form {
-      margin-top: 0;
-    }
+  // & #modal-form {
+  & form {
+    margin-top: 0;
   }
+
+  // }
 }
 
 .modal-title {
