@@ -8,7 +8,6 @@ import Footer from "../login/components/Footer/Footer";
 import { ChangePasswordContainer } from "./ChangePassword";
 import DashboardNav from "./DashboardNav";
 import SettingsComponent from "./Settings";
-import { EmailInfo } from "../apis/eduidEmail";
 import VerifyIdentity from "./VerifyIdentity";
 import Profile from "./Profile";
 import Splash from "./Splash";

@@ -1,43 +1,48 @@
 import React, { useState } from "react";
 
-const SpeechBubbleTip = (props) => {
-  const {
-    active: [active, setActive],
-  } = {
-    active: useState(false),
-    ...(props.state || {}),
-  };
+interface SpeechBubbleTipProps {
+  tipText: string | JSX.Element; // text inside speech bubble
+  position?: string; // where the speech bubble tip is rendering on identity or settings. Default is 'identity'.
+  textLength?: string; // for short text styling
+  setActive?(value: boolean): void;
+  delay?: number;
+  children?: React.ReactNode;
+}
 
-  let timeout;
-  const showTip = () => {
+function SpeechBubbleTip(props: SpeechBubbleTipProps): JSX.Element {
+  const [active, setActive] = useState(false); // is the speech bubble currently active (shown)?
+
+  let timeout: NodeJS.Timeout | undefined;
+  function showTip() {
     timeout = setTimeout(() => {
       setActive(true);
+      // pass state up, if parent component wants to know
+      if (props.setActive) props.setActive(true);
     }, props.delay || 100);
-  };
+  }
 
-  const hideTip = () => {
-    clearInterval(timeout);
+  function hideTip() {
+    if (timeout) clearInterval(timeout);
     setActive(false);
-  };
+    // pass state up, if parent component wants to know
+    if (props.setActive) props.setActive(false);
+  }
 
   return (
     <div className={`speech-bubbletip-wrapper`} onMouseEnter={showTip} onMouseLeave={hideTip}>
       {props.children}
       {active && (
-        // props.position, where the speech bubble tip is rendering on identity or settings
-        // props.textLength, for short text styling
-        // props.tipText, text inside speech bubble
         <div className={`speech-bubbletip ${props.position || "identity"} ${props.textLength || ""}`}>
           {props.tipText}
         </div>
       )}
     </div>
   );
-};
+}
 
-function NotificationTip(props) {
+function NotificationTip(props: SpeechBubbleTipProps) {
   return (
-    <SpeechBubbleTip {...props} tipText={props.tipText} position={props.position}>
+    <SpeechBubbleTip {...props}>
       <div className="notification-dot">
         <div className="notification-dot-inner" />
       </div>
