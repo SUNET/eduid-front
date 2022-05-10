@@ -129,7 +129,9 @@ function Security(props) {
         modalFormLabel={<FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />}
         validationPattern={securityKeyPattern}
         validationError={"security.description_invalid_format"}
-        helpBlock={translate("security.help_text")}
+        helpBlock={
+          <FormattedMessage defaultMessage={`max 50 characters`} description="Help text for security key max length" />
+        }
       />
     </article>
   );

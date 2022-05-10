@@ -24,13 +24,6 @@ export const leftoverMessages = {
       description="Error message for max length"
     />
   ),
-  "security.help_text": (
-    <FormattedMessage
-      id="security.help_text"
-      defaultMessage={`max 50 characters`}
-      description="Help text for security key max length"
-    />
-  ),
   "register.toLogin": (
     <FormattedMessage
       id="register.toLogin"

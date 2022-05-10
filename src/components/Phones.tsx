@@ -204,11 +204,11 @@ function Phones() {
         showModal={Boolean(selectedPhoneNumber)}
         closeModal={handleStopConfirmation}
         handleConfirm={handleConfirm}
-        modalFormLabel={<FormattedMessage id="enter confirmation code" defaultMessage={`Confirmation code`} />}
+        modalFormLabel={<FormattedMessage description="enter confirmation code" defaultMessage={`Confirmation code`} />}
         resendMarkup={
           <div className="resend-code-container">
             <a href="#" onClick={handleResend}>
-              <FormattedMessage id="resend code" defaultMessage={`Send a new confirmation code`} />
+              <FormattedMessage description="resend code" defaultMessage={`Send a new confirmation code`} />
             </a>
           </div>
         }
