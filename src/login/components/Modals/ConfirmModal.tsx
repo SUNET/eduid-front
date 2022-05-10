@@ -30,14 +30,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
   }
 
   return (
-    <div
-      id={props.id}
-      tabIndex={-1}
-      role="dialog"
-      aria-labelledby="askDialogPrompt"
-      aria-hidden="true"
-      data-backdrop="true"
-    >
+    <div tabIndex={-1} role="dialog" aria-labelledby="askDialogPrompt" aria-hidden="true" data-backdrop="true">
       <Modal id="confirm-user-data-modal" isOpen={props.showModal}>
         <ModalHeader>
           {props.title}
