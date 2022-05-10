@@ -149,7 +149,7 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
         </button>
       </div>
       <NotificationModal
-        id="letterGenericConfirmDialog"
+        id="letter-confirm-modal"
         title={
           <FormattedMessage
             defaultMessage="Use a confirmation code sent by post to your house"
