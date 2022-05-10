@@ -104,15 +104,6 @@ function Phones() {
     description: "placeholder text for phone code input",
   });
 
-  const title = intl.formatMessage(
-    {
-      id: "mobile.confirm_title",
-      defaultMessage: "Enter the code sent to {phone}",
-      description: "Title for phone code input",
-    },
-    { phone: selectedPhoneNumber }
-  );
-
   function validatePhonesInForm(value: string): string | undefined {
     const number = toE164Number(value, default_country_code);
 
@@ -202,7 +193,13 @@ function Phones() {
       </div>
       <ConfirmModal
         id="phone-confirm-modal"
-        title={title}
+        title={
+          <FormattedMessage
+            defaultMessage={`Enter the code sent to {phone}`}
+            description="Title for phone code input"
+            values={{ phone: { selectedPhoneNumber } }}
+          />
+        }
         placeholder={modalPlaceholder}
         showModal={Boolean(selectedPhoneNumber)}
         closeModal={handleStopConfirmation}

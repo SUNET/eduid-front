@@ -911,10 +911,6 @@ export const userData = {
     />
   ),
 
-  "security.webauthn-describe-title": (
-    <FormattedMessage id="security.webauthn-describe-title" defaultMessage={`Add a name for your security key`} />
-  ),
-
   "security.webauthn.max_allowed_tokens": (
     <FormattedMessage
       id="security.webauthn.max_allowed_tokens"

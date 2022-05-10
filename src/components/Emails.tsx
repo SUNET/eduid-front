@@ -42,14 +42,14 @@ function Emails() {
     description: "Placeholder for email code input",
   });
 
-  const title = intl.formatMessage(
-    {
-      id: "emails.confirm_title",
-      defaultMessage: "Click the link or enter the code sent to {email} here",
-      description: "Title for email code input",
-    },
-    { email: selectedEmail }
-  );
+  // const title = intl.formatMessage(
+  //   {
+  //     id: "emails.confirm_title",
+  //     defaultMessage: "Click the link or enter the code sent to {email} here",
+  //     description: "Title for email code input",
+  //   },
+  //   { email: selectedEmail }
+  // );
 
   async function handleAdd(values: EmailFormData) {
     if (values.email) {
@@ -187,7 +187,13 @@ function Emails() {
       </div>
       <ConfirmModal
         id="email-confirm-modal"
-        title={title}
+        title={
+          <FormattedMessage
+            defaultMessage={`Click the link or enter the code sent to {email} here`}
+            description="Title for email code input"
+            values={{ email: { selectedEmail } }}
+          />
+        }
         placeholder={modalPlaceholder}
         showModal={Boolean(selectedEmail)}
         closeModal={handleStopConfirmation}

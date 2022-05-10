@@ -116,7 +116,12 @@ function Security(props) {
       </div>
       <ConfirmModal
         id="describe-webauthn-token-modal"
-        title={translate("security.webauthn-describe-title")}
+        title={
+          <FormattedMessage
+            description="security webauthn describe title"
+            defaultMessage={`Add a name for your security key`}
+          />
+        }
         placeholder={placeholder}
         showModal={Boolean(props.webauthn_asking_description)}
         closeModal={props.handleStopAskingWebauthnDescription}
