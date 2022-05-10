@@ -197,7 +197,7 @@ function Phones() {
           <FormattedMessage
             defaultMessage={`Enter the code sent to {phone}`}
             description="Title for phone code input"
-            values={{ phone: { selectedPhoneNumber } }}
+            values={{ phone: selectedPhoneNumber }}
           />
         }
         placeholder={modalPlaceholder}

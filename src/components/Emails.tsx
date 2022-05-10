@@ -42,15 +42,6 @@ function Emails() {
     description: "Placeholder for email code input",
   });
 
-  // const title = intl.formatMessage(
-  //   {
-  //     id: "emails.confirm_title",
-  //     defaultMessage: "Click the link or enter the code sent to {email} here",
-  //     description: "Title for email code input",
-  //   },
-  //   { email: selectedEmail }
-  // );
-
   async function handleAdd(values: EmailFormData) {
     if (values.email) {
       const response = await dispatch(postNewEmail({ email: values.email }));
@@ -191,7 +182,7 @@ function Emails() {
           <FormattedMessage
             defaultMessage={`Click the link or enter the code sent to {email} here`}
             description="Title for email code input"
-            values={{ email: { selectedEmail } }}
+            values={{ email: selectedEmail }}
           />
         }
         placeholder={modalPlaceholder}
