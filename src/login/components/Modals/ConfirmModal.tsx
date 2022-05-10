@@ -6,15 +6,15 @@ import CustomInput from "../Inputs/CustomInput";
 import { Form as FinalForm, Field as FinalField } from "react-final-form";
 
 interface ConfirmModalProps {
-  closeModal: React.MouseEventHandler<HTMLButtonElement>;
-  handleConfirm: React.MouseEventHandler<HTMLButtonElement>;
   id: string;
+  title: React.ReactNode;
   placeholder: string;
   showModal: boolean;
+  closeModal: React.MouseEventHandler<HTMLButtonElement>;
+  handleConfirm: React.MouseEventHandler<HTMLButtonElement>;
+  modalFormLabel: React.ReactNode;
   validationError: string;
   validationPattern: RegExp;
-  modalFormLabel: React.ReactNode;
-  title: React.ReactNode;
   helpBlock?: React.ReactNode;
   resendMarkup?: React.ReactNode;
 }

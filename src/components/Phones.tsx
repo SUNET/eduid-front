@@ -203,6 +203,10 @@ function Phones() {
       <ConfirmModal
         id="phone-confirm-modal"
         title={title}
+        placeholder={modalPlaceholder}
+        showModal={Boolean(selectedPhoneNumber)}
+        closeModal={handleStopConfirmation}
+        handleConfirm={handleConfirm}
         modalFormLabel={<FormattedMessage id="enter confirmation code" defaultMessage={`Confirmation code`} />}
         resendMarkup={
           <div className="resend-code-container">
@@ -211,12 +215,8 @@ function Phones() {
             </a>
           </div>
         }
-        placeholder={modalPlaceholder}
-        showModal={Boolean(selectedPhoneNumber)}
-        closeModal={handleStopConfirmation}
-        handleConfirm={handleConfirm}
-        validationPattern={shortCodePattern}
         validationError={"confirmation.code_invalid_format"}
+        validationPattern={shortCodePattern}
       />
     </article>
   );

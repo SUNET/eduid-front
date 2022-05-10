@@ -117,14 +117,14 @@ function Security(props) {
       <ConfirmModal
         id="describe-webauthn-token-modal"
         title={translate("security.webauthn-describe-title")}
-        modalFormLabel={<FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />}
         placeholder={placeholder}
         showModal={Boolean(props.webauthn_asking_description)}
         closeModal={props.handleStopAskingWebauthnDescription}
         handleConfirm={props.handleStartWebauthnRegistration}
-        helpBlock={translate("security.help_text")}
+        modalFormLabel={<FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />}
         validationPattern={securityKeyPattern}
         validationError={"security.description_invalid_format"}
+        helpBlock={translate("security.help_text")}
       />
     </article>
   );

@@ -188,7 +188,19 @@ function Emails() {
       <ConfirmModal
         id="email-confirm-modal"
         title={title}
+        placeholder={modalPlaceholder}
+        showModal={Boolean(selectedEmail)}
+        closeModal={handleStopConfirmation}
+        handleConfirm={handleConfirm}
         modalFormLabel={<FormattedMessage id="enter confirmation code" defaultMessage={`Confirmation code`} />}
+        validationError="confirmation.code_invalid_format"
+        validationPattern={longCodePattern}
+        helpBlock={
+          <FormattedMessage
+            id="Help text for email confirmation code"
+            defaultMessage={`Code is formatted as five groups of characters and numbers, separated by hyphens`}
+          />
+        }
         resendMarkup={
           <div className="resend-code-container">
             <a href="#" onClick={handleResend}>
@@ -196,18 +208,6 @@ function Emails() {
             </a>
           </div>
         }
-        placeholder={modalPlaceholder}
-        showModal={Boolean(selectedEmail)}
-        closeModal={handleStopConfirmation}
-        handleConfirm={handleConfirm}
-        helpBlock={
-          <FormattedMessage
-            id="Help text for email confirmation code"
-            defaultMessage={`Code is formatted as five groups of characters and numbers, separated by hyphens`}
-          />
-        }
-        validationPattern={longCodePattern}
-        validationError="confirmation.code_invalid_format"
       />
     </article>
   );
