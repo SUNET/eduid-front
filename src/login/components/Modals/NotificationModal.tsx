@@ -19,7 +19,7 @@ function NotificationModal(props: NotificationModalProps) {
         <ModalHeader>
           {props.title}
           <EduIDButton
-            id={`${props.id} "close-button"`}
+            id={`${props.id}-close-button`}
             buttonstyle="close"
             className="float-right"
             onClick={props.closeModal}
@@ -27,7 +27,7 @@ function NotificationModal(props: NotificationModalProps) {
         </ModalHeader>
         <ModalBody>{props.mainText}</ModalBody>
         <ModalFooter>
-          <EduIDButton id={`${props.id} "accept-button"`} buttonstyle="primary" onClick={props.acceptModal}>
+          <EduIDButton id={`${props.id}-accept-button`} buttonstyle="primary" onClick={props.acceptModal}>
             {props.acceptButtonText}
           </EduIDButton>
         </ModalFooter>
