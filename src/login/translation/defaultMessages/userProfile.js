@@ -1044,6 +1044,4 @@ export const userData = {
   "security.button_delete_account": (
     <FormattedMessage id="security.button_delete_account" defaultMessage={`Delete eduID`} />
   ),
-
-  "delete.confirm_button": <FormattedMessage id="delete.confirm_button" defaultMessage={`Delete my eduID`} />,
 };
