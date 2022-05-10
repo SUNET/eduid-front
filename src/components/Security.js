@@ -126,7 +126,9 @@ function Security(props) {
         showModal={Boolean(props.webauthn_asking_description)}
         closeModal={props.handleStopAskingWebauthnDescription}
         handleConfirm={props.handleStartWebauthnRegistration}
-        modalFormLabel={<FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />}
+        modalFormLabel={
+          <FormattedMessage description="security webauthn credential type" defaultMessage={`Security key`} />
+        }
         validationPattern={securityKeyPattern}
         validationError={"security.description_invalid_format"}
         helpBlock={
