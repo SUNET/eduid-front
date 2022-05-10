@@ -186,8 +186,7 @@ function Emails() {
         )}
       </div>
       <ConfirmModal
-        modalId="emailConfirmDialog"
-        id="emailConfirmDialogControl"
+        id="emailConfirmDialog"
         title={title}
         modalFormLabel={<FormattedMessage id="enter confirmation code" defaultMessage={`Confirmation code`} />}
         resendMarkup={

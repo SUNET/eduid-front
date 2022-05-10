@@ -9,7 +9,6 @@ interface ConfirmModalProps {
   closeModal: React.MouseEventHandler<HTMLButtonElement>;
   handleConfirm: React.MouseEventHandler<HTMLButtonElement>;
   id: string;
-  modalId: string;
   placeholder: string;
   showModal: boolean;
   validationError: string;
@@ -32,7 +31,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
 
   return (
     <div
-      id={props.modalId}
+      id={props.id}
       tabIndex={-1}
       role="dialog"
       aria-labelledby="askDialogPrompt"
@@ -47,13 +46,13 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
         <FinalForm
           onSubmit={props.handleConfirm}
           initialValues={{
-            [props.modalId]: "",
+            [props.id]: "",
           }}
           {...props}
           render={({ submitting, invalid }) => (
             <React.Fragment>
               <ModalBody>
-                <form id={props.modalId + "-form"} role="form">
+                <form id={props.id + "-form"} role="form">
                   <div id="confirmation-code-area">
                     <FinalField<string>
                       component={CustomInput}
@@ -61,8 +60,8 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                       type="text"
                       label={props.modalFormLabel}
                       placeholder={props.placeholder}
-                      id={props.modalId}
-                      name={props.modalId}
+                      id={props.id}
+                      name={props.id}
                       helpBlock={props.helpBlock}
                       validate={validate}
                     />

@@ -201,8 +201,7 @@ function Phones() {
         )}
       </div>
       <ConfirmModal
-        modalId="phoneConfirmDialog"
-        id="phoneConfirmDialogControl"
+        id="phoneConfirmDialog"
         title={title}
         modalFormLabel={<FormattedMessage id="enter confirmation code" defaultMessage={`Confirmation code`} />}
         resendMarkup={
