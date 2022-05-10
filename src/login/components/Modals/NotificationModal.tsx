@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import i18n from "../../../login/translation/InjectIntl_HOC_factory";
+import i18n from "../../translation/InjectIntl_HOC_factory";
 import EduIDButton from "../../../components/EduIDButton";
 
 const RenderCloseButton = ({ closeButtonId, closeModal }) => {
