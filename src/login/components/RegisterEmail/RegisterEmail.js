@@ -8,7 +8,7 @@ import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";
 import * as actions from "actions/Email";
-import { useIntl } from "react-intl";
+import { useIntl, FormattedMessage } from "react-intl";
 
 const submitEmailForm = (values, dispatch) => {
   const { email } = values;
@@ -70,6 +70,7 @@ EmailReduxForm = connect(() => ({
 
 class RegisterEmail extends Component {
   render() {
+    console.log("this.props.tou", this.props.tou);
     return [
       <div key="0" id="content" className="horizontal-content-margin content">
         <h1 className="heading">{this.props.translate("register.sub-heading")}</h1>
@@ -83,16 +84,13 @@ class RegisterEmail extends Component {
       </div>,
       <div key="1">
         <NotificationModal
-          modalId="register-modal"
-          title={this.props.translate("tou.header")}
+          id="register-modal"
+          title={<FormattedMessage defaultMessage="General rules for eduID users" description="tou.header" />}
+          mainText={this.props.tou}
           showModal={this.props.acceptingTOU}
           closeModal={this.props.handleReject}
           acceptModal={this.props.handleAccept}
-          mainText={this.props.tou}
-          acceptButtonText={this.props.translate("tou.accept")}
-          closeButtonText={this.props.translate("tou.cancel")}
-          acceptButtonId={"accept-tou-button"}
-          closeButtonId={"reject-tou-button"}
+          acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
         />
       </div>,
     ];
