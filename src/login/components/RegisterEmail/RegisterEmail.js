@@ -70,7 +70,76 @@ EmailReduxForm = connect(() => ({
 
 class RegisterEmail extends Component {
   render() {
-    console.log("this.props.tou", this.props.tou);
+    // TODO: Replace with existing ToU from login
+    const ToU = (
+      <React.Fragment>
+        <p>
+          <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+        </p>
+        <ul tabIndex={0}>
+          {[
+            <FormattedMessage
+              defaultMessage="that all usage of user accounts follow the laws and by-laws of Sweden,"
+              description="ToU first paragraph"
+            />,
+            <FormattedMessage
+              defaultMessage={`that all personal information that you provide,
+                             such as name and contact information shall be truthful,`}
+              description="ToU first paragraph"
+            />,
+            <FormattedMessage
+              defaultMessage={`that user accounts, password, security keys and codes are individual and
+                             shall only be used by the intended individual,`}
+              description="ToU first paragraph"
+            />,
+            <FormattedMessage
+              defaultMessage="that SUNET's ethical rules regulate the “other” usage."
+              description="ToU first paragraph"
+            />,
+          ].map((list, index) => {
+            return <li key={index}>{list}</li>;
+          })}
+        </ul>
+        <ul tabIndex={0}>
+          <p>
+            <FormattedMessage
+              defaultMessage="SUNET judges unethical behaviour to be when someone:"
+              description="ToU 2016-v1 paragraph 2 heading"
+            />
+          </p>
+          {[
+            <FormattedMessage
+              defaultMessage="attempts to gain access to network resources that they do not have the right"
+              description="ToU second paragraph"
+            />,
+            <FormattedMessage
+              defaultMessage="attempts to conceal their user identity"
+              description="ToU second paragraph"
+            />,
+            <FormattedMessage
+              defaultMessage="attempts to interfere or disrupt the intended usage of the network"
+              description="ToU second paragraph"
+            />,
+            <FormattedMessage
+              defaultMessage="clearly wastes available resources (personnel, hardware or software)"
+              description="ToU second paragraph"
+            />,
+            <FormattedMessage
+              defaultMessage="attempts to disrupt or destroy computer-based information"
+              description="ToU second paragraph"
+            />,
+            <FormattedMessage defaultMessage="infringes on the privacy of others" description="ToU second paragraph" />,
+            <FormattedMessage
+              defaultMessage="attempts to insult or offend others"
+              description="ToU second paragraph"
+            />,
+          ].map((list, index) => {
+            return <li key={index}>{list}</li>;
+          })}
+        </ul>
+      </React.Fragment>
+    );
+
     return [
       <div key="0" id="content" className="horizontal-content-margin content">
         <h1 className="heading">{this.props.translate("register.sub-heading")}</h1>
@@ -86,7 +155,7 @@ class RegisterEmail extends Component {
         <NotificationModal
           id="register-modal"
           title={<FormattedMessage defaultMessage="General rules for eduID users" description="tou.header" />}
-          mainText={this.props.tou}
+          mainText={ToU}
           showModal={this.props.acceptingTOU}
           closeModal={this.props.handleReject}
           acceptModal={this.props.handleAccept}
