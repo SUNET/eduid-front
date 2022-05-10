@@ -252,9 +252,6 @@ export const userVetting = {
     />
   ),
 
-  "eidas.modal_title": (
-    <FormattedMessage id="eidas.modal_title" defaultMessage={`Use Freja eID+ and pass a local authorised agent`} />
-  ),
   "eidas.freja_instructions_step1": (
     <FormattedMessage id="eidas.freja_instructions_step1" defaultMessage={`Install the app`} />
   ),

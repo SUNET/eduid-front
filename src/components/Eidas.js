@@ -40,7 +40,12 @@ class Eidas extends Component {
         </div>
         <NotificationModal
           id="eidas-info-modal"
-          title={this.props.translate("eidas.modal_title")}
+          title={
+            <FormattedMessage
+              id="eidas.modal_title"
+              defaultMessage={`Use Freja eID+ and pass a local authorised agent`}
+            />
+          }
           mainText={freja_instructions}
           showModal={this.props.showModal}
           closeModal={this.props.handleHideModal}
