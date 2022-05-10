@@ -169,7 +169,7 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
         acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
       />
       <ConfirmModal
-        id="letterConfirmDialog"
+        id="letter-confirm-modal"
         title={
           <FormattedMessage
             defaultMessage="Add the code you have received by post"
