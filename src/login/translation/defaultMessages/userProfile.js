@@ -226,20 +226,6 @@ export const userVetting = {
 
   /* ----- confirmed number > ready for vetting------- */
 
-  "lmp.modal_confirm_title": (
-    <FormattedMessage
-      id="lmp.modal_confirm_title"
-      defaultMessage={`Check if your phone number is connected to your id number.`}
-    />
-  ),
-
-  "lmp.modal_confirm_info": (
-    <FormattedMessage
-      id="lmp.confirm_info"
-      defaultMessage={`This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity.`}
-    />
-  ),
-
   "lmp.verification_success": (
     <FormattedMessage
       id="lmp.verification_success"
@@ -1064,17 +1050,6 @@ export const userData = {
 
   "security.button_delete_account": (
     <FormattedMessage id="security.button_delete_account" defaultMessage={`Delete eduID`} />
-  ),
-
-  "settings.modal_delete_title": (
-    <FormattedMessage id="settings.modal_delete_title" defaultMessage={`Are you sure you want to delete your eduID?`} />
-  ),
-
-  "delete.modal_info": (
-    <FormattedMessage
-      id="delete.modal_info"
-      defaultMessage={`Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time.`}
-    />
   ),
 
   "delete.confirm_button": <FormattedMessage id="delete.confirm_button" defaultMessage={`Delete my eduID`} />,

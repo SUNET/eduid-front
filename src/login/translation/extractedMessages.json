@@ -659,9 +659,7 @@
   "delete.confirm_button": {
     "string": "Delete my eduID"
   },
-  "delete.modal_info": {
-    "string": "Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time."
-  },
+
   "eKpiiX": {
     "developer_comment": "Login OtherDevice",
     "string": "Log in this device"
@@ -1019,9 +1017,6 @@
   },
   "lmp.initialize_proofing_help_text_tip_1": {
     "string": "Tip: The registry is updated by phone operators at their convenience and may not include all registered phone numbers"
-  },
-  "lmp.modal_confirm_title": {
-    "string": "Check if your phone number is connected to your id number."
   },
   "lmp.verification_success": {
     "string": "Your national id number has been successfully verified"
@@ -1856,9 +1851,6 @@
     "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
-  "settings.modal_delete_title": {
-    "string": "Are you sure you want to delete your eduID?"
-  },
   "signup.recaptcha-not-verified": {
     "string": "There was a problem verifying that you are a human. Please try again"
   },
@@ -1906,9 +1898,6 @@
   },
   "tou.cancel": {
     "string": "Cancel"
-  },
-  "tou.header": {
-    "string": "General rules for eduID users"
   },
   "tou.must-accept": {
     "string": "You must accept the new terms of use before continuing"
