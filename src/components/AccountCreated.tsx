@@ -11,7 +11,7 @@ function AccountCreated(props: { email: string }) {
         />
       </h1>
       <div id="email-display">
-        <p className="preamble">
+        <p>
           <FormattedMessage
             defaultMessage="Complete registration by clicking the link sent to:"
             description="Register email label"

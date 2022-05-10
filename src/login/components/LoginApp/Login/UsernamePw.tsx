@@ -42,7 +42,8 @@ export default function UsernamePw() {
       <h1>
         <FormattedMessage defaultMessage="Log in" description="Login front page" />
       </h1>
-      <div className="preamble">
+
+      <div className="lead">
         <LoginAtServiceInfo service_info={service_info} />
       </div>
 

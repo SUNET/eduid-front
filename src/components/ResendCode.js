@@ -8,7 +8,7 @@ class ResendCode extends Component {
       <div id="content" className="horizontal-content-margin content">
         <h1 className="register-header">{this.props.translate("resend.link-sent")}</h1>
         <div id="email-display">
-          <p className="preamble">{this.props.translate("resend.email-label")}</p>
+          <p>{this.props.translate("resend.email-label")}</p>
           <h4 className="register-header registered-email">{this.props.email}</h4>
         </div>
 

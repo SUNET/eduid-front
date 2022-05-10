@@ -7,6 +7,7 @@ import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMo
 import { translate } from "login/translation";
 import React, { Fragment } from "react";
 import AddNin from "./AddNin";
+import { FormattedMessage } from "react-intl";
 
 // TODO: make a typed slice out of phone (like nins) and move this there
 //       (and remove "as PhoneInfo[]" below, since it will be deduced automatically)
@@ -19,7 +20,6 @@ interface PhoneInfo {
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
   let pageHeading, pageText, vettingButtons;
-  const recoverIdentityTip = translate("verify-identity.verified_pw_reset_extra_security");
 
   const nin = useDashboardAppSelector((state) => state.nins.first_nin);
   const isConfigured = useDashboardAppSelector((state) => state.config.is_configured);
@@ -28,20 +28,17 @@ function VerifyIdentity(): JSX.Element | null {
   const hasVerifiedNin = !!nin?.verified;
   const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
 
+  pageHeading = translate("verify-identity.unverified_main_title");
+  pageText = translate("verify-identity.unverified_page-description");
+
   if (!isConfigured) {
     return null;
   }
 
   // nin is not verified (add nin)
   const AddNumber = () => {
-    pageHeading = translate("verify-identity.unverified_main_title");
-    pageText = translate("verify-identity.unverified_page-description");
     return (
       <>
-        <div className="intro">
-          <h3>{pageHeading}</h3>
-          <p>{pageText}</p>
-        </div>
         <h4>{translate("verify-identity.add-nin_heading")}</h4>
       </>
     );
@@ -53,8 +50,8 @@ function VerifyIdentity(): JSX.Element | null {
     pageText = translate("verify-identity.verified_page-description");
     return (
       <>
-        <h3>{pageHeading}</h3>
-        <p>{pageText}</p>
+        <h4>{pageHeading}</h4>
+        <p className="x-adjust">{pageText}</p>
       </>
     );
   };
@@ -88,7 +85,7 @@ function VerifyIdentity(): JSX.Element | null {
     // TODO: Maybe the help texts ought to move into the containers? Isn't that what containers are for - to group components?
 
     vettingButtons = (
-      <div id="nins-btn-grid">
+      <div id="nins-btn-grid" className="x-adjust">
         <div>
           <LetterProofingButton disabled={letterProofingDisabled} />
           {buttonHelpText("letter.initialize_proofing_help_text", letterProofingDisabled)}
@@ -115,23 +112,48 @@ function VerifyIdentity(): JSX.Element | null {
   const VerifyIdentity_Step2 = () => {
     if (!hasVerifiedNin) {
       return (
-        <>
+        <li>
           <h4>{translate("verify-identity.connect-nin_heading")}</h4>
-          <p>{translate("verify-identity.connect-nin_description")}</p>
-        </>
+          <p className="x-adjust">{translate("verify-identity.connect-nin_description")}</p>
+        </li>
       );
     } else {
-      return <div />;
+      return (
+        <li>
+          <h4>
+            <FormattedMessage
+              defaultMessage={`Improve your identification`}
+              description="verify identity improve security heading"
+            />
+          </h4>
+          <p className="x-adjust">
+            <FormattedMessage
+              defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at password reset under Settings.`}
+              description="verify identity improve security description"
+            />
+          </p>
+        </li>
+      );
     }
   };
 
   return (
     <Fragment>
-      <VerifyIdentity_Step1 />
-      <AddNin />
-      {hasVerifiedNin && <p className="help-text">{recoverIdentityTip}</p>}
-      <VerifyIdentity_Step2 />
-      {vettingButtons}
+      <div className="intro">
+        <h1>{pageHeading}</h1>
+        <div className="lead">
+          <p>{pageText}</p>
+        </div>
+      </div>
+      <ol className="listed-steps">
+        <li>
+          <VerifyIdentity_Step1 />
+          <AddNin />
+        </li>
+
+        <VerifyIdentity_Step2 />
+        {vettingButtons}
+      </ol>
     </Fragment>
   );
 }

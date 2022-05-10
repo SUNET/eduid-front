@@ -2,22 +2,23 @@
 
 #dashboard-nav {
   & ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
     margin-left: -0.1875rem;
     margin-bottom: 0;
+    display: inline-block;
 
     & li {
-      margin: 0.5rem 2rem 0.5rem 0;
-      flex: 1;
+      margin: 0 1.25rem 0.75rem 0;
+      //flex: 1;
+      display: inline-block;
     }
 
     & a {
       color: $black;
       padding: 0 0.1875rem;
-
-      & span {
+      line-height: 1.25 & span {
         border-bottom: $black solid 1px;
       }
 
@@ -69,7 +70,7 @@
 
   .display-nin-show-hide {
     display: flex;
-    padding-bottom: 1.5rem;
+    //padding-bottom: 1.5rem;
 
     // show and hide button
     button {

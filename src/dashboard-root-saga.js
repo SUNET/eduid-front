@@ -1,7 +1,6 @@
 import * as accountLinkingActions from "actions/AccountLinking";
 import * as configActions from "actions/DashboardConfig";
 import * as headerActions from "actions/Header";
-import * as mobileActions from "actions/Mobile";
 import * as openidActions from "actions/OpenidConnect";
 import * as openidFrejaActions from "actions/OpenidConnectFreja";
 import * as pdataActions from "actions/PersonalData";
@@ -11,7 +10,6 @@ import { requestConnectOrcid, requestOrcid, requestRemoveOrcid } from "sagas/Acc
 import { requestConfig } from "sagas/DashboardConfig";
 import { requestLogout } from "sagas/Header";
 import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
-import * as sagasMobile from "sagas/Mobile";
 import { requestNins } from "sagas/Nins";
 import * as sagasOpenid from "sagas/OpenidConnect";
 import * as sagasOpenidFreja from "sagas/OpenidConnectFreja";
@@ -61,11 +59,6 @@ function* rootSaga() {
     takeLatest(openidFrejaActions.GET_OIDC_PROOFING_FREJA_PROOFING, sagasOpenidFreja.requestOpenidFrejaData),
     takeLatest(openidFrejaActions.SHOW_OIDC_FREJA_MODAL, sagasOpenidFreja.checkNINAndShowFrejaModal),
     takeLatest(openidFrejaActions.HIDE_OIDC_FREJA_MODAL, sagasOpenidFreja.closeFrejaModal),
-    takeLatest(mobileActions.POST_MOBILE, sagasMobile.saveMobile),
-    takeLatest(mobileActions.POST_MOBILE_REMOVE, sagasMobile.requestRemoveMobile),
-    takeLatest(mobileActions.POST_MOBILE_PRIMARY, sagasMobile.requestMakePrimaryMobile),
-    takeLatest(mobileActions.START_RESEND_MOBILE_CODE, sagasMobile.requestResendMobileCode),
-    takeLatest(mobileActions.START_VERIFY, sagasMobile.requestVerifyMobile),
     takeLatest(securityActions.initiatePasswordChange.type, requestPasswordChange),
     takeLatest(securityActions.POST_DELETE_ACCOUNT, postDeleteAccount),
     takeEvery(postRequestLetter.fulfilled, requestAllPersonalData),

@@ -18,11 +18,7 @@ describe("LookupMobile component", () => {
       ...dashboardTestState,
       nins: ninStateFromNinList([]),
       phones: {
-        message: "",
-        confirming: "",
         phones: [],
-        phone: "",
-        code: "",
       },
       config: { lookup_mobile_proofing_url: "http://localhost/lookup-mobile" },
     });
