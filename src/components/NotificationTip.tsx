@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 
-interface SpeechBubbleTipProps {
+interface NotificationTipProps {
   tipText: string | JSX.Element; // text inside speech bubble
   position?: string; // where the speech bubble tip is rendering on identity or settings. Default is 'identity'.
   textLength?: string; // for short text styling
-  setActive?(value: boolean): void;
-  delay?: number;
+  setActive?(value: boolean): void; // will be called with value true/false when speech bubble is shown/disappears
+  delay?: number; // on-mouse-over timeout before speech bubble is shown, default is 100 ms
   children?: React.ReactNode;
 }
 
-function SpeechBubbleTip(props: SpeechBubbleTipProps): JSX.Element {
+/**
+ * NotificationTip is a small orange dot indicator to draw the users' attention toward something.
+ * If/when the user hovers the mouse over the dot, an additional explanatory text message is shown.
+ */
+function NotificationTip(props: NotificationTipProps) {
+  return (
+    <SpeechBubbleTip {...props}>
+      <div className="notification-dot">
+        <div className="notification-dot-inner" />
+      </div>
+    </SpeechBubbleTip>
+  );
+}
+
+function SpeechBubbleTip(props: NotificationTipProps): JSX.Element {
   const [active, setActive] = useState(false); // is the speech bubble currently active (shown)?
 
   let timeout: NodeJS.Timeout | undefined;
@@ -37,16 +51,6 @@ function SpeechBubbleTip(props: SpeechBubbleTipProps): JSX.Element {
         </div>
       )}
     </div>
-  );
-}
-
-function NotificationTip(props: SpeechBubbleTipProps) {
-  return (
-    <SpeechBubbleTip {...props}>
-      <div className="notification-dot">
-        <div className="notification-dot-inner" />
-      </div>
-    </SpeechBubbleTip>
   );
 }
 
