@@ -1,4 +1,4 @@
-import React, { ReactChild } from "react";
+import React from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import EduIDButton from "../../../components/EduIDButton";
 import { FormattedMessage } from "react-intl";
