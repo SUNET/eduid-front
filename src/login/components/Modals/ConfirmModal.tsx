@@ -13,10 +13,10 @@ interface ConfirmModalProps {
   showModal: boolean;
   validationError: string;
   validationPattern: RegExp;
-  modalFormLabel: ReactChild;
-  title: ReactChild;
-  helpBlock?: ReactChild;
-  resendMarkup?: ReactChild;
+  modalFormLabel: React.ReactNode;
+  title: React.ReactNode;
+  helpBlock?: React.ReactNode;
+  resendMarkup?: React.ReactNode;
 }
 
 function ConfirmModal(props: ConfirmModalProps): JSX.Element {
