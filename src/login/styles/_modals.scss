@@ -7,12 +7,9 @@
   width: 60%;
   margin: 0 20%;
 
-  // & #modal-form {
   & form {
     margin-top: 0;
   }
-
-  // }
 }
 
 .modal-title {
@@ -71,11 +68,10 @@ h5.modal-title {
 }
 
 .modal-dialog {
-  margin-top: 70px;
   background-color: $white;
   border-radius: 20px;
   width: 100%;
-  margin: auto;
+  margin: 70px auto;
 }
 
 // temporary styling for register tou
@@ -98,16 +94,26 @@ h5.modal-title {
       }
     }
   }
-
-  // & .modal-footer {
-  //   & button {
-  //     margin: 0;
-  //   }
-  // }
 }
 
 ol {
   list-style-type: decimal;
+}
+
+#delete-account-modal {
+  & .modal-footer {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  & label {
+    margin-bottom: 30px;
+    color: $gray;
+    font-size: 1rem;
+    text-transform: none;
+    line-height: 1.5;
+    font-weight: 700;
+  }
 }
 
 #freja-instructions {
@@ -141,29 +147,7 @@ ol {
   }
 }
 
-#delete-account-modal {
-  & .modal-footer {
-    flex-direction: column;
-    padding: 0 1rem;
-  }
-
-  & label {
-    margin-bottom: 30px;
-    color: $gray;
-    font-size: 1rem;
-    text-transform: none;
-    line-height: 1.5;
-    font-weight: 700;
-  }
-}
-
 /* styles for confirm button in delete account modal */
-
-// .modal-footer {
-//   display: flex;
-//   justify-content: center;
-// }
-
 p.modal-text {
   margin-top: 0;
 }
