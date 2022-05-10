@@ -704,9 +704,6 @@
   "eidas.initialize_proofing_help_text": {
     "string": "To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app."
   },
-  "eidas.modal_title": {
-    "string": "Use Freja eID+ and pass a local authorised agent"
-  },
   "eidas.nin_already_verified": {
     "string": "You have already verified your identity"
   },

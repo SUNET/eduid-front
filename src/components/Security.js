@@ -6,7 +6,7 @@ import { Spinner } from "spin.js";
 import { spinnerOpts } from "../components/Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
-import NotificationModal from "../login/components/Modals/NotificationModal";
+// import NotificationModal from "../login/components/Modals/NotificationModal";
 import { useIntl } from "react-intl";
 import CookieChecker from "./../components/CookieChecker";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
@@ -116,15 +116,14 @@ function Security(props) {
         </div>
       </div>
       {/* what is that? */}
-      <NotificationModal
+      {/* <NotificationModal
         id="security-confirm-modal"
         title={translate("security.confirm_title_chpass")}
         mainText={translate("security.change_info")}
         showModal={props.confirming_change}
-      />
+      /> */}
       <ConfirmModal
-        modalId="describeWebauthnTokenDialog"
-        id="describeWebauthnTokenDialogControl"
+        id="describeWebauthnTokenDialog"
         title={translate("security.webauthn-describe-title")}
         modalFormLabel={<FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />}
         placeholder={placeholder}
