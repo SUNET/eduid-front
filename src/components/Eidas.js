@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NotificationModal from "../login/components/Modals/NotificationModal";
+import { FormattedMessage } from "react-intl";
+
 class Eidas extends Component {
   render() {
     // Temporary instructions until Sweden Connect has more alternatives and we have a DS
@@ -23,6 +25,10 @@ class Eidas extends Component {
         </a>
       </div>
     );
+    const eidas_sp_freja_idp_url = (e) => {
+      e.preventDefault();
+      window.location.href = this.props.eidas_sp_freja_idp_url;
+    };
 
     return (
       <div>
@@ -33,15 +39,13 @@ class Eidas extends Component {
           </button>
         </div>
         <NotificationModal
-          modalId="eidas-info-dialog"
+          id="eidas-info-modal"
           title={this.props.translate("eidas.modal_title")}
-          href={this.props.eidas_sp_freja_idp_url}
+          mainText={freja_instructions}
           showModal={this.props.showModal}
           closeModal={this.props.handleHideModal}
-          mainText={freja_instructions}
-          closeText={this.props.translate("cm.close")}
-          closeButtonId={"eidas-hide-modal"}
-          acceptButtonText={this.props.translate("eidas.freja_eid_ready")}
+          acceptModal={eidas_sp_freja_idp_url}
+          acceptButtonText={<FormattedMessage id="eidas.freja_eid_ready" defaultMessage={`Use my Freja eID`} />}
         />
       </div>
     );

@@ -115,14 +115,13 @@ function Security(props) {
           </div>
         </div>
       </div>
-
+      {/* what is that? */}
       <NotificationModal
-        modalId="securityConfirmDialog"
+        id="security-confirm-modal"
         title={translate("security.confirm_title_chpass")}
         mainText={translate("security.change_info")}
         showModal={props.confirming_change}
       />
-
       <ConfirmModal
         modalId="describeWebauthnTokenDialog"
         id="describeWebauthnTokenDialogControl"

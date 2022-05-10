@@ -56,7 +56,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
       </div>
 
       <NotificationModal
-        modalId="securityConfirmDialog"
+        id="security-confirm-modal"
         title={
           <FormattedMessage
             id="settings.confirm_title_chpass"
@@ -76,6 +76,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
           setShowModal(false);
         }}
         acceptModal={handleAcceptModal}
+        acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
       />
     </article>
   );
