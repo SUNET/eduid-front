@@ -108,7 +108,7 @@ describe("SignupMain Component", () => {
   });
 
   it("Doesn't show the spinner", () => {
-    const wrapper = setupComponent({ component: <SignupMain /> }),
+    const wrapper = setupComponent({ component: <SignupMain /> });
 
     // splash-and-children should be there
     const splash = wrapper.find("div#eduid-splash-and-children");
