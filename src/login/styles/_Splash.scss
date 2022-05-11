@@ -1,13 +1,18 @@
-div#eduid-splash-screen {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  background-color: white;
+div#eduid-splash-and-children {
+  position: relative;
+  display: flex;
+  flex: 1;
+
+  flex-direction: column;
 }
 
-div#eduid-splash-screen > div.spinner {
+span#eduid-splash-spinner {
+  height: 100%;
+  width: 100%;
+  background-color: $light-gray;
+  position: absolute;
+}
+
+span#eduid-splash-spinner > div.spinner {
   opacity: 1;
 }
