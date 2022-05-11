@@ -69,7 +69,7 @@ function Eidas(props: EidasProps) {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <div className="vetting-button">
         <button id="eidas-show-modal" onClick={props.handleShowModal}>
           <div className="text">
@@ -100,7 +100,7 @@ function Eidas(props: EidasProps) {
         acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
-    </div>
+    </React.Fragment>
   );
 }
 
