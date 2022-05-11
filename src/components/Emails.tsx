@@ -194,14 +194,14 @@ function Emails() {
         validationPattern={longCodePattern}
         helpBlock={
           <FormattedMessage
-            id="Help text for email confirmation code"
+            description="Help text for email confirmation code"
             defaultMessage={`Code is formatted as five groups of characters and numbers, separated by hyphens`}
           />
         }
         resendMarkup={
           <div className="resend-code-container">
             <a href="#" onClick={handleResend}>
-              <FormattedMessage id="resend code" defaultMessage={`Send a new confirmation code`} />
+              <FormattedMessage description="resend code" defaultMessage={`Send a new confirmation code`} />
             </a>
           </div>
         }
