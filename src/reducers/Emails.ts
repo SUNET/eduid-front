@@ -13,17 +13,21 @@ export const initialState: EmailsResponse = {
   emails: [],
 };
 
-export const GET_EMAIL_ALL_SUCCESS = createAction<{ emails: EmailInfo[] }>("GET_EMAIL_ALL_SUCCESS");
+export function emailsStateFromEmailList(emails: EmailInfo[]): EmailsResponse {
+  return { emails: emails };
+}
 
 const emailsSlice = createSlice({
   name: "emails",
   initialState,
-  reducers: {},
+  reducers: {
+    setEmails: (state, action: PayloadAction<EmailInfo[]>) => {
+      // Update emails in state. Called after bulk-fetch of personal data.
+      return emailsStateFromEmailList(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(GET_EMAIL_ALL_SUCCESS, (state, action: PayloadAction<EmailsResponse>) => {
-        state.emails = action.payload.emails;
-      })
       .addCase(requestRemoveEmail.fulfilled, (state, action: PayloadAction<EmailsResponse>) => {
         state.emails = action.payload.emails;
       })

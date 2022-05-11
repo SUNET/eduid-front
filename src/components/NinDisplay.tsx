@@ -1,41 +1,36 @@
-import React, { Component, useState } from "react";
-import { Link } from "react-router-dom";
+import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
-import ninsSlice, { NinInfo } from "reducers/Nins";
-import { translate } from "login/translation";
 import { useDashboardAppDispatch } from "dashboard-hooks";
+import { translate } from "login/translation";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { Link } from "react-router-dom";
+import { NinInfo } from "reducers/Nins";
 
 interface NinDisplayProps {
-  nins: NinInfo[]; // all nins
-  verifiedNin: NinInfo[]; // all verified nins
-  handleDelete: (e: React.MouseEvent<HTMLElement>) => void;
-  delete?: boolean; // probable BUG: don't know where this comes from
-  showDeleteButton: boolean;
+  nin?: NinInfo; // the NIN to display - passed as a prop to make component more re-usable
+  allowDelete?: boolean; // show delete option, if applicable to this NIN
 }
 
-const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
+function RenderShowHideNin(props: NinDisplayProps): JSX.Element | null {
   const [showFullNin, setShowFullNin] = useState(false); // show the last four digits of the NIN or not
   const dispatch = useDashboardAppDispatch();
-  const verifiedNins = props.nins.filter((nin) => nin.verified);
-  const nin = verifiedNins[0] || props.nins[0];
 
-  const handleDelete = function (e: React.MouseEvent<HTMLElement>): void {
-    // TODO: We should be able to just use 'nin.number' from the enclosing function, right? Why go digging after it in the HTML?
-    const target = e.target as HTMLElement;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const cell = target.closest(".profile-grid-cell") as unknown as any;
-    if (cell) {
-      // TODO: investigate proper type for cell.children[1], ts says it has no 'dataset'
-      const ninNumber = cell.children[1].dataset.ninnumber;
-      dispatch(ninsSlice.actions.startRemove(ninNumber));
+  if (!props.nin) {
+    // NinDisplay won't render this component if nin is undefined, but we need to tell TypeScript that
+    return null;
+  }
+
+  const handleDelete = function (): void {
+    if (props.allowDelete && props.nin) {
+      dispatch(removeNin(props.nin.number));
     }
   };
 
   return (
-    <div data-ninnumber={nin.number} className={`${props.delete ? "data-with-delete" : "display-nin-show-hide"}`}>
-      <div id="nin-number" className={`display-data ${nin.verified ? "verified" : "unverified"}`}>
-        {showFullNin ? nin.number : nin.number.replace(/.{4}$/, "****")}
+    <div data-ninnumber={props.nin.number} className="display-nin-show-hide">
+      <div id="nin-number" className={`display-data ${props.nin.verified ? "verified" : "unverified"}`}>
+        {showFullNin ? props.nin.number : props.nin.number.replace(/.{4}$/, "****")}
       </div>
       <EduIDButton
         id="show-hide-button"
@@ -51,30 +46,28 @@ const RenderShowHideNin = (props: NinDisplayProps): JSX.Element => {
           <FormattedMessage defaultMessage="SHOW" description="nin/password button label" />
         )}
       </EduIDButton>
-      {props.showDeleteButton && !nin.verified && (
-        // if showDeleteButton is true and nin is not verified, button for deleting of nin number will appear
+      {props.allowDelete && !props.nin.verified && (
+        // if allowDelete is true and NIN is not verified, button for deleting NIN will appear
         <EduIDButton buttonstyle="close" size="sm" onClick={handleDelete}></EduIDButton>
       )}
     </div>
   );
-};
+}
 
-export class NinDisplay extends Component<NinDisplayProps> {
-  render() {
-    return (
-      <div className="profile-grid-cell">
-        <label key="0">{translate("nin_display.profile.main_title")}</label>
-        {this.props.nins.length === 0 ? (
-          // if nins is not added, user is able to navigate to identity
-          <Link to={`/profile/verify-identity/`} className="display-data unverified">
-            {translate("nin_display.profile.no_nin")}
-          </Link>
-        ) : (
-          <RenderShowHideNin {...this.props} />
-        )}
-      </div>
-    );
-  }
+export function NinDisplay(props: NinDisplayProps) {
+  return (
+    <div className="profile-grid-cell x-adjust">
+      <label key="0">{translate("nin_display.profile.main_title")}</label>
+      {props.nin ? (
+        <RenderShowHideNin {...props} />
+      ) : (
+        // if there is no NIN, render a link to verify-identity
+        <Link to={`/profile/verify-identity/`} className="display-data unverified">
+          <FormattedMessage defaultMessage="add id number" description="NIN display link text" />
+        </Link>
+      )}
+    </div>
+  );
 }
 
 export default NinDisplay;

@@ -1,11 +1,11 @@
 import { appLoaded } from "actions/DashboardConfig";
-import { GET_EMAIL_ALL_SUCCESS } from "reducers/Emails";
-import * as phoneActions from "actions/Mobile";
+import emailsSlice from "reducers/Emails";
+import phonesSlice from "reducers/Phones";
 import * as actions from "actions/PersonalData";
 import { LadokData } from "apis/eduidLadok";
 import expect from "expect";
 import ladokSlice from "reducers/Ladok";
-import { GET_NINS_SUCCESS } from "reducers/Nins";
+import ninsSlice from "reducers/Nins";
 import personalDataSlice from "reducers/PersonalData";
 import { call, put } from "redux-saga/effects";
 import { fetchAllPersonalData, requestAllPersonalData } from "../sagas/PersonalData";
@@ -77,38 +77,6 @@ describe("Reducers", () => {
     });
   });
 
-  // it("Receives a CHANGE_USERDATA action", () => {
-  //   expect(
-  //     personalDataReducer(mockState, {
-  //       type: actions.CHANGE_USERDATA,
-  //       payload: {
-  //         given_name: "Jonna",
-  //         display_name: "Jonna",
-  //       },
-  //     })
-  //   ).toEqual({
-  //     data: {
-  //       given_name: "Jonna",
-  //       eppn: "dummy-eppn",
-  //       display_name: "Jonna",
-  //     },
-  //   });
-  // });
-
-  // it("Receives a POST_USERDATA_SUCCESS action", () => {
-  //   expect(
-  //     personalDataReducer(mockState, {
-  //       payload: { surname: "Surname" },
-  //       type: actions.POST_USERDATA_SUCCESS,
-  //     })
-  //   ).toEqual({
-  //     data: {
-  //       surname: "Surname",
-  //       eppn: "dummy-eppn",
-  //     },
-  //   });
-  // });
-
   it("Receives a POST_USERDATA_FAIL action", () => {
     expect(personalDataReducer(mockState, actions.postUserdataFail("Bad error"))).toEqual({
       data: mockState.data,
@@ -166,22 +134,17 @@ describe("Async component", () => {
     expect(value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
 
     // The saga sends the nins on to the nins reducer
-    const action2 = GET_NINS_SUCCESS({ nins: [] });
+    const action2 = ninsSlice.actions.setNins([]);
     next = generator.next(action2 as unknown as any);
     expect(next.value).toEqual(put(action2));
 
     // The saga sends the emails on to the nins reducer
-    const action3 = GET_EMAIL_ALL_SUCCESS({ emails: [] });
+    const action3 = emailsSlice.actions.setEmails([]);
     next = generator.next(action3 as unknown as any);
     expect(next.value).toEqual(put(action3));
 
     // The saga sends the mobiles on to the mobiles reducer
-    const action4 = {
-      type: phoneActions.GET_MOBILES_SUCCESS,
-      payload: {
-        phones: [],
-      },
-    };
+    const action4 = phonesSlice.actions.setPhones([]);
     next = generator.next(action4 as unknown as any);
     expect(next.value).toEqual(put(action4));
 

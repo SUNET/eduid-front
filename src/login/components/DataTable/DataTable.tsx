@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import EduIDButton from "components/EduIDButton";
 import { FormattedMessage } from "react-intl";
 import { EmailInfo } from "../../../apis/eduidEmail";
-import { PDPhone } from "../../../apis/personalData";
+import { PDPhone } from "../../../apis/eduidPersonalData";
 
 interface DataTableProps {
   data?: EmailInfo[] | PDPhone[];
@@ -60,7 +60,7 @@ function DataTableRows(props: DataTableProps) {
         } else valueStatus = "verified";
 
         return (
-          <tr className={`email-row ${datum.verified}`} data-identifier={valueName} data-object={value} key={i}>
+          <tr className={`${valueName} ${valueStatus}`} data-identifier={valueName} data-object={value} key={i}>
             <td className={valueStatus}>{value}</td>
             <td className="value-status">
               <DataStatus

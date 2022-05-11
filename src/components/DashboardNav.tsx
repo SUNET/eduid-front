@@ -5,18 +5,10 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import NotificationTip from "../login/components/NotificationTip/NotificationTip";
 import { translate } from "../login/translation";
 
-// TODO: make a typed slice out of phone (like nins) and move this there
-//       (and remove "as PhoneInfo[]" below, since it will be deduced automatically)
-interface PhoneInfo {
-  number: string;
-  verified: boolean;
-  primary: boolean;
-}
-
 function DashboardNav(): JSX.Element {
   const [active, setActive] = useState(false);
   const nins = useDashboardAppSelector((state) => state.nins.nins);
-  const phones = useDashboardAppSelector((state) => state.phones.phones as PhoneInfo[]);
+  const phones = useDashboardAppSelector((state) => state.phones.phones);
   const verifiedNin = nins.filter((nin) => nin.verified);
   const verifiedPhones = phones.filter((phone) => phone.verified);
   // depending on languages show different styles
@@ -74,30 +66,35 @@ function DashboardNav(): JSX.Element {
 
   return (
     <nav id="dashboard-nav">
+      <h5>eduID Dashboard:</h5>
       <ul>
-        <NavLink exact activeClassName="active" to={`/profile/`}>
-          <li>{translate("dashboard_nav.profile")}</li>
-        </NavLink>
-        <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
-          <li>
+        <li>
+          <NavLink exact activeClassName="active" to={`/profile/`}>
+            {translate("dashboard_nav.profile")}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact activeClassName="active" to={`/profile/verify-identity/`}>
             {translate("dashboard_nav.identity")}
             {getTipsAtIdentity()}
-          </li>
-        </NavLink>
-        <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/personaldata`}>
-          <li>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={settingsClass} exact activeClassName="active" to={`/profile/settings/personaldata`}>
             {translate("dashboard_nav.settings")}
             {tipsAtSettings}
-          </li>
-        </NavLink>
-        <NavLink
-          className={advancedSettingsClass}
-          exact
-          activeClassName="active"
-          to={`/profile/settings/advanced-settings`}
-        >
-          <li>{translate("dashboard_nav.advanced-settings")}</li>
-        </NavLink>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={advancedSettingsClass}
+            exact
+            activeClassName="active"
+            to={`/profile/settings/advanced-settings`}
+          >
+            {translate("dashboard_nav.advanced-settings")}
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

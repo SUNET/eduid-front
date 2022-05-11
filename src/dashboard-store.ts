@@ -6,9 +6,9 @@ import personalDataSlice from "reducers/PersonalData";
 import emailsSlice from "reducers/Emails";
 import configReducer from "reducers/DashboardConfig";
 import openidConnectReducer from "reducers/OpenidConnect";
-import lookupMobileProofingReducer from "reducers/LookupMobileProofing";
+import lookupMobileProofingSlice from "reducers/LookupMobileProofing";
 import openidConnectFrejaReducer from "reducers/OpenidConnectFreja";
-import mobileReducer from "reducers/Mobile";
+import phonesSlice from "reducers/Phones";
 import accountLinkingReducer from "reducers/AccountLinking";
 import securityReducer from "reducers/Security";
 import chpassSlice from "reducers/ChangePassword";
@@ -28,11 +28,11 @@ const eduIDApp = combineReducers({
   groups: groupsReducer as unknown as any,
   invites: invitesReducer as unknown as any,
   openid_data: openidConnectReducer as unknown as any,
-  lookup_mobile: lookupMobileProofingReducer,
+  lookup_mobile: lookupMobileProofingSlice.reducer,
   nins: ninsSlice.reducer,
   openid_freja_data: openidConnectFrejaReducer as unknown as any,
   personal_data: personalDataSlice.reducer,
-  phones: mobileReducer,
+  phones: phonesSlice.reducer,
   letter_proofing: letterProofingSlice.reducer,
   notifications: notificationsSlice.reducer,
   account_linking: accountLinkingReducer,

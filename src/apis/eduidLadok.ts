@@ -3,7 +3,6 @@
  */
 
 import { createAction, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { clearNotifications } from "reducers/Notifications";
 import { DashboardAppDispatch, DashboardRootState } from "../dashboard-init-app";
 import { KeyValues, makeRequest, RequestThunkAPI } from "./common";
 
