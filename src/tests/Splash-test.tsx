@@ -5,25 +5,31 @@ import { setupComponent } from "tests/SignupMain-test";
 import Splash from "components/Splash";
 
 describe("Splash Component", () => {
-  it("Renders", () => {
+  it("Shows", () => {
     const wrapper = setupComponent({
-        component: <Splash showChildren={false} />,
-        store: undefined,
-        overrides: { config: { is_app_loaded: false } },
-      }),
-      splash = wrapper.find("div#eduid-splash-screen");
-
+      component: <Splash showChildren={true} />,
+      store: undefined,
+      overrides: {},
+    });
+    // splash-and-children should be there
+    const splash = wrapper.find("div#eduid-splash-and-children");
     expect(splash.length).toEqual(1);
+    // the spinner should not be there when showChildren is true
+    const spinner = wrapper.find("span#eduid-splash-spinner");
+    expect(spinner.length).toEqual(0);
   });
 
-  it("Doesn't Render", () => {
+  it("Doesn't show", () => {
     const wrapper = setupComponent({
-        component: <Splash showChildren={true} />,
-        store: undefined,
-        overrides: { config: { is_app_loaded: true } },
-      }),
-      splash = wrapper.find("div#eduid-splash-screen");
-
-    expect(splash.length).toEqual(0);
+      component: <Splash showChildren={false} />,
+      store: undefined,
+      overrides: {},
+    });
+    // splash-and-children should be there
+    const splash = wrapper.find("div#eduid-splash-and-children");
+    expect(splash.length).toEqual(1);
+    // the spinner should be there when showChildren is false
+    const spinner = wrapper.find("span#eduid-splash-spinner");
+    expect(spinner.length).toEqual(1);
   });
 });

@@ -98,7 +98,7 @@ describe("SignupMain Component", () => {
         component: <SignupMain />,
         overrides: { config: { is_app_loaded: false } },
       }),
-      splash = wrapper.find("div#eduid-splash-screen"),
+      splash = wrapper.find("div#eduid-splash-and-children"),
       router = wrapper.find("Router"),
       routes = wrapper.find("Route");
 
@@ -107,16 +107,20 @@ describe("SignupMain Component", () => {
     expect(routes.length).toEqual(7);
   });
 
-  it("Doesn't Render the splash screen", () => {
+  it("Doesn't show the spinner", () => {
     const wrapper = setupComponent({ component: <SignupMain /> }),
-      splash = wrapper.find("div#eduid-splash-screen");
 
-    expect(splash.length).toEqual(0);
+    // splash-and-children should be there
+    const splash = wrapper.find("div#eduid-splash-and-children");
+    expect(splash.length).toEqual(1);
+    // the spinner should not be there
+    const spinner = wrapper.find("span#eduid-splash-spinner");
+    expect(spinner.length).toEqual(0);
   });
 
   it("Renders the email form", () => {
     const wrapper = setupComponent({ component: <SignupMain /> }),
-      splash = wrapper.find("div#eduid-splash-screen"),
+      splash = wrapper.find("div#spinner"),
       router = wrapper.find("Router"),
       routes = wrapper.find("Route");
 
@@ -241,7 +245,7 @@ describe("SignupMain reducer", () => {
     });
   });
 
-  it("Receives get config sucessful action", () => {
+  it("Receives get config successful action", () => {
     expect(
       signupReducer(mockState, {
         type: signupActions.GET_SIGNUP_CONFIG_SUCCESS,
