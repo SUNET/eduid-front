@@ -23,7 +23,12 @@ interface PhoneFormData {
 }
 
 function Phones() {
+  /* When the user clicks "+ add more", the "phone form" is shown, allowing the user to add another phone number */
   const [showPhoneForm, setShowPhoneForm] = useState(false);
+  /* selectedPhoneNumber is used when confirming a phone number. The user clicks "confirm"
+   * next to a number and that number gets set in this state variable. Whenever this state
+   * variable has a value, the ConfirmModal is shown to allow the user to enter the <code className="
+   */
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);

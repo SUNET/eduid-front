@@ -2,6 +2,7 @@ import EduIDButton from "../../../../components/EduIDButton";
 import React, { FocusEvent } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { useAppSelector } from "login/app_init/hooks";
 
 interface ResponseCodeFormProps {
   codeRequired?: boolean;
@@ -69,6 +70,9 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 }
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
+  const bad_attempts = useAppSelector((state) => state.login.other_device1?.bad_attempts);
+  const showBadAttempts = Boolean(bad_attempts && bad_attempts > 0);
+
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form">
       <div className="response-code-inputs">
@@ -80,6 +84,14 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
         <CodeField num={8} disabled={props.inputsDisabled} />
       </div>
       {props.error && <p>{props.error}</p>}
+
+      {showBadAttempts && (
+        <p>
+          <span id="wrong-code-error">
+            <FormattedMessage defaultMessage="Incorrect code, try again" description="Other Device, device 1" />
+          </span>
+        </p>
+      )}
 
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
