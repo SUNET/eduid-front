@@ -25,7 +25,7 @@ class Eidas extends Component {
         </a>
       </div>
     );
-    const eidas_sp_freja_idp_url = (e) => {
+    const useFrejaeID = (e) => {
       e.preventDefault();
       window.location.href = this.props.eidas_sp_freja_idp_url;
     };
@@ -49,7 +49,7 @@ class Eidas extends Component {
           mainText={freja_instructions}
           showModal={this.props.showModal}
           closeModal={this.props.handleHideModal}
-          acceptModal={eidas_sp_freja_idp_url}
+          acceptModal={useFrejaeID}
           acceptButtonText={<FormattedMessage id="eidas.freja_eid_ready" defaultMessage={`Use my Freja eID`} />}
         />
       </div>
