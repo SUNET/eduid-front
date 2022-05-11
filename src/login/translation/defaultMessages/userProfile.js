@@ -135,13 +135,6 @@ export const userProfile = {
     />
   ),
 
-  "verify-identity.vetting_freja_tagline": (
-    <FormattedMessage
-      id="verify-identity.vetting_freja_tagline"
-      defaultMessage={`For you able to create a Freja eID by visiting one of the authorised agents`}
-    />
-  ),
-
   "verify-identity.connect-nin_heading": (
     <FormattedMessage id="verify-identity.connect-nin_heading" defaultMessage={`2. Verify your id number`} />
   ),
@@ -234,9 +227,6 @@ export const userVetting = {
   ),
 
   /* ----- FREJA------- */
-  "eidas.vetting_button_freja": (
-    <FormattedMessage id="eidas.vetting_button_freja" defaultMessage={`with a digital ID-card`} />
-  ),
 
   "eidas.initialize_proofing_help_text": (
     <FormattedMessage
@@ -250,45 +240,6 @@ export const userVetting = {
         ),
       }}
     />
-  ),
-
-  "eidas.freja_instructions_step1": (
-    <FormattedMessage id="eidas.freja_instructions_step1" defaultMessage={`Install the app`} />
-  ),
-
-  "eidas.freja_instructions_step2": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step2"
-      defaultMessage={`Create a Freja eID Plus account (awarded the ‘Svensk e-legitimation’ quality mark)`}
-    />
-  ),
-
-  "eidas.freja_instructions_step3": (
-    <FormattedMessage id="eidas.freja_instructions_step3" defaultMessage={`The app will generate a QR-code`} />
-  ),
-
-  "eidas.freja_instructions_step4": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step4"
-      defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity`}
-    />
-  ),
-
-  "eidas.freja_instructions_tip1": (
-    <FormattedMessage
-      id="eidas.freja_instructions_tip_1"
-      defaultMessage={`Tip: Use the app to find your nearest agent`}
-    />
-  ),
-
-  "eidas.freja_instructions_step5": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step5"
-      defaultMessage={`Freja eID is now ready to be used with your eduID`}
-    />
-  ),
-  "eidas.freja_instructions_install_link": (
-    <FormattedMessage id="eidas.freja_instructions_install_link" defaultMessage={`What is Freja eID?`} />
   ),
 
   "eidas.freja_eid_ready": <FormattedMessage id="eidas.freja_eid_ready" defaultMessage={`Use my Freja eID`} />,
