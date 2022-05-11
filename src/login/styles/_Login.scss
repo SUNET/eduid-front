@@ -314,6 +314,11 @@ a .disabled {
 
   &.device1 .response-code-inputs {
     @extend .figure;
+
+    .input-validate-error {
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
   }
 
   &.device2 .response-code-inputs {
