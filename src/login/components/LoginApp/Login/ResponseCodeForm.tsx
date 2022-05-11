@@ -83,15 +83,16 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
         <CodeField num={7} disabled={props.inputsDisabled} />
         <CodeField num={8} disabled={props.inputsDisabled} />
       </div>
-      {props.error && <p>{props.error}</p>}
 
       {showBadAttempts && (
-        <p>
-          <span id="wrong-code-error">
+        <div>
+          <span className="input-validate-error" id="wrong-code-error">
             <FormattedMessage defaultMessage="Incorrect code, try again" description="Other Device, device 1" />
           </span>
-        </p>
+        </div>
       )}
+
+      {props.error && <p>{props.error}</p>}
 
       {props.handleAbort || props.handleLogin ? (
         <div className={`buttons ${props.extra_className}`}>
