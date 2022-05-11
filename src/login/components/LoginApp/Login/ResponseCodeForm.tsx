@@ -70,7 +70,7 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   return (
-    <form onSubmit={props.handleSubmit} className="response-code-form">
+    <form onSubmit={props.handleSubmit} className="response-code-form" id="response-code-form">
       <div className="response-code-inputs">
         <CodeField num={2} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
         <CodeField num={3} disabled={props.inputsDisabled} />
@@ -125,10 +125,10 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
     const form = event.currentTarget.form;
     const inputs = [...form].filter((input: HTMLElement) => input.tagName.toLowerCase() === "input");
     const index = inputs.indexOf(event.currentTarget);
-    const checkIfInputHasValue = inputs.find((input: { value?: string }) => !input.value);
+    const hasInputValue = inputs.find((input: { value?: string }) => !input.value);
 
-    if (checkIfInputHasValue === undefined) {
-      //  (document.getElementById("response-code-submit-button")as HTMLElement).addEventListener("click", props.handleLogin);
+    if (hasInputValue === undefined) {
+      (document.getElementById("response-code-submit-button") as HTMLButtonElement).click();
     }
 
     switch (pressedKey.toLowerCase()) {
