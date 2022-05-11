@@ -1,18 +1,19 @@
-div#eduid-splash-and-children {
+#eduid-splash-and-children {
   position: relative;
   display: flex;
   flex: 1;
-
   flex-direction: column;
 }
 
-span#eduid-splash-spinner {
+#eduid-splash-spinner {
   height: 100%;
   width: 100%;
   background-color: $light-gray;
   position: absolute;
-}
+  z-index: 100;
 
-span#eduid-splash-spinner > div.spinner {
-  opacity: 1;
+  .spinner {
+    opacity: 1;
+    top: 40vh !important;
+  }
 }
