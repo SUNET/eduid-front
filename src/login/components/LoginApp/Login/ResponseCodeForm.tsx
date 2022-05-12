@@ -169,7 +169,11 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       }
       default: {
         if (isDigit(pressedKey)) {
-          if (inputs[index + 1] !== undefined) {
+          // In case more than one digit is pressed rapidly, the second one is blocked in the keyPress
+          // event handler, but both generate keyUp event. We only want to advance the focus if a value
+          // was registered for this input.
+          const thisInputHasValue = Boolean((event.target as HTMLTextAreaElement).value);
+          if (inputs[index + 1] !== undefined && thisInputHasValue) {
             inputs[index + 1].focus();
           }
         }
