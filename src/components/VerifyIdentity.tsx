@@ -8,14 +8,7 @@ import { translate } from "login/translation";
 import React, { Fragment } from "react";
 import AddNin from "./AddNin";
 import { FormattedMessage } from "react-intl";
-
-// TODO: make a typed slice out of phone (like nins) and move this there
-//       (and remove "as PhoneInfo[]" below, since it will be deduced automatically)
-interface PhoneInfo {
-  number: string;
-  verified: boolean;
-  primary: boolean;
-}
+import { PhoneInfo } from "apis/eduidPhone";
 
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
