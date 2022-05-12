@@ -180,6 +180,8 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
 
   function handleCodeFieldKeyPress(e: React.KeyboardEvent<HTMLFormElement>) {
     if (!isDigit(e.key)) e.preventDefault();
+    // Prevent more than 1 digit per input field
+    if ((e.target as HTMLTextAreaElement).value) e.preventDefault();
   }
 
   function validateCodeForm(value: number): string | undefined {
@@ -192,9 +194,11 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
     <FinalField<number>
       name={`v[${num}]`}
       component="input"
-      type="text"
+      type="number"
       maxLength="1"
       pattern="[0-9]"
+      min="0"
+      max="9"
       placeholder={value}
       disabled={disabled === true ? "disabled" : null}
       autoFocus={autoFocus}
