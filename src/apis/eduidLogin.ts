@@ -108,11 +108,12 @@ interface UseOtherDevice1SubmitCode extends UseOtherDevice1CommonRequest {
 
 /* Response types */
 interface UseOtherDevice1ResponseCommon {
+  bad_attempts: number;
+  display_id: string;
   expires_in: number;
   expires_max: number;
-  display_id: string;
-  state_id: string;
   response_code_required?: boolean;
+  state_id: string;
 }
 
 export type UseOtherDevice1ResponseWithQR = UseOtherDevice1ResponseCommon & {
