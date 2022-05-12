@@ -312,8 +312,20 @@ a .disabled {
     }
   }
 
-  &.device1 .response-code-inputs {
-    @extend .figure;
+  &.device1 {
+    .response-code-inputs {
+      @extend .figure;
+      margin-bottom: 0;
+    }
+
+    .input-validate-error {
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
+
+    .buttons {
+      margin-top: 1rem;
+    }
   }
 
   &.device2 .response-code-inputs {

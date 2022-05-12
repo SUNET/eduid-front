@@ -7,10 +7,8 @@
   width: 60%;
   margin: 0 20%;
 
-  & #modal-form {
-    & form {
-      margin-top: 0;
-    }
+  & form {
+    margin-top: 0;
   }
 }
 
@@ -18,21 +16,11 @@
   width: 100%;
   display: flex;
   align-items: center;
-
-  // flex-direction: column;
-  // justify-content: space-between;
-
-  & .close-button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin: 1rem 0.5rem 0;
-  }
-
-  // padding: 0 0 1.5rem 2.25rem;
+  text-transform: none;
 }
 
 h5.modal-title {
-  font-family: ProximaNova-Bold;
+  font-family: $proxima-regular;
   line-height: 1.4;
   font-size: 1.25rem;
 }
@@ -43,11 +31,7 @@ h5.modal-title {
 
   & .modal-header {
     border-bottom: none;
-    padding: 1rem 2rem;
-
-    // .btn-close {
-    //   float: right;
-    // }
+    padding: 1rem 2.25rem;
   }
 
   & .modal-body {
@@ -60,35 +44,34 @@ h5.modal-title {
     & input {
       background-color: $light-gray;
     }
+
+    .resend-code-container {
+      margin-top: 1rem;
+
+      a {
+        font-size: 1rem;
+      }
+    }
   }
 
   & .modal-footer {
     border-top: none;
     padding: 0;
     margin: 1rem;
+    display: flex;
+    justify-content: center;
 
-    & a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    & button {
+      margin: 0;
     }
   }
 }
 
 .modal-dialog {
-  margin-top: 70px;
-  background-color: white;
+  background-color: $white;
   border-radius: 20px;
   width: 100%;
   margin: auto;
-}
-
-.resend-code-container {
-  margin-top: 1rem;
-
-  & a {
-    font-size: 1rem;
-  }
 }
 
 // temporary styling for register tou
@@ -111,16 +94,26 @@ h5.modal-title {
       }
     }
   }
-
-  & .modal-footer {
-    & button {
-      margin: 0;
-    }
-  }
 }
 
 ol {
   list-style-type: decimal;
+}
+
+#delete-account-modal {
+  & .modal-footer {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  & label {
+    margin-bottom: 30px;
+    color: $gray;
+    font-size: 1rem;
+    text-transform: none;
+    line-height: 1.5;
+    font-weight: 700;
+  }
 }
 
 #freja-instructions {
@@ -148,35 +141,13 @@ ol {
     text-decoration: underline;
 
     &:hover {
-      color: #ff4500;
+      color: $orange-highlight;
       text-decoration: none;
     }
   }
 }
 
-#delete-account-modal {
-  & .modal-footer {
-    flex-direction: column;
-    padding: 0 1rem;
-  }
-
-  & label {
-    margin-bottom: 30px;
-    color: $gray;
-    font-size: 1rem;
-    text-transform: none;
-    line-height: 1.5;
-    font-weight: 700;
-  }
-}
-
 /* styles for confirm button in delete account modal */
-
-.modal-footer {
-  display: flex;
-  justify-content: center;
-}
-
 p.modal-text {
   margin-top: 0;
 }
@@ -216,10 +187,6 @@ p.modal-text {
       padding: 0;
     }
   }
-
-  // h5.modal-title {
-  //   font-size: 1rem;
-  // }
 
   .resend-code-container {
     margin-top: 1rem;

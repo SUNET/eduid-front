@@ -135,13 +135,6 @@ export const userProfile = {
     />
   ),
 
-  "verify-identity.vetting_freja_tagline": (
-    <FormattedMessage
-      id="verify-identity.vetting_freja_tagline"
-      defaultMessage={`For you able to create a Freja eID by visiting one of the authorised agents`}
-    />
-  ),
-
   "verify-identity.connect-nin_heading": (
     <FormattedMessage id="verify-identity.connect-nin_heading" defaultMessage={`2. Verify your id number`} />
   ),
@@ -226,20 +219,6 @@ export const userVetting = {
 
   /* ----- confirmed number > ready for vetting------- */
 
-  "lmp.modal_confirm_title": (
-    <FormattedMessage
-      id="lmp.modal_confirm_title"
-      defaultMessage={`Check if your phone number is connected to your id number.`}
-    />
-  ),
-
-  "lmp.modal_confirm_info": (
-    <FormattedMessage
-      id="lmp.confirm_info"
-      defaultMessage={`This check will be done in a registry updated by the phone operators. If they have not added your details, we won't be able to find you and you need to choose another way to verify your identity.`}
-    />
-  ),
-
   "lmp.verification_success": (
     <FormattedMessage
       id="lmp.verification_success"
@@ -248,9 +227,6 @@ export const userVetting = {
   ),
 
   /* ----- FREJA------- */
-  "eidas.vetting_button_freja": (
-    <FormattedMessage id="eidas.vetting_button_freja" defaultMessage={`with a digital ID-card`} />
-  ),
 
   "eidas.initialize_proofing_help_text": (
     <FormattedMessage
@@ -264,48 +240,6 @@ export const userVetting = {
         ),
       }}
     />
-  ),
-
-  "eidas.modal_title": (
-    <FormattedMessage id="eidas.modal_title" defaultMessage={`Use Freja eID+ and pass a local authorised agent`} />
-  ),
-  "eidas.freja_instructions_step1": (
-    <FormattedMessage id="eidas.freja_instructions_step1" defaultMessage={`Install the app`} />
-  ),
-
-  "eidas.freja_instructions_step2": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step2"
-      defaultMessage={`Create a Freja eID Plus account (awarded the ‘Svensk e-legitimation’ quality mark)`}
-    />
-  ),
-
-  "eidas.freja_instructions_step3": (
-    <FormattedMessage id="eidas.freja_instructions_step3" defaultMessage={`The app will generate a QR-code`} />
-  ),
-
-  "eidas.freja_instructions_step4": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step4"
-      defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and they will be able to verify your identity`}
-    />
-  ),
-
-  "eidas.freja_instructions_tip1": (
-    <FormattedMessage
-      id="eidas.freja_instructions_tip_1"
-      defaultMessage={`Tip: Use the app to find your nearest agent`}
-    />
-  ),
-
-  "eidas.freja_instructions_step5": (
-    <FormattedMessage
-      id="eidas.freja_instructions_step5"
-      defaultMessage={`Freja eID is now ready to be used with your eduID`}
-    />
-  ),
-  "eidas.freja_instructions_install_link": (
-    <FormattedMessage id="eidas.freja_instructions_install_link" defaultMessage={`What is Freja eID?`} />
   ),
 
   "eidas.freja_eid_ready": <FormattedMessage id="eidas.freja_eid_ready" defaultMessage={`Use my Freja eID`} />,
@@ -908,10 +842,6 @@ export const userData = {
     />
   ),
 
-  "security.webauthn_credential_type": (
-    <FormattedMessage id="security.webauthn_credential_type" defaultMessage={`Security key`} />
-  ),
-
   "security.add_webauthn_token_key": (
     <FormattedMessage id="security.add_webauthn_token_key" defaultMessage={`Add security key`} />
   ),
@@ -930,10 +860,6 @@ export const userData = {
       defaultMessage={`Add a security key as a second layer of identification, beyond email and password, to prove you are
     the owner of your eduID.`}
     />
-  ),
-
-  "security.webauthn-describe-title": (
-    <FormattedMessage id="security.webauthn-describe-title" defaultMessage={`Add a name for your security key`} />
   ),
 
   "security.webauthn.max_allowed_tokens": (
@@ -1069,17 +995,4 @@ export const userData = {
   "security.button_delete_account": (
     <FormattedMessage id="security.button_delete_account" defaultMessage={`Delete eduID`} />
   ),
-
-  "settings.modal_delete_title": (
-    <FormattedMessage id="settings.modal_delete_title" defaultMessage={`Are you sure you want to delete your eduID?`} />
-  ),
-
-  "delete.modal_info": (
-    <FormattedMessage
-      id="delete.modal_info"
-      defaultMessage={`Deleting your eduID will permanently remove all your saved information. After clicking the button you need to use your log in details one final time.`}
-    />
-  ),
-
-  "delete.confirm_button": <FormattedMessage id="delete.confirm_button" defaultMessage={`Delete my eduID`} />,
 };

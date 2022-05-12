@@ -46,9 +46,9 @@ table {
 
       .verified {
         text-transform: uppercase;
-        padding: 0.625rem 1.25rem;
         font-family: $proxima-regular;
         font-weight: 700;
+        font-size: 0.75rem;
       }
 
       &.remove-data {

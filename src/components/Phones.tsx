@@ -5,7 +5,7 @@ import { useIntl, FormattedMessage } from "react-intl";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
 import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
-import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import "../login/styles/index.scss";
 import { clearNotifications } from "reducers/Notifications";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
@@ -23,7 +23,12 @@ interface PhoneFormData {
 }
 
 function Phones() {
+  /* When the user clicks "+ add more", the "phone form" is shown, allowing the user to add another phone number */
   const [showPhoneForm, setShowPhoneForm] = useState(false);
+  /* selectedPhoneNumber is used when confirming a phone number. The user clicks "confirm"
+   * next to a number and that number gets set in this state variable. Whenever this state
+   * variable has a value, the ConfirmModal is shown to allow the user to enter the <code className="
+   */
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState<string | undefined>();
   const dispatch = useDashboardAppDispatch();
   const phones = useDashboardAppSelector((state) => state.phones);
@@ -103,15 +108,6 @@ function Phones() {
     defaultMessage: "Phone confirmation code",
     description: "placeholder text for phone code input",
   });
-
-  const title = intl.formatMessage(
-    {
-      id: "mobile.confirm_title",
-      defaultMessage: "Enter the code sent to {phone}",
-      description: "Title for phone code input",
-    },
-    { phone: selectedPhoneNumber }
-  );
 
   function validatePhonesInForm(value: string): string | undefined {
     const number = toE164Number(value, default_country_code);
@@ -201,19 +197,28 @@ function Phones() {
         )}
       </div>
       <ConfirmModal
-        modalId="phoneConfirmDialog"
-        id="phoneConfirmDialogControl"
-        title={title}
-        resendLabel={translate("cm.enter_code")}
-        resendHelp={translate("cm.lost_code")}
-        resendText={translate("cm.resend_code")}
+        id="phone-confirm-modal"
+        title={
+          <FormattedMessage
+            defaultMessage={`Enter the code sent to {phone}`}
+            description="Title for phone code input"
+            values={{ phone: selectedPhoneNumber }}
+          />
+        }
         placeholder={modalPlaceholder}
         showModal={Boolean(selectedPhoneNumber)}
         closeModal={handleStopConfirmation}
-        handleResend={handleResend}
         handleConfirm={handleConfirm}
-        validationPattern={shortCodePattern}
+        modalFormLabel={<FormattedMessage description="enter confirmation code" defaultMessage={`Confirmation code`} />}
+        resendMarkup={
+          <div className="resend-code-container">
+            <a href="#" onClick={handleResend}>
+              <FormattedMessage description="resend code" defaultMessage={`Send a new confirmation code`} />
+            </a>
+          </div>
+        }
         validationError={"confirmation.code_invalid_format"}
+        validationPattern={shortCodePattern}
       />
     </article>
   );
