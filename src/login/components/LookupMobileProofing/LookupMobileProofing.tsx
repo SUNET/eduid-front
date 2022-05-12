@@ -2,7 +2,7 @@ import { lookupMobileProofing } from "apis/eduidLookupMobileProofing";
 import { useDashboardAppDispatch, useDashboardAppSelector } from "dashboard-hooks";
 import { translate } from "login/translation";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../Modals/NotificationModal";
 import { HashLink } from "react-router-hash-link";
@@ -95,12 +95,25 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
       </div>
       {/* notificationModal will only opens when user are able to verify identity by phone */}
       <NotificationModal
-        modalId="mobileGenericConfirmDialog"
-        title={translate("lmp.modal_confirm_title")}
-        mainText={translate("lmp.modal_confirm_info")}
+        id="mobile-confirm-modal"
+        title={
+          <FormattedMessage
+            defaultMessage="Check if your phone number is connected to your id number."
+            description="lmp.modal_confirm_title"
+          />
+        }
+        mainText={
+          <FormattedMessage
+            defaultMessage={`This check will be done in a registry updated by the phone operators. 
+            If they have not added your details, we won't be able to find you and you need to choose another way 
+            to verify your identity.`}
+            description="lmp.confirm_info"
+          />
+        }
         showModal={showModal}
         closeModal={handleCloseModal}
         acceptModal={handleLookupMobile}
+        acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
       />
     </div>
   );
