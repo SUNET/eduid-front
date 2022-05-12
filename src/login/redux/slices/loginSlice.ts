@@ -13,7 +13,7 @@ import {
   SAMLParameters,
   ServiceInfo,
 } from "apis/eduidLogin";
-import { ToUs } from "../../app_utils/helperFunctions/ToUs";
+import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 import { performAuthentication, webauthnAssertion } from "../../app_utils/helperFunctions/navigatorCredential";
 import { MfaAuthResponse } from "../sagas/login/postRefForWebauthnChallengeSaga";
 

@@ -9,7 +9,7 @@ import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";
 import * as actions from "actions/Email";
 import { useIntl, FormattedMessage } from "react-intl";
-import { ToUs } from "../../app_utils/helperFunctions/ToUs";
+import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 
 const submitEmailForm = (values, dispatch) => {
   const { email } = values;

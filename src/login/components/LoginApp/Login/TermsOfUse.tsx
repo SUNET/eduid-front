@@ -3,7 +3,7 @@ import EduIDButton from "components/EduIDButton";
 import loginSlice from "../../../redux/slices/loginSlice";
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import { FormattedMessage } from "react-intl";
-import { ToUs } from "../../../app_utils/helperFunctions/ToUs";
+import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 
 const TermsOfUseText = ({ version }: { version?: string }) => {
   return (
