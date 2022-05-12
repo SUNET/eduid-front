@@ -54,40 +54,10 @@ export const userProfile = {
   ),
   "dashboard_nav.back": <FormattedMessage id="dashboard_nav.back" defaultMessage={`< Back`} />,
 
-  "verify-identity.unverified_main_title": (
-    <FormattedMessage
-      id="verify-identity.unverified_main_title"
-      defaultMessage={`Connect your identity to your eduID`}
-    />
-  ),
-
-  "verify-identity.add-nin_heading": (
-    <FormattedMessage
-      id="verify-identity.add-nin_heading"
-      defaultMessage={`1. Add
-            your id number`}
-    />
-  ),
-
-  "verify-identity.unverified_page-description": (
-    <FormattedMessage
-      id="verify-identity.unverified_page-description"
-      defaultMessage={`To be able
-            to use eduID you have to prove your identity. Add your national id number and verify it in real life.`}
-    />
-  ),
-
   "verify-identity.verified_pw_reset_extra_security": (
     <FormattedMessage
       id="verify-identity.verified_pw_reset_extra_security"
       defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at password reset.`}
-    />
-  ),
-
-  "verify-identity.verified_page-description": (
-    <FormattedMessage
-      id="verify-identity.verified_page-description"
-      defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to services related to higher education.`}
     />
   ),
 
@@ -141,30 +111,12 @@ export const userProfile = {
       defaultMessage={`For you able to create a Freja eID by visiting one of the authorised agents`}
     />
   ),
-
-  "verify-identity.connect-nin_heading": (
-    <FormattedMessage id="verify-identity.connect-nin_heading" defaultMessage={`2. Verify your id number`} />
-  ),
-
-  "verify-identity.connect-nin_description": (
-    <FormattedMessage
-      id="verify-identity.connect-nin_description"
-      defaultMessage={`  Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another.`}
-    />
-  ),
 };
 
 export const userVetting = {
   /* ----- LETTER PROOFING  ------- */
   "letter.button_text_code": (
     <FormattedMessage id="letter.button_text_code" defaultMessage={`Enter confirmation code here`} />
-  ),
-
-  "letter.initialize_proofing_help_text": (
-    <FormattedMessage
-      id="letter.initialize_proofing_help_text"
-      defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
-    />
   ),
 
   "letter.no_state_found": <FormattedMessage id="letter.no_state_found" defaultMessage={`No state found`} />,
@@ -210,13 +162,6 @@ export const userVetting = {
     <FormattedMessage id="lmp.button_text_code" defaultMessage={`Enter confirmation code here`} />
   ),
 
-  "lmp.initialize_proofing_help_text": (
-    <FormattedMessage
-      id="lmp.initialize_proofing_help_text"
-      defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers.`}
-    />
-  ),
-
   "lmp.initialize_proofing_help_text_tip_1": (
     <FormattedMessage
       id="lmp.initialize_proofing_help_text_tip_1"
@@ -250,20 +195,6 @@ export const userVetting = {
   /* ----- FREJA------- */
   "eidas.vetting_button_freja": (
     <FormattedMessage id="eidas.vetting_button_freja" defaultMessage={`with a digital ID-card`} />
-  ),
-
-  "eidas.initialize_proofing_help_text": (
-    <FormattedMessage
-      id="eidas.initialize_proofing_help_text"
-      defaultMessage={`To use this option you will need to first create a digital ID-card in the {skaffa_freja_eid_link} app.`}
-      values={{
-        skaffa_freja_eid_link: (
-          <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
-            Freja eID
-          </a>
-        ),
-      }}
-    />
   ),
 
   "eidas.modal_title": (
