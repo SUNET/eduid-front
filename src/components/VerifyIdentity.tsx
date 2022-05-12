@@ -26,8 +26,6 @@ function VerifyIdentity(): JSX.Element | null {
       defaultMessage={`Connect your identity to your eduID`}
     />
   );
-
-  // translate("verify-identity.unverified_main_title");
   pageText = (
     <FormattedMessage
       description={"verify identity unverified description"}
@@ -45,7 +43,7 @@ function VerifyIdentity(): JSX.Element | null {
     return (
       <>
         <h4>
-          <FormattedMessage description="verify identity add nin heading" defaultMessage="1. Add your id number" />
+          <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
         </h4>
       </>
     );
@@ -87,12 +85,7 @@ function VerifyIdentity(): JSX.Element | null {
     // BUG: used to be 'vettingRegistry(!this.props.valid_nin);' but there is no such prop.
     //      I guess the intent was to disable the buttons when the user is verified already?
     const disabled = !undefined;
-
     const addedNin = !!nin;
-
-    const buttonHelpText = (msg: JSX.Element, disabled_if?: boolean) => {
-      return <p className={"proofing-btn-help" + (disabled_if === true ? " disabled" : "")}>{msg}</p>;
-    };
 
     // proofing via letter requires the user to have added a NIN first
     const letterProofingDisabled = !addedNin;
@@ -102,48 +95,11 @@ function VerifyIdentity(): JSX.Element | null {
 
     vettingButtons = (
       <div id="nins-btn-grid" className="x-adjust">
-        <div>
-          <LetterProofingButton disabled={letterProofingDisabled} />
-          {buttonHelpText(
-            <FormattedMessage
-              description="letter initialize proofing help text"
-              defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
-            />,
-            letterProofingDisabled
-          )}
-        </div>
-        <div>
-          <LookupMobileProofing disabled={lookupMobileDisabled} />
-          {buttonHelpText(
-            <FormattedMessage
-              description="lmp initialize proofing help text"
-              defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not include all registered phone numbers.`}
-            />,
-            lookupMobileDisabled
-          )}
-        </div>
-        <div>
-          <EidasContainer disabled={disabled} />
-          {buttonHelpText(
-            <FormattedMessage
-              description="eidas initialize proofing help text"
-              defaultMessage={`To use this option you will need to first create a digital ID-card in the {freja_eid_link} app.`}
-              values={{
-                freja_eid_link: (
-                  <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
-                    Freja eID+
-                  </a>
-                ),
-              }}
-            />
-          )}
-        </div>
-        <div>
-          <OpenidConnectContainer disabled={disabled} />
-        </div>
-        <div>
-          <OpenidConnectFrejaContainer disabled={disabled} />
-        </div>
+        <LetterProofingButton disabled={letterProofingDisabled} />
+        <LookupMobileProofing disabled={lookupMobileDisabled} />
+        <EidasContainer disabled={disabled} />
+        <OpenidConnectContainer disabled={disabled} />
+        <OpenidConnectFrejaContainer disabled={disabled} />
       </div>
     );
   }
@@ -154,8 +110,7 @@ function VerifyIdentity(): JSX.Element | null {
       return (
         <li>
           <h4>
-            <FormattedMessage description="verify identity connect nin" defaultMessage={`2. Verify your id number`} />
-            ),
+            <FormattedMessage description="verify identity connect nin" defaultMessage={`Verify your id number`} />
           </h4>
           <p className="x-adjust">
             <FormattedMessage

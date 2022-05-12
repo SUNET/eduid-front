@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NotificationModal from "../login/components/Modals/NotificationModal";
+import { FormattedMessage } from "react-intl";
 class Eidas extends Component {
   render() {
     // Temporary instructions until Sweden Connect has more alternatives and we have a DS
@@ -31,6 +32,20 @@ class Eidas extends Component {
             <div className="text">{this.props.translate("verify-identity.vetting_freja_tagline")}</div>
             <div className="name">{this.props.translate("eidas.vetting_button_freja")}</div>
           </button>
+          <p className={"proofing-btn-help" + (this.props.disabled === true ? " disabled" : "")}>
+            <FormattedMessage
+              description="eidas initialize proofing help text"
+              defaultMessage={`To use this option you will need to first create a digital ID-card in the 
+              {freja_eid_link} app.`}
+              values={{
+                freja_eid_link: (
+                  <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
+                    Freja eID+
+                  </a>
+                ),
+              }}
+            />
+          </p>
         </div>
         <NotificationModal
           modalId="eidas-info-dialog"

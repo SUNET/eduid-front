@@ -148,6 +148,12 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
           </div>
         </button>
       </div>
+      <p className={"proofing-btn-help" + (disabled === true ? " disabled" : "")}>
+        <FormattedMessage
+          description="letter initialize proofing help text"
+          defaultMessage={`The letter will contain a code that for security reasons expires in two weeks.`}
+        />
+      </p>
       <NotificationModal
         modalId="letterGenericConfirmDialog"
         title={
