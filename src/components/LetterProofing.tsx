@@ -166,7 +166,7 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
         showModal={showNotificationModal}
         closeModal={() => setShowNotificationModal(false)}
         acceptModal={confirmLetterProofing}
-        acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
+        acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
       />
       <ConfirmModal
         id="letter-confirm-modal"

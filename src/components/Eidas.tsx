@@ -76,7 +76,7 @@ function Eidas(props: EidasProps) {
             {
               <FormattedMessage
                 description="verify identity vetting freja tagline"
-                defaultMessage={`For you able to create a Freja eID by visiting one of the authorised agents`}
+                defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
               />
             }
           </div>

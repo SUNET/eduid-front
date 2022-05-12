@@ -76,7 +76,7 @@ function ChangePasswordDisplay(props: ChangePasswordDisplayProps) {
           setShowModal(false);
         }}
         acceptModal={handleAcceptModal}
-        acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
+        acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
       />
     </article>
   );

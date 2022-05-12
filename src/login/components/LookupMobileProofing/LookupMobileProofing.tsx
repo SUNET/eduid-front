@@ -113,7 +113,7 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
         showModal={showModal}
         closeModal={handleCloseModal}
         acceptModal={handleLookupMobile}
-        acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
+        acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
       />
     </div>
   );

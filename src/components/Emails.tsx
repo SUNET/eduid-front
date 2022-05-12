@@ -195,7 +195,7 @@ function Emails() {
         helpBlock={
           <FormattedMessage
             description="Help text for email confirmation code"
-            defaultMessage={`Code is formatted as five groups of characters and numbers, separated by hyphens`}
+            defaultMessage={`The code is formatted as five groups of characters and numbers, separated by hyphens`}
           />
         }
         resendMarkup={

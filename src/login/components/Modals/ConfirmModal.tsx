@@ -60,7 +60,7 @@ function ConfirmModal(props: ConfirmModalProps): JSX.Element {
                     />
                   </div>
                 </form>
-                {!props.resendMarkup ? null : props.resendMarkup}
+                {props.resendMarkup && props.resendMarkup}
               </ModalBody>
               <ModalFooter>
                 <EduIDButton buttonstyle="primary" disabled={submitting || invalid} onClick={props.handleConfirm}>
