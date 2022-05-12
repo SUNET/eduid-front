@@ -181,6 +181,12 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
     if (!isDigit(e.key)) e.preventDefault();
   }
 
+  function validateCodeForm(value: number): string | undefined {
+    if (!value) {
+      return "required";
+    }
+  }
+
   return (
     <FinalField<number>
       name={`v[${num}]`}
@@ -194,6 +200,7 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       onKeyUp={handleKeyUp}
       onFocus={(event: FocusEvent<HTMLInputElement>) => event.target.select()}
       onKeyPress={handleCodeFieldKeyPress}
+      validate={validateCodeForm}
     />
   );
 }
