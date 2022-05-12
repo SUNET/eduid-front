@@ -35,6 +35,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "Start by adding your ID number above"
   },
+  "1XDKxO": {
+    "developer_comment": "accept button",
+    "string": "Accept"
+  },
   "1oQ5gL": {
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
@@ -206,10 +210,6 @@
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
-  },
-  "FFObyA": {
-    "developer_comment": "verify identity vetting freja tagline",
-    "string": "For you able to create a Freja eID by visiting one of the authorised agents"
   },
   "FQZGJ7": {
     "developer_comment": "Terms of use (common header)",
@@ -483,6 +483,10 @@
   "YGVN20": {
     "developer_comment": "go to eudID link text",
     "string": "Go to my eduid"
+  },
+  "YdEGFD": {
+    "developer_comment": "Help text for email confirmation code",
+    "string": "The code is formatted as five groups of characters and numbers, separated by hyphens"
   },
   "YqZO+p": {
     "developer_comment": "Login button",
@@ -1938,10 +1942,6 @@
     "developer_comment": "Placeholder for phone text input",
     "string": "here."
   },
-  "tgwUK/": {
-    "developer_comment": "Help text for email confirmation code",
-    "string": "Code is formatted as five groups of characters and numbers, separated by hyphens"
-  },
   "tl.make_primary": {
     "string": "MAKE PRIMARY"
   },
@@ -1992,6 +1992,10 @@
   },
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
+  },
+  "usrhfV": {
+    "developer_comment": "verify identity vetting freja tagline",
+    "string": "For you able to create a Freja eID+ by visiting one of the authorised agents"
   },
   "uzoZmv": {
     "developer_comment": "Login front page",
