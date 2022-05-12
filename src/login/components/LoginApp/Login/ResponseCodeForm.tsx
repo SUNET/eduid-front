@@ -1,6 +1,6 @@
 import EduIDButton from "../../../../components/EduIDButton";
 import React, { FocusEvent } from "react";
-import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
+import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useAppSelector } from "login/app_init/hooks";
 
@@ -133,14 +133,15 @@ interface CodeFieldProps {
 
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
 function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
+  const form = useForm();
+
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
     const pressedKey = event.key;
-    const form = event.currentTarget.form;
-    const inputs = [...form].filter((input: HTMLElement) => input.tagName.toLowerCase() === "input");
+    const ResponseCodeForm = event.currentTarget.form;
+    const inputs = [...ResponseCodeForm].filter((input: HTMLInputElement) => input.tagName.toLowerCase() === "input");
     const index = inputs.indexOf(event.currentTarget);
-    const hasInputValue = inputs.find((input: { value?: string }) => !input.value);
 
-    if (hasInputValue === undefined) {
+    if (form.getState().valid) {
       (document.getElementById("response-code-submit-button") as HTMLButtonElement).click();
       // when clicking button, autofocus to first input field
       inputs[0].focus();
