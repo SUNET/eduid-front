@@ -129,6 +129,8 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
 
     if (hasInputValue === undefined) {
       (document.getElementById("response-code-submit-button") as HTMLButtonElement).click();
+      // when clicking button, autofocus to first input field
+      inputs[0].focus();
     }
 
     switch (pressedKey.toLowerCase()) {
