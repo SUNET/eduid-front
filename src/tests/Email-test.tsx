@@ -109,47 +109,68 @@ describe("Email reducer", () => {
 });
 
 describe("Test email Container", () => {
-
   it("Clicks the email button", () => {
-    const store = fakeStore(getState());
-    dispatch = store.dispatch;
-    wrapper = setupComponent({ component: <EmailContainer />, store: store });
+    const test_email = "dummy-99@example.com";
+    const store = fakeStore();
+    const wrapper = setupComponent({ component: <RegisterEmail />, store: store });
     const input = wrapper.find("input#email");
     expect(input).toBeDefined();
     expect(input.exists()).toEqual(true);
-    input.value = "dummy@example.com";
 
     const button = wrapper.find("EduIDButton#register-button");
-    expect(button).toBeDefined();
     expect(button.exists()).toEqual(true);
 
-    // Simulate clicking on the button. This should call the forms onSubmit function which will dispatch an action.
-    const numCalls = dispatch.mock.calls.length;
-    button.simulate("click");
-    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
-    const submit_event = dispatch.mock.calls[dispatch.mock.calls.length - 1][0];
-    expect(submit_event.type).toEqual("@@redux-form/SUBMIT");
+    // enter an invalid email address, click the button and verify that no actions were dispatched
+    input.simulate("change", { target: { name: "email", value: "invalid-99" } });
+    button.first().simulate("click");
+    expect(store.getActions()).toEqual([]);
+
+    // enter the test email address into the input field, and then click the register-button
+    input.simulate("change", { target: { name: "email", value: test_email } });
+
+    button.first().simulate("click");
+
+    const _actions = store.getActions();
+    const actualActions = _actions.map((action) => action.type);
+
+    const last_action = actualActions[actualActions.length - 1];
+    expect(last_action).toEqual("ADD_EMAIL");
+
+    expect(_actions[_actions.length - 1]).toEqual(actions.addEmail(test_email));
   });
 
   it("Clicks the accept tou button", () => {
-    const store = fakeStore(getState({ email: { acceptingTOU: true } }));
-    dispatch = store.dispatch;
-    wrapper = setupComponent({ component: <EmailContainer />, store: store });
-    wrapper.find("input#email").value = "dummy@example.com";
-    const numCalls = dispatch.mock.calls.length;
-    const mockEvent = { preventDefault: () => {} };
-    wrapper.find("EduIDButton#register-modal-accept-button").props().onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(numCalls + 3);
+    const store = fakeStore({ overrides: { email: { acceptingTOU: true, email: "dummy-98@example.com" } } });
+    const wrapper = setupComponent({
+      component: (
+        <MemoryRouter>
+          <RegisterEmail />
+        </MemoryRouter>
+      ),
+      store: store,
+    });
+
+    const button = wrapper.find("EduIDButton#register-modal-accept-button");
+    button.first().simulate("click");
+
+    const _actions = store.getActions();
+    const actualActions = _actions.map((action) => action.type);
+    expect(actualActions).toEqual(["ACCEPT_TOU", "notifications/clearNotifications", "IS_CAPTCHA_AVAILABLE"]);
+
+    expect(_actions[0]).toEqual(actions.acceptTOU());
   });
 
   it("Clicks the reject tou button", () => {
-    const store = fakeStore(getState({ email: { acceptingTOU: true } }));
-    dispatch = store.dispatch;
-    wrapper = setupComponent({ component: <EmailContainer />, store: store });
-    wrapper.find("input#email").value = "dummy@example.com";
-    const numCalls = dispatch.mock.calls.length;
-    const mockEvent = { preventDefault: () => {} };
-    wrapper.find("EduIDButton#register-modal-close-button").props().onClick(mockEvent);
-    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+    const store = fakeStore({ overrides: { email: { acceptingTOU: true, email: "dummy-98@example.com" } } });
+    const wrapper = setupComponent({ component: <RegisterEmail />, store: store });
+
+    const button = wrapper.find("EduIDButton#register-modal-close-button");
+    button.first().simulate("click");
+
+    const _actions = store.getActions();
+    const actualActions = _actions.map((action) => action.type);
+    expect(actualActions).toEqual(["REJECT_TOU"]);
+
+    expect(_actions[_actions.length - 1]).toEqual(actions.rejectTOU());
   });
 });
