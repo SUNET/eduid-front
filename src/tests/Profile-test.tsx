@@ -1,7 +1,7 @@
 import NinDisplay from "components/NinDisplay";
 import Profile from "components/Profile";
 import VerifyIdentity from "components/VerifyIdentity";
-import EmailDisplay from "containers/EmailDisplay";
+import EmailDisplay from "components/EmailDisplay";
 import NameDisplay from "containers/NameDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
 import { DashboardRootState } from "dashboard-init-app";

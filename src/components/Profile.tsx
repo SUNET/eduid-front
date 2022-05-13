@@ -1,5 +1,5 @@
 import NinDisplay from "components/NinDisplay";
-import EmailDisplay from "containers/EmailDisplay";
+import EmailDisplay from "components/EmailDisplay";
 import NameDisplay from "containers/NameDisplay";
 import PhoneDisplay from "containers/PhoneDisplay";
 import { useDashboardAppSelector } from "dashboard-hooks";
