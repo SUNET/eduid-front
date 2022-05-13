@@ -7,7 +7,6 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 import LookupMobileProofing from "login/components/LookupMobileProofing/LookupMobileProofing";
 import AddNin from "./AddNin";
 import { FormattedMessage } from "react-intl";
-import { PhoneInfo } from "apis/eduidPhone";
 
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
@@ -15,7 +14,7 @@ function VerifyIdentity(): JSX.Element | null {
 
   const nin = useDashboardAppSelector((state) => state.nins.first_nin);
   const isConfigured = useDashboardAppSelector((state) => state.config.is_configured);
-  const phones = useDashboardAppSelector((state) => state.phones.phones as PhoneInfo[]);
+  const phones = useDashboardAppSelector((state) => state.phones.phones);
 
   const hasVerifiedNin = !!nin?.verified;
   const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
@@ -96,7 +95,6 @@ function VerifyIdentity(): JSX.Element | null {
                   description="verify identity verified title"
                   defaultMessage="Your eduID is ready to use"
                 />
-                );
               </h4>
               <p className="x-adjust">
                 <FormattedMessage
