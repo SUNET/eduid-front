@@ -6,18 +6,12 @@ export const userProfile = {
   "profile.name_display_title": <FormattedMessage id="profile.name_display_title" defaultMessage={`Name`} />,
   "profile.name_display_no_data": <FormattedMessage id="profile.name_display_no_data" defaultMessage={`add name`} />,
 
-  "profile.phone_display_title": <FormattedMessage id="profile.phone_display_title" defaultMessage={`Phone number`} />,
-
   "profile.phone_display_unconfirmed_data": (
     <FormattedMessage id="profile.phone_display_unconfirmed_data" defaultMessage={`confirm added number`} />
   ),
 
   "profile.phone_display_non-primary_data": (
     <FormattedMessage id="profile.phone_display_non-primary_data" defaultMessage={`make number primary`} />
-  ),
-
-  "profile.phone_display_no_data": (
-    <FormattedMessage id="profile.phone_display_no_data" defaultMessage={`add phone number`} />
   ),
 
   "profile.eppn_display_title": <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />,

@@ -1,38 +1,34 @@
-import React, { Component } from "react";
+import React from "react";
 import { HashLink } from "react-router-hash-link";
+import { useDashboardAppSelector } from "dashboard-hooks";
+import { FormattedMessage } from "react-intl";
 
-class PhoneDisplay extends Component {
-  render() {
-    let userData = "";
-    if (this.props.phones.length) {
-      if (this.props.primaryPhoneStatus) {
-        userData = [
-          <div key="0" className="display-data verified">
-            {this.props.primaryPhone[0].number}
-          </div>,
-        ];
-      } else {
-        userData = [
-          <div key="0" className="display-data no-data">
-            {this.props.phones[0].number}
-          </div>,
-        ];
-      }
-    } else {
-      userData = [
-        <HashLink key="1" to={`/profile/settings/#phone`} className="display-data unverified">
-          {this.props.translate("profile.phone_display_no_data")}
-        </HashLink>,
-      ];
-    }
-
-    return (
-      <div key="2" className="profile-grid-cell">
-        <label key="0">{this.props.translate("profile.phone_display_title")}</label>
-        {userData}
-      </div>
+function PhoneDisplay(): JSX.Element {
+  const phones = useDashboardAppSelector((state) => state.phones.phones);
+  const primaryPhone = phones.filter((phone) => phone.primary);
+  let userData;
+  if (!phones.length) {
+    userData = (
+      <HashLink to={`/profile/settings/#phone`} className="display-data unverified">
+        <FormattedMessage description="profile phone display no data" defaultMessage={`add phone number`} />
+      </HashLink>
     );
+  } else {
+    if (!primaryPhone.length) {
+      userData = <div className="display-data no-data">{phones[0].number}</div>;
+    } else {
+      userData = <div className="display-data verified">{primaryPhone[0].number}</div>;
+    }
   }
+
+  return (
+    <div className="profile-grid-cell">
+      <label>
+        <FormattedMessage description="profile phone display title" defaultMessage={`Phone number`} />
+      </label>
+      {userData}
+    </div>
+  );
 }
 
 export default PhoneDisplay;
