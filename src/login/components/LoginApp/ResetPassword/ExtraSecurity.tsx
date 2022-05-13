@@ -8,10 +8,10 @@ import PropTypes from "prop-types";
 import resetPasswordSlice from "../../../redux/slices/resetPasswordSlice";
 import ExtraSecurityToken from "./ExtraSecurityToken";
 import { performAuthentication } from "../../../app_utils/helperFunctions/navigatorCredential";
-import Splash from "../../../../containers/Splash";
 import { clearNotifications, showNotification } from "../../../../reducers/Notifications";
 import { Dispatch } from "redux";
 import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
+import Splash from "components/Splash";
 
 interface SecurityKeyButtonProps {
   selected_option?: string;
@@ -178,7 +178,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
   };
 
   return (
-    <>
+    <Splash showChildren={!!extraSecurity}>
       {
         <ResetPasswordLayout
           heading={props.translate("resetpw.extra-security_heading")}
@@ -188,7 +188,6 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
           linkText={props.translate("resetpw.continue_reset_password")}
           emailCode={emailCode}
         >
-          {!extraSecurity && <Splash />}
           {extraSecurity && extraSecurity.tokens && Object.keys(extraSecurity.tokens).length > 0 ? (
             <SecurityKeyButton
               selected_option={selected_option}
@@ -231,7 +230,7 @@ function ExtraSecurity(props: ExtraSecurityProps): JSX.Element {
           ) : null}
         </ResetPasswordLayout>
       }
-    </>
+    </Splash>
   );
 }
 
