@@ -2,7 +2,7 @@ import { FormattedMessage } from "react-intl";
 import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { shortCodePattern } from "../login/app_utils/validation/regexPatterns";
-import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { isValid } from "redux-form";
 import { useDashboardAppDispatch } from "dashboard-hooks";
@@ -155,7 +155,7 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
         />
       </p>
       <NotificationModal
-        modalId="letterGenericConfirmDialog"
+        id="letter-confirm-modal"
         title={
           <FormattedMessage
             defaultMessage="Use a confirmation code sent by post to your house"
@@ -172,26 +172,25 @@ export default function LetterProofingButton(props: LetterProofingProps): JSX.El
         showModal={showNotificationModal}
         closeModal={() => setShowNotificationModal(false)}
         acceptModal={confirmLetterProofing}
+        acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
       />
       <ConfirmModal
-        modalId="letterConfirmDialog"
-        id="letterConfirmDialogControl"
+        id="letter-confirm-modal"
         title={
           <FormattedMessage
             defaultMessage="Add the code you have received by post"
             description="explanation text for letter proofing"
           />
         }
-        resendLabel={
-          <FormattedMessage defaultMessage="Confirmation code" description="explanation text for letter proofing" />
-        }
         placeholder={placeholder}
         showModal={showConfirmationModal}
         closeModal={() => setShowConfirmationModal(false)}
         handleConfirm={sendConfirmationCode}
-        with_resend_link={false}
-        validationPattern={shortCodePattern}
+        modalFormLabel={
+          <FormattedMessage defaultMessage="Confirmation code" description="explanation text for letter proofing" />
+        }
         validationError={"confirmation.code_invalid_format"}
+        validationPattern={shortCodePattern}
       />
     </div>
   );

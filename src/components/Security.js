@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import { Spinner } from "spin.js";
 import { spinnerOpts } from "../components/Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
-import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
-import NotificationModal from "../login/components/Modals/NotificationModal";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import { useIntl } from "react-intl";
 import CookieChecker from "./../components/CookieChecker";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
+import { FormattedMessage } from "react-intl";
 
 function Security(props) {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
@@ -114,27 +114,26 @@ function Security(props) {
           </div>
         </div>
       </div>
-
-      <NotificationModal
-        modalId="securityConfirmDialog"
-        title={translate("security.confirm_title_chpass")}
-        mainText={translate("security.change_info")}
-        showModal={props.confirming_change}
-      />
-
       <ConfirmModal
-        modalId="describeWebauthnTokenDialog"
-        id="describeWebauthnTokenDialogControl"
-        title={translate("security.webauthn-describe-title")}
-        resendLabel={translate("security.webauthn_credential_type")}
+        id="describe-webauthn-token-modal"
+        title={
+          <FormattedMessage
+            description="security webauthn describe title"
+            defaultMessage={`Add a name for your security key`}
+          />
+        }
         placeholder={placeholder}
-        with_resend_link={false}
         showModal={Boolean(props.webauthn_asking_description)}
         closeModal={props.handleStopAskingWebauthnDescription}
         handleConfirm={props.handleStartWebauthnRegistration}
-        helpBlock={translate("security.help_text")}
+        modalFormLabel={
+          <FormattedMessage description="security webauthn credential type" defaultMessage={`Security key`} />
+        }
         validationPattern={securityKeyPattern}
         validationError={"security.description_invalid_format"}
+        helpBlock={
+          <FormattedMessage defaultMessage={`max 50 characters`} description="Help text for security key max length" />
+        }
       />
     </article>
   );

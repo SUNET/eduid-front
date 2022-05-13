@@ -71,7 +71,7 @@ export function ErrorTechnicalInfo(props: { errorURL: errorURLData }): JSX.Eleme
     <React.Fragment>
       <div className="figure">
         <table className="error-info">
-          {error_info === undefined ? (
+          {!props.errorURL.code ? (
             <tbody>
               <tr>
                 <td className="plain-cell">

@@ -138,7 +138,7 @@ describe("Test email Container", () => {
     wrapper.find("input#email").value = "dummy@example.com";
     const numCalls = dispatch.mock.calls.length;
     const mockEvent = { preventDefault: () => {} };
-    wrapper.find("EduIDButton#accept-tou-button").props().onClick(mockEvent);
+    wrapper.find("EduIDButton#register-modal-accept-button").props().onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 3);
   });
 
@@ -149,7 +149,7 @@ describe("Test email Container", () => {
     wrapper.find("input#email").value = "dummy@example.com";
     const numCalls = dispatch.mock.calls.length;
     const mockEvent = { preventDefault: () => {} };
-    wrapper.find("EduIDButton#reject-tou-button").props().onClick(mockEvent);
+    wrapper.find("EduIDButton#register-modal-close-button").props().onClick(mockEvent);
     expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
   });
 });

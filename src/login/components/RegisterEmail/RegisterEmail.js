@@ -8,7 +8,8 @@ import EduIDButton from "components/EduIDButton";
 import NotificationModal from "../Modals/NotificationModal";
 import { validate } from "../../app_utils/validation/validateEmail";
 import * as actions from "actions/Email";
-import { useIntl } from "react-intl";
+import { useIntl, FormattedMessage } from "react-intl";
+import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 
 const submitEmailForm = (values, dispatch) => {
   const { email } = values;
@@ -83,16 +84,13 @@ class RegisterEmail extends Component {
       </div>,
       <div key="1">
         <NotificationModal
-          modalId="register-modal"
-          title={this.props.translate("tou.header")}
+          id="register-modal"
+          title={<FormattedMessage defaultMessage="General rules for eduID users" description="tou.header" />}
+          mainText={ToUs["2016-v1"]}
           showModal={this.props.acceptingTOU}
           closeModal={this.props.handleReject}
           acceptModal={this.props.handleAccept}
-          mainText={this.props.tou}
-          acceptButtonText={this.props.translate("tou.accept")}
-          closeButtonText={this.props.translate("tou.cancel")}
-          acceptButtonId={"accept-tou-button"}
-          closeButtonId={"reject-tou-button"}
+          acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
         />
       </div>,
     ];
