@@ -1,9 +1,9 @@
 import React from "react";
 import expect from "expect";
-import { shallow } from "../../node_modules/enzyme";
 import { IntlProvider } from "react-intl";
 import Footer from "../login/components/Footer/Footer";
-import { setupComponent } from "tests/SignupMain-test";
+import { setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";
+import { shallow } from "enzyme";
 
 const config = {
   is_app_loaded: true,
@@ -17,13 +17,6 @@ const config = {
   static_technicians_url: "http://example.com",
   static_staff_url: "http://example.com",
   static_faq_url: "http://example.com",
-};
-
-const state = {
-  config: config,
-  intl: {
-    locale: "en",
-  },
 };
 
 describe("Footer Component", () => {
@@ -48,7 +41,7 @@ describe("Footer Component", () => {
   it("Renders the language selector component", () => {
     const wrapper = setupComponent({
         component: <Footer />,
-        overrides: state,
+        overrides: {config },
       }),
       p = wrapper.find("span.lang-selected"),
       link = wrapper.find("span.lang-selected").find("a");

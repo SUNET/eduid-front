@@ -7,23 +7,51 @@ import { SignupRootState, signupStore } from "signup-init-app";
 
 export const signupTestState: SignupRootState = {
   config: {
-    csrf_token: "csrf-token",
+    dashboard_url: "",
+    csrf_token: "",
+    recaptcha_public_key: "",
+    captcha: "",
+    code: "",
+    tou: "",
+    is_app_loaded: true,
+    //is_fetching: false,
+    debug: true,
+    available_languages: [],
+    reset_password_link: "http://dummy.example.com/reset-password",
   },
-  email: undefined as any,
-  captcha: undefined as any,
-  verified: undefined as any,
+  captcha: {
+    captcha_verification: "",
+    disabledButton: false,
+  },
+  verified: {
+    password: "",
+    email: "",
+    status: "",
+    dashboard_url: "",
+    gotten: false,
+  },
+  email: {
+    email: "",
+    acceptingTOU: false,
+    tou_accepted: false,
+  },
   router: undefined as any,
   form: undefined as any,
   intl: { locale: "en", messages: {} },
-  notifications: undefined as any,
+  notifications: {},
 };
 
 export type SignupStoreType = typeof signupStore;
 
-export function fakeStore(state: SignupRootState = signupTestState): MockStoreEnhanced<SignupRootState> {
+interface FakeStoreArgs {
+  state?: SignupRootState;
+  overrides?: Partial<SignupRootState>;
+}
+
+export function fakeStore(args: FakeStoreArgs = {}): MockStoreEnhanced<SignupRootState> {
   const middlewares = [thunk];
   const store = createMockStore<SignupRootState>(middlewares);
-  return store(state);
+  return store({ ...(args.state || signupTestState), ...args.overrides });
 }
 
 interface setupComponentArgs {
@@ -34,11 +62,7 @@ interface setupComponentArgs {
 
 export function setupComponent({ component, store, overrides }: setupComponentArgs): ReactWrapper {
   if (store === undefined) {
-    if (overrides) {
-      store = fakeStore({ ...signupTestState, ...overrides });
-    } else {
-      store = fakeStore();
-    }
+    store = fakeStore({ overrides });
   }
   const wrapper = mount(<ReduxIntlProvider store={store}>{component}</ReduxIntlProvider>);
   return wrapper;

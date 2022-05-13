@@ -1,17 +1,18 @@
-import React from "react";
-import expect from "expect";
-import { shallow } from "../../node_modules/enzyme";
-import { IntlProvider } from "react-intl";
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
-import EmailContainer from "containers/Email";
 import * as actions from "actions/Email";
+import { shallow } from "enzyme";
+import expect from "expect";
+import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router";
 import emailReducer from "reducers/Email";
+import { fakeStore, setupComponent } from "./helperFunctions/SignupTestApp";
 
 describe("Email Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <EmailContainer />
+        <RegisterEmail />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -19,14 +20,14 @@ describe("Email Component", () => {
 
   it("Email address input renders", () => {
     const fullWrapper = setupComponent({
-      component: <EmailContainer />,
+      component: <RegisterEmail />,
     });
     const input = fullWrapper.find("input");
     expect(input.exists()).toEqual(true);
   });
   it("'Register for eduID' button renders", () => {
     const fullWrapper = setupComponent({
-      component: <EmailContainer />,
+      component: <RegisterEmail />,
     });
     const button = fullWrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
@@ -108,7 +109,6 @@ describe("Email reducer", () => {
 });
 
 describe("Test email Container", () => {
-  let wrapper, dispatch;
 
   it("Clicks the email button", () => {
     const store = fakeStore(getState());

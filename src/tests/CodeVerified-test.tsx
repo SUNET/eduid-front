@@ -1,9 +1,9 @@
-import React from "react";
-import expect from "expect";
-import { shallow } from "../../node_modules/enzyme";
-import { IntlProvider } from "react-intl";
 import CodeVerifiedContainer from "containers/CodeVerified";
-import { setupComponent } from "tests/SignupMain-test";
+import { shallow } from "enzyme";
+import expect from "expect";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { setupComponent } from "./helperFunctions/SignupTestApp";
 
 describe("CodeVerified Component", () => {
   const state = {
@@ -34,7 +34,7 @@ describe("CodeVerified Component", () => {
     const userDetailsDisplay = fullWrapper.find("#email-display");
     expect(userDetailsDisplay.exists()).toEqual(true);
   });
-  it("Component renders user email (text inlcudes '@')", () => {
+  it("Component renders user email (text includes '@')", () => {
     const fullWrapper = setupComponent({
       component: <CodeVerifiedContainer />,
       overrides: state,

@@ -1,7 +1,6 @@
 import React from "react";
 import expect from "expect";
-
-import { setupComponent } from "tests/SignupMain-test";
+import { setupComponent } from "./helperFunctions/SignupTestApp";
 import Splash from "components/Splash";
 
 describe("Splash Component", () => {
