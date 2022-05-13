@@ -135,10 +135,7 @@ function PhoneCodeSent(props: PhoneCodeProps): JSX.Element {
         <ConnectedPhoneForm {...props} emailCode={emailCode} />
         <div className="timer">
           <a id={"resend-phone"} onClick={resendPhoneCode}>
-            <FormattedMessage
-              defaultMessage="Send a new confirmation code"
-              description="Reset Password phone code sent(Resend code link button)"
-            />
+            <FormattedMessage defaultMessage="Send a new confirmation code" description="resend code" />
           </a>
           <span id="timer-in" className="display-none">
             <FormattedMessage defaultMessage="in" description="Reset Password phone code sent" />

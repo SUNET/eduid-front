@@ -20,11 +20,6 @@ export const register = {
   "email.sign-up-email": <FormattedMessage id="email.sign-up-email" defaultMessage={`Create eduID`} />,
 
   // terms of use
-  "tou.header": <FormattedMessage id="tou.header" defaultMessage={`General rules for eduID users`} />,
-
-  "tou.cancel": <FormattedMessage id="tou.cancel" defaultMessage={`Cancel`} />,
-
-  "tou.accept": <FormattedMessage id="tou.accept" defaultMessage={`Accept`} />,
 
   "tou.must-accept": (
     <FormattedMessage id="tou.must-accept" defaultMessage={`You must accept the new terms of use before continuing`} />

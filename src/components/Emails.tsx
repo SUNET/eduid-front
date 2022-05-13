@@ -1,11 +1,10 @@
-import { translate } from "login/translation";
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { longCodePattern } from "../login/app_utils/validation/regexPatterns";
 import { validateEmailField } from "../login/app_utils/validation/validateEmail";
 import DataTable from "../login/components/DataTable/DataTable";
 import CustomInput from "../login/components/Inputs/CustomInput";
-import ConfirmModal from "../login/components/Modals/ConfirmModalContainer";
+import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import "../login/styles/index.scss";
 import EduIDButton from "./EduIDButton";
 import { clearNotifications } from "reducers/Notifications";
@@ -42,15 +41,6 @@ function Emails() {
     defaultMessage: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     description: "Placeholder for email code input",
   });
-
-  const title = intl.formatMessage(
-    {
-      id: "emails.confirm_title",
-      defaultMessage: "Click the link or enter the code sent to {email} here",
-      description: "Title for email code input",
-    },
-    { email: selectedEmail }
-  );
 
   async function handleAdd(values: EmailFormData) {
     if (values.email) {
@@ -187,20 +177,34 @@ function Emails() {
         )}
       </div>
       <ConfirmModal
-        modalId="emailConfirmDialog"
-        id="emailConfirmDialogControl"
-        title={title}
-        resendLabel={translate("cm.enter_code")}
-        resendHelp={translate("cm.lost_code")}
-        resendText={translate("cm.resend_code")}
+        id="email-confirm-modal"
+        title={
+          <FormattedMessage
+            defaultMessage={`Click the link or enter the code sent to {email} here`}
+            description="Title for email code input"
+            values={{ email: selectedEmail }}
+          />
+        }
         placeholder={modalPlaceholder}
         showModal={Boolean(selectedEmail)}
         closeModal={handleStopConfirmation}
-        handleResend={handleResend}
         handleConfirm={handleConfirm}
-        helpBlock={translate("emails.confirm_help_text")}
-        validationPattern={longCodePattern}
+        modalFormLabel={<FormattedMessage id="enter confirmation code" defaultMessage={`Confirmation code`} />}
         validationError="confirmation.code_invalid_format"
+        validationPattern={longCodePattern}
+        helpBlock={
+          <FormattedMessage
+            description="Help text for email confirmation code"
+            defaultMessage={`The code is formatted as five groups of characters and numbers, separated by hyphens`}
+          />
+        }
+        resendMarkup={
+          <div className="resend-code-container">
+            <a href="#" onClick={handleResend}>
+              <FormattedMessage description="resend code" defaultMessage={`Send a new confirmation code`} />
+            </a>
+          </div>
+        }
       />
     </article>
   );

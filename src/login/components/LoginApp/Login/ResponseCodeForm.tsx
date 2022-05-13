@@ -1,7 +1,8 @@
 import EduIDButton from "../../../../components/EduIDButton";
 import React, { FocusEvent } from "react";
-import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
+import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
+import { useAppSelector } from "login/app_init/hooks";
 
 interface ResponseCodeFormProps {
   codeRequired?: boolean;
@@ -69,8 +70,11 @@ export function ResponseCodeForm(props: ResponseCodeFormProps): JSX.Element {
 }
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
+  const bad_attempts = useAppSelector((state) => state.login.other_device1?.bad_attempts);
+  const showBadAttempts = Boolean(bad_attempts && bad_attempts > 0);
+
   return (
-    <form onSubmit={props.handleSubmit} className="response-code-form">
+    <form onSubmit={props.handleSubmit} className="response-code-form" id="response-code-form">
       <div className="response-code-inputs">
         <CodeField num={2} disabled={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
         <CodeField num={3} disabled={props.inputsDisabled} />
@@ -79,6 +83,15 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
         <CodeField num={7} disabled={props.inputsDisabled} />
         <CodeField num={8} disabled={props.inputsDisabled} />
       </div>
+
+      {showBadAttempts && (
+        <div>
+          <span className="input-validate-error" id="wrong-code-error">
+            <FormattedMessage defaultMessage="Incorrect code, try again" description="Other Device, device 1" />
+          </span>
+        </div>
+      )}
+
       {props.error && <p>{props.error}</p>}
 
       {props.handleAbort || props.handleLogin ? (
@@ -120,11 +133,20 @@ interface CodeFieldProps {
 
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
 function CodeField({ num, value, disabled = false, autoFocus = undefined }: CodeFieldProps) {
+  const form = useForm();
+
   function handleKeyUp(event: React.KeyboardEvent<HTMLFormElement>) {
     const pressedKey = event.key;
-    const form = event.currentTarget.form;
-    const inputs = [...form].filter((input: { disabled?: boolean }) => !input.disabled);
+    const ResponseCodeForm = event.currentTarget.form;
+    const inputs = [...ResponseCodeForm].filter((input: HTMLInputElement) => input.tagName.toLowerCase() === "input");
     const index = inputs.indexOf(event.currentTarget);
+
+    if (form.getState().valid) {
+      (document.getElementById("response-code-submit-button") as HTMLButtonElement).click();
+      // when clicking button, autofocus to first input field
+      inputs[0].focus();
+    }
+
     switch (pressedKey.toLowerCase()) {
       case "backspace":
       case "delete": {
@@ -147,7 +169,11 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
       }
       default: {
         if (isDigit(pressedKey)) {
-          if (inputs[index + 1] !== undefined) {
+          // In case more than one digit is pressed rapidly, the second one is blocked in the keyPress
+          // event handler, but both generate keyUp event. We only want to advance the focus if a value
+          // was registered for this input.
+          const thisInputHasValue = Boolean((event.target as HTMLTextAreaElement).value);
+          if (inputs[index + 1] !== undefined && thisInputHasValue) {
             inputs[index + 1].focus();
           }
         }
@@ -158,21 +184,32 @@ function CodeField({ num, value, disabled = false, autoFocus = undefined }: Code
 
   function handleCodeFieldKeyPress(e: React.KeyboardEvent<HTMLFormElement>) {
     if (!isDigit(e.key)) e.preventDefault();
+    // Prevent more than 1 digit per input field
+    if ((e.target as HTMLTextAreaElement).value) e.preventDefault();
+  }
+
+  function validateCodeForm(value: number): string | undefined {
+    if (!value) {
+      return "required";
+    }
   }
 
   return (
     <FinalField<number>
       name={`v[${num}]`}
       component="input"
-      type="text"
+      type="number"
       maxLength="1"
       pattern="[0-9]"
+      min="0"
+      max="9"
       placeholder={value}
       disabled={disabled === true ? "disabled" : null}
       autoFocus={autoFocus}
       onKeyUp={handleKeyUp}
       onFocus={(event: FocusEvent<HTMLInputElement>) => event.target.select()}
       onKeyPress={handleCodeFieldKeyPress}
+      validate={validateCodeForm}
     />
   );
 }
