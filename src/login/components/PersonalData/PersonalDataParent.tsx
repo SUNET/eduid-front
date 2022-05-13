@@ -26,10 +26,10 @@ const RenderAddPersonalDataPrompt = ({ setEditMode }: RenderAddPersonalDataPromp
 );
 
 const RenderPersonalData = (props: { names: NameStrings }) => {
-  const first_name = useDashboardAppSelector((state) => state.personal_data.data.given_name);
-  const last_name = useDashboardAppSelector((state) => state.personal_data.data.surname);
-  const display_name = useDashboardAppSelector((state) => state.personal_data.data.display_name);
-  const pref_language = useDashboardAppSelector((state) => state.personal_data.data.language);
+  const first_name = useDashboardAppSelector((state) => state.personal_data.given_name);
+  const last_name = useDashboardAppSelector((state) => state.personal_data.surname);
+  const display_name = useDashboardAppSelector((state) => state.personal_data.display_name);
+  const pref_language = useDashboardAppSelector((state) => state.personal_data.language);
   // if language is set render label
   const hasPrefLanguage = pref_language !== undefined && pref_language !== null;
   let languageLabel;
@@ -88,7 +88,7 @@ const RenderEditButton = ({ setEditMode, hasPersonalData, isEditMode }: RenderEd
 const PersonalDataParent = () => {
   const [isEditMode, setEditMode] = useState(false);
   // check if any data
-  const personal_data = useDashboardAppSelector((state) => state.personal_data.data);
+  const personal_data = useDashboardAppSelector((state) => state.personal_data);
   // TODO: I think this can be... simplified as "const hasPersonalData = (personal_data.eppn !== undefined);"
   const hasPersonalData = Object.entries(personal_data)
     .filter((entry) => entry[0] !== "eppn")

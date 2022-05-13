@@ -32,13 +32,11 @@ describe("Personal Data Actions", () => {
 
 describe("Reducers", () => {
   const mockState = {
-    data: {
-      given_name: "John",
-      surname: "Smith",
-      display_name: "John",
-      language: "en",
-      eppn: "dummy-eppn",
-    },
+    given_name: "John",
+    surname: "Smith",
+    display_name: "John",
+    language: "en",
+    eppn: "dummy-eppn",
   };
 
   it("Receives a GET_ALL_USERDATA action", () => {
@@ -47,13 +45,11 @@ describe("Reducers", () => {
         type: actions.getAllUserdata.type,
       })
     ).toEqual({
-      data: {
-        given_name: "John",
-        surname: "Smith",
-        display_name: "John",
-        language: "en",
-        eppn: "dummy-eppn",
-      },
+      given_name: "John",
+      surname: "Smith",
+      display_name: "John",
+      language: "en",
+      eppn: "dummy-eppn",
     });
   });
 
@@ -66,20 +62,19 @@ describe("Reducers", () => {
         },
       })
     ).toEqual({
-      data: {
-        given_name: "John",
-        surname: "Smith",
-        display_name: "John",
-        language: "en",
-        eppn: "dummy-eppn",
-      },
+      given_name: "John",
+      surname: "Smith",
+      display_name: "John",
+      language: "en",
+      eppn: "dummy-eppn",
+
       message: "Bad error",
     });
   });
 
   it("Receives a POST_USERDATA_FAIL action", () => {
     expect(personalDataReducer(mockState, actions.postUserdataFail("Bad error"))).toEqual({
-      data: mockState.data,
+      data: mockState,
       message: "Bad error",
     });
   });

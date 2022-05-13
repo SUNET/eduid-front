@@ -7,17 +7,11 @@ export interface PersonalDataData {
   surname?: string;
   display_name?: string;
   language?: string;
-}
-
-interface PersonalDataState {
   message?: string;
-  data: PersonalDataData;
 }
 
 // export for use in tests
-export const initialState: PersonalDataState = {
-  data: {},
-};
+export const initialState: PersonalDataData = {};
 
 const personalDataSlice = createSlice({
   name: "pdata",
@@ -25,13 +19,8 @@ const personalDataSlice = createSlice({
   reducers: {
     updatePersonalData: (state, action: PayloadAction<PersonalDataData>) => {
       return {
-        // TODO: move eppn outside of state.personal_data.data
-        // and remove "eppn: state.data.eppn"
-        data: {
-          // to prevent the disappearance of eppn when the user is updating personal-data
-          eppn: state.data.eppn,
-          ...action.payload,
-        },
+        eppn: state.eppn,
+        ...action.payload,
       };
     },
   },

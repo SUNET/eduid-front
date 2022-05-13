@@ -4,7 +4,7 @@ import i18n from "../login/translation/InjectIntl_HOC_factory";
 
 const mapStateToProps = (state) => {
   return {
-    eppn: state.personal_data.data.eppn,
+    eppn: state.personal_data.eppn,
   };
 };
 

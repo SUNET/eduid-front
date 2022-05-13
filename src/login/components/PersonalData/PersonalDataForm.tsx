@@ -29,8 +29,8 @@ interface NameStrings {
 const RenderLockedNames = (props: { names: NameStrings }) => {
   const dispatch = useDashboardAppDispatch();
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
-  const given_name = useDashboardAppSelector((state) => state.personal_data.data.given_name);
-  const surname = useDashboardAppSelector((state) => state.personal_data.data.surname);
+  const given_name = useDashboardAppSelector((state) => state.personal_data.given_name);
+  const surname = useDashboardAppSelector((state) => state.personal_data.surname);
   return (
     <Fragment>
       <div className="external-names">
@@ -131,7 +131,7 @@ const PersonalDataForm = (props: PersonalDataFormProps) => {
   const { names } = props;
   const dispatch = useDashboardAppDispatch();
   const available_languages = useDashboardAppSelector((state) => state.config.available_languages);
-  const personal_data = useDashboardAppSelector((state) => state.personal_data.data);
+  const personal_data = useDashboardAppSelector((state) => state.personal_data);
   const [pdata, setPdata] = useState(personal_data);
   // setPdata key and value.
   const formChange = (field: FormData) => {
@@ -188,7 +188,7 @@ const DecoratedPersonalDataForm = reduxForm({
 })(PersonalDataForm);
 
 const FinalPersonalDataForm = connect((state: DashboardRootState) => ({
-  initialValues: state.personal_data.data,
+  initialValues: state.personal_data,
 }))(DecoratedPersonalDataForm);
 
 export default FinalPersonalDataForm;

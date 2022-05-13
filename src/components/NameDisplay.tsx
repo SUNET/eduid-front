@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function NameDisplay(): JSX.Element {
   let userData;
-  const name = useDashboardAppSelector((state) => state.personal_data.data);
+  const name = useDashboardAppSelector((state) => state.personal_data);
   if (!name) {
     userData = (
       <Link to={`/profile/settings/`} className="display-data unverified">
