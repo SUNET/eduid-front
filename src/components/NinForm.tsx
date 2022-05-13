@@ -68,23 +68,47 @@ function NinForm(): JSX.Element {
       }}
       render={({ handleSubmit, pristine, invalid }) => {
         return (
-          <form onSubmit={handleSubmit} className="single-input-form x-adjust">
-            <fieldset id="nins-form" className="tabpane">
-              <FinalField
-                component={CustomInput}
-                componentClass="input"
-                type="text"
-                name="nin"
-                label={translate("nin_display.profile.main_title")}
-                placeholder={placeholder}
-                helpBlock={translate("nins.input_help_text")}
-                validate={validateNin}
-              />
-            </fieldset>
-            <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
-              {translate("emails.button_add")}
-            </EduIDButton>
-          </form>
+          <>
+            {/* <div className="row">
+                <div className="col"> */}
+
+            <div className="tabs">
+              <div className="tab">
+                <input type="checkbox" id="chck1" className="accordion-handle" />
+                <label className="tab-label" htmlFor="chck1">
+                  Svenskt personnummer
+                </label>
+                <div className="tab-content">
+                  <form onSubmit={handleSubmit} className="single-input-form x-adjust">
+                    <fieldset id="nins-form" className="tabpane">
+                      <FinalField
+                        component={CustomInput}
+                        componentClass="input"
+                        type="text"
+                        name="nin"
+                        label={translate("nin_display.profile.main_title")}
+                        placeholder={placeholder}
+                        helpBlock={translate("nins.input_help_text")}
+                        validate={validateNin}
+                      />{" "}
+                    </fieldset>
+                    <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
+                      {translate("emails.button_add")}
+                    </EduIDButton>
+                  </form>
+                </div>
+              </div>
+              <div className="tab">
+                <input type="checkbox" id="chck2" className="accordion-handle" />
+                <label className="tab-label" htmlFor="chck2">
+                  annat..
+                </label>
+                <div className="tab-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!</div>
+              </div>
+            </div>
+            {/* </div>
+              </div> */}
+          </>
         );
       }}
     />
