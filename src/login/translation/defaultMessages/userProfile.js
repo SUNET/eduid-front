@@ -20,13 +20,7 @@ export const userProfile = {
     <FormattedMessage id="profile.phone_display_no_data" defaultMessage={`add phone number`} />
   ),
 
-  "profile.email_display_title": <FormattedMessage id="profile.email_display_title" defaultMessage={`Email address`} />,
-
   "profile.eppn_display_title": <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />,
-
-  "profile.email_display_no_data": (
-    <FormattedMessage id="profile.email_display_no_data" defaultMessage={`no email added`} />
-  ),
 
   "dashboard.tagline_unverified": (
     <FormattedMessage
