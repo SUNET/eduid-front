@@ -1,26 +1,27 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import CustomInput from "../Inputs/CustomInput";
-import { Field, reduxForm, submit } from "redux-form";
-import { Form } from "reactstrap";
-import EduIDButton from "components/EduIDButton";
-import NotificationModal from "../Modals/NotificationModal";
-import { validate } from "../../app_utils/validation/validateEmail";
+import { makeCaptchaButtonAvailable } from "actions/Captcha";
 import * as actions from "actions/Email";
-import { useIntl, FormattedMessage } from "react-intl";
+import EduIDButton from "components/EduIDButton";
+import { SIGNUP_BASE_PATH } from "globals";
 import { ToUs } from "login/app_utils/helperFunctions/ToUs";
+import { translate } from "login/translation";
+import React, { Fragment } from "react";
+import { Field as FinalField, Form as FinalForm } from "react-final-form";
+import { FormattedMessage, useIntl } from "react-intl";
+import { useHistory } from "react-router";
+import { clearNotifications } from "reducers/Notifications";
+import { useSignupAppDispatch, useSignupAppSelector } from "signup-hooks";
+import { validateEmailField } from "../../app_utils/validation/validateEmail";
+import CustomInput from "../Inputs/CustomInput";
+import NotificationModal from "../Modals/NotificationModal";
 
-const submitEmailForm = (values, dispatch) => {
-  const { email } = values;
-  if (email) {
-    dispatch(actions.addEmail(email));
-  }
-};
+interface EmailFormData {
+  email?: string;
+}
 
 /* FORM */
-const EmailForm = (props) => {
-  const { handleSubmit } = props;
+function EmailForm() {
+  const dispatch = useSignupAppDispatch();
+
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -28,81 +29,97 @@ const EmailForm = (props) => {
     defaultMessage: "name@example.com",
     description: "placeholder text for email input",
   });
+
+  function submitEmailForm(values: EmailFormData) {
+    if (values.email) {
+      dispatch(actions.addEmail(values.email));
+    }
+  }
+
   return (
-    <Form id="register-form" role="form" onSubmit={handleSubmit(submitEmailForm)}>
-      <fieldset>
-        <Field
-          type="email"
-          name="email"
-          label={props.translate("signup.registering-input")}
-          componentClass="input"
-          id="email-input"
-          component={CustomInput}
-          translate={props.translate}
-          placeholder={placeholder}
-        />
-        <div className="buttons">
-          <EduIDButton
-            buttonstyle="primary"
-            id="register-button"
-            disabled={props.invalid}
-            onClick={() => props.dispatch(submit("emailForm"))}
-          >
-            {props.translate("email.sign-up-email")}
-          </EduIDButton>
-        </div>
-      </fieldset>
-    </Form>
+    <FinalForm<EmailFormData>
+      onSubmit={submitEmailForm}
+      initialValues={{
+        email: "",
+      }}
+      render={({ handleSubmit, pristine, invalid }) => {
+        return (
+          <form id="register-form" onSubmit={handleSubmit}>
+            <fieldset>
+              <FinalField
+                label={<FormattedMessage defaultMessage="Email address" />}
+                component={CustomInput}
+                componentClass="input"
+                type="text"
+                name="email"
+                placeholder={placeholder}
+                validate={validateEmailField}
+                autoFocus
+              />
+              <div className="buttons">
+                <EduIDButton
+                  buttonstyle="primary"
+                  id="register-button"
+                  disabled={invalid || pristine}
+                  onClick={handleSubmit}
+                >
+                  <FormattedMessage defaultMessage="Create eduID" description="Signup button" />
+                </EduIDButton>
+              </div>
+            </fieldset>
+          </form>
+        );
+      }}
+    />
   );
-};
+}
 
-let EmailReduxForm = reduxForm({
-  form: "emailForm",
-  validate,
-  onSubmit: submitEmailForm,
-})(EmailForm);
+export function RegisterEmail(): JSX.Element {
+  const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
+  const acceptingTOU = useSignupAppSelector((state) => state.email.acceptingTOU);
+  const dispatch = useSignupAppDispatch();
+  const history = useHistory();
 
-EmailReduxForm = connect(() => ({
-  enableReinitialize: true,
-  destroyOnUnmount: false,
-}))(EmailReduxForm);
+  function handleAccept(e: React.MouseEvent<HTMLElement>) {
+    e.preventDefault();
+    dispatch(actions.acceptTOU());
+    history.push(SIGNUP_BASE_PATH + "/trycaptcha");
+    // remove any remaining notification messages
+    dispatch(clearNotifications());
+    // to make captcha button active
+    dispatch(makeCaptchaButtonAvailable());
+  }
 
-/* COMPONENT */
+  function handleReject(e: React.MouseEvent<HTMLElement>) {
+    e.preventDefault();
+    dispatch(actions.rejectTOU());
+  }
 
-class RegisterEmail extends Component {
-  render() {
-    return [
+  return (
+    <Fragment>
       <div key="0" id="content" className="horizontal-content-margin content">
-        <h1 className="heading">{this.props.translate("register.sub-heading")}</h1>
-        <p>{this.props.translate("register.paragraph")}</p>
+        <h1 className="heading">{translate("register.sub-heading")}</h1>
+        <p>{translate("register.paragraph")}</p>
 
-        <EmailReduxForm {...this.props} />
+        <EmailForm />
         <p>
-          {this.props.translate("register.toLogin")}&nbsp;
-          <a href={this.props.dashboard_url}>{this.props.translate("text.link")}</a>
+          {translate("register.toLogin")}&nbsp;
+          <a href={dashboard_url}>{translate("text.link")}</a>
         </p>
-      </div>,
+      </div>
       <div key="1">
         <NotificationModal
           id="register-modal"
           title={<FormattedMessage defaultMessage="General rules for eduID users" description="tou.header" />}
           mainText={ToUs["2016-v1"]}
-          showModal={this.props.acceptingTOU}
-          closeModal={this.props.handleReject}
-          acceptModal={this.props.handleAccept}
+          showModal={acceptingTOU}
+          closeModal={handleReject}
+          acceptModal={handleAccept}
           acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
         />
-      </div>,
-    ];
-  }
+      </div>
+    </Fragment>
+  );
 }
-
-RegisterEmail.propTypes = {
-  acceptingTOU: PropTypes.bool,
-  tou: PropTypes.string,
-  translate: PropTypes.func,
-  handleAccept: PropTypes.func,
-  handleReject: PropTypes.func,
-};
 
 export default RegisterEmail;

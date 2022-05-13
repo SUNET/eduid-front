@@ -33,7 +33,7 @@ export function postCaptchaFail(err) {
   };
 }
 
-export function makeCapthaButtonAvailable() {
+export function makeCaptchaButtonAvailable() {
   return {
     type: IS_CAPTCHA_AVAILABLE,
     payload: {
