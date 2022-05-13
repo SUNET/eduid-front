@@ -2,33 +2,55 @@
 
 /* Accordion */
 
-.accordion-handle {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
+.accordions {
+  overflow: hidden;
+  box-shadow: 0 2px 4px 1px rgb(0 0 0 / 25%);
+  border-radius: 4px;
 }
 
-.tabs {
-  overflow: hidden;
-  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
-}
-.tab {
+.accordion {
   width: 100%;
   color: white;
   overflow: hidden;
+
+  //checkbox
+  &-handle {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+
+    &:checked {
+      + .accordion-label {
+        background: $dark-orange;
+
+        &::after {
+          transform: rotate(90deg);
+        }
+      }
+
+      ~ .accordion-content {
+        max-height: 100vh;
+        padding: 1em;
+      }
+    }
+  }
+
   &-label {
     display: flex;
     justify-content: space-between;
     padding: 1em;
     background: $orange-highlight;
-    border-radius: 4px;
+    color: $white;
+    font-family: $akkurat;
     margin: 0;
     font-weight: bold;
     cursor: pointer;
-    /* Icon */
+
     &:hover {
-      background: darken($orange-highlight, 10%);
+      background: $dark-orange;
     }
+
+    // icon
     &::after {
       content: "\276F";
       width: 1em;
@@ -37,13 +59,19 @@
       transition: all 0.35s;
     }
   }
+
   &-content {
     max-height: 0;
     padding: 0 1em;
     color: initial;
     background: white;
     transition: all 0.35s;
+
+    form {
+      margin-top: 0;
+    }
   }
+
   &-close {
     display: flex;
     justify-content: flex-end;
@@ -51,22 +79,13 @@
     font-size: 0.75em;
     background: $orange-highlight;
     cursor: pointer;
-    &:hover {
-      background: darken($orange-highlight, 10%);
-    }
-  }
-}
 
-// :checked
-.accordion-handle:checked {
-  + .tab-label {
-    background: darken($orange-highlight, 10%);
-    &::after {
-      transform: rotate(90deg);
+    &:hover {
+      background: $dark-orange;
     }
   }
-  ~ .tab-content {
-    max-height: 100vh;
-    padding: 1em;
+
+  & + & &-label {
+    border-top: 2px solid $light-gray;
   }
 }

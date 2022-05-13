@@ -69,16 +69,13 @@ function NinForm(): JSX.Element {
       render={({ handleSubmit, pristine, invalid }) => {
         return (
           <>
-            {/* <div className="row">
-                <div className="col"> */}
-
-            <div className="tabs">
-              <div className="tab">
+            <div className="accordions">
+              <div className="accordion">
                 <input type="checkbox" id="chck1" className="accordion-handle" />
-                <label className="tab-label" htmlFor="chck1">
+                <label className="accordion-label" htmlFor="chck1">
                   Svenskt personnummer
                 </label>
-                <div className="tab-content">
+                <div className="accordion-content">
                   <form onSubmit={handleSubmit} className="single-input-form x-adjust">
                     <fieldset id="nins-form" className="tabpane">
                       <FinalField
@@ -98,16 +95,14 @@ function NinForm(): JSX.Element {
                   </form>
                 </div>
               </div>
-              <div className="tab">
+              <div className="accordion">
                 <input type="checkbox" id="chck2" className="accordion-handle" />
-                <label className="tab-label" htmlFor="chck2">
+                <label className="accordion-label" htmlFor="chck2">
                   annat..
                 </label>
-                <div className="tab-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!</div>
+                <div className="accordion-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!</div>
               </div>
             </div>
-            {/* </div>
-              </div> */}
           </>
         );
       }}
