@@ -3,7 +3,6 @@ import * as actions from "actions/Email";
 import EduIDButton from "components/EduIDButton";
 import { SIGNUP_BASE_PATH } from "globals";
 import { ToUs } from "login/app_utils/helperFunctions/ToUs";
-import { translate } from "login/translation";
 import React, { Fragment } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -95,16 +94,39 @@ export function RegisterEmail(): JSX.Element {
     dispatch(actions.rejectTOU());
   }
 
+  // TODO: Thought I could use the EduIDButton to make the link, but it doesn't look very good :)
+  // const login_here_link = (
+  //   <EduIDButton buttonstyle="link" id="login-link" href={dashboard_url} target="_blank">
+  //     <FormattedMessage defaultMessage="here" description="Signup login here link" />
+  //   </EduIDButton>
+  // );
+
+  const login_here_link = (
+    <a href={dashboard_url}>{<FormattedMessage defaultMessage="here" description="Signup login here link" />}</a>
+  );
+
   return (
     <Fragment>
       <div key="0" id="content" className="horizontal-content-margin content">
-        <h1 className="heading">{translate("register.sub-heading")}</h1>
-        <p>{translate("register.paragraph")}</p>
+        <h1 className="heading">
+          <FormattedMessage defaultMessage="Register your email address to create your eduID." description="Signup" />
+        </h1>
+        <p>
+          <FormattedMessage
+            defaultMessage={`Once you have created an eduID you will be able to log in and
+                             connect it to your Swedish national identity number.`}
+            description="Signup"
+          />
+        </p>
 
         <EmailForm />
+
         <p>
-          {translate("register.toLogin")}&nbsp;
-          <a href={dashboard_url}>{translate("text.link")}</a>
+          <FormattedMessage
+            defaultMessage="If you already have eduID you can log in {login_here_link}."
+            description="Signup instructions"
+            values={{ login_here_link }}
+          />
         </p>
       </div>
       <div key="1">
@@ -115,7 +137,7 @@ export function RegisterEmail(): JSX.Element {
           showModal={acceptingTOU}
           closeModal={handleReject}
           acceptModal={handleAccept}
-          acceptButtonText={<FormattedMessage defaultMessage="accept" description="accept button" />}
+          acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
         />
       </div>
     </Fragment>
