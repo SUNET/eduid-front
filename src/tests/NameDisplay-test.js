@@ -3,7 +3,7 @@ import expect from "expect";
 import { ReduxIntlProvider } from "components/ReduxIntl";
 import { shallow, mount } from "enzyme";
 import { IntlProvider } from "react-intl";
-import NameDisplay from "containers/NameDisplay";
+import NameDisplay from "components/NameDisplay";
 const mock = require("jest-mock");
 const messages = require("../login/translation/messageIndex");
 import { MemoryRouter } from "react-router-dom";

@@ -2,7 +2,7 @@ import NinDisplay from "components/NinDisplay";
 import Profile from "components/Profile";
 import VerifyIdentity from "components/VerifyIdentity";
 import EmailDisplay from "components/EmailDisplay";
-import NameDisplay from "containers/NameDisplay";
+import NameDisplay from "components/NameDisplay";
 import PhoneDisplay from "components/PhoneDisplay";
 import { DashboardRootState } from "dashboard-init-app";
 import { ReactWrapper, shallow } from "enzyme";

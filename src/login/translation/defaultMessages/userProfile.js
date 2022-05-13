@@ -3,9 +3,6 @@ import { FormattedMessage } from "react-intl";
 
 export const userProfile = {
   // profile page
-  "profile.name_display_title": <FormattedMessage id="profile.name_display_title" defaultMessage={`Name`} />,
-  "profile.name_display_no_data": <FormattedMessage id="profile.name_display_no_data" defaultMessage={`add name`} />,
-
   "profile.phone_display_unconfirmed_data": (
     <FormattedMessage id="profile.phone_display_unconfirmed_data" defaultMessage={`confirm added number`} />
   ),
