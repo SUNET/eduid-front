@@ -6,7 +6,7 @@ function EmailDisplay(): JSX.Element {
   const emails = useDashboardAppSelector((state) => state.emails.emails);
   const primary = emails.filter((email) => email.primary);
   let userData;
-  // is it possible to happen, no primary email?
+
   if (!primary.length) {
     userData = (
       <div className="display-data no-data">
