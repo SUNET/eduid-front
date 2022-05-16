@@ -10,13 +10,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { emptyStringPattern } from "../../../app_utils/validation/regexPatterns";
-import Splash from "../../../../containers/Splash";
-// import ButtonSecondary from "../../Buttons/ButtonSecondary";
 import { getFormValues } from "redux-form";
 import { ExtraSecurityType } from "../../../redux/slices/resetPasswordSlice";
 import { useAppDispatch, useAppSelector } from "../../../app_init/hooks";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FormattedMessage } from "react-intl";
+import Splash from "components/Splash";
 
 interface NewPasswordFormData {
   newPassword?: string;
@@ -167,8 +166,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
   };
 
   return (
-    <>
-      {!password && <Splash />}
+    <Splash showChildren={!!password}>
       <p className="heading">
         <FormattedMessage defaultMessage="Set your new password" description="Set new password" />
       </p>
@@ -209,7 +207,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
         emailCode={emailCode}
         extra_security={extra_security}
       />
-    </>
+    </Splash>
   );
 }
 

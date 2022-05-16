@@ -19,6 +19,10 @@
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
   },
+  "/h666/": {
+    "developer_comment": "select extra webauthn",
+    "string": "Choose extra identification method:"
+  },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules regulate the “other” usage."
@@ -140,6 +144,10 @@
   "9fTOcF": {
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
+  },
+  "A2MTya": {
+    "developer_comment": "add webauthn token key",
+    "string": "security key"
   },
   "ABLcOw": {
     "developer_comment": "explanation text for letter proofing",
@@ -992,6 +1000,10 @@
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
     "string": "For you registered at your current address"
+  },
+  "lR0uvy": {
+    "developer_comment": "Other Device, device 1",
+    "string": "Incorrect code, try again"
   },
   "ladok.dropdown_placeholder": {
     "developer_comment": "Ladok account linking",
@@ -2069,6 +2081,10 @@
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
     "string": "Cancel"
+  },
+  "xjLF/u": {
+    "developer_comment": "add webauthn token device",
+    "string": "this device"
   },
   "xsCSvh": {
     "developer_comment": "verify identity improve security description",
