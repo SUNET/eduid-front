@@ -1,3 +1,4 @@
+import EduIDButton from "components/EduIDButton";
 import ShowAfterDelay from "components/ShowAfterDelay";
 import { useAppSelector } from "login/app_init/hooks";
 import React, { Fragment, useEffect, useState } from "react";
@@ -6,19 +7,26 @@ import { useHistory } from "react-router";
 
 function SubmitSamlResponse() {
   const [error, setError] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [backDetected, setBackDetected] = useState(false);
 
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
-  const targetUrl = useAppSelector((state) => state.login.post_to);
-  const history = useHistory();
 
   useEffect(() => {
-    if (document.forms[0] && SAMLParameters && targetUrl) {
-      setSubmitted(true);
-      document.forms[0].submit();
+    if (document.forms[0] && SAMLParameters) {
+      if (!SAMLParameters.used && !backDetected) {
+        document.forms[0].submit();
+      }
     } else {
       setError(true);
     }
+  }, []);
+
+  useEffect(() => {
+    window.onpageshow = function (event) {
+      if (event.persisted) {
+        setBackDetected(true);
+      }
+    };
   }, []);
 
   if (error) {
@@ -37,16 +45,50 @@ function SubmitSamlResponse() {
     );
   }
 
-  useEffect(() => {
-    /* If the form has already been submitted, we probably got here because the user pressed 'back'.
-     * Showing a sensible message was difficult (page doesn't seem to re-render), but using a timer
-     * to push the user forward again seems to work ¯\_(ツ)_/¯
-     */
-    const timer = setInterval(() => {
-      history.goForward();
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [submitted == true]);
+  if (SAMLParameters?.used) {
+    return (
+      <Fragment>
+        <h1>
+          <FormattedMessage defaultMessage="Already logged in" description="SAML login finished" />
+        </h1>
+        <p>
+          <FormattedMessage defaultMessage="This login has already been processed." description="SAML login finished" />
+        </p>
+        <p>
+          <FormattedMessage
+            defaultMessage={`You can try to login again using the button below, but it is very likely
+          that the service you are logging in to will reject the request and you will have to start over.
+          `}
+            description="SAML login finished"
+          />
+        </p>
+        <SAMLResponseForm mode="retry" />
+      </Fragment>
+    );
+  }
+
+  if (backDetected) {
+    return (
+      <Fragment>
+        <h1>
+          <FormattedMessage defaultMessage="Already logged in" description="SAML login finished" />
+        </h1>
+        <p>
+          <FormattedMessage
+            defaultMessage="It seems you pressed 'back' in your browser."
+            description="SAML login finished"
+          />
+        </p>
+        <p>
+          <FormattedMessage
+            defaultMessage="You might be able to get back to where you came from by using the 'forward' button."
+            description="SAML login finished"
+          />
+        </p>
+        <SAMLResponseForm mode="forward" />
+      </Fragment>
+    );
+  }
 
   return (
     <Fragment>
@@ -62,15 +104,49 @@ function SubmitSamlResponse() {
           />
         </p>
       </ShowAfterDelay>
+      <SAMLResponseForm mode="noscript" />
+    </Fragment>
+  );
+}
 
-      <form action={targetUrl} method="post">
+interface SAMLResponseFormProps {
+  mode: "noscript" | "retry" | "forward";
+}
+
+function SAMLResponseForm(props: SAMLResponseFormProps) {
+  const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
+  const targetUrl = useAppSelector((state) => state.login.post_to);
+  const history = useHistory();
+
+  function handleGoForward(event: React.MouseEvent<HTMLElement>) {
+    event.preventDefault();
+    history.goForward();
+  }
+
+  return (
+    <div className="saml-login">
+      <form id="saml-login-form" action={targetUrl} method="post">
         <input type="hidden" name="SAMLResponse" value={SAMLParameters?.SAMLResponse || ""} />
         <input type="hidden" name="RelayState" value={SAMLParameters?.RelayState || ""} />
-        <noscript>
-          <input type="submit" value="Continue" />
-        </noscript>
+        <div className="flex-buttons">
+          {props.mode === "noscript" && (
+            <noscript>
+              <input type="submit" value="Continue" />
+            </noscript>
+          )}
+          {props.mode === "retry" && (
+            <EduIDButton buttonstyle="primary" type="submit">
+              <FormattedMessage defaultMessage="Retry" description="SAML login finished" />
+            </EduIDButton>
+          )}
+          {props.mode === "forward" && (
+            <EduIDButton buttonstyle="primary" type="submit" onClick={handleGoForward}>
+              <FormattedMessage defaultMessage="Forward" description="SAML login finished" />
+            </EduIDButton>
+          )}
+        </div>
       </form>
-    </Fragment>
+    </div>
   );
 }
 
