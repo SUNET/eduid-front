@@ -97,7 +97,8 @@ function Security(props) {
                 buttonstyle="primary"
                 onClick={props.handleStartAskingDeviceWebauthnDescription}
               >
-                {translate("security.add_webauthn_token_device")}
+                <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
+                {/* {translate("security.add_webauthn_token_device")} */}
               </EduIDButton>
             ) : null}
             <EduIDButton
@@ -105,7 +106,8 @@ function Security(props) {
               buttonstyle="primary"
               onClick={props.handleStartAskingKeyWebauthnDescription}
             >
-              {translate("security.add_webauthn_token_key")}
+              <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
+              {/* {translate("security.add_webauthn_token_key")} */}
             </EduIDButton>
           </div>
         </div>
