@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Splash from "../../../../containers/Splash";
 import InjectIntl from "../../../translation/InjectIntl_HOC_factory";
 import loginSlice from "../../../redux/slices/loginSlice";
+import Splash from "components/Splash";
 
 const SubmitSamlResponse = () => {
   const [error, setError] = useState(false);
@@ -19,8 +19,7 @@ const SubmitSamlResponse = () => {
     }
   }, []);
   return (
-    <Fragment>
-      {error ? null : <Splash />}
+    <Splash showChildren={!error}>
       <form action={targetUrl} method="post">
         <input type="hidden" name="SAMLResponse" value={SAMLParameters.SAMLResponse} />
         <input type="hidden" name="RelayState" value={SAMLParameters.RelayState} />
@@ -28,7 +27,7 @@ const SubmitSamlResponse = () => {
           <input type="submit" value="Continue" />
         </noscript>
       </form>
-    </Fragment>
+    </Splash>
   );
 };
 
