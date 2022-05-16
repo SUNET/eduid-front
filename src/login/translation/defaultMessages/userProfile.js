@@ -13,6 +13,8 @@ export const userProfile = {
 
   "profile.eppn_display_title": <FormattedMessage id="profile.eppn_display_title" defaultMessage={`eppn`} />,
 
+  "profile.email_display_title": <FormattedMessage id="profile.email_display_title" defaultMessage={`Email address`} />,
+
   "dashboard.tagline_unverified": (
     <FormattedMessage
       id="dashboard.tagline_unverified"
