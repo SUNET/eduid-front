@@ -90,8 +90,12 @@ function Security(props) {
         </div>
         <div id="register-webauthn-tokens-area" className="table-responsive">
           <SecurityKeyTable {...props} />
-
-          <h5>Välj extra identifiering:</h5>
+          <h5>
+            <FormattedMessage
+              description="select extra webauthn"
+              defaultMessage={`Choose extra identification method:`}
+            />
+          </h5>
           <div className="buttons">
             {isPlatformAuthenticatorAvailable ? (
               <EduIDButton
@@ -100,7 +104,6 @@ function Security(props) {
                 onClick={props.handleStartAskingDeviceWebauthnDescription}
               >
                 <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
-                {/* {translate("security.add_webauthn_token_device")} */}
               </EduIDButton>
             ) : null}
             <EduIDButton
@@ -109,7 +112,6 @@ function Security(props) {
               onClick={props.handleStartAskingKeyWebauthnDescription}
             >
               <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
-              {/* {translate("security.add_webauthn_token_key")} */}
             </EduIDButton>
           </div>
         </div>
