@@ -23,6 +23,14 @@
     "developer_comment": "select extra webauthn",
     "string": "Välj extra identifieringsmetod:"
   },
+  "0Cwr7Z": {
+    "developer_comment": "SAML login finished",
+    "string": "Saknar SAML-parametrar för att genomföra inloggningen. Var god försök igen."
+  },
+  "0fMD4p": {
+    "developer_comment": "SAML login finished",
+    "string": "Var god vänta, du loggas nu in..."
+  },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "att SUNET:s etiska regler reglerar övrig tillåten användning. "
@@ -222,6 +230,10 @@
   "FQZGJ7": {
     "developer_comment": "Terms of use (common header)",
     "string": "Allmänna regler för eduID-användare:"
+  },
+  "FfxTGR": {
+    "developer_comment": "SAML login finished",
+    "string": "Du loggas nu in"
   },
   "Fw5FJ3": {
     "developer_comment": "Footer copyright",
@@ -430,6 +442,10 @@
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET bedömer som oetiskt när någon:"
   },
+  "T0Y5mk": {
+    "developer_comment": "SAML login finished",
+    "string": "Inloggningen har redan genomförst."
+  },
   "T80C1A": {
     "developer_comment": "eidas vetting button freja",
     "string": "med digitalt ID-kort"
@@ -460,6 +476,10 @@
     "developer_comment": "Reset Password email link sent",
     "string": "skicka länken igen"
   },
+  "UV+SMM": {
+    "developer_comment": "SAML login finished",
+    "string": "Det verkar som att du tryckte 'bakåt' i din webbläsare."
+  },
   "V690+Q": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Identifiering misslyckades"
@@ -471,6 +491,10 @@
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "Inloggningen är inte giltig längre"
+  },
+  "VdBjyo": {
+    "developer_comment": "SAML login finished",
+    "string": "Det är möjligt att du kan komma tillbaka dit du kom ifrån med 'Framåt'-knappen."
   },
   "VlSXpR": {
     "developer_comment": "Header login",
@@ -575,6 +599,10 @@
   "banner.tagline": {
     "string": "eduID är enklare och säkrare inloggning."
   },
+  "bfWfFp": {
+    "developer_comment": "SAML login finished",
+    "string": "Redan inloggad"
+  },
   "button_add": {
     "string": "Lägg till"
   },
@@ -584,6 +612,10 @@
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "DÖLJ"
+  },
+  "cM/njp": {
+    "developer_comment": "SAML login finished",
+    "string": "Framåt"
   },
   "captcha.cancel": {
     "string": "Avbryt"
@@ -927,6 +959,10 @@
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "gå tillbaka"
   },
+  "hCOaxe": {
+    "developer_comment": "SAML login finished",
+    "string": "Inloggning misslyckades"
+  },
   "hEOTTF": {
     "developer_comment": "Use another device, finished",
     "string": "Koden har gått ut och du bör stänga det här fönstret"
@@ -1000,6 +1036,10 @@
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
     "string": "För dig som har en svensk folkbokföringsadress"
+  },
+  "lMUS8G": {
+    "developer_comment": "SAML login finished",
+    "string": "Försök igen"
   },
   "lR0uvy": {
     "developer_comment": "Other Device, device 1",
@@ -2073,6 +2113,10 @@
   "wUi3zr": {
     "developer_comment": "Reset Password phone code sent",
     "string": "om"
+  },
+  "x4rX5I": {
+    "developer_comment": "SAML login finished",
+    "string": "Du kan försöka logga in igen med knappen nedan, men det är troligt att tjänsten du försöker logga in på inte kommer godta det. Isåfall behöver du börja om inloggningen från början."
   },
   "xBsfUj": {
     "developer_comment": "Login Mfa paragraph",
