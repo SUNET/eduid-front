@@ -2,11 +2,6 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const login = {
-  // --- USERNAME & PASSWORD --- //
-  "login.usernamePw.reset-password-link": (
-    <FormattedMessage id="login.usernamePw.reset-password-link" defaultMessage={`Forgot your password?`} />
-  ),
-
   // --- MFA --- //
   "login.mfa.h2-heading": (
     <FormattedMessage id="login.mfa.h2-heading" defaultMessage={`Log in: Extra level of security`} />

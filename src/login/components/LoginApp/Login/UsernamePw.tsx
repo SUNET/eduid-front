@@ -1,13 +1,11 @@
 import { useAppDispatch, useAppSelector } from "login/app_init/hooks";
 import loginSlice from "login/redux/slices/loginSlice";
 import resetPasswordSlice from "login/redux/slices/resetPasswordSlice";
-import { translate } from "login/translation";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import { emailPattern } from "../../../app_utils/validation/regexPatterns";
-import Link from "../../Links/Link";
-import LinkRedirect from "../../Links/LinkRedirect";
+import { Link } from "react-router-dom";
 import { setLocalStorage } from "../ResetPassword/CountDownTimer";
 import { LOCAL_STORAGE_PERSISTED_EMAIL } from "../ResetPassword/ResetPasswordMain";
 import { Form as FinalForm, FormRenderProps, Field as FinalField } from "react-final-form";
@@ -129,7 +127,9 @@ function RenderRegisterLink(): JSX.Element {
     <p className="secondary-link text-small">
       <FormattedMessage defaultMessage="Don't have eduID? " description="Login front page" />
       &nbsp;&nbsp;
-      <Link href={toSignup} text={<FormattedMessage defaultMessage=" Register" description="Login front page" />} />
+      <a href={toSignup} id="register-link">
+        <FormattedMessage defaultMessage="Register" description="Login front page" />
+      </a>
     </p>
   );
 }
@@ -153,13 +153,14 @@ function RenderResetPasswordLink(): JSX.Element {
   };
 
   return (
-    <LinkRedirect
-      id={"link-forgot-password"}
-      to={"/"}
+    <Link
+      id="link-forgot-password"
       className={`text-small ${request_in_progress ? "disabled" : ""}`}
+      to={"/"}
       onClick={sendLink}
-      text={translate("login.usernamePw.reset-password-link")}
-    />
+    >
+      <FormattedMessage defaultMessage="Forgot your password?" description="Reset password link" />
+    </Link>
   );
 }
 
