@@ -47,7 +47,6 @@ describe("VerifyIdentity component, no nin added ", () => {
       phones: {
         phones: [],
       },
-      eidas_data: { eidas_sp_freja_idp_url: "eidas_freja", showModal: false },
       letter_proofing: {},
       openid_data: {},
       openid_freja_data: {},
@@ -112,7 +111,6 @@ describe("VerifyIdentity component, NIN already added ", () => {
       phones: {
         phones: [],
       },
-      eidas_data: { eidas_sp_freja_idp_url: "eidas_freja", showModal: false },
       letter_proofing: {},
       openid_data: {},
       openid_freja_data: {},

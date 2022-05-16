@@ -30,7 +30,6 @@ export const dashboardTestState: DashboardRootState = {
   notifications: undefined as any,
   account_linking: undefined as any,
   security: undefined as any,
-  eidas_data: undefined as any,
   ladok: undefined as any,
 };
 
