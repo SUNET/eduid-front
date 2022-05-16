@@ -12,6 +12,9 @@ function SubmitSamlResponse() {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
 
   useEffect(() => {
+    /* Auto-submit form unless backend says the SAML response has already been used once,
+     * or we detect that the user has pressed the 'back' button in the browser.
+     */
     if (document.forms[0] && SAMLParameters) {
       if (!SAMLParameters.used && !backDetected) {
         document.forms[0].submit();
@@ -22,6 +25,11 @@ function SubmitSamlResponse() {
   }, []);
 
   useEffect(() => {
+    /* Listen for a window onPageShow event, indicating the user has pressed the 'back' button.
+     * Firefox renders this page again if the user presses 'back' right after login, whilst Chrome
+     * re-renders the page, in which case the SAMLParameters.used should enable us to inform the
+     * user that re-posting the SAML response is unlikely to work.
+     */
     window.onpageshow = function (event) {
       if (event.persisted) {
         setBackDetected(true);
