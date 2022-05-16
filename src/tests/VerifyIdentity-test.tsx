@@ -11,7 +11,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ninStateFromNinList } from "reducers/Nins";
 import { MockStoreEnhanced } from "redux-mock-store";
 import { dashboardTestState, fakeStore, setupComponent } from "./helperFunctions/DashboardTestApp";
-import EidasContainer from "containers/Eidas";
+import Eidas from "components/Eidas";
 
 // const mock = require("jest-mock");
 // const messages = require("../login/translation/messageIndex");
@@ -88,7 +88,7 @@ describe("VerifyIdentity component, no nin added ", () => {
   });
 
   it("Renders Freja Proofing ", () => {
-    const component = wrapper.find(EidasContainer);
+    const component = wrapper.find(Eidas);
     expect(component.exists()).toEqual(true);
 
     // vetting option should be enabled, even when there is no NIN

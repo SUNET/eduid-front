@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import LetterProofingButton from "components/LetterProofing";
-import EidasContainer from "containers/Eidas";
+import Eidas from "components/Eidas";
 import OpenidConnectContainer from "containers/OpenidConnect";
 import OpenidConnectFrejaContainer from "containers/OpenidConnectFreja";
 import { useDashboardAppSelector } from "dashboard-hooks";
@@ -37,7 +37,7 @@ function VerifyIdentity(): JSX.Element | null {
       <div id="nins-btn-grid" className="x-adjust">
         <LetterProofingButton disabled={letterProofingDisabled} />
         <LookupMobileProofing disabled={lookupMobileDisabled} />
-        <EidasContainer disabled={disabled} />
+        <Eidas />
         <OpenidConnectContainer disabled={disabled} />
         <OpenidConnectFrejaContainer disabled={disabled} />
       </div>
