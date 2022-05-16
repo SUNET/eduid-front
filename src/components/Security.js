@@ -7,7 +7,6 @@ import { spinnerOpts } from "../components/Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import { useIntl } from "react-intl";
-import CookieChecker from "./../components/CookieChecker";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 import { FormattedMessage } from "react-intl";
 
@@ -93,16 +92,13 @@ function Security(props) {
           <SecurityKeyTable {...props} />
           <div className="register-authn-buttons">
             {isPlatformAuthenticatorAvailable ? (
-              // TODO: will remove CookieChecker when user can authenticate with other devices
-              <CookieChecker cookieName="show-platform-auth">
-                <EduIDButton
-                  id="security-webauthn-platform-button"
-                  buttonstyle="primary"
-                  onClick={props.handleStartAskingDeviceWebauthnDescription}
-                >
-                  {translate("security.add_webauthn_token_device")}
-                </EduIDButton>
-              </CookieChecker>
+              <EduIDButton
+                id="security-webauthn-platform-button"
+                buttonstyle="primary"
+                onClick={props.handleStartAskingDeviceWebauthnDescription}
+              >
+                {translate("security.add_webauthn_token_device")}
+              </EduIDButton>
             ) : null}
             <EduIDButton
               id="security-webauthn-button"
