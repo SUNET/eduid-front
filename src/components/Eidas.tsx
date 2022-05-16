@@ -9,7 +9,7 @@ function Eidas(): JSX.Element {
   let eidas_sp_url = config.eidas_url;
   const freja_idp_url = config.token_verify_idp;
   const verify_path = "verify-nin";
-  if (!eidas_sp_url.endsWith("/")) {
+  if (eidas_sp_url && !eidas_sp_url.endsWith("/")) {
     eidas_sp_url = eidas_sp_url.concat("/");
   }
   const eidas_sp_freja_idp_url = eidas_sp_url + verify_path + "?idp=" + freja_idp_url;
