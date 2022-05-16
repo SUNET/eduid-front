@@ -90,7 +90,9 @@ function Security(props) {
         </div>
         <div id="register-webauthn-tokens-area" className="table-responsive">
           <SecurityKeyTable {...props} />
-          <div className="register-authn-buttons">
+
+          <h5>Välj extra identifiering:</h5>
+          <div className="buttons">
             {isPlatformAuthenticatorAvailable ? (
               <EduIDButton
                 id="security-webauthn-platform-button"
