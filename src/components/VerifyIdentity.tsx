@@ -11,11 +11,9 @@ import { FormattedMessage } from "react-intl";
 function VerifyIdentity(): JSX.Element | null {
   // page text depend on nin status (verified or not)
   let vettingButtons;
-
   const nin = useDashboardAppSelector((state) => state.nins.first_nin);
   const isConfigured = useDashboardAppSelector((state) => state.config.is_configured);
   const phones = useDashboardAppSelector((state) => state.phones.phones);
-
   const hasVerifiedNin = !!nin?.verified;
   const hasVerifiedSwePhone = phones.some((phone) => phone.verified && phone.number.startsWith("+46"));
 
@@ -58,7 +56,7 @@ function VerifyIdentity(): JSX.Element | null {
         <div className="lead">
           <p>
             <FormattedMessage
-              description={"verify identity unverified description"}
+              description="verify identity unverified description"
               defaultMessage={`To be able to use eduID you have to prove your identity. Add your national id number 
               and verify it in real life.`}
             />
@@ -76,7 +74,7 @@ function VerifyIdentity(): JSX.Element | null {
             </li>
             <li>
               <h4>
-                <FormattedMessage description="verify identity connect nin" defaultMessage={`Verify your id number`} />
+                <FormattedMessage description="verify identity connect nin" defaultMessage="Verify your id number" />
               </h4>
               <p className="x-adjust">
                 <FormattedMessage
@@ -98,7 +96,7 @@ function VerifyIdentity(): JSX.Element | null {
               </h4>
               <p className="x-adjust">
                 <FormattedMessage
-                  id="verify identity verified description"
+                  description="verify identity verified description"
                   defaultMessage={`The below id number is now connected to this eduID. Use your eduID to log in to 
                   services related to higher education.`}
                 />
@@ -107,15 +105,15 @@ function VerifyIdentity(): JSX.Element | null {
             <li>
               <h4>
                 <FormattedMessage
-                  defaultMessage={`Improve your identification`}
                   description="verify identity improve security heading"
+                  defaultMessage={`Improve your identification`}
                 />
               </h4>
               <p className="x-adjust">
                 <FormattedMessage
+                  description="verify identity improve security description"
                   defaultMessage={`Add a phone number or a security key to your eduID to keep your identity at 
                       password reset under Settings.`}
-                  description="verify identity improve security description"
                 />
               </p>
             </li>
