@@ -102,6 +102,6 @@ export function fetchAllPersonalData(config: { personal_data_url: string }) {
     })
     .then(checkStatus)
     .then((response) => {
-      response && response.json();
+      if (response) return response.json();
     });
 }
