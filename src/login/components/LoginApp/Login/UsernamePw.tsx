@@ -174,11 +174,7 @@ function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): JSX
       id="login-form-button"
       onClick={props.handleSubmit}
     >
-      {loading ? (
-        <FormattedMessage defaultMessage="Logging in" description="Login front page" />
-      ) : (
-        <FormattedMessage defaultMessage="Log in" description="Login front page" />
-      )}
+      <FormattedMessage defaultMessage="Log in" description="Login front page" />
     </EduIDButton>
   );
 }
