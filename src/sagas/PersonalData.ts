@@ -27,6 +27,12 @@ export function* requestAllPersonalData() {
     yield put(getAllUserdata()); // TODO: Think this is a NO-OP
     const state: DashboardRootState = yield select((state) => state);
     const response: PayloadAction<AllUserData, string, never, boolean> = yield call(fetchAllPersonalData, state.config);
+
+    if (!response) {
+      // user was probably not logged in, and the browser is being directed to go to authn at this very moment
+      return;
+    }
+
     yield put(putCsrfToken(response));
 
     if (response.error) {
@@ -95,5 +101,7 @@ export function fetchAllPersonalData(config: { personal_data_url: string }) {
       ...getRequest,
     })
     .then(checkStatus)
-    .then((response) => response.json());
+    .then((response) => {
+      response && response.json();
+    });
 }
