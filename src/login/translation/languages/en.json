@@ -848,6 +848,9 @@
   "emails.confirm_title": {
     "string": "Click the link or enter the code sent to {email} here"
   },
+  "emails.duplicated": {
+    "string": "The email is already in the list."
+  },
   "emails.email": {
     "string": "Email"
   },
@@ -1529,6 +1532,9 @@
   "phones.code_invalid_or_expired": {
     "string": "The confirmation code is invalid or it has expired, please try again or request a new code"
   },
+  "phones.duplicated": {
+    "string": "The number is already in the list."
+  },
   "phones.get-success": {
     "string": "Successfully retrieved phone numbers"
   },
@@ -2065,7 +2071,7 @@
     "string": "The value is not changed"
   },
   "verify-identity.add-nin_heading": {
-    "string": "1. Add your id number"
+    "string": "Add your id number"
   },
   "verify-identity.connect-nin_description": {
     "string": "Choose a method to verify that you have access to the added id number. If you are unable to use a method you need to try another."
