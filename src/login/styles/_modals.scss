@@ -20,9 +20,8 @@
 }
 
 h5.modal-title {
-  font-family: $proxima-regular;
-  line-height: 1.4;
-  font-size: 1.25rem;
+  @extend .heading-2;
+  margin-bottom: 0;
 }
 
 .modal-content {
@@ -57,7 +56,7 @@ h5.modal-title {
   & .modal-footer {
     border-top: none;
     padding: 0;
-    margin: 1rem;
+    margin: 1rem 1rem 2rem;
     display: flex;
     justify-content: center;
 
