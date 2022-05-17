@@ -848,6 +848,9 @@
   "emails.confirm_title": {
     "string": "Klicka på länken eller skriv in koden som skickats till {email} här"
   },
+  "emails.duplicated": {
+    "string": "E-postadressen finns redan i listan."
+  },
   "emails.email": {
     "string": "E-postadress"
   },
@@ -1528,6 +1531,9 @@
   },
   "phones.code_invalid_or_expired": {
     "string": "Den bekräftelsekod du angett stämmer inte. Var god försök igen"
+  },
+  "phones.duplicated": {
+    "string": "Numret finns redan i listan."
   },
   "phones.get-success": {
     "string": "Telefonnummer laddades"
