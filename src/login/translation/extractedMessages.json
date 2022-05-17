@@ -19,6 +19,18 @@
     "developer_comment": "Login OtherDevice",
     "string": "Retry"
   },
+  "/h666/": {
+    "developer_comment": "select extra webauthn",
+    "string": "Choose extra identification method:"
+  },
+  "0Cwr7Z": {
+    "developer_comment": "SAML login finished",
+    "string": "Missing SAML parameters to proceed with login. Please try again."
+  },
+  "0fMD4p": {
+    "developer_comment": "SAML login finished",
+    "string": "Please wait, you are being logged in..."
+  },
   "0ui6m3": {
     "developer_comment": "ToU first paragraph",
     "string": "that SUNET's ethical rules regulate the “other” usage."
@@ -141,6 +153,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
+  "A2MTya": {
+    "developer_comment": "add webauthn token key",
+    "string": "security key"
+  },
   "ABLcOw": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The code expired"
@@ -222,6 +238,10 @@
   "FnpebS": {
     "developer_comment": "letter initialize proofing help text",
     "string": "The letter will contain a code that for security reasons expires in two weeks."
+  }
+  "FfxTGR": {
+    "developer_comment": "SAML login finished",
+    "string": "Logging you in"
   },
   "Fw5FJ3": {
     "developer_comment": "Footer copyright",
@@ -438,6 +458,10 @@
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
   },
+  "T0Y5mk": {
+    "developer_comment": "SAML login finished",
+    "string": "This login has already been processed."
+  },
   "T80C1A": {
     "developer_comment": "eidas vetting button freja",
     "string": "with a digital ID-card"
@@ -468,6 +492,10 @@
     "developer_comment": "Reset Password email link sent",
     "string": "resend link"
   },
+  "UV+SMM": {
+    "developer_comment": "SAML login finished",
+    "string": "It seems you pressed 'back' in your browser."
+  },
   "V690+Q": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Identification failed"
@@ -479,6 +507,10 @@
   "VLu1fI": {
     "developer_comment": "Use other device",
     "string": "The request is not valid anymore"
+  },
+  "VdBjyo": {
+    "developer_comment": "SAML login finished",
+    "string": "You might be able to get back to where you came from by using the 'forward' button."
   },
   "VlSXpR": {
     "developer_comment": "Header login",
@@ -583,6 +615,10 @@
   "banner.tagline": {
     "string": "eduID is easier and safer login."
   },
+  "bfWfFp": {
+    "developer_comment": "SAML login finished",
+    "string": "Already logged in"
+  },
   "button_add": {
     "string": "Add"
   },
@@ -592,6 +628,10 @@
   "cBe8pC": {
     "developer_comment": "nin/password button label",
     "string": "HIDE"
+  },
+  "cM/njp": {
+    "developer_comment": "SAML login finished",
+    "string": "Forward"
   },
   "captcha.cancel": {
     "string": "Cancel"
@@ -956,6 +996,10 @@
     "developer_comment": "Set new password (go back to eduID button)",
     "string": "go back"
   },
+  "hCOaxe": {
+    "developer_comment": "SAML login finished",
+    "string": "Login failed"
+  },
   "hEOTTF": {
     "developer_comment": "Use another device, finished",
     "string": "The code has expired, please close this browser window."
@@ -1033,6 +1077,10 @@
   "l+PAQr": {
     "developer_comment": "explanation text for letter proofing",
     "string": "For you registered at your current address"
+  },
+  "lMUS8G": {
+    "developer_comment": "SAML login finished",
+    "string": "Retry"
   },
   "lR0uvy": {
     "developer_comment": "Other Device, device 1",
@@ -2102,6 +2150,10 @@
     "developer_comment": "Reset Password phone code sent",
     "string": "in"
   },
+  "x4rX5I": {
+    "developer_comment": "SAML login finished",
+    "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
+  },
   "xBsfUj": {
     "developer_comment": "Login Mfa paragraph",
     "string": "You need to choose a second method to authenticate yourself. This helps guarantee that only you can access your eduID."
@@ -2109,6 +2161,10 @@
   "xCrGiU": {
     "developer_comment": "Use another device, finished",
     "string": "Cancel"
+  },
+  "xjLF/u": {
+    "developer_comment": "add webauthn token device",
+    "string": "this device"
   },
   "xsCSvh": {
     "developer_comment": "verify identity improve security description",
