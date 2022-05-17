@@ -49,8 +49,7 @@ export const ToUs: { [key: string]: ReactElement } = {
         ].map((list, index) => {
           return <dd key={index}>{list}</dd>;
         })}
-      </dl>
-      <dl tabIndex={0} className="terms">
+
         <dt>
           <FormattedMessage
             defaultMessage="SUNET judges unethical behaviour to be when someone:"
