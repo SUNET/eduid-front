@@ -571,6 +571,10 @@ export const userData = {
                             using international notation, starting with '+' and followed by 10-20 digits.`}
     />
   ),
+
+  "phones.duplicated": (
+    <FormattedMessage id="phones.duplicated" defaultMessage={`The number is already in the list.`} />
+  ),
   /* -----  MOBILE ------- */
 
   "mobile.resend_success": (values) => (
@@ -735,6 +739,8 @@ export const userData = {
       defaultMessage={`We have no record of the email address you provided`}
     />
   ),
+
+  "emails.duplicated": <FormattedMessage id="emails.duplicated" defaultMessage={`The email is already in the list.`} />,
 
   /* -----  Advanced settings ------- */
 
