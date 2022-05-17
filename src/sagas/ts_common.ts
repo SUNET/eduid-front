@@ -27,14 +27,14 @@ export const ajaxHeaders = {
 
 export const postRequest: RequestInit = {
   method: "post",
-  redirect: "manual",
+  redirect: "manual", // we use this to 'trap' the 302 response we get when not authenticated
   credentials: "include",
   headers: ajaxHeaders,
 };
 
 export const getRequest: RequestInit = {
   method: "get",
-  redirect: "manual",
+  redirect: "manual", // we use this to 'trap' the 302 response we get when not authenticated
   credentials: "include",
   headers: ajaxHeaders,
 };

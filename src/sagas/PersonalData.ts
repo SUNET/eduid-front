@@ -24,7 +24,7 @@ import ladokSlice from "reducers/Ladok";
  */
 export function* requestAllPersonalData() {
   try {
-    yield put(getAllUserdata());
+    yield put(getAllUserdata()); // TODO: Think this is a NO-OP
     const state: DashboardRootState = yield select((state) => state);
     const response: PayloadAction<AllUserData, string, never, boolean> = yield call(fetchAllPersonalData, state.config);
     yield put(putCsrfToken(response));
