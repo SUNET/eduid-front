@@ -24,13 +24,24 @@ function UseOtherDevice2() {
   const base_url = useAppSelector((state) => state.config.base_url);
   const params = useParams() as UseOtherParams;
   const dispatch = useAppDispatch();
+  const [fetching, setFetching] = useState(false);
 
   useEffect(() => {
+    async function initialFetch() {
+      if (params?.state_id) {
+        setFetching(true);
+        await dispatch(fetchUseOtherDevice2({ state_id: params.state_id }));
+        setFetching(false);
+      }
+    }
     if (!loginRef) {
       // Fetching data from backend depends on state.config being loaded first (base_url being set)
       if (base_url && !loginRef && params?.state_id) {
         // When the user first follows the QR code, there is no loginRef but there is a state_id
-        dispatch(fetchUseOtherDevice2({ state_id: params.state_id }));
+        if (!fetching) {
+          // the initial fetch will atomically grab the state in the database, *must* avoid two fetches at once
+          initialFetch();
+        }
       }
     } else {
       // after login, this page is rendered with a loginRef present in the state

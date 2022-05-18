@@ -236,7 +236,7 @@ export interface LoginNextResponse {
   service_info?: ServiceInfo;
 }
 
-export type SAMLParameters = { SAMLResponse: string; RelayState?: string };
+export type SAMLParameters = { SAMLResponse: string; RelayState?: string; used?: boolean };
 
 export interface LoginAuthnOptions {
   freja_eidplus?: boolean;
