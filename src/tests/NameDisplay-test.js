@@ -68,6 +68,7 @@ describe("NameDisplay component, when no names are saved", () => {
   it("Renders text when no name is saved", () => {
     const { wrapper } = setupComponent();
     const nameText = wrapper.find("a");
+    console.log("nameText", nameText.debug());
     expect(nameText.exists()).toEqual(true);
     expect(nameText.text()).toContain("add");
   });

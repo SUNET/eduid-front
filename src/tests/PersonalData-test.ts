@@ -45,11 +45,11 @@ describe("Reducers", () => {
         type: actions.getAllUserdata.type,
       })
     ).toEqual({
-      given_name: "John",
-      surname: "Smith",
       display_name: "John",
-      language: "en",
       eppn: "dummy-eppn",
+      given_name: "John",
+      language: "en",
+      surname: "Smith",
     });
   });
 
@@ -74,8 +74,12 @@ describe("Reducers", () => {
 
   it("Receives a POST_USERDATA_FAIL action", () => {
     expect(personalDataReducer(mockState, actions.postUserdataFail("Bad error"))).toEqual({
-      data: mockState,
+      display_name: "John",
+      eppn: "dummy-eppn",
+      given_name: "John",
+      language: "en",
       message: "Bad error",
+      surname: "Smith",
     });
   });
 });

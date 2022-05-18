@@ -407,10 +407,6 @@ export const userData = {
     <FormattedMessage id="nin_display.verify-identity_verified_main_title" defaultMessage={`id number`} />
   ),
 
-  "nins.input_help_text": (
-    <FormattedMessage id="nins.input_help_text" defaultMessage={"National identity number with 12 digits"} />
-  ),
-
   "nins.invalid_nin": <FormattedMessage id="nins.invalid_nin" defaultMessage={`Invalid national id number`} />,
 
   "nins.wrong_length": (

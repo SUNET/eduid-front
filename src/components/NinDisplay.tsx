@@ -1,7 +1,6 @@
 import { removeNin } from "apis/eduidSecurity";
 import EduIDButton from "components/EduIDButton";
 import { useDashboardAppDispatch } from "dashboard-hooks";
-import { translate } from "login/translation";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
@@ -58,7 +57,7 @@ export function NinDisplay(props: NinDisplayProps) {
   return (
     <div className="profile-grid-cell x-adjust">
       <label key="0">
-        <FormattedMessage description="nin display profile main title" defaultMessage="Id number" />
+        <FormattedMessage description="nin label" defaultMessage="Id number" />
       </label>
       {props.nin ? (
         <RenderShowHideNin {...props} />
