@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { FormattedMessage } from "react-intl";
+import { useDashboardAppSelector } from "dashboard-hooks";
 
-interface EidasProps {
-  showModal: boolean;
-  eidas_sp_freja_idp_url: string;
-  handleShowModal: React.MouseEventHandler<HTMLButtonElement>;
-  handleHideModal: React.MouseEventHandler<HTMLButtonElement>;
-}
+function Eidas(): JSX.Element {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const config = useDashboardAppSelector((state) => state.config);
+  let eidas_sp_url = config.eidas_url;
+  const freja_idp_url = config.token_verify_idp;
+  const verify_path = "verify-nin";
+  if (eidas_sp_url && !eidas_sp_url.endsWith("/")) {
+    eidas_sp_url = eidas_sp_url.concat("/");
+  }
+  const eidas_sp_freja_idp_url = eidas_sp_url + verify_path + "?idp=" + freja_idp_url;
 
-function Eidas(props: EidasProps) {
   // Temporary instructions until Sweden Connect has more alternatives and we have a DS
   const freja_instructions = (
     <div id="freja-instructions">
@@ -65,13 +69,18 @@ function Eidas(props: EidasProps) {
 
   function useFrejaeID(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    window.location.href = props.eidas_sp_freja_idp_url;
+    window.location.href = eidas_sp_freja_idp_url;
   }
 
   return (
     <React.Fragment>
       <div className="vetting-button">
-        <button id="eidas-show-modal" onClick={props.handleShowModal}>
+        <button
+          id="eidas-show-modal"
+          onClick={() => {
+            setShowModal(true);
+          }}
+        >
           <div className="text">
             {
               <FormattedMessage
@@ -95,8 +104,10 @@ function Eidas(props: EidasProps) {
           />
         }
         mainText={freja_instructions}
-        showModal={props.showModal}
-        closeModal={props.handleHideModal}
+        showModal={showModal}
+        closeModal={() => {
+          setShowModal(false);
+        }}
         acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
