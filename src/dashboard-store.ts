@@ -15,7 +15,6 @@ import chpassSlice from "reducers/ChangePassword";
 import ninsSlice from "reducers/Nins";
 import letterProofingSlice from "reducers/LetterProofing";
 import { notificationsSlice } from "reducers/Notifications";
-import eidasReducer from "reducers/Eidas";
 import groupsReducer from "./login/redux/reducers/groupsReducer";
 import invitesReducer from "./login/redux/reducers/invitesReducer";
 import ladokSlice from "reducers/Ladok";
@@ -37,7 +36,6 @@ const eduIDApp = combineReducers({
   notifications: notificationsSlice.reducer,
   account_linking: accountLinkingReducer,
   security: securityReducer,
-  eidas_data: eidasReducer,
   ladok: ladokSlice.reducer,
   form: formReducer,
   intl: intlReducer,
