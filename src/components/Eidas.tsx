@@ -5,71 +5,64 @@ import { useDashboardAppSelector } from "dashboard-hooks";
 
 function Eidas(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const config = useDashboardAppSelector((state) => state.config);
-  let eidas_sp_url = config.eidas_url;
-  const freja_idp_url = config.token_verify_idp;
-  const verify_path = "verify-nin";
+  const eidas_url = useDashboardAppSelector((state) => state.config.eidas_url);
+  const token_verify_idp = useDashboardAppSelector((state) => state.config.token_verify_idp);
+  let eidas_sp_url = eidas_url;
+  const freja_idp_url = token_verify_idp;
+
   if (eidas_sp_url && !eidas_sp_url.endsWith("/")) {
     eidas_sp_url = eidas_sp_url.concat("/");
   }
-  const eidas_sp_freja_idp_url = eidas_sp_url + verify_path + "?idp=" + freja_idp_url;
+  const frejafullURL = eidas_sp_url + "verify-nin?idp=" + freja_idp_url;
 
   // Temporary instructions until Sweden Connect has more alternatives and we have a DS
   const freja_instructions = (
     <div id="freja-instructions">
       <ol>
-        <li>{<FormattedMessage description="eidas freja instructions step1" defaultMessage={`Install the app`} />}</li>
         <li>
-          {
-            <FormattedMessage
-              description="eidas freja instructions step2"
-              defaultMessage={`Create a Freja eID Plus account (awarded the "Svensk e-legitimation" quality mark)`}
-            />
-          }
+          <FormattedMessage description="eidas freja instructions step1" defaultMessage={`Install the app`} />
         </li>
         <li>
-          {
-            <FormattedMessage
-              description="eidas freja instructions step3"
-              defaultMessage={`The app will generate a QR-code`}
-            />
-          }
+          <FormattedMessage
+            description="eidas freja instructions step2"
+            defaultMessage={`Create a Freja eID Plus account (awarded the "Svensk e-legitimation" quality mark)`}
+          />
         </li>
         <li>
-          {
-            <FormattedMessage
-              description="eidas freja instructions step4"
-              defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and 
+          <FormattedMessage
+            description="eidas freja instructions step3"
+            defaultMessage={`The app will generate a QR-code`}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="eidas freja instructions step4"
+            defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and 
               they will be able to verify your identity`}
-            />
-          }
+          />
         </li>
         <label>
-          {
-            <FormattedMessage
-              description="eidas freja instruction tip1"
-              defaultMessage={`Tip: Use the app to find your nearest agent`}
-            />
-          }
+          <FormattedMessage
+            description="eidas freja instruction tip1"
+            defaultMessage={`Tip: Use the app to find your nearest agent`}
+          />
         </label>
         <li>
-          {
-            <FormattedMessage
-              description="eidas freja instructions step5"
-              defaultMessage={`Freja eID is now ready to be used with your eduID`}
-            />
-          }
+          <FormattedMessage
+            description="eidas freja instructions step5"
+            defaultMessage={`Freja eID is now ready to be used with your eduID`}
+          />
         </li>
       </ol>
       <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
-        {<FormattedMessage description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />}
+        <FormattedMessage description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />
       </a>
     </div>
   );
 
   function useFrejaeID(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    window.location.href = eidas_sp_freja_idp_url;
+    window.location.href = frejafullURL;
   }
 
   return (
@@ -82,16 +75,14 @@ function Eidas(): JSX.Element {
           }}
         >
           <div className="text">
-            {
-              <FormattedMessage
-                description="verify identity vetting freja tagline"
-                defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
-              />
-            }
+            <FormattedMessage
+              description="verify identity vetting freja tagline"
+              defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
+            />
           </div>
 
           <div className="name">
-            {<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />}
+            <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
           </div>
         </button>
       </div>
