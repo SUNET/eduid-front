@@ -7,21 +7,13 @@ import { clearNotifications } from "reducers/Notifications";
 import NotificationModal from "../Modals/NotificationModal";
 import { HashLink } from "react-router-hash-link";
 
-// TODO: make a typed slice out of phone (like nins) and move this there
-//       (and remove "as PhoneInfo[]" below, since it will be deduced automatically)
-interface PhoneInfo {
-  number: string;
-  verified: boolean;
-  primary: boolean;
-}
-
 interface LookupMobileProofingProps {
   disabled: boolean;
 }
 
 function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
   const nin = useDashboardAppSelector((state) => state.nins.first_nin);
-  const phones = useDashboardAppSelector((state) => state.phones.phones as PhoneInfo[]);
+  const phones = useDashboardAppSelector((state) => state.phones.phones);
   const dispatch = useDashboardAppDispatch();
   const [showModal, setShowModal] = useState(false);
 
@@ -92,6 +84,13 @@ function LookupMobileProofing(props: LookupMobileProofingProps): JSX.Element {
             {translate("lmp.button_text_request")}
           </div>
         </button>
+        <p className={"proofing-btn-help" + (props.disabled === true ? " disabled" : "")}>
+          <FormattedMessage
+            description="lmp initialize proofing help text"
+            defaultMessage={`The phone number registry is maintained by phone operators at their convenience and may not 
+            include all registered phone numbers.`}
+          />
+        </p>
       </div>
       {/* notificationModal will only opens when user are able to verify identity by phone */}
       <NotificationModal

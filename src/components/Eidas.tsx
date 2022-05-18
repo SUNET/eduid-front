@@ -1,88 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import NotificationModal from "../login/components/Modals/NotificationModal";
 import { FormattedMessage } from "react-intl";
+import { useDashboardAppSelector } from "dashboard-hooks";
 
-interface EidasProps {
-  showModal: boolean;
-  eidas_sp_freja_idp_url: string;
-  handleShowModal: React.MouseEventHandler<HTMLButtonElement>;
-  handleHideModal: React.MouseEventHandler<HTMLButtonElement>;
-}
+function Eidas(): JSX.Element {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const eidas_url = useDashboardAppSelector((state) => state.config.eidas_url);
+  const token_verify_idp = useDashboardAppSelector((state) => state.config.token_verify_idp);
+  let eidas_sp_url = eidas_url;
+  const freja_idp_url = token_verify_idp;
 
-function Eidas(props: EidasProps) {
+  if (eidas_sp_url && !eidas_sp_url.endsWith("/")) {
+    eidas_sp_url = eidas_sp_url.concat("/");
+  }
+  const frejafullURL = eidas_sp_url + "verify-nin?idp=" + freja_idp_url;
+
   // Temporary instructions until Sweden Connect has more alternatives and we have a DS
   const freja_instructions = (
     <div id="freja-instructions">
       <ol>
-        <li>{<FormattedMessage description="eidas freja instructions step1" defaultMessage={`Install the app`} />}</li>
         <li>
-          {
-            <FormattedMessage
-              description="eidas freja instructions step2"
-              defaultMessage={`Create a Freja eID Plus account (awarded the "Svensk e-legitimation" quality mark)`}
-            />
-          }
+          <FormattedMessage description="eidas freja instructions step1" defaultMessage={`Install the app`} />
         </li>
         <li>
-          {
-            <FormattedMessage
-              description="eidas freja instructions step3"
-              defaultMessage={`The app will generate a QR-code`}
-            />
-          }
+          <FormattedMessage
+            description="eidas freja instructions step2"
+            defaultMessage={`Create a Freja eID Plus account (awarded the "Svensk e-legitimation" quality mark)`}
+          />
         </li>
         <li>
-          {
-            <FormattedMessage
-              description="eidas freja instructions step4"
-              defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and 
+          <FormattedMessage
+            description="eidas freja instructions step3"
+            defaultMessage={`The app will generate a QR-code`}
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            description="eidas freja instructions step4"
+            defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and 
               they will be able to verify your identity`}
-            />
-          }
+          />
         </li>
         <label>
-          {
-            <FormattedMessage
-              description="eidas freja instruction tip1"
-              defaultMessage={`Tip: Use the app to find your nearest agent`}
-            />
-          }
+          <FormattedMessage
+            description="eidas freja instruction tip1"
+            defaultMessage={`Tip: Use the app to find your nearest agent`}
+          />
         </label>
         <li>
-          {
-            <FormattedMessage
-              description="eidas freja instructions step5"
-              defaultMessage={`Freja eID is now ready to be used with your eduID`}
-            />
-          }
+          <FormattedMessage
+            description="eidas freja instructions step5"
+            defaultMessage={`Freja eID is now ready to be used with your eduID`}
+          />
         </li>
       </ol>
       <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank">
-        {<FormattedMessage description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />}
+        <FormattedMessage description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />
       </a>
     </div>
   );
 
   function useFrejaeID(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    window.location.href = props.eidas_sp_freja_idp_url;
+    window.location.href = frejafullURL;
   }
 
   return (
     <React.Fragment>
       <div className="vetting-button">
-        <button id="eidas-show-modal" onClick={props.handleShowModal}>
+        <button
+          id="eidas-show-modal"
+          onClick={() => {
+            setShowModal(true);
+          }}
+        >
           <div className="text">
-            {
-              <FormattedMessage
-                description="verify identity vetting freja tagline"
-                defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
-              />
-            }
+            <FormattedMessage
+              description="verify identity vetting freja tagline"
+              defaultMessage={`For you able to create a Freja eID+ by visiting one of the authorised agents`}
+            />
           </div>
 
           <div className="name">
-            {<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />}
+            <FormattedMessage description="eidas vetting button freja" defaultMessage={`with a digital ID-card`} />
           </div>
         </button>
       </div>
@@ -95,8 +95,10 @@ function Eidas(props: EidasProps) {
           />
         }
         mainText={freja_instructions}
-        showModal={props.showModal}
-        closeModal={props.handleHideModal}
+        showModal={showModal}
+        closeModal={() => {
+          setShowModal(false);
+        }}
         acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
