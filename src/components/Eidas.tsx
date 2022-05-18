@@ -39,15 +39,15 @@ function Eidas(props: EidasProps) {
               they will be able to verify your identity`}
             />
           }
+          <span>
+            {
+              <FormattedMessage
+                description="eidas freja instruction tip1"
+                defaultMessage={`Tip: Use the app to find your nearest agent`}
+              />
+            }
+          </span>
         </li>
-        <label>
-          {
-            <FormattedMessage
-              description="eidas freja instruction tip1"
-              defaultMessage={`Tip: Use the app to find your nearest agent`}
-            />
-          }
-        </label>
         <li>
           {
             <FormattedMessage

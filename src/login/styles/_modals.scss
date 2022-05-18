@@ -20,7 +20,7 @@
 
       .modal-header {
         border-bottom: none;
-        padding: 1.25rem 2.25rem 0;
+        padding: 1.25rem 2.25rem 0.25rem;
 
         .modal-title {
           width: 100%;
@@ -46,16 +46,47 @@
           margin-top: 0;
         }
 
+        // move to lists?
         ol {
+          list-style-position: inside;
           list-style-type: decimal;
+
+          li {
+            margin-bottom: 1.125rem;
+
+            span {
+              margin-top: 0.5rem;
+              font-family: $proxima-bold;
+              display: block;
+              font-size: 1rem;
+            }
+          }
         }
 
-        .resend-code-container {
-          margin-top: 1rem;
+        // .resend-code-container {
+        //   margin-top: 1rem;
 
-          a {
-            font-size: 1rem;
+        //   a {
+        //     font-size: 1rem;
+        //   }
+        // }
+
+        @media (max-width: $bp-lg) {
+          font-size: 1.125rem;
+
+          .form-control,
+          input {
+            font-size: inherit;
+
+            &::placeholder {
+              font-size: inherit;
+            }
           }
+
+          // .resend-code-container {
+          //   margin-top: 1rem;
+          //   font-size: 0.9rem;
+          // }
         }
       }
 
@@ -76,10 +107,30 @@
     @media (min-width: 576px) {
       max-width: 100%;
     }
+
     @media (max-width: $bp-lg) {
       width: calc(100% - 1.25rem);
       margin: auto 1rem;
+
+      .modal-body {
+        font-size: 1.125rem;
+
+        .form-control,
+        input {
+          font-size: inherit;
+
+          &::placeholder {
+            font-size: inherit;
+          }
+        }
+
+        // .resend-code-container {
+        //   margin-top: 1rem;
+        //   font-size: 0.9rem;
+        // }
+      }
     }
+
     @media (max-width: $bp-md) {
       max-width: calc(100% - 40px);
     }
@@ -88,52 +139,5 @@
   @media (max-width: $bp-lg) {
     width: 100%;
     margin: 0;
-
-    &-body {
-      .form-control,
-      input {
-        font-size: inherit;
-
-        &::placeholder {
-          font-size: inherit;
-        }
-      }
-
-      .resend-code-container {
-        margin-top: 1rem;
-        font-size: 0.9rem;
-      }
-    }
-  }
-}
-
-#freja-instructions {
-  & ol {
-    line-height: 1;
-    font-size: 1.25rem;
-    margin: 0 0 2rem 2rem;
-
-    & li {
-      margin-bottom: 1rem;
-
-      & span {
-        line-height: 1.4;
-      }
-    }
-
-    & label {
-      color: $gray;
-      margin: 1rem 0;
-    }
-  }
-
-  & a {
-    font-size: 1rem;
-    text-decoration: underline;
-
-    &:hover {
-      color: $orange-highlight;
-      text-decoration: none;
-    }
   }
 }
