@@ -40,13 +40,13 @@ function Eidas(): JSX.Element {
             defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and 
               they will be able to verify your identity`}
           />
+          <span>
+            <FormattedMessage
+              description="eidas freja instruction tip1"
+              defaultMessage={`Tip: Use the app to find your nearest agent`}
+            />
+          </span>
         </li>
-        <label>
-          <FormattedMessage
-            description="eidas freja instruction tip1"
-            defaultMessage={`Tip: Use the app to find your nearest agent`}
-          />
-        </label>
         <li>
           <FormattedMessage
             description="eidas freja instructions step5"
