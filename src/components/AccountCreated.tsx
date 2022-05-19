@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
+import { useSignupAppSelector } from "signup-hooks";
 
-function AccountCreated(props: { email: string }) {
+function AccountCreated() {
+  const email = useSignupAppSelector((state) => state.signup.email);
+
   return (
     <div className="horizontal-content-margin content">
       <h1 className="register-header">
@@ -17,7 +20,7 @@ function AccountCreated(props: { email: string }) {
             description="Register email label"
           />
         </p>
-        <h4 className="register-header registered-email">{props.email}</h4>
+        <h4 className="register-header registered-email">{email}</h4>
       </div>
     </div>
   );

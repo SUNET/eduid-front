@@ -1,5 +1,5 @@
-import React, { Component } from "react";
 import EduIDButton from "components/EduIDButton";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 
 interface CodeVerifiedProps {
@@ -10,7 +10,7 @@ interface CodeVerifiedProps {
 
 function CodeVerified(props: CodeVerifiedProps) {
   return (
-    <form key="2" method="GET" action={props.dashboard_url} className="vertical-content-margin content">
+    <form method="GET" action={props.dashboard_url} className="vertical-content-margin content">
       <h1 className="register-header">
         <FormattedMessage
           defaultMessage="You have completed the registration for eduID."

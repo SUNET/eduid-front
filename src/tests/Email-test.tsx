@@ -1,11 +1,10 @@
-import * as actions from "actions/Email";
 import { shallow } from "enzyme";
 import expect from "expect";
 import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router";
-import emailReducer from "reducers/Email";
+import { signupSlice, initialState as signupInitialState } from "reducers/Signup";
 import { fakeStore, setupComponent } from "./helperFunctions/SignupTestApp";
 
 describe("Email Component", () => {
@@ -35,76 +34,19 @@ describe("Email Component", () => {
   });
 });
 
-describe("Email Actions", () => {
-  it("Should add an email ", () => {
-    const expectedAction = {
-      type: actions.ADD_EMAIL,
-      payload: {
-        email: "dummy@example.com",
-      },
-    };
-    expect(actions.addEmail("dummy@example.com")).toEqual(expectedAction);
-  });
-
-  it("Should accept tou", () => {
-    const expectedAction = {
-      type: actions.ACCEPT_TOU,
-    };
-    expect(actions.acceptTOU()).toEqual(expectedAction);
-  });
-
-  it("Should reject tou", () => {
-    const expectedAction = {
-      type: actions.REJECT_TOU,
-    };
-    expect(actions.rejectTOU()).toEqual(expectedAction);
-  });
-});
-
 describe("Email reducer", () => {
-  const mockState = {
-    email: "",
-    acceptingTOU: false,
-    tou_accepted: false,
-  };
-
+  const mockState = signupInitialState;
   it("Receives add email action", () => {
-    expect(
-      emailReducer(mockState, {
-        type: actions.ADD_EMAIL,
-        payload: {
-          email: "dummy@example.com",
-        },
-      })
-    ).toEqual({
+    expect(signupSlice.reducer(mockState, signupSlice.actions.setEmail("dummy@example.com"))).toEqual({
+      ...mockState,
       email: "dummy@example.com",
-      acceptingTOU: true,
-      tou_accepted: false,
     });
   });
 
   it("Receives an accept tou action", () => {
     expect(
-      emailReducer(mockState, {
-        type: actions.ACCEPT_TOU,
-      })
-    ).toEqual({
-      email: "",
-      acceptingTOU: false,
-      tou_accepted: true,
-    });
-  });
-
-  it("Receives a reject tou action", () => {
-    expect(
-      emailReducer(mockState, {
-        type: actions.REJECT_TOU,
-      })
-    ).toEqual({
-      email: "",
-      acceptingTOU: false,
-      tou_accepted: false,
-    });
+      signupSlice.reducer({ ...mockState, tou_accepted: false }, signupSlice.actions.setToUAccepted(true))
+    ).toEqual({ ...mockState, tou_accepted: true });
   });
 });
 
@@ -136,7 +78,7 @@ describe("Test email Container", () => {
     const last_action = actualActions[actualActions.length - 1];
     expect(last_action).toEqual("ADD_EMAIL");
 
-    expect(_actions[_actions.length - 1]).toEqual(actions.addEmail(test_email));
+    expect(_actions[_actions.length - 1]).toEqual(signupSlice.actions.setEmail(test_email));
   });
 
   it("Clicks the accept tou button", () => {
@@ -159,7 +101,7 @@ describe("Test email Container", () => {
     const actualActions = _actions.map((action) => action.type);
     expect(actualActions).toEqual(["ACCEPT_TOU", "notifications/clearNotifications", "IS_CAPTCHA_AVAILABLE"]);
 
-    expect(_actions[0]).toEqual(actions.acceptTOU());
+    expect(_actions[0]).toEqual(signupSlice.actions.setToUAccepted(true));
   });
 
   it("Clicks the reject tou button", () => {
@@ -175,6 +117,6 @@ describe("Test email Container", () => {
     const actualActions = _actions.map((action) => action.type);
     expect(actualActions).toEqual(["REJECT_TOU"]);
 
-    expect(_actions[_actions.length - 1]).toEqual(actions.rejectTOU());
+    expect(_actions[_actions.length - 1]).toEqual(signupSlice.actions.setToUAccepted(true));
   });
 });

@@ -1,4 +1,3 @@
-import * as captchaActions from "actions/Captcha";
 import * as verifiedActions from "actions/CodeVerified";
 import * as resendActions from "actions/ResendCode";
 import * as signupActions from "actions/SignupMain";
@@ -196,39 +195,6 @@ describe("SignupMain reducer", () => {
     ).toEqual({
       ...mockState,
       csrf_token: "dummy token",
-    });
-  });
-
-  //it("Receives post captcha action", () => {
-  //expect(
-  //signupReducer(mockState, {
-  //type: captchaActions.POST_SIGNUP_TRYCAPTCHA
-  //})
-  //).toEqual({
-  //...mockState,
-  ////is_fetching: true
-  //});
-  //});
-
-  it("Receives post captcha success action", () => {
-    expect(
-      signupReducer(mockState, {
-        type: captchaActions.POST_SIGNUP_TRYCAPTCHA_SUCCESS,
-      })
-    ).toEqual({
-      ...mockState,
-      //is_fetching: false
-    });
-  });
-
-  it("Receives post captcha failure action", () => {
-    expect(
-      signupReducer(mockState, {
-        type: captchaActions.POST_SIGNUP_TRYCAPTCHA_FAIL,
-      })
-    ).toEqual({
-      ...mockState,
-      //is_fetching: false,
     });
   });
 
