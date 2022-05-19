@@ -94,13 +94,6 @@ export function RegisterEmail(): JSX.Element {
     dispatch(actions.rejectTOU());
   }
 
-  // TODO: Thought I could use the EduIDButton to make the link, but it doesn't look very good :)
-  // const login_here_link = (
-  //   <EduIDButton buttonstyle="link" id="login-link" href={dashboard_url} target="_blank">
-  //     <FormattedMessage defaultMessage="here" description="Signup login here link" />
-  //   </EduIDButton>
-  // );
-
   const login_here_link = (
     <a href={dashboard_url}>{<FormattedMessage defaultMessage="here" description="Signup login here link" />}</a>
   );
