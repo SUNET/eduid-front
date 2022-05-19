@@ -94,13 +94,15 @@ interface RenderSavePersonalDataButtonProps {
 const RenderSavePersonalDataButton = ({ invalid, pristine, submitting }: RenderSavePersonalDataButtonProps) => {
   const loading = useDashboardAppSelector((state) => state.config.loading_data);
   return (
-    <EduIDButton
-      id="personal-data-button"
-      buttonstyle="primary"
-      disabled={loading || pristine || invalid || submitting}
-    >
-      {translate("button_save")}
-    </EduIDButton>
+    <div className="buttons">
+      <EduIDButton
+        id="personal-data-button"
+        buttonstyle="primary"
+        disabled={loading || pristine || invalid || submitting}
+      >
+        {translate("button_save")}
+      </EduIDButton>
+    </div>
   );
 };
 
