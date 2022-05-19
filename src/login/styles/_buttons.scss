@@ -159,17 +159,19 @@ button.btn-logo {
   }
 }
 
+/* Wraps all buttons for responsive behaviour independend on number */
 .buttons {
   display: flex;
   column-gap: 1rem;
-  padding-top: 1rem;
+  padding: 0.5rem 0;
+  width: 100%;
 
   button {
     min-width: 100px;
   }
 
-  button[type="submit"] {
-    order: 2;
+  @media (min-width: $bp-xs) {
+    width: auto;
   }
 
   @media (max-width: $bp-md) {
@@ -179,12 +181,8 @@ button.btn-logo {
   @media (max-width: $bp-xs) {
     flex-direction: column-reverse;
 
-    button:nth-child(n + 1) {
-      margin-bottom: 0.5rem;
-    }
-
-    button:nth-child(n + 2) {
-      margin-bottom: 1.5rem;
+    button {
+      margin: 0.5rem 0;
     }
   }
 }
