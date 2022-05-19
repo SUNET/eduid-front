@@ -152,7 +152,7 @@ function Emails() {
                     validate={validateEmailsInForm}
                     autoFocus
                   />
-                  <div className="flex-buttons">
+                  <div className="buttons">
                     <EduIDButton id="cancel-adding-email" buttonstyle="secondary" onClick={handleCancel}>
                       <FormattedMessage defaultMessage="Cancel" description="Emails button cancel" />
                     </EduIDButton>
