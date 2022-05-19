@@ -1,9 +1,9 @@
-import React from "react";
-import expect from "expect";
-import { shallow } from "../../node_modules/enzyme";
-import { IntlProvider } from "react-intl";
 import AccountCreatedContainer from "containers/AccountCreated";
-import { setupComponent } from "tests/SignupMain-test";
+import { shallow } from "enzyme";
+import expect from "expect";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { setupComponent } from "./helperFunctions/SignupTestApp";
 
 describe("Account Component", () => {
   it("The component does not render 'false' or 'null'", () => {

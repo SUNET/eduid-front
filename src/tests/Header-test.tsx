@@ -1,9 +1,9 @@
-import React from "react";
+import { shallow } from "enzyme";
 import expect from "expect";
-import { shallow } from "../../node_modules/enzyme";
+import React from "react";
 import { IntlProvider } from "react-intl";
 import Header from "../components/Header";
-import { setupComponent } from "tests/SignupMain-test";
+import { setupComponent } from "./helperFunctions/SignupTestApp";
 
 describe("Header Component", () => {
   it("Component does not render 'false' or 'null'", () => {

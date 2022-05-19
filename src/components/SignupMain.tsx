@@ -2,11 +2,11 @@ import Header from "components/Header";
 import AccountCreatedContainer from "containers/AccountCreated";
 import CaptchaContainer from "containers/Captcha";
 import CodeVerifiedContainer from "containers/CodeVerified";
-import EmailContainer from "containers/Email";
 import EmailInUseContainer from "containers/EmailInUse";
 import NotificationsContainer from "containers/Notifications";
 import ResendCodeContainer from "containers/ResendCode";
 import { createBrowserHistory } from "history";
+import RegisterEmail from "login/components/RegisterEmail/RegisterEmail";
 import React from "react";
 import { Redirect, Route, Router } from "react-router-dom";
 import { useSignupAppSelector } from "signup-hooks";
@@ -36,7 +36,7 @@ export function SignupMain(): JSX.Element {
           <section id="panel" className="panel">
             <NotificationsContainer />
             <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={redirect} />} />
-            <Route path={`${SIGNUP_BASE_PATH}/email`} component={EmailContainer} />
+            <Route path={`${SIGNUP_BASE_PATH}/email`} component={RegisterEmail} />
             <Route path={`${SIGNUP_BASE_PATH}/trycaptcha`} component={CaptchaContainer} />
             <Route path={`${SIGNUP_BASE_PATH}/new`} component={AccountCreatedContainer} />
             <Route path={`${SIGNUP_BASE_PATH}/code-verified`} component={CodeVerifiedContainer} />
