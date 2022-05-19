@@ -235,13 +235,13 @@
     "developer_comment": "verify identity unverified main title",
     "string": "Connect your identity to your eduID"
   },
-  "FnpebS": {
-    "developer_comment": "letter initialize proofing help text",
-    "string": "The letter will contain a code that for security reasons expires in two weeks."
-  }
   "FfxTGR": {
     "developer_comment": "SAML login finished",
     "string": "Logging you in"
+  },
+  "FnpebS": {
+    "developer_comment": "letter initialize proofing help text",
+    "string": "The letter will contain a code that for security reasons expires in two weeks."
   },
   "Fw5FJ3": {
     "developer_comment": "Footer copyright",
@@ -531,6 +531,10 @@
   "YGVN20": {
     "developer_comment": "go to eudID link text",
     "string": "Go to my eduid"
+  },
+  "YbLEig": {
+    "developer_comment": "eidas proofing help text",
+    "string": "To use this option you will need to first create a digital ID-card in the {freja_eid_link} app."
   },
   "YdEGFD": {
     "developer_comment": "Help text for email confirmation code",
