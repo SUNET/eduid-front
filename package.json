@@ -67,6 +67,7 @@
     "@types/node": "^17.0.22",
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
+    "@types/react-recaptcha": "^2.3.4",
     "@types/react-router-dom": "^5.3.2",
     "@types/react-router-hash-link": "^2.4.5",
     "@types/react-router-redux": "^5.0.21",

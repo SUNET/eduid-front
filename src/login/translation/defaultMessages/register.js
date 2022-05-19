@@ -22,14 +22,6 @@ export const register = {
   // captcha
   "captcha.one-step-left": <FormattedMessage id="captcha.one-step-left" defaultMessage={`Only one more step left!`} />,
 
-  "captcha.verify-human": (
-    <FormattedMessage id="captcha.verify-human" defaultMessage={`Confirm that you are a human.`} />
-  ),
-
-  "captcha.submit": <FormattedMessage id="captcha.submit" defaultMessage={`Done`} />,
-
-  "captcha.cancel": <FormattedMessage id="captcha.cancel" defaultMessage={`Cancel`} />,
-
   // eduID links sent to email
   "created.confirm-registration": (
     <FormattedMessage id="created.confirm-registration" defaultMessage={`Confirm your email to log in to eduID.`} />

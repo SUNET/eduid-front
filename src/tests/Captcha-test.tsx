@@ -4,9 +4,9 @@ import { put, call } from "redux-saga/effects";
 import { shallow } from "enzyme";
 import { IntlProvider } from "react-intl";
 import { fakeStore, setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";
-import CaptchaContainer from "containers/Captcha";
+import Captcha from "components/Captcha";
 import * as actions from "actions/Captcha";
-import captchaReducer from "reducers/Captcha";
+import { captchaSlice } from "reducers/Captcha";
 import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
 import { newCsrfToken } from "actions/DashboardConfig";
 import fetchMock from "jest-fetch-mock";
@@ -19,7 +19,7 @@ describe("Captcha Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <CaptchaContainer />
+        <Captcha />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -28,7 +28,7 @@ describe("Captcha Component", () => {
   it("The captcha <div> element renders", () => {
     fetchMock.doMockOnceIf("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
-      component: <CaptchaContainer />,
+      component: <Captcha />,
     });
     const captcha = fullWrapper.find("#captcha");
     expect(captcha.exists()).toEqual(true);
@@ -37,7 +37,7 @@ describe("Captcha Component", () => {
   it("Renders the OK and CANCEL buttons", () => {
     fetchMock.doMockOnceIf("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
-      component: <CaptchaContainer />,
+      component: <Captcha />,
     });
     const button = fullWrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
@@ -88,7 +88,7 @@ describe("Captcha reducer", () => {
 
   it("Receives a captcha verification action", () => {
     expect(
-      captchaReducer(mockState, {
+      captchaSlice.reducer(mockState, {
         type: actions.CAPTCHA_VERIFICATION,
         payload: {
           response: "dummy verification",
@@ -105,7 +105,7 @@ describe("Test captcha Container", () => {
   it("Clicks the send captcha button", () => {
     const store = fakeStore();
 
-    const wrapper = setupComponent({ component: <CaptchaContainer />, store });
+    const wrapper = setupComponent({ component: <Captcha />, store });
 
     const button = wrapper.find("EduIDButton#send-captcha-button");
     expect(button.exists()).toEqual(true);
@@ -120,7 +120,7 @@ describe("Test captcha Container", () => {
 describe("Async actions for captcha", () => {
   it("Tests the send captcha saga", () => {
     const state = signupTestState;
-    state.captcha.captcha_verification = "dummy response";
+    //state.captcha.captcha_verification = "dummy response";
     state.config.csrf_token = "dummy-token";
     state.email.email = "dummy@example.com";
     state.email.tou_accepted = true;
@@ -131,7 +131,7 @@ describe("Async actions for captcha", () => {
     const data = {
       csrf_token: state.config.csrf_token,
       email: state.email.email,
-      recaptcha_response: state.captcha.captcha_verification,
+      //recaptcha_response: state.captcha.captcha_verification,
       tou_accepted: state.email.tou_accepted,
     };
     const resp = generator.next(state);
