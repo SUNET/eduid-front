@@ -11,6 +11,9 @@ import { sendCaptcha, requestSendCaptcha } from "sagas/Captcha";
 import { newCsrfToken } from "actions/DashboardConfig";
 import fetchMock from "jest-fetch-mock";
 
+function handleCaptchaCancel() {}
+function handleCaptchaCompleted(response: string) {}
+
 describe("Captcha Component", () => {
   afterEach(() => {
     fetchMock.resetMocks();
@@ -19,7 +22,7 @@ describe("Captcha Component", () => {
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
-        <Captcha />
+        <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />
       </IntlProvider>
     );
     expect(wrapper.isEmptyRender()).toEqual(false);
@@ -28,7 +31,7 @@ describe("Captcha Component", () => {
   it("The captcha <div> element renders", () => {
     fetchMock.doMockOnceIf("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
-      component: <Captcha />,
+      component: <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />,
     });
     const captcha = fullWrapper.find("#captcha");
     expect(captcha.exists()).toEqual(true);
@@ -37,7 +40,7 @@ describe("Captcha Component", () => {
   it("Renders the OK and CANCEL buttons", () => {
     fetchMock.doMockOnceIf("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
-      component: <Captcha />,
+      component: <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />,
     });
     const button = fullWrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
@@ -105,7 +108,10 @@ describe("Test captcha Container", () => {
   it("Clicks the send captcha button", () => {
     const store = fakeStore();
 
-    const wrapper = setupComponent({ component: <Captcha />, store });
+    const wrapper = setupComponent({
+      component: <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />,
+      store,
+    });
 
     const button = wrapper.find("EduIDButton#send-captcha-button");
     expect(button.exists()).toEqual(true);

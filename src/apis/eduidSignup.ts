@@ -28,7 +28,13 @@ export const fetchTryCaptcha = createAsyncThunk<
   TryCaptchaRequest, // args type
   { dispatch: SignupAppDispatch; state: SignupRootState }
 >("captcha/fetchTryCaptcha", async (args, thunkAPI) => {
-  return makeSignupRequest<TryCaptchaResponse>(thunkAPI, "trycaptcha")
+  const body: KeyValues = {
+    email: args.email,
+    recaptcha_response: args.recaptcha_response,
+    tou_accepted: args.tou_accepted,
+  };
+
+  return makeSignupRequest<TryCaptchaResponse>(thunkAPI, "trycaptcha", body)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
