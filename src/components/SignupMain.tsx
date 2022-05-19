@@ -19,14 +19,7 @@ export const history = createBrowserHistory();
 
 export function SignupMain(): JSX.Element {
   const email = useSignupAppSelector((state) => state.email.email);
-  const captcha = useSignupAppSelector((state) => state.config.captcha);
   const isLoaded = useSignupAppSelector((state) => state.config.is_app_loaded);
-
-  let redirect = `${SIGNUP_BASE_PATH}/email`;
-
-  if (email && !captcha) {
-    redirect = `${SIGNUP_BASE_PATH}/trycaptcha`;
-  }
 
   return (
     <React.Fragment>
@@ -35,7 +28,7 @@ export function SignupMain(): JSX.Element {
         <Splash showChildren={isLoaded}>
           <section id="panel" className="panel">
             <NotificationsContainer />
-            <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={redirect} />} />
+            <Route exact path={`${SIGNUP_BASE_PATH}`} component={() => <Redirect to={`${SIGNUP_BASE_PATH}/email`} />} />
             <Route path={`${SIGNUP_BASE_PATH}/email`} component={RegisterEmail} />
             <Route path={`${SIGNUP_BASE_PATH}/trycaptcha`} component={Captcha} />
             <Route path={`${SIGNUP_BASE_PATH}/new`} component={AccountCreatedContainer} />

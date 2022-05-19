@@ -4,15 +4,17 @@ import { routerReducer } from "react-router-redux";
 
 import { intlReducer } from "./reducers/Internationalisation";
 import { captchaSlice } from "./reducers/Captcha";
-import signupReducer from "./reducers/SignupMain";
+import signupConfigReducer from "./reducers/SignupMain";
 import emailReducer from "./reducers/Email";
 import verifiedReducer from "./reducers/CodeVerified";
 import { notificationsSlice } from "reducers/Notifications";
+import { signupSlice } from "reducers/Signup";
 
 const eduIDApp = combineReducers({
-  config: signupReducer,
-  email: emailReducer,
-  captcha: captchaSlice.reducer,
+  config: signupConfigReducer,
+  //email: emailReducer,
+  signup: signupSlice.reducer,
+  //  captcha: captchaSlice.reducer,
   verified: verifiedReducer,
   router: routerReducer,
   form: formReducer,

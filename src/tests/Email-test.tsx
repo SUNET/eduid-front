@@ -140,7 +140,9 @@ describe("Test email Container", () => {
   });
 
   it("Clicks the accept tou button", () => {
-    const store = fakeStore({ overrides: { email: { acceptingTOU: true, email: "dummy-98@example.com" } } });
+    const store = fakeStore({
+      overrides: { signup: { email: "dummy-98@example.com", tou_accepted: false, current_step: "register" } },
+    });
     const wrapper = setupComponent({
       component: (
         <MemoryRouter>
@@ -161,7 +163,9 @@ describe("Test email Container", () => {
   });
 
   it("Clicks the reject tou button", () => {
-    const store = fakeStore({ overrides: { email: { acceptingTOU: true, email: "dummy-98@example.com" } } });
+    const store = fakeStore({
+      overrides: { signup: { email: "dummy-98@example.com", tou_accepted: false, current_step: "register" } },
+    });
     const wrapper = setupComponent({ component: <RegisterEmail />, store: store });
 
     const button = wrapper.find("EduIDButton#register-modal-close-button");

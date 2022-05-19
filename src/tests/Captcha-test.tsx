@@ -122,17 +122,17 @@ describe("Async actions for captcha", () => {
     const state = signupTestState;
     //state.captcha.captcha_verification = "dummy response";
     state.config.csrf_token = "dummy-token";
-    state.email.email = "dummy@example.com";
-    state.email.tou_accepted = true;
+    state.signup.email = "dummy@example.com";
+    state.signup.tou_accepted = true;
 
     const generator = sendCaptcha();
     let next = generator.next();
 
     const data = {
       csrf_token: state.config.csrf_token,
-      email: state.email.email,
+      email: state.signup.email,
       //recaptcha_response: state.captcha.captcha_verification,
-      tou_accepted: state.email.tou_accepted,
+      tou_accepted: state.signup.tou_accepted,
     };
     const resp = generator.next(state);
     expect(resp.value).toEqual(call(requestSendCaptcha, data));

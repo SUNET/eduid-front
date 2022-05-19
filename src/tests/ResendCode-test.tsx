@@ -30,7 +30,7 @@ describe("ResendCode Component", () => {
   it("Component renders user email (text includes '@')", () => {
     const fullWrapper = setupComponent({
       component: <ResendCodeContainer />,
-      overrides: { email: { email: "dummy@example.com" } },
+      overrides: { signup: { email: "dummy@example.com", tou_accepted: false, current_step: "resend-code" } },
     });
 
     const userEmail = fullWrapper.find(".registered-email");
@@ -91,14 +91,14 @@ describe("Test Resend code Container", () => {
 describe("Resend code async actions", () => {
   it("Tests the request config saga", () => {
     const state = signupTestState;
-    state.email.email = "dummy@example.com";
+    state.signup.email = "dummy@example.com";
     state.config.csrf_token = "dummy-token-1";
 
     const generator = resendCode();
     let next = generator.next();
 
     const data = {
-      email: state.email.email,
+      email: state.signup.email,
       csrf_token: state.config.csrf_token,
     };
     const resp = generator.next(state);

@@ -25,7 +25,7 @@ describe("EmailInUse Component", () => {
   it("Component renders user email (text includes '@')", () => {
     const fullWrapper = setupComponent({
       component: <EmailInUseContainer />,
-      overrides: { email: { email: "dummy@example.com" } },
+      overrides: { signup: { email: "dummy@example.com", tou_accepted: false, current_step: "address-used" } },
     });
 
     const userEmail = fullWrapper.find(".register-header");

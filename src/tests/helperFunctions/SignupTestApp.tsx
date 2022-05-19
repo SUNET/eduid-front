@@ -4,6 +4,7 @@ import React from "react";
 import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
 import { SignupRootState, signupStore } from "signup-init-app";
+import { initialState as signupInitialState } from "reducers/Signup";
 
 export const signupTestState: SignupRootState = {
   config: {
@@ -19,10 +20,10 @@ export const signupTestState: SignupRootState = {
     available_languages: [],
     reset_password_link: "http://dummy.example.com/reset-password",
   },
-  captcha: {
-    captcha_verification: "",
-    disabledButton: false,
-  },
+  // captcha: {
+  //   captcha_verification: "",
+  //   disabledButton: false,
+  // },
   verified: {
     password: "",
     email: "",
@@ -30,11 +31,12 @@ export const signupTestState: SignupRootState = {
     dashboard_url: "",
     gotten: false,
   },
-  email: {
-    email: "",
-    acceptingTOU: false,
-    tou_accepted: false,
-  },
+  // email: {
+  //   email: "",
+  //   acceptingTOU: false,
+  //   tou_accepted: false,
+  // },
+  signup: signupInitialState,
   router: undefined as any,
   form: undefined as any,
   intl: { locale: "en", messages: {} },
