@@ -139,6 +139,12 @@ button.btn-link {
   }
 }
 
+/* e.g. orcid button with logo left of button text */
+button.btn-logo {
+  display: flex;
+  align-items: center;
+}
+
 .flex-buttons {
   display: flex;
   column-gap: 1rem;
