@@ -189,7 +189,7 @@ function SetNewPassword(props: NewPasswordFormProps): JSX.Element {
           defaultValue={password && password}
           readOnly={true}
         />
-        <button id="clipboard" className="icon copybutton" onClick={copyToClipboard}>
+        <button id="clipboard" className="icon-only copybutton" onClick={copyToClipboard}>
           <FontAwesomeIcon id={"icon-copy"} icon={faCopy as IconProp} />
           <FontAwesomeIcon id={"icon-check"} icon={faCheck as IconProp} />
           <div className="tool-tip-text" id="tool-tip">
