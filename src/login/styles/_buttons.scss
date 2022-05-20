@@ -139,10 +139,15 @@ button.btn-link {
   }
 }
 
-/* e.g. orcid button with logo left of button text */
-button.btn-logo {
+/* icon left of button text */
+button.btn-icon {
   display: flex;
   align-items: center;
+
+  svg,
+  img {
+    margin-right: 0.5rem;
+  }
 }
 
 /* TODO possibly replace with .buttons */

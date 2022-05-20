@@ -81,6 +81,7 @@ const NewPasswordForm = (props: NewPasswordFormProps): JSX.Element => {
           <EduIDButton
             buttonstyle="secondary"
             id="go-back-button"
+            className="btn-icon"
             onClick={() => history.push(`/reset-password/extra-security/${props.emailCode}`)}
           >
             <FontAwesomeIcon icon={faArrowLeft as IconProp} />
