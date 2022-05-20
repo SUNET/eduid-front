@@ -3,6 +3,12 @@
     margin-bottom: 1rem;
   }
 
+  @media (max-width: $bp-xs) {
+    .button-pair {
+      flex-direction: column;
+    }
+  }
+
   .name-inputs {
     .icon-text {
       display: flex;
