@@ -122,14 +122,15 @@ input:focus {
     font-size: 1rem;
   }
 
-  & .label-required {
-    color: $orange-highlight;
-  }
-
   & .help-block {
     font-size: 1rem;
     text-transform: lowercase;
   }
+}
+
+/* for orange asterisk after label */
+.label-required {
+  color: $orange-highlight;
 }
 
 .input-validate-error {
