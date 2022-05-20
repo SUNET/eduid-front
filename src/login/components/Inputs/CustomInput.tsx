@@ -44,18 +44,15 @@ const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
 
 const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
   const { meta } = props;
-
-  if (meta.pristine || !meta.error) {
-    return <Fragment />;
-  }
-
-  const errmsg = translate(meta.error) || "";
-  return (
+  // TODO: login inputs are not working properly with meta.error && !meta.pristine
+  return (meta.error && !meta.pristine) || (meta.error && meta.touched) ? (
     <FormText>
       <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
-        {errmsg}
+        {translate(meta.error)}
       </span>
     </FormText>
+  ) : (
+    <Fragment />
   );
 };
 
