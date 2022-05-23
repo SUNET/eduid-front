@@ -9,8 +9,30 @@ import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import { useIntl } from "react-intl";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 import { FormattedMessage } from "react-intl";
+import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
+import {
+  initiatePasswordChange,
+  confirmDeletion,
+  stopConfirmationDeletion,
+  startConfirmationDeletion,
+  postRemoveWebauthnToken,
+  postVerifyWebauthnToken,
+  startWebauthnRegistration,
+  startAskWebauthnDescription,
+  stopAskWebauthnDescription,
+  chooseAuthenticator,
+} from "actions/Security";
+import { clearNotifications } from "reducers/Notifications";
 
 function Security(props: any) {
+  const dispatch = useDashboardAppDispatch();
+  const credentials = useDashboardAppSelector((state) => state.security.credentials);
+  const confirming_change = useDashboardAppSelector((state) => state.security.confirming_change);
+  const confirming_deletion = useDashboardAppSelector((state) => state.security.confirming_deletion);
+  const redirect_to = useDashboardAppSelector((state) => state.security.location);
+  const deleted = useDashboardAppSelector((state) => state.security.deleted);
+  const webauthn_asking_description = useDashboardAppSelector((state) => state.security.webauthn_asking_description);
+  const authenticator = useDashboardAppSelector((state) => state.security.webauthn_authenticator);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const spinnerRef = React.createRef();
@@ -80,6 +102,40 @@ function Security(props: any) {
     description: "placeholder text for security key description input",
   });
 
+  function handleStartAskingDeviceWebauthnDescription() {
+    dispatch(clearNotifications());
+    dispatch(chooseAuthenticator("platform"));
+    dispatch(startAskWebauthnDescription());
+  }
+
+  function handleStartAskingKeyWebauthnDescription() {
+    dispatch(clearNotifications());
+    dispatch(chooseAuthenticator("cross-platform"));
+    dispatch(startAskWebauthnDescription());
+  }
+
+  function handleStopAskingWebauthnDescription() {
+    dispatch(stopAskWebauthnDescription());
+  }
+
+  function handleStartWebauthnRegistration() {
+    const description = document.getElementById("describe-webauthn-token-modal") as HTMLInputElement;
+    const descriptionValue = description?.value.trim();
+    dispatch(stopAskWebauthnDescription());
+    dispatch(startWebauthnRegistration(descriptionValue));
+  }
+
+  function handleVerifyWebauthnToken(e: React.MouseEvent<HTMLElement>) {
+    const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
+    const token = dataset?.token;
+    dispatch(postVerifyWebauthnToken(token));
+  }
+
+  function handleRemoveWebauthnToken(e: React.MouseEvent<HTMLElement>) {
+    const token = e.target.closest(".webauthn-token-holder").dataset.token;
+    dispatch(postRemoveWebauthnToken(token));
+  }
+
   return (
     <article id="security-container">
       {/* {!isPlatformAuthLoaded && 
@@ -102,7 +158,7 @@ function Security(props: any) {
               <EduIDButton
                 id="security-webauthn-platform-button"
                 buttonstyle="primary"
-                onClick={props.handleStartAskingDeviceWebauthnDescription}
+                onClick={handleStartAskingDeviceWebauthnDescription}
               >
                 <FormattedMessage description="add webauthn token device" defaultMessage={`this device`} />
               </EduIDButton>
@@ -110,7 +166,7 @@ function Security(props: any) {
             <EduIDButton
               id="security-webauthn-button"
               buttonstyle="primary"
-              onClick={props.handleStartAskingKeyWebauthnDescription}
+              onClick={handleStartAskingKeyWebauthnDescription}
             >
               <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
             </EduIDButton>
@@ -126,9 +182,9 @@ function Security(props: any) {
           />
         }
         placeholder={placeholder}
-        showModal={Boolean(props.webauthn_asking_description)}
-        closeModal={props.handleStopAskingWebauthnDescription}
-        handleConfirm={props.handleStartWebauthnRegistration}
+        showModal={Boolean(webauthn_asking_description)}
+        closeModal={handleStopAskingWebauthnDescription}
+        handleConfirm={handleStartWebauthnRegistration}
         modalFormLabel={
           <FormattedMessage description="security webauthn credential type" defaultMessage={`Security key`} />
         }
