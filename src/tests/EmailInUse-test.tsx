@@ -1,17 +1,11 @@
-import React from "react";
-import expect from "expect";
-import { shallow } from "enzyme";
-import { IntlProvider } from "react-intl";
 import EmailInUseContainer from "containers/EmailInUse";
-import { setupComponent } from "tests/SignupMain-test";
+import { shallow } from "enzyme";
+import expect from "expect";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { setupComponent } from "./helperFunctions/SignupTestApp";
 
 describe("EmailInUse Component", () => {
-  const state = {
-    config: {
-      reset_passwd_url: "http://dummy.example.com/reset-password",
-    },
-  };
-
   it("The component does not render 'false' or 'null'", () => {
     const wrapper = shallow(
       <IntlProvider locale="en">
@@ -28,7 +22,7 @@ describe("EmailInUse Component", () => {
     const p = fullWrapper.find("p");
     expect(p.exists()).toEqual(true);
   });
-  it("Component renders user email (text inlcudes '@')", () => {
+  it("Component renders user email (text includes '@')", () => {
     const fullWrapper = setupComponent({
       component: <EmailInUseContainer />,
       overrides: { email: { email: "dummy@example.com" } },
@@ -43,18 +37,23 @@ describe("EmailInUse Component", () => {
     const fullWrapper = setupComponent({
       component: <EmailInUseContainer />,
     });
-    const button = fullWrapper.find("EduIDButton");
+    const button = fullWrapper.find("EduIDButton#reset-password");
     expect(button.exists()).toEqual(true);
     expect(button.length).toEqual(1);
-    // expect(button.text()).toContain("reset your password");
   });
 
   it("Component renders a RESET PASSWORD button with a reroute", () => {
+    const url = "http://login.example.com/reset-password-unique-link-for-this-test";
+
     const fullWrapper = setupComponent({
       component: <EmailInUseContainer />,
-      overrides: state,
+      overrides: {
+        config: {
+          reset_password_link: url,
+        },
+      },
     });
     const link = fullWrapper.find("a");
-    expect(link.props().href).toEqual("http://dummy.example.com/reset-password");
+    expect(link.props().href).toEqual(url);
   });
 });

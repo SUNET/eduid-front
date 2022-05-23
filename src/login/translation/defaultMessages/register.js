@@ -2,22 +2,9 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export const register = {
-  "register.sub-heading": (
-    <FormattedMessage id="register.sub-heading" defaultMessage={`Register your email address to create your eduID.`} />
-  ),
-
-  "register.paragraph": (
-    <FormattedMessage
-      id="register.paragraph"
-      defaultMessage={`Once you have created an eduID you will be able to log in and connect it to your Swedish national identity number.`}
-    />
-  ),
-
   "register.create-account": (
     <FormattedMessage id="register.create-account" defaultMessage={`Sign up with your email address to start.`} />
   ),
-
-  "email.sign-up-email": <FormattedMessage id="email.sign-up-email" defaultMessage={`Create eduID`} />,
 
   // terms of use
 
@@ -62,8 +49,6 @@ export const register = {
   "signup.registering-new": (
     <FormattedMessage id="signup.registering-new" defaultMessage={`Email address successfully registered`} />
   ),
-
-  "signup.registering-input": <FormattedMessage id="signup.registering-input" defaultMessage={`Email address`} />,
 
   // eduID registration error: email already in use
   "signup.registering-address-used": (

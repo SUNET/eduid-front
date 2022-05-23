@@ -1,13 +1,14 @@
-import React from "react";
-import expect from "expect";
-import { put, call } from "redux-saga/effects";
-import { shallow } from "enzyme";
-import { setupComponent, fakeStore, getState } from "tests/SignupMain-test";
-import ResendCodeContainer from "containers/ResendCode";
 import * as actions from "actions/ResendCode";
-import { resendCode, requestResendCode } from "sagas/ResendCode";
-import { IntlProvider } from "react-intl";
+import { newCsrfToken } from "actions/SignupMain";
 import EmailInUseContainer from "containers/EmailInUse";
+import ResendCodeContainer from "containers/ResendCode";
+import { shallow } from "enzyme";
+import expect from "expect";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { call, put } from "redux-saga/effects";
+import { requestResendCode, resendCode } from "sagas/ResendCode";
+import { fakeStore, setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";
 
 describe("ResendCode Component", () => {
   it("The component does not render 'false' or 'null'", () => {
@@ -26,7 +27,7 @@ describe("ResendCode Component", () => {
     const p = fullWrapper.find("p");
     expect(p.exists()).toEqual(true);
   });
-  it("Component renders user email (text inlcudes '@')", () => {
+  it("Component renders user email (text includes '@')", () => {
     const fullWrapper = setupComponent({
       component: <ResendCodeContainer />,
       overrides: { email: { email: "dummy@example.com" } },
@@ -70,40 +71,35 @@ describe("Resend code Actions", () => {
 });
 
 describe("Test Resend code Container", () => {
-  let wrapper, dispatch;
+  it("Clicks resend code button", () => {
+    const store = fakeStore();
 
-  beforeEach(() => {
-    const store = fakeStore(getState());
-    dispatch = store.dispatch;
-    wrapper = setupComponent({
+    const wrapper = setupComponent({
       component: <ResendCodeContainer />,
       store: store,
     });
-  });
+    const button = wrapper.find("EduIDButton#resend-button");
+    expect(button.exists()).toEqual(true);
 
-  it("Clicks resend code button", () => {
-    const numCalls = dispatch.mock.calls.length;
-    wrapper.find("EduIDButton#resend-button").props().onClick();
-    expect(dispatch.mock.calls.length).toEqual(numCalls + 1);
+    button.first().simulate("click");
+
+    const actualActions = store.getActions().map((action) => action.type);
+    expect(actualActions).toEqual([actions.POST_SIGNUP_RESEND_VERIFICATION]);
   });
 });
 
 describe("Resend code async actions", () => {
   it("Tests the request config saga", () => {
-    const state = getState({
-      email: {
-        email: "dummy@example.com",
-      },
-      config: {
-        csrf_token: "dummy-token",
-      },
-    });
+    const state = signupTestState;
+    state.email.email = "dummy@example.com";
+    state.config.csrf_token = "dummy-token-1";
+
     const generator = resendCode();
     let next = generator.next();
 
     const data = {
-      email: "dummy@example.com",
-      csrf_token: "dummy-token",
+      email: state.email.email,
+      csrf_token: state.config.csrf_token,
     };
     const resp = generator.next(state);
     expect(resp.value).toEqual(call(requestResendCode, data));
@@ -114,10 +110,14 @@ describe("Resend code async actions", () => {
         csrf_token: "csrf-token",
       },
     };
+    // csrf token is removed from action when the real code runs, so we need to save it first
+    const _putNewCsrfToken = put(newCsrfToken(action.payload.csrf_token));
     next = generator.next(action);
-    expect(next.value.PUT.action.type).toEqual("NEW_CSRF_TOKEN");
+    expect(next.value).toEqual(_putNewCsrfToken);
     next = generator.next();
-    delete action.payload.csrf_token;
+
     expect(next.value).toEqual(put(action));
+
+    expect(generator.next().done).toEqual(true);
   });
 });

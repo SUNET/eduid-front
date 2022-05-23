@@ -26,10 +26,6 @@
       margin-bottom: $margin;
     }
 
-    button {
-      margin: 0.25rem 0 #{1 * $margin};
-    }
-
     .welcome-back-container {
       margin: 0 0 1rem;
       display: flex;
@@ -63,10 +59,6 @@ a {
   &:hover {
     text-decoration: underline;
   }
-
-  //  @media (max-width: $bp-sm) {
-  //    margin: 1rem 0;
-  //  }
 }
 
 a .disabled {
@@ -78,7 +70,7 @@ a .disabled {
   }
 }
 
-// terms of use
+// TODO align with modal dl.terms
 .tou {
   .tou-text {
     margin-top: $margin;
@@ -239,36 +231,7 @@ a .disabled {
   }
 }
 
-// TODO: make .button-pair and .buttons same
 .username-pw {
-  .button-pair {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0.5rem 0;
-    width: 100%;
-
-    button {
-      svg {
-        transform: rotate(0);
-        margin-right: 8px;
-      }
-    }
-
-    @media (min-width: $bp-xs) {
-      flex-direction: row;
-      width: auto;
-
-      button {
-        // min-width: 100px;
-
-        &:nth-child(n + 2) {
-          margin-left: 1rem;
-        }
-      }
-    }
-  }
-
   .flex-between {
     flex-direction: row;
     text-align: right;

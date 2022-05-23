@@ -172,7 +172,7 @@ function Phones() {
                       />
                     }
                   />
-                  <div className="flex-buttons">
+                  <div className="buttons">
                     <EduIDButton id="cancel-adding-mobile" buttonstyle="secondary" onClick={handleCancel}>
                       <FormattedMessage defaultMessage="Cancel" description="button cancel" />
                     </EduIDButton>

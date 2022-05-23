@@ -49,13 +49,18 @@ class Orcid extends Component {
     } else {
       orcidData = (
         <Fragment>
-          <EduIDButton buttonstyle="primary" id="connect-orcid-button" onClick={this.props.handleOrcidConnect}>
-            <div className="orcid-logo-container">
+          <div className="buttons">
+            <EduIDButton
+              buttonstyle="primary"
+              id="connect-orcid-button"
+              className="btn-icon"
+              onClick={this.props.handleOrcidConnect}
+            >
               <img className="orcid-logo" src={orcidIcon} />
-            </div>
-            {this.props.translate("orc.button_connect")}
-          </EduIDButton>
-          <p className="orcid-btn-help">{this.props.translate("orc.long_description")}</p>
+              {this.props.translate("orc.button_connect")}
+            </EduIDButton>
+          </div>
+          <p className="help-text">{this.props.translate("orc.long_description")}</p>
         </Fragment>
       );
     }

@@ -139,6 +139,19 @@ button.btn-link {
   }
 }
 
+/* icon left of button text */
+button.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg,
+  img {
+    margin-right: 0.5rem;
+  }
+}
+
+/* TODO possibly replace with .buttons */
 .flex-buttons {
   display: flex;
   column-gap: 1rem;
@@ -153,17 +166,19 @@ button.btn-link {
   }
 }
 
+/* Wraps all buttons for responsive behaviour independend on number */
 .buttons {
   display: flex;
   column-gap: 1rem;
-  padding-top: 1rem;
+  padding: 0.5rem 0;
+  width: 100%;
 
   button {
     min-width: 100px;
   }
 
-  button[type="submit"] {
-    order: 2;
+  @media (min-width: $bp-xs) {
+    width: auto;
   }
 
   @media (max-width: $bp-md) {
@@ -173,12 +188,8 @@ button.btn-link {
   @media (max-width: $bp-xs) {
     flex-direction: column-reverse;
 
-    button:nth-child(n + 1) {
-      margin-bottom: 0.5rem;
-    }
-
-    button:nth-child(n + 2) {
-      margin-bottom: 1.5rem;
+    button {
+      margin: 0.5rem 0;
     }
   }
 }

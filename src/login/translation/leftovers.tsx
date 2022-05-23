@@ -24,16 +24,6 @@ export const leftoverMessages = {
       description="Error message for max length"
     />
   ),
-  "register.toLogin": (
-    <FormattedMessage
-      id="register.toLogin"
-      defaultMessage={`If you already have eduID you can log in`}
-      description="Signup instructions"
-    />
-  ),
-  "text.link": (
-    <FormattedMessage id="text.link" defaultMessage={`here.`} description="Placeholder for phone text input" />
-  ),
   "chpass.help-text-newpass-label": (
     <FormattedMessage
       id="chpass.help-text-newpass-label"
