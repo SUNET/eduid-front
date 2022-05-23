@@ -3,7 +3,7 @@ import EduIDButton from "components/EduIDButton";
 import { translate } from "login/translation";
 import PropTypes from "prop-types";
 import { Spinner } from "spin.js";
-import { spinnerOpts } from "../components/Splash";
+import { spinnerOpts } from "./Splash";
 import { securityKeyPattern } from "../login/app_utils/validation/regexPatterns";
 import ConfirmModal from "../login/components/Modals/ConfirmModal";
 import { useIntl } from "react-intl";
