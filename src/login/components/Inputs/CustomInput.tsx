@@ -44,7 +44,8 @@ const RenderLabelAndHelpText = (props: CustomInputProps): JSX.Element => {
 
 const RenderErrorMessage = (props: CustomInputProps): JSX.Element => {
   const { meta } = props;
-  // TODO: login inputs are not working properly with meta.error && !meta.pristine
+  // login inputs are not working properly with meta.error && !meta.pristine,
+  // so added one more condition meta.error && meta.touched
   return (meta.error && !meta.pristine) || (meta.error && meta.touched) ? (
     <FormText>
       <span role="alert" aria-invalid="true" tabIndex={0} className="input-validate-error">
