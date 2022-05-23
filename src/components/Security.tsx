@@ -10,20 +10,20 @@ import { useIntl } from "react-intl";
 import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
 import { FormattedMessage } from "react-intl";
 
-function Security(props) {
+function Security(props: any) {
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(false);
   const spinnerRef = React.createRef();
-  let spinner;
+  // let spinner;
 
-  useEffect(() => {
-    if (isPlatformAuthLoaded) {
-      // Spinner will be running until isPlatformAuthLoaded is updated to true
-      if (spinner !== undefined) {
-        spinner.stop();
-      }
-    }
-  }, [isPlatformAuthLoaded]);
+  // useEffect(() => {
+  //   if (isPlatformAuthLoaded) {
+  //     // Spinner will be running until isPlatformAuthLoaded is updated to true
+  //     if (spinner !== undefined) {
+  //       spinner.stop();
+  //     }
+  //   }
+  // }, [isPlatformAuthLoaded]);
 
   useEffect(
     () => {
@@ -63,14 +63,14 @@ function Security(props) {
     [] // run this only once
   );
 
-  useEffect(() => {
-    if (!isPlatformAuthLoaded && !spinner) {
-      // The spinner needs to be set up _after_ the spinnerRef is attached to it's <div>
-      if (spinnerRef.current) {
-        spinner = new Spinner(spinnerOpts).spin(spinnerRef.current);
-      }
-    }
-  });
+  // useEffect(() => {
+  //   if (!isPlatformAuthLoaded && !spinner) {
+  //     // The spinner needs to be set up _after_ the spinnerRef is attached to it's <div>
+  //     if (spinnerRef.current) {
+  //       spinner = new Spinner(spinnerOpts).spin(spinnerRef.current);
+  //     }
+  //   }
+  // });
 
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -82,7 +82,8 @@ function Security(props) {
 
   return (
     <article id="security-container">
-      {!isPlatformAuthLoaded && <div ref={spinnerRef} id="eduid-splash-screen" />}
+      {/* {!isPlatformAuthLoaded && 
+      <div ref={spinnerRef} id="eduid-splash-screen" />} */}
       <div id="register-securitykey-container">
         <div className="intro">
           <h3>{translate("security.security-key_title")}</h3>
@@ -141,19 +142,19 @@ function Security(props) {
   );
 }
 
-function SecurityKeyTable(props) {
-  let btnVerify = "";
-  let date_success = "";
+function SecurityKeyTable(props: any) {
+  let btnVerify;
+  let date_success;
 
   // get FIDO tokens from list of all user credentials
   const tokens = props.credentials.filter(
-    (cred) =>
+    (cred: any) =>
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
   );
 
   // data that goes onto the table
-  const securitykey_table_data = tokens.map((cred, index) => {
+  const securitykey_table_data = tokens.map((cred: any, index: number) => {
     // date created
     const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
     // date last used
@@ -166,7 +167,10 @@ function SecurityKeyTable(props) {
     // verify button/ verified badge
     if (cred.verified) {
       btnVerify = (
-        <label className="nobutton verified" disabled>
+        <label
+          className="nobutton verified"
+          // disabled
+        >
           {translate("security.verified")}
         </label>
       );
@@ -198,10 +202,10 @@ function SecurityKeyTable(props) {
         </td>
       </tr>
     );
-  }, this);
+  });
 
   // show no table if no security keys
-  if (!tokens.length > 0) {
+  if (!tokens.length) {
     return null;
   }
 
@@ -220,14 +224,5 @@ function SecurityKeyTable(props) {
     </table>
   );
 }
-
-Security.propTypes = {
-  credentials: PropTypes.array,
-  creation_date: PropTypes.string,
-  last_used: PropTypes.string,
-  langs: PropTypes.array,
-  handleStartWebauthnRegistration: PropTypes.func,
-  handleCloseWebauthnModal: PropTypes.func,
-};
 
 export default Security;
