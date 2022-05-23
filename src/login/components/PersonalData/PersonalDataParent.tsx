@@ -58,8 +58,8 @@ const RenderEditBox = (props: RenderEditBoxProps) => {
   return (
     <Fragment>
       <div className="edit-data">
-        <div className="title button-pair">
-          <p>{translate("pd.edit.title")}</p>
+        <div className="title">
+          <h4>{translate("pd.edit.title")}</h4>
           <EduIDButton buttonstyle="close" id="cancel-edit-data" onClick={() => props.setEditMode(false)} />
         </div>
         <PersonalDataForm isVerifiedNin={isVerifiedNin} {...props} />
