@@ -49,6 +49,14 @@ fieldset:not(:empty) {
   margin-bottom: 1.25em;
 }
 
+/* smallish grayish additional info underneath corresponding form elements */
+.help-text {
+  margin: 0.5rem 0 0;
+  line-height: 1.2;
+  color: $gray;
+  font-size: 14px;
+}
+
 @media (max-width: $bp-sm) {
   #reset-password-email-form {
     flex-direction: column;

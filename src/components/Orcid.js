@@ -53,7 +53,7 @@ class Orcid extends Component {
             <EduIDButton
               buttonstyle="primary"
               id="connect-orcid-button"
-              className="btn-logo"
+              className="btn-icon"
               onClick={this.props.handleOrcidConnect}
             >
               <img className="orcid-logo" src={orcidIcon} />

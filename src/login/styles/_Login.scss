@@ -232,14 +232,6 @@ a .disabled {
 }
 
 .username-pw {
-  /* TODO find where this svg rotation is required instead */
-  button {
-    svg {
-      transform: rotate(0);
-      margin-right: 8px;
-    }
-  }
-
   .flex-between {
     flex-direction: row;
     text-align: right;
