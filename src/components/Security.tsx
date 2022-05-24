@@ -11,10 +11,6 @@ import "/node_modules/spin.js/spin.css"; // without this import, the spinner is 
 import { FormattedMessage } from "react-intl";
 import { useDashboardAppSelector, useDashboardAppDispatch } from "dashboard-hooks";
 import {
-  initiatePasswordChange,
-  confirmDeletion,
-  stopConfirmationDeletion,
-  startConfirmationDeletion,
   postRemoveWebauthnToken,
   postVerifyWebauthnToken,
   startWebauthnRegistration,
@@ -125,17 +121,6 @@ function Security(props: any) {
     dispatch(startWebauthnRegistration(descriptionValue));
   }
 
-  function handleVerifyWebauthnToken(e: React.MouseEvent<HTMLElement>) {
-    const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
-    const token = dataset?.token;
-    dispatch(postVerifyWebauthnToken(token));
-  }
-
-  function handleRemoveWebauthnToken(e: React.MouseEvent<HTMLElement>) {
-    const token = e.target.closest(".webauthn-token-holder").dataset.token;
-    dispatch(postRemoveWebauthnToken(token));
-  }
-
   return (
     <article id="security-container">
       {/* {!isPlatformAuthLoaded && 
@@ -201,13 +186,25 @@ function Security(props: any) {
 function SecurityKeyTable(props: any) {
   let btnVerify;
   let date_success;
-
+  const dispatch = useDashboardAppDispatch();
   // get FIDO tokens from list of all user credentials
   const tokens = props.credentials.filter(
     (cred: any) =>
       cred.credential_type == "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type"
   );
+
+  function handleVerifyWebauthnToken(e: React.MouseEvent<HTMLElement>) {
+    const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
+    const token = dataset?.token;
+    dispatch(postVerifyWebauthnToken(token));
+  }
+
+  function handleRemoveWebauthnToken(e: React.MouseEvent<HTMLElement>) {
+    const dataset = (e.target as HTMLElement).closest(".webauthn-token-holder");
+    const token = dataset?.token;
+    dispatch(postRemoveWebauthnToken(token));
+  }
 
   // data that goes onto the table
   const securitykey_table_data = tokens.map((cred: any, index: number) => {
@@ -232,7 +229,7 @@ function SecurityKeyTable(props: any) {
       );
     } else {
       btnVerify = (
-        <EduIDButton buttonstyle="link" size="sm" onClick={props.handleVerifyWebauthnToken}>
+        <EduIDButton buttonstyle="link" size="sm" onClick={handleVerifyWebauthnToken}>
           {translate("security.verify")}
         </EduIDButton>
       );
@@ -253,7 +250,7 @@ function SecurityKeyTable(props: any) {
             id="remove-webauthn"
             buttonstyle="close"
             size="sm"
-            onClick={props.handleRemoveWebauthnToken}
+            onClick={handleRemoveWebauthnToken}
           ></EduIDButton>
         </td>
       </tr>
