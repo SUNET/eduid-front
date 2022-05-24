@@ -17,28 +17,17 @@ class Orcid extends Component {
             <tbody>
               <tr className="email-row">
                 <td>
-                  <div className="flex-between">
-                    {orcidAuthor}
-                    <EduIDButton buttonstyle="link" id="remove-orcid-button" onClick={this.props.handleOrcidDelete}>
-                      <svg
-                        className="remove"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 0h2v16H7z" />
-                        <path d="M0 9V7h16v2z" />
-                      </svg>
-                    </EduIDButton>
+                  {orcidAuthor}
+                  <div className="orcid-logo-container">
+                    <span className="orcid-logo" />
+                    <a href={this.props.orcid.id}>{this.props.orcid.id}</a>
+                    <EduIDButton
+                      buttonstyle="close"
+                      size="sm"
+                      id="remove-orcid-button"
+                      onClick={this.props.handleOrcidDelete}
+                    ></EduIDButton>
                   </div>
-                  <a href={this.props.orcid.id}>
-                    <div className="orcid-logo-container">
-                      <span className="orcid-logo" />
-                      <span className="orcid-link">{this.props.orcid.id}</span>
-                    </div>
-                  </a>
                 </td>
               </tr>
             </tbody>
