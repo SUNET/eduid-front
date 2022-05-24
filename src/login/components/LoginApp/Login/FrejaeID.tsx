@@ -16,20 +16,18 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
   const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain.concat("/");
 
   return (
-    <div className="secondary" tabIndex={0}>
-      <div className="option">
-        <h4>{translate("login.mfa.secondary-option.title")}</h4>
-        <EduIDButton
-          buttonstyle="secondary"
-          type="submit"
-          onClick={() => {
-            window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${startUrl}`;
-          }}
-          id="mfa-freja"
-        >
-          {translate("login.mfa.secondary-option.button")}
-        </EduIDButton>
-      </div>
+    <div className="option">
+      <h4>{translate("login.mfa.secondary-option.title")}</h4>
+      <EduIDButton
+        buttonstyle="secondary"
+        type="submit"
+        onClick={() => {
+          window.location.href = `${frejaUrlDomainSlash}mfa-authentication?idp=${idp}&next=${startUrl}`;
+        }}
+        id="mfa-freja"
+      >
+        {translate("login.mfa.secondary-option.button")}
+      </EduIDButton>
     </div>
   );
 };
