@@ -16,7 +16,7 @@ const FrejaeID = ({ translate }: FrejaeIDProps): JSX.Element => {
   const frejaUrlDomainSlash = frejaUrlDomain.endsWith("/") ? frejaUrlDomain : frejaUrlDomain.concat("/");
 
   return (
-    <div>
+    <div className="option-wrapper">
       <div className="option">
         <h4>{translate("login.mfa.secondary-option.title")}</h4>
         <EduIDButton

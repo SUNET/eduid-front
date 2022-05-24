@@ -106,7 +106,7 @@ const SecurityKey = (): JSX.Element => {
   const [selected, setSelected] = useState(false);
   const [retryToggle, setRetryToggle] = useState(false);
   return (
-    <div>
+    <div className="option-wrapper">
       <div className="option">
         {selected ? (
           <>
