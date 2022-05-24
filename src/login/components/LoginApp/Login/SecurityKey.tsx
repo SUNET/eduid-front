@@ -106,7 +106,7 @@ const SecurityKey = (): JSX.Element => {
   const [selected, setSelected] = useState(false);
   const [retryToggle, setRetryToggle] = useState(false);
   return (
-    <>
+    <div>
       <div className="option">
         {selected ? (
           <>
@@ -126,14 +126,14 @@ const SecurityKey = (): JSX.Element => {
         )}
       </div>
       {selected && (
-        <p className="help-link">
+        <p className="help-text">
           <FormattedMessage
             description="login mfa primary option hint"
             defaultMessage={`If your security key has a button, don’t forget to tap it.`}
           />
         </p>
       )}
-    </>
+    </div>
   );
 };
 
