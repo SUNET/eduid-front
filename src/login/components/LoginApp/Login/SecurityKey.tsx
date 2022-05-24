@@ -112,7 +112,10 @@ const SecurityKey = (): JSX.Element => {
           <>
             <div className="button-pair selected">
               <h4>
-                <FormattedMessage description="login mfa primary option.title" defaultMessage={`Security key`} />
+                <FormattedMessage
+                  description="login this device, security key button"
+                  defaultMessage={`This Device / Security key`}
+                />
               </h4>
               <CloseButton setSelected={setSelected} />
             </div>
