@@ -1,14 +1,72 @@
+import { fetchVerifyLink, VerifyLinkResponse, VerifyLinkResponseSuccess } from "apis/eduidSignup";
 import EduIDButton from "components/EduIDButton";
-import React from "react";
+import Splash from "components/Splash";
+import { SIGNUP_BASE_PATH } from "../globals";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { useHistory, useParams } from "react-router";
+import { showNotification } from "reducers/Notifications";
+import { useSignupAppDispatch } from "signup-hooks";
 
-interface CodeVerifiedProps {
-  dashboard_url: string;
-  email: string;
-  password: string;
+// element ids used in tests
+export const idUserEmail = "user-email";
+export const idUserPassword = "user-password";
+export const idFinishedButton = "finished-button";
+
+// URL parameters passed to this component
+interface CodeParams {
+  code?: string;
 }
 
-function CodeVerified(props: CodeVerifiedProps) {
+interface CodeVerifiedProps {
+  responseForTests?: VerifyLinkResponse;
+}
+
+export default function CodeVerified(props: CodeVerifiedProps) {
+  // TODO: get dashboard URL from config instead of from backend response?
+  // const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
+  const history = useHistory();
+  const params = useParams() as CodeParams;
+  const [response, setResponse] = useState(props.responseForTests);
+
+  const dispatch = useSignupAppDispatch();
+
+  async function verifyCode(code: string) {
+    const resp = await dispatch(fetchVerifyLink({ code }));
+
+    if (fetchVerifyLink.fulfilled.match(resp)) {
+      setResponse(resp.payload);
+    }
+  }
+
+  useEffect(() => {
+    if (!response && params?.code) {
+      verifyCode(params.code);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (response?.status === "unknown-code") {
+      dispatch(showNotification({ message: "code.unknown-code", level: "info" }));
+      history.push(SIGNUP_BASE_PATH + "/email"); // GOTO start
+    }
+  }, [response]);
+
+  if (response?.status === "already-verified") {
+    // TODO: Not sure this can reasonably actually happen in the backend?
+    dispatch(showNotification({ message: "code.already-verified", level: "info" }));
+  }
+
+  return (
+    <React.Fragment>
+      <Splash showChildren={response !== undefined}>
+        {response?.status === "verified" && <SignupComplete {...response} />}
+      </Splash>
+    </React.Fragment>
+  );
+}
+
+function SignupComplete(props: VerifyLinkResponseSuccess) {
   return (
     <form method="GET" action={props.dashboard_url} className="vertical-content-margin content">
       <h1 className="register-header">
@@ -28,7 +86,7 @@ function CodeVerified(props: CodeVerifiedProps) {
           <label>
             <FormattedMessage defaultMessage="Email address" description="Email label" />
           </label>
-          <div id="user-email" className="register-header display-data">
+          <div id={idUserEmail} className="register-header display-data">
             {props.email}
           </div>
         </fieldset>
@@ -37,19 +95,17 @@ function CodeVerified(props: CodeVerifiedProps) {
             <FormattedMessage defaultMessage="Password" description="Password label" />
           </label>
           <div className="register-header registered-email display-data">
-            <mark id="user-password" className="force-select-all">
+            <mark id={idUserPassword} className="force-select-all">
               {props.password}
             </mark>
           </div>
         </fieldset>
       </div>
       <div className="buttons">
-        <EduIDButton id="gotit-button" buttonstyle="link" className="normal-case" type="submit">
+        <EduIDButton id={idFinishedButton} buttonstyle="link" className="normal-case" type="submit">
           <FormattedMessage defaultMessage="Go to my eduid" description="go to eudID link text" />
         </EduIDButton>
       </div>
     </form>
   );
 }
-
-export default CodeVerified;

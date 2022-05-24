@@ -5,37 +5,15 @@ import createMockStore, { MockStoreEnhanced } from "redux-mock-store";
 import thunk from "redux-thunk";
 import { SignupRootState, signupStore } from "signup-init-app";
 import { initialState as signupInitialState } from "reducers/Signup";
+import { initialState as configInitialState } from "reducers/SignupConfig";
 
 export const signupTestState: SignupRootState = {
   config: {
-    dashboard_url: "",
-    csrf_token: "",
+    ...configInitialState,
     recaptcha_public_key: "",
-    captcha: "",
-    code: "",
-    tou: "",
-    is_app_loaded: true,
-    //is_fetching: false,
-    debug: true,
-    available_languages: [],
     reset_password_link: "http://dummy.example.com/reset-password",
+    is_configured: true,
   },
-  // captcha: {
-  //   captcha_verification: "",
-  //   disabledButton: false,
-  // },
-  verified: {
-    password: "",
-    email: "",
-    status: "",
-    dashboard_url: "",
-    gotten: false,
-  },
-  // email: {
-  //   email: "",
-  //   acceptingTOU: false,
-  //   tou_accepted: false,
-  // },
   signup: signupInitialState,
   router: undefined as any,
   form: undefined as any,
@@ -50,10 +28,24 @@ interface FakeStoreArgs {
   overrides?: Partial<SignupRootState>;
 }
 
+/**
+ * Get a MockStore for testing Signup components.
+ * MockStores are good for testing that actions are dispatched, but actions aren't _really_ dispatched
+ * and the reducers states are never _really_ updated. Use realStore() for tests that want to exercise
+ * such things.
+ */
 export function fakeStore(args: FakeStoreArgs = {}): MockStoreEnhanced<SignupRootState> {
   const middlewares = [thunk];
   const store = createMockStore<SignupRootState>(middlewares);
   return store({ ...(args.state || signupTestState), ...args.overrides });
+}
+
+/**
+ * Get a real Signup store that can be used with e.g. tests fetching data from backends using thunks,
+ * and updating component state or redux state.
+ */
+export function realStore(): SignupStoreType {
+  return signupStore;
 }
 
 interface setupComponentArgs {

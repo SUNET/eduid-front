@@ -1,6 +1,8 @@
 import { fetchTryCaptcha } from "apis/eduidSignup";
+import AccountCreated from "components/AccountCreated";
 import Captcha from "components/Captcha";
 import EduIDButton from "components/EduIDButton";
+import EmailInUse from "components/EmailInUse";
 import { ToUs } from "login/app_utils/helperFunctions/ToUs";
 import React, { Fragment } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
@@ -19,35 +21,40 @@ import NotificationModal from "../Modals/NotificationModal";
  * put into the signup state and which will cause SignupMain to take the user somewhere else than here.
  */
 export function RegisterEmail(): JSX.Element | null {
-  const dashboard_url = useSignupAppSelector((state) => state.config.dashboard_url);
   const email = useSignupAppSelector((state) => state.signup.email);
   const tou_accepted = useSignupAppSelector((state) => state.signup.tou_accepted);
+  const current_step = useSignupAppSelector((state) => state.signup.current_step);
   const dispatch = useSignupAppDispatch();
-  const history = useHistory();
 
   function handleCaptchaCancel() {
     dispatch(signupSlice.actions.setEmail(undefined));
   }
 
   function handleCaptchaCompleted(recaptcha_response: string) {
-    async function callTryCaptcha(args: { email: string; tou_accepted: boolean; recaptcha_response: string }) {
-      const resp = await dispatch(fetchTryCaptcha(args));
-      if (fetchTryCaptcha.fulfilled.match(resp)) {
-        // TODO: re-work SignupMain to not use Route, but instead see that state.signup.current_step has been updated
-        history.push(resp.payload.next);
-      }
-    }
-
     if (recaptcha_response && email && tou_accepted) {
-      callTryCaptcha({ email, tou_accepted, recaptcha_response });
+      dispatch(fetchTryCaptcha({ email, tou_accepted, recaptcha_response }));
     }
   }
 
-  if (!email || !tou_accepted) {
-    return <EmailFormAndToU />;
+  if (current_step === "register") {
+    if (!email || !tou_accepted) {
+      return <EmailFormAndToU />;
+    }
+
+    return <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />;
   }
 
-  return <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />;
+  if (current_step === "new") {
+    // Tentative account created in the Signup backend, and an e-mail was sent to the user.
+    return <AccountCreated />;
+  }
+
+  if (current_step === "address-used") {
+    return <EmailInUse />;
+  }
+
+  // TODO: Shouldn't ever get here, but some kind of error message?
+  return null;
 }
 
 export function EmailFormAndToU(): JSX.Element {
@@ -60,18 +67,13 @@ export function EmailFormAndToU(): JSX.Element {
   function handleAccept(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
     dispatch(signupSlice.actions.setToUAccepted(true));
-    //history.push(SIGNUP_BASE_PATH + "/trycaptcha");
-    // remove any remaining notification messages
     dispatch(clearNotifications());
-    // to make captcha button active
-    //dispatch(makeCaptchaButtonAvailable());
   }
 
   function handleReject(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
     dispatch(signupSlice.actions.setEmail(undefined));
     dispatch(signupSlice.actions.setToUAccepted(false));
-    //dispatch(actions.rejectTOU());
   }
 
   const login_here_link = (

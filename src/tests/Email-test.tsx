@@ -76,7 +76,7 @@ describe("Test email Container", () => {
     const actualActions = _actions.map((action) => action.type);
 
     const last_action = actualActions[actualActions.length - 1];
-    expect(last_action).toEqual("ADD_EMAIL");
+    expect(last_action).toEqual("signup/setEmail");
 
     expect(_actions[_actions.length - 1]).toEqual(signupSlice.actions.setEmail(test_email));
   });
@@ -99,7 +99,7 @@ describe("Test email Container", () => {
 
     const _actions = store.getActions();
     const actualActions = _actions.map((action) => action.type);
-    expect(actualActions).toEqual(["ACCEPT_TOU", "notifications/clearNotifications", "IS_CAPTCHA_AVAILABLE"]);
+    expect(actualActions).toEqual(["signup/setToUAccepted", "notifications/clearNotifications"]);
 
     expect(_actions[0]).toEqual(signupSlice.actions.setToUAccepted(true));
   });
@@ -115,8 +115,8 @@ describe("Test email Container", () => {
 
     const _actions = store.getActions();
     const actualActions = _actions.map((action) => action.type);
-    expect(actualActions).toEqual(["REJECT_TOU"]);
+    expect(actualActions).toEqual(["signup/setEmail", "signup/setToUAccepted"]);
 
-    expect(_actions[_actions.length - 1]).toEqual(signupSlice.actions.setToUAccepted(true));
+    expect(_actions[_actions.length - 1]).toEqual(signupSlice.actions.setToUAccepted(false));
   });
 });

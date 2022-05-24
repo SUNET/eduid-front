@@ -3,7 +3,7 @@
  */
 
 import { createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { SIGNUP_SERVICE_URL } from "globals";
+import { SIGNUP_SERVICE_URL } from "../globals";
 import { SignupAppDispatch, SignupRootState } from "../signup-init-app";
 import { KeyValues, makeGenericRequest, RequestThunkAPI } from "./common";
 
@@ -14,8 +14,10 @@ export interface TryCaptchaRequest {
   tou_accepted: boolean;
 }
 
+export type TryCaptchaNextStep = "new" | "address-used"; // possible backend 'next' return values
+
 export interface TryCaptchaResponse {
-  next: "new" | "resend-code" | "address-used";
+  next: TryCaptchaNextStep;
 }
 
 /**
@@ -27,7 +29,7 @@ export const fetchTryCaptcha = createAsyncThunk<
   TryCaptchaResponse, // return type
   TryCaptchaRequest, // args type
   { dispatch: SignupAppDispatch; state: SignupRootState }
->("captcha/fetchTryCaptcha", async (args, thunkAPI) => {
+>("signup/fetchTryCaptcha", async (args, thunkAPI) => {
   const body: KeyValues = {
     email: args.email,
     recaptcha_response: args.recaptcha_response,
@@ -35,6 +37,39 @@ export const fetchTryCaptcha = createAsyncThunk<
   };
 
   return makeSignupRequest<TryCaptchaResponse>(thunkAPI, "trycaptcha", body)
+    .then((response) => response.payload)
+    .catch((err) => thunkAPI.rejectWithValue(err));
+});
+
+/*********************************************************************************************************************/
+export interface VerifyLinkRequest {
+  code: string;
+}
+
+export interface VerifyLinkResponseFail {
+  status: "unknown-code" | "already-verified";
+}
+
+export interface VerifyLinkResponseSuccess {
+  status: "verified";
+  password: string;
+  email?: string;
+  dashboard_url: string;
+}
+
+export type VerifyLinkResponse = VerifyLinkResponseFail | VerifyLinkResponseSuccess;
+
+/**
+ * @public
+ * @function fetchVerifyLink
+ * @desc Redux async thunk to verify a signup link the user got from an e-mail.
+ */
+export const fetchVerifyLink = createAsyncThunk<
+  VerifyLinkResponse, // return type
+  VerifyLinkRequest, // args type
+  { dispatch: SignupAppDispatch; state: SignupRootState }
+>("signup/fetchVerifyLink", async (args, thunkAPI) => {
+  return makeSignupRequest<VerifyLinkResponse>(thunkAPI, `verify-link/${args.code}`)
     .then((response) => response.payload)
     .catch((err) => thunkAPI.rejectWithValue(err));
 });
@@ -49,11 +84,11 @@ function makeSignupRequest<T>(
 ): Promise<PayloadAction<T, string, never, boolean>> {
   const state = thunkAPI.getState();
 
-  if (!state.config.signup_url) {
-    throw new Error("Missing configuration signup_url");
-  }
-
   // TODO: Get SIGNUP_SERVICE_URL from jsconfig instead? signup_url isn't the full path to the services
+  //if (!state.config.signup_service_url) {
+  if (!SIGNUP_SERVICE_URL) {
+    throw new Error("Missing global SIGNUP_SERVICE_URL");
+  }
 
   return makeGenericRequest<T>(thunkAPI, SIGNUP_SERVICE_URL, endpoint, body, data);
 }

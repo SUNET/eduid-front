@@ -50,17 +50,6 @@ export const register = {
     />
   ),
 
-  "used.email-label": (
-    <FormattedMessage
-      id="used.email-label"
-      defaultMessage={`If this is your eduID, you can reset your password to log back in.`}
-    />
-  ),
-
-  "used.email-in-use": (values) => (
-    <FormattedMessage id="used.email-in-use" defaultMessage={`An eduID is already using {email}`} values={values} />
-  ),
-
   "finish.can-now-login": <FormattedMessage id="finish.can-now-login" defaultMessage={`You can now log in`} />,
 
   "finish.sites-accept": (

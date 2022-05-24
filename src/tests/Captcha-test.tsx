@@ -1,12 +1,10 @@
-import { newCsrfToken } from "actions/DashboardConfig";
 import Captcha from "components/Captcha";
 import { shallow } from "enzyme";
 import expect from "expect";
 import fetchMock from "jest-fetch-mock";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { call, put } from "redux-saga/effects";
-import { setupComponent, signupTestState } from "./helperFunctions/SignupTestApp";
+import { setupComponent } from "./helperFunctions/SignupTestApp";
 
 function handleCaptchaCancel() {}
 function handleCaptchaCompleted(response: string) {}
@@ -34,14 +32,14 @@ describe("Captcha Component", () => {
     expect(captcha.exists()).toEqual(true);
   });
 
-  it("Renders the OK and CANCEL buttons", () => {
+  it("Renders the CANCEL button", () => {
     fetchMock.doMockOnceIf("https://www.google.com/recaptcha/api.js", "dummy-script");
     const fullWrapper = setupComponent({
       component: <Captcha handleCaptchaCancel={handleCaptchaCancel} handleCaptchaCompleted={handleCaptchaCompleted} />,
     });
     const button = fullWrapper.find("EduIDButton");
     expect(button.exists()).toEqual(true);
-    expect(button.length).toEqual(2);
+    expect(button.length).toEqual(1);
   });
 });
 

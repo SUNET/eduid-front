@@ -3,14 +3,12 @@ import { notificationsSlice } from "reducers/Notifications";
 import { signupSlice } from "reducers/Signup";
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import verifiedReducer from "./reducers/CodeVerified";
 import { intlReducer } from "./reducers/Internationalisation";
-import signupConfigReducer from "./reducers/SignupMain";
+import configSlice from "./reducers/SignupConfig";
 
 const eduIDApp = combineReducers({
-  config: signupConfigReducer,
+  config: configSlice.reducer,
   signup: signupSlice.reducer,
-  verified: verifiedReducer,
   router: routerReducer,
   form: formReducer,
   intl: intlReducer,
