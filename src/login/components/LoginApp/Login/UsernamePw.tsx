@@ -60,7 +60,7 @@ export default function UsernamePw() {
               </fieldset>
 
               <div className="flex-between">
-                <div className="button-pair">
+                <div className="buttons">
                   <LoginAbortButton />
                   <UsernamePwSubmitButton {...formProps} />
                   <UsernamePwAnotherDeviceButton />
@@ -126,11 +126,11 @@ function UsernameInputPart(): JSX.Element {
 function RenderRegisterLink(): JSX.Element {
   const toSignup = useAppSelector((state) => state.config.signup_url);
   return (
-    <p className="secondary-link text-small">
+    <div className="secondary-link text-small">
       <FormattedMessage defaultMessage="Don't have eduID? " description="Login front page" />
       &nbsp;&nbsp;
       <Link href={toSignup} text={<FormattedMessage defaultMessage=" Register" description="Login front page" />} />
-    </p>
+    </div>
   );
 }
 
@@ -195,7 +195,7 @@ function UsernamePwAnotherDeviceButton(): JSX.Element | null {
   }
 
   return (
-    <EduIDButton buttonstyle="primary" onClick={handleOnClick} id="login-other-device-button">
+    <EduIDButton buttonstyle="primary" onClick={handleOnClick} className="btn-icon" id="login-other-device-button">
       <FontAwesomeIcon icon={faQrcode} />
       <FormattedMessage defaultMessage="Other device" description="Login UsernamePw" />
     </EduIDButton>

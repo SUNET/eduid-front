@@ -23,10 +23,10 @@ export const ToUs: { [key: string]: ReactElement } = {
 
   "2016-v1": (
     <React.Fragment>
-      <p>
-        <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
-      </p>
-      <ul tabIndex={0}>
+      <dl tabIndex={0} className="terms">
+        <dt>
+          <FormattedMessage defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+        </dt>
         {[
           <FormattedMessage
             defaultMessage="that all usage of user accounts follow the laws and by-laws of Sweden,"
@@ -47,16 +47,15 @@ export const ToUs: { [key: string]: ReactElement } = {
             description="ToU first paragraph"
           />,
         ].map((list, index) => {
-          return <li key={index}>{list}</li>;
+          return <dd key={index}>{list}</dd>;
         })}
-      </ul>
-      <ul tabIndex={0}>
-        <p>
+
+        <dt>
           <FormattedMessage
             defaultMessage="SUNET judges unethical behaviour to be when someone:"
             description="ToU 2016-v1 paragraph 2 heading"
           />
-        </p>
+        </dt>
         {[
           <FormattedMessage
             defaultMessage="attempts to gain access to network resources that they do not have the right"
@@ -81,9 +80,9 @@ export const ToUs: { [key: string]: ReactElement } = {
           <FormattedMessage defaultMessage="infringes on the privacy of others" description="ToU second paragraph" />,
           <FormattedMessage defaultMessage="attempts to insult or offend others" description="ToU second paragraph" />,
         ].map((list, index) => {
-          return <li key={index}>{list}</li>;
+          return <dd key={index}>{list}</dd>;
         })}
-      </ul>
+      </dl>
     </React.Fragment>
   ),
 };
