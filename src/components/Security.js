@@ -114,7 +114,12 @@ function Security(props) {
               <FormattedMessage description="add webauthn token key" defaultMessage={`security key`} />
             </EduIDButton>
           </div>
-          <p className="help-text">E.g. USB Security Key, Touch ID or FaceID</p>
+          <p className="help-text">
+            <FormattedMessage
+              description="platform authn help text"
+              defaultMessage={`E.g. USB Security Key, Touch ID or FaceID`}
+            />
+          </p>
         </div>
       </div>
       <ConfirmModal
