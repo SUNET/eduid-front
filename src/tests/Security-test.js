@@ -3,7 +3,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { put, call } from "redux-saga/effects";
 import expect from "expect";
-import SecurityContainer from "containers/Security";
+import SecurityComponent from "components/Security";
 import * as actions from "actions/Security";
 import securityReducer from "reducers/Security";
 import { ReduxIntlProvider } from "components/ReduxIntl";
@@ -639,12 +639,12 @@ describe("Security Container", () => {
 
       const wrapper = mount(
         <ReduxIntlProvider store={store}>
-          <SecurityContainer {...props} />
+          <SecurityComponent {...props} />
         </ReduxIntlProvider>
       );
       return wrapper;
     };
-    language = getWrapper().find(SecurityContainer).props().language;
+    language = getWrapper().find(SecurityComponent).props().language;
   });
 
   it("Renders test", () => {
