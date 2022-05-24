@@ -20,7 +20,8 @@
         "__PLATFORM__": " WEB"
       },
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "openOnSessionStart",
+      "outputCapture": "std"
     },
     {
       "type": "node", // Jest runs under node, that's why we set up this value
@@ -38,7 +39,8 @@
         "__PLATFORM__": " WEB"
       },
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "openOnSessionStart",
+      "outputCapture": "std"
     },
     {
       "type": "node",
